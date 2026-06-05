@@ -43,11 +43,22 @@
         </div>
 
         <label class="field">
-          <span>Search order</span>
+          <span>Frontier order</span>
           <select id="faceOrderSelect">
             <option value="coverage" selected>Contact first</option>
             <option value="constrained">Fewest choices</option>
             <option value="pocket">Fill holes</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Filling order</span>
+          <select id="moveOrderSelect">
+            <option value="coverage" selected>Most contact</option>
+            <option value="balanced">Balanced</option>
+            <option value="symmetric">Symmetry first</option>
+            <option value="periodic">Repeat spacing</option>
+            <option value="repeat">Same orientation</option>
           </select>
         </label>
 

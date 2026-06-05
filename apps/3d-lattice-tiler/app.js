@@ -10,6 +10,7 @@ const maxTilesInput = $("maxTilesInput");
 const layerInput = $("layerInput");
 const snapshotSelect = $("snapshotSelect");
 const faceOrderSelect = $("faceOrderSelect");
+const moveOrderSelect = $("moveOrderSelect");
 const branchCapInput = $("branchCapInput");
 const nodeCapInput = $("nodeCapInput");
 const candidateCapInput = $("candidateCapInput");
@@ -827,6 +828,7 @@ function configKey() {
     include_mirrors: mirrorCheckbox.checked,
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
+    move_order: moveOrderSelect.value,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -1608,7 +1610,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });

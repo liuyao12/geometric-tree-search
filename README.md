@@ -64,6 +64,8 @@ Useful options:
 - `--move-order repeat` tries same-orientation placements first.
 - `--move-order periodic` prefers placements that continue a spacing already
   seen between same-orientation copies of the tile.
+- `--move-order symmetric` prefers placements whose resulting frontier has more
+  reflected pairs of exposed faces and a less lopsided bounding box.
 - `--move-order layer` prioritizes moves that advance the earliest frontier
   layer; `balanced` combines that with same-orientation and periodic preference.
 - `--face-order constrained` chooses the earliest frontier face with the fewest
@@ -78,6 +80,9 @@ Useful options:
   events in the trace.
 - `--placement-details` adds the current placement translations and orientations
   to snapshots.
+
+These are branch-ordering preferences, not pruning rules. Less symmetric or
+less human-looking branches remain in the tree unless an explicit cap is set.
 
 ## Repository Shape
 

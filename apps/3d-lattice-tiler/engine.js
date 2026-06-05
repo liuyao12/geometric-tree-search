@@ -822,25 +822,98 @@ export const createTilingStream = (() => {
       }
       return { score, weight, outside };
     };
+    const reflectedFeatureKey = (feature, centerSums, axes) => {
+      const center = feature.center.slice();
+      const normal = feature.normal.slice();
+      for (const axis of axes) {
+        center[axis] = centerSums[axis] - center[axis];
+        normal[axis] = -normal[axis];
+      }
+      return `${center.join(",")}::${normal.join(",")}`;
+    };
+    const frontierSymmetryInfo = () => {
+      const features = [];
+      const mins = [Infinity, Infinity, Infinity];
+      const maxs = [-Infinity, -Infinity, -Infinity];
+      for (const entry of state.frontier.values()) {
+        const center = faceCenter(entry.ordered_verts);
+        if (!center) continue;
+        const normal = axisNormalForFace(entry.ordered_verts);
+        if (!normal) continue;
+        const pocket = facePocketInfo(keyFace(entry.ordered_verts));
+        const feature = { center, normal: pocket.outside ? vecSub(pocket.outside, center) : normal };
+        features.push(feature);
+        for (let i = 0; i < 3; i++) {
+          mins[i] = Math.min(mins[i], center[i]);
+          maxs[i] = Math.max(maxs[i], center[i]);
+        }
+      }
+      if (!features.length) return { score: 0, best_ratio: 0, average_ratio: 0, balance: 0, face_count: 0 };
+      const centerSums = mins.map((min, i) => min + maxs[i]);
+      const keys = new Set(features.map(feature => `${feature.center.join(",")}::${feature.normal.join(",")}`));
+      const transforms = [[0], [1], [2], [0, 1, 2]];
+      const ratios = transforms.map(axes => {
+        let paired = 0;
+        for (const feature of features) {
+          if (keys.has(reflectedFeatureKey(feature, centerSums, axes))) paired += 1;
+        }
+        return paired / features.length;
+      });
+      const spans = maxs.map((max, i) => max - mins[i]);
+      const maxSpan = Math.max(...spans, 1);
+      const minSpan = Math.min(...spans);
+      const balance = minSpan / maxSpan;
+      const bestRatio = Math.max(...ratios);
+      const averageRatio = ratios.reduce((sum, value) => sum + value, 0) / ratios.length;
+      return {
+        score: bestRatio + 0.25 * averageRatio + 0.1 * balance,
+        best_ratio: bestRatio,
+        average_ratio: averageRatio,
+        balance,
+        face_count: features.length
+      };
+    };
     const previewMoveStats = (move) => {
       const rb = applyMove(move);
       const stats = calculateFrontierStats();
       undoMove(move, rb);
       return stats;
     };
+    const previewMoveSymmetry = (move) => {
+      if (move._symmetry_info) return move._symmetry_info;
+      const rb = applyMove(move);
+      const info = frontierSymmetryInfo();
+      undoMove(move, rb);
+      move._symmetry_info = info;
+      return info;
+    };
     const moveScore = (move) => {
       const coverage = moveCoverage(move);
       const repeat = sameRootOrientation(move);
       const periodic = periodicContinuation(move);
+      if (moveOrder === "symmetric") {
+        const symmetry = previewMoveSymmetry(move);
+        return [
+          symmetry.score,
+          symmetry.best_ratio,
+          symmetry.balance,
+          periodic,
+          repeat,
+          coverage
+        ];
+      }
       if (moveOrder === "periodic") return [periodic, repeat, coverage];
       if (moveOrder === "repeat") return [repeat, coverage];
       if (moveOrder === "layer" || moveOrder === "balanced") {
         if (!move._preview_stats) move._preview_stats = previewMoveStats(move);
         const stats = move._preview_stats;
+        const symmetry = moveOrder === "balanced" ? previewMoveSymmetry(move) : null;
         return [
           stats.min_gen,
           -stats.count,
           -stats.total_faces,
+          moveOrder === "balanced" ? symmetry.score : 0,
+          moveOrder === "balanced" ? symmetry.best_ratio : 0,
           moveOrder === "balanced" ? repeat : 0,
           moveOrder === "balanced" ? periodic : 0,
           coverage
@@ -872,6 +945,7 @@ export const createTilingStream = (() => {
       same_root_orientation: sameRootOrientation(move),
       periodic_continuation: periodicContinuation(move),
       target_face_pocket: move._target_face_pocket ?? null,
+      symmetry: move._symmetry_info ?? null,
       score: moveScore(move),
       preview_frontier_stats: move._preview_stats ?? null
     } : {};
