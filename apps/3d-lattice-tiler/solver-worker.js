@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-progress-estimate";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-pocket-order";
 
 const SNAPSHOT_INTERVAL_MS = 80;
 
