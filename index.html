@@ -8,8 +8,8 @@
 </head>
 <body>
   <main class="page">
-    <header class="hero">
-      <p class="eyebrow">GTS</p>
+    <header class="site-header">
+      <p class="eyebrow">GTS research notes and playgrounds</p>
       <h1>Geometric Tree Search</h1>
       <p class="lede">
         Search problems where a combinatorial object grows under geometric
@@ -22,17 +22,57 @@
       </nav>
     </header>
 
-    <section class="section">
-      <h2>Playgrounds</h2>
-      <div class="project-grid">
-        <article class="project-card">
-          <h3>3D Lattice Tiler</h3>
+    <section class="section project-section">
+      <div class="section-heading">
+        <h2>Playgrounds</h2>
+        <p>Small working environments for testing geometric tree search ideas.</p>
+      </div>
+      <div class="project-list">
+        <article class="project-item">
+          <img src="./assets/3d-lattice-tiler-preview.svg" alt="3D lattice tiler preview">
+          <div>
+            <p class="project-type">interactive playground</p>
+            <h3>3D Lattice Tiler</h3>
+            <p>
+              A browser-only JavaScript playground for lattice polyhedra and
+              polycubes on Z^3, with mixed tile systems, custom polycubes,
+              live search metrics, and search-tree inspection.
+            </p>
+            <a href="./apps/3d-lattice-tiler/">Launch playground</a>
+          </div>
+        </article>
+
+        <article class="project-item">
+          <img src="./assets/turtle-tiling-preview.svg" alt="2D turtle tiling preview">
+          <div>
+            <p class="project-type">visual experiment</p>
+            <h3>2D Turtle Tiling</h3>
+            <p>
+              A planar tiling thread for studying the same tree-search
+              questions in a smaller geometry: frontier choices, compatible
+              placements, and recognizable branching structure.
+            </p>
+            <span class="project-note">Notebook import planned</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section writing-section">
+      <div class="section-heading">
+        <h2>Writing</h2>
+        <p>Notes that frame the search problem and collect examples.</p>
+      </div>
+      <div class="writing-list">
+        <article>
+          <p class="project-type">Observable essay</p>
+          <h3>Tree Search with Geometric Constraints</h3>
           <p>
-            A JavaScript playground for lattice polyhedra and polycubes on
-            Z^3, with mixed tile systems, custom polycubes, and search-tree
-            inspection.
+            The originating post for this project: why geometric constraints
+            make ordinary tree search feel different, and what kinds of
+            markings or macros might make the tree navigable.
           </p>
-          <a href="./apps/3d-lattice-tiler/">Launch</a>
+          <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Read post</a>
         </article>
       </div>
     </section>

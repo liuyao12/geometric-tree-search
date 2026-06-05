@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-selected-icons-edge-fix-2";
+import { tileSpecs } from "./engine.js?v=20260605-worker-playground";
 
 const $ = (id) => document.getElementById(id);
 
-const selectedFiguresEl = $("selectedFigures");
+const selectedTilesEl = $("selectedTiles");
 const statusEl = $("status");
 const maxTilesInput = $("maxTilesInput");
 const layerInput = $("layerInput");
@@ -29,14 +29,21 @@ const customNameInput = $("customNameInput");
 const customShapeMatch = $("customShapeMatch");
 const polycubeBuilder = $("polycubeBuilder");
 const clearBuilderButton = $("clearBuilderButton");
+const customBuilderButton = $("customBuilderButton");
+const customBuilderDialog = $("customBuilderDialog");
+const closeBuilderButton = $("closeBuilderButton");
 const treePanel = $("treePanel");
 const viewport = $("viewport");
 const elapsedTime = $("elapsedTime");
 
 const metricTiles = $("metricTiles");
-const metricTileBreakdown = $("metricTileBreakdown");
 const metricFrontier = $("metricFrontier");
 const metricLayer = $("metricLayer");
+const metricLayerDetail = $("metricLayerDetail");
+const metricForced = $("metricForced");
+const metricBacktracks = $("metricBacktracks");
+const metricVisited = $("metricVisited");
+const metricVisitedDetail = $("metricVisitedDetail");
 const metricNodes = $("metricNodes");
 
 const prettyNameMap = new Map([
@@ -47,7 +54,6 @@ const prettyNameMap = new Map([
 ]);
 
 const prettyName = (name) => prettyNameMap.get(name) ?? name;
-const nextFrame = () => new Promise((resolve) => window.requestAnimationFrame(resolve));
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
@@ -69,16 +75,19 @@ const figureSourceTitle = (figure) => {
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 window.scrollTo({ top: 0, left: 0 });
 
-let stopToken = { stop: false };
 let running = false;
 let paused = false;
 let isFinished = false;
 let runSeq = 0;
-let streamIter = null;
 let pausedConfigKey = null;
 let startedAt = 0;
+let solverWorker = null;
+let solverWorkerActive = false;
+let pendingFullUpdate = null;
+let fullUpdateRenderQueued = false;
 
 let lastSnapshot = null;
+let lastSearchStats = null;
 let prototileInfo = null;
 let currentOpacities = {};
 let rootCentered = false;
@@ -435,12 +444,13 @@ function customPolycubeThumbnail(tile) {
 }
 
 function selectedSystemItems() {
-  const items = selectedFigures().map(figure => ({
+  const items = selectedFigures().map((figure, index) => ({
     id: figure.id,
     name: prettyName(figure.name),
     title: `${figureSourceTitle(figure)}: ${prettyName(figure.name)}`,
     thumbnail: figureThumbnail(figure),
     faceCount: tileFaceCount(tileForFigure(figure)),
+    tileIndex: index,
     remove: () => {
       selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
       handleFigureSelectionChanged();
@@ -455,6 +465,7 @@ function selectedSystemItems() {
       title: `${name}: ${builderVoxels.size} cube${builderVoxels.size === 1 ? "" : "s"}`,
       thumbnail: customPolycubeThumbnail(tile),
       faceCount: tileFaceCount(tile),
+      tileIndex: items.length,
       remove: () => {
         customPolycubeCheckbox.checked = false;
         handleCustomPolycubeChanged();
@@ -464,47 +475,61 @@ function selectedSystemItems() {
   return items;
 }
 
-function renderSelectedFigures() {
-  selectedFiguresEl.replaceChildren();
+function tileCountForSelectedItem(item, snapshot = lastSnapshot) {
+  if (item.tileIndex == null) return 0;
+  return snapshot?.tile_counts?.find(entry => entry.type_idx === item.tileIndex)?.count ?? 0;
+}
+
+function renderSelectedTiles() {
+  selectedTilesEl.replaceChildren();
   const items = selectedSystemItems();
   if (!items.length) {
     const empty = document.createElement("span");
     empty.className = "selected-empty";
-    empty.textContent = "Choose a figure";
-    selectedFiguresEl.appendChild(empty);
+    empty.textContent = "Choose a tile";
+    selectedTilesEl.appendChild(empty);
     return;
   }
   items.forEach((item, index) => {
-    const chip = document.createElement("span");
-    chip.className = "figure-chip";
-    chip.classList.toggle("is-root", index === 0);
+    const row = document.createElement("div");
+    row.className = "selected-tile-row";
+    row.classList.toggle("is-root", index === 0);
 
     if (item.thumbnail) {
       const image = document.createElement("img");
-      image.className = "figure-chip-thumb";
+      image.className = "selected-tile-thumb";
       image.alt = item.name;
       image.src = item.thumbnail;
-      chip.append(image);
+      row.append(image);
     }
 
+    const main = document.createElement("div");
+    main.className = "selected-tile-main";
+
     const label = document.createElement("span");
-    label.className = "figure-chip-label";
-    label.textContent = `${index === 0 ? "root: " : ""}${item.name}`;
+    label.className = "selected-tile-name";
+    label.textContent = item.name;
     label.title = item.title;
-    chip.append(label);
 
     const faces = document.createElement("span");
-    faces.className = "figure-chip-faces";
+    faces.className = "selected-tile-faces";
     faces.textContent = `${item.faceCount} faces`;
     faces.title = "Faces on this tile";
-    chip.append(faces);
+    main.append(label, faces);
+
+    const count = document.createElement("span");
+    count.className = "selected-tile-count";
+    count.textContent = tileCountForSelectedItem(item);
+    count.title = "Copies in the displayed tiling";
 
     const remove = document.createElement("button");
     remove.type = "button";
+    remove.className = "selected-tile-remove";
     remove.textContent = "x";
+    remove.title = `Remove ${item.name}`;
     remove.addEventListener("click", item.remove);
-    chip.append(remove);
-    selectedFiguresEl.appendChild(chip);
+    row.append(main, count, remove);
+    selectedTilesEl.appendChild(row);
   });
 }
 
@@ -530,10 +555,9 @@ function hasRunnableSelection() {
 }
 
 function stopActiveRunAfterSelectionChange() {
-  if (running || paused || streamIter) {
-    stopToken.stop = true;
+  if (running || paused || solverWorkerActive) {
     runSeq += 1;
-    streamIter = null;
+    stopSolverWorker();
     running = false;
     paused = false;
     pausedConfigKey = null;
@@ -606,7 +630,7 @@ function renderSystemTileList() {
 }
 
 function refreshFigureSelectionUI() {
-  renderSelectedFigures();
+  renderSelectedTiles();
   renderSystemTileList();
   updateMirrorAvailability();
 }
@@ -834,7 +858,7 @@ function invalidatePausedRunIfNeeded() {
   }
   if (pausedConfigKey !== configKey()) {
     runSeq += 1;
-    streamIter = null;
+    stopSolverWorker();
     paused = false;
     setStatus("Ready");
   }
@@ -889,6 +913,22 @@ function resizeBuilderRenderer() {
 new ResizeObserver(resizeBuilderRenderer).observe(polycubeBuilder);
 resizeBuilderRenderer();
 
+function openCustomBuilderDialog() {
+  if (!customBuilderDialog.open) {
+    if (typeof customBuilderDialog.showModal === "function") customBuilderDialog.showModal();
+    else customBuilderDialog.setAttribute("open", "");
+  }
+  requestAnimationFrame(() => {
+    resizeBuilderRenderer();
+    requestBuilderRender();
+  });
+}
+
+function closeCustomBuilderDialog() {
+  if (customBuilderDialog.open && typeof customBuilderDialog.close === "function") customBuilderDialog.close();
+  else customBuilderDialog.removeAttribute("open");
+}
+
 function batchFor(map, key, setup) {
   let batch = map.get(key);
   if (!batch) {
@@ -907,25 +947,57 @@ function visibleAlpha(face) {
   return currentOpacities[typeIndex] ?? 1;
 }
 
-function updateTileBreakdown(snapshot) {
-  metricTileBreakdown.replaceChildren();
-  const counts = (snapshot?.tile_counts ?? []).filter(item => item.count > 0);
-  if (!counts.length) return;
+function formatVisitedPercent(value) {
+  if (!Number.isFinite(value)) return "0%";
+  const clamped = Math.max(0, Math.min(100, value));
+  return clamped > 0 && clamped < 10 ? `${clamped.toFixed(1)}%` : `${Math.round(clamped)}%`;
+}
 
-  for (const item of counts) {
-    const part = document.createElement("span");
-    part.className = "metric-breakdown-item";
-    part.title = `${item.name}: ${item.count}`;
+function updateFrontierMetrics(stats = null) {
+  const totalFaces = stats?.total_faces ?? stats?.count ?? 0;
+  const layer = stats?.min_gen ?? 0;
+  const layerFaces = stats?.count ?? 0;
+  metricFrontier.textContent = totalFaces;
+  metricLayer.textContent = layer;
+  metricLayerDetail.textContent = `${layerFaces} face${layerFaces === 1 ? "" : "s"} at layer ${layer}`;
+}
 
-    const swatch = document.createElement("i");
-    swatch.style.background = item.color ?? tileSpecs.COLOR_PALETTE[(item.type_idx ?? 0) % tileSpecs.COLOR_PALETTE.length];
+function updateSearchMetrics(stats = null) {
+  if (stats) lastSearchStats = stats;
+  const forcedOnPath = stats?.forced_on_path ?? 0;
+  const backtracks = stats?.backtracks ?? 0;
+  const visitedPercent = stats?.visited_percent ?? 0;
+  const progressDepth = stats?.progress_depth ?? stats?.max_depth ?? 0;
+  const completedPaths = stats?.progress_completed_paths ?? stats?.visited_nodes ?? treeMap.size;
+  const totalPaths = stats?.progress_total_paths ?? stats?.estimated_nodes_at_depth ?? null;
 
-    const text = document.createElement("span");
-    text.textContent = `${item.name} ${item.count}`;
+  metricForced.textContent = forcedOnPath;
+  metricBacktracks.textContent = backtracks;
+  metricVisited.textContent = formatVisitedPercent(visitedPercent);
+  metricVisitedDetail.textContent = `DFS estimate, depth ${progressDepth}`;
+  metricNodes.textContent = totalPaths
+    ? `${completedPaths}/${totalPaths} paths`
+    : `${completedPaths} paths`;
+}
 
-    part.append(swatch, text);
-    metricTileBreakdown.appendChild(part);
-  }
+function refreshNodeMetricFallback() {
+  if (lastSearchStats) updateSearchMetrics(lastSearchStats);
+  else metricNodes.textContent = `${treeMap.size} nodes`;
+}
+
+function formatElapsed(ms) {
+  const seconds = Math.max(0, ms / 1000);
+  if (seconds < 60) return `${seconds.toFixed(1)}s`;
+  const minutes = Math.floor(seconds / 60);
+  const remaining = Math.floor(seconds % 60);
+  return `${minutes}m ${remaining.toString().padStart(2, "0")}s`;
+}
+
+function updateRunMetrics(snapshot = null) {
+  metricTiles.textContent = snapshot?.tile_count ?? 0;
+  updateFrontierMetrics(snapshot?.frontier_stats);
+  updateSearchMetrics(snapshot?.search_stats);
+  renderSelectedTiles();
 }
 
 function updateScene(snapshot, options = {}) {
@@ -1011,8 +1083,7 @@ function updateScene(snapshot, options = {}) {
   scene.add(edgeGroup);
   disposeObjectGroup(oldEdgeGroup);
 
-  metricTiles.textContent = snapshot?.tile_count ?? 0;
-  updateTileBreakdown(snapshot);
+  updateRunMetrics(snapshot);
   if (!preserveView && autoFitCheckbox.checked && !rootCentered) centerOnSnapshot(snapshot, true);
   requestRender();
 }
@@ -1152,10 +1223,8 @@ function selectTreeNode(nodeId) {
   selectedNodeId = nodeId;
   updateScene(node.snapshot, { preserveView: true });
   const stats = node.frontierStats ?? node.snapshot.frontier_stats;
-  if (stats) {
-    metricFrontier.textContent = stats.total_faces ?? stats.count ?? 0;
-    metricLayer.textContent = stats.min_gen ?? 0;
-  }
+  if (stats) updateFrontierMetrics(stats);
+  updateSearchMetrics(node.snapshot.search_stats);
   renderTree();
 }
 
@@ -1186,11 +1255,8 @@ function updateNodeStatus(id, status, text = "", colorId = null, frontierStats =
     }
   }
 
-  metricNodes.textContent = treeMap.size;
-  if (frontierStats) {
-    metricFrontier.textContent = frontierStats.total_faces ?? frontierStats.count ?? 0;
-    metricLayer.textContent = frontierStats.min_gen ?? 0;
-  }
+  refreshNodeMetricFallback();
+  if (frontierStats) updateFrontierMetrics(frontierStats);
   scheduleTreeRender();
 }
 
@@ -1240,7 +1306,7 @@ function clearTree() {
   manuallyExpanded.clear();
   selectedNodeId = null;
   treePanel.replaceChildren();
-  metricNodes.textContent = "0";
+  metricNodes.textContent = "0 nodes";
 }
 
 function scheduleTreeRender() {
@@ -1396,72 +1462,93 @@ function handleMessage(message) {
     return;
   }
   if (message.type === "full_update") {
-    updateScene(message);
     attachSnapshotToNode(message.node_id, message);
+    scheduleFullUpdate(message);
     return;
   }
   if (message.type === "finished") {
     isFinished = true;
     running = false;
     paused = false;
-    streamIter = null;
+    solverWorkerActive = false;
     if (message.success !== false) revealSuccessPath();
     metricTiles.textContent = message.tile_count ?? metricTiles.textContent;
+    if (message.search_stats) updateSearchMetrics(message.search_stats);
     const prefix = message.success === false ? (message.best_effort ? "Stopped: best" : "Stopped") : "Finished";
     setStatus(`${prefix}: ${message.tile_count} tiles`);
     setRunButton();
   }
 }
 
-async function consumeStream(mySeq) {
-  try {
-    let messageCount = 0;
-    while (streamIter && mySeq === runSeq && running && !paused) {
-      const { value, done } = await streamIter.next();
-      if (mySeq !== runSeq) return;
-      if (done) {
-        if (!isFinished) setStatus("Stopped");
-        running = false;
-        paused = false;
-        streamIter = null;
-        break;
-      }
+function scheduleFullUpdate(snapshot) {
+  pendingFullUpdate = snapshot;
+  if (fullUpdateRenderQueued) return;
+  fullUpdateRenderQueued = true;
+  requestAnimationFrame(() => {
+    fullUpdateRenderQueued = false;
+    const latest = pendingFullUpdate;
+    pendingFullUpdate = null;
+    if (latest) updateScene(latest);
+  });
+}
 
-      handleMessage(value);
-      messageCount += 1;
-      if (value?.type === "full_update") await nextFrame();
-      else if (messageCount % 40 === 0) await nextFrame();
-      if (value?.type === "finished") break;
+function ensureSolverWorker() {
+  if (solverWorker) return solverWorker;
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260605-worker-playground", import.meta.url), { type: "module" });
+  solverWorker.addEventListener("message", (event) => {
+    const { seq, type, message, error } = event.data ?? {};
+    if (seq !== runSeq) return;
+
+    if (type === "solver_message") {
+      handleMessage(message);
+      return;
     }
-  } catch (error) {
-    console.error(error);
-    if (mySeq === runSeq) {
+
+    if (type === "solver_error") {
       running = false;
       paused = false;
-      streamIter = null;
-      setStatus(`Error: ${error.message}`);
-    }
-  } finally {
-    if (mySeq === runSeq) {
+      solverWorkerActive = false;
+      setStatus(`Error: ${error}`);
       setRunButton();
-      if (!isFinished && paused) setStatus("Paused");
+      return;
     }
-  }
+
+    if (type === "solver_idle" && running && !isFinished) {
+      running = false;
+      paused = false;
+      solverWorkerActive = false;
+      setStatus("Stopped");
+      setRunButton();
+    }
+  });
+  solverWorker.addEventListener("error", (error) => {
+    console.error(error);
+    running = false;
+    paused = false;
+    solverWorkerActive = false;
+    setStatus(`Error: ${error.message}`);
+    setRunButton();
+  });
+  return solverWorker;
+}
+
+function stopSolverWorker() {
+  solverWorker?.postMessage({ type: "stop" });
+  solverWorkerActive = false;
+  pendingFullUpdate = null;
 }
 
 function resetRunView() {
   rootCentered = false;
   lastSnapshot = null;
+  lastSearchStats = null;
   prototileInfo = null;
   currentOpacities = {};
   clearTree();
   clearObjectGroup(faceGroup);
   clearObjectGroup(edgeGroup);
   tileList.replaceChildren();
-  metricTiles.textContent = "0";
-  metricTileBreakdown.replaceChildren();
-  metricFrontier.textContent = "0";
-  metricLayer.textContent = "0";
+  updateRunMetrics(null);
   elapsedTime.textContent = "0.0s";
   requestRender();
 }
@@ -1472,13 +1559,12 @@ function startNewRun() {
     setRunButton();
     return;
   }
-  stopToken.stop = true;
+  stopSolverWorker();
   runSeq += 1;
-  streamIter = null;
   paused = false;
   running = true;
   isFinished = false;
-  stopToken = { stop: false };
+  solverWorkerActive = true;
   startedAt = performance.now();
   pausedConfigKey = configKey();
   resetRunView();
@@ -1486,22 +1572,22 @@ function startNewRun() {
   setStatus("Running...");
 
   const config = JSON.parse(pausedConfigKey);
-  streamIter = createTilingStream(config, tileSpecs, stopToken);
-  consumeStream(runSeq);
+  ensureSolverWorker().postMessage({ type: "start", seq: runSeq, config });
 }
 
 function continueRun() {
-  if (!streamIter) return startNewRun();
+  if (!solverWorkerActive) return startNewRun();
   paused = false;
   running = true;
   setRunButton();
   setStatus("Running...");
-  consumeStream(runSeq);
+  solverWorker?.postMessage({ type: "resume", seq: runSeq });
 }
 
 function pauseRun() {
   paused = true;
   running = false;
+  solverWorker?.postMessage({ type: "pause", seq: runSeq });
   setRunButton();
   setStatus("Paused");
 }
@@ -1542,8 +1628,18 @@ function bindControls() {
 
   runButton.addEventListener("click", () => {
     if (running) return pauseRun();
-    if (paused && pausedConfigKey === configKey() && streamIter) return continueRun();
+    if (paused && pausedConfigKey === configKey() && solverWorkerActive) return continueRun();
     return startNewRun();
+  });
+
+  customBuilderButton.addEventListener("click", openCustomBuilderDialog);
+  closeBuilderButton.addEventListener("click", closeCustomBuilderDialog);
+  customBuilderDialog.addEventListener("click", (event) => {
+    if (event.target === customBuilderDialog) closeCustomBuilderDialog();
+  });
+  customBuilderDialog.addEventListener("close", () => {
+    builderHoverKey = null;
+    requestBuilderRender();
   });
 
   clearBuilderButton.addEventListener("click", () => {
@@ -1557,7 +1653,7 @@ function bindControls() {
 function updateElapsed() {
   if (running || paused || isFinished) {
     const base = startedAt || performance.now();
-    elapsedTime.textContent = `${((performance.now() - base) / 1000).toFixed(1)}s`;
+    elapsedTime.textContent = formatElapsed(performance.now() - base);
   }
 }
 

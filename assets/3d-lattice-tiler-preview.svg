@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">3D lattice tiler preview</title>
+  <desc id="desc">Isometric lattice cubes and a branching search trace.</desc>
+  <rect width="960" height="560" fill="#eef4f0"/>
+  <g opacity="0.58" stroke="#cbd8d2" stroke-width="2">
+    <path d="M90 392 460 178 832 392"/>
+    <path d="M152 426 522 212 894 426"/>
+    <path d="M28 356 398 142 770 356"/>
+    <path d="M214 462 584 248"/>
+    <path d="M276 498 646 284"/>
+    <path d="M338 534 708 320"/>
+    <path d="M770 356 398 534"/>
+    <path d="M708 320 338 498"/>
+    <path d="M646 284 276 462"/>
+    <path d="M584 248 214 426"/>
+    <path d="M522 212 152 390"/>
+    <path d="M460 178 90 356"/>
+  </g>
+  <defs>
+    <g id="cube">
+      <path d="M0 0 64 36 64 110 0 74z" fill="#178273"/>
+      <path d="M64 36 128 0 128 74 64 110z" fill="#0f675b"/>
+      <path d="M0 0 64-36 128 0 64 36z" fill="#33a394"/>
+      <path d="M0 0 64 36 128 0M64 36v74" fill="none" stroke="#0c4f47" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <g transform="translate(382 264)">
+    <use href="#cube"/>
+    <g transform="translate(128 0)"><use href="#cube"/></g>
+    <g transform="translate(64 -36)"><use href="#cube"/></g>
+    <g transform="translate(64 74)"><use href="#cube"/></g>
+    <g transform="translate(192 74)"><use href="#cube"/></g>
+  </g>
+  <g transform="translate(90 74)" fill="none" stroke-linecap="round">
+    <path d="M12 18h112" stroke="#1f2926" stroke-width="5"/>
+    <path d="M124 18c42 0 42 54 82 54h72" stroke="#315f9f" stroke-width="5"/>
+    <path d="M124 18c42 0 42-40 82-40h82" stroke="#b84a56" stroke-width="5"/>
+    <path d="M124 18c36 0 36 104 72 104h112" stroke="#178273" stroke-width="5"/>
+    <g fill="#fbfcfb" stroke-width="4">
+      <circle cx="12" cy="18" r="10" stroke="#1f2926"/>
+      <circle cx="124" cy="18" r="10" stroke="#1f2926"/>
+      <circle cx="278" cy="72" r="10" stroke="#315f9f"/>
+      <circle cx="288" cy="-22" r="10" stroke="#b84a56"/>
+      <circle cx="308" cy="122" r="10" stroke="#178273"/>
+    </g>
+  </g>
+  <text x="70" y="494" fill="#1f2926" font-family="Inter, Segoe UI, sans-serif" font-size="34" font-weight="800">3D lattice tiling</text>
+  <text x="70" y="526" fill="#62716b" font-family="Inter, Segoe UI, sans-serif" font-size="18">frontier faces, forced moves, mixed tile systems</text>
+</svg>

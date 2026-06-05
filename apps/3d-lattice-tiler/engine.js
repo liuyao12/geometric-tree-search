@@ -256,6 +256,71 @@ export const createTilingStream = (() => {
     let faceCounter = 0;
     let nodeCounter = 0;
     const nowId = () => (++nodeCounter);
+    const searchStats = {
+      forced_total: 0,
+      branch_choices_visited: 0,
+      failed_leaves: 0,
+      backtracks: 0,
+      max_depth: 0
+    };
+    const branchStack = [];
+    const capCount = (value) => Math.min(1e12, Math.max(0, value));
+    const setBranchCursor = (depth, width, nextIndex) => {
+      const safeWidth = Math.max(1, width | 0);
+      const safeIndex = Math.max(0, Math.min(safeWidth, nextIndex | 0));
+      branchStack.length = depth + 1;
+      branchStack[depth] = { width: safeWidth, next_index: safeIndex };
+      searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
+    };
+    const estimateBranchProgress = () => {
+      const active = branchStack.filter(Boolean);
+      if (!active.length) {
+        return {
+          depth: 0,
+          completed: 1,
+          total: 1,
+          percent: 100,
+          widths: [],
+          next_indices: []
+        };
+      }
+
+      const suffixProducts = new Array(active.length + 1).fill(1);
+      for (let i = active.length - 1; i >= 0; i--) {
+        suffixProducts[i] = capCount(suffixProducts[i + 1] * active[i].width);
+      }
+
+      let completed = 0;
+      for (let i = 0; i < active.length; i++) {
+        completed = capCount(completed + active[i].next_index * suffixProducts[i + 1]);
+      }
+      const total = Math.max(1, Math.round(suffixProducts[0]));
+      const roundedCompleted = Math.max(0, Math.min(total, Math.round(completed)));
+      return {
+        depth: active.length,
+        completed: roundedCompleted,
+        total,
+        percent: Math.min(100, (roundedCompleted / total) * 100),
+        widths: active.map(item => item.width),
+        next_indices: active.map(item => item.next_index)
+      };
+    };
+    const searchStatsSnapshot = () => {
+      const forcedOnPath = state.placements.reduce((sum, placement) => sum + (placement.is_forced ? 1 : 0), 0);
+      const branchProgress = estimateBranchProgress();
+      return {
+        ...searchStats,
+        forced_on_path: forcedOnPath,
+        progress_depth: branchProgress.depth,
+        progress_completed_paths: branchProgress.completed,
+        progress_total_paths: branchProgress.total,
+        branch_widths: branchProgress.widths,
+        branch_next_indices: branchProgress.next_indices,
+        visited_nodes: branchProgress.completed,
+        estimated_nodes_at_depth: branchProgress.total,
+        visited_percent: branchProgress.percent
+      };
+    };
 
     const branchSet = (parent, branches) => ({ type: "branch_set", parent, branches });
     const nodeStatus = (id, status, append_text = "", extra = {}) =>
@@ -273,6 +338,7 @@ export const createTilingStream = (() => {
     const cloneSnapshot = (snap) => ({
       ...snap,
       frontier_stats: snap.frontier_stats ? { ...snap.frontier_stats } : snap.frontier_stats,
+      search_stats: snap.search_stats ? { ...snap.search_stats } : snap.search_stats,
       tile_counts: (snap.tile_counts ?? []).map(item => ({ ...item })),
       faces: (snap.faces ?? []).map(face => ({
         ...face,
@@ -316,7 +382,8 @@ export const createTilingStream = (() => {
         tile_counts: [...countMap.values()].sort((a, b) => a.type_idx - b.type_idx),
         faces,
         node_id,
-        frontier_stats: calculateFrontierStats()
+        frontier_stats: calculateFrontierStats(),
+        search_stats: searchStatsSnapshot()
       };
       recordBestSnapshot(snap);
       return snap;
@@ -582,7 +649,7 @@ export const createTilingStream = (() => {
       return c;
     };
 
-    async function* search(parentId) {
+    async function* search(parentId, depth = 0) {
       if (stopToken.stop) return false;
       if (overBudget()) {
         yield nodeStatus(parentId, "fail", budgetText());
@@ -625,7 +692,11 @@ export const createTilingStream = (() => {
           if (!state.frontier.has(f)) continue;
           const cands = await getCandidatesForFace(f, 2);
           if (overBudget()) { yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
-          if (cands.length === 0) { yield nodeStatus(parentId, "fail"); return yield* doReturn(false); }
+          if (cands.length === 0) {
+            searchStats.failed_leaves += 1;
+            yield nodeStatus(parentId, "fail");
+            return yield* doReturn(false);
+          }
           if (cands.length === 1) {
             const mv = cands[0];
             const gVerts = mv.orient.verts.map(v => add3(v, mv.translation));
@@ -636,6 +707,8 @@ export const createTilingStream = (() => {
             }
             const newGen = coveredGens.length ? (Math.min(...coveredGens) + 1) : 0;
             if (newGen <= preForcedStats.min_gen + 2) {
+              mv.is_forced = true;
+              searchStats.forced_total += 1;
               const rb = applyMove(mv);
               candidateCache.clear();
               forcedBatch.push([mv, rb]);
@@ -689,7 +762,11 @@ export const createTilingStream = (() => {
         }
       }
 
-      if (!bestFace) { yield nodeStatus(parentId, "fail", "Dead End"); return yield* doReturn(false); }
+      if (!bestFace) {
+        searchStats.failed_leaves += 1;
+        yield nodeStatus(parentId, "fail", "Dead End");
+        return yield* doReturn(false);
+      }
 
       let bestMoves = (await cachedCandidates(bestFace)).sort((a, b) => moveCoverage(b) - moveCoverage(a));
       if (!exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
@@ -697,6 +774,7 @@ export const createTilingStream = (() => {
       }
       const payload = bestMoves.map(() => { const id = nowId(); return { id, text: "" }; });
       for (let i = 0; i < bestMoves.length; i++) bestMoves[i].node_id = payload[i].id;
+      setBranchCursor(depth, bestMoves.length, 0);
       
       yield branchSet(parentId, payload);
 
@@ -708,6 +786,10 @@ export const createTilingStream = (() => {
           return yield* doReturn(false);
         }
         const mv = bestMoves[i];
+        mv.is_forced = false;
+        setBranchCursor(depth, bestMoves.length, i);
+        searchStats.branch_choices_visited += 1;
+        searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
         const rb = applyMove(mv);
         const postMoveStats = calculateFrontierStats();
         
@@ -719,15 +801,17 @@ export const createTilingStream = (() => {
           yield nodeSnapshot(mv.node_id);
         }
 
-        const child = yield* search(mv.node_id);
+        const child = yield* search(mv.node_id, depth + 1);
         if (child) {
           anySuccess = true;
           yield nodeStatus(mv.node_id, "success");
           if (!exhaustive) return yield* doReturn(true);
         } else {
+          searchStats.backtracks += 1;
           yield nodeStatus(mv.node_id, "fail");
         }
         undoMove(mv, rb);
+        setBranchCursor(depth, bestMoves.length, i + 1);
       }
 
       if (anySuccess && exhaustive) { yield nodeStatus(parentId, "success"); return yield* doReturn(true); }
@@ -743,6 +827,7 @@ export const createTilingStream = (() => {
     yield {
       type: "finished",
       tile_count: finalSnapshot.tile_count,
+      search_stats: finalSnapshot.search_stats,
       success,
       best_effort: !success && (finalSnapshot.tile_count ?? 0) > state.placements.length
     };

@@ -12,7 +12,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260605-selected-icons-edge-fix-2">
+  <link rel="stylesheet" href="./style.css?v=20260605-worker-playground">
 </head>
 <body>
   <div class="app-shell">
@@ -23,11 +23,6 @@
       </header>
 
       <section class="control-panel">
-        <div class="field">
-          <span>Selected figures</span>
-          <div id="selectedFigures" class="selected-figures"></div>
-        </div>
-
         <div class="field">
           <span>Goal</span>
           <div class="segmented">
@@ -76,11 +71,6 @@
           </label>
           <label><input id="mirrorCheckbox" type="checkbox"><span>Mirror tiles</span></label>
           <label><input id="exhaustiveCheckbox" type="checkbox"><span>Exhaustive</span></label>
-        </div>
-
-        <div class="check-grid">
-          <label><input id="internalCheckbox" type="checkbox"><span>Internal faces</span></label>
-          <label><input id="edgesCheckbox" type="checkbox" checked><span>Edges</span></label>
           <label><input id="autoFitCheckbox" type="checkbox" checked><span>Auto fit</span></label>
         </div>
 
@@ -90,11 +80,18 @@
         </div>
       </section>
 
+      <section class="selected-tile-panel">
+        <h2>Selected tiles</h2>
+        <div id="selectedTiles" class="selected-tiles"></div>
+      </section>
+
       <section class="metrics">
-        <div class="metric-tile-total"><b id="metricTiles">0</b><span>tiles</span><small id="metricTileBreakdown" class="metric-breakdown"></small></div>
-        <div><b id="metricFrontier">0</b><span>frontier</span></div>
-        <div><b id="metricLayer">0</b><span>layer</span></div>
-        <div><b id="metricNodes">0</b><span>nodes</span></div>
+        <div><b id="metricTiles">0</b><span>tiles</span></div>
+        <div><b id="metricFrontier">0</b><span>frontier faces</span></div>
+        <div><b id="metricLayer">0</b><span id="metricLayerDetail">lowest layer</span></div>
+        <div><b id="metricForced">0</b><span>forced moves</span></div>
+        <div><b id="metricBacktracks">0</b><span>backtracks</span></div>
+        <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
       </section>
 
       <section class="tile-panel">
@@ -105,20 +102,17 @@
           </div>
         </div>
 
-        <h2>Custom polycube</h2>
-        <div class="custom-builder">
-          <div class="builder-topline">
-            <label><input id="customPolycubeCheckbox" type="checkbox"><span>Include</span></label>
-            <input id="customNameInput" type="text" value="Custom polycube">
-          </div>
-          <div id="customShapeMatch" class="custom-shape-match"></div>
-          <div id="polycubeBuilder" class="polycube-builder"></div>
-          <div class="builder-tools">
-            <button id="clearBuilderButton" type="button">Clear</button>
-          </div>
+        <div class="custom-builder-launch">
+          <button id="customBuilderButton" type="button">Custom polycube</button>
         </div>
 
-        <h2>Tile opacity</h2>
+        <div class="opacity-header">
+          <h2>Tile opacity</h2>
+          <div class="display-toggles">
+            <label><input id="internalCheckbox" type="checkbox"><span>Internal faces</span></label>
+            <label><input id="edgesCheckbox" type="checkbox" checked><span>Edges</span></label>
+          </div>
+        </div>
         <div id="tileList" class="tile-list"></div>
       </section>
     </aside>
@@ -137,6 +131,26 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260605-selected-icons-edge-fix-2"></script>
+  <dialog id="customBuilderDialog" class="custom-builder-dialog">
+    <div class="custom-builder-dialog-shell">
+      <div class="custom-builder-dialog-header">
+        <h2>Custom polycube</h2>
+        <button id="closeBuilderButton" type="button" aria-label="Close custom polycube builder">x</button>
+      </div>
+      <div class="custom-builder">
+        <div class="builder-topline">
+          <label><input id="customPolycubeCheckbox" type="checkbox"><span>Include</span></label>
+          <input id="customNameInput" type="text" value="Custom polycube">
+        </div>
+        <div id="customShapeMatch" class="custom-shape-match"></div>
+        <div id="polycubeBuilder" class="polycube-builder"></div>
+        <div class="builder-tools">
+          <button id="clearBuilderButton" type="button">Clear</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="./app.js?v=20260605-worker-playground"></script>
 </body>
 </html>
