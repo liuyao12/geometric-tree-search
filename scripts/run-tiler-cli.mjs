@@ -46,6 +46,8 @@ Options:
   --criterion <count|layer>       Goal type. Default: count.
   --target <n>                    Target tile count or layer. Default: 80.
   --snapshot-every <n>            Engine snapshot cadence. Default: 10.
+  --move-order <name>             coverage, repeat, periodic, layer, or balanced. Default: coverage.
+  --face-order <name>             coverage or constrained. Default: coverage.
   --branch-cap <n>                Branch cap; 0 means uncapped. Default: 0.
   --node-limit <n>                Node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
@@ -54,6 +56,8 @@ Options:
   --include-mirrors               Include mirror tiles.
   --exhaustive                    Continue after the first success.
   --trace <path>                  Write compact NDJSON event trace.
+  --branch-details                Include move translations/scores in branch traces.
+  --placement-details             Include placement translations in snapshots.
   --output <path>                 Write JSON summary. Default: stdout.
   --full-snapshots                Include face geometry in trace snapshots.
   --sample-limit <n>              Max curve samples in the summary. Default: 2000.
@@ -67,6 +71,8 @@ function readArgs(argv) {
     criterion: "count",
     target: 80,
     snapshotEvery: 10,
+    moveOrder: "coverage",
+    faceOrder: "coverage",
     branchCap: 0,
     nodeLimit: 0,
     candidateCap: 0,
@@ -75,6 +81,8 @@ function readArgs(argv) {
     includeMirrors: false,
     exhaustive: false,
     fullSnapshots: false,
+    branchDetails: false,
+    placementDetails: false,
     sampleLimit: 2000,
     output: null,
     trace: null,
@@ -109,6 +117,12 @@ function readArgs(argv) {
     } else if (arg === "--snapshot-every") {
       opts.snapshotEvery = Number(next(i, arg));
       i += 1;
+    } else if (arg === "--move-order") {
+      opts.moveOrder = next(i, arg);
+      i += 1;
+    } else if (arg === "--face-order") {
+      opts.faceOrder = next(i, arg);
+      i += 1;
     } else if (arg === "--branch-cap") {
       opts.branchCap = Number(next(i, arg));
       i += 1;
@@ -131,6 +145,10 @@ function readArgs(argv) {
     } else if (arg === "--trace") {
       opts.trace = next(i, arg);
       i += 1;
+    } else if (arg === "--branch-details") {
+      opts.branchDetails = true;
+    } else if (arg === "--placement-details") {
+      opts.placementDetails = true;
     } else if (arg === "--output") {
       opts.output = next(i, arg);
       i += 1;
@@ -164,7 +182,8 @@ function compactSnapshot(message, includeFaces = false) {
     tile_counts: message.tile_counts ?? [],
     frontier_stats: message.frontier_stats ?? null,
     search_stats: message.search_stats ?? null,
-    face_count: message.faces?.length ?? 0
+    face_count: message.faces?.length ?? 0,
+    placements: message.placements
   };
   if (includeFaces) base.faces = message.faces ?? [];
   return base;
@@ -188,7 +207,14 @@ function compactEvent(message, includeFaces = false) {
         id: branch.id,
         text: branch.text ?? "",
         is_forced: !!branch.is_forced,
-        frontier_stats: branch.frontier_stats ?? null
+        frontier_stats: branch.frontier_stats ?? null,
+        prototile_idx: branch.prototile_idx,
+        translation: branch.translation,
+        coverage: branch.coverage,
+        same_root_orientation: branch.same_root_orientation,
+        periodic_continuation: branch.periodic_continuation,
+        score: branch.score,
+        preview_frontier_stats: branch.preview_frontier_stats
       }))
     };
   }
@@ -231,6 +257,10 @@ function makeConfig(figures, opts) {
     exhaustive: opts.exhaustive,
     include_mirrors: opts.includeMirrors,
     snapshot_every: Number.isFinite(opts.snapshotEvery) ? opts.snapshotEvery : 10,
+    move_order: opts.moveOrder,
+    face_order: opts.faceOrder,
+    branch_details: opts.branchDetails,
+    placement_details: opts.placementDetails,
     branch_cap: finitePositive(opts.branchCap),
     node_limit: finitePositive(opts.nodeLimit),
     candidate_cap: finitePositive(opts.candidateCap),
@@ -271,6 +301,12 @@ async function main() {
   }
 
   if (!["count", "layer"].includes(opts.criterion)) throw new Error("--criterion must be count or layer");
+  if (!["coverage", "repeat", "periodic", "layer", "balanced"].includes(opts.moveOrder)) {
+    throw new Error("--move-order must be coverage, repeat, periodic, layer, or balanced");
+  }
+  if (!["coverage", "constrained"].includes(opts.faceOrder)) {
+    throw new Error("--face-order must be coverage or constrained");
+  }
   if (!Number.isFinite(opts.target) || opts.target <= 0) throw new Error("--target must be positive");
 
   const figures = resolveFigures(tileSpecs, opts.figures);

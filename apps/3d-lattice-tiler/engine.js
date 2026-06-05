@@ -106,6 +106,11 @@ export const createTilingStream = (() => {
       }
       return out;
     })();
+    prototiles.forEach((tile, prototileIndex) => {
+      tile.unique_orientations?.forEach((orient, orientIndex) => {
+        orient.__orientation_id = `${prototileIndex}:${orientIndex}`;
+      });
+    });
 
     const tileSignature = prototiles.map(t => t.name).join("||");
     const modeCacheKey = config.custom_system ? `custom:${JSON.stringify(config.custom_system)}` : mode_key;
@@ -374,6 +379,7 @@ export const createTilingStream = (() => {
     const targetVal = Math.max(1, +config.target_val || 50);
     const rawSnapshotEvery = +config.snapshot_every;
     const snapshotEvery = rawSnapshotEvery <= 0 ? Infinity : Math.max(1, rawSnapshotEvery || 1);
+    const placementDetails = !!config.placement_details;
     const shouldSnapshot = (force = false) =>
       force || (Number.isFinite(snapshotEvery) &&
         (snapshotEvery <= 1 || state.placements.length <= 2 || state.placements.length % snapshotEvery === 0));
@@ -384,6 +390,10 @@ export const createTilingStream = (() => {
       frontier_stats: snap.frontier_stats ? { ...snap.frontier_stats } : snap.frontier_stats,
       search_stats: snap.search_stats ? { ...snap.search_stats } : snap.search_stats,
       tile_counts: (snap.tile_counts ?? []).map(item => ({ ...item })),
+      placements: (snap.placements ?? []).map(item => ({
+        ...item,
+        translation: item.translation?.slice()
+      })),
       faces: (snap.faces ?? []).map(face => ({
         ...face,
         v: (face.v ?? []).map(vertex => vertex.slice())
@@ -429,6 +439,16 @@ export const createTilingStream = (() => {
         frontier_stats: calculateFrontierStats(),
         search_stats: searchStatsSnapshot()
       };
+      if (placementDetails) {
+        snap.placements = state.placements.map((placement, index) => ({
+          index,
+          prototile_idx: placement.prototile_idx ?? 0,
+          name: treeTileName(prototiles[placement.prototile_idx ?? 0]?.name),
+          translation: placement.translation?.slice() ?? [0, 0, 0],
+          orientation_id: placement.orient?.__orientation_id ?? null,
+          is_forced: !!placement.is_forced
+        }));
+      }
       recordBestSnapshot(snap);
       return snap;
     };
@@ -672,6 +692,9 @@ export const createTilingStream = (() => {
     const nodeLimit = Math.max(1, +config.node_limit || Infinity);
     const candidateCap = Math.max(1, +config.candidate_cap || Infinity);
     const timeLimitMs = Math.max(1, +config.time_limit_ms || Infinity);
+    const moveOrder = config.move_order ?? "coverage";
+    const faceOrder = config.face_order ?? "coverage";
+    const branchDetails = !!config.branch_details;
     const startedAt = performance.now();
     const safetyMax = 2000;
     const overNodeLimit = () => Number.isFinite(nodeLimit) && nodeCounter >= nodeLimit;
@@ -692,6 +715,91 @@ export const createTilingStream = (() => {
       m._coverage = c;
       return c;
     };
+    const rootOrientations = prototiles.map(t => t.unique_orientations?.[0] ?? null);
+    const sameRootOrientation = (move) => move.orient === rootOrientations[move.prototile_idx] ? 1 : 0;
+    const vecSub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+    const vecNeg = (a) => [-a[0], -a[1], -a[2]];
+    const vecKey = (a) => a.join(",");
+    let translationCacheSize = -1;
+    let translationCache = new Map();
+    const observedTranslations = () => {
+      if (translationCacheSize === state.placements.length) return translationCache;
+      const byFrame = new Map();
+      const out = new Map();
+      for (const placement of state.placements) {
+        const frame = `${placement.prototile_idx}::${placement.orient.__orientation_id ?? ""}`;
+        if (!byFrame.has(frame)) byFrame.set(frame, []);
+        byFrame.get(frame).push(placement.translation);
+      }
+      for (const [frame, translations] of byFrame.entries()) {
+        const vectors = new Set();
+        for (let i = 0; i < translations.length; i++) {
+          for (let j = i + 1; j < translations.length; j++) {
+            const v = vecSub(translations[j], translations[i]);
+            vectors.add(vecKey(v));
+            vectors.add(vecKey(vecNeg(v)));
+          }
+        }
+        out.set(frame, vectors);
+      }
+      translationCacheSize = state.placements.length;
+      translationCache = out;
+      return translationCache;
+    };
+    const periodicContinuation = (move) => {
+      const frame = `${move.prototile_idx}::${move.orient.__orientation_id ?? ""}`;
+      const seen = observedTranslations().get(frame);
+      if (!seen?.size) return 0;
+      for (const placement of state.placements) {
+        if (placement.prototile_idx !== move.prototile_idx || placement.orient !== move.orient) continue;
+        if (seen.has(vecKey(vecSub(move.translation, placement.translation)))) return 1;
+      }
+      return 0;
+    };
+    const previewMoveStats = (move) => {
+      const rb = applyMove(move);
+      const stats = calculateFrontierStats();
+      undoMove(move, rb);
+      return stats;
+    };
+    const moveScore = (move) => {
+      const coverage = moveCoverage(move);
+      const repeat = sameRootOrientation(move);
+      const periodic = periodicContinuation(move);
+      if (moveOrder === "periodic") return [periodic, repeat, coverage];
+      if (moveOrder === "repeat") return [repeat, coverage];
+      if (moveOrder === "layer" || moveOrder === "balanced") {
+        if (!move._preview_stats) move._preview_stats = previewMoveStats(move);
+        const stats = move._preview_stats;
+        return [
+          stats.min_gen,
+          -stats.count,
+          -stats.total_faces,
+          moveOrder === "balanced" ? repeat : 0,
+          moveOrder === "balanced" ? periodic : 0,
+          coverage
+        ];
+      }
+      return [coverage, repeat];
+    };
+    const compareMoves = (a, b) => {
+      const as = moveScore(a);
+      const bs = moveScore(b);
+      for (let i = 0; i < Math.max(as.length, bs.length); i++) {
+        const diff = (bs[i] ?? 0) - (as[i] ?? 0);
+        if (diff) return diff;
+      }
+      return 0;
+    };
+    const describeMove = (move) => branchDetails ? {
+      prototile_idx: move.prototile_idx,
+      translation: move.translation,
+      coverage: moveCoverage(move),
+      same_root_orientation: sameRootOrientation(move),
+      periodic_continuation: periodicContinuation(move),
+      score: moveScore(move),
+      preview_frontier_stats: move._preview_stats ?? null
+    } : {};
 
     async function* search(parentId, depth = 0) {
       if (stopToken.stop) return false;
@@ -791,12 +899,20 @@ export const createTilingStream = (() => {
       
       let bestFace = null;
       if (minGenFaces.length) {
-        let bestCoverage = -1;
+        let bestFaceScore = null;
         for (const f of minGenFaces) {
           await yieldToBrowser();
           const moves = await cachedCandidates(f);
           if (!moves.length) continue;
-          for (const m of moves) { const c = moveCoverage(m); if (c > bestCoverage) { bestCoverage = c; bestFace = f; } }
+          let bestCoverage = -1;
+          for (const m of moves) bestCoverage = Math.max(bestCoverage, moveCoverage(m));
+          const score = faceOrder === "constrained"
+            ? [-moves.length, bestCoverage]
+            : [bestCoverage, -moves.length];
+          if (!bestFaceScore || score[0] > bestFaceScore[0] || (score[0] === bestFaceScore[0] && score[1] > bestFaceScore[1])) {
+            bestFaceScore = score;
+            bestFace = f;
+          }
         }
         if (!bestFace) {
           for (const f of minGenFaces) {
@@ -812,11 +928,11 @@ export const createTilingStream = (() => {
         return yield* doReturn(false);
       }
 
-      let bestMoves = (await cachedCandidates(bestFace)).sort((a, b) => moveCoverage(b) - moveCoverage(a));
+      let bestMoves = (await cachedCandidates(bestFace)).sort(compareMoves);
       if (!exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
         bestMoves = bestMoves.slice(0, branchCap);
       }
-      const payload = bestMoves.map(() => { const id = nowId(); return { id, text: "" }; });
+      const payload = bestMoves.map(move => ({ id: nowId(), text: "", ...describeMove(move) }));
       for (let i = 0; i < bestMoves.length; i++) bestMoves[i].node_id = payload[i].id;
       setBranchCursor(depth, bestMoves.length, 0);
       

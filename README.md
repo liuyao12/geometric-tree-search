@@ -61,10 +61,21 @@ Useful options:
 
 - `--list-figures` prints figure ids and names.
 - `--criterion layer --target 4` switches from tile count to target layers.
+- `--move-order repeat` tries same-orientation placements first.
+- `--move-order periodic` prefers placements that continue a spacing already
+  seen between same-orientation copies of the tile.
+- `--move-order layer` prioritizes moves that advance the earliest frontier
+  layer; `balanced` combines that with same-orientation and periodic preference.
+- `--face-order constrained` chooses the earliest frontier face with the fewest
+  legal fillings before ordering the moves for that face.
 - `--wall-time-ms 120000` stops gracefully after two minutes and still writes a
   best-effort JSON summary.
 - `--trace` writes compact NDJSON events that can be inspected or summarized by
   scripts without rendering images.
+- `--branch-details` adds candidate translations and heuristic scores to branch
+  events in the trace.
+- `--placement-details` adds the current placement translations and orientations
+  to snapshots.
 
 ## Repository Shape
 
