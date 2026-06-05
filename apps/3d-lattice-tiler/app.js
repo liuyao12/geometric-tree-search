@@ -563,19 +563,20 @@ function stopActiveRunAfterSelectionChange() {
     pausedConfigKey = null;
   }
   isFinished = false;
+  resetRunView();
   setStatus(hasRunnableSelection() ? "Ready" : "Choose a figure or enable the custom polycube.");
   setRunButton();
 }
 
 function handleFigureSelectionChanged() {
   applyModeDefaults();
-  refreshFigureSelectionUI();
   stopActiveRunAfterSelectionChange();
+  refreshFigureSelectionUI();
 }
 
 function handleCustomPolycubeChanged() {
-  refreshFigureSelectionUI();
   stopActiveRunAfterSelectionChange();
+  refreshFigureSelectionUI();
 }
 
 function renderSystemTileList() {
