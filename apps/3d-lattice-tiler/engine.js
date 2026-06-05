@@ -275,11 +275,16 @@ export const createTilingStream = (() => {
     const estimateBranchProgress = () => {
       const active = branchStack.filter(Boolean);
       if (!active.length) {
+        const forcedOnlyProgress =
+          searchStats.forced_total > 0
+          && searchStats.branch_choices_visited === 0
+          && searchStats.backtracks === 0
+          && searchStats.failed_leaves === 0;
         return {
           depth: 0,
-          completed: 1,
+          completed: forcedOnlyProgress ? 1 : 0,
           total: 1,
-          percent: 100,
+          percent: forcedOnlyProgress ? 100 : 0,
           widths: [],
           next_indices: []
         };
