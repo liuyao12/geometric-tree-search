@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-pocket-order";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-crystal-order";
 
 const SNAPSHOT_INTERVAL_MS = 80;
 

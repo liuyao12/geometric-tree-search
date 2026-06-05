@@ -725,6 +725,7 @@ export const createTilingStream = (() => {
     const vecAdd = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
     const vecEq = (a, b) => a[0] === b[0] && a[1] === b[1] && a[2] === b[2];
     const vecKey = (a) => a.join(",");
+    const placementFrame = (placement) => `${placement.prototile_idx}::${placement.orient.__orientation_id ?? ""}`;
     let translationCacheVersion = -1;
     let translationCache = new Map();
     const observedTranslations = () => {
@@ -732,7 +733,7 @@ export const createTilingStream = (() => {
       const byFrame = new Map();
       const out = new Map();
       for (const placement of state.placements) {
-        const frame = `${placement.prototile_idx}::${placement.orient.__orientation_id ?? ""}`;
+        const frame = placementFrame(placement);
         if (!byFrame.has(frame)) byFrame.set(frame, []);
         byFrame.get(frame).push(placement.translation);
       }
@@ -751,8 +752,52 @@ export const createTilingStream = (() => {
       translationCache = out;
       return translationCache;
     };
+    let pairTranslationCacheVersion = -1;
+    let pairTranslationCache = new Map();
+    let vectorCountCacheVersion = -1;
+    let vectorCountCache = new Map();
+    let positionSetCacheVersion = -1;
+    let positionSetCache = new Set();
+    const observedPairTranslations = () => {
+      if (pairTranslationCacheVersion === stateVersion) return pairTranslationCache;
+      const out = new Map();
+      for (let i = 0; i < state.placements.length; i++) {
+        const a = state.placements[i];
+        const aFrame = placementFrame(a);
+        for (let j = 0; j < state.placements.length; j++) {
+          if (i === j) continue;
+          const b = state.placements[j];
+          const key = `${aFrame}=>${placementFrame(b)}`;
+          if (!out.has(key)) out.set(key, new Set());
+          out.get(key).add(vecKey(vecSub(b.translation, a.translation)));
+        }
+      }
+      pairTranslationCacheVersion = stateVersion;
+      pairTranslationCache = out;
+      return pairTranslationCache;
+    };
+    const observedVectorCounts = () => {
+      if (vectorCountCacheVersion === stateVersion) return vectorCountCache;
+      const out = new Map();
+      for (let i = 0; i < state.placements.length; i++) {
+        for (let j = 0; j < state.placements.length; j++) {
+          if (i === j) continue;
+          const key = vecKey(vecSub(state.placements[j].translation, state.placements[i].translation));
+          out.set(key, (out.get(key) ?? 0) + 1);
+        }
+      }
+      vectorCountCacheVersion = stateVersion;
+      vectorCountCache = out;
+      return vectorCountCache;
+    };
+    const placementPositionSet = () => {
+      if (positionSetCacheVersion === stateVersion) return positionSetCache;
+      positionSetCache = new Set(state.placements.map(placement => vecKey(placement.translation)));
+      positionSetCacheVersion = stateVersion;
+      return positionSetCache;
+    };
     const periodicContinuation = (move) => {
-      const frame = `${move.prototile_idx}::${move.orient.__orientation_id ?? ""}`;
+      const frame = placementFrame(move);
       const seen = observedTranslations().get(frame);
       if (!seen?.size) return 0;
       for (const placement of state.placements) {
@@ -760,6 +805,50 @@ export const createTilingStream = (() => {
         if (seen.has(vecKey(vecSub(move.translation, placement.translation)))) return 1;
       }
       return 0;
+    };
+    const pairPeriodicContinuation = (move) => {
+      const targetFrame = placementFrame(move);
+      const pairs = observedPairTranslations();
+      if (!pairs.size) return 0;
+      const hits = new Set();
+      for (const placement of state.placements) {
+        const key = `${placementFrame(placement)}=>${targetFrame}`;
+        const seen = pairs.get(key);
+        if (!seen?.size) continue;
+        const delta = vecKey(vecSub(move.translation, placement.translation));
+        if (seen.has(delta)) hits.add(`${key}::${delta}`);
+      }
+      return hits.size;
+    };
+    const vectorRepeatScore = (move) => {
+      const counts = observedVectorCounts();
+      if (!counts.size) return 0;
+      const hits = new Set();
+      for (const placement of state.placements) {
+        const delta = vecKey(vecSub(move.translation, placement.translation));
+        if (counts.has(delta)) hits.add(delta);
+      }
+      return hits.size;
+    };
+    const parallelogramCompletionScore = (move) => {
+      const positions = placementPositionSet();
+      if (positions.size < 3) return 0;
+      const translations = state.placements.map(placement => placement.translation);
+      const hits = new Set();
+      for (let i = 0; i < translations.length; i++) {
+        for (let j = i + 1; j < translations.length; j++) {
+          const fourth = vecSub(vecAdd(translations[i], translations[j]), move.translation);
+          const fourthKey = vecKey(fourth);
+          if (!positions.has(fourthKey)) continue;
+          const key = [
+            vecKey(translations[i]),
+            vecKey(translations[j]),
+            fourthKey
+          ].sort().join("|");
+          hits.add(key);
+        }
+      }
+      return hits.size;
     };
     const axisNormalForFace = (verts) => {
       if (!verts || verts.length < 3) return null;
@@ -889,21 +978,32 @@ export const createTilingStream = (() => {
     };
     const moveScore = (move) => {
       const coverage = moveCoverage(move);
-      const repeat = sameRootOrientation(move);
-      const periodic = periodicContinuation(move);
+      const repeat = () => sameRootOrientation(move);
+      const periodic = () => periodicContinuation(move);
+      const pairPeriodic = () => pairPeriodicContinuation(move);
+      const vectorRepeat = () => vectorRepeatScore(move);
+      const parallelogram = () => parallelogramCompletionScore(move);
       if (moveOrder === "symmetric") {
         const symmetry = previewMoveSymmetry(move);
         return [
           symmetry.score,
           symmetry.best_ratio,
           symmetry.balance,
-          periodic,
-          repeat,
+          periodic(),
+          repeat(),
           coverage
         ];
       }
-      if (moveOrder === "periodic") return [periodic, repeat, coverage];
-      if (moveOrder === "repeat") return [repeat, coverage];
+      if (moveOrder === "crystal") return [
+        parallelogram(),
+        vectorRepeat(),
+        pairPeriodic(),
+        periodic(),
+        repeat(),
+        coverage
+      ];
+      if (moveOrder === "periodic") return [periodic(), repeat(), coverage];
+      if (moveOrder === "repeat") return [repeat(), coverage];
       if (moveOrder === "layer" || moveOrder === "balanced") {
         if (!move._preview_stats) move._preview_stats = previewMoveStats(move);
         const stats = move._preview_stats;
@@ -914,12 +1014,13 @@ export const createTilingStream = (() => {
           -stats.total_faces,
           moveOrder === "balanced" ? symmetry.score : 0,
           moveOrder === "balanced" ? symmetry.best_ratio : 0,
-          moveOrder === "balanced" ? repeat : 0,
-          moveOrder === "balanced" ? periodic : 0,
+          moveOrder === "balanced" ? repeat() : 0,
+          moveOrder === "balanced" ? pairPeriodic() : 0,
+          moveOrder === "balanced" ? periodic() : 0,
           coverage
         ];
       }
-      return [coverage, repeat];
+      return [coverage, repeat()];
     };
     const compareMoves = (a, b) => {
       const as = moveScore(a);
@@ -944,11 +1045,285 @@ export const createTilingStream = (() => {
       coverage: moveCoverage(move),
       same_root_orientation: sameRootOrientation(move),
       periodic_continuation: periodicContinuation(move),
+      pair_periodic_continuation: pairPeriodicContinuation(move),
+      vector_repeat: vectorRepeatScore(move),
+      parallelogram_completion: parallelogramCompletionScore(move),
       target_face_pocket: move._target_face_pocket ?? null,
       symmetry: move._symmetry_info ?? null,
       score: moveScore(move),
       preview_frontier_stats: move._preview_stats ?? null
     } : {};
+
+    const cellCoord = (pos) => {
+      const out = pos.map(value => (value - 1) / 2);
+      return out.every(Number.isInteger) ? out : null;
+    };
+    const modulo = (value, size) => ((value % size) + size) % size;
+    const polycubeSeedData = () => {
+      if (prototiles.length !== 1) return null;
+      const tile = prototiles[0];
+      const shapes = [];
+      const minPeriod = [1, 1, 1];
+      for (let orientIndex = 0; orientIndex < tile.unique_orientations.length; orientIndex++) {
+        const orient = tile.unique_orientations[orientIndex];
+        const start = orient.verts[0].map(value => -value);
+        const cells = [];
+        for (const pt of orient.occupancy) {
+          if (pt.weight !== MAX_SOLID_ANGLE) continue;
+          const shifted = add3(pt.pos, start);
+          const c = cellCoord(shifted);
+          if (!c) return null;
+          cells.push(c);
+        }
+        const unique = new Set(cells.map(vecKey));
+        if (!cells.length || unique.size !== cells.length) return null;
+        for (let axis = 0; axis < 3; axis++) {
+          const values = cells.map(c => c[axis]);
+          minPeriod[axis] = Math.max(minPeriod[axis], Math.max(...values) - Math.min(...values) + 1);
+        }
+        shapes.push({ orientIndex, orient, start, cells });
+      }
+      const rootCellCount = shapes[0]?.cells.length ?? 0;
+      if (!rootCellCount || rootCellCount > 30) return null;
+      return { shapes, cellCount: rootCellCount, minPeriod };
+    };
+    const torusPlacementCells = (shape, shift, dims) => {
+      const out = [];
+      const seen = new Set();
+      for (const cell of shape.cells) {
+        const wrapped = [
+          modulo(cell[0] + shift[0], dims[0]),
+          modulo(cell[1] + shift[1], dims[1]),
+          modulo(cell[2] + shift[2], dims[2])
+        ];
+        const key = vecKey(wrapped);
+        if (seen.has(key)) return null;
+        seen.add(key);
+        out.push(key);
+      }
+      return out;
+    };
+    const solvePeriodicPolycubeCell = () => {
+      const seed = polycubeSeedData();
+      if (!seed) return null;
+      const { shapes, cellCount, minPeriod } = seed;
+      const started = performance.now();
+      const timeLimitMs = Math.max(50, +config.crystal_seed_time_ms || 1200);
+      const maxNodes = Math.max(1000, +config.crystal_seed_node_limit || 500000);
+      let nodesUsed = 0;
+      const dimsList = [];
+      for (let x = minPeriod[0]; x <= 8; x++) {
+        for (let y = minPeriod[1]; y <= 8; y++) {
+          for (let z = minPeriod[2]; z <= 8; z++) {
+            const volume = x * y * z;
+            if (volume % cellCount !== 0) continue;
+            const tileCount = volume / cellCount;
+            if (tileCount < 2 || tileCount > 32) continue;
+            dimsList.push([x, y, z]);
+          }
+        }
+      }
+      dimsList.sort((a, b) => {
+        const av = a[0] * a[1] * a[2], bv = b[0] * b[1] * b[2];
+        if (av !== bv) return av - bv;
+        return Math.max(...a) - Math.max(...b);
+      });
+
+      const solveDims = (dims) => {
+        const [dx, dy, dz] = dims;
+        const allCells = [];
+        for (let x = 0; x < dx; x++) for (let y = 0; y < dy; y++) for (let z = 0; z < dz; z++) allCells.push(`${x},${y},${z}`);
+        const rootCells = torusPlacementCells(shapes[0], [0, 0, 0], dims);
+        if (!rootCells) return null;
+        const rootSet = new Set(rootCells);
+        const placements = [{ shape: shapes[0], shift: [0, 0, 0], cells: rootCells, root: true }];
+        for (const shape of shapes) {
+          for (let x = 0; x < dx; x++) {
+            for (let y = 0; y < dy; y++) {
+              for (let z = 0; z < dz; z++) {
+                if (shape.orientIndex === 0 && x === 0 && y === 0 && z === 0) continue;
+                const cells = torusPlacementCells(shape, [x, y, z], dims);
+                if (!cells || cells.some(cell => rootSet.has(cell))) continue;
+                placements.push({ shape, shift: [x, y, z], cells });
+              }
+            }
+          }
+        }
+        const byCell = new Map(allCells.map(cell => [cell, []]));
+        placements.forEach((placement, index) => {
+          placement.cells.forEach(cell => byCell.get(cell)?.push(index));
+        });
+        const covered = new Set(rootCells);
+        const solution = [placements[0]];
+        const dfs = () => {
+          nodesUsed += 1;
+          if (nodesUsed > maxNodes || performance.now() - started > timeLimitMs) return false;
+          if (covered.size === allCells.length) return true;
+          let bestList = null;
+          for (const cell of allCells) {
+            if (covered.has(cell)) continue;
+            const legal = (byCell.get(cell) ?? []).filter(index =>
+              placements[index].cells.every(candidateCell => !covered.has(candidateCell))
+            );
+            if (!legal.length) return false;
+            if (!bestList || legal.length < bestList.length) {
+              bestList = legal;
+              if (legal.length === 1) break;
+            }
+          }
+          bestList.sort((ia, ib) => {
+            const a = placements[ia], b = placements[ib];
+            return a.shape.orientIndex - b.shape.orientIndex
+              || a.shift[0] - b.shift[0]
+              || a.shift[1] - b.shift[1]
+              || a.shift[2] - b.shift[2];
+          });
+          for (const index of bestList) {
+            const placement = placements[index];
+            if (placement.cells.some(cell => covered.has(cell))) continue;
+            placement.cells.forEach(cell => covered.add(cell));
+            solution.push(placement);
+            if (dfs()) return true;
+            solution.pop();
+            placement.cells.forEach(cell => covered.delete(cell));
+          }
+          return false;
+        };
+        return dfs() ? {
+          dims,
+          nodes: nodesUsed,
+          placements: solution.map(placement => ({
+            orientIndex: placement.shape.orientIndex,
+            orient: placement.shape.orient,
+            start: placement.shape.start,
+            shift: placement.shift.slice(),
+            root: !!placement.root
+          }))
+        } : null;
+      };
+
+      for (const dims of dimsList) {
+        if (performance.now() - started > timeLimitMs || nodesUsed > maxNodes) break;
+        const solved = solveDims(dims);
+        if (solved) return solved;
+      }
+      return null;
+    };
+    const buildPeriodicSeedSequence = (cell) => {
+      if (!cell?.placements?.length) return null;
+      const period = cell.dims.map(size => size * 2);
+      const targetTiles = criterion === "count" ? targetVal : Math.min(safetyMax, targetVal * cell.placements.length * 12);
+      const cellsNeeded = Math.max(1, Math.ceil(targetTiles / cell.placements.length));
+      const repeatRadius = Math.max(1, Math.ceil((Math.cbrt(cellsNeeded) - 1) / 2));
+      const candidates = [];
+      for (let rx = -repeatRadius; rx <= repeatRadius; rx++) {
+        for (let ry = -repeatRadius; ry <= repeatRadius; ry++) {
+          for (let rz = -repeatRadius; rz <= repeatRadius; rz++) {
+            const repeatOffset = [rx * cell.dims[0], ry * cell.dims[1], rz * cell.dims[2]];
+            for (const placement of cell.placements) {
+              if (placement.root && rx === 0 && ry === 0 && rz === 0) continue;
+              const shift = vecAdd(placement.shift, repeatOffset);
+              const translation = vecAdd(placement.start, shift.map(value => value * 2));
+              const distance = translation[0] * translation[0] + translation[1] * translation[1] + translation[2] * translation[2];
+              candidates.push({
+                prototile_idx: 0,
+                orient: placement.orient,
+                translation,
+                is_forced: true,
+                _periodic_seed: true,
+                _periodic_distance: distance,
+                _periodic_cell_dims: cell.dims,
+                _periodic_period: period
+              });
+            }
+          }
+        }
+      }
+      const remaining = new Map();
+      for (const move of candidates) {
+        const key = `${move.orient.__orientation_id ?? ""}::${vecKey(move.translation)}`;
+        if (!remaining.has(key)) remaining.set(key, move);
+      }
+      const sequence = [];
+      const rollbacks = [];
+      while (!goalMet() && state.placements.length < safetyMax && remaining.size) {
+        let bestKey = null;
+        let bestMove = null;
+        let bestScore = null;
+        for (const [key, move] of remaining.entries()) {
+          const validity = isMoveValid(move);
+          if (!validity.ok) continue;
+          delete move._coverage;
+          const coverage = moveCoverage(move);
+          if (coverage <= 0) continue;
+          const score = [coverage, -move._periodic_distance];
+          if (isBetterScore(score, bestScore)) {
+            bestKey = key;
+            bestMove = { ...move, occupancy_data: validity.occData };
+            bestScore = score;
+          }
+        }
+        if (!bestMove) break;
+        remaining.delete(bestKey);
+        const rb = applyMove(bestMove);
+        rollbacks.push([bestMove, rb]);
+        sequence.push(bestMove);
+      }
+      const ok = goalMet();
+      while (rollbacks.length) {
+        const [move, rb] = rollbacks.pop();
+        undoMove(move, rb);
+      }
+      return ok ? sequence : null;
+    };
+    async function* tryPeriodicSeed(parentId) {
+      if (moveOrder !== "crystal" || exhaustive) return false;
+      const cell = solvePeriodicPolycubeCell();
+      if (!cell) {
+        if (branchDetails) yield { type: "periodic_seed_debug", status: "no_cell" };
+        return false;
+      }
+      const sequence = buildPeriodicSeedSequence(cell);
+      if (!sequence?.length) {
+        if (branchDetails) yield { type: "periodic_seed_debug", status: "no_sequence", cell: { dims: cell.dims, nodes: cell.nodes, placements: cell.placements.length } };
+        return false;
+      }
+      if (branchDetails) yield { type: "periodic_seed_debug", status: "sequence", cell: { dims: cell.dims, nodes: cell.nodes, placements: cell.placements.length }, sequence_length: sequence.length };
+      let currentParent = parentId;
+      for (let i = 0; i < sequence.length; i++) {
+        await yieldToBrowser();
+        if (stopToken.stop || overBudget()) return false;
+        const move = sequence[i];
+        const validity = isMoveValid(move);
+        if (!validity.ok) return false;
+        move.occupancy_data = validity.occData;
+        move.is_forced = true;
+        searchStats.forced_total += 1;
+        const nodeId = nowId();
+        setBranchCursor(i, 1, 0);
+        const rb = applyMove(move);
+        move._periodic_rollback = rb;
+        const stats = calculateFrontierStats();
+        yield branchSet(currentParent, [{
+          id: nodeId,
+          text: treeTileName(prototiles[move.prototile_idx].name),
+          is_forced: true,
+          frontier_stats: stats,
+          periodic_cell: cell.dims
+        }]);
+        yield nodeStatus(nodeId, "success", `[${state.placements.length}] periodic cell`, { color_id: move.color_id, frontier_stats: stats });
+        if (shouldSnapshot()) {
+          yield snapshot(nodeId);
+          await tick();
+        } else {
+          yield nodeSnapshot(nodeId);
+        }
+        setBranchCursor(i, 1, 1);
+        currentParent = nodeId;
+        if (goalMet()) return true;
+      }
+      return goalMet();
+    }
 
     async function* search(parentId, depth = 0) {
       if (stopToken.stop) return false;
@@ -1133,7 +1508,7 @@ export const createTilingStream = (() => {
       return yield* doReturn(false);
     }
 
-    const success = yield* search(rootId);
+    const success = (yield* tryPeriodicSeed(rootId)) || (yield* search(rootId));
     yield nodeStatus(rootId, success ? "success" : "fail");
     const finalSnapshot = success ? snapshot(null) : (bestSnapshot ? { ...cloneSnapshot(bestSnapshot), node_id: null } : snapshot(null));
     yield finalSnapshot;
