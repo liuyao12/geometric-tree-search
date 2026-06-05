@@ -1,0 +1,1587 @@
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-selected-icons-edge-fix-2";
+
+const $ = (id) => document.getElementById(id);
+
+const selectedFiguresEl = $("selectedFigures");
+const statusEl = $("status");
+const maxTilesInput = $("maxTilesInput");
+const layerInput = $("layerInput");
+const snapshotSelect = $("snapshotSelect");
+const branchCapInput = $("branchCapInput");
+const nodeCapInput = $("nodeCapInput");
+const candidateCapInput = $("candidateCapInput");
+const timeCapInput = $("timeCapInput");
+const mirrorCheckbox = $("mirrorCheckbox");
+const exhaustiveCheckbox = $("exhaustiveCheckbox");
+const internalCheckbox = $("internalCheckbox");
+const edgesCheckbox = $("edgesCheckbox");
+const autoFitCheckbox = $("autoFitCheckbox");
+const runButton = $("runButton");
+const fitButton = $("fitButton");
+const maxTileField = $("maxTileField");
+const layerField = $("layerField");
+const tileList = $("tileList");
+const systemTileList = $("systemTileList");
+const customPolycubeCheckbox = $("customPolycubeCheckbox");
+const customNameInput = $("customNameInput");
+const customShapeMatch = $("customShapeMatch");
+const polycubeBuilder = $("polycubeBuilder");
+const clearBuilderButton = $("clearBuilderButton");
+const treePanel = $("treePanel");
+const viewport = $("viewport");
+const elapsedTime = $("elapsedTime");
+
+const metricTiles = $("metricTiles");
+const metricTileBreakdown = $("metricTileBreakdown");
+const metricFrontier = $("metricFrontier");
+const metricLayer = $("metricLayer");
+const metricNodes = $("metricNodes");
+
+const prettyNameMap = new Map([
+  ["J15", "Johnson solid J15"],
+  ["Gyro", "Gyro polyhedron"],
+  ["FriaufPoly", "Friauf polyhedron"],
+  ["EscherSolid", "Escher Solid"]
+]);
+
+const prettyName = (name) => prettyNameMap.get(name) ?? name;
+const nextFrame = () => new Promise((resolve) => window.requestAnimationFrame(resolve));
+const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
+const figureCatalog = tileSpecs.figureCatalog ?? [];
+const figureById = new Map();
+for (const figure of figureCatalog) {
+  figureById.set(figure.id, figure);
+  for (const alias of figure.aliases ?? []) figureById.set(alias, figure);
+}
+const defaultFigureId = figureById.has("cube::0") ? "cube::0" : figureCatalog[0]?.id;
+const figureSourceLabel = (figure) => {
+  const names = figure?.system_names ?? (figure?.system_name ? [figure.system_name] : []);
+  if (names.length <= 1) return names[0] ?? "";
+  return `Used in ${names.length} systems`;
+};
+const figureSourceTitle = (figure) => {
+  const names = figure?.system_names ?? (figure?.system_name ? [figure.system_name] : []);
+  return names.join(", ");
+};
+
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.scrollTo({ top: 0, left: 0 });
+
+let stopToken = { stop: false };
+let running = false;
+let paused = false;
+let isFinished = false;
+let runSeq = 0;
+let streamIter = null;
+let pausedConfigKey = null;
+let startedAt = 0;
+
+let lastSnapshot = null;
+let prototileInfo = null;
+let currentOpacities = {};
+let rootCentered = false;
+
+const treeMap = new Map();
+const pendingSnapshots = new Map();
+const expandedNodes = new Set();
+const manuallyExpanded = new Set();
+let selectedNodeId = null;
+let treeRenderQueued = false;
+let needsRender = true;
+let renderWidth = 0;
+let renderHeight = 0;
+let selectedFigureIds = ["cube::0"];
+let builderNeedsRender = true;
+let builderWidth = 0;
+let builderHeight = 0;
+let builderVoxels = new Set(["0,0,0"]);
+let builderHoverKey = null;
+let customNameEdited = false;
+let lastAutoCustomName = customNameInput.value;
+let lastBuilderSignature = null;
+let listedPolycubeShapeMap = null;
+const figureThumbnailCache = new Map();
+const figureTileCache = new Map();
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xedf1ef);
+
+const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 4000);
+camera.position.set(20, 20, 20);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "default" });
+renderer.setClearColor(0xedf1ef, 1);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+viewport.appendChild(renderer.domElement);
+renderer.domElement.addEventListener("wheel", (event) => event.preventDefault(), { passive: false });
+renderer.domElement.addEventListener("webglcontextlost", (event) => {
+  event.preventDefault();
+  setStatus("WebGL context lost; waiting for Chrome to recover...");
+});
+renderer.domElement.addEventListener("webglcontextrestored", () => {
+  setStatus(running ? "Running..." : "Ready");
+  requestRender();
+});
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 0.4;
+controls.maxDistance = 1e6;
+controls.addEventListener("change", requestRender);
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0xcfd9d4, 0.78));
+scene.add(new THREE.AmbientLight(0xffffff, 0.72));
+const keyLight = new THREE.DirectionalLight(0xffffff, 0.95);
+keyLight.position.set(12, 18, 14);
+scene.add(keyLight);
+const fillLight = new THREE.DirectionalLight(0xffffff, 0.46);
+fillLight.position.set(-14, -6, 12);
+scene.add(fillLight);
+const rimLight = new THREE.DirectionalLight(0xffffff, 0.32);
+rimLight.position.set(-10, 14, -16);
+scene.add(rimLight);
+
+let faceGroup = new THREE.Group();
+let edgeGroup = new THREE.Group();
+scene.add(faceGroup, edgeGroup);
+
+const thumbnailRenderer = new THREE.WebGLRenderer({
+  antialias: true,
+  preserveDrawingBuffer: true,
+  powerPreference: "low-power"
+});
+thumbnailRenderer.setPixelRatio(1);
+thumbnailRenderer.setClearColor(0xedf1ef, 1);
+thumbnailRenderer.setSize(180, 135, false);
+
+const builderScene = new THREE.Scene();
+builderScene.background = new THREE.Color(0xedf1ef);
+const builderCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+builderCamera.position.set(5, 5, 5);
+const builderRenderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "default" });
+builderRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+builderRenderer.setClearColor(0xedf1ef, 1);
+polycubeBuilder.appendChild(builderRenderer.domElement);
+const builderControls = new OrbitControls(builderCamera, builderRenderer.domElement);
+builderControls.enableDamping = true;
+builderControls.dampingFactor = 0.08;
+builderControls.addEventListener("change", requestBuilderRender);
+builderScene.add(new THREE.HemisphereLight(0xffffff, 0xcfd9d4, 0.82));
+builderScene.add(new THREE.AmbientLight(0xffffff, 0.78));
+const builderLight = new THREE.DirectionalLight(0xffffff, 1.0);
+builderLight.position.set(5, 8, 6);
+builderScene.add(builderLight);
+const builderFillLight = new THREE.DirectionalLight(0xffffff, 0.44);
+builderFillLight.position.set(-6, 4, -5);
+builderScene.add(builderFillLight);
+const builderGrid = new THREE.GridHelper(8, 8, 0xb9c8c2, 0xd7e0dc);
+builderGrid.position.y = -0.5;
+builderScene.add(builderGrid);
+let builderGroup = new THREE.Group();
+builderScene.add(builderGroup);
+const builderRaycaster = new THREE.Raycaster();
+const builderPointer = new THREE.Vector2();
+const builderCubeGeometry = new THREE.BoxGeometry(0.92, 0.92, 0.92);
+const builderBlockMaterial = new THREE.MeshPhongMaterial({ color: 0x178273, flatShading: true });
+const builderGhostMaterial = new THREE.MeshPhongMaterial({
+  color: 0x315f9f,
+  opacity: 0.35,
+  transparent: true,
+  flatShading: true
+});
+const builderEdgeMaterial = new THREE.LineBasicMaterial({ color: 0x111827, opacity: 0.55, transparent: true });
+const builderEdgeGeometry = new THREE.EdgesGeometry(builderCubeGeometry);
+builderRenderer.domElement.addEventListener("pointermove", handleBuilderPointerMove);
+builderRenderer.domElement.addEventListener("pointerleave", () => {
+  builderHoverKey = null;
+  renderBuilderVoxels();
+});
+builderRenderer.domElement.addEventListener("pointerdown", handleBuilderPointerDown);
+builderRenderer.domElement.addEventListener("contextmenu", (event) => event.preventDefault());
+
+function requestRender() {
+  needsRender = true;
+}
+
+function requestBuilderRender() {
+  builderNeedsRender = true;
+}
+
+function setStatus(text) {
+  statusEl.textContent = text;
+}
+
+function criterion() {
+  return document.querySelector('input[name="criterion"]:checked').value;
+}
+
+function updateCriterionUI() {
+  const byCount = criterion() === "count";
+  maxTileField.classList.toggle("is-hidden", !byCount);
+  layerField.classList.toggle("is-hidden", byCount);
+}
+
+function initFigureSelection() {
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get("figure");
+  const requestedFromTile = params.get("tile");
+  const requestedFigure = requested && figureById.has(requested)
+    ? requested
+    : `${requestedFromTile}::0`;
+  const initialFigure = figureById.get(requestedFigure) ?? figureById.get(defaultFigureId);
+  selectedFigureIds = [initialFigure?.id].filter(Boolean);
+}
+
+function selectedFigures() {
+  return [...new Map(selectedFigureIds.map(id => figureById.get(id)).filter(Boolean).map(figure => [figure.id, figure])).values()];
+}
+
+function rootFigure() {
+  return selectedFigures()[0] ?? null;
+}
+
+function figuresShareFace(a, b) {
+  if (!a || !b) return false;
+  if (a.compatible_ids?.includes(b.id)) return true;
+  if (b.compatible_ids?.includes(a.id)) return true;
+  return false;
+}
+
+function isFigureCompatibleWithSelection(figure) {
+  const selected = selectedFigures();
+  if (!selected.length) return true;
+  if (selected.some(item => item.id === figure.id)) return true;
+  return selected.every(item => figuresShareFace(item, figure));
+}
+
+function updateMirrorAvailability() {
+  const isChiral = selectedFigures().some(figure => figure.is_chiral);
+  mirrorCheckbox.disabled = !isChiral;
+  mirrorCheckbox.parentElement.style.opacity = isChiral ? "1" : "0.45";
+  if (!isChiral) mirrorCheckbox.checked = false;
+}
+
+function applyModeDefaults() {
+  const figure = rootFigure();
+  const defaults = tileSpecs.metadata[figure?.mode_key]?.default_viz ?? {};
+  internalCheckbox.checked = !!defaults.internal;
+  updateMirrorAvailability();
+}
+
+function createTileMeshGroup(tile, colorIndex = 0) {
+  const group = new THREE.Group();
+  const positions = [];
+  const edgePositions = [];
+  const scale = tileSpecs.SCALE;
+
+  for (const face of tile.faces ?? []) {
+    if (face.length < 3) continue;
+    for (let i = 1; i < face.length - 1; i += 1) {
+      pushVertex(positions, tile.verts[face[0]], scale);
+      pushVertex(positions, tile.verts[face[i]], scale);
+      pushVertex(positions, tile.verts[face[i + 1]], scale);
+    }
+    for (let i = 0; i < face.length; i += 1) {
+      pushVertex(edgePositions, tile.verts[face[i]], scale);
+      pushVertex(edgePositions, tile.verts[face[(i + 1) % face.length]], scale);
+    }
+  }
+
+  if (positions.length) {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+    geometry.computeVertexNormals();
+    group.add(new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
+      color: new THREE.Color(tileSpecs.COLOR_PALETTE[colorIndex % tileSpecs.COLOR_PALETTE.length]),
+      side: THREE.DoubleSide,
+      flatShading: true,
+      polygonOffset: true,
+      polygonOffsetFactor: 1,
+      polygonOffsetUnits: 1
+    })));
+  }
+  if (edgePositions.length) {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(edgePositions, 3));
+    group.add(new THREE.LineSegments(geometry, new THREE.LineBasicMaterial({ color: 0x111827 })));
+  }
+  return group;
+}
+
+function tileForFigure(figure) {
+  if (!figure) return null;
+  if (figureTileCache.has(figure.id)) return figureTileCache.get(figure.id);
+  const built = tileSpecs.TILING_REGISTRY[figure?.mode_key]?.build() ?? [];
+  const tile = built[figure?.tile_index] ?? null;
+  figureTileCache.set(figure.id, tile);
+  return tile;
+}
+
+function fitCameraToObject(cameraToFit, controlsToFit, object, padding = 1.8) {
+  const box = new THREE.Box3().setFromObject(object);
+  if (box.isEmpty()) return;
+  const center = new THREE.Vector3();
+  const size = new THREE.Vector3();
+  box.getCenter(center);
+  box.getSize(size);
+  const radius = Math.max(1, size.length() * 0.5);
+  const distance = radius / Math.sin(THREE.MathUtils.degToRad(cameraToFit.fov) / 2) * padding;
+  const offset = new THREE.Vector3(1.3, 1.05, 1.15).normalize().multiplyScalar(distance);
+  controlsToFit.target.copy(center);
+  cameraToFit.position.copy(center).add(offset);
+  cameraToFit.near = Math.max(0.01, radius / 100);
+  cameraToFit.far = Math.max(1000, radius * 80);
+  cameraToFit.updateProjectionMatrix();
+  controlsToFit.update();
+}
+
+function tileThumbnail(tile, cacheKey, colorIndex = 0) {
+  if (figureThumbnailCache.has(cacheKey)) return figureThumbnailCache.get(cacheKey);
+  if (!tile) return "";
+  const sceneForThumb = new THREE.Scene();
+  sceneForThumb.background = new THREE.Color(0xedf1ef);
+  const cameraForThumb = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 1000);
+  const group = createTileMeshGroup(tile, colorIndex);
+  sceneForThumb.add(group);
+  sceneForThumb.add(new THREE.AmbientLight(0xffffff, 0.76));
+  const light = new THREE.DirectionalLight(0xffffff, 0.76);
+  light.position.set(4, 6, 5);
+  sceneForThumb.add(light);
+  const box = new THREE.Box3().setFromObject(group);
+  const center = new THREE.Vector3();
+  const size = new THREE.Vector3();
+  box.getCenter(center);
+  box.getSize(size);
+  const radius = Math.max(0.8, size.length() * 0.5);
+  cameraForThumb.position.copy(center).add(new THREE.Vector3(1.35, 1.05, 1.15).normalize().multiplyScalar(radius * 4.2));
+  cameraForThumb.lookAt(center);
+  cameraForThumb.near = 0.01;
+  cameraForThumb.far = Math.max(100, radius * 50);
+  cameraForThumb.updateProjectionMatrix();
+  thumbnailRenderer.render(sceneForThumb, cameraForThumb);
+  const url = thumbnailRenderer.domElement.toDataURL("image/png");
+  disposeObjectTree(group);
+  figureThumbnailCache.set(cacheKey, url);
+  return url;
+}
+
+function figureThumbnail(figure) {
+  const colorIndex = Math.max(0, figureCatalog.findIndex(item => item.id === figure.id));
+  return tileThumbnail(tileForFigure(figure), `figure:${figure.id}`, colorIndex);
+}
+
+function tileFaceCount(tile) {
+  return tile?.faces?.length ?? 0;
+}
+
+function figureHasCategory(figure, category) {
+  return (figure.category ?? []).includes(category);
+}
+
+function polycubeCubeCount(figure) {
+  if (!figureHasCategory(figure, "Polycubes")) return Infinity;
+  const tile = tileForFigure(figure);
+  const count = (tile?.occupancy_points ?? []).filter(point => point.weight === 48).length;
+  return count || Infinity;
+}
+
+const catalogGroupDefinitions = [
+  { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
+  { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
+  { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
+  { id: "platonic", title: "Platonic solids", test: figure => figureHasCategory(figure, "Platonic Solids") },
+  { id: "sphere", title: "Sphere packings", test: figure => figureHasCategory(figure, "Sphere Packings") },
+  { id: "other", title: "Other", test: () => true }
+];
+
+function catalogGroupForFigure(figure) {
+  return catalogGroupDefinitions.find(group => group.test(figure)) ?? catalogGroupDefinitions.at(-1);
+}
+
+function sortCatalogFigures(groupId, figures) {
+  return figures.slice().sort((a, b) => {
+    if (groupId === "polycubes") {
+      const cubeDelta = polycubeCubeCount(a) - polycubeCubeCount(b);
+      if (cubeDelta !== 0) return cubeDelta;
+    }
+    return prettyName(a.name).localeCompare(prettyName(b.name));
+  });
+}
+
+function groupedCatalogFigures() {
+  const groups = new Map(catalogGroupDefinitions.map(group => [group.id, []]));
+  for (const figure of figureCatalog) {
+    groups.get(catalogGroupForFigure(figure).id).push(figure);
+  }
+  return catalogGroupDefinitions
+    .map(group => ({ ...group, figures: sortCatalogFigures(group.id, groups.get(group.id) ?? []) }))
+    .filter(group => group.figures.length);
+}
+
+function customPolycubeDisplayName() {
+  return customNameInput.value.trim() || "Custom polycube";
+}
+
+function customPolycubeTile() {
+  return tileSpecs.buildPolycubeTile(customPolycubeDisplayName(), [...builderVoxels].map(keyToVoxel));
+}
+
+function customPolycubeThumbnail(tile) {
+  const signature = [...builderVoxels].sort().join("|") || "empty";
+  return tileThumbnail(tile, `custom:${signature}`, selectedFigureIds.length);
+}
+
+function selectedSystemItems() {
+  const items = selectedFigures().map(figure => ({
+    id: figure.id,
+    name: prettyName(figure.name),
+    title: `${figureSourceTitle(figure)}: ${prettyName(figure.name)}`,
+    thumbnail: figureThumbnail(figure),
+    faceCount: tileFaceCount(tileForFigure(figure)),
+    remove: () => {
+      selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
+      handleFigureSelectionChanged();
+    }
+  }));
+  if (customPolycubeCheckbox.checked) {
+    const name = customPolycubeDisplayName();
+    const tile = customPolycubeTile();
+    items.push({
+      id: "__custom_polycube__",
+      name: `custom: ${name}`,
+      title: `${name}: ${builderVoxels.size} cube${builderVoxels.size === 1 ? "" : "s"}`,
+      thumbnail: customPolycubeThumbnail(tile),
+      faceCount: tileFaceCount(tile),
+      remove: () => {
+        customPolycubeCheckbox.checked = false;
+        handleCustomPolycubeChanged();
+      }
+    });
+  }
+  return items;
+}
+
+function renderSelectedFigures() {
+  selectedFiguresEl.replaceChildren();
+  const items = selectedSystemItems();
+  if (!items.length) {
+    const empty = document.createElement("span");
+    empty.className = "selected-empty";
+    empty.textContent = "Choose a figure";
+    selectedFiguresEl.appendChild(empty);
+    return;
+  }
+  items.forEach((item, index) => {
+    const chip = document.createElement("span");
+    chip.className = "figure-chip";
+    chip.classList.toggle("is-root", index === 0);
+
+    if (item.thumbnail) {
+      const image = document.createElement("img");
+      image.className = "figure-chip-thumb";
+      image.alt = item.name;
+      image.src = item.thumbnail;
+      chip.append(image);
+    }
+
+    const label = document.createElement("span");
+    label.className = "figure-chip-label";
+    label.textContent = `${index === 0 ? "root: " : ""}${item.name}`;
+    label.title = item.title;
+    chip.append(label);
+
+    const faces = document.createElement("span");
+    faces.className = "figure-chip-faces";
+    faces.textContent = `${item.faceCount} faces`;
+    faces.title = "Faces on this tile";
+    chip.append(faces);
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.textContent = "x";
+    remove.addEventListener("click", item.remove);
+    chip.append(remove);
+    selectedFiguresEl.appendChild(chip);
+  });
+}
+
+function getCustomPolycubeConfig() {
+  if (!customPolycubeCheckbox.checked) return [];
+  return [{
+    name: customNameInput.value.trim() || "Custom polycube",
+    voxels: [...builderVoxels].map(key => key.split(",").map(Number))
+  }];
+}
+
+function customSystemConfig() {
+  const polycubes = getCustomPolycubeConfig();
+  return {
+    name: selectedFigures().map(figure => figure.name).join(" + ") || "Figure system",
+    figure_refs: selectedFigureIds,
+    polycubes
+  };
+}
+
+function hasRunnableSelection() {
+  return selectedFigures().length > 0 || customPolycubeCheckbox.checked;
+}
+
+function stopActiveRunAfterSelectionChange() {
+  if (running || paused || streamIter) {
+    stopToken.stop = true;
+    runSeq += 1;
+    streamIter = null;
+    running = false;
+    paused = false;
+    pausedConfigKey = null;
+  }
+  isFinished = false;
+  setStatus(hasRunnableSelection() ? "Ready" : "Choose a figure or enable the custom polycube.");
+  setRunButton();
+}
+
+function handleFigureSelectionChanged() {
+  applyModeDefaults();
+  refreshFigureSelectionUI();
+  stopActiveRunAfterSelectionChange();
+}
+
+function handleCustomPolycubeChanged() {
+  refreshFigureSelectionUI();
+  stopActiveRunAfterSelectionChange();
+}
+
+function renderSystemTileList() {
+  systemTileList.replaceChildren();
+  for (const group of groupedCatalogFigures()) {
+    const section = document.createElement("section");
+    section.className = "catalog-group";
+    const heading = document.createElement("h3");
+    heading.className = "catalog-group-title";
+    heading.textContent = group.title;
+    const grid = document.createElement("div");
+    grid.className = "catalog-group-grid";
+
+    for (const figure of group.figures) {
+      const selected = selectedFigureIds.includes(figure.id);
+      const compatible = isFigureCompatibleWithSelection(figure);
+      const row = document.createElement("button");
+      row.type = "button";
+      row.className = "figure-card";
+      row.classList.toggle("is-root", figure.id === selectedFigureIds[0]);
+      row.classList.toggle("is-selected", selected);
+      row.classList.toggle("is-incompatible", !selected && !compatible);
+      row.disabled = !selected && !compatible;
+      row.setAttribute("aria-checked", String(selected));
+      row.setAttribute("aria-disabled", String(!selected && !compatible));
+      row.title = !selected && !compatible
+        ? "No compatible lattice face with the current selection."
+        : "";
+      row.addEventListener("click", () => {
+        if (selected) {
+          selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
+        } else if (compatible && !selectedFigureIds.includes(figure.id)) {
+          selectedFigureIds.push(figure.id);
+        }
+        handleFigureSelectionChanged();
+      });
+
+      const image = document.createElement("img");
+      image.alt = prettyName(figure.name);
+      image.src = figureThumbnail(figure);
+      const name = document.createElement("div");
+      name.className = "figure-card-title";
+      name.textContent = prettyName(figure.name);
+      name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}`;
+      row.append(image, name);
+      grid.appendChild(row);
+    }
+
+    section.append(heading, grid);
+    systemTileList.appendChild(section);
+  }
+}
+
+function refreshFigureSelectionUI() {
+  renderSelectedFigures();
+  renderSystemTileList();
+  updateMirrorAvailability();
+}
+
+function keyToVoxel(key) {
+  return key.split(",").map(Number);
+}
+
+function voxelKey(voxel) {
+  return voxel.join(",");
+}
+
+const AXIS_PERMUTATIONS = [
+  [0, 1, 2], [0, 2, 1], [1, 0, 2],
+  [1, 2, 0], [2, 0, 1], [2, 1, 0]
+];
+const SIGN_CHOICES = [
+  [1, 1, 1], [1, 1, -1], [1, -1, 1], [1, -1, -1],
+  [-1, 1, 1], [-1, 1, -1], [-1, -1, 1], [-1, -1, -1]
+];
+
+function normalizeVoxelList(voxels) {
+  if (!voxels.length) return [];
+  const mins = [Infinity, Infinity, Infinity];
+  for (const voxel of voxels) for (let i = 0; i < 3; i++) mins[i] = Math.min(mins[i], voxel[i]);
+  return voxels
+    .map(v => [v[0] - mins[0], v[1] - mins[1], v[2] - mins[2]])
+    .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2]);
+}
+
+function canonicalVoxelSignature(voxels) {
+  if (!voxels.length) return "";
+  let best = null;
+  for (const perm of AXIS_PERMUTATIONS) {
+    for (const signs of SIGN_CHOICES) {
+      const transformed = voxels.map(v => [
+        v[perm[0]] * signs[0],
+        v[perm[1]] * signs[1],
+        v[perm[2]] * signs[2]
+      ]);
+      const signature = normalizeVoxelList(transformed).map(voxelKey).join("|");
+      if (best == null || signature < best) best = signature;
+    }
+  }
+  return best;
+}
+
+function polycubeVoxelsFromTile(tile) {
+  const scale = tileSpecs.SCALE;
+  const voxels = [];
+  for (const point of tile?.occupancy_points ?? []) {
+    if (point.weight !== 48) continue;
+    const voxel = point.pos.map(coord => (coord - 1) / scale);
+    if (voxel.every(Number.isInteger)) voxels.push(voxel);
+  }
+  return voxels;
+}
+
+function listedPolycubeShapes() {
+  if (listedPolycubeShapeMap) return listedPolycubeShapeMap;
+  listedPolycubeShapeMap = new Map();
+  for (const figure of figureCatalog) {
+    if (!(figure.category ?? []).includes("Polycubes")) continue;
+    const signature = canonicalVoxelSignature(polycubeVoxelsFromTile(tileForFigure(figure)));
+    if (!signature) continue;
+    const names = listedPolycubeShapeMap.get(signature) ?? [];
+    const name = prettyName(figure.name);
+    if (!names.includes(name)) names.push(name);
+    listedPolycubeShapeMap.set(signature, names);
+  }
+  return listedPolycubeShapeMap;
+}
+
+function refreshCustomPolycubeIdentity() {
+  const signature = canonicalVoxelSignature([...builderVoxels].map(keyToVoxel));
+  if (signature === lastBuilderSignature) return;
+  lastBuilderSignature = signature;
+  const names = listedPolycubeShapes().get(signature) ?? [];
+  const matchName = names[0];
+  if (matchName) {
+    customShapeMatch.textContent = `Matches ${matchName}`;
+    if (!customNameEdited) {
+      customNameInput.value = matchName;
+      lastAutoCustomName = matchName;
+    }
+  } else {
+    const count = builderVoxels.size;
+    customShapeMatch.textContent = `${count} cube${count === 1 ? "" : "s"}`;
+    if (!customNameEdited) {
+      customNameInput.value = "Custom polycube";
+      lastAutoCustomName = customNameInput.value;
+    }
+  }
+}
+
+function clearBuilderGroup() {
+  while (builderGroup.children.length) builderGroup.children.pop();
+}
+
+function renderBuilderVoxels(fit = false) {
+  refreshCustomPolycubeIdentity();
+  clearBuilderGroup();
+  const sorted = [...builderVoxels].sort();
+  for (const key of sorted) {
+    const [x, y, z] = keyToVoxel(key);
+    const block = new THREE.Mesh(builderCubeGeometry, builderBlockMaterial);
+    block.position.set(x, y, z);
+    block.userData = { block: true, key, voxel: [x, y, z] };
+    const edges = new THREE.LineSegments(builderEdgeGeometry, builderEdgeMaterial);
+    edges.position.copy(block.position);
+    edges.userData = { edge: true };
+    builderGroup.add(block, edges);
+  }
+  if (builderHoverKey && !builderVoxels.has(builderHoverKey)) {
+    const [x, y, z] = keyToVoxel(builderHoverKey);
+    const ghost = new THREE.Mesh(builderCubeGeometry, builderGhostMaterial);
+    ghost.position.set(x, y, z);
+    ghost.userData = { ghost: true };
+    builderGroup.add(ghost);
+  }
+  if (fit) fitCameraToObject(builderCamera, builderControls, builderGroup, 2.35);
+  requestBuilderRender();
+}
+
+function builderBlockIntersections(event) {
+  const rect = builderRenderer.domElement.getBoundingClientRect();
+  builderPointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  builderPointer.y = -(((event.clientY - rect.top) / rect.height) * 2 - 1);
+  builderRaycaster.setFromCamera(builderPointer, builderCamera);
+  return builderRaycaster.intersectObjects(builderGroup.children.filter(child => child.userData.block), false);
+}
+
+function addTargetFromHit(hit) {
+  const base = hit.object.userData.voxel;
+  const normal = hit.face.normal;
+  return [
+    base[0] + Math.round(normal.x),
+    base[1] + Math.round(normal.y),
+    base[2] + Math.round(normal.z)
+  ];
+}
+
+function handleBuilderPointerMove(event) {
+  const hit = builderBlockIntersections(event)[0];
+  const nextHover = hit ? voxelKey(addTargetFromHit(hit)) : null;
+  if (nextHover === builderHoverKey) return;
+  builderHoverKey = nextHover;
+  renderBuilderVoxels();
+}
+
+function handleBuilderPointerDown(event) {
+  const hit = builderBlockIntersections(event)[0];
+  if (!hit) return;
+  event.preventDefault();
+  if (event.button === 2 || event.shiftKey || event.altKey) {
+    const key = hit.object.userData.key;
+    if (builderVoxels.size > 1) {
+      builderVoxels.delete(key);
+      builderHoverKey = null;
+      renderBuilderVoxels();
+      handleCustomPolycubeChanged();
+    }
+    return;
+  }
+
+  const target = addTargetFromHit(hit);
+  const key = voxelKey(target);
+  if (!builderVoxels.has(key)) {
+    builderVoxels.add(key);
+    customPolycubeCheckbox.checked = true;
+    builderHoverKey = null;
+    renderBuilderVoxels();
+    handleCustomPolycubeChanged();
+  }
+}
+
+function configKey() {
+  const snapshotEvery = Number(snapshotSelect.value);
+  const customSystem = customSystemConfig();
+  const root = rootFigure();
+  const positiveOrNull = (control) => {
+    const value = Number(control.value);
+    return Number.isFinite(value) && value > 0 ? value : null;
+  };
+  const seconds = positiveOrNull(timeCapInput);
+  return JSON.stringify({
+    mode_key: root?.mode_key ?? "cube",
+    custom_system: customSystem,
+    criterion: criterion(),
+    target_val: criterion() === "count" ? +maxTilesInput.value : +layerInput.value,
+    exhaustive: exhaustiveCheckbox.checked,
+    include_mirrors: mirrorCheckbox.checked,
+    snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
+    branch_cap: positiveOrNull(branchCapInput),
+    node_limit: positiveOrNull(nodeCapInput),
+    candidate_cap: positiveOrNull(candidateCapInput),
+    time_limit_ms: seconds == null ? null : seconds * 1000,
+    ui_yield_interval_ms: 24
+  });
+}
+
+function setRunButton() {
+  if (running) {
+    runButton.disabled = false;
+    runButton.textContent = "Pause";
+    runButton.dataset.state = "pause";
+    return;
+  }
+  if (paused && pausedConfigKey === configKey()) {
+    runButton.disabled = false;
+    runButton.textContent = "Continue";
+    runButton.dataset.state = "continue";
+    return;
+  }
+  runButton.disabled = !hasRunnableSelection();
+  runButton.textContent = "Run";
+  runButton.dataset.state = "run";
+  if (runButton.disabled) runButton.textContent = "Choose a figure";
+}
+
+function invalidatePausedRunIfNeeded() {
+  if (!paused) {
+    setRunButton();
+    return;
+  }
+  if (pausedConfigKey !== configKey()) {
+    runSeq += 1;
+    streamIter = null;
+    paused = false;
+    setStatus("Ready");
+  }
+  setRunButton();
+}
+
+function disposeObjectTree(object) {
+  while (object.children?.length) disposeObjectTree(object.children.pop());
+  object.geometry?.dispose?.();
+  if (Array.isArray(object.material)) object.material.forEach((mat) => mat.dispose?.());
+  else object.material?.dispose?.();
+}
+
+function clearObjectGroup(group) {
+  while (group.children.length) disposeObjectTree(group.children.pop());
+}
+
+function disposeObjectGroup(group) {
+  clearObjectGroup(group);
+  group.parent?.remove(group);
+}
+
+function resizeRenderer() {
+  const bounds = viewport.getBoundingClientRect();
+  const width = Math.max(1, Math.floor(bounds.width));
+  const height = Math.max(1, Math.floor(bounds.height));
+  if (width === renderWidth && height === renderHeight) return;
+  renderWidth = width;
+  renderHeight = height;
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height, false);
+  requestRender();
+}
+
+new ResizeObserver(resizeRenderer).observe(viewport);
+resizeRenderer();
+
+function resizeBuilderRenderer() {
+  const bounds = polycubeBuilder.getBoundingClientRect();
+  const width = Math.max(1, Math.floor(bounds.width));
+  const height = Math.max(1, Math.floor(bounds.height));
+  if (width === builderWidth && height === builderHeight) return;
+  builderWidth = width;
+  builderHeight = height;
+  builderCamera.aspect = width / height;
+  builderCamera.updateProjectionMatrix();
+  builderRenderer.setSize(width, height, false);
+  requestBuilderRender();
+}
+
+new ResizeObserver(resizeBuilderRenderer).observe(polycubeBuilder);
+resizeBuilderRenderer();
+
+function batchFor(map, key, setup) {
+  let batch = map.get(key);
+  if (!batch) {
+    batch = setup();
+    map.set(key, batch);
+  }
+  return batch;
+}
+
+function pushVertex(out, vertex, scale) {
+  out.push(vertex[0] / scale, vertex[1] / scale, vertex[2] / scale);
+}
+
+function visibleAlpha(face) {
+  const typeIndex = face.type_idx ?? 0;
+  return currentOpacities[typeIndex] ?? 1;
+}
+
+function updateTileBreakdown(snapshot) {
+  metricTileBreakdown.replaceChildren();
+  const counts = (snapshot?.tile_counts ?? []).filter(item => item.count > 0);
+  if (!counts.length) return;
+
+  for (const item of counts) {
+    const part = document.createElement("span");
+    part.className = "metric-breakdown-item";
+    part.title = `${item.name}: ${item.count}`;
+
+    const swatch = document.createElement("i");
+    swatch.style.background = item.color ?? tileSpecs.COLOR_PALETTE[(item.type_idx ?? 0) % tileSpecs.COLOR_PALETTE.length];
+
+    const text = document.createElement("span");
+    text.textContent = `${item.name} ${item.count}`;
+
+    part.append(swatch, text);
+    metricTileBreakdown.appendChild(part);
+  }
+}
+
+function updateScene(snapshot, options = {}) {
+  const { preserveView = false, rebuildFaces = true } = options;
+  lastSnapshot = snapshot;
+
+  const faces = snapshot?.faces ?? [];
+  const scale = prototileInfo?.scale ?? 2;
+  const faceBatches = new Map();
+  const edgeBatches = new Map();
+  const showInternal = internalCheckbox.checked;
+  const showEdges = edgesCheckbox.checked;
+  const nextFaceGroup = rebuildFaces ? new THREE.Group() : null;
+  const nextEdgeGroup = new THREE.Group();
+
+  for (const face of faces) {
+    if (face.internal && !showInternal) continue;
+    const alpha = visibleAlpha(face);
+    if (alpha < 0.01) continue;
+    const color = face.color ?? "#178273";
+    const vertices = face.v ?? [];
+    if (vertices.length < 3) continue;
+
+    if (rebuildFaces) {
+      const faceKey = `${color}|${alpha.toFixed(3)}|${alpha > 0.55 ? 1 : 0}`;
+      const faceBatch = batchFor(faceBatches, faceKey, () => ({ color, alpha, positions: [] }));
+      for (let i = 1; i < vertices.length - 1; i += 1) {
+        pushVertex(faceBatch.positions, vertices[0], scale);
+        pushVertex(faceBatch.positions, vertices[i], scale);
+        pushVertex(faceBatch.positions, vertices[i + 1], scale);
+      }
+    }
+
+    if (showEdges) {
+      const edgeKey = alpha.toFixed(3);
+      const edgeBatch = batchFor(edgeBatches, edgeKey, () => ({ alpha, positions: [] }));
+      for (let i = 0; i < vertices.length; i += 1) {
+        pushVertex(edgeBatch.positions, vertices[i], scale);
+        pushVertex(edgeBatch.positions, vertices[(i + 1) % vertices.length], scale);
+      }
+    }
+  }
+
+  if (rebuildFaces) {
+    for (const batch of faceBatches.values()) {
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(batch.positions, 3));
+      geometry.computeVertexNormals();
+      const material = new THREE.MeshPhongMaterial({
+        color: new THREE.Color(batch.color),
+        transparent: batch.alpha < 0.999,
+        opacity: batch.alpha,
+        side: THREE.DoubleSide,
+        flatShading: true,
+        polygonOffset: true,
+        polygonOffsetFactor: 1,
+        polygonOffsetUnits: 1,
+        depthWrite: batch.alpha > 0.55
+      });
+      nextFaceGroup.add(new THREE.Mesh(geometry, material));
+    }
+  }
+
+  for (const batch of edgeBatches.values()) {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(batch.positions, 3));
+    const material = new THREE.LineBasicMaterial({
+      color: 0x111827,
+      transparent: batch.alpha < 0.999,
+      opacity: Math.min(0.72, Math.max(0.18, batch.alpha))
+    });
+    nextEdgeGroup.add(new THREE.LineSegments(geometry, material));
+  }
+
+  if (rebuildFaces) {
+    const oldFaceGroup = faceGroup;
+    faceGroup = nextFaceGroup;
+    scene.add(faceGroup);
+    disposeObjectGroup(oldFaceGroup);
+  }
+  const oldEdgeGroup = edgeGroup;
+  edgeGroup = nextEdgeGroup;
+  scene.add(edgeGroup);
+  disposeObjectGroup(oldEdgeGroup);
+
+  metricTiles.textContent = snapshot?.tile_count ?? 0;
+  updateTileBreakdown(snapshot);
+  if (!preserveView && autoFitCheckbox.checked && !rootCentered) centerOnSnapshot(snapshot, true);
+  requestRender();
+}
+
+function centerOnSnapshot(snapshot, force = false) {
+  if (!snapshot || (!force && rootCentered)) return;
+  const scale = prototileInfo?.scale ?? 2;
+  const box = new THREE.Box3();
+  const point = new THREE.Vector3();
+  for (const face of snapshot.faces ?? []) {
+    for (const vertex of face.v ?? []) {
+      point.set(vertex[0] / scale, vertex[1] / scale, vertex[2] / scale);
+      box.expandByPoint(point);
+    }
+  }
+  if (box.isEmpty()) return;
+
+  const center = new THREE.Vector3();
+  const size = new THREE.Vector3();
+  box.getCenter(center);
+  box.getSize(size);
+  const radius = Math.max(2, size.length() * 0.5);
+  const maxDim = Math.max(size.x, size.y, size.z, 1);
+  const verticalFov = THREE.MathUtils.degToRad(camera.fov);
+  const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * Math.max(camera.aspect, 0.25));
+  const limitingFov = Math.min(verticalFov, horizontalFov);
+  const fitHeightDistance = maxDim / (2 * Math.tan(verticalFov / 2));
+  const fitWidthDistance = fitHeightDistance / Math.max(camera.aspect, 0.25);
+  const sphereDistance = radius / Math.sin(Math.max(0.1, limitingFov / 2));
+  const distance = Math.max(fitHeightDistance, fitWidthDistance, sphereDistance) * 2.3;
+  const offset = new THREE.Vector3(1.3, 1.05, 1.15).normalize().multiplyScalar(distance);
+  controls.target.copy(center);
+  camera.position.copy(center).add(offset);
+  camera.near = Math.max(0.05, radius / 200);
+  camera.far = Math.max(4000, radius * 50);
+  camera.updateProjectionMatrix();
+  controls.update();
+  rootCentered = true;
+  requestRender();
+}
+
+function initTileControls(info) {
+  prototileInfo = info;
+  tileList.replaceChildren();
+
+  const defaults = info.default_opacities ?? [];
+  info.tiles.forEach((tile, index) => {
+    if (currentOpacities[index] == null) currentOpacities[index] = defaults[index] ?? 1;
+
+    const row = document.createElement("div");
+    row.className = "tile-row";
+
+    const swatch = document.createElement("span");
+    swatch.className = "tile-swatch";
+    swatch.style.background = tileSpecs.COLOR_PALETTE[index % tileSpecs.COLOR_PALETTE.length];
+
+    const meta = document.createElement("div");
+    meta.className = "tile-meta";
+
+    const name = document.createElement("div");
+    name.className = "tile-name";
+    name.textContent = prettyName(tile.name);
+    name.title = prettyName(tile.name);
+
+    const slider = document.createElement("input");
+    slider.type = "range";
+    slider.min = "0";
+    slider.max = "1";
+    slider.step = "0.05";
+    slider.value = currentOpacities[index];
+    slider.addEventListener("input", () => {
+      currentOpacities[index] = +slider.value;
+      if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true });
+      requestRender();
+    });
+
+    meta.append(name, slider);
+    row.append(swatch, meta);
+    tileList.appendChild(row);
+  });
+}
+
+function addNodeToTree(id, label, parentId = null, isForced = false, frontierStats = null) {
+  let node = treeMap.get(id);
+  if (node) {
+    if (label?.trim()) node.label = label.trim();
+    node.isForced = !!isForced;
+    if (frontierStats) node.frontierStats = frontierStats;
+  } else {
+    node = {
+      id,
+      label: label?.trim() || "",
+      parentId,
+      isForced: !!isForced,
+      children: [],
+      status: "pending",
+      statusText: "",
+      resultText: "",
+      colorId: null,
+      snapshot: null,
+      frontierStats
+    };
+    treeMap.set(id, node);
+    if (parentId != null) {
+      const parent = treeMap.get(parentId);
+      if (parent && !parent.children.includes(id)) parent.children.push(id);
+    }
+    if (parentId == null) expandedNodes.add(id);
+  }
+
+  const pending = pendingSnapshots.get(id);
+  if (pending) {
+    node.snapshot = pending;
+    if (pending.frontier_stats) node.frontierStats = pending.frontier_stats;
+    pendingSnapshots.delete(id);
+  }
+  scheduleTreeRender();
+  return node;
+}
+
+function attachSnapshotToNode(nodeId, snapshot) {
+  if (nodeId == null || !snapshot) return;
+  const frozen = clone(snapshot);
+  const node = treeMap.get(nodeId);
+  if (node) {
+    node.snapshot = frozen;
+    if (frozen.frontier_stats) node.frontierStats = frozen.frontier_stats;
+    scheduleTreeRender();
+  } else {
+    pendingSnapshots.set(nodeId, frozen);
+  }
+}
+
+function selectTreeNode(nodeId) {
+  const node = treeMap.get(nodeId);
+  if (!node?.snapshot) return;
+  selectedNodeId = nodeId;
+  updateScene(node.snapshot, { preserveView: true });
+  const stats = node.frontierStats ?? node.snapshot.frontier_stats;
+  if (stats) {
+    metricFrontier.textContent = stats.total_faces ?? stats.count ?? 0;
+    metricLayer.textContent = stats.min_gen ?? 0;
+  }
+  renderTree();
+}
+
+function updateNodeStatus(id, status, text = "", colorId = null, frontierStats = null) {
+  const node = treeMap.get(id);
+  if (!node) return;
+  node.status = status;
+  const cleanText = text?.trim();
+  if (cleanText) {
+    if (status === "working") {
+      node.statusText = cleanText;
+      node.resultText = "";
+    } else if (node.statusText || node.label) {
+      node.resultText = cleanText;
+    } else {
+      node.statusText = cleanText;
+    }
+  }
+  if (colorId != null) node.colorId = colorId;
+  if (frontierStats) node.frontierStats = frontierStats;
+
+  if (status === "fail" && !manuallyExpanded.has(id)) expandedNodes.delete(id);
+  if (status === "working") {
+    let currentId = node.parentId;
+    while (currentId != null) {
+      expandedNodes.add(currentId);
+      currentId = treeMap.get(currentId)?.parentId;
+    }
+  }
+
+  metricNodes.textContent = treeMap.size;
+  if (frontierStats) {
+    metricFrontier.textContent = frontierStats.total_faces ?? frontierStats.count ?? 0;
+    metricLayer.textContent = frontierStats.min_gen ?? 0;
+  }
+  scheduleTreeRender();
+}
+
+function pathToTreeNode(nodeId) {
+  const path = [];
+  const seen = new Set();
+  let currentId = nodeId;
+  while (currentId != null && !seen.has(currentId)) {
+    const node = treeMap.get(currentId);
+    if (!node) break;
+    path.unshift(currentId);
+    seen.add(currentId);
+    currentId = node.parentId;
+  }
+  return path;
+}
+
+function findSuccessPath() {
+  let bestPath = [];
+  for (const node of treeMap.values()) {
+    if (node.status !== "success") continue;
+    const path = pathToTreeNode(node.id);
+    if (!path.length) continue;
+    const allAncestorsSucceeded = path.every((id) => treeMap.get(id)?.status === "success");
+    if (allAncestorsSucceeded && path.length > bestPath.length) bestPath = path;
+  }
+  return bestPath;
+}
+
+function revealSuccessPath() {
+  const successPath = findSuccessPath();
+  if (!successPath.length) return;
+
+  expandedNodes.clear();
+  manuallyExpanded.clear();
+  for (const nodeId of successPath) {
+    const node = treeMap.get(nodeId);
+    if (node?.children.length) expandedNodes.add(nodeId);
+  }
+  renderTree();
+}
+
+function clearTree() {
+  treeMap.clear();
+  pendingSnapshots.clear();
+  expandedNodes.clear();
+  manuallyExpanded.clear();
+  selectedNodeId = null;
+  treePanel.replaceChildren();
+  metricNodes.textContent = "0";
+}
+
+function scheduleTreeRender() {
+  if (treeRenderQueued) return;
+  treeRenderQueued = true;
+  requestAnimationFrame(() => {
+    treeRenderQueued = false;
+    renderTree();
+  });
+}
+
+function renderTree() {
+  treePanel.replaceChildren();
+
+  const isGenericBranchLeaf = (node) =>
+    node
+    && !node.isForced
+    && !node.children.length
+    && !node.snapshot
+    && !node.label
+    && !node.statusText
+    && !node.resultText;
+
+  const renderBranchSummary = (count, depth) => {
+    const row = document.createElement("div");
+    row.className = "tree-node tree-node-summary";
+    row.style.paddingLeft = `${depth * 18}px`;
+
+    const toggle = document.createElement("span");
+    toggle.className = "tree-toggle";
+
+    const content = document.createElement("span");
+    content.className = "tree-button tree-button-summary";
+
+    const statusDot = document.createElement("span");
+    statusDot.className = "tree-status";
+
+    const label = document.createElement("span");
+    label.className = "tree-label";
+    label.textContent = `${count} more branch${count === 1 ? "" : "es"}`;
+
+    content.append(statusDot, label);
+    row.append(toggle, content);
+    treePanel.appendChild(row);
+  };
+
+  const renderNode = (nodeId, depth) => {
+    const node = treeMap.get(nodeId);
+    if (!node) return;
+
+    const row = document.createElement("div");
+    row.className = "tree-node";
+    row.style.paddingLeft = `${depth * 18}px`;
+
+    const toggle = document.createElement("span");
+    toggle.className = "tree-toggle";
+    if (node.children.length) {
+      toggle.textContent = expandedNodes.has(nodeId) ? "-" : "+";
+      toggle.addEventListener("click", () => {
+        if (expandedNodes.has(nodeId)) {
+          expandedNodes.delete(nodeId);
+          manuallyExpanded.delete(nodeId);
+        } else {
+          expandedNodes.add(nodeId);
+          manuallyExpanded.add(nodeId);
+        }
+        renderTree();
+      });
+    }
+
+    const content = document.createElement("span");
+    content.className = "tree-button";
+    content.dataset.status = node.status;
+    if (node.snapshot) content.classList.add("has-snapshot");
+    if (selectedNodeId === nodeId) content.classList.add("is-selected");
+
+    const statusDot = document.createElement("span");
+    statusDot.className = "tree-status";
+    if (node.colorId != null) statusDot.style.background = tileSpecs.COLOR_PALETTE[node.colorId % tileSpecs.COLOR_PALETTE.length];
+
+    const label = document.createElement("span");
+    label.className = "tree-label";
+    label.textContent = node.statusText || node.label || (node.isForced ? "forced" : "branch");
+    label.title = label.textContent;
+
+    const result = document.createElement("span");
+    result.className = "tree-result";
+    if (node.resultText) result.textContent = node.resultText;
+
+    const frontier = document.createElement("span");
+    frontier.className = "tree-frontier";
+    if (node.frontierStats) {
+      const count = node.frontierStats.count ?? 0;
+      const gen = node.frontierStats.min_gen ?? 0;
+      frontier.textContent = `${count} faces @ gen ${gen}`;
+      frontier.title = "Frontier faces at the earliest generation";
+    }
+
+    content.append(statusDot, label);
+    if (result.textContent) content.append(result);
+    if (frontier.textContent) content.append(frontier);
+    if (node.snapshot) {
+      content.addEventListener("click", () => selectTreeNode(nodeId));
+    }
+
+    row.append(toggle, content);
+    treePanel.appendChild(row);
+
+    if (expandedNodes.has(nodeId)) {
+      let pendingBranchCount = 0;
+      const flushPendingBranches = () => {
+        if (!pendingBranchCount) return;
+        renderBranchSummary(pendingBranchCount, depth + 1);
+        pendingBranchCount = 0;
+      };
+      for (const childId of node.children) {
+        const child = treeMap.get(childId);
+        if (isGenericBranchLeaf(child)) {
+          pendingBranchCount += 1;
+        } else {
+          flushPendingBranches();
+          renderNode(childId, depth + 1);
+        }
+      }
+      flushPendingBranches();
+    }
+  };
+
+  for (const node of treeMap.values()) {
+    if (node.parentId == null) renderNode(node.id, 0);
+  }
+}
+
+function handleMessage(message) {
+  if (message.type === "palette") return;
+  if (message.type === "prototile_info") {
+    initTileControls(message);
+    if (message.default_internal != null) internalCheckbox.checked = !!message.default_internal;
+    return;
+  }
+  if (message.type === "branch_set") {
+    for (const branch of message.branches ?? []) {
+      addNodeToTree(branch.id, branch.text || "", message.parent, branch.is_forced, branch.frontier_stats);
+    }
+    return;
+  }
+  if (message.type === "node_status") {
+    updateNodeStatus(message.id, message.status, message.text || "", message.color_id, message.frontier_stats);
+    return;
+  }
+  if (message.type === "node_snapshot") {
+    attachSnapshotToNode(message.node_id, message.snapshot);
+    return;
+  }
+  if (message.type === "full_update") {
+    updateScene(message);
+    attachSnapshotToNode(message.node_id, message);
+    return;
+  }
+  if (message.type === "finished") {
+    isFinished = true;
+    running = false;
+    paused = false;
+    streamIter = null;
+    if (message.success !== false) revealSuccessPath();
+    metricTiles.textContent = message.tile_count ?? metricTiles.textContent;
+    const prefix = message.success === false ? (message.best_effort ? "Stopped: best" : "Stopped") : "Finished";
+    setStatus(`${prefix}: ${message.tile_count} tiles`);
+    setRunButton();
+  }
+}
+
+async function consumeStream(mySeq) {
+  try {
+    let messageCount = 0;
+    while (streamIter && mySeq === runSeq && running && !paused) {
+      const { value, done } = await streamIter.next();
+      if (mySeq !== runSeq) return;
+      if (done) {
+        if (!isFinished) setStatus("Stopped");
+        running = false;
+        paused = false;
+        streamIter = null;
+        break;
+      }
+
+      handleMessage(value);
+      messageCount += 1;
+      if (value?.type === "full_update") await nextFrame();
+      else if (messageCount % 40 === 0) await nextFrame();
+      if (value?.type === "finished") break;
+    }
+  } catch (error) {
+    console.error(error);
+    if (mySeq === runSeq) {
+      running = false;
+      paused = false;
+      streamIter = null;
+      setStatus(`Error: ${error.message}`);
+    }
+  } finally {
+    if (mySeq === runSeq) {
+      setRunButton();
+      if (!isFinished && paused) setStatus("Paused");
+    }
+  }
+}
+
+function resetRunView() {
+  rootCentered = false;
+  lastSnapshot = null;
+  prototileInfo = null;
+  currentOpacities = {};
+  clearTree();
+  clearObjectGroup(faceGroup);
+  clearObjectGroup(edgeGroup);
+  tileList.replaceChildren();
+  metricTiles.textContent = "0";
+  metricTileBreakdown.replaceChildren();
+  metricFrontier.textContent = "0";
+  metricLayer.textContent = "0";
+  elapsedTime.textContent = "0.0s";
+  requestRender();
+}
+
+function startNewRun() {
+  if (!hasRunnableSelection()) {
+    setStatus("Choose a figure or enable the custom polycube.");
+    setRunButton();
+    return;
+  }
+  stopToken.stop = true;
+  runSeq += 1;
+  streamIter = null;
+  paused = false;
+  running = true;
+  isFinished = false;
+  stopToken = { stop: false };
+  startedAt = performance.now();
+  pausedConfigKey = configKey();
+  resetRunView();
+  setRunButton();
+  setStatus("Running...");
+
+  const config = JSON.parse(pausedConfigKey);
+  streamIter = createTilingStream(config, tileSpecs, stopToken);
+  consumeStream(runSeq);
+}
+
+function continueRun() {
+  if (!streamIter) return startNewRun();
+  paused = false;
+  running = true;
+  setRunButton();
+  setStatus("Running...");
+  consumeStream(runSeq);
+}
+
+function pauseRun() {
+  paused = true;
+  running = false;
+  setRunButton();
+  setStatus("Paused");
+}
+
+function bindControls() {
+  document.querySelectorAll('input[name="criterion"]').forEach((radio) => {
+    radio.addEventListener("change", () => {
+      updateCriterionUI();
+      invalidatePausedRunIfNeeded();
+    });
+  });
+
+  [maxTilesInput, layerInput, snapshotSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+    control.addEventListener("input", invalidatePausedRunIfNeeded);
+    control.addEventListener("change", invalidatePausedRunIfNeeded);
+  });
+
+  customPolycubeCheckbox.addEventListener("change", handleCustomPolycubeChanged);
+
+  customNameInput.addEventListener("input", () => {
+    if (customNameInput.value !== lastAutoCustomName) customNameEdited = true;
+    refreshFigureSelectionUI();
+  });
+
+  internalCheckbox.addEventListener("change", () => {
+    if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true });
+  });
+  edgesCheckbox.addEventListener("change", () => {
+    if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true, rebuildFaces: false });
+  });
+  autoFitCheckbox.addEventListener("change", () => {
+    if (autoFitCheckbox.checked && lastSnapshot) centerOnSnapshot(lastSnapshot, true);
+  });
+
+  fitButton.addEventListener("click", () => {
+    if (lastSnapshot) centerOnSnapshot(lastSnapshot, true);
+  });
+
+  runButton.addEventListener("click", () => {
+    if (running) return pauseRun();
+    if (paused && pausedConfigKey === configKey() && streamIter) return continueRun();
+    return startNewRun();
+  });
+
+  clearBuilderButton.addEventListener("click", () => {
+    builderVoxels = new Set(["0,0,0"]);
+    builderHoverKey = null;
+    renderBuilderVoxels(true);
+    invalidatePausedRunIfNeeded();
+  });
+}
+
+function updateElapsed() {
+  if (running || paused || isFinished) {
+    const base = startedAt || performance.now();
+    elapsedTime.textContent = `${((performance.now() - base) / 1000).toFixed(1)}s`;
+  }
+}
+
+function animate() {
+  window.requestAnimationFrame(animate);
+  if (controls.update()) requestRender();
+  if (builderControls.update()) requestBuilderRender();
+  updateElapsed();
+  if (needsRender) {
+    renderer.render(scene, camera);
+    needsRender = false;
+  }
+  if (builderNeedsRender) {
+    builderRenderer.render(builderScene, builderCamera);
+    builderNeedsRender = false;
+  }
+}
+
+initFigureSelection();
+updateCriterionUI();
+applyModeDefaults();
+refreshFigureSelectionUI();
+renderBuilderVoxels(true);
+bindControls();
+setRunButton();
+animate();
+queueMicrotask(startNewRun);

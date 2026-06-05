@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Lattice Tiler</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css?v=20260605-selected-icons-edge-fix-2">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <h1>3D Lattice Tiler</h1>
+        <div class="status-line" id="status">Ready</div>
+      </header>
+
+      <section class="control-panel">
+        <div class="field">
+          <span>Selected figures</span>
+          <div id="selectedFigures" class="selected-figures"></div>
+        </div>
+
+        <div class="field">
+          <span>Goal</span>
+          <div class="segmented">
+            <label><input type="radio" name="criterion" value="count" checked><span>Tiles</span></label>
+            <label><input type="radio" name="criterion" value="layer"><span>Layers</span></label>
+          </div>
+        </div>
+
+        <div class="split-fields target-fields">
+          <label class="field" id="maxTileField">
+            <span>Max tiles</span>
+            <input id="maxTilesInput" type="number" value="80" min="1" max="2000">
+          </label>
+          <label class="field is-hidden" id="layerField">
+            <span>Target layers</span>
+            <input id="layerInput" type="number" value="2" min="1" max="50">
+          </label>
+        </div>
+
+        <div class="is-hidden" aria-hidden="true">
+          <label class="field">
+            <span>Snapshots</span>
+            <select id="snapshotSelect">
+              <option value="0">Final only</option>
+              <option value="1">Every step</option>
+              <option value="5">Every 5</option>
+              <option value="10" selected>Every 10</option>
+              <option value="25">Every 25</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Branch cap</span>
+            <input id="branchCapInput" type="number" value="0" min="0" max="5000">
+          </label>
+          <label class="field">
+            <span>Node cap</span>
+            <input id="nodeCapInput" type="number" value="0" min="0" max="100000">
+          </label>
+          <label class="field">
+            <span>Candidate cap</span>
+            <input id="candidateCapInput" type="number" value="0" min="0" max="100000">
+          </label>
+          <label class="field">
+            <span>Time cap</span>
+            <input id="timeCapInput" type="number" value="0" min="0" max="3600">
+          </label>
+          <label><input id="mirrorCheckbox" type="checkbox"><span>Mirror tiles</span></label>
+          <label><input id="exhaustiveCheckbox" type="checkbox"><span>Exhaustive</span></label>
+        </div>
+
+        <div class="check-grid">
+          <label><input id="internalCheckbox" type="checkbox"><span>Internal faces</span></label>
+          <label><input id="edgesCheckbox" type="checkbox" checked><span>Edges</span></label>
+          <label><input id="autoFitCheckbox" type="checkbox" checked><span>Auto fit</span></label>
+        </div>
+
+        <div class="action-row">
+          <button id="runButton" class="primary-button" type="button">Run</button>
+          <button id="fitButton" type="button">Fit</button>
+        </div>
+      </section>
+
+      <section class="metrics">
+        <div class="metric-tile-total"><b id="metricTiles">0</b><span>tiles</span><small id="metricTileBreakdown" class="metric-breakdown"></small></div>
+        <div><b id="metricFrontier">0</b><span>frontier</span></div>
+        <div><b id="metricLayer">0</b><span>layer</span></div>
+        <div><b id="metricNodes">0</b><span>nodes</span></div>
+      </section>
+
+      <section class="tile-panel">
+        <div class="catalog-section">
+          <h2>Figure catalog</h2>
+          <div class="catalog-scroll">
+            <div id="systemTileList" class="system-tile-list"></div>
+          </div>
+        </div>
+
+        <h2>Custom polycube</h2>
+        <div class="custom-builder">
+          <div class="builder-topline">
+            <label><input id="customPolycubeCheckbox" type="checkbox"><span>Include</span></label>
+            <input id="customNameInput" type="text" value="Custom polycube">
+          </div>
+          <div id="customShapeMatch" class="custom-shape-match"></div>
+          <div id="polycubeBuilder" class="polycube-builder"></div>
+          <div class="builder-tools">
+            <button id="clearBuilderButton" type="button">Clear</button>
+          </div>
+        </div>
+
+        <h2>Tile opacity</h2>
+        <div id="tileList" class="tile-list"></div>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <section class="viewport-panel">
+        <div id="viewport" class="viewport"></div>
+      </section>
+      <section class="tree-panel">
+        <div class="tree-header">
+          <h2>Search tree</h2>
+          <span id="elapsedTime">0.0s</span>
+        </div>
+        <div id="treePanel" class="tree"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js?v=20260605-selected-icons-edge-fix-2"></script>
+</body>
+</html>

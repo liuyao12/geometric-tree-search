@@ -1,0 +1,1942 @@
+// Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
+// This module removes Observable runtime wrappers; app-level rendering lives in app.js.
+
+export const createTilingStream = (() => {
+  const __protoAdjCache = new Map();
+
+  return async function* createTilingStream(config, tileSpecs, stopToken) {
+    const SCALE = tileSpecs.SCALE;
+    const MAX_SOLID_ANGLE = 48;
+    const COLOR_PALETTE = tileSpecs.COLOR_PALETTE;
+
+    const tick = () => new Promise(resolve => {
+      if (typeof requestAnimationFrame === "function") requestAnimationFrame(resolve);
+      else setTimeout(resolve, 0);
+    });
+    const uiYieldIntervalMs = Math.max(8, +config.ui_yield_interval_ms || 24);
+    let lastUiYield = performance.now();
+    const yieldToBrowser = async (force = false) => {
+      if (stopToken.stop) return;
+      const now = performance.now();
+      if (!force && now - lastUiYield < uiYieldIntervalMs) return;
+      lastUiYield = now;
+      await tick();
+    };
+
+    const treeTileName = (rawName) => tileSpecs.displayTileName?.(rawName) ?? String(rawName ?? "Tile");
+
+    const keyFace = (verts) => {
+      const s = [...verts].map(v => v.join(",")).sort();
+      return s.join("|");
+    };
+
+    const faceSignature = (verts) => {
+      const n = verts.length;
+      const edges = [];
+      for (let i = 0; i < n; i++) {
+        const a = verts[i], b = verts[(i + 1) % n];
+        edges.push([b[0] - a[0], b[1] - a[1], b[2] - a[2]]);
+      }
+      const lengths = edges.map(e => e[0] * e[0] + e[1] * e[1] + e[2] * e[2]);
+      const dots = edges.map((e, i) => {
+        const f = edges[(i + 1) % n];
+        return e[0] * f[0] + e[1] * f[1] + e[2] * f[2];
+      });
+      const combined = lengths.map((L, i) => [L, dots[i]]);
+      const rotate = (arr, k) => arr.slice(k).concat(arr.slice(0, k));
+      let best = combined;
+      for (let k = 1; k < n; k++) {
+        const r = rotate(combined, k);
+        let better = false;
+        for (let i = 0; i < n; i++) {
+          if (r[i][0] !== best[i][0]) { better = r[i][0] < best[i][0]; break; }
+          if (r[i][1] !== best[i][1]) { better = r[i][1] < best[i][1]; break; }
+        }
+        if (better) best = r;
+      }
+      return best.map(p => `${p[0]},${p[1]}`).join("|");
+    };
+
+    const faceSignatureUndirected = (verts) => {
+      const a = faceSignature(verts);
+      const b = faceSignature([...verts].slice().reverse());
+      return (a < b) ? a : b;
+    };
+
+    const isCyclicPermutation = (a, b) => {
+      if (a.length !== b.length) return false;
+      const n = a.length;
+      const a0 = a[0].join(",");
+      let start = -1;
+      for (let i = 0; i < n; i++) if (b[i].join(",") === a0) { start = i; break; }
+      if (start < 0) return false;
+      for (let i = 0; i < n; i++) {
+        const ai = a[i], bi = b[(start + i) % n];
+        if (ai[0] !== bi[0] || ai[1] !== bi[1] || ai[2] !== bi[2]) return false;
+      }
+      return true;
+    };
+
+    const add3 = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+    // --- Build Prototiles First (to ensure correct order and cache key) ---
+    const { mode_key } = config;
+    const includeMirrors = !!config.include_mirrors;
+    const modeDef = config.custom_system
+      ? tileSpecs.buildCustomSystem(config.custom_system)
+      : tileSpecs.TILING_REGISTRY[mode_key];
+    if (!modeDef) throw new Error(`Unknown mode_key: ${mode_key}`);
+
+    const baseTiles = modeDef.build();
+    const prototiles = (() => {
+      const out = [];
+      for (const t of baseTiles) {
+        out.push(t);
+        if (includeMirrors && t.is_chiral) {
+          const m = t.get_mirror_copy?.();
+          if (m) {
+            if (t.name.startsWith("reflected ")) {
+              m.name = t.name.substring(10);
+            } else {
+              m.name = `reflected ${t.name}`;
+            }
+            m.__is_mirror = true;
+            out.push(m);
+          }
+        }
+      }
+      return out;
+    })();
+
+    const tileSignature = prototiles.map(t => t.name).join("||");
+    const modeCacheKey = config.custom_system ? `custom:${JSON.stringify(config.custom_system)}` : mode_key;
+    const cacheKey = `${SCALE}::${modeCacheKey}::${includeMirrors ? 1 : 0}::${tileSignature}`;
+
+    let cached = __protoAdjCache.get(cacheKey);
+
+    if (!cached) {
+      console.time("LUT building");
+
+      const adjacency0 = new Map();
+      const orientFaceSignatures = new Map();
+      
+      for (let p_idx = 0; p_idx < prototiles.length; p_idx++) {
+        await yieldToBrowser();
+        const p = prototiles[p_idx];
+        for (const orient of p.unique_orientations) {
+          const faceSigs = [];
+          for (let f_idx = 0; f_idx < orient.faces.length; f_idx++) {
+            const faceIdx = orient.faces[f_idx];
+            const fVerts = faceIdx.map(i => orient.verts[i]);
+            const sig = faceSignatureUndirected(fVerts);
+            faceSigs.push(sig);
+            
+            if (!adjacency0.has(sig)) adjacency0.set(sig, []);
+            adjacency0.get(sig).push({
+              p_idx,
+              orient,
+              f_indices: faceIdx,
+              face_type: orient.face_types[f_idx]
+            });
+          }
+          orientFaceSignatures.set(orient, faceSigs);
+        }
+      }
+
+      const viablePlacements0 = new Map();
+      
+      for (let src_p = 0; src_p < prototiles.length; src_p++) {
+        await yieldToBrowser();
+        const srcProto = prototiles[src_p];
+        for (const srcOrient of srcProto.unique_orientations) {
+          await yieldToBrowser();
+          for (let src_fi = 0; src_fi < srcOrient.faces.length; src_fi++) {
+            const srcFaceIdx = srcOrient.faces[src_fi];
+            const srcVerts = srcFaceIdx.map(i => srcOrient.verts[i]);
+            const srcSig = faceSignatureUndirected(srcVerts);
+            
+            const pot = adjacency0.get(srcSig) ?? [];
+            const srcFaceSigs = orientFaceSignatures.get(srcOrient);
+            
+            for (const cand of pot) {
+              await yieldToBrowser();
+              const base = cand.orient.vertsForFace(cand.f_indices);
+              const faceLoops = [base, [...base].slice().reverse()];
+              const n = base.length;
+              
+              for (const candFaceVerts of faceLoops) {
+                for (let r = 0; r < n; r++) {
+                  const cv0 = candFaceVerts[r];
+                  const srcV0 = srcVerts[0];
+                  const translation = [srcV0[0] - cv0[0], srcV0[1] - cv0[1], srcV0[2] - cv0[2]];
+                  
+                  let okGeom = true;
+                  for (let k = 0; k < n; k++) {
+                    const v = candFaceVerts[(r + k) % n];
+                    const g = [v[0] + translation[0], v[1] + translation[1], v[2] + translation[2]];
+                    const t = srcVerts[k];
+                    if (g[0] !== t[0] || g[1] !== t[1] || g[2] !== t[2]) { okGeom = false; break; }
+                  }
+                  if (!okGeom) continue;
+                  
+                  const candFaceSigs = orientFaceSignatures.get(cand.orient);
+                  let isViable = true;
+                  
+                  for (let f_idx = 0; f_idx < cand.orient.faces.length; f_idx++) {
+                    if (f_idx === cand.f_indices) continue;
+                    const sig = candFaceSigs[f_idx];
+                    const potentialMatches = adjacency0.get(sig);
+                    if (!potentialMatches || potentialMatches.length === 0) { isViable = false; break; }
+                    
+                  }
+                  
+                  const transHash = translation.join(",");
+                  const viabilityKey = `${src_p}::${src_fi}::${cand.p_idx}::${transHash}`;
+                  viablePlacements0.set(viabilityKey, isViable);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      cached = {
+        adjacency: adjacency0,
+        viablePlacements: viablePlacements0,
+        orientFaceSignatures: orientFaceSignatures
+      };
+      __protoAdjCache.set(cacheKey, cached);
+      console.timeEnd("LUT building");
+    }
+
+    const { adjacency, viablePlacements, orientFaceSignatures } = cached;
+
+    const isPolycubeSystem = (modeDef.category ?? []).includes("Polycubes");
+    const protoInfo = prototiles.map(p => {
+      return {
+        name: p.name,
+        verts: p.verts,
+        faces: p.faces,
+        lattice_points: isPolycubeSystem ? [] : p.occupancy_points.map(o => o.pos),
+        is_chiral: !!p.is_chiral,
+        is_mirror: !!p.__is_mirror
+      };
+    });
+
+    let global_center = [0, 0, 0], global_radius = 5;
+    const allUnscaled = [];
+    protoInfo.forEach(p => p.verts.forEach(v => allUnscaled.push([v[0]/SCALE, v[1]/SCALE, v[2]/SCALE])));
+    if (allUnscaled.length) {
+      const mins = [Infinity, Infinity, Infinity], maxs = [-Infinity, -Infinity, -Infinity];
+      for (const v of allUnscaled) {
+        for (let i = 0; i < 3; i++) { mins[i] = Math.min(mins[i], v[i]); maxs[i] = Math.max(maxs[i], v[i]); }
+      }
+      global_center = [(mins[0] + maxs[0]) / 2, (mins[1] + maxs[1]) / 2, (mins[2] + maxs[2]) / 2];
+      const dx = maxs[0] - global_center[0], dy = maxs[1] - global_center[1], dz = maxs[2] - global_center[2];
+      global_radius = Math.sqrt(dx * dx + dy * dy + dz * dz) || 2;
+    }
+
+    yield { type: "palette", colors: COLOR_PALETTE };
+    yield {
+      type: "prototile_info",
+      tiles: protoInfo,
+      scale: SCALE,
+      global_center,
+      global_radius,
+      default_opacities: modeDef.default_viz?.opacities ?? [],
+      default_internal: !!modeDef.default_viz?.internal
+    };
+
+    const state = {
+      placements: [],
+      frontier: new Map(),
+      lattice: new Map(),
+      viz_faces: new Map()
+    };
+
+    let faceCounter = 0;
+    let nodeCounter = 0;
+    const nowId = () => (++nodeCounter);
+
+    const branchSet = (parent, branches) => ({ type: "branch_set", parent, branches });
+    const nodeStatus = (id, status, append_text = "", extra = {}) =>
+      ({ type: "node_status", id, status, text: append_text, ...extra });
+    const exhaustive = !!config.exhaustive;
+    const criterion = config.criterion ?? "count";
+    const targetVal = Math.max(1, +config.target_val || 50);
+    const rawSnapshotEvery = +config.snapshot_every;
+    const snapshotEvery = rawSnapshotEvery <= 0 ? Infinity : Math.max(1, rawSnapshotEvery || 1);
+    const shouldSnapshot = (force = false) =>
+      force || (Number.isFinite(snapshotEvery) &&
+        (snapshotEvery <= 1 || state.placements.length <= 2 || state.placements.length % snapshotEvery === 0));
+    let bestSnapshot = null;
+
+    const cloneSnapshot = (snap) => ({
+      ...snap,
+      frontier_stats: snap.frontier_stats ? { ...snap.frontier_stats } : snap.frontier_stats,
+      tile_counts: (snap.tile_counts ?? []).map(item => ({ ...item })),
+      faces: (snap.faces ?? []).map(face => ({
+        ...face,
+        v: (face.v ?? []).map(vertex => vertex.slice())
+      }))
+    });
+
+    const isBetterSnapshot = (candidate, current) => {
+      if (!current) return true;
+      const candidateLayer = candidate.frontier_stats?.min_gen ?? 0;
+      const currentLayer = current.frontier_stats?.min_gen ?? 0;
+      const candidateTiles = candidate.tile_count ?? 0;
+      const currentTiles = current.tile_count ?? 0;
+      if (criterion === "layer" && candidateLayer !== currentLayer) return candidateLayer > currentLayer;
+      if (candidateTiles !== currentTiles) return candidateTiles > currentTiles;
+      return candidateLayer > currentLayer;
+    };
+
+    const recordBestSnapshot = (snap) => {
+      if (isBetterSnapshot(snap, bestSnapshot)) bestSnapshot = cloneSnapshot(snap);
+    };
+
+    const snapshot = (node_id = null) => {
+      const faces = [];
+      for (const stack of state.viz_faces.values()) for (const f of stack) faces.push(f);
+      const countMap = new Map();
+      for (const placement of state.placements) {
+        const typeIndex = placement.prototile_idx ?? 0;
+        const entry = countMap.get(typeIndex) ?? {
+          type_idx: typeIndex,
+          name: treeTileName(prototiles[typeIndex]?.name),
+          color: COLOR_PALETTE[(placement.color_id ?? typeIndex) % COLOR_PALETTE.length],
+          count: 0
+        };
+        entry.count += 1;
+        countMap.set(typeIndex, entry);
+      }
+      const snap = {
+        type: "full_update",
+        tile_count: state.placements.length,
+        tile_counts: [...countMap.values()].sort((a, b) => a.type_idx - b.type_idx),
+        faces,
+        node_id,
+        frontier_stats: calculateFrontierStats()
+      };
+      recordBestSnapshot(snap);
+      return snap;
+    };
+    const nodeSnapshot = (node_id) => ({ type: "node_snapshot", node_id, snapshot: snapshot(node_id) });
+
+    const latticeGet = (pos) => state.lattice.get(pos.join(",")) ?? 0;
+    const latticeAdd = (pos, w) => {
+      const k = pos.join(",");
+      state.lattice.set(k, (state.lattice.get(k) ?? 0) + w);
+      if (state.lattice.get(k) <= 0) state.lattice.delete(k);
+    };
+
+    const isMoveValid = (move) => {
+      const { orient, translation } = move;
+      for (const pt of orient.occupancy) {
+        const g = add3(pt.pos, translation);
+        if (latticeGet(g) + pt.weight > MAX_SOLID_ANGLE) return { ok: false };
+      }
+      const gVerts = orient.verts.map(v => add3(v, translation));
+      for (let f_idx = 0; f_idx < orient.faces.length; f_idx++) {
+        const fIdx = orient.faces[f_idx];
+        const poly = fIdx.map(i => gVerts[i]);
+        const k = keyFace(poly);
+          const existing = state.frontier.get(k);
+        if (existing) {
+          const rev = [...existing.ordered_verts].slice().reverse();
+          if (!isCyclicPermutation(poly, rev)) return { ok: false };
+        }
+      }
+      const occData = orient.occupancy.map(pt => ({ pos: add3(pt.pos, translation), weight: pt.weight }));
+      return { ok: true, occData };
+    };
+
+    const checkMoveViability = (move, frontierFaceKey) => {
+      const validCheck = isMoveValid(move);
+      if (!validCheck.ok) return null;
+      
+      const existing = state.frontier.get(frontierFaceKey);
+      if (existing) {
+        const transHash = move.translation.join(",");
+        const viabilityKey = `${existing.type}::${existing.face_idx}::${move.prototile_idx}::${transHash}`;
+        if (viablePlacements.has(viabilityKey)) return viablePlacements.get(viabilityKey) ? validCheck : null;
+      }
+      
+      const gVerts = move.orient.verts.map(v => add3(v, move.translation));
+      const candFaceSigs = orientFaceSignatures.get(move.orient);
+      
+      for (let f_idx = 0; f_idx < move.orient.faces.length; f_idx++) {
+        const fIdx = move.orient.faces[f_idx];
+        const poly = fIdx.map(i => gVerts[i]);
+        const faceKey = keyFace(poly);
+        
+        if (faceKey === frontierFaceKey) continue;
+        const existing = state.frontier.get(faceKey);
+        if (existing) continue;
+        
+        const sig = candFaceSigs[f_idx];
+        const potentialMatches = adjacency.get(sig);
+        if (!potentialMatches || potentialMatches.length === 0) return null;
+        
+      }
+      return validCheck;
+    };
+
+    const getCandidatesForFace = async (faceKeyStr, maxCandidates = candidateCap) => {
+      const localCandidateCap = Math.min(maxCandidates, candidateCap);
+      const existing = state.frontier.get(faceKeyStr);
+      const target = existing.ordered_verts;
+      const needed = [...target].slice().reverse();
+      const sig = faceSignatureUndirected(needed);
+      let pot = adjacency.get(sig) ?? [];
+      if (!pot.length) return [];
+
+      const v0t = needed[0];
+      const tv = [needed[1][0] - v0t[0], needed[1][1] - v0t[1], needed[1][2] - v0t[2]];
+      const dedup = new Map();
+
+      for (const pm of pot) {
+        await yieldToBrowser();
+        
+        const base = pm.orient.vertsForFace(pm.f_indices);
+        const faceLoops = [base, [...base].slice().reverse()];
+
+        for (const candFaceVerts of faceLoops) {
+          const n = candFaceVerts.length;
+          for (let r = 0; r < n; r++) {
+            await yieldToBrowser();
+            const cv0 = candFaceVerts[r];
+            const cv1 = candFaceVerts[(r + 1) % n];
+            const dv = [cv1[0] - cv0[0], cv1[1] - cv0[1], cv1[2] - cv0[2]];
+            if (dv[0] !== tv[0] || dv[1] !== tv[1] || dv[2] !== tv[2]) continue;
+
+            const translation = [v0t[0] - cv0[0], v0t[1] - cv0[1], v0t[2] - cv0[2]];
+            let okGeom = true;
+            for (let k = 0; k < n; k++) {
+              const v = candFaceVerts[(r + k) % n];
+              const g = [v[0] + translation[0], v[1] + translation[1], v[2] + translation[2]];
+              const t = needed[k];
+              if (g[0] !== t[0] || g[1] !== t[1] || g[2] !== t[2]) { okGeom = false; break; }
+            }
+            if (!okGeom) continue;
+            if (overTimeLimit()) return [...dedup.values()];
+
+            const mv = { prototile_idx: pm.p_idx, translation, orient: pm.orient };
+            
+            const chk = checkMoveViability(mv, faceKeyStr);
+            if (!chk) continue;
+
+            const occKey = chk.occData.map(o => o.pos.join(",")).sort().join("|");
+            const dKey = `${pm.p_idx}::${occKey}`;
+            if (!dedup.has(dKey)) dedup.set(dKey, { ...mv, occupancy_data: chk.occData, dedup_key: dKey });
+            if (Number.isFinite(localCandidateCap) && dedup.size >= localCandidateCap) return [...dedup.values()];
+          }
+        }
+      }
+      return [...dedup.values()];
+    };
+
+    const applyMove = (move) => {
+      state.placements.push(move);
+      for (const o of move.occupancy_data) latticeAdd(o.pos, o.weight);
+
+      const gVerts = move.orient.verts.map(v => add3(v, move.translation));
+      const neighborColors = new Set();
+      const coveredGens = [];
+      for (const fIdx of move.orient.faces) {
+        const poly = fIdx.map(i => gVerts[i]);
+        const k = keyFace(poly);
+        if (state.frontier.has(k)) {
+          neighborColors.add(state.frontier.get(k).color_id);
+          coveredGens.push(state.frontier.get(k).gen);
+        }
+      }
+      const newGen = coveredGens.length ? (Math.min(...coveredGens) + 1) : 0;
+      const available = COLOR_PALETTE.map((_, i) => i).filter(i => !neighborColors.has(i));
+      move.color_id = available.length ? available[Math.floor(Math.random() * available.length)] : 0;
+
+      const added = [], removed = [], modified_gens = [];
+
+      for (let f_idx = 0; f_idx < move.orient.faces.length; f_idx++) {
+        const fIdx = move.orient.faces[f_idx];
+        const poly = fIdx.map(i => gVerts[i]);
+        const k = keyFace(poly);
+        const face_type = move.orient.face_types[f_idx];
+
+        if (state.frontier.has(k)) {
+          removed.push([k, state.frontier.get(k)]);
+          state.frontier.delete(k);
+          if (!state.viz_faces.has(k)) state.viz_faces.set(k, []);
+          state.viz_faces.get(k).push({ v: poly, color: COLOR_PALETTE[move.color_id], internal: true, type_idx: move.prototile_idx });
+          for (const vf of state.viz_faces.get(k)) vf.internal = true;
+        } else {
+          faceCounter += 1;
+          state.frontier.set(k, { type: move.prototile_idx, face_idx: f_idx, ordered_verts: poly, color_id: move.color_id, id: faceCounter, gen: newGen, face_type });
+          added.push(k);
+          const viz = { v: poly, color: COLOR_PALETTE[move.color_id], internal: false, type_idx: move.prototile_idx };
+          if (!state.viz_faces.has(k)) state.viz_faces.set(k, []);
+          state.viz_faces.get(k).push(viz);
+        }
+      }
+
+      if (added.length) {
+        const activeVerts = new Set();
+        for (const k of added) for (const v of state.frontier.get(k).ordered_verts) activeVerts.add(v.join(","));
+        const vertToKeys = new Map();
+        for (const [k, entry] of state.frontier.entries()) {
+          for (const v of entry.ordered_verts) {
+            const kk = v.join(",");
+            if (activeVerts.has(kk)) { if (!vertToKeys.has(kk)) vertToKeys.set(kk, []); vertToKeys.get(kk).push(k); }
+          }
+        }
+        const q = [...added];
+        while (q.length) {
+          const curr = q.shift();
+          const ce = state.frontier.get(curr);
+          if (!ce) continue;
+          for (const v of ce.ordered_verts) {
+            for (const nk of (vertToKeys.get(v.join(",")) ?? [])) {
+              if (nk === curr) continue;
+              const ne = state.frontier.get(nk);
+              if (ne && ne.gen > ce.gen + 1) { modified_gens.push([nk, ne.gen]); ne.gen = ce.gen + 1; q.push(nk); }
+            }
+          }
+        }
+      }
+      return { added, removed, modified_gens };
+    };
+
+    const undoMove = (move, rb) => {
+      for (const [k, oldGen] of (rb.modified_gens ?? [])) { const e = state.frontier.get(k); if(e) e.gen = oldGen; }
+      for (const [k, val] of rb.removed) {
+        state.frontier.set(k, val);
+        const stack = state.viz_faces.get(k);
+        if (stack) { stack.pop(); if (stack.length === 1) stack[0].internal = false; if (stack.length === 0) state.viz_faces.delete(k); }
+      }
+      for (const k of rb.added) {
+        state.frontier.delete(k);
+        const stack = state.viz_faces.get(k);
+        if (stack) { stack.pop(); if (stack.length === 0) state.viz_faces.delete(k); }
+      }
+      for (const o of move.occupancy_data) latticeAdd(o.pos, -o.weight);
+      state.placements.pop();
+    };
+
+    const p0 = prototiles[0];
+    const startOrient = p0.unique_orientations[0];
+    const startTrans = [-startOrient.verts[0][0], -startOrient.verts[0][1], -startOrient.verts[0][2]];
+    const startOcc = startOrient.occupancy.map(pt => ({ pos: add3(pt.pos, startTrans), weight: pt.weight }));
+
+    const calculateFrontierStats = () => {
+      let minGen = Infinity, minGenCount = 0;
+      for (const v of state.frontier.values()) {
+        if (v.gen < minGen) { minGen = v.gen; minGenCount = 1; }
+        else if (v.gen === minGen) minGenCount++;
+      }
+      return { min_gen: minGen === Infinity ? 0 : minGen, count: minGenCount, total_faces: state.frontier.size };
+    };
+
+    const startMove = { prototile_idx: 0, translation: startTrans, occupancy_data: startOcc, orient: startOrient, color_id: 0 };
+    state.placements.push(startMove);
+    for (const o of startMove.occupancy_data) latticeAdd(o.pos, o.weight);
+
+    const gVerts0 = startOrient.verts.map(v => add3(v, startTrans));
+    for (let f_idx = 0; f_idx < startOrient.faces.length; f_idx++) {
+      const fIdx = startOrient.faces[f_idx];
+      const poly = fIdx.map(i => gVerts0[i]);
+      const k = keyFace(poly);
+      faceCounter += 1;
+      state.frontier.set(k, { type: 0, face_idx: f_idx, ordered_verts: poly, color_id: 0, id: faceCounter, gen: 0, face_type: startOrient.face_types[f_idx] });
+      state.viz_faces.set(k, [{ v: poly, color: COLOR_PALETTE[0], internal: false, type_idx: 0 }]);
+    }
+    
+    const rootId = nowId();
+    const rootStats = calculateFrontierStats();
+    yield branchSet(null, [{ id: rootId, text: treeTileName(p0.name), frontier_stats: rootStats }]);
+    yield nodeStatus(rootId, "working", "", { color_id: 0, frontier_stats: rootStats });
+    yield snapshot(rootId);
+    await tick();
+
+    const branchCap = Math.max(1, +config.branch_cap || Infinity);
+    const nodeLimit = Math.max(1, +config.node_limit || Infinity);
+    const candidateCap = Math.max(1, +config.candidate_cap || Infinity);
+    const timeLimitMs = Math.max(1, +config.time_limit_ms || Infinity);
+    const startedAt = performance.now();
+    const safetyMax = 2000;
+    const overNodeLimit = () => Number.isFinite(nodeLimit) && nodeCounter >= nodeLimit;
+    const overTimeLimit = () => Number.isFinite(timeLimitMs) && performance.now() - startedAt >= timeLimitMs;
+    const overBudget = () => overNodeLimit() || overTimeLimit();
+    const budgetText = () => overNodeLimit() ? "Node limit" : "Time limit";
+    const goalMet = () => {
+      if (criterion === "count") return state.placements.length >= targetVal;
+      if (criterion === "layer") return calculateFrontierStats().min_gen >= targetVal;
+      return false;
+    };
+
+    const moveCoverage = (m) => {
+      if (m._coverage != null) return m._coverage;
+      const gVerts = m.orient.verts.map(v => add3(v, m.translation));
+      let c = 0;
+      for (const fIdx of m.orient.faces) if (state.frontier.has(keyFace(fIdx.map(i => gVerts[i])))) c++;
+      m._coverage = c;
+      return c;
+    };
+
+    async function* search(parentId) {
+      if (stopToken.stop) return false;
+      if (overBudget()) {
+        yield nodeStatus(parentId, "fail", budgetText());
+        return false;
+      }
+      const forcedBatch = [];
+      const doReturn = async function* (retval) {
+        if (retval && !exhaustive) return true;
+        while (forcedBatch.length) { const [mv, rb] = forcedBatch.pop(); undoMove(mv, rb); }
+        return retval;
+      };
+      if (goalMet()) {
+        yield nodeStatus(parentId, "success");
+        return yield* doReturn(true);
+      }
+      const candidateCache = new Map();
+      const cachedCandidates = async (faceKey) => {
+        if (!candidateCache.has(faceKey)) candidateCache.set(faceKey, await getCandidatesForFace(faceKey));
+        return candidateCache.get(faceKey);
+      };
+
+      while (true) {
+        await yieldToBrowser();
+        candidateCache.clear();
+        if (stopToken.stop) return false;
+        if (overBudget()) {
+          yield nodeStatus(parentId, "fail", budgetText());
+          return yield* doReturn(false);
+        }
+        if (state.frontier.size === 0) {
+          yield nodeStatus(parentId, "success"); return yield* doReturn(true);
+        }
+
+        const faces = [...state.frontier.keys()];
+        let forcedCount = 0;
+        const preForcedStats = calculateFrontierStats();
+
+        for (const f of faces) {
+          await yieldToBrowser();
+          if (!state.frontier.has(f)) continue;
+          const cands = await getCandidatesForFace(f, 2);
+          if (overBudget()) { yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
+          if (cands.length === 0) { yield nodeStatus(parentId, "fail"); return yield* doReturn(false); }
+          if (cands.length === 1) {
+            const mv = cands[0];
+            const gVerts = mv.orient.verts.map(v => add3(v, mv.translation));
+            const coveredGens = [];
+            for (const fIdx of mv.orient.faces) {
+              const k = keyFace(fIdx.map(i => gVerts[i]));
+              if (state.frontier.get(k)) coveredGens.push(state.frontier.get(k).gen);
+            }
+            const newGen = coveredGens.length ? (Math.min(...coveredGens) + 1) : 0;
+            if (newGen <= preForcedStats.min_gen + 2) {
+              const rb = applyMove(mv);
+              candidateCache.clear();
+              forcedBatch.push([mv, rb]);
+              forcedCount += 1;
+              if (shouldSnapshot()) {
+                yield snapshot(null);
+                await tick();
+              }
+            }
+          }
+        }
+
+        if (forcedCount > 0) {
+          const postForcedStats = calculateFrontierStats();
+          const forcedNodeId = nowId();
+          if (shouldSnapshot()) {
+            yield snapshot(forcedNodeId);
+            await tick();
+          } else {
+            yield nodeSnapshot(forcedNodeId);
+          }
+          yield branchSet(parentId, [{ id: forcedNodeId, text: `+ ${forcedCount} forced`, is_forced: true, frontier_stats: postForcedStats }]);
+          yield nodeStatus(forcedNodeId, "success", "", { frontier_stats: postForcedStats });
+        }
+
+        if (goalMet() || state.placements.length >= safetyMax) {
+          yield nodeStatus(parentId, "success");
+          return yield* doReturn(true);
+        }
+        if (forcedCount === 0) break;
+      }
+
+      const currentStats = calculateFrontierStats();
+      const minGenFaces = [];
+      for (const [k, v] of state.frontier.entries()) if (v.gen === currentStats.min_gen) minGenFaces.push(k);
+      
+      let bestFace = null;
+      if (minGenFaces.length) {
+        let bestCoverage = -1;
+        for (const f of minGenFaces) {
+          await yieldToBrowser();
+          const moves = await cachedCandidates(f);
+          if (!moves.length) continue;
+          for (const m of moves) { const c = moveCoverage(m); if (c > bestCoverage) { bestCoverage = c; bestFace = f; } }
+        }
+        if (!bestFace) {
+          for (const f of minGenFaces) {
+            await yieldToBrowser();
+            if ((await cachedCandidates(f)).length) { bestFace = f; break; }
+          }
+        }
+      }
+
+      if (!bestFace) { yield nodeStatus(parentId, "fail", "Dead End"); return yield* doReturn(false); }
+
+      let bestMoves = (await cachedCandidates(bestFace)).sort((a, b) => moveCoverage(b) - moveCoverage(a));
+      if (!exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
+        bestMoves = bestMoves.slice(0, branchCap);
+      }
+      const payload = bestMoves.map(() => { const id = nowId(); return { id, text: "" }; });
+      for (let i = 0; i < bestMoves.length; i++) bestMoves[i].node_id = payload[i].id;
+      
+      yield branchSet(parentId, payload);
+
+      let anySuccess = false;
+      for (let i = 0; i < bestMoves.length; i++) {
+        await yieldToBrowser();
+        if (overBudget()) {
+          yield nodeStatus(parentId, "fail", budgetText());
+          return yield* doReturn(false);
+        }
+        const mv = bestMoves[i];
+        const rb = applyMove(mv);
+        const postMoveStats = calculateFrontierStats();
+        
+        yield nodeStatus(mv.node_id, "working", `[${state.placements.length}] ${treeTileName(prototiles[mv.prototile_idx].name)} (${i+1}/${bestMoves.length})`, { color_id: mv.color_id, frontier_stats: postMoveStats });
+        if (shouldSnapshot()) {
+          yield snapshot(mv.node_id);
+          await tick();
+        } else {
+          yield nodeSnapshot(mv.node_id);
+        }
+
+        const child = yield* search(mv.node_id);
+        if (child) {
+          anySuccess = true;
+          yield nodeStatus(mv.node_id, "success");
+          if (!exhaustive) return yield* doReturn(true);
+        } else {
+          yield nodeStatus(mv.node_id, "fail");
+        }
+        undoMove(mv, rb);
+      }
+
+      if (anySuccess && exhaustive) { yield nodeStatus(parentId, "success"); return yield* doReturn(true); }
+      yield nodeStatus(parentId, "fail");
+      return yield* doReturn(false);
+    }
+
+    const success = yield* search(rootId);
+    yield nodeStatus(rootId, success ? "success" : "fail");
+    const finalSnapshot = success ? snapshot(null) : (bestSnapshot ? { ...cloneSnapshot(bestSnapshot), node_id: null } : snapshot(null));
+    yield finalSnapshot;
+    await tick();
+    yield {
+      type: "finished",
+      tile_count: finalSnapshot.tile_count,
+      success,
+      best_effort: !success && (finalSnapshot.tile_count ?? 0) > state.placements.length
+    };
+  };
+})();
+
+export const tileSpecs = (() => {
+  const SCALE = 2;
+
+  const COLOR_PALETTE = [
+    "#e74c3c","#3498db","#f1c40f","#2ecc71","#9b59b6",
+    "#e67e22","#1abc9c","#34495e","#d35400","#7f8c8d"
+  ];
+
+  // --- Z^3 lattice signed-permutation isometries: all 48 (det = ±1)
+  const Z3_MATRICES_ALL = (() => {
+    const perms = (arr) => {
+      if (arr.length <= 1) return [arr.slice()];
+      const out = [];
+      for (let i = 0; i < arr.length; i++) {
+        const rest = arr.slice(0, i).concat(arr.slice(i + 1));
+        for (const p of perms(rest)) out.push([arr[i], ...p]);
+      }
+      return out;
+    };
+
+    const det3 = (M) =>
+      M[0][0]*(M[1][1]*M[2][2]-M[1][2]*M[2][1]) -
+      M[0][1]*(M[1][0]*M[2][2]-M[1][2]*M[2][0]) +
+      M[0][2]*(M[1][0]*M[2][1]-M[1][1]*M[2][0]);
+
+    const mats = [];
+    for (const p of perms([0,1,2])) {
+      const P = [[0,0,0],[0,0,0],[0,0,0]];
+      for (let i = 0; i < 3; i++) P[i][p[i]] = 1;
+
+      for (const sx of [-1,1]) for (const sy of [-1,1]) for (const sz of [-1,1]) {
+        const S = [[sx,0,0],[0,sy,0],[0,0,sz]];
+        const M = [
+          [P[0][0]*S[0][0] + P[0][1]*S[1][0] + P[0][2]*S[2][0],
+           P[0][0]*S[0][1] + P[0][1]*S[1][1] + P[0][2]*S[2][1],
+           P[0][0]*S[0][2] + P[0][1]*S[1][2] + P[0][2]*S[2][2]],
+          [P[1][0]*S[0][0] + P[1][1]*S[1][0] + P[1][2]*S[2][0],
+           P[1][0]*S[0][1] + P[1][1]*S[1][1] + P[1][2]*S[2][1],
+           P[1][0]*S[0][2] + P[1][1]*S[1][2] + P[1][2]*S[2][2]],
+          [P[2][0]*S[0][0] + P[2][1]*S[1][0] + P[2][2]*S[2][0],
+           P[2][0]*S[0][1] + P[2][1]*S[1][1] + P[2][2]*S[2][1],
+           P[2][0]*S[0][2] + P[2][1]*S[1][2] + P[2][2]*S[2][2]],
+        ];
+        const det = det3(M);
+        mats.push({ M, det });
+      }
+    }
+    return mats;
+  })();
+
+  const Z3_MATRICES_DET1 = Z3_MATRICES_ALL.filter(x => x.det === 1);
+
+  const add3 = (a,b) => [a[0]+b[0], a[1]+b[1], a[2]+b[2]];
+  const sub3 = (a,b) => [a[0]-b[0], a[1]-b[1], a[2]-b[2]];
+  const dot3 = (a,b) => a[0]*b[0] + a[1]*b[1] + a[2]*b[2];
+  const cross3 = (a,b) => [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
+  const norm3 = (a) => Math.sqrt(dot3(a, a));
+  const normalize3 = (a) => {
+    const n = norm3(a);
+    return n === 0 ? a : [a[0]/n, a[1]/n, a[2]/n];
+  };
+
+  // Generic function to compute solid angle of a cone spanned by three vectors
+  const computeSolidAngle = (v1, v2, v3) => {
+    const u = normalize3(v1);
+    const v = normalize3(v2);
+    const w = normalize3(v3);
+    const triple = dot3(u, cross3(v, w));
+    const uv = dot3(u, v);
+    const vw = dot3(v, w);
+    const wu = dot3(w, u);
+    const denom = 1 + uv + vw + wu;
+    if (Math.abs(denom) < 1e-12) return 0;
+    const numerator = Math.abs(triple);
+    const ratio = numerator / denom;
+    const clampedRatio = Math.max(-1e12, Math.min(1e12, ratio));
+    const omega = 2 * Math.atan(clampedRatio);
+    return Math.abs(omega) < 1e-12 ? 0 : omega;
+  };
+
+  const computeDihedralAngle = (v1, v2, v3, v4) => {
+    const a = sub3(v3, v1);
+    const b = sub3(v2, v1);
+    const c = sub3(v4, v1);
+    const n1 = cross3(a, b);
+    const n2 = cross3(b, c);
+    const n1_norm = norm3(n1);
+    const n2_norm = norm3(n2);
+    if (n1_norm < 1e-12 || n2_norm < 1e-12) return 0;
+    const cosAngle = dot3(n1, n2) / (n1_norm * n2_norm);
+    const clampedCos = Math.max(-1, Math.min(1, cosAngle));
+    const angle = Math.acos(clampedCos);
+    return Math.PI - angle;
+  };
+
+  const computeWeight48 = (angle, fullAngle) => {
+    const exact = (angle / fullAngle) * 48;
+    const rounded = Math.round(exact);
+    if (Math.abs(exact - rounded) < 1e-6) return rounded;
+    return Math.floor(exact);
+  };
+
+  const getTetrahedronWeights = () => {
+    const verts = [[0,0,0],[1,1,0],[1,0,1],[0,1,1]];
+    const v0 = verts[0];
+    const v1 = sub3(verts[1], v0);
+    const v2 = sub3(verts[2], v0);
+    const v3 = sub3(verts[3], v0);
+    const solidAngle = computeSolidAngle(v1, v2, v3);
+    const dihedralAngle = computeDihedralAngle(verts[0], verts[1], verts[2], verts[3]);
+    const fullSphere = 4 * Math.PI;
+    const fullCircle = 2 * Math.PI;
+    return {
+      vertexWeight: computeWeight48(solidAngle, fullSphere),
+      edgeWeight: computeWeight48(dihedralAngle, fullCircle),
+      faceWeight: 24,
+      interiorWeight: 48
+    };
+  };
+
+  const getTetragonalDisphenoidWeights = () => {
+    const verts = [[0,0,1],[0,0,-1],[1,1,0],[1,-1,0]];
+    const v0 = verts[0];
+    const v1 = sub3(verts[1], v0);
+    const v2 = sub3(verts[2], v0);
+    const v3 = sub3(verts[3], v0);
+    const solidAngle = computeSolidAngle(v1, v2, v3);
+    const longDihedral = computeDihedralAngle(verts[0], verts[1], verts[2], verts[3]);
+    const shortDihedral = computeDihedralAngle(verts[0], verts[2], verts[1], verts[3]);
+    const fullSphere = 4 * Math.PI;
+    const fullCircle = 2 * Math.PI;
+    return {
+      vertexWeight: computeWeight48(solidAngle, fullSphere),
+      longEdgeWeight: computeWeight48(longDihedral, fullCircle),
+      shortEdgeWeight: computeWeight48(shortDihedral, fullCircle),
+      faceWeight: 24,
+      interiorWeight: 48
+    };
+  };
+
+  const computeTetrahedronWeights = (verts, isTetragonalDisphenoid = false) => {
+    if (isTetragonalDisphenoid) return getTetragonalDisphenoidWeights();
+    return getTetrahedronWeights();
+  };
+
+  const computeHullFaces = (verts) => {
+    const pts = verts.map(v => v.slice());
+    const N = pts.length;
+    const sum = pts.reduce((acc,v)=>add3(acc,v), [0,0,0]);
+    const faces = [];
+    const seen = new Set();
+
+    for (let i=0;i<N;i++) for (let j=i+1;j<N;j++) for (let k=j+1;k<N;k++) {
+      const p1 = pts[i], p2 = pts[j], p3 = pts[k];
+      const n = cross3(sub3(p2,p1), sub3(p3,p1));
+      if (n[0]===0 && n[1]==0 && n[2]===0) continue;
+      const Np1_minus_sum = sub3([N*p1[0],N*p1[1],N*p1[2]], sum);
+      let nn = n;
+      if (dot3(nn, Np1_minus_sum) < 0) nn = [-nn[0],-nn[1],-nn[2]];
+
+      let ok = true;
+      const onPlane = [];
+      for (let m=0;m<N;m++) {
+        const d = dot3(sub3(pts[m], p1), nn);
+        if (d > 0) { ok = false; break; }
+        if (d === 0) onPlane.push(m);
+      }
+      if (!ok || onPlane.length < 3) continue;
+
+      const facePts = onPlane.map(idx => pts[idx]);
+      const c = facePts.reduce((acc,v)=>add3(acc,v), [0,0,0]).map(x => x / facePts.length);
+      const nz = (() => {
+        const len = Math.sqrt(nn[0]*nn[0]+nn[1]*nn[1]+nn[2]*nn[2]);
+        return [nn[0]/len, nn[1]/len, nn[2]/len];
+      })();
+      let xax = sub3(facePts[0].map(Number), c);
+      const xlen = Math.sqrt(xax[0]*xax[0]+xax[1]*xax[1]+xax[2]*xax[2]) || 1;
+      xax = [xax[0]/xlen, xax[1]/xlen, xax[2]/xlen];
+      const yax = cross3(nz, xax);
+
+      const withAng = onPlane.map((idx) => {
+        const v = sub3(pts[idx].map(Number), c);
+        const ang = Math.atan2(dot3(v, yax), dot3(v, xax));
+        return { idx, ang };
+      }).sort((a,b)=>a.ang-b.ang);
+
+      const ordered = withAng.map(o => o.idx);
+      const h = ordered.slice().sort((a,b)=>a-b).join(",");
+      if (!seen.has(h)) {
+        seen.add(h);
+        faces.push(ordered);
+      }
+    }
+    return faces;
+  };
+
+  const computeTetrahedronOccupancy = (vertsScaled, faces, isTetragonalDisphenoid = false) => {
+    const weights = computeTetrahedronWeights(
+      vertsScaled.map(v => [v[0]/SCALE, v[1]/SCALE, v[2]/SCALE]),
+      isTetragonalDisphenoid
+    );
+    
+    const minB = [Infinity, Infinity, Infinity];
+    const maxB = [-Infinity, -Infinity, -Infinity];
+    for (const v of vertsScaled) {
+      for (let i = 0; i < 3; i++) {
+        minB[i] = Math.min(minB[i], v[i]);
+        maxB[i] = Math.max(maxB[i], v[i]);
+      }
+    }
+    
+    const occ = [];
+    const vertSet = new Set(vertsScaled.map(v => v.join(',')));
+    let longEdges = [];
+    let shortEdges = [];
+    
+    if (isTetragonalDisphenoid) {
+      for (let i = 0; i < vertsScaled.length; i++) {
+        for (let j = i + 1; j < vertsScaled.length; j++) {
+          const v1 = vertsScaled[i];
+          const v2 = vertsScaled[j];
+          const dx = Math.abs(v1[0] - v2[0]);
+          const dy = Math.abs(v1[1] - v2[1]);
+          const dz = Math.abs(v1[2] - v2[2]);
+          if (dx === 0 && dy === 0 && dz === 4) longEdges.push([i, j]);
+          else shortEdges.push([i, j]);
+        }
+      }
+    }
+    
+    for (let x = minB[0]; x <= maxB[0]; x++) {
+      for (let y = minB[1]; y <= maxB[1]; y++) {
+        for (let z = minB[2]; z <= maxB[2]; z++) {
+          const p = [x, y, z];
+          const key = p.join(',');
+          
+          if (vertSet.has(key)) {
+            occ.push([p, weights.vertexWeight]);
+            continue;
+          }
+          
+          let isEdge = false;
+          if (isTetragonalDisphenoid) {
+            for (const [i, j] of longEdges) {
+              const v1 = vertsScaled[i];
+              const v2 = vertsScaled[j];
+              if (p[0]*2 === v1[0] + v2[0] && p[1]*2 === v1[1] + v2[1] && p[2]*2 === v1[2] + v2[2]) {
+                occ.push([p, weights.longEdgeWeight]);
+                isEdge = true; break;
+              }
+            }
+            if (!isEdge) {
+              for (const [i, j] of shortEdges) {
+                const v1 = vertsScaled[i];
+                const v2 = vertsScaled[j];
+                if (p[0]*2 === v1[0] + v2[0] && p[1]*2 === v1[1] + v2[1] && p[2]*2 === v1[2] + v2[2]) {
+                  occ.push([p, weights.shortEdgeWeight]);
+                  isEdge = true; break;
+                }
+              }
+            }
+          } else {
+            for (let i = 0; i < vertsScaled.length && !isEdge; i++) {
+              for (let j = i + 1; j < vertsScaled.length && !isEdge; j++) {
+                const v1 = vertsScaled[i];
+                const v2 = vertsScaled[j];
+                if (p[0]*2 === v1[0] + v2[0] && p[1]*2 === v1[1] + v2[1] && p[2]*2 === v1[2] + v2[2]) {
+                  occ.push([p, weights.edgeWeight]);
+                  isEdge = true; break;
+                }
+              }
+            }
+          }
+          
+          if (isEdge) continue;
+          
+          const EPS = 1e-7;
+          const scaledVerts = vertsScaled.map(v => [v[0]/SCALE, v[1]/SCALE, v[2]/SCALE]);
+          const pu = [p[0]/SCALE, p[1]/SCALE, p[2]/SCALE];
+          const [v0, v1, v2, v3] = scaledVerts;
+          
+          const v0v1 = sub3(v1, v0);
+          const v0v2 = sub3(v2, v0);
+          const v0v3 = sub3(v3, v0);
+          const v0p = sub3(pu, v0);
+          
+          const d00 = dot3(v0v1, v0v1);
+          const d01 = dot3(v0v1, v0v2);
+          const d02 = dot3(v0v1, v0v3);
+          const d03 = dot3(v0v1, v0p);
+          const d11 = dot3(v0v2, v0v2);
+          const d12 = dot3(v0v2, v0v3);
+          const d13 = dot3(v0v2, v0p);
+          const d22 = dot3(v0v3, v0v3);
+          const d23 = dot3(v0v3, v0p);
+          
+          const denom = d00 * (d11 * d22 - d12 * d12) -
+                       d01 * (d01 * d22 - d12 * d02) +
+                       d02 * (d01 * d12 - d11 * d02);
+          
+          if (Math.abs(denom) < 1e-12) continue;
+          
+          const invDenom = 1 / denom;
+          const u = (d11 * d22 - d12 * d12) * d03 - (d01 * d22 - d12 * d02) * d13 + (d01 * d12 - d11 * d02) * d23;
+          const v = -(d01 * d22 - d12 * d02) * d03 + (d00 * d22 - d02 * d02) * d13 - (d00 * d12 - d01 * d02) * d23;
+          const w = (d01 * d12 - d11 * d02) * d03 - (d00 * d12 - d01 * d02) * d13 + (d00 * d11 - d01 * d01) * d23;
+          
+          const baryU = u * invDenom;
+          const baryV = v * invDenom;
+          const baryW = w * invDenom;
+          const baryT = 1 - baryU - baryV - baryW;
+          
+          if (baryU > -EPS && baryV > -EPS && baryW > -EPS && baryT > -EPS &&
+              baryU < 1+EPS && baryV < 1+EPS && baryW < 1+EPS && baryT < 1+EPS) {
+            if (Math.abs(baryU) < EPS || Math.abs(baryV) < EPS || Math.abs(baryW) < EPS || Math.abs(baryT) < EPS) {
+              occ.push([p, weights.faceWeight]);
+            } else {
+              occ.push([p, weights.interiorWeight]);
+            }
+          }
+        }
+      }
+    }
+    return occ;
+  };
+
+  const scanConvexInterior = (verts, faces) => {
+    const minB = [Infinity,Infinity,Infinity];
+    const maxB = [-Infinity,-Infinity,-Infinity];
+    for (const v of verts) for (let i=0;i<3;i++) { 
+      minB[i]=Math.min(minB[i],v[i]); 
+      maxB[i]=Math.max(maxB[i],v[i]); 
+    }
+    const sum = verts.reduce((acc,v)=>add3(acc,v), [0,0,0]);
+    const N = verts.length;
+    const planes = [];
+    for (const f of faces) {
+      if (f.length < 3) continue;
+      const v0 = verts[f[0]], v1 = verts[f[1]], v2 = verts[f[2]];
+      let n = cross3(sub3(v1,v0), sub3(v2,v0));
+      const test = dot3(n, sub3([N*v0[0],N*v0[1],N*v0[2]], sum));
+      if (test < 0) n = [-n[0],-n[1],-n[2]];
+      planes.push({ n, d: dot3(n, v0) });
+    }
+    const interior = [];
+    for (let x=minB[0]; x<=maxB[0]; x++)
+      for (let y=minB[1]; y<=maxB[1]; y++)
+        for (let z=minB[2]; z<=maxB[2]; z++) {
+          const p = [x,y,z];
+          let inside = true, boundary = false;
+          for (const pl of planes) {
+            const val = dot3(pl.n, p);
+            if (val > pl.d) { inside = false; break; }
+            if (val === pl.d) boundary = true;
+          }
+          if (inside && !boundary) interior.push([p, 48]);
+        }
+    return interior;
+  };
+
+  const createScaledTileData = (unitVerts, faceTemplate, autoHull=false, isTetragonalDisphenoid=false) => {
+    const vertsScaled = unitVerts.map(v => v.map(c => Math.round(c * SCALE)));
+    const faces = autoHull ? computeHullFaces(vertsScaled) : faceTemplate.map(f => f.v.slice());
+    const faceData = autoHull
+      ? faces.map(f => ({ v: f, type: "default" }))
+      : faceTemplate.map(f => ({ v: f.v.slice(), type: f.type }));
+    let occ;
+    if (unitVerts.length === 4 && faceTemplate.length === 4 && faceTemplate.every(f => f.v.length === 3)) {
+      occ = computeTetrahedronOccupancy(vertsScaled, faces, isTetragonalDisphenoid);
+    } else {
+      occ = scanConvexInterior(vertsScaled, faceData.map(f => f.v));
+    }
+    return { v: vertsScaled, f_data: faceData, occ, skip_winding: false };
+  };
+
+  const generatePolycubeData = (voxels) => {
+    const voxelSet = new Set(voxels.map(v => v.map(Number).join(",")));
+    const vox = voxels.map(v => v.map(Number));
+    const uniqueVerts = new Set();
+    for (const v of vox) {
+      for (const dx of [0,1]) for (const dy of [0,1]) for (const dz of [0,1]) {
+        uniqueVerts.add([v[0]+dx, v[1]+dy, v[2]+dz].join(","));
+      }
+    }
+    const vertsList = [...uniqueVerts].map(s => s.split(",").map(Number))
+      .sort((a,b)=>a[0]-b[0]||a[1]-b[1]||a[2]-b[2]);
+    const vertMap = new Map(vertsList.map((v,i)=>[v.join(","), i]));
+    const faceDefs = [
+      [[ 1,0,0],  [[1,0,0],[1,1,0],[1,1,1],[1,0,1]]],
+      [[-1,0,0],  [[0,0,0],[0,0,1],[0,1,1],[0,1,0]]],
+      [[ 0,1,0],  [[0,1,0],[0,1,1],[1,1,1],[1,1,0]]],
+      [[ 0,-1,0], [[0,0,0],[1,0,0],[1,0,1],[0,0,1]]],
+      [[ 0,0,1],  [[0,0,1],[1,0,1],[1,1,1],[0,1,1]]],
+      [[ 0,0,-1], [[0,0,0],[0,1,0],[1,1,0],[1,0,0]]],
+    ];
+    const faces = [];
+    for (const v of vox) {
+      const [vx,vy,vz] = v;
+      for (const [nrm, deltas] of faceDefs) {
+        const nb = [vx+nrm[0], vy+nrm[1], vz+nrm[2]].join(",");
+        if (!voxelSet.has(nb)) {
+          const idxs = deltas.map(([dx,dy,dz]) => vertMap.get([vx+dx,vy+dy,vz+dz].join(",")));
+          faces.push(idxs);
+        }
+      }
+    }
+    const scaledVerts = vertsList.map(v => v.map(c => (c * SCALE)|0));
+    const occ = new Map();
+    for (const v of vertsList) occ.set(v.map(c => (c*SCALE)|0).join(","), 6);
+    for (let i=0;i<vertsList.length;i++) for (let j=i+1;j<vertsList.length;j++) {
+      const a = vertsList[i], b = vertsList[j];
+      const man = Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]);
+      if (man === 1) {
+        const mid = [(a[0]+b[0]),(a[1]+b[1]),(a[2]+b[2])].map(c => (c*SCALE/2)|0);
+        occ.set(mid.join(","), 12);
+      }
+    }
+    for (const v of vox) {
+      const vs = v.map(c => (c*SCALE)|0);
+      const roll = (arr, k) => arr.slice(k).concat(arr.slice(0,k));
+      for (let i=0;i<3;i++) {
+        const a = add3(vs, roll([2,1,1], i));
+        const b = add3(vs, roll([0,1,1], i));
+        occ.set(a.join(","), 24);
+        occ.set(b.join(","), 24);
+      }
+      occ.set([v[0]*SCALE+1, v[1]*SCALE+1, v[2]*SCALE+1].join(","), 48);
+    }
+    const occList = [...occ.entries()].map(([k,w]) => [k.split(",").map(Number), w]);
+    const faceData = faces.map(f => ({ v: f.slice(), type: "default" }));
+    return { v: scaledVerts, f_data: faceData, occ: occList, skip_winding: true };
+  };
+
+  class Prototile3D {
+    constructor(name, vertices, face_data, occupancy_map, skip_winding=false, is_mirror=false) {
+      this.name = name;
+      this.is_mirror = is_mirror;
+      this.verts = vertices.map(v => v.slice());
+      this.faces = face_data.map(f => f.v.slice());
+      this.face_types = face_data.map(f => f.type);
+      this.occupancy_points = (occupancy_map || []).map(([pt,w]) => ({ pos: pt.slice(), weight: w }));
+      if (!skip_winding) this._fixWinding();
+      this.unique_orientations = [];
+      this.is_chiral = false;
+      this._calcSymmetries();
+      if (!is_mirror) this._checkChirality();
+    }
+    _fixWinding() {
+      const inside = this.occupancy_points.length ? this.occupancy_points[0].pos : [
+        Math.round(this.verts.reduce((s,v)=>s+v[0],0)/this.verts.length),
+        Math.round(this.verts.reduce((s,v)=>s+v[1],0)/this.verts.length),
+        Math.round(this.verts.reduce((s,v)=>s+v[2],0)/this.verts.length),
+      ];
+      const newFaces = [];
+      for (const f of this.faces) {
+        if (f.length < 3) { newFaces.push(f); continue; }
+        const v0 = this.verts[f[0]], v1 = this.verts[f[1]], v2 = this.verts[f[2]];
+        let n = cross3(sub3(v1,v0), sub3(v2,v0));
+        const inward = sub3(inside, v0);
+        if (dot3(n, inward) > 0) newFaces.push(f.slice().reverse());
+        else newFaces.push(f.slice());
+      }
+      this.faces = newFaces;
+    }
+    _calcSymmetries() {
+      const mul = (M,v) => ([
+        M[0][0]*v[0]+M[0][1]*v[1]+M[0][2]*v[2],
+        M[1][0]*v[0]+M[1][1]*v[1]+M[1][2]*v[2],
+        M[2][0]*v[0]+M[2][1]*v[1]+M[2][2]*v[2],
+      ]);
+      const buildFrom = (matList) => {
+        const seen = new Set();
+        const out = [];
+        for (let iso_idx = 0; iso_idx < matList.length; iso_idx++) {
+          const { M, det } = matList[iso_idx];
+          let tVerts = this.verts.map(v => mul(M,v));
+          const shift = [Infinity,Infinity,Infinity];
+          for (const v of tVerts) for (let i=0;i<3;i++) shift[i]=Math.min(shift[i], v[i]);
+          tVerts = tVerts.map(v => [v[0]-shift[0], v[1]-shift[1], v[2]-shift[2]]);
+          const vIndex = new Map(tVerts.map((v,i)=>[v.join(","), i]));
+          const tOcc = this.occupancy_points.map(pt => {
+            const mp = mul(M, pt.pos);
+            return { pos: [mp[0]-shift[0], mp[1]-shift[1], mp[2]-shift[2]], weight: pt.weight };
+          });
+          const newFaces = [];
+          const newFaceTypes = [];
+          for (let fi = 0; fi < this.faces.length; fi++) {
+            const face = this.faces[fi];
+            const mapped = face.map(oldIdx => {
+              const mv = mul(M, this.verts[oldIdx]);
+              const key = [mv[0]-shift[0], mv[1]-shift[1], mv[2]-shift[2]].join(",");
+              return vIndex.get(key);
+            });
+            const fixed = (det === -1) ? mapped.slice().reverse() : mapped;
+            newFaces.push(fixed);
+            newFaceTypes.push(this.face_types[fi]);
+          }
+          const vHash = tVerts.map(v=>v.join(",")).sort().join("|");
+          const oHash = tOcc.map(p=>`${p.pos.join(",")}:${p.weight}`).sort().join("|");
+          const fHash = newFaces.map(f => f.slice().sort((a,b)=>a-b).join(",")).sort().join("|");
+          const geomHash = `${vHash}@@${oHash}@@${fHash}`;
+          if (seen.has(geomHash)) continue;
+          seen.add(geomHash);
+          out.push({
+            iso_idx,
+            det,
+            verts: tVerts,
+            faces: newFaces,
+            face_types: newFaceTypes,
+            occupancy: tOcc,
+            vertsForFace: (fIdx) => fIdx.map(i => tVerts[i])
+          });
+        }
+        return out;
+      };
+      this.orientations24 = buildFrom(Z3_MATRICES_DET1);
+      this.unique_orientations = this.orientations24;
+    }
+    _checkChirality() {
+      const mirror = this.verts.map(v => [-v[0], v[1], v[2]]);
+      const minv = [Infinity,Infinity,Infinity];
+      for (const v of mirror) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
+      const tVerts = mirror.map(v => sub3(v, minv));
+      const tOcc = this.occupancy_points.map(pt => ({ pos: sub3([-pt.pos[0], pt.pos[1], pt.pos[2]], minv), weight: pt.weight }));
+      const vHash = tVerts.map(v=>v.join(",")).sort().join("|");
+      const oHash = tOcc.map(p=>`${p.pos.join(",")}:${p.weight}`).sort().join("|");
+      const mirrorHash = `${vHash}@@${oHash}`;
+      const baseNoFaces = new Set();
+      for (const o of this.unique_orientations) {
+        const vh = o.verts.map(v=>v.join(",")).sort().join("|");
+        const oh = o.occupancy.map(p=>`${p.pos.join(",")}:${p.weight}`).sort().join("|");
+        baseNoFaces.add(`${vh}@@${oh}`);
+      }
+      this.is_chiral = !baseNoFaces.has(mirrorHash);
+    }
+    get_mirror_copy() {
+      if (!this.is_chiral) return null;
+      const mirrorVerts = this.verts.map(v => [-v[0], v[1], v[2]]);
+      const minv = [Infinity,Infinity,Infinity];
+      for (const v of mirrorVerts) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
+      const tVerts = mirrorVerts.map(v => sub3(v, minv));
+      const mirrorOcc = this.occupancy_points.map(p => [sub3([-p.pos[0],p.pos[1],p.pos[2]], minv), p.weight]);
+      const faceData = this.faces.map((f,i)=>({ v: f.slice(), type: this.face_types[i] }));
+      return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true);
+    }
+  }
+
+  const make_tile = (name, data) => {
+    return new Prototile3D(name, data.v, data.f_data, data.occ, !!data.skip_winding, false);
+  };
+
+  const gen_tetrahedron_data = () => {
+    const verts = [[0,0,0],[1,1,0],[1,0,1],[0,1,1]];
+    return createScaledTileData(
+      verts,
+      [ { v:[0,1,2], type:"TET_FACE" }, { v:[0,2,3], type:"TET_FACE" }, { v:[0,3,1], type:"TET_FACE" }, { v:[1,3,2], type:"TET_FACE" } ],
+      false, false
+    );
+  };
+
+  const gen_tetragonal_disphenoid_data = () => {
+    const verts = [[0,0,1],[0,0,-1],[1,1,0],[1,-1,0]];
+    return createScaledTileData(
+      verts,
+      [ { v:[0,2,3], type:"TD_FACE" }, { v:[1,3,2], type:"TD_FACE" }, { v:[0,3,1], type:"TD_FACE" }, { v:[0,1,2], type:"TD_FACE" } ],
+      false, true
+    );
+  };
+
+  const gen_octahedron_data = () =>
+    createScaledTileData(
+      [[ 1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],
+      [
+        {v:[0,2,4], type:"OCTA_FACE_A"}, {v:[2,1,4], type:"OCTA_FACE_B"}, {v:[1,3,4], type:"OCTA_FACE_A"}, {v:[3,0,4], type:"OCTA_FACE_B"},
+        {v:[0,5,2], type:"OCTA_FACE_B"}, {v:[2,5,1], type:"OCTA_FACE_A"}, {v:[1,5,3], type:"OCTA_FACE_B"}, {v:[3,5,0], type:"OCTA_FACE_A"},
+      ], false
+    );
+
+  const gen_corner_tetra_data = () =>
+    createScaledTileData(
+      [[0,0,0],[2,0,0],[0,2,0],[0,0,2],[1,1,0],[1,0,1],[0,1,1]],
+      [
+        {v:[0,2,4], type:"CORNER_SIDE_L"}, {v:[0,4,1], type:"CORNER_SIDE_R"}, {v:[0,1,5], type:"CORNER_SIDE_L"},
+        {v:[0,5,3], type:"CORNER_SIDE_R"}, {v:[0,3,6], type:"CORNER_SIDE_L"}, {v:[0,6,2], type:"CORNER_SIDE_R"},
+        {v:[4,6,5], type:"CORNER_CENTER"}, {v:[1,5,4], type:"CORNER_OUTER"}, {v:[2,4,6], type:"CORNER_OUTER"}, {v:[3,6,5], type:"CORNER_OUTER"},
+      ], false
+    );
+
+  const gen_cuboctahedron_data = () => {
+    const set = new Set();
+    for (const x of [-1,1]) for (const y of [-1,1]) set.add([x,y,0].join(","));
+    for (const x of [-1,1]) for (const z of [-1,1]) set.add([x,0,z].join(","));
+    for (const y of [-1,1]) for (const z of [-1,1]) set.add([0,y,z].join(","));
+    return createScaledTileData([...set].map(s => s.split(",").map(Number)), [], true);
+  };
+
+  const gen_elongated_square_bipyramid = () => {
+    const verts = [];
+    for (const x of [-1,1]) for (const y of [-1,1]) for (const z of [-1,1]) verts.push([x,y,z]);
+    verts.push([0,0,2],[0,0,-2]);
+    return createScaledTileData(verts, [], true);
+  };
+
+  const gen_n_cross_data = (arm) => {
+    const vox = [[0,0,0]];
+    const dirs = [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+    for (const d of dirs) for (let i=1;i<=arm;i++) vox.push([i*d[0], i*d[1], i*d[2]]);
+    return generatePolycubeData(vox);
+  };
+
+  const gen_n_semicross_data = (arm) => {
+    const vox = [[0,0,0]];
+    const dirs = [[1,0,0],[0,1,0],[0,0,1]];
+    for (const d of dirs) for (let i=1;i<=arm;i++) vox.push([i*d[0], i*d[1], i*d[2]]);
+    return generatePolycubeData(vox);
+  };
+
+  const gen_double_ring_data = () =>
+    generatePolycubeData([ [0,0,0],[0,0,1], [1,0,0],[1,1,0],[1,1,1],[0,1,1], [-1,0,0],[-1,-1,0],[-1,-1,1],[0,-1,1] ]);
+  const gen_buckled_ring_data = () => generatePolycubeData([[0,0,0],[1,0,0],[1,1,0],[1,1,1],[0,1,1],[0,0,1]]);
+  const gen_large_buckled_ring_data = () => generatePolycubeData([ [0,0,0],[1,0,0],[2,0,0],[2,1,0],[2,2,0], [2,2,1],[2,2,2],[1,2,2],[0,2,2],[0,1,2],[0,0,2],[0,0,1] ]);
+  const gen_tuning_fork = () => {
+    const vox = [];
+    for (let x=0;x<3;x++) for (let y=0;y<12;y++) {
+      if (!(x===1 && (y<3 || (6<=y && y<9)))) vox.push([x,y,0]);
+    }
+    return generatePolycubeData(vox);
+  };
+  const gen_twisted_h_data = () => generatePolycubeData([[0,0,0],[0,0,1],[1,0,1],[-1,0,1],[0,0,-1],[0,1,-1],[0,-1,-1]]);
+  const gen_cube_data = () => generatePolycubeData([[0,0,0]]);
+  const gen_s_tetracube = () => generatePolycubeData([[0,0,0],[1,0,0],[1,1,0],[1,1,1]]);
+  const gen_knuckle_pentacube = () => generatePolycubeData([[0,0,0],[1,0,0],[-1,0,0],[0,1,0],[0,0,1]]);
+
+  const gen_rhombic_robust = () => {
+    const set = new Set();
+    const perms = (arr) => {
+      if (arr.length<=1) return [arr.slice()];
+      const out=[];
+      for (let i=0;i<arr.length;i++) {
+        const rest=arr.slice(0,i).concat(arr.slice(i+1));
+        for (const p of perms(rest)) out.push([arr[i],...p]);
+      }
+      return out;
+    };
+    for (const p of perms([2,0,0])) { set.add(p.join(",")); set.add(p.map(x=>-x).join(",")); }
+    for (const sx of [-1,1]) for (const sy of [-1,1]) for (const sz of [-1,1]) set.add([sx,sy,sz].join(","));
+    return createScaledTileData([...set].map(s => s.split(",").map(Number)), [], true);
+  };
+
+  const gen_trunc_oct_robust = () => {
+    const set = new Set();
+    const perms = (arr) => {
+      if (arr.length<=1) return [arr.slice()];
+      const out=[];
+      for (let i=0;i<arr.length;i++) {
+        const rest=arr.slice(0,i).concat(arr.slice(i+1));
+        for (const p of perms(rest)) out.push([arr[i],...p]);
+      }
+      return out;
+    };
+    for (const p of perms([2,1,0])) {
+      for (const s1 of [-1,1]) for (const s2 of [-1,1]) {
+        const pt = [0,0,0]; pt[p[0]] = 2*s1; pt[p[1]] = 1*s2; set.add(pt.join(","));
+      }
+    }
+    return createScaledTileData([...set].map(s => s.split(",").map(Number)), [], true);
+  };
+
+  const gen_elongated_dodecahedron = () => {
+    const verts = [[2,0,0],[-2,0,0],[0,2,0],[0,-2,0],[0,0,4],[0,0,-4]];
+    for (const x of [-1,1]) for (const y of [-1,1]) for (const z of [-1,1]) verts.push([x,y,2*z]);
+    return createScaledTileData(verts, [], true);
+  };
+
+  const gen_hex_prism = () => {
+    const perms = (arr) => {
+      if (arr.length<=1) return [arr.slice()];
+      const out=[];
+      for (let i=0;i<arr.length;i++) {
+        const rest=arr.slice(0,i).concat(arr.slice(i+1));
+        for (const p of perms(rest)) out.push([arr[i],...p]);
+      }
+      return out;
+    };
+    const verts = [];
+    for (const p of perms([1,-1,0])) verts.push([p[0]+1,p[1]+1,p[2]+1]);
+    for (const p of perms([1,-1,0])) verts.push([p[0]-1,p[1]-1,p[2]-1]);
+    return createScaledTileData(verts, [], true);
+  };
+
+  const gen_orthoscheme_robust = () =>
+    createScaledTileData(
+      [[0,0,0],[2,0,0],[2,2,0],[2,2,2],[1,1,0],[2,1,1]],
+      [
+        {v:[0,1,4], type:"RIGHT_ISO_A"}, {v:[1,2,4], type:"RIGHT_ISO_B"},
+        {v:[1,2,5], type:"RIGHT_ISO_A"}, {v:[2,3,5], type:"RIGHT_ISO_B"},
+        {v:[0,1,3], type:"SCALENE_BACK"}, {v:[0,2,3], type:"SCALENE_SLANT"},
+      ], false
+    );
+
+  const gen_gyrobifastigium_data = () => {
+    const verts = [[1,1,0],[1,-1,0],[-1,-1,0],[-1,1,0],[0,1,2],[0,-1,2],[1,0,-2],[-1,0,-2]];
+    return createScaledTileData(verts, [], true);
+  };
+
+  const gen_trunc_tetra_friauf = () => {
+    const tips = [[0,0,0],[3,3,0],[3,0,3],[0,3,3]];
+    const verts = [];
+    for (let i=0;i<4;i++) for (let j=0;j<4;j++) if (j!==i) {
+      const a=tips[i], b=tips[j];
+      verts.push([a[0]+((b[0]-a[0])/3), a[1]+((b[1]-a[1])/3), a[2]+((b[2]-a[2])/3)]);
+    }
+    const uniq = new Map();
+    for (const v of verts) uniq.set(v.join(","), v);
+    const temp = createScaledTileData([...uniq.values()], [], true);
+    temp.f_data = temp.f_data.map(f => ({ ...f, type: (f.v.length===3 ? "TRI_FACE" : "HEX_FACE") }));
+    return temp;
+  };
+
+  const gen_escher_solid_data = () => {
+    const core = gen_rhombic_robust();
+    const verts = core.v.map(v => v.slice());
+    const faces = [];
+    const occ = new Map();
+    const addOcc = (items) => {
+      for (const [pos, weight] of items ?? []) {
+        const key = pos.join(",");
+        occ.set(key, (occ.get(key) ?? 0) + weight);
+      }
+    };
+    addOcc(core.occ);
+
+    for (const face of core.f_data) {
+      const base = face.v.map(index => verts[index]);
+      const center = base
+        .reduce((sum, v) => add3(sum, v), [0, 0, 0])
+        .map(c => Math.round(c / base.length));
+      const apex = center.map(c => c * 2);
+      const apexIndex = verts.length;
+      verts.push(apex);
+
+      for (let i = 0; i < face.v.length; i++) {
+        faces.push({
+          v: [face.v[i], face.v[(i + 1) % face.v.length], apexIndex],
+          type: "ESCHER_SPIKE_WALL"
+        });
+      }
+
+      const localVerts = base.map(v => v.slice()).concat([apex]);
+      const localFaces = [
+        [0, 1, 2, 3],
+        [0, 1, 4],
+        [1, 2, 4],
+        [2, 3, 4],
+        [3, 0, 4]
+      ];
+      addOcc(scanConvexInterior(localVerts, localFaces));
+    }
+
+    return {
+      v: verts,
+      f_data: faces,
+      occ: [...occ.entries()].map(([key, weight]) => [key.split(",").map(Number), weight]),
+      skip_winding: false
+    };
+  };
+
+  const gen_letter_o_data = () => {
+    const vox = [];
+    for (let x = 0; x < 3; x++) for (let y = 0; y < 4; y++) {
+      if (x === 1 && (y === 1 || y === 2)) continue;
+      vox.push([x, y, 0]);
+    }
+    const data = generatePolycubeData(vox);
+    const hollowSet = new Set(['1,1,0', '1,2,0']);
+    const voxelSet = new Set(vox.map(v => v.join(',')));
+    const dirs = [[1,0,0], [-1,0,0],[0,1,0], [0,-1,0],[0,0,1], [0,0,-1]];
+    const faceInfo = new Map();
+    const getFaceType = (vx, vy, vz, dx, dy, dz, neighbor) => {
+      if (hollowSet.has(neighbor)) {
+        if ((vy === 0 && dy === 1) || (vy === 3 && dy === -1)) return "inner_single";
+        else return "inner_double";
+      }
+      const isOnPerimeter = (vx === 0 && dx === -1) || (vx === 2 && dx === 1) || (vy === 0 && dy === -1) || (vy === 3 && dy === 1) || (vz === 0 && dz === -1) || (vz === 0 && dz === 1);
+      if (isOnPerimeter) return "outer_rim"; else return "outer_side";
+    };
+    for (const v of vox) {
+      const [vx, vy, vz] = v;
+      for (let d = 0; d < dirs.length; d++) {
+        const [dx, dy, dz] = dirs[d];
+        const nb = [vx + dx, vy + dy, vz + dz];
+        const nbKey = nb.join(',');
+        if (hollowSet.has(nbKey) || !voxelSet.has(nbKey)) {
+          const faceType = getFaceType(vx, vy, vz, dx, dy, dz, nbKey);
+          const key = `${vx},${vy},${vz},${dx},${dy},${dz}`;
+          faceInfo.set(key, { voxel: v, normal: [dx, dy, dz], type: faceType });
+        }
+      }
+    }
+    const faceCenter = (faceIndices, vertices) => {
+      const verts = faceIndices.map(i => vertices[i]);
+      const sum = verts.reduce((acc, v) => [acc[0]+v[0], acc[1]+v[1], acc[2]+v[2]], [0,0,0]);
+      return sum.map(c => c / verts.length);
+    };
+    const estimateNormal = (faceIndices, vertices) => {
+      if (faceIndices.length < 3) return [0,0,0];
+      const v0 = vertices[faceIndices[0]], v1 = vertices[faceIndices[1]], v2 = vertices[faceIndices[2]];
+      const e1 = [v1[0]-v0[0], v1[1]-v0[1], v1[2]-v0[2]];
+      const e2 = [v2[0]-v0[0], v2[1]-v0[1], v2[2]-v0[2]];
+      const nx = e1[1]*e2[2] - e1[2]*e2[1], ny = e1[2]*e2[0] - e1[0]*e2[2], nz = e1[0]*e2[1] - e1[1]*e2[0];
+      const len = Math.sqrt(nx*nx + ny*ny + nz*nz);
+      if (len < 0.0001) return [0,0,0];
+      return [nx/len, ny/len, nz/len];
+    };
+    for (let i = 0; i < data.f_data.length; i++) {
+      const face = data.f_data[i];
+      const center = faceCenter(face.v, data.v);
+      const normal = estimateNormal(face.v, data.v);
+      let matched = false;
+      for (const [key, info] of faceInfo.entries()) {
+        const [vx, vy, vz, dx, dy, dz] = key.split(',').map(Number);
+        const facePos = [vx + (dx > 0 ? 1 : dx < 0 ? 0 : 0.5), vy + (dy > 0 ? 1 : dy < 0 ? 0 : 0.5), vz + (dz > 0 ? 1 : dz < 0 ? 0 : 0.5)].map(p => p * 2);
+        const dist = Math.sqrt(Math.pow(center[0] - facePos[0], 2) + Math.pow(center[1] - facePos[1], 2) + Math.pow(center[2] - facePos[2], 2));
+        const dot = normal[0]*dx + normal[1]*dy + normal[2]*dz;
+        if (dist < 1.0 && dot > 0.7) { face.type = info.type; matched = true; break; }
+      }
+      if (!matched) {
+        const voxelCenter = center.map(c => Math.round(c / 2));
+        const isNearPerimeter = voxelCenter[0] === 0 || voxelCenter[0] === 3 || voxelCenter[1] === 0 || voxelCenter[1] === 4 || voxelCenter[2] === 0 || voxelCenter[2] === 1;
+        if (isNearPerimeter) face.type = "outer_rim"; else face.type = "outer_side";
+      }
+    }
+    return data;
+  };
+
+  const gen_1cross_plus_data = () => generatePolycubeData([[0,0,0],[1,0,0], [-1,0,0],[0,1,0], [0,-1,0],[0,0,1], [0,0,-1],[2,0,0]]);
+
+  // --- Barlow Packing Generators (FCC/HCP Voronoi Cells) ---
+  const gen_barlow_polyhedra = () => {
+    // 1. Rhombic Dodecahedron (FCC)
+    // Vertices scaled x3 to avoid fractions during reflection
+    // Standard RD vertices: perms of (±2,0,0) -> (±6,0,0) and (±1,±1,±1) -> (±3,±3,±3)
+    const rd_verts = [
+      [3,3,3], [-3,-3,-3], // Poles
+      [6,0,0], [0,6,0], [0,0,6], // Top Shoulders
+      [-6,0,0], [0,-6,0], [0,0,-6], // Bottom Shoulders
+      [3,3,-3], [3,-3,3], [-3,3,3], // Top Waist (Equator)
+      [-3,-3,3], [-3,3,-3], [3,-3,-3] // Bottom Waist
+    ];
+    const rd_data = createScaledTileData(rd_verts, [], true);
+    
+    // 2. Trapezo-Rhombic Dodecahedron (HCP)
+    // Construct by taking Top Half of RD and Reflecting it across x+y+z=0
+    // Reflection formula: v' = v - 2 * (dot(v,n)/dot(n,n)) * n, where n=[1,1,1], dot(n,n)=3
+    // v' = v - 2/3 * sum(v) * [1,1,1]
+    const trd_verts = [];
+    
+    // Add Top Half (including equator)
+    trd_verts.push([3,3,3]); // Pole
+    trd_verts.push([6,0,0], [0,6,0], [0,0,6]); // Top Shoulders
+    trd_verts.push([3,3,-3], [3,-3,3], [-3,3,3]); // Top Waist (Equator)
+
+    // Reflect Top Half to create Bottom Half
+    const reflect = (v) => {
+      const sum = v[0]+v[1]+v[2];
+      const k = (2 * sum) / 3;
+      return [v[0]-k, v[1]-k, v[2]-k];
+    };
+    trd_verts.push(reflect([3,3,-3]), reflect([3,-3,3]), reflect([-3,3,3])); // Bottom Waist
+    trd_verts.push(reflect([6,0,0]), reflect([0,6,0]), reflect([0,0,6])); // Bottom Shoulders
+    trd_verts.push(reflect([3,3,3])); // Bottom Pole
+
+    const trd_data = createScaledTileData(trd_verts, [], true);
+    trd_data.f_data.forEach(f => {
+      if (f.v.length === 4) f.type = "TRD_TRAP"; else f.type = "TRD_RHOMB";
+    });
+
+    return { rd: rd_data, trd: trd_data };
+  };
+
+  // --- Registry (complete) ---
+  const TILING_REGISTRY = {
+    "1_cross": { name:"1-Cross (Heptacube)", category:["Polycubes"], build: () => [make_tile("1-Cross", gen_n_cross_data(1))] },
+    "2_cross": { name:"2-Cross (Tridecacube)", category:["Polycubes"], build: () => [make_tile("2-Cross", gen_n_cross_data(2))] },
+    "3_cross": { name:"3-Cross (Nonadecacube)", category:["Polycubes"], build: () => [make_tile("3-Cross", gen_n_cross_data(3))] },
+    "t_cross": { name:"T-Cross", category:["Polycubes"], build: () => [make_tile("T-Cross", (() => {
+      const arm = 3;
+      const vox = new Set();
+      const dirs = [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+      vox.add([0,0,0].join(","));
+      const basis = [[0,1,0],[0,0,1],[1,0,0]];
+      for (const d of dirs) {
+        for (let i=1;i<=arm;i++) vox.add([i*d[0],i*d[1],i*d[2]].join(","));
+        const end = [arm*d[0],arm*d[1],arm*d[2]];
+        const bar = basis.find(b => Math.abs(dot3(b,d)) < 0.1);
+        vox.add([end[0]+bar[0], end[1]+bar[1], end[2]+bar[2]].join(","));
+        vox.add([end[0]-bar[0], end[1]-bar[1], end[2]-bar[2]].join(","));
+      }
+      return generatePolycubeData([...vox].map(s => s.split(",").map(Number)));
+    })())] },
+    "1_semicross": { name:"1-Semicross (Tripod)", category:["Polycubes"], build: () => [make_tile("1-Semi", gen_n_semicross_data(1))] },
+    "2_semicross": { name:"2-Semicross (Corner)", category:["Polycubes"], build: () => [make_tile("2-Semi", gen_n_semicross_data(2))] },
+    "buckled_ring": { name:"Buckled Ring", category:["Polycubes"], build: () => [make_tile("BuckledRing", gen_buckled_ring_data())] },
+    "large_buckled_ring": { name:"Large Buckled Ring", category:["Polycubes"], build: () => [make_tile("LargeRing", gen_large_buckled_ring_data())] },
+    "double_ring": { name:"Double Buckled Ring", category:["Polycubes"], build: () => [make_tile("DoubleRing", gen_double_ring_data())] },
+    "tuning_fork": { name:"Tuning Fork (Reinhardt)", category:["Polycubes"], build: () => [make_tile("Fork", gen_tuning_fork())] },
+    "twisted_h": { name:"Letter H (Twisted)", category:["Polycubes"], build: () => [make_tile("TwistedH", gen_twisted_h_data())] },
+    "cube": { name:"Cube", category:["Fedorov Solids","Polycubes"], build: () => [make_tile("Cube", gen_cube_data())] },
+    "letter_o": {
+      name: "Letter O", category: ["Polycubes"],
+      build: () => [make_tile("LetterO", gen_letter_o_data())]
+    },
+    "1_cross_plus": { name:"1-Cross + 1", category:["Polycubes"], build: () => [make_tile("1CrossPlus", gen_1cross_plus_data())] },
+    "hex_prism": { name:"Hexagonal Prism", category:["Fedorov Solids"], build: () => [make_tile("HexPrism", gen_hex_prism())] },
+    "rhombic": { name:"Rhombic Dodecahedron", category:["Fedorov Solids"], build: () => [make_tile("RhombicDod", gen_rhombic_robust())] },
+    "elongated_dod": { name:"Elongated Dodecahedron", category:["Fedorov Solids"], build: () => [make_tile("ElongatedDod", gen_elongated_dodecahedron())] },
+    "trunc_oct": { name:"Truncated Octahedron", category:["Fedorov Solids"], build: () => [make_tile("TruncOct", gen_trunc_oct_robust())] },
+    "twist": { name:"Twist (Tetracube)", category:["Polycubes"], build: () => [make_tile("Twist", gen_s_tetracube())] },
+    "knuckle": { name:"Knuckle (Pentacube)", category:["Polycubes"], build: () => [make_tile("Knuckle", gen_knuckle_pentacube())] },
+    "tet_oct": { name:"Tetrahedron + Octahedron", category:["Platonic Solids"], build: () => [ make_tile("Tetrahedron", gen_tetrahedron_data()), make_tile("Octahedron", gen_octahedron_data()) ] },
+    "tetragonal_disphenoid": { name:"Tetragonal Disphenoid (B₃ alcove)", category:["Space Fillers"], build: () => [make_tile("Disphenoid", gen_tetragonal_disphenoid_data())] },
+    "diamond_lattice": {
+      name:"Double FCC Lattice (Diamond)", category:["Platonic Solids"],
+      build: () => [ make_tile("Tetrahedron", gen_tetrahedron_data()), make_tile("Octahedron", gen_octahedron_data()), make_tile("CornerTetra", gen_corner_tetra_data()) ],
+      default_viz: { opacities:[0.9,0.1,0.1], internal:true }
+    },
+    "perovskite": { name:"Perovskite (Cuboctahedron + Octa)", category:["Platonic Solids"], build: () => [ make_tile("Cuboctahedron", gen_cuboctahedron_data()), make_tile("Octahedron", gen_octahedron_data()) ], default_viz: { opacities:[0.5,0.9], internal:true } },
+    "orthoscheme": { name:"Orthoscheme (B̃₃ alcove)", category:["Space Fillers"], build: () => [make_tile("Orthoscheme", gen_orthoscheme_robust())], default_viz: { opacities:[0.6], internal:true } },
+    "elongated_sq_bipyramid": { name:"Elongated Bipyramid (J15)", category:["Space Fillers"], build: () => [make_tile("Johnson15", gen_elongated_square_bipyramid())] },
+    "gyrobifastigium": { name:"Gyrobifastigium (J26)", category:["Space Fillers"], build: () => [make_tile("Johnson26", gen_gyrobifastigium_data())] },
+    "laves_c15": { name:"Laves C15 (Truncated Tetra + Tetra))", category:["Platonic Solids"], build: () => [ make_tile("TruncTetra", gen_trunc_tetra_friauf()), make_tile("Tetra", gen_tetrahedron_data()) ], default_viz: { opacities:[0.4,1.0], internal:true } },
+    "escher_compound": {
+      name:"Escher Solid", category:["Space Fillers"],
+      build: () => [make_tile("EscherSolid", gen_escher_solid_data())],
+      default_viz: { opacities:[0.85], internal:true }
+    },
+    "fcc_pure": {
+      name: "FCC (Pure Rhombic Dodecahedron)",
+      category: ["Sphere Packings"],
+      build: () => {
+        const { rd } = gen_barlow_polyhedra();
+        return [make_tile("Rhombic_Dodecahedron_(FCC)", rd)];
+      },
+      default_viz: { opacities: [0.9], internal: true }
+    },
+    "hcp_pure": {
+      name: "HCP (Pure Trapezo-Rhombic Dodecahedron)",
+      category: ["Sphere Packings"],
+      build: () => {
+        const { trd } = gen_barlow_polyhedra();
+        return [make_tile("Trapezo_Rhombic_Dodecahedron_(HCP)", trd)];
+      },
+      default_viz: { opacities: [0.9], internal: true }
+    },
+    "barlow_fcc": {
+      name: "Barlow Packing (Root: FCC)",
+      category: ["Sphere Packings"],
+      build: () => {
+        const { rd, trd } = gen_barlow_polyhedra();
+        return [
+          make_tile("Rhombic_Dodecahedron_(FCC)", rd),
+          make_tile("Trapezo_Rhombic_Dodecahedron_(HCP)", trd)
+        ];
+      },
+      default_viz: { opacities: [0.8, 0.8], internal: true }
+    },
+    "barlow_hcp": {
+      name: "Barlow Packing (Root: HCP)",
+      category: ["Sphere Packings"],
+      build: () => {
+        const { rd, trd } = gen_barlow_polyhedra();
+        return [
+          make_tile("Trapezo_Rhombic_Dodecahedron_(HCP)", trd),
+          make_tile("Rhombic_Dodecahedron_(FCC)", rd)
+        ];
+      },
+      default_viz: { opacities: [0.8, 0.8], internal: true }
+    }
+  };
+
+  const latticeFaceSignature = (verts) => {
+    const mins = [Infinity, Infinity, Infinity];
+    for (const v of verts) for (let i = 0; i < 3; i++) mins[i] = Math.min(mins[i], v[i]);
+    return verts
+      .map(v => [v[0] - mins[0], v[1] - mins[1], v[2] - mins[2]].join(","))
+      .sort()
+      .join("|");
+  };
+
+  const tileFaceSignatures = (tile) => {
+    const signatures = new Set();
+    for (const orient of tile.unique_orientations ?? []) {
+      for (const face of orient.faces ?? []) {
+        signatures.add(latticeFaceSignature(face.map(i => orient.verts[i])));
+      }
+    }
+    return [...signatures].sort();
+  };
+
+  const displayTileNameMap = new Map([
+    ["Tetra", "Tetrahedron"],
+    ["Octa", "Octahedron"],
+    ["BuckledRing", "Buckled Ring"],
+    ["LargeRing", "Large Buckled Ring"],
+    ["DoubleRing", "Double Buckled Ring"],
+    ["Fork", "Tuning Fork"],
+    ["TwistedH", "Letter H"],
+    ["LetterO", "Letter O"],
+    ["1CrossPlus", "1-Cross + 1"],
+    ["HexPrism", "Hexagonal Prism"],
+    ["RhombicDod", "Rhombic Dodecahedron"],
+    ["ElongatedDod", "Elongated Dodecahedron"],
+    ["TruncOct", "Truncated Octahedron"],
+    ["Disphenoid", "Tetragonal Disphenoid"],
+    ["CornerTetra", "Corner Tetrahedron"],
+    ["Johnson15", "Elongated Bipyramid"],
+    ["Johnson26", "Gyrobifastigium"],
+    ["TruncTetra", "Truncated Tetrahedron"],
+    ["EscherSolid", "Escher Solid"],
+    ["Rhombic_Dodecahedron_(FCC)", "Rhombic Dodecahedron"],
+    ["Trapezo_Rhombic_Dodecahedron_(HCP)", "Trapezo-Rhombic Dodecahedron"]
+  ]);
+
+  const displayTileName = (name) => {
+    const sourceName = String(name ?? "Tile");
+    const reflected = sourceName.startsWith("reflected ");
+    const baseName = reflected ? sourceName.slice("reflected ".length) : sourceName;
+    const cleaned = displayTileNameMap.get(baseName)
+      ?? baseName
+        .replace(/_\((FCC|HCP)\)$/i, "")
+        .replace(/\s*\((FCC|HCP|Root:\s*(FCC|HCP))\)\s*$/i, "")
+        .replace(/_/g, " ");
+    return `${reflected ? "reflected " : ""}${cleaned}`;
+  };
+
+  const canonicalFigureName = displayTileName;
+
+  const tileGeometryKey = (tile) => {
+    const verts = (tile.verts ?? []).map(v => v.join(",")).sort().join("|");
+    const faces = (tile.faces ?? [])
+      .map(face => face.map(i => tile.verts[i].join(",")).sort().join(";"))
+      .sort()
+      .join("|");
+    const occupancy = (tile.occupancy_points ?? [])
+      .map(point => `${point.pos.join(",")}:${point.weight}`)
+      .sort()
+      .join("|");
+    return `${verts}@@${faces}@@${occupancy}`;
+  };
+
+  const metadata = {};
+  for (const [k,v] of Object.entries(TILING_REGISTRY)) {
+    const tiles = v.build();
+    metadata[k] = { name: v.name, category: v.category || [], is_chiral: !!tiles[0]?.is_chiral, default_viz: v.default_viz || {} };
+  }
+  const categories = new Map();
+  for (const [k,meta] of Object.entries(metadata)) {
+    for (const c of (meta.category || ["Other"])) {
+      if (!categories.has(c)) categories.set(c, []);
+      categories.get(c).push({ id: k, name: meta.name });
+    }
+  }
+  const options = [...categories.entries()]
+    .sort((a,b)=>a[0].localeCompare(b[0]))
+    .map(([group, tiles]) => ({ group, tiles: tiles.sort((a,b)=>a.name.localeCompare(b.name)) }));
+
+  const figureCatalog = [];
+  const figureDedupe = new Map();
+  const figureAliases = new Map();
+  for (const [modeKey, entry] of Object.entries(TILING_REGISTRY)) {
+    const tiles = entry.build();
+    tiles.forEach((tile, tileIndex) => {
+      const sourceId = `${modeKey}::${tileIndex}`;
+      const name = canonicalFigureName(tile.name);
+      const key = `${name}@@${tileGeometryKey(tile)}`;
+      let figure = figureDedupe.get(key);
+      if (!figure) {
+        figure = {
+          id: sourceId,
+          mode_key: modeKey,
+          tile_index: tileIndex,
+          name,
+          system_name: entry.name,
+          system_names: [entry.name],
+          category: [...(entry.category || ["Other"])],
+          is_chiral: !!tile.is_chiral,
+          signatures: tileFaceSignatures(tile),
+          aliases: [sourceId]
+        };
+        figureDedupe.set(key, figure);
+        figureCatalog.push(figure);
+      } else {
+        figure.aliases.push(sourceId);
+        if (!figure.system_names.includes(entry.name)) figure.system_names.push(entry.name);
+        for (const category of (entry.category || ["Other"])) {
+          if (!figure.category.includes(category)) figure.category.push(category);
+        }
+        figure.is_chiral = figure.is_chiral || !!tile.is_chiral;
+      }
+      figureAliases.set(sourceId, figure);
+    });
+  }
+
+  const figuresShareLatticeFace = (a, b) => {
+    const signatures = new Set(a.signatures ?? []);
+    return (b.signatures ?? []).some(sig => signatures.has(sig));
+  };
+  for (const figure of figureCatalog) {
+    figure.compatible_ids = figureCatalog
+      .filter(other => figuresShareLatticeFace(figure, other))
+      .map(other => other.id);
+  }
+
+  const figureMetadata = figureAliases;
+
+  const addMirrorsIfChiral = (tiles) => {
+    const out = tiles.slice();
+    for (const t of tiles) {
+      if (t.is_chiral) {
+        const m = t.get_mirror_copy();
+        if (m) out.push(m);
+      }
+    }
+    return out;
+  };
+
+  const normalizeVoxels = (voxels) => {
+    const unique = new Map();
+    for (const voxel of voxels ?? []) {
+      if (!Array.isArray(voxel) || voxel.length < 3) continue;
+      const v = voxel.slice(0, 3).map(n => Math.trunc(Number(n)));
+      if (v.some(n => !Number.isFinite(n))) continue;
+      unique.set(v.join(","), v);
+    }
+    const out = [...unique.values()];
+    if (!out.length) return [[0, 0, 0]];
+    const mins = [Infinity, Infinity, Infinity];
+    for (const v of out) for (let i = 0; i < 3; i++) mins[i] = Math.min(mins[i], v[i]);
+    return out.map(v => [v[0] - mins[0], v[1] - mins[1], v[2] - mins[2]]);
+  };
+
+  const buildPolycubeTile = (name, voxels) =>
+    make_tile(name || "CustomPolycube", generatePolycubeData(normalizeVoxels(voxels)));
+
+  const buildCustomSystem = (customSystem = {}) => {
+    const figureRefs = [...new Map(
+      [...new Set(customSystem.figure_refs ?? [])]
+        .map(id => figureMetadata.get(id))
+        .filter(Boolean)
+        .map(ref => [ref.id, ref])
+    ).values()];
+    const tileIds = [...new Set(customSystem.tile_ids ?? [])].filter(id => TILING_REGISTRY[id]);
+    const customPolycubes = customSystem.polycubes ?? [];
+    const customName = customSystem.name || "Mixed system";
+    return {
+      name: customName,
+      category: ["Mixed"],
+      default_viz: { opacities: [], internal: false },
+      build: () => {
+        const built = [];
+        if (figureRefs.length) {
+          for (const ref of figureRefs) {
+            const tiles = TILING_REGISTRY[ref.mode_key].build();
+            const tile = tiles[ref.tile_index];
+            if (tile) built.push(tile);
+          }
+        } else {
+          for (const id of tileIds) built.push(...TILING_REGISTRY[id].build());
+        }
+        customPolycubes.forEach((poly, index) => {
+          const name = poly?.name || `CustomPolycube${index + 1}`;
+          built.push(buildPolycubeTile(name, poly?.voxels ?? [[0, 0, 0]]));
+        });
+        return built.length ? built : TILING_REGISTRY.cube.build();
+      }
+    };
+  };
+
+  return {
+    SCALE,
+    COLOR_PALETTE,
+    TILING_REGISTRY,
+    metadata,
+    options,
+    figureCatalog,
+    displayTileName,
+    addMirrorsIfChiral,
+    buildPolycubeTile,
+    buildCustomSystem
+  };
+})();
