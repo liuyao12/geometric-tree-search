@@ -951,7 +951,10 @@ function visibleAlpha(face) {
 function formatVisitedPercent(value) {
   if (!Number.isFinite(value)) return "0%";
   const clamped = Math.max(0, Math.min(100, value));
-  return clamped > 0 && clamped < 10 ? `${clamped.toFixed(1)}%` : `${Math.round(clamped)}%`;
+  if (clamped >= 100) return "100%";
+  if (clamped >= 10) return `${Math.floor(clamped)}%`;
+  if (clamped > 0) return `${(Math.floor(clamped * 10) / 10).toFixed(1)}%`;
+  return "0%";
 }
 
 function updateFrontierMetrics(stats = null) {
@@ -971,13 +974,15 @@ function updateSearchMetrics(stats = null) {
   const progressDepth = stats?.progress_depth ?? stats?.max_depth ?? 0;
   const completedPaths = stats?.progress_completed_paths ?? stats?.visited_nodes ?? treeMap.size;
   const totalPaths = stats?.progress_total_paths ?? stats?.estimated_nodes_at_depth ?? null;
+  const completedPathLabel = stats?.progress_completed_paths_label ?? completedPaths;
+  const totalPathLabel = stats?.progress_total_paths_label ?? totalPaths;
 
   metricForced.textContent = forcedOnPath;
   metricBacktracks.textContent = backtracks;
   metricVisited.textContent = formatVisitedPercent(visitedPercent);
   metricVisitedDetail.textContent = `DFS estimate, depth ${progressDepth}`;
-  metricNodes.textContent = totalPaths
-    ? `${completedPaths}/${totalPaths} paths`
+  metricNodes.textContent = totalPathLabel
+    ? `${completedPathLabel}/${totalPathLabel} paths`
     : `${completedPaths} paths`;
 }
 

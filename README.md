@@ -45,9 +45,31 @@ or go directly to:
 http://127.0.0.1:5174/apps/3d-lattice-tiler/
 ```
 
+## Headless Runner
+
+The 3D tiler can also run without the frontend UI. This is useful for baseline
+runs, long searches, and comparing later GTS heuristics against the current
+engine.
+
+```bash
+node scripts/run-tiler-cli.mjs --figure letter_o::0 --target 80 \
+  --output runs/letter-o-summary.json \
+  --trace runs/letter-o-trace.ndjson
+```
+
+Useful options:
+
+- `--list-figures` prints figure ids and names.
+- `--criterion layer --target 4` switches from tile count to target layers.
+- `--wall-time-ms 120000` stops gracefully after two minutes and still writes a
+  best-effort JSON summary.
+- `--trace` writes compact NDJSON events that can be inspected or summarized by
+  scripts without rendering images.
+
 ## Repository Shape
 
 - `apps/`: interactive browser playgrounds.
+- `scripts/`: local runners and analysis tools.
 - `docs/blog/`: essays and long-form explanations.
 - `docs/projects/`: project notes for individual GTS examples.
 

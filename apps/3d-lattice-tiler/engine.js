@@ -264,7 +264,22 @@ export const createTilingStream = (() => {
       max_depth: 0
     };
     const branchStack = [];
-    const capCount = (value) => Math.min(1e12, Math.max(0, value));
+    const MAX_PATH_COUNT = 1e12;
+    const MAX_PATH_LOG = Math.log(MAX_PATH_COUNT);
+    const capCount = (value) => Math.min(MAX_PATH_COUNT, Math.max(0, value));
+    const pathCountLabel = (value) => String(Math.max(0, Math.round(value)));
+    const logCountLabel = (logValue) => {
+      if (!Number.isFinite(logValue)) return "0";
+      if (logValue <= MAX_PATH_LOG) return pathCountLabel(Math.exp(logValue));
+      const log10 = logValue / Math.LN10;
+      let exponent = Math.floor(log10);
+      let mantissa = Math.pow(10, log10 - exponent);
+      if (mantissa >= 9.95) {
+        mantissa = 1;
+        exponent += 1;
+      }
+      return `~${mantissa.toFixed(1)}e${exponent}`;
+    };
     const setBranchCursor = (depth, width, nextIndex) => {
       const safeWidth = Math.max(1, width | 0);
       const safeIndex = Math.max(0, Math.min(safeWidth, nextIndex | 0));
@@ -285,27 +300,48 @@ export const createTilingStream = (() => {
           completed: forcedOnlyProgress ? 1 : 0,
           total: 1,
           percent: forcedOnlyProgress ? 100 : 0,
+          completed_label: forcedOnlyProgress ? "1" : "0",
+          total_label: "1",
+          completed_capped: false,
+          total_capped: false,
           widths: [],
           next_indices: []
         };
       }
 
+      let totalLog = 0;
       const suffixProducts = new Array(active.length + 1).fill(1);
       for (let i = active.length - 1; i >= 0; i--) {
+        totalLog += Math.log(active[i].width);
         suffixProducts[i] = capCount(suffixProducts[i + 1] * active[i].width);
       }
 
       let completed = 0;
+      let completedFraction = 0;
+      let prefixLog = 0;
       for (let i = 0; i < active.length; i++) {
         completed = capCount(completed + active[i].next_index * suffixProducts[i + 1]);
+        prefixLog += Math.log(active[i].width);
+        if (active[i].next_index > 0) {
+          const termLog = Math.log(active[i].next_index) - prefixLog;
+          if (termLog > -745) completedFraction += Math.exp(termLog);
+        }
       }
+      completedFraction = Math.max(0, Math.min(1, completedFraction));
       const total = Math.max(1, Math.round(suffixProducts[0]));
       const roundedCompleted = Math.max(0, Math.min(total, Math.round(completed)));
+      const totalCapped = totalLog > MAX_PATH_LOG;
+      const completedLog = completedFraction > 0 ? totalLog + Math.log(completedFraction) : -Infinity;
+      const completedCapped = completedLog > MAX_PATH_LOG;
       return {
         depth: active.length,
         completed: roundedCompleted,
         total,
-        percent: Math.min(100, (roundedCompleted / total) * 100),
+        percent: completedFraction >= 1 ? 100 : completedFraction * 100,
+        completed_label: completedCapped ? logCountLabel(completedLog) : pathCountLabel(roundedCompleted),
+        total_label: totalCapped ? logCountLabel(totalLog) : pathCountLabel(total),
+        completed_capped: completedCapped,
+        total_capped: totalCapped,
         widths: active.map(item => item.width),
         next_indices: active.map(item => item.next_index)
       };
@@ -319,6 +355,9 @@ export const createTilingStream = (() => {
         progress_depth: branchProgress.depth,
         progress_completed_paths: branchProgress.completed,
         progress_total_paths: branchProgress.total,
+        progress_completed_paths_label: branchProgress.completed_label,
+        progress_total_paths_label: branchProgress.total_label,
+        progress_paths_capped: branchProgress.completed_capped || branchProgress.total_capped,
         branch_widths: branchProgress.widths,
         branch_next_indices: branchProgress.next_indices,
         visited_nodes: branchProgress.completed,
