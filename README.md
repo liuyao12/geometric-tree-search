@@ -68,6 +68,8 @@ Useful options:
   layer; `balanced` combines that with same-orientation and periodic preference.
 - `--face-order constrained` chooses the earliest frontier face with the fewest
   legal fillings before ordering the moves for that face.
+- `--face-order pocket` chooses the earliest frontier face whose outside cell is
+  most surrounded by already placed material, which tends to fill holes first.
 - `--wall-time-ms 120000` stops gracefully after two minutes and still writes a
   best-effort JSON summary.
 - `--trace` writes compact NDJSON events that can be inspected or summarized by

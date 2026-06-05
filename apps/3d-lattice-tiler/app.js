@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260605-progress-estimate";
+import { tileSpecs } from "./engine.js?v=20260605-pocket-order";
 
 const $ = (id) => document.getElementById(id);
 
@@ -9,6 +9,7 @@ const statusEl = $("status");
 const maxTilesInput = $("maxTilesInput");
 const layerInput = $("layerInput");
 const snapshotSelect = $("snapshotSelect");
+const faceOrderSelect = $("faceOrderSelect");
 const branchCapInput = $("branchCapInput");
 const nodeCapInput = $("nodeCapInput");
 const candidateCapInput = $("candidateCapInput");
@@ -825,6 +826,7 @@ function configKey() {
     exhaustive: exhaustiveCheckbox.checked,
     include_mirrors: mirrorCheckbox.checked,
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
+    face_order: faceOrderSelect.value,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -1606,7 +1608,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, snapshotSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });

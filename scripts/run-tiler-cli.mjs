@@ -47,7 +47,7 @@ Options:
   --target <n>                    Target tile count or layer. Default: 80.
   --snapshot-every <n>            Engine snapshot cadence. Default: 10.
   --move-order <name>             coverage, repeat, periodic, layer, or balanced. Default: coverage.
-  --face-order <name>             coverage or constrained. Default: coverage.
+  --face-order <name>             coverage, constrained, or pocket. Default: coverage.
   --branch-cap <n>                Branch cap; 0 means uncapped. Default: 0.
   --node-limit <n>                Node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
@@ -213,6 +213,7 @@ function compactEvent(message, includeFaces = false) {
         coverage: branch.coverage,
         same_root_orientation: branch.same_root_orientation,
         periodic_continuation: branch.periodic_continuation,
+        target_face_pocket: branch.target_face_pocket,
         score: branch.score,
         preview_frontier_stats: branch.preview_frontier_stats
       }))
@@ -304,8 +305,8 @@ async function main() {
   if (!["coverage", "repeat", "periodic", "layer", "balanced"].includes(opts.moveOrder)) {
     throw new Error("--move-order must be coverage, repeat, periodic, layer, or balanced");
   }
-  if (!["coverage", "constrained"].includes(opts.faceOrder)) {
-    throw new Error("--face-order must be coverage or constrained");
+  if (!["coverage", "constrained", "pocket"].includes(opts.faceOrder)) {
+    throw new Error("--face-order must be coverage, constrained, or pocket");
   }
   if (!Number.isFinite(opts.target) || opts.target <= 0) throw new Error("--target must be positive");
 

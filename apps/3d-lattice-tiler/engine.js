@@ -260,6 +260,7 @@ export const createTilingStream = (() => {
 
     let faceCounter = 0;
     let nodeCounter = 0;
+    let stateVersion = 0;
     const nowId = () => (++nodeCounter);
     const searchStats = {
       forced_total: 0,
@@ -569,6 +570,7 @@ export const createTilingStream = (() => {
 
     const applyMove = (move) => {
       state.placements.push(move);
+      stateVersion += 1;
       for (const o of move.occupancy_data) latticeAdd(o.pos, o.weight);
 
       const gVerts = move.orient.verts.map(v => add3(v, move.translation));
@@ -651,6 +653,7 @@ export const createTilingStream = (() => {
       }
       for (const o of move.occupancy_data) latticeAdd(o.pos, -o.weight);
       state.placements.pop();
+      stateVersion += 1;
     };
 
     const p0 = prototiles[0];
@@ -719,11 +722,13 @@ export const createTilingStream = (() => {
     const sameRootOrientation = (move) => move.orient === rootOrientations[move.prototile_idx] ? 1 : 0;
     const vecSub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
     const vecNeg = (a) => [-a[0], -a[1], -a[2]];
+    const vecAdd = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+    const vecEq = (a, b) => a[0] === b[0] && a[1] === b[1] && a[2] === b[2];
     const vecKey = (a) => a.join(",");
-    let translationCacheSize = -1;
+    let translationCacheVersion = -1;
     let translationCache = new Map();
     const observedTranslations = () => {
-      if (translationCacheSize === state.placements.length) return translationCache;
+      if (translationCacheVersion === stateVersion) return translationCache;
       const byFrame = new Map();
       const out = new Map();
       for (const placement of state.placements) {
@@ -742,7 +747,7 @@ export const createTilingStream = (() => {
         }
         out.set(frame, vectors);
       }
-      translationCacheSize = state.placements.length;
+      translationCacheVersion = stateVersion;
       translationCache = out;
       return translationCache;
     };
@@ -755,6 +760,67 @@ export const createTilingStream = (() => {
         if (seen.has(vecKey(vecSub(move.translation, placement.translation)))) return 1;
       }
       return 0;
+    };
+    const axisNormalForFace = (verts) => {
+      if (!verts || verts.length < 3) return null;
+      const p0 = verts[0];
+      for (let i = 1; i < verts.length - 1; i++) {
+        const a = vecSub(verts[i], p0);
+        const b = vecSub(verts[i + 1], p0);
+        const cross = [
+          a[1] * b[2] - a[2] * b[1],
+          a[2] * b[0] - a[0] * b[2],
+          a[0] * b[1] - a[1] * b[0]
+        ];
+        const abs = cross.map(Math.abs);
+        const axis = abs.indexOf(Math.max(...abs));
+        if (!abs[axis]) continue;
+        if (abs.some((value, idx) => idx !== axis && value !== 0)) return null;
+        const normal = [0, 0, 0];
+        normal[axis] = Math.sign(cross[axis]);
+        return normal;
+      }
+      return null;
+    };
+    const faceCenter = (verts) => {
+      const center = [0, 0, 0];
+      for (const v of verts) for (let i = 0; i < 3; i++) center[i] += v[i];
+      for (let i = 0; i < 3; i++) {
+        center[i] /= verts.length;
+        if (Math.abs(center[i] - Math.round(center[i])) > 1e-9) return null;
+        center[i] = Math.round(center[i]);
+      }
+      return center;
+    };
+    const neighborCellDirs = [
+      [2, 0, 0], [-2, 0, 0],
+      [0, 2, 0], [0, -2, 0],
+      [0, 0, 2], [0, 0, -2]
+    ];
+    const facePocketInfo = (faceKey) => {
+      const entry = state.frontier.get(faceKey);
+      if (!entry) return { score: 0, weight: 0 };
+      const normal = axisNormalForFace(entry.ordered_verts);
+      const center = faceCenter(entry.ordered_verts);
+      if (!normal || !center) return { score: 0, weight: 0 };
+      const plus = vecAdd(center, normal);
+      const minus = vecSub(center, normal);
+      const plusWeight = latticeGet(plus);
+      const minusWeight = latticeGet(minus);
+      const outsideDir = plusWeight <= minusWeight ? normal : vecNeg(normal);
+      const outside = vecAdd(center, outsideDir);
+      const insideStep = vecNeg(outsideDir).map(n => n * 2);
+      let score = 0;
+      let weight = 0;
+      for (const dir of neighborCellDirs) {
+        if (vecEq(dir, insideStep)) continue;
+        const neighborWeight = latticeGet(vecAdd(outside, dir));
+        if (neighborWeight > 0) {
+          score += 1;
+          weight += Math.min(MAX_SOLID_ANGLE, neighborWeight) / MAX_SOLID_ANGLE;
+        }
+      }
+      return { score, weight, outside };
     };
     const previewMoveStats = (move) => {
       const rb = applyMove(move);
@@ -791,12 +857,21 @@ export const createTilingStream = (() => {
       }
       return 0;
     };
+    const isBetterScore = (candidate, current) => {
+      if (!current) return true;
+      for (let i = 0; i < Math.max(candidate.length, current.length); i++) {
+        const diff = (candidate[i] ?? 0) - (current[i] ?? 0);
+        if (diff) return diff > 0;
+      }
+      return false;
+    };
     const describeMove = (move) => branchDetails ? {
       prototile_idx: move.prototile_idx,
       translation: move.translation,
       coverage: moveCoverage(move),
       same_root_orientation: sameRootOrientation(move),
       periodic_continuation: periodicContinuation(move),
+      target_face_pocket: move._target_face_pocket ?? null,
       score: moveScore(move),
       preview_frontier_stats: move._preview_stats ?? null
     } : {};
@@ -906,10 +981,13 @@ export const createTilingStream = (() => {
           if (!moves.length) continue;
           let bestCoverage = -1;
           for (const m of moves) bestCoverage = Math.max(bestCoverage, moveCoverage(m));
-          const score = faceOrder === "constrained"
-            ? [-moves.length, bestCoverage]
-            : [bestCoverage, -moves.length];
-          if (!bestFaceScore || score[0] > bestFaceScore[0] || (score[0] === bestFaceScore[0] && score[1] > bestFaceScore[1])) {
+          const pocket = facePocketInfo(f);
+          const score = faceOrder === "pocket"
+            ? [pocket.score, pocket.weight, -moves.length, bestCoverage]
+            : faceOrder === "constrained"
+              ? [-moves.length, bestCoverage]
+              : [bestCoverage, -moves.length];
+          if (isBetterScore(score, bestFaceScore)) {
             bestFaceScore = score;
             bestFace = f;
           }
@@ -928,7 +1006,9 @@ export const createTilingStream = (() => {
         return yield* doReturn(false);
       }
 
+      const targetFacePocket = facePocketInfo(bestFace);
       let bestMoves = (await cachedCandidates(bestFace)).sort(compareMoves);
+      for (const move of bestMoves) move._target_face_pocket = targetFacePocket;
       if (!exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
         bestMoves = bestMoves.slice(0, branchCap);
       }

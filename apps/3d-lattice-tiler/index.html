@@ -42,6 +42,15 @@
           </label>
         </div>
 
+        <label class="field">
+          <span>Search order</span>
+          <select id="faceOrderSelect">
+            <option value="coverage" selected>Contact first</option>
+            <option value="constrained">Fewest choices</option>
+            <option value="pocket">Fill holes</option>
+          </select>
+        </label>
+
         <div class="is-hidden" aria-hidden="true">
           <label class="field">
             <span>Snapshots</span>
@@ -151,6 +160,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260605-progress-estimate"></script>
+  <script type="module" src="./app.js?v=20260605-pocket-order"></script>
 </body>
 </html>
