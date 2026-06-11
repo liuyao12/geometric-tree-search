@@ -12,9 +12,9 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
-- [Geometrically Constrained Tree Search I: Learning matching rules in tiling](https://liuyao12.github.io/geometric-tree-search/docs/blog/tree-search-with-geometric-constraints.html)  
-  The primary browser version of the essay, with margin notes, a sticky
-  draggable/zoomable turtle demo, rudimentary tiling start button, and marking overlay.
+- [Tree Search with Geometric Constraints I: Learning matching rules in tiling](https://liuyao12.github.io/geometric-tree-search/docs/blog/tree-search-with-geometric-constraints.html)  
+  A local notebook-style port of the Observable essay, with margin notes and an
+  interactive draggable/zoomable `A_2` lattice figure.
 - [3D Lattice Tiler](https://liuyao12.github.io/geometric-tree-search/apps/3d-lattice-tiler/)  
   A browser playground for lattice polyhedra and polycubes on the integer
   lattice. It supports mixed tile systems, custom polycube construction, search
@@ -22,10 +22,11 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Big Picture
 
-The primary article is maintained in this repository as the canonical browser
-version of the essay.
+The project is motivated by the Observable essay:
 
-The in-repository source for the primary article is
+- [Geometrically Constrained Tree Search I: Learning matching rules in tiling](https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints)
+
+The in-repository source for the local notebook-style port is
 [docs/blog/tree-search-with-geometric-constraints.html](./docs/blog/tree-search-with-geometric-constraints.html), and a Markdown export of that post is included at
 [docs/blog/tree-search-with-geometric-constraints.md](./docs/blog/tree-search-with-geometric-constraints.md).
 
