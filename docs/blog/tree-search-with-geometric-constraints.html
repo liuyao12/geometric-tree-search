@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Geometrically Constrained Tree Search I — GCTS</title>
+  <title>Tree Search with Geometric Constraints I — GCTS</title>
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
@@ -11,8 +11,8 @@
     <header class="site-header article-header">
       <p class="eyebrow">Geometrically Constrained Tree Search (GCTS)</p>
       <p><a href="../../">← Back to home</a></p>
-      <h1>Geometrically Constrained Tree Search I — Learning matching rules in tiling</h1>
-      <p class="lede">A local port of the Observable notebook, with a rudimentary turtle tiling demo and margin notes layered around the original text.</p>
+      <h1>Tree Search with Geometric Constraints I — Learning matching rules in tiling</h1>
+      <p class="lede">A local port of the Observable notebook, with interactive figures and margin notes layered around the original text.</p>
       <nav class="actions" aria-label="Article links">
         <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Original Observable post</a>
         <a href="./tree-search-with-geometric-constraints.md">Markdown export</a>
@@ -21,21 +21,20 @@
 
     <article class="article-shell">
       <section class="article-content">
-        <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. The core algorithm is to learn a pattern of markings on the tiles that may be used to accelerate the tree search, by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
+        <p>We describe a general method to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. The core algorithm is to learn a pattern of markings on the tiles that may be used to accelerate the tree search, by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
 
-        <aside class="margin-note">GCTS gives the project name a deliberate echo of MCTS: geometry supplies the constraints that replace rollout statistics.</aside>
+        <aside class="margin-note">GCTS keeps the original phrase in the paper title, but gives the project name a deliberate echo of MCTS: geometry supplies the constraints that replace rollout statistics.</aside>
 
         <p>We shall further restrict to tilings that can be placed on a lattice, i.e., all the vertices shall be on a lattice. In fact, this study was partly inspired by the discovery of the hat and the turtle (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>) which, aside from being a solution to the "ein stein" problem that was the holy grail for much of tiling theory, actually live on the <span class="math-inline">A<sub>2</sub></span> lattice. This goes to show that, despite their rather rigid nature, lattice tilings are rich enough to be a furtile playground for combinatorial and discrete geometry, and as a portal to logic and computation via Wang tiles. Moreover, it appears that many known <a href="https://observablehq.com/@liuyao12/3d-lattice-tiler">space-fillers</a> are lattice tiles on the standard integer lattice in <span class="math-inline">ℝ<sup>3</sup></span>.</p>
 
-        <figure class="interactive-card" id="turtle-tiling-card">
-          <div class="interactive-toolbar" aria-label="Turtle tiling controls">
-            <button type="button" id="turtle-start">Start tiling</button>
-            <button type="button" id="turtle-markings" aria-pressed="false">Show markings</button>
-            <button type="button" id="turtle-reset">Reset view</button>
-            <label><input type="checkbox" id="turtle-cells" checked> triangular cells</label>
+        <figure class="interactive-card" id="a2-lattice-card">
+          <div class="interactive-toolbar" aria-label="A2 lattice controls">
+            <button type="button" id="a2-reset">Reset view</button>
+            <label><input type="checkbox" id="a2-basis" checked> basis vectors</label>
+            <label><input type="checkbox" id="a2-cells" checked> triangular cells</label>
           </div>
-          <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive turtle tiling canvas. Start a rudimentary tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
-          <figcaption>Interactive turtle on the <span class="math-inline">A<sub>2</sub></span> lattice. Press <strong>Start tiling</strong> to add copies by a deliberately rudimentary row-by-row rule; press <strong>Show markings</strong> to overlay three straight-line marking families. Drag to pan; scroll or pinch to zoom.</figcaption>
+          <canvas id="a2-lattice" width="960" height="520" aria-label="Interactive A2 lattice canvas. Drag to pan and use the mouse wheel or trackpad to zoom."></canvas>
+          <figcaption>Interactive <span class="math-inline">A<sub>2</sub></span> lattice. Drag to pan; scroll or pinch to zoom. The two basis directions are separated by 60 degrees, so integer pairs <span class="math-inline">(i,j)</span> form the triangular lattice used by the hat and turtle.</figcaption>
         </figure>
 
         <h2>Tiles and tilings</h2>
@@ -138,29 +137,17 @@
 
   <script>
     (() => {
-      const canvas = document.getElementById('turtle-tiling');
+      const canvas = document.getElementById('a2-lattice');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      const startButton = document.getElementById('turtle-start');
-      const resetButton = document.getElementById('turtle-reset');
-      const markingsButton = document.getElementById('turtle-markings');
-      const cellsToggle = document.getElementById('turtle-cells');
-      const sqrt3 = Math.sqrt(3);
-      const turtle = [[0, 24], [28, 0], [102, 0], [132, 24], [158, 16], [176, 36], [152, 60], [170, 88], [148, 106], [118, 86], [94, 102], [38, 102], [14, 86], [-16, 106], [-38, 88], [-20, 60], [-44, 36], [-26, 16]];
-      const shell = [[36, 22], [94, 22], [116, 56], [92, 90], [40, 90], [16, 56]];
-      const tilingOrder = [
-        [0, 0, false], [184, 28, true], [332, 0, false], [516, 28, true], [664, 0, false],
-        [92, 120, true], [240, 92, false], [424, 120, true], [572, 92, false],
-        [0, 212, false], [184, 240, true], [332, 212, false], [516, 240, true], [664, 212, false],
-        [92, 332, true], [240, 304, false], [424, 332, true], [572, 304, false]
-      ].map(([x, y, flip], index) => ({ x: x - 330, y: y - 150, flip, index }));
-      let scale = 1.02;
+      const resetButton = document.getElementById('a2-reset');
+      const basisToggle = document.getElementById('a2-basis');
+      const cellsToggle = document.getElementById('a2-cells');
+      let scale = 42;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
       let dragging = false;
       let last = { x: 0, y: 0 };
-      let shownTiles = 1;
-      let timer = null;
-      let showMarkings = false;
+      const sqrt3 = Math.sqrt(3);
 
       function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
@@ -171,19 +158,19 @@
         draw();
       }
 
-      function worldToScreen(x, y) {
-        return { x: offset.x + x * scale, y: offset.y + y * scale };
+      function latticeToScreen(i, j) {
+        return {
+          x: offset.x + scale * (i + j / 2),
+          y: offset.y + scale * (sqrt3 * j / 2)
+        };
       }
 
-      function screenToWorld(x, y) {
-        return { x: (x - offset.x) / scale, y: (y - offset.y) / scale };
-      }
-
-      function localToWorld(point, placement) {
-        const [x, y] = point;
-        return placement.flip
-          ? { x: placement.x + 132 - x, y: placement.y + 108 - y }
-          : { x: placement.x + x, y: placement.y + y };
+      function screenToLattice(x, y) {
+        const lx = (x - offset.x) / scale;
+        const ly = (y - offset.y) / scale;
+        const j = (2 / sqrt3) * ly;
+        const i = lx - j / 2;
+        return { i, j };
       }
 
       function drawLine(a, b, style = '#d9e6df', width = 1) {
@@ -195,84 +182,35 @@
         ctx.stroke();
       }
 
-      function tracePolygon(points, placement) {
+      function drawArrow(from, to, color, label) {
+        drawLine(from, to, color, 3);
+        const angle = Math.atan2(to.y - from.y, to.x - from.x);
         ctx.beginPath();
-        points.forEach((point, index) => {
-          const world = localToWorld(point, placement);
-          const screen = worldToScreen(world.x, world.y);
-          if (index === 0) ctx.moveTo(screen.x, screen.y);
-          else ctx.lineTo(screen.x, screen.y);
+        ctx.moveTo(to.x, to.y);
+        ctx.lineTo(to.x - 11 * Math.cos(angle - Math.PI / 7), to.y - 11 * Math.sin(angle - Math.PI / 7));
+        ctx.lineTo(to.x - 11 * Math.cos(angle + Math.PI / 7), to.y - 11 * Math.sin(angle + Math.PI / 7));
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.fillStyle = color;
+        ctx.font = '700 14px Inter, system-ui, sans-serif';
+        ctx.fillText(label, to.x + 8, to.y - 8);
+      }
+
+      function drawTile() {
+        const coords = [[0, 0], [1, 0], [2, -1], [3, -1], [3, 0], [2, 1], [2, 2], [1, 2], [0, 3], [-1, 3], [-1, 2], [0, 1], [-1, 1], [-1, 0]];
+        ctx.beginPath();
+        coords.forEach(([i, j], index) => {
+          const p = latticeToScreen(i, j);
+          if (index === 0) ctx.moveTo(p.x, p.y);
+          else ctx.lineTo(p.x, p.y);
         });
         ctx.closePath();
-      }
-
-      function drawGrid(rect) {
-        const spacing = 36;
-        const corners = [screenToWorld(0, 0), screenToWorld(rect.width, 0), screenToWorld(0, rect.height), screenToWorld(rect.width, rect.height)];
-        const minX = Math.floor(Math.min(...corners.map(p => p.x)) / spacing - 4) * spacing;
-        const maxX = Math.ceil(Math.max(...corners.map(p => p.x)) / spacing + 4) * spacing;
-        const minY = Math.floor(Math.min(...corners.map(p => p.y)) / (spacing * sqrt3 / 2) - 4) * spacing * sqrt3 / 2;
-        const maxY = Math.ceil(Math.max(...corners.map(p => p.y)) / (spacing * sqrt3 / 2) + 4) * spacing * sqrt3 / 2;
-        const directions = [0, Math.PI / 3, -Math.PI / 3];
-        ctx.lineWidth = 1;
-        directions.forEach(angle => {
-          const dx = Math.cos(angle) * 2000;
-          const dy = Math.sin(angle) * 2000;
-          for (let y = minY; y <= maxY; y += spacing * sqrt3 / 2) {
-            for (let x = minX; x <= maxX; x += spacing * 8) {
-              const start = worldToScreen(x - dx, y - dy);
-              const end = worldToScreen(x + dx, y + dy);
-              drawLine(start, end, '#d9e6df', 1);
-            }
-          }
-        });
-      }
-
-      function drawMarkings(placement) {
-        const lines = [
-          { color: 'rgba(184, 74, 86, 0.84)', y: 27, slope: 0.00 },
-          { color: 'rgba(22, 135, 117, 0.84)', y: 56, slope: 0.62 },
-          { color: 'rgba(49, 95, 159, 0.84)', y: 86, slope: -0.58 }
-        ];
-        ctx.save();
-        tracePolygon(turtle, placement);
-        ctx.clip();
-        ctx.lineCap = 'round';
-        lines.forEach(line => {
-          ctx.strokeStyle = line.color;
-          ctx.lineWidth = Math.max(2.2, 4.2 * scale);
-          for (const nudge of [-34, 0, 34]) {
-            const p1 = localToWorld([-56, line.y + nudge - 56 * line.slope], placement);
-            const p2 = localToWorld([188, line.y + nudge + 188 * line.slope], placement);
-            const a = worldToScreen(p1.x, p1.y);
-            const b = worldToScreen(p2.x, p2.y);
-            drawLine(a, b, line.color, Math.max(2.2, 4.2 * scale));
-          }
-        });
-        ctx.restore();
-      }
-
-      function drawTurtle(placement, index) {
-        tracePolygon(turtle, placement);
-        ctx.fillStyle = ['rgba(217, 164, 65, 0.72)', 'rgba(119, 168, 137, 0.72)', 'rgba(200, 109, 88, 0.72)', 'rgba(109, 143, 199, 0.72)'][index % 4];
-        ctx.strokeStyle = '#26342f';
-        ctx.lineWidth = Math.max(1.4, 2.4 * scale);
-        ctx.lineJoin = 'round';
+        ctx.fillStyle = 'rgba(22, 135, 117, 0.18)';
+        ctx.strokeStyle = '#168775';
+        ctx.lineWidth = 2.5;
         ctx.fill();
         ctx.stroke();
-        tracePolygon(shell, placement);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
-        ctx.fill();
-        ctx.strokeStyle = 'rgba(38, 52, 47, 0.35)';
-        ctx.lineWidth = Math.max(1, 1.3 * scale);
-        ctx.stroke();
-        if (showMarkings) drawMarkings(placement);
-        const eyeWorld = localToWorld([145, 32], placement);
-        const eye = worldToScreen(eyeWorld.x, eyeWorld.y);
-        ctx.beginPath();
-        ctx.arc(eye.x, eye.y, Math.max(2, 4 * scale), 0, Math.PI * 2);
-        ctx.fillStyle = '#26342f';
-        ctx.fill();
       }
 
       function draw() {
@@ -280,22 +218,46 @@
         ctx.clearRect(0, 0, rect.width, rect.height);
         ctx.fillStyle = '#fbfcfb';
         ctx.fillRect(0, 0, rect.width, rect.height);
-        if (cellsToggle.checked) drawGrid(rect);
-        tilingOrder.slice(0, shownTiles).forEach(drawTurtle);
-        ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
-        ctx.font = '700 13px Inter, system-ui, sans-serif';
-        ctx.fillText(`${shownTiles} turtle${shownTiles === 1 ? '' : 's'} placed`, 14, rect.height - 16);
+        const corners = [screenToLattice(0, 0), screenToLattice(rect.width, 0), screenToLattice(0, rect.height), screenToLattice(rect.width, rect.height)];
+        const minI = Math.floor(Math.min(...corners.map(p => p.i))) - 3;
+        const maxI = Math.ceil(Math.max(...corners.map(p => p.i))) + 3;
+        const minJ = Math.floor(Math.min(...corners.map(p => p.j))) - 3;
+        const maxJ = Math.ceil(Math.max(...corners.map(p => p.j))) + 3;
+
+        if (cellsToggle.checked) {
+          for (let i = minI; i <= maxI; i++) {
+            for (let j = minJ; j <= maxJ; j++) {
+              const p = latticeToScreen(i, j);
+              drawLine(p, latticeToScreen(i + 1, j));
+              drawLine(p, latticeToScreen(i, j + 1));
+              drawLine(p, latticeToScreen(i + 1, j - 1));
+            }
+          }
+        }
+
+        drawTile();
+
+        for (let i = minI; i <= maxI; i++) {
+          for (let j = minJ; j <= maxJ; j++) {
+            const p = latticeToScreen(i, j);
+            if (p.x < -8 || p.y < -8 || p.x > rect.width + 8 || p.y > rect.height + 8) continue;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, Math.max(2, Math.min(4, scale / 11)), 0, Math.PI * 2);
+            ctx.fillStyle = i === 0 && j === 0 ? '#b84a56' : '#315f9f';
+            ctx.fill();
+          }
+        }
+
+        if (basisToggle.checked) {
+          const origin = latticeToScreen(0, 0);
+          drawArrow(origin, latticeToScreen(2, 0), '#b84a56', 'e₁');
+          drawArrow(origin, latticeToScreen(0, 2), '#168775', 'e₂');
+        }
       }
 
       function pointerPosition(event) {
         const rect = canvas.getBoundingClientRect();
         return { x: event.clientX - rect.left, y: event.clientY - rect.top };
-      }
-
-      function stopTiling() {
-        if (timer) window.clearInterval(timer);
-        timer = null;
-        startButton.textContent = shownTiles >= tilingOrder.length ? 'Restart tiling' : 'Start tiling';
       }
 
       canvas.addEventListener('pointerdown', event => {
@@ -316,42 +278,20 @@
       canvas.addEventListener('wheel', event => {
         event.preventDefault();
         const point = pointerPosition(event);
-        const before = screenToWorld(point.x, point.y);
+        const before = screenToLattice(point.x, point.y);
         const factor = Math.exp(-event.deltaY * 0.001);
-        scale = Math.max(0.45, Math.min(2.6, scale * factor));
-        const after = worldToScreen(before.x, before.y);
+        scale = Math.max(16, Math.min(130, scale * factor));
+        const after = latticeToScreen(before.i, before.j);
         offset.x += point.x - after.x;
         offset.y += point.y - after.y;
         draw();
       }, { passive: false });
 
-      startButton.addEventListener('click', () => {
-        if (timer) {
-          stopTiling();
-          return;
-        }
-        if (shownTiles >= tilingOrder.length) shownTiles = 1;
-        startButton.textContent = 'Pause tiling';
-        timer = window.setInterval(() => {
-          shownTiles += 1;
-          if (shownTiles >= tilingOrder.length) stopTiling();
-          draw();
-        }, 420);
-        draw();
-      });
-      markingsButton.addEventListener('click', () => {
-        showMarkings = !showMarkings;
-        markingsButton.textContent = showMarkings ? 'Hide markings' : 'Show markings';
-        markingsButton.setAttribute('aria-pressed', String(showMarkings));
-        draw();
-      });
-      cellsToggle.addEventListener('change', draw);
+      [basisToggle, cellsToggle].forEach(input => input.addEventListener('change', draw));
       resetButton.addEventListener('click', () => {
-        stopTiling();
         const rect = canvas.getBoundingClientRect();
-        scale = 1.02;
+        scale = 42;
         offset = { x: rect.width / 2, y: rect.height / 2 };
-        shownTiles = 1;
         draw();
       });
       window.addEventListener('resize', resizeCanvas);

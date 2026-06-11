@@ -12,9 +12,9 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
-- [Geometrically Constrained Tree Search I: Learning matching rules in tiling](https://liuyao12.github.io/geometric-tree-search/docs/blog/tree-search-with-geometric-constraints.html)  
-  A local notebook-style port of the Observable essay, with margin notes, a
-  draggable/zoomable turtle demo, rudimentary tiling start button, and marking overlay.
+- [Tree Search with Geometric Constraints I: Learning matching rules in tiling](https://liuyao12.github.io/geometric-tree-search/docs/blog/tree-search-with-geometric-constraints.html)  
+  A local notebook-style port of the Observable essay, with margin notes and an
+  interactive draggable/zoomable `A_2` lattice figure.
 - [3D Lattice Tiler](https://liuyao12.github.io/geometric-tree-search/apps/3d-lattice-tiler/)  
   A browser playground for lattice polyhedra and polycubes on the integer
   lattice. It supports mixed tile systems, custom polycube construction, search

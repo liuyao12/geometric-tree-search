@@ -328,11 +328,6 @@ h1 {
   cursor: pointer;
 }
 
-.interactive-toolbar button[aria-pressed="true"] {
-  border-color: var(--accent-3);
-  background: var(--accent-3);
-}
-
 .interactive-card canvas {
   display: block;
   width: 100%;
