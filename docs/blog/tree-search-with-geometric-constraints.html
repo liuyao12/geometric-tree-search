@@ -60,7 +60,7 @@
 
         <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. The core algorithm is to learn a pattern of markings on the tiles that may be used to accelerate the tree search, by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
 
-        <aside class="margin-note">GCTS gives the project name a deliberate echo of MCTS: geometry supplies the constraints that replace rollout statistics.</aside>
+        <aside class="margin-note">GCTS is not a replacement on MCTS, Monte Carlo Tree Search; the two could be combined in certain problems.</aside>
 
         <p>We shall further restrict to tilings that can be placed on a lattice, i.e., all the vertices shall be on a lattice. In fact, this study was partly inspired by the discovery of the hat and the turtle (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>) which, aside from being a solution to the "ein stein" problem that was the holy grail for much of tiling theory, actually live on the \(A_2\) lattice. This goes to show that, despite their rather rigid nature, lattice tilings are rich enough to be a furtile playground for combinatorial and discrete geometry, and as a portal to logic and computation via Wang tiles. Moreover, it appears that many known <a href="https://observablehq.com/@liuyao12/3d-lattice-tiler">space-fillers</a> are lattice tiles on the standard integer lattice in \(\mathbb{R}^3\).</p>
 
@@ -215,6 +215,9 @@
       let trialGhost = null;
       let statusText = '';
       let showMarkings = false;
+      const articleContent = document.querySelector('.article-content');
+      const wrapTargets = Array.from(articleContent.children).filter(child => !child.classList.contains('floating-demo'));
+      const demoCard = document.getElementById('turtle-tiling-card');
       const demoStages = {
         intro: {
           label: 'Stage: large turtle patch',
@@ -423,6 +426,23 @@
         });
       }
 
+      function updateTextWrap() {
+        if (!articleContent || !demoCard || window.matchMedia('(max-width: 900px)').matches) {
+          wrapTargets.forEach(target => {
+            target.style.maxWidth = '';
+          });
+          return;
+        }
+        const articleRect = articleContent.getBoundingClientRect();
+        const demoRect = demoCard.getBoundingClientRect();
+        const available = Math.max(240, demoRect.left - articleRect.left - 24);
+        wrapTargets.forEach(target => {
+          const rect = target.getBoundingClientRect();
+          const overlaps = rect.bottom > demoRect.top + 8 && rect.top < demoRect.bottom - 8;
+          target.style.maxWidth = overlaps ? `${available}px` : '';
+        });
+      }
+
       function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
@@ -621,6 +641,7 @@
         ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
         ctx.font = '700 13px Inter, system-ui, sans-serif';
         ctx.fillText(`${shownTiles} Smith turtle${shownTiles === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
+        window.requestAnimationFrame(updateTextWrap);
       }
 
       function pointerPosition(event) {
@@ -777,7 +798,11 @@
         }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
         observer.observe(section);
       });
-      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+        updateTextWrap();
+      });
+      window.addEventListener('scroll', updateTextWrap, { passive: true });
       setDemoStage('intro');
       resizeCanvas();
     })();
