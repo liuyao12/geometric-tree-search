@@ -248,20 +248,20 @@ h1 {
   text-underline-offset: 3px;
 }
 
-.article-byline {
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 14px;
+.math-inline {
+  font-family: "Times New Roman", Times, serif;
 }
 
-.math-display {
+.math-block {
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
   margin: 16px 0 0;
-  padding: 6px 16px;
+  padding: 16px;
   color: var(--ink);
+  font: 20px/1.45 "Times New Roman", Times, serif;
+  text-align: center;
 }
 
 .article-content figure {
@@ -285,34 +285,6 @@ h1 {
 
 .figure-grid figure {
   margin: 0;
-}
-
-.floating-demo {
-  grid-column: 2;
-  grid-row: span 8;
-  position: sticky;
-  top: 18px;
-  align-self: start;
-  margin: 0;
-  z-index: 2;
-}
-
-.floating-demo .interactive-card {
-  margin: 0;
-}
-
-.floating-demo .interactive-card canvas {
-  height: min(34vw, 330px);
-  min-height: 250px;
-}
-
-.floating-demo figcaption span,
-.floating-demo figcaption strong {
-  display: block;
-}
-
-.floating-demo figcaption span + span {
-  margin-top: 6px;
 }
 
 .margin-note {
@@ -356,11 +328,6 @@ h1 {
   cursor: pointer;
 }
 
-.interactive-toolbar button[aria-pressed="true"] {
-  border-color: var(--accent-3);
-  background: var(--accent-3);
-}
-
 .interactive-card canvas {
   display: block;
   width: 100%;
@@ -385,13 +352,6 @@ h1 {
 @media (max-width: 900px) {
   .article-content {
     grid-template-columns: 1fr;
-  }
-
-  .floating-demo {
-    grid-column: 1;
-    grid-row: auto;
-    position: static;
-    margin-top: 18px;
   }
 
   .margin-note {
