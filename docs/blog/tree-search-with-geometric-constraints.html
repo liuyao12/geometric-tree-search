@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geometrically Constrained Tree Search I — GCTS</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <main class="page article-page">
+    <header class="site-header article-header">
+      <p class="eyebrow">Geometrically Constrained Tree Search (GCTS)</p>
+      <p><a href="../../">← Back to home</a></p>
+      <h1>Geometrically Constrained Tree Search I — Learning matching rules in tiling</h1>
+      <p class="lede">A local port of the Observable notebook, with a rudimentary turtle tiling demo and margin notes layered around the original text.</p>
+      <nav class="actions" aria-label="Article links">
+        <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Original Observable post</a>
+        <a href="./tree-search-with-geometric-constraints.md">Markdown export</a>
+      </nav>
+    </header>
+
+    <article class="article-shell">
+      <section class="article-content">
+        <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. The core algorithm is to learn a pattern of markings on the tiles that may be used to accelerate the tree search, by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
+
+        <aside class="margin-note">GCTS gives the project name a deliberate echo of MCTS: geometry supplies the constraints that replace rollout statistics.</aside>
+
+        <p>We shall further restrict to tilings that can be placed on a lattice, i.e., all the vertices shall be on a lattice. In fact, this study was partly inspired by the discovery of the hat and the turtle (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>) which, aside from being a solution to the "ein stein" problem that was the holy grail for much of tiling theory, actually live on the <span class="math-inline">A<sub>2</sub></span> lattice. This goes to show that, despite their rather rigid nature, lattice tilings are rich enough to be a furtile playground for combinatorial and discrete geometry, and as a portal to logic and computation via Wang tiles. Moreover, it appears that many known <a href="https://observablehq.com/@liuyao12/3d-lattice-tiler">space-fillers</a> are lattice tiles on the standard integer lattice in <span class="math-inline">ℝ<sup>3</sup></span>.</p>
+
+        <figure class="interactive-card" id="turtle-tiling-card">
+          <div class="interactive-toolbar" aria-label="Turtle tiling controls">
+            <button type="button" id="turtle-start">Start tiling</button>
+            <button type="button" id="turtle-markings" aria-pressed="false">Show markings</button>
+            <button type="button" id="turtle-reset">Reset view</button>
+            <label><input type="checkbox" id="turtle-cells" checked> triangular cells</label>
+          </div>
+          <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive turtle tiling canvas. Start a rudimentary tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
+          <figcaption>Interactive turtle on the <span class="math-inline">A<sub>2</sub></span> lattice. Press <strong>Start tiling</strong> to add copies by a deliberately rudimentary row-by-row rule; press <strong>Show markings</strong> to overlay three straight-line marking families. Drag to pan; scroll or pinch to zoom.</figcaption>
+        </figure>
+
+        <h2>Tiles and tilings</h2>
+
+        <p>Let's fix the (standard) <span class="math-inline">ℤ<sup>3</sup></span> lattice in the Euclidean 3-space. By a <strong>lattice tile</strong> (or <strong>tile</strong> for short) we shall mean a function</p>
+
+        <pre class="math-block">t: ℤ³ → ℝ</pre>
+
+        <p>that is <em>finitely</em> supported, taking values between 0 and 1, inclusive. The interpretation of the value <span class="math-inline">t(<strong>x</strong>)</span> at a point <span class="math-inline"><strong>x</strong> ∈ ℤ³</span> shall be the "solid angle" at <span class="math-inline"><strong>x</strong></span>, or the proportion of the <span class="math-inline">ε</span>-neighborhood of <span class="math-inline"><strong>x</strong></span> that is supposed to be "inside the tile". (We leave aside the question if or when a polyhedral tile <em>in the usual sense</em>, with all its vertices on the lattice, has a <em>faithful</em> realization as a lattice tile per our definition.)</p>
+
+        <p>A lattice tile <span class="math-inline">t</span> is said <strong>to tile</strong> space if there exists a subset <span class="math-inline">K</span> of the group <span class="math-inline">G</span> of symmetries of the lattice such that</p>
+
+        <pre class="math-block">∑<sub>g ∈ K</sub> t(g<sup>−1</sup> <strong>x</strong>) = 1</pre>
+
+        <p>as a function on <span class="math-inline">ℤ<sup>3</sup></span>. The group <span class="math-inline">G</span> consists of permuting and reversing the axes, and translating by integral vectors. Similar definition can be made for a set of tiles <span class="math-inline">{t<sub>1</sub>, t<sub>2</sub>, …, t<sub>n</sub>}</span> <strong>to tile</strong> space:</p>
+
+        <pre class="math-block">∑<sub>i=1</sub><sup>n</sup> ∑<sub>g ∈ K<sub>i</sub></sub> t<sub>i</sub>(g<sup>−1</sup> <strong>x</strong>) = 1</pre>
+
+        <p>(If the right-hand side is replaced by a constant <span class="math-inline">N &gt; 1</span>, it is known as a <em>multi-tiling</em>, or an <em>N-fold tiling</em>.)</p>
+
+        <p><em>Example.</em> The regular tetrahedron. The vertices are <span class="math-inline">[1,0,0]</span>, <span class="math-inline">[0,1,0]</span>, <span class="math-inline">[0,0,1]</span>, and <span class="math-inline">[1,1,1]</span>, where the solid angle is irrational, thus the regular tetrahedron does not tile space. However, together with the regular octahedron (with vertices at <span class="math-inline">± <strong>e</strong><sub>i</sub></span>, <span class="math-inline">i=1,2,3</span>), they do tile space, in a unique way.</p>
+
+        <p>Naturally, if the tile <span class="math-inline">t<sub>i</sub></span> itself has inherent symmetry, in the sense that <span class="math-inline">t<sub>i</sub>(<strong>x</strong>) = t<sub>i</sub>(g<sup>−1</sup><strong>x</strong></span>), we should "quotient it out" from <span class="math-inline">G</span> when searching for <span class="math-inline">K<sub>i</sub></span>.</p>
+
+        <p><em>Example.</em> The tetrahedron with vertices at <span class="math-inline">[0,0,0]</span>, <span class="math-inline">[1,0,0]</span>, <span class="math-inline">[1,1,0]</span>, and <span class="math-inline">[1,1,1]</span> does tile space, with six copies filling a unit cube. The value at the four vertices are 1, 3, 3, and 1 forty-eighths, respectively.</p>
+
+        <p><em>Example.</em> The hat and the turtle (see figures). Each is a 14-sided polygon lying on the <span class="math-inline">x<sub>1</sub>+x<sub>2</sub>+x<sub>3</sub>=0</span> plane, and we can turn it into a cylinder to fit our 3D tiling game. Alternatively, we may restrict <span class="math-inline">G</span> to symmetries of the sublattice, and to assign the values to be (plain-old, 2D) angles. It happens that the only values are 3, 4, 6, 8, and 9 twelveths. The remarkable fact about the hat (and the turtle) is that it tiles the plane, and <em>only</em> non-periodically (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>).</p>
+
+        <div class="figure-grid">
+          <figure>
+            <img src="https://static.observableusercontent.com/files/de43ce7110c6497283e1992a2a620cc026a9b6b7ad14529590de50373890d14b6288a824373b9194e140ef3ec8a49fc618ee5293eb8644a46d20e62afb689f9e" alt="Observable attachment showing a lattice tile figure">
+          </figure>
+          <figure>
+            <img src="https://static.observableusercontent.com/files/35a021f043676a7deb9490a0d8fdf7718f6c1a0c252cb52b19e4a785259af61273ab214769baf3426614edf052490476a2fc4bbccbe08ffc3332c4d9d7315375" alt="Observable attachment showing a turtle tiling figure">
+          </figure>
+        </div>
+
+        <aside class="margin-note">Static attachments are retained for provenance; the draggable lattice above is the local replacement for the notebook-style geometric inspection.</aside>
+
+        <p>Finding the subsets <span class="math-inline">K<sub>i</sub></span> (or showing none exists) is a problem of combinatorial tree search. We could place the first tile anywhere (or simply with <span class="math-inline">i=1</span>, <span class="math-inline">g=1</span>), and for a specific <span class="math-inline"><strong>p</strong></span> with <span class="math-inline">0 &lt; t<sub>1</sub>(<strong>p</strong>) &lt; 1</span>, there are <em>finitely</em> many ways to place the second tile (choices of <span class="math-inline">i</span> and <span class="math-inline">g ∈ G</span>) such that <span class="math-inline">t<sub>i</sub>(g<sup>−1</sup> <strong>p</strong>) &gt; 0</span> and</p>
+
+        <pre class="math-block">t<sub>1</sub>(<strong>x</strong>) + t<sub>i</sub>(g<sup>−1</sup> <strong>x</strong>) ≤ 1</pre>
+
+        <p>for all <span class="math-inline"><strong>x</strong></span>, and we put this <span class="math-inline">g</span> in <span class="math-inline">K<sub>i</sub></span>, and repeat the process. Thus we obtain a finite-branching tree to search over. A branch stops or dies if it runs out of choices (for any "boundary point" <span class="math-inline"><strong>p</strong></span>). We are particularly interested in tiles that admit nontrivial tilings: neither too restricted that the branchings all have a unique choice, nor too loose that <em>any</em> branch appears to lead to valid tilings. Note that this algorithm could not tell whether a (partial) tiling is periodic, and by itself is unable to say if it actually extends to a tiling of the whole space.</p>
+
+        <p>In practice, it may be more natural to "branch over" faces instead of boundary points; and we may adopt simple rules to choose the face or the point <span class="math-inline"><strong>p</strong></span> for each branching, but no need to employ more sophisticated heuristics. This is essentially what is implemented <a href="https://observablehq.com/@liuyao12/3d-lattice-tiler">here</a>.</p>
+
+        <h2>Markings and matching rules</h2>
+
+        <p>When playing jigsaw puzzles, we would direct our attention to the colors and patterns on the pieces; two pieces fit not just by the geometry (shape of the boundary) but the patterns have to "match". Similarly in tiling, we would often, for the sake of forcing aperiodicity, introduce "markings" on the tiles, along with "matching rules" that the markings need to match in certain ways. Not the least, the Wang tiles work via color matching. Let's formalize all these in a definition, specialized for our discrete setting.</p>
+
+        <p>By a <strong>marking</strong> on a lattice tile <span class="math-inline">t</span>, we shall mean a function</p>
+
+        <pre class="math-block">m : ℤ³ → ℝ</pre>
+
+        <p>with support that <em>may be larger</em> than that of the tile. We say that <span class="math-inline">t</span> <strong>tiles</strong> space <strong>with marking <span class="math-inline">m</span></strong> if, in addition to the above, we have for any <span class="math-inline">g, h ∈ K</span>,</p>
+
+        <pre class="math-block">m(g<sup>−1</sup> <strong>x</strong>) = m(h<sup>−1</sup> <strong>x</strong>)</pre>
+
+        <p>on the overlap of their supports. This way, all these transformed functions would <em>glue</em> to be a "global section" of this (trivial) sheaf.</p>
+
+        <p>It is natural to extend this definition to a vector bundle:</p>
+
+        <pre class="math-block">m : ℤ³ → ℝⁿ</pre>
+
+        <p>and there is an action of <span class="math-inline">G</span> on <span class="math-inline">ℝ<sup>n</sup></span> (a representation), then the matching rule would be</p>
+
+        <pre class="math-block">g⋅m(g<sup>−1</sup> <strong>x</strong>) = h⋅m(h<sup>−1</sup> <strong>x</strong>)</pre>
+
+        <p>on the overlap.</p>
+
+        <p><em>Example.</em> The turtle admits a marking of straight lines (see <a href="https://arxiv.org/abs/2307.12322">Akiyama &amp; Araki</a> or <a href="https://mathblock8128.wordpress.com/">mathblock8128</a>). The two colors represent <span class="math-inline">± 1</span> values for the lattice points on <em>three</em> separate markings, or a rank-3 bundle. The group <span class="math-inline">G</span> acts on <span class="math-inline">ℝ<sup>3</sup></span> by permuting and negating the components (swapping the two colors upon reflections). Note that the domain of each marking may be taken to be arbitrarily long, a sign of long-range order.</p>
+
+        <figure>
+          <img src="https://mathblock8128.wordpress.com/wp-content/uploads/2023/08/spar_crossing_control_landscape_cb_2.png?w=800" alt="Turtle straight-line markings">
+        </figure>
+
+        <p><em>Example.</em> The classic "domino puzzle" (with the checkerboard argument) may be cast as a problem of tiling with marking. It seems that a good source of candidates for markings would be the eigenfunctions of the Laplacian operator, with Dirichlet or Neumann (or mixed) boundary conditions.</p>
+
+        <p>The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
+
+        <h2>Geometric Deep Learning</h2>
+
+        <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
+
+        <p>Another component, more of a <em>reinforcement learning</em> nature, may be necessary for a full resolution of the tiling problem. It shall attempt to learn or recognize "patches" or "clusters" of tiles that may themselves have markings on them, giving rise to periodic tilings or hierarchical structure of aperiodic tilings. It may not be out of place to note that Wang's original papers were titled <em>Proving Theorems by Pattern Recognition I</em> &amp; <em>II</em>.</p>
+
+        <aside class="margin-note">Draft note: this is the natural place to widen the scope from tiling instances to generic search trees embedded in a plane.</aside>
+
+        <h2>Draft: From tiles to arbitrary search trees</h2>
+
+        <p>One may try to turn a general tree search problem into a geometrically constrained one by assigning every node, or every partial state, a position in a two-dimensional plane. The placement is not meant to be merely a visualization. It should carry information about which continuations are still viable, which local patterns are forbidden, and which partial configurations are equivalent up to a symmetry or a harmless deformation.</p>
+
+        <p>In this view, the learned geometric rules play the role that the tile shape and markings played above. The shape says which placements are physically impossible because they overlap or leave an unfillable boundary. The markings say which placements are semantically impossible because the local labels cannot be glued into a consistent global section. For a non-tiling tree search problem, the corresponding rules might be learned from examples of successful and failed branches: neighboring nodes in the plane must satisfy learned compatibility constraints, and a partial branch dies when its local neighborhood cannot be completed.</p>
+
+        <p>The practical hope is that the plane becomes a low-dimensional certificate language for pruning. Instead of asking a policy network to guess the next move directly, we ask it to learn the obstructions: regions that cannot coexist, boundary patterns that force a small number of continuations, and markings that expose hidden invariants. Then a search procedure can remain simple and checkable while the learned geometry supplies the domain knowledge. In that sense GCTS would be a cousin of MCTS, but with geometric viability replacing rollout value as the organizing principle.</p>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    (() => {
+      const canvas = document.getElementById('turtle-tiling');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const startButton = document.getElementById('turtle-start');
+      const resetButton = document.getElementById('turtle-reset');
+      const markingsButton = document.getElementById('turtle-markings');
+      const cellsToggle = document.getElementById('turtle-cells');
+      const sqrt3 = Math.sqrt(3);
+      const turtle = [[0, 24], [28, 0], [102, 0], [132, 24], [158, 16], [176, 36], [152, 60], [170, 88], [148, 106], [118, 86], [94, 102], [38, 102], [14, 86], [-16, 106], [-38, 88], [-20, 60], [-44, 36], [-26, 16]];
+      const shell = [[36, 22], [94, 22], [116, 56], [92, 90], [40, 90], [16, 56]];
+      const tilingOrder = [
+        [0, 0, false], [184, 28, true], [332, 0, false], [516, 28, true], [664, 0, false],
+        [92, 120, true], [240, 92, false], [424, 120, true], [572, 92, false],
+        [0, 212, false], [184, 240, true], [332, 212, false], [516, 240, true], [664, 212, false],
+        [92, 332, true], [240, 304, false], [424, 332, true], [572, 304, false]
+      ].map(([x, y, flip], index) => ({ x: x - 330, y: y - 150, flip, index }));
+      let scale = 1.02;
+      let offset = { x: canvas.width / 2, y: canvas.height / 2 };
+      let dragging = false;
+      let last = { x: 0, y: 0 };
+      let shownTiles = 1;
+      let timer = null;
+      let showMarkings = false;
+
+      function resizeCanvas() {
+        const ratio = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = Math.max(320, Math.floor(rect.width * ratio));
+        canvas.height = Math.max(220, Math.floor(rect.height * ratio));
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        draw();
+      }
+
+      function worldToScreen(x, y) {
+        return { x: offset.x + x * scale, y: offset.y + y * scale };
+      }
+
+      function screenToWorld(x, y) {
+        return { x: (x - offset.x) / scale, y: (y - offset.y) / scale };
+      }
+
+      function localToWorld(point, placement) {
+        const [x, y] = point;
+        return placement.flip
+          ? { x: placement.x + 132 - x, y: placement.y + 108 - y }
+          : { x: placement.x + x, y: placement.y + y };
+      }
+
+      function drawLine(a, b, style = '#d9e6df', width = 1) {
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = style;
+        ctx.lineWidth = width;
+        ctx.stroke();
+      }
+
+      function tracePolygon(points, placement) {
+        ctx.beginPath();
+        points.forEach((point, index) => {
+          const world = localToWorld(point, placement);
+          const screen = worldToScreen(world.x, world.y);
+          if (index === 0) ctx.moveTo(screen.x, screen.y);
+          else ctx.lineTo(screen.x, screen.y);
+        });
+        ctx.closePath();
+      }
+
+      function drawGrid(rect) {
+        const spacing = 36;
+        const corners = [screenToWorld(0, 0), screenToWorld(rect.width, 0), screenToWorld(0, rect.height), screenToWorld(rect.width, rect.height)];
+        const minX = Math.floor(Math.min(...corners.map(p => p.x)) / spacing - 4) * spacing;
+        const maxX = Math.ceil(Math.max(...corners.map(p => p.x)) / spacing + 4) * spacing;
+        const minY = Math.floor(Math.min(...corners.map(p => p.y)) / (spacing * sqrt3 / 2) - 4) * spacing * sqrt3 / 2;
+        const maxY = Math.ceil(Math.max(...corners.map(p => p.y)) / (spacing * sqrt3 / 2) + 4) * spacing * sqrt3 / 2;
+        const directions = [0, Math.PI / 3, -Math.PI / 3];
+        ctx.lineWidth = 1;
+        directions.forEach(angle => {
+          const dx = Math.cos(angle) * 2000;
+          const dy = Math.sin(angle) * 2000;
+          for (let y = minY; y <= maxY; y += spacing * sqrt3 / 2) {
+            for (let x = minX; x <= maxX; x += spacing * 8) {
+              const start = worldToScreen(x - dx, y - dy);
+              const end = worldToScreen(x + dx, y + dy);
+              drawLine(start, end, '#d9e6df', 1);
+            }
+          }
+        });
+      }
+
+      function drawMarkings(placement) {
+        const lines = [
+          { color: 'rgba(184, 74, 86, 0.84)', y: 27, slope: 0.00 },
+          { color: 'rgba(22, 135, 117, 0.84)', y: 56, slope: 0.62 },
+          { color: 'rgba(49, 95, 159, 0.84)', y: 86, slope: -0.58 }
+        ];
+        ctx.save();
+        tracePolygon(turtle, placement);
+        ctx.clip();
+        ctx.lineCap = 'round';
+        lines.forEach(line => {
+          ctx.strokeStyle = line.color;
+          ctx.lineWidth = Math.max(2.2, 4.2 * scale);
+          for (const nudge of [-34, 0, 34]) {
+            const p1 = localToWorld([-56, line.y + nudge - 56 * line.slope], placement);
+            const p2 = localToWorld([188, line.y + nudge + 188 * line.slope], placement);
+            const a = worldToScreen(p1.x, p1.y);
+            const b = worldToScreen(p2.x, p2.y);
+            drawLine(a, b, line.color, Math.max(2.2, 4.2 * scale));
+          }
+        });
+        ctx.restore();
+      }
+
+      function drawTurtle(placement, index) {
+        tracePolygon(turtle, placement);
+        ctx.fillStyle = ['rgba(217, 164, 65, 0.72)', 'rgba(119, 168, 137, 0.72)', 'rgba(200, 109, 88, 0.72)', 'rgba(109, 143, 199, 0.72)'][index % 4];
+        ctx.strokeStyle = '#26342f';
+        ctx.lineWidth = Math.max(1.4, 2.4 * scale);
+        ctx.lineJoin = 'round';
+        ctx.fill();
+        ctx.stroke();
+        tracePolygon(shell, placement);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(38, 52, 47, 0.35)';
+        ctx.lineWidth = Math.max(1, 1.3 * scale);
+        ctx.stroke();
+        if (showMarkings) drawMarkings(placement);
+        const eyeWorld = localToWorld([145, 32], placement);
+        const eye = worldToScreen(eyeWorld.x, eyeWorld.y);
+        ctx.beginPath();
+        ctx.arc(eye.x, eye.y, Math.max(2, 4 * scale), 0, Math.PI * 2);
+        ctx.fillStyle = '#26342f';
+        ctx.fill();
+      }
+
+      function draw() {
+        const rect = canvas.getBoundingClientRect();
+        ctx.clearRect(0, 0, rect.width, rect.height);
+        ctx.fillStyle = '#fbfcfb';
+        ctx.fillRect(0, 0, rect.width, rect.height);
+        if (cellsToggle.checked) drawGrid(rect);
+        tilingOrder.slice(0, shownTiles).forEach(drawTurtle);
+        ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
+        ctx.font = '700 13px Inter, system-ui, sans-serif';
+        ctx.fillText(`${shownTiles} turtle${shownTiles === 1 ? '' : 's'} placed`, 14, rect.height - 16);
+      }
+
+      function pointerPosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+      }
+
+      function stopTiling() {
+        if (timer) window.clearInterval(timer);
+        timer = null;
+        startButton.textContent = shownTiles >= tilingOrder.length ? 'Restart tiling' : 'Start tiling';
+      }
+
+      canvas.addEventListener('pointerdown', event => {
+        dragging = true;
+        last = pointerPosition(event);
+        canvas.setPointerCapture(event.pointerId);
+      });
+      canvas.addEventListener('pointermove', event => {
+        if (!dragging) return;
+        const next = pointerPosition(event);
+        offset.x += next.x - last.x;
+        offset.y += next.y - last.y;
+        last = next;
+        draw();
+      });
+      canvas.addEventListener('pointerup', () => { dragging = false; });
+      canvas.addEventListener('pointercancel', () => { dragging = false; });
+      canvas.addEventListener('wheel', event => {
+        event.preventDefault();
+        const point = pointerPosition(event);
+        const before = screenToWorld(point.x, point.y);
+        const factor = Math.exp(-event.deltaY * 0.001);
+        scale = Math.max(0.45, Math.min(2.6, scale * factor));
+        const after = worldToScreen(before.x, before.y);
+        offset.x += point.x - after.x;
+        offset.y += point.y - after.y;
+        draw();
+      }, { passive: false });
+
+      startButton.addEventListener('click', () => {
+        if (timer) {
+          stopTiling();
+          return;
+        }
+        if (shownTiles >= tilingOrder.length) shownTiles = 1;
+        startButton.textContent = 'Pause tiling';
+        timer = window.setInterval(() => {
+          shownTiles += 1;
+          if (shownTiles >= tilingOrder.length) stopTiling();
+          draw();
+        }, 420);
+        draw();
+      });
+      markingsButton.addEventListener('click', () => {
+        showMarkings = !showMarkings;
+        markingsButton.textContent = showMarkings ? 'Hide markings' : 'Show markings';
+        markingsButton.setAttribute('aria-pressed', String(showMarkings));
+        draw();
+      });
+      cellsToggle.addEventListener('change', draw);
+      resetButton.addEventListener('click', () => {
+        stopTiling();
+        const rect = canvas.getBoundingClientRect();
+        scale = 1.02;
+        offset = { x: rect.width / 2, y: rect.height / 2 };
+        shownTiles = 1;
+        draw();
+      });
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+    })();
+  </script>
+</body>
+</html>

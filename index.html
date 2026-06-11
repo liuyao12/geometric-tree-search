@@ -3,24 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Geometric Tree Search</title>
+  <title>Geometrically Constrained Tree Search</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <main class="page">
     <header class="site-header">
-      <p class="eyebrow">GTS research notes and playgrounds</p>
-      <h1>Geometric Tree Search</h1>
+      <p class="eyebrow">GCTS research notes and playgrounds</p>
+      <h1>Geometrically Constrained Tree Search</h1>
       <p class="lede">
         Search problems where a combinatorial object grows under geometric
         constraints, and markings, macros, symmetries, or certificates help
-        guide the tree.
+        guide the tree. GCTS is an intentional play on MCTS, with geometric
+        viability standing in for rollout value.
       </p>
       <nav class="actions" aria-label="Primary">
+        <a href="./docs/blog/tree-search-with-geometric-constraints.html">Read the GCTS blogpost</a>
         <a href="./apps/3d-lattice-tiler/">Open 3D Lattice Tiler</a>
-        <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Read the Observable post</a>
+        <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Original Observable post</a>
       </nav>
     </header>
+
+    <section class="section writing-section">
+      <div class="section-heading">
+        <h2>Writing</h2>
+        <p>Notes that frame the search problem and collect examples.</p>
+      </div>
+      <div class="writing-list">
+        <article>
+          <p class="project-type">Observable essay</p>
+          <h3>Geometrically Constrained Tree Search</h3>
+          <p>
+            The originating post for this project: why geometric constraints
+            make ordinary tree search feel different, and what kinds of
+            markings or macros might make the tree navigable.
+          </p>
+          <a href="./docs/blog/tree-search-with-geometric-constraints.html">Read local port</a>
+        </article>
+      </div>
+    </section>
+
 
     <section class="section project-section">
       <div class="section-heading">
@@ -52,35 +74,16 @@
               questions in a smaller geometry: frontier choices, compatible
               placements, and recognizable branching structure.
             </p>
-            <span class="project-note">Notebook import planned</span>
+            <span class="project-note">Turtle demo in blogpost</span>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section writing-section">
-      <div class="section-heading">
-        <h2>Writing</h2>
-        <p>Notes that frame the search problem and collect examples.</p>
-      </div>
-      <div class="writing-list">
-        <article>
-          <p class="project-type">Observable essay</p>
-          <h3>Tree Search with Geometric Constraints</h3>
-          <p>
-            The originating post for this project: why geometric constraints
-            make ordinary tree search feel different, and what kinds of
-            markings or macros might make the tree navigable.
-          </p>
-          <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Read post</a>
-        </article>
-      </div>
-    </section>
-
     <section class="section">
-      <h2>What GTS Studies</h2>
+      <h2>What GCTS Studies</h2>
       <p>
-        GTS sits near constraint programming, exact cover, tiling search, and
+        GCTS sits near constraint programming, exact cover, tiling search, and
         geometric deep learning, but emphasizes the growing search tree itself:
         frontier choices, symmetry classes of moves, reusable patches, and
         checkable local certificates.
