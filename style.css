@@ -217,7 +217,7 @@ h1 {
 }
 
 .article-page {
-  max-width: 1180px;
+  max-width: 1320px;
 }
 
 .article-header h1 {
@@ -231,13 +231,18 @@ h1 {
 
 .article-content {
   display: grid;
-  grid-template-columns: minmax(0, 760px) minmax(180px, 1fr);
-  column-gap: 32px;
+  grid-template-columns: minmax(0, 640px) minmax(380px, 1fr);
+  column-gap: 24px;
   align-items: start;
 }
 
 .article-content > * {
   grid-column: 1;
+}
+
+.article-content > .article-wide {
+  grid-column: 1 / -1;
+  max-width: 880px;
 }
 
 .article-content h2 {
@@ -301,11 +306,11 @@ h1 {
 
 .floating-demo {
   grid-column: 2;
-  grid-row: span 8;
+  grid-row: span 10;
   position: sticky;
   top: 18px;
   align-self: start;
-  margin: 0;
+  margin: 0 0 0 -56px;
   z-index: 2;
 }
 
@@ -314,8 +319,8 @@ h1 {
 }
 
 .floating-demo .interactive-card canvas {
-  height: min(34vw, 330px);
-  min-height: 250px;
+  height: min(42vw, 460px);
+  min-height: 340px;
 }
 
 .floating-demo figcaption span,
@@ -329,7 +334,7 @@ h1 {
 
 .demo-stage-rail {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
   gap: 6px;
   margin-bottom: 10px;
 }
@@ -350,6 +355,10 @@ h1 {
   border-color: var(--accent);
   background: rgba(22, 135, 117, 0.12);
   color: var(--accent);
+}
+
+.demo-stage-rail span + span {
+  margin-top: 0;
 }
 
 .margin-note {
@@ -428,7 +437,11 @@ h1 {
     grid-column: 1;
     grid-row: auto;
     position: static;
-    margin-top: 18px;
+    margin: 18px 0 0;
+  }
+
+  .article-content > .article-wide {
+    grid-column: 1;
   }
 
   .margin-note {
