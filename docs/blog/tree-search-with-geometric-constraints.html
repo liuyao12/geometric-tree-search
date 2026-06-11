@@ -200,7 +200,9 @@
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
       const orientations = buildOrientations();
-      const tilingOrder = buildTilingOrder(20);
+      const tilingRun = buildTilingOrder(20);
+      const tilingOrder = tilingRun.placements;
+      const tilingTrace = tilingRun.trace;
       let scale = 1.02;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
       let dragging = false;
@@ -208,6 +210,9 @@
       let hoveredPoint = null;
       let shownTiles = tilingOrder.length;
       let timer = null;
+      let traceIndex = 0;
+      let trialGhost = null;
+      let statusText = '';
       let showMarkings = false;
       const demoStages = {
         intro: {
@@ -320,46 +325,77 @@
         return Math.abs(point[0]) + Math.abs(point[1]) + Math.abs(point[2]);
       }
 
-      function candidatePlacements(frontier, placed, sums, usedPlacements) {
-        const candidates = [];
+      function candidateTrials(frontier, sums, usedPlacements) {
+        const trials = [];
         orientations.forEach((orientation, orientationIndex) => {
           orientation.vertices3d.forEach((anchor, anchorIndex) => {
             const translation = subtract3(frontier.point, anchor);
             const placementKey = `${orientationIndex}|${key3(translation)}`;
             if (usedPlacements.has(placementKey)) return;
             const vertices3d = orientation.vertices3d.map(point => add3(point, translation));
-            let isValid = true;
             let newPoints = 0;
+            let maxValue = 0;
+            let overflow = 0;
             vertices3d.forEach((point, index) => {
-              if (!isValid) return;
               const key = key3(point);
               const current = sums.get(key)?.value || 0;
-              if (current + turtleValues[index] > 12) isValid = false;
+              const nextValue = current + turtleValues[index];
+              maxValue = Math.max(maxValue, nextValue);
+              overflow = Math.max(overflow, nextValue - 12);
               if (!sums.has(key)) newPoints += 1;
             });
-            if (!isValid || newPoints === 0) return;
-            candidates.push({ orientation, orientationIndex, translation, anchorIndex, newPoints, placementKey });
+            const valid = overflow <= 0 && newPoints > 0;
+            trials.push({ orientation, orientationIndex, translation, anchorIndex, newPoints, maxValue, overflow, valid, placementKey });
           });
         });
-        return candidates.sort((left, right) => right.newPoints - left.newPoints || left.orientationIndex - right.orientationIndex || left.anchorIndex - right.anchorIndex);
+        return trials.sort((left, right) => {
+          if (left.valid !== right.valid) return left.valid ? -1 : 1;
+          return right.newPoints - left.newPoints || left.overflow - right.overflow || left.orientationIndex - right.orientationIndex || left.anchorIndex - right.anchorIndex;
+        });
+      }
+
+      function candidatePlacements(frontier, sums, usedPlacements) {
+        return candidateTrials(frontier, sums, usedPlacements).filter(trial => trial.valid);
       }
 
       function buildTilingOrder(limit) {
         const seed = makePlacement(orientations[0], [0, 0, 0], { step: 0, forced: true, branchCount: 0 });
         const placed = [seed];
+        const trace = [];
         const sums = new Map();
         const usedPlacements = new Set(['0|0,0,0']);
         addPlacementValues(seed, sums);
         for (let step = 1; step < limit; step += 1) {
           const options = [];
           frontierPoints(sums).forEach(frontier => {
-            const candidates = candidatePlacements(frontier, placed, sums, usedPlacements);
-            if (candidates.length > 0) options.push({ frontier, candidates });
+            const trials = candidateTrials(frontier, sums, usedPlacements);
+            const candidates = trials.filter(trial => trial.valid);
+            if (candidates.length > 0) options.push({ frontier, trials, candidates });
           });
           if (options.length === 0) break;
           const forced = options.find(option => option.candidates.length === 1);
           const choice = forced || options.sort((left, right) => left.candidates.length - right.candidates.length || left.frontier.value - right.frontier.value || norm3(left.frontier.point) - norm3(right.frontier.point))[0];
           const candidate = choice.candidates[0];
+          const rejectedTrials = choice.trials.filter(trial => !trial.valid).slice(0, 2);
+          rejectedTrials.forEach(trial => {
+            trace.push({
+              type: 'trial',
+              valid: false,
+              frontier: choice.frontier.point,
+              frontierValue: choice.frontier.value,
+              branchCount: choice.candidates.length,
+              overflow: trial.overflow,
+              placement: makePlacement(trial.orientation, trial.translation, { step, frontier: choice.frontier.point, frontierValue: choice.frontier.value })
+            });
+          });
+          trace.push({
+            type: 'trial',
+            valid: true,
+            frontier: choice.frontier.point,
+            frontierValue: choice.frontier.value,
+            branchCount: choice.candidates.length,
+            placement: makePlacement(candidate.orientation, candidate.translation, { step, frontier: choice.frontier.point, frontierValue: choice.frontier.value })
+          });
           const placement = makePlacement(candidate.orientation, candidate.translation, {
             step,
             forced: choice.candidates.length === 1,
@@ -372,8 +408,9 @@
           placed.push(placement);
           usedPlacements.add(candidate.placementKey);
           addPlacementValues(placement, sums);
+          trace.push({ type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue });
         }
-        return placed;
+        return { placements: placed, trace };
       }
 
       function addPlacementValues(placement, sums) {
@@ -465,15 +502,23 @@
         ctx.restore();
       }
 
-      function drawTurtle(placement, index) {
+      function drawTurtle(placement, index, options = {}) {
         tracePolygon(placement.points);
-        ctx.fillStyle = ['rgba(217, 164, 65, 0.62)', 'rgba(119, 168, 137, 0.62)', 'rgba(200, 109, 88, 0.62)', 'rgba(109, 143, 199, 0.62)'][index % 4];
-        ctx.strokeStyle = '#26342f';
-        ctx.lineWidth = Math.max(1.2, 1.9 * scale);
+        if (options.ghost) {
+          ctx.fillStyle = options.valid ? 'rgba(22, 135, 117, 0.2)' : 'rgba(184, 74, 86, 0.2)';
+          ctx.strokeStyle = options.valid ? '#168775' : '#b84a56';
+          ctx.setLineDash(options.valid ? [10, 5] : [4, 4]);
+        } else {
+          ctx.fillStyle = ['rgba(217, 164, 65, 0.62)', 'rgba(119, 168, 137, 0.62)', 'rgba(200, 109, 88, 0.62)', 'rgba(109, 143, 199, 0.62)'][index % 4];
+          ctx.strokeStyle = '#26342f';
+          ctx.setLineDash([]);
+        }
+        ctx.lineWidth = Math.max(1.2, options.ghost ? 2.5 * scale : 1.9 * scale);
         ctx.lineJoin = 'round';
         ctx.fill();
         ctx.stroke();
-        if (showMarkings) drawMarkings(placement);
+        ctx.setLineDash([]);
+        if (!options.ghost && showMarkings) drawMarkings(placement);
       }
 
       function drawValues(sums) {
@@ -535,12 +580,13 @@
         if (cellsToggle.checked) drawGrid(rect);
         const visible = visiblePlacements();
         visible.forEach(drawTurtle);
+        if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
         const sums = visibleSums();
         drawValues(sums);
-        drawFrontier(visible[visible.length - 1]);
+        drawFrontier(trialGhost || visible[visible.length - 1]);
         drawHoverTooltip();
         const latest = visible[visible.length - 1];
-        const branchText = latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile';
+        const branchText = statusText || (latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile');
         ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
         ctx.font = '700 13px Inter, system-ui, sans-serif';
         ctx.fillText(`${shownTiles} Smith turtle${shownTiles === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
@@ -574,7 +620,12 @@
       function setDemoStage(stageName) {
         const stage = demoStages[stageName];
         if (!stage) return;
+        stopTiling();
         shownTiles = stage.tiles;
+        traceIndex = 0;
+        trialGhost = null;
+        statusText = '';
+        startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
         stageLabel.textContent = stage.label;
         stageNote.textContent = stage.note;
@@ -635,13 +686,35 @@
           stopTiling();
           return;
         }
-        if (shownTiles >= tilingOrder.length) shownTiles = 1;
+        shownTiles = 1;
+        traceIndex = 0;
+        trialGhost = null;
+        statusText = 'branching from an undersaturated vertex';
+        showMarkings = false;
+        updateMarkingButton();
         startButton.textContent = 'Pause tiling';
         timer = window.setInterval(() => {
-          shownTiles += 1;
-          if (shownTiles >= tilingOrder.length) stopTiling();
+          if (traceIndex >= tilingTrace.length) {
+            trialGhost = null;
+            statusText = 'trial search reached the displayed patch';
+            stopTiling();
+            draw();
+            return;
+          }
+          const event = tilingTrace[traceIndex];
+          traceIndex += 1;
+          if (event.type === 'trial') {
+            trialGhost = event;
+            statusText = event.valid
+              ? `trying compatible placement at t=${event.frontierValue}/12`
+              : `reject: would exceed 12 by ${event.overflow}`;
+          } else {
+            shownTiles = event.count;
+            trialGhost = null;
+            statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
+          }
           draw();
-        }, 420);
+        }, 620);
         draw();
       });
       markingsButton.addEventListener('click', () => {
@@ -658,7 +731,9 @@
         scale = 1.02;
         offset = { x: rect.width / 2, y: rect.height / 2 };
         hoveredPoint = null;
-        shownTiles = 1;
+        traceIndex = 0;
+        trialGhost = null;
+        statusText = '';
         showMarkings = false;
         setDemoStage('intro');
       });

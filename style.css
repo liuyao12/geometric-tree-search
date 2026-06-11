@@ -217,7 +217,7 @@ h1 {
 }
 
 .article-page {
-  max-width: 1320px;
+  max-width: 1440px;
 }
 
 .article-header h1 {
@@ -231,8 +231,8 @@ h1 {
 
 .article-content {
   display: grid;
-  grid-template-columns: minmax(0, 640px) minmax(380px, 1fr);
-  column-gap: 24px;
+  grid-template-columns: minmax(260px, 1fr) minmax(620px, 2fr);
+  column-gap: 18px;
   align-items: start;
 }
 
@@ -242,7 +242,7 @@ h1 {
 
 .article-content > .article-wide {
   grid-column: 1 / -1;
-  max-width: 880px;
+  max-width: 980px;
 }
 
 .article-content h2 {
@@ -310,7 +310,7 @@ h1 {
   position: sticky;
   top: 18px;
   align-self: start;
-  margin: 0 0 0 -56px;
+  margin: 0 0 0 -96px;
   z-index: 2;
 }
 
@@ -319,8 +319,8 @@ h1 {
 }
 
 .floating-demo .interactive-card canvas {
-  height: min(42vw, 460px);
-  min-height: 340px;
+  height: min(48vw, 560px);
+  min-height: 420px;
 }
 
 .floating-demo figcaption span,
