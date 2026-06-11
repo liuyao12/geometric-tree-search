@@ -230,18 +230,10 @@ h1 {
 }
 
 .article-content {
-  display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(620px, 2fr);
-  column-gap: 18px;
-  align-items: start;
-}
-
-.article-content > * {
-  grid-column: 1;
+  display: flow-root;
 }
 
 .article-content > .article-wide {
-  grid-column: 1 / -1;
   max-width: 980px;
 }
 
@@ -305,12 +297,11 @@ h1 {
 }
 
 .floating-demo {
-  grid-column: 2;
-  grid-row: span 10;
+  float: right;
+  width: min(66vw, 900px);
   position: sticky;
   top: 18px;
-  align-self: start;
-  margin: 0 0 0 -96px;
+  margin: 0 0 22px 28px;
   z-index: 2;
 }
 
@@ -319,8 +310,8 @@ h1 {
 }
 
 .floating-demo .interactive-card canvas {
-  height: min(48vw, 560px);
-  min-height: 420px;
+  height: min(50vw, 600px);
+  min-height: 440px;
 }
 
 .floating-demo figcaption span,
@@ -429,23 +420,15 @@ h1 {
 }
 
 @media (max-width: 900px) {
-  .article-content {
-    grid-template-columns: 1fr;
-  }
-
   .floating-demo {
-    grid-column: 1;
-    grid-row: auto;
+    float: none;
+    width: 100%;
     position: static;
     margin: 18px 0 0;
   }
 
-  .article-content > .article-wide {
-    grid-column: 1;
-  }
-
   .margin-note {
-    grid-column: 1;
+    clear: both;
   }
 }
 

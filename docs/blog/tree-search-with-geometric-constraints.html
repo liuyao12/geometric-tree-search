@@ -33,8 +33,6 @@
 
     <article class="article-shell">
       <section class="article-content">
-        <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. The core algorithm is to learn a pattern of markings on the tiles that may be used to accelerate the tree search, by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
-
         <aside class="floating-demo" aria-label="Sticky turtle tiling demo">
           <figure class="interactive-card" id="turtle-tiling-card">
             <div class="interactive-toolbar" aria-label="Turtle tiling controls">
@@ -59,6 +57,8 @@
             </figcaption>
           </figure>
         </aside>
+
+        <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. The core algorithm is to learn a pattern of markings on the tiles that may be used to accelerate the tree search, by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
 
         <aside class="margin-note">GCTS gives the project name a deliberate echo of MCTS: geometry supplies the constraints that replace rollout statistics.</aside>
 
@@ -200,6 +200,7 @@
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
       const orientations = buildOrientations();
+      const seedOrientationIndex = 6;
       const tilingRun = buildTilingOrder(20);
       const tilingOrder = tilingRun.placements;
       const tilingTrace = tilingRun.trace;
@@ -359,11 +360,11 @@
       }
 
       function buildTilingOrder(limit) {
-        const seed = makePlacement(orientations[0], [0, 0, 0], { step: 0, forced: true, branchCount: 0 });
+        const seed = makePlacement(orientations[seedOrientationIndex], [0, 0, 0], { step: 0, forced: true, branchCount: 0 });
         const placed = [seed];
         const trace = [];
         const sums = new Map();
-        const usedPlacements = new Set(['0|0,0,0']);
+        const usedPlacements = new Set([`${seedOrientationIndex}|0,0,0`]);
         addPlacementValues(seed, sums);
         for (let step = 1; step < limit; step += 1) {
           const options = [];
@@ -521,7 +522,35 @@
         if (!options.ghost && showMarkings) drawMarkings(placement);
       }
 
-      function drawValues(sums) {
+      function labelAnchorForPoint(entry, placements) {
+        let best = null;
+        placements.forEach(placement => {
+          placement.vertices3d.forEach((point, vertexIndex) => {
+            if (key3(point) !== key3(entry.point)) return;
+            const vertex = placement.points[vertexIndex];
+            const centerPoint = placement.points.reduce((sum, p) => ({ x: sum.x + p.x / placement.points.length, y: sum.y + p.y / placement.points.length }), { x: 0, y: 0 });
+            const vx = vertex.x - centerPoint.x;
+            const vy = vertex.y - centerPoint.y;
+            const length = Math.hypot(vx, vy) || 1;
+            const candidate = { x: vx / length, y: vy / length, vertex };
+            if (!best || length > best.length) best = { ...candidate, length };
+          });
+        });
+        return best;
+      }
+
+      function drawValueLabel(text, screen, direction, isHovered) {
+        const padding = isHovered ? 13 : 10;
+        const x = screen.x + direction.x * padding;
+        const y = screen.y + direction.y * padding;
+        ctx.textAlign = direction.x < -0.35 ? 'right' : direction.x > 0.35 ? 'left' : 'center';
+        ctx.textBaseline = direction.y < -0.35 ? 'bottom' : direction.y > 0.35 ? 'top' : 'middle';
+        ctx.fillText(text, x, y);
+        ctx.textAlign = 'start';
+        ctx.textBaseline = 'alphabetic';
+      }
+
+      function drawValues(sums, placements) {
         sums.forEach(entry => {
           const point = projectA2(entry.point);
           const screen = worldToScreen(point.x, point.y);
@@ -531,9 +560,11 @@
           ctx.fillStyle = entry.value > 12 ? '#b84a56' : isHovered ? '#18211f' : 'rgba(24, 33, 31, 0.62)';
           ctx.fill();
           if (isHovered || scale > 1.25) {
+            const anchor = labelAnchorForPoint(entry, placements);
+            const direction = anchor ? { x: anchor.x, y: anchor.y } : { x: 0.7, y: -0.7 };
             ctx.fillStyle = isHovered ? '#18211f' : 'rgba(24, 33, 31, 0.78)';
             ctx.font = `${isHovered ? 800 : 700} 11px Inter, system-ui, sans-serif`;
-            ctx.fillText(String(entry.value), screen.x + 6, screen.y - 6);
+            drawValueLabel(String(entry.value), screen, direction, isHovered);
           }
         });
       }
@@ -582,7 +613,7 @@
         visible.forEach(drawTurtle);
         if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
         const sums = visibleSums();
-        drawValues(sums);
+        drawValues(sums, visible);
         drawFrontier(trialGhost || visible[visible.length - 1]);
         drawHoverTooltip();
         const latest = visible[visible.length - 1];
