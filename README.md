@@ -24,7 +24,7 @@ Pages site. The main way to use it is to open the page in a browser:
 
 The project is motivated by the Observable essay:
 
-- [Tree Search with Geometric Constraints I: Learning matching rules in tiling](https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints)
+- [Geometrically Constrained Tree Search I: Learning matching rules in tiling](https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints)
 
 The in-repository source for the local notebook-style port is
 [docs/blog/tree-search-with-geometric-constraints.html](./docs/blog/tree-search-with-geometric-constraints.html), and a Markdown export of that post is included at
