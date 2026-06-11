@@ -53,7 +53,8 @@
               </div>
               <strong id="turtle-stage-label">Stage: lattice and turtle</strong>
               <span id="turtle-stage-note">Scroll through the article and the side demo will add the tiling and markings when they become relevant.</span>
-              <span>Drag to pan; scroll or pinch to zoom.</span>
+              <span id="turtle-hover-readout">Hover a lattice point to read its t-value in twelfths.</span>
+              <span>Values are shown in units of 1/12. Drag to pan; scroll or pinch to zoom.</span>
             </figcaption>
           </figure>
         </aside>
@@ -171,14 +172,19 @@
       const cellsToggle = document.getElementById('turtle-cells');
       const stageLabel = document.getElementById('turtle-stage-label');
       const stageNote = document.getElementById('turtle-stage-note');
+      const hoverReadout = document.getElementById('turtle-hover-readout');
       const stageChips = Array.from(document.querySelectorAll('[data-stage-chip]'));
+      const sqrt2 = Math.sqrt(2);
       const sqrt3 = Math.sqrt(3);
+      const sqrt6 = Math.sqrt(6);
+      const latticeScale = 24;
       const turtleVertices3d = [
         [3, -2, -1], [2, 0, -2], [0, 1, -1], [0, 2, -2],
         [-1, 3, -2], [-2, 2, 0], [-1, 0, 1], [-2, 0, 2],
         [-2, -1, 3], [0, -2, 2], [1, -4, 3], [2, -4, 2],
         [3, -5, 2], [4, -4, 0]
       ];
+      const turtleValues = [6, 4, 9, 4, 3, 4, 9, 4, 3, 8, 3, 8, 3, 4];
       const turtleMarkSegments = [
         { component: 0, from: 0, to: 10, value: 1 },
         { component: 0, from: 2, to: 8, value: -1 },
@@ -186,33 +192,32 @@
         { component: 2, from: 4, to: 12, value: -1 }
       ];
       const markColors = ['#b84a56', '#168775', '#315f9f'];
-      const latticeScale = 24;
-      const latticeBasis = [projectA2([1, -1, 0]), projectA2([0, 1, -1])];
-      const rawTurtle = turtleVertices3d.map(projectA2);
+      const permutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+      const gridSteps = [[1, -1, 0], [0, 1, -1], [1, 0, -1]];
+      const rawTurtle = turtleVertices3d.map(projectA2Raw);
       const center = rawTurtle.reduce((sum, point) => ({ x: sum.x + point.x, y: sum.y + point.y }), { x: 0, y: 0 });
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
-      const turtle = rawTurtle.map(point => ({ x: point.x - center.x, y: point.y - center.y }));
       const orientations = buildOrientations();
-      const tilingOrder = buildTilingOrder(18);
-      let selectedFrontier = null;
+      const tilingOrder = buildTilingOrder(20);
       let scale = 1.02;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
       let dragging = false;
       let last = { x: 0, y: 0 };
+      let hoveredPoint = null;
       let shownTiles = 1;
       let timer = null;
       let showMarkings = false;
       const demoStages = {
         intro: {
-          label: 'Stage: the Smith et al. turtle on A₂',
-          note: 'The polygon is the 2023 turtle projected from its integer A₂ coordinates in Z³.',
+          label: 'Stage: t-values on the Smith turtle',
+          note: 'Hover a lattice point: the solid-angle value is stored in twelfths, and every valid partial placement keeps the accumulated value at most 12.',
           tiles: 1,
           markings: false
         },
         tiling: {
           label: 'Stage: frontier scan and branch',
-          note: 'The rudimentary search scans frontier edges, takes forced moves first when they occur, then branches on a compatible edge placement.',
+          note: 'The rudimentary search scans undersaturated frontier points, takes forced moves first, then branches by aligning a symmetric turtle placement to that point.',
           tiles: 6,
           markings: false
         },
@@ -230,158 +235,147 @@
         }
       };
 
-      function projectA2([x, y, z]) {
+      function projectA2Raw([x, y, z]) {
         return {
-          x: (x - 0.5 * y - 0.5 * z) * latticeScale,
-          y: (sqrt3 / 2) * (y - z) * latticeScale
+          x: ((x - y) / sqrt2) * latticeScale,
+          y: ((x + y - 2 * z) / sqrt6) * latticeScale
         };
       }
 
-      function rotate(point, turns) {
-        const angle = turns * Math.PI / 3;
-        const cos = Math.cos(angle);
-        const sin = Math.sin(angle);
-        return { x: point.x * cos - point.y * sin, y: point.x * sin + point.y * cos };
+      function projectA2(point) {
+        const raw = projectA2Raw(point);
+        return { x: raw.x - center.x, y: raw.y - center.y };
       }
 
-      function orientPoint(point, orientation) {
-        const reflected = orientation.reflect ? { x: -point.x, y: point.y } : point;
-        return rotate(reflected, orientation.rotation);
+      function key3(point) {
+        return point.join(',');
+      }
+
+      function add3(a, b) {
+        return [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+      }
+
+      function subtract3(a, b) {
+        return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+      }
+
+      function transform3(point, symmetry) {
+        return symmetry.permutation.map(index => symmetry.sign * point[index]);
       }
 
       function buildOrientations() {
         const list = [];
-        [false, true].forEach(reflect => {
-          for (let rotation = 0; rotation < 6; rotation += 1) {
-            list.push({
-              reflect,
-              rotation,
-              points: turtle.map(point => orientPoint(point, { reflect, rotation }))
-            });
-          }
+        [1, -1].forEach(sign => {
+          permutations.forEach(permutation => {
+            const vertices3d = turtleVertices3d.map(point => transform3(point, { sign, permutation }));
+            list.push({ sign, permutation, vertices3d });
+          });
         });
         return list;
       }
 
-      function signedArea(points) {
-        return points.reduce((sum, point, index) => {
-          const next = points[(index + 1) % points.length];
-          return sum + point.x * next.y - next.x * point.y;
-        }, 0) / 2;
+      function makePlacement(orientation, translation, extras = {}) {
+        const vertices3d = orientation.vertices3d.map(point => add3(point, translation));
+        return {
+          ...extras,
+          orientation,
+          translation,
+          vertices3d,
+          points: vertices3d.map(projectA2),
+          values: turtleValues
+        };
       }
 
-      function edgeKey(a, b) {
-        return `${Math.round(a.x * 1000)},${Math.round(a.y * 1000)}|${Math.round(b.x * 1000)},${Math.round(b.y * 1000)}`;
+      function visiblePlacements() {
+        return tilingOrder.slice(0, shownTiles);
       }
 
-      function distance(a, b) {
-        return Math.hypot(a.x - b.x, a.y - b.y);
-      }
-
-      function edgeMidpoint(edge) {
-        return { x: (edge.a.x + edge.b.x) / 2, y: (edge.a.y + edge.b.y) / 2 };
-      }
-
-      function centroid(points) {
-        return points.reduce((sum, point) => ({ x: sum.x + point.x / points.length, y: sum.y + point.y / points.length }), { x: 0, y: 0 });
-      }
-
-      function orientation(a, b, c) {
-        return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
-      }
-
-      function properIntersection(a, b, c, d) {
-        const o1 = orientation(a, b, c);
-        const o2 = orientation(a, b, d);
-        const o3 = orientation(c, d, a);
-        const o4 = orientation(c, d, b);
-        return o1 * o2 < -1e-6 && o3 * o4 < -1e-6;
-      }
-
-      function pointInPolygon(point, polygon) {
-        let inside = false;
-        for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i, i += 1) {
-          const a = polygon[i];
-          const b = polygon[j];
-          const crosses = (a.y > point.y) !== (b.y > point.y);
-          if (crosses && point.x < ((b.x - a.x) * (point.y - a.y)) / (b.y - a.y) + a.x) inside = !inside;
-        }
-        return inside;
-      }
-
-      function polygonsOverlap(candidate, placed) {
-        const candidateCenter = centroid(candidate);
-        return placed.some(existing => {
-          const existingCenter = centroid(existing.points);
-          if (pointInPolygon(candidateCenter, existing.points) || pointInPolygon(existingCenter, candidate)) return true;
-          for (let i = 0; i < candidate.length; i += 1) {
-            const a = candidate[i];
-            const b = candidate[(i + 1) % candidate.length];
-            for (let j = 0; j < existing.points.length; j += 1) {
-              const c = existing.points[j];
-              const d = existing.points[(j + 1) % existing.points.length];
-              if (properIntersection(a, b, c, d)) return true;
-            }
-          }
-          return false;
-        });
-      }
-
-      function frontierEdges(placed) {
-        const boundary = new Map();
-        placed.forEach((placement, placementIndex) => {
-          placement.points.forEach((a, edgeIndex) => {
-            const b = placement.points[(edgeIndex + 1) % placement.points.length];
-            const key = edgeKey(a, b);
-            const reverse = edgeKey(b, a);
-            if (boundary.has(reverse)) boundary.delete(reverse);
-            else boundary.set(key, { a, b, placementIndex, edgeIndex });
+      function visibleSums() {
+        const sums = new Map();
+        visiblePlacements().forEach(placement => {
+          placement.vertices3d.forEach((point, index) => {
+            const key = key3(point);
+            const entry = sums.get(key) || { point, value: 0 };
+            entry.value += placement.values[index];
+            sums.set(key, entry);
           });
         });
-        return Array.from(boundary.values()).sort((left, right) => {
-          const lm = edgeMidpoint(left);
-          const rm = edgeMidpoint(right);
-          return lm.y - rm.y || lm.x - rm.x;
-        });
+        return sums;
       }
 
-      function candidatesForEdge(edge, placed) {
-        const edgeLength = distance(edge.a, edge.b);
+      function frontierPoints(sums) {
+        return Array.from(sums.values())
+          .filter(entry => entry.value < 12)
+          .sort((left, right) => left.value - right.value || norm3(left.point) - norm3(right.point));
+      }
+
+      function norm3(point) {
+        return Math.abs(point[0]) + Math.abs(point[1]) + Math.abs(point[2]);
+      }
+
+      function candidatePlacements(frontier, placed, sums, usedPlacements) {
         const candidates = [];
-        orientations.forEach((shape, orientationIndex) => {
-          shape.points.forEach((point, edgeIndex) => {
-            const next = shape.points[(edgeIndex + 1) % shape.points.length];
-            if (Math.abs(distance(point, next) - edgeLength) > 1e-5) return;
-            const translation = { x: edge.a.x - next.x, y: edge.a.y - next.y };
-            const mappedStart = { x: point.x + translation.x, y: point.y + translation.y };
-            if (distance(mappedStart, edge.b) > 1e-5) return;
-            const points = shape.points.map(p => ({ x: p.x + translation.x, y: p.y + translation.y }));
-            if (polygonsOverlap(points, placed)) return;
-            candidates.push({ points, orientationIndex, edgeIndex, translation });
+        orientations.forEach((orientation, orientationIndex) => {
+          orientation.vertices3d.forEach((anchor, anchorIndex) => {
+            const translation = subtract3(frontier.point, anchor);
+            const placementKey = `${orientationIndex}|${key3(translation)}`;
+            if (usedPlacements.has(placementKey)) return;
+            const vertices3d = orientation.vertices3d.map(point => add3(point, translation));
+            let isValid = true;
+            let newPoints = 0;
+            vertices3d.forEach((point, index) => {
+              if (!isValid) return;
+              const key = key3(point);
+              const current = sums.get(key)?.value || 0;
+              if (current + turtleValues[index] > 12) isValid = false;
+              if (!sums.has(key)) newPoints += 1;
+            });
+            if (!isValid || newPoints === 0) return;
+            candidates.push({ orientation, orientationIndex, translation, anchorIndex, newPoints, placementKey });
           });
         });
-        return candidates.sort((left, right) => {
-          const lc = centroid(left.points);
-          const rc = centroid(right.points);
-          return Math.hypot(lc.x, lc.y) - Math.hypot(rc.x, rc.y) || left.orientationIndex - right.orientationIndex;
-        });
+        return candidates.sort((left, right) => right.newPoints - left.newPoints || left.orientationIndex - right.orientationIndex || left.anchorIndex - right.anchorIndex);
       }
 
       function buildTilingOrder(limit) {
-        const placed = [{ points: orientations[0].points.map(point => ({ ...point })), orientationIndex: 0, step: 0, forced: true }];
+        const seed = makePlacement(orientations[0], [0, 0, 0], { step: 0, forced: true, branchCount: 0 });
+        const placed = [seed];
+        const sums = new Map();
+        const usedPlacements = new Set(['0|0,0,0']);
+        addPlacementValues(seed, sums);
         for (let step = 1; step < limit; step += 1) {
-          const options = frontierEdges(placed).map(edge => ({ edge, candidates: candidatesForEdge(edge, placed) })).filter(option => option.candidates.length > 0);
-          if (options.length === 0) break;
-          options.forEach(option => {
-            const midpoint = edgeMidpoint(option.edge);
-            option.scanScore = Math.hypot(midpoint.x, midpoint.y);
+          const options = [];
+          frontierPoints(sums).forEach(frontier => {
+            const candidates = candidatePlacements(frontier, placed, sums, usedPlacements);
+            if (candidates.length > 0) options.push({ frontier, candidates });
           });
-          const forced = options.filter(option => option.candidates.length === 1).sort((a, b) => a.scanScore - b.scanScore)[0];
-          const choice = forced || options.sort((a, b) => a.candidates.length - b.candidates.length || a.scanScore - b.scanScore)[0];
-          const chosen = choice.candidates[0];
-          placed.push({ ...chosen, step, forced: choice.candidates.length === 1, frontier: choice.edge, branchCount: choice.candidates.length });
+          if (options.length === 0) break;
+          const forced = options.find(option => option.candidates.length === 1);
+          const choice = forced || options.sort((left, right) => left.candidates.length - right.candidates.length || left.frontier.value - right.frontier.value || norm3(left.frontier.point) - norm3(right.frontier.point))[0];
+          const candidate = choice.candidates[0];
+          const placement = makePlacement(candidate.orientation, candidate.translation, {
+            step,
+            forced: choice.candidates.length === 1,
+            branchCount: choice.candidates.length,
+            frontier: choice.frontier.point,
+            frontierValue: choice.frontier.value,
+            anchorIndex: candidate.anchorIndex,
+            newPoints: candidate.newPoints
+          });
+          placed.push(placement);
+          usedPlacements.add(candidate.placementKey);
+          addPlacementValues(placement, sums);
         }
         return placed;
+      }
+
+      function addPlacementValues(placement, sums) {
+        placement.vertices3d.forEach((point, index) => {
+          const key = key3(point);
+          const entry = sums.get(key) || { point, value: 0 };
+          entry.value += placement.values[index];
+          sums.set(key, entry);
+        });
       }
 
       function resizeCanvas() {
@@ -426,16 +420,16 @@
         const maxX = Math.max(...corners.map(point => point.x)) + 80;
         const minY = Math.min(...corners.map(point => point.y)) - 80;
         const maxY = Math.max(...corners.map(point => point.y)) + 80;
-        const [u, v] = latticeBasis;
         ctx.lineWidth = 1;
-        ctx.strokeStyle = '#d9e6df';
         ctx.fillStyle = 'rgba(49, 95, 159, 0.18)';
-        for (let i = -24; i <= 24; i += 1) {
-          for (let j = -24; j <= 24; j += 1) {
-            const point = { x: i * u.x + j * v.x, y: i * u.y + j * v.y };
+        for (let i = -28; i <= 28; i += 1) {
+          for (let j = -28; j <= 28; j += 1) {
+            const point3 = add3([i, -i, 0], [0, j, -j]);
+            const point = projectA2(point3);
             if (point.x < minX || point.x > maxX || point.y < minY || point.y > maxY) continue;
-            [[u.x, u.y], [v.x, v.y], [v.x - u.x, v.y - u.y]].forEach(([dx, dy]) => {
-              const next = { x: point.x + dx, y: point.y + dy };
+            gridSteps.forEach(step => {
+              const next3 = add3(point3, step);
+              const next = projectA2(next3);
               if (next.x < minX || next.x > maxX || next.y < minY || next.y > maxY) return;
               drawLine(worldToScreen(point.x, point.y), worldToScreen(next.x, next.y), '#d9e6df', 1);
             });
@@ -460,41 +454,70 @@
           ctx.setLineDash(segment.value < 0 ? [8, 6] : []);
           drawLine(start, end, markColors[segment.component], Math.max(2.2, 4.1 * scale));
           ctx.setLineDash([]);
-          [start, end].forEach(point => {
-            ctx.beginPath();
-            ctx.arc(point.x, point.y, Math.max(2.4, 3.6 * scale), 0, Math.PI * 2);
-            ctx.fillStyle = markColors[segment.component];
-            ctx.fill();
-          });
         });
-        ctx.restore();
-      }
-
-      function drawFrontier(edge) {
-        if (!edge) return;
-        const start = worldToScreen(edge.a.x, edge.a.y);
-        const end = worldToScreen(edge.b.x, edge.b.y);
-        ctx.save();
-        ctx.setLineDash([7, 5]);
-        drawLine(start, end, '#18211f', Math.max(2, 3 * scale));
         ctx.restore();
       }
 
       function drawTurtle(placement, index) {
         tracePolygon(placement.points);
-        ctx.fillStyle = ['rgba(217, 164, 65, 0.72)', 'rgba(119, 168, 137, 0.72)', 'rgba(200, 109, 88, 0.72)', 'rgba(109, 143, 199, 0.72)'][index % 4];
+        ctx.fillStyle = ['rgba(217, 164, 65, 0.62)', 'rgba(119, 168, 137, 0.62)', 'rgba(200, 109, 88, 0.62)', 'rgba(109, 143, 199, 0.62)'][index % 4];
         ctx.strokeStyle = '#26342f';
-        ctx.lineWidth = Math.max(1.3, 2.2 * scale);
+        ctx.lineWidth = Math.max(1.2, 1.9 * scale);
         ctx.lineJoin = 'round';
         ctx.fill();
         ctx.stroke();
         if (showMarkings) drawMarkings(placement);
-        const nose = placement.points[13];
-        const eye = worldToScreen(nose.x, nose.y);
+      }
+
+      function drawValues(sums) {
+        sums.forEach(entry => {
+          const point = projectA2(entry.point);
+          const screen = worldToScreen(point.x, point.y);
+          const isHovered = hoveredPoint && key3(hoveredPoint.point) === key3(entry.point);
+          ctx.beginPath();
+          ctx.arc(screen.x, screen.y, isHovered ? 7 : 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = entry.value > 12 ? '#b84a56' : isHovered ? '#18211f' : 'rgba(24, 33, 31, 0.62)';
+          ctx.fill();
+          if (isHovered || scale > 1.25) {
+            ctx.fillStyle = isHovered ? '#18211f' : 'rgba(24, 33, 31, 0.78)';
+            ctx.font = `${isHovered ? 800 : 700} 11px Inter, system-ui, sans-serif`;
+            ctx.fillText(String(entry.value), screen.x + 6, screen.y - 6);
+          }
+        });
+      }
+
+      function drawFrontier(placement) {
+        if (!placement?.frontier) return;
+        const point = projectA2(placement.frontier);
+        const screen = worldToScreen(point.x, point.y);
+        ctx.save();
+        ctx.setLineDash([6, 4]);
         ctx.beginPath();
-        ctx.arc(eye.x, eye.y, Math.max(2, 3.2 * scale), 0, Math.PI * 2);
-        ctx.fillStyle = '#26342f';
+        ctx.arc(screen.x, screen.y, Math.max(7, 10 * scale), 0, Math.PI * 2);
+        ctx.strokeStyle = '#18211f';
+        ctx.lineWidth = Math.max(1.8, 2.6 * scale);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawHoverTooltip() {
+        if (!hoveredPoint) return;
+        const point = projectA2(hoveredPoint.point);
+        const screen = worldToScreen(point.x, point.y);
+        const text = `(${hoveredPoint.point.join(', ')})  t=${hoveredPoint.value}/12`;
+        ctx.font = '700 12px Inter, system-ui, sans-serif';
+        const width = ctx.measureText(text).width + 16;
+        const x = Math.min(screen.x + 12, canvas.getBoundingClientRect().width - width - 8);
+        const y = Math.max(screen.y - 30, 8);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
+        ctx.strokeStyle = '#dce5e1';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect(x, y, width, 24, 6);
         ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#18211f';
+        ctx.fillText(text, x + 8, y + 16);
       }
 
       function draw() {
@@ -503,12 +526,14 @@
         ctx.fillStyle = '#fbfcfb';
         ctx.fillRect(0, 0, rect.width, rect.height);
         if (cellsToggle.checked) drawGrid(rect);
-        const visible = tilingOrder.slice(0, shownTiles);
+        const visible = visiblePlacements();
         visible.forEach(drawTurtle);
-        selectedFrontier = visible.length > 1 ? visible[visible.length - 1].frontier : null;
-        drawFrontier(selectedFrontier);
+        const sums = visibleSums();
+        drawValues(sums);
+        drawFrontier(visible[visible.length - 1]);
+        drawHoverTooltip();
         const latest = visible[visible.length - 1];
-        const branchText = latest && latest.branchCount ? `${latest.forced ? 'forced' : `${latest.branchCount}-way branch`} edge` : 'seed tile';
+        const branchText = latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile';
         ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
         ctx.font = '700 13px Inter, system-ui, sans-serif';
         ctx.fillText(`${shownTiles} Smith turtle${shownTiles === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
@@ -517,6 +542,21 @@
       function pointerPosition(event) {
         const rect = canvas.getBoundingClientRect();
         return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+      }
+
+      function updateHoveredPoint(event) {
+        const pointer = pointerPosition(event);
+        let best = null;
+        visibleSums().forEach(entry => {
+          const point = projectA2(entry.point);
+          const screen = worldToScreen(point.x, point.y);
+          const distance = Math.hypot(screen.x - pointer.x, screen.y - pointer.y);
+          if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
+        });
+        hoveredPoint = best;
+        hoverReadout.textContent = best
+          ? `Hover: (${best.point.join(', ')}) has accumulated t-value ${best.value}/12.`
+          : 'Hover a lattice point to read its t-value in twelfths.';
       }
 
       function updateMarkingButton() {
@@ -550,14 +590,26 @@
         canvas.setPointerCapture(event.pointerId);
       });
       canvas.addEventListener('pointermove', event => {
-        if (!dragging) return;
-        const next = pointerPosition(event);
-        offset.x += next.x - last.x;
-        offset.y += next.y - last.y;
-        last = next;
+        if (dragging) {
+          const next = pointerPosition(event);
+          offset.x += next.x - last.x;
+          offset.y += next.y - last.y;
+          last = next;
+        } else {
+          updateHoveredPoint(event);
+        }
         draw();
       });
-      canvas.addEventListener('pointerup', () => { dragging = false; });
+      canvas.addEventListener('pointerleave', () => {
+        hoveredPoint = null;
+        hoverReadout.textContent = 'Hover a lattice point to read its t-value in twelfths.';
+        draw();
+      });
+      canvas.addEventListener('pointerup', event => {
+        dragging = false;
+        updateHoveredPoint(event);
+        draw();
+      });
       canvas.addEventListener('pointercancel', () => { dragging = false; });
       canvas.addEventListener('wheel', event => {
         event.preventDefault();
@@ -598,6 +650,7 @@
         const rect = canvas.getBoundingClientRect();
         scale = 1.02;
         offset = { x: rect.width / 2, y: rect.height / 2 };
+        hoveredPoint = null;
         shownTiles = 1;
         showMarkings = false;
         setDemoStage('intro');
