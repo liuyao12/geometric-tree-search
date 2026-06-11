@@ -182,7 +182,8 @@
         [-2, -1, 3], [0, -2, 2], [1, -4, 3], [2, -4, 2],
         [3, -5, 2], [4, -4, 0]
       ];
-      const turtleValues = [6, 4, 9, 4, 3, 4, 9, 4, 3, 8, 3, 8, 3, 4];
+      const turtleVertexValues = [6, 4, 9, 4, 3, 4, 9, 4, 3, 8, 3, 8, 3, 4];
+      const turtleInteriorValue = 12;
       const turtleMarkSegments = [
         { component: 0, from: 0, to: 10, value: 1 },
         { component: 0, from: 2, to: 8, value: -1 },
@@ -193,6 +194,11 @@
       const coordinatePermutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
       const gridSteps = [[1, -1, 0], [0, 1, -1], [1, 0, -1]];
       const rawTurtle = turtleVertices3d.map(projectA2Raw);
+      const turtleInteriorPoints3d = findInteriorLatticePoints(turtleVertices3d);
+      const turtleOccupancy = [
+        ...turtleVertices3d.map((point, index) => ({ point, value: turtleVertexValues[index], kind: 'vertex', vertexIndex: index })),
+        ...turtleInteriorPoints3d.map(point => ({ point, value: turtleInteriorValue, kind: 'interior' }))
+      ];
       const center = rawTurtle.reduce((sum, point) => ({ x: sum.x + point.x, y: sum.y + point.y }), { x: 0, y: 0 });
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
@@ -272,6 +278,49 @@
         return point.join(',');
       }
 
+      function pointOnSegment(point, a, b, epsilon = 1e-7) {
+        const cross = (point.x - a.x) * (b.y - a.y) - (point.y - a.y) * (b.x - a.x);
+        if (Math.abs(cross) > epsilon) return false;
+        const dot = (point.x - a.x) * (point.x - b.x) + (point.y - a.y) * (point.y - b.y);
+        return dot <= epsilon;
+      }
+
+      function pointStrictlyInPolygon(point, polygon) {
+        for (let i = 0; i < polygon.length; i += 1) {
+          if (pointOnSegment(point, polygon[i], polygon[(i + 1) % polygon.length])) return false;
+        }
+        let inside = false;
+        for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i, i += 1) {
+          const a = polygon[i];
+          const b = polygon[j];
+          if ((a.y > point.y) !== (b.y > point.y)) {
+            const xAtY = ((b.x - a.x) * (point.y - a.y)) / (b.y - a.y) + a.x;
+            if (point.x < xAtY) inside = !inside;
+          }
+        }
+        return inside;
+      }
+
+      function findInteriorLatticePoints(vertices) {
+        const polygon = vertices.map(projectA2Raw);
+        const vertexKeys = new Set(vertices.map(key3));
+        const xs = vertices.map(point => point[0]);
+        const ys = vertices.map(point => point[1]);
+        const minX = Math.min(...xs);
+        const maxX = Math.max(...xs);
+        const minY = Math.min(...ys);
+        const maxY = Math.max(...ys);
+        const interior = [];
+        for (let x = minX; x <= maxX; x += 1) {
+          for (let y = minY; y <= maxY; y += 1) {
+            const point3 = [x, y, -x - y];
+            if (vertexKeys.has(key3(point3))) continue;
+            if (pointStrictlyInPolygon(projectA2Raw(point3), polygon)) interior.push(point3);
+          }
+        }
+        return interior;
+      }
+
       function add3(a, b) {
         return [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
       }
@@ -305,19 +354,28 @@
         return buildA2Symmetries().map((symmetry, orientationIndex) => ({
           ...symmetry,
           orientationIndex,
-          vertices3d: turtleVertices3d.map(point => transform3(point, symmetry))
+          vertices3d: turtleVertices3d.map(point => transform3(point, symmetry)),
+          occupancy: turtleOccupancy.map(entry => ({
+            ...entry,
+            point: transform3(entry.point, symmetry)
+          }))
         }));
       }
 
       function makePlacement(orientation, translation, extras = {}) {
         const vertices3d = orientation.vertices3d.map(point => add3(point, translation));
+        const occupancy = orientation.occupancy.map(entry => ({
+          ...entry,
+          point: add3(entry.point, translation)
+        }));
         return {
           ...extras,
           orientation,
           translation,
           vertices3d,
+          occupancy,
           points: vertices3d.map(projectA2),
-          values: turtleValues
+          values: turtleVertexValues
         };
       }
 
@@ -328,10 +386,10 @@
       function visibleSums() {
         const sums = new Map();
         visiblePlacements().forEach(placement => {
-          placement.vertices3d.forEach((point, index) => {
-            const key = key3(point);
-            const entry = sums.get(key) || { point, value: 0 };
-            entry.value += placement.values[index];
+          placement.occupancy.forEach(item => {
+            const key = key3(item.point);
+            const entry = sums.get(key) || { point: item.point, value: 0 };
+            entry.value += item.value;
             sums.set(key, entry);
           });
         });
@@ -348,39 +406,42 @@
         return Math.abs(point[0]) + Math.abs(point[1]) + Math.abs(point[2]);
       }
 
-      function placementOccupancyKey(vertices3d) {
-        return vertices3d.map(key3).sort().join('|');
+      function placementOccupancyKey(occupancy) {
+        return occupancy.map(item => key3(item.point)).sort().join('|');
       }
 
-      function moveCoverage(vertices3d, sums) {
-        return vertices3d.reduce((count, point) => count + (sums.has(key3(point)) ? 1 : 0), 0);
+      function moveCoverage(occupancy, sums) {
+        return occupancy.reduce((count, item) => count + (sums.has(key3(item.point)) ? 1 : 0), 0);
       }
 
       function candidateTrials(frontier, sums, usedPlacements) {
         const trials = [];
         const dedup = new Map();
         orientations.forEach((orientation, orientationIndex) => {
-          orientation.vertices3d.forEach((anchor, anchorIndex) => {
-            const anchorValue = turtleValues[anchorIndex];
+          orientation.occupancy.forEach((anchor, anchorIndex) => {
+            const anchorValue = anchor.value;
             const fillsFrontier = frontier.value + anchorValue === 12;
-            const translation = subtract3(frontier.point, anchor);
+            const translation = subtract3(frontier.point, anchor.point);
             const placementKey = `${orientationIndex}|${key3(translation)}`;
             if (usedPlacements.has(placementKey)) return;
-            const vertices3d = orientation.vertices3d.map(point => add3(point, translation));
+            const occupancy = orientation.occupancy.map(item => ({
+              ...item,
+              point: add3(item.point, translation)
+            }));
             let newPoints = 0;
             let maxValue = 0;
             let overflow = 0;
-            vertices3d.forEach((point, index) => {
-              const key = key3(point);
+            occupancy.forEach(item => {
+              const key = key3(item.point);
               const current = sums.get(key)?.value || 0;
-              const nextValue = current + turtleValues[index];
+              const nextValue = current + item.value;
               maxValue = Math.max(maxValue, nextValue);
               overflow = Math.max(overflow, nextValue - 12);
               if (!sums.has(key)) newPoints += 1;
             });
             const valid = fillsFrontier && overflow <= 0 && newPoints > 0;
-            const coverage = moveCoverage(vertices3d, sums);
-            const occupancyKey = placementOccupancyKey(vertices3d);
+            const coverage = moveCoverage(occupancy, sums);
+            const occupancyKey = placementOccupancyKey(occupancy);
             const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, coverage, valid, placementKey, occupancyKey };
             const existing = dedup.get(occupancyKey);
             if (!existing || compareTrials(trial, existing) < 0) dedup.set(occupancyKey, trial);
@@ -461,10 +522,10 @@
       }
 
       function addPlacementValues(placement, sums) {
-        placement.vertices3d.forEach((point, index) => {
-          const key = key3(point);
-          const entry = sums.get(key) || { point, value: 0 };
-          entry.value += placement.values[index];
+        placement.occupancy.forEach(item => {
+          const key = key3(item.point);
+          const entry = sums.get(key) || { point: item.point, value: 0 };
+          entry.value += item.value;
           sums.set(key, entry);
         });
       }
@@ -647,9 +708,9 @@
       function labelAnchorForPoint(entry, placements) {
         let best = null;
         placements.forEach(placement => {
-          placement.vertices3d.forEach((point, vertexIndex) => {
-            if (key3(point) !== key3(entry.point)) return;
-            const vertex = placement.points[vertexIndex];
+          placement.occupancy.forEach(item => {
+            if (key3(item.point) !== key3(entry.point)) return;
+            const vertex = projectA2(item.point);
             const centerPoint = placement.points.reduce((sum, p) => ({ x: sum.x + p.x / placement.points.length, y: sum.y + p.y / placement.points.length }), { x: 0, y: 0 });
             const vx = vertex.x - centerPoint.x;
             const vy = vertex.y - centerPoint.y;
