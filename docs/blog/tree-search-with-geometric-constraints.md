@@ -1,7 +1,6 @@
 <!--
-Exported from the Observable notebook source:
-https://api.observablehq.com/@liuyao12/tree-search-with-geometric-constraints.js?v=3
-Canonical post: https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints
+Primary browser version lives at docs/blog/tree-search-with-geometric-constraints.html.
+This Markdown file is kept as a text export of the essay.
 -->
 
 # Geometrically Constrained Tree Search I — Learning matching rules in tiling

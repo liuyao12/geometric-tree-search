@@ -75,6 +75,7 @@ h1 {
 
 .actions a,
 .project-item a,
+.featured-article a,
 .writing-list a {
   display: inline-flex;
   align-items: center;
@@ -91,6 +92,7 @@ h1 {
 
 .actions a:first-child,
 .project-item a,
+.featured-article a,
 .writing-list a {
   border-color: var(--accent);
   background: var(--accent);
@@ -152,6 +154,7 @@ h1 {
 }
 
 .project-item > div,
+.featured-article,
 .writing-list article {
   display: grid;
   align-content: start;
@@ -160,11 +163,13 @@ h1 {
 }
 
 .project-item h3,
+.featured-article h3,
 .writing-list h3 {
   font-size: 23px;
 }
 
 .project-item a,
+.featured-article a,
 .writing-list a {
   justify-self: start;
   margin-top: 4px;
@@ -186,6 +191,13 @@ h1 {
 .writing-list article {
   border-top: 1px solid var(--line);
   padding-top: 16px;
+}
+
+.featured-article {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 18px;
 }
 
 @media (max-width: 760px) {
