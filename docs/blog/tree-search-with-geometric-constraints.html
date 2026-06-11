@@ -36,6 +36,7 @@
         <aside class="floating-demo" aria-label="Sticky turtle tiling demo">
           <figure class="interactive-card" id="turtle-tiling-card">
             <div class="interactive-toolbar" aria-label="Turtle tiling controls">
+              <span class="demo-drag-handle" id="turtle-window-drag" role="button" tabindex="0" aria-label="Drag turtle demo window">Drag window</span>
               <button type="button" id="turtle-start">Start tiling</button>
               <button type="button" id="turtle-markings" aria-pressed="false">Show markings</button>
               <button type="button" id="turtle-reset">Reset view</button>
@@ -43,17 +44,8 @@
             </div>
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
-              <div class="demo-stage-rail" aria-label="Demo stages">
-                <span data-stage-chip="intro" aria-current="true">patch</span>
-                <span data-stage-chip="tile">single tile</span>
-                <span data-stage-chip="tiling">tiling</span>
-                <span data-stage-chip="markings">markings</span>
-                <span data-stage-chip="learning">learned patch</span>
-              </div>
-              <strong id="turtle-stage-label">Stage: lattice and turtle</strong>
-              <span id="turtle-stage-note">Scroll through the article and the side demo will add the tiling and markings when they become relevant.</span>
               <span id="turtle-hover-readout">Hover a lattice point to read its accumulated t-value in twelfths.</span>
-              <span>Values are shown in units of 1/12. Drag to pan; scroll or pinch to zoom.</span>
+              <span>Values are shown in units of 1/12. Drag the window handle to move the demo; drag the canvas to pan.</span>
             </figcaption>
           </figure>
         </aside>
@@ -175,6 +167,8 @@
       const stageNote = document.getElementById('turtle-stage-note');
       const hoverReadout = document.getElementById('turtle-hover-readout');
       const stageChips = Array.from(document.querySelectorAll('[data-stage-chip]'));
+      const floatingDemo = document.querySelector('.floating-demo');
+      const windowDragHandle = document.getElementById('turtle-window-drag');
       const sqrt2 = Math.sqrt(2);
       const sqrt3 = Math.sqrt(3);
       const sqrt6 = Math.sqrt(6);
@@ -215,8 +209,11 @@
       let trialGhost = null;
       let statusText = '';
       let showMarkings = false;
+      let windowDragging = false;
+      let windowDragLast = { x: 0, y: 0 };
+      let demoDrag = { x: 0, y: 0 };
       const articleContent = document.querySelector('.article-content');
-      const wrapTargets = Array.from(articleContent.children).filter(child => !child.classList.contains('floating-demo'));
+      const wrapTargets = Array.from(articleContent.children).filter(child => !child.classList.contains('floating-demo') && !child.classList.contains('margin-note'));
       const demoCard = document.getElementById('turtle-tiling-card');
       const demoStages = {
         intro: {
@@ -426,6 +423,21 @@
         });
       }
 
+      function normalTextWidth(target) {
+        const articleMax = Number.parseFloat(window.getComputedStyle(articleContent).getPropertyValue('--article-text-max'));
+        if (Number.isFinite(articleMax)) return articleMax;
+        const cssMax = window.getComputedStyle(target).maxWidth;
+        const parsed = Number.parseFloat(cssMax);
+        return Number.isFinite(parsed) ? parsed : target.getBoundingClientRect().width;
+      }
+
+      function applyDemoDrag() {
+        if (!floatingDemo) return;
+        floatingDemo.style.setProperty('--demo-drag-x', `${demoDrag.x}px`);
+        floatingDemo.style.setProperty('--demo-drag-y', `${demoDrag.y}px`);
+        window.requestAnimationFrame(updateTextWrap);
+      }
+
       function updateTextWrap() {
         if (!articleContent || !demoCard || window.matchMedia('(max-width: 900px)').matches) {
           wrapTargets.forEach(target => {
@@ -435,11 +447,17 @@
         }
         const articleRect = articleContent.getBoundingClientRect();
         const demoRect = demoCard.getBoundingClientRect();
-        const available = Math.max(240, demoRect.left - articleRect.left - 24);
+        const gutter = 24;
         wrapTargets.forEach(target => {
           const rect = target.getBoundingClientRect();
           const overlaps = rect.bottom > demoRect.top + 8 && rect.top < demoRect.bottom - 8;
-          target.style.maxWidth = overlaps ? `${available}px` : '';
+          if (!overlaps) {
+            target.style.maxWidth = '';
+            return;
+          }
+          const normalWidth = normalTextWidth(target);
+          const available = Math.max(240, demoRect.left - articleRect.left - gutter);
+          target.style.maxWidth = `${Math.min(normalWidth, available)}px`;
         });
       }
 
@@ -679,8 +697,8 @@
         statusText = '';
         startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
-        stageLabel.textContent = stage.label;
-        stageNote.textContent = stage.note;
+        if (stageLabel) stageLabel.textContent = stage.label;
+        if (stageNote) stageNote.textContent = stage.note;
         stageChips.forEach(chip => {
           chip.setAttribute('aria-current', String(chip.dataset.stageChip === stageName));
         });
@@ -692,6 +710,46 @@
         if (timer) window.clearInterval(timer);
         timer = null;
         startButton.textContent = shownTiles >= tilingOrder.length ? 'Restart tiling' : 'Start tiling';
+      }
+
+
+      if (windowDragHandle && floatingDemo) {
+        windowDragHandle.addEventListener('pointerdown', event => {
+          windowDragging = true;
+          windowDragLast = { x: event.clientX, y: event.clientY };
+          floatingDemo.classList.add('is-dragging');
+          windowDragHandle.setPointerCapture(event.pointerId);
+          event.preventDefault();
+        });
+        windowDragHandle.addEventListener('pointermove', event => {
+          if (!windowDragging) return;
+          const next = { x: event.clientX, y: event.clientY };
+          demoDrag.x += next.x - windowDragLast.x;
+          demoDrag.y += next.y - windowDragLast.y;
+          windowDragLast = next;
+          applyDemoDrag();
+        });
+        const stopWindowDrag = event => {
+          windowDragging = false;
+          floatingDemo.classList.remove('is-dragging');
+          if (event?.pointerId !== undefined && windowDragHandle.hasPointerCapture(event.pointerId)) {
+            windowDragHandle.releasePointerCapture(event.pointerId);
+          }
+          updateTextWrap();
+        };
+        windowDragHandle.addEventListener('pointerup', stopWindowDrag);
+        windowDragHandle.addEventListener('pointercancel', stopWindowDrag);
+        windowDragHandle.addEventListener('keydown', event => {
+          const step = event.shiftKey ? 24 : 8;
+          if (event.key === 'ArrowLeft') demoDrag.x -= step;
+          else if (event.key === 'ArrowRight') demoDrag.x += step;
+          else if (event.key === 'ArrowUp') demoDrag.y -= step;
+          else if (event.key === 'ArrowDown') demoDrag.y += step;
+          else if (event.key === 'Home') demoDrag = { x: 0, y: 0 };
+          else return;
+          event.preventDefault();
+          applyDemoDrag();
+        });
       }
 
       canvas.addEventListener('pointerdown', event => {
@@ -771,8 +829,8 @@
       });
       markingsButton.addEventListener('click', () => {
         showMarkings = !showMarkings;
-        stageLabel.textContent = showMarkings ? 'Stage: markings enabled manually' : 'Stage: markings hidden manually';
-        stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Smith turtle shapes remain, but the three marking components are hidden.';
+        if (stageLabel) stageLabel.textContent = showMarkings ? 'Stage: markings enabled manually' : 'Stage: markings hidden manually';
+        if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Smith turtle shapes remain, but the three marking components are hidden.';
         updateMarkingButton();
         draw();
       });

@@ -217,7 +217,7 @@ h1 {
 }
 
 .article-page {
-  max-width: 1440px;
+  max-width: 1120px;
 }
 
 .article-header h1 {
@@ -230,11 +230,12 @@ h1 {
 }
 
 .article-content {
+  --article-text-max: 760px;
   display: flow-root;
 }
 
 .article-content > .article-wide {
-  max-width: 980px;
+  max-width: var(--article-text-max);
 }
 
 .article-content h2 {
@@ -254,7 +255,8 @@ h1 {
   overflow-wrap: break-word;
 }
 
-.article-content > :not(.floating-demo) {
+.article-content > :not(.floating-demo):not(.margin-note) {
+  max-width: var(--article-text-max);
   transition: max-width 120ms ease-out;
 }
 
@@ -303,10 +305,11 @@ h1 {
 
 .floating-demo {
   float: right;
-  width: min(66vw, 900px);
+  width: min(50vw, 560px);
   height: 0;
   position: sticky;
-  top: 18px;
+  top: 50vh;
+  transform: translate(var(--demo-drag-x, 0px), calc(-50% + var(--demo-drag-y, 0px)));
   margin: 0 0 0 28px;
   overflow: visible;
   z-index: 2;
@@ -317,8 +320,8 @@ h1 {
 }
 
 .floating-demo .interactive-card canvas {
-  height: min(50vw, 600px);
-  min-height: 440px;
+  height: min(34vw, 360px);
+  min-height: 300px;
 }
 
 .floating-demo figcaption span,
@@ -330,44 +333,18 @@ h1 {
   margin-top: 6px;
 }
 
-.demo-stage-rail {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.demo-stage-rail span {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: white;
-  padding: 4px 6px;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-}
-
-.demo-stage-rail span[aria-current="true"] {
-  border-color: var(--accent);
-  background: rgba(22, 135, 117, 0.12);
-  color: var(--accent);
-}
-
-.demo-stage-rail span + span {
-  margin-top: 0;
-}
-
 .margin-note {
-  max-width: 34rem;
+  float: right;
+  clear: right;
+  width: 220px;
+  max-width: 220px;
   border-left: 3px solid var(--accent);
   background: rgba(22, 135, 117, 0.07);
-  margin: 18px 0 0;
-  padding: 10px 12px;
+  margin: 8px 0 12px 24px;
+  padding: 8px 10px;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .interactive-card {
@@ -388,6 +365,29 @@ h1 {
   padding: 10px 12px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.demo-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  background: white;
+  padding: 5px 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.demo-drag-handle:active,
+.floating-demo.is-dragging .demo-drag-handle {
+  cursor: grabbing;
 }
 
 .interactive-toolbar button {
@@ -432,11 +432,17 @@ h1 {
     width: 100%;
     height: auto;
     position: static;
+    transform: none;
+    --demo-drag-x: 0px;
+    --demo-drag-y: 0px;
     margin: 18px 0 0;
   }
 
   .margin-note {
+    float: none;
     clear: both;
+    width: auto;
+    max-width: var(--article-text-max);
   }
 }
 
