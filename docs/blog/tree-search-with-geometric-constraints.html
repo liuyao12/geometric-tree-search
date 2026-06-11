@@ -45,8 +45,9 @@
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
               <span id="turtle-hover-readout">Hover a lattice point to read its accumulated t-value in twelfths.</span>
-              <span>Values are shown in units of 1/12. Drag the window handle to move the demo; drag the canvas to pan.</span>
+              <span>Values are shown in units of 1/12. Drag the window handle vertically; drag the canvas to pan.</span>
             </figcaption>
+            <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left"></span>
           </figure>
         </aside>
 
@@ -169,6 +170,8 @@
       const stageChips = Array.from(document.querySelectorAll('[data-stage-chip]'));
       const floatingDemo = document.querySelector('.floating-demo');
       const windowDragHandle = document.getElementById('turtle-window-drag');
+      const windowResizeHandle = document.getElementById('turtle-window-resize');
+      const articleShell = document.querySelector('.article-shell');
       const sqrt2 = Math.sqrt(2);
       const sqrt3 = Math.sqrt(3);
       const sqrt6 = Math.sqrt(6);
@@ -187,7 +190,7 @@
         { component: 2, from: 4, to: 12, value: -1 }
       ];
       const markColors = ['#b84a56', '#168775', '#315f9f'];
-      const permutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+      const coordinatePermutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
       const gridSteps = [[1, -1, 0], [0, 1, -1], [1, 0, -1]];
       const rawTurtle = turtleVertices3d.map(projectA2Raw);
       const center = rawTurtle.reduce((sum, point) => ({ x: sum.x + point.x, y: sum.y + point.y }), { x: 0, y: 0 });
@@ -200,6 +203,7 @@
       const tilingTrace = tilingRun.trace;
       let scale = 1.02;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
+      let viewInitialized = false;
       let dragging = false;
       let last = { x: 0, y: 0 };
       let hoveredPoint = null;
@@ -210,8 +214,12 @@
       let statusText = '';
       let showMarkings = false;
       let windowDragging = false;
+      let windowResizing = false;
       let windowDragLast = { x: 0, y: 0 };
-      let demoDrag = { x: 0, y: 0 };
+      let windowResizeLast = { x: 0, y: 0 };
+      let demoDragY = 0;
+      let demoSafeY = 0;
+      let demoSize = { width: null, canvasHeight: null };
       const articleContent = document.querySelector('.article-content');
       const wrapTargets = Array.from(articleContent.children).filter(child => !child.classList.contains('floating-demo') && !child.classList.contains('margin-note'));
       const demoCard = document.getElementById('turtle-tiling-card');
@@ -276,15 +284,29 @@
         return symmetry.permutation.map(index => symmetry.sign * point[index]);
       }
 
-      function buildOrientations() {
-        const list = [];
+      function buildA2Symmetries() {
+        const seen = new Set();
+        const symmetries = [];
         [1, -1].forEach(sign => {
-          permutations.forEach(permutation => {
-            const vertices3d = turtleVertices3d.map(point => transform3(point, { sign, permutation }));
-            list.push({ sign, permutation, vertices3d });
+          coordinatePermutations.forEach(permutation => {
+            const imageOfDiagonal = permutation.map(() => sign);
+            const diagonalKey = imageOfDiagonal.join(',');
+            if (diagonalKey !== '1,1,1' && diagonalKey !== '-1,-1,-1') return;
+            const key = `${sign}|${permutation.join(',')}`;
+            if (seen.has(key)) return;
+            seen.add(key);
+            symmetries.push({ sign, permutation });
           });
         });
-        return list;
+        return symmetries;
+      }
+
+      function buildOrientations() {
+        return buildA2Symmetries().map((symmetry, orientationIndex) => ({
+          ...symmetry,
+          orientationIndex,
+          vertices3d: turtleVertices3d.map(point => transform3(point, symmetry))
+        }));
       }
 
       function makePlacement(orientation, translation, extras = {}) {
@@ -326,10 +348,21 @@
         return Math.abs(point[0]) + Math.abs(point[1]) + Math.abs(point[2]);
       }
 
+      function placementOccupancyKey(vertices3d) {
+        return vertices3d.map(key3).sort().join('|');
+      }
+
+      function moveCoverage(vertices3d, sums) {
+        return vertices3d.reduce((count, point) => count + (sums.has(key3(point)) ? 1 : 0), 0);
+      }
+
       function candidateTrials(frontier, sums, usedPlacements) {
         const trials = [];
+        const dedup = new Map();
         orientations.forEach((orientation, orientationIndex) => {
           orientation.vertices3d.forEach((anchor, anchorIndex) => {
+            const anchorValue = turtleValues[anchorIndex];
+            const fillsFrontier = frontier.value + anchorValue === 12;
             const translation = subtract3(frontier.point, anchor);
             const placementKey = `${orientationIndex}|${key3(translation)}`;
             if (usedPlacements.has(placementKey)) return;
@@ -345,14 +378,26 @@
               overflow = Math.max(overflow, nextValue - 12);
               if (!sums.has(key)) newPoints += 1;
             });
-            const valid = overflow <= 0 && newPoints > 0;
-            trials.push({ orientation, orientationIndex, translation, anchorIndex, newPoints, maxValue, overflow, valid, placementKey });
+            const valid = fillsFrontier && overflow <= 0 && newPoints > 0;
+            const coverage = moveCoverage(vertices3d, sums);
+            const occupancyKey = placementOccupancyKey(vertices3d);
+            const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, coverage, valid, placementKey, occupancyKey };
+            const existing = dedup.get(occupancyKey);
+            if (!existing || compareTrials(trial, existing) < 0) dedup.set(occupancyKey, trial);
           });
         });
-        return trials.sort((left, right) => {
-          if (left.valid !== right.valid) return left.valid ? -1 : 1;
-          return right.newPoints - left.newPoints || left.overflow - right.overflow || left.orientationIndex - right.orientationIndex || left.anchorIndex - right.anchorIndex;
-        });
+        trials.push(...dedup.values());
+        return trials.sort(compareTrials);
+      }
+
+      function compareTrials(left, right) {
+        if (left.valid !== right.valid) return left.valid ? -1 : 1;
+        if (left.fillsFrontier !== right.fillsFrontier) return left.fillsFrontier ? -1 : 1;
+        return right.coverage - left.coverage
+          || right.newPoints - left.newPoints
+          || left.overflow - right.overflow
+          || left.orientationIndex - right.orientationIndex
+          || left.anchorIndex - right.anchorIndex;
       }
 
       function candidatePlacements(frontier, sums, usedPlacements) {
@@ -386,6 +431,7 @@
               frontierValue: choice.frontier.value,
               branchCount: choice.candidates.length,
               overflow: trial.overflow,
+              fillsFrontier: trial.fillsFrontier,
               placement: makePlacement(trial.orientation, trial.translation, { step, frontier: choice.frontier.point, frontierValue: choice.frontier.value })
             });
           });
@@ -431,11 +477,40 @@
         return Number.isFinite(parsed) ? parsed : target.getBoundingClientRect().width;
       }
 
-      function applyDemoDrag() {
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function syncDemoPosition() {
         if (!floatingDemo) return;
-        floatingDemo.style.setProperty('--demo-drag-x', `${demoDrag.x}px`);
-        floatingDemo.style.setProperty('--demo-drag-y', `${demoDrag.y}px`);
+        floatingDemo.style.setProperty('--demo-drag-y', `${demoDragY}px`);
+        floatingDemo.style.setProperty('--demo-safe-y', `${demoSafeY}px`);
+      }
+
+      function applyDemoDrag() {
+        syncDemoPosition();
         window.requestAnimationFrame(updateTextWrap);
+      }
+
+      function applyDemoSize() {
+        if (!floatingDemo) return;
+        if (demoSize.width) floatingDemo.style.setProperty('--demo-width', `${demoSize.width}px`);
+        else floatingDemo.style.removeProperty('--demo-width');
+        if (demoSize.canvasHeight) floatingDemo.style.setProperty('--demo-canvas-height', `${demoSize.canvasHeight}px`);
+        else floatingDemo.style.removeProperty('--demo-canvas-height');
+        resizeCanvas();
+        window.requestAnimationFrame(updateTextWrap);
+      }
+
+      function updateDemoSafety() {
+        if (!floatingDemo || !demoCard || !articleShell) return;
+        demoSafeY = 0;
+        syncDemoPosition();
+        const demoRect = demoCard.getBoundingClientRect();
+        const shellRect = articleShell.getBoundingClientRect();
+        const safeTop = Math.max(shellRect.top + 12, 12);
+        demoSafeY = Math.max(0, safeTop - demoRect.top);
+        syncDemoPosition();
       }
 
       function updateTextWrap() {
@@ -445,6 +520,7 @@
           });
           return;
         }
+        updateDemoSafety();
         const articleRect = articleContent.getBoundingClientRect();
         const demoRect = demoCard.getBoundingClientRect();
         const gutter = 24;
@@ -461,12 +537,20 @@
         });
       }
 
+      function centerView(rect = canvas.getBoundingClientRect()) {
+        offset = { x: rect.width / 2, y: rect.height / 2 };
+      }
+
       function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
         canvas.width = Math.max(320, Math.floor(rect.width * ratio));
         canvas.height = Math.max(220, Math.floor(rect.height * ratio));
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        if (!viewInitialized) {
+          centerView(rect);
+          viewInitialized = true;
+        }
         draw();
       }
 
@@ -548,8 +632,8 @@
           ctx.strokeStyle = options.valid ? '#168775' : '#b84a56';
           ctx.setLineDash(options.valid ? [10, 5] : [4, 4]);
         } else {
-          ctx.fillStyle = ['rgba(217, 164, 65, 0.62)', 'rgba(119, 168, 137, 0.62)', 'rgba(200, 109, 88, 0.62)', 'rgba(109, 143, 199, 0.62)'][index % 4];
-          ctx.strokeStyle = '#26342f';
+          ctx.fillStyle = 'rgba(49, 95, 159, 0.56)';
+          ctx.strokeStyle = '#244873';
           ctx.setLineDash([]);
         }
         ctx.lineWidth = Math.max(1.2, options.ghost ? 2.5 * scale : 1.9 * scale);
@@ -697,6 +781,7 @@
         statusText = '';
         startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
+        if (stage.tiles === 1) centerView();
         if (stageLabel) stageLabel.textContent = stage.label;
         if (stageNote) stageNote.textContent = stage.note;
         stageChips.forEach(chip => {
@@ -724,8 +809,7 @@
         windowDragHandle.addEventListener('pointermove', event => {
           if (!windowDragging) return;
           const next = { x: event.clientX, y: event.clientY };
-          demoDrag.x += next.x - windowDragLast.x;
-          demoDrag.y += next.y - windowDragLast.y;
+          demoDragY += next.y - windowDragLast.y;
           windowDragLast = next;
           applyDemoDrag();
         });
@@ -741,14 +825,62 @@
         windowDragHandle.addEventListener('pointercancel', stopWindowDrag);
         windowDragHandle.addEventListener('keydown', event => {
           const step = event.shiftKey ? 24 : 8;
-          if (event.key === 'ArrowLeft') demoDrag.x -= step;
-          else if (event.key === 'ArrowRight') demoDrag.x += step;
-          else if (event.key === 'ArrowUp') demoDrag.y -= step;
-          else if (event.key === 'ArrowDown') demoDrag.y += step;
-          else if (event.key === 'Home') demoDrag = { x: 0, y: 0 };
+          if (event.key === 'ArrowUp') demoDragY -= step;
+          else if (event.key === 'ArrowDown') demoDragY += step;
+          else if (event.key === 'Home') demoDragY = 0;
           else return;
           event.preventDefault();
           applyDemoDrag();
+        });
+      }
+
+      if (windowResizeHandle && floatingDemo) {
+        windowResizeHandle.addEventListener('pointerdown', event => {
+          const cardRect = demoCard.getBoundingClientRect();
+          const canvasRect = canvas.getBoundingClientRect();
+          demoSize = { width: cardRect.width, canvasHeight: canvasRect.height };
+          windowResizing = true;
+          windowResizeLast = { x: event.clientX, y: event.clientY };
+          floatingDemo.classList.add('is-resizing');
+          windowResizeHandle.setPointerCapture(event.pointerId);
+          event.preventDefault();
+        });
+        windowResizeHandle.addEventListener('pointermove', event => {
+          if (!windowResizing) return;
+          const next = { x: event.clientX, y: event.clientY };
+          const dx = next.x - windowResizeLast.x;
+          const dy = next.y - windowResizeLast.y;
+          const maxWidth = Math.min(window.innerWidth * 0.76, 760);
+          demoSize.width = clamp(demoSize.width - dx, 360, maxWidth);
+          demoSize.canvasHeight = clamp(demoSize.canvasHeight + dy, 240, 620);
+          windowResizeLast = next;
+          applyDemoSize();
+        });
+        const stopWindowResize = event => {
+          windowResizing = false;
+          floatingDemo.classList.remove('is-resizing');
+          if (event?.pointerId !== undefined && windowResizeHandle.hasPointerCapture(event.pointerId)) {
+            windowResizeHandle.releasePointerCapture(event.pointerId);
+          }
+          updateTextWrap();
+        };
+        windowResizeHandle.addEventListener('pointerup', stopWindowResize);
+        windowResizeHandle.addEventListener('pointercancel', stopWindowResize);
+        windowResizeHandle.addEventListener('keydown', event => {
+          const cardRect = demoCard.getBoundingClientRect();
+          const canvasRect = canvas.getBoundingClientRect();
+          if (!demoSize.width) demoSize.width = cardRect.width;
+          if (!demoSize.canvasHeight) demoSize.canvasHeight = canvasRect.height;
+          const step = event.shiftKey ? 24 : 8;
+          const maxWidth = Math.min(window.innerWidth * 0.76, 760);
+          if (event.key === 'ArrowLeft') demoSize.width = clamp(demoSize.width + step, 360, maxWidth);
+          else if (event.key === 'ArrowRight') demoSize.width = clamp(demoSize.width - step, 360, maxWidth);
+          else if (event.key === 'ArrowUp') demoSize.canvasHeight = clamp(demoSize.canvasHeight - step, 240, 620);
+          else if (event.key === 'ArrowDown') demoSize.canvasHeight = clamp(demoSize.canvasHeight + step, 240, 620);
+          else if (event.key === 'Home') demoSize = { width: null, canvasHeight: null };
+          else return;
+          event.preventDefault();
+          applyDemoSize();
         });
       }
 
@@ -797,6 +929,7 @@
           return;
         }
         shownTiles = 1;
+        centerView();
         traceIndex = 0;
         trialGhost = null;
         statusText = 'branching from an undersaturated vertex';
@@ -817,7 +950,9 @@
             trialGhost = event;
             statusText = event.valid
               ? `trying compatible placement at t=${event.frontierValue}/12`
-              : `reject: would exceed 12 by ${event.overflow}`;
+              : event.fillsFrontier === false
+                ? 'reject: vertex would not fill to 12/12'
+                : `reject: would exceed 12 by ${event.overflow}`;
           } else {
             shownTiles = event.count;
             trialGhost = null;
@@ -839,7 +974,7 @@
         stopTiling();
         const rect = canvas.getBoundingClientRect();
         scale = 1.02;
-        offset = { x: rect.width / 2, y: rect.height / 2 };
+        centerView(rect);
         hoveredPoint = null;
         traceIndex = 0;
         trialGhost = null;
