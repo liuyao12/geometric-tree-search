@@ -1,6 +1,6 @@
 # 3D Lattice Tiler
 
-The 3D Lattice Tiler is the first public GTS playground.
+The 3D Lattice Tiler is the first public GCTS playground.
 
 It is a standalone JavaScript port of the Observable notebook:
 
@@ -12,7 +12,7 @@ Open the local app at:
 apps/3d-lattice-tiler/
 ```
 
-The app is meant as an exploratory testbed for GTS ideas:
+The app is meant as an exploratory testbed for GCTS ideas:
 
 - choose one or more lattice tiles;
 - build custom polycubes directly in a small Minecraft-style editor;
