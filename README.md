@@ -1,17 +1,21 @@
-# Geometric Tree Search
+# Geometrically Constrained Tree Search
 
-**Geometric Tree Search (GTS)** is a working name for search problems where a
+**Geometrically Constrained Tree Search (GCTS)** is a working name for search problems where a
 combinatorial object is built step by step under geometric constraints, and
 where markings, macros, symmetries, or certificates can guide or prune the
 search tree.
 
-This repository is the public home for GTS experiments and playgrounds. The
-first playground is a standalone JavaScript 3D lattice tiler, ported from an
-Observable notebook and extended into a faster interactive tool.
+This repository publishes the GCTS notes and playgrounds as a static GitHub
+Pages site. The main way to use it is to open the page in a browser:
 
-## Playground
+- [Geometrically Constrained Tree Search](https://liuyao12.github.io/geometric-tree-search/)
 
-- [3D Lattice Tiler](./apps/3d-lattice-tiler/)  
+## Browser Pages
+
+- [Tree Search with Geometric Constraints I: Learning matching rules in tiling](https://liuyao12.github.io/geometric-tree-search/docs/blog/tree-search-with-geometric-constraints.html)  
+  A local notebook-style port of the Observable essay, with margin notes and an
+  interactive draggable/zoomable `A_2` lattice figure.
+- [3D Lattice Tiler](https://liuyao12.github.io/geometric-tree-search/apps/3d-lattice-tiler/)  
   A browser playground for lattice polyhedra and polycubes on the integer
   lattice. It supports mixed tile systems, custom polycube construction, search
   tree inspection, and intermediate tiling snapshots.
@@ -22,12 +26,14 @@ The project is motivated by the Observable essay:
 
 - [Tree Search with Geometric Constraints I: Learning matching rules in tiling](https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints)
 
-A Markdown export of that post is included at
+The in-repository source for the local notebook-style port is
+[docs/blog/tree-search-with-geometric-constraints.html](./docs/blog/tree-search-with-geometric-constraints.html), and a Markdown export of that post is included at
 [docs/blog/tree-search-with-geometric-constraints.md](./docs/blog/tree-search-with-geometric-constraints.md).
 
-## Run Locally
+## Local Development
 
-From the repository root:
+The site does not require a build step. To preview changes locally from the
+repository root:
 
 ```bash
 python3 -m http.server 5174
@@ -39,7 +45,7 @@ Then open:
 http://127.0.0.1:5174/
 ```
 
-or go directly to:
+or go directly to the local app preview:
 
 ```text
 http://127.0.0.1:5174/apps/3d-lattice-tiler/
@@ -48,7 +54,7 @@ http://127.0.0.1:5174/apps/3d-lattice-tiler/
 ## Headless Runner
 
 The 3D tiler can also run without the frontend UI. This is useful for baseline
-runs, long searches, and comparing later GTS heuristics against the current
+runs, long searches, and comparing later GCTS heuristics against the current
 engine.
 
 ```bash
@@ -89,7 +95,7 @@ less human-looking branches remain in the tree unless an explicit cap is set.
 - `apps/`: interactive browser playgrounds.
 - `scripts/`: local runners and analysis tools.
 - `docs/blog/`: essays and long-form explanations.
-- `docs/projects/`: project notes for individual GTS examples.
+- `docs/projects/`: project notes for individual GCTS examples.
 
 The current repo is intentionally small. More experiments can move here once
 they have a clear public-facing page, demo, or reproducible result.
