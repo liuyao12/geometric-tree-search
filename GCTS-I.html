@@ -247,7 +247,7 @@
         },
         tiling: {
           label: 'Stage: frontier scan and branch',
-          note: 'The rudimentary search scans undersaturated frontier points, takes forced moves first, then branches by aligning a symmetric turtle placement to that point.',
+          note: 'The rudimentary search counts viable moves at every undersaturated boundary point, backtracks when any point has none, takes forced moves first, then branches at a minimum-choice point.',
           tiles: 24,
           markings: false
         },
@@ -437,14 +437,18 @@
         return occupancy.reduce((count, item) => count + (sums.has(key3(item.point)) ? 1 : 0), 0);
       }
 
-      function candidateTrials(frontier, sums, usedPlacements) {
+      function candidateTrials(frontier, sums, usedPlacements, includeRejected = true) {
         const trials = [];
         const dedup = new Map();
-        const neededValue = 12 - frontier.value;
+        const remainingValue = 12 - frontier.value;
         orientations.forEach((orientation, orientationIndex) => {
-          (orientation.anchorsByValue.get(neededValue) || []).forEach(({ anchor, anchorIndex }) => {
+          const anchors = [];
+          orientation.anchorsByValue.forEach((valueAnchors, value) => {
+            if (value <= remainingValue) anchors.push(...valueAnchors);
+          });
+          anchors.forEach(({ anchor, anchorIndex }) => {
             const anchorValue = anchor.value;
-            const fillsFrontier = true;
+            const fillsFrontier = frontier.value + anchorValue === 12;
             const translation = subtract3(frontier.point, anchor.point);
             const placementKey = `${orientationIndex}|${key3(translation)}`;
             if (usedPlacements.has(placementKey)) return;
@@ -463,7 +467,8 @@
               overflow = Math.max(overflow, nextValue - 12);
               if (!sums.has(key)) newPoints += 1;
             });
-            const valid = fillsFrontier && overflow <= 0 && newPoints > 0;
+            const valid = overflow <= 0 && newPoints > 0;
+            if (!valid && !includeRejected) return;
             const coverage = moveCoverage(occupancy, sums);
             const occupancyKey = placementOccupancyKey(occupancy);
             const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, coverage, valid, placementKey, occupancyKey };
@@ -501,13 +506,19 @@
         return copy;
       }
 
-      function rankedChoices(options) {
-        const viable = options.filter(option => option.candidates.length > 0);
-        const forced = viable.filter(option => option.candidates.length === 1);
-        if (forced.length) return shuffled(forced);
-        if (!viable.length) return [];
-        const minBranchCount = Math.min(...viable.map(option => option.candidates.length));
-        return shuffled(viable.filter(option => option.candidates.length === minBranchCount));
+      function analyzeBoundary(sums, usedPlacements) {
+        const options = frontierPoints(sums).map(frontier => {
+          const trials = candidateTrials(frontier, sums, usedPlacements, false);
+          const candidates = trials.filter(trial => trial.valid);
+          return { frontier, trials, candidates };
+        });
+        const deadEnd = options.find(option => option.candidates.length === 0);
+        if (deadEnd) return { options, deadEnd };
+        const forced = options.filter(option => option.candidates.length === 1);
+        if (forced.length) return { options, choices: shuffled(forced), forced: true };
+        if (!options.length) return { options, choices: [], forced: false };
+        const minBranchCount = Math.min(...options.map(option => option.candidates.length));
+        return { options, choices: shuffled(options.filter(option => option.candidates.length === minBranchCount)), forced: false };
       }
 
       function makePlacementFromCandidate(choice, candidate, step, forced) {
@@ -525,62 +536,101 @@
         });
       }
 
-      function buildTilingOrder(limit, attempts = 2) {
-        let bestRun = null;
+      function removePlacementValues(placement, sums) {
+        placement.occupancy.forEach(item => {
+          const key = key3(item.point);
+          const entry = sums.get(key);
+          if (!entry) return;
+          entry.value -= item.value;
+          if (entry.value <= 0) sums.delete(key);
+        });
+      }
+
+      function traceForPlacements(placements) {
+        const trace = [];
+        placements.slice(1).forEach((placement, index) => {
+          const step = index + 1;
+          (placement.rejectedTrials || []).forEach(trial => {
+            trace.push({
+              type: 'trial',
+              valid: false,
+              frontier: placement.frontier,
+              frontierValue: placement.frontierValue,
+              branchCount: placement.branchCount,
+              overflow: trial.overflow,
+              fillsFrontier: trial.fillsFrontier,
+              placement: makePlacement(trial.orientation, trial.translation, { step, frontier: placement.frontier, frontierValue: placement.frontierValue })
+            });
+          });
+          trace.push({ type: 'trial', valid: true, frontier: placement.frontier, frontierValue: placement.frontierValue, branchCount: placement.branchCount, placement });
+          trace.push({ type: 'accept', count: step + 1, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue });
+        });
+        return trace;
+      }
+
+      function buildTilingOrder(limit, attempts = 1, nodeBudget = 40) {
+        let bestPlacements = [];
+        const rememberBest = placed => {
+          if (placed.length > bestPlacements.length || (placed.length === bestPlacements.length && Math.random() < 0.5)) bestPlacements = placed.slice();
+        };
         for (let attempt = 0; attempt < attempts; attempt += 1) {
+          let nodesVisited = 0;
           const seed = makePlacement(orientations[seedOrientationIndex], [0, 0, 0], { step: 0, forced: true, branchCount: 0, placementKey: `${seedOrientationIndex}|0,0,0` });
           const placed = [seed];
-          const trace = [];
           const sums = new Map();
           const usedPlacements = new Set([seed.placementKey]);
           addPlacementValues(seed, sums);
-          for (let step = 1; step < limit; step += 1) {
-            const frontiers = shuffled(frontierPoints(sums)).slice(0, 36);
-            const options = frontiers.map(frontier => {
-              const trials = candidateTrials(frontier, sums, usedPlacements);
-              const candidates = trials.filter(trial => trial.valid);
-              return { frontier, trials, candidates };
-            });
-            const choice = rankedChoices(options)[0];
-            if (!choice) {
-              const deadEnd = options.find(option => option.candidates.length === 0);
-              if (deadEnd) trace.push({ type: 'fail', frontier: deadEnd.frontier.point, frontierValue: deadEnd.frontier.value, count: placed.length });
-              break;
-            }
-            const candidates = choice.candidates.length === 1 ? choice.candidates : shuffled(choice.candidates);
-            const candidate = candidates[0];
-            const rejectedTrials = choice.trials.filter(trial => !trial.valid).slice(0, 2);
-            rejectedTrials.forEach(trial => {
-              trace.push({
-                type: 'trial',
-                valid: false,
-                frontier: choice.frontier.point,
-                frontierValue: choice.frontier.value,
-                branchCount: choice.candidates.length,
-                overflow: trial.overflow,
-                fillsFrontier: trial.fillsFrontier,
-                placement: makePlacement(trial.orientation, trial.translation, { step, frontier: choice.frontier.point, frontierValue: choice.frontier.value })
-              });
-            });
-            trace.push({
-              type: 'trial',
-              valid: true,
-              frontier: choice.frontier.point,
-              frontierValue: choice.frontier.value,
-              branchCount: choice.candidates.length,
-              placement: makePlacement(candidate.orientation, candidate.translation, { step, frontier: choice.frontier.point, frontierValue: choice.frontier.value })
-            });
-            const placement = makePlacementFromCandidate(choice, candidate, step, choice.candidates.length === 1);
+          rememberBest(placed);
+
+          const applyChoice = (choice, candidate, forced) => {
+            const detailedTrials = candidateTrials(choice.frontier, sums, usedPlacements);
+            const detailedChoice = { ...choice, trials: detailedTrials };
+            const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
             placed.push(placement);
             usedPlacements.add(candidate.placementKey);
             addPlacementValues(placement, sums);
-            trace.push({ type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue });
-          }
-          const run = { placements: placed, trace };
-          if (!bestRun || run.placements.length > bestRun.placements.length || (run.placements.length === bestRun.placements.length && Math.random() < 0.5)) bestRun = run;
-          if (run.placements.length >= limit) return run;
+            rememberBest(placed);
+          };
+          const undoLast = () => {
+            const placement = placed.pop();
+            if (!placement) return;
+            removePlacementValues(placement, sums);
+            if (placement.placementKey) usedPlacements.delete(placement.placementKey);
+          };
+          const search = () => {
+            const baseLength = placed.length;
+            while (placed.length < limit) {
+              if (nodesVisited++ >= nodeBudget) {
+                while (placed.length > baseLength) undoLast();
+                return false;
+              }
+              const analysis = analyzeBoundary(sums, usedPlacements);
+              if (analysis.deadEnd) {
+                while (placed.length > baseLength) undoLast();
+                return false;
+              }
+              if (analysis.forced) {
+                const choice = analysis.choices[0];
+                applyChoice(choice, choice.candidates[0], true);
+                continue;
+              }
+              for (const choice of analysis.choices) {
+                for (const candidate of shuffled(choice.candidates)) {
+                  applyChoice(choice, candidate, false);
+                  if (search()) return true;
+                  undoLast();
+                  if (nodesVisited >= nodeBudget) break;
+                }
+                if (nodesVisited >= nodeBudget) break;
+              }
+              while (placed.length > baseLength) undoLast();
+              return false;
+            }
+            return true;
+          };
+          if (search() && placed.length >= limit) return { placements: placed.slice(), trace: traceForPlacements(placed) };
         }
-        return bestRun;
+        return { placements: bestPlacements, trace: traceForPlacements(bestPlacements) };
       }
 
       function regenerateTilingRun() {
@@ -1087,7 +1137,7 @@
             statusText = event.valid
               ? `trying compatible placement at t=${event.frontierValue}/12`
               : event.fillsFrontier === false
-                ? 'reject: vertex would not fill to 12/12'
+                ? 'reject: no value-compatible placement at this point'
                 : `reject: would exceed 12 by ${event.overflow}`;
           } else if (event.type === 'fail') {
             shownTiles = event.count;
