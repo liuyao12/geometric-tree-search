@@ -103,7 +103,7 @@ $$
 
 on the overlap.
 
-*Example.* The turtle admits a marking of straight lines (see [Akiyama & Araki](https://arxiv.org/abs/2307.12322) or [mathblock8128](https://mathblock8128.wordpress.com/)). The two colors represent $\pm 1$ values for the lattice points on *three* separate markings, or a rank-3 bundle. The group $G$ acts on $\mathbb{R}^3$ by permuting the three cardinal-direction channels. Note that the domain of each marking may be taken to be arbitrarily long, a sign of long-range order.
+*Example.* The turtle admits a marking of straight lines (see [Akiyama & Araki](https://arxiv.org/abs/2307.12322) or [mathblock8128](https://mathblock8128.wordpress.com/)). The two colors represent $\pm 1$ values for the lattice points on *three* separate markings, or a rank-3 bundle. The group $G$ acts on $\mathbb{R}^3$ by permuting and negating the components (swapping the two colors upon reflections). Note that the domain of each marking may be taken to be arbitrarily long, a sign of long-range order.
 
 ![](https://mathblock8128.wordpress.com/wp-content/uploads/2023/08/spar_crossing_control_landscape_cb_2.png?w=800)
 
