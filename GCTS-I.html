@@ -207,10 +207,10 @@
       center.y /= rawTurtle.length;
       const orientations = buildOrientations();
       const seedOrientationIndex = 6;
-      const tilingRun = buildTilingOrder(20);
+      const tilingRun = buildTilingOrder(80);
       const tilingOrder = tilingRun.placements;
       const tilingTrace = tilingRun.trace;
-      let scale = 1.02;
+      let scale = 0.58;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
       let viewInitialized = false;
       let dragging = false;
@@ -248,13 +248,13 @@
         tiling: {
           label: 'Stage: frontier scan and branch',
           note: 'The rudimentary search scans undersaturated frontier points, takes forced moves first, then branches by aligning a symmetric turtle placement to that point.',
-          tiles: 7,
+          tiles: 24,
           markings: false
         },
         markings: {
           label: 'Stage: three marking components',
           note: 'The displayed segments are the specified ±1 marking values between turtle vertices; reflected turtle orientations swap the two stripe colors.',
-          tiles: 10,
+          tiles: 40,
           markings: true
         },
         learning: {
@@ -1038,7 +1038,7 @@
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
           }
           draw();
-        }, 620);
+        }, 120);
         draw();
       });
       markingsButton.addEventListener('click', () => {
@@ -1052,7 +1052,7 @@
       resetButton.addEventListener('click', () => {
         stopTiling();
         const rect = canvas.getBoundingClientRect();
-        scale = 1.02;
+        scale = 0.58;
         centerView(rect);
         hoveredPoint = null;
         traceIndex = 0;
