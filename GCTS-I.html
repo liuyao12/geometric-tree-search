@@ -217,7 +217,7 @@
       const orientations = buildOrientations();
       const seedOrientationIndex = 6;
       let tilingRunUsesMarking = markingRulesToggle?.checked || false;
-      let tilingRun = buildTilingOrder(31, tilingRunUsesMarking);
+      let tilingRun = { placements: [makeSeedPlacement()], trace: [] };
       let tilingOrder = tilingRun.placements;
       let tilingTrace = tilingRun.trace;
       let scale = 0.58;
@@ -230,6 +230,8 @@
       let playbackPlacements = null;
       let timer = null;
       let traceIndex = 0;
+      let liveSearchIterator = null;
+      let liveSearchUsesMarking = tilingRunUsesMarking;
       let autoplayTarget = 30;
       let hasStartedTiling = false;
       let trialGhost = null;
@@ -337,21 +339,19 @@
         ]);
       }
 
-      function normalizedLineDirection(delta) {
+      function primitiveLineDirection(delta) {
         const divisor = gcd3(delta[0], delta[1], delta[2]) || 1;
-        const reduced = delta.map(value => value / divisor);
-        const firstNonzero = reduced.find(value => value !== 0) || 1;
-        return firstNonzero < 0 ? reduced.map(value => -value) : reduced;
+        return delta.map(value => value / divisor);
       }
 
-      function lineDirectionComponent(a, b) {
-        const direction = normalizedLineDirection(subtract3(b, a));
-        const component = markDirectionVectors.findIndex(vector => {
-          const normalized = normalizedLineDirection(vector);
-          return key3(direction) === key3(normalized);
-        });
-        if (component < 0) throw new Error(`Unknown turtle marking direction ${direction.join(',')}`);
-        return component;
+      function lineDirectionInfo(a, b) {
+        const direction = primitiveLineDirection(subtract3(b, a));
+        for (let component = 0; component < markDirectionVectors.length; component += 1) {
+          const canonical = primitiveLineDirection(markDirectionVectors[component]);
+          if (key3(direction) === key3(canonical)) return { component, sign: 1 };
+          if (key3(direction) === key3(canonical.map(value => -value))) return { component, sign: -1 };
+        }
+        throw new Error(`Unknown turtle marking direction ${direction.join(',')}`);
       }
 
       function pointStrictlyInPolygon(point, polygon) {
@@ -441,18 +441,41 @@
             anchorsByValue.get(anchor.value).push({ anchor, anchorIndex });
           });
           const vertices3d = turtleVertices3d.map(point => transform3(point, symmetry));
-          const markEntries = turtleMarkSegments.flatMap(segment => {
-            const component = lineDirectionComponent(vertices3d[segment.from], vertices3d[segment.to]);
-            const value = segment.value;
-            return latticeSegmentPoints(vertices3d[segment.from], vertices3d[segment.to]).map(point => ({ point, component, value }));
+          const markSegments = turtleMarkSegments.map(segment => {
+            const start = vertices3d[segment.from];
+            const end = vertices3d[segment.to];
+            const direction = lineDirectionInfo(start, end);
+            return {
+              ...segment,
+              fromPoint: start,
+              toPoint: end,
+              component: direction.component,
+              directionSign: direction.sign,
+              value: segment.value * symmetry.markSign
+            };
           });
+          const markVectors = new Map();
+          const ensureMarkVector = point => {
+            const key = key3(point);
+            if (!markVectors.has(key)) markVectors.set(key, { point, vector: [0, 0, 0] });
+            return markVectors.get(key);
+          };
+          occupancy.forEach(entry => ensureMarkVector(entry.point));
+          markSegments.forEach(segment => {
+            latticeSegmentPoints(segment.fromPoint, segment.toPoint).forEach(point => {
+              const entry = ensureMarkVector(point);
+              entry.vector[segment.component] = segment.value;
+            });
+          });
+          const markEntries = Array.from(markVectors.values());
           return {
             ...symmetry,
             orientationIndex,
             vertices3d,
             occupancy,
             anchorsByValue,
-            markEntries
+            markEntries,
+            markSegments
           };
         });
       }
@@ -467,6 +490,11 @@
           ...entry,
           point: add3(entry.point, translation)
         }));
+        const markSegments = orientation.markSegments.map(segment => ({
+          ...segment,
+          fromPoint: add3(segment.fromPoint, translation),
+          toPoint: add3(segment.toPoint, translation)
+        }));
         return {
           ...extras,
           orientation,
@@ -474,9 +502,19 @@
           vertices3d,
           occupancy,
           markings,
+          markSegments,
           points: vertices3d.map(projectA2),
           values: turtleVertexValues
         };
+      }
+
+      function makeSeedPlacement() {
+        return makePlacement(orientations[seedOrientationIndex], [0, 0, 0], {
+          step: 0,
+          forced: true,
+          branchCount: 0,
+          placementKey: `${seedOrientationIndex}|0,0,0`
+        });
       }
 
       function visiblePlacements() {
@@ -495,6 +533,16 @@
           });
         });
         return sums;
+      }
+
+      function visibleMarkVectors() {
+        const markSums = new Map();
+        visiblePlacements().forEach(placement => addPlacementMarkings(placement, markSums));
+        return markSums;
+      }
+
+      function markVectorAt(point) {
+        return visibleMarkVectors().get(key3(point))?.vector || [0, 0, 0];
       }
 
       function frontierPoints(sums, frontierAges = new Map()) {
@@ -537,24 +585,33 @@
       }
 
       function markingKey(entry) {
-        return `${key3(entry.point)}|${entry.component}`;
+        return key3(entry.point);
       }
 
-      function markingCompatibility(markings, markSums, overlapKeys = null) {
+      function sameMarkVector(left, right) {
+        return left.length === right.length && left.every((value, index) => value === right[index]);
+      }
+
+      function nonzeroMarkVector(vector) {
+        return vector.some(value => value !== 0);
+      }
+
+      function formatMarkVector(vector = [0, 0, 0]) {
+        return `m=(${vector.map(value => value > 0 ? `+${value}` : String(value)).join(',')})`;
+      }
+
+      function markingCompatibility(markings, markSums) {
         const summary = markings.reduce((state, entry) => {
-          if (overlapKeys && !overlapKeys.has(key3(entry.point))) return state;
           const existing = markSums.get(markingKey(entry));
           if (!existing) return state;
-          if (existing.value === entry.value) {
+          if (sameMarkVector(existing.vector, entry.vector)) {
             state.matches += 1;
-            const stripeKey = `${entry.component}|${entry.value}`;
-            state.stripeMatches.set(stripeKey, (state.stripeMatches.get(stripeKey) || 0) + 1);
+            if (nonzeroMarkVector(entry.vector)) state.lineUps += 1;
           } else {
             state.conflict = true;
           }
           return state;
-        }, { matches: 0, conflict: false, stripeMatches: new Map() });
-        summary.lineUps = Array.from(summary.stripeMatches.values()).filter(count => count >= 1).length;
+        }, { matches: 0, lineUps: 0, conflict: false });
         return summary;
       }
 
@@ -562,7 +619,7 @@
         placement.markings.forEach(entry => {
           const key = markingKey(entry);
           const existing = markSums.get(key);
-          markSums.set(key, existing ? { value: existing.value, count: existing.count + 1 } : { value: entry.value, count: 1 });
+          markSums.set(key, existing ? { vector: existing.vector, count: existing.count + 1 } : { vector: entry.vector, count: 1 });
         });
       }
 
@@ -572,7 +629,7 @@
           const existing = markSums.get(key);
           if (!existing) return;
           if (existing.count <= 1) markSums.delete(key);
-          else markSums.set(key, { value: existing.value, count: existing.count - 1 });
+          else markSums.set(key, { vector: existing.vector, count: existing.count - 1 });
         });
       }
 
@@ -599,8 +656,7 @@
               ...entry,
               point: add3(entry.point, translation)
             }));
-            const overlapKeys = new Set(occupancy.map(item => key3(item.point)).filter(key => sums.has(key)));
-            const markCompatibility = useMarkingRules ? markingCompatibility(markings, markSums, overlapKeys) : { matches: 0, conflict: false };
+            const markCompatibility = useMarkingRules ? markingCompatibility(markings, markSums) : { matches: 0, conflict: false };
             const markConflict = markCompatibility.conflict;
             const markMatches = markCompatibility.matches;
             const markLineUps = markCompatibility.lineUps || 0;
@@ -671,10 +727,11 @@
         const deadEnd = options.find(option => option.candidates.length === 0);
         if (deadEnd) return { options, deadEnd };
         const forced = options.filter(option => option.candidates.length === 1).sort(byAge);
-        if (forced.length) return { options, choices: forced, forced: true };
-        if (!options.length) return { options, choices: [], forced: false };
+        if (forced.length) return { options, choice: forced[0], choices: [forced[0]], forced: true };
+        if (!options.length) return { options, choice: null, choices: [], forced: false };
         const minBranchCount = Math.min(...options.map(option => option.candidates.length));
-        return { options, choices: options.filter(option => option.candidates.length === minBranchCount).sort(byAge), forced: false };
+        const branches = options.filter(option => option.candidates.length === minBranchCount).sort(byAge);
+        return { options, choice: branches[0], choices: branches.slice(0, 1), forced: false };
       }
 
       function makePlacementFromCandidate(choice, candidate, step, forced) {
@@ -733,7 +790,7 @@
         return trace;
       }
 
-      function buildTilingOrder(limit, useMarkingRules = false, attempts = 1, nodeBudget = 40) {
+      function buildTilingOrder(limit, useMarkingRules = false, attempts = 3, nodeBudget = Math.max(600, limit * 70)) {
         let bestLivePlacements = [];
         let bestLiveTrace = [];
         const rememberLiveBoundary = (placed, trace = []) => {
@@ -747,7 +804,7 @@
           const trace = [];
           const traceLimit = 1800;
           const pushTrace = event => { if (trace.length < traceLimit) trace.push(event); };
-          const seed = makePlacement(orientations[seedOrientationIndex], [0, 0, 0], { step: 0, forced: true, branchCount: 0, placementKey: `${seedOrientationIndex}|0,0,0` });
+          const seed = makeSeedPlacement();
           const placed = [seed];
           const sums = new Map();
           const markSums = new Map();
@@ -789,21 +846,19 @@
                 return false;
               }
               rememberLiveBoundary(placed, trace);
+              const choice = analysis.choice;
+              if (!choice) return true;
               if (analysis.forced) {
-                const choice = analysis.choices[0];
                 applyChoice(choice, choice.candidates[0], true);
                 continue;
               }
-              for (const choice of analysis.choices) {
-                for (const candidate of shuffled(choice.candidates)) {
-                  applyChoice(choice, candidate, false);
-                  if (search()) return true;
-                  undoLast('backtrack after failed branch');
-                  if (nodesVisited >= nodeBudget) break;
-                }
+              for (const candidate of shuffled(choice.candidates)) {
+                applyChoice(choice, candidate, false);
+                if (search()) return true;
+                undoLast('backtrack after failed branch');
                 if (nodesVisited >= nodeBudget) break;
               }
-              while (placed.length > baseLength) undoLast('backtrack to branch point');
+              while (placed.length > baseLength) undoLast('backtrack to previous search node');
               return false;
             }
             return true;
@@ -813,17 +868,91 @@
         return { placements: bestLivePlacements, trace: bestLiveTrace.length ? bestLiveTrace : traceForPlacements(bestLivePlacements) };
       }
 
-      function regenerateTilingRun(target = 31, force = false) {
-        const useMarking = markingRulesToggle?.checked || false;
-        const nextRun = buildTilingOrder(target, useMarking);
-        if (force || nextRun.placements.length >= tilingOrder.length || target <= tilingOrder.length) {
-          tilingRunUsesMarking = useMarking;
-          tilingRun = nextRun;
-          tilingOrder = tilingRun.placements;
-          tilingTrace = tilingRun.trace;
-          playbackPlacements = null;
-          demoStages.learning.tiles = tilingOrder.length;
+      function* createLiveTilingSearch(limit = 10000, useMarkingRules = false, nodeBudget = Math.max(1500, limit * 8)) {
+        let nodesVisited = 0;
+        const seed = makeSeedPlacement();
+        const placed = [seed];
+        const sums = new Map();
+        const markSums = new Map();
+        const usedPlacements = new Set([seed.placementKey]);
+        addPlacementValues(seed, sums);
+        if (useMarkingRules) addPlacementMarkings(seed, markSums);
+
+        function* emitTrialEvents(placement) {
+          const step = placement.step;
+          for (const trial of placement.rejectedTrials || []) {
+            yield {
+              type: 'trial',
+              valid: false,
+              frontier: placement.frontier,
+              frontierValue: placement.frontierValue,
+              branchCount: placement.branchCount,
+              overflow: trial.overflow,
+              fillsFrontier: trial.fillsFrontier,
+              markConflict: trial.markConflict,
+              markAligned: trial.markAligned,
+              markMatches: trial.markMatches,
+              markLineUps: trial.markLineUps,
+              placement: makePlacement(trial.orientation, trial.translation, { step, frontier: placement.frontier, frontierValue: placement.frontierValue })
+            };
+          }
+          yield { type: 'trial', valid: true, frontier: placement.frontier, frontierValue: placement.frontierValue, branchCount: placement.branchCount, placement };
         }
+
+        function* applyChoice(choice, candidate, forced) {
+          const detailedTrials = candidateTrials(choice.frontier, sums, usedPlacements, markSums, useMarkingRules);
+          const detailedChoice = { ...choice, trials: detailedTrials };
+          const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
+          yield* emitTrialEvents(placement);
+          placed.push(placement);
+          usedPlacements.add(candidate.placementKey);
+          addPlacementValues(placement, sums);
+          if (useMarkingRules) addPlacementMarkings(placement, markSums);
+          yield { type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() };
+          return placement;
+        }
+
+        function* undoLast(reason = 'branch failed') {
+          const placement = placed.pop();
+          if (!placement) return;
+          if (useMarkingRules) removePlacementMarkings(placement, markSums);
+          removePlacementValues(placement, sums);
+          if (placement.placementKey) usedPlacements.delete(placement.placementKey);
+          yield { type: 'backtrack', reason, removed: placement, placements: placed.slice(), frontierValue: placement.frontierValue, branchCount: placement.branchCount };
+        }
+
+        function* search() {
+          const baseLength = placed.length;
+          while (placed.length < limit) {
+            if (nodesVisited++ >= nodeBudget) {
+              while (placed.length > baseLength) yield* undoLast('budget');
+              return false;
+            }
+            const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed));
+            if (analysis.deadEnd) {
+              yield { type: 'fail', frontier: analysis.deadEnd.frontier.point, frontierValue: analysis.deadEnd.frontier.value, placements: placed.slice() };
+              while (placed.length > baseLength) yield* undoLast('dead end');
+              return false;
+            }
+            const choice = analysis.choice;
+            if (!choice) return true;
+            if (analysis.forced) {
+              yield* applyChoice(choice, choice.candidates[0], true);
+              continue;
+            }
+            for (const candidate of shuffled(choice.candidates)) {
+              yield* applyChoice(choice, candidate, false);
+              if (yield* search()) return true;
+              yield* undoLast('backtrack after failed branch');
+              if (nodesVisited >= nodeBudget) break;
+            }
+            while (placed.length > baseLength) yield* undoLast('backtrack to previous search node');
+            return false;
+          }
+          return true;
+        }
+
+        yield* search();
       }
 
       function addPlacementValues(placement, sums) {
@@ -973,9 +1102,9 @@
         tracePolygon(placement.points);
         ctx.clip();
         ctx.lineCap = 'round';
-        turtleMarkSegments.forEach(segment => {
-          const a = placement.points[segment.from];
-          const b = placement.points[segment.to];
+        placement.markSegments.forEach(segment => {
+          const a = projectA2(segment.fromPoint);
+          const b = projectA2(segment.toPoint);
           const start = worldToScreen(a.x, a.y);
           const end = worldToScreen(b.x, b.y);
           const color = segment.value > 0 ? markValueColors.positive : markValueColors.negative;
@@ -1060,24 +1189,35 @@
         ctx.restore();
       }
 
+      function hoverLinesForPoint(pointEntry) {
+        const lines = [`t=${pointEntry.value}/12 at (${pointEntry.point.join(',')})`];
+        if (showMarkings) lines.push(formatMarkVector(markVectorAt(pointEntry.point)));
+        return lines;
+      }
+
       function drawHoverTooltip() {
         if (!hoveredPoint) return;
         const point = projectA2(hoveredPoint.point);
         const screen = worldToScreen(point.x, point.y);
-        const text = `t=${hoveredPoint.value}/12 at (${hoveredPoint.point.join(',')})`;
+        const lines = hoverLinesForPoint(hoveredPoint);
         ctx.font = '700 12px Inter, system-ui, sans-serif';
-        const width = ctx.measureText(text).width + 16;
+        const width = Math.max(...lines.map(line => ctx.measureText(line).width)) + 16;
+        const height = showMarkings ? 40 : 24;
         const x = Math.min(screen.x + 12, canvas.getBoundingClientRect().width - width - 8);
-        const y = Math.max(screen.y - 30, 8);
+        const y = Math.max(screen.y - height - 4, 8);
         ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
         ctx.strokeStyle = '#dce5e1';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.roundRect(x, y, width, 24, 6);
+        ctx.roundRect(x, y, width, height, 6);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = '#18211f';
-        ctx.fillText(text, x + 8, y + 16);
+        ctx.fillText(lines[0], x + 8, y + 16);
+        if (lines[1]) {
+          ctx.font = '600 12px Inter, system-ui, sans-serif';
+          ctx.fillText(lines[1], x + 8, y + 32);
+        }
       }
 
       function draw() {
@@ -1116,14 +1256,13 @@
           if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
         });
         hoveredPoint = best;
-        hoverReadout.textContent = best
-          ? `t=${best.value}/12 at (${best.point.join(',')})`
-          : '';
+        hoverReadout.textContent = best ? hoverLinesForPoint(best).join('; ') : '';
       }
 
       function updateMarkingButton() {
         markingsButton.textContent = showMarkings ? 'Hide marking' : 'Show marking';
         markingsButton.setAttribute('aria-pressed', String(showMarkings));
+        if (hoveredPoint) hoverReadout.textContent = hoverLinesForPoint(hoveredPoint).join('; ');
       }
 
       function setDemoStage(stageName) {
@@ -1132,11 +1271,11 @@
         stopTiling();
         if (typeof stage.useMarkingRules === 'boolean') {
           markingRulesToggle.checked = stage.useMarkingRules;
-          if (!stage.autoplay && stage.useMarkingRules !== tilingRunUsesMarking) regenerateTilingRun(Math.max(stage.tiles, 31), true);
         }
         shownTiles = stage.tiles;
         playbackPlacements = null;
         traceIndex = 0;
+        liveSearchIterator = null;
         trialGhost = null;
         statusText = '';
         hasStartedTiling = false;
@@ -1291,17 +1430,21 @@
           return;
         }
         const useMarking = markingRulesToggle?.checked || false;
-        const modeChanged = useMarking !== tilingRunUsesMarking;
-        const nextTarget = !reset && hasStartedTiling && !modeChanged ? shownTiles + 30 : 31;
-        if (reset || modeChanged || tilingOrder.length < nextTarget) regenerateTilingRun(nextTarget, reset || modeChanged);
-        if (reset || !hasStartedTiling || modeChanged) {
+        const modeChanged = useMarking !== liveSearchUsesMarking;
+        if (reset || !hasStartedTiling || modeChanged || !liveSearchIterator) {
           shownTiles = 1;
-          playbackPlacements = [tilingOrder[0]];
+          const seed = makeSeedPlacement();
+          tilingOrder = [seed];
+          tilingTrace = [];
+          playbackPlacements = [seed];
+          liveSearchIterator = createLiveTilingSearch(10000, useMarking);
+          liveSearchUsesMarking = useMarking;
+          tilingRunUsesMarking = useMarking;
           centerView();
           traceIndex = 0;
         }
         hasStartedTiling = true;
-        autoplayTarget = Math.min(tilingOrder.length, shownTiles + 30);
+        autoplayTarget = shownTiles + 30;
         if (!playbackPlacements) playbackPlacements = tilingOrder.slice(0, Math.max(1, shownTiles));
         trialGhost = null;
         statusText = markingRulesToggle?.checked ? 'branching with marking constraints' : 'branching without marking constraints';
@@ -1309,14 +1452,15 @@
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
         timer = window.setInterval(() => {
-          if (traceIndex >= tilingTrace.length) {
+          const next = liveSearchIterator?.next();
+          if (!next || next.done) {
             trialGhost = null;
             statusText = 'paused at the current live boundary';
             stopTiling();
             draw();
             return;
           }
-          const event = tilingTrace[traceIndex];
+          const event = next.value;
           traceIndex += 1;
           if (event.type === 'trial') {
             trialGhost = event;
@@ -1341,7 +1485,10 @@
             statusText = `backtracking: ${event.reason}`;
           } else {
             shownTiles = event.count;
-            if (event.placements) playbackPlacements = event.placements;
+            if (event.placements) {
+              playbackPlacements = event.placements;
+              tilingOrder = event.placements;
+            }
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
             if (shownTiles >= autoplayTarget) {
@@ -1379,6 +1526,7 @@
         shownTiles = 1;
         playbackPlacements = null;
         traceIndex = 0;
+        liveSearchIterator = null;
         trialGhost = null;
         statusText = '';
         hasStartedTiling = false;
