@@ -1,5 +1,5 @@
 <!--
-Primary browser version lives at docs/blog/tree-search-with-geometric-constraints.html.
+Primary browser version lives at docs/blog/GCTS-I.html.
 This Markdown file is kept as a text export of the essay.
 -->
 
