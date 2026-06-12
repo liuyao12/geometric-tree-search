@@ -247,7 +247,7 @@
         },
         markings: {
           label: 'Stage: three marking components',
-          note: 'The displayed segments are the specified ±1 marking values between turtle vertices; flipped turtles swap the two stripe colors.',
+          note: 'The displayed segments are the specified ±1 marking values between turtle vertices; reflected turtle orientations swap the two stripe colors.',
           tiles: 10,
           markings: true
         },
@@ -330,6 +330,16 @@
         return symmetry.permutation.map(index => symmetry.sign * point[index]);
       }
 
+      function permutationParity(permutation) {
+        let inversions = 0;
+        for (let i = 0; i < permutation.length; i += 1) {
+          for (let j = i + 1; j < permutation.length; j += 1) {
+            if (permutation[i] > permutation[j]) inversions += 1;
+          }
+        }
+        return inversions % 2 === 0 ? 1 : -1;
+      }
+
       function buildA2Symmetries() {
         const seen = new Set();
         const symmetries = [];
@@ -341,7 +351,7 @@
             const key = `${sign}|${permutation.join(',')}`;
             if (seen.has(key)) return;
             seen.add(key);
-            symmetries.push({ sign, permutation });
+            symmetries.push({ sign, permutation, markSign: permutationParity(permutation) });
           });
         });
         return symmetries;
@@ -678,7 +688,7 @@
           const b = placement.points[segment.to];
           const start = worldToScreen(a.x, a.y);
           const end = worldToScreen(b.x, b.y);
-          const effectiveValue = segment.value * placement.orientation.sign;
+          const effectiveValue = segment.value * placement.orientation.markSign;
           const color = effectiveValue > 0 ? markValueColors.positive : markValueColors.negative;
           drawLine(start, end, color, Math.max(2.2, 4.1 * scale));
         });
