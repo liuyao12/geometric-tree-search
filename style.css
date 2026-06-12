@@ -395,6 +395,17 @@ h1 {
   stroke-linejoin: round;
 }
 
+.toolbar-start-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.toolbar-toggle-right {
+  margin-left: auto;
+}
+
 .toolbar-toggle {
   display: inline-flex;
   align-items: center;
