@@ -187,7 +187,13 @@
         { component: 1, from: 0, to: 6, value: -1 },
         { component: 2, from: 4, to: 12, value: -1 }
       ];
-      const markValueColors = { positive: '#d95f3d', negative: '#315f9f' };
+      const tileColors = {
+        directFill: 'rgba(0, 114, 178, 0.50)',
+        directStroke: '#005a8c',
+        reflectedFill: 'rgba(213, 94, 0, 0.48)',
+        reflectedStroke: '#a74700'
+      };
+      const markValueColors = { positive: '#d55e00', negative: '#0072b2' };
       const coordinatePermutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
       const gridSteps = [[1, -1, 0], [0, 1, -1], [1, 0, -1]];
       const rawTurtle = turtleVertices3d.map(projectA2Raw);
@@ -702,8 +708,9 @@
           ctx.strokeStyle = options.valid ? '#168775' : '#b84a56';
           ctx.setLineDash(options.valid ? [10, 5] : [4, 4]);
         } else {
-          ctx.fillStyle = 'rgba(49, 95, 159, 0.56)';
-          ctx.strokeStyle = '#244873';
+          const isReflected = placement.orientation.markSign < 0;
+          ctx.fillStyle = isReflected ? tileColors.reflectedFill : tileColors.directFill;
+          ctx.strokeStyle = isReflected ? tileColors.reflectedStroke : tileColors.directStroke;
           ctx.setLineDash([]);
         }
         ctx.lineWidth = Math.max(1.2, options.ghost ? 2.5 * scale : 1.9 * scale);
