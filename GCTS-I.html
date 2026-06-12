@@ -38,8 +38,8 @@
                 <button type="button" id="turtle-start">Start tiling</button>
                 <label class="toolbar-toggle"><input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
               </div>
-              <button type="button" id="turtle-markings" aria-pressed="false">Show/Hide marking</button>
-              <button type="button" id="turtle-reset">Reset view</button>
+              <button type="button" id="turtle-markings" aria-pressed="false">Show marking</button>
+              <button type="button" id="turtle-reset">Reset tiling</button>
               <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show lattice</label>
             </div>
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
@@ -210,7 +210,7 @@
       center.y /= rawTurtle.length;
       const orientations = buildOrientations();
       const seedOrientationIndex = 6;
-      let tilingRun = buildTilingOrder(90, markingRulesToggle?.checked || false);
+      let tilingRun = buildTilingOrder(31, markingRulesToggle?.checked || false);
       let tilingOrder = tilingRun.placements;
       let tilingTrace = tilingRun.trace;
       let scale = 0.58;
@@ -222,6 +222,8 @@
       let shownTiles = tilingOrder.length;
       let timer = null;
       let traceIndex = 0;
+      let autoplayTarget = 30;
+      let hasStartedTiling = false;
       let trialGhost = null;
       let statusText = '';
       let showMarkings = false;
@@ -716,12 +718,15 @@
         return { placements: bestLivePlacements, trace: traceForPlacements(bestLivePlacements) };
       }
 
-      function regenerateTilingRun() {
-        tilingRun = buildTilingOrder(90, markingRulesToggle?.checked || false);
-        tilingOrder = tilingRun.placements;
-        tilingTrace = tilingRun.trace;
-        demoStages.intro.tiles = tilingOrder.length;
-        demoStages.learning.tiles = tilingOrder.length;
+      function regenerateTilingRun(target = 31) {
+        const nextRun = buildTilingOrder(target, markingRulesToggle?.checked || false);
+        if (nextRun.placements.length >= tilingOrder.length || target <= tilingOrder.length) {
+          tilingRun = nextRun;
+          tilingOrder = tilingRun.placements;
+          tilingTrace = tilingRun.trace;
+          demoStages.intro.tiles = tilingOrder.length;
+          demoStages.learning.tiles = tilingOrder.length;
+        }
       }
 
       function addPlacementValues(placement, sums) {
@@ -1028,7 +1033,7 @@
       }
 
       function updateMarkingButton() {
-        markingsButton.textContent = 'Show/Hide marking';
+        markingsButton.textContent = showMarkings ? 'Hide marking' : 'Show marking';
         markingsButton.setAttribute('aria-pressed', String(showMarkings));
       }
 
@@ -1055,7 +1060,7 @@
       function stopTiling() {
         if (timer) window.clearInterval(timer);
         timer = null;
-        startButton.textContent = shownTiles >= tilingOrder.length ? 'Restart tiling' : 'Start tiling';
+        startButton.textContent = hasStartedTiling ? 'Continue tiling' : 'Start tiling';
       }
 
 
@@ -1189,19 +1194,24 @@
           stopTiling();
           return;
         }
-        regenerateTilingRun();
-        shownTiles = 1;
-        centerView();
-        traceIndex = 0;
+        const nextTarget = hasStartedTiling ? shownTiles + 30 : 31;
+        if (tilingOrder.length < nextTarget) regenerateTilingRun(nextTarget);
+        if (!hasStartedTiling) {
+          shownTiles = 1;
+          centerView();
+          traceIndex = 0;
+        }
+        hasStartedTiling = true;
+        autoplayTarget = Math.min(tilingOrder.length, shownTiles + 30);
         trialGhost = null;
         statusText = markingRulesToggle?.checked ? 'branching with marking constraints' : 'branching without marking constraints';
-        showMarkings = false;
+        showMarkings = markingRulesToggle.checked ? true : showMarkings;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
         timer = window.setInterval(() => {
           if (traceIndex >= tilingTrace.length) {
             trialGhost = null;
-            statusText = 'trial search reached the displayed patch';
+            statusText = 'paused at the current live boundary';
             stopTiling();
             draw();
             return;
@@ -1220,13 +1230,16 @@
                     ? 'reject: no value-compatible placement at this point'
                     : `reject: would exceed 12 by ${event.overflow}`;
           } else if (event.type === 'fail') {
-            shownTiles = event.count;
             trialGhost = null;
-            statusText = `early exit: no tile can complete t=${event.frontierValue}/12`;
+            statusText = `backtracking: no tile can complete t=${event.frontierValue}/12`;
           } else {
             shownTiles = event.count;
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
+            if (shownTiles >= autoplayTarget) {
+              statusText = `paused after ${shownTiles} tiles; continue to extend the live branch`;
+              stopTiling();
+            }
           }
           draw();
         }, 60);
@@ -1241,8 +1254,8 @@
       });
       markingRulesToggle.addEventListener('change', () => {
         stopTiling();
-        regenerateTilingRun();
-        shownTiles = tilingOrder.length;
+        regenerateTilingRun(Math.max(31, shownTiles + 30));
+        shownTiles = Math.min(shownTiles || 1, tilingOrder.length);
         traceIndex = 0;
         trialGhost = null;
         showMarkings = markingRulesToggle.checked || showMarkings;
@@ -1258,11 +1271,16 @@
         scale = 0.58;
         centerView(rect);
         hoveredPoint = null;
+        shownTiles = 1;
         traceIndex = 0;
         trialGhost = null;
         statusText = '';
+        hasStartedTiling = false;
+        autoplayTarget = 30;
         showMarkings = false;
-        setDemoStage('intro');
+        startButton.textContent = 'Start tiling';
+        updateMarkingButton();
+        draw();
       });
       document.querySelectorAll('[data-demo-stage]').forEach(section => {
         if (!('IntersectionObserver' in window)) return;
