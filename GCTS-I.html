@@ -1009,13 +1009,6 @@
           ctx.arc(screen.x, screen.y, radius, 0, Math.PI * 2);
           ctx.fillStyle = entry.value > 12 ? '#b84a56' : isHovered ? '#18211f' : isPartial ? 'rgba(24, 33, 31, 0.68)' : 'rgba(24, 33, 31, 0.34)';
           ctx.fill();
-          if (isHovered) {
-            const anchor = labelAnchorForPoint(entry, placements);
-            const direction = anchor ? { x: anchor.x, y: anchor.y } : { x: 0.7, y: -0.7 };
-            ctx.fillStyle = '#18211f';
-            ctx.font = '800 11px Inter, system-ui, sans-serif';
-            drawValueLabel(String(entry.value), screen, direction, isHovered);
-          }
         });
       }
 

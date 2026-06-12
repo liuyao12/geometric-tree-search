@@ -489,12 +489,8 @@ h1 {
   width: 100%;
   height: min(56vw, 520px);
   min-height: 320px;
-  cursor: grab;
+  cursor: default;
   touch-action: none;
-}
-
-.interactive-card canvas:active {
-  cursor: grabbing;
 }
 
 .interactive-card figcaption {
