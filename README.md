@@ -12,7 +12,7 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
-- [Geometrically Constrained Tree Search I: Learning matching rules in tiling](https://liuyao12.github.io/geometric-tree-search/docs/blog/GCTS-I.html)
+- [Geometrically Constrained Tree Search I: Learning matching rules in tiling](https://liuyao12.github.io/geometric-tree-search/GCTS-I.html)
   The primary browser version of the essay, with margin notes and a sticky
   draggable/zoomable Smith et al. turtle side app that shows t-values in units of 1/12, then advances from lattice, to tiling, to markings, to a learned-patch view as readers scroll.
 - [3D Lattice Tiler](https://liuyao12.github.io/geometric-tree-search/apps/3d-lattice-tiler/)
@@ -26,7 +26,7 @@ The primary article is maintained in this repository as the canonical browser
 version of the essay.
 
 The in-repository source for the primary article is
-[docs/blog/GCTS-I.html](./docs/blog/GCTS-I.html), and a Markdown export of that post is included at
+[GCTS-I.html](./GCTS-I.html), and a Markdown export of that post is included at
 [docs/blog/tree-search-with-geometric-constraints.md](./docs/blog/tree-search-with-geometric-constraints.md).
 
 ## Local Development
