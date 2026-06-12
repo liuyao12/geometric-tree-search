@@ -19,7 +19,7 @@ $$
 $$
 
 
-that is *finitely* supported, taking values between 0 and 1, inclusive. The interpretation of the value $t({\bf x})$ at a point ${\bf x} \in \mathbb{Z}^3 $ shall be the "solid angle" at $\bf x$, or the proportion of the $\epsilon$-neighborhood of $\bf x$ that is supposed to be "inside the tile". (We leave aside the question if or when a polyhedral tile *in the usual sense*, with all its vertices on the lattice, has a *faithful* realization as a lattice tile per our definition.)
+that is *finitely* supported, taking values between 0 and 1, inclusive. The interpretation of the value $t({\bf x})$ at a point ${\bf x} \in \mathbb{Z}^3$ shall be the "solid angle" at ${\bf x}$, or the proportion of the $\epsilon$-neighborhood of ${\bf x}$ that is supposed to be "inside the tile". (We leave aside the question if or when a polyhedral tile *in the usual sense*, with all its vertices on the lattice, has a *faithful* realization as a lattice tile per our definition.)
 
 A lattice tile $t$ is said **to tile** space if there exists a subset $K$ of the group $G$ of symmetries of the lattice such that
 
@@ -41,7 +41,7 @@ $$
 
 *Example.* The regular tetrahedron. The vertices are $[1,0,0]$, $[0,1,0]$, $[0,0,1]$, and $[1,1,1]$, where the solid angle is irrational, thus the regular tetrahedron does not tile space. However, together with the regular octahedron (with vertices at $\pm {\bf e}_i$, $i=1,2,3$), they do tile space, in a unique way.
 
-Naturally, if the tile $t_i$ itself has inherent symmetry, in the sense that $t_i({\bf x}) = t_i(g^{-1}{\bf x}$), we should "quotient it out" from $G$ when searching for $K_i$.
+Naturally, if the tile $t_i$ itself has inherent symmetry, in the sense that $t_i({\bf x}) = t_i(g^{-1}{\bf x})$, we should "quotient it out" from $G$ when searching for $K_i$.
 
 *Example.* The tetrahedron with vertices at $[0,0,0]$, $[1,0,0]$, $[1,1,0]$, and $[1,1,1]$ does tile space, with six copies filling a unit cube. The value at the four vertices are 1, 3, 3, and 1 forty-eighths, respectively.
 
@@ -51,7 +51,7 @@ Naturally, if the tile $t_i$ itself has inherent symmetry, in the sense that $t_
 
 ![Observable attachment](https://static.observableusercontent.com/files/35a021f043676a7deb9490a0d8fdf7718f6c1a0c252cb52b19e4a785259af61273ab214769baf3426614edf052490476a2fc4bbccbe08ffc3332c4d9d7315375)
 
-Finding the subsets $K_i$ (or showing none exists) is a problem of combinatorial tree search. We could place the first tile anywhere (or simply with $i=1$, $g=1$), and for a specific $\bf p$ with $ 0 < t_1({\bf p}) < 1$, there are *finitely* many ways to place the second tile (choices of $i$ and $g \in G$) such that $t_i(g^{-1} {\bf p}) > 0$ and
+Finding the subsets $K_i$ (or showing none exists) is a problem of combinatorial tree search. We could place the first tile anywhere (or simply with $i=1$, $g=1$), and for a specific ${\bf p}$ with $0 < t_1({\bf p}) < 1$, there are *finitely* many ways to place the second tile (choices of $i$ and $g \in G$) such that $t_i(g^{-1} {\bf p}) > 0$ and
 
 
 $$
@@ -59,9 +59,9 @@ $$
 $$
 
 
-for all $\bf x$, and we put this $g$ in $K_i$, and repeat the process. Thus we obtain a finite-branching tree to search over. A branch stops or dies if it runs out of choices (for any "boundary point" $\bf p$). We are particularly interested in tiles that admit nontrivial tilings: neither too restricted that the branchings all have a unique choice, nor too loose that *any* branch appears to lead to valid tilings. Note that this algorithm could not tell whether a (partial) tiling is periodic, and by itself is unable to say if it actually extends to a tiling of the whole space.
+for all ${\bf x}$, and we put this $g$ in $K_i$, and repeat the process. Thus we obtain a finite-branching tree to search over. A branch stops or dies if it runs out of choices (for any "boundary point" ${\bf p}$). We are particularly interested in tiles that admit nontrivial tilings: neither too restricted that the branchings all have a unique choice, nor too loose that *any* branch appears to lead to valid tilings. Note that this algorithm could not tell whether a (partial) tiling is periodic, and by itself is unable to say if it actually extends to a tiling of the whole space.
 
-In practice, it may be more natural to "branch over" faces instead of boundary points; and we may adopt simple rules to choose the face or the point $\bf p$ for each branching, but no need to employ more sophisticated heuristics. This is essentially what is implemented [here](https://observablehq.com/@liuyao12/3d-lattice-tiler).
+In practice, it may be more natural to "branch over" faces instead of boundary points; and we may adopt simple rules to choose the face or the point ${\bf p}$ for each branching, but no need to employ more sophisticated heuristics. This is essentially what is implemented [here](https://observablehq.com/@liuyao12/3d-lattice-tiler).
 
 ## Markings and matching rules
 
