@@ -371,19 +371,41 @@ h1 {
 .demo-drag-handle {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 32px;
+  min-width: 32px;
   min-height: 32px;
   border: 1px dashed var(--line);
   border-radius: 999px;
   background: white;
-  padding: 5px 10px;
+  padding: 0;
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
   cursor: grab;
   touch-action: none;
   user-select: none;
+}
+
+.demo-drag-handle svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.toolbar-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.toolbar-toggle input {
+  accent-color: var(--accent);
 }
 
 .demo-drag-handle:active,
