@@ -44,7 +44,7 @@
                 <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show lattice</label>
               </div>
             </div>
-            <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
+            <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
               <span id="turtle-hover-readout"></span>
             </figcaption>
@@ -135,7 +135,7 @@
 
         <p><em>Example.</em> The classic "domino puzzle" (with the checkerboard argument) may be cast as a problem of tiling with marking. It seems that a good source of candidates for markings would be the eigenfunctions of the Laplacian operator, with Dirichlet or Neumann (or mixed) boundary conditions.</p>
 
-        <p>The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
+        <p data-demo-stage="markedTiling">The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
 
         <h2 data-demo-stage="learning">Geometric Deep Learning</h2>
 
@@ -192,6 +192,11 @@
         { component: 1, from: 0, to: 6, value: -1 },
         { component: 2, from: 4, to: 12, value: -1 }
       ];
+      const markDirectionVectors = [
+        [1, 1, -2],
+        [2, -1, -1],
+        [1, -2, 1]
+      ];
       const tileColors = {
         directFill: 'rgba(0, 114, 178, 0.50)',
         directStroke: '#005a8c',
@@ -242,34 +247,48 @@
       const demoCard = document.getElementById('turtle-tiling-card');
       const demoStages = {
         intro: {
-          label: 'Stage: large turtle patch',
-          note: 'Start with a larger partial tiling. Hover any lattice point to read the accumulated t-value in twelfths; valid placements keep every value at most 12.',
-          tiles: tilingOrder.length,
-          markings: false
+          label: 'Stage: one lattice tile',
+          note: 'Start with a single Turtle before the definition introduces lattice tiles and their t-values.',
+          tiles: 1,
+          markings: false,
+          useMarkingRules: false
         },
         tile: {
           label: 'Stage: one lattice tile',
-          note: 'At the lattice-tile definition, the app isolates one Smith turtle so the vertex t-values can be read directly in units of 1/12.',
+          note: 'At the lattice-tile definition, the app isolates one Turtle so the vertex t-values can be read directly in units of 1/12.',
           tiles: 1,
-          markings: false
+          markings: false,
+          useMarkingRules: false
         },
         tiling: {
-          label: 'Stage: frontier scan and branch',
-          note: 'The rudimentary search counts viable moves at every undersaturated boundary point, backtracks when any point has none, takes forced moves first, then branches at a minimum-choice point.',
-          tiles: 24,
-          markings: false
+          label: 'Stage: live tiling search',
+          note: 'The search now runs live: it tries candidates, hits dead ends, backtracks, takes forced moves, then branches at a minimum-choice frontier point.',
+          tiles: 1,
+          markings: false,
+          useMarkingRules: false,
+          autoplay: true
         },
         markings: {
           label: 'Stage: three marking components',
           note: 'The displayed segments are the specified ±1 marking values between turtle vertices; reflected turtle orientations swap the two stripe colors.',
-          tiles: 36,
-          markings: true
+          tiles: 12,
+          markings: true,
+          useMarkingRules: false
+        },
+        markedTiling: {
+          label: 'Stage: tiling with marking',
+          note: 'The same live search now treats the markings as matching constraints while it tries, rejects, accepts, and backtracks.',
+          tiles: 1,
+          markings: true,
+          useMarkingRules: true,
+          autoplay: true
         },
         learning: {
           label: 'Stage: learned geometric obstructions',
           note: 'The patch is filled out with markings visible, suggesting the data a learner could use to prune the tree.',
           tiles: tilingOrder.length,
-          markings: true
+          markings: true,
+          useMarkingRules: true
         }
       };
 
@@ -316,6 +335,23 @@
           a[1] + step[1] * index,
           a[2] + step[2] * index
         ]);
+      }
+
+      function normalizedLineDirection(delta) {
+        const divisor = gcd3(delta[0], delta[1], delta[2]) || 1;
+        const reduced = delta.map(value => value / divisor);
+        const firstNonzero = reduced.find(value => value !== 0) || 1;
+        return firstNonzero < 0 ? reduced.map(value => -value) : reduced;
+      }
+
+      function lineDirectionComponent(a, b) {
+        const direction = normalizedLineDirection(subtract3(b, a));
+        const component = markDirectionVectors.findIndex(vector => {
+          const normalized = normalizedLineDirection(vector);
+          return key3(direction) === key3(normalized);
+        });
+        if (component < 0) throw new Error(`Unknown turtle marking direction ${direction.join(',')}`);
+        return component;
       }
 
       function pointStrictlyInPolygon(point, polygon) {
@@ -406,8 +442,8 @@
           });
           const vertices3d = turtleVertices3d.map(point => transform3(point, symmetry));
           const markEntries = turtleMarkSegments.flatMap(segment => {
-            const component = symmetry.permutation.indexOf(segment.component);
-            const value = segment.value * symmetry.markSign;
+            const component = lineDirectionComponent(vertices3d[segment.from], vertices3d[segment.to]);
+            const value = segment.value;
             return latticeSegmentPoints(vertices3d[segment.from], vertices3d[segment.to]).map(point => ({ point, component, value }));
           });
           return {
@@ -786,7 +822,6 @@
           tilingOrder = tilingRun.placements;
           tilingTrace = tilingRun.trace;
           playbackPlacements = null;
-          demoStages.intro.tiles = tilingOrder.length;
           demoStages.learning.tiles = tilingOrder.length;
         }
       }
@@ -943,8 +978,7 @@
           const b = placement.points[segment.to];
           const start = worldToScreen(a.x, a.y);
           const end = worldToScreen(b.x, b.y);
-          const effectiveValue = segment.value * placement.orientation.markSign;
-          const color = effectiveValue > 0 ? markValueColors.positive : markValueColors.negative;
+          const color = segment.value > 0 ? markValueColors.positive : markValueColors.negative;
           drawLine(start, end, color, Math.max(2.2, 4.1 * scale));
         });
         ctx.restore();
@@ -1063,7 +1097,7 @@
         const branchText = statusText || (latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile');
         ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
         ctx.font = '700 13px Inter, system-ui, sans-serif';
-        ctx.fillText(`${visible.length} Smith turtle${visible.length === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
+        ctx.fillText(`${visible.length} Turtle${visible.length === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
         window.requestAnimationFrame(updateTextWrap);
       }
 
@@ -1096,10 +1130,16 @@
         const stage = demoStages[stageName];
         if (!stage) return;
         stopTiling();
+        if (typeof stage.useMarkingRules === 'boolean') {
+          markingRulesToggle.checked = stage.useMarkingRules;
+          if (!stage.autoplay && stage.useMarkingRules !== tilingRunUsesMarking) regenerateTilingRun(Math.max(stage.tiles, 31), true);
+        }
         shownTiles = stage.tiles;
+        playbackPlacements = null;
         traceIndex = 0;
         trialGhost = null;
         statusText = '';
+        hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
         if (stage.tiles === 1) centerView();
@@ -1109,7 +1149,8 @@
           chip.setAttribute('aria-current', String(chip.dataset.stageChip === stageName));
         });
         updateMarkingButton();
-        draw();
+        if (stage.autoplay) startTilingPlayback({ reset: true });
+        else draw();
       }
 
       function stopTiling() {
@@ -1244,16 +1285,16 @@
         draw();
       }, { passive: false });
 
-      startButton.addEventListener('click', () => {
+      function startTilingPlayback({ reset = false } = {}) {
         if (timer) {
           stopTiling();
           return;
         }
         const useMarking = markingRulesToggle?.checked || false;
         const modeChanged = useMarking !== tilingRunUsesMarking;
-        const nextTarget = hasStartedTiling && !modeChanged ? shownTiles + 30 : 31;
-        if (modeChanged || tilingOrder.length < nextTarget) regenerateTilingRun(nextTarget, modeChanged);
-        if (!hasStartedTiling || modeChanged) {
+        const nextTarget = !reset && hasStartedTiling && !modeChanged ? shownTiles + 30 : 31;
+        if (reset || modeChanged || tilingOrder.length < nextTarget) regenerateTilingRun(nextTarget, reset || modeChanged);
+        if (reset || !hasStartedTiling || modeChanged) {
           shownTiles = 1;
           playbackPlacements = [tilingOrder[0]];
           centerView();
@@ -1311,11 +1352,13 @@
           draw();
         }, 60);
         draw();
-      });
+      }
+
+      startButton.addEventListener('click', () => startTilingPlayback());
       markingsButton.addEventListener('click', () => {
         showMarkings = !showMarkings;
         if (stageLabel) stageLabel.textContent = showMarkings ? 'Stage: markings enabled manually' : 'Stage: markings hidden manually';
-        if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Smith turtle shapes remain, but the three marking components are hidden.';
+        if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Turtle shapes remain, but the three marking components are hidden.';
         updateMarkingButton();
         draw();
       });
