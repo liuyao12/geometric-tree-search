@@ -458,7 +458,8 @@
             const occupancyKey = placementOccupancyKey(occupancy);
             const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, coverage, valid, placementKey, occupancyKey };
             const existing = dedup.get(occupancyKey);
-            if (!existing || compareTrials(trial, existing) < 0) dedup.set(occupancyKey, trial);
+            const comparison = existing ? compareTrials(trial, existing) : -1;
+            if (!existing || comparison < 0 || (comparison === 0 && Math.random() < 0.5)) dedup.set(occupancyKey, trial);
           });
         });
         trials.push(...dedup.values());
@@ -470,9 +471,7 @@
         if (left.fillsFrontier !== right.fillsFrontier) return left.fillsFrontier ? -1 : 1;
         return right.coverage - left.coverage
           || right.newPoints - left.newPoints
-          || left.overflow - right.overflow
-          || left.orientationIndex - right.orientationIndex
-          || left.anchorIndex - right.anchorIndex;
+          || left.overflow - right.overflow;
       }
 
       function candidatePlacements(frontier, sums, usedPlacements) {
@@ -483,80 +482,113 @@
         return items[Math.floor(Math.random() * items.length)];
       }
 
-      function buildTilingOrder(limit, attempts = 10) {
+      function shuffled(items) {
+        const copy = [...items];
+        for (let i = copy.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function buildTraceFromPlacements(placements) {
+        const trace = [];
+        placements.slice(1).forEach(placement => {
+          (placement.rejectedTrials || []).forEach(trial => {
+            trace.push({
+              type: 'trial',
+              valid: false,
+              frontier: placement.frontier,
+              frontierValue: placement.frontierValue,
+              branchCount: placement.branchCount,
+              overflow: trial.overflow,
+              fillsFrontier: trial.fillsFrontier,
+              placement: makePlacement(trial.orientation, trial.translation, { frontier: placement.frontier, frontierValue: placement.frontierValue })
+            });
+          });
+          trace.push({
+            type: 'trial',
+            valid: true,
+            frontier: placement.frontier,
+            frontierValue: placement.frontierValue,
+            branchCount: placement.branchCount,
+            placement
+          });
+          trace.push({ type: 'accept', count: placement.step + 1, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue });
+        });
+        return trace;
+      }
+
+      function buildTilingOrder(limit, attempts = 6, nodeLimit = 1500) {
         let bestRun = null;
         for (let attempt = 0; attempt < attempts; attempt += 1) {
+          let nodesVisited = 0;
+          let lastFailure = null;
           const seed = makePlacement(orientations[seedOrientationIndex], [0, 0, 0], { step: 0, forced: true, branchCount: 0 });
           const placed = [seed];
-          const trace = [];
           const sums = new Map();
           const usedPlacements = new Set([`${seedOrientationIndex}|0,0,0`]);
           addPlacementValues(seed, sums);
-          for (let step = 1; step < limit; step += 1) {
+
+          const undoPlacement = placement => {
+            removePlacementValues(placement, sums);
+            usedPlacements.delete(placement.placementKey);
+            placed.pop();
+          };
+
+          const applyCandidate = (choice, candidate, forced) => {
+            const placement = makePlacement(candidate.orientation, candidate.translation, {
+              step: placed.length,
+              forced,
+              branchCount: choice.candidates.length,
+              frontier: choice.frontier.point,
+              frontierValue: choice.frontier.value,
+              anchorIndex: candidate.anchorIndex,
+              newPoints: candidate.newPoints,
+              placementKey: candidate.placementKey,
+              rejectedTrials: choice.trials.filter(trial => !trial.valid).slice(0, 2)
+            });
+            placed.push(placement);
+            usedPlacements.add(candidate.placementKey);
+            addPlacementValues(placement, sums);
+            return placement;
+          };
+
+          const search = () => {
+            nodesVisited += 1;
+            if (placed.length >= limit) return true;
+            if (nodesVisited > nodeLimit) return false;
             const options = frontierPoints(sums).map(frontier => {
               const trials = candidateTrials(frontier, sums, usedPlacements);
               const candidates = trials.filter(trial => trial.valid);
               return { frontier, trials, candidates };
             });
-            if (options.length === 0) break;
+            if (options.length === 0) return true;
             const deadEnd = options.find(option => option.candidates.length === 0);
             if (deadEnd) {
-              deadEnd.trials.filter(trial => !trial.valid).slice(0, 2).forEach(trial => {
-                trace.push({
-                  type: 'trial',
-                  valid: false,
-                  frontier: deadEnd.frontier.point,
-                  frontierValue: deadEnd.frontier.value,
-                  branchCount: 0,
-                  overflow: trial.overflow,
-                  fillsFrontier: trial.fillsFrontier,
-                  placement: makePlacement(trial.orientation, trial.translation, { step, frontier: deadEnd.frontier.point, frontierValue: deadEnd.frontier.value })
-                });
-              });
-              trace.push({ type: 'fail', frontier: deadEnd.frontier.point, frontierValue: deadEnd.frontier.value, count: placed.length });
-              break;
+              lastFailure = { type: 'fail', frontier: deadEnd.frontier.point, frontierValue: deadEnd.frontier.value, count: placed.length };
+              return false;
             }
-            const forcedOptions = options.filter(option => option.candidates.length === 1);
-            const choice = forcedOptions.length
-              ? randomItem(forcedOptions)
-              : randomItem(options.filter(option => option.candidates.length === Math.min(...options.map(item => item.candidates.length))));
-            const candidate = choice.candidates.length === 1 ? choice.candidates[0] : randomItem(choice.candidates);
-            const rejectedTrials = choice.trials.filter(trial => !trial.valid).slice(0, 2);
-            rejectedTrials.forEach(trial => {
-              trace.push({
-                type: 'trial',
-                valid: false,
-                frontier: choice.frontier.point,
-                frontierValue: choice.frontier.value,
-                branchCount: choice.candidates.length,
-                overflow: trial.overflow,
-                fillsFrontier: trial.fillsFrontier,
-                placement: makePlacement(trial.orientation, trial.translation, { step, frontier: choice.frontier.point, frontierValue: choice.frontier.value })
-              });
-            });
-            trace.push({
-              type: 'trial',
-              valid: true,
-              frontier: choice.frontier.point,
-              frontierValue: choice.frontier.value,
-              branchCount: choice.candidates.length,
-              placement: makePlacement(candidate.orientation, candidate.translation, { step, frontier: choice.frontier.point, frontierValue: choice.frontier.value })
-            });
-            const placement = makePlacement(candidate.orientation, candidate.translation, {
-              step,
-              forced: choice.candidates.length === 1,
-              branchCount: choice.candidates.length,
-              frontier: choice.frontier.point,
-              frontierValue: choice.frontier.value,
-              anchorIndex: candidate.anchorIndex,
-              newPoints: candidate.newPoints
-            });
-            placed.push(placement);
-            usedPlacements.add(candidate.placementKey);
-            addPlacementValues(placement, sums);
-            trace.push({ type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue });
-          }
-          const run = { placements: placed, trace };
+            const forcedOptions = shuffled(options.filter(option => option.candidates.length === 1));
+            const choices = forcedOptions.length
+              ? forcedOptions
+              : shuffled(options.filter(option => option.candidates.length === Math.min(...options.map(item => item.candidates.length))));
+            for (const choice of choices) {
+              const candidates = choice.candidates.length === 1 ? choice.candidates : shuffled(choice.candidates);
+              for (const candidate of candidates) {
+                const placement = applyCandidate(choice, candidate, choice.candidates.length === 1);
+                if (search()) return true;
+                undoPlacement(placement);
+              }
+              if (forcedOptions.length) return false;
+            }
+            return false;
+          };
+
+          search();
+          const trace = buildTraceFromPlacements(placed);
+          if (lastFailure && placed.length < limit) trace.push(lastFailure);
+          const run = { placements: [...placed], trace, nodesVisited };
           if (!bestRun || run.placements.length > bestRun.placements.length) bestRun = run;
           if (run.placements.length >= limit) return run;
         }
@@ -570,6 +602,16 @@
           entry.value += item.value;
           entry.hasInterior = entry.hasInterior || item.kind === 'interior';
           sums.set(key, entry);
+        });
+      }
+
+      function removePlacementValues(placement, sums) {
+        placement.occupancy.forEach(item => {
+          const key = key3(item.point);
+          const entry = sums.get(key);
+          if (!entry) return;
+          entry.value -= item.value;
+          if (entry.value <= 0) sums.delete(key);
         });
       }
 
