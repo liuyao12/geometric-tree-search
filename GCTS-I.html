@@ -1037,7 +1037,7 @@
         if (!hoveredPoint) return;
         const point = projectA2(hoveredPoint.point);
         const screen = worldToScreen(point.x, point.y);
-        const text = `(${hoveredPoint.point.join(', ')})  t=${hoveredPoint.value}/12`;
+        const text = `t=${hoveredPoint.value}/12 at (${hoveredPoint.point.join(',')})`;
         ctx.font = '700 12px Inter, system-ui, sans-serif';
         const width = ctx.measureText(text).width + 16;
         const x = Math.min(screen.x + 12, canvas.getBoundingClientRect().width - width - 8);
@@ -1090,7 +1090,7 @@
         });
         hoveredPoint = best;
         hoverReadout.textContent = best
-          ? `Hover: (${best.point.join(', ')}) has accumulated t-value ${best.value}/12.`
+          ? `t=${best.value}/12 at (${best.point.join(',')})`
           : '';
       }
 
