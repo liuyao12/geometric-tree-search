@@ -270,6 +270,18 @@ h1 {
   font-size: 14px;
 }
 
+.article-source {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.article-source a {
+  color: inherit;
+}
+
 .math-display {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -477,12 +489,8 @@ h1 {
   width: 100%;
   height: min(56vw, 520px);
   min-height: 320px;
-  cursor: grab;
+  cursor: default;
   touch-action: none;
-}
-
-.interactive-card canvas:active {
-  cursor: grabbing;
 }
 
 .interactive-card figcaption {

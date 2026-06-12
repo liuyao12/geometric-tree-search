@@ -24,8 +24,7 @@
       <p class="eyebrow">Geometrically Constrained Tree Search (GCTS)</p>
       <p><a href="./">← Back to home</a></p>
       <h1>Geometrically Constrained Tree Search I — Learning matching rules in tiling</h1>
-      <p class="article-byline">Primary browser version of the essay.</p>
-      <p class="lede">Originally published on <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Observable</a>. Here is a <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/blog/tree-search-with-geometric-constraints.md">Markdown version</a> with GitHub-rendered LaTeX.</p>
+      <p class="article-source"><em>Originally published on <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Observable</a>. Here is a <a href="https://github.com/liuyao12/geometric-tree-search/blob/main/docs/blog/tree-search-with-geometric-constraints.md">Markdown version</a> with GitHub-rendered LaTeX.</em></p>
     </header>
 
     <article class="article-shell">
@@ -47,8 +46,7 @@
             </div>
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
-              <span id="turtle-hover-readout">Hover a lattice point to read its accumulated t-value in twelfths.</span>
-              <span>Values are shown in units of 1/12. Drag the window handle vertically; drag the canvas to pan.</span>
+              <span id="turtle-hover-readout"></span>
             </figcaption>
             <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left"></span>
           </figure>
@@ -224,6 +222,7 @@
       let last = { x: 0, y: 0 };
       let hoveredPoint = null;
       let shownTiles = tilingOrder.length;
+      let playbackPlacements = null;
       let timer = null;
       let traceIndex = 0;
       let autoplayTarget = 30;
@@ -445,7 +444,7 @@
       }
 
       function visiblePlacements() {
-        return tilingOrder.slice(0, shownTiles);
+        return playbackPlacements || tilingOrder.slice(0, shownTiles);
       }
 
       function visibleSums() {
@@ -469,8 +468,8 @@
             const leftAge = frontierAges.get(key3(left.point)) ?? Infinity;
             const rightAge = frontierAges.get(key3(right.point)) ?? Infinity;
             return leftAge - rightAge
-              || left.value - right.value
-              || norm3(left.point) - norm3(right.point);
+              || norm3(left.point) - norm3(right.point)
+              || left.value - right.value;
           });
       }
 
@@ -505,14 +504,22 @@
         return `${key3(entry.point)}|${entry.component}`;
       }
 
-      function markingCompatibility(markings, markSums) {
-        return markings.reduce((summary, entry) => {
+      function markingCompatibility(markings, markSums, overlapKeys = null) {
+        const summary = markings.reduce((state, entry) => {
+          if (overlapKeys && !overlapKeys.has(key3(entry.point))) return state;
           const existing = markSums.get(markingKey(entry));
-          if (!existing) return summary;
-          if (existing.value === entry.value) summary.matches += 1;
-          else summary.conflict = true;
-          return summary;
-        }, { matches: 0, conflict: false });
+          if (!existing) return state;
+          if (existing.value === entry.value) {
+            state.matches += 1;
+            const stripeKey = `${entry.component}|${entry.value}`;
+            state.stripeMatches.set(stripeKey, (state.stripeMatches.get(stripeKey) || 0) + 1);
+          } else {
+            state.conflict = true;
+          }
+          return state;
+        }, { matches: 0, conflict: false, stripeMatches: new Map() });
+        summary.lineUps = Array.from(summary.stripeMatches.values()).filter(count => count >= 1).length;
+        return summary;
       }
 
       function addPlacementMarkings(placement, markSums) {
@@ -556,10 +563,12 @@
               ...entry,
               point: add3(entry.point, translation)
             }));
-            const markCompatibility = useMarkingRules ? markingCompatibility(markings, markSums) : { matches: 0, conflict: false };
+            const overlapKeys = new Set(occupancy.map(item => key3(item.point)).filter(key => sums.has(key)));
+            const markCompatibility = useMarkingRules ? markingCompatibility(markings, markSums, overlapKeys) : { matches: 0, conflict: false };
             const markConflict = markCompatibility.conflict;
             const markMatches = markCompatibility.matches;
-            const markAligned = !useMarkingRules || markMatches > 0;
+            const markLineUps = markCompatibility.lineUps || 0;
+            const markAligned = !useMarkingRules || markLineUps > 0;
             let newPoints = 0;
             let maxValue = 0;
             let overflow = 0;
@@ -575,7 +584,7 @@
             if (!valid && !includeRejected) return;
             const coverage = moveCoverage(occupancy, sums);
             const occupancyKey = placementOccupancyKey(occupancy);
-            const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, markConflict, markMatches, markAligned, coverage, valid, placementKey, occupancyKey };
+            const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, markConflict, markMatches, markLineUps, markAligned, coverage, valid, placementKey, occupancyKey };
             const existing = dedup.get(occupancyKey);
             const comparison = existing ? compareTrials(trial, existing) : -1;
             if (!existing || comparison < 0 || (comparison === 0 && Math.random() < 0.5)) dedup.set(occupancyKey, trial);
@@ -614,7 +623,9 @@
         const byAge = (left, right) => {
           const leftAge = frontierAges.get(key3(left.frontier.point)) ?? Infinity;
           const rightAge = frontierAges.get(key3(right.frontier.point)) ?? Infinity;
-          return leftAge - rightAge || left.candidates.length - right.candidates.length;
+          return leftAge - rightAge
+            || norm3(left.frontier.point) - norm3(right.frontier.point)
+            || left.candidates.length - right.candidates.length;
         };
         const options = frontierPoints(sums, frontierAges).map(frontier => {
           const trials = candidateTrials(frontier, sums, usedPlacements, markSums, useMarkingRules, false);
@@ -655,38 +666,51 @@
         });
       }
 
+      function pushTrialTrace(trace, placement) {
+        const step = placement.step;
+        (placement.rejectedTrials || []).forEach(trial => {
+          trace.push({
+            type: 'trial',
+            valid: false,
+            frontier: placement.frontier,
+            frontierValue: placement.frontierValue,
+            branchCount: placement.branchCount,
+            overflow: trial.overflow,
+            fillsFrontier: trial.fillsFrontier,
+            markConflict: trial.markConflict,
+            markAligned: trial.markAligned,
+            markMatches: trial.markMatches,
+            markLineUps: trial.markLineUps,
+            placement: makePlacement(trial.orientation, trial.translation, { step, frontier: placement.frontier, frontierValue: placement.frontierValue })
+          });
+        });
+        trace.push({ type: 'trial', valid: true, frontier: placement.frontier, frontierValue: placement.frontierValue, branchCount: placement.branchCount, placement });
+      }
+
       function traceForPlacements(placements) {
         const trace = [];
         placements.slice(1).forEach((placement, index) => {
           const step = index + 1;
-          (placement.rejectedTrials || []).forEach(trial => {
-            trace.push({
-              type: 'trial',
-              valid: false,
-              frontier: placement.frontier,
-              frontierValue: placement.frontierValue,
-              branchCount: placement.branchCount,
-              overflow: trial.overflow,
-              fillsFrontier: trial.fillsFrontier,
-              markConflict: trial.markConflict,
-              markAligned: trial.markAligned,
-              markMatches: trial.markMatches,
-              placement: makePlacement(trial.orientation, trial.translation, { step, frontier: placement.frontier, frontierValue: placement.frontierValue })
-            });
-          });
-          trace.push({ type: 'trial', valid: true, frontier: placement.frontier, frontierValue: placement.frontierValue, branchCount: placement.branchCount, placement });
-          trace.push({ type: 'accept', count: step + 1, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue });
+          pushTrialTrace(trace, placement);
+          trace.push({ type: 'accept', count: step + 1, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placements.slice(0, step + 1) });
         });
         return trace;
       }
 
       function buildTilingOrder(limit, useMarkingRules = false, attempts = 1, nodeBudget = 40) {
         let bestLivePlacements = [];
-        const rememberLiveBoundary = placed => {
-          if (placed.length > bestLivePlacements.length || (placed.length === bestLivePlacements.length && Math.random() < 0.5)) bestLivePlacements = placed.slice();
+        let bestLiveTrace = [];
+        const rememberLiveBoundary = (placed, trace = []) => {
+          if (placed.length > bestLivePlacements.length || (placed.length === bestLivePlacements.length && Math.random() < 0.5)) {
+            bestLivePlacements = placed.slice();
+            bestLiveTrace = trace.slice();
+          }
         };
         for (let attempt = 0; attempt < attempts; attempt += 1) {
           let nodesVisited = 0;
+          const trace = [];
+          const traceLimit = 1800;
+          const pushTrace = event => { if (trace.length < traceLimit) trace.push(event); };
           const seed = makePlacement(orientations[seedOrientationIndex], [0, 0, 0], { step: 0, forced: true, branchCount: 0, placementKey: `${seedOrientationIndex}|0,0,0` });
           const placed = [seed];
           const sums = new Map();
@@ -699,31 +723,36 @@
             const detailedTrials = candidateTrials(choice.frontier, sums, usedPlacements, markSums, useMarkingRules);
             const detailedChoice = { ...choice, trials: detailedTrials };
             const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
+            pushTrialTrace(trace, placement);
             placed.push(placement);
             usedPlacements.add(candidate.placementKey);
             addPlacementValues(placement, sums);
             if (useMarkingRules) addPlacementMarkings(placement, markSums);
+            pushTrace({ type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() });
+            return placement;
           };
-          const undoLast = () => {
+          const undoLast = (reason = 'branch failed') => {
             const placement = placed.pop();
             if (!placement) return;
             if (useMarkingRules) removePlacementMarkings(placement, markSums);
             removePlacementValues(placement, sums);
             if (placement.placementKey) usedPlacements.delete(placement.placementKey);
+            pushTrace({ type: 'backtrack', reason, removed: placement, placements: placed.slice(), frontierValue: placement.frontierValue, branchCount: placement.branchCount });
           };
           const search = () => {
             const baseLength = placed.length;
             while (placed.length < limit) {
               if (nodesVisited++ >= nodeBudget) {
-                while (placed.length > baseLength) undoLast();
+                while (placed.length > baseLength) undoLast('budget');
                 return false;
               }
               const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed));
               if (analysis.deadEnd) {
-                while (placed.length > baseLength) undoLast();
+                pushTrace({ type: 'fail', frontier: analysis.deadEnd.frontier.point, frontierValue: analysis.deadEnd.frontier.value, placements: placed.slice() });
+                while (placed.length > baseLength) undoLast('dead end');
                 return false;
               }
-              rememberLiveBoundary(placed);
+              rememberLiveBoundary(placed, trace);
               if (analysis.forced) {
                 const choice = analysis.choices[0];
                 applyChoice(choice, choice.candidates[0], true);
@@ -733,19 +762,19 @@
                 for (const candidate of shuffled(choice.candidates)) {
                   applyChoice(choice, candidate, false);
                   if (search()) return true;
-                  undoLast();
+                  undoLast('backtrack after failed branch');
                   if (nodesVisited >= nodeBudget) break;
                 }
                 if (nodesVisited >= nodeBudget) break;
               }
-              while (placed.length > baseLength) undoLast();
+              while (placed.length > baseLength) undoLast('backtrack to branch point');
               return false;
             }
             return true;
           };
-          if (search() && placed.length >= limit) return { placements: placed.slice(), trace: traceForPlacements(placed) };
+          if (search() && placed.length >= limit) return { placements: placed.slice(), trace };
         }
-        return { placements: bestLivePlacements, trace: traceForPlacements(bestLivePlacements) };
+        return { placements: bestLivePlacements, trace: bestLiveTrace.length ? bestLiveTrace : traceForPlacements(bestLivePlacements) };
       }
 
       function regenerateTilingRun(target = 31, force = false) {
@@ -756,6 +785,7 @@
           tilingRun = nextRun;
           tilingOrder = tilingRun.placements;
           tilingTrace = tilingRun.trace;
+          playbackPlacements = null;
           demoStages.intro.tiles = tilingOrder.length;
           demoStages.learning.tiles = tilingOrder.length;
         }
@@ -979,13 +1009,6 @@
           ctx.arc(screen.x, screen.y, radius, 0, Math.PI * 2);
           ctx.fillStyle = entry.value > 12 ? '#b84a56' : isHovered ? '#18211f' : isPartial ? 'rgba(24, 33, 31, 0.68)' : 'rgba(24, 33, 31, 0.34)';
           ctx.fill();
-          if (isHovered) {
-            const anchor = labelAnchorForPoint(entry, placements);
-            const direction = anchor ? { x: anchor.x, y: anchor.y } : { x: 0.7, y: -0.7 };
-            ctx.fillStyle = '#18211f';
-            ctx.font = '800 11px Inter, system-ui, sans-serif';
-            drawValueLabel(String(entry.value), screen, direction, isHovered);
-          }
         });
       }
 
@@ -1007,7 +1030,7 @@
         if (!hoveredPoint) return;
         const point = projectA2(hoveredPoint.point);
         const screen = worldToScreen(point.x, point.y);
-        const text = `(${hoveredPoint.point.join(', ')})  t=${hoveredPoint.value}/12`;
+        const text = `t=${hoveredPoint.value}/12 at (${hoveredPoint.point.join(',')})`;
         ctx.font = '700 12px Inter, system-ui, sans-serif';
         const width = ctx.measureText(text).width + 16;
         const x = Math.min(screen.x + 12, canvas.getBoundingClientRect().width - width - 8);
@@ -1040,7 +1063,7 @@
         const branchText = statusText || (latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile');
         ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
         ctx.font = '700 13px Inter, system-ui, sans-serif';
-        ctx.fillText(`${shownTiles} Smith turtle${shownTiles === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
+        ctx.fillText(`${visible.length} Smith turtle${visible.length === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
         window.requestAnimationFrame(updateTextWrap);
       }
 
@@ -1060,8 +1083,8 @@
         });
         hoveredPoint = best;
         hoverReadout.textContent = best
-          ? `Hover: (${best.point.join(', ')}) has accumulated t-value ${best.value}/12.`
-          : 'Hover a lattice point to read its accumulated t-value in twelfths.';
+          ? `t=${best.value}/12 at (${best.point.join(',')})`
+          : '';
       }
 
       function updateMarkingButton() {
@@ -1200,7 +1223,7 @@
       });
       canvas.addEventListener('pointerleave', () => {
         hoveredPoint = null;
-        hoverReadout.textContent = 'Hover a lattice point to read its accumulated t-value in twelfths.';
+        hoverReadout.textContent = '';
         draw();
       });
       canvas.addEventListener('pointerup', event => {
@@ -1232,11 +1255,13 @@
         if (modeChanged || tilingOrder.length < nextTarget) regenerateTilingRun(nextTarget, modeChanged);
         if (!hasStartedTiling || modeChanged) {
           shownTiles = 1;
+          playbackPlacements = [tilingOrder[0]];
           centerView();
           traceIndex = 0;
         }
         hasStartedTiling = true;
         autoplayTarget = Math.min(tilingOrder.length, shownTiles + 30);
+        if (!playbackPlacements) playbackPlacements = tilingOrder.slice(0, Math.max(1, shownTiles));
         trialGhost = null;
         statusText = markingRulesToggle?.checked ? 'branching with marking constraints' : 'branching without marking constraints';
         showMarkings = markingRulesToggle.checked ? true : showMarkings;
@@ -1259,15 +1284,23 @@
               : event.markConflict
                 ? 'reject: marking conflict'
                 : event.markAligned === false
-                  ? 'reject: no matching marking stripe'
+                  ? 'reject: no marking stripe lines up'
                   : event.fillsFrontier === false
                     ? 'reject: no value-compatible placement at this point'
                     : `reject: would exceed 12 by ${event.overflow}`;
           } else if (event.type === 'fail') {
             trialGhost = null;
-            statusText = `backtracking: no tile can complete t=${event.frontierValue}/12`;
+            if (event.placements) playbackPlacements = event.placements;
+            shownTiles = playbackPlacements?.length || shownTiles;
+            statusText = `dead end: no tile can complete t=${event.frontierValue}/12`;
+          } else if (event.type === 'backtrack') {
+            trialGhost = event.removed ? { placement: event.removed, valid: false } : null;
+            if (event.placements) playbackPlacements = event.placements;
+            shownTiles = playbackPlacements?.length || shownTiles;
+            statusText = `backtracking: ${event.reason}`;
           } else {
             shownTiles = event.count;
+            if (event.placements) playbackPlacements = event.placements;
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
             if (shownTiles >= autoplayTarget) {
@@ -1301,6 +1334,7 @@
         centerView(rect);
         hoveredPoint = null;
         shownTiles = 1;
+        playbackPlacements = null;
         traceIndex = 0;
         trialGhost = null;
         statusText = '';

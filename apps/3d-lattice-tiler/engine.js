@@ -1390,6 +1390,7 @@ export const createTilingStream = (() => {
         if (!candidateCache.has(cacheKey)) candidateCache.set(cacheKey, await getCandidatesForFace(faceKey, maxCandidates));
         return candidateCache.get(cacheKey);
       };
+      const frontierVertexNorm = (option) => Math.abs(option.vertex[0]) + Math.abs(option.vertex[1]) + Math.abs(option.vertex[2]);
       const frontierVertexOptions = () => {
         const byVertex = new Map();
         for (const [faceKey, entry] of state.frontier.entries()) {
@@ -1401,7 +1402,7 @@ export const createTilingStream = (() => {
             option.gen = Math.min(option.gen, entry.gen);
           }
         }
-        return [...byVertex.values()].sort((left, right) => left.gen - right.gen || right.faceKeys.length - left.faceKeys.length || left.vertexKey.localeCompare(right.vertexKey));
+        return [...byVertex.values()].sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || right.faceKeys.length - left.faceKeys.length || left.vertexKey.localeCompare(right.vertexKey));
       };
       const candidatesForVertexOption = async (option, maxCandidates = 2) => {
         const dedup = new Map();
@@ -1427,11 +1428,11 @@ export const createTilingStream = (() => {
           options.push(option);
           if (candidates.length === 0) return { options, deadEnd: option };
         }
-        const forced = options.filter(option => option.candidates.length === 1).sort((left, right) => left.gen - right.gen || left.vertexKey.localeCompare(right.vertexKey));
+        const forced = options.filter(option => option.candidates.length === 1).sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || left.vertexKey.localeCompare(right.vertexKey));
         if (forced.length) return { options, forced };
         if (!options.length) return { options, branches: [] };
         const minBranchCount = Math.min(...options.map(option => option.candidates.length));
-        return { options, branches: options.filter(option => option.candidates.length === minBranchCount).sort((left, right) => left.gen - right.gen || left.vertexKey.localeCompare(right.vertexKey)) };
+        return { options, branches: options.filter(option => option.candidates.length === minBranchCount).sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || left.vertexKey.localeCompare(right.vertexKey)) };
       };
 
       let forcedCount = 0;
@@ -1504,10 +1505,10 @@ export const createTilingStream = (() => {
           const pocketScores = option.faceKeys.map(facePocketInfo);
           const pocket = pocketScores.reduce((best, score) => score.score > best.score || (score.score === best.score && score.weight > best.weight) ? score : best, { score: 0, weight: 0 });
           const score = faceOrder === "pocket"
-            ? [-option.gen, pocket.score, pocket.weight, -moves.length, bestCoverage]
+            ? [-option.gen, -frontierVertexNorm(option), pocket.score, pocket.weight, -moves.length, bestCoverage]
             : faceOrder === "constrained"
-              ? [-option.gen, -moves.length, bestCoverage]
-              : [-option.gen, bestCoverage, -moves.length];
+              ? [-option.gen, -frontierVertexNorm(option), -moves.length, bestCoverage]
+              : [-option.gen, -frontierVertexNorm(option), bestCoverage, -moves.length];
           if (isBetterScore(score, bestFaceScore)) {
             bestFaceScore = score;
             bestOption = option;
