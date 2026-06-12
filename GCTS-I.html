@@ -217,7 +217,7 @@
       const orientations = buildOrientations();
       const seedOrientationIndex = 6;
       let tilingRunUsesMarking = markingRulesToggle?.checked || false;
-      let tilingRun = buildTilingOrder(31, tilingRunUsesMarking);
+      let tilingRun = { placements: [makeSeedPlacement()], trace: [] };
       let tilingOrder = tilingRun.placements;
       let tilingTrace = tilingRun.trace;
       let scale = 0.58;
@@ -337,21 +337,19 @@
         ]);
       }
 
-      function normalizedLineDirection(delta) {
+      function primitiveLineDirection(delta) {
         const divisor = gcd3(delta[0], delta[1], delta[2]) || 1;
-        const reduced = delta.map(value => value / divisor);
-        const firstNonzero = reduced.find(value => value !== 0) || 1;
-        return firstNonzero < 0 ? reduced.map(value => -value) : reduced;
+        return delta.map(value => value / divisor);
       }
 
-      function lineDirectionComponent(a, b) {
-        const direction = normalizedLineDirection(subtract3(b, a));
-        const component = markDirectionVectors.findIndex(vector => {
-          const normalized = normalizedLineDirection(vector);
-          return key3(direction) === key3(normalized);
-        });
-        if (component < 0) throw new Error(`Unknown turtle marking direction ${direction.join(',')}`);
-        return component;
+      function lineDirectionInfo(a, b) {
+        const direction = primitiveLineDirection(subtract3(b, a));
+        for (let component = 0; component < markDirectionVectors.length; component += 1) {
+          const canonical = primitiveLineDirection(markDirectionVectors[component]);
+          if (key3(direction) === key3(canonical)) return { component, sign: 1 };
+          if (key3(direction) === key3(canonical.map(value => -value))) return { component, sign: -1 };
+        }
+        throw new Error(`Unknown turtle marking direction ${direction.join(',')}`);
       }
 
       function pointStrictlyInPolygon(point, polygon) {
@@ -441,18 +439,33 @@
             anchorsByValue.get(anchor.value).push({ anchor, anchorIndex });
           });
           const vertices3d = turtleVertices3d.map(point => transform3(point, symmetry));
-          const markEntries = turtleMarkSegments.flatMap(segment => {
-            const component = lineDirectionComponent(vertices3d[segment.from], vertices3d[segment.to]);
-            const value = segment.value;
-            return latticeSegmentPoints(vertices3d[segment.from], vertices3d[segment.to]).map(point => ({ point, component, value }));
+          const markSegments = turtleMarkSegments.map(segment => {
+            const start = vertices3d[segment.from];
+            const end = vertices3d[segment.to];
+            const direction = lineDirectionInfo(start, end);
+            return {
+              ...segment,
+              fromPoint: start,
+              toPoint: end,
+              component: direction.component,
+              value: segment.value * direction.sign
+            };
           });
+          const markEntries = markSegments.flatMap(segment => (
+            latticeSegmentPoints(segment.fromPoint, segment.toPoint).map(point => ({
+              point,
+              component: segment.component,
+              value: segment.value
+            }))
+          ));
           return {
             ...symmetry,
             orientationIndex,
             vertices3d,
             occupancy,
             anchorsByValue,
-            markEntries
+            markEntries,
+            markSegments
           };
         });
       }
@@ -467,6 +480,11 @@
           ...entry,
           point: add3(entry.point, translation)
         }));
+        const markSegments = orientation.markSegments.map(segment => ({
+          ...segment,
+          fromPoint: add3(segment.fromPoint, translation),
+          toPoint: add3(segment.toPoint, translation)
+        }));
         return {
           ...extras,
           orientation,
@@ -474,9 +492,19 @@
           vertices3d,
           occupancy,
           markings,
+          markSegments,
           points: vertices3d.map(projectA2),
           values: turtleVertexValues
         };
+      }
+
+      function makeSeedPlacement() {
+        return makePlacement(orientations[seedOrientationIndex], [0, 0, 0], {
+          step: 0,
+          forced: true,
+          branchCount: 0,
+          placementKey: `${seedOrientationIndex}|0,0,0`
+        });
       }
 
       function visiblePlacements() {
@@ -540,9 +568,8 @@
         return `${key3(entry.point)}|${entry.component}`;
       }
 
-      function markingCompatibility(markings, markSums, overlapKeys = null) {
+      function markingCompatibility(markings, markSums) {
         const summary = markings.reduce((state, entry) => {
-          if (overlapKeys && !overlapKeys.has(key3(entry.point))) return state;
           const existing = markSums.get(markingKey(entry));
           if (!existing) return state;
           if (existing.value === entry.value) {
@@ -599,8 +626,7 @@
               ...entry,
               point: add3(entry.point, translation)
             }));
-            const overlapKeys = new Set(occupancy.map(item => key3(item.point)).filter(key => sums.has(key)));
-            const markCompatibility = useMarkingRules ? markingCompatibility(markings, markSums, overlapKeys) : { matches: 0, conflict: false };
+            const markCompatibility = useMarkingRules ? markingCompatibility(markings, markSums) : { matches: 0, conflict: false };
             const markConflict = markCompatibility.conflict;
             const markMatches = markCompatibility.matches;
             const markLineUps = markCompatibility.lineUps || 0;
@@ -671,10 +697,11 @@
         const deadEnd = options.find(option => option.candidates.length === 0);
         if (deadEnd) return { options, deadEnd };
         const forced = options.filter(option => option.candidates.length === 1).sort(byAge);
-        if (forced.length) return { options, choices: forced, forced: true };
-        if (!options.length) return { options, choices: [], forced: false };
+        if (forced.length) return { options, choice: forced[0], choices: [forced[0]], forced: true };
+        if (!options.length) return { options, choice: null, choices: [], forced: false };
         const minBranchCount = Math.min(...options.map(option => option.candidates.length));
-        return { options, choices: options.filter(option => option.candidates.length === minBranchCount).sort(byAge), forced: false };
+        const branches = options.filter(option => option.candidates.length === minBranchCount).sort(byAge);
+        return { options, choice: branches[0], choices: branches.slice(0, 1), forced: false };
       }
 
       function makePlacementFromCandidate(choice, candidate, step, forced) {
@@ -733,7 +760,7 @@
         return trace;
       }
 
-      function buildTilingOrder(limit, useMarkingRules = false, attempts = 1, nodeBudget = 40) {
+      function buildTilingOrder(limit, useMarkingRules = false, attempts = 3, nodeBudget = Math.max(600, limit * 70)) {
         let bestLivePlacements = [];
         let bestLiveTrace = [];
         const rememberLiveBoundary = (placed, trace = []) => {
@@ -747,7 +774,7 @@
           const trace = [];
           const traceLimit = 1800;
           const pushTrace = event => { if (trace.length < traceLimit) trace.push(event); };
-          const seed = makePlacement(orientations[seedOrientationIndex], [0, 0, 0], { step: 0, forced: true, branchCount: 0, placementKey: `${seedOrientationIndex}|0,0,0` });
+          const seed = makeSeedPlacement();
           const placed = [seed];
           const sums = new Map();
           const markSums = new Map();
@@ -789,21 +816,19 @@
                 return false;
               }
               rememberLiveBoundary(placed, trace);
+              const choice = analysis.choice;
+              if (!choice) return true;
               if (analysis.forced) {
-                const choice = analysis.choices[0];
                 applyChoice(choice, choice.candidates[0], true);
                 continue;
               }
-              for (const choice of analysis.choices) {
-                for (const candidate of shuffled(choice.candidates)) {
-                  applyChoice(choice, candidate, false);
-                  if (search()) return true;
-                  undoLast('backtrack after failed branch');
-                  if (nodesVisited >= nodeBudget) break;
-                }
+              for (const candidate of shuffled(choice.candidates)) {
+                applyChoice(choice, candidate, false);
+                if (search()) return true;
+                undoLast('backtrack after failed branch');
                 if (nodesVisited >= nodeBudget) break;
               }
-              while (placed.length > baseLength) undoLast('backtrack to branch point');
+              while (placed.length > baseLength) undoLast('backtrack to previous search node');
               return false;
             }
             return true;
@@ -973,9 +998,9 @@
         tracePolygon(placement.points);
         ctx.clip();
         ctx.lineCap = 'round';
-        turtleMarkSegments.forEach(segment => {
-          const a = placement.points[segment.from];
-          const b = placement.points[segment.to];
+        placement.markSegments.forEach(segment => {
+          const a = projectA2(segment.fromPoint);
+          const b = projectA2(segment.toPoint);
           const start = worldToScreen(a.x, a.y);
           const end = worldToScreen(b.x, b.y);
           const color = segment.value > 0 ? markValueColors.positive : markValueColors.negative;
