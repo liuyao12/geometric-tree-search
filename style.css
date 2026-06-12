@@ -358,9 +358,8 @@ h1 {
 
 .interactive-toolbar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
+  flex-direction: column;
+  gap: 8px;
   border-bottom: 1px solid var(--line);
   background: var(--surface-2);
   padding: 10px 12px;
@@ -395,11 +394,21 @@ h1 {
   stroke-linejoin: round;
 }
 
-.toolbar-start-stack {
-  display: inline-flex;
-  flex-direction: column;
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.toolbar-toggle-row {
   align-items: flex-start;
-  gap: 6px;
+}
+
+.toolbar-drag-spacer {
+  display: inline-block;
+  width: 32px;
+  min-width: 32px;
 }
 
 .toolbar-toggle-right {

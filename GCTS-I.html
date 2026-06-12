@@ -33,14 +33,17 @@
         <aside class="floating-demo" aria-label="Sticky turtle tiling demo">
           <figure class="interactive-card" id="turtle-tiling-card">
             <div class="interactive-toolbar" aria-label="Turtle tiling controls">
-              <span class="demo-drag-handle" id="turtle-window-drag" role="button" tabindex="0" aria-label="Drag turtle demo window"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M12 3 8.5 6.5M12 3l3.5 3.5M12 21l-3.5-3.5M12 21l3.5-3.5M3 12h18M3 12l3.5-3.5M3 12l3.5 3.5M21 12l-3.5-3.5M21 12l-3.5 3.5"/></svg></span>
-              <div class="toolbar-start-stack">
+              <div class="toolbar-row toolbar-button-row">
+                <span class="demo-drag-handle" id="turtle-window-drag" role="button" tabindex="0" aria-label="Drag turtle demo window"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M12 3 8.5 6.5M12 3l3.5 3.5M12 21l-3.5-3.5M12 21l3.5-3.5M3 12h18M3 12l3.5-3.5M3 12l3.5 3.5M21 12l-3.5-3.5M21 12l-3.5 3.5"/></svg></span>
                 <button type="button" id="turtle-start">Start tiling</button>
-                <label class="toolbar-toggle"><input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
+                <button type="button" id="turtle-markings" aria-pressed="false">Show marking</button>
+                <button type="button" id="turtle-reset">Reset tiling</button>
               </div>
-              <button type="button" id="turtle-markings" aria-pressed="false">Show marking</button>
-              <button type="button" id="turtle-reset">Reset tiling</button>
-              <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show lattice</label>
+              <div class="toolbar-row toolbar-toggle-row">
+                <span class="toolbar-drag-spacer" aria-hidden="true"></span>
+                <label class="toolbar-toggle"><input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
+                <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show lattice</label>
+              </div>
             </div>
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
@@ -210,7 +213,8 @@
       center.y /= rawTurtle.length;
       const orientations = buildOrientations();
       const seedOrientationIndex = 6;
-      let tilingRun = buildTilingOrder(31, markingRulesToggle?.checked || false);
+      let tilingRunUsesMarking = markingRulesToggle?.checked || false;
+      let tilingRun = buildTilingOrder(31, tilingRunUsesMarking);
       let tilingOrder = tilingRun.placements;
       let tilingTrace = tilingRun.trace;
       let scale = 0.58;
@@ -458,10 +462,31 @@
         return sums;
       }
 
-      function frontierPoints(sums) {
+      function frontierPoints(sums, frontierAges = new Map()) {
         return Array.from(sums.values())
           .filter(entry => entry.value < 12)
-          .sort((left, right) => left.value - right.value || norm3(left.point) - norm3(right.point));
+          .sort((left, right) => {
+            const leftAge = frontierAges.get(key3(left.point)) ?? Infinity;
+            const rightAge = frontierAges.get(key3(right.point)) ?? Infinity;
+            return leftAge - rightAge
+              || left.value - right.value
+              || norm3(left.point) - norm3(right.point);
+          });
+      }
+
+      function frontierAgesForPlacements(placements) {
+        const sums = new Map();
+        const ages = new Map();
+        placements.forEach((placement, step) => {
+          placement.occupancy.forEach(item => {
+            const key = key3(item.point);
+            const entry = sums.get(key) || { point: item.point, value: 0 };
+            entry.value += item.value;
+            sums.set(key, entry);
+            if (entry.value > 0 && entry.value < 12 && !ages.has(key)) ages.set(key, step);
+          });
+        });
+        return ages;
       }
 
       function norm3(point) {
@@ -585,19 +610,24 @@
         return copy;
       }
 
-      function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules) {
-        const options = frontierPoints(sums).map(frontier => {
+      function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAges = new Map()) {
+        const byAge = (left, right) => {
+          const leftAge = frontierAges.get(key3(left.frontier.point)) ?? Infinity;
+          const rightAge = frontierAges.get(key3(right.frontier.point)) ?? Infinity;
+          return leftAge - rightAge || left.candidates.length - right.candidates.length;
+        };
+        const options = frontierPoints(sums, frontierAges).map(frontier => {
           const trials = candidateTrials(frontier, sums, usedPlacements, markSums, useMarkingRules, false);
           const candidates = trials.filter(trial => trial.valid);
           return { frontier, trials, candidates };
         });
         const deadEnd = options.find(option => option.candidates.length === 0);
         if (deadEnd) return { options, deadEnd };
-        const forced = options.filter(option => option.candidates.length === 1);
-        if (forced.length) return { options, choices: shuffled(forced), forced: true };
+        const forced = options.filter(option => option.candidates.length === 1).sort(byAge);
+        if (forced.length) return { options, choices: forced, forced: true };
         if (!options.length) return { options, choices: [], forced: false };
         const minBranchCount = Math.min(...options.map(option => option.candidates.length));
-        return { options, choices: shuffled(options.filter(option => option.candidates.length === minBranchCount)), forced: false };
+        return { options, choices: options.filter(option => option.candidates.length === minBranchCount).sort(byAge), forced: false };
       }
 
       function makePlacementFromCandidate(choice, candidate, step, forced) {
@@ -688,7 +718,7 @@
                 while (placed.length > baseLength) undoLast();
                 return false;
               }
-              const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules);
+              const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed));
               if (analysis.deadEnd) {
                 while (placed.length > baseLength) undoLast();
                 return false;
@@ -718,9 +748,11 @@
         return { placements: bestLivePlacements, trace: traceForPlacements(bestLivePlacements) };
       }
 
-      function regenerateTilingRun(target = 31) {
-        const nextRun = buildTilingOrder(target, markingRulesToggle?.checked || false);
-        if (nextRun.placements.length >= tilingOrder.length || target <= tilingOrder.length) {
+      function regenerateTilingRun(target = 31, force = false) {
+        const useMarking = markingRulesToggle?.checked || false;
+        const nextRun = buildTilingOrder(target, useMarking);
+        if (force || nextRun.placements.length >= tilingOrder.length || target <= tilingOrder.length) {
+          tilingRunUsesMarking = useMarking;
           tilingRun = nextRun;
           tilingOrder = tilingRun.placements;
           tilingTrace = tilingRun.trace;
@@ -1194,9 +1226,11 @@
           stopTiling();
           return;
         }
-        const nextTarget = hasStartedTiling ? shownTiles + 30 : 31;
-        if (tilingOrder.length < nextTarget) regenerateTilingRun(nextTarget);
-        if (!hasStartedTiling) {
+        const useMarking = markingRulesToggle?.checked || false;
+        const modeChanged = useMarking !== tilingRunUsesMarking;
+        const nextTarget = hasStartedTiling && !modeChanged ? shownTiles + 30 : 31;
+        if (modeChanged || tilingOrder.length < nextTarget) regenerateTilingRun(nextTarget, modeChanged);
+        if (!hasStartedTiling || modeChanged) {
           shownTiles = 1;
           centerView();
           traceIndex = 0;
@@ -1253,14 +1287,9 @@
         draw();
       });
       markingRulesToggle.addEventListener('change', () => {
-        stopTiling();
-        regenerateTilingRun(Math.max(31, shownTiles + 30));
-        shownTiles = Math.min(shownTiles || 1, tilingOrder.length);
-        traceIndex = 0;
-        trialGhost = null;
         showMarkings = markingRulesToggle.checked || showMarkings;
-        if (stageLabel) stageLabel.textContent = markingRulesToggle.checked ? 'Stage: tiling with marking' : 'Stage: tiling without marking';
-        if (stageNote) stageNote.textContent = markingRulesToggle.checked ? 'The search now rejects placements whose ±1 marking stripes conflict on overlaps.' : 'The search is using only the t-value tile constraints; use this to compare against the marked run.';
+        if (stageLabel) stageLabel.textContent = markingRulesToggle.checked ? 'Stage: marking flag set' : 'Stage: marking flag cleared';
+        if (stageNote) stageNote.textContent = markingRulesToggle.checked ? 'The next Start tiling run will use the ±1 marking stripes as compatibility constraints.' : 'The next Start tiling run will use only the t-value tile constraints.';
         updateMarkingButton();
         draw();
       });
