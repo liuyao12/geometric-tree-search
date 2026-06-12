@@ -44,7 +44,7 @@
                 <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show lattice</label>
               </div>
             </div>
-            <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
+            <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
               <span id="turtle-hover-readout"></span>
             </figcaption>
@@ -248,14 +248,14 @@
       const demoStages = {
         intro: {
           label: 'Stage: one lattice tile',
-          note: 'Start with a single Smith turtle before the definition introduces lattice tiles and their t-values.',
+          note: 'Start with a single Turtle before the definition introduces lattice tiles and their t-values.',
           tiles: 1,
           markings: false,
           useMarkingRules: false
         },
         tile: {
           label: 'Stage: one lattice tile',
-          note: 'At the lattice-tile definition, the app isolates one Smith turtle so the vertex t-values can be read directly in units of 1/12.',
+          note: 'At the lattice-tile definition, the app isolates one Turtle so the vertex t-values can be read directly in units of 1/12.',
           tiles: 1,
           markings: false,
           useMarkingRules: false
@@ -1097,7 +1097,7 @@
         const branchText = statusText || (latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile');
         ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
         ctx.font = '700 13px Inter, system-ui, sans-serif';
-        ctx.fillText(`${visible.length} Smith turtle${visible.length === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
+        ctx.fillText(`${visible.length} Turtle${visible.length === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
         window.requestAnimationFrame(updateTextWrap);
       }
 
@@ -1358,7 +1358,7 @@
       markingsButton.addEventListener('click', () => {
         showMarkings = !showMarkings;
         if (stageLabel) stageLabel.textContent = showMarkings ? 'Stage: markings enabled manually' : 'Stage: markings hidden manually';
-        if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Smith turtle shapes remain, but the three marking components are hidden.';
+        if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Turtle shapes remain, but the three marking components are hidden.';
         updateMarkingButton();
         draw();
       });
