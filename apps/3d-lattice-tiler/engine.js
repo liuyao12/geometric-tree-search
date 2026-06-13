@@ -1431,8 +1431,7 @@ export const createTilingStream = (() => {
         const forced = options.filter(option => option.candidates.length === 1).sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || left.vertexKey.localeCompare(right.vertexKey));
         if (forced.length) return { options, forced };
         if (!options.length) return { options, branches: [] };
-        const minBranchCount = Math.min(...options.map(option => option.candidates.length));
-        return { options, branches: options.filter(option => option.candidates.length === minBranchCount).sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || left.vertexKey.localeCompare(right.vertexKey)) };
+        return { options, branches: options.slice().sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || left.candidates.length - right.candidates.length || left.vertexKey.localeCompare(right.vertexKey)) };
       };
 
       let forcedCount = 0;

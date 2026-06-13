@@ -714,8 +714,7 @@
         const forced = options.filter(option => option.candidates.length === 1).sort(byAge);
         if (forced.length) return { options, choice: forced[0], choices: [forced[0]], forced: true };
         if (!options.length) return { options, choice: null, choices: [], forced: false };
-        const minBranchCount = Math.min(...options.map(option => option.candidates.length));
-        const branches = options.filter(option => option.candidates.length === minBranchCount).sort(byAge);
+        const branches = options.slice().sort(byAge);
         return { options, choice: branches[0], choices: branches.slice(0, 1), forced: false };
       }
 
