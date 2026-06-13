@@ -56,7 +56,7 @@
 
         <aside class="margin-note">GCTS is not a replacement on MCTS, Monte Carlo Tree Search; the two could be combined in certain problems.</aside>
 
-        <p>We shall further restrict to tilings that can be placed on a lattice, i.e., all the vertices shall be on a lattice. In fact, this study was partly inspired by the discovery of the hat and the turtle (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>) which, aside from being a solution to the "ein stein" problem that was the holy grail for much of tiling theory, actually live on the \(A_2\) lattice. This goes to show that, despite their rather rigid nature, lattice tilings are rich enough to be a furtile playground for combinatorial and discrete geometry, and as a portal to logic and computation via Wang tiles. Moreover, it appears that many known <a href="https://observablehq.com/@liuyao12/3d-lattice-tiler">space-fillers</a> are lattice tiles on the standard integer lattice in \(\mathbb{R}^3\).</p>
+        <p>We shall further restrict to tilings that can be placed on a lattice, i.e., all the vertices shall be on a lattice. In fact, this study was partly inspired by the discovery of the hat and the turtle (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>) which, aside from being a solution to the "ein stein" problem that was the holy grail for much of tiling theory, actually live on the \(A_2\) lattice. This goes to show that, despite their rather rigid nature, lattice tilings are rich enough to be a furtile playground for combinatorial and discrete geometry, and as a portal to logic and computation via Wang tiles. Moreover, it appears that many known <a href="./apps/3d-lattice-tiler/">space-fillers</a> are lattice tiles on the standard integer lattice in \(\mathbb{R}^3\).</p>
 
         <h2 data-demo-stage="tile">Tiles and tilings</h2>
 
@@ -101,7 +101,7 @@
 
         <p>for all \({\bf x}\), and we put this \(g\) in \(K_i\), and repeat the process. Thus we obtain a finite-branching tree to search over. A branch stops or dies if it runs out of choices (for any "boundary point" \({\bf p}\)). We are particularly interested in tiles that admit nontrivial tilings: neither too restricted that the branchings all have a unique choice, nor too loose that <em>any</em> branch appears to lead to valid tilings. Note that this algorithm could not tell whether a (partial) tiling is periodic, and by itself is unable to say if it actually extends to a tiling of the whole space.</p>
 
-        <p>In practice, it may be more natural to "branch over" faces instead of boundary points; and we may adopt simple rules to choose the face or the point \({\bf p}\) for each branching, but no need to employ more sophisticated heuristics. This is essentially what is implemented <a href="https://observablehq.com/@liuyao12/3d-lattice-tiler">here</a>.</p>
+        <p>In practice, it may be more natural to "branch over" faces instead of boundary points; and we may adopt simple rules to choose the face or the point \({\bf p}\) for each branching, but no need to employ more sophisticated heuristics. This is essentially what is implemented <a href="./apps/3d-lattice-tiler/">here</a>.</p>
 
         <h2 data-demo-stage="markings">Markings and matching rules</h2>
 
@@ -444,7 +444,9 @@
               entry.vector[segment.component] = segment.value;
             });
           });
-          const markEntries = Array.from(markVectors.values()).filter(entry => nonzeroMarkVector(entry.vector));
+          const markEntries = Array.from(markVectors.values())
+            .filter(entry => nonzeroMarkVector(entry.vector))
+            .map(entry => ({ ...entry, wildcard: wildcardComponentsForVector(entry.vector) }));
           return {
             ...symmetry,
             orientationIndex,
@@ -518,8 +520,12 @@
         return markSums;
       }
 
+      function markStateAt(point) {
+        return visibleMarkVectors().get(key3(point)) || { vector: [0, 0, 0], wildcard: [false, false, false] };
+      }
+
       function markVectorAt(point) {
-        return visibleMarkVectors().get(key3(point))?.vector || [0, 0, 0];
+        return markStateAt(point).vector;
       }
 
       function frontierPoints(sums, frontierAges = new Map()) {
@@ -565,28 +571,64 @@
         return key3(entry.point);
       }
 
-      function sameMarkVector(left, right) {
-        return left.length === right.length && left.every((value, index) => value === right[index]);
-      }
-
       function nonzeroMarkVector(vector) {
         return vector.some(value => value !== 0);
       }
 
-      function formatMarkVector(vector = [0, 0, 0]) {
-        return `m=(${vector.map(value => value > 0 ? `+${value}` : String(value)).join(',')})`;
+      function wildcardComponentsForVector(vector) {
+        const nonzero = vector.filter(value => value !== 0).length;
+        return vector.map(value => nonzero === 2 && value === 0);
+      }
+
+      function formatMarkVector(vector = [0, 0, 0], wildcard = [false, false, false]) {
+        const parts = vector.map((value, index) => {
+          if (wildcard[index]) return '*';
+          return value > 0 ? `+${value}` : String(value);
+        });
+        return `m=(${parts.join(',')})`;
+      }
+
+      function componentCompatible(leftValue, leftWildcard, rightValue, rightWildcard) {
+        if (leftWildcard || rightWildcard) return true;
+        return leftValue === 0 || rightValue === 0 || leftValue === rightValue;
+      }
+
+      function componentLineUp(leftValue, leftWildcard, rightValue, rightWildcard) {
+        if (leftValue !== 0 && rightValue !== 0 && leftValue === rightValue) return true;
+        return (leftWildcard && rightValue !== 0) || (rightWildcard && leftValue !== 0);
+      }
+
+      function combineMarkEntries(entries) {
+        const vector = [0, 0, 0];
+        const wildcard = [false, false, false];
+        entries.forEach(entry => {
+          const entryWildcard = entry.wildcard || [false, false, false];
+          entry.vector.forEach((value, index) => {
+            if (value !== 0) {
+              vector[index] = value;
+              wildcard[index] = false;
+            } else if (entryWildcard[index] && vector[index] === 0) {
+              wildcard[index] = true;
+            }
+          });
+        });
+        return { vector, wildcard, entries };
       }
 
       function markingCompatibility(markings, markSums) {
         const summary = markings.reduce((state, entry) => {
           const existing = markSums.get(markingKey(entry));
           if (!existing) return state;
-          if (sameMarkVector(existing.vector, entry.vector)) {
-            state.matches += 1;
-            if (nonzeroMarkVector(entry.vector)) state.lineUps += 1;
-          } else {
-            state.conflict = true;
+          const entryWildcard = entry.wildcard || [false, false, false];
+          for (let index = 0; index < entry.vector.length; index += 1) {
+            if (!componentCompatible(existing.vector[index], existing.wildcard?.[index], entry.vector[index], entryWildcard[index])) {
+              state.conflict = true;
+            }
+            if (componentLineUp(existing.vector[index], existing.wildcard?.[index], entry.vector[index], entryWildcard[index])) {
+              state.lineUps += 1;
+            }
           }
+          if (!state.conflict) state.matches += 1;
           return state;
         }, { matches: 0, lineUps: 0, conflict: false });
         return summary;
@@ -596,7 +638,8 @@
         placement.markings.forEach(entry => {
           const key = markingKey(entry);
           const existing = markSums.get(key);
-          markSums.set(key, existing ? { vector: existing.vector, count: existing.count + 1 } : { vector: entry.vector, count: 1 });
+          const entries = existing ? [...existing.entries, entry] : [entry];
+          markSums.set(key, combineMarkEntries(entries));
         });
       }
 
@@ -605,8 +648,12 @@
           const key = markingKey(entry);
           const existing = markSums.get(key);
           if (!existing) return;
-          if (existing.count <= 1) markSums.delete(key);
-          else markSums.set(key, { vector: existing.vector, count: existing.count - 1 });
+          const index = existing.entries.indexOf(entry);
+          const entries = existing.entries.slice();
+          if (index >= 0) entries.splice(index, 1);
+          else entries.pop();
+          if (!entries.length) markSums.delete(key);
+          else markSums.set(key, combineMarkEntries(entries));
         });
       }
 
@@ -1176,7 +1223,10 @@
 
       function hoverLinesForPoint(pointEntry) {
         const lines = [`t=${pointEntry.value}/12 at (${pointEntry.point.join(',')})`];
-        if (showMarkings) lines.push(formatMarkVector(markVectorAt(pointEntry.point)));
+        if (showMarkings) {
+          const mark = markStateAt(pointEntry.point);
+          lines.push(formatMarkVector(mark.vector, mark.wildcard));
+        }
         return lines;
       }
 
