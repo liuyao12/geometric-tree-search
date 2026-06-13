@@ -215,6 +215,28 @@ export const createTilingStream = (() => {
 
     const { adjacency, viablePlacements, orientFaceSignatures } = cached;
 
+    const affineRank = (verts) => {
+      if (!verts?.length) return 0;
+      const base = verts[0];
+      const diffs = verts.slice(1).map(v => [v[0] - base[0], v[1] - base[1], v[2] - base[2]]).filter(v => v.some(Boolean));
+      if (!diffs.length) return 0;
+      const first = diffs[0];
+      const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+      const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+      let normal = null;
+      for (const diff of diffs.slice(1)) {
+        const c = cross(first, diff);
+        if (c.some(Boolean)) { normal = c; break; }
+      }
+      if (!normal) return 1;
+      return diffs.some(diff => dot(normal, diff) !== 0) ? 3 : 2;
+    };
+    const tilingDimension = Math.max(1, ...prototiles.map(tile => affineRank(tile.verts)));
+    const configuredSharedVertices = Number(config.min_shared_vertices);
+    const minSharedVertices = Number.isFinite(configuredSharedVertices) && configuredSharedVertices > 0
+      ? configuredSharedVertices
+      : tilingDimension <= 2 ? 2 : 3;
+
     const isPolycubeSystem = (modeDef.category ?? []).includes("Polycubes");
     const protoInfo = prototiles.map(p => {
       return {
@@ -486,6 +508,7 @@ export const createTilingStream = (() => {
     const checkMoveViability = (move, frontierFaceKey) => {
       const validCheck = isMoveValid(move);
       if (!validCheck.ok) return null;
+      if (sharedVertexCount(move) < minSharedVertices) return null;
       
       const existing = state.frontier.get(frontierFaceKey);
       if (existing) {
@@ -758,6 +781,8 @@ export const createTilingStream = (() => {
     let vectorCountCache = new Map();
     let positionSetCacheVersion = -1;
     let positionSetCache = new Set();
+    let vertexSetCacheVersion = -1;
+    let vertexSetCache = new Set();
     const observedPairTranslations = () => {
       if (pairTranslationCacheVersion === stateVersion) return pairTranslationCache;
       const out = new Map();
@@ -795,6 +820,24 @@ export const createTilingStream = (() => {
       positionSetCache = new Set(state.placements.map(placement => vecKey(placement.translation)));
       positionSetCacheVersion = stateVersion;
       return positionSetCache;
+    };
+    const placementVertexSet = () => {
+      if (vertexSetCacheVersion === stateVersion) return vertexSetCache;
+      const vertices = new Set();
+      for (const placement of state.placements) {
+        for (const vertex of placement.orient.verts) vertices.add(vecKey(vecAdd(vertex, placement.translation)));
+      }
+      vertexSetCache = vertices;
+      vertexSetCacheVersion = stateVersion;
+      return vertexSetCache;
+    };
+    const sharedVertexCount = (move) => {
+      if (move._shared_vertex_count != null && move._shared_vertex_version === stateVersion) return move._shared_vertex_count;
+      const existingVertices = placementVertexSet();
+      const count = move.orient.verts.reduce((sum, vertex) => sum + (existingVertices.has(vecKey(vecAdd(vertex, move.translation))) ? 1 : 0), 0);
+      move._shared_vertex_count = count;
+      move._shared_vertex_version = stateVersion;
+      return count;
     };
     const periodicContinuation = (move) => {
       const frame = placementFrame(move);
@@ -1342,11 +1385,57 @@ export const createTilingStream = (() => {
         return yield* doReturn(true);
       }
       const candidateCache = new Map();
-      const cachedCandidates = async (faceKey) => {
-        if (!candidateCache.has(faceKey)) candidateCache.set(faceKey, await getCandidatesForFace(faceKey));
-        return candidateCache.get(faceKey);
+      const cachedCandidates = async (faceKey, maxCandidates = candidateCap) => {
+        const cacheKey = `${faceKey}::${maxCandidates}`;
+        if (!candidateCache.has(cacheKey)) candidateCache.set(cacheKey, await getCandidatesForFace(faceKey, maxCandidates));
+        return candidateCache.get(cacheKey);
+      };
+      const frontierVertexNorm = (option) => Math.abs(option.vertex[0]) + Math.abs(option.vertex[1]) + Math.abs(option.vertex[2]);
+      const frontierVertexOptions = () => {
+        const byVertex = new Map();
+        for (const [faceKey, entry] of state.frontier.entries()) {
+          for (const vertex of entry.ordered_verts) {
+            const vertexKey = vecKey(vertex);
+            if (!byVertex.has(vertexKey)) byVertex.set(vertexKey, { vertexKey, vertex, faceKeys: [], gen: entry.gen });
+            const option = byVertex.get(vertexKey);
+            option.faceKeys.push(faceKey);
+            option.gen = Math.min(option.gen, entry.gen);
+          }
+        }
+        return [...byVertex.values()].sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || right.faceKeys.length - left.faceKeys.length || left.vertexKey.localeCompare(right.vertexKey));
+      };
+      const candidatesForVertexOption = async (option, maxCandidates = 2) => {
+        const dedup = new Map();
+        for (const faceKey of option.faceKeys) {
+          await yieldToBrowser();
+          if (!state.frontier.has(faceKey)) continue;
+          const candidates = await cachedCandidates(faceKey, maxCandidates);
+          for (const candidate of candidates) {
+            const key = candidate.dedup_key ?? `${candidate.prototile_idx}::${candidate.translation.join(",")}::${candidate.orient.__orientation_id ?? ""}`;
+            if (!dedup.has(key)) {
+              dedup.set(key, { ...candidate, _source_face_key: faceKey });
+              if (dedup.size >= maxCandidates) return [...dedup.values()];
+            }
+          }
+        }
+        return [...dedup.values()];
+      };
+      const analyzeFrontierVertices = async () => {
+        const options = [];
+        for (const option of frontierVertexOptions()) {
+          const candidates = await candidatesForVertexOption(option, 2);
+          option.candidates = candidates;
+          options.push(option);
+          if (candidates.length === 0) return { options, deadEnd: option };
+        }
+        const forced = options.filter(option => option.candidates.length === 1).sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || left.vertexKey.localeCompare(right.vertexKey));
+        if (forced.length) return { options, forced };
+        if (!options.length) return { options, branches: [] };
+        return { options, branches: options.slice().sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || left.candidates.length - right.candidates.length || left.vertexKey.localeCompare(right.vertexKey)) };
       };
 
+      let forcedCount = 0;
+      let branchAnalysis = null;
       while (true) {
         await yieldToBrowser();
         candidateCache.clear();
@@ -1359,104 +1448,89 @@ export const createTilingStream = (() => {
           yield nodeStatus(parentId, "success"); return yield* doReturn(true);
         }
 
-        const faces = [...state.frontier.keys()];
-        let forcedCount = 0;
-        const preForcedStats = calculateFrontierStats();
-
-        for (const f of faces) {
-          await yieldToBrowser();
-          if (!state.frontier.has(f)) continue;
-          const cands = await getCandidatesForFace(f, 2);
-          if (overBudget()) { yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
-          if (cands.length === 0) {
-            searchStats.failed_leaves += 1;
-            yield nodeStatus(parentId, "fail");
-            return yield* doReturn(false);
-          }
-          if (cands.length === 1) {
-            const mv = cands[0];
-            const gVerts = mv.orient.verts.map(v => add3(v, mv.translation));
-            const coveredGens = [];
-            for (const fIdx of mv.orient.faces) {
-              const k = keyFace(fIdx.map(i => gVerts[i]));
-              if (state.frontier.get(k)) coveredGens.push(state.frontier.get(k).gen);
-            }
-            const newGen = coveredGens.length ? (Math.min(...coveredGens) + 1) : 0;
-            if (newGen <= preForcedStats.min_gen + 2) {
-              mv.is_forced = true;
-              searchStats.forced_total += 1;
-              const rb = applyMove(mv);
-              candidateCache.clear();
-              forcedBatch.push([mv, rb]);
-              forcedCount += 1;
-              if (shouldSnapshot()) {
-                yield snapshot(null);
-                await tick();
-              }
-            }
-          }
+        const analysis = await analyzeFrontierVertices();
+        if (overBudget()) { yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
+        if (analysis.deadEnd) {
+          searchStats.failed_leaves += 1;
+          yield nodeStatus(parentId, "fail", "Dead End");
+          return yield* doReturn(false);
         }
-
-        if (forcedCount > 0) {
-          const postForcedStats = calculateFrontierStats();
-          const forcedNodeId = nowId();
+        if (analysis.forced?.length) {
+          const option = analysis.forced[0];
+          const mv = option.candidates[0];
+          mv.is_forced = true;
+          searchStats.forced_total += 1;
+          const rb = applyMove(mv);
+          forcedBatch.push([mv, rb]);
+          forcedCount += 1;
           if (shouldSnapshot()) {
-            yield snapshot(forcedNodeId);
+            yield snapshot(null);
             await tick();
-          } else {
-            yield nodeSnapshot(forcedNodeId);
           }
-          yield branchSet(parentId, [{ id: forcedNodeId, text: `+ ${forcedCount} forced`, is_forced: true, frontier_stats: postForcedStats }]);
-          yield nodeStatus(forcedNodeId, "success", "", { frontier_stats: postForcedStats });
+          if (goalMet() || state.placements.length >= safetyMax) {
+            yield nodeStatus(parentId, "success");
+            return yield* doReturn(true);
+          }
+          continue;
         }
-
-        if (goalMet() || state.placements.length >= safetyMax) {
-          yield nodeStatus(parentId, "success");
-          return yield* doReturn(true);
-        }
-        if (forcedCount === 0) break;
+        branchAnalysis = analysis;
+        break;
       }
 
-      const currentStats = calculateFrontierStats();
-      const minGenFaces = [];
-      for (const [k, v] of state.frontier.entries()) if (v.gen === currentStats.min_gen) minGenFaces.push(k);
-      
-      let bestFace = null;
-      if (minGenFaces.length) {
+      if (forcedCount > 0) {
+        const postForcedStats = calculateFrontierStats();
+        const forcedNodeId = nowId();
+        if (shouldSnapshot()) {
+          yield snapshot(forcedNodeId);
+          await tick();
+        } else {
+          yield nodeSnapshot(forcedNodeId);
+        }
+        yield branchSet(parentId, [{ id: forcedNodeId, text: `+ ${forcedCount} forced`, is_forced: true, frontier_stats: postForcedStats }]);
+        yield nodeStatus(forcedNodeId, "success", "", { frontier_stats: postForcedStats });
+      }
+
+      const branchOptions = branchAnalysis?.branches ?? [];
+      let bestOption = null;
+      let bestOptionMoves = [];
+      if (branchOptions.length) {
         let bestFaceScore = null;
-        for (const f of minGenFaces) {
+        for (const option of branchOptions) {
           await yieldToBrowser();
-          const moves = await cachedCandidates(f);
+          const moves = await candidatesForVertexOption(option, candidateCap);
           if (!moves.length) continue;
           let bestCoverage = -1;
           for (const m of moves) bestCoverage = Math.max(bestCoverage, moveCoverage(m));
-          const pocket = facePocketInfo(f);
+          const pocketScores = option.faceKeys.map(facePocketInfo);
+          const pocket = pocketScores.reduce((best, score) => score.score > best.score || (score.score === best.score && score.weight > best.weight) ? score : best, { score: 0, weight: 0 });
           const score = faceOrder === "pocket"
-            ? [pocket.score, pocket.weight, -moves.length, bestCoverage]
+            ? [-option.gen, -frontierVertexNorm(option), pocket.score, pocket.weight, -moves.length, bestCoverage]
             : faceOrder === "constrained"
-              ? [-moves.length, bestCoverage]
-              : [bestCoverage, -moves.length];
+              ? [-option.gen, -frontierVertexNorm(option), -moves.length, bestCoverage]
+              : [-option.gen, -frontierVertexNorm(option), bestCoverage, -moves.length];
           if (isBetterScore(score, bestFaceScore)) {
             bestFaceScore = score;
-            bestFace = f;
+            bestOption = option;
+            bestOptionMoves = moves;
           }
         }
-        if (!bestFace) {
-          for (const f of minGenFaces) {
+        if (!bestOption) {
+          for (const option of branchOptions) {
             await yieldToBrowser();
-            if ((await cachedCandidates(f)).length) { bestFace = f; break; }
+            const moves = await candidatesForVertexOption(option, candidateCap);
+            if (moves.length) { bestOption = option; bestOptionMoves = moves; break; }
           }
         }
       }
 
-      if (!bestFace) {
+      if (!bestOption) {
         searchStats.failed_leaves += 1;
         yield nodeStatus(parentId, "fail", "Dead End");
         return yield* doReturn(false);
       }
 
-      const targetFacePocket = facePocketInfo(bestFace);
-      let bestMoves = (await cachedCandidates(bestFace)).sort(compareMoves);
+      const targetFacePocket = facePocketInfo(bestOptionMoves[0]?._source_face_key ?? bestOption.faceKeys[0]);
+      let bestMoves = bestOptionMoves.sort(compareMoves);
       for (const move of bestMoves) move._target_face_pocket = targetFacePocket;
       if (!exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
         bestMoves = bestMoves.slice(0, branchCap);
