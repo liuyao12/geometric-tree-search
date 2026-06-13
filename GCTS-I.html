@@ -192,11 +192,6 @@
         { component: 1, from: 0, to: 6, value: -1 },
         { component: 2, from: 4, to: 12, value: -1 }
       ];
-      const markDirectionVectors = [
-        [1, 1, -2],
-        [2, -1, -1],
-        [1, -2, 1]
-      ];
       const tileColors = {
         directFill: 'rgba(0, 114, 178, 0.50)',
         directStroke: '#005a8c',
@@ -339,21 +334,6 @@
         ]);
       }
 
-      function primitiveLineDirection(delta) {
-        const divisor = gcd3(delta[0], delta[1], delta[2]) || 1;
-        return delta.map(value => value / divisor);
-      }
-
-      function lineDirectionInfo(a, b) {
-        const direction = primitiveLineDirection(subtract3(b, a));
-        for (let component = 0; component < markDirectionVectors.length; component += 1) {
-          const canonical = primitiveLineDirection(markDirectionVectors[component]);
-          if (key3(direction) === key3(canonical)) return { component, sign: 1 };
-          if (key3(direction) === key3(canonical.map(value => -value))) return { component, sign: -1 };
-        }
-        throw new Error(`Unknown turtle marking direction ${direction.join(',')}`);
-      }
-
       function pointStrictlyInPolygon(point, polygon) {
         for (let i = 0; i < polygon.length; i += 1) {
           if (pointOnSegment(point, polygon[i], polygon[(i + 1) % polygon.length])) return false;
@@ -444,13 +424,11 @@
           const markSegments = turtleMarkSegments.map(segment => {
             const start = vertices3d[segment.from];
             const end = vertices3d[segment.to];
-            const direction = lineDirectionInfo(start, end);
             return {
               ...segment,
               fromPoint: start,
               toPoint: end,
-              component: direction.component,
-              directionSign: direction.sign,
+              component: symmetry.permutation[segment.component],
               value: segment.value * symmetry.markSign
             };
           });
@@ -460,14 +438,13 @@
             if (!markVectors.has(key)) markVectors.set(key, { point, vector: [0, 0, 0] });
             return markVectors.get(key);
           };
-          occupancy.forEach(entry => ensureMarkVector(entry.point));
           markSegments.forEach(segment => {
             latticeSegmentPoints(segment.fromPoint, segment.toPoint).forEach(point => {
               const entry = ensureMarkVector(point);
               entry.vector[segment.component] = segment.value;
             });
           });
-          const markEntries = Array.from(markVectors.values());
+          const markEntries = Array.from(markVectors.values()).filter(entry => nonzeroMarkVector(entry.vector));
           return {
             ...symmetry,
             orientationIndex,
@@ -672,11 +649,12 @@
               overflow = Math.max(overflow, nextValue - 12);
               if (!sums.has(key)) newPoints += 1;
             });
-            const valid = overflow <= 0 && !markConflict && markAligned && newPoints > 0;
+            const valid = overflow <= 0 && newPoints > 0;
             if (!valid && !includeRejected) return;
             const coverage = moveCoverage(occupancy, sums);
             const occupancyKey = placementOccupancyKey(occupancy);
-            const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, markConflict, markMatches, markLineUps, markAligned, coverage, valid, placementKey, occupancyKey };
+            const markingDeferred = useMarkingRules && (!markAligned || markConflict);
+            const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, markConflict, markMatches, markLineUps, markAligned, markingDeferred, coverage, valid, placementKey, occupancyKey };
             const existing = dedup.get(occupancyKey);
             const comparison = existing ? compareTrials(trial, existing) : -1;
             if (!existing || comparison < 0 || (comparison === 0 && Math.random() < 0.5)) dedup.set(occupancyKey, trial);
@@ -688,6 +666,8 @@
 
       function compareTrials(left, right) {
         if (left.valid !== right.valid) return left.valid ? -1 : 1;
+        if (left.markConflict !== right.markConflict) return left.markConflict ? 1 : -1;
+        if (left.markAligned !== right.markAligned) return left.markAligned ? -1 : 1;
         if (left.fillsFrontier !== right.fillsFrontier) return left.fillsFrontier ? -1 : 1;
         return right.coverage - left.coverage
           || right.newPoints - left.newPoints
@@ -721,7 +701,12 @@
         };
         const options = frontierPoints(sums, frontierAges).map(frontier => {
           const trials = candidateTrials(frontier, sums, usedPlacements, markSums, useMarkingRules, false);
-          const candidates = trials.filter(trial => trial.valid);
+          let candidates = trials.filter(trial => trial.valid);
+          if (useMarkingRules && candidates.length === 0) {
+            const geometryTrials = candidateTrials(frontier, sums, usedPlacements, markSums, false, false);
+            const geometryCandidates = geometryTrials.filter(trial => trial.valid);
+            if (geometryCandidates.length) candidates = geometryCandidates.map(trial => ({ ...trial, markingDeferred: true }));
+          }
           return { frontier, trials, candidates };
         });
         const deadEnd = options.find(option => option.candidates.length === 0);
@@ -745,6 +730,7 @@
           anchorIndex: candidate.anchorIndex,
           newPoints: candidate.newPoints,
           placementKey: candidate.placementKey,
+          markingDeferred: candidate.markingDeferred,
           rejectedTrials
         });
       }
@@ -1269,6 +1255,20 @@
         const stage = demoStages[stageName];
         if (!stage) return;
         stopTiling();
+        if (stageName === 'markings') {
+          markingRulesToggle.checked = false;
+          showMarkings = true;
+          trialGhost = null;
+          statusText = '';
+          if (stageLabel) stageLabel.textContent = stage.label;
+          if (stageNote) stageNote.textContent = stage.note;
+          stageChips.forEach(chip => {
+            chip.setAttribute('aria-current', String(chip.dataset.stageChip === stageName));
+          });
+          updateMarkingButton();
+          draw();
+          return;
+        }
         if (typeof stage.useMarkingRules === 'boolean') {
           markingRulesToggle.checked = stage.useMarkingRules;
         }
@@ -1490,7 +1490,9 @@
               tilingOrder = event.placements;
             }
             trialGhost = null;
-            statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
+            statusText = event.placement?.markingDeferred
+              ? `geometry move accepted while waiting for marking overlap at t=${event.frontierValue}/12`
+              : `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
             if (shownTiles >= autoplayTarget) {
               statusText = `paused after ${shownTiles} tiles; continue to extend the live branch`;
               stopTiling();
