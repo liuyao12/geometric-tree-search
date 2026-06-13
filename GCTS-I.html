@@ -334,6 +334,20 @@
         ]);
       }
 
+      function extendedLatticeSegmentPoints(a, b, extraSteps = 2) {
+        const delta = subtract3(b, a);
+        const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
+        const step = delta.map(value => value / steps);
+        return Array.from({ length: steps + 1 + extraSteps * 2 }, (_, rawIndex) => {
+          const index = rawIndex - extraSteps;
+          return [
+            a[0] + step[0] * index,
+            a[1] + step[1] * index,
+            a[2] + step[2] * index
+          ];
+        });
+      }
+
       function pointStrictlyInPolygon(point, polygon) {
         for (let i = 0; i < polygon.length; i += 1) {
           if (pointOnSegment(point, polygon[i], polygon[(i + 1) % polygon.length])) return false;
@@ -432,21 +446,22 @@
               value: segment.value * symmetry.markSign
             };
           });
-          const markVectors = new Map();
-          const ensureMarkVector = point => {
-            const key = key3(point);
-            if (!markVectors.has(key)) markVectors.set(key, { point, vector: [0, 0, 0] });
-            return markVectors.get(key);
-          };
+          const markEntries = [];
+          // Interior points not lying on a stripe carry scalar zero in every channel.
+          // These zero values are attached after the symmetry transform and are not
+          // multiplied by markSign, so reflected tiles keep those interior values zero.
+          occupancy
+            .filter(entry => entry.kind === 'interior')
+            .forEach(entry => {
+              for (let component = 0; component < 3; component += 1) {
+                markEntries.push({ point: entry.point, component, value: 0 });
+              }
+            });
           markSegments.forEach(segment => {
-            latticeSegmentPoints(segment.fromPoint, segment.toPoint).forEach(point => {
-              const entry = ensureMarkVector(point);
-              entry.vector[segment.component] = segment.value;
+            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 2).forEach(point => {
+              markEntries.push({ point, component: segment.component, value: segment.value });
             });
           });
-          const markEntries = Array.from(markVectors.values())
-            .filter(entry => nonzeroMarkVector(entry.vector))
-            .map(entry => ({ ...entry, wildcard: wildcardComponentsForVector(entry.vector) }));
           return {
             ...symmetry,
             orientationIndex,
@@ -521,7 +536,12 @@
       }
 
       function markStateAt(point) {
-        return visibleMarkVectors().get(key3(point)) || { vector: [0, 0, 0], wildcard: [false, false, false] };
+        const vector = [0, 0, 0];
+        visibleMarkVectors().forEach((entry, key) => {
+          const [pointKey, componentText] = key.split('|');
+          if (pointKey === key3(point)) vector[Number(componentText)] = entry.value;
+        });
+        return { vector };
       }
 
       function markVectorAt(point) {
@@ -568,78 +588,36 @@
       }
 
       function markingKey(entry) {
-        return key3(entry.point);
+        return `${key3(entry.point)}|${entry.component}`;
       }
 
       function nonzeroMarkVector(vector) {
         return vector.some(value => value !== 0);
       }
 
-      function wildcardComponentsForVector(vector) {
-        const nonzero = vector.filter(value => value !== 0).length;
-        return vector.map(value => nonzero === 2 && value === 0);
-      }
-
-      function formatMarkVector(vector = [0, 0, 0], wildcard = [false, false, false]) {
-        const parts = vector.map((value, index) => {
-          if (wildcard[index]) return '*';
-          return value > 0 ? `+${value}` : String(value);
-        });
-        return `m=(${parts.join(',')})`;
-      }
-
-      function componentCompatible(leftValue, leftWildcard, rightValue, rightWildcard) {
-        if (leftWildcard || rightWildcard) return true;
-        return leftValue === 0 || rightValue === 0 || leftValue === rightValue;
-      }
-
-      function componentLineUp(leftValue, leftWildcard, rightValue, rightWildcard) {
-        if (leftValue !== 0 && rightValue !== 0 && leftValue === rightValue) return true;
-        return (leftWildcard && rightValue !== 0) || (rightWildcard && leftValue !== 0);
-      }
-
-      function combineMarkEntries(entries) {
-        const vector = [0, 0, 0];
-        const wildcard = [false, false, false];
-        entries.forEach(entry => {
-          const entryWildcard = entry.wildcard || [false, false, false];
-          entry.vector.forEach((value, index) => {
-            if (value !== 0) {
-              vector[index] = value;
-              wildcard[index] = false;
-            } else if (entryWildcard[index] && vector[index] === 0) {
-              wildcard[index] = true;
-            }
-          });
-        });
-        return { vector, wildcard, entries };
+      function formatMarkVector(vector = [0, 0, 0]) {
+        return `m=(${vector.map(value => value > 0 ? `+${value}` : String(value)).join(',')})`;
       }
 
       function markingCompatibility(markings, markSums) {
-        const summary = markings.reduce((state, entry) => {
+        return markings.reduce((state, entry) => {
           const existing = markSums.get(markingKey(entry));
           if (!existing) return state;
-          const entryWildcard = entry.wildcard || [false, false, false];
-          for (let index = 0; index < entry.vector.length; index += 1) {
-            if (!componentCompatible(existing.vector[index], existing.wildcard?.[index], entry.vector[index], entryWildcard[index])) {
-              state.conflict = true;
-            }
-            if (componentLineUp(existing.vector[index], existing.wildcard?.[index], entry.vector[index], entryWildcard[index])) {
-              state.lineUps += 1;
-            }
+          if (existing.value === entry.value) {
+            state.matches += 1;
+            if (entry.value !== 0) state.lineUps += 1;
+          } else {
+            state.conflict = true;
           }
-          if (!state.conflict) state.matches += 1;
           return state;
         }, { matches: 0, lineUps: 0, conflict: false });
-        return summary;
       }
 
       function addPlacementMarkings(placement, markSums) {
         placement.markings.forEach(entry => {
           const key = markingKey(entry);
           const existing = markSums.get(key);
-          const entries = existing ? [...existing.entries, entry] : [entry];
-          markSums.set(key, combineMarkEntries(entries));
+          markSums.set(key, existing ? { value: existing.value, count: existing.count + 1 } : { value: entry.value, count: 1 });
         });
       }
 
@@ -648,12 +626,8 @@
           const key = markingKey(entry);
           const existing = markSums.get(key);
           if (!existing) return;
-          const index = existing.entries.indexOf(entry);
-          const entries = existing.entries.slice();
-          if (index >= 0) entries.splice(index, 1);
-          else entries.pop();
-          if (!entries.length) markSums.delete(key);
-          else markSums.set(key, combineMarkEntries(entries));
+          if (existing.count <= 1) markSums.delete(key);
+          else markSums.set(key, { value: existing.value, count: existing.count - 1 });
         });
       }
 
@@ -696,12 +670,13 @@
               overflow = Math.max(overflow, nextValue - 12);
               if (!sums.has(key)) newPoints += 1;
             });
-            const valid = overflow <= 0 && newPoints > 0;
+            // Marking "assigned values" are the scalar channel values above;
+            // the t-value overflow check remains the separate geometric constraint.
+            const valid = overflow <= 0 && newPoints > 0 && !markConflict;
             if (!valid && !includeRejected) return;
             const coverage = moveCoverage(occupancy, sums);
             const occupancyKey = placementOccupancyKey(occupancy);
-            const markingDeferred = useMarkingRules && (!markAligned || markConflict);
-            const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, markConflict, markMatches, markLineUps, markAligned, markingDeferred, coverage, valid, placementKey, occupancyKey };
+            const trial = { orientation, orientationIndex, translation, anchorIndex, anchorValue, fillsFrontier, newPoints, maxValue, overflow, markConflict, markMatches, markLineUps, markAligned, coverage, valid, placementKey, occupancyKey };
             const existing = dedup.get(occupancyKey);
             const comparison = existing ? compareTrials(trial, existing) : -1;
             if (!existing || comparison < 0 || (comparison === 0 && Math.random() < 0.5)) dedup.set(occupancyKey, trial);
@@ -748,12 +723,7 @@
         };
         const options = frontierPoints(sums, frontierAges).map(frontier => {
           const trials = candidateTrials(frontier, sums, usedPlacements, markSums, useMarkingRules, false);
-          let candidates = trials.filter(trial => trial.valid);
-          if (useMarkingRules && candidates.length === 0) {
-            const geometryTrials = candidateTrials(frontier, sums, usedPlacements, markSums, false, false);
-            const geometryCandidates = geometryTrials.filter(trial => trial.valid);
-            if (geometryCandidates.length) candidates = geometryCandidates.map(trial => ({ ...trial, markingDeferred: true }));
-          }
+          const candidates = trials.filter(trial => trial.valid);
           return { frontier, trials, candidates };
         });
         const deadEnd = options.find(option => option.candidates.length === 0);
@@ -776,7 +746,6 @@
           anchorIndex: candidate.anchorIndex,
           newPoints: candidate.newPoints,
           placementKey: candidate.placementKey,
-          markingDeferred: candidate.markingDeferred,
           rejectedTrials
         });
       }
@@ -1225,7 +1194,7 @@
         const lines = [`t=${pointEntry.value}/12 at (${pointEntry.point.join(',')})`];
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
-          lines.push(formatMarkVector(mark.vector, mark.wildcard));
+          lines.push(formatMarkVector(mark.vector));
         }
         return lines;
       }
@@ -1516,12 +1485,10 @@
             statusText = event.valid
               ? `trying compatible placement at t=${event.frontierValue}/12`
               : event.markConflict
-                ? 'reject: marking conflict'
-                : event.markAligned === false
-                  ? 'reject: no marking stripe lines up'
-                  : event.fillsFrontier === false
-                    ? 'reject: no value-compatible placement at this point'
-                    : `reject: would exceed 12 by ${event.overflow}`;
+                ? 'reject: marking values disagree'
+                : event.fillsFrontier === false
+                  ? 'reject: no value-compatible placement at this point'
+                  : `reject: would exceed 12 by ${event.overflow}`;
           } else if (event.type === 'fail') {
             trialGhost = null;
             if (event.placements) playbackPlacements = event.placements;
@@ -1539,9 +1506,7 @@
               tilingOrder = event.placements;
             }
             trialGhost = null;
-            statusText = event.placement?.markingDeferred
-              ? `geometry move accepted while waiting for marking overlap at t=${event.frontierValue}/12`
-              : `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
+            statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
             if (shownTiles >= autoplayTarget) {
               statusText = `paused after ${shownTiles} tiles; continue to extend the live branch`;
               stopTiling();
