@@ -718,33 +718,53 @@
         return copy;
       }
 
-      function latticeDistance(a, b) {
-        return norm3(subtract3(a, b));
+      function translatedTrialOccupancy(trial) {
+        return trial.orientation.occupancy.map(item => ({
+          ...item,
+          point: add3(item.point, trial.translation)
+        }));
       }
 
-      const turtleOccupancyDiameter = turtleOccupancy.reduce((diameter, left) => {
-        return Math.max(diameter, ...turtleOccupancy.map(right => latticeDistance(left.point, right.point)));
-      }, 0);
+      function translatedTrialMarkings(trial) {
+        return trial.orientation.markEntries.map(entry => ({
+          ...entry,
+          point: add3(entry.point, trial.translation)
+        }));
+      }
 
-      function affectedFrontierKeys(newFrontierPoints, sums) {
-        const affected = new Set(newFrontierPoints.map(key3));
-        if (!newFrontierPoints.length) return affected;
-        sums.forEach(entry => {
-          if (entry.value >= 12) return;
-          if (newFrontierPoints.some(point => latticeDistance(entry.point, point) <= turtleOccupancyDiameter)) {
-            affected.add(key3(entry.point));
-          }
+      function trialConflictsWithPlacement(trial, placement, useMarkingRules) {
+        const placementValues = new Map(placement.occupancy.map(item => [key3(item.point), item.value]));
+        const tileConflict = translatedTrialOccupancy(trial).some(item => {
+          const placedValue = placementValues.get(key3(item.point));
+          return placedValue !== undefined && placedValue + item.value > 12;
         });
-        return affected;
+        if (tileConflict) return true;
+        if (!useMarkingRules) return false;
+        const placementMarkings = new Map(placement.markings.map(entry => [markingKey(entry), entry.value]));
+        return translatedTrialMarkings(trial).some(entry => {
+          const placedValue = placementMarkings.get(markingKey(entry));
+          return placedValue !== undefined && placedValue !== entry.value;
+        });
       }
 
-      function invalidateFrontierCache(frontierCache, changedKeys) {
+      function updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules) {
         if (!frontierCache) return;
-        changedKeys.forEach(pointKey => {
-          for (const cacheKey of [...frontierCache.keys()]) {
-            if (cacheKey.startsWith(`${pointKey}|`)) frontierCache.delete(cacheKey);
+        for (const [cacheKey, option] of [...frontierCache.entries()]) {
+          const pointKey = key3(option.frontier.point);
+          const current = sums.get(pointKey);
+          if (!current || current.value >= 12 || current.value !== option.frontier.value) {
+            frontierCache.delete(cacheKey);
+            continue;
           }
-        });
+          const candidates = option.candidates.filter(trial => {
+            return trial.placementKey !== placement.placementKey && !trialConflictsWithPlacement(trial, placement, useMarkingRules);
+          });
+          frontierCache.set(cacheKey, {
+            ...option,
+            trials: option.trials.filter(trial => candidates.includes(trial)),
+            candidates
+          });
+        }
       }
 
       function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAges = new Map(), frontierCache = null) {
@@ -858,13 +878,10 @@
             const detailedChoice = { ...choice, trials: detailedTrials };
             const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
             pushTrialTrace(trace, placement);
-            const newFrontierPoints = placement.occupancy
-              .filter(item => !sums.has(key3(item.point)) && item.value < 12)
-              .map(item => item.point);
             placed.push(placement);
             usedPlacements.add(candidate.placementKey);
             addPlacementValues(placement, sums);
-            invalidateFrontierCache(frontierCache, affectedFrontierKeys(newFrontierPoints, sums));
+            updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules);
             if (useMarkingRules) addPlacementMarkings(placement, markSums);
             pushTrace({ type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() });
             return placement;
@@ -951,13 +968,10 @@
           const detailedChoice = { ...choice, trials: detailedTrials };
           const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
           yield* emitTrialEvents(placement);
-          const newFrontierPoints = placement.occupancy
-            .filter(item => !sums.has(key3(item.point)) && item.value < 12)
-            .map(item => item.point);
           placed.push(placement);
           usedPlacements.add(candidate.placementKey);
           addPlacementValues(placement, sums);
-          invalidateFrontierCache(frontierCache, affectedFrontierKeys(newFrontierPoints, sums));
+          updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules);
           if (useMarkingRules) addPlacementMarkings(placement, markSums);
           yield { type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() };
           return placement;

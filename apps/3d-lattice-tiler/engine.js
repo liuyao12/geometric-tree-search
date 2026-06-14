@@ -1385,10 +1385,32 @@ export const createTilingStream = (() => {
         return yield* doReturn(true);
       }
       const candidateCache = new Map();
+      const screenCachedCandidates = (faceKey, candidates, maxCandidates = candidateCap) => {
+        if (!state.frontier.has(faceKey)) return [];
+        const localCandidateCap = Math.min(maxCandidates, candidateCap);
+        const screened = [];
+        for (const candidate of candidates) {
+          const validity = checkMoveViability(candidate, faceKey);
+          if (!validity) continue;
+          screened.push({ ...candidate, occupancy_data: validity.occData });
+          if (Number.isFinite(localCandidateCap) && screened.length >= localCandidateCap) break;
+        }
+        return screened;
+      };
       const cachedCandidates = async (faceKey, maxCandidates = candidateCap) => {
         const cacheKey = `${faceKey}::${maxCandidates}`;
-        if (!candidateCache.has(cacheKey)) candidateCache.set(cacheKey, await getCandidatesForFace(faceKey, maxCandidates));
-        return candidateCache.get(cacheKey);
+        const cached = candidateCache.get(cacheKey);
+        if (cached) {
+          const screened = screenCachedCandidates(faceKey, cached, maxCandidates);
+          const localCandidateCap = Math.min(maxCandidates, candidateCap);
+          if (screened.length === cached.length || (Number.isFinite(localCandidateCap) && screened.length >= localCandidateCap)) {
+            candidateCache.set(cacheKey, screened);
+            return screened;
+          }
+        }
+        const candidates = await getCandidatesForFace(faceKey, maxCandidates);
+        candidateCache.set(cacheKey, candidates);
+        return candidates;
       };
       const frontierVertexNorm = (option) => Math.abs(option.vertex[0]) + Math.abs(option.vertex[1]) + Math.abs(option.vertex[2]);
       const frontierVertexOptions = () => {
@@ -1438,7 +1460,6 @@ export const createTilingStream = (() => {
       let branchAnalysis = null;
       while (true) {
         await yieldToBrowser();
-        candidateCache.clear();
         if (stopToken.stop) return false;
         if (overBudget()) {
           yield nodeStatus(parentId, "fail", budgetText());
