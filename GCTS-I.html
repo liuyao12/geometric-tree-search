@@ -211,7 +211,7 @@
       center.y /= rawTurtle.length;
       const orientations = buildOrientations();
       // This seed orientation keeps the marked frontier live, so Start tiling can show a second tile immediately.
-      const seedOrientationIndex = 7;
+      const seedOrientationIndex = 1;
       let tilingRunUsesMarking = markingRulesToggle?.checked || false;
       let tilingRun = { placements: [makeSeedPlacement()], trace: [] };
       let tilingOrder = tilingRun.placements;
@@ -335,7 +335,7 @@
         ]);
       }
 
-      function extendedLatticeSegmentPoints(a, b, extraSteps = 2) {
+      function extendedLatticeSegmentPoints(a, b, extraSteps = 1) {
         const delta = subtract3(b, a);
         const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
         const step = delta.map(value => value / steps);
@@ -453,7 +453,7 @@
           };
           // Interior points not lying on a stripe carry scalar zero in every channel.
           // These zero values are attached after the symmetry transform and are not
-          // multiplied by markSign, so reflected tiles keep those interior values zero.
+          // multiplied by markSign, so flipped tiles keep those interior values zero.
           occupancy
             .filter(entry => entry.kind === 'interior')
             .forEach(entry => {
@@ -462,7 +462,7 @@
               }
             });
           markSegments.forEach(segment => {
-            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 2).forEach(point => {
+            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1).forEach(point => {
               setMarkEntry({ point, component: segment.component, value: segment.value });
             });
           });
