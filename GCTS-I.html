@@ -1475,25 +1475,42 @@
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
         timer = window.setInterval(() => {
-          const next = liveSearchIterator?.next();
-          if (!next || next.done) {
-            trialGhost = null;
-            statusText = 'paused at the current live boundary';
-            stopTiling();
-            draw();
-            return;
+          let event = null;
+          let pendingDeadEnd = null;
+          while (true) {
+            const next = liveSearchIterator?.next();
+            if (!next || next.done) {
+              if (pendingDeadEnd) {
+                event = pendingDeadEnd;
+                break;
+              }
+              trialGhost = null;
+              statusText = 'paused at the current live boundary';
+              stopTiling();
+              draw();
+              return;
+            }
+            traceIndex += 1;
+            const candidateEvent = next.value;
+            if (candidateEvent.type === 'trial' && !candidateEvent.valid) {
+              // Rejections are informative for pruning, but do not spend a visible
+              // animation beat on them; this makes marked pruning visibly faster.
+              continue;
+            }
+            if (candidateEvent.type === 'fail') {
+              pendingDeadEnd = candidateEvent;
+              continue;
+            }
+            if (pendingDeadEnd && candidateEvent.type === 'backtrack') {
+              event = { ...candidateEvent, deadEnd: pendingDeadEnd };
+              break;
+            }
+            event = candidateEvent;
+            break;
           }
-          const event = next.value;
-          traceIndex += 1;
           if (event.type === 'trial') {
             trialGhost = event;
-            statusText = event.valid
-              ? `trying compatible placement at t=${event.frontierValue}/12`
-              : event.markConflict
-                ? 'reject: marking values disagree'
-                : event.fillsFrontier === false
-                  ? 'reject: no value-compatible placement at this point'
-                  : `reject: would exceed 12 by ${event.overflow}`;
+            statusText = `trying compatible placement at t=${event.frontierValue}/12`;
           } else if (event.type === 'fail') {
             trialGhost = null;
             if (event.placements) playbackPlacements = event.placements;
@@ -1503,7 +1520,9 @@
             trialGhost = event.removed ? { placement: event.removed, valid: false } : null;
             if (event.placements) playbackPlacements = event.placements;
             shownTiles = playbackPlacements?.length || shownTiles;
-            statusText = `backtracking: ${event.reason}`;
+            statusText = event.deadEnd
+              ? `dead end at t=${event.deadEnd.frontierValue}/12; backtracking`
+              : `backtracking: ${event.reason}`;
           } else {
             shownTiles = event.count;
             if (event.placements) {
