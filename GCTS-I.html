@@ -718,7 +718,36 @@
         return copy;
       }
 
-      function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAges = new Map()) {
+      function latticeDistance(a, b) {
+        return norm3(subtract3(a, b));
+      }
+
+      const turtleOccupancyDiameter = turtleOccupancy.reduce((diameter, left) => {
+        return Math.max(diameter, ...turtleOccupancy.map(right => latticeDistance(left.point, right.point)));
+      }, 0);
+
+      function affectedFrontierKeys(newFrontierPoints, sums) {
+        const affected = new Set(newFrontierPoints.map(key3));
+        if (!newFrontierPoints.length) return affected;
+        sums.forEach(entry => {
+          if (entry.value >= 12) return;
+          if (newFrontierPoints.some(point => latticeDistance(entry.point, point) <= turtleOccupancyDiameter)) {
+            affected.add(key3(entry.point));
+          }
+        });
+        return affected;
+      }
+
+      function invalidateFrontierCache(frontierCache, changedKeys) {
+        if (!frontierCache) return;
+        changedKeys.forEach(pointKey => {
+          for (const cacheKey of [...frontierCache.keys()]) {
+            if (cacheKey.startsWith(`${pointKey}|`)) frontierCache.delete(cacheKey);
+          }
+        });
+      }
+
+      function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAges = new Map(), frontierCache = null) {
         const byAge = (left, right) => {
           const leftAge = frontierAges.get(key3(left.frontier.point)) ?? Infinity;
           const rightAge = frontierAges.get(key3(right.frontier.point)) ?? Infinity;
@@ -727,9 +756,14 @@
             || left.candidates.length - right.candidates.length;
         };
         const options = frontierPoints(sums, frontierAges).map(frontier => {
+          const cacheKey = `${key3(frontier.point)}|${frontier.value}|${useMarkingRules ? 1 : 0}`;
+          const cached = frontierCache?.get(cacheKey);
+          if (cached) return { ...cached, frontier };
           const trials = candidateTrials(frontier, sums, usedPlacements, markSums, useMarkingRules, false);
           const candidates = trials.filter(trial => trial.valid);
-          return { frontier, trials, candidates };
+          const option = { frontier, trials, candidates };
+          frontierCache?.set(cacheKey, option);
+          return option;
         });
         const deadEnd = options.find(option => option.candidates.length === 0);
         if (deadEnd) return { options, deadEnd };
@@ -814,6 +848,7 @@
           const placed = [seed];
           const sums = new Map();
           const markSums = new Map();
+          const frontierCache = new Map();
           const usedPlacements = new Set([seed.placementKey]);
           addPlacementValues(seed, sums);
           if (useMarkingRules) addPlacementMarkings(seed, markSums);
@@ -823,9 +858,13 @@
             const detailedChoice = { ...choice, trials: detailedTrials };
             const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
             pushTrialTrace(trace, placement);
+            const newFrontierPoints = placement.occupancy
+              .filter(item => !sums.has(key3(item.point)) && item.value < 12)
+              .map(item => item.point);
             placed.push(placement);
             usedPlacements.add(candidate.placementKey);
             addPlacementValues(placement, sums);
+            invalidateFrontierCache(frontierCache, affectedFrontierKeys(newFrontierPoints, sums));
             if (useMarkingRules) addPlacementMarkings(placement, markSums);
             pushTrace({ type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() });
             return placement;
@@ -836,6 +875,7 @@
             if (useMarkingRules) removePlacementMarkings(placement, markSums);
             removePlacementValues(placement, sums);
             if (placement.placementKey) usedPlacements.delete(placement.placementKey);
+            frontierCache.clear();
             pushTrace({ type: 'backtrack', reason, removed: placement, placements: placed.slice(), frontierValue: placement.frontierValue, branchCount: placement.branchCount });
           };
           const search = () => {
@@ -845,7 +885,7 @@
                 while (placed.length > baseLength) undoLast('budget');
                 return false;
               }
-              const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed));
+              const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed), frontierCache);
               if (analysis.deadEnd) {
                 pushTrace({ type: 'fail', frontier: analysis.deadEnd.frontier.point, frontierValue: analysis.deadEnd.frontier.value, placements: placed.slice() });
                 while (placed.length > baseLength) undoLast('dead end');
@@ -880,6 +920,7 @@
         const placed = [seed];
         const sums = new Map();
         const markSums = new Map();
+        const frontierCache = new Map();
         const usedPlacements = new Set([seed.placementKey]);
         addPlacementValues(seed, sums);
         if (useMarkingRules) addPlacementMarkings(seed, markSums);
@@ -910,9 +951,13 @@
           const detailedChoice = { ...choice, trials: detailedTrials };
           const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
           yield* emitTrialEvents(placement);
+          const newFrontierPoints = placement.occupancy
+            .filter(item => !sums.has(key3(item.point)) && item.value < 12)
+            .map(item => item.point);
           placed.push(placement);
           usedPlacements.add(candidate.placementKey);
           addPlacementValues(placement, sums);
+          invalidateFrontierCache(frontierCache, affectedFrontierKeys(newFrontierPoints, sums));
           if (useMarkingRules) addPlacementMarkings(placement, markSums);
           yield { type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() };
           return placement;
@@ -924,6 +969,7 @@
           if (useMarkingRules) removePlacementMarkings(placement, markSums);
           removePlacementValues(placement, sums);
           if (placement.placementKey) usedPlacements.delete(placement.placementKey);
+          frontierCache.clear();
           yield { type: 'backtrack', reason, removed: placement, placements: placed.slice(), frontierValue: placement.frontierValue, branchCount: placement.branchCount };
         }
 
@@ -934,7 +980,7 @@
               while (placed.length > baseLength) yield* undoLast('budget');
               return false;
             }
-            const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed));
+            const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed), frontierCache);
             if (analysis.deadEnd) {
               yield { type: 'fail', frontier: analysis.deadEnd.frontier.point, frontierValue: analysis.deadEnd.frontier.value, placements: placed.slice() };
               while (placed.length > baseLength) yield* undoLast('dead end');
