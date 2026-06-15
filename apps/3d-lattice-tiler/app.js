@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260615-geometric-solid-angles";
+import { tileSpecs } from "./engine.js?v=20260615-d3-frontier-points";
 
 const $ = (id) => document.getElementById(id);
 
