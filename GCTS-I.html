@@ -450,25 +450,35 @@
               value: segment.value * symmetry.markSign
             };
           });
-          const markDomainPointsByKey = new Map();
-          const addMarkDomainPoint = point => markDomainPointsByKey.set(key3(point), point);
-          occupancy
-            .filter(entry => entry.kind === 'interior')
-            .forEach(entry => addMarkDomainPoint(entry.point));
+          const markLinePointsByKey = new Map();
+          const addMarkLinePoint = (point, component) => {
+            const pointKey = key3(point);
+            const entry = markLinePointsByKey.get(pointKey) || { point, components: new Set() };
+            entry.components.add(component);
+            markLinePointsByKey.set(pointKey, entry);
+          };
           markSegments.forEach(segment => {
             extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1)
-              .forEach(addMarkDomainPoint);
+              .forEach(point => addMarkLinePoint(point, segment.component));
           });
           const markEntriesByKey = new Map();
           const setMarkEntry = entry => {
             markEntriesByKey.set(`${key3(entry.point)}|${entry.component}`, entry);
           };
-          // Every point in the marking support carries all three scalar channels.
-          // Stripe entries below overwrite the zero in their own direction; absent
-          // directions remain zero and must agree with neighboring tiles.
-          markDomainPointsByKey.forEach(point => {
+          // Interior points and stripe-intersection points carry all three scalar
+          // channels. Stripe entries below overwrite the zero in their own direction;
+          // missing directions at an intersection remain zero.
+          occupancy
+            .filter(entry => entry.kind === 'interior')
+            .forEach(entry => {
+              for (let component = 0; component < 3; component += 1) {
+                setMarkEntry({ point: entry.point, component, value: 0 });
+              }
+            });
+          markLinePointsByKey.forEach(entry => {
+            if (entry.components.size < 2) return;
             for (let component = 0; component < 3; component += 1) {
-              setMarkEntry({ point, component, value: 0 });
+              setMarkEntry({ point: entry.point, component, value: 0 });
             }
           });
           markSegments.forEach(segment => {

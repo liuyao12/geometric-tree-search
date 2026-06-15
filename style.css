@@ -464,7 +464,7 @@ h1 {
   bottom: 7px;
   height: 0;
   border-top: 2px solid rgba(45, 45, 45, 0.55);
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
   transform-origin: left center;
 }
 
