@@ -1399,7 +1399,6 @@ export const createTilingStream = (() => {
         yield nodeStatus(parentId, "success");
         return yield* doReturn(true);
       }
-      const candidateCache = new Map();
       const screenCachedCandidates = (faceKey, candidates, maxCandidates = candidateCap) => {
         if (!state.frontier.has(faceKey)) return [];
         const localCandidateCap = Math.min(maxCandidates, candidateCap);
@@ -1413,18 +1412,18 @@ export const createTilingStream = (() => {
         return screened;
       };
       const cachedCandidates = async (faceKey, maxCandidates = candidateCap) => {
-        const cacheKey = `${faceKey}::${maxCandidates}`;
-        const cached = candidateCache.get(cacheKey);
+        const cacheKey = `face::${faceKey}::${maxCandidates}`;
+        const cached = state.vertex_candidate_cache.get(cacheKey);
         if (cached) {
           const screened = screenCachedCandidates(faceKey, cached, maxCandidates);
           const localCandidateCap = Math.min(maxCandidates, candidateCap);
           if (screened.length === cached.length || (Number.isFinite(localCandidateCap) && screened.length >= localCandidateCap)) {
-            candidateCache.set(cacheKey, screened);
+            state.vertex_candidate_cache.set(cacheKey, screened);
             return screened;
           }
         }
         const candidates = await getCandidatesForFace(faceKey, maxCandidates);
-        candidateCache.set(cacheKey, candidates);
+        state.vertex_candidate_cache.set(cacheKey, candidates);
         return candidates;
       };
       const frontierVertexNorm = (option) => Math.abs(option.vertex[0]) + Math.abs(option.vertex[1]) + Math.abs(option.vertex[2]);
@@ -1441,7 +1440,31 @@ export const createTilingStream = (() => {
         }
         return [...byVertex.values()].sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || right.faceKeys.length - left.faceKeys.length || left.vertexKey.localeCompare(right.vertexKey));
       };
+      const screenCachedVertexCandidates = (option, candidates, maxCandidates) => {
+        const dedup = new Map();
+        const localCandidateCap = Math.min(maxCandidates, candidateCap);
+        for (const candidate of candidates ?? []) {
+          const sourceFaceKey = candidate._source_face_key;
+          if (!sourceFaceKey || !option.faceKeys.includes(sourceFaceKey) || !state.frontier.has(sourceFaceKey)) continue;
+          const validity = checkMoveViability(candidate, sourceFaceKey);
+          if (!validity) continue;
+          const key = candidate.dedup_key ?? `${candidate.prototile_idx}::${candidate.translation.join(",")}::${candidate.orient.__orientation_id ?? ""}`;
+          if (!dedup.has(key)) dedup.set(key, { ...candidate, occupancy_data: validity.occData });
+          if (Number.isFinite(localCandidateCap) && dedup.size >= localCandidateCap) break;
+        }
+        return [...dedup.values()];
+      };
+
       const candidatesForVertexOption = async (option, maxCandidates = 2) => {
+        const cacheKey = `${option.vertexKey}::${maxCandidates}`;
+        const cached = state.vertex_candidate_cache.get(cacheKey);
+        if (cached) {
+          const screened = screenCachedVertexCandidates(option, cached, maxCandidates);
+          if (screened.length) {
+            state.vertex_candidate_cache.set(cacheKey, screened);
+            return screened;
+          }
+        }
         const dedup = new Map();
         for (const faceKey of option.faceKeys) {
           await yieldToBrowser();
@@ -1451,11 +1474,17 @@ export const createTilingStream = (() => {
             const key = candidate.dedup_key ?? `${candidate.prototile_idx}::${candidate.translation.join(",")}::${candidate.orient.__orientation_id ?? ""}`;
             if (!dedup.has(key)) {
               dedup.set(key, { ...candidate, _source_face_key: faceKey });
-              if (dedup.size >= maxCandidates) return [...dedup.values()];
+              if (dedup.size >= maxCandidates) {
+                const out = [...dedup.values()];
+                state.vertex_candidate_cache.set(cacheKey, out);
+                return out;
+              }
             }
           }
         }
-        return [...dedup.values()];
+        const out = [...dedup.values()];
+        state.vertex_candidate_cache.set(cacheKey, out);
+        return out;
       };
       const analyzeFrontierVertices = async () => {
         const options = [];
@@ -2141,7 +2170,7 @@ export const tileSpecs = (() => {
       this.verts = vertices.map(v => v.slice());
       this.faces = face_data.map(f => f.v.slice());
       this.face_types = face_data.map(f => f.type);
-      this.occupancy_points = (occupancy_map || []).map(([pt,w]) => ({ pos: pt.slice(), weight: w }));
+      this.occupancy_points = (occupancy_map || []).map(([pt,w,symbolic]) => ({ pos: pt.slice(), weight: w, symbolic }));
       this.solid_angle = { kind: solid_angle.kind ?? "numeric", max_value: solid_angle.max_value ?? LEGACY_SOLID_ANGLE_MAX, symbols: [...(solid_angle.symbols ?? [])] };
       this.is_polycube = this.solid_angle.max_value === POLYCUBE_SOLID_ANGLE_MAX && this.occupancy_points.some(pt => pt.weight === POLYCUBE_SOLID_ANGLE_MAX);
       if (!skip_winding) this._fixWinding();
@@ -2185,7 +2214,7 @@ export const tileSpecs = (() => {
           const vIndex = new Map(tVerts.map((v,i)=>[v.join(","), i]));
           const tOcc = this.occupancy_points.map(pt => {
             const mp = mul(M, pt.pos);
-            return { pos: [mp[0]-shift[0], mp[1]-shift[1], mp[2]-shift[2]], weight: pt.weight };
+            return { pos: [mp[0]-shift[0], mp[1]-shift[1], mp[2]-shift[2]], weight: pt.weight, symbolic: pt.symbolic };
           });
           const newFaces = [];
           const newFaceTypes = [];
@@ -2226,7 +2255,7 @@ export const tileSpecs = (() => {
       const minv = [Infinity,Infinity,Infinity];
       for (const v of mirror) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
       const tVerts = mirror.map(v => sub3(v, minv));
-      const tOcc = this.occupancy_points.map(pt => ({ pos: sub3([-pt.pos[0], pt.pos[1], pt.pos[2]], minv), weight: pt.weight }));
+      const tOcc = this.occupancy_points.map(pt => ({ pos: sub3([-pt.pos[0], pt.pos[1], pt.pos[2]], minv), weight: pt.weight, symbolic: pt.symbolic }));
       const vHash = tVerts.map(v=>v.join(",")).sort().join("|");
       const oHash = tOcc.map(p=>`${p.pos.join(",")}:${p.weight}`).sort().join("|");
       const mirrorHash = `${vHash}@@${oHash}`;
@@ -2259,7 +2288,7 @@ export const tileSpecs = (() => {
       const minv = [Infinity,Infinity,Infinity];
       for (const v of mirrorVerts) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
       const tVerts = mirrorVerts.map(v => sub3(v, minv));
-      const mirrorOcc = this.occupancy_points.map(p => [sub3([-p.pos[0],p.pos[1],p.pos[2]], minv), p.weight]);
+      const mirrorOcc = this.occupancy_points.map(p => [sub3([-p.pos[0],p.pos[1],p.pos[2]], minv), p.weight, p.symbolic]);
       const faceData = this.faces.map((f,i)=>({ v: f.slice(), type: this.face_types[i] }));
       return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true, this.solid_angle);
     }
@@ -2269,6 +2298,8 @@ export const tileSpecs = (() => {
     return new Prototile3D(name, data.v, data.f_data, data.occ, !!data.skip_winding, false, data.solid_angle);
   };
 
+  const withSymbolicSolidAngles = (occ, rules) => occ.map(([pos, weight]) => [pos, weight, rules(weight)]);
+
   const gen_tetrahedron_data = () => {
     const verts = [[0,0,0],[1,1,0],[1,0,1],[0,1,1]];
     const data = createScaledTileData(
@@ -2276,7 +2307,12 @@ export const tileSpecs = (() => {
       [ { v:[0,1,2], type:"default" }, { v:[0,2,3], type:"default" }, { v:[0,3,1], type:"default" }, { v:[1,3,2], type:"default" } ],
       false, false
     );
-    data.solid_angle = { kind: "symbolic", max_value: LEGACY_SOLID_ANGLE_MAX, symbols: ["tet_oct_alpha"] };
+    data.occ = withSymbolicSolidAngles(data.occ, weight => {
+      if (weight === LEGACY_SOLID_ANGLE_MAX) return "1";
+      if (weight <= 3) return "α";
+      return "(1 + 4α)/6";
+    });
+    data.solid_angle = { kind: "symbolic", max_value: LEGACY_SOLID_ANGLE_MAX, symbols: ["α = (3 arccos(1/3) - π)/(4π)"] };
     return data;
   };
 
@@ -2309,8 +2345,10 @@ export const tileSpecs = (() => {
       }
     }
     occ.set('0,0,0', LEGACY_SOLID_ANGLE_MAX);
-    data.occ = [...occ.entries()].map(([key, weight]) => [key.split(',').map(Number), weight]);
-    data.solid_angle = { kind: "symbolic", max_value: LEGACY_SOLID_ANGLE_MAX, symbols: ["tet_oct_alpha"] };
+    data.occ = [...occ.entries()].map(([key, weight]) => [key.split(',').map(Number), weight,
+      weight === LEGACY_SOLID_ANGLE_MAX ? "1" : (weight === vertexWeight ? "(1 - 8α)/6" : "(1 - 2α)/3")
+    ]);
+    data.solid_angle = { kind: "symbolic", max_value: LEGACY_SOLID_ANGLE_MAX, symbols: ["α = (3 arccos(1/3) - π)/(4π)"] };
     return data;
   };
 
@@ -2810,10 +2848,10 @@ export const tileSpecs = (() => {
   const solidAngleValues = (tile) => {
     const maxValue = tile?.solid_angle?.max_value ?? LEGACY_SOLID_ANGLE_MAX;
     return (tile?.occupancy_points ?? [])
-      .map(point => point.weight)
-      .filter(Number.isFinite)
-      .sort((a, b) => a - b)
-      .map(weight => ({ weight, max_value: maxValue, value: weight / maxValue }));
+      .map(point => ({ weight: point.weight, symbolic: point.symbolic }))
+      .filter(item => Number.isFinite(item.weight))
+      .sort((a, b) => a.weight - b.weight)
+      .map(item => ({ weight: item.weight, max_value: maxValue, value: item.weight / maxValue, symbolic: item.symbolic }));
   };
 
   const tileGeometryKey = (tile) => {

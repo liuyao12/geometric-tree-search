@@ -63,6 +63,7 @@ const gcdInt = (a, b) => {
   return a || 1;
 };
 const formatSolidAngleValue = (item) => {
+  if (item?.symbolic) return item.symbolic;
   const weight = Number(item?.weight);
   const maxValue = Number(item?.max_value) || 1;
   const value = Number.isFinite(Number(item?.value)) ? Number(item.value) : weight / maxValue;
@@ -76,7 +77,13 @@ const formatSolidAngleValue = (item) => {
   return value.toFixed(5).replace(/0+$/u, "").replace(/\.$/u, "");
 };
 const solidAngleListLabel = (solidAngles = []) => {
-  const values = solidAngles.map(formatSolidAngleValue).filter(Boolean);
+  const counts = new Map();
+  for (const item of solidAngles) {
+    const label = formatSolidAngleValue(item);
+    if (!label) continue;
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+  const values = [...counts.entries()].map(([label, count]) => count > 1 ? `${label} (${count})` : label);
   return values.length ? values.join(", ") : "No sampled solid-angle values";
 };
 const solidAngleTitle = (solidAngles = []) => `Solid-angle t-values (full sphere = 1): ${solidAngleListLabel(solidAngles)}`;
