@@ -449,12 +449,16 @@ h1 {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 22px;
-  height: 22px;
-  border-top: 2px solid rgba(22, 135, 117, 0.75);
-  border-right: 2px solid rgba(22, 135, 117, 0.75);
-  border-top-right-radius: 8px;
-  background: linear-gradient(45deg, rgba(22, 135, 117, 0.16), rgba(22, 135, 117, 0));
+  width: 24px;
+  height: 24px;
+  border-top: 1px solid rgba(45, 45, 45, 0.28);
+  border-right: 1px solid rgba(45, 45, 45, 0.28);
+  border-top-right-radius: 6px;
+  background:
+    repeating-linear-gradient(135deg,
+      transparent 0 4px,
+      rgba(45, 45, 45, 0.42) 4px 5px,
+      transparent 5px 8px);
   cursor: nesw-resize;
   touch-action: none;
   z-index: 3;
@@ -466,7 +470,12 @@ h1 {
 }
 
 .floating-demo.is-resizing .demo-resize-handle {
-  background: rgba(22, 135, 117, 0.18);
+  background:
+    repeating-linear-gradient(135deg,
+      transparent 0 4px,
+      rgba(22, 135, 117, 0.72) 4px 5px,
+      transparent 5px 8px),
+    rgba(22, 135, 117, 0.10);
 }
 
 .interactive-toolbar button {

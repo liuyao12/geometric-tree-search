@@ -41,7 +41,7 @@
               <div class="toolbar-row toolbar-toggle-row">
                 <span class="toolbar-drag-spacer" aria-hidden="true"></span>
                 <label class="toolbar-toggle"><input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
-                <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show lattice</label>
+                <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show grid</label>
               </div>
             </div>
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
@@ -291,9 +291,11 @@
       };
 
       function projectA2Raw([x, y, z]) {
+        // Swap the second and third coordinates in the drawing projection so the
+        // marked-live seed orientation appears in the Turtle's original pose.
         return {
-          x: ((x - y) / sqrt2) * latticeScale,
-          y: ((x + y - 2 * z) / sqrt6) * latticeScale
+          x: ((x - z) / sqrt2) * latticeScale,
+          y: ((x + z - 2 * y) / sqrt6) * latticeScale
         };
       }
 
@@ -1143,24 +1145,36 @@
         ctx.closePath();
       }
 
-      function drawLatticePoints(rect) {
+      function drawGridLines(rect) {
         const corners = [screenToWorld(0, 0), screenToWorld(rect.width, 0), screenToWorld(0, rect.height), screenToWorld(rect.width, rect.height)];
         const minX = Math.min(...corners.map(point => point.x)) - 80;
         const maxX = Math.max(...corners.map(point => point.x)) + 80;
         const minY = Math.min(...corners.map(point => point.y)) - 80;
         const maxY = Math.max(...corners.map(point => point.y)) + 80;
-        ctx.fillStyle = 'rgba(49, 95, 159, 0.12)';
-        for (let i = -28; i <= 28; i += 1) {
-          for (let j = -28; j <= 28; j += 1) {
-            const point3 = add3([i, -i, 0], [0, j, -j]);
-            const point = projectA2(point3);
-            if (point.x < minX || point.x > maxX || point.y < minY || point.y > maxY) continue;
-            const screen = worldToScreen(point.x, point.y);
+        const inView = point => point.x >= minX && point.x <= maxX && point.y >= minY && point.y <= maxY;
+        const families = [
+          constant => t => [constant, t, -constant - t],
+          constant => t => [t, constant, -constant - t],
+          constant => t => [t, -constant - t, constant]
+        ];
+        ctx.save();
+        ctx.strokeStyle = 'rgba(80, 80, 80, 0.18)';
+        ctx.lineWidth = Math.max(0.45, 0.8 * scale);
+        families.forEach(family => {
+          for (let constant = -28; constant <= 28; constant += 1) {
+            const makePoint = family(constant);
+            const a = projectA2(makePoint(-80));
+            const b = projectA2(makePoint(80));
+            if (!inView(a) && !inView(b)) continue;
+            const start = worldToScreen(a.x, a.y);
+            const end = worldToScreen(b.x, b.y);
             ctx.beginPath();
-            ctx.arc(screen.x, screen.y, 1.35, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.moveTo(start.x, start.y);
+            ctx.lineTo(end.x, end.y);
+            ctx.stroke();
           }
-        }
+        });
+        ctx.restore();
       }
 
       function drawMarkings(placement) {
@@ -1255,8 +1269,15 @@
         ctx.restore();
       }
 
+      function formatTValue(value) {
+        if (value === 0) return '0';
+        if (value === 12) return '1';
+        const divisor = gcd2(value, 12);
+        return `${value / divisor}/${12 / divisor}`;
+      }
+
       function hoverLinesForPoint(pointEntry) {
-        const lines = [`t=${pointEntry.value}/12 at (${pointEntry.point.join(',')})`];
+        const lines = [`t=${formatTValue(pointEntry.value)} at (${pointEntry.point.join(',')})`];
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
           lines.push(formatMarkVector(mark.vector));
@@ -1294,7 +1315,7 @@
         ctx.clearRect(0, 0, rect.width, rect.height);
         ctx.fillStyle = '#fbfcfb';
         ctx.fillRect(0, 0, rect.width, rect.height);
-        if (latticeToggle.checked) drawLatticePoints(rect);
+        if (latticeToggle.checked) drawGridLines(rect);
         const visible = visiblePlacements();
         visible.forEach(drawTurtle);
         if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
