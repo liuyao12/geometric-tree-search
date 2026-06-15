@@ -63,6 +63,7 @@ const gcdInt = (a, b) => {
   return a || 1;
 };
 const formatSolidAngleValue = (item) => {
+  if (item?.display_symbolic) return item.display_symbolic;
   if (item?.symbolic) return item.symbolic;
   const weight = Number(item?.weight);
   const maxValue = Number(item?.max_value) || 1;
@@ -86,7 +87,26 @@ const solidAngleListLabel = (solidAngles = []) => {
   const values = [...counts.entries()].map(([label, count]) => count > 1 ? `${label} (${count})` : label);
   return values.length ? values.join(", ") : "No sampled solid-angle values";
 };
-const solidAngleTitle = (solidAngles = []) => `Solid-angle t-values (full sphere = 1): ${solidAngleListLabel(solidAngles)}`;
+
+const escapeHtml = (value) => String(value)
+  .replace(/&/gu, "&amp;")
+  .replace(/</gu, "&lt;")
+  .replace(/>/gu, "&gt;")
+  .replace(/"/gu, "&quot;");
+const solidAngleListHtml = (solidAngles = []) => {
+  const counts = new Map();
+  for (const item of solidAngles) {
+    const label = formatSolidAngleValue(item);
+    if (!label) continue;
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+  const values = [...counts.entries()].map(([label, count]) => {
+    const safeLabel = escapeHtml(label);
+    return count > 1 ? `${safeLabel} <strong>(${count})</strong>` : safeLabel;
+  });
+  return values.length ? values.join(", ") : "No sampled solid-angle values";
+};
+const solidAngleTitle = (solidAngles = []) => solidAngleListLabel(solidAngles);
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
@@ -659,7 +679,7 @@ function renderSystemTileList() {
       name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}\n${angleTitle}`;
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
-      angles.textContent = solidAngleListLabel(figure.solid_angles);
+      angles.innerHTML = solidAngleListHtml(figure.solid_angles);
       row.append(image, name, angles);
       grid.appendChild(row);
     }
@@ -1232,7 +1252,7 @@ function initTileControls(info) {
 
     const angles = document.createElement("div");
     angles.className = "tile-angles";
-    angles.textContent = solidAngleListLabel(tile.solid_angles);
+    angles.innerHTML = solidAngleListHtml(tile.solid_angles);
 
     meta.append(name, angles, slider);
     row.append(swatch, meta);

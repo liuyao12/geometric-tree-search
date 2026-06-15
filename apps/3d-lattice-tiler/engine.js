@@ -1902,12 +1902,12 @@ export const tileSpecs = (() => {
           const key = p.join(',');
 
           if (vertKeyToIndex.has(key)) {
-            occ.push([p, vertexWeights[vertKeyToIndex.get(key)]]);
+            occ.push([p, vertexWeights[vertKeyToIndex.get(key)], null, null, "vertex"]);
             continue;
           }
 
           if (edgeMidpointWeights.has(key)) {
-            occ.push([p, edgeMidpointWeights.get(key)]);
+            occ.push([p, edgeMidpointWeights.get(key), null, null, "edge"]);
             continue;
           }
 
@@ -1949,8 +1949,8 @@ export const tileSpecs = (() => {
           if (baryU > -EPS && baryV > -EPS && baryW > -EPS && baryT > -EPS &&
               baryU < 1+EPS && baryV < 1+EPS && baryW < 1+EPS && baryT < 1+EPS) {
             const nearZero = [baryU, baryV, baryW, baryT].filter(value => Math.abs(value) < EPS).length;
-            if (nearZero === 1) occ.push([p, LEGACY_SOLID_ANGLE_MAX / 2]);
-            else if (nearZero === 0) occ.push([p, LEGACY_SOLID_ANGLE_MAX]);
+            if (nearZero === 1) occ.push([p, LEGACY_SOLID_ANGLE_MAX / 2, null, null, "face"]);
+            else if (nearZero === 0) occ.push([p, LEGACY_SOLID_ANGLE_MAX, null, null, "interior"]);
           }
         }
       }
@@ -2070,20 +2070,25 @@ export const tileSpecs = (() => {
           if (!pointInConvexPolyhedron(p, planes)) continue;
           const active = planes.filter(plane => Math.abs(dot3(plane.n, p) - plane.d) < 1e-9);
           let weight;
+          let kind;
           if (active.length === 0) {
             weight = maxValue;
+            kind = "interior";
           } else if (active.length === 1) {
             weight = maxValue / 2;
+            kind = "face";
           } else if (active.length === 2) {
             const n0 = normalize3(active[0].n);
             const n1 = normalize3(active[1].n);
             const cos = Math.max(-1, Math.min(1, dot3(n0, n1)));
             weight = computeNormalizedAngleWeight(Math.PI - Math.acos(cos), 2 * Math.PI, maxValue);
+            kind = "edge";
           } else {
             const omega = vertexConeSolidAngle(p, verts, planes) ?? convexSolidAngleAtPoint(p, verts, orientedFaces, center, planes);
             weight = Math.max(1, Math.min(maxValue, computeNormalizedAngleWeight(omega, 4 * Math.PI, maxValue)));
+            kind = "vertex";
           }
-          if (weight > 0) occ.push([p, weight]);
+          if (weight > 0) occ.push([p, weight, null, null, kind]);
         }
       }
     }
@@ -2138,13 +2143,13 @@ export const tileSpecs = (() => {
     }
     const scaledVerts = vertsList.map(v => v.map(c => (c * SCALE)|0));
     const occ = new Map();
-    for (const v of vertsList) occ.set(v.map(c => (c*SCALE)|0).join(","), 1);
+    for (const v of vertsList) occ.set(v.map(c => (c*SCALE)|0).join(","), [1, "vertex"]);
     for (let i=0;i<vertsList.length;i++) for (let j=i+1;j<vertsList.length;j++) {
       const a = vertsList[i], b = vertsList[j];
       const man = Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]);
       if (man === 1) {
         const mid = [(a[0]+b[0]),(a[1]+b[1]),(a[2]+b[2])].map(c => (c*SCALE/2)|0);
-        occ.set(mid.join(","), 2);
+        occ.set(mid.join(","), [2, "edge"]);
       }
     }
     for (const v of vox) {
@@ -2153,12 +2158,12 @@ export const tileSpecs = (() => {
       for (let i=0;i<3;i++) {
         const a = add3(vs, roll([2,1,1], i));
         const b = add3(vs, roll([0,1,1], i));
-        occ.set(a.join(","), 4);
-        occ.set(b.join(","), 4);
+        occ.set(a.join(","), [4, "face"]);
+        occ.set(b.join(","), [4, "face"]);
       }
-      occ.set([v[0]*SCALE+1, v[1]*SCALE+1, v[2]*SCALE+1].join(","), POLYCUBE_SOLID_ANGLE_MAX);
+      occ.set([v[0]*SCALE+1, v[1]*SCALE+1, v[2]*SCALE+1].join(","), [POLYCUBE_SOLID_ANGLE_MAX, "interior"]);
     }
-    const occList = [...occ.entries()].map(([k,w]) => [k.split(",").map(Number), w]);
+    const occList = [...occ.entries()].map(([k,w]) => [k.split(",").map(Number), w[0], null, null, w[1]]);
     const faceData = faces.map(f => ({ v: f.slice(), type: "default" }));
     return { v: scaledVerts, f_data: faceData, occ: occList, skip_winding: true, solid_angle: { kind: "rational", max_value: POLYCUBE_SOLID_ANGLE_MAX } };
   };
@@ -2170,7 +2175,7 @@ export const tileSpecs = (() => {
       this.verts = vertices.map(v => v.slice());
       this.faces = face_data.map(f => f.v.slice());
       this.face_types = face_data.map(f => f.type);
-      this.occupancy_points = (occupancy_map || []).map(([pt,w,symbolic]) => ({ pos: pt.slice(), weight: w, symbolic }));
+      this.occupancy_points = (occupancy_map || []).map(([pt,w,symbolic,display_symbolic,kind]) => ({ pos: pt.slice(), weight: w, symbolic, display_symbolic, kind }));
       this.solid_angle = { kind: solid_angle.kind ?? "numeric", max_value: solid_angle.max_value ?? LEGACY_SOLID_ANGLE_MAX, symbols: [...(solid_angle.symbols ?? [])] };
       this.is_polycube = this.solid_angle.max_value === POLYCUBE_SOLID_ANGLE_MAX && this.occupancy_points.some(pt => pt.weight === POLYCUBE_SOLID_ANGLE_MAX);
       if (!skip_winding) this._fixWinding();
@@ -2214,7 +2219,7 @@ export const tileSpecs = (() => {
           const vIndex = new Map(tVerts.map((v,i)=>[v.join(","), i]));
           const tOcc = this.occupancy_points.map(pt => {
             const mp = mul(M, pt.pos);
-            return { pos: [mp[0]-shift[0], mp[1]-shift[1], mp[2]-shift[2]], weight: pt.weight, symbolic: pt.symbolic };
+            return { pos: [mp[0]-shift[0], mp[1]-shift[1], mp[2]-shift[2]], weight: pt.weight, symbolic: pt.symbolic, display_symbolic: pt.display_symbolic, kind: pt.kind };
           });
           const newFaces = [];
           const newFaceTypes = [];
@@ -2255,7 +2260,7 @@ export const tileSpecs = (() => {
       const minv = [Infinity,Infinity,Infinity];
       for (const v of mirror) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
       const tVerts = mirror.map(v => sub3(v, minv));
-      const tOcc = this.occupancy_points.map(pt => ({ pos: sub3([-pt.pos[0], pt.pos[1], pt.pos[2]], minv), weight: pt.weight, symbolic: pt.symbolic }));
+      const tOcc = this.occupancy_points.map(pt => ({ pos: sub3([-pt.pos[0], pt.pos[1], pt.pos[2]], minv), weight: pt.weight, symbolic: pt.symbolic, display_symbolic: pt.display_symbolic, kind: pt.kind }));
       const vHash = tVerts.map(v=>v.join(",")).sort().join("|");
       const oHash = tOcc.map(p=>`${p.pos.join(",")}:${p.weight}`).sort().join("|");
       const mirrorHash = `${vHash}@@${oHash}`;
@@ -2288,7 +2293,7 @@ export const tileSpecs = (() => {
       const minv = [Infinity,Infinity,Infinity];
       for (const v of mirrorVerts) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
       const tVerts = mirrorVerts.map(v => sub3(v, minv));
-      const mirrorOcc = this.occupancy_points.map(p => [sub3([-p.pos[0],p.pos[1],p.pos[2]], minv), p.weight, p.symbolic]);
+      const mirrorOcc = this.occupancy_points.map(p => [sub3([-p.pos[0],p.pos[1],p.pos[2]], minv), p.weight, p.symbolic, p.display_symbolic, p.kind]);
       const faceData = this.faces.map((f,i)=>({ v: f.slice(), type: this.face_types[i] }));
       return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true, this.solid_angle);
     }
@@ -2298,7 +2303,10 @@ export const tileSpecs = (() => {
     return new Prototile3D(name, data.v, data.f_data, data.occ, !!data.skip_winding, false, data.solid_angle);
   };
 
-  const withSymbolicSolidAngles = (occ, rules) => occ.map(([pos, weight]) => [pos, weight, rules(weight)]);
+  const withSymbolicSolidAngles = (occ, rules) => occ.map(([pos, weight, _symbol, _display, kind]) => {
+    const symbolic = rules(weight, kind);
+    return [pos, weight, symbolic?.symbol ?? symbolic, symbolic?.display ?? symbolic, kind];
+  });
 
   const gen_tetrahedron_data = () => {
     const verts = [[0,0,0],[1,1,0],[1,0,1],[0,1,1]];
@@ -2308,9 +2316,9 @@ export const tileSpecs = (() => {
       false, false
     );
     data.occ = withSymbolicSolidAngles(data.occ, weight => {
-      if (weight === LEGACY_SOLID_ANGLE_MAX) return "1";
-      if (weight <= 3) return "α";
-      return "(1 + 4α)/6";
+      if (weight === LEGACY_SOLID_ANGLE_MAX) return { symbol: "1", display: "1" };
+      if (weight <= 3) return { symbol: "α", display: "(3 arccos(1/3) - π)/(4π)" };
+      return { symbol: "(1 + 4α)/6", display: "(1 + 4((3 arccos(1/3) - π)/(4π)))/6" };
     });
     data.solid_angle = { kind: "symbolic", max_value: LEGACY_SOLID_ANGLE_MAX, symbols: ["α = (3 arccos(1/3) - π)/(4π)"] };
     return data;
@@ -2336,18 +2344,23 @@ export const tileSpecs = (() => {
     const vertexWeight = computeNormalizedAngleWeight(4 * Math.asin(1 / 3), 4 * Math.PI);
     const edgeWeight = computeNormalizedAngleWeight(Math.acos(-1 / 3), 2 * Math.PI);
     const occ = new Map();
-    for (const v of data.v) occ.set(v.join(','), vertexWeight);
+    for (const v of data.v) occ.set(v.join(','), [vertexWeight, 'vertex']);
     for (let i = 0; i < data.v.length; i++) {
       for (let j = i + 1; j < data.v.length; j++) {
         const a = data.v[i], b = data.v[j];
         const d2 = (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
-        if (d2 === 8) occ.set([(a[0]+b[0])/2, (a[1]+b[1])/2, (a[2]+b[2])/2].join(','), edgeWeight);
+        if (d2 === 8) occ.set([(a[0]+b[0])/2, (a[1]+b[1])/2, (a[2]+b[2])/2].join(','), [edgeWeight, 'edge']);
       }
     }
-    occ.set('0,0,0', LEGACY_SOLID_ANGLE_MAX);
-    data.occ = [...occ.entries()].map(([key, weight]) => [key.split(',').map(Number), weight,
-      weight === LEGACY_SOLID_ANGLE_MAX ? "1" : (weight === vertexWeight ? "(1 - 8α)/6" : "(1 - 2α)/3")
-    ]);
+    occ.set('0,0,0', [LEGACY_SOLID_ANGLE_MAX, 'interior']);
+    data.occ = [...occ.entries()].map(([key, item]) => {
+      const [weight, kind] = item;
+      return [key.split(',').map(Number), weight,
+        weight === LEGACY_SOLID_ANGLE_MAX ? "1" : (weight === vertexWeight ? "(1 - 8α)/6" : "(1 - 2α)/3"),
+        weight === LEGACY_SOLID_ANGLE_MAX ? "1" : (weight === vertexWeight ? "(1 - 8((3 arccos(1/3) - π)/(4π)))/6" : "(1 - 2((3 arccos(1/3) - π)/(4π)))/3"),
+        kind
+      ];
+    });
     data.solid_angle = { kind: "symbolic", max_value: LEGACY_SOLID_ANGLE_MAX, symbols: ["α = (3 arccos(1/3) - π)/(4π)"] };
     return data;
   };
@@ -2848,10 +2861,10 @@ export const tileSpecs = (() => {
   const solidAngleValues = (tile) => {
     const maxValue = tile?.solid_angle?.max_value ?? LEGACY_SOLID_ANGLE_MAX;
     return (tile?.occupancy_points ?? [])
-      .map(point => ({ weight: point.weight, symbolic: point.symbolic }))
-      .filter(item => Number.isFinite(item.weight))
+      .map(point => ({ weight: point.weight, symbolic: point.symbolic, display_symbolic: point.display_symbolic, kind: point.kind }))
+      .filter(item => Number.isFinite(item.weight) && item.kind !== "interior")
       .sort((a, b) => a.weight - b.weight)
-      .map(item => ({ weight: item.weight, max_value: maxValue, value: item.weight / maxValue, symbolic: item.symbolic }));
+      .map(item => ({ weight: item.weight, max_value: maxValue, value: item.weight / maxValue, symbolic: item.symbolic, display_symbolic: item.display_symbolic, kind: item.kind }));
   };
 
   const tileGeometryKey = (tile) => {

@@ -20,7 +20,8 @@ const formatTValue = (weight, maxValue) => {
 const profile = (tile, maxValue) => {
   const counts = new Map();
   for (const point of tile.occupancy_points ?? []) {
-    const label = point.symbolic ?? formatTValue(point.weight, maxValue);
+    if (point.kind === "interior") continue;
+    const label = point.display_symbolic ?? point.symbolic ?? formatTValue(point.weight, maxValue);
     counts.set(label, (counts.get(label) ?? 0) + 1);
   }
   return [...counts.entries()].sort((a, b) => Number(evalFraction(a[0])) - Number(evalFraction(b[0])));
