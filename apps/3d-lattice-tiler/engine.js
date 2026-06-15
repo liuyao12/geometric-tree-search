@@ -1333,17 +1333,23 @@ export const createTilingStream = (() => {
           const candidates = await nodeCandidatesForVertexOption(option, 2);
           option.candidates = candidates;
           options.push(option);
-          if (candidates.length === 0) return { options, deadEnd: option };
+          if (candidates.length === 0) return { options, deadEnd: option, candidate_count: 0 };
         }
+        const uniqueCandidates = new Set();
+        for (const option of options) {
+          const candidates = await nodeCandidatesForVertexOption(option, candidateCap);
+          for (const candidate of candidates) uniqueCandidates.add(candidate.dedup_key ?? placementGeometryKey(candidate));
+        }
+        const candidate_count = uniqueCandidates.size;
         const forced = options.filter(option => option.candidates.length === 1).sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.pointKey.localeCompare(right.pointKey));
-        if (forced.length) return { options, forced };
-        if (!options.length) return { options, branches: [] };
-        return { options, branches: options.slice().sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.candidates.length - right.candidates.length || left.pointKey.localeCompare(right.pointKey)) };
+        if (forced.length) return { options, forced, candidate_count };
+        if (!options.length) return { options, branches: [], candidate_count: 0 };
+        return { options, branches: options.slice().sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.candidates.length - right.candidates.length || left.pointKey.localeCompare(right.pointKey)), candidate_count };
       };
       const candidateFrontierStats = (analysis) => ({
         ...calculateFrontierStats(),
         point_count: analysis?.options?.length ?? frontierPointStats().point_count,
-        candidate_count: (analysis?.options ?? []).reduce((sum, option) => sum + (option.candidates?.length ?? 0), 0)
+        candidate_count: analysis?.candidate_count ?? 0
       });
 
       let forcedCount = 0;
@@ -1988,29 +1994,19 @@ export const tileSpecs = (() => {
     }
     const scaledVerts = vertsList.map(v => v.map(c => (c * SCALE)|0));
     const occ = new Map();
-    for (const v of vertsList) occ.set(v.map(c => (c*SCALE)|0).join(","), [1, "vertex"]);
-    if (SCALE >= 2) {
-      for (let i=0;i<vertsList.length;i++) for (let j=i+1;j<vertsList.length;j++) {
-        const a = vertsList[i], b = vertsList[j];
-        const man = Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]);
-        if (man === 1) {
-          const mid = [(a[0]+b[0]),(a[1]+b[1]),(a[2]+b[2])].map(c => (c*SCALE/2)|0);
-          occ.set(mid.join(","), [2, "edge"]);
-        }
-      }
-      for (const v of vox) {
-        const vs = v.map(c => (c*SCALE)|0);
-        const roll = (arr, k) => arr.slice(k).concat(arr.slice(0,k));
-        for (let i=0;i<3;i++) {
-          const a = add3(vs, roll([2,1,1], i));
-          const b = add3(vs, roll([0,1,1], i));
-          occ.set(a.join(","), [4, "face"]);
-          occ.set(b.join(","), [4, "face"]);
-        }
-        occ.set([v[0]*SCALE+1, v[1]*SCALE+1, v[2]*SCALE+1].join(","), [POLYCUBE_SOLID_ANGLE_MAX, "interior"]);
+    for (const v of vox) {
+      for (const dx of [0,1]) for (const dy of [0,1]) for (const dz of [0,1]) {
+        const key = [v[0]+dx, v[1]+dy, v[2]+dz].map(c => (c*SCALE)|0).join(",");
+        occ.set(key, (occ.get(key) ?? 0) + 1);
       }
     }
-    const occList = [...occ.entries()].map(([k,w]) => [k.split(",").map(Number), w[0], null, null, w[1]]);
+    const polycubeKind = (weight) => {
+      if (weight >= POLYCUBE_SOLID_ANGLE_MAX) return "interior";
+      if (weight >= 4) return "face";
+      if (weight >= 2) return "edge";
+      return "vertex";
+    };
+    const occList = [...occ.entries()].map(([k,weight]) => [k.split(",").map(Number), weight, null, null, polycubeKind(weight)]);
     const faceData = faces.map(f => ({ v: f.slice(), type: "default" }));
     return { v: scaledVerts, f_data: faceData, occ: occList, skip_winding: true, solid_angle: { kind: "rational", max_value: POLYCUBE_SOLID_ANGLE_MAX } };
   };
@@ -2709,7 +2705,7 @@ export const tileSpecs = (() => {
     const maxValue = tile?.solid_angle?.max_value ?? LEGACY_SOLID_ANGLE_MAX;
     return (tile?.occupancy_points ?? [])
       .map(point => ({ weight: point.weight, symbolic: point.symbolic, display_symbolic: point.display_symbolic, kind: point.kind }))
-      .filter(item => Number.isFinite(item.weight) && item.kind !== "interior")
+      .filter(item => Number.isFinite(item.weight))
       .sort((a, b) => a.weight - b.weight)
       .map(item => ({ weight: item.weight, max_value: maxValue, value: item.weight / maxValue, symbolic: item.symbolic, display_symbolic: item.display_symbolic, kind: item.kind }));
   };

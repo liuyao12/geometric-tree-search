@@ -20,7 +20,6 @@ const formatTValue = (weight, maxValue) => {
 const profile = (tile, maxValue) => {
   const counts = new Map();
   for (const point of tile.occupancy_points ?? []) {
-    if (point.kind === "interior") continue;
     const label = point.display_symbolic ?? point.symbolic ?? formatTValue(point.weight, maxValue);
     counts.set(label, (counts.get(label) ?? 0) + 1);
   }
@@ -43,7 +42,7 @@ for (const [modeKey, entry] of Object.entries(tileSpecs.TILING_REGISTRY)) {
     if (!values.length) failures.push(`${modeKey}/${tile.name}: no solid-angle samples`);
     if (isThreeDimensional && hasOnlyFullInterior) failures.push(`${modeKey}/${tile.name}: only full solid-angle samples (t=1)`);
     const label = values.map(([value, count]) => `${value}×${count}`).join(", ");
-    console.log(`${modeKey}/${tile.name} [max=${maxValue}, kind=${tile.solid_angle?.kind ?? "numeric"}, t full=1]: ${label}`);
+    console.log(`${modeKey}/${tile.name}: ${label}`);
   }
 }
 
