@@ -42,8 +42,6 @@ const metricTiles = $("metricTiles");
 const metricFrontier = $("metricFrontier");
 const metricLayer = $("metricLayer");
 const metricLayerDetail = $("metricLayerDetail");
-const metricForced = $("metricForced");
-const metricBacktracks = $("metricBacktracks");
 const metricVisited = $("metricVisited");
 const metricVisitedDetail = $("metricVisitedDetail");
 const metricNodes = $("metricNodes");
@@ -282,8 +280,8 @@ function criterion() {
 
 function updateCriterionUI() {
   const byCount = criterion() === "count";
-  maxTileField.classList.toggle("is-hidden", !byCount);
-  layerField.classList.toggle("is-hidden", byCount);
+  maxTileField.classList.toggle("is-active", byCount);
+  layerField.classList.toggle("is-active", !byCount);
 }
 
 function initFigureSelection() {
@@ -577,13 +575,27 @@ function renderSelectedTiles() {
     count.textContent = tileCountForSelectedItem(item);
     count.title = "Copies in the displayed tiling";
 
+    const opacity = document.createElement("input");
+    opacity.className = "selected-tile-opacity";
+    opacity.type = "range";
+    opacity.min = "0";
+    opacity.max = "1";
+    opacity.step = "0.05";
+    opacity.value = currentOpacities[item.tileIndex] ?? 1;
+    opacity.title = `Opacity for ${item.name}`;
+    opacity.addEventListener("input", () => {
+      currentOpacities[item.tileIndex] = +opacity.value;
+      if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true });
+      requestRender();
+    });
+
     const remove = document.createElement("button");
     remove.type = "button";
     remove.className = "selected-tile-remove";
     remove.textContent = "x";
     remove.title = `Remove ${item.name}`;
     remove.addEventListener("click", item.remove);
-    row.append(main, count, remove);
+    row.append(main, opacity, count, remove);
     selectedTilesEl.appendChild(row);
   });
 }
@@ -1040,18 +1052,17 @@ function formatVisitedPercent(value) {
 }
 
 function updateFrontierMetrics(stats = null) {
-  const totalFaces = stats?.total_faces ?? stats?.count ?? 0;
-  const layer = stats?.min_gen ?? 0;
-  const layerFaces = stats?.count ?? 0;
-  metricFrontier.textContent = totalFaces;
-  metricLayer.textContent = layer;
-  metricLayerDetail.textContent = `${layerFaces} face${layerFaces === 1 ? "" : "s"} at layer ${layer}`;
+  const frontierPoints = stats?.point_count ?? stats?.frontier_points ?? stats?.count ?? 0;
+  const candidateCount = stats?.candidate_count;
+  metricFrontier.textContent = frontierPoints;
+  metricLayer.textContent = Number.isFinite(candidateCount) ? candidateCount : "—";
+  metricLayerDetail.textContent = Number.isFinite(candidateCount)
+    ? `candidate${candidateCount === 1 ? "" : "s"} for ${frontierPoints} frontier point${frontierPoints === 1 ? "" : "s"}`
+    : "candidates pending";
 }
 
 function updateSearchMetrics(stats = null) {
   if (stats) lastSearchStats = stats;
-  const forcedOnPath = stats?.forced_on_path ?? 0;
-  const backtracks = stats?.backtracks ?? 0;
   const visitedPercent = stats?.visited_percent ?? 0;
   const progressDepth = stats?.progress_depth ?? stats?.max_depth ?? 0;
   const completedPaths = stats?.progress_completed_paths ?? stats?.visited_nodes ?? treeMap.size;
@@ -1059,8 +1070,6 @@ function updateSearchMetrics(stats = null) {
   const completedPathLabel = stats?.progress_completed_paths_label ?? completedPaths;
   const totalPathLabel = stats?.progress_total_paths_label ?? totalPaths;
 
-  metricForced.textContent = forcedOnPath;
-  metricBacktracks.textContent = backtracks;
   metricVisited.textContent = formatVisitedPercent(visitedPercent);
   metricVisitedDetail.textContent = `DFS estimate, depth ${progressDepth}`;
   metricNodes.textContent = totalPathLabel
@@ -1258,6 +1267,7 @@ function initTileControls(info) {
     row.append(swatch, meta);
     tileList.appendChild(row);
   });
+  renderSelectedTiles();
 }
 
 function addNodeToTree(id, label, parentId = null, isForced = false, frontierStats = null) {
@@ -1493,10 +1503,12 @@ function renderTree() {
     const frontier = document.createElement("span");
     frontier.className = "tree-frontier";
     if (node.frontierStats) {
-      const count = node.frontierStats.count ?? 0;
-      const gen = node.frontierStats.min_gen ?? 0;
-      frontier.textContent = `${count} faces @ gen ${gen}`;
-      frontier.title = "Frontier faces at the earliest generation";
+      const points = node.frontierStats.point_count ?? node.frontierStats.count ?? 0;
+      const candidates = node.frontierStats.candidate_count;
+      frontier.textContent = Number.isFinite(candidates)
+        ? `${points} pts / ${candidates} cand`
+        : `${points} pts`;
+      frontier.title = "Frontier points and cached candidate count";
     }
 
     content.append(statusDot, label);
