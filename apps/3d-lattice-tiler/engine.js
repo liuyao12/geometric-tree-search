@@ -390,8 +390,47 @@ export const createTilingStream = (() => {
       if (state.lattice.get(k) <= 0) state.lattice.delete(k);
     };
 
-    const invalidateCandidateCaches = () => {
-      state.vertex_candidate_cache.clear();
+    const candidateCachePointKey = (cacheKey) => cacheKey.split("::", 1)[0];
+    let candidateInfluenceOffsets = null;
+    const candidateInfluenceOffsetKeys = () => {
+      if (candidateInfluenceOffsets) return candidateInfluenceOffsets;
+      const offsets = new Set(["0,0,0"]);
+      for (const tile of prototiles) {
+        for (const orient of tile.unique_orientations) {
+          for (const anchor of orient.occupancy) {
+            for (const occ of orient.occupancy) {
+              offsets.add([
+                anchor.pos[0] - occ.pos[0],
+                anchor.pos[1] - occ.pos[1],
+                anchor.pos[2] - occ.pos[2]
+              ].join(","));
+            }
+          }
+        }
+      }
+      candidateInfluenceOffsets = [...offsets].map(key => key.split(",").map(Number));
+      return candidateInfluenceOffsets;
+    };
+    const candidateInfluencePointKeys = (positions) => {
+      if (!positions?.length) return null;
+      const keys = new Set();
+      const offsets = candidateInfluenceOffsetKeys();
+      for (const pos of positions) {
+        for (const offset of offsets) {
+          keys.add([pos[0] + offset[0], pos[1] + offset[1], pos[2] + offset[2]].join(","));
+        }
+      }
+      return keys;
+    };
+    const invalidateCandidateCaches = (changedPositions = null) => {
+      const affectedPointKeys = candidateInfluencePointKeys(changedPositions);
+      if (!affectedPointKeys) {
+        state.vertex_candidate_cache.clear();
+        return;
+      }
+      for (const cacheKey of state.vertex_candidate_cache.keys()) {
+        if (affectedPointKeys.has(candidateCachePointKey(cacheKey))) state.vertex_candidate_cache.delete(cacheKey);
+      }
     };
 
     const isMoveValid = (move) => {
@@ -441,6 +480,10 @@ export const createTilingStream = (() => {
         .join("|");
       return `${move.prototile_idx}::${vertsKey}`;
     };
+    // Polycube samples include D3 face-center frontier points, but allowed
+    // polycube moves remain translations of the doubled cube-vertex lattice.
+    const isPolycubeMoveTranslation = (translation) =>
+      translation.every(Number.isInteger) && translation.every(value => value % 2 === 0);
     const checkMoveViability = (move) => {
       const validCheck = isMoveValid(move);
       if (!validCheck.ok) return null;
@@ -454,6 +497,7 @@ export const createTilingStream = (() => {
     const applyMove = (move) => {
       state.placements.push(move);
       stateVersion += 1;
+      const changedOccupancyPositions = move.occupancy_data.map(o => o.pos);
       for (const o of move.occupancy_data) latticeAdd(o.pos, o.weight);
 
       const gVerts = move.orient.verts.map(v => add3(v, move.translation));
@@ -493,7 +537,7 @@ export const createTilingStream = (() => {
         }
       }
 
-      invalidateCandidateCaches();
+      invalidateCandidateCaches(changedOccupancyPositions);
 
       if (added.length) {
         const activeVerts = new Set();
@@ -524,12 +568,13 @@ export const createTilingStream = (() => {
 
     const undoMove = (move, rb) => {
       for (const [k, oldGen] of (rb.modified_gens ?? [])) { const e = state.frontier.get(k); if(e) e.gen = oldGen; }
+      const changedOccupancyPositions = move.occupancy_data.map(o => o.pos);
       for (const [k, val] of rb.removed) {
         state.frontier.set(k, val);
         const stack = state.viz_faces.get(k);
         if (stack) { stack.pop(); if (stack.length === 1) stack[0].internal = false; if (stack.length === 0) state.viz_faces.delete(k); }
       }
-      invalidateCandidateCaches();
+      invalidateCandidateCaches(changedOccupancyPositions);
       for (const k of rb.added) {
         state.frontier.delete(k);
         const stack = state.viz_faces.get(k);
@@ -602,12 +647,12 @@ export const createTilingStream = (() => {
     };
 
     const moveCoverage = (m) => {
-      if (m._coverage != null) return m._coverage;
-      const gVerts = m.orient.verts.map(v => add3(v, m.translation));
-      let c = 0;
-      for (const fIdx of m.orient.faces) if (state.frontier.has(keyFace(fIdx.map(i => gVerts[i])))) c++;
-      m._coverage = c;
-      return c;
+      if (m._coverage != null && m._coverage_version === stateVersion) return m._coverage;
+      const shared = sharedFrontierPoints(m);
+      const coverage = shared.reduce((sum, point) => sum + Math.min(MAX_SOLID_ANGLE, latticeGet(point)) / MAX_SOLID_ANGLE, 0);
+      m._coverage = coverage;
+      m._coverage_version = stateVersion;
+      return coverage;
     };
     const rootOrientations = prototiles.map(t => t.unique_orientations?.[0] ?? null);
     const sameRootOrientation = (move) => move.orient === rootOrientations[move.prototile_idx] ? 1 : 0;
@@ -922,7 +967,7 @@ export const createTilingStream = (() => {
         return [
           stats.min_gen,
           -stats.count,
-          -stats.total_faces,
+          -(stats.point_count ?? stats.count ?? 0),
           moveOrder === "balanced" ? symmetry.score : 0,
           moveOrder === "balanced" ? symmetry.best_ratio : 0,
           moveOrder === "balanced" ? repeat() : 0,
@@ -1294,6 +1339,7 @@ export const createTilingStream = (() => {
             await yieldToBrowser();
             for (const anchor of orient.occupancy) {
               const translation = [option.point[0] - anchor.pos[0], option.point[1] - anchor.pos[1], option.point[2] - anchor.pos[2]];
+              if (tile.is_polycube ? !isPolycubeMoveTranslation(translation) : !translation.every(Number.isInteger)) continue;
               const mv = { prototile_idx, translation, orient };
               const chk = checkMoveViability(mv);
               if (!chk) continue;
@@ -1329,22 +1375,72 @@ export const createTilingStream = (() => {
       };
       const analyzeFrontierVertices = async () => {
         const options = [];
+        const uniqueCandidatesForOption = (candidates) => {
+          const dedup = new Map();
+          for (const candidate of candidates ?? []) {
+            const key = candidate.dedup_key ?? placementGeometryKey(candidate);
+            if (!dedup.has(key)) dedup.set(key, candidate);
+          }
+          return [...dedup.values()];
+        };
         for (const option of frontierPointOptions()) {
-          const candidates = await nodeCandidatesForVertexOption(option, 2);
-          option.candidates = candidates;
+          const candidates = await nodeCandidatesForVertexOption(option, candidateCap);
+          option.all_candidates = candidates;
+          option.unique_candidates = uniqueCandidatesForOption(candidates);
+          option.candidates = option.unique_candidates.slice(0, 2);
           options.push(option);
-          if (candidates.length === 0) return { options, deadEnd: option, candidate_count: 0 };
         }
         const uniqueCandidates = new Set();
         for (const option of options) {
-          const candidates = await nodeCandidatesForVertexOption(option, candidateCap);
-          for (const candidate of candidates) uniqueCandidates.add(candidate.dedup_key ?? placementGeometryKey(candidate));
+          for (const candidate of option.unique_candidates) uniqueCandidates.add(candidate.dedup_key ?? placementGeometryKey(candidate));
         }
         const candidate_count = uniqueCandidates.size;
-        const forced = options.filter(option => option.candidates.length === 1).sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.pointKey.localeCompare(right.pointKey));
+        const deadEnd = options.find(option => option.unique_candidates.length === 0);
+        if (deadEnd) return { options, deadEnd, candidate_count };
+        const forced = options.filter(option => option.unique_candidates.length === 1).sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.pointKey.localeCompare(right.pointKey));
         if (forced.length) return { options, forced, candidate_count };
         if (!options.length) return { options, branches: [], candidate_count: 0 };
-        return { options, branches: options.slice().sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.candidates.length - right.candidates.length || left.pointKey.localeCompare(right.pointKey)), candidate_count };
+        return { options, branches: options.slice().sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.unique_candidates.length - right.unique_candidates.length || left.pointKey.localeCompare(right.pointKey)), candidate_count };
+      };
+      const candidateFrontierStats = (analysis) => ({
+        ...calculateFrontierStats(),
+        point_count: analysis?.options?.length ?? frontierPointStats().point_count,
+        candidate_count: analysis?.candidate_count ?? 0
+      });
+      const frontierCandidateDual = (analysis) => {
+        const candidateMap = new Map();
+        const frontier_points = [];
+        for (const option of analysis?.options ?? []) {
+          const candidateKeys = new Set();
+          for (const candidate of option.unique_candidates ?? option.all_candidates ?? option.candidates ?? []) {
+            const key = candidate.dedup_key ?? placementGeometryKey(candidate);
+            candidateKeys.add(key);
+            if (!candidateMap.has(key)) {
+              candidateMap.set(key, {
+                key,
+                prototile_idx: candidate.prototile_idx,
+                translation: candidate.translation?.slice() ?? [0, 0, 0],
+                frontier_points: []
+              });
+            }
+            candidateMap.get(key).frontier_points.push(option.pointKey);
+          }
+          frontier_points.push({
+            point_key: option.pointKey,
+            point: option.point.slice(),
+            weight: option.weight,
+            candidate_keys: [...candidateKeys]
+          });
+        }
+        const candidates = [...candidateMap.values()].map(candidate => ({
+          ...candidate,
+          frontier_points: [...new Set(candidate.frontier_points)]
+        }));
+        return {
+          frontier_points,
+          candidates,
+          association_count: frontier_points.reduce((sum, point) => sum + point.candidate_keys.length, 0)
+        };
       };
       const candidateFrontierStats = (analysis) => ({
         ...calculateFrontierStats(),
@@ -1366,17 +1462,21 @@ export const createTilingStream = (() => {
         }
 
         const analysis = await analyzeFrontierVertices();
-        const analysisStats = candidateFrontierStats(analysis);
+        const frontierDual = frontierCandidateDual(analysis);
+        const analysisStats = {
+          ...candidateFrontierStats(analysis),
+          association_count: frontierDual.association_count
+        };
         if (overBudget()) { yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
         if (analysis.deadEnd) {
           searchStats.failed_leaves += 1;
-          yield nodeStatus(parentId, "fail", "Dead End", { frontier_stats: analysisStats });
+          yield nodeStatus(parentId, "fail", "Dead End", { frontier_stats: analysisStats, frontier_dual: frontierDual });
           return yield* doReturn(false);
         }
-        yield nodeStatus(parentId, "working", "", { frontier_stats: analysisStats });
+        yield nodeStatus(parentId, "working", "", { frontier_stats: analysisStats, frontier_dual: frontierDual });
         if (analysis.forced?.length) {
           const option = analysis.forced[0];
-          const mv = option.candidates[0];
+          const mv = option.unique_candidates[0];
           mv.is_forced = true;
           searchStats.forced_total += 1;
           const rb = applyMove(mv);
@@ -1417,7 +1517,7 @@ export const createTilingStream = (() => {
         let bestFaceScore = null;
         for (const option of branchOptions) {
           await yieldToBrowser();
-          const moves = await nodeCandidatesForVertexOption(option, candidateCap);
+          const moves = option.unique_candidates ?? await nodeCandidatesForVertexOption(option, candidateCap);
           if (!moves.length) continue;
           let bestCoverage = -1;
           for (const m of moves) bestCoverage = Math.max(bestCoverage, moveCoverage(m));
@@ -1435,7 +1535,7 @@ export const createTilingStream = (() => {
         if (!bestOption) {
           for (const option of branchOptions) {
             await yieldToBrowser();
-            const moves = await nodeCandidatesForVertexOption(option, candidateCap);
+            const moves = option.unique_candidates ?? await nodeCandidatesForVertexOption(option, candidateCap);
             if (moves.length) { bestOption = option; bestOptionMoves = moves; break; }
           }
         }
@@ -1515,6 +1615,7 @@ export const createTilingStream = (() => {
 
 export const tileSpecs = (() => {
   const SCALE = 1;
+  const POLYCUBE_COORD_SCALE = 2;
   const POLYCUBE_SOLID_ANGLE_MAX = 8;
   const LEGACY_SOLID_ANGLE_MAX = 48;
 
@@ -1992,12 +2093,21 @@ export const tileSpecs = (() => {
         }
       }
     }
-    const scaledVerts = vertsList.map(v => v.map(c => (c * SCALE)|0));
+    const scaledVerts = vertsList.map(v => v.map(c => (c * POLYCUBE_COORD_SCALE * SCALE)|0));
     const occ = new Map();
+    const addOcc = (pos, weight) => {
+      const key = pos.map(c => c * POLYCUBE_COORD_SCALE * SCALE).join(",");
+      occ.set(key, (occ.get(key) ?? 0) + weight);
+    };
     for (const v of vox) {
+      const [x, y, z] = v;
       for (const dx of [0,1]) for (const dy of [0,1]) for (const dz of [0,1]) {
-        const key = [v[0]+dx, v[1]+dy, v[2]+dz].map(c => (c*SCALE)|0).join(",");
-        occ.set(key, (occ.get(key) ?? 0) + 1);
+        addOcc([x + dx, y + dy, z + dz], 1);
+      }
+      for (const fixed of [0, 1]) {
+        addOcc([x + fixed, y + 0.5, z + 0.5], 4);
+        addOcc([x + 0.5, y + fixed, z + 0.5], 4);
+        addOcc([x + 0.5, y + 0.5, z + fixed], 4);
       }
     }
     const polycubeKind = (weight) => {
@@ -2020,7 +2130,7 @@ export const tileSpecs = (() => {
       this.face_types = face_data.map(f => f.type);
       this.occupancy_points = (occupancy_map || []).map(([pt,w,symbolic,display_symbolic,kind]) => ({ pos: pt.slice(), weight: w, symbolic, display_symbolic, kind }));
       this.solid_angle = { kind: solid_angle.kind ?? "numeric", max_value: solid_angle.max_value ?? LEGACY_SOLID_ANGLE_MAX, symbols: [...(solid_angle.symbols ?? [])] };
-      this.is_polycube = this.solid_angle.max_value === POLYCUBE_SOLID_ANGLE_MAX && this.occupancy_points.some(pt => pt.weight === POLYCUBE_SOLID_ANGLE_MAX);
+      this.is_polycube = this.solid_angle.max_value === POLYCUBE_SOLID_ANGLE_MAX;
       if (!skip_winding) this._fixWinding();
       this.unique_orientations = [];
       this.is_chiral = false;

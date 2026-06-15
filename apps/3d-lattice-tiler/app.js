@@ -1332,7 +1332,7 @@ function selectTreeNode(nodeId) {
   renderTree();
 }
 
-function updateNodeStatus(id, status, text = "", colorId = null, frontierStats = null) {
+function updateNodeStatus(id, status, text = "", colorId = null, frontierStats = null, frontierDual = null) {
   const node = treeMap.get(id);
   if (!node) return;
   node.status = status;
@@ -1349,6 +1349,7 @@ function updateNodeStatus(id, status, text = "", colorId = null, frontierStats =
   }
   if (colorId != null) node.colorId = colorId;
   if (frontierStats) node.frontierStats = frontierStats;
+  if (frontierDual) node.frontierDual = frontierDual;
 
   if (status === "fail" && !manuallyExpanded.has(id)) expandedNodes.delete(id);
   if (status === "working") {
@@ -1508,7 +1509,10 @@ function renderTree() {
       frontier.textContent = Number.isFinite(candidates)
         ? `${points} pts / ${candidates} cand`
         : `${points} pts`;
-      frontier.title = "Frontier points and cached candidate count";
+      const associations = node.frontierDual?.association_count ?? node.frontierStats.association_count;
+      frontier.title = Number.isFinite(associations)
+        ? `Frontier-candidate graph: ${points} points, ${candidates ?? 0} candidates, ${associations} associations`
+        : "Frontier points and cached candidate count";
     }
 
     content.append(statusDot, label);
@@ -1560,7 +1564,7 @@ function handleMessage(message) {
     return;
   }
   if (message.type === "node_status") {
-    updateNodeStatus(message.id, message.status, message.text || "", message.color_id, message.frontier_stats);
+    updateNodeStatus(message.id, message.status, message.text || "", message.color_id, message.frontier_stats, message.frontier_dual);
     return;
   }
   if (message.type === "node_snapshot") {
