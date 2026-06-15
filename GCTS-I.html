@@ -41,6 +41,7 @@
               <div class="toolbar-row toolbar-toggle-row">
                 <span class="toolbar-drag-spacer" aria-hidden="true"></span>
                 <label class="toolbar-toggle"><input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
+                <label class="toolbar-toggle mark-extension-control">extend <input type="number" id="turtle-mark-extension" min="0" max="24" step="1" value="1"></label>
                 <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show grid</label>
               </div>
             </div>
@@ -165,6 +166,7 @@
       const resetButton = document.getElementById('turtle-reset');
       const markingsButton = document.getElementById('turtle-markings');
       const markingRulesToggle = document.getElementById('turtle-marking-rules');
+      const markExtensionInput = document.getElementById('turtle-mark-extension');
       const latticeToggle = document.getElementById('turtle-lattice');
       const stageLabel = document.getElementById('turtle-stage-label');
       const stageNote = document.getElementById('turtle-stage-note');
@@ -209,7 +211,8 @@
       const center = rawTurtle.reduce((sum, point) => ({ x: sum.x + point.x, y: sum.y + point.y }), { x: 0, y: 0 });
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
-      const orientations = buildOrientations();
+      let markingExtension = normalizedMarkingExtension();
+      let orientations = buildOrientations(markingExtension);
       // This seed orientation keeps the marked frontier live, so Start tiling can show a second tile immediately.
       const seedOrientationIndex = 1;
       let tilingRunUsesMarking = markingRulesToggle?.checked || false;
@@ -427,7 +430,12 @@
         return symmetries;
       }
 
-      function buildOrientations() {
+      function normalizedMarkingExtension() {
+        const parsed = Number.parseInt(markExtensionInput?.value || '1', 10);
+        return Math.max(0, Math.min(24, Number.isFinite(parsed) ? parsed : 1));
+      }
+
+      function buildOrientations(extensionSteps = markingExtension) {
         return buildA2Symmetries().map((symmetry, orientationIndex) => {
           const occupancy = turtleOccupancy.map(entry => ({
             ...entry,
@@ -465,7 +473,7 @@
               }
             });
           markSegments.forEach(segment => {
-            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1).forEach(point => {
+            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, extensionSteps).forEach(point => {
               setMarkEntry({ point, component: segment.component, value: segment.value });
             });
           });
@@ -1224,6 +1232,31 @@
         ctx.restore();
       }
 
+      function drawExteriorMarkingPoints(placement) {
+        const occupancyKeys = new Set(placement.occupancy.map(item => key3(item.point)));
+        const exterior = new Map();
+        placement.markings.forEach(entry => {
+          if (entry.value === 0 || occupancyKeys.has(key3(entry.point))) return;
+          exterior.set(markingKey(entry), entry);
+        });
+        if (!exterior.size) return;
+        const componentOffsets = [{ x: 0, y: -2.8 }, { x: 2.4, y: 1.4 }, { x: -2.4, y: 1.4 }];
+        ctx.save();
+        exterior.forEach(entry => {
+          const point = projectA2(entry.point);
+          const screen = worldToScreen(point.x, point.y);
+          const nudge = componentOffsets[entry.component] || { x: 0, y: 0 };
+          ctx.beginPath();
+          ctx.arc(screen.x + nudge.x, screen.y + nudge.y, Math.max(1.7, 2.5 * scale), 0, Math.PI * 2);
+          ctx.fillStyle = entry.value > 0 ? markValueColors.positive : markValueColors.negative;
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.86)';
+          ctx.lineWidth = Math.max(0.55, 0.9 * scale);
+          ctx.fill();
+          ctx.stroke();
+        });
+        ctx.restore();
+      }
+
       function drawTurtle(placement, index, options = {}) {
         tracePolygon(placement.points);
         if (options.ghost) {
@@ -1241,7 +1274,10 @@
         ctx.fill();
         ctx.stroke();
         ctx.setLineDash([]);
-        if (!options.ghost && showMarkings) drawMarkings(placement);
+        if (!options.ghost && showMarkings) {
+          drawMarkings(placement);
+          drawExteriorMarkingPoints(placement);
+        }
       }
 
       function labelAnchorForPoint(entry, placements) {
@@ -1384,6 +1420,26 @@
         markingsButton.textContent = showMarkings ? 'Hide marking' : 'Show marking';
         markingsButton.setAttribute('aria-pressed', String(showMarkings));
         if (hoveredPoint) hoverReadout.textContent = hoverLinesForPoint(hoveredPoint).join('; ');
+      }
+
+      function resetTilingForMarkingExtension() {
+        stopTiling();
+        markingExtension = normalizedMarkingExtension();
+        orientations = buildOrientations(markingExtension);
+        const seed = makeSeedPlacement();
+        tilingRun = { placements: [seed], trace: [] };
+        tilingOrder = tilingRun.placements;
+        tilingTrace = tilingRun.trace;
+        shownTiles = 1;
+        playbackPlacements = null;
+        traceIndex = 0;
+        liveSearchIterator = null;
+        pausedCoronas.clear();
+        trialGhost = null;
+        statusText = `marking domain extends ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
+        hasStartedTiling = false;
+        startButton.textContent = 'Start tiling';
+        draw();
       }
 
       function setDemoStage(stageName) {
@@ -1674,6 +1730,11 @@
         if (stageNote) stageNote.textContent = markingRulesToggle.checked ? 'The next Start tiling run will use the ±1 marking stripes as compatibility constraints.' : 'The next Start tiling run will use only the t-value tile constraints.';
         updateMarkingButton();
         draw();
+      });
+      markExtensionInput?.addEventListener('change', resetTilingForMarkingExtension);
+      markExtensionInput?.addEventListener('input', () => {
+        const next = normalizedMarkingExtension();
+        if (next !== markingExtension) resetTilingForMarkingExtension();
       });
       latticeToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
