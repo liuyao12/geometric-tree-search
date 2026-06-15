@@ -1399,7 +1399,6 @@ export const createTilingStream = (() => {
         yield nodeStatus(parentId, "success");
         return yield* doReturn(true);
       }
-      const candidateCache = new Map();
       const screenCachedCandidates = (faceKey, candidates, maxCandidates = candidateCap) => {
         if (!state.frontier.has(faceKey)) return [];
         const localCandidateCap = Math.min(maxCandidates, candidateCap);
@@ -1413,18 +1412,18 @@ export const createTilingStream = (() => {
         return screened;
       };
       const cachedCandidates = async (faceKey, maxCandidates = candidateCap) => {
-        const cacheKey = `${faceKey}::${maxCandidates}`;
-        const cached = candidateCache.get(cacheKey);
+        const cacheKey = `face::${faceKey}::${maxCandidates}`;
+        const cached = state.vertex_candidate_cache.get(cacheKey);
         if (cached) {
           const screened = screenCachedCandidates(faceKey, cached, maxCandidates);
           const localCandidateCap = Math.min(maxCandidates, candidateCap);
           if (screened.length === cached.length || (Number.isFinite(localCandidateCap) && screened.length >= localCandidateCap)) {
-            candidateCache.set(cacheKey, screened);
+            state.vertex_candidate_cache.set(cacheKey, screened);
             return screened;
           }
         }
         const candidates = await getCandidatesForFace(faceKey, maxCandidates);
-        candidateCache.set(cacheKey, candidates);
+        state.vertex_candidate_cache.set(cacheKey, candidates);
         return candidates;
       };
       const frontierVertexNorm = (option) => Math.abs(option.vertex[0]) + Math.abs(option.vertex[1]) + Math.abs(option.vertex[2]);
@@ -1441,7 +1440,31 @@ export const createTilingStream = (() => {
         }
         return [...byVertex.values()].sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || right.faceKeys.length - left.faceKeys.length || left.vertexKey.localeCompare(right.vertexKey));
       };
+      const screenCachedVertexCandidates = (option, candidates, maxCandidates) => {
+        const dedup = new Map();
+        const localCandidateCap = Math.min(maxCandidates, candidateCap);
+        for (const candidate of candidates ?? []) {
+          const sourceFaceKey = candidate._source_face_key;
+          if (!sourceFaceKey || !option.faceKeys.includes(sourceFaceKey) || !state.frontier.has(sourceFaceKey)) continue;
+          const validity = checkMoveViability(candidate, sourceFaceKey);
+          if (!validity) continue;
+          const key = candidate.dedup_key ?? `${candidate.prototile_idx}::${candidate.translation.join(",")}::${candidate.orient.__orientation_id ?? ""}`;
+          if (!dedup.has(key)) dedup.set(key, { ...candidate, occupancy_data: validity.occData });
+          if (Number.isFinite(localCandidateCap) && dedup.size >= localCandidateCap) break;
+        }
+        return [...dedup.values()];
+      };
+
       const candidatesForVertexOption = async (option, maxCandidates = 2) => {
+        const cacheKey = `${option.vertexKey}::${maxCandidates}`;
+        const cached = state.vertex_candidate_cache.get(cacheKey);
+        if (cached) {
+          const screened = screenCachedVertexCandidates(option, cached, maxCandidates);
+          if (screened.length) {
+            state.vertex_candidate_cache.set(cacheKey, screened);
+            return screened;
+          }
+        }
         const dedup = new Map();
         for (const faceKey of option.faceKeys) {
           await yieldToBrowser();
@@ -1451,11 +1474,17 @@ export const createTilingStream = (() => {
             const key = candidate.dedup_key ?? `${candidate.prototile_idx}::${candidate.translation.join(",")}::${candidate.orient.__orientation_id ?? ""}`;
             if (!dedup.has(key)) {
               dedup.set(key, { ...candidate, _source_face_key: faceKey });
-              if (dedup.size >= maxCandidates) return [...dedup.values()];
+              if (dedup.size >= maxCandidates) {
+                const out = [...dedup.values()];
+                state.vertex_candidate_cache.set(cacheKey, out);
+                return out;
+              }
             }
           }
         }
-        return [...dedup.values()];
+        const out = [...dedup.values()];
+        state.vertex_candidate_cache.set(cacheKey, out);
+        return out;
       };
       const analyzeFrontierVertices = async () => {
         const options = [];
@@ -1929,38 +1958,136 @@ export const tileSpecs = (() => {
     return occ;
   };
 
-  const scanConvexInterior = (verts, faces) => {
-    const minB = [Infinity,Infinity,Infinity];
-    const maxB = [-Infinity,-Infinity,-Infinity];
-    for (const v of verts) for (let i=0;i<3;i++) { 
-      minB[i]=Math.min(minB[i],v[i]); 
-      maxB[i]=Math.max(maxB[i],v[i]); 
+  const triangleSolidAngle = (a, b, c) => {
+    const la = norm3(a), lb = norm3(b), lc = norm3(c);
+    if (la < 1e-12 || lb < 1e-12 || lc < 1e-12) return 0;
+    const numerator = dot3(a, cross3(b, c));
+    const denominator = la * lb * lc + dot3(a, b) * lc + dot3(b, c) * la + dot3(c, a) * lb;
+    return 2 * Math.atan2(numerator, denominator);
+  };
+
+  const orientConvexFaces = (verts, faces) => {
+    const center = verts.reduce((acc, v) => add3(acc, v), [0, 0, 0]).map(value => value / verts.length);
+    return faces.map(face => {
+      if (face.length < 3) return face.slice();
+      const a = verts[face[0]], b = verts[face[1]], c = verts[face[2]];
+      const normal = cross3(sub3(b, a), sub3(c, a));
+      return dot3(normal, sub3(center, a)) > 0 ? face.slice().reverse() : face.slice();
+    });
+  };
+
+  const convexPlanes = (verts, faces) => {
+    const oriented = orientConvexFaces(verts, faces);
+    return oriented
+      .filter(face => face.length >= 3)
+      .map(face => {
+        const a = verts[face[0]], b = verts[face[1]], c = verts[face[2]];
+        const n = cross3(sub3(b, a), sub3(c, a));
+        return { face, n, d: dot3(n, a) };
+      });
+  };
+
+  const pointInConvexPolyhedron = (point, planes, eps = 1e-9) => {
+    for (const plane of planes) {
+      if (dot3(plane.n, point) - plane.d > eps) return false;
     }
-    const sum = verts.reduce((acc,v)=>add3(acc,v), [0,0,0]);
-    const N = verts.length;
-    const planes = [];
-    for (const f of faces) {
-      if (f.length < 3) continue;
-      const v0 = verts[f[0]], v1 = verts[f[1]], v2 = verts[f[2]];
-      let n = cross3(sub3(v1,v0), sub3(v2,v0));
-      const test = dot3(n, sub3([N*v0[0],N*v0[1],N*v0[2]], sum));
-      if (test < 0) n = [-n[0],-n[1],-n[2]];
-      planes.push({ n, d: dot3(n, v0) });
+    return true;
+  };
+
+  const convexSolidAngleAtPoint = (point, verts, orientedFaces, center, planes) => {
+    const activeNormals = planes
+      .filter(plane => Math.abs(dot3(plane.n, point) - plane.d) < 1e-9)
+      .map(plane => normalize3(plane.n));
+    let nudged = point.slice();
+    if (activeNormals.length) {
+      const outward = normalize3(activeNormals.reduce((sum, n) => add3(sum, n), [0, 0, 0]));
+      nudged = point.map((value, axis) => value + outward[axis] * 1e-6);
     }
-    const interior = [];
-    for (let x=minB[0]; x<=maxB[0]; x++)
-      for (let y=minB[1]; y<=maxB[1]; y++)
-        for (let z=minB[2]; z<=maxB[2]; z++) {
-          const p = [x,y,z];
-          let inside = true, boundary = false;
-          for (const pl of planes) {
-            const val = dot3(pl.n, p);
-            if (val > pl.d) { inside = false; break; }
-            if (val === pl.d) boundary = true;
+    let omega = 0;
+    for (const face of orientedFaces) {
+      if (face.length < 3) continue;
+      const base = sub3(verts[face[0]], nudged);
+      for (let i = 1; i < face.length - 1; i++) {
+        omega += triangleSolidAngle(
+          base,
+          sub3(verts[face[i]], nudged),
+          sub3(verts[face[i + 1]], nudged)
+        );
+      }
+    }
+    return Math.abs(omega);
+  };
+
+  const vertexConeSolidAngle = (point, verts, planes) => {
+    const activeAtPoint = planes.filter(plane => Math.abs(dot3(plane.n, point) - plane.d) < 1e-9);
+    const rays = [];
+    const seen = new Set();
+    for (const vertex of verts) {
+      const delta = sub3(vertex, point);
+      const length = norm3(delta);
+      if (length < 1e-9) continue;
+      const sharedPlanes = activeAtPoint.filter(plane => Math.abs(dot3(plane.n, vertex) - plane.d) < 1e-9).length;
+      if (sharedPlanes < 2) continue;
+      const ray = delta.map(value => value / length);
+      const key = ray.map(value => Math.round(value * 1e9)).join(",");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      rays.push(ray);
+    }
+    if (rays.length < 3) return null;
+    const axis = normalize3(rays.reduce((sum, ray) => add3(sum, ray), [0, 0, 0]));
+    if (norm3(axis) < 1e-9) return null;
+    let basisU = cross3(axis, [1, 0, 0]);
+    if (norm3(basisU) < 1e-9) basisU = cross3(axis, [0, 1, 0]);
+    basisU = normalize3(basisU);
+    const basisV = normalize3(cross3(axis, basisU));
+    const ordered = rays
+      .map(ray => ({ ray, angle: Math.atan2(dot3(ray, basisV), dot3(ray, basisU)) }))
+      .sort((a, b) => a.angle - b.angle)
+      .map(item => item.ray);
+    let omega = 0;
+    for (let i = 0; i < ordered.length; i++) {
+      omega += computeSolidAngle(axis, ordered[i], ordered[(i + 1) % ordered.length]);
+    }
+    return Math.abs(omega);
+  };
+
+  const computeConvexOccupancy = (verts, faces, maxValue = LEGACY_SOLID_ANGLE_MAX) => {
+    const minB = [Infinity, Infinity, Infinity];
+    const maxB = [-Infinity, -Infinity, -Infinity];
+    for (const v of verts) for (let i = 0; i < 3; i++) {
+      minB[i] = Math.min(minB[i], v[i]);
+      maxB[i] = Math.max(maxB[i], v[i]);
+    }
+    const orientedFaces = orientConvexFaces(verts, faces);
+    const planes = convexPlanes(verts, orientedFaces);
+    const center = verts.reduce((acc, v) => add3(acc, v), [0, 0, 0]).map(value => value / verts.length);
+    const occ = [];
+    for (let x = Math.ceil(minB[0]); x <= Math.floor(maxB[0]); x++) {
+      for (let y = Math.ceil(minB[1]); y <= Math.floor(maxB[1]); y++) {
+        for (let z = Math.ceil(minB[2]); z <= Math.floor(maxB[2]); z++) {
+          const p = [x, y, z];
+          if (!pointInConvexPolyhedron(p, planes)) continue;
+          const active = planes.filter(plane => Math.abs(dot3(plane.n, p) - plane.d) < 1e-9);
+          let weight;
+          if (active.length === 0) {
+            weight = maxValue;
+          } else if (active.length === 1) {
+            weight = maxValue / 2;
+          } else if (active.length === 2) {
+            const n0 = normalize3(active[0].n);
+            const n1 = normalize3(active[1].n);
+            const cos = Math.max(-1, Math.min(1, dot3(n0, n1)));
+            weight = computeNormalizedAngleWeight(Math.PI - Math.acos(cos), 2 * Math.PI, maxValue);
+          } else {
+            const omega = vertexConeSolidAngle(p, verts, planes) ?? convexSolidAngleAtPoint(p, verts, orientedFaces, center, planes);
+            weight = Math.max(1, Math.min(maxValue, computeNormalizedAngleWeight(omega, 4 * Math.PI, maxValue)));
           }
-          if (inside && !boundary) interior.push([p, LEGACY_SOLID_ANGLE_MAX]);
+          if (weight > 0) occ.push([p, weight]);
         }
-    return interior;
+      }
+    }
+    return occ;
   };
 
   const createScaledTileData = (unitVerts, faceTemplate, autoHull=false, isTetragonalDisphenoid=false) => {
@@ -1973,9 +2100,9 @@ export const tileSpecs = (() => {
     if (unitVerts.length === 4 && faceTemplate.length === 4 && faceTemplate.every(f => f.v.length === 3)) {
       occ = computeTetrahedronOccupancy(vertsScaled, faces, isTetragonalDisphenoid);
     } else {
-      occ = scanConvexInterior(vertsScaled, faceData.map(f => f.v));
+      occ = computeConvexOccupancy(vertsScaled, faceData.map(f => f.v));
     }
-    return { v: vertsScaled, f_data: faceData, occ, skip_winding: false, solid_angle: { kind: "numeric", max_value: LEGACY_SOLID_ANGLE_MAX } };
+    return { v: vertsScaled, f_data: faceData, occ, skip_winding: false, solid_angle: { kind: "rational", max_value: LEGACY_SOLID_ANGLE_MAX } };
   };
 
   const generatePolycubeData = (voxels) => {
@@ -2037,7 +2164,7 @@ export const tileSpecs = (() => {
   };
 
   class Prototile3D {
-    constructor(name, vertices, face_data, occupancy_map, skip_winding=false, is_mirror=false, solid_angle={ kind: "numeric", max_value: LEGACY_SOLID_ANGLE_MAX }) {
+    constructor(name, vertices, face_data, occupancy_map, skip_winding=false, is_mirror=false, solid_angle={ kind: "rational", max_value: LEGACY_SOLID_ANGLE_MAX }) {
       this.name = name;
       this.is_mirror = is_mirror;
       this.verts = vertices.map(v => v.slice());
@@ -2250,7 +2377,7 @@ export const tileSpecs = (() => {
       f_data: faces.map(v => ({ v, type: "default" })),
       occ: computeTetrahedronOccupancy(cornerOnly, cornerFaces, false),
       skip_winding: false,
-      solid_angle: { kind: "numeric", max_value: LEGACY_SOLID_ANGLE_MAX }
+      solid_angle: { kind: "rational", max_value: LEGACY_SOLID_ANGLE_MAX }
     };
   };
 
@@ -2425,7 +2552,7 @@ export const tileSpecs = (() => {
         [2, 3, 4],
         [3, 0, 4]
       ];
-      addOcc(scanConvexInterior(localVerts, localFaces));
+      addOcc(computeConvexOccupancy(localVerts, localFaces));
     }
 
     return {
@@ -2715,7 +2842,7 @@ export const tileSpecs = (() => {
       .map(point => point.weight)
       .filter(Number.isFinite)
       .sort((a, b) => a - b)
-      .map(weight => ({ weight, max_value: maxValue }));
+      .map(weight => ({ weight, max_value: maxValue, value: weight / maxValue }));
   };
 
   const tileGeometryKey = (tile) => {

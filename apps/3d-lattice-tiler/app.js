@@ -65,20 +65,21 @@ const gcdInt = (a, b) => {
 const formatSolidAngleValue = (item) => {
   const weight = Number(item?.weight);
   const maxValue = Number(item?.max_value) || 1;
-  if (!Number.isFinite(weight)) return "";
+  const value = Number.isFinite(Number(item?.value)) ? Number(item.value) : weight / maxValue;
+  if (!Number.isFinite(weight) || !Number.isFinite(value)) return "";
   if (Math.abs(weight - Math.round(weight)) < 1e-9 && Math.abs(maxValue - Math.round(maxValue)) < 1e-9) {
     const divisor = gcdInt(weight, maxValue);
     const numerator = Math.round(weight) / divisor;
     const denominator = Math.round(maxValue) / divisor;
     return denominator === 1 ? String(numerator) : `${numerator}/${denominator}`;
   }
-  return `${weight.toFixed(3).replace(/0+$/u, "").replace(/\.$/u, "")}/${maxValue}`;
+  return value.toFixed(5).replace(/0+$/u, "").replace(/\.$/u, "");
 };
 const solidAngleListLabel = (solidAngles = []) => {
   const values = solidAngles.map(formatSolidAngleValue).filter(Boolean);
   return values.length ? values.join(", ") : "No sampled solid-angle values";
 };
-const solidAngleTitle = (solidAngles = []) => `Solid angles: ${solidAngleListLabel(solidAngles)}`;
+const solidAngleTitle = (solidAngles = []) => `Solid-angle t-values (full sphere = 1): ${solidAngleListLabel(solidAngles)}`;
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
