@@ -451,17 +451,31 @@ h1 {
   bottom: 0;
   width: 24px;
   height: 24px;
-  border-top: 1px solid rgba(45, 45, 45, 0.28);
-  border-right: 1px solid rgba(45, 45, 45, 0.28);
-  border-top-right-radius: 6px;
-  background:
-    repeating-linear-gradient(135deg,
-      transparent 0 4px,
-      rgba(45, 45, 45, 0.42) 4px 5px,
-      transparent 5px 8px);
   cursor: nesw-resize;
   touch-action: none;
   z-index: 3;
+}
+
+.demo-resize-handle::before,
+.demo-resize-handle::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  bottom: 7px;
+  height: 0;
+  border-top: 2px solid rgba(45, 45, 45, 0.55);
+  transform: rotate(-45deg);
+  transform-origin: left center;
+}
+
+.demo-resize-handle::before {
+  width: 17px;
+}
+
+.demo-resize-handle::after {
+  width: 10px;
+  left: 8px;
+  bottom: 4px;
 }
 
 .demo-resize-handle:focus-visible {
@@ -469,13 +483,9 @@ h1 {
   outline-offset: 2px;
 }
 
-.floating-demo.is-resizing .demo-resize-handle {
-  background:
-    repeating-linear-gradient(135deg,
-      transparent 0 4px,
-      rgba(22, 135, 117, 0.72) 4px 5px,
-      transparent 5px 8px),
-    rgba(22, 135, 117, 0.10);
+.floating-demo.is-resizing .demo-resize-handle::before,
+.floating-demo.is-resizing .demo-resize-handle::after {
+  border-top-color: rgba(22, 135, 117, 0.82);
 }
 
 .interactive-toolbar button {

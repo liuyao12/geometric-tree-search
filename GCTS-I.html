@@ -229,6 +229,7 @@
       let liveSearchIterator = null;
       let liveSearchUsesMarking = tilingRunUsesMarking;
       let autoplayTarget = 30;
+      const pausedCoronas = new Set();
       let hasStartedTiling = false;
       let trialGhost = null;
       let statusText = '';
@@ -291,11 +292,11 @@
       };
 
       function projectA2Raw([x, y, z]) {
-        // Swap the second and third coordinates in the drawing projection so the
-        // marked-live seed orientation appears in the Turtle's original pose.
+        // Swap the second and third coordinates, then reverse all three axes in
+        // the drawing projection so the marked-live seed is turned 180 degrees.
         return {
-          x: ((x - z) / sqrt2) * latticeScale,
-          y: ((x + z - 2 * y) / sqrt6) * latticeScale
+          x: ((z - x) / sqrt2) * latticeScale,
+          y: ((2 * y - x - z) / sqrt6) * latticeScale
         };
       }
 
@@ -555,31 +556,65 @@
         return markStateAt(point).vector;
       }
 
-      function frontierPoints(sums, frontierAges = new Map()) {
+      function frontierPoints(sums, frontierCoronas = new Map()) {
         return Array.from(sums.values())
           .filter(entry => entry.value < 12)
           .sort((left, right) => {
-            const leftAge = frontierAges.get(key3(left.point)) ?? Infinity;
-            const rightAge = frontierAges.get(key3(right.point)) ?? Infinity;
-            return leftAge - rightAge
+            const leftCorona = frontierCoronas.get(key3(left.point)) ?? Infinity;
+            const rightCorona = frontierCoronas.get(key3(right.point)) ?? Infinity;
+            return leftCorona - rightCorona
               || norm3(left.point) - norm3(right.point)
               || left.value - right.value;
           });
       }
 
-      function frontierAgesForPlacements(placements) {
+      function placementCoronas(placements) {
+        const coronas = placements.map((_, index) => index === 0 ? 0 : Infinity);
+        let changed = true;
+        while (changed) {
+          changed = false;
+          placements.forEach((placement, index) => {
+            if (!Number.isFinite(coronas[index])) return;
+            const keys = new Set(placement.occupancy.map(item => key3(item.point)));
+            placements.forEach((other, otherIndex) => {
+              if (coronas[otherIndex] <= coronas[index] + 1) return;
+              if (other.occupancy.some(item => keys.has(key3(item.point)))) {
+                coronas[otherIndex] = coronas[index] + 1;
+                changed = true;
+              }
+            });
+          });
+        }
+        return coronas;
+      }
+
+      function frontierCoronasForPlacements(placements) {
         const sums = new Map();
-        const ages = new Map();
-        placements.forEach((placement, step) => {
+        const pointCoronas = new Map();
+        const coronas = placementCoronas(placements);
+        placements.forEach((placement, placementIndex) => {
+          const corona = coronas[placementIndex] ?? Infinity;
           placement.occupancy.forEach(item => {
             const key = key3(item.point);
             const entry = sums.get(key) || { point: item.point, value: 0 };
             entry.value += item.value;
             sums.set(key, entry);
-            if (entry.value > 0 && entry.value < 12 && !ages.has(key)) ages.set(key, step);
+            if (entry.value > 0 && entry.value < 12) {
+              pointCoronas.set(key, Math.min(pointCoronas.get(key) ?? Infinity, corona));
+            }
           });
         });
-        return ages;
+        return pointCoronas;
+      }
+
+      function uniformFrontierCorona(placements) {
+        const sums = new Map();
+        placements.forEach(placement => addPlacementValues(placement, sums));
+        const frontier = frontierPoints(sums, frontierCoronasForPlacements(placements));
+        if (!frontier.length) return null;
+        const coronas = frontier.map(point => frontierCoronasForPlacements(placements).get(key3(point.point)) ?? Infinity);
+        const first = coronas[0];
+        return Number.isFinite(first) && coronas.every(corona => corona === first) ? first : null;
       }
 
       function norm3(point) {
@@ -769,15 +804,15 @@
         }
       }
 
-      function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAges = new Map(), frontierCache = null) {
-        const byAge = (left, right) => {
-          const leftAge = frontierAges.get(key3(left.frontier.point)) ?? Infinity;
-          const rightAge = frontierAges.get(key3(right.frontier.point)) ?? Infinity;
-          return leftAge - rightAge
+      function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierCoronas = new Map(), frontierCache = null) {
+        const byCorona = (left, right) => {
+          const leftCorona = frontierCoronas.get(key3(left.frontier.point)) ?? Infinity;
+          const rightCorona = frontierCoronas.get(key3(right.frontier.point)) ?? Infinity;
+          return leftCorona - rightCorona
             || norm3(left.frontier.point) - norm3(right.frontier.point)
             || left.candidates.length - right.candidates.length;
         };
-        const options = frontierPoints(sums, frontierAges).map(frontier => {
+        const options = frontierPoints(sums, frontierCoronas).map(frontier => {
           const cacheKey = `${key3(frontier.point)}|${frontier.value}|${useMarkingRules ? 1 : 0}`;
           const cached = frontierCache?.get(cacheKey);
           if (cached) return { ...cached, frontier };
@@ -789,10 +824,10 @@
         });
         const deadEnd = options.find(option => option.candidates.length === 0);
         if (deadEnd) return { options, deadEnd };
-        const forced = options.filter(option => option.candidates.length === 1).sort(byAge);
+        const forced = options.filter(option => option.candidates.length === 1).sort(byCorona);
         if (forced.length) return { options, choice: forced[0], choices: [forced[0]], forced: true };
         if (!options.length) return { options, choice: null, choices: [], forced: false };
-        const branches = options.slice().sort(byAge);
+        const branches = options.slice().sort(byCorona);
         return { options, choice: branches[0], choices: branches.slice(0, 1), forced: false };
       }
 
@@ -904,7 +939,7 @@
                 while (placed.length > baseLength) undoLast('budget');
                 return false;
               }
-              const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed), frontierCache);
+              const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierCoronasForPlacements(placed), frontierCache);
               if (analysis.deadEnd) {
                 pushTrace({ type: 'fail', frontier: analysis.deadEnd.frontier.point, frontierValue: analysis.deadEnd.frontier.value, placements: placed.slice() });
                 while (placed.length > baseLength) undoLast('dead end');
@@ -996,7 +1031,7 @@
               while (placed.length > baseLength) yield* undoLast('budget');
               return false;
             }
-            const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierAgesForPlacements(placed), frontierCache);
+            const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierCoronasForPlacements(placed), frontierCache);
             if (analysis.deadEnd) {
               yield { type: 'fail', frontier: analysis.deadEnd.frontier.point, frontierValue: analysis.deadEnd.frontier.value, placements: placed.slice() };
               while (placed.length > baseLength) yield* undoLast('dead end');
@@ -1146,26 +1181,19 @@
       }
 
       function drawGridLines(rect) {
-        const corners = [screenToWorld(0, 0), screenToWorld(rect.width, 0), screenToWorld(0, rect.height), screenToWorld(rect.width, rect.height)];
-        const minX = Math.min(...corners.map(point => point.x)) - 80;
-        const maxX = Math.max(...corners.map(point => point.x)) + 80;
-        const minY = Math.min(...corners.map(point => point.y)) - 80;
-        const maxY = Math.max(...corners.map(point => point.y)) + 80;
-        const inView = point => point.x >= minX && point.x <= maxX && point.y >= minY && point.y <= maxY;
         const families = [
           constant => t => [constant, t, -constant - t],
           constant => t => [t, constant, -constant - t],
           constant => t => [t, -constant - t, constant]
         ];
         ctx.save();
-        ctx.strokeStyle = 'rgba(80, 80, 80, 0.18)';
-        ctx.lineWidth = Math.max(0.45, 0.8 * scale);
+        ctx.strokeStyle = 'rgba(90, 90, 90, 0.30)';
+        ctx.lineWidth = Math.max(0.6, 1.05 * scale);
         families.forEach(family => {
           for (let constant = -28; constant <= 28; constant += 1) {
             const makePoint = family(constant);
             const a = projectA2(makePoint(-80));
             const b = projectA2(makePoint(80));
-            if (!inView(a) && !inView(b)) continue;
             const start = worldToScreen(a.x, a.y);
             const end = worldToScreen(b.x, b.y);
             ctx.beginPath();
@@ -1380,6 +1408,7 @@
         playbackPlacements = null;
         traceIndex = 0;
         liveSearchIterator = null;
+        pausedCoronas.clear();
         trialGhost = null;
         statusText = '';
         hasStartedTiling = false;
@@ -1521,7 +1550,7 @@
         const point = pointerPosition(event);
         const before = screenToWorld(point.x, point.y);
         const factor = Math.exp(-event.deltaY * 0.001);
-        scale = Math.max(0.45, Math.min(2.6, scale * factor));
+        scale = Math.max(0.08, Math.min(3.4, scale * factor));
         const after = worldToScreen(before.x, before.y);
         offset.x += point.x - after.x;
         offset.y += point.y - after.y;
@@ -1542,6 +1571,7 @@
           tilingTrace = [];
           playbackPlacements = [seed];
           liveSearchIterator = createLiveTilingSearch(10000, useMarking);
+          pausedCoronas.clear();
           liveSearchUsesMarking = useMarking;
           tilingRunUsesMarking = useMarking;
           centerView();
@@ -1612,7 +1642,12 @@
             }
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
-            if (shownTiles >= autoplayTarget) {
+            const frontierCorona = uniformFrontierCorona(playbackPlacements || event.placements || []);
+            if (frontierCorona && frontierCorona % 2 === 0 && !pausedCoronas.has(frontierCorona)) {
+              pausedCoronas.add(frontierCorona);
+              statusText = `paused at complete corona ${frontierCorona}; continue to extend the live branch`;
+              stopTiling();
+            } else if (shownTiles >= autoplayTarget) {
               statusText = `paused after ${shownTiles} tiles; continue to extend the live branch`;
               stopTiling();
             }
@@ -1648,6 +1683,7 @@
         playbackPlacements = null;
         traceIndex = 0;
         liveSearchIterator = null;
+        pausedCoronas.clear();
         trialGhost = null;
         statusText = '';
         hasStartedTiling = false;
