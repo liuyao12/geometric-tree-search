@@ -41,6 +41,7 @@
               <div class="toolbar-row toolbar-toggle-row">
                 <span class="toolbar-drag-spacer" aria-hidden="true"></span>
                 <label class="toolbar-toggle"><input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
+                <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden>mark reach <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking reach in lattice steps"></label>
                 <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show grid</label>
               </div>
             </div>
@@ -165,6 +166,8 @@
       const resetButton = document.getElementById('turtle-reset');
       const markingsButton = document.getElementById('turtle-markings');
       const markingRulesToggle = document.getElementById('turtle-marking-rules');
+      const markExtensionControl = document.getElementById('turtle-mark-extension-control');
+      const markExtensionInput = document.getElementById('turtle-mark-extension');
       const latticeToggle = document.getElementById('turtle-lattice');
       const stageLabel = document.getElementById('turtle-stage-label');
       const stageNote = document.getElementById('turtle-stage-note');
@@ -209,7 +212,8 @@
       const center = rawTurtle.reduce((sum, point) => ({ x: sum.x + point.x, y: sum.y + point.y }), { x: 0, y: 0 });
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
-      const orientations = buildOrientations();
+      let markingExtension = normalizedMarkingExtension();
+      let orientations = buildOrientations(markingExtension);
       // This seed orientation keeps the marked frontier live, so Start tiling can show a second tile immediately.
       const seedOrientationIndex = 1;
       let tilingRunUsesMarking = markingRulesToggle?.checked || false;
@@ -427,7 +431,12 @@
         return symmetries;
       }
 
-      function buildOrientations() {
+      function normalizedMarkingExtension() {
+        const parsed = Number.parseInt(markExtensionInput?.value || '1', 10);
+        return Math.max(0, Math.min(9, Number.isFinite(parsed) ? parsed : 1));
+      }
+
+      function buildOrientations(extensionSteps = markingExtension) {
         return buildA2Symmetries().map((symmetry, orientationIndex) => {
           const occupancy = turtleOccupancy.map(entry => ({
             ...entry,
@@ -450,24 +459,13 @@
               value: segment.value * symmetry.markSign
             };
           });
-          const markLinePointsByKey = new Map();
-          const addMarkLinePoint = (point, component) => {
-            const pointKey = key3(point);
-            const entry = markLinePointsByKey.get(pointKey) || { point, components: new Set() };
-            entry.components.add(component);
-            markLinePointsByKey.set(pointKey, entry);
-          };
-          markSegments.forEach(segment => {
-            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1)
-              .forEach(point => addMarkLinePoint(point, segment.component));
-          });
           const markEntriesByKey = new Map();
           const setMarkEntry = entry => {
             markEntriesByKey.set(`${key3(entry.point)}|${entry.component}`, entry);
           };
-          // Interior points and stripe-intersection points carry all three scalar
-          // channels. Stripe entries below overwrite the zero in their own direction;
-          // missing directions at an intersection remain zero.
+          // Interior points carry all three scalar channels with value zero. Stripe
+          // support assigns only its own component; absent components stay outside the
+          // local marking domain and are displayed as * in the debugging readout.
           occupancy
             .filter(entry => entry.kind === 'interior')
             .forEach(entry => {
@@ -475,14 +473,8 @@
                 setMarkEntry({ point: entry.point, component, value: 0 });
               }
             });
-          markLinePointsByKey.forEach(entry => {
-            if (entry.components.size < 2) return;
-            for (let component = 0; component < 3; component += 1) {
-              setMarkEntry({ point: entry.point, component, value: 0 });
-            }
-          });
           markSegments.forEach(segment => {
-            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1).forEach(point => {
+            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, extensionSteps).forEach(point => {
               setMarkEntry({ point, component: segment.component, value: segment.value });
             });
           });
@@ -556,12 +548,22 @@
 
       function visibleMarkVectors() {
         const markSums = new Map();
-        visiblePlacements().forEach(placement => addPlacementMarkings(placement, markSums));
+        visiblePlacements().forEach(placement => {
+          placement.markings.forEach(entry => {
+            const key = markingKey(entry);
+            markSums.set(key, {
+              point: entry.point,
+              component: entry.component,
+              value: entry.value,
+              count: (markSums.get(key)?.count || 0) + 1
+            });
+          });
+        });
         return markSums;
       }
 
       function markStateAt(point) {
-        const vector = [0, 0, 0];
+        const vector = [null, null, null];
         visibleMarkVectors().forEach((entry, key) => {
           const [pointKey, componentText] = key.split('|');
           if (pointKey === key3(point)) vector[Number(componentText)] = entry.value;
@@ -646,12 +648,11 @@
         return `${key3(entry.point)}|${entry.component}`;
       }
 
-      function nonzeroMarkVector(vector) {
-        return vector.some(value => value !== 0);
-      }
-
       function formatMarkVector(vector = [0, 0, 0]) {
-        return `m=(${vector.map(value => value > 0 ? `+${value}` : String(value)).join(',')})`;
+        return `m=(${vector.map(value => {
+          if (value === null || value === undefined) return '*';
+          return value > 0 ? `+${value}` : String(value);
+        }).join(',')})`;
       }
 
       function markingCompatibility(markings, markSums) {
@@ -1041,8 +1042,7 @@
           const baseLength = placed.length;
           while (placed.length < limit) {
             if (nodesVisited++ >= nodeBudget) {
-              while (placed.length > baseLength) yield* undoLast('budget');
-              return false;
+              return true;
             }
             const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierCoronasForPlacements(placed), frontierCache);
             if (analysis.deadEnd) {
@@ -1238,6 +1238,31 @@
         ctx.restore();
       }
 
+      function drawExteriorMarkingPoints(placement) {
+        const occupancyKeys = new Set(placement.occupancy.map(item => key3(item.point)));
+        const exterior = new Map();
+        placement.markings.forEach(entry => {
+          if (entry.value === 0 || occupancyKeys.has(key3(entry.point))) return;
+          exterior.set(markingKey(entry), entry);
+        });
+        if (!exterior.size) return;
+        const componentOffsets = [{ x: 0, y: -2.8 }, { x: 2.4, y: 1.4 }, { x: -2.4, y: 1.4 }];
+        ctx.save();
+        exterior.forEach(entry => {
+          const point = projectA2(entry.point);
+          const screen = worldToScreen(point.x, point.y);
+          const nudge = componentOffsets[entry.component] || { x: 0, y: 0 };
+          ctx.beginPath();
+          ctx.arc(screen.x + nudge.x, screen.y + nudge.y, Math.max(1.7, 2.5 * scale), 0, Math.PI * 2);
+          ctx.fillStyle = entry.value > 0 ? markValueColors.positive : markValueColors.negative;
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.86)';
+          ctx.lineWidth = Math.max(0.55, 0.9 * scale);
+          ctx.fill();
+          ctx.stroke();
+        });
+        ctx.restore();
+      }
+
       function drawTurtle(placement, index, options = {}) {
         tracePolygon(placement.points);
         if (options.ghost) {
@@ -1255,7 +1280,10 @@
         ctx.fill();
         ctx.stroke();
         ctx.setLineDash([]);
-        if (!options.ghost && showMarkings) drawMarkings(placement);
+        if (!options.ghost && showMarkings) {
+          drawMarkings(placement);
+          drawExteriorMarkingPoints(placement);
+        }
       }
 
       function labelAnchorForPoint(entry, placements) {
@@ -1384,12 +1412,26 @@
       function updateHoveredPoint(event) {
         const pointer = pointerPosition(event);
         let best = null;
-        visibleSums().forEach(entry => {
+        const sums = visibleSums();
+        sums.forEach(entry => {
           const point = projectA2(entry.point);
           const screen = worldToScreen(point.x, point.y);
           const distance = Math.hypot(screen.x - pointer.x, screen.y - pointer.y);
           if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
         });
+        if (showMarkings) {
+          const markPoints = new Map();
+          visibleMarkVectors().forEach(entry => {
+            const pointKey = key3(entry.point);
+            if (!sums.has(pointKey)) markPoints.set(pointKey, { point: entry.point, value: 0, markingOnly: true });
+          });
+          markPoints.forEach(entry => {
+            const point = projectA2(entry.point);
+            const screen = worldToScreen(point.x, point.y);
+            const distance = Math.hypot(screen.x - pointer.x, screen.y - pointer.y);
+            if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
+          });
+        }
         hoveredPoint = best;
         hoverReadout.textContent = best ? hoverLinesForPoint(best).join('; ') : '';
       }
@@ -1398,6 +1440,30 @@
         markingsButton.textContent = showMarkings ? 'Hide marking' : 'Show marking';
         markingsButton.setAttribute('aria-pressed', String(showMarkings));
         if (hoveredPoint) hoverReadout.textContent = hoverLinesForPoint(hoveredPoint).join('; ');
+      }
+
+      function updateMarkExtensionControl() {
+        if (markExtensionControl) markExtensionControl.hidden = !markingRulesToggle.checked;
+      }
+
+      function resetTilingForMarkingExtension() {
+        stopTiling();
+        markingExtension = normalizedMarkingExtension();
+        orientations = buildOrientations(markingExtension);
+        const seed = makeSeedPlacement();
+        tilingRun = { placements: [seed], trace: [] };
+        tilingOrder = tilingRun.placements;
+        tilingTrace = tilingRun.trace;
+        shownTiles = 1;
+        playbackPlacements = null;
+        traceIndex = 0;
+        liveSearchIterator = null;
+        pausedCoronas.clear();
+        trialGhost = null;
+        statusText = `marking reach set to ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
+        hasStartedTiling = false;
+        startButton.textContent = 'Start tiling';
+        draw();
       }
 
       function setDemoStage(stageName) {
@@ -1415,11 +1481,13 @@
             chip.setAttribute('aria-current', String(chip.dataset.stageChip === stageName));
           });
           updateMarkingButton();
+          updateMarkExtensionControl();
           draw();
           return;
         }
         if (typeof stage.useMarkingRules === 'boolean') {
           markingRulesToggle.checked = stage.useMarkingRules;
+          updateMarkExtensionControl();
         }
         shownTiles = stage.tiles;
         playbackPlacements = null;
@@ -1686,8 +1754,14 @@
         showMarkings = markingRulesToggle.checked || showMarkings;
         if (stageLabel) stageLabel.textContent = markingRulesToggle.checked ? 'Stage: marking flag set' : 'Stage: marking flag cleared';
         if (stageNote) stageNote.textContent = markingRulesToggle.checked ? 'The next Start tiling run will use the ±1 marking stripes as compatibility constraints.' : 'The next Start tiling run will use only the t-value tile constraints.';
+        updateMarkExtensionControl();
         updateMarkingButton();
         draw();
+      });
+      markExtensionInput?.addEventListener('change', resetTilingForMarkingExtension);
+      markExtensionInput?.addEventListener('input', () => {
+        const next = normalizedMarkingExtension();
+        if (next !== markingExtension) resetTilingForMarkingExtension();
       });
       latticeToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
@@ -1707,6 +1781,7 @@
         autoplayTarget = 30;
         showMarkings = false;
         startButton.textContent = 'Start tiling';
+        updateMarkExtensionControl();
         updateMarkingButton();
         draw();
       });
@@ -1725,6 +1800,7 @@
       });
       window.addEventListener('scroll', updateTextWrap, { passive: true });
       setDemoStage('intro');
+      updateMarkExtensionControl();
       resizeCanvas();
     })();
   </script>
