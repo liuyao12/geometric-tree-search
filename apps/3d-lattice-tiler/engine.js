@@ -492,20 +492,8 @@ export const createTilingStream = (() => {
       if (state.lattice.get(k) <= 0) state.lattice.delete(k);
     };
 
-    const frontierVerticesForFaceKeys = (faceKeys) => {
-      const vertices = new Set();
-      for (const faceKey of faceKeys ?? []) {
-        const entry = state.frontier.get(faceKey);
-        if (entry) for (const vertex of entry.ordered_verts) vertices.add(vertex.join(","));
-        else {
-          for (const part of String(faceKey).split("|")) if (part) vertices.add(part);
-        }
-      }
-      return vertices;
-    };
-
-    const invalidateVertexCandidateCache = (faceKeys) => {
-      for (const vertexKey of frontierVerticesForFaceKeys(faceKeys)) state.vertex_candidate_cache.delete(vertexKey);
+    const invalidateCandidateCaches = () => {
+      state.vertex_candidate_cache.clear();
     };
 
     const isMoveValid = (move) => {
@@ -657,7 +645,7 @@ export const createTilingStream = (() => {
         }
       }
 
-      invalidateVertexCandidateCache([...added, ...removed.map(([key]) => key)]);
+      invalidateCandidateCaches();
 
       if (added.length) {
         const activeVerts = new Set();
@@ -693,7 +681,7 @@ export const createTilingStream = (() => {
         const stack = state.viz_faces.get(k);
         if (stack) { stack.pop(); if (stack.length === 1) stack[0].internal = false; if (stack.length === 0) state.viz_faces.delete(k); }
       }
-      invalidateVertexCandidateCache([...rb.added, ...(rb.removed ?? []).map(([key]) => key)]);
+      invalidateCandidateCaches();
       for (const k of rb.added) {
         state.frontier.delete(k);
         const stack = state.viz_faces.get(k);
