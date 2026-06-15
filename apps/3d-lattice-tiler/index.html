@@ -23,45 +23,41 @@
       </header>
 
       <section class="control-panel">
-        <div class="field">
-          <span>Goal</span>
-          <div class="segmented">
-            <label><input type="radio" name="criterion" value="count" checked><span>Tiles</span></label>
-            <label><input type="radio" name="criterion" value="layer"><span>Layers</span></label>
-          </div>
-        </div>
-
-        <div class="split-fields target-fields">
-          <label class="field" id="maxTileField">
-            <span>Max tiles</span>
+        <div class="target-line">
+          <label class="inline-field is-active" id="maxTileField">
+            <input type="radio" name="criterion" value="count" checked>
+            <span>Tile</span>
             <input id="maxTilesInput" type="number" value="80" min="1" max="2000">
           </label>
-          <label class="field is-hidden" id="layerField">
-            <span>Target layers</span>
+          <label class="inline-field" id="layerField">
+            <input type="radio" name="criterion" value="layer">
+            <span>Layer</span>
             <input id="layerInput" type="number" value="2" min="1" max="50">
           </label>
         </div>
 
-        <label class="field">
-          <span>Frontier order</span>
-          <select id="faceOrderSelect">
-            <option value="coverage" selected>Contact first</option>
-            <option value="constrained">Fewest choices</option>
-            <option value="pocket">Fill holes</option>
-          </select>
-        </label>
+        <div class="split-fields order-fields">
+          <label class="field">
+            <span>Frontier order</span>
+            <select id="faceOrderSelect">
+              <option value="coverage" selected>Contact first</option>
+              <option value="constrained">Fewest choices</option>
+              <option value="pocket">Fill holes</option>
+            </select>
+          </label>
 
-        <label class="field">
-          <span>Filling order</span>
-          <select id="moveOrderSelect">
-            <option value="coverage" selected>Most contact</option>
-            <option value="balanced">Balanced</option>
-            <option value="symmetric">Symmetry first</option>
-            <option value="crystal">Crystal pattern</option>
-            <option value="periodic">Repeat spacing</option>
-            <option value="repeat">Same orientation</option>
-          </select>
-        </label>
+          <label class="field">
+            <span>Filling order</span>
+            <select id="moveOrderSelect">
+              <option value="coverage" selected>Most contact</option>
+              <option value="balanced">Balanced</option>
+              <option value="symmetric">Symmetry first</option>
+              <option value="crystal">Crystal pattern</option>
+              <option value="periodic">Repeat spacing</option>
+              <option value="repeat">Same orientation</option>
+            </select>
+          </label>
+        </div>
 
         <div class="is-hidden" aria-hidden="true">
           <label class="field">
@@ -102,22 +98,26 @@
       </section>
 
       <section class="selected-tile-panel">
-        <h2>Selected tiles</h2>
+        <div class="selected-tile-header">
+          <h2>Selected tiles</h2>
+          <div class="display-toggles">
+            <label><input id="internalCheckbox" type="checkbox"><span>Internal faces</span></label>
+            <label><input id="edgesCheckbox" type="checkbox" checked><span>Edges</span></label>
+          </div>
+        </div>
         <div id="selectedTiles" class="selected-tiles"></div>
       </section>
 
       <section class="metrics">
         <div><b id="metricTiles">0</b><span>tiles</span></div>
-        <div><b id="metricFrontier">0</b><span>frontier faces</span></div>
-        <div><b id="metricLayer">0</b><span id="metricLayerDetail">lowest layer</span></div>
-        <div><b id="metricForced">0</b><span>forced moves</span></div>
-        <div><b id="metricBacktracks">0</b><span>backtracks</span></div>
+        <div><b id="metricFrontier">0</b><span>frontier points</span></div>
+        <div><b id="metricLayer">—</b><span id="metricLayerDetail">candidates</span></div>
         <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
       </section>
 
       <section class="tile-panel">
         <div class="catalog-section">
-          <h2>Figure catalog</h2>
+          <h2>Tile catalog</h2>
           <div class="catalog-scroll">
             <div id="systemTileList" class="system-tile-list"></div>
           </div>
@@ -127,14 +127,7 @@
           <button id="customBuilderButton" type="button">Custom polycube</button>
         </div>
 
-        <div class="opacity-header">
-          <h2>Tile opacity</h2>
-          <div class="display-toggles">
-            <label><input id="internalCheckbox" type="checkbox"><span>Internal faces</span></label>
-            <label><input id="edgesCheckbox" type="checkbox" checked><span>Edges</span></label>
-          </div>
-        </div>
-        <div id="tileList" class="tile-list"></div>
+        <div id="tileList" class="tile-list is-hidden"></div>
       </section>
     </aside>
 
