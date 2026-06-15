@@ -441,12 +441,16 @@ h1 {
 }
 
 .mark-extension-control input {
-  width: 48px;
+  width: 3.2ch;
   border: 1px solid rgba(24, 33, 31, 0.18);
   border-radius: 7px;
-  padding: 3px 5px;
+  padding: 3px 2px 3px 5px;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.82);
+}
+
+.mark-extension-control[hidden] {
+  display: none;
 }
 
 .demo-drag-handle:active,

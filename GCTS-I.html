@@ -41,7 +41,7 @@
               <div class="toolbar-row toolbar-toggle-row">
                 <span class="toolbar-drag-spacer" aria-hidden="true"></span>
                 <label class="toolbar-toggle"><input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
-                <label class="toolbar-toggle mark-extension-control">extend <input type="number" id="turtle-mark-extension" min="0" max="24" step="1" value="1"></label>
+                <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden>mark reach <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking reach in lattice steps"></label>
                 <label class="toolbar-toggle toolbar-toggle-right"><input type="checkbox" id="turtle-lattice" checked> show grid</label>
               </div>
             </div>
@@ -166,6 +166,7 @@
       const resetButton = document.getElementById('turtle-reset');
       const markingsButton = document.getElementById('turtle-markings');
       const markingRulesToggle = document.getElementById('turtle-marking-rules');
+      const markExtensionControl = document.getElementById('turtle-mark-extension-control');
       const markExtensionInput = document.getElementById('turtle-mark-extension');
       const latticeToggle = document.getElementById('turtle-lattice');
       const stageLabel = document.getElementById('turtle-stage-label');
@@ -432,7 +433,7 @@
 
       function normalizedMarkingExtension() {
         const parsed = Number.parseInt(markExtensionInput?.value || '1', 10);
-        return Math.max(0, Math.min(24, Number.isFinite(parsed) ? parsed : 1));
+        return Math.max(0, Math.min(9, Number.isFinite(parsed) ? parsed : 1));
       }
 
       function buildOrientations(extensionSteps = markingExtension) {
@@ -1422,6 +1423,10 @@
         if (hoveredPoint) hoverReadout.textContent = hoverLinesForPoint(hoveredPoint).join('; ');
       }
 
+      function updateMarkExtensionControl() {
+        if (markExtensionControl) markExtensionControl.hidden = !markingRulesToggle.checked;
+      }
+
       function resetTilingForMarkingExtension() {
         stopTiling();
         markingExtension = normalizedMarkingExtension();
@@ -1436,7 +1441,7 @@
         liveSearchIterator = null;
         pausedCoronas.clear();
         trialGhost = null;
-        statusText = `marking domain extends ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
+        statusText = `marking reach set to ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
         draw();
@@ -1457,11 +1462,13 @@
             chip.setAttribute('aria-current', String(chip.dataset.stageChip === stageName));
           });
           updateMarkingButton();
+          updateMarkExtensionControl();
           draw();
           return;
         }
         if (typeof stage.useMarkingRules === 'boolean') {
           markingRulesToggle.checked = stage.useMarkingRules;
+          updateMarkExtensionControl();
         }
         shownTiles = stage.tiles;
         playbackPlacements = null;
@@ -1728,6 +1735,7 @@
         showMarkings = markingRulesToggle.checked || showMarkings;
         if (stageLabel) stageLabel.textContent = markingRulesToggle.checked ? 'Stage: marking flag set' : 'Stage: marking flag cleared';
         if (stageNote) stageNote.textContent = markingRulesToggle.checked ? 'The next Start tiling run will use the ±1 marking stripes as compatibility constraints.' : 'The next Start tiling run will use only the t-value tile constraints.';
+        updateMarkExtensionControl();
         updateMarkingButton();
         draw();
       });
@@ -1754,6 +1762,7 @@
         autoplayTarget = 30;
         showMarkings = false;
         startButton.textContent = 'Start tiling';
+        updateMarkExtensionControl();
         updateMarkingButton();
         draw();
       });
@@ -1772,6 +1781,7 @@
       });
       window.addEventListener('scroll', updateTextWrap, { passive: true });
       setDemoStage('intro');
+      updateMarkExtensionControl();
       resizeCanvas();
     })();
   </script>
