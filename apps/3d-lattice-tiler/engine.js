@@ -1445,6 +1445,11 @@ export const createTilingStream = (() => {
           association_count: frontier_points.reduce((sum, point) => sum + point.candidate_keys.length, 0)
         };
       };
+      const candidateFrontierStats = (analysis) => ({
+        ...calculateFrontierStats(),
+        point_count: analysis?.options?.length ?? frontierPointStats().point_count,
+        candidate_count: analysis?.candidate_count ?? 0
+      });
 
       let forcedCount = 0;
       let branchAnalysis = null;
@@ -1478,6 +1483,7 @@ export const createTilingStream = (() => {
           mv.is_forced = true;
           searchStats.forced_total += 1;
           const rb = applyMove(mv);
+          node_candidate_cache.clear();
           forcedBatch.push([mv, rb]);
           forcedCount += 1;
           if (shouldSnapshot()) {
