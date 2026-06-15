@@ -1397,6 +1397,7 @@ export const createTilingStream = (() => {
         yield nodeStatus(parentId, "success");
         return yield* doReturn(true);
       }
+      const candidateCache = new Map();
       const screenCachedCandidates = (faceKey, candidates, maxCandidates = candidateCap) => {
         if (!state.frontier.has(faceKey)) return [];
         const localCandidateCap = Math.min(maxCandidates, candidateCap);
@@ -1410,18 +1411,18 @@ export const createTilingStream = (() => {
         return screened;
       };
       const cachedCandidates = async (faceKey, maxCandidates = candidateCap) => {
-        const cacheKey = `face::${faceKey}::${maxCandidates}`;
-        const cached = state.vertex_candidate_cache.get(cacheKey);
+        const cacheKey = `${faceKey}::${maxCandidates}`;
+        const cached = candidateCache.get(cacheKey);
         if (cached) {
           const screened = screenCachedCandidates(faceKey, cached, maxCandidates);
           const localCandidateCap = Math.min(maxCandidates, candidateCap);
           if (screened.length === cached.length || (Number.isFinite(localCandidateCap) && screened.length >= localCandidateCap)) {
-            state.vertex_candidate_cache.set(cacheKey, screened);
+            candidateCache.set(cacheKey, screened);
             return screened;
           }
         }
         const candidates = await getCandidatesForFace(faceKey, maxCandidates);
-        state.vertex_candidate_cache.set(cacheKey, candidates);
+        candidateCache.set(cacheKey, candidates);
         return candidates;
       };
       const frontierVertexNorm = (option) => Math.abs(option.vertex[0]) + Math.abs(option.vertex[1]) + Math.abs(option.vertex[2]);
@@ -1438,31 +1439,7 @@ export const createTilingStream = (() => {
         }
         return [...byVertex.values()].sort((left, right) => left.gen - right.gen || frontierVertexNorm(left) - frontierVertexNorm(right) || right.faceKeys.length - left.faceKeys.length || left.vertexKey.localeCompare(right.vertexKey));
       };
-      const screenCachedVertexCandidates = (option, candidates, maxCandidates) => {
-        const dedup = new Map();
-        const localCandidateCap = Math.min(maxCandidates, candidateCap);
-        for (const candidate of candidates ?? []) {
-          const sourceFaceKey = candidate._source_face_key;
-          if (!sourceFaceKey || !option.faceKeys.includes(sourceFaceKey) || !state.frontier.has(sourceFaceKey)) continue;
-          const validity = checkMoveViability(candidate, sourceFaceKey);
-          if (!validity) continue;
-          const key = candidate.dedup_key ?? `${candidate.prototile_idx}::${candidate.translation.join(",")}::${candidate.orient.__orientation_id ?? ""}`;
-          if (!dedup.has(key)) dedup.set(key, { ...candidate, occupancy_data: validity.occData });
-          if (Number.isFinite(localCandidateCap) && dedup.size >= localCandidateCap) break;
-        }
-        return [...dedup.values()];
-      };
-
       const candidatesForVertexOption = async (option, maxCandidates = 2) => {
-        const cacheKey = `${option.vertexKey}::${maxCandidates}`;
-        const cached = state.vertex_candidate_cache.get(cacheKey);
-        if (cached) {
-          const screened = screenCachedVertexCandidates(option, cached, maxCandidates);
-          if (screened.length) {
-            state.vertex_candidate_cache.set(cacheKey, screened);
-            return screened;
-          }
-        }
         const dedup = new Map();
         for (const faceKey of option.faceKeys) {
           await yieldToBrowser();
@@ -1472,17 +1449,11 @@ export const createTilingStream = (() => {
             const key = candidate.dedup_key ?? `${candidate.prototile_idx}::${candidate.translation.join(",")}::${candidate.orient.__orientation_id ?? ""}`;
             if (!dedup.has(key)) {
               dedup.set(key, { ...candidate, _source_face_key: faceKey });
-              if (dedup.size >= maxCandidates) {
-                const out = [...dedup.values()];
-                state.vertex_candidate_cache.set(cacheKey, out);
-                return out;
-              }
+              if (dedup.size >= maxCandidates) return [...dedup.values()];
             }
           }
         }
-        const out = [...dedup.values()];
-        state.vertex_candidate_cache.set(cacheKey, out);
-        return out;
+        return [...dedup.values()];
       };
       const analyzeFrontierVertices = async () => {
         const options = [];
