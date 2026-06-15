@@ -209,14 +209,19 @@ let faceGroup = new THREE.Group();
 let edgeGroup = new THREE.Group();
 scene.add(faceGroup, edgeGroup);
 
-const thumbnailRenderer = new THREE.WebGLRenderer({
-  antialias: true,
-  preserveDrawingBuffer: true,
-  powerPreference: "low-power"
-});
-thumbnailRenderer.setPixelRatio(1);
-thumbnailRenderer.setClearColor(0xedf1ef, 1);
-thumbnailRenderer.setSize(180, 135, false);
+let thumbnailRenderer = null;
+function getThumbnailRenderer() {
+  if (thumbnailRenderer) return thumbnailRenderer;
+  thumbnailRenderer = new THREE.WebGLRenderer({
+    antialias: true,
+    preserveDrawingBuffer: true,
+    powerPreference: "low-power"
+  });
+  thumbnailRenderer.setPixelRatio(1);
+  thumbnailRenderer.setClearColor(0xedf1ef, 1);
+  thumbnailRenderer.setSize(180, 135, false);
+  return thumbnailRenderer;
+}
 
 const builderScene = new THREE.Scene();
 builderScene.background = new THREE.Color(0xedf1ef);
@@ -430,8 +435,9 @@ function tileThumbnail(tile, cacheKey, colorIndex = 0) {
     cameraForThumb.near = 0.01;
     cameraForThumb.far = Math.max(100, radius * 50);
     cameraForThumb.updateProjectionMatrix();
-    thumbnailRenderer.render(sceneForThumb, cameraForThumb);
-    const url = thumbnailRenderer.domElement.toDataURL("image/png");
+    const rendererForThumb = getThumbnailRenderer();
+    rendererForThumb.render(sceneForThumb, cameraForThumb);
+    const url = rendererForThumb.domElement.toDataURL("image/png");
     figureThumbnailCache.set(cacheKey, url);
     return url;
   } catch (error) {
