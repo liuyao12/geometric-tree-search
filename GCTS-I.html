@@ -462,31 +462,44 @@
               .forEach(point => addMarkLinePoint(point, segment.component));
           });
           const markEntriesByKey = new Map();
+          const displayMarkEntriesByKey = new Map();
           const setMarkEntry = entry => {
             markEntriesByKey.set(`${key3(entry.point)}|${entry.component}`, entry);
           };
-          // Interior points and stripe-intersection points carry all three scalar
-          // channels. Stripe entries below overwrite the zero in their own direction;
-          // missing directions at an intersection remain zero.
+          const setDisplayMarkEntry = entry => {
+            displayMarkEntriesByKey.set(`${key3(entry.point)}|${entry.component}`, entry);
+          };
+          const setInteriorZero = entry => {
+            setMarkEntry(entry);
+            setDisplayMarkEntry(entry);
+          };
+          const setStripeEntry = entry => {
+            setMarkEntry(entry);
+            setDisplayMarkEntry(entry);
+          };
+          // Interior points carry all three scalar channels for matching. The display
+          // section also fills in zeros at stripe intersections, so m=(...) is a useful
+          // debug log for missing directions without over-constraining one-line support.
           occupancy
             .filter(entry => entry.kind === 'interior')
             .forEach(entry => {
               for (let component = 0; component < 3; component += 1) {
-                setMarkEntry({ point: entry.point, component, value: 0 });
+                setInteriorZero({ point: entry.point, component, value: 0 });
               }
             });
           markLinePointsByKey.forEach(entry => {
             if (entry.components.size < 2) return;
             for (let component = 0; component < 3; component += 1) {
-              setMarkEntry({ point: entry.point, component, value: 0 });
+              setDisplayMarkEntry({ point: entry.point, component, value: 0 });
             }
           });
           markSegments.forEach(segment => {
             extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1).forEach(point => {
-              setMarkEntry({ point, component: segment.component, value: segment.value });
+              setStripeEntry({ point, component: segment.component, value: segment.value });
             });
           });
           const markEntries = Array.from(markEntriesByKey.values());
+          const displayMarkEntries = Array.from(displayMarkEntriesByKey.values());
           return {
             ...symmetry,
             orientationIndex,
@@ -494,6 +507,7 @@
             occupancy,
             anchorsByValue,
             markEntries,
+            displayMarkEntries,
             markSegments
           };
         });
@@ -509,6 +523,10 @@
           ...entry,
           point: add3(entry.point, translation)
         }));
+        const displayMarkings = orientation.displayMarkEntries.map(entry => ({
+          ...entry,
+          point: add3(entry.point, translation)
+        }));
         const markSegments = orientation.markSegments.map(segment => ({
           ...segment,
           fromPoint: add3(segment.fromPoint, translation),
@@ -521,6 +539,7 @@
           vertices3d,
           occupancy,
           markings,
+          displayMarkings,
           markSegments,
           points: vertices3d.map(projectA2),
           values: turtleVertexValues
@@ -556,7 +575,12 @@
 
       function visibleMarkVectors() {
         const markSums = new Map();
-        visiblePlacements().forEach(placement => addPlacementMarkings(placement, markSums));
+        visiblePlacements().forEach(placement => {
+          (placement.displayMarkings || placement.markings).forEach(entry => {
+            const key = markingKey(entry);
+            markSums.set(key, { value: entry.value, count: (markSums.get(key)?.count || 0) + 1 });
+          });
+        });
         return markSums;
       }
 
@@ -1041,8 +1065,7 @@
           const baseLength = placed.length;
           while (placed.length < limit) {
             if (nodesVisited++ >= nodeBudget) {
-              while (placed.length > baseLength) yield* undoLast('budget');
-              return false;
+              return true;
             }
             const analysis = analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierCoronasForPlacements(placed), frontierCache);
             if (analysis.deadEnd) {

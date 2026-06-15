@@ -461,7 +461,7 @@ h1 {
   content: "";
   position: absolute;
   left: 4px;
-  bottom: 7px;
+  bottom: 10px;
   height: 0;
   border-top: 2px solid rgba(45, 45, 45, 0.55);
   transform: rotate(45deg);
@@ -469,13 +469,13 @@ h1 {
 }
 
 .demo-resize-handle::before {
-  width: 17px;
+  width: 18px;
+  bottom: 16px;
 }
 
 .demo-resize-handle::after {
-  width: 10px;
-  left: 8px;
-  bottom: 4px;
+  width: 12px;
+  bottom: 9px;
 }
 
 .demo-resize-handle:focus-visible {
