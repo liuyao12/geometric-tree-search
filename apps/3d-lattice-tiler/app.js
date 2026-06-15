@@ -398,34 +398,49 @@ function fitCameraToObject(cameraToFit, controlsToFit, object, padding = 1.8) {
   controlsToFit.update();
 }
 
+
+function placeholderThumbnail(label = "tile") {
+  const safe = encodeURIComponent(label);
+  return `data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 135'%3E%3Crect width='180' height='135' fill='%23edf1ef'/%3E%3Cpath d='M52 38h76v59H52z' fill='none' stroke='%2393a4a0' stroke-width='5'/%3E%3Ctext x='90' y='72' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-size='16' fill='%2364766f'%3E${safe}%3C/text%3E%3C/svg%3E`;
+}
+
 function tileThumbnail(tile, cacheKey, colorIndex = 0) {
   if (figureThumbnailCache.has(cacheKey)) return figureThumbnailCache.get(cacheKey);
-  if (!tile) return "";
-  const sceneForThumb = new THREE.Scene();
-  sceneForThumb.background = new THREE.Color(0xedf1ef);
-  const cameraForThumb = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 1000);
-  const group = createTileMeshGroup(tile, colorIndex);
-  sceneForThumb.add(group);
-  sceneForThumb.add(new THREE.AmbientLight(0xffffff, 0.76));
-  const light = new THREE.DirectionalLight(0xffffff, 0.76);
-  light.position.set(4, 6, 5);
-  sceneForThumb.add(light);
-  const box = new THREE.Box3().setFromObject(group);
-  const center = new THREE.Vector3();
-  const size = new THREE.Vector3();
-  box.getCenter(center);
-  box.getSize(size);
-  const radius = Math.max(0.8, size.length() * 0.5);
-  cameraForThumb.position.copy(center).add(new THREE.Vector3(1.35, 1.05, 1.15).normalize().multiplyScalar(radius * 4.2));
-  cameraForThumb.lookAt(center);
-  cameraForThumb.near = 0.01;
-  cameraForThumb.far = Math.max(100, radius * 50);
-  cameraForThumb.updateProjectionMatrix();
-  thumbnailRenderer.render(sceneForThumb, cameraForThumb);
-  const url = thumbnailRenderer.domElement.toDataURL("image/png");
-  disposeObjectTree(group);
-  figureThumbnailCache.set(cacheKey, url);
-  return url;
+  if (!tile) return placeholderThumbnail();
+  let group = null;
+  try {
+    const sceneForThumb = new THREE.Scene();
+    sceneForThumb.background = new THREE.Color(0xedf1ef);
+    const cameraForThumb = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 1000);
+    group = createTileMeshGroup(tile, colorIndex);
+    sceneForThumb.add(group);
+    sceneForThumb.add(new THREE.AmbientLight(0xffffff, 0.76));
+    const light = new THREE.DirectionalLight(0xffffff, 0.76);
+    light.position.set(4, 6, 5);
+    sceneForThumb.add(light);
+    const box = new THREE.Box3().setFromObject(group);
+    const center = new THREE.Vector3();
+    const size = new THREE.Vector3();
+    box.getCenter(center);
+    box.getSize(size);
+    const radius = Math.max(0.8, size.length() * 0.5);
+    cameraForThumb.position.copy(center).add(new THREE.Vector3(1.35, 1.05, 1.15).normalize().multiplyScalar(radius * 4.2));
+    cameraForThumb.lookAt(center);
+    cameraForThumb.near = 0.01;
+    cameraForThumb.far = Math.max(100, radius * 50);
+    cameraForThumb.updateProjectionMatrix();
+    thumbnailRenderer.render(sceneForThumb, cameraForThumb);
+    const url = thumbnailRenderer.domElement.toDataURL("image/png");
+    figureThumbnailCache.set(cacheKey, url);
+    return url;
+  } catch (error) {
+    console.warn("Tile catalog thumbnail failed", error);
+    const fallback = placeholderThumbnail(tile?.name ?? "tile");
+    figureThumbnailCache.set(cacheKey, fallback);
+    return fallback;
+  } finally {
+    if (group) disposeObjectTree(group);
+  }
 }
 
 function figureThumbnail(figure) {
