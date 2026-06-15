@@ -383,6 +383,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
   width: 32px;
   min-width: 32px;
   min-height: 32px;
@@ -415,12 +416,6 @@ h1 {
 
 .toolbar-toggle-row {
   align-items: flex-start;
-}
-
-.toolbar-drag-spacer {
-  display: inline-block;
-  width: 32px;
-  min-width: 32px;
 }
 
 .toolbar-toggle-right {
