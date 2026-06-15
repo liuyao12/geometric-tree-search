@@ -551,7 +551,12 @@
         visiblePlacements().forEach(placement => {
           placement.markings.forEach(entry => {
             const key = markingKey(entry);
-            markSums.set(key, { value: entry.value, count: (markSums.get(key)?.count || 0) + 1 });
+            markSums.set(key, {
+              point: entry.point,
+              component: entry.component,
+              value: entry.value,
+              count: (markSums.get(key)?.count || 0) + 1
+            });
           });
         });
         return markSums;
@@ -1407,12 +1412,26 @@
       function updateHoveredPoint(event) {
         const pointer = pointerPosition(event);
         let best = null;
-        visibleSums().forEach(entry => {
+        const sums = visibleSums();
+        sums.forEach(entry => {
           const point = projectA2(entry.point);
           const screen = worldToScreen(point.x, point.y);
           const distance = Math.hypot(screen.x - pointer.x, screen.y - pointer.y);
           if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
         });
+        if (showMarkings) {
+          const markPoints = new Map();
+          visibleMarkVectors().forEach(entry => {
+            const pointKey = key3(entry.point);
+            if (!sums.has(pointKey)) markPoints.set(pointKey, { point: entry.point, value: 0, markingOnly: true });
+          });
+          markPoints.forEach(entry => {
+            const point = projectA2(entry.point);
+            const screen = worldToScreen(point.x, point.y);
+            const distance = Math.hypot(screen.x - pointer.x, screen.y - pointer.y);
+            if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
+          });
+        }
         hoveredPoint = best;
         hoverReadout.textContent = best ? hoverLinesForPoint(best).join('; ') : '';
       }
