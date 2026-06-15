@@ -480,10 +480,13 @@ export const createTilingStream = (() => {
         .join("|");
       return `${move.prototile_idx}::${vertsKey}`;
     };
-    // Polycube samples include D3 face-center frontier points, but allowed
-    // polycube moves remain translations of the doubled cube-vertex lattice.
-    const isPolycubeMoveTranslation = (translation) =>
-      translation.every(Number.isInteger) && translation.every(value => value % 2 === 0);
+    // Polycubes use ordinary Z^3 vertex samples by default. The optional
+    // D3 frontier mode adds face-center samples, but legal polycube moves
+    // still remain translations of the original cube-vertex lattice.
+    const isPolycubeMoveTranslation = (tile, translation) => {
+      if (!translation.every(Number.isInteger)) return false;
+      return tile.polycube_lattice === "d3" ? translation.every(value => value % 2 === 0) : true;
+    };
     const checkMoveViability = (move) => {
       const validCheck = isMoveValid(move);
       if (!validCheck.ok) return null;
@@ -1339,7 +1342,7 @@ export const createTilingStream = (() => {
             await yieldToBrowser();
             for (const anchor of orient.occupancy) {
               const translation = [option.point[0] - anchor.pos[0], option.point[1] - anchor.pos[1], option.point[2] - anchor.pos[2]];
-              if (tile.is_polycube ? !isPolycubeMoveTranslation(translation) : !translation.every(Number.isInteger)) continue;
+              if (tile.is_polycube ? !isPolycubeMoveTranslation(tile, translation) : !translation.every(Number.isInteger)) continue;
               const mv = { prototile_idx, translation, orient };
               const chk = checkMoveViability(mv);
               if (!chk) continue;
@@ -1615,8 +1618,9 @@ export const createTilingStream = (() => {
 
 export const tileSpecs = (() => {
   const SCALE = 1;
-  const POLYCUBE_COORD_SCALE = 2;
+  const POLYCUBE_D3_COORD_SCALE = 2;
   const POLYCUBE_SOLID_ANGLE_MAX = 8;
+  let activePolycubeLattice = "z3";
   const LEGACY_SOLID_ANGLE_MAX = 48;
 
   const COLOR_PALETTE = [
@@ -2062,7 +2066,10 @@ export const tileSpecs = (() => {
     return { v: vertsScaled, f_data: faceData, occ, skip_winding: false, solid_angle: { kind: "rational", max_value: LEGACY_SOLID_ANGLE_MAX } };
   };
 
-  const generatePolycubeData = (voxels) => {
+  const generatePolycubeData = (voxels, options = {}) => {
+    const lattice = options.polycube_lattice ?? activePolycubeLattice;
+    const useD3Frontier = lattice === "d3";
+    const polycubeCoordScale = useD3Frontier ? POLYCUBE_D3_COORD_SCALE : 1;
     const voxelSet = new Set(voxels.map(v => v.map(Number).join(",")));
     const vox = voxels.map(v => v.map(Number));
     const uniqueVerts = new Set();
@@ -2093,10 +2100,10 @@ export const tileSpecs = (() => {
         }
       }
     }
-    const scaledVerts = vertsList.map(v => v.map(c => (c * POLYCUBE_COORD_SCALE * SCALE)|0));
+    const scaledVerts = vertsList.map(v => v.map(c => (c * polycubeCoordScale * SCALE)|0));
     const occ = new Map();
     const addOcc = (pos, weight) => {
-      const key = pos.map(c => c * POLYCUBE_COORD_SCALE * SCALE).join(",");
+      const key = pos.map(c => c * polycubeCoordScale * SCALE).join(",");
       occ.set(key, (occ.get(key) ?? 0) + weight);
     };
     for (const v of vox) {
@@ -2104,10 +2111,12 @@ export const tileSpecs = (() => {
       for (const dx of [0,1]) for (const dy of [0,1]) for (const dz of [0,1]) {
         addOcc([x + dx, y + dy, z + dz], 1);
       }
-      for (const fixed of [0, 1]) {
-        addOcc([x + fixed, y + 0.5, z + 0.5], 4);
-        addOcc([x + 0.5, y + fixed, z + 0.5], 4);
-        addOcc([x + 0.5, y + 0.5, z + fixed], 4);
+      if (useD3Frontier) {
+        for (const fixed of [0, 1]) {
+          addOcc([x + fixed, y + 0.5, z + 0.5], 4);
+          addOcc([x + 0.5, y + fixed, z + 0.5], 4);
+          addOcc([x + 0.5, y + 0.5, z + fixed], 4);
+        }
       }
     }
     const polycubeKind = (weight) => {
@@ -2118,11 +2127,11 @@ export const tileSpecs = (() => {
     };
     const occList = [...occ.entries()].map(([k,weight]) => [k.split(",").map(Number), weight, null, null, polycubeKind(weight)]);
     const faceData = faces.map(f => ({ v: f.slice(), type: "default" }));
-    return { v: scaledVerts, f_data: faceData, occ: occList, skip_winding: true, solid_angle: { kind: "rational", max_value: POLYCUBE_SOLID_ANGLE_MAX } };
+    return { v: scaledVerts, f_data: faceData, occ: occList, skip_winding: true, polycube_lattice: lattice, solid_angle: { kind: "rational", max_value: POLYCUBE_SOLID_ANGLE_MAX } };
   };
 
   class Prototile3D {
-    constructor(name, vertices, face_data, occupancy_map, skip_winding=false, is_mirror=false, solid_angle={ kind: "rational", max_value: LEGACY_SOLID_ANGLE_MAX }) {
+    constructor(name, vertices, face_data, occupancy_map, skip_winding=false, is_mirror=false, solid_angle={ kind: "rational", max_value: LEGACY_SOLID_ANGLE_MAX }, metadata = {}) {
       this.name = name;
       this.is_mirror = is_mirror;
       this.verts = vertices.map(v => v.slice());
@@ -2130,6 +2139,7 @@ export const tileSpecs = (() => {
       this.face_types = face_data.map(f => f.type);
       this.occupancy_points = (occupancy_map || []).map(([pt,w,symbolic,display_symbolic,kind]) => ({ pos: pt.slice(), weight: w, symbolic, display_symbolic, kind }));
       this.solid_angle = { kind: solid_angle.kind ?? "numeric", max_value: solid_angle.max_value ?? LEGACY_SOLID_ANGLE_MAX, symbols: [...(solid_angle.symbols ?? [])] };
+      this.polycube_lattice = metadata.polycube_lattice ?? null;
       this.is_polycube = this.solid_angle.max_value === POLYCUBE_SOLID_ANGLE_MAX;
       if (!skip_winding) this._fixWinding();
       this.unique_orientations = [];
@@ -2248,12 +2258,12 @@ export const tileSpecs = (() => {
       const tVerts = mirrorVerts.map(v => sub3(v, minv));
       const mirrorOcc = this.occupancy_points.map(p => [sub3([-p.pos[0],p.pos[1],p.pos[2]], minv), p.weight, p.symbolic, p.display_symbolic, p.kind]);
       const faceData = this.faces.map((f,i)=>({ v: f.slice(), type: this.face_types[i] }));
-      return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true, this.solid_angle);
+      return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true, this.solid_angle, { polycube_lattice: this.polycube_lattice });
     }
   }
 
   const make_tile = (name, data) => {
-    return new Prototile3D(name, data.v, data.f_data, data.occ, !!data.skip_winding, false, data.solid_angle);
+    return new Prototile3D(name, data.v, data.f_data, data.occ, !!data.skip_winding, false, data.solid_angle, { polycube_lattice: data.polycube_lattice });
   };
 
   const withSymbolicSolidAngles = (occ, rules) => occ.map(([pos, weight, _symbol, _display, kind]) => {
@@ -2926,8 +2936,8 @@ export const tileSpecs = (() => {
     return out.map(v => [v[0] - mins[0], v[1] - mins[1], v[2] - mins[2]]);
   };
 
-  const buildPolycubeTile = (name, voxels) =>
-    make_tile(name || "CustomPolycube", generatePolycubeData(normalizeVoxels(voxels)));
+  const buildPolycubeTile = (name, voxels, options = {}) =>
+    make_tile(name || "CustomPolycube", generatePolycubeData(normalizeVoxels(voxels), options));
 
   const buildCustomSystem = (customSystem = {}) => {
     const figureRefs = [...new Map(
@@ -2939,11 +2949,21 @@ export const tileSpecs = (() => {
     const tileIds = [...new Set(customSystem.tile_ids ?? [])].filter(id => TILING_REGISTRY[id]);
     const customPolycubes = customSystem.polycubes ?? [];
     const customName = customSystem.name || "Mixed system";
+    const polycubeLattice = customSystem.polycube_lattice === "d3" ? "d3" : "z3";
+    const buildWithPolycubeLattice = (builder) => {
+      const previous = activePolycubeLattice;
+      activePolycubeLattice = polycubeLattice;
+      try {
+        return builder();
+      } finally {
+        activePolycubeLattice = previous;
+      }
+    };
     return {
       name: customName,
       category: ["Mixed"],
       default_viz: { opacities: [], internal: false },
-      build: () => {
+      build: () => buildWithPolycubeLattice(() => {
         const built = [];
         if (figureRefs.length) {
           for (const ref of figureRefs) {
@@ -2956,10 +2976,10 @@ export const tileSpecs = (() => {
         }
         customPolycubes.forEach((poly, index) => {
           const name = poly?.name || `CustomPolycube${index + 1}`;
-          built.push(buildPolycubeTile(name, poly?.voxels ?? [[0, 0, 0]]));
+          built.push(buildPolycubeTile(name, poly?.voxels ?? [[0, 0, 0]], { polycube_lattice: polycubeLattice }));
         });
         return built.length ? built : TILING_REGISTRY.cube.build();
-      }
+      })
     };
   };
 

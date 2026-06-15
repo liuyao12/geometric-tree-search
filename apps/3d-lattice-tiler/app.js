@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260615-d3-frontier-points";
+import { tileSpecs } from "./engine.js?v=20260615-polycube-z3-default";
 
 const $ = (id) => document.getElementById(id);
 
@@ -20,6 +20,7 @@ const exhaustiveCheckbox = $("exhaustiveCheckbox");
 const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
+const polycubeD3Checkbox = $("polycubeD3Checkbox");
 const runButton = $("runButton");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
@@ -628,7 +629,8 @@ function customSystemConfig() {
   return {
     name: selectedFigures().map(figure => figure.name).join(" + ") || "Figure system",
     figure_refs: selectedFigureIds,
-    polycubes
+    polycubes,
+    polycube_lattice: polycubeD3Checkbox?.checked ? "d3" : "z3"
   };
 }
 
@@ -1619,7 +1621,7 @@ function scheduleFullUpdate(snapshot) {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260615-geometric-solid-angles", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260615-polycube-z3-default", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
