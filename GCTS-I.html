@@ -450,20 +450,27 @@
               value: segment.value * symmetry.markSign
             };
           });
+          const markDomainPointsByKey = new Map();
+          const addMarkDomainPoint = point => markDomainPointsByKey.set(key3(point), point);
+          occupancy
+            .filter(entry => entry.kind === 'interior')
+            .forEach(entry => addMarkDomainPoint(entry.point));
+          markSegments.forEach(segment => {
+            extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1)
+              .forEach(addMarkDomainPoint);
+          });
           const markEntriesByKey = new Map();
           const setMarkEntry = entry => {
             markEntriesByKey.set(`${key3(entry.point)}|${entry.component}`, entry);
           };
-          // Interior points not lying on a stripe carry scalar zero in every channel.
-          // These zero values are attached after the symmetry transform and are not
-          // multiplied by markSign, so flipped tiles keep those interior values zero.
-          occupancy
-            .filter(entry => entry.kind === 'interior')
-            .forEach(entry => {
-              for (let component = 0; component < 3; component += 1) {
-                setMarkEntry({ point: entry.point, component, value: 0 });
-              }
-            });
+          // Every point in the marking support carries all three scalar channels.
+          // Stripe entries below overwrite the zero in their own direction; absent
+          // directions remain zero and must agree with neighboring tiles.
+          markDomainPointsByKey.forEach(point => {
+            for (let component = 0; component < 3; component += 1) {
+              setMarkEntry({ point, component, value: 0 });
+            }
+          });
           markSegments.forEach(segment => {
             extendedLatticeSegmentPoints(segment.fromPoint, segment.toPoint, 1).forEach(point => {
               setMarkEntry({ point, component: segment.component, value: segment.value });
@@ -550,10 +557,6 @@
           if (pointKey === key3(point)) vector[Number(componentText)] = entry.value;
         });
         return { vector };
-      }
-
-      function markVectorAt(point) {
-        return markStateAt(point).vector;
       }
 
       function frontierPoints(sums, frontierCoronas = new Map()) {
@@ -1181,6 +1184,10 @@
       }
 
       function drawGridLines(rect) {
+        const corners = [screenToWorld(0, 0), screenToWorld(rect.width, 0), screenToWorld(0, rect.height), screenToWorld(rect.width, rect.height)];
+        const worldRadius = Math.max(...corners.flatMap(point => [Math.abs(point.x), Math.abs(point.y)]));
+        const constantLimit = Math.min(220, Math.max(28, Math.ceil((worldRadius / latticeScale) * 1.7) + 8));
+        const lineExtent = constantLimit * 3;
         const families = [
           constant => t => [constant, t, -constant - t],
           constant => t => [t, constant, -constant - t],
@@ -1188,12 +1195,12 @@
         ];
         ctx.save();
         ctx.strokeStyle = 'rgba(90, 90, 90, 0.30)';
-        ctx.lineWidth = Math.max(0.6, 1.05 * scale);
+        ctx.lineWidth = Math.max(0.35, Math.min(1.05, 1.05 * scale));
         families.forEach(family => {
-          for (let constant = -28; constant <= 28; constant += 1) {
+          for (let constant = -constantLimit; constant <= constantLimit; constant += 1) {
             const makePoint = family(constant);
-            const a = projectA2(makePoint(-80));
-            const b = projectA2(makePoint(80));
+            const a = projectA2(makePoint(-lineExtent));
+            const b = projectA2(makePoint(lineExtent));
             const start = worldToScreen(a.x, a.y);
             const end = worldToScreen(b.x, b.y);
             ctx.beginPath();
@@ -1275,7 +1282,7 @@
           const screen = worldToScreen(point.x, point.y);
           const isHovered = hoveredPoint && key3(hoveredPoint.point) === key3(entry.point);
           const isPartial = entry.value > 0 && entry.value < 12;
-          const radius = isHovered ? 6 : isPartial ? 4.5 : 2.1;
+          const radius = isHovered ? 6 : isPartial ? clamp(4.5 * scale, 1.2, 4.5) : clamp(2.1 * scale, 0.7, 2.1);
           ctx.beginPath();
           ctx.arc(screen.x, screen.y, radius, 0, Math.PI * 2);
           ctx.fillStyle = entry.value > 12 ? '#b84a56' : isHovered ? '#18211f' : isPartial ? 'rgba(24, 33, 31, 0.68)' : 'rgba(24, 33, 31, 0.34)';
@@ -1290,7 +1297,7 @@
         ctx.save();
         ctx.setLineDash([6, 4]);
         ctx.beginPath();
-        ctx.arc(screen.x, screen.y, Math.max(7, 10 * scale), 0, Math.PI * 2);
+        ctx.arc(screen.x, screen.y, clamp(10 * scale, 2.5, 10), 0, Math.PI * 2);
         ctx.strokeStyle = '#18211f';
         ctx.lineWidth = Math.max(1.8, 2.6 * scale);
         ctx.stroke();
