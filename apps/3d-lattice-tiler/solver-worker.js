@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-crystal-order";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260615-geometric-solid-angles";
 
 const SNAPSHOT_INTERVAL_MS = 80;
 
