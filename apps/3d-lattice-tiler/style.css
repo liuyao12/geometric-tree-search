@@ -406,9 +406,10 @@ button:disabled {
 
 .figure-card {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto auto;
   gap: 5px;
   aspect-ratio: 1 / 1;
+  position: relative;
   min-width: 0;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -466,6 +467,23 @@ button:disabled {
 
 .figure-card.is-root .figure-card-title {
   color: var(--accent-2);
+}
+
+.figure-card-angles {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 8.5px;
+  font-weight: 700;
+  line-height: 1.05;
+  opacity: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.figure-card:hover .figure-card-angles,
+.figure-card:focus-visible .figure-card-angles {
+  opacity: 1;
 }
 
 .custom-builder-launch button {
@@ -631,6 +649,17 @@ button:disabled {
   color: var(--ink);
   font-size: 12px;
   font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tile-angles {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.15;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
