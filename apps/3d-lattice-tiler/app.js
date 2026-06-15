@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260605-crystal-order";
+import { tileSpecs } from "./engine.js?v=20260615-polycube-z3-default";
 
 const $ = (id) => document.getElementById(id);
 
@@ -20,6 +20,7 @@ const exhaustiveCheckbox = $("exhaustiveCheckbox");
 const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
+const polycubeD3Checkbox = $("polycubeD3Checkbox");
 const runButton = $("runButton");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
@@ -42,8 +43,6 @@ const metricTiles = $("metricTiles");
 const metricFrontier = $("metricFrontier");
 const metricLayer = $("metricLayer");
 const metricLayerDetail = $("metricLayerDetail");
-const metricForced = $("metricForced");
-const metricBacktracks = $("metricBacktracks");
 const metricVisited = $("metricVisited");
 const metricVisitedDetail = $("metricVisitedDetail");
 const metricNodes = $("metricNodes");
@@ -56,6 +55,57 @@ const prettyNameMap = new Map([
 ]);
 
 const prettyName = (name) => prettyNameMap.get(name) ?? name;
+const gcdInt = (a, b) => {
+  a = Math.abs(Math.round(a));
+  b = Math.abs(Math.round(b));
+  while (b) [a, b] = [b, a % b];
+  return a || 1;
+};
+const formatSolidAngleValue = (item) => {
+  if (item?.display_symbolic) return item.display_symbolic;
+  if (item?.symbolic) return item.symbolic;
+  const weight = Number(item?.weight);
+  const maxValue = Number(item?.max_value) || 1;
+  const value = Number.isFinite(Number(item?.value)) ? Number(item.value) : weight / maxValue;
+  if (!Number.isFinite(weight) || !Number.isFinite(value)) return "";
+  if (Math.abs(weight - Math.round(weight)) < 1e-9 && Math.abs(maxValue - Math.round(maxValue)) < 1e-9) {
+    const divisor = gcdInt(weight, maxValue);
+    const numerator = Math.round(weight) / divisor;
+    const denominator = Math.round(maxValue) / divisor;
+    return denominator === 1 ? String(numerator) : `${numerator}/${denominator}`;
+  }
+  return value.toFixed(5).replace(/0+$/u, "").replace(/\.$/u, "");
+};
+const solidAngleListLabel = (solidAngles = []) => {
+  const counts = new Map();
+  for (const item of solidAngles) {
+    const label = formatSolidAngleValue(item);
+    if (!label) continue;
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+  const values = [...counts.entries()].map(([label, count]) => count > 1 ? `${label} (${count})` : label);
+  return values.length ? values.join(", ") : "No sampled solid-angle values";
+};
+
+const escapeHtml = (value) => String(value)
+  .replace(/&/gu, "&amp;")
+  .replace(/</gu, "&lt;")
+  .replace(/>/gu, "&gt;")
+  .replace(/"/gu, "&quot;");
+const solidAngleListHtml = (solidAngles = []) => {
+  const counts = new Map();
+  for (const item of solidAngles) {
+    const label = formatSolidAngleValue(item);
+    if (!label) continue;
+    counts.set(label, (counts.get(label) ?? 0) + 1);
+  }
+  const values = [...counts.entries()].map(([label, count]) => {
+    const safeLabel = escapeHtml(label);
+    return count > 1 ? `${safeLabel} <strong>(${count})</strong>` : safeLabel;
+  });
+  return values.length ? values.join(", ") : "No sampled solid-angle values";
+};
+const solidAngleTitle = (solidAngles = []) => solidAngleListLabel(solidAngles);
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
@@ -159,14 +209,19 @@ let faceGroup = new THREE.Group();
 let edgeGroup = new THREE.Group();
 scene.add(faceGroup, edgeGroup);
 
-const thumbnailRenderer = new THREE.WebGLRenderer({
-  antialias: true,
-  preserveDrawingBuffer: true,
-  powerPreference: "low-power"
-});
-thumbnailRenderer.setPixelRatio(1);
-thumbnailRenderer.setClearColor(0xedf1ef, 1);
-thumbnailRenderer.setSize(180, 135, false);
+let thumbnailRenderer = null;
+function getThumbnailRenderer() {
+  if (thumbnailRenderer) return thumbnailRenderer;
+  thumbnailRenderer = new THREE.WebGLRenderer({
+    antialias: true,
+    preserveDrawingBuffer: true,
+    powerPreference: "low-power"
+  });
+  thumbnailRenderer.setPixelRatio(1);
+  thumbnailRenderer.setClearColor(0xedf1ef, 1);
+  thumbnailRenderer.setSize(180, 135, false);
+  return thumbnailRenderer;
+}
 
 const builderScene = new THREE.Scene();
 builderScene.background = new THREE.Color(0xedf1ef);
@@ -231,8 +286,8 @@ function criterion() {
 
 function updateCriterionUI() {
   const byCount = criterion() === "count";
-  maxTileField.classList.toggle("is-hidden", !byCount);
-  layerField.classList.toggle("is-hidden", byCount);
+  maxTileField.classList.toggle("is-active", byCount);
+  layerField.classList.toggle("is-active", !byCount);
 }
 
 function initFigureSelection() {
@@ -349,34 +404,50 @@ function fitCameraToObject(cameraToFit, controlsToFit, object, padding = 1.8) {
   controlsToFit.update();
 }
 
+
+function placeholderThumbnail(label = "tile") {
+  const safe = encodeURIComponent(label);
+  return `data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 135'%3E%3Crect width='180' height='135' fill='%23edf1ef'/%3E%3Cpath d='M52 38h76v59H52z' fill='none' stroke='%2393a4a0' stroke-width='5'/%3E%3Ctext x='90' y='72' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-size='16' fill='%2364766f'%3E${safe}%3C/text%3E%3C/svg%3E`;
+}
+
 function tileThumbnail(tile, cacheKey, colorIndex = 0) {
   if (figureThumbnailCache.has(cacheKey)) return figureThumbnailCache.get(cacheKey);
-  if (!tile) return "";
-  const sceneForThumb = new THREE.Scene();
-  sceneForThumb.background = new THREE.Color(0xedf1ef);
-  const cameraForThumb = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 1000);
-  const group = createTileMeshGroup(tile, colorIndex);
-  sceneForThumb.add(group);
-  sceneForThumb.add(new THREE.AmbientLight(0xffffff, 0.76));
-  const light = new THREE.DirectionalLight(0xffffff, 0.76);
-  light.position.set(4, 6, 5);
-  sceneForThumb.add(light);
-  const box = new THREE.Box3().setFromObject(group);
-  const center = new THREE.Vector3();
-  const size = new THREE.Vector3();
-  box.getCenter(center);
-  box.getSize(size);
-  const radius = Math.max(0.8, size.length() * 0.5);
-  cameraForThumb.position.copy(center).add(new THREE.Vector3(1.35, 1.05, 1.15).normalize().multiplyScalar(radius * 4.2));
-  cameraForThumb.lookAt(center);
-  cameraForThumb.near = 0.01;
-  cameraForThumb.far = Math.max(100, radius * 50);
-  cameraForThumb.updateProjectionMatrix();
-  thumbnailRenderer.render(sceneForThumb, cameraForThumb);
-  const url = thumbnailRenderer.domElement.toDataURL("image/png");
-  disposeObjectTree(group);
-  figureThumbnailCache.set(cacheKey, url);
-  return url;
+  if (!tile) return placeholderThumbnail();
+  let group = null;
+  try {
+    const sceneForThumb = new THREE.Scene();
+    sceneForThumb.background = new THREE.Color(0xedf1ef);
+    const cameraForThumb = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 1000);
+    group = createTileMeshGroup(tile, colorIndex);
+    sceneForThumb.add(group);
+    sceneForThumb.add(new THREE.AmbientLight(0xffffff, 0.76));
+    const light = new THREE.DirectionalLight(0xffffff, 0.76);
+    light.position.set(4, 6, 5);
+    sceneForThumb.add(light);
+    const box = new THREE.Box3().setFromObject(group);
+    const center = new THREE.Vector3();
+    const size = new THREE.Vector3();
+    box.getCenter(center);
+    box.getSize(size);
+    const radius = Math.max(0.8, size.length() * 0.5);
+    cameraForThumb.position.copy(center).add(new THREE.Vector3(1.35, 1.05, 1.15).normalize().multiplyScalar(radius * 4.2));
+    cameraForThumb.lookAt(center);
+    cameraForThumb.near = 0.01;
+    cameraForThumb.far = Math.max(100, radius * 50);
+    cameraForThumb.updateProjectionMatrix();
+    const rendererForThumb = getThumbnailRenderer();
+    rendererForThumb.render(sceneForThumb, cameraForThumb);
+    const url = rendererForThumb.domElement.toDataURL("image/png");
+    figureThumbnailCache.set(cacheKey, url);
+    return url;
+  } catch (error) {
+    console.warn("Tile catalog thumbnail failed", error);
+    const fallback = placeholderThumbnail(tile?.name ?? "tile");
+    figureThumbnailCache.set(cacheKey, fallback);
+    return fallback;
+  } finally {
+    if (group) disposeObjectTree(group);
+  }
 }
 
 function figureThumbnail(figure) {
@@ -452,6 +523,7 @@ function selectedSystemItems() {
     title: `${figureSourceTitle(figure)}: ${prettyName(figure.name)}`,
     thumbnail: figureThumbnail(figure),
     faceCount: tileFaceCount(tileForFigure(figure)),
+    solidAngles: figure.solid_angles ?? tileSpecs.solidAngleValues?.(tileForFigure(figure)) ?? [],
     tileIndex: index,
     remove: () => {
       selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
@@ -467,6 +539,7 @@ function selectedSystemItems() {
       title: `${name}: ${builderVoxels.size} cube${builderVoxels.size === 1 ? "" : "s"}`,
       thumbnail: customPolycubeThumbnail(tile),
       faceCount: tileFaceCount(tile),
+      solidAngles: tileSpecs.solidAngleValues?.(tile) ?? [],
       tileIndex: items.length,
       remove: () => {
         customPolycubeCheckbox.checked = false;
@@ -511,12 +584,12 @@ function renderSelectedTiles() {
     const label = document.createElement("span");
     label.className = "selected-tile-name";
     label.textContent = item.name;
-    label.title = item.title;
+    label.title = `${item.title}\n${solidAngleTitle(item.solidAngles)}`;
 
     const faces = document.createElement("span");
     faces.className = "selected-tile-faces";
     faces.textContent = `${item.faceCount} faces`;
-    faces.title = "Faces on this tile";
+    faces.title = `Faces on this tile\n${solidAngleTitle(item.solidAngles)}`;
     main.append(label, faces);
 
     const count = document.createElement("span");
@@ -524,13 +597,27 @@ function renderSelectedTiles() {
     count.textContent = tileCountForSelectedItem(item);
     count.title = "Copies in the displayed tiling";
 
+    const opacity = document.createElement("input");
+    opacity.className = "selected-tile-opacity";
+    opacity.type = "range";
+    opacity.min = "0";
+    opacity.max = "1";
+    opacity.step = "0.05";
+    opacity.value = currentOpacities[item.tileIndex] ?? 1;
+    opacity.title = `Opacity for ${item.name}`;
+    opacity.addEventListener("input", () => {
+      currentOpacities[item.tileIndex] = +opacity.value;
+      if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true });
+      requestRender();
+    });
+
     const remove = document.createElement("button");
     remove.type = "button";
     remove.className = "selected-tile-remove";
     remove.textContent = "x";
     remove.title = `Remove ${item.name}`;
     remove.addEventListener("click", item.remove);
-    row.append(main, count, remove);
+    row.append(main, opacity, count, remove);
     selectedTilesEl.appendChild(row);
   });
 }
@@ -548,7 +635,8 @@ function customSystemConfig() {
   return {
     name: selectedFigures().map(figure => figure.name).join(" + ") || "Figure system",
     figure_refs: selectedFigureIds,
-    polycubes
+    polycubes,
+    polycube_lattice: polycubeD3Checkbox?.checked ? "d3" : "z3"
   };
 }
 
@@ -604,9 +692,10 @@ function renderSystemTileList() {
       row.disabled = !selected && !compatible;
       row.setAttribute("aria-checked", String(selected));
       row.setAttribute("aria-disabled", String(!selected && !compatible));
+      const angleTitle = solidAngleTitle(figure.solid_angles);
       row.title = !selected && !compatible
-        ? "No compatible lattice face with the current selection."
-        : "";
+        ? `No compatible lattice face with the current selection.\n${angleTitle}`
+        : angleTitle;
       row.addEventListener("click", () => {
         if (selected) {
           selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
@@ -622,8 +711,11 @@ function renderSystemTileList() {
       const name = document.createElement("div");
       name.className = "figure-card-title";
       name.textContent = prettyName(figure.name);
-      name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}`;
-      row.append(image, name);
+      name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}\n${angleTitle}`;
+      const angles = document.createElement("div");
+      angles.className = "figure-card-angles";
+      angles.innerHTML = solidAngleListHtml(figure.solid_angles);
+      row.append(image, name, angles);
       grid.appendChild(row);
     }
 
@@ -947,6 +1039,27 @@ function pushVertex(out, vertex, scale) {
   out.push(vertex[0] / scale, vertex[1] / scale, vertex[2] / scale);
 }
 
+function faceNormal(vertices) {
+  if (!vertices || vertices.length < 3) return [0, 0, 0];
+  const a = vertices[0];
+  for (let i = 1; i < vertices.length - 1; i += 1) {
+    const b = vertices[i];
+    const c = vertices[i + 1];
+    const ux = b[0] - a[0], uy = b[1] - a[1], uz = b[2] - a[2];
+    const vx = c[0] - a[0], vy = c[1] - a[1], vz = c[2] - a[2];
+    const nx = uy * vz - uz * vy;
+    const ny = uz * vx - ux * vz;
+    const nz = ux * vy - uy * vx;
+    const len = Math.hypot(nx, ny, nz);
+    if (len > 1e-9) return [nx / len, ny / len, nz / len];
+  }
+  return [0, 0, 0];
+}
+
+function pushOffsetVertex(out, vertex, scale, offset) {
+  out.push(vertex[0] / scale + offset[0], vertex[1] / scale + offset[1], vertex[2] / scale + offset[2]);
+}
+
 function visibleAlpha(face) {
   const typeIndex = face.type_idx ?? 0;
   return currentOpacities[typeIndex] ?? 1;
@@ -962,18 +1075,17 @@ function formatVisitedPercent(value) {
 }
 
 function updateFrontierMetrics(stats = null) {
-  const totalFaces = stats?.total_faces ?? stats?.count ?? 0;
-  const layer = stats?.min_gen ?? 0;
-  const layerFaces = stats?.count ?? 0;
-  metricFrontier.textContent = totalFaces;
-  metricLayer.textContent = layer;
-  metricLayerDetail.textContent = `${layerFaces} face${layerFaces === 1 ? "" : "s"} at layer ${layer}`;
+  const frontierPoints = stats?.point_count ?? stats?.frontier_points ?? stats?.count ?? 0;
+  const candidateCount = stats?.candidate_count;
+  metricFrontier.textContent = frontierPoints;
+  metricLayer.textContent = Number.isFinite(candidateCount) ? candidateCount : "—";
+  metricLayerDetail.textContent = Number.isFinite(candidateCount)
+    ? `candidate${candidateCount === 1 ? "" : "s"} for ${frontierPoints} frontier point${frontierPoints === 1 ? "" : "s"}`
+    : "candidates pending";
 }
 
 function updateSearchMetrics(stats = null) {
   if (stats) lastSearchStats = stats;
-  const forcedOnPath = stats?.forced_on_path ?? 0;
-  const backtracks = stats?.backtracks ?? 0;
   const visitedPercent = stats?.visited_percent ?? 0;
   const progressDepth = stats?.progress_depth ?? stats?.max_depth ?? 0;
   const completedPaths = stats?.progress_completed_paths ?? stats?.visited_nodes ?? treeMap.size;
@@ -981,8 +1093,6 @@ function updateSearchMetrics(stats = null) {
   const completedPathLabel = stats?.progress_completed_paths_label ?? completedPaths;
   const totalPathLabel = stats?.progress_total_paths_label ?? totalPaths;
 
-  metricForced.textContent = forcedOnPath;
-  metricBacktracks.textContent = backtracks;
   metricVisited.textContent = formatVisitedPercent(visitedPercent);
   metricVisitedDetail.textContent = `DFS estimate, depth ${progressDepth}`;
   metricNodes.textContent = totalPathLabel
@@ -1024,20 +1134,22 @@ function updateScene(snapshot, options = {}) {
   const nextEdgeGroup = new THREE.Group();
 
   for (const face of faces) {
-    if (face.internal && !showInternal) continue;
-    const alpha = visibleAlpha(face);
+    const alpha = visibleAlpha(face) * (face.internal && !showInternal ? 0.72 : 1);
     if (alpha < 0.01) continue;
     const color = face.color ?? "#178273";
     const vertices = face.v ?? [];
     if (vertices.length < 3) continue;
+    const normal = faceNormal(vertices);
+    const offsetDistance = face.internal ? 0.012 : 0;
+    const offset = normal.map(value => value * offsetDistance);
 
     if (rebuildFaces) {
       const faceKey = `${color}|${alpha.toFixed(3)}|${alpha > 0.55 ? 1 : 0}`;
       const faceBatch = batchFor(faceBatches, faceKey, () => ({ color, alpha, positions: [] }));
       for (let i = 1; i < vertices.length - 1; i += 1) {
-        pushVertex(faceBatch.positions, vertices[0], scale);
-        pushVertex(faceBatch.positions, vertices[i], scale);
-        pushVertex(faceBatch.positions, vertices[i + 1], scale);
+        pushOffsetVertex(faceBatch.positions, vertices[0], scale, offset);
+        pushOffsetVertex(faceBatch.positions, vertices[i], scale, offset);
+        pushOffsetVertex(faceBatch.positions, vertices[i + 1], scale, offset);
       }
     }
 
@@ -1045,8 +1157,8 @@ function updateScene(snapshot, options = {}) {
       const edgeKey = alpha.toFixed(3);
       const edgeBatch = batchFor(edgeBatches, edgeKey, () => ({ alpha, positions: [] }));
       for (let i = 0; i < vertices.length; i += 1) {
-        pushVertex(edgeBatch.positions, vertices[i], scale);
-        pushVertex(edgeBatch.positions, vertices[(i + 1) % vertices.length], scale);
+        pushOffsetVertex(edgeBatch.positions, vertices[i], scale, offset);
+        pushOffsetVertex(edgeBatch.positions, vertices[(i + 1) % vertices.length], scale, offset);
       }
     }
   }
@@ -1156,7 +1268,7 @@ function initTileControls(info) {
     const name = document.createElement("div");
     name.className = "tile-name";
     name.textContent = prettyName(tile.name);
-    name.title = prettyName(tile.name);
+    name.title = `${prettyName(tile.name)}\n${solidAngleTitle(tile.solid_angles)}`;
 
     const slider = document.createElement("input");
     slider.type = "range";
@@ -1170,10 +1282,15 @@ function initTileControls(info) {
       requestRender();
     });
 
-    meta.append(name, slider);
+    const angles = document.createElement("div");
+    angles.className = "tile-angles";
+    angles.innerHTML = solidAngleListHtml(tile.solid_angles);
+
+    meta.append(name, angles, slider);
     row.append(swatch, meta);
     tileList.appendChild(row);
   });
+  renderSelectedTiles();
 }
 
 function addNodeToTree(id, label, parentId = null, isForced = false, frontierStats = null) {
@@ -1238,7 +1355,7 @@ function selectTreeNode(nodeId) {
   renderTree();
 }
 
-function updateNodeStatus(id, status, text = "", colorId = null, frontierStats = null) {
+function updateNodeStatus(id, status, text = "", colorId = null, frontierStats = null, frontierDual = null) {
   const node = treeMap.get(id);
   if (!node) return;
   node.status = status;
@@ -1255,6 +1372,7 @@ function updateNodeStatus(id, status, text = "", colorId = null, frontierStats =
   }
   if (colorId != null) node.colorId = colorId;
   if (frontierStats) node.frontierStats = frontierStats;
+  if (frontierDual) node.frontierDual = frontierDual;
 
   if (status === "fail" && !manuallyExpanded.has(id)) expandedNodes.delete(id);
   if (status === "working") {
@@ -1409,10 +1527,15 @@ function renderTree() {
     const frontier = document.createElement("span");
     frontier.className = "tree-frontier";
     if (node.frontierStats) {
-      const count = node.frontierStats.count ?? 0;
-      const gen = node.frontierStats.min_gen ?? 0;
-      frontier.textContent = `${count} faces @ gen ${gen}`;
-      frontier.title = "Frontier faces at the earliest generation";
+      const points = node.frontierStats.point_count ?? node.frontierStats.count ?? 0;
+      const candidates = node.frontierStats.candidate_count;
+      frontier.textContent = Number.isFinite(candidates)
+        ? `${points} pts / ${candidates} cand`
+        : `${points} pts`;
+      const associations = node.frontierDual?.association_count ?? node.frontierStats.association_count;
+      frontier.title = Number.isFinite(associations)
+        ? `Frontier-candidate graph: ${points} points, ${candidates ?? 0} candidates, ${associations} associations`
+        : "Frontier points and cached candidate count";
     }
 
     content.append(statusDot, label);
@@ -1464,7 +1587,7 @@ function handleMessage(message) {
     return;
   }
   if (message.type === "node_status") {
-    updateNodeStatus(message.id, message.status, message.text || "", message.color_id, message.frontier_stats);
+    updateNodeStatus(message.id, message.status, message.text || "", message.color_id, message.frontier_stats, message.frontier_dual);
     return;
   }
   if (message.type === "node_snapshot") {
@@ -1504,7 +1627,7 @@ function scheduleFullUpdate(snapshot) {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260605-crystal-order", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260615-polycube-z3-default", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
