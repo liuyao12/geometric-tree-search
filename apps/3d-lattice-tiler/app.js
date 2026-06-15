@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260605-crystal-order";
+import { tileSpecs } from "./engine.js?v=20260615-geometric-solid-angles";
 
 const $ = (id) => document.getElementById(id);
 
@@ -56,6 +56,29 @@ const prettyNameMap = new Map([
 ]);
 
 const prettyName = (name) => prettyNameMap.get(name) ?? name;
+const gcdInt = (a, b) => {
+  a = Math.abs(Math.round(a));
+  b = Math.abs(Math.round(b));
+  while (b) [a, b] = [b, a % b];
+  return a || 1;
+};
+const formatSolidAngleValue = (item) => {
+  const weight = Number(item?.weight);
+  const maxValue = Number(item?.max_value) || 1;
+  if (!Number.isFinite(weight)) return "";
+  if (Math.abs(weight - Math.round(weight)) < 1e-9 && Math.abs(maxValue - Math.round(maxValue)) < 1e-9) {
+    const divisor = gcdInt(weight, maxValue);
+    const numerator = Math.round(weight) / divisor;
+    const denominator = Math.round(maxValue) / divisor;
+    return denominator === 1 ? String(numerator) : `${numerator}/${denominator}`;
+  }
+  return `${weight.toFixed(3).replace(/0+$/u, "").replace(/\.$/u, "")}/${maxValue}`;
+};
+const solidAngleListLabel = (solidAngles = []) => {
+  const values = solidAngles.map(formatSolidAngleValue).filter(Boolean);
+  return values.length ? values.join(", ") : "No sampled solid-angle values";
+};
+const solidAngleTitle = (solidAngles = []) => `Solid angles: ${solidAngleListLabel(solidAngles)}`;
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
@@ -452,6 +475,7 @@ function selectedSystemItems() {
     title: `${figureSourceTitle(figure)}: ${prettyName(figure.name)}`,
     thumbnail: figureThumbnail(figure),
     faceCount: tileFaceCount(tileForFigure(figure)),
+    solidAngles: figure.solid_angles ?? tileSpecs.solidAngleValues?.(tileForFigure(figure)) ?? [],
     tileIndex: index,
     remove: () => {
       selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
@@ -467,6 +491,7 @@ function selectedSystemItems() {
       title: `${name}: ${builderVoxels.size} cube${builderVoxels.size === 1 ? "" : "s"}`,
       thumbnail: customPolycubeThumbnail(tile),
       faceCount: tileFaceCount(tile),
+      solidAngles: tileSpecs.solidAngleValues?.(tile) ?? [],
       tileIndex: items.length,
       remove: () => {
         customPolycubeCheckbox.checked = false;
@@ -511,12 +536,12 @@ function renderSelectedTiles() {
     const label = document.createElement("span");
     label.className = "selected-tile-name";
     label.textContent = item.name;
-    label.title = item.title;
+    label.title = `${item.title}\n${solidAngleTitle(item.solidAngles)}`;
 
     const faces = document.createElement("span");
     faces.className = "selected-tile-faces";
     faces.textContent = `${item.faceCount} faces`;
-    faces.title = "Faces on this tile";
+    faces.title = `Faces on this tile\n${solidAngleTitle(item.solidAngles)}`;
     main.append(label, faces);
 
     const count = document.createElement("span");
@@ -604,9 +629,10 @@ function renderSystemTileList() {
       row.disabled = !selected && !compatible;
       row.setAttribute("aria-checked", String(selected));
       row.setAttribute("aria-disabled", String(!selected && !compatible));
+      const angleTitle = solidAngleTitle(figure.solid_angles);
       row.title = !selected && !compatible
-        ? "No compatible lattice face with the current selection."
-        : "";
+        ? `No compatible lattice face with the current selection.\n${angleTitle}`
+        : angleTitle;
       row.addEventListener("click", () => {
         if (selected) {
           selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
@@ -622,8 +648,11 @@ function renderSystemTileList() {
       const name = document.createElement("div");
       name.className = "figure-card-title";
       name.textContent = prettyName(figure.name);
-      name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}`;
-      row.append(image, name);
+      name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}\n${angleTitle}`;
+      const angles = document.createElement("div");
+      angles.className = "figure-card-angles";
+      angles.textContent = solidAngleListLabel(figure.solid_angles);
+      row.append(image, name, angles);
       grid.appendChild(row);
     }
 
@@ -947,6 +976,27 @@ function pushVertex(out, vertex, scale) {
   out.push(vertex[0] / scale, vertex[1] / scale, vertex[2] / scale);
 }
 
+function faceNormal(vertices) {
+  if (!vertices || vertices.length < 3) return [0, 0, 0];
+  const a = vertices[0];
+  for (let i = 1; i < vertices.length - 1; i += 1) {
+    const b = vertices[i];
+    const c = vertices[i + 1];
+    const ux = b[0] - a[0], uy = b[1] - a[1], uz = b[2] - a[2];
+    const vx = c[0] - a[0], vy = c[1] - a[1], vz = c[2] - a[2];
+    const nx = uy * vz - uz * vy;
+    const ny = uz * vx - ux * vz;
+    const nz = ux * vy - uy * vx;
+    const len = Math.hypot(nx, ny, nz);
+    if (len > 1e-9) return [nx / len, ny / len, nz / len];
+  }
+  return [0, 0, 0];
+}
+
+function pushOffsetVertex(out, vertex, scale, offset) {
+  out.push(vertex[0] / scale + offset[0], vertex[1] / scale + offset[1], vertex[2] / scale + offset[2]);
+}
+
 function visibleAlpha(face) {
   const typeIndex = face.type_idx ?? 0;
   return currentOpacities[typeIndex] ?? 1;
@@ -1024,20 +1074,22 @@ function updateScene(snapshot, options = {}) {
   const nextEdgeGroup = new THREE.Group();
 
   for (const face of faces) {
-    if (face.internal && !showInternal) continue;
-    const alpha = visibleAlpha(face);
+    const alpha = visibleAlpha(face) * (face.internal && !showInternal ? 0.72 : 1);
     if (alpha < 0.01) continue;
     const color = face.color ?? "#178273";
     const vertices = face.v ?? [];
     if (vertices.length < 3) continue;
+    const normal = faceNormal(vertices);
+    const offsetDistance = face.internal ? 0.012 : 0;
+    const offset = normal.map(value => value * offsetDistance);
 
     if (rebuildFaces) {
       const faceKey = `${color}|${alpha.toFixed(3)}|${alpha > 0.55 ? 1 : 0}`;
       const faceBatch = batchFor(faceBatches, faceKey, () => ({ color, alpha, positions: [] }));
       for (let i = 1; i < vertices.length - 1; i += 1) {
-        pushVertex(faceBatch.positions, vertices[0], scale);
-        pushVertex(faceBatch.positions, vertices[i], scale);
-        pushVertex(faceBatch.positions, vertices[i + 1], scale);
+        pushOffsetVertex(faceBatch.positions, vertices[0], scale, offset);
+        pushOffsetVertex(faceBatch.positions, vertices[i], scale, offset);
+        pushOffsetVertex(faceBatch.positions, vertices[i + 1], scale, offset);
       }
     }
 
@@ -1045,8 +1097,8 @@ function updateScene(snapshot, options = {}) {
       const edgeKey = alpha.toFixed(3);
       const edgeBatch = batchFor(edgeBatches, edgeKey, () => ({ alpha, positions: [] }));
       for (let i = 0; i < vertices.length; i += 1) {
-        pushVertex(edgeBatch.positions, vertices[i], scale);
-        pushVertex(edgeBatch.positions, vertices[(i + 1) % vertices.length], scale);
+        pushOffsetVertex(edgeBatch.positions, vertices[i], scale, offset);
+        pushOffsetVertex(edgeBatch.positions, vertices[(i + 1) % vertices.length], scale, offset);
       }
     }
   }
@@ -1156,7 +1208,7 @@ function initTileControls(info) {
     const name = document.createElement("div");
     name.className = "tile-name";
     name.textContent = prettyName(tile.name);
-    name.title = prettyName(tile.name);
+    name.title = `${prettyName(tile.name)}\n${solidAngleTitle(tile.solid_angles)}`;
 
     const slider = document.createElement("input");
     slider.type = "range";
@@ -1170,7 +1222,11 @@ function initTileControls(info) {
       requestRender();
     });
 
-    meta.append(name, slider);
+    const angles = document.createElement("div");
+    angles.className = "tile-angles";
+    angles.textContent = solidAngleListLabel(tile.solid_angles);
+
+    meta.append(name, angles, slider);
     row.append(swatch, meta);
     tileList.appendChild(row);
   });
@@ -1504,7 +1560,7 @@ function scheduleFullUpdate(snapshot) {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260605-crystal-order", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260615-geometric-solid-angles", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
