@@ -55,6 +55,31 @@ const prettyNameMap = new Map([
 ]);
 
 const prettyName = (name) => prettyNameMap.get(name) ?? name;
+
+function fallbackRenderer(label) {
+  const canvas = document.createElement("canvas");
+  canvas.className = "renderer-fallback";
+  canvas.setAttribute("aria-label", label);
+  return {
+    domElement: canvas,
+    setClearColor() {},
+    setPixelRatio() {},
+    setSize(width, height) {
+      canvas.width = width;
+      canvas.height = height;
+    },
+    render() {}
+  };
+}
+
+function createRendererOrFallback(options, label) {
+  try {
+    return new THREE.WebGLRenderer(options);
+  } catch (error) {
+    console.warn(`${label} WebGL renderer failed`, error);
+    return fallbackRenderer(label);
+  }
+}
 const gcdInt = (a, b) => {
   a = Math.abs(Math.round(a));
   b = Math.abs(Math.round(b));
@@ -172,7 +197,7 @@ scene.background = new THREE.Color(0xedf1ef);
 const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 4000);
 camera.position.set(20, 20, 20);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "default" });
+const renderer = createRendererOrFallback({ antialias: true, powerPreference: "default" }, "Main viewport");
 renderer.setClearColor(0xedf1ef, 1);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 viewport.appendChild(renderer.domElement);
@@ -212,11 +237,11 @@ scene.add(faceGroup, edgeGroup);
 let thumbnailRenderer = null;
 function getThumbnailRenderer() {
   if (thumbnailRenderer) return thumbnailRenderer;
-  thumbnailRenderer = new THREE.WebGLRenderer({
+  thumbnailRenderer = createRendererOrFallback({
     antialias: true,
     preserveDrawingBuffer: true,
     powerPreference: "low-power"
-  });
+  }, "Tile thumbnail");
   thumbnailRenderer.setPixelRatio(1);
   thumbnailRenderer.setClearColor(0xedf1ef, 1);
   thumbnailRenderer.setSize(180, 135, false);
@@ -227,14 +252,34 @@ const builderScene = new THREE.Scene();
 builderScene.background = new THREE.Color(0xedf1ef);
 const builderCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
 builderCamera.position.set(5, 5, 5);
-const builderRenderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "default" });
-builderRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-builderRenderer.setClearColor(0xedf1ef, 1);
-polycubeBuilder.appendChild(builderRenderer.domElement);
-const builderControls = new OrbitControls(builderCamera, builderRenderer.domElement);
-builderControls.enableDamping = true;
-builderControls.dampingFactor = 0.08;
-builderControls.addEventListener("change", requestBuilderRender);
+let builderRenderer = null;
+let builderControls = null;
+function ensureBuilderRenderer() {
+  if (builderRenderer && builderControls) return true;
+  try {
+    builderRenderer = createRendererOrFallback({ antialias: true, powerPreference: "default" }, "Custom polycube builder");
+    builderRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    builderRenderer.setClearColor(0xedf1ef, 1);
+    polycubeBuilder.appendChild(builderRenderer.domElement);
+    builderControls = new OrbitControls(builderCamera, builderRenderer.domElement);
+    builderControls.enableDamping = true;
+    builderControls.dampingFactor = 0.08;
+    builderControls.addEventListener("change", requestBuilderRender);
+    builderRenderer.domElement.addEventListener("pointermove", handleBuilderPointerMove);
+    builderRenderer.domElement.addEventListener("pointerleave", () => {
+      builderHoverKey = null;
+      renderBuilderVoxels();
+    });
+    builderRenderer.domElement.addEventListener("pointerdown", handleBuilderPointerDown);
+    builderRenderer.domElement.addEventListener("contextmenu", (event) => event.preventDefault());
+    return true;
+  } catch (error) {
+    console.warn("Custom polycube builder renderer failed", error);
+    builderRenderer = null;
+    builderControls = null;
+    return false;
+  }
+}
 builderScene.add(new THREE.HemisphereLight(0xffffff, 0xcfd9d4, 0.82));
 builderScene.add(new THREE.AmbientLight(0xffffff, 0.78));
 const builderLight = new THREE.DirectionalLight(0xffffff, 1.0);
@@ -260,13 +305,6 @@ const builderGhostMaterial = new THREE.MeshPhongMaterial({
 });
 const builderEdgeMaterial = new THREE.LineBasicMaterial({ color: 0x111827, opacity: 0.55, transparent: true });
 const builderEdgeGeometry = new THREE.EdgesGeometry(builderCubeGeometry);
-builderRenderer.domElement.addEventListener("pointermove", handleBuilderPointerMove);
-builderRenderer.domElement.addEventListener("pointerleave", () => {
-  builderHoverKey = null;
-  renderBuilderVoxels();
-});
-builderRenderer.domElement.addEventListener("pointerdown", handleBuilderPointerDown);
-builderRenderer.domElement.addEventListener("contextmenu", (event) => event.preventDefault());
 
 function requestRender() {
   needsRender = true;
@@ -846,11 +884,12 @@ function renderBuilderVoxels(fit = false) {
     ghost.userData = { ghost: true };
     builderGroup.add(ghost);
   }
-  if (fit) fitCameraToObject(builderCamera, builderControls, builderGroup, 2.35);
+  if (fit && builderControls) fitCameraToObject(builderCamera, builderControls, builderGroup, 2.35);
   requestBuilderRender();
 }
 
 function builderBlockIntersections(event) {
+  if (!builderRenderer) return [];
   const rect = builderRenderer.domElement.getBoundingClientRect();
   builderPointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
   builderPointer.y = -(((event.clientY - rect.top) / rect.height) * 2 - 1);
@@ -995,6 +1034,7 @@ new ResizeObserver(resizeRenderer).observe(viewport);
 resizeRenderer();
 
 function resizeBuilderRenderer() {
+  if (!ensureBuilderRenderer()) return;
   const bounds = polycubeBuilder.getBoundingClientRect();
   const width = Math.max(1, Math.floor(bounds.width));
   const height = Math.max(1, Math.floor(bounds.height));
@@ -1008,7 +1048,6 @@ function resizeBuilderRenderer() {
 }
 
 new ResizeObserver(resizeBuilderRenderer).observe(polycubeBuilder);
-resizeBuilderRenderer();
 
 function openCustomBuilderDialog() {
   if (!customBuilderDialog.open) {
@@ -1016,6 +1055,7 @@ function openCustomBuilderDialog() {
     else customBuilderDialog.setAttribute("open", "");
   }
   requestAnimationFrame(() => {
+    ensureBuilderRenderer();
     resizeBuilderRenderer();
     requestBuilderRender();
   });
@@ -1793,13 +1833,13 @@ function updateElapsed() {
 function animate() {
   window.requestAnimationFrame(animate);
   if (controls.update()) requestRender();
-  if (builderControls.update()) requestBuilderRender();
+  if (builderControls?.update()) requestBuilderRender();
   updateElapsed();
   if (needsRender) {
     renderer.render(scene, camera);
     needsRender = false;
   }
-  if (builderNeedsRender) {
+  if (builderNeedsRender && builderRenderer) {
     builderRenderer.render(builderScene, builderCamera);
     builderNeedsRender = false;
   }
@@ -1809,7 +1849,6 @@ initFigureSelection();
 updateCriterionUI();
 applyModeDefaults();
 refreshFigureSelectionUI();
-renderBuilderVoxels(true);
 bindControls();
 setRunButton();
 animate();
