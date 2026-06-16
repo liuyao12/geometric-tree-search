@@ -1405,11 +1405,6 @@ export const createTilingStream = (() => {
         if (!options.length) return { options, branches: [], candidate_count: 0 };
         return { options, branches: options.slice().sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.unique_candidates.length - right.unique_candidates.length || left.pointKey.localeCompare(right.pointKey)), candidate_count };
       };
-      const candidateFrontierStats = (analysis) => ({
-        ...calculateFrontierStats(),
-        point_count: analysis?.options?.length ?? frontierPointStats().point_count,
-        candidate_count: analysis?.candidate_count ?? 0
-      });
       const frontierCandidateDual = (analysis) => {
         const candidateMap = new Map();
         const frontier_points = [];
@@ -1507,7 +1502,9 @@ export const createTilingStream = (() => {
         const analysis = await analyzeFrontierVertices();
         const frontierDual = frontierCandidateDual(analysis);
         const analysisStats = {
-          ...candidateFrontierStats(analysis),
+          ...calculateFrontierStats(),
+          point_count: analysis?.options?.length ?? frontierPointStats().point_count,
+          candidate_count: analysis?.candidate_count ?? 0,
           association_count: frontierDual.association_count
         };
         if (overBudget()) { yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
