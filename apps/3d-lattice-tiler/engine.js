@@ -1473,6 +1473,7 @@ export const createTilingStream = (() => {
           mv.is_forced = true;
           searchStats.forced_total += 1;
           const rb = applyMove(mv);
+          node_candidate_cache.clear();
           forcedBatch.push([mv, rb]);
           forcedCount += 1;
           if (shouldSnapshot()) {
