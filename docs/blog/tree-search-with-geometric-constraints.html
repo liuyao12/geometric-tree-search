@@ -155,6 +155,7 @@
     </article>
   </main>
 
+  <script src="../../assets/markdown-article.js" data-markdown="./tree-search-with-geometric-constraints.md" defer></script>
   <script>
     (() => {
       const canvas = document.getElementById('turtle-tiling');
@@ -1043,14 +1044,21 @@
         showMarkings = false;
         setDemoStage('intro');
       });
-      document.querySelectorAll('[data-demo-stage]').forEach(section => {
+      const observeDemoStages = () => {
         if (!('IntersectionObserver' in window)) return;
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) setDemoStage(entry.target.dataset.demoStage);
-          });
-        }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
-        observer.observe(section);
+        document.querySelectorAll('[data-demo-stage]').forEach(section => {
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) setDemoStage(entry.target.dataset.demoStage);
+            });
+          }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
+          observer.observe(section);
+        });
+      };
+      observeDemoStages();
+      window.addEventListener('gcts:markdown-rendered', () => {
+        observeDemoStages();
+        updateTextWrap();
       });
       window.addEventListener('resize', () => {
         resizeCanvas();
