@@ -1,6 +1,6 @@
 <!--
-Primary browser version lives at GCTS-I.html.
-This Markdown file is kept as a text export of the essay.
+Edit this Markdown file to update the GCTS HTML article pages.
+The browser pages fetch and render this file, with embedded HTML as a fallback.
 -->
 
 # Geometrically Constrained Tree Search I — Learning matching rules in tiling
