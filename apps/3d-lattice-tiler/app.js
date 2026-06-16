@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260616-inline-frontier-stats";
+import { tileSpecs } from "./engine.js?v=20260616-inline-frontier-dual";
 
 const $ = (id) => document.getElementById(id);
 

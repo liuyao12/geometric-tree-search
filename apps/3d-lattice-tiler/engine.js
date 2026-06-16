@@ -1405,47 +1405,6 @@ export const createTilingStream = (() => {
         if (!options.length) return { options, branches: [], candidate_count: 0 };
         return { options, branches: options.slice().sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.unique_candidates.length - right.unique_candidates.length || left.pointKey.localeCompare(right.pointKey)), candidate_count };
       };
-      const frontierCandidateDual = (analysis) => {
-        const candidateMap = new Map();
-        const frontier_points = [];
-        for (const option of analysis?.options ?? []) {
-          const candidateKeys = new Set();
-          for (const candidate of option.unique_candidates ?? option.all_candidates ?? option.candidates ?? []) {
-            const key = candidate.dedup_key ?? placementGeometryKey(candidate);
-            candidateKeys.add(key);
-            if (!candidateMap.has(key)) {
-              candidateMap.set(key, {
-                key,
-                prototile_idx: candidate.prototile_idx,
-                translation: candidate.translation?.slice() ?? [0, 0, 0],
-                frontier_points: []
-              });
-            }
-            candidateMap.get(key).frontier_points.push(option.pointKey);
-          }
-          frontier_points.push({
-            point_key: option.pointKey,
-            point: option.point.slice(),
-            weight: option.weight,
-            candidate_keys: [...candidateKeys]
-          });
-        }
-        const candidates = [...candidateMap.values()].map(candidate => ({
-          ...candidate,
-          frontier_points: [...new Set(candidate.frontier_points)]
-        }));
-        return {
-          frontier_points,
-          candidates,
-          association_count: frontier_points.reduce((sum, point) => sum + point.candidate_keys.length, 0)
-        };
-      };
-      const candidateFrontierStats = (analysis) => ({
-        ...calculateFrontierStats(),
-        point_count: analysis?.options?.length ?? frontierPointStats().point_count,
-        candidate_count: analysis?.candidate_count ?? 0
-      });
-
       let forcedCount = 0;
       let branchAnalysis = null;
       while (true) {
@@ -1460,7 +1419,41 @@ export const createTilingStream = (() => {
         }
 
         const analysis = await analyzeFrontierVertices();
-        const frontierDual = frontierCandidateDual(analysis);
+        const frontierDual = (() => {
+          const candidateMap = new Map();
+          const frontier_points = [];
+          for (const option of analysis?.options ?? []) {
+            const candidateKeys = new Set();
+            for (const candidate of option.unique_candidates ?? option.all_candidates ?? option.candidates ?? []) {
+              const key = candidate.dedup_key ?? placementGeometryKey(candidate);
+              candidateKeys.add(key);
+              if (!candidateMap.has(key)) {
+                candidateMap.set(key, {
+                  key,
+                  prototile_idx: candidate.prototile_idx,
+                  translation: candidate.translation?.slice() ?? [0, 0, 0],
+                  frontier_points: []
+                });
+              }
+              candidateMap.get(key).frontier_points.push(option.pointKey);
+            }
+            frontier_points.push({
+              point_key: option.pointKey,
+              point: option.point.slice(),
+              weight: option.weight,
+              candidate_keys: [...candidateKeys]
+            });
+          }
+          const candidates = [...candidateMap.values()].map(candidate => ({
+            ...candidate,
+            frontier_points: [...new Set(candidate.frontier_points)]
+          }));
+          return {
+            frontier_points,
+            candidates,
+            association_count: frontier_points.reduce((sum, point) => sum + point.candidate_keys.length, 0)
+          };
+        })();
         const analysisStats = {
           ...calculateFrontierStats(),
           point_count: analysis?.options?.length ?? frontierPointStats().point_count,
