@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260605-crystal-order";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260616-inline-frontier-stats";
 
 const SNAPSHOT_INTERVAL_MS = 80;
 
