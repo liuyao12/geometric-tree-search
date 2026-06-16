@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260615-polycube-z3-default";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260616-candidate-stats-syntax";
 
 const SNAPSHOT_INTERVAL_MS = 80;
 

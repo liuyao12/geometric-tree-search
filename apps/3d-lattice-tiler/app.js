@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260615-polycube-z3-default";
+import { tileSpecs } from "./engine.js?v=20260616-candidate-stats-syntax";
 
 const $ = (id) => document.getElementById(id);
 
