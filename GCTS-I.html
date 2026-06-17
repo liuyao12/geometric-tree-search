@@ -827,23 +827,38 @@
         return !markingCompatibility(translatedTrialMarkings(trial), markSums).conflict;
       }
 
-      function updateFrontierCacheForPlacement(frontierCache, sums, usedPlacements, markSums, useMarkingRules) {
+      function trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules) {
+        if (translatedTrialOccupancy(trial).some(item => changedPointKeys.has(key3(item.point)))) return true;
+        return useMarkingRules && translatedTrialMarkings(trial).some(entry => changedMarkingKeys.has(markingKey(entry)));
+      }
+
+      function updateFrontierCacheForPlacement(frontierCache, sums, usedPlacements, markSums, placement, useMarkingRules) {
         if (!frontierCache) return;
-        // Incremental graph surgery after adding one placement: remove filled or
-        // value-changed frontier nodes, then revalidate every cached edge against
-        // the current occupancy and marking section. A trial can become stale even
-        // without a direct conflict with the newest tile, e.g. when all of its
-        // formerly-new points have since been occupied or when a restored branch
-        // changes the global marking section during backtracking. Newly exposed
-        // frontier nodes are generated lazily as cache misses in analyzeBoundary().
+        const changedPointKeys = new Set(placement.occupancy.map(item => key3(item.point)));
+        const changedMarkingKeys = useMarkingRules
+          ? new Set(placement.markings.map(markingKey))
+          : new Set();
+        // Incremental graph surgery after adding one placement: truncate the
+        // global t- and m-sections to just the coordinates touched by the new tile,
+        // then revalidate only cache entries whose frontier point or candidate edge
+        // intersects that local patch. Cache misses still generate newly exposed
+        // frontier nodes lazily in analyzeBoundary().
         for (const [cacheKey, option] of [...frontierCache.entries()]) {
           const pointKey = key3(option.frontier.point);
-          const current = sums.get(pointKey);
-          if (!current || current.value >= 12 || current.value !== option.frontier.value) {
-            frontierCache.delete(cacheKey);
-            continue;
+          const frontierChanged = changedPointKeys.has(pointKey);
+          if (frontierChanged) {
+            const current = sums.get(pointKey);
+            if (!current || current.value >= 12 || current.value !== option.frontier.value) {
+              frontierCache.delete(cacheKey);
+              continue;
+            }
           }
-          const trials = option.trials.filter(trial => trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules));
+          const needsEdgeUpdate = option.trials.some(trial => trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules));
+          if (!frontierChanged && !needsEdgeUpdate) continue;
+          const trials = option.trials.filter(trial => {
+            if (!trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules)) return true;
+            return trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules);
+          });
           frontierCache.set(cacheKey, {
             ...option,
             trials,
@@ -860,7 +875,7 @@
         graph.usedPlacements.add(placement.placementKey);
         addPlacementValues(placement, graph.sums);
         if (useMarkingRules) addPlacementMarkings(placement, graph.markSums);
-        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, graph.usedPlacements, graph.markSums, useMarkingRules);
+        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, graph.usedPlacements, graph.markSums, placement, useMarkingRules);
       }
 
       function removeLastPlacementFromGraph(graph, useMarkingRules) {
