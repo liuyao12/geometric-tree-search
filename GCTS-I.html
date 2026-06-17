@@ -814,6 +814,10 @@
 
       function updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules) {
         if (!frontierCache) return;
+        // Incremental graph surgery after adding one placement: remove filled or
+        // value-changed frontier nodes, and prune cached candidate edges that now
+        // conflict locally with the new tile or its marking section. Newly exposed
+        // frontier nodes are generated lazily as cache misses in analyzeBoundary().
         for (const [cacheKey, option] of [...frontierCache.entries()]) {
           const pointKey = key3(option.frontier.point);
           const current = sums.get(pointKey);
@@ -832,6 +836,31 @@
         }
       }
 
+      function addPlacementToGraph(graph, placement, useMarkingRules) {
+        // Keep the previous frontier/candidate graph with this search-tree edge
+        // so backtracking can restore it instead of discarding computed options.
+        graph.frontierSnapshots.push(new Map(graph.frontierCache));
+        graph.placed.push(placement);
+        graph.usedPlacements.add(placement.placementKey);
+        addPlacementValues(placement, graph.sums);
+        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, placement, useMarkingRules);
+        if (useMarkingRules) addPlacementMarkings(placement, graph.markSums);
+      }
+
+      function removeLastPlacementFromGraph(graph, useMarkingRules) {
+        const placement = graph.placed.pop();
+        if (!placement) return null;
+        if (useMarkingRules) removePlacementMarkings(placement, graph.markSums);
+        removePlacementValues(placement, graph.sums);
+        if (placement.placementKey) graph.usedPlacements.delete(placement.placementKey);
+        const previousFrontierCache = graph.frontierSnapshots.pop();
+        graph.frontierCache.clear();
+        if (previousFrontierCache) {
+          previousFrontierCache.forEach((option, cacheKey) => graph.frontierCache.set(cacheKey, option));
+        }
+        return placement;
+      }
+
       function analyzeBoundary(sums, usedPlacements, markSums, useMarkingRules, frontierCoronas = new Map(), frontierCache = null) {
         const byCorona = (left, right) => {
           const leftCorona = frontierCoronas.get(key3(left.frontier.point)) ?? Infinity;
@@ -840,6 +869,9 @@
             || norm3(left.frontier.point) - norm3(right.frontier.point)
             || left.candidates.length - right.candidates.length;
         };
+        // Analyze the current frontier-point <-> candidate-placement graph.
+        // Marking rules are applied inside candidateTrials(), so they simplify this
+        // graph by removing conflicting candidates before dead-end/forced checks.
         const options = frontierPoints(sums, frontierCoronas).map(frontier => {
           const cacheKey = `${key3(frontier.point)}|${frontier.value}|${useMarkingRules ? 1 : 0}`;
           const cached = frontierCache?.get(cacheKey);
@@ -937,27 +969,20 @@
           const usedPlacements = new Set([seed.placementKey]);
           addPlacementValues(seed, sums);
           if (useMarkingRules) addPlacementMarkings(seed, markSums);
+          const graph = { placed, sums, markSums, frontierCache, usedPlacements, frontierSnapshots: [] };
 
           const applyChoice = (choice, candidate, forced) => {
             const detailedTrials = candidateTrials(choice.frontier, sums, usedPlacements, markSums, useMarkingRules);
             const detailedChoice = { ...choice, trials: detailedTrials };
             const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
             pushTrialTrace(trace, placement);
-            placed.push(placement);
-            usedPlacements.add(candidate.placementKey);
-            addPlacementValues(placement, sums);
-            updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules);
-            if (useMarkingRules) addPlacementMarkings(placement, markSums);
+            addPlacementToGraph(graph, placement, useMarkingRules);
             pushTrace({ type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() });
             return placement;
           };
           const undoLast = (reason = 'branch failed') => {
-            const placement = placed.pop();
+            const placement = removeLastPlacementFromGraph(graph, useMarkingRules);
             if (!placement) return;
-            if (useMarkingRules) removePlacementMarkings(placement, markSums);
-            removePlacementValues(placement, sums);
-            if (placement.placementKey) usedPlacements.delete(placement.placementKey);
-            frontierCache.clear();
             pushTrace({ type: 'backtrack', reason, removed: placement, placements: placed.slice(), frontierValue: placement.frontierValue, branchCount: placement.branchCount });
           };
           const search = () => {
@@ -1006,6 +1031,7 @@
         const usedPlacements = new Set([seed.placementKey]);
         addPlacementValues(seed, sums);
         if (useMarkingRules) addPlacementMarkings(seed, markSums);
+        const graph = { placed, sums, markSums, frontierCache, usedPlacements, frontierSnapshots: [] };
 
         function* emitTrialEvents(placement) {
           const step = placement.step;
@@ -1033,22 +1059,14 @@
           const detailedChoice = { ...choice, trials: detailedTrials };
           const placement = makePlacementFromCandidate(detailedChoice, candidate, placed.length, forced);
           yield* emitTrialEvents(placement);
-          placed.push(placement);
-          usedPlacements.add(candidate.placementKey);
-          addPlacementValues(placement, sums);
-          updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules);
-          if (useMarkingRules) addPlacementMarkings(placement, markSums);
+          addPlacementToGraph(graph, placement, useMarkingRules);
           yield { type: 'accept', count: placed.length, placement, forced: placement.forced, branchCount: placement.branchCount, frontierValue: placement.frontierValue, placements: placed.slice() };
           return placement;
         }
 
         function* undoLast(reason = 'branch failed') {
-          const placement = placed.pop();
+          const placement = removeLastPlacementFromGraph(graph, useMarkingRules);
           if (!placement) return;
-          if (useMarkingRules) removePlacementMarkings(placement, markSums);
-          removePlacementValues(placement, sums);
-          if (placement.placementKey) usedPlacements.delete(placement.placementKey);
-          frontierCache.clear();
           yield { type: 'backtrack', reason, removed: placement, placements: placed.slice(), frontierValue: placement.frontierValue, branchCount: placement.branchCount };
         }
 
