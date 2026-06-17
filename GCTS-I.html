@@ -812,26 +812,57 @@
         });
       }
 
-      function updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules) {
+      function trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules) {
+        if (usedPlacements.has(trial.placementKey)) return false;
+        let newPoints = 0;
+        let overflow = 0;
+        translatedTrialOccupancy(trial).forEach(item => {
+          const current = sums.get(key3(item.point))?.value || 0;
+          const nextValue = current + item.value;
+          overflow = Math.max(overflow, nextValue - 12);
+          if (current <= 0) newPoints += 1;
+        });
+        if (overflow > 0 || newPoints <= 0) return false;
+        if (!useMarkingRules) return true;
+        return !markingCompatibility(translatedTrialMarkings(trial), markSums).conflict;
+      }
+
+      function trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules) {
+        if (translatedTrialOccupancy(trial).some(item => changedPointKeys.has(key3(item.point)))) return true;
+        return useMarkingRules && translatedTrialMarkings(trial).some(entry => changedMarkingKeys.has(markingKey(entry)));
+      }
+
+      function updateFrontierCacheForPlacement(frontierCache, sums, usedPlacements, markSums, placement, useMarkingRules) {
         if (!frontierCache) return;
-        // Incremental graph surgery after adding one placement: remove filled or
-        // value-changed frontier nodes, and prune cached candidate edges that now
-        // conflict locally with the new tile or its marking section. Newly exposed
-        // frontier nodes are generated lazily as cache misses in analyzeBoundary().
+        const changedPointKeys = new Set(placement.occupancy.map(item => key3(item.point)));
+        const changedMarkingKeys = useMarkingRules
+          ? new Set(placement.markings.map(markingKey))
+          : new Set();
+        // Incremental graph surgery after adding one placement: truncate the
+        // global t- and m-sections to just the coordinates touched by the new tile,
+        // then revalidate only cache entries whose frontier point or candidate edge
+        // intersects that local patch. Cache misses still generate newly exposed
+        // frontier nodes lazily in analyzeBoundary().
         for (const [cacheKey, option] of [...frontierCache.entries()]) {
           const pointKey = key3(option.frontier.point);
-          const current = sums.get(pointKey);
-          if (!current || current.value >= 12 || current.value !== option.frontier.value) {
-            frontierCache.delete(cacheKey);
-            continue;
+          const frontierChanged = changedPointKeys.has(pointKey);
+          if (frontierChanged) {
+            const current = sums.get(pointKey);
+            if (!current || current.value >= 12 || current.value !== option.frontier.value) {
+              frontierCache.delete(cacheKey);
+              continue;
+            }
           }
-          const candidates = option.candidates.filter(trial => {
-            return trial.placementKey !== placement.placementKey && !trialConflictsWithPlacement(trial, placement, useMarkingRules);
+          const needsEdgeUpdate = option.trials.some(trial => trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules));
+          if (!frontierChanged && !needsEdgeUpdate) continue;
+          const trials = option.trials.filter(trial => {
+            if (!trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules)) return true;
+            return trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules);
           });
           frontierCache.set(cacheKey, {
             ...option,
-            trials: option.trials.filter(trial => candidates.includes(trial)),
-            candidates
+            trials,
+            candidates: trials.filter(trial => trial.valid)
           });
         }
       }
@@ -843,8 +874,8 @@
         graph.placed.push(placement);
         graph.usedPlacements.add(placement.placementKey);
         addPlacementValues(placement, graph.sums);
-        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, placement, useMarkingRules);
         if (useMarkingRules) addPlacementMarkings(placement, graph.markSums);
+        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, graph.usedPlacements, graph.markSums, placement, useMarkingRules);
       }
 
       function removeLastPlacementFromGraph(graph, useMarkingRules) {
