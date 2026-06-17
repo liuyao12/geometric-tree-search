@@ -44,8 +44,7 @@
             </div>
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
-              <span id="turtle-hover-readout">Hover a lattice point to read its accumulated t-value in twelfths.</span>
-              <span>Values are shown in units of 1/12. Drag the window handle vertically; drag the canvas to pan.</span>
+              <span id="turtle-status-readout" aria-live="polite"></span>
             </figcaption>
             <span class="demo-resize-handle" id="turtle-window-resize" role="button" tabindex="0" aria-label="Resize turtle demo window from lower left"></span>
           </figure>
@@ -168,6 +167,7 @@
       const stageLabel = document.getElementById('turtle-stage-label');
       const stageNote = document.getElementById('turtle-stage-note');
       const hoverReadout = document.getElementById('turtle-hover-readout');
+      const statusReadout = document.getElementById('turtle-status-readout');
       const stageChips = Array.from(document.querySelectorAll('[data-stage-chip]'));
       const floatingDemo = document.querySelector('.floating-demo');
       const windowDragHandle = document.getElementById('turtle-window-drag');
@@ -208,6 +208,8 @@
       const tilingRun = buildTilingOrder(20);
       const tilingOrder = tilingRun.placements;
       const tilingTrace = tilingRun.trace;
+      const minViewScale = 0.08;
+      const maxViewScale = 3.4;
       let scale = 1.02;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
       let viewInitialized = false;
@@ -618,6 +620,45 @@
         offset = { x: rect.width / 2, y: rect.height / 2 };
       }
 
+      function placementBounds(placements) {
+        const points = placements.flatMap(placement => placement.points || []);
+        if (!points.length) return null;
+        return points.reduce((bounds, point) => ({
+          minX: Math.min(bounds.minX, point.x),
+          maxX: Math.max(bounds.maxX, point.x),
+          minY: Math.min(bounds.minY, point.y),
+          maxY: Math.max(bounds.maxY, point.y)
+        }), { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity });
+      }
+
+      function fitViewToPlacements(placements, { padding = 36, onlyZoomOut = false } = {}) {
+        const rect = canvas.getBoundingClientRect();
+        const bounds = placementBounds(placements);
+        if (!bounds || rect.width <= 0 || rect.height <= 0) {
+          centerView(rect);
+          return false;
+        }
+        const worldWidth = Math.max(1, bounds.maxX - bounds.minX);
+        const worldHeight = Math.max(1, bounds.maxY - bounds.minY);
+        const availableWidth = Math.max(80, rect.width - padding * 2);
+        const availableHeight = Math.max(80, rect.height - padding * 2);
+        const fittedScale = clamp(Math.min(availableWidth / worldWidth, availableHeight / worldHeight), minViewScale, maxViewScale);
+        if (onlyZoomOut && fittedScale >= scale) return false;
+        scale = fittedScale;
+        const centerX = (bounds.minX + bounds.maxX) / 2;
+        const centerY = (bounds.minY + bounds.maxY) / 2;
+        offset = {
+          x: rect.width / 2 - centerX * scale,
+          y: rect.height / 2 - centerY * scale
+        };
+        return true;
+      }
+
+      function fitVisibleView({ onlyZoomOut = true } = {}) {
+        const placements = [...visiblePlacements(), trialGhost?.placement].filter(Boolean);
+        return fitViewToPlacements(placements, { padding: 42, onlyZoomOut });
+      }
+
       function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
@@ -625,7 +666,7 @@
         canvas.height = Math.max(220, Math.floor(rect.height * ratio));
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
         if (!viewInitialized) {
-          centerView(rect);
+          fitVisibleView({ onlyZoomOut: false });
           viewInitialized = true;
         }
         draw();
@@ -819,9 +860,7 @@
         drawHoverTooltip();
         const latest = visible[visible.length - 1];
         const branchText = statusText || (latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile');
-        ctx.fillStyle = 'rgba(24, 33, 31, 0.72)';
-        ctx.font = '700 13px Inter, system-ui, sans-serif';
-        ctx.fillText(`${shownTiles} Smith turtle${shownTiles === 1 ? '' : 's'} placed · ${branchText}`, 14, rect.height - 16);
+        if (statusReadout) statusReadout.textContent = `${shownTiles} Tile${shownTiles === 1 ? '' : 's'} placed · ${branchText}`;
         window.requestAnimationFrame(updateTextWrap);
       }
 
@@ -840,9 +879,11 @@
           if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
         });
         hoveredPoint = best;
-        hoverReadout.textContent = best
-          ? `Hover: (${best.point.join(', ')}) has accumulated t-value ${best.value}/12.`
-          : 'Hover a lattice point to read its accumulated t-value in twelfths.';
+        if (hoverReadout) {
+          hoverReadout.textContent = best
+            ? `Hover: (${best.point.join(', ')}) has accumulated t-value ${best.value}/12.`
+            : '';
+        }
       }
 
       function updateMarkingButton() {
@@ -860,7 +901,7 @@
         statusText = '';
         startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
-        if (stage.tiles === 1) centerView();
+        fitVisibleView({ onlyZoomOut: false });
         if (stageLabel) stageLabel.textContent = stage.label;
         if (stageNote) stageNote.textContent = stage.note;
         stageChips.forEach(chip => {
@@ -981,7 +1022,7 @@
       });
       canvas.addEventListener('pointerleave', () => {
         hoveredPoint = null;
-        hoverReadout.textContent = 'Hover a lattice point to read its accumulated t-value in twelfths.';
+        if (hoverReadout) hoverReadout.textContent = '';
         draw();
       });
       canvas.addEventListener('pointerup', event => {
@@ -995,7 +1036,7 @@
         const point = pointerPosition(event);
         const before = screenToWorld(point.x, point.y);
         const factor = Math.exp(-event.deltaY * 0.001);
-        scale = Math.max(0.45, Math.min(2.6, scale * factor));
+        scale = clamp(scale * factor, minViewScale, maxViewScale);
         const after = worldToScreen(before.x, before.y);
         offset.x += point.x - after.x;
         offset.y += point.y - after.y;
@@ -1008,7 +1049,8 @@
           return;
         }
         shownTiles = 1;
-        centerView();
+        playbackPlacements = null;
+        fitVisibleView({ onlyZoomOut: false });
         traceIndex = 0;
         trialGhost = null;
         statusText = 'branching from an undersaturated vertex';
@@ -1037,6 +1079,7 @@
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
           }
+          fitVisibleView({ onlyZoomOut: true });
           draw();
         }, 620);
         draw();
@@ -1051,9 +1094,7 @@
       cellsToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
         stopTiling();
-        const rect = canvas.getBoundingClientRect();
-        scale = 1.02;
-        centerView(rect);
+        fitViewToPlacements([makeSeedPlacement()], { padding: 42, onlyZoomOut: false });
         hoveredPoint = null;
         traceIndex = 0;
         trialGhost = null;
