@@ -588,18 +588,26 @@
 
       function placementCoronas(placements) {
         const coronas = placements.map((_, index) => index === 0 ? 0 : Infinity);
-        let changed = true;
-        while (changed) {
-          changed = false;
-          placements.forEach((placement, index) => {
-            if (!Number.isFinite(coronas[index])) return;
-            const keys = new Set(placement.occupancy.map(item => key3(item.point)));
-            placements.forEach((other, otherIndex) => {
-              if (coronas[otherIndex] <= coronas[index] + 1) return;
-              if (other.occupancy.some(item => keys.has(key3(item.point)))) {
-                coronas[otherIndex] = coronas[index] + 1;
-                changed = true;
-              }
+        if (placements.length <= 1) return coronas;
+        const placementsByPoint = new Map();
+        placements.forEach((placement, placementIndex) => {
+          placement.occupancy.forEach(item => {
+            const key = key3(item.point);
+            const touching = placementsByPoint.get(key) || [];
+            touching.push(placementIndex);
+            placementsByPoint.set(key, touching);
+          });
+        });
+        const queue = [0];
+        for (let cursor = 0; cursor < queue.length; cursor += 1) {
+          const placementIndex = queue[cursor];
+          const nextCorona = coronas[placementIndex] + 1;
+          placements[placementIndex].occupancy.forEach(item => {
+            const touching = placementsByPoint.get(key3(item.point)) || [];
+            touching.forEach(otherIndex => {
+              if (coronas[otherIndex] <= nextCorona) return;
+              coronas[otherIndex] = nextCorona;
+              queue.push(otherIndex);
             });
           });
         }
@@ -628,9 +636,10 @@
       function uniformFrontierCorona(placements) {
         const sums = new Map();
         placements.forEach(placement => addPlacementValues(placement, sums));
-        const frontier = frontierPoints(sums, frontierCoronasForPlacements(placements));
+        const frontierCoronas = frontierCoronasForPlacements(placements);
+        const frontier = frontierPoints(sums, frontierCoronas);
         if (!frontier.length) return null;
-        const coronas = frontier.map(point => frontierCoronasForPlacements(placements).get(key3(point.point)) ?? Infinity);
+        const coronas = frontier.map(point => frontierCoronas.get(key3(point.point)) ?? Infinity);
         const first = coronas[0];
         return Number.isFinite(first) && coronas.every(corona => corona === first) ? first : null;
       }
