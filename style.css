@@ -521,9 +521,11 @@ h1 {
 
 .interactive-card figcaption {
   border-top: 1px solid var(--line);
-  padding: 10px 12px 12px;
+  min-height: 42px;
+  padding: 10px 44px 12px 12px;
   color: var(--muted);
   font-size: 14px;
+  font-weight: 650;
   line-height: 1.5;
 }
 
