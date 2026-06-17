@@ -812,11 +812,29 @@
         });
       }
 
-      function updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules) {
+      function trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules) {
+        if (usedPlacements.has(trial.placementKey)) return false;
+        let newPoints = 0;
+        let overflow = 0;
+        translatedTrialOccupancy(trial).forEach(item => {
+          const current = sums.get(key3(item.point))?.value || 0;
+          const nextValue = current + item.value;
+          overflow = Math.max(overflow, nextValue - 12);
+          if (current <= 0) newPoints += 1;
+        });
+        if (overflow > 0 || newPoints <= 0) return false;
+        if (!useMarkingRules) return true;
+        return !markingCompatibility(translatedTrialMarkings(trial), markSums).conflict;
+      }
+
+      function updateFrontierCacheForPlacement(frontierCache, sums, usedPlacements, markSums, useMarkingRules) {
         if (!frontierCache) return;
         // Incremental graph surgery after adding one placement: remove filled or
-        // value-changed frontier nodes, and prune cached candidate edges that now
-        // conflict locally with the new tile or its marking section. Newly exposed
+        // value-changed frontier nodes, then revalidate every cached edge against
+        // the current occupancy and marking section. A trial can become stale even
+        // without a direct conflict with the newest tile, e.g. when all of its
+        // formerly-new points have since been occupied or when a restored branch
+        // changes the global marking section during backtracking. Newly exposed
         // frontier nodes are generated lazily as cache misses in analyzeBoundary().
         for (const [cacheKey, option] of [...frontierCache.entries()]) {
           const pointKey = key3(option.frontier.point);
@@ -825,13 +843,11 @@
             frontierCache.delete(cacheKey);
             continue;
           }
-          const candidates = option.candidates.filter(trial => {
-            return trial.placementKey !== placement.placementKey && !trialConflictsWithPlacement(trial, placement, useMarkingRules);
-          });
+          const trials = option.trials.filter(trial => trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules));
           frontierCache.set(cacheKey, {
             ...option,
-            trials: option.trials.filter(trial => candidates.includes(trial)),
-            candidates
+            trials,
+            candidates: trials.filter(trial => trial.valid)
           });
         }
       }
@@ -843,8 +859,8 @@
         graph.placed.push(placement);
         graph.usedPlacements.add(placement.placementKey);
         addPlacementValues(placement, graph.sums);
-        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, placement, useMarkingRules);
         if (useMarkingRules) addPlacementMarkings(placement, graph.markSums);
+        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, graph.usedPlacements, graph.markSums, useMarkingRules);
       }
 
       function removeLastPlacementFromGraph(graph, useMarkingRules) {
