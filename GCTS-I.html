@@ -635,6 +635,11 @@
         return Number.isFinite(first) && coronas.every(corona => corona === first) ? first : null;
       }
 
+      function maxPlacementCorona(placements) {
+        const coronas = placementCoronas(placements).filter(Number.isFinite);
+        return coronas.length ? Math.max(...coronas) : null;
+      }
+
       function norm3(point) {
         return Math.abs(point[0]) + Math.abs(point[1]) + Math.abs(point[2]);
       }
@@ -749,6 +754,8 @@
         if (left.valid !== right.valid) return left.valid ? -1 : 1;
         if (left.markConflict !== right.markConflict) return left.markConflict ? 1 : -1;
         if (left.markAligned !== right.markAligned) return left.markAligned ? -1 : 1;
+        if (left.markLineUps !== right.markLineUps) return right.markLineUps - left.markLineUps;
+        if (left.markMatches !== right.markMatches) return right.markMatches - left.markMatches;
         if (left.fillsFrontier !== right.fillsFrontier) return left.fillsFrontier ? -1 : 1;
         return right.coverage - left.coverage
           || right.newPoints - left.newPoints
@@ -770,6 +777,10 @@
           [copy[i], copy[j]] = [copy[j], copy[i]];
         }
         return copy;
+      }
+
+      function searchCandidates(candidates, useMarkingRules) {
+        return useMarkingRules ? candidates : shuffled(candidates);
       }
 
       function translatedTrialOccupancy(trial) {
@@ -969,7 +980,7 @@
                 applyChoice(choice, choice.candidates[0], true);
                 continue;
               }
-              for (const candidate of shuffled(choice.candidates)) {
+              for (const candidate of searchCandidates(choice.candidates, useMarkingRules)) {
                 applyChoice(choice, candidate, false);
                 if (search()) return true;
                 undoLast('backtrack after failed branch');
@@ -1059,7 +1070,7 @@
               yield* applyChoice(choice, choice.candidates[0], true);
               continue;
             }
-            for (const candidate of shuffled(choice.candidates)) {
+            for (const candidate of searchCandidates(choice.candidates, useMarkingRules)) {
               yield* applyChoice(choice, candidate, false);
               if (yield* search()) return true;
               yield* undoLast('backtrack after failed branch');
@@ -1786,7 +1797,10 @@
               statusText = `paused at complete corona ${frontierCorona}; continue to extend the live branch`;
               stopTiling();
             } else if (shownTiles >= autoplayTarget) {
-              statusText = `paused after ${shownTiles} tiles; continue to extend the live branch`;
+              const visibleCorona = maxPlacementCorona(playbackPlacements || event.placements || []);
+              statusText = visibleCorona
+                ? `paused after corona ${visibleCorona}; continue to extend the live branch`
+                : 'paused after a search burst; continue to extend the live branch';
               stopTiling();
             }
           }
