@@ -588,18 +588,26 @@
 
       function placementCoronas(placements) {
         const coronas = placements.map((_, index) => index === 0 ? 0 : Infinity);
-        let changed = true;
-        while (changed) {
-          changed = false;
-          placements.forEach((placement, index) => {
-            if (!Number.isFinite(coronas[index])) return;
-            const keys = new Set(placement.occupancy.map(item => key3(item.point)));
-            placements.forEach((other, otherIndex) => {
-              if (coronas[otherIndex] <= coronas[index] + 1) return;
-              if (other.occupancy.some(item => keys.has(key3(item.point)))) {
-                coronas[otherIndex] = coronas[index] + 1;
-                changed = true;
-              }
+        if (placements.length <= 1) return coronas;
+        const placementsByPoint = new Map();
+        placements.forEach((placement, placementIndex) => {
+          placement.occupancy.forEach(item => {
+            const key = key3(item.point);
+            const touching = placementsByPoint.get(key) || [];
+            touching.push(placementIndex);
+            placementsByPoint.set(key, touching);
+          });
+        });
+        const queue = [0];
+        for (let cursor = 0; cursor < queue.length; cursor += 1) {
+          const placementIndex = queue[cursor];
+          const nextCorona = coronas[placementIndex] + 1;
+          placements[placementIndex].occupancy.forEach(item => {
+            const touching = placementsByPoint.get(key3(item.point)) || [];
+            touching.forEach(otherIndex => {
+              if (coronas[otherIndex] <= nextCorona) return;
+              coronas[otherIndex] = nextCorona;
+              queue.push(otherIndex);
             });
           });
         }
@@ -628,9 +636,10 @@
       function uniformFrontierCorona(placements) {
         const sums = new Map();
         placements.forEach(placement => addPlacementValues(placement, sums));
-        const frontier = frontierPoints(sums, frontierCoronasForPlacements(placements));
+        const frontierCoronas = frontierCoronasForPlacements(placements);
+        const frontier = frontierPoints(sums, frontierCoronas);
         if (!frontier.length) return null;
-        const coronas = frontier.map(point => frontierCoronasForPlacements(placements).get(key3(point.point)) ?? Infinity);
+        const coronas = frontier.map(point => frontierCoronas.get(key3(point.point)) ?? Infinity);
         const first = coronas[0];
         return Number.isFinite(first) && coronas.every(corona => corona === first) ? first : null;
       }
@@ -812,26 +821,57 @@
         });
       }
 
-      function updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules) {
+      function trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules) {
+        if (usedPlacements.has(trial.placementKey)) return false;
+        let newPoints = 0;
+        let overflow = 0;
+        translatedTrialOccupancy(trial).forEach(item => {
+          const current = sums.get(key3(item.point))?.value || 0;
+          const nextValue = current + item.value;
+          overflow = Math.max(overflow, nextValue - 12);
+          if (current <= 0) newPoints += 1;
+        });
+        if (overflow > 0 || newPoints <= 0) return false;
+        if (!useMarkingRules) return true;
+        return !markingCompatibility(translatedTrialMarkings(trial), markSums).conflict;
+      }
+
+      function trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules) {
+        if (translatedTrialOccupancy(trial).some(item => changedPointKeys.has(key3(item.point)))) return true;
+        return useMarkingRules && translatedTrialMarkings(trial).some(entry => changedMarkingKeys.has(markingKey(entry)));
+      }
+
+      function updateFrontierCacheForPlacement(frontierCache, sums, usedPlacements, markSums, placement, useMarkingRules) {
         if (!frontierCache) return;
-        // Incremental graph surgery after adding one placement: remove filled or
-        // value-changed frontier nodes, and prune cached candidate edges that now
-        // conflict locally with the new tile or its marking section. Newly exposed
-        // frontier nodes are generated lazily as cache misses in analyzeBoundary().
+        const changedPointKeys = new Set(placement.occupancy.map(item => key3(item.point)));
+        const changedMarkingKeys = useMarkingRules
+          ? new Set(placement.markings.map(markingKey))
+          : new Set();
+        // Incremental graph surgery after adding one placement: truncate the
+        // global t- and m-sections to just the coordinates touched by the new tile,
+        // then revalidate only cache entries whose frontier point or candidate edge
+        // intersects that local patch. Cache misses still generate newly exposed
+        // frontier nodes lazily in analyzeBoundary().
         for (const [cacheKey, option] of [...frontierCache.entries()]) {
           const pointKey = key3(option.frontier.point);
-          const current = sums.get(pointKey);
-          if (!current || current.value >= 12 || current.value !== option.frontier.value) {
-            frontierCache.delete(cacheKey);
-            continue;
+          const frontierChanged = changedPointKeys.has(pointKey);
+          if (frontierChanged) {
+            const current = sums.get(pointKey);
+            if (!current || current.value >= 12 || current.value !== option.frontier.value) {
+              frontierCache.delete(cacheKey);
+              continue;
+            }
           }
-          const candidates = option.candidates.filter(trial => {
-            return trial.placementKey !== placement.placementKey && !trialConflictsWithPlacement(trial, placement, useMarkingRules);
+          const needsEdgeUpdate = option.trials.some(trial => trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules));
+          if (!frontierChanged && !needsEdgeUpdate) continue;
+          const trials = option.trials.filter(trial => {
+            if (!trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules)) return true;
+            return trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules);
           });
           frontierCache.set(cacheKey, {
             ...option,
-            trials: option.trials.filter(trial => candidates.includes(trial)),
-            candidates
+            trials,
+            candidates: trials.filter(trial => trial.valid)
           });
         }
       }
@@ -843,8 +883,8 @@
         graph.placed.push(placement);
         graph.usedPlacements.add(placement.placementKey);
         addPlacementValues(placement, graph.sums);
-        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, placement, useMarkingRules);
         if (useMarkingRules) addPlacementMarkings(placement, graph.markSums);
+        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, graph.usedPlacements, graph.markSums, placement, useMarkingRules);
       }
 
       function removeLastPlacementFromGraph(graph, useMarkingRules) {
