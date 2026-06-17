@@ -228,7 +228,7 @@
       let demoSafeY = 0;
       let demoSize = { width: null, canvasHeight: null };
       const articleContent = document.querySelector('.article-content');
-      const wrapTargets = Array.from(articleContent.children).filter(child => !child.classList.contains('floating-demo') && !child.classList.contains('margin-note'));
+      let wrapTargets = articleWrapTargets();
       const demoCard = document.getElementById('turtle-tiling-card');
       const demoStages = {
         intro: {
@@ -531,6 +531,19 @@
           entry.hasInterior = entry.hasInterior || item.kind === 'interior';
           sums.set(key, entry);
         });
+      }
+
+      function articleWrapTargets() {
+        if (!articleContent) return [];
+        return Array.from(articleContent.children).filter(child => !child.classList.contains('floating-demo') && !child.classList.contains('margin-note'));
+      }
+
+      function refreshArticleWrapTargets() {
+        wrapTargets.forEach(target => {
+          if (!articleContent.contains(target)) target.style.maxWidth = '';
+        });
+        wrapTargets = articleWrapTargets();
+        window.requestAnimationFrame(updateTextWrap);
       }
 
       function normalTextWidth(target) {
@@ -1062,7 +1075,7 @@
       observeDemoStages();
       window.addEventListener('gcts:markdown-rendered', () => {
         observeDemoStages();
-        updateTextWrap();
+        refreshArticleWrapTargets();
       });
       window.addEventListener('resize', () => {
         resizeCanvas();
