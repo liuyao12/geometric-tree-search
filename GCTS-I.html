@@ -418,6 +418,14 @@
         return inversions % 2 === 0 ? 1 : -1;
       }
 
+      function inversePermutation(permutation) {
+        const inverse = [];
+        permutation.forEach((oldIndex, newIndex) => {
+          inverse[oldIndex] = newIndex;
+        });
+        return inverse;
+      }
+
       function buildA2Symmetries() {
         const seen = new Set();
         const symmetries = [];
@@ -429,7 +437,7 @@
             const key = `${sign}|${permutation.join(',')}`;
             if (seen.has(key)) return;
             seen.add(key);
-            symmetries.push({ sign, permutation, markSign: permutationParity(permutation) });
+            symmetries.push({ sign, permutation, inversePermutation: inversePermutation(permutation), markSign: permutationParity(permutation) });
           });
         });
         return symmetries;
@@ -459,7 +467,7 @@
               ...segment,
               fromPoint: start,
               toPoint: end,
-              component: symmetry.permutation[segment.component],
+              component: symmetry.inversePermutation[segment.component],
               value: segment.value * symmetry.markSign
             };
           });
