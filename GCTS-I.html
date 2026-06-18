@@ -453,7 +453,7 @@
               ...segment,
               fromPoint: start,
               toPoint: end,
-              component: symmetry.permutation[segment.component],
+              component: symmetry.inversePermutation[segment.component],
               value: segment.value * symmetry.markSign
             };
           });
