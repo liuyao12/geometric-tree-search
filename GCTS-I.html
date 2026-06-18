@@ -557,11 +557,12 @@
         visiblePlacements().forEach(placement => {
           placement.markings.forEach(entry => {
             const key = markingKey(entry);
+            const existing = markSums.get(key);
             markSums.set(key, {
               point: entry.point,
               component: entry.component,
-              value: entry.value,
-              count: (markSums.get(key)?.count || 0) + 1
+              value: existing && existing.value !== entry.value ? NaN : entry.value,
+              count: (existing?.count || 0) + 1
             });
           });
         });
@@ -671,6 +672,7 @@
       function formatMarkVector(vector = [0, 0, 0]) {
         return `m=(${vector.map(value => {
           if (value === null || value === undefined) return '*';
+          if (Number.isNaN(value)) return '!';
           return value > 0 ? `+${value}` : String(value);
         }).join(',')})`;
       }
@@ -1571,6 +1573,7 @@
         tilingRun = { placements: [seed], trace: [] };
         tilingOrder = tilingRun.placements;
         tilingTrace = tilingRun.trace;
+        tilingRunUsesMarking = markingRulesToggle?.checked || false;
         shownTiles = 1;
         playbackPlacements = null;
         traceIndex = 0;
@@ -1590,6 +1593,7 @@
         stopTiling();
         if (stageName === 'markings') {
           markingRulesToggle.checked = false;
+          tilingRunUsesMarking = false;
           showMarkings = true;
           trialGhost = null;
           statusText = '';
@@ -1606,6 +1610,7 @@
         }
         if (typeof stage.useMarkingRules === 'boolean') {
           markingRulesToggle.checked = stage.useMarkingRules;
+          tilingRunUsesMarking = stage.useMarkingRules;
           updateMarkExtensionControl();
         }
         shownTiles = stage.tiles;
