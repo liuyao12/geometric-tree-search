@@ -223,6 +223,7 @@
       let tilingTrace = tilingRun.trace;
       const minViewScale = 0.08;
       const maxViewScale = 3.4;
+      const initialTileAreaFraction = 0.1;
       let scale = 0.58;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
       let viewInitialized = false;
@@ -1249,20 +1250,19 @@
         }), { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity });
       }
 
-      function fitViewToPlacements(placements, { padding = 36, onlyZoomOut = false } = {}) {
+      function centerSeedView({ resetScale = false } = {}) {
         const rect = canvas.getBoundingClientRect();
-        const bounds = placementBounds(placements);
+        const bounds = placementBounds([makeSeedPlacement()]);
         if (!bounds || rect.width <= 0 || rect.height <= 0) {
           centerView(rect);
           return false;
         }
         const worldWidth = Math.max(1, bounds.maxX - bounds.minX);
         const worldHeight = Math.max(1, bounds.maxY - bounds.minY);
-        const availableWidth = Math.max(80, rect.width - padding * 2);
-        const availableHeight = Math.max(80, rect.height - padding * 2);
-        const fittedScale = clamp(Math.min(availableWidth / worldWidth, availableHeight / worldHeight), minViewScale, maxViewScale);
-        if (onlyZoomOut && fittedScale >= scale) return false;
-        scale = fittedScale;
+        if (resetScale) {
+          const targetArea = Math.max(1, rect.width * rect.height * initialTileAreaFraction);
+          scale = clamp(Math.sqrt(targetArea / (worldWidth * worldHeight)), minViewScale, maxViewScale);
+        }
         const centerX = (bounds.minX + bounds.maxX) / 2;
         const centerY = (bounds.minY + bounds.maxY) / 2;
         offset = {
@@ -1272,11 +1272,6 @@
         return true;
       }
 
-      function fitVisibleView({ onlyZoomOut = true } = {}) {
-        const placements = [...visiblePlacements(), trialGhost?.placement].filter(Boolean);
-        return fitViewToPlacements(placements, { padding: 42, onlyZoomOut });
-      }
-
       function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
@@ -1284,7 +1279,7 @@
         canvas.height = Math.max(220, Math.floor(rect.height * ratio));
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
         if (!viewInitialized) {
-          fitVisibleView({ onlyZoomOut: false });
+          centerSeedView({ resetScale: true });
           viewInitialized = true;
         }
         draw();
@@ -1583,7 +1578,7 @@
         statusText = `marking reach set to ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
-        fitVisibleView({ onlyZoomOut: false });
+        centerSeedView();
         draw();
       }
 
@@ -1603,7 +1598,7 @@
           });
           updateMarkingButton();
           updateMarkExtensionControl();
-          fitVisibleView({ onlyZoomOut: false });
+          centerSeedView();
           draw();
           return;
         }
@@ -1621,7 +1616,7 @@
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
-        fitVisibleView({ onlyZoomOut: false });
+        centerSeedView();
         if (stageLabel) stageLabel.textContent = stage.label;
         if (stageNote) stageNote.textContent = stage.note;
         stageChips.forEach(chip => {
@@ -1781,7 +1776,7 @@
           pausedCoronas.clear();
           liveSearchUsesMarking = useMarking;
           tilingRunUsesMarking = useMarking;
-          fitVisibleView({ onlyZoomOut: false });
+          centerSeedView();
           traceIndex = 0;
         }
         hasStartedTiling = true;
@@ -1862,7 +1857,6 @@
               stopTiling();
             }
           }
-          fitVisibleView({ onlyZoomOut: true });
           draw();
         }, 60);
         draw();
@@ -1892,7 +1886,7 @@
       latticeToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
         stopTiling();
-        fitViewToPlacements([makeSeedPlacement()], { padding: 42, onlyZoomOut: false });
+        centerSeedView();
         hoveredPoint = null;
         shownTiles = 1;
         playbackPlacements = null;
