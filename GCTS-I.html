@@ -404,8 +404,16 @@
         return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
       }
 
+      function symmetryPermutation(symmetry) {
+        return symmetry.permutation || [0, 1, 2];
+      }
+
       function transform3(point, symmetry) {
-        return symmetry.permutation.map(index => symmetry.sign * point[index]);
+        return symmetryPermutation(symmetry).map(index => symmetry.sign * point[index]);
+      }
+
+      function transformMarkComponent(component, symmetry) {
+        return symmetryPermutation(symmetry)[component] ?? component;
       }
 
       function buildA2Symmetries() {
@@ -453,7 +461,7 @@
               ...segment,
               fromPoint: start,
               toPoint: end,
-              component: symmetry.inversePermutation[segment.component],
+              component: transformMarkComponent(segment.component, symmetry),
               value: segment.value * symmetry.markSign
             };
           });
