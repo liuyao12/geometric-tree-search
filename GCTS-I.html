@@ -408,22 +408,6 @@
         return symmetry.permutation.map(index => symmetry.sign * point[index]);
       }
 
-      function inversePermutation(permutation) {
-        const inverse = [];
-        permutation.forEach((oldIndex, newIndex) => {
-          inverse[oldIndex] = newIndex;
-        });
-        return inverse;
-      }
-
-      function inversePermutation(permutation) {
-        const inverse = [];
-        permutation.forEach((oldIndex, newIndex) => {
-          inverse[oldIndex] = newIndex;
-        });
-        return inverse;
-      }
-
       function buildA2Symmetries() {
         const seen = new Set();
         const symmetries = [];
@@ -435,7 +419,10 @@
             const key = `${sign}|${permutation.join(',')}`;
             if (seen.has(key)) return;
             seen.add(key);
-            const planeSign = permutationParity(permutation);
+            const inversions = (permutation[0] > permutation[1] ? 1 : 0)
+              + (permutation[0] > permutation[2] ? 1 : 0)
+              + (permutation[1] > permutation[2] ? 1 : 0);
+            const planeSign = inversions % 2 === 0 ? 1 : -1;
             symmetries.push({ sign, permutation, planeSign, markSign: planeSign });
           });
         });
@@ -1321,7 +1308,7 @@
 
       function drawGridLines(rect) {
         const corners = [screenToWorld(0, 0), screenToWorld(rect.width, 0), screenToWorld(0, rect.height), screenToWorld(rect.width, rect.height)];
-        const worldRadius = Math.max(...corners.flatMap(point => [Math.abs(point.x), Math.abs(point.y)]));
+        const worldRadius = corners.reduce((radius, point) => Math.max(radius, Math.abs(point.x), Math.abs(point.y)), 0);
         const constantLimit = Math.min(220, Math.max(28, Math.ceil((worldRadius / latticeScale) * 1.7) + 8));
         const lineExtent = constantLimit * 3;
         const families = [
