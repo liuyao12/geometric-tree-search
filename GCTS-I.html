@@ -408,14 +408,20 @@
         return symmetry.permutation.map(index => symmetry.sign * point[index]);
       }
 
-      function permutationParity(permutation) {
-        let inversions = 0;
-        for (let i = 0; i < permutation.length; i += 1) {
-          for (let j = i + 1; j < permutation.length; j += 1) {
-            if (permutation[i] > permutation[j]) inversions += 1;
-          }
-        }
-        return inversions % 2 === 0 ? 1 : -1;
+      function inversePermutation(permutation) {
+        const inverse = [];
+        permutation.forEach((oldIndex, newIndex) => {
+          inverse[oldIndex] = newIndex;
+        });
+        return inverse;
+      }
+
+      function inversePermutation(permutation) {
+        const inverse = [];
+        permutation.forEach((oldIndex, newIndex) => {
+          inverse[oldIndex] = newIndex;
+        });
+        return inverse;
       }
 
       function buildA2Symmetries() {
@@ -460,7 +466,7 @@
               ...segment,
               fromPoint: start,
               toPoint: end,
-              component: symmetry.permutation[segment.component],
+              component: symmetry.inversePermutation[segment.component],
               value: segment.value * symmetry.markSign
             };
           });
