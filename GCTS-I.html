@@ -435,7 +435,8 @@
             const key = `${sign}|${permutation.join(',')}`;
             if (seen.has(key)) return;
             seen.add(key);
-            symmetries.push({ sign, permutation, inversePermutation: inversePermutation(permutation), markSign: sign });
+            const planeSign = permutationParity(permutation);
+            symmetries.push({ sign, permutation, planeSign, markSign: planeSign });
           });
         });
         return symmetries;
@@ -1393,7 +1394,7 @@
           ctx.strokeStyle = options.valid ? '#168775' : '#b84a56';
           ctx.setLineDash(options.valid ? [10, 5] : [4, 4]);
         } else {
-          const isReflected = placement.orientation.sign < 0;
+          const isReflected = placement.orientation.planeSign < 0;
           ctx.fillStyle = isReflected ? tileColors.reflectedFill : tileColors.directFill;
           ctx.strokeStyle = isReflected ? tileColors.reflectedStroke : tileColors.directStroke;
           ctx.setLineDash([]);
