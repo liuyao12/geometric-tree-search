@@ -1393,7 +1393,7 @@
           ctx.strokeStyle = options.valid ? '#168775' : '#b84a56';
           ctx.setLineDash(options.valid ? [10, 5] : [4, 4]);
         } else {
-          const isReflected = placement.orientation.markSign < 0;
+          const isReflected = placement.orientation.sign < 0;
           ctx.fillStyle = isReflected ? tileColors.reflectedFill : tileColors.directFill;
           ctx.strokeStyle = isReflected ? tileColors.reflectedStroke : tileColors.directStroke;
           ctx.setLineDash([]);
