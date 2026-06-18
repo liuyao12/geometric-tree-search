@@ -416,6 +416,14 @@
         return inverse;
       }
 
+      function inversePermutation(permutation) {
+        const inverse = [];
+        permutation.forEach((oldIndex, newIndex) => {
+          inverse[oldIndex] = newIndex;
+        });
+        return inverse;
+      }
+
       function buildA2Symmetries() {
         const seen = new Set();
         const symmetries = [];
