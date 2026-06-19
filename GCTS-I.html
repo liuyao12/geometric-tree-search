@@ -204,7 +204,7 @@
       };
       const markValueColors = { positive: '#d55e00', negative: '#0072b2' };
       const coordinatePermutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
-      const turtleMarkSegments = turtleMarkSegmentSpecs.map(markSegmentFromSpec);
+      const turtleMarkSegments = turtleMarkSegmentSpecs.map(cotangentMarkSegmentFromSpec);
       const rawTurtle = turtleVertices3d.map(projectA2Raw);
       const turtleInteriorPoints3d = findInteriorLatticePoints(turtleVertices3d);
       const turtleOccupancy = [
@@ -336,14 +336,14 @@
         return gcd2(gcd2(a, b), c);
       }
 
-      function primitiveSegmentStep(a, b) {
+      function primitiveSegment(a, b) {
         const delta = subtract3(b, a);
         const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
-        return delta.map(value => value / steps);
+        return { steps, step: delta.map(value => value / steps) };
       }
 
-      function coordinateLineComponentForSegment(a, b) {
-        const step = primitiveSegmentStep(a, b);
+      function cotangentComponentForSegment(a, b) {
+        const { step } = primitiveSegment(a, b);
         const component = step.findIndex((value, index) => {
           const other = [0, 1, 2].filter(componentIndex => componentIndex !== index);
           return step[other[0]] === step[other[1]] && value === -2 * step[other[0]];
@@ -351,20 +351,18 @@
         return component >= 0 ? component : 0;
       }
 
-      function markSegmentFromSpec(spec) {
+      function cotangentMarkSegmentFromSpec(spec) {
         return {
           ...spec,
           // Channels are tied to the fixed A2 coordinates: m0 to the x-constant
           // family, m1 to y-constant, and m2 to z-constant. The drawn control
           // segment is the primitive normal to that coordinate-line family.
-          component: coordinateLineComponentForSegment(turtleVertices3d[spec.from], turtleVertices3d[spec.to])
+          component: cotangentComponentForSegment(turtleVertices3d[spec.from], turtleVertices3d[spec.to])
         };
       }
 
       function latticeSegmentPoints(a, b) {
-        const delta = subtract3(b, a);
-        const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
-        const step = delta.map(value => value / steps);
+        const { steps, step } = primitiveSegment(a, b);
         return Array.from({ length: steps + 1 }, (_, index) => [
           a[0] + step[0] * index,
           a[1] + step[1] * index,
@@ -373,9 +371,7 @@
       }
 
       function extendedLatticeSegmentPoints(a, b, extraSteps = 1) {
-        const delta = subtract3(b, a);
-        const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
-        const step = delta.map(value => value / steps);
+        const { steps, step } = primitiveSegment(a, b);
         return Array.from({ length: steps + 1 + extraSteps * 2 }, (_, rawIndex) => {
           const index = rawIndex - extraSteps;
           return [
@@ -438,7 +434,7 @@
         return symmetryPermutation(symmetry).map(index => symmetry.sign * point[index]);
       }
 
-      function transformMarkComponent(component, symmetry) {
+      function transformCotangentComponent(component, symmetry) {
         // With x'_i = sign * x_{permutation[i]}, the coordinate-family label
         // transforms by the inverse permutation: old x_component becomes the new
         // coordinate slot whose transformed coordinate reads that old component.
@@ -447,22 +443,24 @@
         return mapped >= 0 ? mapped : component;
       }
 
+      function permutationParity(permutation) {
+        const inversions = (permutation[0] > permutation[1] ? 1 : 0)
+          + (permutation[0] > permutation[2] ? 1 : 0)
+          + (permutation[1] > permutation[2] ? 1 : 0);
+        return inversions % 2 === 0 ? 1 : -1;
+      }
+
       function buildA2Symmetries() {
-        const seen = new Set();
         const symmetries = [];
         [1, -1].forEach(sign => {
           coordinatePermutations.forEach(permutation => {
-            const imageOfDiagonal = permutation.map(() => sign);
-            const diagonalKey = imageOfDiagonal.join(',');
-            if (diagonalKey !== '1,1,1' && diagonalKey !== '-1,-1,-1') return;
-            const key = `${sign}|${permutation.join(',')}`;
-            if (seen.has(key)) return;
-            seen.add(key);
-            const inversions = (permutation[0] > permutation[1] ? 1 : 0)
-              + (permutation[0] > permutation[2] ? 1 : 0)
-              + (permutation[1] > permutation[2] ? 1 : 0);
-            const planeSign = inversions % 2 === 0 ? 1 : -1;
-            symmetries.push({ sign, permutation, planeSign, markSign: planeSign });
+            symmetries.push({
+              sign,
+              permutation,
+              // Since the normal [1,1,1] is scaled by `sign`, the determinant on
+              // x+y+z=0 is the coordinate permutation parity.
+              planeSign: permutationParity(permutation)
+            });
           });
         });
         return symmetries;
@@ -492,8 +490,8 @@
               ...segment,
               fromPoint: start,
               toPoint: end,
-              component: transformMarkComponent(segment.component, symmetry),
-              value: segment.value * symmetry.markSign
+              component: transformCotangentComponent(segment.component, symmetry),
+              value: segment.value * symmetry.planeSign
             };
           });
           const markEntriesByKey = new Map();
