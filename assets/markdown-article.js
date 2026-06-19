@@ -94,7 +94,11 @@
       const markdown = await response.text();
       const demo = article.querySelector('.floating-demo');
       const rendered = renderMarkdown(markdown);
-      article.replaceChildren(...[demo, ...rendered].filter(Boolean));
+      if (demo) {
+        const tileStageIndex = rendered.findIndex(node => node.dataset?.demoStage === 'tile');
+        rendered.splice(tileStageIndex >= 0 ? tileStageIndex + 1 : 0, 0, demo);
+      }
+      article.replaceChildren(...rendered);
       window.dispatchEvent(new CustomEvent('gcts:markdown-rendered'));
       if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([article]);
     } catch (error) {
