@@ -29,7 +29,7 @@
 
     <article class="article-shell">
       <section class="article-content">
-        <aside class="floating-demo" aria-label="Sticky turtle tiling demo">
+        <aside class="floating-demo" aria-label="Sticky turtle tiling demo" hidden>
           <figure class="interactive-card" id="turtle-tiling-card">
             <div class="interactive-toolbar" aria-label="Turtle tiling controls">
               <div class="toolbar-row toolbar-button-row">
@@ -137,7 +137,7 @@
 
         <p data-demo-stage="markedTiling">The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
 
-        <h2 data-demo-stage="learning">Geometric Deep Learning</h2>
+        <h2>Geometric Deep Learning</h2>
 
         <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
 
@@ -250,6 +250,7 @@
       let demoDragY = 0;
       let demoSafeY = 0;
       let demoSize = { width: null, canvasHeight: null };
+      let activeDemoStage = null;
       const articleContent = document.querySelector('.article-content');
       let wrapTargets = articleWrapTargets();
       const demoCard = document.getElementById('turtle-tiling-card');
@@ -290,13 +291,6 @@
           markings: true,
           useMarkingRules: true,
           autoplay: true
-        },
-        learning: {
-          label: 'Stage: learned geometric obstructions',
-          note: 'The patch is filled out with markings visible, suggesting the data a learner could use to prune the tree.',
-          tiles: tilingOrder.length,
-          markings: true,
-          useMarkingRules: true
         }
       };
 
@@ -1259,7 +1253,7 @@
       }
 
       function updateTextWrap() {
-        if (!articleContent || !demoCard || window.matchMedia('(max-width: 900px)').matches) {
+        if (!articleContent || !demoCard || floatingDemo?.hidden || window.matchMedia('(max-width: 900px)').matches) {
           wrapTargets.forEach(target => {
             target.style.maxWidth = '';
           });
@@ -1632,8 +1626,17 @@
 
       function setDemoStage(stageName) {
         const stage = demoStages[stageName];
-        if (!stage) return;
+        if (!stage || stageName === activeDemoStage) return;
+        activeDemoStage = stageName;
         stopTiling();
+        if (floatingDemo) floatingDemo.hidden = stageName === 'intro';
+        if (stageName === 'intro') {
+          stageChips.forEach(chip => {
+            chip.setAttribute('aria-current', 'false');
+          });
+          updateTextWrap();
+          return;
+        }
         if (stageName === 'markings') {
           markingRulesToggle.checked = false;
           tilingRunUsesMarking = false;
@@ -1953,30 +1956,36 @@
         updateMarkingButton();
         draw();
       });
-      const observeDemoStages = () => {
-        if (!('IntersectionObserver' in window)) return;
+      function demoStageForScroll() {
+        const triggerLine = window.innerHeight * 0.45;
+        let stageName = 'intro';
         document.querySelectorAll('[data-demo-stage]').forEach(section => {
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) setDemoStage(entry.target.dataset.demoStage);
-            });
-          }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
-          observer.observe(section);
+          if (section.getBoundingClientRect().top <= triggerLine) stageName = section.dataset.demoStage;
         });
-      };
-      observeDemoStages();
+        return stageName;
+      }
+
+      function syncDemoStageToScroll() {
+        setDemoStage(demoStageForScroll());
+      }
+
       window.addEventListener('gcts:markdown-rendered', () => {
-        observeDemoStages();
         refreshArticleWrapTargets();
+        syncDemoStageToScroll();
       });
       window.addEventListener('resize', () => {
         resizeCanvas();
         updateTextWrap();
+        syncDemoStageToScroll();
       });
-      window.addEventListener('scroll', updateTextWrap, { passive: true });
+      window.addEventListener('scroll', () => {
+        updateTextWrap();
+        syncDemoStageToScroll();
+      }, { passive: true });
       setDemoStage('intro');
       updateMarkExtensionControl();
       resizeCanvas();
+      syncDemoStageToScroll();
     })();
   </script>
 </body>
