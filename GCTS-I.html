@@ -190,11 +190,11 @@
       ];
       const turtleVertexValues = [6, 4, 9, 4, 3, 4, 9, 4, 3, 8, 3, 8, 3, 4];
       const turtleInteriorValue = 12;
-      const turtleMarkSegments = [
-        { component: 0, from: 0, to: 10, value: 1 },
-        { component: 0, from: 2, to: 8, value: -1 },
-        { component: 1, from: 0, to: 6, value: -1 },
-        { component: 2, from: 4, to: 12, value: -1 }
+      const turtleMarkSegmentSpecs = [
+        { from: 0, to: 10, value: 1 },
+        { from: 2, to: 8, value: -1 },
+        { from: 0, to: 6, value: -1 },
+        { from: 4, to: 12, value: -1 }
       ];
       const tileColors = {
         directFill: 'rgba(0, 114, 178, 0.50)',
@@ -204,6 +204,7 @@
       };
       const markValueColors = { positive: '#d55e00', negative: '#0072b2' };
       const coordinatePermutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+      const turtleMarkSegments = turtleMarkSegmentSpecs.map(markSegmentFromSpec);
       const rawTurtle = turtleVertices3d.map(projectA2Raw);
       const turtleInteriorPoints3d = findInteriorLatticePoints(turtleVertices3d);
       const turtleOccupancy = [
@@ -335,6 +336,31 @@
         return gcd2(gcd2(a, b), c);
       }
 
+      function primitiveSegmentStep(a, b) {
+        const delta = subtract3(b, a);
+        const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
+        return delta.map(value => value / steps);
+      }
+
+      function coordinateLineComponentForSegment(a, b) {
+        const step = primitiveSegmentStep(a, b);
+        const component = step.findIndex((value, index) => {
+          const other = [0, 1, 2].filter(componentIndex => componentIndex !== index);
+          return step[other[0]] === step[other[1]] && value === -2 * step[other[0]];
+        });
+        return component >= 0 ? component : 0;
+      }
+
+      function markSegmentFromSpec(spec) {
+        return {
+          ...spec,
+          // Channels are tied to the fixed A2 coordinates: m0 to the x-constant
+          // family, m1 to y-constant, and m2 to z-constant. The drawn control
+          // segment is the primitive normal to that coordinate-line family.
+          component: coordinateLineComponentForSegment(turtleVertices3d[spec.from], turtleVertices3d[spec.to])
+        };
+      }
+
       function latticeSegmentPoints(a, b) {
         const delta = subtract3(b, a);
         const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
@@ -413,7 +439,12 @@
       }
 
       function transformMarkComponent(component, symmetry) {
-        return symmetryPermutation(symmetry)[component] ?? component;
+        // With x'_i = sign * x_{permutation[i]}, the coordinate-family label
+        // transforms by the inverse permutation: old x_component becomes the new
+        // coordinate slot whose transformed coordinate reads that old component.
+        const permutation = symmetryPermutation(symmetry);
+        const mapped = permutation.indexOf(component);
+        return mapped >= 0 ? mapped : component;
       }
 
       function buildA2Symmetries() {
