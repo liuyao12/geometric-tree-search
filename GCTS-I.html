@@ -558,10 +558,13 @@
           placement.markings.forEach(entry => {
             const key = markingKey(entry);
             const existing = markSums.get(key);
+            const values = existing?.values ? new Set(existing.values) : new Set();
+            values.add(entry.value);
             markSums.set(key, {
               point: entry.point,
               component: entry.component,
-              value: existing && existing.value !== entry.value ? NaN : entry.value,
+              value: values.size > 1 ? NaN : entry.value,
+              values: Array.from(values).sort((left, right) => left - right),
               count: (existing?.count || 0) + 1
             });
           });
@@ -571,11 +574,15 @@
 
       function markStateAt(point) {
         const vector = [null, null, null];
+        const conflicts = [];
         visibleMarkVectors().forEach((entry, key) => {
           const [pointKey, componentText] = key.split('|');
-          if (pointKey === key3(point)) vector[Number(componentText)] = entry.value;
+          if (pointKey !== key3(point)) return;
+          const component = Number(componentText);
+          vector[component] = entry.value;
+          if (Number.isNaN(entry.value)) conflicts.push({ component, values: entry.values || [] });
         });
-        return { vector };
+        return { vector, conflicts };
       }
 
       function frontierPoints(sums, frontierCoronas = new Map()) {
@@ -675,6 +682,13 @@
           if (Number.isNaN(value)) return '!';
           return value > 0 ? `+${value}` : String(value);
         }).join(',')})`;
+      }
+
+      function formatMarkConflict(conflict) {
+        const values = (conflict.values || [])
+          .map(value => value > 0 ? `+${value}` : String(value))
+          .join('/');
+        return `m${conflict.component}: ${values}`;
       }
 
       function markingCompatibility(markings, markSums) {
@@ -1475,6 +1489,7 @@
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
           lines.push(formatMarkVector(mark.vector));
+          if (mark.conflicts.length) lines.push(`conflict ${mark.conflicts.map(formatMarkConflict).join(', ')}`);
         }
         return lines;
       }
@@ -1486,7 +1501,7 @@
         const lines = hoverLinesForPoint(hoveredPoint);
         ctx.font = '700 12px Inter, system-ui, sans-serif';
         const width = Math.max(...lines.map(line => ctx.measureText(line).width)) + 16;
-        const height = showMarkings ? 40 : 24;
+        const height = 16 + lines.length * 16;
         const x = Math.min(screen.x + 12, canvas.getBoundingClientRect().width - width - 8);
         const y = Math.max(screen.y - height - 4, 8);
         ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
@@ -1497,11 +1512,10 @@
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = '#18211f';
-        ctx.fillText(lines[0], x + 8, y + 16);
-        if (lines[1]) {
-          ctx.font = '600 12px Inter, system-ui, sans-serif';
-          ctx.fillText(lines[1], x + 8, y + 32);
-        }
+        lines.forEach((line, index) => {
+          ctx.font = index === 0 ? '700 12px Inter, system-ui, sans-serif' : '600 12px Inter, system-ui, sans-serif';
+          ctx.fillText(line, x + 8, y + 16 + index * 16);
+        });
       }
 
       function draw() {
