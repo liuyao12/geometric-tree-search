@@ -102,7 +102,7 @@
       window.dispatchEvent(new CustomEvent('gcts:markdown-rendered'));
       if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([article]);
     } catch (error) {
-      console.warn(`Could not load ${markdownPath}; using embedded article fallback.`, error);
+      console.warn(`Could not load ${markdownPath}; article body is provided by Markdown only.`, error);
     }
   };
 
