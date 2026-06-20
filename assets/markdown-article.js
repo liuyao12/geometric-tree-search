@@ -96,7 +96,7 @@
       const rendered = renderMarkdown(markdown);
       if (demo) {
         const tileStageIndex = rendered.findIndex(node => node.dataset?.demoStage === 'tile');
-        rendered.splice(tileStageIndex >= 0 ? tileStageIndex + 1 : 0, 0, demo);
+        rendered.splice(tileStageIndex >= 0 ? tileStageIndex : 0, 0, demo);
       }
       article.replaceChildren(...rendered);
       window.dispatchEvent(new CustomEvent('gcts:markdown-rendered'));
