@@ -137,7 +137,7 @@
 
         <p data-demo-stage="markedTiling">The (naive) tiling algorithm can be easily modified to incorporate this kind of matching rule, simply by excluding those branches that disagree on overlap, and keeping track of a "global section" from all the tiles. This turns out to work remarkably well for the turtle.</p>
 
-        <h2 data-demo-stage="learning">Geometric Deep Learning</h2>
+        <h2>Geometric Deep Learning</h2>
 
         <p>We have reduced tiling to its combinatorics, though the markings do retain a geometric flavor, one might say. Where does deep learning come in? As we have seen, the (naive) tiling algorithm for the turtle is greatly accelerated when we enforce the matching rules with straight line markings, which incidentally were identified by human intelligence. It seems natural (and perfectly set up) for a simple machine learning algorithm to <em>learn</em> the markings on this and other tiles, from enough (or even a complete set of) positive and negative samples of local patches. The presence of group action may remind one of <em>equivariant</em> neural networks, sometimes branded as <em>geometric deep learning</em>.</p>
 
@@ -190,11 +190,11 @@
       ];
       const turtleVertexValues = [6, 4, 9, 4, 3, 4, 9, 4, 3, 8, 3, 8, 3, 4];
       const turtleInteriorValue = 12;
-      const turtleMarkSegments = [
-        { component: 0, from: 0, to: 10, value: 1 },
-        { component: 0, from: 2, to: 8, value: -1 },
-        { component: 1, from: 0, to: 6, value: -1 },
-        { component: 2, from: 4, to: 12, value: -1 }
+      const turtleMarkSegmentSpecs = [
+        { from: 0, to: 10, value: 1 },
+        { from: 2, to: 8, value: -1 },
+        { from: 0, to: 6, value: -1 },
+        { from: 4, to: 12, value: -1 }
       ];
       const tileColors = {
         directFill: 'rgba(0, 114, 178, 0.50)',
@@ -204,6 +204,7 @@
       };
       const markValueColors = { positive: '#d55e00', negative: '#0072b2' };
       const coordinatePermutations = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+      const turtleMarkSegments = turtleMarkSegmentSpecs.map(cotangentMarkSegmentFromSpec);
       const rawTurtle = turtleVertices3d.map(projectA2Raw);
       const turtleInteriorPoints3d = findInteriorLatticePoints(turtleVertices3d);
       const turtleOccupancy = [
@@ -223,6 +224,7 @@
       let tilingTrace = tilingRun.trace;
       const minViewScale = 0.08;
       const maxViewScale = 3.4;
+      const initialTileAreaFraction = 0.1;
       let scale = 0.58;
       let offset = { x: canvas.width / 2, y: canvas.height / 2 };
       let viewInitialized = false;
@@ -248,6 +250,7 @@
       let demoDragY = 0;
       let demoSafeY = 0;
       let demoSize = { width: null, canvasHeight: null };
+      let activeDemoStage = null;
       const articleContent = document.querySelector('.article-content');
       let wrapTargets = articleWrapTargets();
       const demoCard = document.getElementById('turtle-tiling-card');
@@ -288,13 +291,6 @@
           markings: true,
           useMarkingRules: true,
           autoplay: true
-        },
-        learning: {
-          label: 'Stage: learned geometric obstructions',
-          note: 'The patch is filled out with markings visible, suggesting the data a learner could use to prune the tree.',
-          tiles: tilingOrder.length,
-          markings: true,
-          useMarkingRules: true
         }
       };
 
@@ -334,10 +330,33 @@
         return gcd2(gcd2(a, b), c);
       }
 
-      function latticeSegmentPoints(a, b) {
+      function primitiveSegment(a, b) {
         const delta = subtract3(b, a);
         const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
-        const step = delta.map(value => value / steps);
+        return { steps, step: delta.map(value => value / steps) };
+      }
+
+      function cotangentComponentForSegment(a, b) {
+        const { step } = primitiveSegment(a, b);
+        const component = step.findIndex((value, index) => {
+          const other = [0, 1, 2].filter(componentIndex => componentIndex !== index);
+          return step[other[0]] === step[other[1]] && value === -2 * step[other[0]];
+        });
+        return component >= 0 ? component : 0;
+      }
+
+      function cotangentMarkSegmentFromSpec(spec) {
+        return {
+          ...spec,
+          // Channels are tied to the fixed A2 coordinates: m0 to the x-constant
+          // family, m1 to y-constant, and m2 to z-constant. The drawn control
+          // segment is the primitive normal to that coordinate-line family.
+          component: cotangentComponentForSegment(turtleVertices3d[spec.from], turtleVertices3d[spec.to])
+        };
+      }
+
+      function latticeSegmentPoints(a, b) {
+        const { steps, step } = primitiveSegment(a, b);
         return Array.from({ length: steps + 1 }, (_, index) => [
           a[0] + step[0] * index,
           a[1] + step[1] * index,
@@ -346,9 +365,7 @@
       }
 
       function extendedLatticeSegmentPoints(a, b, extraSteps = 1) {
-        const delta = subtract3(b, a);
-        const steps = gcd3(delta[0], delta[1], delta[2]) || 1;
-        const step = delta.map(value => value / steps);
+        const { steps, step } = primitiveSegment(a, b);
         return Array.from({ length: steps + 1 + extraSteps * 2 }, (_, rawIndex) => {
           const index = rawIndex - extraSteps;
           return [
@@ -403,32 +420,41 @@
         return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
       }
 
+      function symmetryPermutation(symmetry) {
+        return symmetry.permutation || [0, 1, 2];
+      }
+
       function transform3(point, symmetry) {
-        return symmetry.permutation.map(index => symmetry.sign * point[index]);
+        return symmetryPermutation(symmetry).map(index => symmetry.sign * point[index]);
+      }
+
+      function transformCotangentComponent(component, symmetry) {
+        // With x'_i = sign * x_{permutation[i]}, the coordinate-family label
+        // transforms by the inverse permutation: old x_component becomes the new
+        // coordinate slot whose transformed coordinate reads that old component.
+        const permutation = symmetryPermutation(symmetry);
+        const mapped = permutation.indexOf(component);
+        return mapped >= 0 ? mapped : component;
       }
 
       function permutationParity(permutation) {
-        let inversions = 0;
-        for (let i = 0; i < permutation.length; i += 1) {
-          for (let j = i + 1; j < permutation.length; j += 1) {
-            if (permutation[i] > permutation[j]) inversions += 1;
-          }
-        }
+        const inversions = (permutation[0] > permutation[1] ? 1 : 0)
+          + (permutation[0] > permutation[2] ? 1 : 0)
+          + (permutation[1] > permutation[2] ? 1 : 0);
         return inversions % 2 === 0 ? 1 : -1;
       }
 
       function buildA2Symmetries() {
-        const seen = new Set();
         const symmetries = [];
         [1, -1].forEach(sign => {
           coordinatePermutations.forEach(permutation => {
-            const imageOfDiagonal = permutation.map(() => sign);
-            const diagonalKey = imageOfDiagonal.join(',');
-            if (diagonalKey !== '1,1,1' && diagonalKey !== '-1,-1,-1') return;
-            const key = `${sign}|${permutation.join(',')}`;
-            if (seen.has(key)) return;
-            seen.add(key);
-            symmetries.push({ sign, permutation, markSign: permutationParity(permutation) });
+            symmetries.push({
+              sign,
+              permutation,
+              // Since the normal [1,1,1] is scaled by `sign`, the determinant on
+              // x+y+z=0 is the coordinate permutation parity.
+              planeSign: permutationParity(permutation)
+            });
           });
         });
         return symmetries;
@@ -458,8 +484,8 @@
               ...segment,
               fromPoint: start,
               toPoint: end,
-              component: symmetry.permutation[segment.component],
-              value: segment.value * symmetry.markSign
+              component: transformCotangentComponent(segment.component, symmetry),
+              value: segment.value * symmetry.planeSign
             };
           });
           const markEntriesByKey = new Map();
@@ -554,11 +580,15 @@
         visiblePlacements().forEach(placement => {
           placement.markings.forEach(entry => {
             const key = markingKey(entry);
+            const existing = markSums.get(key);
+            const values = existing?.values ? new Set(existing.values) : new Set();
+            values.add(entry.value);
             markSums.set(key, {
               point: entry.point,
               component: entry.component,
-              value: entry.value,
-              count: (markSums.get(key)?.count || 0) + 1
+              value: values.size > 1 ? NaN : entry.value,
+              values: Array.from(values).sort((left, right) => left - right),
+              count: (existing?.count || 0) + 1
             });
           });
         });
@@ -567,11 +597,15 @@
 
       function markStateAt(point) {
         const vector = [null, null, null];
+        const conflicts = [];
         visibleMarkVectors().forEach((entry, key) => {
           const [pointKey, componentText] = key.split('|');
-          if (pointKey === key3(point)) vector[Number(componentText)] = entry.value;
+          if (pointKey !== key3(point)) return;
+          const component = Number(componentText);
+          vector[component] = entry.value;
+          if (Number.isNaN(entry.value)) conflicts.push({ component, values: entry.values || [] });
         });
-        return { vector };
+        return { vector, conflicts };
       }
 
       function frontierPoints(sums, frontierCoronas = new Map()) {
@@ -588,18 +622,26 @@
 
       function placementCoronas(placements) {
         const coronas = placements.map((_, index) => index === 0 ? 0 : Infinity);
-        let changed = true;
-        while (changed) {
-          changed = false;
-          placements.forEach((placement, index) => {
-            if (!Number.isFinite(coronas[index])) return;
-            const keys = new Set(placement.occupancy.map(item => key3(item.point)));
-            placements.forEach((other, otherIndex) => {
-              if (coronas[otherIndex] <= coronas[index] + 1) return;
-              if (other.occupancy.some(item => keys.has(key3(item.point)))) {
-                coronas[otherIndex] = coronas[index] + 1;
-                changed = true;
-              }
+        if (placements.length <= 1) return coronas;
+        const placementsByPoint = new Map();
+        placements.forEach((placement, placementIndex) => {
+          placement.occupancy.forEach(item => {
+            const key = key3(item.point);
+            const touching = placementsByPoint.get(key) || [];
+            touching.push(placementIndex);
+            placementsByPoint.set(key, touching);
+          });
+        });
+        const queue = [0];
+        for (let cursor = 0; cursor < queue.length; cursor += 1) {
+          const placementIndex = queue[cursor];
+          const nextCorona = coronas[placementIndex] + 1;
+          placements[placementIndex].occupancy.forEach(item => {
+            const touching = placementsByPoint.get(key3(item.point)) || [];
+            touching.forEach(otherIndex => {
+              if (coronas[otherIndex] <= nextCorona) return;
+              coronas[otherIndex] = nextCorona;
+              queue.push(otherIndex);
             });
           });
         }
@@ -628,9 +670,10 @@
       function uniformFrontierCorona(placements) {
         const sums = new Map();
         placements.forEach(placement => addPlacementValues(placement, sums));
-        const frontier = frontierPoints(sums, frontierCoronasForPlacements(placements));
+        const frontierCoronas = frontierCoronasForPlacements(placements);
+        const frontier = frontierPoints(sums, frontierCoronas);
         if (!frontier.length) return null;
-        const coronas = frontier.map(point => frontierCoronasForPlacements(placements).get(key3(point.point)) ?? Infinity);
+        const coronas = frontier.map(point => frontierCoronas.get(key3(point.point)) ?? Infinity);
         const first = coronas[0];
         return Number.isFinite(first) && coronas.every(corona => corona === first) ? first : null;
       }
@@ -659,8 +702,16 @@
       function formatMarkVector(vector = [0, 0, 0]) {
         return `m=(${vector.map(value => {
           if (value === null || value === undefined) return '*';
+          if (Number.isNaN(value)) return '!';
           return value > 0 ? `+${value}` : String(value);
         }).join(',')})`;
+      }
+
+      function formatMarkConflict(conflict) {
+        const values = (conflict.values || [])
+          .map(value => value > 0 ? `+${value}` : String(value))
+          .join('/');
+        return `m${conflict.component}: ${values}`;
       }
 
       function markingCompatibility(markings, markSums) {
@@ -812,26 +863,57 @@
         });
       }
 
-      function updateFrontierCacheForPlacement(frontierCache, sums, placement, useMarkingRules) {
+      function trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules) {
+        if (usedPlacements.has(trial.placementKey)) return false;
+        let newPoints = 0;
+        let overflow = 0;
+        translatedTrialOccupancy(trial).forEach(item => {
+          const current = sums.get(key3(item.point))?.value || 0;
+          const nextValue = current + item.value;
+          overflow = Math.max(overflow, nextValue - 12);
+          if (current <= 0) newPoints += 1;
+        });
+        if (overflow > 0 || newPoints <= 0) return false;
+        if (!useMarkingRules) return true;
+        return !markingCompatibility(translatedTrialMarkings(trial), markSums).conflict;
+      }
+
+      function trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules) {
+        if (translatedTrialOccupancy(trial).some(item => changedPointKeys.has(key3(item.point)))) return true;
+        return useMarkingRules && translatedTrialMarkings(trial).some(entry => changedMarkingKeys.has(markingKey(entry)));
+      }
+
+      function updateFrontierCacheForPlacement(frontierCache, sums, usedPlacements, markSums, placement, useMarkingRules) {
         if (!frontierCache) return;
-        // Incremental graph surgery after adding one placement: remove filled or
-        // value-changed frontier nodes, and prune cached candidate edges that now
-        // conflict locally with the new tile or its marking section. Newly exposed
-        // frontier nodes are generated lazily as cache misses in analyzeBoundary().
+        const changedPointKeys = new Set(placement.occupancy.map(item => key3(item.point)));
+        const changedMarkingKeys = useMarkingRules
+          ? new Set(placement.markings.map(markingKey))
+          : new Set();
+        // Incremental graph surgery after adding one placement: truncate the
+        // global t- and m-sections to just the coordinates touched by the new tile,
+        // then revalidate only cache entries whose frontier point or candidate edge
+        // intersects that local patch. Cache misses still generate newly exposed
+        // frontier nodes lazily in analyzeBoundary().
         for (const [cacheKey, option] of [...frontierCache.entries()]) {
           const pointKey = key3(option.frontier.point);
-          const current = sums.get(pointKey);
-          if (!current || current.value >= 12 || current.value !== option.frontier.value) {
-            frontierCache.delete(cacheKey);
-            continue;
+          const frontierChanged = changedPointKeys.has(pointKey);
+          if (frontierChanged) {
+            const current = sums.get(pointKey);
+            if (!current || current.value >= 12 || current.value !== option.frontier.value) {
+              frontierCache.delete(cacheKey);
+              continue;
+            }
           }
-          const candidates = option.candidates.filter(trial => {
-            return trial.placementKey !== placement.placementKey && !trialConflictsWithPlacement(trial, placement, useMarkingRules);
+          const needsEdgeUpdate = option.trials.some(trial => trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules));
+          if (!frontierChanged && !needsEdgeUpdate) continue;
+          const trials = option.trials.filter(trial => {
+            if (!trialTouchesChangedSection(trial, changedPointKeys, changedMarkingKeys, useMarkingRules)) return true;
+            return trialIsValidAgainstState(trial, sums, usedPlacements, markSums, useMarkingRules);
           });
           frontierCache.set(cacheKey, {
             ...option,
-            trials: option.trials.filter(trial => candidates.includes(trial)),
-            candidates
+            trials,
+            candidates: trials.filter(trial => trial.valid)
           });
         }
       }
@@ -843,8 +925,8 @@
         graph.placed.push(placement);
         graph.usedPlacements.add(placement.placementKey);
         addPlacementValues(placement, graph.sums);
-        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, placement, useMarkingRules);
         if (useMarkingRules) addPlacementMarkings(placement, graph.markSums);
+        updateFrontierCacheForPlacement(graph.frontierCache, graph.sums, graph.usedPlacements, graph.markSums, placement, useMarkingRules);
       }
 
       function removeLastPlacementFromGraph(graph, useMarkingRules) {
@@ -1209,20 +1291,19 @@
         }), { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity });
       }
 
-      function fitViewToPlacements(placements, { padding = 36, onlyZoomOut = false } = {}) {
+      function centerSeedView({ resetScale = false } = {}) {
         const rect = canvas.getBoundingClientRect();
-        const bounds = placementBounds(placements);
+        const bounds = placementBounds([makeSeedPlacement()]);
         if (!bounds || rect.width <= 0 || rect.height <= 0) {
           centerView(rect);
           return false;
         }
         const worldWidth = Math.max(1, bounds.maxX - bounds.minX);
         const worldHeight = Math.max(1, bounds.maxY - bounds.minY);
-        const availableWidth = Math.max(80, rect.width - padding * 2);
-        const availableHeight = Math.max(80, rect.height - padding * 2);
-        const fittedScale = clamp(Math.min(availableWidth / worldWidth, availableHeight / worldHeight), minViewScale, maxViewScale);
-        if (onlyZoomOut && fittedScale >= scale) return false;
-        scale = fittedScale;
+        if (resetScale) {
+          const targetArea = Math.max(1, rect.width * rect.height * initialTileAreaFraction);
+          scale = clamp(Math.sqrt(targetArea / (worldWidth * worldHeight)), minViewScale, maxViewScale);
+        }
         const centerX = (bounds.minX + bounds.maxX) / 2;
         const centerY = (bounds.minY + bounds.maxY) / 2;
         offset = {
@@ -1232,11 +1313,6 @@
         return true;
       }
 
-      function fitVisibleView({ onlyZoomOut = true } = {}) {
-        const placements = [...visiblePlacements(), trialGhost?.placement].filter(Boolean);
-        return fitViewToPlacements(placements, { padding: 42, onlyZoomOut });
-      }
-
       function resizeCanvas() {
         const ratio = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
@@ -1244,7 +1320,7 @@
         canvas.height = Math.max(220, Math.floor(rect.height * ratio));
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
         if (!viewInitialized) {
-          fitVisibleView({ onlyZoomOut: false });
+          centerSeedView({ resetScale: true });
           viewInitialized = true;
         }
         draw();
@@ -1279,7 +1355,7 @@
 
       function drawGridLines(rect) {
         const corners = [screenToWorld(0, 0), screenToWorld(rect.width, 0), screenToWorld(0, rect.height), screenToWorld(rect.width, rect.height)];
-        const worldRadius = Math.max(...corners.flatMap(point => [Math.abs(point.x), Math.abs(point.y)]));
+        const worldRadius = corners.reduce((radius, point) => Math.max(radius, Math.abs(point.x), Math.abs(point.y)), 0);
         const constantLimit = Math.min(220, Math.max(28, Math.ceil((worldRadius / latticeScale) * 1.7) + 8));
         const lineExtent = constantLimit * 3;
         const families = [
@@ -1352,7 +1428,7 @@
           ctx.strokeStyle = options.valid ? '#168775' : '#b84a56';
           ctx.setLineDash(options.valid ? [10, 5] : [4, 4]);
         } else {
-          const isReflected = placement.orientation.markSign < 0;
+          const isReflected = placement.orientation.planeSign < 0;
           ctx.fillStyle = isReflected ? tileColors.reflectedFill : tileColors.directFill;
           ctx.strokeStyle = isReflected ? tileColors.reflectedStroke : tileColors.directStroke;
           ctx.setLineDash([]);
@@ -1436,6 +1512,7 @@
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
           lines.push(formatMarkVector(mark.vector));
+          if (mark.conflicts.length) lines.push(`conflict ${mark.conflicts.map(formatMarkConflict).join(', ')}`);
         }
         return lines;
       }
@@ -1447,7 +1524,7 @@
         const lines = hoverLinesForPoint(hoveredPoint);
         ctx.font = '700 12px Inter, system-ui, sans-serif';
         const width = Math.max(...lines.map(line => ctx.measureText(line).width)) + 16;
-        const height = showMarkings ? 40 : 24;
+        const height = 16 + lines.length * 16;
         const x = Math.min(screen.x + 12, canvas.getBoundingClientRect().width - width - 8);
         const y = Math.max(screen.y - height - 4, 8);
         ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
@@ -1458,11 +1535,10 @@
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = '#18211f';
-        ctx.fillText(lines[0], x + 8, y + 16);
-        if (lines[1]) {
-          ctx.font = '600 12px Inter, system-ui, sans-serif';
-          ctx.fillText(lines[1], x + 8, y + 32);
-        }
+        lines.forEach((line, index) => {
+          ctx.font = index === 0 ? '700 12px Inter, system-ui, sans-serif' : '600 12px Inter, system-ui, sans-serif';
+          ctx.fillText(line, x + 8, y + 16 + index * 16);
+        });
       }
 
       function draw() {
@@ -1534,6 +1610,7 @@
         tilingRun = { placements: [seed], trace: [] };
         tilingOrder = tilingRun.placements;
         tilingTrace = tilingRun.trace;
+        tilingRunUsesMarking = markingRulesToggle?.checked || false;
         shownTiles = 1;
         playbackPlacements = null;
         traceIndex = 0;
@@ -1543,16 +1620,25 @@
         statusText = `marking reach set to ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
-        fitVisibleView({ onlyZoomOut: false });
+        centerSeedView();
         draw();
       }
 
       function setDemoStage(stageName) {
         const stage = demoStages[stageName];
-        if (!stage) return;
+        if (!stage || stageName === activeDemoStage) return;
+        activeDemoStage = stageName;
         stopTiling();
+        if (stageName === 'intro') {
+          stageChips.forEach(chip => {
+            chip.setAttribute('aria-current', 'false');
+          });
+          updateTextWrap();
+          return;
+        }
         if (stageName === 'markings') {
           markingRulesToggle.checked = false;
+          tilingRunUsesMarking = false;
           showMarkings = true;
           trialGhost = null;
           statusText = '';
@@ -1563,12 +1649,13 @@
           });
           updateMarkingButton();
           updateMarkExtensionControl();
-          fitVisibleView({ onlyZoomOut: false });
+          centerSeedView();
           draw();
           return;
         }
         if (typeof stage.useMarkingRules === 'boolean') {
           markingRulesToggle.checked = stage.useMarkingRules;
+          tilingRunUsesMarking = stage.useMarkingRules;
           updateMarkExtensionControl();
         }
         shownTiles = stage.tiles;
@@ -1581,7 +1668,7 @@
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
         showMarkings = stage.markings;
-        fitVisibleView({ onlyZoomOut: false });
+        centerSeedView();
         if (stageLabel) stageLabel.textContent = stage.label;
         if (stageNote) stageNote.textContent = stage.note;
         stageChips.forEach(chip => {
@@ -1741,7 +1828,7 @@
           pausedCoronas.clear();
           liveSearchUsesMarking = useMarking;
           tilingRunUsesMarking = useMarking;
-          fitVisibleView({ onlyZoomOut: false });
+          centerSeedView();
           traceIndex = 0;
         }
         hasStartedTiling = true;
@@ -1822,7 +1909,6 @@
               stopTiling();
             }
           }
-          fitVisibleView({ onlyZoomOut: true });
           draw();
         }, 60);
         draw();
@@ -1852,7 +1938,7 @@
       latticeToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
         stopTiling();
-        fitViewToPlacements([makeSeedPlacement()], { padding: 42, onlyZoomOut: false });
+        centerSeedView();
         hoveredPoint = null;
         shownTiles = 1;
         playbackPlacements = null;
@@ -1869,30 +1955,36 @@
         updateMarkingButton();
         draw();
       });
-      const observeDemoStages = () => {
-        if (!('IntersectionObserver' in window)) return;
+      function demoStageForScroll() {
+        const triggerLine = window.innerHeight * 0.45;
+        let stageName = 'intro';
         document.querySelectorAll('[data-demo-stage]').forEach(section => {
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) setDemoStage(entry.target.dataset.demoStage);
-            });
-          }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
-          observer.observe(section);
+          if (section.getBoundingClientRect().top <= triggerLine) stageName = section.dataset.demoStage;
         });
-      };
-      observeDemoStages();
+        return stageName;
+      }
+
+      function syncDemoStageToScroll() {
+        setDemoStage(demoStageForScroll());
+      }
+
       window.addEventListener('gcts:markdown-rendered', () => {
-        observeDemoStages();
         refreshArticleWrapTargets();
+        syncDemoStageToScroll();
       });
       window.addEventListener('resize', () => {
         resizeCanvas();
         updateTextWrap();
+        syncDemoStageToScroll();
       });
-      window.addEventListener('scroll', updateTextWrap, { passive: true });
+      window.addEventListener('scroll', () => {
+        updateTextWrap();
+        syncDemoStageToScroll();
+      }, { passive: true });
       setDemoStage('intro');
       updateMarkExtensionControl();
       resizeCanvas();
+      syncDemoStageToScroll();
     })();
   </script>
 </body>
