@@ -4,7 +4,6 @@
   const stageRules = [
     { test: text => /^Tiles and tilings$/i.test(text), stage: 'tile' },
     { test: text => /^Markings and matching rules$/i.test(text), stage: 'markings' },
-    { test: text => /^Geometric Deep Learning$/i.test(text), stage: 'learning' },
     { test: text => text.startsWith('A lattice tile') && text.includes('to tile'), stage: 'tiling' },
     { test: text => text.startsWith('The (naive) tiling algorithm'), stage: 'markedTiling' }
   ];
@@ -99,7 +98,7 @@
       window.dispatchEvent(new CustomEvent('gcts:markdown-rendered'));
       if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([article]);
     } catch (error) {
-      console.warn(`Could not load ${markdownPath}; using embedded article fallback.`, error);
+      console.warn(`Could not load ${markdownPath}; article body is provided by Markdown only.`, error);
     }
   };
 

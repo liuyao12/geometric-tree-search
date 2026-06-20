@@ -1,6 +1,6 @@
 <!--
 Edit this Markdown file to update the GCTS HTML article pages.
-The browser pages fetch and render this file, with embedded HTML as a fallback.
+The browser pages fetch and render this file; the HTML page only adds the interactive demo shell.
 -->
 
 # Geometrically Constrained Tree Search I — Learning matching rules in tiling
