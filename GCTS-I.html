@@ -1253,7 +1253,7 @@
       }
 
       function updateTextWrap() {
-        if (!articleContent || !demoCard || window.matchMedia('(max-width: 900px)').matches) {
+        if (!articleContent || !demoCard || floatingDemo?.hidden || window.matchMedia('(max-width: 900px)').matches) {
           wrapTargets.forEach(target => {
             target.style.maxWidth = '';
           });
