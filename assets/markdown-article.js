@@ -4,7 +4,6 @@
   const stageRules = [
     { test: text => /^Tiles and tilings$/i.test(text), stage: 'tile' },
     { test: text => /^Markings and matching rules$/i.test(text), stage: 'markings' },
-    { test: text => /^Geometric Deep Learning$/i.test(text), stage: 'learning' },
     { test: text => text.startsWith('A lattice tile') && text.includes('to tile'), stage: 'tiling' },
     { test: text => text.startsWith('The (naive) tiling algorithm'), stage: 'markedTiling' }
   ];
@@ -95,7 +94,11 @@
       const markdown = await response.text();
       const demo = article.querySelector('.floating-demo');
       const rendered = renderMarkdown(markdown);
-      article.replaceChildren(...[demo, ...rendered].filter(Boolean));
+      if (demo) {
+        const tileStageIndex = rendered.findIndex(node => node.dataset?.demoStage === 'tile');
+        rendered.splice(tileStageIndex >= 0 ? tileStageIndex : 0, 0, demo);
+      }
+      article.replaceChildren(...rendered);
       window.dispatchEvent(new CustomEvent('gcts:markdown-rendered'));
       if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([article]);
     } catch (error) {
