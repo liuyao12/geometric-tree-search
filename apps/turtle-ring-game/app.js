@@ -50,14 +50,15 @@ const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtl
 const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: (placement.isReflected || placement.orientation?.isReflected) !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
-let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null;
+let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1;
 const relativeMoveCache = new Map();
+const preferredMoveKindBySignature = new Map();
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
 function validCandidate(o,t,sums,markSums,used){ const pk=`${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
 function buildPatch(limit=170){ placements=[place(trefoilBase,[0,0,0],{kind:'seed'})]; const sums=new Map(), markSums=new Map(), used=new Set(); addPlacement(placements[0],sums,markSums); for(let step=0; step<limit*40 && placements.length<limit; step++){ let best=null; for(const f of frontier(sums).slice(0,24)){ const need=MAX-f.value; for(const o of turtleOrientations){ for(const a of o.occupancy.filter(e=>e.value<=need)){ const cand=validCandidate(o, sub(f.point,a.point), sums, markSums, used); if(cand && (!best || cand.score>best.score)) best={...cand, frontier:f}; } } if(best?.score>=0) break; } if(!best) break; const p=place(best.orientation,best.translation,{kind:'turtle', placementKey:best.pk}); placements.push(p); used.add(best.pk); addPlacement(p,sums,markSums); }
- coronas=computeCoronas(); updateMoveHints(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${Math.max(...coronas.filter(Number.isFinite))}. Click a corona-1 turtle to try a legal move.`; draw(); }
+ coronas=computeCoronas(); identifyNeighborMoveKinds(); updateMoveHints(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${Math.max(...coronas.filter(Number.isFinite))}. Click a corona-1 turtle to try a legal move.`; draw(); }
 function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); placements.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of placements[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
@@ -100,7 +101,7 @@ function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, o
 }
 function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.segments.map(segment => ({ a: screen(segment.p1), b: screen(segment.p2), value: segment.value }))) {
   const style = styleForPlacement(p, index);
-  drawPolyScreen(points, style.fill, style.stroke, index&&coronas[index]===1?2.2:1.5);
+  drawPolyScreen(points, style.fill, style.stroke, hoveredIndex === index && legalMoveIndices.has(index) ? 4.2 : (index&&coronas[index]===1?2.2:1.5));
   if (marksToggle.checked) segments.forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
 }
 function drawAnimatedPlacement(index, progress) {
@@ -117,6 +118,25 @@ function relativeSignature(seed, turtle) {
   const seedShape = seed.vertices.map(point => key(sub(point, anchor))).sort().join(';');
   const turtleShape = turtle.vertices.map(point => key(sub(point, anchor))).sort().join(';');
   return `${seedShape}|${turtleShape}`;
+}
+function placementCentroid(placement) {
+  return placement.vertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / placement.vertices.length);
+}
+function identifyNeighborMoveKinds() {
+  preferredMoveKindBySignature.clear();
+  const seedCenter = placementCentroid(placements[0]);
+  const neighbors = placements
+    .map((placement, index) => ({ placement, index }))
+    .filter(item => item.index > 0 && coronas[item.index] === 1)
+    .map(item => {
+      const delta = sub(placementCentroid(item.placement), seedCenter);
+      const projected = project(delta);
+      return { ...item, angle: Math.atan2(projected.y, projected.x) };
+    })
+    .sort((left, right) => left.angle - right.angle);
+  neighbors.forEach((item, slot) => {
+    preferredMoveKindBySignature.set(relativeSignature(placements[0], item.placement), slot % 2 === 0 ? 'rotation' : 'reflection');
+  });
 }
 function cacheValueForMove(seed, move) {
   return {
@@ -144,7 +164,7 @@ function candidateLocalOps(seed, turtle) {
   const ops = [];
   for (const sym of allSymmetries) {
     const kind = symmetryKind(sym);
-    if (kind !== 'half-turn' && kind !== 'reflection') continue;
+    if (kind !== 'half-turn' && kind !== 'rotation' && kind !== 'reflection') continue;
     const centerShift = sub(pairCenter, transformLinear(pairCenter, sym)).map(Math.round);
     for (let dx = -8; dx <= 8; dx += 1) {
       for (let dy = -8; dy <= 8; dy += 1) {
@@ -183,11 +203,13 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function chooseUniqueMove(moves) {
-  const halfTurns = moves.filter(move => move.op.kind === 'half-turn');
+function chooseUniqueMove(moves, preferredKind = null) {
+  if (preferredKind === 'rotation') return moves.find(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation') || null;
+  if (preferredKind === 'reflection') return moves.find(move => move.op.kind === 'reflection') || null;
+  const rotations = moves.filter(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation');
   const reflections = moves.filter(move => move.op.kind === 'reflection');
-  if (halfTurns.length && !reflections.length) return halfTurns[0];
-  if (reflections.length && !halfTurns.length) return reflections[0];
+  if (rotations.length && !reflections.length) return rotations[0];
+  if (reflections.length && !rotations.length) return reflections[0];
   return null;
 }
 function localMoveFor(clickedIndex) {
@@ -201,7 +223,7 @@ function localMoveFor(clickedIndex) {
     return validatorWithoutPair(clickedIndex)(move) ? move : null;
   }
   const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const move = chooseUniqueMove(candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove));
+  const move = chooseUniqueMove(candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove), preferredMoveKindBySignature.get(signature));
   relativeMoveCache.set(signature, move ? cacheValueForMove(seed, move) : null);
   return move;
 }
@@ -212,10 +234,11 @@ function updateMoveHints() {
   }
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one local ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
-function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle has no legal local flip.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
+function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle has no legal local flip.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); hoveredIndex = -1; activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
 function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
-canvas.addEventListener('pointermove',e=>{ if(!dragging)return; const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
+canvas.addEventListener('pointermove',e=>{ if(!dragging){ const hit=hitTile(e); const nextHover=legalMoveIndices.has(hit)?hit:-1; if(nextHover!==hoveredIndex){ hoveredIndex=nextHover; draw(); } return; } const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
+canvas.addEventListener('pointerleave',()=>{ if(hoveredIndex!==-1){ hoveredIndex=-1; draw(); }});
 canvas.addEventListener('pointerup',e=>{ if(down && Math.hypot(e.clientX-down.x,e.clientY-down.y)<4) flipClicked(hitTile(e)); dragging=false; down=null;});
 canvas.addEventListener('wheel',e=>{ e.preventDefault(); const f=Math.exp(-e.deltaY*0.001); view.scale=Math.max(.12,Math.min(3.5,view.scale*f)); draw(); },{passive:false});
 marksToggle.addEventListener('change',draw); gridToggle.addEventListener('change',draw); buildButton.addEventListener('click',()=>buildPatch()); resetButton.addEventListener('click',()=>{view={scale:.72,x:canvas.width/2,y:canvas.height/2};draw();});
