@@ -14,7 +14,7 @@
       <p class="lede">A one-player tiling toy: build a marked turtle corona around a central <strong>Trefoil</strong> tile, then click a turtle touching it to flip the local pair.</p>
     </header>
     <section class="toolbar" aria-label="Game controls">
-      <button id="build">Build corona 6</button>
+      <button id="build">Build marked patch</button>
       <button id="resetView">Reset view</button>
       <label><input id="marks" type="checkbox" checked> show markings</label>
       <label><input id="grid" type="checkbox"> show A₂ grid</label>
@@ -25,7 +25,7 @@
       <h2>Tile name</h2>
       <p>I suggest <strong>Trefoil</strong>: the seed has three repeated angle/stripe lobes, and the name distinguishes it from the Smith turtle while hinting at its threefold role.</p>
       <h2>Game rule prototype</h2>
-      <p>Click a turtle in corona 1. The app alternates between a half-turn and a reflection of the clicked turtle together with the Trefoil, then rebuilds a marked turtle-only patch around the transformed pair.</p>
+      <p>Click a turtle in corona 1. For the clicked corona-1 turtle, the app tests whether the Trefoil+turtle union has a legal half-turn or reflection symmetry. If exactly one legal move exists, only those two tiles move; every other turtle remains fixed.</p>
     </section>
   </main>
   <script type="module" src="./app.js"></script>
