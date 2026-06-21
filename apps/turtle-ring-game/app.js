@@ -42,32 +42,107 @@ const turtleOcc = [...turtleVerts.map((p,i)=>({point:p,value:turtleAngles[i],kin
 const trefoilOcc = trefoilVerts.map((point,i)=>({point,value:trefoilAngles[i],kind:'vertex'}));
 const turtleStripes = turtleStripeDefs.map(d=>({...d, p1:turtleVerts[d.from], p2:turtleVerts[d.to], component:componentFor(turtleVerts[d.from], turtleVerts[d.to])}));
 const trefoilStripes = trefoilStripeDefs.map(d=>({...d, component:componentFor(d.p1,d.p2)}));
-function orientTile(verts, occ, stripes, sym, idx, name) { const vertices=verts.map(p=>transformLinear(p,sym)); const occupancy=occ.map(e=>({...e, point:transformLinear(e.point,sym)})); const marks=[]; const segments=stripes.map(seg=>{ const p1=transformLinear(seg.p1,sym), p2=transformLinear(seg.p2,sym), component=mapComponent(seg.component,sym), value=seg.value*sym.planeSign; segmentPoints(p1,p2,markReach).forEach(point=>marks.push({point,component,value})); return {p1,p2,component,value}; }); return {idx,name,vertices,occupancy,marks,segments}; }
+function orientTile(verts, occ, stripes, sym, idx, name) { const vertices=verts.map(p=>transformLinear(p,sym)); const occupancy=occ.map(e=>({...e, point:transformLinear(e.point,sym)})); const marks=[]; const segments=stripes.map(seg=>{ const p1=transformLinear(seg.p1,sym), p2=transformLinear(seg.p2,sym), component=mapComponent(seg.component,sym), value=seg.value*sym.planeSign; segmentPoints(p1,p2,markReach).forEach(point=>marks.push({point,component,value})); return {p1,p2,component,value}; }); return {idx,name,sym,isReflected:sym.planeSign < 0,vertices,occupancy,marks,segments}; }
 const allSymmetries = symmetries();
 const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,turtleStripes,s,i,'Turtle'));
 const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
-function place(orientation, translation, extra={}) { return {...extra, orientation, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
-function transformPlacement(placement, op) { return {...placement, vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
-let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[];
+function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
+function transformPlacement(placement, op) { return {...placement, isReflected: (placement.isReflected || placement.orientation?.isReflected) !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
+let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null;
+const relativeMoveCache = new Map();
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
 function validCandidate(o,t,sums,markSums,used){ const pk=`${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
 function buildPatch(limit=170){ placements=[place(trefoilBase,[0,0,0],{kind:'seed'})]; const sums=new Map(), markSums=new Map(), used=new Set(); addPlacement(placements[0],sums,markSums); for(let step=0; step<limit*40 && placements.length<limit; step++){ let best=null; for(const f of frontier(sums).slice(0,24)){ const need=MAX-f.value; for(const o of turtleOrientations){ for(const a of o.occupancy.filter(e=>e.value<=need)){ const cand=validCandidate(o, sub(f.point,a.point), sums, markSums, used); if(cand && (!best || cand.score>best.score)) best={...cand, frontier:f}; } } if(best?.score>=0) break; } if(!best) break; const p=place(best.orientation,best.translation,{kind:'turtle', placementKey:best.pk}); placements.push(p); used.add(best.pk); addPlacement(p,sums,markSums); }
- coronas=computeCoronas(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${Math.max(...coronas.filter(Number.isFinite))}. Click a corona-1 turtle.`; draw(); }
+ coronas=computeCoronas(); updateMoveHints(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${Math.max(...coronas.filter(Number.isFinite))}. Highlighted turtles have legal moves.`; draw(); }
 function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); placements.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of placements[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
-function drawPoly(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((p,i)=>{const s=screen(p); i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y);}); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
-function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); if(gridToggle.checked) drawGrid(); placements.forEach((p,i)=>drawPoly(p.vertices, i?'rgba(0,114,178,.42)':'rgba(78,121,80,.68)', i?'#005a8c':'#355f39', i&&coronas[i]===1?3:1.5)); if(marksToggle.checked) for(const p of placements) for(const s of p.segments){ const a=screen(s.p1), b=screen(s.p2); ctx.strokeStyle=s.value>0?'#d55e00':'#0072b2'; ctx.setLineDash(s.value>0?[]:[6,5]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); ctx.setLineDash([]); } }
+function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
+function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash(value>0?[]:[6,5]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); ctx.setLineDash([]); }
+function styleForPlacement(p, index) { const reflected = p.isReflected || p.orientation?.isReflected; return { fill: index ? (reflected ? 'rgba(213,94,0,.48)' : 'rgba(0,114,178,.42)') : 'rgba(78,121,80,.68)', stroke: index ? (reflected ? '#a74700' : '#005a8c') : '#355f39' }; }
+function eased(value) { return value < 0.5 ? 2 * value * value : 1 - Math.pow(-2 * value + 2, 2) / 2; }
+function lerp(a, b, t) { return a + (b - a) * t; }
+function animatePoint(from, to, progress, animation) {
+  const a = screen(from), b = screen(to), t = eased(progress);
+  if (animation.op.kind === 'half-turn') {
+    const c = screen(animation.center);
+    const angle = Math.PI * t;
+    const dx = a.x - c.x, dy = a.y - c.y;
+    return { x: c.x + dx * Math.cos(angle) - dy * Math.sin(angle), y: c.y + dx * Math.sin(angle) + dy * Math.cos(angle) };
+  }
+  if (animation.axis) {
+    const { point, unit } = animation.axis;
+    const dx = a.x - point.x, dy = a.y - point.y;
+    const parallel = dx * unit.x + dy * unit.y;
+    const px = unit.x * parallel, py = unit.y * parallel;
+    const qx = dx - px, qy = dy - py;
+    const scale = 1 - 2 * t;
+    return { x: point.x + px + qx * scale, y: point.y + py + qy * scale };
+  }
+  return { x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t) };
+}
+function reflectionAxis(fromPlacement, toPlacement) {
+  for (let i = 0; i < fromPlacement.vertices.length; i += 1) {
+    const a = screen(fromPlacement.vertices[i]), b = screen(toPlacement.vertices[i]);
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const length = Math.hypot(dx, dy);
+    if (length > 1e-6) return { point: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, unit: { x: -dy / length, y: dx / length } };
+  }
+  return null;
+}
+function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, op) {
+  const animation = { from: new Map([[0, fromSeed], [clickedIndex, fromClicked]]), to: new Map([[0, toSeed], [clickedIndex, toClicked]]), indices: new Set([0, clickedIndex]), clickedIndex, op, started: performance.now(), duration: 520, center: op.translation.map(value => value / 2), axis: null };
+  if (op.kind === 'reflection') animation.axis = reflectionAxis(fromSeed, toSeed) || reflectionAxis(fromClicked, toClicked);
+  return animation;
+}
+function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.segments.map(segment => ({ a: screen(segment.p1), b: screen(segment.p2), value: segment.value }))) {
+  const style = styleForPlacement(p, index);
+  drawPolyScreen(points, style.fill, legalMoveIndices.has(index) ? '#f2c84b' : style.stroke, legalMoveIndices.has(index) ? 4 : (index&&coronas[index]===1?2.2:1.5));
+  if (marksToggle.checked) segments.forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
+}
+function drawAnimatedPlacement(index, progress) {
+  const from = activeAnimation.from.get(index), to = activeAnimation.to.get(index);
+  const points = from.vertices.map((point, i) => animatePoint(point, to.vertices[i], progress, activeAnimation));
+  const segments = from.segments.map((segment, i) => ({ a: animatePoint(segment.p1, to.segments[i].p1, progress, activeAnimation), b: animatePoint(segment.p2, to.segments[i].p2, progress, activeAnimation), value: progress < 0.5 ? segment.value : to.segments[i].value }));
+  drawPlacement(to, index, points, segments);
+}
+function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); if(gridToggle.checked) drawGrid(); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
 function drawGrid(){ ctx.fillStyle='rgba(20,60,55,.16)'; for(let x=-12;x<=12;x++) for(let y=-12;y<=12;y++){ const s=screen([x,y,-x-y]); ctx.beginPath(); ctx.arc(s.x,s.y,1.4,0,7); ctx.fill(); } }
 function hitTile(ev){ const r=canvas.getBoundingClientRect(), pt={x:(ev.clientX-r.left)*canvas.width/r.width,y:(ev.clientY-r.top)*canvas.height/r.height}; for(let i=placements.length-1;i>0;i--){ if(coronas[i]!==1) continue; const poly=placements[i].vertices.map(screen); if(pointInPoly(pt, poly)) return i; } return -1; }
+function relativeSignature(seed, turtle) {
+  const anchor = seed.vertices[0];
+  const seedShape = seed.vertices.map(point => key(sub(point, anchor))).sort().join(';');
+  const turtleShape = turtle.vertices.map(point => key(sub(point, anchor))).sort().join(';');
+  return `${seedShape}|${turtleShape}`;
+}
+function cacheValueForMove(seed, move) {
+  return {
+    kind: move.op.kind,
+    sign: move.op.sym.sign,
+    permutation: move.op.sym.permutation,
+    relativeTranslation: sub(move.op.translation, transformLinear(seed.vertices[0], move.op.sym))
+  };
+}
+function opFromCache(seed, cached) {
+  const sym = { sign: cached.sign, permutation: cached.permutation, planeSign: parity(cached.permutation) };
+  return { sym, kind: cached.kind, translation: add(transformLinear(seed.vertices[0], sym), cached.relativeTranslation) };
+}
+function moveFromOp(clickedIndex, op) {
+  const movedSeed = transformPlacement(placements[0], op);
+  const movedClicked = transformPlacement(placements[clickedIndex], op);
+  const next = placements.slice();
+  next[0] = movedSeed;
+  next[clickedIndex] = movedClicked;
+  return { op, next };
+}
 function candidateLocalOps(seed, turtle) {
   const pairVertices = [...seed.vertices, ...turtle.vertices];
   const pairCenter = pairVertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / pairVertices.length);
   const roundedCenter = pairCenter.map(Math.round);
   const translations = [];
-  for (let dx = -8; dx <= 8; dx += 1) {
-    for (let dy = -8; dy <= 8; dy += 1) {
+  for (let dx = -4; dx <= 4; dx += 1) {
+    for (let dy = -4; dy <= 4; dy += 1) {
       const dz = -dx - dy;
       translations.push(add(roundedCenter, [dx, dy, dz]));
     }
@@ -88,24 +163,56 @@ function tilingIsValid(nextPlacements) {
   for (const entry of marks.values()) if (entry.conflict) return false;
   return true;
 }
-function localMoveFor(clickedIndex) {
-  if (clickedIndex < 0) return null;
-  const seed = placements[0], clicked = placements[clickedIndex];
-  const moves = candidateLocalOps(seed, clicked).map(op => {
-    const movedSeed = transformPlacement(seed, op);
-    const movedClicked = transformPlacement(clicked, op);
-    const next = placements.slice();
-    next[0] = movedSeed;
-    next[clickedIndex] = movedClicked;
-    return { op, next };
-  }).filter(move => tilingIsValid(move.next));
+function validatorWithoutPair(clickedIndex) {
+  const baseSums = new Map(), baseMarks = new Map();
+  placements.forEach((placement, index) => {
+    if (index !== 0 && index !== clickedIndex) addPlacement(placement, baseSums, baseMarks);
+  });
+  return move => {
+    const pairSums = new Map(), pairMarks = new Map();
+    addPlacement(move.next[0], pairSums, pairMarks);
+    addPlacement(move.next[clickedIndex], pairSums, pairMarks);
+    for (const [pointKey, entry] of pairSums) {
+      if ((baseSums.get(pointKey)?.value || 0) + entry.value > MAX) return false;
+    }
+    for (const [markKey, entry] of pairMarks) {
+      if (entry.conflict) return false;
+      const base = baseMarks.get(markKey);
+      if (base && (base.conflict || base.value !== entry.value)) return false;
+    }
+    return true;
+  };
+}
+function chooseUniqueMove(moves) {
   const halfTurns = moves.filter(move => move.op.kind === 'half-turn');
   const reflections = moves.filter(move => move.op.kind === 'reflection');
   if (halfTurns.length && !reflections.length) return halfTurns[0];
   if (reflections.length && !halfTurns.length) return reflections[0];
   return null;
 }
-function flipClicked(i){ const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle has no legal local flip.'; return; } placements = move.next; coronas = computeCoronas(); statusEl.textContent = `Applied one local ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
+function localMoveFor(clickedIndex) {
+  if (clickedIndex < 0) return null;
+  const seed = placements[0], clicked = placements[clickedIndex];
+  const signature = relativeSignature(seed, clicked);
+  if (relativeMoveCache.has(signature)) {
+    const cached = relativeMoveCache.get(signature);
+    if (!cached) return null;
+    const move = moveFromOp(clickedIndex, opFromCache(seed, cached));
+    return validatorWithoutPair(clickedIndex)(move) ? move : null;
+  }
+  const isValidPairMove = validatorWithoutPair(clickedIndex);
+  const move = chooseUniqueMove(candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove));
+  relativeMoveCache.set(signature, move ? cacheValueForMove(seed, move) : null);
+  return move;
+}
+function updateMoveHints() {
+  legalMoveIndices = new Set();
+  for (let index = 1; index < placements.length; index += 1) {
+    if (coronas[index] === 1 && localMoveFor(index)) legalMoveIndices.add(index);
+  }
+}
+function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one local ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
+function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a highlighted corona-1 turtle.' : 'That neighboring turtle has no legal local flip.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
 function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
 canvas.addEventListener('pointermove',e=>{ if(!dragging)return; const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
