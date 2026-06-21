@@ -84,18 +84,28 @@ function animatePoint(from, to, progress, animation) {
   }
   return { x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t) };
 }
-function reflectionAxis(fromPlacement, toPlacement) {
-  for (let i = 0; i < fromPlacement.vertices.length; i += 1) {
-    const a = screen(fromPlacement.vertices[i]), b = screen(toPlacement.vertices[i]);
-    const dx = b.x - a.x, dy = b.y - a.y;
-    const length = Math.hypot(dx, dy);
-    if (length > 1e-6) return { point: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, unit: { x: -dy / length, y: dx / length } };
-  }
-  return null;
+function reflectionAxisForOp(op) {
+  const e1 = transformLinear([1, 0, -1], op.sym);
+  const e2 = transformLinear([0, 1, -1], op.sym);
+  const rows = [
+    [1 - e1[0], -e2[0], op.translation[0]],
+    [-e1[1], 1 - e2[1], op.translation[1]]
+  ];
+  const row = rows.sort((a, b) => (b[0] * b[0] + b[1] * b[1]) - (a[0] * a[0] + a[1] * a[1]))[0];
+  const denom = row[0] * row[0] + row[1] * row[1];
+  if (denom < 1e-9) return null;
+  const point = [row[0] * row[2] / denom, row[1] * row[2] / denom];
+  const direction = [-row[1], row[0]];
+  const axisPoint = [point[0], point[1], -point[0] - point[1]];
+  const axisToward = [point[0] + direction[0], point[1] + direction[1], -point[0] - point[1] - direction[0] - direction[1]];
+  const a = screen(axisPoint), b = screen(axisToward);
+  const length = Math.hypot(b.x - a.x, b.y - a.y);
+  if (length < 1e-9) return null;
+  return { point: a, unit: { x: (b.x - a.x) / length, y: (b.y - a.y) / length } };
 }
 function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, op) {
   const animation = { from: new Map([[0, fromSeed], [clickedIndex, fromClicked]]), to: new Map([[0, toSeed], [clickedIndex, toClicked]]), indices: new Set([0, clickedIndex]), clickedIndex, op, started: performance.now(), duration: 520, center: op.translation.map(value => value / 2), axis: null };
-  if (op.kind === 'reflection') animation.axis = reflectionAxis(fromSeed, toSeed) || reflectionAxis(fromClicked, toClicked);
+  if (op.kind === 'reflection') animation.axis = op.axis || reflectionAxisForOp(op);
   return animation;
 }
 function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.segments.map(segment => ({ a: screen(segment.p1), b: screen(segment.p2), value: segment.value }))) {
@@ -126,14 +136,18 @@ function cacheValueForMove(seed, move) {
     kind: move.op.kind,
     sign: move.op.sym.sign,
     permutation: move.op.sym.permutation,
-    relativeTranslation: sub(move.op.translation, transformLinear(seed.vertices[0], move.op.sym))
+    relativeTranslation: sub(move.op.translation, transformLinear(seed.vertices[0], move.op.sym)),
+    axis: move.op.kind === 'reflection' ? true : false
   };
 }
 function opFromCache(seed, cached) {
   const sym = { sign: cached.sign, permutation: cached.permutation, planeSign: parity(cached.permutation) };
-  return { sym, kind: cached.kind, translation: add(transformLinear(seed.vertices[0], sym), cached.relativeTranslation) };
+  const op = { sym, kind: cached.kind, translation: add(transformLinear(seed.vertices[0], sym), cached.relativeTranslation), axis: null };
+  if (op.kind === 'reflection' && cached.axis) op.axis = reflectionAxisForOp(op);
+  return op;
 }
 function moveFromOp(clickedIndex, op) {
+  if (op.kind === 'reflection' && !op.axis) op.axis = reflectionAxisForOp(op);
   const movedSeed = transformPlacement(placements[0], op);
   const movedClicked = transformPlacement(placements[clickedIndex], op);
   const next = placements.slice();
