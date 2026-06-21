@@ -52,13 +52,12 @@ function place(orientation, translation, extra={}) { return {...extra, orientati
 function transformPlacement(placement, op) { return {...placement, isReflected: (placement.isReflected || placement.orientation?.isReflected) !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
 let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1;
 const relativeMoveCache = new Map();
-const preferredMoveKindBySignature = new Map();
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
 function validCandidate(o,t,sums,markSums,used){ const pk=`${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
 function buildPatch(limit=170){ placements=[place(trefoilBase,[0,0,0],{kind:'seed'})]; const sums=new Map(), markSums=new Map(), used=new Set(); addPlacement(placements[0],sums,markSums); for(let step=0; step<limit*40 && placements.length<limit; step++){ let best=null; for(const f of frontier(sums).slice(0,24)){ const need=MAX-f.value; for(const o of turtleOrientations){ for(const a of o.occupancy.filter(e=>e.value<=need)){ const cand=validCandidate(o, sub(f.point,a.point), sums, markSums, used); if(cand && (!best || cand.score>best.score)) best={...cand, frontier:f}; } } if(best?.score>=0) break; } if(!best) break; const p=place(best.orientation,best.translation,{kind:'turtle', placementKey:best.pk}); placements.push(p); used.add(best.pk); addPlacement(p,sums,markSums); }
- coronas=computeCoronas(); identifyNeighborMoveKinds(); updateMoveHints(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${Math.max(...coronas.filter(Number.isFinite))}. Click a corona-1 turtle to try a legal move.`; draw(); }
+ coronas=computeCoronas(); updateMoveHints(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${Math.max(...coronas.filter(Number.isFinite))}. Click a corona-1 turtle to try a legal move.`; draw(); }
 function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); placements.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of placements[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
@@ -122,22 +121,6 @@ function relativeSignature(seed, turtle) {
 function placementCentroid(placement) {
   return placement.vertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / placement.vertices.length);
 }
-function identifyNeighborMoveKinds() {
-  preferredMoveKindBySignature.clear();
-  const seedCenter = placementCentroid(placements[0]);
-  const neighbors = placements
-    .map((placement, index) => ({ placement, index }))
-    .filter(item => item.index > 0 && coronas[item.index] === 1)
-    .map(item => {
-      const delta = sub(placementCentroid(item.placement), seedCenter);
-      const projected = project(delta);
-      return { ...item, angle: Math.atan2(projected.y, projected.x) };
-    })
-    .sort((left, right) => left.angle - right.angle);
-  neighbors.forEach((item, slot) => {
-    preferredMoveKindBySignature.set(relativeSignature(placements[0], item.placement), slot % 2 === 0 ? 'rotation' : 'reflection');
-  });
-}
 function cacheValueForMove(seed, move) {
   return {
     kind: move.op.kind,
@@ -156,7 +139,7 @@ function moveFromOp(clickedIndex, op) {
   const next = placements.slice();
   next[0] = movedSeed;
   next[clickedIndex] = movedClicked;
-  return { op, next };
+  return { op, next, clickedIndex };
 }
 function candidateLocalOps(seed, turtle) {
   const pairVertices = [...seed.vertices, ...turtle.vertices];
@@ -203,9 +186,21 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function chooseUniqueMove(moves, preferredKind = null) {
-  if (preferredKind === 'rotation') return moves.find(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation') || null;
-  if (preferredKind === 'reflection') return moves.find(move => move.op.kind === 'reflection') || null;
+function moveDistance(move, clickedIndex) {
+  const beforeSeed = placementCentroid(placements[0]);
+  const beforeClicked = placementCentroid(placements[clickedIndex]);
+  const afterSeed = placementCentroid(move.next[0]);
+  const afterClicked = placementCentroid(move.next[clickedIndex]);
+  const squared = (a, b) => (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
+  return squared(beforeSeed, afterSeed) + squared(beforeClicked, afterClicked);
+}
+function nearestLocalMoves(moves, clickedIndex) {
+  if (!moves.length) return moves;
+  const scored = moves.map(move => ({ move, distance: moveDistance(move, clickedIndex) }));
+  const best = Math.min(...scored.map(item => item.distance));
+  return scored.filter(item => item.distance <= best + 1e-9 && item.distance <= 2).map(item => item.move);
+}
+function chooseUniqueMove(moves) {
   const rotations = moves.filter(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation');
   const reflections = moves.filter(move => move.op.kind === 'reflection');
   if (rotations.length && !reflections.length) return rotations[0];
@@ -223,7 +218,7 @@ function localMoveFor(clickedIndex) {
     return validatorWithoutPair(clickedIndex)(move) ? move : null;
   }
   const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const move = chooseUniqueMove(candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove), preferredMoveKindBySignature.get(signature));
+  const move = chooseUniqueMove(nearestLocalMoves(candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove), clickedIndex));
   relativeMoveCache.set(signature, move ? cacheValueForMove(seed, move) : null);
   return move;
 }
