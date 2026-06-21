@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turtle Ring Game</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p><a href="../../">← GCTS home</a></p>
+      <h1>Turtle Ring Game</h1>
+      <p class="lede">A one-player tiling toy: build a marked turtle corona around a central <strong>Trefoil</strong> tile, then click a turtle touching it to flip the local pair.</p>
+    </header>
+    <section class="toolbar" aria-label="Game controls">
+      <button id="build">Build marked patch</button>
+      <button id="resetView">Reset view</button>
+      <label><input id="marks" type="checkbox" checked> show markings</label>
+      <label><input id="grid" type="checkbox"> show A₂ grid</label>
+      <span id="status" aria-live="polite">Ready.</span>
+    </section>
+    <canvas id="board" width="1200" height="780" aria-label="Turtle Ring Game board"></canvas>
+    <section class="notes">
+      <h2>Tile name</h2>
+      <p>I suggest <strong>Trefoil</strong>: the seed has three repeated angle/stripe lobes, and the name distinguishes it from the Smith turtle while hinting at its threefold role.</p>
+      <h2>Game rule prototype</h2>
+      <p>Click a turtle in corona 1. The app tests the clicked turtle's relative Trefoil+turtle placement, caches that local answer together with the reflection axis when applicable, and only permits the nearest unambiguous local half-turn or reflection; it no longer assumes that every currently adjacent turtle belongs to one of the possible move positions. Valid neighboring turtles get a thicker border on hover.</p>
+    </section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
