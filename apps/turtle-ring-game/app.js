@@ -104,7 +104,7 @@ function reflectionAxisForOp(op) {
   return { point: a, unit: { x: (b.x - a.x) / length, y: (b.y - a.y) / length } };
 }
 function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, op) {
-  const animation = { from: new Map([[0, fromSeed], [clickedIndex, fromClicked]]), to: new Map([[0, toSeed], [clickedIndex, toClicked]]), indices: new Set([0, clickedIndex]), clickedIndex, op, started: performance.now(), duration: 520, center: op.translation.map(value => value / 2), axis: null };
+  const animation = { from: new Map([[0, fromSeed], [clickedIndex, fromClicked]]), to: new Map([[0, toSeed], [clickedIndex, toClicked]]), indices: new Set([0, clickedIndex]), clickedIndex, op, started: performance.now(), duration: 520, center: op.center || op.translation.map(value => value / 2), axis: null };
   if (op.kind === 'reflection') animation.axis = op.axis || reflectionAxisForOp(op);
   return animation;
 }
@@ -137,12 +137,13 @@ function cacheValueForMove(seed, move) {
     sign: move.op.sym.sign,
     permutation: move.op.sym.permutation,
     relativeTranslation: sub(move.op.translation, transformLinear(seed.vertices[0], move.op.sym)),
+    relativeCenter: move.op.center ? sub(move.op.center, seed.vertices[0]) : null,
     axis: move.op.kind === 'reflection' ? true : false
   };
 }
 function opFromCache(seed, cached) {
   const sym = { sign: cached.sign, permutation: cached.permutation, planeSign: parity(cached.permutation) };
-  const op = { sym, kind: cached.kind, translation: add(transformLinear(seed.vertices[0], sym), cached.relativeTranslation), axis: null };
+  const op = { sym, kind: cached.kind, translation: add(transformLinear(seed.vertices[0], sym), cached.relativeTranslation), center: cached.relativeCenter ? add(seed.vertices[0], cached.relativeCenter) : null, axis: null };
   if (op.kind === 'reflection' && cached.axis) op.axis = reflectionAxisForOp(op);
   return op;
 }
@@ -155,23 +156,15 @@ function moveFromOp(clickedIndex, op) {
   next[clickedIndex] = movedClicked;
   return { op, next, clickedIndex };
 }
+function pairCentroid(seed, turtle) {
+  const vertices = [...seed.vertices, ...turtle.vertices];
+  return vertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / vertices.length);
+}
 function candidateLocalOps(seed, turtle) {
-  const pairVertices = [...seed.vertices, ...turtle.vertices];
-  const pairCenter = pairVertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / pairVertices.length);
-  const ops = [];
-  for (const sym of allSymmetries) {
-    const kind = symmetryKind(sym);
-    if (kind !== 'half-turn' && kind !== 'rotation' && kind !== 'reflection') continue;
-    const centerShift = sub(pairCenter, transformLinear(pairCenter, sym)).map(Math.round);
-    for (let dx = -8; dx <= 8; dx += 1) {
-      for (let dy = -8; dy <= 8; dy += 1) {
-        const dz = -dx - dy;
-        ops.push({ sym, translation: add(centerShift, [dx, dy, dz]), kind });
-      }
-    }
-  }
-  const seen = new Set();
-  return ops.filter(op => { const k = `${op.kind}|${op.sym.sign}|${op.sym.permutation.join(',')}|${key(op.translation)}`; if (seen.has(k)) return false; seen.add(k); return true; });
+  const center = pairCentroid(seed, turtle);
+  return allSymmetries
+    .map(sym => ({ sym, kind: symmetryKind(sym), translation: sub(center, transformLinear(center, sym)), center }))
+    .filter(op => op.kind === 'half-turn' || op.kind === 'rotation' || op.kind === 'reflection');
 }
 function tilingIsValid(nextPlacements) {
   const sums = new Map(), marks = new Map();
@@ -179,6 +172,19 @@ function tilingIsValid(nextPlacements) {
   for (const entry of sums.values()) if (entry.value > MAX) return false;
   for (const entry of marks.values()) if (entry.conflict) return false;
   return true;
+}
+function placementCoverage(placement) {
+  const sums = new Map();
+  placement.occupancy.forEach(entry => sums.set(key(entry.point), (sums.get(key(entry.point)) || 0) + entry.value));
+  return sums;
+}
+function combinedCoverageKey(first, second) {
+  const sums = placementCoverage(first);
+  second.occupancy.forEach(entry => sums.set(key(entry.point), (sums.get(key(entry.point)) || 0) + entry.value));
+  return [...sums.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([pointKey, value]) => `${pointKey}:${value}`).join(';');
+}
+function pairFitsSameHole(seed, clicked, move) {
+  return combinedCoverageKey(seed, clicked) === combinedCoverageKey(move.next[0], move.next[move.clickedIndex]);
 }
 function validatorWithoutPair(clickedIndex) {
   const baseSums = new Map(), baseMarks = new Map();
@@ -200,20 +206,6 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function moveDistance(move, clickedIndex) {
-  const beforeSeed = placementCentroid(placements[0]);
-  const beforeClicked = placementCentroid(placements[clickedIndex]);
-  const afterSeed = placementCentroid(move.next[0]);
-  const afterClicked = placementCentroid(move.next[clickedIndex]);
-  const squared = (a, b) => (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
-  return squared(beforeSeed, afterSeed) + squared(beforeClicked, afterClicked);
-}
-function nearestLocalMoves(moves, clickedIndex) {
-  if (!moves.length) return moves;
-  const scored = moves.map(move => ({ move, distance: moveDistance(move, clickedIndex) }));
-  const best = Math.min(...scored.map(item => item.distance));
-  return scored.filter(item => item.distance <= best + 1e-9 && item.distance <= 2).map(item => item.move);
-}
 function chooseUniqueMove(moves) {
   const rotations = moves.filter(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation');
   const reflections = moves.filter(move => move.op.kind === 'reflection');
@@ -229,10 +221,11 @@ function localMoveFor(clickedIndex) {
     const cached = relativeMoveCache.get(signature);
     if (!cached) return null;
     const move = moveFromOp(clickedIndex, opFromCache(seed, cached));
-    return validatorWithoutPair(clickedIndex)(move) ? move : null;
+    return pairFitsSameHole(seed, clicked, move) && validatorWithoutPair(clickedIndex)(move) ? move : null;
   }
   const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const move = chooseUniqueMove(nearestLocalMoves(candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove), clickedIndex));
+  const fittingMoves = candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(move => pairFitsSameHole(seed, clicked, move) && isValidPairMove(move));
+  const move = chooseUniqueMove(fittingMoves);
   relativeMoveCache.set(signature, move ? cacheValueForMove(seed, move) : null);
   return move;
 }
@@ -243,7 +236,7 @@ function updateMoveHints() {
   }
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one local ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
-function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle has no legal local flip.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); hoveredIndex = -1; activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
+function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle cannot be moved without breaking the tiling.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); hoveredIndex = -1; activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
 function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
 canvas.addEventListener('pointermove',e=>{ if(!dragging){ const hit=hitTile(e); const nextHover=legalMoveIndices.has(hit)?hit:-1; if(nextHover!==hoveredIndex){ hoveredIndex=nextHover; draw(); } return; } const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
