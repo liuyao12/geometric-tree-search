@@ -250,41 +250,36 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function moveDistance(move, clickedIndex) {
-  const beforeSeed = placementCentroid(placements[0]);
-  const beforeClicked = placementCentroid(placements[clickedIndex]);
-  const afterSeed = placementCentroid(move.next[0]);
-  const afterClicked = placementCentroid(move.next[clickedIndex]);
-  const squared = (a, b) => (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
-  return squared(beforeSeed, afterSeed) + squared(beforeClicked, afterClicked);
-}
-function fallbackCandidateOps(seed, turtle) {
+function reflectionCandidateOps(seed, turtle) {
   const pairVertices = [...seed.vertices, ...turtle.vertices];
   const pairCenter = pairVertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / pairVertices.length);
-  const ops = [];
-  for (const sym of allSymmetries) {
-    const kind = symmetryKind(sym);
-    if (kind === 'identity') continue;
-    const centerShift = sub(pairCenter, transformLinear(pairCenter, sym)).map(Math.round);
-    for (let dx = -2; dx <= 2; dx += 1) {
-      for (let dy = -2; dy <= 2; dy += 1) ops.push({ sym, kind, translation: add(centerShift, [dx, dy, -dx - dy]), center: pairCenter });
-    }
-  }
-  const seen = new Set();
-  return ops.filter(op => {
-    const opKey = `${op.kind}|${op.sym.sign}|${op.sym.permutation.join(',')}|${key(op.translation)}`;
-    if (seen.has(opKey)) return false;
-    seen.add(opKey);
-    return true;
-  });
+  return allSymmetries
+    .filter(sym => symmetryKind(sym) === 'reflection')
+    .map(sym => ({
+      sym,
+      kind: 'reflection',
+      translation: sub(pairCenter, transformLinear(pairCenter, sym)).map(Math.round),
+      center: pairCenter
+    }));
 }
-function nearestUnambiguousFallback(clickedIndex) {
+function squaredDistance(a, b) {
+  return (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
+}
+function symmetricReflectionMove(clickedIndex) {
   const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const moves = fallbackCandidateOps(placements[0], placements[clickedIndex]).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove);
+  const seedTarget = placementCentroid(placements[clickedIndex]);
+  const clickedTarget = placementCentroid(placements[0]);
+  const moves = reflectionCandidateOps(placements[0], placements[clickedIndex])
+    .map(op => moveFromOp(clickedIndex, op))
+    .filter(isValidPairMove)
+    .filter(move => squaredDistance(placementCentroid(move.next[0]), seedTarget) <= 1 && squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget) <= 2);
   if (!moves.length) return null;
-  const scored = moves.map(move => ({ move, distance: moveDistance(move, clickedIndex) }));
+  const scored = moves.map(move => ({
+    move,
+    distance: squaredDistance(placementCentroid(move.next[0]), seedTarget) + squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget)
+  }));
   const best = Math.min(...scored.map(item => item.distance));
-  return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9 && item.distance <= 2).map(item => item.move));
+  return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9).map(item => item.move));
 }
 function identifyFallbackMoves() {
   fallbackMovesByIndex = new Map();
@@ -298,9 +293,8 @@ function identifyFallbackMoves() {
       return { ...item, angle: Math.atan2(projected.y, projected.x) };
     })
     .sort((a, b) => a.angle - b.angle)
-    .forEach((item, slot) => {
-      if (slot % 2 !== 0) return;
-      const move = nearestUnambiguousFallback(item.index);
+    .forEach(item => {
+      const move = symmetricReflectionMove(item.index);
       if (move) fallbackMovesByIndex.set(item.index, move);
     });
 }
