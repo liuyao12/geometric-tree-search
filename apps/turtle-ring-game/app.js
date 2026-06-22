@@ -73,7 +73,7 @@ const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtl
 const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: (placement.isReflected || placement.orientation?.isReflected) !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
-let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1;
+let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), fallbackMovesByIndex=new Map(), activeAnimation=null, hoveredIndex=-1;
 const relativeMoveCache = new Map();
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
@@ -85,7 +85,7 @@ function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byP
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
 function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash(value>0?[]:[6,5]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); ctx.setLineDash([]); }
-function styleForPlacement(p, index) { const reflected = p.isReflected || p.orientation?.isReflected; return { fill: reflected ? 'rgba(213,94,0,.48)' : (index ? 'rgba(0,114,178,.42)' : 'rgba(78,121,80,.68)'), stroke: reflected ? '#a74700' : (index ? '#005a8c' : '#355f39') }; }
+function styleForPlacement(p) { const reflected = p.isReflected || p.orientation?.isReflected; return { fill: reflected ? 'rgba(213,94,0,.48)' : 'rgba(0,114,178,.42)', stroke: reflected ? '#a74700' : '#005a8c' }; }
 function eased(value) { return value < 0.5 ? 2 * value * value : 1 - Math.pow(-2 * value + 2, 2) / 2; }
 function lerp(a, b, t) { return a + (b - a) * t; }
 function animatePoint(from, to, progress, animation) {
@@ -250,6 +250,60 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
+function moveDistance(move, clickedIndex) {
+  const beforeSeed = placementCentroid(placements[0]);
+  const beforeClicked = placementCentroid(placements[clickedIndex]);
+  const afterSeed = placementCentroid(move.next[0]);
+  const afterClicked = placementCentroid(move.next[clickedIndex]);
+  const squared = (a, b) => (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
+  return squared(beforeSeed, afterSeed) + squared(beforeClicked, afterClicked);
+}
+function fallbackCandidateOps(seed, turtle) {
+  const pairVertices = [...seed.vertices, ...turtle.vertices];
+  const pairCenter = pairVertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / pairVertices.length);
+  const ops = [];
+  for (const sym of allSymmetries) {
+    const kind = symmetryKind(sym);
+    if (kind === 'identity') continue;
+    const centerShift = sub(pairCenter, transformLinear(pairCenter, sym)).map(Math.round);
+    for (let dx = -2; dx <= 2; dx += 1) {
+      for (let dy = -2; dy <= 2; dy += 1) ops.push({ sym, kind, translation: add(centerShift, [dx, dy, -dx - dy]), center: pairCenter });
+    }
+  }
+  const seen = new Set();
+  return ops.filter(op => {
+    const opKey = `${op.kind}|${op.sym.sign}|${op.sym.permutation.join(',')}|${key(op.translation)}`;
+    if (seen.has(opKey)) return false;
+    seen.add(opKey);
+    return true;
+  });
+}
+function nearestUnambiguousFallback(clickedIndex) {
+  const isValidPairMove = validatorWithoutPair(clickedIndex);
+  const moves = fallbackCandidateOps(placements[0], placements[clickedIndex]).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove);
+  if (!moves.length) return null;
+  const scored = moves.map(move => ({ move, distance: moveDistance(move, clickedIndex) }));
+  const best = Math.min(...scored.map(item => item.distance));
+  return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9 && item.distance <= 2).map(item => item.move));
+}
+function identifyFallbackMoves() {
+  fallbackMovesByIndex = new Map();
+  const seedCenter = placementCentroid(placements[0]);
+  placements
+    .map((placement, index) => ({ placement, index }))
+    .filter(item => item.index > 0 && coronas[item.index] === 1)
+    .map(item => {
+      const delta = sub(placementCentroid(item.placement), seedCenter);
+      const projected = project(delta);
+      return { ...item, angle: Math.atan2(projected.y, projected.x) };
+    })
+    .sort((a, b) => a.angle - b.angle)
+    .forEach((item, slot) => {
+      if (slot % 2 !== 0) return;
+      const move = nearestUnambiguousFallback(item.index);
+      if (move) fallbackMovesByIndex.set(item.index, move);
+    });
+}
 function chooseUniqueMove(moves) {
   const rotations = moves.filter(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation');
   const reflections = moves.filter(move => move.op.kind === 'reflection');
@@ -263,18 +317,19 @@ function localMoveFor(clickedIndex) {
   const signature = relativeSignature(seed, clicked);
   if (relativeMoveCache.has(signature)) {
     const cached = relativeMoveCache.get(signature);
-    if (!cached) return null;
+    if (!cached) return fallbackMovesByIndex.get(clickedIndex) || null;
     const move = moveFromOp(clickedIndex, opFromCache(seed, cached));
-    return pairFitsSameHole(seed, clicked, move) && validatorWithoutPair(clickedIndex)(move) ? move : null;
+    return pairFitsSameHole(seed, clicked, move) && validatorWithoutPair(clickedIndex)(move) ? move : (fallbackMovesByIndex.get(clickedIndex) || null);
   }
   const isValidPairMove = validatorWithoutPair(clickedIndex);
   const fittingMoves = candidateLocalOps(seed, clicked).map(op => moveFromOp(clickedIndex, op)).filter(move => pairFitsSameHole(seed, clicked, move) && isValidPairMove(move));
   const move = chooseUniqueMove(fittingMoves);
   relativeMoveCache.set(signature, move ? cacheValueForMove(seed, move) : null);
-  return move;
+  return move || fallbackMovesByIndex.get(clickedIndex) || null;
 }
 function updateMoveHints() {
   legalMoveIndices = new Set();
+  identifyFallbackMoves();
   for (let index = 1; index < placements.length; index += 1) {
     if (coronas[index] === 1 && localMoveFor(index)) legalMoveIndices.add(index);
   }

@@ -25,7 +25,7 @@
       <h2>Tile name</h2>
       <p>I suggest <strong>Trefoil</strong>: the seed has three repeated angle/stripe lobes, and the name distinguishes it from the Smith turtle while hinting at its threefold role.</p>
       <h2>Game rule prototype</h2>
-      <p>Click a turtle in corona 1. The app tests the actual two-tile union shape by elementary A₂ triangle cells, caches whether that Trefoil+turtle adjacency has a rotational or reflection symmetry, and only permits the move when that symmetry maps the union back onto the same hole without violating the surrounding turtle tiling. Valid neighboring turtles get a thicker border on hover.</p>
+      <p>Click a turtle in corona 1. The app caches the Trefoil+turtle adjacencies that admit a local move, highlights the three currently playable neighbors, and only permits a click when the transformed pair still validates against the surrounding turtle tiling. The Trefoil uses the same blue/orange orientation colors as the turtles.</p>
     </section>
   </main>
   <script type="module" src="./app.js"></script>
