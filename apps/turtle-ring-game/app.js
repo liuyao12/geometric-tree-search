@@ -250,14 +250,6 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function moveDistance(move, clickedIndex) {
-  const beforeSeed = placementCentroid(placements[0]);
-  const beforeClicked = placementCentroid(placements[clickedIndex]);
-  const afterSeed = placementCentroid(move.next[0]);
-  const afterClicked = placementCentroid(move.next[clickedIndex]);
-  const squared = (a, b) => (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
-  return squared(beforeSeed, afterSeed) + squared(beforeClicked, afterClicked);
-}
 function fallbackCandidateOps(seed, turtle) {
   const pairVertices = [...seed.vertices, ...turtle.vertices];
   const pairCenter = pairVertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / pairVertices.length);
@@ -280,11 +272,15 @@ function fallbackCandidateOps(seed, turtle) {
 }
 function nearestUnambiguousFallback(clickedIndex) {
   const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const moves = fallbackCandidateOps(placements[0], placements[clickedIndex]).map(op => moveFromOp(clickedIndex, op)).filter(isValidPairMove);
+  const target = placementCentroid(placements[clickedIndex]);
+  const squared = (a, b) => (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
+  const moves = fallbackCandidateOps(placements[0], placements[clickedIndex])
+    .map(op => moveFromOp(clickedIndex, op))
+    .filter(move => (move.op.kind === 'half-turn' || move.op.kind === 'reflection') && isValidPairMove(move));
   if (!moves.length) return null;
-  const scored = moves.map(move => ({ move, distance: moveDistance(move, clickedIndex) }));
+  const scored = moves.map(move => ({ move, distance: squared(placementCentroid(move.next[0]), target) }));
   const best = Math.min(...scored.map(item => item.distance));
-  return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9 && item.distance <= 2).map(item => item.move));
+  return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9).map(item => item.move));
 }
 function identifyFallbackMoves() {
   fallbackMovesByIndex = new Map();
@@ -298,8 +294,7 @@ function identifyFallbackMoves() {
       return { ...item, angle: Math.atan2(projected.y, projected.x) };
     })
     .sort((a, b) => a.angle - b.angle)
-    .forEach((item, slot) => {
-      if (slot % 2 !== 0) return;
+    .forEach(item => {
       const move = nearestUnambiguousFallback(item.index);
       if (move) fallbackMovesByIndex.set(item.index, move);
     });
