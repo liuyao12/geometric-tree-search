@@ -262,15 +262,22 @@ function reflectionCandidateOps(seed, turtle) {
       center: pairCenter
     }));
 }
-function nearestUnambiguousFallback(clickedIndex) {
+function squaredDistance(a, b) {
+  return (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
+}
+function symmetricReflectionMove(clickedIndex) {
   const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const target = placementCentroid(placements[clickedIndex]);
-  const squared = (a, b) => (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
+  const seedTarget = placementCentroid(placements[clickedIndex]);
+  const clickedTarget = placementCentroid(placements[0]);
   const moves = reflectionCandidateOps(placements[0], placements[clickedIndex])
     .map(op => moveFromOp(clickedIndex, op))
-    .filter(isValidPairMove);
+    .filter(isValidPairMove)
+    .filter(move => squaredDistance(placementCentroid(move.next[0]), seedTarget) <= 1 && squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget) <= 2);
   if (!moves.length) return null;
-  const scored = moves.map(move => ({ move, distance: squared(placementCentroid(move.next[0]), target) }));
+  const scored = moves.map(move => ({
+    move,
+    distance: squaredDistance(placementCentroid(move.next[0]), seedTarget) + squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget)
+  }));
   const best = Math.min(...scored.map(item => item.distance));
   return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9).map(item => item.move));
 }
@@ -287,7 +294,7 @@ function identifyFallbackMoves() {
     })
     .sort((a, b) => a.angle - b.angle)
     .forEach(item => {
-      const move = nearestUnambiguousFallback(item.index);
+      const move = symmetricReflectionMove(item.index);
       if (move) fallbackMovesByIndex.set(item.index, move);
     });
 }
