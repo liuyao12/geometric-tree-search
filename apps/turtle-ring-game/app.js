@@ -79,7 +79,31 @@ function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
 function validCandidate(o,t,sums,markSums,used){ const pk=`${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
-function buildPatch(limit=170){ placements=[place(trefoilBase,[0,0,0],{kind:'seed'})]; const sums=new Map(), markSums=new Map(), used=new Set(); addPlacement(placements[0],sums,markSums); for(let step=0; step<limit*40 && placements.length<limit; step++){ let best=null; for(const f of frontier(sums).slice(0,24)){ const need=MAX-f.value; for(const o of turtleOrientations){ for(const a of o.occupancy.filter(e=>e.value<=need)){ const cand=validCandidate(o, sub(f.point,a.point), sums, markSums, used); if(cand && (!best || cand.score>best.score)) best={...cand, frontier:f}; } } if(best?.score>=0) break; } if(!best) break; const p=place(best.orientation,best.translation,{kind:'turtle', placementKey:best.pk}); placements.push(p); used.add(best.pk); addPlacement(p,sums,markSums); }
+function generatePatch(seedPlacement, limit=170) {
+  const nextPlacements = [seedPlacement];
+  const sums = new Map(), markSums = new Map(), used = new Set();
+  addPlacement(nextPlacements[0], sums, markSums);
+  for (let step = 0; step < limit * 40 && nextPlacements.length < limit; step++) {
+    let best = null;
+    for (const f of frontier(sums).slice(0, 24)) {
+      const need = MAX - f.value;
+      for (const o of turtleOrientations) {
+        for (const a of o.occupancy.filter(e => e.value <= need)) {
+          const cand = validCandidate(o, sub(f.point, a.point), sums, markSums, used);
+          if (cand && (!best || cand.score > best.score)) best = { ...cand, frontier: f };
+        }
+      }
+      if (best?.score >= 0) break;
+    }
+    if (!best) break;
+    const nextPlacement = place(best.orientation, best.translation, { kind: 'turtle', placementKey: best.pk });
+    nextPlacements.push(nextPlacement);
+    used.add(best.pk);
+    addPlacement(nextPlacement, sums, markSums);
+  }
+  return nextPlacements;
+}
+function buildPatch(limit=170){ placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit);
  coronas=computeCoronas(); updateMoveHints(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${Math.max(...coronas.filter(Number.isFinite))}. Click a corona-1 turtle to try a legal move.`; draw(); }
 function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); placements.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of placements[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
@@ -230,6 +254,55 @@ function combinedCoverageKey(first, second) {
 function pairFitsSameHole(seed, clicked, move) {
   return pairShapeKey(seed, clicked) === pairShapeKey(move.next[0], move.next[move.clickedIndex]);
 }
+function edgeKey(a, b) {
+  const ka = key(a), kb = key(b);
+  return ka < kb ? `${ka}|${kb}` : `${kb}|${ka}`;
+}
+function placementBoundaryEdges(placement) {
+  const edges = new Map();
+  const vertices = placement.vertices;
+  for (let i = 0; i < vertices.length; i += 1) {
+    const points = segmentPoints(vertices[i], vertices[(i + 1) % vertices.length]);
+    for (let j = 0; j < points.length - 1; j += 1) {
+      const ek = edgeKey(points[j], points[j + 1]);
+      edges.set(ek, (edges.get(ek) || 0) + 1);
+    }
+  }
+  return edges;
+}
+function pairOutlineEdges(seed, turtle) {
+  const edges = new Map();
+  for (const placement of [seed, turtle]) {
+    for (const [ek, count] of placementBoundaryEdges(placement)) edges.set(ek, (edges.get(ek) || 0) + count);
+  }
+  return new Set([...edges.entries()].filter(([, count]) => count === 1).map(([ek]) => ek));
+}
+function transformEdgeKey(ek, op) {
+  const [a, b] = ek.split('|').map(pointKey => pointKey.split(',').map(Number));
+  return edgeKey(transformAffine(a, op), transformAffine(b, op));
+}
+function outlineSymmetryOps(seed, turtle) {
+  const outline = pairOutlineEdges(seed, turtle);
+  const outlinePoints = [...outline].flatMap(ek => ek.split('|')).map(pointKey => pointKey.split(',').map(Number));
+  const ops = [];
+  for (const sym of allSymmetries) {
+    if (symmetryKind(sym) !== 'reflection') continue;
+    for (const source of outlinePoints) {
+      const transformedSource = transformLinear(source, sym);
+      for (const target of outlinePoints) {
+        const op = { sym, kind: 'reflection', translation: sub(target, transformedSource), center: null };
+        if ([...outline].every(ek => outline.has(transformEdgeKey(ek, op)))) ops.push(op);
+      }
+    }
+  }
+  const seen = new Set();
+  return ops.filter(op => {
+    const opKey = `${op.sym.sign}|${op.sym.permutation.join(',')}|${key(op.translation)}`;
+    if (seen.has(opKey)) return false;
+    seen.add(opKey);
+    return true;
+  });
+}
 function validatorWithoutPair(clickedIndex) {
   const baseSums = new Map(), baseMarks = new Map();
   placements.forEach((placement, index) => {
@@ -250,36 +323,11 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function reflectionCandidateOps(seed, turtle) {
-  const pairVertices = [...seed.vertices, ...turtle.vertices];
-  const pairCenter = pairVertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / pairVertices.length);
-  return allSymmetries
-    .filter(sym => symmetryKind(sym) === 'reflection')
-    .map(sym => ({
-      sym,
-      kind: 'reflection',
-      translation: sub(pairCenter, transformLinear(pairCenter, sym)).map(Math.round),
-      center: pairCenter
-    }));
-}
-function squaredDistance(a, b) {
-  return (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
-}
 function symmetricReflectionMove(clickedIndex) {
-  const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const seedTarget = placementCentroid(placements[clickedIndex]);
-  const clickedTarget = placementCentroid(placements[0]);
-  const moves = reflectionCandidateOps(placements[0], placements[clickedIndex])
+  const moves = outlineSymmetryOps(placements[0], placements[clickedIndex])
     .map(op => moveFromOp(clickedIndex, op))
-    .filter(isValidPairMove)
-    .filter(move => squaredDistance(placementCentroid(move.next[0]), seedTarget) <= 1 && squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget) <= 2);
-  if (!moves.length) return null;
-  const scored = moves.map(move => ({
-    move,
-    distance: squaredDistance(placementCentroid(move.next[0]), seedTarget) + squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget)
-  }));
-  const best = Math.min(...scored.map(item => item.distance));
-  return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9).map(item => item.move));
+    .filter(validatorWithoutPair(clickedIndex));
+  return chooseUniqueMove(moves);
 }
 function identifyFallbackMoves() {
   fallbackMovesByIndex = new Map();
@@ -328,7 +376,7 @@ function updateMoveHints() {
     if (coronas[index] === 1 && localMoveFor(index)) legalMoveIndices.add(index);
   }
 }
-function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one local ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
+function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one outline-preserving ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
 function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle cannot be moved without breaking the tiling.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); hoveredIndex = -1; activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
 function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
