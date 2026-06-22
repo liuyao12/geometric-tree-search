@@ -254,6 +254,55 @@ function combinedCoverageKey(first, second) {
 function pairFitsSameHole(seed, clicked, move) {
   return pairShapeKey(seed, clicked) === pairShapeKey(move.next[0], move.next[move.clickedIndex]);
 }
+function edgeKey(a, b) {
+  const ka = key(a), kb = key(b);
+  return ka < kb ? `${ka}|${kb}` : `${kb}|${ka}`;
+}
+function placementBoundaryEdges(placement) {
+  const edges = new Map();
+  const vertices = placement.vertices;
+  for (let i = 0; i < vertices.length; i += 1) {
+    const points = segmentPoints(vertices[i], vertices[(i + 1) % vertices.length]);
+    for (let j = 0; j < points.length - 1; j += 1) {
+      const ek = edgeKey(points[j], points[j + 1]);
+      edges.set(ek, (edges.get(ek) || 0) + 1);
+    }
+  }
+  return edges;
+}
+function pairOutlineEdges(seed, turtle) {
+  const edges = new Map();
+  for (const placement of [seed, turtle]) {
+    for (const [ek, count] of placementBoundaryEdges(placement)) edges.set(ek, (edges.get(ek) || 0) + count);
+  }
+  return new Set([...edges.entries()].filter(([, count]) => count === 1).map(([ek]) => ek));
+}
+function transformEdgeKey(ek, op) {
+  const [a, b] = ek.split('|').map(pointKey => pointKey.split(',').map(Number));
+  return edgeKey(transformAffine(a, op), transformAffine(b, op));
+}
+function outlineSymmetryOps(seed, turtle) {
+  const outline = pairOutlineEdges(seed, turtle);
+  const outlinePoints = [...outline].flatMap(ek => ek.split('|')).map(pointKey => pointKey.split(',').map(Number));
+  const ops = [];
+  for (const sym of allSymmetries) {
+    if (symmetryKind(sym) !== 'reflection') continue;
+    for (const source of outlinePoints) {
+      const transformedSource = transformLinear(source, sym);
+      for (const target of outlinePoints) {
+        const op = { sym, kind: 'reflection', translation: sub(target, transformedSource), center: null };
+        if ([...outline].every(ek => outline.has(transformEdgeKey(ek, op)))) ops.push(op);
+      }
+    }
+  }
+  const seen = new Set();
+  return ops.filter(op => {
+    const opKey = `${op.sym.sign}|${op.sym.permutation.join(',')}|${key(op.translation)}`;
+    if (seen.has(opKey)) return false;
+    seen.add(opKey);
+    return true;
+  });
+}
 function validatorWithoutPair(clickedIndex) {
   const baseSums = new Map(), baseMarks = new Map();
   placements.forEach((placement, index) => {
@@ -274,36 +323,11 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function reflectionCandidateOps(seed, turtle) {
-  const pairVertices = [...seed.vertices, ...turtle.vertices];
-  const pairCenter = pairVertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / pairVertices.length);
-  return allSymmetries
-    .filter(sym => symmetryKind(sym) === 'reflection')
-    .map(sym => ({
-      sym,
-      kind: 'reflection',
-      translation: sub(pairCenter, transformLinear(pairCenter, sym)).map(Math.round),
-      center: pairCenter
-    }));
-}
-function squaredDistance(a, b) {
-  return (a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2;
-}
 function symmetricReflectionMove(clickedIndex) {
-  const isValidPairMove = validatorWithoutPair(clickedIndex);
-  const seedTarget = placementCentroid(placements[clickedIndex]);
-  const clickedTarget = placementCentroid(placements[0]);
-  const moves = reflectionCandidateOps(placements[0], placements[clickedIndex])
+  const moves = outlineSymmetryOps(placements[0], placements[clickedIndex])
     .map(op => moveFromOp(clickedIndex, op))
-    .filter(isValidPairMove)
-    .filter(move => squaredDistance(placementCentroid(move.next[0]), seedTarget) <= 1 && squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget) <= 2);
-  if (!moves.length) return null;
-  const scored = moves.map(move => ({
-    move,
-    distance: squaredDistance(placementCentroid(move.next[0]), seedTarget) + squaredDistance(placementCentroid(move.next[clickedIndex]), clickedTarget)
-  }));
-  const best = Math.min(...scored.map(item => item.distance));
-  return chooseUniqueMove(scored.filter(item => item.distance <= best + 1e-9).map(item => item.move));
+    .filter(validatorWithoutPair(clickedIndex));
+  return chooseUniqueMove(moves);
 }
 function identifyFallbackMoves() {
   fallbackMovesByIndex = new Map();
@@ -352,7 +376,7 @@ function updateMoveHints() {
     if (coronas[index] === 1 && localMoveFor(index)) legalMoveIndices.add(index);
   }
 }
-function finishAnimation(move) { activeAnimation = null; placements = generatePatch(move.next[0]); coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one local ${move.op.kind} and rebuilt the turtle patch around the Trefoil.`; draw(); }
+function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one outline-preserving ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
 function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle cannot be moved without breaking the tiling.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); hoveredIndex = -1; activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
 function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
