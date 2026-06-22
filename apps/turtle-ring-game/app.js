@@ -157,8 +157,8 @@ function drawGrid(){ ctx.fillStyle='rgba(20,60,55,.16)'; for(let x=-12;x<=12;x++
 function hitTile(ev){ const r=canvas.getBoundingClientRect(), pt={x:(ev.clientX-r.left)*canvas.width/r.width,y:(ev.clientY-r.top)*canvas.height/r.height}; for(let i=placements.length-1;i>0;i--){ if(coronas[i]!==1) continue; const poly=placements[i].vertices.map(screen); if(pointInPoly(pt, poly)) return i; } return -1; }
 function moveFromOp(clickedIndex, op) {
   if (op.kind === 'reflection' && !op.axis) op.axis = reflectionAxisForOp(op);
-  const movedSeed = transformPlacement(placements[0], op);
-  const movedClicked = transformPlacement(placements[clickedIndex], op);
+  const movedSeed = transformPlacement(placements[0], op, true);
+  const movedClicked = transformPlacement(placements[clickedIndex], op, true);
   const next = placements.slice();
   next[0] = movedSeed;
   next[clickedIndex] = movedClicked;
