@@ -1,8 +1,8 @@
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
 const statusEl = document.getElementById('status');
-const marksToggle = document.getElementById('marks');
-const gridToggle = document.getElementById('grid');
+const blueStripesToggle = document.getElementById('blueStripes');
+const orangeStripesToggle = document.getElementById('orangeStripes');
 const buildButton = document.getElementById('build');
 const resetButton = document.getElementById('resetView');
 const coronaTargetInput = document.getElementById('coronaTarget');
@@ -43,7 +43,7 @@ function pointInPoly(pt, poly) { let inside=false; for(let i=0,j=poly.length-1;i
 
 function interiors(verts) { const xs=verts.map(p=>p[0]), ys=verts.map(p=>p[1]), vkeys=new Set(verts.map(key)), poly=verts.map(projectRaw), out=[]; for(let x=Math.min(...xs);x<=Math.max(...xs);x++) for(let y=Math.min(...ys);y<=Math.max(...ys);y++){ const p=[x,y,-x-y]; if(!vkeys.has(key(p)) && pointInPoly(projectRaw(p), poly)) out.push(p); } return out; }
 const turtleOcc = [...turtleVerts.map((p,i)=>({point:p,value:turtleAngles[i],kind:'vertex'})), ...interiors(turtleVerts).map(point=>({point,value:MAX,kind:'interior'}))];
-const trefoilOcc = trefoilVerts.map((point,i)=>({point,value:trefoilAngles[i],kind:'vertex'}));
+const trefoilOcc = [...trefoilVerts.map((point,i)=>({point,value:trefoilAngles[i],kind:'vertex'})), ...interiors(trefoilVerts).map(point=>({point,value:MAX,kind:'interior'}))];
 const turtleStripes = turtleStripeDefs.map(d=>({...d, p1:turtleVerts[d.from], p2:turtleVerts[d.to], component:componentFor(turtleVerts[d.from], turtleVerts[d.to])}));
 const trefoilStripes = trefoilStripeDefs.map(d=>({...d, component:componentFor(d.p1,d.p2)}));
 function orientTile(verts, occ, stripes, sym, idx, name) { const vertices=verts.map(p=>transformLinear(p,sym)); const occupancy=occ.map(e=>({...e, point:transformLinear(e.point,sym)})); const marks=[]; const segments=stripes.map(seg=>{ const p1=transformLinear(seg.p1,sym), p2=transformLinear(seg.p2,sym), component=mapComponent(seg.component,sym), value=seg.value*sym.planeSign; segmentPoints(p1,p2,markReach).forEach(point=>marks.push({point,component,value})); return {p1,p2,component,value}; }); return {idx,name,sym,isReflected:sym.planeSign < 0,vertices,occupancy,marks,segments}; }
@@ -57,13 +57,14 @@ function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
 function validCandidate(o,t,sums,markSums,used){ const pk=`${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
+function frontierPointHasCandidate(point, sums, markSums, used) { const need = MAX - point.value; return turtleOrientations.some(o => o.occupancy.some(a => a.value <= need && validCandidate(o, sub(point.point, a.point), sums, markSums, used))); }
 function generatePatch(seedPlacement, limit=170, targetCorona=6) {
   const nextPlacements = [seedPlacement];
   const sums = new Map(), markSums = new Map(), used = new Set();
   addPlacement(nextPlacements[0], sums, markSums);
   for (let step = 0; step < limit * 60 && nextPlacements.length < limit; step++) {
     let best = null;
-    for (const f of frontier(sums).slice(0, 64)) {
+    for (const f of frontier(sums).slice(0, 32)) {
       const need = MAX - f.value;
       for (const o of turtleOrientations) {
         for (const a of o.occupancy.filter(e => e.value <= need)) {
@@ -83,18 +84,19 @@ function generatePatch(seedPlacement, limit=170, targetCorona=6) {
 }
 function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 6)); }
 function patchIntegrity() {
-  const sums = new Map(), markSums = new Map();
-  placements.forEach(placement => addPlacement(placement, sums, markSums));
+  const sums = new Map(), markSums = new Map(), used = new Set();
+  placements.forEach(placement => { addPlacement(placement, sums, markSums); if (placement.placementKey) used.add(placement.placementKey); });
   const overfilled = [...sums.values()].filter(entry => entry.value > MAX).length;
   const markConflicts = [...markSums.values()].filter(entry => entry.conflict).length;
-  return { overfilled, markConflicts };
+  const deadFrontier = frontier(sums).filter(point => !frontierPointHasCandidate(point, sums, markSums, used)).length;
+  return { overfilled, markConflicts, deadFrontier };
 }
 function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 20)); placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit, targetCorona);
- coronas=computeCoronas(); updateMoveHints(); const maxCorona = Math.max(...coronas.filter(Number.isFinite)); const integrity = patchIntegrity(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${maxCorona}; illegal frontier points: ${integrity.overfilled + integrity.markConflicts}. Click a corona-1 turtle to try a legal move.`; draw(); }
+ coronas=computeCoronas(); updateMoveHints(); const maxCorona = Math.max(...coronas.filter(Number.isFinite)); const integrity = patchIntegrity(); statusEl.textContent=`Built ${placements.length-1} turtles; corona ${maxCorona}; integrity errors: ${integrity.overfilled + integrity.markConflicts}; dead frontier: ${integrity.deadFrontier}. Click a corona-1 turtle to try a legal move.`; draw(); }
 function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); placements.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of placements[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
-function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash(value>0?[]:[6,5]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); ctx.setLineDash([]); }
+function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash([]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
 function styleForPlacement(p) { const reflected = p.isReflected; return { fill: reflected ? 'rgba(213,94,0,.48)' : 'rgba(0,114,178,.42)', stroke: reflected ? '#a74700' : '#005a8c' }; }
 function eased(value) { return value < 0.5 ? 2 * value * value : 1 - Math.pow(-2 * value + 2, 2) / 2; }
 function lerp(a, b, t) { return a + (b - a) * t; }
@@ -143,8 +145,8 @@ function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, o
 }
 function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.segments.map(segment => ({ a: screen(segment.p1), b: screen(segment.p2), value: segment.value })), styleOverride = null) {
   const style = styleOverride || styleForPlacement(p, index);
-  drawPolyScreen(points, style.fill, style.stroke, hoveredIndex === index && legalMoveIndices.has(index) ? 4.2 : (index&&coronas[index]===1?2.2:1.5));
-  if (marksToggle.checked) segments.forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
+  drawPolyScreen(points, style.fill, style.stroke, index === 0 || legalMoveIndices.has(index) ? 4.2 : (index&&coronas[index]===1?2.0:1.5));
+  segments.filter(segment => segment.value > 0 ? orangeStripesToggle.checked : blueStripesToggle.checked).forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
 }
 function drawAnimatedPlacement(index, progress) {
   const from = activeAnimation.from.get(index), to = activeAnimation.to.get(index);
@@ -153,8 +155,7 @@ function drawAnimatedPlacement(index, progress) {
   const segments = from.segments.map((segment, i) => ({ a: animatePoint(segment.p1, to.segments[i].p1, progress, activeAnimation), b: animatePoint(segment.p2, to.segments[i].p2, progress, activeAnimation), value: showBackFace ? to.segments[i].value : segment.value }));
   drawPlacement(to, index, points, segments, showBackFace ? styleForPlacement(to) : styleForPlacement(from));
 }
-function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); if(gridToggle.checked) drawGrid(); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
-function drawGrid(){ ctx.fillStyle='rgba(20,60,55,.16)'; for(let x=-12;x<=12;x++) for(let y=-12;y<=12;y++){ const s=screen([x,y,-x-y]); ctx.beginPath(); ctx.arc(s.x,s.y,1.4,0,7); ctx.fill(); } }
+function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
 function hitTile(ev){ const r=canvas.getBoundingClientRect(), pt={x:(ev.clientX-r.left)*canvas.width/r.width,y:(ev.clientY-r.top)*canvas.height/r.height}; for(let i=placements.length-1;i>0;i--){ if(coronas[i]!==1) continue; const poly=placements[i].vertices.map(screen); if(pointInPoly(pt, poly)) return i; } return -1; }
 function moveFromOp(clickedIndex, op) {
   if (op.kind === 'reflection' && !op.axis) op.axis = reflectionAxisForOp(op);
@@ -266,7 +267,7 @@ canvas.addEventListener('pointermove',e=>{ if(!dragging){ const hit=hitTile(e); 
 canvas.addEventListener('pointerleave',()=>{ if(hoveredIndex!==-1){ hoveredIndex=-1; draw(); }});
 canvas.addEventListener('pointerup',e=>{ if(down && Math.hypot(e.clientX-down.x,e.clientY-down.y)<4) flipClicked(hitTile(e)); dragging=false; down=null;});
 canvas.addEventListener('wheel',e=>{ e.preventDefault(); const f=Math.exp(-e.deltaY*0.001); view.scale=Math.max(.12,Math.min(3.5,view.scale*f)); draw(); },{passive:false});
-marksToggle.addEventListener('change',draw); gridToggle.addEventListener('change',draw); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click',()=>{view={scale:.72,x:canvas.width/2,y:canvas.height/2};draw();});
+blueStripesToggle.addEventListener('change',draw); orangeStripesToggle.addEventListener('change',draw); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click',()=>{view={scale:.72,x:canvas.width/2,y:canvas.height/2};draw();});
 window.addEventListener('resize', resizeCanvas);
 buildPatch();
 resizeCanvas();
