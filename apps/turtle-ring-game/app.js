@@ -286,11 +286,12 @@ function outlineSymmetryOps(seed, turtle) {
   const outlinePoints = [...outline].flatMap(ek => ek.split('|')).map(pointKey => pointKey.split(',').map(Number));
   const ops = [];
   for (const sym of allSymmetries) {
-    if (symmetryKind(sym) !== 'reflection') continue;
+    const kind = symmetryKind(sym);
+    if (kind !== 'reflection' && kind !== 'half-turn') continue;
     for (const source of outlinePoints) {
       const transformedSource = transformLinear(source, sym);
       for (const target of outlinePoints) {
-        const op = { sym, kind: 'reflection', translation: sub(target, transformedSource), center: null };
+        const op = { sym, kind, translation: sub(target, transformedSource), center: null };
         if ([...outline].every(ek => outline.has(transformEdgeKey(ek, op)))) ops.push(op);
       }
     }
@@ -323,7 +324,7 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function symmetricReflectionMove(clickedIndex) {
+function outlinePreservingMove(clickedIndex) {
   const moves = outlineSymmetryOps(placements[0], placements[clickedIndex])
     .map(op => moveFromOp(clickedIndex, op))
     .filter(validatorWithoutPair(clickedIndex));
@@ -342,7 +343,7 @@ function identifyFallbackMoves() {
     })
     .sort((a, b) => a.angle - b.angle)
     .forEach(item => {
-      const move = symmetricReflectionMove(item.index);
+      const move = outlinePreservingMove(item.index);
       if (move) fallbackMovesByIndex.set(item.index, move);
     });
 }
