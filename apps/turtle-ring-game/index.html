@@ -3,30 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Turtle Ring Game</title>
+  <title>Turtle Tiling Game</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <main class="shell">
     <header>
       <p><a href="../../">← GCTS home</a></p>
-      <h1>Turtle Ring Game</h1>
+      <h1>Turtle Tiling Game</h1>
       <p class="lede">A one-player tiling toy: build a marked turtle corona around a central <strong>Trefoil</strong> tile, then click a turtle touching it to flip the local pair.</p>
     </header>
     <section class="toolbar" aria-label="Game controls">
       <button id="build">Build marked patch</button>
+      <label>target corona <input id="coronaTarget" type="number" min="1" max="12" value="6"></label>
       <button id="resetView">Reset view</button>
-      <label><input id="marks" type="checkbox" checked> show markings</label>
-      <label><input id="grid" type="checkbox"> show A₂ grid</label>
+      <label><input id="blueStripes" type="checkbox" checked> blue stripes</label>
+      <label><input id="orangeStripes" type="checkbox" checked> orange stripes</label>
       <span id="status" aria-live="polite">Ready.</span>
     </section>
-    <canvas id="board" width="1200" height="780" aria-label="Turtle Ring Game board"></canvas>
-    <section class="notes">
-      <h2>Tile name</h2>
-      <p>I suggest <strong>Trefoil</strong>: the seed has three repeated angle/stripe lobes, and the name distinguishes it from the Smith turtle while hinting at its threefold role.</p>
-      <h2>Game rule prototype</h2>
-      <p>Click a turtle in corona 1. The app caches the Trefoil+turtle adjacencies that admit a local move, highlights the three currently playable neighbors, and only permits a click when the transformed pair still validates against the surrounding turtle tiling. The Trefoil uses the same blue/orange orientation colors as the turtles.</p>
-    </section>
+    <canvas id="board" width="1200" height="780" aria-label="Turtle Tiling Game board"></canvas>
+
   </main>
   <script type="module" src="./app.js"></script>
 </body>
