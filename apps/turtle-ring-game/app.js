@@ -39,6 +39,29 @@ function symmetryKind(sym) {
   return sym.planeSign < 0 ? 'reflection' : 'rotation';
 }
 function pointInPoly(pt, poly) { let inside=false; for(let i=0,j=poly.length-1;i<poly.length;j=i++) { const a=poly[i],b=poly[j]; const cross=(pt.x-a.x)*(b.y-a.y)-(pt.y-a.y)*(b.x-a.x); const dot=(pt.x-a.x)*(pt.x-b.x)+(pt.y-a.y)*(pt.y-b.y); if(Math.abs(cross)<1e-7 && dot<=1e-7) return false; if((a.y>pt.y)!==(b.y>pt.y) && pt.x<((b.x-a.x)*(pt.y-a.y))/(b.y-a.y)+a.x) inside=!inside; } return inside; }
+
+const cellE1 = [1, 0, -1], cellE2 = [0, 1, -1];
+function pointInPlacement(point, placement) { return pointInPoly(projectRaw(point), placement.vertices.map(projectRaw)); }
+function tileCellKeys(placement) {
+  const xs = placement.vertices.map(point => point[0]), ys = placement.vertices.map(point => point[1]);
+  const cells = [];
+  for (let x = Math.floor(Math.min(...xs)) - 1; x <= Math.ceil(Math.max(...xs)) + 1; x += 1) {
+    for (let y = Math.floor(Math.min(...ys)) - 1; y <= Math.ceil(Math.max(...ys)) + 1; y += 1) {
+      const p3 = [3 * x, 3 * y, -3 * x - 3 * y];
+      const c1 = add(p3, add(cellE1, cellE2));
+      const c2 = add(p3, add(cellE1.map(v => 2 * v), cellE2.map(v => 2 * v)));
+      if (pointInPlacement(c1.map(v => v / 3), placement)) cells.push(key(c1));
+      if (pointInPlacement(c2.map(v => v / 3), placement)) cells.push(key(c2));
+    }
+  }
+  return cells;
+}
+function pairShapeKey(seed, turtle) { return [...tileCellKeys(seed), ...tileCellKeys(turtle)].sort().join(';'); }
+function transformedCellKey(cellKey, op) {
+  const cell = cellKey.split(',').map(Number);
+  const transformed = add(transformLinear(cell, op.sym), op.translation.map(value => 3 * value));
+  return key(transformed);
+}
 function interiors(verts) { const xs=verts.map(p=>p[0]), ys=verts.map(p=>p[1]), vkeys=new Set(verts.map(key)), poly=verts.map(projectRaw), out=[]; for(let x=Math.min(...xs);x<=Math.max(...xs);x++) for(let y=Math.min(...ys);y<=Math.max(...ys);y++){ const p=[x,y,-x-y]; if(!vkeys.has(key(p)) && pointInPoly(projectRaw(p), poly)) out.push(p); } return out; }
 const turtleOcc = [...turtleVerts.map((p,i)=>({point:p,value:turtleAngles[i],kind:'vertex'})), ...interiors(turtleVerts).map(point=>({point,value:MAX,kind:'interior'}))];
 const trefoilOcc = trefoilVerts.map((point,i)=>({point,value:trefoilAngles[i],kind:'vertex'}));
@@ -156,15 +179,36 @@ function moveFromOp(clickedIndex, op) {
   next[clickedIndex] = movedClicked;
   return { op, next, clickedIndex };
 }
-function pairCentroid(seed, turtle) {
-  const vertices = [...seed.vertices, ...turtle.vertices];
-  return vertices.reduce((sum, point) => add(sum, point), [0, 0, 0]).map(value => value / vertices.length);
+function shapeCellsForPair(seed, turtle) {
+  return [...tileCellKeys(seed), ...tileCellKeys(turtle)];
 }
 function candidateLocalOps(seed, turtle) {
-  const center = pairCentroid(seed, turtle);
-  return allSymmetries
-    .map(sym => ({ sym, kind: symmetryKind(sym), translation: sub(center, transformLinear(center, sym)), center }))
-    .filter(op => op.kind === 'half-turn' || op.kind === 'rotation' || op.kind === 'reflection');
+  const cells = shapeCellsForPair(seed, turtle);
+  const cellSet = new Set(cells);
+  const ops = [];
+  for (const sym of allSymmetries) {
+    const kind = symmetryKind(sym);
+    if (kind === 'identity') continue;
+    for (const sourceKey of cells) {
+      const source = sourceKey.split(',').map(Number);
+      const transformedSource = transformLinear(source, sym);
+      for (const targetKey of cells) {
+        const target = targetKey.split(',').map(Number);
+        const delta = sub(target, transformedSource);
+        if (delta.some(value => value % 3 !== 0)) continue;
+        const translation = delta.map(value => value / 3);
+        const op = { sym, kind, translation, center: null };
+        if (cells.every(cellKey => cellSet.has(transformedCellKey(cellKey, op)))) ops.push(op);
+      }
+    }
+  }
+  const seen = new Set();
+  return ops.filter(op => {
+    const opKey = `${op.kind}|${op.sym.sign}|${op.sym.permutation.join(',')}|${key(op.translation)}`;
+    if (seen.has(opKey)) return false;
+    seen.add(opKey);
+    return true;
+  });
 }
 function tilingIsValid(nextPlacements) {
   const sums = new Map(), marks = new Map();
@@ -184,7 +228,7 @@ function combinedCoverageKey(first, second) {
   return [...sums.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([pointKey, value]) => `${pointKey}:${value}`).join(';');
 }
 function pairFitsSameHole(seed, clicked, move) {
-  return combinedCoverageKey(seed, clicked) === combinedCoverageKey(move.next[0], move.next[move.clickedIndex]);
+  return pairShapeKey(seed, clicked) === pairShapeKey(move.next[0], move.next[move.clickedIndex]);
 }
 function validatorWithoutPair(clickedIndex) {
   const baseSums = new Map(), baseMarks = new Map();
