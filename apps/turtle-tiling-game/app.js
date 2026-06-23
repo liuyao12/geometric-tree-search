@@ -73,33 +73,49 @@ function candidateMovesForFrontier(f, sums, markSums, used) {
   }
   return candidates.sort((a, b) => b.score - a.score);
 }
-function generatePatch(seedPlacement, limit=170, targetCorona=6) {
+function placementCoronasFor(list){ const cs=list.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); list.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of list[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
+function maxCoronaFor(list){ const finite=placementCoronasFor(list).filter(Number.isFinite); return finite.length ? Math.max(...finite) : 0; }
+function choosePatchMove(sums, markSums, used) {
+  const options = frontier(sums).slice(0, 24)
+    .map(f => ({ frontier: f, candidates: candidateMovesForFrontier(f, sums, markSums, used) }))
+    .filter(option => option.candidates.length);
+  if (!options.length) return null;
+  const byGctsOrder = (a,b) => norm(a.frontier.point) - norm(b.frontier.point) || a.frontier.value - b.frontier.value || a.candidates.length - b.candidates.length || b.candidates[0].score - a.candidates[0].score;
+  const forced = options.filter(option => option.candidates.length === 1).sort(byGctsOrder);
+  if (forced.length) return { option: forced[0], candidate: forced[0].candidates[0], forced: true };
+  const ranked = options.sort(byGctsOrder);
+  const first = ranked[0];
+  const tied = ranked.filter(option => norm(option.frontier.point) === norm(first.frontier.point) && option.frontier.value === first.frontier.value && option.candidates.length === first.candidates.length && option.candidates[0].score === first.candidates[0].score);
+  const option = randomItem(tied);
+  const bestScore = option.candidates[0].score;
+  return { option, candidate: randomItem(option.candidates.filter(candidate => candidate.score === bestScore)), forced: false };
+}
+function generatePatchAttempt(seedPlacement, limit) {
   const nextPlacements = [seedPlacement];
   const sums = new Map(), markSums = new Map(), used = new Set();
   addPlacement(nextPlacements[0], sums, markSums);
-  for (let step = 0; step < limit * 60 && nextPlacements.length < limit; step++) {
-    const options = shuffled(frontier(sums).slice(0, 32))
-      .map(f => ({ frontier: f, candidates: shuffled(candidateMovesForFrontier(f, sums, markSums, used)) }))
-      .filter(option => option.candidates.length);
-    if (!options.length) break;
-    const forced = options.filter(option => option.candidates.length === 1);
-    let choice;
-    if (forced.length) {
-      choice = randomItem(forced);
-    } else {
-      const ranked = options.sort((a, b) => a.candidates.length - b.candidates.length || b.candidates[0].score - a.candidates[0].score || norm(a.frontier.point) - norm(b.frontier.point));
-      const bestRank = ranked[0];
-      const tied = ranked.filter(option => option.candidates.length === bestRank.candidates.length && option.candidates[0].score === bestRank.candidates[0].score && norm(option.frontier.point) === norm(bestRank.frontier.point));
-      choice = randomItem(tied);
-    }
-    const bestScore = choice.candidates[0].score;
-    const best = randomItem(choice.candidates.filter(candidate => candidate.score === bestScore));
-    const nextPlacement = place(best.orientation, best.translation, { kind: 'turtle', placementKey: best.pk });
+  for (let step = 0; step < limit * 80 && nextPlacements.length < limit; step++) {
+    const move = choosePatchMove(sums, markSums, used);
+    if (!move) break;
+    const nextPlacement = place(move.candidate.orientation, move.candidate.translation, { kind: 'turtle', placementKey: move.candidate.pk, forced: move.forced, branchCount: move.option.candidates.length });
     nextPlacements.push(nextPlacement);
-    used.add(best.pk);
+    used.add(move.candidate.pk);
     addPlacement(nextPlacement, sums, markSums);
   }
   return nextPlacements;
+}
+function generatePatch(seedPlacement, limit=170, targetCorona=6) {
+  let best = [seedPlacement], bestCorona = 0;
+  const attempts = 2;
+  for (let attempt = 0; attempt < attempts && bestCorona < targetCorona; attempt += 1) {
+    const candidate = generatePatchAttempt(seedPlacement, limit);
+    const candidateCorona = maxCoronaFor(candidate);
+    if (candidateCorona > bestCorona || (candidateCorona === bestCorona && candidate.length > best.length)) {
+      best = candidate;
+      bestCorona = candidateCorona;
+    }
+  }
+  return best;
 }
 function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 6)); }
 function patchIntegrity() {
@@ -110,9 +126,9 @@ function patchIntegrity() {
   const deadFrontier = frontier(sums).filter(point => !frontierPointHasCandidate(point, sums, markSums, used)).length;
   return { overfilled, markConflicts, deadFrontier };
 }
-function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 20)); activeAnimation = null; resetting = false; moveHistory = []; placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit, targetCorona);
+function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 12)); activeAnimation = null; resetting = false; moveHistory = []; placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit, targetCorona);
  coronas=computeCoronas(); legalMoveIndices = new Set(); setStatus('ready'); draw(); window.setTimeout(() => { updateMoveHints(); setStatus('ready'); draw(); }, 0); }
-function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); placements.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of placements[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
+function computeCoronas(){ return placementCoronasFor(placements); }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
 function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash([]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
