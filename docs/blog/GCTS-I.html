@@ -35,12 +35,15 @@
       <section class="article-content">
         <aside class="floating-demo" aria-label="Sticky turtle tiling demo">
           <figure class="interactive-card" id="turtle-tiling-card">
-            <div class="interactive-toolbar" aria-label="Turtle tiling controls">
-              <span class="demo-drag-handle" id="turtle-window-drag" role="button" tabindex="0" aria-label="Drag turtle demo window">Drag window</span>
-              <button type="button" id="turtle-start">Start tiling</button>
-              <button type="button" id="turtle-markings" aria-pressed="false">Show markings</button>
-              <button type="button" id="turtle-reset">Reset view</button>
+            <div class="interactive-toolbar turtle-compact-toolbar" aria-label="Turtle tiling controls">
+              <button type="button" id="turtle-start">Initialize turtle tiling</button>
+              <label>corona <input type="number" id="turtle-corona" value="6" min="1" max="20" inputmode="numeric" aria-label="Corona size"></label>
+              <button type="button" id="turtle-reset" class="icon-button" aria-label="Reset view">↺</button>
+              <span class="turtle-striples-label">striples:</span>
+              <label><input type="checkbox" id="turtle-striple-blue"> blue</label>
+              <label><input type="checkbox" id="turtle-striple-orange"> orange</label>
               <label><input type="checkbox" id="turtle-cells" checked> triangular cells</label>
+              <span class="demo-drag-handle" id="turtle-window-drag" role="button" tabindex="0" aria-label="Drag turtle demo window">Drag window</span>
             </div>
             <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Smith et al. turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom."></canvas>
             <figcaption>
@@ -162,7 +165,8 @@
       const ctx = canvas.getContext('2d');
       const startButton = document.getElementById('turtle-start');
       const resetButton = document.getElementById('turtle-reset');
-      const markingsButton = document.getElementById('turtle-markings');
+      const stripleBlueToggle = document.getElementById('turtle-striple-blue');
+      const stripleOrangeToggle = document.getElementById('turtle-striple-orange');
       const cellsToggle = document.getElementById('turtle-cells');
       const stageLabel = document.getElementById('turtle-stage-label');
       const stageNote = document.getElementById('turtle-stage-note');
@@ -220,7 +224,7 @@
       let timer = null;
       let traceIndex = 0;
       let trialGhost = null;
-      let statusText = '';
+      let statusText = 'ready';
       let showMarkings = false;
       let windowDragging = false;
       let windowResizing = false;
@@ -859,8 +863,8 @@
         drawFrontier(trialGhost || visible[visible.length - 1]);
         drawHoverTooltip();
         const latest = visible[visible.length - 1];
-        const branchText = statusText || (latest && latest.branchCount ? `${latest.forced ? 'forced move' : `${latest.branchCount}-way branch`} at t=${latest.frontierValue}/12` : 'seed tile');
-        if (statusReadout) statusReadout.textContent = `${shownTiles} Tile${shownTiles === 1 ? '' : 's'} placed · ${branchText}`;
+        const branchText = statusText || describePlacementStatus(latest);
+        if (statusReadout) statusReadout.textContent = branchText;
         window.requestAnimationFrame(updateTextWrap);
       }
 
@@ -887,8 +891,15 @@
       }
 
       function updateMarkingButton() {
-        markingsButton.textContent = showMarkings ? 'Hide markings' : 'Show markings';
-        markingsButton.setAttribute('aria-pressed', String(showMarkings));
+        if (stripleBlueToggle) stripleBlueToggle.checked = showMarkings;
+        if (stripleOrangeToggle) stripleOrangeToggle.checked = showMarkings;
+      }
+
+      function describePlacementStatus(placement) {
+        if (!placement) return 'ready';
+        if (placement.orientation?.sign < 0) return 'made a reflection';
+        if (placement.orientation?.orientationIndex !== seedOrientationIndex) return 'made a half-turn';
+        return 'ready';
       }
 
       function setDemoStage(stageName) {
@@ -898,8 +909,8 @@
         shownTiles = stage.tiles;
         traceIndex = 0;
         trialGhost = null;
-        statusText = '';
-        startButton.textContent = 'Start tiling';
+        statusText = 'ready';
+        startButton.textContent = 'Initialize turtle tiling';
         showMarkings = stage.markings;
         fitVisibleView({ onlyZoomOut: false });
         if (stageLabel) stageLabel.textContent = stage.label;
@@ -914,7 +925,7 @@
       function stopTiling() {
         if (timer) window.clearInterval(timer);
         timer = null;
-        startButton.textContent = shownTiles >= tilingOrder.length ? 'Restart tiling' : 'Start tiling';
+        startButton.textContent = 'Initialize turtle tiling';
       }
 
 
@@ -1053,14 +1064,14 @@
         fitVisibleView({ onlyZoomOut: false });
         traceIndex = 0;
         trialGhost = null;
-        statusText = 'branching from an undersaturated vertex';
+        statusText = 'ready';
         showMarkings = false;
         updateMarkingButton();
-        startButton.textContent = 'Pause tiling';
+        startButton.textContent = 'Pause';
         timer = window.setInterval(() => {
           if (traceIndex >= tilingTrace.length) {
             trialGhost = null;
-            statusText = 'trial search reached the displayed patch';
+            statusText = 'ready';
             stopTiling();
             draw();
             return;
@@ -1070,27 +1081,26 @@
           if (event.type === 'trial') {
             trialGhost = event;
             statusText = event.valid
-              ? `trying compatible placement at t=${event.frontierValue}/12`
-              : event.fillsFrontier === false
-                ? 'reject: vertex would not fill to 12/12'
-                : `reject: would exceed 12 by ${event.overflow}`;
+              ? 'ready'
+              : 'blocked';
           } else {
             shownTiles = event.count;
             trialGhost = null;
-            statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
+            statusText = describePlacementStatus(event.placement);
           }
           fitVisibleView({ onlyZoomOut: true });
           draw();
         }, 620);
         draw();
       });
-      markingsButton.addEventListener('click', () => {
-        showMarkings = !showMarkings;
+      function handleStripleToggle() {
+        showMarkings = Boolean(stripleBlueToggle?.checked || stripleOrangeToggle?.checked);
         if (stageLabel) stageLabel.textContent = showMarkings ? 'Stage: markings enabled manually' : 'Stage: markings hidden manually';
         if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Smith turtle shapes remain, but the three marking components are hidden.';
-        updateMarkingButton();
         draw();
-      });
+      }
+      stripleBlueToggle?.addEventListener('change', handleStripleToggle);
+      stripleOrangeToggle?.addEventListener('change', handleStripleToggle);
       cellsToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
         stopTiling();
@@ -1098,7 +1108,7 @@
         hoveredPoint = null;
         traceIndex = 0;
         trialGhost = null;
-        statusText = '';
+        statusText = 'ready';
         showMarkings = false;
         setDemoStage('intro');
       });
