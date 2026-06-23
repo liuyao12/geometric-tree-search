@@ -54,7 +54,7 @@ const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtl
 const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: placement.isReflected !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
-let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], resetting=false, buildVersion=0;
+let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], historyStateKeys=[], resetting=false, buildVersion=0;
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
@@ -166,8 +166,20 @@ function revealPatch(finalPlacements, version) {
   };
   revealNext();
 }
-function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 8)); const version = ++buildVersion; const seed = place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, limit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
+function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 8)); const version = ++buildVersion; const seed = place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; historyStateKeys = [placementStateKey(seed)]; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, limit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
 function computeCoronas(){ return placementCoronasFor(placements); }
+function placementStateKey(placement) { return placement.vertices.map(key).sort().join('|'); }
+function rememberHistoryMove(move) {
+  const stateKey = placementStateKey(placements[0]);
+  const seenIndex = historyStateKeys.lastIndexOf(stateKey);
+  if (seenIndex >= 0) {
+    moveHistory = moveHistory.slice(0, seenIndex);
+    historyStateKeys = historyStateKeys.slice(0, seenIndex + 1);
+    return;
+  }
+  moveHistory.push({ index: move.clickedIndex, op: cloneMoveOp(move.op) });
+  historyStateKeys.push(stateKey);
+}
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
 function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash([]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
@@ -335,7 +347,7 @@ function updateMoveHints() {
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
 function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
-function finishUserMove(move) { moveHistory.push({ index: move.clickedIndex, op: cloneMoveOp(move.op) }); finishAnimation(move); }
+function finishUserMove(move) { finishAnimation(move); rememberHistoryMove(move); }
 function animateMove(move, onFinish = finishAnimation) {
   const fromSeed = placements[0], fromClicked = placements[move.clickedIndex];
   placements = move.next;
@@ -354,6 +366,7 @@ function resetToCenter() {
   setStatus('resetting');
   const stepBack = () => {
     const previous = moveHistory.pop();
+    if (previous) historyStateKeys.pop();
     if (!previous) { resetting = false; view={scale:.72,x:canvas.width/2,y:canvas.height/2}; updateMoveHints(); setStatus('ready'); draw(); return; }
     const move = moveFromOp(previous.index, { ...previous.op });
     animateMove(move, () => { finishAnimation(move); window.setTimeout(stepBack, 80); });
