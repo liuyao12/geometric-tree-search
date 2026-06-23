@@ -422,20 +422,34 @@ function drawTrefoilCrossing() {
   const cx = width / 2, cy = height / 2 + 10, radius = Math.min(width, height) * 0.25;
   const hex = polygonPoints(cx, cy, radius, 6, Math.PI / 6);
   drawPath(context, hex, '#e9f3ef', '#98aaa5', 3);
+  const teamColors = ['#d55e00', '#7b2cbf', '#2a9d8f'];
   hex.forEach((a, index) => {
     const b = hex[(index + 1) % hex.length];
     const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
     const outward = { x: mid.x - cx, y: mid.y - cy };
     const length = Math.hypot(outward.x, outward.y) || 1;
     const tip = { x: mid.x + outward.x / length * radius * 0.85, y: mid.y + outward.y / length * radius * 0.85 };
-    drawPath(context, [a, b, tip], index % 2 ? 'rgba(213,94,0,.18)' : 'rgba(0,114,178,.14)', '#cbd8d4', 2);
+    const occupied = index % 2 === 0;
+    drawPath(context, [a, b, tip], occupied ? 'rgba(213,94,0,.16)' : 'rgba(0,114,178,.08)', '#cbd8d4', 2);
+    if (!occupied) {
+      context.save();
+      context.strokeStyle = '#98aaa5';
+      context.setLineDash([7, 7]);
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc((tip.x + mid.x) / 2, (tip.y + mid.y) / 2, 24, 0, Math.PI * 2);
+      context.stroke();
+      context.restore();
+      return;
+    }
+    const teamColor = teamColors[Math.floor(index / 2) % teamColors.length];
     for (let row = 0; row < 3; row += 1) {
       const t = (row + 1) / 4;
       for (let col = 0; col <= row; col += 1) {
         const side = row ? col / row - 0.5 : 0;
         const x = tip.x * t + mid.x * (1 - t) + (b.x - a.x) * side * (1 - t) * 0.48;
         const y = tip.y * t + mid.y * (1 - t) + (b.y - a.y) * side * (1 - t) * 0.48;
-        drawCrossingPiece(context, x, y, 'trefoil', index % 2 ? '#d55e00' : '#f0a202');
+        drawCrossingPiece(context, x, y, 'trefoil', teamColor);
       }
     }
   });
@@ -447,7 +461,7 @@ function drawTrefoilCrossing() {
   }
   context.fillStyle = '#15312c';
   context.font = '700 26px Inter, system-ui, sans-serif';
-  context.fillText('Trefoil crossing concept: triangular trefoil boundary clusters; can turtles fill the middle?', 34, 48);
+  context.fillText('Trefoil crossing concept: 3 same-handed trefoil teams race to opposite goal zones.', 34, 48);
 }
 function showTab(nextTab) {
   activeTab = nextTab;
