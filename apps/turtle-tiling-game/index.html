@@ -33,11 +33,11 @@
     </section>
     <div class="board-area">
       <aside id="trefoilPalette" class="trefoil-palette" aria-label="Trefoil attachment palette">
-        <strong>trefoils</strong>
         <canvas class="trefoil-token" width="74" height="74" draggable="true" data-rotation="0" data-color="#0072b2" aria-label="Blue trefoil"></canvas>
         <canvas class="trefoil-token" width="74" height="74" draggable="true" data-rotation="60" data-color="#0072b2" aria-label="Blue trefoil rotated 60 degrees"></canvas>
-        <canvas class="trefoil-token" width="74" height="74" draggable="true" data-rotation="0" data-color="#d55e00" aria-label="Orange trefoil"></canvas>
-        <canvas class="trefoil-token" width="74" height="74" draggable="true" data-rotation="60" data-color="#d55e00" aria-label="Orange trefoil rotated 60 degrees"></canvas>
+        <canvas class="trefoil-token" width="74" height="74" draggable="true" data-rotation="0" data-color="#d55e00" data-reflect="true" aria-label="Orange reflected trefoil"></canvas>
+        <canvas class="trefoil-token" width="74" height="74" draggable="true" data-rotation="60" data-color="#d55e00" data-reflect="true" aria-label="Orange reflected trefoil rotated 60 degrees"></canvas>
+        <div id="trefoilTrash" class="trefoil-trash" aria-label="Trash can for trefoils">🗑</div>
       </aside>
       <div class="canvas-stack">
         <canvas id="board" width="1200" height="780" aria-label="Turtle Tiling Game board"></canvas>

@@ -7,7 +7,10 @@ const tilingTab = document.getElementById('tilingTab');
 const crossingTab = document.getElementById('crossingTab');
 const symmetryButtons = [...document.querySelectorAll('.symmetry-toggle')];
 const trefoilTokens = [...document.querySelectorAll('.trefoil-token')];
-let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = '#d55e00';
+const trefoilTrash = document.getElementById('trefoilTrash');
+const BLUE = '#0072b2', BLUE_STROKE = '#005a8c', ORANGE = '#d55e00', ORANGE_STROKE = '#a74700';
+let movingAttachment = null;
+let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null;
 const attachedTrefoils = { tiling: [], crossing: [] };
 const statusEl = document.getElementById('status');
 function setStatus(text = 'ready') { if (statusEl) statusEl.textContent = text; }
@@ -175,7 +178,8 @@ function revealPatch(finalPlacements, version) {
   };
   revealNext();
 }
-function buildPatch(){ if (activeTab === 'crossing') { setStatus('computing'); drawTrefoilCrossing(); window.setTimeout(() => setStatus('ready'), 90); return; } const targetCorona = readTargetCorona(); const guardLimit = Math.max(500, Math.ceil(targetCorona * targetCorona * 30)); const version = ++buildVersion; const seed = activeTab === 'turtle' ? place(turtleOrientations[0],[0,0,0],{kind:'seed'}) : place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; historyStateKeys = [placementStateKey(seed)]; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, guardLimit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
+function clearAttachedTrefoils() { attachedTrefoils.tiling = []; attachedTrefoils.crossing = []; dragPreview = null; movingAttachment = null; setTrashHot(false); }
+function buildPatch(){ clearAttachedTrefoils(); if (activeTab === 'crossing') { setStatus('computing'); drawTrefoilCrossing(); window.setTimeout(() => setStatus('ready'), 90); return; } const targetCorona = readTargetCorona(); const guardLimit = Math.max(500, Math.ceil(targetCorona * targetCorona * 30)); const version = ++buildVersion; const seed = activeTab === 'turtle' ? place(turtleOrientations[0],[0,0,0],{kind:'seed'}) : place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; historyStateKeys = [placementStateKey(seed)]; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, guardLimit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
 function computeCoronas(){ return placementCoronasFor(placements); }
 function placementStateKey(placement) { return placement.vertices.map(key).sort().join('|'); }
 function rememberHistoryMove(move) {
@@ -191,7 +195,7 @@ function rememberHistoryMove(move) {
 }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
-function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash([]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?ORANGE:BLUE; ctx.setLineDash([]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
 function styleForPlacement(p) { const reflected = p.isReflected; return { fill: reflected ? 'rgba(213,94,0,.48)' : 'rgba(0,114,178,.42)', stroke: reflected ? '#a74700' : '#005a8c' }; }
 function eased(value) { return value < 0.5 ? 2 * value * value : 1 - Math.pow(-2 * value + 2, 2) / 2; }
 function lerp(a, b, t) { return a + (b - a) * t; }
@@ -250,7 +254,7 @@ function drawAnimatedPlacement(index, progress) {
   const segments = from.segments.map((segment, i) => ({ a: animatePoint(segment.p1, to.segments[i].p1, progress, activeAnimation), b: animatePoint(segment.p2, to.segments[i].p2, progress, activeAnimation), value: showBackFace ? to.segments[i].value : segment.value }));
   drawPlacement(to, index, points, segments, showBackFace ? styleForPlacement(to) : styleForPlacement(from));
 }
-function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); refreshAttachmentViability('tiling'); drawAttachedTrefoils(ctx, attachedTrefoils.tiling); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
+function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); refreshAttachmentViability('tiling'); drawAttachedTrefoils(ctx, attachedTrefoils.tiling); if (dragPreview?.tab === 'tiling') drawAttachedTrefoils(ctx, [dragPreview]); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
 function hitTile(ev){ const r=canvas.getBoundingClientRect(), pt={x:(ev.clientX-r.left)*canvas.width/r.width,y:(ev.clientY-r.top)*canvas.height/r.height}; for(let i=placements.length-1;i>0;i--){ if(coronas[i]!==1) continue; const poly=placements[i].vertices.map(screen); if(pointInPoly(pt, poly)) return i; } return -1; }
 function moveFromOp(clickedIndex, op) {
   if (op.kind === 'reflection' && !op.axis) op.axis = reflectionAxisForOp(op);
@@ -400,27 +404,41 @@ function drawPath(context, points, fill, stroke = '#15312c', width = 2) {
   context.stroke();
 }
 
-function transformedTrefoilPoints(rotation = 0, scale = 1) {
+function transformedTrefoilPoints(rotation = 0, scale = 1, reflect = false) {
   const raw = trefoilVerts.map(project);
   const cx = raw.reduce((sum, point) => sum + point.x, 0) / raw.length;
   const cy = raw.reduce((sum, point) => sum + point.y, 0) / raw.length;
   const angle = (rotation * Math.PI) / 180;
   return raw.map(point => {
-    const x = (point.x - cx) * scale, y = (point.y - cy) * scale;
+    const x = (point.x - cx) * scale * (reflect ? -1 : 1), y = (point.y - cy) * scale;
     return { x: x * Math.cos(angle) - y * Math.sin(angle), y: x * Math.sin(angle) + y * Math.cos(angle) };
   });
 }
-function drawTrefoilShape(context, x, y, rotation = 0, scale = 0.38, color = '#d55e00') {
-  const points = transformedTrefoilPoints(rotation, scale);
+function trefoilStrokeFor(color) { return color === BLUE ? BLUE_STROKE : ORANGE_STROKE; }
+function drawTrefoilShape(context, x, y, rotation = 0, scale = 0.38, color = ORANGE, reflect = false) {
+  const points = transformedTrefoilPoints(rotation, scale, reflect);
   context.save();
   context.translate(x, y);
-  drawPath(context, points, color, '#7a1f4d', 2.2);
+  drawPath(context, points, color, trefoilStrokeFor(color), 2.2);
+  context.restore();
+}
+
+function strokeTrefoilShape(context, x, y, rotation = 0, scale = 0.46, stroke = 'rgba(44,160,44,.75)', reflect = false) {
+  const points = transformedTrefoilPoints(rotation, scale, reflect);
+  context.save();
+  context.translate(x, y);
+  context.beginPath();
+  points.forEach((point, index) => index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y));
+  context.closePath();
+  context.strokeStyle = stroke;
+  context.lineWidth = 5;
+  context.stroke();
   context.restore();
 }
 function drawTrefoilToken(button) {
   const context = button.getContext('2d');
   context.clearRect(0, 0, button.width, button.height);
-  drawTrefoilShape(context, button.width / 2, button.height / 2, Number(button.dataset.rotation) || 0, 0.28, button.dataset.color || '#d55e00');
+  drawTrefoilShape(context, button.width / 2, button.height / 2, Number(button.dataset.rotation) || 0, 0.28, button.dataset.color || ORANGE, button.dataset.reflect === 'true');
 }
 
 function drawCrossingPiece(context, x, y, kind, color) {
@@ -442,7 +460,7 @@ function drawTrefoilCrossing() {
   const hex = polygonPoints(cx, cy, radius, 6, Math.PI / 6);
   drawPath(context, hex, 'rgba(233,243,239,.42)', '#cbd8d4', 2);
   drawPath(context, coreHex, '#e9f3ef', '#98aaa5', 3);
-  const teamColors = ['#d55e00', '#7b2cbf', '#2a9d8f'];
+  const teamColors = [ORANGE, BLUE, ORANGE];
   hex.forEach((a, index) => {
     const b = hex[(index + 1) % hex.length];
     const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
@@ -484,6 +502,7 @@ function drawTrefoilCrossing() {
   context.fillStyle = '#15312c';
   context.font = '700 26px Inter, system-ui, sans-serif';
   drawAttachedTrefoils(context, attachedTrefoils.crossing);
+  if (dragPreview?.tab === 'crossing') drawAttachedTrefoils(context, [dragPreview]);
   context.fillText(`Hex seed sketch: ${selectedSymmetry}-fold turtle layers; snap same-handed trefoils.`, 34, 48);
 }
 
@@ -520,15 +539,8 @@ function showTab(nextTab) {
 
 function drawAttachedTrefoils(context, items) {
   items.forEach(item => {
-    context.save();
-    context.strokeStyle = item.viable === false ? 'rgba(128,128,128,.55)' : 'rgba(44,160,44,.75)';
-    context.lineWidth = 4;
-    context.setLineDash(item.viable === false ? [6, 6] : []);
-    context.beginPath();
-    context.arc(item.x, item.y, 36, 0, Math.PI * 2);
-    context.stroke();
-    context.restore();
-    drawTrefoilShape(context, item.x, item.y, item.rotation, 0.38, item.color || '#d55e00');
+    strokeTrefoilShape(context, item.x, item.y, item.rotation, 0.46, item.viable === false ? 'rgba(128,128,128,.55)' : 'rgba(44,160,44,.75)', !!item.reflect);
+    drawTrefoilShape(context, item.x, item.y, item.rotation, 0.38, item.color || ORANGE, !!item.reflect);
   });
 }
 function placementScreenCenter(placement) {
@@ -542,35 +554,111 @@ function refreshAttachmentViability(tab) {
     item.viable = centers.some(center => Math.hypot(center.x - item.x, center.y - item.y) < 150);
   });
 }
-function snapAnchorsFor(targetCanvas) {
-  const cx = targetCanvas.width / 2, cy = targetCanvas.height / 2 + 10;
-  const radius = Math.min(targetCanvas.width, targetCanvas.height) * (targetCanvas === crossingCanvas ? 0.38 : 0.34);
-  return polygonPoints(cx, cy, radius, 12, Math.PI / 12);
+function eventPointOnCanvas(event, targetCanvas) {
+  const rect = targetCanvas.getBoundingClientRect();
+  const scaleX = targetCanvas.width / rect.width, scaleY = targetCanvas.height / rect.height;
+  return { x: (event.clientX - rect.left) * scaleX, y: (event.clientY - rect.top) * scaleY };
+}
+function snapToLattice(point, targetCanvas) {
+  if (targetCanvas === crossingCanvas) {
+    const cx = targetCanvas.width / 2, cy = targetCanvas.height / 2 + 10;
+    const r = Math.round((point.y - cy) / 30);
+    const q = Math.round((point.x - cx) / 34 - r / 2);
+    return { x: cx + (q + r / 2) * 34, y: cy + r * 30 };
+  }
+  const world = { x: (point.x - view.x) / view.scale, y: (point.y - view.y) / view.scale };
+  const a = project([1,0,-1]), b = project([0,1,-1]);
+  const det = a.x * b.y - a.y * b.x || 1;
+  const u = Math.round((world.x * b.y - world.y * b.x) / det);
+  const v = Math.round((a.x * world.y - a.y * world.x) / det);
+  return { x: view.x + (a.x * u + b.x * v) * view.scale, y: view.y + (a.y * u + b.y * v) * view.scale };
+}
+function updateDragPreview(event, targetCanvas) {
+  event.preventDefault();
+  const snap = snapToLattice(eventPointOnCanvas(event, targetCanvas), targetCanvas);
+  dragPreview = { x: snap.x, y: snap.y, rotation: draggedTrefoilRotation, color: draggedTrefoilColor, reflect: draggedTrefoilReflect, viable: true, tab: targetCanvas === crossingCanvas ? 'crossing' : 'tiling' };
+  targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
 }
 function attachTrefoilAt(event, targetCanvas) {
   event.preventDefault();
-  const rect = targetCanvas.getBoundingClientRect();
-  const scaleX = targetCanvas.width / rect.width, scaleY = targetCanvas.height / rect.height;
-  const point = { x: (event.clientX - rect.left) * scaleX, y: (event.clientY - rect.top) * scaleY };
-  const snap = snapAnchorsFor(targetCanvas).sort((a, b) => Math.hypot(a.x - point.x, a.y - point.y) - Math.hypot(b.x - point.x, b.y - point.y))[0];
+  const snap = snapToLattice(eventPointOnCanvas(event, targetCanvas), targetCanvas);
   const tab = targetCanvas === crossingCanvas ? 'crossing' : 'tiling';
-  attachedTrefoils[tab].push({ x: snap.x, y: snap.y, rotation: draggedTrefoilRotation, color: draggedTrefoilColor, viable: true });
+  attachedTrefoils[tab].push({ x: snap.x, y: snap.y, rotation: draggedTrefoilRotation, color: draggedTrefoilColor, reflect: draggedTrefoilReflect, viable: true });
+  dragPreview = null;
   refreshAttachmentViability(tab);
   setStatus('snapped');
   targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
 }
 
+
+function pointInTrash(event) {
+  if (!trefoilTrash) return false;
+  const rect = trefoilTrash.getBoundingClientRect();
+  return event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+}
+function setTrashHot(isHot) { trefoilTrash?.classList.toggle('trash-hot', !!isHot); }
+function hitAttachedTrefoil(event, targetCanvas) {
+  const tab = targetCanvas === crossingCanvas ? 'crossing' : 'tiling';
+  const point = eventPointOnCanvas(event, targetCanvas);
+  const items = attachedTrefoils[tab];
+  for (let index = items.length - 1; index >= 0; index -= 1) {
+    const item = items[index];
+    if (Math.hypot(point.x - item.x, point.y - item.y) <= 46) return { tab, index, item, targetCanvas };
+  }
+  return null;
+}
+function startAttachmentDrag(event, targetCanvas) {
+  const hit = hitAttachedTrefoil(event, targetCanvas);
+  if (!hit) return false;
+  movingAttachment = hit;
+  dragPreview = null;
+  targetCanvas.setPointerCapture?.(event.pointerId);
+  setStatus('drag trefoil');
+  return true;
+}
+function moveAttachmentDrag(event) {
+  if (!movingAttachment) return false;
+  const { item, targetCanvas } = movingAttachment;
+  const snap = snapToLattice(eventPointOnCanvas(event, targetCanvas), targetCanvas);
+  item.x = snap.x;
+  item.y = snap.y;
+  setTrashHot(pointInTrash(event));
+  targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
+  return true;
+}
+function endAttachmentDrag(event) {
+  if (!movingAttachment) return false;
+  const { tab, index, targetCanvas } = movingAttachment;
+  if (pointInTrash(event)) {
+    attachedTrefoils[tab].splice(index, 1);
+    setStatus('deleted');
+  } else {
+    refreshAttachmentViability(tab);
+    setStatus('snapped');
+  }
+  movingAttachment = null;
+  setTrashHot(false);
+  targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
+  return true;
+}
+
 function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); if (activeTab === 'crossing') drawTrefoilCrossing(); }
-let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
-canvas.addEventListener('pointermove',e=>{ if(!dragging){ const hit=hitTile(e); const nextHover=legalMoveIndices.has(hit)?hit:-1; if(nextHover!==hoveredIndex){ hoveredIndex=nextHover; draw(); } return; } const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
+let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{ if(startAttachmentDrag(e, canvas)){ dragging=false; down=null; return; } dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
+canvas.addEventListener('pointermove',e=>{ if(moveAttachmentDrag(e)) return; if(!dragging){ const hit=hitTile(e); const nextHover=legalMoveIndices.has(hit)?hit:-1; if(nextHover!==hoveredIndex){ hoveredIndex=nextHover; draw(); } return; } const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
 canvas.addEventListener('pointerleave',()=>{ if(hoveredIndex!==-1){ hoveredIndex=-1; draw(); }});
-canvas.addEventListener('pointerup',e=>{ if(down && Math.hypot(e.clientX-down.x,e.clientY-down.y)<4) flipClicked(hitTile(e)); dragging=false; down=null;});
+canvas.addEventListener('pointerup',e=>{ if(endAttachmentDrag(e)) return; if(down && Math.hypot(e.clientX-down.x,e.clientY-down.y)<4) flipClicked(hitTile(e)); dragging=false; down=null;});
+crossingCanvas.addEventListener('pointerdown', e => startAttachmentDrag(e, crossingCanvas));
+crossingCanvas.addEventListener('pointermove', e => moveAttachmentDrag(e));
+crossingCanvas.addEventListener('pointerup', e => endAttachmentDrag(e));
 canvas.addEventListener('wheel',e=>{ e.preventDefault(); const f=Math.exp(-e.deltaY*0.001); view.scale=Math.max(.12,Math.min(3.5,view.scale*f)); draw(); },{passive:false});
 function stripeEnabled(button) { return button?.getAttribute('aria-pressed') === 'true'; }
 function toggleStripe(button) { button.setAttribute('aria-pressed', stripeEnabled(button) ? 'false' : 'true'); draw(); }
 trefoilTokens.forEach(drawTrefoilToken);
-trefoilTokens.forEach(button => { button.addEventListener('dragstart', event => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || '#d55e00'; event.dataTransfer?.setData('text/plain', String(draggedTrefoilRotation)); }); button.addEventListener('click', () => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || '#d55e00'; setStatus('drag trefoil'); }); });
-[canvas, crossingCanvas].forEach(target => { target.addEventListener('dragover', event => event.preventDefault()); target.addEventListener('drop', event => attachTrefoilAt(event, target)); });
+trefoilTokens.forEach(button => { button.addEventListener('dragstart', event => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || ORANGE; draggedTrefoilReflect = button.dataset.reflect === 'true'; event.dataTransfer?.setData('text/plain', String(draggedTrefoilRotation)); }); button.addEventListener('click', () => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || ORANGE; draggedTrefoilReflect = button.dataset.reflect === 'true'; setStatus('drag trefoil'); }); });
+[canvas, crossingCanvas].forEach(target => { target.addEventListener('dragover', event => updateDragPreview(event, target)); target.addEventListener('dragleave', () => { dragPreview = null; target === crossingCanvas ? drawTrefoilCrossing() : draw(); }); target.addEventListener('drop', event => attachTrefoilAt(event, target)); });
+trefoilTrash?.addEventListener('dragover', event => { event.preventDefault(); dragPreview = null; setTrashHot(true); });
+trefoilTrash?.addEventListener('dragleave', () => setTrashHot(false));
+trefoilTrash?.addEventListener('drop', event => { event.preventDefault(); dragPreview = null; setTrashHot(false); setStatus('deleted'); draw(); if (activeTab === 'crossing') drawTrefoilCrossing(); });
 blueStripesToggle.addEventListener('click',()=>toggleStripe(blueStripesToggle)); orangeStripesToggle.addEventListener('click',()=>toggleStripe(orangeStripesToggle)); symmetryButtons.forEach(button => button.addEventListener('click', () => { if (button.disabled) return; selectedSymmetry = Number(button.dataset.symmetry) || 1; updateSymmetryAvailability(); setStatus('ready'); if (activeTab === 'crossing') drawTrefoilCrossing(); })); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click', resetToCenter); turtleSeedTab.addEventListener('click',()=>showTab('turtle')); tilingTab.addEventListener('click',()=>showTab('tiling')); crossingTab.addEventListener('click',()=>showTab('crossing'));
 window.addEventListener('resize', resizeCanvas);
 updateSymmetryAvailability();
