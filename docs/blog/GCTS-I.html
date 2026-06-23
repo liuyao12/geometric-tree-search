@@ -165,6 +165,7 @@
       const ctx = canvas.getContext('2d');
       const startButton = document.getElementById('turtle-start');
       const resetButton = document.getElementById('turtle-reset');
+      const coronaInput = document.getElementById('turtle-corona');
       const stripeBlueToggle = document.getElementById('turtle-stripe-blue');
       const stripeOrangeToggle = document.getElementById('turtle-stripe-orange');
       const cellsToggle = document.getElementById('turtle-cells');
@@ -209,9 +210,10 @@
       center.y /= rawTurtle.length;
       const orientations = buildOrientations();
       const seedOrientationIndex = 6;
-      const tilingRun = buildTilingOrder(20);
-      const tilingOrder = tilingRun.placements;
-      const tilingTrace = tilingRun.trace;
+      const markingReach = 3;
+      let tilingRun = buildTilingOrder(coronaTileLimit());
+      let tilingOrder = tilingRun.placements;
+      let tilingTrace = tilingRun.trace;
       const minViewScale = 0.08;
       const maxViewScale = 3.4;
       let scale = 1.02;
@@ -473,7 +475,23 @@
         return candidateTrials(frontier, sums, usedPlacements).filter(trial => trial.valid);
       }
 
-      function buildTilingOrder(limit) {
+      function coronaTileLimit() {
+        const parsed = Number.parseInt(coronaInput?.value, 10);
+        const corona = Number.isFinite(parsed) ? clamp(parsed, 1, 20) : 6;
+        return Math.max(1, Math.round(corona * markingReach + 2));
+      }
+
+      function randomItem(items, rng = Math.random) {
+        return items[Math.floor(rng() * items.length)];
+      }
+
+      function rebuildTilingOrder({ randomizeBranches = false } = {}) {
+        tilingRun = buildTilingOrder(coronaTileLimit(), { randomizeBranches });
+        tilingOrder = tilingRun.placements;
+        tilingTrace = tilingRun.trace;
+      }
+
+      function buildTilingOrder(limit, { randomizeBranches = false, rng = Math.random } = {}) {
         const seed = makePlacement(orientations[seedOrientationIndex], [0, 0, 0], { step: 0, forced: true, branchCount: 0 });
         const placed = [seed];
         const trace = [];
@@ -490,7 +508,9 @@
           if (options.length === 0) break;
           const forced = options.find(option => option.candidates.length === 1);
           const choice = forced || options.sort((left, right) => left.candidates.length - right.candidates.length || left.frontier.value - right.frontier.value || norm3(left.frontier.point) - norm3(right.frontier.point))[0];
-          const candidate = choice.candidates[0];
+          const candidate = randomizeBranches && choice.candidates.length > 1
+            ? randomItem(choice.candidates, rng)
+            : choice.candidates[0];
           const rejectedTrials = choice.trials.filter(trial => !trial.valid).slice(0, 2);
           rejectedTrials.forEach(trial => {
             trace.push({
@@ -1059,13 +1079,14 @@
           stopTiling();
           return;
         }
+        rebuildTilingOrder({ randomizeBranches: true });
         shownTiles = 1;
         playbackPlacements = null;
         fitVisibleView({ onlyZoomOut: false });
         traceIndex = 0;
         trialGhost = null;
         statusText = 'ready';
-        showMarkings = false;
+        showMarkings = true;
         updateMarkingButton();
         startButton.textContent = 'Pause';
         timer = window.setInterval(() => {
