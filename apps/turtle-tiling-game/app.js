@@ -1,5 +1,10 @@
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
+const crossingCanvas = document.getElementById('crossingBoard');
+const crossingCtx = crossingCanvas.getContext('2d');
+const tilingTab = document.getElementById('tilingTab');
+const crossingTab = document.getElementById('crossingTab');
+let activeTab = 'tiling';
 const statusEl = document.getElementById('status');
 function setStatus(text = 'ready') { if (statusEl) statusEl.textContent = text; }
 setStatus('ready');
@@ -100,11 +105,11 @@ function analyzePatchBoundary(sums, markSums, used) {
   const tied = ranked.filter(option => option.candidates.length === first.candidates.length && norm(option.frontier.point) === norm(first.frontier.point) && option.frontier.value === first.frontier.value && option.candidates[0].score === first.candidates[0].score);
   return { deadEnd: null, choice: randomItem(tied), forced: false };
 }
-function generatePatch(seedPlacement, limit=170, targetCorona=6) {
+function generatePatch(seedPlacement, guardLimit=170, targetCorona=6) {
   const nextPlacements = [seedPlacement];
   const sums = new Map(), markSums = new Map(), used = new Set();
   let best = nextPlacements.slice(), bestCorona = 0, nodes = 0;
-  const nodeBudget = Math.max(80, targetCorona * targetCorona);
+  const nodeBudget = Math.max(800, targetCorona * targetCorona * 16);
   addPlacement(nextPlacements[0], sums, markSums);
   const rememberBest = () => { const candidateCorona = maxCoronaFor(nextPlacements); if (candidateCorona > bestCorona || (candidateCorona === bestCorona && nextPlacements.length > best.length)) { best = nextPlacements.slice(); bestCorona = candidateCorona; } };
   const applyCandidate = (candidate, option, forced) => {
@@ -117,7 +122,7 @@ function generatePatch(seedPlacement, limit=170, targetCorona=6) {
   const undoCandidate = placement => { removePlacement(placement, sums, markSums); used.delete(placement.placementKey); nextPlacements.pop(); };
   const search = () => {
     rememberBest();
-    if (bestCorona >= targetCorona || nextPlacements.length >= limit) return bestCorona >= targetCorona;
+    if (bestCorona >= targetCorona || nextPlacements.length >= guardLimit) return bestCorona >= targetCorona;
     if (nodes++ >= nodeBudget) return false;
     const analysis = analyzePatchBoundary(sums, markSums, used);
     if (analysis.deadEnd || !analysis.choice) return false;
@@ -166,7 +171,7 @@ function revealPatch(finalPlacements, version) {
   };
   revealNext();
 }
-function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 8)); const version = ++buildVersion; const seed = place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; historyStateKeys = [placementStateKey(seed)]; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, limit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
+function buildPatch(){ const targetCorona = readTargetCorona(); const guardLimit = Math.max(500, Math.ceil(targetCorona * targetCorona * 30)); const version = ++buildVersion; const seed = place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; historyStateKeys = [placementStateKey(seed)]; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, guardLimit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
 function computeCoronas(){ return placementCoronasFor(placements); }
 function placementStateKey(placement) { return placement.vertices.map(key).sort().join('|'); }
 function rememberHistoryMove(move) {
@@ -232,7 +237,7 @@ function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, o
 function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.segments.map(segment => ({ a: screen(segment.p1), b: screen(segment.p2), value: segment.value })), styleOverride = null) {
   const style = styleOverride || styleForPlacement(p, index);
   drawPolyScreen(points, style.fill, style.stroke, index === 0 || legalMoveIndices.has(index) ? 4.2 : (index&&coronas[index]===1?2.0:1.5));
-  segments.filter(segment => segment.value > 0 ? orangeStripesToggle.checked : blueStripesToggle.checked).forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
+  segments.filter(segment => segment.value > 0 ? stripeEnabled(orangeStripesToggle) : stripeEnabled(blueStripesToggle)).forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
 }
 function drawAnimatedPlacement(index, progress) {
   const from = activeAnimation.from.get(index), to = activeAnimation.to.get(index);
@@ -373,13 +378,97 @@ function resetToCenter() {
   };
   stepBack();
 }
-function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
+
+function polygonPoints(cx, cy, radius, sides, rotation = 0) {
+  return Array.from({ length: sides }, (_, index) => {
+    const angle = rotation + (Math.PI * 2 * index) / sides;
+    return { x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius };
+  });
+}
+function drawPath(context, points, fill, stroke = '#15312c', width = 2) {
+  context.beginPath();
+  points.forEach((point, index) => index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y));
+  context.closePath();
+  context.fillStyle = fill;
+  context.fill();
+  context.strokeStyle = stroke;
+  context.lineWidth = width;
+  context.stroke();
+}
+function drawCrossingPiece(context, x, y, kind, color) {
+  context.save();
+  context.translate(x, y);
+  if (kind === 'trefoil') {
+    context.fillStyle = color;
+    for (const point of polygonPoints(0, 0, 13, 3, -Math.PI / 2)) {
+      context.beginPath();
+      context.arc(point.x, point.y, 9, 0, Math.PI * 2);
+      context.fill();
+    }
+    context.strokeStyle = '#5f2f00';
+    context.lineWidth = 2;
+    context.beginPath();
+    context.arc(0, 0, 17, 0, Math.PI * 2);
+    context.stroke();
+  } else {
+    drawPath(context, polygonPoints(0, 0, 17, 6, Math.PI / 6), color, '#005a8c', 2);
+  }
+  context.restore();
+}
+function drawTrefoilCrossing() {
+  const context = crossingCtx;
+  const width = crossingCanvas.width, height = crossingCanvas.height;
+  context.clearRect(0, 0, width, height);
+  const cx = width / 2, cy = height / 2 + 10, radius = Math.min(width, height) * 0.25;
+  const hex = polygonPoints(cx, cy, radius, 6, Math.PI / 6);
+  drawPath(context, hex, '#e9f3ef', '#98aaa5', 3);
+  hex.forEach((a, index) => {
+    const b = hex[(index + 1) % hex.length];
+    const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    const outward = { x: mid.x - cx, y: mid.y - cy };
+    const length = Math.hypot(outward.x, outward.y) || 1;
+    const tip = { x: mid.x + outward.x / length * radius * 0.85, y: mid.y + outward.y / length * radius * 0.85 };
+    drawPath(context, [a, b, tip], index % 2 ? 'rgba(213,94,0,.18)' : 'rgba(0,114,178,.14)', '#cbd8d4', 2);
+    for (let row = 0; row < 3; row += 1) {
+      for (let col = 0; col <= row; col += 1) {
+        const t = (row + 1) / 4;
+        const side = col / Math.max(1, row) - 0.5;
+        const x = tip.x * t + mid.x * (1 - t) + (b.x - a.x) * side * (1 - t) * 0.55;
+        const y = tip.y * t + mid.y * (1 - t) + (b.y - a.y) * side * (1 - t) * 0.55;
+        drawCrossingPiece(context, x, y, 'trefoil', index % 2 ? '#d55e00' : '#f0a202');
+      }
+    }
+  });
+  for (let q = -2; q <= 2; q += 1) {
+    for (let r = -2; r <= 2; r += 1) {
+      if (Math.max(Math.abs(q), Math.abs(r), Math.abs(-q-r)) > 2) continue;
+      drawCrossingPiece(context, cx + (q + r / 2) * 54, cy + r * 47, 'turtle', '#8ecae6');
+    }
+  }
+  context.fillStyle = '#15312c';
+  context.font = '700 26px Inter, system-ui, sans-serif';
+  context.fillText('Trefoil crossing: switch turtle–trefoil pairs to carry your trefoils across.', 34, 48);
+}
+function showTab(nextTab) {
+  activeTab = nextTab;
+  const showCrossing = activeTab === 'crossing';
+  canvas.classList.toggle('hidden', showCrossing);
+  crossingCanvas.classList.toggle('hidden', !showCrossing);
+  tilingTab.setAttribute('aria-pressed', showCrossing ? 'false' : 'true');
+  crossingTab.setAttribute('aria-pressed', showCrossing ? 'true' : 'false');
+  if (showCrossing) { setStatus('ready'); drawTrefoilCrossing(); }
+  else draw();
+}
+
+function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); if (activeTab === 'crossing') drawTrefoilCrossing(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
 canvas.addEventListener('pointermove',e=>{ if(!dragging){ const hit=hitTile(e); const nextHover=legalMoveIndices.has(hit)?hit:-1; if(nextHover!==hoveredIndex){ hoveredIndex=nextHover; draw(); } return; } const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
 canvas.addEventListener('pointerleave',()=>{ if(hoveredIndex!==-1){ hoveredIndex=-1; draw(); }});
 canvas.addEventListener('pointerup',e=>{ if(down && Math.hypot(e.clientX-down.x,e.clientY-down.y)<4) flipClicked(hitTile(e)); dragging=false; down=null;});
 canvas.addEventListener('wheel',e=>{ e.preventDefault(); const f=Math.exp(-e.deltaY*0.001); view.scale=Math.max(.12,Math.min(3.5,view.scale*f)); draw(); },{passive:false});
-blueStripesToggle.addEventListener('change',draw); orangeStripesToggle.addEventListener('change',draw); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click', resetToCenter);
+function stripeEnabled(button) { return button?.getAttribute('aria-pressed') === 'true'; }
+function toggleStripe(button) { button.setAttribute('aria-pressed', stripeEnabled(button) ? 'false' : 'true'); draw(); }
+blueStripesToggle.addEventListener('click',()=>toggleStripe(blueStripesToggle)); orangeStripesToggle.addEventListener('click',()=>toggleStripe(orangeStripesToggle)); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click', resetToCenter); tilingTab.addEventListener('click',()=>showTab('tiling')); crossingTab.addEventListener('click',()=>showTab('crossing'));
 window.addEventListener('resize', resizeCanvas);
 buildPatch();
 resizeCanvas();
