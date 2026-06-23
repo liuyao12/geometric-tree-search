@@ -1,6 +1,17 @@
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
+const crossingCanvas = document.getElementById('crossingBoard');
+const crossingCtx = crossingCanvas.getContext('2d');
+const turtleSeedTab = document.getElementById('turtleSeedTab');
+const tilingTab = document.getElementById('tilingTab');
+const crossingTab = document.getElementById('crossingTab');
+const symmetryButtons = [...document.querySelectorAll('.symmetry-toggle')];
+const trefoilTokens = [...document.querySelectorAll('.trefoil-token')];
+let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = '#d55e00';
+const attachedTrefoils = { tiling: [], crossing: [] };
 const statusEl = document.getElementById('status');
+function setStatus(text = 'ready') { if (statusEl) statusEl.textContent = text; }
+setStatus('ready');
 const blueStripesToggle = document.getElementById('blueStripes');
 const orangeStripesToggle = document.getElementById('orangeStripes');
 const buildButton = document.getElementById('build');
@@ -52,35 +63,85 @@ const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtl
 const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: placement.isReflected !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
-let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1;
+let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], historyStateKeys=[], resetting=false, buildVersion=0;
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
 function validCandidate(o,t,sums,markSums,used){ const pk=`${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
 function frontierPointHasCandidate(point, sums, markSums, used) { const need = MAX - point.value; return turtleOrientations.some(o => o.occupancy.some(a => a.value <= need && validCandidate(o, sub(point.point, a.point), sums, markSums, used))); }
-function generatePatch(seedPlacement, limit=170, targetCorona=6) {
+function randomItem(items) { return items[Math.floor(Math.random() * items.length)]; }
+function shuffled(items) { return items.map(value => ({ value, order: Math.random() })).sort((a, b) => a.order - b.order).map(entry => entry.value); }
+function candidateMovesForFrontier(f, sums, markSums, used) {
+  const need = MAX - f.value;
+  const candidates = [];
+  for (const o of turtleOrientations) {
+    for (const a of o.occupancy.filter(e => e.value <= need)) {
+      const cand = validCandidate(o, sub(f.point, a.point), sums, markSums, used);
+      if (cand) candidates.push({ ...cand, frontier: f });
+    }
+  }
+  return candidates.sort((a, b) => b.score - a.score);
+}
+function placementCoronasFor(list){ const cs=list.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); list.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of list[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
+function maxCoronaFor(list){ const finite=placementCoronasFor(list).filter(Number.isFinite); return finite.length ? Math.max(...finite) : 0; }
+function removePlacement(p,sums,markSums){ for(const e of p.occupancy){ const k=key(e.point), old=sums.get(k); if(!old) continue; old.value-=e.value; if(old.value<=0)sums.delete(k); else sums.set(k,old); } for(const e of p.marks){ const k=mkey(e), old=markSums.get(k); if(!old) continue; if(old.count<=1) markSums.delete(k); else markSums.set(k,{...old,count:old.count-1,conflict:false}); } }
+function candidateKeepsBoundaryAlive(candidate, sums, markSums, used) {
+  const trial = place(candidate.orientation, candidate.translation, { kind: 'turtle', placementKey: candidate.pk });
+  addPlacement(trial, sums, markSums);
+  used.add(candidate.pk);
+  const affected = new Map();
+  trial.occupancy.forEach(entry => { const current = sums.get(key(entry.point)); if (current && current.value < MAX) affected.set(key(entry.point), current); });
+  const dead = [...affected.values()].some(point => !candidateMovesForFrontier(point, sums, markSums, used).length);
+  used.delete(candidate.pk);
+  removePlacement(trial, sums, markSums);
+  return !dead;
+}
+function analyzePatchBoundary(sums, markSums, used) {
+  const options = frontier(sums).slice(0, 12).map(f => ({ frontier: f, candidates: candidateMovesForFrontier(f, sums, markSums, used) }));
+  const deadEnd = options.find(option => option.candidates.length === 0);
+  if (deadEnd) return { deadEnd, choice: null, forced: false };
+  const byGctsOrder = (a,b) => a.candidates.length - b.candidates.length || norm(a.frontier.point) - norm(b.frontier.point) || a.frontier.value - b.frontier.value || b.candidates[0].score - a.candidates[0].score;
+  const forced = options.filter(option => option.candidates.length === 1).sort(byGctsOrder);
+  if (forced.length) return { deadEnd: null, choice: forced[0], forced: true };
+  const ranked = options.filter(option => option.candidates.length).sort(byGctsOrder);
+  if (!ranked.length) return { deadEnd: null, choice: null, forced: false };
+  const first = ranked[0];
+  const tied = ranked.filter(option => option.candidates.length === first.candidates.length && norm(option.frontier.point) === norm(first.frontier.point) && option.frontier.value === first.frontier.value && option.candidates[0].score === first.candidates[0].score);
+  return { deadEnd: null, choice: randomItem(tied), forced: false };
+}
+function generatePatch(seedPlacement, guardLimit=170, targetCorona=6) {
   const nextPlacements = [seedPlacement];
   const sums = new Map(), markSums = new Map(), used = new Set();
+  let best = nextPlacements.slice(), bestCorona = 0, nodes = 0;
+  const nodeBudget = Math.max(800, targetCorona * targetCorona * 16);
   addPlacement(nextPlacements[0], sums, markSums);
-  for (let step = 0; step < limit * 60 && nextPlacements.length < limit; step++) {
-    let best = null;
-    for (const f of frontier(sums).slice(0, 32)) {
-      const need = MAX - f.value;
-      for (const o of turtleOrientations) {
-        for (const a of o.occupancy.filter(e => e.value <= need)) {
-          const cand = validCandidate(o, sub(f.point, a.point), sums, markSums, used);
-          if (cand && (!best || cand.score > best.score)) best = { ...cand, frontier: f };
-        }
-      }
-      if (best?.score >= 0) break;
+  const rememberBest = () => { const candidateCorona = maxCoronaFor(nextPlacements); if (candidateCorona > bestCorona || (candidateCorona === bestCorona && nextPlacements.length > best.length)) { best = nextPlacements.slice(); bestCorona = candidateCorona; } };
+  const applyCandidate = (candidate, option, forced) => {
+    const placement = place(candidate.orientation, candidate.translation, { kind: 'turtle', placementKey: candidate.pk, forced, branchCount: option.candidates.length });
+    nextPlacements.push(placement);
+    used.add(candidate.pk);
+    addPlacement(placement, sums, markSums);
+    return placement;
+  };
+  const undoCandidate = placement => { removePlacement(placement, sums, markSums); used.delete(placement.placementKey); nextPlacements.pop(); };
+  const search = () => {
+    rememberBest();
+    if (bestCorona >= targetCorona || nextPlacements.length >= guardLimit) return bestCorona >= targetCorona;
+    if (nodes++ >= nodeBudget) return false;
+    const analysis = analyzePatchBoundary(sums, markSums, used);
+    if (analysis.deadEnd || !analysis.choice) return false;
+    const candidates = analysis.forced ? analysis.choice.candidates : shuffled(analysis.choice.candidates);
+    for (const candidate of candidates) {
+      if (!candidateKeepsBoundaryAlive(candidate, sums, markSums, used)) { used.add(candidate.pk); continue; }
+      const placement = applyCandidate(candidate, analysis.choice, analysis.forced);
+      if (search()) return true;
+      undoCandidate(placement);
+      if (nodes >= nodeBudget) break;
     }
-    if (!best) break;
-    const nextPlacement = place(best.orientation, best.translation, { kind: 'turtle', placementKey: best.pk });
-    nextPlacements.push(nextPlacement);
-    used.add(best.pk);
-    addPlacement(nextPlacement, sums, markSums);
-  }
-  return nextPlacements;
+    return false;
+  };
+  search();
+  return best;
 }
 function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 6)); }
 function patchIntegrity() {
@@ -91,9 +152,43 @@ function patchIntegrity() {
   const deadFrontier = frontier(sums).filter(point => !frontierPointHasCandidate(point, sums, markSums, used)).length;
   return { overfilled, markConflicts, deadFrontier };
 }
-function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 20)); placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit, targetCorona);
- coronas=computeCoronas(); legalMoveIndices = new Set(); const maxCorona = Math.max(...coronas.filter(Number.isFinite)); statusEl.textContent=`Initialized ${placements.length-1} turtles; corona ${maxCorona}. Finding viable moves...`; draw(); window.setTimeout(() => { updateMoveHints(); const integrity = patchIntegrity(); statusEl.textContent=`Initialized ${placements.length-1} turtles; corona ${maxCorona}; integrity errors: ${integrity.overfilled + integrity.markConflicts}; dead frontier: ${integrity.deadFrontier}. Click a corona-1 turtle to try a legal move.`; draw(); }, 0); }
-function computeCoronas(){ const cs=placements.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); placements.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of placements[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
+function revealPatch(finalPlacements, version) {
+  const finalCoronas = placementCoronasFor(finalPlacements);
+  const finiteCoronas = finalCoronas.filter(Number.isFinite);
+  const maxCorona = finiteCoronas.length ? Math.max(...finiteCoronas) : 0;
+  let visibleCorona = 0;
+  const revealNext = () => {
+    if (version !== buildVersion) return;
+    placements = finalPlacements.filter((_, index) => (finalCoronas[index] ?? Infinity) <= visibleCorona);
+    coronas = placementCoronasFor(placements);
+    legalMoveIndices = new Set();
+    setStatus('computing');
+    draw();
+    if (visibleCorona < maxCorona) {
+      visibleCorona += 1;
+      window.setTimeout(revealNext, 90);
+      return;
+    }
+    updateMoveHints();
+    setStatus('ready');
+    draw();
+  };
+  revealNext();
+}
+function buildPatch(){ if (activeTab === 'crossing') { setStatus('computing'); drawTrefoilCrossing(); window.setTimeout(() => setStatus('ready'), 90); return; } const targetCorona = readTargetCorona(); const guardLimit = Math.max(500, Math.ceil(targetCorona * targetCorona * 30)); const version = ++buildVersion; const seed = activeTab === 'turtle' ? place(turtleOrientations[0],[0,0,0],{kind:'seed'}) : place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; historyStateKeys = [placementStateKey(seed)]; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, guardLimit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
+function computeCoronas(){ return placementCoronasFor(placements); }
+function placementStateKey(placement) { return placement.vertices.map(key).sort().join('|'); }
+function rememberHistoryMove(move) {
+  const stateKey = placementStateKey(placements[0]);
+  const seenIndex = historyStateKeys.lastIndexOf(stateKey);
+  if (seenIndex >= 0) {
+    moveHistory = moveHistory.slice(0, seenIndex);
+    historyStateKeys = historyStateKeys.slice(0, seenIndex + 1);
+    return;
+  }
+  moveHistory.push({ index: move.clickedIndex, op: cloneMoveOp(move.op) });
+  historyStateKeys.push(stateKey);
+}
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
 function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?'#d55e00':'#0072b2'; ctx.setLineDash([]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
@@ -146,7 +241,7 @@ function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, o
 function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.segments.map(segment => ({ a: screen(segment.p1), b: screen(segment.p2), value: segment.value })), styleOverride = null) {
   const style = styleOverride || styleForPlacement(p, index);
   drawPolyScreen(points, style.fill, style.stroke, index === 0 || legalMoveIndices.has(index) ? 4.2 : (index&&coronas[index]===1?2.0:1.5));
-  segments.filter(segment => segment.value > 0 ? orangeStripesToggle.checked : blueStripesToggle.checked).forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
+  segments.filter(segment => segment.value > 0 ? stripeEnabled(orangeStripesToggle) : stripeEnabled(blueStripesToggle)).forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
 }
 function drawAnimatedPlacement(index, progress) {
   const from = activeAnimation.from.get(index), to = activeAnimation.to.get(index);
@@ -155,7 +250,7 @@ function drawAnimatedPlacement(index, progress) {
   const segments = from.segments.map((segment, i) => ({ a: animatePoint(segment.p1, to.segments[i].p1, progress, activeAnimation), b: animatePoint(segment.p2, to.segments[i].p2, progress, activeAnimation), value: showBackFace ? to.segments[i].value : segment.value }));
   drawPlacement(to, index, points, segments, showBackFace ? styleForPlacement(to) : styleForPlacement(from));
 }
-function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
+function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); refreshAttachmentViability('tiling'); drawAttachedTrefoils(ctx, attachedTrefoils.tiling); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
 function hitTile(ev){ const r=canvas.getBoundingClientRect(), pt={x:(ev.clientX-r.left)*canvas.width/r.width,y:(ev.clientY-r.top)*canvas.height/r.height}; for(let i=placements.length-1;i>0;i--){ if(coronas[i]!==1) continue; const poly=placements[i].vertices.map(screen); if(pointInPoly(pt, poly)) return i; } return -1; }
 function moveFromOp(clickedIndex, op) {
   if (op.kind === 'reflection' && !op.axis) op.axis = reflectionAxisForOp(op);
@@ -259,15 +354,225 @@ function updateMoveHints() {
     if (coronas[index] === 1 && localMoveFor(index)) legalMoveIndices.add(index);
   }
 }
-function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); statusEl.textContent = `Applied one outline-preserving ${move.op.kind}; all other turtles stayed fixed.`; draw(); }
-function flipClicked(i){ if(activeAnimation) return; const move = localMoveFor(i); if(!move) { statusEl.textContent = i < 0 ? 'Click a corona-1 turtle.' : 'That neighboring turtle cannot be moved without breaking the tiling.'; return; } const fromSeed = placements[0], fromClicked = placements[i]; placements = move.next; legalMoveIndices = new Set(); hoveredIndex = -1; activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[i], i, move.op); statusEl.textContent = `Animating local ${move.op.kind}...`; window.requestAnimationFrame(draw); window.setTimeout(() => finishAnimation(move), activeAnimation.duration + 30); }
-function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
+function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
+function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
+function finishUserMove(move) { finishAnimation(move); rememberHistoryMove(move); }
+function animateMove(move, onFinish = finishAnimation) {
+  const fromSeed = placements[0], fromClicked = placements[move.clickedIndex];
+  placements = move.next;
+  legalMoveIndices = new Set();
+  hoveredIndex = -1;
+  activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[move.clickedIndex], move.clickedIndex, move.op);
+  setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn');
+  window.requestAnimationFrame(draw);
+  window.setTimeout(() => onFinish(move), activeAnimation.duration + 30);
+}
+function flipClicked(i){ if(activeAnimation || resetting) return; const move = localMoveFor(i); if(!move) { setStatus('blocked'); return; } animateMove(move, finishUserMove); }
+function resetToCenter() {
+  if (activeAnimation || resetting) return;
+  if (!moveHistory.length) { view={scale:.72,x:canvas.width/2,y:canvas.height/2}; setStatus('ready'); draw(); return; }
+  resetting = true;
+  setStatus('resetting');
+  const stepBack = () => {
+    const previous = moveHistory.pop();
+    if (previous) historyStateKeys.pop();
+    if (!previous) { resetting = false; view={scale:.72,x:canvas.width/2,y:canvas.height/2}; updateMoveHints(); setStatus('ready'); draw(); return; }
+    const move = moveFromOp(previous.index, { ...previous.op });
+    animateMove(move, () => { finishAnimation(move); window.setTimeout(stepBack, 80); });
+  };
+  stepBack();
+}
+
+function polygonPoints(cx, cy, radius, sides, rotation = 0) {
+  return Array.from({ length: sides }, (_, index) => {
+    const angle = rotation + (Math.PI * 2 * index) / sides;
+    return { x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius };
+  });
+}
+function drawPath(context, points, fill, stroke = '#15312c', width = 2) {
+  context.beginPath();
+  points.forEach((point, index) => index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y));
+  context.closePath();
+  context.fillStyle = fill;
+  context.fill();
+  context.strokeStyle = stroke;
+  context.lineWidth = width;
+  context.stroke();
+}
+
+function transformedTrefoilPoints(rotation = 0, scale = 1) {
+  const raw = trefoilVerts.map(project);
+  const cx = raw.reduce((sum, point) => sum + point.x, 0) / raw.length;
+  const cy = raw.reduce((sum, point) => sum + point.y, 0) / raw.length;
+  const angle = (rotation * Math.PI) / 180;
+  return raw.map(point => {
+    const x = (point.x - cx) * scale, y = (point.y - cy) * scale;
+    return { x: x * Math.cos(angle) - y * Math.sin(angle), y: x * Math.sin(angle) + y * Math.cos(angle) };
+  });
+}
+function drawTrefoilShape(context, x, y, rotation = 0, scale = 0.38, color = '#d55e00') {
+  const points = transformedTrefoilPoints(rotation, scale);
+  context.save();
+  context.translate(x, y);
+  drawPath(context, points, color, '#7a1f4d', 2.2);
+  context.restore();
+}
+function drawTrefoilToken(button) {
+  const context = button.getContext('2d');
+  context.clearRect(0, 0, button.width, button.height);
+  drawTrefoilShape(context, button.width / 2, button.height / 2, Number(button.dataset.rotation) || 0, 0.28, button.dataset.color || '#d55e00');
+}
+
+function drawCrossingPiece(context, x, y, kind, color) {
+  context.save();
+  context.translate(x, y);
+  if (kind === 'trefoil') {
+    drawTrefoilShape(context, 0, 0, 0, 0.34, color);
+  } else {
+    drawPath(context, polygonPoints(0, 0, 17, 6, Math.PI / 6), color, '#005a8c', 2);
+  }
+  context.restore();
+}
+function drawTrefoilCrossing() {
+  const context = crossingCtx;
+  const width = crossingCanvas.width, height = crossingCanvas.height;
+  context.clearRect(0, 0, width, height);
+  const cx = width / 2, cy = height / 2 + 10, coreRadius = Math.min(width, height) * 0.14, radius = Math.min(width, height) * 0.31;
+  const coreHex = polygonPoints(cx, cy, coreRadius, 6, Math.PI / 6);
+  const hex = polygonPoints(cx, cy, radius, 6, Math.PI / 6);
+  drawPath(context, hex, 'rgba(233,243,239,.42)', '#cbd8d4', 2);
+  drawPath(context, coreHex, '#e9f3ef', '#98aaa5', 3);
+  const teamColors = ['#d55e00', '#7b2cbf', '#2a9d8f'];
+  hex.forEach((a, index) => {
+    const b = hex[(index + 1) % hex.length];
+    const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    const outward = { x: mid.x - cx, y: mid.y - cy };
+    const length = Math.hypot(outward.x, outward.y) || 1;
+    const tip = { x: mid.x + outward.x / length * radius * 0.85, y: mid.y + outward.y / length * radius * 0.85 };
+    const occupied = index % 2 === 0;
+    drawPath(context, [a, b, tip], occupied ? 'rgba(213,94,0,.16)' : 'rgba(0,114,178,.08)', '#cbd8d4', 2);
+    if (!occupied) {
+      context.save();
+      context.strokeStyle = '#98aaa5';
+      context.setLineDash([7, 7]);
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc((tip.x + mid.x) / 2, (tip.y + mid.y) / 2, 24, 0, Math.PI * 2);
+      context.stroke();
+      context.restore();
+      return;
+    }
+    const teamColor = teamColors[Math.floor(index / 2) % teamColors.length];
+    for (let row = 0; row < 3; row += 1) {
+      const t = (row + 1) / 4;
+      for (let col = 0; col <= row; col += 1) {
+        const side = row ? col / row - 0.5 : 0;
+        const x = tip.x * t + mid.x * (1 - t) + (b.x - a.x) * side * (1 - t) * 0.48;
+        const y = tip.y * t + mid.y * (1 - t) + (b.y - a.y) * side * (1 - t) * 0.48;
+        drawCrossingPiece(context, x, y, 'trefoil', teamColor);
+      }
+    }
+  });
+  for (let q = -4; q <= 4; q += 1) {
+    for (let r = -4; r <= 4; r += 1) {
+      const ring = Math.max(Math.abs(q), Math.abs(r), Math.abs(-q-r));
+      if (ring > 4) continue;
+      const color = ring <= 2 ? '#8ecae6' : 'rgba(142,202,230,.55)';
+      drawCrossingPiece(context, cx + (q + r / 2) * 34, cy + r * 30, 'turtle', color);
+    }
+  }
+  context.fillStyle = '#15312c';
+  context.font = '700 26px Inter, system-ui, sans-serif';
+  drawAttachedTrefoils(context, attachedTrefoils.crossing);
+  context.fillText(`Hex seed sketch: ${selectedSymmetry}-fold turtle layers; snap same-handed trefoils.`, 34, 48);
+}
+
+function allowedSymmetriesForTab(tab) {
+  if (tab === 'turtle') return [1];
+  if (tab === 'tiling') return [1, 3];
+  return [1, 3, 6];
+}
+function updateSymmetryAvailability() {
+  const allowed = allowedSymmetriesForTab(activeTab);
+  if (!allowed.includes(selectedSymmetry)) selectedSymmetry = allowed[0];
+  symmetryButtons.forEach(button => {
+    const value = Number(button.dataset.symmetry) || 1;
+    const isAllowed = allowed.includes(value);
+    button.hidden = !isAllowed;
+    button.disabled = !isAllowed;
+    button.setAttribute('aria-pressed', value === selectedSymmetry ? 'true' : 'false');
+  });
+}
+function showTab(nextTab) {
+  activeTab = nextTab;
+  updateSymmetryAvailability();
+  const showCrossing = activeTab === 'crossing';
+  canvas.classList.toggle('hidden', showCrossing);
+  crossingCanvas.classList.toggle('hidden', !showCrossing);
+  turtleSeedTab.setAttribute('aria-pressed', activeTab === 'turtle' ? 'true' : 'false');
+  tilingTab.setAttribute('aria-pressed', activeTab === 'tiling' ? 'true' : 'false');
+  crossingTab.setAttribute('aria-pressed', showCrossing ? 'true' : 'false');
+  buildButton.textContent = 'Initialize tiling';
+  if (showCrossing) { setStatus('ready'); drawTrefoilCrossing(); }
+  else draw();
+}
+
+
+function drawAttachedTrefoils(context, items) {
+  items.forEach(item => {
+    context.save();
+    context.strokeStyle = item.viable === false ? 'rgba(128,128,128,.55)' : 'rgba(44,160,44,.75)';
+    context.lineWidth = 4;
+    context.setLineDash(item.viable === false ? [6, 6] : []);
+    context.beginPath();
+    context.arc(item.x, item.y, 36, 0, Math.PI * 2);
+    context.stroke();
+    context.restore();
+    drawTrefoilShape(context, item.x, item.y, item.rotation, 0.38, item.color || '#d55e00');
+  });
+}
+function placementScreenCenter(placement) {
+  const points = placement.vertices.map(screen);
+  return points.reduce((sum, point) => ({ x: sum.x + point.x / points.length, y: sum.y + point.y / points.length }), { x: 0, y: 0 });
+}
+function refreshAttachmentViability(tab) {
+  if (tab === 'crossing') { attachedTrefoils.crossing.forEach(item => { item.viable = true; }); return; }
+  const centers = [...legalMoveIndices].map(index => placementScreenCenter(placements[index]));
+  attachedTrefoils.tiling.forEach(item => {
+    item.viable = centers.some(center => Math.hypot(center.x - item.x, center.y - item.y) < 150);
+  });
+}
+function snapAnchorsFor(targetCanvas) {
+  const cx = targetCanvas.width / 2, cy = targetCanvas.height / 2 + 10;
+  const radius = Math.min(targetCanvas.width, targetCanvas.height) * (targetCanvas === crossingCanvas ? 0.38 : 0.34);
+  return polygonPoints(cx, cy, radius, 12, Math.PI / 12);
+}
+function attachTrefoilAt(event, targetCanvas) {
+  event.preventDefault();
+  const rect = targetCanvas.getBoundingClientRect();
+  const scaleX = targetCanvas.width / rect.width, scaleY = targetCanvas.height / rect.height;
+  const point = { x: (event.clientX - rect.left) * scaleX, y: (event.clientY - rect.top) * scaleY };
+  const snap = snapAnchorsFor(targetCanvas).sort((a, b) => Math.hypot(a.x - point.x, a.y - point.y) - Math.hypot(b.x - point.x, b.y - point.y))[0];
+  const tab = targetCanvas === crossingCanvas ? 'crossing' : 'tiling';
+  attachedTrefoils[tab].push({ x: snap.x, y: snap.y, rotation: draggedTrefoilRotation, color: draggedTrefoilColor, viable: true });
+  refreshAttachmentViability(tab);
+  setStatus('snapped');
+  targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
+}
+
+function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); if (activeTab === 'crossing') drawTrefoilCrossing(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
 canvas.addEventListener('pointermove',e=>{ if(!dragging){ const hit=hitTile(e); const nextHover=legalMoveIndices.has(hit)?hit:-1; if(nextHover!==hoveredIndex){ hoveredIndex=nextHover; draw(); } return; } const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
 canvas.addEventListener('pointerleave',()=>{ if(hoveredIndex!==-1){ hoveredIndex=-1; draw(); }});
 canvas.addEventListener('pointerup',e=>{ if(down && Math.hypot(e.clientX-down.x,e.clientY-down.y)<4) flipClicked(hitTile(e)); dragging=false; down=null;});
 canvas.addEventListener('wheel',e=>{ e.preventDefault(); const f=Math.exp(-e.deltaY*0.001); view.scale=Math.max(.12,Math.min(3.5,view.scale*f)); draw(); },{passive:false});
-blueStripesToggle.addEventListener('change',draw); orangeStripesToggle.addEventListener('change',draw); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click',()=>{view={scale:.72,x:canvas.width/2,y:canvas.height/2};draw();});
+function stripeEnabled(button) { return button?.getAttribute('aria-pressed') === 'true'; }
+function toggleStripe(button) { button.setAttribute('aria-pressed', stripeEnabled(button) ? 'false' : 'true'); draw(); }
+trefoilTokens.forEach(drawTrefoilToken);
+trefoilTokens.forEach(button => { button.addEventListener('dragstart', event => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || '#d55e00'; event.dataTransfer?.setData('text/plain', String(draggedTrefoilRotation)); }); button.addEventListener('click', () => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || '#d55e00'; setStatus('drag trefoil'); }); });
+[canvas, crossingCanvas].forEach(target => { target.addEventListener('dragover', event => event.preventDefault()); target.addEventListener('drop', event => attachTrefoilAt(event, target)); });
+blueStripesToggle.addEventListener('click',()=>toggleStripe(blueStripesToggle)); orangeStripesToggle.addEventListener('click',()=>toggleStripe(orangeStripesToggle)); symmetryButtons.forEach(button => button.addEventListener('click', () => { if (button.disabled) return; selectedSymmetry = Number(button.dataset.symmetry) || 1; updateSymmetryAvailability(); setStatus('ready'); if (activeTab === 'crossing') drawTrefoilCrossing(); })); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click', resetToCenter); turtleSeedTab.addEventListener('click',()=>showTab('turtle')); tilingTab.addEventListener('click',()=>showTab('tiling')); crossingTab.addEventListener('click',()=>showTab('crossing'));
 window.addEventListener('resize', resizeCanvas);
+updateSymmetryAvailability();
 buildPatch();
 resizeCanvas();

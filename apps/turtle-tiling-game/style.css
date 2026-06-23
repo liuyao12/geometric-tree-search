@@ -7,7 +7,24 @@ h1 { margin:.1rem 0 .35rem; font-size:clamp(2rem,5vw,4rem); }
 .toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:12px 14px; border:1px solid #cbd8d4; border-radius:16px 16px 0 0; background:#fffdf8; box-shadow:0 10px 25px rgba(31,55,49,.08); }
 button { border:1px solid #98aaa5; background:#fff; color:#15312c; padding:.55rem .8rem; border-radius:999px; font-weight:700; cursor:pointer; }
 button:hover { background:#f3faf7; }
+
+.stripe-toggle { background:#e6ebe8; color:#52645f; border-color:#c3ceca; }
+.stripe-toggle[aria-pressed="true"].stripe-blue { background:#0072b2; border-color:#005a8c; color:#fff; }
+.stripe-toggle[aria-pressed="true"].stripe-orange { background:#d55e00; border-color:#a74700; color:#fff; }
 .toolbar input[type="number"] { width:4.5rem; border:1px solid #98aaa5; border-radius:999px; padding:.45rem .6rem; font:inherit; }
-#status { margin-left:auto; font-variant-numeric:tabular-nums; color:#52645f; }
+#status { margin-left:auto; max-width:12rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-variant-numeric:tabular-nums; color:#52645f; }
+.game-tabs { display:flex; gap:0; padding:0 14px; margin-top:14px; }
+.tab-button { border-radius:14px 14px 0 0; background:#e6ebe8; color:#52645f; border-bottom:0; }
+.tab-button + .tab-button { margin-left:6px; }
+.tab-button[aria-pressed="true"] { background:#fffdf8; border-color:#cbd8d4; color:#15312c; }
+.symmetry-toggle { background:#e6ebe8; color:#52645f; }
+.symmetry-toggle[aria-pressed="true"] { background:#15312c; border-color:#15312c; color:#fff; }
+.symmetry-toggle:disabled { opacity:.42; cursor:not-allowed; }
+.hidden { display:none; }
+.board-area { display:flex; align-items:stretch; }
+.trefoil-palette { width:86px; display:flex; flex-direction:column; gap:8px; padding:12px 10px; border:1px solid #cbd8d4; border-top:0; border-right:0; background:#fffdf8; color:#52645f; }
+.trefoil-token { width:74px; height:74px; border:1px solid #d65d98; border-radius:14px; background:#fff7fb; cursor:grab; }
+.trefoil-token:active { cursor:grabbing; }
+.canvas-stack { flex:1; min-width:0; }
 canvas { display:block; width:100%; aspect-ratio:1200 / 780; height:auto; max-height:780px; border:1px solid #cbd8d4; border-top:0; border-radius:0 0 16px 16px; background:#f7faf8; cursor:grab; }
 canvas:active { cursor:grabbing; }
