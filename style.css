@@ -379,6 +379,35 @@ h1 {
   font-size: 14px;
 }
 
+.turtle-compact-toolbar {
+  align-items: center;
+  flex-flow: row wrap;
+  gap: 8px 10px;
+}
+
+.turtle-compact-toolbar label,
+.turtle-stripes-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.turtle-compact-toolbar input[type="number"] {
+  width: 3.25rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 6px;
+  color: var(--text);
+}
+
+.turtle-compact-toolbar .icon-button {
+  min-width: 34px;
+  padding-inline: 8px;
+  font-size: 17px;
+  line-height: 1;
+}
+
 .demo-drag-handle {
   display: inline-flex;
   align-items: center;
