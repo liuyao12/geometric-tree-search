@@ -419,9 +419,11 @@ function drawTrefoilCrossing() {
   const context = crossingCtx;
   const width = crossingCanvas.width, height = crossingCanvas.height;
   context.clearRect(0, 0, width, height);
-  const cx = width / 2, cy = height / 2 + 10, radius = Math.min(width, height) * 0.25;
+  const cx = width / 2, cy = height / 2 + 10, coreRadius = Math.min(width, height) * 0.14, radius = Math.min(width, height) * 0.31;
+  const coreHex = polygonPoints(cx, cy, coreRadius, 6, Math.PI / 6);
   const hex = polygonPoints(cx, cy, radius, 6, Math.PI / 6);
-  drawPath(context, hex, '#e9f3ef', '#98aaa5', 3);
+  drawPath(context, hex, 'rgba(233,243,239,.42)', '#cbd8d4', 2);
+  drawPath(context, coreHex, '#e9f3ef', '#98aaa5', 3);
   const teamColors = ['#d55e00', '#7b2cbf', '#2a9d8f'];
   hex.forEach((a, index) => {
     const b = hex[(index + 1) % hex.length];
@@ -453,15 +455,17 @@ function drawTrefoilCrossing() {
       }
     }
   });
-  for (let q = -2; q <= 2; q += 1) {
-    for (let r = -2; r <= 2; r += 1) {
-      if (Math.max(Math.abs(q), Math.abs(r), Math.abs(-q-r)) > 2) continue;
-      drawCrossingPiece(context, cx + (q + r / 2) * 54, cy + r * 47, 'turtle', '#8ecae6');
+  for (let q = -4; q <= 4; q += 1) {
+    for (let r = -4; r <= 4; r += 1) {
+      const ring = Math.max(Math.abs(q), Math.abs(r), Math.abs(-q-r));
+      if (ring > 4) continue;
+      const color = ring <= 2 ? '#8ecae6' : 'rgba(142,202,230,.55)';
+      drawCrossingPiece(context, cx + (q + r / 2) * 34, cy + r * 30, 'turtle', color);
     }
   }
   context.fillStyle = '#15312c';
   context.font = '700 26px Inter, system-ui, sans-serif';
-  context.fillText('Trefoil crossing concept: 3 same-handed trefoil teams race to opposite goal zones.', 34, 48);
+  context.fillText('Trefoil crossing sketch: side-2 hex seed, symmetric turtle layers, then test trefoil clusters.', 34, 48);
 }
 function showTab(nextTab) {
   activeTab = nextTab;
