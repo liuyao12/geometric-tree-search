@@ -13,21 +13,39 @@
       <h1>Turtle Tiling Game</h1>
       <p class="lede">A one-player tiling toy: build a marked turtle corona around a central <strong>Trefoil</strong> tile, then click a turtle touching it to flip the local pair.</p>
     </header>
+    <nav class="game-tabs" aria-label="Initial tile">
+      <button id="turtleSeedTab" class="tab-button" type="button" aria-pressed="true">turtle seed</button>
+      <button id="tilingTab" class="tab-button" type="button" aria-pressed="false">trefoil seed</button>
+      <button id="crossingTab" class="tab-button" type="button" aria-pressed="false">hex seed</button>
+    </nav>
     <section class="toolbar" aria-label="Game controls">
-      <button id="build">Initialize turtle tiling</button>
+      <button id="build">Initialize turtle seed</button>
       <label>corona <input id="coronaTarget" type="number" min="1" max="12" value="6"></label>
+      <span class="symmetry-label">symmetry:</span>
+      <button class="symmetry-toggle" type="button" data-symmetry="1" aria-pressed="true">1</button>
+      <button class="symmetry-toggle" type="button" data-symmetry="3" aria-pressed="false">3</button>
+      <button class="symmetry-toggle" type="button" data-symmetry="6" aria-pressed="false">6</button>
       <button id="resetView" aria-label="Reset trefoil to center">↺</button>
       <span class="stripes-label">stripes:</span>
       <button id="blueStripes" class="stripe-toggle stripe-blue" type="button" aria-pressed="true">blue</button>
       <button id="orangeStripes" class="stripe-toggle stripe-orange" type="button" aria-pressed="true">orange</button>
       <span id="status" aria-live="polite">ready</span>
     </section>
-    <nav class="game-tabs" aria-label="Game mode">
-      <button id="tilingTab" class="tab-button" type="button" aria-pressed="true">turtle tiling</button>
-      <button id="crossingTab" class="tab-button" type="button" aria-pressed="false">trefoil crossing sketch</button>
-    </nav>
-    <canvas id="board" width="1200" height="780" aria-label="Turtle Tiling Game board"></canvas>
-    <canvas id="crossingBoard" class="hidden" width="1200" height="780" aria-label="Trefoil Crossing board"></canvas>
+    <div class="board-area">
+      <aside id="trefoilPalette" class="trefoil-palette" aria-label="Trefoil attachment palette">
+        <strong>trefoils</strong>
+        <button class="trefoil-token" type="button" draggable="true" data-rotation="0">0°</button>
+        <button class="trefoil-token" type="button" draggable="true" data-rotation="60">60°</button>
+        <button class="trefoil-token" type="button" draggable="true" data-rotation="120">120°</button>
+        <button class="trefoil-token" type="button" draggable="true" data-rotation="180">180°</button>
+        <button class="trefoil-token" type="button" draggable="true" data-rotation="240">240°</button>
+        <button class="trefoil-token" type="button" draggable="true" data-rotation="300">300°</button>
+      </aside>
+      <div class="canvas-stack">
+        <canvas id="board" width="1200" height="780" aria-label="Turtle Tiling Game board"></canvas>
+        <canvas id="crossingBoard" class="hidden" width="1200" height="780" aria-label="Hex Seed Turtle Game board"></canvas>
+      </div>
+    </div>
 
   </main>
   <script type="module" src="./app.js"></script>
