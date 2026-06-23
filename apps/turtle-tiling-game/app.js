@@ -10,7 +10,7 @@ const trefoilTokens = [...document.querySelectorAll('.trefoil-token')];
 const trefoilTrash = document.getElementById('trefoilTrash');
 const BLUE = '#0072b2', BLUE_STROKE = '#005a8c', ORANGE = '#d55e00', ORANGE_STROKE = '#a74700';
 let movingAttachment = null;
-let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null;
+let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null, nextAttachmentId = 1;
 const attachedTrefoils = { tiling: [], crossing: [] };
 const statusEl = document.getElementById('status');
 function setStatus(text = 'ready') { if (statusEl) statusEl.textContent = text; }
@@ -66,6 +66,8 @@ const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtl
 const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: placement.isReflected !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
+function isTrefoilPlacement(placement) { return placement?.orientation?.name === 'Trefoil' || placement?.kind === 'attached-trefoil'; }
+function isTurtlePlacement(placement) { return placement?.orientation?.name === 'Turtle' || placement?.kind === 'turtle' || placement?.kind === 'seed-turtle'; }
 let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], historyStateKeys=[], resetting=false, buildVersion=0;
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
@@ -238,13 +240,13 @@ function rememberHistoryMove(move) {
     historyStateKeys = historyStateKeys.slice(0, seenIndex + 1);
     return;
   }
-  moveHistory.push({ index: move.clickedIndex, op: cloneMoveOp(move.op) });
+  moveHistory.push({ indices: [...move.indices], clickedIndex: move.clickedIndex, op: cloneMoveOp(move.op) });
   historyStateKeys.push(stateKey);
 }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
 function drawSegmentScreen(a, b, value) { ctx.strokeStyle=value>0?ORANGE:BLUE; ctx.setLineDash([]); ctx.lineWidth=2.2; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
-function styleForPlacement(p) { const reflected = p.isReflected; return { fill: reflected ? 'rgba(213,94,0,.48)' : 'rgba(0,114,178,.42)', stroke: reflected ? '#a74700' : '#005a8c' }; }
+function styleForPlacement(p) { if (p.color) return { fill: `${p.color}7a`, stroke: trefoilStrokeFor(p.color) }; const reflected = p.isReflected; return { fill: reflected ? 'rgba(213,94,0,.48)' : 'rgba(0,114,178,.42)', stroke: reflected ? ORANGE_STROKE : BLUE_STROKE }; }
 function eased(value) { return value < 0.5 ? 2 * value * value : 1 - Math.pow(-2 * value + 2, 2) / 2; }
 function lerp(a, b, t) { return a + (b - a) * t; }
 function animatePoint(from, to, progress, animation) {
@@ -285,9 +287,11 @@ function reflectionAxisForOp(op) {
   if (length < 1e-9) return null;
   return { point: a, unit: { x: (b.x - a.x) / length, y: (b.y - a.y) / length } };
 }
-function makeAnimation(fromSeed, fromClicked, toSeed, toClicked, clickedIndex, op) {
-  const animation = { from: new Map([[0, fromSeed], [clickedIndex, fromClicked]]), to: new Map([[0, toSeed], [clickedIndex, toClicked]]), indices: new Set([0, clickedIndex]), clickedIndex, op, started: performance.now(), duration: 520, center: op.center || op.translation.map(value => value / 2), axis: null };
-  if (op.kind === 'reflection') animation.axis = op.axis || reflectionAxisForOp(op);
+function makeAnimationForMove(move, fromPlacements) {
+  const from = new Map(), to = new Map();
+  move.indices.forEach(index => { from.set(index, fromPlacements[index]); to.set(index, move.next[index]); });
+  const animation = { from, to, indices: new Set(move.indices), clickedIndex: move.clickedIndex, op: move.op, started: performance.now(), duration: 520, center: move.op.center || move.op.translation.map(value => value / 2), axis: null };
+  if (move.op.kind === 'reflection') animation.axis = move.op.axis || reflectionAxisForOp(move.op);
   return animation;
 }
 function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.segments.map(segment => ({ a: screen(segment.p1), b: screen(segment.p2), value: segment.value })), styleOverride = null) {
@@ -307,16 +311,14 @@ function drawCentralHexagon(context = ctx) {
   const points = centralHexVerts.map(screen);
   drawPath(context, points, '#f7faf8', '#15312c', 3);
 }
-function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); if (activeTab === 'crossing') drawCentralHexagon(); refreshAttachmentViability('tiling'); drawAttachedTrefoils(ctx, attachedTrefoils.tiling); if (dragPreview?.tab === 'tiling') drawAttachedTrefoils(ctx, [dragPreview]); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
-function hitTile(ev){ const r=canvas.getBoundingClientRect(), pt={x:(ev.clientX-r.left)*canvas.width/r.width,y:(ev.clientY-r.top)*canvas.height/r.height}; for(let i=placements.length-1;i>0;i--){ if(coronas[i]!==1) continue; const poly=placements[i].vertices.map(screen); if(pointInPoly(pt, poly)) return i; } return -1; }
-function moveFromOp(clickedIndex, op) {
+function draw(){ ctx.clearRect(0,0,canvas.width,canvas.height); let progress = 1; if (activeAnimation) progress = Math.min(1, (performance.now() - activeAnimation.started) / activeAnimation.duration); placements.forEach((p,i)=>{ if(activeAnimation?.indices.has(i)) drawAnimatedPlacement(i, progress); else drawPlacement(p, i); }); if (activeTab === 'crossing') drawCentralHexagon(); refreshAttachmentViability('tiling'); if (dragPreview?.tab === 'tiling') drawAttachedTrefoils(ctx, [dragPreview]); if(activeAnimation && progress < 1) window.requestAnimationFrame(draw); }
+function hitTile(ev){ const r=canvas.getBoundingClientRect(), pt={x:(ev.clientX-r.left)*canvas.width/r.width,y:(ev.clientY-r.top)*canvas.height/r.height}; for(let i=placements.length-1;i>=0;i--){ if(!legalMoveIndices.has(i)) continue; const poly=placements[i].vertices.map(screen); if(pointInPoly(pt, poly)) return i; } return -1; }
+function moveFromOpForPair(trefoilIndex, turtleIndex, op, clickedIndex = turtleIndex) {
   if (op.kind === 'reflection' && !op.axis) op.axis = reflectionAxisForOp(op);
-  const movedSeed = transformPlacement(placements[0], op);
-  const movedClicked = transformPlacement(placements[clickedIndex], op);
   const next = placements.slice();
-  next[0] = movedSeed;
-  next[clickedIndex] = movedClicked;
-  return { op, next, clickedIndex };
+  next[trefoilIndex] = transformPlacement(placements[trefoilIndex], op);
+  next[turtleIndex] = transformPlacement(placements[turtleIndex], op);
+  return { op, next, clickedIndex, indices: [trefoilIndex, turtleIndex] };
 }
 function edgeKey(a, b) {
   const ka = key(a), kb = key(b);
@@ -334,9 +336,9 @@ function placementBoundaryEdges(placement) {
   }
   return edges;
 }
-function pairOutlineEdges(seed, turtle) {
+function pairOutlineEdges(aPlacement, bPlacement) {
   const edges = new Map();
-  for (const placement of [seed, turtle]) {
+  for (const placement of [aPlacement, bPlacement]) {
     for (const [ek, count] of placementBoundaryEdges(placement)) edges.set(ek, (edges.get(ek) || 0) + count);
   }
   return new Set([...edges.entries()].filter(([, count]) => count === 1).map(([ek]) => ek));
@@ -345,8 +347,8 @@ function transformEdgeKey(ek, op) {
   const [a, b] = ek.split('|').map(pointKey => pointKey.split(',').map(Number));
   return edgeKey(transformAffine(a, op), transformAffine(b, op));
 }
-function outlineSymmetryOps(seed, turtle) {
-  const outline = pairOutlineEdges(seed, turtle);
+function outlineSymmetryOps(aPlacement, bPlacement) {
+  const outline = pairOutlineEdges(aPlacement, bPlacement);
   const outlinePoints = [...outline].flatMap(ek => ek.split('|')).map(pointKey => pointKey.split(',').map(Number));
   const ops = [];
   for (const sym of allSymmetries) {
@@ -368,15 +370,15 @@ function outlineSymmetryOps(seed, turtle) {
     return true;
   });
 }
-function validatorWithoutPair(clickedIndex) {
+function validatorWithoutPair(indexA, indexB) {
   const baseSums = new Map(), baseMarks = new Map();
   placements.forEach((placement, index) => {
-    if (index !== 0 && index !== clickedIndex) addPlacement(placement, baseSums, baseMarks);
+    if (index !== indexA && index !== indexB) addPlacement(placement, baseSums, baseMarks);
   });
   return move => {
     const pairSums = new Map(), pairMarks = new Map();
-    addPlacement(move.next[0], pairSums, pairMarks);
-    addPlacement(move.next[clickedIndex], pairSums, pairMarks);
+    addPlacement(move.next[indexA], pairSums, pairMarks);
+    addPlacement(move.next[indexB], pairSums, pairMarks);
     for (const [pointKey, entry] of pairSums) {
       if ((baseSums.get(pointKey)?.value || 0) + entry.value > MAX) return false;
     }
@@ -388,10 +390,10 @@ function validatorWithoutPair(clickedIndex) {
     return true;
   };
 }
-function outlinePreservingMove(clickedIndex) {
-  const moves = outlineSymmetryOps(placements[0], placements[clickedIndex])
-    .map(op => moveFromOp(clickedIndex, op))
-    .filter(validatorWithoutPair(clickedIndex));
+function outlinePreservingMoveForPair(trefoilIndex, turtleIndex, clickedIndex) {
+  const moves = outlineSymmetryOps(placements[trefoilIndex], placements[turtleIndex])
+    .map(op => moveFromOpForPair(trefoilIndex, turtleIndex, op, clickedIndex))
+    .filter(validatorWithoutPair(trefoilIndex, turtleIndex));
   return chooseUniqueMove(moves);
 }
 function chooseUniqueMove(moves) {
@@ -403,23 +405,31 @@ function chooseUniqueMove(moves) {
 }
 function localMoveFor(clickedIndex) {
   if (clickedIndex < 0) return null;
-  return outlinePreservingMove(clickedIndex);
+  const clicked = placements[clickedIndex];
+  const pairs = [];
+  placements.forEach((placement, index) => {
+    if (index === clickedIndex) return;
+    if (isTrefoilPlacement(clicked) && isTurtlePlacement(placement)) pairs.push([clickedIndex, index]);
+    if (isTurtlePlacement(clicked) && isTrefoilPlacement(placement)) pairs.push([index, clickedIndex]);
+  });
+  const moves = pairs.map(([trefoilIndex, turtleIndex]) => outlinePreservingMoveForPair(trefoilIndex, turtleIndex, clickedIndex)).filter(Boolean);
+  return chooseUniqueMove(moves);
 }
 function updateMoveHints() {
   legalMoveIndices = new Set();
-  for (let index = 1; index < placements.length; index += 1) {
-    if (coronas[index] === 1 && localMoveFor(index)) legalMoveIndices.add(index);
+  for (let index = 0; index < placements.length; index += 1) {
+    if (localMoveFor(index)) legalMoveIndices.add(index);
   }
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
 function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
 function finishUserMove(move) { finishAnimation(move); rememberHistoryMove(move); }
 function animateMove(move, onFinish = finishAnimation) {
-  const fromSeed = placements[0], fromClicked = placements[move.clickedIndex];
+  const fromPlacements = placements.slice();
   placements = move.next;
   legalMoveIndices = new Set();
   hoveredIndex = -1;
-  activeAnimation = makeAnimation(fromSeed, fromClicked, move.next[0], move.next[move.clickedIndex], move.clickedIndex, move.op);
+  activeAnimation = makeAnimationForMove(move, fromPlacements);
   setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn');
   window.requestAnimationFrame(draw);
   window.setTimeout(() => onFinish(move), activeAnimation.duration + 30);
@@ -434,7 +444,10 @@ function resetToCenter() {
     const previous = moveHistory.pop();
     if (previous) historyStateKeys.pop();
     if (!previous) { resetting = false; view={scale:.72,x:canvas.width/2,y:canvas.height/2}; updateMoveHints(); setStatus('ready'); draw(); return; }
-    const move = moveFromOp(previous.index, { ...previous.op });
+    const [a, b] = previous.indices || [0, previous.clickedIndex];
+    const trefoilIndex = isTrefoilPlacement(placements[a]) ? a : b;
+    const turtleIndex = trefoilIndex === a ? b : a;
+    const move = moveFromOpForPair(trefoilIndex, turtleIndex, { ...previous.op }, previous.clickedIndex);
     animateMove(move, () => { finishAnimation(move); window.setTimeout(stepBack, 80); });
   };
   stepBack();
@@ -531,7 +544,13 @@ function trefoilOrientationForToken(rotation = 0, reflect = false) {
   return orientation;
 }
 function trefoilTilePlacement(item) {
-  return place(trefoilOrientationForToken(item.rotation, !!item.reflect), item.translation || [0, 0, 0], { kind: 'attached-trefoil', color: item.color || ORANGE });
+  return place(trefoilOrientationForToken(item.rotation, !!item.reflect), item.translation || [0, 0, 0], { kind: 'attached-trefoil', color: item.color || ORANGE, attachmentId: item.attachmentId });
+}
+function syncAttachedTrefoilPlacement(item) {
+  const index = placements.findIndex(placement => placement.attachmentId === item.attachmentId);
+  if (index >= 0) placements[index] = trefoilTilePlacement(item);
+  coronas = computeCoronas();
+  updateMoveHints();
 }
 function drawTrefoilTile(context, item) {
   const tile = trefoilTilePlacement(item);
@@ -653,7 +672,13 @@ function attachTrefoilAt(event, targetCanvas) {
   const tab = targetCanvas === crossingCanvas ? 'crossing' : 'tiling';
   const attachment = trefoilAttachmentFor(event, targetCanvas);
   delete attachment.tab;
+  attachment.attachmentId = nextAttachmentId++;
   attachedTrefoils[tab].push(attachment);
+  if (tab === 'tiling' && attachment.translation) {
+    placements.push(trefoilTilePlacement(attachment));
+    coronas = computeCoronas();
+    updateMoveHints();
+  }
   dragPreview = null;
   refreshAttachmentViability(tab);
   setStatus('snapped');
@@ -697,6 +722,7 @@ function moveAttachmentDrag(event) {
     item.y = snap.y;
   } else {
     item.translation = latticePointForCanvasPoint(point);
+    syncAttachedTrefoilPlacement(item);
   }
   setTrashHot(pointInTrash(event));
   targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
@@ -706,7 +732,12 @@ function endAttachmentDrag(event) {
   if (!movingAttachment) return false;
   const { tab, index, targetCanvas } = movingAttachment;
   if (pointInTrash(event)) {
-    attachedTrefoils[tab].splice(index, 1);
+    const [removed] = attachedTrefoils[tab].splice(index, 1);
+    if (removed?.attachmentId) {
+      placements = placements.filter(placement => placement.attachmentId !== removed.attachmentId);
+      coronas = computeCoronas();
+      updateMoveHints();
+    }
     setStatus('deleted');
   } else {
     refreshAttachmentViability(tab);
