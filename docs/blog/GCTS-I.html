@@ -39,9 +39,9 @@
               <button type="button" id="turtle-start">Initialize turtle tiling</button>
               <label>corona <input type="number" id="turtle-corona" value="6" min="1" max="20" inputmode="numeric" aria-label="Corona size"></label>
               <button type="button" id="turtle-reset" class="icon-button" aria-label="Reset view">↺</button>
-              <span class="turtle-striples-label">striples:</span>
-              <label><input type="checkbox" id="turtle-striple-blue"> blue</label>
-              <label><input type="checkbox" id="turtle-striple-orange"> orange</label>
+              <span class="turtle-stripes-label">stripes:</span>
+              <label><input type="checkbox" id="turtle-stripe-blue"> blue</label>
+              <label><input type="checkbox" id="turtle-stripe-orange"> orange</label>
               <label><input type="checkbox" id="turtle-cells" checked> triangular cells</label>
               <span class="demo-drag-handle" id="turtle-window-drag" role="button" tabindex="0" aria-label="Drag turtle demo window">Drag window</span>
             </div>
@@ -165,8 +165,8 @@
       const ctx = canvas.getContext('2d');
       const startButton = document.getElementById('turtle-start');
       const resetButton = document.getElementById('turtle-reset');
-      const stripleBlueToggle = document.getElementById('turtle-striple-blue');
-      const stripleOrangeToggle = document.getElementById('turtle-striple-orange');
+      const stripeBlueToggle = document.getElementById('turtle-stripe-blue');
+      const stripeOrangeToggle = document.getElementById('turtle-stripe-orange');
       const cellsToggle = document.getElementById('turtle-cells');
       const stageLabel = document.getElementById('turtle-stage-label');
       const stageNote = document.getElementById('turtle-stage-note');
@@ -891,8 +891,8 @@
       }
 
       function updateMarkingButton() {
-        if (stripleBlueToggle) stripleBlueToggle.checked = showMarkings;
-        if (stripleOrangeToggle) stripleOrangeToggle.checked = showMarkings;
+        if (stripeBlueToggle) stripeBlueToggle.checked = showMarkings;
+        if (stripeOrangeToggle) stripeOrangeToggle.checked = showMarkings;
       }
 
       function describePlacementStatus(placement) {
@@ -1093,14 +1093,14 @@
         }, 620);
         draw();
       });
-      function handleStripleToggle() {
-        showMarkings = Boolean(stripleBlueToggle?.checked || stripleOrangeToggle?.checked);
+      function handleStripeToggle() {
+        showMarkings = Boolean(stripeBlueToggle?.checked || stripeOrangeToggle?.checked);
         if (stageLabel) stageLabel.textContent = showMarkings ? 'Stage: markings enabled manually' : 'Stage: markings hidden manually';
         if (stageNote) stageNote.textContent = showMarkings ? 'The specified vertex-to-vertex marking segments are now drawn on each turtle.' : 'The Smith turtle shapes remain, but the three marking components are hidden.';
         draw();
       }
-      stripleBlueToggle?.addEventListener('change', handleStripleToggle);
-      stripleOrangeToggle?.addEventListener('change', handleStripleToggle);
+      stripeBlueToggle?.addEventListener('change', handleStripeToggle);
+      stripeOrangeToggle?.addEventListener('change', handleStripeToggle);
       cellsToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
         stopTiling();
