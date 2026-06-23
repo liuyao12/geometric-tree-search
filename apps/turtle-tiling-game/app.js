@@ -134,6 +134,19 @@ function generatePatch(seedPlacement, limit=170, targetCorona=6) {
   search();
   return best;
 }
+function generatePatch(seedPlacement, limit=170, targetCorona=6) {
+  let best = [seedPlacement], bestCorona = 0;
+  const attempts = 1;
+  for (let attempt = 0; attempt < attempts && bestCorona < targetCorona; attempt += 1) {
+    const candidate = generatePatchAttempt(seedPlacement, limit);
+    const candidateCorona = maxCoronaFor(candidate);
+    if (candidateCorona > bestCorona || (candidateCorona === bestCorona && candidate.length > best.length)) {
+      best = candidate;
+      bestCorona = candidateCorona;
+    }
+  }
+  return best;
+}
 function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 6)); }
 function patchIntegrity() {
   const sums = new Map(), markSums = new Map(), used = new Set();
