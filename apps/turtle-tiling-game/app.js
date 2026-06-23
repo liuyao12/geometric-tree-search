@@ -75,8 +75,20 @@ function candidateMovesForFrontier(f, sums, markSums, used) {
 }
 function placementCoronasFor(list){ const cs=list.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); list.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of list[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
 function maxCoronaFor(list){ const finite=placementCoronasFor(list).filter(Number.isFinite); return finite.length ? Math.max(...finite) : 0; }
+function removePlacement(p,sums,markSums){ for(const e of p.occupancy){ const k=key(e.point), old=sums.get(k); if(!old) continue; old.value-=e.value; if(old.value<=0)sums.delete(k); else sums.set(k,old); } for(const e of p.marks){ const k=mkey(e), old=markSums.get(k); if(!old) continue; if(old.count<=1) markSums.delete(k); else markSums.set(k,{...old,count:old.count-1,conflict:false}); } }
+function candidateKeepsBoundaryAlive(candidate, sums, markSums, used) {
+  const trial = place(candidate.orientation, candidate.translation, { kind: 'turtle', placementKey: candidate.pk });
+  addPlacement(trial, sums, markSums);
+  used.add(candidate.pk);
+  const affected = new Map();
+  trial.occupancy.forEach(entry => { const current = sums.get(key(entry.point)); if (current && current.value < MAX) affected.set(key(entry.point), current); });
+  const dead = [...affected.values()].some(point => !candidateMovesForFrontier(point, sums, markSums, used).length);
+  used.delete(candidate.pk);
+  removePlacement(trial, sums, markSums);
+  return !dead;
+}
 function choosePatchMove(sums, markSums, used) {
-  const options = frontier(sums).slice(0, 24)
+  const options = frontier(sums).slice(0, 12)
     .map(f => ({ frontier: f, candidates: candidateMovesForFrontier(f, sums, markSums, used) }))
     .filter(option => option.candidates.length);
   if (!options.length) return null;
@@ -97,6 +109,7 @@ function generatePatchAttempt(seedPlacement, limit) {
   for (let step = 0; step < limit * 80 && nextPlacements.length < limit; step++) {
     const move = choosePatchMove(sums, markSums, used);
     if (!move) break;
+    if (!candidateKeepsBoundaryAlive(move.candidate, sums, markSums, used)) { used.add(move.candidate.pk); continue; }
     const nextPlacement = place(move.candidate.orientation, move.candidate.translation, { kind: 'turtle', placementKey: move.candidate.pk, forced: move.forced, branchCount: move.option.candidates.length });
     nextPlacements.push(nextPlacement);
     used.add(move.candidate.pk);
@@ -106,7 +119,7 @@ function generatePatchAttempt(seedPlacement, limit) {
 }
 function generatePatch(seedPlacement, limit=170, targetCorona=6) {
   let best = [seedPlacement], bestCorona = 0;
-  const attempts = 2;
+  const attempts = 1;
   for (let attempt = 0; attempt < attempts && bestCorona < targetCorona; attempt += 1) {
     const candidate = generatePatchAttempt(seedPlacement, limit);
     const candidateCorona = maxCoronaFor(candidate);
@@ -126,8 +139,8 @@ function patchIntegrity() {
   const deadFrontier = frontier(sums).filter(point => !frontierPointHasCandidate(point, sums, markSums, used)).length;
   return { overfilled, markConflicts, deadFrontier };
 }
-function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 12)); activeAnimation = null; resetting = false; moveHistory = []; placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit, targetCorona);
- coronas=computeCoronas(); legalMoveIndices = new Set(); setStatus('ready'); draw(); window.setTimeout(() => { updateMoveHints(); setStatus('ready'); draw(); }, 0); }
+function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 8)); activeAnimation = null; resetting = false; moveHistory = []; setStatus('computing'); placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit, targetCorona);
+ coronas=computeCoronas(); const maxCorona = Math.max(...coronas.filter(Number.isFinite)); legalMoveIndices = new Set(); setStatus(`corona ${maxCorona}`); draw(); window.setTimeout(() => { updateMoveHints(); setStatus(`corona ${maxCorona}`); draw(); }, 0); }
 function computeCoronas(){ return placementCoronasFor(placements); }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
