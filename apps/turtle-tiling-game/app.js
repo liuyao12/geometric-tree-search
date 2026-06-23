@@ -430,11 +430,11 @@ function drawTrefoilCrossing() {
     const tip = { x: mid.x + outward.x / length * radius * 0.85, y: mid.y + outward.y / length * radius * 0.85 };
     drawPath(context, [a, b, tip], index % 2 ? 'rgba(213,94,0,.18)' : 'rgba(0,114,178,.14)', '#cbd8d4', 2);
     for (let row = 0; row < 3; row += 1) {
+      const t = (row + 1) / 4;
       for (let col = 0; col <= row; col += 1) {
-        const t = (row + 1) / 4;
-        const side = col / Math.max(1, row) - 0.5;
-        const x = tip.x * t + mid.x * (1 - t) + (b.x - a.x) * side * (1 - t) * 0.55;
-        const y = tip.y * t + mid.y * (1 - t) + (b.y - a.y) * side * (1 - t) * 0.55;
+        const side = row ? col / row - 0.5 : 0;
+        const x = tip.x * t + mid.x * (1 - t) + (b.x - a.x) * side * (1 - t) * 0.48;
+        const y = tip.y * t + mid.y * (1 - t) + (b.y - a.y) * side * (1 - t) * 0.48;
         drawCrossingPiece(context, x, y, 'trefoil', index % 2 ? '#d55e00' : '#f0a202');
       }
     }
@@ -447,7 +447,7 @@ function drawTrefoilCrossing() {
   }
   context.fillStyle = '#15312c';
   context.font = '700 26px Inter, system-ui, sans-serif';
-  context.fillText('Trefoil crossing: switch turtle–trefoil pairs to carry your trefoils across.', 34, 48);
+  context.fillText('Trefoil crossing concept: triangular trefoil boundary clusters; can turtles fill the middle?', 34, 48);
 }
 function showTab(nextTab) {
   activeTab = nextTab;
