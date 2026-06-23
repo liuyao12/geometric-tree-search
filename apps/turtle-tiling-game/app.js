@@ -173,16 +173,30 @@ function symmetryOrbitForFold(fold) {
   if (fold <= 1) return [allSymmetries[0]];
   return Array.from({ length: fold }, (_, index) => rotationSymmetryForDegrees(index * 360 / fold));
 }
+function placementsFitWithSums(group, sums, markSums) {
+  const trialSums = new Map(sums), trialMarks = new Map(markSums);
+  for (const placement of group) {
+    addPlacement(placement, trialSums, trialMarks);
+    if ([...trialSums.values()].some(entry => entry.value > MAX)) return false;
+    if ([...trialMarks.values()].some(entry => entry.conflict)) return false;
+  }
+  return true;
+}
 function symmetrizePlacementsForHex(list) {
   const orbit = symmetryOrbitForFold(selectedSymmetry);
-  const seen = new Set(), out = [];
+  const seen = new Set(), out = [], sums = new Map(), markSums = new Map();
   for (const placement of list) {
+    const group = [];
     for (const sym of orbit) {
       const transformed = transformPlacement(placement, { sym, translation: [0, 0, 0] });
       const stateKey = placementStateKey(transformed);
-      if (seen.has(stateKey)) continue;
-      seen.add(stateKey);
-      out.push(transformed);
+      if (!seen.has(stateKey)) group.push({ placement: transformed, stateKey });
+    }
+    if (!placementsFitWithSums(group.map(entry => entry.placement), sums, markSums)) continue;
+    for (const entry of group) {
+      seen.add(entry.stateKey);
+      out.push(entry.placement);
+      addPlacement(entry.placement, sums, markSums);
     }
   }
   return out;
@@ -461,6 +475,23 @@ function drawTrefoilShape(context, x, y, rotation = 0, scale = 0.38, color = ORA
   drawPath(context, points, color, trefoilStrokeFor(color), 2.2);
   context.restore();
 }
+function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, reflect = false) {
+  const points = transformedTrefoilPoints(rotation, scale, reflect);
+  const mapVertex = vertex => points[trefoilVerts.findIndex(point => key(point) === key(vertex))];
+  context.save();
+  context.translate(x, y);
+  context.lineWidth = 2;
+  context.strokeStyle = BLUE;
+  trefoilStripeDefs.forEach(def => {
+    const a = mapVertex(def.p1), b = mapVertex(def.p2);
+    if (!a || !b) return;
+    context.beginPath();
+    context.moveTo(a.x, a.y);
+    context.lineTo(b.x, b.y);
+    context.stroke();
+  });
+  context.restore();
+}
 
 function strokeTrefoilShape(context, x, y, rotation = 0, scale = 0.46, stroke = 'rgba(44,160,44,.75)', reflect = false) {
   const points = transformedTrefoilPoints(rotation, scale, reflect);
@@ -477,7 +508,9 @@ function strokeTrefoilShape(context, x, y, rotation = 0, scale = 0.46, stroke = 
 function drawTrefoilToken(button) {
   const context = button.getContext('2d');
   context.clearRect(0, 0, button.width, button.height);
-  drawTrefoilShape(context, button.width / 2, button.height / 2, Number(button.dataset.rotation) || 0, 0.28, button.dataset.color || ORANGE, button.dataset.reflect === 'true');
+  const rotation = Number(button.dataset.rotation) || 0, reflect = button.dataset.reflect === 'true';
+  drawTrefoilShape(context, button.width / 2, button.height / 2, rotation, 0.28, button.dataset.color || ORANGE, reflect);
+  drawTrefoilTokenStripes(context, button.width / 2, button.height / 2, rotation, 0.28, reflect);
 }
 
 const trefoilTokenOrientationCache = new Map();
