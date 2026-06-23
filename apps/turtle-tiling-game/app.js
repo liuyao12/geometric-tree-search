@@ -54,7 +54,7 @@ const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtl
 const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: placement.isReflected !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
-let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], resetting=false;
+let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], resetting=false, buildVersion=0;
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
@@ -134,19 +134,6 @@ function generatePatch(seedPlacement, limit=170, targetCorona=6) {
   search();
   return best;
 }
-function generatePatch(seedPlacement, limit=170, targetCorona=6) {
-  let best = [seedPlacement], bestCorona = 0;
-  const attempts = 1;
-  for (let attempt = 0; attempt < attempts && bestCorona < targetCorona; attempt += 1) {
-    const candidate = generatePatchAttempt(seedPlacement, limit);
-    const candidateCorona = maxCoronaFor(candidate);
-    if (candidateCorona > bestCorona || (candidateCorona === bestCorona && candidate.length > best.length)) {
-      best = candidate;
-      bestCorona = candidateCorona;
-    }
-  }
-  return best;
-}
 function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 6)); }
 function patchIntegrity() {
   const sums = new Map(), markSums = new Map(), used = new Set();
@@ -156,8 +143,30 @@ function patchIntegrity() {
   const deadFrontier = frontier(sums).filter(point => !frontierPointHasCandidate(point, sums, markSums, used)).length;
   return { overfilled, markConflicts, deadFrontier };
 }
-function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 8)); activeAnimation = null; resetting = false; moveHistory = []; setStatus('computing'); placements=generatePatch(place(trefoilBase,[0,0,0],{kind:'seed'}), limit, targetCorona);
- coronas=computeCoronas(); const maxCorona = Math.max(...coronas.filter(Number.isFinite)); legalMoveIndices = new Set(); setStatus(maxCorona >= targetCorona ? `corona ${maxCorona}` : `blocked at ${maxCorona}`); draw(); window.setTimeout(() => { updateMoveHints(); setStatus(maxCorona >= targetCorona ? `corona ${maxCorona}` : `blocked at ${maxCorona}`); draw(); }, 0); }
+function revealPatch(finalPlacements, version) {
+  const finalCoronas = placementCoronasFor(finalPlacements);
+  const finiteCoronas = finalCoronas.filter(Number.isFinite);
+  const maxCorona = finiteCoronas.length ? Math.max(...finiteCoronas) : 0;
+  let visibleCorona = 0;
+  const revealNext = () => {
+    if (version !== buildVersion) return;
+    placements = finalPlacements.filter((_, index) => (finalCoronas[index] ?? Infinity) <= visibleCorona);
+    coronas = placementCoronasFor(placements);
+    legalMoveIndices = new Set();
+    setStatus('computing');
+    draw();
+    if (visibleCorona < maxCorona) {
+      visibleCorona += 1;
+      window.setTimeout(revealNext, 90);
+      return;
+    }
+    updateMoveHints();
+    setStatus('ready');
+    draw();
+  };
+  revealNext();
+}
+function buildPatch(){ const targetCorona = readTargetCorona(); const limit = Math.max(170, Math.ceil(targetCorona * targetCorona * 8)); const version = ++buildVersion; const seed = place(trefoilBase,[0,0,0],{kind:'seed'}); activeAnimation = null; resetting = false; moveHistory = []; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, limit, targetCorona); revealPatch(finalPlacements, version); }, 0); }
 function computeCoronas(){ return placementCoronasFor(placements); }
 function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y+q.y*view.scale}; }
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
