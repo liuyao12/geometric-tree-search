@@ -507,6 +507,16 @@ function updateMoveHints() {
   for (let index = 0; index < placements.length; index += 1) {
     if (localMoveFor(index)) legalMoveIndices.add(index);
   }
+  return null;
+}
+function startAttachmentDrag(event, targetCanvas) {
+  const hit = hitAttachedTrefoil(event, targetCanvas);
+  if (!hit) return false;
+  movingAttachment = hit;
+  dragPreview = null;
+  targetCanvas.setPointerCapture?.(event.pointerId);
+  setStatus('drag trefoil');
+  return true;
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); clearMoveHintCache(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
 function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
