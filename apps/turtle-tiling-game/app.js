@@ -170,7 +170,7 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
     if (analysis.deadEnd || !analysis.choice) return false;
     const candidates = analysis.forced ? analysis.choice.candidates : shuffled(analysis.choice.candidates);
     for (const candidate of candidates) {
-      if (!candidateKeepsBoundaryAlive(candidate, sums, markSums, used)) { used.add(candidate.pk); continue; }
+      if (!candidateKeepsBoundaryAlive(candidate, sums, markSums, used)) continue;
       const group = applyCandidate(candidate, analysis.choice, analysis.forced);
       if (!group) continue;
       if (search()) return true;
@@ -209,7 +209,7 @@ function symmetryOrbitForFold(fold) {
   return Array.from({ length: fold }, (_, index) => rotationSymmetryForDegrees(index * 360 / fold));
 }
 function placementsFitWithSums(group, sums, markSums) {
-  const trialSums = new Map(sums), trialMarks = new Map(markSums);
+  const trialSums = new Map([...sums].map(([key, entry]) => [key, { ...entry }])), trialMarks = new Map([...markSums].map(([key, entry]) => [key, { ...entry }]));
   for (const placement of group) {
     addPlacement(placement, trialSums, trialMarks);
     if ([...trialSums.values()].some(entry => entry.value > MAX)) return false;
