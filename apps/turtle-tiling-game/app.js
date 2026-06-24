@@ -14,7 +14,7 @@ let movingAttachment = null;
 let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null, nextAttachmentId = 1;
 let moveHintCache = new Map(), pairMoveCache = new Map();
 const tabStates = new Map();
-let palettePointerDrag = null, pendingDragDraw = null, dragSnapCenters = null;
+let palettePointerDrag = null, pendingDragDraw = null;
 const attachedTrefoils = { tiling: [], crossing: [] };
 const statusEl = document.getElementById('status');
 function setStatus(text = 'ready') { if (statusEl) statusEl.textContent = text; }
@@ -576,7 +576,7 @@ function drawTrefoilShape(context, x, y, rotation = 0, scale = 0.38, color = ORA
   drawPath(context, points, color, trefoilStrokeFor(color), 2.2);
   context.restore();
 }
-function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, reflect = false) {
+function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, reflect = false, fillColor = null) {
   const points = transformedTrefoilPoints(rotation, scale, reflect);
   const mapVertex = vertex => points[trefoilVerts.findIndex(point => key(point) === key(vertex))];
   context.save();
@@ -588,7 +588,9 @@ function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, refl
     if (value < 0 && !stripeEnabled(blueStripesToggle)) return;
     const a = mapVertex(def.p1), b = mapVertex(def.p2);
     if (!a || !b) return;
-    context.strokeStyle = value > 0 ? ORANGE : BLUE;
+    const stripeColor = value > 0 ? ORANGE : BLUE;
+    context.strokeStyle = fillColor === stripeColor ? '#fffdf8' : stripeColor;
+    context.lineWidth = fillColor === stripeColor ? 3.4 : 2.4;
     context.beginPath();
     context.moveTo(a.x, a.y);
     context.lineTo(b.x, b.y);
@@ -613,8 +615,9 @@ function drawTrefoilToken(button) {
   const context = button.getContext('2d');
   context.clearRect(0, 0, button.width, button.height);
   const rotation = Number(button.dataset.rotation) || 0, reflect = button.dataset.reflect === 'true';
-  drawTrefoilShape(context, button.width / 2, button.height / 2, rotation, 0.28, button.dataset.color || ORANGE, reflect);
-  drawTrefoilTokenStripes(context, button.width / 2, button.height / 2, rotation, 0.28, reflect);
+  const color = button.dataset.color || ORANGE;
+  drawTrefoilShape(context, button.width / 2, button.height / 2, rotation, 0.28, color, reflect);
+  drawTrefoilTokenStripes(context, button.width / 2, button.height / 2, rotation, 0.28, reflect, color);
 }
 
 const trefoilTokenOrientationCache = new Map();
@@ -735,7 +738,7 @@ function showTab(nextTab) {
 
 function drawAttachedTrefoils(context, items) {
   items.forEach(item => {
-    if (item.translation) {
+    if (item.translation && !item.previewOnly) {
       drawTrefoilTile(context, item);
       return;
     }
@@ -765,21 +768,6 @@ function scheduleBoardRedraw(targetCanvas = canvas) {
     target === crossingCanvas ? drawTrefoilCrossing() : draw();
   });
 }
-function placementScreenCenters() {
-  return placements.filter(placement => placement.kind !== 'hex-hole').map(placement =>
-    placement.vertices.map(screen).reduce((sum, vertex) => ({ x: sum.x + vertex.x / placement.vertices.length, y: sum.y + vertex.y / placement.vertices.length }), { x: 0, y: 0 })
-  );
-}
-function nearestPlacementDistance(point) {
-  const centers = dragSnapCenters || placementScreenCenters();
-  if (!centers.length) return Infinity;
-  return Math.min(...centers.map(center => Math.hypot(point.x - center.x, point.y - center.y)));
-}
-function shouldSnapTrefoilPreview(point, targetCanvas) {
-  if (targetCanvas === crossingCanvas) return true;
-  return nearestPlacementDistance(point) < 210;
-}
-
 function eventPointOnCanvas(event, targetCanvas) {
   const rect = targetCanvas.getBoundingClientRect();
   const scaleX = targetCanvas.width / rect.width, scaleY = targetCanvas.height / rect.height;
@@ -802,12 +790,12 @@ function snapToLattice(point, targetCanvas) {
   }
   return screen(latticePointForCanvasPoint(point));
 }
-function trefoilAttachmentFor(event, targetCanvas) {
+function trefoilAttachmentFor(event, targetCanvas, { snap = false } = {}) {
   const point = eventPointOnCanvas(event, targetCanvas);
   const base = { rotation: draggedTrefoilRotation, color: draggedTrefoilColor, reflect: draggedTrefoilReflect, viable: true, tab: targetCanvas === crossingCanvas ? 'crossing' : 'tiling' };
-  if (targetCanvas === crossingCanvas) return { ...base, ...snapToLattice(point, targetCanvas) };
-  if (!shouldSnapTrefoilPreview(point, targetCanvas)) return { ...base, x: point.x, y: point.y, viable: false };
-  return { ...base, translation: latticePointForCanvasPoint(point) };
+  if (targetCanvas === crossingCanvas) return { ...base, ...(snap ? snapToLattice(point, targetCanvas) : point) };
+  const translation = latticePointForCanvasPoint(point);
+  return snap ? { ...base, translation } : { ...base, x: point.x, y: point.y, translation, previewOnly: true };
 }
 function updateDragPreview(event, targetCanvas) {
   event.preventDefault();
@@ -817,8 +805,7 @@ function updateDragPreview(event, targetCanvas) {
 function attachTrefoilAt(event, targetCanvas) {
   event.preventDefault();
   const tab = targetCanvas === crossingCanvas ? 'crossing' : 'tiling';
-  const attachment = trefoilAttachmentFor(event, targetCanvas);
-  if (tab === 'tiling' && !attachment.translation) { dragPreview = null; setStatus('blocked'); draw(); return; }
+  const attachment = trefoilAttachmentFor(event, targetCanvas, { snap: true });
   delete attachment.tab;
   attachment.attachmentId = nextAttachmentId++;
   attachedTrefoils[tab].push(attachment);
@@ -923,7 +910,6 @@ function beginPalettePointerDrag(event, button) {
   draggedTrefoilColor = button.dataset.color || ORANGE;
   draggedTrefoilReflect = button.dataset.reflect === 'true';
   palettePointerDrag = { pointerId: event.pointerId };
-  dragSnapCenters = placementScreenCenters();
   document.addEventListener('pointermove', movePalettePointerDrag);
   document.addEventListener('pointerup', endPalettePointerDrag, { once: true });
   document.addEventListener('pointercancel', cancelPalettePointerDrag, { once: true });
@@ -951,7 +937,6 @@ function movePalettePointerDrag(event) {
 function finishPalettePointerDrag() {
   document.removeEventListener('pointermove', movePalettePointerDrag);
   palettePointerDrag = null;
-  dragSnapCenters = null;
   setTrashHot(false);
 }
 function cancelPalettePointerDrag(event) {
