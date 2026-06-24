@@ -12,9 +12,9 @@ const trefoilTrash = document.getElementById('trefoilTrash');
 const BLUE = '#0072b2', BLUE_STROKE = '#005a8c', ORANGE = '#d55e00', ORANGE_STROKE = '#a74700';
 let movingAttachment = null;
 let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null, nextAttachmentId = 1;
-let moveHintCache = new Map();
+let moveHintCache = new Map(), pairMoveCache = new Map();
 const tabStates = new Map();
-let palettePointerDrag = null, pendingDragDraw = null;
+let palettePointerDrag = null, pendingDragDraw = null, dragSnapCenters = null;
 const attachedTrefoils = { tiling: [], crossing: [] };
 const statusEl = document.getElementById('status');
 function setStatus(text = 'ready') { if (statusEl) statusEl.textContent = text; }
@@ -264,7 +264,35 @@ function revealPatch(finalPlacements, version) {
   revealNext();
 }
 function clearAttachedTrefoils() { attachedTrefoils.tiling = []; attachedTrefoils.crossing = []; dragPreview = null; movingAttachment = null; setTrashHot(false); }
-function buildPatch(){ clearAttachedTrefoils(); const targetCorona = readTargetCorona(); const guardLimit = Math.max(500, Math.ceil(targetCorona * targetCorona * 30)); const version = ++buildVersion; currentTurtleOrientations = activeTab === 'crossing' ? unmarkedTurtleOrientations : turtleOrientations; const seed = activeTab === 'crossing' ? place(centralHexBase,[0,0,0],{kind:'hex-hole'}) : (activeTab === 'tiling' ? place(trefoilBase,[0,0,0],{kind:'seed'}) : place(turtleOrientations[0],[0,0,0],{kind:'seed'})); activeAnimation = null; resetting = false; moveHistory = []; historyStateKeys = [placementStateKey(seed)]; placements = [seed]; coronas = computeCoronas(); legalMoveIndices = new Set(); clearMoveHintCache(); setStatus('computing'); draw(); window.setTimeout(() => { if (version !== buildVersion) return; const finalPlacements=generatePatch(seed, guardLimit, targetCorona, selectedSymmetry, activeTab === 'crossing'); revealPatch(finalPlacements, version); }, 0); }
+function buildPatch(){
+  clearAttachedTrefoils();
+  const targetCorona = readTargetCorona();
+  const guardLimit = Math.max(500, Math.ceil(targetCorona * targetCorona * 30));
+  const version = ++buildVersion;
+  currentTurtleOrientations = activeTab === 'crossing' ? unmarkedTurtleOrientations : turtleOrientations;
+  const seed = activeTab === 'crossing' ? place(centralHexBase,[0,0,0],{kind:'hex-hole'}) : (activeTab === 'tiling' ? place(trefoilBase,[0,0,0],{kind:'seed'}) : place(turtleOrientations[0],[0,0,0],{kind:'seed'}));
+  activeAnimation = null;
+  resetting = false;
+  moveHistory = [];
+  historyStateKeys = [placementStateKey(seed)];
+  placements = [seed];
+  coronas = computeCoronas();
+  legalMoveIndices = new Set();
+  clearMoveHintCache();
+  setStatus('computing');
+  draw();
+  const buildAndReveal = (corona, limit) => {
+    if (version !== buildVersion) return;
+    setStatus('computing');
+    const finalPlacements = generatePatch(seed, limit, corona, selectedSymmetry, activeTab === 'crossing');
+    revealPatch(finalPlacements, version);
+  };
+  const warmCorona = Math.min(targetCorona, 2);
+  window.setTimeout(() => {
+    buildAndReveal(warmCorona, Math.max(80, Math.ceil(warmCorona * warmCorona * 30)));
+    if (targetCorona > warmCorona) window.setTimeout(() => buildAndReveal(targetCorona, guardLimit), 120);
+  }, 0);
+}
 function clearMoveHintCache() { moveHintCache = new Map(); }
 function computeCoronas(){ return placementCoronasFor(placements); }
 function placementStateKey(placement) { return placement.vertices.map(key).sort().join('|'); }
@@ -405,6 +433,26 @@ function outlineSymmetryOps(aPlacement, bPlacement) {
     return true;
   });
 }
+function relativePlacementKey(trefoil, turtle) {
+  const relative = sub(turtle.translation || [0,0,0], trefoil.translation || [0,0,0]);
+  return `${trefoil.orientation?.idx}|${trefoil.isReflected}|${turtle.orientation?.idx}|${turtle.isReflected}|${key(relative)}`;
+}
+function translatePlacementToOrigin(placement, origin) {
+  return transformPlacement(placement, { sym: allSymmetries[0], translation: origin.map(value => -value) });
+}
+function translateOpFromOrigin(op, origin) {
+  return { ...op, translation: add(origin, sub(op.translation, transformLinear(origin, op.sym))) };
+}
+function cachedOutlineSymmetryOps(trefoil, turtle) {
+  const cacheKey = relativePlacementKey(trefoil, turtle);
+  let normalizedOps = pairMoveCache.get(cacheKey);
+  if (!normalizedOps) {
+    const origin = trefoil.translation || [0,0,0];
+    normalizedOps = outlineSymmetryOps(translatePlacementToOrigin(trefoil, origin), translatePlacementToOrigin(turtle, origin));
+    pairMoveCache.set(cacheKey, normalizedOps);
+  }
+  return normalizedOps.map(op => translateOpFromOrigin(op, trefoil.translation || [0,0,0]));
+}
 function validatorWithoutPair(indexA, indexB) {
   const baseSums = new Map(), baseMarks = new Map();
   placements.forEach((placement, index) => {
@@ -426,7 +474,7 @@ function validatorWithoutPair(indexA, indexB) {
   };
 }
 function outlinePreservingMoveForPair(trefoilIndex, turtleIndex, clickedIndex) {
-  const moves = outlineSymmetryOps(placements[trefoilIndex], placements[turtleIndex])
+  const moves = cachedOutlineSymmetryOps(placements[trefoilIndex], placements[turtleIndex])
     .map(op => moveFromOpForPair(trefoilIndex, turtleIndex, op, clickedIndex))
     .filter(validatorWithoutPair(trefoilIndex, turtleIndex));
   return chooseUniqueMove(moves);
@@ -459,6 +507,16 @@ function updateMoveHints() {
   for (let index = 0; index < placements.length; index += 1) {
     if (localMoveFor(index)) legalMoveIndices.add(index);
   }
+  return null;
+}
+function startAttachmentDrag(event, targetCanvas) {
+  const hit = hitAttachedTrefoil(event, targetCanvas);
+  if (!hit) return false;
+  movingAttachment = hit;
+  dragPreview = null;
+  targetCanvas.setPointerCapture?.(event.pointerId);
+  setStatus('drag trefoil');
+  return true;
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); clearMoveHintCache(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
 function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
@@ -589,12 +647,11 @@ function trefoilOrientationForToken(rotation = 0, reflect = false) {
 function trefoilTilePlacement(item) {
   return place(trefoilOrientationForToken(item.rotation, !!item.reflect), item.translation || [0, 0, 0], { kind: 'attached-trefoil', color: item.color || ORANGE, attachmentId: item.attachmentId });
 }
-function syncAttachedTrefoilPlacement(item) {
+function syncAttachedTrefoilPlacement(item, updateHints = true) {
   const index = placements.findIndex(placement => placement.attachmentId === item.attachmentId);
   if (index >= 0) placements[index] = trefoilTilePlacement(item);
   coronas = computeCoronas();
-  clearMoveHintCache();
-  updateMoveHints();
+  if (updateHints) { clearMoveHintCache(); updateMoveHints(); }
 }
 function drawTrefoilTile(context, item) {
   const tile = trefoilTilePlacement(item);
@@ -717,12 +774,15 @@ function scheduleBoardRedraw(targetCanvas = canvas) {
     target === crossingCanvas ? drawTrefoilCrossing() : draw();
   });
 }
+function placementScreenCenters() {
+  return placements.filter(placement => placement.kind !== 'hex-hole').map(placement =>
+    placement.vertices.map(screen).reduce((sum, vertex) => ({ x: sum.x + vertex.x / placement.vertices.length, y: sum.y + vertex.y / placement.vertices.length }), { x: 0, y: 0 })
+  );
+}
 function nearestPlacementDistance(point) {
-  if (!placements.length) return Infinity;
-  return Math.min(...placements.filter(placement => placement.kind !== 'hex-hole').map(placement => {
-    const center = placement.vertices.map(screen).reduce((sum, vertex) => ({ x: sum.x + vertex.x / placement.vertices.length, y: sum.y + vertex.y / placement.vertices.length }), { x: 0, y: 0 });
-    return Math.hypot(point.x - center.x, point.y - center.y);
-  }));
+  const centers = dragSnapCenters || placementScreenCenters();
+  if (!centers.length) return Infinity;
+  return Math.min(...centers.map(center => Math.hypot(point.x - center.x, point.y - center.y)));
 }
 function shouldSnapTrefoilPreview(point, targetCanvas) {
   if (targetCanvas === crossingCanvas) return true;
@@ -819,7 +879,7 @@ function moveAttachmentDrag(event) {
     item.y = snap.y;
   } else {
     item.translation = latticePointForCanvasPoint(point);
-    syncAttachedTrefoilPlacement(item);
+    syncAttachedTrefoilPlacement(item, false);
   }
   setTrashHot(pointInTrash(event));
   scheduleBoardRedraw(targetCanvas);
@@ -837,6 +897,7 @@ function endAttachmentDrag(event) {
     }
     setStatus('deleted');
   } else {
+    if (tab === 'tiling') { clearMoveHintCache(); updateMoveHints(); }
     refreshAttachmentViability(tab);
     setStatus('snapped');
   }
@@ -863,6 +924,7 @@ function beginPalettePointerDrag(event, button) {
   draggedTrefoilColor = button.dataset.color || ORANGE;
   draggedTrefoilReflect = button.dataset.reflect === 'true';
   palettePointerDrag = true;
+  dragSnapCenters = placementScreenCenters();
   button.setPointerCapture?.(event.pointerId);
   updateDragPreview(event, canvas);
   setStatus('drag trefoil');
@@ -875,6 +937,7 @@ function movePalettePointerDrag(event) {
 function endPalettePointerDrag(event) {
   if (!palettePointerDrag) return false;
   palettePointerDrag = null;
+  dragSnapCenters = null;
   if (pointInTrash(event)) { dragPreview = null; setTrashHot(false); setStatus('deleted'); draw(); return true; }
   attachTrefoilAt(event, canvas);
   return true;
