@@ -910,31 +910,73 @@ canvas.addEventListener('wheel',e=>{ e.preventDefault(); const f=Math.exp(-e.del
 function stripeEnabled(button) { return button?.getAttribute('aria-pressed') === 'true'; }
 function toggleStripe(button) { button.setAttribute('aria-pressed', stripeEnabled(button) ? 'false' : 'true'); trefoilTokens.forEach(drawTrefoilToken); draw(); }
 trefoilTokens.forEach(drawTrefoilToken);
+function canvasUnderPointer(event) {
+  const visibleCanvases = [canvas, crossingCanvas].filter(target => !target.classList.contains('hidden'));
+  return visibleCanvases.find(target => {
+    const rect = target.getBoundingClientRect();
+    return event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+  }) || null;
+}
 function beginPalettePointerDrag(event, button) {
+  event.preventDefault();
   draggedTrefoilRotation = Number(button.dataset.rotation) || 0;
   draggedTrefoilColor = button.dataset.color || ORANGE;
   draggedTrefoilReflect = button.dataset.reflect === 'true';
-  palettePointerDrag = true;
+  palettePointerDrag = { pointerId: event.pointerId };
   dragSnapCenters = placementScreenCenters();
-  button.setPointerCapture?.(event.pointerId);
-  updateDragPreview(event, canvas);
+  document.addEventListener('pointermove', movePalettePointerDrag);
+  document.addEventListener('pointerup', endPalettePointerDrag, { once: true });
+  document.addEventListener('pointercancel', cancelPalettePointerDrag, { once: true });
+  updatePaletteDragPreview(event);
   setStatus('drag trefoil');
 }
+function updatePaletteDragPreview(event) {
+  const target = canvasUnderPointer(event);
+  if (target) {
+    updateDragPreview(event, target);
+    setTrashHot(false);
+  } else {
+    const previousTarget = dragPreview?.tab === 'crossing' ? crossingCanvas : canvas;
+    dragPreview = null;
+    setTrashHot(pointInTrash(event));
+    scheduleBoardRedraw(previousTarget);
+  }
+}
 function movePalettePointerDrag(event) {
-  if (!palettePointerDrag) return false;
-  updateDragPreview(event, canvas);
+  if (!palettePointerDrag || event.pointerId !== palettePointerDrag.pointerId) return false;
+  event.preventDefault();
+  updatePaletteDragPreview(event);
   return true;
 }
-function endPalettePointerDrag(event) {
-  if (!palettePointerDrag) return false;
+function finishPalettePointerDrag() {
+  document.removeEventListener('pointermove', movePalettePointerDrag);
   palettePointerDrag = null;
   dragSnapCenters = null;
-  if (pointInTrash(event)) { dragPreview = null; setTrashHot(false); setStatus('deleted'); draw(); return true; }
-  attachTrefoilAt(event, canvas);
+  setTrashHot(false);
+}
+function cancelPalettePointerDrag(event) {
+  if (!palettePointerDrag || event.pointerId !== palettePointerDrag.pointerId) return;
+  finishPalettePointerDrag();
+  dragPreview = null;
+  setStatus('ready');
+  draw();
+  if (activeTab === 'crossing') drawTrefoilCrossing();
+}
+function endPalettePointerDrag(event) {
+  if (!palettePointerDrag || event.pointerId !== palettePointerDrag.pointerId) return false;
+  event.preventDefault();
+  const target = canvasUnderPointer(event);
+  finishPalettePointerDrag();
+  if (pointInTrash(event)) { dragPreview = null; setStatus('deleted'); draw(); return true; }
+  if (!target) { dragPreview = null; setStatus('drop on board'); draw(); if (activeTab === 'crossing') drawTrefoilCrossing(); return true; }
+  attachTrefoilAt(event, target);
   return true;
 }
-trefoilTokens.forEach(button => { button.addEventListener('pointerdown', event => beginPalettePointerDrag(event, button)); button.addEventListener('pointermove', movePalettePointerDrag); button.addEventListener('pointerup', endPalettePointerDrag); button.addEventListener('dragstart', event => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || ORANGE; draggedTrefoilReflect = button.dataset.reflect === 'true'; event.dataTransfer?.setData('text/plain', String(draggedTrefoilRotation)); }); button.addEventListener('click', () => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || ORANGE; draggedTrefoilReflect = button.dataset.reflect === 'true'; setStatus('drag trefoil'); }); });
-[canvas, crossingCanvas].forEach(target => { target.addEventListener('dragover', event => updateDragPreview(event, target)); target.addEventListener('dragleave', () => { dragPreview = null; target === crossingCanvas ? drawTrefoilCrossing() : draw(); }); target.addEventListener('drop', event => attachTrefoilAt(event, target)); });
+trefoilTokens.forEach(button => {
+  button.addEventListener('pointerdown', event => beginPalettePointerDrag(event, button));
+  button.addEventListener('dragstart', event => event.preventDefault());
+  button.addEventListener('click', () => { draggedTrefoilRotation = Number(button.dataset.rotation) || 0; draggedTrefoilColor = button.dataset.color || ORANGE; draggedTrefoilReflect = button.dataset.reflect === 'true'; setStatus('drag trefoil'); });
+});
 trefoilTrash?.addEventListener('dragover', event => { event.preventDefault(); dragPreview = null; setTrashHot(true); });
 trefoilTrash?.addEventListener('dragleave', () => setTrashHot(false));
 trefoilTrash?.addEventListener('drop', event => { event.preventDefault(); dragPreview = null; setTrashHot(false); setStatus('deleted'); draw(); if (activeTab === 'crossing') drawTrefoilCrossing(); });
