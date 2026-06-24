@@ -507,6 +507,142 @@ function updateMoveHints() {
   for (let index = 0; index < placements.length; index += 1) {
     if (localMoveFor(index)) legalMoveIndices.add(index);
   }
+  return null;
+}
+function startAttachmentDrag(event, targetCanvas) {
+  const hit = hitAttachedTrefoil(event, targetCanvas);
+  if (!hit) return false;
+  movingAttachment = hit;
+  dragPreview = null;
+  targetCanvas.setPointerCapture?.(event.pointerId);
+  setStatus('drag trefoil');
+  return true;
+}
+function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); clearMoveHintCache(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
+function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
+function finishUserMove(move) { finishAnimation(move); rememberHistoryMove(move); }
+function animateMove(move, onFinish = finishAnimation) {
+  const fromPlacements = placements.slice();
+  placements = move.next;
+  legalMoveIndices = new Set();
+  hoveredIndex = -1;
+  activeAnimation = makeAnimationForMove(move, fromPlacements);
+  setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn');
+  window.requestAnimationFrame(draw);
+  window.setTimeout(() => onFinish(move), activeAnimation.duration + 30);
+}
+function flipClicked(i){ if(activeAnimation || resetting) return; const move = localMoveFor(i); if(!move) { setStatus('blocked'); return; } animateMove(move, finishUserMove); }
+function resetToCenter() {
+  if (activeAnimation || resetting) return;
+  if (!moveHistory.length) { view={scale:.72,x:canvas.width/2,y:canvas.height/2}; setStatus('ready'); draw(); return; }
+  resetting = true;
+  setStatus('resetting');
+  const stepBack = () => {
+    const previous = moveHistory.pop();
+    if (previous) historyStateKeys.pop();
+    if (!previous) { resetting = false; view={scale:.72,x:canvas.width/2,y:canvas.height/2}; updateMoveHints(); setStatus('ready'); draw(); return; }
+    const [a, b] = previous.indices || [0, previous.clickedIndex];
+    const trefoilIndex = isTrefoilPlacement(placements[a]) ? a : b;
+    const turtleIndex = trefoilIndex === a ? b : a;
+    const move = moveFromOpForPair(trefoilIndex, turtleIndex, { ...previous.op }, previous.clickedIndex);
+    animateMove(move, () => { finishAnimation(move); window.setTimeout(stepBack, 80); });
+  };
+  stepBack();
+}
+
+function polygonPoints(cx, cy, radius, sides, rotation = 0) {
+  return Array.from({ length: sides }, (_, index) => {
+    const angle = rotation + (Math.PI * 2 * index) / sides;
+    return { x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius };
+  });
+}
+function drawPath(context, points, fill, stroke = '#15312c', width = 2) {
+  context.beginPath();
+  points.forEach((point, index) => index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y));
+  context.closePath();
+  context.fillStyle = fill;
+  context.fill();
+  context.strokeStyle = stroke;
+  context.lineWidth = width;
+  context.stroke();
+}
+
+function transformedTrefoilPoints(rotation = 0, scale = 1, reflect = false) {
+  const raw = trefoilVerts.map(project);
+  const cx = raw.reduce((sum, point) => sum + point.x, 0) / raw.length;
+  const cy = raw.reduce((sum, point) => sum + point.y, 0) / raw.length;
+  const angle = (rotation * Math.PI) / 180;
+  return raw.map(point => {
+    const x = (point.x - cx) * scale * (reflect ? -1 : 1), y = (point.y - cy) * scale;
+    return { x: x * Math.cos(angle) - y * Math.sin(angle), y: x * Math.sin(angle) + y * Math.cos(angle) };
+  });
+}
+function trefoilStrokeFor(color) { return color === BLUE ? BLUE_STROKE : ORANGE_STROKE; }
+function drawTrefoilShape(context, x, y, rotation = 0, scale = 0.38, color = ORANGE, reflect = false) {
+  const points = transformedTrefoilPoints(rotation, scale, reflect);
+  context.save();
+  context.translate(x, y);
+  drawPath(context, points, color, trefoilStrokeFor(color), 2.2);
+  context.restore();
+}
+function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, reflect = false) {
+  const points = transformedTrefoilPoints(rotation, scale, reflect);
+  const mapVertex = vertex => points[trefoilVerts.findIndex(point => key(point) === key(vertex))];
+  context.save();
+  context.translate(x, y);
+  context.lineWidth = 2;
+  trefoilStripeDefs.forEach(def => {
+    const value = def.value * (reflect ? -1 : 1);
+    if (value > 0 && !stripeEnabled(orangeStripesToggle)) return;
+    if (value < 0 && !stripeEnabled(blueStripesToggle)) return;
+    const a = mapVertex(def.p1), b = mapVertex(def.p2);
+    if (!a || !b) return;
+    context.strokeStyle = value > 0 ? ORANGE : BLUE;
+    context.beginPath();
+    context.moveTo(a.x, a.y);
+    context.lineTo(b.x, b.y);
+    context.stroke();
+  });
+  context.restore();
+}
+
+function strokeTrefoilShape(context, x, y, rotation = 0, scale = 0.46, stroke = 'rgba(44,160,44,.75)', reflect = false) {
+  const points = transformedTrefoilPoints(rotation, scale, reflect);
+  context.save();
+  context.translate(x, y);
+  context.beginPath();
+  points.forEach((point, index) => index ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y));
+  context.closePath();
+  context.strokeStyle = stroke;
+  context.lineWidth = 5;
+  context.stroke();
+  context.restore();
+}
+function drawTrefoilToken(button) {
+  const context = button.getContext('2d');
+  context.clearRect(0, 0, button.width, button.height);
+  const rotation = Number(button.dataset.rotation) || 0, reflect = button.dataset.reflect === 'true';
+  drawTrefoilShape(context, button.width / 2, button.height / 2, rotation, 0.28, button.dataset.color || ORANGE, reflect);
+  drawTrefoilTokenStripes(context, button.width / 2, button.height / 2, rotation, 0.28, reflect);
+}
+
+const trefoilTokenOrientationCache = new Map();
+function trefoilOrientationForToken(rotation = 0, reflect = false) {
+  const cacheKey = `${rotation}|${reflect}`;
+  if (trefoilTokenOrientationCache.has(cacheKey)) return trefoilTokenOrientationCache.get(cacheKey);
+  const target = transformedTrefoilPoints(rotation, 1, reflect);
+  const candidates = allSymmetries.filter(sym => (sym.planeSign < 0) === reflect);
+  const sym = candidates.reduce((best, candidate) => {
+    const raw = trefoilVerts.map(point => project(transformLinear(point, candidate)));
+    const cx = raw.reduce((sum, point) => sum + point.x, 0) / raw.length;
+    const cy = raw.reduce((sum, point) => sum + point.y, 0) / raw.length;
+    const points = raw.map(point => ({ x: point.x - cx, y: point.y - cy }));
+    const score = target.reduce((sum, point) => sum + Math.min(...points.map(candidatePoint => Math.hypot(point.x - candidatePoint.x, point.y - candidatePoint.y))), 0);
+    return score < best.score ? { sym: candidate, score } : best;
+  }, { sym: candidates[0], score: Infinity }).sym;
+  const orientation = orientTile(trefoilVerts, trefoilOcc, trefoilStripes, sym, trefoilTokenOrientationCache.size, 'Trefoil');
+  trefoilTokenOrientationCache.set(cacheKey, orientation);
+  return orientation;
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); clearMoveHintCache(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
 function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
