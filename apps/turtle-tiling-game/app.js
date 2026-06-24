@@ -589,8 +589,15 @@ function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, refl
     const a = mapVertex(def.p1), b = mapVertex(def.p2);
     if (!a || !b) return;
     const stripeColor = value > 0 ? ORANGE : BLUE;
-    context.strokeStyle = fillColor === stripeColor ? '#fffdf8' : stripeColor;
-    context.lineWidth = fillColor === stripeColor ? 3.4 : 2.4;
+    context.lineCap = 'round';
+    context.strokeStyle = '#fffdf8';
+    context.lineWidth = 4.2;
+    context.beginPath();
+    context.moveTo(a.x, a.y);
+    context.lineTo(b.x, b.y);
+    context.stroke();
+    context.strokeStyle = stripeColor;
+    context.lineWidth = 2.4;
     context.beginPath();
     context.moveTo(a.x, a.y);
     context.lineTo(b.x, b.y);
@@ -617,7 +624,7 @@ function drawTrefoilToken(button) {
   const rotation = Number(button.dataset.rotation) || 0, reflect = button.dataset.reflect === 'true';
   const color = button.dataset.color || ORANGE;
   drawTrefoilShape(context, button.width / 2, button.height / 2, rotation, 0.28, color, reflect);
-  drawTrefoilTokenStripes(context, button.width / 2, button.height / 2, rotation, 0.28, reflect, color);
+  drawTrefoilTokenStripes(context, button.width / 2, button.height / 2, rotation, 0.28, reflect);
 }
 
 const trefoilTokenOrientationCache = new Map();
@@ -838,49 +845,84 @@ function hitAttachedTrefoil(event, targetCanvas) {
   }
   return null;
 }
+function updateDraggedAttachmentFromEvent(item, event, targetCanvas) {
+  const point = eventPointOnCanvas(event, targetCanvas);
+  item.previewOnly = true;
+  item.x = point.x;
+  item.y = point.y;
+  if (targetCanvas === crossingCanvas) return;
+  item.translation = latticePointForCanvasPoint(point);
+}
+function removeAttachedPlacement(item) {
+  if (!item?.attachmentId) return;
+  placements = placements.filter(placement => placement.attachmentId !== item.attachmentId);
+  coronas = computeCoronas();
+}
+function restoreDraggedAttachment() {
+  if (!movingAttachment?.original) return;
+  Object.assign(movingAttachment.item, movingAttachment.original);
+  if (movingAttachment.tab === 'tiling') placements.push(trefoilTilePlacement(movingAttachment.item));
+}
+function finishDraggedAttachmentItem(item, event, targetCanvas) {
+  if (targetCanvas === crossingCanvas) Object.assign(item, snapToLattice(eventPointOnCanvas(event, targetCanvas), targetCanvas));
+  delete item.previewOnly;
+  if (targetCanvas !== crossingCanvas) { delete item.x; delete item.y; }
+}
 function startAttachmentDrag(event, targetCanvas) {
   const hit = hitAttachedTrefoil(event, targetCanvas);
   if (!hit) return false;
-  movingAttachment = hit;
+  event.preventDefault();
+  movingAttachment = { ...hit, pointerId: event.pointerId, original: { ...hit.item, translation: hit.item.translation ? [...hit.item.translation] : hit.item.translation } };
   dragPreview = null;
+  if (hit.tab === 'tiling') removeAttachedPlacement(hit.item);
+  updateDraggedAttachmentFromEvent(hit.item, event, targetCanvas);
   targetCanvas.setPointerCapture?.(event.pointerId);
   setStatus('drag trefoil');
+  scheduleBoardRedraw(targetCanvas);
   return true;
 }
 function moveAttachmentDrag(event) {
-  if (!movingAttachment) return false;
+  if (!movingAttachment || event.pointerId !== movingAttachment.pointerId) return false;
+  event.preventDefault();
   const { item, targetCanvas } = movingAttachment;
-  const point = eventPointOnCanvas(event, targetCanvas);
-  if (targetCanvas === crossingCanvas) {
-    const snap = snapToLattice(point, targetCanvas);
-    item.x = snap.x;
-    item.y = snap.y;
-  } else {
-    item.translation = latticePointForCanvasPoint(point);
-    syncAttachedTrefoilPlacement(item, false);
-  }
+  updateDraggedAttachmentFromEvent(item, event, targetCanvas);
   setTrashHot(pointInTrash(event));
   scheduleBoardRedraw(targetCanvas);
   return true;
 }
 function endAttachmentDrag(event) {
-  if (!movingAttachment) return false;
-  const { tab, index, targetCanvas } = movingAttachment;
+  if (!movingAttachment || event.pointerId !== movingAttachment.pointerId) return false;
+  event.preventDefault();
+  const { tab, index, item, targetCanvas } = movingAttachment;
   if (pointInTrash(event)) {
-    const [removed] = attachedTrefoils[tab].splice(index, 1);
-    if (removed?.attachmentId) {
-      placements = placements.filter(placement => placement.attachmentId !== removed.attachmentId);
-      coronas = computeCoronas();
-      updateMoveHints();
-    }
+    attachedTrefoils[tab].splice(index, 1);
+    if (tab === 'tiling') { clearMoveHintCache(); updateMoveHints(); }
     setStatus('deleted');
   } else {
-    if (tab === 'tiling') { clearMoveHintCache(); updateMoveHints(); }
+    updateDraggedAttachmentFromEvent(item, event, targetCanvas);
+    finishDraggedAttachmentItem(item, event, targetCanvas);
+    if (tab === 'tiling') {
+      placements.push(trefoilTilePlacement(item));
+      coronas = computeCoronas();
+      clearMoveHintCache();
+      updateMoveHints();
+    }
     refreshAttachmentViability(tab);
     setStatus('snapped');
   }
   movingAttachment = null;
   setTrashHot(false);
+  targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
+  return true;
+}
+function cancelAttachmentDrag(event) {
+  if (!movingAttachment || event.pointerId !== movingAttachment.pointerId) return false;
+  const { targetCanvas } = movingAttachment;
+  restoreDraggedAttachment();
+  movingAttachment = null;
+  setTrashHot(false);
+  clearMoveHintCache();
+  updateMoveHints();
   targetCanvas === crossingCanvas ? drawTrefoilCrossing() : draw();
   return true;
 }
@@ -893,6 +935,8 @@ canvas.addEventListener('pointerup',e=>{ if(endAttachmentDrag(e)) return; if(dow
 crossingCanvas.addEventListener('pointerdown', e => startAttachmentDrag(e, crossingCanvas));
 crossingCanvas.addEventListener('pointermove', e => moveAttachmentDrag(e));
 crossingCanvas.addEventListener('pointerup', e => endAttachmentDrag(e));
+canvas.addEventListener('pointercancel', e => cancelAttachmentDrag(e));
+crossingCanvas.addEventListener('pointercancel', e => cancelAttachmentDrag(e));
 canvas.addEventListener('wheel',e=>{ e.preventDefault(); const f=Math.exp(-e.deltaY*0.001); view.scale=Math.max(.12,Math.min(3.5,view.scale*f)); draw(); },{passive:false});
 function stripeEnabled(button) { return button?.getAttribute('aria-pressed') === 'true'; }
 function toggleStripe(button) { button.setAttribute('aria-pressed', stripeEnabled(button) ? 'false' : 'true'); trefoilTokens.forEach(drawTrefoilToken); draw(); }
