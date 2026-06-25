@@ -71,7 +71,7 @@ function orientTile(verts, occ, stripes, sym, idx, name) { const vertices=verts.
 const allSymmetries = symmetries();
 const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,turtleStripes,s,i,'Turtle'));
 const unmarkedTurtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,[],s,i,'Turtle'));
-let currentTurtleOrientations = turtleOrientations;
+let currentTurtleOrientations = turtleOrientations, searchOrientations = turtleOrientations;
 const trefoilOrientations = allSymmetries.map((s,i)=>orientTile(trefoilVerts,trefoilOcc,trefoilStripes,s,i,'Trefoil'));
 const trefoilBase = trefoilOrientations[0];
 const centralHexBase = {idx:0, name:'Hex', sym:allSymmetries[0], isReflected:false, vertices:centralHexVerts, occupancy:centralHexOcc, marks:[], segments:[]};
@@ -83,15 +83,15 @@ let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], corona
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
-function validCandidate(o,t,sums,markSums,used){ const pk=`${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
-function frontierPointHasCandidate(point, sums, markSums, used) { const need = MAX - point.value; return currentTurtleOrientations.some(o => o.occupancy.some(a => a.value <= need && validCandidate(o, sub(point.point, a.point), sums, markSums, used))); }
+function validCandidate(o,t,sums,markSums,used){ const pk=`${o.name}|${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
+function frontierPointHasCandidate(point, sums, markSums, used) { const need = MAX - point.value; return searchOrientations.some(o => o.occupancy.some(a => a.value <= need && validCandidate(o, sub(point.point, a.point), sums, markSums, used))); }
 function randomItem(items) { return items[Math.floor(Math.random() * items.length)]; }
 function shuffled(items) { return items.map(value => ({ value, order: Math.random() })).sort((a, b) => a.order - b.order).map(entry => entry.value); }
 function angleDiff(a, b) { return Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b))); }
 function candidateMovesForFrontier(f, sums, markSums, used) {
   const need = MAX - f.value;
   const candidates = [];
-  for (const o of currentTurtleOrientations) {
+  for (const o of searchOrientations) {
     for (const a of o.occupancy.filter(e => e.value <= need)) {
       const cand = validCandidate(o, sub(f.point, a.point), sums, markSums, used);
       if (cand) candidates.push({ ...cand, frontier: f });
@@ -126,18 +126,26 @@ function analyzePatchBoundary(sums, markSums, used) {
   const tied = ranked.filter(option => option.candidates.length === first.candidates.length && norm(option.frontier.point) === norm(first.frontier.point) && option.frontier.value === first.frontier.value && option.candidates[0].score === first.candidates[0].score);
   return { deadEnd: null, choice: randomItem(tied), forced: false };
 }
-function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFold=1, relaxBoundary=false) {
-  const nextPlacements = [seedPlacement];
+function generatedPlacementExtra(orientation, candidate) {
+  if (orientation.name === 'Trefoil') return { kind: 'attached-trefoil', color: orientation.isReflected ? ORANGE : BLUE, placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
+  return { kind: 'turtle', placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
+}
+function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFold=1, relaxBoundary=false, tileOrientations=currentTurtleOrientations) {
+  const previousSearchOrientations = searchOrientations;
+  searchOrientations = tileOrientations;
+  const initialPlacements = Array.isArray(seedPlacement) ? seedPlacement.map(placement => ({ ...placement })) : [seedPlacement];
+  const nextPlacements = initialPlacements.slice();
   const sums = new Map(), markSums = new Map(), used = new Set();
   let best = nextPlacements.slice(), bestCorona = 0, nodes = 0;
   const nodeBudget = Math.max(800, targetCorona * targetCorona * 16);
   const orbit = symmetryOrbitForFold(symmetryFold);
-  addPlacement(nextPlacements[0], sums, markSums);
+  nextPlacements.forEach(placement => { addPlacement(placement, sums, markSums); if (placement.placementKey) used.add(placement.placementKey); });
   const rememberBest = () => { const candidateCorona = maxCoronaFor(nextPlacements); if (candidateCorona > bestCorona || (candidateCorona === bestCorona && nextPlacements.length > best.length)) { best = nextPlacements.slice(); bestCorona = candidateCorona; } };
   const candidateOrbit = (candidate, option, forced) => {
     const seen = new Set();
     return orbit.map((sym, orbitIndex) => {
-      const base = place(candidate.orientation, candidate.translation, { kind: 'turtle', placementKey: `${candidate.pk}|${orbitIndex}`, forced, branchCount: option.candidates.length });
+      const placementKey = `${candidate.pk}|${orbitIndex}`;
+      const base = place(candidate.orientation, candidate.translation, generatedPlacementExtra(candidate.orientation, { ...candidate, pk: placementKey, forced, branchCount: option.candidates.length }));
       return orbitIndex ? transformPlacement(base, { sym, translation: [0, 0, 0] }) : base;
     }).filter(placement => {
       const stateKey = placementStateKey(placement);
@@ -159,7 +167,7 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
     return group;
   };
   const undoCandidate = group => {
-    used.delete(group[0]?.placementKey?.split('|').slice(0, 2).join('|'));
+    used.delete(group[0]?.placementKey?.split('|').slice(0, -1).join('|'));
     group.slice().reverse().forEach(placement => {
       removePlacement(placement, sums, markSums);
       used.delete(placement.placementKey);
@@ -168,10 +176,11 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
   };
   const search = () => {
     rememberBest();
-    if (bestCorona >= targetCorona || nextPlacements.length >= guardLimit) return bestCorona >= targetCorona;
+    if (nextPlacements.length >= guardLimit) return bestCorona >= targetCorona;
     if (nodes++ >= nodeBudget) return false;
     const analysis = analyzePatchBoundary(sums, markSums, used);
     if (analysis.deadEnd || !analysis.choice) return false;
+    if (!analysis.forced && bestCorona >= targetCorona) return true;
     const candidates = analysis.forced ? analysis.choice.candidates : shuffled(analysis.choice.candidates);
     for (const candidate of candidates) {
       if (!relaxBoundary && !candidateKeepsBoundaryAlive(candidate, sums, markSums, used)) continue;
@@ -183,8 +192,12 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
     }
     return false;
   };
-  search();
-  return best;
+  try {
+    search();
+    return best;
+  } finally {
+    searchOrientations = previousSearchOrientations;
+  }
 }
 function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 6)); }
 function patchIntegrity() {
@@ -241,67 +254,10 @@ function symmetrizePlacementsForHex(list) {
   return out;
 }
 
-function placementFitsWithMaps(placement, sums, markSums) {
-  const trialSums = new Map([...sums].map(([mapKey, entry]) => [mapKey, { ...entry }]));
-  const trialMarks = new Map([...markSums].map(([mapKey, entry]) => [mapKey, { ...entry }]));
-  addPlacement(placement, trialSums, trialMarks);
-  if ([...trialSums.values()].some(entry => entry.value > MAX)) return false;
-  if ([...trialMarks.values()].some(entry => entry.conflict)) return false;
-  return true;
-}
-function validTrefoilCandidate(orientation, translation, sums, markSums, used) {
-  const placement = place(orientation, translation, { kind: 'attached-trefoil', color: orientation.isReflected ? ORANGE : BLUE });
-  const stateKey = placementStateKey(placement);
-  if (used.has(stateKey)) return null;
-  let newPts = 0;
-  for (const entry of placement.occupancy) {
-    const current = sums.get(key(entry.point))?.value || 0;
-    if (current === 0) newPts += 1;
-    if (current + entry.value > MAX) return null;
-  }
-  if (!newPts) return null;
-  for (const entry of placement.marks) {
-    const old = markSums.get(mkey(entry));
-    if (old && old.value !== entry.value) return null;
-  }
-  return placementFitsWithMaps(placement, sums, markSums) ? { placement, stateKey } : null;
-}
-function forcedTrefoilCandidates(sums, markSums, used) {
-  return frontier(sums).flatMap(frontierPoint => {
-    const need = MAX - frontierPoint.value;
-    const candidates = [];
-    for (const orientation of trefoilOrientations) {
-      for (const anchor of orientation.occupancy.filter(entry => entry.value <= need)) {
-        const candidate = validTrefoilCandidate(orientation, sub(frontierPoint.point, anchor.point), sums, markSums, used);
-        if (candidate) candidates.push(candidate);
-      }
-    }
-    const unique = new Map(candidates.map(candidate => [candidate.stateKey, candidate]));
-    return unique.size === 1 ? [...unique.values()] : [];
-  });
-}
-function addForcedTrefoils(basePlacements) {
-  const nextPlacements = basePlacements.slice();
-  const sums = new Map(), markSums = new Map(), used = new Set(nextPlacements.map(placementStateKey));
-  nextPlacements.forEach(placement => addPlacement(placement, sums, markSums));
-  const added = [];
-  for (let guard = 0; guard < 80; guard += 1) {
-    const candidates = forcedTrefoilCandidates(sums, markSums, used).filter(candidate => !used.has(candidate.stateKey));
-    if (!candidates.length) break;
-    let changed = false;
-    for (const candidate of candidates) {
-      if (used.has(candidate.stateKey) || !placementFitsWithMaps(candidate.placement, sums, markSums)) continue;
-      candidate.placement.attachmentId = nextAttachmentId++;
-      nextPlacements.push(candidate.placement);
-      added.push({ attachmentId: candidate.placement.attachmentId, translation: [...candidate.placement.translation], rotation: 0, color: candidate.placement.color, reflect: candidate.placement.isReflected });
-      addPlacement(candidate.placement, sums, markSums);
-      used.add(candidate.stateKey);
-      changed = true;
-    }
-    if (!changed) break;
-  }
-  attachedTrefoils.tiling = added;
-  return nextPlacements;
+function generateTrefoilPass(basePlacements, guardLimit, symmetryFold) {
+  const target = Math.max(1, maxCoronaFor(basePlacements) + 1);
+  const limit = Math.max(80, Math.ceil(target * target * 18));
+  return generatePatch(basePlacements, Math.min(guardLimit, limit), target, symmetryFold, true, trefoilOrientations);
 }
 function revealPatch(finalPlacements, version, isFinal = true) {
   const revealId = ++revealVersion;
@@ -350,7 +306,7 @@ function buildPatch(){
     setStatus('computing...');
     const generatedPlacements = generatePatch(seed, limit, corona, selectedSymmetry, activeTab === 'crossing');
     const isFinal = corona >= targetCorona;
-    const finalPlacements = isFinal && activeTab === 'tiling' ? addForcedTrefoils(generatedPlacements) : generatedPlacements;
+    const finalPlacements = isFinal && activeTab !== 'crossing' ? generateTrefoilPass(generatedPlacements, guardLimit, selectedSymmetry) : generatedPlacements;
     revealPatch(finalPlacements, version, isFinal);
   };
   const warmCorona = Math.min(targetCorona, 2);
