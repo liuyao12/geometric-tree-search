@@ -12,7 +12,7 @@ const trefoilTrash = document.getElementById('trefoilTrash');
 const BLUE = '#0072b2', BLUE_STROKE = '#005a8c', ORANGE = '#d55e00', ORANGE_STROKE = '#a74700';
 let movingAttachment = null;
 let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null, nextAttachmentId = 1;
-let moveHintCache = new Map(), pairMoveCache = new Map();
+let moveHintCache = new Map(), pairMoveCache = new Map(), viableMoveCache = new Map();
 const tabStates = new Map();
 let palettePointerDrag = null, pendingDragDraw = null;
 const attachedTrefoils = { tiling: [], crossing: [] };
@@ -328,7 +328,7 @@ function buildPatch(){
     if (targetCorona > warmCorona) window.setTimeout(() => buildAndReveal(targetCorona, guardLimit), 500);
   }, 0);
 }
-function clearMoveHintCache() { moveHintCache = new Map(); }
+function clearMoveHintCache() { moveHintCache = new Map(); viableMoveCache = new Map(); }
 function computeCoronas(){ return placementCoronasFor(placements); }
 function placementStateKey(placement) { return placement.vertices.map(key).sort().join('|'); }
 function rememberHistoryMove(move) {
@@ -518,32 +518,52 @@ function outlinePreservingMoveForPair(trefoilIndex, turtleIndex, clickedIndex) {
 function chooseUniqueMove(moves) {
   const rotations = moves.filter(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation');
   const reflections = moves.filter(move => move.op.kind === 'reflection');
-  if (rotations.length && !reflections.length) return rotations[0];
-  if (reflections.length && !rotations.length) return reflections[0];
+  if (rotations.length === 1 && !reflections.length) return rotations[0];
+  if (reflections.length === 1 && !rotations.length) return reflections[0];
   return null;
+}
+function neighboringTrefoilTurtlePairs() {
+  const byPoint = new Map(), pairs = new Set();
+  placements.forEach((placement, index) => {
+    placement.occupancy.forEach(entry => {
+      const pointKey = key(entry.point);
+      if (!byPoint.has(pointKey)) byPoint.set(pointKey, []);
+      byPoint.get(pointKey).push(index);
+    });
+  });
+  byPoint.forEach(indices => {
+    for (const a of indices) for (const b of indices) {
+      if (a >= b) continue;
+      const first = placements[a], second = placements[b];
+      if (isTrefoilPlacement(first) && isTurtlePlacement(second)) pairs.add(`${a}|${b}`);
+      if (isTurtlePlacement(first) && isTrefoilPlacement(second)) pairs.add(`${b}|${a}`);
+    }
+  });
+  return [...pairs].map(pair => pair.split('|').map(Number));
+}
+function rebuildViableMoveCache() {
+  viableMoveCache = new Map();
+  const movesByTurtle = new Map();
+  neighboringTrefoilTurtlePairs().forEach(([trefoilIndex, turtleIndex]) => {
+    const move = outlinePreservingMoveForPair(trefoilIndex, turtleIndex, turtleIndex);
+    if (!move) return;
+    if (!movesByTurtle.has(turtleIndex)) movesByTurtle.set(turtleIndex, []);
+    movesByTurtle.get(turtleIndex).push(move);
+  });
+  movesByTurtle.forEach((moves, turtleIndex) => {
+    const move = chooseUniqueMove(moves);
+    if (move) viableMoveCache.set(turtleIndex, move);
+  });
 }
 function localMoveFor(clickedIndex) {
   if (clickedIndex < 0) return null;
-  const cacheKey = `${clickedIndex}|${placementStateKey(placements[clickedIndex])}|${placements.length}`;
-  if (moveHintCache.has(cacheKey)) return moveHintCache.get(cacheKey);
-  const clicked = placements[clickedIndex];
-  const pairs = [];
-  placements.forEach((placement, index) => {
-    if (index === clickedIndex) return;
-    if (isTrefoilPlacement(clicked) && isTurtlePlacement(placement)) pairs.push([clickedIndex, index]);
-    if (isTurtlePlacement(clicked) && isTrefoilPlacement(placement)) pairs.push([index, clickedIndex]);
-  });
-  const moves = pairs.map(([trefoilIndex, turtleIndex]) => outlinePreservingMoveForPair(trefoilIndex, turtleIndex, clickedIndex)).filter(Boolean);
-  const move = chooseUniqueMove(moves);
-  moveHintCache.set(cacheKey, move);
-  return move;
+  if (viableMoveCache.has(clickedIndex)) return viableMoveCache.get(clickedIndex);
+  return null;
 }
 function updateMoveHints() {
-  legalMoveIndices = new Set();
-  for (let index = 0; index < placements.length; index += 1) {
-    if (localMoveFor(index)) legalMoveIndices.add(index);
-  }
-  context.restore();
+  clearMoveHintCache();
+  rebuildViableMoveCache();
+  legalMoveIndices = new Set(viableMoveCache.keys());
 }
 function finishAnimation(move) { activeAnimation = null; placements = move.next; coronas = computeCoronas(); clearMoveHintCache(); updateMoveHints(); setStatus(move.op.kind === 'reflection' ? 'made a reflection' : 'made a half-turn'); draw(); }
 function cloneMoveOp(op) { return { sym: op.sym, kind: op.kind, translation: [...op.translation], center: op.center ? [...op.center] : null }; }
