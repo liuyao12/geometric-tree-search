@@ -68,11 +68,23 @@ const centralHexOcc = [...centralHexVerts.map((point,i)=>({point,value:centralHe
 const turtleStripes = turtleStripeDefs.map(d=>({...d, p1:turtleVerts[d.from], p2:turtleVerts[d.to], component:componentFor(turtleVerts[d.from], turtleVerts[d.to])}));
 const trefoilStripes = trefoilStripeDefs.map(d=>({...d, component:componentFor(d.p1,d.p2)}));
 function orientTile(verts, occ, stripes, sym, idx, name) { const vertices=verts.map(p=>transformLinear(p,sym)); const occupancy=occ.map(e=>({...e, point:transformLinear(e.point,sym)})); const marks=[]; const segments=stripes.map(seg=>{ const p1=transformLinear(seg.p1,sym), p2=transformLinear(seg.p2,sym), component=mapComponent(seg.component,sym), value=seg.value*sym.planeSign; segmentPoints(p1,p2,markReach).forEach(point=>marks.push({point,component,value})); return {p1,p2,component,value}; }); return {idx,name,sym,isReflected:sym.planeSign < 0,vertices,occupancy,marks,segments}; }
+function segmentSignature(segment) { return [key(segment.p1), key(segment.p2)].sort().join('>') + `:${segment.value}`; }
+function orientationSignature(orientation) { return `${orientation.vertices.map(key).sort().join(';')}|${orientation.segments.map(segmentSignature).sort().join(';')}`; }
+function uniqueTileOrientations(orientations) {
+  const seen = new Set(), unique = [];
+  orientations.forEach(orientation => {
+    const signature = orientationSignature(orientation);
+    if (seen.has(signature)) return;
+    seen.add(signature);
+    unique.push({ ...orientation, idx: unique.length });
+  });
+  return unique;
+}
 const allSymmetries = symmetries();
-const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,turtleStripes,s,i,'Turtle'));
-const unmarkedTurtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,[],s,i,'Turtle'));
+const turtleOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,turtleStripes,s,i,'Turtle')));
+const unmarkedTurtleOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,[],s,i,'Turtle')));
 let currentTurtleOrientations = turtleOrientations, searchOrientations = turtleOrientations;
-const trefoilOrientations = allSymmetries.map((s,i)=>orientTile(trefoilVerts,trefoilOcc,trefoilStripes,s,i,'Trefoil'));
+const trefoilOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(trefoilVerts,trefoilOcc,trefoilStripes,s,i,'Trefoil')));
 const trefoilBase = trefoilOrientations[0];
 const centralHexBase = {idx:0, name:'Hex', sym:allSymmetries[0], isReflected:false, vertices:centralHexVerts, occupancy:centralHexOcc, marks:[], segments:[]};
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
@@ -739,7 +751,8 @@ function saveTabState(tab = activeTab) {
     legalMoveIndices: new Set(legalMoveIndices),
     attachedTiling: attachedTrefoils.tiling.map(item => ({ ...item, translation: item.translation ? [...item.translation] : item.translation })),
     attachedCrossing: attachedTrefoils.crossing.map(item => ({ ...item })),
-    view: { ...view }
+    view: { ...view },
+    selectedSymmetry
   });
 }
 function restoreTabState(tab) {
@@ -751,6 +764,7 @@ function restoreTabState(tab) {
   attachedTrefoils.tiling = state.attachedTiling.map(item => ({ ...item, translation: item.translation ? [...item.translation] : item.translation }));
   attachedTrefoils.crossing = state.attachedCrossing.map(item => ({ ...item }));
   view = { ...state.view };
+  selectedSymmetry = state.selectedSymmetry || selectedSymmetry;
   clearMoveHintCache();
   return true;
 }
@@ -758,7 +772,8 @@ function restoreTabState(tab) {
 function allowedSymmetriesForTab(tab) {
   if (tab === 'turtle') return [1];
   if (tab === 'tiling') return [1, 3];
-  return [1, 3, 6];
+  if (tab === 'crossing') return [1, 2, 3, 6];
+  return [1];
 }
 function updateSymmetryAvailability() {
   const allowed = allowedSymmetriesForTab(activeTab);
@@ -775,8 +790,11 @@ function updateSymmetryAvailability() {
 }
 function showTab(nextTab) {
   if (nextTab === activeTab) return;
+  const hadSavedState = tabStates.has(nextTab);
+  const savedSymmetry = tabStates.get(nextTab)?.selectedSymmetry;
   saveTabState(activeTab);
   activeTab = nextTab;
+  selectedSymmetry = hadSavedState ? (savedSymmetry || selectedSymmetry) : Math.max(...allowedSymmetriesForTab(activeTab));
   updateSymmetryAvailability();
   const showCrossing = activeTab === 'crossing';
   canvas.classList.remove('hidden');
