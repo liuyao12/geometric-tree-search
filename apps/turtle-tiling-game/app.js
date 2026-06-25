@@ -632,7 +632,7 @@ function drawTrefoilShape(context, x, y, rotation = 0, scale = 0.38, color = ORA
   drawPath(context, points, color, trefoilStrokeFor(color), 2.2);
   context.restore();
 }
-function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, reflect = false) {
+function drawTrefoilTokenStripes(context, x, y, rotation = 0, scale = 0.28, reflect = false, fillColor = null) {
   const points = transformedTrefoilPoints(rotation, scale, reflect);
   const mapVertex = vertex => points[trefoilVerts.findIndex(point => key(point) === key(vertex))];
   context.save();

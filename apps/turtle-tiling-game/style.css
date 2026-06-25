@@ -25,3 +25,6 @@ button:hover { background:#f3faf7; }
 .canvas-stack { min-width:0; }
 canvas { display:block; width:100%; aspect-ratio:1200 / 780; height:auto; max-height:780px; border:1px solid #cbd8d4; border-top:0; border-radius:0 0 16px 16px; background:#f7faf8; cursor:grab; }
 canvas:active { cursor:grabbing; }
+
+canvas.trefoil-token { display:block; width:150px; height:150px; aspect-ratio:1 / 1; max-height:none; border:0; border-radius:14px; background:transparent; cursor:grab; }
+canvas.trefoil-token:active { cursor:grabbing; }
