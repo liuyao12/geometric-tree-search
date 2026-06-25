@@ -268,11 +268,18 @@ function symmetrizePlacementsForHex(list) {
 }
 
 function generateTrefoilPass(basePlacements, guardLimit, symmetryFold) {
-  const target = Math.max(1, maxCoronaFor(basePlacements) + 1);
-  const limit = Math.max(80, Math.ceil(target * target * 18));
-  return generatePatch(basePlacements, Math.min(guardLimit, limit), target, symmetryFold, false, trefoilOrientations, true);
+  return generatePatch(basePlacements, guardLimit, Infinity, symmetryFold, false, trefoilOrientations, true);
 }
-function revealPatch(finalPlacements, version, isFinal = true) {
+function finishPatchReveal(finalPlacements, version) {
+  if (version !== buildVersion) return;
+  revealVersion += 1;
+  placements = finalPlacements;
+  coronas = placementCoronasFor(placements);
+  updateMoveHints();
+  setStatus('ready');
+  draw();
+}
+function revealPatch(finalPlacements, version) {
   const revealId = ++revealVersion;
   const finalCoronas = placementCoronasFor(finalPlacements);
   const finiteCoronas = finalCoronas.filter(Number.isFinite);
@@ -288,11 +295,7 @@ function revealPatch(finalPlacements, version, isFinal = true) {
     if (visibleCorona < maxCorona) {
       visibleCorona += 1;
       window.setTimeout(revealNext, 90);
-      return;
     }
-    if (isFinal) updateMoveHints();
-    setStatus(isFinal ? 'ready' : 'computing...');
-    draw();
   };
   revealNext();
 }
@@ -320,7 +323,8 @@ function buildPatch(){
     const generatedPlacements = generatePatch(seed, limit, corona, selectedSymmetry, activeTab === 'crossing');
     const isFinal = corona >= targetCorona;
     const finalPlacements = isFinal && activeTab !== 'crossing' ? generateTrefoilPass(generatedPlacements, guardLimit, selectedSymmetry) : generatedPlacements;
-    revealPatch(finalPlacements, version, isFinal);
+    if (isFinal) finishPatchReveal(finalPlacements, version);
+    else revealPatch(finalPlacements, version);
   };
   const warmCorona = Math.min(targetCorona, 2);
   window.setTimeout(() => {
@@ -435,6 +439,62 @@ function placementBoundaryEdges(placement) {
   }
   return edges;
 }
+
+function sharedBoundaryEdgeCount(aPlacement, bPlacement) {
+  const aEdges = placementBoundaryEdges(aPlacement), bEdges = placementBoundaryEdges(bPlacement);
+  let shared = 0;
+  aEdges.forEach((count, edge) => { if (count > 0 && (bEdges.get(edge) || 0) > 0) shared += 1; });
+  return shared;
+}
+function boundaryPointsForOrientation(orientation) {
+  const points = new Map();
+  const vertices = orientation.vertices;
+  for (let i = 0; i < vertices.length; i += 1) {
+    segmentPoints(vertices[i], vertices[(i + 1) % vertices.length]).forEach(point => points.set(key(point), point));
+  }
+  return [...points.values()];
+}
+function normalizedMoveForCanonicalPair(trefoil, turtle) {
+  const moves = outlineSymmetryOps(trefoil, turtle)
+    .map(op => ({ op, next: [transformPlacement(trefoil, op), transformPlacement(turtle, op)], indices: [0, 1], clickedIndex: 1 }));
+  const move = chooseUniqueMove(moves);
+  return move ? cloneMoveOp(move.op) : null;
+}
+function buildViableRelativeMoveCache(turtleSet = turtleOrientations) {
+  const cache = new Map(), ambiguous = new Set();
+  for (const trefoilOrientation of trefoilOrientations) {
+    const trefoil = place(trefoilOrientation, [0, 0, 0], { kind: 'attached-trefoil' });
+    const trefoilBoundary = boundaryPointsForOrientation(trefoilOrientation);
+    for (const turtleOrientation of turtleSet) {
+      const turtleBoundary = boundaryPointsForOrientation(turtleOrientation);
+      const translations = new Map();
+      trefoilBoundary.forEach(trefoilPoint => {
+        turtleBoundary.forEach(turtlePoint => {
+          const translation = sub(trefoilPoint, turtlePoint);
+          translations.set(key(translation), translation);
+        });
+      });
+      translations.forEach(translation => {
+        const turtle = place(turtleOrientation, translation, { kind: 'turtle' });
+        if (!sharedBoundaryEdgeCount(trefoil, turtle)) return;
+        const op = normalizedMoveForCanonicalPair(trefoil, turtle);
+        if (!op) return;
+        const pairKey = relativePlacementKey(trefoil, turtle);
+        const opKey = `${op.sym.sign}|${op.sym.permutation.join(',')}|${key(op.translation)}`;
+        if (cache.has(pairKey) && cache.get(pairKey).opKey !== opKey) ambiguous.add(pairKey);
+        else cache.set(pairKey, { op, opKey });
+      });
+    }
+  }
+  ambiguous.forEach(pairKey => cache.delete(pairKey));
+  return cache;
+}
+let viableRelativeMoveCache = null;
+function getViableRelativeMoveCache() {
+  if (!viableRelativeMoveCache) viableRelativeMoveCache = buildViableRelativeMoveCache(turtleOrientations);
+  return viableRelativeMoveCache;
+}
+
 function pairOutlineEdges(aPlacement, bPlacement) {
   const edges = new Map();
   for (const placement of [aPlacement, bPlacement]) {
@@ -510,10 +570,12 @@ function validatorWithoutPair(indexA, indexB) {
   };
 }
 function outlinePreservingMoveForPair(trefoilIndex, turtleIndex, clickedIndex) {
-  const moves = cachedOutlineSymmetryOps(placements[trefoilIndex], placements[turtleIndex])
-    .map(op => moveFromOpForPair(trefoilIndex, turtleIndex, op, clickedIndex))
-    .filter(validatorWithoutPair(trefoilIndex, turtleIndex));
-  return chooseUniqueMove(moves);
+  if (!sharedBoundaryEdgeCount(placements[trefoilIndex], placements[turtleIndex])) return null;
+  const cached = getViableRelativeMoveCache().get(relativePlacementKey(placements[trefoilIndex], placements[turtleIndex]));
+  if (!cached) return null;
+  const op = translateOpFromOrigin(cloneMoveOp(cached.op), placements[trefoilIndex].translation || [0, 0, 0]);
+  const move = moveFromOpForPair(trefoilIndex, turtleIndex, op, clickedIndex);
+  return validatorWithoutPair(trefoilIndex, turtleIndex)(move) ? move : null;
 }
 function chooseUniqueMove(moves) {
   const rotations = moves.filter(move => move.op.kind === 'half-turn' || move.op.kind === 'rotation');
