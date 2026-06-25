@@ -115,7 +115,7 @@ function placementCoronasFor(list){ const cs=list.map((_,i)=>i===0?0:Infinity), 
 function maxCoronaFor(list){ const finite=placementCoronasFor(list).filter(Number.isFinite); return finite.length ? Math.max(...finite) : 0; }
 function removePlacement(p,sums,markSums){ for(const e of p.occupancy){ const k=key(e.point), old=sums.get(k); if(!old) continue; old.value-=e.value; if(old.value<=0)sums.delete(k); else sums.set(k,old); } for(const e of p.marks){ const k=mkey(e), old=markSums.get(k); if(!old) continue; if(old.count<=1) markSums.delete(k); else markSums.set(k,{...old,count:old.count-1,conflict:false}); } }
 function candidateKeepsBoundaryAlive(candidate, sums, markSums, used) {
-  const trial = place(candidate.orientation, candidate.translation, { kind: 'turtle', placementKey: candidate.pk });
+  const trial = place(candidate.orientation, candidate.translation, generatedPlacementExtra(candidate.orientation, { ...candidate, forced: false, branchCount: 1 }));
   addPlacement(trial, sums, markSums);
   used.add(candidate.pk);
   const affected = new Map();
@@ -142,7 +142,7 @@ function generatedPlacementExtra(orientation, candidate) {
   if (orientation.name === 'Trefoil') return { kind: 'attached-trefoil', color: orientation.isReflected ? ORANGE : BLUE, placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
   return { kind: 'turtle', placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
 }
-function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFold=1, relaxBoundary=false, tileOrientations=currentTurtleOrientations) {
+function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFold=1, relaxBoundary=false, tileOrientations=currentTurtleOrientations, forcedOnly=false) {
   const previousSearchOrientations = searchOrientations;
   searchOrientations = tileOrientations;
   const initialPlacements = Array.isArray(seedPlacement) ? seedPlacement.map(placement => ({ ...placement })) : [seedPlacement];
@@ -192,6 +192,7 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
     if (nodes++ >= nodeBudget) return false;
     const analysis = analyzePatchBoundary(sums, markSums, used);
     if (analysis.deadEnd || !analysis.choice) return false;
+    if (forcedOnly && !analysis.forced) return true;
     if (!analysis.forced && bestCorona >= targetCorona) return true;
     const candidates = analysis.forced ? analysis.choice.candidates : shuffled(analysis.choice.candidates);
     for (const candidate of candidates) {
@@ -269,7 +270,7 @@ function symmetrizePlacementsForHex(list) {
 function generateTrefoilPass(basePlacements, guardLimit, symmetryFold) {
   const target = Math.max(1, maxCoronaFor(basePlacements) + 1);
   const limit = Math.max(80, Math.ceil(target * target * 18));
-  return generatePatch(basePlacements, Math.min(guardLimit, limit), target, symmetryFold, true, trefoilOrientations);
+  return generatePatch(basePlacements, Math.min(guardLimit, limit), target, symmetryFold, false, trefoilOrientations, true);
 }
 function revealPatch(finalPlacements, version, isFinal = true) {
   const revealId = ++revealVersion;
