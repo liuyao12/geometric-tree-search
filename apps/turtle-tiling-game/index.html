@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Turtle Tiling Game</title>
-  <link rel="stylesheet" href="./style.css?v=20260625-forced-valid-trefoils">
+  <link rel="stylesheet" href="./style.css?v=20260625-algorithmic-trefoils">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2724%27 font-size=%2724%27%3E%F0%9F%90%A2%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -27,20 +27,13 @@
       <button class="symmetry-toggle" type="button" data-symmetry="2" aria-pressed="false">2</button>
       <button class="symmetry-toggle" type="button" data-symmetry="3" aria-pressed="false">3</button>
       <button class="symmetry-toggle" type="button" data-symmetry="6" aria-pressed="false">6</button>
-      <button id="resetView" aria-label="Reset trefoil to center">↺</button>
+      <button id="resetView" aria-label="Reset view">↺</button>
       <span class="stripes-label">stripes:</span>
       <button id="blueStripes" class="stripe-toggle stripe-blue" type="button" aria-pressed="true">blue</button>
       <button id="orangeStripes" class="stripe-toggle stripe-orange" type="button" aria-pressed="true">orange</button>
       <span id="status" aria-live="polite">ready</span>
     </section>
     <div class="board-area">
-      <aside id="trefoilPalette" class="trefoil-palette" aria-label="Trefoil attachment palette">
-        <canvas class="trefoil-token" width="150" height="150" data-rotation="0" data-color="#0072b2" aria-label="Blue trefoil"></canvas>
-        <canvas class="trefoil-token" width="150" height="150" data-rotation="60" data-color="#0072b2" aria-label="Blue trefoil rotated 60 degrees"></canvas>
-        <canvas class="trefoil-token" width="150" height="150" data-rotation="0" data-color="#d55e00" data-reflect="true" aria-label="Orange reflected trefoil"></canvas>
-        <canvas class="trefoil-token" width="150" height="150" data-rotation="60" data-color="#d55e00" data-reflect="true" aria-label="Orange reflected trefoil rotated 60 degrees"></canvas>
-        <div id="trefoilTrash" class="trefoil-trash" aria-label="Trash can for trefoils">🗑</div>
-      </aside>
       <div class="canvas-stack">
         <canvas id="board" width="1200" height="780" aria-label="Turtle Tiling Game board"></canvas>
         <canvas id="crossingBoard" class="hidden" width="1200" height="780" aria-label="Hex Seed Turtle Game board"></canvas>
@@ -48,6 +41,6 @@
     </div>
 
   </main>
-  <script type="module" src="./app.js?v=20260625-forced-valid-trefoils"></script>
+  <script type="module" src="./app.js?v=20260625-algorithmic-trefoils"></script>
 </body>
 </html>
