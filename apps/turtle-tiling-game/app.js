@@ -72,13 +72,14 @@ const allSymmetries = symmetries();
 const turtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,turtleStripes,s,i,'Turtle'));
 const unmarkedTurtleOrientations = allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,[],s,i,'Turtle'));
 let currentTurtleOrientations = turtleOrientations;
-const trefoilBase = orientTile(trefoilVerts,trefoilOcc,trefoilStripes,allSymmetries[0],0,'Trefoil');
+const trefoilOrientations = allSymmetries.map((s,i)=>orientTile(trefoilVerts,trefoilOcc,trefoilStripes,s,i,'Trefoil'));
+const trefoilBase = trefoilOrientations[0];
 const centralHexBase = {idx:0, name:'Hex', sym:allSymmetries[0], isReflected:false, vertices:centralHexVerts, occupancy:centralHexOcc, marks:[], segments:[]};
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: placement.isReflected !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
 function isTrefoilPlacement(placement) { return placement?.orientation?.name === 'Trefoil' || placement?.kind === 'attached-trefoil'; }
 function isTurtlePlacement(placement) { return placement?.orientation?.name === 'Turtle' || placement?.kind === 'turtle' || placement?.kind === 'seed-turtle'; }
-let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], historyStateKeys=[], resetting=false, buildVersion=0;
+let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], historyStateKeys=[], resetting=false, buildVersion=0, revealVersion=0;
 function mkey(e){return `${key(e.point)}|${e.component}`;}
 function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
 function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
@@ -240,25 +241,88 @@ function symmetrizePlacementsForHex(list) {
   return out;
 }
 
-function revealPatch(finalPlacements, version) {
+function placementFitsWithMaps(placement, sums, markSums) {
+  const trialSums = new Map([...sums].map(([mapKey, entry]) => [mapKey, { ...entry }]));
+  const trialMarks = new Map([...markSums].map(([mapKey, entry]) => [mapKey, { ...entry }]));
+  addPlacement(placement, trialSums, trialMarks);
+  if ([...trialSums.values()].some(entry => entry.value > MAX)) return false;
+  if ([...trialMarks.values()].some(entry => entry.conflict)) return false;
+  return true;
+}
+function validTrefoilCandidate(orientation, translation, sums, markSums, used) {
+  const placement = place(orientation, translation, { kind: 'attached-trefoil', color: orientation.isReflected ? ORANGE : BLUE });
+  const stateKey = placementStateKey(placement);
+  if (used.has(stateKey)) return null;
+  let newPts = 0;
+  for (const entry of placement.occupancy) {
+    const current = sums.get(key(entry.point))?.value || 0;
+    if (current === 0) newPts += 1;
+    if (current + entry.value > MAX) return null;
+  }
+  if (!newPts) return null;
+  for (const entry of placement.marks) {
+    const old = markSums.get(mkey(entry));
+    if (old && old.value !== entry.value) return null;
+  }
+  return placementFitsWithMaps(placement, sums, markSums) ? { placement, stateKey } : null;
+}
+function forcedTrefoilCandidates(sums, markSums, used) {
+  return frontier(sums).flatMap(frontierPoint => {
+    const need = MAX - frontierPoint.value;
+    const candidates = [];
+    for (const orientation of trefoilOrientations) {
+      for (const anchor of orientation.occupancy.filter(entry => entry.value <= need)) {
+        const candidate = validTrefoilCandidate(orientation, sub(frontierPoint.point, anchor.point), sums, markSums, used);
+        if (candidate) candidates.push(candidate);
+      }
+    }
+    const unique = new Map(candidates.map(candidate => [candidate.stateKey, candidate]));
+    return unique.size === 1 ? [...unique.values()] : [];
+  });
+}
+function addForcedTrefoils(basePlacements) {
+  const nextPlacements = basePlacements.slice();
+  const sums = new Map(), markSums = new Map(), used = new Set(nextPlacements.map(placementStateKey));
+  nextPlacements.forEach(placement => addPlacement(placement, sums, markSums));
+  const added = [];
+  for (let guard = 0; guard < 80; guard += 1) {
+    const candidates = forcedTrefoilCandidates(sums, markSums, used).filter(candidate => !used.has(candidate.stateKey));
+    if (!candidates.length) break;
+    let changed = false;
+    for (const candidate of candidates) {
+      if (used.has(candidate.stateKey) || !placementFitsWithMaps(candidate.placement, sums, markSums)) continue;
+      candidate.placement.attachmentId = nextAttachmentId++;
+      nextPlacements.push(candidate.placement);
+      added.push({ attachmentId: candidate.placement.attachmentId, translation: [...candidate.placement.translation], rotation: 0, color: candidate.placement.color, reflect: candidate.placement.isReflected });
+      addPlacement(candidate.placement, sums, markSums);
+      used.add(candidate.stateKey);
+      changed = true;
+    }
+    if (!changed) break;
+  }
+  attachedTrefoils.tiling = added;
+  return nextPlacements;
+}
+function revealPatch(finalPlacements, version, isFinal = true) {
+  const revealId = ++revealVersion;
   const finalCoronas = placementCoronasFor(finalPlacements);
   const finiteCoronas = finalCoronas.filter(Number.isFinite);
   const maxCorona = finiteCoronas.length ? Math.max(...finiteCoronas) : 0;
   let visibleCorona = 0;
   const revealNext = () => {
-    if (version !== buildVersion) return;
+    if (version !== buildVersion || revealId !== revealVersion) return;
     placements = finalPlacements.filter((_, index) => (finalCoronas[index] ?? Infinity) <= visibleCorona);
     coronas = placementCoronasFor(placements);
     legalMoveIndices = new Set();
-    setStatus('computing');
+    setStatus('computing...');
     draw();
     if (visibleCorona < maxCorona) {
       visibleCorona += 1;
       window.setTimeout(revealNext, 90);
       return;
     }
-    updateMoveHints();
-    setStatus('ready');
+    if (isFinal) updateMoveHints();
+    setStatus(isFinal ? 'ready' : 'computing...');
     draw();
   };
   revealNext();
@@ -279,13 +343,15 @@ function buildPatch(){
   coronas = computeCoronas();
   legalMoveIndices = new Set();
   clearMoveHintCache();
-  setStatus('computing');
+  setStatus('computing...');
   draw();
   const buildAndReveal = (corona, limit) => {
     if (version !== buildVersion) return;
-    setStatus('computing');
-    const finalPlacements = generatePatch(seed, limit, corona, selectedSymmetry, activeTab === 'crossing');
-    revealPatch(finalPlacements, version);
+    setStatus('computing...');
+    const generatedPlacements = generatePatch(seed, limit, corona, selectedSymmetry, activeTab === 'crossing');
+    const isFinal = corona >= targetCorona;
+    const finalPlacements = isFinal && activeTab === 'tiling' ? addForcedTrefoils(generatedPlacements) : generatedPlacements;
+    revealPatch(finalPlacements, version, isFinal);
   };
   const warmCorona = Math.min(targetCorona, 2);
   window.setTimeout(() => {
@@ -1038,5 +1104,5 @@ blueStripesToggle.addEventListener('click',()=>toggleStripe(blueStripesToggle));
 window.addEventListener('resize', resizeCanvas);
 updateSymmetryAvailability();
 resizeCanvas();
-setStatus('computing');
+setStatus('computing...');
 window.setTimeout(() => buildPatch(), 60);
