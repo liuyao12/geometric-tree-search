@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260616-inline-frontier-dual";
+import { tileSpecs } from "./engine.js?v=20260627-frontier-graph";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1116,12 +1116,10 @@ function formatVisitedPercent(value) {
 
 function updateFrontierMetrics(stats = null) {
   const frontierPoints = stats?.point_count ?? stats?.frontier_points ?? stats?.count ?? 0;
-  const candidateCount = stats?.candidate_count;
+  const candidateCount = Number.isFinite(stats?.candidate_count) ? stats.candidate_count : 0;
   metricFrontier.textContent = frontierPoints;
-  metricLayer.textContent = Number.isFinite(candidateCount) ? candidateCount : "—";
-  metricLayerDetail.textContent = Number.isFinite(candidateCount)
-    ? `candidate${candidateCount === 1 ? "" : "s"} for ${frontierPoints} frontier point${frontierPoints === 1 ? "" : "s"}`
-    : "candidates pending";
+  metricLayer.textContent = candidateCount;
+  metricLayerDetail.textContent = `candidate${candidateCount === 1 ? "" : "s"} for ${frontierPoints} frontier point${frontierPoints === 1 ? "" : "s"}`;
 }
 
 function updateSearchMetrics(stats = null) {
@@ -1568,14 +1566,12 @@ function renderTree() {
     frontier.className = "tree-frontier";
     if (node.frontierStats) {
       const points = node.frontierStats.point_count ?? node.frontierStats.count ?? 0;
-      const candidates = node.frontierStats.candidate_count;
-      frontier.textContent = Number.isFinite(candidates)
-        ? `${points} pts / ${candidates} cand`
-        : `${points} pts`;
+      const candidates = Number.isFinite(node.frontierStats.candidate_count) ? node.frontierStats.candidate_count : 0;
+      frontier.textContent = `${points} pts / ${candidates} cand`;
       const associations = node.frontierDual?.association_count ?? node.frontierStats.association_count;
       frontier.title = Number.isFinite(associations)
-        ? `Frontier-candidate graph: ${points} points, ${candidates ?? 0} candidates, ${associations} associations`
-        : "Frontier points and cached candidate count";
+        ? `Frontier-candidate graph: ${points} points, ${candidates} candidates, ${associations} associations`
+        : `Frontier-candidate graph: ${points} points, ${candidates} candidates`;
     }
 
     content.append(statusDot, label);
@@ -1667,7 +1663,7 @@ function scheduleFullUpdate(snapshot) {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260615-polycube-z3-default", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260627-frontier-graph", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;

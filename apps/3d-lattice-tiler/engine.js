@@ -1,6 +1,8 @@
 // Ported from https://observablehq.com/@liuyao12/3d-lattice-tiler
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
+import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
+
 export const createTilingStream = (() => {
   return async function* createTilingStream(config, tileSpecs, stopToken) {
     const SCALE = tileSpecs.SCALE;
@@ -183,12 +185,15 @@ export const createTilingStream = (() => {
       frontier: new Map(),
       lattice: new Map(),
       viz_faces: new Map(),
+      frontier_point_depths: new Map(),
       vertex_candidate_cache: new Map()
     };
 
     let faceCounter = 0;
     let nodeCounter = 0;
     let stateVersion = 0;
+    let latestFrontierGraph = null;
+    let latestFrontierGraphVersion = -1;
     const nowId = () => (++nodeCounter);
     const searchStats = {
       forced_total: 0,
@@ -365,7 +370,7 @@ export const createTilingStream = (() => {
         tile_counts: [...countMap.values()].sort((a, b) => a.type_idx - b.type_idx),
         faces,
         node_id,
-        frontier_stats: calculateFrontierStats(),
+        frontier_stats: frontierStatsWithCandidateCount(),
         search_stats: searchStatsSnapshot()
       };
       if (placementDetails) {
@@ -386,8 +391,15 @@ export const createTilingStream = (() => {
     const latticeGet = (pos) => state.lattice.get(pos.join(",")) ?? 0;
     const latticeAdd = (pos, w) => {
       const k = pos.join(",");
-      state.lattice.set(k, (state.lattice.get(k) ?? 0) + w);
-      if (state.lattice.get(k) <= 0) state.lattice.delete(k);
+      const oldWeight = state.lattice.get(k) ?? 0;
+      const nextWeight = oldWeight + w;
+      if (nextWeight <= 0) {
+        state.lattice.delete(k);
+        state.frontier_point_depths.delete(k);
+        return;
+      }
+      state.lattice.set(k, nextWeight);
+      if (oldWeight <= 0) state.frontier_point_depths.set(k, Math.max(0, state.placements.length - 1));
     };
 
     const candidateCachePointKey = (cacheKey) => cacheKey.split("::", 1)[0];
@@ -608,6 +620,33 @@ export const createTilingStream = (() => {
       }
       return { min_gen: minGen === Infinity ? 0 : minGen, count: minGenCount, total_faces: state.frontier.size, ...frontierPointStats() };
     };
+    const frontierGraphPayload = (graph) => ({
+      frontier_points: graph.frontier_points,
+      candidates: graph.candidates,
+      candidate_count: graph.candidate_count,
+      association_count: graph.association_count
+    });
+    const frontierStatsFromGraph = (graph) => ({
+      ...calculateFrontierStats(),
+      point_count: graph.frontier_points.length,
+      candidate_count: graph.candidate_count,
+      association_count: graph.association_count
+    });
+    const rememberFrontierGraph = (graph) => {
+      latestFrontierGraph = graph;
+      latestFrontierGraphVersion = stateVersion;
+      return frontierStatsFromGraph(graph);
+    };
+    const frontierStatsWithCandidateCount = () => {
+      if (latestFrontierGraph && latestFrontierGraphVersion === stateVersion) {
+        return frontierStatsFromGraph(latestFrontierGraph);
+      }
+      return {
+        ...calculateFrontierStats(),
+        candidate_count: 0,
+        association_count: 0
+      };
+    };
 
     const startMove = { prototile_idx: 0, translation: startTrans, occupancy_data: startOcc, orient: startOrient, color_id: 0 };
     state.placements.push(startMove);
@@ -624,7 +663,7 @@ export const createTilingStream = (() => {
     }
     
     const rootId = nowId();
-    const rootStats = calculateFrontierStats();
+    const rootStats = frontierStatsWithCandidateCount();
     yield branchSet(null, [{ id: rootId, text: treeTileName(p0.name), frontier_stats: rootStats }]);
     yield nodeStatus(rootId, "working", "", { color_id: 0, frontier_stats: rootStats });
     yield snapshot(rootId);
@@ -1013,277 +1052,6 @@ export const createTilingStream = (() => {
       preview_frontier_stats: move._preview_stats ?? null
     } : {};
 
-    const cellCoord = (pos) => {
-      const out = pos.map(value => (value - 1) / 2);
-      return out.every(Number.isInteger) ? out : null;
-    };
-    const modulo = (value, size) => ((value % size) + size) % size;
-    const polycubeSeedData = () => {
-      if (prototiles.length !== 1) return null;
-      const tile = prototiles[0];
-      const shapes = [];
-      const minPeriod = [1, 1, 1];
-      for (let orientIndex = 0; orientIndex < tile.unique_orientations.length; orientIndex++) {
-        const orient = tile.unique_orientations[orientIndex];
-        const start = orient.verts[0].map(value => -value);
-        const cells = [];
-        for (const pt of orient.occupancy) {
-          if (pt.weight !== MAX_SOLID_ANGLE) continue;
-          const shifted = add3(pt.pos, start);
-          const c = cellCoord(shifted);
-          if (!c) return null;
-          cells.push(c);
-        }
-        const unique = new Set(cells.map(vecKey));
-        if (!cells.length || unique.size !== cells.length) return null;
-        for (let axis = 0; axis < 3; axis++) {
-          const values = cells.map(c => c[axis]);
-          minPeriod[axis] = Math.max(minPeriod[axis], Math.max(...values) - Math.min(...values) + 1);
-        }
-        shapes.push({ orientIndex, orient, start, cells });
-      }
-      const rootCellCount = shapes[0]?.cells.length ?? 0;
-      if (!rootCellCount || rootCellCount > 30) return null;
-      return { shapes, cellCount: rootCellCount, minPeriod };
-    };
-    const torusPlacementCells = (shape, shift, dims) => {
-      const out = [];
-      const seen = new Set();
-      for (const cell of shape.cells) {
-        const wrapped = [
-          modulo(cell[0] + shift[0], dims[0]),
-          modulo(cell[1] + shift[1], dims[1]),
-          modulo(cell[2] + shift[2], dims[2])
-        ];
-        const key = vecKey(wrapped);
-        if (seen.has(key)) return null;
-        seen.add(key);
-        out.push(key);
-      }
-      return out;
-    };
-    const solvePeriodicPolycubeCell = () => {
-      const seed = polycubeSeedData();
-      if (!seed) return null;
-      const { shapes, cellCount, minPeriod } = seed;
-      const started = performance.now();
-      const timeLimitMs = Math.max(50, +config.crystal_seed_time_ms || 1200);
-      const maxNodes = Math.max(1000, +config.crystal_seed_node_limit || 500000);
-      let nodesUsed = 0;
-      const dimsList = [];
-      for (let x = minPeriod[0]; x <= 8; x++) {
-        for (let y = minPeriod[1]; y <= 8; y++) {
-          for (let z = minPeriod[2]; z <= 8; z++) {
-            const volume = x * y * z;
-            if (volume % cellCount !== 0) continue;
-            const tileCount = volume / cellCount;
-            if (tileCount < 2 || tileCount > 32) continue;
-            dimsList.push([x, y, z]);
-          }
-        }
-      }
-      dimsList.sort((a, b) => {
-        const av = a[0] * a[1] * a[2], bv = b[0] * b[1] * b[2];
-        if (av !== bv) return av - bv;
-        return Math.max(...a) - Math.max(...b);
-      });
-
-      const solveDims = (dims) => {
-        const [dx, dy, dz] = dims;
-        const allCells = [];
-        for (let x = 0; x < dx; x++) for (let y = 0; y < dy; y++) for (let z = 0; z < dz; z++) allCells.push(`${x},${y},${z}`);
-        const rootCells = torusPlacementCells(shapes[0], [0, 0, 0], dims);
-        if (!rootCells) return null;
-        const rootSet = new Set(rootCells);
-        const placements = [{ shape: shapes[0], shift: [0, 0, 0], cells: rootCells, root: true }];
-        for (const shape of shapes) {
-          for (let x = 0; x < dx; x++) {
-            for (let y = 0; y < dy; y++) {
-              for (let z = 0; z < dz; z++) {
-                if (shape.orientIndex === 0 && x === 0 && y === 0 && z === 0) continue;
-                const cells = torusPlacementCells(shape, [x, y, z], dims);
-                if (!cells || cells.some(cell => rootSet.has(cell))) continue;
-                placements.push({ shape, shift: [x, y, z], cells });
-              }
-            }
-          }
-        }
-        const byCell = new Map(allCells.map(cell => [cell, []]));
-        placements.forEach((placement, index) => {
-          placement.cells.forEach(cell => byCell.get(cell)?.push(index));
-        });
-        const covered = new Set(rootCells);
-        const solution = [placements[0]];
-        const dfs = () => {
-          nodesUsed += 1;
-          if (nodesUsed > maxNodes || performance.now() - started > timeLimitMs) return false;
-          if (covered.size === allCells.length) return true;
-          let bestList = null;
-          for (const cell of allCells) {
-            if (covered.has(cell)) continue;
-            const legal = (byCell.get(cell) ?? []).filter(index =>
-              placements[index].cells.every(candidateCell => !covered.has(candidateCell))
-            );
-            if (!legal.length) return false;
-            if (!bestList || legal.length < bestList.length) {
-              bestList = legal;
-              if (legal.length === 1) break;
-            }
-          }
-          bestList.sort((ia, ib) => {
-            const a = placements[ia], b = placements[ib];
-            return a.shape.orientIndex - b.shape.orientIndex
-              || a.shift[0] - b.shift[0]
-              || a.shift[1] - b.shift[1]
-              || a.shift[2] - b.shift[2];
-          });
-          for (const index of bestList) {
-            const placement = placements[index];
-            if (placement.cells.some(cell => covered.has(cell))) continue;
-            placement.cells.forEach(cell => covered.add(cell));
-            solution.push(placement);
-            if (dfs()) return true;
-            solution.pop();
-            placement.cells.forEach(cell => covered.delete(cell));
-          }
-          return false;
-        };
-        return dfs() ? {
-          dims,
-          nodes: nodesUsed,
-          placements: solution.map(placement => ({
-            orientIndex: placement.shape.orientIndex,
-            orient: placement.shape.orient,
-            start: placement.shape.start,
-            shift: placement.shift.slice(),
-            root: !!placement.root
-          }))
-        } : null;
-      };
-
-      for (const dims of dimsList) {
-        if (performance.now() - started > timeLimitMs || nodesUsed > maxNodes) break;
-        const solved = solveDims(dims);
-        if (solved) return solved;
-      }
-      return null;
-    };
-    const buildPeriodicSeedSequence = (cell) => {
-      if (!cell?.placements?.length) return null;
-      const period = cell.dims.map(size => size * 2);
-      const targetTiles = criterion === "count" ? targetVal : Math.min(safetyMax, targetVal * cell.placements.length * 12);
-      const cellsNeeded = Math.max(1, Math.ceil(targetTiles / cell.placements.length));
-      const repeatRadius = Math.max(1, Math.ceil((Math.cbrt(cellsNeeded) - 1) / 2));
-      const candidates = [];
-      for (let rx = -repeatRadius; rx <= repeatRadius; rx++) {
-        for (let ry = -repeatRadius; ry <= repeatRadius; ry++) {
-          for (let rz = -repeatRadius; rz <= repeatRadius; rz++) {
-            const repeatOffset = [rx * cell.dims[0], ry * cell.dims[1], rz * cell.dims[2]];
-            for (const placement of cell.placements) {
-              if (placement.root && rx === 0 && ry === 0 && rz === 0) continue;
-              const shift = vecAdd(placement.shift, repeatOffset);
-              const translation = vecAdd(placement.start, shift.map(value => value * 2));
-              const distance = translation[0] * translation[0] + translation[1] * translation[1] + translation[2] * translation[2];
-              candidates.push({
-                prototile_idx: 0,
-                orient: placement.orient,
-                translation,
-                is_forced: true,
-                _periodic_seed: true,
-                _periodic_distance: distance,
-                _periodic_cell_dims: cell.dims,
-                _periodic_period: period
-              });
-            }
-          }
-        }
-      }
-      const remaining = new Map();
-      for (const move of candidates) {
-        const key = `${move.orient.__orientation_id ?? ""}::${vecKey(move.translation)}`;
-        if (!remaining.has(key)) remaining.set(key, move);
-      }
-      const sequence = [];
-      const rollbacks = [];
-      while (!goalMet() && state.placements.length < safetyMax && remaining.size) {
-        let bestKey = null;
-        let bestMove = null;
-        let bestScore = null;
-        for (const [key, move] of remaining.entries()) {
-          const validity = isMoveValid(move);
-          if (!validity.ok) continue;
-          delete move._coverage;
-          const coverage = moveCoverage(move);
-          if (coverage <= 0) continue;
-          const score = [coverage, -move._periodic_distance];
-          if (isBetterScore(score, bestScore)) {
-            bestKey = key;
-            bestMove = { ...move, occupancy_data: validity.occData };
-            bestScore = score;
-          }
-        }
-        if (!bestMove) break;
-        remaining.delete(bestKey);
-        const rb = applyMove(bestMove);
-        rollbacks.push([bestMove, rb]);
-        sequence.push(bestMove);
-      }
-      const ok = goalMet();
-      while (rollbacks.length) {
-        const [move, rb] = rollbacks.pop();
-        undoMove(move, rb);
-      }
-      return ok ? sequence : null;
-    };
-    async function* tryPeriodicSeed(parentId) {
-      if (moveOrder !== "crystal" || exhaustive) return false;
-      const cell = solvePeriodicPolycubeCell();
-      if (!cell) {
-        if (branchDetails) yield { type: "periodic_seed_debug", status: "no_cell" };
-        return false;
-      }
-      const sequence = buildPeriodicSeedSequence(cell);
-      if (!sequence?.length) {
-        if (branchDetails) yield { type: "periodic_seed_debug", status: "no_sequence", cell: { dims: cell.dims, nodes: cell.nodes, placements: cell.placements.length } };
-        return false;
-      }
-      if (branchDetails) yield { type: "periodic_seed_debug", status: "sequence", cell: { dims: cell.dims, nodes: cell.nodes, placements: cell.placements.length }, sequence_length: sequence.length };
-      let currentParent = parentId;
-      for (let i = 0; i < sequence.length; i++) {
-        await yieldToBrowser();
-        if (stopToken.stop || overBudget()) return false;
-        const move = sequence[i];
-        const validity = isMoveValid(move);
-        if (!validity.ok) return false;
-        move.occupancy_data = validity.occData;
-        move.is_forced = true;
-        searchStats.forced_total += 1;
-        const nodeId = nowId();
-        setBranchCursor(i, 1, 0);
-        const rb = applyMove(move);
-        move._periodic_rollback = rb;
-        const stats = calculateFrontierStats();
-        yield branchSet(currentParent, [{
-          id: nodeId,
-          text: treeTileName(prototiles[move.prototile_idx].name),
-          is_forced: true,
-          frontier_stats: stats,
-          periodic_cell: cell.dims
-        }]);
-        yield nodeStatus(nodeId, "success", `[${state.placements.length}] periodic cell`, { color_id: move.color_id, frontier_stats: stats });
-        if (shouldSnapshot()) {
-          yield snapshot(nodeId);
-          await tick();
-        } else {
-          yield nodeSnapshot(nodeId);
-        }
-        setBranchCursor(i, 1, 1);
-        currentParent = nodeId;
-        if (goalMet()) return true;
-      }
-      return goalMet();
-    }
-
     async function* search(parentId, depth = 0) {
       if (stopToken.stop) return false;
       if (overBudget()) {
@@ -1306,9 +1074,19 @@ export const createTilingStream = (() => {
         const options = [];
         for (const [pointKey, weight] of state.lattice.entries()) {
           if (weight <= 0 || weight >= MAX_SOLID_ANGLE) continue;
-          options.push({ pointKey, point: pointKey.split(",").map(Number), weight });
+          options.push({
+            pointKey,
+            point: pointKey.split(",").map(Number),
+            weight,
+            added_depth: state.frontier_point_depths.get(pointKey) ?? 0
+          });
         }
-        return options.sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.weight - right.weight || left.pointKey.localeCompare(right.pointKey));
+        return options.sort((left, right) =>
+          left.added_depth - right.added_depth
+          || frontierPointNorm(left) - frontierPointNorm(right)
+          || left.weight - right.weight
+          || left.pointKey.localeCompare(right.pointKey)
+        );
       };
       const screenCachedVertexCandidates = (option, candidates, maxCandidates) => {
         const dedup = new Map();
@@ -1376,34 +1154,33 @@ export const createTilingStream = (() => {
         node_candidate_cache.set(cacheKey, candidates);
         return candidates;
       };
-      const analyzeFrontierVertices = async () => {
-        const options = [];
-        const uniqueCandidatesForOption = (candidates) => {
-          const dedup = new Map();
-          for (const candidate of candidates ?? []) {
-            const key = candidate.dedup_key ?? placementGeometryKey(candidate);
-            if (!dedup.has(key)) dedup.set(key, candidate);
+      const analyzeFrontierGraph = async () => {
+        if (latestFrontierGraph && latestFrontierGraphVersion === stateVersion) return latestFrontierGraph;
+        const graph = await buildFrontierCandidateGraph(
+          frontierPointOptions(),
+          option => nodeCandidatesForVertexOption(option, candidateCap),
+          {
+            frontierKey: option => option.pointKey,
+            frontierNode: option => ({
+              point: option.point.slice(),
+              weight: option.weight,
+              added_depth: option.added_depth
+            }),
+            candidateKey: candidate => candidate.dedup_key ?? placementGeometryKey(candidate),
+            candidateNode: candidate => ({
+              prototile_idx: candidate.prototile_idx,
+              translation: candidate.translation?.slice() ?? [0, 0, 0]
+            })
           }
-          return [...dedup.values()];
-        };
-        for (const option of frontierPointOptions()) {
-          const candidates = await nodeCandidatesForVertexOption(option, candidateCap);
-          option.all_candidates = candidates;
-          option.unique_candidates = uniqueCandidatesForOption(candidates);
-          option.candidates = option.unique_candidates.slice(0, 2);
-          options.push(option);
-        }
-        const uniqueCandidates = new Set();
-        for (const option of options) {
-          for (const candidate of option.unique_candidates) uniqueCandidates.add(candidate.dedup_key ?? placementGeometryKey(candidate));
-        }
-        const candidate_count = uniqueCandidates.size;
-        const deadEnd = options.find(option => option.unique_candidates.length === 0);
-        if (deadEnd) return { options, deadEnd, candidate_count };
-        const forced = options.filter(option => option.unique_candidates.length === 1).sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.pointKey.localeCompare(right.pointKey));
-        if (forced.length) return { options, forced, candidate_count };
-        if (!options.length) return { options, branches: [], candidate_count: 0 };
-        return { options, branches: options.slice().sort((left, right) => frontierPointNorm(left) - frontierPointNorm(right) || left.unique_candidates.length - right.unique_candidates.length || left.pointKey.localeCompare(right.pointKey)), candidate_count };
+        );
+        return classifyFrontierCandidateGraph(
+          graph,
+          (left, right) =>
+            left.added_depth - right.added_depth
+            || frontierPointNorm(left) - frontierPointNorm(right)
+            || left.unique_candidates.length - right.unique_candidates.length
+            || left.pointKey.localeCompare(right.pointKey)
+        );
       };
       let forcedCount = 0;
       let branchAnalysis = null;
@@ -1418,48 +1195,9 @@ export const createTilingStream = (() => {
           yield nodeStatus(parentId, "success"); return yield* doReturn(true);
         }
 
-        const analysis = await analyzeFrontierVertices();
-        const frontierDual = (() => {
-          const candidateMap = new Map();
-          const frontier_points = [];
-          for (const option of analysis?.options ?? []) {
-            const candidateKeys = new Set();
-            for (const candidate of option.unique_candidates ?? option.all_candidates ?? option.candidates ?? []) {
-              const key = candidate.dedup_key ?? placementGeometryKey(candidate);
-              candidateKeys.add(key);
-              if (!candidateMap.has(key)) {
-                candidateMap.set(key, {
-                  key,
-                  prototile_idx: candidate.prototile_idx,
-                  translation: candidate.translation?.slice() ?? [0, 0, 0],
-                  frontier_points: []
-                });
-              }
-              candidateMap.get(key).frontier_points.push(option.pointKey);
-            }
-            frontier_points.push({
-              point_key: option.pointKey,
-              point: option.point.slice(),
-              weight: option.weight,
-              candidate_keys: [...candidateKeys]
-            });
-          }
-          const candidates = [...candidateMap.values()].map(candidate => ({
-            ...candidate,
-            frontier_points: [...new Set(candidate.frontier_points)]
-          }));
-          return {
-            frontier_points,
-            candidates,
-            association_count: frontier_points.reduce((sum, point) => sum + point.candidate_keys.length, 0)
-          };
-        })();
-        const analysisStats = {
-          ...calculateFrontierStats(),
-          point_count: analysis?.options?.length ?? frontierPointStats().point_count,
-          candidate_count: analysis?.candidate_count ?? 0,
-          association_count: frontierDual.association_count
-        };
+        const analysis = await analyzeFrontierGraph();
+        const frontierDual = frontierGraphPayload(analysis);
+        const analysisStats = rememberFrontierGraph(analysis);
         if (overBudget()) { yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
         if (analysis.deadEnd) {
           searchStats.failed_leaves += 1;
@@ -1476,6 +1214,10 @@ export const createTilingStream = (() => {
           node_candidate_cache.clear();
           forcedBatch.push([mv, rb]);
           forcedCount += 1;
+          const forcedAnalysis = await analyzeFrontierGraph();
+          const forcedStats = rememberFrontierGraph(forcedAnalysis);
+          const forcedDual = frontierGraphPayload(forcedAnalysis);
+          yield nodeStatus(parentId, "working", "", { frontier_stats: forcedStats, frontier_dual: forcedDual });
           if (shouldSnapshot()) {
             yield snapshot(null);
             await tick();
@@ -1491,7 +1233,7 @@ export const createTilingStream = (() => {
       }
 
       if (forcedCount > 0) {
-        const postForcedStats = { ...calculateFrontierStats(), candidate_count: 0 };
+        const postForcedStats = frontierStatsWithCandidateCount();
         const forcedNodeId = nowId();
         if (shouldSnapshot()) {
           yield snapshot(forcedNodeId);
@@ -1507,7 +1249,7 @@ export const createTilingStream = (() => {
       let bestOption = null;
       let bestOptionMoves = [];
       if (branchOptions.length) {
-        let bestFaceScore = null;
+        let bestPointScore = null;
         for (const option of branchOptions) {
           await yieldToBrowser();
           const moves = option.unique_candidates ?? await nodeCandidatesForVertexOption(option, candidateCap);
@@ -1515,12 +1257,12 @@ export const createTilingStream = (() => {
           let bestCoverage = -1;
           for (const m of moves) bestCoverage = Math.max(bestCoverage, moveCoverage(m));
           const score = faceOrder === "pocket"
-            ? [-frontierPointNorm(option), option.weight, -moves.length, bestCoverage]
+            ? [-(option.added_depth ?? 0), -frontierPointNorm(option), option.weight, -moves.length, bestCoverage]
             : faceOrder === "constrained"
-              ? [-frontierPointNorm(option), -moves.length, bestCoverage]
-              : [-frontierPointNorm(option), bestCoverage, -moves.length];
-          if (isBetterScore(score, bestFaceScore)) {
-            bestFaceScore = score;
+              ? [-(option.added_depth ?? 0), -frontierPointNorm(option), -moves.length, bestCoverage]
+              : [-(option.added_depth ?? 0), -frontierPointNorm(option), bestCoverage, -moves.length];
+          if (isBetterScore(score, bestPointScore)) {
+            bestPointScore = score;
             bestOption = option;
             bestOptionMoves = moves;
           }
@@ -1563,9 +1305,11 @@ export const createTilingStream = (() => {
         searchStats.branch_choices_visited += 1;
         searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
         const rb = applyMove(mv);
-        const postMoveStats = calculateFrontierStats();
+        const postMoveAnalysis = await analyzeFrontierGraph();
+        const postMoveStats = rememberFrontierGraph(postMoveAnalysis);
+        const postMoveDual = frontierGraphPayload(postMoveAnalysis);
         
-        yield nodeStatus(mv.node_id, "working", `[${state.placements.length}] ${treeTileName(prototiles[mv.prototile_idx].name)} (${i+1}/${bestMoves.length})`, { color_id: mv.color_id, frontier_stats: postMoveStats });
+        yield nodeStatus(mv.node_id, "working", `[${state.placements.length}] ${treeTileName(prototiles[mv.prototile_idx].name)} (${i+1}/${bestMoves.length})`, { color_id: mv.color_id, frontier_stats: postMoveStats, frontier_dual: postMoveDual });
         if (shouldSnapshot()) {
           yield snapshot(mv.node_id);
           await tick();
@@ -1591,7 +1335,7 @@ export const createTilingStream = (() => {
       return yield* doReturn(false);
     }
 
-    const success = (yield* tryPeriodicSeed(rootId)) || (yield* search(rootId));
+    const success = yield* search(rootId);
     yield nodeStatus(rootId, success ? "success" : "fail");
     const finalSnapshot = success ? snapshot(null) : (bestSnapshot ? { ...cloneSnapshot(bestSnapshot), node_id: null } : snapshot(null));
     yield finalSnapshot;

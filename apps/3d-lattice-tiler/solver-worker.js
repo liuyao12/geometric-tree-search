@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260616-inline-frontier-dual";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260627-frontier-graph";
 
 const SNAPSHOT_INTERVAL_MS = 80;
 

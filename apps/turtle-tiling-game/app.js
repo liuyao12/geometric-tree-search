@@ -1,3 +1,5 @@
+import { buildFrontierCandidateGraphSync, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
+
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
 const crossingCanvas = document.getElementById('crossingBoard');
@@ -93,8 +95,8 @@ function isTrefoilPlacement(placement) { return placement?.orientation?.name ===
 function isTurtlePlacement(placement) { return placement?.orientation?.name === 'Turtle' || placement?.kind === 'turtle' || placement?.kind === 'seed-turtle'; }
 let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], historyStateKeys=[], resetting=false, buildVersion=0, revealVersion=0;
 function mkey(e){return `${key(e.point)}|${e.component}`;}
-function addPlacement(p,sums,markSums){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
-function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>norm(a.point)-norm(b.point)||a.value-b.value);}
+function addPlacement(p,sums,markSums,addedDepth=0){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0,addedDepth}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
+function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>(a.addedDepth??0)-(b.addedDepth??0)||norm(a.point)-norm(b.point)||a.value-b.value);}
 function validCandidate(o,t,sums,markSums,used){ const pk=`${o.name}|${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
 function frontierPointHasCandidate(point, sums, markSums, used) { const need = MAX - point.value; return searchOrientations.some(o => o.occupancy.some(a => a.value <= need && validCandidate(o, sub(point.point, a.point), sums, markSums, used))); }
 function randomItem(items) { return items[Math.floor(Math.random() * items.length)]; }
@@ -125,18 +127,50 @@ function candidateKeepsBoundaryAlive(candidate, sums, markSums, used) {
   removePlacement(trial, sums, markSums);
   return !dead;
 }
+function patchBoundaryGraph(sums, markSums, used) {
+  const frontierItems = frontier(sums).slice(0, 12).map(frontierPoint => ({
+    frontier: frontierPoint,
+    pointKey: key(frontierPoint.point)
+  }));
+  const graph = buildFrontierCandidateGraphSync(
+    frontierItems,
+    item => candidateMovesForFrontier(item.frontier, sums, markSums, used),
+    {
+      frontierKey: item => item.pointKey,
+      frontierNode: item => ({
+        point: item.frontier.point.slice(),
+        value: item.frontier.value,
+        added_depth: item.frontier.addedDepth ?? 0
+      }),
+      candidateKey: candidate => candidate.pk,
+      candidateNode: candidate => ({
+        tile_name: candidate.orientation?.name,
+        orientation_idx: candidate.orientation?.idx,
+        translation: candidate.translation.slice(),
+        score: candidate.score
+      }),
+      previewLimit: Infinity
+    }
+  );
+  return classifyFrontierCandidateGraph(
+    graph,
+    (a, b) =>
+      (a.frontier.addedDepth ?? 0) - (b.frontier.addedDepth ?? 0)
+      || a.candidates.length - b.candidates.length
+      || norm(a.frontier.point) - norm(b.frontier.point)
+      || a.frontier.value - b.frontier.value
+      || b.candidates[0].score - a.candidates[0].score
+  );
+}
 function analyzePatchBoundary(sums, markSums, used) {
-  const options = frontier(sums).slice(0, 12).map(f => ({ frontier: f, candidates: candidateMovesForFrontier(f, sums, markSums, used) }));
-  const deadEnd = options.find(option => option.candidates.length === 0);
-  if (deadEnd) return { deadEnd, choice: null, forced: false };
-  const byGctsOrder = (a,b) => a.candidates.length - b.candidates.length || norm(a.frontier.point) - norm(b.frontier.point) || a.frontier.value - b.frontier.value || b.candidates[0].score - a.candidates[0].score;
-  const forced = options.filter(option => option.candidates.length === 1).sort(byGctsOrder);
-  if (forced.length) return { deadEnd: null, choice: forced[0], forced: true };
-  const ranked = options.filter(option => option.candidates.length).sort(byGctsOrder);
+  const analysis = patchBoundaryGraph(sums, markSums, used);
+  if (analysis.deadEnd) return { deadEnd: analysis.deadEnd, choice: null, forced: false, graph: analysis };
+  if (analysis.forced.length) return { deadEnd: null, choice: analysis.forced[0], forced: true, graph: analysis };
+  const ranked = analysis.branches;
   if (!ranked.length) return { deadEnd: null, choice: null, forced: false };
   const first = ranked[0];
-  const tied = ranked.filter(option => option.candidates.length === first.candidates.length && norm(option.frontier.point) === norm(first.frontier.point) && option.frontier.value === first.frontier.value && option.candidates[0].score === first.candidates[0].score);
-  return { deadEnd: null, choice: randomItem(tied), forced: false };
+  const tied = ranked.filter(option => (option.frontier.addedDepth ?? 0) === (first.frontier.addedDepth ?? 0) && option.candidates.length === first.candidates.length && norm(option.frontier.point) === norm(first.frontier.point) && option.frontier.value === first.frontier.value && option.candidates[0].score === first.candidates[0].score);
+  return { deadEnd: null, choice: randomItem(tied), forced: false, graph: analysis };
 }
 function generatedPlacementExtra(orientation, candidate) {
   if (orientation.name === 'Trefoil') return { kind: 'attached-trefoil', color: orientation.isReflected ? ORANGE : BLUE, placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
@@ -151,7 +185,7 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
   let best = nextPlacements.slice(), bestCorona = 0, nodes = 0;
   const nodeBudget = Math.max(800, targetCorona * targetCorona * 16);
   const orbit = symmetryOrbitForFold(symmetryFold);
-  nextPlacements.forEach(placement => { addPlacement(placement, sums, markSums); if (placement.placementKey) used.add(placement.placementKey); });
+  nextPlacements.forEach((placement, index) => { addPlacement(placement, sums, markSums, index); if (placement.placementKey) used.add(placement.placementKey); });
   const rememberBest = () => { const candidateCorona = maxCoronaFor(nextPlacements); if (candidateCorona > bestCorona || (candidateCorona === bestCorona && nextPlacements.length > best.length)) { best = nextPlacements.slice(); bestCorona = candidateCorona; } };
   const candidateOrbit = (candidate, option, forced) => {
     const seen = new Set();
@@ -174,7 +208,7 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
     group.forEach(placement => {
       nextPlacements.push(placement);
       used.add(placement.placementKey);
-      addPlacement(placement, sums, markSums);
+      addPlacement(placement, sums, markSums, nextPlacements.length - 1);
     });
     return group;
   };

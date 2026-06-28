@@ -16,7 +16,7 @@ The app is meant as an exploratory testbed for GCTS ideas:
 
 - choose one or more lattice tiles;
 - build custom polycubes directly in a small Minecraft-style editor;
-- run a frontier-based tiling search;
+- run a frontier-point/candidate graph tiling search;
 - inspect search-tree rows and intermediate snapshots;
 - compare tile-type counts in mixed systems.
 

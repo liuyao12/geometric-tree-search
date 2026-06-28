@@ -47,7 +47,7 @@ Options:
   --target <n>                    Target tile count or layer. Default: 80.
   --snapshot-every <n>            Engine snapshot cadence. Default: 10.
   --move-order <name>             coverage, repeat, periodic, crystal, symmetric, layer, or balanced. Default: coverage.
-  --face-order <name>             coverage, constrained, or pocket. Default: coverage.
+  --face-order <name>             Frontier-point order: coverage, constrained, or pocket. Default: coverage.
   --branch-cap <n>                Branch cap; 0 means uncapped. Default: 0.
   --node-limit <n>                Node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
