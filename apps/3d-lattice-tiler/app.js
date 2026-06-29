@@ -99,7 +99,7 @@ const formatSolidAngleValue = (item) => {
     const denominator = Math.round(maxValue) / divisor;
     return denominator === 1 ? String(numerator) : `${numerator}/${denominator}`;
   }
-  return value.toFixed(5).replace(/0+$/u, "").replace(/\.$/u, "");
+  return `≈${value.toPrecision(12).replace(/0+$/u, "").replace(/\.$/u, "")}`;
 };
 const solidAngleListLabel = (solidAngles = []) => {
   const counts = new Map();

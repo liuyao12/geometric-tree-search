@@ -1426,11 +1426,7 @@ export const tileSpecs = (() => {
     const vw = dot3(v, w);
     const wu = dot3(w, u);
     const denom = 1 + uv + vw + wu;
-    if (Math.abs(denom) < 1e-12) return 0;
-    const numerator = Math.abs(triple);
-    const ratio = numerator / denom;
-    const clampedRatio = Math.max(-1e12, Math.min(1e12, ratio));
-    const omega = 2 * Math.atan(clampedRatio);
+    const omega = 2 * Math.atan2(Math.abs(triple), denom);
     return Math.abs(omega) < 1e-12 ? 0 : omega;
   };
 
@@ -1450,9 +1446,12 @@ export const tileSpecs = (() => {
   };
 
   const computeNormalizedAngleWeight = (angle, fullAngle, maxValue = LEGACY_SOLID_ANGLE_MAX) => {
+    // Preserve the measured angle unless it is genuinely an integer count on
+    // maxValue. Earlier versions rounded every vertex/edge assignment, which
+    // made some non-rational solid angles look like exact lattice fractions.
     const exact = (angle / fullAngle) * maxValue;
     const rounded = Math.round(exact);
-    return rounded;
+    return Math.abs(exact - rounded) < 1e-9 ? rounded : exact;
   };
 
   const getTetrahedronWeights = () => {
