@@ -403,6 +403,18 @@ export const createTilingStream = (() => {
     };
 
     const candidateCachePointKey = (cacheKey) => cacheKey.split("::", 1)[0];
+    let frontierPointKeysCache = null;
+    let frontierPointKeysVersion = -1;
+    const frontierPointKeys = () => {
+      if (frontierPointKeysCache && frontierPointKeysVersion === stateVersion) return frontierPointKeysCache;
+      const keys = new Set();
+      for (const entry of state.frontier.values()) {
+        for (const vertex of entry.ordered_verts ?? []) keys.add(vecKey(vertex));
+      }
+      frontierPointKeysCache = keys;
+      frontierPointKeysVersion = stateVersion;
+      return keys;
+    };
     let candidateInfluenceOffsets = null;
     const candidateInfluenceOffsetKeys = () => {
       if (candidateInfluenceOffsets) return candidateInfluenceOffsets;
@@ -469,9 +481,11 @@ export const createTilingStream = (() => {
     const sharedFrontierPoints = (move) => {
       if (move._shared_frontier_points && move._shared_frontier_version === stateVersion) return move._shared_frontier_points;
       const points = new Map();
+      const activeFrontierPointKeys = frontierPointKeys();
       for (const pt of move.orient.occupancy) {
         const g = add3(pt.pos, move.translation);
-        if (latticeGet(g) > 0) points.set(vecKey(g), g);
+        const key = vecKey(g);
+        if (activeFrontierPointKeys.has(key)) points.set(key, g);
       }
       const out = [...points.values()];
       move._shared_frontier_points = out;
@@ -505,6 +519,8 @@ export const createTilingStream = (() => {
       if (!validCheck.occData.some(o => latticeGet(o.pos) === 0)) return null;
       const sharedPoints = sharedFrontierPoints(move);
       if (sharedPoints.length < minSharedVertices) return null;
+      // In 3D, attachment must be by three non-collinear active frontier points;
+      // merely touching along a line leaves the next placement underconstrained.
       if (tilingDimension >= 3 && affineRank(sharedPoints) < 2) return null;
       return validCheck;
     };
@@ -1072,7 +1088,8 @@ export const createTilingStream = (() => {
       const frontierPointNorm = (option) => Math.abs(option.point[0]) + Math.abs(option.point[1]) + Math.abs(option.point[2]);
       const frontierPointOptions = () => {
         const options = [];
-        for (const [pointKey, weight] of state.lattice.entries()) {
+        for (const pointKey of frontierPointKeys()) {
+          const weight = state.lattice.get(pointKey) ?? 0;
           if (weight <= 0 || weight >= MAX_SOLID_ANGLE) continue;
           options.push({
             pointKey,
