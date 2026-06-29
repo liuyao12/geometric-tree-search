@@ -403,6 +403,18 @@ export const createTilingStream = (() => {
     };
 
     const candidateCachePointKey = (cacheKey) => cacheKey.split("::", 1)[0];
+    let frontierPointKeysCache = null;
+    let frontierPointKeysVersion = -1;
+    const frontierPointKeys = () => {
+      if (frontierPointKeysCache && frontierPointKeysVersion === stateVersion) return frontierPointKeysCache;
+      const keys = new Set();
+      for (const entry of state.frontier.values()) {
+        for (const vertex of entry.ordered_verts ?? []) keys.add(vecKey(vertex));
+      }
+      frontierPointKeysCache = keys;
+      frontierPointKeysVersion = stateVersion;
+      return keys;
+    };
     let candidateInfluenceOffsets = null;
     const candidateInfluenceOffsetKeys = () => {
       if (candidateInfluenceOffsets) return candidateInfluenceOffsets;
@@ -469,9 +481,11 @@ export const createTilingStream = (() => {
     const sharedFrontierPoints = (move) => {
       if (move._shared_frontier_points && move._shared_frontier_version === stateVersion) return move._shared_frontier_points;
       const points = new Map();
+      const activeFrontierPointKeys = frontierPointKeys();
       for (const pt of move.orient.occupancy) {
         const g = add3(pt.pos, move.translation);
-        if (latticeGet(g) > 0) points.set(vecKey(g), g);
+        const key = vecKey(g);
+        if (activeFrontierPointKeys.has(key)) points.set(key, g);
       }
       const out = [...points.values()];
       move._shared_frontier_points = out;
@@ -1072,7 +1086,8 @@ export const createTilingStream = (() => {
       const frontierPointNorm = (option) => Math.abs(option.point[0]) + Math.abs(option.point[1]) + Math.abs(option.point[2]);
       const frontierPointOptions = () => {
         const options = [];
-        for (const [pointKey, weight] of state.lattice.entries()) {
+        for (const pointKey of frontierPointKeys()) {
+          const weight = state.lattice.get(pointKey) ?? 0;
           if (weight <= 0 || weight >= MAX_SOLID_ANGLE) continue;
           options.push({
             pointKey,
@@ -1426,11 +1441,7 @@ export const tileSpecs = (() => {
     const vw = dot3(v, w);
     const wu = dot3(w, u);
     const denom = 1 + uv + vw + wu;
-    if (Math.abs(denom) < 1e-12) return 0;
-    const numerator = Math.abs(triple);
-    const ratio = numerator / denom;
-    const clampedRatio = Math.max(-1e12, Math.min(1e12, ratio));
-    const omega = 2 * Math.atan(clampedRatio);
+    const omega = 2 * Math.atan2(Math.abs(triple), denom);
     return Math.abs(omega) < 1e-12 ? 0 : omega;
   };
 
@@ -1450,9 +1461,12 @@ export const tileSpecs = (() => {
   };
 
   const computeNormalizedAngleWeight = (angle, fullAngle, maxValue = LEGACY_SOLID_ANGLE_MAX) => {
+    // Preserve the measured angle unless it is genuinely an integer count on
+    // maxValue. Earlier versions rounded every vertex/edge assignment, which
+    // made some non-rational solid angles look like exact lattice fractions.
     const exact = (angle / fullAngle) * maxValue;
     const rounded = Math.round(exact);
-    return rounded;
+    return Math.abs(exact - rounded) < 1e-9 ? rounded : exact;
   };
 
   const getTetrahedronWeights = () => {
