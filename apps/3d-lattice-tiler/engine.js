@@ -519,6 +519,8 @@ export const createTilingStream = (() => {
       if (!validCheck.occData.some(o => latticeGet(o.pos) === 0)) return null;
       const sharedPoints = sharedFrontierPoints(move);
       if (sharedPoints.length < minSharedVertices) return null;
+      // In 3D, attachment must be by three non-collinear active frontier points;
+      // merely touching along a line leaves the next placement underconstrained.
       if (tilingDimension >= 3 && affineRank(sharedPoints) < 2) return null;
       return validCheck;
     };
