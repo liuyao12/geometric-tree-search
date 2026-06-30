@@ -545,8 +545,12 @@ function customPolycubeDisplayName() {
   return customNameInput.value.trim() || "Custom polycube";
 }
 
+function selectedPolycubeLattice() {
+  return polycubeD3Checkbox?.checked ? "d3" : "z3";
+}
+
 function customPolycubeTile() {
-  return tileSpecs.buildPolycubeTile(customPolycubeDisplayName(), [...builderVoxels].map(keyToVoxel));
+  return tileSpecs.buildPolycubeTile(customPolycubeDisplayName(), [...builderVoxels].map(keyToVoxel), { polycube_lattice: selectedPolycubeLattice() });
 }
 
 function customPolycubeThumbnail(tile) {
@@ -674,7 +678,7 @@ function customSystemConfig() {
     name: selectedFigures().map(figure => figure.name).join(" + ") || "Figure system",
     figure_refs: selectedFigureIds,
     polycubes,
-    polycube_lattice: polycubeD3Checkbox?.checked ? "d3" : "z3"
+    polycube_lattice: selectedPolycubeLattice()
   };
 }
 
@@ -953,6 +957,7 @@ function configKey() {
   return JSON.stringify({
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
+    polycube_lattice: selectedPolycubeLattice(),
     criterion: criterion(),
     target_val: criterion() === "count" ? +maxTilesInput.value : +layerInput.value,
     exhaustive: exhaustiveCheckbox.checked,
@@ -1769,7 +1774,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, polycubeD3Checkbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });

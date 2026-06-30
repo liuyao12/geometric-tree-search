@@ -85,12 +85,19 @@ export const createTilingStream = (() => {
     // --- Build Prototiles First (to ensure correct order and cache key) ---
     const { mode_key } = config;
     const includeMirrors = !!config.include_mirrors;
-    const modeDef = config.custom_system
-      ? tileSpecs.buildCustomSystem(config.custom_system)
+    const polycubeLattice = config.polycube_lattice === "d3" || config.custom_system?.polycube_lattice === "d3" ? "d3" : "z3";
+    const customSystem = config.custom_system
+      ? { ...config.custom_system, polycube_lattice: polycubeLattice }
+      : null;
+    const modeDef = customSystem
+      ? tileSpecs.buildCustomSystem(customSystem)
       : tileSpecs.TILING_REGISTRY[mode_key];
     if (!modeDef) throw new Error(`Unknown mode_key: ${mode_key}`);
 
-    const baseTiles = modeDef.build();
+    const buildBaseTiles = () => modeDef.build();
+    const baseTiles = tileSpecs.withPolycubeLattice
+      ? tileSpecs.withPolycubeLattice(polycubeLattice, buildBaseTiles)
+      : buildBaseTiles();
     const prototiles = (() => {
       const out = [];
       for (const t of baseTiles) {
@@ -402,6 +409,19 @@ export const createTilingStream = (() => {
       if (oldWeight <= 0) state.frontier_point_depths.set(k, Math.max(0, state.placements.length - 1));
     };
 
+    const faceCenterPoint = (verts) => {
+      if (!verts?.length) return null;
+      const center = [0, 0, 0];
+      for (const vertex of verts) {
+        center[0] += vertex[0];
+        center[1] += vertex[1];
+        center[2] += vertex[2];
+      }
+      center[0] /= verts.length;
+      center[1] /= verts.length;
+      center[2] /= verts.length;
+      return center.every(Number.isInteger) ? center : null;
+    };
     const candidateCachePointKey = (cacheKey) => cacheKey.split("::", 1)[0];
     let frontierPointKeysCache = null;
     let frontierPointKeysVersion = -1;
@@ -409,7 +429,12 @@ export const createTilingStream = (() => {
       if (frontierPointKeysCache && frontierPointKeysVersion === stateVersion) return frontierPointKeysCache;
       const keys = new Set();
       for (const entry of state.frontier.values()) {
-        for (const vertex of entry.ordered_verts ?? []) keys.add(vecKey(vertex));
+        const verts = entry.ordered_verts ?? [];
+        for (const vertex of verts) {
+          if (latticeGet(vertex) > 0) keys.add(vecKey(vertex));
+        }
+        const center = faceCenterPoint(verts);
+        if (center && latticeGet(center) > 0) keys.add(vecKey(center));
       }
       frontierPointKeysCache = keys;
       frontierPointKeysVersion = stateVersion;
@@ -1372,6 +1397,16 @@ export const tileSpecs = (() => {
   const POLYCUBE_D3_COORD_SCALE = 2;
   const POLYCUBE_SOLID_ANGLE_MAX = 8;
   let activePolycubeLattice = "z3";
+  const normalizePolycubeLattice = (value) => value === "d3" ? "d3" : "z3";
+  const withPolycubeLattice = (lattice, builder) => {
+    const previous = activePolycubeLattice;
+    activePolycubeLattice = normalizePolycubeLattice(lattice);
+    try {
+      return builder();
+    } finally {
+      activePolycubeLattice = previous;
+    }
+  };
   const LEGACY_SOLID_ANGLE_MAX = 48;
 
   const COLOR_PALETTE = [
@@ -2699,21 +2734,12 @@ export const tileSpecs = (() => {
     const tileIds = [...new Set(customSystem.tile_ids ?? [])].filter(id => TILING_REGISTRY[id]);
     const customPolycubes = customSystem.polycubes ?? [];
     const customName = customSystem.name || "Mixed system";
-    const polycubeLattice = customSystem.polycube_lattice === "d3" ? "d3" : "z3";
-    const buildWithPolycubeLattice = (builder) => {
-      const previous = activePolycubeLattice;
-      activePolycubeLattice = polycubeLattice;
-      try {
-        return builder();
-      } finally {
-        activePolycubeLattice = previous;
-      }
-    };
+    const polycubeLattice = normalizePolycubeLattice(customSystem.polycube_lattice);
     return {
       name: customName,
       category: ["Mixed"],
       default_viz: { opacities: [], internal: false },
-      build: () => buildWithPolycubeLattice(() => {
+      build: () => withPolycubeLattice(polycubeLattice, () => {
         const built = [];
         if (figureRefs.length) {
           for (const ref of figureRefs) {
@@ -2745,6 +2771,7 @@ export const tileSpecs = (() => {
     displayTileName,
     solidAngleValues,
     addMirrorsIfChiral,
+    withPolycubeLattice,
     buildPolycubeTile,
     buildCustomSystem
   };
