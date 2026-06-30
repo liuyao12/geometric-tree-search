@@ -871,6 +871,37 @@ export const createTilingStream = (() => {
       }
       return hits.size;
     };
+    const vectorOrbitKey = (vector) => vector.map(value => Math.abs(value)).sort((a, b) => a - b).join(",");
+    let firstCoronaCacheVersion = -1;
+    let firstCoronaVectorOrbits = new Set();
+    const firstCoronaOrbits = () => {
+      if (firstCoronaCacheVersion === stateVersion) return firstCoronaVectorOrbits;
+      const root = state.placements[0];
+      const orbits = new Set();
+      if (root) {
+        const rootVertices = new Set(root.orient.verts.map(vertex => vecKey(vecAdd(vertex, root.translation))));
+        for (const placement of state.placements.slice(1)) {
+          let shared = 0;
+          for (const vertex of placement.orient.verts) {
+            if (rootVertices.has(vecKey(vecAdd(vertex, placement.translation)))) shared += 1;
+          }
+          if (shared >= minSharedVertices) orbits.add(vectorOrbitKey(vecSub(placement.translation, root.translation)));
+        }
+      }
+      firstCoronaVectorOrbits = orbits;
+      firstCoronaCacheVersion = stateVersion;
+      return firstCoronaVectorOrbits;
+    };
+    const isohedralCoronaScore = (move) => {
+      const orbits = firstCoronaOrbits();
+      if (!orbits.size) return 0;
+      const hits = new Set();
+      for (const placement of state.placements) {
+        const orbit = vectorOrbitKey(vecSub(move.translation, placement.translation));
+        if (orbits.has(orbit)) hits.add(orbit);
+      }
+      return hits.size;
+    };
     const parallelogramCompletionScore = (move) => {
       const positions = placementPositionSet();
       if (positions.size < 3) return 0;
@@ -1043,6 +1074,14 @@ export const createTilingStream = (() => {
         repeat(),
         coverage
       ];
+      if (moveOrder === "isohedral") return [
+        isohedralCoronaScore(move),
+        pairPeriodic(),
+        vectorRepeat(),
+        periodic(),
+        repeat(),
+        coverage
+      ];
       if (moveOrder === "periodic") return [periodic(), repeat(), coverage];
       if (moveOrder === "repeat") return [repeat(), coverage];
       if (moveOrder === "layer" || moveOrder === "balanced") {
@@ -1088,6 +1127,7 @@ export const createTilingStream = (() => {
       periodic_continuation: periodicContinuation(move),
       pair_periodic_continuation: pairPeriodicContinuation(move),
       vector_repeat: vectorRepeatScore(move),
+      isohedral_corona: isohedralCoronaScore(move),
       parallelogram_completion: parallelogramCompletionScore(move),
       target_face_pocket: move._target_face_pocket ?? null,
       symmetry: move._symmetry_info ?? null,

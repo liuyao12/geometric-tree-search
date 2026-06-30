@@ -69,6 +69,11 @@ Useful options:
 - `--move-order repeat` tries same-orientation placements first.
 - `--move-order periodic` prefers placements that continue a spacing already
   seen between same-orientation copies of the tile.
+- `--move-order isohedral` tries to reuse the first corona around the root tile:
+  it prefers placements whose displacement is a rotation/reflection-equivalent
+  copy of a first-layer displacement around another placed tile.
+- `--isohedral-check 6` is a convenience shortcut for a fast, greedy
+  single-tile isohedral-style smoke test to frontier layer/corona 6.
 - `--move-order symmetric` prefers placements whose resulting frontier has more
   reflected pairs of exposed faces and a less lopsided bounding box.
 - `--move-order layer` prioritizes moves that advance the earliest frontier
