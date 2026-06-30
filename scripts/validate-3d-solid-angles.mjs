@@ -14,7 +14,7 @@ const formatTValue = (weight, maxValue) => {
     const denominator = Math.round(maxValue) / divisor;
     return denominator === 1 ? String(numerator) : `${numerator}/${denominator}`;
   }
-  return (weight / maxValue).toFixed(5).replace(/0+$/u, "").replace(/\.$/u, "");
+  return `≈${(weight / maxValue).toPrecision(12).replace(/0+$/u, "").replace(/\.$/u, "")}`;
 };
 
 const profile = (tile, maxValue) => {
@@ -27,7 +27,8 @@ const profile = (tile, maxValue) => {
 };
 
 const evalFraction = (label) => {
-  const [num, den] = label.split("/").map(Number);
+  const normalized = String(label).replace(/^≈/u, "");
+  const [num, den] = normalized.split("/").map(Number);
   return Number.isFinite(den) ? num / den : num;
 };
 
