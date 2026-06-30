@@ -69,6 +69,11 @@ Useful options:
 - `--move-order repeat` tries same-orientation placements first.
 - `--move-order periodic` prefers placements that continue a spacing already
   seen between same-orientation copies of the tile.
+- `--move-order isohedral` tries to reuse the first corona around the root tile:
+  it prefers placements whose displacement is a rotation/reflection-equivalent
+  copy of a first-layer displacement around another placed tile.
+- `--isohedral-check 6` is a convenience shortcut for a fast, greedy
+  single-tile isohedral-style smoke test to frontier layer/corona 6.
 - `--move-order symmetric` prefers placements whose resulting frontier has more
   reflected pairs of exposed faces and a less lopsided bounding box.
 - `--move-order layer` prioritizes moves that advance the earliest frontier
@@ -77,6 +82,10 @@ Useful options:
   fewest legal candidates before ordering that point's candidate moves.
 - `--face-order pocket` chooses the earliest-added, heaviest frontier point
   first, which tends to fill tight spots before loose boundary growth.
+- In 3D searches, legal candidate placements must attach along at least three
+  non-collinear active frontier points; planar/2D systems use two by default.
+- `--polycube-lattice d3` runs polycube systems on the D3 sampling lattice,
+  adding face-center samples in addition to cube vertices; `z3` is the default.
 - `--wall-time-ms 120000` stops gracefully after two minutes and still writes a
   best-effort JSON summary.
 - `--trace` writes compact NDJSON events that can be inspected or summarized by

@@ -46,12 +46,14 @@ Options:
   --criterion <count|layer>       Goal type. Default: count.
   --target <n>                    Target tile count or layer. Default: 80.
   --snapshot-every <n>            Engine snapshot cadence. Default: 10.
-  --move-order <name>             coverage, repeat, periodic, crystal, symmetric, layer, or balanced. Default: coverage.
+  --move-order <name>             coverage, repeat, periodic, crystal, isohedral, symmetric, layer, or balanced. Default: coverage.
   --face-order <name>             Frontier-point order: coverage, constrained, or pocket. Default: coverage.
   --branch-cap <n>                Branch cap; 0 means uncapped. Default: 0.
   --node-limit <n>                Node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
   --time-limit-ms <n>             Engine time cap; 0 means uncapped. Default: 0.
+  --polycube-lattice <z3|d3>      Polycube sampling lattice. D3 adds face-center samples. Default: z3.
+  --isohedral-check [n]           Fast single-tile isohedral-style smoke check to corona/layer n. Default: 6.
   --wall-time-ms <n>              Runner wall-clock cap; writes a best-effort summary.
   --include-mirrors               Include mirror tiles.
   --exhaustive                    Continue after the first success.
@@ -77,6 +79,8 @@ function readArgs(argv) {
     nodeLimit: 0,
     candidateCap: 0,
     timeLimitMs: 0,
+    polycubeLattice: "z3",
+    isohedralCheck: null,
     wallTimeMs: 0,
     includeMirrors: false,
     exhaustive: false,
@@ -135,6 +139,19 @@ function readArgs(argv) {
     } else if (arg === "--time-limit-ms") {
       opts.timeLimitMs = Number(next(i, arg));
       i += 1;
+    } else if (arg === "--polycube-lattice") {
+      const lattice = next(i, arg).toLowerCase();
+      if (!["z3", "d3"].includes(lattice)) throw new Error(`${arg} must be z3 or d3`);
+      opts.polycubeLattice = lattice;
+      i += 1;
+    } else if (arg === "--isohedral-check") {
+      const maybeValue = argv[i + 1];
+      if (maybeValue && !maybeValue.startsWith("--")) {
+        opts.isohedralCheck = Number(maybeValue);
+        i += 1;
+      } else {
+        opts.isohedralCheck = 6;
+      }
     } else if (arg === "--wall-time-ms") {
       opts.wallTimeMs = Number(next(i, arg));
       i += 1;
@@ -256,8 +273,11 @@ function makeConfig(figures, opts) {
     custom_system: {
       name: figures.map(figure => figure.name).join(" + ") || "Headless system",
       figure_refs: figures.map(figure => figure.id),
-      polycubes: []
+      polycubes: [],
+      polycube_lattice: opts.polycubeLattice
     },
+    polycube_lattice: opts.polycubeLattice,
+    isohedral_check: opts.isohedralCheck,
     criterion: opts.criterion,
     target_val: opts.target,
     exhaustive: opts.exhaustive,
@@ -306,9 +326,19 @@ async function main() {
     return;
   }
 
+  if (opts.isohedralCheck != null) {
+    if (opts.figures.length > 1) throw new Error("--isohedral-check currently expects a single figure/tile");
+    if (!Number.isFinite(opts.isohedralCheck) || opts.isohedralCheck <= 0) throw new Error("--isohedral-check target must be positive");
+    opts.criterion = "layer";
+    opts.target = opts.isohedralCheck;
+    opts.moveOrder = "isohedral";
+    if (!opts.branchCap) opts.branchCap = 1;
+    if (!opts.candidateCap) opts.candidateCap = 200;
+  }
+
   if (!["count", "layer"].includes(opts.criterion)) throw new Error("--criterion must be count or layer");
-  if (!["coverage", "repeat", "periodic", "crystal", "symmetric", "layer", "balanced"].includes(opts.moveOrder)) {
-    throw new Error("--move-order must be coverage, repeat, periodic, crystal, symmetric, layer, or balanced");
+  if (!["coverage", "repeat", "periodic", "crystal", "isohedral", "symmetric", "layer", "balanced"].includes(opts.moveOrder)) {
+    throw new Error("--move-order must be coverage, repeat, periodic, crystal, isohedral, symmetric, layer, or balanced");
   }
   if (!["coverage", "constrained", "pocket"].includes(opts.faceOrder)) {
     throw new Error("--face-order must be coverage, constrained, or pocket");
