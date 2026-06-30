@@ -131,6 +131,7 @@ const solidAngleListHtml = (solidAngles = []) => {
   return values.length ? values.join(", ") : "No sampled solid-angle values";
 };
 const solidAngleTitle = (solidAngles = []) => solidAngleListLabel(solidAngles);
+const polycubeLatticeLabel = (lattice) => lattice === "d3" ? "D3 lattice" : lattice === "z3" ? "Z³ lattice" : "";
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
@@ -566,6 +567,7 @@ function selectedSystemItems() {
     thumbnail: figureThumbnail(figure),
     faceCount: tileFaceCount(tileForFigure(figure)),
     solidAngles: figure.solid_angles ?? tileSpecs.solidAngleValues?.(tileForFigure(figure)) ?? [],
+    latticeLabel: figure.category?.includes("Polycubes") ? polycubeLatticeLabel(selectedPolycubeLattice()) : "",
     tileIndex: index,
     remove: () => {
       selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
@@ -582,6 +584,7 @@ function selectedSystemItems() {
       thumbnail: customPolycubeThumbnail(tile),
       faceCount: tileFaceCount(tile),
       solidAngles: tileSpecs.solidAngleValues?.(tile) ?? [],
+      latticeLabel: polycubeLatticeLabel(tile.polycube_lattice),
       tileIndex: items.length,
       remove: () => {
         customPolycubeCheckbox.checked = false;
@@ -626,12 +629,12 @@ function renderSelectedTiles() {
     const label = document.createElement("span");
     label.className = "selected-tile-name";
     label.textContent = item.name;
-    label.title = `${item.title}\n${solidAngleTitle(item.solidAngles)}`;
+    label.title = `${item.title}${item.latticeLabel ? `\n${item.latticeLabel}` : ""}\n${solidAngleTitle(item.solidAngles)}`;
 
     const faces = document.createElement("span");
     faces.className = "selected-tile-faces";
-    faces.textContent = `${item.faceCount} faces`;
-    faces.title = `Faces on this tile\n${solidAngleTitle(item.solidAngles)}`;
+    faces.textContent = item.latticeLabel ? `${item.faceCount} faces · ${item.latticeLabel}` : `${item.faceCount} faces`;
+    faces.title = `Faces on this tile${item.latticeLabel ? `\n${item.latticeLabel}` : ""}\n${solidAngleTitle(item.solidAngles)}`;
     main.append(label, faces);
 
     const count = document.createElement("span");
@@ -1310,8 +1313,9 @@ function initTileControls(info) {
 
     const name = document.createElement("div");
     name.className = "tile-name";
-    name.textContent = prettyName(tile.name);
-    name.title = `${prettyName(tile.name)}\n${solidAngleTitle(tile.solid_angles)}`;
+    const latticeLabel = tile.is_polycube ? polycubeLatticeLabel(tile.polycube_lattice) : "";
+    name.textContent = latticeLabel ? `${prettyName(tile.name)} · ${latticeLabel}` : prettyName(tile.name);
+    name.title = `${prettyName(tile.name)}${latticeLabel ? `\n${latticeLabel}` : ""}\n${solidAngleTitle(tile.solid_angles)}`;
 
     const slider = document.createElement("input");
     slider.type = "range";

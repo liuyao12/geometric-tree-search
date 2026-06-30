@@ -158,6 +158,8 @@ export const createTilingStream = (() => {
         lattice_points: isPolycubeSystem ? [] : p.occupancy_points.map(o => o.pos),
         solid_angle: p.solid_angle,
         solid_angles: tileSpecs.solidAngleValues?.(p) ?? [],
+        is_polycube: !!p.is_polycube,
+        polycube_lattice: p.polycube_lattice ?? null,
         is_chiral: !!p.is_chiral,
         is_mirror: !!p.__is_mirror
       };
