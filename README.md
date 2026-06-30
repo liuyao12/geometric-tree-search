@@ -77,6 +77,10 @@ Useful options:
   fewest legal candidates before ordering that point's candidate moves.
 - `--face-order pocket` chooses the earliest-added, heaviest frontier point
   first, which tends to fill tight spots before loose boundary growth.
+- In 3D searches, legal candidate placements must attach along at least three
+  non-collinear active frontier points; planar/2D systems use two by default.
+- `--polycube-lattice d3` runs polycube systems on the D3 sampling lattice,
+  adding face-center samples in addition to cube vertices; `z3` is the default.
 - `--wall-time-ms 120000` stops gracefully after two minutes and still writes a
   best-effort JSON summary.
 - `--trace` writes compact NDJSON events that can be inspected or summarized by

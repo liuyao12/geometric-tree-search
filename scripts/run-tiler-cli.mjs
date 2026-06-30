@@ -52,6 +52,7 @@ Options:
   --node-limit <n>                Node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
   --time-limit-ms <n>             Engine time cap; 0 means uncapped. Default: 0.
+  --polycube-lattice <z3|d3>      Polycube sampling lattice. D3 adds face-center samples. Default: z3.
   --wall-time-ms <n>              Runner wall-clock cap; writes a best-effort summary.
   --include-mirrors               Include mirror tiles.
   --exhaustive                    Continue after the first success.
@@ -77,6 +78,7 @@ function readArgs(argv) {
     nodeLimit: 0,
     candidateCap: 0,
     timeLimitMs: 0,
+    polycubeLattice: "z3",
     wallTimeMs: 0,
     includeMirrors: false,
     exhaustive: false,
@@ -134,6 +136,11 @@ function readArgs(argv) {
       i += 1;
     } else if (arg === "--time-limit-ms") {
       opts.timeLimitMs = Number(next(i, arg));
+      i += 1;
+    } else if (arg === "--polycube-lattice") {
+      const lattice = next(i, arg).toLowerCase();
+      if (!["z3", "d3"].includes(lattice)) throw new Error(`${arg} must be z3 or d3`);
+      opts.polycubeLattice = lattice;
       i += 1;
     } else if (arg === "--wall-time-ms") {
       opts.wallTimeMs = Number(next(i, arg));
@@ -256,8 +263,10 @@ function makeConfig(figures, opts) {
     custom_system: {
       name: figures.map(figure => figure.name).join(" + ") || "Headless system",
       figure_refs: figures.map(figure => figure.id),
-      polycubes: []
+      polycubes: [],
+      polycube_lattice: opts.polycubeLattice
     },
+    polycube_lattice: opts.polycubeLattice,
     criterion: opts.criterion,
     target_val: opts.target,
     exhaustive: opts.exhaustive,

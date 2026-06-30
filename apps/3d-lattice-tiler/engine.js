@@ -85,12 +85,19 @@ export const createTilingStream = (() => {
     // --- Build Prototiles First (to ensure correct order and cache key) ---
     const { mode_key } = config;
     const includeMirrors = !!config.include_mirrors;
-    const modeDef = config.custom_system
-      ? tileSpecs.buildCustomSystem(config.custom_system)
+    const polycubeLattice = config.polycube_lattice === "d3" || config.custom_system?.polycube_lattice === "d3" ? "d3" : "z3";
+    const customSystem = config.custom_system
+      ? { ...config.custom_system, polycube_lattice: polycubeLattice }
+      : null;
+    const modeDef = customSystem
+      ? tileSpecs.buildCustomSystem(customSystem)
       : tileSpecs.TILING_REGISTRY[mode_key];
     if (!modeDef) throw new Error(`Unknown mode_key: ${mode_key}`);
 
-    const baseTiles = modeDef.build();
+    const buildBaseTiles = () => modeDef.build();
+    const baseTiles = tileSpecs.withPolycubeLattice
+      ? tileSpecs.withPolycubeLattice(polycubeLattice, buildBaseTiles)
+      : buildBaseTiles();
     const prototiles = (() => {
       const out = [];
       for (const t of baseTiles) {
@@ -151,6 +158,8 @@ export const createTilingStream = (() => {
         lattice_points: isPolycubeSystem ? [] : p.occupancy_points.map(o => o.pos),
         solid_angle: p.solid_angle,
         solid_angles: tileSpecs.solidAngleValues?.(p) ?? [],
+        is_polycube: !!p.is_polycube,
+        polycube_lattice: p.polycube_lattice ?? null,
         is_chiral: !!p.is_chiral,
         is_mirror: !!p.__is_mirror
       };
@@ -402,7 +411,37 @@ export const createTilingStream = (() => {
       if (oldWeight <= 0) state.frontier_point_depths.set(k, Math.max(0, state.placements.length - 1));
     };
 
+    const faceCenterPoint = (verts) => {
+      if (!verts?.length) return null;
+      const center = [0, 0, 0];
+      for (const vertex of verts) {
+        center[0] += vertex[0];
+        center[1] += vertex[1];
+        center[2] += vertex[2];
+      }
+      center[0] /= verts.length;
+      center[1] /= verts.length;
+      center[2] /= verts.length;
+      return center.every(Number.isInteger) ? center : null;
+    };
     const candidateCachePointKey = (cacheKey) => cacheKey.split("::", 1)[0];
+    let frontierPointKeysCache = null;
+    let frontierPointKeysVersion = -1;
+    const frontierPointKeys = () => {
+      if (frontierPointKeysCache && frontierPointKeysVersion === stateVersion) return frontierPointKeysCache;
+      const keys = new Set();
+      for (const entry of state.frontier.values()) {
+        const verts = entry.ordered_verts ?? [];
+        for (const vertex of verts) {
+          if (latticeGet(vertex) > 0) keys.add(vecKey(vertex));
+        }
+        const center = faceCenterPoint(verts);
+        if (center && latticeGet(center) > 0) keys.add(vecKey(center));
+      }
+      frontierPointKeysCache = keys;
+      frontierPointKeysVersion = stateVersion;
+      return keys;
+    };
     let candidateInfluenceOffsets = null;
     const candidateInfluenceOffsetKeys = () => {
       if (candidateInfluenceOffsets) return candidateInfluenceOffsets;
@@ -469,9 +508,11 @@ export const createTilingStream = (() => {
     const sharedFrontierPoints = (move) => {
       if (move._shared_frontier_points && move._shared_frontier_version === stateVersion) return move._shared_frontier_points;
       const points = new Map();
+      const activeFrontierPointKeys = frontierPointKeys();
       for (const pt of move.orient.occupancy) {
         const g = add3(pt.pos, move.translation);
-        if (latticeGet(g) > 0) points.set(vecKey(g), g);
+        const key = vecKey(g);
+        if (activeFrontierPointKeys.has(key)) points.set(key, g);
       }
       const out = [...points.values()];
       move._shared_frontier_points = out;
@@ -505,6 +546,8 @@ export const createTilingStream = (() => {
       if (!validCheck.occData.some(o => latticeGet(o.pos) === 0)) return null;
       const sharedPoints = sharedFrontierPoints(move);
       if (sharedPoints.length < minSharedVertices) return null;
+      // In 3D, attachment must be by three non-collinear active frontier points;
+      // merely touching along a line leaves the next placement underconstrained.
       if (tilingDimension >= 3 && affineRank(sharedPoints) < 2) return null;
       return validCheck;
     };
@@ -1072,7 +1115,8 @@ export const createTilingStream = (() => {
       const frontierPointNorm = (option) => Math.abs(option.point[0]) + Math.abs(option.point[1]) + Math.abs(option.point[2]);
       const frontierPointOptions = () => {
         const options = [];
-        for (const [pointKey, weight] of state.lattice.entries()) {
+        for (const pointKey of frontierPointKeys()) {
+          const weight = state.lattice.get(pointKey) ?? 0;
           if (weight <= 0 || weight >= MAX_SOLID_ANGLE) continue;
           options.push({
             pointKey,
@@ -1355,6 +1399,16 @@ export const tileSpecs = (() => {
   const POLYCUBE_D3_COORD_SCALE = 2;
   const POLYCUBE_SOLID_ANGLE_MAX = 8;
   let activePolycubeLattice = "z3";
+  const normalizePolycubeLattice = (value) => value === "d3" ? "d3" : "z3";
+  const withPolycubeLattice = (lattice, builder) => {
+    const previous = activePolycubeLattice;
+    activePolycubeLattice = normalizePolycubeLattice(lattice);
+    try {
+      return builder();
+    } finally {
+      activePolycubeLattice = previous;
+    }
+  };
   const LEGACY_SOLID_ANGLE_MAX = 48;
 
   const COLOR_PALETTE = [
@@ -1426,11 +1480,7 @@ export const tileSpecs = (() => {
     const vw = dot3(v, w);
     const wu = dot3(w, u);
     const denom = 1 + uv + vw + wu;
-    if (Math.abs(denom) < 1e-12) return 0;
-    const numerator = Math.abs(triple);
-    const ratio = numerator / denom;
-    const clampedRatio = Math.max(-1e12, Math.min(1e12, ratio));
-    const omega = 2 * Math.atan(clampedRatio);
+    const omega = 2 * Math.atan2(Math.abs(triple), denom);
     return Math.abs(omega) < 1e-12 ? 0 : omega;
   };
 
@@ -1450,9 +1500,12 @@ export const tileSpecs = (() => {
   };
 
   const computeNormalizedAngleWeight = (angle, fullAngle, maxValue = LEGACY_SOLID_ANGLE_MAX) => {
+    // Preserve the measured angle unless it is genuinely an integer count on
+    // maxValue. Earlier versions rounded every vertex/edge assignment, which
+    // made some non-rational solid angles look like exact lattice fractions.
     const exact = (angle / fullAngle) * maxValue;
     const rounded = Math.round(exact);
-    return rounded;
+    return Math.abs(exact - rounded) < 1e-9 ? rounded : exact;
   };
 
   const getTetrahedronWeights = () => {
@@ -2683,21 +2736,12 @@ export const tileSpecs = (() => {
     const tileIds = [...new Set(customSystem.tile_ids ?? [])].filter(id => TILING_REGISTRY[id]);
     const customPolycubes = customSystem.polycubes ?? [];
     const customName = customSystem.name || "Mixed system";
-    const polycubeLattice = customSystem.polycube_lattice === "d3" ? "d3" : "z3";
-    const buildWithPolycubeLattice = (builder) => {
-      const previous = activePolycubeLattice;
-      activePolycubeLattice = polycubeLattice;
-      try {
-        return builder();
-      } finally {
-        activePolycubeLattice = previous;
-      }
-    };
+    const polycubeLattice = normalizePolycubeLattice(customSystem.polycube_lattice);
     return {
       name: customName,
       category: ["Mixed"],
       default_viz: { opacities: [], internal: false },
-      build: () => buildWithPolycubeLattice(() => {
+      build: () => withPolycubeLattice(polycubeLattice, () => {
         const built = [];
         if (figureRefs.length) {
           for (const ref of figureRefs) {
@@ -2729,6 +2773,7 @@ export const tileSpecs = (() => {
     displayTileName,
     solidAngleValues,
     addMirrorsIfChiral,
+    withPolycubeLattice,
     buildPolycubeTile,
     buildCustomSystem
   };
