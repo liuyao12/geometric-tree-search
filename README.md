@@ -74,6 +74,11 @@ Useful options:
   copy of a first-layer displacement around another placed tile.
 - `--isohedral-check 6` is a convenience shortcut for a fast, greedy
   single-tile isohedral-style smoke test to frontier layer/corona 6.
+- `node scripts/benchmark-tiler-policies.mjs --figures cube::0 --policies coverage,isohedral`
+  compares move-order policies, which is a lightweight harness for testing
+  whether a learned/RL policy beats the built-in heuristics on the same engine.
+  See `docs/projects/rl-tiler-agents.md` for the intended offline training and
+  future interactive-agent integration plan.
 - `--move-order symmetric` prefers placements whose resulting frontier has more
   reflected pairs of exposed faces and a less lopsided bounding box.
 - `--move-order layer` prioritizes moves that advance the earliest frontier
