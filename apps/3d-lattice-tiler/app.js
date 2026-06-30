@@ -99,7 +99,7 @@ const formatSolidAngleValue = (item) => {
     const denominator = Math.round(maxValue) / divisor;
     return denominator === 1 ? String(numerator) : `${numerator}/${denominator}`;
   }
-  return value.toFixed(5).replace(/0+$/u, "").replace(/\.$/u, "");
+  return `≈${value.toPrecision(12).replace(/0+$/u, "").replace(/\.$/u, "")}`;
 };
 const solidAngleListLabel = (solidAngles = []) => {
   const counts = new Map();
@@ -131,6 +131,7 @@ const solidAngleListHtml = (solidAngles = []) => {
   return values.length ? values.join(", ") : "No sampled solid-angle values";
 };
 const solidAngleTitle = (solidAngles = []) => solidAngleListLabel(solidAngles);
+const polycubeLatticeLabel = (lattice) => lattice === "d3" ? "D3 lattice" : lattice === "z3" ? "Z³ lattice" : "";
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
@@ -545,8 +546,12 @@ function customPolycubeDisplayName() {
   return customNameInput.value.trim() || "Custom polycube";
 }
 
+function selectedPolycubeLattice() {
+  return polycubeD3Checkbox?.checked ? "d3" : "z3";
+}
+
 function customPolycubeTile() {
-  return tileSpecs.buildPolycubeTile(customPolycubeDisplayName(), [...builderVoxels].map(keyToVoxel));
+  return tileSpecs.buildPolycubeTile(customPolycubeDisplayName(), [...builderVoxels].map(keyToVoxel), { polycube_lattice: selectedPolycubeLattice() });
 }
 
 function customPolycubeThumbnail(tile) {
@@ -562,6 +567,7 @@ function selectedSystemItems() {
     thumbnail: figureThumbnail(figure),
     faceCount: tileFaceCount(tileForFigure(figure)),
     solidAngles: figure.solid_angles ?? tileSpecs.solidAngleValues?.(tileForFigure(figure)) ?? [],
+    latticeLabel: figure.category?.includes("Polycubes") ? polycubeLatticeLabel(selectedPolycubeLattice()) : "",
     tileIndex: index,
     remove: () => {
       selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
@@ -578,6 +584,7 @@ function selectedSystemItems() {
       thumbnail: customPolycubeThumbnail(tile),
       faceCount: tileFaceCount(tile),
       solidAngles: tileSpecs.solidAngleValues?.(tile) ?? [],
+      latticeLabel: polycubeLatticeLabel(tile.polycube_lattice),
       tileIndex: items.length,
       remove: () => {
         customPolycubeCheckbox.checked = false;
@@ -622,12 +629,12 @@ function renderSelectedTiles() {
     const label = document.createElement("span");
     label.className = "selected-tile-name";
     label.textContent = item.name;
-    label.title = `${item.title}\n${solidAngleTitle(item.solidAngles)}`;
+    label.title = `${item.title}${item.latticeLabel ? `\n${item.latticeLabel}` : ""}\n${solidAngleTitle(item.solidAngles)}`;
 
     const faces = document.createElement("span");
     faces.className = "selected-tile-faces";
-    faces.textContent = `${item.faceCount} faces`;
-    faces.title = `Faces on this tile\n${solidAngleTitle(item.solidAngles)}`;
+    faces.textContent = item.latticeLabel ? `${item.faceCount} faces · ${item.latticeLabel}` : `${item.faceCount} faces`;
+    faces.title = `Faces on this tile${item.latticeLabel ? `\n${item.latticeLabel}` : ""}\n${solidAngleTitle(item.solidAngles)}`;
     main.append(label, faces);
 
     const count = document.createElement("span");
@@ -674,7 +681,7 @@ function customSystemConfig() {
     name: selectedFigures().map(figure => figure.name).join(" + ") || "Figure system",
     figure_refs: selectedFigureIds,
     polycubes,
-    polycube_lattice: polycubeD3Checkbox?.checked ? "d3" : "z3"
+    polycube_lattice: selectedPolycubeLattice()
   };
 }
 
@@ -953,6 +960,7 @@ function configKey() {
   return JSON.stringify({
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
+    polycube_lattice: selectedPolycubeLattice(),
     criterion: criterion(),
     target_val: criterion() === "count" ? +maxTilesInput.value : +layerInput.value,
     exhaustive: exhaustiveCheckbox.checked,
@@ -1305,8 +1313,9 @@ function initTileControls(info) {
 
     const name = document.createElement("div");
     name.className = "tile-name";
-    name.textContent = prettyName(tile.name);
-    name.title = `${prettyName(tile.name)}\n${solidAngleTitle(tile.solid_angles)}`;
+    const latticeLabel = tile.is_polycube ? polycubeLatticeLabel(tile.polycube_lattice) : "";
+    name.textContent = latticeLabel ? `${prettyName(tile.name)} · ${latticeLabel}` : prettyName(tile.name);
+    name.title = `${prettyName(tile.name)}${latticeLabel ? `\n${latticeLabel}` : ""}\n${solidAngleTitle(tile.solid_angles)}`;
 
     const slider = document.createElement("input");
     slider.type = "range";
@@ -1769,7 +1778,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, polycubeD3Checkbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });
