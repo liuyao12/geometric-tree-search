@@ -1,11 +1,11 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260706-lattice-tiers";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260706-crash-guard";
 
-const SNAPSHOT_INTERVAL_MS = 80;
+const SNAPSHOT_INTERVAL_MS = 260;
 
 let activeSeq = 0;
 let stopToken = { stop: false };
 let streamIter = null;
-let paused = false;
+let pauseReasons = new Set();
 let resumeWaiter = null;
 let pendingSnapshot = null;
 let snapshotTimer = null;
@@ -23,7 +23,7 @@ const wakeRunner = () => {
 };
 
 const waitWhilePaused = async (seq) => {
-  while (paused && seq === activeSeq && !stopToken.stop) {
+  while (pauseReasons.size && seq === activeSeq && !stopToken.stop) {
     await new Promise(resolve => { resumeWaiter = resolve; });
   }
 };
@@ -56,6 +56,7 @@ const stopCurrentRun = () => {
   stopToken.stop = true;
   streamIter = null;
   pendingSnapshot = null;
+  pauseReasons.clear();
   if (snapshotTimer) {
     clearTimeout(snapshotTimer);
     snapshotTimer = null;
@@ -96,13 +97,13 @@ const runStream = async (seq, config) => {
 };
 
 self.onmessage = (event) => {
-  const { type, seq, config } = event.data ?? {};
+  const { type, seq, config, reason = "ui" } = event.data ?? {};
 
   if (type === "start") {
     stopCurrentRun();
     activeSeq = seq;
     stopToken = { stop: false };
-    paused = false;
+    pauseReasons.clear();
     runStream(seq, config);
     return;
   }
@@ -115,12 +116,12 @@ self.onmessage = (event) => {
   if (seq !== activeSeq) return;
 
   if (type === "pause") {
-    paused = true;
+    pauseReasons.add(reason);
     return;
   }
 
   if (type === "resume") {
-    paused = false;
+    pauseReasons.delete(reason);
     wakeRunner();
     return;
   }

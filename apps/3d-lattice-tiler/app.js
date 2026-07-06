@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260706-lattice-tiers";
+import { tileSpecs } from "./engine.js?v=20260706-crash-guard";
 
 const $ = (id) => document.getElementById(id);
 
@@ -55,6 +55,22 @@ const prettyNameMap = new Map([
 ]);
 
 const prettyName = (name) => prettyNameMap.get(name) ?? name;
+
+const SOLVER_MESSAGE_FRAME_BUDGET_MS = 10;
+const SOLVER_MESSAGE_COMPACT_THRESHOLD = 600;
+const SOLVER_MESSAGE_PAUSE_THRESHOLD = 900;
+const SOLVER_MESSAGE_RESUME_THRESHOLD = 160;
+const FULL_UPDATE_INTERVAL_MS = 260;
+const TREE_RENDER_INTERVAL_MS = 180;
+const RUNNING_EDGE_FACE_LIMIT = 3500;
+const MAX_RENDERED_TREE_ROWS = 900;
+const MAX_STORED_TREE_SNAPSHOTS = 18;
+const MAX_PENDING_TREE_SNAPSHOTS = 24;
+const CHECKPOINT_VERSION = 1;
+const CHECKPOINT_DB_NAME = "3d-lattice-tiler-checkpoints";
+const CHECKPOINT_STORE_NAME = "checkpoints";
+const CHECKPOINT_KEY = "latest";
+const CHECKPOINT_SAVE_INTERVAL_MS = 1800;
 
 function fallbackRenderer(label) {
   const canvas = document.createElement("canvas");
@@ -166,8 +182,15 @@ let pausedConfigKey = null;
 let startedAt = 0;
 let solverWorker = null;
 let solverWorkerActive = false;
+let workerDisplayPaused = false;
+let solverMessageQueue = [];
+let solverMessageQueueIndex = 0;
+let solverMessageFlushQueued = false;
 let pendingFullUpdate = null;
 let fullUpdateRenderQueued = false;
+let fullUpdateTimer = null;
+let applyingFullUpdate = false;
+let lastFullUpdateRenderedAt = 0;
 
 let lastSnapshot = null;
 let lastSearchStats = null;
@@ -177,10 +200,13 @@ let rootCentered = false;
 
 const treeMap = new Map();
 const pendingSnapshots = new Map();
+const treeSnapshotOrder = [];
 const expandedNodes = new Set();
 const manuallyExpanded = new Set();
 let selectedNodeId = null;
 let treeRenderQueued = false;
+let treeRenderTimer = null;
+let lastTreeRenderAt = 0;
 let needsRender = true;
 let renderWidth = 0;
 let renderHeight = 0;
@@ -196,6 +222,14 @@ let lastBuilderSignature = null;
 let listedPolycubeShapeMap = null;
 const figureThumbnailCache = new Map();
 const figureTileCache = new Map();
+let checkpointDbPromise = null;
+let checkpointSaveTimer = null;
+let checkpointIdleQueued = false;
+let checkpointSaving = false;
+let checkpointSaveQueued = false;
+let pendingCheckpointSnapshot = null;
+let pendingCheckpointReason = "snapshot";
+let lastCheckpointSaveAt = 0;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xedf1ef);
@@ -322,6 +356,87 @@ function requestBuilderRender() {
 
 function setStatus(text) {
   statusEl.textContent = text;
+}
+
+function queuedSolverMessageCount() {
+  return Math.max(0, solverMessageQueue.length - solverMessageQueueIndex);
+}
+
+function setWorkerDisplayPaused(nextPaused) {
+  if (workerDisplayPaused === nextPaused) return;
+  workerDisplayPaused = nextPaused;
+  if (!solverWorker || !solverWorkerActive) return;
+  solverWorker.postMessage({
+    type: nextPaused ? "pause" : "resume",
+    seq: runSeq,
+    reason: "display"
+  });
+}
+
+function syncWorkerDisplayBackpressure() {
+  if (!solverWorkerActive || !solverWorker) {
+    workerDisplayPaused = false;
+    return;
+  }
+  const backlog = queuedSolverMessageCount();
+  const threshold = workerDisplayPaused ? SOLVER_MESSAGE_RESUME_THRESHOLD : SOLVER_MESSAGE_PAUSE_THRESHOLD;
+  setWorkerDisplayPaused(applyingFullUpdate || backlog > threshold);
+}
+
+function compactSolverMessageQueue() {
+  if (queuedSolverMessageCount() < SOLVER_MESSAGE_COMPACT_THRESHOLD) return;
+  const tail = solverMessageQueue.slice(solverMessageQueueIndex);
+  let latestFullUpdateIndex = -1;
+  const latestWorkingStatusIndexById = new Map();
+  tail.forEach((message, index) => {
+    if (message?.type === "full_update") latestFullUpdateIndex = index;
+    if (message?.type === "node_status" && message.status === "working") {
+      latestWorkingStatusIndexById.set(message.id, index);
+    }
+  });
+  solverMessageQueue = tail.filter((message, index) => {
+    if (message?.type === "full_update") return index === latestFullUpdateIndex;
+    if (message?.type === "node_status" && message.status === "working") {
+      return latestWorkingStatusIndexById.get(message.id) === index;
+    }
+    return true;
+  });
+  solverMessageQueueIndex = 0;
+}
+
+function enqueueSolverMessage(message) {
+  if (!message) return;
+  solverMessageQueue.push(message);
+  compactSolverMessageQueue();
+  syncWorkerDisplayBackpressure();
+  scheduleSolverMessageFlush();
+}
+
+function scheduleSolverMessageFlush() {
+  if (solverMessageFlushQueued) return;
+  solverMessageFlushQueued = true;
+  requestAnimationFrame(flushSolverMessages);
+}
+
+function flushSolverMessages() {
+  solverMessageFlushQueued = false;
+  const started = performance.now();
+  while (solverMessageQueueIndex < solverMessageQueue.length) {
+    handleMessage(solverMessageQueue[solverMessageQueueIndex]);
+    solverMessageQueueIndex += 1;
+    if (performance.now() - started >= SOLVER_MESSAGE_FRAME_BUDGET_MS) break;
+  }
+  if (solverMessageQueueIndex >= solverMessageQueue.length) {
+    solverMessageQueue = [];
+    solverMessageQueueIndex = 0;
+  } else {
+    if (solverMessageQueueIndex > 200) {
+      solverMessageQueue = solverMessageQueue.slice(solverMessageQueueIndex);
+      solverMessageQueueIndex = 0;
+    }
+    scheduleSolverMessageFlush();
+  }
+  syncWorkerDisplayBackpressure();
 }
 
 function criterion() {
@@ -688,6 +803,231 @@ function customSystemConfig() {
     polycubes,
     polycube_lattice: selectedPolycubeLattice()
   };
+}
+
+function requestIdleWork(callback) {
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(callback, { timeout: 2500 });
+    return;
+  }
+  window.setTimeout(callback, 0);
+}
+
+function openCheckpointDb() {
+  if (!("indexedDB" in window)) return Promise.resolve(null);
+  if (checkpointDbPromise) return checkpointDbPromise;
+  checkpointDbPromise = new Promise((resolve) => {
+    const request = indexedDB.open(CHECKPOINT_DB_NAME, 1);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(CHECKPOINT_STORE_NAME)) db.createObjectStore(CHECKPOINT_STORE_NAME);
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => {
+      console.warn("Could not open tiler checkpoint store", request.error);
+      resolve(null);
+    };
+  });
+  return checkpointDbPromise;
+}
+
+async function writeCheckpointRecord(record) {
+  const db = await openCheckpointDb();
+  if (!db) return;
+  await new Promise((resolve, reject) => {
+    const tx = db.transaction(CHECKPOINT_STORE_NAME, "readwrite");
+    tx.oncomplete = resolve;
+    tx.onerror = () => reject(tx.error);
+    tx.objectStore(CHECKPOINT_STORE_NAME).put(record, CHECKPOINT_KEY);
+  });
+}
+
+async function readCheckpointRecord() {
+  const db = await openCheckpointDb();
+  if (!db) return null;
+  return await new Promise((resolve) => {
+    const tx = db.transaction(CHECKPOINT_STORE_NAME, "readonly");
+    const request = tx.objectStore(CHECKPOINT_STORE_NAME).get(CHECKPOINT_KEY);
+    request.onsuccess = () => resolve(request.result ?? null);
+    request.onerror = () => {
+      console.warn("Could not read tiler checkpoint", request.error);
+      resolve(null);
+    };
+  });
+}
+
+function checkpointUiState() {
+  return {
+    selectedFigureIds: [...selectedFigureIds],
+    builderVoxels: [...builderVoxels],
+    customName: customNameInput.value,
+    customNameEdited,
+    controls: {
+      criterion: criterion(),
+      maxTiles: maxTilesInput.value,
+      layer: layerInput.value,
+      snapshotEvery: snapshotSelect.value,
+      faceOrder: faceOrderSelect.value,
+      moveOrder: moveOrderSelect.value,
+      polycubeLattice: selectedPolycubeLattice(),
+      branchCap: branchCapInput.value,
+      nodeCap: nodeCapInput.value,
+      candidateCap: candidateCapInput.value,
+      timeCap: timeCapInput.value,
+      mirror: mirrorCheckbox.checked,
+      exhaustive: exhaustiveCheckbox.checked,
+      internal: internalCheckbox.checked,
+      edges: edgesCheckbox.checked,
+      autoFit: autoFitCheckbox.checked,
+      customPolycube: customPolycubeCheckbox.checked
+    }
+  };
+}
+
+function snapshotForCheckpoint(snapshot) {
+  const keepInternal = internalCheckbox.checked;
+  return {
+    type: "full_update",
+    tile_count: snapshot.tile_count ?? 0,
+    tile_counts: snapshot.tile_counts ?? [],
+    faces: (snapshot.faces ?? []).filter(face => keepInternal || !face.internal),
+    frontier_stats: snapshot.frontier_stats ?? null,
+    search_stats: snapshot.search_stats ?? null,
+    visual_only: !keepInternal
+  };
+}
+
+function buildCheckpoint(snapshot, reason) {
+  return {
+    version: CHECKPOINT_VERSION,
+    savedAt: Date.now(),
+    reason,
+    elapsedMs: startedAt ? Math.max(0, performance.now() - startedAt) : 0,
+    config: pausedConfigKey ? JSON.parse(pausedConfigKey) : JSON.parse(configKey()),
+    ui: checkpointUiState(),
+    currentOpacities: { ...currentOpacities },
+    prototileInfo: clone(prototileInfo),
+    snapshot: snapshotForCheckpoint(snapshot)
+  };
+}
+
+function queueCheckpointSave(snapshot, options = {}) {
+  if (!snapshot || !prototileInfo) return;
+  pendingCheckpointSnapshot = snapshot;
+  pendingCheckpointReason = options.reason ?? pendingCheckpointReason ?? "snapshot";
+
+  if (options.immediate) {
+    if (checkpointSaveTimer) {
+      clearTimeout(checkpointSaveTimer);
+      checkpointSaveTimer = null;
+    }
+    checkpointIdleQueued = false;
+    void saveCheckpointNow();
+    return;
+  }
+
+  if (checkpointSaveTimer || checkpointIdleQueued) return;
+  const elapsed = performance.now() - lastCheckpointSaveAt;
+  const delay = Math.max(0, CHECKPOINT_SAVE_INTERVAL_MS - elapsed);
+  checkpointSaveTimer = setTimeout(() => {
+    checkpointSaveTimer = null;
+    checkpointIdleQueued = true;
+    requestIdleWork(() => {
+      checkpointIdleQueued = false;
+      void saveCheckpointNow();
+    });
+  }, delay);
+}
+
+function cancelPendingCheckpointSave() {
+  if (checkpointSaveTimer) {
+    clearTimeout(checkpointSaveTimer);
+    checkpointSaveTimer = null;
+  }
+  checkpointIdleQueued = false;
+  pendingCheckpointSnapshot = null;
+  pendingCheckpointReason = "snapshot";
+}
+
+async function saveCheckpointNow() {
+  if (checkpointSaving) {
+    checkpointSaveQueued = true;
+    return;
+  }
+  const snapshot = pendingCheckpointSnapshot ?? lastSnapshot;
+  if (!snapshot || !prototileInfo) return;
+  const reason = pendingCheckpointReason || "snapshot";
+  pendingCheckpointSnapshot = null;
+  checkpointSaving = true;
+  try {
+    await writeCheckpointRecord(buildCheckpoint(snapshot, reason));
+    lastCheckpointSaveAt = performance.now();
+  } catch (error) {
+    console.warn("Could not save tiler checkpoint", error);
+  } finally {
+    checkpointSaving = false;
+    if (checkpointSaveQueued || pendingCheckpointSnapshot) {
+      checkpointSaveQueued = false;
+      queueCheckpointSave(pendingCheckpointSnapshot ?? lastSnapshot, { reason: pendingCheckpointReason || "snapshot" });
+    }
+  }
+}
+
+function applyCheckpointUiState(ui = {}) {
+  const controls = ui.controls ?? {};
+  const validFigureIds = (ui.selectedFigureIds ?? []).filter(id => figureById.has(id));
+  if (validFigureIds.length) selectedFigureIds = validFigureIds;
+  if (Array.isArray(ui.builderVoxels) && ui.builderVoxels.length) {
+    builderVoxels = new Set(ui.builderVoxels.filter(key => /^-?\d+,-?\d+,-?\d+$/u.test(key)));
+  }
+  if (!builderVoxels.size) builderVoxels = new Set(["0,0,0"]);
+
+  const criterionRadio = document.querySelector(`input[name="criterion"][value="${controls.criterion === "layer" ? "layer" : "count"}"]`);
+  if (criterionRadio) criterionRadio.checked = true;
+  if (controls.maxTiles != null) maxTilesInput.value = controls.maxTiles;
+  if (controls.layer != null) layerInput.value = controls.layer;
+  if (controls.snapshotEvery != null) snapshotSelect.value = controls.snapshotEvery;
+  if (controls.faceOrder != null) faceOrderSelect.value = controls.faceOrder;
+  if (controls.moveOrder != null) moveOrderSelect.value = controls.moveOrder;
+  if (controls.polycubeLattice != null) polycubeLatticeSelect.value = tileSpecs.normalizePolycubeLattice?.(controls.polycubeLattice) ?? "z3";
+  if (controls.branchCap != null) branchCapInput.value = controls.branchCap;
+  if (controls.nodeCap != null) nodeCapInput.value = controls.nodeCap;
+  if (controls.candidateCap != null) candidateCapInput.value = controls.candidateCap;
+  if (controls.timeCap != null) timeCapInput.value = controls.timeCap;
+  mirrorCheckbox.checked = !!controls.mirror;
+  exhaustiveCheckbox.checked = !!controls.exhaustive;
+  internalCheckbox.checked = !!controls.internal;
+  edgesCheckbox.checked = controls.edges !== false;
+  autoFitCheckbox.checked = controls.autoFit !== false;
+  customPolycubeCheckbox.checked = !!controls.customPolycube;
+  if (ui.customName != null) customNameInput.value = ui.customName;
+  customNameEdited = !!ui.customNameEdited;
+
+  updateCriterionUI();
+  renderBuilderVoxels(false);
+  refreshFigureSelectionUI();
+}
+
+function shouldSkipCheckpointRestore() {
+  const params = new URLSearchParams(window.location.search);
+  return params.has("figure") || params.has("tile");
+}
+
+async function restoreLatestCheckpoint() {
+  if (shouldSkipCheckpointRestore()) return;
+  const checkpoint = await readCheckpointRecord();
+  if (!checkpoint || checkpoint.version !== CHECKPOINT_VERSION || !checkpoint.snapshot || !checkpoint.prototileInfo) return;
+  if (running || paused || lastSnapshot) return;
+
+  applyCheckpointUiState(checkpoint.ui);
+  currentOpacities = { ...(checkpoint.currentOpacities ?? {}) };
+  prototileInfo = checkpoint.prototileInfo;
+  startedAt = performance.now() - Math.max(0, checkpoint.elapsedMs ?? 0);
+  isFinished = true;
+  initTileControls(prototileInfo);
+  updateScene(checkpoint.snapshot, { preserveView: false });
+  setStatus(`Restored: ${checkpoint.snapshot.tile_count ?? 0} tiles`);
+  setRunButton();
 }
 
 function hasRunnableSelection() {
@@ -1180,12 +1520,13 @@ function updateScene(snapshot, options = {}) {
   const faceBatches = new Map();
   const edgeBatches = new Map();
   const showInternal = internalCheckbox.checked;
-  const showEdges = edgesCheckbox.checked;
+  const showEdges = edgesCheckbox.checked && (!running || faces.length <= RUNNING_EDGE_FACE_LIMIT);
   const nextFaceGroup = rebuildFaces ? new THREE.Group() : null;
   const nextEdgeGroup = new THREE.Group();
 
   for (const face of faces) {
-    const alpha = visibleAlpha(face) * (face.internal && !showInternal ? 0.72 : 1);
+    if (face.internal && !showInternal) continue;
+    const alpha = visibleAlpha(face);
     if (alpha < 0.01) continue;
     const color = face.color ?? "#178273";
     const vertices = face.v ?? [];
@@ -1378,21 +1719,54 @@ function addNodeToTree(id, label, parentId = null, isForced = false, frontierSta
     node.snapshot = pending;
     if (pending.frontier_stats) node.frontierStats = pending.frontier_stats;
     pendingSnapshots.delete(id);
+    rememberTreeSnapshotNode(id);
   }
   scheduleTreeRender();
   return node;
 }
 
+function rememberTreeSnapshotNode(nodeId) {
+  if (nodeId == null) return;
+  const existingIndex = treeSnapshotOrder.indexOf(nodeId);
+  if (existingIndex >= 0) treeSnapshotOrder.splice(existingIndex, 1);
+  treeSnapshotOrder.push(nodeId);
+  trimStoredTreeSnapshots(nodeId);
+}
+
+function trimStoredTreeSnapshots(protectedNodeId = null) {
+  let passes = 0;
+  while (treeSnapshotOrder.length > MAX_STORED_TREE_SNAPSHOTS && passes < treeSnapshotOrder.length + 4) {
+    const nodeId = treeSnapshotOrder.shift();
+    const node = treeMap.get(nodeId);
+    if (!node?.snapshot) continue;
+    if (nodeId === selectedNodeId || nodeId === protectedNodeId) {
+      treeSnapshotOrder.push(nodeId);
+      passes += 1;
+      continue;
+    }
+    node.snapshot = null;
+  }
+}
+
+function rememberPendingSnapshot(nodeId, snapshot) {
+  if (nodeId == null || !snapshot) return;
+  pendingSnapshots.set(nodeId, snapshot);
+  while (pendingSnapshots.size > MAX_PENDING_TREE_SNAPSHOTS) {
+    const oldest = pendingSnapshots.keys().next().value;
+    pendingSnapshots.delete(oldest);
+  }
+}
+
 function attachSnapshotToNode(nodeId, snapshot) {
   if (nodeId == null || !snapshot) return;
-  const frozen = clone(snapshot);
   const node = treeMap.get(nodeId);
   if (node) {
-    node.snapshot = frozen;
-    if (frozen.frontier_stats) node.frontierStats = frozen.frontier_stats;
+    node.snapshot = snapshot;
+    if (snapshot.frontier_stats) node.frontierStats = snapshot.frontier_stats;
+    rememberTreeSnapshotNode(nodeId);
     scheduleTreeRender();
   } else {
-    pendingSnapshots.set(nodeId, frozen);
+    rememberPendingSnapshot(nodeId, snapshot);
   }
 }
 
@@ -1480,8 +1854,14 @@ function revealSuccessPath() {
 }
 
 function clearTree() {
+  if (treeRenderTimer) {
+    clearTimeout(treeRenderTimer);
+    treeRenderTimer = null;
+  }
+  treeRenderQueued = false;
   treeMap.clear();
   pendingSnapshots.clear();
+  treeSnapshotOrder.length = 0;
   expandedNodes.clear();
   manuallyExpanded.clear();
   selectedNodeId = null;
@@ -1492,14 +1872,22 @@ function clearTree() {
 function scheduleTreeRender() {
   if (treeRenderQueued) return;
   treeRenderQueued = true;
-  requestAnimationFrame(() => {
-    treeRenderQueued = false;
-    renderTree();
-  });
+  const elapsed = performance.now() - lastTreeRenderAt;
+  const delay = running ? Math.max(0, TREE_RENDER_INTERVAL_MS - elapsed) : 0;
+  treeRenderTimer = setTimeout(() => {
+    treeRenderTimer = null;
+    requestAnimationFrame(() => {
+      treeRenderQueued = false;
+      renderTree();
+    });
+  }, delay);
 }
 
 function renderTree() {
+  lastTreeRenderAt = performance.now();
   treePanel.replaceChildren();
+  let renderedRows = 0;
+  let treeRowsLimited = false;
 
   const isGenericBranchLeaf = (node) =>
     node
@@ -1511,6 +1899,11 @@ function renderTree() {
     && !node.resultText;
 
   const renderBranchSummary = (count, depth) => {
+    if (renderedRows >= MAX_RENDERED_TREE_ROWS) {
+      treeRowsLimited = true;
+      return;
+    }
+    renderedRows += 1;
     const row = document.createElement("div");
     row.className = "tree-node tree-node-summary";
     row.style.paddingLeft = `${depth * 18}px`;
@@ -1533,9 +1926,32 @@ function renderTree() {
     treePanel.appendChild(row);
   };
 
+  const renderTreeLimitSummary = () => {
+    const row = document.createElement("div");
+    row.className = "tree-node tree-node-summary";
+    const toggle = document.createElement("span");
+    toggle.className = "tree-toggle";
+    const content = document.createElement("span");
+    content.className = "tree-button tree-button-summary";
+    const statusDot = document.createElement("span");
+    statusDot.className = "tree-status";
+    const label = document.createElement("span");
+    label.className = "tree-label";
+    const hiddenCount = Math.max(1, treeMap.size - renderedRows);
+    label.textContent = `${hiddenCount} more node${hiddenCount === 1 ? "" : "s"}`;
+    content.append(statusDot, label);
+    row.append(toggle, content);
+    treePanel.appendChild(row);
+  };
+
   const renderNode = (nodeId, depth) => {
     const node = treeMap.get(nodeId);
     if (!node) return;
+    if (renderedRows >= MAX_RENDERED_TREE_ROWS) {
+      treeRowsLimited = true;
+      return;
+    }
+    renderedRows += 1;
 
     const row = document.createElement("div");
     row.className = "tree-node";
@@ -1621,6 +2037,8 @@ function renderTree() {
   for (const node of treeMap.values()) {
     if (node.parentId == null) renderNode(node.id, 0);
   }
+
+  if (treeRowsLimited) renderTreeLimitSummary();
 }
 
 function handleMessage(message) {
@@ -1654,11 +2072,14 @@ function handleMessage(message) {
     running = false;
     paused = false;
     solverWorkerActive = false;
+    setWorkerDisplayPaused(false);
+    flushFullUpdateNow();
     if (message.success !== false) revealSuccessPath();
     metricTiles.textContent = message.tile_count ?? metricTiles.textContent;
     if (message.search_stats) updateSearchMetrics(message.search_stats);
     const prefix = message.success === false ? (message.best_effort ? "Stopped: best" : "Stopped") : "Finished";
     setStatus(`${prefix}: ${message.tile_count} tiles`);
+    if (lastSnapshot) queueCheckpointSave(lastSnapshot, { immediate: true, reason: "finished" });
     setRunButton();
   }
 }
@@ -1667,23 +2088,45 @@ function scheduleFullUpdate(snapshot) {
   pendingFullUpdate = snapshot;
   if (fullUpdateRenderQueued) return;
   fullUpdateRenderQueued = true;
-  requestAnimationFrame(() => {
-    fullUpdateRenderQueued = false;
-    const latest = pendingFullUpdate;
-    pendingFullUpdate = null;
-    if (latest) updateScene(latest);
-  });
+  const elapsed = performance.now() - lastFullUpdateRenderedAt;
+  const delay = running ? Math.max(0, FULL_UPDATE_INTERVAL_MS - elapsed) : 0;
+  fullUpdateTimer = setTimeout(() => {
+    fullUpdateTimer = null;
+    requestAnimationFrame(flushFullUpdateNow);
+  }, delay);
+}
+
+function flushFullUpdateNow() {
+  if (fullUpdateTimer) {
+    clearTimeout(fullUpdateTimer);
+    fullUpdateTimer = null;
+  }
+  fullUpdateRenderQueued = false;
+  const latest = pendingFullUpdate;
+  pendingFullUpdate = null;
+  if (!latest) return;
+
+  applyingFullUpdate = true;
+  syncWorkerDisplayBackpressure();
+  try {
+    updateScene(latest);
+    lastFullUpdateRenderedAt = performance.now();
+    queueCheckpointSave(latest, { reason: "snapshot" });
+  } finally {
+    applyingFullUpdate = false;
+    syncWorkerDisplayBackpressure();
+  }
 }
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260706-lattice-tiers", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260706-crash-guard", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
 
     if (type === "solver_message") {
-      handleMessage(message);
+      enqueueSolverMessage(message);
       return;
     }
 
@@ -1691,6 +2134,7 @@ function ensureSolverWorker() {
       running = false;
       paused = false;
       solverWorkerActive = false;
+      setWorkerDisplayPaused(false);
       setStatus(`Error: ${error}`);
       setRunButton();
       return;
@@ -1700,6 +2144,7 @@ function ensureSolverWorker() {
       running = false;
       paused = false;
       solverWorkerActive = false;
+      setWorkerDisplayPaused(false);
       setStatus("Stopped");
       setRunButton();
     }
@@ -1718,10 +2163,20 @@ function ensureSolverWorker() {
 function stopSolverWorker() {
   solverWorker?.postMessage({ type: "stop" });
   solverWorkerActive = false;
+  workerDisplayPaused = false;
+  solverMessageQueue = [];
+  solverMessageQueueIndex = 0;
+  solverMessageFlushQueued = false;
   pendingFullUpdate = null;
+  if (fullUpdateTimer) {
+    clearTimeout(fullUpdateTimer);
+    fullUpdateTimer = null;
+  }
+  fullUpdateRenderQueued = false;
 }
 
 function resetRunView() {
+  cancelPendingCheckpointSave();
   rootCentered = false;
   lastSnapshot = null;
   lastSearchStats = null;
@@ -1748,6 +2203,10 @@ function startNewRun() {
   running = true;
   isFinished = false;
   solverWorkerActive = true;
+  workerDisplayPaused = false;
+  solverMessageQueue = [];
+  solverMessageQueueIndex = 0;
+  solverMessageFlushQueued = false;
   startedAt = performance.now();
   pausedConfigKey = configKey();
   resetRunView();
@@ -1764,13 +2223,14 @@ function continueRun() {
   running = true;
   setRunButton();
   setStatus("Running...");
-  solverWorker?.postMessage({ type: "resume", seq: runSeq });
+  solverWorker?.postMessage({ type: "resume", seq: runSeq, reason: "ui" });
+  syncWorkerDisplayBackpressure();
 }
 
 function pauseRun() {
   paused = true;
   running = false;
-  solverWorker?.postMessage({ type: "pause", seq: runSeq });
+  solverWorker?.postMessage({ type: "pause", seq: runSeq, reason: "ui" });
   setRunButton();
   setStatus("Paused");
 }
@@ -1863,3 +2323,4 @@ refreshFigureSelectionUI();
 bindControls();
 setRunButton();
 animate();
+void restoreLatestCheckpoint();
