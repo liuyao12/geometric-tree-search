@@ -359,9 +359,7 @@ export const createTilingStream = (() => {
       if (isBetterSnapshot(snap, bestSnapshot)) bestSnapshot = cloneSnapshot(snap);
     };
 
-    const snapshot = (node_id = null) => {
-      const faces = [];
-      for (const stack of state.viz_faces.values()) for (const f of stack) faces.push(f);
+    const tileCounts = () => {
       const countMap = new Map();
       for (const placement of state.placements) {
         const typeIndex = placement.prototile_idx ?? 0;
@@ -374,10 +372,25 @@ export const createTilingStream = (() => {
         entry.count += 1;
         countMap.set(typeIndex, entry);
       }
+      return [...countMap.values()].sort((a, b) => a.type_idx - b.type_idx);
+    };
+
+    const snapshotMeta = (node_id = null) => ({
+      type: "snapshot_meta",
+      tile_count: state.placements.length,
+      tile_counts: tileCounts(),
+      node_id,
+      frontier_stats: frontierStatsWithCandidateCount(),
+      search_stats: searchStatsSnapshot()
+    });
+
+    const snapshot = (node_id = null) => {
+      const faces = [];
+      for (const stack of state.viz_faces.values()) for (const f of stack) faces.push(f);
       const snap = {
         type: "full_update",
         tile_count: state.placements.length,
-        tile_counts: [...countMap.values()].sort((a, b) => a.type_idx - b.type_idx),
+        tile_counts: tileCounts(),
         faces,
         node_id,
         frontier_stats: frontierStatsWithCandidateCount(),
@@ -396,7 +409,35 @@ export const createTilingStream = (() => {
       recordBestSnapshot(snap);
       return snap;
     };
-    const nodeSnapshot = (node_id) => ({ type: "node_snapshot", node_id, snapshot: snapshot(node_id) });
+    const nodeSnapshot = (node_id) => ({ type: "node_snapshot", node_id, snapshot: snapshotMeta(node_id) });
+    const cloneFace = (face) => ({
+      ...face,
+      v: (face.v ?? []).map(vertex => vertex.slice())
+    });
+    const placementDelta = (action, move, rb, node_id = null, extra = {}) => {
+      const coveredKeys = (rb?.removed ?? []).map(([key]) => key);
+      const newKeys = rb?.added ?? [];
+      const message = {
+        type: "placement_delta",
+        action,
+        node_id,
+        prototile_idx: move?.prototile_idx ?? 0,
+        color_id: move?.color_id ?? 0,
+        tile_count: state.placements.length,
+        tile_counts: tileCounts(),
+        frontier_face_keys: newKeys,
+        covered_face_keys: coveredKeys,
+        frontier_stats: extra.frontier_stats ?? frontierStatsWithCandidateCount(),
+        search_stats: searchStatsSnapshot()
+      };
+      if (action === "add") {
+        message.faces = [...newKeys, ...coveredKeys]
+          .map(key => state.viz_faces.get(key)?.at(-1))
+          .filter(Boolean)
+          .map(cloneFace);
+      }
+      return message;
+    };
 
     const latticeGet = (pos) => state.lattice.get(pos.join(",")) ?? 0;
     const latticeAdd = (pos, w) => {
@@ -585,13 +626,13 @@ export const createTilingStream = (() => {
           removed.push([k, state.frontier.get(k)]);
           state.frontier.delete(k);
           if (!state.viz_faces.has(k)) state.viz_faces.set(k, []);
-          state.viz_faces.get(k).push({ v: poly, color: COLOR_PALETTE[move.color_id], internal: true, type_idx: move.prototile_idx });
+          state.viz_faces.get(k).push({ key: k, v: poly, color: COLOR_PALETTE[move.color_id], internal: true, type_idx: move.prototile_idx });
           for (const vf of state.viz_faces.get(k)) vf.internal = true;
         } else {
           faceCounter += 1;
           state.frontier.set(k, { type: move.prototile_idx, face_idx: f_idx, ordered_verts: poly, color_id: move.color_id, id: faceCounter, gen: newGen });
           added.push(k);
-          const viz = { v: poly, color: COLOR_PALETTE[move.color_id], internal: false, type_idx: move.prototile_idx };
+          const viz = { key: k, v: poly, color: COLOR_PALETTE[move.color_id], internal: false, type_idx: move.prototile_idx };
           if (!state.viz_faces.has(k)) state.viz_faces.set(k, []);
           state.viz_faces.get(k).push(viz);
         }
@@ -704,7 +745,7 @@ export const createTilingStream = (() => {
       const k = keyFace(poly);
       faceCounter += 1;
       state.frontier.set(k, { type: 0, face_idx: f_idx, ordered_verts: poly, color_id: 0, id: faceCounter, gen: 0 });
-      state.viz_faces.set(k, [{ v: poly, color: COLOR_PALETTE[0], internal: false, type_idx: 0 }]);
+      state.viz_faces.set(k, [{ key: k, v: poly, color: COLOR_PALETTE[0], internal: false, type_idx: 0 }]);
     }
     
     const rootId = nowId();
@@ -1146,7 +1187,11 @@ export const createTilingStream = (() => {
       const forcedBatch = [];
       const doReturn = async function* (retval) {
         if (retval && !exhaustive) return true;
-        while (forcedBatch.length) { const [mv, rb] = forcedBatch.pop(); undoMove(mv, rb); }
+        while (forcedBatch.length) {
+          const [mv, rb] = forcedBatch.pop();
+          undoMove(mv, rb);
+          yield placementDelta("remove", mv, rb);
+        }
         return retval;
       };
       if (goalMet()) {
@@ -1297,6 +1342,7 @@ export const createTilingStream = (() => {
           mv.is_forced = true;
           searchStats.forced_total += 1;
           const rb = applyMove(mv);
+          yield placementDelta("add", mv, rb);
           node_candidate_cache.clear();
           forcedBatch.push([mv, rb]);
           forcedCount += 1;
@@ -1391,6 +1437,7 @@ export const createTilingStream = (() => {
         searchStats.branch_choices_visited += 1;
         searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
         const rb = applyMove(mv);
+        yield placementDelta("add", mv, rb, mv.node_id);
         const postMoveAnalysis = await analyzeFrontierGraph();
         const postMoveStats = rememberFrontierGraph(postMoveAnalysis);
         const postMoveDual = frontierGraphPayload(postMoveAnalysis);
@@ -1413,6 +1460,7 @@ export const createTilingStream = (() => {
           yield nodeStatus(mv.node_id, "fail");
         }
         undoMove(mv, rb);
+        yield placementDelta("remove", mv, rb, mv.node_id);
         setBranchCursor(depth, bestMoves.length, i + 1);
       }
 

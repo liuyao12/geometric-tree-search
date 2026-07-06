@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260706-crash-guard";
+import { tileSpecs } from "./engine.js?v=20260706-live-deltas";
 
 const $ = (id) => document.getElementById(id);
 
@@ -61,12 +61,15 @@ const SOLVER_MESSAGE_COMPACT_THRESHOLD = 600;
 const SOLVER_MESSAGE_PAUSE_THRESHOLD = 900;
 const SOLVER_MESSAGE_RESUME_THRESHOLD = 160;
 const FULL_UPDATE_INTERVAL_MS = 260;
+const LIVE_UPDATE_FAST_INTERVAL_MS = 70;
+const LIVE_UPDATE_MEDIUM_INTERVAL_MS = 130;
+const LIVE_UPDATE_SLOW_INTERVAL_MS = 260;
 const TREE_RENDER_INTERVAL_MS = 180;
 const RUNNING_EDGE_FACE_LIMIT = 3500;
 const MAX_RENDERED_TREE_ROWS = 900;
 const MAX_STORED_TREE_SNAPSHOTS = 18;
 const MAX_PENDING_TREE_SNAPSHOTS = 24;
-const CHECKPOINT_VERSION = 1;
+const CHECKPOINT_VERSION = 2;
 const CHECKPOINT_DB_NAME = "3d-lattice-tiler-checkpoints";
 const CHECKPOINT_STORE_NAME = "checkpoints";
 const CHECKPOINT_KEY = "latest";
@@ -191,12 +194,17 @@ let fullUpdateRenderQueued = false;
 let fullUpdateTimer = null;
 let applyingFullUpdate = false;
 let lastFullUpdateRenderedAt = 0;
+let pendingLiveSnapshot = null;
+let liveUpdateRenderQueued = false;
+let liveUpdateTimer = null;
+let lastLiveUpdateRenderedAt = 0;
 
 let lastSnapshot = null;
 let lastSearchStats = null;
 let prototileInfo = null;
 let currentOpacities = {};
 let rootCentered = false;
+let liveFaceStacks = new Map();
 
 const treeMap = new Map();
 const pendingSnapshots = new Map();
@@ -1511,9 +1519,124 @@ function updateRunMetrics(snapshot = null) {
   renderSelectedTiles();
 }
 
+function displayFaceKey(face, fallbackIndex = 0) {
+  if (face?.key) return face.key;
+  return `face:${fallbackIndex}:${(face?.v ?? []).map(vertex => vertex.join(",")).sort().join("|")}`;
+}
+
+function resetLiveFaceStacks(snapshot) {
+  liveFaceStacks = new Map();
+  (snapshot?.faces ?? []).forEach((face, index) => {
+    const key = displayFaceKey(face, index);
+    const storedFace = { ...face, key, v: (face.v ?? []).map(vertex => vertex.slice()) };
+    if (!liveFaceStacks.has(key)) liveFaceStacks.set(key, []);
+    liveFaceStacks.get(key).push(storedFace);
+  });
+}
+
+function liveFaces() {
+  const faces = [];
+  for (const stack of liveFaceStacks.values()) {
+    for (const face of stack) faces.push(face);
+  }
+  return faces;
+}
+
+function liveFaceCount() {
+  let count = 0;
+  for (const stack of liveFaceStacks.values()) count += stack.length;
+  return count;
+}
+
+function liveRenderInterval() {
+  const count = liveFaceCount();
+  if (count <= 1200) return LIVE_UPDATE_FAST_INTERVAL_MS;
+  if (count <= 4800) return LIVE_UPDATE_MEDIUM_INTERVAL_MS;
+  return LIVE_UPDATE_SLOW_INTERVAL_MS;
+}
+
+function scheduleLiveUpdateFromDelta(delta) {
+  pendingLiveSnapshot = {
+    type: "live_update",
+    tile_count: delta.tile_count ?? lastSnapshot?.tile_count ?? 0,
+    tile_counts: delta.tile_counts ?? lastSnapshot?.tile_counts ?? [],
+    frontier_stats: delta.frontier_stats ?? lastSnapshot?.frontier_stats ?? null,
+    search_stats: delta.search_stats ?? lastSnapshot?.search_stats ?? null
+  };
+  if (liveUpdateRenderQueued) return;
+  liveUpdateRenderQueued = true;
+  const elapsed = performance.now() - lastLiveUpdateRenderedAt;
+  const delay = running ? Math.max(0, liveRenderInterval() - elapsed) : 0;
+  liveUpdateTimer = setTimeout(() => {
+    liveUpdateTimer = null;
+    requestAnimationFrame(flushLiveUpdateNow);
+  }, delay);
+}
+
+function flushLiveUpdateNow() {
+  if (liveUpdateTimer) {
+    clearTimeout(liveUpdateTimer);
+    liveUpdateTimer = null;
+  }
+  liveUpdateRenderQueued = false;
+  const latest = pendingLiveSnapshot;
+  pendingLiveSnapshot = null;
+  if (!latest) return;
+  latest.faces = liveFaces();
+  applyingFullUpdate = true;
+  syncWorkerDisplayBackpressure();
+  try {
+    updateScene(latest, { preserveView: true, syncLive: false });
+    lastLiveUpdateRenderedAt = performance.now();
+    queueCheckpointSave(latest, { reason: "live" });
+  } finally {
+    applyingFullUpdate = false;
+    syncWorkerDisplayBackpressure();
+  }
+}
+
+function applyPlacementDelta(delta) {
+  if (!delta) return;
+  if (!liveFaceStacks.size && lastSnapshot?.faces?.length) resetLiveFaceStacks(lastSnapshot);
+
+  const frontierKeys = delta.frontier_face_keys ?? [];
+  const coveredKeys = delta.covered_face_keys ?? [];
+
+  if (delta.action === "add") {
+    for (const key of coveredKeys) {
+      for (const face of liveFaceStacks.get(key) ?? []) face.internal = true;
+    }
+    for (const face of delta.faces ?? []) {
+      const key = displayFaceKey(face);
+      if (!liveFaceStacks.has(key)) liveFaceStacks.set(key, []);
+      liveFaceStacks.get(key).push({ ...face, key, v: (face.v ?? []).map(vertex => vertex.slice()) });
+    }
+  } else if (delta.action === "remove") {
+    for (const key of [...frontierKeys, ...coveredKeys]) {
+      const stack = liveFaceStacks.get(key);
+      if (!stack) continue;
+      stack.pop();
+      if (!stack.length) liveFaceStacks.delete(key);
+    }
+    for (const key of coveredKeys) {
+      const stack = liveFaceStacks.get(key);
+      if (stack?.length === 1) stack[0].internal = false;
+    }
+  }
+
+  updateRunMetrics({
+    tile_count: delta.tile_count,
+    tile_counts: delta.tile_counts,
+    frontier_stats: delta.frontier_stats,
+    search_stats: delta.search_stats
+  });
+  scheduleLiveUpdateFromDelta(delta);
+}
+
 function updateScene(snapshot, options = {}) {
-  const { preserveView = false, rebuildFaces = true } = options;
+  const { preserveView = false, rebuildFaces = true, syncLive = true } = options;
   lastSnapshot = snapshot;
+  if (syncLive && snapshot?.faces) resetLiveFaceStacks(snapshot);
 
   const faces = snapshot?.faces ?? [];
   const scale = prototileInfo?.scale ?? 2;
@@ -1750,6 +1873,7 @@ function trimStoredTreeSnapshots(protectedNodeId = null) {
 
 function rememberPendingSnapshot(nodeId, snapshot) {
   if (nodeId == null || !snapshot) return;
+  if (!Array.isArray(snapshot.faces) || !snapshot.faces.length) return;
   pendingSnapshots.set(nodeId, snapshot);
   while (pendingSnapshots.size > MAX_PENDING_TREE_SNAPSHOTS) {
     const oldest = pendingSnapshots.keys().next().value;
@@ -1759,11 +1883,12 @@ function rememberPendingSnapshot(nodeId, snapshot) {
 
 function attachSnapshotToNode(nodeId, snapshot) {
   if (nodeId == null || !snapshot) return;
+  const hasGeometry = Array.isArray(snapshot.faces) && snapshot.faces.length;
   const node = treeMap.get(nodeId);
   if (node) {
-    node.snapshot = snapshot;
+    if (hasGeometry) node.snapshot = snapshot;
     if (snapshot.frontier_stats) node.frontierStats = snapshot.frontier_stats;
-    rememberTreeSnapshotNode(nodeId);
+    if (hasGeometry) rememberTreeSnapshotNode(nodeId);
     scheduleTreeRender();
   } else {
     rememberPendingSnapshot(nodeId, snapshot);
@@ -2064,7 +2189,18 @@ function handleMessage(message) {
   }
   if (message.type === "full_update") {
     attachSnapshotToNode(message.node_id, message);
+    if ((message.tile_count ?? 0) <= 1) {
+      flushFullUpdateNow();
+      updateScene(message);
+      lastFullUpdateRenderedAt = performance.now();
+      queueCheckpointSave(message, { reason: "root" });
+      return;
+    }
     scheduleFullUpdate(message);
+    return;
+  }
+  if (message.type === "placement_delta") {
+    applyPlacementDelta(message);
     return;
   }
   if (message.type === "finished") {
@@ -2101,6 +2237,12 @@ function flushFullUpdateNow() {
     clearTimeout(fullUpdateTimer);
     fullUpdateTimer = null;
   }
+  if (liveUpdateTimer) {
+    clearTimeout(liveUpdateTimer);
+    liveUpdateTimer = null;
+  }
+  liveUpdateRenderQueued = false;
+  pendingLiveSnapshot = null;
   fullUpdateRenderQueued = false;
   const latest = pendingFullUpdate;
   pendingFullUpdate = null;
@@ -2120,7 +2262,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260706-crash-guard", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260706-live-deltas", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2173,6 +2315,12 @@ function stopSolverWorker() {
     fullUpdateTimer = null;
   }
   fullUpdateRenderQueued = false;
+  pendingLiveSnapshot = null;
+  if (liveUpdateTimer) {
+    clearTimeout(liveUpdateTimer);
+    liveUpdateTimer = null;
+  }
+  liveUpdateRenderQueued = false;
 }
 
 function resetRunView() {
@@ -2182,6 +2330,7 @@ function resetRunView() {
   lastSearchStats = null;
   prototileInfo = null;
   currentOpacities = {};
+  liveFaceStacks = new Map();
   clearTree();
   clearObjectGroup(faceGroup);
   clearObjectGroup(edgeGroup);

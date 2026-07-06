@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260706-crash-guard";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260706-live-deltas";
 
 const SNAPSHOT_INTERVAL_MS = 260;
 
@@ -40,7 +40,12 @@ const flushSnapshot = (seq) => {
 };
 
 const queueSolverMessage = (seq, message) => {
-  if (message?.type === "full_update" || message?.type === "node_snapshot") {
+  if (message?.type === "full_update") {
+    if ((message.tile_count ?? 0) <= 1) {
+      flushSnapshot(seq);
+      postForSeq(seq, { type: "solver_message", message });
+      return;
+    }
     pendingSnapshot = message;
     if (!snapshotTimer) {
       snapshotTimer = setTimeout(() => flushSnapshot(seq), SNAPSHOT_INTERVAL_MS);
