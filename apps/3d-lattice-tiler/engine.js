@@ -85,7 +85,8 @@ export const createTilingStream = (() => {
     // --- Build Prototiles First (to ensure correct order and cache key) ---
     const { mode_key } = config;
     const includeMirrors = !!config.include_mirrors;
-    const polycubeLattice = config.polycube_lattice === "d3" || config.custom_system?.polycube_lattice === "d3" ? "d3" : "z3";
+    const normalizePolycubeLattice = tileSpecs.normalizePolycubeLattice ?? ((value) => value === "fcc" || value === "d3" || value === "half" ? (value === "d3" ? "fcc" : value) : "z3");
+    const polycubeLattice = normalizePolycubeLattice(config.polycube_lattice ?? config.custom_system?.polycube_lattice);
     const customSystem = config.custom_system
       ? { ...config.custom_system, polycube_lattice: polycubeLattice }
       : null;
@@ -533,12 +534,13 @@ export const createTilingStream = (() => {
         .join("|");
       return `${move.prototile_idx}::${vertsKey}`;
     };
-    // Polycubes use ordinary Z^3 vertex samples by default. The optional
-    // D3 frontier mode adds face-center samples, but legal polycube moves
-    // still remain translations of the original cube-vertex lattice.
+    // Polycube lattice tiers are represented in integer coordinates: z3 uses
+    // unit cube steps, fcc uses the even-sum half-grid, and half uses all
+    // half-grid translations.
     const isPolycubeMoveTranslation = (tile, translation) => {
       if (!translation.every(Number.isInteger)) return false;
-      return tile.polycube_lattice === "d3" ? translation.every(value => value % 2 === 0) : true;
+      if (tile.polycube_lattice === "fcc") return translation.reduce((sum, value) => sum + value, 0) % 2 === 0;
+      return true;
     };
     const checkMoveViability = (move) => {
       const validCheck = isMoveValid(move);
@@ -1436,10 +1438,15 @@ export const createTilingStream = (() => {
 
 export const tileSpecs = (() => {
   const SCALE = 1;
-  const POLYCUBE_D3_COORD_SCALE = 2;
+  const POLYCUBE_REFINED_COORD_SCALE = 2;
   const POLYCUBE_SOLID_ANGLE_MAX = 8;
   let activePolycubeLattice = "z3";
-  const normalizePolycubeLattice = (value) => value === "d3" ? "d3" : "z3";
+  const normalizePolycubeLattice = (value) => {
+    const key = String(value ?? "").toLowerCase();
+    if (key === "fcc" || key === "d3") return "fcc";
+    if (key === "half" || key === "half-z3" || key === "z3/2") return "half";
+    return "z3";
+  };
   const withPolycubeLattice = (lattice, builder) => {
     const previous = activePolycubeLattice;
     activePolycubeLattice = normalizePolycubeLattice(lattice);
@@ -1894,9 +1901,9 @@ export const tileSpecs = (() => {
   };
 
   const generatePolycubeData = (voxels, options = {}) => {
-    const lattice = options.polycube_lattice ?? activePolycubeLattice;
-    const useD3Frontier = lattice === "d3";
-    const polycubeCoordScale = useD3Frontier ? POLYCUBE_D3_COORD_SCALE : 1;
+    const lattice = normalizePolycubeLattice(options.polycube_lattice ?? activePolycubeLattice);
+    const useRefinedCoords = lattice !== "z3";
+    const polycubeCoordScale = useRefinedCoords ? POLYCUBE_REFINED_COORD_SCALE : 1;
     const voxelSet = new Set(voxels.map(v => v.map(Number).join(",")));
     const vox = voxels.map(v => v.map(Number));
     const uniqueVerts = new Set();
@@ -1927,18 +1934,25 @@ export const tileSpecs = (() => {
         }
       }
     }
-    const scaledVerts = vertsList.map(v => v.map(c => (c * polycubeCoordScale * SCALE)|0));
+    const scaledVerts = vertsList.map(v => v.map(c => Math.round(c * polycubeCoordScale * SCALE)));
     const occ = new Map();
     const addOcc = (pos, weight) => {
-      const key = pos.map(c => c * polycubeCoordScale * SCALE).join(",");
+      const key = pos.map(c => Math.round(c * polycubeCoordScale * SCALE)).join(",");
       occ.set(key, (occ.get(key) ?? 0) + weight);
     };
     for (const v of vox) {
       const [x, y, z] = v;
-      for (const dx of [0,1]) for (const dy of [0,1]) for (const dz of [0,1]) {
-        addOcc([x + dx, y + dy, z + dz], 1);
+      if (lattice === "half") {
+        for (const dx of [0, 0.5, 1]) for (const dy of [0, 0.5, 1]) for (const dz of [0, 0.5, 1]) {
+          const halfCount = (dx === 0.5 ? 1 : 0) + (dy === 0.5 ? 1 : 0) + (dz === 0.5 ? 1 : 0);
+          addOcc([x + dx, y + dy, z + dz], 2 ** halfCount);
+        }
+      } else {
+        for (const dx of [0,1]) for (const dy of [0,1]) for (const dz of [0,1]) {
+          addOcc([x + dx, y + dy, z + dz], 1);
+        }
       }
-      if (useD3Frontier) {
+      if (lattice === "fcc") {
         for (const fixed of [0, 1]) {
           addOcc([x + fixed, y + 0.5, z + 0.5], 4);
           addOcc([x + 0.5, y + fixed, z + 0.5], 4);
@@ -2810,6 +2824,7 @@ export const tileSpecs = (() => {
     metadata,
     options,
     figureCatalog,
+    normalizePolycubeLattice,
     displayTileName,
     solidAngleValues,
     addMirrorsIfChiral,

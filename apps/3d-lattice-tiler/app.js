@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260627-frontier-graph";
+import { tileSpecs } from "./engine.js?v=20260706-lattice-tiers";
 
 const $ = (id) => document.getElementById(id);
 
@@ -20,7 +20,7 @@ const exhaustiveCheckbox = $("exhaustiveCheckbox");
 const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
-const polycubeD3Checkbox = $("polycubeD3Checkbox");
+const polycubeLatticeSelect = $("polycubeLatticeSelect");
 const runButton = $("runButton");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
@@ -131,7 +131,12 @@ const solidAngleListHtml = (solidAngles = []) => {
   return values.length ? values.join(", ") : "No sampled solid-angle values";
 };
 const solidAngleTitle = (solidAngles = []) => solidAngleListLabel(solidAngles);
-const polycubeLatticeLabel = (lattice) => lattice === "d3" ? "D3 lattice" : lattice === "z3" ? "Z³ lattice" : "";
+const polycubeLatticeLabel = (lattice) => {
+  const normalized = tileSpecs.normalizePolycubeLattice?.(lattice) ?? lattice;
+  if (normalized === "fcc") return "FCC lattice";
+  if (normalized === "half") return "(1/2)Z³ lattice";
+  return "Z³ lattice";
+};
 const clone = (value) => (typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)));
 const figureCatalog = tileSpecs.figureCatalog ?? [];
 const figureById = new Map();
@@ -547,7 +552,7 @@ function customPolycubeDisplayName() {
 }
 
 function selectedPolycubeLattice() {
-  return polycubeD3Checkbox?.checked ? "d3" : "z3";
+  return tileSpecs.normalizePolycubeLattice?.(polycubeLatticeSelect?.value) ?? "z3";
 }
 
 function customPolycubeTile() {
@@ -1672,7 +1677,7 @@ function scheduleFullUpdate(snapshot) {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260627-frontier-graph", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260706-lattice-tiers", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -1778,7 +1783,8 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, polycubeD3Checkbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+    if (!control) return;
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });

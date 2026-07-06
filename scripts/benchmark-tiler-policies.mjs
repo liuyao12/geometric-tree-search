@@ -12,7 +12,7 @@ Options:
   --policies <name[,name]>        Move orders to compare. Default: coverage,isohedral,crystal,balanced.
   --criterion <count|layer>       Goal type. Default: count.
   --target <n>                    Target tile count or layer. Default: 40.
-  --polycube-lattice <z3|d3>      Polycube sampling lattice. Default: z3.
+  --polycube-lattice <z3|fcc|half> Polycube lattice tier. Default: z3.
   --time-limit-ms <n>             Per-run engine time cap. Default: 5000.
   --node-limit <n>                Per-run node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
@@ -57,8 +57,8 @@ function readArgs(argv) {
       i += 1;
     } else if (arg === "--polycube-lattice") {
       const lattice = next(i, arg).toLowerCase();
-      if (!["z3", "d3"].includes(lattice)) throw new Error(`${arg} must be z3 or d3`);
-      opts.polycubeLattice = lattice;
+      if (!["z3", "fcc", "d3", "half"].includes(lattice)) throw new Error(`${arg} must be z3, fcc, or half`);
+      opts.polycubeLattice = lattice === "d3" ? "fcc" : lattice;
       i += 1;
     } else if (arg === "--time-limit-ms") {
       opts.timeLimitMs = Number(next(i, arg));

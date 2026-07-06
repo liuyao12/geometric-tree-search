@@ -52,7 +52,7 @@ Options:
   --node-limit <n>                Node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
   --time-limit-ms <n>             Engine time cap; 0 means uncapped. Default: 0.
-  --polycube-lattice <z3|d3>      Polycube sampling lattice. D3 adds face-center samples. Default: z3.
+  --polycube-lattice <z3|fcc|half> Polycube lattice tier. Default: z3.
   --isohedral-check [n]           Fast single-tile isohedral-style smoke check to corona/layer n. Default: 6.
   --wall-time-ms <n>              Runner wall-clock cap; writes a best-effort summary.
   --include-mirrors               Include mirror tiles.
@@ -141,8 +141,8 @@ function readArgs(argv) {
       i += 1;
     } else if (arg === "--polycube-lattice") {
       const lattice = next(i, arg).toLowerCase();
-      if (!["z3", "d3"].includes(lattice)) throw new Error(`${arg} must be z3 or d3`);
-      opts.polycubeLattice = lattice;
+      if (!["z3", "fcc", "d3", "half"].includes(lattice)) throw new Error(`${arg} must be z3, fcc, or half`);
+      opts.polycubeLattice = lattice === "d3" ? "fcc" : lattice;
       i += 1;
     } else if (arg === "--isohedral-check") {
       const maybeValue = argv[i + 1];

@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260627-frontier-graph";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260706-lattice-tiers";
 
 const SNAPSHOT_INTERVAL_MS = 80;
 
