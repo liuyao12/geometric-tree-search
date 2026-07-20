@@ -153,6 +153,23 @@ input[type="text"]:focus {
   gap: 8px;
 }
 
+.learning-toggle {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  border: 1px solid #b9c8e5;
+  border-radius: 7px;
+  background: #f2f6fb;
+  padding: 7px 8px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.learning-toggle input { margin-top: 2px; accent-color: var(--accent); }
+.learning-toggle span { display: grid; gap: 2px; font-size: 12px; }
+.learning-toggle small { color: var(--muted); line-height: 1.25; }
+
 .segmented {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -1,4 +1,5 @@
 import { buildFrontierCandidateGraphSync, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
+import { A2_TILE_LOOPS } from "../../assets/a2-tiling-engine.js";
 
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
@@ -13,7 +14,7 @@ const trefoilTokens = [...document.querySelectorAll('.trefoil-token')];
 const trefoilTrash = document.getElementById('trefoilTrash');
 const BLUE = '#0072b2', BLUE_STROKE = '#005a8c', ORANGE = '#d55e00', ORANGE_STROKE = '#a74700';
 let movingAttachment = null;
-let activeTab = 'turtle', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null, nextAttachmentId = 1;
+let activeTab = 'tiling', selectedSymmetry = 1, draggedTrefoilRotation = 0, draggedTrefoilColor = ORANGE, draggedTrefoilReflect = false, dragPreview = null, nextAttachmentId = 1;
 let moveHintCache = new Map(), pairMoveCache = new Map(), viableMoveCache = new Map();
 const tabStates = new Map();
 let palettePointerDrag = null, pendingDragDraw = null;
@@ -26,12 +27,34 @@ const orangeStripesToggle = document.getElementById('orangeStripes');
 const buildButton = document.getElementById('build');
 const resetButton = document.getElementById('resetView');
 const coronaTargetInput = document.getElementById('coronaTarget');
+const onlineLearningToggle = document.getElementById('onlineLearning');
+const learnedFailuresEl = document.getElementById('learnedFailures');
+const learnedMarksEl = document.getElementById('learnedMarks');
+const memoHitsEl = document.getElementById('memoHits');
+const learningMessageEl = document.getElementById('learningMessage');
+const learningLogEl = document.getElementById('learningLog');
+const fillTileButtons = [...document.querySelectorAll('.fill-tile-button')];
+const customTileButton = document.getElementById('customTileButton');
+const customTileDialog = document.getElementById('customTileDialog');
+const closeCustomTileButton = document.getElementById('closeCustomTileButton');
+const customTileCanvas = document.getElementById('customTileCanvas');
+const customTileCtx = customTileCanvas?.getContext('2d');
+const customTileNameInput = document.getElementById('customTileName');
+const customVertexCountEl = document.getElementById('customVertexCount');
+const customAreaEl = document.getElementById('customArea');
+const customTileValidationEl = document.getElementById('customTileValidation');
+const undoCustomPointButton = document.getElementById('undoCustomPoint');
+const clearCustomTileButton = document.getElementById('clearCustomTile');
+const useCustomTileButton = document.getElementById('useCustomTile');
+const customPresetButtons = [...document.querySelectorAll('[data-custom-preset]')];
 
 const sqrt2 = Math.sqrt(2), sqrt6 = Math.sqrt(6), latticeScale = 24;
-const MAX = 12, markReach = 3;
-const turtleVerts = [[3,-2,-1],[2,0,-2],[0,1,-1],[0,2,-2],[-1,3,-2],[-2,2,0],[-1,0,1],[-2,0,2],[-2,-1,3],[0,-2,2],[1,-4,3],[2,-4,2],[3,-5,2],[4,-4,0]];
+const MAX = 12, EPS = 1e-7, markReach = 3;
+const turtleVerts = A2_TILE_LOOPS.turtle;
 const turtleAngles = [6,4,9,4,3,4,9,4,3,8,3,8,3,4];
 const turtleStripeDefs = [{from:0,to:10,value:1},{from:2,to:8,value:-1},{from:0,to:6,value:-1},{from:4,to:12,value:-1}];
+const hatVerts = A2_TILE_LOOPS.hat;
+const hatAngles = [3,4,9,4,3,8,3,8,3,4,6,4,9,4];
 const trefoilVerts = [[1,0,-1],[2,0,-2],[2,1,-3],[0,2,-2],[-1,1,0],[-2,2,0],[-3,2,1],[-2,0,2],[0,-1,1],[0,-2,2],[1,-3,2],[2,-2,0]];
 const trefoilAngles = [9,4,3,4,9,4,3,4,9,4,3,4];
 const trefoilStripeDefs = [{p1:trefoilVerts[0],p2:trefoilVerts[6],value:-1},{p1:trefoilVerts[4],p2:trefoilVerts[10],value:-1},{p1:trefoilVerts[8],p2:trefoilVerts[2],value:-1}];
@@ -64,7 +87,42 @@ function symmetryKind(sym) {
 function pointInPoly(pt, poly) { let inside=false; for(let i=0,j=poly.length-1;i<poly.length;j=i++) { const a=poly[i],b=poly[j]; const cross=(pt.x-a.x)*(b.y-a.y)-(pt.y-a.y)*(b.x-a.x); const dot=(pt.x-a.x)*(pt.x-b.x)+(pt.y-a.y)*(pt.y-b.y); if(Math.abs(cross)<1e-7 && dot<=1e-7) return false; if((a.y>pt.y)!==(b.y>pt.y) && pt.x<((b.x-a.x)*(pt.y-a.y))/(b.y-a.y)+a.x) inside=!inside; } return inside; }
 
 function interiors(verts) { const xs=verts.map(p=>p[0]), ys=verts.map(p=>p[1]), vkeys=new Set(verts.map(key)), poly=verts.map(projectRaw), out=[]; for(let x=Math.min(...xs);x<=Math.max(...xs);x++) for(let y=Math.min(...ys);y<=Math.max(...ys);y++){ const p=[x,y,-x-y]; if(!vkeys.has(key(p)) && pointInPoly(projectRaw(p), poly)) out.push(p); } return out; }
+function polygonArea(verts) {
+  const points = verts.map(projectRaw);
+  return points.reduce((area,point,index) => { const next=points[(index+1)%points.length]; return area+point.x*next.y-next.x*point.y; },0)/2/(latticeScale*latticeScale);
+}
+function normalizedLoop(verts) {
+  if (!verts.length) return [];
+  const origin=verts[0], shifted=verts.map(point=>sub(point,origin));
+  return polygonArea(shifted)<0 ? [shifted[0],...shifted.slice(1).reverse()] : shifted;
+}
+function customCornerAngles(verts) {
+  const points=verts.map(projectRaw), orientation=Math.sign(polygonArea(verts))||1;
+  return points.map((point,index) => {
+    const previous=points[(index-1+points.length)%points.length], next=points[(index+1)%points.length];
+    const incoming={x:point.x-previous.x,y:point.y-previous.y}, outgoing={x:next.x-point.x,y:next.y-point.y};
+    let turn=Math.atan2(incoming.x*outgoing.y-incoming.y*outgoing.x,incoming.x*outgoing.x+incoming.y*outgoing.y);
+    if (orientation<0) turn=-turn;
+    let interior=Math.PI-turn;
+    if (interior<=0) interior+=Math.PI*2;
+    return Math.round((interior*6/Math.PI)*1e9)/1e9;
+  });
+}
+function boundaryIntermediatePoints(verts) {
+  const vertexKeys=new Set(verts.map(key)), points=new Map();
+  verts.forEach((point,index) => segmentPoints(point,verts[(index+1)%verts.length]).forEach(entry => { if(!vertexKeys.has(key(entry))) points.set(key(entry),entry); }));
+  return [...points.values()];
+}
+function polygonOccupancy(verts, explicitAngles=null) {
+  const angles=explicitAngles||customCornerAngles(verts);
+  return [
+    ...verts.map((point,index)=>({point,value:angles[index],kind:'vertex'})),
+    ...boundaryIntermediatePoints(verts).map(point=>({point,value:6,kind:'edge'})),
+    ...interiors(verts).map(point=>({point,value:MAX,kind:'interior'}))
+  ];
+}
 const turtleOcc = [...turtleVerts.map((p,i)=>({point:p,value:turtleAngles[i],kind:'vertex'})), ...interiors(turtleVerts).map(point=>({point,value:MAX,kind:'interior'}))];
+const hatOcc = polygonOccupancy(hatVerts,hatAngles);
 const trefoilOcc = [...trefoilVerts.map((point,i)=>({point,value:trefoilAngles[i],kind:'vertex'})), ...interiors(trefoilVerts).map(point=>({point,value:MAX,kind:'interior'}))];
 const centralHexOcc = [...centralHexVerts.map((point,i)=>({point,value:centralHexAngles[i],kind:'vertex'})), ...interiors(centralHexVerts).map(point=>({point,value:MAX,kind:'interior'}))];
 const turtleStripes = turtleStripeDefs.map(d=>({...d, p1:turtleVerts[d.from], p2:turtleVerts[d.to], component:componentFor(turtleVerts[d.from], turtleVerts[d.to])}));
@@ -85,29 +143,252 @@ function uniqueTileOrientations(orientations) {
 const allSymmetries = symmetries();
 const turtleOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,turtleStripes,s,i,'Turtle')));
 const unmarkedTurtleOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(turtleVerts,turtleOcc,[],s,i,'Turtle')));
+const hatOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(hatVerts,hatOcc,[],s,i,'Hat')));
+let activeFillTile = 'turtle';
+let hasCustomTile = false;
+let customTileLoop = normalizedLoop([[0,0,0],[3,0,-3],[3,2,-5],[1,3,-4],[-1,2,-1]]);
+let customTileLabel = 'My lattice tile';
+let customDraftLoop = customTileLoop.map(point=>[...point]);
+let customDraftClosed = true;
+let customDraftHover = null;
+let customTileOrientations = [];
+function customTileName() { return customTileLabel; }
+function rebuildCustomTileOrientations() {
+  const loop=normalizedLoop(customTileLoop);
+  const occupancy=polygonOccupancy(loop);
+  customTileOrientations=uniqueTileOrientations(allSymmetries.map((sym,index)=>orientTile(loop,occupancy,[],sym,index,customTileName())));
+}
+rebuildCustomTileOrientations();
+function baseFillOrientations() {
+  if (activeFillTile==='hat') return hatOrientations;
+  if (activeFillTile==='custom') return customTileOrientations;
+  return unmarkedTurtleOrientations;
+}
+function fixedFillOrientations() { return activeFillTile==='turtle' ? turtleOrientations : baseFillOrientations(); }
+function fillOccupancy() { return baseFillOrientations()[0]?.occupancy||[]; }
+function fillTileDisplayName() { return activeFillTile==='custom' ? customTileName() : activeFillTile[0].toUpperCase()+activeFillTile.slice(1); }
 let currentTurtleOrientations = turtleOrientations, searchOrientations = turtleOrientations;
 const trefoilOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(trefoilVerts,trefoilOcc,trefoilStripes,s,i,'Trefoil')));
+const unmarkedTrefoilOrientations = uniqueTileOrientations(allSymmetries.map((s,i)=>orientTile(trefoilVerts,trefoilOcc,[],s,i,'Trefoil')));
 const trefoilBase = trefoilOrientations[0];
+const unmarkedTrefoilBase = unmarkedTrefoilOrientations[0];
 const centralHexBase = {idx:0, name:'Hex', sym:allSymmetries[0], isReflected:false, vertices:centralHexVerts, occupancy:centralHexOcc, marks:[], segments:[]};
+
+class SignedUnionFind {
+  constructor(names) {
+    this.parent = new Map(names.map(name => [name, name]));
+    this.sign = new Map(names.map(name => [name, 1]));
+  }
+  find(name) {
+    const parent = this.parent.get(name);
+    if (parent === name) return { root: name, sign: 1 };
+    const found = this.find(parent);
+    const sign = this.sign.get(name) * found.sign;
+    this.parent.set(name, found.root);
+    this.sign.set(name, sign);
+    return { root: found.root, sign };
+  }
+  union(left, right, relation) {
+    const a = this.find(left), b = this.find(right);
+    if (a.root === b.root) return a.sign === relation * b.sign;
+    if (a.root < b.root) {
+      this.parent.set(b.root, a.root);
+      this.sign.set(b.root, relation * a.sign * b.sign);
+    } else {
+      this.parent.set(a.root, b.root);
+      this.sign.set(a.root, relation * b.sign * a.sign);
+    }
+    return true;
+  }
+}
+
+const onlineMemory = { support:new Map(), assignments:new Map(), failures:[], memoHits:0, skipped:0, events:[] };
+function onlineMode() { return !!onlineLearningToggle?.checked; }
+function resetOnlineMemory() {
+  onlineMemory.support = new Map();
+  onlineMemory.assignments = new Map();
+  onlineMemory.failures = [];
+  onlineMemory.memoHits = 0;
+  onlineMemory.skipped = 0;
+  onlineMemory.events = [];
+  updateLearningReadout('Empty marking: geometric search has not memoized a failure yet.');
+}
+function updateLearningReadout(message) {
+  if (learnedFailuresEl) learnedFailuresEl.textContent = String(onlineMemory.failures.length);
+  if (learnedMarksEl) learnedMarksEl.textContent = String(onlineMemory.support.size);
+  if (memoHitsEl) memoHitsEl.textContent = String(onlineMemory.memoHits);
+  if (learningMessageEl && message) learningMessageEl.textContent = message;
+  if (learningLogEl) learningLogEl.innerHTML = onlineMemory.events.map(event => {
+    if (event.type === 'memoized') return `<li>Failure ${event.failure}: added ${event.added.length} witness ${event.added.length===1?'entry':'entries'}; replayed ${event.accepted} placements.</li>`;
+    if (event.type === 'memo-hit') return `<li>${event.count} geometric ${event.count===1?'trial':'trials'} rejected by the current marking.</li>`;
+    return `<li>Accepted Turtle ${event.accepted}; prefix replay remains valid.</li>`;
+  }).join('');
+}
+function inverseTransformLinear(point, sym) {
+  const out = [0,0,0];
+  sym.permutation.forEach((sourceIndex, outputIndex) => { out[sourceIndex] = sym.sign * point[outputIndex]; });
+  return out;
+}
+function localMarkName(point, component) { return `${key(point)}|${component}`; }
+function localMark(point, component) { return { name:localMarkName(point, component), point:[...point], component }; }
+function fillPlacementOnly(list) { return list.filter(isFillPlacement); }
+function orientedOnlineEntries(placement, support=onlineMemory.support, assignments=onlineMemory.assignments) {
+  const sym = placement.orientation.sym;
+  return [...support.values()].map(mark => {
+    const globalPoint = add(transformLinear(mark.point, sym), placement.translation || [0,0,0]);
+    const globalComponent = mapComponent(mark.component, sym);
+    const baseValue = assignments.get(mark.name);
+    return {
+      name:mark.name,
+      contactKey:`${key(globalPoint)}|${globalComponent}`,
+      value:baseValue == null ? null : baseValue * sym.planeSign
+    };
+  });
+}
+function assignmentsForAccepted(support, acceptedPlacements) {
+  const names = [...support.keys()];
+  const union = new SignedUnionFind(names);
+  const contacts = new Map();
+  for (const placement of fillPlacementOnly(acceptedPlacements)) {
+    const sym = placement.orientation.sym;
+    for (const mark of support.values()) {
+      const globalPoint = add(transformLinear(mark.point, sym), placement.translation || [0,0,0]);
+      const contactKey = `${key(globalPoint)}|${mapComponent(mark.component, sym)}`;
+      const entry = { name:mark.name, coefficient:sym.planeSign };
+      const previous = contacts.get(contactKey);
+      if (previous && !union.union(entry.name, previous.name, entry.coefficient * previous.coefficient)) return null;
+      if (!previous) contacts.set(contactKey, entry);
+    }
+  }
+  const rootMagnitude = new Map(), assignments = new Map();
+  let nextMagnitude = 1;
+  for (const name of names.sort()) {
+    const found = union.find(name);
+    if (!rootMagnitude.has(found.root)) rootMagnitude.set(found.root, nextMagnitude++);
+    assignments.set(name, found.sign * rootMagnitude.get(found.root));
+  }
+  return assignments;
+}
+function onlineContactMap(placements, support, assignments) {
+  const map = new Map();
+  for (const placement of fillPlacementOnly(placements)) {
+    for (const entry of orientedOnlineEntries(placement, support, assignments)) {
+      if (!map.has(entry.contactKey)) map.set(entry.contactKey, entry.value);
+    }
+  }
+  return map;
+}
+function failureHasMismatch(record, support, assignments) {
+  const previous = onlineContactMap(record.parents, support, assignments);
+  const orientation = baseFillOrientations()[record.orientationIdx];
+  const candidate = { orientation, translation:record.translation };
+  return orientedOnlineEntries(candidate, support, assignments).some(entry => previous.has(entry.contactKey) && previous.get(entry.contactKey) !== entry.value);
+}
+function allFailuresEncoded(failures, support, assignments) {
+  return failures.every(record => failureHasMismatch(record, support, assignments));
+}
+function learnedTurtleOrientations(support=onlineMemory.support, assignments=onlineMemory.assignments) {
+  return baseFillOrientations().map(orientation => ({
+    ...orientation,
+    marks:[...support.values()].map(mark => ({
+      point:transformLinear(mark.point, orientation.sym),
+      component:mapComponent(mark.component, orientation.sym),
+      value:(assignments.get(mark.name) || 0) * orientation.sym.planeSign
+    })),
+    segments:[]
+  }));
+}
+function replayWithOnlineMarking(list, orientations=learnedTurtleOrientations()) {
+  const sums = new Map(), markSums = new Map(), replayed = [];
+  try {
+    for (const placement of list) {
+      const next = isFillPlacement(placement)
+        ? place(orientations[placement.orientation.idx], placement.translation, { ...placement, orientation:undefined, vertices:undefined, occupancy:undefined, marks:undefined, segments:undefined })
+        : placement;
+      addPlacement(next, sums, markSums, replayed.length);
+      if ([...markSums.values()].some(entry => entry.conflict)) return null;
+      replayed.push(next);
+    }
+  } catch (_) {
+    return null;
+  }
+  return replayed;
+}
+function witnessExtensions(record) {
+  const candidateOrientation = baseFillOrientations()[record.orientationIdx];
+  const witnesses = new Map();
+  const candidateTranslation = record.translation;
+  for (const previous of fillPlacementOnly(record.parents)) {
+    const previousSym = previous.orientation.sym;
+    for (const point of fillOccupancy().map(entry => entry.point)) {
+      const globalPoint = add(transformLinear(point, candidateOrientation.sym), candidateTranslation);
+      const previousLocal = inverseTransformLinear(sub(globalPoint, previous.translation || [0,0,0]), previousSym);
+      for (let component=0; component<3; component+=1) {
+        const globalComponent = mapComponent(component, candidateOrientation.sym);
+        const previousComponent = [0,1,2].find(value => mapComponent(value, previousSym) === globalComponent);
+        const additions = [localMark(point, component), localMark(previousLocal, previousComponent)]
+          .filter(mark => !onlineMemory.support.has(mark.name));
+        if (!additions.length) continue;
+        const signature = additions.map(mark => mark.name).sort().join('::');
+        witnesses.set(signature, additions);
+      }
+    }
+  }
+  return [...witnesses.values()].sort((a,b) => a.length-b.length || Math.max(...a.map(mark=>norm(mark.point)))-Math.max(...b.map(mark=>norm(mark.point))));
+}
+function learnOnlineFailure(candidate, acceptedPlacements) {
+  const record = {
+    orientationIdx:candidate.orientation.idx,
+    translation:[...candidate.translation],
+    placementKey:candidate.pk,
+    parents:acceptedPlacements.map(placement => ({ ...placement }))
+  };
+  const failures = [...onlineMemory.failures, record];
+  for (const additions of witnessExtensions(record)) {
+    const support = new Map(onlineMemory.support);
+    additions.forEach(mark => support.set(mark.name, mark));
+    const assignments = assignmentsForAccepted(support, acceptedPlacements);
+    if (!assignments || !allFailuresEncoded(failures, support, assignments)) continue;
+    const replayed = replayWithOnlineMarking(acceptedPlacements, learnedTurtleOrientations(support, assignments));
+    if (!replayed) continue;
+    onlineMemory.support = support;
+    onlineMemory.assignments = assignments;
+    onlineMemory.failures = failures;
+    onlineMemory.events.push({ type:'memoized', failure:failures.length, placementKey:candidate.pk, added:additions.map(mark=>mark.name), accepted:acceptedPlacements.length });
+    updateLearningReadout(`Failure ${failures.length} encoded by ${additions.length} new local witness${additions.length===1?'':'es'}; ${acceptedPlacements.length} accepted placements replayed.`);
+    return true;
+  }
+  onlineMemory.skipped += 1;
+  return false;
+}
 function place(orientation, translation, extra={}) { return {...extra, orientation, isReflected: orientation.isReflected, translation, vertices:orientation.vertices.map(p=>add(p,translation)), occupancy:orientation.occupancy.map(e=>({...e,point:add(e.point,translation)})), marks:orientation.marks.map(e=>({...e,point:add(e.point,translation)})), segments:orientation.segments.map(s=>({...s,p1:add(s.p1,translation),p2:add(s.p2,translation)}))}; }
 function transformPlacement(placement, op) { return {...placement, isReflected: placement.isReflected !== (op.sym.planeSign < 0), vertices: placement.vertices.map(p=>transformAffine(p, op)), occupancy: placement.occupancy.map(e=>({...e, point: transformAffine(e.point, op)})), marks: placement.marks.map(e=>({...e, point: transformAffine(e.point, op), component: mapComponent(e.component, op.sym), value: e.value * op.sym.planeSign})), segments: placement.segments.map(s=>({...s, p1: transformAffine(s.p1, op), p2: transformAffine(s.p2, op), component: mapComponent(s.component, op.sym), value: s.value * op.sym.planeSign}))}; }
 function isTrefoilPlacement(placement) { return placement?.orientation?.name === 'Trefoil' || placement?.kind === 'attached-trefoil'; }
 function isTurtlePlacement(placement) { return placement?.orientation?.name === 'Turtle' || placement?.kind === 'turtle' || placement?.kind === 'seed-turtle'; }
+function isFillPlacement(placement) { return placement?.orientation?.name === baseFillOrientations()[0]?.name || placement?.kind === 'fill-tile' || (activeFillTile==='turtle'&&isTurtlePlacement(placement)); }
 let view={scale:.72, x:canvas.width/2, y:canvas.height/2}, placements=[], coronas=[], legalMoveIndices=new Set(), activeAnimation=null, hoveredIndex=-1, moveHistory=[], historyStateKeys=[], resetting=false, buildVersion=0, revealVersion=0;
 function mkey(e){return `${key(e.point)}|${e.component}`;}
-function addPlacement(p,sums,markSums,addedDepth=0){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0,addedDepth}; old.value+=e.value; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
-function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX).sort((a,b)=>(a.addedDepth??0)-(b.addedDepth??0)||norm(a.point)-norm(b.point)||a.value-b.value);}
-function validCandidate(o,t,sums,markSums,used){ const pk=`${o.name}|${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(cur===0)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>0||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
-function frontierPointHasCandidate(point, sums, markSums, used) { const need = MAX - point.value; return searchOrientations.some(o => o.occupancy.some(a => a.value <= need && validCandidate(o, sub(point.point, a.point), sums, markSums, used))); }
+function addPlacement(p,sums,markSums,addedDepth=0){ for(const e of p.occupancy){const k=key(e.point), old=sums.get(k)||{point:e.point,value:0,addedDepth}; old.value=Math.round((old.value+e.value)*1e9)/1e9; sums.set(k,old);} for(const e of p.marks){const k=mkey(e), old=markSums.get(k); if(old && old.value!==e.value) old.conflict=true; markSums.set(k,{value:e.value,count:(old?.count||0)+1, conflict:!!old?.conflict});}}
+function frontier(sums){return [...sums.values()].filter(e=>e.value<MAX-EPS).sort((a,b)=>(a.addedDepth??0)-(b.addedDepth??0)||norm(a.point)-norm(b.point)||a.value-b.value);}
+function polygonInteriorOverlap(firstVerts,secondVerts) {
+  const first=firstVerts.map(projectRaw),second=secondVerts.map(projectRaw);
+  const strictCross=(a,b,c,d)=>{const abC=orientation2d(a,b,c),abD=orientation2d(a,b,d),cdA=orientation2d(c,d,a),cdB=orientation2d(c,d,b);return ((abC>EPS&&abD<-EPS)||(abC<-EPS&&abD>EPS))&&((cdA>EPS&&cdB<-EPS)||(cdA<-EPS&&cdB>EPS));};
+  for(let i=0;i<first.length;i+=1)for(let j=0;j<second.length;j+=1)if(strictCross(first[i],first[(i+1)%first.length],second[j],second[(j+1)%second.length]))return true;
+  if(first.some(point=>pointInPoly(point,second)))return true;
+  if(second.some(point=>pointInPoly(point,first)))return true;
+  return false;
+}
+function validCandidate(o,t,sums,markSums,used,placedTiles=[]){ const pk=`${o.name}|${o.idx}|${key(t)}`; if(used.has(pk)) return null; let newPts=0, overflow=0, line=0; const vertices=o.vertices.map(point=>add(point,t)); if(placedTiles.some(placement=>polygonInteriorOverlap(vertices,placement.vertices)))return null; const occ=o.occupancy.map(e=>({...e,point:add(e.point,t)})); for(const e of occ){ const cur=sums.get(key(e.point))?.value||0; if(Math.abs(cur)<EPS)newPts++; overflow=Math.max(overflow,cur+e.value-MAX); } if(overflow>EPS||newPts===0) return null; const marks=o.marks.map(e=>({...e,point:add(e.point,t)})); for(const e of marks){ const old=markSums.get(mkey(e)); if(old){ if(old.value!==e.value) return null; if(e.value!==0) line++; }} return {orientation:o, translation:t, pk, score:line*100-newPts}; }
+function frontierPointHasCandidate(point, sums, markSums, used,placedTiles=[]) { const need = MAX - point.value; return searchOrientations.some(o => o.occupancy.some(a => a.value <= need+EPS && validCandidate(o, sub(point.point, a.point), sums, markSums, used,placedTiles))); }
 function randomItem(items) { return items[Math.floor(Math.random() * items.length)]; }
 function shuffled(items) { return items.map(value => ({ value, order: Math.random() })).sort((a, b) => a.order - b.order).map(entry => entry.value); }
 function angleDiff(a, b) { return Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b))); }
-function candidateMovesForFrontier(f, sums, markSums, used) {
+function candidateMovesForFrontier(f, sums, markSums, used,placedTiles=[]) {
   const need = MAX - f.value;
   const candidates = [];
   for (const o of searchOrientations) {
-    for (const a of o.occupancy.filter(e => e.value <= need)) {
-      const cand = validCandidate(o, sub(f.point, a.point), sums, markSums, used);
+    for (const a of o.occupancy.filter(e => e.value <= need+EPS)) {
+      const cand = validCandidate(o, sub(f.point, a.point), sums, markSums, used,placedTiles);
       if (cand) candidates.push({ ...cand, frontier: f });
     }
   }
@@ -115,26 +396,26 @@ function candidateMovesForFrontier(f, sums, markSums, used) {
 }
 function placementCoronasFor(list){ const cs=list.map((_,i)=>i===0?0:Infinity), byPoint=new Map(); list.forEach((p,i)=>p.occupancy.forEach(e=>{const k=key(e.point); (byPoint.get(k)||byPoint.set(k,[]).get(k)).push(i);})); for(let q=[0],c=0;c<q.length;c++){ for(const e of list[q[c]].occupancy){ for(const j of byPoint.get(key(e.point))||[]) if(cs[j]>cs[q[c]]+1){cs[j]=cs[q[c]]+1; q.push(j);} } } return cs; }
 function maxCoronaFor(list){ const finite=placementCoronasFor(list).filter(Number.isFinite); return finite.length ? Math.max(...finite) : 0; }
-function removePlacement(p,sums,markSums){ for(const e of p.occupancy){ const k=key(e.point), old=sums.get(k); if(!old) continue; old.value-=e.value; if(old.value<=0)sums.delete(k); else sums.set(k,old); } for(const e of p.marks){ const k=mkey(e), old=markSums.get(k); if(!old) continue; if(old.count<=1) markSums.delete(k); else markSums.set(k,{...old,count:old.count-1,conflict:false}); } }
-function candidateKeepsBoundaryAlive(candidate, sums, markSums, used) {
+function removePlacement(p,sums,markSums){ for(const e of p.occupancy){ const k=key(e.point), old=sums.get(k); if(!old) continue; old.value=Math.round((old.value-e.value)*1e9)/1e9; if(old.value<=EPS)sums.delete(k); else sums.set(k,old); } for(const e of p.marks){ const k=mkey(e), old=markSums.get(k); if(!old) continue; if(old.count<=1) markSums.delete(k); else markSums.set(k,{...old,count:old.count-1,conflict:false}); } }
+function candidateKeepsBoundaryAlive(candidate, sums, markSums, used,placedTiles=[]) {
   const trial = place(candidate.orientation, candidate.translation, generatedPlacementExtra(candidate.orientation, { ...candidate, forced: false, branchCount: 1 }));
   addPlacement(trial, sums, markSums);
   used.add(candidate.pk);
   const affected = new Map();
-  trial.occupancy.forEach(entry => { const current = sums.get(key(entry.point)); if (current && current.value < MAX) affected.set(key(entry.point), current); });
-  const dead = [...affected.values()].some(point => !candidateMovesForFrontier(point, sums, markSums, used).length);
+  trial.occupancy.forEach(entry => { const current = sums.get(key(entry.point)); if (current && current.value < MAX-EPS) affected.set(key(entry.point), current); });
+  const dead = [...affected.values()].some(point => !candidateMovesForFrontier(point, sums, markSums, used,[...placedTiles,trial]).length);
   used.delete(candidate.pk);
   removePlacement(trial, sums, markSums);
   return !dead;
 }
-function patchBoundaryGraph(sums, markSums, used) {
+function patchBoundaryGraph(sums, markSums, used,placedTiles=[]) {
   const frontierItems = frontier(sums).slice(0, 12).map(frontierPoint => ({
     frontier: frontierPoint,
     pointKey: key(frontierPoint.point)
   }));
   const graph = buildFrontierCandidateGraphSync(
     frontierItems,
-    item => candidateMovesForFrontier(item.frontier, sums, markSums, used),
+    item => candidateMovesForFrontier(item.frontier, sums, markSums, used,placedTiles),
     {
       frontierKey: item => item.pointKey,
       frontierNode: item => ({
@@ -162,19 +443,19 @@ function patchBoundaryGraph(sums, markSums, used) {
       || b.candidates[0].score - a.candidates[0].score
   );
 }
-function analyzePatchBoundary(sums, markSums, used) {
-  const analysis = patchBoundaryGraph(sums, markSums, used);
+function analyzePatchBoundary(sums, markSums, used, deterministic=false,placedTiles=[]) {
+  const analysis = patchBoundaryGraph(sums, markSums, used,placedTiles);
   if (analysis.deadEnd) return { deadEnd: analysis.deadEnd, choice: null, forced: false, graph: analysis };
   if (analysis.forced.length) return { deadEnd: null, choice: analysis.forced[0], forced: true, graph: analysis };
   const ranked = analysis.branches;
   if (!ranked.length) return { deadEnd: null, choice: null, forced: false };
   const first = ranked[0];
   const tied = ranked.filter(option => (option.frontier.addedDepth ?? 0) === (first.frontier.addedDepth ?? 0) && option.candidates.length === first.candidates.length && norm(option.frontier.point) === norm(first.frontier.point) && option.frontier.value === first.frontier.value && option.candidates[0].score === first.candidates[0].score);
-  return { deadEnd: null, choice: randomItem(tied), forced: false, graph: analysis };
+  return { deadEnd: null, choice:deterministic ? tied[0] : randomItem(tied), forced: false, graph: analysis };
 }
 function generatedPlacementExtra(orientation, candidate) {
   if (orientation.name === 'Trefoil') return { kind: 'attached-trefoil', color: orientation.isReflected ? ORANGE : BLUE, placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
-  return { kind: 'turtle', placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
+  return { kind: activeFillTile==='turtle'?'turtle':'fill-tile', placementKey: candidate.pk, forced: candidate.forced, branchCount: candidate.branchCount };
 }
 function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFold=1, relaxBoundary=false, tileOrientations=currentTurtleOrientations, forcedOnly=false) {
   const previousSearchOrientations = searchOrientations;
@@ -200,7 +481,7 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
       return true;
     });
   };
-  const groupFits = group => placementsFitWithSums(group, sums, markSums);
+  const groupFits = group => placementsFitWithSums(group, sums, markSums,nextPlacements);
   const applyCandidate = (candidate, option, forced) => {
     const group = candidateOrbit(candidate, option, forced);
     if (!group.length || !groupFits(group)) return null;
@@ -224,13 +505,13 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
     rememberBest();
     if (nextPlacements.length >= guardLimit) return bestCorona >= targetCorona;
     if (nodes++ >= nodeBudget) return false;
-    const analysis = analyzePatchBoundary(sums, markSums, used);
+    const analysis = analyzePatchBoundary(sums, markSums, used,false,nextPlacements);
     if (analysis.deadEnd || !analysis.choice) return false;
     if (forcedOnly && !analysis.forced) return true;
     if (!analysis.forced && bestCorona >= targetCorona) return true;
     const candidates = analysis.forced ? analysis.choice.candidates : shuffled(analysis.choice.candidates);
     for (const candidate of candidates) {
-      if (!relaxBoundary && !candidateKeepsBoundaryAlive(candidate, sums, markSums, used)) continue;
+      if (!relaxBoundary && !candidateKeepsBoundaryAlive(candidate, sums, markSums, used,nextPlacements)) continue;
       const group = applyCandidate(candidate, analysis.choice, analysis.forced);
       if (!group) continue;
       if (search()) return true;
@@ -246,13 +527,89 @@ function generatePatch(seedPlacement, guardLimit=170, targetCorona=6, symmetryFo
     searchOrientations = previousSearchOrientations;
   }
 }
-function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 6)); }
+function geometricCandidateKeepsBoundaryAlive(candidate, sums, used,placedTiles=[]) {
+  const previousOrientations = searchOrientations;
+  const baseOrientations=baseFillOrientations();
+  searchOrientations = baseOrientations;
+  const geometric = { ...candidate, orientation:baseOrientations[candidate.orientation.idx] };
+  try { return candidateKeepsBoundaryAlive(geometric, sums, new Map(), used,placedTiles); }
+  finally { searchOrientations = previousOrientations; }
+}
+function countMemoHitsAt(frontierPoint, sums, markSums, used, markedCandidates, seenHits,placedTiles=[]) {
+  const previousOrientations = searchOrientations;
+  searchOrientations = baseFillOrientations();
+  let geometricCandidates;
+  try { geometricCandidates = candidateMovesForFrontier(frontierPoint, sums, new Map(), used,placedTiles); }
+  finally { searchOrientations = previousOrientations; }
+  const markedKeys = new Set(markedCandidates.map(candidate => candidate.pk));
+  let addedHits = 0;
+  geometricCandidates.forEach(candidate => {
+    if (markedKeys.has(candidate.pk)) return;
+    const hitKey = `${placements.length}|${candidate.pk}`;
+    if (seenHits.has(hitKey)) return;
+    seenHits.add(hitKey);
+    onlineMemory.memoHits += 1;
+    addedHits += 1;
+  });
+  if (addedHits) onlineMemory.events.push({ type:'memo-hit', count:addedHits });
+}
+function generateOnlinePatch(seedPlacement, guardLimit=170, targetCorona=6) {
+  resetOnlineMemory();
+  const previousOrientations = searchOrientations;
+  let accepted = [seedPlacement], best = accepted.slice(), bestCorona = 0;
+  const locallyFailed = new Set(), seenHits = new Set();
+  let steps = 0;
+  try {
+    while (accepted.length < guardLimit && steps++ < Math.max(900, targetCorona * targetCorona * 24)) {
+      const learnedOrientations = learnedTurtleOrientations();
+      searchOrientations = learnedOrientations;
+      const replayed = replayWithOnlineMarking(accepted, learnedOrientations);
+      if (!replayed) break;
+      accepted = replayed;
+      const sums = new Map(), markSums = new Map(), used = new Set();
+      accepted.forEach((placement,index) => { addPlacement(placement,sums,markSums,index); if (placement.placementKey) used.add(placement.placementKey); });
+      const corona = maxCoronaFor(accepted);
+      if (corona > bestCorona || (corona === bestCorona && accepted.length > best.length)) { best = accepted.slice(); bestCorona = corona; }
+      if (bestCorona >= targetCorona) break;
+      const analysis = analyzePatchBoundary(sums,markSums,used,true,accepted);
+      if (analysis.deadEnd || !analysis.choice) break;
+      countMemoHitsAt(analysis.choice.frontier,sums,markSums,used,analysis.choice.candidates,seenHits,accepted);
+      const candidates = analysis.choice.candidates.filter(candidate => !locallyFailed.has(`${accepted.length}|${candidate.pk}`));
+      let advanced = false, learned = false;
+      for (const candidate of candidates) {
+        if (!geometricCandidateKeepsBoundaryAlive(candidate,sums,used,accepted)) {
+          if (learnOnlineFailure(candidate,accepted)) { learned = true; break; }
+          locallyFailed.add(`${accepted.length}|${candidate.pk}`);
+          continue;
+        }
+        const placement = place(candidate.orientation,candidate.translation,generatedPlacementExtra(candidate.orientation,{...candidate,forced:analysis.forced,branchCount:analysis.choice.candidates.length}));
+        accepted.push(placement);
+        onlineMemory.events.push({ type:'accept', accepted:accepted.length });
+        advanced = true;
+        break;
+      }
+      if (learned) continue;
+      if (!advanced) break;
+    }
+    onlineMemory.assignments = assignmentsForAccepted(onlineMemory.support,best) || onlineMemory.assignments;
+    const finalOrientations = learnedTurtleOrientations();
+    const finalPatch = replayWithOnlineMarking(best,finalOrientations) || best;
+    currentTurtleOrientations = finalOrientations;
+    updateLearningReadout(onlineMemory.failures.length
+      ? `${onlineMemory.failures.length} failed branch${onlineMemory.failures.length===1?'':'es'} encoded; the ${finalPatch.length}-placement patch passed final replay.`
+      : `No failed branch needed a marking before this ${finalPatch.length}-placement patch was reached.`);
+    return finalPatch;
+  } finally {
+    searchOrientations = previousOrientations;
+  }
+}
+function readTargetCorona() { return Math.max(1, Math.min(12, Number(coronaTargetInput?.value) || 3)); }
 function patchIntegrity() {
   const sums = new Map(), markSums = new Map(), used = new Set();
   placements.forEach(placement => { addPlacement(placement, sums, markSums); if (placement.placementKey) used.add(placement.placementKey); });
-  const overfilled = [...sums.values()].filter(entry => entry.value > MAX).length;
+  const overfilled = [...sums.values()].filter(entry => entry.value > MAX+EPS).length;
   const markConflicts = [...markSums.values()].filter(entry => entry.conflict).length;
-  const deadFrontier = frontier(sums).filter(point => !frontierPointHasCandidate(point, sums, markSums, used)).length;
+  const deadFrontier = frontier(sums).filter(point => !frontierPointHasCandidate(point, sums, markSums, used,placements)).length;
   return { overfilled, markConflicts, deadFrontier };
 }
 
@@ -272,11 +629,12 @@ function symmetryOrbitForFold(fold) {
   if (fold <= 1) return [allSymmetries[0]];
   return Array.from({ length: fold }, (_, index) => rotationSymmetryForDegrees(index * 360 / fold));
 }
-function placementsFitWithSums(group, sums, markSums) {
+function placementsFitWithSums(group, sums, markSums,existingPlacements=[]) {
   const trialSums = new Map([...sums].map(([key, entry]) => [key, { ...entry }])), trialMarks = new Map([...markSums].map(([key, entry]) => [key, { ...entry }]));
   for (const placement of group) {
+    if([...existingPlacements,...group.slice(0,group.indexOf(placement))].some(existing=>polygonInteriorOverlap(placement.vertices,existing.vertices)))return false;
     addPlacement(placement, trialSums, trialMarks);
-    if ([...trialSums.values()].some(entry => entry.value > MAX)) return false;
+    if ([...trialSums.values()].some(entry => entry.value > MAX+EPS)) return false;
     if ([...trialMarks.values()].some(entry => entry.conflict)) return false;
   }
   return true;
@@ -291,7 +649,7 @@ function symmetrizePlacementsForHex(list) {
       const stateKey = placementStateKey(transformed);
       if (!seen.has(stateKey)) group.push({ placement: transformed, stateKey });
     }
-    if (!placementsFitWithSums(group.map(entry => entry.placement), sums, markSums)) continue;
+    if (!placementsFitWithSums(group.map(entry => entry.placement), sums, markSums,out)) continue;
     for (const entry of group) {
       seen.add(entry.stateKey);
       out.push(entry.placement);
@@ -309,7 +667,8 @@ function finishPatchReveal(finalPlacements, version) {
   revealVersion += 1;
   placements = finalPlacements;
   coronas = placementCoronasFor(placements);
-  updateMoveHints();
+  if (onlineMode()) { clearMoveHintCache(); legalMoveIndices = new Set(); }
+  else updateMoveHints();
   setStatus('ready');
   draw();
 }
@@ -339,8 +698,12 @@ function buildPatch(){
   const targetCorona = readTargetCorona();
   const guardLimit = Math.max(500, Math.ceil(targetCorona * targetCorona * 30));
   const version = ++buildVersion;
-  currentTurtleOrientations = activeTab === 'crossing' ? unmarkedTurtleOrientations : turtleOrientations;
-  const seed = activeTab === 'crossing' ? place(centralHexBase,[0,0,0],{kind:'hex-hole'}) : (activeTab === 'tiling' ? place(trefoilBase,[0,0,0],{kind:'seed'}) : place(turtleOrientations[0],[0,0,0],{kind:'seed'}));
+  currentTurtleOrientations = onlineMode() ? baseFillOrientations() : fixedFillOrientations();
+  const seed = activeTab === 'crossing'
+    ? place(centralHexBase,[0,0,0],{kind:'hex-hole'})
+    : (activeTab === 'tiling'
+      ? place(onlineMode() ? unmarkedTrefoilBase : trefoilBase,[0,0,0],{kind:'seed'})
+      : place(currentTurtleOrientations[0],[0,0,0],{kind:activeFillTile==='turtle'?'seed':'fill-tile'}));
   activeAnimation = null;
   resetting = false;
   moveHistory = [];
@@ -351,12 +714,22 @@ function buildPatch(){
   clearMoveHintCache();
   setStatus('computing...');
   draw();
+  if (onlineMode()) {
+    window.setTimeout(() => {
+      if (version !== buildVersion) return;
+      const finalPlacements = generateOnlinePatch(seed,guardLimit,targetCorona);
+      finishPatchReveal(finalPlacements,version);
+    },0);
+    return;
+  }
+  resetOnlineMemory();
+  updateLearningReadout('Fixed-stripe comparison mode: no online failure memory is being learned.');
   const buildAndReveal = (corona, limit) => {
     if (version !== buildVersion) return;
     setStatus('computing...');
     const generatedPlacements = generatePatch(seed, limit, corona, selectedSymmetry, activeTab === 'crossing');
     const isFinal = corona >= targetCorona;
-    const finalPlacements = isFinal && activeTab !== 'crossing' ? generateTrefoilPass(generatedPlacements, guardLimit, selectedSymmetry) : generatedPlacements;
+    const finalPlacements = isFinal && activeTab !== 'crossing' && activeFillTile==='turtle' ? generateTrefoilPass(generatedPlacements, guardLimit, selectedSymmetry) : generatedPlacements;
     if (isFinal) finishPatchReveal(finalPlacements, version);
     else revealPatch(finalPlacements, version);
   };
@@ -384,7 +757,13 @@ function screen(p){ const q=project(p); return {x:view.x+q.x*view.scale,y:view.y
 function drawPolyScreen(points, fill, stroke, width=1.5){ ctx.beginPath(); points.forEach((s,i)=>{ i?ctx.lineTo(s.x,s.y):ctx.moveTo(s.x,s.y); }); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); ctx.strokeStyle=stroke; ctx.lineWidth=width; ctx.stroke(); }
 function drawSegmentOnContext(context, a, b, value) { context.strokeStyle=value>0?ORANGE:BLUE; context.setLineDash([]); context.lineWidth=2.2; context.beginPath(); context.moveTo(a.x,a.y); context.lineTo(b.x,b.y); context.stroke(); }
 function drawSegmentScreen(a, b, value) { drawSegmentOnContext(ctx, a, b, value); }
-function styleForPlacement(p) { if (p.color) return { fill: `${p.color}7a`, stroke: trefoilStrokeFor(p.color) }; const reflected = p.isReflected; return { fill: reflected ? 'rgba(213,94,0,.48)' : 'rgba(0,114,178,.42)', stroke: reflected ? ORANGE_STROKE : BLUE_STROKE }; }
+function styleForPlacement(p) {
+  if (p.color) return { fill:`${p.color}7a`,stroke:trefoilStrokeFor(p.color) };
+  const reflected=p.isReflected;
+  if(p.orientation?.name==='Hat') return {fill:reflected?'rgba(130,84,156,.46)':'rgba(44,137,105,.43)',stroke:reflected?'#70428a':'#176f5f'};
+  if(p.kind==='fill-tile'&&activeFillTile==='custom') return {fill:reflected?'rgba(198,112,44,.44)':'rgba(55,120,151,.40)',stroke:reflected?'#a45119':'#245f7c'};
+  return {fill:reflected?'rgba(213,94,0,.48)':'rgba(0,114,178,.42)',stroke:reflected?ORANGE_STROKE:BLUE_STROKE};
+}
 function eased(value) { return value < 0.5 ? 2 * value * value : 1 - Math.pow(-2 * value + 2, 2) / 2; }
 function lerp(a, b, t) { return a + (b - a) * t; }
 function animatePoint(from, to, progress, animation) {
@@ -436,6 +815,18 @@ function drawPlacement(p, index, points = p.vertices.map(screen), segments = p.s
   const style = styleOverride || styleForPlacement(p, index);
   drawPolyScreen(points, style.fill, style.stroke, index === 0 || legalMoveIndices.has(index) ? 4.2 : (index&&coronas[index]===1?2.0:1.5));
   if (activeTab !== 'crossing') segments.filter(segment => segment.value > 0 ? stripeEnabled(orangeStripesToggle) : stripeEnabled(blueStripesToggle)).forEach(segment => drawSegmentScreen(segment.a, segment.b, segment.value));
+  if (onlineMode() && isFillPlacement(p)) {
+    p.marks.forEach(mark => {
+      const point = screen(mark.point);
+      ctx.beginPath();
+      ctx.arc(point.x,point.y,Math.max(2.4,3.6*view.scale),0,Math.PI*2);
+      ctx.fillStyle = mark.value < 0 ? BLUE : ORANGE;
+      ctx.fill();
+      ctx.strokeStyle = '#fffdf8';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+  }
 }
 function drawAnimatedPlacement(index, progress) {
   const from = activeAnimation.from.get(index), to = activeAnimation.to.get(index);
@@ -593,7 +984,7 @@ function validatorWithoutPair(indexA, indexB) {
     addPlacement(move.next[indexA], pairSums, pairMarks);
     addPlacement(move.next[indexB], pairSums, pairMarks);
     for (const [pointKey, entry] of pairSums) {
-      if ((baseSums.get(pointKey)?.value || 0) + entry.value > MAX) return false;
+      if ((baseSums.get(pointKey)?.value || 0) + entry.value > MAX+EPS) return false;
     }
     for (const [markKey, entry] of pairMarks) {
       if (entry.conflict) return false;
@@ -887,6 +1278,7 @@ function restoreTabState(tab) {
 }
 
 function allowedSymmetriesForTab(tab) {
+  if (onlineMode()) return [1];
   if (tab === 'turtle') return [1];
   if (tab === 'tiling') return [1, 3];
   if (tab === 'crossing') return [1, 2, 3, 6];
@@ -921,7 +1313,7 @@ function showTab(nextTab) {
   crossingTab.setAttribute('aria-pressed', showCrossing ? 'true' : 'false');
   buildButton.textContent = 'Initialize tiling';
   trefoilTokens.forEach(drawTrefoilToken);
-  if (restoreTabState(activeTab)) draw();
+  if (!onlineMode() && restoreTabState(activeTab)) draw();
   else buildPatch();
 }
 
@@ -1109,6 +1501,125 @@ function cancelAttachmentDrag(event) {
   return true;
 }
 
+function updateFillTilePicker() {
+  fillTileButtons.forEach(button => button.setAttribute('aria-pressed',button.dataset.fillTile===activeFillTile?'true':'false'));
+  if (customTileButton) customTileButton.textContent=hasCustomTile ? `Edit ${customTileName()}` : 'Draw custom tile';
+}
+function selectFillTile(kind,{run=true}={}) {
+  if (!['turtle','hat','custom'].includes(kind)) return;
+  if(kind==='custom'&&!hasCustomTile){openCustomTileEditor();return;}
+  activeFillTile=kind;
+  if (kind==='custom') rebuildCustomTileOrientations();
+  currentTurtleOrientations=onlineMode()?baseFillOrientations():fixedFillOrientations();
+  tabStates.clear();
+  selectedSymmetry=1;
+  updateFillTilePicker();
+  updateSymmetryAvailability();
+  setStatus(`${fillTileDisplayName()} selected`);
+  if (run) buildPatch();
+}
+
+function axialArea(verts) {
+  if (verts.length<3) return 0;
+  return Math.abs(verts.reduce((sum,point,index) => { const next=verts[(index+1)%verts.length]; return sum+point[0]*next[1]-next[0]*point[1]; },0)/2);
+}
+function orientation2d(a,b,c) { return (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x); }
+function onSegment2d(a,b,p) { return Math.abs(orientation2d(a,b,p))<1e-8 && p.x>=Math.min(a.x,b.x)-1e-8 && p.x<=Math.max(a.x,b.x)+1e-8 && p.y>=Math.min(a.y,b.y)-1e-8 && p.y<=Math.max(a.y,b.y)+1e-8; }
+function segmentsIntersect2d(a,b,c,d) {
+  const abC=orientation2d(a,b,c),abD=orientation2d(a,b,d),cdA=orientation2d(c,d,a),cdB=orientation2d(c,d,b);
+  if (((abC>0&&abD<0)||(abC<0&&abD>0))&&((cdA>0&&cdB<0)||(cdA<0&&cdB>0))) return true;
+  return (Math.abs(abC)<1e-8&&onSegment2d(a,b,c))||(Math.abs(abD)<1e-8&&onSegment2d(a,b,d))||(Math.abs(cdA)<1e-8&&onSegment2d(c,d,a))||(Math.abs(cdB)<1e-8&&onSegment2d(c,d,b));
+}
+function loopSelfIntersects(verts,closed=true) {
+  const points=verts.map(point=>{const projected=projectRaw(point);return{x:projected.x,y:projected.y};});
+  const edgeCount=closed?points.length:Math.max(0,points.length-1);
+  for(let i=0;i<edgeCount;i+=1){
+    const a=points[i],b=points[(i+1)%points.length];
+    for(let j=i+1;j<edgeCount;j+=1){
+      if(j===i||j===i+1||(closed&&i===0&&j===edgeCount-1)) continue;
+      const c=points[j],d=points[(j+1)%points.length];
+      if(segmentsIntersect2d(a,b,c,d)) return true;
+    }
+  }
+  return false;
+}
+function customDraftValidation() {
+  const unique=new Set(customDraftLoop.map(key));
+  if(!customDraftLoop.length) return {state:'empty',title:'Choose a starting point',message:'A valid tile is a simple, nonzero-area closed loop.',valid:false};
+  if(unique.size!==customDraftLoop.length) return {state:'invalid',title:'A vertex is repeated',message:'Undo the repeated point; only the first point may be revisited to close the loop.',valid:false};
+  if(loopSelfIntersects(customDraftLoop,customDraftClosed)) return {state:'invalid',title:'The boundary crosses itself',message:'Undo points until every non-neighboring edge is disjoint.',valid:false};
+  if(!customDraftClosed) return {state:'empty',title:`Open path · ${customDraftLoop.length} point${customDraftLoop.length===1?'':'s'}`,message:customDraftLoop.length<3?'Choose at least three vertices.':'Click the highlighted first point to close the boundary.',valid:false};
+  if(customDraftLoop.length<3) return {state:'invalid',title:'At least three vertices are required',message:'Open the loop and add another point.',valid:false};
+  if(axialArea(customDraftLoop)<EPS) return {state:'invalid',title:'The loop has zero area',message:'Choose vertices that enclose part of the plane.',valid:false};
+  return {state:'valid',title:'Ready to tile',message:'Simple closed A₂ polygon. Interior and boundary occupancy will be compiled automatically.',valid:true};
+}
+const builderGridSize=42;
+function builderScreen(point) {
+  const u=point[0],v=point[1];
+  return {x:customTileCanvas.width/2+(u+v/2)*builderGridSize,y:customTileCanvas.height/2-v*Math.sqrt(3)/2*builderGridSize};
+}
+function builderLatticePoint(event) {
+  const rect=customTileCanvas.getBoundingClientRect(),x=(event.clientX-rect.left)*customTileCanvas.width/rect.width,y=(event.clientY-rect.top)*customTileCanvas.height/rect.height;
+  const v=Math.round((customTileCanvas.height/2-y)/(Math.sqrt(3)/2*builderGridSize));
+  const u=Math.round((x-customTileCanvas.width/2)/builderGridSize-v/2);
+  return [u,v,-u-v];
+}
+function drawCustomBuilder() {
+  if(!customTileCtx||!customTileCanvas) return;
+  const context=customTileCtx,width=customTileCanvas.width,height=customTileCanvas.height;
+  context.clearRect(0,0,width,height); context.fillStyle='#edf2ef'; context.fillRect(0,0,width,height);
+  context.lineWidth=1;
+  for(let u=-14;u<=14;u+=1) for(let v=-11;v<=11;v+=1){
+    const point=[u,v,-u-v],screenPoint=builderScreen(point);
+    if(screenPoint.x<12||screenPoint.x>width-12||screenPoint.y<12||screenPoint.y>height-12) continue;
+    context.beginPath(); context.arc(screenPoint.x,screenPoint.y,1.7,0,Math.PI*2); context.fillStyle='#9bb1aa'; context.fill();
+  }
+  const screens=customDraftLoop.map(builderScreen);
+  if(customDraftClosed&&screens.length>=3){ context.beginPath(); screens.forEach((point,index)=>index?context.lineTo(point.x,point.y):context.moveTo(point.x,point.y)); context.closePath(); context.fillStyle='rgba(23,111,95,.15)'; context.fill(); }
+  if(screens.length){
+    context.beginPath(); screens.forEach((point,index)=>index?context.lineTo(point.x,point.y):context.moveTo(point.x,point.y));
+    if(customDraftClosed) context.closePath(); else if(customDraftHover){const hover=builderScreen(customDraftHover);context.lineTo(hover.x,hover.y);}
+    context.strokeStyle=customDraftValidation().state==='invalid'?'#a54136':'#176f5f'; context.lineWidth=4; context.lineJoin='round'; context.stroke();
+  }
+  screens.forEach((point,index)=>{context.beginPath();context.arc(point.x,point.y,index===0?8:6,0,Math.PI*2);context.fillStyle=index===0&&!customDraftClosed?'#d55e00':'#fffdf8';context.fill();context.strokeStyle='#104c43';context.lineWidth=2.5;context.stroke();});
+  if(customDraftHover&&!customDraftClosed){const hover=builderScreen(customDraftHover);context.beginPath();context.arc(hover.x,hover.y,5,0,Math.PI*2);context.fillStyle='#d55e00';context.fill();}
+  const validation=customDraftValidation();
+  if(customVertexCountEl) customVertexCountEl.textContent=String(customDraftLoop.length);
+  if(customAreaEl) customAreaEl.textContent=axialArea(customDraftLoop).toFixed(axialArea(customDraftLoop)%1?1:0);
+  if(customTileValidationEl){customTileValidationEl.dataset.state=validation.state;customTileValidationEl.innerHTML=`<strong>${validation.title}</strong><p>${validation.message}</p>`;}
+  if(useCustomTileButton) useCustomTileButton.disabled=!validation.valid;
+  if(undoCustomPointButton) undoCustomPointButton.disabled=!customDraftLoop.length;
+  if(clearCustomTileButton) clearCustomTileButton.disabled=!customDraftLoop.length;
+}
+function openCustomTileEditor() {
+  if(customTileNameInput)customTileNameInput.value=customTileLabel;
+  customDraftLoop=(hasCustomTile?customTileLoop:[]).map(point=>[...point]);
+  customDraftClosed=hasCustomTile&&customDraftLoop.length>=3;
+  customDraftHover=null;
+  drawCustomBuilder();
+  if(typeof customTileDialog?.showModal==='function') customTileDialog.showModal(); else customTileDialog?.setAttribute('open','');
+}
+function closeCustomTileEditor() { if(customTileDialog?.open&&typeof customTileDialog.close==='function')customTileDialog.close();else customTileDialog?.removeAttribute('open'); }
+function undoCustomPoint() { if(customDraftClosed){customDraftClosed=false;}else customDraftLoop.pop();customDraftHover=null;drawCustomBuilder(); }
+function setCustomPreset(name) {
+  if(name==='turtle')customDraftLoop=normalizedLoop(turtleVerts);
+  else if(name==='hat')customDraftLoop=normalizedLoop(hatVerts);
+  else customDraftLoop=[];
+  customDraftClosed=name!=='blank';customDraftHover=null;drawCustomBuilder();
+}
+function addCustomDraftPoint(point) {
+  if(customDraftClosed)return;
+  if(customDraftLoop.length>=3&&key(point)===key(customDraftLoop[0])){customDraftClosed=true;drawCustomBuilder();return;}
+  if(customDraftLoop.some(existing=>key(existing)===key(point)))return;
+  customDraftLoop.push(point);customDraftHover=null;drawCustomBuilder();
+}
+function useCustomTile() {
+  if(!customDraftValidation().valid)return;
+  customTileLabel=customTileNameInput?.value.trim()||'Custom tile';
+  customTileLoop=normalizedLoop(customDraftLoop);customDraftLoop=customTileLoop.map(point=>[...point]);customDraftClosed=true;
+  hasCustomTile=true;rebuildCustomTileOrientations();closeCustomTileEditor();selectFillTile('custom');
+}
+
 function resizeCanvas() { const ratio = window.devicePixelRatio || 1; const rect = canvas.getBoundingClientRect(); const width = Math.max(1, Math.round(rect.width * ratio)); const height = Math.max(1, Math.round(rect.height * ratio)); if (canvas.width !== width || canvas.height !== height) { const old = {w:canvas.width, h:canvas.height}; canvas.width = width; canvas.height = height; view.x *= width / old.w; view.y *= height / old.h; } draw(); }
 let dragging=false,last=null,down=null; canvas.addEventListener('pointerdown',e=>{ if(startAttachmentDrag(e, canvas)){ dragging=false; down=null; return; } dragging=true;last={x:e.clientX,y:e.clientY};down={...last}; canvas.setPointerCapture(e.pointerId);});
 canvas.addEventListener('pointermove',e=>{ if(moveAttachmentDrag(e)) return; if(!dragging){ const hit=hitTile(e); const nextHover=legalMoveIndices.has(hit)?hit:-1; if(nextHover!==hoveredIndex){ hoveredIndex=nextHover; draw(); } return; } const ratio=window.devicePixelRatio||1; view.x+=(e.clientX-last.x)*ratio; view.y+=(e.clientY-last.y)*ratio; last={x:e.clientX,y:e.clientY}; draw();});
@@ -1191,9 +1702,59 @@ trefoilTokens.forEach(button => {
 trefoilTrash?.addEventListener('dragover', event => { event.preventDefault(); dragPreview = null; setTrashHot(true); });
 trefoilTrash?.addEventListener('dragleave', () => setTrashHot(false));
 trefoilTrash?.addEventListener('drop', event => { event.preventDefault(); dragPreview = null; setTrashHot(false); setStatus('deleted'); draw(); if (activeTab === 'crossing') drawTrefoilCrossing(); });
-blueStripesToggle.addEventListener('click',()=>toggleStripe(blueStripesToggle)); orangeStripesToggle.addEventListener('click',()=>toggleStripe(orangeStripesToggle)); symmetryButtons.forEach(button => button.addEventListener('click', () => { if (button.disabled) return; selectedSymmetry = Number(button.dataset.symmetry) || 1; updateSymmetryAvailability(); buildPatch(); })); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); resetButton.addEventListener('click', resetToCenter); turtleSeedTab.addEventListener('click',()=>showTab('turtle')); tilingTab.addEventListener('click',()=>showTab('tiling')); crossingTab.addEventListener('click',()=>showTab('crossing'));
+blueStripesToggle.addEventListener('click',()=>toggleStripe(blueStripesToggle)); orangeStripesToggle.addEventListener('click',()=>toggleStripe(orangeStripesToggle)); symmetryButtons.forEach(button => button.addEventListener('click', () => { if (button.disabled) return; selectedSymmetry = Number(button.dataset.symmetry) || 1; updateSymmetryAvailability(); buildPatch(); })); buildButton.addEventListener('click',()=>buildPatch()); coronaTargetInput?.addEventListener('change',()=>buildPatch()); onlineLearningToggle?.addEventListener('change',()=>{ tabStates.clear(); selectedSymmetry=1; updateSymmetryAvailability(); buildPatch(); }); resetButton.addEventListener('click', resetToCenter); turtleSeedTab.addEventListener('click',()=>showTab('turtle')); tilingTab.addEventListener('click',()=>showTab('tiling')); crossingTab.addEventListener('click',()=>showTab('crossing'));
+fillTileButtons.forEach(button=>button.addEventListener('click',()=>selectFillTile(button.dataset.fillTile)));
+customTileButton?.addEventListener('click',openCustomTileEditor);
+closeCustomTileButton?.addEventListener('click',closeCustomTileEditor);
+undoCustomPointButton?.addEventListener('click',undoCustomPoint);
+clearCustomTileButton?.addEventListener('click',()=>setCustomPreset('blank'));
+useCustomTileButton?.addEventListener('click',useCustomTile);
+customPresetButtons.forEach(button=>button.addEventListener('click',()=>setCustomPreset(button.dataset.customPreset)));
+customTileDialog?.addEventListener('click',event=>{if(event.target===customTileDialog)closeCustomTileEditor();});
+customTileCanvas?.addEventListener('pointermove',event=>{if(customDraftClosed)return;customDraftHover=builderLatticePoint(event);drawCustomBuilder();});
+customTileCanvas?.addEventListener('pointerleave',()=>{customDraftHover=null;drawCustomBuilder();});
+customTileCanvas?.addEventListener('pointerdown',event=>{event.preventDefault();addCustomDraftPoint(builderLatticePoint(event));});
+document.addEventListener('keydown',event=>{
+  if(!customTileDialog?.open)return;
+  if(event.key==='Escape'){event.preventDefault();closeCustomTileEditor();return;}
+  if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='z'){event.preventDefault();undoCustomPoint();}
+});
 window.addEventListener('resize', resizeCanvas);
+window.__turtleGctsDebug = {
+  runOnline(centerKind='trefoil',targetCorona=2,fillKind=activeFillTile) {
+    if(['turtle','hat','custom'].includes(fillKind)) activeFillTile=fillKind;
+    if(fillKind==='custom') rebuildCustomTileOrientations();
+    const seed = centerKind === 'hexagon'
+      ? place(centralHexBase,[0,0,0],{kind:'hex-hole'})
+      : place(unmarkedTrefoilBase,[0,0,0],{kind:'seed'});
+    const patch = generateOnlinePatch(seed,Math.max(120,targetCorona*targetCorona*30),targetCorona);
+    return {
+      center:centerKind,
+      fill:activeFillTile,
+      tiles:patch.length,
+      corona:maxCoronaFor(patch),
+      learnedFailures:onlineMemory.failures.length,
+      supportEntries:onlineMemory.support.size,
+      memoHits:onlineMemory.memoHits,
+      replayValid:!!replayWithOnlineMarking(patch,learnedTurtleOrientations())
+    };
+  },
+  setCustomLoop(points,name='Test custom tile') {
+    customTileLabel=name;if(customTileNameInput)customTileNameInput.value=name;
+    customTileLoop=normalizedLoop(points.map(point=>[...point]));hasCustomTile=true;
+    rebuildCustomTileOrientations();
+    return {vertices:customTileLoop.length,area:axialArea(customTileLoop),orientations:customTileOrientations.length};
+  },
+  validateLoop(points,closed=true) {
+    const previousLoop=customDraftLoop,previousClosed=customDraftClosed;
+    customDraftLoop=points.map(point=>[...point]);customDraftClosed=closed;
+    const result=customDraftValidation();
+    customDraftLoop=previousLoop;customDraftClosed=previousClosed;
+    return result;
+  }
+};
 updateSymmetryAvailability();
+updateFillTilePicker();
 resizeCanvas();
 setStatus('computing...');
 window.setTimeout(() => buildPatch(), 60);

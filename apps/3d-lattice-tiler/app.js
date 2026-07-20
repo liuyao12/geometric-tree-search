@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260706-live-deltas";
+import { tileSpecs } from "./engine.js?v=20260720-gcts-ledger";
 
 const $ = (id) => document.getElementById(id);
 
@@ -17,6 +17,7 @@ const candidateCapInput = $("candidateCapInput");
 const timeCapInput = $("timeCapInput");
 const mirrorCheckbox = $("mirrorCheckbox");
 const exhaustiveCheckbox = $("exhaustiveCheckbox");
+const onlineMarkingCheckbox = $("onlineMarkingCheckbox");
 const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
@@ -46,6 +47,8 @@ const metricLayerDetail = $("metricLayerDetail");
 const metricVisited = $("metricVisited");
 const metricVisitedDetail = $("metricVisitedDetail");
 const metricNodes = $("metricNodes");
+const metricMarks = $("metricMarks");
+const metricMarkSites = $("metricMarkSites");
 
 const prettyNameMap = new Map([
   ["J15", "Johnson solid J15"],
@@ -466,6 +469,35 @@ function initFigureSelection() {
     : `${requestedFromTile}::0`;
   const initialFigure = figureById.get(requestedFigure) ?? figureById.get(defaultFigureId);
   selectedFigureIds = [initialFigure?.id].filter(Boolean);
+}
+
+function applySearchParams() {
+  const params = new URLSearchParams(window.location.search);
+  const setSelectParam = (control, name) => {
+    const value = params.get(name);
+    if (!value || !control) return;
+    if ([...control.options].some(option => option.value === value)) control.value = value;
+  };
+  const setPositiveNumberParam = (control, name) => {
+    const value = Number(params.get(name));
+    if (Number.isFinite(value) && value > 0) control.value = String(value);
+  };
+  const criterionParam = params.get("criterion");
+  if (criterionParam === "count" || criterionParam === "layer") {
+    document.querySelector(`input[name="criterion"][value="${criterionParam}"]`).checked = true;
+  }
+  setPositiveNumberParam(maxTilesInput, "target");
+  setPositiveNumberParam(maxTilesInput, "target_val");
+  setPositiveNumberParam(layerInput, "layer");
+  setSelectParam(faceOrderSelect, "face_order");
+  setSelectParam(moveOrderSelect, "move_order");
+  setSelectParam(polycubeLatticeSelect, "polycube_lattice");
+  setPositiveNumberParam(branchCapInput, "branch_cap");
+  setPositiveNumberParam(candidateCapInput, "candidate_cap");
+  setPositiveNumberParam(nodeCapInput, "node_limit");
+  setPositiveNumberParam(timeCapInput, "time_limit");
+  if (params.get("online_marking") === "0") onlineMarkingCheckbox.checked = false;
+  if (params.get("online_marking") === "1") onlineMarkingCheckbox.checked = true;
 }
 
 function selectedFigures() {
@@ -1309,7 +1341,17 @@ function configKey() {
     const value = Number(control.value);
     return Number.isFinite(value) && value > 0 ? value : null;
   };
+  const positiveSearchParam = (...names) => {
+    const params = new URLSearchParams(window.location.search);
+    for (const name of names) {
+      if (!params.has(name)) continue;
+      const value = Number(params.get(name));
+      if (Number.isFinite(value) && value >= 0) return value;
+    }
+    return null;
+  };
   const seconds = positiveOrNull(timeCapInput);
+  const forcedLayerLagCap = positiveSearchParam("forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 3;
   return JSON.stringify({
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
@@ -1317,10 +1359,15 @@ function configKey() {
     criterion: criterion(),
     target_val: criterion() === "count" ? +maxTilesInput.value : +layerInput.value,
     exhaustive: exhaustiveCheckbox.checked,
+    online_failure_marking: onlineMarkingCheckbox.checked,
     include_mirrors: mirrorCheckbox.checked,
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     move_order: moveOrderSelect.value,
+    template_preflight: true,
+    periodic_tile_count: 2,
+    periodic_template_max_volume: 64,
+    forced_move_layer_lag_cap: forcedLayerLagCap,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -1497,6 +1544,8 @@ function updateSearchMetrics(stats = null) {
   metricNodes.textContent = totalPathLabel
     ? `${completedPathLabel}/${totalPathLabel} paths`
     : `${completedPaths} paths`;
+  metricMarks.textContent = stats?.marking_revisions ?? 0;
+  metricMarkSites.textContent = `${stats?.marking_support_sites ?? 0} support sites · ${stats?.marking_failures ?? 0}/${stats?.marking_observed_failures ?? 0} failures encoded · ${stats?.marking_pending_failures ?? 0} pending · ${stats?.marking_prunes ?? 0} prunes`;
 }
 
 function refreshNodeMetricFallback() {
@@ -2187,6 +2236,11 @@ function handleMessage(message) {
     attachSnapshotToNode(message.node_id, message.snapshot);
     return;
   }
+  if (message.type === "marking_update") {
+    if (message.search_stats) updateSearchMetrics(message.search_stats);
+    setStatus(`Learned marking ${message.revision}: ${message.support_sites} support sites`);
+    return;
+  }
   if (message.type === "full_update") {
     attachSnapshotToNode(message.node_id, message);
     if ((message.tile_count ?? 0) <= 1) {
@@ -2262,7 +2316,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260706-live-deltas", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260720-gcts-ledger", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2392,7 +2446,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, onlineMarkingCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
     if (!control) return;
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
@@ -2466,6 +2520,7 @@ function animate() {
 }
 
 initFigureSelection();
+applySearchParams();
 updateCriterionUI();
 applyModeDefaults();
 refreshFigureSelectionUI();
