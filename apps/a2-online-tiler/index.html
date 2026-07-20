@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>A₂ Online Tiler — GCTS</title>
+  <link rel="stylesheet" href="./style.css?v=20260720-certified-ledger">
+  <style>
+    [hidden]{display:none!important}
+    .capacity{margin:0;color:var(--muted);font-size:11px}
+    .library-heading{display:flex;align-items:center;justify-content:space-between}
+    .library-heading button{border:1px solid var(--line);border-radius:6px;background:#fff;padding:5px 8px;font-size:11px}
+    .selected-tile-list{display:grid;gap:5px}
+    .selected-tile{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:8px;border:1px solid #a9cec5;border-radius:7px;background:#eef8f4;padding:5px}
+    .selected-tile svg,.catalog-tile svg{width:34px;height:28px}
+    .selected-tile strong,.catalog-tile strong{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .selected-tile button{border:0;background:transparent;color:var(--muted);font-size:16px}
+    .catalog-label{margin-top:4px}
+    .tile-catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+    .catalog-tile{display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:6px;border:1px solid var(--line);border-radius:7px;background:#fff;padding:6px;text-align:left}
+    .catalog-tile[aria-pressed="true"]{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green);background:var(--green2)}
+    .show-marking{display:flex!important;grid-template-columns:none!important;justify-content:flex-start!important;gap:6px!important;font-size:11px;font-weight:700;margin-top:3px}
+    .tile-dialog{width:min(1080px,94vw);padding:0;border:0;border-radius:14px;box-shadow:0 24px 80px rgba(20,35,31,.28)}
+    .tile-dialog::backdrop{background:rgba(18,29,27,.58)}
+    .tile-dialog-shell{background:#f8faf9}
+    .tile-dialog-shell>header{display:flex;justify-content:space-between;align-items:start;padding:18px 20px;border-bottom:1px solid var(--line)}
+    .tile-dialog-shell h2{margin:2px 0;font-family:Georgia,serif}.tile-dialog-shell header p{margin:0;color:var(--muted);font-size:12px}
+    .tile-dialog-shell header button{border:0;background:transparent;font-size:26px}
+    .tile-builder-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;min-height:560px}
+    #tileBuilderCanvas{min-height:560px;background:#edf2f0;border-right:1px solid var(--line)}
+    .tile-builder-layout aside{padding:18px;display:flex;flex-direction:column;gap:14px}
+    .tile-builder-layout .field input[type="text"]{grid-column:1/-1;border:1px solid var(--line);border-radius:7px;padding:8px}
+    .builder-state{border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px;font-size:12px;color:var(--muted);line-height:1.4}
+    .builder-actions{display:grid;gap:7px;margin-top:auto}.builder-actions button{border:1px solid var(--line);border-radius:7px;background:#fff;padding:9px}.builder-actions .primary{background:var(--green);color:#fff;border-color:var(--green)}
+    .region-assessment{border:1px solid var(--line);border-radius:8px;background:#fff;padding:9px;font-size:11px;line-height:1.35}.region-assessment strong{display:block;margin-bottom:4px}.region-assessment ul{margin:0;padding-left:17px}.region-assessment[data-state="blocked"]{border-color:#d79a94;background:#fff5f3}.region-assessment[data-state="promising"]{border-color:#83b8aa;background:#f1faf7}
+    @media(max-width:760px){.tile-builder-layout{grid-template-columns:1fr}.tile-builder-layout aside{min-height:300px}#tileBuilderCanvas{border-right:0;border-bottom:1px solid var(--line)}}
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <header><p class="eyebrow"><a href="../../">GCTS</a> / live laboratory</p><h1>A₂ Online Tiler</h1><p>Watch an initially unmarked search retain exhausted branches and compile the certified ones into geometric mismatch constraints.</p></header>
+
+      <section>
+        <span class="section-label">Problem</span>
+        <div class="mode-switch">
+          <button class="mode-button active" data-mode="growth" type="button"><b>Grow outward</b><small>Extend one live branch across the plane.</small></button>
+          <button class="mode-button" data-mode="region" type="button"><b>Tile a region</b><small>Decide a closed A₂ boundary.</small></button>
+        </div>
+      </section>
+
+      <section id="growthControls">
+        <label class="field"><span>Initial tile / obstacle</span><select id="seedSelect"><option value="turtle">Turtle</option><option value="hat">Hat</option><option value="hexagon">Hexagon</option><option value="none">No seed</option></select></label>
+        <label class="field"><span>View / target radius</span><input id="radiusInput" type="range" min="18" max="100" value="50"><output id="radiusOutput">50</output></label>
+        <p class="capacity" id="growthCapacity">Targeting a patch of hundreds of tiles; this outline is not a wall.</p>
+      </section>
+
+      <section id="regionControls" hidden>
+        <div class="field"><span>Boundary preset</span><div class="preset-row"><button data-preset="certified" type="button">101-Turtle patch</button><button data-preset="large" type="button">Straight hex ✕</button><button data-preset="hat" type="button">Hat</button><button data-preset="turtle" type="button">Turtle</button><button data-preset="blank" type="button">Draw</button></div></div>
+        <label class="field"><span>Straight hex radius</span><input id="regionRadiusInput" type="range" min="18" max="100" value="60"><output id="regionRadiusOutput">60</output></label>
+        <p class="capacity" id="regionCapacity">Certified patch area: exactly 101 Turtle tiles.</p>
+        <div id="regionAssessment" class="region-assessment" data-state="promising"></div>
+        <p class="hint">Click lattice points in boundary order; click the first point to close. Right-click or Undo removes a point.</p>
+        <div class="boundary-actions"><button id="undoBoundary" type="button">Undo</button><button id="clearBoundary" type="button">Clear</button><span id="boundaryState">closed</span></div>
+      </section>
+
+      <section class="tile-library">
+        <div class="library-heading"><span class="section-label">Selected tiles</span><button id="customTileButton" type="button">+ Custom</button></div>
+        <div id="selectedTileList" class="selected-tile-list"></div>
+        <span class="section-label catalog-label">Tile catalog</span>
+        <div id="tileCatalog" class="tile-catalog"></div>
+      </section>
+
+      <section class="learning-card"><div><span>Geometric memoization</span><b id="markingState">Starts empty</b></div><p>Every exhausted branch enters a permanent ledger. Certificates compatible with all protected prefixes become rank-3 signed inequalities; unresolved certificates remain visible as pending. Each channel grows only inside recorded failed-subtree footprints.</p><label class="show-marking"><input id="showMarking" type="checkbox" checked> show learned support</label></section>
+      <label class="field"><span>Marking workflow</span><select id="markingStrategy"><option value="online">Learn continuously</option><option value="train-replay">Train → validate → restart (experimental)</option><option value="geometry">Geometry only</option></select></label>
+
+      <div class="run-row"><button id="runButton" class="primary" type="button">Start search</button><button id="stopButton" type="button" disabled>Stop</button></div>
+      <p id="status" class="status">Ready.</p>
+    </aside>
+
+    <section class="stage">
+      <canvas id="canvas" width="1400" height="900" aria-label="Live A2 tiling search"></canvas>
+      <div class="legend"><span><i class="seed-dot"></i>initial tile / boundary</span><span><i class="hat-dot"></i>Hat</span><span><i class="turtle-dot"></i>Turtle</span></div>
+      <div class="metrics">
+        <div><b id="tilesMetric">0</b><span>tiles placed</span></div><div><b id="coverageMetric">0%</b><span>region covered</span></div><div><b id="nodesMetric">0</b><span>nodes visited</span></div><div><b id="backtracksMetric">0</b><span>backtracks</span></div><div><b id="memoMetric">0</b><span>memo hits</span></div><div><b id="marksMetric">0</b><span>mark revisions</span></div><div><b id="supportMetric">0</b><span>support sites</span></div>
+      </div>
+      <p id="comparisonStatus" class="comparison-status">Verified in the 100-Turtle regression: online GCTS visits fewer nodes and backtracks than the identical unmarked DFS. Run “Learn continuously” and “Geometry only” unchanged for an in-page deterministic A/B.</p>
+      <details class="audit"><summary>Learning audit</summary><ol id="auditLog"></ol></details>
+    </section>
+  </main>
+  <dialog id="customTileDialog" class="tile-dialog">
+    <div class="tile-dialog-shell">
+      <header><div><p class="eyebrow">A₂ tile builder</p><h2>Add a custom tile</h2><p>Choose lattice points in boundary order, then click the first point to close.</p></div><button id="closeTileDialog" type="button" aria-label="Close custom tile builder">×</button></header>
+      <div class="tile-builder-layout">
+        <canvas id="tileBuilderCanvas" width="760" height="560" aria-label="Custom A2 tile builder"></canvas>
+        <aside>
+          <label class="field"><span>Name</span><input id="customTileName" type="text" value="Custom tile" maxlength="36"></label>
+          <div class="preset-row"><button data-tile-preset="hat" type="button">Hat outline</button><button data-tile-preset="turtle" type="button">Turtle outline</button></div>
+          <div id="tileBuilderState" class="builder-state">Choose a starting point.</div>
+          <div class="builder-actions"><button id="undoTilePoint" type="button">Undo</button><button id="clearTilePoints" type="button">Clear</button><button id="saveCustomTile" class="primary" type="button" disabled>Add tile</button></div>
+        </aside>
+      </div>
+    </div>
+  </dialog>
+  <script type="module" src="./app.js?v=20260720-certified-ledger"></script>
+</body>
+</html>

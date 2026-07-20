@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260605-progress-estimate">
+  <link rel="stylesheet" href="./style.css?v=20260720-gcts-ledger">
 </head>
 <body>
   <div class="app-shell">
@@ -43,6 +43,7 @@
             <select id="faceOrderSelect">
               <option value="coverage" selected>Contact first</option>
               <option value="constrained">Fewest choices</option>
+              <option value="mrv">MRV fewest choices</option>
               <option value="pocket">Fill holes</option>
             </select>
           </label>
@@ -51,10 +52,11 @@
             <span>Filling order</span>
             <select id="moveOrderSelect">
               <option value="coverage" selected>Most contact</option>
+              <option value="rl">Periodic template + agent</option>
               <option value="balanced">Balanced</option>
               <option value="symmetric">Symmetry first</option>
               <option value="crystal">Crystal pattern</option>
-              <option value="isohedral">Isohedral corona</option>
+              <option value="isohedral">First-corona pattern</option>
               <option value="periodic">Repeat spacing</option>
               <option value="repeat">Same orientation</option>
             </select>
@@ -68,6 +70,11 @@
             <option value="fcc">FCC face centers</option>
             <option value="half">(1/2)Z³ refined</option>
           </select>
+        </label>
+
+        <label class="learning-toggle">
+          <input id="onlineMarkingCheckbox" type="checkbox" checked>
+          <span><b>Learn failure markings · experimental</b><small>Retains every exhausted branch; reports encoded and pending certificates. Correctness is tested, but a 3D speedup is not yet claimed.</small></span>
         </label>
 
         <div class="is-hidden" aria-hidden="true">
@@ -124,6 +131,7 @@
         <div><b id="metricFrontier">0</b><span>frontier points</span></div>
         <div><b id="metricLayer">0</b><span id="metricLayerDetail">candidates</span></div>
         <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
+        <div><b id="metricMarks">0</b><span>mark revisions</span><small id="metricMarkSites">0 support sites</small></div>
       </section>
 
       <section class="tile-panel">
@@ -176,6 +184,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260706-live-deltas"></script>
+  <script type="module" src="./app.js?v=20260720-gcts-ledger"></script>
 </body>
 </html>

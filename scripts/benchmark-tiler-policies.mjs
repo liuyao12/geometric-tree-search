@@ -9,7 +9,7 @@ const usage = () => `Usage:
 
 Options:
   --figures <id[,id]>             Figure ids/names. Default: cube::0.
-  --policies <name[,name]>        Move orders to compare. Default: coverage,isohedral,crystal,balanced.
+  --policies <name[,name]>        Move orders to compare. Default: coverage,isohedral,rl,crystal,balanced.
   --criterion <count|layer>       Goal type. Default: count.
   --target <n>                    Target tile count or layer. Default: 40.
   --polycube-lattice <z3|fcc|half> Polycube lattice tier. Default: z3.
@@ -25,7 +25,7 @@ const finitePositive = (value) => Number.isFinite(value) && value > 0 ? value : 
 function readArgs(argv) {
   const opts = {
     figures: ["cube::0"],
-    policies: ["coverage", "isohedral", "crystal", "balanced"],
+    policies: ["coverage", "isohedral", "rl", "crystal", "balanced"],
     criterion: "count",
     target: 40,
     polycubeLattice: "z3",
@@ -163,7 +163,7 @@ async function runPolicy(figures, opts, policy) {
 async function main() {
   const opts = readArgs(process.argv.slice(2));
   if (!["count", "layer"].includes(opts.criterion)) throw new Error("--criterion must be count or layer");
-  const allowedPolicies = new Set(["coverage", "repeat", "periodic", "crystal", "isohedral", "symmetric", "layer", "balanced"]);
+  const allowedPolicies = new Set(["coverage", "repeat", "periodic", "crystal", "isohedral", "rl", "symmetric", "layer", "balanced"]);
   for (const policy of opts.policies) if (!allowedPolicies.has(policy)) throw new Error(`Unknown policy/move order: ${policy}`);
   const figures = resolveFigures(opts.figures);
   const results = [];

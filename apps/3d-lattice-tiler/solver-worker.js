@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260706-live-deltas";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260720-gcts-ledger";
 
 const SNAPSHOT_INTERVAL_MS = 260;
 
