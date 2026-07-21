@@ -6,7 +6,7 @@ const identity = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
 const orient = { __mark_matrix: identity, __mark_shift: [0, 0, 0] };
 const placement = (translation) => ({ prototile_idx: 0, orient, translation });
 
-const learner = new OnlineFailureMarking({ max_reach: 8 });
+const learner = new OnlineFailureMarking({ max_reach: 8, enable_pair_marking: true });
 const root = placement([0, 0, 0]);
 const good = placement([1, 0, 0]);
 const bad = placement([2, 0, 0]);
@@ -67,4 +67,35 @@ console.log("3D online failure marking and engine integration passed", {
   supportSites: engineUpdate.support_sites,
   observedFailures: engineUpdate.observed_failures,
   pendingFailures: engineUpdate.pending_failures
+});
+
+async function runComparison(overrides) {
+  let finished = null;
+  for await (const message of createTilingStream({ ...config, ...overrides }, tileSpecs, { stop: false })) {
+    if (message.type === "finished") finished = message;
+  }
+  assert.ok(finished, "comparison run must emit a terminal result");
+  return finished;
+}
+
+const naive = await runComparison({ online_failure_marking: false, template_preflight: false });
+const geometricGcts = await runComparison({ online_failure_marking: true, online_pair_marking: false, template_preflight: false });
+const clusterAgent = await runComparison({
+  online_failure_marking: true, online_pair_marking: false,
+  move_order: "rl", agent_exhaustive: true, template_preflight: true, periodic_tile_count: 2
+});
+assert.equal(naive.success, true);
+assert.equal(geometricGcts.success, true);
+assert.equal(clusterAgent.success, true);
+assert.ok(geometricGcts.search_stats.branch_choices_visited < naive.search_stats.branch_choices_visited, "3D GCTS must visit fewer branch choices than naive DFS");
+assert.ok(geometricGcts.search_stats.backtracks < naive.search_stats.backtracks, "3D GCTS must backtrack less than naive DFS");
+assert.equal(geometricGcts.search_stats.marking_pending_failures, 0, "every observed 3D failure must be geometrically encoded");
+assert.equal(geometricGcts.search_stats.marking_geometric_clauses, geometricGcts.search_stats.marking_observed_failures, "one unique 3D clause must retain each deterministic failure");
+assert.ok(geometricGcts.search_stats.marking_geometric_prunes > 0, "3D geometric clauses must prune repeated configurations");
+assert.ok(clusterAgent.search_stats.branch_choices_visited < geometricGcts.search_stats.branch_choices_visited, "exhaustive cluster/agent proposals must improve on GCTS-only ordering");
+
+console.log("3D naive/GCTS/GCTS+cluster comparison passed", {
+  naiveChoices: naive.search_stats.branch_choices_visited,
+  gctsChoices: geometricGcts.search_stats.branch_choices_visited,
+  clusterChoices: clusterAgent.search_stats.branch_choices_visited
 });

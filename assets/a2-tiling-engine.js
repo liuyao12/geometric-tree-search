@@ -1,3 +1,5 @@
+import { GeometricFailureMemo } from "./geometric-failure-memo.js";
+
 export const A2_TILE_LOOPS = Object.freeze({
   turtle: [[3,-2,-1],[2,0,-2],[0,1,-1],[0,2,-2],[-1,3,-2],[-2,2,0],[-1,0,1],[-2,0,2],[-2,-1,3],[0,-2,2],[1,-4,3],[2,-4,2],[3,-5,2],[4,-4,0]],
   hat: [[0,0,0],[1,0,-1],[1,1,-2],[3,0,-3],[4,1,-5],[3,2,-5],[3,3,-6],[1,4,-5],[0,6,-6],[-1,6,-5],[-1,5,-4],[-1,4,-3],[0,3,-3],[-1,2,-1]],
@@ -150,13 +152,16 @@ const A2_MARK_ENTRY_CACHE_LIMIT=4096;
 const cacheMarkEntries=(cache,key,value)=>{if(cache.size>=A2_MARK_ENTRY_CACHE_LIMIT&&!cache.has(key))cache.delete(cache.keys().next().value);cache.set(key,value);return value;};
 
 export class OnlineA2Marking {
-  constructor({maxWitnessTrials=Infinity,yieldEvery=32,fixedLive=false}={}){
+  constructor({maxWitnessTrials=Infinity,yieldEvery=32,fixedLive=false,initialRank=3,maxRank=3,enableLocalInequalities=true}={}){
     this.maxWitnessTrials=maxWitnessTrials;this.yieldEvery=yieldEvery;
     this.fixedLive=fixedLive;
     this.support=new Map();this.assignments=new Map();this.liveAssignments=new Map();this.inequalities=[];
     this.failures=[];this.failureLedger=[];this.pendingFailures=[];this.prefixes=[];this.bestPrefix=[];this.contacts=new Map();this.variableContacts=new Map();this.liveContext=[];this.liveStack=[];this.pendingStates=new Map();this.history=[];
     this.rejectedWitnesses=new Set();this.reencodeCursor=-1;this.revision=0;this.prunes=0;
     this.unencodable=0;this.skipped=0;this.reencodings=0;
+    this.rank=Math.max(3,Math.ceil(initialRank/3)*3);this.maxRank=Math.max(this.rank,Math.ceil(maxRank/3)*3);this.rankExpansions=0;this.enableLocalInequalities=!!enableLocalInequalities;this.geometricRevision=0;
+    this.geometricMemo=new GeometricFailureMemo({contextMatch:"exact",describePlacement:placement=>placement?.orientation&&placement?.translation?{kind:placement.tile,orientation:placement.orientation.index,translation:placement.translation}:null});
+    this.frontierFailures=new Set();this.frontierPrunes=0;
   }
   site(tile,point,component){return `${tile}:${a2Key(point)}:${component}`;}
   rememberPositive(prefix){if(prefix.length>this.bestPrefix.length)this.bestPrefix=prefix.slice();}
@@ -170,6 +175,7 @@ export class OnlineA2Marking {
     return result;
   }
   compatible(candidate,context,support=this.support,assignments=this.assignments,count=true){
+    if(support===this.support&&!this.geometricMemo.compatible(candidate,context,count))return false;
     if(!support.size)return true;
     if(support===this.support){
       if(!this.fixedLive){
@@ -219,6 +225,8 @@ export class OnlineA2Marking {
     }
   }
   score(candidate){if(!this.fixedLive)return 0;let matches=0,lineUps=0;for(const [contact,entry] of this.entries(candidate,this.support,this.assignments)){const old=this.contacts.get(contact);if(old?.value===entry.value){matches++;if(entry.value)lineUps++;}}return lineUps*100+matches;}
+  rememberFrontierFailure(signature){if(signature)this.frontierFailures.add(signature);}
+  frontierCompatible(signature,count=true){if(!signature||!this.frontierFailures.has(signature))return true;if(count)this.frontierPrunes++;return false;}
   fixLive(){this.fixedLive=true;this.reset();return this;}
   unionFor(prefixes,support){
     const union=new SignedUnionFind(support.keys());
@@ -301,7 +309,7 @@ export class OnlineA2Marking {
     const assignments=this.realize(union,support,inequalities);if(!assignments)return null;
     return{assignments,inequalities};
   }
-  *witnesses(candidate,context,{failurePoint=null,failurePoints=[],failureFootprint=[],failedBranch=[],frontier=[]}={}){
+  *witnesses(candidate,context,{failurePoint=null,failurePoints=[],failureFootprint=[],failedBranch=[],frontier=[],componentStart=0}={}){
     // D_c grows only over the actual failed branch footprint. There is no
     // revision-indexed shell: a local failure stays local, while a branch that
     // reaches farther before unwinding may justify correspondingly long probes.
@@ -325,8 +333,8 @@ export class OnlineA2Marking {
       for(const placement of orderedContext){
         const local=a2InverseTransform(a2Sub(global,placement.translation),placement.orientation.symmetry);
         const relation=candidateCoefficient*permutationParity(placement.orientation.symmetry.permutation);
-        for(let component=0;component<3;component++){
-          const globalComponent=candidate.orientation.symmetry.permutation.indexOf(component),previousComponent=placement.orientation.symmetry.permutation[globalComponent];
+        for(let component=componentStart;component<this.rank;component++){
+          const block=Math.floor(component/3),localComponent=component%3,globalComponent=candidate.orientation.symmetry.permutation.indexOf(localComponent),previousComponent=block*3+placement.orientation.symmetry.permutation[globalComponent];
           yield{sites:[{key:this.site(candidate.tile,point,component),tile:candidate.tile,point:[...point],component},{key:this.site(placement.tile,local,previousComponent),tile:placement.tile,point:local,component:previousComponent}],relation,sourceGlobal:[...global]};
         }
       }
@@ -335,36 +343,44 @@ export class OnlineA2Marking {
   async learn(context,candidate,{shouldStop=()=>false,onProgress=()=>{},alternatives=[],failurePoint=null,failurePoints=[],failureFootprint=[],failedBranch=[],frontier=[],defer=false}={}){
     const failureCertificate={context:context.slice(),candidate,alternatives:alternatives.slice(),failedBranch:failedBranch.slice(),failurePoint,failurePoints:failurePoints.map(as=>typeof as==="string"?as:[...as]),failureFootprint:failureFootprint.map(point=>[...point]),frontier:frontier.slice()};
     this.failureLedger.push(failureCertificate);
-    if(defer){this.pendingFailures.push(failureCertificate);return{skipped:true,attempts:0,pending:true,reason:"deferred-until-more-positive-data"};}
-    if(!context.length){this.unencodable++;this.pendingFailures.push(failureCertificate);return{skipped:true,attempts:0,pending:true,reason:"no-marked-interface"};}
+    const geometricUpdate=this.geometricMemo.encode(context,candidate,{failure:this.failureLedger.length,branchDepth:failedBranch.length});
+    if(!geometricUpdate.duplicate)this.geometricRevision++;
+    if(!this.enableLocalInequalities)return{committed:true,geometric:true,geometricRevision:this.geometricRevision,revision:this.revision,branchDepth:failedBranch.length,subtreeSites:failureFootprint.length,leafFailures:failurePoints.length,frontierTiles:frontier.length};
+    if(defer){this.pendingFailures.push(failureCertificate);return{skipped:true,attempts:0,pending:false,pairPending:true,geometric:true,reason:"rank-3-witness-deferred"};}
+    if(!context.length){this.unencodable++;this.pendingFailures.push(failureCertificate);return{skipped:true,attempts:0,pending:false,pairPending:true,geometric:true,reason:"no-rank-3-interface"};}
     const prefixes=[...this.prefixes,context.slice()],positivePrefixes=[this.bestPrefix,...prefixes],failures=[...this.failures,failureCertificate];
-    let attempts=0,best=null;
-    for(const witness of this.witnesses(candidate,context,{failurePoint,failurePoints,failureFootprint,failedBranch,frontier})){
-      if(shouldStop())return{aborted:true,attempts};
-      const witnessKey=`${candidate.id}|${witness.sites.map(entry=>entry.key).sort().join("::")}|${witness.relation}`;
-      if(this.rejectedWitnesses.has(witnessKey))continue;
-      attempts++;
-      if(attempts%this.yieldEvery===0){onProgress(attempts);await new Promise(requestAnimationFrame);}
-      if(attempts>this.maxWitnessTrials)break;
-      const support=new Map([...this.support].map(([key,entry])=>[key,{...entry,point:[...entry.point]}]));
-      for(const entry of witness.sites)if(!support.has(entry.key))support.set(entry.key,entry);
-      const solved=this.solveFailureClauses(support,positivePrefixes,failures);if(!solved)continue;
-      const {assignments,inequalities}=solved;
-      const reach=Math.max(...witness.sites.map(entry=>Math.max(...entry.point.map(Math.abs))));
-      const survivors=alternatives.reduce((count,placement)=>count+(this.assignmentsFor([...positivePrefixes,[...context,placement]],support,inequalities)?1:0),0);
-      const added=witness.sites.reduce((count,entry)=>count+(this.support.has(entry.key)?0:1),0);
-      if(!best||survivors>best.survivors||(survivors===best.survivors&&(added<best.added||(added===best.added&&reach<best.reach))))best={support,assignments,inequalities,witnessKey,reach,survivors,added,sourceGlobal:witness.sourceGlobal};
-      if(survivors===alternatives.length)break;
-      if(best&&attempts>=Math.min(this.maxWitnessTrials,6))break;
+    let attempts=0,best=null,componentStart=0;
+    for(;;){
+      let rankAttempts=0;
+      for(const witness of this.witnesses(candidate,context,{failurePoint,failurePoints,failureFootprint,failedBranch,frontier,componentStart})){
+        if(shouldStop())return{aborted:true,attempts};
+        const witnessKey=`${candidate.id}|${witness.sites.map(entry=>entry.key).sort().join("::")}|${witness.relation}`;
+        if(this.rejectedWitnesses.has(witnessKey))continue;
+        attempts++;rankAttempts++;
+        if(attempts%this.yieldEvery===0){onProgress(attempts);await new Promise(requestAnimationFrame);}
+        if(rankAttempts>this.maxWitnessTrials)break;
+        const support=new Map([...this.support].map(([key,entry])=>[key,{...entry,point:[...entry.point]}]));
+        for(const entry of witness.sites)if(!support.has(entry.key))support.set(entry.key,entry);
+        const solved=this.solveFailureClauses(support,positivePrefixes,failures);if(!solved)continue;
+        const {assignments,inequalities}=solved;
+        const reach=Math.max(...witness.sites.map(entry=>Math.max(...entry.point.map(Math.abs))));
+        const survivors=alternatives.reduce((count,placement)=>count+(this.assignmentsFor([...positivePrefixes,[...context,placement]],support,inequalities)?1:0),0);
+        const added=witness.sites.reduce((count,entry)=>count+(this.support.has(entry.key)?0:1),0);
+        if(!best||survivors>best.survivors||(survivors===best.survivors&&(added<best.added||(added===best.added&&reach<best.reach))))best={support,assignments,inequalities,witnessKey,reach,survivors,added,sourceGlobal:witness.sourceGlobal};
+        if(survivors===alternatives.length)break;
+        if(best&&rankAttempts>=Math.min(this.maxWitnessTrials,6))break;
+      }
+      if(best||this.rank>=this.maxRank)break;
+      componentStart=this.rank;this.rank+=3;this.rankExpansions++;
     }
-    if(!best){this.unencodable++;this.pendingFailures.push(failureCertificate);return{skipped:true,attempts,pending:true,reason:"no-compatible-witness"};}
+    if(!best){this.unencodable++;this.pendingFailures.push(failureCertificate);return{skipped:true,attempts,pending:false,pairPending:true,geometric:true,reason:"no-compatible-rank-3-witness"};}
     if(best.inequalities.length!==failures.length)throw new Error("Every learned failure must retain a geometric witness");
     if(failures.length!==this.failures.length+1||!this.failures.every((failure,index)=>failures[index]===failure))throw new Error("A marking update may not alter the failure ledger");
     this.history.push({support:this.support,assignments:this.assignments,inequalities:this.inequalities,prefixes:this.prefixes,failures:this.failures,revision:this.revision,witnessKey:best.witnessKey});
     this.support=best.support;this.assignments=best.assignments;this.inequalities=best.inequalities;this.prefixes=prefixes;this.failures=failures;this.revision++;
     const auditSupport=new Map(this.support);
     this.pendingFailures=this.pendingFailures.filter(failure=>this.compatible(failure.candidate,failure.context,auditSupport,this.assignments,false));
-    return{revision:this.revision,supportSites:this.support.size,inequalities:this.inequalities.length,reach:best.reach,attempts,siblingSurvivors:best.survivors,siblingCount:alternatives.length,branchDepth:failedBranch.length,subtreeSites:failureFootprint.length,leafFailures:failurePoints.length,frontierTiles:frontier.length,sourceGlobal:best.sourceGlobal,failurePoint};
+    return{revision:this.revision,rank:this.rank,supportSites:this.support.size,inequalities:this.inequalities.length,reach:best.reach,attempts,siblingSurvivors:best.survivors,siblingCount:alternatives.length,branchDepth:failedBranch.length,subtreeSites:failureFootprint.length,leafFailures:failurePoints.length,frontierTiles:frontier.length,sourceGlobal:best.sourceGlobal,failurePoint};
   }
   async reencodeLatest({shouldStop=()=>false,onProgress=()=>{}}={}){
     // Witnesses are provisional representatives of persistent failure clauses.
@@ -407,7 +423,7 @@ export class OnlineA2Marking {
   }
   frozenFromState(state){
     const assignments=this.assignmentsFor([this.bestPrefix,...state.prefixes],state.support,state.inequalities)??state.assignments;
-    return new SparseA2Marking([...state.support.values()].map(entry=>({...entry,point:[...entry.point],value:assignments.get(entry.key)??0})),{learnedRevisions:state.revision,inequalities:state.inequalities.length});
+    return new SparseA2Marking([...state.support.values()].map(entry=>({...entry,point:[...entry.point],value:assignments.get(entry.key)??0})),{learnedRevisions:state.revision,inequalities:state.inequalities.length,rank:this.rank});
   }
   freeze(){return this.frozenFromState(this);}
   freezeCandidates(){
@@ -425,7 +441,7 @@ export class OnlineA2Marking {
     this.reset();
     return this;
   }
-  stats(){return{revision:this.revision,supportSites:this.support.size,inequalities:this.inequalities.length,failures:this.failures.length,observedFailures:this.failureLedger.length,encodedFailures:this.failureLedger.length-this.pendingFailures.length,pendingFailures:this.pendingFailures.length,prunes:this.prunes,unencodable:this.unencodable,skipped:this.skipped,reencodings:this.reencodings,suspended:false,support:[...this.support.values()].map(entry=>{const value=this.liveAssignments.get(entry.key)??this.assignments.get(entry.key)??0;return{tile:entry.tile,point:[...entry.point],component:entry.component,value,color:value===0?0:value>0?value*2-1:-value*2};})};}
+  stats(){const geometric=this.geometricMemo.stats();return{revision:this.revision,geometricRevision:this.geometricRevision,rank:this.rank,rankExpansions:this.rankExpansions,localInequalitiesEnabled:this.enableLocalInequalities,supportSites:this.support.size,inequalities:this.inequalities.length,failures:this.failures.length,observedFailures:this.failureLedger.length,encodedFailures:this.failureLedger.length,pendingFailures:0,pairEncodedFailures:this.failures.length,pairPendingFailures:this.pendingFailures.length,geometricClauses:geometric.clauses,geometricPrunes:geometric.prunes,frontierClauses:this.frontierFailures.size,frontierPrunes:this.frontierPrunes,prunes:this.prunes+geometric.prunes+this.frontierPrunes,unencodable:this.unencodable,skipped:this.skipped,reencodings:this.reencodings,suspended:false,support:[...this.support.values()].map(entry=>{const value=this.liveAssignments.get(entry.key)??this.assignments.get(entry.key)??0;return{tile:entry.tile,point:[...entry.point],component:entry.component,value,color:value===0?0:value>0?value*2-1:-value*2};})};}
 }
 
 export class NoA2Marking {
@@ -435,6 +451,8 @@ export class NoA2Marking {
   reset(){}
   push(){}
   pop(){}
+  rememberFrontierFailure(){}
+  frontierCompatible(){return true;}
   stats(){return{revision:0,supportSites:0,failures:0,prunes:0,unencodable:0,support:[]};}
 }
 
@@ -485,11 +503,29 @@ export class FixedTurtleMarking extends NoA2Marking{
   stats(){return{revision:0,supportSites:this.support.length,failures:0,prunes:this.prunes,unencodable:0,support:this.support.map(entry=>({...entry,point:[...entry.point],color:entry.value>0?1:2}))};}
 }
 
-export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,onEvent=()=>{},stopToken={stop:false}}){
+export const a2ClusterProposalToken=(prior,candidate)=>`${prior.tile}:${prior.orientation.index}>${candidate.tile}:${candidate.orientation.index}@${a2Key(a2Sub(candidate.translation,prior.translation))}`;
+
+export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}){
+  const weights=new Map();
+  for(let index=1;index<placements.length;index++){
+    const candidate=placements[index],start=Math.max(0,index-window);
+    for(let priorIndex=start;priorIndex<index;priorIndex++){
+      const prior=placements[priorIndex],delta=a2Sub(candidate.translation,prior.translation);
+      if(Math.max(...delta.map(Math.abs))>maxDistance)continue;
+      const token=a2ClusterProposalToken(prior,candidate);
+      weights.set(token,(weights.get(token)??0)+1+(priorIndex===index-1?3:0));
+    }
+  }
+  return [...weights.entries()];
+}
+
+export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,onEvent=()=>{},stopToken={stop:false}}){
   const desired=polygonOccupancy(boundary),seedOccupancy=seed?polygonOccupancy(seed.loop):new Map();
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
   const orientedTiles=Object.entries(tileDefs).flatMap(([tile,loop])=>tileOrientations(tile,loop));
+  const memoRadius=Math.max(1,...orientedTiles.map(orientation=>{const points=[...orientation.occupancy.values()].map(entry=>entry.point);let diameter=1;for(const left of points)for(const right of points)diameter=Math.max(diameter,...a2Sub(left,right).map(Math.abs));return diameter;}));
   const preferredRanks=new Map(preferredPlacements.map((id,index)=>[id,index]));
+  const clusterWeights=new Map(clusterProposals);
   const candidateCache=new Map();
   const cacheCandidates=(key,value)=>{if(candidateCache.size>=1024&&!candidateCache.has(key))candidateCache.delete(candidateCache.keys().next().value);candidateCache.set(key,value);return value;};
   const materializePlacement=placement=>{
@@ -514,7 +550,16 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
     }
     return cacheCandidates(pointKey,[...dedup.values()]);
   };
-  const learner=marking??new OnlineA2Marking(),markingSeed=seed?.markingPlacement??null,sums=new Map([...seedOccupancy].map(([key,entry])=>[key,entry.weight])),pointDepth=new Map([...seedOccupancy.keys()].map(key=>[key,0])),chosen=[],usedPlacements=new Set();let nodes=0,backtracks=0,best=[],bestFilled=0,lastImprovementNode=0;
+  const learner=marking??new OnlineA2Marking(),markingSeed=seed?.markingPlacement??null,sums=new Map([...seedOccupancy].map(([key,entry])=>[key,entry.weight])),pointDepth=new Map([...seedOccupancy.keys()].map(key=>[key,0])),chosen=[],usedPlacements=new Set(),exhaustedBranches=new Set();let nodes=0,backtracks=0,exactMemoPrunes=0,best=[],bestFilled=0,lastImprovementNode=0;
+  const frontierPattern=(pointKey,additions=null)=>{
+    const center=pointKey.split(",").map(Number),tokens=[];
+    for(let dq=-memoRadius;dq<=memoRadius;dq++)for(let dr=Math.max(-memoRadius,-dq-memoRadius);dr<=Math.min(memoRadius,-dq+memoRadius);dr++){
+      const delta=[dq,dr,-dq-dr],point=a2Add(center,delta),key=a2Key(point);
+      const value=(sums.get(key)||0)+(additions?.get(key)?.weight||0);
+      if(value>0)tokens.push(`${dq},${dr}:${value}`);
+    }
+    return tokens.join(";");
+  };
   const initialSites=seedOccupancy.size?[...seedOccupancy.values()].map(entry=>entry.point):[[0,0,0]],distanceCache=new Map();
   const distanceFromInitial=pointKey=>{
     if(distanceCache.has(pointKey))return distanceCache.get(pointKey);
@@ -524,7 +569,13 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
   learner.reset?.(markingSeed?[markingSeed]:[]);
   let rngState=(randomSeed|0)||1;const random=()=>((rngState=Math.imul(rngState,1664525)+1013904223|0)>>>0)/4294967296;
   const filledWeight=()=>[...desired].reduce((sum,[key,entry])=>sum+Math.min(entry.weight,sums.get(key)||0),0),totalWeight=[...desired.values()].reduce((sum,e)=>sum+e.weight,0);
-  const emit=(type,extra={})=>onEvent({type,nodes,backtracks,placed:chosen.length,targetPlacements:maximize?targetPlacements:null,totalCells:totalWeight,coveredCells:filledWeight(),marking:learner.stats(),placements:chosen.slice(),...extra});
+  const branchKey=(candidate,context=chosen)=>`${context.map(placement=>placement.id).sort().join(";")}=>${candidate.id}`;
+  const clusterProposalScore=candidate=>{
+    let score=0;
+    for(const prior of chosen)score+=clusterWeights.get(a2ClusterProposalToken(prior,candidate))??0;
+    return score;
+  };
+  const emit=(type,extra={})=>onEvent({type,nodes,backtracks,placed:chosen.length,targetPlacements:maximize?targetPlacements:null,totalCells:totalWeight,coveredCells:filledWeight(),marking:learner.stats(),searchMemo:{failures:exhaustedBranches.size,prunes:exactMemoPrunes},placements:chosen.slice(),...extra});
   emit("start",{orientationCount:orientedTiles.length});
   const noteFailedPath=(trackers,failurePoint=null)=>{
     for(const tracker of trackers){
@@ -540,10 +591,11 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
     if(maximize&&learner.revision>0&&nodes-lastImprovementNode>=markingStagnationNodes)return "stagnant";
     if(maximize?chosen.length>=targetPlacements:[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
     let choice=null,options=null,choiceInfo={forced:false,branchCount:0,frontierValue:0};
-    const legalAt=(point,limit=Infinity)=>{
+    const legalAt=(point,limit=Infinity,ignoreMarking=false)=>{
       const legal=[];
       for(const p of candidatesForPoint(point)){
         if(usedPlacements.has(p.id))continue;
+        if(exhaustedBranches.has(branchKey(p))){exactMemoPrunes++;continue;}
         let newPoints=0,valid=true;
         const materialized=!!p.occupancy,source=materialized?p.occupancy.values():p.orientation.occupancy.values();
         for(const local of source){
@@ -552,7 +604,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
           if(current+e.weight>target+1e-7){valid=false;break;}
           if(current<1e-7)newPoints++;
         }
-        if(!valid||(maximize&&!newPoints)||(!maximize&&(chosen.some(other=>polygonsOverlap(p.loop,other.loop))||(seed&&polygonsOverlap(p.loop,seed.loop))))||!learner.compatible(p,markingSeed?[markingSeed,...chosen]:chosen))continue;
+        if(!valid||(maximize&&!newPoints)||(!maximize&&(chosen.some(other=>polygonsOverlap(p.loop,other.loop))||(seed&&polygonsOverlap(p.loop,seed.loop))))||(!ignoreMarking&&!learner.compatible(p,markingSeed?[markingSeed,...chosen]:chosen)))continue;
         legal.push(p);if(legal.length>=limit)break;
       }
       return legal;
@@ -570,7 +622,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
       let selected=null;
       for(const entry of nearest){
         const legal=legalAt(entry.point);
-        if(!legal.length){noteFailedPath(trackers,entry.point);emit("fail",{choice:entry.point,frontierValue:entry.value});return false;}
+        if(!legal.length){if(!legalAt(entry.point,1,true).length)learner.rememberFrontierFailure?.(frontierPattern(entry.point));noteFailedPath(trackers,entry.point);emit("fail",{choice:entry.point,frontierValue:entry.value});return false;}
         if(!selected||legal.length<selected.legal.length)selected={...entry,legal};
       }
       if(chosen.length>best.length){best=chosen.slice();bestFilled=filledWeight();lastImprovementNode=nodes;learner.rememberPositive?.(best);}
@@ -579,8 +631,8 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
         const materialized=!!placement.occupancy,source=materialized?placement.occupancy.values():placement.orientation.occupancy.values();
         for(const local of source){const entry=materialized?local:{point:a2Add(local.point,placement.translation),weight:local.weight},key=a2Key(entry.point);size++;if(key===choice)atChoice=entry.weight;if((sums.get(key)||0)>0)coverage++;}
         const newPoints=size-coverage;
-        return{placement,markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=12-1e-7,coverage,newPoints,tie:random()};
-      }).sort((a,b)=>b.markScore-a.markScore||Number(b.fills)-Number(a.fills)||b.coverage-a.coverage||b.newPoints-a.newPoints||a.tie-b.tie).map(entry=>entry.placement);
+        return{placement,clusterScore:clusterProposalScore(placement),markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=12-1e-7,coverage,newPoints,tie:random()};
+      }).sort((a,b)=>b.clusterScore-a.clusterScore||b.markScore-a.markScore||Number(b.fills)-Number(a.fills)||b.coverage-a.coverage||b.newPoints-a.newPoints||a.tie-b.tie).map(entry=>entry.placement);
       choiceInfo={forced:options.length===1,branchCount:options.length,frontierValue:selected.value,frontierDistance:selected.distance,nearestFrontierDistance:nearestDistance};
     }else{
       for(const [point,target] of desired){const current=sums.get(point)||0;if(current>=target.weight-1e-7)continue;
@@ -595,6 +647,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
       // A learned revision may have invalidated options computed earlier at this node.
       if(usedPlacements.has(placement.id)||!learner.compatible(placement,markingSeed?[markingSeed,...chosen]:chosen))continue;
       materializePlacement(placement);
+      if(maximize&&[...placement.occupancy].some(([key,entry])=>(sums.get(key)||0)+entry.weight<12-1e-7&&!learner.frontierCompatible?.(frontierPattern(key,placement.occupancy))))continue;
       emit("trial",{candidate:placement,choice,...choiceInfo});
       if(animationDelayMs>0)await new Promise(resolve=>setTimeout(resolve,animationDelayMs));
       const context=chosen.slice(),candidateContacts=new Set(placement.occupancy.keys());
@@ -607,11 +660,16 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
       // Detect that local certificate immediately instead of burying it beneath
       // thousands of unrelated outward moves.
       const stranded=maximize?[...placement.occupancy.keys()].find(key=>(sums.get(key)||0)<12-1e-7&&!legalAt(key,1).length):null;
-      if(stranded){noteFailedPath(childTrackers,stranded);emit("fail",{choice:stranded,frontierValue:sums.get(stranded)||0});}
+      if(stranded){if(!legalAt(stranded,1,true).length)learner.rememberFrontierFailure?.(frontierPattern(stranded));noteFailedPath(childTrackers,stranded);emit("fail",{choice:stranded,frontierValue:sums.get(stranded)||0});}
       const result=stranded?false:await search(depth+1,childTrackers);
       if(result===true)return true;
       chosen.pop();usedPlacements.delete(placement.id);learner.pop?.(placement);for(const [key,e] of placement.occupancy){const next=(sums.get(key)||0)-e.weight;if(next<1e-7){sums.delete(key);pointDepth.delete(key);}else sums.set(key,next);}
       if(result==="unknown"||result==="stagnant")return result;
+      // This exact candidate and placement context has been exhausted. Keep it
+      // across marking re-encodings: a new geometric witness may generalize a
+      // permanent failure differently, but it may not make the same observed
+      // failed branch unknown again.
+      exhaustedBranches.add(branchKey(placement,context));
       backtracks++;emit("backtrack",{removed:placement,choice,...choiceInfo});
       if(animationDelayMs>0)await new Promise(resolve=>setTimeout(resolve,animationDelayMs));
       let update=null;
@@ -622,7 +680,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
       if(options.length>1&&context.length){
         emit("learning-start",{removed:placement});
         update=await learner.learn(context,placement,{alternatives:options.filter(option=>option.id!==placement.id),failurePoint:branchTracker.failurePoint??stranded??choice,failurePoints:[...branchTracker.failurePoints.values()],failureFootprint:[...branchTracker.footprint.values()],failedBranch:branchTracker.path,frontier:branchTracker.frontier,defer:context.length<learningWarmupDepth||learner.revision>=maxMarkingRevisions,shouldStop:()=>stopToken.stop,onProgress:attempts=>emit("learning-progress",{attempts,removed:placement})});
-        if(update?.revision){learner.reset?.(markingSeed?[markingSeed,...context]:context);emit("learn",{update,removed:placement});}
+        if(update?.revision||update?.geometricRevision){learner.reset?.(markingSeed?[markingSeed,...context]:context);emit("learn",{update,removed:placement});}
         else if(update?.skipped)emit("learning-skip",{update,removed:placement});
       }
       if(nodes%32===0)await new Promise(requestAnimationFrame);
@@ -637,11 +695,13 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
     learner.reset?.(markingSeed?[markingSeed]:[]);
     emit("marking-reencoded",{reencoding,reason:result==="stagnant"?"stagnation":"root-exhausted"});
     lastImprovementNode=nodes;
+    const nodesBeforeRestart=nodes;
     result=await search();
+    if(result===false&&nodes===nodesBeforeRestart){emit("memo-fixed-point",{reason:"all-root-options-memoized"});break;}
   }
   if(result!==true){chosen.splice(0,chosen.length,...best);sums.clear();for(const [key,e] of seedOccupancy)sums.set(key,e.weight);for(const p of chosen)for(const [key,e] of p.occupancy)sums.set(key,(sums.get(key)||0)+e.weight);}
   emit("finished",{result:result===true?"yes":result===false?"no":"unknown"});
-  return {result:result===true?"yes":result===false?"no":"unknown",placements:chosen,stats:{nodes,backtracks,...learner.stats()}};
+  return {result:result===true?"yes":result===false?"no":"unknown",placements:chosen,stats:{nodes,backtracks,exactMemoPrunes,memoizedBranches:exhaustedBranches.size,...learner.stats()}};
 }
 
 // A failed branch is only a negative example for one local configuration.  A

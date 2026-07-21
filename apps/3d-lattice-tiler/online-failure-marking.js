@@ -1,3 +1,5 @@
+import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js";
+
 const vecKey = (point) => point.map(value => Math.round(value * 1e9) / 1e9).join(",");
 
 const clonePlacement = (placement) => ({
@@ -56,8 +58,9 @@ class DisjointSet {
  * every earlier failure remains rejected.
  */
 export class OnlineFailureMarking {
-  constructor({ max_reach = null } = {}) {
+  constructor({ max_reach = null, enable_pair_marking = false } = {}) {
     this.maxReach = Number.isFinite(max_reach) ? Math.max(0, max_reach | 0) : null;
+    this.enablePairMarking = !!enable_pair_marking;
     this.support = new Map();
     this.failures = [];
     this.failureLedger = [];
@@ -65,6 +68,15 @@ export class OnlineFailureMarking {
     this.protectedPatches = [];
     this.revision = 0;
     this.unencodable = 0;
+    this.geometricMemo = new GeometricFailureMemo({
+      describePlacement: placement => placement?.orient && placement?.translation ? {
+        kind: String(placement.prototile_idx),
+        orientation: placement.orient.__orientation_id
+          ?? placement.orient.__mark_matrix?.flat().join(",")
+          ?? "unknown",
+        translation: placement.translation
+      } : null
+    });
   }
 
   snapshotPlacements(placements) {
@@ -81,6 +93,8 @@ export class OnlineFailureMarking {
   }
 
   compatible(candidate, context, support = this.support) {
+    if (support === this.support && !this.geometricMemo.compatible(candidate, context)) return false;
+    if (!this.enablePairMarking) return true;
     if (!support.size) return true;
     const candidateMarks = this.marksForPlacement(candidate, support);
     for (const placement of context) {
@@ -164,6 +178,21 @@ export class OnlineFailureMarking {
     const candidate = clonePlacement(failedCandidate);
     const certificate = { context, candidate };
     this.failureLedger.push(certificate);
+    const geometric = this.geometricMemo.encode(context, candidate, { failure: this.failureLedger.length });
+    if (!this.enablePairMarking) {
+      if (!geometric.duplicate) this.revision += 1;
+      return {
+        committed: true,
+        geometric_only: true,
+        revision: this.revision,
+        reach: 0,
+        support_sites: 0,
+        failures: this.failureLedger.length,
+        observed_failures: this.failureLedger.length,
+        pending_failures: 0,
+        geometric_clauses: this.geometricMemo.clauses.length
+      };
+    }
     const protectedPatches = [...this.protectedPatches, context];
     const failures = [...this.failures, certificate];
     const reachLimit = this.maxReach ?? this.failedBranchReach(context, candidate);
@@ -208,13 +237,19 @@ export class OnlineFailureMarking {
   }
 
   stats() {
+    const geometric = this.geometricMemo.stats();
     return {
       revision: this.revision,
       support_sites: this.support.size,
-      learned_failures: this.failures.length,
+      learned_failures: this.failureLedger.length,
       observed_failures: this.failureLedger.length,
-      encoded_failures: this.failureLedger.length - this.pendingFailures.length,
-      pending_failures: this.pendingFailures.length,
+      encoded_failures: this.failureLedger.length,
+      pending_failures: 0,
+      pair_encoded_failures: this.enablePairMarking ? this.failures.length : 0,
+      pair_pending_failures: this.enablePairMarking ? this.pendingFailures.length : 0,
+      geometric_clauses: geometric.clauses,
+      geometric_prunes: geometric.prunes,
+      pair_marking_enabled: this.enablePairMarking,
       protected_prefixes: this.protectedPatches.length,
       unencodable: this.unencodable
     };

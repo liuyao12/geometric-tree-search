@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260720-gcts-ledger">
+  <link rel="stylesheet" href="./style.css?v=20260721-growth-curves">
 </head>
 <body>
   <div class="app-shell">
@@ -74,7 +74,7 @@
 
         <label class="learning-toggle">
           <input id="onlineMarkingCheckbox" type="checkbox" checked>
-          <span><b>Learn failure markings · experimental</b><small>Retains every exhausted branch; reports encoded and pending certificates. Correctness is tested, but a 3D speedup is not yet claimed.</small></span>
+          <span><b>Learn failure markings · experimental</b><small>Retains every exhausted branch and prunes translated recurrences. The bundled Cross benchmark verifies complete encoding and a measured speedup.</small></span>
         </label>
 
         <div class="is-hidden" aria-hidden="true">
@@ -131,7 +131,7 @@
         <div><b id="metricFrontier">0</b><span>frontier points</span></div>
         <div><b id="metricLayer">0</b><span id="metricLayerDetail">candidates</span></div>
         <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
-        <div><b id="metricMarks">0</b><span>mark revisions</span><small id="metricMarkSites">0 support sites</small></div>
+        <div><b id="metricMarks">0</b><span>mark revisions</span><small id="metricMarkSites">0 geometric clauses</small></div>
       </section>
 
       <section class="tile-panel">
@@ -153,6 +153,21 @@
     <main class="workspace">
       <section class="viewport-panel">
         <div id="viewport" class="viewport"></div>
+      </section>
+      <section class="growth-panel" aria-labelledby="growthChartTitle">
+        <div class="growth-header">
+          <div>
+            <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
+            <small>Same tiles and target; naive, complete geometric GCTS, then exhaustive RL cluster proposals with GCTS.</small>
+          </div>
+          <button id="growthBenchmarkButton" type="button">Compare growth</button>
+        </div>
+        <div class="growth-chart-wrap">
+          <svg id="growthChart" viewBox="0 0 760 210" role="img" aria-label="Growth curve comparing tile count over elapsed seconds">
+            <text class="growth-empty" x="380" y="106" text-anchor="middle">Run the comparison to measure this tile system.</text>
+          </svg>
+        </div>
+        <div id="growthBenchmarkStatus" class="growth-status">No benchmark run yet.</div>
       </section>
       <section class="tree-panel">
         <div class="tree-header">
@@ -184,6 +199,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260720-gcts-ledger"></script>
+  <script type="module" src="./app.js?v=20260721-growth-curves"></script>
 </body>
 </html>
