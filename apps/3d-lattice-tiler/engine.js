@@ -143,7 +143,7 @@ export const createTilingStream = (() => {
     };
     const tilingDimension = Math.max(1, ...prototiles.map(tile => affineRank(tile.verts)));
     const onlineMarking = config.online_failure_marking && tilingDimension >= 3
-      ? new OnlineFailureMarking({ max_reach: config.online_marking_max_reach ?? null })
+      ? new OnlineFailureMarking({ max_reach: config.online_marking_max_reach ?? null, enable_pair_marking: !!config.online_pair_marking })
       : null;
     const configuredSharedVertices = Number(config.min_shared_vertices);
     const minSharedVertices = Number.isFinite(configuredSharedVertices) && configuredSharedVertices > 0
@@ -223,6 +223,9 @@ export const createTilingStream = (() => {
       marking_observed_failures: 0,
       marking_pending_failures: 0,
       marking_prunes: 0,
+      marking_geometric_clauses: 0,
+      marking_geometric_prunes: 0,
+      marking_pair_pending_failures: 0,
       marking_unencodable: 0
     };
     const branchStack = [];
@@ -826,7 +829,10 @@ export const createTilingStream = (() => {
     await tick();
 
     const branchCap = Math.max(1, +config.branch_cap || Infinity);
-    const agentBranchCap = Math.max(1, +config.agent_branch_cap || (Number.isFinite(branchCap) ? branchCap : 6));
+    const agentExhaustive = !!config.agent_exhaustive;
+    const agentBranchCap = agentExhaustive
+      ? Infinity
+      : Math.max(1, +config.agent_branch_cap || (Number.isFinite(branchCap) ? branchCap : 6));
     const nodeLimit = Math.max(1, +config.node_limit || Infinity);
     const candidateCap = Math.max(1, +config.candidate_cap || Infinity);
     const timeLimitMs = Math.max(1, +config.time_limit_ms || Infinity);
@@ -847,7 +853,7 @@ export const createTilingStream = (() => {
     let incompleteRevision = 0;
     const noteIncompleteSearch = () => { incompleteRevision += 1; };
     const markingProofEnabled = !!onlineMarking
-      && !usePolicyAgent
+      && (!usePolicyAgent || agentExhaustive)
       && !Number.isFinite(branchCap)
       && !Number.isFinite(candidateCap);
     const commitFailedBranch = (context, move) => {
@@ -859,6 +865,9 @@ export const createTilingStream = (() => {
       searchStats.marking_failures = stats.encoded_failures;
       searchStats.marking_observed_failures = stats.observed_failures;
       searchStats.marking_pending_failures = stats.pending_failures;
+      searchStats.marking_geometric_clauses = stats.geometric_clauses;
+      searchStats.marking_geometric_prunes = stats.geometric_prunes;
+      searchStats.marking_pair_pending_failures = stats.pair_pending_failures;
       searchStats.marking_unencodable = stats.unencodable;
       if (update.committed) {
         state.vertex_candidate_cache.clear();
@@ -1624,7 +1633,7 @@ export const createTilingStream = (() => {
             occupancy_data: candidate.occupancy_data
           };
           const features = moveAgentFeatures(move, option);
-          if (Number.isFinite(forcedMoveLayerLagCap) &&
+          if (!agentExhaustive && Number.isFinite(forcedMoveLayerLagCap) &&
               features.layer_lag > forcedMoveLayerLagCap &&
               (features.periodic_evidence > 0 || features.linear_repeat > 0)) {
             continue;
@@ -1638,9 +1647,9 @@ export const createTilingStream = (() => {
           if (!current || compareScoreVectors(score, current.score) < 0) dedup.set(key, { move, score });
         }
       }
-      return [...dedup.values()]
-        .sort((left, right) => compareScoreVectors(left.score, right.score))
-        .slice(0, agentBranchCap)
+      const proposals = [...dedup.values()]
+        .sort((left, right) => compareScoreVectors(left.score, right.score));
+      return (Number.isFinite(agentBranchCap) ? proposals.slice(0, agentBranchCap) : proposals)
         .map(item => item.move);
     };
     const preflightEnabled = config.template_preflight !== false;
@@ -2144,7 +2153,6 @@ export const createTilingStream = (() => {
           yield nodeStatus(mv.node_id, "fail");
         }
         undoMove(mv, rb);
-        yield placementDelta("remove", mv, rb, mv.node_id);
         if (!child && learningContext && proofRevision === incompleteRevision) {
           const markingUpdate = commitFailedBranch(learningContext, mv);
           if (markingUpdate?.committed) {
@@ -2156,6 +2164,7 @@ export const createTilingStream = (() => {
             };
           }
         }
+        yield placementDelta("remove", mv, rb, mv.node_id);
         setBranchCursor(depth, bestMoves.length, i + 1);
       }
 

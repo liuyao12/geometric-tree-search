@@ -99,6 +99,7 @@ assert.equal(unmarkedLarge.result, "yes");
 assert.ok(recovered.stats.nodes < unmarkedLarge.stats.nodes, `GCTS memoization must traverse fewer nodes than the same unmarked search (${recovered.stats.nodes} < ${unmarkedLarge.stats.nodes})`);
 assert.ok(recovered.stats.backtracks < unmarkedLarge.stats.backtracks, "GCTS memoization must skip repeated failed subtrees");
 assert.ok(recovered.stats.prunes > 0, "learned geometric mismatches must reject repeated placement candidates");
+assert.equal(recovered.stats.exactMemoPrunes, 0, "the known 100-Turtle run must not need to revisit an exact exhausted branch");
 assert.equal(recovered.stats.suspended, false, "the learned support must never be erased by suspension");
 assert.ok(recovered.stats.revision > 0, "growth must learn inequalities on the fly");
 assert.equal(recovered.stats.inequalities, recovered.stats.revision);
@@ -133,6 +134,23 @@ for (const mark of recovered.stats.support) {
   allocatedChannels.get(key).add(mark.component);
 }
 assert.ok([...allocatedChannels.values()].some(channels => channels.size < 3), "the three channel domains must be allocated independently");
+
+for (const tile of ["turtle", "hat"]) {
+  const orientation = tileOrientations(tile, A2_TILE_LOOPS[tile])[1];
+  const seedLoop = A2_TILE_LOOPS[tile].map(point => a2Transform(point, orientation.symmetry));
+  const options = {
+    boundary: makeHexBoundary(50), seed: { loop: seedLoop }, tiles: [tile],
+    maximize: true, targetPlacements: 30, nodeLimit: 5000, randomSeed: 4
+  };
+  const baseline = await solveA2Tiling({ ...options, marking: new NoA2Marking() });
+  const geometric = await solveA2Tiling({ ...options, marking: new OnlineA2Marking({ enableLocalInequalities: false }) });
+  assert.equal(baseline.result, "yes");
+  assert.equal(geometric.result, "yes", `${tile} cluster GCTS must retain a successful tiling branch`);
+  assert.ok(geometric.stats.nodes < baseline.stats.nodes, `${tile} cluster GCTS must visit fewer nodes than naive DFS (${geometric.stats.nodes} < ${baseline.stats.nodes})`);
+  assert.ok(geometric.stats.frontierPrunes > 0, `${tile} must reuse translated terminal-frontier failures`);
+  assert.equal(geometric.stats.encodedFailures, geometric.stats.observedFailures, `${tile} must retain every observed branch failure`);
+  assert.equal(geometric.stats.memoizedBranches, geometric.stats.backtracks, `${tile} must retain every exhausted placement/context branch exactly`);
+}
 
 const recoveredSelection = await selectA2FrozenMarking({
   learner: recoveredLearner,
@@ -182,5 +200,47 @@ const learned = await solveA2Tiling({
 assert.ok(learned.placements.length > 0, "growth mode keeps its best live patch");
 assert.ok(learned.stats.revision > 0, "exhausted growth branches revise the marking");
 assert.ok(learned.stats.supportSites >= learned.stats.revision, "the flexible support grows with learning");
+assert.equal(learned.stats.encodedFailures, learned.stats.observedFailures, "every failed branch is retained as a geometric cluster clause");
+assert.equal(learned.stats.pendingFailures, 0, "complete cluster memoization has no discarded failures");
+
+const adaptiveRank = await solveA2Tiling({
+  boundary: makeHexBoundary(20), seed: { loop: A2_TILE_LOOPS.turtle }, tiles: ["turtle"],
+  maximize: true, targetPlacements: 20, nodeLimit: 500, learningWarmupDepth: 0,
+  markingStagnationNodes: Infinity, randomSeed: 4,
+  marking: new OnlineA2Marking({ maxWitnessTrials: 8, yieldEvery: 8, maxRank: 6 })
+});
+assert.equal(adaptiveRank.stats.rank, 6, "the optional learner can add an independent rank-3 block");
+assert.equal(adaptiveRank.stats.rankExpansions, 1, "rank 3 expands to rank 6 at most once");
+assert.equal(adaptiveRank.stats.encodedFailures, adaptiveRank.stats.observedFailures, "rank expansion preserves the complete geometric failure ledger");
+
+// Re-encoding changes the geometric representative of a permanent failure.
+// It must not make the solver retry an identical placement/context branch.
+const retraceTrials = new Set(), retraceFailures = new Set();
+let retracedFailureCount = 0, reencodingCount = 0;
+const pathologicalRetrace = await solveA2Tiling({
+  boundary: makeHexBoundary(20),
+  seed: { loop: A2_TILE_LOOPS.turtle },
+  tiles: ["turtle"],
+  maximize: true,
+  targetPlacements: 20,
+  nodeLimit: 500,
+  learningWarmupDepth: 0,
+  markingStagnationNodes: Infinity,
+  randomSeed: 4,
+  onEvent: event => {
+    const context = event.placements.map(placement => placement.id).sort().join(";");
+    if (event.type === "trial") {
+      const key = `${context}=>${event.candidate.id}`;
+      if (retraceFailures.has(key)) retracedFailureCount++;
+      retraceTrials.add(key);
+    }
+    if (event.type === "backtrack") retraceFailures.add(`${context}=>${event.removed.id}`);
+    if (event.type === "marking-reencoded") reencodingCount++;
+  }
+});
+assert.equal(retracedFailureCount, 0, "marking re-encoding may not retrace an identical exhausted branch");
+assert.equal(pathologicalRetrace.stats.nodes, retraceTrials.size, "every headless trial state must be unique");
+assert.ok(pathologicalRetrace.stats.memoizedBranches > 0, "the exact failure guard must retain exhausted placement contexts");
+assert.ok(reencodingCount <= 1, "an exact-memo fixed point must stop witness-replacement restarts");
 
 console.log("A2 online tiler checks passed", learned.stats);

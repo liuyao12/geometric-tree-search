@@ -30,6 +30,7 @@
     <article class="article-shell">
       <section class="article-content">
         <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. A useful summary is that <strong>GCTS is memoization by way of encoding failures geometrically</strong>: when a branch fails, its obstruction is recorded as a marking whose transformed overlap recognizes and rejects the same geometric situation later. The learned marking accelerates the tree search by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
+        <p>There is a suggestive analogy here with Vaughan Jones's <a href="https://arxiv.org/abs/math/9909027">planar algebras</a>, in which operations are indexed by planar tangles and composition is literally geometric gluing. Terence Tao later emphasized this as a genuinely two-dimensional alternative to the usual one-dimensional strings of algebraic notation in his remembrance of <a href="https://terrytao.wordpress.com/2020/09/09/vaughan-jones/">Vaughan Jones</a>. GCTS similarly lets spatial composition carry the computation: transformed markings glue on overlaps, while incompatible overlaps encode a failed continuation. This is a family resemblance rather than an identification—our present construction has not been given the vector-space, multilinear, or planar-operad axioms of a planar algebra—but it suggests a useful question: whether failure certificates and their composition admit a natural planar-algebraic formulation.</p>
 
         <aside class="margin-note">GCTS is not a replacement on MCTS, Monte Carlo Tree Search; the two could be combined in certain problems.</aside>
 
@@ -63,7 +64,7 @@
 
   <script src="./assets/markdown-article.js" data-markdown="./docs/blog/tree-search-with-geometric-constraints.md" defer></script>
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js';
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260721-frontier-memo';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;

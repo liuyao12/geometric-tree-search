@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260720-gcts-ledger";
+import { tileSpecs } from "./engine.js?v=20260721-growth-curves";
 
 const $ = (id) => document.getElementById(id);
 
@@ -39,6 +39,9 @@ const closeBuilderButton = $("closeBuilderButton");
 const treePanel = $("treePanel");
 const viewport = $("viewport");
 const elapsedTime = $("elapsedTime");
+const growthBenchmarkButton = $("growthBenchmarkButton");
+const growthChart = $("growthChart");
+const growthBenchmarkStatus = $("growthBenchmarkStatus");
 
 const metricTiles = $("metricTiles");
 const metricFrontier = $("metricFrontier");
@@ -188,6 +191,10 @@ let pausedConfigKey = null;
 let startedAt = 0;
 let solverWorker = null;
 let solverWorkerActive = false;
+let growthWorker = null;
+let growthSequence = 0;
+let growthRunning = false;
+const growthSeries = new Map();
 let workerDisplayPaused = false;
 let solverMessageQueue = [];
 let solverMessageQueueIndex = 0;
@@ -1545,7 +1552,7 @@ function updateSearchMetrics(stats = null) {
     ? `${completedPathLabel}/${totalPathLabel} paths`
     : `${completedPaths} paths`;
   metricMarks.textContent = stats?.marking_revisions ?? 0;
-  metricMarkSites.textContent = `${stats?.marking_support_sites ?? 0} support sites · ${stats?.marking_failures ?? 0}/${stats?.marking_observed_failures ?? 0} failures encoded · ${stats?.marking_pending_failures ?? 0} pending · ${stats?.marking_prunes ?? 0} prunes`;
+  metricMarkSites.textContent = `${stats?.marking_geometric_clauses ?? 0} geometric clauses · ${stats?.marking_failures ?? 0}/${stats?.marking_observed_failures ?? 0} failures encoded · ${stats?.marking_pending_failures ?? 0} pending · ${stats?.marking_geometric_prunes ?? 0} prunes`;
 }
 
 function refreshNodeMetricFallback() {
@@ -2316,7 +2323,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260720-gcts-ledger", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260721-growth-curves", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2438,6 +2445,183 @@ function pauseRun() {
   setStatus("Paused");
 }
 
+const SVG_NS = "http://www.w3.org/2000/svg";
+const GROWTH_MODES = [
+  { id: "naive", label: "Naive" },
+  { id: "gcts", label: "GCTS" },
+  { id: "gcts-rl", label: "GCTS + RL clusters" }
+];
+
+function svgNode(name, attributes = {}, textContent = null) {
+  const node = document.createElementNS(SVG_NS, name);
+  for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, String(value));
+  if (textContent != null) node.textContent = textContent;
+  return node;
+}
+
+function niceGrowthMaximum(value, ticks = 4) {
+  if (!Number.isFinite(value) || value <= 0) return ticks;
+  const rough = value / ticks;
+  const power = 10 ** Math.floor(Math.log10(rough));
+  const fraction = rough / power;
+  const step = (fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10) * power;
+  return Math.ceil(value / step) * step;
+}
+
+function renderGrowthChart() {
+  growthChart.replaceChildren();
+  const allPoints = [...growthSeries.values()].flatMap(series => series.points ?? []);
+  if (!allPoints.length) {
+    growthChart.append(svgNode("text", { class: "growth-empty", x: 380, y: 106, "text-anchor": "middle" }, "Run the comparison to measure this tile system."));
+    return;
+  }
+
+  const width = 760, height = 210;
+  const margin = { left: 48, right: 18, top: 37, bottom: 31 };
+  const plotWidth = width - margin.left - margin.right;
+  const plotHeight = height - margin.top - margin.bottom;
+  const maxMilliseconds = niceGrowthMaximum(Math.max(1, ...allPoints.map(point => point.milliseconds)), 5);
+  const maxTiles = Math.max(1, Math.ceil(Math.max(...allPoints.map(point => point.tiles)) / 4) * 4);
+  const x = milliseconds => margin.left + Math.max(0, milliseconds) / maxMilliseconds * plotWidth;
+  const y = tiles => margin.top + plotHeight - Math.max(0, tiles) / maxTiles * plotHeight;
+
+  growthChart.append(
+    svgNode("title", {}, "Measured tiling growth curves"),
+    svgNode("desc", {}, "Step chart of the greatest number of tiles reached over wall-clock time for naive search, geometric GCTS, and GCTS with exhaustive reinforcement-learning cluster proposals.")
+  );
+
+  for (let index = 0; index <= 4; index += 1) {
+    const value = maxTiles * index / 4;
+    const yy = y(value);
+    growthChart.append(svgNode("line", { class: "growth-grid", x1: margin.left, y1: yy, x2: width - margin.right, y2: yy }));
+    growthChart.append(svgNode("text", { class: "growth-tick", x: margin.left - 8, y: yy + 4, "text-anchor": "end" }, Number.isInteger(value) ? value : value.toFixed(1)));
+  }
+  for (let index = 0; index <= 5; index += 1) {
+    const value = maxMilliseconds * index / 5;
+    const xx = x(value);
+    growthChart.append(svgNode("line", { class: "growth-grid", x1: xx, y1: margin.top, x2: xx, y2: margin.top + plotHeight }));
+    growthChart.append(svgNode("text", { class: "growth-tick", x: xx, y: height - 12, "text-anchor": "middle" }, (value / 1000).toFixed(value < 1000 ? 2 : 1)));
+  }
+  growthChart.append(
+    svgNode("line", { class: "growth-axis", x1: margin.left, y1: margin.top + plotHeight, x2: width - margin.right, y2: margin.top + plotHeight }),
+    svgNode("line", { class: "growth-axis", x1: margin.left, y1: margin.top, x2: margin.left, y2: margin.top + plotHeight }),
+    svgNode("text", { class: "growth-axis-label", x: margin.left + plotWidth / 2, y: height - 1, "text-anchor": "middle" }, "elapsed time (seconds)"),
+    svgNode("text", { class: "growth-axis-label", x: 12, y: margin.top + plotHeight / 2, transform: `rotate(-90 12 ${margin.top + plotHeight / 2})`, "text-anchor": "middle" }, "tiles")
+  );
+
+  GROWTH_MODES.forEach((mode, index) => {
+    const legendX = margin.left + index * 180;
+    growthChart.append(svgNode("line", { class: `growth-series growth-series-${mode.id}`, x1: legendX, y1: 14, x2: legendX + 24, y2: 14 }));
+    growthChart.append(svgNode("text", { class: "growth-legend", x: legendX + 30, y: 18 }, mode.label));
+  });
+
+  for (const mode of GROWTH_MODES) {
+    const series = growthSeries.get(mode.id);
+    const points = series?.points ?? [];
+    if (!points.length) continue;
+    let path = `M ${x(points[0].milliseconds)} ${y(points[0].tiles)}`;
+    for (let index = 1; index < points.length; index += 1) {
+      path += ` H ${x(points[index].milliseconds)} V ${y(points[index].tiles)}`;
+    }
+    const finalTime = series?.result?.milliseconds ?? points.at(-1).milliseconds;
+    path += ` H ${x(Math.min(finalTime, maxMilliseconds))}`;
+    growthChart.append(svgNode("path", { class: `growth-series growth-series-${mode.id}`, d: path }));
+
+    for (const point of points) {
+      const className = `growth-marker growth-marker-${mode.id}`;
+      if (mode.id === "naive") {
+        growthChart.append(svgNode("rect", { class: className, x: x(point.milliseconds) - 3, y: y(point.tiles) - 3, width: 6, height: 6 }));
+      } else if (mode.id === "gcts-rl") {
+        const xx = x(point.milliseconds), yy = y(point.tiles);
+        growthChart.append(svgNode("path", { class: className, d: `M ${xx} ${yy - 4} L ${xx + 4} ${yy + 3} L ${xx - 4} ${yy + 3} Z` }));
+      } else {
+        growthChart.append(svgNode("circle", { class: className, cx: x(point.milliseconds), cy: y(point.tiles), r: 3.2 }));
+      }
+    }
+  }
+}
+
+function formatGrowthResult(result, target) {
+  const targetPoint = result?.points?.find(point => point.tiles >= target);
+  if (targetPoint) return `${result.label} ${formatElapsed(targetPoint.milliseconds)}`;
+  return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}`;
+}
+
+function finishGrowthBenchmark(results) {
+  growthRunning = false;
+  growthBenchmarkButton.textContent = "Compare growth";
+  const target = Number(maxTilesInput.value) || 1;
+  growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
+  renderGrowthChart();
+}
+
+function stopGrowthBenchmark(status = "Comparison stopped.") {
+  growthSequence += 1;
+  growthWorker?.postMessage({ type: "stop" });
+  growthWorker?.terminate();
+  growthWorker = null;
+  growthRunning = false;
+  growthBenchmarkButton.textContent = "Compare growth";
+  growthBenchmarkStatus.textContent = status;
+}
+
+function startGrowthBenchmark() {
+  if (!hasRunnableSelection()) {
+    growthBenchmarkStatus.textContent = "Choose a figure or enable the custom polycube first.";
+    return;
+  }
+  if (running || paused) {
+    stopSolverWorker();
+    runSeq += 1;
+    running = false;
+    paused = false;
+    setRunButton();
+    setStatus("Stopped main run for a fair growth comparison.");
+  }
+  if (growthWorker) stopGrowthBenchmark();
+  growthSeries.clear();
+  renderGrowthChart();
+  growthSequence += 1;
+  const sequence = growthSequence;
+  const config = JSON.parse(configKey());
+  config.criterion = "count";
+  config.target_val = Math.max(2, Number(maxTilesInput.value) || 2);
+  config.time_limit_ms = config.time_limit_ms ?? 15000;
+  config.ui_yield_interval_ms = 250;
+  growthRunning = true;
+  growthBenchmarkButton.textContent = "Stop comparison";
+  growthBenchmarkStatus.textContent = `Measuring naive search to ${config.target_val} tiles…`;
+
+  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260721-growth-curves", import.meta.url), { type: "module" });
+  growthWorker.addEventListener("message", event => {
+    const message = event.data ?? {};
+    if (message.sequence !== sequence) return;
+    if (message.type === "series-start") {
+      growthSeries.set(message.mode.id, { mode: message.mode, points: [] });
+      growthBenchmarkStatus.textContent = `Measuring ${message.mode.label}…`;
+    } else if (message.type === "sample") {
+      const series = growthSeries.get(message.mode) ?? { points: [] };
+      series.points.push(message.point);
+      growthSeries.set(message.mode, series);
+      renderGrowthChart();
+    } else if (message.type === "series-finished") {
+      const series = growthSeries.get(message.result.mode) ?? { points: [] };
+      series.result = message.result;
+      if (!series.points.length) series.points = message.result.points ?? [];
+      growthSeries.set(message.result.mode, series);
+      renderGrowthChart();
+    } else if (message.type === "finished") {
+      growthWorker?.terminate();
+      growthWorker = null;
+      finishGrowthBenchmark(message.results ?? []);
+    } else if (message.type === "error") {
+      stopGrowthBenchmark(`Comparison error: ${message.error}`);
+    }
+  });
+  growthWorker.addEventListener("error", error => stopGrowthBenchmark(`Comparison error: ${error.message}`));
+  growthWorker.postMessage({ type: "start", sequence, config });
+}
+
 function bindControls() {
   document.querySelectorAll('input[name="criterion"]').forEach((radio) => {
     radio.addEventListener("change", () => {
@@ -2477,6 +2661,11 @@ function bindControls() {
     if (running) return pauseRun();
     if (paused && pausedConfigKey === configKey() && solverWorkerActive) return continueRun();
     return startNewRun();
+  });
+
+  growthBenchmarkButton.addEventListener("click", () => {
+    if (growthRunning) stopGrowthBenchmark();
+    else startGrowthBenchmark();
   });
 
   customBuilderButton.addEventListener("click", openCustomBuilderDialog);

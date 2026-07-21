@@ -9,7 +9,7 @@ import {
   selectA2FrozenMarking,
   solveA2Tiling,
   tileOrientations
-} from "../../assets/a2-tiling-engine.js?v=20260720-certified-ledger";
+} from "../../assets/a2-tiling-engine.js?v=20260721-frontier-memo";
 
 const $ = id => document.getElementById(id);
 const canvas = $("canvas");
@@ -45,6 +45,10 @@ let camera = { zoom: 1, x: 0, y: 0 };
 let dragging = false;
 let dragPoint = null;
 const comparisonRuns = new Map();
+let growthWorker = null;
+let growthSequence = 0;
+let growthRunning = false;
+const growthSeries = new Map();
 
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const presetButtons = [...document.querySelectorAll("[data-preset]")];
@@ -351,6 +355,7 @@ function updateBoundaryState() {
 }
 
 function setMode(next) {
+  if (growthRunning) stopGrowthBenchmark("Comparison stopped because the problem changed.");
   mode = next;
   modeButtons.forEach(button => button.classList.toggle("active", button.dataset.mode === mode));
   $("growthControls").hidden = mode !== "growth"; $("regionControls").hidden = mode !== "region";
@@ -360,6 +365,97 @@ function setMode(next) {
 
 function selectedTiles() { return [...selectedTileIds]; }
 function customTilePayload() { return Object.fromEntries([...tileRegistry].map(([id, tile]) => [id, tile.loop])); }
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+const GROWTH_MODES = [
+  { id: "naive", label: "Naive" },
+  { id: "gcts", label: "GCTS cluster memo" },
+  { id: "gcts-rl", label: "GCTS + learned clusters" }
+];
+const svgNode = (name, attributes = {}, content = null) => {
+  const node = document.createElementNS(SVG_NS, name);
+  for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, String(value));
+  if (content != null) node.textContent = content;
+  return node;
+};
+function niceGrowthMaximum(value, ticks = 4) {
+  if (!Number.isFinite(value) || value <= 0) return ticks;
+  const rough = value / ticks, power = 10 ** Math.floor(Math.log10(rough)), fraction = rough / power;
+  const step = (fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10) * power;
+  return Math.ceil(value / step) * step;
+}
+function renderGrowthChart() {
+  const chart = $("growthChart"); chart.replaceChildren();
+  const allPoints = [...growthSeries.values()].flatMap(series => series.points ?? []);
+  if (!allPoints.length) { chart.append(svgNode("text", { class: "growth-empty", x: 380, y: 106, "text-anchor": "middle" }, "Run the comparison to measure this tile system.")); return; }
+  const width = 760, height = 210, margin = { left: 48, right: 18, top: 37, bottom: 31 };
+  const plotWidth = width - margin.left - margin.right, plotHeight = height - margin.top - margin.bottom;
+  const maxMs = niceGrowthMaximum(Math.max(1, ...allPoints.map(point => point.milliseconds)), 5);
+  const maxTiles = Math.max(4, Math.ceil(Math.max(...allPoints.map(point => point.tiles)) / 4) * 4);
+  const x = ms => margin.left + Math.max(0, ms) / maxMs * plotWidth;
+  const y = tiles => margin.top + plotHeight - Math.max(0, tiles) / maxTiles * plotHeight;
+  chart.append(svgNode("title", {}, "Measured A2 tiling growth curves"), svgNode("desc", {}, "Greatest tile count reached over wall-clock time for naive search, online geometric GCTS, and GCTS guided by learned local cluster proposals."));
+  for (let index = 0; index <= 4; index++) {
+    const value = maxTiles * index / 4, yy = y(value);
+    chart.append(svgNode("line", { class: "growth-grid", x1: margin.left, y1: yy, x2: width - margin.right, y2: yy }), svgNode("text", { class: "growth-tick", x: margin.left - 8, y: yy + 4, "text-anchor": "end" }, value));
+  }
+  for (let index = 0; index <= 5; index++) {
+    const value = maxMs * index / 5, xx = x(value);
+    chart.append(svgNode("line", { class: "growth-grid", x1: xx, y1: margin.top, x2: xx, y2: margin.top + plotHeight }), svgNode("text", { class: "growth-tick", x: xx, y: height - 12, "text-anchor": "middle" }, (value / 1000).toFixed(value < 1000 ? 2 : 1)));
+  }
+  chart.append(svgNode("line", { class: "growth-axis", x1: margin.left, y1: margin.top + plotHeight, x2: width - margin.right, y2: margin.top + plotHeight }), svgNode("line", { class: "growth-axis", x1: margin.left, y1: margin.top, x2: margin.left, y2: margin.top + plotHeight }), svgNode("text", { class: "growth-axis-label", x: margin.left + plotWidth / 2, y: height - 1, "text-anchor": "middle" }, "elapsed time (seconds)"), svgNode("text", { class: "growth-axis-label", x: 12, y: margin.top + plotHeight / 2, transform: `rotate(-90 12 ${margin.top + plotHeight / 2})`, "text-anchor": "middle" }, "tiles"));
+  GROWTH_MODES.forEach((mode, index) => {
+    const xx = margin.left + index * 184;
+    chart.append(svgNode("line", { class: `growth-series growth-series-${mode.id}`, x1: xx, y1: 14, x2: xx + 24, y2: 14 }), svgNode("text", { class: "growth-legend", x: xx + 30, y: 18 }, mode.label));
+  });
+  for (const mode of GROWTH_MODES) {
+    const series = growthSeries.get(mode.id), points = series?.points ?? [];
+    if (!points.length) continue;
+    let path = `M ${x(points[0].milliseconds)} ${y(points[0].tiles)}`;
+    for (let index = 1; index < points.length; index++) path += ` H ${x(points[index].milliseconds)} V ${y(points[index].tiles)}`;
+    path += ` H ${x(Math.min(series?.result?.milliseconds ?? points.at(-1).milliseconds, maxMs))}`;
+    chart.append(svgNode("path", { class: `growth-series growth-series-${mode.id}`, d: path }));
+    for (const point of points) {
+      const className = `growth-marker growth-marker-${mode.id}`, xx = x(point.milliseconds), yy = y(point.tiles);
+      if (mode.id === "naive") chart.append(svgNode("rect", { class: className, x: xx - 3, y: yy - 3, width: 6, height: 6 }));
+      else if (mode.id === "gcts-rl") chart.append(svgNode("path", { class: className, d: `M ${xx} ${yy - 4} L ${xx + 4} ${yy + 3} L ${xx - 4} ${yy + 3} Z` }));
+      else chart.append(svgNode("circle", { class: className, cx: xx, cy: yy, r: 3.2 }));
+    }
+  }
+}
+const formatBenchmarkTime = milliseconds => milliseconds < 1000 ? `${milliseconds}ms` : `${(milliseconds / 1000).toFixed(2)}s`;
+function stopGrowthBenchmark(message = "Comparison stopped.") {
+  growthSequence++;
+  growthWorker?.postMessage({ type: "stop" }); growthWorker?.terminate(); growthWorker = null;
+  growthRunning = false; $("growthBenchmarkButton").textContent = "Compare growth"; $("growthBenchmarkStatus").textContent = message;
+}
+function startGrowthBenchmark() {
+  if (mode !== "growth") { $("growthBenchmarkStatus").textContent = "Growth curves apply to Grow outward mode."; return; }
+  if (running) { $("growthBenchmarkStatus").textContent = "Stop the live search before starting a controlled comparison."; return; }
+  const tiles = selectedTiles();
+  if (!tiles.length) { $("growthBenchmarkStatus").textContent = "Select at least one tile first."; return; }
+  if (growthWorker) stopGrowthBenchmark();
+  growthSeries.clear(); renderGrowthChart(); growthSequence++;
+  const sequence = growthSequence, target = growthTarget();
+  growthRunning = true; $("growthBenchmarkButton").textContent = "Stop comparison"; $("growthBenchmarkStatus").textContent = `Measuring naive growth toward ${target.toLocaleString()} tiles…`;
+  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260721-frontier-memo", import.meta.url), { type: "module" });
+  growthWorker.addEventListener("message", event => {
+    const message = event.data ?? {}; if (message.sequence !== sequence) return;
+    if (message.type === "series-start") { growthSeries.set(message.mode.id, { points: [] }); $("growthBenchmarkStatus").textContent = `Measuring ${message.mode.label}…`; }
+    else if (message.type === "sample") { const series = growthSeries.get(message.mode) ?? { points: [] }; series.points.push(message.point); growthSeries.set(message.mode, series); renderGrowthChart(); }
+    else if (message.type === "series-finished") { const series = growthSeries.get(message.result.mode) ?? { points: [] }; series.result = message.result; if (!series.points.length) series.points = message.result.points ?? []; growthSeries.set(message.result.mode, series); renderGrowthChart(); }
+    else if (message.type === "finished") {
+      growthWorker?.terminate(); growthWorker = null; growthRunning = false; $("growthBenchmarkButton").textContent = "Compare growth";
+      $("growthBenchmarkStatus").textContent = (message.results ?? []).map(result => {
+        const reached = result.points?.find(point => point.tiles >= target);
+        return reached ? `${result.label} ${formatBenchmarkTime(reached.milliseconds)}` : `${result.label} ${result.tileCount} tiles / ${formatBenchmarkTime(result.milliseconds)}`;
+      }).join(" · ") + ` · ${message.learnedClusterCount ?? 0} cluster relations learned`;
+      renderGrowthChart();
+    } else if (message.type === "error") stopGrowthBenchmark(`Comparison error: ${message.error}`);
+  });
+  growthWorker.addEventListener("error", error => stopGrowthBenchmark(`Comparison error: ${error.message}`));
+  growthWorker.postMessage({ type: "start", sequence, config: { boundary: activeBoundary(), seedLoop: seedLoop(), tiles, customTiles: customTilePayload(), targetPlacements: target, nodeLimit: 100000, timeLimitMs: 15000, randomSeed: 4, maxRank: Number($("rankCeiling").value) || 3 } });
+}
 
 function recordComparison(key, strategy, result) {
   const comparison = comparisonRuns.get(key) || {};
@@ -384,10 +480,10 @@ function updateMetrics(event) {
   $("coverageMetric").textContent = mode === "growth" ? `${Math.min(100, Math.floor(event.placed / (event.targetPlacements || growthTarget()) * 100))}%` : `${event.totalCells ? Math.floor(event.coveredCells / event.totalCells * 100) : 0}%`;
   $("nodesMetric").textContent = event.nodes; $("backtracksMetric").textContent = event.backtracks;
   $("memoMetric").textContent = event.marking.prunes || 0;
-  $("marksMetric").textContent = event.marking.revision; $("supportMetric").textContent = event.marking.supportSites;
+  $("marksMetric").textContent = event.marking.geometricRevision ?? event.marking.revision; $("supportMetric").textContent = event.marking.supportSites;
   const observed = event.marking.observedFailures || 0, pending = event.marking.pendingFailures || 0, encoded = event.marking.encodedFailures ?? observed - pending;
   $("markingState").textContent = observed
-    ? `Revision ${event.marking.revision} · ${event.marking.inequalities} inequalities · ${encoded}/${observed} failures encoded · ${pending} pending`
+    ? `${event.marking.geometricRevision || encoded} cluster revisions · ${event.marking.frontierClauses || 0} frontier clauses / ${event.marking.frontierPrunes || 0} hits · rank ${event.marking.rank || 3} · ${event.marking.inequalities} local inequalities · ${encoded}/${observed} branch failures encoded`
     : "Starts empty";
   learnedSupport = event.marking.support || learnedSupport;
 }
@@ -397,9 +493,11 @@ function audit(event) {
   const item = document.createElement("li");
   item.textContent = event.type === "marking-reencoded"
     ? `Revision ${event.reencoding.revision} kept all ${event.reencoding.preservedFailures} failure certificates and replaced the witness for failure ${event.reencoding.targetFailure}; all ${event.reencoding.preservedInequalities} other inequalities remain unchanged.`
+    : event.type === "learn" && event.update.revision
+    ? `Local revision ${event.update.revision}: rejected subtree depth ${event.update.branchDepth}, ${event.update.leafFailures} terminal failure${event.update.leafFailures === 1 ? "" : "s"}, ${event.update.subtreeSites} footprint sites; attached a reach-${event.update.reach} witness to ${event.update.frontierTiles} branch-interface tile${event.update.frontierTiles === 1 ? "" : "s"}.`
     : event.type === "learn"
-    ? `Revision ${event.update.revision}: rejected subtree depth ${event.update.branchDepth}, ${event.update.leafFailures} terminal failure${event.update.leafFailures === 1 ? "" : "s"}, ${event.update.subtreeSites} footprint sites; attached a reach-${event.update.reach} witness to ${event.update.frontierTiles} branch-interface tile${event.update.frontierTiles === 1 ? "" : "s"}.`
-    : `Failure retained as pending after all ${event.update.attempts} available witnesses were checked; it was not silently discarded.`;
+    ? `Cluster revision ${event.update.geometricRevision}: retained the complete failed branch at depth ${event.update.branchDepth} in translation-relative coordinates.`
+    : `Failure retained as a geometric cluster clause after all ${event.update.attempts} rank-3 witnesses were checked; it was not discarded.`;
   $("auditLog").prepend(item);
 }
 
@@ -424,7 +522,8 @@ async function run() {
   try {
     const fullTarget = mode === "growth" ? growthTarget() : undefined;
     const strategy = $("markingStrategy").value;
-    const comparisonKey = JSON.stringify({ mode, target: fullTarget, boundary: region, seed: initialLoop, tiles: tiles.map(id => [id, tileRegistry.get(id)?.loop]) });
+    const rankCeiling = Number($("rankCeiling").value) || 3;
+    const comparisonKey = JSON.stringify({ mode, target: fullTarget, boundary: region, seed: initialLoop, rankCeiling, tiles: tiles.map(id => [id, tileRegistry.get(id)?.loop]) });
     const solveWith = (marking, target, phase, randomSeed, nodeLimit = mode === "growth" ? 1000000 : 500000) => solveA2Tiling({
       boundary: region, seed, tiles, customTiles: customTilePayload(), maximize: mode === "growth",
       targetPlacements: target,
@@ -438,7 +537,7 @@ async function run() {
         else if (event.type === "backtrack") { searchGhost = { kind: "backtrack", placement: event.removed }; $("status").textContent = `Dead end — removing ${tileRegistry.get(event.removed.tile)?.name || event.removed.tile}; back to depth ${event.placed}`; }
         else if (event.type === "learning-start") { $("status").textContent = `Backtracked to depth ${event.placed} · searching for a safe marking mismatch…`; }
         else if (event.type === "learning-progress") { $("status").textContent = `Testing marking witnesses… ${event.attempts.toLocaleString()} checked · Stop remains available`; }
-        else if (event.type === "learn") { $("status").textContent = `Backtrack encoded as marking revision ${event.marking.revision}`; }
+        else if (event.type === "learn") { $("status").textContent = `Backtrack encoded as geometric revision ${event.marking.geometricRevision ?? event.marking.revision}`; }
         else if (event.type === "learning-skip") { $("status").textContent = `No safe mismatch within ${event.update.attempts.toLocaleString()} witnesses · continuing backtrack`; }
         else if (event.type === "marking-reencoded") { searchGhost = null; $("status").textContent = `Marking kept all ${event.reencoding.preservedFailures} failures · recompiled failure ${event.reencoding.targetFailure} without changing revision ${event.reencoding.revision}`; }
         draw();
@@ -446,7 +545,7 @@ async function run() {
     });
     let result;
     if (mode === "growth" && strategy === "train-replay") {
-      const learner = new OnlineA2Marking({ maxWitnessTrials: 256, yieldEvery: 32 });
+      const learner = new OnlineA2Marking({ maxWitnessTrials: 256, yieldEvery: 32, maxRank: rankCeiling });
       const trainingTarget = Math.min(30, fullTarget);
       const validationTarget = Math.min(fullTarget, trainingTarget + 10);
       let training = null;
@@ -494,7 +593,7 @@ async function run() {
         }
       }
     } else {
-      const marking = strategy === "geometry" ? new NoA2Marking() : new OnlineA2Marking({ maxWitnessTrials: 32, yieldEvery: 32 });
+      const marking = strategy === "geometry" ? new NoA2Marking() : new OnlineA2Marking({ maxWitnessTrials: 32, yieldEvery: 32, maxRank: rankCeiling, enableLocalInequalities: strategy === "rank-local" });
       result = await solveWith(marking, fullTarget, strategy === "geometry" ? "geometry" : "online", 4);
     }
     placements = result.placements; searchGhost = null; draw();
@@ -562,6 +661,7 @@ $("seedSelect").addEventListener("change", () => { placements = []; updateCapaci
 $("showMarking").addEventListener("change", draw);
 $("runButton").addEventListener("click", run);
 $("stopButton").addEventListener("click", () => { stopToken.stop = true; $("status").textContent = "Stopping at a safe search boundary…"; });
+$("growthBenchmarkButton").addEventListener("click", () => growthRunning ? stopGrowthBenchmark() : startGrowthBenchmark());
 $("customTileButton").addEventListener("click", openBuilder);
 $("closeTileDialog").addEventListener("click", closeBuilder);
 $("customTileDialog").addEventListener("click", event => { if (event.target === $("customTileDialog")) closeBuilder(); });

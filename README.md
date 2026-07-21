@@ -108,11 +108,42 @@ node scripts/benchmark-a2-marking-learning.mjs \
   --validation-seeds=2,5 --seeds=1,4,6,7
 ```
 
+The A₂ and 3D playgrounds also include an in-page growth chart. Each chart
+records actual best tile count versus wall-clock time for naive search, online
+GCTS, and a GCTS run with learned cluster proposals. The A₂ cluster policy is
+learned from translation-equivariant local relations in the preceding GCTS
+trace; the 3D comparison uses the engine's exhaustive online agent and
+cluster/template proposals. All three series retain the full legal move set, so
+the policy changes ordering while geometric failure clauses perform pruning.
+
+The default A₂ GCTS now has a cheap, complete layer beneath the optional
+rank-local inequalities. Every exhausted placement/context is retained exactly,
+and every genuinely blocked frontier neighborhood is canonicalized relative to
+its frontier point. Because every candidate touching that point lies inside one
+tile diameter, the recorded local angle-sum pattern is a sufficient geometric
+certificate: a translated recurrence can be rejected without re-entering its
+subtree. On four deterministic 30-tile branch orders, this reduced median nodes
+from 379 to 265 for Turtle and from 586 to 391 for Hat. Median measured runtime
+fell from 1.70 s to 1.34 s and from 2.16 s to 1.64 s respectively. The learned
+proposal replay then reached 30 tiles without backtracking in both examples.
+
 ## Headless Runner
 
 The 3D tiler can also run without the frontend UI. This is useful for baseline
 runs, long searches, and comparing later GCTS heuristics against the current
 engine.
+
+The two chart protocols are directly reproducible without rendering:
+
+```bash
+node scripts/benchmark-a2-growth-curves.mjs --tile=turtle --target=30
+node scripts/benchmark-a2-growth-curves.mjs --tile=hat --target=30
+node scripts/benchmark-3d-growth-curves.mjs --mode=1_cross --target=8
+```
+
+Use `--output=ndjson` to stream every growth point. Each summary reports the
+measured ordering and returns a nonzero status when the deterministic search
+work ordering is not `GCTS+clusters < GCTS < naive`.
 
 ```bash
 node scripts/run-tiler-cli.mjs --figure letter_o::0 --target 80 \
