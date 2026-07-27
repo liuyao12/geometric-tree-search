@@ -32,11 +32,13 @@ The UI exposes three distinct modes:
 2. **Isohedral** builds the first corona and records its
    tile-type/displacement rules. Each legal rule is then applied around every
    subsequent tile whenever possible.
-3. **Freestyle** performs face-to-face frontier search without assuming
-   periodicity or tile transitivity.
+3. **Free-range** greedily places the most sensible legal frontier tile,
+   growing in all directions without assuming periodicity or tile transitivity.
+   Exact scoring ties are resolved by seeded randomness.
 
-The lower-level API accepts `generic` as an alias of `freestyle` and retains
-`auto` for regression and research use. No strategy makes decisions from catalog names. Candidate
+The lower-level API uses `generic` internally and retains `freestyle` as a
+backward-compatible alias of `free_range`. It also retains `auto` for regression
+and research use. No strategy makes decisions from catalog names. Candidate
 generation matches oriented faces, checks lattice solid-angle occupancy,
 rejects overlaps, and requires a full 3D attachment.
 
@@ -46,6 +48,21 @@ directions, then maximizes the ratio between the shortest and longest center
 spans. Periodic motifs are consumed in centered cell shells, avoiding long
 one-dimensional tendrils. The viewport renders the active frontier lattice
 points for the selected Z³, FCC, or ½Z³ tier.
+
+## Learned proposals
+
+**Learn & run** trains one generic placement-sequence proposal for the current
+tile system. It measures the Free-range baseline, evaluates proposal programs
+with the same exact legality checks, and retains a program only when its
+tiles-versus-time curve improves without reducing the best tile count. Accepted
+programs are stored locally per tile system and immediately replayed. Different
+tiles may therefore retain different programs from the same learner.
+
+For repeatable headless training:
+
+```bash
+node scripts/learn-3d-proposals.mjs --modes cube,1_cross,gyrobifastigium
+```
 
 Terminal results distinguish evidence strength. `certified_tiling` means the
 engine has an exact translational quotient certificate or an exact finite
@@ -126,6 +143,7 @@ must form a closed convex shell.
 ```bash
 node scripts/test-3d-balanced-growth.mjs
 node scripts/test-3d-strategies.mjs
+node scripts/test-3d-proposal-learning.mjs
 node scripts/test-3d-translational-polyhedra.mjs
 node scripts/test-3d-mixed-periodic.mjs
 node scripts/test-3d-custom-polyhedron.mjs

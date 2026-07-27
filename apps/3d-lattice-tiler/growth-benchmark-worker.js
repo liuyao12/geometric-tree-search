@@ -1,10 +1,10 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-periodic-colors-v15";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-self-learning-v16";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
 
 const MODES = [
-  { id: "coverage", label: "Generic", strategy: "generic", moveOrder: "coverage", templates: false, agentExhaustive: false },
+  { id: "coverage", label: "Free-range", strategy: "free_range", moveOrder: "no_brainer", templates: false, agentExhaustive: false },
   { id: "isohedral", label: "Isohedral", strategy: "isohedral", moveOrder: "isohedral", templates: true, agentExhaustive: false },
   { id: "auto", label: "Automatic", strategy: "auto", moveOrder: "balanced", templates: true, agentExhaustive: true }
 ];
@@ -19,6 +19,7 @@ async function runMode(sequence, baseConfig, mode) {
     tiling_strategy: mode.strategy,
     move_order: mode.moveOrder,
     agent_exhaustive: mode.agentExhaustive,
+    greedy_no_backtrack: mode.id === "coverage",
     template_preflight: mode.templates,
     periodic_tile_count: mode.templates ? 2 : 0,
     snapshot_every: 1,

@@ -2,6 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
+import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const createTilingStream = (() => {
   return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }) {
@@ -382,8 +383,16 @@ export const createTilingStream = (() => {
     let stateVersion = 0;
     let latestFrontierGraph = null;
     let latestFrontierGraphVersion = -1;
+    let randomState = (Math.floor(Number(config.random_seed) || 1) >>> 0) || 1;
+    const nextRandom = () => {
+      randomState = (randomState + 0x6d2b79f5) >>> 0;
+      let value = randomState;
+      value = Math.imul(value ^ (value >>> 15), value | 1);
+      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+    };
     const nowId = () => (++nodeCounter);
-    const normalizedStrategy = config.tiling_strategy === "freestyle"
+    const normalizedStrategy = ["freestyle", "free_range"].includes(config.tiling_strategy)
       ? "generic"
       : config.tiling_strategy;
     const searchStats = {
@@ -401,7 +410,8 @@ export const createTilingStream = (() => {
       // Kept as zero-valued compatibility counters for existing headless
       // consumers. This standalone engine does not install a GCTS runtime.
       marking_observed_failures: 0,
-      marking_geometric_clauses: 0
+      marking_geometric_clauses: 0,
+      proposal_program_id: config.proposal_program?.id ?? null
     };
     const branchStack = [];
     const MAX_PATH_COUNT = 1e12;
@@ -1084,7 +1094,7 @@ export const createTilingStream = (() => {
         ? ((move._periodic_motif_index % COLOR_PALETTE.length) + COLOR_PALETTE.length) % COLOR_PALETTE.length
         : null;
       move.color_id = periodicColorId
-        ?? (available.length ? available[Math.floor(Math.random() * available.length)] : 0);
+        ?? (available.length ? available[Math.floor(nextRandom() * available.length)] : 0);
 
       const added = [], removed = [], modified_gens = [];
 
@@ -1137,11 +1147,11 @@ export const createTilingStream = (() => {
       return { added, removed, modified_gens };
     };
 
-    const undoMove = (move, rb) => {
+    const undoMove = (move, rb, { captureBest = true } = {}) => {
       // Live placement deltas can show a useful patch even when snapshots are
       // configured as "Final only". Preserve a new high-water mark before
       // backtracking so the terminal update does not collapse to the root tile.
-      if (state.placements.length > (bestSnapshot?.tile_count ?? 0)) {
+      if (captureBest && state.placements.length > (bestSnapshot?.tile_count ?? 0)) {
         snapshot(move.node_id ?? null);
       }
       for (const [k, oldGen] of (rb.modified_gens ?? [])) { const e = state.frontier.get(k); if(e) e.gen = oldGen; }
@@ -1284,6 +1294,10 @@ export const createTilingStream = (() => {
       : "auto";
     const requestedMoveOrder = config.move_order ?? "balanced";
     const moveOrder = tilingStrategy === "isohedral" ? "isohedral" : requestedMoveOrder;
+    const greedyNoBacktrack = !!config.greedy_no_backtrack || moveOrder === "no_brainer" || moveOrder === "proposal";
+    const proposalProgram = moveOrder === "proposal"
+      ? normalizeProposalProgram(config.proposal_program)
+      : null;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
     const faceOrder = config.face_order ?? "coverage";
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
@@ -2262,14 +2276,14 @@ export const createTilingStream = (() => {
     const previewMoveStats = (move) => {
       const rb = applyMove(move);
       const stats = calculateFrontierStats();
-      undoMove(move, rb);
+      undoMove(move, rb, { captureBest: false });
       return stats;
     };
     const previewMoveSymmetry = (move) => {
       if (move._symmetry_info) return move._symmetry_info;
       const rb = applyMove(move);
       const info = frontierSymmetryInfo();
-      undoMove(move, rb);
+      undoMove(move, rb, { captureBest: false });
       move._symmetry_info = info;
       return info;
     };
@@ -2306,6 +2320,36 @@ export const createTilingStream = (() => {
         move._agent_features_version = stateVersion;
       }
       return features;
+    };
+    const proposalFeatureValue = (feature, move) => {
+      const growth = () => prospectiveGrowthShape(move);
+      if (feature === "coverage") return moveCoverage(move);
+      if (feature === "oldest_layer_completion") return minimumLayerCompletionScore(move) / 1e6;
+      if (feature === "growth_axis_rank") return growth().axis_rank;
+      if (feature === "growth_isotropy") return growth().axis_isotropy;
+      if (feature === "growth_planarity") return growth().axis_planarity;
+      if (feature === "growth_compactness") return -growth().max_span;
+      if (feature === "same_orientation") return sameRootOrientation(move);
+      if (feature === "root_corona") return coveredFrontierFaceScore(move, 0);
+      if (feature === "isohedral_reuse") return isohedralCoronaScore(move);
+      if (feature === "vector_repeat") return vectorRepeatScore(move);
+      if (feature === "pair_periodic") return pairPeriodicContinuation(move);
+      if (feature === "periodic_continuation") return periodicContinuation(move);
+      if (feature === "parallelogram_completion") return parallelogramCompletionScore(move);
+      if (feature === "frontier_reduction") {
+        const current = calculateFrontierStats();
+        const preview = move._preview_stats ?? (move._preview_stats = previewMoveStats(move));
+        return (current.point_count ?? current.count ?? 0) - (preview.point_count ?? preview.count ?? 0);
+      }
+      return 0;
+    };
+    const proposalScore = (move) => {
+      if (!proposalProgram) return 0;
+      let score = 0;
+      for (const feature of proposalProgram.active_features) {
+        score += proposalProgram.weights[feature] * proposalFeatureValue(feature, move);
+      }
+      return score;
     };
     const rlAgent = (() => {
       const values = new Map();
@@ -2366,6 +2410,18 @@ export const createTilingStream = (() => {
       const pairPeriodic = () => pairPeriodicContinuation(move);
       const vectorRepeat = () => vectorRepeatScore(move);
       const parallelogram = () => parallelogramCompletionScore(move);
+      if (moveOrder === "no_brainer") {
+        const growth = prospectiveGrowthShape(move);
+        return [
+          minimumLayerCompletionScore(move),
+          coverage,
+          growth.axis_rank,
+          growth.axis_isotropy,
+          growth.axis_planarity,
+          -growth.max_span
+        ];
+      }
+      if (moveOrder === "proposal") return [proposalScore(move)];
       if (moveOrder === "symmetric") {
         const symmetry = previewMoveSymmetry(move);
         return [
@@ -2429,6 +2485,11 @@ export const createTilingStream = (() => {
       for (let i = 0; i < Math.max(as.length, bs.length); i++) {
         const diff = (bs[i] ?? 0) - (as[i] ?? 0);
         if (diff) return diff;
+      }
+      if (moveOrder === "no_brainer" || moveOrder === "proposal") {
+        if (!Number.isFinite(a._random_tie)) a._random_tie = nextRandom();
+        if (!Number.isFinite(b._random_tie)) b._random_tie = nextRandom();
+        return b._random_tie - a._random_tie;
       }
       return 0;
     };
@@ -3304,6 +3365,7 @@ export const createTilingStream = (() => {
       if (!usePolicyAgent && !exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
         bestMoves = bestMoves.slice(0, branchCap);
       }
+      if (greedyNoBacktrack && bestMoves.length > 1) bestMoves = [bestMoves[0]];
       const payload = bestMoves.map(move => ({ id: nowId(), text: "", ...describeMove(move) }));
       for (let i = 0; i < bestMoves.length; i++) bestMoves[i].node_id = payload[i].id;
       setBranchCursor(depth, bestMoves.length, 0);

@@ -358,8 +358,16 @@ input[type="text"]:focus {
 
 .action-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 8px;
+}
+
+.learning-status {
+  min-height: 18px;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 button {
