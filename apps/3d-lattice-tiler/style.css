@@ -477,6 +477,10 @@ button:disabled {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.mode-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .lattice-cards label > span {
   min-height: 42px;
   padding: 6px 7px;

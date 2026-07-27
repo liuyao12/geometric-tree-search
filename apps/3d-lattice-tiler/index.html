@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260726-layered-modes-v10">
+  <link rel="stylesheet" href="./style.css?v=20260727-catalog-audit-v13">
 </head>
 <body>
   <div class="app-shell">
@@ -49,7 +49,7 @@
 
         <fieldset class="choice-field">
           <legend>Tiling mode</legend>
-          <div class="radio-cards">
+          <div class="radio-cards mode-cards">
             <label>
               <input type="radio" name="tilingStrategy" value="translational" checked>
               <span><b>Translational</b><small>Find a certified patch, then repeat it.</small></span>
@@ -57,6 +57,10 @@
             <label>
               <input type="radio" name="tilingStrategy" value="isohedral">
               <span><b>Isohedral</b><small>Reuse one tile neighborhood everywhere possible.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="freestyle">
+              <span><b>Freestyle</b><small>Search legal frontier placements without a symmetry assumption.</small></span>
             </label>
           </div>
           <small id="strategyDescription">Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.</small>
@@ -75,6 +79,7 @@
           <select id="strategySelect">
             <option value="translational" selected>Translational</option>
             <option value="isohedral">Isohedral</option>
+            <option value="freestyle">Freestyle</option>
           </select>
           <select id="polycubeLatticeSelect">
             <option value="z3" selected>Z³</option>
@@ -221,6 +226,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260726-layered-modes-v10"></script>
+  <script type="module" src="./app.js?v=20260727-catalog-audit-v13"></script>
 </body>
 </html>

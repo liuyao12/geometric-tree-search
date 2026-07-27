@@ -72,6 +72,8 @@ const isohedral = await solve({
   target_val: 12
 });
 assert.equal(isohedral.final.success, true);
+assert.equal(isohedral.final.result_kind, "patch_found");
+assert.equal(isohedral.final.can_tile, null, "a finite isohedral patch is not a global tiling proof");
 assert.equal(isohedral.periodicCertificate, null, "isohedral mode must skip translational certificates");
 assert.equal(isohedral.final.search_stats.growth_axis_rank, 3);
 
@@ -82,6 +84,74 @@ const generic = await solve({
 assert.equal(generic.final.success, true);
 assert.equal(generic.periodicCertificate, null, "generic mode must skip structural fast paths");
 assert.ok(generic.final.search_stats.branch_choices_visited > 0);
+
+const freestyle = await solve({
+  tiling_strategy: "freestyle",
+  target_val: 12
+});
+assert.equal(freestyle.final.success, true);
+assert.equal(freestyle.final.result_kind, "patch_found");
+assert.equal(freestyle.final.search_stats.tiling_strategy, "generic");
+
+for (const [mode_key, polycube_lattice] of [
+  ["letter_o", "fcc"],
+  ["letter_o", "half"],
+  ["2_cross", "fcc"],
+  ["2_cross", "half"]
+]) {
+  const refined = await solve({
+    mode_key,
+    polycube_lattice,
+    periodic_patch_max_tiles: 4,
+    periodic_template_max_volume: undefined
+  });
+  assert.equal(
+    refined.final.result_kind,
+    "certified_tiling",
+    `${mode_key} must be checked on the ${polycube_lattice} refined lattice`
+  );
+}
+
+const certificateBeforeDisplayTarget = await solve({
+  mode_key: "fcc_pure",
+  target_val: 20,
+  tiling_strategy: "translational",
+  periodic_patch_max_tiles: 4
+});
+assert.equal(certificateBeforeDisplayTarget.final.result_kind, "certified_tiling");
+assert.equal(
+  certificateBeforeDisplayTarget.final.success,
+  true,
+  "an exact infinite-tiling certificate must count as success even if its preview is shorter than the display target"
+);
+
+const reflectionHoneycomb = await solve({
+  mode_key: "tetragonal_disphenoid",
+  criterion: "layer",
+  target_val: 1,
+  tiling_strategy: "isohedral",
+  include_mirrors: true
+});
+assert.equal(reflectionHoneycomb.final.result_kind, "patch_found");
+assert.equal(reflectionHoneycomb.final.success, true);
+assert.equal(reflectionHoneycomb.final.search_stats.growth_axis_rank, 3);
+assert.ok(
+  reflectionHoneycomb.final.search_stats.reflection_continuations_seen > 0,
+  "isohedral mode must retain face-reflection continuations for Coxeter-style honeycombs"
+);
+
+for (const mode_key of ["corner_tetra", "big_corner_tetra"]) {
+  const obstruction = await solve({
+    mode_key,
+    criterion: "layer",
+    target_val: 1,
+    tiling_strategy: "freestyle",
+    include_mirrors: true
+  });
+  assert.equal(obstruction.final.result_kind, "no_tiling");
+  assert.equal(obstruction.final.can_tile, false);
+  assert.equal(obstruction.final.tiling_evidence?.kind, "local_edge_obstruction");
+}
 
 console.log("3D strategy regressions passed", {
   translational_tiles: translational.final.tile_count,

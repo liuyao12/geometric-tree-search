@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260726-layered-modes-v10";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-catalog-audit-v13";
 
 let activeSequence = 0;
 let stopToken = { stop: false };

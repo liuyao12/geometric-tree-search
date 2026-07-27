@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260726-layered-modes-v10";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-catalog-audit-v13";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
