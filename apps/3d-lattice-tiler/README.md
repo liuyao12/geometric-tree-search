@@ -22,23 +22,28 @@ generation, exact placement legality, periodic certificates, isohedral reuse,
 balanced growth, and ordinary backtracking. The browser executes that same
 engine in `solver-worker.js`.
 
-## Solver strategy
+## Solver modes
 
-The automatic order uses a fast-path cascade:
+The UI exposes two distinct modes:
 
-1. Prove and grow an exact translational/periodic motif when possible.
-2. Reuse a successful first corona as an isohedral proposal.
-3. Fall back to generic face-to-face frontier search.
+1. **Translational** progressively checks 1-, 2-, 3-, and 4-tile motifs using
+   an exact finite-quotient (3-torus) cover test. It succeeds only when
+   translated copies of the certified whole patch tile 3-space.
+2. **Isohedral** builds the first corona and records its
+   tile-type/displacement rules. Each legal rule is then applied around every
+   subsequent tile whenever possible.
 
-The generic fallback makes no decisions from catalog names. It generates
-candidates by matching oriented faces, checks lattice solid-angle occupancy,
-rejects overlaps, requires a full 3D attachment, and orders legal moves using
-local contact, frontier pressure, and prospective growth balance.
+The lower-level API also retains `generic` and `auto` strategies for regression
+and research use. No strategy makes decisions from catalog names. Candidate
+generation matches oriented faces, checks lattice solid-angle occupancy,
+rejects overlaps, and requires a full 3D attachment.
 
-Balanced growth first establishes three independent translation directions,
-then maximizes the ratio between the shortest and longest center spans.
-Periodic motifs are consumed in centered cell shells, avoiding long
-one-dimensional tendrils.
+Every mode keeps explicit frontier layers and prioritizes the oldest active
+layer. Within a layer, balanced growth first establishes three independent
+directions, then maximizes the ratio between the shortest and longest center
+spans. Periodic motifs are consumed in centered cell shells, avoiding long
+one-dimensional tendrils. The viewport renders the active frontier lattice
+points for the selected Z³, FCC, or ½Z³ tier.
 
 ## Finite regions
 
@@ -105,6 +110,7 @@ must form a closed convex shell.
 
 ```bash
 node scripts/test-3d-balanced-growth.mjs
+node scripts/test-3d-strategies.mjs
 node scripts/test-3d-translational-polyhedra.mjs
 node scripts/test-3d-mixed-periodic.mjs
 node scripts/test-3d-custom-polyhedron.mjs

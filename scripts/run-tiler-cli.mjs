@@ -43,9 +43,11 @@ Examples:
 Options:
   --figure, --figures <id[,id]>   Figure id/name to use. Repeatable. Default: cube::0.
   --list-figures                  Print available figure ids and exit.
-  --criterion <count|layer>       Goal type. Default: count.
+  --criterion <count|layer|region> Goal type. Default: count.
   --target <n>                    Target tile count or layer. Default: 80.
+  --region-box <w,d,h>            Tile an exact lattice-aligned box; selects region criterion.
   --snapshot-every <n>            Engine snapshot cadence. Default: 10.
+  --tiling-strategy <name>        auto, translational, isohedral, or generic. Default: auto.
   --move-order <name>             coverage, repeat, periodic, crystal, isohedral, rl, symmetric, layer, or balanced. Default: coverage.
   --face-order <name>             Frontier-point order: coverage, constrained, pocket, or mrv. Default: coverage.
   --branch-cap <n>                Branch cap; 0 means uncapped. Default: 0.
@@ -73,7 +75,9 @@ function readArgs(argv) {
     figures: [],
     criterion: "count",
     target: 80,
+    regionBox: null,
     snapshotEvery: 10,
+    tilingStrategy: "auto",
     moveOrder: "coverage",
     faceOrder: "coverage",
     branchCap: 0,
@@ -120,8 +124,19 @@ function readArgs(argv) {
     } else if (arg === "--target") {
       opts.target = Number(next(i, arg));
       i += 1;
+    } else if (arg === "--region-box") {
+      const size = next(i, arg).split(/[x,]/iu).map(Number);
+      if (size.length !== 3 || size.some(value => !Number.isFinite(value) || value <= 0)) {
+        throw new Error(`${arg} must contain three positive dimensions, for example 6,4,3`);
+      }
+      opts.regionBox = size;
+      opts.criterion = "region";
+      i += 1;
     } else if (arg === "--snapshot-every") {
       opts.snapshotEvery = Number(next(i, arg));
+      i += 1;
+    } else if (arg === "--tiling-strategy") {
+      opts.tilingStrategy = next(i, arg);
       i += 1;
     } else if (arg === "--move-order") {
       opts.moveOrder = next(i, arg);
@@ -308,6 +323,12 @@ function makeConfig(figures, opts) {
     isohedral_check: opts.isohedralCheck,
     criterion: opts.criterion,
     target_val: opts.target,
+    target_region: opts.regionBox ? {
+      type: "box",
+      center: opts.regionBox.map(value => value / 2),
+      size: opts.regionBox
+    } : null,
+    tiling_strategy: opts.tilingStrategy,
     exhaustive: opts.exhaustive,
     include_mirrors: opts.includeMirrors,
     snapshot_every: Number.isFinite(opts.snapshotEvery) ? opts.snapshotEvery : 10,
@@ -365,7 +386,11 @@ async function main() {
     if (!opts.candidateCap) opts.candidateCap = 200;
   }
 
-  if (!["count", "layer"].includes(opts.criterion)) throw new Error("--criterion must be count or layer");
+  if (!["count", "layer", "region"].includes(opts.criterion)) throw new Error("--criterion must be count, layer, or region");
+  if (!["auto", "translational", "isohedral", "generic"].includes(opts.tilingStrategy)) {
+    throw new Error("--tiling-strategy must be auto, translational, isohedral, or generic");
+  }
+  if (opts.criterion === "region" && !opts.regionBox) throw new Error("--criterion region requires --region-box");
   if (!["coverage", "repeat", "periodic", "crystal", "isohedral", "rl", "symmetric", "layer", "balanced"].includes(opts.moveOrder)) {
     throw new Error("--move-order must be coverage, repeat, periodic, crystal, isohedral, rl, symmetric, layer, or balanced");
   }
