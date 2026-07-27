@@ -70,6 +70,17 @@ assert.equal(
 
 assert.ok(finished?.success, "mixed periodic growth must reach its target");
 assert.equal(finalSnapshot?.placements?.length, config.target_val);
+for (const placement of finalSnapshot.placements) {
+  assert.ok(
+    Number.isInteger(placement.periodic_motif_index),
+    "every certified translational placement must retain its motif identity"
+  );
+  assert.equal(
+    placement.color_id,
+    placement.periodic_motif_index % tileSpecs.COLOR_PALETTE.length,
+    "translated copies of each motif tile must reuse its color"
+  );
+}
 assert.deepEqual(
   finalSnapshot.tile_counts.map(item => item.type_idx),
   [0, 1],

@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-best-preview-v14";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-periodic-colors-v15";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
