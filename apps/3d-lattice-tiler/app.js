@@ -22,7 +22,6 @@ const candidateCapInput = $("candidateCapInput");
 const timeCapInput = $("timeCapInput");
 const mirrorCheckbox = $("mirrorCheckbox");
 const exhaustiveCheckbox = $("exhaustiveCheckbox");
-const onlineMarkingCheckbox = $("onlineMarkingCheckbox");
 const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
@@ -1467,7 +1466,6 @@ function configKey() {
       return { type: "box", center: size.map(value => value / 2), size };
     })() : null,
     exhaustive: exhaustiveCheckbox.checked,
-    online_failure_marking: onlineMarkingCheckbox.checked,
     include_mirrors: mirrorCheckbox.checked,
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
@@ -2347,11 +2345,6 @@ function handleMessage(message) {
   }
   if (message.type === "node_snapshot") {
     attachSnapshotToNode(message.node_id, message.snapshot);
-    return;
-  }
-  if (message.type === "marking_update") {
-    if (message.search_stats) updateSearchMetrics(message.search_stats);
-    setStatus(`Learned marking ${message.revision}: ${message.support_sites} support sites`);
     return;
   }
   if (message.type === "full_update") {
