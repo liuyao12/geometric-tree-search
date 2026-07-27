@@ -1,12 +1,12 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260721-growth-curves";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260723-standalone-balanced-v8";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
 
 const MODES = [
-  { id: "naive", label: "Naive", marking: false, moveOrder: "coverage", clusters: false, agentExhaustive: false },
-  { id: "gcts", label: "GCTS", marking: true, moveOrder: "coverage", clusters: false, agentExhaustive: false },
-  { id: "gcts-rl", label: "GCTS + RL clusters", marking: true, moveOrder: "rl", clusters: true, agentExhaustive: true }
+  { id: "coverage", label: "Contact-first", moveOrder: "coverage", templates: false, agentExhaustive: false },
+  { id: "isohedral", label: "Isohedral reuse", moveOrder: "isohedral", templates: false, agentExhaustive: false },
+  { id: "auto", label: "Periodic-first auto", moveOrder: "rl", templates: true, agentExhaustive: true }
 ];
 
 const post = (sequence, payload) => {
@@ -16,12 +16,10 @@ const post = (sequence, payload) => {
 async function runMode(sequence, baseConfig, mode) {
   const config = {
     ...baseConfig,
-    online_failure_marking: mode.marking,
-    online_pair_marking: false,
     move_order: mode.moveOrder,
     agent_exhaustive: mode.agentExhaustive,
-    template_preflight: mode.clusters,
-    periodic_tile_count: mode.clusters ? 2 : 0,
+    template_preflight: mode.templates,
+    periodic_tile_count: mode.templates ? 2 : 0,
     snapshot_every: 1,
     branch_cap: null,
     candidate_cap: null,

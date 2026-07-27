@@ -35,15 +35,25 @@
             <span>Layer</span>
             <input id="layerInput" type="number" value="2" min="1" max="50">
           </label>
+          <label class="inline-field" id="regionField">
+            <input type="radio" name="criterion" value="region">
+            <span>Box</span>
+          </label>
+        </div>
+
+        <div id="regionSizeFields" class="split-fields region-fields is-hidden">
+          <label class="field"><span>Width</span><input id="regionWidthInput" type="number" value="4" min="1" max="100" step="1"></label>
+          <label class="field"><span>Depth</span><input id="regionDepthInput" type="number" value="4" min="1" max="100" step="1"></label>
+          <label class="field"><span>Height</span><input id="regionHeightInput" type="number" value="4" min="1" max="100" step="1"></label>
         </div>
 
         <div class="split-fields order-fields">
           <label class="field">
             <span>Frontier order</span>
             <select id="faceOrderSelect">
-              <option value="coverage" selected>Contact first</option>
+              <option value="coverage">Contact first</option>
               <option value="constrained">Fewest choices</option>
-              <option value="mrv">MRV fewest choices</option>
+              <option value="mrv" selected>MRV fewest choices</option>
               <option value="pocket">Fill holes</option>
             </select>
           </label>
@@ -51,8 +61,8 @@
           <label class="field">
             <span>Filling order</span>
             <select id="moveOrderSelect">
-              <option value="coverage" selected>Most contact</option>
-              <option value="rl">Periodic template + agent</option>
+              <option value="coverage">Most contact</option>
+              <option value="rl" selected>Auto: periodic → isohedral → search</option>
               <option value="balanced">Balanced</option>
               <option value="symmetric">Symmetry first</option>
               <option value="crystal">Crystal pattern</option>
@@ -72,9 +82,14 @@
           </select>
         </label>
 
-        <label class="learning-toggle">
-          <input id="onlineMarkingCheckbox" type="checkbox" checked>
-          <span><b>Learn failure markings · experimental</b><small>Retains every exhausted branch and prunes translated recurrences. The bundled Cross benchmark verifies complete encoding and a measured speedup.</small></span>
+        <label class="field">
+          <span>Periodic motif size</span>
+          <select id="periodicTileCountSelect">
+            <option value="1">1 tile</option>
+            <option value="2" selected>2 tiles</option>
+            <option value="3">3 tiles</option>
+            <option value="4">4 tiles</option>
+          </select>
         </label>
 
         <div class="is-hidden" aria-hidden="true">
@@ -131,7 +146,7 @@
         <div><b id="metricFrontier">0</b><span>frontier points</span></div>
         <div><b id="metricLayer">0</b><span id="metricLayerDetail">candidates</span></div>
         <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
-        <div><b id="metricMarks">0</b><span>mark revisions</span><small id="metricMarkSites">0 geometric clauses</small></div>
+        <div><b id="metricGrowth">—</b><span>3D growth balance</span><small id="metricGrowthDetail">center spans 0 × 0 × 0</small></div>
       </section>
 
       <section class="tile-panel">
@@ -143,7 +158,7 @@
         </div>
 
         <div class="custom-builder-launch">
-          <button id="customBuilderButton" type="button">Custom polycube</button>
+          <button id="customBuilderButton" type="button">Custom lattice tile</button>
         </div>
 
         <div id="tileList" class="tile-list is-hidden"></div>
@@ -158,7 +173,7 @@
         <div class="growth-header">
           <div>
             <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
-            <small>Same tiles and target; naive, complete geometric GCTS, then exhaustive RL cluster proposals with GCTS.</small>
+            <small>Same tiles and target; compare generic contact-first, isohedral reuse, and automatic periodic-first growth.</small>
           </div>
           <button id="growthBenchmarkButton" type="button">Compare growth</button>
         </div>
@@ -182,8 +197,8 @@
   <dialog id="customBuilderDialog" class="custom-builder-dialog">
     <div class="custom-builder-dialog-shell">
       <div class="custom-builder-dialog-header">
-        <h2>Custom polycube</h2>
-        <button id="closeBuilderButton" type="button" aria-label="Close custom polycube builder">x</button>
+        <h2>Custom lattice tile</h2>
+        <button id="closeBuilderButton" type="button" aria-label="Close custom lattice tile builder">x</button>
       </div>
       <div class="custom-builder">
         <div class="builder-topline">
@@ -195,10 +210,26 @@
         <div class="builder-tools">
           <button id="clearBuilderButton" type="button">Clear</button>
         </div>
+        <div class="custom-polyhedron-editor">
+          <div class="builder-topline">
+            <label><input id="customPolyhedronCheckbox" type="checkbox"><span>Include convex polyhedron</span></label>
+          </div>
+          <label class="field">
+            <span>Integer-lattice polyhedron JSON</span>
+            <textarea id="customPolyhedronInput" rows="9" spellcheck="false">{
+  "name": "User lattice cube",
+  "vertices": [
+    [0,0,0], [1,0,0], [0,1,0], [1,1,0],
+    [0,0,1], [1,0,1], [0,1,1], [1,1,1]
+  ]
+}</textarea>
+          </label>
+          <div id="customPolyhedronStatus" class="custom-shape-match">Faces are optional; the convex hull is inferred.</div>
+        </div>
       </div>
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260721-growth-curves"></script>
+  <script type="module" src="./app.js?v=20260723-standalone-balanced-v8"></script>
 </body>
 </html>

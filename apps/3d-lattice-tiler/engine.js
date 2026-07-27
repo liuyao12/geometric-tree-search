@@ -2,10 +2,9 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
-import { OnlineFailureMarking } from "./online-failure-marking.js";
 
 export const createTilingStream = (() => {
-  return async function* createTilingStream(config, tileSpecs, stopToken) {
+  return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }) {
     const SCALE = tileSpecs.SCALE;
     const COLOR_PALETTE = tileSpecs.COLOR_PALETTE;
 
@@ -125,6 +124,77 @@ export const createTilingStream = (() => {
       });
     });
 
+    const determinant3 = (vectors) => {
+      const [a, b, c] = vectors;
+      return a[0] * (b[1] * c[2] - b[2] * c[1])
+        - a[1] * (b[0] * c[2] - b[2] * c[0])
+        + a[2] * (b[0] * c[1] - b[1] * c[0]);
+    };
+    const convexVolume = (orient) => {
+      if (!orient?.verts?.length || !orient?.faces?.length) return 0;
+      const center = [0, 1, 2].map(axis =>
+        orient.verts.reduce((sum, vertex) => sum + vertex[axis], 0) / orient.verts.length
+      );
+      let volume = 0;
+      for (const face of orient.faces) {
+        const a = orient.verts[face[0]].map((value, axis) => value - center[axis]);
+        for (let i = 1; i < face.length - 1; i++) {
+          const b = orient.verts[face[i]].map((value, axis) => value - center[axis]);
+          const c = orient.verts[face[i + 1]].map((value, axis) => value - center[axis]);
+          volume += Math.abs(determinant3([a, b, c])) / 6;
+        }
+      }
+      return volume;
+    };
+    const tileVolumes = prototiles.map(tile => convexVolume(tile.unique_orientations?.[0] ?? tile));
+    const rawRegion = config.target_region;
+    const targetRegion = (() => {
+      if (!rawRegion || rawRegion.type === "none") return null;
+      const epsilon = Math.max(1e-9, Number(rawRegion.epsilon) || 1e-9);
+      if (rawRegion.type === "box") {
+        const center = (rawRegion.center ?? [0, 0, 0]).map(Number);
+        const size = (rawRegion.size ?? [4, 4, 4]).map(value => Math.max(epsilon, Number(value)));
+        const min = rawRegion.min?.map(Number) ?? center.map((value, axis) => value - size[axis] / 2);
+        const max = rawRegion.max?.map(Number) ?? center.map((value, axis) => value + size[axis] / 2);
+        return {
+          type: "box",
+          center: min.map((value, axis) => (value + max[axis]) / 2),
+          volume: (max[0] - min[0]) * (max[1] - min[1]) * (max[2] - min[2]),
+          contains: point => point.every((value, axis) => value >= min[axis] - epsilon && value <= max[axis] + epsilon)
+        };
+      }
+      if (rawRegion.type === "sphere") {
+        const center = (rawRegion.center ?? [0, 0, 0]).map(Number);
+        const radius = Math.max(epsilon, Number(rawRegion.radius) || 1);
+        return {
+          type: "sphere",
+          center,
+          volume: Number(rawRegion.volume) || 4 * Math.PI * radius ** 3 / 3,
+          contains: point => point.reduce((sum, value, axis) => sum + (value - center[axis]) ** 2, 0) <= radius ** 2 + epsilon
+        };
+      }
+      if (rawRegion.type === "halfspaces") {
+        const planes = (rawRegion.planes ?? []).map(plane => ({
+          normal: plane.normal.map(Number),
+          offset: Number(plane.offset)
+        }));
+        if (!planes.length || !(Number(rawRegion.volume) > 0)) {
+          throw new Error("A halfspace region needs planes and a positive exact volume");
+        }
+        return {
+          type: "halfspaces",
+          center: (rawRegion.center ?? [0, 0, 0]).map(Number),
+          volume: Number(rawRegion.volume),
+          contains: point => planes.every(plane =>
+            plane.normal.reduce((sum, value, axis) => sum + value * point[axis], 0) <= plane.offset + epsilon
+          )
+        };
+      }
+      throw new Error(`Unknown target region type: ${rawRegion.type}`);
+    })();
+    const moveFitsRegion = (orient, translation) =>
+      !targetRegion || orient.verts.every(vertex => targetRegion.contains(add3(vertex, translation)));
+
     const affineRank = (verts) => {
       if (!verts?.length) return 0;
       const base = verts[0];
@@ -142,9 +212,6 @@ export const createTilingStream = (() => {
       return diffs.some(diff => dot(normal, diff) !== 0) ? 3 : 2;
     };
     const tilingDimension = Math.max(1, ...prototiles.map(tile => affineRank(tile.verts)));
-    const onlineMarking = config.online_failure_marking && tilingDimension >= 3
-      ? new OnlineFailureMarking({ max_reach: config.online_marking_max_reach ?? null, enable_pair_marking: !!config.online_pair_marking })
-      : null;
     const configuredSharedVertices = Number(config.min_shared_vertices);
     const minSharedVertices = Number.isFinite(configuredSharedVertices) && configuredSharedVertices > 0
       ? configuredSharedVertices
@@ -200,7 +267,8 @@ export const createTilingStream = (() => {
       lattice: new Map(),
       viz_faces: new Map(),
       frontier_point_depths: new Map(),
-      vertex_candidate_cache: new Map()
+      vertex_candidate_cache: new Map(),
+      placed_volume: 0
     };
 
     let faceCounter = 0;
@@ -217,16 +285,10 @@ export const createTilingStream = (() => {
       failed_leaves: 0,
       backtracks: 0,
       max_depth: 0,
-      marking_revisions: 0,
-      marking_support_sites: 0,
-      marking_failures: 0,
+      // Kept as zero-valued compatibility counters for existing headless
+      // consumers. This standalone engine does not install a GCTS runtime.
       marking_observed_failures: 0,
-      marking_pending_failures: 0,
-      marking_prunes: 0,
-      marking_geometric_clauses: 0,
-      marking_geometric_prunes: 0,
-      marking_pair_pending_failures: 0,
-      marking_unencodable: 0
+      marking_geometric_clauses: 0
     };
     const branchStack = [];
     const MAX_PATH_COUNT = 1e12;
@@ -314,8 +376,15 @@ export const createTilingStream = (() => {
     const searchStatsSnapshot = () => {
       const forcedOnPath = state.placements.reduce((sum, placement) => sum + (placement.is_forced ? 1 : 0), 0);
       const branchProgress = estimateBranchProgress();
+      const growth = growthStats();
       return {
         ...searchStats,
+        growth_axis_rank: growth.axis_rank,
+        growth_spans: growth.spans,
+        growth_isotropy: growth.isotropy,
+        placed_volume: state.placed_volume,
+        target_volume: targetRegion?.volume ?? null,
+        region_type: targetRegion?.type ?? null,
         forced_on_path: forcedOnPath,
         progress_depth: branchProgress.depth,
         progress_completed_paths: branchProgress.completed,
@@ -375,6 +444,28 @@ export const createTilingStream = (() => {
       if (isBetterSnapshot(snap, bestSnapshot)) bestSnapshot = cloneSnapshot(snap);
     };
 
+    const placementCenter = (placement) => {
+      const verts = placement.orient?.verts ?? [];
+      return [0, 1, 2].map(axis =>
+        verts.reduce((sum, vertex) => sum + vertex[axis], 0) / Math.max(1, verts.length)
+        + placement.translation[axis]
+      );
+    };
+    const growthStats = () => {
+      if (!state.placements.length) return { axis_rank: 0, spans: [0, 0, 0], isotropy: 0 };
+      const centers = state.placements.map(placementCenter);
+      const spans = [0, 1, 2].map(axis =>
+        Math.max(...centers.map(center => center[axis]))
+        - Math.min(...centers.map(center => center[axis]))
+      );
+      const maxSpan = Math.max(...spans);
+      return {
+        axis_rank: spans.filter(span => span > 1e-9).length,
+        spans,
+        isotropy: maxSpan > 1e-9 ? Math.min(...spans) / maxSpan : 0
+      };
+    };
+
     const tileCounts = () => {
       const countMap = new Map();
       for (const placement of state.placements) {
@@ -418,6 +509,13 @@ export const createTilingStream = (() => {
           prototile_idx: placement.prototile_idx ?? 0,
           name: treeTileName(prototiles[placement.prototile_idx ?? 0]?.name),
           translation: placement.translation?.slice() ?? [0, 0, 0],
+          center: [0, 1, 2].map(axis =>
+            (placement.orient?.verts ?? []).reduce(
+              (sum, vertex) => sum + vertex[axis],
+              0
+            ) / Math.max(1, placement.orient?.verts?.length ?? 0)
+            + (placement.translation?.[axis] ?? 0)
+          ),
           orientation_id: placement.orient?.__orientation_id ?? null,
           layer: placement.layer ?? 0,
           is_forced: !!placement.is_forced
@@ -454,6 +552,24 @@ export const createTilingStream = (() => {
           .map(cloneFace);
       }
       return message;
+    };
+    const fastPlacementDelta = (move, rb, node_id = null) => {
+      const coveredKeys = (rb?.removed ?? []).map(([key]) => key);
+      const newKeys = rb?.added ?? [];
+      return {
+        type: "placement_delta",
+        action: "add",
+        node_id,
+        prototile_idx: move?.prototile_idx ?? 0,
+        color_id: move?.color_id ?? 0,
+        tile_count: state.placements.length,
+        frontier_face_keys: newKeys,
+        covered_face_keys: coveredKeys,
+        faces: [...newKeys, ...coveredKeys]
+          .map(key => state.viz_faces.get(key)?.at(-1))
+          .filter(Boolean)
+          .map(cloneFace)
+      };
     };
 
     const latticeGet = (pos) => state.lattice.get(pos.join(",")) ?? 0;
@@ -510,7 +626,7 @@ export const createTilingStream = (() => {
       frontierPointLayerCacheVersion = stateVersion;
       return frontierPointLayerCache;
     };
-    const frontierPointKeys = () => new Set(frontierPointLayerMap().keys());
+    const frontierPointKeys = () => frontierPointLayerMap().keys();
     const frontierPointLayer = (pointKey) => frontierPointLayerMap().get(pointKey) ?? 0;
     const minFrontierPointLayer = () => {
       let minLayer = Infinity;
@@ -570,6 +686,9 @@ export const createTilingStream = (() => {
 
     const isMoveValid = (move) => {
       const { orient, translation } = move;
+      if (!moveFitsRegion(orient, translation)) return { ok: false };
+      const moveVolume = tileVolumes[move.prototile_idx] ?? 0;
+      if (targetRegion && state.placed_volume + moveVolume > targetRegion.volume + 1e-8) return { ok: false };
       for (const pt of orient.occupancy) {
         const g = add3(pt.pos, translation);
         if (latticeGet(g) + pt.weight > MAX_SOLID_ANGLE) return { ok: false };
@@ -592,11 +711,11 @@ export const createTilingStream = (() => {
     const sharedFrontierPoints = (move) => {
       if (move._shared_frontier_points && move._shared_frontier_version === stateVersion) return move._shared_frontier_points;
       const points = new Map();
-      const activeFrontierPointKeys = frontierPointKeys();
+      const activeFrontierPointLayers = frontierPointLayerMap();
       for (const pt of move.orient.occupancy) {
         const g = add3(pt.pos, move.translation);
         const key = vecKey(g);
-        if (activeFrontierPointKeys.has(key)) points.set(key, g);
+        if (activeFrontierPointLayers.has(key)) points.set(key, g);
       }
       const out = [...points.values()];
       move._shared_frontier_points = out;
@@ -634,11 +753,73 @@ export const createTilingStream = (() => {
       // In 3D, attachment must be by three non-collinear active frontier points;
       // merely touching along a line leaves the next placement underconstrained.
       if (tilingDimension >= 3 && affineRank(sharedPoints) < 2) return null;
-      if (onlineMarking && !onlineMarking.compatible(move, state.placements)) {
-        searchStats.marking_prunes += 1;
-        return null;
-      }
       return validCheck;
+    };
+    const orientedFacesBySignature = new Map();
+    for (let prototileIndex = 0; prototileIndex < prototiles.length; prototileIndex++) {
+      const tile = prototiles[prototileIndex];
+      for (const orient of tile.unique_orientations) {
+        for (const face of orient.faces) {
+          const vertices = face.map(index => orient.verts[index]);
+          const signature = faceSignatureUndirected(vertices);
+          if (!orientedFacesBySignature.has(signature)) orientedFacesBySignature.set(signature, []);
+          orientedFacesBySignature.get(signature).push({
+            prototile_idx: prototileIndex,
+            tile,
+            orient,
+            vertices
+          });
+        }
+      }
+    }
+    let faceCandidateIndexVersion = -1;
+    let faceCandidateIndex = new Map();
+    const faceCandidatesByFrontierPoint = () => {
+      if (faceCandidateIndexVersion === stateVersion) return faceCandidateIndex;
+      const candidateByGeometry = new Map();
+      for (const [frontierFaceKey, frontierEntry] of state.frontier) {
+        const frontierVertices = frontierEntry.ordered_verts;
+        const signature = faceSignatureUndirected(frontierVertices);
+        for (const entry of orientedFacesBySignature.get(signature) ?? []) {
+          for (const anchor of entry.vertices) {
+            const translation = vecSub(frontierVertices[0], anchor);
+            if (entry.tile.is_polycube
+              ? !isPolycubeMoveTranslation(entry.tile, translation)
+              : !translation.every(Number.isInteger)) continue;
+            const globalFace = entry.vertices.map(vertex => vecAdd(vertex, translation));
+            if (keyFace(globalFace) !== frontierFaceKey) continue;
+            if (!isCyclicPermutation(globalFace, [...frontierVertices].reverse())) continue;
+            const move = {
+              prototile_idx: entry.prototile_idx,
+              translation,
+              orient: entry.orient
+            };
+            const geometryKey = placementGeometryKey(move);
+            if (candidateByGeometry.has(geometryKey)) continue;
+            const validity = checkMoveViability(move);
+            if (!validity) continue;
+            candidateByGeometry.set(geometryKey, {
+              ...move,
+              occupancy_data: validity.occData,
+              dedup_key: geometryKey
+            });
+          }
+        }
+      }
+      const byPoint = new Map();
+      for (const candidate of candidateByGeometry.values()) {
+        for (const point of sharedFrontierPoints(candidate)) {
+          const pointKey = vecKey(point);
+          if (!byPoint.has(pointKey)) byPoint.set(pointKey, []);
+          byPoint.get(pointKey).push(candidate);
+        }
+      }
+      for (const candidates of byPoint.values()) {
+        candidates.sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
+      }
+      faceCandidateIndex = byPoint;
+      faceCandidateIndexVersion = stateVersion;
+      return faceCandidateIndex;
     };
     const candidateMoveLayer = (move) => {
       if (move._candidate_layer != null && move._candidate_layer_version === stateVersion) return move._candidate_layer;
@@ -667,6 +848,7 @@ export const createTilingStream = (() => {
       const moveLayer = Number.isFinite(move.layer) ? move.layer : candidateMoveLayer(move);
       move.layer = moveLayer;
       state.placements.push(move);
+      state.placed_volume += tileVolumes[move.prototile_idx] ?? 0;
       stateVersion += 1;
       const changedOccupancyPositions = move.occupancy_data.map(o => o.pos);
       for (const o of move.occupancy_data) latticeAdd(o.pos, o.weight);
@@ -753,12 +935,20 @@ export const createTilingStream = (() => {
       }
       for (const o of move.occupancy_data) latticeAdd(o.pos, -o.weight);
       state.placements.pop();
+      state.placed_volume -= tileVolumes[move.prototile_idx] ?? 0;
       stateVersion += 1;
     };
 
     const p0 = prototiles[0];
     const startOrient = p0.unique_orientations[0];
-    const startTrans = [-startOrient.verts[0][0], -startOrient.verts[0][1], -startOrient.verts[0][2]];
+    const startCenter = [0, 1, 2].map(axis =>
+      startOrient.verts.reduce((sum, vertex) => sum + vertex[axis], 0) / startOrient.verts.length
+    );
+    const desiredCenter = targetRegion?.center ?? [0, 0, 0];
+    const startTrans = startCenter.map((value, axis) => Math.round(desiredCenter[axis] - value));
+    if (!moveFitsRegion(startOrient, startTrans)) {
+      throw new Error("The initial tile does not fit inside the target region");
+    }
     const startOcc = startOrient.occupancy.map(pt => ({ pos: add3(pt.pos, startTrans), weight: pt.weight }));
 
     const frontierPointStats = () => {
@@ -809,6 +999,7 @@ export const createTilingStream = (() => {
 
     const startMove = { prototile_idx: 0, translation: startTrans, occupancy_data: startOcc, orient: startOrient, color_id: 0, layer: 0 };
     state.placements.push(startMove);
+    state.placed_volume = tileVolumes[0] ?? 0;
     for (const o of startMove.occupancy_data) latticeAdd(o.pos, o.weight);
 
     const gVerts0 = startOrient.verts.map(v => add3(v, startTrans));
@@ -845,41 +1036,26 @@ export const createTilingStream = (() => {
       : 3;
     const branchDetails = !!config.branch_details;
     const startedAt = performance.now();
-    const safetyMax = 2000;
+    const configuredSafetyMax = Number(config.safety_max_tiles);
+    const minimumTileVolume = Math.min(...tileVolumes.filter(volume => volume > 0));
+    const regionTileUpperBound = targetRegion && Number.isFinite(minimumTileVolume)
+      ? Math.ceil(targetRegion.volume / minimumTileVolume)
+      : 2000;
+    const defaultSafetyMax = criterion === "count"
+      ? Math.max(2000, Math.ceil(targetVal))
+      : criterion === "region" ? Math.max(1, regionTileUpperBound) : 2000;
+    const safetyMax = Number.isFinite(configuredSafetyMax) && configuredSafetyMax > 0
+      ? Math.max(criterion === "count" ? Math.ceil(targetVal) : 1, Math.floor(configuredSafetyMax))
+      : defaultSafetyMax;
     const overNodeLimit = () => Number.isFinite(nodeLimit) && nodeCounter >= nodeLimit;
     const overTimeLimit = () => Number.isFinite(timeLimitMs) && performance.now() - startedAt >= timeLimitMs;
     const overBudget = () => overNodeLimit() || overTimeLimit();
     const budgetText = () => overNodeLimit() ? "Node limit" : "Time limit";
-    let incompleteRevision = 0;
-    const noteIncompleteSearch = () => { incompleteRevision += 1; };
-    const markingProofEnabled = !!onlineMarking
-      && (!usePolicyAgent || agentExhaustive)
-      && !Number.isFinite(branchCap)
-      && !Number.isFinite(candidateCap);
-    const commitFailedBranch = (context, move) => {
-      if (!markingProofEnabled) return null;
-      const update = onlineMarking.learn(context, move);
-      const stats = onlineMarking.stats();
-      searchStats.marking_revisions = stats.revision;
-      searchStats.marking_support_sites = stats.support_sites;
-      searchStats.marking_failures = stats.encoded_failures;
-      searchStats.marking_observed_failures = stats.observed_failures;
-      searchStats.marking_pending_failures = stats.pending_failures;
-      searchStats.marking_geometric_clauses = stats.geometric_clauses;
-      searchStats.marking_geometric_prunes = stats.geometric_prunes;
-      searchStats.marking_pair_pending_failures = stats.pair_pending_failures;
-      searchStats.marking_unencodable = stats.unencodable;
-      if (update.committed) {
-        state.vertex_candidate_cache.clear();
-        latestFrontierGraph = null;
-        latestFrontierGraphVersion = -1;
-        stateVersion += 1;
-      }
-      return update;
-    };
+    const noteIncompleteSearch = () => {};
     const goalMet = () => {
       if (criterion === "count") return state.placements.length >= targetVal;
       if (criterion === "layer") return calculateFrontierStats().min_gen >= targetVal;
+      if (criterion === "region") return !!targetRegion && Math.abs(state.placed_volume - targetRegion.volume) <= 1e-8;
       return false;
     };
     const frontierPointNorm = (option) => Math.abs(option.point[0]) + Math.abs(option.point[1]) + Math.abs(option.point[2]);
@@ -939,6 +1115,38 @@ export const createTilingStream = (() => {
     const vecAdd = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
     const vecEq = (a, b) => a[0] === b[0] && a[1] === b[1] && a[2] === b[2];
     const vecKey = (a) => a.join(",");
+    let growthBoundsCacheVersion = -1;
+    let growthBoundsCache = null;
+    const placementGrowthBounds = () => {
+      if (growthBoundsCacheVersion === stateVersion && growthBoundsCache) return growthBoundsCache;
+      const mins = [Infinity, Infinity, Infinity];
+      const maxs = [-Infinity, -Infinity, -Infinity];
+      for (const placement of state.placements) {
+        const center = placementCenter(placement);
+        for (let axis = 0; axis < 3; axis++) {
+          mins[axis] = Math.min(mins[axis], center[axis]);
+          maxs[axis] = Math.max(maxs[axis], center[axis]);
+        }
+      }
+      growthBoundsCache = { mins, maxs };
+      growthBoundsCacheVersion = stateVersion;
+      return growthBoundsCache;
+    };
+    const prospectiveGrowthShape = (move) => {
+      const current = placementGrowthBounds();
+      const center = placementCenter(move);
+      const spans = [0, 1, 2].map(axis =>
+        Math.max(current.maxs[axis], center[axis])
+        - Math.min(current.mins[axis], center[axis])
+      ).sort((a, b) => a - b);
+      const maxSpan = Math.max(spans[2], 1e-9);
+      return {
+        axis_rank: spans.filter(span => span > 1e-9).length,
+        axis_isotropy: spans[0] / maxSpan,
+        axis_planarity: spans[1] / maxSpan,
+        max_span: spans[2]
+      };
+    };
     const placementFrame = (placement) => `${placement.prototile_idx}::${placement.orient.__orientation_id ?? ""}`;
     let translationCacheVersion = -1;
     let translationCache = new Map();
@@ -1022,6 +1230,7 @@ export const createTilingStream = (() => {
     };
     const periodicRankGain = (move) => {
       const currentRank = placementTranslationRank();
+      if (currentRank >= 3) return 0;
       const nextRank = affineRank([...state.placements.map(placement => placement.translation), move.translation]);
       return Math.max(0, nextRank - currentRank);
     };
@@ -1260,61 +1469,312 @@ export const createTilingStream = (() => {
       }
       return out;
     };
-    const findTwoTilePeriodicTemplate = () => {
-      const requestedPeriod = Math.max(1, +config.periodic_tile_count || 2);
-      const maxCellVolume = Math.max(1, +config.periodic_template_max_volume || 64);
-      if (requestedPeriod !== 2 || prototiles.length !== 1) return null;
+    const translatedFaceVector = (source, target) => {
+      if (source.length !== target.length || source.length < 3) return null;
+      const targetKeys = new Set(target.map(vecKey));
+      for (const targetVertex of target) {
+        const translation = vecSub(targetVertex, source[0]);
+        if (translation.every(value => value === 0)) continue;
+        if (source.every(vertex => targetKeys.has(vecKey(vecAdd(vertex, translation))))) {
+          return translation;
+        }
+      }
+      return null;
+    };
+    const convexPolyhedronVolume = (orient) => {
+      const center = [0, 1, 2].map(axis =>
+        orient.verts.reduce((sum, vertex) => sum + vertex[axis], 0) / orient.verts.length
+      );
+      let volume = 0;
+      for (const face of orient.faces) {
+        const a = vecSub(orient.verts[face[0]], center);
+        for (let i = 1; i < face.length - 1; i++) {
+          const b = vecSub(orient.verts[face[i]], center);
+          const c = vecSub(orient.verts[face[i + 1]], center);
+          volume += Math.abs(determinant3([a, b, c])) / 6;
+        }
+      }
+      return volume;
+    };
+    const isClosedConvexPolyhedron = (orient) => {
+      const edgeCounts = new Map();
+      const usedVertices = new Set();
+      for (const face of orient.faces) {
+        if (new Set(face).size !== face.length) return false;
+        for (let i = 0; i < face.length; i++) {
+          const a = face[i];
+          const b = face[(i + 1) % face.length];
+          usedVertices.add(a);
+          usedVertices.add(b);
+          const edgeKey = a < b ? `${a},${b}` : `${b},${a}`;
+          edgeCounts.set(edgeKey, (edgeCounts.get(edgeKey) ?? 0) + 1);
+        }
+        const origin = orient.verts[face[0]];
+        let normal = null;
+        for (let i = 1; i < face.length - 1 && !normal; i++) {
+          const a = vecSub(orient.verts[face[i]], origin);
+          const b = vecSub(orient.verts[face[i + 1]], origin);
+          const candidate = [
+            a[1] * b[2] - a[2] * b[1],
+            a[2] * b[0] - a[0] * b[2],
+            a[0] * b[1] - a[1] * b[0]
+          ];
+          if (candidate.some(Boolean)) normal = candidate;
+        }
+        if (!normal) return false;
+        const faceSet = new Set(face);
+        let side = 0;
+        for (let vertexIndex = 0; vertexIndex < orient.verts.length; vertexIndex++) {
+          const delta = vecSub(orient.verts[vertexIndex], origin);
+          const signedDistance = normal[0] * delta[0] + normal[1] * delta[1] + normal[2] * delta[2];
+          if (faceSet.has(vertexIndex)) {
+            if (signedDistance !== 0) return false;
+            continue;
+          }
+          if (signedDistance === 0) continue;
+          const vertexSide = Math.sign(signedDistance);
+          if (side && vertexSide !== side) return false;
+          side = vertexSide;
+        }
+        if (!side) return false;
+      }
+      return usedVertices.size === orient.verts.length
+        && [...edgeCounts.values()].every(count => count === 2);
+    };
+    const findTranslationalPolyhedronTemplate = () => {
+      if (prototiles.length !== 1 || prototiles[0].is_polycube) return null;
       const tile = prototiles[0];
-      if (!tile.is_polycube || tile.polycube_lattice !== "z3") return null;
-      const rootOrientationIndex = tile.unique_orientations.indexOf(startOrient);
+      const orientationIndex = tile.unique_orientations.indexOf(startOrient);
+      if (orientationIndex < 0 || startOrient.faces.length % 2 !== 0) return null;
+      if (!isClosedConvexPolyhedron(startOrient)) return null;
+      const faceVertices = startOrient.faces.map(face => face.map(index => startOrient.verts[index]));
+      const unused = new Set(faceVertices.map((_, index) => index));
+      const facePairs = [];
+      while (unused.size) {
+        const sourceIndex = unused.values().next().value;
+        unused.delete(sourceIndex);
+        let match = null;
+        for (const targetIndex of unused) {
+          const translation = translatedFaceVector(faceVertices[sourceIndex], faceVertices[targetIndex]);
+          if (!translation) continue;
+          match = { source_face: sourceIndex, target_face: targetIndex, translation };
+          break;
+        }
+        if (!match) return null;
+        unused.delete(match.target_face);
+        facePairs.push(match);
+      }
+      const polyhedronVolume = convexPolyhedronVolume(startOrient);
+      const tolerance = 1e-9 * Math.max(1, polyhedronVolume);
+      let periodVectors = null;
+      let latticeDeterminant = null;
+      for (let i = 0; i < facePairs.length && !periodVectors; i++) {
+        for (let j = i + 1; j < facePairs.length && !periodVectors; j++) {
+          for (let k = j + 1; k < facePairs.length; k++) {
+            const basis = [
+              facePairs[i].translation,
+              facePairs[j].translation,
+              facePairs[k].translation
+            ];
+            const determinant = determinant3(basis);
+            if (Math.abs(determinant) <= 1e-9) continue;
+            if (Math.abs(Math.abs(determinant) - polyhedronVolume) > tolerance) continue;
+            const allTranslationsInLattice = facePairs.every(pair => {
+              const vector = pair.translation;
+              const coordinates = [
+                determinant3([vector, basis[1], basis[2]]) / determinant,
+                determinant3([basis[0], vector, basis[2]]) / determinant,
+                determinant3([basis[0], basis[1], vector]) / determinant
+              ];
+              return coordinates.every(value => Math.abs(value - Math.round(value)) <= 1e-9);
+            });
+            if (!allTranslationsInLattice) continue;
+            periodVectors = basis.map(vector => vector.slice());
+            latticeDeterminant = Math.abs(determinant);
+            break;
+          }
+        }
+      }
+      if (!periodVectors) return null;
+      const isParallelepiped = startOrient.verts.length === 8
+        && startOrient.faces.length === 6
+        && startOrient.faces.every(face => face.length === 4);
+      return {
+        kind: isParallelepiped
+          ? "one_tile_translational_parallelepiped"
+          : "one_tile_translational_lattice_polyhedron",
+        tile_volume: polyhedronVolume,
+        tile_volumes: [polyhedronVolume],
+        cell_volume: latticeDeterminant,
+        period_vectors: periodVectors,
+        motif: [{
+          prototile_idx: 0,
+          orientation_index: orientationIndex,
+          orientation_id: startOrient.__orientation_id ?? null,
+          translation: [0, 0, 0]
+        }],
+        mixed_prototile: false,
+        prototile_counts: [{ prototile_idx: 0, count: 1 }],
+        proof: {
+          method: "paired_facets_integral_lattice_and_equal_covolume",
+          face_pairs: facePairs,
+          polyhedron_volume: polyhedronVolume,
+          lattice_determinant: latticeDeterminant
+        }
+      };
+    };
+    const findPeriodicTemplate = () => {
+      const requestedPeriod = Math.max(1, Math.min(4, Math.floor(+config.periodic_tile_count || 2)));
+      const maxCellVolume = Math.max(1, +config.periodic_template_max_volume || 64);
+      const translationalPolyhedronTemplate = findTranslationalPolyhedronTemplate();
+      if (translationalPolyhedronTemplate) return translationalPolyhedronTemplate;
+      const requireAllTypes = prototiles.length > 1 && config.periodic_require_all_types !== false;
+      if (requireAllTypes && prototiles.length > requestedPeriod) return null;
+      if (!prototiles.every(tile => tile.is_polycube && tile.polycube_lattice === "z3")) return null;
+      const orientationGroups = prototiles.map((tile, prototileIndex) =>
+        tile.unique_orientations
+          .map((orient, orientationIndex) => ({
+            prototileIndex,
+            orient,
+            orientationIndex,
+            cells: polycubeCellsForOrient(orient)
+          }))
+          .filter(entry => entry.cells.length > 0)
+      );
+      if (orientationGroups.some(group => group.length === 0)) return null;
+      const tileVolumes = orientationGroups.map(group => group[0].cells.length);
+      if (orientationGroups.some((group, prototileIndex) =>
+        group.some(entry => entry.cells.length !== tileVolumes[prototileIndex])
+      )) return null;
+      const rootOrientationIndex = prototiles[0].unique_orientations.indexOf(startOrient);
       if (rootOrientationIndex < 0) return null;
-      const orientations = tile.unique_orientations
-        .map((orient, orientationIndex) => ({ orient, orientationIndex, cells: polycubeCellsForOrient(orient) }))
-        .filter(entry => entry.cells.length > 0);
-      const rootEntry = orientations.find(entry => entry.orientationIndex === rootOrientationIndex);
+      const rootEntry = orientationGroups[0].find(entry => entry.orientationIndex === rootOrientationIndex);
       if (!rootEntry) return null;
-      const tileVolume = rootEntry.cells.length;
-      if (!orientations.every(entry => entry.cells.length === tileVolume)) return null;
-      const cellVolume = tileVolume * requestedPeriod;
-      if (cellVolume > maxCellVolume) return null;
-      for (const hnf of hnfCandidates(cellVolume)) {
+      const rootVolume = rootEntry.cells.length;
+      const candidateCellVolumes = new Set();
+      const enumerateCellVolumes = (slotsLeft, volume, usedTypes) => {
+        if (slotsLeft === 0) {
+          if (!requireAllTypes || usedTypes.size === prototiles.length) candidateCellVolumes.add(volume);
+          return;
+        }
+        for (let prototileIndex = 0; prototileIndex < prototiles.length; prototileIndex++) {
+          const nextTypes = new Set(usedTypes);
+          nextTypes.add(prototileIndex);
+          enumerateCellVolumes(slotsLeft - 1, volume + tileVolumes[prototileIndex], nextTypes);
+        }
+      };
+      enumerateCellVolumes(requestedPeriod - 1, rootVolume, new Set([0]));
+      const allOrientations = orientationGroups.flat();
+      const minimumTileVolume = Math.min(...tileVolumes);
+      const maximumTileVolume = Math.max(...tileVolumes);
+      for (const cellVolume of [...candidateCellVolumes].filter(volume => volume <= maxCellVolume).sort((a, b) => a - b)) {
+        for (const hnf of hnfCandidates(cellVolume)) {
         const fundamentalCells = hnfFundamentalCells(hnf);
         const universe = new Set(fundamentalCells.map(vecKey));
         const rootSet = cellSetInQuotient(rootEntry.cells, hnf);
-        if (!rootSet || rootSet.size !== tileVolume) continue;
+        if (!rootSet || rootSet.size !== rootVolume) continue;
         const complement = new Set();
         for (const key of universe) if (!rootSet.has(key)) complement.add(key);
-        for (const entry of orientations) {
+        const candidatesBySignature = new Map();
+        for (const entry of allOrientations) {
           for (const translation of fundamentalCells) {
             const candidateSet = cellSetInQuotient(entry.cells, hnf, translation);
-            if (!candidateSet || candidateSet.size !== tileVolume) continue;
-            let matchesComplement = true;
+            if (!candidateSet || candidateSet.size !== tileVolumes[entry.prototileIndex]) continue;
+            let containedInComplement = true;
             for (const key of candidateSet) {
-              if (!complement.has(key)) { matchesComplement = false; break; }
+              if (!complement.has(key)) { containedInComplement = false; break; }
             }
-            if (!matchesComplement) continue;
-            return {
-              kind: "two_tile_periodic_torus",
-              tile_volume: tileVolume,
-              cell_volume: cellVolume,
-              period_vectors: hnf.vectors.map(vector => vector.slice()),
-              motif: [
-                {
-                  prototile_idx: 0,
-                  orientation_index: rootOrientationIndex,
-                  orientation_id: rootEntry.orient.__orientation_id ?? null,
-                  translation: [0, 0, 0]
-                },
-                {
-                  prototile_idx: 0,
+            if (!containedInComplement) continue;
+            const signature = `${entry.prototileIndex}::${[...candidateSet].sort().join("|")}`;
+            if (!candidatesBySignature.has(signature)) {
+              candidatesBySignature.set(signature, {
+                cells: candidateSet,
+                motif: {
+                  prototile_idx: entry.prototileIndex,
                   orientation_index: entry.orientationIndex,
                   orientation_id: entry.orient.__orientation_id ?? null,
                   translation: translation.slice()
                 }
-              ]
-            };
+              });
+            }
           }
         }
+        const candidates = [...candidatesBySignature.values()];
+        const byCell = new Map();
+        for (const candidate of candidates) {
+          for (const key of candidate.cells) {
+            if (!byCell.has(key)) byCell.set(key, []);
+            byCell.get(key).push(candidate);
+          }
+        }
+        const exactCover = (remaining, chosen, usedTypes) => {
+          const slotsLeft = requestedPeriod - 1 - chosen.length;
+          if (!remaining.size) {
+            return slotsLeft === 0 && (!requireAllTypes || usedTypes.size === prototiles.length)
+              ? chosen
+              : null;
+          }
+          if (slotsLeft <= 0) return null;
+          if (remaining.size < slotsLeft * minimumTileVolume || remaining.size > slotsLeft * maximumTileVolume) return null;
+          if (requireAllTypes) {
+            let missingTypes = 0;
+            for (let typeIndex = 0; typeIndex < prototiles.length; typeIndex++) {
+              if (!usedTypes.has(typeIndex)) missingTypes += 1;
+            }
+            if (missingTypes > slotsLeft) return null;
+          }
+          let pivotCandidates = null;
+          for (const key of remaining) {
+            const options = (byCell.get(key) ?? []).filter(candidate =>
+              [...candidate.cells].every(cell => remaining.has(cell))
+            );
+            if (!options.length) return null;
+            if (!pivotCandidates || options.length < pivotCandidates.length) pivotCandidates = options;
+          }
+          for (const candidate of pivotCandidates ?? []) {
+            const nextRemaining = new Set(remaining);
+            for (const key of candidate.cells) nextRemaining.delete(key);
+            const nextTypes = new Set(usedTypes);
+            nextTypes.add(candidate.motif.prototile_idx);
+            const solution = exactCover(nextRemaining, [...chosen, candidate], nextTypes);
+            if (solution) return solution;
+          }
+          return null;
+        };
+        const solution = exactCover(complement, [], new Set([0]));
+        if (!solution) continue;
+        const motif = [
+          {
+            prototile_idx: 0,
+            orientation_index: rootOrientationIndex,
+            orientation_id: rootEntry.orient.__orientation_id ?? null,
+            translation: [0, 0, 0],
+            quotient_cells: [...rootSet].sort()
+          },
+          ...solution.map(candidate => ({
+            ...candidate.motif,
+            quotient_cells: [...candidate.cells].sort()
+          }))
+        ];
+        const prototileCounts = new Map();
+        for (const item of motif) {
+          prototileCounts.set(item.prototile_idx, (prototileCounts.get(item.prototile_idx) ?? 0) + 1);
+        }
+        return {
+          kind: requestedPeriod === 2
+            ? "two_tile_periodic_torus"
+            : `${requestedPeriod}_tile_periodic_torus`,
+          tile_volume: cellVolume / requestedPeriod,
+          tile_volumes: tileVolumes.slice(),
+          cell_volume: cellVolume,
+          period_vectors: hnf.vectors.map(vector => vector.slice()),
+          motif,
+          mixed_prototile: prototileCounts.size > 1,
+          prototile_counts: [...prototileCounts.entries()]
+            .sort((left, right) => left[0] - right[0])
+            .map(([prototile_idx, count]) => ({ prototile_idx, count }))
+        };
+      }
       }
       return null;
     };
@@ -1446,6 +1906,7 @@ export const createTilingStream = (() => {
     };
     const moveAgentFeatures = (move, option = null) => {
       if (!option && move._agent_features && move._agent_features_version === stateVersion) return move._agent_features;
+      const growthShape = prospectiveGrowthShape(move);
       const features = {
         coverage: moveCoverage(move),
         root_corona_faces: coveredFrontierFaceScore(move, 0),
@@ -1457,6 +1918,10 @@ export const createTilingStream = (() => {
         parallelogram_completion: parallelogramCompletionScore(move),
         periodic_rank_gain: periodicRankGain(move),
         periodic_rank: placementTranslationRank(),
+        growth_axis_rank: growthShape.axis_rank,
+        growth_isotropy: growthShape.axis_isotropy,
+        growth_planarity: growthShape.axis_planarity,
+        growth_max_span: growthShape.max_span,
         same_root_orientation: sameRootOrientation(move),
         ...moveLayerLagInfo(move),
         mrv_width: option?.unique_candidates?.length ?? option?.candidate_keys?.length ?? Infinity
@@ -1496,6 +1961,10 @@ export const createTilingStream = (() => {
           // grow an infinite one-dimensional stack.
           return [
             features.periodic_rank_gain,
+            features.growth_axis_rank,
+            features.growth_isotropy,
+            features.growth_planarity,
+            -features.growth_max_span,
             features.periodic_evidence > 0 ? 1 : 0,
             features.periodic_evidence,
             features.isohedral_evidence > 0 ? 1 : 0,
@@ -1653,7 +2122,10 @@ export const createTilingStream = (() => {
         .map(item => item.move);
     };
     const preflightEnabled = config.template_preflight !== false;
-    const periodicPreflightEnabled = preflightEnabled && (usePolicyAgent || moveOrder === "periodic");
+    // An exact quotient certificate is a proof, not a search heuristic. Use it
+    // ahead of every move-order policy unless a diagnostic explicitly disables
+    // periodic preflight. Ordinary frontier search handles uncertified systems.
+    const periodicPreflightEnabled = preflightEnabled && config.periodic_preflight !== false;
     const isohedralPreflightEnabled = preflightEnabled && (usePolicyAgent || moveOrder === "isohedral");
     const vectorScaleAdd = (base, vector, scale) => [
       base[0] + vector[0] * scale,
@@ -1679,13 +2151,68 @@ export const createTilingStream = (() => {
         _periodic_cell: cell.slice()
       };
     };
-    const periodicTemplateCells = () => {
-      const countGoal = criterion === "count" ? targetVal : Math.max(24, targetVal * 24);
-      const radius = Math.max(2, Math.ceil(Math.cbrt(Math.max(1, countGoal))) + 2);
+    const periodicTemplateCells = (template) => {
+      const countGoal = criterion === "count"
+        ? targetVal
+        : criterion === "region"
+          ? Math.max(1, Math.ceil(targetRegion.volume / Math.max(1e-9, Math.min(...tileVolumes.filter(volume => volume > 0)))))
+          : Math.max(24, targetVal * 24);
+      const motifCount = Math.max(1, template.motif?.length ?? (+config.periodic_tile_count || 2));
+      const requiredCells = Math.max(1, Math.ceil(countGoal / motifCount));
+      const configuredRadius = Number(config.periodic_template_radius);
+      const vectorLengths = template.period_vectors.map(vector =>
+        Math.hypot(vector[0], vector[1], vector[2])
+      );
+      const [v0, v1, v2] = template.period_vectors;
+      const periodMatrix = [
+        [v0[0], v1[0], v2[0]],
+        [v0[1], v1[1], v2[1]],
+        [v0[2], v1[2], v2[2]]
+      ];
+      const determinant =
+        periodMatrix[0][0] * (periodMatrix[1][1] * periodMatrix[2][2] - periodMatrix[1][2] * periodMatrix[2][1])
+        - periodMatrix[0][1] * (periodMatrix[1][0] * periodMatrix[2][2] - periodMatrix[1][2] * periodMatrix[2][0])
+        + periodMatrix[0][2] * (periodMatrix[1][0] * periodMatrix[2][1] - periodMatrix[1][1] * periodMatrix[2][0]);
+      const inverse = [
+        [
+          (periodMatrix[1][1] * periodMatrix[2][2] - periodMatrix[1][2] * periodMatrix[2][1]) / determinant,
+          (periodMatrix[0][2] * periodMatrix[2][1] - periodMatrix[0][1] * periodMatrix[2][2]) / determinant,
+          (periodMatrix[0][1] * periodMatrix[1][2] - periodMatrix[0][2] * periodMatrix[1][1]) / determinant
+        ],
+        [
+          (periodMatrix[1][2] * periodMatrix[2][0] - periodMatrix[1][0] * periodMatrix[2][2]) / determinant,
+          (periodMatrix[0][0] * periodMatrix[2][2] - periodMatrix[0][2] * periodMatrix[2][0]) / determinant,
+          (periodMatrix[0][2] * periodMatrix[1][0] - periodMatrix[0][0] * periodMatrix[1][2]) / determinant
+        ],
+        [
+          (periodMatrix[1][0] * periodMatrix[2][1] - periodMatrix[1][1] * periodMatrix[2][0]) / determinant,
+          (periodMatrix[0][1] * periodMatrix[2][0] - periodMatrix[0][0] * periodMatrix[2][1]) / determinant,
+          (periodMatrix[0][0] * periodMatrix[1][1] - periodMatrix[0][1] * periodMatrix[1][0]) / determinant
+        ]
+      ];
+      const desiredPhysicalHalfSpan = Math.cbrt(countGoal * template.tile_volume) / 2;
+      const radii = inverse.map(row =>
+        Math.max(1, Math.ceil(desiredPhysicalHalfSpan * row.reduce((sum, value) => sum + Math.abs(value), 0)))
+      );
+      if (Number.isFinite(configuredRadius) && configuredRadius > 0) {
+        radii.fill(Math.floor(configuredRadius));
+      } else {
+        const targetCellBudget = Math.ceil(requiredCells * 1.5);
+        const cellCount = () => radii.reduce((product, radius) => product * (2 * radius + 1), 1);
+        while (cellCount() < targetCellBudget) {
+          let shortestAxis = 0;
+          for (let axis = 1; axis < 3; axis++) {
+            const reach = (radii[axis] + 0.5) * vectorLengths[axis];
+            const shortestReach = (radii[shortestAxis] + 0.5) * vectorLengths[shortestAxis];
+            if (reach < shortestReach) shortestAxis = axis;
+          }
+          radii[shortestAxis] += 1;
+        }
+      }
       const cells = [];
-      for (let a = -radius; a <= radius; a++) {
-        for (let b = -radius; b <= radius; b++) {
-          for (let c = -radius; c <= radius; c++) {
+      for (let a = -radii[0]; a <= radii[0]; a++) {
+        for (let b = -radii[1]; b <= radii[1]; b++) {
+          for (let c = -radii[2]; c <= radii[2]; c++) {
             cells.push([a, b, c]);
           }
         }
@@ -1703,53 +2230,229 @@ export const createTilingStream = (() => {
       search_stats: searchStatsSnapshot(),
       periodic_template: template
     });
+    const certifiedPeriodicMoveViability = (candidate) => {
+      // The quotient proof already establishes global non-overlap and exact
+      // coverage for every translated motif placement. For finite growth we
+      // therefore need only a shared frontier face to keep the selected patch
+      // connected. Rechecking every occupied vertex and face for every member
+      // of the radial selection window would redundantly re-prove the torus
+      // certificate thousands of times.
+      const { faceKeys } = candidate;
+      const moveVolume = tileVolumes[candidate.move.prototile_idx] ?? 0;
+      if (!moveFitsRegion(candidate.move.orient, candidate.move.translation)) return null;
+      if (targetRegion && state.placed_volume + moveVolume > targetRegion.volume + 1e-8) return null;
+      const sharesFrontierFace = faceKeys.some(faceKey => state.frontier.has(faceKey));
+      return sharesFrontierFace ? { ok: true } : null;
+    };
     async function* tryPeriodicTemplatePatch(parentId) {
       if (!periodicPreflightEnabled || goalMet()) return false;
-      const template = findTwoTilePeriodicTemplate();
+      const template = findPeriodicTemplate();
       if (!template) return false;
-      const cells = periodicTemplateCells();
+      const cells = periodicTemplateCells(template);
       const existing = new Set(state.placements.map(placement => placementGeometryKey(placement)));
-      let activeParent = parentId;
+      const candidatesByFace = new Map();
+      const placedMotifsByCell = new Map([["0,0,0", 1]]);
+      const motifTypeCounts = new Map(
+        template.prototile_counts?.map(entry => [entry.prototile_idx, entry.count])
+        ?? template.motif.map(item => [item.prototile_idx, 1])
+      );
+      const placedTypeCounts = new Map();
+      for (const placement of state.placements) {
+        placedTypeCounts.set(
+          placement.prototile_idx,
+          (placedTypeCounts.get(placement.prototile_idx) ?? 0) + 1
+        );
+      }
+      const periodicCompositionScore = move => {
+        const projectedTotal = state.placements.length + 1;
+        let deviation = 0;
+        for (const [prototileIndex, motifCount] of motifTypeCounts) {
+          const expected = projectedTotal * motifCount / template.motif.length;
+          const projected = (placedTypeCounts.get(prototileIndex) ?? 0)
+            + (move.prototile_idx === prototileIndex ? 1 : 0);
+          deviation += Math.abs(projected - expected);
+        }
+        return -deviation;
+      };
+      for (const cell of cells) {
+        for (let motifIndex = 0; motifIndex < template.motif.length; motifIndex++) {
+          if (cell[0] === 0 && cell[1] === 0 && cell[2] === 0 && motifIndex === 0) continue;
+          const move = templateMove(template, template.motif[motifIndex], cell);
+          if (!move) continue;
+          const globalVertices = move.orient.verts.map(vertex => vecAdd(vertex, move.translation));
+          const faceKeys = move.orient.faces.map(face =>
+            keyFace(face.map(index => globalVertices[index]))
+          );
+          const candidate = {
+            move,
+            key: placementGeometryKey(move),
+            cell,
+            cell_key: cell.join(","),
+            motif_index: motifIndex,
+            faceKeys,
+            radial_priority: template.period_vectors.reduce((offset, vector, axis) => [
+              offset[0] + vector[0] * cell[axis],
+              offset[1] + vector[1] * cell[axis],
+              offset[2] + vector[2] * cell[axis]
+            ], [0, 0, 0]).reduce((sum, coordinate) => sum + coordinate * coordinate, 0),
+            queued: false,
+            consumed: false
+          };
+          for (const faceKey of faceKeys) {
+            if (!candidatesByFace.has(faceKey)) candidatesByFace.set(faceKey, []);
+            candidatesByFace.get(faceKey).push(candidate);
+          }
+        }
+      }
+      const activeCandidates = [];
+      const heapBefore = (left, right) =>
+        left.radial_priority < right.radial_priority
+        || (left.radial_priority === right.radial_priority && left.key < right.key);
+      const heapPush = candidate => {
+        candidate.queued = true;
+        activeCandidates.push(candidate);
+        let index = activeCandidates.length - 1;
+        while (index > 0) {
+          const parent = Math.floor((index - 1) / 2);
+          if (!heapBefore(activeCandidates[index], activeCandidates[parent])) break;
+          [activeCandidates[index], activeCandidates[parent]] = [activeCandidates[parent], activeCandidates[index]];
+          index = parent;
+        }
+      };
+      const heapPop = () => {
+        if (!activeCandidates.length) return null;
+        const first = activeCandidates[0];
+        const last = activeCandidates.pop();
+        if (activeCandidates.length) {
+          activeCandidates[0] = last;
+          let index = 0;
+          while (true) {
+            const left = index * 2 + 1;
+            const right = left + 1;
+            let best = index;
+            if (left < activeCandidates.length && heapBefore(activeCandidates[left], activeCandidates[best])) best = left;
+            if (right < activeCandidates.length && heapBefore(activeCandidates[right], activeCandidates[best])) best = right;
+            if (best === index) break;
+            [activeCandidates[index], activeCandidates[best]] = [activeCandidates[best], activeCandidates[index]];
+            index = best;
+          }
+        }
+        first.queued = false;
+        return first;
+      };
+      const activateFaceNeighbors = faceKey => {
+        for (const candidate of candidatesByFace.get(faceKey) ?? []) {
+          if (!existing.has(candidate.key) && !candidate.queued && !candidate.consumed) heapPush(candidate);
+        }
+      };
+      for (const faceKey of state.frontier.keys()) activateFaceNeighbors(faceKey);
       let applied = 0;
-      yield nodeStatus(parentId, "working", "periodic template", preflightStatusPayload(template));
+      const appliedMoves = [];
+      const initialPeriodicBounds = placementGrowthBounds();
+      const periodicGrowthBounds = {
+        mins: initialPeriodicBounds.mins.slice(),
+        maxs: initialPeriodicBounds.maxs.slice()
+      };
+      const periodicProspectiveGrowthShape = move => {
+        const center = placementCenter(move);
+        const spans = [0, 1, 2].map(axis =>
+          Math.max(periodicGrowthBounds.maxs[axis], center[axis])
+          - Math.min(periodicGrowthBounds.mins[axis], center[axis])
+        ).sort((a, b) => a - b);
+        const maxSpan = Math.max(spans[2], 1e-9);
+        return {
+          axis_rank: spans.filter(span => span > 1e-9).length,
+          axis_isotropy: spans[0] / maxSpan,
+          axis_planarity: spans[1] / maxSpan,
+          max_span: spans[2]
+        };
+      };
+      const configuredSelectionWindow = Number(config.periodic_selection_window);
+      const periodicSelectionWindow = Number.isFinite(configuredSelectionWindow) && configuredSelectionWindow > 0
+        ? Math.floor(configuredSelectionWindow)
+        : 64;
+      const periodicNodeId = nowId();
+      yield branchSet(parentId, [{
+        id: periodicNodeId,
+        text: "certified forced growth",
+        is_forced: true,
+        frontier_stats: frontierStatsWithCandidateCount()
+      }]);
+      yield nodeStatus(periodicNodeId, "working", "periodic certificate", preflightStatusPayload(template));
       while (!goalMet() && state.placements.length < safetyMax) {
+        if (stopToken.stop || overBudget()) {
+          noteIncompleteSearch();
+          break;
+        }
         let best = null;
+        let bestKey = null;
+        let bestCandidate = null;
         let bestScore = null;
         let cappedRepeat = null;
-        for (const cell of cells) {
-          for (let motifIndex = 0; motifIndex < template.motif.length; motifIndex++) {
-            if (cell[0] === 0 && cell[1] === 0 && cell[2] === 0 && motifIndex === 0) continue;
-            const move = templateMove(template, template.motif[motifIndex], cell);
-            if (!move) continue;
-            const key = placementGeometryKey(move);
-            if (existing.has(key)) continue;
-            const validity = checkMoveViability(move);
-            if (!validity) continue;
-            move.occupancy_data = validity.occData;
-            const layerLag = moveLayerLagInfo(move);
-            move.layer = layerLag.move_layer;
-            if (Number.isFinite(forcedMoveLayerLagCap) && layerLag.layer_lag > forcedMoveLayerLagCap) {
-              cappedRepeat ??= { move, layerLag };
+        const retainedCandidates = [];
+        while (activeCandidates.length && !best) {
+          const candidateWindow = [];
+          while (activeCandidates.length && candidateWindow.length < periodicSelectionWindow) {
+            candidateWindow.push(heapPop());
+          }
+          for (const candidate of candidateWindow) {
+            const { move, key, cell } = candidate;
+            if (existing.has(key)) {
+              candidate.consumed = true;
               continue;
             }
+            const validity = certifiedPeriodicMoveViability(candidate);
+            if (!validity) {
+              candidate.consumed = true;
+              continue;
+            }
+            const layerLag = criterion === "count"
+              ? {
+                  move_layer: Math.max(Math.abs(cell[0]), Math.abs(cell[1]), Math.abs(cell[2])),
+                  min_frontier_layer: 0,
+                  layer_lag: 0,
+                  limit: forcedMoveLayerLagCap
+                }
+              : moveLayerLagInfo(move);
+            move.layer = layerLag.move_layer;
+            if (criterion !== "count" && Number.isFinite(forcedMoveLayerLagCap) && layerLag.layer_lag > forcedMoveLayerLagCap) {
+              cappedRepeat ??= { move, layerLag };
+              retainedCandidates.push(candidate);
+              continue;
+            }
+            const growthShape = periodicProspectiveGrowthShape(move);
             const score = [
+              periodicCompositionScore(move),
               periodicRankGain(move),
-              pairPeriodicContinuation(move),
-              parallelogramCompletionScore(move),
-              coveredFrontierFaceScore(move),
-              moveCoverage(move),
+              growthShape.axis_rank,
+              growthShape.axis_isotropy,
+              growthShape.axis_planarity,
+              -growthShape.max_span,
+              placedMotifsByCell.has(candidate.cell_key) ? 1 : 0,
+              // Grow a centered crystal in period-cell coordinates. Repeated
+              // contacts are useful only after the nearest cell shell has
+              // been preferred; otherwise a valid template can degenerate
+              // into a fast one-dimensional tendril.
+              -Math.max(Math.abs(cell[0]), Math.abs(cell[1]), Math.abs(cell[2])),
               -Math.abs(cell[0]) - Math.abs(cell[1]) - Math.abs(cell[2])
             ];
             if (isBetterScore(score, bestScore)) {
               best = move;
+              bestKey = key;
+              bestCandidate = candidate;
               bestScore = score;
             }
+            retainedCandidates.push(candidate);
           }
+          if (best) break;
+        }
+        for (const candidate of retainedCandidates) {
+          if (candidate !== bestCandidate && !candidate.consumed && !candidate.queued) heapPush(candidate);
         }
         if (!best) {
           if (cappedRepeat) {
             searchStats.periodic_repeat_throttles += 1;
-            yield nodeStatus(activeParent, "working", "periodic cap", {
+            yield nodeStatus(periodicNodeId, "working", "periodic cap", {
               ...preflightStatusPayload(template),
               forced_cap: {
                 reason: "periodic-repeat-layer-lag",
@@ -1761,24 +2464,53 @@ export const createTilingStream = (() => {
           }
           break;
         }
-        const nodeId = nowId();
-        best.node_id = nodeId;
-        const payload = { id: nodeId, text: "periodic template", ...describeMove(best) };
-        yield branchSet(activeParent, [payload]);
-        applyMove(best);
-        existing.add(placementGeometryKey(best));
-        applied += 1;
-        yield nodeStatus(nodeId, "success", `[${state.placements.length}] periodic template`, preflightStatusPayload(template));
-        if (shouldSnapshot()) {
-          yield snapshot(nodeId);
-          await tick();
-        } else {
-          yield nodeSnapshot(nodeId);
+        best.node_id = periodicNodeId;
+        best.is_forced = true;
+        best.occupancy_data = best.orient.occupancy.map(point => ({
+          pos: vecAdd(point.pos, best.translation),
+          weight: point.weight
+        }));
+        searchStats.forced_total += 1;
+        const rollback = applyMove(best);
+        const bestCenter = placementCenter(best);
+        for (let axis = 0; axis < 3; axis++) {
+          periodicGrowthBounds.mins[axis] = Math.min(periodicGrowthBounds.mins[axis], bestCenter[axis]);
+          periodicGrowthBounds.maxs[axis] = Math.max(periodicGrowthBounds.maxs[axis], bestCenter[axis]);
         }
-        activeParent = nodeId;
+        existing.add(bestKey);
+        bestCandidate.consumed = true;
+        placedMotifsByCell.set(
+          bestCandidate.cell_key,
+          (placedMotifsByCell.get(bestCandidate.cell_key) ?? 0) + 1
+        );
+        placedTypeCounts.set(
+          best.prototile_idx,
+          (placedTypeCounts.get(best.prototile_idx) ?? 0) + 1
+        );
+        for (const faceKey of rollback.added ?? []) activateFaceNeighbors(faceKey);
+        appliedMoves.push({ move: best, rollback });
+        applied += 1;
+        yield fastPlacementDelta(best, rollback, periodicNodeId);
+        if (shouldSnapshot()) {
+          yield snapshot(periodicNodeId);
+          await tick();
+        } else if (applied % 32 === 0) {
+          yield nodeStatus(periodicNodeId, "working", `[${state.placements.length}] certified forced`);
+        }
         await yieldToBrowser();
       }
-      return goalMet() || applied > 0;
+      if (goalMet()) {
+        yield nodeStatus(periodicNodeId, "success", `+ ${applied} certified forced`);
+        return true;
+      }
+      while (appliedMoves.length) {
+        const entry = appliedMoves.pop();
+        undoMove(entry.move, entry.rollback);
+        yield placementDelta("remove", entry.move, entry.rollback, periodicNodeId);
+      }
+      searchStats.forced_total = Math.max(0, searchStats.forced_total - applied);
+      yield nodeStatus(periodicNodeId, "fail", "periodic preflight rolled back");
+      return false;
     }
     const preflightCandidatesForOption = async (option, maxCandidates = Infinity) => {
       const dedup = new Map();
@@ -1807,11 +2539,20 @@ export const createTilingStream = (() => {
       if (!isohedralPreflightEnabled || goalMet()) return false;
       let activeParent = parentId;
       let applied = 0;
-      const maxSteps = Math.min(
-        Math.max(1, criterion === "count" ? targetVal - state.placements.length : targetVal * 8),
-        48
+      const appliedMoves = [];
+      const configuredMaxSteps = Number(config.isohedral_preflight_max_steps);
+      const naturalMaxSteps = Math.min(
+        safetyMax - state.placements.length,
+        Math.max(1, criterion === "count" ? targetVal - state.placements.length : targetVal * 24)
       );
+      const maxSteps = Number.isFinite(configuredMaxSteps) && configuredMaxSteps >= 0
+        ? Math.min(naturalMaxSteps, Math.floor(configuredMaxSteps))
+        : naturalMaxSteps;
       while (!goalMet() && applied < maxSteps) {
+        if (stopToken.stop || overBudget()) {
+          noteIncompleteSearch();
+          break;
+        }
         const candidates = [];
         for (const option of frontierPointOptions()) {
           const moves = await preflightCandidatesForOption(option, candidateCap);
@@ -1824,26 +2565,29 @@ export const createTilingStream = (() => {
           if (candidates.length >= Math.max(12, agentBranchCap * 3)) break;
         }
         if (!candidates.length) break;
-        candidates.sort((left, right) => compareScoreVectors(
-          [
-            coveredFrontierFaceScore(left, 0),
-            isohedralCoronaScore(left),
-            moveCoverage(left),
-            sameRootOrientation(left)
-          ],
-          [
-            coveredFrontierFaceScore(right, 0),
-            isohedralCoronaScore(right),
-            moveCoverage(right),
-            sameRootOrientation(right)
-          ]
-        ));
+        const isohedralSeedScore = move => {
+          const growthShape = prospectiveGrowthShape(move);
+          return [
+            coveredFrontierFaceScore(move, 0),
+            growthShape.axis_rank,
+            growthShape.axis_isotropy,
+            growthShape.axis_planarity,
+            -growthShape.max_span,
+            isohedralCoronaScore(move),
+            moveCoverage(move),
+            sameRootOrientation(move)
+          ];
+        };
+        candidates.sort((left, right) =>
+          compareScoreVectors(isohedralSeedScore(left), isohedralSeedScore(right))
+        );
         const move = candidates[0];
         const nodeId = nowId();
         move.node_id = nodeId;
         const payload = { id: nodeId, text: "isohedral corona", ...describeMove(move) };
         yield branchSet(activeParent, [payload]);
-        applyMove(move);
+        const rollback = applyMove(move);
+        appliedMoves.push({ move, rollback, nodeId });
         applied += 1;
         yield nodeStatus(nodeId, "success", `[${state.placements.length}] isohedral corona`, preflightStatusPayload());
         if (shouldSnapshot()) {
@@ -1855,7 +2599,14 @@ export const createTilingStream = (() => {
         activeParent = nodeId;
         await yieldToBrowser();
       }
-      return goalMet() || applied > 0;
+      if (goalMet()) return true;
+      while (appliedMoves.length) {
+        const entry = appliedMoves.pop();
+        undoMove(entry.move, entry.rollback);
+        yield nodeStatus(entry.nodeId, "fail", "isohedral preflight rolled back");
+        yield placementDelta("remove", entry.move, entry.rollback, entry.nodeId);
+      }
+      return false;
     }
 
     async function* search(parentId, depth = 0) {
@@ -1897,38 +2648,17 @@ export const createTilingStream = (() => {
       const candidatesForVertexOption = async (option, maxCandidates = 2) => {
         const cacheKey = `${option.pointKey}::${maxCandidates}`;
         const cached = state.vertex_candidate_cache.get(cacheKey);
-        if (cached) {
-          const screened = screenCachedVertexCandidates(option, cached, maxCandidates);
-          if (screened.length) {
-            state.vertex_candidate_cache.set(cacheKey, screened);
-            return screened;
-          }
-        }
-        const dedup = new Map();
-        for (let prototile_idx = 0; prototile_idx < prototiles.length; prototile_idx++) {
-          const tile = prototiles[prototile_idx];
-          await yieldToBrowser();
-          for (const orient of tile.unique_orientations) {
-            await yieldToBrowser();
-            for (const anchor of orient.occupancy) {
-              const translation = [option.point[0] - anchor.pos[0], option.point[1] - anchor.pos[1], option.point[2] - anchor.pos[2]];
-              if (tile.is_polycube ? !isPolycubeMoveTranslation(tile, translation) : !translation.every(Number.isInteger)) continue;
-              const mv = { prototile_idx, translation, orient };
-              const chk = checkMoveViability(mv);
-              if (!chk) continue;
-              const dKey = placementGeometryKey(mv);
-              if (!dedup.has(dKey)) {
-                dedup.set(dKey, { ...mv, occupancy_data: chk.occData, dedup_key: dKey, _source_point_key: option.pointKey });
-                if (dedup.size >= maxCandidates) {
-                  const out = [...dedup.values()];
-                  state.vertex_candidate_cache.set(cacheKey, out);
-                  return out;
-                }
-              }
-            }
-          }
-        }
-        const out = [...dedup.values()];
+        if (cached) return cached;
+
+        // Any connected face-to-face continuation covers at least one active
+        // frontier face. Index those exact reversed-face matches once per
+        // state instead of trying every occupied-cell anchor at every vertex.
+        // The index already viability-checks and geometry-deduplicates moves.
+        const indexed = faceCandidatesByFrontierPoint().get(option.pointKey) ?? [];
+        const localCandidateCap = Math.min(maxCandidates, candidateCap);
+        const out = Number.isFinite(localCandidateCap)
+          ? indexed.slice(0, localCandidateCap)
+          : indexed.slice();
         state.vertex_candidate_cache.set(cacheKey, out);
         return out;
       };
@@ -2126,8 +2856,6 @@ export const createTilingStream = (() => {
         setBranchCursor(depth, bestMoves.length, i);
         searchStats.branch_choices_visited += 1;
         searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
-        const learningContext = onlineMarking ? onlineMarking.snapshotPlacements(state.placements) : null;
-        const proofRevision = incompleteRevision;
         const rb = applyMove(mv);
         yield placementDelta("add", mv, rb, mv.node_id);
         const postMoveAnalysis = await analyzeFrontierGraph();
@@ -2153,17 +2881,6 @@ export const createTilingStream = (() => {
           yield nodeStatus(mv.node_id, "fail");
         }
         undoMove(mv, rb);
-        if (!child && learningContext && proofRevision === incompleteRevision) {
-          const markingUpdate = commitFailedBranch(learningContext, mv);
-          if (markingUpdate?.committed) {
-            yield {
-              type: "marking_update",
-              node_id: mv.node_id,
-              ...markingUpdate,
-              search_stats: searchStatsSnapshot()
-            };
-          }
-        }
         yield placementDelta("remove", mv, rb, mv.node_id);
         setBranchCursor(depth, bestMoves.length, i + 1);
       }
@@ -3536,6 +4253,108 @@ export const tileSpecs = (() => {
   const buildPolycubeTile = (name, voxels, options = {}) =>
     make_tile(name || "CustomPolycube", generatePolycubeData(normalizeVoxels(voxels), options));
 
+  const buildLatticePolyhedronTile = (name, vertices, faces = null) => {
+    const normalizedVertices = (vertices ?? []).map((vertex, index) => {
+      if (!Array.isArray(vertex) || vertex.length < 3) {
+        throw new Error(`Custom polyhedron vertex ${index} must contain three coordinates`);
+      }
+      const point = vertex.slice(0, 3).map(Number);
+      if (point.some(value => !Number.isFinite(value) || !Number.isInteger(value))) {
+        throw new Error(`Custom polyhedron vertex ${index} must lie on the integer lattice`);
+      }
+      return point;
+    });
+    const hasVolume = (() => {
+      if (normalizedVertices.length < 4) return false;
+      const base = normalizedVertices[0];
+      const vectors = normalizedVertices.slice(1).map(vertex => sub3(vertex, base));
+      for (let i = 0; i < vectors.length; i++) {
+        for (let j = i + 1; j < vectors.length; j++) {
+          for (let k = j + 1; k < vectors.length; k++) {
+            if (dot3(vectors[i], cross3(vectors[j], vectors[k])) !== 0) return true;
+          }
+        }
+      }
+      return false;
+    })();
+    if (!hasVolume) {
+      throw new Error("Custom polyhedron needs at least four non-coplanar lattice vertices");
+    }
+
+    const normalizedFaces = faces?.map((face, faceIndex) => {
+      const indices = Array.isArray(face) ? face : face?.v;
+      if (!Array.isArray(indices) || indices.length < 3) {
+        throw new Error(`Custom polyhedron face ${faceIndex} needs at least three vertex indices`);
+      }
+      const normalized = indices.map(Number);
+      if (normalized.some(index =>
+        !Number.isInteger(index)
+        || index < 0
+        || index >= normalizedVertices.length
+      )) {
+        throw new Error(`Custom polyhedron face ${faceIndex} contains an invalid vertex index`);
+      }
+      return { v: normalized, type: face?.type ?? "default" };
+    }) ?? [];
+    if (normalizedFaces.length) {
+      const edgeCounts = new Map();
+      const usedVertices = new Set();
+      for (let faceIndex = 0; faceIndex < normalizedFaces.length; faceIndex++) {
+        const face = normalizedFaces[faceIndex].v;
+        if (new Set(face).size !== face.length) {
+          throw new Error(`Custom polyhedron face ${faceIndex} repeats a vertex`);
+        }
+        for (let i = 0; i < face.length; i++) {
+          const a = face[i];
+          const b = face[(i + 1) % face.length];
+          usedVertices.add(a);
+          usedVertices.add(b);
+          const edgeKey = a < b ? `${a},${b}` : `${b},${a}`;
+          edgeCounts.set(edgeKey, (edgeCounts.get(edgeKey) ?? 0) + 1);
+        }
+        const origin = normalizedVertices[face[0]];
+        let normal = null;
+        for (let i = 1; i < face.length - 1 && !normal; i++) {
+          const candidate = cross3(
+            sub3(normalizedVertices[face[i]], origin),
+            sub3(normalizedVertices[face[i + 1]], origin)
+          );
+          if (candidate.some(Boolean)) normal = candidate;
+        }
+        if (!normal) throw new Error(`Custom polyhedron face ${faceIndex} is degenerate`);
+        const faceSet = new Set(face);
+        let side = 0;
+        for (let vertexIndex = 0; vertexIndex < normalizedVertices.length; vertexIndex++) {
+          const signedDistance = dot3(normal, sub3(normalizedVertices[vertexIndex], origin));
+          if (faceSet.has(vertexIndex)) {
+            if (signedDistance !== 0) throw new Error(`Custom polyhedron face ${faceIndex} is not planar`);
+            continue;
+          }
+          if (signedDistance === 0) continue;
+          const vertexSide = Math.sign(signedDistance);
+          if (side && vertexSide !== side) {
+            throw new Error(`Custom polyhedron face ${faceIndex} is not a convex supporting face`);
+          }
+          side = vertexSide;
+        }
+        if (!side) throw new Error(`Custom polyhedron face ${faceIndex} does not bound a volume`);
+      }
+      if (
+        usedVertices.size !== normalizedVertices.length
+        || [...edgeCounts.values()].some(count => count !== 2)
+      ) {
+        throw new Error("Custom polyhedron faces must form one closed convex shell");
+      }
+    }
+
+    const data = createScaledTileData(
+      normalizedVertices,
+      normalizedFaces,
+      normalizedFaces.length === 0
+    );
+    return make_tile(name || "CustomPolyhedron", data);
+  };
+
   const buildCustomSystem = (customSystem = {}) => {
     const figureRefs = [...new Map(
       [...new Set(customSystem.figure_refs ?? [])]
@@ -3545,6 +4364,7 @@ export const tileSpecs = (() => {
     ).values()];
     const tileIds = [...new Set(customSystem.tile_ids ?? [])].filter(id => TILING_REGISTRY[id]);
     const customPolycubes = customSystem.polycubes ?? [];
+    const customPolyhedra = customSystem.polyhedra ?? [];
     const customName = customSystem.name || "Mixed system";
     const polycubeLattice = normalizePolycubeLattice(customSystem.polycube_lattice);
     return {
@@ -3566,6 +4386,14 @@ export const tileSpecs = (() => {
           const name = poly?.name || `CustomPolycube${index + 1}`;
           built.push(buildPolycubeTile(name, poly?.voxels ?? [[0, 0, 0]], { polycube_lattice: polycubeLattice }));
         });
+        customPolyhedra.forEach((polyhedron, index) => {
+          const name = polyhedron?.name || `CustomPolyhedron${index + 1}`;
+          built.push(buildLatticePolyhedronTile(
+            name,
+            polyhedron?.vertices,
+            polyhedron?.faces
+          ));
+        });
         return built.length ? built : TILING_REGISTRY.cube.build();
       })
     };
@@ -3586,6 +4414,7 @@ export const tileSpecs = (() => {
     addMirrorsIfChiral,
     withPolycubeLattice,
     buildPolycubeTile,
+    buildLatticePolyhedronTile,
     buildCustomSystem
   };
 })();

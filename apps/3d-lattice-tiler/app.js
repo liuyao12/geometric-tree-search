@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260721-growth-curves";
+import { tileSpecs } from "./engine.js?v=20260723-standalone-balanced-v8";
 
 const $ = (id) => document.getElementById(id);
 
@@ -8,6 +8,11 @@ const selectedTilesEl = $("selectedTiles");
 const statusEl = $("status");
 const maxTilesInput = $("maxTilesInput");
 const layerInput = $("layerInput");
+const regionField = $("regionField");
+const regionSizeFields = $("regionSizeFields");
+const regionWidthInput = $("regionWidthInput");
+const regionDepthInput = $("regionDepthInput");
+const regionHeightInput = $("regionHeightInput");
 const snapshotSelect = $("snapshotSelect");
 const faceOrderSelect = $("faceOrderSelect");
 const moveOrderSelect = $("moveOrderSelect");
@@ -17,11 +22,11 @@ const candidateCapInput = $("candidateCapInput");
 const timeCapInput = $("timeCapInput");
 const mirrorCheckbox = $("mirrorCheckbox");
 const exhaustiveCheckbox = $("exhaustiveCheckbox");
-const onlineMarkingCheckbox = $("onlineMarkingCheckbox");
 const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
 const polycubeLatticeSelect = $("polycubeLatticeSelect");
+const periodicTileCountSelect = $("periodicTileCountSelect");
 const runButton = $("runButton");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
@@ -31,6 +36,9 @@ const systemTileList = $("systemTileList");
 const customPolycubeCheckbox = $("customPolycubeCheckbox");
 const customNameInput = $("customNameInput");
 const customShapeMatch = $("customShapeMatch");
+const customPolyhedronCheckbox = $("customPolyhedronCheckbox");
+const customPolyhedronInput = $("customPolyhedronInput");
+const customPolyhedronStatus = $("customPolyhedronStatus");
 const polycubeBuilder = $("polycubeBuilder");
 const clearBuilderButton = $("clearBuilderButton");
 const customBuilderButton = $("customBuilderButton");
@@ -50,8 +58,8 @@ const metricLayerDetail = $("metricLayerDetail");
 const metricVisited = $("metricVisited");
 const metricVisitedDetail = $("metricVisitedDetail");
 const metricNodes = $("metricNodes");
-const metricMarks = $("metricMarks");
-const metricMarkSites = $("metricMarkSites");
+const metricGrowth = $("metricGrowth");
+const metricGrowthDetail = $("metricGrowthDetail");
 
 const prettyNameMap = new Map([
   ["J15", "Johnson solid J15"],
@@ -64,8 +72,6 @@ const prettyName = (name) => prettyNameMap.get(name) ?? name;
 
 const SOLVER_MESSAGE_FRAME_BUDGET_MS = 10;
 const SOLVER_MESSAGE_COMPACT_THRESHOLD = 600;
-const SOLVER_MESSAGE_PAUSE_THRESHOLD = 900;
-const SOLVER_MESSAGE_RESUME_THRESHOLD = 160;
 const FULL_UPDATE_INTERVAL_MS = 260;
 const LIVE_UPDATE_FAST_INTERVAL_MS = 70;
 const LIVE_UPDATE_MEDIUM_INTERVAL_MS = 130;
@@ -392,13 +398,9 @@ function setWorkerDisplayPaused(nextPaused) {
 }
 
 function syncWorkerDisplayBackpressure() {
-  if (!solverWorkerActive || !solverWorker) {
-    workerDisplayPaused = false;
-    return;
-  }
-  const backlog = queuedSolverMessageCount();
-  const threshold = workerDisplayPaused ? SOLVER_MESSAGE_RESUME_THRESHOLD : SOLVER_MESSAGE_PAUSE_THRESHOLD;
-  setWorkerDisplayPaused(applyingFullUpdate || backlog > threshold);
+  // Rendering is a lossy observer of solver progress. Never pause the search
+  // merely because the display is rebuilding geometry or draining telemetry.
+  if (workerDisplayPaused) setWorkerDisplayPaused(false);
 }
 
 function compactSolverMessageQueue() {
@@ -414,6 +416,9 @@ function compactSolverMessageQueue() {
   });
   solverMessageQueue = tail.filter((message, index) => {
     if (message?.type === "full_update") return index === latestFullUpdateIndex;
+    if (message?.type === "placement_delta" && latestFullUpdateIndex >= 0) {
+      return index > latestFullUpdateIndex;
+    }
     if (message?.type === "node_status" && message.status === "working") {
       return latestWorkingStatusIndexById.get(message.id) === index;
     }
@@ -423,8 +428,14 @@ function compactSolverMessageQueue() {
 }
 
 function enqueueSolverMessage(message) {
-  if (!message) return;
-  solverMessageQueue.push(message);
+  enqueueSolverMessages([message]);
+}
+
+function enqueueSolverMessages(messages) {
+  for (const message of messages ?? []) {
+    if (message) solverMessageQueue.push(message);
+  }
+  if (!messages?.length) return;
   compactSolverMessageQueue();
   syncWorkerDisplayBackpressure();
   scheduleSolverMessageFlush();
@@ -440,8 +451,22 @@ function flushSolverMessages() {
   solverMessageFlushQueued = false;
   const started = performance.now();
   while (solverMessageQueueIndex < solverMessageQueue.length) {
-    handleMessage(solverMessageQueue[solverMessageQueueIndex]);
-    solverMessageQueueIndex += 1;
+    if (solverMessageQueue[solverMessageQueueIndex]?.type === "placement_delta") {
+      const deltas = [];
+      while (
+        solverMessageQueueIndex < solverMessageQueue.length
+        && solverMessageQueue[solverMessageQueueIndex]?.type === "placement_delta"
+      ) {
+        deltas.push(solverMessageQueue[solverMessageQueueIndex]);
+        solverMessageQueueIndex += 1;
+      }
+      for (let index = 0; index < deltas.length; index++) {
+        applyPlacementDelta(deltas[index], { deferDisplay: index < deltas.length - 1 });
+      }
+    } else {
+      handleMessage(solverMessageQueue[solverMessageQueueIndex]);
+      solverMessageQueueIndex += 1;
+    }
     if (performance.now() - started >= SOLVER_MESSAGE_FRAME_BUDGET_MS) break;
   }
   if (solverMessageQueueIndex >= solverMessageQueue.length) {
@@ -462,9 +487,12 @@ function criterion() {
 }
 
 function updateCriterionUI() {
-  const byCount = criterion() === "count";
+  const selected = criterion();
+  const byCount = selected === "count";
   maxTileField.classList.toggle("is-active", byCount);
-  layerField.classList.toggle("is-active", !byCount);
+  layerField.classList.toggle("is-active", selected === "layer");
+  regionField.classList.toggle("is-active", selected === "region");
+  regionSizeFields.classList.toggle("is-hidden", selected !== "region");
 }
 
 function initFigureSelection() {
@@ -490,7 +518,7 @@ function applySearchParams() {
     if (Number.isFinite(value) && value > 0) control.value = String(value);
   };
   const criterionParam = params.get("criterion");
-  if (criterionParam === "count" || criterionParam === "layer") {
+  if (criterionParam === "count" || criterionParam === "layer" || criterionParam === "region") {
     document.querySelector(`input[name="criterion"][value="${criterionParam}"]`).checked = true;
   }
   setPositiveNumberParam(maxTilesInput, "target");
@@ -499,12 +527,14 @@ function applySearchParams() {
   setSelectParam(faceOrderSelect, "face_order");
   setSelectParam(moveOrderSelect, "move_order");
   setSelectParam(polycubeLatticeSelect, "polycube_lattice");
+  setSelectParam(periodicTileCountSelect, "periodic_tile_count");
   setPositiveNumberParam(branchCapInput, "branch_cap");
   setPositiveNumberParam(candidateCapInput, "candidate_cap");
   setPositiveNumberParam(nodeCapInput, "node_limit");
   setPositiveNumberParam(timeCapInput, "time_limit");
-  if (params.get("online_marking") === "0") onlineMarkingCheckbox.checked = false;
-  if (params.get("online_marking") === "1") onlineMarkingCheckbox.checked = true;
+  setPositiveNumberParam(regionWidthInput, "region_width");
+  setPositiveNumberParam(regionDepthInput, "region_depth");
+  setPositiveNumberParam(regionHeightInput, "region_height");
 }
 
 function selectedFigures() {
@@ -726,6 +756,32 @@ function customPolycubeThumbnail(tile) {
   return tileThumbnail(tile, `custom:${signature}`, selectedFigureIds.length);
 }
 
+function customPolyhedronDefinition({ updateStatus = true } = {}) {
+  if (!customPolyhedronCheckbox.checked) return null;
+  try {
+    const definition = JSON.parse(customPolyhedronInput.value);
+    if (!definition || Array.isArray(definition) || typeof definition !== "object") {
+      throw new Error("Expected one JSON object");
+    }
+    const name = String(definition.name || "Custom lattice polyhedron");
+    const tile = tileSpecs.buildLatticePolyhedronTile(name, definition.vertices, definition.faces);
+    if (updateStatus) {
+      customPolyhedronStatus.textContent = `${tile.verts.length} vertices · ${tile.faces.length} faces · valid 3D lattice polyhedron`;
+      customPolyhedronStatus.classList.remove("is-error");
+    }
+    return {
+      config: { name, vertices: definition.vertices, faces: definition.faces },
+      tile
+    };
+  } catch (error) {
+    if (updateStatus) {
+      customPolyhedronStatus.textContent = error?.message ?? String(error);
+      customPolyhedronStatus.classList.add("is-error");
+    }
+    return null;
+  }
+}
+
 function selectedSystemItems() {
   const items = selectedFigures().map((figure, index) => ({
     id: figure.id,
@@ -755,6 +811,24 @@ function selectedSystemItems() {
       tileIndex: items.length,
       remove: () => {
         customPolycubeCheckbox.checked = false;
+        handleCustomPolycubeChanged();
+      }
+    });
+  }
+  const customPolyhedron = customPolyhedronDefinition();
+  if (customPolyhedron) {
+    const { config, tile } = customPolyhedron;
+    items.push({
+      id: "__custom_polyhedron__",
+      name: `custom: ${config.name}`,
+      title: `${config.name}: ${tile.verts.length} vertices, ${tile.faces.length} faces`,
+      thumbnail: tileThumbnail(tile, `custom-polyhedron:${customPolyhedronInput.value}`, items.length),
+      faceCount: tileFaceCount(tile),
+      solidAngles: tileSpecs.solidAngleValues?.(tile) ?? [],
+      latticeLabel: "integer lattice",
+      tileIndex: items.length,
+      remove: () => {
+        customPolyhedronCheckbox.checked = false;
         handleCustomPolycubeChanged();
       }
     });
@@ -844,10 +918,12 @@ function getCustomPolycubeConfig() {
 
 function customSystemConfig() {
   const polycubes = getCustomPolycubeConfig();
+  const customPolyhedron = customPolyhedronDefinition({ updateStatus: false });
   return {
     name: selectedFigures().map(figure => figure.name).join(" + ") || "Figure system",
     figure_refs: selectedFigureIds,
     polycubes,
+    polyhedra: customPolyhedron ? [customPolyhedron.config] : [],
     polycube_lattice: selectedPolycubeLattice()
   };
 }
@@ -909,14 +985,19 @@ function checkpointUiState() {
     builderVoxels: [...builderVoxels],
     customName: customNameInput.value,
     customNameEdited,
+    customPolyhedronJson: customPolyhedronInput.value,
     controls: {
       criterion: criterion(),
       maxTiles: maxTilesInput.value,
       layer: layerInput.value,
+      regionWidth: regionWidthInput.value,
+      regionDepth: regionDepthInput.value,
+      regionHeight: regionHeightInput.value,
       snapshotEvery: snapshotSelect.value,
       faceOrder: faceOrderSelect.value,
       moveOrder: moveOrderSelect.value,
       polycubeLattice: selectedPolycubeLattice(),
+      periodicTileCount: periodicTileCountSelect.value,
       branchCap: branchCapInput.value,
       nodeCap: nodeCapInput.value,
       candidateCap: candidateCapInput.value,
@@ -926,7 +1007,8 @@ function checkpointUiState() {
       internal: internalCheckbox.checked,
       edges: edgesCheckbox.checked,
       autoFit: autoFitCheckbox.checked,
-      customPolycube: customPolycubeCheckbox.checked
+      customPolycube: customPolycubeCheckbox.checked,
+      customPolyhedron: customPolyhedronCheckbox.checked
     }
   };
 }
@@ -1029,14 +1111,19 @@ function applyCheckpointUiState(ui = {}) {
   }
   if (!builderVoxels.size) builderVoxels = new Set(["0,0,0"]);
 
-  const criterionRadio = document.querySelector(`input[name="criterion"][value="${controls.criterion === "layer" ? "layer" : "count"}"]`);
+  const savedCriterion = ["count", "layer", "region"].includes(controls.criterion) ? controls.criterion : "count";
+  const criterionRadio = document.querySelector(`input[name="criterion"][value="${savedCriterion}"]`);
   if (criterionRadio) criterionRadio.checked = true;
   if (controls.maxTiles != null) maxTilesInput.value = controls.maxTiles;
   if (controls.layer != null) layerInput.value = controls.layer;
+  if (controls.regionWidth != null) regionWidthInput.value = controls.regionWidth;
+  if (controls.regionDepth != null) regionDepthInput.value = controls.regionDepth;
+  if (controls.regionHeight != null) regionHeightInput.value = controls.regionHeight;
   if (controls.snapshotEvery != null) snapshotSelect.value = controls.snapshotEvery;
   if (controls.faceOrder != null) faceOrderSelect.value = controls.faceOrder;
   if (controls.moveOrder != null) moveOrderSelect.value = controls.moveOrder;
   if (controls.polycubeLattice != null) polycubeLatticeSelect.value = tileSpecs.normalizePolycubeLattice?.(controls.polycubeLattice) ?? "z3";
+  if (controls.periodicTileCount != null) periodicTileCountSelect.value = String(controls.periodicTileCount);
   if (controls.branchCap != null) branchCapInput.value = controls.branchCap;
   if (controls.nodeCap != null) nodeCapInput.value = controls.nodeCap;
   if (controls.candidateCap != null) candidateCapInput.value = controls.candidateCap;
@@ -1047,6 +1134,8 @@ function applyCheckpointUiState(ui = {}) {
   edgesCheckbox.checked = controls.edges !== false;
   autoFitCheckbox.checked = controls.autoFit !== false;
   customPolycubeCheckbox.checked = !!controls.customPolycube;
+  if (ui.customPolyhedronJson != null) customPolyhedronInput.value = ui.customPolyhedronJson;
+  customPolyhedronCheckbox.checked = !!controls.customPolyhedron;
   if (ui.customName != null) customNameInput.value = ui.customName;
   customNameEdited = !!ui.customNameEdited;
 
@@ -1078,7 +1167,9 @@ async function restoreLatestCheckpoint() {
 }
 
 function hasRunnableSelection() {
-  return selectedFigures().length > 0 || customPolycubeCheckbox.checked;
+  return selectedFigures().length > 0
+    || customPolycubeCheckbox.checked
+    || !!customPolyhedronDefinition({ updateStatus: false });
 }
 
 function stopActiveRunAfterSelectionChange() {
@@ -1091,7 +1182,7 @@ function stopActiveRunAfterSelectionChange() {
   }
   isFinished = false;
   resetRunView();
-  setStatus(hasRunnableSelection() ? "Ready" : "Choose a figure or enable the custom polycube.");
+  setStatus(hasRunnableSelection() ? "Ready" : "Choose a figure or enable a custom lattice tile.");
   setRunButton();
 }
 
@@ -1359,20 +1450,29 @@ function configKey() {
   };
   const seconds = positiveOrNull(timeCapInput);
   const forcedLayerLagCap = positiveSearchParam("forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 3;
+  const selectedCriterion = criterion();
   return JSON.stringify({
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
     polycube_lattice: selectedPolycubeLattice(),
-    criterion: criterion(),
-    target_val: criterion() === "count" ? +maxTilesInput.value : +layerInput.value,
+    criterion: selectedCriterion,
+    target_val: selectedCriterion === "count" ? +maxTilesInput.value : +layerInput.value,
+    target_region: selectedCriterion === "region" ? (() => {
+      const size = [
+        Math.max(1, Number(regionWidthInput.value) || 1),
+        Math.max(1, Number(regionDepthInput.value) || 1),
+        Math.max(1, Number(regionHeightInput.value) || 1)
+      ];
+      return { type: "box", center: size.map(value => value / 2), size };
+    })() : null,
     exhaustive: exhaustiveCheckbox.checked,
-    online_failure_marking: onlineMarkingCheckbox.checked,
     include_mirrors: mirrorCheckbox.checked,
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     move_order: moveOrderSelect.value,
+    agent_exhaustive: true,
     template_preflight: true,
-    periodic_tile_count: 2,
+    periodic_tile_count: Math.max(1, Math.min(4, Number(periodicTileCountSelect.value) || 2)),
     periodic_template_max_volume: 64,
     forced_move_layer_lag_cap: forcedLayerLagCap,
     branch_cap: positiveOrNull(branchCapInput),
@@ -1551,8 +1651,10 @@ function updateSearchMetrics(stats = null) {
   metricNodes.textContent = totalPathLabel
     ? `${completedPathLabel}/${totalPathLabel} paths`
     : `${completedPaths} paths`;
-  metricMarks.textContent = stats?.marking_revisions ?? 0;
-  metricMarkSites.textContent = `${stats?.marking_geometric_clauses ?? 0} geometric clauses · ${stats?.marking_failures ?? 0}/${stats?.marking_observed_failures ?? 0} failures encoded · ${stats?.marking_pending_failures ?? 0} pending · ${stats?.marking_geometric_prunes ?? 0} prunes`;
+  const isotropy = Number(stats?.growth_isotropy);
+  const spans = stats?.growth_spans ?? [0, 0, 0];
+  metricGrowth.textContent = Number.isFinite(isotropy) ? `${Math.round(isotropy * 100)}%` : "—";
+  metricGrowthDetail.textContent = `center spans ${spans.map(value => Number(value.toFixed?.(2) ?? value)).join(" × ")}`;
 }
 
 function refreshNodeMetricFallback() {
@@ -1651,7 +1753,7 @@ function flushLiveUpdateNow() {
   }
 }
 
-function applyPlacementDelta(delta) {
+function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
   if (!delta) return;
   if (!liveFaceStacks.size && lastSnapshot?.faces?.length) resetLiveFaceStacks(lastSnapshot);
 
@@ -1680,13 +1782,15 @@ function applyPlacementDelta(delta) {
     }
   }
 
-  updateRunMetrics({
-    tile_count: delta.tile_count,
-    tile_counts: delta.tile_counts,
-    frontier_stats: delta.frontier_stats,
-    search_stats: delta.search_stats
-  });
-  scheduleLiveUpdateFromDelta(delta);
+  if (!deferDisplay) {
+    updateRunMetrics({
+      tile_count: delta.tile_count,
+      tile_counts: delta.tile_counts ?? lastSnapshot?.tile_counts,
+      frontier_stats: delta.frontier_stats ?? lastSnapshot?.frontier_stats,
+      search_stats: delta.search_stats ?? lastSearchStats
+    });
+    scheduleLiveUpdateFromDelta(delta);
+  }
 }
 
 function updateScene(snapshot, options = {}) {
@@ -2243,11 +2347,6 @@ function handleMessage(message) {
     attachSnapshotToNode(message.node_id, message.snapshot);
     return;
   }
-  if (message.type === "marking_update") {
-    if (message.search_stats) updateSearchMetrics(message.search_stats);
-    setStatus(`Learned marking ${message.revision}: ${message.support_sites} support sites`);
-    return;
-  }
   if (message.type === "full_update") {
     attachSnapshotToNode(message.node_id, message);
     if ((message.tile_count ?? 0) <= 1) {
@@ -2323,13 +2422,17 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260721-growth-curves", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260723-standalone-balanced-v8", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
 
     if (type === "solver_message") {
       enqueueSolverMessage(message);
+      return;
+    }
+    if (type === "solver_messages") {
+      enqueueSolverMessages(event.data?.messages);
       return;
     }
 
@@ -2447,9 +2550,9 @@ function pauseRun() {
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const GROWTH_MODES = [
-  { id: "naive", label: "Naive" },
-  { id: "gcts", label: "GCTS" },
-  { id: "gcts-rl", label: "GCTS + RL clusters" }
+  { id: "coverage", label: "Contact-first" },
+  { id: "isohedral", label: "Isohedral reuse" },
+  { id: "auto", label: "Periodic-first auto" }
 ];
 
 function svgNode(name, attributes = {}, textContent = null) {
@@ -2487,7 +2590,7 @@ function renderGrowthChart() {
 
   growthChart.append(
     svgNode("title", {}, "Measured tiling growth curves"),
-    svgNode("desc", {}, "Step chart of the greatest number of tiles reached over wall-clock time for naive search, geometric GCTS, and GCTS with exhaustive reinforcement-learning cluster proposals.")
+    svgNode("desc", {}, "Step chart of the greatest number of tiles reached over wall-clock time for three generic geometric move orders.")
   );
 
   for (let index = 0; index <= 4; index += 1) {
@@ -2529,9 +2632,9 @@ function renderGrowthChart() {
 
     for (const point of points) {
       const className = `growth-marker growth-marker-${mode.id}`;
-      if (mode.id === "naive") {
+      if (mode.id === "coverage") {
         growthChart.append(svgNode("rect", { class: className, x: x(point.milliseconds) - 3, y: y(point.tiles) - 3, width: 6, height: 6 }));
-      } else if (mode.id === "gcts-rl") {
+      } else if (mode.id === "auto") {
         const xx = x(point.milliseconds), yy = y(point.tiles);
         growthChart.append(svgNode("path", { class: className, d: `M ${xx} ${yy - 4} L ${xx + 4} ${yy + 3} L ${xx - 4} ${yy + 3} Z` }));
       } else {
@@ -2567,7 +2670,7 @@ function stopGrowthBenchmark(status = "Comparison stopped.") {
 
 function startGrowthBenchmark() {
   if (!hasRunnableSelection()) {
-    growthBenchmarkStatus.textContent = "Choose a figure or enable the custom polycube first.";
+    growthBenchmarkStatus.textContent = "Choose a figure or enable a custom lattice tile first.";
     return;
   }
   if (running || paused) {
@@ -2590,9 +2693,9 @@ function startGrowthBenchmark() {
   config.ui_yield_interval_ms = 250;
   growthRunning = true;
   growthBenchmarkButton.textContent = "Stop comparison";
-  growthBenchmarkStatus.textContent = `Measuring naive search to ${config.target_val} tiles…`;
+  growthBenchmarkStatus.textContent = `Measuring contact-first search to ${config.target_val} tiles…`;
 
-  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260721-growth-curves", import.meta.url), { type: "module" });
+  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260723-standalone-balanced-v8", import.meta.url), { type: "module" });
   growthWorker.addEventListener("message", event => {
     const message = event.data ?? {};
     if (message.sequence !== sequence) return;
@@ -2630,13 +2733,18 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, snapshotSelect, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, onlineMarkingCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput].forEach((control) => {
+  [maxTilesInput, layerInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
     if (!control) return;
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });
 
   customPolycubeCheckbox.addEventListener("change", handleCustomPolycubeChanged);
+  customPolyhedronCheckbox.addEventListener("change", handleCustomPolycubeChanged);
+  customPolyhedronInput.addEventListener("input", () => {
+    customPolyhedronDefinition();
+    if (customPolyhedronCheckbox.checked) handleCustomPolycubeChanged();
+  });
 
   customNameInput.addEventListener("input", () => {
     if (customNameInput.value !== lastAutoCustomName) customNameEdited = true;
