@@ -16,6 +16,7 @@ async function solve(overrides) {
     ...overrides
   };
   let final = null;
+  let latestSnapshot = null;
   let periodicCertificate = null;
   const translationalChecks = [];
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
@@ -23,10 +24,11 @@ async function solve(overrides) {
     if (message.type === "translational_check") {
       translationalChecks.push({ patchSize: message.patch_size, certified: message.certified });
     }
+    if (message.type === "full_update") latestSnapshot = message;
     if (message.type === "finished") final = message;
   }
   assert.ok(final, "strategy run must emit a terminal result");
-  return { final, periodicCertificate, translationalChecks };
+  return { final, latestSnapshot, periodicCertificate, translationalChecks };
 }
 
 const translational = await solve({ tiling_strategy: "translational" });
@@ -123,6 +125,23 @@ assert.equal(
   certificateBeforeDisplayTarget.final.success,
   true,
   "an exact infinite-tiling certificate must count as success even if its preview is shorter than the display target"
+);
+
+const retainedCertifiedPreview = await solve({
+  mode_key: "cube",
+  criterion: "layer",
+  target_val: 50,
+  tiling_strategy: "translational",
+  periodic_patch_max_tiles: 4,
+  safety_max_tiles: 2,
+  snapshot_every: 0
+});
+assert.equal(retainedCertifiedPreview.final.result_kind, "certified_tiling");
+assert.equal(retainedCertifiedPreview.final.tile_count, 2);
+assert.equal(
+  retainedCertifiedPreview.latestSnapshot?.tile_count,
+  2,
+  "the terminal snapshot must retain the best displayed patch after certified growth rolls back"
 );
 
 const reflectionHoneycomb = await solve({

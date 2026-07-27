@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-catalog-audit-v13";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-best-preview-v14";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
