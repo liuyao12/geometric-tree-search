@@ -278,6 +278,9 @@ export const createTilingStream = (() => {
     let latestFrontierGraphVersion = -1;
     const nowId = () => (++nodeCounter);
     const searchStats = {
+      tiling_strategy: ["translational", "isohedral", "generic"].includes(config.tiling_strategy)
+        ? config.tiling_strategy
+        : "auto",
       forced_total: 0,
       forced_throttles: 0,
       periodic_repeat_throttles: 0,
@@ -423,6 +426,10 @@ export const createTilingStream = (() => {
         ...item,
         translation: item.translation?.slice()
       })),
+      frontier_points: (snap.frontier_points ?? []).map(point => ({
+        ...point,
+        pos: point.pos?.slice()
+      })),
       faces: (snap.faces ?? []).map(face => ({
         ...face,
         v: (face.v ?? []).map(vertex => vertex.slice())
@@ -499,6 +506,7 @@ export const createTilingStream = (() => {
         tile_count: state.placements.length,
         tile_counts: tileCounts(),
         faces,
+        frontier_points: frontierPointSnapshot(),
         node_id,
         frontier_stats: frontierStatsWithCandidateCount(),
         search_stats: searchStatsSnapshot()
@@ -529,6 +537,22 @@ export const createTilingStream = (() => {
       ...face,
       v: (face.v ?? []).map(vertex => vertex.slice())
     });
+    const latticeUpdatesForMove = (move) => {
+      const updates = new Map();
+      for (const occupancy of move?.occupancy_data ?? []) {
+        const key = occupancy.pos.join(",");
+        const weight = latticeGet(occupancy.pos);
+        const frontier = weight > 0 && weight < MAX_SOLID_ANGLE;
+        updates.set(key, {
+          pos: occupancy.pos.slice(),
+          weight,
+          max_value: MAX_SOLID_ANGLE,
+          layer: frontier ? frontierPointLayer(key) : null,
+          frontier
+        });
+      }
+      return [...updates.values()];
+    };
     const placementDelta = (action, move, rb, node_id = null, extra = {}) => {
       const coveredKeys = (rb?.removed ?? []).map(([key]) => key);
       const newKeys = rb?.added ?? [];
@@ -542,6 +566,7 @@ export const createTilingStream = (() => {
         tile_counts: tileCounts(),
         frontier_face_keys: newKeys,
         covered_face_keys: coveredKeys,
+        lattice_updates: latticeUpdatesForMove(move),
         frontier_stats: extra.frontier_stats ?? frontierStatsWithCandidateCount(),
         search_stats: searchStatsSnapshot()
       };
@@ -565,6 +590,7 @@ export const createTilingStream = (() => {
         tile_count: state.placements.length,
         frontier_face_keys: newKeys,
         covered_face_keys: coveredKeys,
+        lattice_updates: latticeUpdatesForMove(move),
         faces: [...newKeys, ...coveredKeys]
           .map(key => state.viz_faces.get(key)?.at(-1))
           .filter(Boolean)
@@ -641,6 +667,22 @@ export const createTilingStream = (() => {
       let count = 0;
       for (const layer of layers.values()) if (layer === minLayer) count += 1;
       return { min_layer: minLayer, min_layer_point_count: count, point_count: layers.size };
+    };
+    const frontierPointSnapshot = () => {
+      const points = [];
+      for (const [key, layer] of frontierPointLayerMap()) {
+        const pos = key.split(",").map(Number);
+        const weight = latticeGet(pos);
+        if (weight <= 0 || weight >= MAX_SOLID_ANGLE) continue;
+        points.push({
+          pos,
+          weight,
+          max_value: MAX_SOLID_ANGLE,
+          layer,
+          frontier: true
+        });
+      }
+      return points;
     };
     let candidateInfluenceOffsets = null;
     const candidateInfluenceOffsetKeys = () => {
@@ -739,11 +781,13 @@ export const createTilingStream = (() => {
     // Polycube lattice tiers are represented in integer coordinates: z3 uses
     // unit cube steps, fcc uses the even-sum half-grid, and half uses all
     // half-grid translations.
-    const isPolycubeMoveTranslation = (tile, translation) => {
+    const isPolycubeTranslationVector = (tile, translation) => {
       if (!translation.every(Number.isInteger)) return false;
       if (tile.polycube_lattice === "fcc") return translation.reduce((sum, value) => sum + value, 0) % 2 === 0;
       return true;
     };
+    const isPolycubeMoveTranslation = (tile, translation) =>
+      isPolycubeTranslationVector(tile, vecSub(translation, startTrans));
     const checkMoveViability = (move) => {
       const validCheck = isMoveValid(move);
       if (!validCheck.ok) return null;
@@ -1027,7 +1071,11 @@ export const createTilingStream = (() => {
     const nodeLimit = Math.max(1, +config.node_limit || Infinity);
     const candidateCap = Math.max(1, +config.candidate_cap || Infinity);
     const timeLimitMs = Math.max(1, +config.time_limit_ms || Infinity);
-    const moveOrder = config.move_order ?? "coverage";
+    const tilingStrategy = ["translational", "isohedral", "generic"].includes(config.tiling_strategy)
+      ? config.tiling_strategy
+      : "auto";
+    const requestedMoveOrder = config.move_order ?? "balanced";
+    const moveOrder = tilingStrategy === "isohedral" ? "isohedral" : requestedMoveOrder;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
     const faceOrder = config.face_order ?? "coverage";
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
@@ -1288,11 +1336,11 @@ export const createTilingStream = (() => {
     };
     const vectorOrbitKey = (vector) => vector.map(value => Math.abs(value)).sort((a, b) => a - b).join(",");
     let firstCoronaCacheVersion = -1;
-    let firstCoronaVectorOrbits = new Set();
+    let firstCoronaNeighborhoodRules = new Set();
     const firstCoronaOrbits = () => {
-      if (firstCoronaCacheVersion === stateVersion) return firstCoronaVectorOrbits;
+      if (firstCoronaCacheVersion === stateVersion) return firstCoronaNeighborhoodRules;
       const root = state.placements[0];
-      const orbits = new Set();
+      const rules = new Set();
       if (root) {
         const rootVertices = new Set(root.orient.verts.map(vertex => vecKey(vecAdd(vertex, root.translation))));
         for (const placement of state.placements.slice(1)) {
@@ -1300,20 +1348,23 @@ export const createTilingStream = (() => {
           for (const vertex of placement.orient.verts) {
             if (rootVertices.has(vecKey(vecAdd(vertex, placement.translation)))) shared += 1;
           }
-          if (shared >= minSharedVertices) orbits.add(vectorOrbitKey(vecSub(placement.translation, root.translation)));
+          if (shared >= minSharedVertices) {
+            rules.add(`${placement.prototile_idx}:${vectorOrbitKey(vecSub(placement.translation, root.translation))}`);
+          }
         }
       }
-      firstCoronaVectorOrbits = orbits;
+      firstCoronaNeighborhoodRules = rules;
       firstCoronaCacheVersion = stateVersion;
-      return firstCoronaVectorOrbits;
+      return firstCoronaNeighborhoodRules;
     };
     const isohedralCoronaScore = (move) => {
-      const orbits = firstCoronaOrbits();
-      if (!orbits.size) return 0;
+      const rules = firstCoronaOrbits();
+      if (!rules.size) return 0;
       const hits = new Set();
       for (const placement of state.placements) {
         const orbit = vectorOrbitKey(vecSub(move.translation, placement.translation));
-        if (orbits.has(orbit)) hits.add(orbit);
+        const rule = `${move.prototile_idx}:${orbit}`;
+        if (rules.has(rule)) hits.add(rule);
       }
       return hits.size;
     };
@@ -1623,14 +1674,15 @@ export const createTilingStream = (() => {
         }
       };
     };
-    const findPeriodicTemplate = () => {
-      const requestedPeriod = Math.max(1, Math.min(4, Math.floor(+config.periodic_tile_count || 2)));
+    const findPeriodicTemplate = (requestedPeriod) => {
+      requestedPeriod = Math.max(1, Math.min(4, Math.floor(+requestedPeriod || 1)));
       const maxCellVolume = Math.max(1, +config.periodic_template_max_volume || 64);
       const translationalPolyhedronTemplate = findTranslationalPolyhedronTemplate();
       if (translationalPolyhedronTemplate) return translationalPolyhedronTemplate;
       const requireAllTypes = prototiles.length > 1 && config.periodic_require_all_types !== false;
       if (requireAllTypes && prototiles.length > requestedPeriod) return null;
-      if (!prototiles.every(tile => tile.is_polycube && tile.polycube_lattice === "z3")) return null;
+      if (!prototiles.every(tile => tile.is_polycube)) return null;
+      if (new Set(prototiles.map(tile => tile.polycube_lattice)).size > 1) return null;
       const orientationGroups = prototiles.map((tile, prototileIndex) =>
         tile.unique_orientations
           .map((orient, orientationIndex) => ({
@@ -1669,6 +1721,9 @@ export const createTilingStream = (() => {
       const maximumTileVolume = Math.max(...tileVolumes);
       for (const cellVolume of [...candidateCellVolumes].filter(volume => volume <= maxCellVolume).sort((a, b) => a - b)) {
         for (const hnf of hnfCandidates(cellVolume)) {
+        if (hnf.vectors.some(vector =>
+          prototiles.some(tile => !isPolycubeTranslationVector(tile, vector))
+        )) continue;
         const fundamentalCells = hnfFundamentalCells(hnf);
         const universe = new Set(fundamentalCells.map(vecKey));
         const rootSet = cellSetInQuotient(rootEntry.cells, hnf);
@@ -1678,6 +1733,7 @@ export const createTilingStream = (() => {
         const candidatesBySignature = new Map();
         for (const entry of allOrientations) {
           for (const translation of fundamentalCells) {
+            if (!isPolycubeTranslationVector(prototiles[entry.prototileIndex], translation)) continue;
             const candidateSet = cellSetInQuotient(entry.cells, hnf, translation);
             if (!candidateSet || candidateSet.size !== tileVolumes[entry.prototileIndex]) continue;
             let containedInComplement = true;
@@ -2016,14 +2072,21 @@ export const createTilingStream = (() => {
         repeat(),
         coverage
       ];
-      if (moveOrder === "isohedral") return [
-        isohedralCoronaScore(move),
-        pairPeriodic(),
-        vectorRepeat(),
-        periodic(),
-        repeat(),
-        coverage
-      ];
+      if (moveOrder === "isohedral") {
+        const growth = prospectiveGrowthShape(move);
+        return [
+          isohedralCoronaScore(move),
+          growth.axis_rank,
+          growth.axis_isotropy,
+          growth.axis_planarity,
+          -growth.max_span,
+          pairPeriodic(),
+          vectorRepeat(),
+          periodic(),
+          repeat(),
+          coverage
+        ];
+      }
       if (usePolicyAgent) return rlAgent.score(move);
       if (moveOrder === "periodic") return [periodic(), repeat(), coverage];
       if (moveOrder === "repeat") return [repeat(), coverage];
@@ -2125,8 +2188,11 @@ export const createTilingStream = (() => {
     // An exact quotient certificate is a proof, not a search heuristic. Use it
     // ahead of every move-order policy unless a diagnostic explicitly disables
     // periodic preflight. Ordinary frontier search handles uncertified systems.
-    const periodicPreflightEnabled = preflightEnabled && config.periodic_preflight !== false;
-    const isohedralPreflightEnabled = preflightEnabled && (usePolicyAgent || moveOrder === "isohedral");
+    const periodicPreflightEnabled = preflightEnabled
+      && config.periodic_preflight !== false
+      && (tilingStrategy === "auto" || tilingStrategy === "translational");
+    const isohedralPreflightEnabled = preflightEnabled
+      && (tilingStrategy === "auto" || tilingStrategy === "isohedral");
     const vectorScaleAdd = (base, vector, scale) => [
       base[0] + vector[0] * scale,
       base[1] + vector[1] * scale,
@@ -2246,7 +2312,33 @@ export const createTilingStream = (() => {
     };
     async function* tryPeriodicTemplatePatch(parentId) {
       if (!periodicPreflightEnabled || goalMet()) return false;
-      const template = findPeriodicTemplate();
+      const progressiveMax = Number(config.periodic_patch_max_tiles);
+      const patchSizes = Number.isFinite(progressiveMax)
+        ? Array.from(
+          { length: Math.max(1, Math.min(4, Math.floor(progressiveMax))) },
+          (_, index) => index + 1
+        )
+        : [Math.max(1, Math.min(4, Math.floor(+config.periodic_tile_count || 2)))];
+      let template = null;
+      for (const patchSize of patchSizes) {
+        yield nodeStatus(
+          parentId,
+          "working",
+          `checking ${patchSize}-tile translational patch`,
+          preflightStatusPayload()
+        );
+        template = findPeriodicTemplate(patchSize);
+        yield {
+          type: "translational_check",
+          patch_size: patchSize,
+          certified: !!template,
+          periodic_template: template,
+          frontier_stats: frontierStatsWithCandidateCount(),
+          search_stats: searchStatsSnapshot()
+        };
+        if (template) break;
+        await tick();
+      }
       if (!template) return false;
       const cells = periodicTemplateCells(template);
       const existing = new Set(state.placements.map(placement => placementGeometryKey(placement)));
@@ -2600,6 +2692,10 @@ export const createTilingStream = (() => {
         await yieldToBrowser();
       }
       if (goalMet()) return true;
+      if (tilingStrategy === "isohedral" && appliedMoves.length) {
+        yield nodeStatus(activeParent, "working", `seeded ${applied} reusable neighborhood placements`, preflightStatusPayload());
+        return false;
+      }
       while (appliedMoves.length) {
         const entry = appliedMoves.pop();
         undoMove(entry.move, entry.rollback);
@@ -2890,9 +2986,22 @@ export const createTilingStream = (() => {
       return yield* doReturn(false);
     }
 
-    yield* tryPeriodicTemplatePatch(rootId);
-    if (!goalMet()) yield* tryIsohedralCoronaSeed(rootId);
-    const success = goalMet() || (yield* search(rootId));
+    let success = false;
+    if (tilingStrategy === "translational") {
+      success = yield* tryPeriodicTemplatePatch(rootId);
+      if (!success) {
+        yield nodeStatus(rootId, "fail", "No exact translational patch certificate found");
+      }
+    } else if (tilingStrategy === "isohedral") {
+      yield* tryIsohedralCoronaSeed(rootId);
+      success = goalMet() || (yield* search(rootId));
+    } else if (tilingStrategy === "generic") {
+      success = goalMet() || (yield* search(rootId));
+    } else {
+      yield* tryPeriodicTemplatePatch(rootId);
+      if (!goalMet()) yield* tryIsohedralCoronaSeed(rootId);
+      success = goalMet() || (yield* search(rootId));
+    }
     yield nodeStatus(rootId, success ? "success" : "fail");
     const finalSnapshot = success ? snapshot(null) : (bestSnapshot ? { ...cloneSnapshot(bestSnapshot), node_id: null } : snapshot(null));
     yield finalSnapshot;

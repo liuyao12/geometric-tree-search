@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260723-standalone-balanced-v8";
+import { tileSpecs } from "./engine.js?v=20260726-layered-modes-v10";
 
 const $ = (id) => document.getElementById(id);
 
@@ -14,6 +14,9 @@ const regionWidthInput = $("regionWidthInput");
 const regionDepthInput = $("regionDepthInput");
 const regionHeightInput = $("regionHeightInput");
 const snapshotSelect = $("snapshotSelect");
+const strategySelect = $("strategySelect");
+const strategyRadios = [...document.querySelectorAll('input[name="tilingStrategy"]')];
+const strategyDescription = $("strategyDescription");
 const faceOrderSelect = $("faceOrderSelect");
 const moveOrderSelect = $("moveOrderSelect");
 const branchCapInput = $("branchCapInput");
@@ -26,6 +29,7 @@ const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
 const polycubeLatticeSelect = $("polycubeLatticeSelect");
+const polycubeLatticeRadios = [...document.querySelectorAll('input[name="polycubeLattice"]')];
 const periodicTileCountSelect = $("periodicTileCountSelect");
 const runButton = $("runButton");
 const fitButton = $("fitButton");
@@ -221,6 +225,7 @@ let prototileInfo = null;
 let currentOpacities = {};
 let rootCentered = false;
 let liveFaceStacks = new Map();
+let liveFrontierPoints = new Map();
 
 const treeMap = new Map();
 const pendingSnapshots = new Map();
@@ -296,7 +301,8 @@ scene.add(rimLight);
 
 let faceGroup = new THREE.Group();
 let edgeGroup = new THREE.Group();
-scene.add(faceGroup, edgeGroup);
+let frontierPointGroup = new THREE.Group();
+scene.add(faceGroup, edgeGroup, frontierPointGroup);
 
 let thumbnailRenderer = null;
 function getThumbnailRenderer() {
@@ -495,6 +501,29 @@ function updateCriterionUI() {
   regionSizeFields.classList.toggle("is-hidden", selected !== "region");
 }
 
+const STRATEGY_DESCRIPTIONS = {
+  translational: "Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.",
+  isohedral: "Learns the first tile neighborhood and applies the same relative neighbors to every new tile whenever legal."
+};
+
+function checkedRadioValue(radios, fallback) {
+  return radios.find(radio => radio.checked)?.value ?? fallback;
+}
+
+function setRadioValue(radios, value, fallback) {
+  const selected = radios.find(radio => radio.value === value)
+    ?? radios.find(radio => radio.value === fallback);
+  if (selected) selected.checked = true;
+  return selected?.value ?? fallback;
+}
+
+function updateStrategyUI() {
+  const strategy = checkedRadioValue(strategyRadios, "translational");
+  strategySelect.value = strategy;
+  strategyDescription.textContent = STRATEGY_DESCRIPTIONS[strategy] ?? STRATEGY_DESCRIPTIONS.translational;
+  periodicTileCountSelect.disabled = strategy === "isohedral";
+}
+
 function initFigureSelection() {
   const params = new URLSearchParams(window.location.search);
   const requested = params.get("figure");
@@ -525,6 +554,7 @@ function applySearchParams() {
   setPositiveNumberParam(maxTilesInput, "target_val");
   setPositiveNumberParam(layerInput, "layer");
   setSelectParam(faceOrderSelect, "face_order");
+  setSelectParam(strategySelect, "tiling_strategy");
   setSelectParam(moveOrderSelect, "move_order");
   setSelectParam(polycubeLatticeSelect, "polycube_lattice");
   setSelectParam(periodicTileCountSelect, "periodic_tile_count");
@@ -535,6 +565,8 @@ function applySearchParams() {
   setPositiveNumberParam(regionWidthInput, "region_width");
   setPositiveNumberParam(regionDepthInput, "region_depth");
   setPositiveNumberParam(regionHeightInput, "region_height");
+  setRadioValue(strategyRadios, strategySelect.value, "translational");
+  setRadioValue(polycubeLatticeRadios, polycubeLatticeSelect.value, "z3");
 }
 
 function selectedFigures() {
@@ -744,7 +776,7 @@ function customPolycubeDisplayName() {
 }
 
 function selectedPolycubeLattice() {
-  return tileSpecs.normalizePolycubeLattice?.(polycubeLatticeSelect?.value) ?? "z3";
+  return tileSpecs.normalizePolycubeLattice?.(checkedRadioValue(polycubeLatticeRadios, "z3")) ?? "z3";
 }
 
 function customPolycubeTile() {
@@ -995,6 +1027,7 @@ function checkpointUiState() {
       regionHeight: regionHeightInput.value,
       snapshotEvery: snapshotSelect.value,
       faceOrder: faceOrderSelect.value,
+      tilingStrategy: strategySelect.value,
       moveOrder: moveOrderSelect.value,
       polycubeLattice: selectedPolycubeLattice(),
       periodicTileCount: periodicTileCountSelect.value,
@@ -1020,6 +1053,7 @@ function snapshotForCheckpoint(snapshot) {
     tile_count: snapshot.tile_count ?? 0,
     tile_counts: snapshot.tile_counts ?? [],
     faces: (snapshot.faces ?? []).filter(face => keepInternal || !face.internal),
+    frontier_points: snapshot.frontier_points ?? [],
     frontier_stats: snapshot.frontier_stats ?? null,
     search_stats: snapshot.search_stats ?? null,
     visual_only: !keepInternal
@@ -1121,8 +1155,14 @@ function applyCheckpointUiState(ui = {}) {
   if (controls.regionHeight != null) regionHeightInput.value = controls.regionHeight;
   if (controls.snapshotEvery != null) snapshotSelect.value = controls.snapshotEvery;
   if (controls.faceOrder != null) faceOrderSelect.value = controls.faceOrder;
+  if (controls.tilingStrategy != null) {
+    strategySelect.value = setRadioValue(strategyRadios, controls.tilingStrategy, "translational");
+  }
   if (controls.moveOrder != null) moveOrderSelect.value = controls.moveOrder;
-  if (controls.polycubeLattice != null) polycubeLatticeSelect.value = tileSpecs.normalizePolycubeLattice?.(controls.polycubeLattice) ?? "z3";
+  if (controls.polycubeLattice != null) {
+    const lattice = tileSpecs.normalizePolycubeLattice?.(controls.polycubeLattice) ?? "z3";
+    polycubeLatticeSelect.value = setRadioValue(polycubeLatticeRadios, lattice, "z3");
+  }
   if (controls.periodicTileCount != null) periodicTileCountSelect.value = String(controls.periodicTileCount);
   if (controls.branchCap != null) branchCapInput.value = controls.branchCap;
   if (controls.nodeCap != null) nodeCapInput.value = controls.nodeCap;
@@ -1140,6 +1180,7 @@ function applyCheckpointUiState(ui = {}) {
   customNameEdited = !!ui.customNameEdited;
 
   updateCriterionUI();
+  updateStrategyUI();
   renderBuilderVoxels(false);
   refreshFigureSelectionUI();
 }
@@ -1469,10 +1510,11 @@ function configKey() {
     include_mirrors: mirrorCheckbox.checked,
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
-    move_order: moveOrderSelect.value,
+    tiling_strategy: checkedRadioValue(strategyRadios, "translational"),
+    move_order: "balanced",
     agent_exhaustive: true,
     template_preflight: true,
-    periodic_tile_count: Math.max(1, Math.min(4, Number(periodicTileCountSelect.value) || 2)),
+    periodic_patch_max_tiles: Math.max(1, Math.min(4, Number(periodicTileCountSelect.value) || 4)),
     periodic_template_max_volume: 64,
     forced_move_layer_lag_cap: forcedLayerLagCap,
     branch_cap: positiveOrNull(branchCapInput),
@@ -1632,9 +1674,11 @@ function formatVisitedPercent(value) {
 function updateFrontierMetrics(stats = null) {
   const frontierPoints = stats?.point_count ?? stats?.frontier_points ?? stats?.count ?? 0;
   const candidateCount = Number.isFinite(stats?.candidate_count) ? stats.candidate_count : 0;
+  const minLayer = Number.isFinite(stats?.min_layer) ? stats.min_layer : 0;
+  const layerPointCount = Number.isFinite(stats?.min_layer_point_count) ? stats.min_layer_point_count : frontierPoints;
   metricFrontier.textContent = frontierPoints;
-  metricLayer.textContent = candidateCount;
-  metricLayerDetail.textContent = `candidate${candidateCount === 1 ? "" : "s"} for ${frontierPoints} frontier point${frontierPoints === 1 ? "" : "s"}`;
+  metricLayer.textContent = minLayer;
+  metricLayerDetail.textContent = `active layer · ${layerPointCount} point${layerPointCount === 1 ? "" : "s"} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"}`;
 }
 
 function updateSearchMetrics(stats = null) {
@@ -1700,6 +1744,20 @@ function liveFaces() {
   return faces;
 }
 
+function frontierPointKey(point) {
+  return (point?.pos ?? point ?? []).join(",");
+}
+
+function resetLiveFrontierPoints(snapshot) {
+  liveFrontierPoints = new Map();
+  for (const point of snapshot?.frontier_points ?? []) {
+    liveFrontierPoints.set(frontierPointKey(point), {
+      ...point,
+      pos: (point.pos ?? []).slice()
+    });
+  }
+}
+
 function liveFaceCount() {
   let count = 0;
   for (const stack of liveFaceStacks.values()) count += stack.length;
@@ -1719,7 +1777,8 @@ function scheduleLiveUpdateFromDelta(delta) {
     tile_count: delta.tile_count ?? lastSnapshot?.tile_count ?? 0,
     tile_counts: delta.tile_counts ?? lastSnapshot?.tile_counts ?? [],
     frontier_stats: delta.frontier_stats ?? lastSnapshot?.frontier_stats ?? null,
-    search_stats: delta.search_stats ?? lastSnapshot?.search_stats ?? null
+    search_stats: delta.search_stats ?? lastSnapshot?.search_stats ?? null,
+    frontier_points: [...liveFrontierPoints.values()]
   };
   if (liveUpdateRenderQueued) return;
   liveUpdateRenderQueued = true;
@@ -1741,6 +1800,7 @@ function flushLiveUpdateNow() {
   pendingLiveSnapshot = null;
   if (!latest) return;
   latest.faces = liveFaces();
+  latest.frontier_points = [...liveFrontierPoints.values()];
   applyingFullUpdate = true;
   syncWorkerDisplayBackpressure();
   try {
@@ -1756,6 +1816,7 @@ function flushLiveUpdateNow() {
 function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
   if (!delta) return;
   if (!liveFaceStacks.size && lastSnapshot?.faces?.length) resetLiveFaceStacks(lastSnapshot);
+  if (!liveFrontierPoints.size && lastSnapshot?.frontier_points?.length) resetLiveFrontierPoints(lastSnapshot);
 
   const frontierKeys = delta.frontier_face_keys ?? [];
   const coveredKeys = delta.covered_face_keys ?? [];
@@ -1782,6 +1843,12 @@ function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
     }
   }
 
+  for (const point of delta.lattice_updates ?? []) {
+    const key = frontierPointKey(point);
+    if (point.frontier) liveFrontierPoints.set(key, { ...point, pos: point.pos.slice() });
+    else liveFrontierPoints.delete(key);
+  }
+
   if (!deferDisplay) {
     updateRunMetrics({
       tile_count: delta.tile_count,
@@ -1797,6 +1864,7 @@ function updateScene(snapshot, options = {}) {
   const { preserveView = false, rebuildFaces = true, syncLive = true } = options;
   lastSnapshot = snapshot;
   if (syncLive && snapshot?.faces) resetLiveFaceStacks(snapshot);
+  if (syncLive && snapshot?.frontier_points) resetLiveFrontierPoints(snapshot);
 
   const faces = snapshot?.faces ?? [];
   const scale = prototileInfo?.scale ?? 2;
@@ -1806,6 +1874,7 @@ function updateScene(snapshot, options = {}) {
   const showEdges = edgesCheckbox.checked && (!running || faces.length <= RUNNING_EDGE_FACE_LIMIT);
   const nextFaceGroup = rebuildFaces ? new THREE.Group() : null;
   const nextEdgeGroup = new THREE.Group();
+  const nextFrontierPointGroup = new THREE.Group();
 
   for (const face of faces) {
     if (face.internal && !showInternal) continue;
@@ -1869,6 +1938,27 @@ function updateScene(snapshot, options = {}) {
     nextEdgeGroup.add(new THREE.LineSegments(geometry, material));
   }
 
+  const pointPositions = [];
+  for (const point of snapshot?.frontier_points ?? []) {
+    if (!point?.pos?.length) continue;
+    pointPositions.push(point.pos[0] / scale, point.pos[1] / scale, point.pos[2] / scale);
+  }
+  if (pointPositions.length) {
+    const pointGeometry = new THREE.BufferGeometry();
+    pointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(pointPositions, 3));
+    const lattice = selectedPolycubeLattice();
+    const pointMaterial = new THREE.PointsMaterial({
+      color: { z3: 0x178273, fcc: 0x315f9f, half: 0xd97706 }[lattice] ?? 0x178273,
+      size: lattice === "half" ? 0.085 : 0.12,
+      sizeAttenuation: true,
+      transparent: true,
+      opacity: 0.9,
+      depthTest: false,
+      depthWrite: false
+    });
+    nextFrontierPointGroup.add(new THREE.Points(pointGeometry, pointMaterial));
+  }
+
   if (rebuildFaces) {
     const oldFaceGroup = faceGroup;
     faceGroup = nextFaceGroup;
@@ -1879,6 +1969,10 @@ function updateScene(snapshot, options = {}) {
   edgeGroup = nextEdgeGroup;
   scene.add(edgeGroup);
   disposeObjectGroup(oldEdgeGroup);
+  const oldFrontierPointGroup = frontierPointGroup;
+  frontierPointGroup = nextFrontierPointGroup;
+  scene.add(frontierPointGroup);
+  disposeObjectGroup(oldFrontierPointGroup);
 
   updateRunMetrics(snapshot);
   if (!preserveView && autoFitCheckbox.checked && !rootCentered) centerOnSnapshot(snapshot, true);
@@ -2347,6 +2441,12 @@ function handleMessage(message) {
     attachSnapshotToNode(message.node_id, message.snapshot);
     return;
   }
+  if (message.type === "translational_check") {
+    setStatus(message.certified
+      ? `Certified ${message.patch_size}-tile translational patch`
+      : `No ${message.patch_size}-tile patch; checking the next size…`);
+    return;
+  }
   if (message.type === "full_update") {
     attachSnapshotToNode(message.node_id, message);
     if ((message.tile_count ?? 0) <= 1) {
@@ -2422,7 +2522,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260723-standalone-balanced-v8", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260726-layered-modes-v10", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2495,9 +2595,11 @@ function resetRunView() {
   prototileInfo = null;
   currentOpacities = {};
   liveFaceStacks = new Map();
+  liveFrontierPoints = new Map();
   clearTree();
   clearObjectGroup(faceGroup);
   clearObjectGroup(edgeGroup);
+  clearObjectGroup(frontierPointGroup);
   tileList.replaceChildren();
   updateRunMetrics(null);
   elapsedTime.textContent = "0.0s";
@@ -2550,9 +2652,9 @@ function pauseRun() {
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const GROWTH_MODES = [
-  { id: "coverage", label: "Contact-first" },
-  { id: "isohedral", label: "Isohedral reuse" },
-  { id: "auto", label: "Periodic-first auto" }
+  { id: "coverage", label: "Generic" },
+  { id: "isohedral", label: "Isohedral" },
+  { id: "auto", label: "Automatic" }
 ];
 
 function svgNode(name, attributes = {}, textContent = null) {
@@ -2693,9 +2795,9 @@ function startGrowthBenchmark() {
   config.ui_yield_interval_ms = 250;
   growthRunning = true;
   growthBenchmarkButton.textContent = "Stop comparison";
-  growthBenchmarkStatus.textContent = `Measuring contact-first search to ${config.target_val} tiles…`;
+  growthBenchmarkStatus.textContent = `Measuring generic search to ${config.target_val} tiles…`;
 
-  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260723-standalone-balanced-v8", import.meta.url), { type: "module" });
+  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260726-layered-modes-v10", import.meta.url), { type: "module" });
   growthWorker.addEventListener("message", event => {
     const message = event.data ?? {};
     if (message.sequence !== sequence) return;
@@ -2733,11 +2835,17 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
+  [maxTilesInput, layerInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, strategySelect, ...strategyRadios, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, ...polycubeLatticeRadios, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
     if (!control) return;
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });
+
+  strategyRadios.forEach(radio => radio.addEventListener("change", updateStrategyUI));
+  polycubeLatticeRadios.forEach(radio => radio.addEventListener("change", () => {
+    polycubeLatticeSelect.value = selectedPolycubeLattice();
+    if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true, rebuildFaces: false });
+  }));
 
   customPolycubeCheckbox.addEventListener("change", handleCustomPolycubeChanged);
   customPolyhedronCheckbox.addEventListener("change", handleCustomPolycubeChanged);
@@ -2819,6 +2927,7 @@ function animate() {
 initFigureSelection();
 applySearchParams();
 updateCriterionUI();
+updateStrategyUI();
 applyModeDefaults();
 refreshFigureSelectionUI();
 bindControls();

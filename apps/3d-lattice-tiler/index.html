@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260721-growth-curves">
+  <link rel="stylesheet" href="./style.css?v=20260726-layered-modes-v10">
 </head>
 <body>
   <div class="app-shell">
@@ -47,52 +47,43 @@
           <label class="field"><span>Height</span><input id="regionHeightInput" type="number" value="4" min="1" max="100" step="1"></label>
         </div>
 
-        <div class="split-fields order-fields">
-          <label class="field">
-            <span>Frontier order</span>
-            <select id="faceOrderSelect">
-              <option value="coverage">Contact first</option>
-              <option value="constrained">Fewest choices</option>
-              <option value="mrv" selected>MRV fewest choices</option>
-              <option value="pocket">Fill holes</option>
-            </select>
-          </label>
+        <fieldset class="choice-field">
+          <legend>Tiling mode</legend>
+          <div class="radio-cards">
+            <label>
+              <input type="radio" name="tilingStrategy" value="translational" checked>
+              <span><b>Translational</b><small>Find a certified patch, then repeat it.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="isohedral">
+              <span><b>Isohedral</b><small>Reuse one tile neighborhood everywhere possible.</small></span>
+            </label>
+          </div>
+          <small id="strategyDescription">Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.</small>
+        </fieldset>
 
-          <label class="field">
-            <span>Filling order</span>
-            <select id="moveOrderSelect">
-              <option value="coverage">Most contact</option>
-              <option value="rl" selected>Auto: periodic → isohedral → search</option>
-              <option value="balanced">Balanced</option>
-              <option value="symmetric">Symmetry first</option>
-              <option value="crystal">Crystal pattern</option>
-              <option value="isohedral">First-corona pattern</option>
-              <option value="periodic">Repeat spacing</option>
-              <option value="repeat">Same orientation</option>
-            </select>
-          </label>
-        </div>
-
-        <label class="field">
-          <span>Lattice tier</span>
-          <select id="polycubeLatticeSelect">
-            <option value="z3" selected>Z³ basic</option>
-            <option value="fcc">FCC face centers</option>
-            <option value="half">(1/2)Z³ refined</option>
-          </select>
-        </label>
-
-        <label class="field">
-          <span>Periodic motif size</span>
-          <select id="periodicTileCountSelect">
-            <option value="1">1 tile</option>
-            <option value="2" selected>2 tiles</option>
-            <option value="3">3 tiles</option>
-            <option value="4">4 tiles</option>
-          </select>
-        </label>
+        <fieldset class="choice-field">
+          <legend>Lattice frontier</legend>
+          <div class="radio-cards lattice-cards">
+            <label><input type="radio" name="polycubeLattice" value="z3" checked><span><b>Z³</b><small>integer points</small></span></label>
+            <label><input type="radio" name="polycubeLattice" value="fcc"><span><b>FCC</b><small>face centers</small></span></label>
+            <label><input type="radio" name="polycubeLattice" value="half"><span><b>½Z³</b><small>refined points</small></span></label>
+          </div>
+        </fieldset>
 
         <div class="is-hidden" aria-hidden="true">
+          <select id="strategySelect">
+            <option value="translational" selected>Translational</option>
+            <option value="isohedral">Isohedral</option>
+          </select>
+          <select id="polycubeLatticeSelect">
+            <option value="z3" selected>Z³</option>
+            <option value="fcc">FCC</option>
+            <option value="half">½Z³</option>
+          </select>
+          <select id="faceOrderSelect"><option value="mrv" selected>MRV</option></select>
+          <select id="moveOrderSelect"><option value="balanced" selected>Balanced</option></select>
+          <select id="periodicTileCountSelect"><option value="4" selected>Up to 4</option></select>
           <label class="field">
             <span>Snapshots</span>
             <select id="snapshotSelect">
@@ -144,8 +135,8 @@
       <section class="metrics">
         <div><b id="metricTiles">0</b><span>tiles</span></div>
         <div><b id="metricFrontier">0</b><span>frontier points</span></div>
-        <div><b id="metricLayer">0</b><span id="metricLayerDetail">candidates</span></div>
-        <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
+        <div><b id="metricLayer">0</b><span id="metricLayerDetail">active layer</span></div>
+        <div class="is-hidden"><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
         <div><b id="metricGrowth">—</b><span>3D growth balance</span><small id="metricGrowthDetail">center spans 0 × 0 × 0</small></div>
       </section>
 
@@ -169,11 +160,11 @@
       <section class="viewport-panel">
         <div id="viewport" class="viewport"></div>
       </section>
-      <section class="growth-panel" aria-labelledby="growthChartTitle">
+      <section class="growth-panel is-hidden" aria-labelledby="growthChartTitle">
         <div class="growth-header">
           <div>
             <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
-            <small>Same tiles and target; compare generic contact-first, isohedral reuse, and automatic periodic-first growth.</small>
+            <small>Same tiles and target; compare generic, isohedral-neighborhood, and automatic strategies.</small>
           </div>
           <button id="growthBenchmarkButton" type="button">Compare growth</button>
         </div>
@@ -184,7 +175,7 @@
         </div>
         <div id="growthBenchmarkStatus" class="growth-status">No benchmark run yet.</div>
       </section>
-      <section class="tree-panel">
+      <section class="tree-panel is-hidden">
         <div class="tree-header">
           <h2>Search tree</h2>
           <span id="elapsedTime">0.0s</span>
@@ -230,6 +221,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260723-standalone-balanced-v8"></script>
+  <script type="module" src="./app.js?v=20260726-layered-modes-v10"></script>
 </body>
 </html>

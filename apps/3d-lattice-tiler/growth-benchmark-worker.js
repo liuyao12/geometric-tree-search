@@ -1,12 +1,12 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260723-standalone-balanced-v8";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260726-layered-modes-v10";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
 
 const MODES = [
-  { id: "coverage", label: "Contact-first", moveOrder: "coverage", templates: false, agentExhaustive: false },
-  { id: "isohedral", label: "Isohedral reuse", moveOrder: "isohedral", templates: false, agentExhaustive: false },
-  { id: "auto", label: "Periodic-first auto", moveOrder: "rl", templates: true, agentExhaustive: true }
+  { id: "coverage", label: "Generic", strategy: "generic", moveOrder: "coverage", templates: false, agentExhaustive: false },
+  { id: "isohedral", label: "Isohedral", strategy: "isohedral", moveOrder: "isohedral", templates: true, agentExhaustive: false },
+  { id: "auto", label: "Automatic", strategy: "auto", moveOrder: "balanced", templates: true, agentExhaustive: true }
 ];
 
 const post = (sequence, payload) => {
@@ -16,6 +16,7 @@ const post = (sequence, payload) => {
 async function runMode(sequence, baseConfig, mode) {
   const config = {
     ...baseConfig,
+    tiling_strategy: mode.strategy,
     move_order: mode.moveOrder,
     agent_exhaustive: mode.agentExhaustive,
     template_preflight: mode.templates,
