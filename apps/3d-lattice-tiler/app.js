@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260727-catalog-audit-v13";
+import { tileSpecs } from "./engine.js?v=20260727-best-preview-v14";
 
 const $ = (id) => document.getElementById(id);
 
@@ -2536,7 +2536,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260727-catalog-audit-v13", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260727-best-preview-v14", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2811,7 +2811,7 @@ function startGrowthBenchmark() {
   growthBenchmarkButton.textContent = "Stop comparison";
   growthBenchmarkStatus.textContent = `Measuring generic search to ${config.target_val} tiles…`;
 
-  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260727-catalog-audit-v13", import.meta.url), { type: "module" });
+  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260727-best-preview-v14", import.meta.url), { type: "module" });
   growthWorker.addEventListener("message", event => {
     const message = event.data ?? {};
     if (message.sequence !== sequence) return;

@@ -1132,6 +1132,12 @@ export const createTilingStream = (() => {
     };
 
     const undoMove = (move, rb) => {
+      // Live placement deltas can show a useful patch even when snapshots are
+      // configured as "Final only". Preserve a new high-water mark before
+      // backtracking so the terminal update does not collapse to the root tile.
+      if (state.placements.length > (bestSnapshot?.tile_count ?? 0)) {
+        snapshot(move.node_id ?? null);
+      }
       for (const [k, oldGen] of (rb.modified_gens ?? [])) { const e = state.frontier.get(k); if(e) e.gen = oldGen; }
       const changedOccupancyPositions = move.occupancy_data.map(o => o.pos);
       for (const [k, val] of rb.removed) {
@@ -3375,7 +3381,10 @@ export const createTilingStream = (() => {
     // bounded visualization patch did not reach the requested display count.
     success = success || !!(tilingEvidence?.certified && tilingEvidence?.can_tile !== false);
     yield nodeStatus(rootId, success ? "success" : "fail");
-    const finalSnapshot = success ? snapshot(null) : (bestSnapshot ? { ...cloneSnapshot(bestSnapshot), node_id: null } : snapshot(null));
+    const terminalSnapshot = snapshot(null);
+    const finalSnapshot = bestSnapshot && isBetterSnapshot(bestSnapshot, terminalSnapshot)
+      ? { ...cloneSnapshot(bestSnapshot), node_id: null }
+      : terminalSnapshot;
     yield finalSnapshot;
     await tick();
     if (success && criterion === "region") {
