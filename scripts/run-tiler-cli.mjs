@@ -46,9 +46,10 @@ Options:
   --criterion <count|layer>       Goal type. Default: count.
   --target <n>                    Target tile count or layer. Default: 80.
   --snapshot-every <n>            Engine snapshot cadence. Default: 10.
-  --move-order <name>             coverage, repeat, periodic, crystal, isohedral, symmetric, layer, or balanced. Default: coverage.
-  --face-order <name>             Frontier-point order: coverage, constrained, or pocket. Default: coverage.
+  --move-order <name>             coverage, repeat, periodic, crystal, isohedral, rl, symmetric, layer, or balanced. Default: coverage.
+  --face-order <name>             Frontier-point order: coverage, constrained, pocket, or mrv. Default: coverage.
   --branch-cap <n>                Branch cap; 0 means uncapped. Default: 0.
+  --forced-layer-lag-cap <n>      Auto-forced/repeat moves may exceed min frontier layer by this many layers; 0 disables. Default: 3.
   --node-limit <n>                Node cap; 0 means uncapped. Default: 0.
   --candidate-cap <n>             Candidate cap; 0 means uncapped. Default: 0.
   --time-limit-ms <n>             Engine time cap; 0 means uncapped. Default: 0.
@@ -76,6 +77,7 @@ function readArgs(argv) {
     moveOrder: "coverage",
     faceOrder: "coverage",
     branchCap: 0,
+    forcedLayerLagCap: 3,
     nodeLimit: 0,
     candidateCap: 0,
     timeLimitMs: 0,
@@ -129,6 +131,9 @@ function readArgs(argv) {
       i += 1;
     } else if (arg === "--branch-cap") {
       opts.branchCap = Number(next(i, arg));
+      i += 1;
+    } else if (arg === "--forced-layer-lag-cap") {
+      opts.forcedLayerLagCap = Number(next(i, arg));
       i += 1;
     } else if (arg === "--node-limit") {
       opts.nodeLimit = Number(next(i, arg));
@@ -236,9 +241,32 @@ function compactEvent(message, includeFaces = false) {
         periodic_cell: branch.periodic_cell,
         target_face_pocket: branch.target_face_pocket,
         symmetry: branch.symmetry,
+        agent_features: branch.agent_features,
+        agent_score: branch.agent_score,
+        periodic_template: branch.periodic_template,
+        layer: branch.layer,
+        layer_lag: branch.layer_lag,
         score: branch.score,
         preview_frontier_stats: branch.preview_frontier_stats
       }))
+    };
+  }
+  if (message.type === "node_status") {
+    const dual = message.frontier_dual;
+    return {
+      type: "node_status",
+      id: message.id,
+      status: message.status,
+      text: message.text ?? "",
+      color_id: message.color_id ?? null,
+      frontier_stats: message.frontier_stats ?? null,
+      periodic_template: message.periodic_template ?? null,
+      forced_cap: message.forced_cap ?? null,
+      frontier_dual: dual ? {
+        frontier_point_count: dual.frontier_points?.length ?? 0,
+        candidate_count: dual.candidate_count ?? dual.candidates?.length ?? 0,
+        association_count: dual.association_count ?? 0
+      } : null
     };
   }
   return message;
@@ -288,6 +316,7 @@ function makeConfig(figures, opts) {
     branch_details: opts.branchDetails,
     placement_details: opts.placementDetails,
     branch_cap: finitePositive(opts.branchCap),
+    forced_move_layer_lag_cap: Number.isFinite(opts.forcedLayerLagCap) && opts.forcedLayerLagCap >= 0 ? opts.forcedLayerLagCap : null,
     node_limit: finitePositive(opts.nodeLimit),
     candidate_cap: finitePositive(opts.candidateCap),
     time_limit_ms: finitePositive(opts.timeLimitMs),
@@ -337,11 +366,11 @@ async function main() {
   }
 
   if (!["count", "layer"].includes(opts.criterion)) throw new Error("--criterion must be count or layer");
-  if (!["coverage", "repeat", "periodic", "crystal", "isohedral", "symmetric", "layer", "balanced"].includes(opts.moveOrder)) {
-    throw new Error("--move-order must be coverage, repeat, periodic, crystal, isohedral, symmetric, layer, or balanced");
+  if (!["coverage", "repeat", "periodic", "crystal", "isohedral", "rl", "symmetric", "layer", "balanced"].includes(opts.moveOrder)) {
+    throw new Error("--move-order must be coverage, repeat, periodic, crystal, isohedral, rl, symmetric, layer, or balanced");
   }
-  if (!["coverage", "constrained", "pocket"].includes(opts.faceOrder)) {
-    throw new Error("--face-order must be coverage, constrained, or pocket");
+  if (!["coverage", "constrained", "pocket", "mrv"].includes(opts.faceOrder)) {
+    throw new Error("--face-order must be coverage, constrained, pocket, or mrv");
   }
   if (!Number.isFinite(opts.target) || opts.target <= 0) throw new Error("--target must be positive");
 

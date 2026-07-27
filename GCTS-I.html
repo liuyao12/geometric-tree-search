@@ -29,7 +29,8 @@
 
     <article class="article-shell">
       <section class="article-content">
-        <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. The core algorithm is to learn a pattern of markings on the tiles that may be used to accelerate the tree search, by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
+        <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of <strong>tree search with geometric constraints</strong>, in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. A useful summary is that <strong>GCTS is memoization by way of encoding failures geometrically</strong>: when a branch fails, its obstruction is recorded as a marking whose transformed overlap recognizes and rejects the same geometric situation later. The learned marking accelerates the tree search by identifying and excluding unwanted branches. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
+        <p>There is a suggestive analogy here with Vaughan Jones's <a href="https://arxiv.org/abs/math/9909027">planar algebras</a>, in which operations are indexed by planar tangles and composition is literally geometric gluing. Terence Tao later emphasized this as a genuinely two-dimensional alternative to the usual one-dimensional strings of algebraic notation in his remembrance of <a href="https://terrytao.wordpress.com/2020/09/09/vaughan-jones/">Vaughan Jones</a>. GCTS similarly lets spatial composition carry the computation: transformed markings glue on overlaps, while incompatible overlaps encode a failed continuation. This is a family resemblance rather than an identification—our present construction has not been given the vector-space, multilinear, or planar-operad axioms of a planar algebra—but it suggests a useful question: whether failure certificates and their composition admit a natural planar-algebraic formulation.</p>
 
         <aside class="margin-note">GCTS is not a replacement on MCTS, Monte Carlo Tree Search; the two could be combined in certain problems.</aside>
 
@@ -62,7 +63,8 @@
   </main>
 
   <script src="./assets/markdown-article.js" data-markdown="./docs/blog/tree-search-with-geometric-constraints.md" defer></script>
-  <script>
+  <script type="module">
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260721-frontier-memo';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -141,6 +143,7 @@
       let timer = null;
       let traceIndex = 0;
       let liveSearchIterator = null;
+      let playbackTickBusy = false;
       let liveSearchUsesMarking = tilingRunUsesMarking;
       let autoplayTarget = 30;
       const pausedCoronas = new Set();
@@ -1509,6 +1512,7 @@
 
       function resetTilingForMarkingExtension() {
         stopTiling();
+        liveSearchIterator?.cancel?.();
         markingExtension = normalizedMarkingExtension();
         orientations = buildOrientations(markingExtension);
         const seed = makeSeedPlacement();
@@ -1534,6 +1538,7 @@
         if (!stage || stageName === activeDemoStage) return;
         activeDemoStage = stageName;
         stopTiling();
+        liveSearchIterator?.cancel?.();
         if (stageName === 'intro') {
           stageChips.forEach(chip => {
             chip.setAttribute('aria-current', 'false');
@@ -1588,6 +1593,62 @@
         if (timer) window.clearInterval(timer);
         timer = null;
         startButton.textContent = hasStartedTiling ? 'Continue tiling' : 'Start tiling';
+      }
+
+      const sharedTurtleOrientations = tileOrientations('turtle', A2_TILE_LOOPS.turtle);
+      const sameSymmetry = (left, right) => left.sign === right.sign && left.permutation.every((value, index) => value === right.permutation[index]);
+      function sharedOrientationFor(symmetry) {
+        return sharedTurtleOrientations.find(orientation => sameSymmetry(orientation.symmetry, symmetry));
+      }
+      function demoPlacementFromShared(placement, extras = {}) {
+        const localOrientation = orientations.find(orientation => sameSymmetry(orientation, placement.orientation.symmetry)) || orientations[0];
+        const shiftedOrigin = a2Transform(turtleVertices3d[0], placement.orientation.symmetry);
+        return makePlacement(localOrientation, subtract3(placement.translation, shiftedOrigin), extras);
+      }
+      function createSharedLiveTilingSearch(useMarking) {
+        const seed = makeSeedPlacement();
+        const sharedSeedOrientation = sharedOrientationFor(seed.orientation);
+        const sharedSeedTranslation = add3(a2Transform(turtleVertices3d[0], seed.orientation), seed.translation);
+        const stopToken = { stop: false };
+        const queue = [];
+        const waiters = [];
+        let done = false;
+        const push = value => {
+          const waiter = waiters.shift();
+          if (waiter) waiter({ value, done: false });
+          else queue.push(value);
+        };
+        const placementsFor = event => [seed, ...(event.placements || []).map(placement => demoPlacementFromShared(placement))];
+        const adapt = event => {
+          const frontier = typeof event.choice === 'string' ? event.choice.split(',').map(Number) : event.choice;
+          if (event.type === 'trial') return { type: 'trial', valid: true, frontier, frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0, placement: demoPlacementFromShared(event.candidate, { frontier }) };
+          if (event.type === 'placement') {
+            const converted = placementsFor(event);
+            return { type: 'accept', count: converted.length, placement: converted[converted.length - 1], forced: event.forced, branchCount: event.branchCount || 0, frontierValue: event.frontierValue || 0, placements: converted };
+          }
+          if (event.type === 'fail') return { type: 'fail', frontier, frontierValue: event.frontierValue || 0, placements: placementsFor(event) };
+          if (event.type === 'backtrack') return { type: 'backtrack', reason: 'failed branch', removed: demoPlacementFromShared(event.removed, { frontier }), placements: placementsFor(event), frontierValue: event.frontierValue || 0, branchCount: event.branchCount || 0 };
+          return null;
+        };
+        solveA2Tiling({
+          boundary: makeHexBoundary(220),
+          seed: { loop: seed.vertices3d, markingPlacement: { tile: 'turtle', orientation: sharedSeedOrientation, translation: sharedSeedTranslation } },
+          tiles: ['turtle'],
+          maximize: true,
+          targetPlacements: 1000,
+          nodeLimit: 1000000,
+          marking: useMarking ? new FixedTurtleMarking(markingExtension) : new NoA2Marking(),
+          randomSeed: 2,
+          stopToken,
+          onEvent: event => { const converted = adapt(event); if (converted) push(converted); }
+        }).finally(() => {
+          done = true;
+          while (waiters.length) waiters.shift()({ value: undefined, done: true });
+        });
+        return {
+          next() { if (queue.length) return Promise.resolve({ value: queue.shift(), done: false }); if (done) return Promise.resolve({ value: undefined, done: true }); return new Promise(resolve => waiters.push(resolve)); },
+          cancel() { stopToken.stop = true; }
+        };
       }
 
 
@@ -1724,12 +1785,13 @@
         const useMarking = markingRulesToggle?.checked || false;
         const modeChanged = useMarking !== liveSearchUsesMarking;
         if (reset || !hasStartedTiling || modeChanged || !liveSearchIterator) {
+          liveSearchIterator?.cancel?.();
           shownTiles = 1;
           const seed = makeSeedPlacement();
           tilingOrder = [seed];
           tilingTrace = [];
           playbackPlacements = [seed];
-          liveSearchIterator = createLiveTilingSearch(10000, useMarking);
+          liveSearchIterator = createSharedLiveTilingSearch(useMarking);
           pausedCoronas.clear();
           liveSearchUsesMarking = useMarking;
           tilingRunUsesMarking = useMarking;
@@ -1744,11 +1806,14 @@
         showMarkings = markingRulesToggle.checked ? true : showMarkings;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
-        timer = window.setInterval(() => {
+        timer = window.setInterval(async () => {
+          if (playbackTickBusy) return;
+          playbackTickBusy = true;
           let event = null;
           let pendingDeadEnd = null;
-          while (true) {
-            const next = liveSearchIterator?.next();
+          try {
+            while (true) {
+            const next = await liveSearchIterator?.next();
             if (!next || next.done) {
               if (pendingDeadEnd) {
                 event = pendingDeadEnd;
@@ -1815,6 +1880,9 @@
             }
           }
           draw();
+          } finally {
+            playbackTickBusy = false;
+          }
         }, 60);
         draw();
       }
@@ -1843,6 +1911,7 @@
       latticeToggle.addEventListener('change', draw);
       resetButton.addEventListener('click', () => {
         stopTiling();
+        liveSearchIterator?.cancel?.();
         centerSeedView();
         hoveredPoint = null;
         shownTiles = 1;

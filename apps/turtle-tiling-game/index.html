@@ -3,35 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Turtle Tiling Game</title>
-  <link rel="stylesheet" href="./style.css?v=20260625-viable-relative-cache">
+  <title>A₂ Tiling Studio — Turtle, Hat, and Custom Tiles</title>
+  <link rel="stylesheet" href="./style.css?v=20260715-custom-loop-builder">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2724%27 font-size=%2724%27%3E%F0%9F%90%A2%3C/text%3E%3C/svg%3E">
 </head>
 <body>
   <main class="shell">
-    <header>
-      <p><a href="../../">← GCTS home</a></p>
-      <h1>Turtle Tiling Game</h1>
-      <p class="lede">A turn-taking tiling toy: build a turtle region, place trefoils on its boundary, then move trefoils inward by flipping neighboring turtle–trefoil pairs. The app shows the board and legal local moves, but does not track players, turns, or victory.</p>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow"><a href="../../">GCTS</a> / A₂ lattice playground</p>
+        <h1>A₂ Tiling Studio</h1>
+      </div>
+      <p class="lede">Repeat a Turtle, Hat, or your own closed lattice loop around a single tile, Trefoil, or Hexagon center. Online GCTS can begin unmarked and learn sparse mismatch certificates from failed branches.</p>
     </header>
-    <nav class="game-tabs" aria-label="Initial tile">
-      <button id="turtleSeedTab" class="tab-button" type="button" aria-pressed="true">turtle</button>
-      <button id="tilingTab" class="tab-button" type="button" aria-pressed="false">trefoil</button>
-      <button id="crossingTab" class="tab-button" type="button" aria-pressed="false">hexagon</button>
-    </nav>
-    <section class="toolbar" aria-label="Game controls">
-      <button id="build">Initialize tiling</button>
-      <label>corona <input id="coronaTarget" type="number" min="1" max="12" value="6"></label>
-      <span class="symmetry-label">symmetry:</span>
+
+    <section class="setup-panel" aria-label="Tiling setup">
+      <div class="setup-group tile-choice">
+        <div class="setup-heading"><span>1</span><div><strong>Tile to repeat</strong><small>Choose a prototile or draw one.</small></div></div>
+        <div class="segmented" id="fillTilePicker">
+          <button class="fill-tile-button" type="button" data-fill-tile="turtle" aria-pressed="true">Turtle</button>
+          <button class="fill-tile-button" type="button" data-fill-tile="hat" aria-pressed="false">Hat</button>
+          <button class="fill-tile-button" type="button" data-fill-tile="custom" aria-pressed="false">Custom</button>
+        </div>
+        <button id="customTileButton" class="edit-tile-button" type="button">Draw custom tile</button>
+      </div>
+
+      <div class="setup-group center-choice">
+        <div class="setup-heading"><span>2</span><div><strong>Center</strong><small>What the repeated tile grows around.</small></div></div>
+        <nav class="segmented" aria-label="Center tile">
+          <button id="turtleSeedTab" class="tab-button" type="button" aria-pressed="false">Single tile</button>
+          <button id="tilingTab" class="tab-button" type="button" aria-pressed="true">Trefoil</button>
+          <button id="crossingTab" class="tab-button" type="button" aria-pressed="false">Hexagon</button>
+        </nav>
+      </div>
+
+      <div class="setup-group run-choice">
+        <div class="setup-heading"><span>3</span><div><strong>Grow patch</strong><small>Run the selected search.</small></div></div>
+        <div class="run-line">
+          <label class="compact-field">corona <input id="coronaTarget" type="number" min="1" max="12" value="3"></label>
+          <button id="build" class="primary-button">Initialize tiling</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Search and display controls">
+      <label class="learning-toggle"><input id="onlineLearning" type="checkbox" checked> <span><strong>Online GCTS</strong><small>start unmarked; learn from failures</small></span></label>
+      <div class="toolbar-divider"></div>
+      <span class="symmetry-label">symmetry</span>
       <button class="symmetry-toggle" type="button" data-symmetry="1" aria-pressed="true">none</button>
       <button class="symmetry-toggle" type="button" data-symmetry="2" aria-pressed="false">2</button>
       <button class="symmetry-toggle" type="button" data-symmetry="3" aria-pressed="false">3</button>
       <button class="symmetry-toggle" type="button" data-symmetry="6" aria-pressed="false">6</button>
-      <button id="resetView" aria-label="Reset view">↺</button>
-      <span class="stripes-label">stripes:</span>
+      <div class="toolbar-divider"></div>
+      <span class="stripes-label">marks</span>
       <button id="blueStripes" class="stripe-toggle stripe-blue" type="button" aria-pressed="true">blue</button>
       <button id="orangeStripes" class="stripe-toggle stripe-orange" type="button" aria-pressed="true">orange</button>
+      <button id="resetView" aria-label="Reset board view">Fit view</button>
       <span id="status" aria-live="polite">ready</span>
+    </section>
+    <section class="learning-strip" id="learningStrip" aria-live="polite">
+      <div><strong id="learnedFailures">0</strong><span>failures encoded</span></div>
+      <div><strong id="learnedMarks">0</strong><span>mark entries</span></div>
+      <div><strong id="memoHits">0</strong><span>later trials pruned</span></div>
+      <p id="learningMessage">Empty marking. Choose Trefoil or Hexagon, then initialize the tiling.</p>
+      <details class="learning-log"><summary>audit trail</summary><ol id="learningLog"></ol></details>
     </section>
     <div class="board-area">
       <div class="canvas-stack">
@@ -39,8 +74,51 @@
         <canvas id="crossingBoard" class="hidden" width="1200" height="780" aria-label="Hex Seed Turtle Game board"></canvas>
       </div>
     </div>
-
   </main>
-  <script type="module" src="./app.js?v=20260627-frontier-graph"></script>
+
+  <dialog id="customTileDialog" class="custom-tile-dialog">
+    <div class="builder-shell">
+      <header class="builder-header">
+        <div>
+          <p class="eyebrow">A₂ loop editor</p>
+          <h2>Draw a custom lattice tile</h2>
+          <p>Select lattice points in boundary order. Return to the first point to close the loop.</p>
+        </div>
+        <button id="closeCustomTileButton" class="icon-button" type="button" aria-label="Close custom tile editor">×</button>
+      </header>
+      <div class="builder-layout">
+        <section class="builder-canvas-panel">
+          <canvas id="customTileCanvas" width="900" height="620" aria-label="Triangular lattice custom tile editor"></canvas>
+          <div class="builder-hint"><span>Click</span> add vertex <span>Click first point</span> close loop <span>⌘/Ctrl Z</span> undo</div>
+        </section>
+        <aside class="builder-sidebar">
+          <label class="name-field"><span>Tile name</span><input id="customTileName" type="text" value="My lattice tile" maxlength="40"></label>
+          <div class="builder-metrics">
+            <div><strong id="customVertexCount">0</strong><span>vertices</span></div>
+            <div><strong id="customArea">0</strong><span>lattice area</span></div>
+          </div>
+          <div id="customTileValidation" class="validation-card" data-state="empty">
+            <strong>Choose a starting point</strong>
+            <p>A valid tile is a simple, nonzero-area closed loop.</p>
+          </div>
+          <div class="builder-section">
+            <strong>Start from an outline</strong>
+            <div class="preset-grid">
+              <button type="button" data-custom-preset="blank">Blank</button>
+              <button type="button" data-custom-preset="turtle">Turtle</button>
+              <button type="button" data-custom-preset="hat">Hat</button>
+            </div>
+          </div>
+          <div class="builder-actions">
+            <button id="undoCustomPoint" type="button">Undo point</button>
+            <button id="clearCustomTile" type="button">Clear</button>
+            <button id="useCustomTile" class="primary-button" type="button" disabled>Use this tile</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="./app.js?v=20260715-shared-a2-engine"></script>
 </body>
 </html>

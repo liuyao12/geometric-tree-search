@@ -2,6 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
+import { OnlineFailureMarking } from "./online-failure-marking.js";
 
 export const createTilingStream = (() => {
   return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }) {
@@ -212,6 +213,9 @@ export const createTilingStream = (() => {
       return diffs.some(diff => dot(normal, diff) !== 0) ? 3 : 2;
     };
     const tilingDimension = Math.max(1, ...prototiles.map(tile => affineRank(tile.verts)));
+    const onlineMarking = config.online_failure_marking && tilingDimension >= 3
+      ? new OnlineFailureMarking({ max_reach: config.online_marking_max_reach ?? null, enable_pair_marking: !!config.online_pair_marking })
+      : null;
     const configuredSharedVertices = Number(config.min_shared_vertices);
     const minSharedVertices = Number.isFinite(configuredSharedVertices) && configuredSharedVertices > 0
       ? configuredSharedVertices
@@ -753,6 +757,10 @@ export const createTilingStream = (() => {
       // In 3D, attachment must be by three non-collinear active frontier points;
       // merely touching along a line leaves the next placement underconstrained.
       if (tilingDimension >= 3 && affineRank(sharedPoints) < 2) return null;
+      if (onlineMarking && !onlineMarking.compatible(move, state.placements)) {
+        searchStats.marking_prunes += 1;
+        return null;
+      }
       return validCheck;
     };
     const orientedFacesBySignature = new Map();
@@ -2856,6 +2864,8 @@ export const createTilingStream = (() => {
         setBranchCursor(depth, bestMoves.length, i);
         searchStats.branch_choices_visited += 1;
         searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
+        const learningContext = onlineMarking ? onlineMarking.snapshotPlacements(state.placements) : null;
+        const proofRevision = incompleteRevision;
         const rb = applyMove(mv);
         yield placementDelta("add", mv, rb, mv.node_id);
         const postMoveAnalysis = await analyzeFrontierGraph();
@@ -2881,6 +2891,17 @@ export const createTilingStream = (() => {
           yield nodeStatus(mv.node_id, "fail");
         }
         undoMove(mv, rb);
+        if (!child && learningContext && proofRevision === incompleteRevision) {
+          const markingUpdate = commitFailedBranch(learningContext, mv);
+          if (markingUpdate?.committed) {
+            yield {
+              type: "marking_update",
+              node_id: mv.node_id,
+              ...markingUpdate,
+              search_stats: searchStatsSnapshot()
+            };
+          }
+        }
         yield placementDelta("remove", mv, rb, mv.node_id);
         setBranchCursor(depth, bestMoves.length, i + 1);
       }
