@@ -103,6 +103,17 @@ assert.equal(freestyle.final.success, true);
 assert.equal(freestyle.final.result_kind, "patch_found");
 assert.equal(freestyle.final.search_stats.tiling_strategy, "generic");
 
+const freeRange = await solve({
+  tiling_strategy: "free_range",
+  move_order: "no_brainer",
+  greedy_no_backtrack: true,
+  template_preflight: false,
+  target_val: 12
+});
+assert.equal(freeRange.final.success, true);
+assert.equal(freeRange.final.search_stats.tiling_strategy, "generic");
+assert.equal(freeRange.final.search_stats.backtracks, 0);
+
 for (const [mode_key, polycube_lattice] of [
   ["letter_o", "fcc"],
   ["letter_o", "half"],

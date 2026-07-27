@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260727-periodic-colors-v15";
+import { tileSpecs } from "./engine.js?v=20260727-self-learning-v16";
 
 const $ = (id) => document.getElementById(id);
 
@@ -32,6 +32,8 @@ const polycubeLatticeSelect = $("polycubeLatticeSelect");
 const polycubeLatticeRadios = [...document.querySelectorAll('input[name="polycubeLattice"]')];
 const periodicTileCountSelect = $("periodicTileCountSelect");
 const runButton = $("runButton");
+const learnProposalButton = $("learnProposalButton");
+const learnedProposalStatus = $("learnedProposalStatus");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
 const layerField = $("layerField");
@@ -90,6 +92,7 @@ const CHECKPOINT_DB_NAME = "3d-lattice-tiler-checkpoints";
 const CHECKPOINT_STORE_NAME = "checkpoints";
 const CHECKPOINT_KEY = "latest";
 const CHECKPOINT_SAVE_INTERVAL_MS = 1800;
+const LEARNED_PROPOSALS_KEY = "3d-lattice-tiler-learned-proposals-v1";
 
 function fallbackRenderer(label) {
   const canvas = document.createElement("canvas");
@@ -205,6 +208,16 @@ let growthWorker = null;
 let growthSequence = 0;
 let growthRunning = false;
 const growthSeries = new Map();
+let proposalLearningWorker = null;
+let proposalLearningSequence = 0;
+let proposalLearningRunning = false;
+let learnedProposals = (() => {
+  try {
+    return JSON.parse(localStorage.getItem(LEARNED_PROPOSALS_KEY) ?? "{}");
+  } catch {
+    return {};
+  }
+})();
 let workerDisplayPaused = false;
 let solverMessageQueue = [];
 let solverMessageQueueIndex = 0;
@@ -504,7 +517,7 @@ function updateCriterionUI() {
 const STRATEGY_DESCRIPTIONS = {
   translational: "Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.",
   isohedral: "Learns the first tile neighborhood and applies the same relative neighbors to every new tile whenever legal.",
-  freestyle: "Explores locally legal face-to-face placements without assuming periodicity or tile transitivity."
+  free_range: "Places the most sensible legal tile in all directions; exact ties are chosen randomly."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -1157,7 +1170,8 @@ function applyCheckpointUiState(ui = {}) {
   if (controls.snapshotEvery != null) snapshotSelect.value = controls.snapshotEvery;
   if (controls.faceOrder != null) faceOrderSelect.value = controls.faceOrder;
   if (controls.tilingStrategy != null) {
-    strategySelect.value = setRadioValue(strategyRadios, controls.tilingStrategy, "translational");
+    const savedStrategy = controls.tilingStrategy === "freestyle" ? "free_range" : controls.tilingStrategy;
+    strategySelect.value = setRadioValue(strategyRadios, savedStrategy, "translational");
   }
   if (controls.moveOrder != null) moveOrderSelect.value = controls.moveOrder;
   if (controls.polycubeLattice != null) {
@@ -1493,6 +1507,8 @@ function configKey() {
   const seconds = positiveOrNull(timeCapInput);
   const forcedLayerLagCap = positiveSearchParam("forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 3;
   const selectedCriterion = criterion();
+  const tilingStrategy = checkedRadioValue(strategyRadios, "translational");
+  const isFreeRange = tilingStrategy === "free_range";
   return JSON.stringify({
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
@@ -1511,10 +1527,11 @@ function configKey() {
     include_mirrors: mirrorCheckbox.checked,
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
-    tiling_strategy: checkedRadioValue(strategyRadios, "translational"),
-    move_order: "balanced",
-    agent_exhaustive: true,
-    template_preflight: true,
+    tiling_strategy: tilingStrategy,
+    move_order: isFreeRange ? "no_brainer" : "balanced",
+    greedy_no_backtrack: isFreeRange,
+    agent_exhaustive: !isFreeRange,
+    template_preflight: !isFreeRange,
     periodic_patch_max_tiles: Math.max(1, Math.min(4, Number(periodicTileCountSelect.value) || 4)),
     periodic_template_max_volume: 512,
     forced_move_layer_lag_cap: forcedLayerLagCap,
@@ -1546,6 +1563,7 @@ function setRunButton() {
 }
 
 function invalidatePausedRunIfNeeded() {
+  if (proposalLearningRunning) stopProposalLearning("Selection changed; learning stopped.");
   if (!paused) {
     setRunButton();
     return;
@@ -2620,7 +2638,7 @@ function resetRunView() {
   requestRender();
 }
 
-function startNewRun() {
+function startNewRun(configOverride = null) {
   if (!hasRunnableSelection()) {
     setStatus("Choose a figure or enable the custom polycube.");
     setRunButton();
@@ -2642,7 +2660,7 @@ function startNewRun() {
   setRunButton();
   setStatus("Running...");
 
-  const config = JSON.parse(pausedConfigKey);
+  const config = configOverride ?? JSON.parse(pausedConfigKey);
   ensureSolverWorker().postMessage({ type: "start", seq: runSeq, config });
 }
 
@@ -2666,7 +2684,7 @@ function pauseRun() {
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const GROWTH_MODES = [
-  { id: "coverage", label: "Generic" },
+  { id: "coverage", label: "Free-range" },
   { id: "isohedral", label: "Isohedral" },
   { id: "auto", label: "Automatic" }
 ];
@@ -2784,6 +2802,114 @@ function stopGrowthBenchmark(status = "Comparison stopped.") {
   growthBenchmarkStatus.textContent = status;
 }
 
+function setProposalLearningButton() {
+  learnProposalButton.disabled = !proposalLearningRunning && !hasRunnableSelection();
+  learnProposalButton.textContent = proposalLearningRunning ? "Stop learning" : "Learn & run";
+}
+
+function stopProposalLearning(status = "Learning stopped.") {
+  proposalLearningSequence += 1;
+  proposalLearningWorker?.postMessage({ type: "stop" });
+  proposalLearningWorker?.terminate();
+  proposalLearningWorker = null;
+  proposalLearningRunning = false;
+  learnedProposalStatus.textContent = status;
+  setProposalLearningButton();
+}
+
+function runLearnedProposal(baseConfig, result) {
+  startNewRun({
+    ...baseConfig,
+    criterion: "count",
+    target_val: Math.max(2, Number(maxTilesInput.value) || 2),
+    tiling_strategy: "generic",
+    move_order: "proposal",
+    proposal_program: result.learned.program,
+    proposal_program_id: result.learned.program.id,
+    greedy_no_backtrack: true,
+    agent_exhaustive: false,
+    template_preflight: false,
+    periodic_preflight: false,
+    random_seed: result.options.seed
+  });
+}
+
+function startProposalLearning() {
+  if (!hasRunnableSelection()) {
+    learnedProposalStatus.textContent = "Choose a figure or enable a custom tile first.";
+    return;
+  }
+  if (running || paused) {
+    stopSolverWorker();
+    runSeq += 1;
+    running = false;
+    paused = false;
+    setRunButton();
+  }
+  if (growthRunning) stopGrowthBenchmark("Comparison stopped for proposal learning.");
+  if (proposalLearningWorker) stopProposalLearning();
+
+  const sequence = ++proposalLearningSequence;
+  const config = JSON.parse(configKey());
+  const target = Math.max(2, Number(maxTilesInput.value) || 2);
+  const cachedPrograms = Object.values(learnedProposals)
+    .map(record => record?.learned?.program)
+    .filter(Boolean);
+  const options = {
+    target,
+    horizon_ms: Math.min(1500, Math.max(500, Number(config.time_limit_ms) || 900)),
+    generations: 2,
+    population: 8,
+    elite: 3,
+    seed: 17,
+    min_improvement: 0.02,
+    baseline_replicates: 2,
+    proposal_replicates: 1,
+    seed_programs: cachedPrograms
+  };
+  proposalLearningRunning = true;
+  setProposalLearningButton();
+  learnedProposalStatus.textContent = `Measuring Free-range to ${target} tiles…`;
+
+  proposalLearningWorker = new Worker(new URL("./proposal-learning-worker.js?v=20260727-self-learning-v16", import.meta.url), { type: "module" });
+  proposalLearningWorker.addEventListener("message", event => {
+    const message = event.data ?? {};
+    if (message.sequence !== sequence) return;
+    if (message.type === "progress") {
+      const progress = message.progress ?? {};
+      if (progress.phase === "baseline") {
+        learnedProposalStatus.textContent = `Measuring Free-range ${progress.completed}/${progress.total}…`;
+      } else {
+        learnedProposalStatus.textContent = `Learning generation ${progress.generation + 1}/${progress.generations}, proposal ${progress.candidate}/${progress.population} · best ${progress.best_tiles} tiles`;
+      }
+      return;
+    }
+    if (message.type === "error") {
+      stopProposalLearning(`Learning error: ${message.error}`);
+      return;
+    }
+    if (message.type !== "finished") return;
+    proposalLearningWorker?.terminate();
+    proposalLearningWorker = null;
+    proposalLearningRunning = false;
+    setProposalLearningButton();
+    const result = message.result;
+    if (!result?.accepted) {
+      const baselineTiles = result?.baseline?.best_tiles ?? 0;
+      const learnedTiles = result?.learned?.best_tiles ?? 0;
+      learnedProposalStatus.textContent = `Free-range remains best (${baselineTiles} vs ${learnedTiles} tiles); proposal rejected.`;
+      return;
+    }
+    learnedProposals[result.tile_key] = result;
+    localStorage.setItem(LEARNED_PROPOSALS_KEY, JSON.stringify(learnedProposals));
+    const percent = Math.round(result.improvement * 100);
+    learnedProposalStatus.textContent = `Learned proposal beats Free-range by ${percent}% (${result.learned.best_tiles} vs ${result.baseline.best_tiles} tiles). Running it…`;
+    runLearnedProposal(config, result);
+  });
+  proposalLearningWorker.addEventListener("error", error => stopProposalLearning(`Learning error: ${error.message}`));
+  proposalLearningWorker.postMessage({ type: "start", sequence, config, options });
+}
+
 function startGrowthBenchmark() {
   if (!hasRunnableSelection()) {
     growthBenchmarkStatus.textContent = "Choose a figure or enable a custom lattice tile first.";
@@ -2888,9 +3014,15 @@ function bindControls() {
   });
 
   runButton.addEventListener("click", () => {
+    if (proposalLearningRunning) stopProposalLearning("Learning stopped for the main run.");
     if (running) return pauseRun();
     if (paused && pausedConfigKey === configKey() && solverWorkerActive) return continueRun();
     return startNewRun();
+  });
+
+  learnProposalButton.addEventListener("click", () => {
+    if (proposalLearningRunning) stopProposalLearning();
+    else startProposalLearning();
   });
 
   growthBenchmarkButton.addEventListener("click", () => {
@@ -2946,5 +3078,6 @@ applyModeDefaults();
 refreshFigureSelectionUI();
 bindControls();
 setRunButton();
+setProposalLearningButton();
 animate();
 void restoreLatestCheckpoint();
