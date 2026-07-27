@@ -54,3 +54,32 @@ console.log("3D finite-region regression passed", {
   volume: finished.search_stats.placed_volume,
   spans: finished.search_stats.growth_spans
 });
+
+const orthoschemeConfig = {
+  mode_key: "orthoscheme",
+  criterion: "region",
+  target_region: {
+    type: "box",
+    center: [1, 1, 1],
+    size: [2, 2, 2]
+  },
+  tiling_strategy: "freestyle",
+  include_mirrors: true,
+  template_preflight: false,
+  branch_cap: 1000,
+  candidate_cap: 100000,
+  node_limit: 100000,
+  time_limit_ms: 10000,
+  safety_max_tiles: 100,
+  ui_yield_interval_ms: 1000
+};
+
+let orthoschemeFinished = null;
+for await (const message of createTilingStream(orthoschemeConfig, tileSpecs, { stop: false })) {
+  if (message.type === "finished") orthoschemeFinished = message;
+}
+
+assert.equal(orthoschemeFinished?.result_kind, "certified_tiling");
+assert.equal(orthoschemeFinished?.can_tile, true);
+assert.equal(orthoschemeFinished?.tile_count, 6);
+assert.equal(orthoschemeFinished?.tiling_evidence?.kind, "exact_region_fill");

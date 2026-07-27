@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260726-layered-modes-v10";
+import { tileSpecs } from "./engine.js?v=20260727-catalog-audit-v13";
 
 const $ = (id) => document.getElementById(id);
 
@@ -503,7 +503,8 @@ function updateCriterionUI() {
 
 const STRATEGY_DESCRIPTIONS = {
   translational: "Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.",
-  isohedral: "Learns the first tile neighborhood and applies the same relative neighbors to every new tile whenever legal."
+  isohedral: "Learns the first tile neighborhood and applies the same relative neighbors to every new tile whenever legal.",
+  freestyle: "Explores locally legal face-to-face placements without assuming periodicity or tile transitivity."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -521,7 +522,7 @@ function updateStrategyUI() {
   const strategy = checkedRadioValue(strategyRadios, "translational");
   strategySelect.value = strategy;
   strategyDescription.textContent = STRATEGY_DESCRIPTIONS[strategy] ?? STRATEGY_DESCRIPTIONS.translational;
-  periodicTileCountSelect.disabled = strategy === "isohedral";
+  periodicTileCountSelect.disabled = strategy !== "translational";
 }
 
 function initFigureSelection() {
@@ -1515,7 +1516,7 @@ function configKey() {
     agent_exhaustive: true,
     template_preflight: true,
     periodic_patch_max_tiles: Math.max(1, Math.min(4, Number(periodicTileCountSelect.value) || 4)),
-    periodic_template_max_volume: 64,
+    periodic_template_max_volume: 512,
     forced_move_layer_lag_cap: forcedLayerLagCap,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
@@ -2473,8 +2474,21 @@ function handleMessage(message) {
     if (message.success !== false) revealSuccessPath();
     metricTiles.textContent = message.tile_count ?? metricTiles.textContent;
     if (message.search_stats) updateSearchMetrics(message.search_stats);
-    const prefix = message.success === false ? (message.best_effort ? "Stopped: best" : "Stopped") : "Finished";
-    setStatus(`${prefix}: ${message.tile_count} tiles`);
+    const prefix = message.result_kind === "certified_tiling"
+      ? "Certified"
+      : message.result_kind === "patch_found"
+        ? "Patch found"
+        : message.result_kind === "no_tiling"
+          ? message.tiling_evidence?.kind === "local_edge_obstruction"
+            ? "Cannot tile face-to-face"
+            : "Cannot tile region"
+          : message.search_incomplete
+            ? "Search limit: best"
+            : message.success === false
+              ? (message.best_effort ? "No tiling found: best" : "No tiling found")
+              : "Finished";
+    const finishedTileCount = message.tile_count ?? 0;
+    setStatus(`${prefix}: ${finishedTileCount} tile${finishedTileCount === 1 ? "" : "s"}`);
     if (lastSnapshot) queueCheckpointSave(lastSnapshot, { immediate: true, reason: "finished" });
     setRunButton();
   }
@@ -2522,7 +2536,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260726-layered-modes-v10", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260727-catalog-audit-v13", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2797,7 +2811,7 @@ function startGrowthBenchmark() {
   growthBenchmarkButton.textContent = "Stop comparison";
   growthBenchmarkStatus.textContent = `Measuring generic search to ${config.target_val} tiles…`;
 
-  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260726-layered-modes-v10", import.meta.url), { type: "module" });
+  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260727-catalog-audit-v13", import.meta.url), { type: "module" });
   growthWorker.addEventListener("message", event => {
     const message = event.data ?? {};
     if (message.sequence !== sequence) return;
