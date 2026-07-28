@@ -51,7 +51,6 @@ const closeBuilderButton = $("closeBuilderButton");
 const treePanel = $("treePanel");
 const viewport = $("viewport");
 const elapsedTime = $("elapsedTime");
-const growthBenchmarkButton = $("growthBenchmarkButton");
 const growthChart = $("growthChart");
 const growthBenchmarkStatus = $("growthBenchmarkStatus");
 
@@ -1537,21 +1536,9 @@ function configKey() {
 }
 
 function setRunButton() {
-  if (running) {
-    runButton.disabled = false;
-    runButton.textContent = "Pause";
-    runButton.dataset.state = "pause";
-    return;
-  }
-  if (paused && pausedConfigKey === configKey()) {
-    runButton.disabled = false;
-    runButton.textContent = "Continue";
-    runButton.dataset.state = "continue";
-    return;
-  }
   runButton.disabled = !hasRunnableSelection();
-  runButton.textContent = "Run selected";
-  runButton.dataset.state = "run";
+  runButton.textContent = growthRunning ? "Stop" : "Run";
+  runButton.dataset.state = growthRunning ? "stop" : "run";
   if (runButton.disabled) runButton.textContent = "Choose a figure";
 }
 
@@ -2803,9 +2790,10 @@ function formatGrowthResult(result, target) {
 
 function finishGrowthBenchmark(results) {
   growthRunning = false;
-  growthBenchmarkButton.textContent = "Run all four";
+  setRunButton();
   const target = Number(maxTilesInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
+  setStatus("All four modes finished.");
   renderGrowthChart();
 }
 
@@ -2817,8 +2805,9 @@ function stopGrowthBenchmark(status = "Comparison stopped.") {
   }
   growthWorkers.clear();
   growthRunning = false;
-  growthBenchmarkButton.textContent = "Run all four";
+  setRunButton();
   growthBenchmarkStatus.textContent = status;
+  setStatus(status);
 }
 
 function startGrowthBenchmark() {
@@ -2848,7 +2837,8 @@ function startGrowthBenchmark() {
   config.target_val = Math.max(2, Number(maxTilesInput.value) || 2);
   config.ui_yield_interval_ms = 250;
   growthRunning = true;
-  growthBenchmarkButton.textContent = "Stop all";
+  setRunButton();
+  setStatus("Running all four modes…");
   growthBenchmarkStatus.textContent = `Running four searches simultaneously to ${config.target_val} tiles…`;
 
   const refreshStatus = () => {
@@ -2966,12 +2956,6 @@ function bindControls() {
   });
 
   runButton.addEventListener("click", () => {
-    if (running) return pauseRun();
-    if (paused && pausedConfigKey === configKey() && solverWorkerActive) return continueRun();
-    return startNewRun();
-  });
-
-  growthBenchmarkButton.addEventListener("click", () => {
     if (growthRunning) stopGrowthBenchmark();
     else startGrowthBenchmark();
   });
