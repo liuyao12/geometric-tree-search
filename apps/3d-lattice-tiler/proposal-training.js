@@ -1,11 +1,11 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-oldest-frontier-v24";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-patch-sequence-v25";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
   nextProposalGeneration,
   normalizeProposalProgram,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260728-oldest-frontier-v24";
+} from "./proposal-learner.js?v=20260728-patch-sequence-v25";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {
@@ -55,6 +55,7 @@ function episodeConfig(baseConfig, options, program, randomSeed) {
     template_preflight: false,
     periodic_preflight: false,
     snapshot_every: 0,
+    placement_details: true,
     face_order: "coverage",
     exhaustive: false,
     branch_cap: null,
@@ -75,6 +76,7 @@ export async function runProposalEpisode(baseConfig, rawOptions = {}, {
   const started = performance.now();
   const points = [{ milliseconds: 0, tiles: 1 }];
   let bestTiles = 1;
+  let bestPatch = [];
   let final = null;
   for await (const message of createTilingStream(
     episodeConfig(baseConfig, options, program, randomSeed),
@@ -90,6 +92,19 @@ export async function runProposalEpisode(baseConfig, rawOptions = {}, {
       bestTiles = tiles;
       points.push({ milliseconds: performance.now() - started, tiles });
     }
+    const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
+    if (Array.isArray(snapshot?.placements) && snapshot.placements.length > bestPatch.length) {
+      const rootTranslation = snapshot.placements[0]?.translation ?? [0, 0, 0];
+      bestPatch = snapshot.placements.map(placement => ({
+        prototile_idx: placement.prototile_idx ?? 0,
+        orientation_id: placement.orientation_id ?? null,
+        orientation_signature: placement.orientation_signature ?? null,
+        orientation_index: placement.orientation_index ?? null,
+        translation: [0, 1, 2].map(axis =>
+          Number(placement.translation?.[axis] ?? 0) - Number(rootTranslation[axis] ?? 0)
+        )
+      }));
+    }
     if (message.type === "finished") final = message;
   }
   const elapsedMs = performance.now() - started;
@@ -100,8 +115,13 @@ export async function runProposalEpisode(baseConfig, rawOptions = {}, {
     best_tiles: Math.max(bestTiles, Number(final?.tile_count ?? 0)),
     elapsed_ms: elapsedMs,
     points,
+    patch: bestPatch,
     growth_isotropy: Number(final?.search_stats?.growth_isotropy ?? 0),
     backtracks: Number(final?.search_stats?.backtracks ?? 0),
+    proposal_patch_tiles_replayed: Number(final?.search_stats?.proposal_patch_tiles_replayed ?? 0),
+    proposal_patch_conflicts: Number(final?.search_stats?.proposal_patch_conflicts ?? 0),
+    proposal_patch_conflict_index: final?.search_stats?.proposal_patch_conflict_index ?? null,
+    proposal_patch_conflict_reason: final?.search_stats?.proposal_patch_conflict_reason ?? null,
     result_kind: final?.result_kind ?? null
   };
 }
@@ -220,6 +240,14 @@ export async function trainProposalProgram(baseConfig, rawOptions = {}, {
 
   const improvement = baseline.score > 0 ? (winner.score - baseline.score) / baseline.score : Infinity;
   const accepted = winner.best_tiles >= baseline.best_tiles && improvement >= options.min_improvement;
+  const patchEpisode = [...winner.episodes].sort((left, right) =>
+    right.patch.length - left.patch.length
+    || left.elapsed_ms - right.elapsed_ms
+  )[0];
+  const learnedProgram = normalizeProposalProgram({
+    ...winner.program,
+    patch: patchEpisode?.patch ?? []
+  });
   return {
     type: "learned_proposal",
     version: 1,
@@ -241,7 +269,7 @@ export async function trainProposalProgram(baseConfig, rawOptions = {}, {
       elapsed_ms: winner.elapsed_ms,
       growth_isotropy: winner.growth_isotropy,
       points: winner.episodes[0]?.points ?? [],
-      program: winner.program
+      program: learnedProgram
     },
     history
   };

@@ -72,14 +72,20 @@ points for the selected Z³, FCC, or ½Z³ tier.
 ## Learned proposals
 
 The concurrent Learning Free-range mode updates proposal priorities during the
-active search. The reusable headless trainer can additionally evolve and retain
-tile-specific proposal programs only when their tiles-versus-time curve beats
-the Free-range baseline without reducing the best tile count.
+active search. The reusable headless trainer additionally evolves tile-specific
+proposal programs. A program may contain an ordered cycle of move-scoring
+stages plus the complete locally legal patch discovered by its best episode.
+On reuse, the engine revalidates and replays that patch relative to the initial
+tile, then returns to ordinary backtracking when the patch ends or no longer
+fits. The learner can therefore discover a translational-looking sequence for
+one tile, an isohedral-looking neighborhood for another, or a different patch
+without switching to either human baseline.
 
 For repeatable headless training:
 
 ```bash
 node scripts/learn-3d-proposals.mjs --modes cube,1_cross,gyrobifastigium
+node scripts/benchmark-3d-proposal-catalog.mjs --modes=cube,hex_prism,trunc_oct,gyrobifastigium
 ```
 
 Terminal results distinguish evidence strength. `certified_tiling` means the
