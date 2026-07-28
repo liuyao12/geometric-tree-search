@@ -331,6 +331,7 @@ export const createTilingStream = (() => {
     const lcm = (a, b) => Math.abs(a * b) / gcd(a, b);
     const tileAngleMaxima = prototiles.map(tile => Math.max(1, tile.solid_angle?.max_value ?? tileSpecs.LEGACY_SOLID_ANGLE_MAX));
     const MAX_SOLID_ANGLE = tileAngleMaxima.reduce((acc, value) => lcm(acc, value), 1);
+    const SOLID_ANGLE_EPSILON = Math.max(1e-9, MAX_SOLID_ANGLE * 1e-9);
     for (const tile of prototiles) tile.rescaleOccupancyWeights?.(MAX_SOLID_ANGLE);
     const protoInfo = prototiles.map(p => {
       return {
@@ -419,7 +420,14 @@ export const createTilingStream = (() => {
       // consumers. This standalone engine does not install a GCTS runtime.
       marking_observed_failures: 0,
       marking_geometric_clauses: 0,
-      proposal_program_id: config.proposal_program?.id ?? null
+      proposal_program_id: config.proposal_program?.id ?? null,
+      proposal_patch_size: 0,
+      proposal_sequence_steps_used: 0,
+      proposal_patch_tiles_replayed: 0,
+      proposal_patch_conflicts: 0,
+      proposal_patch_conflict_index: null,
+      proposal_patch_conflict_reason: null,
+      backtracking_enabled: false
     };
     const branchStack = [];
     const MAX_PATH_COUNT = 1e12;
@@ -653,6 +661,11 @@ export const createTilingStream = (() => {
             + (placement.translation?.[axis] ?? 0)
           ),
           orientation_id: placement.orient?.__orientation_id ?? null,
+          orientation_signature: [
+            ...(placement.orient?.verts ?? []).map(vertex => `v:${vertex.join(",")}`),
+            ...(placement.orient?.occupancy ?? []).map(point => `o:${point.pos.join(",")}:${point.weight}`)
+          ].sort().join("|"),
+          orientation_index: prototiles[placement.prototile_idx ?? 0]?.unique_orientations?.indexOf(placement.orient) ?? null,
           color_id: placement.color_id ?? 0,
           periodic_motif_index: placement._periodic_motif_index ?? null,
           periodic_base_color_id: placement._periodic_base_color_id ?? null,
@@ -870,25 +883,29 @@ export const createTilingStream = (() => {
       const { orient, translation } = move;
       if (overBudget()) {
         noteIncompleteSearch();
-        return { ok: false, budget: true };
+        return { ok: false, budget: true, reason: "budget" };
       }
-      if (!moveFitsRegion(orient, translation)) return { ok: false };
+      if (!moveFitsRegion(orient, translation)) return { ok: false, reason: "region" };
       const moveVolume = tileVolumes[move.prototile_idx] ?? 0;
-      if (targetRegion && state.placed_volume + moveVolume > targetRegion.volume + 1e-8) return { ok: false };
+      if (targetRegion && state.placed_volume + moveVolume > targetRegion.volume + 1e-8) {
+        return { ok: false, reason: "region-volume" };
+      }
       for (let occupancyIndex = 0; occupancyIndex < orient.occupancy.length; occupancyIndex++) {
         if ((occupancyIndex & 31) === 0 && overBudget()) {
           noteIncompleteSearch();
-          return { ok: false, budget: true };
+          return { ok: false, budget: true, reason: "budget" };
         }
         const pt = orient.occupancy[occupancyIndex];
         const g = add3(pt.pos, translation);
-        if (latticeGet(g) + pt.weight > MAX_SOLID_ANGLE) return { ok: false };
+        if (latticeGet(g) + pt.weight > MAX_SOLID_ANGLE + SOLID_ANGLE_EPSILON) {
+          return { ok: false, reason: "occupancy", position: g };
+        }
       }
       const gVerts = orient.verts.map(v => add3(v, translation));
       for (let f_idx = 0; f_idx < orient.faces.length; f_idx++) {
         if ((f_idx & 31) === 0 && overBudget()) {
           noteIncompleteSearch();
-          return { ok: false, budget: true };
+          return { ok: false, budget: true, reason: "budget" };
         }
         const fIdx = orient.faces[f_idx];
         const poly = fIdx.map(i => gVerts[i]);
@@ -896,7 +913,7 @@ export const createTilingStream = (() => {
           const existing = state.frontier.get(k);
         if (existing) {
           const rev = [...existing.ordered_verts].slice().reverse();
-          if (!isCyclicPermutation(poly, rev)) return { ok: false };
+          if (!isCyclicPermutation(poly, rev)) return { ok: false, reason: "face-orientation" };
         }
       }
       const occData = orient.occupancy.map(pt => ({ pos: add3(pt.pos, translation), weight: pt.weight }));
@@ -1311,9 +1328,11 @@ export const createTilingStream = (() => {
     const requestedMoveOrder = config.move_order ?? "balanced";
     const moveOrder = tilingStrategy === "isohedral" ? "isohedral" : requestedMoveOrder;
     const greedyNoBacktrack = !!config.greedy_no_backtrack;
+    searchStats.backtracking_enabled = !greedyNoBacktrack;
     const proposalProgram = moveOrder === "proposal"
       ? normalizeProposalProgram(config.proposal_program)
       : null;
+    if (proposalProgram) searchStats.proposal_patch_size = proposalProgram.patch_size;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
     const faceOrder = config.face_order ?? "coverage";
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
@@ -2363,10 +2382,20 @@ export const createTilingStream = (() => {
     };
     const proposalScore = (move) => {
       if (!proposalProgram) return 0;
+      const sequence = proposalProgram.sequence?.length
+        ? proposalProgram.sequence
+        : [proposalProgram];
+      const stepIndex = Math.max(0, state.placements.length - 1) % sequence.length;
+      const step = sequence[stepIndex];
       let score = 0;
-      for (const feature of proposalProgram.active_features) {
-        score += proposalProgram.weights[feature] * proposalFeatureValue(feature, move);
+      for (const feature of step.active_features) {
+        score += step.weights[feature] * proposalFeatureValue(feature, move);
       }
+      move._proposal_step_index = stepIndex;
+      searchStats.proposal_sequence_steps_used = Math.max(
+        searchStats.proposal_sequence_steps_used,
+        stepIndex + 1
+      );
       return score;
     };
     const rlAgent = (() => {
@@ -3861,6 +3890,85 @@ export const createTilingStream = (() => {
       return yield* doReturn(false);
     }
 
+    async function* replayLearnedProposalPatch(parentId) {
+      if (
+        !proposalProgram?.patch?.length
+        || proposalProgram.patch.length < 2
+        || config.proposal_patch_replay === false
+      ) return 0;
+      const root = proposalProgram.patch[0];
+      if (
+        root.prototile_idx !== startMove.prototile_idx
+        || (root.orientation_id && root.orientation_id !== startMove.orient.__orientation_id)
+      ) {
+        searchStats.proposal_patch_conflicts += 1;
+        return 0;
+      }
+      let replayed = 0;
+      for (const descriptor of proposalProgram.patch.slice(1)) {
+        if (goalMet() || overBudget() || state.placements.length >= safetyMax) break;
+        const tile = prototiles[descriptor.prototile_idx];
+        const orient = descriptor.orientation_signature
+          ? tile?.unique_orientations?.find(item =>
+              [
+                ...item.verts.map(vertex => `v:${vertex.join(",")}`),
+                ...item.occupancy.map(point => `o:${point.pos.join(",")}:${point.weight}`)
+              ].sort().join("|") === descriptor.orientation_signature
+            )
+          : descriptor.orientation_index != null
+            ? tile?.unique_orientations?.[descriptor.orientation_index]
+            : descriptor.orientation_id
+              ? tile?.unique_orientations?.find(item => item.__orientation_id === descriptor.orientation_id)
+              : tile?.unique_orientations?.[0];
+        if (!tile || !orient) {
+          searchStats.proposal_patch_conflicts += 1;
+          break;
+        }
+        const translation = vecAdd(startMove.translation, descriptor.translation);
+        if (tile.is_polycube ? !isPolycubeMoveTranslation(tile, translation) : !translation.every(Number.isInteger)) {
+          searchStats.proposal_patch_conflicts += 1;
+          break;
+        }
+        const move = {
+          prototile_idx: descriptor.prototile_idx,
+          orient,
+          translation,
+          layer: candidateMoveLayer({ prototile_idx: descriptor.prototile_idx, orient, translation }),
+          is_forced: false,
+          _learned_patch_index: descriptor.index
+        };
+        // The proposal was recorded from a previously validated search path.
+        // Recheck the actual geometric constraints while allowing cavity-
+        // closing steps that no longer satisfy the frontier candidate
+        // generator's minimum exposed-contact heuristic.
+        const validity = isMoveValid(move);
+        if (!validity.ok) {
+          searchStats.proposal_patch_conflicts += 1;
+          searchStats.proposal_patch_conflict_index = descriptor.index;
+          searchStats.proposal_patch_conflict_reason = validity.reason ?? "invalid";
+          break;
+        }
+        move.occupancy_data = validity.occData;
+        const rollback = applyMove(move);
+        replayed += 1;
+        searchStats.proposal_patch_tiles_replayed += 1;
+        yield placementDelta("add", move, rollback, parentId, {
+          proposal_patch_index: descriptor.index
+        });
+        if (shouldSnapshot()) yield snapshot(parentId);
+        if ((replayed & 15) === 0) await tick();
+      }
+      if (replayed) {
+        yield nodeStatus(
+          parentId,
+          "success",
+          `learned patch: +${replayed}`,
+          { search_stats: searchStatsSnapshot() }
+        );
+      }
+      return replayed;
+    }
+
     let success = false;
     if (convexEdgeAngleObstruction) {
       tilingEvidence = {
@@ -3876,6 +3984,7 @@ export const createTilingStream = (() => {
     } else if (tilingStrategy === "isohedral") {
       success = goalMet() || (yield* searchIsohedral(rootId));
     } else if (tilingStrategy === "generic") {
+      if (proposalProgram) yield* replayLearnedProposalPatch(rootId);
       success = goalMet() || (yield* search(rootId));
     } else {
       yield* tryPeriodicTemplatePatch(rootId);

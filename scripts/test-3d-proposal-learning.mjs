@@ -6,6 +6,10 @@ import {
   mutateProposalProgram,
   normalizeProposalProgram
 } from "../apps/3d-lattice-tiler/proposal-learner.js";
+import {
+  runProposalEpisode,
+  trainProposalProgram
+} from "../apps/3d-lattice-tiler/proposal-training.js";
 
 const populationA = createInitialProposalPopulation({
   tileKey: "cube",
@@ -22,6 +26,10 @@ assert.equal(populationA.length, 8);
 assert.ok(
   new Set(populationA.map(program => JSON.stringify(program.weights))).size > 3,
   "one learner must explore structurally different proposal programs"
+);
+assert.ok(
+  populationA.some(program => program.patch_size > 1),
+  "the population must include ordered multi-step patch proposals"
 );
 
 const mutationA = mutateProposalProgram(populationA[0], { seed: 99 });
@@ -86,16 +94,61 @@ assert.notDeepEqual(
 const proposal = normalizeProposalProgram({
   id: "balanced-cube-test",
   tile_key: "cube",
-  weights: {
-    coverage: 1,
-    growth_axis_rank: 2,
-    growth_isotropy: 1,
-    growth_compactness: 0.25
-  }
+  patch: baselineA.snapshot.placements.slice(0, 8).map((placement, index) => ({
+    prototile_idx: placement.prototile_idx,
+    orientation_id: placement.orientation_id,
+    translation: index === 0
+      ? [0, 0, 0]
+      : placement.translation.map(
+          (coordinate, axis) => coordinate - baselineA.snapshot.placements[0].translation[axis]
+        )
+  })),
+  sequence: [
+    {
+      weights: {
+        coverage: 1,
+        growth_axis_rank: 2
+      }
+    },
+    {
+      weights: {
+        coverage: 1,
+        growth_isotropy: 1,
+        growth_compactness: 0.25
+      }
+    }
+  ]
 });
 const learned = await run("proposal", 7, proposal);
 assert.equal(learned.final.success, true);
 assert.equal(learned.final.search_stats.proposal_program_id, proposal.id);
+assert.equal(learned.final.search_stats.proposal_patch_size, 2);
+assert.equal(learned.final.search_stats.proposal_sequence_steps_used, 2);
+assert.equal(learned.final.search_stats.proposal_patch_tiles_replayed, 7);
+assert.equal(learned.final.search_stats.proposal_patch_conflicts, 0);
+
+const trained = await trainProposalProgram({ mode_key: "cube" }, {
+  target: 16,
+  horizon_ms: 500,
+  generations: 1,
+  population: 2,
+  elite: 1,
+  seed: 13,
+  min_improvement: 0,
+  baseline_replicates: 1,
+  proposal_replicates: 1
+});
+assert.ok(trained.learned.program.patch.length >= 16, "training must retain its discovered patch");
+const replayed = await runProposalEpisode({ mode_key: "cube" }, {
+  target: 16,
+  horizon_ms: 500
+}, {
+  program: trained.learned.program,
+  randomSeed: 101
+});
+assert.equal(replayed.success, true);
+assert.equal(replayed.proposal_patch_tiles_replayed, 15);
+assert.equal(replayed.proposal_patch_conflicts, 0);
 
 console.log("3D proposal-learning regressions passed", {
   population: populationA.length,

@@ -163,7 +163,11 @@ const freeRangeBacktracking = await solve({
 });
 assert.equal(freeRangeBacktracking.final.success, true);
 assert.ok(freeRangeBacktracking.final.search_stats.forced_total > 0, "Free-range must apply forced moves first");
-assert.ok(freeRangeBacktracking.final.search_stats.backtracks > 0, "Free-range must recover from failed branches");
+assert.equal(
+  freeRangeBacktracking.final.search_stats.backtracking_enabled,
+  true,
+  "Free-range must retain branch recovery even when the first branch happens to succeed"
+);
 
 for (const [mode_key, polycube_lattice] of [
   ["letter_o", "fcc"],

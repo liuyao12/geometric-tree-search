@@ -34,27 +34,71 @@ const DEFAULT_WEIGHTS = Object.freeze({
 
 const finiteNumber = (value, fallback = 0) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 
-export function normalizeProposalProgram(raw = {}) {
+const normalizeWeights = (raw = {}) => {
   const weights = {};
   for (const feature of PROPOSAL_FEATURES) {
-    weights[feature] = finiteNumber(raw.weights?.[feature], DEFAULT_WEIGHTS[feature]);
+    weights[feature] = finiteNumber(raw?.[feature], DEFAULT_WEIGHTS[feature]);
   }
-  const activeFeatures = PROPOSAL_FEATURES.filter(feature => Math.abs(weights[feature]) > 1e-9);
+  return weights;
+};
+
+const activeFeaturesForWeights = weights =>
+  PROPOSAL_FEATURES.filter(feature => Math.abs(weights[feature]) > 1e-9);
+
+export function normalizeProposalProgram(raw = {}) {
+  const rawSequence = Array.isArray(raw.sequence) && raw.sequence.length
+    ? raw.sequence
+    : [{ weights: raw.weights }];
+  const sequence = rawSequence.slice(0, 8).map((step, index) => {
+    const weights = normalizeWeights(step?.weights ?? step);
+    return {
+      id: String(step?.id ?? `step-${index}`),
+      weights,
+      active_features: activeFeaturesForWeights(weights)
+    };
+  });
+  const weights = { ...sequence[0].weights };
+  const activeFeatures = [...new Set(sequence.flatMap(step => step.active_features))];
+  const patch = Array.isArray(raw.patch)
+    ? raw.patch.slice(0, 512).map((placement, index) => ({
+        index,
+        prototile_idx: Math.max(0, Math.floor(finiteNumber(placement?.prototile_idx, 0))),
+        orientation_id: placement?.orientation_id == null ? null : String(placement.orientation_id),
+        orientation_signature: placement?.orientation_signature == null
+          ? null
+          : String(placement.orientation_signature),
+        orientation_index: placement?.orientation_index == null
+          ? null
+          : Math.max(0, Math.floor(finiteNumber(placement.orientation_index, 0))),
+        translation: [0, 1, 2].map(axis => finiteNumber(placement?.translation?.[axis], 0))
+      }))
+    : [];
   return {
-    version: 1,
+    version: 2,
     id: String(raw.id ?? "proposal"),
     tile_key: raw.tile_key == null ? null : String(raw.tile_key),
     generation: Math.max(0, Math.floor(finiteNumber(raw.generation, 0))),
     parent_id: raw.parent_id == null ? null : String(raw.parent_id),
     weights,
-    active_features: activeFeatures
+    active_features: activeFeatures,
+    patch_size: sequence.length,
+    sequence,
+    patch
   };
 }
 
 export function proposalComplexity(program) {
   const normalized = normalizeProposalProgram(program);
-  return normalized.active_features.length
-    + normalized.active_features.reduce((sum, feature) => sum + Math.log1p(Math.abs(normalized.weights[feature])), 0) * 0.05;
+  const activeCount = normalized.sequence.reduce((sum, step) => sum + step.active_features.length, 0);
+  const weightMagnitude = normalized.sequence.reduce((sum, step) =>
+    sum + step.active_features.reduce(
+      (stepSum, feature) => stepSum + Math.log1p(Math.abs(step.weights[feature])),
+      0
+    ), 0);
+  return activeCount
+    + weightMagnitude * 0.05
+    + (normalized.patch_size - 1) * 0.35
+    + Math.log1p(normalized.patch.length) * 0.02;
 }
 
 export function seededRandom(seed = 1) {
@@ -88,20 +132,42 @@ export function createInitialProposalPopulation({
     { coverage: 1, vector_repeat: 1, pair_periodic: 2, periodic_continuation: 1, parallelogram_completion: 2 },
     { coverage: 1, frontier_reduction: 1, oldest_layer_completion: 1 }
   ];
+  const sequenceAnchors = [
+    [
+      { coverage: 1, oldest_layer_completion: 1, growth_axis_rank: 2 },
+      { coverage: 1, growth_isotropy: 2, growth_compactness: 0.3 }
+    ],
+    [
+      { coverage: 1, root_corona: 2, isohedral_reuse: 1 },
+      { coverage: 1, isohedral_reuse: 2, frontier_reduction: 0.5 }
+    ],
+    [
+      { coverage: 1, pair_periodic: 2, parallelogram_completion: 1 },
+      { coverage: 1, periodic_continuation: 2, vector_repeat: 0.5 },
+      { coverage: 1, growth_axis_rank: 2, growth_isotropy: 1 }
+    ]
+  ];
   for (let index = 0; index < Math.max(1, populationSize); index++) {
     const anchor = anchors[index % anchors.length];
-    const weights = {};
-    for (const feature of PROPOSAL_FEATURES) {
-      const centered = finiteNumber(anchor[feature], 0);
-      const explore = index < anchors.length ? 0 : gaussian(random) * 0.75;
-      const keep = centered !== 0 || random() < 0.3;
-      weights[feature] = keep ? centered + explore : 0;
-    }
+    const structuralIndex = index - anchors.length;
+    const sourceSequence = structuralIndex >= 0 && structuralIndex < sequenceAnchors.length
+      ? sequenceAnchors[structuralIndex]
+      : [anchor];
+    const sequence = sourceSequence.map((source, stepIndex) => {
+      const weights = {};
+      for (const feature of PROPOSAL_FEATURES) {
+        const centered = finiteNumber(source[feature], 0);
+        const explore = index < anchors.length + sequenceAnchors.length ? 0 : gaussian(random) * 0.75;
+        const keep = centered !== 0 || random() < 0.3;
+        weights[feature] = keep ? centered + explore : 0;
+      }
+      return { id: `step-${stepIndex}`, weights };
+    });
     population.push(normalizeProposalProgram({
       id: `g0-p${index}`,
       tile_key: tileKey,
       generation: 0,
-      weights
+      sequence
     }));
   }
   return population;
@@ -115,22 +181,40 @@ export function mutateProposalProgram(parent, {
 } = {}) {
   const normalized = normalizeProposalProgram(parent);
   const random = seededRandom(seed);
-  const weights = { ...normalized.weights };
-  for (const feature of PROPOSAL_FEATURES) {
-    if (random() < featureToggleRate) {
-      weights[feature] = Math.abs(weights[feature]) > 1e-9 ? 0 : gaussian(random) * mutationScale;
-    } else if (Math.abs(weights[feature]) > 1e-9 || random() < 0.25) {
-      weights[feature] += gaussian(random) * mutationScale;
-    }
-    if (Math.abs(weights[feature]) < 0.04) weights[feature] = 0;
+  let sequence = normalized.sequence.map(step => ({
+    id: step.id,
+    weights: { ...step.weights }
+  }));
+  if (random() < 0.22 && sequence.length < 8) {
+    const sourceIndex = Math.floor(random() * sequence.length);
+    const insertionIndex = Math.floor(random() * (sequence.length + 1));
+    sequence.splice(insertionIndex, 0, {
+      id: `step-${insertionIndex}`,
+      weights: { ...sequence[sourceIndex].weights }
+    });
+  } else if (random() < 0.14 && sequence.length > 1) {
+    sequence.splice(Math.floor(random() * sequence.length), 1);
   }
-  if (!Object.values(weights).some(value => Math.abs(value) > 1e-9)) weights.coverage = 1;
+  for (const step of sequence) {
+    for (const feature of PROPOSAL_FEATURES) {
+      if (random() < featureToggleRate) {
+        step.weights[feature] = Math.abs(step.weights[feature]) > 1e-9 ? 0 : gaussian(random) * mutationScale;
+      } else if (Math.abs(step.weights[feature]) > 1e-9 || random() < 0.25) {
+        step.weights[feature] += gaussian(random) * mutationScale;
+      }
+      if (Math.abs(step.weights[feature]) < 0.04) step.weights[feature] = 0;
+    }
+  }
+  if (!sequence.some(step => Object.values(step.weights).some(value => Math.abs(value) > 1e-9))) {
+    sequence[0].weights.coverage = 1;
+  }
   return normalizeProposalProgram({
     id: id ?? `${normalized.id}-m${seed}`,
     tile_key: normalized.tile_key,
     generation: normalized.generation + 1,
     parent_id: normalized.id,
-    weights
+    sequence,
+    patch: normalized.patch
   });
 }
 
