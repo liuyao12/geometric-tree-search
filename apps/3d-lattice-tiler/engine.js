@@ -8,8 +8,9 @@ export const createTilingStream = (() => {
   return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }) {
     const SCALE = tileSpecs.SCALE;
     const COLOR_PALETTE = tileSpecs.COLOR_PALETTE;
+    const BASE_COLOR_PALETTE_SIZE = tileSpecs.BASE_COLOR_PALETTE_SIZE ?? 10;
     const TRANSLATIONAL_CELL_COLOR_OFFSET =
-      tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET ?? Math.max(0, COLOR_PALETTE.length - 8);
+      tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET ?? BASE_COLOR_PALETTE_SIZE;
 
     const tick = () => new Promise(resolve => {
       if (typeof requestAnimationFrame === "function") requestAnimationFrame(resolve);
@@ -653,6 +654,7 @@ export const createTilingStream = (() => {
           orientation_id: placement.orient?.__orientation_id ?? null,
           color_id: placement.color_id ?? 0,
           periodic_motif_index: placement._periodic_motif_index ?? null,
+          periodic_base_color_id: placement._periodic_base_color_id ?? null,
           periodic_cell: placement._periodic_cell?.slice() ?? null,
           layer: placement.layer ?? 0,
           is_forced: !!placement.is_forced
@@ -1096,9 +1098,11 @@ export const createTilingStream = (() => {
         }
       }
       const newGen = moveLayer;
-      const available = COLOR_PALETTE.map((_, i) => i).filter(i => !neighborColors.has(i));
+      const available = Array.from({ length: BASE_COLOR_PALETTE_SIZE }, (_, index) => index)
+        .filter(index => !neighborColors.has(index));
       const periodicColorId = Array.isArray(move._periodic_cell)
         ? TRANSLATIONAL_CELL_COLOR_OFFSET
+          + (move._periodic_base_color_id ?? 0) * 8
           + move._periodic_cell.reduce((colorIndex, coordinate, axis) => {
             const parity = ((Math.round(coordinate) % 2) + 2) % 2;
             return colorIndex + parity * (2 ** axis);
@@ -2730,9 +2734,26 @@ export const createTilingStream = (() => {
         await tick();
       }
       if (!template) return false;
+      const motifBaseColorIds = [0];
+      let availableBaseColors = Array.from(
+        { length: Math.max(0, BASE_COLOR_PALETTE_SIZE - 1) },
+        (_, index) => index + 1
+      );
+      for (let motifIndex = 1; motifIndex < template.motif.length; motifIndex++) {
+        if (!availableBaseColors.length) {
+          availableBaseColors = Array.from(
+            { length: BASE_COLOR_PALETTE_SIZE },
+            (_, index) => index
+          );
+        }
+        const selectedIndex = Math.floor(nextRandom() * availableBaseColors.length);
+        motifBaseColorIds.push(availableBaseColors.splice(selectedIndex, 1)[0]);
+      }
       state.placements[0]._periodic_motif_index = 0;
+      state.placements[0]._periodic_base_color_id = motifBaseColorIds[0];
       state.placements[0]._periodic_cell = [0, 0, 0];
-      state.placements[0].color_id = TRANSLATIONAL_CELL_COLOR_OFFSET;
+      state.placements[0].color_id =
+        TRANSLATIONAL_CELL_COLOR_OFFSET + motifBaseColorIds[0] * 8;
       for (const frontierEntry of state.frontier.values()) {
         frontierEntry.color_id = TRANSLATIONAL_CELL_COLOR_OFFSET;
       }
@@ -2781,6 +2802,7 @@ export const createTilingStream = (() => {
           const move = templateMove(template, template.motif[motifIndex], cell);
           if (!move) continue;
           move._periodic_motif_index = motifIndex;
+          move._periodic_base_color_id = motifBaseColorIds[motifIndex];
           move._periodic_cell = cell.slice();
           const globalVertices = move.orient.verts.map(vertex => vecAdd(vertex, move.translation));
           const faceKeys = move.orient.faces.map(face =>
@@ -3897,10 +3919,18 @@ export const tileSpecs = (() => {
     "#e74c3c","#3498db","#f1c40f","#2ecc71","#9b59b6",
     "#e67e22","#1abc9c","#34495e","#d35400","#7f8c8d"
   ];
+  const BASE_COLOR_PALETTE_SIZE = BASE_COLOR_PALETTE.length;
   const TRANSLATIONAL_CELL_COLOR_OFFSET = BASE_COLOR_PALETTE.length;
-  const TRANSLATIONAL_CELL_COLORS = Array.from({ length: 8 }, (_, index) => {
-    const channels = [0, 1, 2].map(axis => 64 + 128 * ((index >> axis) & 1));
-    return `#${channels.map(channel => channel.toString(16).padStart(2, "0")).join("")}`;
+  const TRANSLATIONAL_CELL_COLORS = BASE_COLOR_PALETTE.flatMap(baseColor => {
+    const baseChannels = [1, 3, 5].map(index =>
+      Number.parseInt(baseColor.slice(index, index + 2), 16)
+    );
+    return Array.from({ length: 8 }, (_, parityIndex) => {
+      const channels = baseChannels.map((channel, axis) =>
+        (channel + 128 * ((parityIndex >> axis) & 1)) % 256
+      );
+      return `#${channels.map(channel => channel.toString(16).padStart(2, "0")).join("")}`;
+    });
   });
   const COLOR_PALETTE = [...BASE_COLOR_PALETTE, ...TRANSLATIONAL_CELL_COLORS];
 
@@ -5375,6 +5405,7 @@ export const tileSpecs = (() => {
     POLYCUBE_SOLID_ANGLE_MAX,
     LEGACY_SOLID_ANGLE_MAX,
     COLOR_PALETTE,
+    BASE_COLOR_PALETTE_SIZE,
     TRANSLATIONAL_CELL_COLOR_OFFSET,
     TILING_REGISTRY,
     metadata,
