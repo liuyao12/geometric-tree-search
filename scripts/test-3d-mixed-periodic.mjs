@@ -71,6 +71,10 @@ assert.equal(
 assert.ok(finished?.success, "mixed periodic growth must reach its target");
 assert.equal(finalSnapshot?.placements?.length, config.target_val);
 const colorsByCell = new Map();
+const translationalColorOffset = tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET;
+const translationalCellColorId = cell =>
+  translationalColorOffset + cell.reduce((index, coordinate, axis) =>
+    index + (((coordinate % 2) + 2) % 2) * (2 ** axis), 0);
 for (const placement of finalSnapshot.placements) {
   assert.ok(
     Number.isInteger(placement.periodic_motif_index),
@@ -84,11 +88,10 @@ for (const placement of finalSnapshot.placements) {
   const cellColors = colorsByCell.get(cellKey) ?? new Set();
   cellColors.add(placement.color_id);
   colorsByCell.set(cellKey, cellColors);
-  const cellParity = ((placement.periodic_cell.reduce((sum, coordinate) => sum + coordinate, 0) % 2) + 2) % 2;
   assert.equal(
     placement.color_id,
-    cellParity,
-    "translated patch copies must alternate by translation-cell parity"
+    translationalCellColorId(placement.periodic_cell),
+    "each translation direction must toggle its own RGB channel"
   );
 }
 assert.ok(
@@ -97,8 +100,8 @@ assert.ok(
 );
 assert.deepEqual(
   [...new Set(finalSnapshot.placements.map(placement => placement.color_id))].sort(),
-  [0, 1],
-  "neighboring translation cells must use both alternating colors"
+  Array.from({ length: 8 }, (_, index) => translationalColorOffset + index),
+  "a three-dimensional translated patch must expose all eight RGB parity classes"
 );
 assert.deepEqual(
   finalSnapshot.tile_counts.map(item => item.type_idx),

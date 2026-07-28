@@ -36,20 +36,34 @@ assert.equal(translational.final.success, true);
 assert.ok(translational.periodicCertificate, "translational mode requires an exact patch certificate");
 assert.equal(translational.final.search_stats.branch_choices_visited, 0);
 assert.equal(translational.final.search_stats.growth_axis_rank, 3);
+const translationalColorOffset = tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET;
+const translationalCellColorId = cell =>
+  translationalColorOffset + cell.reduce((index, coordinate, axis) =>
+    index + (((coordinate % 2) + 2) % 2) * (2 ** axis), 0);
 for (const placement of translational.latestSnapshot?.placements ?? []) {
   assert.ok(Number.isInteger(placement.periodic_motif_index));
   assert.ok(Array.isArray(placement.periodic_cell));
-  const cellParity = ((placement.periodic_cell.reduce((sum, coordinate) => sum + coordinate, 0) % 2) + 2) % 2;
   assert.equal(
     placement.color_id,
-    cellParity,
-    "translated patch copies must alternate by translation-cell parity"
+    translationalCellColorId(placement.periodic_cell),
+    "each translation direction must toggle its own RGB channel"
   );
 }
-assert.deepEqual(
-  [...new Set(translational.latestSnapshot.placements.map(placement => placement.color_id))].sort(),
-  [0, 1],
-  "three-dimensional translational growth must expose both alternating colors"
+const rgbChannels = color => [1, 3, 5].map(index => Number.parseInt(color.slice(index, index + 2), 16));
+const baseTranslationColor = rgbChannels(tileSpecs.COLOR_PALETTE[translationalColorOffset]);
+for (let axis = 0; axis < 3; axis++) {
+  const shiftedColor = rgbChannels(tileSpecs.COLOR_PALETTE[translationalColorOffset + 2 ** axis]);
+  for (let channel = 0; channel < 3; channel++) {
+    assert.equal(
+      (shiftedColor[channel] - baseTranslationColor[channel] + 256) % 256,
+      channel === axis ? 128 : 0,
+      `translation axis ${axis} must change only RGB channel ${axis}`
+    );
+  }
+}
+assert.ok(
+  new Set(translational.latestSnapshot.placements.map(placement => placement.color_id)).size >= 4,
+  "three-dimensional translational growth must expose multiple directional RGB classes"
 );
 
 for (const polycubeLattice of ["fcc", "half"]) {
