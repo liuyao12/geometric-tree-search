@@ -25,6 +25,8 @@ const target = Math.max(2, Math.floor(numberArg("target", 40)));
 const horizonMs = Math.max(50, numberArg("horizon-ms", 500));
 const generations = Math.max(1, Math.floor(numberArg("generations", 2)));
 const population = Math.max(2, Math.floor(numberArg("population", 8)));
+const refinementRounds = Math.max(0, Math.floor(numberArg("refinement-rounds", 4)));
+const refinementHorizonMultiplier = Math.max(1, numberArg("refinement-horizon-multiplier", 2));
 const seed = Math.floor(numberArg("seed", 17));
 
 const baseConfig = modeKey => ({
@@ -93,7 +95,9 @@ for (const modeKey of modeKeys) {
     seed,
     min_improvement: 0,
     baseline_replicates: 1,
-    proposal_replicates: 1
+    proposal_replicates: 1,
+    refinement_rounds: refinementRounds,
+    refinement_horizon_multiplier: refinementHorizonMultiplier
   });
   const learned = await runProposalEpisode(baseConfig(modeKey), {
     target,
@@ -158,6 +162,8 @@ const report = {
   horizon_ms: horizonMs,
   generations,
   population,
+  refinement_rounds: refinementRounds,
+  refinement_horizon_multiplier: refinementHorizonMultiplier,
   matched_or_beaten: results.filter(result => result.matches_or_beats).length,
   total: results.length,
   portion: results.filter(result => result.matches_or_beats).length / Math.max(1, results.length),

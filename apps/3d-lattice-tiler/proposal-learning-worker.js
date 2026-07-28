@@ -1,4 +1,4 @@
-import { trainProposalProgram } from "./proposal-training.js?v=20260728-persisted-proposals-v26";
+import { trainProposalProgram } from "./proposal-training.js?v=20260728-refined-proposals-v27";
 
 let activeSequence = 0;
 let stopToken = { stop: false };

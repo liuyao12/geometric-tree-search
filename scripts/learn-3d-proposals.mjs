@@ -26,6 +26,8 @@ function readArgs(argv) {
     generations: 3,
     population: 12,
     elite: 3,
+    refinementRounds: 4,
+    refinementHorizonMultiplier: 2,
     seed: 17,
     minImprovement: 0.03,
     output: null,
@@ -44,6 +46,10 @@ function readArgs(argv) {
     else if (arg === "--generations") options.generations = Math.max(1, Math.floor(positive(next(), options.generations)));
     else if (arg === "--population") options.population = Math.max(2, Math.floor(positive(next(), options.population)));
     else if (arg === "--elite") options.elite = Math.max(1, Math.floor(positive(next(), options.elite)));
+    else if (arg === "--refinement-rounds") options.refinementRounds = Math.max(0, Math.floor(Number(next()) || 0));
+    else if (arg === "--refinement-horizon-multiplier") {
+      options.refinementHorizonMultiplier = Math.max(1, positive(next(), options.refinementHorizonMultiplier));
+    }
     else if (arg === "--seed") options.seed = Math.floor(Number(next()) || options.seed);
     else if (arg === "--min-improvement") options.minImprovement = Math.max(0, Number(next()) || 0);
     else if (arg === "--output") options.output = next();
@@ -57,6 +63,9 @@ function readArgs(argv) {
   --generations 3            Evolutionary generations
   --population 12            Proposal programs per generation
   --elite 3                  Parents retained per generation
+  --refinement-rounds 4      Reuse and extend the winning patch
+  --refinement-horizon-multiplier 2
+                             Multiply the learning horizon after each round
   --seed 17                  Reproducible tie/mutation seed
   --min-improvement 0.03     Required curve-score improvement over baseline
   --output path.json         Save learned proposal records
@@ -232,17 +241,67 @@ async function trainMode(modeKey, options) {
     });
   }
 
-  const improvement = baseline.score > 0 ? (winner.score - baseline.score) / baseline.score : Infinity;
-  const accepted = winner.best_tiles >= baseline.best_tiles && improvement >= options.minImprovement;
   const patchEpisode = [...winner.episodes].sort((left, right) =>
     (right.patch_snapshot?.placements?.length ?? 0) - (left.patch_snapshot?.placements?.length ?? 0)
     || left.elapsed_ms - right.elapsed_ms
   )[0];
-  const learnedProgram = proposalProgramFromPatchSnapshot(
+  let learnedProgram = proposalProgramFromPatchSnapshot(
     { mode_key: modeKey, polycube_lattice: "z3" },
     patchEpisode?.patch_snapshot,
     winner.program
   ) ?? winner.program;
+  const refinement = [];
+  for (let round = 0; round < options.refinementRounds; round++) {
+    const refinementOptions = {
+      ...options,
+      horizonMs: options.horizonMs * (options.refinementHorizonMultiplier ** (round + 1))
+    };
+    const episode = await runEpisode(modeKey, refinementOptions, {
+      program: learnedProgram,
+      randomSeed: options.seed + 7000001 + round * 131071
+    });
+    const priorPatchTiles = learnedProgram.patch.length;
+    if ((episode.patch_snapshot?.placements?.length ?? 0) > priorPatchTiles) {
+      learnedProgram = proposalProgramFromPatchSnapshot(
+        { mode_key: modeKey, polycube_lattice: "z3" },
+        episode.patch_snapshot,
+        learnedProgram
+      );
+    }
+    refinement.push({
+      round,
+      horizon_ms: refinementOptions.horizonMs,
+      prior_patch_tiles: priorPatchTiles,
+      patch_tiles: learnedProgram.patch.length,
+      best_tiles: episode.best_tiles,
+      success: episode.success
+    });
+    if (!options.quiet) {
+      process.stderr.write(
+        `${modeKey}: refinement ${round + 1}/${options.refinementRounds} `
+        + `${learnedProgram.patch.length} patch tiles\n`
+      );
+    }
+    if (learnedProgram.patch.length >= options.target) break;
+  }
+  let learnedEvaluation = await evaluateProgram(modeKey, options, learnedProgram, 12000017);
+  const validationEpisode = [...learnedEvaluation.episodes].sort((left, right) =>
+    (right.patch_snapshot?.placements?.length ?? 0) - (left.patch_snapshot?.placements?.length ?? 0)
+    || left.elapsed_ms - right.elapsed_ms
+  )[0];
+  if ((validationEpisode?.patch_snapshot?.placements?.length ?? 0) > learnedProgram.patch.length) {
+    learnedProgram = proposalProgramFromPatchSnapshot(
+      { mode_key: modeKey, polycube_lattice: "z3" },
+      validationEpisode.patch_snapshot,
+      learnedProgram
+    );
+    learnedEvaluation = await evaluateProgram(modeKey, options, learnedProgram, 14000029);
+  }
+  const improvement = baseline.score > 0
+    ? (learnedEvaluation.score - baseline.score) / baseline.score
+    : Infinity;
+  const accepted = learnedEvaluation.best_tiles >= baseline.best_tiles
+    && improvement >= options.minImprovement;
   return {
     mode_key: modeKey,
     system: tileSpecs.TILING_REGISTRY[modeKey].name,
@@ -255,13 +314,14 @@ async function trainMode(modeKey, options) {
       growth_isotropy: baseline.growth_isotropy
     },
     learned: {
-      score: winner.score,
-      best_tiles: winner.best_tiles,
-      elapsed_ms: winner.elapsed_ms,
-      growth_isotropy: winner.growth_isotropy,
+      score: learnedEvaluation.score,
+      best_tiles: learnedEvaluation.best_tiles,
+      elapsed_ms: learnedEvaluation.elapsed_ms,
+      growth_isotropy: learnedEvaluation.growth_isotropy,
       program: learnedProgram
     },
-    history
+    history,
+    refinement
   };
 }
 

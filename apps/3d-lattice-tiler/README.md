@@ -84,6 +84,12 @@ fits. The learner can therefore discover a translational-looking sequence for
 one tile, an isohedral-looking neighborhood for another, or a different patch
 without switching to either human baseline.
 
+Offline training refines the winning patch in expanding-horizon rounds. Each
+round replays the known prefix, spends progressively more time extending it,
+and finally measures the completed proposal again at the original inference
+horizon. Training time is therefore not confused with the tiles-versus-time
+curve for reusing the learned construction.
+
 For repeatable headless training:
 
 ```bash
