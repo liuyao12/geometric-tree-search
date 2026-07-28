@@ -647,6 +647,7 @@ export const createTilingStream = (() => {
           orientation_id: placement.orient?.__orientation_id ?? null,
           color_id: placement.color_id ?? 0,
           periodic_motif_index: placement._periodic_motif_index ?? null,
+          periodic_cell: placement._periodic_cell?.slice() ?? null,
           layer: placement.layer ?? 0,
           is_forced: !!placement.is_forced
         }));
@@ -1090,8 +1091,8 @@ export const createTilingStream = (() => {
       }
       const newGen = moveLayer;
       const available = COLOR_PALETTE.map((_, i) => i).filter(i => !neighborColors.has(i));
-      const periodicColorId = Number.isInteger(move._periodic_motif_index)
-        ? ((move._periodic_motif_index % COLOR_PALETTE.length) + COLOR_PALETTE.length) % COLOR_PALETTE.length
+      const periodicColorId = Array.isArray(move._periodic_cell)
+        ? ((move._periodic_cell.reduce((sum, coordinate) => sum + Math.round(coordinate), 0) % 2) + 2) % 2
         : null;
       move.color_id = periodicColorId
         ?? (available.length ? available[Math.floor(nextRandom() * available.length)] : 0);
@@ -2720,6 +2721,7 @@ export const createTilingStream = (() => {
       }
       if (!template) return false;
       state.placements[0]._periodic_motif_index = 0;
+      state.placements[0]._periodic_cell = [0, 0, 0];
       state.placements[0].color_id = 0;
       tilingEvidence = {
         kind: "translational_certificate",
@@ -2761,6 +2763,7 @@ export const createTilingStream = (() => {
           const move = templateMove(template, template.motif[motifIndex], cell);
           if (!move) continue;
           move._periodic_motif_index = motifIndex;
+          move._periodic_cell = cell.slice();
           const globalVertices = move.orient.verts.map(vertex => vecAdd(vertex, move.translation));
           const faceKeys = move.orient.faces.map(face =>
             keyFace(face.map(index => globalVertices[index]))

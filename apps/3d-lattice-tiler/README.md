@@ -35,7 +35,10 @@ workers:
    proposal priorities from successful and failed branches.
 3. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
-   copies of the certified whole patch tile 3-space.
+   copies of the certified whole patch tile 3-space. Certified translation
+   cells are checkerboard-colored by the parity of their three cell
+   coordinates, so every tile in one multi-tile patch copy shares its color
+   while neighboring copies alternate.
 4. **Isohedral** builds the first corona and records its
    tile-type/displacement rules. Each legal rule is then applied around every
    subsequent tile whenever possible.

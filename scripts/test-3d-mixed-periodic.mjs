@@ -70,17 +70,36 @@ assert.equal(
 
 assert.ok(finished?.success, "mixed periodic growth must reach its target");
 assert.equal(finalSnapshot?.placements?.length, config.target_val);
+const colorsByCell = new Map();
 for (const placement of finalSnapshot.placements) {
   assert.ok(
     Number.isInteger(placement.periodic_motif_index),
     "every certified translational placement must retain its motif identity"
   );
+  assert.ok(
+    Array.isArray(placement.periodic_cell),
+    "every certified translational placement must retain its translation cell"
+  );
+  const cellKey = placement.periodic_cell.join(",");
+  const cellColors = colorsByCell.get(cellKey) ?? new Set();
+  cellColors.add(placement.color_id);
+  colorsByCell.set(cellKey, cellColors);
+  const cellParity = ((placement.periodic_cell.reduce((sum, coordinate) => sum + coordinate, 0) % 2) + 2) % 2;
   assert.equal(
     placement.color_id,
-    placement.periodic_motif_index % tileSpecs.COLOR_PALETTE.length,
-    "translated copies of each motif tile must reuse its color"
+    cellParity,
+    "translated patch copies must alternate by translation-cell parity"
   );
 }
+assert.ok(
+  [...colorsByCell.values()].every(colors => colors.size === 1),
+  "every tile in a multi-tile translation-cell copy must share one color"
+);
+assert.deepEqual(
+  [...new Set(finalSnapshot.placements.map(placement => placement.color_id))].sort(),
+  [0, 1],
+  "neighboring translation cells must use both alternating colors"
+);
 assert.deepEqual(
   finalSnapshot.tile_counts.map(item => item.type_idx),
   [0, 1],

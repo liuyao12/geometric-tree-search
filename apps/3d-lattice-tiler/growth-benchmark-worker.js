@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-four-modes-v18";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-alternating-cells-v20";
 
 let activeSequence = 0;
 let stopToken = { stop: false };

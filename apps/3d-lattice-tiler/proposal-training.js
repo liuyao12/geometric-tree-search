@@ -1,11 +1,11 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-four-modes-v18";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-alternating-cells-v20";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
   nextProposalGeneration,
   normalizeProposalProgram,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260728-four-modes-v18";
+} from "./proposal-learner.js?v=20260728-alternating-cells-v20";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {

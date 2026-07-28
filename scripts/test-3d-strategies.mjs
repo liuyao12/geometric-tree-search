@@ -38,12 +38,19 @@ assert.equal(translational.final.search_stats.branch_choices_visited, 0);
 assert.equal(translational.final.search_stats.growth_axis_rank, 3);
 for (const placement of translational.latestSnapshot?.placements ?? []) {
   assert.ok(Number.isInteger(placement.periodic_motif_index));
+  assert.ok(Array.isArray(placement.periodic_cell));
+  const cellParity = ((placement.periodic_cell.reduce((sum, coordinate) => sum + coordinate, 0) % 2) + 2) % 2;
   assert.equal(
     placement.color_id,
-    placement.periodic_motif_index % tileSpecs.COLOR_PALETTE.length,
-    "translated copies of each motif tile must reuse its color"
+    cellParity,
+    "translated patch copies must alternate by translation-cell parity"
   );
 }
+assert.deepEqual(
+  [...new Set(translational.latestSnapshot.placements.map(placement => placement.color_id))].sort(),
+  [0, 1],
+  "three-dimensional translational growth must expose both alternating colors"
+);
 
 for (const polycubeLattice of ["fcc", "half"]) {
   const latticeRun = await solve({
