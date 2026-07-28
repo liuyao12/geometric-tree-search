@@ -60,7 +60,7 @@
             </label>
             <label>
               <input type="radio" name="tilingStrategy" value="free_range">
-              <span><b>Free-range</b><small>Greedily place sensible legal tiles in every direction.</small></span>
+              <span><b>Free-range</b><small>Forced moves first, then backtracking tree search in every direction.</small></span>
             </label>
           </div>
           <small id="strategyDescription">Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.</small>
@@ -228,6 +228,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260727-self-learning-v16"></script>
+  <script type="module" src="./app.js?v=20260727-free-range-backtracking-v17"></script>
 </body>
 </html>

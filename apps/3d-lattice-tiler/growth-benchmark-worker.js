@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-self-learning-v16";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-free-range-backtracking-v17";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -19,7 +19,7 @@ async function runMode(sequence, baseConfig, mode) {
     tiling_strategy: mode.strategy,
     move_order: mode.moveOrder,
     agent_exhaustive: mode.agentExhaustive,
-    greedy_no_backtrack: mode.id === "coverage",
+    greedy_no_backtrack: false,
     template_preflight: mode.templates,
     periodic_tile_count: mode.templates ? 2 : 0,
     snapshot_every: 1,

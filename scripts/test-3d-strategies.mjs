@@ -106,13 +106,26 @@ assert.equal(freestyle.final.search_stats.tiling_strategy, "generic");
 const freeRange = await solve({
   tiling_strategy: "free_range",
   move_order: "no_brainer",
-  greedy_no_backtrack: true,
+  greedy_no_backtrack: false,
   template_preflight: false,
   target_val: 12
 });
 assert.equal(freeRange.final.success, true);
 assert.equal(freeRange.final.search_stats.tiling_strategy, "generic");
-assert.equal(freeRange.final.search_stats.backtracks, 0);
+assert.ok(freeRange.final.search_stats.branch_choices_visited > 0);
+
+const freeRangeBacktracking = await solve({
+  mode_key: "gyrobifastigium",
+  tiling_strategy: "free_range",
+  move_order: "no_brainer",
+  greedy_no_backtrack: false,
+  template_preflight: false,
+  target_val: 8,
+  time_limit_ms: 5000
+});
+assert.equal(freeRangeBacktracking.final.success, true);
+assert.ok(freeRangeBacktracking.final.search_stats.forced_total > 0, "Free-range must apply forced moves first");
+assert.ok(freeRangeBacktracking.final.search_stats.backtracks > 0, "Free-range must recover from failed branches");
 
 for (const [mode_key, polycube_lattice] of [
   ["letter_o", "fcc"],

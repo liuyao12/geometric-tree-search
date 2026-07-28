@@ -1,11 +1,11 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-self-learning-v16";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-free-range-backtracking-v17";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
   nextProposalGeneration,
   normalizeProposalProgram,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260727-self-learning-v16";
+} from "./proposal-learner.js?v=20260727-free-range-backtracking-v17";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {
@@ -50,7 +50,7 @@ function episodeConfig(baseConfig, options, program, randomSeed) {
     tiling_strategy: "generic",
     move_order: program ? "proposal" : "no_brainer",
     proposal_program: program,
-    greedy_no_backtrack: true,
+    greedy_no_backtrack: false,
     random_seed: randomSeed,
     template_preflight: false,
     periodic_preflight: false,

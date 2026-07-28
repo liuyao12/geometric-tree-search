@@ -1294,7 +1294,7 @@ export const createTilingStream = (() => {
       : "auto";
     const requestedMoveOrder = config.move_order ?? "balanced";
     const moveOrder = tilingStrategy === "isohedral" ? "isohedral" : requestedMoveOrder;
-    const greedyNoBacktrack = !!config.greedy_no_backtrack || moveOrder === "no_brainer" || moveOrder === "proposal";
+    const greedyNoBacktrack = !!config.greedy_no_backtrack;
     const proposalProgram = moveOrder === "proposal"
       ? normalizeProposalProgram(config.proposal_program)
       : null;
