@@ -8,6 +8,8 @@ export const createTilingStream = (() => {
   return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }) {
     const SCALE = tileSpecs.SCALE;
     const COLOR_PALETTE = tileSpecs.COLOR_PALETTE;
+    const TRANSLATIONAL_CELL_COLOR_OFFSET =
+      tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET ?? Math.max(0, COLOR_PALETTE.length - 8);
 
     const tick = () => new Promise(resolve => {
       if (typeof requestAnimationFrame === "function") requestAnimationFrame(resolve);
@@ -1096,7 +1098,11 @@ export const createTilingStream = (() => {
       const newGen = moveLayer;
       const available = COLOR_PALETTE.map((_, i) => i).filter(i => !neighborColors.has(i));
       const periodicColorId = Array.isArray(move._periodic_cell)
-        ? ((move._periodic_cell.reduce((sum, coordinate) => sum + Math.round(coordinate), 0) % 2) + 2) % 2
+        ? TRANSLATIONAL_CELL_COLOR_OFFSET
+          + move._periodic_cell.reduce((colorIndex, coordinate, axis) => {
+            const parity = ((Math.round(coordinate) % 2) + 2) % 2;
+            return colorIndex + parity * (2 ** axis);
+          }, 0)
         : null;
       move.color_id = periodicColorId
         ?? (available.length ? available[Math.floor(nextRandom() * available.length)] : 0);
@@ -2726,7 +2732,15 @@ export const createTilingStream = (() => {
       if (!template) return false;
       state.placements[0]._periodic_motif_index = 0;
       state.placements[0]._periodic_cell = [0, 0, 0];
-      state.placements[0].color_id = 0;
+      state.placements[0].color_id = TRANSLATIONAL_CELL_COLOR_OFFSET;
+      for (const frontierEntry of state.frontier.values()) {
+        frontierEntry.color_id = TRANSLATIONAL_CELL_COLOR_OFFSET;
+      }
+      for (const faceStack of state.viz_faces.values()) {
+        for (const face of faceStack) {
+          face.color = COLOR_PALETTE[TRANSLATIONAL_CELL_COLOR_OFFSET];
+        }
+      }
       tilingEvidence = {
         kind: "translational_certificate",
         certified: true,
@@ -3879,10 +3893,16 @@ export const tileSpecs = (() => {
   };
   const LEGACY_SOLID_ANGLE_MAX = 48;
 
-  const COLOR_PALETTE = [
+  const BASE_COLOR_PALETTE = [
     "#e74c3c","#3498db","#f1c40f","#2ecc71","#9b59b6",
     "#e67e22","#1abc9c","#34495e","#d35400","#7f8c8d"
   ];
+  const TRANSLATIONAL_CELL_COLOR_OFFSET = BASE_COLOR_PALETTE.length;
+  const TRANSLATIONAL_CELL_COLORS = Array.from({ length: 8 }, (_, index) => {
+    const channels = [0, 1, 2].map(axis => 64 + 128 * ((index >> axis) & 1));
+    return `#${channels.map(channel => channel.toString(16).padStart(2, "0")).join("")}`;
+  });
+  const COLOR_PALETTE = [...BASE_COLOR_PALETTE, ...TRANSLATIONAL_CELL_COLORS];
 
   // --- Z^3 lattice signed-permutation isometries: all 48 (det = ±1)
   const Z3_MATRICES_ALL = (() => {
@@ -5355,6 +5375,7 @@ export const tileSpecs = (() => {
     POLYCUBE_SOLID_ANGLE_MAX,
     LEGACY_SOLID_ANGLE_MAX,
     COLOR_PALETTE,
+    TRANSLATIONAL_CELL_COLOR_OFFSET,
     TILING_REGISTRY,
     metadata,
     options,

@@ -36,9 +36,10 @@ workers:
 3. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
    copies of the certified whole patch tile 3-space. Certified translation
-   cells are checkerboard-colored by the parity of their three cell
-   coordinates, so every tile in one multi-tile patch copy shares its color
-   while neighboring copies alternate.
+   cells use an RGB parity code: moving by the first period vector changes red
+   by 128 modulo 256, the second changes green, and the third changes blue.
+   This produces eight directional color classes while every tile in one
+   multi-tile patch copy still shares its cell color.
 4. **Isohedral** treats every tile as an image of the root tile. Each
    root-to-tile rigid motion lifts, rotates, and translates the entire known
    patch onto that tile; exact duplicates are skipped and a patch image is
