@@ -45,6 +45,24 @@ const normalizeWeights = (raw = {}) => {
 const activeFeaturesForWeights = weights =>
   PROPOSAL_FEATURES.filter(feature => Math.abs(weights[feature]) > 1e-9);
 
+export function proposalTileKey(config = {}) {
+  const refs = config?.custom_system?.figure_refs ?? [];
+  const customSignatures = [
+    ...(config?.custom_system?.polycubes ?? []).map(tile =>
+      JSON.stringify({ name: tile.name, voxels: tile.voxels })
+    ),
+    ...(config?.custom_system?.polyhedra ?? []).map(tile =>
+      JSON.stringify({ name: tile.name, vertices: tile.vertices, faces: tile.faces ?? null })
+    )
+  ];
+  return [
+    config?.mode_key ?? "tile",
+    config?.polycube_lattice ?? "z3",
+    ...refs,
+    ...customSignatures
+  ].join("::");
+}
+
 export function normalizeProposalProgram(raw = {}) {
   const rawSequence = Array.isArray(raw.sequence) && raw.sequence.length
     ? raw.sequence
@@ -85,6 +103,38 @@ export function normalizeProposalProgram(raw = {}) {
     sequence,
     patch
   };
+}
+
+export function proposalProgramFromPatchSnapshot(config, snapshot, priorRaw = null) {
+  const placements = snapshot?.placements;
+  const prior = priorRaw ? normalizeProposalProgram(priorRaw) : null;
+  if (!Array.isArray(placements) || placements.length < 2) return prior;
+  const rootTranslation = placements[0].translation ?? [0, 0, 0];
+  const tileKey = proposalTileKey(config);
+  return normalizeProposalProgram({
+    id: `live-${tileKey}-g${(prior?.generation ?? -1) + 1}`,
+    tile_key: tileKey,
+    generation: (prior?.generation ?? -1) + 1,
+    parent_id: prior?.id ?? null,
+    sequence: prior?.sequence ?? [{
+      weights: {
+        coverage: 1,
+        oldest_layer_completion: 1,
+        growth_axis_rank: 2,
+        growth_isotropy: 1,
+        growth_compactness: 0.25
+      }
+    }],
+    patch: placements.map(placement => ({
+      prototile_idx: placement.prototile_idx ?? 0,
+      orientation_id: placement.orientation_id ?? null,
+      orientation_signature: placement.orientation_signature ?? null,
+      orientation_index: placement.orientation_index ?? null,
+      translation: [0, 1, 2].map(axis =>
+        Number(placement.translation?.[axis] ?? 0) - Number(rootTranslation[axis] ?? 0)
+      )
+    }))
+  });
 }
 
 export function proposalComplexity(program) {

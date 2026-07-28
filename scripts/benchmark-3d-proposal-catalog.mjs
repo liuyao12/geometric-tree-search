@@ -135,8 +135,13 @@ for (const modeKey of modeKeys) {
       milliseconds: isohedral.elapsed_ms
     },
     best_human_baseline: bestBaseline.strategy,
+    baseline_reaches_target: bestBaseline.best_tiles >= target,
+    learner_reaches_target: learned.best_tiles >= target,
     ratio: bestBaselineScore > 0 ? learnedScore / bestBaselineScore : 1,
-    matches_or_beats: learnedScore >= bestBaselineScore
+    matches_or_beats: learnedScore >= bestBaselineScore,
+    competitive_target: bestBaseline.best_tiles >= target
+      && learned.best_tiles >= target
+      && learnedScore >= bestBaselineScore
   };
   results.push(row);
   process.stderr.write(
@@ -156,6 +161,12 @@ const report = {
   matched_or_beaten: results.filter(result => result.matches_or_beats).length,
   total: results.length,
   portion: results.filter(result => result.matches_or_beats).length / Math.max(1, results.length),
+  target_eligible: results.filter(result => result.baseline_reaches_target).length,
+  competitive_targets: results.filter(result => result.competitive_target).length,
+  competitive_portion: results.filter(result => result.baseline_reaches_target).length
+    ? results.filter(result => result.competitive_target).length
+      / results.filter(result => result.baseline_reaches_target).length
+    : 0,
   median_ratio: [...results].sort((left, right) => left.ratio - right.ratio)[Math.floor(results.length / 2)]?.ratio ?? 0,
   results
 };

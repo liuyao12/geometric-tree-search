@@ -9,6 +9,7 @@ import {
   growthCurveArea,
   nextProposalGeneration,
   normalizeProposalProgram,
+  proposalProgramFromPatchSnapshot,
   scoreProposalEvaluation
 } from "../apps/3d-lattice-tiler/proposal-learner.js";
 
@@ -83,6 +84,7 @@ function episodeConfig(modeKey, options, {
     template_preflight: false,
     periodic_preflight: false,
     snapshot_every: 0,
+    placement_details: true,
     face_order: "coverage",
     exhaustive: false,
     branch_cap: null,
@@ -101,6 +103,7 @@ async function runEpisode(modeKey, options, {
   const started = performance.now();
   const points = [{ milliseconds: 0, tiles: 1 }];
   let bestTiles = 1;
+  let bestSnapshot = null;
   let final = null;
   for await (const message of createTilingStream(
     episodeConfig(modeKey, options, { program, randomSeed }),
@@ -115,6 +118,10 @@ async function runEpisode(modeKey, options, {
       bestTiles = tiles;
       points.push({ milliseconds: performance.now() - started, tiles });
     }
+    const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
+    if (Array.isArray(snapshot?.placements) && snapshot.placements.length > (bestSnapshot?.placements?.length ?? 0)) {
+      bestSnapshot = snapshot;
+    }
     if (message.type === "finished") final = message;
   }
   const elapsedMs = performance.now() - started;
@@ -126,6 +133,7 @@ async function runEpisode(modeKey, options, {
     best_tiles: Math.max(bestTiles, Number(final?.tile_count ?? 0)),
     elapsed_ms: elapsedMs,
     points,
+    patch_snapshot: bestSnapshot,
     growth_isotropy: Number(final?.search_stats?.growth_isotropy ?? 0),
     backtracks: Number(final?.search_stats?.backtracks ?? 0),
     result_kind: final?.result_kind ?? null
@@ -226,6 +234,15 @@ async function trainMode(modeKey, options) {
 
   const improvement = baseline.score > 0 ? (winner.score - baseline.score) / baseline.score : Infinity;
   const accepted = winner.best_tiles >= baseline.best_tiles && improvement >= options.minImprovement;
+  const patchEpisode = [...winner.episodes].sort((left, right) =>
+    (right.patch_snapshot?.placements?.length ?? 0) - (left.patch_snapshot?.placements?.length ?? 0)
+    || left.elapsed_ms - right.elapsed_ms
+  )[0];
+  const learnedProgram = proposalProgramFromPatchSnapshot(
+    { mode_key: modeKey, polycube_lattice: "z3" },
+    patchEpisode?.patch_snapshot,
+    winner.program
+  ) ?? winner.program;
   return {
     mode_key: modeKey,
     system: tileSpecs.TILING_REGISTRY[modeKey].name,
@@ -242,7 +259,7 @@ async function trainMode(modeKey, options) {
       best_tiles: winner.best_tiles,
       elapsed_ms: winner.elapsed_ms,
       growth_isotropy: winner.growth_isotropy,
-      program: winner.program
+      program: learnedProgram
     },
     history
   };
