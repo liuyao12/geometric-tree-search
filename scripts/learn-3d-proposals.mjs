@@ -78,7 +78,7 @@ function episodeConfig(modeKey, options, {
     tiling_strategy: "generic",
     move_order: program ? "proposal" : "no_brainer",
     proposal_program: program,
-    greedy_no_backtrack: true,
+    greedy_no_backtrack: false,
     random_seed: randomSeed,
     template_preflight: false,
     periodic_preflight: false,

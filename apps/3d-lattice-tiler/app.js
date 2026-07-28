@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260727-self-learning-v16";
+import { tileSpecs } from "./engine.js?v=20260727-free-range-backtracking-v17";
 
 const $ = (id) => document.getElementById(id);
 
@@ -517,7 +517,7 @@ function updateCriterionUI() {
 const STRATEGY_DESCRIPTIONS = {
   translational: "Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.",
   isohedral: "Learns the first tile neighborhood and applies the same relative neighbors to every new tile whenever legal.",
-  free_range: "Places the most sensible legal tile in all directions; exact ties are chosen randomly."
+  free_range: "Prioritizes forced moves, then explores sensible legal placements in all directions with backtracking."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -1529,8 +1529,8 @@ function configKey() {
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
     move_order: isFreeRange ? "no_brainer" : "balanced",
-    greedy_no_backtrack: isFreeRange,
-    agent_exhaustive: !isFreeRange,
+    greedy_no_backtrack: false,
+    agent_exhaustive: true,
     template_preflight: !isFreeRange,
     periodic_patch_max_tiles: Math.max(1, Math.min(4, Number(periodicTileCountSelect.value) || 4)),
     periodic_template_max_volume: 512,
@@ -1960,22 +1960,27 @@ function updateScene(snapshot, options = {}) {
   const pointPositions = [];
   for (const point of snapshot?.frontier_points ?? []) {
     if (!point?.pos?.length) continue;
-    pointPositions.push(point.pos[0] / scale, point.pos[1] / scale, point.pos[2] / scale);
+    pointPositions.push([point.pos[0] / scale, point.pos[1] / scale, point.pos[2] / scale]);
   }
   if (pointPositions.length) {
-    const pointGeometry = new THREE.BufferGeometry();
-    pointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(pointPositions, 3));
     const lattice = selectedPolycubeLattice();
-    const pointMaterial = new THREE.PointsMaterial({
+    const pointRadius = lattice === "half" ? 0.0425 : 0.06;
+    const pointGeometry = new THREE.SphereGeometry(pointRadius, 8, 6);
+    const pointMaterial = new THREE.MeshBasicMaterial({
       color: { z3: 0x178273, fcc: 0x315f9f, half: 0xd97706 }[lattice] ?? 0x178273,
-      size: lattice === "half" ? 0.085 : 0.12,
-      sizeAttenuation: true,
       transparent: true,
       opacity: 0.9,
-      depthTest: false,
+      depthTest: true,
       depthWrite: false
     });
-    nextFrontierPointGroup.add(new THREE.Points(pointGeometry, pointMaterial));
+    const pointMesh = new THREE.InstancedMesh(pointGeometry, pointMaterial, pointPositions.length);
+    const pointMatrix = new THREE.Matrix4();
+    pointPositions.forEach((position, index) => {
+      pointMatrix.makeTranslation(position[0], position[1], position[2]);
+      pointMesh.setMatrixAt(index, pointMatrix);
+    });
+    pointMesh.instanceMatrix.needsUpdate = true;
+    nextFrontierPointGroup.add(pointMesh);
   }
 
   if (rebuildFaces) {
@@ -2554,7 +2559,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260727-periodic-colors-v15", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260727-free-range-backtracking-v17", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2826,7 +2831,7 @@ function runLearnedProposal(baseConfig, result) {
     move_order: "proposal",
     proposal_program: result.learned.program,
     proposal_program_id: result.learned.program.id,
-    greedy_no_backtrack: true,
+    greedy_no_backtrack: false,
     agent_exhaustive: false,
     template_preflight: false,
     periodic_preflight: false,
@@ -2871,7 +2876,7 @@ function startProposalLearning() {
   setProposalLearningButton();
   learnedProposalStatus.textContent = `Measuring Free-range to ${target} tiles…`;
 
-  proposalLearningWorker = new Worker(new URL("./proposal-learning-worker.js?v=20260727-self-learning-v16", import.meta.url), { type: "module" });
+  proposalLearningWorker = new Worker(new URL("./proposal-learning-worker.js?v=20260727-free-range-backtracking-v17", import.meta.url), { type: "module" });
   proposalLearningWorker.addEventListener("message", event => {
     const message = event.data ?? {};
     if (message.sequence !== sequence) return;
@@ -2937,7 +2942,7 @@ function startGrowthBenchmark() {
   growthBenchmarkButton.textContent = "Stop comparison";
   growthBenchmarkStatus.textContent = `Measuring generic search to ${config.target_val} tiles…`;
 
-  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260727-periodic-colors-v15", import.meta.url), { type: "module" });
+  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260727-free-range-backtracking-v17", import.meta.url), { type: "module" });
   growthWorker.addEventListener("message", event => {
     const message = event.data ?? {};
     if (message.sequence !== sequence) return;

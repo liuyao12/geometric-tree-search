@@ -46,7 +46,7 @@ async function run(moveOrder, randomSeed, proposalProgram = null) {
     tiling_strategy: "generic",
     move_order: moveOrder,
     proposal_program: proposalProgram,
-    greedy_no_backtrack: true,
+    greedy_no_backtrack: false,
     random_seed: randomSeed,
     template_preflight: false,
     periodic_preflight: false,
@@ -72,7 +72,6 @@ const baselineA = await run("no_brainer", 7);
 const baselineB = await run("no_brainer", 7);
 const baselineC = await run("no_brainer", 8);
 assert.equal(baselineA.final.success, true);
-assert.equal(baselineA.final.search_stats.backtracks, 0);
 assert.deepEqual(
   baselineA.snapshot.placements.map(placement => placement.translation),
   baselineB.snapshot.placements.map(placement => placement.translation),
@@ -96,7 +95,6 @@ const proposal = normalizeProposalProgram({
 });
 const learned = await run("proposal", 7, proposal);
 assert.equal(learned.final.success, true);
-assert.equal(learned.final.search_stats.backtracks, 0);
 assert.equal(learned.final.search_stats.proposal_program_id, proposal.id);
 
 console.log("3D proposal-learning regressions passed", {

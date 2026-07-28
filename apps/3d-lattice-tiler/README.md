@@ -32,7 +32,8 @@ The UI exposes three distinct modes:
 2. **Isohedral** builds the first corona and records its
    tile-type/displacement rules. Each legal rule is then applied around every
    subsequent tile whenever possible.
-3. **Free-range** greedily places the most sensible legal frontier tile,
+3. **Free-range** is the baseline tree search. It applies forced moves first,
+   then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
 

@@ -1,4 +1,4 @@
-import { trainProposalProgram } from "./proposal-training.js?v=20260727-self-learning-v16";
+import { trainProposalProgram } from "./proposal-training.js?v=20260727-free-range-backtracking-v17";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
