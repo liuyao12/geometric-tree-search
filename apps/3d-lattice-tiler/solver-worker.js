@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-alternating-cells-v20";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-isohedral-closure-v21";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

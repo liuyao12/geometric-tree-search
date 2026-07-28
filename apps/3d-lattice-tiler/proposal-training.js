@@ -1,11 +1,11 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-alternating-cells-v20";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-isohedral-closure-v21";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
   nextProposalGeneration,
   normalizeProposalProgram,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260728-alternating-cells-v20";
+} from "./proposal-learner.js?v=20260728-isohedral-closure-v21";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {
