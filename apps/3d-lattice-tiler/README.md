@@ -46,7 +46,9 @@ workers:
    patch onto that tile; exact duplicates are skipped and a patch image is
    committed only when every new tile is legal. A single successful neighbor
    relation can therefore generate first, second, and later surroundings very
-   quickly. Count targets also require balanced rank-3 growth.
+   quickly. Forced patch images and searched relations must touch the oldest
+   active frontier layer before newer layers may advance; balanced rank-3
+   growth breaks ties and is required for count targets.
 
 The growth chart uses one wall clock for all four workers. Selecting a mode
 switches the viewport to its latest patch without stopping the other searches.
