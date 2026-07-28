@@ -407,6 +407,10 @@ export const createTilingStream = (() => {
       failed_leaves: 0,
       backtracks: 0,
       max_depth: 0,
+      isohedral_transforms_discovered: 0,
+      isohedral_patch_copies_applied: 0,
+      isohedral_tiles_propagated: 0,
+      isohedral_patch_conflicts: 0,
       // Kept as zero-valued compatibility counters for existing headless
       // consumers. This standalone engine does not install a GCTS runtime.
       marking_observed_failures: 0,
@@ -3135,6 +3139,343 @@ export const createTilingStream = (() => {
       return false;
     }
 
+    const ISOHEDRAL_EPSILON = 1e-8;
+    const isohedralRotations = (() => {
+      const permutations = values => {
+        if (values.length <= 1) return [values.slice()];
+        const out = [];
+        for (let index = 0; index < values.length; index++) {
+          const rest = values.slice(0, index).concat(values.slice(index + 1));
+          for (const suffix of permutations(rest)) out.push([values[index], ...suffix]);
+        }
+        return out;
+      };
+      const determinant = matrix =>
+        matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
+        - matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0])
+        + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0]);
+      const rotations = [];
+      for (const permutation of permutations([0, 1, 2])) {
+        for (const sx of [-1, 1]) for (const sy of [-1, 1]) for (const sz of [-1, 1]) {
+          const signs = [sx, sy, sz];
+          const matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+          for (let row = 0; row < 3; row++) matrix[row][permutation[row]] = signs[permutation[row]];
+          const det = determinant(matrix);
+          if (det === 1 || includeMirrors) rotations.push({ matrix, determinant: det });
+        }
+      }
+      return rotations;
+    })();
+    const isohedralCoordinate = value => {
+      const rounded = Math.round(value);
+      if (Math.abs(value - rounded) <= ISOHEDRAL_EPSILON) return rounded;
+      return Math.round(value / ISOHEDRAL_EPSILON) * ISOHEDRAL_EPSILON;
+    };
+    const isohedralPointKey = point => point.map(isohedralCoordinate).join(",");
+    const isohedralVertexCloudKey = vertices =>
+      vertices.map(isohedralPointKey).sort().join("|");
+    const isohedralMatrixVector = (matrix, vector) => [
+      matrix[0][0] * vector[0] + matrix[0][1] * vector[1] + matrix[0][2] * vector[2],
+      matrix[1][0] * vector[0] + matrix[1][1] * vector[1] + matrix[1][2] * vector[2],
+      matrix[2][0] * vector[0] + matrix[2][1] * vector[1] + matrix[2][2] * vector[2]
+    ];
+    const isohedralTransformPoint = (transform, point) =>
+      vecAdd(isohedralMatrixVector(transform.rotation, point), transform.translation)
+        .map(isohedralCoordinate);
+    const isohedralTransformKey = transform =>
+      `${transform.rotation.flat().join(",")}::${isohedralPointKey(transform.translation)}`;
+    const globalPlacementVertices = placement =>
+      placement.orient.verts.map(vertex => vecAdd(vertex, placement.translation));
+    const isohedralOrientationMaps = prototiles.map(tile => {
+      const orientations = new Map();
+      for (const orient of tile.unique_orientations ?? []) {
+        const mins = [0, 1, 2].map(axis => Math.min(...orient.verts.map(vertex => vertex[axis])));
+        const normalized = orient.verts.map(vertex =>
+          vertex.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis]))
+        );
+        orientations.set(isohedralVertexCloudKey(normalized), orient);
+      }
+      return orientations;
+    });
+    const isohedralRootTransformsTo = placement => {
+      const root = state.placements[0];
+      if (!root || placement.prototile_idx !== root.prototile_idx) return [];
+      const sourceVertices = globalPlacementVertices(root);
+      const targetVertices = globalPlacementVertices(placement);
+      const sourceCenter = [0, 1, 2].map(axis =>
+        sourceVertices.reduce((sum, vertex) => sum + vertex[axis], 0) / sourceVertices.length
+      );
+      const targetCenter = [0, 1, 2].map(axis =>
+        targetVertices.reduce((sum, vertex) => sum + vertex[axis], 0) / targetVertices.length
+      );
+      const targetKey = isohedralVertexCloudKey(targetVertices);
+      const transforms = new Map();
+      for (const { matrix: rotation, determinant } of isohedralRotations) {
+        const rotatedCenter = isohedralMatrixVector(rotation, sourceCenter);
+        const translation = targetCenter.map((coordinate, axis) =>
+          isohedralCoordinate(coordinate - rotatedCenter[axis])
+        );
+        const transformedKey = isohedralVertexCloudKey(
+          sourceVertices.map(vertex => isohedralTransformPoint({ rotation, translation }, vertex))
+        );
+        if (transformedKey !== targetKey) continue;
+        const transform = {
+          rotation: rotation.map(row => row.slice()),
+          translation,
+          determinant
+        };
+        transforms.set(isohedralTransformKey(transform), transform);
+      }
+      return [...transforms.values()];
+    };
+    const isohedralTransformPlacement = (placement, transform) => {
+      const tile = prototiles[placement.prototile_idx];
+      if (!tile) return null;
+      const transformedVertices = globalPlacementVertices(placement)
+        .map(vertex => isohedralTransformPoint(transform, vertex));
+      const mins = [0, 1, 2].map(axis =>
+        Math.min(...transformedVertices.map(vertex => vertex[axis]))
+      );
+      const normalized = transformedVertices.map(vertex =>
+        vertex.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis]))
+      );
+      const orient = isohedralOrientationMaps[placement.prototile_idx]
+        .get(isohedralVertexCloudKey(normalized));
+      if (!orient) return null;
+      const translation = mins.map(isohedralCoordinate);
+      if (tile.is_polycube
+        ? !isPolycubeMoveTranslation(tile, translation)
+        : !translation.every(Number.isInteger)) return null;
+      return {
+        prototile_idx: placement.prototile_idx,
+        orient,
+        translation,
+        _isohedral_transform: transform
+      };
+    };
+    const rollbackIsohedralMoves = applied => {
+      while (applied.length) {
+        const entry = applied.pop();
+        undoMove(entry.move, entry.rollback, { captureBest: false });
+      }
+    };
+    const applyIsohedralPatchImage = (transform, sourcePatch) => {
+      const existing = new Set(state.placements.map(placementGeometryKey));
+      const pending = [];
+      const pendingKeys = new Set();
+      for (const placement of sourcePatch) {
+        const move = isohedralTransformPlacement(placement, transform);
+        if (!move) return null;
+        const geometryKey = placementGeometryKey(move);
+        if (existing.has(geometryKey) || pendingKeys.has(geometryKey)) continue;
+        pendingKeys.add(geometryKey);
+        pending.push(move);
+      }
+      if (!pending.length) return [];
+      const applied = [];
+      for (const move of pending) {
+        const validity = checkMoveViability(move);
+        if (!validity) {
+          rollbackIsohedralMoves(applied);
+          return null;
+        }
+        move.occupancy_data = validity.occData;
+        move.layer = candidateMoveLayer(move);
+        move.is_forced = true;
+        const rollback = applyMove(move);
+        applied.push({ move, rollback });
+      }
+      return applied;
+    };
+    const isohedralGoalMet = () => {
+      if (!goalMet() || criterion !== "count") return goalMet();
+      const growth = growthStats();
+      const configuredMinimum = Number(config.growth_isotropy_min);
+      const minimumIsotropy = Number.isFinite(configuredMinimum)
+        ? Math.max(0, Math.min(1, configuredMinimum))
+        : 0.5;
+      return growth.axis_rank >= Math.min(3, tilingDimension)
+        && growth.isotropy >= minimumIsotropy;
+    };
+    async function* propagateIsohedralPatch(parentId) {
+      const applied = [];
+      const attempted = new Set();
+      applied.inconsistent = false;
+      let madeProgress = true;
+      let firstPass = true;
+      while (madeProgress && (firstPass || !goalMet())) {
+        firstPass = false;
+        madeProgress = false;
+        const sourcePatch = state.placements.slice();
+        const transformsByAnchor = [];
+        const distinctTransforms = new Set();
+        for (const anchor of sourcePatch) {
+          const anchorTransforms = new Map();
+          for (const transform of isohedralRootTransformsTo(anchor)) {
+            const transformKey = isohedralTransformKey(transform);
+            anchorTransforms.set(transformKey, transform);
+            distinctTransforms.add(transformKey);
+            if (transform.determinant < 0) searchStats.reflection_continuations_seen += 1;
+          }
+          transformsByAnchor.push(anchorTransforms);
+        }
+        searchStats.isohedral_transforms_discovered = Math.max(
+          searchStats.isohedral_transforms_discovered,
+          distinctTransforms.size
+        );
+        for (const anchorTransforms of transformsByAnchor) {
+          let compatibleImage = false;
+          for (const [transformKey, transform] of anchorTransforms) {
+            const attemptKey = `${transformKey}@${sourcePatch.length}`;
+            if (attempted.has(attemptKey)) continue;
+            attempted.add(attemptKey);
+            const additions = applyIsohedralPatchImage(transform, sourcePatch);
+            if (additions === null) {
+              searchStats.isohedral_patch_conflicts += 1;
+              continue;
+            }
+            compatibleImage = true;
+            if (!additions.length) continue;
+            madeProgress = true;
+            searchStats.isohedral_patch_copies_applied += 1;
+            searchStats.isohedral_tiles_propagated += additions.length;
+            searchStats.forced_total += additions.length;
+            for (const entry of additions) {
+              applied.push(entry);
+              yield placementDelta("add", entry.move, entry.rollback, parentId);
+            }
+            yield nodeStatus(
+              parentId,
+              "working",
+              `lifted patch: +${additions.length}`,
+              preflightStatusPayload()
+            );
+            if (shouldSnapshot()) {
+              yield snapshot(parentId);
+              await tick();
+            }
+            await yieldToBrowser();
+          }
+          if (!compatibleImage) {
+            applied.inconsistent = true;
+            return applied;
+          }
+        }
+      }
+      return applied;
+    }
+    async function* searchIsohedral(parentId, depth = 0) {
+      if (stopToken.stop) { noteIncompleteSearch(); return false; }
+      if (overBudget()) {
+        noteIncompleteSearch();
+        yield nodeStatus(parentId, "fail", budgetText());
+        return false;
+      }
+      const propagated = yield* propagateIsohedralPatch(parentId);
+      const rollbackPropagated = function* () {
+        while (propagated.length) {
+          const entry = propagated.pop();
+          undoMove(entry.move, entry.rollback);
+          searchStats.forced_total = Math.max(0, searchStats.forced_total - 1);
+          yield placementDelta("remove", entry.move, entry.rollback, parentId);
+        }
+      };
+      if (propagated.inconsistent) {
+        searchStats.failed_leaves += 1;
+        yield nodeStatus(parentId, "fail", "Patch cannot be lifted onto every tile");
+        yield* rollbackPropagated();
+        return false;
+      }
+      if (isohedralGoalMet()) {
+        yield nodeStatus(parentId, "success", "isohedral patch closure");
+        return true;
+      }
+      if (frontierPointOptions().length === 0) {
+        yield nodeStatus(parentId, "success", "closed isohedral patch");
+        return true;
+      }
+
+      const candidateMap = new Map();
+      for (const option of frontierPointOptions()) {
+        const moves = await preflightFaceCandidatesForOption(option, candidateCap);
+        for (const move of moves) {
+          if (move.prototile_idx !== state.placements[0].prototile_idx) continue;
+          candidateMap.set(move.dedup_key ?? placementGeometryKey(move), move);
+        }
+        await yieldToBrowser();
+      }
+      let candidates = [...candidateMap.values()].sort((left, right) => {
+        const leftShape = prospectiveGrowthShape(left);
+        const rightShape = prospectiveGrowthShape(right);
+        return compareScoreVectors([
+          minimumLayerCompletionScore(left),
+          coveredFrontierFaceScore(left, 0),
+          leftShape.axis_rank,
+          leftShape.axis_isotropy,
+          leftShape.axis_planarity,
+          -leftShape.max_span,
+          moveCoverage(left)
+        ], [
+          minimumLayerCompletionScore(right),
+          coveredFrontierFaceScore(right, 0),
+          rightShape.axis_rank,
+          rightShape.axis_isotropy,
+          rightShape.axis_planarity,
+          -rightShape.max_span,
+          moveCoverage(right)
+        ]);
+      });
+      if (Number.isFinite(branchCap)) candidates = candidates.slice(0, branchCap);
+      if (!candidates.length) {
+        searchStats.failed_leaves += 1;
+        yield nodeStatus(parentId, "fail", "No tile-transitive continuation");
+        yield* rollbackPropagated();
+        return false;
+      }
+
+      const payload = candidates.map(move => ({
+        id: nowId(),
+        text: "isohedral seed relation",
+        ...describeMove(move)
+      }));
+      for (let index = 0; index < candidates.length; index++) candidates[index].node_id = payload[index].id;
+      setBranchCursor(depth, candidates.length, 0);
+      yield branchSet(parentId, payload);
+
+      for (let index = 0; index < candidates.length; index++) {
+        const move = candidates[index];
+        const validity = checkMoveViability(move);
+        if (!validity) {
+          setBranchCursor(depth, candidates.length, index + 1);
+          continue;
+        }
+        move.occupancy_data = validity.occData;
+        move.is_forced = false;
+        move.layer = candidateMoveLayer(move);
+        searchStats.branch_choices_visited += 1;
+        searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
+        setBranchCursor(depth, candidates.length, index);
+        const rollback = applyMove(move);
+        yield placementDelta("add", move, rollback, move.node_id);
+        yield nodeStatus(move.node_id, "working", `[${state.placements.length}] seed relation`);
+        if (shouldSnapshot()) yield snapshot(move.node_id);
+
+        const child = yield* searchIsohedral(move.node_id, depth + 1);
+        if (child) {
+          yield nodeStatus(move.node_id, "success", "tile-transitive patch");
+          return true;
+        }
+        searchStats.backtracks += 1;
+        undoMove(move, rollback);
+        yield placementDelta("remove", move, rollback, move.node_id);
+        yield nodeStatus(move.node_id, "fail", "isohedral relation failed");
+        setBranchCursor(depth, candidates.length, index + 1);
+      }
+      yield* rollbackPropagated();
+      yield nodeStatus(parentId, "fail", "Isohedral branch exhausted");
+      return false;
+    }
+
     async function* search(parentId, depth = 0) {
       if (stopToken.stop) { noteIncompleteSearch(); return false; }
       if (overBudget()) {
@@ -3444,8 +3785,7 @@ export const createTilingStream = (() => {
         yield nodeStatus(rootId, "fail", "No exact translational patch certificate found");
       }
     } else if (tilingStrategy === "isohedral") {
-      yield* tryIsohedralCoronaSeed(rootId);
-      success = goalMet() || (yield* search(rootId));
+      success = goalMet() || (yield* searchIsohedral(rootId));
     } else if (tilingStrategy === "generic") {
       success = goalMet() || (yield* search(rootId));
     } else {

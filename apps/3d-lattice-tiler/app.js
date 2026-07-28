@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260728-alternating-cells-v20";
+import { tileSpecs } from "./engine.js?v=20260728-isohedral-closure-v21";
 
 const $ = (id) => document.getElementById(id);
 
@@ -504,7 +504,7 @@ const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
   learning_free_range: "Runs the same tree search while learning which geometric proposals to try first.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
-  isohedral: "Reuses one learned neighborhood on every frontier tile; a failed isohedral search terminates at zero."
+  isohedral: "Lifts the entire known patch by each root-to-tile rigid motion, adding every legal nonduplicate image."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -2538,7 +2538,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-alternating-cells-v20", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-isohedral-closure-v21", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2863,7 +2863,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-alternating-cells-v20", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-isohedral-closure-v21", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

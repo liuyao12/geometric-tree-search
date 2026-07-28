@@ -39,9 +39,12 @@ workers:
    cells are checkerboard-colored by the parity of their three cell
    coordinates, so every tile in one multi-tile patch copy shares its color
    while neighboring copies alternate.
-4. **Isohedral** builds the first corona and records its
-   tile-type/displacement rules. Each legal rule is then applied around every
-   subsequent tile whenever possible.
+4. **Isohedral** treats every tile as an image of the root tile. Each
+   root-to-tile rigid motion lifts, rotates, and translates the entire known
+   patch onto that tile; exact duplicates are skipped and a patch image is
+   committed only when every new tile is legal. A single successful neighbor
+   relation can therefore generate first, second, and later surroundings very
+   quickly. Count targets also require balanced rank-3 growth.
 
 The growth chart uses one wall clock for all four workers. Selecting a mode
 switches the viewport to its latest patch without stopping the other searches.

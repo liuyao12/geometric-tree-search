@@ -1,4 +1,4 @@
-import { trainProposalProgram } from "./proposal-training.js?v=20260728-alternating-cells-v20";
+import { trainProposalProgram } from "./proposal-training.js?v=20260728-isohedral-closure-v21";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
