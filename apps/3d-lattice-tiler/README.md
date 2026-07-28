@@ -32,7 +32,10 @@ workers:
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
 2. **Learning Free-range** runs the same search while updating geometric
-   proposal priorities from successful and failed branches.
+   proposal priorities from successful and failed branches. Its best legal
+   patch is stored per tile in the browser and revalidated on later runs, so
+   repeated comparisons improve without hard-coding a translational or
+   isohedral strategy.
 3. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
    copies of the certified whole patch tile 3-space. Certified translation

@@ -4,7 +4,9 @@ import {
   createInitialProposalPopulation,
   growthCurveArea,
   mutateProposalProgram,
-  normalizeProposalProgram
+  normalizeProposalProgram,
+  proposalProgramFromPatchSnapshot,
+  proposalTileKey
 } from "../apps/3d-lattice-tiler/proposal-learner.js";
 import {
   runProposalEpisode,
@@ -149,6 +151,30 @@ const replayed = await runProposalEpisode({ mode_key: "cube" }, {
 assert.equal(replayed.success, true);
 assert.equal(replayed.proposal_patch_tiles_replayed, 15);
 assert.equal(replayed.proposal_patch_conflicts, 0);
+
+const liveProgram = proposalProgramFromPatchSnapshot(
+  { mode_key: "cube", polycube_lattice: "z3" },
+  baselineA.snapshot
+);
+assert.equal(liveProgram.tile_key, proposalTileKey({ mode_key: "cube", polycube_lattice: "z3" }));
+assert.equal(liveProgram.patch.length, baselineA.snapshot.placements.length);
+assert.deepEqual(liveProgram.patch[0].translation, [0, 0, 0]);
+const liveReplay = await runProposalEpisode({ mode_key: "cube" }, {
+  target: 24,
+  horizon_ms: 500
+}, {
+  program: liveProgram,
+  randomSeed: 37
+});
+assert.equal(liveReplay.success, true);
+assert.equal(liveReplay.proposal_patch_tiles_replayed, 23);
+const extendedLiveProgram = proposalProgramFromPatchSnapshot(
+  { mode_key: "cube", polycube_lattice: "z3" },
+  baselineA.snapshot,
+  liveProgram
+);
+assert.equal(extendedLiveProgram.parent_id, liveProgram.id);
+assert.equal(extendedLiveProgram.generation, liveProgram.generation + 1);
 
 console.log("3D proposal-learning regressions passed", {
   population: populationA.length,

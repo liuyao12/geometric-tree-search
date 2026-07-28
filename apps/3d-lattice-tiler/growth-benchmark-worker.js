@@ -1,4 +1,8 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-patch-sequence-v25";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-persisted-proposals-v26";
+import {
+  normalizeProposalProgram,
+  proposalProgramFromPatchSnapshot
+} from "./proposal-learner.js?v=20260728-persisted-proposals-v26";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -43,10 +47,14 @@ const post = (sequence, payload) => {
 };
 
 async function runMode(sequence, baseConfig, mode) {
+  const priorProgram = mode.id === "learning" && baseConfig.proposal_program
+    ? normalizeProposalProgram(baseConfig.proposal_program)
+    : null;
   const config = {
     ...baseConfig,
     tiling_strategy: mode.strategy,
-    move_order: mode.moveOrder,
+    move_order: priorProgram ? "proposal" : mode.moveOrder,
+    proposal_program: priorProgram,
     agent_exhaustive: mode.agentExhaustive,
     greedy_no_backtrack: false,
     template_preflight: mode.templates,
@@ -54,6 +62,7 @@ async function runMode(sequence, baseConfig, mode) {
     periodic_patch_unbounded: mode.id === "translational",
     periodic_patch_max_tiles: mode.id === "translational" ? null : baseConfig.periodic_patch_max_tiles,
     snapshot_every: 1,
+    placement_details: mode.id === "learning",
     branch_cap: null,
     candidate_cap: null,
     exhaustive: false
@@ -62,6 +71,7 @@ async function runMode(sequence, baseConfig, mode) {
   let best = 0;
   let final = null;
   let latestStats = null;
+  let bestSnapshot = null;
   const points = [];
   post(sequence, { type: "series-start", mode });
   for await (const message of createTilingStream(config, tileSpecs, stopToken)) {
@@ -83,12 +93,16 @@ async function runMode(sequence, baseConfig, mode) {
       best = tiles;
       const point = { milliseconds: Math.round(performance.now() - started), tiles };
       points.push(point);
+      if (mode.id === "learning" && Array.isArray(snapshot?.placements)) bestSnapshot = snapshot;
       post(sequence, { type: "sample", mode: mode.id, point, snapshot });
     }
     if (message.type === "finished") final = message;
   }
 
   const elapsed = Math.round(performance.now() - started);
+  const learnedProgram = mode.id === "learning" && bestSnapshot?.placements?.length > 1
+    ? proposalProgramFromPatchSnapshot(baseConfig, bestSnapshot, priorProgram)
+    : priorProgram;
   if (mode.id === "isohedral" && final?.success === false) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
     points.push(point);
@@ -104,6 +118,8 @@ async function runMode(sequence, baseConfig, mode) {
     milliseconds: elapsed,
     points,
     stats: final?.search_stats ?? latestStats,
+    learnedProgram,
+    reusedLearnedPatch: !!priorProgram,
     resultKind: final?.result_kind ?? null,
     searchIncomplete: !!final?.search_incomplete
   };

@@ -1,11 +1,12 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-patch-sequence-v25";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-persisted-proposals-v26";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
   nextProposalGeneration,
   normalizeProposalProgram,
+  proposalTileKey,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260728-patch-sequence-v25";
+} from "./proposal-learner.js?v=20260728-persisted-proposals-v26";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {
@@ -27,20 +28,6 @@ export function normalizeProposalTrainingOptions(raw = {}) {
     seed_programs: Array.isArray(raw.seed_programs) ? raw.seed_programs.map(normalizeProposalProgram) : []
   };
 }
-
-const tileKeyForConfig = config => {
-  const refs = config?.custom_system?.figure_refs ?? [];
-  const customNames = [
-    ...(config?.custom_system?.polycubes ?? []).map(tile => tile.name),
-    ...(config?.custom_system?.polyhedra ?? []).map(tile => tile.name)
-  ];
-  return [
-    config?.mode_key ?? "tile",
-    config?.polycube_lattice ?? "z3",
-    ...refs,
-    ...customNames
-  ].join("::");
-};
 
 function episodeConfig(baseConfig, options, program, randomSeed) {
   return {
@@ -164,7 +151,7 @@ export async function trainProposalProgram(baseConfig, rawOptions = {}, {
   onProgress = () => {}
 } = {}) {
   const options = normalizeProposalTrainingOptions(rawOptions);
-  const tileKey = tileKeyForConfig(baseConfig);
+  const tileKey = proposalTileKey(baseConfig);
   const started = performance.now();
   const baselineEpisodes = [];
   onProgress({ phase: "baseline", tile_key: tileKey, completed: 0, total: options.baseline_replicates });

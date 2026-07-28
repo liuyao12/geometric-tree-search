@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260728-patch-sequence-v25";
+import { tileSpecs } from "./engine.js?v=20260728-persisted-proposals-v26";
+import {
+  normalizeProposalProgram,
+  proposalTileKey
+} from "./proposal-learner.js?v=20260728-persisted-proposals-v26";
 
 const $ = (id) => document.getElementById(id);
 
@@ -204,6 +208,38 @@ const growthWorkers = new Map();
 let growthSequence = 0;
 let growthRunning = false;
 const growthSeries = new Map();
+const PROPOSAL_CACHE_STORAGE_KEY = "gcts-3d-learned-proposals-v2";
+const readProposalCache = () => {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(PROPOSAL_CACHE_STORAGE_KEY) ?? "{}");
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+};
+const cachedProposalForConfig = config => {
+  const raw = readProposalCache()[proposalTileKey(config)];
+  return raw ? normalizeProposalProgram(raw) : null;
+};
+const rememberLearnedProposal = (config, rawProgram) => {
+  if (!rawProgram) return null;
+  const program = normalizeProposalProgram(rawProgram);
+  const key = proposalTileKey(config);
+  const cache = readProposalCache();
+  const current = cache[key] ? normalizeProposalProgram(cache[key]) : null;
+  if (
+    current
+    && current.patch.length > program.patch.length
+    && current.generation >= program.generation
+  ) return current;
+  cache[key] = program;
+  try {
+    localStorage.setItem(PROPOSAL_CACHE_STORAGE_KEY, JSON.stringify(cache));
+  } catch {
+    return current;
+  }
+  return program;
+};
 let workerDisplayPaused = false;
 let solverMessageQueue = [];
 let solverMessageQueueIndex = 0;
@@ -502,7 +538,7 @@ function updateCriterionUI() {
 
 const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
-  learning_free_range: "Runs the same tree search while learning which geometric proposals to try first.",
+  learning_free_range: "Runs the same tree search, remembers its best legal patch, and replays that proposal on later runs.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
   isohedral: "Lifts the whole patch by root-to-tile rigid motions, deferring every copy that skips the oldest frontier layer."
 };
@@ -2538,7 +2574,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-patch-sequence-v25", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-persisted-proposals-v26", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2783,9 +2819,16 @@ function renderGrowthChart() {
 }
 
 function formatGrowthResult(result, target) {
+  const learningSuffix = result?.mode === "learning"
+    ? result.reusedLearnedPatch
+      ? ` (replayed ${result.stats?.proposal_patch_tiles_replayed ?? 0})`
+      : result.learnedProgram?.patch?.length
+        ? ` (learned ${result.learnedProgram.patch.length})`
+        : ""
+    : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
-  if (targetPoint) return `${result.label} ${formatElapsed(targetPoint.milliseconds)}`;
-  return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}`;
+  if (targetPoint) return `${result.label} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
+  return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
 }
 
 function finishGrowthBenchmark(results) {
@@ -2836,6 +2879,7 @@ function startGrowthBenchmark() {
   config.criterion = "count";
   config.target_val = Math.max(2, Number(maxTilesInput.value) || 2);
   config.ui_yield_interval_ms = 250;
+  const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
   setStatus("Running all four modes…");
@@ -2863,7 +2907,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-patch-sequence-v25", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-persisted-proposals-v26", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -2884,7 +2928,18 @@ function startGrowthBenchmark() {
         if (selectedGrowthMode() === mode.id && message.snapshot) showSelectedGrowthSnapshot();
       } else if (message.type === "series-finished") {
         series.result = message.result;
-        series.status = message.result.success ? "finished" : message.result.searchIncomplete ? "search limit" : "terminated";
+        if (mode.id === "learning" && message.result.learnedProgram) {
+          const stored = rememberLearnedProposal(config, message.result.learnedProgram);
+          if (stored) {
+            series.learnedProgram = stored;
+            series.status = message.result.reusedLearnedPatch
+              ? `reused ${message.result.stats?.proposal_patch_tiles_replayed ?? 0}-tile patch; learned ${stored.patch.length}`
+              : `learned ${stored.patch.length}-tile patch for next run`;
+          }
+        }
+        if (!series.status || ["running", "starting"].includes(series.status)) {
+          series.status = message.result.success ? "finished" : message.result.searchIncomplete ? "search limit" : "terminated";
+        }
         if (!series.points.length) series.points = message.result.points ?? [];
         renderGrowthChart();
       } else if (message.type === "finished") {
@@ -2901,7 +2956,14 @@ function startGrowthBenchmark() {
       if (series) series.status = `error: ${error.message}`;
       finishWorker(mode.id);
     });
-    worker.postMessage({ type: "start", sequence, config, mode: mode.id });
+    worker.postMessage({
+      type: "start",
+      sequence,
+      config: mode.id === "learning"
+        ? { ...config, proposal_program: cachedLearningProgram }
+        : config,
+      mode: mode.id
+    });
   }
 }
 
