@@ -141,6 +141,8 @@ const trained = await trainProposalProgram({ mode_key: "cube" }, {
   proposal_replicates: 1
 });
 assert.ok(trained.learned.program.patch.length >= 16, "training must retain its discovered patch");
+assert.ok(trained.refinement.length >= 1, "training must verify and refine its winning patch");
+assert.equal(trained.refinement[0].horizon_ms, 1000);
 const replayed = await runProposalEpisode({ mode_key: "cube" }, {
   target: 16,
   horizon_ms: 500

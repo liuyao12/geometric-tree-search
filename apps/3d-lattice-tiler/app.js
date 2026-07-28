@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260728-persisted-proposals-v26";
+import { tileSpecs } from "./engine.js?v=20260728-refined-proposals-v27";
 import {
   normalizeProposalProgram,
   proposalTileKey
-} from "./proposal-learner.js?v=20260728-persisted-proposals-v26";
+} from "./proposal-learner.js?v=20260728-refined-proposals-v27";
 
 const $ = (id) => document.getElementById(id);
 
@@ -2574,7 +2574,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-persisted-proposals-v26", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-refined-proposals-v27", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2907,7 +2907,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-persisted-proposals-v26", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-refined-proposals-v27", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

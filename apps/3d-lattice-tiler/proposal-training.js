@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-persisted-proposals-v26";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-refined-proposals-v27";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
@@ -6,7 +6,7 @@ import {
   normalizeProposalProgram,
   proposalTileKey,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260728-persisted-proposals-v26";
+} from "./proposal-learner.js?v=20260728-refined-proposals-v27";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {
@@ -25,6 +25,9 @@ export function normalizeProposalTrainingOptions(raw = {}) {
     min_improvement: Math.max(0, numeric(raw.min_improvement, 0.03)),
     baseline_replicates: Math.max(1, Math.floor(numeric(raw.baseline_replicates, 3))),
     proposal_replicates: Math.max(1, Math.floor(numeric(raw.proposal_replicates, 2))),
+    refinement_rounds: Math.max(0, Math.floor(numeric(raw.refinement_rounds, 4))),
+    refinement_horizon_multiplier: Math.max(1, numeric(raw.refinement_horizon_multiplier, 2)),
+    refinement_fresh_retry: raw.refinement_fresh_retry !== false,
     seed_programs: Array.isArray(raw.seed_programs) ? raw.seed_programs.map(normalizeProposalProgram) : []
   };
 }
@@ -146,6 +149,17 @@ async function evaluateProgram(baseConfig, options, program, seedOffset, stopTok
   return aggregateEpisodes(episodes, options, program);
 }
 
+const programWithPatch = (program, patch, suffix) => {
+  const normalized = normalizeProposalProgram(program);
+  return normalizeProposalProgram({
+    ...normalized,
+    id: `${normalized.id}-${suffix}`,
+    generation: normalized.generation + 1,
+    parent_id: normalized.id,
+    patch
+  });
+};
+
 export async function trainProposalProgram(baseConfig, rawOptions = {}, {
   stopToken = { stop: false },
   onProgress = () => {}
@@ -225,16 +239,99 @@ export async function trainProposalProgram(baseConfig, rawOptions = {}, {
   }
   if (stopToken.stop || !winner) return null;
 
-  const improvement = baseline.score > 0 ? (winner.score - baseline.score) / baseline.score : Infinity;
-  const accepted = winner.best_tiles >= baseline.best_tiles && improvement >= options.min_improvement;
   const patchEpisode = [...winner.episodes].sort((left, right) =>
     right.patch.length - left.patch.length
     || left.elapsed_ms - right.elapsed_ms
   )[0];
-  const learnedProgram = normalizeProposalProgram({
+  let learnedProgram = normalizeProposalProgram({
     ...winner.program,
     patch: patchEpisode?.patch ?? []
   });
+  const refinement = [];
+  for (let round = 0; round < options.refinement_rounds && !stopToken.stop; round++) {
+    const refinementOptions = {
+      ...options,
+      horizon_ms: options.horizon_ms * (options.refinement_horizon_multiplier ** (round + 1))
+    };
+    const replayEpisode = await runProposalEpisode(baseConfig, refinementOptions, {
+      program: learnedProgram,
+      randomSeed: options.seed + 7000001 + round * 131071,
+      stopToken
+    });
+    let bestEpisode = replayEpisode;
+    if (
+      options.refinement_fresh_retry
+      && replayEpisode.patch.length <= learnedProgram.patch.length
+      && learnedProgram.patch.length > 1
+      && !stopToken.stop
+    ) {
+      const freshProgram = normalizeProposalProgram({ ...learnedProgram, patch: [] });
+      const freshEpisode = await runProposalEpisode(baseConfig, refinementOptions, {
+        program: freshProgram,
+        randomSeed: options.seed + 9000011 + round * 131071,
+        stopToken
+      });
+      if (
+        freshEpisode.patch.length > bestEpisode.patch.length
+        || (
+          freshEpisode.patch.length === bestEpisode.patch.length
+          && freshEpisode.best_tiles > bestEpisode.best_tiles
+        )
+      ) bestEpisode = freshEpisode;
+    }
+    const priorPatchTiles = learnedProgram.patch.length;
+    if (bestEpisode.patch.length > priorPatchTiles) {
+      learnedProgram = programWithPatch(learnedProgram, bestEpisode.patch, `r${round + 1}`);
+    }
+    refinement.push({
+      round,
+      prior_patch_tiles: priorPatchTiles,
+      patch_tiles: learnedProgram.patch.length,
+      best_tiles: bestEpisode.best_tiles,
+      success: bestEpisode.success,
+      fresh_retry: bestEpisode !== replayEpisode,
+      horizon_ms: refinementOptions.horizon_ms
+    });
+    onProgress({
+      phase: "refinement",
+      tile_key: tileKey,
+      round: round + 1,
+      rounds: options.refinement_rounds,
+      patch_tiles: learnedProgram.patch.length,
+      best_tiles: bestEpisode.best_tiles
+    });
+    if (learnedProgram.patch.length >= options.target) break;
+  }
+  if (stopToken.stop) return null;
+
+  let learnedEvaluation = await evaluateProgram(
+    baseConfig,
+    options,
+    learnedProgram,
+    12000017,
+    stopToken
+  );
+  const validationPatch = [...learnedEvaluation.episodes].sort((left, right) =>
+    right.patch.length - left.patch.length
+    || left.elapsed_ms - right.elapsed_ms
+  )[0]?.patch ?? [];
+  if (validationPatch.length > learnedProgram.patch.length && !stopToken.stop) {
+    learnedProgram = programWithPatch(learnedProgram, validationPatch, "validation");
+    learnedEvaluation = await evaluateProgram(
+      baseConfig,
+      options,
+      learnedProgram,
+      14000029,
+      stopToken
+    );
+  }
+  if (stopToken.stop) return null;
+  learnedEvaluation.program = learnedProgram;
+  const improvement = baseline.score > 0
+    ? (learnedEvaluation.score - baseline.score) / baseline.score
+    : Infinity;
+  const accepted = learnedEvaluation.best_tiles >= baseline.best_tiles
+    && improvement >= options.min_improvement;
   return {
     type: "learned_proposal",
     version: 1,
@@ -251,13 +348,14 @@ export async function trainProposalProgram(baseConfig, rawOptions = {}, {
       points: baseline.episodes[0]?.points ?? []
     },
     learned: {
-      score: winner.score,
-      best_tiles: winner.best_tiles,
-      elapsed_ms: winner.elapsed_ms,
-      growth_isotropy: winner.growth_isotropy,
-      points: winner.episodes[0]?.points ?? [],
+      score: learnedEvaluation.score,
+      best_tiles: learnedEvaluation.best_tiles,
+      elapsed_ms: learnedEvaluation.elapsed_ms,
+      growth_isotropy: learnedEvaluation.growth_isotropy,
+      points: learnedEvaluation.episodes[0]?.points ?? [],
       program: learnedProgram
     },
-    history
+    history,
+    refinement
   };
 }
