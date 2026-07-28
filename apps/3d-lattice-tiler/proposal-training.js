@@ -1,11 +1,11 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260727-free-range-backtracking-v17";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-four-modes-v18";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
   nextProposalGeneration,
   normalizeProposalProgram,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260727-free-range-backtracking-v17";
+} from "./proposal-learner.js?v=20260728-four-modes-v18";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {

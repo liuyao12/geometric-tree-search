@@ -77,6 +77,19 @@ assert.deepEqual(
   "translational mode must test candidate patch sizes progressively"
 );
 
+const unboundedPatchCheck = await solve({
+  mode_key: "tet_oct",
+  target_val: 8,
+  tiling_strategy: "translational",
+  periodic_patch_unbounded: true,
+  periodic_patch_max_tiles: null,
+  time_limit_ms: 50
+});
+assert.ok(
+  unboundedPatchCheck.translationalChecks.some(check => check.patchSize > 4),
+  "uncertified translational search must continue beyond four-tile patches"
+);
+
 const isohedral = await solve({
   tiling_strategy: "isohedral",
   target_val: 12

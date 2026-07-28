@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260727-free-range-backtracking-v17";
+import { tileSpecs } from "./engine.js?v=20260728-four-modes-v18";
 
 const $ = (id) => document.getElementById(id);
 
@@ -32,8 +32,6 @@ const polycubeLatticeSelect = $("polycubeLatticeSelect");
 const polycubeLatticeRadios = [...document.querySelectorAll('input[name="polycubeLattice"]')];
 const periodicTileCountSelect = $("periodicTileCountSelect");
 const runButton = $("runButton");
-const learnProposalButton = $("learnProposalButton");
-const learnedProposalStatus = $("learnedProposalStatus");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
 const layerField = $("layerField");
@@ -92,7 +90,6 @@ const CHECKPOINT_DB_NAME = "3d-lattice-tiler-checkpoints";
 const CHECKPOINT_STORE_NAME = "checkpoints";
 const CHECKPOINT_KEY = "latest";
 const CHECKPOINT_SAVE_INTERVAL_MS = 1800;
-const LEARNED_PROPOSALS_KEY = "3d-lattice-tiler-learned-proposals-v1";
 
 function fallbackRenderer(label) {
   const canvas = document.createElement("canvas");
@@ -204,20 +201,10 @@ let pausedConfigKey = null;
 let startedAt = 0;
 let solverWorker = null;
 let solverWorkerActive = false;
-let growthWorker = null;
+const growthWorkers = new Map();
 let growthSequence = 0;
 let growthRunning = false;
 const growthSeries = new Map();
-let proposalLearningWorker = null;
-let proposalLearningSequence = 0;
-let proposalLearningRunning = false;
-let learnedProposals = (() => {
-  try {
-    return JSON.parse(localStorage.getItem(LEARNED_PROPOSALS_KEY) ?? "{}");
-  } catch {
-    return {};
-  }
-})();
 let workerDisplayPaused = false;
 let solverMessageQueue = [];
 let solverMessageQueueIndex = 0;
@@ -515,9 +502,10 @@ function updateCriterionUI() {
 }
 
 const STRATEGY_DESCRIPTIONS = {
-  translational: "Checks 1-, 2-, 3-, then 4-tile patches with exact periodic boundary conditions.",
-  isohedral: "Learns the first tile neighborhood and applies the same relative neighbors to every new tile whenever legal.",
-  free_range: "Prioritizes forced moves, then explores sensible legal placements in all directions with backtracking."
+  free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
+  learning_free_range: "Runs the same tree search while learning which geometric proposals to try first.",
+  translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
+  isohedral: "Reuses one learned neighborhood on every frontier tile; a failed isohedral search terminates at zero."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -532,7 +520,7 @@ function setRadioValue(radios, value, fallback) {
 }
 
 function updateStrategyUI() {
-  const strategy = checkedRadioValue(strategyRadios, "translational");
+  const strategy = checkedRadioValue(strategyRadios, "free_range");
   strategySelect.value = strategy;
   strategyDescription.textContent = STRATEGY_DESCRIPTIONS[strategy] ?? STRATEGY_DESCRIPTIONS.translational;
   periodicTileCountSelect.disabled = strategy !== "translational";
@@ -1171,7 +1159,7 @@ function applyCheckpointUiState(ui = {}) {
   if (controls.faceOrder != null) faceOrderSelect.value = controls.faceOrder;
   if (controls.tilingStrategy != null) {
     const savedStrategy = controls.tilingStrategy === "freestyle" ? "free_range" : controls.tilingStrategy;
-    strategySelect.value = setRadioValue(strategyRadios, savedStrategy, "translational");
+    strategySelect.value = setRadioValue(strategyRadios, savedStrategy, "free_range");
   }
   if (controls.moveOrder != null) moveOrderSelect.value = controls.moveOrder;
   if (controls.polycubeLattice != null) {
@@ -1507,8 +1495,10 @@ function configKey() {
   const seconds = positiveOrNull(timeCapInput);
   const forcedLayerLagCap = positiveSearchParam("forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 3;
   const selectedCriterion = criterion();
-  const tilingStrategy = checkedRadioValue(strategyRadios, "translational");
+  const tilingStrategy = checkedRadioValue(strategyRadios, "free_range");
   const isFreeRange = tilingStrategy === "free_range";
+  const isLearningFreeRange = tilingStrategy === "learning_free_range";
+  const isStructural = tilingStrategy === "translational" || tilingStrategy === "isohedral";
   return JSON.stringify({
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
@@ -1528,11 +1518,14 @@ function configKey() {
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
-    move_order: isFreeRange ? "no_brainer" : "balanced",
+    move_order: isLearningFreeRange ? "agent" : isFreeRange ? "no_brainer" : "balanced",
     greedy_no_backtrack: false,
     agent_exhaustive: true,
-    template_preflight: !isFreeRange,
-    periodic_patch_max_tiles: Math.max(1, Math.min(4, Number(periodicTileCountSelect.value) || 4)),
+    template_preflight: isStructural,
+    periodic_patch_unbounded: tilingStrategy === "translational",
+    periodic_patch_max_tiles: tilingStrategy === "translational"
+      ? null
+      : Math.max(1, Number(periodicTileCountSelect.value) || 4),
     periodic_template_max_volume: 512,
     forced_move_layer_lag_cap: forcedLayerLagCap,
     branch_cap: positiveOrNull(branchCapInput),
@@ -1557,13 +1550,12 @@ function setRunButton() {
     return;
   }
   runButton.disabled = !hasRunnableSelection();
-  runButton.textContent = "Run";
+  runButton.textContent = "Run selected";
   runButton.dataset.state = "run";
   if (runButton.disabled) runButton.textContent = "Choose a figure";
 }
 
 function invalidatePausedRunIfNeeded() {
-  if (proposalLearningRunning) stopProposalLearning("Selection changed; learning stopped.");
   if (!paused) {
     setRunButton();
     return;
@@ -2559,7 +2551,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260727-free-range-backtracking-v17", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-four-modes-v18", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2689,10 +2681,29 @@ function pauseRun() {
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const GROWTH_MODES = [
-  { id: "coverage", label: "Free-range" },
-  { id: "isohedral", label: "Isohedral" },
-  { id: "auto", label: "Automatic" }
+  { id: "free_range", strategy: "free_range", label: "Free-range" },
+  { id: "learning", strategy: "learning_free_range", label: "Learning Free-range" },
+  { id: "translational", strategy: "translational", label: "Translational" },
+  { id: "isohedral", strategy: "isohedral", label: "Isohedral" }
 ];
+
+function selectedGrowthMode() {
+  const strategy = checkedRadioValue(strategyRadios, "free_range");
+  return GROWTH_MODES.find(mode => mode.strategy === strategy)?.id ?? "free_range";
+}
+
+function showSelectedGrowthSnapshot() {
+  const modeId = selectedGrowthMode();
+  growthChart.dataset.activeMode = modeId;
+  const series = growthSeries.get(modeId);
+  if (!series?.snapshot) return;
+  if (series.prototileInfo) initTileControls(series.prototileInfo);
+  lastSnapshot = series.snapshot;
+  rootCentered = false;
+  updateScene(series.snapshot, { preserveView: false });
+  const latest = series.points?.at(-1);
+  setStatus(`${series.mode?.label ?? modeId}: ${latest?.tiles ?? series.snapshot.tile_count ?? 0} tiles`);
+}
 
 function svgNode(name, attributes = {}, textContent = null) {
   const node = document.createElementNS(SVG_NS, name);
@@ -2711,6 +2722,7 @@ function niceGrowthMaximum(value, ticks = 4) {
 }
 
 function renderGrowthChart() {
+  growthChart.dataset.activeMode = selectedGrowthMode();
   growthChart.replaceChildren();
   const allPoints = [...growthSeries.values()].flatMap(series => series.points ?? []);
   if (!allPoints.length) {
@@ -2729,7 +2741,7 @@ function renderGrowthChart() {
 
   growthChart.append(
     svgNode("title", {}, "Measured tiling growth curves"),
-    svgNode("desc", {}, "Step chart of the greatest number of tiles reached over wall-clock time for three generic geometric move orders.")
+    svgNode("desc", {}, "Step chart of four tiling searches running concurrently against the same wall clock.")
   );
 
   for (let index = 0; index <= 4; index += 1) {
@@ -2752,7 +2764,7 @@ function renderGrowthChart() {
   );
 
   GROWTH_MODES.forEach((mode, index) => {
-    const legendX = margin.left + index * 180;
+    const legendX = margin.left + index * 166;
     growthChart.append(svgNode("line", { class: `growth-series growth-series-${mode.id}`, x1: legendX, y1: 14, x2: legendX + 24, y2: 14 }));
     growthChart.append(svgNode("text", { class: "growth-legend", x: legendX + 30, y: 18 }, mode.label));
   });
@@ -2771,9 +2783,9 @@ function renderGrowthChart() {
 
     for (const point of points) {
       const className = `growth-marker growth-marker-${mode.id}`;
-      if (mode.id === "coverage") {
+      if (mode.id === "free_range") {
         growthChart.append(svgNode("rect", { class: className, x: x(point.milliseconds) - 3, y: y(point.tiles) - 3, width: 6, height: 6 }));
-      } else if (mode.id === "auto") {
+      } else if (mode.id === "learning") {
         const xx = x(point.milliseconds), yy = y(point.tiles);
         growthChart.append(svgNode("path", { class: className, d: `M ${xx} ${yy - 4} L ${xx + 4} ${yy + 3} L ${xx - 4} ${yy + 3} Z` }));
       } else {
@@ -2791,7 +2803,7 @@ function formatGrowthResult(result, target) {
 
 function finishGrowthBenchmark(results) {
   growthRunning = false;
-  growthBenchmarkButton.textContent = "Compare growth";
+  growthBenchmarkButton.textContent = "Run all four";
   const target = Number(maxTilesInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
   renderGrowthChart();
@@ -2799,120 +2811,14 @@ function finishGrowthBenchmark(results) {
 
 function stopGrowthBenchmark(status = "Comparison stopped.") {
   growthSequence += 1;
-  growthWorker?.postMessage({ type: "stop" });
-  growthWorker?.terminate();
-  growthWorker = null;
+  for (const worker of growthWorkers.values()) {
+    worker.postMessage({ type: "stop" });
+    worker.terminate();
+  }
+  growthWorkers.clear();
   growthRunning = false;
-  growthBenchmarkButton.textContent = "Compare growth";
+  growthBenchmarkButton.textContent = "Run all four";
   growthBenchmarkStatus.textContent = status;
-}
-
-function setProposalLearningButton() {
-  learnProposalButton.disabled = !proposalLearningRunning && !hasRunnableSelection();
-  learnProposalButton.textContent = proposalLearningRunning ? "Stop learning" : "Learn & run";
-}
-
-function stopProposalLearning(status = "Learning stopped.") {
-  proposalLearningSequence += 1;
-  proposalLearningWorker?.postMessage({ type: "stop" });
-  proposalLearningWorker?.terminate();
-  proposalLearningWorker = null;
-  proposalLearningRunning = false;
-  learnedProposalStatus.textContent = status;
-  setProposalLearningButton();
-}
-
-function runLearnedProposal(baseConfig, result) {
-  startNewRun({
-    ...baseConfig,
-    criterion: "count",
-    target_val: Math.max(2, Number(maxTilesInput.value) || 2),
-    tiling_strategy: "generic",
-    move_order: "proposal",
-    proposal_program: result.learned.program,
-    proposal_program_id: result.learned.program.id,
-    greedy_no_backtrack: false,
-    agent_exhaustive: false,
-    template_preflight: false,
-    periodic_preflight: false,
-    random_seed: result.options.seed
-  });
-}
-
-function startProposalLearning() {
-  if (!hasRunnableSelection()) {
-    learnedProposalStatus.textContent = "Choose a figure or enable a custom tile first.";
-    return;
-  }
-  if (running || paused) {
-    stopSolverWorker();
-    runSeq += 1;
-    running = false;
-    paused = false;
-    setRunButton();
-  }
-  if (growthRunning) stopGrowthBenchmark("Comparison stopped for proposal learning.");
-  if (proposalLearningWorker) stopProposalLearning();
-
-  const sequence = ++proposalLearningSequence;
-  const config = JSON.parse(configKey());
-  const target = Math.max(2, Number(maxTilesInput.value) || 2);
-  const cachedPrograms = Object.values(learnedProposals)
-    .map(record => record?.learned?.program)
-    .filter(Boolean);
-  const options = {
-    target,
-    horizon_ms: Math.min(1500, Math.max(500, Number(config.time_limit_ms) || 900)),
-    generations: 2,
-    population: 8,
-    elite: 3,
-    seed: 17,
-    min_improvement: 0.02,
-    baseline_replicates: 2,
-    proposal_replicates: 1,
-    seed_programs: cachedPrograms
-  };
-  proposalLearningRunning = true;
-  setProposalLearningButton();
-  learnedProposalStatus.textContent = `Measuring Free-range to ${target} tiles…`;
-
-  proposalLearningWorker = new Worker(new URL("./proposal-learning-worker.js?v=20260727-free-range-backtracking-v17", import.meta.url), { type: "module" });
-  proposalLearningWorker.addEventListener("message", event => {
-    const message = event.data ?? {};
-    if (message.sequence !== sequence) return;
-    if (message.type === "progress") {
-      const progress = message.progress ?? {};
-      if (progress.phase === "baseline") {
-        learnedProposalStatus.textContent = `Measuring Free-range ${progress.completed}/${progress.total}…`;
-      } else {
-        learnedProposalStatus.textContent = `Learning generation ${progress.generation + 1}/${progress.generations}, proposal ${progress.candidate}/${progress.population} · best ${progress.best_tiles} tiles`;
-      }
-      return;
-    }
-    if (message.type === "error") {
-      stopProposalLearning(`Learning error: ${message.error}`);
-      return;
-    }
-    if (message.type !== "finished") return;
-    proposalLearningWorker?.terminate();
-    proposalLearningWorker = null;
-    proposalLearningRunning = false;
-    setProposalLearningButton();
-    const result = message.result;
-    if (!result?.accepted) {
-      const baselineTiles = result?.baseline?.best_tiles ?? 0;
-      const learnedTiles = result?.learned?.best_tiles ?? 0;
-      learnedProposalStatus.textContent = `Free-range remains best (${baselineTiles} vs ${learnedTiles} tiles); proposal rejected.`;
-      return;
-    }
-    learnedProposals[result.tile_key] = result;
-    localStorage.setItem(LEARNED_PROPOSALS_KEY, JSON.stringify(learnedProposals));
-    const percent = Math.round(result.improvement * 100);
-    learnedProposalStatus.textContent = `Learned proposal beats Free-range by ${percent}% (${result.learned.best_tiles} vs ${result.baseline.best_tiles} tiles). Running it…`;
-    runLearnedProposal(config, result);
-  });
-  proposalLearningWorker.addEventListener("error", error => stopProposalLearning(`Learning error: ${error.message}`));
-  proposalLearningWorker.postMessage({ type: "start", sequence, config, options });
 }
 
 function startGrowthBenchmark() {
@@ -2928,48 +2834,85 @@ function startGrowthBenchmark() {
     setRunButton();
     setStatus("Stopped main run for a fair growth comparison.");
   }
-  if (growthWorker) stopGrowthBenchmark();
+  if (growthWorkers.size) stopGrowthBenchmark();
+  resetRunView();
   growthSeries.clear();
+  for (const mode of GROWTH_MODES) {
+    growthSeries.set(mode.id, { mode, points: [], snapshot: null, result: null, status: "starting" });
+  }
   renderGrowthChart();
   growthSequence += 1;
   const sequence = growthSequence;
   const config = JSON.parse(configKey());
   config.criterion = "count";
   config.target_val = Math.max(2, Number(maxTilesInput.value) || 2);
-  config.time_limit_ms = config.time_limit_ms ?? 15000;
   config.ui_yield_interval_ms = 250;
   growthRunning = true;
-  growthBenchmarkButton.textContent = "Stop comparison";
-  growthBenchmarkStatus.textContent = `Measuring generic search to ${config.target_val} tiles…`;
+  growthBenchmarkButton.textContent = "Stop all";
+  growthBenchmarkStatus.textContent = `Running four searches simultaneously to ${config.target_val} tiles…`;
 
-  growthWorker = new Worker(new URL("./growth-benchmark-worker.js?v=20260727-free-range-backtracking-v17", import.meta.url), { type: "module" });
-  growthWorker.addEventListener("message", event => {
-    const message = event.data ?? {};
-    if (message.sequence !== sequence) return;
-    if (message.type === "series-start") {
-      growthSeries.set(message.mode.id, { mode: message.mode, points: [] });
-      growthBenchmarkStatus.textContent = `Measuring ${message.mode.label}…`;
-    } else if (message.type === "sample") {
-      const series = growthSeries.get(message.mode) ?? { points: [] };
-      series.points.push(message.point);
-      growthSeries.set(message.mode, series);
-      renderGrowthChart();
-    } else if (message.type === "series-finished") {
-      const series = growthSeries.get(message.result.mode) ?? { points: [] };
-      series.result = message.result;
-      if (!series.points.length) series.points = message.result.points ?? [];
-      growthSeries.set(message.result.mode, series);
-      renderGrowthChart();
-    } else if (message.type === "finished") {
-      growthWorker?.terminate();
-      growthWorker = null;
-      finishGrowthBenchmark(message.results ?? []);
-    } else if (message.type === "error") {
-      stopGrowthBenchmark(`Comparison error: ${message.error}`);
+  const refreshStatus = () => {
+    const summaries = GROWTH_MODES.map(mode => {
+      const series = growthSeries.get(mode.id);
+      const latest = series?.points?.at(-1);
+      if (series?.result) return formatGrowthResult(series.result, config.target_val);
+      if (series?.status && !["running", "starting"].includes(series.status)) return `${mode.label}: ${series.status}`;
+      return `${mode.label} ${latest?.tiles ?? 0}`;
+    });
+    growthBenchmarkStatus.textContent = summaries.join(" · ");
+  };
+
+  const finishWorker = (modeId) => {
+    growthWorkers.get(modeId)?.terminate();
+    growthWorkers.delete(modeId);
+    if (!growthWorkers.size) {
+      finishGrowthBenchmark(GROWTH_MODES.map(mode => growthSeries.get(mode.id)?.result).filter(Boolean));
+    } else {
+      refreshStatus();
     }
-  });
-  growthWorker.addEventListener("error", error => stopGrowthBenchmark(`Comparison error: ${error.message}`));
-  growthWorker.postMessage({ type: "start", sequence, config });
+  };
+
+  for (const mode of GROWTH_MODES) {
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-four-modes-v18", import.meta.url), { type: "module" });
+    growthWorkers.set(mode.id, worker);
+    worker.addEventListener("message", event => {
+      const message = event.data ?? {};
+      if (message.sequence !== sequence) return;
+      const series = growthSeries.get(mode.id);
+      if (!series) return;
+      if (message.type === "series-start") {
+        series.mode = message.mode;
+        series.status = "running";
+      } else if (message.type === "prototile-info") {
+        series.prototileInfo = message.info;
+      } else if (message.type === "mode-status") {
+        series.status = message.text;
+      } else if (message.type === "sample") {
+        series.points.push(message.point);
+        if (message.snapshot) series.snapshot = message.snapshot;
+        renderGrowthChart();
+        if (selectedGrowthMode() === mode.id && message.snapshot) showSelectedGrowthSnapshot();
+      } else if (message.type === "series-finished") {
+        series.result = message.result;
+        series.status = message.result.success ? "finished" : message.result.searchIncomplete ? "search limit" : "terminated";
+        if (!series.points.length) series.points = message.result.points ?? [];
+        renderGrowthChart();
+      } else if (message.type === "finished") {
+        series.result = message.result;
+        finishWorker(mode.id);
+      } else if (message.type === "error") {
+        series.status = `error: ${message.error}`;
+        finishWorker(mode.id);
+      }
+      refreshStatus();
+    });
+    worker.addEventListener("error", error => {
+      const series = growthSeries.get(mode.id);
+      if (series) series.status = `error: ${error.message}`;
+      finishWorker(mode.id);
+    });
+    worker.postMessage({ type: "start", sequence, config, mode: mode.id });
+  }
 }
 
 function bindControls() {
@@ -2986,7 +2929,11 @@ function bindControls() {
     control.addEventListener("change", invalidatePausedRunIfNeeded);
   });
 
-  strategyRadios.forEach(radio => radio.addEventListener("change", updateStrategyUI));
+  strategyRadios.forEach(radio => radio.addEventListener("change", () => {
+    updateStrategyUI();
+    showSelectedGrowthSnapshot();
+    renderGrowthChart();
+  }));
   polycubeLatticeRadios.forEach(radio => radio.addEventListener("change", () => {
     polycubeLatticeSelect.value = selectedPolycubeLattice();
     if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true, rebuildFaces: false });
@@ -3019,15 +2966,9 @@ function bindControls() {
   });
 
   runButton.addEventListener("click", () => {
-    if (proposalLearningRunning) stopProposalLearning("Learning stopped for the main run.");
     if (running) return pauseRun();
     if (paused && pausedConfigKey === configKey() && solverWorkerActive) return continueRun();
     return startNewRun();
-  });
-
-  learnProposalButton.addEventListener("click", () => {
-    if (proposalLearningRunning) stopProposalLearning();
-    else startProposalLearning();
   });
 
   growthBenchmarkButton.addEventListener("click", () => {
@@ -3083,6 +3024,5 @@ applyModeDefaults();
 refreshFigureSelectionUI();
 bindControls();
 setRunButton();
-setProposalLearningButton();
 animate();
 void restoreLatestCheckpoint();

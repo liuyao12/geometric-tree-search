@@ -392,7 +392,7 @@ export const createTilingStream = (() => {
       return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
     };
     const nowId = () => (++nodeCounter);
-    const normalizedStrategy = ["freestyle", "free_range"].includes(config.tiling_strategy)
+    const normalizedStrategy = ["freestyle", "free_range", "learning_free_range"].includes(config.tiling_strategy)
       ? "generic"
       : config.tiling_strategy;
     const searchStats = {
@@ -1936,11 +1936,13 @@ export const createTilingStream = (() => {
       };
     };
     const findPeriodicTemplate = (requestedPeriod) => {
-      requestedPeriod = Math.max(1, Math.min(4, Math.floor(+requestedPeriod || 1)));
+      requestedPeriod = Math.max(1, Math.floor(+requestedPeriod || 1));
       // Refined FCC and 1/2 Z³ coordinates multiply polycube cell volumes by
       // eight. A cap of 64 silently excluded ordinary catalog tiles such as
       // Letter O and 2-Cross before the quotient checker even ran.
-      const maxCellVolume = Math.max(1, +config.periodic_template_max_volume || 512);
+      const maxCellVolume = config.periodic_patch_unbounded
+        ? Infinity
+        : Math.max(1, +config.periodic_template_max_volume || 512);
       const translationalPolyhedronTemplate = findTranslationalPolyhedronTemplate();
       if (translationalPolyhedronTemplate) return translationalPolyhedronTemplate;
       const requireAllTypes = prototiles.length > 1 && config.periodic_require_all_types !== false;
@@ -2689,15 +2691,15 @@ export const createTilingStream = (() => {
     };
     async function* tryPeriodicTemplatePatch(parentId) {
       if (!periodicPreflightEnabled || goalMet()) return false;
-      const progressiveMax = Number(config.periodic_patch_max_tiles);
-      const patchSizes = Number.isFinite(progressiveMax)
-        ? Array.from(
-          { length: Math.max(1, Math.min(4, Math.floor(progressiveMax))) },
-          (_, index) => index + 1
-        )
-        : [Math.max(1, Math.min(4, Math.floor(+config.periodic_tile_count || 2)))];
       let template = null;
-      for (const patchSize of patchSizes) {
+      const progressiveMax = Number(config.periodic_patch_max_tiles);
+      const unbounded = !!config.periodic_patch_unbounded;
+      const maximumPatchSize = unbounded
+        ? Infinity
+        : Number.isFinite(progressiveMax)
+          ? Math.max(1, Math.floor(progressiveMax))
+          : Math.max(1, Math.floor(+config.periodic_tile_count || 2));
+      for (let patchSize = 1; patchSize <= maximumPatchSize && !overBudget(); patchSize++) {
         yield nodeStatus(
           parentId,
           "working",

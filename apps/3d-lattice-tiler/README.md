@@ -24,18 +24,27 @@ engine in `solver-worker.js`.
 
 ## Solver modes
 
-The UI exposes three distinct modes:
+The UI exposes four modes and can run all four concurrently in independent
+workers:
 
-1. **Translational** progressively checks 1-, 2-, 3-, and 4-tile motifs using
-   an exact finite-quotient (3-torus) cover test. It succeeds only when
-   translated copies of the certified whole patch tile 3-space.
-2. **Isohedral** builds the first corona and records its
-   tile-type/displacement rules. Each legal rule is then applied around every
-   subsequent tile whenever possible.
-3. **Free-range** is the baseline tree search. It applies forced moves first,
+1. **Free-range** is the baseline tree search. It applies forced moves first,
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
+2. **Learning Free-range** runs the same search while updating geometric
+   proposal priorities from successful and failed branches.
+3. **Translational** progressively checks increasingly large motifs using an
+   exact finite-quotient (3-torus) cover test. It succeeds only when translated
+   copies of the certified whole patch tile 3-space.
+4. **Isohedral** builds the first corona and records its
+   tile-type/displacement rules. Each legal rule is then applied around every
+   subsequent tile whenever possible.
+
+The growth chart uses one wall clock for all four workers. Selecting a mode
+switches the viewport to its latest patch without stopping the other searches.
+An exhausted isohedral search drops to zero. An uncertified translational search
+continues increasing the motif size until certified, stopped, or limited by an
+explicit search cap.
 
 The lower-level API uses `generic` internally and retains `freestyle` as a
 backward-compatible alias of `free_range`. It also retains `auto` for regression
@@ -52,12 +61,10 @@ points for the selected Z³, FCC, or ½Z³ tier.
 
 ## Learned proposals
 
-**Learn & run** trains one generic placement-sequence proposal for the current
-tile system. It measures the Free-range baseline, evaluates proposal programs
-with the same exact legality checks, and retains a program only when its
-tiles-versus-time curve improves without reducing the best tile count. Accepted
-programs are stored locally per tile system and immediately replayed. Different
-tiles may therefore retain different programs from the same learner.
+The concurrent Learning Free-range mode updates proposal priorities during the
+active search. The reusable headless trainer can additionally evolve and retain
+tile-specific proposal programs only when their tiles-versus-time curve beats
+the Free-range baseline without reducing the best tile count.
 
 For repeatable headless training:
 
