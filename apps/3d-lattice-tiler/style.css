@@ -358,7 +358,7 @@ input[type="text"]:focus {
 
 .action-row {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   gap: 8px;
 }
 
@@ -486,7 +486,7 @@ button:disabled {
 }
 
 .mode-cards {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .lattice-cards label > span {
@@ -943,13 +943,25 @@ button:disabled {
 .growth-legend,
 .growth-empty { fill: var(--muted); font: 11px Inter, ui-sans-serif, system-ui, sans-serif; }
 .growth-series { fill: none; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
-.growth-series-coverage { stroke: #6f7c77; stroke-dasharray: 6 4; }
+.growth-series-free_range { stroke: #6f7c77; stroke-dasharray: 6 4; }
+.growth-series-learning { stroke: var(--accent); }
+.growth-series-translational { stroke: #315f9f; }
 .growth-series-isohedral { stroke: var(--accent-2); }
-.growth-series-auto { stroke: var(--accent); }
-.growth-marker-coverage { fill: var(--surface); stroke: #6f7c77; }
+.growth-marker-free_range { fill: var(--surface); stroke: #6f7c77; }
+.growth-marker-learning { fill: var(--accent); stroke: var(--accent); }
+.growth-marker-translational { fill: var(--surface); stroke: #315f9f; }
 .growth-marker-isohedral { fill: var(--surface); stroke: var(--accent-2); }
-.growth-marker-auto { fill: var(--accent); stroke: var(--accent); }
 .growth-marker { stroke-width: 2; vector-effect: non-scaling-stroke; }
+.growth-chart-wrap svg[data-active-mode] .growth-series,
+.growth-chart-wrap svg[data-active-mode] .growth-marker { opacity: 0.32; }
+.growth-chart-wrap svg[data-active-mode="free_range"] .growth-series-free_range,
+.growth-chart-wrap svg[data-active-mode="free_range"] .growth-marker-free_range,
+.growth-chart-wrap svg[data-active-mode="learning"] .growth-series-learning,
+.growth-chart-wrap svg[data-active-mode="learning"] .growth-marker-learning,
+.growth-chart-wrap svg[data-active-mode="translational"] .growth-series-translational,
+.growth-chart-wrap svg[data-active-mode="translational"] .growth-marker-translational,
+.growth-chart-wrap svg[data-active-mode="isohedral"] .growth-series-isohedral,
+.growth-chart-wrap svg[data-active-mode="isohedral"] .growth-marker-isohedral { opacity: 1; }
 
 .tree-panel {
   min-width: 0;

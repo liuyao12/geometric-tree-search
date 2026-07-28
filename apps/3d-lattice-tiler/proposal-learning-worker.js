@@ -1,4 +1,4 @@
-import { trainProposalProgram } from "./proposal-training.js?v=20260727-free-range-backtracking-v17";
+import { trainProposalProgram } from "./proposal-training.js?v=20260728-four-modes-v18";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
