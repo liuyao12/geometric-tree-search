@@ -40,6 +40,22 @@ for (const modeKey of ["cube", "tetragonal_disphenoid"]) {
     `${modeKey} must propagate almost every tile after the root and seed relation`
   );
   assert.equal(stats.backtracks, 0, `${modeKey} should not need a fallback branch`);
+  assert.ok(
+    stats.isohedral_newer_layer_deferrals > 0,
+    `${modeKey} must defer legal patch copies that skip the oldest frontier layer`
+  );
 }
+
+const nonRod = await solve("gyrobifastigium", 30);
+assert.equal(nonRod.success, true, "gyrobifastigium must find balanced isohedral growth");
+assert.equal(nonRod.search_stats.growth_axis_rank, 3);
+assert.ok(
+  nonRod.search_stats.growth_isotropy >= 0.6,
+  `oldest-frontier propagation must prevent rod growth: ${nonRod.search_stats.growth_spans.join(" × ")}`
+);
+assert.ok(
+  nonRod.search_stats.isohedral_newer_layer_deferrals > 0,
+  "gyrobifastigium must defer newer-end patch copies while older frontier points remain"
+);
 
 console.log("3D isohedral patch-propagation regressions passed");

@@ -414,6 +414,7 @@ export const createTilingStream = (() => {
       isohedral_patch_copies_applied: 0,
       isohedral_tiles_propagated: 0,
       isohedral_patch_conflicts: 0,
+      isohedral_newer_layer_deferrals: 0,
       // Kept as zero-valued compatibility counters for existing headless
       // consumers. This standalone engine does not install a GCTS runtime.
       marking_observed_failures: 0,
@@ -3295,7 +3296,7 @@ export const createTilingStream = (() => {
         undoMove(entry.move, entry.rollback, { captureBest: false });
       }
     };
-    const applyIsohedralPatchImage = (transform, sourcePatch) => {
+    const buildIsohedralPatchImage = (transform, sourcePatch) => {
       const existing = new Set(state.placements.map(placementGeometryKey));
       const pending = [];
       const pendingKeys = new Set();
@@ -3307,6 +3308,45 @@ export const createTilingStream = (() => {
         pendingKeys.add(geometryKey);
         pending.push(move);
       }
+      return pending;
+    };
+    const moveOldestFrontierTouches = move => {
+      const oldestLayer = minFrontierPointLayer();
+      return sharedFrontierPoints(move).reduce((count, point) =>
+        count + (frontierPointLayer(vecKey(point)) === oldestLayer ? 1 : 0), 0);
+    };
+    const isohedralPatchImagePriority = pending => {
+      let oldestLayer = Infinity;
+      let oldestTouches = 0;
+      for (const move of pending) {
+        for (const point of sharedFrontierPoints(move)) {
+          const layer = frontierPointLayer(vecKey(point));
+          if (layer < oldestLayer) {
+            oldestLayer = layer;
+            oldestTouches = 1;
+          } else if (layer === oldestLayer) {
+            oldestTouches += 1;
+          }
+        }
+      }
+      const centers = [
+        ...state.placements.map(placementCenter),
+        ...pending.map(placementCenter)
+      ];
+      const spans = [0, 1, 2].map(axis =>
+        Math.max(...centers.map(center => center[axis]))
+        - Math.min(...centers.map(center => center[axis]))
+      );
+      const maximumSpan = Math.max(...spans);
+      return {
+        oldest_layer: oldestLayer,
+        oldest_touches: oldestTouches,
+        axis_rank: spans.filter(span => span > 1e-9).length,
+        isotropy: maximumSpan > 1e-9 ? Math.min(...spans) / maximumSpan : 0,
+        maximum_span: maximumSpan
+      };
+    };
+    const applyIsohedralPatchImage = pending => {
       if (!pending.length) return [];
       const applied = [];
       for (const move of pending) {
@@ -3343,59 +3383,71 @@ export const createTilingStream = (() => {
         firstPass = false;
         madeProgress = false;
         const sourcePatch = state.placements.slice();
-        const transformsByAnchor = [];
-        const distinctTransforms = new Set();
+        const transforms = new Map();
         for (const anchor of sourcePatch) {
-          const anchorTransforms = new Map();
           for (const transform of isohedralRootTransformsTo(anchor)) {
             const transformKey = isohedralTransformKey(transform);
-            anchorTransforms.set(transformKey, transform);
-            distinctTransforms.add(transformKey);
+            transforms.set(transformKey, transform);
             if (transform.determinant < 0) searchStats.reflection_continuations_seen += 1;
           }
-          transformsByAnchor.push(anchorTransforms);
         }
         searchStats.isohedral_transforms_discovered = Math.max(
           searchStats.isohedral_transforms_discovered,
-          distinctTransforms.size
+          transforms.size
         );
-        for (const anchorTransforms of transformsByAnchor) {
-          let compatibleImage = false;
-          for (const [transformKey, transform] of anchorTransforms) {
-            const attemptKey = `${transformKey}@${sourcePatch.length}`;
-            if (attempted.has(attemptKey)) continue;
-            attempted.add(attemptKey);
-            const additions = applyIsohedralPatchImage(transform, sourcePatch);
-            if (additions === null) {
-              searchStats.isohedral_patch_conflicts += 1;
-              continue;
-            }
-            compatibleImage = true;
-            if (!additions.length) continue;
-            madeProgress = true;
-            searchStats.isohedral_patch_copies_applied += 1;
-            searchStats.isohedral_tiles_propagated += additions.length;
-            searchStats.forced_total += additions.length;
-            for (const entry of additions) {
-              applied.push(entry);
-              yield placementDelta("add", entry.move, entry.rollback, parentId);
-            }
-            yield nodeStatus(
-              parentId,
-              "working",
-              `lifted patch: +${additions.length}`,
-              preflightStatusPayload()
-            );
-            if (shouldSnapshot()) {
-              yield snapshot(parentId);
-              await tick();
-            }
-            await yieldToBrowser();
+        const imageCandidates = [];
+        for (const [transformKey, transform] of transforms) {
+          const attemptKey = `${transformKey}@${sourcePatch.length}`;
+          if (attempted.has(attemptKey)) continue;
+          attempted.add(attemptKey);
+          const pending = buildIsohedralPatchImage(transform, sourcePatch);
+          if (pending === null || !pending.length) continue;
+          imageCandidates.push({
+            transform,
+            pending,
+            priority: isohedralPatchImagePriority(pending)
+          });
+        }
+        imageCandidates.sort((left, right) =>
+          left.priority.oldest_layer - right.priority.oldest_layer
+          || right.priority.oldest_touches - left.priority.oldest_touches
+          || right.priority.axis_rank - left.priority.axis_rank
+          || right.priority.isotropy - left.priority.isotropy
+          || left.priority.maximum_span - right.priority.maximum_span
+          || left.pending.length - right.pending.length
+        );
+        const oldestFrontierLayer = minFrontierPointLayer();
+        const eligible = imageCandidates.filter(candidate =>
+          candidate.priority.oldest_layer === oldestFrontierLayer
+        );
+        searchStats.isohedral_newer_layer_deferrals += imageCandidates.length - eligible.length;
+        for (const candidate of eligible) {
+          const additions = applyIsohedralPatchImage(candidate.pending);
+          if (additions === null) {
+            searchStats.isohedral_patch_conflicts += 1;
+            continue;
           }
-          if (!compatibleImage) {
-            applied.inconsistent = true;
-            return applied;
+          madeProgress = additions.length > 0;
+          if (!madeProgress) continue;
+          searchStats.isohedral_patch_copies_applied += 1;
+          searchStats.isohedral_tiles_propagated += additions.length;
+          searchStats.forced_total += additions.length;
+          for (const entry of additions) {
+            applied.push(entry);
+            yield placementDelta("add", entry.move, entry.rollback, parentId);
           }
+          yield nodeStatus(
+            parentId,
+            "working",
+            `oldest-layer patch: +${additions.length}`,
+            preflightStatusPayload()
+          );
+          if (shouldSnapshot()) {
+            yield snapshot(parentId);
+            await tick();
+          }
+          await yieldToBrowser();
+          break;
         }
       }
       return applied;
@@ -3436,6 +3488,7 @@ export const createTilingStream = (() => {
         const moves = await preflightFaceCandidatesForOption(option, candidateCap);
         for (const move of moves) {
           if (move.prototile_idx !== state.placements[0].prototile_idx) continue;
+          if (moveOldestFrontierTouches(move) === 0) continue;
           candidateMap.set(move.dedup_key ?? placementGeometryKey(move), move);
         }
         await yieldToBrowser();

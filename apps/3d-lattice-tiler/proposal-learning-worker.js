@@ -1,4 +1,4 @@
-import { trainProposalProgram } from "./proposal-training.js?v=20260728-motif-rgb-v23";
+import { trainProposalProgram } from "./proposal-training.js?v=20260728-oldest-frontier-v24";
 
 let activeSequence = 0;
 let stopToken = { stop: false };

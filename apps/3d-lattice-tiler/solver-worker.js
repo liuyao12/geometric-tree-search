@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-motif-rgb-v23";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-oldest-frontier-v24";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
