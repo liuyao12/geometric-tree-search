@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-rgb-cells-v22";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-motif-rgb-v23";
 
 let activeSequence = 0;
 let stopToken = { stop: false };

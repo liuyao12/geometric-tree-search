@@ -37,28 +37,32 @@ assert.ok(translational.periodicCertificate, "translational mode requires an exa
 assert.equal(translational.final.search_stats.branch_choices_visited, 0);
 assert.equal(translational.final.search_stats.growth_axis_rank, 3);
 const translationalColorOffset = tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET;
-const translationalCellColorId = cell =>
-  translationalColorOffset + cell.reduce((index, coordinate, axis) =>
+const translationalCellColorId = (baseColorId, cell) =>
+  translationalColorOffset + baseColorId * 8 + cell.reduce((index, coordinate, axis) =>
     index + (((coordinate % 2) + 2) % 2) * (2 ** axis), 0);
 for (const placement of translational.latestSnapshot?.placements ?? []) {
   assert.ok(Number.isInteger(placement.periodic_motif_index));
+  assert.ok(Number.isInteger(placement.periodic_base_color_id));
   assert.ok(Array.isArray(placement.periodic_cell));
   assert.equal(
     placement.color_id,
-    translationalCellColorId(placement.periodic_cell),
-    "each translation direction must toggle its own RGB channel"
+    translationalCellColorId(placement.periodic_base_color_id, placement.periodic_cell),
+    "each translation direction must toggle the motif tile's own base RGB color"
   );
 }
 const rgbChannels = color => [1, 3, 5].map(index => Number.parseInt(color.slice(index, index + 2), 16));
-const baseTranslationColor = rgbChannels(tileSpecs.COLOR_PALETTE[translationalColorOffset]);
-for (let axis = 0; axis < 3; axis++) {
-  const shiftedColor = rgbChannels(tileSpecs.COLOR_PALETTE[translationalColorOffset + 2 ** axis]);
-  for (let channel = 0; channel < 3; channel++) {
-    assert.equal(
-      (shiftedColor[channel] - baseTranslationColor[channel] + 256) % 256,
-      channel === axis ? 128 : 0,
-      `translation axis ${axis} must change only RGB channel ${axis}`
-    );
+for (let baseColorId = 0; baseColorId < tileSpecs.BASE_COLOR_PALETTE_SIZE; baseColorId++) {
+  const variantOffset = translationalColorOffset + baseColorId * 8;
+  const baseTranslationColor = rgbChannels(tileSpecs.COLOR_PALETTE[variantOffset]);
+  for (let axis = 0; axis < 3; axis++) {
+    const shiftedColor = rgbChannels(tileSpecs.COLOR_PALETTE[variantOffset + 2 ** axis]);
+    for (let channel = 0; channel < 3; channel++) {
+      assert.equal(
+        (shiftedColor[channel] - baseTranslationColor[channel] + 256) % 256,
+        channel === axis ? 128 : 0,
+        `translation axis ${axis} must change only RGB channel ${axis} for base color ${baseColorId}`
+      );
+    }
   }
 }
 assert.ok(

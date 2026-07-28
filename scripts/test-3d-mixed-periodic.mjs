@@ -71,9 +71,10 @@ assert.equal(
 assert.ok(finished?.success, "mixed periodic growth must reach its target");
 assert.equal(finalSnapshot?.placements?.length, config.target_val);
 const colorsByCell = new Map();
+const baseColorsByMotif = new Map();
 const translationalColorOffset = tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET;
-const translationalCellColorId = cell =>
-  translationalColorOffset + cell.reduce((index, coordinate, axis) =>
+const translationalCellColorId = (baseColorId, cell) =>
+  translationalColorOffset + baseColorId * 8 + cell.reduce((index, coordinate, axis) =>
     index + (((coordinate % 2) + 2) % 2) * (2 ** axis), 0);
 for (const placement of finalSnapshot.placements) {
   assert.ok(
@@ -84,24 +85,37 @@ for (const placement of finalSnapshot.placements) {
     Array.isArray(placement.periodic_cell),
     "every certified translational placement must retain its translation cell"
   );
+  assert.ok(
+    Number.isInteger(placement.periodic_base_color_id),
+    "every motif tile must retain its randomly assigned base color"
+  );
+  const knownBaseColor = baseColorsByMotif.get(placement.periodic_motif_index);
+  if (knownBaseColor == null) {
+    baseColorsByMotif.set(placement.periodic_motif_index, placement.periodic_base_color_id);
+  } else {
+    assert.equal(
+      placement.periodic_base_color_id,
+      knownBaseColor,
+      "translated copies of one motif tile must retain its base color"
+    );
+  }
   const cellKey = placement.periodic_cell.join(",");
   const cellColors = colorsByCell.get(cellKey) ?? new Set();
   cellColors.add(placement.color_id);
   colorsByCell.set(cellKey, cellColors);
   assert.equal(
     placement.color_id,
-    translationalCellColorId(placement.periodic_cell),
-    "each translation direction must toggle its own RGB channel"
+    translationalCellColorId(placement.periodic_base_color_id, placement.periodic_cell),
+    "each translation direction must toggle the motif tile's own base RGB color"
   );
 }
 assert.ok(
-  [...colorsByCell.values()].every(colors => colors.size === 1),
-  "every tile in a multi-tile translation-cell copy must share one color"
+  new Set(baseColorsByMotif.values()).size > 1,
+  "a multi-tile unit patch must preserve distinct randomly assigned motif colors"
 );
-assert.deepEqual(
-  [...new Set(finalSnapshot.placements.map(placement => placement.color_id))].sort(),
-  Array.from({ length: 8 }, (_, index) => translationalColorOffset + index),
-  "a three-dimensional translated patch must expose all eight RGB parity classes"
+assert.ok(
+  [...colorsByCell.values()].some(colors => colors.size > 1),
+  "tiles inside one translated multi-tile patch copy must keep their individual colors"
 );
 assert.deepEqual(
   finalSnapshot.tile_counts.map(item => item.type_idx),
