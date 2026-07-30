@@ -13,6 +13,11 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
+- [Penrose Model-Set Tiler](./apps/penrose-model-set/)
+  An exact cyclotomic search laboratory for genuine P2 kite–dart and P3 rhomb
+  prototiles. Family presets stage a catalog that can be edited before running;
+  mixed P2/P3 searches use a common exact atomization and expose placements,
+  early prunes, and rollbacks live.
 - [A₂ Online Tiler](./apps/a2-online-tiler/)
   A separate live GCTS laboratory with outward growth around an arbitrary seed
   and exact finite-boundary decision modes. Its catalog supports Hat, Turtle,
