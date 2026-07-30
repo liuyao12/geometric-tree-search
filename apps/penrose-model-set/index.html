@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Penrose Model-Set Tiler — GCTS</title>
+  <meta name="description" content="A live backtracking laboratory for point-capacity tilings on a Penrose model set.">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./catalog.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <header>
+        <p class="eyebrow"><a href="../../">GCTS</a> / aperiodic laboratory</p>
+        <h1>Penrose<br>Model-Set Tiler</h1>
+        <p class="lede">The lattice is gone. The local capacity rule survives.</p>
+      </header>
+
+      <section class="setting-card">
+        <div class="section-title"><span>01</span><h2>The host set</h2></div>
+        <p><strong>Only reachable support is drawn.</strong> The faint points are the exact vertices touched by some tile in the current finite P2 or P3 patch—not a dense view of the universal cyclotomic module.</p>
+        <code>S(T,R) = { p : p is a vertex of an admitted tile in R }</code>
+        <div class="tags"><span>finite active support</span><span>exact Z[ζ₅]</span><span>no model floats</span></div>
+      </section>
+
+      <section>
+        <div class="section-title"><span>02</span><h2>Point-capacity rule</h2></div>
+        <p class="explain">Each corner value is its angle measured in 36° units. A complete turn therefore contains ten units.</p>
+        <div class="equation"><b>1</b><span>value unit</span><strong>= 36°</strong></div>
+        <div class="weights">
+          <div><i id="weightAIcon" class="thin"></i><span id="weightALabel">thin rhomb</span><b id="weightAValue">1 / 4</b></div>
+          <div><i id="weightBIcon" class="thick"></i><span id="weightBLabel">thick rhomb</span><b id="weightBValue">2 / 3</b></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title catalog-title"><span>03</span><h2>Mixable catalog</h2><button id="clearCatalog" type="button">clear</button></div>
+        <p class="explain">P1, P2, and P3 follow the standard Penrose naming. A family button only preselects its tiles. You may then toggle individual implemented tiles across P2 and P3; the search starts only when you press Run. P1 remains disabled until its exact recomposition is implemented.</p>
+        <div class="family-actions"><button data-family="P3" type="button">P3 · 2</button><button data-family="P2" type="button">P2 · 2</button><button data-family="P1" type="button" disabled title="Exact P1 recomposition not implemented yet">P1 · 6</button><button data-family="implemented" type="button">P2+P3 · 4</button></div>
+        <div id="tileCatalog" class="tile-catalog" aria-label="Penrose prototile catalog"></div>
+        <p id="catalogState" class="catalog-state"></p>
+      </section>
+
+      <section>
+        <div class="section-title"><span>04</span><h2>GCTS marking learner</h2></div>
+        <p class="explain"><strong>Ammann bars do not generally live on the vertex set.</strong> Their ports lie inside tile edges at exact algebraic positions. Learn a sparse equivariant tensor over those support ports, then test whether its induced strands are genuinely straight.</p>
+        <code>θ[tile, orientation, exact port, channel] ∈ ℝ</code>
+        <button id="learnMarkingButton" class="learn-button" type="button">Learn P3 marking</button>
+        <p id="ammannVerdict" class="ammann-verdict" data-state="idle">Ammann audit: waiting for a marking.</p>
+        <div id="markingResult" class="marking-result" data-state="idle">
+          <div><span>rank</span><b id="rankMetric">—</b></div>
+          <div><span>vertex stars</span><b id="starMetric">—</b></div>
+          <div><span>bar straightness</span><b id="barMetric">—</b></div>
+          <div><span>tensor slots</span><b id="tensorMetric">—</b></div>
+          <p id="markingStatus">No marking learned yet.</p>
+        </div>
+        <div class="pruning-comparison" aria-label="Early pruning comparison">
+          <div class="comparison-head"><b>Held-out branch work</b><span id="comparisonContacts">waiting</span></div>
+          <div class="comparison-labels"><span>filter</span><span>nodes</span><span>backtracks</span><span>early prunes</span><span>false prunes</span></div>
+          <div><b>capacity only</b><span id="baseNodes">—</span><span id="baseBacktracks">—</span><span id="basePrunes">—</span><span id="baseFalse">—</span></div>
+          <div><b>rank-five only</b><span id="rankNodes">—</span><span id="rankBacktracks">—</span><span id="rankPrunes">—</span><span id="rankFalse">—</span></div>
+          <div class="comparison-winner"><b>compatibility tensor</b><span id="tensorNodes">—</span><span id="tensorBacktracks">—</span><span id="tensorPrunes">—</span><span id="tensorFalse">—</span></div>
+          <p id="comparisonSummary">The same ordered proposals will be replayed against all three filters.</p>
+        </div>
+        <label class="check"><input id="markingToggle" type="checkbox" checked disabled><span>show learned edge marking</span></label>
+        <label class="check"><input id="barsToggle" type="checkbox" checked disabled><span>show Ammann-bar candidate strands</span></label>
+      </section>
+
+      <section>
+        <div class="section-title"><span>05</span><h2>Experiment</h2></div>
+        <label class="field"><span>Patch target</span><input id="targetInput" type="range" min="60" max="420" step="20" value="240"><output id="targetOutput">240 tiles</output></label>
+        <label class="field"><span>Trace speed</span><input id="speedInput" type="range" min="1" max="100" value="62"><output id="speedOutput">62%</output></label>
+        <label class="field"><span>Window phase</span><input id="phaseInput" type="range" min="0" max="100" value="17"><output id="phaseOutput">0.17</output></label>
+        <label class="check"><input id="pointsToggle" type="checkbox" checked><span>show active point values</span></label>
+        <label class="check"><input id="atlasToggle" type="checkbox" checked><span>show reachable exact support</span></label>
+        <label class="check"><input id="windowToggle" type="checkbox" checked><span>show acceptance window inset</span></label>
+      </section>
+
+      <div class="run-row">
+        <button id="runButton" class="primary" type="button">Run selected set</button>
+        <button id="stepButton" type="button">Step</button>
+        <button id="resetButton" type="button">Reset</button>
+      </div>
+      <p id="status" class="status" aria-live="polite">Building the pentagrid patch…</p>
+      <details>
+        <summary>Why this is the proper generalization</summary>
+        <p>Each individual Penrose vertex set is Delone, while the common cyclotomic module is dense. The universal module remains the exact ambient address space, but the canvas now draws only the finite support reachable by the active patch.</p>
+        <p>All model coordinates are exact integer coefficient vectors in the basis 1, ζ₅, …, ζ₅⁴, with an exact integer denominator. Pentagrid floors and radius comparisons are performed in ℚ(√5). Conversion to floating-point occurs only when a coordinate is projected to a canvas pixel.</p>
+        <p>Ammann-bar crossings require an augmented support set on tile edges, for example exact parameters involving φ/2 = (1+√5)/4. These are algebraic points, but usually not Penrose vertices. The current midpoint support is an intentionally visible baseline; the next learner adds the classical one/double golden ports.</p>
+        <p>The P2 view follows the standard mutual-local-derivation rule illustrated in Figures 30–32 of <a href="https://www.cs.toronto.edu/~jessebett/projects/penrose-tiling/Thesis/Bettencourt_Penrose_Tiling_Thesis_2015_reducedsize.pdf#page=48" target="_blank" rel="noreferrer">Bettencourt’s Penrose-tiling thesis ↗</a>.</p>
+        <p>This first implementation uses de Bruijn’s regular pentagrid, dual to a Penrose rhomb tiling. The accepted completion is certified by that pentagrid window oracle. <a href="https://pure.tue.nl/ws/files/4344195/597566.pdf" target="_blank" rel="noreferrer">Original 1981 paper ↗</a></p>
+        <p><a href="https://arxiv.org/abs/2603.13553" target="_blank" rel="noreferrer">2026 cocycle paper ↗</a> explains why matching rules, bar continuity, cycle closure, and height functions are related but distinct tests. <a href="https://arxiv.org/abs/2205.13973" target="_blank" rel="noreferrer">2022 Ammann-bar paper ↗</a> gives the geometric straight-line viewpoint and its equivalence to edge matching.</p>
+      </details>
+    </aside>
+
+    <section class="stage">
+      <canvas id="canvas" aria-label="Live Penrose tiling backtracking search"></canvas>
+      <div class="canvas-head">
+        <div><span id="presentationLabel">LIVE SEARCH / EXACT P3 RHOMBS</span><b id="eventLabel">initializing the reachable support</b></div>
+        <div class="live paused"><i></i><span id="runState">ready</span></div>
+      </div>
+      <div class="legend">
+        <span><i class="atlas-point"></i>reachable</span>
+        <span><i id="legendAIcon" class="tile-thick"></i><em id="legendALabel">thick</em></span>
+        <span><i id="legendBIcon" class="tile-thin"></i><em id="legendBLabel">thin</em></span>
+        <span><i class="tile-trial"></i>trial</span>
+        <span><i class="tile-backtrack"></i>rollback</span>
+      </div>
+      <aside id="windowInset" class="window-inset">
+        <span>INTERNAL SPACE</span>
+        <canvas id="windowCanvas" width="220" height="150" aria-label="Cut and project acceptance window"></canvas>
+        <small>π⊥(L) ∩ W</small>
+      </aside>
+      <div class="timeline"><div id="timelineFill"></div><i id="timelineHead"></i></div>
+      <div class="metrics">
+        <div><span>reachable sites</span><b id="atlasMetric">0</b></div>
+        <div><span>placed</span><b id="placedMetric">0</b></div>
+        <div><span>nodes</span><b id="nodesMetric">0</b></div>
+        <div><span>backtracks</span><b id="backtrackMetric">0</b></div>
+        <div><span>saturated sites</span><b id="saturatedMetric">0</b></div>
+        <div><span>max value</span><b>10</b></div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
