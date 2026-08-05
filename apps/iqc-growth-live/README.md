@@ -23,6 +23,13 @@ A soft penalty for overrepresented angular sectors, plus stochastic tie
 breaking, keeps growth approximately radial unless compatibility genuinely
 forces a preferred direction.
 
+Two live structural checks compare the observed window with the sites recovered
+by the search. A finite-window radial distribution function uses the reference
+median nearest-neighbor spacing `a`, while the coordination-number distribution
+uses a fixed first-shell cutoff of `1.32a`. During continuation, both charts keep
+the recovered 216-site window as the comparison sample so the larger frontier
+does not silently change the validation domain.
+
 The fixed benchmark numbers in the interface come from the offline BCI-2P
 reference experiments. The browser animation is deliberately labeled as a
 structural surrogate rather than a molecular-dynamics trajectory.

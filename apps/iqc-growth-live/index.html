@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Watch a three-dimensional, two-species GCTS pipeline learn overlapping clusters, reconstruct an observed atomic window, and continue growing through its frontier.">
   <title>GCTS Matter — Learned Clusters &amp; Continuous Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260805-4">
+  <link rel="stylesheet" href="./style.css?v=20260805-5">
   <script type="importmap">
     {
       "imports": {
@@ -120,6 +120,25 @@
           <article><small id="oracleLabel">LABELS GIVEN</small><strong id="oracleMetric">0</strong><span id="oracleDelta">clusters must be inferred</span></article>
           <article class="accent-metric"><small id="reuseLabel">TARGET SCALE</small><strong id="reuseMetric">×10</strong><span id="reuseDelta">2,160 represented atoms</span></article>
         </div>
+
+        <section class="structure-stats" aria-label="Known and reconstructed structural statistics">
+          <article class="structure-card">
+            <div class="structure-heading">
+              <div><p class="eyebrow">finite-window RDF</p><strong>g(r / a)</strong></div>
+              <span id="rdfStatus">known 216 · live 0</span>
+            </div>
+            <svg id="rdfChart" viewBox="0 0 360 118" role="img" aria-label="Radial distribution function for known positions and live reconstruction"></svg>
+            <div class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span></div>
+          </article>
+          <article class="structure-card">
+            <div class="structure-heading">
+              <div><p class="eyebrow">first-shell coordination</p><strong>P(z), r<sub>c</sub> = 1.32a</strong></div>
+              <span id="coordStatus">mean z — · —</span>
+            </div>
+            <svg id="coordChart" viewBox="0 0 360 118" role="img" aria-label="Coordination number distribution for known positions and live reconstruction"></svg>
+            <div class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span></div>
+          </article>
+        </section>
       </section>
 
       <aside class="inspector-panel" aria-label="Search event inspector">
@@ -158,6 +177,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260805-4"></script>
+  <script type="module" src="./app.js?v=20260805-5"></script>
 </body>
 </html>
