@@ -17,6 +17,12 @@ resetting its learned finite states. The interface exposes exact-oracle and
 learned-interval decisions, the accepted search stack, and marking reuse;
 internal branch revisions are intentionally not called out visually.
 
+Continuation does not target a cube or impose a hard spherical boundary. It
+samples among locally near-best cluster attachments on the exposed frontier.
+A soft penalty for overrepresented angular sectors, plus stochastic tie
+breaking, keeps growth approximately radial unless compatibility genuinely
+forces a preferred direction.
+
 The fixed benchmark numbers in the interface come from the offline BCI-2P
 reference experiments. The browser animation is deliberately labeled as a
 structural surrogate rather than a molecular-dynamics trajectory.
