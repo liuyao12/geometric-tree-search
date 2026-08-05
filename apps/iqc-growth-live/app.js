@@ -66,6 +66,11 @@ const REFERENCE_COUNT = 216;
 const SCALE_FACTOR = 10;
 const EXTENSION_COUNT = REFERENCE_COUNT * SCALE_FACTOR;
 const FRONTIER_BATCH = 4;
+const BALANCE_DIRECTIONS = [
+  [0, 1, PHI], [0, -1, PHI], [0, 1, -PHI], [0, -1, -PHI],
+  [1, PHI, 0], [-1, PHI, 0], [1, -PHI, 0], [-1, -PHI, 0],
+  [PHI, 0, 1], [PHI, 0, -1], [-PHI, 0, 1], [-PHI, 0, -1],
+].map((v) => new THREE.Vector3(...v).normalize());
 
 const scene = new THREE.Scene();
 scene.background = null;
@@ -118,6 +123,7 @@ let referenceAtoms = [];
 let extensionTargets = [];
 let replayIndex = 0;
 let extensionIndex = 0;
+let sectorCounts = new Array(BALANCE_DIRECTIONS.length).fill(0);
 let eventIndex = 0;
 let oracleCalls = 0;
 let grammarDecisions = 0;
@@ -194,11 +200,7 @@ function makeReferenceConfiguration() {
 }
 
 function continuationPriority(qx, qy, qz) {
-  const shape = confinementSelect.value;
-  if (shape === "sphere") return Math.hypot(qx, qy, qz);
-  if (shape === "cylinder") return Math.max(Math.abs(qx) * .78, Math.hypot(qy, qz));
-  if (shape === "hourglass") return Math.max(Math.abs(qx) * .62, Math.hypot(qy, qz) / (1 + .13 * Math.abs(qx)));
-  return Math.max(Math.abs(qx), Math.abs(qy), Math.abs(qz));
+  return Math.hypot(qx, qy, qz);
 }
 
 function makeExtensionTargets() {
@@ -215,6 +217,66 @@ function makeExtensionTargets() {
   }
   candidates.sort((a, b) => a.priority - b.priority || a.tie - b.tie);
   return candidates.slice(0, EXTENSION_COUNT - REFERENCE_COUNT);
+}
+
+function frontierSector(position) {
+  const direction = position.clone().normalize();
+  let best = 0;
+  let bestDot = -Infinity;
+  BALANCE_DIRECTIONS.forEach((candidate, index) => {
+    const dot = direction.dot(candidate);
+    if (dot > bestDot) { bestDot = dot; best = index; }
+  });
+  return best;
+}
+
+function chooseFrontierAnchorIndex() {
+  if (!extensionTargets.length) return -1;
+  const minimumRadius = extensionTargets[0].priority;
+  const window = [];
+  for (let index = 0; index < extensionTargets.length && window.length < 96; index++) {
+    if (extensionTargets[index].priority > minimumRadius + 1.15) break;
+    const target = extensionTargets[index];
+    const sector = frontierSector(target.p);
+    const radialCost = target.priority - minimumRadius;
+    const balanceCost = sectorCounts[sector] * .035;
+    const localFitCost = target.family === "IQC" ? -.035 : target.family === "BC8" ? -.02 : 0;
+    const noise = random() * .16;
+    window.push({ index, score: radialCost + balanceCost + localFitCost + noise });
+  }
+  const bestScore = Math.min(...window.map((entry) => entry.score));
+  const temperature = .13;
+  const weights = window.map((entry) => Math.exp(-(entry.score - bestScore) / temperature));
+  const total = weights.reduce((sum, value) => sum + value, 0);
+  let draw = random() * total;
+  for (let i = 0; i < window.length; i++) {
+    draw -= weights[i];
+    if (draw <= 0) return window[i].index;
+  }
+  return window.at(-1).index;
+}
+
+function frontierBatchIndices(count) {
+  const anchorIndex = chooseFrontierAnchorIndex();
+  if (anchorIndex < 0) return [];
+  const anchor = extensionTargets[anchorIndex];
+  const nearby = extensionTargets
+    .map((target, index) => ({ index, distance: target.p.distanceToSquared(anchor.p), radialGap: Math.abs(target.priority - anchor.priority) }))
+    .filter((entry) => entry.radialGap < 1.05)
+    .sort((a, b) => a.distance - b.distance);
+  return nearby.slice(0, count).map((entry) => entry.index);
+}
+
+function previewFrontierBatch(count = FRONTIER_BATCH) {
+  return frontierBatchIndices(count).map((index) => extensionTargets[index]);
+}
+
+function takeFrontierBatch(batch = previewFrontierBatch(FRONTIER_BATCH)) {
+  const indices = batch.map((target) => extensionTargets.indexOf(target)).filter((index) => index >= 0).sort((a, b) => b - a);
+  indices.forEach((index) => extensionTargets.splice(index, 1));
+  batch.forEach((target) => sectorCounts[frontierSector(target.p)]++);
+  extensionIndex += batch.length;
+  return batch;
 }
 
 function makeRepresentatives() {
@@ -322,6 +384,7 @@ function resetCounters() {
   pendingWrong = null;
   replayIndex = 0;
   extensionIndex = 0;
+  sectorCounts = new Array(BALANCE_DIRECTIONS.length).fill(0);
   nextAtomId = 1;
 }
 
@@ -389,9 +452,9 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: "0 / 2,160",
-      caption: "The same search first recovers the 216 observed sites, then continues through their exposed frontier without a reset.", badge: "search",
-      decision: "Ready for one continuous search", copy: "The observed configuration is a checkpoint inside a longer construction, not a separate mode or a block to be repeated.",
-      values: ["overlapping cluster", "finite marking", "—", "not started"],
+      caption: "The search recovers 216 observed sites, then samples near-best attachments around the whole exposed frontier.", badge: "search",
+      decision: "Ready for one continuous search", copy: "Local compatibility leads; a soft stochastic angular balance prevents persistent directional starvation without overriding forced moves.",
+      values: ["near-best attachment", "finite marking", "soft balance", "not started"],
     },
   ];
   const item = narratives[pipelineStage];
@@ -436,12 +499,11 @@ function appendHistory(type, entry) {
   if (stackHistory.length > 24) stackHistory.shift();
 }
 
-function proposeWrong(target, macro = false) {
+function proposeWrong(target, macro = false, proposedSources = null) {
   const direction = new THREE.Vector3(1, .55, -.35).normalize();
-  const count = macro ? FRONTIER_BATCH : 1;
+  const sources = proposedSources || (macro ? previewFrontierBatch(FRONTIER_BATCH) : [target]);
   const wrongAtoms = [];
-  for (let i = 0; i < count; i++) {
-    const source = macro ? extensionTargets[Math.min(extensionTargets.length - 1, extensionIndex + i)] : target;
+  for (const source of sources) {
     const p = source.p.clone().addScaledVector(direction, macro ? .72 : .55);
     wrongAtoms.push(addAtom(p, source.species, source.family, nearestParent(p)));
   }
@@ -487,7 +549,7 @@ function performReconstructionEvent() {
 }
 
 function performExtensionEvent() {
-  if (atoms.length >= EXTENSION_COUNT || extensionIndex >= extensionTargets.length) {
+  if (atoms.length >= EXTENSION_COUNT || extensionTargets.length === 0) {
     setPlaying(false);
     pipelineAuto = false;
     updatePipelineButtons();
@@ -498,22 +560,22 @@ function performExtensionEvent() {
   }
   eventIndex++;
   if (pendingWrong) discardSpeculativeBranch();
-  const target = extensionTargets[extensionIndex];
+  const preview = previewFrontierBatch(FRONTIER_BATCH);
+  const target = preview[0];
   const conflictPeriod = 26;
-  if (eventIndex > 5 && eventIndex % conflictPeriod === 7) proposeWrong(target, true);
+  if (eventIndex > 5 && eventIndex % conflictPeriod === 7) proposeWrong(target, true, preview);
   else {
-    const batch = extensionTargets.slice(extensionIndex, extensionIndex + FRONTIER_BATCH);
+    const batch = takeFrontierBatch(preview);
     const state = stateForTarget(target, true);
     const localEnergy = -1.15 - (Math.round(target.priority) % 3) * .08;
     const decision = cacheDecision(state, localEnergy);
     const added = [];
     batch.forEach((item) => added.push(addAtom(item.p, item.species, item.family, nearestParent(item.p))));
-    extensionIndex += batch.length;
     const center = added.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3()).multiplyScalar(1 / added.length);
     currentCandidate = { p: center, accepted: true };
     acceptedDecisions++;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: added.at(-1).depth, action: state.action, family: target.family });
-    captionAction.textContent = `${atoms.length.toLocaleString()}/${EXTENSION_COUNT.toLocaleString()} atoms represented; the search is continuing beyond the observed window.`;
+    captionAction.textContent = `${atoms.length.toLocaleString()}/${EXTENSION_COUNT.toLocaleString()} atoms represented; a near-best local attachment was sampled with soft angular balance.`;
     updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: localEnergy, interval: decision.interval });
   }
   rebuildWorld();
@@ -570,7 +632,7 @@ function rebuildWorld() {
   if (frontierToggle.checked && pipelineStage >= 3) {
     const targets = replayIndex < REFERENCE_COUNT
       ? referenceAtoms.slice(replayIndex, replayIndex + 20)
-      : extensionTargets.slice(extensionIndex, extensionIndex + 24);
+      : extensionTargets.slice(0, 24);
     if (targets.length) frontierGroup.add(new THREE.Points(
       new THREE.BufferGeometry().setFromPoints(targets.map((target) => target.p)),
       new THREE.PointsMaterial({ color: COLORS.mint, size: .085, transparent: true, opacity: .62, sizeAttenuation: true }),
