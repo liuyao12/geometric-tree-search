@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071112">
-  <meta name="description" content="Watch a three-dimensional, two-species GCTS growth search place atoms, reuse finite markings, and backtrack from geometric conflicts.">
-  <title>GCTS Matter — Live Growth &amp; Backtracking</title>
-  <link rel="stylesheet" href="./style.css?v=20260805-2">
+  <meta name="description" content="Watch a three-dimensional, two-species GCTS pipeline learn overlapping clusters, reconstruct an observed atomic window, and continue growing through its frontier.">
+  <title>GCTS Matter — Learned Clusters &amp; Continuous Growth</title>
+  <link rel="stylesheet" href="./style.css?v=20260805-4">
   <script type="importmap">
     {
       "imports": {
@@ -31,8 +31,7 @@
       <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>216 colored atoms</span></button>
       <button type="button" data-pipeline-stage="1"><small>02 · learn</small><strong>Find clusters</strong><span>overlapping motifs</span></button>
       <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>Polyhedral grammar</strong><span>types + marked ports</span></button>
-      <button type="button" data-pipeline-stage="3"><small>04 · validate</small><strong>Reconstruct</strong><span>216-atom replay</span></button>
-      <button type="button" data-pipeline-stage="4"><small>05 · deploy</small><strong>Grow ×10</strong><span>2,160-atom target</span></button>
+      <button type="button" data-pipeline-stage="3"><small>04 · search</small><strong>Reconstruct → continue</strong><span>0 → 216 → 2,160 atoms</span></button>
     </nav>
 
     <main class="lab-grid">
@@ -81,10 +80,6 @@
             <span>Events per second <output id="speedOutput">12</output></span>
             <input id="speedInput" type="range" min="1" max="60" value="12">
           </label>
-          <label class="range-field" for="backtrackInput">
-            <span>Conflict pressure <output id="backtrackOutput">35%</output></span>
-            <input id="backtrackInput" type="range" min="5" max="80" value="35">
-          </label>
         </section>
 
         <section>
@@ -99,7 +94,7 @@
 
         <section class="legend-section">
           <p class="eyebrow">Species &amp; state</p>
-          <div class="legend"><span><i class="blue"></i>Blue species</span><span><i class="green"></i>Green species</span><span><i class="candidate"></i>Proposal</span><span><i class="rollback"></i>Rollback</span></div>
+          <div class="legend"><span><i class="blue"></i>Blue species</span><span><i class="green"></i>Green species</span><span><i class="candidate"></i>Proposal</span></div>
         </section>
       </aside>
 
@@ -116,13 +111,7 @@
           <div class="viewport-chrome top-left"><span id="eventKind">SEED</span><b id="eventCounter">0000</b></div>
           <div class="viewport-chrome top-right"><span>drag to orbit · wheel to zoom</span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
-          <div id="rollbackFlash" class="rollback-flash">BACKTRACK <span id="rollbackCount">−0</span></div>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
-        </div>
-
-        <div class="timeline-panel">
-          <div class="timeline-head"><span>search history</span><span id="timelineLabel">seed · 50 atoms</span></div>
-          <div id="timeline" class="timeline" role="img" aria-label="Recent accepted, rejected, reused, and backtracked search events"></div>
         </div>
 
         <div class="metrics-strip" aria-label="Live metrics">
@@ -169,6 +158,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260805-2"></script>
+  <script type="module" src="./app.js?v=20260805-4"></script>
 </body>
 </html>

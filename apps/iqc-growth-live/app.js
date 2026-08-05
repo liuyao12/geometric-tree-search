@@ -14,8 +14,6 @@ const stepButton = $("stepButton");
 const resetButton = $("resetButton");
 const speedInput = $("speedInput");
 const speedOutput = $("speedOutput");
-const backtrackInput = $("backtrackInput");
-const backtrackOutput = $("backtrackOutput");
 const markingToggle = $("markingToggle");
 const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
@@ -26,11 +24,7 @@ const stageTitle = $("stageTitle");
 const eventKind = $("eventKind");
 const eventCounter = $("eventCounter");
 const phaseReadout = $("phaseReadout");
-const rollbackFlash = $("rollbackFlash");
-const rollbackCount = $("rollbackCount");
 const captionAction = $("captionAction");
-const timeline = $("timeline");
-const timelineLabel = $("timelineLabel");
 const atomLabel = $("atomLabel");
 const atomMetric = $("atomMetric");
 const atomDelta = $("atomDelta");
@@ -72,7 +66,6 @@ const REFERENCE_COUNT = 216;
 const SCALE_FACTOR = 10;
 const EXTENSION_COUNT = REFERENCE_COUNT * SCALE_FACTOR;
 const FRONTIER_BATCH = 4;
-const MAX_HISTORY = 54;
 
 const scene = new THREE.Scene();
 scene.background = null;
@@ -106,13 +99,11 @@ const atomGroup = new THREE.Group();
 const clusterGroup = new THREE.Group();
 const frontierGroup = new THREE.Group();
 const decisionGroup = new THREE.Group();
-const rollbackGroup = new THREE.Group();
-world.add(confinementGroup, bondGroup, atomGroup, clusterGroup, frontierGroup, decisionGroup, rollbackGroup);
+world.add(confinementGroup, bondGroup, atomGroup, clusterGroup, frontierGroup, decisionGroup);
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
 const candidateGeometry = new THREE.SphereGeometry(0.24, 12, 8);
-const rollbackGeometry = new THREE.SphereGeometry(0.23, 11, 8);
 const blueMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, roughness: 0.28, metalness: 0.18, emissive: 0x0b526d, emissiveIntensity: 0.32 });
 const greenMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, roughness: 0.34, metalness: 0.12, emissive: 0x59450c, emissiveIntensity: 0.27 });
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
@@ -132,14 +123,11 @@ let oracleCalls = 0;
 let grammarDecisions = 0;
 let acceptedDecisions = 0;
 let rejectedDecisions = 0;
-let eventHistory = [];
 let stackHistory = [];
 let markingCache = new Map();
 let actionCache = new Map();
-let rollbackParticles = [];
 let currentCandidate = null;
 let pendingWrong = null;
-let flashUntil = 0;
 let lastFrame = performance.now();
 let eventAccumulator = 0;
 let nextAtomId = 1;
@@ -244,7 +232,7 @@ function makeRepresentatives() {
 function clearGroup(group) {
   while (group.children.length) {
     const child = group.children.pop();
-    if (![sphereGeometry, candidateGeometry, rollbackGeometry].includes(child.geometry)) child.geometry?.dispose?.();
+    if (![sphereGeometry, candidateGeometry].includes(child.geometry)) child.geometry?.dispose?.();
     if (Array.isArray(child.material)) child.material.forEach((material) => material.dispose?.());
     else if (![blueMaterial, greenMaterial, candidateMaterial, rejectedMaterial].includes(child.material)) child.material?.dispose?.();
   }
@@ -253,7 +241,7 @@ function clearGroup(group) {
 function buildConfinement() {
   clearGroup(confinementGroup);
   confinementGroup.rotation.set(0, 0, 0);
-  const large = pipelineStage === 4;
+  const large = pipelineStage === 3;
   const material = new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.36 });
   const shape = confinementSelect.value;
   if (shape === "box") {
@@ -327,30 +315,18 @@ function resetCounters() {
   grammarDecisions = 0;
   acceptedDecisions = 0;
   rejectedDecisions = 0;
-  eventHistory = [];
   stackHistory = [];
   markingCache = new Map();
   actionCache = new Map();
-  rollbackParticles = [];
   currentCandidate = null;
   pendingWrong = null;
   replayIndex = 0;
   extensionIndex = 0;
   nextAtomId = 1;
-  rollbackCount.textContent = "−0";
-}
-
-function primeGrammar() {
-  const presets = [
-    ["BC8 tetra|B→B|port4", -1.42],
-    ["IQC ico|G→B|port6", -1.18],
-    ["mixed corona|B→G|port3", -.82],
-  ];
-  presets.forEach(([key, energy]) => markingCache.set(key, { count: 3, min: energy - .08, max: energy + .08, sum: energy * 3 }));
 }
 
 function enterPipelineStage(index, options = {}) {
-  pipelineStage = Math.max(0, Math.min(4, index));
+  pipelineStage = Math.max(0, Math.min(3, index));
   stageElapsed = 0;
   setPlaying(false);
   resetCounters();
@@ -359,11 +335,7 @@ function enterPipelineStage(index, options = {}) {
   extensionTargets = makeExtensionTargets();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
-  else if (pipelineStage === 3) atoms = [];
-  else {
-    atoms = referenceAtoms.map((atom) => cloneAtom(atom));
-    primeGrammar();
-  }
+  else atoms = [];
   buildConfinement();
   clusterGroup.rotation.set(0, 0, 0);
   buildClusterOverlay();
@@ -386,7 +358,7 @@ function updatePipelineButtons() {
 }
 
 function frameStage() {
-  const large = pipelineStage === 4;
+  const large = pipelineStage === 3;
   const target = new THREE.Vector3();
   controls.target.copy(target);
   camera.position.set(large ? 18 : 12.5, large ? 13 : 9.5, large ? 19 : 13.5);
@@ -416,20 +388,14 @@ function updateStageNarrative() {
       values: ["3 polyhedra", "14 port classes", "9 rules", "finite radius"],
     },
     {
-      eyebrow: "validation · target-aware reversible search", title: "Reconstruct the held configuration", phase: "replaying",
-      caption: "Play to rebuild all 216 known positions; speculative mismatches are removed by explicit backtracking.", badge: "validate",
-      decision: "Ready to reconstruct", copy: "The learned grammar is tested by asking tree search to recover the input configuration from an empty accepted prefix.",
-      values: ["cluster placement", "learned domain", "—", "not started"],
-    },
-    {
-      eyebrow: "deployment · continuous frontier growth", title: "Continue the same structure beyond the window", phase: "growing ×10",
-      caption: "Overlapping clusters add only their four newly exposed frontier sites—no copy of the starting block is repeated.", badge: "deploy",
-      decision: "Ready to continue", copy: "The observed cube is treated as a finite window into one structure. Learned symbols continue through its exposed boundary under the selected confinement.",
-      values: ["overlapping cluster", "marked frontier", "—", "not started"],
+      eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: "0 / 2,160",
+      caption: "The same search first recovers the 216 observed sites, then continues through their exposed frontier without a reset.", badge: "search",
+      decision: "Ready for one continuous search", copy: "The observed configuration is a checkpoint inside a longer construction, not a separate mode or a block to be repeated.",
+      values: ["overlapping cluster", "finite marking", "—", "not started"],
     },
   ];
   const item = narratives[pipelineStage];
-  eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "REPLAY", "GROW ×10"][pipelineStage];
+  eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "SEARCH"][pipelineStage];
   stageEyebrow.textContent = item.eyebrow;
   stageTitle.textContent = item.title;
   phaseReadout.textContent = item.phase;
@@ -443,7 +409,7 @@ function updateStageNarrative() {
 function stateForTarget(target, macro = false) {
   const action = macro ? `${target.family} frontier overlap` : `${target.species} @ ${target.family}`;
   const domain = `${target.family === "IQC" ? "icosa" : target.family === "BC8" ? "tetra" : "corona"}|${target.species}→${macro ? "frontier" : "site"}|port${macro ? 6 : 3 + (target.sourceIndex || 0) % 4}`;
-  return { action, domain, n15: 4, n25: macro ? 14 : 11, minimum: .92, clearance: pipelineStage === 4 ? 2.8 : 1.4 };
+  return { action, domain, n15: 4, n25: macro ? 14 : 11, minimum: .92, clearance: macro ? 2.8 : 1.4 };
 }
 
 function cacheDecision(state, energy) {
@@ -466,8 +432,6 @@ function cacheDecision(state, energy) {
 }
 
 function appendHistory(type, entry) {
-  eventHistory.push({ type });
-  if (eventHistory.length > MAX_HISTORY) eventHistory.shift();
   stackHistory.push(entry);
   if (stackHistory.length > 24) stackHistory.shift();
 }
@@ -490,85 +454,67 @@ function proposeWrong(target, macro = false) {
   updateDecision({ eventType: "accept", accepted: true, state, resolver: "speculative branch", energy: -.18, interval: [-.3, .1] });
 }
 
-function rollbackWrong() {
+function discardSpeculativeBranch() {
   const ids = new Set(pendingWrong.atoms.map((atom) => atom.id));
-  const removed = atoms.filter((atom) => ids.has(atom.id));
   atoms = atoms.filter((atom) => !ids.has(atom.id));
-  removed.forEach((atom) => rollbackParticles.push({ p: atom.p.clone(), expires: performance.now() + 700 }));
-  const state = stateForTarget(pendingWrong.target, pendingWrong.macro);
   rejectedDecisions++;
-  appendHistory("backtrack", { type: "backtrack", depth: 1, action: `−${removed.length} atoms`, family: "branch" });
-  currentCandidate = { p: removed[Math.floor(removed.length / 2)].p.clone(), accepted: false };
-  flashUntil = performance.now() + 560;
-  rollbackCount.textContent = `−${removed.length}`;
-  captionAction.textContent = `Marked interfaces conflict; rolled back the entire ${removed.length}-atom speculative branch.`;
-  updateDecision({ eventType: "backtrack", accepted: false, state, resolver: "boundary certificate", energy: Infinity, interval: null, removed: removed.length });
+  if (stackHistory.at(-1)?.family === "speculative") stackHistory.pop();
+  currentCandidate = null;
   pendingWrong = null;
 }
 
 function performReconstructionEvent() {
-  if (pendingWrong) {
-    eventIndex++;
-    rollbackWrong();
-  } else if (replayIndex >= referenceAtoms.length) {
-    setPlaying(false);
-    phaseReadout.textContent = "reconstructed";
-    captionAction.textContent = "Validation complete: all 216 target positions recovered after reversible branch exploration.";
-    if (pipelineAuto) enterPipelineStage(4, { play: true });
-    return;
-  } else {
-    eventIndex++;
-    const target = referenceAtoms[replayIndex];
-    const conflictPeriod = Math.max(13, 43 - Math.round(Number(backtrackInput.value) * .34));
-    if (eventIndex > 8 && eventIndex % conflictPeriod === 9) proposeWrong(target, false);
-    else {
-      const state = stateForTarget(target, false);
-      const decision = cacheDecision(state, -.9 - (replayIndex % 7) * .03);
-      const atom = addAtom(target.p, target.species, target.family, nearestParent(target.p));
-      currentCandidate = { p: atom.p.clone(), accepted: true };
-      acceptedDecisions++;
-      replayIndex++;
-      appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: atom.depth, action: state.action, family: target.family });
-      captionAction.textContent = `${replayIndex}/${REFERENCE_COUNT} target sites recovered; ${decision.resolver}.`;
-      updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: -.9, interval: decision.interval });
-    }
+  eventIndex++;
+  if (pendingWrong) discardSpeculativeBranch();
+  const target = referenceAtoms[replayIndex];
+  const conflictPeriod = 28;
+  if (eventIndex > 8 && eventIndex % conflictPeriod === 9) proposeWrong(target, false);
+  else {
+    const state = stateForTarget(target, false);
+    const decision = cacheDecision(state, -.9 - (replayIndex % 7) * .03);
+    const atom = addAtom(target.p, target.species, target.family, nearestParent(target.p));
+    currentCandidate = { p: atom.p.clone(), accepted: true };
+    acceptedDecisions++;
+    replayIndex++;
+    appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: atom.depth, action: state.action, family: target.family });
+    captionAction.textContent = replayIndex === REFERENCE_COUNT
+      ? "The observed 216-atom window is recovered. The next placement crosses its boundary without resetting the search."
+      : `${replayIndex}/${REFERENCE_COUNT} observed sites recovered; ${decision.resolver}.`;
+    updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: -.9, interval: decision.interval });
   }
   rebuildWorld();
   updateUI();
 }
 
 function performExtensionEvent() {
-  if (pendingWrong) {
-    eventIndex++;
-    rollbackWrong();
-  } else if (atoms.length >= EXTENSION_COUNT || extensionIndex >= extensionTargets.length) {
+  if (atoms.length >= EXTENSION_COUNT || extensionIndex >= extensionTargets.length) {
     setPlaying(false);
     pipelineAuto = false;
     updatePipelineButtons();
     atoms.length = Math.min(atoms.length, EXTENSION_COUNT);
-    phaseReadout.textContent = "×10 reached";
-    captionAction.textContent = "Deployment target reached: 216 observed atoms represented as a reversible 2,160-atom construction.";
+    phaseReadout.textContent = "2,160 / 2,160";
+    captionAction.textContent = "The same search has continued from zero through the observed window to 2,160 represented atoms.";
     return;
-  } else {
-    eventIndex++;
-    const target = extensionTargets[extensionIndex];
-    const conflictPeriod = Math.max(11, 37 - Math.round(Number(backtrackInput.value) * .3));
-    if (eventIndex > 5 && eventIndex % conflictPeriod === 7) proposeWrong(target, true);
-    else {
-      const batch = extensionTargets.slice(extensionIndex, extensionIndex + FRONTIER_BATCH);
-      const state = stateForTarget(target, true);
-      const localEnergy = -1.15 - (Math.round(target.priority) % 3) * .08;
-      const decision = cacheDecision(state, localEnergy);
-      const added = [];
-      batch.forEach((item) => added.push(addAtom(item.p, item.species, item.family, nearestParent(item.p))));
-      extensionIndex += batch.length;
-      const center = added.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3()).multiplyScalar(1 / added.length);
-      currentCandidate = { p: center, accepted: true };
-      acceptedDecisions++;
-      appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: added.at(-1).depth, action: state.action, family: target.family });
-      captionAction.textContent = `${atoms.length.toLocaleString()}/${EXTENSION_COUNT.toLocaleString()} atoms represented; one overlapping cluster continued through the frontier.`;
-      updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: localEnergy, interval: decision.interval });
-    }
+  }
+  eventIndex++;
+  if (pendingWrong) discardSpeculativeBranch();
+  const target = extensionTargets[extensionIndex];
+  const conflictPeriod = 26;
+  if (eventIndex > 5 && eventIndex % conflictPeriod === 7) proposeWrong(target, true);
+  else {
+    const batch = extensionTargets.slice(extensionIndex, extensionIndex + FRONTIER_BATCH);
+    const state = stateForTarget(target, true);
+    const localEnergy = -1.15 - (Math.round(target.priority) % 3) * .08;
+    const decision = cacheDecision(state, localEnergy);
+    const added = [];
+    batch.forEach((item) => added.push(addAtom(item.p, item.species, item.family, nearestParent(item.p))));
+    extensionIndex += batch.length;
+    const center = added.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3()).multiplyScalar(1 / added.length);
+    currentCandidate = { p: center, accepted: true };
+    acceptedDecisions++;
+    appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: added.at(-1).depth, action: state.action, family: target.family });
+    captionAction.textContent = `${atoms.length.toLocaleString()}/${EXTENSION_COUNT.toLocaleString()} atoms represented; the search is continuing beyond the observed window.`;
+    updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: localEnergy, interval: decision.interval });
   }
   rebuildWorld();
   updateUI();
@@ -579,7 +525,7 @@ function performEvent() {
     enterPipelineStage(pipelineStage + 1, { play: pipelineAuto });
     return;
   }
-  if (pipelineStage === 3) performReconstructionEvent();
+  if (replayIndex < REFERENCE_COUNT) performReconstructionEvent();
   else performExtensionEvent();
 }
 
@@ -622,7 +568,9 @@ function rebuildWorld() {
   }
 
   if (frontierToggle.checked && pipelineStage >= 3) {
-    const targets = pipelineStage === 3 ? referenceAtoms.slice(replayIndex, replayIndex + 20) : extensionTargets.slice(extensionIndex, extensionIndex + 24);
+    const targets = replayIndex < REFERENCE_COUNT
+      ? referenceAtoms.slice(replayIndex, replayIndex + 20)
+      : extensionTargets.slice(extensionIndex, extensionIndex + 24);
     if (targets.length) frontierGroup.add(new THREE.Points(
       new THREE.BufferGeometry().setFromPoints(targets.map((target) => target.p)),
       new THREE.PointsMaterial({ color: COLORS.mint, size: .085, transparent: true, opacity: .62, sizeAttenuation: true }),
@@ -635,7 +583,7 @@ function rebuildWorld() {
     mesh.position.copy(currentCandidate.p);
     decisionGroup.add(mesh);
     if (markingToggle.checked) {
-      const geometry = pipelineStage === 4 ? new THREE.IcosahedronGeometry(1.15, 0) : new THREE.SphereGeometry(1.4, 15, 9);
+      const geometry = replayIndex >= REFERENCE_COUNT ? new THREE.IcosahedronGeometry(1.15, 0) : new THREE.SphereGeometry(1.4, 15, 9);
       const domain = new THREE.LineSegments(
         new THREE.WireframeGeometry(geometry),
         new THREE.LineBasicMaterial({ color: COLORS.violet, transparent: true, opacity: .18 }),
@@ -648,28 +596,24 @@ function rebuildWorld() {
 
 function updateDecision(event) {
   decisionEyebrow.textContent = "current tree decision";
-  const backtrack = event.eventType === "backtrack";
   const reuse = event.eventType === "reuse";
-  decisionBadge.className = `badge ${backtrack ? "backtrack" : reuse ? "reuse" : event.accepted ? "accept" : "reject"}`;
-  decisionBadge.textContent = backtrack ? "rollback" : reuse ? "reused" : event.accepted ? "accepted" : "rejected";
-  decisionTitle.textContent = backtrack ? `Branch shortened by ${event.removed}` : `${event.state.action} ${event.accepted ? "survives" : "fails"}`;
-  decisionCopy.textContent = backtrack
-    ? "A finite marked-interface conflict certifies that this speculative branch cannot complete, so the accepted prefix is restored."
-    : reuse
-      ? "A previously calibrated finite state resolves this placement without another exact local evaluation."
-      : event.resolver === "speculative branch"
-        ? "The placement is provisionally attached to the search stack until all exposed marked interfaces are compatible."
-        : "The local oracle evaluates the proposed placement and records its result under the finite geometric state.";
+  decisionBadge.className = `badge ${reuse ? "reuse" : event.accepted ? "accept" : "reject"}`;
+  decisionBadge.textContent = reuse ? "reused" : event.accepted ? "accepted" : "rejected";
+  decisionTitle.textContent = `${event.state.action} ${event.accepted ? "survives" : "fails"}`;
+  decisionCopy.textContent = reuse
+    ? "A previously calibrated finite state resolves this placement without another exact local evaluation."
+    : event.resolver === "speculative branch"
+      ? "The placement is provisionally attached to the search stack while its exposed interfaces are checked."
+      : "The local oracle evaluates the proposed placement and records its result under the finite geometric state.";
   actionValue.textContent = event.state.action;
   domainValue.textContent = event.state.domain;
   energyValue.textContent = event.interval ? `[${event.interval[0].toFixed(2)}, ${event.interval[1].toFixed(2)}]` : "geometric prune";
   resolverValue.textContent = event.resolver;
-  eventKind.textContent = backtrack ? "BACKTRACK" : reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
+  eventKind.textContent = reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
 }
 
 function updateUI() {
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
-  timelineLabel.textContent = pipelineStage < 3 ? `stage ${pipelineStage + 1} · ${atoms.length} visible atoms` : `event ${eventIndex} · ${atoms.length.toLocaleString()} atoms`;
   if (pipelineStage === 0) {
     atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "known xyz + species";
     frontierLabel.textContent = "SPECIES"; frontierMetric.textContent = "2"; frontierDelta.textContent = "blue / green";
@@ -686,11 +630,15 @@ function updateUI() {
     oracleLabel.textContent = "RULES"; oracleMetric.textContent = "9"; oracleDelta.textContent = "compatible overlaps";
     reuseLabel.textContent = "DOMAIN"; reuseMetric.textContent = "2.5 r"; reuseDelta.textContent = "bounded marking radius";
   } else {
-    atomLabel.textContent = pipelineStage === 3 ? "RECONSTRUCTED" : "REPRESENTED ATOMS";
-    atomMetric.textContent = pipelineStage === 3 ? `${atoms.length}/${REFERENCE_COUNT}` : `${atoms.length.toLocaleString()}`;
-    atomDelta.textContent = pipelineStage === 3 ? "known sites recovered" : `${(atoms.length / REFERENCE_COUNT).toFixed(1)}× reference scale`;
+    const reconstructing = replayIndex < REFERENCE_COUNT;
+    stageEyebrow.textContent = reconstructing ? "search · recovering the observed window" : "search · continuing through the same frontier";
+    stageTitle.textContent = reconstructing ? "Reconstruct, then keep going" : "The same search continues beyond 216 atoms";
+    phaseReadout.textContent = `${atoms.length.toLocaleString()} / ${EXTENSION_COUNT.toLocaleString()}`;
+    atomLabel.textContent = "REPRESENTED ATOMS";
+    atomMetric.textContent = atoms.length.toLocaleString();
+    atomDelta.textContent = reconstructing ? `${replayIndex}/${REFERENCE_COUNT} observed sites recovered` : `${(atoms.length / REFERENCE_COUNT).toFixed(1)}× reference scale`;
     frontierLabel.textContent = "OPEN FRONTIER";
-    frontierDelta.textContent = pipelineStage === 3 ? "next target sites" : "next uncovered sites";
+    frontierDelta.textContent = reconstructing ? "next observed sites" : "next uncovered sites";
     oracleLabel.textContent = "ORACLE WORK";
     oracleMetric.textContent = oracleCalls > 9999 ? `${(oracleCalls / 1000).toFixed(1)}k` : String(oracleCalls);
     oracleDelta.textContent = `${acceptedDecisions + rejectedDecisions} tree decisions`;
@@ -699,24 +647,13 @@ function updateUI() {
     reuseMetric.textContent = `${Math.round(grammarDecisions / resolved * 100)}%`;
     reuseDelta.textContent = `${grammarDecisions} decisions reused`;
   }
-  renderTimeline();
   renderStack();
   renderMarkings();
 }
 
-function renderTimeline() {
-  timeline.replaceChildren();
-  eventHistory.forEach((event) => {
-    const item = document.createElement("i");
-    item.className = event.type;
-    item.title = event.type;
-    timeline.appendChild(item);
-  });
-}
-
 function renderStack() {
   const rows = stackHistory.slice(-6).reverse();
-  stackDepth.textContent = pipelineStage < 3 ? `stage ${pipelineStage + 1}/5` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
+  stackDepth.textContent = pipelineStage < 3 ? `stage ${pipelineStage + 1}/4` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
   searchStack.replaceChildren();
   if (!rows.length) {
     const row = document.createElement("li");
@@ -727,10 +664,9 @@ function renderStack() {
   }
   rows.forEach((entry) => {
     const row = document.createElement("li");
-    if (entry.type === "backtrack") row.className = "rolled";
     const depth = document.createElement("b"); depth.textContent = `d${entry.depth}`;
     const action = document.createElement("span"); action.textContent = `${entry.action} · ${entry.family}`;
-    const state = document.createElement("em"); state.textContent = entry.type === "backtrack" ? "undo" : "keep";
+    const state = document.createElement("em"); state.textContent = "keep";
     row.append(depth, action, state);
     searchStack.appendChild(row);
   });
@@ -763,18 +699,6 @@ function renderMarkings() {
   });
 }
 
-function updateRollback(now) {
-  rollbackParticles = rollbackParticles.filter((particle) => particle.expires > now);
-  clearGroup(rollbackGroup);
-  rollbackParticles.forEach((particle) => {
-    const remaining = Math.max(0, (particle.expires - now) / 700);
-    const mesh = new THREE.Mesh(rollbackGeometry, new THREE.MeshBasicMaterial({ color: COLORS.red, wireframe: true, transparent: true, opacity: remaining * .82 }));
-    mesh.position.copy(particle.p);
-    mesh.scale.setScalar(1 + (1 - remaining) * 1.8);
-    rollbackGroup.add(mesh);
-  });
-  rollbackFlash.classList.toggle("visible", now < flashUntil);
-}
 
 function setPlaying(value) {
   playing = value;
@@ -802,11 +726,9 @@ scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
 policySelect.addEventListener("change", () => {
   markingCache.clear(); actionCache.clear(); grammarDecisions = 0;
-  if (pipelineStage === 4) primeGrammar();
   updateUI();
 });
 speedInput.addEventListener("input", () => { speedOutput.textContent = speedInput.value; });
-backtrackInput.addEventListener("input", () => { backtrackOutput.textContent = `${backtrackInput.value}%`; });
 [markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 
@@ -839,7 +761,6 @@ function animate(now) {
       }
     }
   } else eventAccumulator = 0;
-  updateRollback(now);
   if (currentCandidate && decisionGroup.children[0]) {
     decisionGroup.children[0].rotation.y += delta * 1.8;
     decisionGroup.children[0].rotation.x += delta * .7;
