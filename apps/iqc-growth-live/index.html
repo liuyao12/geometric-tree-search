@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071112">
+  <meta name="description" content="Watch a three-dimensional, two-species GCTS growth search place atoms, reuse finite markings, and backtrack from geometric conflicts.">
+  <title>GCTS Matter — Live Growth &amp; Backtracking</title>
+  <link rel="stylesheet" href="./style.css?v=20260804-1">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../3d-lattice-tiler/vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "../3d-lattice-tiler/vendor/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="../../" aria-label="Back to GCTS home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>GCTS Matter</strong><small>live structural grammar</small></span>
+      </a>
+      <div class="run-state"><i id="runStateDot"></i><span id="runStateText">Paused at seed</span></div>
+      <a class="method-link" href="#auditedBenchmark">Method &amp; benchmark ↓</a>
+    </header>
+
+    <main class="lab-grid">
+      <aside class="control-panel" aria-label="Simulation controls">
+        <section>
+          <p class="eyebrow">01 · experiment</p>
+          <label class="field" for="scenarioSelect">
+            <span>Starting configuration</span>
+            <select id="scenarioSelect">
+              <option value="competition">Three competing nuclei</option>
+              <option value="random">Random binary fluid</option>
+              <option value="iqc">Icosahedral motif</option>
+              <option value="bc8">Blue BC8 crystallite</option>
+            </select>
+          </label>
+          <label class="field" for="confinementSelect">
+            <span>Confinement</span>
+            <select id="confinementSelect">
+              <option value="box">Box</option>
+              <option value="sphere">Sphere</option>
+              <option value="cylinder">Cylinder</option>
+              <option value="hourglass">Hourglass</option>
+            </select>
+          </label>
+          <label class="field" for="policySelect">
+            <span>Decision policy</span>
+            <select id="policySelect">
+              <option value="marked">Finite GCTS marking</option>
+              <option value="direct">Exact local oracle</option>
+              <option value="action">Colored action only</option>
+            </select>
+          </label>
+        </section>
+
+        <section>
+          <p class="eyebrow">02 · playback</p>
+          <div class="transport">
+            <button id="playButton" class="primary-button" type="button" aria-label="Play growth">
+              <span id="playIcon" aria-hidden="true">▶</span><span id="playLabel">Play</span>
+            </button>
+            <button id="stepButton" type="button">Step</button>
+            <button id="resetButton" type="button">Reset</button>
+          </div>
+          <label class="range-field" for="speedInput">
+            <span>Events per second <output id="speedOutput">8</output></span>
+            <input id="speedInput" type="range" min="1" max="30" value="8">
+          </label>
+          <label class="range-field" for="backtrackInput">
+            <span>Conflict pressure <output id="backtrackOutput">35%</output></span>
+            <input id="backtrackInput" type="range" min="5" max="80" value="35">
+          </label>
+        </section>
+
+        <section>
+          <p class="eyebrow">03 · layers</p>
+          <div class="toggle-stack">
+            <label><input id="markingToggle" type="checkbox" checked><span>Marking domain</span></label>
+            <label><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
+            <label><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
+            <label><input id="rotateToggle" type="checkbox" checked><span>Auto rotate</span></label>
+          </div>
+        </section>
+
+        <section class="legend-section">
+          <p class="eyebrow">Species &amp; state</p>
+          <div class="legend"><span><i class="blue"></i>Blue species</span><span><i class="green"></i>Green species</span><span><i class="candidate"></i>Proposal</span><span><i class="rollback"></i>Rollback</span></div>
+        </section>
+      </aside>
+
+      <section class="stage" aria-label="Three-dimensional live growth">
+        <div class="stage-heading">
+          <div>
+            <p class="eyebrow">overlapping local clusters · reversible search</p>
+            <h1>Watch the grammar grow matter</h1>
+          </div>
+          <div class="phase-readout"><small>emergent read</small><strong id="phaseReadout">competing</strong></div>
+        </div>
+
+        <div id="viewport" class="viewport">
+          <div class="viewport-chrome top-left"><span id="eventKind">SEED</span><b id="eventCounter">0000</b></div>
+          <div class="viewport-chrome top-right"><span>drag to orbit · wheel to zoom</span></div>
+          <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
+          <div id="rollbackFlash" class="rollback-flash">BACKTRACK <span id="rollbackCount">−0</span></div>
+          <div class="viewport-caption"><span id="captionAction">Choose a policy, then play.</span></div>
+        </div>
+
+        <div class="timeline-panel">
+          <div class="timeline-head"><span>search history</span><span id="timelineLabel">seed · 50 atoms</span></div>
+          <div id="timeline" class="timeline" role="img" aria-label="Recent accepted, rejected, reused, and backtracked search events"></div>
+        </div>
+
+        <div class="metrics-strip" aria-label="Live metrics">
+          <article><small>ATOMS</small><strong id="atomMetric">50</strong><span id="atomDelta">seed configuration</span></article>
+          <article><small>OPEN FRONTIER</small><strong id="frontierMetric">0</strong><span>compatible patch actions</span></article>
+          <article><small>ORACLE CALLS</small><strong id="oracleMetric">0</strong><span id="oracleDelta">exact energy decisions</span></article>
+          <article class="accent-metric"><small>MARKING REUSE</small><strong id="reuseMetric">0%</strong><span id="reuseDelta">0 decisions reused</span></article>
+        </div>
+      </section>
+
+      <aside class="inspector-panel" aria-label="Search event inspector">
+        <section class="decision-card">
+          <div class="decision-heading"><p class="eyebrow">current decision</p><span id="decisionBadge" class="badge neutral">waiting</span></div>
+          <h2 id="decisionTitle">No proposal yet</h2>
+          <p id="decisionCopy">Play or step once to expose a compatible patch on the finite boundary.</p>
+          <dl class="decision-grid">
+            <div><dt>action</dt><dd id="actionValue">—</dd></div>
+            <div><dt>domain</dt><dd id="domainValue">—</dd></div>
+            <div><dt>energy interval</dt><dd id="energyValue">—</dd></div>
+            <div><dt>resolved by</dt><dd id="resolverValue">—</dd></div>
+          </dl>
+        </section>
+
+        <section>
+          <div class="section-heading"><p class="eyebrow">search stack</p><span id="stackDepth">depth 0</span></div>
+          <ol id="searchStack" class="search-stack">
+            <li class="empty-row">Accepted branches appear here.</li>
+          </ol>
+        </section>
+
+        <section>
+          <div class="section-heading"><p class="eyebrow">learned finite states</p><span id="markCount">0 marks</span></div>
+          <div id="markingTable" class="marking-table"><p>No repeated domain yet.</p></div>
+        </section>
+
+        <section class="audit-card" id="auditedBenchmark">
+          <p class="eyebrow">audited Python benchmark</p>
+          <div><strong>94.9%</strong><span>held-out sign accuracy</span></div>
+          <div><strong>6 / 6</strong><span>exact reversible replays</span></div>
+          <div><strong>11.8%</strong><span>insertion-oracle reduction</span></div>
+          <p>The animation is a browser-scale structural surrogate. These fixed numbers come from the tested BCI-2P reference implementation.</p>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js?v=20260804-1"></script>
+</body>
+</html>
