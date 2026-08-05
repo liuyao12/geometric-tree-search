@@ -37,6 +37,10 @@ const oracleDelta = $("oracleDelta");
 const reuseLabel = $("reuseLabel");
 const reuseMetric = $("reuseMetric");
 const reuseDelta = $("reuseDelta");
+const rdfChart = $("rdfChart");
+const rdfStatus = $("rdfStatus");
+const coordChart = $("coordChart");
+const coordStatus = $("coordStatus");
 const decisionEyebrow = $("decisionEyebrow");
 const decisionBadge = $("decisionBadge");
 const decisionTitle = $("decisionTitle");
@@ -66,6 +70,9 @@ const REFERENCE_COUNT = 216;
 const SCALE_FACTOR = 10;
 const EXTENSION_COUNT = REFERENCE_COUNT * SCALE_FACTOR;
 const FRONTIER_BATCH = 4;
+const RDF_BINS = 38;
+const RDF_MAX_RADIUS = 4.2;
+const COORDINATION_CUTOFF = 1.32;
 const BALANCE_DIRECTIONS = [
   [0, 1, PHI], [0, -1, PHI], [0, 1, -PHI], [0, -1, -PHI],
   [1, PHI, 0], [-1, PHI, 0], [1, -PHI, 0], [-1, -PHI, 0],
@@ -138,6 +145,10 @@ let lastFrame = performance.now();
 let eventAccumulator = 0;
 let nextAtomId = 1;
 let rngState = 0x8f23ab17;
+let referenceSpacing = 1;
+let referenceStructuralStats = null;
+let liveStructuralStats = null;
+let lastLiveStatsKey = "";
 
 function random() {
   rngState ^= rngState << 13;
@@ -154,6 +165,133 @@ function addAtom(position, species, family, parent = null, seed = false) {
   const atom = { id: nextAtomId++, p: position.clone(), species, family, parent, seed, depth: parent ? parent.depth + 1 : 0, attempts: 0 };
   atoms.push(atom);
   return atom;
+}
+
+function medianNearestSpacing(source) {
+  if (source.length < 2) return 1;
+  const nearest = source.map((atom, index) => {
+    let minimum = Infinity;
+    for (let other = 0; other < source.length; other++) {
+      if (other === index) continue;
+      minimum = Math.min(minimum, atom.p.distanceTo(source[other].p));
+    }
+    return minimum;
+  }).sort((a, b) => a - b);
+  return nearest[Math.floor(nearest.length / 2)] || 1;
+}
+
+function calculateStructuralStats(source, spacing) {
+  const rdf = new Array(RDF_BINS).fill(0);
+  const coordination = new Array(13).fill(0);
+  if (!source.length) return { rdf, coordination, meanCoordination: 0, count: 0 };
+
+  const neighbors = new Array(source.length).fill(0);
+  const minimum = new THREE.Vector3(Infinity, Infinity, Infinity);
+  const maximum = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
+  source.forEach((atom) => {
+    minimum.min(atom.p);
+    maximum.max(atom.p);
+  });
+
+  for (let first = 0; first < source.length; first++) {
+    for (let second = first + 1; second < source.length; second++) {
+      const normalizedDistance = source[first].p.distanceTo(source[second].p) / spacing;
+      if (normalizedDistance < RDF_MAX_RADIUS) {
+        const bin = Math.min(RDF_BINS - 1, Math.floor(normalizedDistance / RDF_MAX_RADIUS * RDF_BINS));
+        rdf[bin]++;
+      }
+      if (normalizedDistance <= COORDINATION_CUTOFF) {
+        neighbors[first]++;
+        neighbors[second]++;
+      }
+    }
+  }
+
+  const paddedSize = maximum.sub(minimum).divideScalar(spacing).addScalar(1);
+  const volume = Math.max(1, paddedSize.x * paddedSize.y * paddedSize.z);
+  const density = source.length / volume;
+  for (let bin = 0; bin < RDF_BINS; bin++) {
+    const inner = bin / RDF_BINS * RDF_MAX_RADIUS;
+    const outer = (bin + 1) / RDF_BINS * RDF_MAX_RADIUS;
+    const shellVolume = 4 / 3 * Math.PI * (outer ** 3 - inner ** 3);
+    const idealPairs = .5 * source.length * density * shellVolume;
+    rdf[bin] = idealPairs > 0 ? rdf[bin] / idealPairs : 0;
+  }
+
+  neighbors.forEach((value) => coordination[Math.min(12, value)]++);
+  for (let index = 0; index < coordination.length; index++) coordination[index] /= source.length;
+  const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
+  return { rdf, coordination, meanCoordination, count: source.length };
+}
+
+function svgNode(tag, attributes = {}, text = "") {
+  const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  Object.entries(attributes).forEach(([name, value]) => node.setAttribute(name, value));
+  if (text) node.textContent = text;
+  return node;
+}
+
+function drawChartFrame(svg, xLabel, yLabel) {
+  svg.append(
+    svgNode("line", { x1: 29, y1: 8, x2: 29, y2: 96, class: "chart-axis" }),
+    svgNode("line", { x1: 29, y1: 96, x2: 352, y2: 96, class: "chart-axis" }),
+    svgNode("text", { x: 350, y: 13, class: "chart-label", "text-anchor": "end" }, xLabel),
+    svgNode("text", { x: 7, y: 13, class: "chart-label" }, yLabel),
+  );
+}
+
+function linePath(values, maximum) {
+  if (!values.length || maximum <= 0) return "";
+  return values.map((value, index) => {
+    const x = 29 + index / Math.max(1, values.length - 1) * 323;
+    const y = 96 - Math.min(1, value / maximum) * 84;
+    return `${index ? "L" : "M"}${x.toFixed(2)},${y.toFixed(2)}`;
+  }).join(" ");
+}
+
+function renderStructureStats() {
+  if (!referenceStructuralStats) return;
+  const liveAtoms = pipelineStage === 3 ? atoms.filter((atom) => atom.observed) : [];
+  const liveKey = `${pipelineStage}:${replayIndex}`;
+  if (liveKey !== lastLiveStatsKey) {
+    liveStructuralStats = calculateStructuralStats(liveAtoms, referenceSpacing);
+    lastLiveStatsKey = liveKey;
+  }
+
+  const live = liveStructuralStats || calculateStructuralStats([], referenceSpacing);
+  rdfStatus.textContent = `known ${REFERENCE_COUNT} · live ${live.count}`;
+  coordStatus.textContent = `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`;
+
+  rdfChart.replaceChildren();
+  drawChartFrame(rdfChart, "r / a", "g");
+  const rdfMaximum = Math.max(1, ...referenceStructuralStats.rdf, ...live.rdf) * 1.08;
+  const unityY = 96 - Math.min(1, 1 / rdfMaximum) * 84;
+  rdfChart.append(svgNode("line", { x1: 29, y1: unityY, x2: 352, y2: unityY, class: "chart-guide" }));
+  [1, 2, 3, 4].forEach((tick) => {
+    const x = 29 + tick / RDF_MAX_RADIUS * 323;
+    rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
+  });
+  rdfChart.append(svgNode("path", { id: "rdfKnownPath", d: linePath(referenceStructuralStats.rdf, rdfMaximum), class: "chart-known" }));
+  if (live.count > 1) rdfChart.append(svgNode("path", { id: "rdfLivePath", d: linePath(live.rdf, rdfMaximum), class: "chart-live" }));
+
+  coordChart.replaceChildren();
+  drawChartFrame(coordChart, "coordination z", "P");
+  const barStep = 323 / referenceStructuralStats.coordination.length;
+  const coordMaximum = Math.max(.05, ...referenceStructuralStats.coordination, ...live.coordination) * 1.08;
+  referenceStructuralStats.coordination.forEach((value, index) => {
+    const height = Math.min(1, value / coordMaximum) * 84;
+    const x = 29 + index * barStep + 2;
+    coordChart.append(svgNode("rect", { x, y: 96 - height, width: Math.max(1, barStep - 4), height, class: "coord-known" }));
+  });
+  if (live.count) live.coordination.forEach((value, index) => {
+    const height = Math.min(1, value / coordMaximum) * 84;
+    const x = 29 + index * barStep + barStep * .28;
+    coordChart.append(svgNode("rect", { x, y: 96 - height, width: barStep * .44, height, class: "coord-live" }));
+  });
+  [0, 2, 4, 6, 8, 10, 12].forEach((tick) => {
+    const x = 29 + (tick + .5) * barStep;
+    coordChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, tick === 12 ? "12+" : String(tick)));
+  });
 }
 
 function siteHash(x, y, z, salt = 0) {
@@ -386,6 +524,8 @@ function resetCounters() {
   extensionIndex = 0;
   sectorCounts = new Array(BALANCE_DIRECTIONS.length).fill(0);
   nextAtomId = 1;
+  liveStructuralStats = null;
+  lastLiveStatsKey = "";
 }
 
 function enterPipelineStage(index, options = {}) {
@@ -395,6 +535,8 @@ function enterPipelineStage(index, options = {}) {
   resetCounters();
   rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5 ^ confinementSelect.selectedIndex * 0x734a9d;
   referenceAtoms = makeReferenceConfiguration();
+  referenceSpacing = medianNearestSpacing(referenceAtoms);
+  referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing);
   extensionTargets = makeExtensionTargets();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
@@ -535,6 +677,7 @@ function performReconstructionEvent() {
     const state = stateForTarget(target, false);
     const decision = cacheDecision(state, -.9 - (replayIndex % 7) * .03);
     const atom = addAtom(target.p, target.species, target.family, nearestParent(target.p));
+    atom.observed = true;
     currentCandidate = { p: atom.p.clone(), accepted: true };
     acceptedDecisions++;
     replayIndex++;
@@ -711,6 +854,7 @@ function updateUI() {
   }
   renderStack();
   renderMarkings();
+  renderStructureStats();
 }
 
 function renderStack() {
