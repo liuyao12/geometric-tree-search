@@ -1,10 +1,10 @@
 # GCTS Matter: learned clusters and continuous growth
 
-A static GitHub Pages visualization of the two-species, three-dimensional
+A static GitHub Pages visualization of a multi-element, three-dimensional
 materials-GCTS pipeline. It starts from one finite configuration with 216
-known colored atomic positions, then illustrates:
+element-labelled atomic positions, then illustrates:
 
-- species-aware discovery of overlapping local clusters;
+- element-aware discovery of local-environment clusters;
 - reduction to tetrahedral, icosahedral, and corona-like polyhedral symbols;
 - finite marked interfaces and compatible-overlap rules;
 - one continuous search that reconstructs the 216-atom input and naturally
@@ -16,6 +16,23 @@ The search crosses the 216-atom observation boundary without changing modes or
 resetting its learned finite states. The interface exposes exact-oracle and
 learned-interval decisions, the accepted search stack, and marking reuse;
 internal branch revisions are intentionally not called out visually.
+
+The selectable inputs now use distinct chemical systems rather than generic
+blue/green species: an exact 3×3×3 NaCl rocksalt supercell (`a = 5.640 Å`), a
+Cu-Zr metallic-glass surrogate, an Al-Cu-Fe icosahedral-approximant surrogate,
+and a silicon BC8-like network. Coordinates used by the learner are expressed
+in ångströms; the 3D scene applies a uniform display scale. Element-dependent
+sphere radii and colors are presentation encodings, not electron densities.
+
+The cluster-finding stage is computed rather than scripted. For every atom it
+builds a periodic, rotation-invariant local descriptor containing central and
+neighbor element channels, Gaussian radial functions through `1.9a`, a
+first-shell angular histogram, and coordination terms. Features are standardized
+and grouped by deterministic k-medoids. In the learning view, atom color denotes
+the resulting assignment, wireframes and colored bonds identify medoid neighbor
+shells, and the inspector reports each cluster's population, medoid element,
+coordination, and within-cluster spread. This is a compact ACSF-like descriptor,
+not a full SOAP implementation.
 
 Continuation does not target a cube or impose a hard spherical boundary. It
 samples among locally near-best cluster attachments on the exposed frontier.
@@ -36,7 +53,8 @@ atoms, and keeps bonds touching the selected sites visible. The same bin or the
 compact clear control restores the unfiltered view.
 
 The fixed benchmark numbers in the interface come from the offline BCI-2P
-reference experiments. The browser animation is deliberately labeled as a
-structural surrogate rather than a molecular-dynamics trajectory.
+reference experiments. Polyhedral grammar construction and subsequent browser
+growth are still deliberately labeled as structural surrogates rather than a
+molecular-dynamics trajectory.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.
