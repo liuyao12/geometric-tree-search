@@ -1,4 +1,4 @@
-# GCTS Matter: live growth and backtracking
+# GCTS Matter: learned clusters and continuous growth
 
 A static GitHub Pages visualization of the two-species, three-dimensional
 materials-GCTS pipeline. It starts from one finite configuration with 216
@@ -7,14 +7,15 @@ known colored atomic positions, then illustrates:
 - species-aware discovery of overlapping local clusters;
 - reduction to tetrahedral, icosahedral, and corona-like polyhedral symbols;
 - finite marked interfaces and compatible-overlap rules;
-- reversible reconstruction of the 216-atom input; and
-- natural continuation through the exposed frontier toward a 2,160-atom
+- one continuous search that reconstructs the 216-atom input and naturally
+  continues through its exposed frontier toward a 2,160-atom
   configuration, without copying the starting window as a block.
 
-The five pipeline stages can be selected individually or run continuously.
-During reconstruction and deployment, the interface exposes exact-oracle and
-learned-interval decisions, the speculative search stack, marking reuse, and
-explicit rollback of the newly contributed sites of an overlapping cluster.
+The four pipeline stages can be selected individually or run continuously.
+The search crosses the 216-atom observation boundary without changing modes or
+resetting its learned finite states. The interface exposes exact-oracle and
+learned-interval decisions, the accepted search stack, and marking reuse;
+internal branch revisions are intentionally not called out visually.
 
 The fixed benchmark numbers in the interface come from the offline BCI-2P
 reference experiments. The browser animation is deliberately labeled as a
