@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Watch a three-dimensional, two-species GCTS growth search place atoms, reuse finite markings, and backtrack from geometric conflicts.">
   <title>GCTS Matter — Live Growth &amp; Backtracking</title>
-  <link rel="stylesheet" href="./style.css?v=20260804-1">
+  <link rel="stylesheet" href="./style.css?v=20260805-2">
   <script type="importmap">
     {
       "imports": {
@@ -27,6 +27,14 @@
       <a class="method-link" href="#auditedBenchmark">Method &amp; benchmark ↓</a>
     </header>
 
+    <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
+      <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>216 colored atoms</span></button>
+      <button type="button" data-pipeline-stage="1"><small>02 · learn</small><strong>Find clusters</strong><span>overlapping motifs</span></button>
+      <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>Polyhedral grammar</strong><span>types + marked ports</span></button>
+      <button type="button" data-pipeline-stage="3"><small>04 · validate</small><strong>Reconstruct</strong><span>216-atom replay</span></button>
+      <button type="button" data-pipeline-stage="4"><small>05 · deploy</small><strong>Grow ×10</strong><span>2,160-atom target</span></button>
+    </nav>
+
     <main class="lab-grid">
       <aside class="control-panel" aria-label="Simulation controls">
         <section>
@@ -34,10 +42,10 @@
           <label class="field" for="scenarioSelect">
             <span>Starting configuration</span>
             <select id="scenarioSelect">
-              <option value="competition">Three competing nuclei</option>
-              <option value="random">Random binary fluid</option>
-              <option value="iqc">Icosahedral motif</option>
-              <option value="bc8">Blue BC8 crystallite</option>
+              <option value="competition">Mixed reference solid</option>
+              <option value="random">Disordered binary solid</option>
+              <option value="iqc">Quasicrystal-like solid</option>
+              <option value="bc8">BC8-like crystal</option>
             </select>
           </label>
           <label class="field" for="confinementSelect">
@@ -61,6 +69,7 @@
 
         <section>
           <p class="eyebrow">02 · playback</p>
+          <button id="pipelineButton" class="pipeline-button" type="button">Run full pipeline</button>
           <div class="transport">
             <button id="playButton" class="primary-button" type="button" aria-label="Play growth">
               <span id="playIcon" aria-hidden="true">▶</span><span id="playLabel">Play</span>
@@ -69,8 +78,8 @@
             <button id="resetButton" type="button">Reset</button>
           </div>
           <label class="range-field" for="speedInput">
-            <span>Events per second <output id="speedOutput">8</output></span>
-            <input id="speedInput" type="range" min="1" max="30" value="8">
+            <span>Events per second <output id="speedOutput">12</output></span>
+            <input id="speedInput" type="range" min="1" max="60" value="12">
           </label>
           <label class="range-field" for="backtrackInput">
             <span>Conflict pressure <output id="backtrackOutput">35%</output></span>
@@ -97,8 +106,8 @@
       <section class="stage" aria-label="Three-dimensional live growth">
         <div class="stage-heading">
           <div>
-            <p class="eyebrow">overlapping local clusters · reversible search</p>
-            <h1>Watch the grammar grow matter</h1>
+            <p id="stageEyebrow" class="eyebrow">input · static atom coordinates</p>
+            <h1 id="stageTitle">Begin with the configuration we know</h1>
           </div>
           <div class="phase-readout"><small>emergent read</small><strong id="phaseReadout">competing</strong></div>
         </div>
@@ -108,7 +117,7 @@
           <div class="viewport-chrome top-right"><span>drag to orbit · wheel to zoom</span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
           <div id="rollbackFlash" class="rollback-flash">BACKTRACK <span id="rollbackCount">−0</span></div>
-          <div class="viewport-caption"><span id="captionAction">Choose a policy, then play.</span></div>
+          <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
 
         <div class="timeline-panel">
@@ -117,18 +126,18 @@
         </div>
 
         <div class="metrics-strip" aria-label="Live metrics">
-          <article><small>ATOMS</small><strong id="atomMetric">50</strong><span id="atomDelta">seed configuration</span></article>
-          <article><small>OPEN FRONTIER</small><strong id="frontierMetric">0</strong><span>compatible patch actions</span></article>
-          <article><small>ORACLE CALLS</small><strong id="oracleMetric">0</strong><span id="oracleDelta">exact energy decisions</span></article>
-          <article class="accent-metric"><small>MARKING REUSE</small><strong id="reuseMetric">0%</strong><span id="reuseDelta">0 decisions reused</span></article>
+          <article><small id="atomLabel">ATOMS</small><strong id="atomMetric">216</strong><span id="atomDelta">known xyz + species</span></article>
+          <article><small id="frontierLabel">SPECIES</small><strong id="frontierMetric">2</strong><span id="frontierDelta">blue / green</span></article>
+          <article><small id="oracleLabel">LABELS GIVEN</small><strong id="oracleMetric">0</strong><span id="oracleDelta">clusters must be inferred</span></article>
+          <article class="accent-metric"><small id="reuseLabel">TARGET SCALE</small><strong id="reuseMetric">×10</strong><span id="reuseDelta">2,160 represented atoms</span></article>
         </div>
       </section>
 
       <aside class="inspector-panel" aria-label="Search event inspector">
         <section class="decision-card">
-          <div class="decision-heading"><p class="eyebrow">current decision</p><span id="decisionBadge" class="badge neutral">waiting</span></div>
-          <h2 id="decisionTitle">No proposal yet</h2>
-          <p id="decisionCopy">Play or step once to expose a compatible patch on the finite boundary.</p>
+          <div class="decision-heading"><p id="decisionEyebrow" class="eyebrow">pipeline stage</p><span id="decisionBadge" class="badge neutral">input</span></div>
+          <h2 id="decisionTitle">Observed configuration</h2>
+          <p id="decisionCopy">The learner receives only atomic species and Cartesian positions from one finite configuration.</p>
           <dl class="decision-grid">
             <div><dt>action</dt><dd id="actionValue">—</dd></div>
             <div><dt>domain</dt><dd id="domainValue">—</dd></div>
@@ -145,7 +154,7 @@
         </section>
 
         <section>
-          <div class="section-heading"><p class="eyebrow">learned finite states</p><span id="markCount">0 marks</span></div>
+          <div class="section-heading"><p id="markingHeading" class="eyebrow">learned vocabulary</p><span id="markCount">not learned</span></div>
           <div id="markingTable" class="marking-table"><p>No repeated domain yet.</p></div>
         </section>
 
@@ -154,12 +163,12 @@
           <div><strong>94.9%</strong><span>held-out sign accuracy</span></div>
           <div><strong>6 / 6</strong><span>exact reversible replays</span></div>
           <div><strong>11.8%</strong><span>insertion-oracle reduction</span></div>
-          <p>The animation is a browser-scale structural surrogate. These fixed numbers come from the tested BCI-2P reference implementation.</p>
+          <p>The pipeline animation is a browser-scale structural surrogate. Clusters, polyhedra, and replay are schematic; the fixed numbers above come from the tested BCI-2P reference implementation.</p>
         </section>
       </aside>
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260804-1"></script>
+  <script type="module" src="./app.js?v=20260805-2"></script>
 </body>
 </html>
