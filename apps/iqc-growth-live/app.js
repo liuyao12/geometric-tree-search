@@ -55,6 +55,8 @@ const searchStack = $("searchStack");
 const markingHeading = $("markingHeading");
 const markCount = $("markCount");
 const markingTable = $("markingTable");
+const legendHeading = $("legendHeading");
+const speciesLegend = $("speciesLegend");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
 const COLORS = {
@@ -74,6 +76,24 @@ const FRONTIER_BATCH = 4;
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
 const COORDINATION_CUTOFF = 1.32;
+const ELEMENTS = {
+  Na: { color: 0x8f8fff, css: "#8f8fff", radius: 1.66 },
+  Cl: { color: 0x59d65c, css: "#59d65c", radius: 1.02 },
+  Ni: { color: 0x63d16e, css: "#63d16e", radius: 1.24 },
+  Ti: { color: 0xb8c2cc, css: "#b8c2cc", radius: 1.60 },
+  Cu: { color: 0xd98545, css: "#d98545", radius: 1.32 },
+  Zr: { color: 0x79d3d6, css: "#79d3d6", radius: 1.75 },
+  Al: { color: 0xb8c0c8, css: "#b8c0c8", radius: 1.21 },
+  Fe: { color: 0xd45d42, css: "#d45d42", radius: 1.24 },
+  Si: { color: 0xe7b883, css: "#e7b883", radius: 1.11 },
+};
+const MATERIALS = {
+  competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", clusters: 2 },
+  random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", clusters: 4 },
+  iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", clusters: 5 },
+  bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", clusters: 3 },
+};
+const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
 const BALANCE_DIRECTIONS = [
   [0, 1, PHI], [0, -1, PHI], [0, 1, -PHI], [0, -1, -PHI],
   [1, PHI, 0], [-1, PHI, 0], [1, -PHI, 0], [-1, -PHI, 0],
@@ -121,6 +141,9 @@ const blueMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, roughn
 const greenMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, roughness: 0.34, metalness: 0.12, emissive: 0x59450c, emissiveIntensity: 0.27 });
 const blueDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, transparent: true, opacity: .12, roughness: .5, depthWrite: false });
 const greenDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, transparent: true, opacity: .12, roughness: .5, depthWrite: false });
+const elementMaterials = new Map();
+const dimElementMaterials = new Map();
+const clusterMaterials = CLUSTER_COLORS.map((color) => new THREE.MeshStandardMaterial({ color, roughness: .32, metalness: .08, emissive: color, emissiveIntensity: .12 }));
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
 const rejectedMaterial = new THREE.MeshBasicMaterial({ color: COLORS.red, wireframe: true, transparent: true, opacity: 0.92 });
 
@@ -149,10 +172,39 @@ let eventAccumulator = 0;
 let nextAtomId = 1;
 let rngState = 0x8f23ab17;
 let referenceSpacing = 1;
+let referenceSpacingA = 1;
 let referenceStructuralStats = null;
 let liveStructuralStats = null;
 let lastLiveStatsKey = "";
 let coordinationSelection = null;
+let learnedClusters = null;
+
+function currentMaterial() {
+  return MATERIALS[scenarioSelect.value];
+}
+
+function getElementMaterial(symbol, dim = false) {
+  const cache = dim ? dimElementMaterials : elementMaterials;
+  if (!cache.has(symbol)) {
+    const data = ELEMENTS[symbol];
+    cache.set(symbol, new THREE.MeshStandardMaterial({
+      color: data.color,
+      roughness: dim ? .55 : .3,
+      metalness: dim ? 0 : .14,
+      transparent: dim,
+      opacity: dim ? .1 : 1,
+      depthWrite: !dim,
+      emissive: dim ? 0x000000 : data.color,
+      emissiveIntensity: dim ? 0 : .16,
+    }));
+  }
+  return cache.get(symbol);
+}
+
+function elementScale(symbol) {
+  const material = currentMaterial();
+  return Math.max(.8, ELEMENTS[symbol].radius / material.spacingA * 2.55);
+}
 
 function random() {
   rngState ^= rngState << 13;
@@ -357,12 +409,16 @@ function siteHash(x, y, z, salt = 0) {
 
 function decorateLatticeSite(qx, qy, qz, sourceIndex = 0) {
   const scenario = scenarioSelect.value;
+  const material = currentMaterial();
   let family = qx < -Math.abs(qy) * .35 ? "BC8" : qx > Math.abs(qy) * .35 ? "glass" : "IQC";
+  if (scenario === "competition") family = "rocksalt";
   if (scenario === "random") family = "glass";
   if (scenario === "iqc") family = "IQC";
   if (scenario === "bc8") family = "BC8";
   const p = new THREE.Vector3(qx * .92, qy * .92, qz * .92);
-  if (family === "BC8") {
+  if (family === "rocksalt") {
+    // Exact NaCl sites: the union is a simple-cubic grid with alternating ions.
+  } else if (family === "BC8") {
     const parity = Math.round((qx + qy + qz) * 2) % 4 < 2 ? 1 : -1;
     p.add(new THREE.Vector3(parity * .13, -parity * .08, parity * .08));
   } else if (family === "IQC") {
@@ -379,10 +435,13 @@ function decorateLatticeSite(qx, qy, qz, sourceIndex = 0) {
     ));
   }
   const speciesBias = siteHash(qx, qy, qz, 5);
-  const species = family === "BC8" ? (speciesBias < .82 ? "B" : "G")
-    : family === "IQC" ? (speciesBias < .6 ? "G" : "B")
-      : speciesBias < .57 ? "B" : "G";
-  return { p, species, family, sourceIndex, q: [qx, qy, qz] };
+  let species;
+  if (scenario === "competition") species = Math.round(qx + qy + qz) % 2 === 0 ? "Na" : "Cl";
+  else if (scenario === "random") species = speciesBias < .64 ? "Cu" : "Zr";
+  else if (scenario === "iqc") species = speciesBias < .65 ? "Al" : speciesBias < .88 ? "Cu" : "Fe";
+  else species = "Si";
+  const pA = p.clone().multiplyScalar(material.spacingA / .92);
+  return { p, pA, species, family, sourceIndex, q: [qx, qy, qz] };
 }
 
 function makeReferenceConfiguration() {
@@ -391,6 +450,105 @@ function makeReferenceConfiguration() {
     result.push(decorateLatticeSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length));
   }
   return result.sort((a, b) => a.p.lengthSq() - b.p.lengthSq());
+}
+
+function periodicDisplacement(first, second) {
+  const material = currentMaterial();
+  const scale = material.spacingA / .92;
+  const firstPosition = first.pA || first.p.clone().multiplyScalar(scale);
+  const secondPosition = second.pA || second.p.clone().multiplyScalar(scale);
+  const boxLength = 6 * material.spacingA;
+  const delta = secondPosition.clone().sub(firstPosition);
+  for (const axis of ["x", "y", "z"]) delta[axis] -= Math.round(delta[axis] / boxLength) * boxLength;
+  return delta;
+}
+
+function localEnvironmentDescriptor(source, centerIndex) {
+  const material = currentMaterial();
+  const center = source[centerIndex];
+  const neighbors = source.map((atom, index) => {
+    if (index === centerIndex) return null;
+    const vector = periodicDisplacement(center, atom);
+    return { atom, vector, r: vector.length() / referenceSpacingA };
+  }).filter((item) => item && item.r < 1.9).sort((a, b) => a.r - b.r);
+
+  const features = material.elements.map((element) => center.species === element ? 2 : 0);
+  const radialCenters = [.82, 1.02, 1.22, 1.48, 1.75];
+  material.elements.forEach((element) => radialCenters.forEach((radialCenter) => {
+    const value = neighbors.reduce((sum, neighbor) => {
+      if (neighbor.atom.species !== element) return sum;
+      const cutoff = .5 * (Math.cos(Math.PI * neighbor.r / 1.9) + 1);
+      return sum + Math.exp(-(((neighbor.r - radialCenter) / .13) ** 2)) * cutoff;
+    }, 0);
+    features.push(value);
+  }));
+
+  const angular = new Array(6).fill(0);
+  const firstShell = neighbors.filter((neighbor) => neighbor.r <= 1.38).slice(0, 14);
+  for (let first = 0; first < firstShell.length; first++) {
+    for (let second = first + 1; second < firstShell.length; second++) {
+      const cosine = firstShell[first].vector.dot(firstShell[second].vector)
+        / (firstShell[first].vector.length() * firstShell[second].vector.length());
+      const bin = Math.min(5, Math.floor((Math.max(-1, Math.min(1, cosine)) + 1) / 2 * 6));
+      angular[bin]++;
+    }
+  }
+  const angularTotal = Math.max(1, angular.reduce((sum, value) => sum + value, 0));
+  features.push(...angular.map((value) => value / angularTotal * 3));
+  features.push(firstShell.length / 6, neighbors.length / 12);
+  return { features, coordination: firstShell.length, shell: neighbors.slice(0, 14) };
+}
+
+function squaredDescriptorDistance(first, second) {
+  return first.reduce((sum, value, index) => sum + (value - second[index]) ** 2, 0);
+}
+
+function learnLocalEnvironmentClusters(source) {
+  const environments = source.map((_, index) => localEnvironmentDescriptor(source, index));
+  const raw = environments.map((environment) => environment.features);
+  const dimensions = raw[0].length;
+  const means = new Array(dimensions).fill(0);
+  raw.forEach((row) => row.forEach((value, index) => { means[index] += value / raw.length; }));
+  const deviations = means.map((mean, index) => Math.sqrt(raw.reduce((sum, row) => sum + (row[index] - mean) ** 2, 0) / raw.length) || 1);
+  const vectors = raw.map((row) => row.map((value, index) => (value - means[index]) / deviations[index]));
+  const k = Math.min(currentMaterial().clusters, source.length);
+  const medoids = [vectors.reduce((best, vector, index) => {
+    const norm = squaredDescriptorDistance(vector, new Array(dimensions).fill(0));
+    return norm < best.norm ? { index, norm } : best;
+  }, { index: 0, norm: Infinity }).index];
+  while (medoids.length < k) {
+    let candidate = 0;
+    let farthest = -Infinity;
+    vectors.forEach((vector, index) => {
+      const distance = Math.min(...medoids.map((medoid) => squaredDescriptorDistance(vector, vectors[medoid])));
+      if (distance > farthest) { farthest = distance; candidate = index; }
+    });
+    medoids.push(candidate);
+  }
+
+  let labels = new Array(source.length).fill(0);
+  for (let iteration = 0; iteration < 7; iteration++) {
+    labels = vectors.map((vector) => medoids.reduce((best, medoid, cluster) => {
+      const distance = squaredDescriptorDistance(vector, vectors[medoid]);
+      return distance < best.distance ? { cluster, distance } : best;
+    }, { cluster: 0, distance: Infinity }).cluster);
+    medoids.forEach((medoid, cluster) => {
+      const members = labels.map((label, index) => label === cluster ? index : -1).filter((index) => index >= 0);
+      if (!members.length) return;
+      medoids[cluster] = members.reduce((best, candidate) => {
+        const cost = members.reduce((sum, member) => sum + squaredDescriptorDistance(vectors[candidate], vectors[member]), 0);
+        return cost < best.cost ? { index: candidate, cost } : best;
+      }, { index: medoid, cost: Infinity }).index;
+    });
+  }
+
+  const clusters = medoids.map((medoid, cluster) => {
+    const members = labels.map((label, index) => label === cluster ? index : -1).filter((index) => index >= 0);
+    const spread = Math.sqrt(members.reduce((sum, index) => sum + squaredDescriptorDistance(vectors[index], vectors[medoid]), 0) / Math.max(1, members.length));
+    return { oldIndex: cluster, medoid, count: members.length, spread, coordination: environments[medoid].coordination, element: source[medoid].species };
+  }).sort((a, b) => b.count - a.count);
+  const remap = new Map(clusters.map((cluster, index) => [cluster.oldIndex, index]));
+  return { labels: labels.map((label) => remap.get(label)), clusters, environments, descriptorLength: dimensions };
 }
 
 function continuationPriority(qx, qy, qz) {
@@ -475,13 +633,14 @@ function takeFrontierBatch(batch = previewFrontierBatch(FRONTIER_BATCH)) {
 
 function makeRepresentatives() {
   const reps = [];
+  const elements = currentMaterial().elements;
   const centers = [new THREE.Vector3(-4.1, 0, 0), new THREE.Vector3(0, 0, 0), new THREE.Vector3(4.1, 0, 0)];
   const tetra = [[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]];
   const ico = [[0,1,PHI],[0,-1,PHI],[0,1,-PHI],[0,-1,-PHI],[1,PHI,0],[-1,PHI,0],[1,-PHI,0],[-1,-PHI,0],[PHI,0,1],[PHI,0,-1],[-PHI,0,1],[-PHI,0,-1]];
   const corona = [[0,0,0],[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
-  tetra.forEach((v) => reps.push({ p: new THREE.Vector3(...v).normalize().multiplyScalar(1.15).add(centers[0]), species: "B", family: "BC8" }));
-  ico.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).normalize().multiplyScalar(1.25).add(centers[1]), species: i % 3 ? "G" : "B", family: "IQC" }));
-  corona.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).multiplyScalar(.95).add(centers[2]), species: i % 2 ? "B" : "G", family: "glass" }));
+  tetra.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).normalize().multiplyScalar(1.15).add(centers[0]), species: elements[i % elements.length], family: "BC8" }));
+  ico.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).normalize().multiplyScalar(1.25).add(centers[1]), species: elements[(i + 1) % elements.length], family: "IQC" }));
+  corona.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).multiplyScalar(.95).add(centers[2]), species: elements[i % elements.length], family: "glass" }));
   return reps;
 }
 
@@ -490,7 +649,7 @@ function clearGroup(group) {
     const child = group.children.pop();
     if (![sphereGeometry, candidateGeometry].includes(child.geometry)) child.geometry?.dispose?.();
     if (Array.isArray(child.material)) child.material.forEach((material) => material.dispose?.());
-    else if (![blueMaterial, greenMaterial, blueDimMaterial, greenDimMaterial, candidateMaterial, rejectedMaterial].includes(child.material)) child.material?.dispose?.();
+    else if (![blueMaterial, greenMaterial, blueDimMaterial, greenDimMaterial, candidateMaterial, rejectedMaterial, ...elementMaterials.values(), ...dimElementMaterials.values(), ...clusterMaterials].includes(child.material)) child.material?.dispose?.();
   }
 }
 
@@ -539,14 +698,22 @@ function addClusterEnvelope(geometry, position, color, scale = 1) {
 
 function buildClusterOverlay() {
   clearGroup(clusterGroup);
-  if (pipelineStage === 1) {
-    const centers = referenceAtoms.filter((_, index) => index % 15 === 0).slice(0, 15);
-    centers.forEach((atom, index) => {
-      const geometry = atom.family === "BC8" ? new THREE.TetrahedronGeometry(.9)
-        : atom.family === "IQC" ? new THREE.IcosahedronGeometry(1.05, 0)
-          : new THREE.OctahedronGeometry(.9, 0);
-      const color = atom.family === "BC8" ? COLORS.blue : atom.family === "IQC" ? COLORS.violet : COLORS.green;
-      addClusterEnvelope(geometry, atom.p, color, 1 + (index % 3) * .08);
+  if (pipelineStage === 1 && learnedClusters) {
+    learnedClusters.clusters.forEach((cluster, index) => {
+      const atom = referenceAtoms[cluster.medoid];
+      const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.0)
+        : cluster.coordination >= 11 ? new THREE.IcosahedronGeometry(1.12, 0)
+          : new THREE.SphereGeometry(1.05, 8, 5);
+      addClusterEnvelope(geometry, atom.p, CLUSTER_COLORS[index], 1 + Math.min(.22, cluster.spread * .035));
+      const shellLines = [];
+      referenceAtoms.forEach((neighbor) => {
+        const distance = atom.p.distanceTo(neighbor.p) / referenceSpacing;
+        if (neighbor !== atom && distance <= 1.38) shellLines.push(atom.p, neighbor.p);
+      });
+      if (shellLines.length) clusterGroup.add(new THREE.LineSegments(
+        new THREE.BufferGeometry().setFromPoints(shellLines),
+        new THREE.LineBasicMaterial({ color: CLUSTER_COLORS[index], transparent: true, opacity: .72 }),
+      ));
     });
   } else if (pipelineStage === 2) {
     addClusterEnvelope(new THREE.TetrahedronGeometry(1.7), new THREE.Vector3(-4.1, 0, 0), COLORS.blue);
@@ -593,7 +760,9 @@ function enterPipelineStage(index, options = {}) {
   rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5 ^ confinementSelect.selectedIndex * 0x734a9d;
   referenceAtoms = makeReferenceConfiguration();
   referenceSpacing = medianNearestSpacing(referenceAtoms);
+  referenceSpacingA = referenceSpacing / .92 * currentMaterial().spacingA;
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing);
+  learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
   extensionTargets = makeExtensionTargets();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
@@ -630,18 +799,20 @@ function frameStage() {
 function updateStageNarrative() {
   decisionEyebrow.textContent = "pipeline stage";
   decisionBadge.className = "badge neutral";
+  const material = currentMaterial();
+  const clusterCount = learnedClusters?.clusters.length || material.clusters;
   const narratives = [
     {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
-      caption: "Every point is an observed species and position; no cluster labels are supplied.", badge: "input",
-      decision: "Observed configuration", copy: "The learner receives only atomic species and Cartesian positions from one finite 216-atom configuration.",
-      values: ["xyz + species", "none", "finite sample", "1 configuration"],
+      caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no environment labels are given.`, badge: "input",
+      decision: material.name, copy: `The learner receives 216 element-labelled positions. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.`,
+      values: [material.elements.join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, "1 configuration"],
     },
     {
-      eyebrow: "learning · symmetry-reduced neighborhoods", title: "Discover overlapping cluster types", phase: "15 covers",
-      caption: "Wireframes show repeated local neighborhoods; an atom may belong to more than one cover.", badge: "learn",
-      decision: "Cluster vocabulary inferred", copy: "Neighborhoods are aligned, species-aware descriptors are clustered, and redundant representatives are merged under symmetry.",
-      values: ["radius 2.5", "3 motif types", "1.7× overlap", "100% covered"],
+      eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterCount} learned types`,
+      caption: "Color is now cluster assignment, not element. Each wireframe marks a k-medoids representative learned from periodic local descriptors.", badge: "learn",
+      decision: "Environment clusters computed", copy: "Element-resolved radial functions and a first-shell angular histogram are standardized, then clustered by deterministic k-medoids.",
+      values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${clusterCount} medoids`, "PBC minimum image"],
     },
     {
       eyebrow: "encoding · polyhedra with marked interfaces", title: "Compress motifs into a geometric grammar", phase: "3 symbols",
@@ -803,7 +974,8 @@ function rebuildWorld() {
     const mesh = new THREE.InstancedMesh(sphereGeometry, material, source.length);
     source.forEach((atom, index) => {
       dummy.position.copy(atom.p);
-      dummy.scale.setScalar((atom.seed ? .94 : 1) * scale);
+      const atomScale = typeof scale === "function" ? scale(atom) : scale;
+      dummy.scale.setScalar((atom.seed ? .94 : 1) * atomScale);
       dummy.updateMatrix();
       mesh.setMatrixAt(index, dummy.matrix);
     });
@@ -811,13 +983,18 @@ function rebuildWorld() {
     atomGroup.add(mesh);
   };
   if (selectedIds) {
-    addInstances(atoms.filter((atom) => atom.species === "B" && !selectedIds.has(atom.id)), blueDimMaterial, .82);
-    addInstances(atoms.filter((atom) => atom.species === "G" && !selectedIds.has(atom.id)), greenDimMaterial, .82);
-    addInstances(atoms.filter((atom) => atom.species === "B" && selectedIds.has(atom.id)), blueMaterial, 1.32);
-    addInstances(atoms.filter((atom) => atom.species === "G" && selectedIds.has(atom.id)), greenMaterial, 1.32);
+    currentMaterial().elements.forEach((symbol) => {
+      addInstances(atoms.filter((atom) => atom.species === symbol && !selectedIds.has(atom.id)), getElementMaterial(symbol, true), (atom) => elementScale(atom.species) * .78);
+      addInstances(atoms.filter((atom) => atom.species === symbol && selectedIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.28);
+    });
+  } else if (pipelineStage === 1 && learnedClusters) {
+    learnedClusters.clusters.forEach((_, cluster) => {
+      addInstances(atoms.filter((atom, index) => learnedClusters.labels[index] === cluster), clusterMaterials[cluster], (atom) => elementScale(atom.species));
+    });
   } else {
-    addInstances(atoms.filter((atom) => atom.species === "B"), blueMaterial);
-    addInstances(atoms.filter((atom) => atom.species === "G"), greenMaterial);
+    currentMaterial().elements.forEach((symbol) => {
+      addInstances(atoms.filter((atom) => atom.species === symbol), getElementMaterial(symbol), (atom) => elementScale(atom.species));
+    });
   }
 
   if (bondToggle.checked) {
@@ -886,16 +1063,17 @@ function updateDecision(event) {
 
 function updateUI() {
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
+  const material = currentMaterial();
   if (pipelineStage === 0) {
-    atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "known xyz + species";
-    frontierLabel.textContent = "SPECIES"; frontierMetric.textContent = "2"; frontierDelta.textContent = "blue / green";
+    atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = `${material.name} · xyz in Å`;
+    frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.elements.length); frontierDelta.textContent = material.elements.join(" / ");
     oracleLabel.textContent = "LABELS GIVEN"; oracleMetric.textContent = "0"; oracleDelta.textContent = "clusters must be inferred";
-    reuseLabel.textContent = "TARGET SCALE"; reuseMetric.textContent = "×10"; reuseDelta.textContent = "2,160 represented atoms";
+    reuseLabel.textContent = "NEAREST NEIGHBOR"; reuseMetric.textContent = `${referenceSpacingA.toFixed(2)} Å`; reuseDelta.textContent = material.cell;
   } else if (pipelineStage === 1) {
-    atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "species-aware descriptors";
-    frontierLabel.textContent = "CLUSTER TYPES"; frontierMetric.textContent = "3"; frontierDelta.textContent = "after symmetry reduction";
-    oracleLabel.textContent = "COVERS"; oracleMetric.textContent = "15"; oracleDelta.textContent = "shown representative covers";
-    reuseLabel.textContent = "OVERLAP"; reuseMetric.textContent = "1.7×"; reuseDelta.textContent = "mean atom membership";
+    atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "periodic element-aware descriptors";
+    frontierLabel.textContent = "LEARNED CLUSTERS"; frontierMetric.textContent = String(learnedClusters.clusters.length); frontierDelta.textContent = "deterministic k-medoids";
+    oracleLabel.textContent = "FEATURES"; oracleMetric.textContent = String(learnedClusters.descriptorLength); oracleDelta.textContent = "radial + angular + chemistry";
+    reuseLabel.textContent = "CUTOFF"; reuseMetric.textContent = "1.9a"; reuseDelta.textContent = `${(referenceSpacingA * 1.9).toFixed(2)} Å local domain`;
   } else if (pipelineStage === 2) {
     atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = "3"; atomDelta.textContent = "polyhedral motif types";
     frontierLabel.textContent = "PORT CLASSES"; frontierMetric.textContent = "14"; frontierDelta.textContent = "marked interfaces";
@@ -922,6 +1100,36 @@ function updateUI() {
   renderStack();
   renderMarkings();
   renderStructureStats();
+  renderLegend();
+}
+
+function renderLegend() {
+  speciesLegend.replaceChildren();
+  if (pipelineStage === 1 && learnedClusters) {
+    legendHeading.textContent = "Learned environments";
+    learnedClusters.clusters.forEach((cluster, index) => {
+      const row = document.createElement("span");
+      const swatch = document.createElement("i");
+      swatch.className = "cluster-swatch";
+      swatch.style.setProperty("--swatch", `#${CLUSTER_COLORS[index].toString(16).padStart(6, "0")}`);
+      row.append(swatch, document.createTextNode(`C${index + 1} · ${cluster.element} · ${cluster.count}`));
+      speciesLegend.appendChild(row);
+    });
+  } else {
+    legendHeading.textContent = "Elements & state";
+    currentMaterial().elements.forEach((symbol) => {
+      const row = document.createElement("span");
+      const swatch = document.createElement("i");
+      swatch.className = "element-swatch";
+      swatch.style.setProperty("--swatch", ELEMENTS[symbol].css);
+      row.append(swatch, document.createTextNode(symbol));
+      speciesLegend.appendChild(row);
+    });
+    const proposal = document.createElement("span");
+    const swatch = document.createElement("i"); swatch.className = "candidate";
+    proposal.append(swatch, document.createTextNode("Proposal"));
+    speciesLegend.appendChild(proposal);
+  }
 }
 
 function renderStack() {
@@ -952,14 +1160,14 @@ function renderMarkings() {
     markCount.textContent = "not learned";
     const p = document.createElement("p"); p.textContent = "No motif or cluster labels are supplied."; markingTable.appendChild(p); return;
   }
-  const fixed = [
-    ["BC8 tetrahedron", "4 atoms", "18×"],
-    ["IQC icosahedron", "12 atoms", "14×"],
-    ["mixed corona", "7 atoms", "23×"],
-  ];
+  const learned = learnedClusters.clusters.map((cluster, index) => [
+    `C${index + 1} · ${cluster.element} medoid`,
+    `z${cluster.coordination} · σ${cluster.spread.toFixed(1)}`,
+    `×${cluster.count}`,
+  ]);
   const cache = policySelect.value === "marked" ? markingCache : actionCache;
-  const entries = pipelineStage < 3 ? fixed : [...cache.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(1)}…${value.max.toFixed(1)}`, `×${value.count}`]);
-  markCount.textContent = pipelineStage < 3 ? "3 types" : `${cache.size} marks`;
+  const entries = pipelineStage < 3 ? learned : [...cache.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(1)}…${value.max.toFixed(1)}`, `×${value.count}`]);
+  markCount.textContent = pipelineStage < 3 ? `${learned.length} learned` : `${cache.size} marks`;
   if (!entries.length) {
     const p = document.createElement("p"); p.textContent = "Finite observations appear as the search runs."; markingTable.appendChild(p); return;
   }

@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071112">
-  <meta name="description" content="Watch a three-dimensional, two-species GCTS pipeline learn overlapping clusters, reconstruct an observed atomic window, and continue growing through its frontier.">
+  <meta name="description" content="Watch a three-dimensional materials-GCTS pipeline cluster element-aware local atomic environments, encode them, reconstruct an observed window, and continue growing.">
   <title>GCTS Matter — Learned Clusters &amp; Continuous Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260805-6">
+  <link rel="stylesheet" href="./style.css?v=20260805-7">
   <script type="importmap">
     {
       "imports": {
@@ -28,8 +28,8 @@
     </header>
 
     <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
-      <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>216 colored atoms</span></button>
-      <button type="button" data-pipeline-stage="1"><small>02 · learn</small><strong>Find clusters</strong><span>overlapping motifs</span></button>
+      <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>elements + coordinates in Å</span></button>
+      <button type="button" data-pipeline-stage="1"><small>02 · learn</small><strong>Cluster environments</strong><span>radial + angular descriptors</span></button>
       <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>Polyhedral grammar</strong><span>types + marked ports</span></button>
       <button type="button" data-pipeline-stage="3"><small>04 · search</small><strong>Reconstruct → continue</strong><span>stochastically balanced frontier</span></button>
     </nav>
@@ -41,10 +41,10 @@
           <label class="field" for="scenarioSelect">
             <span>Starting configuration</span>
             <select id="scenarioSelect">
-              <option value="competition">Mixed reference solid</option>
-              <option value="random">Disordered binary solid</option>
-              <option value="iqc">Quasicrystal-like solid</option>
-              <option value="bc8">BC8-like crystal</option>
+              <option value="competition">NaCl rocksalt crystal</option>
+              <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
+              <option value="iqc">Al–Cu–Fe IQC approximant</option>
+              <option value="bc8">Silicon BC8-like network</option>
             </select>
           </label>
           <label class="field" for="confinementSelect">
@@ -93,8 +93,8 @@
         </section>
 
         <section class="legend-section">
-          <p class="eyebrow">Species &amp; state</p>
-          <div class="legend"><span><i class="blue"></i>Blue species</span><span><i class="green"></i>Green species</span><span><i class="candidate"></i>Proposal</span></div>
+          <p id="legendHeading" class="eyebrow">Elements &amp; state</p>
+          <div id="speciesLegend" class="legend"></div>
         </section>
       </aside>
 
@@ -171,12 +171,12 @@
           <div><strong>94.9%</strong><span>held-out sign accuracy</span></div>
           <div><strong>6 / 6</strong><span>exact reversible replays</span></div>
           <div><strong>11.8%</strong><span>insertion-oracle reduction</span></div>
-          <p>The pipeline animation is a browser-scale structural surrogate. Clusters, polyhedra, and replay are schematic; the fixed numbers above come from the tested BCI-2P reference implementation.</p>
+          <p>Local-environment clusters are computed from the displayed coordinates. The later polyhedral encoding and growth remain a structural surrogate; the fixed numbers above come from the tested BCI-2P reference implementation.</p>
         </section>
       </aside>
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260805-6"></script>
+  <script type="module" src="./app.js?v=20260805-7"></script>
 </body>
 </html>

@@ -113,6 +113,8 @@ a { color: inherit; }
 .legend i.blue { background: var(--blue); box-shadow: 0 0 7px var(--blue); }
 .legend i.green { background: var(--green); box-shadow: 0 0 7px var(--green); }
 .legend i.candidate { border: 1px solid var(--violet); background: transparent; box-shadow: 0 0 7px var(--violet); }
+.legend i.element-swatch { box-shadow: 0 0 7px color-mix(in srgb, var(--swatch) 70%, transparent); background: var(--swatch); }
+.legend i.cluster-swatch { border-radius: 1px; background: var(--swatch); }
 
 .stage { min-width: 0; padding: 20px 22px 18px; }
 .stage-heading { height: 51px; display: flex; justify-content: space-between; align-items: start; }
