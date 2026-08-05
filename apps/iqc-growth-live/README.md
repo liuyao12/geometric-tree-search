@@ -34,6 +34,12 @@ shells, and the inspector reports each cluster's population, medoid element,
 coordination, and within-cluster spread. This is a compact ACSF-like descriptor,
 not a full SOAP implementation.
 
+The learned classes partition all 216 atom centers: every center receives one
+environment label, while the corresponding radius-`1.9a` neighborhoods overlap
+and therefore cover the atomic configuration. The encoding stage now preserves
+that learned cardinality and shows the actual medoid first shell for every
+class; it no longer substitutes the same three demonstration polyhedra.
+
 Continuation does not target a cube or impose a hard spherical boundary. It
 samples among locally near-best cluster attachments on the exposed frontier.
 A soft penalty for overrepresented angular sectors, plus stochastic tie
@@ -47,10 +53,12 @@ uses a fixed first-shell cutoff of `1.32a`. During continuation, both charts kee
 the recovered 216-site window as the comparison sample so the larger frontier
 does not silently change the validation domain.
 
-Each coordination bin is interactive. Selecting a value emphasizes atoms with
-that first-shell coordination in the current comparable scene, dims unrelated
-atoms, and keeps bonds touching the selected sites visible. The same bin or the
-compact clear control restores the unfiltered view.
+Each coordination bin is interactive. Selecting a value chooses the matching
+center nearest the middle of the current comparable scene, emphasizes that
+center and its actual first-shell neighbors, and draws one segment from the
+center to every counted neighbor. The status retains the number of centers in
+the histogram bin while reporting how many neighbors are shown. The same bin or
+the compact clear control restores the unfiltered view.
 
 The fixed benchmark numbers in the interface come from the offline BCI-2P
 reference experiments. Polyhedral grammar construction and subsequent browser
