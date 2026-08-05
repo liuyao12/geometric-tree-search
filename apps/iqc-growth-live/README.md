@@ -30,6 +30,11 @@ uses a fixed first-shell cutoff of `1.32a`. During continuation, both charts kee
 the recovered 216-site window as the comparison sample so the larger frontier
 does not silently change the validation domain.
 
+Each coordination bin is interactive. Selecting a value emphasizes atoms with
+that first-shell coordination in the current comparable scene, dims unrelated
+atoms, and keeps bonds touching the selected sites visible. The same bin or the
+compact clear control restores the unfiltered view.
+
 The fixed benchmark numbers in the interface come from the offline BCI-2P
 reference experiments. The browser animation is deliberately labeled as a
 structural surrogate rather than a molecular-dynamics trajectory.

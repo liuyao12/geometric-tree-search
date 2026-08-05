@@ -41,6 +41,7 @@ const rdfChart = $("rdfChart");
 const rdfStatus = $("rdfStatus");
 const coordChart = $("coordChart");
 const coordStatus = $("coordStatus");
+const coordClearButton = $("coordClearButton");
 const decisionEyebrow = $("decisionEyebrow");
 const decisionBadge = $("decisionBadge");
 const decisionTitle = $("decisionTitle");
@@ -118,6 +119,8 @@ const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
 const candidateGeometry = new THREE.SphereGeometry(0.24, 12, 8);
 const blueMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, roughness: 0.28, metalness: 0.18, emissive: 0x0b526d, emissiveIntensity: 0.32 });
 const greenMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, roughness: 0.34, metalness: 0.12, emissive: 0x59450c, emissiveIntensity: 0.27 });
+const blueDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, transparent: true, opacity: .12, roughness: .5, depthWrite: false });
+const greenDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, transparent: true, opacity: .12, roughness: .5, depthWrite: false });
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
 const rejectedMaterial = new THREE.MeshBasicMaterial({ color: COLORS.red, wireframe: true, transparent: true, opacity: 0.92 });
 
@@ -149,6 +152,7 @@ let referenceSpacing = 1;
 let referenceStructuralStats = null;
 let liveStructuralStats = null;
 let lastLiveStatsKey = "";
+let coordinationSelection = null;
 
 function random() {
   rngState ^= rngState << 13;
@@ -183,7 +187,7 @@ function medianNearestSpacing(source) {
 function calculateStructuralStats(source, spacing) {
   const rdf = new Array(RDF_BINS).fill(0);
   const coordination = new Array(13).fill(0);
-  if (!source.length) return { rdf, coordination, meanCoordination: 0, count: 0 };
+  if (!source.length) return { rdf, coordination, meanCoordination: 0, count: 0, neighborCounts: [] };
 
   const neighbors = new Array(source.length).fill(0);
   const minimum = new THREE.Vector3(Infinity, Infinity, Infinity);
@@ -221,7 +225,37 @@ function calculateStructuralStats(source, spacing) {
   neighbors.forEach((value) => coordination[Math.min(12, value)]++);
   for (let index = 0; index < coordination.length; index++) coordination[index] /= source.length;
   const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
-  return { rdf, coordination, meanCoordination, count: source.length };
+  return { rdf, coordination, meanCoordination, count: source.length, neighborCounts: neighbors };
+}
+
+function currentLiveStructure() {
+  const source = pipelineStage === 3 ? atoms.filter((atom) => atom.observed) : [];
+  const key = `${pipelineStage}:${replayIndex}`;
+  if (key !== lastLiveStatsKey) {
+    liveStructuralStats = calculateStructuralStats(source, referenceSpacing);
+    lastLiveStatsKey = key;
+  }
+  return { source, stats: liveStructuralStats || calculateStructuralStats([], referenceSpacing) };
+}
+
+function selectedCoordinationAtoms() {
+  if (coordinationSelection === null || pipelineStage === 2) return null;
+  const structure = pipelineStage === 3
+    ? currentLiveStructure()
+    : { source: atoms, stats: referenceStructuralStats };
+  if (!structure.source.length || !structure.stats) return null;
+  const ids = new Set();
+  structure.source.forEach((atom, index) => {
+    if (Math.min(12, structure.stats.neighborCounts[index]) === coordinationSelection) ids.add(atom.id);
+  });
+  return ids;
+}
+
+function selectCoordination(value) {
+  if (pipelineStage === 2 || (pipelineStage === 3 && replayIndex === 0)) return;
+  coordinationSelection = coordinationSelection === value ? null : value;
+  rebuildWorld();
+  updateUI();
 }
 
 function svgNode(tag, attributes = {}, text = "") {
@@ -251,16 +285,13 @@ function linePath(values, maximum) {
 
 function renderStructureStats() {
   if (!referenceStructuralStats) return;
-  const liveAtoms = pipelineStage === 3 ? atoms.filter((atom) => atom.observed) : [];
-  const liveKey = `${pipelineStage}:${replayIndex}`;
-  if (liveKey !== lastLiveStatsKey) {
-    liveStructuralStats = calculateStructuralStats(liveAtoms, referenceSpacing);
-    lastLiveStatsKey = liveKey;
-  }
-
-  const live = liveStructuralStats || calculateStructuralStats([], referenceSpacing);
+  const { stats: live } = currentLiveStructure();
   rdfStatus.textContent = `known ${REFERENCE_COUNT} · live ${live.count}`;
-  coordStatus.textContent = `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`;
+  const selectedIds = selectedCoordinationAtoms();
+  coordStatus.textContent = coordinationSelection === null
+    ? `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`
+    : `${coordinationSelection === 12 ? "z≥12" : `z=${coordinationSelection}`} · ${selectedIds?.size || 0} highlighted`;
+  coordClearButton.hidden = coordinationSelection === null;
 
   rdfChart.replaceChildren();
   drawChartFrame(rdfChart, "r / a", "g");
@@ -278,6 +309,10 @@ function renderStructureStats() {
   drawChartFrame(coordChart, "coordination z", "P");
   const barStep = 323 / referenceStructuralStats.coordination.length;
   const coordMaximum = Math.max(.05, ...referenceStructuralStats.coordination, ...live.coordination) * 1.08;
+  if (coordinationSelection !== null) {
+    const x = 29 + coordinationSelection * barStep + 1;
+    coordChart.append(svgNode("rect", { x, y: 8, width: barStep - 2, height: 88, class: "coord-selection" }));
+  }
   referenceStructuralStats.coordination.forEach((value, index) => {
     const height = Math.min(1, value / coordMaximum) * 84;
     const x = 29 + index * barStep + 2;
@@ -291,6 +326,27 @@ function renderStructureStats() {
   [0, 2, 4, 6, 8, 10, 12].forEach((tick) => {
     const x = 29 + (tick + .5) * barStep;
     coordChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, tick === 12 ? "12+" : String(tick)));
+  });
+  referenceStructuralStats.coordination.forEach((_, index) => {
+    const hit = svgNode("rect", {
+      x: 29 + index * barStep,
+      y: 8,
+      width: barStep,
+      height: 88,
+      class: "coord-hit",
+      role: "button",
+      tabindex: "0",
+      "aria-label": `${index === 12 ? "12 or more" : index} neighbors; highlight matching atoms`,
+      "aria-pressed": coordinationSelection === index ? "true" : "false",
+    });
+    hit.addEventListener("click", () => selectCoordination(index));
+    hit.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectCoordination(index);
+      }
+    });
+    coordChart.append(hit);
   });
 }
 
@@ -434,7 +490,7 @@ function clearGroup(group) {
     const child = group.children.pop();
     if (![sphereGeometry, candidateGeometry].includes(child.geometry)) child.geometry?.dispose?.();
     if (Array.isArray(child.material)) child.material.forEach((material) => material.dispose?.());
-    else if (![blueMaterial, greenMaterial, candidateMaterial, rejectedMaterial].includes(child.material)) child.material?.dispose?.();
+    else if (![blueMaterial, greenMaterial, blueDimMaterial, greenDimMaterial, candidateMaterial, rejectedMaterial].includes(child.material)) child.material?.dispose?.();
   }
 }
 
@@ -526,6 +582,7 @@ function resetCounters() {
   nextAtomId = 1;
   liveStructuralStats = null;
   lastLiveStatsKey = "";
+  coordinationSelection = null;
 }
 
 function enterPipelineStage(index, options = {}) {
@@ -740,29 +797,39 @@ function rebuildWorld() {
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
   const dummy = new THREE.Object3D();
-  const addInstances = (source, material) => {
+  const selectedIds = selectedCoordinationAtoms();
+  const addInstances = (source, material, scale = 1) => {
     if (!source.length) return;
     const mesh = new THREE.InstancedMesh(sphereGeometry, material, source.length);
     source.forEach((atom, index) => {
       dummy.position.copy(atom.p);
-      dummy.scale.setScalar(atom.seed ? .94 : 1);
+      dummy.scale.setScalar((atom.seed ? .94 : 1) * scale);
       dummy.updateMatrix();
       mesh.setMatrixAt(index, dummy.matrix);
     });
     mesh.instanceMatrix.needsUpdate = true;
     atomGroup.add(mesh);
   };
-  addInstances(atoms.filter((atom) => atom.species === "B"), blueMaterial);
-  addInstances(atoms.filter((atom) => atom.species === "G"), greenMaterial);
+  if (selectedIds) {
+    addInstances(atoms.filter((atom) => atom.species === "B" && !selectedIds.has(atom.id)), blueDimMaterial, .82);
+    addInstances(atoms.filter((atom) => atom.species === "G" && !selectedIds.has(atom.id)), greenDimMaterial, .82);
+    addInstances(atoms.filter((atom) => atom.species === "B" && selectedIds.has(atom.id)), blueMaterial, 1.32);
+    addInstances(atoms.filter((atom) => atom.species === "G" && selectedIds.has(atom.id)), greenMaterial, 1.32);
+  } else {
+    addInstances(atoms.filter((atom) => atom.species === "B"), blueMaterial);
+    addInstances(atoms.filter((atom) => atom.species === "G"), greenMaterial);
+  }
 
   if (bondToggle.checked) {
     const points = [];
-    atoms.forEach((atom) => { if (atom.parent) points.push(atom.parent.p, atom.p); });
+    atoms.forEach((atom) => {
+      if (atom.parent && (!selectedIds || selectedIds.has(atom.id) || selectedIds.has(atom.parent.id))) points.push(atom.parent.p, atom.p);
+    });
     if (pipelineStage < 3 && atoms.length <= 250) {
       for (let i = 0; i < atoms.length; i++) {
         for (let j = i + 1; j < atoms.length; j++) {
           const distance = atoms[i].p.distanceToSquared(atoms[j].p);
-          if (distance > .55 && distance < 1.08) points.push(atoms[i].p, atoms[j].p);
+          if (distance > .55 && distance < 1.08 && (!selectedIds || selectedIds.has(atoms[i].id) || selectedIds.has(atoms[j].id))) points.push(atoms[i].p, atoms[j].p);
         }
       }
     }
@@ -937,6 +1004,7 @@ policySelect.addEventListener("change", () => {
 speedInput.addEventListener("input", () => { speedOutput.textContent = speedInput.value; });
 [markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
+coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
 
 function resize() {
   const width = viewport.clientWidth;

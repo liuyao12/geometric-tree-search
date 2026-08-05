@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Watch a three-dimensional, two-species GCTS pipeline learn overlapping clusters, reconstruct an observed atomic window, and continue growing through its frontier.">
   <title>GCTS Matter — Learned Clusters &amp; Continuous Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260805-5">
+  <link rel="stylesheet" href="./style.css?v=20260805-6">
   <script type="importmap">
     {
       "imports": {
@@ -133,10 +133,10 @@
           <article class="structure-card">
             <div class="structure-heading">
               <div><p class="eyebrow">first-shell coordination</p><strong>P(z), r<sub>c</sub> = 1.32a</strong></div>
-              <span id="coordStatus">mean z — · —</span>
+              <div class="structure-status"><span id="coordStatus">mean z — · —</span><button id="coordClearButton" type="button" hidden>clear</button></div>
             </div>
             <svg id="coordChart" viewBox="0 0 360 118" role="img" aria-label="Coordination number distribution for known positions and live reconstruction"></svg>
-            <div class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span></div>
+            <div class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span><em>click z to highlight</em></div>
           </article>
         </section>
       </section>
@@ -177,6 +177,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260805-5"></script>
+  <script type="module" src="./app.js?v=20260805-6"></script>
 </body>
 </html>
