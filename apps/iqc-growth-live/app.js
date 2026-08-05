@@ -71,6 +71,7 @@ const PHI = (1 + Math.sqrt(5)) / 2;
 const REFERENCE_COUNT = 216;
 const SCALE_FACTOR = 10;
 const EXTENSION_COUNT = REFERENCE_COUNT * SCALE_FACTOR;
+const FRONTIER_BATCH = 4;
 const MAX_HISTORY = 54;
 
 const scene = new THREE.Scene();
@@ -161,53 +162,71 @@ function addAtom(position, species, family, parent = null, seed = false) {
   return atom;
 }
 
+function siteHash(x, y, z, salt = 0) {
+  const value = Math.sin(x * 127.1 + y * 311.7 + z * 74.7 + salt * 19.19) * 43758.5453;
+  return value - Math.floor(value);
+}
+
+function decorateLatticeSite(qx, qy, qz, sourceIndex = 0) {
+  const scenario = scenarioSelect.value;
+  let family = qx < -Math.abs(qy) * .35 ? "BC8" : qx > Math.abs(qy) * .35 ? "glass" : "IQC";
+  if (scenario === "random") family = "glass";
+  if (scenario === "iqc") family = "IQC";
+  if (scenario === "bc8") family = "BC8";
+  const p = new THREE.Vector3(qx * .92, qy * .92, qz * .92);
+  if (family === "BC8") {
+    const parity = Math.round((qx + qy + qz) * 2) % 4 < 2 ? 1 : -1;
+    p.add(new THREE.Vector3(parity * .13, -parity * .08, parity * .08));
+  } else if (family === "IQC") {
+    p.add(new THREE.Vector3(
+      Math.sin((qy + qz * PHI) * 1.7) * .14,
+      Math.sin((qz + qx * PHI) * 1.4) * .14,
+      Math.sin((qx + qy * PHI) * 1.6) * .14,
+    ));
+  } else {
+    p.add(new THREE.Vector3(
+      (siteHash(qx, qy, qz, 1) - .5) * .28,
+      (siteHash(qx, qy, qz, 2) - .5) * .28,
+      (siteHash(qx, qy, qz, 3) - .5) * .28,
+    ));
+  }
+  const speciesBias = siteHash(qx, qy, qz, 5);
+  const species = family === "BC8" ? (speciesBias < .82 ? "B" : "G")
+    : family === "IQC" ? (speciesBias < .6 ? "G" : "B")
+      : speciesBias < .57 ? "B" : "G";
+  return { p, species, family, sourceIndex, q: [qx, qy, qz] };
+}
+
 function makeReferenceConfiguration() {
   const result = [];
-  const scenario = scenarioSelect.value;
-  for (let ix = 0; ix < 6; ix++) {
-    for (let iy = 0; iy < 6; iy++) {
-      for (let iz = 0; iz < 6; iz++) {
-        const base = new THREE.Vector3((ix - 2.5) * 0.92, (iy - 2.5) * 0.92, (iz - 2.5) * 0.92);
-        let family = ix < 2 ? "BC8" : ix < 4 ? "IQC" : "glass";
-        if (scenario === "random") family = "glass";
-        if (scenario === "iqc") family = "IQC";
-        if (scenario === "bc8") family = "BC8";
-        if (family === "BC8") {
-          const parity = (ix + iy + iz) % 2 ? 1 : -1;
-          base.add(new THREE.Vector3(parity * 0.13, -parity * 0.08, parity * 0.08));
-        } else if (family === "IQC") {
-          base.add(new THREE.Vector3(
-            Math.sin((iy + iz * PHI) * 1.7) * 0.14,
-            Math.sin((iz + ix * PHI) * 1.4) * 0.14,
-            Math.sin((ix + iy * PHI) * 1.6) * 0.14,
-          ));
-        } else {
-          base.add(new THREE.Vector3((random() - .5) * .28, (random() - .5) * .28, (random() - .5) * .28));
-        }
-        const species = family === "BC8" ? ((ix + iy + iz) % 5 ? "B" : "G")
-          : family === "IQC" ? ((ix * 2 + iy + iz * 3) % 5 < 3 ? "G" : "B")
-            : random() < .57 ? "B" : "G";
-        result.push({ p: base, species, family, sourceIndex: result.length });
-      }
-    }
+  for (let ix = 0; ix < 6; ix++) for (let iy = 0; iy < 6; iy++) for (let iz = 0; iz < 6; iz++) {
+    result.push(decorateLatticeSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length));
   }
   return result.sort((a, b) => a.p.lengthSq() - b.p.lengthSq());
 }
 
+function continuationPriority(qx, qy, qz) {
+  const shape = confinementSelect.value;
+  if (shape === "sphere") return Math.hypot(qx, qy, qz);
+  if (shape === "cylinder") return Math.max(Math.abs(qx) * .78, Math.hypot(qy, qz));
+  if (shape === "hourglass") return Math.max(Math.abs(qx) * .62, Math.hypot(qy, qz) / (1 + .13 * Math.abs(qx)));
+  return Math.max(Math.abs(qx), Math.abs(qy), Math.abs(qz));
+}
+
 function makeExtensionTargets() {
-  const offsets = [
-    [-6.2, 0, 0], [6.2, 0, 0], [0, -5.8, 0], [0, 5.8, 0],
-    [-6.2, -5.8, .6], [-6.2, 5.8, -.6], [6.2, -5.8, -.6], [6.2, 5.8, .6], [12.4, 0, 0],
-  ];
-  const targets = [];
-  offsets.forEach((offset, cell) => {
-    const rotation = new THREE.Matrix4().makeRotationX((cell % 3 - 1) * .08);
-    referenceAtoms.forEach((atom) => {
-      const p = atom.p.clone().applyMatrix4(rotation).add(new THREE.Vector3(...offset));
-      targets.push({ p, species: atom.species, family: atom.family, cell });
-    });
-  });
-  return targets;
+  const candidates = [];
+  for (let ix = -9; ix < 9; ix++) for (let iy = -9; iy < 9; iy++) for (let iz = -9; iz < 9; iz++) {
+    const qx = ix + .5;
+    const qy = iy + .5;
+    const qz = iz + .5;
+    if (Math.abs(qx) <= 2.5 && Math.abs(qy) <= 2.5 && Math.abs(qz) <= 2.5) continue;
+    const target = decorateLatticeSite(qx, qy, qz, candidates.length + REFERENCE_COUNT);
+    target.priority = continuationPriority(qx, qy, qz);
+    target.tie = siteHash(qx, qy, qz, 8);
+    candidates.push(target);
+  }
+  candidates.sort((a, b) => a.priority - b.priority || a.tie - b.tie);
+  return candidates.slice(0, EXTENSION_COUNT - REFERENCE_COUNT);
 }
 
 function makeRepresentatives() {
@@ -238,21 +257,21 @@ function buildConfinement() {
   const material = new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.36 });
   const shape = confinementSelect.value;
   if (shape === "box") {
-    const dims = large ? [32, 17, 13] : [8, 8, 8];
+    const dims = large ? [17, 17, 17] : [8, 8, 8];
     confinementGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(...dims)), material));
   } else if (shape === "sphere") {
-    const radius = large ? 17 : 5.3;
+    const radius = large ? 9 : 5.3;
     confinementGroup.add(new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(radius, 20, 13)), material));
   } else if (shape === "cylinder") {
-    const radius = large ? 8.2 : 4.4;
-    const length = large ? 32 : 8;
+    const radius = large ? 8 : 4.4;
+    const length = large ? 17 : 8;
     confinementGroup.add(new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.CylinderGeometry(radius, radius, length, 22, 4, true)), material));
     confinementGroup.rotation.z = Math.PI / 2;
   } else {
-    const length = large ? 16 : 4;
+    const length = large ? 8.5 : 4;
     const points = [];
-    for (let ring = -length; ring <= length; ring += large ? 2 : .5) {
-      const radius = (large ? 3.4 : 1.5) + (large ? .32 : .42) * Math.abs(ring);
+    for (let ring = -length; ring <= length; ring += large ? 1 : .5) {
+      const radius = (large ? 2.4 : 1.5) + (large ? .58 : .42) * Math.abs(ring);
       for (let segment = 0; segment < 20; segment++) {
         const a = segment / 20 * TAU;
         const b = (segment + 1) / 20 * TAU;
@@ -368,9 +387,9 @@ function updatePipelineButtons() {
 
 function frameStage() {
   const large = pipelineStage === 4;
-  const target = large ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3();
+  const target = new THREE.Vector3();
   controls.target.copy(target);
-  camera.position.set(large ? 27 : 12.5, large ? 18 : 9.5, large ? 28 : 13.5);
+  camera.position.set(large ? 18 : 12.5, large ? 13 : 9.5, large ? 19 : 13.5);
   camera.updateProjectionMatrix();
 }
 
@@ -403,10 +422,10 @@ function updateStageNarrative() {
       values: ["cluster placement", "learned domain", "—", "not started"],
     },
     {
-      eyebrow: "deployment · overlapping macro-cluster growth", title: "Extend the learned grammar one order up", phase: "growing ×10",
-      caption: "Each accepted macro places 12 colored atoms; conflicts roll back the entire speculative cluster.", badge: "deploy",
-      decision: "Ready to extend", copy: "The validated symbols now propose overlapping cluster placements under the selected confinement and search policy.",
-      values: ["12-atom macro", "marked ports", "—", "not started"],
+      eyebrow: "deployment · continuous frontier growth", title: "Continue the same structure beyond the window", phase: "growing ×10",
+      caption: "Overlapping clusters add only their four newly exposed frontier sites—no copy of the starting block is repeated.", badge: "deploy",
+      decision: "Ready to continue", copy: "The observed cube is treated as a finite window into one structure. Learned symbols continue through its exposed boundary under the selected confinement.",
+      values: ["overlapping cluster", "marked frontier", "—", "not started"],
     },
   ];
   const item = narratives[pipelineStage];
@@ -422,9 +441,9 @@ function updateStageNarrative() {
 }
 
 function stateForTarget(target, macro = false) {
-  const action = macro ? `${target.family} cluster` : `${target.species} @ ${target.family}`;
-  const domain = `${target.family === "IQC" ? "icosa" : target.family === "BC8" ? "tetra" : "corona"}|${target.species}→${macro ? "macro" : "site"}|port${macro ? 6 : 3 + (target.sourceIndex || 0) % 4}`;
-  return { action, domain, n15: macro ? 12 : 4, n25: macro ? 28 : 11, minimum: .92, clearance: pipelineStage === 4 ? 2.8 : 1.4 };
+  const action = macro ? `${target.family} frontier overlap` : `${target.species} @ ${target.family}`;
+  const domain = `${target.family === "IQC" ? "icosa" : target.family === "BC8" ? "tetra" : "corona"}|${target.species}→${macro ? "frontier" : "site"}|port${macro ? 6 : 3 + (target.sourceIndex || 0) % 4}`;
+  return { action, domain, n15: 4, n25: macro ? 14 : 11, minimum: .92, clearance: pipelineStage === 4 ? 2.8 : 1.4 };
 }
 
 function cacheDecision(state, energy) {
@@ -455,7 +474,7 @@ function appendHistory(type, entry) {
 
 function proposeWrong(target, macro = false) {
   const direction = new THREE.Vector3(1, .55, -.35).normalize();
-  const count = macro ? 12 : 1;
+  const count = macro ? FRONTIER_BATCH : 1;
   const wrongAtoms = [];
   for (let i = 0; i < count; i++) {
     const source = macro ? extensionTargets[Math.min(extensionTargets.length - 1, extensionIndex + i)] : target;
@@ -467,7 +486,7 @@ function proposeWrong(target, macro = false) {
   const state = stateForTarget(target, macro);
   acceptedDecisions++;
   appendHistory("accept", { type: "accept", depth: 1, action: `${state.action}?`, family: "speculative" });
-  captionAction.textContent = `${macro ? "Macro-cluster" : "Site"} placed speculatively; its marked interfaces remain unresolved.`;
+  captionAction.textContent = `${macro ? "Overlapping cluster" : "Site"} placed speculatively; its newly exposed frontier remains unresolved.`;
   updateDecision({ eventType: "accept", accepted: true, state, resolver: "speculative branch", energy: -.18, interval: [-.3, .1] });
 }
 
@@ -536,17 +555,19 @@ function performExtensionEvent() {
     const conflictPeriod = Math.max(11, 37 - Math.round(Number(backtrackInput.value) * .3));
     if (eventIndex > 5 && eventIndex % conflictPeriod === 7) proposeWrong(target, true);
     else {
-      const batch = extensionTargets.slice(extensionIndex, extensionIndex + 12);
+      const batch = extensionTargets.slice(extensionIndex, extensionIndex + FRONTIER_BATCH);
       const state = stateForTarget(target, true);
-      const decision = cacheDecision(state, -1.15 - (target.cell % 3) * .08);
+      const localEnergy = -1.15 - (Math.round(target.priority) % 3) * .08;
+      const decision = cacheDecision(state, localEnergy);
       const added = [];
       batch.forEach((item) => added.push(addAtom(item.p, item.species, item.family, nearestParent(item.p))));
       extensionIndex += batch.length;
-      currentCandidate = { p: added[Math.floor(added.length / 2)].p.clone(), accepted: true };
+      const center = added.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3()).multiplyScalar(1 / added.length);
+      currentCandidate = { p: center, accepted: true };
       acceptedDecisions++;
       appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: added.at(-1).depth, action: state.action, family: target.family });
-      captionAction.textContent = `${atoms.length.toLocaleString()}/${EXTENSION_COUNT.toLocaleString()} atoms represented; accepted one overlapping 12-atom macro.`;
-      updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: -1.15, interval: decision.interval });
+      captionAction.textContent = `${atoms.length.toLocaleString()}/${EXTENSION_COUNT.toLocaleString()} atoms represented; one overlapping cluster continued through the frontier.`;
+      updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: localEnergy, interval: decision.interval });
     }
   }
   rebuildWorld();
@@ -669,7 +690,7 @@ function updateUI() {
     atomMetric.textContent = pipelineStage === 3 ? `${atoms.length}/${REFERENCE_COUNT}` : `${atoms.length.toLocaleString()}`;
     atomDelta.textContent = pipelineStage === 3 ? "known sites recovered" : `${(atoms.length / REFERENCE_COUNT).toFixed(1)}× reference scale`;
     frontierLabel.textContent = "OPEN FRONTIER";
-    frontierDelta.textContent = pipelineStage === 3 ? "next target sites" : "next macro atoms";
+    frontierDelta.textContent = pipelineStage === 3 ? "next target sites" : "next uncovered sites";
     oracleLabel.textContent = "ORACLE WORK";
     oracleMetric.textContent = oracleCalls > 9999 ? `${(oracleCalls / 1000).toFixed(1)}k` : String(oracleCalls);
     oracleDelta.textContent = `${acceptedDecisions + rejectedDecisions} tree decisions`;

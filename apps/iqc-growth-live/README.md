@@ -8,12 +8,13 @@ known colored atomic positions, then illustrates:
 - reduction to tetrahedral, icosahedral, and corona-like polyhedral symbols;
 - finite marked interfaces and compatible-overlap rules;
 - reversible reconstruction of the 216-atom input; and
-- live macro-cluster growth toward a 2,160-atom configuration.
+- natural continuation through the exposed frontier toward a 2,160-atom
+  configuration, without copying the starting window as a block.
 
 The five pipeline stages can be selected individually or run continuously.
 During reconstruction and deployment, the interface exposes exact-oracle and
 learned-interval decisions, the speculative search stack, marking reuse, and
-explicit multi-atom rollback.
+explicit rollback of the newly contributed sites of an overlapping cluster.
 
 The fixed benchmark numbers in the interface come from the offline BCI-2P
 reference experiments. The browser animation is deliberately labeled as a
