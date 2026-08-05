@@ -53,12 +53,14 @@ uses a fixed first-shell cutoff of `1.32a`. During continuation, both charts kee
 the recovered 216-site window as the comparison sample so the larger frontier
 does not silently change the validation domain.
 
-Each coordination bin is interactive. Selecting a value chooses the matching
-center nearest the middle of the current comparable scene, emphasizes that
-center and its actual first-shell neighbors, and draws one segment from the
-center to every counted neighbor. The status retains the number of centers in
-the histogram bin while reporting how many neighbors are shown. The same bin or
-the compact clear control restores the unfiltered view.
+Each coordination bin is interactive. Selecting a value emphasizes every
+matching center in the currently available comparison sample, retains the union
+of their actual first-shell neighbors, and draws every unique center-neighbor
+segment. Shared neighbors remain single atoms, while their connections to
+different centers remain visible. During reconstruction the highlighted shells
+are recomputed after every accepted site, so the view works before the 216-site
+window is complete. The same bin or the compact clear control restores the
+unfiltered view.
 
 The fixed benchmark numbers in the interface come from the offline BCI-2P
 reference experiments. Polyhedral grammar construction and subsequent browser

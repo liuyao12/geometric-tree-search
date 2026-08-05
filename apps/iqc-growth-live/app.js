@@ -301,14 +301,33 @@ function selectedCoordinationDetail() {
   if (!structure.source.length || !structure.stats) return null;
   const matching = structure.source.map((atom, index) => ({ atom, index }))
     .filter(({ index }) => Math.min(12, structure.stats.neighborCounts[index]) === coordinationSelection);
-  if (!matching.length) return { ids: new Set(), matchCount: 0, center: null, neighbors: [] };
-  const representative = matching.reduce((best, candidate) => candidate.atom.p.lengthSq() < best.atom.p.lengthSq() ? candidate : best);
-  const neighbors = structure.stats.neighborLists[representative.index].map((index) => structure.source[index]);
+  if (!matching.length) return { ids: new Set(), centerIds: new Set(), neighborIds: new Set(), matchCount: 0, centers: [], neighbors: [], edges: [] };
+  const centers = matching.map(({ atom }) => atom);
+  const centerIds = new Set(centers.map((atom) => atom.id));
+  const neighbors = [];
+  const neighborIds = new Set();
+  const edges = [];
+  const edgeKeys = new Set();
+  matching.forEach(({ atom: center, index }) => {
+    structure.stats.neighborLists[index].forEach((neighborIndex) => {
+      const neighbor = structure.source[neighborIndex];
+      if (!neighborIds.has(neighbor.id)) neighbors.push(neighbor);
+      neighborIds.add(neighbor.id);
+      const key = center.id < neighbor.id ? `${center.id}:${neighbor.id}` : `${neighbor.id}:${center.id}`;
+      if (!edgeKeys.has(key)) {
+        edgeKeys.add(key);
+        edges.push([center, neighbor]);
+      }
+    });
+  });
   return {
-    ids: new Set([representative.atom.id, ...neighbors.map((atom) => atom.id)]),
+    ids: new Set([...centerIds, ...neighborIds]),
+    centerIds,
+    neighborIds,
     matchCount: matching.length,
-    center: representative.atom,
+    centers,
     neighbors,
+    edges,
   };
 }
 
@@ -351,7 +370,7 @@ function renderStructureStats() {
   const selected = selectedCoordinationDetail();
   coordStatus.textContent = coordinationSelection === null
     ? `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`
-    : `${coordinationSelection === 12 ? "z≥12" : `z=${coordinationSelection}`} · ${selected?.matchCount || 0} centers · ${selected?.neighbors.length || 0} shown`;
+    : `${coordinationSelection === 12 ? "z≥12" : `z=${coordinationSelection}`} · ${selected?.matchCount || 0} centers · ${selected?.edges.length || 0} links`;
   coordClearButton.hidden = coordinationSelection === null;
 
   rdfChart.replaceChildren();
@@ -397,7 +416,7 @@ function renderStructureStats() {
       class: "coord-hit",
       role: "button",
       tabindex: "0",
-      "aria-label": `${index === 12 ? "12 or more" : index} neighbors; inspect one matching shell`,
+      "aria-label": `${index === 12 ? "12 or more" : index} neighbors; show all matching shells`,
       "aria-pressed": coordinationSelection === index ? "true" : "false",
     });
     hit.addEventListener("click", () => selectCoordination(index));
@@ -1010,7 +1029,8 @@ function rebuildWorld() {
   if (selectedIds) {
     currentMaterial().elements.forEach((symbol) => {
       addInstances(atoms.filter((atom) => atom.species === symbol && !selectedIds.has(atom.id)), getElementMaterial(symbol, true), (atom) => elementScale(atom.species) * .78);
-      addInstances(atoms.filter((atom) => atom.species === symbol && selectedIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.28);
+      addInstances(atoms.filter((atom) => atom.species === symbol && selectedCoordination.neighborIds.has(atom.id) && !selectedCoordination.centerIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.08);
+      addInstances(atoms.filter((atom) => atom.species === symbol && selectedCoordination.centerIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.3);
     });
   } else if (pipelineStage === 1 && learnedClusters) {
     learnedClusters.clusters.forEach((_, cluster) => {
@@ -1024,8 +1044,8 @@ function rebuildWorld() {
 
   if (bondToggle.checked) {
     const points = [];
-    if (selectedCoordination?.center) {
-      selectedCoordination.neighbors.forEach((neighbor) => points.push(selectedCoordination.center.p, neighbor.p));
+    if (selectedCoordination?.centers.length) {
+      selectedCoordination.edges.forEach(([center, neighbor]) => points.push(center.p, neighbor.p));
     } else atoms.forEach((atom) => {
       if (atom.parent) points.push(atom.parent.p, atom.p);
     });
@@ -1068,11 +1088,16 @@ function rebuildWorld() {
       decisionGroup.add(domain);
     }
   }
-  if (selectedCoordination?.center) {
-    const centerMarker = new THREE.Mesh(candidateGeometry, candidateMaterial);
-    centerMarker.position.copy(selectedCoordination.center.p);
-    centerMarker.scale.setScalar(1.45);
-    decisionGroup.add(centerMarker);
+  if (selectedCoordination?.centers.length) {
+    const centerMarkers = new THREE.InstancedMesh(candidateGeometry, candidateMaterial, selectedCoordination.centers.length);
+    selectedCoordination.centers.forEach((center, index) => {
+      dummy.position.copy(center.p);
+      dummy.scale.setScalar(1.3);
+      dummy.updateMatrix();
+      centerMarkers.setMatrixAt(index, dummy.matrix);
+    });
+    centerMarkers.instanceMatrix.needsUpdate = true;
+    decisionGroup.add(centerMarkers);
   }
 }
 
