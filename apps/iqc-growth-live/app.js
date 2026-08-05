@@ -239,9 +239,10 @@ function medianNearestSpacing(source) {
 function calculateStructuralStats(source, spacing) {
   const rdf = new Array(RDF_BINS).fill(0);
   const coordination = new Array(13).fill(0);
-  if (!source.length) return { rdf, coordination, meanCoordination: 0, count: 0, neighborCounts: [] };
+  if (!source.length) return { rdf, coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [] };
 
   const neighbors = new Array(source.length).fill(0);
+  const neighborLists = Array.from({ length: source.length }, () => []);
   const minimum = new THREE.Vector3(Infinity, Infinity, Infinity);
   const maximum = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
   source.forEach((atom) => {
@@ -259,6 +260,8 @@ function calculateStructuralStats(source, spacing) {
       if (normalizedDistance <= COORDINATION_CUTOFF) {
         neighbors[first]++;
         neighbors[second]++;
+        neighborLists[first].push(second);
+        neighborLists[second].push(first);
       }
     }
   }
@@ -277,7 +280,7 @@ function calculateStructuralStats(source, spacing) {
   neighbors.forEach((value) => coordination[Math.min(12, value)]++);
   for (let index = 0; index < coordination.length; index++) coordination[index] /= source.length;
   const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
-  return { rdf, coordination, meanCoordination, count: source.length, neighborCounts: neighbors };
+  return { rdf, coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists };
 }
 
 function currentLiveStructure() {
@@ -290,17 +293,23 @@ function currentLiveStructure() {
   return { source, stats: liveStructuralStats || calculateStructuralStats([], referenceSpacing) };
 }
 
-function selectedCoordinationAtoms() {
+function selectedCoordinationDetail() {
   if (coordinationSelection === null || pipelineStage === 2) return null;
   const structure = pipelineStage === 3
     ? currentLiveStructure()
     : { source: atoms, stats: referenceStructuralStats };
   if (!structure.source.length || !structure.stats) return null;
-  const ids = new Set();
-  structure.source.forEach((atom, index) => {
-    if (Math.min(12, structure.stats.neighborCounts[index]) === coordinationSelection) ids.add(atom.id);
-  });
-  return ids;
+  const matching = structure.source.map((atom, index) => ({ atom, index }))
+    .filter(({ index }) => Math.min(12, structure.stats.neighborCounts[index]) === coordinationSelection);
+  if (!matching.length) return { ids: new Set(), matchCount: 0, center: null, neighbors: [] };
+  const representative = matching.reduce((best, candidate) => candidate.atom.p.lengthSq() < best.atom.p.lengthSq() ? candidate : best);
+  const neighbors = structure.stats.neighborLists[representative.index].map((index) => structure.source[index]);
+  return {
+    ids: new Set([representative.atom.id, ...neighbors.map((atom) => atom.id)]),
+    matchCount: matching.length,
+    center: representative.atom,
+    neighbors,
+  };
 }
 
 function selectCoordination(value) {
@@ -339,10 +348,10 @@ function renderStructureStats() {
   if (!referenceStructuralStats) return;
   const { stats: live } = currentLiveStructure();
   rdfStatus.textContent = `known ${REFERENCE_COUNT} · live ${live.count}`;
-  const selectedIds = selectedCoordinationAtoms();
+  const selected = selectedCoordinationDetail();
   coordStatus.textContent = coordinationSelection === null
     ? `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`
-    : `${coordinationSelection === 12 ? "z≥12" : `z=${coordinationSelection}`} · ${selectedIds?.size || 0} highlighted`;
+    : `${coordinationSelection === 12 ? "z≥12" : `z=${coordinationSelection}`} · ${selected?.matchCount || 0} centers · ${selected?.neighbors.length || 0} shown`;
   coordClearButton.hidden = coordinationSelection === null;
 
   rdfChart.replaceChildren();
@@ -388,7 +397,7 @@ function renderStructureStats() {
       class: "coord-hit",
       role: "button",
       tabindex: "0",
-      "aria-label": `${index === 12 ? "12 or more" : index} neighbors; highlight matching atoms`,
+      "aria-label": `${index === 12 ? "12 or more" : index} neighbors; inspect one matching shell`,
       "aria-pressed": coordinationSelection === index ? "true" : "false",
     });
     hit.addEventListener("click", () => selectCoordination(index));
@@ -633,15 +642,26 @@ function takeFrontierBatch(batch = previewFrontierBatch(FRONTIER_BATCH)) {
 
 function makeRepresentatives() {
   const reps = [];
-  const elements = currentMaterial().elements;
-  const centers = [new THREE.Vector3(-4.1, 0, 0), new THREE.Vector3(0, 0, 0), new THREE.Vector3(4.1, 0, 0)];
-  const tetra = [[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]];
-  const ico = [[0,1,PHI],[0,-1,PHI],[0,1,-PHI],[0,-1,-PHI],[1,PHI,0],[-1,PHI,0],[1,-PHI,0],[-1,-PHI,0],[PHI,0,1],[PHI,0,-1],[-PHI,0,1],[-PHI,0,-1]];
-  const corona = [[0,0,0],[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
-  tetra.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).normalize().multiplyScalar(1.15).add(centers[0]), species: elements[i % elements.length], family: "BC8" }));
-  ico.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).normalize().multiplyScalar(1.25).add(centers[1]), species: elements[(i + 1) % elements.length], family: "IQC" }));
-  corona.forEach((v, i) => reps.push({ p: new THREE.Vector3(...v).multiplyScalar(.95).add(centers[2]), species: elements[i % elements.length], family: "glass" }));
+  const scaleToScene = referenceSpacing / referenceSpacingA;
+  const centers = symbolCenters();
+  learnedClusters.clusters.forEach((cluster, clusterIndex) => {
+    const center = centers[clusterIndex];
+    const medoid = referenceAtoms[cluster.medoid];
+    reps.push({ p: center.clone(), species: medoid.species, family: `C${clusterIndex + 1}`, symbolCenter: true });
+    learnedClusters.environments[cluster.medoid].shell
+      .filter((neighbor) => neighbor.r <= 1.38)
+      .forEach((neighbor) => reps.push({
+        p: center.clone().add(neighbor.vector.clone().multiplyScalar(scaleToScene)),
+        species: neighbor.atom.species,
+        family: `C${clusterIndex + 1}`,
+      }));
+  });
   return reps;
+}
+
+function symbolCenters() {
+  const count = learnedClusters?.clusters.length || 1;
+  return Array.from({ length: count }, (_, index) => new THREE.Vector3((index - (count - 1) / 2) * 3.15, 0, 0));
 }
 
 function clearGroup(group) {
@@ -716,9 +736,13 @@ function buildClusterOverlay() {
       ));
     });
   } else if (pipelineStage === 2) {
-    addClusterEnvelope(new THREE.TetrahedronGeometry(1.7), new THREE.Vector3(-4.1, 0, 0), COLORS.blue);
-    addClusterEnvelope(new THREE.IcosahedronGeometry(1.75, 0), new THREE.Vector3(0, 0, 0), COLORS.violet);
-    addClusterEnvelope(new THREE.OctahedronGeometry(1.55, 0), new THREE.Vector3(4.1, 0, 0), COLORS.green);
+    symbolCenters().forEach((center, index) => {
+      const cluster = learnedClusters.clusters[index];
+      const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.22)
+        : cluster.coordination >= 11 ? new THREE.IcosahedronGeometry(1.3, 0)
+          : new THREE.SphereGeometry(1.25, 8, 5);
+      addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
+    });
   }
 }
 
@@ -810,15 +834,15 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterCount} learned types`,
-      caption: "Color is now cluster assignment, not element. Each wireframe marks a k-medoids representative learned from periodic local descriptors.", badge: "learn",
+      caption: `All ${REFERENCE_COUNT} atom-centered neighborhoods are assigned once; their overlapping shells cover the configuration. Wireframes show only the ${clusterCount} medoids.`, badge: "learn",
       decision: "Environment clusters computed", copy: "Element-resolved radial functions and a first-shell angular histogram are standardized, then clustered by deterministic k-medoids.",
       values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${clusterCount} medoids`, "PBC minimum image"],
     },
     {
-      eyebrow: "encoding · polyhedra with marked interfaces", title: "Compress motifs into a geometric grammar", phase: "3 symbols",
-      caption: "Tetrahedral, icosahedral, and irregular corona envelopes become reusable symbols with finite marked ports.", badge: "encode",
-      decision: "Polyhedral cluster grammar", copy: "Each symbol stores its colored interior, admissible overlaps, interface marking, and a bounded-domain decision interval.",
-      values: ["3 polyhedra", "14 port classes", "9 rules", "finite radius"],
+      eyebrow: "encoding · learned medoids with marked interfaces", title: "Encode every learned environment class", phase: `${clusterCount} symbols`,
+      caption: `Each of the ${clusterCount} symbols is the actual medoid center plus its measured first-shell neighbors; no generic three-shape catalog is substituted.`, badge: "encode",
+      decision: "Medoid neighborhoods encoded", copy: "One overlapping representative per learned class carries its element-labelled shell, interface marking, and bounded-domain decision state.",
+      values: [`${clusterCount} medoids`, "measured shells", `${learnedClusters?.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0) || 0} neighbor ports`, "finite radius"],
     },
     {
       eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: "0 / 2,160",
@@ -968,7 +992,8 @@ function rebuildWorld() {
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
   const dummy = new THREE.Object3D();
-  const selectedIds = selectedCoordinationAtoms();
+  const selectedCoordination = selectedCoordinationDetail();
+  const selectedIds = selectedCoordination?.ids || null;
   const addInstances = (source, material, scale = 1) => {
     if (!source.length) return;
     const mesh = new THREE.InstancedMesh(sphereGeometry, material, source.length);
@@ -999,20 +1024,22 @@ function rebuildWorld() {
 
   if (bondToggle.checked) {
     const points = [];
-    atoms.forEach((atom) => {
-      if (atom.parent && (!selectedIds || selectedIds.has(atom.id) || selectedIds.has(atom.parent.id))) points.push(atom.parent.p, atom.p);
+    if (selectedCoordination?.center) {
+      selectedCoordination.neighbors.forEach((neighbor) => points.push(selectedCoordination.center.p, neighbor.p));
+    } else atoms.forEach((atom) => {
+      if (atom.parent) points.push(atom.parent.p, atom.p);
     });
-    if (pipelineStage < 3 && atoms.length <= 250) {
+    if (!selectedCoordination && pipelineStage < 3 && atoms.length <= 250) {
       for (let i = 0; i < atoms.length; i++) {
         for (let j = i + 1; j < atoms.length; j++) {
           const distance = atoms[i].p.distanceToSquared(atoms[j].p);
-          if (distance > .55 && distance < 1.08 && (!selectedIds || selectedIds.has(atoms[i].id) || selectedIds.has(atoms[j].id))) points.push(atoms[i].p, atoms[j].p);
+          if (distance > .55 && distance < 1.08) points.push(atoms[i].p, atoms[j].p);
         }
       }
     }
     if (points.length) bondGroup.add(new THREE.LineSegments(
       new THREE.BufferGeometry().setFromPoints(points),
-      new THREE.LineBasicMaterial({ color: 0x87afa5, transparent: true, opacity: .2 }),
+      new THREE.LineBasicMaterial({ color: selectedCoordination ? COLORS.violet : 0x87afa5, transparent: true, opacity: selectedCoordination ? .9 : .2 }),
     ));
   }
 
@@ -1040,6 +1067,12 @@ function rebuildWorld() {
       domain.position.copy(currentCandidate.p);
       decisionGroup.add(domain);
     }
+  }
+  if (selectedCoordination?.center) {
+    const centerMarker = new THREE.Mesh(candidateGeometry, candidateMaterial);
+    centerMarker.position.copy(selectedCoordination.center.p);
+    centerMarker.scale.setScalar(1.45);
+    decisionGroup.add(centerMarker);
   }
 }
 
@@ -1072,13 +1105,13 @@ function updateUI() {
   } else if (pipelineStage === 1) {
     atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "periodic element-aware descriptors";
     frontierLabel.textContent = "LEARNED CLUSTERS"; frontierMetric.textContent = String(learnedClusters.clusters.length); frontierDelta.textContent = "deterministic k-medoids";
-    oracleLabel.textContent = "FEATURES"; oracleMetric.textContent = String(learnedClusters.descriptorLength); oracleDelta.textContent = "radial + angular + chemistry";
+    oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = "100%"; oracleDelta.textContent = `${REFERENCE_COUNT} / ${REFERENCE_COUNT} centers assigned`;
     reuseLabel.textContent = "CUTOFF"; reuseMetric.textContent = "1.9a"; reuseDelta.textContent = `${(referenceSpacingA * 1.9).toFixed(2)} Å local domain`;
   } else if (pipelineStage === 2) {
-    atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = "3"; atomDelta.textContent = "polyhedral motif types";
-    frontierLabel.textContent = "PORT CLASSES"; frontierMetric.textContent = "14"; frontierDelta.textContent = "marked interfaces";
-    oracleLabel.textContent = "RULES"; oracleMetric.textContent = "9"; oracleDelta.textContent = "compatible overlaps";
-    reuseLabel.textContent = "DOMAIN"; reuseMetric.textContent = "2.5 r"; reuseDelta.textContent = "bounded marking radius";
+    atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedClusters.clusters.length); atomDelta.textContent = "one per learned medoid";
+    frontierLabel.textContent = "SHELL ATOMS"; frontierMetric.textContent = String(atoms.length); frontierDelta.textContent = "center + measured neighbors";
+    oracleLabel.textContent = "NEIGHBOR PORTS"; oracleMetric.textContent = String(learnedClusters.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0)); oracleDelta.textContent = "element-labelled interfaces";
+    reuseLabel.textContent = "DOMAIN"; reuseMetric.textContent = "1.38a"; reuseDelta.textContent = "first-shell encoding radius";
   } else {
     const reconstructing = replayIndex < REFERENCE_COUNT;
     stageEyebrow.textContent = reconstructing ? "search · recovering the observed window" : "search · continuing through the same frontier";
