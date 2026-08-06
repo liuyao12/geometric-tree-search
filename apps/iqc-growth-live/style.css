@@ -205,7 +205,9 @@ a { color: inherit; }
 .search-stack .empty-row { display: block; padding: 8px 0; color: var(--faint); }
 .marking-table { max-height: 126px; overflow: hidden; border-top: 1px solid var(--line); }
 .marking-table p { margin: 8px 0; color: var(--faint); font-size: 9px; }
-.mark-row { display: grid; grid-template-columns: 1fr 48px 34px; gap: 5px; align-items: center; min-height: 25px; border-bottom: 1px solid var(--line); font: 7px var(--mono); }
+.mark-row { display: grid; grid-template-columns: 1fr 48px 34px; gap: 5px; align-items: center; min-height: 25px; padding-left: 6px; border-bottom: 1px solid var(--line); border-left: 2px solid transparent; font: 7px var(--mono); }
+.mark-row[role="button"] { cursor: pointer; }
+.mark-row[role="button"]:hover, .mark-row[aria-pressed="true"] { background: rgba(181,148,255,.08); }
 .mark-row code { overflow: hidden; color: #98aaa5; white-space: nowrap; text-overflow: ellipsis; }
 .mark-row span { color: var(--violet); text-align: right; }
 .mark-row b { color: var(--faint); font-weight: 400; text-align: right; }

@@ -38,9 +38,15 @@ const reuseLabel = $("reuseLabel");
 const reuseMetric = $("reuseMetric");
 const reuseDelta = $("reuseDelta");
 const rdfChart = $("rdfChart");
+const rdfEyebrow = $("rdfEyebrow");
+const rdfTitle = $("rdfTitle");
 const rdfStatus = $("rdfStatus");
+const rdfLegend = $("rdfLegend");
 const coordChart = $("coordChart");
+const coordEyebrow = $("coordEyebrow");
+const coordTitle = $("coordTitle");
 const coordStatus = $("coordStatus");
+const coordLegend = $("coordLegend");
 const coordClearButton = $("coordClearButton");
 const decisionEyebrow = $("decisionEyebrow");
 const decisionBadge = $("decisionBadge");
@@ -150,6 +156,7 @@ const greenDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, t
 const elementMaterials = new Map();
 const dimElementMaterials = new Map();
 const clusterMaterials = CLUSTER_COLORS.map((color) => new THREE.MeshStandardMaterial({ color, roughness: .32, metalness: .08, emissive: color, emissiveIntensity: .12 }));
+const markingMaterials = new Map();
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
 const rejectedMaterial = new THREE.MeshBasicMaterial({ color: COLORS.red, wireframe: true, transparent: true, opacity: 0.92 });
 
@@ -186,6 +193,8 @@ let coordinationSelection = null;
 let learnedClusters = null;
 let trainedMarking = null;
 let referenceQIndex = new Map();
+let trainingProgress = 0;
+let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
 let orderPrototypeLibrary = null;
 
@@ -282,6 +291,30 @@ function getElementMaterial(symbol, dim = false) {
     }));
   }
   return cache.get(symbol);
+}
+
+function markingColor(domain) {
+  let hash = 2166136261;
+  for (const character of domain) hash = Math.imul(hash ^ character.charCodeAt(0), 16777619);
+  return new THREE.Color().setHSL(((hash >>> 0) % 360) / 360, .64, .62);
+}
+
+function getMarkingMaterial(domain, dim = false) {
+  const key = `${domain}:${dim ? "dim" : "bright"}`;
+  if (!markingMaterials.has(key)) {
+    const color = markingColor(domain);
+    markingMaterials.set(key, new THREE.MeshStandardMaterial({
+      color,
+      roughness: .3,
+      metalness: .08,
+      emissive: color,
+      emissiveIntensity: dim ? .02 : .18,
+      transparent: dim,
+      opacity: dim ? .12 : 1,
+      depthWrite: !dim,
+    }));
+  }
+  return markingMaterials.get(key);
 }
 
 function elementScale(symbol) {
@@ -446,8 +479,83 @@ function linePath(values, maximum) {
   }).join(" ");
 }
 
+function setChartLegend(container, entries) {
+  container.replaceChildren();
+  entries.forEach(([className, label]) => {
+    const span = document.createElement("span");
+    span.className = className;
+    span.textContent = label;
+    container.appendChild(span);
+  });
+}
+
+function renderTrainingStats() {
+  const point = currentTrainingPoint();
+  const visibleCurve = trainedMarking.curve.slice(0, trainingProgress);
+  const visibleStates = [...visibleTrainingStates()].sort((a, b) => b[1].count - a[1].count);
+  rdfEyebrow.textContent = "GCTS training curve";
+  rdfTitle.textContent = "states vs. samples";
+  rdfStatus.textContent = `${point.samples}/${REFERENCE_COUNT} samples · ${point.overlaps.toLocaleString()} overlaps`;
+  coordEyebrow.textContent = "marking-state atlas";
+  coordTitle.textContent = "observed frequency";
+  coordStatus.textContent = `${point.discovered} discovered · ${point.reusable} reusable`;
+  coordClearButton.hidden = true;
+  rdfChart.setAttribute("aria-label", "GCTS marking states discovered and made reusable as training samples accumulate");
+  coordChart.setAttribute("aria-label", "Frequency atlas of observed GCTS marking states");
+
+  rdfChart.replaceChildren();
+  drawChartFrame(rdfChart, "samples", "states");
+  [0, 54, 108, 162, 216].forEach((tick) => {
+    const x = 29 + tick / REFERENCE_COUNT * 323;
+    rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
+  });
+  const maximum = Math.max(1, trainedMarking.states.size);
+  const curvePath = (field) => visibleCurve.map((entry, index) => {
+    const x = 29 + entry.samples / REFERENCE_COUNT * 323;
+    const y = 96 - entry[field] / maximum * 84;
+    return `${index ? "L" : "M"}${x.toFixed(2)},${y.toFixed(2)}`;
+  }).join(" ");
+  if (visibleCurve.length) {
+    rdfChart.append(svgNode("path", { d: curvePath("discovered"), class: "chart-known" }));
+    rdfChart.append(svgNode("path", { d: curvePath("reusable"), class: "chart-live" }));
+  }
+  setChartLegend(rdfLegend, [["known-key", "discovered states"], ["live-key", "reusable after ≥2 samples"]]);
+
+  coordChart.replaceChildren();
+  drawChartFrame(coordChart, "marking rank", "count");
+  const topStates = visibleStates.slice(0, 12);
+  const maximumCount = Math.max(1, ...topStates.map(([, state]) => state.count));
+  const barStep = 323 / Math.max(1, topStates.length);
+  topStates.forEach(([domain, state], index) => {
+    const height = state.count / maximumCount * 84;
+    const color = `#${markingColor(domain).getHexString()}`;
+    coordChart.append(svgNode("rect", {
+      x: 29 + index * barStep + 2,
+      y: 96 - height,
+      width: Math.max(2, barStep - 4),
+      height,
+      fill: color,
+      opacity: markingSelection && markingSelection !== domain ? .18 : .72,
+    }));
+    coordChart.append(svgNode("text", { x: 29 + (index + .5) * barStep, y: 108, class: "chart-label", "text-anchor": "middle" }, String(index + 1)));
+  });
+  setChartLegend(coordLegend, [["known-key", "color = bounded marking state"], ["live-key", "click a table row to highlight occurrences"]]);
+}
+
 function renderStructureStats() {
   if (!referenceStructuralStats) return;
+  if (pipelineStage === 3) {
+    renderTrainingStats();
+    return;
+  }
+  rdfEyebrow.textContent = "finite-window RDF";
+  rdfTitle.textContent = "g(r / a)";
+  coordEyebrow.textContent = "first-shell coordination";
+  coordTitle.innerHTML = "P(z), r<sub>c</sub> = 1.32a";
+  rdfChart.setAttribute("aria-label", "Radial distribution function for known positions and live reconstruction");
+  coordChart.setAttribute("aria-label", "Coordination number distribution for known positions and live reconstruction");
+  setChartLegend(rdfLegend, [["known-key", "known positions"], ["live-key", "live reconstruction"]]);
+  setChartLegend(coordLegend, [["known-key", "known positions"], ["live-key", "live reconstruction"], ["", "click z to show all current shells"]]);
   const { stats: live } = currentLiveStructure();
   rdfStatus.textContent = `known ${REFERENCE_COUNT} · live ${live.count}`;
   const selected = selectedCoordinationDetail();
@@ -695,6 +803,7 @@ function learnOverlapMarking(source) {
   const shellSets = shells.map((neighbors, index) => new Set([index, ...neighbors.map((neighbor) => neighbor.index)]));
   const states = new Map();
   const sourceDomains = new Array(source.length);
+  const samples = new Array(source.length);
   shells.forEach((neighbors, centerIndex) => {
     const counts = new Map();
     neighbors.forEach(({ index }) => {
@@ -713,6 +822,7 @@ function learnOverlapMarking(source) {
     state.sum += score;
     states.set(domain, state);
     sourceDomains[centerIndex] = domain;
+    samples[centerIndex] = { domain, score };
   });
 
   const edges = [];
@@ -731,8 +841,42 @@ function learnOverlapMarking(source) {
     }
   }
   edges.sort((first, second) => second.shared - first.shared || first.distance - second.distance);
+  const runningStates = new Map();
+  let reusable = 0;
+  const curve = samples.map((sample, index) => {
+    const count = (runningStates.get(sample.domain) || 0) + 1;
+    runningStates.set(sample.domain, count);
+    if (count === 2) reusable++;
+    return { samples: index + 1, discovered: runningStates.size, reusable };
+  });
+  const overlapsAdded = new Array(source.length).fill(0);
+  edges.forEach((edge) => overlapsAdded[Math.max(edge.first, edge.second)]++);
+  let overlapTotal = 0;
+  curve.forEach((point, index) => {
+    overlapTotal += overlapsAdded[index];
+    point.overlaps = overlapTotal;
+  });
   const ambiguous = [...states.values()].filter((state) => state.count < 2 || state.max - state.min > .12).length;
-  return { states, sourceDomains, edges, ambiguous, covered: sourceDomains.filter(Boolean).length };
+  return { states, sourceDomains, samples, curve, edges, ambiguous, covered: sourceDomains.filter(Boolean).length };
+}
+
+function visibleTrainingStates(limit = trainingProgress) {
+  const states = new Map();
+  trainedMarking.samples.slice(0, limit).forEach(({ domain, score }) => {
+    const state = states.get(domain) || { count: 0, min: Infinity, max: -Infinity, sum: 0 };
+    state.count++;
+    state.min = Math.min(state.min, score);
+    state.max = Math.max(state.max, score);
+    state.sum += score;
+    states.set(domain, state);
+  });
+  return states;
+}
+
+function currentTrainingPoint() {
+  return trainingProgress > 0
+    ? trainedMarking.curve[Math.min(trainingProgress, trainedMarking.curve.length) - 1]
+    : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
 }
 
 function seedTrainedMarking() {
@@ -857,7 +1001,7 @@ function clearGroup(group) {
     const child = group.children.pop();
     if (![sphereGeometry, candidateGeometry].includes(child.geometry)) child.geometry?.dispose?.();
     if (Array.isArray(child.material)) child.material.forEach((material) => material.dispose?.());
-    else if (![blueMaterial, greenMaterial, blueDimMaterial, greenDimMaterial, candidateMaterial, rejectedMaterial, ...elementMaterials.values(), ...dimElementMaterials.values(), ...clusterMaterials].includes(child.material)) child.material?.dispose?.();
+    else if (![blueMaterial, greenMaterial, blueDimMaterial, greenDimMaterial, candidateMaterial, rejectedMaterial, ...elementMaterials.values(), ...dimElementMaterials.values(), ...clusterMaterials, ...markingMaterials.values()].includes(child.material)) child.material?.dispose?.();
   }
 }
 
@@ -962,6 +1106,8 @@ function resetCounters() {
   liveStructuralStats = null;
   lastLiveStatsKey = "";
   coordinationSelection = null;
+  trainingProgress = 0;
+  markingSelection = null;
   liveOrderCache = { key: "", result: null };
 }
 
@@ -978,6 +1124,7 @@ function enterPipelineStage(index, options = {}) {
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
   referenceQIndex = new Map(referenceAtoms.map((atom, atomIndex) => [qKey(atom.q), atomIndex]));
   trainedMarking = learnOverlapMarking(referenceAtoms);
+  if (pipelineStage !== 3) trainingProgress = REFERENCE_COUNT;
   if (pipelineStage >= 3 && policySelect.value === "marked") seedTrainedMarking();
   extensionTargets = makeExtensionTargets();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
@@ -1018,7 +1165,8 @@ function updateStageNarrative() {
   decisionBadge.className = "badge neutral";
   const material = currentMaterial();
   const clusterCount = learnedClusters?.clusters.length || material.clusters;
-  const trainedStates = [...(trainedMarking?.states.values() || [])];
+  const trainingPoint = trainedMarking ? currentTrainingPoint() : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
+  const trainedStates = [...(pipelineStage === 3 ? visibleTrainingStates().values() : trainedMarking?.states.values() || [])];
   const trainedMinimum = trainedStates.length ? Math.min(...trainedStates.map((state) => state.min)) : 0;
   const trainedMaximum = trainedStates.length ? Math.max(...trainedStates.map((state) => state.max)) : 0;
   const narratives = [
@@ -1041,10 +1189,10 @@ function updateStageNarrative() {
       values: [`${clusterCount} medoids`, "measured shells", `${learnedClusters?.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0) || 0} neighbor ports`, "finite radius"],
     },
     {
-      eyebrow: "training · observed cluster overlaps", title: "Learn finite GCTS markings from the known region", phase: `${trainedMarking?.states.size || 0} states`,
-      caption: `${trainedMarking?.edges.length.toLocaleString() || 0} observed shell overlaps connect all ${REFERENCE_COUNT} cluster centers; repeated bounded signatures are compressed into reusable marking states.`, badge: "train",
+      eyebrow: "training · observed cluster overlaps", title: "Learn finite GCTS markings from the known region", phase: `${trainingPoint.discovered} states`,
+      caption: `${trainingPoint.samples}/${REFERENCE_COUNT} atom-centered samples processed · ${trainingPoint.overlaps.toLocaleString()} overlap observations · ${trainingPoint.reusable} states repeated enough to reuse.`, badge: "train",
       decision: "Overlap marking trained", copy: "The learner records which cluster types meet inside each bounded shell, aggregates repeated contexts, and calibrates a finite score interval before reconstruction begins.",
-      values: ["shell intersection", `${trainedMarking?.states.size || 0} bounded signatures`, `[${trainedMinimum.toFixed(2)}, ${trainedMaximum.toFixed(2)}]`, `${trainedMarking?.covered || 0} known centers`],
+      values: ["shell intersection", `${trainingPoint.discovered} bounded signatures`, trainedStates.length ? `[${trainedMinimum.toFixed(2)}, ${trainedMaximum.toFixed(2)}]` : "waiting", `${trainingPoint.samples} known centers`],
     },
     {
       eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: `0 / ${REPRESENTED_TARGET.toLocaleString()}`,
@@ -1180,7 +1328,20 @@ function performExtensionEvent() {
   updateUI();
 }
 
+function advanceMarkingTraining(batchSize = 12) {
+  trainingProgress = Math.min(REFERENCE_COUNT, trainingProgress + batchSize);
+  eventIndex = trainingProgress;
+  if (markingSelection && !visibleTrainingStates().has(markingSelection)) markingSelection = null;
+  rebuildWorld();
+  updateUI();
+}
+
 function performEvent() {
+  if (pipelineStage === 3) {
+    if (trainingProgress < REFERENCE_COUNT) advanceMarkingTraining();
+    else enterPipelineStage(4, { play: pipelineAuto });
+    return;
+  }
   if (pipelineStage < 4) {
     enterPipelineStage(pipelineStage + 1, { play: pipelineAuto });
     return;
@@ -1216,9 +1377,19 @@ function rebuildWorld() {
       addInstances(atoms.filter((atom) => atom.species === symbol && selectedCoordination.neighborIds.has(atom.id) && !selectedCoordination.centerIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.08);
       addInstances(atoms.filter((atom) => atom.species === symbol && selectedCoordination.centerIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.3);
     });
-  } else if ((pipelineStage === 1 || pipelineStage === 3) && learnedClusters) {
+  } else if (pipelineStage === 1 && learnedClusters) {
     learnedClusters.clusters.forEach((_, cluster) => {
       addInstances(atoms.filter((atom, index) => learnedClusters.labels[index] === cluster), clusterMaterials[cluster], (atom) => elementScale(atom.species));
+    });
+  } else if (pipelineStage === 3 && trainedMarking) {
+    const visibleDomains = [...new Set(trainedMarking.sourceDomains.slice(0, trainingProgress))];
+    visibleDomains.forEach((domain) => {
+      const source = atoms.filter((_, index) => index < trainingProgress && trainedMarking.sourceDomains[index] === domain);
+      const dim = markingSelection && markingSelection !== domain;
+      addInstances(source, getMarkingMaterial(domain, dim), (atom) => elementScale(atom.species) * (dim ? .78 : 1.05));
+    });
+    currentMaterial().elements.forEach((symbol) => {
+      addInstances(atoms.filter((atom, index) => index >= trainingProgress && atom.species === symbol), getElementMaterial(symbol, true), (atom) => elementScale(atom.species) * .72);
     });
   } else {
     currentMaterial().elements.forEach((symbol) => {
@@ -1232,6 +1403,7 @@ function rebuildWorld() {
       selectedCoordination.edges.forEach(([center, neighbor]) => points.push(center.p, neighbor.p));
     } else if (pipelineStage === 3 && trainedMarking) {
       trainedMarking.edges
+        .filter((edge) => edge.first < trainingProgress && edge.second < trainingProgress)
         .filter((edge) => referenceAtoms[edge.first].p.distanceTo(referenceAtoms[edge.second].p) <= 2.76 * referenceSpacing)
         .slice(0, 280)
         .forEach((edge) => points.push(referenceAtoms[edge.first].p, referenceAtoms[edge.second].p));
@@ -1332,10 +1504,26 @@ function updateUI() {
     oracleLabel.textContent = "NEIGHBOR PORTS"; oracleMetric.textContent = String(learnedClusters.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0)); oracleDelta.textContent = "element-labelled interfaces";
     reuseLabel.textContent = "DOMAIN"; reuseMetric.textContent = "1.38a"; reuseDelta.textContent = "first-shell encoding radius";
   } else if (pipelineStage === 3) {
-    atomLabel.textContent = "OVERLAPS"; atomMetric.textContent = trainedMarking.edges.length.toLocaleString(); atomDelta.textContent = "observed shell intersections";
-    frontierLabel.textContent = "FINITE STATES"; frontierMetric.textContent = String(trainedMarking.states.size); frontierDelta.textContent = "repeated bounded signatures";
-    oracleLabel.textContent = "TRAINING COVERAGE"; oracleMetric.textContent = `${trainedMarking.covered}/${REFERENCE_COUNT}`; oracleDelta.textContent = "known centers represented";
-    reuseLabel.textContent = "AMBIGUOUS"; reuseMetric.textContent = String(trainedMarking.ambiguous); reuseDelta.textContent = "singleton or wide-interval states";
+    const point = currentTrainingPoint();
+    const visibleStates = visibleTrainingStates();
+    const ambiguous = [...visibleStates.values()].filter((state) => state.count < 2 || state.max - state.min > .12).length;
+    stageEyebrow.textContent = "training · observed cluster overlaps";
+    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Train finite GCTS markings sample by sample" : "GCTS marking training complete";
+    decisionTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Training overlap markings" : "Overlap marking trained";
+    decisionCopy.textContent = trainingProgress < REFERENCE_COUNT
+      ? "Each new atom-centered sample contributes its bounded cluster-neighborhood signature and every shell overlap now visible within the processed region."
+      : "Repeated bounded contexts have been aggregated and their observed score intervals are ready for reuse by search.";
+    phaseReadout.textContent = `${point.discovered} states`;
+    captionAction.textContent = `${point.samples}/${REFERENCE_COUNT} atom-centered samples processed · ${point.overlaps.toLocaleString()} overlap observations · ${point.reusable} reusable states.`;
+    atomLabel.textContent = "SAMPLES"; atomMetric.textContent = `${point.samples}/${REFERENCE_COUNT}`; atomDelta.textContent = "bounded atom-centered domains";
+    frontierLabel.textContent = "OVERLAPS"; frontierMetric.textContent = point.overlaps.toLocaleString(); frontierDelta.textContent = "observed shell intersections";
+    oracleLabel.textContent = "DISCOVERED STATES"; oracleMetric.textContent = String(point.discovered); oracleDelta.textContent = `${point.reusable} repeated at least twice`;
+    reuseLabel.textContent = "AMBIGUOUS"; reuseMetric.textContent = String(ambiguous); reuseDelta.textContent = "singleton or wide-interval states";
+    actionValue.textContent = "shell intersection";
+    domainValue.textContent = `${point.discovered} bounded signatures`;
+    const ranges = [...visibleStates.values()];
+    energyValue.textContent = ranges.length ? `[${Math.min(...ranges.map((state) => state.min)).toFixed(2)}, ${Math.max(...ranges.map((state) => state.max)).toFixed(2)}]` : "waiting";
+    resolverValue.textContent = `${point.samples} known centers`;
   } else {
     const reconstructing = replayIndex < REFERENCE_COUNT;
     const represented = representedAtomCount();
@@ -1364,7 +1552,20 @@ function updateUI() {
 
 function renderLegend() {
   speciesLegend.replaceChildren();
-  if ((pipelineStage === 1 || pipelineStage === 3) && learnedClusters) {
+  if (pipelineStage === 3 && trainedMarking) {
+    legendHeading.textContent = "Visible marking states";
+    [...visibleTrainingStates()].sort((a, b) => b[1].count - a[1].count).slice(0, 8).forEach(([domain, state]) => {
+      const row = document.createElement("span");
+      const swatch = document.createElement("i");
+      swatch.className = "cluster-swatch";
+      swatch.style.setProperty("--swatch", `#${markingColor(domain).getHexString()}`);
+      row.append(swatch, document.createTextNode(`${domain} · ×${state.count}`));
+      speciesLegend.appendChild(row);
+    });
+    if (!speciesLegend.children.length) {
+      const row = document.createElement("span"); row.textContent = "Press Play or Step to train"; speciesLegend.appendChild(row);
+    }
+  } else if (pipelineStage === 1 && learnedClusters) {
     legendHeading.textContent = "Learned environments";
     learnedClusters.clusters.forEach((cluster, index) => {
       const row = document.createElement("span");
@@ -1393,9 +1594,10 @@ function renderLegend() {
 
 function renderStack() {
   if (pipelineStage === 3 && trainedMarking) {
-    stackDepth.textContent = `${trainedMarking.edges.length.toLocaleString()} observations`;
+    const visibleEdges = trainedMarking.edges.filter((edge) => edge.first < trainingProgress && edge.second < trainingProgress);
+    stackDepth.textContent = `${visibleEdges.length.toLocaleString()} observations`;
     searchStack.replaceChildren();
-    trainedMarking.edges.slice(0, 6).forEach((edge) => {
+    visibleEdges.slice(0, 6).forEach((edge) => {
       const row = document.createElement("li");
       const shared = document.createElement("b"); shared.textContent = `×${edge.shared}`;
       const action = document.createElement("span"); action.textContent = `C${edge.firstCluster} ↔ C${edge.secondCluster}`;
@@ -1403,6 +1605,9 @@ function renderStack() {
       row.append(shared, action, state);
       searchStack.appendChild(row);
     });
+    if (!visibleEdges.length) {
+      const row = document.createElement("li"); row.className = "empty-row"; row.textContent = "Overlap observations appear as samples are processed."; searchStack.appendChild(row);
+    }
     return;
   }
   const rows = stackHistory.slice(-6).reverse();
@@ -1425,6 +1630,12 @@ function renderStack() {
   });
 }
 
+function selectMarkingDomain(domain) {
+  markingSelection = markingSelection === domain ? null : domain;
+  rebuildWorld();
+  updateUI();
+}
+
 function renderMarkings() {
   markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "overlap symbols" : pipelineStage === 3 ? "trained GCTS markings" : "active finite states";
   markingTable.replaceChildren();
@@ -1438,15 +1649,30 @@ function renderMarkings() {
     `×${cluster.count}`,
   ]);
   const cache = policySelect.value === "marked" ? markingCache : actionCache;
-  const trainedEntries = [...(trainedMarking?.states || [])].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
+  const trainedEntries = [...visibleTrainingStates()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
   const activeEntries = [...cache.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
   const entries = pipelineStage < 3 ? learned : pipelineStage === 3 ? trainedEntries : activeEntries;
-  markCount.textContent = pipelineStage < 3 ? `${learned.length} learned` : pipelineStage === 3 ? `${trainedMarking.states.size} trained` : `${cache.size} active`;
+  markCount.textContent = pipelineStage < 3 ? `${learned.length} learned` : pipelineStage === 3 ? `${visibleTrainingStates().size} / ${trainedMarking.states.size}` : `${cache.size} active`;
   if (!entries.length) {
-    const p = document.createElement("p"); p.textContent = policySelect.value === "marked" ? "No reusable bounded state was learned." : "This policy does not preload GCTS markings."; markingTable.appendChild(p); return;
+    const p = document.createElement("p");
+    p.textContent = pipelineStage === 3 && trainingProgress === 0
+      ? "Press Play or Step to process atom-centered training samples."
+      : policySelect.value === "marked" ? "No reusable bounded state was learned." : "This policy does not preload GCTS markings.";
+    markingTable.appendChild(p); return;
   }
   entries.forEach(([key, interval, count]) => {
     const row = document.createElement("div"); row.className = "mark-row";
+    if (pipelineStage === 3) {
+      row.tabIndex = 0;
+      row.setAttribute("role", "button");
+      row.setAttribute("aria-label", `${key}; highlight all observed occurrences`);
+      row.setAttribute("aria-pressed", markingSelection === key ? "true" : "false");
+      row.style.borderLeftColor = `#${markingColor(key).getHexString()}`;
+      row.addEventListener("click", () => selectMarkingDomain(key));
+      row.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectMarkingDomain(key); }
+      });
+    }
     const code = document.createElement("code"); code.textContent = key; code.title = key;
     const span = document.createElement("span"); span.textContent = interval;
     const b = document.createElement("b"); b.textContent = count;
@@ -1506,7 +1732,14 @@ function animate(now) {
   controls.autoRotate = rotateToggle.checked;
   controls.update();
   if (playing) {
-    if (pipelineStage < 4) {
+    if (pipelineStage === 3) {
+      eventAccumulator += delta * Number(speedInput.value);
+      while (eventAccumulator >= 1) {
+        eventAccumulator--;
+        performEvent();
+        if (pipelineStage !== 3 || !playing) break;
+      }
+    } else if (pipelineStage < 4) {
       stageElapsed += delta;
       if (stageElapsed >= 1.8) enterPipelineStage(pipelineStage + 1, { play: true });
     } else {
