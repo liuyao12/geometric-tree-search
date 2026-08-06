@@ -58,8 +58,9 @@ const markingTable = $("markingTable");
 const legendHeading = $("legendHeading");
 const speciesLegend = $("speciesLegend");
 const orderClassValue = $("orderClassValue");
+const structureNameValue = $("structureNameValue");
 const symmetryValue = $("symmetryValue");
-const auditModeValue = $("auditModeValue");
+const confidenceValue = $("confidenceValue");
 const auditNote = $("auditNote");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
@@ -183,6 +184,8 @@ let liveStructuralStats = null;
 let lastLiveStatsKey = "";
 let coordinationSelection = null;
 let learnedClusters = null;
+let liveOrderCache = { key: "", result: null };
+let orderPrototypeLibrary = null;
 
 function currentMaterial() {
   return MATERIALS[scenarioSelect.value];
@@ -194,12 +197,71 @@ function representedAtomCount() {
   return Math.round(REFERENCE_COUNT * Math.pow(REPRESENTED_TARGET / REFERENCE_COUNT, progress));
 }
 
+function classificationSample() {
+  const observed = pipelineStage === 3 ? atoms.filter((atom) => atom.observed) : [];
+  const source = pipelineStage < 3 ? referenceAtoms : (observed.length ? observed : atoms);
+  if (source.length <= REFERENCE_COUNT) return source;
+  // Preserve a physically contiguous observation window. Sampling uniformly by
+  // insertion order would tear apart neighbor shells as the frontier grows.
+  return [...source].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, REFERENCE_COUNT);
+}
+
+function normalizedDistributionDistance(first, second) {
+  const scale = Math.max(1e-9, first.reduce((sum, value) => sum + Math.abs(value), 0));
+  return first.reduce((sum, value, index) => sum + Math.abs(value - (second[index] || 0)), 0) / scale;
+}
+
+function inferLiveOrder() {
+  const source = classificationSample();
+  if (pipelineStage === 3 && source.length < 32) return {
+    order: "insufficient sample", structure: "—", symmetry: "—", confidence: 0,
+    note: `Waiting for at least 32 live atoms; ${source.length} are currently available.`,
+  };
+  const key = `${scenarioSelect.value}:${pipelineStage}:${Math.floor(source.length / 16)}:${Math.floor(atoms.length / 96)}`;
+  if (liveOrderCache.key === key && liveOrderCache.result) return liveOrderCache.result;
+  const stats = calculateStructuralStats(source, referenceSpacing);
+  const matches = getOrderPrototypeLibrary().map((prototype) => {
+    const rdfError = normalizedDistributionDistance(prototype.stats.rdf, stats.rdf);
+    const coordinationError = normalizedDistributionDistance(prototype.stats.coordination, stats.coordination);
+    return { ...prototype, evidenceMatch: Math.max(0, Math.min(1, 1 - .38 * rdfError - .72 * coordinationError)) };
+  }).sort((first, second) => second.evidenceMatch - first.evidenceMatch);
+  const best = matches[0];
+  const evidenceMatch = best.evidenceMatch;
+  const sampleStrength = Math.max(0, Math.min(1, (source.length - 24) / 144));
+  const confidence = evidenceMatch * (.48 + .52 * sampleStrength);
+  const accepted = confidence >= .58;
+  let order = "undetermined";
+  let structure = `closest: ${best.material.name}`;
+  let symmetry = "not assigned";
+  if (accepted && best.material.order === "crystal") {
+    order = "crystal";
+    structure = best.material.name;
+    symmetry = best.material.symmetry;
+  } else if (accepted && best.material.order === "quasicrystal") {
+    order = confidence >= .74 ? "icosahedral quasicrystal" : "quasicrystal candidate";
+    structure = best.material.name;
+    symmetry = "icosahedral point symmetry";
+  } else if (accepted && best.material.order === "amorphous") {
+    order = "amorphous solid";
+    structure = best.material.name;
+    symmetry = "no global space group";
+  }
+  const mode = pipelineStage < 3 ? "reference configuration" : "live reconstructed core";
+  const result = {
+    order, structure, symmetry, confidence,
+    note: `${mode}: best RDF + coordination match across ${matches.length} prototypes. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
+  };
+  liveOrderCache = { key, result };
+  return result;
+}
+
 function updateOrderAudit() {
-  const material = currentMaterial();
-  orderClassValue.textContent = material.order;
-  symmetryValue.textContent = material.symmetry;
-  auditModeValue.textContent = material.audit;
-  auditNote.textContent = `${material.note} Reference labels are withheld from the learner and checked only after growth.`;
+  const inference = inferLiveOrder();
+  orderClassValue.textContent = inference.order;
+  structureNameValue.textContent = inference.structure;
+  symmetryValue.textContent = inference.symmetry;
+  confidenceValue.textContent = `${Math.round(inference.confidence * 100)}%`;
+  auditNote.textContent = inference.note;
 }
 
 function getElementMaterial(symbol, dim = false) {
@@ -454,9 +516,8 @@ function siteHash(x, y, z, salt = 0) {
   return value - Math.floor(value);
 }
 
-function decorateLatticeSite(qx, qy, qz, sourceIndex = 0) {
-  const scenario = scenarioSelect.value;
-  const material = currentMaterial();
+function decorateLatticeSite(qx, qy, qz, sourceIndex = 0, scenario = scenarioSelect.value) {
+  const material = MATERIALS[scenario];
   let family = qx < -Math.abs(qy) * .35 ? "BC8" : qx > Math.abs(qy) * .35 ? "glass" : "IQC";
   if (scenario === "competition") family = "rocksalt";
   if (scenario === "random") family = "glass";
@@ -491,12 +552,22 @@ function decorateLatticeSite(qx, qy, qz, sourceIndex = 0) {
   return { p, pA, species, family, sourceIndex, q: [qx, qy, qz] };
 }
 
-function makeReferenceConfiguration() {
+function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   const result = [];
   for (let ix = 0; ix < 6; ix++) for (let iy = 0; iy < 6; iy++) for (let iz = 0; iz < 6; iz++) {
-    result.push(decorateLatticeSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length));
+    result.push(decorateLatticeSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length, scenario));
   }
   return result.sort((a, b) => a.p.lengthSq() - b.p.lengthSq());
+}
+
+function getOrderPrototypeLibrary() {
+  if (orderPrototypeLibrary) return orderPrototypeLibrary;
+  orderPrototypeLibrary = Object.entries(MATERIALS).map(([id, material]) => {
+    const source = makeReferenceConfiguration(id);
+    const spacing = medianNearestSpacing(source);
+    return { id, material, stats: calculateStructuralStats(source, spacing) };
+  });
+  return orderPrototypeLibrary;
 }
 
 function periodicDisplacement(first, second) {
@@ -812,6 +883,7 @@ function resetCounters() {
   liveStructuralStats = null;
   lastLiveStatsKey = "";
   coordinationSelection = null;
+  liveOrderCache = { key: "", result: null };
 }
 
 function enterPipelineStage(index, options = {}) {

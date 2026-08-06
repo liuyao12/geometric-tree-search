@@ -65,10 +65,23 @@ are recomputed after every accepted site, so the view works before the 216-site
 window is complete. The same bin or the compact clear control restores the
 unfiltered view.
 
-The order audit uses different vocabularies for different regimes: ordinary
-space groups for periodic crystals, point/superspace and diffraction tests for
-quasicrystals, and local motifs plus structure factors for amorphous systems.
-These labels are benchmark references, never learner inputs.
+The live order panel classifies the current geometry rather than echoing the
+selected scenario. Once at least 32 reconstructed atoms are available, it
+compares normalized RDF and coordination distributions against every prototype
+in the small built-in library and reports the best structural class, prototype,
+symmetry assignment, and a sample-size-adjusted match score. For crystals this
+includes the candidate space group; for the IQC prototype it reports
+icosahedral point symmetry instead of inventing an ordinary 3D space group.
+After continuation begins, the readout keeps auditing the reconstructed
+216-atom core so that adding a differently shaped outer shell does not create a
+finite-window RDF artifact; frontier-window classification is a separate future
+test.
+
+This is deliberately a provisional prototype classifier, not a proof of
+symmetry. A publishable evaluator should add translation closure or `spglib`
+for crystals, reciprocal-module and diffraction tests for quasicrystals, and
+structure-factor plus local-motif tests for amorphous systems. Prototype labels
+and space groups are never supplied to the growth search.
 
 The million-atom number is an implicitly represented target, not a claim that
 the browser has evaluated one million force-bearing MD atoms. Establishing MD
