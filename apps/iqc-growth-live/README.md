@@ -8,13 +8,14 @@ element-labelled atomic positions, then illustrates:
 
 - element-aware discovery of local-environment clusters;
 - reduction to tetrahedral, icosahedral, and corona-like polyhedral symbols;
-- finite marked interfaces and compatible-overlap rules;
+- observation of how those cluster shells overlap in the known configuration;
+- training of finite GCTS markings from repeated bounded overlap signatures;
 - one continuous search that reconstructs the 216-atom input and naturally
   continues through its exposed frontier. The browser materializes a bounded
   2,160-atom sample while the hierarchy counter addresses a 1,048,576-atom
   target, without copying the starting window as a block.
 
-The four pipeline stages can be selected individually or run continuously.
+The five pipeline stages can be selected individually or run continuously.
 The search crosses the 216-atom observation boundary without changing modes or
 resetting its learned finite states. The interface exposes exact-oracle and
 learned-interval decisions, the accepted search stack, and marking reuse;
@@ -42,6 +43,16 @@ environment label, while the corresponding radius-`1.9a` neighborhoods overlap
 and therefore cover the atomic configuration. The encoding stage now preserves
 that learned cardinality and shows the actual medoid first shell for every
 class; it no longer substitutes the same three demonstration polyhedra.
+
+The marking stage is separate from cluster discovery and from application. For
+each known atom center it records the center's learned cluster type,
+coordination, and multiset of neighboring cluster types inside the bounded
+first shell. It also computes which atom-centered shells share sites, displays
+their overlap graph, and aggregates repeated signatures into finite states with
+observed score intervals. Coverage and ambiguous-state counts are reported
+before search. When the finite-marking policy is selected, this trained table is
+copied into the search cache before reconstruction; the exact-oracle and
+colored-action ablations do not receive it.
 
 Continuation does not target a cube or impose a hard spherical boundary. It
 samples among locally near-best cluster attachments on the exposed frontier.

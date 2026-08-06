@@ -30,8 +30,9 @@
     <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
       <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>elements + coordinates in Å</span></button>
       <button type="button" data-pipeline-stage="1"><small>02 · learn</small><strong>Cluster environments</strong><span>radial + angular descriptors</span></button>
-      <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>Polyhedral grammar</strong><span>types + marked ports</span></button>
-      <button type="button" data-pipeline-stage="3"><small>04 · search</small><strong>Reconstruct → continue</strong><span>stochastically balanced frontier</span></button>
+      <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>Overlap grammar</strong><span>cluster shells + interfaces</span></button>
+      <button type="button" data-pipeline-stage="3"><small>04 · train</small><strong>GCTS markings</strong><span>known overlap observations</span></button>
+      <button type="button" data-pipeline-stage="4"><small>05 · search</small><strong>Reconstruct → continue</strong><span>reuse trained finite states</span></button>
     </nav>
 
     <main class="lab-grid">
@@ -178,6 +179,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260806-2"></script>
+  <script type="module" src="./app.js?v=20260806-3"></script>
 </body>
 </html>
