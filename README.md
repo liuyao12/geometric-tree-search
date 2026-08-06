@@ -13,10 +13,11 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
-- [GCTS Matter: learned clusters and continuous growth](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
-  A live 3D, two-species structural-growth surrogate. It learns overlapping
-  polyhedral cluster types from a 216-atom window, reconstructs that window,
-  and continues the same search naturally toward 2,160 atoms.
+- [Materials Growth Lab: hundreds to one million atoms](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
+  A live 3D, multi-species structural-growth laboratory for crystalline,
+  quasiperiodic, and amorphous controls. It learns overlapping environments
+  from a 216-atom window, reconstructs that window, and continues the same
+  search while a learned hierarchy addresses a 1,048,576-atom target.
 - [Penrose Model-Set Tiler](./apps/penrose-model-set/)
   An exact cyclotomic search laboratory for genuine P2 kite–dart and P3 rhomb
   prototiles. Family presets stage a catalog that can be edited before running;

@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071112">
-  <meta name="description" content="Watch a three-dimensional materials-GCTS pipeline cluster element-aware local atomic environments, encode them, reconstruct an observed window, and continue growing.">
-  <title>GCTS Matter — Learned Clusters &amp; Continuous Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260805-9">
+  <meta name="description" content="Learn geometric cluster grammars from hundreds of atomic positions and test million-atom structural continuation across crystals, quasicrystals, and amorphous controls.">
+  <title>Materials Growth Lab — Hundreds to One Million Atoms</title>
+  <link rel="stylesheet" href="./style.css?v=20260806-1">
   <script type="importmap">
     {
       "imports": {
@@ -21,10 +21,10 @@
     <header class="topbar">
       <a class="brand" href="../../" aria-label="Back to GCTS home">
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span><strong>GCTS Matter</strong><small>live structural grammar</small></span>
+        <span><strong>Materials Growth Lab</strong><small>GCTS structural continuation</small></span>
       </a>
       <div class="run-state"><i id="runStateDot"></i><span id="runStateText">Paused at seed</span></div>
-      <a class="method-link" href="#auditedBenchmark">Method &amp; benchmark ↓</a>
+      <a class="method-link" href="#auditedBenchmark">Order audit &amp; limits ↓</a>
     </header>
 
     <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
@@ -118,7 +118,7 @@
           <article><small id="atomLabel">ATOMS</small><strong id="atomMetric">216</strong><span id="atomDelta">known xyz + species</span></article>
           <article><small id="frontierLabel">SPECIES</small><strong id="frontierMetric">2</strong><span id="frontierDelta">blue / green</span></article>
           <article><small id="oracleLabel">LABELS GIVEN</small><strong id="oracleMetric">0</strong><span id="oracleDelta">clusters must be inferred</span></article>
-          <article class="accent-metric"><small id="reuseLabel">TARGET SCALE</small><strong id="reuseMetric">×10</strong><span id="reuseDelta">2,160 represented atoms</span></article>
+          <article class="accent-metric"><small id="reuseLabel">REPRESENTED TARGET</small><strong id="reuseMetric">1,048,576</strong><span id="reuseDelta">viewport remains sampled</span></article>
         </div>
 
         <section class="structure-stats" aria-label="Known and reconstructed structural statistics">
@@ -167,16 +167,16 @@
         </section>
 
         <section class="audit-card" id="auditedBenchmark">
-          <p class="eyebrow">audited Python benchmark</p>
-          <div><strong>94.9%</strong><span>held-out sign accuracy</span></div>
-          <div><strong>6 / 6</strong><span>exact reversible replays</span></div>
-          <div><strong>11.8%</strong><span>insertion-oracle reduction</span></div>
-          <p>Local-environment clusters are computed from the displayed coordinates. The later polyhedral encoding and growth remain a structural surrogate; the fixed numbers above come from the tested BCI-2P reference implementation.</p>
+          <p class="eyebrow">blind order audit</p>
+          <div><strong id="orderClassValue">crystal</strong><span>structural class</span></div>
+          <div><strong id="symmetryValue">Fm-3m · #225</strong><span>reference symmetry</span></div>
+          <div><strong id="auditModeValue">space group</strong><span>appropriate evaluator</span></div>
+          <p id="auditNote">These labels are benchmark references, not learner inputs. A separate post-hoc evaluator must recover or reject them after growth.</p>
         </section>
       </aside>
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260805-9"></script>
+  <script type="module" src="./app.js?v=20260806-1"></script>
 </body>
 </html>
