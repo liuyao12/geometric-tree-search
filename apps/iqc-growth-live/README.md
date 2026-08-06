@@ -1,15 +1,18 @@
-# GCTS Matter: learned clusters and continuous growth
+# Materials Growth Lab: hundreds to one million atoms
 
 A static GitHub Pages visualization of a multi-element, three-dimensional
-materials-GCTS pipeline. It starts from one finite configuration with 216
+materials-GCTS pipeline. It replaces the earlier IQC-only presentation while
+keeping its richer live search, RDF, and coordination interactions. It starts
+from one finite configuration with 216
 element-labelled atomic positions, then illustrates:
 
 - element-aware discovery of local-environment clusters;
 - reduction to tetrahedral, icosahedral, and corona-like polyhedral symbols;
 - finite marked interfaces and compatible-overlap rules;
 - one continuous search that reconstructs the 216-atom input and naturally
-  continues through its exposed frontier toward a 2,160-atom
-  configuration, without copying the starting window as a block.
+  continues through its exposed frontier. The browser materializes a bounded
+  2,160-atom sample while the hierarchy counter addresses a 1,048,576-atom
+  target, without copying the starting window as a block.
 
 The four pipeline stages can be selected individually or run continuously.
 The search crosses the 216-atom observation boundary without changing modes or
@@ -62,9 +65,14 @@ are recomputed after every accepted site, so the view works before the 216-site
 window is complete. The same bin or the compact clear control restores the
 unfiltered view.
 
-The fixed benchmark numbers in the interface come from the offline BCI-2P
-reference experiments. Polyhedral grammar construction and subsequent browser
-growth are still deliberately labeled as structural surrogates rather than a
-molecular-dynamics trajectory.
+The order audit uses different vocabularies for different regimes: ordinary
+space groups for periodic crystals, point/superspace and diffraction tests for
+quasicrystals, and local motifs plus structure factors for amorphous systems.
+These labels are benchmark references, never learner inputs.
+
+The million-atom number is an implicitly represented target, not a claim that
+the browser has evaluated one million force-bearing MD atoms. Establishing MD
+replacement requires held-out million-atom configurations, multiscale ensemble
+statistics, force and relaxation audits, and complete cost accounting.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

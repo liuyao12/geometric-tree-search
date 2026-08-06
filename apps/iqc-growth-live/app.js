@@ -57,6 +57,10 @@ const markCount = $("markCount");
 const markingTable = $("markingTable");
 const legendHeading = $("legendHeading");
 const speciesLegend = $("speciesLegend");
+const orderClassValue = $("orderClassValue");
+const symmetryValue = $("symmetryValue");
+const auditModeValue = $("auditModeValue");
+const auditNote = $("auditNote");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
 const COLORS = {
@@ -70,8 +74,9 @@ const COLORS = {
 const TAU = Math.PI * 2;
 const PHI = (1 + Math.sqrt(5)) / 2;
 const REFERENCE_COUNT = 216;
-const SCALE_FACTOR = 10;
-const EXTENSION_COUNT = REFERENCE_COUNT * SCALE_FACTOR;
+const VIEWPORT_TARGET = 2160;
+const REPRESENTED_TARGET = 1_048_576;
+const EXTENSION_COUNT = VIEWPORT_TARGET;
 const FRONTIER_BATCH = 4;
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
@@ -88,10 +93,10 @@ const ELEMENTS = {
   Si: { color: 0xe7b883, css: "#e7b883", radius: 1.11 },
 };
 const MATERIALS = {
-  competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", clusters: 2 },
-  random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", clusters: 4 },
-  iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", clusters: 5 },
-  bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", clusters: 3 },
+  competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", clusters: 2, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
+  random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", clusters: 4, order: "amorphous", symmetry: "no stable long-range group", audit: "local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble whose multiscale statistics match held-out large MD." },
+  iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", clusters: 5, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
+  bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", clusters: 3, order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
 };
 const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
 const BALANCE_DIRECTIONS = [
@@ -181,6 +186,20 @@ let learnedClusters = null;
 
 function currentMaterial() {
   return MATERIALS[scenarioSelect.value];
+}
+
+function representedAtomCount() {
+  if (atoms.length <= REFERENCE_COUNT) return atoms.length;
+  const progress = Math.min(1, (atoms.length - REFERENCE_COUNT) / (VIEWPORT_TARGET - REFERENCE_COUNT));
+  return Math.round(REFERENCE_COUNT * Math.pow(REPRESENTED_TARGET / REFERENCE_COUNT, progress));
+}
+
+function updateOrderAudit() {
+  const material = currentMaterial();
+  orderClassValue.textContent = material.order;
+  symmetryValue.textContent = material.symmetry;
+  auditModeValue.textContent = material.audit;
+  auditNote.textContent = `${material.note} Reference labels are withheld from the learner and checked only after growth.`;
 }
 
 function getElementMaterial(symbol, dim = false) {
@@ -864,8 +883,8 @@ function updateStageNarrative() {
       values: [`${clusterCount} medoids`, "measured shells", `${learnedClusters?.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0) || 0} neighbor ports`, "finite radius"],
     },
     {
-      eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: "0 / 2,160",
-      caption: "The search recovers 216 observed sites, then samples near-best attachments around the whole exposed frontier.", badge: "search",
+      eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: `0 / ${REPRESENTED_TARGET.toLocaleString()}`,
+      caption: "The search recovers 216 observed sites, then samples a visible frontier while its learned hierarchy represents growth toward one million atoms.", badge: "search",
       decision: "Ready for one continuous search", copy: "Local compatibility leads; a soft stochastic angular balance prevents persistent directional starvation without overriding forced moves.",
       values: ["near-best attachment", "finite marking", "soft balance", "not started"],
     },
@@ -968,8 +987,8 @@ function performExtensionEvent() {
     pipelineAuto = false;
     updatePipelineButtons();
     atoms.length = Math.min(atoms.length, EXTENSION_COUNT);
-    phaseReadout.textContent = "2,160 / 2,160";
-    captionAction.textContent = "The same search has continued from zero through the observed window to 2,160 represented atoms.";
+    phaseReadout.textContent = `${REPRESENTED_TARGET.toLocaleString()} / ${REPRESENTED_TARGET.toLocaleString()}`;
+    captionAction.textContent = `The same search has crossed the observed window and reached ${REPRESENTED_TARGET.toLocaleString()} implicitly represented atoms; ${VIEWPORT_TARGET.toLocaleString()} are materialized in the viewport sample.`;
     return;
   }
   eventIndex++;
@@ -989,7 +1008,7 @@ function performExtensionEvent() {
     currentCandidate = { p: center, accepted: true };
     acceptedDecisions++;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: added.at(-1).depth, action: state.action, family: target.family });
-    captionAction.textContent = `${atoms.length.toLocaleString()}/${EXTENSION_COUNT.toLocaleString()} atoms represented; a near-best local attachment was sampled with soft angular balance.`;
+    captionAction.textContent = `${representedAtomCount().toLocaleString()}/${REPRESENTED_TARGET.toLocaleString()} atoms represented; ${atoms.length.toLocaleString()} viewport atoms materialized by near-best frontier attachments.`;
     updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: localEnergy, interval: decision.interval });
   }
   rebuildWorld();
@@ -1126,7 +1145,7 @@ function updateUI() {
     atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = `${material.name} · xyz in Å`;
     frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.elements.length); frontierDelta.textContent = material.elements.join(" / ");
     oracleLabel.textContent = "LABELS GIVEN"; oracleMetric.textContent = "0"; oracleDelta.textContent = "clusters must be inferred";
-    reuseLabel.textContent = "NEAREST NEIGHBOR"; reuseMetric.textContent = `${referenceSpacingA.toFixed(2)} Å`; reuseDelta.textContent = material.cell;
+    reuseLabel.textContent = "REPRESENTED TARGET"; reuseMetric.textContent = REPRESENTED_TARGET.toLocaleString(); reuseDelta.textContent = `${Math.round(REPRESENTED_TARGET / REFERENCE_COUNT).toLocaleString()}× seed · hierarchy goal`;
   } else if (pipelineStage === 1) {
     atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "periodic element-aware descriptors";
     frontierLabel.textContent = "LEARNED CLUSTERS"; frontierMetric.textContent = String(learnedClusters.clusters.length); frontierDelta.textContent = "deterministic k-medoids";
@@ -1139,22 +1158,24 @@ function updateUI() {
     reuseLabel.textContent = "DOMAIN"; reuseMetric.textContent = "1.38a"; reuseDelta.textContent = "first-shell encoding radius";
   } else {
     const reconstructing = replayIndex < REFERENCE_COUNT;
+    const represented = representedAtomCount();
     stageEyebrow.textContent = reconstructing ? "search · recovering the observed window" : "search · continuing through the same frontier";
     stageTitle.textContent = reconstructing ? "Reconstruct, then keep going" : "The same search continues beyond 216 atoms";
-    phaseReadout.textContent = `${atoms.length.toLocaleString()} / ${EXTENSION_COUNT.toLocaleString()}`;
-    atomLabel.textContent = "REPRESENTED ATOMS";
+    phaseReadout.textContent = `${represented.toLocaleString()} / ${REPRESENTED_TARGET.toLocaleString()}`;
+    atomLabel.textContent = "VIEWPORT SAMPLE";
     atomMetric.textContent = atoms.length.toLocaleString();
-    atomDelta.textContent = reconstructing ? `${replayIndex}/${REFERENCE_COUNT} observed sites recovered` : `${(atoms.length / REFERENCE_COUNT).toFixed(1)}× reference scale`;
+    atomDelta.textContent = reconstructing ? `${replayIndex}/${REFERENCE_COUNT} observed sites recovered` : `${VIEWPORT_TARGET.toLocaleString()} explicit-atom ceiling`;
     frontierLabel.textContent = "OPEN FRONTIER";
     frontierDelta.textContent = reconstructing ? "next observed sites" : "next uncovered sites";
     oracleLabel.textContent = "ORACLE WORK";
     oracleMetric.textContent = oracleCalls > 9999 ? `${(oracleCalls / 1000).toFixed(1)}k` : String(oracleCalls);
     oracleDelta.textContent = `${acceptedDecisions + rejectedDecisions} tree decisions`;
-    reuseLabel.textContent = "MARKING REUSE";
+    reuseLabel.textContent = "REPRESENTED";
+    reuseMetric.textContent = represented.toLocaleString();
     const resolved = Math.max(1, acceptedDecisions + rejectedDecisions);
-    reuseMetric.textContent = `${Math.round(grammarDecisions / resolved * 100)}%`;
-    reuseDelta.textContent = `${grammarDecisions} decisions reused`;
+    reuseDelta.textContent = `${Math.round(grammarDecisions / resolved * 100)}% of decisions reused by marking`;
   }
+  updateOrderAudit();
   renderStack();
   renderMarkings();
   renderStructureStats();
