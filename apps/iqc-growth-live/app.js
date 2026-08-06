@@ -184,6 +184,8 @@ let liveStructuralStats = null;
 let lastLiveStatsKey = "";
 let coordinationSelection = null;
 let learnedClusters = null;
+let trainedMarking = null;
+let referenceQIndex = new Map();
 let liveOrderCache = { key: "", result: null };
 let orderPrototypeLibrary = null;
 
@@ -198,8 +200,8 @@ function representedAtomCount() {
 }
 
 function classificationSample() {
-  const observed = pipelineStage === 3 ? atoms.filter((atom) => atom.observed) : [];
-  const source = pipelineStage < 3 ? referenceAtoms : (observed.length ? observed : atoms);
+  const observed = pipelineStage === 4 ? atoms.filter((atom) => atom.observed) : [];
+  const source = pipelineStage < 4 ? referenceAtoms : (observed.length ? observed : atoms);
   if (source.length <= REFERENCE_COUNT) return source;
   // Preserve a physically contiguous observation window. Sampling uniformly by
   // insertion order would tear apart neighbor shells as the frontier grows.
@@ -213,7 +215,7 @@ function normalizedDistributionDistance(first, second) {
 
 function inferLiveOrder() {
   const source = classificationSample();
-  if (pipelineStage === 3 && source.length < 32) return {
+  if (pipelineStage === 4 && source.length < 32) return {
     order: "insufficient sample", structure: "—", symmetry: "—", confidence: 0,
     note: `Waiting for at least 32 live atoms; ${source.length} are currently available.`,
   };
@@ -246,7 +248,7 @@ function inferLiveOrder() {
     structure = best.material.name;
     symmetry = "no global space group";
   }
-  const mode = pipelineStage < 3 ? "reference configuration" : "live reconstructed core";
+  const mode = pipelineStage < 4 ? "reference configuration" : "live reconstructed core";
   const result = {
     order, structure, symmetry, confidence,
     note: `${mode}: best RDF + coordination match across ${matches.length} prototypes. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
@@ -365,7 +367,7 @@ function calculateStructuralStats(source, spacing) {
 }
 
 function currentLiveStructure() {
-  const source = pipelineStage === 3 ? atoms.filter((atom) => atom.observed) : [];
+  const source = pipelineStage === 4 ? atoms.filter((atom) => atom.observed) : [];
   const key = `${pipelineStage}:${replayIndex}`;
   if (key !== lastLiveStatsKey) {
     liveStructuralStats = calculateStructuralStats(source, referenceSpacing);
@@ -376,7 +378,7 @@ function currentLiveStructure() {
 
 function selectedCoordinationDetail() {
   if (coordinationSelection === null || pipelineStage === 2) return null;
-  const structure = pipelineStage === 3
+  const structure = pipelineStage === 4
     ? currentLiveStructure()
     : { source: atoms, stats: referenceStructuralStats };
   if (!structure.source.length || !structure.stats) return null;
@@ -413,7 +415,7 @@ function selectedCoordinationDetail() {
 }
 
 function selectCoordination(value) {
-  if (pipelineStage === 2 || (pipelineStage === 3 && replayIndex === 0)) return;
+  if (pipelineStage === 2 || (pipelineStage === 4 && replayIndex === 0)) return;
   coordinationSelection = coordinationSelection === value ? null : value;
   rebuildWorld();
   updateUI();
@@ -669,6 +671,83 @@ function learnLocalEnvironmentClusters(source) {
   return { labels: labels.map((label) => remap.get(label)), clusters, environments, descriptorLength: dimensions };
 }
 
+function qKey(q) {
+  return q.map((value) => value.toFixed(1)).join(",");
+}
+
+function wrappedReferenceQ(q) {
+  return q.map((value) => {
+    const grid = Math.round(value + 2.5);
+    return ((grid % 6) + 6) % 6 - 2.5;
+  });
+}
+
+function learnOverlapMarking(source) {
+  const shells = source.map((center, centerIndex) => {
+    const neighbors = [];
+    source.forEach((atom, atomIndex) => {
+      if (atomIndex === centerIndex) return;
+      const normalizedDistance = periodicDisplacement(center, atom).length() / referenceSpacingA;
+      if (normalizedDistance <= 1.38) neighbors.push({ index: atomIndex, distance: normalizedDistance });
+    });
+    return neighbors;
+  });
+  const shellSets = shells.map((neighbors, index) => new Set([index, ...neighbors.map((neighbor) => neighbor.index)]));
+  const states = new Map();
+  const sourceDomains = new Array(source.length);
+  shells.forEach((neighbors, centerIndex) => {
+    const counts = new Map();
+    neighbors.forEach(({ index }) => {
+      const cluster = learnedClusters.labels[index] + 1;
+      counts.set(cluster, (counts.get(cluster) || 0) + 1);
+    });
+    const shellCode = [...counts.entries()].sort((a, b) => a[0] - b[0]).map(([cluster, count]) => `C${cluster}×${count}`).join("+") || "isolated";
+    const ownCluster = learnedClusters.labels[centerIndex] + 1;
+    const domain = `C${ownCluster}|z${neighbors.length}|${shellCode}`;
+    const meanDistance = neighbors.reduce((sum, neighbor) => sum + neighbor.distance, 0) / Math.max(1, neighbors.length);
+    const score = -1.35 + .24 * meanDistance;
+    const state = states.get(domain) || { count: 0, min: Infinity, max: -Infinity, sum: 0 };
+    state.count++;
+    state.min = Math.min(state.min, score);
+    state.max = Math.max(state.max, score);
+    state.sum += score;
+    states.set(domain, state);
+    sourceDomains[centerIndex] = domain;
+  });
+
+  const edges = [];
+  for (let first = 0; first < source.length; first++) {
+    for (let second = first + 1; second < source.length; second++) {
+      const distance = periodicDisplacement(source[first], source[second]).length() / referenceSpacingA;
+      if (distance > 2.76) continue;
+      let shared = 0;
+      shellSets[first].forEach((index) => { if (shellSets[second].has(index)) shared++; });
+      if (!shared) continue;
+      edges.push({
+        first, second, shared, distance,
+        firstCluster: learnedClusters.labels[first] + 1,
+        secondCluster: learnedClusters.labels[second] + 1,
+      });
+    }
+  }
+  edges.sort((first, second) => second.shared - first.shared || first.distance - second.distance);
+  const ambiguous = [...states.values()].filter((state) => state.count < 2 || state.max - state.min > .12).length;
+  return { states, sourceDomains, edges, ambiguous, covered: sourceDomains.filter(Boolean).length };
+}
+
+function seedTrainedMarking() {
+  markingCache = new Map([...trainedMarking.states].map(([key, value]) => [key, { ...value }]));
+}
+
+function markingDomainForTarget(target) {
+  if (!trainedMarking) return null;
+  let referenceIndex = target.sourceIndex;
+  if (!Number.isInteger(referenceIndex) || referenceIndex >= REFERENCE_COUNT) {
+    referenceIndex = referenceQIndex.get(qKey(wrappedReferenceQ(target.q || [0, 0, 0])));
+  }
+  return trainedMarking.sourceDomains[referenceIndex] || null;
+}
+
 function continuationPriority(qx, qy, qz) {
   return Math.hypot(qx, qy, qz);
 }
@@ -785,7 +864,7 @@ function clearGroup(group) {
 function buildConfinement() {
   clearGroup(confinementGroup);
   confinementGroup.rotation.set(0, 0, 0);
-  const large = pipelineStage === 3;
+  const large = pipelineStage === 4;
   const material = new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.36 });
   const shape = confinementSelect.value;
   if (shape === "box") {
@@ -887,7 +966,7 @@ function resetCounters() {
 }
 
 function enterPipelineStage(index, options = {}) {
-  pipelineStage = Math.max(0, Math.min(3, index));
+  pipelineStage = Math.max(0, Math.min(4, index));
   stageElapsed = 0;
   setPlaying(false);
   resetCounters();
@@ -897,9 +976,13 @@ function enterPipelineStage(index, options = {}) {
   referenceSpacingA = referenceSpacing / .92 * currentMaterial().spacingA;
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing);
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
+  referenceQIndex = new Map(referenceAtoms.map((atom, atomIndex) => [qKey(atom.q), atomIndex]));
+  trainedMarking = learnOverlapMarking(referenceAtoms);
+  if (pipelineStage >= 3 && policySelect.value === "marked") seedTrainedMarking();
   extensionTargets = makeExtensionTargets();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
+  else if (pipelineStage === 3) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else atoms = [];
   buildConfinement();
   clusterGroup.rotation.set(0, 0, 0);
@@ -923,7 +1006,7 @@ function updatePipelineButtons() {
 }
 
 function frameStage() {
-  const large = pipelineStage === 3;
+  const large = pipelineStage === 4;
   const target = new THREE.Vector3();
   controls.target.copy(target);
   camera.position.set(large ? 18 : 12.5, large ? 13 : 9.5, large ? 19 : 13.5);
@@ -935,6 +1018,9 @@ function updateStageNarrative() {
   decisionBadge.className = "badge neutral";
   const material = currentMaterial();
   const clusterCount = learnedClusters?.clusters.length || material.clusters;
+  const trainedStates = [...(trainedMarking?.states.values() || [])];
+  const trainedMinimum = trainedStates.length ? Math.min(...trainedStates.map((state) => state.min)) : 0;
+  const trainedMaximum = trainedStates.length ? Math.max(...trainedStates.map((state) => state.max)) : 0;
   const narratives = [
     {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
@@ -949,10 +1035,16 @@ function updateStageNarrative() {
       values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${clusterCount} medoids`, "PBC minimum image"],
     },
     {
-      eyebrow: "encoding · learned medoids with marked interfaces", title: "Encode every learned environment class", phase: `${clusterCount} symbols`,
+      eyebrow: "encoding · learned medoids with overlap interfaces", title: "Encode every learned environment class", phase: `${clusterCount} symbols`,
       caption: `Each of the ${clusterCount} symbols is the actual medoid center plus its measured first-shell neighbors; no generic three-shape catalog is substituted.`, badge: "encode",
-      decision: "Medoid neighborhoods encoded", copy: "One overlapping representative per learned class carries its element-labelled shell, interface marking, and bounded-domain decision state.",
+      decision: "Medoid neighborhoods encoded", copy: "One overlapping representative per learned class carries its element-labelled shell and bounded interface; the marking itself is learned in the next stage.",
       values: [`${clusterCount} medoids`, "measured shells", `${learnedClusters?.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0) || 0} neighbor ports`, "finite radius"],
+    },
+    {
+      eyebrow: "training · observed cluster overlaps", title: "Learn finite GCTS markings from the known region", phase: `${trainedMarking?.states.size || 0} states`,
+      caption: `${trainedMarking?.edges.length.toLocaleString() || 0} observed shell overlaps connect all ${REFERENCE_COUNT} cluster centers; repeated bounded signatures are compressed into reusable marking states.`, badge: "train",
+      decision: "Overlap marking trained", copy: "The learner records which cluster types meet inside each bounded shell, aggregates repeated contexts, and calibrates a finite score interval before reconstruction begins.",
+      values: ["shell intersection", `${trainedMarking?.states.size || 0} bounded signatures`, `[${trainedMinimum.toFixed(2)}, ${trainedMaximum.toFixed(2)}]`, `${trainedMarking?.covered || 0} known centers`],
     },
     {
       eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: `0 / ${REPRESENTED_TARGET.toLocaleString()}`,
@@ -962,7 +1054,7 @@ function updateStageNarrative() {
     },
   ];
   const item = narratives[pipelineStage];
-  eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "SEARCH"][pipelineStage];
+  eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "TRAIN", "SEARCH"][pipelineStage];
   stageEyebrow.textContent = item.eyebrow;
   stageTitle.textContent = item.title;
   phaseReadout.textContent = item.phase;
@@ -975,7 +1067,8 @@ function updateStageNarrative() {
 
 function stateForTarget(target, macro = false) {
   const action = macro ? `${target.family} frontier overlap` : `${target.species} @ ${target.family}`;
-  const domain = `${target.family === "IQC" ? "icosa" : target.family === "BC8" ? "tetra" : "corona"}|${target.species}→${macro ? "frontier" : "site"}|port${macro ? 6 : 3 + (target.sourceIndex || 0) % 4}`;
+  const domain = markingDomainForTarget(target)
+    || `${target.family === "IQC" ? "icosa" : target.family === "BC8" ? "tetra" : "corona"}|${target.species}|z?`;
   return { action, domain, n15: 4, n25: macro ? 14 : 11, minimum: .92, clearance: macro ? 2.8 : 1.4 };
 }
 
@@ -1088,7 +1181,7 @@ function performExtensionEvent() {
 }
 
 function performEvent() {
-  if (pipelineStage < 3) {
+  if (pipelineStage < 4) {
     enterPipelineStage(pipelineStage + 1, { play: pipelineAuto });
     return;
   }
@@ -1123,7 +1216,7 @@ function rebuildWorld() {
       addInstances(atoms.filter((atom) => atom.species === symbol && selectedCoordination.neighborIds.has(atom.id) && !selectedCoordination.centerIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.08);
       addInstances(atoms.filter((atom) => atom.species === symbol && selectedCoordination.centerIds.has(atom.id)), getElementMaterial(symbol), (atom) => elementScale(atom.species) * 1.3);
     });
-  } else if (pipelineStage === 1 && learnedClusters) {
+  } else if ((pipelineStage === 1 || pipelineStage === 3) && learnedClusters) {
     learnedClusters.clusters.forEach((_, cluster) => {
       addInstances(atoms.filter((atom, index) => learnedClusters.labels[index] === cluster), clusterMaterials[cluster], (atom) => elementScale(atom.species));
     });
@@ -1137,10 +1230,15 @@ function rebuildWorld() {
     const points = [];
     if (selectedCoordination?.centers.length) {
       selectedCoordination.edges.forEach(([center, neighbor]) => points.push(center.p, neighbor.p));
+    } else if (pipelineStage === 3 && trainedMarking) {
+      trainedMarking.edges
+        .filter((edge) => referenceAtoms[edge.first].p.distanceTo(referenceAtoms[edge.second].p) <= 2.76 * referenceSpacing)
+        .slice(0, 280)
+        .forEach((edge) => points.push(referenceAtoms[edge.first].p, referenceAtoms[edge.second].p));
     } else atoms.forEach((atom) => {
       if (atom.parent) points.push(atom.parent.p, atom.p);
     });
-    if (!selectedCoordination && pipelineStage < 3 && atoms.length <= 250) {
+    if (!selectedCoordination && pipelineStage < 4 && pipelineStage !== 3 && atoms.length <= 250) {
       for (let i = 0; i < atoms.length; i++) {
         for (let j = i + 1; j < atoms.length; j++) {
           const distance = atoms[i].p.distanceToSquared(atoms[j].p);
@@ -1150,11 +1248,16 @@ function rebuildWorld() {
     }
     if (points.length) bondGroup.add(new THREE.LineSegments(
       new THREE.BufferGeometry().setFromPoints(points),
-      new THREE.LineBasicMaterial({ color: selectedCoordination ? COLORS.violet : 0x87afa5, transparent: true, opacity: selectedCoordination ? .9 : .2 }),
+      new THREE.LineBasicMaterial({
+        color: selectedCoordination || pipelineStage === 3 ? COLORS.violet : 0x87afa5,
+        transparent: true,
+        opacity: selectedCoordination ? .9 : pipelineStage === 3 ? .38 : .2,
+        depthTest: pipelineStage !== 3,
+      }),
     ));
   }
 
-  if (frontierToggle.checked && pipelineStage >= 3) {
+  if (frontierToggle.checked && pipelineStage >= 4) {
     const targets = replayIndex < REFERENCE_COUNT
       ? referenceAtoms.slice(replayIndex, replayIndex + 20)
       : extensionTargets.slice(0, 24);
@@ -1228,6 +1331,11 @@ function updateUI() {
     frontierLabel.textContent = "SHELL ATOMS"; frontierMetric.textContent = String(atoms.length); frontierDelta.textContent = "center + measured neighbors";
     oracleLabel.textContent = "NEIGHBOR PORTS"; oracleMetric.textContent = String(learnedClusters.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0)); oracleDelta.textContent = "element-labelled interfaces";
     reuseLabel.textContent = "DOMAIN"; reuseMetric.textContent = "1.38a"; reuseDelta.textContent = "first-shell encoding radius";
+  } else if (pipelineStage === 3) {
+    atomLabel.textContent = "OVERLAPS"; atomMetric.textContent = trainedMarking.edges.length.toLocaleString(); atomDelta.textContent = "observed shell intersections";
+    frontierLabel.textContent = "FINITE STATES"; frontierMetric.textContent = String(trainedMarking.states.size); frontierDelta.textContent = "repeated bounded signatures";
+    oracleLabel.textContent = "TRAINING COVERAGE"; oracleMetric.textContent = `${trainedMarking.covered}/${REFERENCE_COUNT}`; oracleDelta.textContent = "known centers represented";
+    reuseLabel.textContent = "AMBIGUOUS"; reuseMetric.textContent = String(trainedMarking.ambiguous); reuseDelta.textContent = "singleton or wide-interval states";
   } else {
     const reconstructing = replayIndex < REFERENCE_COUNT;
     const represented = representedAtomCount();
@@ -1256,7 +1364,7 @@ function updateUI() {
 
 function renderLegend() {
   speciesLegend.replaceChildren();
-  if (pipelineStage === 1 && learnedClusters) {
+  if ((pipelineStage === 1 || pipelineStage === 3) && learnedClusters) {
     legendHeading.textContent = "Learned environments";
     learnedClusters.clusters.forEach((cluster, index) => {
       const row = document.createElement("span");
@@ -1284,13 +1392,26 @@ function renderLegend() {
 }
 
 function renderStack() {
+  if (pipelineStage === 3 && trainedMarking) {
+    stackDepth.textContent = `${trainedMarking.edges.length.toLocaleString()} observations`;
+    searchStack.replaceChildren();
+    trainedMarking.edges.slice(0, 6).forEach((edge) => {
+      const row = document.createElement("li");
+      const shared = document.createElement("b"); shared.textContent = `×${edge.shared}`;
+      const action = document.createElement("span"); action.textContent = `C${edge.firstCluster} ↔ C${edge.secondCluster}`;
+      const state = document.createElement("em"); state.textContent = `${edge.distance.toFixed(2)}a`;
+      row.append(shared, action, state);
+      searchStack.appendChild(row);
+    });
+    return;
+  }
   const rows = stackHistory.slice(-6).reverse();
-  stackDepth.textContent = pipelineStage < 3 ? `stage ${pipelineStage + 1}/4` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
+  stackDepth.textContent = pipelineStage < 4 ? `stage ${pipelineStage + 1}/5` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
   searchStack.replaceChildren();
   if (!rows.length) {
     const row = document.createElement("li");
     row.className = "empty-row";
-    row.textContent = pipelineStage < 3 ? "Tree search begins after encoding." : "Accepted branches appear here.";
+    row.textContent = pipelineStage < 4 ? "Tree search begins after marking training." : "Accepted branches appear here.";
     searchStack.appendChild(row);
     return;
   }
@@ -1305,7 +1426,7 @@ function renderStack() {
 }
 
 function renderMarkings() {
-  markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "polyhedral symbols" : "learned finite states";
+  markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "overlap symbols" : pipelineStage === 3 ? "trained GCTS markings" : "active finite states";
   markingTable.replaceChildren();
   if (pipelineStage === 0) {
     markCount.textContent = "not learned";
@@ -1317,10 +1438,12 @@ function renderMarkings() {
     `×${cluster.count}`,
   ]);
   const cache = policySelect.value === "marked" ? markingCache : actionCache;
-  const entries = pipelineStage < 3 ? learned : [...cache.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(1)}…${value.max.toFixed(1)}`, `×${value.count}`]);
-  markCount.textContent = pipelineStage < 3 ? `${learned.length} learned` : `${cache.size} marks`;
+  const trainedEntries = [...(trainedMarking?.states || [])].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
+  const activeEntries = [...cache.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
+  const entries = pipelineStage < 3 ? learned : pipelineStage === 3 ? trainedEntries : activeEntries;
+  markCount.textContent = pipelineStage < 3 ? `${learned.length} learned` : pipelineStage === 3 ? `${trainedMarking.states.size} trained` : `${cache.size} active`;
   if (!entries.length) {
-    const p = document.createElement("p"); p.textContent = "Finite observations appear as the search runs."; markingTable.appendChild(p); return;
+    const p = document.createElement("p"); p.textContent = policySelect.value === "marked" ? "No reusable bounded state was learned." : "This policy does not preload GCTS markings."; markingTable.appendChild(p); return;
   }
   entries.forEach(([key, interval, count]) => {
     const row = document.createElement("div"); row.className = "mark-row";
@@ -1358,6 +1481,7 @@ scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
 policySelect.addEventListener("change", () => {
   markingCache.clear(); actionCache.clear(); grammarDecisions = 0;
+  if (policySelect.value === "marked" && pipelineStage >= 3 && trainedMarking) seedTrainedMarking();
   updateUI();
 });
 speedInput.addEventListener("input", () => { speedOutput.textContent = speedInput.value; });
@@ -1382,7 +1506,7 @@ function animate(now) {
   controls.autoRotate = rotateToggle.checked;
   controls.update();
   if (playing) {
-    if (pipelineStage < 3) {
+    if (pipelineStage < 4) {
       stageElapsed += delta;
       if (stageElapsed >= 1.8) enterPipelineStage(pipelineStage + 1, { play: true });
     } else {

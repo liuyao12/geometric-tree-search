@@ -62,7 +62,7 @@ a { color: inherit; }
 .method-link:hover { color: var(--mint); }
 
 .pipeline-nav {
-  display: grid; grid-template-columns: repeat(4, 1fr); min-height: 72px;
+  display: grid; grid-template-columns: repeat(5, 1fr); min-height: 72px;
   border-bottom: 1px solid var(--line); background: rgba(7, 18, 19, .96);
 }
 .pipeline-nav button {
@@ -228,13 +228,13 @@ a { color: inherit; }
   .inspector-panel { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 16px; border-left: 0; border-top: 1px solid var(--line); }
   .inspector-panel section, .inspector-panel section + section { margin-top: 0; }
   .audit-card { display: none; }
-  .pipeline-nav { grid-template-columns: repeat(4, minmax(140px, 1fr)); overflow-x: auto; }
+  .pipeline-nav { grid-template-columns: repeat(5, minmax(140px, 1fr)); overflow-x: auto; }
 }
 
 @media (max-width: 640px) {
   .topbar { height: auto; min-height: 62px; padding: 10px 14px; }
   .method-link { display: none; }
-  .pipeline-nav { grid-template-columns: repeat(4, 150px); }
+  .pipeline-nav { grid-template-columns: repeat(5, 150px); }
   .lab-grid { display: block; }
   .control-panel { border-right: 0; border-bottom: 1px solid var(--line); }
   .control-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
