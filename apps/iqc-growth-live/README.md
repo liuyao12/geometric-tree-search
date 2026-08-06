@@ -9,7 +9,7 @@ element-labelled atomic positions, then illustrates:
 - element-aware discovery of local-environment clusters;
 - reduction to tetrahedral, icosahedral, and corona-like polyhedral symbols;
 - observation of how those cluster shells overlap in the known configuration;
-- training of finite GCTS markings from repeated bounded overlap signatures;
+- training of bounded, section-valued GCTS markings on cluster neighborhoods;
 - one continuous search that reconstructs the 216-atom input and naturally
   continues through its exposed frontier. The browser materializes a bounded
   2,160-atom sample while the hierarchy counter addresses a 1,048,576-atom
@@ -17,8 +17,8 @@ element-labelled atomic positions, then illustrates:
 
 The five pipeline stages can be selected individually or run continuously.
 The search crosses the 216-atom observation boundary without changing modes or
-resetting its learned finite states. The interface exposes exact-oracle and
-learned-interval decisions, the accepted search stack, and marking reuse;
+resetting its learned local sections. The interface exposes exact-oracle and
+section-overlap decisions, the accepted search stack, and marking reuse;
 internal branch revisions are intentionally not called out visually.
 
 The selectable inputs now use distinct chemical systems rather than generic
@@ -44,24 +44,29 @@ and therefore cover the atomic configuration. The encoding stage now preserves
 that learned cardinality and shows the actual medoid first shell for every
 class; it no longer substitutes the same three demonstration polyhedra.
 
-The marking stage is separate from cluster discovery and from application. For
-each known atom center it records the center's learned cluster type,
-coordination, and multiset of neighboring cluster types inside the bounded
-first shell. It also computes which atom-centered shells share sites, displays
-their overlap graph, and aggregates repeated signatures into finite states with
-observed score intervals. Coverage and ambiguous-state counts are reported
-before search. When the finite-marking policy is selected, this trained table is
-copied into the search cache before reconstruction; the exact-oracle and
-colored-action ablations do not receive it.
+The marking stage is separate from cluster discovery and application. It learns
+one bounded scalar section `m_C(x)` for each discovered cluster type `C`, with
+support radius `1.9a`. Every occurrence of a cluster carries a transformed copy
+of that section. Where two neighborhoods share atomic sites, the training loss
+penalizes disagreement between their section values. A local, element-weighted
+angular descriptor provides a non-collapse anchor, since overlap agreement by
+itself admits an uninformative constant field.
 
 Training is revealed sample by sample rather than appearing as an instantaneous
-final table. Its live curve tracks processed atom-centered domains, cumulative
-overlap observations, distinct states, and the subset seen at least twice and
-therefore eligible for reuse. A companion frequency atlas shows the most common
-states. In the 3D scene, processed centers are colored by bounded marking state
-while unseen centers remain dim; clicking a marking-table row highlights every
-current occurrence of that state. This makes sample scarcity, state explosion,
-and insufficient marking domains visible before search begins.
+answer. Each section begins with deterministic random directional coefficients;
+the live fit and held-out curves report a weighted combination of overlap
+mismatch and anchor mismatch as the known centers are processed. In the 3D
+scene, two nested wireframe level surfaces form a halo around every cluster
+occurrence and deform as the coefficients converge. The section atlas reports
+the current field amplitude for every cluster type, and clicking a row isolates
+all copies of that section. The observed shell-overlap graph remains visible as
+the constraints from which the sections learn to glue.
+
+When the marked policy is selected, the trained section identifiers and their
+support travel into reconstruction and continuation. A proposed attachment can
+reuse a learned decision when the transformed sections are compatible on their
+overlap; the exact-oracle and colored-action ablations do not receive this
+section-valued cache.
 
 Continuation does not target a cube or impose a hard spherical boundary. It
 samples among locally near-best cluster attachments on the exposed frontier.
@@ -107,5 +112,12 @@ The million-atom number is an implicitly represented target, not a claim that
 the browser has evaluated one million force-bearing MD atoms. Establishing MD
 replacement requires held-out million-atom configurations, multiscale ensemble
 statistics, force and relaxation audits, and complete cost accounting.
+
+The current browser learner is intentionally the smallest visual proof of the
+construction: a rank-one scalar section with six directional basis functions.
+It demonstrates bounded support, random initialization, overlap gluing, and
+reuse during search. A research implementation still needs equivariant local
+frames and the full translation/rotation group action, richer vector or bundle
+fibres, negative overlap examples, and held-out structure tests.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.
