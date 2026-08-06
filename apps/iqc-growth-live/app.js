@@ -192,6 +192,7 @@ let lastLiveStatsKey = "";
 let coordinationSelection = null;
 let learnedClusters = null;
 let trainedMarking = null;
+let sectionModel = null;
 let referenceQIndex = new Map();
 let trainingProgress = 0;
 let markingSelection = null;
@@ -491,55 +492,55 @@ function setChartLegend(container, entries) {
 
 function renderTrainingStats() {
   const point = currentTrainingPoint();
-  const visibleCurve = trainedMarking.curve.slice(0, trainingProgress);
-  const visibleStates = [...visibleTrainingStates()].sort((a, b) => b[1].count - a[1].count);
+  const visibleCurve = sectionModel.curve.slice(0, trainingProgress);
   rdfEyebrow.textContent = "GCTS training curve";
-  rdfTitle.textContent = "states vs. samples";
-  rdfStatus.textContent = `${point.samples}/${REFERENCE_COUNT} samples · ${point.overlaps.toLocaleString()} overlaps`;
-  coordEyebrow.textContent = "marking-state atlas";
-  coordTitle.textContent = "observed frequency";
-  coordStatus.textContent = `${point.discovered} discovered · ${point.reusable} reusable`;
+  rdfTitle.textContent = "section mismatch";
+  rdfStatus.textContent = `${point.samples}/${REFERENCE_COUNT} samples · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
+  coordEyebrow.textContent = "learned section atlas";
+  coordTitle.textContent = "field amplitude by cluster";
+  coordStatus.textContent = `support R = ${sectionModel.support.toFixed(1)}a · rank ${sectionModel.channels}`;
   coordClearButton.hidden = true;
-  rdfChart.setAttribute("aria-label", "GCTS marking states discovered and made reusable as training samples accumulate");
-  coordChart.setAttribute("aria-label", "Frequency atlas of observed GCTS marking states");
+  rdfChart.setAttribute("aria-label", "Training and held-out mismatch of local GCTS marking sections");
+  coordChart.setAttribute("aria-label", "Amplitude of each learned cluster marking section");
 
   rdfChart.replaceChildren();
-  drawChartFrame(rdfChart, "samples", "states");
+  drawChartFrame(rdfChart, "samples", "loss");
   [0, 54, 108, 162, 216].forEach((tick) => {
     const x = 29 + tick / REFERENCE_COUNT * 323;
     rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
   });
-  const maximum = Math.max(1, trainedMarking.states.size);
+  const maximum = Math.max(.001, sectionModel.initialPoint.trainLoss, sectionModel.initialPoint.validationLoss);
   const curvePath = (field) => visibleCurve.map((entry, index) => {
     const x = 29 + entry.samples / REFERENCE_COUNT * 323;
-    const y = 96 - entry[field] / maximum * 84;
+    const y = 96 - Math.min(1, entry[field] / maximum) * 84;
     return `${index ? "L" : "M"}${x.toFixed(2)},${y.toFixed(2)}`;
   }).join(" ");
   if (visibleCurve.length) {
-    rdfChart.append(svgNode("path", { d: curvePath("discovered"), class: "chart-known" }));
-    rdfChart.append(svgNode("path", { d: curvePath("reusable"), class: "chart-live" }));
+    rdfChart.append(svgNode("path", { d: curvePath("trainLoss"), class: "chart-known" }));
+    rdfChart.append(svgNode("path", { d: curvePath("validationLoss"), class: "chart-live" }));
   }
-  setChartLegend(rdfLegend, [["known-key", "discovered states"], ["live-key", "reusable after ≥2 samples"]]);
+  setChartLegend(rdfLegend, [["known-key", "overlap + anchor fit"], ["live-key", "held-out mismatch"]]);
 
   coordChart.replaceChildren();
-  drawChartFrame(coordChart, "marking rank", "count");
-  const topStates = visibleStates.slice(0, 12);
-  const maximumCount = Math.max(1, ...topStates.map(([, state]) => state.count));
-  const barStep = 323 / Math.max(1, topStates.length);
-  topStates.forEach(([domain, state], index) => {
-    const height = state.count / maximumCount * 84;
-    const color = `#${markingColor(domain).getHexString()}`;
+  drawChartFrame(coordChart, "cluster section", "norm");
+  const amplitudes = learnedClusters.clusters.map((_, cluster) => Math.sqrt(currentSectionCoefficients(cluster).reduce((sum, value) => sum + value ** 2, 0)));
+  const maximumAmplitude = Math.max(.01, ...amplitudes);
+  const barStep = 323 / amplitudes.length;
+  amplitudes.forEach((amplitude, index) => {
+    const height = amplitude / maximumAmplitude * 84;
+    const key = `m_C${index + 1}`;
+    const color = `#${markingColor(key).getHexString()}`;
     coordChart.append(svgNode("rect", {
       x: 29 + index * barStep + 2,
       y: 96 - height,
       width: Math.max(2, barStep - 4),
       height,
       fill: color,
-      opacity: markingSelection && markingSelection !== domain ? .18 : .72,
+      opacity: markingSelection && markingSelection !== key ? .18 : .72,
     }));
-    coordChart.append(svgNode("text", { x: 29 + (index + .5) * barStep, y: 108, class: "chart-label", "text-anchor": "middle" }, String(index + 1)));
+    coordChart.append(svgNode("text", { x: 29 + (index + .5) * barStep, y: 108, class: "chart-label", "text-anchor": "middle" }, `C${index + 1}`));
   });
-  setChartLegend(coordLegend, [["known-key", "color = bounded marking state"], ["live-key", "click a table row to highlight occurrences"]]);
+  setChartLegend(coordLegend, [["known-key", "each color is one local section m_C(x)"], ["live-key", "click a section row to isolate its halos"]]);
 }
 
 function renderStructureStats() {
@@ -830,11 +831,11 @@ function learnOverlapMarking(source) {
     for (let second = first + 1; second < source.length; second++) {
       const distance = periodicDisplacement(source[first], source[second]).length() / referenceSpacingA;
       if (distance > 2.76) continue;
-      let shared = 0;
-      shellSets[first].forEach((index) => { if (shellSets[second].has(index)) shared++; });
-      if (!shared) continue;
+      const sharedIndices = [];
+      shellSets[first].forEach((index) => { if (shellSets[second].has(index)) sharedIndices.push(index); });
+      if (!sharedIndices.length) continue;
       edges.push({
-        first, second, shared, distance,
+        first, second, shared: sharedIndices.length, sharedIndices, distance,
         firstCluster: learnedClusters.labels[first] + 1,
         secondCluster: learnedClusters.labels[second] + 1,
       });
@@ -860,6 +861,130 @@ function learnOverlapMarking(source) {
   return { states, sourceDomains, samples, curve, edges, ambiguous, covered: sourceDomains.filter(Boolean).length };
 }
 
+function learnSectionModel(source) {
+  const axes = BALANCE_DIRECTIONS.slice(0, 6);
+  const support = 1.9;
+  const basisAt = (center, atom) => {
+    const vector = periodicDisplacement(center, atom);
+    const distance = vector.length() / referenceSpacingA;
+    if (distance >= support || distance < 1e-6) return { base: distance < 1e-6 ? 1 : 0, features: new Array(axes.length).fill(0) };
+    const direction = vector.normalize();
+    const radial = .5 * (1 + Math.cos(Math.PI * distance / support));
+    return {
+      base: radial,
+      features: axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** 3),
+    };
+  };
+  const fieldAt = (coefficients, basis) => basis.base + basis.features.reduce((sum, feature, axis) => sum + feature * coefficients[axis], 0);
+  const targets = source.map((center, centerIndex) => {
+    const values = new Array(axes.length).fill(0);
+    let weightTotal = 0;
+    source.forEach((atom, atomIndex) => {
+      if (atomIndex === centerIndex) return;
+      const vector = periodicDisplacement(center, atom);
+      const distance = vector.length() / referenceSpacingA;
+      if (distance > 1.9 || distance < 1e-6) return;
+      const direction = vector.normalize();
+      const elementWeight = 0.82 + (currentMaterial().elements.indexOf(atom.species) + 1) * .14;
+      const radialWeight = Math.max(0, 1 - distance / 1.9) * elementWeight;
+      axes.forEach((axis, axisIndex) => { values[axisIndex] += radialWeight * Math.max(0, direction.dot(axis)) ** 3; });
+      weightTotal += radialWeight;
+    });
+    const normalized = values.map((value) => value / Math.max(.001, weightTotal));
+    const mean = normalized.reduce((sum, value) => sum + value, 0) / normalized.length;
+    return normalized.map((value) => Math.max(-.22, Math.min(.22, (value - mean) * 1.8)));
+  });
+  const clusterCount = learnedClusters.clusters.length;
+  const initial = Array.from({ length: clusterCount }, (_, cluster) =>
+    axes.map((_, axis) => (siteHash(cluster, axis, 17, 4) - .5) * .34));
+  const coefficients = initial.map((values) => [...values]);
+  const fitIndices = source.map((_, index) => index).filter((index) => index % 5 !== 0);
+  const holdoutIndices = source.map((_, index) => index).filter((index) => index % 5 === 0);
+  const fitSet = new Set(fitIndices);
+  const holdoutSet = new Set(holdoutIndices);
+  const anchorLossFor = (indices, values = coefficients) => indices.reduce((sum, index) => {
+    const cluster = learnedClusters.labels[index];
+    return sum + targets[index].reduce((error, target, axis) => error + (values[cluster][axis] - target) ** 2, 0) / axes.length;
+  }, 0) / Math.max(1, indices.length);
+  const overlapLossFor = (membership, values = coefficients) => {
+    let loss = 0;
+    let count = 0;
+    trainedMarking.edges.forEach((edge) => {
+      if (!membership.has(edge.first) || !membership.has(edge.second)) return;
+      const firstCoefficients = values[learnedClusters.labels[edge.first]];
+      const secondCoefficients = values[learnedClusters.labels[edge.second]];
+      edge.sharedIndices.forEach((atomIndex) => {
+        const firstValue = fieldAt(firstCoefficients, basisAt(source[edge.first], source[atomIndex]));
+        const secondValue = fieldAt(secondCoefficients, basisAt(source[edge.second], source[atomIndex]));
+        loss += (firstValue - secondValue) ** 2;
+        count++;
+      });
+    });
+    return loss / Math.max(1, count);
+  };
+  const totalLossFor = (indices, membership, values = coefficients) =>
+    .35 * anchorLossFor(indices, values) + .65 * overlapLossFor(membership, values);
+  const initialPoint = {
+    samples: 0,
+    fitSamples: 0,
+    holdoutSamples: 0,
+    trainLoss: totalLossFor(fitIndices, fitSet),
+    validationLoss: totalLossFor(holdoutIndices, holdoutSet),
+    coefficients: initial.map((values) => [...values]),
+  };
+  let fitSamples = 0;
+  let holdoutSamples = 0;
+  const curve = source.map((_, index) => {
+    const cluster = learnedClusters.labels[index];
+    if (index % 5 === 0) holdoutSamples++;
+    else {
+      fitSamples++;
+      coefficients[cluster] = coefficients[cluster].map((value, axis) => value + .14 * (targets[index][axis] - value));
+      const incident = trainedMarking.edges.filter((edge) => (edge.first === index || edge.second === index) && Math.max(edge.first, edge.second) <= index);
+      const gradient = new Array(axes.length).fill(0);
+      let constraints = 0;
+      incident.forEach((edge) => {
+        const firstCluster = learnedClusters.labels[edge.first];
+        const secondCluster = learnedClusters.labels[edge.second];
+        edge.sharedIndices.forEach((atomIndex) => {
+          const firstBasis = basisAt(source[edge.first], source[atomIndex]);
+          const secondBasis = basisAt(source[edge.second], source[atomIndex]);
+          const difference = fieldAt(coefficients[firstCluster], firstBasis) - fieldAt(coefficients[secondCluster], secondBasis);
+          axes.forEach((__, axis) => {
+            if (firstCluster === cluster) gradient[axis] += difference * firstBasis.features[axis];
+            if (secondCluster === cluster) gradient[axis] -= difference * secondBasis.features[axis];
+          });
+          constraints++;
+        });
+      });
+      if (constraints) coefficients[cluster] = coefficients[cluster].map((value, axis) => value - .04 * gradient[axis] / constraints);
+    }
+    return {
+      samples: index + 1,
+      fitSamples,
+      holdoutSamples,
+      trainLoss: totalLossFor(fitIndices, fitSet),
+      validationLoss: totalLossFor(holdoutIndices, holdoutSet),
+      coefficients: coefficients.map((values) => [...values]),
+    };
+  });
+  return { axes, targets, initial, initialPoint, curve, support, channels: 1, fitCount: fitIndices.length, holdoutCount: holdoutIndices.length };
+}
+
+function currentSectionPoint() {
+  return trainingProgress > 0 ? sectionModel.curve[trainingProgress - 1] : sectionModel.initialPoint;
+}
+
+function currentSectionCoefficients(cluster) {
+  return currentSectionPoint().coefficients[cluster];
+}
+
+function sectionLossForCluster(cluster) {
+  const coefficients = currentSectionCoefficients(cluster);
+  const indices = learnedClusters.labels.map((label, index) => label === cluster ? index : -1).filter((index) => index >= 0);
+  return indices.reduce((sum, index) => sum + sectionModel.targets[index].reduce((error, target, axis) => error + (coefficients[axis] - target) ** 2, 0) / sectionModel.axes.length, 0) / Math.max(1, indices.length);
+}
+
 function visibleTrainingStates(limit = trainingProgress) {
   const states = new Map();
   trainedMarking.samples.slice(0, limit).forEach(({ domain, score }) => {
@@ -874,13 +999,18 @@ function visibleTrainingStates(limit = trainingProgress) {
 }
 
 function currentTrainingPoint() {
-  return trainingProgress > 0
+  const overlapPoint = trainingProgress > 0
     ? trainedMarking.curve[Math.min(trainingProgress, trainedMarking.curve.length) - 1]
     : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
+  return { ...overlapPoint, ...currentSectionPoint() };
 }
 
 function seedTrainedMarking() {
-  markingCache = new Map([...trainedMarking.states].map(([key, value]) => [key, { ...value }]));
+  const finalPoint = sectionModel.curve.at(-1);
+  markingCache = new Map(learnedClusters.clusters.map((cluster, index) => [
+    `m_C${index + 1}|R${sectionModel.support.toFixed(1)}a`,
+    { count: cluster.count, min: -finalPoint.validationLoss, max: finalPoint.validationLoss, sum: 0 },
+  ]));
 }
 
 function markingDomainForTarget(target) {
@@ -889,7 +1019,8 @@ function markingDomainForTarget(target) {
   if (!Number.isInteger(referenceIndex) || referenceIndex >= REFERENCE_COUNT) {
     referenceIndex = referenceQIndex.get(qKey(wrappedReferenceQ(target.q || [0, 0, 0])));
   }
-  return trainedMarking.sourceDomains[referenceIndex] || null;
+  const cluster = learnedClusters.labels[referenceIndex];
+  return Number.isInteger(cluster) ? `m_C${cluster + 1}|R${sectionModel.support.toFixed(1)}a` : null;
 }
 
 function continuationPriority(qx, qy, qz) {
@@ -1048,6 +1179,50 @@ function addClusterEnvelope(geometry, position, color, scale = 1) {
   clusterGroup.add(mesh);
 }
 
+function sectionSurfaceGeometry(cluster, level) {
+  const geometry = new THREE.SphereGeometry(1, 10, 7);
+  const position = geometry.attributes.position;
+  const coefficients = currentSectionCoefficients(cluster);
+  const direction = new THREE.Vector3();
+  for (let index = 0; index < position.count; index++) {
+    direction.fromBufferAttribute(position, index).normalize();
+    const deformation = coefficients.reduce((sum, coefficient, axis) =>
+      sum + coefficient * Math.max(0, direction.dot(sectionModel.axes[axis])) ** 3, 0);
+    const radius = (level === 0 ? 1.08 : 1.52) * Math.max(.72, 1 + deformation);
+    position.setXYZ(index, direction.x * radius, direction.y * radius, direction.z * radius);
+  }
+  position.needsUpdate = true;
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
+function buildSectionHalos() {
+  const dummy = new THREE.Object3D();
+  learnedClusters.clusters.forEach((_, cluster) => {
+    const centers = referenceAtoms.filter((__, index) => learnedClusters.labels[index] === cluster);
+    const selectedKey = `m_C${cluster + 1}`;
+    const dim = markingSelection && markingSelection !== selectedKey;
+    [0, 1].forEach((level) => {
+      const material = new THREE.MeshBasicMaterial({
+        color: markingColor(selectedKey),
+        wireframe: true,
+        transparent: true,
+        opacity: dim ? .025 : level === 0 ? .18 : .10,
+        depthWrite: false,
+      });
+      const mesh = new THREE.InstancedMesh(sectionSurfaceGeometry(cluster, level), material, centers.length);
+      centers.forEach((atom, index) => {
+        dummy.position.copy(atom.p);
+        dummy.scale.setScalar(markingSelection === selectedKey ? 1.06 : 1);
+        dummy.updateMatrix();
+        mesh.setMatrixAt(index, dummy.matrix);
+      });
+      mesh.instanceMatrix.needsUpdate = true;
+      clusterGroup.add(mesh);
+    });
+  });
+}
+
 function buildClusterOverlay() {
   clearGroup(clusterGroup);
   if (pipelineStage === 1 && learnedClusters) {
@@ -1075,6 +1250,8 @@ function buildClusterOverlay() {
           : new THREE.SphereGeometry(1.25, 8, 5);
       addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
     });
+  } else if (pipelineStage === 3 && sectionModel) {
+    buildSectionHalos();
   }
 }
 
@@ -1124,6 +1301,7 @@ function enterPipelineStage(index, options = {}) {
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
   referenceQIndex = new Map(referenceAtoms.map((atom, atomIndex) => [qKey(atom.q), atomIndex]));
   trainedMarking = learnOverlapMarking(referenceAtoms);
+  sectionModel = learnSectionModel(referenceAtoms);
   if (pipelineStage !== 3) trainingProgress = REFERENCE_COUNT;
   if (pipelineStage >= 3 && policySelect.value === "marked") seedTrainedMarking();
   extensionTargets = makeExtensionTargets();
@@ -1166,9 +1344,6 @@ function updateStageNarrative() {
   const material = currentMaterial();
   const clusterCount = learnedClusters?.clusters.length || material.clusters;
   const trainingPoint = trainedMarking ? currentTrainingPoint() : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
-  const trainedStates = [...(pipelineStage === 3 ? visibleTrainingStates().values() : trainedMarking?.states.values() || [])];
-  const trainedMinimum = trainedStates.length ? Math.min(...trainedStates.map((state) => state.min)) : 0;
-  const trainedMaximum = trainedStates.length ? Math.max(...trainedStates.map((state) => state.max)) : 0;
   const narratives = [
     {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
@@ -1189,16 +1364,16 @@ function updateStageNarrative() {
       values: [`${clusterCount} medoids`, "measured shells", `${learnedClusters?.clusters.reduce((sum, cluster) => sum + cluster.coordination, 0) || 0} neighbor ports`, "finite radius"],
     },
     {
-      eyebrow: "training · observed cluster overlaps", title: "Learn finite GCTS markings from the known region", phase: `${trainingPoint.discovered} states`,
-      caption: `${trainingPoint.samples}/${REFERENCE_COUNT} atom-centered samples processed · ${trainingPoint.overlaps.toLocaleString()} overlap observations · ${trainingPoint.reusable} states repeated enough to reuse.`, badge: "train",
-      decision: "Overlap marking trained", copy: "The learner records which cluster types meet inside each bounded shell, aggregates repeated contexts, and calibrates a finite score interval before reconstruction begins.",
-      values: ["shell intersection", `${trainingPoint.discovered} bounded signatures`, trainedStates.length ? `[${trainedMinimum.toFixed(2)}, ${trainedMaximum.toFixed(2)}]` : "waiting", `${trainingPoint.samples} known centers`],
+      eyebrow: "training · local sections on cluster neighborhoods", title: "Learn a bounded GCTS section for each cluster type", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
+      caption: `${trainingPoint.samples}/${REFERENCE_COUNT} centers processed · ${trainingPoint.overlaps.toLocaleString()} support overlaps · held-out mismatch ${trainingPoint.validationLoss.toFixed(3)}.`, badge: "train",
+      decision: "Section-valued marking training", copy: "Each cluster begins with a random scalar field on a finite neighborhood. Agreement on shared support supplies the gluing loss; local geometry anchors the field away from a meaningless constant solution.",
+      values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.channels} scalar channel`],
     },
     {
       eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: `0 / ${REPRESENTED_TARGET.toLocaleString()}`,
       caption: "The search recovers 216 observed sites, then samples a visible frontier while its learned hierarchy represents growth toward one million atoms.", badge: "search",
       decision: "Ready for one continuous search", copy: "Local compatibility leads; a soft stochastic angular balance prevents persistent directional starvation without overriding forced moves.",
-      values: ["near-best attachment", "finite marking", "soft balance", "not started"],
+      values: ["near-best attachment", "section overlap", "soft balance", "not started"],
     },
   ];
   const item = narratives[pipelineStage];
@@ -1227,7 +1402,7 @@ function cacheDecision(state, energy) {
   const reusable = policySelect.value !== "direct" && mark && mark.count >= 2;
   if (reusable) {
     grammarDecisions++;
-    return { resolver: policySelect.value === "marked" ? "finite marking" : "colored action", interval: [mark.min - .08, mark.max + .08], reuse: true };
+    return { resolver: policySelect.value === "marked" ? "section overlap" : "colored action", interval: [mark.min - .08, mark.max + .08], reuse: true };
   }
   oracleCalls += Math.max(1, atoms.length);
   mark ||= { count: 0, min: Infinity, max: -Infinity, sum: 0 };
@@ -1331,7 +1506,7 @@ function performExtensionEvent() {
 function advanceMarkingTraining(batchSize = 12) {
   trainingProgress = Math.min(REFERENCE_COUNT, trainingProgress + batchSize);
   eventIndex = trainingProgress;
-  if (markingSelection && !visibleTrainingStates().has(markingSelection)) markingSelection = null;
+  buildClusterOverlay();
   rebuildWorld();
   updateUI();
 }
@@ -1382,14 +1557,11 @@ function rebuildWorld() {
       addInstances(atoms.filter((atom, index) => learnedClusters.labels[index] === cluster), clusterMaterials[cluster], (atom) => elementScale(atom.species));
     });
   } else if (pipelineStage === 3 && trainedMarking) {
-    const visibleDomains = [...new Set(trainedMarking.sourceDomains.slice(0, trainingProgress))];
-    visibleDomains.forEach((domain) => {
-      const source = atoms.filter((_, index) => index < trainingProgress && trainedMarking.sourceDomains[index] === domain);
-      const dim = markingSelection && markingSelection !== domain;
-      addInstances(source, getMarkingMaterial(domain, dim), (atom) => elementScale(atom.species) * (dim ? .78 : 1.05));
-    });
-    currentMaterial().elements.forEach((symbol) => {
-      addInstances(atoms.filter((atom, index) => index >= trainingProgress && atom.species === symbol), getElementMaterial(symbol, true), (atom) => elementScale(atom.species) * .72);
+    learnedClusters.clusters.forEach((_, cluster) => {
+      const key = `m_C${cluster + 1}`;
+      const selectedOut = markingSelection && markingSelection !== key;
+      addInstances(atoms.filter((__, index) => index < trainingProgress && learnedClusters.labels[index] === cluster), getMarkingMaterial(key, selectedOut), (atom) => elementScale(atom.species) * (selectedOut ? .76 : 1.05));
+      addInstances(atoms.filter((__, index) => index >= trainingProgress && learnedClusters.labels[index] === cluster), getMarkingMaterial(key, true), (atom) => elementScale(atom.species) * .7);
     });
   } else {
     currentMaterial().elements.forEach((symbol) => {
@@ -1474,10 +1646,10 @@ function updateDecision(event) {
   decisionBadge.textContent = reuse ? "reused" : event.accepted ? "accepted" : "rejected";
   decisionTitle.textContent = `${event.state.action} ${event.accepted ? "survives" : "fails"}`;
   decisionCopy.textContent = reuse
-    ? "A previously calibrated finite state resolves this placement without another exact local evaluation."
+    ? "The transformed local sections agree on their shared support, so the learned marking resolves this placement without another exact local evaluation."
     : event.resolver === "speculative branch"
       ? "The placement is provisionally attached to the search stack while its exposed interfaces are checked."
-      : "The local oracle evaluates the proposed placement and records its result under the finite geometric state.";
+      : "The local oracle evaluates the proposed placement and records its result under the bounded geometric section.";
   actionValue.textContent = event.state.action;
   domainValue.textContent = event.state.domain;
   energyValue.textContent = event.interval ? `[${event.interval[0].toFixed(2)}, ${event.interval[1].toFixed(2)}]` : "geometric prune";
@@ -1505,25 +1677,22 @@ function updateUI() {
     reuseLabel.textContent = "DOMAIN"; reuseMetric.textContent = "1.38a"; reuseDelta.textContent = "first-shell encoding radius";
   } else if (pipelineStage === 3) {
     const point = currentTrainingPoint();
-    const visibleStates = visibleTrainingStates();
-    const ambiguous = [...visibleStates.values()].filter((state) => state.count < 2 || state.max - state.min > .12).length;
-    stageEyebrow.textContent = "training · observed cluster overlaps";
-    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Train finite GCTS markings sample by sample" : "GCTS marking training complete";
-    decisionTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Training overlap markings" : "Overlap marking trained";
+    stageEyebrow.textContent = "training · local sections on cluster neighborhoods";
+    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Random halos converge into compatible local sections" : "Section-valued GCTS marking trained";
+    decisionTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Fitting section overlap consistency" : "Local sections ready to glue";
     decisionCopy.textContent = trainingProgress < REFERENCE_COUNT
-      ? "Each new atom-centered sample contributes its bounded cluster-neighborhood signature and every shell overlap now visible within the processed region."
-      : "Repeated bounded contexts have been aggregated and their observed score intervals are ready for reuse by search.";
-    phaseReadout.textContent = `${point.discovered} states`;
-    captionAction.textContent = `${point.samples}/${REFERENCE_COUNT} atom-centered samples processed · ${point.overlaps.toLocaleString()} overlap observations · ${point.reusable} reusable states.`;
-    atomLabel.textContent = "SAMPLES"; atomMetric.textContent = `${point.samples}/${REFERENCE_COUNT}`; atomDelta.textContent = "bounded atom-centered domains";
-    frontierLabel.textContent = "OVERLAPS"; frontierMetric.textContent = point.overlaps.toLocaleString(); frontierDelta.textContent = "observed shell intersections";
-    oracleLabel.textContent = "DISCOVERED STATES"; oracleMetric.textContent = String(point.discovered); oracleDelta.textContent = `${point.reusable} repeated at least twice`;
-    reuseLabel.textContent = "AMBIGUOUS"; reuseMetric.textContent = String(ambiguous); reuseDelta.textContent = "singleton or wide-interval states";
-    actionValue.textContent = "shell intersection";
-    domainValue.textContent = `${point.discovered} bounded signatures`;
-    const ranges = [...visibleStates.values()];
-    energyValue.textContent = ranges.length ? `[${Math.min(...ranges.map((state) => state.min)).toFixed(2)}, ${Math.max(...ranges.map((state) => state.max)).toFixed(2)}]` : "waiting";
-    resolverValue.textContent = `${point.samples} known centers`;
+      ? "Each sample updates the scalar section attached to its cluster type. Nested level surfaces show the current field; overlapping copies are trained to agree, with a geometric anchor preventing constant collapse."
+      : "The learned scalar fields now travel with their cluster types. Search can reject a placement when transformed sections disagree on their shared support.";
+    phaseReadout.textContent = `loss ${point.validationLoss.toFixed(3)}`;
+    captionAction.textContent = `${point.samples}/${REFERENCE_COUNT} centers · ${point.overlaps.toLocaleString()} support overlaps · fit ${point.trainLoss.toFixed(3)} · holdout ${point.validationLoss.toFixed(3)}.`;
+    atomLabel.textContent = "SECTION SAMPLES"; atomMetric.textContent = `${point.samples}/${REFERENCE_COUNT}`; atomDelta.textContent = `${point.fitSamples} fit · ${point.holdoutSamples} held out`;
+    frontierLabel.textContent = "SUPPORT OVERLAPS"; frontierMetric.textContent = point.overlaps.toLocaleString(); frontierDelta.textContent = "section agreement constraints";
+    oracleLabel.textContent = "FIT MISMATCH"; oracleMetric.textContent = point.trainLoss.toFixed(3); oracleDelta.textContent = "overlap + non-collapse anchor";
+    reuseLabel.textContent = "HOLDOUT MISMATCH"; reuseMetric.textContent = point.validationLoss.toFixed(3); reuseDelta.textContent = "unseen local sections";
+    actionValue.textContent = "fit m_C(x)";
+    domainValue.textContent = `ball R=${sectionModel.support.toFixed(1)}a`;
+    energyValue.textContent = point.validationLoss.toFixed(4);
+    resolverValue.textContent = `${sectionModel.channels} scalar channel`;
   } else {
     const reconstructing = replayIndex < REFERENCE_COUNT;
     const represented = representedAtomCount();
@@ -1552,19 +1721,17 @@ function updateUI() {
 
 function renderLegend() {
   speciesLegend.replaceChildren();
-  if (pipelineStage === 3 && trainedMarking) {
-    legendHeading.textContent = "Visible marking states";
-    [...visibleTrainingStates()].sort((a, b) => b[1].count - a[1].count).slice(0, 8).forEach(([domain, state]) => {
+  if (pipelineStage === 3 && sectionModel) {
+    legendHeading.textContent = "Local marking sections";
+    learnedClusters.clusters.forEach((cluster, index) => {
+      const key = `m_C${index + 1}`;
       const row = document.createElement("span");
       const swatch = document.createElement("i");
       swatch.className = "cluster-swatch";
-      swatch.style.setProperty("--swatch", `#${markingColor(domain).getHexString()}`);
-      row.append(swatch, document.createTextNode(`${domain} · ×${state.count}`));
+      swatch.style.setProperty("--swatch", `#${markingColor(key).getHexString()}`);
+      row.append(swatch, document.createTextNode(`${key}(x) · C${index + 1} · ${cluster.count} copies`));
       speciesLegend.appendChild(row);
     });
-    if (!speciesLegend.children.length) {
-      const row = document.createElement("span"); row.textContent = "Press Play or Step to train"; speciesLegend.appendChild(row);
-    }
   } else if (pipelineStage === 1 && learnedClusters) {
     legendHeading.textContent = "Learned environments";
     learnedClusters.clusters.forEach((cluster, index) => {
@@ -1632,12 +1799,13 @@ function renderStack() {
 
 function selectMarkingDomain(domain) {
   markingSelection = markingSelection === domain ? null : domain;
+  buildClusterOverlay();
   rebuildWorld();
   updateUI();
 }
 
 function renderMarkings() {
-  markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "overlap symbols" : pipelineStage === 3 ? "trained GCTS markings" : "active finite states";
+  markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "overlap symbols" : pipelineStage === 3 ? "local section bundle" : "active section marking";
   markingTable.replaceChildren();
   if (pipelineStage === 0) {
     markCount.textContent = "not learned";
@@ -1649,15 +1817,18 @@ function renderMarkings() {
     `×${cluster.count}`,
   ]);
   const cache = policySelect.value === "marked" ? markingCache : actionCache;
-  const trainedEntries = [...visibleTrainingStates()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
+  const sectionEntries = learnedClusters.clusters.map((cluster, index) => {
+    const count = learnedClusters.labels.slice(0, trainingProgress).filter((label) => label === index).length;
+    return [`m_C${index + 1}`, `loss ${sectionLossForCluster(index).toFixed(3)}`, `${count}/${cluster.count}`];
+  });
   const activeEntries = [...cache.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
-  const entries = pipelineStage < 3 ? learned : pipelineStage === 3 ? trainedEntries : activeEntries;
-  markCount.textContent = pipelineStage < 3 ? `${learned.length} learned` : pipelineStage === 3 ? `${visibleTrainingStates().size} / ${trainedMarking.states.size}` : `${cache.size} active`;
+  const entries = pipelineStage < 3 ? learned : pipelineStage === 3 ? sectionEntries : activeEntries;
+  markCount.textContent = pipelineStage < 3 ? `${learned.length} learned` : pipelineStage === 3 ? `${sectionEntries.length} sections · rank ${sectionModel.channels}` : `${cache.size} active`;
   if (!entries.length) {
     const p = document.createElement("p");
     p.textContent = pipelineStage === 3 && trainingProgress === 0
       ? "Press Play or Step to process atom-centered training samples."
-      : policySelect.value === "marked" ? "No reusable bounded state was learned." : "This policy does not preload GCTS markings.";
+      : policySelect.value === "marked" ? "No reusable local section was learned." : "This policy does not preload GCTS markings.";
     markingTable.appendChild(p); return;
   }
   entries.forEach(([key, interval, count]) => {
@@ -1665,7 +1836,7 @@ function renderMarkings() {
     if (pipelineStage === 3) {
       row.tabIndex = 0;
       row.setAttribute("role", "button");
-      row.setAttribute("aria-label", `${key}; highlight all observed occurrences`);
+      row.setAttribute("aria-label", `${key}; isolate its equipotential halos`);
       row.setAttribute("aria-pressed", markingSelection === key ? "true" : "false");
       row.style.borderLeftColor = `#${markingColor(key).getHexString()}`;
       row.addEventListener("click", () => selectMarkingDomain(key));
