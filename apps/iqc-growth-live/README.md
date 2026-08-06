@@ -54,6 +54,15 @@ before search. When the finite-marking policy is selected, this trained table is
 copied into the search cache before reconstruction; the exact-oracle and
 colored-action ablations do not receive it.
 
+Training is revealed sample by sample rather than appearing as an instantaneous
+final table. Its live curve tracks processed atom-centered domains, cumulative
+overlap observations, distinct states, and the subset seen at least twice and
+therefore eligible for reuse. A companion frequency atlas shows the most common
+states. In the 3D scene, processed centers are colored by bounded marking state
+while unseen centers remain dim; clicking a marking-table row highlights every
+current occurrence of that state. This makes sample scarcity, state explosion,
+and insufficient marking domains visible before search begins.
+
 Continuation does not target a cube or impose a hard spherical boundary. It
 samples among locally near-best cluster attachments on the exposed frontier.
 A soft penalty for overrepresented angular sectors, plus stochastic tie
