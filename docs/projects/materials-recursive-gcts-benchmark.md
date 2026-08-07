@@ -601,13 +601,52 @@ accepted fundamental-cluster placements, or 1,560 decorated atom instances,
 instead of ten separate cluster decisions.  This is the first measured
 supercluster action in the suite.
 
-The negative result remains important.  The unmarked training precision is
-7/12, while the spatially held-out precision is only 3/18, despite a small
-0.121-angstrom mean error for accepted held-out centres.  Accordingly the
-benchmark reports `cluster hierarchy detected; held-out growth not yet
-reliable`.  We have unlocked discovery of clusters-of-clusters and their
-finite boundary sections; we have **not** yet learned a sufficiently selective
-marking to claim autonomous quasicrystal continuation.  The next gate is to
-learn that section from center-graph coronae or inferred internal-space
-coordinates and beat the unmarked 3/18 held-out result without consulting the
-target region.
+The unmarked proposal by itself is intentionally weak: its spatially held-out
+precision is only 3/18.  A bounded GCTS section now describes the measured
+7.8-angstrom atomic decoration around a `(parent centre, source centre)` pair.
+It uses intrinsic radial bands and projections onto the pair axis, so a rigid
+rotation and translation leave it unchanged.  A radial/axial histogram and an
+independent set of even angular moments each choose their three-neighbour
+threshold using training leave-one-out predictions only.  Requiring both
+sections to accept gives 3/3 on the original small held-out split.  Pair
+distance alone gives only 3/8; one histogram section gives 3/5.  Removing the
+Sc/Zn colors does not change this split, so this gain is properly attributed to
+the bounded geometric marking rather than chemistry.
+
+`scripts/materials_gcts_multi_origin_marking_benchmark.py` is the stronger
+replication.  It freezes the learned scale and classifier settings, excludes
+the inflation origin's trivial fixed point, trains on 83 complete parent
+centres, and holds out 90 different parent centres.  The split is a 16-angstrom
+spatial checkerboard of parent coordinates and never reads a target label.
+There are 2,261 training candidates and 2,441 held-out candidates.  Only 218
+held-out proposals are real continuations, so accepting everything has 8.93%
+precision and creates 2,223 false search branches.
+
+The histogram section reaches 66.50% precision and 62.84% recall; the angular-
+moment section reaches 68.75% precision and 35.32% recall.  Their conservative
+conjunction accepts 88 placements, 74 of which are correct: 84.09% precision
+and 33.94% recall.  False branches fall to 14, a 158.8-fold reduction.  Those
+correct actions represent 11,544 decorated atom instances across 31 held-out
+parent centres.  This establishes a causal role for GCTS marking: the
+inflation rule proposes geometry, while the bounded section makes the ensuing
+tree search far narrower.
+
+This still does **not** justify unrestricted experimental growth.  Recall is
+deliberately low, the finite model cannot certify iterations outside its
+boundary, and 14 false branches still require overlap checks or backtracking.
+The next gate is multi-step continuation on an ideal model-set oracle followed
+by the same frozen marking on a second experimental reconstruction.
+
+## Current crystal/quasicrystal scaling gates
+
+| system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
+| --- | ---: | --- | ---: | ---: | --- |
+| NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |
+| ideal icosahedral model set | 507 atoms | 14 -> 49 -> 270 | about 4.2x/action | action 6: 2,791,097 | two explicit inflations plus independent 6D acceptance test |
+| Fibonacci-product quasicrystal | 729 atoms | 4 -> 17 -> 81 | about 4.2x/action | action 5: 1,061,208 | recovered substitution grammar |
+| experimental Sc-Zn IQC | 37,531 sites / 173 centres | 13 -> 38 -> 98 | learned phi proposal | not claimed | 84.09% precision on 90 unseen parent centres |
+| amorphous control | 507 atoms | none beyond local | none | rejected | no deterministic macro rule |
+
+The first three rows set the exponential-style action benchmark.  The
+experimental row must match their multi-step certificate before its learned
+phi action is allowed to project a million-site count.

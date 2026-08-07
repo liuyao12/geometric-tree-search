@@ -77,6 +77,40 @@ class CenterHierarchyLevel:
 
 
 @dataclass(frozen=True)
+class AtomicSectionMarkingFit:
+    descriptor_dimensions: int
+    training_samples: int
+    heldout_samples: int
+    neighbors: int
+    threshold: float
+    training_loo_balanced_accuracy: float
+    unmarked_heldout_matches: int
+    unmarked_heldout_candidates: int
+    marked_heldout_matches: int
+    marked_heldout_candidates: int
+    marked_heldout_precision: float
+    marked_heldout_recall: float
+
+
+@dataclass(frozen=True)
+class ConjunctiveSectionMarkingFit:
+    descriptor_dimensions: int
+    training_samples: int
+    heldout_samples: int
+    histogram_neighbors: int
+    histogram_threshold: float
+    moment_neighbors: int
+    moment_threshold: float
+    training_loo_balanced_accuracy: float
+    unmarked_heldout_matches: int
+    unmarked_heldout_candidates: int
+    marked_heldout_matches: int
+    marked_heldout_candidates: int
+    marked_heldout_precision: float
+    marked_heldout_recall: float
+
+
+@dataclass(frozen=True)
 class ExperimentalScZnBenchmark:
     source_url: str
     source_doi: str
@@ -97,6 +131,19 @@ class ExperimentalScZnBenchmark:
     training_inflation_precision: float
     heldout_inflation_precision: float
     heldout_inflation_mean_error_angstrom: float
+    marked_heldout_inflation_precision: float
+    marked_heldout_inflation_recall: float
+    marking_precision_gain: float
+    single_section_heldout_precision: float
+    pair_only_heldout_precision: float
+    geometry_only_heldout_precision: float
+    chemistry_precision_gain: float
+    marking_descriptor_dimensions: int
+    marking_training_samples: int
+    marking_heldout_samples: int
+    marking_training_loo_balanced_accuracy: float
+    marked_heldout_candidates: int
+    marking_rotation_invariant: bool
     flat_cluster_actions: int
     hierarchical_actions: int
     represented_atom_instances: int
@@ -337,6 +384,301 @@ def _nearest(point: Point, centers: Sequence[Point], grid, tolerance: float):
     return best
 
 
+def _spatial_index(points: Sequence[Point], cell: float):
+    grid: Dict[Tuple[int, int, int], List[int]] = defaultdict(list)
+    for index, point in enumerate(points):
+        grid[tuple(math.floor(value / cell) for value in point)].append(index)
+    return grid
+
+
+def _candidate_rows(centers: Sequence[Point], inflation: InflationFit,
+                    tolerance: float = .45):
+    grid = _spatial_index(centers, tolerance)
+    lower = tuple(min(point[axis] for point in centers) + 1.0
+                  for axis in range(3))
+    upper = tuple(max(point[axis] for point in centers) - 1.0
+                  for axis in range(3))
+    rows = []
+    for index, point in enumerate(centers):
+        if _distance(point, inflation.origin) <= 1e-9:
+            # An inflation fixes its origin.  That tautological correspondence
+            # is neither a growth placement nor a meaningful pair marking.
+            continue
+        target = tuple(inflation.origin[axis] + inflation.scale *
+                       (point[axis] - inflation.origin[axis])
+                       for axis in range(3))
+        if not all(lower[axis] <= target[axis] <= upper[axis]
+                   for axis in range(3)):
+            continue
+        split = sum(math.floor(value / 8.0) for value in point) & 1
+        error = _nearest(target, centers, grid, tolerance)
+        rows.append((index, split, int(error <= tolerance), error))
+    return rows
+
+
+def _atomic_section_descriptors(
+        sites: Sequence[AtomicSite], centers: Sequence[Point], origin: Point,
+        candidate_indices: Sequence[int], radius: float = 7.8,
+        chemical: bool = True) -> Dict[int, Tuple[float, ...]]:
+    """Bounded rotation-invariant sections around a proposed parent action.
+
+    The pair axis from the inflation origin to the source cluster is intrinsic.
+    Counts use three radial bands and four axial-cosine bands.  Consequently a
+    rigid rotation of the complete point cloud leaves the descriptor unchanged.
+    """
+    points = [site.position for site in sites]
+    grid = _spatial_index(points, radius)
+    elements = sorted({element for site in sites for element in site.species})
+    colors: Tuple[object, ...] = tuple(elements) if chemical else (None,)
+    radial_bands = ((0.0, 3.5), (3.5, 5.5), (5.5, radius))
+    descriptors = {}
+    for candidate in candidate_indices:
+        center = centers[candidate]
+        axis = tuple(center[coordinate] - origin[coordinate]
+                     for coordinate in range(3))
+        pair_distance = math.sqrt(sum(value * value for value in axis))
+        unit = tuple(value / pair_distance for value in axis)
+        counts = [0] * (len(radial_bands) * len(colors) * 4)
+        key = tuple(math.floor(value / radius) for value in center)
+        neighbors = []
+        for neighbor in _neighbor_cells(key):
+            neighbors.extend(grid.get(neighbor, ()))
+        for site_index in neighbors:
+            site = sites[site_index]
+            vector = tuple(site.position[coordinate] - center[coordinate]
+                           for coordinate in range(3))
+            distance = math.sqrt(sum(value * value for value in vector))
+            if not 0.0 < distance <= radius:
+                continue
+            radial_bin = next((index for index, (low, high)
+                               in enumerate(radial_bands)
+                               if low < distance <= high), None)
+            if radial_bin is None:
+                continue
+            cosine = sum(vector[coordinate] * unit[coordinate]
+                         for coordinate in range(3)) / distance
+            axial_bin = min(3, max(0, int((cosine + 1.0) * 2.0)))
+            for color_index, color in enumerate(colors):
+                if color is None or color in site.species:
+                    offset = ((radial_bin * len(colors) + color_index) * 4 +
+                              axial_bin)
+                    counts[offset] += 1
+        descriptors[candidate] = (pair_distance,) + tuple(counts)
+    return descriptors
+
+
+def _knn_score(training, descriptor, neighbors: int) -> float:
+    dimensions = len(descriptor)
+    means = [sum(row[0][axis] for row in training) / len(training)
+             for axis in range(dimensions)]
+    scales = [max(1e-6, (sum((row[0][axis] - means[axis]) ** 2
+                             for row in training) / len(training)) ** .5)
+              for axis in range(dimensions)]
+    distances = sorted((sum(((known[axis] - descriptor[axis]) /
+                             scales[axis]) ** 2
+                            for axis in range(dimensions)), label)
+                       for known, label in training)
+    selected = distances[:neighbors]
+    weights = [1.0 / (math.sqrt(distance) + 1e-6)
+               for distance, _ in selected]
+    return (sum(weight * label for weight, (_, label)
+                in zip(weights, selected)) / sum(weights))
+
+
+def _select_knn(training):
+    positives = sum(label for _, label in training)
+    negatives = len(training) - positives
+    choices = []
+    for neighbors in (1, 3, 5, 7):
+        if neighbors > len(training) - 1:
+            continue
+        loo = []
+        for omitted, (descriptor, label) in enumerate(training):
+            subset = training[:omitted] + training[omitted + 1:]
+            loo.append((_knn_score(subset, descriptor, neighbors), label))
+        for threshold in (.35, .45, .50, .55, .65, .75, .85):
+            true_positive = sum(score >= threshold and label
+                                for score, label in loo)
+            true_negative = sum(score < threshold and not label
+                                for score, label in loo)
+            balanced = .5 * (true_positive / positives +
+                             true_negative / negatives)
+            predicted = sum(score >= threshold for score, _ in loo)
+            precision = (true_positive / predicted if predicted else 0.0)
+            choices.append((balanced, precision, threshold, -neighbors,
+                            neighbors, tuple(loo)))
+    return max(choices)
+
+
+def _legendre(order: int, value: float) -> float:
+    previous, current = 1.0, value
+    if order == 0:
+        return previous
+    if order == 1:
+        return current
+    for degree in range(2, order + 1):
+        previous, current = current, (
+            ((2 * degree - 1) * value * current -
+             (degree - 1) * previous) / degree)
+    return current
+
+
+def _atomic_moment_descriptors(
+        sites: Sequence[AtomicSite], centers: Sequence[Point], origin: Point,
+        candidate_indices: Sequence[int], radius: float = 7.8,
+        chemical: bool = False) -> Dict[int, Tuple[float, ...]]:
+    """A second finite section using continuous even angular moments."""
+    points = [site.position for site in sites]
+    grid = _spatial_index(points, radius)
+    elements = sorted({element for site in sites for element in site.species})
+    colors: Tuple[object, ...] = tuple(elements) if chemical else (None,)
+    radial_bands = ((0.0, 3.5), (3.5, 5.5), (5.5, radius))
+    orders = (2, 4, 6, 8)
+    descriptors = {}
+    for candidate in candidate_indices:
+        center = centers[candidate]
+        axis = tuple(center[coordinate] - origin[coordinate]
+                     for coordinate in range(3))
+        pair_distance = math.sqrt(sum(value * value for value in axis))
+        unit = tuple(value / pair_distance for value in axis)
+        key = tuple(math.floor(value / radius) for value in center)
+        neighbors = []
+        for neighbor in _neighbor_cells(key):
+            neighbors.extend(grid.get(neighbor, ()))
+        features: List[float] = [pair_distance]
+        for low, high in radial_bands:
+            for color in colors:
+                cosines = []
+                for site_index in neighbors:
+                    site = sites[site_index]
+                    if color is not None and color not in site.species:
+                        continue
+                    vector = tuple(site.position[coordinate] - center[coordinate]
+                                   for coordinate in range(3))
+                    distance = math.sqrt(sum(value * value for value in vector))
+                    if not low < distance <= high:
+                        continue
+                    cosines.append(sum(vector[coordinate] * unit[coordinate]
+                                       for coordinate in range(3)) / distance)
+                features.append(float(len(cosines)))
+                features.extend(sum(_legendre(order, cosine)
+                                    for cosine in cosines)
+                                for order in orders)
+        descriptors[candidate] = tuple(features)
+    return descriptors
+
+
+def fit_atomic_section_marking(
+        sites: Sequence[AtomicSite], centers: Sequence[Point],
+        inflation: InflationFit, chemical: bool = True,
+        include_section: bool = True
+        ) -> AtomicSectionMarkingFit:
+    """Fit the GCTS acceptance section on split 0 and audit split 1 once."""
+    rows = _candidate_rows(centers, inflation)
+    candidate_indices = [row[0] for row in rows]
+    if include_section:
+        descriptors = _atomic_section_descriptors(
+            sites, centers, inflation.origin, candidate_indices,
+            chemical=chemical)
+    else:
+        descriptors = {
+            index: (_distance(centers[index], inflation.origin),)
+            for index in candidate_indices}
+    training = [(descriptors[index], label)
+                for index, split, label, _ in rows if split == 0]
+    heldout = [(descriptors[index], label)
+               for index, split, label, _ in rows if split == 1]
+    balanced, _, threshold, _, neighbors, _ = _select_knn(training)
+    heldout_scores = [(_knn_score(training, descriptor, neighbors), label)
+                      for descriptor, label in heldout]
+    marked_candidates = sum(score >= threshold
+                            for score, _ in heldout_scores)
+    marked_matches = sum(score >= threshold and label
+                         for score, label in heldout_scores)
+    heldout_positives = sum(label for _, label in heldout)
+    precision = marked_matches / marked_candidates if marked_candidates else 0.0
+    recall = marked_matches / heldout_positives if heldout_positives else 0.0
+    return AtomicSectionMarkingFit(
+        len(training[0][0]), len(training), len(heldout), neighbors, threshold,
+        balanced, heldout_positives, len(heldout), marked_matches,
+        marked_candidates, precision, recall)
+
+
+def fit_conjunctive_section_marking(
+        sites: Sequence[AtomicSite], centers: Sequence[Point],
+        inflation: InflationFit) -> ConjunctiveSectionMarkingFit:
+    """Require agreement of two independently cross-validated GCTS sections."""
+    rows = _candidate_rows(centers, inflation)
+    indices = [row[0] for row in rows]
+    histogram = _atomic_section_descriptors(
+        sites, centers, inflation.origin, indices, chemical=False)
+    moments = _atomic_moment_descriptors(
+        sites, centers, inflation.origin, indices, chemical=False)
+    histogram_training = [(histogram[index], label)
+                          for index, split, label, _ in rows if split == 0]
+    moment_training = [(moments[index], label)
+                       for index, split, label, _ in rows if split == 0]
+    h_balanced, _, h_threshold, _, h_neighbors, h_loo = _select_knn(
+        histogram_training)
+    m_balanced, _, m_threshold, _, m_neighbors, m_loo = _select_knn(
+        moment_training)
+    labels = [label for _, label in histogram_training]
+    conjunction = [h_score >= h_threshold and m_score >= m_threshold
+                   for (h_score, _), (m_score, _) in zip(h_loo, m_loo)]
+    positives = sum(labels)
+    negatives = len(labels) - positives
+    true_positive = sum(prediction and label
+                        for prediction, label in zip(conjunction, labels))
+    true_negative = sum(not prediction and not label
+                        for prediction, label in zip(conjunction, labels))
+    balanced = .5 * (true_positive / positives + true_negative / negatives)
+
+    heldout = [(index, label) for index, split, label, _ in rows if split == 1]
+    predictions = []
+    for index, label in heldout:
+        h_score = _knn_score(histogram_training, histogram[index], h_neighbors)
+        m_score = _knn_score(moment_training, moments[index], m_neighbors)
+        predictions.append((h_score >= h_threshold and
+                            m_score >= m_threshold, label))
+    candidates = sum(prediction for prediction, _ in predictions)
+    matches = sum(prediction and label for prediction, label in predictions)
+    heldout_positives = sum(label for _, label in heldout)
+    return ConjunctiveSectionMarkingFit(
+        len(histogram_training[0][0]) + len(moment_training[0][0]),
+        len(histogram_training), len(heldout), h_neighbors, h_threshold,
+        m_neighbors, m_threshold, balanced, heldout_positives, len(heldout),
+        matches, candidates, matches / candidates if candidates else 0.0,
+        matches / heldout_positives if heldout_positives else 0.0)
+
+
+def _section_rotation_invariant(sites, centers, inflation) -> bool:
+    rows = _candidate_rows(centers, inflation)
+    indices = [row[0] for row in rows]
+    original = _atomic_section_descriptors(
+        sites, centers, inflation.origin, indices)
+    original_moments = _atomic_moment_descriptors(
+        sites, centers, inflation.origin, indices)
+
+    def move(point):
+        # A proper 90-degree rotation followed by a translation.
+        return (-point[1] + 113.0, point[0] - 37.0, point[2] + 19.0)
+
+    moved_sites = [AtomicSite(move(site.position), site.species, site.occupancy)
+                   for site in sites]
+    moved_centers = [move(point) for point in centers]
+    moved = _atomic_section_descriptors(
+        moved_sites, moved_centers, move(inflation.origin), indices)
+    moved_moments = _atomic_moment_descriptors(
+        moved_sites, moved_centers, move(inflation.origin), indices)
+    return all(
+        all(abs(left - right) <= 1e-9
+            for left, right in zip(original[index], moved[index])) and
+        all(abs(left - right) <= 1e-9
+            for left, right in zip(original_moments[index],
+                                    moved_moments[index]))
+        for index in indices)
+
+
 def fit_inflation(centers: Sequence[Point], tolerance: float = .45) -> InflationFit:
     """Fit scale+origin on one deterministic half and report the other half."""
     grid: Dict[Tuple[int, int, int], List[int]] = defaultdict(list)
@@ -354,6 +696,8 @@ def fit_inflation(centers: Sequence[Point], tolerance: float = .45) -> Inflation
         errors: List[float] = []
         for point in centers:
             if membership(point) != split:
+                continue
+            if _distance(point, origin) <= 1e-9:
                 continue
             target = tuple(origin[axis] + scale * (point[axis] - origin[axis])
                            for axis in range(3))
@@ -394,6 +738,14 @@ def evaluate() -> ExperimentalScZnBenchmark:
     links = infer_link_lengths(centers)
     inflation = fit_inflation(centers)
     hierarchy = learn_center_hierarchy(centers, links, inflation.scale)
+    marking = fit_atomic_section_marking(sites, centers, inflation)
+    conjunctive_marking = fit_conjunctive_section_marking(
+        sites, centers, inflation)
+    geometry_marking = fit_atomic_section_marking(
+        sites, centers, inflation, chemical=False)
+    pair_marking = fit_atomic_section_marking(
+        sites, centers, inflation, chemical=False, include_section=False)
+    rotation_invariant = _section_rotation_invariant(sites, centers, inflation)
     atoms_per_cluster = sorted(sum(_distance(cluster.center, site.position) <= 7.8
                                    for site in sites)
                                for cluster in clusters)
@@ -406,8 +758,9 @@ def evaluate() -> ExperimentalScZnBenchmark:
     # decorating those centres separately is the flat cluster baseline.
     flat_actions = inflation.training_matches + inflation.heldout_matches
     hierarchical_actions = 1
-    status = ("held-out recursive cluster marking detected"
-              if held_precision >= .25 else
+    status = ("held-out marking improves inflation; multi-origin replication "
+              "still required"
+              if conjunctive_marking.marked_heldout_precision >= .5 else
               "cluster hierarchy detected; held-out growth not yet reliable")
     return ExperimentalScZnBenchmark(
         SOURCE_URL, SOURCE_DOI, hashlib.sha256(cif).hexdigest(), raw_rows,
@@ -418,7 +771,22 @@ def evaluate() -> ExperimentalScZnBenchmark:
         tuple(level.recurring_cover_fraction for level in hierarchy),
         tuple(level.boundary_marking_confidence for level in hierarchy),
         inflation.scale, abs(inflation.scale - phi), train_precision,
-        held_precision, inflation.heldout_mean_error, flat_actions,
+        held_precision, inflation.heldout_mean_error,
+        conjunctive_marking.marked_heldout_precision,
+        conjunctive_marking.marked_heldout_recall,
+        conjunctive_marking.marked_heldout_precision - held_precision,
+        marking.marked_heldout_precision,
+        pair_marking.marked_heldout_precision,
+        geometry_marking.marked_heldout_precision,
+        marking.marked_heldout_precision -
+        geometry_marking.marked_heldout_precision,
+        conjunctive_marking.descriptor_dimensions,
+        conjunctive_marking.training_samples,
+        conjunctive_marking.heldout_samples,
+        conjunctive_marking.training_loo_balanced_accuracy,
+        conjunctive_marking.marked_heldout_candidates,
+        rotation_invariant,
+        flat_actions,
         hierarchical_actions, flat_actions * median_atoms,
         float(flat_actions), status)
 
