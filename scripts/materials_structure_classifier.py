@@ -163,7 +163,12 @@ def _translation_candidates(
     # prevents a large number of weak long-baseline coincidences from hiding
     # primitive or short supercell translations.
     bins: Dict[Tuple[int, int, int], list[Vector]] = collections.defaultdict(list)
-    maximum_length = 4.25 * scale
+    # Complex intermetallics can have a unit-cell translation many nearest-
+    # neighbor spacings long.  A fixed 4.25a cap hides that recurrence even in
+    # a multi-cell crop.  The finite support supplies the information-theoretic
+    # upper bound; the 12a ceiling prevents arbitrary long-baseline votes from
+    # dominating large disordered clouds.
+    maximum_length = min(0.85 * support_radius, 12.0 * scale)
     quantization = max(tolerance * 1.35, 1e-12)
     for i, left in enumerate(positions):
         for j in range(i + 1, len(positions)):
@@ -464,12 +469,20 @@ def evaluate_structure(
     localized_independent = _independent_translations(localized)
 
     reasons = []
+    finite_two_cell_crystal = (
+        len(independent) == 3 and periodicity >= 0.98 and recurrence >= 0.80)
     if (len(independent) == 3 and periodicity >= 0.72 and
-            closure >= 0.68):
+            (closure >= 0.68 or finite_two_cell_crystal)):
         category = "crystal"
-        confidence = min(0.99, 0.45 + 0.30 * periodicity + 0.24 * closure)
+        effective_closure = 1.0 if finite_two_cell_crystal else closure
+        confidence = min(0.99, 0.45 + 0.30 * periodicity +
+                         0.24 * effective_closure)
         reasons.append("three independent species-preserving translations "
                        "survive boundary-aware matching and composition")
+        if finite_two_cell_crystal and closure < 0.68:
+            reasons.append("the crop contains only two repeated cells, so "
+                           "perfect single-step support substitutes for an "
+                           "unobservable doubled-translation test")
     elif (len(independent) == 3 and closure < 0.68 and
           recurrence >= 0.50 and contrast >= 0.30):
         category = "quasicrystal-candidate"

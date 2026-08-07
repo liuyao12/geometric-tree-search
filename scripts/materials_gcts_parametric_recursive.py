@@ -26,7 +26,8 @@ from typing import Optional, Tuple
 import materials_gcts_transform_dag as dag
 import materials_gcts_blind_continuation as blind
 from materials_gcts_generic import (
-    AtomicConfiguration, benchmark_systems, inverse3, matvec)
+    AtomicConfiguration, benchmark_systems, fractional_to_cartesian,
+    inverse3, matvec)
 from materials_gcts_fibonacci_3d import (
     Substitution, apply_substitution, coordinates_from_gaps, gap_word,
     generate, infer_axes, infer_substitution, make_input, species_at)
@@ -59,6 +60,10 @@ class ParametricRecursiveRule:
     input_side: Optional[int] = None
     substitution_decoration: Tuple[Tuple[str, str, str, str], ...] = ()
     substitution_gap_lengths: Optional[Tuple[float, float]] = None
+    translation_motif: Tuple[Tuple[str, float, float, float], ...] = ()
+    translation_index_minimum: Optional[Tuple[int, int, int]] = None
+    translation_index_maximum: Optional[Tuple[int, int, int]] = None
+    translation_occupied_cells: Tuple[Tuple[int, int, int], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -316,10 +321,164 @@ def _independent_translation_basis(structure):
     return None
 
 
+def _learn_translation_motif(
+    configuration: AtomicConfiguration,
+    basis: Tuple[Tuple[float, float, float], ...],
+):
+    inverse = inverse3(basis)  # type: ignore[arg-type]
+    grouped = {}
+    all_indices = []
+    tolerance = 0.01
+    for point, chemical in zip(configuration.positions,
+                               configuration.species):
+        coordinate = matvec(inverse, point)
+        cell_index = []
+        residue = []
+        for value in coordinate:
+            nearest = round(value)
+            if abs(value - nearest) <= tolerance:
+                cell_index.append(nearest)
+                residue.append(0.0)
+            else:
+                integer = math.floor(value)
+                cell_index.append(integer)
+                residue.append(value - integer)
+        index_tuple = tuple(cell_index)
+        all_indices.append(index_tuple)
+        key = (chemical,) + tuple(round(value / tolerance)
+                                  for value in residue)
+        entry = grouped.setdefault(key, {"residues": [], "cells": set()})
+        entry["residues"].append(tuple(residue))
+        entry["cells"].add(index_tuple)
+    minimum = tuple(min(index[axis] for index in all_indices)
+                    for axis in range(3))
+    maximum = tuple(max(index[axis] for index in all_indices)
+                    for axis in range(3))
+    cell_count = math.prod(maximum[axis] - minimum[axis] + 1
+                           for axis in range(3))
+    required = max(2, math.ceil(0.5 * cell_count))
+    motif = []
+    for key, entry in grouped.items():
+        if len(entry["cells"]) < required:
+            continue
+        representative = tuple(
+            sum(value[axis] for value in entry["residues"]) /
+            len(entry["residues"]) for axis in range(3))
+        motif.append((key[0],) + representative)
+    if not motif:
+        raise ValueError("no recurring quotient motif survived consensus")
+    return tuple(sorted(motif)), minimum, maximum, tuple(sorted(set(all_indices)))
+
+
+def _best_translation_model(configuration, structure):
+    candidates = [item for item in structure.translations
+                  if item.match_fraction >= 0.72][:12]
+    best = None
+    for first, second, third in itertools.combinations(candidates, 3):
+        basis = (first.vector, second.vector, third.vector)
+        determinant = abs(sum(
+            basis[0][axis] * (
+                basis[1][(axis + 1) % 3] * basis[2][(axis + 2) % 3] -
+                basis[1][(axis + 2) % 3] * basis[2][(axis + 1) % 3])
+            for axis in range(3)))
+        lengths = [math.sqrt(sum(value * value for value in vector))
+                   for vector in basis]
+        normalized_volume = determinant / math.prod(lengths)
+        if normalized_volume <= 0.08:
+            continue
+        try:
+            motif, minimum, maximum, occupied = _learn_translation_motif(
+                configuration, basis)
+        except ValueError:
+            continue
+        cell_count = math.prod(maximum[axis] - minimum[axis] + 1
+                               for axis in range(3))
+        predicted = len(motif) * cell_count
+        mismatch = abs(predicted - len(configuration.positions)) / max(
+            1, len(configuration.positions))
+        support_penalty = 0.05 * (1.0 - min(
+            first.match_fraction, second.match_fraction,
+            third.match_fraction))
+        score = (mismatch + support_penalty, mismatch, -determinant)
+        if best is None or score < best[0]:
+            best = (score, basis, motif, minimum, maximum, occupied)
+    if best is None:
+        return None
+    return best[1:]
+
+
 def _apply_translation_quotient(
     configuration: AtomicConfiguration,
     basis: Tuple[Tuple[float, float, float], ...],
+    motif: Tuple[Tuple[str, float, float, float], ...] = (),
+    index_minimum: Optional[Tuple[int, int, int]] = None,
+    index_maximum: Optional[Tuple[int, int, int]] = None,
+    occupied_cells: Tuple[Tuple[int, int, int], ...] = (),
 ) -> AtomicConfiguration:
+    if motif and index_minimum is not None and index_maximum is not None:
+        # Re-measure the current parent from atoms explained by the learned
+        # motif.  Fixed discovery-time bounds would make the rewrite idempotent
+        # after its first application; including unexplained residual atoms
+        # would let a remote defect spuriously enlarge the recursive parent.
+        inverse = inverse3(basis)  # type: ignore[arg-type]
+        motif_by_species = {}
+        for chemical, fx, fy, fz in motif:
+            motif_by_species.setdefault(chemical, []).append((fx, fy, fz))
+        explained_cells = []
+        tolerance = 0.02
+        for point, chemical in zip(configuration.positions,
+                                   configuration.species):
+            if chemical not in motif_by_species:
+                continue
+            coordinate = matvec(inverse, point)
+            cell_index = []
+            residue = []
+            for value in coordinate:
+                nearest = round(value)
+                if abs(value - nearest) <= tolerance:
+                    cell_index.append(nearest)
+                    residue.append(0.0)
+                else:
+                    integer = math.floor(value)
+                    cell_index.append(integer)
+                    residue.append(value - integer)
+            if any(max(abs(residue[axis] - candidate[axis])
+                           for axis in range(3)) <= tolerance
+                   for candidate in motif_by_species[chemical]):
+                explained_cells.append(tuple(cell_index))
+        if explained_cells:
+            index_minimum = tuple(min(cell[axis] for cell in explained_cells)
+                                  for axis in range(3))
+            index_maximum = tuple(max(cell[axis] for cell in explained_cells)
+                                  for axis in range(3))
+        extents = tuple(index_maximum[axis] - index_minimum[axis] + 1
+                        for axis in range(3))
+        atoms = {(blind._site_key(point), chemical): point
+                 for point, chemical in zip(configuration.positions,
+                                            configuration.species)}
+        for image in itertools.product((0, 1), repeat=3):
+            if image == (0, 0, 0):
+                continue
+            offset = tuple(image[axis] * extents[axis] for axis in range(3))
+            cells = occupied_cells or tuple(itertools.product(*(
+                range(index_minimum[axis], index_maximum[axis] + 1)
+                for axis in range(3))))
+            for cell_index in cells:
+                shifted_index = tuple(cell_index[axis] + offset[axis]
+                                      for axis in range(3))
+                for chemical, fx, fy, fz in motif:
+                    fractional = tuple(shifted_index[axis] +
+                                       (fx, fy, fz)[axis]
+                                       for axis in range(3))
+                    point = fractional_to_cartesian(
+                        basis, fractional)  # type: ignore[arg-type]
+                    atoms[(blind._site_key(point), chemical)] = point
+        ordered = sorted(atoms.items())
+        return AtomicConfiguration(
+            configuration.name + "-grown",
+            tuple(point for _, point in ordered),
+            tuple(site[1] for site, _ in ordered), None, False,
+            "One consensus translation-quotient rewrite")
     inverse = inverse3(basis)  # type: ignore[arg-type]
     fractional = tuple(matvec(inverse, point)
                        for point in configuration.positions)
@@ -354,7 +513,10 @@ def apply_rule(
         if rule.translation_basis is None:
             raise ValueError("translation rule is missing its learned basis")
         return _apply_translation_quotient(
-            configuration, rule.translation_basis)  # type: ignore[arg-type]
+            configuration, rule.translation_basis, rule.translation_motif,
+            rule.translation_index_minimum,
+            rule.translation_index_maximum,
+            rule.translation_occupied_cells)  # type: ignore[arg-type]
     if rule.family == "substitution_product":
         if (rule.origin is None or rule.to_canonical is None or
                 rule.canonical_minimum is None or
@@ -440,18 +602,29 @@ def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule
 
     # The finite colored cloud—not the optional cell—must supply three strong,
     # composable translations before selecting a quotient rule.
-    basis = (_independent_translation_basis(structure)
-             if structure.category == "crystal" else None)
-    if (basis is not None and len(recurring_levels) == 3 and
+    translation_model = (_best_translation_model(configuration, structure)
+                         if structure.category == "crystal" else None)
+    if (translation_model is not None and len(recurring_levels) == 3 and
             all(support > 0 for support in supports)):
-        residual = 1.0 - min(structure.translation_periodicity,
-                             structure.translation_closure)
+        (basis, motif, index_minimum, index_maximum,
+         occupied_cells) = translation_model
+        residual = (1.0 - structure.translation_periodicity
+                    if structure.translation_periodicity >= 0.98 else
+                    1.0 - min(structure.translation_periodicity,
+                              structure.translation_closure))
         return ParametricRecursiveRule(
             "translation_quotient", "2x2x2 quotient rewrite",
             "species-preserving translation orbit", 2.0, residual, True,
             "three translations and their doubles match the finite cloud",
             translation_basis=basis, hierarchy_supports=supports,
-            hierarchy_marking_confidence=marking_confidence)
+            hierarchy_marking_confidence=marking_confidence,
+            translation_motif=motif,
+            translation_index_minimum=index_minimum,
+            translation_index_maximum=index_maximum,
+            # The selected model explicitly minimizes motif × box mismatch;
+            # the complete box is therefore the continuation domain.  The
+            # occupied-cell set remains diagnostic for future irregular masks.
+            translation_occupied_cells=())
 
     # Only recurrent nonperiodic evidence is allowed to invoke the more
     # expressive module learner.  This prevents an accidental algebraic fit to

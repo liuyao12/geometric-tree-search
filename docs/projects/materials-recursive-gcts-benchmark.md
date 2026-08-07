@@ -402,3 +402,31 @@ failure mode.  The noise path currently recovers and snaps an underlying ideal
 topology.  It does not extrapolate phonons, thermal displacement correlations,
 defects, stress fields, or time evolution; those require a residual/displacement
 field model layered on top of the recursive structural rule.
+
+## Multi-species crystal and local-defect suite
+
+`scripts/materials_gcts_real_crystal_benchmark.py` applies the same unlabeled,
+cell-free discovery path to six crystallographic prototypes: NiAl B2, Cu3Au
+L1_2, GaAs zinc blende, NaCl rock salt, SrTiO3 perovskite, and the 168-atom
+Cd6Yb 1/1 approximant cell.  The first five inputs contain 128--320 atoms.  The
+Cd6Yb case uses an observed 2x2x2 crop (1,344 atoms), because one isolated unit
+cell contains no repeated translation from which a cell-free learner could
+infer its quotient.  All six learn three translations and a consensus colored
+motif, then produce the exact held-out 2x2x2 continuation: 8x as many atoms,
+with exact position and species sets.
+
+The quotient learner scores candidate translation bases by how completely a
+small colored motif explains the observed finite box.  This matters when the
+input contains a non-repeating residual.  In
+`scripts/materials_gcts_defect_locality_benchmark.py`, a 3x3x3 NaCl crop is
+modified by one vacancy, one Na-to-K substitution, or one Xe interstitial.  A
+single quotient action produces 1,727, 1,728, and 1,729 atoms respectively,
+matching the clean 6x6x6 continuation with exactly the original one-off defect.
+The defect is not multiplied into the seven synthesized blocks.
+
+This is the first operational separation between a learned cluster-of-clusters
+and its residual field: consensus structure receives the recursive rewrite;
+unexplained local state is carried once.  It is still a static ideal-geometry
+test.  The next gate is to learn smooth displacement/strain residuals and to
+test defects near a growth frontier; the current code does not predict defect
+energetics, kinetics, or finite-temperature dynamics.
