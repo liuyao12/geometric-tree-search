@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260806-4">
+  <link rel="stylesheet" href="./style.css?v=20260807-1">
   <script type="importmap">
     {
       "imports": {
@@ -39,8 +39,19 @@
       <aside class="control-panel" aria-label="Simulation controls">
         <section>
           <p class="eyebrow">01 · experiment</p>
+          <div class="database-picker">
+            <div class="database-heading"><strong>Random real material</strong><span>NOMAD · public bulk data</span></div>
+            <div class="element-pair">
+              <label for="firstElementInput"><span>element A</span><input id="firstElementInput" value="Na" maxlength="2" autocomplete="off" spellcheck="false"></label>
+              <b aria-hidden="true">+</b>
+              <label for="secondElementInput"><span>element B</span><input id="secondElementInput" value="Cl" maxlength="2" autocomplete="off" spellcheck="false"></label>
+            </div>
+            <button id="randomMaterialButton" class="database-button" type="button">Find a random binary structure</button>
+            <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly these two elements.</div>
+            <a id="databaseSourceLink" class="source-link" href="https://nomad-lab.eu/" target="_blank" rel="noreferrer">About the NOMAD materials database ↗</a>
+          </div>
           <label class="field" for="scenarioSelect">
-            <span>Starting configuration</span>
+            <span>Or use a built-in control</span>
             <select id="scenarioSelect">
               <option value="competition">NaCl rocksalt crystal</option>
               <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
@@ -49,14 +60,15 @@
               <option value="imported" disabled>Imported structure</option>
             </select>
           </label>
-          <label class="file-field" for="structureFileInput">
-            <input id="structureFileInput" type="file" accept=".cif,.xyz,.extxyz,.vasp,.json,POSCAR,CONTCAR">
-            <span>Import CIF · POSCAR · XYZ · JSON</span>
-          </label>
-          <div id="importStatus" class="import-status" role="status" aria-live="polite">
-            Parsed locally; files are not uploaded. Recommended: 32–1,200 atoms.
-          </div>
-          <button id="loadFixtureButton" class="fixture-link" type="button">Load bundled 64-atom NaCl fixture</button>
+          <details class="local-import">
+            <summary>Advanced · local file or fixture</summary>
+            <label class="file-field" for="structureFileInput">
+              <input id="structureFileInput" type="file" accept=".cif,.xyz,.extxyz,.vasp,.json,POSCAR,CONTCAR">
+              <span>Import CIF · POSCAR · XYZ · JSON</span>
+            </label>
+            <div id="importStatus" class="import-status" aria-live="polite">Parsed locally; files are not uploaded. Recommended: 32–1,200 atoms.</div>
+            <button id="loadFixtureButton" class="fixture-link" type="button">Load bundled 64-atom NaCl fixture</button>
+          </details>
           <label class="field" for="confinementSelect">
             <span>Confinement</span>
             <select id="confinementSelect">
@@ -196,6 +208,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260806-11"></script>
+  <script type="module" src="./app.js?v=20260807-1"></script>
 </body>
 </html>

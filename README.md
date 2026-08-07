@@ -15,8 +15,9 @@ Pages site. The main way to use it is to open the page in a browser:
 
 - [Materials Growth Lab: imported atomic structures and off-lattice growth](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
   A live 3D, multi-species GCTS laboratory for crystalline, quasiperiodic, and
-  amorphous controls. It accepts local CIF, POSCAR/CONTCAR, XYZ/extXYZ, and JSON
-  structures, learns overlapping environments and finite SE(3) attachment
+  amorphous controls. Choose any two elements to sample a random public bulk
+  structure from NOMAD, or use the advanced local CIF/POSCAR/XYZ/JSON import.
+  It learns overlapping environments and finite SE(3) attachment
   rules, trains bounded connection sections, and continues the same explicit
   tree search beyond the observed configuration.
 - [Penrose Model-Set Tiler](./apps/penrose-model-set/)
@@ -92,8 +93,16 @@ http://127.0.0.1:5174/apps/3d-lattice-tiler/
 
 ### Materials structure import
 
-The Materials Growth Lab parses imported structures entirely in the browser;
-files are not uploaded. The import contract preserves atomic species,
+The primary Materials Growth Lab input queries public [NOMAD](https://nomad-lab.eu/)
+bulk entries containing exactly the two requested elements, chooses a random
+matching entry, reads its normalized atomic archive, and expands a small unit
+cell into a roughly 128–512 atom learning supercell. The entry identifier,
+database link, original atom count, replication, symmetry metadata, and query
+population remain visible as provenance. NOMAD public reads require no API key.
+
+Local import remains available under the advanced disclosure and is parsed
+entirely in the browser; files are not uploaded. The import contract preserves
+atomic species,
 Cartesian coordinates in ångströms, three general cell vectors, per-axis
 periodicity, occupancies, provenance, and a supplied CIF space-group label.
 CIF symmetry operations are expanded before validation. Imports are rejected

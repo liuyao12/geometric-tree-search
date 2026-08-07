@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { parseStructureText, validateStructure } from "./structure-io.js";
+import { randomNomadBinary } from "./structure-database.js";
 
 const $ = (id) => document.getElementById(id);
 const viewport = $("viewport");
@@ -8,6 +9,11 @@ const scenarioSelect = $("scenarioSelect");
 const structureFileInput = $("structureFileInput");
 const importStatus = $("importStatus");
 const loadFixtureButton = $("loadFixtureButton");
+const firstElementInput = $("firstElementInput");
+const secondElementInput = $("secondElementInput");
+const randomMaterialButton = $("randomMaterialButton");
+const databaseStatus = $("databaseStatus");
+const databaseSourceLink = $("databaseSourceLink");
 const confinementSelect = $("confinementSelect");
 const policySelect = $("policySelect");
 const pipelineButton = $("pipelineButton");
@@ -253,7 +259,7 @@ async function importStructureFile(file) {
   return activateImportedStructure(parseStructureText(await file.text(), file.name), file.name);
 }
 
-function activateImportedStructure(parsed, filename) {
+function activateImportedStructure(parsed, filename, statusElement = importStatus) {
   const validation = validateStructure(parsed, { maximumAtoms: 1200 });
   if (!validation.valid) throw new Error(validation.errors.join("; "));
   const elements = Object.keys(validation.elementCounts);
@@ -265,7 +271,9 @@ function activateImportedStructure(parsed, filename) {
       spacingA: validation.medianNearestDistance,
       cell: parsed.cell ? `${parsed.format} cell · V=${validation.cellVolume.toFixed(2)} Å³` : `${parsed.format} · non-periodic`,
       order: "unclassified input",
-      symmetry: parsed.metadata?.spaceGroup || "not supplied",
+      symmetry: parsed.metadata?.spaceGroupNumber
+        ? `${parsed.metadata.spaceGroup || "space group"} · #${parsed.metadata.spaceGroupNumber}`
+        : parsed.metadata?.spaceGroup || "not supplied",
       audit: "emergent structure audit",
       note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth.`,
     },
@@ -275,9 +283,9 @@ function activateImportedStructure(parsed, filename) {
   option.disabled = false;
   option.textContent = `Imported · ${importedStructure.material.name}`;
   scenarioSelect.value = "imported";
-  importStatus.className = "import-status valid";
-  importStatus.textContent = importSummary(parsed, validation);
-  importStatus.title = validation.warnings.join("\n");
+  statusElement.className = "import-status valid";
+  statusElement.textContent = importSummary(parsed, validation);
+  statusElement.title = validation.warnings.join("\n");
   orderPrototypeLibrary = null;
   enterPipelineStage(0);
   return importedStructure;
@@ -2269,6 +2277,25 @@ playButton.addEventListener("click", () => {
 stepButton.addEventListener("click", () => { setPlaying(false); performEvent(); });
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
 scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
+randomMaterialButton.addEventListener("click", async () => {
+  randomMaterialButton.disabled = true;
+  databaseStatus.className = "import-status";
+  databaseStatus.textContent = `Searching NOMAD for ${firstElementInput.value.trim()} + ${secondElementInput.value.trim()}…`;
+  try {
+    const { structure, total, selectedOffset } = await randomNomadBinary(firstElementInput.value, secondElementInput.value);
+    const repetitions = structure.metadata.repetitions || [1, 1, 1];
+    const primitiveCount = structure.metadata.primitiveAtomCount || structure.atoms.length;
+    activateImportedStructure(structure, `NOMAD entry ${structure.metadata.entryId}`, databaseStatus);
+    databaseStatus.textContent = `${importSummary(structure, importedStructure.validation)} · ${primitiveCount} atoms expanded ${repetitions.join("×")} · random ${selectedOffset + 1}/${total.toLocaleString()}`;
+    databaseSourceLink.href = structure.metadata.sourceUrl;
+    databaseSourceLink.textContent = `Open NOMAD entry ${structure.metadata.entryId.slice(0, 10)}… ↗`;
+  } catch (error) {
+    databaseStatus.className = "import-status invalid";
+    databaseStatus.textContent = `Database query failed: ${error.message}`;
+  } finally {
+    randomMaterialButton.disabled = false;
+  }
+});
 structureFileInput.addEventListener("change", async () => {
   const [file] = structureFileInput.files;
   if (!file) return;

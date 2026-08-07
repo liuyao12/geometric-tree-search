@@ -33,11 +33,19 @@ The current pipeline is:
 
 ## Current implementation
 
-GitHub Pages serves a browser-only ES module application. Import and learning
-are local and reproducible; there is no server receiving a structure. Supported
-formats are CIF, POSCAR/CONTCAR/VASP, XYZ/extXYZ, and the documented JSON atom
-schema. CIF atom sites are expanded with algebraic crystallographic symmetry
-operations. General triclinic cells and independent periodic axes are retained.
+GitHub Pages serves a browser-only ES module application. Its primary input uses
+NOMAD's public, unauthenticated API: an exact two-element, bulk-only query is
+counted, an entry offset is selected randomly, and the normalized archive is
+converted from SI units to ångströms. Small periodic cells are replicated along
+their currently shortest supercell axis until the learning window contains
+roughly 128–512 atoms. The NOMAD entry ID, source link, query population,
+original atom count, replication, and supplied symmetry metadata are retained.
+
+Advanced local import and learning remain private and reproducible; there is no
+project server receiving a structure. Supported formats are CIF,
+POSCAR/CONTCAR/VASP, XYZ/extXYZ, and the documented JSON atom schema. CIF atom
+sites are expanded with algebraic crystallographic symmetry operations. General
+triclinic cells and independent periodic axes are retained.
 
 The browser rejects invalid coordinates, singular periodic cells, duplicate
 sites closer than 0.1 Å, files over 8 MB, and configurations over 1,200 atoms.
@@ -81,6 +89,10 @@ speedup over molecular dynamics.
 - The current search is a geometric covering model. There is no relaxation or
   energy model after placement, and no uncertainty calibration for extrapolated
   regions.
+- Random selection is currently uniform over the first 10,000 matching public
+  NOMAD entries, not over distinct material IDs. Materials with many uploaded
+  calculations are therefore overrepresented; material-ID aggregation is a
+  required sampling refinement.
 
 ## Production backend boundary
 
