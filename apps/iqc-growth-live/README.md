@@ -1,4 +1,4 @@
-# Materials Growth Lab: hundreds to one million atoms
+# Materials Growth Lab: open-ended explicit growth
 
 A static GitHub Pages visualization of a multi-element, three-dimensional
 materials-GCTS pipeline. It replaces the earlier IQC-only presentation while
@@ -11,9 +11,8 @@ element-labelled atomic positions, then illustrates:
 - observation of how those cluster shells overlap in the known configuration;
 - training of bounded, section-valued GCTS markings on cluster neighborhoods;
 - one continuous search that reconstructs the 216-atom input and naturally
-  continues through its exposed frontier. The browser materializes a bounded
-  2,160-atom sample while the hierarchy counter addresses a 1,048,576-atom
-  target, without copying the starting window as a block.
+  continues through its exposed frontier without copying the starting window
+  as a block.
 
 The five pipeline stages can be selected individually or run continuously.
 The search crosses the 216-atom observation boundary without changing modes or
@@ -108,10 +107,13 @@ for crystals, reciprocal-module and diffraction tests for quasicrystals, and
 structure-factor plus local-motif tests for amorphous systems. Prototype labels
 and space groups are never supplied to the growth search.
 
-The million-atom number is an implicitly represented target, not a claim that
-the browser has evaluated one million force-bearing MD atoms. Establishing MD
-replacement requires held-out million-atom configurations, multiscale ensemble
-statistics, force and relaxation audits, and complete cost accounting.
+Continuation has no preset atom target. Search generates additional frontier
+shells on demand, and every count shown is an atom with an explicit position in
+the scene. The Play control starts a restartable one- or two-minute burst and
+then pauses automatically; a sustained low-frame-rate guard can pause earlier
+to protect browser responsiveness. Establishing MD replacement still requires
+held-out large configurations, multiscale ensemble statistics, force and
+relaxation audits, and complete cost accounting.
 
 The current browser learner is intentionally the smallest visual proof of the
 construction: a rank-one scalar section with six directional basis functions.

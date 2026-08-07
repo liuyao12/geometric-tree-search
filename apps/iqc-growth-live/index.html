@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071112">
-  <meta name="description" content="Learn geometric cluster grammars from hundreds of atomic positions and test million-atom structural continuation across crystals, quasicrystals, and amorphous controls.">
+  <meta name="description" content="Learn geometric cluster grammars from hundreds of atomic positions and grow an open-ended explicit frontier across crystals, quasicrystals, and amorphous controls.">
   <title>Materials Growth Lab — Hundreds to One Million Atoms</title>
-  <link rel="stylesheet" href="./style.css?v=20260806-2">
+  <link rel="stylesheet" href="./style.css?v=20260806-3">
   <script type="importmap">
     {
       "imports": {
@@ -81,6 +81,14 @@
             <span>Events per second <output id="speedOutput">12</output></span>
             <input id="speedInput" type="range" min="1" max="60" value="12">
           </label>
+          <label class="field" for="growthDurationSelect">
+            <span>Timed growth burst</span>
+            <select id="growthDurationSelect">
+              <option value="60">1 minute</option>
+              <option value="120">2 minutes</option>
+            </select>
+          </label>
+          <p class="control-note">In search, Play grows explicit atoms for this long, then pauses. Click again to continue.</p>
         </section>
 
         <section>
@@ -119,7 +127,7 @@
           <article><small id="atomLabel">ATOMS</small><strong id="atomMetric">216</strong><span id="atomDelta">known xyz + species</span></article>
           <article><small id="frontierLabel">SPECIES</small><strong id="frontierMetric">2</strong><span id="frontierDelta">blue / green</span></article>
           <article><small id="oracleLabel">LABELS GIVEN</small><strong id="oracleMetric">0</strong><span id="oracleDelta">clusters must be inferred</span></article>
-          <article class="accent-metric"><small id="reuseLabel">REPRESENTED TARGET</small><strong id="reuseMetric">1,048,576</strong><span id="reuseDelta">viewport remains sampled</span></article>
+          <article class="accent-metric"><small id="reuseLabel">GROWTH MODE</small><strong id="reuseMetric">OPEN</strong><span id="reuseDelta">restartable timed bursts</span></article>
         </div>
 
         <section class="structure-stats" aria-label="Known and reconstructed structural statistics">
@@ -179,6 +187,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260806-5"></script>
+  <script type="module" src="./app.js?v=20260806-6"></script>
 </body>
 </html>
