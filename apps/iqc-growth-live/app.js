@@ -87,6 +87,16 @@ const structureNameValue = $("structureNameValue");
 const symmetryValue = $("symmetryValue");
 const confidenceValue = $("confidenceValue");
 const auditNote = $("auditNote");
+const recursiveStatus = $("recursiveStatus");
+const hierarchyL1 = $("hierarchyL1");
+const hierarchyL2 = $("hierarchyL2");
+const hierarchyL3 = $("hierarchyL3");
+const recursiveCurve = $("recursiveCurve");
+const recursiveMark = $("recursiveMark");
+const recursiveAction = $("recursiveAction");
+const recursiveSpeed = $("recursiveSpeed");
+const recursiveGate = $("recursiveGate");
+const recursiveNote = $("recursiveNote");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
 const COLORS = {
@@ -142,6 +152,13 @@ const MATERIALS = {
   random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", order: "amorphous", symmetry: "no stable long-range group", audit: "local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble whose multiscale statistics match held-out large MD." },
   iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
   bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
+};
+const RECURSIVE_BENCHMARKS = {
+  competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
+  random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
+  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "6D acceptance section", action: "6 rewrites → 2.79m", speed: "2.72 s count-only", gate: "pass · IQC control", status: "control", note: "The internal-section rule grows 507 → 1,969 → 8,603 → 37,073 → 155,097 → 657,057 → 2,791,097. Two inflations have independent atom/species certificates; rigid motion and 0.5% coordinate-noise recovery are supported." },
+  bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
+  imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
 const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
 const BALANCE_DIRECTIONS = [
@@ -336,6 +353,35 @@ function referenceCount() {
 
 function currentMaterial() {
   return scenarioSelect.value === "imported" && importedStructure ? importedStructure.material : MATERIALS[scenarioSelect.value];
+}
+
+function updateRecursiveBenchmark() {
+  const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  [hierarchyL1.textContent, hierarchyL2.textContent, hierarchyL3.textContent] = benchmark.hierarchy.map(String);
+  recursiveMark.textContent = benchmark.mark;
+  recursiveAction.textContent = benchmark.action;
+  recursiveSpeed.textContent = benchmark.speed;
+  recursiveGate.textContent = benchmark.gate;
+  recursiveStatus.className = `recursive-status ${benchmark.status}`;
+  recursiveStatus.textContent = benchmark.status === "limit" ? "open limit" : benchmark.status;
+  recursiveNote.textContent = benchmark.note;
+  recursiveCurve.replaceChildren();
+  const progress = pipelineStage === 4
+    ? Math.max(0, Math.min(1, atoms.length / Math.max(referenceCount(), 1) - 1))
+    : 0;
+  const activeLevel = benchmark.curve.length ? Math.floor(progress * (benchmark.curve.length - 1)) : -1;
+  const maximumLog = Math.max(1, ...benchmark.curve.map((count) => Math.log10(Math.max(1, count))));
+  benchmark.curve.forEach((count, index) => {
+    const bar = document.createElement("div");
+    bar.classList.toggle("active", index <= activeLevel);
+    bar.style.setProperty("--bar-height", `${7 + Math.log10(Math.max(1, count)) / maximumLog * 27}px`);
+    bar.title = `action ${index}: ${count.toLocaleString()} atoms represented`;
+    const label = document.createElement("span");
+    label.textContent = count >= 1e6 ? `${(count / 1e6).toFixed(1)}m` : count >= 1e3 ? `${Math.round(count / 1e3)}k` : String(count);
+    bar.appendChild(label);
+    recursiveCurve.appendChild(bar);
+  });
+  recursiveCurve.hidden = benchmark.curve.length === 0;
 }
 
 function importSummary(structure, validation) {
@@ -2121,6 +2167,7 @@ function updateDecision(event) {
 }
 
 function updateUI() {
+  updateRecursiveBenchmark();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   if (pipelineStage === 0) {
