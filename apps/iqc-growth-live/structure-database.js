@@ -9,13 +9,21 @@ function canonicalElement(value) {
   return symbol;
 }
 
-function queryPayload(first, second, pageOffset = 0) {
+function normalizeElements(values) {
+  const elements = [...new Set((values || []).map(canonicalElement))];
+  if (!elements.length) throw new Error("Choose at least one element");
+  if (elements.length > 8) throw new Error("Choose at most eight elements for one database query");
+  return elements;
+}
+
+function queryPayload(elementValues, pageOffset = 0) {
+  const elements = normalizeElements(elementValues);
   return {
     owner: "public",
     query: {
       and: [
-        { "results.material.elements": { all: [first, second] } },
-        { "results.material.n_elements": 2 },
+        { "results.material.elements": { all: elements } },
+        { "results.material.n_elements": elements.length },
         { "results.material.structural_type": "bulk" },
       ],
     },
@@ -130,14 +138,12 @@ export function nomadArchiveToStructure(entry, archiveResponse) {
   };
 }
 
-export async function randomNomadBinary(firstValue, secondValue, options = {}) {
-  const first = canonicalElement(firstValue);
-  const second = canonicalElement(secondValue);
-  if (first === second) throw new Error("Choose two different elements");
+export async function randomNomadStructure(elementValues, options = {}) {
+  const elements = normalizeElements(elementValues);
   const fetchImpl = options.fetchImpl || fetch;
-  const initial = await postJson(`${NOMAD_API}/entries/query`, queryPayload(first, second), fetchImpl);
+  const initial = await postJson(`${NOMAD_API}/entries/query`, queryPayload(elements), fetchImpl);
   const total = Number(initial.pagination?.total || 0);
-  if (!total) throw new Error(`NOMAD has no public bulk entries containing only ${first} and ${second}`);
+  if (!total) throw new Error(`NOMAD has no public bulk entries containing exactly ${elements.join(" + ")}`);
   const accessibleTotal = Math.min(total, 10_000);
   const attempts = Math.min(8, accessibleTotal);
   const triedOffsets = new Set();
@@ -146,7 +152,7 @@ export async function randomNomadBinary(firstValue, secondValue, options = {}) {
     let offset = randomIndex(accessibleTotal, options.random);
     while (triedOffsets.has(offset) && triedOffsets.size < accessibleTotal) offset = (offset + 1) % accessibleTotal;
     triedOffsets.add(offset);
-    const page = offset === 0 ? initial : await postJson(`${NOMAD_API}/entries/query`, queryPayload(first, second, offset), fetchImpl);
+    const page = offset === 0 ? initial : await postJson(`${NOMAD_API}/entries/query`, queryPayload(elements, offset), fetchImpl);
     const entry = page.data?.[0];
     if (!entry) continue;
     try {
@@ -164,4 +170,4 @@ export async function randomNomadBinary(firstValue, secondValue, options = {}) {
   throw new Error(`No usable periodic archive found after ${attempts} random samples${lastError ? `: ${lastError.message}` : ""}`);
 }
 
-export { canonicalElement, queryPayload };
+export { canonicalElement, normalizeElements, queryPayload };

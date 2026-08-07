@@ -34,8 +34,9 @@ The current pipeline is:
 ## Current implementation
 
 GitHub Pages serves a browser-only ES module application. Its primary input uses
-NOMAD's public, unauthenticated API: an exact two-element, bulk-only query is
-counted, an entry offset is selected randomly, and the normalized archive is
+NOMAD's public, unauthenticated API: the user multi-selects one to eight species
+from a periodic table, an exact-element-set bulk query is counted, an entry
+offset is selected randomly, and the normalized archive is
 converted from SI units to ångströms. Small periodic cells are replicated along
 their currently shortest supercell axis until the learning window contains
 roughly 128–512 atoms. The NOMAD entry ID, source link, query population,
