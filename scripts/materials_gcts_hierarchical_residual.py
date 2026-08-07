@@ -15,6 +15,7 @@ import itertools
 import json
 import math
 import random
+from collections import Counter
 from dataclasses import asdict, dataclass
 from typing import Dict, List, Sequence, Tuple
 
@@ -60,6 +61,13 @@ class HierarchicalResidualBenchmark:
     atomwise_actions_per_macro_action: float
     rigid_motion_invariant: bool
     random_residual_rejected: bool
+
+
+@dataclass(frozen=True)
+class DefectAwareResidualRule:
+    structural_rule: HierarchicalResidualRule
+    missing_sites: Tuple[Tuple[Tuple[int, int, int], str], ...]
+    added_atoms: Tuple[Tuple[str, Vector], ...]
 
 
 def _dot(left: Sequence[float], right: Sequence[float]) -> float:
@@ -170,6 +178,21 @@ def _solve_least_squares(rows, values):
     return tuple(right)
 
 
+def _section_features(code: int) -> Tuple[float, float, float, float]:
+    """Octant interactions with the 000 child fixed as the zero section.
+
+    Constant and one-bit modes belong to the motif and translation frame.
+    Removing them makes the frame identifiable even when an edge sample is
+    missing; the remaining pair/triple interactions are genuine parent
+    markings rather than a disguised lattice strain.
+    """
+    sx = 1.0 if code & 4 else -1.0
+    sy = 1.0 if code & 2 else -1.0
+    sz = 1.0 if code & 1 else -1.0
+    return (sx * sy - 1.0, sx * sz - 1.0, sy * sz - 1.0,
+            sx * sy * sz + 1.0)
+
+
 def learn_residual_rule(configuration: AtomicConfiguration) -> HierarchicalResidualRule:
     basis = _learn_short_translation_frame(configuration)
     fractional = tuple(matvec(inverse3(basis), point)
@@ -213,7 +236,8 @@ def learn_residual_rule(configuration: AtomicConfiguration) -> HierarchicalResid
         raise ValueError("residual parent must be a dyadic finite box")
     levels = round(math.log2(counts[0]))
     motif_count = len(chemicals)
-    width = motif_count + levels * 7
+    section_width = 4
+    width = motif_count + levels * section_width
     rows = []
     for motif_id, cell, _ in assignments:
         row = [0.0] * width
@@ -223,23 +247,48 @@ def learn_residual_rule(configuration: AtomicConfiguration) -> HierarchicalResid
             code = (((local[0] >> level) & 1) << 2 |
                     ((local[1] >> level) & 1) << 1 |
                     ((local[2] >> level) & 1))
-            if code:
-                row[motif_count + level * 7 + code - 1] = 1.0
+            for feature, value in enumerate(_section_features(code)):
+                row[motif_count + level * section_width + feature] = value
         rows.append(row)
-    coefficients = tuple(_solve_least_squares(
-        rows, [point[axis] - cell[axis]
-               for _, cell, point in assignments])
+    # Jointly refine the approximate short-vector frame with the motif and all
+    # observed parent markings.  Averaging local edge vectors is exact for a
+    # complete balanced box but a single frontier vacancy removes edges
+    # asymmetrically.  The joint model keeps that missing sample local instead
+    # of leaking its bias into every generated coordinate.
+    joint_rows = [list(cell) + row
+                  for (_, cell, _), row in zip(assignments, rows)]
+    joint = tuple(_solve_least_squares(
+        joint_rows, [point[axis] for point in configuration.positions])
         for axis in range(3))
+    refined_basis = tuple(tuple(joint[cartesian][fractional_axis]
+                                for cartesian in range(3))
+                          for fractional_axis in range(3))
+    refined_inverse = inverse3(refined_basis)  # type: ignore[arg-type]
+    coefficient_vectors = [tuple(joint[axis][3 + index]
+                                 for axis in range(3))
+                           for index in range(width)]
+    fractional_vectors = [matvec(refined_inverse, vector)
+                          for vector in coefficient_vectors]
+    coefficients = tuple(tuple(vector[axis]
+                               for vector in fractional_vectors)
+                         for axis in range(3))
+    refined_fractional = tuple(matvec(refined_inverse, point)
+                               for point in configuration.positions)
+    assignments = [(motif_id, cell, point)
+                   for (motif_id, cell, _), point in zip(assignments,
+                                                         refined_fractional)]
     motif = tuple((chemical,) + tuple(coefficients[axis][index]
                                        for axis in range(3))
                   for index, chemical in enumerate(chemicals))
     level_markings = []
     for level in range(levels):
-        values = [(0.0, 0.0, 0.0)]
-        for code in range(1, 8):
-            index = motif_count + level * 7 + code - 1
-            values.append(tuple(coefficients[axis][index]
-                                for axis in range(3)))
+        values = []
+        for code in range(8):
+            features = _section_features(code)
+            values.append(tuple(sum(
+                features[feature] * coefficients[axis][
+                    motif_count + level * section_width + feature]
+                for feature in range(section_width)) for axis in range(3)))
         level_markings.append(tuple(values))
     numerator = denominator = 0.0
     for left, right in zip(level_markings, level_markings[1:]):
@@ -282,7 +331,7 @@ def learn_residual_rule(configuration: AtomicConfiguration) -> HierarchicalResid
     recurrence_relative = recurrence_rms / max(marking_rms, 1e-12)
     deterministic = fit_relative < 0.10 and recurrence_relative < 0.10
     return HierarchicalResidualRule(
-        basis, minimum, counts[0], motif, tuple(level_markings), ratio,
+        refined_basis, minimum, counts[0], motif, tuple(level_markings), ratio,
         fit_rms, recurrence_rms, fit_relative, recurrence_relative,
         deterministic)
 
@@ -322,6 +371,57 @@ def apply_residual_rule(
     return AtomicConfiguration(
         "hierarchical-residual-grown", tuple(positions), tuple(species),
         None, False, "Recursive octant-section displacement marking")
+
+
+def learn_defect_aware_rule(
+    configuration: AtomicConfiguration,
+) -> DefectAwareResidualRule:
+    """Separate a recurrent parent field from sparse, nonrecurring residuals."""
+    counts = Counter(configuration.species)
+    maximum = max(counts.values())
+    structural_species = {chemical for chemical, count in counts.items()
+                          if count >= 0.25 * maximum}
+    positions = tuple(point for point, chemical in zip(
+        configuration.positions, configuration.species)
+                      if chemical in structural_species)
+    species = tuple(chemical for chemical in configuration.species
+                    if chemical in structural_species)
+    structural = AtomicConfiguration(
+        configuration.name + "-structural", positions, species, None, False,
+        configuration.provenance)
+    rule = learn_residual_rule(structural)
+    reconstructed = apply_residual_rule(rule, 0)
+    expected = {(blind._site_key(point), chemical): point
+                for point, chemical in zip(reconstructed.positions,
+                                           reconstructed.species)}
+    observed = {(blind._site_key(point), chemical): point
+                for point, chemical in zip(configuration.positions,
+                                           configuration.species)}
+    missing = tuple(sorted(expected.keys() - observed.keys()))
+    added = tuple(sorted((site[1], observed[site])
+                         for site in observed.keys() - expected.keys()))
+    sparse_limit = max(4, round(0.02 * len(configuration.positions)))
+    if len(missing) + len(added) > sparse_limit:
+        raise ValueError("residual is not sparse enough to remain local")
+    return DefectAwareResidualRule(rule, missing, added)
+
+
+def apply_defect_aware_rule(
+    rule: DefectAwareResidualRule, actions: int,
+) -> AtomicConfiguration:
+    grown = apply_residual_rule(rule.structural_rule, actions)
+    atoms = {(blind._site_key(point), chemical): point
+             for point, chemical in zip(grown.positions, grown.species)}
+    for site in rule.missing_sites:
+        atoms.pop(site, None)
+    for chemical, point in rule.added_atoms:
+        atoms[(blind._site_key(point), chemical)] = point
+    ordered = sorted(atoms.items())
+    return AtomicConfiguration(
+        grown.name + "-defect-aware",
+        tuple(point for _, point in ordered),
+        tuple(site[1] for site, _ in ordered), None, False,
+        "Recursive parent marking with sparse residual carried once")
 
 
 _BASE_MARKING = (

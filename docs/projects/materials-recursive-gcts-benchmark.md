@@ -501,3 +501,34 @@ exist, the input is dyadic, and there is no energetic relaxation.  The next
 tests must mix a recurrent displacement marking with isolated frontier defects
 and replace the planted recurrence with modulations measured in real material
 configurations.
+
+## Recurrent parent field with local frontier defects
+
+`scripts/materials_gcts_frontier_defect_benchmark.py` combines the recursive
+displacement marking with sparse residual handling.  A vacancy, Na-to-K-style
+substitution label, or interstitial is placed on the frontier of the observed
+8x8x8 B2 parent.  The structural learner excludes rare chemical labels while
+fitting the quotient and parent sections, reconstructs the expected observed
+parent, and records only its sparse set difference as additions or removals.
+Those residual operations are carried once after every structural rewrite.
+
+After two actions the three cases contain 65,535, 65,536, and 65,537 atoms.
+Their exact held-out position/species sets contain one vacancy, one
+substitution, and one interstitial respectively.  Copying the complete
+observed parent at each action would instead create 64 instances.  Thus the
+recursive marking applies to the consensus cluster-of-clusters while the
+nonrecurring state remains local, including when it occurs at the attachment
+frontier.
+
+This test exposed a frame-identifiability issue: averaging local translation
+vectors lets a missing edge atom perturb the global basis.  The learner now
+jointly fits the translation frame, motif, and parent sections.  Constant and
+single-bit (affine) octant modes are assigned to the quotient frame; only
+pairwise and triple octant interactions are allowed in the GCTS marking.  This
+gauge makes the decomposition exact with sparse missing samples and prevents a
+defect from leaking into every generated coordinate.
+
+The defect policy is intentionally conservative.  Residual additions and
+removals must total at most 2% of the observed cloud, and no new defect is
+predicted.  Energetic defect propagation, dislocation motion, and relaxation
+remain outside the present static continuation benchmark.
