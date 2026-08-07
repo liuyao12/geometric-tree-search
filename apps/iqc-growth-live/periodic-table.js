@@ -28,10 +28,20 @@ function categoryFor(symbol) {
   return "transition";
 }
 
+const gases = new Set("H He N O F Ne Cl Ar Kr Xe Rn".split(" "));
+const liquids = new Set("Br Hg".split(" "));
+
+function phaseFor(symbol) {
+  if (gases.has(symbol)) return "gas";
+  if (liquids.has(symbol)) return "liquid";
+  return "solid";
+}
+
 export const PERIODIC_ELEMENTS = rows.flatMap((row, rowIndex) => row.map(([symbol, column]) => ({
   symbol,
   atomicNumber: atomicOrder.indexOf(symbol) + 1,
   row: rowIndex + 1,
   column,
   category: categoryFor(symbol),
+  phase: phaseFor(symbol),
 })));
