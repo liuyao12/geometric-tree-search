@@ -44,23 +44,25 @@ that learned cardinality and shows the actual medoid first shell for every
 class; it no longer substitutes the same three demonstration polyhedra.
 
 The marking stage is separate from cluster discovery and application. It learns
-one bounded scalar section `m_C(x)` for each discovered cluster type `C`, with
-support radius `1.9a`. Every occurrence of a cluster carries a transformed copy
-of that section. Where two neighborhoods share atomic sites, the training loss
-penalizes disagreement between their section values. A local, element-weighted
-angular descriptor provides a non-collapse anchor, since overlap agreement by
-itself admits an uninformative constant field.
+one bounded connection section `m_C(x)` for each discovered cluster type `C`,
+with support radius `1.9a`. Every occurrence of a cluster carries a transformed
+copy of that section. Strong observed overlaps label compatible directional
+ports; directions without such evidence supply failed-port examples. Where two
+neighborhoods share atomic sites, the training loss penalizes disagreement
+between their section values. This is a connection grammar, not a physical or
+interatomic potential.
 
 Training is revealed sample by sample rather than appearing as an instantaneous
 answer. Each section begins with deterministic random directional coefficients;
 the live fit and held-out curves report a weighted combination of overlap
-mismatch and anchor mismatch as the known centers are processed. In the 3D
+mismatch and signed-port mismatch as the known centers are processed. In the 3D
 scene, the learned medoid clusters from the encoding stage remain as a compact
-prototype gallery. Two nested wireframe level surfaces form one halo around
-each prototype and deform as the coefficients converge. The section atlas reports
-the current field amplitude for every cluster type, and clicking a row isolates
-that prototype and its section. The observed shell-overlap graph remains visible as
-the constraints from which the sections learn to glue.
+prototype gallery. Disconnected nested wireframe lobes appear at candidate
+interfaces and deform as the coefficients converge: the cluster-type color
+means compatible, while red means absent or failed. The section atlas reports
+the current connection-port strength for every cluster type, and clicking a row
+isolates that prototype and its section. The observed shell-overlap graph
+remains visible as the constraints from which the sections learn to glue.
 
 When the marked policy is selected, the trained section identifiers and their
 support travel into reconstruction and continuation. A proposed attachment can
