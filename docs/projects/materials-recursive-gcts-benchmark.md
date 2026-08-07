@@ -566,3 +566,48 @@ GCTS hierarchy makes the cell interpretable as clusters of clusters; the
 translation of that complete cell is still the easy crystalline part.  A true
 quasicrystal test requires an aperiodic diffraction/superspace refinement or a
 large experimentally reconstructed patch with a held-out region.
+
+## Experimental aperiodic Sc-Zn hierarchy
+
+`scripts/materials_gcts_experimental_sczn_benchmark.py` downloads the
+supplementary real-space model from the Sc-Zn icosahedral-quasicrystal
+refinement and verifies its pinned SHA-256 before parsing it.  The P1 model has
+41,981 atom rows and 37,531 merged point sites; coincident Sc/Zn occupational
+alternatives remain the virtual color `Sc/Zn`.  This is a genuine finite
+aperiodic model rather than a periodically repeated approximant cell.
+
+Atom-centred clustering is the wrong abstraction for this input: the refined
+Tsai clusters are centred in voids.  The new learner therefore ranks chemical
+colors by rarity and searches for recurrent antipodal shells.  It is not given
+the element name, cluster centres, or paper's cluster labels.  It selects Sc
+and recovers 173 complete twelve-site shells with learned mean radius 4.9149
+angstrom.  Their median 7.8-angstrom decoration contains 156 measured point
+sites.  The cluster-centre graph independently has two dominant learned links,
+12.0 and 13.8 angstrom.
+
+The centre graph supplies a real clusters-of-clusters benchmark.  A bounded
+radial section records counts on the two connection shells; successive levels
+add their learned inflated copies.  Quantizing counts in bins of four makes the
+section insensitive to the cut boundary of the finite experimental model.
+Three recurring levels have largest supports 13, 38, and 98 fundamental
+clusters and cover 98.84%, 97.11%, and 74.57% of detected centres.  Their next-
+shell boundary markings have confidences 0.573, 0.470, and 0.481.  Thus this is
+an actual hierarchy over void-centred atomic clusters, not a relabeling of
+individual atoms.
+
+A blind scale-and-origin scan learns 1.618 as the best inflation proposal,
+within `3.4e-5` of the golden ratio.  One parent proposal accounts for ten
+accepted fundamental-cluster placements, or 1,560 decorated atom instances,
+instead of ten separate cluster decisions.  This is the first measured
+supercluster action in the suite.
+
+The negative result remains important.  The unmarked training precision is
+7/12, while the spatially held-out precision is only 3/18, despite a small
+0.121-angstrom mean error for accepted held-out centres.  Accordingly the
+benchmark reports `cluster hierarchy detected; held-out growth not yet
+reliable`.  We have unlocked discovery of clusters-of-clusters and their
+finite boundary sections; we have **not** yet learned a sufficiently selective
+marking to claim autonomous quasicrystal continuation.  The next gate is to
+learn that section from center-graph coronae or inferred internal-space
+coordinates and beat the unmarked 3/18 held-out result without consulting the
+target region.
