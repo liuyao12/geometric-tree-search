@@ -1230,9 +1230,8 @@ function sectionSurfaceGeometry(cluster, level) {
 }
 
 function buildSectionHalos() {
-  const dummy = new THREE.Object3D();
+  const centers = symbolCenters();
   learnedClusters.clusters.forEach((_, cluster) => {
-    const centers = referenceAtoms.filter((__, index) => learnedClusters.labels[index] === cluster);
     const selectedKey = `m_C${cluster + 1}`;
     const dim = markingSelection && markingSelection !== selectedKey;
     [0, 1].forEach((level) => {
@@ -1240,17 +1239,12 @@ function buildSectionHalos() {
         color: markingColor(selectedKey),
         wireframe: true,
         transparent: true,
-        opacity: dim ? .025 : level === 0 ? .18 : .10,
+        opacity: dim ? .035 : level === 0 ? .32 : .18,
         depthWrite: false,
       });
-      const mesh = new THREE.InstancedMesh(sectionSurfaceGeometry(cluster, level), material, centers.length);
-      centers.forEach((atom, index) => {
-        dummy.position.copy(atom.p);
-        dummy.scale.setScalar(markingSelection === selectedKey ? 1.06 : 1);
-        dummy.updateMatrix();
-        mesh.setMatrixAt(index, dummy.matrix);
-      });
-      mesh.instanceMatrix.needsUpdate = true;
+      const mesh = new THREE.Mesh(sectionSurfaceGeometry(cluster, level), material);
+      mesh.position.copy(centers[cluster]);
+      mesh.scale.setScalar(markingSelection === selectedKey ? 1.06 : 1);
       clusterGroup.add(mesh);
     });
   });
@@ -1284,6 +1278,13 @@ function buildClusterOverlay() {
       addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
     });
   } else if (pipelineStage === 3 && sectionModel) {
+    symbolCenters().forEach((center, index) => {
+      const cluster = learnedClusters.clusters[index];
+      const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.22)
+        : cluster.coordination >= 11 ? new THREE.IcosahedronGeometry(1.3, 0)
+          : new THREE.SphereGeometry(1.25, 8, 5);
+      addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
+    });
     buildSectionHalos();
   }
 }
@@ -1344,7 +1345,7 @@ function enterPipelineStage(index, options = {}) {
   extensionTargets = makeExtensionTargets();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
-  else if (pipelineStage === 3) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
+  else if (pipelineStage === 3) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
   else atoms = [];
   buildConfinement();
   clusterGroup.rotation.set(0, 0, 0);
@@ -1369,9 +1370,10 @@ function updatePipelineButtons() {
 
 function frameStage() {
   const large = pipelineStage === 4;
+  const prototypes = pipelineStage === 2 || pipelineStage === 3;
   const target = new THREE.Vector3();
   controls.target.copy(target);
-  camera.position.set(large ? 18 : 12.5, large ? 13 : 9.5, large ? 19 : 13.5);
+  camera.position.set(large ? 18 : prototypes ? 8 : 12.5, large ? 13 : prototypes ? 5.8 : 9.5, large ? 19 : prototypes ? 9 : 13.5);
   camera.updateProjectionMatrix();
 }
 
@@ -1589,8 +1591,7 @@ function rebuildWorld() {
     learnedClusters.clusters.forEach((_, cluster) => {
       const key = `m_C${cluster + 1}`;
       const selectedOut = markingSelection && markingSelection !== key;
-      addInstances(atoms.filter((__, index) => index < trainingProgress && learnedClusters.labels[index] === cluster), getMarkingMaterial(key, selectedOut), (atom) => elementScale(atom.species) * (selectedOut ? .76 : 1.05));
-      addInstances(atoms.filter((__, index) => index >= trainingProgress && learnedClusters.labels[index] === cluster), getMarkingMaterial(key, true), (atom) => elementScale(atom.species) * .7);
+      addInstances(atoms.filter((atom) => atom.family === `C${cluster + 1}`), getMarkingMaterial(key, selectedOut), (atom) => elementScale(atom.species) * (selectedOut ? .76 : atom.symbolCenter ? 1.16 : 1));
     });
   } else {
     currentMaterial().elements.forEach((symbol) => {
@@ -1603,11 +1604,11 @@ function rebuildWorld() {
     if (selectedCoordination?.centers.length) {
       selectedCoordination.edges.forEach(([center, neighbor]) => points.push(center.p, neighbor.p));
     } else if (pipelineStage === 3 && trainedMarking) {
-      trainedMarking.edges
-        .filter((edge) => edge.first < trainingProgress && edge.second < trainingProgress)
-        .filter((edge) => referenceAtoms[edge.first].p.distanceTo(referenceAtoms[edge.second].p) <= 2.76 * referenceSpacing)
-        .slice(0, 280)
-        .forEach((edge) => points.push(referenceAtoms[edge.first].p, referenceAtoms[edge.second].p));
+      learnedClusters.clusters.forEach((_, cluster) => {
+        const family = `C${cluster + 1}`;
+        const center = atoms.find((atom) => atom.family === family && atom.symbolCenter);
+        if (center) atoms.filter((atom) => atom.family === family && !atom.symbolCenter).forEach((atom) => points.push(center.p, atom.p));
+      });
     } else atoms.forEach((atom) => {
       if (atom.parent) points.push(atom.parent.p, atom.p);
     });
@@ -1707,10 +1708,10 @@ function updateUI() {
   } else if (pipelineStage === 3) {
     const point = currentTrainingPoint();
     stageEyebrow.textContent = "training · local sections on cluster neighborhoods";
-    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Random halos converge into compatible local sections" : "Section-valued GCTS marking trained";
+    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Markings morph over the learned cluster prototypes" : "Section-valued GCTS marking trained";
     decisionTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Fitting section overlap consistency" : "Local sections ready to glue";
     decisionCopy.textContent = trainingProgress < REFERENCE_COUNT
-      ? "Each sample updates the scalar section attached to its cluster type. Nested level surfaces show the current field; overlapping copies are trained to agree, with a geometric anchor preventing constant collapse."
+      ? "The medoid clusters from the previous stage stay fixed while one nested level-surface halo per type morphs during training. Observed overlaps supply the gluing loss; a geometric anchor prevents constant collapse."
       : "The learned scalar fields now travel with their cluster types. Search can reject a placement when transformed sections disagree on their shared support.";
     phaseReadout.textContent = `loss ${point.validationLoss.toFixed(3)}`;
     captionAction.textContent = `${point.samples}/${REFERENCE_COUNT} centers · ${point.overlaps.toLocaleString()} support overlaps · fit ${point.trainLoss.toFixed(3)} · holdout ${point.validationLoss.toFixed(3)}.`;
@@ -1759,7 +1760,7 @@ function renderLegend() {
       const swatch = document.createElement("i");
       swatch.className = "cluster-swatch";
       swatch.style.setProperty("--swatch", `#${markingColor(key).getHexString()}`);
-      row.append(swatch, document.createTextNode(`${key}(x) · C${index + 1} · ${cluster.count} copies`));
+      row.append(swatch, document.createTextNode(`${key}(x) · C${index + 1} prototype · learned from ${cluster.count}`));
       speciesLegend.appendChild(row);
     });
   } else if (pipelineStage === 1 && learnedClusters) {
