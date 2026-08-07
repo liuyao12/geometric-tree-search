@@ -430,3 +430,40 @@ unexplained local state is carried once.  It is still a static ideal-geometry
 test.  The next gate is to learn smooth displacement/strain residuals and to
 test defects near a growth frontier; the current code does not predict defect
 energetics, kinetics, or finite-temperature dynamics.
+
+## Explicit recursive application and marking ablation
+
+The earlier scaling table used exact count recurrences, but the one-step IQC
+and substitution materializers did not retain the enlarged parent envelope.
+Calling them twice therefore regenerated the first child.  This is now an
+explicit regression gate rather than an implicit projection.
+`apply_rule_actions` keeps the original training cloud as the marking witness
+and advances the parent state by an arbitrary number of recursive actions.
+`scripts/materials_gcts_explicit_recursive_benchmark.py` materializes two
+levels and independently checks every colored site:
+
+| family | input | action 1 | action 2 | atomwise placements / macro action |
+|---|---:|---:|---:|---:|
+| NaCl translation quotient | 216 | 1,728 | 13,824 | 6,804.0 |
+| icosahedral internal section | 507 | 1,969 | 8,603 | 4,048.0 |
+| Fibonacci-product substitution | 729 | 3,375 | 13,824 | 6,547.5 |
+
+Thus the same learned node now acts on a cluster, then on the resulting
+cluster-of-clusters.  These ratios measure discrete placement decisions, not
+wall-clock speedups over MD.
+
+`scripts/materials_gcts_recursive_marking_ablation.py` makes the role of the
+marking causal.  For the second IQC inflation, the learned integer module,
+physical-radius bound, and lift-parity connections admit 6,171,443 candidate
+sites if its bounded internal section is removed.  The section retains 8,603,
+rejecting 99.86% of algebraically connected but incompatible candidates.  For
+the Fibonacci product, there are 392 bounded two-symbol child grammars before
+observed parent sections are enforced and six remain consistent; the learned
+minimum-description marking selects `A -> AB, B -> A`.  For NaCl, quotient
+geometry without a species-preserving marking leaves `2^56` possible binary
+decorations across the seven new images, while the colored connection marking
+selects one.
+
+The ablation deliberately removes only the section/connection marking while
+retaining the learned geometry.  It therefore measures GCTS information rather
+than comparing against a completely uninformed random generator.

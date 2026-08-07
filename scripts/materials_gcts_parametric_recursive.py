@@ -580,6 +580,92 @@ def apply_rule(
         None, False, "One learned recursive internal-section rewrite")
 
 
+def apply_rule_actions(
+    configuration: AtomicConfiguration,
+    rule: ParametricRecursiveRule,
+    actions: int,
+) -> AtomicConfiguration:
+    """Materialize ``actions`` levels of one learned recursive node.
+
+    The base configuration remains the training witness for the marking.  This
+    is important for nonperiodic rules: the requested parent envelope is state,
+    while the internal section or substitution grammar is reused unchanged.
+    Repeatedly calling the old one-step materializer lost that envelope and
+    therefore regenerated the first child instead of a child-of-a-child.
+    """
+    if actions < 0:
+        raise ValueError("recursive action count must be nonnegative")
+    if actions == 0:
+        return configuration
+    if not rule.deterministic:
+        raise ValueError("cannot apply a rejected recursive rule")
+    if rule.family == "translation_quotient":
+        grown = configuration
+        for _ in range(actions):
+            grown = apply_rule(grown, rule)
+        return grown
+    if rule.family == "substitution_product":
+        if (rule.origin is None or rule.to_canonical is None or
+                rule.canonical_minimum is None or
+                rule.substitution_images is None or rule.input_side is None or
+                not rule.substitution_decoration or
+                rule.substitution_gap_lengths is None):
+            raise ValueError("substitution rule is missing its learned frame")
+        image_a, image_b, seed = rule.substitution_images
+        substitution = Substitution(image_a, image_b, seed)
+        word = generate(substitution, rule.input_side)
+        for _ in range(actions):
+            word = apply_substitution(word, substitution)
+        short, long = rule.substitution_gap_lengths
+        coordinates = [0.0]
+        for symbol in word[:-1]:
+            coordinates.append(coordinates[-1] +
+                               (long if symbol == "A" else short))
+        decoration = {item[:3]: item[3]
+                      for item in rule.substitution_decoration}
+        inverse = tuple(tuple(rule.to_canonical[column][row]
+                              for column in range(3)) for row in range(3))
+        positions = []
+        species = []
+        minimum = rule.canonical_minimum
+        for i, j, k in itertools.product(range(len(word)), repeat=3):
+            canonical = (coordinates[i] + minimum[0],
+                         coordinates[j] + minimum[1],
+                         coordinates[k] + minimum[2])
+            moved = dag._matvec(inverse, canonical)
+            positions.append(tuple(moved[axis] + rule.origin[axis]
+                                   for axis in range(3)))
+            species.append(decoration[(word[i], word[j], word[k])])
+        return AtomicConfiguration(
+            configuration.name + f"-grown-{actions}", tuple(positions),
+            tuple(species), None, False,
+            f"{actions} learned product-substitution rewrites")
+    if rule.family != "internal_section_inflation":
+        raise ValueError(f"unsupported recursive family {rule.family}")
+    if (rule.origin is None or rule.to_canonical is None or
+            rule.input_radius is None):
+        raise ValueError("module rule is missing its learned coordinate frame")
+    centered = tuple(dag._matvec(rule.to_canonical, tuple(
+        point[axis] - rule.origin[axis] for axis in range(3)))
+        for point in configuration.positions)
+    canonical = AtomicConfiguration(
+        configuration.name + "-canonical", centered,
+        configuration.species, None, False, configuration.provenance)
+    grown = _latent_patch(
+        canonical, rule.input_radius * rule.scale ** actions,
+        maximum_residual=max(1e-5, (rule.residual or 0.0) * 1.01))
+    inverse = tuple(tuple(rule.to_canonical[column][row]
+                          for column in range(3)) for row in range(3))
+    positions = tuple(tuple(value + rule.origin[axis]
+                            for axis, value in enumerate(
+                                dag._matvec(inverse, point)))
+                      for point in grown.positions)
+    return AtomicConfiguration(
+        configuration.name + f"-grown-{actions}", positions, grown.species,
+        None, False,
+        f"{actions} learned recursive internal-section rewrites")
+
+
 def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule:
     """Discover a gated recursive rule without a supplied phase label."""
     structure = evaluate_structure(
