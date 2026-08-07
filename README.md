@@ -13,11 +13,12 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
-- [Materials Growth Lab: hundreds to one million atoms](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
-  A live 3D, multi-species structural-growth laboratory for crystalline,
-  quasiperiodic, and amorphous controls. It learns overlapping environments
-  from a 216-atom window, reconstructs that window, and continues the same
-  search while a learned hierarchy addresses a 1,048,576-atom target.
+- [Materials Growth Lab: imported atomic structures and off-lattice growth](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
+  A live 3D, multi-species GCTS laboratory for crystalline, quasiperiodic, and
+  amorphous controls. It accepts local CIF, POSCAR/CONTCAR, XYZ/extXYZ, and JSON
+  structures, learns overlapping environments and finite SE(3) attachment
+  rules, trains bounded connection sections, and continues the same explicit
+  tree search beyond the observed configuration.
 - [Penrose Model-Set Tiler](./apps/penrose-model-set/)
   An exact cyclotomic search laboratory for genuine P2 kite–dart and P3 rhomb
   prototiles. Family presets stage a catalog that can be edited before running;
@@ -88,6 +89,23 @@ or go directly to the local app preview:
 ```text
 http://127.0.0.1:5174/apps/3d-lattice-tiler/
 ```
+
+### Materials structure import
+
+The Materials Growth Lab parses imported structures entirely in the browser;
+files are not uploaded. The import contract preserves atomic species,
+Cartesian coordinates in ångströms, three general cell vectors, per-axis
+periodicity, occupancies, provenance, and a supplied CIF space-group label.
+CIF symmetry operations are expanded before validation. Imports are rejected
+for singular cells, invalid coordinates, unresolved duplicate atoms closer
+than 0.1 Å, or more than 1,200 atoms. Partial occupancies are retained and
+warned about, not stochastically resolved.
+
+The published page is still a static application, not a remote simulation
+service. Its current O(N²) neighbor and overlap construction is appropriate for
+the intended hundreds-of-atoms learning window; a worker/job backend is needed
+before direct database queries, trajectory ingestion, or substantially larger
+training sets. See the [Materials Growth Lab architecture and audit](./docs/projects/materials-growth-lab-architecture.md).
 
 ### A₂ marking-learning benchmark
 

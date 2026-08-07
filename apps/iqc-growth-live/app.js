@@ -1,9 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { parseStructureText, validateStructure } from "./structure-io.js";
 
 const $ = (id) => document.getElementById(id);
 const viewport = $("viewport");
 const scenarioSelect = $("scenarioSelect");
+const structureFileInput = $("structureFileInput");
+const importStatus = $("importStatus");
+const loadFixtureButton = $("loadFixtureButton");
 const confinementSelect = $("confinementSelect");
 const policySelect = $("policySelect");
 const pipelineButton = $("pipelineButton");
@@ -81,7 +85,8 @@ const COLORS = {
 };
 const TAU = Math.PI * 2;
 const PHI = (1 + Math.sqrt(5)) / 2;
-const REFERENCE_COUNT = 216;
+const DEFAULT_REFERENCE_COUNT = 216;
+const ANALYSIS_WINDOW_COUNT = 256;
 const FRONTIER_PREVIEW = 28;
 const MAX_RULES_PER_PAIR = 28;
 const MERGE_TOLERANCE = .24;
@@ -91,14 +96,31 @@ const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
 const COORDINATION_CUTOFF = 1.32;
 const ELEMENTS = {
+  H: { color: 0xf2f2f2, css: "#f2f2f2", radius: .31 },
+  Li: { color: 0xcc80ff, css: "#cc80ff", radius: 1.28 },
+  B: { color: 0xffb5b5, css: "#ffb5b5", radius: .84 },
+  C: { color: 0x909090, css: "#909090", radius: .76 },
+  N: { color: 0x3050f8, css: "#3050f8", radius: .71 },
+  O: { color: 0xff0d0d, css: "#ff0d0d", radius: .66 },
+  F: { color: 0x90e050, css: "#90e050", radius: .57 },
   Na: { color: 0x8f8fff, css: "#8f8fff", radius: 1.66 },
+  Mg: { color: 0x8aff00, css: "#8aff00", radius: 1.41 },
+  P: { color: 0xff8000, css: "#ff8000", radius: 1.07 },
+  S: { color: 0xffff30, css: "#ffff30", radius: 1.05 },
   Cl: { color: 0x59d65c, css: "#59d65c", radius: 1.02 },
+  K: { color: 0x8f40d4, css: "#8f40d4", radius: 2.03 },
+  Ca: { color: 0x3dff00, css: "#3dff00", radius: 1.76 },
+  Mn: { color: 0x9c7ac7, css: "#9c7ac7", radius: 1.39 },
   Ni: { color: 0x63d16e, css: "#63d16e", radius: 1.24 },
+  Co: { color: 0xf090a0, css: "#f090a0", radius: 1.26 },
   Ti: { color: 0xb8c2cc, css: "#b8c2cc", radius: 1.60 },
   Cu: { color: 0xd98545, css: "#d98545", radius: 1.32 },
   Zr: { color: 0x79d3d6, css: "#79d3d6", radius: 1.75 },
   Al: { color: 0xb8c0c8, css: "#b8c0c8", radius: 1.21 },
   Fe: { color: 0xd45d42, css: "#d45d42", radius: 1.24 },
+  Zn: { color: 0x7d80b0, css: "#7d80b0", radius: 1.22 },
+  Ga: { color: 0xc28f8f, css: "#c28f8f", radius: 1.22 },
+  Ge: { color: 0x668f8f, css: "#668f8f", radius: 1.20 },
   Si: { color: 0xe7b883, css: "#e7b883", radius: 1.11 },
 };
 const MATERIALS = {
@@ -207,9 +229,58 @@ let growthDeadline = 0;
 let growthStartAtomCount = 0;
 let growthStopReason = "";
 let slowFrameSeconds = 0;
+let importedStructure = null;
+
+function referenceCount() {
+  return referenceAtoms.length || importedStructure?.atoms.length || DEFAULT_REFERENCE_COUNT;
+}
 
 function currentMaterial() {
-  return MATERIALS[scenarioSelect.value];
+  return scenarioSelect.value === "imported" && importedStructure ? importedStructure.material : MATERIALS[scenarioSelect.value];
+}
+
+function importSummary(structure, validation) {
+  const composition = Object.entries(validation.elementCounts).map(([element, count]) => `${element}${count}`).join(" · ");
+  const periodicity = structure.pbc.map((value) => value ? "P" : "–").join("");
+  const warnings = validation.warnings.length ? ` · ${validation.warnings.length} warning${validation.warnings.length === 1 ? "" : "s"}` : "";
+  return `${structure.format} · ${validation.atomCount} atoms · ${composition} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
+}
+
+async function importStructureFile(file) {
+  importStatus.className = "import-status";
+  importStatus.textContent = `Reading ${file.name} locally…`;
+  if (file.size > 8 * 1024 * 1024) throw new Error("File exceeds the 8 MB browser import limit");
+  return activateImportedStructure(parseStructureText(await file.text(), file.name), file.name);
+}
+
+function activateImportedStructure(parsed, filename) {
+  const validation = validateStructure(parsed, { maximumAtoms: 1200 });
+  if (!validation.valid) throw new Error(validation.errors.join("; "));
+  const elements = Object.keys(validation.elementCounts);
+  importedStructure = {
+    ...parsed, validation, filename,
+    material: {
+      name: parsed.name || filename,
+      elements,
+      spacingA: validation.medianNearestDistance,
+      cell: parsed.cell ? `${parsed.format} cell · V=${validation.cellVolume.toFixed(2)} Å³` : `${parsed.format} · non-periodic`,
+      order: "unclassified input",
+      symmetry: parsed.metadata?.spaceGroup || "not supplied",
+      audit: "emergent structure audit",
+      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth.`,
+    },
+  };
+  elements.forEach(elementRecord);
+  const option = scenarioSelect.querySelector('option[value="imported"]');
+  option.disabled = false;
+  option.textContent = `Imported · ${importedStructure.material.name}`;
+  scenarioSelect.value = "imported";
+  importStatus.className = "import-status valid";
+  importStatus.textContent = importSummary(parsed, validation);
+  importStatus.title = validation.warnings.join("\n");
+  orderPrototypeLibrary = null;
+  enterPipelineStage(0);
+  return importedStructure;
 }
 
 function growthDurationSeconds() {
@@ -228,10 +299,10 @@ function formatDuration(seconds) {
 
 function classificationSample() {
   const source = pipelineStage < 4 ? referenceAtoms : atoms;
-  if (source.length <= REFERENCE_COUNT) return source;
+  if (source.length <= ANALYSIS_WINDOW_COUNT) return source;
   // Preserve a physically contiguous observation window. Sampling uniformly by
   // insertion order would tear apart neighbor shells as the frontier grows.
-  return [...source].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, REFERENCE_COUNT);
+  return [...source].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, ANALYSIS_WINDOW_COUNT);
 }
 
 function normalizedDistributionDistance(first, second) {
@@ -295,7 +366,7 @@ function updateOrderAudit() {
 function getElementMaterial(symbol, dim = false) {
   const cache = dim ? dimElementMaterials : elementMaterials;
   if (!cache.has(symbol)) {
-    const data = ELEMENTS[symbol];
+    const data = elementRecord(symbol);
     cache.set(symbol, new THREE.MeshStandardMaterial({
       color: data.color,
       roughness: dim ? .55 : .3,
@@ -308,6 +379,15 @@ function getElementMaterial(symbol, dim = false) {
     }));
   }
   return cache.get(symbol);
+}
+
+function elementRecord(symbol) {
+  if (ELEMENTS[symbol]) return ELEMENTS[symbol];
+  let hash = 0;
+  for (const character of symbol) hash = Math.imul(hash ^ character.charCodeAt(0), 0x45d9f3b);
+  const color = new THREE.Color().setHSL(((hash >>> 0) % 360) / 360, .58, .62).getHex();
+  ELEMENTS[symbol] = { color, css: `#${color.toString(16).padStart(6, "0")}`, radius: 1.35 };
+  return ELEMENTS[symbol];
 }
 
 function markingColor(domain) {
@@ -336,7 +416,7 @@ function getMarkingMaterial(domain, dim = false) {
 
 function elementScale(symbol) {
   const material = currentMaterial();
-  return Math.max(.8, ELEMENTS[symbol].radius / material.spacingA * 2.55);
+  return Math.max(.8, elementRecord(symbol).radius / material.spacingA * 2.55);
 }
 
 function random() {
@@ -369,7 +449,7 @@ function medianNearestSpacing(source) {
   return nearest[Math.floor(nearest.length / 2)] || 1;
 }
 
-function calculateStructuralStats(source, spacing) {
+function calculateStructuralStats(source, spacing, periodic = false) {
   const rdf = new Array(RDF_BINS).fill(0);
   const coordination = new Array(13).fill(0);
   if (!source.length) return { rdf, coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [] };
@@ -385,7 +465,9 @@ function calculateStructuralStats(source, spacing) {
 
   for (let first = 0; first < source.length; first++) {
     for (let second = first + 1; second < source.length; second++) {
-      const normalizedDistance = source[first].p.distanceTo(source[second].p) / spacing;
+      const normalizedDistance = periodic
+        ? periodicDisplacement(source[first], source[second]).length() / referenceSpacingA
+        : source[first].p.distanceTo(source[second].p) / spacing;
       if (normalizedDistance < RDF_MAX_RADIUS) {
         const bin = Math.min(RDF_BINS - 1, Math.floor(normalizedDistance / RDF_MAX_RADIUS * RDF_BINS));
         rdf[bin]++;
@@ -400,7 +482,9 @@ function calculateStructuralStats(source, spacing) {
   }
 
   const paddedSize = maximum.sub(minimum).divideScalar(spacing).addScalar(1);
-  const volume = Math.max(1, paddedSize.x * paddedSize.y * paddedSize.z);
+  const cell = periodic ? currentCell() : null;
+  const periodicVolume = cell ? Math.abs(cell[0].dot(new THREE.Vector3().crossVectors(cell[1], cell[2]))) / (referenceSpacingA ** 3) : 0;
+  const volume = Math.max(1, periodicVolume || paddedSize.x * paddedSize.y * paddedSize.z);
   const density = source.length / volume;
   for (let bin = 0; bin < RDF_BINS; bin++) {
     const inner = bin / RDF_BINS * RDF_MAX_RADIUS;
@@ -418,7 +502,7 @@ function calculateStructuralStats(source, spacing) {
 
 function currentLiveStructure() {
   const source = pipelineStage === 4
-    ? (atoms.length > REFERENCE_COUNT ? [...atoms].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, REFERENCE_COUNT) : atoms)
+    ? (atoms.length > ANALYSIS_WINDOW_COUNT ? [...atoms].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, ANALYSIS_WINDOW_COUNT) : atoms)
     : [];
   const key = `${pipelineStage}:${atoms.length}:${replayIndex}`;
   if (key !== lastLiveStatsKey) {
@@ -513,7 +597,7 @@ function renderTrainingStats() {
   const visibleCurve = sectionModel.curve.slice(0, trainingProgress);
   rdfEyebrow.textContent = "GCTS training curve";
   rdfTitle.textContent = "section mismatch";
-  rdfStatus.textContent = `${point.samples}/${REFERENCE_COUNT} samples · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
+  rdfStatus.textContent = `${point.samples}/${referenceCount()} samples · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
   coordEyebrow.textContent = "learned section atlas";
   coordTitle.textContent = "connection-port strength";
   coordStatus.textContent = `support R = ${sectionModel.support.toFixed(1)}a · rank ${sectionModel.channels}`;
@@ -523,13 +607,13 @@ function renderTrainingStats() {
 
   rdfChart.replaceChildren();
   drawChartFrame(rdfChart, "samples", "loss");
-  [0, 54, 108, 162, 216].forEach((tick) => {
-    const x = 29 + tick / REFERENCE_COUNT * 323;
+  [0, .25, .5, .75, 1].map((fraction) => Math.round(referenceCount() * fraction)).forEach((tick) => {
+    const x = 29 + tick / referenceCount() * 323;
     rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
   });
   const maximum = Math.max(.001, sectionModel.initialPoint.trainLoss, sectionModel.initialPoint.validationLoss);
   const curvePath = (field) => visibleCurve.map((entry, index) => {
-    const x = 29 + entry.samples / REFERENCE_COUNT * 323;
+    const x = 29 + entry.samples / referenceCount() * 323;
     const y = 96 - Math.min(1, entry[field] / maximum) * 84;
     return `${index ? "L" : "M"}${x.toFixed(2)},${y.toFixed(2)}`;
   }).join(" ");
@@ -573,11 +657,11 @@ function renderStructureStats() {
   coordTitle.innerHTML = "P(z), r<sub>c</sub> = 1.32a";
   rdfChart.setAttribute("aria-label", "Radial distribution function for known positions and live reconstruction");
   coordChart.setAttribute("aria-label", "Coordination number distribution for known positions and live reconstruction");
-  const liveWindowLabel = pipelineStage === 4 && atoms.length > REFERENCE_COUNT ? "live reconstructed core" : "live reconstruction";
+  const liveWindowLabel = pipelineStage === 4 && atoms.length > ANALYSIS_WINDOW_COUNT ? "live central analysis window" : "live reconstruction";
   setChartLegend(rdfLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel]]);
   setChartLegend(coordLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel], ["", "click z to show all current shells"]]);
   const { stats: live } = currentLiveStructure();
-  rdfStatus.textContent = `known ${REFERENCE_COUNT} · ${liveWindowLabel} ${live.count}`;
+  rdfStatus.textContent = `known ${referenceCount()} · ${liveWindowLabel} ${live.count}`;
   const selected = selectedCoordinationDetail();
   coordStatus.textContent = coordinationSelection === null
     ? `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`
@@ -683,11 +767,35 @@ function makeSyntheticReferenceSite(qx, qy, qz, sourceIndex = 0, scenario = scen
 }
 
 function makeReferenceConfiguration(scenario = scenarioSelect.value) {
+  if (scenario === "imported" && importedStructure) {
+    const center = importedStructure.atoms.reduce((sum, atom) => sum.add(new THREE.Vector3(...atom.position)), new THREE.Vector3())
+      .multiplyScalar(1 / importedStructure.atoms.length);
+    const sceneScale = .92 / importedStructure.validation.medianNearestDistance;
+    return importedStructure.atoms.map((atom, sourceIndex) => {
+      const pA = new THREE.Vector3(...atom.position);
+      return {
+        pA, p: pA.clone().sub(center).multiplyScalar(sceneScale), species: atom.species,
+        family: "imported", sourceIndex, occupancy: atom.occupancy ?? 1,
+      };
+    }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
+  }
   const result = [];
   for (let ix = 0; ix < 6; ix++) for (let iy = 0; iy < 6; iy++) for (let iz = 0; iz < 6; iz++) {
     result.push(makeSyntheticReferenceSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length, scenario));
   }
   return result.sort((a, b) => a.p.lengthSq() - b.p.lengthSq());
+}
+
+function currentCell() {
+  if (scenarioSelect.value === "imported" && importedStructure?.cell) {
+    return importedStructure.cell.map((vector) => new THREE.Vector3(...vector));
+  }
+  const length = 6 * currentMaterial().spacingA;
+  return [new THREE.Vector3(length, 0, 0), new THREE.Vector3(0, length, 0), new THREE.Vector3(0, 0, length)];
+}
+
+function currentPbc() {
+  return scenarioSelect.value === "imported" && importedStructure ? importedStructure.pbc : [true, true, true];
 }
 
 function getOrderPrototypeLibrary() {
@@ -705,9 +813,19 @@ function periodicDisplacement(first, second) {
   const scale = material.spacingA / .92;
   const firstPosition = first.pA || first.p.clone().multiplyScalar(scale);
   const secondPosition = second.pA || second.p.clone().multiplyScalar(scale);
-  const boxLength = 6 * material.spacingA;
   const delta = secondPosition.clone().sub(firstPosition);
-  for (const axis of ["x", "y", "z"]) delta[axis] -= Math.round(delta[axis] / boxLength) * boxLength;
+  const cell = currentCell();
+  const pbc = currentPbc();
+  if (cell && pbc.some(Boolean)) {
+    const cellMatrix = new THREE.Matrix3().set(
+      cell[0].x, cell[1].x, cell[2].x,
+      cell[0].y, cell[1].y, cell[2].y,
+      cell[0].z, cell[1].z, cell[2].z,
+    );
+    const fractional = delta.clone().applyMatrix3(cellMatrix.clone().invert());
+    ["x", "y", "z"].forEach((axis, index) => { if (pbc[index]) fractional[axis] -= Math.round(fractional[axis]); });
+    return fractional.applyMatrix3(cellMatrix);
+  }
   return delta;
 }
 
@@ -1016,6 +1134,11 @@ function learnOverlapGrammar(source) {
 function learnSectionModel(source) {
   const axes = BALANCE_DIRECTIONS;
   const support = 1.9;
+  const incidentEdges = Array.from({ length: source.length }, () => []);
+  trainedMarking.edges.forEach((edge) => {
+    incidentEdges[edge.first].push(edge);
+    if (edge.second !== edge.first) incidentEdges[edge.second].push(edge);
+  });
   const basisAt = (centerIndex, atomIndex) => {
     const vector = periodicDisplacement(source[centerIndex], source[atomIndex]);
     const distance = vector.length() / referenceSpacingA;
@@ -1027,8 +1150,7 @@ function learnSectionModel(source) {
   const fieldAt = (coefficients, basis) => basis.features.reduce((sum, feature, axis) => sum + feature * coefficients[axis], 0);
   const targets = source.map((center, centerIndex) => {
     const values = new Array(axes.length).fill(-.18);
-    trainedMarking.edges.forEach((edge) => {
-      if (edge.first !== centerIndex && edge.second !== centerIndex) return;
+    incidentEdges[centerIndex].forEach((edge) => {
       const otherIndex = edge.first === centerIndex ? edge.second : edge.first;
       const vector = periodicDisplacement(center, source[otherIndex]);
       if (vector.length() < 1e-6 || edge.shared < 2) return;
@@ -1083,13 +1205,15 @@ function learnSectionModel(source) {
   };
   let fitSamples = 0;
   let holdoutSamples = 0;
+  let trainLoss = initialPoint.trainLoss;
+  let validationLoss = initialPoint.validationLoss;
   const curve = source.map((_, index) => {
     const cluster = learnedClusters.labels[index];
     if (index % 5 === 0) holdoutSamples++;
     else {
       fitSamples++;
       coefficients[cluster] = coefficients[cluster].map((value, axis) => value + .14 * (targets[index][axis] - value));
-      const incident = trainedMarking.edges.filter((edge) => (edge.first === index || edge.second === index) && Math.max(edge.first, edge.second) <= index);
+      const incident = incidentEdges[index].filter((edge) => Math.max(edge.first, edge.second) <= index);
       const gradient = new Array(axes.length).fill(0);
       let constraints = 0;
       incident.forEach((edge) => {
@@ -1108,12 +1232,29 @@ function learnSectionModel(source) {
       });
       if (constraints) coefficients[cluster] = coefficients[cluster].map((value, axis) => value - .04 * gradient[axis] / constraints);
     }
+    const portLoss = targets[index].reduce((error, target, axis) =>
+      error + (coefficients[cluster][axis] - target) ** 2, 0) / axes.length;
+    let overlapLoss = 0;
+    let overlapConstraints = 0;
+    incidentEdges[index].forEach((edge) => {
+      const firstCoefficients = coefficients[learnedClusters.labels[edge.first]];
+      const secondCoefficients = coefficients[learnedClusters.labels[edge.second]];
+      edge.sharedIndices.forEach((atomIndex) => {
+        const difference = fieldAt(firstCoefficients, basisAt(edge.first, atomIndex))
+          - fieldAt(secondCoefficients, basisAt(edge.second, atomIndex));
+        overlapLoss += difference ** 2;
+        overlapConstraints++;
+      });
+    });
+    const sampleLoss = .42 * portLoss + .58 * overlapLoss / Math.max(1, overlapConstraints);
+    if (index % 5 === 0) validationLoss = .92 * validationLoss + .08 * sampleLoss;
+    else trainLoss = .92 * trainLoss + .08 * sampleLoss;
     return {
       samples: index + 1,
       fitSamples,
       holdoutSamples,
-      trainLoss: totalLossFor(fitIndices, fitSet),
-      validationLoss: totalLossFor(holdoutIndices, holdoutSet),
+      trainLoss,
+      validationLoss,
       coefficients: coefficients.map((values) => [...values]),
     };
   });
@@ -1525,14 +1666,16 @@ function enterPipelineStage(index, options = {}) {
   resetCounters();
   rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5 ^ confinementSelect.selectedIndex * 0x734a9d;
   referenceAtoms = makeReferenceConfiguration();
-  referenceSpacing = medianNearestSpacing(referenceAtoms);
-  referenceSpacingA = referenceSpacing / .92 * currentMaterial().spacingA;
-  referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing);
+  referenceSpacing = scenarioSelect.value === "imported" ? .92 : medianNearestSpacing(referenceAtoms);
+  referenceSpacingA = scenarioSelect.value === "imported"
+    ? importedStructure.validation.medianNearestDistance
+    : referenceSpacing / .92 * currentMaterial().spacingA;
+  referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean));
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
   trainedMarking = learnOverlapMarking(referenceAtoms);
   overlapGrammar = learnOverlapGrammar(referenceAtoms);
   sectionModel = learnSectionModel(referenceAtoms);
-  if (pipelineStage !== 3) trainingProgress = REFERENCE_COUNT;
+  if (pipelineStage !== 3) trainingProgress = referenceCount();
   if (pipelineStage >= 3 && policySelect.value === "marked") seedTrainedMarking();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
@@ -1579,14 +1722,14 @@ function updateStageNarrative() {
     {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
       caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no environment labels are given.`, badge: "input",
-      decision: material.name, copy: `The learner receives 216 element-labelled positions. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.`,
+      decision: material.name, copy: `The learner receives ${referenceCount()} element-labelled positions. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.`,
       values: [material.elements.join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, "1 configuration"],
     },
     {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterCount} learned types`,
-      caption: `All ${REFERENCE_COUNT} atom-centered neighborhoods are assigned once; their overlapping shells cover the configuration. Wireframes show only the ${clusterCount} medoids.`, badge: "learn",
+      caption: `All ${referenceCount()} atom-centered neighborhoods are assigned once; their overlapping shells cover the configuration. Wireframes show only the ${clusterCount} medoids.`, badge: "learn",
       decision: "Environment clusters computed", copy: "Element-resolved radial functions and a first-shell angular histogram are standardized, then clustered by deterministic k-medoids.",
-      values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${clusterCount} medoids`, "PBC minimum image"],
+      values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${clusterCount} medoids`, currentPbc().some(Boolean) ? "general-cell minimum image" : "non-periodic distances"],
     },
     {
       eyebrow: "encoding · pairwise rigid registration", title: "Learn the finite SE(3) overlap grammar", phase: `${overlapGrammar.rules.length} rules`,
@@ -1596,7 +1739,7 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "training · local sections on cluster neighborhoods", title: "Learn a bounded GCTS section for each cluster type", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
-      caption: `${trainingPoint.samples}/${REFERENCE_COUNT} centers processed · ${trainingPoint.overlaps.toLocaleString()} support overlaps · held-out mismatch ${trainingPoint.validationLoss.toFixed(3)}.`, badge: "train",
+      caption: `${trainingPoint.samples}/${referenceCount()} centers processed · ${trainingPoint.overlaps.toLocaleString()} support overlaps · held-out mismatch ${trainingPoint.validationLoss.toFixed(3)}.`, badge: "train",
       decision: "Connection-section training", copy: "Each cluster begins with random directional ports in its learned local frame. Strong observed overlaps label compatible ports; absent directions label failed ports; shared-support agreement is evaluated after transporting both sections into world coordinates.",
       values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.axes.length} signed ports`],
     },
@@ -1723,7 +1866,7 @@ function performOffLatticeEvent() {
 }
 
 function advanceMarkingTraining(batchSize = 12) {
-  trainingProgress = Math.min(REFERENCE_COUNT, trainingProgress + batchSize);
+  trainingProgress = Math.min(referenceCount(), trainingProgress + batchSize);
   eventIndex = trainingProgress;
   buildClusterOverlay();
   rebuildWorld();
@@ -1732,7 +1875,7 @@ function advanceMarkingTraining(batchSize = 12) {
 
 function performEvent() {
   if (pipelineStage === 3) {
-    if (trainingProgress < REFERENCE_COUNT) advanceMarkingTraining();
+    if (trainingProgress < referenceCount()) advanceMarkingTraining();
     else enterPipelineStage(4, { play: pipelineAuto });
     return;
   }
@@ -1880,14 +2023,14 @@ function updateUI() {
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   if (pipelineStage === 0) {
-    atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = `${material.name} · xyz in Å`;
+    atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = `${material.name} · xyz in Å`;
     frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.elements.length); frontierDelta.textContent = material.elements.join(" / ");
     oracleLabel.textContent = "LABELS GIVEN"; oracleMetric.textContent = "0"; oracleDelta.textContent = "clusters must be inferred";
     reuseLabel.textContent = "GROWTH MODE"; reuseMetric.textContent = "OPEN"; reuseDelta.textContent = "restartable 1–2 minute bursts";
   } else if (pipelineStage === 1) {
-    atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "periodic element-aware descriptors";
+    atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = `${currentPbc().some(Boolean) ? "PBC" : "open"} element-aware descriptors`;
     frontierLabel.textContent = "LEARNED CLUSTERS"; frontierMetric.textContent = String(learnedClusters.clusters.length); frontierDelta.textContent = "deterministic k-medoids";
-    oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = "100%"; oracleDelta.textContent = `${REFERENCE_COUNT} / ${REFERENCE_COUNT} centers assigned`;
+    oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = "100%"; oracleDelta.textContent = `${referenceCount()} / ${referenceCount()} centers assigned`;
     reuseLabel.textContent = "CUTOFF"; reuseMetric.textContent = "1.9a"; reuseDelta.textContent = `${(referenceSpacingA * 1.9).toFixed(2)} Å local domain`;
   } else if (pipelineStage === 2) {
     atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedClusters.clusters.length); atomDelta.textContent = "one per learned medoid";
@@ -1897,14 +2040,14 @@ function updateUI() {
   } else if (pipelineStage === 3) {
     const point = currentTrainingPoint();
     stageEyebrow.textContent = "training · local sections on cluster neighborhoods";
-    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Connection ports emerge on the learned cluster prototypes" : "Connection-valued GCTS marking trained";
-    decisionTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Fitting section overlap consistency" : "Local sections ready to glue";
-    decisionCopy.textContent = trainingProgress < REFERENCE_COUNT
+    stageTitle.textContent = trainingProgress < referenceCount() ? "Connection ports emerge on the learned cluster prototypes" : "Connection-valued GCTS marking trained";
+    decisionTitle.textContent = trainingProgress < referenceCount() ? "Fitting section overlap consistency" : "Local sections ready to glue";
+    decisionCopy.textContent = trainingProgress < referenceCount()
       ? "The medoid clusters stay fixed while cluster-local port level sets morph around them. Type-colored lobes mark compatible overlap directions; red lobes mark absent or failed connections. Their frames rotate with each rigid placement; no physical potential is used."
       : "The learned connection sections now travel with their cluster types. Search rejects a placement when transformed ports disagree on shared support.";
     phaseReadout.textContent = `loss ${point.validationLoss.toFixed(3)}`;
-    captionAction.textContent = `${point.samples}/${REFERENCE_COUNT} centers · ${point.overlaps.toLocaleString()} support overlaps · fit ${point.trainLoss.toFixed(3)} · holdout ${point.validationLoss.toFixed(3)}.`;
-    atomLabel.textContent = "SECTION SAMPLES"; atomMetric.textContent = `${point.samples}/${REFERENCE_COUNT}`; atomDelta.textContent = `${point.fitSamples} fit · ${point.holdoutSamples} held out`;
+    captionAction.textContent = `${point.samples}/${referenceCount()} centers · ${point.overlaps.toLocaleString()} support overlaps · fit ${point.trainLoss.toFixed(3)} · holdout ${point.validationLoss.toFixed(3)}.`;
+    atomLabel.textContent = "SECTION SAMPLES"; atomMetric.textContent = `${point.samples}/${referenceCount()}`; atomDelta.textContent = `${point.fitSamples} fit · ${point.holdoutSamples} held out`;
     frontierLabel.textContent = "SUPPORT OVERLAPS"; frontierMetric.textContent = point.overlaps.toLocaleString(); frontierDelta.textContent = "section agreement constraints";
     oracleLabel.textContent = "FIT MISMATCH"; oracleMetric.textContent = point.trainLoss.toFixed(3); oracleDelta.textContent = "overlap + connection ports";
     reuseLabel.textContent = "HOLDOUT MISMATCH"; reuseMetric.textContent = point.validationLoss.toFixed(3); reuseDelta.textContent = "unseen local sections";
@@ -1920,7 +2063,7 @@ function updateUI() {
       : `${atoms.length.toLocaleString()} atoms · ${placedClusters.length.toLocaleString()} clusters`;
     atomLabel.textContent = "EXPLICIT ATOMS";
     atomMetric.textContent = atoms.length.toLocaleString();
-    atomDelta.textContent = `${replayIndex}/${REFERENCE_COUNT} known sites matched · ${placedClusters.length} rigid placements`;
+    atomDelta.textContent = `${replayIndex}/${referenceCount()} known sites matched · ${placedClusters.length} rigid placements`;
     frontierLabel.textContent = "SE(3) FRONTIER";
     frontierMetric.textContent = frontierCandidates.length.toLocaleString();
     frontierDelta.textContent = "untried learned attachments";
@@ -2126,6 +2269,30 @@ playButton.addEventListener("click", () => {
 stepButton.addEventListener("click", () => { setPlaying(false); performEvent(); });
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
 scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
+structureFileInput.addEventListener("change", async () => {
+  const [file] = structureFileInput.files;
+  if (!file) return;
+  try {
+    await importStructureFile(file);
+  } catch (error) {
+    importStatus.className = "import-status invalid";
+    importStatus.textContent = `Import failed: ${error.message}`;
+  } finally {
+    structureFileInput.value = "";
+  }
+});
+loadFixtureButton.addEventListener("click", async () => {
+  try {
+    importStatus.className = "import-status";
+    importStatus.textContent = "Loading the bundled extXYZ fixture…";
+    const response = await fetch("./fixtures/nacl-64.extxyz");
+    if (!response.ok) throw new Error(`fixture request returned ${response.status}`);
+    activateImportedStructure(parseStructureText(await response.text(), "nacl-64.extxyz"), "bundled fixture · nacl-64.extxyz");
+  } catch (error) {
+    importStatus.className = "import-status invalid";
+    importStatus.textContent = `Fixture failed: ${error.message}`;
+  }
+});
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
 policySelect.addEventListener("change", () => {
   if (pipelineStage === 4) enterPipelineStage(4);

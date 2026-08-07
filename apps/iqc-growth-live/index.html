@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260806-3">
+  <link rel="stylesheet" href="./style.css?v=20260806-4">
   <script type="importmap">
     {
       "imports": {
@@ -46,8 +46,17 @@
               <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
               <option value="iqc">Al–Cu–Fe IQC approximant</option>
               <option value="bc8">Silicon BC8-like network</option>
+              <option value="imported" disabled>Imported structure</option>
             </select>
           </label>
+          <label class="file-field" for="structureFileInput">
+            <input id="structureFileInput" type="file" accept=".cif,.xyz,.extxyz,.vasp,.json,POSCAR,CONTCAR">
+            <span>Import CIF · POSCAR · XYZ · JSON</span>
+          </label>
+          <div id="importStatus" class="import-status" role="status" aria-live="polite">
+            Parsed locally; files are not uploaded. Recommended: 32–1,200 atoms.
+          </div>
+          <button id="loadFixtureButton" class="fixture-link" type="button">Load bundled 64-atom NaCl fixture</button>
           <label class="field" for="confinementSelect">
             <span>Confinement</span>
             <select id="confinementSelect">
@@ -187,6 +196,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260806-9"></script>
+  <script type="module" src="./app.js?v=20260806-11"></script>
 </body>
 </html>
