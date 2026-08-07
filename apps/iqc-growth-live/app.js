@@ -14,6 +14,7 @@ const stepButton = $("stepButton");
 const resetButton = $("resetButton");
 const speedInput = $("speedInput");
 const speedOutput = $("speedOutput");
+const growthDurationSelect = $("growthDurationSelect");
 const markingToggle = $("markingToggle");
 const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
@@ -81,10 +82,8 @@ const COLORS = {
 const TAU = Math.PI * 2;
 const PHI = (1 + Math.sqrt(5)) / 2;
 const REFERENCE_COUNT = 216;
-const VIEWPORT_TARGET = 2160;
-const REPRESENTED_TARGET = 1_048_576;
-const EXTENSION_COUNT = VIEWPORT_TARGET;
 const FRONTIER_BATCH = 4;
+const FRONTIER_REFILL = 4096;
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
 const COORDINATION_CUTOFF = 1.32;
@@ -167,6 +166,8 @@ let playing = false;
 let atoms = [];
 let referenceAtoms = [];
 let extensionTargets = [];
+let generatedFrontierRadius = 3;
+let extensionGenerated = 0;
 let replayIndex = 0;
 let extensionIndex = 0;
 let sectorCounts = new Array(BALANCE_DIRECTIONS.length).fill(0);
@@ -198,15 +199,27 @@ let trainingProgress = 0;
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
 let orderPrototypeLibrary = null;
+let growthDeadline = 0;
+let growthStartAtomCount = 0;
+let growthStopReason = "";
+let slowFrameSeconds = 0;
 
 function currentMaterial() {
   return MATERIALS[scenarioSelect.value];
 }
 
-function representedAtomCount() {
-  if (atoms.length <= REFERENCE_COUNT) return atoms.length;
-  const progress = Math.min(1, (atoms.length - REFERENCE_COUNT) / (VIEWPORT_TARGET - REFERENCE_COUNT));
-  return Math.round(REFERENCE_COUNT * Math.pow(REPRESENTED_TARGET / REFERENCE_COUNT, progress));
+function growthDurationSeconds() {
+  return Number(growthDurationSelect.value) || 60;
+}
+
+function growthTimeRemaining() {
+  return growthDeadline ? Math.max(0, Math.ceil((growthDeadline - performance.now()) / 1000)) : 0;
+}
+
+function formatDuration(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return `${minutes}:${String(remainder).padStart(2, "0")}`;
 }
 
 function classificationSample() {
@@ -555,10 +568,11 @@ function renderStructureStats() {
   coordTitle.innerHTML = "P(z), r<sub>c</sub> = 1.32a";
   rdfChart.setAttribute("aria-label", "Radial distribution function for known positions and live reconstruction");
   coordChart.setAttribute("aria-label", "Coordination number distribution for known positions and live reconstruction");
-  setChartLegend(rdfLegend, [["known-key", "known positions"], ["live-key", "live reconstruction"]]);
-  setChartLegend(coordLegend, [["known-key", "known positions"], ["live-key", "live reconstruction"], ["", "click z to show all current shells"]]);
+  const liveWindowLabel = pipelineStage === 4 && atoms.length > REFERENCE_COUNT ? "live reconstructed core" : "live reconstruction";
+  setChartLegend(rdfLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel]]);
+  setChartLegend(coordLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel], ["", "click z to show all current shells"]]);
   const { stats: live } = currentLiveStructure();
-  rdfStatus.textContent = `known ${REFERENCE_COUNT} · live ${live.count}`;
+  rdfStatus.textContent = `known ${REFERENCE_COUNT} · ${liveWindowLabel} ${live.count}`;
   const selected = selectedCoordinationDetail();
   coordStatus.textContent = coordinationSelection === null
     ? `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`
@@ -1027,20 +1041,38 @@ function continuationPriority(qx, qy, qz) {
   return Math.hypot(qx, qy, qz);
 }
 
-function makeExtensionTargets() {
-  const candidates = [];
-  for (let ix = -9; ix < 9; ix++) for (let iy = -9; iy < 9; iy++) for (let iz = -9; iz < 9; iz++) {
-    const qx = ix + .5;
-    const qy = iy + .5;
-    const qz = iz + .5;
-    if (Math.abs(qx) <= 2.5 && Math.abs(qy) <= 2.5 && Math.abs(qz) <= 2.5) continue;
-    const target = decorateLatticeSite(qx, qy, qz, candidates.length + REFERENCE_COUNT);
-    target.priority = continuationPriority(qx, qy, qz);
-    target.tie = siteHash(qx, qy, qz, 8);
-    candidates.push(target);
+function refillExtensionTargets(minimum = FRONTIER_REFILL) {
+  while (extensionTargets.length < minimum) {
+    generatedFrontierRadius++;
+    const radius = generatedFrontierRadius;
+    const outerMinimum = -radius;
+    const outerMaximum = radius - 1;
+    for (let ix = outerMinimum; ix <= outerMaximum; ix++) {
+      for (let iy = outerMinimum; iy <= outerMaximum; iy++) {
+        for (let iz = outerMinimum; iz <= outerMaximum; iz++) {
+          if (ix !== outerMinimum && ix !== outerMaximum
+            && iy !== outerMinimum && iy !== outerMaximum
+            && iz !== outerMinimum && iz !== outerMaximum) continue;
+          const qx = ix + .5;
+          const qy = iy + .5;
+          const qz = iz + .5;
+          const target = decorateLatticeSite(qx, qy, qz, REFERENCE_COUNT + extensionGenerated++);
+          target.priority = continuationPriority(qx, qy, qz);
+          target.tie = siteHash(qx, qy, qz, 8);
+          extensionTargets.push(target);
+        }
+      }
+    }
   }
-  candidates.sort((a, b) => a.priority - b.priority || a.tie - b.tie);
-  return candidates.slice(0, EXTENSION_COUNT - REFERENCE_COUNT);
+  extensionTargets.sort((first, second) => first.priority - second.priority || first.tie - second.tie);
+}
+
+function makeExtensionTargets() {
+  extensionTargets = [];
+  generatedFrontierRadius = 3;
+  extensionGenerated = 0;
+  refillExtensionTargets();
+  return extensionTargets;
 }
 
 function frontierSector(position) {
@@ -1055,6 +1087,7 @@ function frontierSector(position) {
 }
 
 function chooseFrontierAnchorIndex() {
+  if (extensionTargets.length < 512) refillExtensionTargets();
   if (!extensionTargets.length) return -1;
   const minimumRadius = extensionTargets[0].priority;
   const window = [];
@@ -1286,6 +1319,10 @@ function resetCounters() {
   trainingProgress = 0;
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
+  growthDeadline = 0;
+  growthStartAtomCount = 0;
+  growthStopReason = "";
+  slowFrameSeconds = 0;
 }
 
 function enterPipelineStage(index, options = {}) {
@@ -1370,8 +1407,8 @@ function updateStageNarrative() {
       values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.channels} scalar channel`],
     },
     {
-      eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: `0 / ${REPRESENTED_TARGET.toLocaleString()}`,
-      caption: "The search recovers 216 observed sites, then samples a visible frontier while its learned hierarchy represents growth toward one million atoms.", badge: "search",
+      eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: "0 explicit atoms",
+      caption: "The search recovers 216 observed sites, then grows an open-ended explicit frontier in restartable one- or two-minute bursts.", badge: "search",
       decision: "Ready for one continuous search", copy: "Local compatibility leads; a soft stochastic angular balance prevents persistent directional starvation without overriding forced moves.",
       values: ["near-best attachment", "section overlap", "soft balance", "not started"],
     },
@@ -1470,15 +1507,7 @@ function performReconstructionEvent() {
 }
 
 function performExtensionEvent() {
-  if (atoms.length >= EXTENSION_COUNT || extensionTargets.length === 0) {
-    setPlaying(false);
-    pipelineAuto = false;
-    updatePipelineButtons();
-    atoms.length = Math.min(atoms.length, EXTENSION_COUNT);
-    phaseReadout.textContent = `${REPRESENTED_TARGET.toLocaleString()} / ${REPRESENTED_TARGET.toLocaleString()}`;
-    captionAction.textContent = `The same search has crossed the observed window and reached ${REPRESENTED_TARGET.toLocaleString()} implicitly represented atoms; ${VIEWPORT_TARGET.toLocaleString()} are materialized in the viewport sample.`;
-    return;
-  }
+  if (extensionTargets.length < 512) refillExtensionTargets();
   eventIndex++;
   if (pendingWrong) discardSpeculativeBranch();
   const preview = previewFrontierBatch(FRONTIER_BATCH);
@@ -1496,7 +1525,7 @@ function performExtensionEvent() {
     currentCandidate = { p: center, accepted: true };
     acceptedDecisions++;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: added.at(-1).depth, action: state.action, family: target.family });
-    captionAction.textContent = `${representedAtomCount().toLocaleString()}/${REPRESENTED_TARGET.toLocaleString()} atoms represented; ${atoms.length.toLocaleString()} viewport atoms materialized by near-best frontier attachments.`;
+    captionAction.textContent = `${atoms.length.toLocaleString()} explicit atoms currently exist; click Pause at any time or let the timed burst stop automatically.`;
     updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver, energy: localEnergy, interval: decision.interval });
   }
   rebuildWorld();
@@ -1664,7 +1693,7 @@ function updateUI() {
     atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = `${material.name} · xyz in Å`;
     frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.elements.length); frontierDelta.textContent = material.elements.join(" / ");
     oracleLabel.textContent = "LABELS GIVEN"; oracleMetric.textContent = "0"; oracleDelta.textContent = "clusters must be inferred";
-    reuseLabel.textContent = "REPRESENTED TARGET"; reuseMetric.textContent = REPRESENTED_TARGET.toLocaleString(); reuseDelta.textContent = `${Math.round(REPRESENTED_TARGET / REFERENCE_COUNT).toLocaleString()}× seed · hierarchy goal`;
+    reuseLabel.textContent = "GROWTH MODE"; reuseMetric.textContent = "OPEN"; reuseDelta.textContent = "restartable 1–2 minute bursts";
   } else if (pipelineStage === 1) {
     atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(REFERENCE_COUNT); atomDelta.textContent = "periodic element-aware descriptors";
     frontierLabel.textContent = "LEARNED CLUSTERS"; frontierMetric.textContent = String(learnedClusters.clusters.length); frontierDelta.textContent = "deterministic k-medoids";
@@ -1695,22 +1724,23 @@ function updateUI() {
     resolverValue.textContent = `${sectionModel.channels} scalar channel`;
   } else {
     const reconstructing = replayIndex < REFERENCE_COUNT;
-    const represented = representedAtomCount();
     stageEyebrow.textContent = reconstructing ? "search · recovering the observed window" : "search · continuing through the same frontier";
     stageTitle.textContent = reconstructing ? "Reconstruct, then keep going" : "The same search continues beyond 216 atoms";
-    phaseReadout.textContent = `${represented.toLocaleString()} / ${REPRESENTED_TARGET.toLocaleString()}`;
-    atomLabel.textContent = "VIEWPORT SAMPLE";
+    phaseReadout.textContent = playing && growthDeadline
+      ? `${atoms.length.toLocaleString()} explicit · ${formatDuration(growthTimeRemaining())} left`
+      : `${atoms.length.toLocaleString()} explicit atoms`;
+    atomLabel.textContent = "EXPLICIT ATOMS";
     atomMetric.textContent = atoms.length.toLocaleString();
-    atomDelta.textContent = reconstructing ? `${replayIndex}/${REFERENCE_COUNT} observed sites recovered` : `${VIEWPORT_TARGET.toLocaleString()} explicit-atom ceiling`;
+    atomDelta.textContent = reconstructing ? `${replayIndex}/${REFERENCE_COUNT} observed sites recovered` : "positions materialized in this scene";
     frontierLabel.textContent = "OPEN FRONTIER";
     frontierDelta.textContent = reconstructing ? "next observed sites" : "next uncovered sites";
     oracleLabel.textContent = "ORACLE WORK";
     oracleMetric.textContent = oracleCalls > 9999 ? `${(oracleCalls / 1000).toFixed(1)}k` : String(oracleCalls);
     oracleDelta.textContent = `${acceptedDecisions + rejectedDecisions} tree decisions`;
-    reuseLabel.textContent = "REPRESENTED";
-    reuseMetric.textContent = represented.toLocaleString();
+    reuseLabel.textContent = playing ? "BURST ADDED" : "LAST BURST";
+    reuseMetric.textContent = Math.max(0, atoms.length - growthStartAtomCount).toLocaleString();
     const resolved = Math.max(1, acceptedDecisions + rejectedDecisions);
-    reuseDelta.textContent = `${Math.round(grammarDecisions / resolved * 100)}% of decisions reused by marking`;
+    reuseDelta.textContent = growthStopReason || `${Math.round(grammarDecisions / resolved * 100)}% of decisions reused by marking`;
   }
   updateOrderAudit();
   renderStack();
@@ -1854,11 +1884,27 @@ function renderMarkings() {
 
 function setPlaying(value) {
   playing = value;
+  if (playing && pipelineStage === 4) {
+    growthDeadline = performance.now() + growthDurationSeconds() * 1000;
+    growthStartAtomCount = atoms.length;
+    growthStopReason = "";
+    slowFrameSeconds = 0;
+  } else if (!playing) growthDeadline = 0;
   playIcon.textContent = playing ? "Ⅱ" : "▶";
-  playLabel.textContent = playing ? "Pause" : "Play";
-  playButton.setAttribute("aria-label", playing ? "Pause pipeline" : "Play pipeline");
+  playLabel.textContent = playing ? "Pause" : pipelineStage === 4 ? `Grow ${growthDurationSeconds() / 60} min` : "Play";
+  playButton.setAttribute("aria-label", playing ? "Pause pipeline" : pipelineStage === 4 ? `Grow explicit atoms for ${growthDurationSeconds() / 60} minute${growthDurationSeconds() === 60 ? "" : "s"}` : "Play pipeline");
   document.querySelector(".run-state").classList.toggle("running", playing);
   runStateText.textContent = playing ? `Stage ${pipelineStage + 1} running` : `Stage ${pipelineStage + 1} paused`;
+}
+
+function pauseGrowth(reason) {
+  const added = Math.max(0, atoms.length - growthStartAtomCount);
+  growthStopReason = reason;
+  setPlaying(false);
+  pipelineAuto = false;
+  updatePipelineButtons();
+  captionAction.textContent = `${reason} ${added.toLocaleString()} explicit atoms were added in this burst; click Grow again to continue from the same frontier.`;
+  updateUI();
 }
 
 pipelineSteps.forEach((button) => button.addEventListener("click", () => {
@@ -1871,7 +1917,11 @@ pipelineButton.addEventListener("click", () => {
   else setPlaying(false);
   updatePipelineButtons();
 });
-playButton.addEventListener("click", () => setPlaying(!playing));
+playButton.addEventListener("click", () => {
+  if (playing && pipelineStage === 4) pauseGrowth("Paused by user.");
+  else setPlaying(!playing);
+  updateUI();
+});
 stepButton.addEventListener("click", () => { setPlaying(false); performEvent(); });
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
 scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
@@ -1882,6 +1932,7 @@ policySelect.addEventListener("change", () => {
   updateUI();
 });
 speedInput.addEventListener("input", () => { speedOutput.textContent = speedInput.value; });
+growthDurationSelect.addEventListener("change", () => { if (!playing) setPlaying(false); updateUI(); });
 [markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
@@ -1898,7 +1949,8 @@ new ResizeObserver(resize).observe(viewport);
 
 function animate(now) {
   requestAnimationFrame(animate);
-  const delta = Math.min(.1, (now - lastFrame) / 1000);
+  const rawDelta = (now - lastFrame) / 1000;
+  const delta = Math.min(.1, rawDelta);
   lastFrame = now;
   controls.autoRotate = rotateToggle.checked;
   controls.update();
@@ -1914,6 +1966,16 @@ function animate(now) {
       stageElapsed += delta;
       if (stageElapsed >= 1.8) enterPipelineStage(pipelineStage + 1, { play: true });
     } else {
+      if (growthDeadline && now >= growthDeadline) {
+        pauseGrowth("Timed growth complete.");
+      } else {
+        slowFrameSeconds = rawDelta > .13 ? slowFrameSeconds + rawDelta : Math.max(0, slowFrameSeconds - rawDelta * .5);
+        if (atoms.length > 1000 && slowFrameSeconds > 4) pauseGrowth("Paused to protect browser responsiveness.");
+      }
+      if (!playing) {
+        renderer.render(scene, camera);
+        return;
+      }
       eventAccumulator += delta * Number(speedInput.value);
       while (eventAccumulator >= 1) {
         eventAccumulator--;
