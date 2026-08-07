@@ -55,10 +55,11 @@ Training is revealed sample by sample rather than appearing as an instantaneous
 answer. Each section begins with deterministic random directional coefficients;
 the live fit and held-out curves report a weighted combination of overlap
 mismatch and anchor mismatch as the known centers are processed. In the 3D
-scene, two nested wireframe level surfaces form a halo around every cluster
-occurrence and deform as the coefficients converge. The section atlas reports
+scene, the learned medoid clusters from the encoding stage remain as a compact
+prototype gallery. Two nested wireframe level surfaces form one halo around
+each prototype and deform as the coefficients converge. The section atlas reports
 the current field amplitude for every cluster type, and clicking a row isolates
-all copies of that section. The observed shell-overlap graph remains visible as
+that prototype and its section. The observed shell-overlap graph remains visible as
 the constraints from which the sections learn to glue.
 
 When the marked policy is selected, the trained section identifiers and their
