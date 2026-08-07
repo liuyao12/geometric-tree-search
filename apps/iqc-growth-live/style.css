@@ -92,6 +92,16 @@ a { color: inherit; }
   width: 100%; height: 36px; padding: 0 9px; border: 1px solid var(--line); border-radius: 0;
   background: #0b1a1b; color: #dce7e3; font-size: 10px;
 }
+.file-field { display: block; margin-top: 9px; }
+.file-field input { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+.file-field span { display: flex; align-items: center; justify-content: center; min-height: 32px; padding: 0 8px; border: 1px dashed rgba(101,225,188,.34); color: var(--mint); background: rgba(101,225,188,.045); font: 8px var(--mono); cursor: pointer; }
+.file-field:hover span { border-color: rgba(101,225,188,.66); background: rgba(101,225,188,.08); }
+.file-field input:focus-visible + span { outline: 2px solid var(--mint); outline-offset: 2px; }
+.import-status { margin-top: 7px; padding-left: 7px; border-left: 2px solid var(--line); color: #6f847e; font: 7px/1.45 var(--mono); }
+.import-status.valid { border-color: var(--mint); color: #94bdb2; }
+.import-status.invalid { border-color: var(--red); color: #d69597; }
+.fixture-link { display: inline-block; width: auto; min-height: 0; margin-top: 7px; padding: 0; border: 0; background: none; color: var(--muted); font: 600 8px/1.35 var(--mono); text-decoration: underline; text-decoration-color: rgba(184, 215, 207, .34); text-underline-offset: 3px; }
+.fixture-link:hover { color: var(--text); }
 .transport { display: grid; grid-template-columns: 1.25fr .8fr .8fr; gap: 7px; }
 .pipeline-button { width: 100%; height: 34px; margin-bottom: 8px; border: 1px solid rgba(181,148,255,.38); color: var(--violet); background: rgba(181,148,255,.07); cursor: pointer; font-size: 9px; }
 .pipeline-button.running { color: var(--red); border-color: rgba(255,109,113,.4); background: rgba(255,109,113,.06); }
