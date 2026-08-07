@@ -467,3 +467,37 @@ selects one.
 The ablation deliberately removes only the section/connection marking while
 retaining the learned geometry.  It therefore measures GCTS information rather
 than comparing against a completely uninformed random generator.
+
+## Markings on non-ideal parent geometry
+
+`scripts/materials_gcts_hierarchical_residual.py` adds a synthetic but fully
+held-out displacement benchmark.  Its input is a 1,024-atom NiAl B2 point cloud
+with no cell or axes.  The atomic coordinates contain a bounded displacement
+decoration generated at three nested binary parent levels.  The learner first
+recovers a short same-species translation frame and the two-atom colored
+quotient.  It then fits seven possible octant sections at each observed level
+and tests whether the section vectors themselves follow a low-residual scalar
+recurrence.  This is a marking on a cluster-of-clusters, rather than another
+atom type or a physical interatomic potential.
+
+The hidden recurrence ratio is 0.58; the learner obtains
+0.5799999999999651.  Both the coordinate fit and the between-level recurrence
+have relative error below `6e-13`.  Extrapolating the next two parent markings
+materializes 1,024 -> 8,192 -> 65,536 atoms with exact colored position sets,
+or 32,256 atomwise placements per macro action.  A flat ablation copies the
+observed 8x8x8 displacement block but omits its new parent section.  It retains
+the chemical quotient while missing held-out coordinates by 0.00620 angstrom
+RMS; the marked rule is accurate to `5e-14` angstrom RMS.  A rotated and
+translated input gives the correspondingly transformed output.
+
+An IID displacement field on the identical B2 geometry is a negative control.
+It is rejected because either the finite hierarchy fit or its between-level
+recurrence exceeds the 10% relative-error gate.  Thus the engine does not call
+every coordinate residual a recursively growable marking.
+
+This control establishes the interface and causal advantage, not a claim about
+phonons or real strain fields.  Its octant recurrence is deliberately known to
+exist, the input is dyadic, and there is no energetic relaxation.  The next
+tests must mix a recurrent displacement marking with isolated frontier defects
+and replace the planted recurrence with modulations measured in real material
+configurations.

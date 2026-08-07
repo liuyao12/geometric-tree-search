@@ -328,7 +328,13 @@ def _learn_translation_motif(
     inverse = inverse3(basis)  # type: ignore[arg-type]
     grouped = {}
     all_indices = []
-    tolerance = 0.01
+    # This is a quotient-residue clustering tolerance, not a positional snap.
+    # A bounded smooth displacement field can move equivalent residues by a
+    # few percent of the parent translation.  Keeping the old 1% bins split a
+    # single motif into boundary-specific pseudo-types before a residual
+    # marking had a chance to model that variation.
+    residue_tolerance = 0.05
+    boundary_tolerance = 0.01
     for point, chemical in zip(configuration.positions,
                                configuration.species):
         coordinate = matvec(inverse, point)
@@ -336,7 +342,7 @@ def _learn_translation_motif(
         residue = []
         for value in coordinate:
             nearest = round(value)
-            if abs(value - nearest) <= tolerance:
+            if abs(value - nearest) <= boundary_tolerance:
                 cell_index.append(nearest)
                 residue.append(0.0)
             else:
@@ -345,7 +351,7 @@ def _learn_translation_motif(
                 residue.append(value - integer)
         index_tuple = tuple(cell_index)
         all_indices.append(index_tuple)
-        key = (chemical,) + tuple(round(value / tolerance)
+        key = (chemical,) + tuple(round(value / residue_tolerance)
                                   for value in residue)
         entry = grouped.setdefault(key, {"residues": [], "cells": set()})
         entry["residues"].append(tuple(residue))
