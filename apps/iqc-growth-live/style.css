@@ -310,6 +310,15 @@ a { color: inherit; }
 .recursive-grid dt { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
 .recursive-grid dd { overflow: hidden; margin: 3px 0 0; color: #cbd8d4; font: 8px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
 .recursive-card > p { margin: 8px 0 0; color: var(--faint); font-size: 7px; line-height: 1.45; }
+.external-audit { margin-top: 8px; padding: 7px; border: 1px solid rgba(101,225,188,.22); background: rgba(101,225,188,.035); }
+.external-audit[hidden] { display: none; }
+.external-audit > div { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.external-audit small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+.external-audit strong { color: var(--mint); font: 7px var(--mono); font-weight: 500; }
+.external-audit dl { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 6px 0 0; background: var(--line); }
+.external-audit dl div { min-width: 0; padding: 5px; background: #0a1819; }
+.external-audit dt { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
+.external-audit dd { overflow: hidden; margin: 2px 0 0; color: #d8e4e0; font: 7px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
 
 @media (max-width: 1100px) {
   .lab-grid { grid-template-columns: 218px minmax(460px, 1fr) 260px; }

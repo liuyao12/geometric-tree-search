@@ -97,6 +97,12 @@ const recursiveAction = $("recursiveAction");
 const recursiveSpeed = $("recursiveSpeed");
 const recursiveGate = $("recursiveGate");
 const recursiveNote = $("recursiveNote");
+const externalAudit = $("externalAudit");
+const externalAuditName = $("externalAuditName");
+const externalAuditHierarchy = $("externalAuditHierarchy");
+const externalAuditPrecision = $("externalAuditPrecision");
+const externalAuditRecall = $("externalAuditRecall");
+const externalAuditReduction = $("externalAuditReduction");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
 const COLORS = {
@@ -156,7 +162,7 @@ const MATERIALS = {
 const RECURSIVE_BENCHMARKS = {
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
-  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "6D acceptance section", action: "6 rewrites → 2.79m", speed: "2.72 s count-only", gate: "pass · IQC control", status: "control", note: "The internal-section rule grows 507 → 1,969 → 8,603 → 37,073 → 155,097 → 657,057 → 2,791,097. Two inflations have independent atom/species certificates; rigid motion and 0.5% coordinate-noise recovery are supported." },
+  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "6D acceptance section", action: "6 rewrites → 2.79m", speed: "2.72 s count-only", gate: "pass · IQC control", status: "control", note: "The live scene is the ideal model-set control. Its internal-section rule reaches 2,791,097 represented atoms; two inflations have independent atom/species certificates. The measured Sc–Zn audit is reported separately below.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "84.1% · 74/88", recall: "33.9% · 74/218", reduction: "2,223 → 14 · 159×" } },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
@@ -365,6 +371,14 @@ function updateRecursiveBenchmark() {
   recursiveStatus.className = `recursive-status ${benchmark.status}`;
   recursiveStatus.textContent = benchmark.status === "limit" ? "open limit" : benchmark.status;
   recursiveNote.textContent = benchmark.note;
+  externalAudit.hidden = !benchmark.external;
+  if (benchmark.external) {
+    externalAuditName.textContent = benchmark.external.name;
+    externalAuditHierarchy.textContent = benchmark.external.hierarchy;
+    externalAuditPrecision.textContent = benchmark.external.precision;
+    externalAuditRecall.textContent = benchmark.external.recall;
+    externalAuditReduction.textContent = benchmark.external.reduction;
+  }
   recursiveCurve.replaceChildren();
   const progress = pipelineStage === 4
     ? Math.max(0, Math.min(1, atoms.length / Math.max(referenceCount(), 1) - 1))
