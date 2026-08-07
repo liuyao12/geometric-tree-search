@@ -510,11 +510,11 @@ function renderTrainingStats() {
   rdfTitle.textContent = "section mismatch";
   rdfStatus.textContent = `${point.samples}/${REFERENCE_COUNT} samples · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
   coordEyebrow.textContent = "learned section atlas";
-  coordTitle.textContent = "field amplitude by cluster";
+  coordTitle.textContent = "connection-port strength";
   coordStatus.textContent = `support R = ${sectionModel.support.toFixed(1)}a · rank ${sectionModel.channels}`;
   coordClearButton.hidden = true;
   rdfChart.setAttribute("aria-label", "Training and held-out mismatch of local GCTS marking sections");
-  coordChart.setAttribute("aria-label", "Amplitude of each learned cluster marking section");
+  coordChart.setAttribute("aria-label", "Directional connection-port strength of each learned cluster marking section");
 
   rdfChart.replaceChildren();
   drawChartFrame(rdfChart, "samples", "loss");
@@ -532,7 +532,7 @@ function renderTrainingStats() {
     rdfChart.append(svgNode("path", { d: curvePath("trainLoss"), class: "chart-known" }));
     rdfChart.append(svgNode("path", { d: curvePath("validationLoss"), class: "chart-live" }));
   }
-  setChartLegend(rdfLegend, [["known-key", "overlap + anchor fit"], ["live-key", "held-out mismatch"]]);
+  setChartLegend(rdfLegend, [["known-key", "overlap + port fit"], ["live-key", "held-out mismatch"]]);
 
   coordChart.replaceChildren();
   drawChartFrame(coordChart, "cluster section", "norm");
@@ -553,7 +553,7 @@ function renderTrainingStats() {
     }));
     coordChart.append(svgNode("text", { x: 29 + (index + .5) * barStep, y: 108, class: "chart-label", "text-anchor": "middle" }, `C${index + 1}`));
   });
-  setChartLegend(coordLegend, [["known-key", "each color is one local section m_C(x)"], ["live-key", "click a section row to isolate its halos"]]);
+  setChartLegend(coordLegend, [["known-key", "type color = compatible connection port"], ["live-key", "red lobe = absent / failed port"]]);
 }
 
 function renderStructureStats() {
@@ -876,37 +876,34 @@ function learnOverlapMarking(source) {
 }
 
 function learnSectionModel(source) {
-  const axes = BALANCE_DIRECTIONS.slice(0, 6);
+  const axes = BALANCE_DIRECTIONS;
   const support = 1.9;
   const basisAt = (center, atom) => {
     const vector = periodicDisplacement(center, atom);
     const distance = vector.length() / referenceSpacingA;
-    if (distance >= support || distance < 1e-6) return { base: distance < 1e-6 ? 1 : 0, features: new Array(axes.length).fill(0) };
+    if (distance >= support || distance < 1e-6) return { features: new Array(axes.length).fill(0) };
     const direction = vector.normalize();
     const radial = .5 * (1 + Math.cos(Math.PI * distance / support));
-    return {
-      base: radial,
-      features: axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** 3),
-    };
+    return { features: axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** 4) };
   };
-  const fieldAt = (coefficients, basis) => basis.base + basis.features.reduce((sum, feature, axis) => sum + feature * coefficients[axis], 0);
+  const fieldAt = (coefficients, basis) => basis.features.reduce((sum, feature, axis) => sum + feature * coefficients[axis], 0);
   const targets = source.map((center, centerIndex) => {
-    const values = new Array(axes.length).fill(0);
-    let weightTotal = 0;
-    source.forEach((atom, atomIndex) => {
-      if (atomIndex === centerIndex) return;
-      const vector = periodicDisplacement(center, atom);
-      const distance = vector.length() / referenceSpacingA;
-      if (distance > 1.9 || distance < 1e-6) return;
+    const values = new Array(axes.length).fill(-.18);
+    trainedMarking.edges.forEach((edge) => {
+      if (edge.first !== centerIndex && edge.second !== centerIndex) return;
+      const otherIndex = edge.first === centerIndex ? edge.second : edge.first;
+      const vector = periodicDisplacement(center, source[otherIndex]);
+      if (vector.length() < 1e-6 || edge.shared < 2) return;
       const direction = vector.normalize();
-      const elementWeight = 0.82 + (currentMaterial().elements.indexOf(atom.species) + 1) * .14;
-      const radialWeight = Math.max(0, 1 - distance / 1.9) * elementWeight;
-      axes.forEach((axis, axisIndex) => { values[axisIndex] += radialWeight * Math.max(0, direction.dot(axis)) ** 3; });
-      weightTotal += radialWeight;
+      let bestAxis = 0;
+      let bestDot = -Infinity;
+      axes.forEach((axis, axisIndex) => {
+        const dot = direction.dot(axis);
+        if (dot > bestDot) { bestDot = dot; bestAxis = axisIndex; }
+      });
+      values[bestAxis] = Math.max(values[bestAxis], Math.min(.32, .10 + edge.shared * .035));
     });
-    const normalized = values.map((value) => value / Math.max(.001, weightTotal));
-    const mean = normalized.reduce((sum, value) => sum + value, 0) / normalized.length;
-    return normalized.map((value) => Math.max(-.22, Math.min(.22, (value - mean) * 1.8)));
+    return values;
   });
   const clusterCount = learnedClusters.clusters.length;
   const initial = Array.from({ length: clusterCount }, (_, cluster) =>
@@ -916,7 +913,7 @@ function learnSectionModel(source) {
   const holdoutIndices = source.map((_, index) => index).filter((index) => index % 5 === 0);
   const fitSet = new Set(fitIndices);
   const holdoutSet = new Set(holdoutIndices);
-  const anchorLossFor = (indices, values = coefficients) => indices.reduce((sum, index) => {
+  const portLossFor = (indices, values = coefficients) => indices.reduce((sum, index) => {
     const cluster = learnedClusters.labels[index];
     return sum + targets[index].reduce((error, target, axis) => error + (values[cluster][axis] - target) ** 2, 0) / axes.length;
   }, 0) / Math.max(1, indices.length);
@@ -937,7 +934,7 @@ function learnSectionModel(source) {
     return loss / Math.max(1, count);
   };
   const totalLossFor = (indices, membership, values = coefficients) =>
-    .35 * anchorLossFor(indices, values) + .65 * overlapLossFor(membership, values);
+    .42 * portLossFor(indices, values) + .58 * overlapLossFor(membership, values);
   const initialPoint = {
     samples: 0,
     fitSamples: 0,
@@ -1212,40 +1209,34 @@ function addClusterEnvelope(geometry, position, color, scale = 1) {
   clusterGroup.add(mesh);
 }
 
-function sectionSurfaceGeometry(cluster, level) {
-  const geometry = new THREE.SphereGeometry(1, 10, 7);
-  const position = geometry.attributes.position;
-  const coefficients = currentSectionCoefficients(cluster);
-  const direction = new THREE.Vector3();
-  for (let index = 0; index < position.count; index++) {
-    direction.fromBufferAttribute(position, index).normalize();
-    const deformation = coefficients.reduce((sum, coefficient, axis) =>
-      sum + coefficient * Math.max(0, direction.dot(sectionModel.axes[axis])) ** 3, 0);
-    const radius = (level === 0 ? 1.08 : 1.52) * Math.max(.72, 1 + deformation);
-    position.setXYZ(index, direction.x * radius, direction.y * radius, direction.z * radius);
-  }
-  position.needsUpdate = true;
-  geometry.computeVertexNormals();
-  return geometry;
-}
-
 function buildSectionHalos() {
   const centers = symbolCenters();
+  const up = new THREE.Vector3(0, 1, 0);
   learnedClusters.clusters.forEach((_, cluster) => {
     const selectedKey = `m_C${cluster + 1}`;
     const dim = markingSelection && markingSelection !== selectedKey;
-    [0, 1].forEach((level) => {
-      const material = new THREE.MeshBasicMaterial({
-        color: markingColor(selectedKey),
-        wireframe: true,
-        transparent: true,
-        opacity: dim ? .035 : level === 0 ? .32 : .18,
-        depthWrite: false,
+    const coefficients = currentSectionCoefficients(cluster);
+    coefficients.forEach((coefficient, axisIndex) => {
+      const compatible = coefficient >= 0;
+      const strength = Math.min(1, Math.abs(coefficient) / .28);
+      [0, 1].forEach((level) => {
+        const direction = sectionModel.axes[axisIndex];
+        const material = new THREE.MeshBasicMaterial({
+          color: compatible ? markingColor(selectedKey) : COLORS.red,
+          wireframe: true,
+          transparent: true,
+          opacity: dim ? .02 : (.08 + strength * .22) * (level ? .55 : 1),
+          depthWrite: false,
+        });
+        const mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 8, 5), material);
+        mesh.position.copy(centers[cluster]).addScaledVector(direction, .80 + strength * .32 + level * .12);
+        mesh.quaternion.setFromUnitVectors(up, direction);
+        const transverse = .11 + strength * .15 + level * .045;
+        const longitudinal = .22 + strength * .28 + level * .08;
+        mesh.scale.set(transverse, longitudinal, transverse);
+        if (markingSelection === selectedKey) mesh.scale.multiplyScalar(1.08);
+        clusterGroup.add(mesh);
       });
-      const mesh = new THREE.Mesh(sectionSurfaceGeometry(cluster, level), material);
-      mesh.position.copy(centers[cluster]);
-      mesh.scale.setScalar(markingSelection === selectedKey ? 1.06 : 1);
-      clusterGroup.add(mesh);
     });
   });
 }
@@ -1405,8 +1396,8 @@ function updateStageNarrative() {
     {
       eyebrow: "training · local sections on cluster neighborhoods", title: "Learn a bounded GCTS section for each cluster type", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
       caption: `${trainingPoint.samples}/${REFERENCE_COUNT} centers processed · ${trainingPoint.overlaps.toLocaleString()} support overlaps · held-out mismatch ${trainingPoint.validationLoss.toFixed(3)}.`, badge: "train",
-      decision: "Section-valued marking training", copy: "Each cluster begins with a random scalar field on a finite neighborhood. Agreement on shared support supplies the gluing loss; local geometry anchors the field away from a meaningless constant solution.",
-      values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.channels} scalar channel`],
+      decision: "Connection-section training", copy: "Each cluster begins with random directional ports on a finite neighborhood. Strong observed overlaps label compatible ports; absent directions label failed ports; agreement on shared support supplies the gluing loss.",
+      values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.axes.length} signed ports`],
     },
     {
       eyebrow: "search · reconstruction flows into continuation", title: "Reconstruct, cross the observed boundary, continue", phase: "0 explicit atoms",
@@ -1708,21 +1699,21 @@ function updateUI() {
   } else if (pipelineStage === 3) {
     const point = currentTrainingPoint();
     stageEyebrow.textContent = "training · local sections on cluster neighborhoods";
-    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Markings morph over the learned cluster prototypes" : "Section-valued GCTS marking trained";
+    stageTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Connection ports emerge on the learned cluster prototypes" : "Connection-valued GCTS marking trained";
     decisionTitle.textContent = trainingProgress < REFERENCE_COUNT ? "Fitting section overlap consistency" : "Local sections ready to glue";
     decisionCopy.textContent = trainingProgress < REFERENCE_COUNT
-      ? "The medoid clusters from the previous stage stay fixed while one nested level-surface halo per type morphs during training. Observed overlaps supply the gluing loss; a geometric anchor prevents constant collapse."
-      : "The learned scalar fields now travel with their cluster types. Search can reject a placement when transformed sections disagree on their shared support.";
+      ? "The medoid clusters stay fixed while disconnected port level sets morph around them. Type-colored lobes mark compatible overlap directions; red lobes mark absent or failed connections. No physical potential is used."
+      : "The learned connection sections now travel with their cluster types. Search rejects a placement when transformed ports disagree on shared support.";
     phaseReadout.textContent = `loss ${point.validationLoss.toFixed(3)}`;
     captionAction.textContent = `${point.samples}/${REFERENCE_COUNT} centers · ${point.overlaps.toLocaleString()} support overlaps · fit ${point.trainLoss.toFixed(3)} · holdout ${point.validationLoss.toFixed(3)}.`;
     atomLabel.textContent = "SECTION SAMPLES"; atomMetric.textContent = `${point.samples}/${REFERENCE_COUNT}`; atomDelta.textContent = `${point.fitSamples} fit · ${point.holdoutSamples} held out`;
     frontierLabel.textContent = "SUPPORT OVERLAPS"; frontierMetric.textContent = point.overlaps.toLocaleString(); frontierDelta.textContent = "section agreement constraints";
-    oracleLabel.textContent = "FIT MISMATCH"; oracleMetric.textContent = point.trainLoss.toFixed(3); oracleDelta.textContent = "overlap + non-collapse anchor";
+    oracleLabel.textContent = "FIT MISMATCH"; oracleMetric.textContent = point.trainLoss.toFixed(3); oracleDelta.textContent = "overlap + connection ports";
     reuseLabel.textContent = "HOLDOUT MISMATCH"; reuseMetric.textContent = point.validationLoss.toFixed(3); reuseDelta.textContent = "unseen local sections";
     actionValue.textContent = "fit m_C(x)";
     domainValue.textContent = `ball R=${sectionModel.support.toFixed(1)}a`;
     energyValue.textContent = point.validationLoss.toFixed(4);
-    resolverValue.textContent = `${sectionModel.channels} scalar channel`;
+    resolverValue.textContent = `${sectionModel.axes.length} signed ports`;
   } else {
     const reconstructing = replayIndex < REFERENCE_COUNT;
     stageEyebrow.textContent = reconstructing ? "search · recovering the observed window" : "search · continuing through the same frontier";
@@ -1763,6 +1754,12 @@ function renderLegend() {
       row.append(swatch, document.createTextNode(`${key}(x) · C${index + 1} prototype · learned from ${cluster.count}`));
       speciesLegend.appendChild(row);
     });
+    const failed = document.createElement("span");
+    const failedSwatch = document.createElement("i");
+    failedSwatch.className = "cluster-swatch";
+    failedSwatch.style.setProperty("--swatch", "#ff6d71");
+    failed.append(failedSwatch, document.createTextNode("red lobe · absent / failed connection"));
+    speciesLegend.appendChild(failed);
   } else if (pipelineStage === 1 && learnedClusters) {
     legendHeading.textContent = "Learned environments";
     learnedClusters.clusters.forEach((cluster, index) => {
@@ -1867,7 +1864,7 @@ function renderMarkings() {
     if (pipelineStage === 3) {
       row.tabIndex = 0;
       row.setAttribute("role", "button");
-      row.setAttribute("aria-label", `${key}; isolate its equipotential halos`);
+      row.setAttribute("aria-label", `${key}; isolate its connection level sets`);
       row.setAttribute("aria-pressed", markingSelection === key ? "true" : "false");
       row.style.borderLeftColor = `#${markingColor(key).getHexString()}`;
       row.addEventListener("click", () => selectMarkingDomain(key));
