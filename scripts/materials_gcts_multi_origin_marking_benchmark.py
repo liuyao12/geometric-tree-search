@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Origin-held-out GCTS marking benchmark on experimental Sc-Zn data.
 
-The inflation scale and the two bounded-section classifier settings are frozen
-by ``materials_gcts_experimental_sczn_benchmark``.  This replication trains
-the section exemplars on complete parent centres in one spatial checkerboard
-and evaluates different parent centres in the other.  Fixed-point mappings are
-excluded because they do not grow the configuration.
+The inflation scale comes from ``materials_gcts_experimental_sczn_benchmark``.
+The material-generic section marker chooses its own settings by holding out
+complete training parent centres, then evaluates different parent centres in
+the other spatial checkerboard.  A frozen precision-first setting is reported
+as a second operating point.  Fixed-point mappings are excluded because they
+do not grow the configuration.
 """
 
 from __future__ import annotations
@@ -14,9 +15,12 @@ import argparse
 import json
 import math
 from dataclasses import asdict, dataclass
-from typing import List, Sequence, Tuple
+from typing import Sequence
 
 import materials_gcts_experimental_sczn_benchmark as sczn
+from materials_gcts_section_marking import (
+    ColoredPoint, MarkingExample, SectionSettings, fit_marker,
+    fit_marker_auto, predict)
 
 
 @dataclass(frozen=True)
@@ -52,42 +56,16 @@ class MultiOriginMarkingBenchmark:
     represented_atom_instances: int
     fixed_points_excluded: bool
     split_uses_target_labels: bool
-
-
-def _standardize(training, heldout, component: int):
-    dimensions = len(training[0][component])
-    means = [sum(row[component][axis] for row in training) / len(training)
-             for axis in range(dimensions)]
-    scales = [max(1e-6, (sum((row[component][axis] - means[axis]) ** 2
-                             for row in training) / len(training)) ** .5)
-              for axis in range(dimensions)]
-
-    def transform(rows):
-        return [tuple((row[component][axis] - means[axis]) / scales[axis]
-                      for axis in range(dimensions)) for row in rows]
-    return transform(training), transform(heldout)
-
-
-def _three_neighbor_scores(training_vectors, training_labels,
-                           heldout_vectors):
-    scores = []
-    for candidate in heldout_vectors:
-        nearest: List[Tuple[float, int]] = []
-        for known, label in zip(training_vectors, training_labels):
-            distance = sum((left - right) ** 2
-                           for left, right in zip(known, candidate))
-            if len(nearest) < 3:
-                nearest.append((distance, label))
-                nearest.sort()
-            elif distance < nearest[-1][0]:
-                nearest[-1] = distance, label
-                nearest.sort()
-        weights = [1.0 / (math.sqrt(distance) + 1e-6)
-                   for distance, _ in nearest]
-        scores.append(sum(weight * label
-                          for weight, (_, label) in zip(weights, nearest)) /
-                      sum(weights))
-    return scores
+    settings_selected_by_parent_group_cv: bool
+    histogram_neighbors: int
+    histogram_threshold: float
+    moment_neighbors: int
+    moment_threshold: float
+    conservative_marked_candidates: int
+    conservative_matches: int
+    conservative_precision: float
+    conservative_recall: float
+    conservative_false_branch_reduction: float
 
 
 def _metrics(predictions: Sequence[bool], labels: Sequence[int]):
@@ -118,8 +96,6 @@ def evaluate() -> MultiOriginMarkingBenchmark:
     heldout_origin_ids = set()
 
     for origin_index, origin in enumerate(centers):
-        candidate_indices = []
-        labels = []
         for source_index, source in enumerate(centers):
             if source_index == origin_index:
                 continue
@@ -129,51 +105,54 @@ def evaluate() -> MultiOriginMarkingBenchmark:
             if not all(lower[axis] <= target[axis] <= upper[axis]
                        for axis in range(3)):
                 continue
-            candidate_indices.append(source_index)
             error = sczn._nearest(target, centers, target_grid, tolerance)
-            labels.append((int(error <= tolerance), target, error))
-        histogram = sczn._atomic_section_descriptors(
-            sites, centers, origin, candidate_indices, chemical=False)
-        moments = sczn._atomic_moment_descriptors(
-            sites, centers, origin, candidate_indices, chemical=False)
-        # This split is fixed by parent position and never sees target labels.
-        split = sum(math.floor(value / 16.0) for value in origin) & 1
-        destination = heldout if split else training
-        origin_ids = heldout_origin_ids if split else training_origin_ids
-        origin_ids.add(origin_index)
-        destination.extend((histogram[index], moments[index], label, origin_index,
-                            index, target, error)
-                           for index, (label, target, error)
-                           in zip(candidate_indices, labels))
+            example = MarkingExample(
+                origin_index, source_index, int(error <= tolerance),
+                origin_index, target)
+            # This split is fixed by parent position and never sees target labels.
+            split = sum(math.floor(value / 16.0) for value in origin) & 1
+            destination = heldout if split else training
+            origin_ids = heldout_origin_ids if split else training_origin_ids
+            origin_ids.add(origin_index)
+            destination.append((example, error))
 
-    training_labels = [row[2] for row in training]
-    heldout_labels = [row[2] for row in heldout]
-    histogram_training, histogram_heldout = _standardize(
-        training, heldout, 0)
-    moment_training, moment_heldout = _standardize(training, heldout, 1)
-    histogram_scores = _three_neighbor_scores(
-        histogram_training, training_labels, histogram_heldout)
-    moment_scores = _three_neighbor_scores(
-        moment_training, training_labels, moment_heldout)
-    # Frozen by single-origin leave-one-out fitting, not this held-out set.
-    histogram_predictions = [score >= .65 for score in histogram_scores]
-    moment_predictions = [score >= .85 for score in moment_scores]
-    conjunctive_predictions = [histogram and moment
-                               for histogram, moment in
-                               zip(histogram_predictions, moment_predictions)]
+    point_cloud = tuple(ColoredPoint(site.position, site.species)
+                        for site in sites)
+    training_examples = tuple(row[0] for row in training)
+    heldout_examples = tuple(row[0] for row in heldout)
+    marker = fit_marker_auto(
+        point_cloud, centers, training_examples, 7.8,
+        (3.5, 5.5, 7.8), chemical=False)
+    results = predict(marker, point_cloud, centers, heldout_examples)
+    conservative_marker = fit_marker(
+        point_cloud, centers, training_examples, 7.8,
+        SectionSettings(3, .65), SectionSettings(3, .85),
+        (3.5, 5.5, 7.8), chemical=False)
+    conservative_predictions = predict(
+        conservative_marker, point_cloud, centers, heldout_examples)
+    training_labels = [example.accepted for example in training_examples]
+    heldout_labels = [example.accepted for example in heldout_examples]
+    histogram_predictions = [
+        result.histogram_score >= marker.histogram.settings.threshold
+        for result in results]
+    moment_predictions = [
+        result.moment_score >= marker.moments.settings.threshold
+        for result in results]
+    conjunctive_predictions = [result.accepted for result in results]
     histogram_result = _metrics(histogram_predictions, heldout_labels)
     moment_result = _metrics(moment_predictions, heldout_labels)
     conjunctive_result = _metrics(conjunctive_predictions, heldout_labels)
+    conservative_result = _metrics(
+        [result.accepted for result in conservative_predictions],
+        heldout_labels)
     unmarked_false = len(heldout) - sum(heldout_labels)
     marked_false = conjunctive_result[0] - conjunctive_result[1]
-    accepted_origins = {row[3] for prediction, row
-                        in zip(conjunctive_predictions, heldout) if prediction}
-    correct_origins = {row[3] for prediction, row
-                       in zip(conjunctive_predictions, heldout)
-                       if prediction and row[2]}
-    verified_errors = [row[6] for prediction, row
-                       in zip(conjunctive_predictions, heldout)
-                       if prediction and row[2]]
+    accepted_origins = {result.example.parent for result
+                        in results if result.accepted}
+    correct_origins = {result.example.parent for result in results
+                       if result.accepted and result.example.accepted}
+    verified_errors = [error for result, (_, error) in zip(results, heldout)
+                       if result.accepted and result.example.accepted]
     median_atoms = sorted(sum(sczn._distance(cluster.center, site.position) <= 7.8
                               for site in sites)
                           for cluster in clusters)[len(clusters) // 2]
@@ -187,7 +166,14 @@ def evaluate() -> MultiOriginMarkingBenchmark:
         len(accepted_origins), len(correct_origins),
         conjunctive_result[0], conjunctive_result[1],
         sum(verified_errors) / len(verified_errors),
-        conjunctive_result[1] * median_atoms, True, False)
+        conjunctive_result[1] * median_atoms, True, False, True,
+        marker.histogram.settings.neighbors,
+        marker.histogram.settings.threshold,
+        marker.moments.settings.neighbors,
+        marker.moments.settings.threshold,
+        conservative_result[0], conservative_result[1],
+        conservative_result[2], conservative_result[3],
+        unmarked_false / (conservative_result[0] - conservative_result[1]))
 
 
 def main() -> None:

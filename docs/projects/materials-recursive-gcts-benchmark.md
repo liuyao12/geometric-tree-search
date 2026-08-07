@@ -613,38 +613,77 @@ distance alone gives only 3/8; one histogram section gives 3/5.  Removing the
 Sc/Zn colors does not change this split, so this gain is properly attributed to
 the bounded geometric marking rather than chemistry.
 
-`scripts/materials_gcts_multi_origin_marking_benchmark.py` is the stronger
-replication.  It freezes the learned scale and classifier settings, excludes
-the inflation origin's trivial fixed point, trains on 83 complete parent
-centres, and holds out 90 different parent centres.  The split is a 16-angstrom
-spatial checkerboard of parent coordinates and never reads a target label.
+`scripts/materials_gcts_section_marking.py` now contains the material-generic
+algorithm used by the stronger replication.  Its inputs are an arbitrary
+colored point cloud, independently learned centers, and proposed
+`(parent, source)` pairs.  It contains no element names, lattice coordinates,
+or quasicrystal labels.  Both finite descriptors are exactly invariant under a
+common rigid motion.  Settings are selected by cross-validation that holds out
+complete parent groups, preventing proposals around one parent from leaking
+across the fit/validation boundary.  A periodic B2-like positive control, in
+which every quotient translation is legal, correctly reduces to an
+always-accept section instead of inventing false restrictions.
+
+`scripts/materials_gcts_multi_origin_marking_benchmark.py` applies that generic
+API to the measured model.  It excludes the inflation origin's trivial fixed
+point, trains on 83 complete parent centres, and holds out 90 different parent
+centres.  The split is a 16-angstrom spatial checkerboard of parent coordinates
+and never reads a target label.
 There are 2,261 training candidates and 2,441 held-out candidates.  Only 218
 held-out proposals are real continuations, so accepting everything has 8.93%
 precision and creates 2,223 false search branches.
 
-The histogram section reaches 66.50% precision and 62.84% recall; the angular-
-moment section reaches 68.75% precision and 35.32% recall.  Their conservative
-conjunction accepts 88 placements, 74 of which are correct: 84.09% precision
-and 33.94% recall.  False branches fall to 14, a 158.8-fold reduction.  Those
-correct actions represent 11,544 decorated atom instances across 31 held-out
-parent centres.  This establishes a causal role for GCTS marking: the
-inflation rule proposes geometry, while the bounded section makes the ensuing
-tree search far narrower.
+The fully automatic grouped fit chooses `k=3, threshold=0.35` for the histogram
+and `k=7, threshold=0.35` for the moment section.  Their conjunction accepts
+159 placements, 120 of which are correct: 75.47% precision and 55.05% recall.
+False branches fall from 2,223 to 39, a 57-fold reduction, and the verified
+placements represent 18,720 decorated atom instances.  A separately reported
+precision-first operating point freezes the earlier `k=3` thresholds 0.65 and
+0.85.  It retains 84.09% precision and 33.94% recall, with 14 false branches—a
+158.8-fold reduction.  This establishes a causal role for GCTS marking: the
+inflation rule proposes geometry, while the bounded section controls the
+precision/recall and branching of the ensuing tree search.
 
 This still does **not** justify unrestricted experimental growth.  Recall is
 deliberately low, the finite model cannot certify iterations outside its
 boundary, and 14 false branches still require overlap checks or backtracking.
-The next gate is multi-step continuation on an ideal model-set oracle followed
-by the same frozen marking on a second experimental reconstruction.
+The remaining gates are a complete multi-parent cover of the next ideal level
+and the same frozen marking on a second experimental reconstruction.
+
+## Frozen marking reused across ideal-IQC levels
+
+`scripts/materials_gcts_ideal_iqc_iterated_marking.py` exercises the new generic
+API across successive scales instead of randomly splitting one patch.  It fits
+only the 507 -> 1,969 transition, freezes the marker, then presents every
+nontrivial origin-centred inflation candidate from the independently generated
+1,969 -> 8,603 transition.  No label from the second transition is used during
+training or setting selection.
+
+The first transition has 222 valid mapped actions.  The next has 944, a
+4.252-fold increase close to the volumetric inflation rate.  An unmarked search
+would branch on all 1,968 candidates at 47.97% precision and retain 1,024 false
+branches.  The high-recall histogram section retains 612 correct actions out of
+1,052: 58.17% precision, 64.83% recall, and only 440 false branches.  Thus the
+number of correct actions captured by the frozen marker grows 222 -> 612, a
+2.757-fold recursive action factor.  The conjunctive section is more
+conservative: 252/392 correct, 64.29% precision, and 140 false branches, a
+7.31-fold reduction from the unmarked search.
+
+This is the first cross-level, frozen-marking certificate.  It proves that a
+bounded GCTS section learned at one inflation level can remain predictive at
+the next and can carry an exponentially increasing subset of correct actions.
+It does not yet generate all 8,603 atoms: the test classifies the subset reached
+by origin-centred inflation, while the remaining sites require translated
+parent actions or a complete substitution cover.
 
 ## Current crystal/quasicrystal scaling gates
 
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
 | NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |
-| ideal icosahedral model set | 507 atoms | 14 -> 49 -> 270 | about 4.2x/action | action 6: 2,791,097 | two explicit inflations plus independent 6D acceptance test |
+| ideal icosahedral model set | 507 atoms | 14 -> 49 -> 270 | about 4.2x/action; frozen marked subset 2.757x | action 6: 2,791,097 | two explicit inflations, independent 6D acceptance test, and cross-level frozen marking |
 | Fibonacci-product quasicrystal | 729 atoms | 4 -> 17 -> 81 | about 4.2x/action | action 5: 1,061,208 | recovered substitution grammar |
-| experimental Sc-Zn IQC | 37,531 sites / 173 centres | 13 -> 38 -> 98 | learned phi proposal | not claimed | 84.09% precision on 90 unseen parent centres |
+| experimental Sc-Zn IQC | 37,531 sites / 173 centres | 13 -> 38 -> 98 | learned phi proposal | not claimed | generic grouped fit: 75.47% precision / 55.05% recall; precision-first: 84.09% |
 | amorphous control | 507 atoms | none beyond local | none | rejected | no deterministic macro rule |
 
 The first three rows set the exponential-style action benchmark.  The
