@@ -15,8 +15,9 @@ Pages site. The main way to use it is to open the page in a browser:
 
 - [Materials Growth Lab: imported atomic structures and off-lattice growth](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
   A live 3D, multi-species GCTS laboratory for crystalline, quasiperiodic, and
-  amorphous controls. Choose any two elements to sample a random public bulk
-  structure from NOMAD, or use the advanced local CIF/POSCAR/XYZ/JSON import.
+  amorphous controls. Choose one to eight species from a mini periodic table to
+  sample a random public bulk structure with exactly that element set from
+  NOMAD, or use the advanced local CIF/POSCAR/XYZ/JSON import.
   It learns overlapping environments and finite SE(3) attachment
   rules, trains bounded connection sections, and continues the same explicit
   tree search beyond the observed configuration.
@@ -94,7 +95,7 @@ http://127.0.0.1:5174/apps/3d-lattice-tiler/
 ### Materials structure import
 
 The primary Materials Growth Lab input queries public [NOMAD](https://nomad-lab.eu/)
-bulk entries containing exactly the two requested elements, chooses a random
+bulk entries containing exactly the selected element set, chooses a random
 matching entry, reads its normalized atomic archive, and expands a small unit
 cell into a roughly 128–512 atom learning supercell. The entry identifier,
 database link, original atom count, replication, symmetry metadata, and query

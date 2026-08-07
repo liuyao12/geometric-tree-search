@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260807-1">
+  <link rel="stylesheet" href="./style.css?v=20260807-2">
   <script type="importmap">
     {
       "imports": {
@@ -41,14 +41,28 @@
           <p class="eyebrow">01 · experiment</p>
           <div class="database-picker">
             <div class="database-heading"><strong>Random real material</strong><span>NOMAD · public bulk data</span></div>
-            <div class="element-pair">
-              <label for="firstElementInput"><span>element A</span><input id="firstElementInput" value="Na" maxlength="2" autocomplete="off" spellcheck="false"></label>
-              <b aria-hidden="true">+</b>
-              <label for="secondElementInput"><span>element B</span><input id="secondElementInput" value="Cl" maxlength="2" autocomplete="off" spellcheck="false"></label>
+            <div class="selection-label"><span>selected elements</span><strong id="selectedElementCount">2</strong></div>
+            <div id="selectedElements" class="selected-elements" aria-label="Selected elements"></div>
+            <div class="element-presets" aria-label="Example element sets">
+              <button type="button" data-element-preset="Na,Cl">NaCl</button>
+              <button type="button" data-element-preset="Al,Cu,Fe">Al–Cu–Fe</button>
+              <button type="button" data-element-preset="Cu,Zr">Cu–Zr</button>
             </div>
-            <button id="randomMaterialButton" class="database-button" type="button">Find a random binary structure</button>
-            <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly these two elements.</div>
+            <button id="periodicTableButton" class="periodic-toggle" type="button" aria-expanded="false" aria-controls="periodicTablePanel">Choose from periodic table</button>
+            <button id="randomMaterialButton" class="database-button" type="button">Find a random matching structure</button>
+            <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
             <a id="databaseSourceLink" class="source-link" href="https://nomad-lab.eu/" target="_blank" rel="noreferrer">About the NOMAD materials database ↗</a>
+            <div id="periodicTablePanel" class="periodic-panel" hidden>
+              <div class="periodic-heading">
+                <div><small>multi-select</small><strong>choose 1–8 elements</strong></div>
+                <div class="periodic-actions">
+                  <button id="periodicClearButton" type="button">clear</button>
+                  <button id="periodicCloseButton" type="button" aria-label="Close periodic table">×</button>
+                </div>
+              </div>
+              <div id="periodicTableGrid" class="periodic-grid" role="group" aria-label="Periodic table elements"></div>
+              <div class="periodic-key"><span class="key-metal">metal</span><span class="key-metalloid">metalloid</span><span class="key-nonmetal">nonmetal</span><span class="key-noble">noble gas</span><span class="key-fblock">f-block</span></div>
+            </div>
           </div>
           <label class="field" for="scenarioSelect">
             <span>Or use a built-in control</span>
@@ -208,6 +222,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260807-1"></script>
+  <script type="module" src="./app.js?v=20260807-2"></script>
 </body>
 </html>

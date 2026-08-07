@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { parseStructureText, validateStructure } from "./structure-io.js";
-import { randomNomadBinary } from "./structure-database.js";
+import { randomNomadStructure } from "./structure-database.js";
+import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 
 const $ = (id) => document.getElementById(id);
 const viewport = $("viewport");
@@ -9,8 +10,14 @@ const scenarioSelect = $("scenarioSelect");
 const structureFileInput = $("structureFileInput");
 const importStatus = $("importStatus");
 const loadFixtureButton = $("loadFixtureButton");
-const firstElementInput = $("firstElementInput");
-const secondElementInput = $("secondElementInput");
+const selectedElementsContainer = $("selectedElements");
+const selectedElementCount = $("selectedElementCount");
+const elementPresetButtons = [...document.querySelectorAll("[data-element-preset]")];
+const periodicTableButton = $("periodicTableButton");
+const periodicTablePanel = $("periodicTablePanel");
+const periodicTableGrid = $("periodicTableGrid");
+const periodicClearButton = $("periodicClearButton");
+const periodicCloseButton = $("periodicCloseButton");
 const randomMaterialButton = $("randomMaterialButton");
 const databaseStatus = $("databaseStatus");
 const databaseSourceLink = $("databaseSourceLink");
@@ -236,6 +243,67 @@ let growthStartAtomCount = 0;
 let growthStopReason = "";
 let slowFrameSeconds = 0;
 let importedStructure = null;
+let selectedDatabaseElements = ["Na", "Cl"];
+
+function renderPeriodicSelection() {
+  selectedElementsContainer.replaceChildren();
+  selectedElementCount.textContent = String(selectedDatabaseElements.length);
+  if (!selectedDatabaseElements.length) {
+    const empty = document.createElement("span");
+    empty.className = "selected-empty";
+    empty.textContent = "Choose elements from the table";
+    selectedElementsContainer.append(empty);
+  }
+  selectedDatabaseElements.forEach((symbol) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "selected-chip";
+    chip.setAttribute("aria-label", `Remove ${symbol}`);
+    chip.innerHTML = `${symbol}<span aria-hidden="true">×</span>`;
+    chip.addEventListener("click", () => {
+      selectedDatabaseElements = selectedDatabaseElements.filter((value) => value !== symbol);
+      renderPeriodicSelection();
+    });
+    selectedElementsContainer.append(chip);
+  });
+  randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
+  periodicTableGrid.querySelectorAll("[data-element]").forEach((button) => {
+    button.classList.toggle("selected", selectedDatabaseElements.includes(button.dataset.element));
+    button.setAttribute("aria-pressed", String(selectedDatabaseElements.includes(button.dataset.element)));
+  });
+}
+
+function setPeriodicTableOpen(open) {
+  periodicTablePanel.hidden = !open;
+  periodicTableButton.setAttribute("aria-expanded", String(open));
+  periodicTableButton.textContent = open ? "Close periodic table" : "Choose from periodic table";
+}
+
+function buildPeriodicTable() {
+  PERIODIC_ELEMENTS.forEach((element) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `periodic-element ${element.category}`;
+    button.dataset.element = element.symbol;
+    button.style.gridColumn = element.column;
+    button.style.gridRow = element.row;
+    button.setAttribute("aria-label", `${element.symbol}, atomic number ${element.atomicNumber}`);
+    button.innerHTML = `<small>${element.atomicNumber}</small>${element.symbol}`;
+    button.addEventListener("click", () => {
+      if (selectedDatabaseElements.includes(element.symbol)) {
+        selectedDatabaseElements = selectedDatabaseElements.filter((value) => value !== element.symbol);
+      } else if (selectedDatabaseElements.length < 8) {
+        selectedDatabaseElements.push(element.symbol);
+      } else {
+        databaseStatus.className = "import-status invalid";
+        databaseStatus.textContent = "Choose at most eight elements for one database query.";
+      }
+      renderPeriodicSelection();
+    });
+    periodicTableGrid.append(button);
+  });
+  renderPeriodicSelection();
+}
 
 function referenceCount() {
   return referenceAtoms.length || importedStructure?.atoms.length || DEFAULT_REFERENCE_COUNT;
@@ -2277,12 +2345,23 @@ playButton.addEventListener("click", () => {
 stepButton.addEventListener("click", () => { setPlaying(false); performEvent(); });
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
 scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
+periodicTableButton.addEventListener("click", () => setPeriodicTableOpen(periodicTablePanel.hidden));
+periodicCloseButton.addEventListener("click", () => setPeriodicTableOpen(false));
+periodicClearButton.addEventListener("click", () => {
+  selectedDatabaseElements = [];
+  renderPeriodicSelection();
+});
+elementPresetButtons.forEach((button) => button.addEventListener("click", () => {
+  selectedDatabaseElements = button.dataset.elementPreset.split(",");
+  renderPeriodicSelection();
+}));
 randomMaterialButton.addEventListener("click", async () => {
   randomMaterialButton.disabled = true;
   databaseStatus.className = "import-status";
-  databaseStatus.textContent = `Searching NOMAD for ${firstElementInput.value.trim()} + ${secondElementInput.value.trim()}…`;
+  const requestedElements = [...selectedDatabaseElements];
+  databaseStatus.textContent = `Searching NOMAD for exactly ${requestedElements.join(" + ")}…`;
   try {
-    const { structure, total, selectedOffset } = await randomNomadBinary(firstElementInput.value, secondElementInput.value);
+    const { structure, total, selectedOffset } = await randomNomadStructure(requestedElements);
     const repetitions = structure.metadata.repetitions || [1, 1, 1];
     const primitiveCount = structure.metadata.primitiveAtomCount || structure.atoms.length;
     activateImportedStructure(structure, `NOMAD entry ${structure.metadata.entryId}`, databaseStatus);
@@ -2293,7 +2372,7 @@ randomMaterialButton.addEventListener("click", async () => {
     databaseStatus.className = "import-status invalid";
     databaseStatus.textContent = `Database query failed: ${error.message}`;
   } finally {
-    randomMaterialButton.disabled = false;
+    randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
   }
 });
 structureFileInput.addEventListener("change", async () => {
@@ -2334,6 +2413,9 @@ growthDurationSelect.addEventListener("change", () => { if (!playing) setPlaying
 [markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !periodicTablePanel.hidden) setPeriodicTableOpen(false);
+});
 
 function resize() {
   const width = viewport.clientWidth;
@@ -2390,6 +2472,7 @@ function animate(now) {
   renderer.render(scene, camera);
 }
 
+buildPeriodicTable();
 enterPipelineStage(0);
 resize();
 requestAnimationFrame(animate);

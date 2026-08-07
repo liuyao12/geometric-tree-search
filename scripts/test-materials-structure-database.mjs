@@ -1,13 +1,15 @@
 import assert from "node:assert/strict";
-import { canonicalElement, makeLearningSupercell, nomadArchiveToStructure, queryPayload, randomNomadBinary } from "../apps/iqc-growth-live/structure-database.js";
+import { canonicalElement, makeLearningSupercell, nomadArchiveToStructure, normalizeElements, queryPayload, randomNomadStructure } from "../apps/iqc-growth-live/structure-database.js";
 
 assert.equal(canonicalElement("na"), "Na");
 assert.throws(() => canonicalElement("Xx"), /Unknown element/);
 assert.throws(() => canonicalElement(""), /Unknown element/);
 
-const payload = queryPayload("Na", "Cl", 17);
-assert.deepEqual(payload.query.and[0]["results.material.elements"].all, ["Na", "Cl"]);
-assert.equal(payload.query.and[1]["results.material.n_elements"], 2);
+assert.deepEqual(normalizeElements(["al", "Cu", "Fe", "Cu"]), ["Al", "Cu", "Fe"]);
+assert.throws(() => normalizeElements([]), /at least one/);
+const payload = queryPayload(["Al", "Cu", "Fe"], 17);
+assert.deepEqual(payload.query.and[0]["results.material.elements"].all, ["Al", "Cu", "Fe"]);
+assert.equal(payload.query.and[1]["results.material.n_elements"], 3);
 assert.equal(payload.query.and[2]["results.material.structural_type"], "bulk");
 assert.equal(payload.pagination.page_offset, 17);
 
@@ -43,7 +45,7 @@ const fakeFetch = async (url, options) => {
     : archive;
   return new Response(JSON.stringify(value), { status: 200, headers: { "Content-Type": "application/json" } });
 };
-const sampled = await randomNomadBinary("Na", "Cl", { fetchImpl: fakeFetch, random: () => 0 });
+const sampled = await randomNomadStructure(["Na", "Cl"], { fetchImpl: fakeFetch, random: () => 0 });
 assert.equal(sampled.total, 1);
 assert.equal(sampled.structure.atoms.length, 128);
 assert.equal(calls.length, 2);
