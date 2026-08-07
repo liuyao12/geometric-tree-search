@@ -14,6 +14,7 @@ const selectedElementsContainer = $("selectedElements");
 const selectedElementCount = $("selectedElementCount");
 const elementPresetButtons = [...document.querySelectorAll("[data-element-preset]")];
 const periodicTableButton = $("periodicTableButton");
+const periodicCompactGrid = $("periodicCompactGrid");
 const periodicTablePanel = $("periodicTablePanel");
 const periodicTableGrid = $("periodicTableGrid");
 const periodicClearButton = $("periodicClearButton");
@@ -255,9 +256,10 @@ function renderPeriodicSelection() {
     selectedElementsContainer.append(empty);
   }
   selectedDatabaseElements.forEach((symbol) => {
+    const phase = PERIODIC_ELEMENTS.find((element) => element.symbol === symbol)?.phase || "solid";
     const chip = document.createElement("button");
     chip.type = "button";
-    chip.className = "selected-chip";
+    chip.className = `selected-chip phase-${phase}`;
     chip.setAttribute("aria-label", `Remove ${symbol}`);
     chip.innerHTML = `${symbol}<span aria-hidden="true">×</span>`;
     chip.addEventListener("click", () => {
@@ -271,23 +273,33 @@ function renderPeriodicSelection() {
     button.classList.toggle("selected", selectedDatabaseElements.includes(button.dataset.element));
     button.setAttribute("aria-pressed", String(selectedDatabaseElements.includes(button.dataset.element)));
   });
+  periodicCompactGrid.querySelectorAll("[data-element]").forEach((cell) => {
+    cell.classList.toggle("selected", selectedDatabaseElements.includes(cell.dataset.element));
+  });
 }
 
 function setPeriodicTableOpen(open) {
   periodicTablePanel.hidden = !open;
   periodicTableButton.setAttribute("aria-expanded", String(open));
-  periodicTableButton.textContent = open ? "Close periodic table" : "Choose from periodic table";
+  periodicTableButton.setAttribute("aria-label", open ? "Collapse periodic table" : "Expand periodic table");
 }
 
 function buildPeriodicTable() {
   PERIODIC_ELEMENTS.forEach((element) => {
+    const compactCell = document.createElement("span");
+    compactCell.className = `periodic-compact-cell phase-${element.phase}`;
+    compactCell.dataset.element = element.symbol;
+    compactCell.style.gridColumn = element.column;
+    compactCell.style.gridRow = element.row;
+    periodicCompactGrid.append(compactCell);
+
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `periodic-element ${element.category}`;
+    button.className = `periodic-element phase-${element.phase}`;
     button.dataset.element = element.symbol;
     button.style.gridColumn = element.column;
     button.style.gridRow = element.row;
-    button.setAttribute("aria-label", `${element.symbol}, atomic number ${element.atomicNumber}`);
+    button.setAttribute("aria-label", `${element.symbol}, atomic number ${element.atomicNumber}, ${element.phase}`);
     button.innerHTML = `<small>${element.atomicNumber}</small>${element.symbol}`;
     button.addEventListener("click", () => {
       if (selectedDatabaseElements.includes(element.symbol)) {
@@ -2415,6 +2427,11 @@ rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateTogg
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !periodicTablePanel.hidden) setPeriodicTableOpen(false);
+});
+document.addEventListener("pointerdown", (event) => {
+  if (periodicTablePanel.hidden) return;
+  if (periodicTablePanel.contains(event.target) || periodicTableButton.contains(event.target)) return;
+  setPeriodicTableOpen(false);
 });
 
 function resize() {

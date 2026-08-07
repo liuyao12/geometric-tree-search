@@ -96,7 +96,7 @@ a { color: inherit; }
 .database-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .database-heading strong { color: var(--mint); font-size: 10px; }
 .database-heading span { color: var(--faint); font: 7px var(--mono); }
-.selection-label { display: flex; justify-content: space-between; margin-top: 10px; color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
+.selection-label { display: flex; justify-content: space-between; margin-top: 7px; color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
 .selection-label strong { color: var(--mint); }
 .selected-elements { display: flex; min-height: 34px; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 5px; padding: 5px; border: 1px solid var(--line); background: #0b1a1b; }
 .selected-chip { min-width: 35px; height: 22px; padding: 0 6px; border: 1px solid rgba(101,225,188,.40); background: rgba(101,225,188,.08); color: var(--mint); font: 8px var(--mono); cursor: pointer; }
@@ -105,9 +105,14 @@ a { color: inherit; }
 .element-presets { display: flex; gap: 4px; margin-top: 5px; }
 .element-presets button { min-height: 20px; padding: 0 6px; border: 1px solid var(--line); background: transparent; color: var(--faint); font: 6px var(--mono); cursor: pointer; }
 .element-presets button:hover { color: var(--text); border-color: var(--muted); }
-.periodic-toggle { width: 100%; min-height: 25px; margin-top: 7px; border: 1px solid var(--line); background: transparent; color: var(--muted); font: 7px var(--mono); cursor: pointer; }
-.periodic-toggle:hover, .periodic-toggle[aria-expanded="true"] { border-color: rgba(101,225,188,.42); color: var(--mint); }
-.periodic-panel { position: absolute; z-index: 20; top: 82px; left: 8px; width: min(540px, calc(100vw - 40px)); padding: 12px; border: 1px solid rgba(101,225,188,.55); background: rgba(5,16,17,.98); box-shadow: 0 18px 50px rgba(0,0,0,.55); }
+.periodic-compact { display: block; width: 100%; margin-top: 8px; padding: 5px 7px 6px; border: 1px solid var(--line); background: #081617; color: var(--muted); cursor: pointer; }
+.periodic-compact:hover, .periodic-compact[aria-expanded="true"] { border-color: rgba(101,225,188,.55); color: var(--mint); }
+.periodic-compact-label { display: block; margin-bottom: 4px; text-align: left; font: 6px var(--mono); text-transform: uppercase; }
+.periodic-compact-grid { display: grid; grid-template-columns: repeat(18, 1fr); grid-template-rows: repeat(9, 5px); gap: 1px; width: 100%; }
+.periodic-compact-cell { min-width: 0; border: 1px solid transparent; opacity: .72; }
+.periodic-compact-cell.selected { border-color: #fff; opacity: 1; box-shadow: 0 0 3px rgba(255,255,255,.75); }
+.periodic-compact:hover .periodic-compact-cell { opacity: .95; }
+.periodic-panel { position: absolute; z-index: 20; top: 98px; left: 8px; width: min(540px, calc(100vw - 40px)); padding: 12px; border: 1px solid rgba(101,225,188,.55); background: rgba(5,16,17,.98); box-shadow: 0 18px 50px rgba(0,0,0,.55); }
 .periodic-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; }
 .periodic-heading > div:first-child { display: flex; gap: 7px; align-items: baseline; }
 .periodic-heading small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
@@ -119,18 +124,24 @@ a { color: inherit; }
 .periodic-element { position: relative; min-width: 0; height: 25px; padding: 7px 0 0; border: 1px solid rgba(130,154,148,.24); background: rgba(130,154,148,.08); color: #b7c5c1; font: 8px var(--mono); cursor: pointer; }
 .periodic-element small { position: absolute; top: 2px; left: 2px; color: rgba(210,225,220,.45); font: 4px var(--mono); }
 .periodic-element:hover, .periodic-element:focus-visible { z-index: 1; border-color: #fff; color: #fff; transform: scale(1.12); }
-.periodic-element.selected { box-shadow: inset 0 0 0 1px var(--mint); background: rgba(101,225,188,.20); color: var(--mint); }
-.periodic-element.alkali, .periodic-element.alkaline, .periodic-element.transition, .periodic-element.post { background: rgba(85,200,255,.09); }
-.periodic-element.metalloid { background: rgba(240,201,106,.11); }
-.periodic-element.nonmetal, .periodic-element.halogen { background: rgba(101,225,188,.10); }
-.periodic-element.noble { background: rgba(181,148,255,.12); }
-.periodic-element.lanthanide, .periodic-element.actinide { background: rgba(255,125,174,.10); }
-.periodic-key { display: flex; gap: 11px; margin-top: 7px; color: var(--faint); font: 5px var(--mono); text-transform: uppercase; }
-.periodic-key span::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 4px; vertical-align: -1px; background: rgba(85,200,255,.24); }
-.periodic-key .key-metalloid::before { background: rgba(240,201,106,.28); }
-.periodic-key .key-nonmetal::before { background: rgba(101,225,188,.26); }
-.periodic-key .key-noble::before { background: rgba(181,148,255,.28); }
-.periodic-key .key-fblock::before { background: rgba(255,125,174,.24); }
+.periodic-element.selected { box-shadow: inset 0 0 0 1px #fff, 0 0 7px rgba(255,255,255,.24); color: #fff; }
+.phase-solid { background: rgba(101,225,188,.20); }
+.phase-liquid { background: rgba(255,153,102,.28); }
+.phase-gas { background: rgba(181,148,255,.26); }
+.periodic-element.phase-solid { color: #99ead1; }
+.periodic-element.phase-liquid { color: #ffc09e; }
+.periodic-element.phase-gas { color: #d5c0ff; }
+.selected-chip.phase-solid { color: #99ead1; }
+.selected-chip.phase-liquid { color: #ffc09e; }
+.selected-chip.phase-gas { color: #d5c0ff; }
+.periodic-key { display: flex; align-items: center; gap: 11px; margin-top: 7px; color: var(--faint); font: 5px var(--mono); text-transform: uppercase; }
+.periodic-key span::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 4px; vertical-align: -1px; }
+.periodic-key .key-solid::before { background: rgba(101,225,188,.55); }
+.periodic-key .key-liquid::before { background: rgba(255,153,102,.62); }
+.periodic-key .key-gas::before { background: rgba(181,148,255,.62); }
+.periodic-key small { margin-left: auto; color: rgba(130,154,148,.58); font: 5px var(--mono); text-transform: none; }
+.compact-key { margin-top: 4px; justify-content: flex-end; pointer-events: none; }
+.compact-key span::before { width: 4px; height: 4px; margin-right: 3px; }
 .database-button { width: 100%; min-height: 33px; margin-top: 8px; border: 1px solid rgba(101,225,188,.42); background: rgba(101,225,188,.08); color: var(--mint); font-size: 9px; cursor: pointer; }
 .database-button:hover { border-color: var(--mint); background: rgba(101,225,188,.13); }
 .database-button:disabled { opacity: .55; cursor: wait; }
