@@ -99,8 +99,10 @@ a { color: inherit; }
 .selection-label { display: flex; justify-content: space-between; margin-top: 7px; color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
 .selection-label strong { color: var(--mint); }
 .selected-elements { display: flex; min-height: 34px; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 5px; padding: 5px; border: 1px solid var(--line); background: #0b1a1b; }
-.selected-chip { min-width: 35px; height: 22px; padding: 0 6px; border: 1px solid rgba(101,225,188,.40); background: rgba(101,225,188,.08); color: var(--mint); font: 8px var(--mono); cursor: pointer; }
-.selected-chip span { margin-left: 4px; color: var(--faint); }
+.selected-chip { display: inline-flex; min-width: 43px; height: 22px; align-items: center; gap: 5px; padding: 0 6px; border: 1px solid rgba(101,225,188,.40); background: rgba(101,225,188,.08); color: var(--mint); font: 8px var(--mono); cursor: pointer; }
+.atom-color-swatch { width: 8px; height: 8px; flex: 0 0 auto; border: 1px solid rgba(255,255,255,.48); border-radius: 50%; background: var(--atom-color); box-shadow: 0 0 5px color-mix(in srgb, var(--atom-color) 70%, transparent); }
+.selected-chip-symbol { color: inherit; }
+.selected-chip-remove { margin-left: auto; color: var(--faint); }
 .selected-empty { color: var(--faint); font: 7px var(--mono); }
 .element-presets { display: flex; gap: 4px; margin-top: 5px; }
 .element-presets button { min-height: 20px; padding: 0 6px; border: 1px solid var(--line); background: transparent; color: var(--faint); font: 6px var(--mono); cursor: pointer; }

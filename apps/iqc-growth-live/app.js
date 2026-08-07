@@ -257,11 +257,24 @@ function renderPeriodicSelection() {
   }
   selectedDatabaseElements.forEach((symbol) => {
     const phase = PERIODIC_ELEMENTS.find((element) => element.symbol === symbol)?.phase || "solid";
+    const atomStyle = elementRecord(symbol);
     const chip = document.createElement("button");
     chip.type = "button";
     chip.className = `selected-chip phase-${phase}`;
     chip.setAttribute("aria-label", `Remove ${symbol}`);
-    chip.innerHTML = `${symbol}<span aria-hidden="true">×</span>`;
+    chip.title = `${symbol} atom color ${atomStyle.css} · ${phase}`;
+    const swatch = document.createElement("i");
+    swatch.className = "atom-color-swatch";
+    swatch.style.setProperty("--atom-color", atomStyle.css);
+    swatch.setAttribute("aria-hidden", "true");
+    const label = document.createElement("span");
+    label.className = "selected-chip-symbol";
+    label.textContent = symbol;
+    const removeMark = document.createElement("span");
+    removeMark.className = "selected-chip-remove";
+    removeMark.setAttribute("aria-hidden", "true");
+    removeMark.textContent = "×";
+    chip.append(swatch, label, removeMark);
     chip.addEventListener("click", () => {
       selectedDatabaseElements = selectedDatabaseElements.filter((value) => value !== symbol);
       renderPeriodicSelection();
