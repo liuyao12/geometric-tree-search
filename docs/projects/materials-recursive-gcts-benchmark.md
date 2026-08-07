@@ -532,3 +532,37 @@ The defect policy is intentionally conservative.  Residual additions and
 removals must total at most 2% of the observed cloud, and no new defect is
 predicted.  Energetic defect propagation, dislocation motion, and relaxation
 remain outside the present static continuation benchmark.
+
+## Experimental dodecagonal approximant from COD
+
+`scripts/materials_gcts_cod_approximant_benchmark.py` vendors the measured
+coordinates and symmetry operations of Crystallography Open Database entry
+[1521830](https://www.crystallography.net/cod/1521830.html).  The structure is
+the periodic Ta-V-Te approximant reported alongside a dodecagonal
+quasicrystalline telluride.  Its P -4 21 m cell has 314 symmetry-expanded
+sites.  Shared, fractionally occupied Ta/V positions are retained as a
+virtual-crystal `Ta/V` point color rather than converted to an invented random
+occupational realization.
+
+From that one experimental cell, the generic bounded hierarchy learns
+recurring supports of 11, 39, and 139 atoms.  Recurring clusters cover 96.82%,
+99.36%, and 99.36% of the measured sites, with marking confidence 0.748,
+0.842, and 0.810.  Randomly permuting the same chemical-color multiset changes
+the supports to 4, 37, and 138, establishing that the first hierarchy in
+particular uses measured chemical decoration rather than geometry alone.
+
+The experimental CIF explicitly supplies a periodic cell, so the classifier
+calls the resulting top parent a `periodic crystalline approximant`; it does
+not infer “quasicrystal” from the publication title or chemical family.  Cell
+parent actions give the exact count curve 314 -> 2,512 -> 20,096 -> 160,768 ->
+1,286,144.  Two explicit actions preserve every measured coordinate and
+virtual-crystal color, corresponding to 9,891 atomwise additions per macro
+action.
+
+This is the first externally sourced approximant benchmark, but it is not a
+true aperiodic-coordinate dataset.  Its million-site continuation ultimately
+uses the experimental periodic boundary condition.  The internal 139-atom
+GCTS hierarchy makes the cell interpretable as clusters of clusters; the
+translation of that complete cell is still the easy crystalline part.  A true
+quasicrystal test requires an aperiodic diffraction/superspace refinement or a
+large experimentally reconstructed patch with a held-out region.
