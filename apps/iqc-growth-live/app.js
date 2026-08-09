@@ -107,6 +107,7 @@ const connectionAudit = $("connectionAudit");
 const connectionAuditTransfer = $("connectionAuditTransfer");
 const connectionAuditStates = $("connectionAuditStates");
 const connectionConsensus = $("connectionConsensus");
+const connectionSecondOrder = $("connectionSecondOrder");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
 const COLORS = {
@@ -166,7 +167,7 @@ const MATERIALS = {
 const RECURSIVE_BENCHMARKS = {
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
-  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "recursive connection state", action: "translated inflated parents", speed: "4.37× held-out scale", gate: "97.2% frontier recall", status: "control", note: "The generic route now learns local clusters, promotes parent/source pairs into finite cluster-of-cluster states, freezes those markings, and transfers them to the next inflation. Overlap votes rank forced moves versus branches; the specialized 6D section remains the exact ceiling.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" }, connection: { transfer: "8,363 / 8,603 sites", states: "171 accepted / 1,558 learned states · trained 507→1,969 · frozen on 1,969→8,603", consensus: [[1, 14.4, 97.2], [2, 21.0, 91.6], [4, 31.9, 64.2], [8, 63.0, 32.2], [16, 79.5, 7.7], [32, 100, .14]] } },
+  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "2-level connection section", action: "translated inflated parents", speed: "3.88× learned budget", gate: "2nd-order beats votes", status: "control", note: "The generic route learns local clusters, promotes their connections into higher-order states, then learns another bounded marking on the colored overlap-consensus neighborhood. All labels come from 507→1,969; the complete policy is frozen on 1,969→8,603. The specialized 6D section remains the exact ceiling.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" }, connection: { transfer: "8,363 / 8,603 sites", states: "171 / 1,558 first-order states · 4,339 cross-fit second-order samples · no held-out labels", consensus: [[1, 14.4, 97.2], [2, 21.0, 91.6], [4, 31.9, 64.2], [8, 63.0, 32.2]], secondOrder: [["0.5×", "continuous", 75.6, 33.6, 67.5, 30.0], ["1×", "binned", 54.9, 48.8, 52.9, 47.0], ["2×", "binned", 37.8, 67.2, 34.8, 61.8]] } },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
@@ -385,6 +386,7 @@ function updateRecursiveBenchmark() {
   }
   connectionAudit.hidden = !benchmark.connection;
   connectionConsensus.replaceChildren();
+  connectionSecondOrder.replaceChildren();
   if (benchmark.connection) {
     connectionAuditTransfer.textContent = benchmark.connection.transfer;
     connectionAuditStates.textContent = benchmark.connection.states;
@@ -393,6 +395,17 @@ function updateRecursiveBenchmark() {
       row.className = "consensus-row";
       row.innerHTML = `<b>≥${votes} votes</b><span><i style="--value:${precision}%"></i></span><em>P ${precision}% · R ${coverage}%</em>`;
       connectionConsensus.appendChild(row);
+    });
+    const heading = document.createElement("p");
+    heading.className = "consensus-label";
+    heading.textContent = "second-order colored section · GCTS P/R versus votes P/R";
+    connectionSecondOrder.appendChild(heading);
+    benchmark.connection.secondOrder.forEach(([budget, policy, precision, coverage, votePrecision, voteCoverage]) => {
+      const row = document.createElement("div");
+      row.className = "consensus-row second-order-row";
+      row.title = `${policy} section · vote-only P ${votePrecision}% / R ${voteCoverage}%`;
+      row.innerHTML = `<b>${budget} budget</b><span><i style="--value:${precision}%"></i></span><em>GCTS ${precision}/${coverage}<small>vote ${votePrecision}/${voteCoverage}</small></em>`;
+      connectionSecondOrder.appendChild(row);
     });
   }
   recursiveCurve.replaceChildren();

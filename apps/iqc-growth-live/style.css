@@ -331,6 +331,11 @@ a { color: inherit; }
 .consensus-row span { height: 3px; background: #142426; }
 .consensus-row i { display: block; width: var(--value); height: 100%; background: linear-gradient(90deg, var(--cyan), var(--violet)); }
 .consensus-row em { color: var(--faint); font-style: normal; text-align: right; }
+.second-order-consensus { margin-top: 6px; }
+.consensus-label { margin: 5px 0 4px; color: var(--violet); font: 5.5px var(--mono); text-transform: uppercase; }
+.second-order-row { grid-template-columns: 43px 1fr 84px; min-height: 22px; }
+.second-order-row em { color: var(--mint); line-height: 1.25; }
+.second-order-row em small { display: block; color: var(--faint); font: 5.5px var(--mono); }
 
 @media (max-width: 1100px) {
   .lab-grid { grid-template-columns: 218px minmax(460px, 1fr) 260px; }
