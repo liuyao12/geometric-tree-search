@@ -61,6 +61,7 @@ class MarkedProposalResult:
     true_pair_actions: int | None
     color_votes: Mapping[Point, Counter[str]]
     state_votes: Mapping[Point, Counter[RecursiveConnectionState]]
+    parent_votes: Mapping[Point, Counter[int]]
 
 
 def point_key(point: Sequence[float], digits: int = 6) -> Point:
@@ -180,6 +181,7 @@ def propose_with_recursive_marking(
     color_votes: Dict[Point, Counter[str]] = defaultdict(Counter)
     state_votes: Dict[Point, Counter[RecursiveConnectionState]] = defaultdict(
         Counter)
+    parent_votes: Dict[Point, Counter[int]] = defaultdict(Counter)
     accepted_pairs = 0
     true_pairs = 0
     parents = tuple(range(len(positions)) if parent_indices is None
@@ -203,11 +205,12 @@ def propose_with_recursive_marking(
             votes[target] += 1
             color_votes[target][mapped[source_index].color_key] += 1
             state_votes[target][state] += 1
+            parent_votes[target][parent_index] += 1
             if targets is not None:
                 true_pairs += target in targets
     return MarkedProposalResult(
         votes, accepted_pairs, None if targets is None else true_pairs,
-        dict(color_votes), dict(state_votes))
+        dict(color_votes), dict(state_votes), dict(parent_votes))
 
 
 def consensus_sites(votes: Counter[Point], minimum_votes: int) -> frozenset[Point]:

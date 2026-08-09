@@ -351,16 +351,17 @@ covers every target site in both 507→1,969 and 1,969→8,603.  This establishe
 that translated copies of higher-order parents can be a complete generator,
 not merely the origin-centred subset measured by the earlier iterated-marking
 test.  The marking is learned only on the first transition (1,558 observed
-connection states, 171 accepted) and then frozen:
+connection states, 171 accepted) and then frozen.  The 1,969 already-known
+sites are removed before scoring continuation; the target is the 6,634 genuinely
+new sites:
 
 | held-out consensus | proposed sites | correct | precision | target coverage |
 |---|---:|---:|---:|---:|
-| at least 1 overlapping action | 57,899 | 8,363 | 14.4% | **97.2%** |
-| at least 2 | 37,475 | 7,883 | 21.0% | **91.6%** |
-| at least 4 | 17,315 | 5,523 | 31.9% | 64.2% |
-| at least 8 | 4,395 | 2,769 | **63.0%** | 32.2% |
-| at least 16 | 837 | 665 | 79.5% | 7.7% |
-| at least 32 | 12 | 12 | **100%** | 0.14% |
+| at least 1 overlapping action | 55,990 | 6,454 | 11.5% | **97.3%** |
+| at least 2 | 35,626 | 6,034 | 16.9% | **91.0%** |
+| at least 4 | 15,726 | 3,934 | 25.0% | 59.3% |
+| at least 8 | 3,358 | 1,732 | **51.6%** | 26.1% |
+| at least 16 | 504 | 332 | 65.9% | 5.0% |
 
 This result identifies two distinct jobs that had previously been conflated.
 The finite connection marking transfers almost the entire next patch, while
@@ -384,21 +385,23 @@ lattice direction, or held-out oracle coordinate.
 
 To prevent the first transition from labelling its own proposals, five spatial
 parent folds are used.  Each fold's connection table is learned on the other
-four folds and applied only to the excluded parents.  The resulting 4,339
-out-of-fold proposals contain 1,969 positives and 2,370 genuine negative
+four folds and applied only to the excluded parents.  Known sites are removed.
+The resulting 3,832 out-of-fold continuation proposals contain 1,462 positives
+and 2,370 genuine negative
 examples.  The second-order marking is fitted there, frozen, and applied to
-68,019 proposals on the 1,969→8,603 transition.
+66,110 novel-site proposals on the 1,969→8,603 transition.
 
-The atom-growth factor learned from the training transition is 3.8836, which
-predicts a next-level budget of 7,647 sites without inspecting the 8,603-site
-target.  At fixed multiples of that budget, the second-order marking causally
+The atom-growth factor learned from the training transition is 3.8836.  It
+predicts 7,647 total next-level sites, hence a budget of 5,678 *new* sites after
+the 1,969 known sites are merged, without inspecting the 8,603-site target.  At
+fixed multiples of that continuation budget, the second-order marking causally
 improves multiplicity-only ranking:
 
 | next-level site budget | selected second-order policy | second-order P / R | vote-only P / R |
 |---:|---|---:|---:|
-| 3,824 (0.5×) | continuous section | **75.63% / 33.62%** | 67.49% / 30.00% |
-| 7,647 (1×) | finite binned section | **54.87% / 48.77%** | 52.87% / 47.00% |
-| 15,294 (2×) | finite binned section | **37.79% / 67.19%** | 34.75% / 61.78% |
+| 2,839 (0.5×) | continuous section | **70.87% / 30.33%** | 53.89% / 23.06% |
+| 5,678 (1×) | equal-rank section ensemble | **48.47% / 41.48%** | 43.64% / 37.35% |
+| 11,356 (2×) | finite binned section | **32.69% / 55.95%** | 29.48% / 50.47% |
 
 This is the first leakage-controlled gain from an explicit cluster of
 connection proposals rather than from raw overlap multiplicity.  It is not a

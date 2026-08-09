@@ -84,6 +84,7 @@ def _cross_fitted_training_votes(first, second, first_types) -> MarkedProposalRe
     votes = Counter()
     color_votes = {}
     state_votes = {}
+    parent_votes = {}
     for heldout_fold in range(5):
         training_parents = tuple(index for index, fold in enumerate(folds)
                                  if fold != heldout_fold)
@@ -100,8 +101,22 @@ def _cross_fitted_training_votes(first, second, first_types) -> MarkedProposalRe
             color_votes.setdefault(point, Counter()).update(counts)
         for point, counts in result.state_votes.items():
             state_votes.setdefault(point, Counter()).update(counts)
-    return MarkedProposalResult(votes, sum(votes.values()), None,
-                                color_votes, state_votes)
+        for point, counts in result.parent_votes.items():
+            parent_votes.setdefault(point, Counter()).update(counts)
+    result = MarkedProposalResult(votes, sum(votes.values()), None,
+                                  color_votes, state_votes, parent_votes)
+    return _without_known_sites(result, first.positions)
+
+
+def _without_known_sites(result, known_positions):
+    known = {point_key(point) for point in known_positions}
+    kept = {point for point in result.votes if point not in known}
+    votes = Counter({point: result.votes[point] for point in kept})
+    return MarkedProposalResult(
+        votes, sum(votes.values()), None,
+        {point: result.color_votes[point] for point in kept},
+        {point: result.state_votes[point] for point in kept},
+        {point: result.parent_votes[point] for point in kept})
 
 
 def _calibrated_threshold(scores, targets, precision_floor):
@@ -164,13 +179,18 @@ def evaluate() -> ConsensusNeighborhoodBenchmark:
     heldout = propose_with_recursive_marking(
         first_order, second.positions,
         map_to_prototypes(second_types, first_types), HIDDEN_UNIT)
+    heldout = _without_known_sites(heldout, second.positions)
     scores = score_consensus_neighborhoods(
         second_order, heldout.votes, heldout.color_votes, heldout.state_votes)
     binned_scores = score_binned_consensus_neighborhoods(
         binned_second_order, heldout.votes,
         heldout.color_votes, heldout.state_votes)
-    targets = {point_key(point) for point in third.positions}
-    training_targets = {point_key(point) for point in second.positions}
+    known_training = {point_key(point) for point in first.positions}
+    known_heldout = {point_key(point) for point in second.positions}
+    training_targets = ({point_key(point) for point in second.positions} -
+                        known_training)
+    targets = ({point_key(point) for point in third.positions} -
+               known_heldout)
     training_scores = score_consensus_neighborhoods(
         second_order, training.votes,
         training.color_votes, training.state_votes)
@@ -199,7 +219,8 @@ def evaluate() -> ConsensusNeighborhoodBenchmark:
         calibrated_vote_only.append(_apply_calibrated(
             heldout_vote_scores, targets, floor, vote_threshold))
     growth_factor = len(second.positions) / len(first.positions)
-    predicted_next_count = round(len(second.positions) * growth_factor)
+    predicted_next_count = (round(len(second.positions) * growth_factor) -
+                            len(second.positions))
     logistic_ranks = _percentile_ranks(scores)
     binned_ranks = _percentile_ranks(binned_scores)
     ensemble_scores = {

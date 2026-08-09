@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import Counter
 from dataclasses import asdict, dataclass
 from typing import Tuple
 
@@ -37,6 +38,8 @@ class RecursiveConnectionBenchmark:
     marked_true_sites: int
     marked_false_sites: int
     marked_coverage: float
+    known_sites_excluded: int
+    novel_target_sites: int
     operating_points: Tuple[ConsensusOperatingPoint, ...]
     trained_on_heldout_labels: bool
     lattice_coordinates_used: bool
@@ -54,11 +57,14 @@ def evaluate() -> RecursiveConnectionBenchmark:
         first.positions, first_types, second.positions, HIDDEN_UNIT)
     result = propose_with_recursive_marking(
         marking, second.positions, second_types, HIDDEN_UNIT, third.positions)
-    targets = {point_key(point) for point in third.positions}
-    marked_true = sum(point in targets for point in result.votes)
+    known = {point_key(point) for point in second.positions}
+    targets = ({point_key(point) for point in third.positions} - known)
+    novel_votes = Counter({point: votes for point, votes in result.votes.items()
+                           if point not in known})
+    marked_true = sum(point in targets for point in novel_votes)
     operating_points = []
     for threshold in (1, 2, 4, 8, 16, 32):
-        proposed = consensus_sites(result.votes, threshold)
+        proposed = consensus_sites(novel_votes, threshold)
         true = len(proposed & targets)
         false = len(proposed) - true
         operating_points.append(ConsensusOperatingPoint(
@@ -69,8 +75,9 @@ def evaluate() -> RecursiveConnectionBenchmark:
         HIDDEN_UNIT, len(marking.evidence), len(marking.accepted_states),
         result.accepted_pair_actions, result.true_pair_actions or 0,
         (result.true_pair_actions or 0) / result.accepted_pair_actions,
-        len(result.votes), marked_true, len(result.votes) - marked_true,
-        marked_true / len(targets), tuple(operating_points), False, False, False)
+        len(novel_votes), marked_true, len(novel_votes) - marked_true,
+        marked_true / len(targets), len(known), len(targets),
+        tuple(operating_points), False, False, False)
 
 
 def main() -> None:

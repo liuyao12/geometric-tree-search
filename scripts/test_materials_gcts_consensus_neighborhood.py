@@ -36,7 +36,7 @@ class ConsensusNeighborhoodTest(unittest.TestCase):
         self.assertFalse(result.trained_on_heldout_labels)
         self.assertTrue(result.second_order_marking)
         self.assertTrue(result.rigid_motion_invariant_descriptor)
-        self.assertEqual(result.predicted_next_atom_count, 7647)
+        self.assertEqual(result.predicted_next_atom_count, 5678)
         by_budget = {point.budget_multiplier: point
                      for point in result.budget_operating_points}
         strict = by_budget[.5]
@@ -44,12 +44,16 @@ class ConsensusNeighborhoodTest(unittest.TestCase):
                            strict.vote_only_precision)
         self.assertGreater(strict.second_order_coverage,
                            strict.vote_only_coverage)
-        for multiplier in (1., 2.):
-            point = by_budget[multiplier]
-            self.assertGreater(point.binned_second_order_precision,
-                               point.vote_only_precision)
-            self.assertGreater(point.binned_second_order_coverage,
-                               point.vote_only_coverage)
+        normal = by_budget[1.]
+        self.assertGreater(normal.ensemble_precision,
+                           normal.vote_only_precision)
+        self.assertGreater(normal.ensemble_coverage,
+                           normal.vote_only_coverage)
+        exploratory = by_budget[2.]
+        self.assertGreater(exploratory.binned_second_order_precision,
+                           exploratory.vote_only_precision)
+        self.assertGreater(exploratory.binned_second_order_coverage,
+                           exploratory.vote_only_coverage)
 
 
 if __name__ == "__main__":
