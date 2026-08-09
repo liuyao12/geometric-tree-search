@@ -372,11 +372,48 @@ algorithm.  The next step is to learn a bounded marking on the *consensus
 neighborhood itself*—a second-order cluster type—then search only the residual
 ambiguous frontier.
 
+### Second-order consensus-neighborhood marking
+
+`scripts/materials_gcts_consensus_neighborhood.py` now promotes the overlap
+field itself into another cluster level.  A proposed site's bounded descriptor
+contains its action multiplicity, agreement of predicted colors, diversity of
+parent/source connection states, and radial counts of neighboring proposals.
+Both a continuous logistic section and a finite binned likelihood section are
+learned.  These remain rigid-motion invariant and contain no physical energy,
+lattice direction, or held-out oracle coordinate.
+
+To prevent the first transition from labelling its own proposals, five spatial
+parent folds are used.  Each fold's connection table is learned on the other
+four folds and applied only to the excluded parents.  The resulting 4,339
+out-of-fold proposals contain 1,969 positives and 2,370 genuine negative
+examples.  The second-order marking is fitted there, frozen, and applied to
+68,019 proposals on the 1,969→8,603 transition.
+
+The atom-growth factor learned from the training transition is 3.8836, which
+predicts a next-level budget of 7,647 sites without inspecting the 8,603-site
+target.  At fixed multiples of that budget, the second-order marking causally
+improves multiplicity-only ranking:
+
+| next-level site budget | selected second-order policy | second-order P / R | vote-only P / R |
+|---:|---|---:|---:|
+| 3,824 (0.5×) | continuous section | **75.63% / 33.62%** | 67.49% / 30.00% |
+| 7,647 (1×) | finite binned section | **54.87% / 48.77%** | 52.87% / 47.00% |
+| 15,294 (2×) | finite binned section | **37.79% / 67.19%** | 34.75% / 61.78% |
+
+This is the first leakage-controlled gain from an explicit cluster of
+connection proposals rather than from raw overlap multiplicity.  It is not a
+G1 pass.  Absolute score thresholds calibrated on 507→1,969 transfer poorly
+because candidate density and class prevalence change sharply at the next
+level.  The current recursively stable policy therefore ranks the atom budget
+predicted by the learned growth factor.  The next marking must model that
+density transformation explicitly or learn a higher-order sparse cover so an
+absolute forced-move decision remains calibrated across levels.
+
 ## Next implementation target
 
-Promote overlap-consensus neighborhoods into explicit second-order cluster
-types and learn their markings on one transition before freezing them on the
-next.  Generalize the parametric recursive-node interface so crystals learn a
+Learn the transformation of proposal density and class prevalence between
+hierarchy levels, or replace dense pair proposals with a learned sparse parent
+cover.  Generalize the parametric recursive-node interface so crystals learn a
 translation quotient, substitution quasicrystals learn an inflation or
 superspace section, and amorphous controls decline the deterministic rule.  Add
 held-out perturbations and non-icosahedral model sets so a module-specific

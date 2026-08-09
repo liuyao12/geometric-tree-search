@@ -59,6 +59,8 @@ class MarkedProposalResult:
     votes: Counter[Point]
     accepted_pair_actions: int
     true_pair_actions: int | None
+    color_votes: Mapping[Point, Counter[str]]
+    state_votes: Mapping[Point, Counter[RecursiveConnectionState]]
 
 
 def point_key(point: Sequence[float], digits: int = 6) -> Point:
@@ -125,7 +127,9 @@ def learn_recursive_connection_marking(
         target_positions: Iterable[Point], scale: float,
         separation_bin_width: float = .5,
         minimum_positive_support: int = 2,
-        minimum_purity: float = 1.0) -> RecursiveConnectionMarking:
+        minimum_purity: float = 1.0,
+        parent_indices: Iterable[int] | None = None,
+        ) -> RecursiveConnectionMarking:
     """Learn a finite connection marking from one known growth transition."""
     if len(positions) != len(cluster_types) or len(positions) < 2:
         raise ValueError("positions and cluster types must be aligned")
@@ -134,7 +138,13 @@ def learn_recursive_connection_marking(
     targets = {point_key(point) for point in target_positions}
     counts: Dict[RecursiveConnectionState, list[int]] = defaultdict(
         lambda: [0, 0])
-    for parent_index, parent in enumerate(positions):
+    parents = tuple(range(len(positions)) if parent_indices is None
+                    else parent_indices)
+    if not parents or any(index < 0 or index >= len(positions)
+                          for index in parents):
+        raise ValueError("parent indices must select known positions")
+    for parent_index in parents:
+        parent = positions[parent_index]
         for source_index, source in enumerate(positions):
             if parent_index == source_index:
                 continue
@@ -158,6 +168,7 @@ def propose_with_recursive_marking(
         marking: RecursiveConnectionMarking, positions: Sequence[Point],
         cluster_types: Sequence[LocalClusterType], level_scale: float = 1.0,
         target_positions: Iterable[Point] | None = None,
+        parent_indices: Iterable[int] | None = None,
         ) -> MarkedProposalResult:
     """Apply a frozen marking and aggregate overlapping action proposals."""
     if len(positions) != len(cluster_types) or level_scale <= 0:
@@ -166,9 +177,18 @@ def propose_with_recursive_marking(
     targets = (None if target_positions is None else
                {point_key(point) for point in target_positions})
     votes: Counter[Point] = Counter()
+    color_votes: Dict[Point, Counter[str]] = defaultdict(Counter)
+    state_votes: Dict[Point, Counter[RecursiveConnectionState]] = defaultdict(
+        Counter)
     accepted_pairs = 0
     true_pairs = 0
-    for parent_index, parent in enumerate(positions):
+    parents = tuple(range(len(positions)) if parent_indices is None
+                    else parent_indices)
+    if not parents or any(index < 0 or index >= len(positions)
+                          for index in parents):
+        raise ValueError("parent indices must select known positions")
+    for parent_index in parents:
+        parent = positions[parent_index]
         for source_index, source in enumerate(positions):
             if parent_index == source_index:
                 continue
@@ -181,10 +201,13 @@ def propose_with_recursive_marking(
             accepted_pairs += 1
             target = point_key(_proposal(parent, source, marking.scale))
             votes[target] += 1
+            color_votes[target][mapped[source_index].color_key] += 1
+            state_votes[target][state] += 1
             if targets is not None:
                 true_pairs += target in targets
     return MarkedProposalResult(
-        votes, accepted_pairs, None if targets is None else true_pairs)
+        votes, accepted_pairs, None if targets is None else true_pairs,
+        dict(color_votes), dict(state_votes))
 
 
 def consensus_sites(votes: Counter[Point], minimum_votes: int) -> frozenset[Point]:
