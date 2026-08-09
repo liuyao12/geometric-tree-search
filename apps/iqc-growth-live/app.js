@@ -173,6 +173,7 @@ const RECURSIVE_BENCHMARKS = {
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
 RECURSIVE_BENCHMARKS.iqc.connection.macro.ceiling = "oracle reachability ceiling · greedy 21 maps 44.0% → pooled support vocabulary 94.2% → colored 1,000-support vocabulary 6,634/6,634 (100%) · complete representation, autonomous selection pending";
+RECURSIVE_BENCHMARKS.iqc.connection.macro.selection = "autonomous first-wave marking · vote-only 3,416/8,172 (41.8%) → learned action marks at same budget 3,631/8,172 (44.4%) · +215 correct / −215 false · second-order selection pending";
 const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
 const BALANCE_DIRECTIONS = [
   [0, 1, PHI], [0, -1, PHI], [0, 1, -PHI], [0, -1, -PHI],
@@ -445,7 +446,7 @@ function updateRecursiveBenchmark() {
       });
       const verdict = document.createElement("p");
       verdict.className = "macro-verdict";
-      verdict.innerHTML = `<span>${macro.safe}</span><strong>${macro.rejected}</strong>${macro.crystal ? `<small>${macro.crystal}</small>` : ""}${macro.iterated ? `<small>${macro.iterated}</small>` : ""}${macro.similarity ? `<small>${macro.similarity}</small>` : ""}${macro.ceiling ? `<small>${macro.ceiling}</small>` : ""}`;
+      verdict.innerHTML = `<span>${macro.safe}</span><strong>${macro.rejected}</strong>${macro.crystal ? `<small>${macro.crystal}</small>` : ""}${macro.iterated ? `<small>${macro.iterated}</small>` : ""}${macro.similarity ? `<small>${macro.similarity}</small>` : ""}${macro.ceiling ? `<small>${macro.ceiling}</small>` : ""}${macro.selection ? `<small>${macro.selection}</small>` : ""}`;
       connectionFrontier.append(macroHeading, macroFlow, verdict);
     }
   }

@@ -172,4 +172,13 @@ reachability. This proves complete representation, not autonomous selection:
 the first wave still contains 12,332 false proposals. Direct phi-squared macro
 maps recover none of the residual and remain a negative ablation.
 
+The first autonomous mark is trained on placements inside radius 6 of the
+507-atom input, tuned on the disjoint radius 6–9 annulus, and frozen for the
+larger frontier. At the same 8,172-expansion budget as validation-selected
+vote consensus, learned action marks select 3,631 correct sites instead of
+3,416: 215 more correct and 215 fewer false branches, raising precision from
+41.8% to 44.4%. This is a causal marking gain at fixed cost, but it retains
+only 54.7% of the reachable first wave; autonomous complete emission remains
+the next gate.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
