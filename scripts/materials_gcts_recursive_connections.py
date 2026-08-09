@@ -185,6 +185,7 @@ def propose_with_recursive_marking(
         cluster_types: Sequence[LocalClusterType], level_scale: float = 1.0,
         target_positions: Iterable[Point] | None = None,
         parent_indices: Iterable[int] | None = None,
+        source_indices: Iterable[int] | None = None,
         ) -> MarkedProposalResult:
     """Apply a frozen marking and aggregate overlapping action proposals."""
     if len(positions) != len(cluster_types) or level_scale <= 0:
@@ -205,9 +206,15 @@ def propose_with_recursive_marking(
     if not parents or any(index < 0 or index >= len(positions)
                           for index in parents):
         raise ValueError("parent indices must select known positions")
+    sources = tuple(range(len(positions)) if source_indices is None
+                    else source_indices)
+    if not sources or any(index < 0 or index >= len(positions)
+                          for index in sources):
+        raise ValueError("source indices must select known positions")
     for parent_index in parents:
         parent = positions[parent_index]
-        for source_index, source in enumerate(positions):
+        for source_index in sources:
+            source = positions[source_index]
             if parent_index == source_index:
                 continue
             state = RecursiveConnectionState(
@@ -241,3 +248,34 @@ def consensus_sites(votes: Counter[Point], minimum_votes: int) -> frozenset[Poin
         raise ValueError("minimum votes must be positive")
     return frozenset(point for point, count in votes.items()
                      if count >= minimum_votes)
+
+
+def merge_marked_proposal_results(
+        results: Iterable[MarkedProposalResult]) -> MarkedProposalResult:
+    """Merge independently generated action families by target coordinate."""
+    votes: Counter[Point] = Counter()
+    colors: Dict[Point, Counter[str]] = defaultdict(Counter)
+    target_colors: Dict[Point, Counter[str]] = defaultdict(Counter)
+    states: Dict[Point, Counter[RecursiveConnectionState]] = defaultdict(Counter)
+    parents: Dict[Point, Counter[int]] = defaultdict(Counter)
+    accepted_pairs = 0
+    true_pairs = 0
+    labels_available = True
+    for result in results:
+        votes.update(result.votes)
+        accepted_pairs += result.accepted_pair_actions
+        if result.true_pair_actions is None:
+            labels_available = False
+        else:
+            true_pairs += result.true_pair_actions
+        for point, evidence in result.color_votes.items():
+            colors[point].update(evidence)
+        for point, evidence in result.target_color_votes.items():
+            target_colors[point].update(evidence)
+        for point, evidence in result.state_votes.items():
+            states[point].update(evidence)
+        for point, evidence in result.parent_votes.items():
+            parents[point].update(evidence)
+    return MarkedProposalResult(
+        votes, accepted_pairs, true_pairs if labels_available else None,
+        dict(colors), dict(target_colors), dict(states), dict(parents))

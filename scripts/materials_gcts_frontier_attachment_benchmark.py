@@ -17,7 +17,8 @@ from materials_gcts_frontier_attachment import (
 from materials_gcts_icosahedral_modelset import HIDDEN_UNIT, oracle_patch
 from materials_gcts_recursive_connections import (
     MarkedProposalResult, learn_recursive_connection_marking, local_cluster_types,
-    map_to_prototypes, point_key, propose_with_recursive_marking)
+    map_to_prototypes, merge_marked_proposal_results, point_key,
+    propose_with_recursive_marking)
 
 
 @dataclass(frozen=True)
@@ -45,6 +46,7 @@ class IterativeGrowthWave:
     cumulative_precision: float
     cumulative_novel_coverage: float
     maximum_score: float
+    frontier_candidates: int
 
 
 @dataclass(frozen=True)
@@ -72,6 +74,9 @@ class FrontierAttachmentBenchmark:
     largest_top_score_gap_rank: int
     largest_top_score_gap: float
     iterative_growth_waves: Tuple[IterativeGrowthWave, ...]
+    regenerative_growth_waves: Tuple[IterativeGrowthWave, ...]
+    learned_envelope_scale: float
+    regenerative_radius_limit: float
     learned_minimum_separation: float
     trained_on_heldout_labels: bool
     known_sites_are_features_not_labels: bool
@@ -243,11 +248,81 @@ def _iterative_maximum_plateaus(
         records.append(IterativeGrowthWave(
             wave, len(plateau), true, len(plateau) - true, len(accepted),
             accepted_true / len(accepted), accepted_true / len(targets),
-            maximum))
+            maximum, len(scores)))
         current_positions.extend(plateau)
         current_colors.extend(_dominant_source_color(remaining, point)
                               for point in plateau)
         remaining = _without_known_sites(remaining, plateau)
+        if not remaining.votes:
+            break
+    return tuple(records)
+
+
+def _center_and_radius(positions):
+    center = tuple(sum(point[axis] for point in positions) / len(positions)
+                   for axis in range(3))
+    radius = max(sum((point[axis] - center[axis]) ** 2
+                     for axis in range(3)) ** .5 for point in positions)
+    return center, radius
+
+
+def _regenerative_maximum_plateaus(
+        frontier_marker, refinement_marker, connection_marker, proposals,
+        known_positions, known_colors, cluster_edges, targets,
+        provisional_pool, center, radius_limit, waves=8):
+    def within(point):
+        return sum((point[axis] - center[axis]) ** 2
+                   for axis in range(3)) ** .5 <= radius_limit + 1e-8
+
+    remaining = _subset_proposals(
+        proposals, (point for point in proposals.votes if within(point)))
+    accepted = []
+    accepted_true = 0
+    current_positions = list(known_positions)
+    current_colors = list(known_colors)
+    records = []
+    for wave in range(1, waves + 1):
+        frontier_scores = score_frontier_attachments(
+            frontier_marker, remaining, current_positions, current_colors)
+        augmented = _augmented_frontier(
+            remaining, frontier_scores, current_positions, current_colors,
+            min(provisional_pool, len(frontier_scores)))
+        scores = score_frontier_attachments(
+            refinement_marker, remaining, *augmented)
+        maximum = max(scores.values())
+        plateau = tuple(sorted(point for point, score in scores.items()
+                               if maximum - score <= 1e-12))
+        true = sum(point in targets for point in plateau)
+        accepted.extend(plateau)
+        accepted_true += true
+        records.append(IterativeGrowthWave(
+            wave, len(plateau), true, len(plateau) - true, len(accepted),
+            accepted_true / len(accepted), accepted_true / len(targets),
+            maximum, len(scores)))
+
+        old_count = len(current_positions)
+        current_positions.extend(plateau)
+        current_colors.extend(_dominant_source_color(remaining, point)
+                              for point in plateau)
+        new_indices = tuple(range(old_count, len(current_positions)))
+        all_indices = tuple(range(len(current_positions)))
+        old_indices = tuple(range(old_count))
+        updated_types = local_cluster_types(
+            tuple(current_positions), tuple(current_colors), cluster_edges)
+        new_parents = propose_with_recursive_marking(
+            connection_marker, tuple(current_positions), updated_types,
+            HIDDEN_UNIT, parent_indices=new_indices,
+            source_indices=all_indices)
+        old_parents_new_sources = propose_with_recursive_marking(
+            connection_marker, tuple(current_positions), updated_types,
+            HIDDEN_UNIT, parent_indices=old_indices,
+            source_indices=new_indices)
+        remaining = _without_known_sites(remaining, plateau)
+        remaining = merge_marked_proposal_results(
+            (remaining, new_parents, old_parents_new_sources))
+        remaining = _without_known_sites(remaining, current_positions)
+        remaining = _subset_proposals(
+            remaining, (point for point in remaining.votes if within(point)))
         if not remaining.votes:
             break
     return tuple(records)
@@ -347,6 +422,14 @@ def evaluate() -> FrontierAttachmentBenchmark:
     iterative_waves = _iterative_maximum_plateaus(
         marker, refinement_marker, heldout, second.positions, second.species,
         heldout_targets, heldout_pool)
+    first_center, first_radius = _center_and_radius(first.positions)
+    second_center, second_radius = _center_and_radius(second.positions)
+    envelope_scale = second_radius / first_radius
+    regenerative_limit = second_radius * envelope_scale
+    regenerative_waves = _regenerative_maximum_plateaus(
+        marker, refinement_marker, connection_marking, heldout,
+        second.positions, second.species, cluster_edges, heldout_targets,
+        heldout_pool, second_center, regenerative_limit)
     return FrontierAttachmentBenchmark(
         (len(first.positions), len(second.positions), len(third.positions)),
         len(training.votes), len(training_targets), len(heldout.votes),
@@ -355,7 +438,8 @@ def evaluate() -> FrontierAttachmentBenchmark:
         diagnostic, hard_core, third_order, training_pool, heldout_pool,
         third_training_prefix, third_projected_prefix, third_projected,
         landmarks, gap_rank, gap,
-        iterative_waves,
+        iterative_waves, regenerative_waves, envelope_scale,
+        regenerative_limit,
         minimum_separation, False, True, True)
 
 

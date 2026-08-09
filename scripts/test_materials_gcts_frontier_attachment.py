@@ -58,6 +58,14 @@ class FrontierAttachmentTest(unittest.TestCase):
         self.assertEqual(waves[-1].cumulative_sites, 208)
         self.assertEqual(waves[-1].cumulative_precision, 1.0)
         self.assertGreaterEqual(max(wave.plateau_sites for wave in waves), 100)
+        regenerative = result.regenerative_growth_waves
+        self.assertEqual(len(regenerative), 8)
+        self.assertTrue(all(wave.false_sites == 0 for wave in regenerative))
+        self.assertEqual(regenerative[-1].cumulative_sites, 228)
+        self.assertGreater(regenerative[-1].frontier_candidates,
+                           regenerative[0].frontier_candidates)
+        self.assertGreaterEqual(max(wave.plateau_sites
+                                    for wave in regenerative), 100)
         diagnostics = {point.site_budget: point
                        for point in result.diagnostic_operating_points}
         self.assertGreater(diagnostics[500].precision, .95)

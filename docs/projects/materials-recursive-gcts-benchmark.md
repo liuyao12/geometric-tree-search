@@ -452,6 +452,22 @@ The 120-site third wave is a verified macro action selected as a cluster of
 proposal clusters, not 120 atomwise oracle decisions.  Later plateaus shrink,
 so this is safe hierarchical progress rather than exponential continuation.
 
+The first implementation re-ranked a fixed proposal family.  The current
+regenerative search now recomputes local cluster types after every accepted
+macro and evaluates only incremental connection pairs involving a new parent or
+source.  Its radial envelope is also learned rather than read from the held-out
+target: the finite-sample extent ratio is 1.6629 and gives a 24.010 continuation
+radius.  Eight regenerated waves add:
+
+`12 → 104 → 12 → 4 → 36 → 24 → 24 → 12`
+
+They contain **228/228 correct novel sites** (3.44% recall).  More importantly,
+the available frontier grows from 63,890 to 66,254 candidates while accepted
+sites are removed.  New actions therefore outpace consumption; this is actual
+continuation from newly created clusters, not replay of a precomputed list.
+The plateau sizes still do not amplify monotonically, so the exponential gate
+remains open.
+
 Two calibration ablations remain negative.  Scaling a training-pure prefix by
 the expected surface factor selects 3,828 sites at only 60.2% precision, while
 an absolute 99%-training-precision score threshold transfers at about 17%
