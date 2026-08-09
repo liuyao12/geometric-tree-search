@@ -31,13 +31,15 @@ class CirclePackingSearchTest(unittest.TestCase):
         )
         self.assertTrue(solver.is_victory(tuple(circles)))
 
-    def test_search_finds_four_circle_thirds_configuration(self) -> None:
-        result = Solver([3], max_circles=7, node_limit=20_000).solve()
+    def test_search_finds_six_circle_held_thirds_configuration(self) -> None:
+        result = Solver([3], max_circles=6, node_limit=20_000).solve()
         self.assertEqual(result.status, "found")
-        self.assertEqual(len(result.circles or ()), 4)
+        self.assertEqual(len(result.circles or ()), 6)
         self.assertTrue(result.circles is not None)
         assert result.circles is not None
-        self.assertTrue(all(len(c) >= 3 for c in Solver([3]).contacts(result.circles)))
+        contacts = Solver([3]).contacts(result.circles)
+        self.assertTrue(all(Solver([3]).is_held(result.circles, i, contacts)
+                            for i in range(len(result.circles))))
 
 
 if __name__ == "__main__":

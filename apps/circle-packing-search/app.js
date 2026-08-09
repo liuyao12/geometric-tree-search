@@ -1,25 +1,27 @@
 import { BOUNDARY, CirclePackingSearch } from "../../assets/circle-packing-search.js";
+import { CIRCLE_PACKING_SAMPLES, hydrateSample } from "../../assets/circle-packing-samples.js";
 
 const $ = id => document.getElementById(id);
 const elements = {
-  denominators: $("denominators"), maxCircles: $("max-circles"), nodeLimit: $("node-limit"),
+  bends: $("bends"), maxCircles: $("max-circles"), nodeLimit: $("node-limit"),
   run: $("run"), step: $("step"), reset: $("reset"), error: $("error"), canvas: $("packing"),
   statusTitle: $("status-title"), statusBadge: $("status-badge"), nodes: $("nodes"),
-  depth: $("depth"), frontier: $("frontier"), dead: $("dead"),
+  depth: $("depth"), frontier: $("frontier"), dead: $("dead"), symmetry: $("symmetry"),
 };
 
 const palette = ["#d5a549", "#5e9b82", "#cd735b", "#6994ad", "#8b79a4", "#a4a65f"];
 let search = null;
 let running = false;
+let savedSnapshot = null;
 
-function parseDenominators() {
-  const tokens = elements.denominators.value.trim().split(/[\s,]+/).filter(Boolean);
+function parseBends() {
+  const tokens = elements.bends.value.trim().split(/[\s,]+/).filter(Boolean);
   return tokens.map(token => Number(token));
 }
 
 function makeSearch() {
-  const denominators = parseDenominators();
-  search = new CirclePackingSearch(denominators, {
+  const bends = parseBends();
+  search = new CirclePackingSearch(bends, {
     maxCircles: Number(elements.maxCircles.value),
     nodeLimit: Number(elements.nodeLimit.value),
   });
@@ -75,12 +77,12 @@ function renderPacking(snapshot) {
     }
   });
 
-  const denominatorColors = new Map(search.denominators.map((n, i) => [n, palette[i % palette.length]]));
+  const bendColors = new Map(search.bends.map((bend, i) => [bend, palette[i % palette.length]]));
   snapshot.circles.forEach((circle, index) => {
     const screen = project(circle);
     ctx.beginPath();
     ctx.arc(screen.x, screen.y, screen.r, 0, Math.PI * 2);
-    ctx.fillStyle = `${denominatorColors.get(circle.denominator)}d9`;
+    ctx.fillStyle = `${bendColors.get(circle.bend)}d9`;
     ctx.fill();
     ctx.strokeStyle = index === snapshot.circles.length - 1 ? "#b95037" : "#263c33";
     ctx.lineWidth = index === snapshot.circles.length - 1 ? 3 : 1.25;
@@ -89,11 +91,8 @@ function renderPacking(snapshot) {
       ctx.fillStyle = "#17221e";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.font = `700 ${Math.max(10, Math.min(16, screen.r * .34))}px Inter, sans-serif`;
-      ctx.fillText(`1/${circle.denominator}`, screen.x, screen.y - 2);
-      ctx.font = "700 9px Inter, sans-serif";
-      ctx.fillStyle = "rgba(23,34,30,.66)";
-      ctx.fillText(`degree ${snapshot.contacts[index]?.size ?? 0}`, screen.x, screen.y + 11);
+      ctx.font = `750 ${Math.max(12, Math.min(24, screen.r * .48))}px Inter, sans-serif`;
+      ctx.fillText(String(circle.bend), screen.x, screen.y);
     }
   });
   ctx.restore();
@@ -114,22 +113,27 @@ const statusCopy = {
 
 function render() {
   if (!search) return;
-  const snapshot = search.snapshot();
-  const [title, badge] = statusCopy[snapshot.status];
+  const snapshot = savedSnapshot ?? search.snapshot();
+  const [title, badge] = snapshot.saved
+    ? ["Saved packing", `${snapshot.circles.length} circles`]
+    : statusCopy[snapshot.status];
   elements.statusTitle.textContent = title;
   elements.statusBadge.textContent = badge;
-  elements.statusBadge.className = `status ${snapshot.status}`;
+  elements.statusBadge.className = `status ${snapshot.saved ? "saved" : snapshot.status}`;
   elements.nodes.textContent = snapshot.nodes.toLocaleString();
   elements.depth.textContent = snapshot.maxDepth;
   elements.frontier.textContent = snapshot.frontierStates.toLocaleString();
   elements.dead.textContent = snapshot.deadBranches.toLocaleString();
+  elements.symmetry.textContent = snapshot.symmetryPrunes.toLocaleString();
   renderPacking(snapshot);
   if (snapshot.status !== "running") stopRunning();
 }
 
 function stopRunning() {
   running = false;
-  elements.run.textContent = search?.status === "running" ? "Resume search" : "Run again";
+  elements.run.textContent = savedSnapshot
+    ? "Run this search"
+    : search?.status === "running" ? "Resume search" : "Run again";
   elements.run.classList.remove("running");
 }
 
@@ -147,6 +151,7 @@ elements.run.addEventListener("click", () => {
       return;
     }
     if (!search || search.status !== "running") makeSearch();
+    savedSnapshot = null;
     running = true;
     elements.run.textContent = "Pause search";
     elements.run.classList.add("running");
@@ -160,6 +165,7 @@ elements.step.addEventListener("click", () => {
   try {
     if (running) stopRunning();
     if (!search || search.status !== "running") makeSearch();
+    savedSnapshot = null;
     search.step(1);
     render();
   } catch (error) {
@@ -170,6 +176,7 @@ elements.step.addEventListener("click", () => {
 elements.reset.addEventListener("click", () => {
   try {
     stopRunning();
+    savedSnapshot = null;
     makeSearch();
     render();
   } catch (error) {
@@ -178,10 +185,39 @@ elements.reset.addEventListener("click", () => {
 });
 
 document.querySelectorAll("[data-example]").forEach(button => button.addEventListener("click", () => {
-  elements.denominators.value = button.dataset.example;
-  elements.maxCircles.value = button.dataset.example === "3" ? "7" : "12";
+  elements.bends.value = button.dataset.example;
+  elements.maxCircles.value = button.dataset.example === "3" ? "6"
+    : button.dataset.example === "3, 4, 5, 6" ? "8" : "12";
   elements.reset.click();
 }));
+
+const sampleGrid = $("sample-grid");
+sampleGrid.innerHTML = CIRCLE_PACKING_SAMPLES.map(sample =>
+  `<button type="button" data-sample="${sample.id}" aria-label="Load saved bends ${sample.label}">{${sample.label}}</button>`
+).join("");
+sampleGrid.addEventListener("click", event => {
+  const button = event.target.closest("[data-sample]");
+  if (!button) return;
+  const sample = CIRCLE_PACKING_SAMPLES.find(item => item.id === button.dataset.sample);
+  stopRunning();
+  elements.bends.value = sample.bends.join(", ");
+  elements.maxCircles.value = String(sample.maxCircles);
+  makeSearch();
+  const circles = hydrateSample(sample);
+  savedSnapshot = {
+    saved: true,
+    status: "found",
+    nodes: sample.searchNodes,
+    maxDepth: circles.length,
+    frontierStates: 0,
+    deadBranches: 0,
+    symmetryPrunes: 0,
+    circles,
+    contacts: search.contacts(circles),
+  };
+  elements.run.textContent = "Run search";
+  render();
+});
 
 window.addEventListener("resize", () => render());
 makeSearch();

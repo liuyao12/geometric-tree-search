@@ -1,19 +1,19 @@
 export const BOUNDARY = -1;
 
-const circleRadius = denominator => 1 / denominator;
+const circleRadius = bend => 1 / bend;
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
 export class CirclePackingSearch {
-  constructor(denominators, options = {}) {
-    this.denominators = [...new Set(denominators)].sort((a, b) => a - b);
-    if (!this.denominators.length || this.denominators.some(n => !Number.isInteger(n) || n < 2)) {
+  constructor(bends, options = {}) {
+    this.bends = [...new Set(bends)].sort((a, b) => a - b);
+    if (!this.bends.length || this.bends.some(b => !Number.isInteger(b) || b < 2)) {
       throw new Error("Enter a nonempty set of integers, each at least 2.");
     }
     this.tolerance = options.tolerance ?? 1e-9;
-    this.areaBound = Math.max(...this.denominators) ** 2;
+    this.areaBound = Math.max(...this.bends) ** 2;
     this.maxCircles = Math.min(options.maxCircles ?? this.areaBound, this.areaBound);
     this.nodeLimit = options.nodeLimit ?? 100000;
-    if (!Number.isInteger(this.maxCircles) || this.maxCircles < this.denominators.length) {
+    if (!Number.isInteger(this.maxCircles) || this.maxCircles < this.bends.length) {
       throw new Error("The circle horizon must be an integer large enough to use every radius.");
     }
     if (!Number.isInteger(this.nodeLimit) || this.nodeLimit < 1) {
@@ -29,16 +29,18 @@ export class CirclePackingSearch {
     this.candidateAttempts = 0;
     this.deadBranches = 0;
     this.duplicateStates = 0;
+    this.symmetryPrunes = 0;
     this.seen = new Set();
     this.solution = null;
     this.current = null;
     this.best = null;
     this.bestScore = -Infinity;
-    this.stack = [...this.denominators].reverse().map(denominator => {
-      const radius = circleRadius(denominator);
-      return { circles: [{ denominator, radius, x: 1 - radius, y: 0 }], lastAction: null };
+    this.stack = [...this.bends].reverse().map(bend => {
+      const radius = circleRadius(bend);
+      return { circles: [{ bend, radius, x: 1 - radius, y: 0 }], lastAction: null };
     });
-    if (this.denominators.reduce((sum, n) => sum + 1 / (n * n), 0) > 1 + this.tolerance) {
+    this.pending = new Set(this.stack.map(state => this.stateKey(state.circles)));
+    if (this.bends.reduce((sum, bend) => sum + 1 / (bend * bend), 0) > 1 + this.tolerance) {
       this.status = "exhausted";
       this.stack = [];
     }
@@ -57,6 +59,7 @@ export class CirclePackingSearch {
         break;
       }
       const key = this.stateKey(state.circles);
+      this.pending.delete(key);
       if (this.seen.has(key)) {
         this.duplicateStates += 1;
         continue;
@@ -83,9 +86,14 @@ export class CirclePackingSearch {
       const actions = this.actions(state.circles, contacts);
       for (let index = actions.length - 1; index >= 0; index -= 1) {
         const action = actions[index];
+        if (this.seen.has(action.key) || this.pending.has(action.key)) {
+          this.duplicateStates += 1;
+          continue;
+        }
+        this.pending.add(action.key);
         this.stack.push({
           circles: [...state.circles, action.circle],
-          lastAction: { a: action.a, b: action.b, denominator: action.circle.denominator },
+          lastAction: { a: action.a, b: action.b, bend: action.circle.bend },
         });
       }
     }
@@ -102,6 +110,7 @@ export class CirclePackingSearch {
       candidateAttempts: this.candidateAttempts,
       deadBranches: this.deadBranches,
       duplicateStates: this.duplicateStates,
+      symmetryPrunes: this.symmetryPrunes,
       circles: shown?.circles ?? [],
       contacts: shown?.contacts ?? this.contacts(shown?.circles ?? []),
       lastAction: shown?.lastAction ?? null,
@@ -111,33 +120,39 @@ export class CirclePackingSearch {
   }
 
   actions(circles, contacts = this.contacts(circles)) {
-    const used = new Set(circles.map(circle => circle.denominator));
-    const missing = new Set(this.denominators.filter(n => !used.has(n)));
+    const used = new Set(circles.map(circle => circle.bend));
+    const missing = new Set(this.bends.filter(bend => !used.has(bend)));
     const actions = [];
-    const emitted = new Set();
+    const emittedChildren = new Set();
     for (const [a, b] of this.orientedCorners(circles, contacts)) {
-      for (const denominator of this.denominators) {
+      for (const bend of this.bends) {
         this.candidateAttempts += 1;
-        const attempt = this.placeAtCorner(circles, a, b, denominator);
+        const attempt = this.placeAtCorner(circles, a, b, bend);
         if (!attempt.circle) {
           if (attempt.reason === "overlap" || attempt.reason === "outside") this.deadBranches += 1;
           continue;
         }
-        const key = this.circleKey(attempt.circle);
-        if (emitted.has(key)) continue;
-        emitted.add(key);
         const trial = [...circles, attempt.circle];
-        const newDegree = this.contacts(trial).at(-1).size;
+        const key = this.stateKey(trial);
+        if (emittedChildren.has(key)) {
+          this.symmetryPrunes += 1;
+          continue;
+        }
+        emittedChildren.add(key);
+        const trialContacts = this.contacts(trial);
+        const newDegree = trialContacts.at(-1).size;
+        const heldCount = trialContacts.filter((_, index) => this.isHeld(trial, index, trialContacts)).length;
         actions.push({
-          a, b, circle: attempt.circle, newDegree,
-          missing: missing.has(denominator),
+          a, b, circle: attempt.circle, newDegree, heldCount, key,
+          missing: missing.has(bend),
         });
       }
     }
     actions.sort((left, right) =>
       Number(right.missing) - Number(left.missing)
+      || right.heldCount - left.heldCount
       || right.newDegree - left.newDegree
-      || left.circle.denominator - right.circle.denominator
+      || left.circle.bend - right.circle.bend
     );
     return actions;
   }
@@ -159,8 +174,33 @@ export class CirclePackingSearch {
   }
 
   isVictory(circles, contacts = this.contacts(circles)) {
-    const used = new Set(circles.map(circle => circle.denominator));
-    return this.denominators.every(n => used.has(n)) && contacts.every(neighbors => neighbors.size >= 3);
+    const used = new Set(circles.map(circle => circle.bend));
+    return this.bends.every(bend => used.has(bend))
+      && contacts.every((_, index) => this.isHeld(circles, index, contacts));
+  }
+
+  contactAngles(circles, index, contacts = this.contacts(circles)) {
+    const circle = circles[index];
+    return [...contacts[index]].map(neighbor => {
+      if (neighbor === BOUNDARY) return Math.atan2(circle.y, circle.x);
+      const other = circles[neighbor];
+      return Math.atan2(other.y - circle.y, other.x - circle.x);
+    }).map(angle => angle < 0 ? angle + 2 * Math.PI : angle).sort((a, b) => a - b);
+  }
+
+  largestContactGap(circles, index, contacts = this.contacts(circles)) {
+    const angles = this.contactAngles(circles, index, contacts);
+    if (angles.length < 2) return 2 * Math.PI;
+    let largest = angles[0] + 2 * Math.PI - angles.at(-1);
+    for (let i = 1; i < angles.length; i += 1) {
+      largest = Math.max(largest, angles[i] - angles[i - 1]);
+    }
+    return largest;
+  }
+
+  isHeld(circles, index, contacts = this.contacts(circles)) {
+    return contacts[index].size >= 3
+      && this.largestContactGap(circles, index, contacts) < Math.PI - this.tolerance;
   }
 
   orientedCorners(circles, contacts = this.contacts(circles)) {
@@ -175,8 +215,8 @@ export class CirclePackingSearch {
     return pairs;
   }
 
-  placeAtCorner(circles, a, b, denominator) {
-    const radius = circleRadius(denominator);
+  placeAtCorner(circles, a, b, bend) {
+    const radius = circleRadius(bend);
     const supportA = this.supportGeometry(circles, a, radius);
     const supportB = this.supportGeometry(circles, b, radius);
     const dx = supportB.x - supportA.x;
@@ -190,7 +230,7 @@ export class CirclePackingSearch {
     const ux = dx / separation;
     const uy = dy / separation;
     const circle = {
-      denominator,
+      bend,
       radius,
       x: supportA.x + along * ux - height * uy,
       y: supportA.y + along * uy + height * ux,
@@ -211,18 +251,34 @@ export class CirclePackingSearch {
   }
 
   stateScore(circles, contacts) {
-    const used = new Set(circles.map(circle => circle.denominator)).size;
-    const satisfied = contacts.filter(neighbors => neighbors.size >= 3).length;
+    const used = new Set(circles.map(circle => circle.bend)).size;
+    const satisfied = contacts.filter((_, index) => this.isHeld(circles, index, contacts)).length;
     const contactProgress = contacts.reduce((sum, neighbors) => sum + Math.min(3, neighbors.size), 0);
     return used * 10000 + satisfied * 1000 + contactProgress * 10 + circles.length;
   }
 
-  circleKey(circle) {
+  transformedCircleKey(circle, cosine, sine, reflection) {
     const quantum = Math.max(this.tolerance * 8, 1e-12);
-    return `${circle.denominator}:${Math.round(circle.x / quantum)}:${Math.round(circle.y / quantum)}`;
+    const x = circle.x * cosine + circle.y * sine;
+    const y = (-circle.x * sine + circle.y * cosine) * reflection;
+    return `${circle.bend}:${Math.round(x / quantum)}:${Math.round(y / quantum)}`;
   }
 
   stateKey(circles) {
-    return circles.map(circle => this.circleKey(circle)).sort().join("|");
+    if (!circles.length) return "";
+    const keys = [];
+    for (const anchor of circles) {
+      const norm = Math.hypot(anchor.x, anchor.y);
+      if (norm <= this.tolerance) continue;
+      const cosine = anchor.x / norm;
+      const sine = anchor.y / norm;
+      for (const reflection of [1, -1]) {
+        keys.push(circles
+          .map(circle => this.transformedCircleKey(circle, cosine, sine, reflection))
+          .sort()
+          .join("|"));
+      }
+    }
+    return keys.length ? keys.sort()[0] : circles.map(circle => `${circle.bend}:0:0`).sort().join("|");
   }
 }

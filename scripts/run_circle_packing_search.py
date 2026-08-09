@@ -15,7 +15,7 @@ from circle_packing_search import Solver
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("denominators", nargs="+", type=int)
+    parser.add_argument("bends", nargs="+", type=int)
     parser.add_argument("--max-circles", type=int)
     parser.add_argument("--node-limit", type=int, default=100_000)
     parser.add_argument("--tolerance", type=float, default=1e-9)
@@ -24,7 +24,7 @@ def main() -> int:
 
     try:
         solver = Solver(
-            args.denominators,
+            args.bends,
             max_circles=args.max_circles,
             node_limit=args.node_limit,
             tolerance=args.tolerance,
@@ -36,17 +36,23 @@ def main() -> int:
     contacts = None
     if result.circles is not None:
         contacts = [sorted(neighbors) for neighbors in solver.contacts(result.circles)]
+    held = None
+    if result.circles is not None:
+        result_contacts = solver.contacts(result.circles)
+        held = [solver.is_held(result.circles, index, result_contacts)
+                for index in range(len(result.circles))]
     payload = {
         "status": result.status,
-        "denominators": list(solver.denominators),
+        "bends": list(solver.denominators),
         "max_circles": solver.max_circles,
         "nodes": result.nodes,
         "max_depth": result.max_depth,
         "reason": result.reason,
         "contacts": contacts,
+        "held": held,
         "circles": None if result.circles is None else [
             {
-                "denominator": circle.denominator,
+                "bend": circle.denominator,
                 "radius": circle.radius,
                 "center": [circle.x, circle.y],
             }

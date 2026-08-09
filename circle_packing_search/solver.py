@@ -80,7 +80,7 @@ class Solver:
             answer = self._dfs(seed)
             if answer is not None:
                 return SearchResult("found", answer, self.nodes, self.max_depth,
-                                    "contact condition certified numerically")
+                                    "local holding condition certified numerically")
             if self._interrupted:
                 return SearchResult("node_limit", None, self.nodes, self.max_depth,
                                     "node limit reached")
@@ -150,7 +150,50 @@ class Solver:
         if {circle.denominator for circle in circles} != set(self.denominators):
             return False
         contacts = contacts if contacts is not None else self.contacts(circles)
-        return all(len(neighbors) >= 3 for neighbors in contacts)
+        return all(self.is_held(circles, index, contacts)
+                   for index in range(len(circles)))
+
+    def contact_angles(
+        self,
+        circles: tuple[Circle, ...],
+        index: int,
+        contacts: tuple[frozenset[int], ...] | None = None,
+    ) -> tuple[float, ...]:
+        contacts = contacts if contacts is not None else self.contacts(circles)
+        circle = circles[index]
+        angles = []
+        for neighbor in contacts[index]:
+            if neighbor == BOUNDARY:
+                angle = math.atan2(circle.y, circle.x)
+            else:
+                other = circles[neighbor]
+                angle = math.atan2(other.y - circle.y, other.x - circle.x)
+            angles.append(angle % math.tau)
+        return tuple(sorted(angles))
+
+    def largest_contact_gap(
+        self,
+        circles: tuple[Circle, ...],
+        index: int,
+        contacts: tuple[frozenset[int], ...] | None = None,
+    ) -> float:
+        angles = self.contact_angles(circles, index, contacts)
+        if len(angles) < 2:
+            return math.tau
+        gaps = [right - left for left, right in zip(angles, angles[1:])]
+        gaps.append(angles[0] + math.tau - angles[-1])
+        return max(gaps)
+
+    def is_held(
+        self,
+        circles: tuple[Circle, ...],
+        index: int,
+        contacts: tuple[frozenset[int], ...] | None = None,
+    ) -> bool:
+        contacts = contacts if contacts is not None else self.contacts(circles)
+        return (len(contacts[index]) >= 3
+                and self.largest_contact_gap(circles, index, contacts)
+                < math.pi - self.tol)
 
     def oriented_corners(
         self,
