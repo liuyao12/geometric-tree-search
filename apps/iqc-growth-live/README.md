@@ -118,4 +118,12 @@ browser-scale research prototype. Scientific use requires symmetry-quotiented
 registration, robust Kabsch/RANSAC alignment, pose relaxation, richer
 equivariant fibres, learned negative examples, and held-out DFT/MD evaluation.
 
+The audited IQC card now also reports the first family-blind recursive
+similarity-cover benchmark. Pair-distance recurrence discovers the inflation
+scale, 21 contracted copies cover all 507 known sites, and a bounded colored
+section is fitted on inner/annular examples before it is frozen on the unseen
+outer shell. The displayed 4.236x factor is latent hierarchy compression; the
+explicit marked result (713 correct sites at 53.5% precision) is reported
+separately and is not presented as exact exponential growth.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
