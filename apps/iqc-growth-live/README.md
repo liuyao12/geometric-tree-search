@@ -181,4 +181,13 @@ vote consensus, learned action marks select 3,631 correct sites instead of
 only 54.7% of the reachable first wave; autonomous complete emission remains
 the next gate.
 
+Four direct cluster-of-actions ablations are now recorded at the same budget.
+Pair identities select 3,554 correct sites, smoothed pair reliability 3,492,
+scale-invariant geometric pairs 3,446, and a regularized 34-dimensional
+continuous cluster section 3,540. The individual action mark remains best at
+3,631. The geometric categorical model creates 67,109 states from only 801
+inner examples, exposing the sample-complexity problem rather than concealing
+it. The next model will retain individual marks and learn only a compact
+residual consensus correction.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
