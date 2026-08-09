@@ -330,9 +330,53 @@ section leaves the dense six-dimensional projection ill-defined.  It is not a
 generic quasicrystal result.  The current module-family detector is specialized
 to this control and must remain gated by its reconstruction residual.
 
+## Generic translated-parent connection marking
+
+`scripts/materials_gcts_recursive_connections.py` now tests a less specialized
+route to the same hierarchy.  Every atom is the centre of a bounded local
+colored cluster.  A cluster-of-clusters action connects a parent cluster to a
+source cluster and proposes
+
+`parent + scale * (source - parent)`.
+
+The learned GCTS marking is a finite table over the parent local type, source
+local type, and binned separation.  Separation is divided by the known level
+scale before the marking is reused, so the same connection state can recur at
+the next inflation level.  Local types use only colored radial neighbor counts;
+the rule is invariant under rigid motion and has no lattice coordinates,
+physical potential, cut-and-project lift, or material-specific labels.
+
+On the ideal icosahedral control, the complete translated-parent action family
+covers every target site in both 507→1,969 and 1,969→8,603.  This establishes
+that translated copies of higher-order parents can be a complete generator,
+not merely the origin-centred subset measured by the earlier iterated-marking
+test.  The marking is learned only on the first transition (1,558 observed
+connection states, 171 accepted) and then frozen:
+
+| held-out consensus | proposed sites | correct | precision | target coverage |
+|---|---:|---:|---:|---:|
+| at least 1 overlapping action | 57,899 | 8,363 | 14.4% | **97.2%** |
+| at least 2 | 37,475 | 7,883 | 21.0% | **91.6%** |
+| at least 4 | 17,315 | 5,523 | 31.9% | 64.2% |
+| at least 8 | 4,395 | 2,769 | **63.0%** | 32.2% |
+| at least 16 | 837 | 665 | 79.5% | 7.7% |
+| at least 32 | 12 | 12 | **100%** | 0.14% |
+
+This result identifies two distinct jobs that had previously been conflated.
+The finite connection marking transfers almost the entire next patch, while
+overlap agreement ranks confidence among its sites.  A high threshold is a
+safe forced-move policy; a low threshold supplies a broad candidate frontier
+for tree search.  No operating point yet meets 95% precision and recall at
+once, so this is a useful generic GCTS benchmark rather than a solved growth
+algorithm.  The next step is to learn a bounded marking on the *consensus
+neighborhood itself*—a second-order cluster type—then search only the residual
+ambiguous frontier.
+
 ## Next implementation target
 
-Generalize the parametric recursive-node interface so crystals learn a
+Promote overlap-consensus neighborhoods into explicit second-order cluster
+types and learn their markings on one transition before freezing them on the
+next.  Generalize the parametric recursive-node interface so crystals learn a
 translation quotient, substitution quasicrystals learn an inflation or
 superspace section, and amorphous controls decline the deterministic rule.  Add
 held-out perturbations and non-icosahedral model sets so a module-specific
