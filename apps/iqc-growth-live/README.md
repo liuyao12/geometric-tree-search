@@ -161,4 +161,12 @@ reduces false branches from 39 to 12. Test-origin actions are excluded from the
 address graph. The unsupported address-only forced core transfers no actions
 and is not claimed as a rewrite.
 
+An oracle-filtered reachability audit now separates marking error from action
+vocabulary error on the ideal IQC. The 21-map minimum cover can reach only
+44.0% of the next patch. Retaining one map for all 305 observed supports raises
+the ceiling to 89.4%; retaining four rotation-diverse maps per support raises
+it to 94.2%. The oracle only measures reachability and is not used by growth.
+The remaining 386 atoms require new composed supercluster actions, so complete
+patch generation is still not claimed.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
