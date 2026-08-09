@@ -103,6 +103,10 @@ const externalAuditHierarchy = $("externalAuditHierarchy");
 const externalAuditPrecision = $("externalAuditPrecision");
 const externalAuditRecall = $("externalAuditRecall");
 const externalAuditReduction = $("externalAuditReduction");
+const connectionAudit = $("connectionAudit");
+const connectionAuditTransfer = $("connectionAuditTransfer");
+const connectionAuditStates = $("connectionAuditStates");
+const connectionConsensus = $("connectionConsensus");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
 const COLORS = {
@@ -162,7 +166,7 @@ const MATERIALS = {
 const RECURSIVE_BENCHMARKS = {
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
-  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "6D acceptance section", action: "6 rewrites → 2.79m", speed: "2.72 s count-only", gate: "pass · IQC control", status: "control", note: "The live scene is the ideal model-set control. Its internal-section rule reaches 2,791,097 represented atoms; two inflations have independent atom/species certificates. The measured Sc–Zn audit below separates the generic automatic and precision-first policies.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" } },
+  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "recursive connection state", action: "translated inflated parents", speed: "4.37× held-out scale", gate: "97.2% frontier recall", status: "control", note: "The generic route now learns local clusters, promotes parent/source pairs into finite cluster-of-cluster states, freezes those markings, and transfers them to the next inflation. Overlap votes rank forced moves versus branches; the specialized 6D section remains the exact ceiling.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" }, connection: { transfer: "8,363 / 8,603 sites", states: "171 accepted / 1,558 learned states · trained 507→1,969 · frozen on 1,969→8,603", consensus: [[1, 14.4, 97.2], [2, 21.0, 91.6], [4, 31.9, 64.2], [8, 63.0, 32.2], [16, 79.5, 7.7], [32, 100, .14]] } },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
@@ -378,6 +382,18 @@ function updateRecursiveBenchmark() {
     externalAuditPrecision.textContent = benchmark.external.precision;
     externalAuditRecall.textContent = benchmark.external.recall;
     externalAuditReduction.textContent = benchmark.external.reduction;
+  }
+  connectionAudit.hidden = !benchmark.connection;
+  connectionConsensus.replaceChildren();
+  if (benchmark.connection) {
+    connectionAuditTransfer.textContent = benchmark.connection.transfer;
+    connectionAuditStates.textContent = benchmark.connection.states;
+    benchmark.connection.consensus.forEach(([votes, precision, coverage]) => {
+      const row = document.createElement("div");
+      row.className = "consensus-row";
+      row.innerHTML = `<b>≥${votes} votes</b><span><i style="--value:${precision}%"></i></span><em>P ${precision}% · R ${coverage}%</em>`;
+      connectionConsensus.appendChild(row);
+    });
   }
   recursiveCurve.replaceChildren();
   const progress = pipelineStage === 4
@@ -1893,22 +1909,22 @@ function updateStageNarrative() {
       values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${clusterCount} medoids`, currentPbc().some(Boolean) ? "general-cell minimum image" : "non-periodic distances"],
     },
     {
-      eyebrow: "encoding · pairwise rigid registration", title: "Learn the finite SE(3) overlap grammar", phase: `${overlapGrammar.rules.length} rules`,
-      caption: `${overlapGrammar.observations.toLocaleString()} directed overlap observations are registered as arbitrary rotations and translations, then deduplicated into ${overlapGrammar.rules.length} reusable rules.`, badge: "encode",
-      decision: "Rigid overlap rules learned", copy: "For every Cᵢ→Cⱼ pair—including self-copies—the learner stores a relative quaternion, translation, shared-support count, frequency, and held-out support. No lattice directions are supplied.",
-      values: [`${clusterCount} medoids`, `${overlapGrammar.rules.length} SE(3) rules`, `${overlapGrammar.recurring} recurring`, `${overlapGrammar.heldoutSupported} held-out supported`],
+      eyebrow: "encoding · clusters of clusters", title: "Promote repeated overlaps into finite connection states", phase: `${overlapGrammar.rules.length} rules`,
+      caption: `${overlapGrammar.observations.toLocaleString()} directed overlaps are registered in SE(3), deduplicated, then grouped by parent type, source type, and scale-normalized separation.`, badge: "encode",
+      decision: "Higher-order cluster states learned", copy: "A recurring parent/source connection is now a reusable cluster-of-clusters symbol. Its finite state transports across arbitrary rotations; separation is normalized before reuse at the next recursive scale.",
+      values: [`${clusterCount} local types`, `${overlapGrammar.rules.length} connection states`, `${overlapGrammar.recurring} recurring`, `${overlapGrammar.heldoutSupported} held-out supported`],
     },
     {
-      eyebrow: "training · local sections on cluster neighborhoods", title: "Learn a bounded GCTS section for each cluster type", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
+      eyebrow: "training · recursive connection sections", title: "Freeze a bounded marking across hierarchy levels", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
       caption: `${trainingPoint.samples}/${referenceCount()} centers processed · ${trainingPoint.overlaps.toLocaleString()} support overlaps · held-out mismatch ${trainingPoint.validationLoss.toFixed(3)}.`, badge: "train",
-      decision: "Connection-section training", copy: "Each cluster begins with random directional ports in its learned local frame. Strong observed overlaps label compatible ports; absent directions label failed ports; shared-support agreement is evaluated after transporting both sections into world coordinates.",
+      decision: "Recursive marking training", copy: "Each local cluster begins with random directional ports. Observed higher-order connections shape the section; the resulting parent/source marking is frozen, rescaled, and evaluated on the next unseen cluster level.",
       values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.axes.length} signed ports`],
     },
     {
-      eyebrow: "search · off-lattice covering in SE(3)", title: "Grow from transported overlapping clusters", phase: "seed cluster",
-      caption: "A single learned medoid is seeded; every later atom comes from a rotated and translated overlap rule, with duplicate atoms merged and incompatible coverings pruned.", badge: "search",
-      decision: "Real geometric frontier initialized", copy: "The tree branches over learned rigid attachments. Spatial hashing checks hard-core and species conflicts; transported GCTS sections rank and reuse compatible local decisions.",
-      values: ["Cᵢ→Cⱼ · (R,t)", "shared atomic support", "GCTS section interval", "one seed"],
+      eyebrow: "search · off-lattice recursive covering", title: "Let overlapping higher-order parents vote, then branch", phase: "seed cluster",
+      caption: "Translated, rotated, and inflated parents continue past the known boundary. Compatible actions may attach together; their agreement becomes a consensus score while ambiguous residuals remain explicit tree branches.", badge: "search",
+      decision: "Recursive consensus frontier initialized", copy: "The same frozen connection marking proposes the next scale. Repeated independent proposals are forced-move candidates; low-consensus sites stay in the GCTS frontier for lookahead or rollback.",
+      values: ["parent + φ(source−parent)", "overlap consensus", "finite GCTS state", "branch residual"],
     },
   ];
   const item = narratives[pipelineStage];
@@ -2201,12 +2217,12 @@ function updateUI() {
     reuseLabel.textContent = "HELD-OUT SUPPORT"; reuseMetric.textContent = String(overlapGrammar.heldoutSupported); reuseDelta.textContent = "rules seen outside the fit split";
   } else if (pipelineStage === 3) {
     const point = currentTrainingPoint();
-    stageEyebrow.textContent = "training · local sections on cluster neighborhoods";
-    stageTitle.textContent = trainingProgress < referenceCount() ? "Connection ports emerge on the learned cluster prototypes" : "Connection-valued GCTS marking trained";
-    decisionTitle.textContent = trainingProgress < referenceCount() ? "Fitting section overlap consistency" : "Local sections ready to glue";
+    stageEyebrow.textContent = "training · recursive sections on cluster connections";
+    stageTitle.textContent = trainingProgress < referenceCount() ? "Connection markings emerge on higher-order cluster states" : "Recursive GCTS marking frozen for transfer";
+    decisionTitle.textContent = trainingProgress < referenceCount() ? "Fitting parent/source overlap consistency" : "Marked connections ready to rescale";
     decisionCopy.textContent = trainingProgress < referenceCount()
-      ? "The medoid clusters stay fixed while cluster-local port level sets morph around them. Type-colored lobes mark compatible overlap directions; red lobes mark absent or failed connections. Their frames rotate with each rigid placement; no physical potential is used."
-      : "The learned connection sections now travel with their cluster types. Search rejects a placement when transformed ports disagree on shared support.";
+      ? "The local prototypes stay fixed while their connection sections morph. Type-colored lobes mark recurring parent/source overlaps; red lobes mark absent or failed connections. Their frames rotate with each placement; no physical potential is used."
+      : "The learned connection sections now travel with higher-order cluster types and normalize their separation by recursive scale. Search rejects or branches when transported markings disagree.";
     phaseReadout.textContent = `loss ${point.validationLoss.toFixed(3)}`;
     captionAction.textContent = `${point.samples}/${referenceCount()} centers · ${point.overlaps.toLocaleString()} support overlaps · fit ${point.trainLoss.toFixed(3)} · holdout ${point.validationLoss.toFixed(3)}.`;
     atomLabel.textContent = "SECTION SAMPLES"; atomMetric.textContent = `${point.samples}/${referenceCount()}`; atomDelta.textContent = `${point.fitSamples} fit · ${point.holdoutSamples} held out`;
@@ -2218,8 +2234,8 @@ function updateUI() {
     energyValue.textContent = point.validationLoss.toFixed(4);
     resolverValue.textContent = `${sectionModel.axes.length} signed ports`;
   } else {
-    stageEyebrow.textContent = "search · off-lattice SE(3) covering";
-    stageTitle.textContent = "Transport clusters, merge overlaps, prune conflicts";
+    stageEyebrow.textContent = "search · recursive off-lattice covering";
+    stageTitle.textContent = "Transport parents, merge overlap votes, branch on residuals";
     phaseReadout.textContent = playing && growthDeadline
       ? `${placedClusters.length.toLocaleString()} clusters · ${formatDuration(growthTimeRemaining())} left`
       : `${atoms.length.toLocaleString()} atoms · ${placedClusters.length.toLocaleString()} clusters`;

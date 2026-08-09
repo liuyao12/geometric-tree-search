@@ -319,6 +319,18 @@ a { color: inherit; }
 .external-audit dl div { min-width: 0; padding: 5px; background: #0a1819; }
 .external-audit dt { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
 .external-audit dd { overflow: hidden; margin: 2px 0 0; color: #d8e4e0; font: 7px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
+.connection-audit { margin-top: 8px; padding: 7px; border: 1px solid rgba(181,148,255,.25); background: rgba(181,148,255,.035); }
+.connection-audit[hidden] { display: none; }
+.connection-audit > div:first-child { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.connection-audit small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
+.connection-audit strong { color: var(--violet); font: 7px var(--mono); font-weight: 500; }
+.connection-audit > p { margin: 5px 0 7px; color: var(--faint); font: 6px/1.45 var(--mono); }
+.connection-consensus { border-top: 1px solid var(--line); }
+.consensus-row { display: grid; grid-template-columns: 38px 1fr 78px; gap: 5px; align-items: center; min-height: 15px; font: 6px var(--mono); }
+.consensus-row b { color: #a8b8b3; font-weight: 400; }
+.consensus-row span { height: 3px; background: #142426; }
+.consensus-row i { display: block; width: var(--value); height: 100%; background: linear-gradient(90deg, var(--cyan), var(--violet)); }
+.consensus-row em { color: var(--faint); font-style: normal; text-align: right; }
 
 @media (max-width: 1100px) {
   .lab-grid { grid-template-columns: 218px minmax(460px, 1fr) 260px; }

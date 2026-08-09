@@ -39,9 +39,9 @@
     <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
       <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>elements + coordinates in Å</span></button>
       <button type="button" data-pipeline-stage="1"><small>02 · learn</small><strong>Cluster environments</strong><span>radial + angular descriptors</span></button>
-      <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>SE(3) overlap grammar</strong><span>finite rigid attachment rules</span></button>
-      <button type="button" data-pipeline-stage="3"><small>04 · train</small><strong>GCTS connection sections</strong><span>overlap ports learn to glue</span></button>
-      <button type="button" data-pipeline-stage="4"><small>05 · search</small><strong>Off-lattice growth</strong><span>branch over transported clusters</span></button>
+      <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>Clusters of clusters</strong><span>finite SE(3) connection states</span></button>
+      <button type="button" data-pipeline-stage="3"><small>04 · train</small><strong>Recursive GCTS sections</strong><span>freeze markings across scales</span></button>
+      <button type="button" data-pipeline-stage="4"><small>05 · search</small><strong>Consensus growth</strong><span>overlapping parents vote + branch</span></button>
     </nav>
 
     <main class="lab-grid">
@@ -136,6 +136,11 @@
               <div><dt>strict P / R</dt><dd id="externalAuditRecall">—</dd></div>
               <div><dt>false-branch reduction</dt><dd id="externalAuditReduction">—</dd></div>
             </dl>
+          </div>
+          <div id="connectionAudit" class="connection-audit" hidden>
+            <div><small>generic frozen marking · held-out inflation</small><strong id="connectionAuditTransfer">—</strong></div>
+            <p id="connectionAuditStates">—</p>
+            <div id="connectionConsensus" class="connection-consensus" aria-label="Precision and coverage by overlap consensus threshold"></div>
           </div>
         </section>
 
