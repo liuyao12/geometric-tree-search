@@ -336,6 +336,13 @@ a { color: inherit; }
 .second-order-row { grid-template-columns: 43px 1fr 84px; min-height: 22px; }
 .second-order-row em { color: var(--mint); line-height: 1.25; }
 .second-order-row em small { display: block; color: var(--faint); font: 5.5px var(--mono); }
+.frontier-audit { margin-top: 6px; border-top: 1px solid var(--line); }
+.wave-strip { display: flex; align-items: end; gap: 3px; height: 29px; }
+.wave-strip span { flex: 1; height: var(--wave); max-height: 27px; padding-top: 2px; border-top: 1px solid var(--mint); color: #cfe0da; background: rgba(101,225,188,.09); font: 5px var(--mono); text-align: center; }
+.frontier-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 6px; margin: 4px 0 0; font: 6px var(--mono); }
+.frontier-summary strong { color: var(--mint); font-weight: 500; }
+.frontier-summary span { color: #b9c9c4; text-align: right; }
+.frontier-summary small { grid-column: 1 / -1; color: var(--faint); font: 5.5px var(--mono); }
 
 @media (max-width: 1100px) {
   .lab-grid { grid-template-columns: 218px minmax(460px, 1fr) 260px; }

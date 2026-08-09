@@ -108,6 +108,7 @@ const connectionAuditTransfer = $("connectionAuditTransfer");
 const connectionAuditStates = $("connectionAuditStates");
 const connectionConsensus = $("connectionConsensus");
 const connectionSecondOrder = $("connectionSecondOrder");
+const connectionFrontier = $("connectionFrontier");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
 
 const COLORS = {
@@ -167,7 +168,7 @@ const MATERIALS = {
 const RECURSIVE_BENCHMARKS = {
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
-  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "2-level connection section", action: "translated inflated parents", speed: "5,678 new-site budget", gate: "2nd-order beats votes", status: "control", note: "The generic route learns local clusters, promotes their connections into higher-order states, then learns another bounded marking on the colored overlap-consensus neighborhood. All labels come from 507→1,969; the policy is frozen on 1,969→8,603. The 1,969 known atoms are merged before continuation is scored. The specialized 6D section remains the exact ceiling.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" }, connection: { transfer: "6,454 / 6,634 new sites", states: "171 / 1,558 first-order states · 3,832 cross-fit second-order samples · known sites excluded", consensus: [[1, 11.5, 97.3], [2, 16.9, 91.0], [4, 25.0, 59.3], [8, 51.6, 26.1]], secondOrder: [["0.5×", "continuous", 70.9, 30.3, 53.9, 23.1], ["1×", "ensemble", 48.5, 41.5, 43.6, 37.4], ["2×", "binned", 32.7, 56.0, 29.5, 50.5]] } },
+  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "3-level connection section", action: "iterated symmetry plateaus", speed: "120-site macro found", gate: "208 / 208 exact", status: "control", note: "The generic route learns local clusters, connection clusters, and a third bounded section on a provisional colored covering. The frozen policy accepts only its current maximum-score symmetry plateau, merges it, and repeats. Eight held-out waves add 208/208 correct atoms, including one 120-atom macro. Recall is still only 3.14%; the specialized 6D section remains the exact ceiling.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" }, connection: { transfer: "6,454 / 6,634 new sites", states: "171 / 1,558 first-order states · 3,832 cross-fit second-order samples · known sites excluded", consensus: [[1, 11.5, 97.3], [2, 16.9, 91.0], [4, 25.0, 59.3], [8, 51.6, 26.1]], secondOrder: [["0.5×", "continuous", 70.9, 30.3, 53.9, 23.1], ["1×", "ensemble", 48.5, 41.5, 43.6, 37.4], ["2×", "binned", 32.7, 56.0, 29.5, 50.5]], frontier: { waves: [10, 2, 120, 36, 24, 8, 4, 4], exact: "208 / 208 correct", recall: "3.14% novel recall", full: "full-budget P/R 53.3 / 45.6" } } },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
@@ -387,6 +388,7 @@ function updateRecursiveBenchmark() {
   connectionAudit.hidden = !benchmark.connection;
   connectionConsensus.replaceChildren();
   connectionSecondOrder.replaceChildren();
+  connectionFrontier.replaceChildren();
   if (benchmark.connection) {
     connectionAuditTransfer.textContent = benchmark.connection.transfer;
     connectionAuditStates.textContent = benchmark.connection.states;
@@ -407,6 +409,22 @@ function updateRecursiveBenchmark() {
       row.innerHTML = `<b>${budget} budget</b><span><i style="--value:${precision}%"></i></span><em>GCTS ${precision}/${coverage}<small>vote ${votePrecision}/${voteCoverage}</small></em>`;
       connectionSecondOrder.appendChild(row);
     });
+    const frontier = benchmark.connection.frontier;
+    const frontierHeading = document.createElement("p");
+    frontierHeading.className = "consensus-label";
+    frontierHeading.textContent = "third-order maximum-score plateaus · frozen policy";
+    const waveStrip = document.createElement("div");
+    waveStrip.className = "wave-strip";
+    frontier.waves.forEach((size, index) => {
+      const wave = document.createElement("span");
+      wave.textContent = `${index + 1}:${size}`;
+      wave.style.setProperty("--wave", `${Math.max(4, Math.sqrt(size) * 3)}px`);
+      waveStrip.appendChild(wave);
+    });
+    const summary = document.createElement("p");
+    summary.className = "frontier-summary";
+    summary.innerHTML = `<strong>${frontier.exact}</strong><span>${frontier.recall}</span><small>${frontier.full}</small>`;
+    connectionFrontier.append(frontierHeading, waveStrip, summary);
   }
   recursiveCurve.replaceChildren();
   const progress = pipelineStage === 4
