@@ -143,4 +143,14 @@ proposals grow 829 -> 2,747 (3.314x); the cross-fitted Gram backoff retains
 2,488 correct second-level parents at 37.5% recall. This is verified recursive
 subset growth, not complete full-patch generation.
 
+The latest marking is genuinely hierarchical rather than another geometric
+halo. Frozen similarity actions form a directed cluster-connection graph; one
+message-passing round assigns each source a finite recursive address from its
+incoming and outgoing action types. A fine address table accepts 241/243
+second-level proposals (99.2% precision), while a coarse backoff accepts
+2,304/4,169 (55.3% precision, 34.7% recall). Their union retains 2,374 correct
+attachments and reduces false branches from 2,871 to 1,865. All addresses are
+trained inside the original 507-atom patch; rotations, translations, and
+thresholds remain frozen at the second inflation.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
