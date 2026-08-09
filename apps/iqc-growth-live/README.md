@@ -134,6 +134,9 @@ Relative rotations are proposed from scale-matched local triangle frames. The
 same family-blind procedure recovers a 31-site map between two randomly
 oriented crystal grains and finds 31 leading nonidentity IQC rotations with the
 same 70-site overlap as the identity action. These rotations are an audited
-proposal set; integration into the frozen recursive cover is still pending.
+proposal set. They now participate in one greedy self-cover: 47 selected maps,
+33 nonidentity, cover all 514 bicrystal atoms, while 52 identity-only maps stop
+at 502. The IQC remains completely covered by 21 symmetry-representative maps.
+Frozen recursive propagation of selected rotated maps is still pending.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.
