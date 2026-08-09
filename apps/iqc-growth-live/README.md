@@ -130,4 +130,10 @@ and setting frozen, correct proposals grow 829 to 2,747 on the next level
 scale- and SO(3)-invariant Gram section over agreeing macro maps raises
 precision from 49.27% to 55.51% at 4.02% recall.
 
+Relative rotations are proposed from scale-matched local triangle frames. The
+same family-blind procedure recovers a 31-site map between two randomly
+oriented crystal grains and finds 31 leading nonidentity IQC rotations with the
+same 70-site overlap as the identity action. These rotations are an audited
+proposal set; integration into the frozen recursive cover is still pending.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
