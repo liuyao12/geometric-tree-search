@@ -168,7 +168,7 @@ const MATERIALS = {
 const RECURSIVE_BENCHMARKS = {
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
-  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "3-level connection section", action: "regenerated symmetry plateaus", speed: "104-site regenerated macro", gate: "228 / 228 exact", status: "control", note: "The generic route learns local clusters, connection clusters, and a third bounded section on a provisional colored covering. After each exact plateau, new clusters become parents and sources and generate fresh actions. Eight held-out waves add 228/228 correct atoms while the available frontier grows. Recall is still only 3.44%; the specialized 6D section remains the exact ceiling.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" }, connection: { transfer: "6,454 / 6,634 new sites", states: "171 / 1,558 first-order states · 3,832 cross-fit second-order samples · known sites excluded", consensus: [[1, 11.5, 97.3], [2, 16.9, 91.0], [4, 25.0, 59.3], [8, 51.6, 26.1]], secondOrder: [["0.5×", "continuous", 70.9, 30.3, 53.9, 23.1], ["1×", "ensemble", 48.5, 41.5, 43.6, 37.4], ["2×", "binned", 32.7, 56.0, 29.5, 50.5]], frontier: { waves: [12, 104, 12, 4, 36, 24, 24, 12], exact: "228 / 228 correct", recall: "3.44% novel recall", full: "frontier 63,890→66,254 · new actions generated" } } },
+  iqc: { hierarchy: [14, 49, 270], curve: [507, 1969, 8603, 37073, 155097, 657057, 2791097], mark: "3-level connection section", action: "471-atom transform DAG", speed: "21.2× exact parent search", gate: "228 / 228 exact", status: "control", note: "The generic route learns local clusters, connection clusters, and exact level-3 transform DAG parents. One IQC parent represents 471 atoms through 22 marked child clusters and is selected about 21× faster than atomwise scoring. Regenerated exact growth still has only 3.44% recall; the macro-neighborhood gate below is therefore reported as an ablation, not accepted growth.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% / 55.0%", recall: "84.1% / 33.9%", reduction: "57× / 159×" }, connection: { transfer: "6,454 / 6,634 new sites", states: "171 / 1,558 first-order states · 3,832 cross-fit second-order samples · known sites excluded", consensus: [[1, 11.5, 97.3], [2, 16.9, 91.0], [4, 25.0, 59.3], [8, 51.6, 26.1]], secondOrder: [["0.5×", "continuous", 70.9, 30.3, 53.9, 23.1], ["1×", "ensemble", 48.5, 41.5, 43.6, 37.4], ["2×", "binned", 32.7, 56.0, 29.5, 50.5]], frontier: { waves: [12, 104, 12, 4, 36, 24, 24, 12], exact: "228 / 228 correct", recall: "3.44% novel recall", full: "frontier 63,890→66,254 · new actions generated" }, macro: { stages: [["raw poses", 8443], ["level-2 tie", 112], ["level-3 mark", 2]], safe: "safe ungated · 41 / 53 correct", rejected: "hard gate rejected · 21 / 31 correct" } } },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
@@ -425,6 +425,28 @@ function updateRecursiveBenchmark() {
     summary.className = "frontier-summary";
     summary.innerHTML = `<strong>${frontier.exact}</strong><span>${frontier.recall}</span><small>${frontier.full}</small>`;
     connectionFrontier.append(frontierHeading, waveStrip, summary);
+    if (benchmark.connection.macro) {
+      const macro = benchmark.connection.macro;
+      const macroHeading = document.createElement("p");
+      macroHeading.className = "consensus-label macro-label";
+      macroHeading.textContent = "oriented level-3 neighborhood marking · ablation";
+      const macroFlow = document.createElement("div");
+      macroFlow.className = "macro-audit-flow";
+      macro.stages.forEach(([label, count], index) => {
+        const stage = document.createElement("span");
+        stage.innerHTML = `<small>${label}</small><b>${count.toLocaleString()}</b>`;
+        macroFlow.appendChild(stage);
+        if (index < macro.stages.length - 1) {
+          const arrow = document.createElement("i");
+          arrow.textContent = "→";
+          macroFlow.appendChild(arrow);
+        }
+      });
+      const verdict = document.createElement("p");
+      verdict.className = "macro-verdict";
+      verdict.innerHTML = `<span>${macro.safe}</span><strong>${macro.rejected}</strong>`;
+      connectionFrontier.append(macroHeading, macroFlow, verdict);
+    }
   }
   recursiveCurve.replaceChildren();
   const progress = pipelineStage === 4
