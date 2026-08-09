@@ -137,6 +137,10 @@ same 70-site overlap as the identity action. These rotations are an audited
 proposal set. They now participate in one greedy self-cover: 47 selected maps,
 33 nonidentity, cover all 514 bicrystal atoms, while 52 identity-only maps stop
 at 502. The IQC remains completely covered by 21 symmetry-representative maps.
-Frozen recursive propagation of selected rotated maps is still pending.
+An all-nonidentity 21-map IQC representative is now propagated with every
+rotation and translation frozen through 507 -> 1,969 -> 8,603 atoms. Correct
+proposals grow 829 -> 2,747 (3.314x); the cross-fitted Gram backoff retains
+2,488 correct second-level parents at 37.5% recall. This is verified recursive
+subset growth, not complete full-patch generation.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.
