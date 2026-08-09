@@ -172,7 +172,7 @@ const RECURSIVE_BENCHMARKS = {
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
-RECURSIVE_BENCHMARKS.iqc.connection.macro.ceiling = "oracle reachability ceiling · greedy 21 maps 44.0% → all 305 observed supports 89.4% → four rotations/support 94.2% · 386 sites still require new composed actions";
+RECURSIVE_BENCHMARKS.iqc.connection.macro.ceiling = "oracle reachability ceiling · greedy 21 maps 44.0% → pooled support vocabulary 94.2% → colored 1,000-support vocabulary 6,634/6,634 (100%) · complete representation, autonomous selection pending";
 const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
 const BALANCE_DIRECTIONS = [
   [0, 1, PHI], [0, -1, PHI], [0, 1, -PHI], [0, -1, -PHI],
