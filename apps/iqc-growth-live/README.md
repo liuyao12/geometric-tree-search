@@ -153,4 +153,12 @@ attachments and reduces false branches from 2,871 to 1,865. All addresses are
 trained inside the original 507-atom patch; rotations, translations, and
 thresholds remain frozen at the second inflation.
 
+On the experimental Sc-Zn parent holdout, the recursive address is now an
+additional search tier rather than a decorative label. The automatic local
+atomic section gives 120/159 correct proposals (75.5% precision); intersecting
+it with the action address gives a first tier of 70/82 correct (85.4%) and
+reduces false branches from 39 to 12. Test-origin actions are excluded from the
+address graph. The unsupported address-only forced core transfers no actions
+and is not claimed as a rewrite.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
