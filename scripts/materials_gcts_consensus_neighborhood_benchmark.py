@@ -79,10 +79,13 @@ def _spatial_fold(point) -> int:
     return (int(x >= 0) + 2 * int(y >= 0) + 4 * int(z >= 0)) % 5
 
 
-def _cross_fitted_training_votes(first, second, first_types) -> MarkedProposalResult:
+def _cross_fitted_training_votes(
+        first, second, first_types, minimum_purity=.5,
+        minimum_positive_support=2) -> MarkedProposalResult:
     folds = tuple(_spatial_fold(point) for point in first.positions)
     votes = Counter()
     color_votes = {}
+    target_color_votes = {}
     state_votes = {}
     parent_votes = {}
     for heldout_fold in range(5):
@@ -92,19 +95,25 @@ def _cross_fitted_training_votes(first, second, first_types) -> MarkedProposalRe
                                    if fold == heldout_fold)
         marking = learn_recursive_connection_marking(
             first.positions, first_types, second.positions, HIDDEN_UNIT,
-            minimum_purity=.5, parent_indices=training_parents)
+            minimum_purity=minimum_purity,
+            minimum_positive_support=minimum_positive_support,
+            parent_indices=training_parents,
+            target_colors=second.species)
         result = propose_with_recursive_marking(
             marking, first.positions, first_types, 1.0,
             parent_indices=validation_parents)
         votes.update(result.votes)
         for point, counts in result.color_votes.items():
             color_votes.setdefault(point, Counter()).update(counts)
+        for point, counts in result.target_color_votes.items():
+            target_color_votes.setdefault(point, Counter()).update(counts)
         for point, counts in result.state_votes.items():
             state_votes.setdefault(point, Counter()).update(counts)
         for point, counts in result.parent_votes.items():
             parent_votes.setdefault(point, Counter()).update(counts)
     result = MarkedProposalResult(votes, sum(votes.values()), None,
-                                  color_votes, state_votes, parent_votes)
+                                  color_votes, target_color_votes,
+                                  state_votes, parent_votes)
     return _without_known_sites(result, first.positions)
 
 
@@ -115,6 +124,7 @@ def _without_known_sites(result, known_positions):
     return MarkedProposalResult(
         votes, sum(votes.values()), None,
         {point: result.color_votes[point] for point in kept},
+        {point: result.target_color_votes[point] for point in kept},
         {point: result.state_votes[point] for point in kept},
         {point: result.parent_votes[point] for point in kept})
 
@@ -169,22 +179,27 @@ def evaluate() -> ConsensusNeighborhoodBenchmark:
         first, second, first_types)
     second_order = fit_consensus_neighborhood_marker(
         training.votes, second.positions,
-        color_votes=training.color_votes, state_votes=training.state_votes)
+        color_votes=training.color_votes,
+        target_color_votes=training.target_color_votes,
+        state_votes=training.state_votes)
     binned_second_order = fit_binned_consensus_neighborhood_marker(
         training.votes, second.positions,
-        color_votes=training.color_votes, state_votes=training.state_votes)
+        color_votes=training.color_votes,
+        target_color_votes=training.target_color_votes,
+        state_votes=training.state_votes)
     first_order = learn_recursive_connection_marking(
         first.positions, first_types, second.positions, HIDDEN_UNIT,
-        minimum_purity=.5)
+        minimum_purity=.5, target_colors=second.species)
     heldout = propose_with_recursive_marking(
         first_order, second.positions,
         map_to_prototypes(second_types, first_types), HIDDEN_UNIT)
     heldout = _without_known_sites(heldout, second.positions)
     scores = score_consensus_neighborhoods(
-        second_order, heldout.votes, heldout.color_votes, heldout.state_votes)
+        second_order, heldout.votes, heldout.color_votes,
+        heldout.target_color_votes, heldout.state_votes)
     binned_scores = score_binned_consensus_neighborhoods(
         binned_second_order, heldout.votes,
-        heldout.color_votes, heldout.state_votes)
+        heldout.color_votes, heldout.target_color_votes, heldout.state_votes)
     known_training = {point_key(point) for point in first.positions}
     known_heldout = {point_key(point) for point in second.positions}
     training_targets = ({point_key(point) for point in second.positions} -
@@ -193,7 +208,8 @@ def evaluate() -> ConsensusNeighborhoodBenchmark:
                known_heldout)
     training_scores = score_consensus_neighborhoods(
         second_order, training.votes,
-        training.color_votes, training.state_votes)
+        training.color_votes, training.target_color_votes,
+        training.state_votes)
     points = []
     for threshold in (.10, .30, .50, .70, .80, .90, .92, .94, .96, .98, .99):
         selected = {point for point, score in scores.items()

@@ -52,6 +52,7 @@ class RecursiveConnectionMarking:
     accepted_states: frozenset[RecursiveConnectionState]
     minimum_positive_support: int
     minimum_purity: float
+    target_color_evidence: Mapping[RecursiveConnectionState, Counter[str]]
 
 
 @dataclass(frozen=True)
@@ -60,6 +61,7 @@ class MarkedProposalResult:
     accepted_pair_actions: int
     true_pair_actions: int | None
     color_votes: Mapping[Point, Counter[str]]
+    target_color_votes: Mapping[Point, Counter[str]]
     state_votes: Mapping[Point, Counter[RecursiveConnectionState]]
     parent_votes: Mapping[Point, Counter[int]]
 
@@ -130,15 +132,24 @@ def learn_recursive_connection_marking(
         minimum_positive_support: int = 2,
         minimum_purity: float = 1.0,
         parent_indices: Iterable[int] | None = None,
+        target_colors: Sequence[Hashable] | None = None,
         ) -> RecursiveConnectionMarking:
     """Learn a finite connection marking from one known growth transition."""
     if len(positions) != len(cluster_types) or len(positions) < 2:
         raise ValueError("positions and cluster types must be aligned")
     if scale <= 0 or separation_bin_width <= 0:
         raise ValueError("scale and bin width must be positive")
-    targets = {point_key(point) for point in target_positions}
+    target_sequence = tuple(target_positions)
+    targets = {point_key(point) for point in target_sequence}
+    if target_colors is not None and len(target_colors) != len(target_sequence):
+        raise ValueError("target positions and colors must align")
+    colors_by_target = ({} if target_colors is None else
+                        {point_key(point): repr(color)
+                         for point, color in zip(target_sequence, target_colors)})
     counts: Dict[RecursiveConnectionState, list[int]] = defaultdict(
         lambda: [0, 0])
+    target_color_evidence: Dict[
+        RecursiveConnectionState, Counter[str]] = defaultdict(Counter)
     parents = tuple(range(len(positions)) if parent_indices is None
                     else parent_indices)
     if not parents or any(index < 0 or index >= len(positions)
@@ -152,8 +163,11 @@ def learn_recursive_connection_marking(
             state = RecursiveConnectionState(
                 cluster_types[parent_index], cluster_types[source_index],
                 round(math.dist(parent, source) / separation_bin_width))
+            target = point_key(_proposal(parent, source, scale))
             counts[state][1] += 1
-            counts[state][0] += point_key(_proposal(parent, source, scale)) in targets
+            counts[state][0] += target in targets
+            if target in colors_by_target:
+                target_color_evidence[state][colors_by_target[target]] += 1
     evidence = {state: StateEvidence(positive, total)
                 for state, (positive, total) in counts.items()}
     accepted = frozenset(
@@ -162,7 +176,8 @@ def learn_recursive_connection_marking(
         item.positive / item.total >= minimum_purity)
     return RecursiveConnectionMarking(
         scale, separation_bin_width, tuple(sorted(set(cluster_types))),
-        evidence, accepted, minimum_positive_support, minimum_purity)
+        evidence, accepted, minimum_positive_support, minimum_purity,
+        dict(target_color_evidence))
 
 
 def propose_with_recursive_marking(
@@ -179,6 +194,7 @@ def propose_with_recursive_marking(
                {point_key(point) for point in target_positions})
     votes: Counter[Point] = Counter()
     color_votes: Dict[Point, Counter[str]] = defaultdict(Counter)
+    target_color_votes: Dict[Point, Counter[str]] = defaultdict(Counter)
     state_votes: Dict[Point, Counter[RecursiveConnectionState]] = defaultdict(
         Counter)
     parent_votes: Dict[Point, Counter[int]] = defaultdict(Counter)
@@ -204,13 +220,20 @@ def propose_with_recursive_marking(
             target = point_key(_proposal(parent, source, marking.scale))
             votes[target] += 1
             color_votes[target][mapped[source_index].color_key] += 1
+            learned_colors = marking.target_color_evidence.get(state)
+            predicted_target_color = (min(
+                color for color, count in learned_colors.items()
+                if count == max(learned_colors.values()))
+                if learned_colors else mapped[source_index].color_key)
+            target_color_votes[target][predicted_target_color] += 1
             state_votes[target][state] += 1
             parent_votes[target][parent_index] += 1
             if targets is not None:
                 true_pairs += target in targets
     return MarkedProposalResult(
         votes, accepted_pairs, None if targets is None else true_pairs,
-        dict(color_votes), dict(state_votes), dict(parent_votes))
+        dict(color_votes), dict(target_color_votes), dict(state_votes),
+        dict(parent_votes))
 
 
 def consensus_sites(votes: Counter[Point], minimum_votes: int) -> frozenset[Point]:

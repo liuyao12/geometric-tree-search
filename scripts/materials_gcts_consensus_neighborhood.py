@@ -53,6 +53,7 @@ def _cells_near(key: Tuple[int, int, int], reach: int):
 def describe_consensus_neighborhoods(
         votes: Counter[Point], radial_edges: Sequence[float],
         color_votes: Mapping[Point, Counter[str]] | None = None,
+        target_color_votes: Mapping[Point, Counter[str]] | None = None,
         state_votes: Mapping[Point, Counter[RecursiveConnectionState]] | None = None,
         ) -> Dict[Point, Descriptor]:
     """Describe each proposal by its vote and nearby proposal-vote cluster."""
@@ -86,12 +87,19 @@ def describe_consensus_neighborhoods(
             own_vote / max(own_vote, local_maximum),
         ]
         colors = (color_votes or {}).get(point, Counter())
+        target_colors = (target_color_votes or {}).get(point, Counter())
         states = (state_votes or {}).get(point, Counter())
         parent_types = {state.parent_type for state in states}
         source_types = {state.source_type for state in states}
         descriptor.extend((
             max(colors.values(), default=0) / own_vote,
             math.log1p(len(colors)),
+            max(target_colors.values(), default=0) / own_vote,
+            math.log1p(len(target_colors)),
+            float(bool(colors and target_colors) and
+                  min(colors, key=lambda color: (-colors[color], color)) ==
+                  min(target_colors,
+                      key=lambda color: (-target_colors[color], color))),
             max(states.values(), default=0) / own_vote,
             math.log1p(len(states)),
             math.log1p(len(parent_types)),
@@ -138,11 +146,12 @@ def fit_consensus_neighborhood_marker(
         epochs: int = 350, learning_rate: float = .35,
         regularization: float = .01,
         color_votes: Mapping[Point, Counter[str]] | None = None,
+        target_color_votes: Mapping[Point, Counter[str]] | None = None,
         state_votes: Mapping[Point, Counter[RecursiveConnectionState]] | None = None,
         ) -> ConsensusNeighborhoodMarker:
     """Fit a class-balanced logistic section on one labelled transition."""
     descriptors_by_point = describe_consensus_neighborhoods(
-        votes, radial_edges, color_votes, state_votes)
+        votes, radial_edges, color_votes, target_color_votes, state_votes)
     points = tuple(sorted(descriptors_by_point))
     descriptors = tuple(descriptors_by_point[point] for point in points)
     targets = {point_key(point) for point in target_positions}
@@ -180,10 +189,11 @@ def fit_consensus_neighborhood_marker(
 def score_consensus_neighborhoods(
         marker: ConsensusNeighborhoodMarker, votes: Counter[Point],
         color_votes: Mapping[Point, Counter[str]] | None = None,
+        target_color_votes: Mapping[Point, Counter[str]] | None = None,
         state_votes: Mapping[Point, Counter[RecursiveConnectionState]] | None = None,
         ) -> Dict[Point, float]:
     descriptors = describe_consensus_neighborhoods(
-        votes, marker.radial_edges, color_votes, state_votes)
+        votes, marker.radial_edges, color_votes, target_color_votes, state_votes)
     result = {}
     for point, descriptor in descriptors.items():
         normalized = tuple(max(-8., min(8.,
@@ -200,13 +210,14 @@ def fit_binned_consensus_neighborhood_marker(
         radial_edges: Sequence[float] = (.8, 1.4, 2.1, 2.8, 3.81),
         bins: int = 12, smoothing: float = 2.0,
         color_votes: Mapping[Point, Counter[str]] | None = None,
+        target_color_votes: Mapping[Point, Counter[str]] | None = None,
         state_votes: Mapping[Point, Counter[RecursiveConnectionState]] | None = None,
         ) -> BinnedConsensusNeighborhoodMarker:
     """Fit an interpretable finite section of per-feature likelihood bins."""
     if bins < 2 or smoothing <= 0:
         raise ValueError("at least two bins and positive smoothing required")
     described = describe_consensus_neighborhoods(
-        votes, radial_edges, color_votes, state_votes)
+        votes, radial_edges, color_votes, target_color_votes, state_votes)
     points = tuple(sorted(described))
     rows = tuple(described[point] for point in points)
     targets = {point_key(point) for point in target_positions}
@@ -244,10 +255,11 @@ def fit_binned_consensus_neighborhood_marker(
 def score_binned_consensus_neighborhoods(
         marker: BinnedConsensusNeighborhoodMarker, votes: Counter[Point],
         color_votes: Mapping[Point, Counter[str]] | None = None,
+        target_color_votes: Mapping[Point, Counter[str]] | None = None,
         state_votes: Mapping[Point, Counter[RecursiveConnectionState]] | None = None,
         ) -> Dict[Point, float]:
     described = describe_consensus_neighborhoods(
-        votes, marker.radial_edges, color_votes, state_votes)
+        votes, marker.radial_edges, color_votes, target_color_votes, state_votes)
     result = {}
     normalization = math.sqrt(len(marker.feature_edges))
     for point, row in described.items():

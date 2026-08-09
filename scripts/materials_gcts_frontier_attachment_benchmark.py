@@ -1,0 +1,372 @@
+#!/usr/bin/env python3
+"""Leakage-controlled recursive-frontier GCTS benchmark on the ideal IQC."""
+
+from __future__ import annotations
+
+import argparse
+import ast
+import json
+from collections import Counter
+from dataclasses import asdict, dataclass
+from typing import Tuple
+
+from materials_gcts_consensus_neighborhood_benchmark import (
+    _cross_fitted_training_votes, _without_known_sites)
+from materials_gcts_frontier_attachment import (
+    fit_frontier_attachment_marker, score_frontier_attachments)
+from materials_gcts_icosahedral_modelset import HIDDEN_UNIT, oracle_patch
+from materials_gcts_recursive_connections import (
+    MarkedProposalResult, learn_recursive_connection_marking, local_cluster_types,
+    map_to_prototypes, point_key, propose_with_recursive_marking)
+
+
+@dataclass(frozen=True)
+class FrontierOperatingPoint:
+    site_budget: int
+    true_sites: int
+    false_sites: int
+    precision: float
+    novel_coverage: float
+
+
+@dataclass(frozen=True)
+class ScoreLandmark:
+    rank: int
+    score: float
+
+
+@dataclass(frozen=True)
+class IterativeGrowthWave:
+    wave: int
+    plateau_sites: int
+    true_sites: int
+    false_sites: int
+    cumulative_sites: int
+    cumulative_precision: float
+    cumulative_novel_coverage: float
+    maximum_score: float
+
+
+@dataclass(frozen=True)
+class FrontierAttachmentBenchmark:
+    atom_counts: Tuple[int, int, int]
+    training_candidates: int
+    training_novel_positives: int
+    heldout_candidates: int
+    heldout_novel_targets: int
+    training_forced_prefix: int
+    projected_forced_prefix: int
+    projected_surface_factor: float
+    projected_operating_point: FrontierOperatingPoint
+    calibrated_score_threshold: float
+    calibrated_operating_point: FrontierOperatingPoint
+    diagnostic_operating_points: Tuple[FrontierOperatingPoint, ...]
+    hard_core_operating_points: Tuple[FrontierOperatingPoint, ...]
+    third_order_operating_points: Tuple[FrontierOperatingPoint, ...]
+    training_provisional_pool: int
+    heldout_provisional_pool: int
+    third_order_training_pure_prefix: int
+    third_order_projected_prefix: int
+    third_order_projected_operating_point: FrontierOperatingPoint
+    third_order_score_landmarks: Tuple[ScoreLandmark, ...]
+    largest_top_score_gap_rank: int
+    largest_top_score_gap: float
+    iterative_growth_waves: Tuple[IterativeGrowthWave, ...]
+    learned_minimum_separation: float
+    trained_on_heldout_labels: bool
+    known_sites_are_features_not_labels: bool
+    rigid_motion_invariant_descriptor: bool
+
+
+def _operating_point(scores, targets, budget):
+    selected = {point for point, _ in sorted(
+        scores.items(), key=lambda item: (-item[1], item[0]))[:budget]}
+    true = len(selected & targets)
+    return FrontierOperatingPoint(
+        len(selected), true, len(selected) - true,
+        true / len(selected) if selected else 0.0, true / len(targets))
+
+
+def _hard_core_prefix(scores, targets, known_positions, budget,
+                      minimum_separation):
+    cell = minimum_separation
+    grid = {}
+    for point in known_positions:
+        key = tuple(int(value // cell) for value in point)
+        grid.setdefault(key, []).append(point)
+    selected = []
+    for point in sorted(scores, key=lambda item: (-scores[item], item)):
+        key = tuple(int(value // cell) for value in point)
+        conflict = False
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    for other in grid.get(
+                            (key[0] + dx, key[1] + dy, key[2] + dz), ()):
+                        if sum((left - right) ** 2
+                               for left, right in zip(point, other)) < (
+                                   minimum_separation ** 2 - 1e-8):
+                            conflict = True
+                            break
+                    if conflict:
+                        break
+                if conflict:
+                    break
+            if conflict:
+                break
+        if conflict:
+            continue
+        selected.append(point)
+        grid.setdefault(key, []).append(point)
+        if len(selected) >= budget:
+            break
+    true = len(set(selected) & targets)
+    return FrontierOperatingPoint(
+        len(selected), true, len(selected) - true,
+        true / len(selected) if selected else 0.0, true / len(targets))
+
+
+def _largest_prefix_at_precision(scores, targets, precision_floor):
+    ordered = sorted(scores, key=lambda point: (-scores[point], point))
+    true = 0
+    best = 0
+    for index, point in enumerate(ordered, 1):
+        true += point in targets
+        if true / index >= precision_floor:
+            best = index
+    return best
+
+
+def _lowest_threshold_at_precision(scores, targets, precision_floor):
+    ordered = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
+    true = 0
+    best = float("inf")
+    for index, (point, score) in enumerate(ordered, 1):
+        true += point in targets
+        if true / index >= precision_floor:
+            best = score
+    return best
+
+
+def _candidate_fold(point):
+    x, y, z = point
+    return (int(x >= 0) + 2 * int(y >= 0) + 4 * int(z >= 0)) % 5
+
+
+def _subset_proposals(proposals, selected):
+    points = set(selected)
+    votes = Counter({point: proposals.votes[point] for point in points})
+    return MarkedProposalResult(
+        votes, sum(votes.values()), None,
+        {point: proposals.color_votes[point] for point in points},
+        {point: proposals.target_color_votes[point] for point in points},
+        {point: proposals.state_votes[point] for point in points},
+        {point: proposals.parent_votes[point] for point in points})
+
+
+def _cross_fitted_frontier_scores(training, known, known_colors, targets):
+    folds = {point: _candidate_fold(point) for point in training.votes}
+    scores = {}
+    for heldout_fold in range(5):
+        fit_points = [point for point, fold in folds.items()
+                      if fold != heldout_fold]
+        validation_points = [point for point, fold in folds.items()
+                             if fold == heldout_fold]
+        marker = fit_frontier_attachment_marker(
+            _subset_proposals(training, fit_points), known, known_colors,
+            targets)
+        scores.update(score_frontier_attachments(
+            marker, _subset_proposals(training, validation_points),
+            known, known_colors))
+    return scores
+
+
+def _cross_fitted_refinement_scores(
+        training, augmented_known, augmented_colors, targets):
+    folds = {point: _candidate_fold(point) for point in training.votes}
+    scores = {}
+    for heldout_fold in range(5):
+        fit_points = [point for point, fold in folds.items()
+                      if fold != heldout_fold]
+        validation_points = [point for point, fold in folds.items()
+                             if fold == heldout_fold]
+        marker = fit_frontier_attachment_marker(
+            _subset_proposals(training, fit_points),
+            augmented_known, augmented_colors, targets)
+        scores.update(score_frontier_attachments(
+            marker, _subset_proposals(training, validation_points),
+            augmented_known, augmented_colors))
+    return scores
+
+
+def _dominant_source_color(proposals, point):
+    counts = proposals.color_votes[point]
+    encoded = min(counts, key=lambda color: (-counts[color], color))
+    try:
+        return ast.literal_eval(encoded)
+    except (ValueError, SyntaxError):
+        return encoded
+
+
+def _augmented_frontier(proposals, scores, known_positions, known_colors,
+                        pool_size):
+    pool = sorted(scores, key=lambda point: (-scores[point], point))[:pool_size]
+    positions = tuple(known_positions) + tuple(pool)
+    colors = tuple(known_colors) + tuple(
+        _dominant_source_color(proposals, point) for point in pool)
+    return positions, colors
+
+
+def _iterative_maximum_plateaus(
+        frontier_marker, refinement_marker, proposals, known_positions,
+        known_colors, targets, provisional_pool, waves=8):
+    remaining = proposals
+    accepted = []
+    accepted_true = 0
+    current_positions = list(known_positions)
+    current_colors = list(known_colors)
+    records = []
+    for wave in range(1, waves + 1):
+        frontier_scores = score_frontier_attachments(
+            frontier_marker, remaining, current_positions, current_colors)
+        augmented = _augmented_frontier(
+            remaining, frontier_scores, current_positions, current_colors,
+            min(provisional_pool, len(frontier_scores)))
+        scores = score_frontier_attachments(
+            refinement_marker, remaining, *augmented)
+        maximum = max(scores.values())
+        plateau = tuple(sorted(point for point, score in scores.items()
+                               if maximum - score <= 1e-12))
+        true = sum(point in targets for point in plateau)
+        accepted.extend(plateau)
+        accepted_true += true
+        records.append(IterativeGrowthWave(
+            wave, len(plateau), true, len(plateau) - true, len(accepted),
+            accepted_true / len(accepted), accepted_true / len(targets),
+            maximum))
+        current_positions.extend(plateau)
+        current_colors.extend(_dominant_source_color(remaining, point)
+                              for point in plateau)
+        remaining = _without_known_sites(remaining, plateau)
+        if not remaining.votes:
+            break
+    return tuple(records)
+
+
+def evaluate() -> FrontierAttachmentBenchmark:
+    first, _ = oracle_patch(3, 9.0)
+    second, _ = oracle_patch(4, 9.0 * HIDDEN_UNIT)
+    third, _ = oracle_patch(6, 9.0 * HIDDEN_UNIT ** 2)
+    cluster_edges = (1.4, 2.1, 2.8, 3.81)
+    first_types = local_cluster_types(
+        first.positions, first.species, cluster_edges)
+    second_types = local_cluster_types(
+        second.positions, second.species, cluster_edges)
+    training = _cross_fitted_training_votes(first, second, first_types)
+    known_first = {point_key(point) for point in first.positions}
+    training_targets = ({point_key(point) for point in second.positions} -
+                        known_first)
+    marker = fit_frontier_attachment_marker(
+        training, first.positions, first.species, training_targets)
+    training_scores = _cross_fitted_frontier_scores(
+        training, first.positions, first.species, training_targets)
+
+    connection_marking = learn_recursive_connection_marking(
+        first.positions, first_types, second.positions, HIDDEN_UNIT,
+        minimum_purity=.5, target_colors=second.species)
+    heldout = propose_with_recursive_marking(
+        connection_marking, second.positions,
+        map_to_prototypes(second_types, first_types), HIDDEN_UNIT)
+    heldout = _without_known_sites(heldout, second.positions)
+    heldout_scores = score_frontier_attachments(
+        marker, heldout, second.positions, second.species)
+    known_second = {point_key(point) for point in second.positions}
+    heldout_targets = ({point_key(point) for point in third.positions} -
+                       known_second)
+
+    training_pool = min(len(training_scores), 2 * len(training_targets))
+    heldout_predicted_novel = (
+        round(len(second.positions) * len(second.positions) /
+              len(first.positions)) - len(second.positions))
+    heldout_pool = min(len(heldout_scores), 2 * heldout_predicted_novel)
+    augmented_training = _augmented_frontier(
+        training, training_scores, first.positions, first.species,
+        training_pool)
+    refinement_marker = fit_frontier_attachment_marker(
+        training, *augmented_training, training_targets)
+    refinement_training_scores = _cross_fitted_refinement_scores(
+        training, *augmented_training, training_targets)
+    augmented_heldout = _augmented_frontier(
+        heldout, heldout_scores, second.positions, second.species,
+        heldout_pool)
+    refinement_scores = score_frontier_attachments(
+        refinement_marker, heldout, *augmented_heldout)
+
+    training_prefix = _largest_prefix_at_precision(
+        training_scores, training_targets, .99)
+    score_threshold = _lowest_threshold_at_precision(
+        training_scores, training_targets, .99)
+    surface_factor = HIDDEN_UNIT ** 2
+    projected_prefix = max(1, round(training_prefix * surface_factor))
+    projected = _operating_point(
+        heldout_scores, heldout_targets, projected_prefix)
+    calibrated_sites = {point: score for point, score in heldout_scores.items()
+                        if score >= score_threshold}
+    calibrated = _operating_point(
+        calibrated_sites, heldout_targets, len(calibrated_sites))
+    diagnostic = tuple(_operating_point(
+        heldout_scores, heldout_targets, min(budget, len(heldout_scores)))
+        for budget in (250, 500, 1000, 2000, 2839, 5678))
+    minimum_separation = min(
+        sum((left - right) ** 2 for left, right in zip(point, other)) ** .5
+        for index, point in enumerate(second.positions)
+        for other in second.positions[index + 1:])
+    hard_core = tuple(_hard_core_prefix(
+        heldout_scores, heldout_targets, second.positions, budget,
+        minimum_separation) for budget in (250, 500, 1000, 2000))
+    third_order = tuple(_operating_point(
+        refinement_scores, heldout_targets,
+        min(budget, len(refinement_scores)))
+        for budget in (250, 500, 1000, 2000, 2839, 5678))
+    third_training_prefix = _largest_prefix_at_precision(
+        refinement_training_scores, training_targets, 1.0)
+    third_projected_prefix = max(
+        1, round(third_training_prefix * surface_factor))
+    third_projected = _operating_point(
+        refinement_scores, heldout_targets, third_projected_prefix)
+    ordered_refinement_scores = sorted(refinement_scores.values(), reverse=True)
+    landmarks = tuple(ScoreLandmark(
+        rank, ordered_refinement_scores[rank - 1])
+        for rank in (1, 10, 50, 100, 250, 251, 500, 1000)
+        if rank <= len(ordered_refinement_scores))
+    gap_rank, gap = max(
+        ((index, ordered_refinement_scores[index - 1] -
+          ordered_refinement_scores[index])
+         for index in range(1, min(2000, len(ordered_refinement_scores)))),
+        key=lambda item: (item[1], -item[0]))
+    iterative_waves = _iterative_maximum_plateaus(
+        marker, refinement_marker, heldout, second.positions, second.species,
+        heldout_targets, heldout_pool)
+    return FrontierAttachmentBenchmark(
+        (len(first.positions), len(second.positions), len(third.positions)),
+        len(training.votes), len(training_targets), len(heldout.votes),
+        len(heldout_targets), training_prefix, projected_prefix,
+        surface_factor, projected, score_threshold, calibrated,
+        diagnostic, hard_core, third_order, training_pool, heldout_pool,
+        third_training_prefix, third_projected_prefix, third_projected,
+        landmarks, gap_rank, gap,
+        iterative_waves,
+        minimum_separation, False, True, True)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--json", action="store_true")
+    arguments = parser.parse_args()
+    result = evaluate()
+    print(json.dumps(asdict(result), indent=2)
+          if arguments.json else result)
+
+
+if __name__ == "__main__":
+    main()

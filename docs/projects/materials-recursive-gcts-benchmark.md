@@ -412,11 +412,61 @@ predicted by the learned growth factor.  The next marking must model that
 density transformation explicitly or learn a higher-order sparse cover so an
 absolute forced-move decision remains calibrated across levels.
 
+### Frontier attachment and third-order marking
+
+`scripts/materials_gcts_frontier_attachment.py` adds the accepted
+configuration to the marking domain.  For each recursive proposal it records
+bounded colored neighbor counts and nearest distances to already accepted
+atoms, together with source-color and learned target-color connection votes.
+The latter is retained as a separate hypothesis: using the learned
+state-to-color mode directly is a negative result (40.7% held-out species
+accuracy versus 56.0% for the source-carried color).  The higher-order marker
+may use their agreement, but does not replace the better color rule.
+
+The frontier marker is trained on the same 3,832 cross-fitted continuation
+proposals and frozen.  On the 66,110 held-out novel-site candidates it produces
+a sharply purer frontier than consensus alone:
+
+| ranked frontier budget | correct | precision | novel recall |
+|---:|---:|---:|---:|
+| 250 | 238 | 95.2% | 3.59% |
+| 500 | 488 | **97.6%** | 7.36% |
+| 1,000 | 868 | 86.8% | 13.08% |
+| 2,000 | 1,530 | 76.5% | 23.06% |
+
+An explicit third level then forms a broad provisional covering (twice the
+learned novel-site budget), treats its colored proposal neighborhood as the
+new marking domain, and fits another bounded section.  It improves the full
+5,678-site operating point from 48.5% precision / 41.5% recall to **53.3% /
+45.6%**.  Its diagnostic top 250 sites are 250/250 correct, but there is no
+unlabelled score gap at rank 250, so that number is not used as a policy.
+
+The operational policy accepts only the current maximum-score symmetry
+plateau, merges it into the known configuration, and recomputes both frontier
+levels.  Eight frozen-policy waves add:
+
+`10 → 2 → 120 → 36 → 24 → 8 → 4 → 4`
+
+All 208 proposed sites are correct, for 100% precision and 3.14% novel recall.
+The 120-site third wave is a verified macro action selected as a cluster of
+proposal clusters, not 120 atomwise oracle decisions.  Later plateaus shrink,
+so this is safe hierarchical progress rather than exponential continuation.
+
+Two calibration ablations remain negative.  Scaling a training-pure prefix by
+the expected surface factor selects 3,828 sites at only 60.2% precision, while
+an absolute 99%-training-precision score threshold transfers at about 17%
+precision.  Minimum-separation pruning changes no result because the false
+branches are locally valid, non-colliding alternatives.  Maximum-score plateau
+iteration is the only currently verified self-calibrating forced-move policy.
+
 ## Next implementation target
 
-Learn the transformation of proposal density and class prevalence between
-hierarchy levels, or replace dense pair proposals with a learned sparse parent
-cover.  Generalize the parametric recursive-node interface so crystals learn a
+Continue the exact plateau search with new recursive connection proposals after
+each accepted macro, and learn a branch-level lookahead marking when the top
+plateau ceases to be pure.  Learn the transformation of proposal density and
+class prevalence between hierarchy levels, or replace dense pair proposals
+with a learned sparse parent cover.  Generalize the parametric recursive-node
+interface so crystals learn a
 translation quotient, substitution quasicrystals learn an inflation or
 superspace section, and amorphous controls decline the deterministic rule.  Add
 held-out perturbations and non-icosahedral model sets so a module-specific
