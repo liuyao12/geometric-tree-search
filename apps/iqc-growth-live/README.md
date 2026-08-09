@@ -123,7 +123,11 @@ similarity-cover benchmark. Pair-distance recurrence discovers the inflation
 scale, 21 contracted copies cover all 507 known sites, and a bounded colored
 section is fitted on inner/annular examples before it is frozen on the unseen
 outer shell. The displayed 4.236x factor is latent hierarchy compression; the
-explicit marked result (713 correct sites at 53.5% precision) is reported
-separately and is not presented as exact exponential growth.
+explicit first-level result (713 correct sites at 53.5% precision) is reported
+separately and is not presented as exact exponential growth. With every map
+and setting frozen, correct proposals grow 829 to 2,747 on the next level
+(3.314x). The atom halo loses its precision advantage there, while a finite
+scale- and SO(3)-invariant Gram section over agreeing macro maps raises
+precision from 49.27% to 55.51% at 4.02% recall.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.
