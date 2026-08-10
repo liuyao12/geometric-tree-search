@@ -22,12 +22,17 @@ containing central and neighbor element channels, Gaussian radial functions
 through `1.9a`, a first-shell angular histogram, and coordination terms.
 Standardized features are grouped by deterministic k-medoids. A bounded
 farthest-medoid elbow test chooses the vocabulary size and collapses exactly
-regular low-rank inputs early. The result partitions all 216 centers; the
-corresponding finite neighborhoods overlap and cover the known configuration.
+regular low-rank inputs early. A separate greedy set-cover pass then chooses
+atom-centred occurrences on the periodic quotient and audits their union
+against every supplied atom. Any uncovered atom is promoted to an explicit
+residual cluster type, so incomplete coverage cannot be hidden by a label
+assignment.
 
 Every displayed prototype is an actual medoid point-cloud patch with its
 measured, element-labelled first shell. The visualization does not substitute a
-fixed catalogue of demonstration polyhedra.
+fixed catalogue of demonstration polyhedra. Each approximate isometry class has
+its own independently rotating canvas card; repeated placements do not create
+duplicate cards.
 
 ## Finite rigid overlap grammar
 
@@ -103,6 +108,12 @@ small prototype library and reports a provisional crystal, quasicrystal, or
 amorphous interpretation. A publishable evaluator still needs `spglib` or
 translation closure for crystals, reciprocal-module and diffraction tests for
 quasicrystals, and structure-factor plus local-motif tests for glasses.
+
+For a periodic input, a translation-consensus pass searches same-species
+displacements for three recurrent independent vectors. During search it draws
+the resulting parallelepiped as a candidate unit cell; once the live order
+audit calls the grown structure crystalline, the badge changes from candidate
+to detected. Quasicrystal and amorphous classifications suppress the cell.
 
 Growth has no preset atom target. The one- and two-minute controls run as many
 explicit rigid-overlap decisions as browser performance and the geometric

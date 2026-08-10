@@ -214,6 +214,16 @@ a { color: inherit; }
   background-size: 62px 62px; mask-image: radial-gradient(circle, black, transparent 76%);
 }
 .viewport canvas { display: block; width: 100%; height: 100%; }
+.cluster-gallery { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); align-content: start; gap: 8px; padding: 49px 13px 43px; overflow: auto; background: radial-gradient(circle at 50% 48%, rgba(25,68,61,.34), transparent 45%), #061012; }
+.cluster-gallery[hidden] { display: none; }
+.cluster-card { position: relative; min-height: 132px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); }
+.cluster-card canvas { width: 100%; height: 112px; }
+.cluster-card-label { position: absolute; left: 7px; right: 7px; bottom: 6px; display: flex; justify-content: space-between; gap: 7px; color: #aabbb6; font: 7px var(--mono); pointer-events: none; }
+.cluster-card-label b { color: var(--mint); font-weight: 400; }
+.cluster-card.residual { border-color: rgba(255,109,113,.4); }
+.cluster-card.residual .cluster-card-label b { color: var(--red); }
+.viewport.cluster-gallery-mode > canvas, .viewport.cluster-gallery-mode .axis-labels { visibility: hidden; }
+.viewport-chrome.top-right b { padding-left: 8px; border-left: 1px solid var(--line); color: var(--mint); font-weight: 400; }
 .viewport-chrome, .viewport-caption { position: absolute; z-index: 3; pointer-events: none; }
 .viewport-chrome { top: 13px; display: flex; gap: 8px; align-items: center; padding: 6px 8px; border: 1px solid var(--line); background: rgba(6,16,17,.72); backdrop-filter: blur(8px); color: var(--muted); font: 8px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
 .viewport-chrome b { color: var(--ink); font-weight: 400; }

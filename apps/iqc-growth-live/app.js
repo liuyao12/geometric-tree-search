@@ -43,6 +43,9 @@ const stageTitle = $("stageTitle");
 const eventKind = $("eventKind");
 const eventCounter = $("eventCounter");
 const phaseReadout = $("phaseReadout");
+const clusterGallery = $("clusterGallery");
+const viewportHint = $("viewportHint");
+const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const atomLabel = $("atomLabel");
 const atomMetric = $("atomMetric");
@@ -213,7 +216,8 @@ const atomGroup = new THREE.Group();
 const clusterGroup = new THREE.Group();
 const frontierGroup = new THREE.Group();
 const decisionGroup = new THREE.Group();
-world.add(confinementGroup, bondGroup, atomGroup, clusterGroup, frontierGroup, decisionGroup);
+const unitCellGroup = new THREE.Group();
+world.add(confinementGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, frontierGroup, decisionGroup);
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
@@ -258,6 +262,8 @@ let liveStructuralStats = null;
 let lastLiveStatsKey = "";
 let coordinationSelection = null;
 let learnedClusters = null;
+let learnedCover = null;
+let detectedUnitCell = null;
 let trainedMarking = null;
 let sectionModel = null;
 let overlapGrammar = null;
@@ -542,6 +548,19 @@ function normalizedDistributionDistance(first, second) {
   return first.reduce((sum, value, index) => sum + Math.abs(value - (second[index] || 0)), 0) / scale;
 }
 
+function translationClosureScore(source, basis) {
+  if (!basis || source.length < 8) return 0;
+  const sample = source.slice(0, Math.min(240, source.length));
+  let matches = 0;
+  sample.forEach((atom) => basis.forEach((vector) => {
+    const forward = atom.p.clone().add(vector);
+    const backward = atom.p.clone().sub(vector);
+    if (source.some((candidate) => candidate.species === atom.species
+      && Math.min(candidate.p.distanceTo(forward), candidate.p.distanceTo(backward)) < referenceSpacing * .15)) matches++;
+  }));
+  return matches / (sample.length * basis.length);
+}
+
 function inferLiveOrder() {
   const source = classificationSample();
   if (pipelineStage === 4 && source.length < 32) return {
@@ -557,14 +576,22 @@ function inferLiveOrder() {
     return { ...prototype, evidenceMatch: Math.max(0, Math.min(1, 1 - .38 * rdfError - .72 * coordinationError)) };
   }).sort((first, second) => second.evidenceMatch - first.evidenceMatch);
   const best = matches[0];
+  const bestCrystal = matches.find((match) => match.material.order === "crystal");
   const evidenceMatch = best.evidenceMatch;
+  const translationClosure = pipelineStage === 4 && detectedUnitCell
+    ? translationClosureScore(source, detectedUnitCell.basis) : 0;
   const sampleStrength = Math.max(0, Math.min(1, (source.length - 24) / 144));
-  const confidence = evidenceMatch * (.48 + .52 * sampleStrength);
+  let confidence = evidenceMatch * (.48 + .52 * sampleStrength);
   const accepted = confidence >= .58;
   let order = "undetermined";
   let structure = `closest: ${best.material.name}`;
   let symmetry = "not assigned";
-  if (accepted && best.material.order === "crystal") {
+  if (translationClosure >= .24 && bestCrystal) {
+    order = "crystal";
+    structure = bestCrystal.material.name;
+    symmetry = bestCrystal.material.symmetry;
+    confidence = Math.max(confidence, Math.min(.98, .58 + .42 * translationClosure));
+  } else if (accepted && best.material.order === "crystal") {
     order = "crystal";
     structure = best.material.name;
     symmetry = best.material.symmetry;
@@ -580,7 +607,7 @@ function inferLiveOrder() {
   const mode = pipelineStage < 4 ? "reference configuration" : "live reconstructed core";
   const result = {
     order, structure, symmetry, confidence,
-    note: `${mode}: best RDF + coordination match across ${matches.length} prototypes. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
+    note: `${mode}: best RDF + coordination match across ${matches.length} prototypes${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
   };
   liveOrderCache = { key, result };
   return result;
@@ -1061,6 +1088,70 @@ function periodicDisplacement(first, second) {
   return delta;
 }
 
+function inferTranslationCell(source) {
+  if (scenarioSelect.value === "imported" && importedStructure?.cell && currentPbc().every(Boolean)) {
+    const scale = referenceSpacing / referenceSpacingA;
+    return { basis: currentCell().map((vector) => vector.multiplyScalar(scale)), source: "reported periodic cell" };
+  }
+  const sample = source.slice(0, Math.min(72, source.length));
+  const candidates = new Map();
+  for (let first = 0; first < sample.length; first++) for (let second = first + 1; second < sample.length; second++) {
+    if (sample[first].species !== sample[second].species) continue;
+    let vector = sample[second].p.clone().sub(sample[first].p);
+    const length = vector.length();
+    if (length < referenceSpacing * 1.05 || length > referenceSpacing * 3.2) continue;
+    const components = [vector.x, vector.y, vector.z];
+    const leading = components.find((value) => Math.abs(value) > .05);
+    if (leading < 0) vector.multiplyScalar(-1);
+    const key = [vector.x, vector.y, vector.z].map((value) => Math.round(value / (referenceSpacing * .04))).join(":");
+    if (!candidates.has(key)) candidates.set(key, vector);
+  }
+  const scored = [...candidates.values()].map((vector) => {
+    let supported = 0;
+    sample.forEach((atom) => {
+      const target = atom.p.clone().add(vector);
+      if (source.some((candidate) => candidate.species === atom.species && candidate.p.distanceTo(target) < referenceSpacing * .12)) supported++;
+    });
+    return { vector, support: supported / sample.length };
+  }).filter((candidate) => candidate.support >= .42)
+    .sort((first, second) => first.vector.lengthSq() - second.vector.lengthSq() || second.support - first.support)
+    .slice(0, 24);
+  let best = null;
+  for (let i = 0; i < scored.length; i++) for (let j = i + 1; j < scored.length; j++) for (let k = j + 1; k < scored.length; k++) {
+    const volume = Math.abs(scored[i].vector.dot(new THREE.Vector3().crossVectors(scored[j].vector, scored[k].vector)));
+    if (volume < referenceSpacing ** 3 * .35) continue;
+    const score = volume / (scored[i].support * scored[j].support * scored[k].support);
+    if (!best || score < best.score) best = { score, basis: [scored[i].vector.clone(), scored[j].vector.clone(), scored[k].vector.clone()] };
+  }
+  return best ? { basis: best.basis, source: "translation consensus" } : null;
+}
+
+function buildDetectedUnitCell() {
+  clearGroup(unitCellGroup);
+  unitCellBadge.hidden = true;
+  if (pipelineStage !== 4 || !detectedUnitCell) return;
+  const inference = inferLiveOrder();
+  if (inference.order.includes("quasicrystal") || inference.order === "amorphous solid") return;
+  const [a, b, c] = detectedUnitCell.basis;
+  const centroid = atoms.slice(0, Math.min(atoms.length, 500)).reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3())
+    .multiplyScalar(1 / Math.max(1, Math.min(atoms.length, 500)));
+  const origin = centroid.clone().addScaledVector(a, -.5).addScaledVector(b, -.5).addScaledVector(c, -.5);
+  const vertices = [0, 1, 2, 3, 4, 5, 6, 7].map((mask) => origin.clone()
+    .addScaledVector(a, mask & 1 ? 1 : 0)
+    .addScaledVector(b, mask & 2 ? 1 : 0)
+    .addScaledVector(c, mask & 4 ? 1 : 0));
+  const points = [];
+  [[0,1],[0,2],[0,4],[1,3],[1,5],[2,3],[2,6],[3,7],[4,5],[4,6],[5,7],[6,7]].forEach(([first, second]) => points.push(vertices[first], vertices[second]));
+  unitCellGroup.add(new THREE.LineSegments(
+    new THREE.BufferGeometry().setFromPoints(points),
+    new THREE.LineBasicMaterial({ color: COLORS.mint, transparent: true, opacity: .88, depthTest: false }),
+  ));
+  unitCellBadge.hidden = false;
+  const classified = inference.order === "crystal";
+  unitCellBadge.textContent = classified ? "unit cell detected" : "unit cell candidate";
+  unitCellBadge.title = `${classified ? inference.symmetry : "awaiting live crystal classification"} · ${detectedUnitCell.source}`;
+}
+
 function localEnvironmentDescriptor(source, centerIndex) {
   const material = currentMaterial();
   const center = source[centerIndex];
@@ -1165,6 +1256,120 @@ function learnLocalEnvironmentClusters(source) {
   }).sort((a, b) => b.count - a.count);
   const remap = new Map(clusters.map((cluster, index) => [cluster.oldIndex, index]));
   return { labels: labels.map((label) => remap.get(label)), clusters, environments, descriptorLength: dimensions, selectionCurve, selectedK: k };
+}
+
+// Turn environment labels into an explicit overlapping cover.  Candidate
+// placements are atom-centred first shells on the periodic quotient.  Greedy
+// set cover chooses recurring placements; any atom left behind is promoted to
+// a residual cluster placement instead of disappearing from the model.
+function buildExhaustiveClusterCover(source) {
+  const supports = source.map((_, center) => [
+    center,
+    ...learnedClusters.environments[center].shell
+      .filter((neighbor) => neighbor.r <= 1.38)
+      .map((neighbor) => source.indexOf(neighbor.atom)),
+  ].filter((index, position, values) => index >= 0 && values.indexOf(index) === position));
+  const occurrences = supports.map((support, center) => ({
+    center, support, type: learnedClusters.labels[center], residual: false,
+  })).sort((first, second) => second.support.length - first.support.length || first.center - second.center);
+  const uncovered = new Set(source.map((_, index) => index));
+  const placements = [];
+  while (uncovered.size) {
+    let best = null;
+    let gain = 0;
+    occurrences.forEach((occurrence) => {
+      const candidateGain = occurrence.support.reduce((sum, index) => sum + Number(uncovered.has(index)), 0);
+      if (candidateGain > gain) { best = occurrence; gain = candidateGain; }
+    });
+    if (!best || !gain) break;
+    placements.push(best);
+    best.support.forEach((index) => uncovered.delete(index));
+  }
+  const residualTypes = [];
+  [...uncovered].forEach((atomIndex) => {
+    const species = source[atomIndex].species;
+    let type = residualTypes.findIndex((candidate) => candidate.species === species);
+    if (type < 0) {
+      type = residualTypes.length;
+      residualTypes.push({ species, count: 0, medoid: atomIndex, coordination: 0, spread: 0, residual: true });
+    }
+    residualTypes[type].count++;
+    placements.push({ center: atomIndex, support: [atomIndex], type: learnedClusters.clusters.length + type, residual: true });
+    uncovered.delete(atomIndex);
+  });
+  const coveredAtoms = new Set(placements.flatMap((placement) => placement.support));
+  const incidence = source.map((_, atomIndex) => placements
+    .map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1)
+    .filter((placementIndex) => placementIndex >= 0));
+  return {
+    placements, residualTypes, incidence,
+    covered: coveredAtoms.size,
+    complete: coveredAtoms.size === source.length,
+    periodic: currentPbc().some(Boolean),
+  };
+}
+
+function clusterGalleryTypes() {
+  if (!learnedClusters || !learnedCover) return [];
+  return [
+    ...learnedClusters.clusters.map((cluster, type) => ({ ...cluster, type, residual: false })),
+    ...learnedCover.residualTypes.map((cluster, offset) => ({ ...cluster, type: learnedClusters.clusters.length + offset })),
+  ];
+}
+
+function rebuildClusterGallery() {
+  clusterGallery.replaceChildren();
+  clusterGalleryTypes().forEach((cluster, galleryIndex) => {
+    const card = document.createElement("article");
+    card.className = `cluster-card${cluster.residual ? " residual" : ""}`;
+    const canvas = document.createElement("canvas");
+    canvas.width = 280;
+    canvas.height = 224;
+    canvas.dataset.cluster = String(galleryIndex);
+    const label = document.createElement("div");
+    label.className = "cluster-card-label";
+    const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
+    label.innerHTML = `<b>${cluster.residual ? "gap" : "C"}${cluster.type + 1}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"}</span>`;
+    card.append(canvas, label);
+    clusterGallery.append(card);
+  });
+}
+
+function drawClusterGallery(now) {
+  if (pipelineStage !== 1 || clusterGallery.hidden) return;
+  const scaleToScene = referenceSpacing / referenceSpacingA;
+  clusterGallery.querySelectorAll("canvas[data-cluster]").forEach((canvas, galleryIndex) => {
+    const cluster = clusterGalleryTypes()[Number(canvas.dataset.cluster)];
+    if (!cluster) return;
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    const center = referenceAtoms[cluster.medoid];
+    const sites = [{ vector: new THREE.Vector3(), atom: center }];
+    if (!cluster.residual) learnedClusters.environments[cluster.medoid].shell
+      .filter((neighbor) => neighbor.r <= 1.38)
+      .forEach((neighbor) => sites.push(neighbor));
+    const angleY = now * (.00018 + galleryIndex * .000011) + galleryIndex * .83;
+    const angleX = now * (.00009 + galleryIndex * .000007) + .35;
+    const quaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(angleX, angleY, angleY * .23));
+    const projected = sites.map((site, index) => {
+      const point = site.vector.clone().multiplyScalar(scaleToScene).applyQuaternion(quaternion);
+      const perspective = 1 / (1 + Math.max(-.7, point.z) * .11);
+      return { index, atom: site.atom, x: canvas.width / 2 + point.x * 48 * perspective, y: canvas.height / 2 + point.y * 48 * perspective, z: point.z, perspective };
+    }).sort((first, second) => first.z - second.z);
+    const projectedCenter = projected.find((point) => point.index === 0);
+    context.lineWidth = 1.5;
+    projected.filter((point) => point.index !== 0).forEach((point) => {
+      context.beginPath(); context.moveTo(projectedCenter.x, projectedCenter.y); context.lineTo(point.x, point.y);
+      context.strokeStyle = cluster.residual ? "rgba(255,109,113,.45)" : "rgba(101,225,188,.32)"; context.stroke();
+    });
+    projected.forEach((point) => {
+      const record = elementRecord(point.atom.species);
+      const radius = (point.index ? 6.5 : 8.5) * point.perspective * Math.min(1.12, record.radius / 1.3);
+      context.beginPath(); context.arc(point.x, point.y, radius, 0, TAU);
+      context.fillStyle = record.css; context.shadowColor = record.css; context.shadowBlur = point.index ? 5 : 10; context.fill(); context.shadowBlur = 0;
+      context.strokeStyle = point.index ? "rgba(255,255,255,.24)" : "rgba(255,255,255,.72)"; context.stroke();
+    });
+  });
 }
 
 function learnOverlapMarking(source) {
@@ -1904,6 +2109,8 @@ function enterPipelineStage(index, options = {}) {
     : referenceSpacing / .92 * currentMaterial().spacingA;
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean));
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
+  learnedCover = buildExhaustiveClusterCover(referenceAtoms);
+  detectedUnitCell = inferTranslationCell(referenceAtoms);
   trainedMarking = learnOverlapMarking(referenceAtoms);
   overlapGrammar = learnOverlapGrammar(referenceAtoms);
   sectionModel = learnSectionModel(referenceAtoms);
@@ -1916,6 +2123,10 @@ function enterPipelineStage(index, options = {}) {
   if (pipelineStage < 4) rebuildSpatialIndex();
   buildConfinement();
   clusterGroup.rotation.set(0, 0, 0);
+  clusterGallery.hidden = pipelineStage !== 1;
+  viewport.classList.toggle("cluster-gallery-mode", pipelineStage === 1);
+  viewportHint.textContent = pipelineStage === 1 ? "independent SE(3) views · scroll for all types" : "drag to orbit · wheel to zoom";
+  if (pipelineStage === 1) rebuildClusterGallery();
   buildClusterOverlay();
   updateStageNarrative();
   rebuildWorld();
@@ -1958,10 +2169,10 @@ function updateStageNarrative() {
       values: [material.elements.join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, "1 configuration"],
     },
     {
-      eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterCount} learned types`,
-      caption: `All ${referenceCount()} atom-centered neighborhoods are assigned once; their overlapping shells cover the configuration. Wireframes show only the ${clusterCount} medoids.`, badge: "learn",
-      decision: "Environment clusters computed", copy: "Element-resolved radial functions and a first-shell angular histogram are standardized, then clustered by deterministic k-medoids.",
-      values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${clusterCount} medoids`, currentPbc().some(Boolean) ? "general-cell minimum image" : "non-periodic distances"],
+      eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
+      caption: `${learnedCover.covered}/${referenceCount()} atoms are covered by ${learnedCover.placements.length} overlapping placements on the ${learnedCover.periodic ? "periodic quotient" : "finite window"}. Each card is one isometry class, never a second occurrence.`, badge: "learn",
+      decision: "Exhaustive cluster cover computed", copy: "Element-resolved radial and angular descriptors define approximate isometry classes. A greedy overlap cover is audited atom by atom; any uncovered component is promoted to a residual cluster type.",
+      values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${learnedCover.placements.length} placements`, `${learnedCover.residualTypes.length} residual types`],
     },
     {
       eyebrow: "encoding · clusters of clusters", title: "Promote repeated overlaps into finite connection states", phase: `${overlapGrammar.rules.length} rules`,
@@ -2120,6 +2331,7 @@ function performEvent() {
 
 function rebuildWorld() {
   clearGroup(atomGroup);
+  clearGroup(unitCellGroup);
   clearGroup(bondGroup);
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
@@ -2229,6 +2441,7 @@ function rebuildWorld() {
     centerMarkers.instanceMatrix.needsUpdate = true;
     decisionGroup.add(centerMarkers);
   }
+  buildDetectedUnitCell();
 }
 
 function updateDecision(event) {
@@ -2261,10 +2474,10 @@ function updateUI() {
     oracleLabel.textContent = "LABELS GIVEN"; oracleMetric.textContent = "0"; oracleDelta.textContent = "clusters must be inferred";
     reuseLabel.textContent = "GROWTH MODE"; reuseMetric.textContent = "OPEN"; reuseDelta.textContent = "restartable 1–2 minute bursts";
   } else if (pipelineStage === 1) {
-    atomLabel.textContent = "ENVIRONMENTS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = `${currentPbc().some(Boolean) ? "PBC" : "open"} element-aware descriptors`;
-    frontierLabel.textContent = "LEARNED CLUSTERS"; frontierMetric.textContent = String(learnedClusters.clusters.length); frontierDelta.textContent = "deterministic k-medoids";
-    oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = "100%"; oracleDelta.textContent = `${referenceCount()} / ${referenceCount()} centers assigned`;
-    reuseLabel.textContent = "CUTOFF"; reuseMetric.textContent = "1.9a"; reuseDelta.textContent = `${(referenceSpacingA * 1.9).toFixed(2)} Å local domain`;
+    atomLabel.textContent = "PLACEMENTS"; atomMetric.textContent = String(learnedCover.placements.length); atomDelta.textContent = `overlapping ${currentPbc().some(Boolean) ? "periodic" : "open"} cover`;
+    frontierLabel.textContent = "ISOMETRY TYPES"; frontierMetric.textContent = String(clusterGalleryTypes().length); frontierDelta.textContent = "one rotating scene per type";
+    oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = `${Math.round(learnedCover.covered / referenceCount() * 100)}%`; oracleDelta.textContent = `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.complete ? "complete" : "incomplete"}`;
+    reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(learnedCover.residualTypes.length); reuseDelta.textContent = learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
   } else if (pipelineStage === 2) {
     atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedClusters.clusters.length); atomDelta.textContent = "one per learned medoid";
     frontierLabel.textContent = "SE(3) RULES"; frontierMetric.textContent = String(overlapGrammar.rules.length); frontierDelta.textContent = "arbitrary quaternion + translation";
@@ -2335,13 +2548,13 @@ function renderLegend() {
     failed.append(failedSwatch, document.createTextNode("red lobe · absent / failed connection"));
     speciesLegend.appendChild(failed);
   } else if (pipelineStage === 1 && learnedClusters) {
-    legendHeading.textContent = "Learned environments";
-    learnedClusters.clusters.forEach((cluster, index) => {
+    legendHeading.textContent = "Cover isometry types";
+    clusterGalleryTypes().forEach((cluster, index) => {
       const row = document.createElement("span");
       const swatch = document.createElement("i");
       swatch.className = "cluster-swatch";
-      swatch.style.setProperty("--swatch", `#${CLUSTER_COLORS[index].toString(16).padStart(6, "0")}`);
-      row.append(swatch, document.createTextNode(`C${index + 1} · ${cluster.element} · ${cluster.count}`));
+      swatch.style.setProperty("--swatch", cluster.residual ? "#ff6d71" : `#${CLUSTER_COLORS[index % CLUSTER_COLORS.length].toString(16).padStart(6, "0")}`);
+      row.append(swatch, document.createTextNode(`${cluster.residual ? "gap" : "C"}${index + 1} · ${cluster.element || cluster.species} · ${cluster.count}`));
       speciesLegend.appendChild(row);
     });
   } else {
@@ -2631,6 +2844,7 @@ function animate(now) {
     decisionGroup.children[0].rotation.x += delta * .7;
   }
   clusterGroup.rotation.y += pipelineStage === 2 ? delta * .08 : 0;
+  drawClusterGallery(now);
   renderer.render(scene, camera);
 }
 
