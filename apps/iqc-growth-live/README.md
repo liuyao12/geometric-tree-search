@@ -48,6 +48,14 @@ patch. The catalogue is finite, but rotations are not restricted to lattice
 angles. The stage-three inspector reports rule counts, rotation angles,
 translation lengths, recurrence, and held-out support.
 
+The encoder keeps two deliberately separate products. Recurring pose classes
+form the compressed grammar used for continuation. The complete observed
+occurrence-overlap graph is serialized as one-off residual edges used only to
+audit reconstruction of the supplied window. The encode-stage **replay graph**
+metric reports how many known occurrence centers are reachable from the chosen
+seed before search starts. Those residual edges are removed as soon as exact
+reconstruction is certified, so they cannot leak into continuation.
+
 ## GCTS connection sections
 
 The marking stage is separate from both cluster discovery and rule extraction.
@@ -82,6 +90,18 @@ candidate must:
 - avoid hard-core and element-identity conflicts;
 - pass the transported GCTS section test when the marked policy is active.
 
+During the known-window audit, every proposed site is mapped by species and
+minimum-image distance to a stable reference index. Accepted sites are snapped
+to that representative, and already represented indices are treated as shared
+support rather than fresh atoms. Every simultaneous placement must own a
+distinct missing reference index. Reconstruction passes only at exact
+one-to-one equality: 216 unique species-labelled sites, 216 explicit atoms,
+zero duplicate reference indices, and zero extraneous quotient sites. The
+known positions validate or rank learned actions; they never manufacture a
+placement. A marking false negative is counted and bypassed during this audit,
+which separates grammar reachability from marking quality and autonomous
+search quality.
+
 Accepted placements generate new frontier branches. Failed placements are
 pruned while other branches remain available. A soft cost for radius, search
 depth, and overrepresented angular sectors prevents one frequent attachment
@@ -107,6 +127,16 @@ With the marked policy, recurring overlap rules preload bounded section
 intervals and can avoid repeated local compatibility evaluation. Selecting the
 exact-oracle or colored-action policy restarts the same geometric search without
 that section ranking/cache, providing direct ablations.
+
+The audited IQC panel now reports the persistent-symbol promotion gate rather
+than treating raw proposal amplification as successful growth. From two
+observed exact-control patches (507 and 1,969 atoms), 122 rigid templates form
+18 symbolic productions with 165 relative-pose ports. Typed poses survive two
+unseen compositions without atom re-clustering, but outward fidelity changes
+from 932 correct / 0 false (3.27% shell recall) to 1,340 correct / 2,580 false
+(34.18% precision, 1.14% recall). A frozen normalized port marking retains five
+symbols and then none. The UI therefore marks mechanical recursion as achieved
+and exponential-quality GCTS growth as failed.
 
 ## Live validation
 
