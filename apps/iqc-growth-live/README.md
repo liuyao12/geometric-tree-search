@@ -87,15 +87,21 @@ pruned while other branches remain available. A soft cost for radius, search
 depth, and overrepresented angular sectors prevents one frequent attachment
 direction from starving the rest of the frontier.
 
-One visual update is a bounded **commuting frontier batch**, not one search
-move. Candidates are drawn from the same frontier snapshot. A candidate joins
-the batch only when every cross-placement site is either safely separated or a
-coincident atom of the same species, and every accepted placement retains at
-least one new site not supplied by another member. These monotone local checks
-make all permutations of the displayed batch admissible. The engine still
-materializes them in a deterministic order internally, but that order does not
-select the result. Every attempted member gets its own marker, so a batch with
-several pruned moves displays several red markers simultaneously.
+One visual update is a maximal greedy **commuting frontier set**, not one search
+move or an arbitrary fixed-size animation batch. Candidates are drawn from the
+same frontier snapshot. A placement joins the displayed set only when every
+cross-placement site is either safely separated or a coincident atom of the
+same species, and every placement retains at least one new site not supplied by
+another member. These monotone local checks make all permutations of the
+displayed placements admissible. The engine materializes them in a
+deterministic order internally, but that order does not select the result.
+
+Red markers are also batched, but only for failures that are invariant under
+those permutations: hard-core/species conflict, confinement failure, duplicate
+covering, or a failed frozen marking. An under-supported candidate is deferred
+because an independent placement could supply its missing overlap; it is not
+misreported as a rejection. Thus several independently pruned branches produce
+several simultaneous red flashes.
 
 With the marked policy, recurring overlap rules preload bounded section
 intervals and can avoid repeated local compatibility evaluation. Selecting the

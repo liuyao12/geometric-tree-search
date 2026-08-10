@@ -127,7 +127,6 @@ const PHI = (1 + Math.sqrt(5)) / 2;
 const DEFAULT_REFERENCE_COUNT = 216;
 const ANALYSIS_WINDOW_COUNT = 256;
 const FRONTIER_PREVIEW = 28;
-const DISPLAY_BATCH_LIMIT = 8;
 const MAX_RULES_PER_PAIR = 28;
 const MERGE_TOLERANCE = .24;
 const COLLISION_TOLERANCE = .46;
@@ -1857,20 +1856,34 @@ function batchRetainsNovelSites(entries) {
       && otherSite.p.distanceTo(site.p) <= COMMUTING_SITE_TOLERANCE))));
 }
 
-function commutingFrontierBatch(limit = DISPLAY_BATCH_LIMIT) {
+function rejectionIsOrderInvariant(candidate, evaluation) {
+  const markingRejected = policySelect.value === "marked" && candidate.markingScore <= -.24;
+  return evaluation.conflicts > 0 || evaluation.boundaryFailures > 0
+    || evaluation.fresh.length === 0 || markingRejected;
+}
+
+function commutingFrontierBatch() {
   const ranked = frontierCandidates.slice().sort((first, second) => dynamicCandidatePriority(second) - dynamicCandidatePriority(first));
-  const batch = [];
+  const acceptedBatch = [];
+  const rejectedBatch = [];
   for (const candidate of ranked) {
     const evaluation = evaluateCandidate(candidate);
     const entry = { candidate, evaluation, sites: evaluation.sites };
-    if (!batch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
-    const trial = [...batch, entry];
-    const accepted = trial.filter((item) => item.evaluation.accepted);
-    if (accepted.length && !batchRetainsNovelSites(accepted)) continue;
-    batch.push(entry);
-    if (batch.length >= limit) break;
+    if (evaluation.accepted) {
+      if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
+      const trial = [...acceptedBatch, entry];
+      if (!batchRetainsNovelSites(trial)) continue;
+      acceptedBatch.push(entry);
+      continue;
+    }
+    // "Insufficient shared support" can become valid after another placement,
+    // so it is deferred rather than flashed red. The failures retained here
+    // remain failures after any permutation of the accepted batch.
+    if (!rejectionIsOrderInvariant(candidate, evaluation)) continue;
+    if (![...acceptedBatch, ...rejectedBatch].every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
+    rejectedBatch.push(entry);
   }
-  return batch;
+  return [...acceptedBatch, ...rejectedBatch];
 }
 
 function refineCandidateTranslation(candidate) {
@@ -2222,7 +2235,7 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "search · off-lattice recursive covering", title: "Let overlapping higher-order parents vote, then branch", phase: "seed cluster",
-      caption: "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is a commuting batch: every displayed placement is valid in every permutation of that batch, while ambiguous residuals remain explicit tree branches.", badge: "search",
+      caption: "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is one maximal commuting frontier set: every displayed placement is valid in every permutation, while dependent residuals remain explicit tree branches.", badge: "search",
       decision: "Recursive consensus frontier initialized", copy: "The same frozen connection marking proposes the next scale. A frontier antichain is displayed together only after pairwise species and hard-core checks, plus a unique-new-support check for every accepted placement.",
       values: ["parent + φ(source−parent)", "overlap consensus", "finite GCTS state", "branch residual"],
     },
@@ -2350,7 +2363,8 @@ function performOffLatticeEvent() {
   });
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;
-  captionAction.textContent = `${batch.length} permutation-independent moves evaluated together: ${acceptedInBatch} placed (${freshInBatch} new atoms), ${rejectedInBatch} pruned.`;
+  captionAction.textContent = `${acceptedInBatch} order-independent placements shown together (${freshInBatch} new atoms)`
+    + `${rejectedInBatch ? ` · ${rejectedInBatch} invariant prunes flash red` : ""}.`;
   if (lastDecision) updateDecision(lastDecision);
   rebuildWorld();
   updateUI();
