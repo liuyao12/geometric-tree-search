@@ -127,9 +127,11 @@ const PHI = (1 + Math.sqrt(5)) / 2;
 const DEFAULT_REFERENCE_COUNT = 216;
 const ANALYSIS_WINDOW_COUNT = 256;
 const FRONTIER_PREVIEW = 28;
+const DISPLAY_BATCH_LIMIT = 8;
 const MAX_RULES_PER_PAIR = 28;
 const MERGE_TOLERANCE = .24;
 const COLLISION_TOLERANCE = .46;
+const COMMUTING_SITE_TOLERANCE = 1e-4;
 const SPATIAL_CELL = .52;
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
@@ -250,7 +252,7 @@ let rejectedDecisions = 0;
 let stackHistory = [];
 let markingCache = new Map();
 let actionCache = new Map();
-let currentCandidate = null;
+let currentCandidates = [];
 let lastFrame = performance.now();
 let eventAccumulator = 0;
 let nextAtomId = 1;
@@ -1839,6 +1841,38 @@ function candidateSites(candidate) {
   }));
 }
 
+function sitesCanCommute(firstSites, secondSites) {
+  for (const first of firstSites) for (const second of secondSites) {
+    const distance = first.p.distanceTo(second.p);
+    if (distance > COLLISION_TOLERANCE) continue;
+    if (first.species === second.species && distance <= COMMUTING_SITE_TOLERANCE) continue;
+    return false;
+  }
+  return true;
+}
+
+function batchRetainsNovelSites(entries) {
+  return entries.every((entry, index) => entry.evaluation.fresh.some((site) => !entries.some((other, otherIndex) =>
+    otherIndex !== index && other.sites.some((otherSite) => otherSite.species === site.species
+      && otherSite.p.distanceTo(site.p) <= COMMUTING_SITE_TOLERANCE))));
+}
+
+function commutingFrontierBatch(limit = DISPLAY_BATCH_LIMIT) {
+  const ranked = frontierCandidates.slice().sort((first, second) => dynamicCandidatePriority(second) - dynamicCandidatePriority(first));
+  const batch = [];
+  for (const candidate of ranked) {
+    const evaluation = evaluateCandidate(candidate);
+    const entry = { candidate, evaluation, sites: evaluation.sites };
+    if (!batch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
+    const trial = [...batch, entry];
+    const accepted = trial.filter((item) => item.evaluation.accepted);
+    if (accepted.length && !batchRetainsNovelSites(accepted)) continue;
+    batch.push(entry);
+    if (batch.length >= limit) break;
+  }
+  return batch;
+}
+
 function refineCandidateTranslation(candidate) {
   const corrections = [];
   candidateSites(candidate).forEach((site) => {
@@ -2074,7 +2108,7 @@ function resetCounters() {
   stackHistory = [];
   markingCache = new Map();
   actionCache = new Map();
-  currentCandidate = null;
+  currentCandidates = [];
   placedClusters = [];
   frontierCandidates = [];
   frontierCandidateKeys = new Set();
@@ -2188,8 +2222,8 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "search · off-lattice recursive covering", title: "Let overlapping higher-order parents vote, then branch", phase: "seed cluster",
-      caption: "Translated, rotated, and inflated parents continue past the known boundary. Compatible actions may attach together; their agreement becomes a consensus score while ambiguous residuals remain explicit tree branches.", badge: "search",
-      decision: "Recursive consensus frontier initialized", copy: "The same frozen connection marking proposes the next scale. Repeated independent proposals are forced-move candidates; low-consensus sites stay in the GCTS frontier for lookahead or rollback.",
+      caption: "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is a commuting batch: every displayed placement is valid in every permutation of that batch, while ambiguous residuals remain explicit tree branches.", badge: "search",
+      decision: "Recursive consensus frontier initialized", copy: "The same frozen connection marking proposes the next scale. A frontier antichain is displayed together only after pairwise species and hard-core checks, plus a unique-new-support check for every accepted placement.",
       values: ["parent + φ(source−parent)", "overlap consensus", "finite GCTS state", "branch residual"],
     },
   ];
@@ -2270,40 +2304,54 @@ function materializeCandidate(candidate, evaluation) {
 }
 
 function performOffLatticeEvent() {
-  eventIndex++;
-  let bestIndex = -1;
-  let bestPriority = -Infinity;
-  frontierCandidates.forEach((entry, index) => {
-    const priority = dynamicCandidatePriority(entry);
-    if (priority > bestPriority) { bestPriority = priority; bestIndex = index; }
-  });
-  const candidate = bestIndex >= 0 ? frontierCandidates.splice(bestIndex, 1)[0] : null;
-  if (!candidate) {
+  const batch = commutingFrontierBatch();
+  if (!batch.length) {
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
   }
-  frontierCandidateKeys.delete(candidate.key);
-  const evaluation = evaluateCandidate(candidate);
-  const state = stateForCandidate(candidate, evaluation);
-  currentCandidate = { p: candidate.position.clone(), accepted: evaluation.accepted, rotation: candidate.rotation.clone(), type: candidate.type };
-  if (!evaluation.accepted) {
-    rejectedCandidateKeys.add(candidate.key);
-    rejectedDecisions++;
-    appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
-      action: state.action, family: evaluation.reason });
-    captionAction.textContent = `${state.action} pruned: ${evaluation.reason}. The next branch remains on the frontier.`;
-    updateDecision({ eventType: "reject", accepted: false, state, resolver: "geometric + section prune", energy: candidate.markingScore,
-      interval: [candidate.markingScore, candidate.markingScore] });
-  } else {
+  const selectedKeys = new Set(batch.map(({ candidate }) => candidate.key));
+  frontierCandidates = frontierCandidates.filter((candidate) => !selectedKeys.has(candidate.key));
+  batch.filter(({ evaluation }) => !evaluation.accepted).forEach(({ candidate }) => rejectedCandidateKeys.add(candidate.key));
+  currentCandidates = batch.map(({ candidate, evaluation }) => ({
+    p: candidate.position.clone(), accepted: evaluation.accepted,
+    rotation: candidate.rotation.clone(), type: candidate.type,
+  }));
+  let acceptedInBatch = 0;
+  let rejectedInBatch = 0;
+  let freshInBatch = 0;
+  let lastDecision = null;
+  batch.forEach(({ candidate, evaluation: snapshotEvaluation }) => {
+    let evaluation = snapshotEvaluation;
+    let state = stateForCandidate(candidate, evaluation);
+    if (!snapshotEvaluation.accepted) {
+      rejectedDecisions++;
+      rejectedInBatch++;
+      appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
+        action: state.action, family: evaluation.reason });
+      lastDecision = { eventType: "reject", accepted: false, state, resolver: "geometric + section prune",
+        energy: candidate.markingScore, interval: [candidate.markingScore, candidate.markingScore] };
+      return;
+    }
+    // Re-evaluate against earlier members of this same batch. The batch builder
+    // guarantees that this remains admissible in every permutation; this pass
+    // converts any coincident same-species fresh sites into shared sites.
+    evaluation = evaluateCandidate(candidate);
+    state = stateForCandidate(candidate, evaluation);
+    if (!evaluation.accepted) throw new Error("Commuting frontier batch lost permutation invariance");
     const decision = cacheDecision(state, candidate.markingScore);
     const placement = materializeCandidate(candidate, evaluation);
     acceptedDecisions++;
+    acceptedInBatch++;
+    freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
       family: `${evaluation.merged.length} shared · ${evaluation.fresh.length} new` });
-    captionAction.textContent = `${state.action}: ${evaluation.merged.length} atoms merged on the overlap and ${evaluation.fresh.length} new atoms materialized.`;
-    updateDecision({ eventType: decision.reuse ? "reuse" : "accept", accepted: true, state, resolver: decision.resolver,
-      energy: candidate.markingScore, interval: decision.interval });
-  }
+    lastDecision = { eventType: decision.reuse ? "reuse" : "accept", accepted: true, state,
+      resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
+  });
+  selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
+  eventIndex += batch.length;
+  captionAction.textContent = `${batch.length} permutation-independent moves evaluated together: ${acceptedInBatch} placed (${freshInBatch} new atoms), ${rejectedInBatch} pruned.`;
+  if (lastDecision) updateDecision(lastDecision);
   rebuildWorld();
   updateUI();
 }
@@ -2414,10 +2462,10 @@ function rebuildWorld() {
     frontierMetric.textContent = String(targets.length);
   }
 
-  if (currentCandidate) {
-    const mesh = new THREE.Mesh(candidateGeometry, currentCandidate.accepted ? candidateMaterial : rejectedMaterial);
-    mesh.position.copy(currentCandidate.p);
-    if (currentCandidate.rotation) mesh.quaternion.copy(currentCandidate.rotation);
+  currentCandidates.forEach((candidate) => {
+    const mesh = new THREE.Mesh(candidateGeometry, candidate.accepted ? candidateMaterial : rejectedMaterial);
+    mesh.position.copy(candidate.p);
+    if (candidate.rotation) mesh.quaternion.copy(candidate.rotation);
     decisionGroup.add(mesh);
     if (markingToggle.checked) {
       const geometry = new THREE.IcosahedronGeometry(1.15, 0);
@@ -2425,11 +2473,11 @@ function rebuildWorld() {
         new THREE.WireframeGeometry(geometry),
         new THREE.LineBasicMaterial({ color: COLORS.violet, transparent: true, opacity: .18 }),
       );
-      domain.position.copy(currentCandidate.p);
-      if (currentCandidate.rotation) domain.quaternion.copy(currentCandidate.rotation);
+      domain.position.copy(candidate.p);
+      if (candidate.rotation) domain.quaternion.copy(candidate.rotation);
       decisionGroup.add(domain);
     }
-  }
+  });
   if (selectedCoordination?.centers.length) {
     const centerMarkers = new THREE.InstancedMesh(candidateGeometry, candidateMaterial, selectedCoordination.centers.length);
     selectedCoordination.centers.forEach((center, index) => {
@@ -2839,10 +2887,11 @@ function animate(now) {
       }
     }
   } else eventAccumulator = 0;
-  if (currentCandidate && decisionGroup.children[0]) {
-    decisionGroup.children[0].rotation.y += delta * 1.8;
-    decisionGroup.children[0].rotation.x += delta * .7;
-  }
+  if (currentCandidates.length) decisionGroup.children.forEach((child, index) => {
+    if (index % (markingToggle.checked ? 2 : 1) !== 0) return;
+    child.rotation.y += delta * 1.8;
+    child.rotation.x += delta * .7;
+  });
   clusterGroup.rotation.y += pipelineStage === 2 ? delta * .08 : 0;
   drawClusterGallery(now);
   renderer.render(scene, camera);

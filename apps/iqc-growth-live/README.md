@@ -85,9 +85,17 @@ candidate must:
 Accepted placements generate new frontier branches. Failed placements are
 pruned while other branches remain available. A soft cost for radius, search
 depth, and overrepresented angular sectors prevents one frequent attachment
-direction from starving the rest of the frontier. Multiple nonconflicting
-placements may therefore appear to grow concurrently, although decisions remain
-strict tree-search moves internally.
+direction from starving the rest of the frontier.
+
+One visual update is a bounded **commuting frontier batch**, not one search
+move. Candidates are drawn from the same frontier snapshot. A candidate joins
+the batch only when every cross-placement site is either safely separated or a
+coincident atom of the same species, and every accepted placement retains at
+least one new site not supplied by another member. These monotone local checks
+make all permutations of the displayed batch admissible. The engine still
+materializes them in a deterministic order internally, but that order does not
+select the result. Every attempted member gets its own marker, so a batch with
+several pruned moves displays several red markers simultaneously.
 
 With the marked policy, recurring overlap rules preload bounded section
 intervals and can avoid repeated local compatibility evaluation. Selecting the
