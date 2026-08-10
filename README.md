@@ -13,6 +13,11 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
+- [Held Circle Packing Search](./apps/circle-packing-search/)
+  Search corner-generated packings of circles with integer bends inside the
+  unit disk. The browser solver removes rotational and reflectional symmetry,
+  requires every circle to be locally held by surrounding contacts, and ships
+  with a catalog of verified positive examples.
 - [Materials Growth Lab: imported atomic structures and off-lattice growth](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
   A live 3D, multi-species GCTS laboratory for crystalline, quasiperiodic, and
   amorphous controls. Choose one to eight species from a mini periodic table to
