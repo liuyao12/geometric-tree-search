@@ -460,7 +460,7 @@ function updateRecursiveBenchmark() {
     }
   }
   recursiveCurve.replaceChildren();
-  const progress = pipelineStage === 4
+  const progress = pipelineStage === 3
     ? Math.max(0, Math.min(1, atoms.length / Math.max(referenceCount(), 1) - 1))
     : 0;
   const activeLevel = benchmark.curve.length ? Math.floor(progress * (benchmark.curve.length - 1)) : -1;
@@ -539,7 +539,7 @@ function formatDuration(seconds) {
 }
 
 function classificationSample() {
-  const source = pipelineStage < 4 ? referenceAtoms : atoms;
+  const source = pipelineStage < 3 ? referenceAtoms : atoms;
   if (source.length <= ANALYSIS_WINDOW_COUNT) return source;
   // Preserve a physically contiguous observation window. Sampling uniformly by
   // insertion order would tear apart neighbor shells as the frontier grows.
@@ -566,7 +566,7 @@ function translationClosureScore(source, basis) {
 
 function inferLiveOrder() {
   const source = classificationSample();
-  if (pipelineStage === 4 && source.length < 32) return {
+  if (pipelineStage === 3 && source.length < 32) return {
     order: "insufficient sample", structure: "—", symmetry: "—", confidence: 0,
     note: `Waiting for at least 32 live atoms; ${source.length} are currently available.`,
   };
@@ -581,7 +581,7 @@ function inferLiveOrder() {
   const best = matches[0];
   const bestCrystal = matches.find((match) => match.material.order === "crystal");
   const evidenceMatch = best.evidenceMatch;
-  const translationClosure = pipelineStage === 4 && detectedUnitCell
+  const translationClosure = pipelineStage === 3 && detectedUnitCell
     ? translationClosureScore(source, detectedUnitCell.basis) : 0;
   const sampleStrength = Math.max(0, Math.min(1, (source.length - 24) / 144));
   let confidence = evidenceMatch * (.48 + .52 * sampleStrength);
@@ -607,7 +607,7 @@ function inferLiveOrder() {
     structure = best.material.name;
     symmetry = "no global space group";
   }
-  const mode = pipelineStage < 4 ? "reference configuration" : "live reconstructed core";
+  const mode = pipelineStage < 3 ? "reference configuration" : "live reconstructed core";
   const result = {
     order, structure, symmetry, confidence,
     note: `${mode}: best RDF + coordination match across ${matches.length} prototypes${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
@@ -763,7 +763,7 @@ function calculateStructuralStats(source, spacing, periodic = false) {
 }
 
 function currentLiveStructure() {
-  const source = pipelineStage === 4
+  const source = pipelineStage === 3
     ? (atoms.length > ANALYSIS_WINDOW_COUNT ? [...atoms].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, ANALYSIS_WINDOW_COUNT) : atoms)
     : [];
   const key = `${pipelineStage}:${atoms.length}:${replayIndex}`;
@@ -775,8 +775,8 @@ function currentLiveStructure() {
 }
 
 function selectedCoordinationDetail() {
-  if (coordinationSelection === null || pipelineStage === 2) return null;
-  const structure = pipelineStage === 4
+  if (coordinationSelection === null || pipelineStage >= 2) return null;
+  const structure = pipelineStage === 3
     ? currentLiveStructure()
     : { source: atoms, stats: referenceStructuralStats };
   if (!structure.source.length || !structure.stats) return null;
@@ -813,7 +813,7 @@ function selectedCoordinationDetail() {
 }
 
 function selectCoordination(value) {
-  if (pipelineStage === 2 || (pipelineStage === 4 && replayIndex === 0)) return;
+  if (pipelineStage >= 2) return;
   coordinationSelection = coordinationSelection === value ? null : value;
   rebuildWorld();
   updateUI();
@@ -909,7 +909,7 @@ function renderTrainingStats() {
 
 function renderStructureStats() {
   if (!referenceStructuralStats) return;
-  if (pipelineStage === 3) {
+  if (pipelineStage === 2) {
     renderTrainingStats();
     return;
   }
@@ -919,7 +919,7 @@ function renderStructureStats() {
   coordTitle.innerHTML = "P(z), r<sub>c</sub> = 1.32a";
   rdfChart.setAttribute("aria-label", "Radial distribution function for known positions and live reconstruction");
   coordChart.setAttribute("aria-label", "Coordination number distribution for known positions and live reconstruction");
-  const liveWindowLabel = pipelineStage === 4 && atoms.length > ANALYSIS_WINDOW_COUNT ? "live central analysis window" : "live reconstruction";
+  const liveWindowLabel = pipelineStage === 3 && atoms.length > ANALYSIS_WINDOW_COUNT ? "live central analysis window" : "live reconstruction";
   setChartLegend(rdfLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel]]);
   setChartLegend(coordLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel], ["", "click z to show all current shells"]]);
   const { stats: live } = currentLiveStructure();
@@ -1132,7 +1132,7 @@ function inferTranslationCell(source) {
 function buildDetectedUnitCell() {
   clearGroup(unitCellGroup);
   unitCellBadge.hidden = true;
-  if (pipelineStage !== 4 || !detectedUnitCell) return;
+  if (pipelineStage !== 3 || !detectedUnitCell) return;
   const inference = inferLiveOrder();
   if (inference.order.includes("quasicrystal") || inference.order === "amorphous solid") return;
   const [a, b, c] = detectedUnitCell.basis;
@@ -2170,7 +2170,8 @@ function clearGroup(group) {
 function buildConfinement() {
   clearGroup(confinementGroup);
   confinementGroup.rotation.set(0, 0, 0);
-  const large = pipelineStage === 4;
+  if (pipelineStage === 3) return;
+  const large = false;
   const material = new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.36 });
   const shape = confinementSelect.value;
   if (shape === "box") {
@@ -2269,15 +2270,7 @@ function buildClusterOverlay() {
           : new THREE.SphereGeometry(1.25, 8, 5);
       addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
     });
-  } else if (pipelineStage === 3 && sectionModel) {
-    symbolCenters().forEach((center, index) => {
-      const cluster = learnedClusters.clusters[index];
-      const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.22)
-        : cluster.coordination >= 11 ? new THREE.IcosahedronGeometry(1.3, 0)
-          : new THREE.SphereGeometry(1.25, 8, 5);
-      addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
-    });
-    buildSectionHalos();
+    if (sectionModel) buildSectionHalos();
   }
 }
 
@@ -2323,7 +2316,8 @@ function resetCounters() {
 }
 
 function enterPipelineStage(index, options = {}) {
-  pipelineStage = Math.max(0, Math.min(4, index));
+  pipelineStage = Math.max(0, Math.min(3, index));
+  document.body.dataset.pipelineStage = String(pipelineStage);
   stageElapsed = 0;
   setPlaying(false);
   resetCounters();
@@ -2340,13 +2334,12 @@ function enterPipelineStage(index, options = {}) {
   trainedMarking = learnOverlapMarking(referenceAtoms);
   overlapGrammar = learnOverlapGrammar(referenceAtoms);
   sectionModel = learnSectionModel(referenceAtoms);
-  if (pipelineStage !== 3) trainingProgress = referenceCount();
+  if (pipelineStage !== 2) trainingProgress = referenceCount();
   if (pipelineStage >= 3 && policySelect.value === "marked") seedTrainedMarking();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
-  else if (pipelineStage === 3) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
   else initializeOffLatticeSearch();
-  if (pipelineStage < 4) rebuildSpatialIndex();
+  if (pipelineStage < 3) rebuildSpatialIndex();
   buildConfinement();
   clusterGroup.rotation.set(0, 0, 0);
   clusterGallery.hidden = pipelineStage !== 1;
@@ -2373,8 +2366,8 @@ function updatePipelineButtons() {
 }
 
 function frameStage() {
-  const large = pipelineStage === 4;
-  const prototypes = pipelineStage === 2 || pipelineStage === 3;
+  const large = pipelineStage === 3;
+  const prototypes = pipelineStage === 2;
   const target = new THREE.Vector3();
   controls.target.copy(target);
   camera.position.set(large ? 18 : prototypes ? 8 : 12.5, large ? 13 : prototypes ? 5.8 : 9.5, large ? 19 : prototypes ? 9 : 13.5);
@@ -2389,38 +2382,32 @@ function updateStageNarrative() {
   const trainingPoint = trainedMarking ? currentTrainingPoint() : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
   const narratives = [
     {
-      eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
+      eyebrow: "sample configuration · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
       caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no environment labels are given.`, badge: "input",
       decision: material.name, copy: `The learner receives ${referenceCount()} element-labelled positions. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.`,
       values: [material.elements.join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, "1 configuration"],
     },
     {
-      eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
+      eyebrow: "cluster identification · repeated colored point patterns", title: "Identify clusters that cover the sample", phase: `${clusterGalleryTypes().length} cover types`,
       caption: `${learnedCover.covered}/${referenceCount()} atoms are covered by ${learnedCover.placements.length} overlapping placements on the ${learnedCover.periodic ? "periodic quotient" : "finite window"}. Each card is one isometry class, never a second occurrence.`, badge: "learn",
       decision: "Exhaustive cluster cover computed", copy: "Element-resolved radial and angular descriptors define approximate isometry classes. A greedy overlap cover is audited atom by atom; any uncovered component is promoted to a residual cluster type.",
       values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${learnedCover.placements.length} placements`, `${learnedCover.residualTypes.length} residual types`],
     },
     {
-      eyebrow: "encoding · clusters of clusters", title: "Promote repeated overlaps into finite connection states", phase: `${overlapGrammar.rules.length} rules`,
-      caption: `${overlapGrammar.observations.toLocaleString()} directed overlaps are registered in SE(3). Compressed recurrent rules drive continuation; frozen one-off residual edges preserve exact known-window replay.`, badge: "encode",
-      decision: "Higher-order cluster states learned", copy: "A recurring parent/source connection is now a reusable cluster-of-clusters symbol. Its finite state transports across arbitrary rotations; separation is normalized before reuse at the next recursive scale.",
-      values: [`${clusterCount} local types`, `${overlapGrammar.rules.length} connection states`, `${overlapGrammar.recurring} recurring`, `${overlapGrammar.heldoutSupported} held-out supported`],
-    },
-    {
-      eyebrow: "training · recursive connection sections", title: "Freeze a bounded marking across hierarchy levels", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
+      eyebrow: "GCTS learning · connection sections", title: "Learn bounded markings from cluster overlaps", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
       caption: `${trainingPoint.samples}/${referenceCount()} centers processed · ${trainingPoint.overlaps.toLocaleString()} support overlaps · held-out mismatch ${trainingPoint.validationLoss.toFixed(3)}.`, badge: "train",
       decision: "Recursive marking training", copy: "Each local cluster begins with random directional ports. Observed higher-order connections shape the section; the resulting parent/source marking is frozen, rescaled, and evaluated on the next unseen cluster level.",
       values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.axes.length} signed ports`],
     },
     {
-      eyebrow: "search · off-lattice recursive covering", title: "Let overlapping higher-order parents vote, then branch", phase: "seed cluster",
-      caption: "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is one maximal commuting frontier set: every displayed placement is valid in every permutation, while dependent residuals remain explicit tree branches.", badge: "search",
-      decision: "Recursive consensus frontier initialized", copy: "The same frozen connection marking proposes the next scale. A frontier antichain is displayed together only after pairwise species and hard-core checks, plus a unique-new-support check for every accepted placement.",
+      eyebrow: "material growth · off-lattice covering", title: "Reconstruct the sample, then continue growing", phase: "seed cluster",
+      caption: "The learned connection markings drive one continuous reconstruction and continuation. Only atoms are drawn; optional cluster-of-cluster promotion remains an internal acceleration loop.", badge: "grow",
+      decision: "Material growth initialized", copy: "Overlapping parents still vote and dependent alternatives still branch internally, while the viewport stays focused on the resulting atomic positions.",
       values: ["parent + φ(source−parent)", "overlap consensus", "finite GCTS state", "branch residual"],
     },
   ];
   const item = narratives[pipelineStage];
-  eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "TRAIN", "SEARCH"][pipelineStage];
+  eventKind.textContent = ["SAMPLE", "CLUSTERS", "GCTS", "GROWTH"][pipelineStage];
   stageEyebrow.textContent = item.eyebrow;
   stageTitle.textContent = item.title;
   phaseReadout.textContent = item.phase;
@@ -2576,12 +2563,12 @@ function advanceMarkingTraining(batchSize = 12) {
 }
 
 function performEvent() {
-  if (pipelineStage === 3) {
+  if (pipelineStage === 2) {
     if (trainingProgress < referenceCount()) advanceMarkingTraining();
-    else enterPipelineStage(4, { play: pipelineAuto });
+    else enterPipelineStage(3, { play: pipelineAuto });
     return;
   }
-  if (pipelineStage < 4) {
+  if (pipelineStage < 3) {
     enterPipelineStage(pipelineStage + 1, { play: pipelineAuto });
     return;
   }
@@ -2595,7 +2582,8 @@ function rebuildWorld() {
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
   const dummy = new THREE.Object3D();
-  const selectedCoordination = selectedCoordinationDetail();
+  const growthStage = pipelineStage === 3;
+  const selectedCoordination = growthStage ? null : selectedCoordinationDetail();
   const selectedIds = selectedCoordination?.ids || null;
   const addInstances = (source, material, scale = 1) => {
     if (!source.length) return;
@@ -2620,7 +2608,7 @@ function rebuildWorld() {
     learnedClusters.clusters.forEach((_, cluster) => {
       addInstances(atoms.filter((atom, index) => learnedClusters.labels[index] === cluster), clusterMaterials[cluster], (atom) => elementScale(atom.species));
     });
-  } else if (pipelineStage === 3 && trainedMarking) {
+  } else if (pipelineStage === 2 && trainedMarking) {
     learnedClusters.clusters.forEach((_, cluster) => {
       const key = `m_C${cluster + 1}`;
       const selectedOut = markingSelection && markingSelection !== key;
@@ -2632,11 +2620,11 @@ function rebuildWorld() {
     });
   }
 
-  if (bondToggle.checked) {
+  if (bondToggle.checked && !growthStage) {
     const points = [];
     if (selectedCoordination?.centers.length) {
       selectedCoordination.edges.forEach(([center, neighbor]) => points.push(center.p, neighbor.p));
-    } else if (pipelineStage === 3 && trainedMarking) {
+    } else if (pipelineStage === 2 && trainedMarking) {
       learnedClusters.clusters.forEach((_, cluster) => {
         const family = `C${cluster + 1}`;
         const center = atoms.find((atom) => atom.family === family && atom.symbolCenter);
@@ -2645,7 +2633,7 @@ function rebuildWorld() {
     } else atoms.forEach((atom) => {
       if (atom.parent) points.push(atom.parent.p, atom.p);
     });
-    if (!selectedCoordination && pipelineStage < 4 && pipelineStage !== 3 && atoms.length <= 250) {
+    if (!selectedCoordination && pipelineStage < 2 && atoms.length <= 250) {
       for (let i = 0; i < atoms.length; i++) {
         for (let j = i + 1; j < atoms.length; j++) {
           const distance = atoms[i].p.distanceToSquared(atoms[j].p);
@@ -2656,24 +2644,15 @@ function rebuildWorld() {
     if (points.length) bondGroup.add(new THREE.LineSegments(
       new THREE.BufferGeometry().setFromPoints(points),
       new THREE.LineBasicMaterial({
-        color: selectedCoordination || pipelineStage === 3 ? COLORS.violet : 0x87afa5,
+        color: selectedCoordination || pipelineStage === 2 ? COLORS.violet : 0x87afa5,
         transparent: true,
-        opacity: selectedCoordination ? .9 : pipelineStage === 3 ? .38 : .2,
-        depthTest: pipelineStage !== 3,
+        opacity: selectedCoordination ? .9 : pipelineStage === 2 ? .38 : .2,
+        depthTest: pipelineStage !== 2,
       }),
     ));
   }
 
-  if (frontierToggle.checked && pipelineStage >= 4) {
-    const targets = [...frontierCandidates].sort((first, second) => second.priority - first.priority).slice(0, FRONTIER_PREVIEW);
-    if (targets.length) frontierGroup.add(new THREE.Points(
-      new THREE.BufferGeometry().setFromPoints(targets.map((target) => target.position)),
-      new THREE.PointsMaterial({ color: COLORS.mint, size: .085, transparent: true, opacity: .62, sizeAttenuation: true }),
-    ));
-    frontierMetric.textContent = String(targets.length);
-  }
-
-  currentCandidates.forEach((candidate) => {
+  if (!growthStage) currentCandidates.forEach((candidate) => {
     const mesh = new THREE.Mesh(candidateGeometry, candidate.accepted ? candidateMaterial : rejectedMaterial);
     mesh.position.copy(candidate.p);
     if (candidate.rotation) mesh.quaternion.copy(candidate.rotation);
@@ -2700,7 +2679,7 @@ function rebuildWorld() {
     centerMarkers.instanceMatrix.needsUpdate = true;
     decisionGroup.add(centerMarkers);
   }
-  buildDetectedUnitCell();
+  if (!growthStage) buildDetectedUnitCell();
 }
 
 function updateDecision(event) {
@@ -2738,13 +2717,8 @@ function updateUI() {
     oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = `${Math.round(learnedCover.covered / referenceCount() * 100)}%`; oracleDelta.textContent = `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.complete ? "complete" : "incomplete"}`;
     reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(learnedCover.residualTypes.length); reuseDelta.textContent = learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
   } else if (pipelineStage === 2) {
-    atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedClusters.clusters.length); atomDelta.textContent = "one per learned medoid";
-    frontierLabel.textContent = "SE(3) RULES"; frontierMetric.textContent = String(overlapGrammar.rules.length); frontierDelta.textContent = "arbitrary quaternion + translation";
-    oracleLabel.textContent = "PAIR OBSERVATIONS"; oracleMetric.textContent = overlapGrammar.observations.toLocaleString(); oracleDelta.textContent = `${overlapGrammar.recurring} rules recur`;
-    reuseLabel.textContent = "REPLAY GRAPH"; reuseMetric.textContent = `${overlapGrammar.replayReachable}/${referenceCount()}`; reuseDelta.textContent = `${overlapGrammar.reconstructionEdges.toLocaleString()} frozen observed edges · removed after certificate`;
-  } else if (pipelineStage === 3) {
     const point = currentTrainingPoint();
-    stageEyebrow.textContent = "training · recursive sections on cluster connections";
+    stageEyebrow.textContent = "GCTS learning · sections on cluster connections";
     stageTitle.textContent = trainingProgress < referenceCount() ? "Connection markings emerge on higher-order cluster states" : "Recursive GCTS marking frozen for transfer";
     decisionTitle.textContent = trainingProgress < referenceCount() ? "Fitting parent/source overlap consistency" : "Marked connections ready to rescale";
     decisionCopy.textContent = trainingProgress < referenceCount()
@@ -2761,8 +2735,8 @@ function updateUI() {
     energyValue.textContent = point.validationLoss.toFixed(4);
     resolverValue.textContent = `${sectionModel.axes.length} signed ports`;
   } else {
-    stageEyebrow.textContent = "search · recursive off-lattice covering";
-    stageTitle.textContent = "Transport parents, merge overlap votes, branch on residuals";
+    stageEyebrow.textContent = "material growth · off-lattice covering";
+    stageTitle.textContent = "Reconstruct the sample, then continue growing";
     phaseReadout.textContent = playing && growthDeadline
       ? `${placedClusters.length.toLocaleString()} clusters · ${formatDuration(growthTimeRemaining())} left`
       : `${atoms.length.toLocaleString()} atoms · ${placedClusters.length.toLocaleString()} clusters`;
@@ -2789,7 +2763,7 @@ function updateUI() {
 
 function renderLegend() {
   speciesLegend.replaceChildren();
-  if (pipelineStage === 3 && sectionModel) {
+  if (pipelineStage === 2 && sectionModel) {
     legendHeading.textContent = "Local marking sections";
     learnedClusters.clusters.forEach((cluster, index) => {
       const key = `m_C${index + 1}`;
@@ -2826,15 +2800,17 @@ function renderLegend() {
       row.append(swatch, document.createTextNode(symbol));
       speciesLegend.appendChild(row);
     });
-    const proposal = document.createElement("span");
-    const swatch = document.createElement("i"); swatch.className = "candidate";
-    proposal.append(swatch, document.createTextNode("Proposal"));
-    speciesLegend.appendChild(proposal);
+    if (pipelineStage !== 3) {
+      const proposal = document.createElement("span");
+      const swatch = document.createElement("i"); swatch.className = "candidate";
+      proposal.append(swatch, document.createTextNode("Proposal"));
+      speciesLegend.appendChild(proposal);
+    }
   }
 }
 
 function renderStack() {
-  if (pipelineStage === 3 && trainedMarking) {
+  if (pipelineStage === 2 && trainedMarking) {
     const visibleEdges = trainedMarking.edges.filter((edge) => edge.first < trainingProgress && edge.second < trainingProgress);
     stackDepth.textContent = `${visibleEdges.length.toLocaleString()} observations`;
     searchStack.replaceChildren();
@@ -2852,12 +2828,12 @@ function renderStack() {
     return;
   }
   const rows = stackHistory.slice(-6).reverse();
-  stackDepth.textContent = pipelineStage < 4 ? `stage ${pipelineStage + 1}/5` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
+  stackDepth.textContent = pipelineStage < 3 ? `stage ${pipelineStage + 1}/4` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
   searchStack.replaceChildren();
   if (!rows.length) {
     const row = document.createElement("li");
     row.className = "empty-row";
-    row.textContent = pipelineStage < 4 ? "Tree search begins after marking training." : "Accepted branches appear here.";
+    row.textContent = pipelineStage < 3 ? "Material growth begins after GCTS learning." : "Accepted branches appear here.";
     searchStack.appendChild(row);
     return;
   }
@@ -2879,7 +2855,7 @@ function selectMarkingDomain(domain) {
 }
 
 function renderMarkings() {
-  markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "rigid overlap rules" : pipelineStage === 3 ? "local section bundle" : "active section marking";
+  markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "GCTS rules + sections" : "active section marking";
   markingTable.replaceChildren();
   if (pipelineStage === 0) {
     markCount.textContent = "not learned";
@@ -2901,18 +2877,18 @@ function renderMarkings() {
     return [`m_C${index + 1}`, `loss ${sectionLossForCluster(index).toFixed(3)}`, `${count}/${cluster.count}`];
   });
   const activeEntries = [...cache.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 5).map(([key, value]) => [key, `${value.min.toFixed(2)}…${value.max.toFixed(2)}`, `×${value.count}`]);
-  const entries = pipelineStage < 2 ? learned : pipelineStage === 2 ? rigidRules : pipelineStage === 3 ? sectionEntries : activeEntries;
-  markCount.textContent = pipelineStage < 2 ? `${learned.length} learned` : pipelineStage === 2 ? `${overlapGrammar.rules.length} SE(3) rules` : pipelineStage === 3 ? `${sectionEntries.length} sections · rank ${sectionModel.channels}` : `${cache.size} active`;
+  const entries = pipelineStage < 2 ? learned : pipelineStage === 2 ? [...sectionEntries, ...rigidRules].slice(0, 10) : activeEntries;
+  markCount.textContent = pipelineStage < 2 ? `${learned.length} learned` : pipelineStage === 2 ? `${overlapGrammar.rules.length} rules · ${sectionEntries.length} sections` : `${cache.size} active`;
   if (!entries.length) {
     const p = document.createElement("p");
-    p.textContent = pipelineStage === 3 && trainingProgress === 0
+    p.textContent = pipelineStage === 2 && trainingProgress === 0
       ? "Press Play or Step to process atom-centered training samples."
       : policySelect.value === "marked" ? "No reusable local section was learned." : "This policy does not preload GCTS markings.";
     markingTable.appendChild(p); return;
   }
   entries.forEach(([key, interval, count]) => {
     const row = document.createElement("div"); row.className = "mark-row";
-    if (pipelineStage === 3) {
+    if (pipelineStage === 2 && key.startsWith("m_C")) {
       row.tabIndex = 0;
       row.setAttribute("role", "button");
       row.setAttribute("aria-label", `${key}; isolate its connection level sets`);
@@ -2933,15 +2909,15 @@ function renderMarkings() {
 
 function setPlaying(value) {
   playing = value;
-  if (playing && pipelineStage === 4) {
+  if (playing && pipelineStage === 3) {
     growthDeadline = performance.now() + growthDurationSeconds() * 1000;
     growthStartAtomCount = atoms.length;
     growthStopReason = "";
     slowFrameSeconds = 0;
   } else if (!playing) growthDeadline = 0;
   playIcon.textContent = playing ? "Ⅱ" : "▶";
-  playLabel.textContent = playing ? "Pause" : pipelineStage === 4 ? `Grow ${growthDurationSeconds() / 60} min` : "Play";
-  playButton.setAttribute("aria-label", playing ? "Pause pipeline" : pipelineStage === 4 ? `Grow explicit atoms for ${growthDurationSeconds() / 60} minute${growthDurationSeconds() === 60 ? "" : "s"}` : "Play pipeline");
+  playLabel.textContent = playing ? "Pause" : pipelineStage === 3 ? `Grow ${growthDurationSeconds() / 60} min` : "Play";
+  playButton.setAttribute("aria-label", playing ? "Pause pipeline" : pipelineStage === 3 ? `Grow explicit atoms for ${growthDurationSeconds() / 60} minute${growthDurationSeconds() === 60 ? "" : "s"}` : "Play pipeline");
   document.querySelector(".run-state").classList.toggle("running", playing);
   runStateText.textContent = playing ? `Stage ${pipelineStage + 1} running` : `Stage ${pipelineStage + 1} paused`;
 }
@@ -2967,7 +2943,7 @@ pipelineButton.addEventListener("click", () => {
   updatePipelineButtons();
 });
 playButton.addEventListener("click", () => {
-  if (playing && pipelineStage === 4) pauseGrowth("Paused by user.");
+  if (playing && pipelineStage === 3) pauseGrowth("Paused by user.");
   else setPlaying(!playing);
   updateUI();
 });
@@ -3030,7 +3006,7 @@ loadFixtureButton.addEventListener("click", async () => {
 });
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
 policySelect.addEventListener("change", () => {
-  if (pipelineStage === 4) enterPipelineStage(4);
+  if (pipelineStage === 3) enterPipelineStage(3);
   else {
     markingCache.clear(); actionCache.clear(); grammarDecisions = 0;
     if (policySelect.value === "marked" && pipelineStage >= 3 && trainedMarking) seedTrainedMarking();
@@ -3069,14 +3045,14 @@ function animate(now) {
   controls.autoRotate = rotateToggle.checked;
   controls.update();
   if (playing) {
-    if (pipelineStage === 3) {
+    if (pipelineStage === 2) {
       eventAccumulator += delta * Number(speedInput.value);
       while (eventAccumulator >= 1) {
         eventAccumulator--;
         performEvent();
-        if (pipelineStage !== 3 || !playing) break;
+        if (pipelineStage !== 2 || !playing) break;
       }
-    } else if (pipelineStage < 4) {
+    } else if (pipelineStage < 3) {
       stageElapsed += delta;
       if (stageElapsed >= 1.8) enterPipelineStage(pipelineStage + 1, { play: true });
     } else {

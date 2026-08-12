@@ -2,13 +2,19 @@
 
 A static GitHub Pages visualization of a multi-element, three-dimensional
 materials-GCTS pipeline. It begins with 216 element-labelled atomic positions
-and runs five computed stages:
+and presents four computed stages:
 
 1. ingest Cartesian positions in ångströms with no cluster labels;
 2. discover rotation-invariant local-environment clusters;
-3. register observed cluster overlaps and compress them into finite `SE(3)` rules;
-4. train bounded connection-valued GCTS sections in cluster-local frames;
-5. grow an explicit off-lattice covering by transporting and overlapping clusters.
+3. register observed cluster overlaps as finite `SE(3)` rules and train bounded
+   connection-valued GCTS sections in cluster-local frames;
+4. reconstruct and grow an explicit off-lattice covering by transporting and
+   overlapping clusters.
+
+Cluster-of-cluster promotion is an optional internal loop in material growth,
+not a visible pipeline stage. The growth viewport deliberately shows atoms
+only: confinement geometry, bonds, unit-cell guides, proposal flashes,
+frontier points, and marking halos are suppressed.
 
 The selectable inputs are an exact NaCl rocksalt positive control, a Cu-Zr
 metallic-glass surrogate, an Al-Cu-Fe icosahedral-approximant surrogate, and a
@@ -36,7 +42,7 @@ duplicate cards.
 
 ## Finite rigid overlap grammar
 
-The encoding stage assigns a deterministic local orthonormal frame to every
+The GCTS-learning stage assigns a deterministic local orthonormal frame to every
 cluster occurrence. For each pair of overlapping occurrences it computes the
 relative rigid transform `(R,t)` in the source cluster's coordinates and
 records the shared atomic support. Nearby transforms are clustered in `SE(3)`.
@@ -58,8 +64,9 @@ reconstruction is certified, so they cannot leak into continuation.
 
 ## GCTS connection sections
 
-The marking stage is separate from both cluster discovery and rule extraction.
-It learns one bounded connection section `m_C(x)` for each cluster type, with
+GCTS learning is separate from cluster discovery while combining rule
+extraction and marking training in one visible stage. It learns one bounded
+connection section `m_C(x)` for each cluster type, with
 support radius `1.9a`. Strong observed overlaps label compatible directional
 ports; directions without evidence supply unsupported/failed-port examples.
 On shared atoms the loss penalizes disagreement between the two transported
