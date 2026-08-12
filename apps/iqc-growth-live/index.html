@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260809-8">
+  <link rel="stylesheet" href="./style.css?v=20260812-1">
   <script type="importmap">
     {
       "imports": {
@@ -29,11 +29,10 @@
     </header>
 
     <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
-      <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>elements + coordinates in Å</span></button>
-      <button type="button" data-pipeline-stage="1"><small>02 · learn</small><strong>Cluster environments</strong><span>radial + angular descriptors</span></button>
-      <button type="button" data-pipeline-stage="2"><small>03 · encode</small><strong>Clusters of clusters</strong><span>finite SE(3) connection states</span></button>
-      <button type="button" data-pipeline-stage="3"><small>04 · train</small><strong>Recursive GCTS sections</strong><span>freeze markings across scales</span></button>
-      <button type="button" data-pipeline-stage="4"><small>05 · search</small><strong>Consensus growth</strong><span>overlapping parents vote + branch</span></button>
+      <button class="active" type="button" data-pipeline-stage="0"><small>01 · sample</small><strong>Sample configuration</strong><span>elements + coordinates in Å</span></button>
+      <button type="button" data-pipeline-stage="1"><small>02 · identify</small><strong>Cluster identification</strong><span>repeated colored point patterns</span></button>
+      <button type="button" data-pipeline-stage="2"><small>03 · learn</small><strong>GCTS learning</strong><span>typed, oriented overlap markings</span></button>
+      <button type="button" data-pipeline-stage="3"><small>04 · grow</small><strong>Material growth</strong><span>reconstruct and continue</span></button>
     </nav>
 
     <main class="lab-grid">
@@ -165,9 +164,9 @@
         <section>
           <p class="eyebrow">03 · layers</p>
           <div class="toggle-stack">
-            <label><input id="markingToggle" type="checkbox" checked><span>Marking domain</span></label>
-            <label><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
-            <label><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
+            <label class="scene-overlay-control"><input id="markingToggle" type="checkbox" checked><span>Marking domain</span></label>
+            <label class="scene-overlay-control"><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
+            <label class="scene-overlay-control"><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
             <label><input id="rotateToggle" type="checkbox" checked><span>Auto rotate</span></label>
           </div>
         </section>
@@ -259,6 +258,6 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260810-5"></script>
+  <script type="module" src="./app.js?v=20260812-1"></script>
 </body>
 </html>
