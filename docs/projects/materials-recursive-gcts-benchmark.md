@@ -1130,6 +1130,28 @@ next matched-quality experiment must rank *neighboring macro placements at a
 live frontier*, where several transformed clusters can genuinely compete and
 incoming overlap/connection ports can exclude future conflicts.
 
+That experiment now passes. `scripts/materials_gcts_frontier_search_ablation.py`
+reuses the actual recursive IQC frontier rather than a hypothetical candidate
+population. The marker is fit on the 507 -> 1,969 transition and frozen on
+1,969 -> 8,603. Every arm receives the same 66,110 candidate points and stops
+after finding the same 120 correct novel sites—the first pure maximum-score
+macro of the existing regenerative search.
+
+| ordering | proposal checks | immediate failed branches | precision at matched stop |
+| --- | ---: | ---: | ---: |
+| learned incoming GCTS marking | **120** | **0** | 100% |
+| overlap-vote baseline | 232 | 112 | 51.72% |
+| 30 train-label-shuffled marker refits | median 4,096; best 380 | median 3,976 | 2.93% at median |
+
+The learned marking cuts matched work by 1.93x versus overlap ordering and
+34.13x versus the shuffle median, and beats every shuffled refit. Held-out
+labels never enter fitting; shuffles preserve the proposal descriptors and
+positive count while destroying their association. This is the first causal
+GCTS result at the correct search interface. It does not make the exponential
+gate pass: it certifies one 120-site forced macro, while sustained recursive
+macro amplification and the third cumulatively guarded IQC hierarchy level
+remain open.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

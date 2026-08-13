@@ -379,4 +379,16 @@ result moves the causal GCTS question to the correct interface: ranking which
 neighboring macro placement to attempt at the frontier, not decomposing a
 parent whose full colored geometry is already known.
 
+That live-frontier gate is now implemented on the real regenerative IQC
+proposal set. A marker is trained on 507 -> 1,969 atoms and frozen on the
+1,969 -> 8,603 frontier. The learned marker, overlap-vote baseline, and 30
+within-training-label shuffled refits receive the identical 66,110 candidate
+points and stop after the same 120 correct novel sites. Learned incoming GCTS
+ordering checks exactly 120 proposals with zero failed branches; overlap votes
+check 232 with 112 failures, a 1.93x work reduction. Shuffles require a median
+4,096 checks (34.13x learned work), and the best requires 380. The learned
+marker beats every shuffle; no held-out label is used in training. This is a
+causal role for GCTS at the correct interface, though 120 sites are one forced
+frontier macro rather than exponential continuation.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
