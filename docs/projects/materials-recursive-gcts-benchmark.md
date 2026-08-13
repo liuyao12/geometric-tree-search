@@ -866,3 +866,13 @@ support 0.878, and reconstructs the clean 2,990-atom scaffold at 100% registered
 position/species precision and recall with 0.0031 Angstrom RMS error.  The pose
 ablation remains at 50%.  This is scaffold recovery, not prediction of future
 random defects or thermal displacements.
+
+`scripts/materials_gcts_2d_recursive_macro.py` promotes the learned two
+translation ports into a cluster-of-clusters address grammar.  Each level has
+four transformed references to the preceding level and therefore represents
+`4^l` motif occurrences without copying atoms.  Explicit level 6 exactly
+expands to the independent 2,990-atom held-out disk.  Level 9 represents
+1,048,576 atoms using ten node definitions.  Starting at the 746-atom
+seed-equivalent level requires five hierarchy promotions, versus 499,627 flat
+motif placements, a 99,925x symbolic action-count reduction.  Explicit output
+remains linear and is reported separately.
