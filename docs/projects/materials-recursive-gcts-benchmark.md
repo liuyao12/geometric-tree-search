@@ -1459,6 +1459,25 @@ geometric hypothesis learners. The next full-genericity gate is to express
 their payloads as one recursively nestable port/cover graph rather than three
 opcodes.
 
+That normalization is now implemented by `materials_gcts_port_cover_graph.py`.
+Every node has exactly the same schema:
+
+1. a finite binding domain and arity;
+2. an affine output map over the bound cluster centres;
+3. grouping by coincident output (the covering overlap);
+4. a bounded connection/consensus section;
+5. a color section; and
+6. child-node references for recursive promotion.
+
+The three controls compile to one self-recursive node each. Translation cover
+uses integer-cell bindings and an always section; anchor similarity uses typed
+unary bindings and its admitted-type section; IQC uses binary metric-port
+bindings and its learned port-pair section. The evaluator itself has no opcode
+or phase-family dispatch. Re-running the coordinate/species benchmark through
+this graph produces the identical six exact outputs above. This closes the
+common-interpreter gate; learning multi-node graph topology and dense generic
+IQC coverage remain open.
+
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
 all atom pairs; a brute-force regression certifies identical local colors.

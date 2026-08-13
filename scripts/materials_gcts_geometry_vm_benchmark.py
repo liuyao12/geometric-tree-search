@@ -11,7 +11,7 @@ from materials_gcts_cross_family_transfer_audit import _learn_anchor
 from materials_gcts_fibonacci_3d import PHI, make_input
 from materials_gcts_generic import benchmark_systems
 from materials_gcts_geometry_vm import (
-    compile_anchor, compile_overlap, compile_translation, execute)
+    compile_anchor, compile_overlap, compile_translation)
 from materials_gcts_icosahedral_modelset import (
     HIDDEN_UNIT, oracle_patch, oracle_patch_fast)
 from materials_gcts_metric_port_atlas import (
@@ -19,6 +19,12 @@ from materials_gcts_metric_port_atlas import (
     propose_with_metric_ports)
 from materials_gcts_parametric_recursive import discover_rule
 from materials_gcts_recursive_connections import local_cluster_types, point_key
+from materials_gcts_port_cover_graph import compile_instruction, execute_graph
+
+
+def _execute(instruction, state, *, level=1):
+    """Benchmark the normalized graph, not the legacy opcode dispatch."""
+    return execute_graph(compile_instruction(instruction), state, level=level)
 
 
 @dataclass(frozen=True)
@@ -44,6 +50,8 @@ class GeometryVmBenchmark:
     cases: tuple[VmCase, ...]
     interpreter_opcodes: tuple[str, ...]
     one_interpreter: bool
+    normalized_cover_graph: bool
+    every_graph_recursively_nested: bool
     family_labels_used: bool
     heldout_geometry_used_for_fitting: bool
     benchmark_passed: bool
@@ -58,7 +66,7 @@ def _score(state, target, emitted):
                    len(true) / len(novel))
 
 
-def _crystal():
+def _crystal(return_instruction=False):
     seed = next(item for item in benchmark_systems()
                 if item.name == "NaCl-rocksalt")
     rule = discover_rule(seed)
@@ -68,15 +76,16 @@ def _crystal():
     state = seed
     for _ in range(2):
         target = replicate(state)
-        result = execute(instruction, state)
+        result = _execute(instruction, state)
         reports.append(_score(state, target, result.emitted_sites))
         state = target
-    return VmCase(seed.name, instruction.opcode, tuple(reports),
+    case = VmCase(seed.name, instruction.opcode, tuple(reports),
                   all(item.precision == item.novel_recall == 1.0
                       for item in reports))
+    return (case, instruction) if return_instruction else case
 
 
-def _fibonacci():
+def _fibonacci(return_instruction=False):
     seed = make_input(9)
     edges = (1.1, 1.7, 2.4, 3.0)
     _, anchor = _learn_anchor(seed, PHI, edges)
@@ -85,12 +94,13 @@ def _fibonacci():
     for state_side, target_side in ((15, 24), (24, 39)):
         state, target = make_input(state_side), make_input(target_side)
         reports.append(_score(
-            state, target, execute(instruction, state).emitted_sites))
-    return VmCase(seed.name, instruction.opcode, tuple(reports),
+            state, target, _execute(instruction, state).emitted_sites))
+    case = VmCase(seed.name, instruction.opcode, tuple(reports),
                   all(item.precision == 1.0 for item in reports))
+    return (case, instruction) if return_instruction else case
 
 
-def _iqc():
+def _iqc(return_instruction=False):
     seed, _ = oracle_patch(3, 9.0)
     edges = (1.4, 2.1, 2.8, 3.81)
     types = local_cluster_types(seed.positions, seed.species, edges)
@@ -115,18 +125,29 @@ def _iqc():
         target, _ = oracle(
             target_bound, 9.0 * HIDDEN_UNIT ** (action + 1))
         reports.append(_score(
-            state, target, execute(
+            state, target, _execute(
                 instruction, state, level=action).emitted_sites))
-    return VmCase(seed.name, instruction.opcode, tuple(reports),
+    case = VmCase(seed.name, instruction.opcode, tuple(reports),
                   all(item.precision == 1.0 for item in reports))
+    return (case, instruction) if return_instruction else case
 
 
 def evaluate():
-    cases = (_crystal(), _iqc(), _fibonacci())
+    compiled = (_crystal(True), _iqc(True), _fibonacci(True))
+    cases = tuple(item[0] for item in compiled)
+    instructions = tuple(item[1] for item in compiled)
     opcodes = tuple(case.selected_opcode for case in cases)
     one = len(set(opcodes)) == 3
-    passed = one and all(case.exact_species_and_positions for case in cases)
-    return GeometryVmBenchmark(cases, opcodes, one, False, False, passed)
+    graphs = tuple(compile_instruction(item) for item in instructions)
+    normalized = len(graphs) == 3 and all(
+                     len(graph.nodes) == len(graph.root_nodes) == 1
+                     for graph in graphs)
+    recursive = all(graph.nodes[0].child_nodes == graph.root_nodes
+                    for graph in graphs)
+    passed = (one and normalized and recursive and
+              all(case.exact_species_and_positions for case in cases))
+    return GeometryVmBenchmark(
+        cases, opcodes, one, normalized, recursive, False, False, passed)
 
 
 def main():

@@ -539,6 +539,15 @@ have 100% position/species precision. The IQC opcode evaluates chemical labels
 with the learned bounded internal section; reusing the old port-majority color
 would have mislabeled 20/80 and 480/480 sites and is explicitly rejected.
 
+The remaining opcode distinction is now data, not control flow. Each selected
+instruction compiles to a `PortCoverGraph` node with the same fields: binding
+domain, affine output, coincident-proposal grouping, connection section, color
+section, and child-node references. Translation binds integer cover cells,
+anchor similarity binds one typed site, and overlap consensus binds two motif
+centres. All three graphs have a self-edge representing the recursive
+cluster-of-clusters rewrite. One relational evaluator reproduces the same six
+exact colored-site batches without inspecting an opcode or material family.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

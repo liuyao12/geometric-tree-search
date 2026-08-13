@@ -9,6 +9,7 @@ from materials_gcts_geometry_vm import (
     compile_anchor, execute, transform_instruction)
 from materials_gcts_geometry_vm_benchmark import evaluate
 from materials_gcts_recursive_connections import point_key
+from materials_gcts_port_cover_graph import compile_instruction, execute_graph
 
 
 def test_one_geometry_vm_executes_three_selected_markings() -> None:
@@ -16,10 +17,17 @@ def test_one_geometry_vm_executes_three_selected_markings() -> None:
     assert result.interpreter_opcodes == (
         "translation_cover", "overlap_section", "anchor_similarity")
     assert result.one_interpreter
+    assert result.normalized_cover_graph
+    assert result.every_graph_recursively_nested
     assert not result.family_labels_used
     assert not result.heldout_geometry_used_for_fitting
     assert all(case.exact_species_and_positions for case in result.cases)
     assert result.benchmark_passed
+
+
+def test_three_instructions_normalize_to_one_recursive_graph_schema() -> None:
+    result = evaluate()
+    assert all(case.exact_species_and_positions for case in result.cases)
 
 
 def test_vm_instruction_moves_with_rotated_translated_cloud() -> None:
@@ -54,5 +62,6 @@ def test_vm_instruction_moves_with_rotated_translated_cloud() -> None:
 
 if __name__ == "__main__":
     test_one_geometry_vm_executes_three_selected_markings()
+    test_three_instructions_normalize_to_one_recursive_graph_schema()
     test_vm_instruction_moves_with_rotated_translated_cloud()
     print("generic GCTS geometry VM: benchmark passed")
