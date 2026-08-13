@@ -70,6 +70,8 @@ class CommonRecursiveBenchmark:
     amorphous_deterministic_rule_rejected: bool
     shared_program_interface: bool
     family_specific_backends_remain: bool
+    specialized_ceiling_passed: bool
+    generic_cluster_grammar_passed: bool
     all_exact_two_level_certificates: bool
     all_reach_million_in_at_most_six_actions: bool
     all_minimum_growth_factors_above_three: bool
@@ -180,11 +182,16 @@ def evaluate() -> CommonRecursiveBenchmark:
     clean = not any(case.family_label_used or
                     case.heldout_atoms_used_for_learning or
                     case.physical_potential_used for case in cases)
+    specialized = (rejected and exact and fast_actions and exponential and
+                   compressed and causal and clean)
+    # The shared interface currently dispatches four specialized encoders.
+    # It is a ceiling/reference benchmark, not evidence that one generic
+    # cluster/port grammar learned every family. Keep the research gate red
+    # until the frozen generic grammar also executes unseen recursive growth.
+    generic = False
     return CommonRecursiveBenchmark(
-        cases, rejected, True, True, exact, fast_actions, exponential,
-        compressed, causal,
-        rejected and exact and fast_actions and exponential and compressed
-        and causal and clean)
+        cases, rejected, True, True, specialized, generic, exact,
+        fast_actions, exponential, compressed, causal, generic)
 
 
 def main() -> None:

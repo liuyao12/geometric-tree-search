@@ -491,6 +491,14 @@ hidden recall with exact species and position validation.
 
 ## Generic parametric dispatcher and million-atom curve
 
+> **Scoreboard correction.** This section is the specialized algorithmic
+> ceiling, not the final generic GCTS pass. The shared dispatcher selects among
+> translation quotient, internal section, substitution product, and planar
+> address encoders. Its exact growth is valuable evidence and a target for the
+> generic cluster/port grammar, but `family_specific_backends_remain = true`
+> now forces the common research gate to stay red. Only unseen recursive
+> execution by one frozen cluster/port grammar can turn that gate green.
+
 `scripts/materials_gcts_parametric_recursive.py` now exposes one discovery
 contract over an unlabeled colored point cloud.  The local recursive hierarchy
 is learned first and gates all later rules.  The NaCl control learns supports

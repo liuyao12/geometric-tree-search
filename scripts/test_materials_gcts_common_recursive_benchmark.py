@@ -30,8 +30,11 @@ def main() -> None:
     assert result.all_minimum_growth_factors_above_three
     assert result.all_action_compressions_above_ten_thousand
     assert result.all_markings_causal
-    assert result.benchmark_passed
-    print("common recursive crystal/quasicrystal benchmark: passed")
+    assert result.specialized_ceiling_passed
+    assert result.family_specific_backends_remain
+    assert not result.generic_cluster_grammar_passed
+    assert not result.benchmark_passed
+    print("specialized recursive ceiling passed; generic GCTS gate remains red")
     print(result)
 
 
