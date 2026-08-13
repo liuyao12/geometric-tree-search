@@ -167,18 +167,21 @@ const MATERIALS = {
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
   random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", order: "amorphous", symmetry: "no stable long-range group", audit: "local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble whose multiscale statistics match held-out large MD." },
   iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
+  moire: { name: "30° twisted hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "two hexagonal sheets · 3.33 Å separation", order: "quasicrystal", symmetry: "12-fold quasiperiodic order", audit: "2D diffraction + absence of common translations", intrinsicDimension: 2, note: "Each sheet is periodic, while their 30° union has no common translation lattice." },
   bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
 };
 const RECURSIVE_BENCHMARKS = {
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
   iqc: { hierarchy: [122, 18, 165], curve: [1969, 3081, 5057], mark: "persistent typed-pose ports", action: "466 → 954 → 3,460 symbols", speed: "4.227× proposals · 1.438× outward correct", gate: "red · marking transfer", status: "limit", note: "The generic learner now carries cluster type, rotation, translation, scale, and overlap derivations through two unseen compositions without re-clustering atoms. The first outward shell has 932 correct sites at 100% positional precision but 3.27% recall; the second has 1,340 correct and 2,580 false, 34.18% precision and 1.14% recall. Proposal amplification is therefore not yet exponential-quality growth.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% P / 55.0% R", recall: "85.4% P / 32.1% R", reduction: "57× → 185×" }, connection: { transfer: "932 → 1,340 outward-valid sites", states: "122 rigid templates · 18 productions · 165 relative-pose ports", consensusLabel: "persistent wave / marking operating points", consensus: [["wave 1", 100.0, 3.27], ["wave 2", 34.18, 1.14], ["mark 1", 100.0, 0.07], ["mark 2", 0.0, 0.0]], secondOrderLabel: "position and species fidelity by unseen wave", secondOrder: [["wave 1", "position", 100.0, 3.27, 66.52, 2.18], ["wave 2", "position", 34.18, 1.14, 14.29, 0.47], ["mark", "normalized", 100.0, 0.07, 100.0, 0.07]], frontier: { waves: [466, 954, 3460], exact: "persistent symbols survive", recall: "outward recall 3.27% → 1.14%", full: "no atom re-clustering after the two observed seed patches" }, macro: { stages: [["rigid templates", 122], ["productions", 18], ["pose ports", 165]], safe: "first unseen · 932/932 outward proposals valid", rejected: "second unseen · 1,340 valid / 2,580 false", crystal: "NaCl supplied-rule ceiling · 216→1,728→13,824 exact", iterated: "persistent state · 466→954→3,460 symbols", similarity: "mechanical recursion passes · exponential quality fails · hard-core audit pending" } } },
+  moire: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "two sheet poses · Δθ = 30°", action: "6 radius doublings → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The audited 2D atlas learns one B–N cluster isometry class in two sheet poses from 746 atoms. It exactly predicts an unseen 2,990-atom disk, preserves the 30° pose marking, and finds no common nonzero translation." },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
 RECURSIVE_BENCHMARKS.iqc.connection.macro.ceiling = "oracle reachability ceiling · greedy 21 maps 44.0% → pooled support vocabulary 94.2% → colored 1,000-support vocabulary 6,634/6,634 (100%) · complete representation, autonomous selection pending";
 RECURSIVE_BENCHMARKS.iqc.connection.macro.selection = "autonomous first-wave marking · vote-only 3,416/8,172 (41.8%) → learned action marks 3,631/8,172 (44.4%) · +215 correct / −215 false · pair identity 3,554 · pair reliability 3,492 · geometric pair 3,446 · continuous cluster 3,540 · individual action mark remains best";
 const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
+const clusterColor = (index) => CLUSTER_COLORS[index % CLUSTER_COLORS.length];
 const BALANCE_DIRECTIONS = [
   [0, 1, PHI], [0, -1, PHI], [0, 1, -PHI], [0, -1, -PHI],
   [1, PHI, 0], [-1, PHI, 0], [1, -PHI, 0], [-1, -PHI, 0],
@@ -599,9 +602,9 @@ function inferLiveOrder() {
     structure = best.material.name;
     symmetry = best.material.symmetry;
   } else if (accepted && best.material.order === "quasicrystal") {
-    order = confidence >= .74 ? "icosahedral quasicrystal" : "quasicrystal candidate";
+    order = confidence >= .74 ? (best.id === "moire" ? "2D quasiperiodic bilayer" : "icosahedral quasicrystal") : "quasicrystal candidate";
     structure = best.material.name;
-    symmetry = "icosahedral point symmetry";
+    symmetry = best.material.symmetry;
   } else if (accepted && best.material.order === "amorphous") {
     order = "amorphous solid";
     structure = best.material.name;
@@ -1041,6 +1044,7 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
       };
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
   }
+  if (scenario === "moire") return makeMoireReferenceConfiguration();
   const result = [];
   for (let ix = 0; ix < 6; ix++) for (let iy = 0; iy < 6; iy++) for (let iz = 0; iz < 6; iz++) {
     result.push(makeSyntheticReferenceSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length, scenario));
@@ -1048,7 +1052,35 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   return result.sort((a, b) => a.p.lengthSq() - b.p.lengthSq());
 }
 
+function makeMoireReferenceConfiguration() {
+  const result = [];
+  const bondScene = .92;
+  const lattice = Math.sqrt(3) * bondScene;
+  const a1 = new THREE.Vector2(lattice, 0);
+  const a2 = new THREE.Vector2(.5 * lattice, .5 * Math.sqrt(3) * lattice);
+  const basis = new THREE.Vector2().addVectors(a1, a2).multiplyScalar(1 / 3);
+  const layerGapScene = 3.33 / MATERIALS.moire.spacingA * bondScene;
+  [[0, -layerGapScene / 2], [Math.PI / 6, layerGapScene / 2]].forEach(([angle, z], layer) => {
+    const cosine = Math.cos(angle);
+    const sine = Math.sin(angle);
+    for (let i = -12; i <= 12; i++) for (let j = -12; j <= 12; j++) {
+      const origin = new THREE.Vector2(i * a1.x + j * a2.x, i * a1.y + j * a2.y);
+      [[new THREE.Vector2(), "B"], [basis, "N"]].forEach(([offset, species], basisIndex) => {
+        const raw = origin.clone().add(offset);
+        const p = new THREE.Vector3(cosine * raw.x - sine * raw.y,
+          sine * raw.x + cosine * raw.y, z);
+        const pA = p.clone().multiplyScalar(MATERIALS.moire.spacingA / bondScene);
+        result.push({ p, pA, species, family: "moire", layer,
+          sourceIndex: result.length, q: [i, j, layer + basisIndex * .25] });
+      });
+    }
+  });
+  return result.sort((first, second) => first.p.x ** 2 + first.p.y ** 2 - second.p.x ** 2 - second.p.y ** 2
+    || first.layer - second.layer || first.species.localeCompare(second.species)).slice(0, DEFAULT_REFERENCE_COUNT);
+}
+
 function currentCell() {
+  if (scenarioSelect.value === "moire") return null;
   if (scenarioSelect.value === "imported" && importedStructure?.cell) {
     return importedStructure.cell.map((vector) => new THREE.Vector3(...vector));
   }
@@ -1057,6 +1089,7 @@ function currentCell() {
 }
 
 function currentPbc() {
+  if (scenarioSelect.value === "moire") return [false, false, false];
   return scenarioSelect.value === "imported" && importedStructure ? importedStructure.pbc : [true, true, true];
 }
 
@@ -2250,7 +2283,7 @@ function buildClusterOverlay() {
       const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.0)
         : cluster.coordination >= 11 ? new THREE.IcosahedronGeometry(1.12, 0)
           : new THREE.SphereGeometry(1.05, 8, 5);
-      addClusterEnvelope(geometry, atom.p, CLUSTER_COLORS[index], 1 + Math.min(.22, cluster.spread * .035));
+      addClusterEnvelope(geometry, atom.p, clusterColor(index), 1 + Math.min(.22, cluster.spread * .035));
       const shellLines = [];
       referenceAtoms.forEach((neighbor) => {
         const distance = atom.p.distanceTo(neighbor.p) / referenceSpacing;
@@ -2258,7 +2291,7 @@ function buildClusterOverlay() {
       });
       if (shellLines.length) clusterGroup.add(new THREE.LineSegments(
         new THREE.BufferGeometry().setFromPoints(shellLines),
-        new THREE.LineBasicMaterial({ color: CLUSTER_COLORS[index], transparent: true, opacity: .72 }),
+        new THREE.LineBasicMaterial({ color: clusterColor(index), transparent: true, opacity: .72 }),
       ));
     });
   } else if (pipelineStage === 2) {
@@ -2267,7 +2300,7 @@ function buildClusterOverlay() {
       const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.22)
         : cluster.coordination >= 11 ? new THREE.IcosahedronGeometry(1.3, 0)
           : new THREE.SphereGeometry(1.25, 8, 5);
-      addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
+      addClusterEnvelope(geometry, center, clusterColor(index));
     });
   } else if (pipelineStage === 3 && sectionModel) {
     symbolCenters().forEach((center, index) => {
@@ -2275,7 +2308,7 @@ function buildClusterOverlay() {
       const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.22)
         : cluster.coordination >= 11 ? new THREE.IcosahedronGeometry(1.3, 0)
           : new THREE.SphereGeometry(1.25, 8, 5);
-      addClusterEnvelope(geometry, center, CLUSTER_COLORS[index]);
+      addClusterEnvelope(geometry, center, clusterColor(index));
     });
     buildSectionHalos();
   }

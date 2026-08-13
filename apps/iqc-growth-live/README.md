@@ -1,6 +1,6 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
-A static GitHub Pages visualization of a multi-element, three-dimensional
+A static GitHub Pages visualization of a multi-element, dimension-aware
 materials-GCTS pipeline. It begins with 216 element-labelled atomic positions
 and runs five computed stages:
 
@@ -11,8 +11,10 @@ and runs five computed stages:
 5. grow an explicit off-lattice covering by transporting and overlapping clusters.
 
 The selectable inputs are an exact NaCl rocksalt positive control, a Cu-Zr
-metallic-glass surrogate, an Al-Cu-Fe icosahedral-approximant surrogate, and a
-silicon BC8-like network. Element-dependent colors and radii are presentation
+metallic-glass surrogate, an Al-Cu-Fe icosahedral-approximant surrogate, a 30°
+twisted hBN bilayer, and a silicon BC8-like network. The hBN fixture is two
+intrinsically 2D sheets embedded in 3D, not a thin 3D periodic box.
+Element-dependent colors and radii are presentation
 encodings, not electron densities or physical potentials.
 
 ## Environment discovery
