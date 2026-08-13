@@ -1264,6 +1264,24 @@ held-out geometry would defeat the purpose. The execution gate also remains
 red: recognizing a rigid distance graph is not equivalent to recovering a
 proper SE(3) pose from frontier correspondences and emitting its children.
 
+### Causal incoming-port ablation
+
+The first marking test deliberately exposes only the already-grown side of a
+spherical frontier. For a proposed center, its key is the bounded multiset of
+species/type and quantized center distances for smaller-radius neighbors. The
+outward child-distance graph is the label, never an input. Fitting uses only
+the 28,211-atom inner configuration; held-out geometry is scoring-only.
+
+At level 1, 285 of 2,048 deterministic held-out parents have a recurring frozen
+incoming context. On this identical matched subset, the parent-color modal
+baseline selects 31 exact outward productions, the learned marking selects
+104, and 30 within-parent label-shuffled refits range from 26 to 44 (median
+35.5). The learned marking therefore beats every equal-capacity shuffle in
+this ablation. However, coverage is only 13.9%, and levels 2 and 3 have no
+exactly recurring incoming contexts. The overall gate stays red until a
+symmetry-quotiented port representation transfers at every recursive level and
+drives proper-pose execution at matched output quality.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives

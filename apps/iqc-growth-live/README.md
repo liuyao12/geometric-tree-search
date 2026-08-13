@@ -434,6 +434,17 @@ This demonstrates why the transferable color must be augmented by a bounded
 incoming-port GCTS marking. Production execution is separately red because
 recognizing a distance graph does not recover a proper pose or materialize it.
 
+A first causal incoming-port ablation now separates the already-grown side of
+the frontier from the proposed outward production. The marking contains only
+the species/type and quantized center distance of smaller-radius neighbors; it
+cannot inspect future atoms. Of 2,048 held-out level-1 parents, 285 have a
+training-supported `(parent color, incoming marking)`. The learned marking
+selects 104 exact outward productions on this matched subset, versus 31 for the
+parent-only modal rule and at most 44 across 30 within-parent label-shuffled
+refits. The effect is therefore not explained by parent-class frequency, but
+13.9% context coverage is too low and exact contexts do not transfer at levels
+2–3. This is a positive ablation, not a passed growth benchmark.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for
