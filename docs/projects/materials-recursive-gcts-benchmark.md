@@ -1428,8 +1428,36 @@ The competition also includes the translation-quotient hypothesis. On the
 216-site NaCl cloud it is selected from colored point geometry and emits the
 exact 1,728- and 13,824-site continuations. Crystal, icosahedral, and
 substitution-quasiperiodic systems therefore share one hypothesis-selection
-interface and all pass two unseen levels. Their executors remain distinct;
-unifying those into one port/cover interpreter is still the larger red gate.
+interface and all pass two unseen levels. The following geometry VM removes
+the family dispatch from their coordinate/species execution.
+
+### Generic colored-point geometry VM
+
+The three selected hypotheses now compile to one declarative execution
+contract. A `translation_cover`, `anchor_similarity`, or `overlap_section`
+instruction consumes a colored point cloud and emits a set of new
+species-labelled Cartesian sites. State merging, deduplication, and scoring no
+longer dispatch on a material family.
+
+| selected instruction | unseen level 1 | unseen level 2 | position/species precision |
+| --- | ---: | ---: | ---: |
+| NaCl translation cover | 1,512 | 12,096 | 100% / 100% |
+| IQC overlap section | 80 | 1,254 | 100% / 100% |
+| Fibonacci anchor similarity | 2,090 | 7,222 | 100% / 100% |
+
+This audit exposed and fixed an important hidden failure. The earlier IQC
+coordinate benchmark reused the majority species attached to a seed port; it
+correctly colored only 60/80 first-scale sites and 0/480 second-scale sites.
+The VM instead evaluates the learned bounded internal color section at every
+accepted endpoint. No oracle species enters execution, and all 1,334 accepted
+IQC sites are now chemically correct. A rigid-motion regression also verifies
+that a compiled instruction moves with its cloud within the declared 1e-4
+congruence tolerance.
+
+The VM is a shared interpreter, but its three compiler adapters remain distinct
+geometric hypothesis learners. The next full-genericity gate is to express
+their payloads as one recursively nestable port/cover graph rather than three
+opcodes.
 
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning

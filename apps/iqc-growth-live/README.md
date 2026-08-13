@@ -527,7 +527,17 @@ The same competition includes the translation-quotient hypothesis and selects
 it for the NaCl crystal from its colored point geometry. It emits 1,728 and
 13,824 exact sites over two unseen levels. Thus crystal, icosahedral, and
 substitution-quasiperiodic controls now enter one family-blind hypothesis
-interface, even though each selected rule still has a specialized executor.
+interface. Their selected markings are compiled to the shared interpreter
+described next.
+
+That executor caveat is now narrowed. Translation cover, fixed-anchor
+similarity, and overlap-port consensus compile to three opcodes in one geometry
+VM. Every opcode consumes a colored point cloud and emits a set of new colored
+sites. Through that same interpreter, NaCl emits 1,512 and 12,096 exact novel
+sites; IQC emits 80 and 1,254; Fibonacci emits 2,090 and 7,222. All six outputs
+have 100% position/species precision. The IQC opcode evaluates chemical labels
+with the learned bounded internal section; reusing the old port-majority color
+would have mislabeled 20/80 and 480/480 sites and is explicitly rejected.
 
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
