@@ -358,4 +358,15 @@ next learner must freeze its scale, bins, type maps, promoted colors, and
 production/marking tables on the training side and transform the held-out side
 without regrouping or renumbering types.
 
+The new spatially indexed frozen encoder now performs that transform. It fits
+the nearest-neighbour scale, species map, three signature dictionaries,
+promoted-color maps, and unknown sentinels on training centres only. Across
+the disjoint guard, 100% of held-out NaCl and IQC centre signatures occur in
+the frozen dictionaries at all three levels, with no held-out refit. This does
+not yet make the recursive path pass: restricting the next level to four
+promoted colors retains only 74.57% then 24.48% of NaCl held-out centres and
+15.39% then 33.95% of IQC centres. The result isolates the next problem: the
+vocabulary transfers, but the fixed-width promoted state needs an MDL-selected
+multi-color representation rather than a hard-coded top-four bottleneck.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

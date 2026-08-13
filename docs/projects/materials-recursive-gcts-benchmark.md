@@ -1094,6 +1094,22 @@ radius, proving that training and held-out domains cannot share an atom. This
 fixture now blocks random overlapping-occurrence splits from becoming the
 acceptance result.
 
+`scripts/materials_gcts_frozen_hierarchy.py` supplies the first train-only
+encoder/transform split. A spatial index replaces the quadratic full distance
+table for the 13,824/8,603-site clouds. The training half alone fixes nearest-
+neighbor scale, species colors, three rotation-invariant signature maps, the
+promoted-color maps, and an unknown sentinel. Transforming the disjoint half
+finds 100% of both NaCl and IQC signatures in the frozen dictionary at every
+level, without regrouping or type renumbering.
+
+That success is intentionally narrower than recursive growth. The current
+hard-coded top-four promotion retains 98.41%, 74.57%, and 24.48% of held-out
+NaCl centres, but only 17.94%, 15.39%, and 33.95% of held-out IQC centres. Thus
+the geometric vocabulary transfers, while the compressed recursive state does
+not yet cover enough IQC context. The next optimization is an MDL-selected
+promotion budget evaluated against this frozen gate, followed by frozen
+production and incoming-port marking transfer.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

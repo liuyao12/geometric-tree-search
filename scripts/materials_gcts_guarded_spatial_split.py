@@ -111,6 +111,22 @@ def _case(configuration: AtomicConfiguration) -> GuardedCase:
         all(item.domains_provably_disjoint for item in levels))
 
 
+def guarded_center_indices(configuration: AtomicConfiguration, level: int,
+                           side: str) -> Tuple[int, ...]:
+    """Return the predeclared train/held-out centers for one hierarchy level."""
+    if level not in (1, 2, 3) or side not in ("train", "heldout"):
+        raise ValueError("level must be 1..3 and side train or heldout")
+    points = configuration.positions
+    center = _centroid(points)
+    scale = _sampled_nearest_scale(points)
+    guarded = scale * (1.08 * 1.85 ** (level - 1) + .72)
+    outer_radius = max(math.dist(point, center) for point in points)
+    sign = -1.0 if side == "train" else 1.0
+    return tuple(index for index, point in enumerate(points)
+                 if sign * _projection(point, center) >= guarded and
+                 math.dist(point, center) <= outer_radius - guarded)
+
+
 def evaluate() -> GuardedSpatialBenchmark:
     crystal = next(item for item in benchmark_systems()
                    if item.name == "NaCl-rocksalt")
