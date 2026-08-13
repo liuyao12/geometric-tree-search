@@ -73,6 +73,29 @@ def _proposal(parent: Point, source: Point, scale: float) -> Point:
                  for axis in range(3))  # type: ignore[return-value]
 
 
+def _nearby_pairs(
+        positions: Sequence[Point], parents: Sequence[int],
+        maximum_distance: float):
+    """Yield bounded centre pairs without the previous all-pairs scan."""
+    if maximum_distance <= 0:
+        return
+    inverse = 1.0 / maximum_distance
+    grid = defaultdict(list)
+    for index, point in enumerate(positions):
+        cell = tuple(math.floor(value * inverse) for value in point)
+        grid[cell].append(index)
+    for parent in parents:
+        point = positions[parent]
+        cell = tuple(math.floor(value * inverse) for value in point)
+        for offset in itertools.product((-1, 0, 1), repeat=3):
+            neighbor_cell = tuple(cell[axis] + offset[axis]
+                                  for axis in range(3))
+            for source in grid.get(neighbor_cell, ()):
+                if parent != source and math.dist(
+                        point, positions[source]) <= maximum_distance + 1e-9:
+                    yield parent, source
+
+
 def fit_metric_port_atlas(
         positions: Sequence[Point], cluster_types: Sequence[LocalClusterType],
         target_positions: Iterable[Point], scale: float, *,
@@ -129,30 +152,32 @@ def propose_with_metric_ports(
     mapped = map_to_prototypes(cluster_types, atlas.prototypes)
     parents = tuple(range(len(positions)) if parent_indices is None
                     else parent_indices)
+    maximum_distance = max((port[2] for port in atlas.accepted_ports),
+                           default=0.0) * level_scale + (
+                               10 ** -atlas.distance_digits) * level_scale
     votes: Counter[Point] = Counter()
     colors = defaultdict(Counter)
     supporting_centers = defaultdict(set)
     actions = 0
-    for parent in parents:
-        for source, source_point in enumerate(positions):
-            if parent == source:
-                continue
-            port = (mapped[parent], mapped[source], round(
-                math.dist(positions[parent], source_point) / level_scale,
-                atlas.distance_digits))
-            if port not in atlas.accepted_ports:
-                continue
-            actions += 1
-            proposed = point_key(_proposal(
-                positions[parent], source_point, atlas.scale))
-            votes[proposed] += 1
-            supporting_centers[proposed].update((parent, source))
-            evidence = atlas.target_color_evidence.get(port)
-            if evidence:
-                maximum = max(evidence.values())
-                selected = min(color for color, count in evidence.items()
-                               if count == maximum)
-                colors[proposed][_restore_color(selected)] += 1
+    for parent, source in _nearby_pairs(
+            positions, parents, maximum_distance):
+        source_point = positions[source]
+        port = (mapped[parent], mapped[source], round(
+            math.dist(positions[parent], source_point) / level_scale,
+            atlas.distance_digits))
+        if port not in atlas.accepted_ports:
+            continue
+        actions += 1
+        proposed = point_key(_proposal(
+            positions[parent], source_point, atlas.scale))
+        votes[proposed] += 1
+        supporting_centers[proposed].update((parent, source))
+        evidence = atlas.target_color_evidence.get(port)
+        if evidence:
+            maximum = max(evidence.values())
+            selected = min(color for color, count in evidence.items()
+                           if count == maximum)
+            colors[proposed][_restore_color(selected)] += 1
     return MetricPortProposals(
         votes, dict(colors),
         {point: frozenset(centers) for point, centers in
@@ -169,20 +194,21 @@ def fit_port_pair_section(
     targets = {point_key(point) for point in target_positions}
     parents = tuple(range(len(positions)) if parent_indices is None
                     else parent_indices)
+    maximum_distance = max((port[2] for port in atlas.accepted_ports),
+                           default=0.0) + 10 ** -atlas.distance_digits
     ports_by_target = defaultdict(Counter)
-    for parent in parents:
-        for source, source_point in enumerate(positions):
-            if parent == source:
-                continue
-            port = (mapped[parent], mapped[source], round(
-                math.dist(positions[parent], source_point),
-                atlas.distance_digits))
-            if port not in atlas.accepted_ports:
-                continue
-            proposed = point_key(_proposal(
-                positions[parent], source_point, atlas.scale))
-            if proposed in targets:
-                ports_by_target[proposed][port] += 1
+    for parent, source in _nearby_pairs(
+            positions, parents, maximum_distance):
+        source_point = positions[source]
+        port = (mapped[parent], mapped[source], round(
+            math.dist(positions[parent], source_point),
+            atlas.distance_digits))
+        if port not in atlas.accepted_ports:
+            continue
+        proposed = point_key(_proposal(
+            positions[parent], source_point, atlas.scale))
+        if proposed in targets:
+            ports_by_target[proposed][port] += 1
     support = Counter()
     for ports in ports_by_target.values():
         unique = sorted(ports, key=repr)
@@ -203,19 +229,21 @@ def pair_section_sites(
     mapped = map_to_prototypes(cluster_types, atlas.prototypes)
     parents = tuple(range(len(positions)) if parent_indices is None
                     else parent_indices)
+    maximum_distance = max((port[2] for port in atlas.accepted_ports),
+                           default=0.0) * level_scale + (
+                               10 ** -atlas.distance_digits) * level_scale
     ports_by_target = defaultdict(Counter)
-    for parent in parents:
-        for source, source_point in enumerate(positions):
-            if parent == source:
-                continue
-            port = (mapped[parent], mapped[source], round(
-                math.dist(positions[parent], source_point) / level_scale,
-                atlas.distance_digits))
-            if port not in atlas.accepted_ports:
-                continue
-            proposed = point_key(_proposal(
-                positions[parent], source_point, atlas.scale))
-            ports_by_target[proposed][port] += 1
+    for parent, source in _nearby_pairs(
+            positions, parents, maximum_distance):
+        source_point = positions[source]
+        port = (mapped[parent], mapped[source], round(
+            math.dist(positions[parent], source_point) / level_scale,
+            atlas.distance_digits))
+        if port not in atlas.accepted_ports:
+            continue
+        proposed = point_key(_proposal(
+            positions[parent], source_point, atlas.scale))
+        ports_by_target[proposed][port] += 1
     accepted = set()
     for proposed, ports in ports_by_target.items():
         unique = sorted(ports, key=repr)

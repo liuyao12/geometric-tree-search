@@ -16,6 +16,7 @@ consensus score for the covering/tree search.
 
 from __future__ import annotations
 
+import itertools
 import math
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -156,15 +157,31 @@ def local_cluster_types(
         raise ValueError("radial edges must be strictly increasing")
     color_keys = tuple(sorted({repr(color) for color in colors}))
     encoded_colors = tuple(repr(color) for color in colors)
+    maximum_edge = edges[-1]
+    inverse = 1.0 / maximum_edge
+    grid = defaultdict(list)
+    for index, point in enumerate(positions):
+        cell = tuple(math.floor(value * inverse) for value in point)
+        grid[cell].append(index)
     result = []
     for center_index, center in enumerate(positions):
-        counts = []
-        for color in color_keys:
-            separations = [math.dist(center, neighbor)
-                           for index, neighbor in enumerate(positions)
-                           if index != center_index and encoded_colors[index] == color]
-            counts.extend(sum(separation <= edge for separation in separations)
-                          for edge in edges)
+        counts_by_color = {
+            color: [0 for _ in edges] for color in color_keys}
+        cell = tuple(math.floor(value * inverse) for value in center)
+        for offset in itertools.product((-1, 0, 1), repeat=3):
+            neighbor_cell = tuple(cell[axis] + offset[axis]
+                                  for axis in range(3))
+            for index in grid.get(neighbor_cell, ()):
+                if index == center_index:
+                    continue
+                separation = math.dist(center, positions[index])
+                if separation > maximum_edge:
+                    continue
+                color_counts = counts_by_color[encoded_colors[index]]
+                for edge_index, edge in enumerate(edges):
+                    color_counts[edge_index] += separation <= edge
+        counts = [count for color in color_keys
+                  for count in counts_by_color[color]]
         result.append(LocalClusterType(
             encoded_colors[center_index], tuple(counts)))
     return tuple(result)

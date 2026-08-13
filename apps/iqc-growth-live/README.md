@@ -513,6 +513,14 @@ scales. No held-out geometry chooses the thresholds. This is a genuine
 clusters-of-clusters exponential-style certificate, but it is sparse (1.21%
 and 1.69% novel recall) and is not yet a generic million-site rollout.
 
+A cross-family audit now prevents that result from being mistaken for a
+universal marking. A fixed-anchor similarity section learned on the 729-site
+3-D Fibonacci product emits 2,090 and then 7,222 exact novel sites at two
+unseen scales. The IQC port-pair section and this anchor section are both
+successful, but currently selected separately. Until a train-only,
+family-blind selector chooses the right finite marking, the shared generic
+gate remains red.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for
