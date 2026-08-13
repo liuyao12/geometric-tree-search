@@ -162,6 +162,9 @@ def layered_hexagonal_configuration(
     lattice_constant: float = 2.50,
     sheet_separation: float = 7.0,
     global_rotation: bool = False,
+    in_plane_deformation: Tuple[Tuple[float, float],
+                                Tuple[float, float]] = ((1.0, 0.0),
+                                                       (0.0, 1.0)),
 ) -> AtomicConfiguration:
     """Generate finite periodic sheets with an arbitrary colored 3D motif.
 
@@ -183,8 +186,13 @@ def layered_hexagonal_configuration(
                 for fraction1, fraction2, normal_offset, chemical in sheet_basis:
                     x = (i + fraction1) * a1[0] + (j + fraction2) * a2[0]
                     y = (i + fraction1) * a1[1] + (j + fraction2) * a2[1]
-                    rotated = (cosine * x - sine * y,
-                               sine * x + cosine * y)
+                    deformed = (
+                        in_plane_deformation[0][0] * x +
+                        in_plane_deformation[0][1] * y,
+                        in_plane_deformation[1][0] * x +
+                        in_plane_deformation[1][1] * y)
+                    rotated = (cosine * deformed[0] - sine * deformed[1],
+                               sine * deformed[0] + cosine * deformed[1])
                     if rotated[0] ** 2 + rotated[1] ** 2 <= radius ** 2 + 1e-9:
                         positions.append((rotated[0], rotated[1],
                                           sheet_z + normal_offset))
@@ -515,14 +523,16 @@ def evaluate_case(
     global_rotation: bool,
     seed_radius: float = 18.0,
     heldout_radius: float = 36.0,
+    deformation: Tuple[Tuple[float, float],
+                       Tuple[float, float]] = ((1.0, 0.0), (0.0, 1.0)),
 ) -> GenericPlanarCase:
     seed = layered_hexagonal_configuration(
         name + "-seed", seed_radius, basis, angles,
-        global_rotation=global_rotation)
+        global_rotation=global_rotation, in_plane_deformation=deformation)
     atlas = learn_planar_atlas(seed)
     heldout = layered_hexagonal_configuration(
         name + "-heldout", heldout_radius, basis, angles,
-        global_rotation=global_rotation)
+        global_rotation=global_rotation, in_plane_deformation=deformation)
     predicted = grow(atlas, heldout_radius)
     precision, recall, chemistry = _score(predicted, heldout)
     ablated = grow(atlas, heldout_radius,
@@ -557,6 +567,9 @@ def evaluate() -> Tuple[GenericPlanarCase, ...]:
         evaluate_case("Janus-MoSSe-13deg-bilayer", janus,
                       (0.0, math.radians(13.0)), True,
                       seed_radius=16.0, heldout_radius=32.0),
+        evaluate_case("strained-hBN-17deg-bilayer", hbn,
+                      (0.0, math.radians(17.0)), True,
+                      deformation=((1.035, .045), (-.018, .972))),
     )
 
 

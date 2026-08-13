@@ -854,6 +854,7 @@ component.
 | globally rotated graphene-like monolayer | 373 -> 1,495 | 1 x C2 | 1,122 | 100% / 100% |
 | globally rotated 30-degree hBN-like bilayer | 746 -> 2,990 | 2 x BN | 1,122 | 100% / 100% |
 | globally rotated 13-degree Janus MoSSe-like bilayer | 878 -> 3,578 | 2 x MoSSe | 1,350 | 100% / 100% |
+| globally rotated, anisotropically strained 17-degree hBN-like bilayer | 748 -> 2,990 | 2 x BN | 1,121 | 100% / 100% |
 
 Keeping only one pose per motif-isometry class leaves both bilayers at exactly
 50% recall; restoring the learned cluster-of-clusters pose marking restores
