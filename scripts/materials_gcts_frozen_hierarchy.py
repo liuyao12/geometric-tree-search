@@ -36,6 +36,7 @@ class FrozenHierarchyEncoder:
     species_labels: dict[str, int]
     levels: Tuple[FrozenLevelEncoder, ...]
     maximum_promoted_types: int
+    promotion_coverage_target: float
 
 
 @dataclass(frozen=True)
@@ -47,6 +48,7 @@ class FrozenTransferLevel:
     known_heldout_fraction: float
     heldout_promoted_fraction: float
     frozen_types: int
+    promoted_types: int
     heldout_refit_used: bool
 
 
@@ -142,7 +144,8 @@ def _all_signatures(points, labels, index, radius, descriptor_bin, angle_bin):
 
 
 def fit_frozen_hierarchy(configuration, maximum_levels=3,
-                         maximum_promoted_types=4):
+                         maximum_promoted_types=64,
+                         promotion_coverage_target=.95):
     points = configuration.positions
     train_by_level = tuple(guarded_center_indices(configuration, level, "train")
                            for level in range(1, maximum_levels + 1))
@@ -168,7 +171,16 @@ def fit_frozen_hierarchy(configuration, maximum_levels=3,
                                                        repr(signature)))
         recurring = [signature for signature in ranked
                      if counts[signature] >= 2]
-        promoted = recurring[:maximum_promoted_types]
+        promoted = []
+        covered = 0
+        target = promotion_coverage_target * len(train_by_level[offset])
+        for signature in recurring:
+            if len(promoted) >= maximum_promoted_types:
+                break
+            promoted.append(signature)
+            covered += counts[signature]
+            if covered >= target:
+                break
         lookup = {signature: label for label, signature in enumerate(promoted)}
         unknown = len(lookup)
         known = frozenset(counts)
@@ -179,7 +191,8 @@ def fit_frozen_hierarchy(configuration, maximum_levels=3,
         known_masks.append(tuple(signature in known for signature in signatures))
         labels = tuple(lookup.get(signature, unknown) for signature in signatures)
     return FrozenHierarchyEncoder(
-        scale, species_map, tuple(levels), maximum_promoted_types), known_masks
+        scale, species_map, tuple(levels), maximum_promoted_types,
+        promotion_coverage_target), known_masks
 
 
 def transform_frozen_hierarchy(configuration, encoder):
@@ -221,9 +234,12 @@ def _case(configuration):
                                 for index in heldout) / len(heldout)
         rows.append(FrozenTransferLevel(
             offset + 1, len(train), len(heldout), train_fraction,
-            heldout_fraction, promoted_fraction, level.known_signatures, False))
+            heldout_fraction, promoted_fraction, level.known_signatures,
+            level.promoted_types, False))
     minimum = min(row.known_heldout_fraction for row in rows)
-    passed = minimum >= .85 and all(not row.heldout_refit_used for row in rows)
+    passed = (minimum >= .99 and
+              min(row.heldout_promoted_fraction for row in rows) >= .90 and
+              all(not row.heldout_refit_used for row in rows))
     return FrozenTransferCase(
         configuration.name, len(configuration.positions), tuple(rows), minimum,
         min(row.heldout_centers for row in rows), True, passed)

@@ -11,10 +11,8 @@ def test_frozen_hierarchy_dictionary_transfers_across_guard() -> None:
         assert case.minimum_heldout_centers >= 271
         assert case.frozen_encoder_reused
         assert all(not level.heldout_refit_used for level in case.levels)
-    # The finite known dictionary transfers exactly, while the deliberately
-    # four-color promoted bottleneck remains lossy and must not be confused
-    # with full recursive coverage.
-    assert result.quasicrystal.levels[1].heldout_promoted_fraction < .20
+        assert min(level.heldout_promoted_fraction
+                   for level in case.levels) >= .90
     assert result.benchmark_passed
 
 

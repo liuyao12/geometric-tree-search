@@ -1102,13 +1102,15 @@ promoted-color maps, and an unknown sentinel. Transforming the disjoint half
 finds 100% of both NaCl and IQC signatures in the frozen dictionary at every
 level, without regrouping or type renumbering.
 
-That success is intentionally narrower than recursive growth. The current
-hard-coded top-four promotion retains 98.41%, 74.57%, and 24.48% of held-out
-NaCl centres, but only 17.94%, 15.39%, and 33.95% of held-out IQC centres. Thus
-the geometric vocabulary transfers, while the compressed recursive state does
-not yet cover enough IQC context. The next optimization is an MDL-selected
-promotion budget evaluated against this frozen gate, followed by frozen
-production and incoming-port marking transfer.
+That success exposed an arbitrary top-four promotion bottleneck: it retained
+98.41%, 74.57%, and 24.48% of held-out NaCl centres, but only 17.94%, 15.39%,
+and 33.95% of IQC centres. The encoder now selects the shortest frequency-
+ordered vocabulary covering 95% of training centres, capped at 64 types. It
+learns 4/7/34 promoted colors for NaCl and 51/45/22 for IQC. Without seeing the
+held-out side, these cover 98.41%/95.45%/95.15% and
+95.59%/95.51%/95.94%, respectively. The hierarchy-state transfer gate now
+passes. Frozen production selection, incoming-port marking causality, and
+actual continuation remain separate requirements.
 
 ## Generic intrinsic-2D atlas gate
 
