@@ -66,6 +66,8 @@ class ParametricRecursiveRule:
     translation_index_minimum: Optional[Tuple[int, int, int]] = None
     translation_index_maximum: Optional[Tuple[int, int, int]] = None
     translation_occupied_cells: Tuple[Tuple[int, int, int], ...] = ()
+    section_window_radius: Optional[float] = None
+    section_threshold_fractions: Tuple[float, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -857,7 +859,7 @@ def discover_rule_candidates(
             for point in normalized_cloud.positions)
         if max(abs(value) for lift in probe_lifts for value in lift) > 5:
             raise ValueError("module lift exceeds the bounded candidate box")
-        unit, _, _, thresholds, residual = infer_model(
+        unit, _, window, thresholds, residual = infer_model(
             normalized_cloud, coefficient_bound=8,
             complexity_penalty=1e-3)
         residual = max(residual, axis_residual)
@@ -875,7 +877,10 @@ def discover_rule_candidates(
                 origin, rotation,
                 float(math.ceil(max(math.dist(point, origin)
                                     for point in configuration.positions) -
-                                1e-9)), None, supports, marking_confidence)
+                                1e-9)), None, supports, marking_confidence,
+                section_window_radius=window,
+                section_threshold_fractions=tuple(
+                    threshold / window for threshold in thresholds))
         complexity = 6 + len(thresholds) + 1
         normalized_residual = residual / max(
             structure.nearest_neighbor_scale, 1e-12)

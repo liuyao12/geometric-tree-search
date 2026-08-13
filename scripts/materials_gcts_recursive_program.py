@@ -58,6 +58,13 @@ class RecursiveProgramCandidate:
     evidence_kind: str
 
 
+@dataclass(frozen=True)
+class RepresentedCount:
+    atoms: int
+    exact: bool
+    method: str
+
+
 def _covariance_eigenvalues(configuration: AtomicConfiguration) -> tuple[float, float, float]:
     center = tuple(sum(point[axis] for point in configuration.positions) /
                    len(configuration.positions) for axis in range(3))
@@ -288,6 +295,78 @@ def symbolic_count(configuration: AtomicConfiguration,
                 _latent_atom_count(configuration,
                                    rule.input_radius * rule.scale ** actions))
     raise ValueError(f"unsupported recursive program {program.family}")
+
+
+def _determinant(matrix: list[list[float]]) -> float:
+    work = [row[:] for row in matrix]
+    determinant = 1.0
+    for column in range(len(work)):
+        pivot = max(range(column, len(work)),
+                    key=lambda row: abs(work[row][column]))
+        if abs(work[pivot][column]) < 1e-15:
+            return 0.0
+        if pivot != column:
+            work[column], work[pivot] = work[pivot], work[column]
+            determinant *= -1.0
+        value = work[column][column]
+        determinant *= value
+        for row in range(column + 1, len(work)):
+            factor = work[row][column] / value
+            for index in range(column, len(work)):
+                work[row][index] -= factor * work[column][index]
+    return determinant
+
+
+def fast_represented_count(
+    configuration: AtomicConfiguration, program: RecursiveProgram,
+    actions: int,
+) -> RepresentedCount:
+    """Count a compact representation without enumerating its atom sites.
+
+    Finite production graphs have exact incidence counts. A continuous model
+    set has an exact compact radius/section representation, but its fast count
+    is the cut-and-project density estimate; exact finite-window counting still
+    requires site enumeration and remains available through ``symbolic_count``.
+    """
+    if actions < 0:
+        raise ValueError("actions must be nonnegative")
+    if program.family != "internal_section_inflation":
+        return RepresentedCount(
+            symbolic_count(configuration, program, actions), True,
+            "finite production incidence")
+    if actions == 0:
+        return RepresentedCount(len(configuration.positions), True,
+                                "observed root")
+    from materials_gcts_icosahedral_modelset import star_vectors
+    rule: ParametricRecursiveRule = program._payload
+    if (rule.origin is None or rule.to_canonical is None or
+            rule.input_radius is None):
+        raise ValueError("internal-section program is incomplete")
+    if rule.section_window_radius is None:
+        raise ValueError("internal-section program lacks its learned window")
+    unit, window = rule.scale, rule.section_window_radius
+    physical, internal = star_vectors(unit), star_vectors(-1.0 / unit)
+    columns = tuple(left + right for left, right in zip(physical, internal))
+    matrix = [[columns[column][row] for column in range(6)]
+              for row in range(6)]
+    covolume = abs(_determinant(matrix))
+    radius = rule.input_radius * rule.scale ** actions
+    ball = lambda value: 4.0 * math.pi * value ** 3 / 3.0
+    estimate = round(ball(radius) * ball(window) / covolume)
+    return RepresentedCount(
+        estimate, False,
+        "learned physical/internal volumes divided by rank-6 covolume")
+
+
+def fast_actions_to_at_least(
+    configuration: AtomicConfiguration, program: RecursiveProgram,
+    target_atoms: int = 1_000_000,
+) -> tuple[int, RepresentedCount]:
+    for actions in range(24):
+        count = fast_represented_count(configuration, program, actions)
+        if count.atoms >= target_atoms:
+            return actions, count
+    raise RuntimeError("recursive program did not reach target within 24 actions")
 
 
 def actions_to_at_least(configuration: AtomicConfiguration,

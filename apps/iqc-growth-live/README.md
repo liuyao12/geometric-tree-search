@@ -305,4 +305,14 @@ same two-pose atlas from 470 to 1,130 atoms. Every next-window continuation is
 exact. This gate fixed a minimum-description bug where the largest NaCl crop
 preferred a redundant 2x supercell despite exact primitive-cell evidence.
 
+The end-to-end timing gate reports learning, explicit emission, compact
+counting, and exact counting separately. In the recorded Python run, learning
+takes 0.34–3.37 seconds and exact two-level emission takes 0.03–0.26 seconds.
+Finite production graphs count a million-scale representation exactly in
+roughly 10–73 microseconds. The IQC cut-and-project density estimate takes 106
+microseconds and differs by 0.084% from an exact 2.49-second enumeration of
+2,791,097 sites. These measurements support representation and macro-action
+compression only; they are not a claim to beat molecular dynamics or to emit
+explicit coordinates sublinearly.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

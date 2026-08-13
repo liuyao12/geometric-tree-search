@@ -974,6 +974,30 @@ stability is therefore a separate gate from exact growth: a redundant
 supercell can continue exactly while failing to learn the smallest recurring
 cluster-of-clusters rule.
 
+### End-to-end cost and count semantics
+
+`scripts/materials_gcts_end_to_end_cost.py` times discovery, exact two-level
+coordinate emission, fast million-scale representation counting, and an exact
+count audit separately. The recorded Python run is a reproducible algorithmic
+baseline, not a comparison with a production MD code.
+
+| system | learn | exact two-level output | fast >=1m count | exact audit | flat / recursive actions |
+|---|---:|---:|---:|---:|---:|
+| NaCl, 216 atoms | 0.337 s | 13,824 in 0.051 s | 7,077,888 exact in 20 us | arithmetic exact | 176,942x |
+| ideal IQC, 507 atoms | 1.756 s | 8,603 in 0.264 s | 2,788,759 estimate in 106 us | 2,791,097 in 2.489 s | 33,221x |
+| Fibonacci QC, 729 atoms | 2.482 s | 13,824 in 0.031 s | 1,061,208 exact in 73 us | arithmetic exact | 53,024x |
+| twisted hBN, 746 atoms | 3.371 s | 11,696 in 0.214 s | 1,048,576 exact in 11 us | arithmetic exact | 52,392x |
+
+The finite graphs have exact incidence counts. The IQC has an exact compact
+radius-plus-section representation, but exact finite-window cardinality is not
+constant-time: it enumerates accepted rank-6 sites. Its fast count instead
+uses the learned physical-ball volume times internal-window volume divided by
+the inferred rank-6 covolume. At action 6 it differs from exact enumeration by
+0.0838%. Explicit coordinate output is linear for every family. Therefore the
+current exponential claim is strictly about sites represented per recursive
+program action and program-description compression. It is not yet evidence
+that GCTS beats million-atom MD in wall time or reproduces dynamics.
+
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
 | NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |
