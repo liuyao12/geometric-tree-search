@@ -38,6 +38,7 @@ class MetricPortAtlas:
 class MetricPortProposals:
     votes: Counter[Point]
     target_color_votes: Mapping[Point, Counter[str]]
+    supporting_centers: Mapping[Point, frozenset[int]]
     accepted_actions: int
 
 
@@ -105,6 +106,7 @@ def propose_with_metric_ports(
                     else parent_indices)
     votes: Counter[Point] = Counter()
     colors = defaultdict(Counter)
+    supporting_centers = defaultdict(set)
     actions = 0
     for parent in parents:
         for source, source_point in enumerate(positions):
@@ -119,10 +121,47 @@ def propose_with_metric_ports(
             proposed = point_key(_proposal(
                 positions[parent], source_point, atlas.scale))
             votes[proposed] += 1
+            supporting_centers[proposed].update((parent, source))
             evidence = atlas.target_color_evidence.get(port)
             if evidence:
                 maximum = max(evidence.values())
                 selected = min(color for color, count in evidence.items()
                                if count == maximum)
                 colors[proposed][_restore_color(selected)] += 1
-    return MetricPortProposals(votes, dict(colors), actions)
+    return MetricPortProposals(
+        votes, dict(colors),
+        {point: frozenset(centers) for point, centers in
+         supporting_centers.items()}, actions)
+
+
+def overlapping_consensus_components(
+        proposals: MetricPortProposals,
+        *, minimum_votes: int = 2,
+        excluded_points: Iterable[Point] = ()) -> Tuple[Tuple[Point, ...], ...]:
+    """Promote connected overlap-incidence patches to parallel superclusters."""
+    excluded = frozenset(excluded_points)
+    accepted = frozenset(point for point, count in proposals.votes.items()
+                         if count >= minimum_votes and point not in excluded)
+    by_center = defaultdict(set)
+    for point in accepted:
+        for center in proposals.supporting_centers.get(point, ()):
+            by_center[center].add(point)
+    adjacency = defaultdict(set)
+    for points in by_center.values():
+        for point in points:
+            adjacency[point].update(points - {point})
+    unseen = set(accepted)
+    components = []
+    while unseen:
+        stack = [min(unseen)]
+        unseen.remove(stack[0])
+        component = []
+        while stack:
+            point = stack.pop()
+            component.append(point)
+            for neighbor in adjacency[point]:
+                if neighbor in unseen:
+                    unseen.remove(neighbor)
+                    stack.append(neighbor)
+        components.append(tuple(sorted(component)))
+    return tuple(sorted(components, key=lambda item: (-len(item), item)))

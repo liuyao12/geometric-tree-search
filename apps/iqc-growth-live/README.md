@@ -487,6 +487,14 @@ regenerative gate stays red. This localizes the next clusters-of-clusters
 problem: an accepted macro must also reconstruct the overlap-incidence graph
 needed to support its successor, rather than emit isolated correct atoms.
 
+Promoting the action-incidence graph does uncover two genuine overlapping
+superclusters: accepted sites are connected when their supporting port actions
+share a parent or source motif centre. The two components contain 240 and 140
+exact sites. They are conflict-free parallel macro actions, giving 190 sites
+per supercluster action. They are different isometry classes, however, and
+scaling either component does not generate its successor. This is meaningful
+clusters-of-clusters action compression, not yet an exponential production.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

@@ -11,7 +11,8 @@ from dataclasses import asdict, dataclass
 
 from materials_gcts_icosahedral_modelset import HIDDEN_UNIT, oracle_patch
 from materials_gcts_metric_port_atlas import (
-    fit_metric_port_atlas, propose_with_metric_ports)
+    fit_metric_port_atlas, overlapping_consensus_components,
+    propose_with_metric_ports)
 from materials_gcts_recursive_connections import (
     infer_recursive_scale, learn_recursive_connection_marking,
     local_cluster_types, point_key, propose_with_recursive_marking)
@@ -33,6 +34,9 @@ class MetricPortBenchmark:
     recall: float
     minimum_votes: int
     maximum_votes: int
+    supercluster_sizes: tuple[int, ...]
+    parallel_supercluster_actions: int
+    site_per_supercluster_action: float
     coarse_proposed_sites: int
     coarse_true_sites: int
     coarse_precision: float
@@ -66,6 +70,8 @@ def evaluate():
     votes = Counter({point: count for point, count in result.votes.items()
                      if point not in known})
     true = len(set(votes) & heldout)
+    components = overlapping_consensus_components(
+        result, excluded_points=known)
 
     coarse = learn_recursive_connection_marking(
         seed.positions, seed_types, seed.positions, scale,
@@ -84,7 +90,9 @@ def evaluate():
         scale, len(atlas.evidence), len(atlas.accepted_ports),
         result.accepted_actions, len(votes), true, precision,
         true / len(heldout), min(votes.values(), default=0),
-        max(votes.values(), default=0), len(coarse_votes), coarse_true,
+        max(votes.values(), default=0), tuple(map(len, components)),
+        len(components), len(votes) / max(1, len(components)),
+        len(coarse_votes), coarse_true,
         coarse_precision, precision / max(coarse_precision, 1e-12), False,
         False, passed)
 

@@ -1353,6 +1353,16 @@ ports transfer and execute, but the first action does not reconstruct the
 higher-order port-incidence state needed by the next action. The next learned
 supercluster must carry that incidence graph as part of its production.
 
+The accepted port-action incidence graph is now promoted explicitly. Two sites
+are in the same supercluster when a chain of accepted overlaps shares parent
+or source motif centres. The 380-site exact patch decomposes into two connected
+components of 240 and 140 sites, so a renderer/executor may apply two
+nonconflicting macros instead of 380 atom insertions (190 sites per action).
+Their coordinate fingerprints are different isometry classes, and direct
+inflation of either component produces no valid next sites. Accordingly this
+is a real clusters-of-clusters representation and parallel-action compression,
+but it is not mislabeled as recursive exponential growth.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives
