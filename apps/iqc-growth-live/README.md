@@ -454,6 +454,17 @@ the 507-atom IQC selects `1.618033988749895`, with 51.2% and 55.8% weighted
 distance closure. The existing frozen connection marking then produces the
 same held-out result using this inferred scale.
 
+A stricter sealed protocol reveals that the earlier connection table still
+learned labels from the first inflation. The replacement trains only on 93
+inner parents whose inferred-scale images remain inside the 507-atom seed.
+Both the 1,969-atom state and 8,603-atom target are evaluation-only. Applied at
+the outer frontier, the frozen table proposes 3,404 novel sites, 500 correct:
+14.7% precision and 7.5% held-out recall. Vote thresholds do not recover a
+high-quality operating point, and a naive radial-coordination distance to
+training clusters is anti-informative on the incomplete frontier. The sealed
+generic gate is therefore red; the next marking must use overlap-port
+incidence among already placed clusters.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

@@ -1314,6 +1314,19 @@ two levels rejects a tempting one-level ratio near 1.902. The selected value is
 hidden φ constant—now trains and applies the frozen recursive connection
 marking. Target windows remain scoring-only.
 
+That correction exposed a second leakage distinction. The older connection
+table learned action labels from the complete 507 → 1,969 transition. The new
+`materials_gcts_sealed_connection_benchmark.py` fits labels only for 93 inner
+parents whose inferred-scale images remain inside the 507-atom seed. The
+1,969-site state and 8,603-site target never enter fitting. On the outward
+evaluation frontier the table proposes 3,404 distinct novel sites; 500 are
+true, or 14.69% precision and 7.54% recall. Raising overlap-vote thresholds
+does not produce a high-precision/high-recall operating point. Comparing a
+candidate's partial radial coordination to complete training neighborhoods is
+also anti-informative, confirming that the useful GCTS section is a graph of
+incoming overlap ports, not a potential-like coordination score. This sealed
+result is now the causal generic connection baseline and is intentionally red.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives
