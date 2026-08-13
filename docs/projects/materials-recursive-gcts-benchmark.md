@@ -1240,6 +1240,30 @@ placement has transferred. Frozen production replay and causal frontier search
 on the larger fixture remain red requirements before counting additional
 symbolic promotions toward one million sites.
 
+### Frozen exact-production recognition
+
+`materials_gcts_guarded_production_atlas.py` retains every distinct sampled
+species-labelled child-distance graph for each frozen parent color. The graph
+has a distinguished center and all colored pair distances, so it tests full
+relative geometry while remaining invariant to translation, rotation, and
+atom ordering. No modal alternative is silently selected.
+
+With 1,024 deterministic training and held-out parent samples per level:
+
+| level | known held-out parent color | frozen RHS alternatives | maximum alternatives/color | exact held-out geometry |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 98.7% | 138 | 5 | 67.4% |
+| 2 | 97.9% | 195 | 1 | 0% |
+| 3 | 100% | 95 | 1 | 0% |
+
+Thus bounded colors transfer but do not uniquely determine exact production
+geometry. This is the expected place for GCTS marking to matter: the next rule
+key must add a bounded graph of already-grown incoming ports and choose among
+the compatible alternatives. Enlarging the color until it memorizes exact
+held-out geometry would defeat the purpose. The execution gate also remains
+red: recognizing a rigid distance graph is not equivalent to recovering a
+proper SE(3) pose from frontier correspondences and emitting its children.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives

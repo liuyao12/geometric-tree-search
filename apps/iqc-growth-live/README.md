@@ -423,6 +423,17 @@ gate. Exact signature coverage intentionally remains a diagnostic and falls to
 zero at higher levels: this result proves transferable bounded GCTS colors,
 not exact geometry generation or million-atom continuation.
 
+The first exact-production recognition audit is intentionally red. A frozen
+atlas retains every sampled species-labelled child-distance graph for each
+bounded parent color, rather than selecting a modal RHS. On 1,024 training and
+1,024 held-out parents per level, parent colors are known for 98.7% / 97.9% /
+100% of held-out cases. Exact child geometry matches only 67.4% / 0% / 0%.
+Level 1 contains as many as five alternatives per parent color; levels 2 and 3
+had one sampled training alternative but encounter unseen held-out geometry.
+This demonstrates why the transferable color must be augmented by a bounded
+incoming-port GCTS marking. Production execution is separately red because
+recognizing a distance graph does not recover a proper pose or materialize it.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for
