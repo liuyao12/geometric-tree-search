@@ -113,7 +113,7 @@ def evaluate(shuffled_runs=30):
         shuffled_marker = fit_frontier_attachment_marker(
             training, first.positions, first.species,
             _shuffle_targets(training_points, training_targets,
-                             1009 + 7919 * run), epochs=160)
+                             1009 + 7919 * run))
         shuffled_scores = score_frontier_attachments(
             shuffled_marker, heldout, second.positions, second.species)
         order = tuple(sorted(

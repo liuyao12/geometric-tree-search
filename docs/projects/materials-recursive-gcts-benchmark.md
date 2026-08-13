@@ -1141,16 +1141,31 @@ macro of the existing regenerative search.
 | --- | ---: | ---: | ---: |
 | learned incoming GCTS marking | **120** | **0** | 100% |
 | overlap-vote baseline | 232 | 112 | 51.72% |
-| 30 train-label-shuffled marker refits | median 4,096; best 380 | median 3,976 | 2.93% at median |
+| 30 equal-budget train-label-shuffled marker refits | median 4,608; best 404 | median 4,488 | 2.60% at median |
 
 The learned marking cuts matched work by 1.93x versus overlap ordering and
-34.13x versus the shuffle median, and beats every shuffled refit. Held-out
+38.40x versus the shuffle median, and beats every shuffled refit. Held-out
 labels never enter fitting; shuffles preserve the proposal descriptors and
 positive count while destroying their association. This is the first causal
 GCTS result at the correct search interface. It does not make the exponential
 gate pass: it certifies one 120-site forced macro, while sustained recursive
 macro amplification and the third cumulatively guarded IQC hierarchy level
 remain open.
+
+### Spatial macro audit
+
+`materials_gcts_spatial_macro_audit.py` records the colored 3D coordinates of
+all 368 sites accepted exactly over 16 regenerative waves. It constructs
+connected components within fixed four-wave observation windows using the
+pipeline's predeclared second cluster edge (2.1 model units), then compares the
+components by species-labelled pair distances, invariant to translation,
+rotation, and point ordering.
+
+The audit finds four spatial isometry types. Two recurring multi-site types are
+dimers, and no larger recurring patch appears. Thus the current policy has one
+certified spatial macro level, but no recurring macro composed of macros. The
+exponential hierarchy gate remains red; grouping consecutive wave counts is
+explicitly not accepted as clusters-of-clusters evidence.
 
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen

@@ -50,6 +50,13 @@ class IterativeGrowthWave:
 
 
 @dataclass(frozen=True)
+class RegenerativeGrowthTrace:
+    wave: int
+    positions: Tuple[Tuple[float, float, float], ...]
+    species: Tuple[object, ...]
+
+
+@dataclass(frozen=True)
 class FrontierAttachmentBenchmark:
     atom_counts: Tuple[int, int, int]
     training_candidates: int
@@ -75,6 +82,7 @@ class FrontierAttachmentBenchmark:
     largest_top_score_gap: float
     iterative_growth_waves: Tuple[IterativeGrowthWave, ...]
     regenerative_growth_waves: Tuple[IterativeGrowthWave, ...]
+    regenerative_growth_traces: Tuple[RegenerativeGrowthTrace, ...]
     learned_envelope_scale: float
     regenerative_radius_limit: float
     learned_minimum_separation: float
@@ -281,6 +289,7 @@ def _regenerative_maximum_plateaus(
     current_positions = list(known_positions)
     current_colors = list(known_colors)
     records = []
+    traces = []
     for wave in range(1, waves + 1):
         frontier_scores = score_frontier_attachments(
             frontier_marker, remaining, current_positions, current_colors)
@@ -295,15 +304,18 @@ def _regenerative_maximum_plateaus(
         true = sum(point in targets for point in plateau)
         accepted.extend(plateau)
         accepted_true += true
+        plateau_colors = tuple(
+            _dominant_source_color(remaining, point) for point in plateau)
         records.append(IterativeGrowthWave(
             wave, len(plateau), true, len(plateau) - true, len(accepted),
             accepted_true / len(accepted), accepted_true / len(targets),
             maximum, len(scores)))
+        traces.append(RegenerativeGrowthTrace(
+            wave, plateau, plateau_colors))
 
         old_count = len(current_positions)
         current_positions.extend(plateau)
-        current_colors.extend(_dominant_source_color(remaining, point)
-                              for point in plateau)
+        current_colors.extend(plateau_colors)
         new_indices = tuple(range(old_count, len(current_positions)))
         all_indices = tuple(range(len(current_positions)))
         old_indices = tuple(range(old_count))
@@ -325,7 +337,7 @@ def _regenerative_maximum_plateaus(
             remaining, (point for point in remaining.votes if within(point)))
         if not remaining.votes:
             break
-    return tuple(records)
+    return tuple(records), tuple(traces)
 
 
 def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
@@ -428,7 +440,7 @@ def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
     second_center, second_radius = _center_and_radius(second.positions)
     envelope_scale = second_radius / first_radius
     regenerative_limit = second_radius * envelope_scale
-    regenerative_waves = _regenerative_maximum_plateaus(
+    regenerative_waves, regenerative_traces = _regenerative_maximum_plateaus(
         marker, refinement_marker, connection_marking, heldout,
         second.positions, second.species, cluster_edges, heldout_targets,
         heldout_pool, second_center, regenerative_limit,
@@ -441,7 +453,8 @@ def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
         diagnostic, hard_core, third_order, training_pool, heldout_pool,
         third_training_prefix, third_projected_prefix, third_projected,
         landmarks, gap_rank, gap,
-        iterative_waves, regenerative_waves, envelope_scale,
+        iterative_waves, regenerative_waves, regenerative_traces,
+        envelope_scale,
         regenerative_limit,
         minimum_separation, False, True, True)
 

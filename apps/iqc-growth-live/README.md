@@ -386,10 +386,17 @@ within-training-label shuffled refits receive the identical 66,110 candidate
 points and stop after the same 120 correct novel sites. Learned incoming GCTS
 ordering checks exactly 120 proposals with zero failed branches; overlap votes
 check 232 with 112 failures, a 1.93x work reduction. Shuffles require a median
-4,096 checks (34.13x learned work), and the best requires 380. The learned
+4,608 checks (38.40x learned work), and the best requires 404. The learned
 marker beats every shuffle; no held-out label is used in training. This is a
 causal role for GCTS at the correct interface, though 120 sites are one forced
 frontier macro rather than exponential continuation.
+
+The follow-on spatial macro audit preserves every colored point accepted in 16
+exact regenerative waves. It does not treat time bundles as clusters. Across
+fixed four-wave windows, connected components at the already-declared 2.1 model
+unit cluster edge reduce to four rigid isometry types. Two recurring multi-site
+types are dimers; the largest contains two sites. This proves a first spatial
+macro vocabulary, but not a cluster-of-clusters level or exponential growth.
 
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
