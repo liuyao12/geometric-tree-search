@@ -33,6 +33,7 @@ class RecursiveClusterType:
     type_id: int
     signature: Signature
     occurrence_centers: Tuple[int, ...]
+    occurrence_supports: Tuple[Tuple[int, ...], ...]
     representative_support: Tuple[int, ...]
     learned_marking: Marking
     marking_confidence: float
@@ -233,6 +234,7 @@ def learn_recursive_hierarchy(
                 type_id=type_id,
                 signature=signature,
                 occurrence_centers=tuple(center for center, _, _ in occurrences),
+                occurrence_supports=tuple(support for _, support, _ in occurrences),
                 representative_support=occurrences[0][1],
                 learned_marking=learned_marking,
                 marking_confidence=agreement / count,

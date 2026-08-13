@@ -1038,6 +1038,30 @@ The first three rows set the exponential-style action benchmark.  The
 experimental row must match their multi-step certificate before its learned
 phi action is allowed to project a million-site count.
 
+## Geometry-bearing cluster-of-clusters gate
+
+`scripts/materials_gcts_cover_grammar.py` closes one earlier accounting
+loophole. A higher-level cluster no longer records only child counts and turns
+the remainder into anonymous species counts. Each production now carries
+rigid child poses, the parent-local atom identities shared by overlapping
+children, coordinate-bearing gap terminals, and a full prototype replay. The
+recursive executor expands lower-level productions and merges same-species
+overlaps geometrically.
+
+| finite training cloud | stored productions | exact recursive prototype replays | overlapping productions | minimum modal reuse |
+| --- | ---: | ---: | ---: | ---: |
+| NaCl, 216 atoms | 68 | 68 | 52 | 33.3% |
+| ideal IQC, 507 atoms | 48 | 48 | 36 | 30.0% |
+| hard-core amorphous null, 507 atoms | 0 | 0 | 0 | rejected |
+
+This gate is intentionally **red**. Exact replay proves that the learned cover
+is executable and that gaps retain geometry; it does not prove continuation.
+One modal right-hand side does not yet explain 90% of occurrences. The next
+step is to retain context-marked production alternatives, freeze them on an
+inner window, and measure exact replay on unseen outer occurrences. Until that
+passes, the million-site rows above remain certificates of the specialized
+quotient/substitution/section/address backends—not of this generic grammar.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

@@ -326,4 +326,14 @@ versus an expected 526 checks and 274 failures under unmarked random ordering:
 moderate learned-marking gain, not a claim that the local marker solves the
 complete IQC frontier.
 
+The first geometry-bearing generic cover grammar is now exercised separately
+from the family-specific growth backends. It stores rigid child poses, overlap
+identities, and coordinate-bearing gap terminals for each modal
+cluster-of-clusters production. Recursive expansion replays all 68 stored NaCl
+and all 48 stored IQC prototypes exactly; the amorphous null yields no
+production. This is deliberately still a red benchmark: the modal production
+currently describes only 33% of NaCl occurrences and 30% of IQC occurrences.
+Context-marked alternatives and held-out geometric continuation are required
+before this generic grammar can inherit the million-site claim.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
