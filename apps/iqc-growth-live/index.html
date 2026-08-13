@@ -157,6 +157,7 @@
           <p><b>robustness gate:</b> 0.005 Å noisy NaCl/IQC/Fibonacci continuations recover the clean first level at 100% P/R; a noisy 1%-vacancy IQC also recovers 100% P/R using its inferred inversion center. 30° hBN with 0.006 Å noise + 3.5% vacancies reaches 100% P / 99.20% R.</p>
           <p><b>finite-window gate:</b> 12 / 12 pass. Selected productions and learned parameters remain stable over NaCl 64–512, IQC 345–919, Fibonacci 216–1,728, and twisted hBN 470–1,130 input atoms; every next-window continuation is exact.</p>
           <p><b>measured cost:</b> learning 0.34–3.37 s; exact two-level emission 0.03–0.26 s. Finite million-site counts take 10–73 μs. IQC density counting takes 106 μs at 0.084% error versus a 2.49 s exact enumeration. This is representation/action compression, not an MD speed claim.</p>
+          <p><b>matched-quality marking ablation:</b> compiled sections cut full-recall proposal work 56× for substitution and 717× for IQC. On an unseen IQC inflation, a frozen learned local halo reaches the same 252 correct moves with 392 vs 526 proposal checks and 140 vs 274 failed branches.</p>
           <div class="common-gate-head"><span>learned program</span><span>factor</span><span>≥1m</span><span>flat / recursive</span></div>
           <div><b>NaCl quotient</b><em>8.000×</em><i>a5</i><code>176,942×</code></div>
           <div><b>IQC section</b><em>≥3.884×</em><i>a6</i><code>33,221×</code></div>

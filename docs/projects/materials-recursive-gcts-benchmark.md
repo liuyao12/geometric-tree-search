@@ -998,6 +998,34 @@ current exponential claim is strictly about sites represented per recursive
 program action and program-description compression. It is not yet evidence
 that GCTS beats million-atom MD in wall time or reproduces dynamics.
 
+### Matched-quality tree-search marking ablation
+
+`scripts/materials_gcts_matched_search_ablation.py` holds the target,
+candidate frontier, accepted-move count, and immediate conflict check fixed.
+Each incompatible proposal produces one failed branch/backtrack. For an
+unmarked uniformly shuffled frontier, expected inspections to obtain `k` of
+`K` valid actions among `N` proposals are the exact negative-hypergeometric
+order statistic `ceil(k(N+1)/(K+1))`. The marked search uses the measured
+filtered frontier. This avoids comparing a high-recall unmarked run with a
+lower-recall marked run.
+
+| system / marking | matched correct moves | unmarked expected checks | marked checks | unmarked / marked false backtracks |
+|---|---:|---:|---:|---:|
+| NaCl compiled colored quotient | 1 | 36,028,797,018,963,968 | 1 | 36,028,797,018,963,967 / 0 |
+| ideal IQC compiled internal section | 8,603 | 6,170,727 | 8,603 | 6,162,124 / 0 |
+| Fibonacci compiled ordered substitution | 6 | 337 | 6 | 331 / 0 |
+| frozen learned IQC local halo, unseen level | 252 | 526 | 392 | 274 / 140 |
+
+The first three rows test the marking embedded in the learned recursive
+production at full recall: proposal reductions are 3.60e16x, 717x, and 56.2x.
+They prove that the sections are causal, but those sections are also part of
+the compact generator. The fourth row is the stricter GCTS-learning result:
+the local section is trained only on the 507 -> 1,969 transition and frozen on
+1,969 -> 8,603. At the same 252 correct accepted moves it reduces proposal
+checks by 1.34x and failed branches by 1.96x. It is useful but not yet a
+dramatic universal tree-search win; increasing held-out recall without losing
+this precision is the next marking objective.
+
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
 | NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |

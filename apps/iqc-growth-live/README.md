@@ -315,4 +315,15 @@ microseconds and differs by 0.084% from an exact 2.49-second enumeration of
 compression only; they are not a claim to beat molecular dynamics or to emit
 explicit coordinates sublinearly.
 
+A matched-quality marking ablation now measures actual search work rather than
+comparing unlike recall levels. Compiled full-recall sections reduce proposal
+work by 56.2x for Fibonacci substitution and 717x for the ideal IQC, eliminating
+invalid branches after filtering. On the harder learned-local-section test,
+the IQC halo is trained on 507 -> 1,969 and frozen on 1,969 -> 8,603. Reaching
+the same 252 correct moves needs 392 checks and 140 failed branches with GCTS,
+versus an expected 526 checks and 274 failures under unmarked random ordering:
+1.34x proposal and 1.96x backtrack reductions. This is a causal but still
+moderate learned-marking gain, not a claim that the local marker solves the
+complete IQC frontier.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
