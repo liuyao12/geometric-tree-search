@@ -113,44 +113,67 @@ def _planar_radius(configuration: AtomicConfiguration,
     return radius
 
 
-def _try_planar(configuration: AtomicConfiguration) -> RecursiveProgram | None:
+def _try_planar(
+    configuration: AtomicConfiguration,
+) -> tuple[RecursiveProgram, bool, float] | None:
     ratio = _planarity_ratio(configuration)
     # Multiple separated sheets have nonzero thickness.  The exact atlas
     # replay below is the authoritative gate; this loose ratio only avoids an
     # expensive planar fit for isotropic 3-D clouds.
     if ratio >= .25:
         return None
-    try:
-        # The address envelope is centred on the observed finite sample, not
-        # the ambient coordinate origin.  Inferring this point is necessary
-        # for translation-equivariant discovery on arbitrary imported data.
-        observation_center = tuple(
-            sum(point[axis] for point in configuration.positions) /
-            len(configuration.positions) for axis in range(3))
-        atlas = learn_planar_atlas(
-            configuration, observation_center=observation_center)
-    except (AssertionError, RuntimeError, ValueError, ZeroDivisionError):
+    learned = None
+    for fit_tolerance in (2e-5, .02, .045):
+        try:
+            # The address envelope is centred on the observed finite sample,
+            # not the ambient coordinate origin. Inferring this point is
+            # necessary for translation-equivariant imported data.
+            observation_center = tuple(
+                sum(point[axis] for point in configuration.positions) /
+                len(configuration.positions) for axis in range(3))
+            candidate = learn_planar_atlas(
+                configuration, observation_center=observation_center,
+                tolerance=fit_tolerance)
+            if (candidate.components and candidate.seed_atoms_covered ==
+                    len(configuration.positions) and all(
+                        len(component.translations) == 2
+                        for component in candidate.components)):
+                learned = candidate
+                break
+        except (AssertionError, RuntimeError, ValueError, ZeroDivisionError):
+            continue
+    if learned is None:
         return None
-    if (not atlas.components or atlas.seed_atoms_covered != len(configuration.positions)
-            or any(len(component.translations) != 2 for component in atlas.components)):
-        return None
+    atlas = learned
     radius = _planar_radius(configuration, atlas) + 1e-7
     replay = grow(atlas, radius)
     precision, recall, chemistry = _score(replay, configuration)
-    if min(precision, recall, chemistry) < .999:
-        return None
+    exact = min(precision, recall, chemistry) >= .999
+    mismatch = 1.0 - min(precision, recall, chemistry)
+    replay_description = "exact atlas replay"
+    if not exact:
+        from materials_gcts_2d_robustness import _registered_score
+        precision, recall, chemistry, rms = _registered_score(
+            replay, configuration, tolerance=.16)
+        mismatch = 1.0 - min(precision, recall, chemistry)
+        if (min(precision, recall) < .94 or chemistry < .999 or rms > .08):
+            return None
+        replay_description = (
+            f"robust registered replay P={precision:.4f}, R={recall:.4f}, "
+            f"RMS={rms:.4g}")
     primitive = sum(len(component.motif) for component in atlas.components)
     seed_level = max(0, math.ceil(math.log(
         max(1.0, len(configuration.positions) / primitive), 4.0)))
     supports = tuple(primitive * 4 ** level for level in range(3))
-    return RecursiveProgram(
+    program = RecursiveProgram(
         "planar_pose_address", True, 2, 4, primitive,
         len(atlas.components), 4.0,
         "component pose + two learned translation ports", supports,
         len(configuration.positions), primitive * 4 ** seed_level,
         seed_level, radius,
-        f"covariance planarity ratio {ratio:.6g}; exact atlas replay", False,
+        f"covariance planarity ratio {ratio:.6g}; {replay_description}", False,
         False, False, atlas)
+    return program, exact, mismatch
 
 
 def _program_from_rule(configuration: AtomicConfiguration,
@@ -175,15 +198,16 @@ def discover_recursive_program_candidates(
 ) -> Tuple[RecursiveProgramCandidate, ...]:
     """Evaluate planar and 3-D hypotheses before choosing either one."""
     candidates = []
-    planar = _try_planar(configuration)
-    if planar is not None:
+    planar_fit = _try_planar(configuration)
+    if planar_fit is not None:
+        planar, exact, mismatch = planar_fit
         atlas: GenericPlanarAtlas = planar._payload
         complexity = (sum(len(component.motif) + 2
                           for component in atlas.components) +
                       len(atlas.components))
-        score = complexity / len(configuration.positions)
+        score = mismatch + complexity / len(configuration.positions)
         candidates.append(RecursiveProgramCandidate(
-            planar, 0.0, complexity, True, 0.0, score,
+            planar, mismatch, complexity, exact, mismatch, score,
             "exact planar seed replay"))
     for candidate in discover_rule_candidates(configuration):
         candidates.append(RecursiveProgramCandidate(

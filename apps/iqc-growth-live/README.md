@@ -286,4 +286,13 @@ of proposal order. NaCl, ideal IQC, and 30-degree hBN select their expected
 programs with exact seed replay, while the amorphous control produces no
 admitted proposal.
 
+The integrated selector now has a perturbation gate. With 0.005 Angstrom
+Gaussian coordinate noise, NaCl, the ideal IQC, and the Fibonacci product all
+retain the correct production and reconstruct the clean first growth level at
+100% position recall and precision. A 30-degree hBN seed with 0.006 Angstrom
+noise and 3.5% vacancies retains its planar production and reaches 100%
+precision / 99.20% recall on the clean continuation. A noisy 1%-vacancy IQC is
+conservatively rejected; bounded lift-complexity preflight prevents expensive
+invalid rank-6 enumeration. General 3D vacancy recovery remains open.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

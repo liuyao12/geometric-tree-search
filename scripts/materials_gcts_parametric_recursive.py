@@ -31,7 +31,8 @@ from materials_gcts_generic import (
 from materials_gcts_fibonacci_3d import (
     Substitution, apply_substitution, coordinates_from_gaps, gap_word,
     generate, infer_axes, infer_substitution, make_input, species_at)
-from materials_gcts_icosahedral_modelset import infer_model, oracle_patch
+from materials_gcts_icosahedral_modelset import (
+    infer_model, infer_quadratic_unit, lift_point, oracle_patch)
 from materials_gcts_latent_macro_growth import _latent_patch
 from materials_gcts_periodic_growth import replicate
 from materials_pointset_benchmarks import amorphous_hard_core_point_set
@@ -800,12 +801,22 @@ def discover_rule_candidates(
         normalized_residual = product_residual / max(
             structure.nearest_neighbor_scale, 1e-12)
         candidates.append(RuleCandidate(
-            rule, normalized_residual, complexity, True, 0.0,
+            rule, normalized_residual, complexity,
+            product_residual <= 1e-8, 0.0,
             len(recurring_levels), normalized_residual +
             complexity / len(configuration.positions)))
     try:
         normalized_cloud, origin, rotation, axis_residual = (
             _normalize_icosahedral(configuration))
+        probe_unit, _ = infer_quadratic_unit(
+            normalized_cloud, coefficient_bound=8,
+            complexity_penalty=1e-3)
+        probe_lifts = tuple(lift_point(
+            point, probe_unit, coefficient_bound=8,
+            complexity_penalty=1e-3)[0]
+            for point in normalized_cloud.positions)
+        if max(abs(value) for lift in probe_lifts for value in lift) > 5:
+            raise ValueError("module lift exceeds the bounded candidate box")
         unit, _, _, thresholds, residual = infer_model(
             normalized_cloud, coefficient_bound=8,
             complexity_penalty=1e-3)
@@ -829,7 +840,8 @@ def discover_rule_candidates(
         normalized_residual = residual / max(
             structure.nearest_neighbor_scale, 1e-12)
         candidates.append(RuleCandidate(
-            rule, normalized_residual, complexity, True, 0.0,
+            rule, normalized_residual, complexity,
+            residual <= 1e-8, 0.0,
             len(recurring_levels), normalized_residual +
             complexity / len(configuration.positions)))
 

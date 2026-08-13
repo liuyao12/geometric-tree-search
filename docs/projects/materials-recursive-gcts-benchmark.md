@@ -924,6 +924,29 @@ the ideal IQC its internal section, and rotated 30-degree hBN its planar atlas.
 The amorphous control admits zero proposals. No crystal, quasicrystal, planar,
 or amorphous label is provided to proposal generation or selection.
 
+### Unified selector robustness gate
+
+`scripts/materials_gcts_selection_robustness.py` perturbs the inputs before the
+family-blind proposal stage and evaluates the selected program against a clean,
+larger scaffold. This tests the integrated selector rather than invoking a
+known family-specific learner directly.
+
+| observed seed | selected production | clean grown P / R / species | registered RMS |
+|---|---|---:|---:|
+| NaCl + 0.005 A Gaussian noise | translation quotient | 100% / 100% / 100% | 0.0163 A |
+| ideal IQC + 0.005 A Gaussian noise | internal section | 100% / 100% / 100% | 0.0244 A |
+| Fibonacci product + 0.005 A Gaussian noise | substitution | 100% / 100% / 100% | 0.0108 A |
+| 30-degree hBN + 0.006 A noise + 3.5% vacancies | planar pose/address | 100% / 99.20% / 100% | 0.0149 A |
+
+A single NaCl chemical substitution retains the quotient hypothesis but is
+correctly marked as an inexact seed replay. Conversely, a 1%-vacancy noisy IQC
+does not yet support reliable module recovery and is conservatively rejected.
+A new lift-complexity preflight rejects that malformed rank-6 hypothesis in
+1.58 seconds in the recorded run instead of entering an unbounded coefficient
+box. Two independently seeded amorphous controls still admit zero proposals.
+Thus the present positive claim is noise-robust scaffold recovery; general 3D
+vacancy recovery, especially for quasicrystals, remains open.
+
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
 | NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |
