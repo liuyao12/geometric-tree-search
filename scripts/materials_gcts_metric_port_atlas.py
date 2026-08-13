@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import math
+import ast
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from typing import Iterable, Mapping, Sequence, Tuple
@@ -38,6 +39,14 @@ class MetricPortProposals:
     votes: Counter[Point]
     target_color_votes: Mapping[Point, Counter[str]]
     accepted_actions: int
+
+
+def _restore_color(color_key: str):
+    """Invert the repr-based canonical color key for recursive insertion."""
+    try:
+        return ast.literal_eval(color_key)
+    except (SyntaxError, ValueError):
+        return color_key
 
 
 def _proposal(parent: Point, source: Point, scale: float) -> Point:
@@ -113,6 +122,7 @@ def propose_with_metric_ports(
             evidence = atlas.target_color_evidence.get(port)
             if evidence:
                 maximum = max(evidence.values())
-                colors[proposed][min(color for color, count in evidence.items()
-                                     if count == maximum)] += 1
+                selected = min(color for color, count in evidence.items()
+                               if count == maximum)
+                colors[proposed][_restore_color(selected)] += 1
     return MetricPortProposals(votes, dict(colors), actions)

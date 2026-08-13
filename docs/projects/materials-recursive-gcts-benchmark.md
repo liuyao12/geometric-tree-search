@@ -1344,6 +1344,15 @@ ablation proposes 3,404 sites with 500 true (14.69% precision), so metric ports
 give a 6.81x precision gain. This gate is green for exact transferred port
 execution, while recursive full-growth recall remains red.
 
+The executor now inserts the 380 predicted species labels, recomputes motif
+types on the resulting 2,349-site partial cloud, and reapplies the same frozen
+atlas. No oracle species or positions are inserted. Wave 2 exposes 3,960 novel
+one-port candidates but none has the two independent overlaps required for
+acceptance, so growth stalls. This is a sharper red regenerative gate: metric
+ports transfer and execute, but the first action does not reconstruct the
+higher-order port-incidence state needed by the next action. The next learned
+supercluster must carry that incidence graph as part of its production.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives

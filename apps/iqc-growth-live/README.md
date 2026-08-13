@@ -478,6 +478,15 @@ precision, so the metric port improves precision 6.81x. The next target is to
 increase port coverage without sacrificing this exactness, then iterate the
 accepted sites as an actual growth state.
 
+That iteration is now explicit. The 380 predicted species-labelled atoms are
+inserted using only the atlas's train-only color votes, growing the state from
+1,969 to 2,349 atoms with 100% correctness. Retyping the partial cloud and
+reapplying the same frozen atlas produces 3,960 novel single-port candidates
+but no site with the required two-port consensus, so wave 2 adds nothing. The
+regenerative gate stays red. This localizes the next clusters-of-clusters
+problem: an accepted macro must also reconstruct the overlap-incidence graph
+needed to support its successor, rather than emit isolated correct atoms.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for
