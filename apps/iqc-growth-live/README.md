@@ -267,6 +267,11 @@ is admitted. All four reach at least one million represented sites in five or
 six recursive promotions, with minimum per-action factors from 3.884x to 8x
 and flat-cluster action reductions from 33,221x to 176,942x. The shared
 selector receives positions and species only and rejects the amorphous
-control. The specialized rule backends remain an explicit open limitation.
+control. A second finite-grammar gate now compiles NaCl and the Fibonacci
+product into the same typed parent/child/address/section representation. One
+family-free counter rewrite exactly matches both explicit two-level counts and
+their symbolic million-site counts; the graphs also survive tested rigid
+motions. The continuous icosahedral section and planar atlas still use their
+specialized recursive executors and remain the next compiler targets.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

@@ -859,11 +859,36 @@ emission remains linear in atom count. The exponential result is compression
 of represented structure per recursive action, not a claim of sublinear MD or
 free materialization.
 
-The shared interface is now generic, but its rule backends are still
-specialized (translation quotient, quadratic internal section, product
-substitution, planar address atlas). Replacing those hand-built backend
-families with learned typed transform/section programs is the next algorithmic
-gate.
+The geometric evidence extractors are still specialized (translation
+residues, quadratic internal section, gap substitution, planar address atlas).
+The finite recursive executor is no longer entirely specialized: the first
+typed transform/section compiler described below handles translation and
+substitution graphs with one production engine. Continuous internal sections
+and planar atlases remain to be compiled into that representation.
+
+### First shared typed transform/section compiler
+
+`scripts/materials_gcts_typed_productions.py` compiles discovered geometric
+evidence into one finite grammar. Each parent type has transformed child
+references at local addresses plus bounded section marks describing which
+faces of the parent neighborhood they contact. These marks are connection
+labels, not physical potentials. The executor contains no crystal-versus-
+quasicrystal branch: it repeatedly applies the same type-incidence rewrite.
+
+| point-set input | induced graph | exact count certificate | symbolic ≥1m |
+|---|---:|---:|---:|
+| 216-atom NaCl | 1 type, 1 production, 8 child references | 216 → 1,728 → 13,824 | action 5: 7,077,888 |
+| 729-atom Fibonacci product | 8 types, 8 productions, 27 child references | 729 → 3,375 → 13,824 | action 5: 1,061,208 |
+
+`scripts/materials_gcts_typed_production_benchmark.py` verifies that both
+graphs are unchanged by a tested proper rotation and translation, agree with
+two levels of explicit atom materialization, reach one million through the
+same counter rewrite, and reject the amorphous control. The compiler never
+reads the discovered rule's family string; it selects an adapter from which
+structural evidence fields are actually present. This is a real common
+recursive layer, but not yet a common geometric learner: translation residues
+and gap words are still extracted by different front ends, and the ideal
+icosahedral continuous section is explicitly reported as uncompiled.
 
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
