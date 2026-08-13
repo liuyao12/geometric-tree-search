@@ -1086,31 +1086,49 @@ test outside a guard band in larger NaCl and IQC windows.
 `scripts/materials_gcts_guarded_spatial_split.py` establishes that stronger
 test geometry on 13,824-site NaCl and 8,603-site IQC clouds. A fixed plane with
 normal `(1,2,3)/sqrt(14)` separates training and held-out centres. At each
-level the unused band is the full body radius plus marking width, and the outer
-boundary is eroded by the same amount. The minimum level-three populations are
-3,341 / 3,341 for NaCl and 271 / 271 for IQC. In every case the projected
-centre separation is strictly greater than twice the complete local-domain
-radius, proving that training and held-out domains cannot share an atom. This
-fixture now blocks random overlapping-occurrence splits from becoming the
-acceptance result.
+level the unused band is the sum of every lower-level body radius plus marking
+width, and the outer boundary is eroded by the same amount. NaCl retains
+785 / 785 level-three centres. IQC retains 532 / 532 level-two centres but no
+level-three centres in the present 8,603-site patch. Thus three NaCl and two
+IQC levels have disjoint raw-atom dependency domains; IQC level 3 remains an
+explicit red gate requiring a larger patch. This fixture blocks random
+overlapping-occurrence splits from becoming the acceptance result.
 
 `scripts/materials_gcts_frozen_hierarchy.py` supplies the first train-only
 encoder/transform split. A spatial index replaces the quadratic full distance
 table for the 13,824/8,603-site clouds. The training half alone fixes nearest-
-neighbor scale, species colors, three rotation-invariant signature maps, the
+neighbor scale, species colors, rotation-invariant signature maps, the
 promoted-color maps, and an unknown sentinel. Transforming the disjoint half
 finds 100% of both NaCl and IQC signatures in the frozen dictionary at every
-level, without regrouping or type renumbering.
+certified level, without regrouping or type renumbering.
 
 That success exposed an arbitrary top-four promotion bottleneck: it retained
 98.41%, 74.57%, and 24.48% of held-out NaCl centres, but only 17.94%, 15.39%,
 and 33.95% of IQC centres. The encoder now selects the shortest frequency-
 ordered vocabulary covering 95% of training centres, capped at 64 types. It
-learns 4/7/34 promoted colors for NaCl and 51/45/22 for IQC. Without seeing the
-held-out side, these cover 98.41%/95.45%/95.15% and
-95.59%/95.51%/95.94%, respectively. The hierarchy-state transfer gate now
+learns 4/6/16 promoted colors for NaCl and 51/30 for IQC. Without seeing the
+held-out side, these cover 98.41%/96.81%/95.29% and 95.59%/95.68%,
+respectively. The certified hierarchy-state transfer gate now
 passes. Frozen production selection, incoming-port marking causality, and
 actual continuation remain separate requirements.
+
+### Causal inward-halo search ablation
+
+`scripts/materials_gcts_incoming_port_ablation.py` prevents another possible
+leak: the marking may see only the inward half of the bounded halo, standing
+for atoms already grown toward the observation center. Held-out parent atoms
+choose the correct answer for scoring, but never enter the ranking features.
+At the deepest certified hierarchy levels (NaCl level 3, IQC level 2), the
+train-selected vocabularies have one right-hand side per parent: 16/16 for
+NaCl and 30/30 for IQC. Parent type therefore forces every move, and both modal
+baselines have zero decomposition backtracks. Neither is a task on which a
+marking can demonstrate causal value.
+
+This negative gate is informative: when the stored parent geometry already
+determines its cover decomposition, GCTS has nothing useful to choose. The
+next matched-quality experiment must rank *neighboring macro placements at a
+live frontier*, where several transformed clusters can genuinely compete and
+incoming overlap/connection ports can exclude future conflicts.
 
 ## Generic intrinsic-2D atlas gate
 

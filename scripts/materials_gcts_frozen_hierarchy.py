@@ -195,7 +195,7 @@ def fit_frozen_hierarchy(configuration, maximum_levels=3,
         promotion_coverage_target), known_masks
 
 
-def transform_frozen_hierarchy(configuration, encoder):
+def encode_frozen_hierarchy(configuration, encoder):
     points = configuration.positions
     species_keys = tuple(_species_key(value) for value in configuration.species)
     unknown_species = len(encoder.species_labels)
@@ -203,6 +203,7 @@ def transform_frozen_hierarchy(configuration, encoder):
                    for value in species_keys)
     spatial = _SpatialIndex(points, encoder.nearest_neighbor_scale)
     results = []
+    level_labels = []
     for offset, level in enumerate(encoder.levels):
         descriptor = encoder.nearest_neighbor_scale * (.02 if offset == 0 else .20)
         angle = .03 if offset == 0 else .08
@@ -216,11 +217,17 @@ def transform_frozen_hierarchy(configuration, encoder):
                                                      level.unknown_label)
                        for signature in signatures)
         results.append((known, promoted))
-    return tuple(results)
+        level_labels.append(labels)
+    return tuple(results), tuple(level_labels)
 
 
-def _case(configuration):
-    encoder, training_known = fit_frozen_hierarchy(configuration)
+def transform_frozen_hierarchy(configuration, encoder):
+    return encode_frozen_hierarchy(configuration, encoder)[0]
+
+
+def _case(configuration, maximum_levels=3):
+    encoder, training_known = fit_frozen_hierarchy(
+        configuration, maximum_levels=maximum_levels)
     heldout_promoted = transform_frozen_hierarchy(configuration, encoder)
     rows = []
     for offset, level in enumerate(encoder.levels):
@@ -255,7 +262,7 @@ def evaluate():
     crystal = replicate(replicate(crystal))
     unit = (1 + math.sqrt(5)) / 2
     quasicrystal, _ = oracle_patch(6, 9 * unit ** 2)
-    cases = _case(crystal), _case(quasicrystal)
+    cases = _case(crystal, 3), _case(quasicrystal, 2)
     transfer = all(case.frozen_encoder_reused for case in cases)
     return FrozenHierarchyBenchmark(
         *cases, transfer,

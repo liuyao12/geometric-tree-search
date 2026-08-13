@@ -350,24 +350,33 @@ beat this frozen modal baseline before an unseen-window claim is allowed.
 The acceptance split is now fixed before the encoder refactor. Two recursive
 NaCl replications provide 13,824 atoms; the independent IQC level provides
 8,603. At hierarchy levels 1--3, a fixed irrational-direction half-space and a
-guard at least as wide as the complete cluster-plus-halo domain leave 3,341
-training and 3,341 held-out NaCl centres, and 271 / 271 IQC centres at the
-deepest level. The projected separation exceeds twice the guarded radius at
-every level, so the train and held-out local domains cannot share atoms. The
-next learner must freeze its scale, bins, type maps, promoted colors, and
-production/marking tables on the training side and transform the held-out side
-without regrouping or renumbering types.
+guard equal to the *sum* of all recursive body radii plus the marking halo
+leave 785 / 785 NaCl centres at level 3 and 532 / 532 IQC centres at level 2.
+The 8,603-site IQC patch leaves no level-three centres under this cumulative
+guard, so only two IQC levels are certified and level 3 remains red. At every
+certified level, projected separation exceeds twice the raw dependency radius,
+so train and held-out local domains cannot share atoms.
 
 The new spatially indexed frozen encoder now performs that transform. It fits
 the nearest-neighbour scale, species map, three signature dictionaries,
 promoted-color maps, and unknown sentinels on training centres only. Across
-the disjoint guard, 100% of held-out NaCl and IQC centre signatures occur in
-the frozen dictionaries at all three levels, with no held-out refit. The
+the disjoint guard, 100% of held-out centre signatures occur in the frozen
+dictionaries across three NaCl and two IQC levels, with no held-out refit. The
 original top-four bottleneck retained as little as 24.48% of NaCl and 15.39%
 of IQC context. It is now replaced by the smallest train-only prefix of
 recurring colors covering 95% of training centres, capped at 64. The learned
-budgets are 4/7/34 colors for NaCl and 51/45/22 for IQC; frozen held-out
-promotion coverage is at least 95.15% and 95.51%, respectively. This passes
+budgets are 4/6/16 colors for NaCl and 51/30 for IQC; frozen held-out promotion
+coverage is at least 95.29% and 95.59%, respectively. This passes
 hierarchy-state transfer, but not yet production selection or continuation.
+
+A causal deepest-certified-level ablation then restricts the marking to the
+inward half of the halo—the side representing already-grown material. IQC uses
+certified level 2; NaCl uses level 3. With the cumulative guard and improved
+colors, every parent type has exactly one right-hand side: 16/16 for NaCl and
+30/30 for IQC. Both modal searches therefore have zero decomposition
+backtracks, and a marking cannot improve them. The gate remains red. This negative
+result moves the causal GCTS question to the correct interface: ranking which
+neighboring macro placement to attempt at the frontier, not decomposing a
+parent whose full colored geometry is already known.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

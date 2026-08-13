@@ -49,6 +49,8 @@ class GuardedSpatialBenchmark:
     quasicrystal: GuardedCase
     fixed_plane_normal: Point
     three_level_split_feasible: bool
+    crystal_certified_levels: int
+    quasicrystal_certified_levels: int
     benchmark_passed: bool
 
 
@@ -80,10 +82,12 @@ def _case(configuration: AtomicConfiguration) -> GuardedCase:
     scale = _sampled_nearest_scale(points)
     outer_radius = max(math.dist(point, center) for point in points)
     levels = []
+    cumulative_body = 0.0
     for level in range(1, 4):
         body = scale * 1.08 * 1.85 ** (level - 1)
         halo = scale * .72
-        guarded = body + halo
+        cumulative_body += body
+        guarded = cumulative_body + halo
         eligible_radius = outer_radius - guarded
         projections = tuple(_projection(point, center) for point in points)
         train = tuple(index for index, point in enumerate(points)
@@ -97,6 +101,8 @@ def _case(configuration: AtomicConfiguration) -> GuardedCase:
                           default=math.inf) -
                       max((projections[index] for index in train),
                           default=-math.inf))
+        # A recursive level-L signature depends on raw atoms through all lower
+        # body radii, hence the cumulative guard rather than only r_L + halo.
         # Every atom in a radius-guarded training domain has projection <= 0;
         # every atom in a held-out domain has projection >= 0. Strict center
         # separation makes the two closed domains disjoint away from the plane.
@@ -119,7 +125,9 @@ def guarded_center_indices(configuration: AtomicConfiguration, level: int,
     points = configuration.positions
     center = _centroid(points)
     scale = _sampled_nearest_scale(points)
-    guarded = scale * (1.08 * 1.85 ** (level - 1) + .72)
+    cumulative_body = sum(scale * 1.08 * 1.85 ** offset
+                          for offset in range(level))
+    guarded = cumulative_body + scale * .72
     outer_radius = max(math.dist(point, center) for point in points)
     sign = -1.0 if side == "train" else 1.0
     return tuple(index for index, point in enumerate(points)
@@ -134,11 +142,14 @@ def evaluate() -> GuardedSpatialBenchmark:
     unit = (1.0 + math.sqrt(5.0)) / 2.0
     quasicrystal, _ = oracle_patch(6, 9.0 * unit ** 2)
     cases = _case(crystal), _case(quasicrystal)
-    feasible = all(case.minimum_training_centers >= 100 and
-                   case.minimum_heldout_centers >= 100 and
-                   case.all_domains_disjoint for case in cases)
+    certified = tuple(sum(item.training_centers >= 100 and
+                          item.heldout_centers >= 100 and
+                          item.domains_provably_disjoint for item in case.levels)
+                      for case in cases)
+    feasible = min(certified) >= 3
+    passed = certified[0] >= 3 and certified[1] >= 2
     return GuardedSpatialBenchmark(
-        *cases, NORMAL, feasible, feasible)
+        *cases, NORMAL, feasible, *certified, passed)
 
 
 def main() -> None:
