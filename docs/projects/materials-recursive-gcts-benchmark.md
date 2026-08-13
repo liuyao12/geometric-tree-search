@@ -1153,14 +1153,15 @@ macro amplification and the third cumulatively guarded IQC hierarchy level
 remain open.
 
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
-regenerative trace into an explicit red scaling gate. Its eight pure waves are
-`12, 104, 12, 4, 36, 24, 24, 12`, totaling 228/228 correct sites. Frontier
-supply increases despite accepted candidates being removed, and the largest
-forced macro contains 104 sites. But consecutive macro sizes oscillate and the
-last three do not double; therefore the represented-sites-per-wave and
-exponential-fit gates fail. The next hierarchy must promote recurrent frontier
-wave states, rather than treating these exact local macros as exponential by
-fiat.
+regenerative trace into an explicit red scaling gate. Extending the frozen
+policy to 16 waves gives
+`12,104,12,4,36,24,24,12,8,24,24,24,24,12,12,12`, totaling 368/368 correct
+sites. Frontier supply increases despite accepted candidates being removed,
+and the largest forced macro contains 104 sites. Yet four-wave groupings shrink
+`132 → 96 → 80 → 60`; geometric mean wave growth is 1.0 and the log-cumulative
+fit has R² 0.605. Thus neither local waves nor naively grouped wave states
+amplify. The next hierarchy must learn a different recurrent frontier state,
+rather than treating these exact local macros as exponential by fiat.
 
 ## Generic intrinsic-2D atlas gate
 

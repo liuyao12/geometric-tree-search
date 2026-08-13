@@ -22,6 +22,8 @@ class RegenerativeScalingAudit:
     largest_macro_sites: int
     median_macro_sites: float
     macro_growth_factors: Tuple[float, ...]
+    two_wave_supermacros: Tuple[int, ...]
+    four_wave_supermacros: Tuple[int, ...]
     geometric_mean_growth_factor: float
     log_sites_vs_wave_r_squared: float
     represented_sites_per_wave_grow_by_two: bool
@@ -43,8 +45,8 @@ def _r_squared(xs, ys):
     return 1.0 - residual / total if total else 1.0
 
 
-def evaluate():
-    result = frontier()
+def evaluate(waves=16):
+    result = frontier(regenerative_wave_count=waves)
     waves = result.regenerative_growth_waves
     sizes = tuple(wave.plateau_sites for wave in waves)
     cumulative = tuple(wave.cumulative_sites for wave in waves)
@@ -58,9 +60,14 @@ def evaluate():
     doubling = all(value >= 2.0 for value in factors[-3:])
     exact = all(wave.false_sites == 0 for wave in waves)
     exponential = exact and doubling and r_squared >= .98
+    grouped = lambda width: tuple(sum(sizes[index:index + width])
+                                  for index in range(0, len(sizes), width)
+                                  if len(sizes[index:index + width]) == width)
     return RegenerativeScalingAudit(
         sizes, cumulative, supply, exact, supply[-1] > supply[0], max(sizes),
-        (sorted(sizes)[3] + sorted(sizes)[4]) / 2, factors, geometric,
+        (sorted(sizes)[len(sizes) // 2 - 1] +
+         sorted(sizes)[len(sizes) // 2]) / 2, factors,
+        grouped(2), grouped(4), geometric,
         r_squared, doubling, exponential,
         ("exact regenerative continuation, but macro sizes oscillate and do "
          "not pass exponential amplification" if not exponential else
@@ -70,8 +77,9 @@ def evaluate():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--waves", type=int, default=16)
     arguments = parser.parse_args()
-    result = evaluate()
+    result = evaluate(arguments.waves)
     print(json.dumps(asdict(result), indent=2)
           if arguments.json else result)
 

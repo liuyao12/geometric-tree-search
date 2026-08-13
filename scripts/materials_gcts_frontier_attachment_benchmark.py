@@ -328,7 +328,9 @@ def _regenerative_maximum_plateaus(
     return tuple(records)
 
 
-def evaluate() -> FrontierAttachmentBenchmark:
+def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
+    if regenerative_wave_count < 1:
+        raise ValueError("regenerative wave count must be positive")
     first, _ = oracle_patch(3, 9.0)
     second, _ = oracle_patch(4, 9.0 * HIDDEN_UNIT)
     third, _ = oracle_patch(6, 9.0 * HIDDEN_UNIT ** 2)
@@ -429,7 +431,8 @@ def evaluate() -> FrontierAttachmentBenchmark:
     regenerative_waves = _regenerative_maximum_plateaus(
         marker, refinement_marker, connection_marking, heldout,
         second.positions, second.species, cluster_edges, heldout_targets,
-        heldout_pool, second_center, regenerative_limit)
+        heldout_pool, second_center, regenerative_limit,
+        waves=regenerative_wave_count)
     return FrontierAttachmentBenchmark(
         (len(first.positions), len(second.positions), len(third.positions)),
         len(training.votes), len(training_targets), len(heldout.votes),
