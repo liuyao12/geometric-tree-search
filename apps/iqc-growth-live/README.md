@@ -470,7 +470,7 @@ answer at limited recall. A port stores the two frozen local motif types and
 their exact separation, then divides that separation by the current recursive
 level scale before lookup. It is invariant to translation, arbitrary rotation,
 atom order, and inflation level. Proposals outside the finite seed are censored
-rather than treated as negative; 73 of 1,888 observable seed-only port classes
+rather than treated as negative; 73 of 544 observable seed-only port classes
 are accepted. On the unseen frontier they generate 860 distinct sites; all 860
 occur in the target, for 100% precision and 12.96% recall. The otherwise
 identical 0.5-wide separation-bin marking produces 3,404 sites at 14.69%
@@ -488,7 +488,7 @@ is insufficient.
 Promoting the action-incidence graph does uncover two genuine overlapping
 superclusters: accepted sites are connected when their supporting port actions
 share a parent or source motif centre. The exact 860-site patch has two large
-components of 240 and 140 sites plus 32 smaller components. They are
+components of 500 and 240 sites plus 32 smaller components. They are
 conflict-free parallel macro actions. They are different isometry classes, and
 scaling either component does not generate its successor. This is meaningful
 clusters-of-clusters action compression, not yet an exponential production.
@@ -502,6 +502,16 @@ predicted species are exact, and the state grows from 1,969 to 2,481 without
 oracle insertion before stalling. This is the first regenerative generic
 GCTS trajectory. It is not exponential: wave sizes do not amplify, so the
 long-term gate remains red.
+
+There is now also a stricter exponential-style scale test. The smallest
+pair-supported endpoint inside the seed has 11 underlying port actions. The
+frozen consensus rule requires `ceil(11 / scale^level)` actions at later
+levels—seven at the first unseen inflation and five at the second. It accepts
+80/80 exact sites on the 1,969 → 8,603 frontier and 480/480 exact sites on the
+8,603 → 37,073 frontier: a measured 6x batch amplification across two unseen
+scales. No held-out geometry chooses the thresholds. This is a genuine
+clusters-of-clusters exponential-style certificate, but it is sparse (1.21%
+and 1.69% novel recall) and is not yet a generic million-site rollout.
 
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
