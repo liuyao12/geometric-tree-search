@@ -410,6 +410,19 @@ and production coverage at all three levels, with no held-out geometry used for
 fitting. All eight parent types have one RHS in this symmetric fixture, so the
 GCTS marking result remains the separate causal frontier-ranking ablation.
 
+The cumulative-guard benchmark is now large enough to test three recursive
+levels without reusing raw-atom domains. A new exact meet-in-the-middle 6D
+oracle is bit-for-bit equivalent to the original enumerator on reference
+patches and produces the converged 155,097-site radius-61.69 IQC in roughly
+2.5 seconds. A bounded coordination-plus-angular GCTS color encoder is fit on
+28,211 inner atoms. It has 23,919 / 16,587 / 6,953 guarded training centers and
+is frozen on 106,162 / 70,458 / 4,260 held-out centers; bounded-color coverage
+is 100% at all three levels. A matched-density, three-species amorphous null is
+accepted at only 42.6% on level 1 and 24.1% on level 3, so it fails the shared
+gate. Exact signature coverage intentionally remains a diagnostic and falls to
+zero at higher levels: this result proves transferable bounded GCTS colors,
+not exact geometry generation or million-atom continuation.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

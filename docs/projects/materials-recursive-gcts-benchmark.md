@@ -1203,6 +1203,43 @@ spatial half-space, not yet causal outward growth. Each parent has exactly one
 RHS in this fixture, so a marking cannot improve decomposition; the separate
 live-frontier ablation is where incoming GCTS marking has a causal choice.
 
+### Large cumulative-guard color transfer
+
+The prior 8,603-site IQC fixture has no level-three held-out center after the
+correct cumulative dependency guard. `oracle_patch_fast` removes that sample
+size bottleneck. It splits the six integer lift coordinates into two triples,
+hashes one set in internal space, and joins only pairs that can enter the
+bounded acceptance window. Tests require exact lift, position, and species-set
+equality with the original `(2b+1)^6` enumerator. It produces a converged
+155,097-site radius-61.69 fixture in about 2.5 seconds on the development host.
+
+`materials_gcts_guarded_radial_hierarchy.py` fits only inside radius 35 and
+uses cumulative dependency radii `2.054 / 5.855 / 12.885`. Held-out centers
+start outside the training radius plus the corresponding dependency radius and
+end inside the oracle boundary minus that radius. Therefore raw training and
+held-out domains are disjoint by construction.
+
+| level | training centers | held-out centers | exact-key coverage | bounded GCTS-color coverage |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 23,919 | 106,162 | 75.5% | 100% |
+| 2 | 16,587 | 70,458 | 0% | 100% |
+| 3 | 6,953 | 4,260 | 0% | 100% |
+
+The bounded color is a coordination histogram plus an angular-incidence
+histogram over a finite neighborhood. Nearest-color tolerances are derived
+only from spacing among training colors: one training nearest-neighbor width
+for levels 1–2 and two widths for level 3. No held-out label selects the
+tolerance. A matched-density amorphous hard-core XYZ cloud is evaluated with
+the same frozen encoder and reaches 42.6% / 97.2% / 24.1% coverage. The common
+gate rejects it because both primitive and deepest hierarchical color transfer
+must exceed 50%.
+
+This is a positive finite-color transfer result with a meaningful negative
+control. It is not yet a claim that the exact parent geometry or its outward
+placement has transferred. Frozen production replay and causal frontier search
+on the larger fixture remain red requirements before counting additional
+symbolic promotions toward one million sites.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives

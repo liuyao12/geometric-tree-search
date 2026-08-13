@@ -105,6 +105,64 @@ def oracle_patch(
     return configuration, lifts
 
 
+def oracle_patch_fast(
+    lift_bound: int,
+    physical_radius: float,
+) -> Tuple[AtomicConfiguration, Dict[Lift, str]]:
+    """Exact meet-in-the-middle oracle for larger benchmark patches."""
+    physical_vectors = star_vectors(HIDDEN_UNIT)
+    internal_vectors = star_vectors(HIDDEN_CONJUGATE)
+    coefficient_range = range(-lift_bound, lift_bound + 1)
+
+    def partials(offset):
+        result = []
+        for coefficients in itertools.product(coefficient_range, repeat=3):
+            physical = tuple(sum(
+                coefficients[index] * physical_vectors[offset + index][axis]
+                for index in range(3)) for axis in range(3))
+            internal = tuple(sum(
+                coefficients[index] * internal_vectors[offset + index][axis]
+                for index in range(3)) for axis in range(3))
+            result.append((coefficients, physical, internal))
+        return tuple(result)
+
+    left, right = partials(0), partials(3)
+    cell = HIDDEN_WINDOW
+    grid = {}
+    for item in right:
+        key = tuple(math.floor(value / cell) for value in item[2])
+        grid.setdefault(key, []).append(item)
+    positions = []
+    species = []
+    lifts = {}
+    for left_coefficients, left_physical, left_internal in left:
+        target = tuple(-value for value in left_internal)
+        key = tuple(math.floor(value / cell) for value in target)
+        for dx, dy, dz in itertools.product((-1, 0, 1), repeat=3):
+            for right_coefficients, right_physical, right_internal in grid.get(
+                    (key[0] + dx, key[1] + dy, key[2] + dz), ()):
+                internal = tuple(left_internal[axis] + right_internal[axis]
+                                 for axis in range(3))
+                internal_radius = vector_norm(internal)
+                if internal_radius > HIDDEN_WINDOW + 1e-10:
+                    continue
+                physical = tuple(left_physical[axis] + right_physical[axis]
+                                 for axis in range(3))
+                if vector_norm(physical) > physical_radius + 1e-10:
+                    continue
+                lift = left_coefficients + right_coefficients
+                chemical = hidden_species(internal_radius)
+                positions.append(physical)
+                species.append(chemical)
+                lifts[lift] = chemical
+    configuration = AtomicConfiguration(
+        "Icosahedral-6D-model-set", tuple(positions), tuple(species), None,
+        False, "Exact meet-in-the-middle six-dimensional icosahedral "
+        "cut-and-project control with a spherical internal window and three "
+        "radial chemical shells.")
+    return configuration, lifts
+
+
 def algebraic_pair(
     value: float,
     unit: float,
