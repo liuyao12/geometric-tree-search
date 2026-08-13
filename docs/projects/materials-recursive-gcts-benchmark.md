@@ -1365,19 +1365,19 @@ but it is not mislabeled as recursive exponential growth.
 The next GCTS section is learned one order higher: for every observed endpoint
 inside the seed, it records unordered pairs of metric ports whose actions
 co-support that endpoint. There are 271 train-supported port-pair classes.
-Frozen on the unseen frontier, the pair section executes five nonempty waves:
+Its 6.155 Å frontier width is derived from the longest train-supported port
+after recursive normalization, rather than tuned on held-out performance.
+Frozen on the unseen frontier, the pair section executes three nonempty waves:
 
 | wave | sites inserted | correct | precision |
 | ---: | ---: | ---: | ---: |
 | 1 | 260 | 260 | 100% |
-| 2 | 312 | 312 | 100% |
-| 3 | 120 | 120 | 100% |
-| 4 | 80 | 80 | 100% |
-| 5 | 120 | 120 | 100% |
+| 2 | 192 | 192 | 100% |
+| 3 | 60 | 60 | 100% |
 
-It adds 892 exact species-labelled sites, growing 1,969 → 2,861 without target
+It adds 512 exact species-labelled sites, growing 1,969 → 2,481 without target
 positions or oracle colors entering fitting or insertion, then stalls on wave
-6. This is the first regenerative result from the generic cluster/port engine:
+4. This is the first regenerative result from the generic cluster/port engine:
 newly placed clusters create valid incoming contexts for later moves. It does
 not pass the exponential gate because the sequence does not amplify. The next
 promotion target is therefore a recurrent port-incidence component whose

@@ -12,7 +12,7 @@ from typing import Tuple
 from materials_gcts_icosahedral_modelset import HIDDEN_UNIT, oracle_patch
 from materials_gcts_metric_port_atlas import (
     fit_metric_port_atlas, fit_port_pair_section, pair_section_sites,
-    propose_with_metric_ports)
+    pair_section_frontier_width, propose_with_metric_ports)
 from materials_gcts_recursive_connections import (
     infer_recursive_scale, local_cluster_types, point_key)
 
@@ -32,6 +32,7 @@ class PortPairBenchmark:
     initial_atoms: int
     accepted_metric_ports: int
     accepted_port_pairs: int
+    learned_frontier_width: float
     waves: Tuple[PortPairWave, ...]
     exact_nonempty_waves: int
     exact_added_atoms: int
@@ -57,6 +58,7 @@ def evaluate(maximum_waves=8):
         target_colors=seed.species, observable_radius=9.0)
     section = fit_port_pair_section(
         atlas, seed.positions, seed_types, seed.positions)
+    frontier_width = pair_section_frontier_width(section, atlas)
     target_colors = {point_key(point): chemical for point, chemical in
                      zip(target.positions, target.species)}
     positions = list(initial.positions)
@@ -70,7 +72,8 @@ def evaluate(maximum_waves=8):
                              for point in positions)
         frontier = tuple(
             index for index, point in enumerate(positions)
-            if math.dist(point, (0.0, 0.0, 0.0)) >= maximum_radius - 6.5)
+            if math.dist(point, (0.0, 0.0, 0.0)) >=
+            maximum_radius - frontier_width)
         accepted = pair_section_sites(
             section, atlas, positions, types, level_scale=scale,
             parent_indices=frontier) - known
@@ -102,7 +105,8 @@ def evaluate(maximum_waves=8):
     exponential = regenerative and factors and min(factors) > 1.0
     return PortPairBenchmark(
         len(seed.positions), len(initial.positions), len(atlas.accepted_ports),
-        len(section.accepted_pairs), tuple(waves), exact_waves, exact_added,
+        len(section.accepted_pairs), frontier_width, tuple(waves), exact_waves,
+        exact_added,
         len(positions), exact_added / target_new,
         bool(waves and not waves[-1].proposed_sites), False, False,
         regenerative, bool(exponential), regenerative)

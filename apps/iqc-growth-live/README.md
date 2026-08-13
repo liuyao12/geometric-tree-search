@@ -495,10 +495,11 @@ clusters-of-clusters action compression, not yet an exponential production.
 
 A higher-order section now learns 271 unordered pairs of metric ports that
 co-support the same observed endpoint inside the seed. Requiring a learned
-pair—not merely one valid port—gives five consecutive held-out waves of
-`260 → 312 → 120 → 80 → 120` sites. All 892 inserted positions and predicted
-species are exact, and the state grows from 1,969 to 2,861 without oracle
-insertion before stalling. This is the first genuinely regenerative generic
+pair—not merely one valid port—is applied within a 6.155 Å frontier halo
+derived from the longest train-supported normalized port. It gives three
+held-out waves of `260 → 192 → 60` sites. All 512 inserted positions and
+predicted species are exact, and the state grows from 1,969 to 2,481 without
+oracle insertion before stalling. This is the first regenerative generic
 GCTS trajectory. It is not exponential: wave sizes do not amplify, so the
 long-term gate remains red.
 

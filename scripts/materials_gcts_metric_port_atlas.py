@@ -49,6 +49,13 @@ class PortPairSection:
     minimum_support: int
 
 
+def pair_section_frontier_width(
+        section: PortPairSection, atlas: MetricPortAtlas) -> float:
+    """Train-only radial halo covering every normalized pair-section port."""
+    return max((port[2] / atlas.scale for pair in section.accepted_pairs
+                for port in pair), default=0.0)
+
+
 def _ordered_pair(left: MetricPort, right: MetricPort):
     return tuple(sorted((left, right), key=repr))
 
