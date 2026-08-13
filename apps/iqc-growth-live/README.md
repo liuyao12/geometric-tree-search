@@ -548,6 +548,15 @@ centres. All three graphs have a self-edge representing the recursive
 cluster-of-clusters rewrite. One relational evaluator reproduces the same six
 exact colored-site batches without inspecting an opcode or material family.
 
+The graph is now tested causally rather than only on complete held-out states.
+Starting from the 1,969-site IQC cloud, each emitted colored site is inserted
+and becomes the sole input to the next graph evaluation. Four level-1 waves
+add `260, 192, 120, 80`; two level-2 waves add `792, 204`; three level-3 waves
+add `360, 240, 120`. All 2,368 inserted sites have exact positions and species,
+and the partial cloud reaches 4,337 atoms without any held-out atom or oracle
+color entering state. Totals by recursive level are `652 → 996 → 720`, so this
+passes self-fed multiscale regeneration but not exponential amplification.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

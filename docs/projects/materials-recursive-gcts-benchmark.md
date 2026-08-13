@@ -1478,6 +1478,32 @@ this graph produces the identical six exact outputs above. This closes the
 common-interpreter gate; learning multi-node graph topology and dense generic
 IQC coverage remain open.
 
+### Self-fed multiscale graph continuation
+
+The complete-heldout-state audit is not causal growth: missing target atoms can
+provide ports even if they are never directly scored as predictions. A new
+gate therefore starts from the 1,969-site state and inserts only the graph's
+own species-labelled emissions before retyping and executing again.
+
+| recursive level | successive self-fed waves | exact sites added |
+| ---: | --- | ---: |
+| 1 | 260 → 192 → 120 → 80 | 652 |
+| 2 | 792 → 204 | 996 |
+| 3 | 360 → 240 → 120 | 720 |
+
+All nine nonempty waves are 100% correct in position and species. The graph
+adds 2,368 sites and grows the partial cloud from 1,969 to 4,337 atoms. The
+155,097-site converged radius-`9 phi^4` oracle is used only for scoring; no
+held-out position or color enters insertion. The extra vote cutoff from the
+sparse amplifying-batch audit is omitted because membership in a learned port
+pair is already the finite higher-order GCTS marking.
+
+This passes a genuine self-fed, three-scale regeneration gate. It is still not
+exponential: exact sites per recursive level are `652 → 996 → 720`, so support
+does not grow monotonically. Dense growth will require learning another parent
+frontier state or a complementary gap-production node rather than lowering the
+precision gate.
+
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
 all atom pairs; a brute-force regression certifies identical local colors.
