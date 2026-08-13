@@ -6,6 +6,7 @@ import math
 from materials_gcts_2d_generic_atlas import layered_hexagonal_configuration
 from materials_gcts_fibonacci_3d import make_input
 from materials_gcts_generic import AtomicConfiguration, benchmark_systems
+from materials_gcts_icosahedral_modelset import oracle_patch
 from materials_gcts_recursive_program import (
     discover_recursive_program, symbolic_count as legacy_symbolic_count)
 from materials_gcts_typed_productions import (
@@ -39,6 +40,23 @@ def main() -> None:
                 configuration, legacy, action)
         action, count = actions_to_at_least(typed)
         assert action <= 6 and count >= 1_000_000
+
+    iqc, _ = oracle_patch(3, 9.0)
+    section = induce_typed_transform_program(iqc)
+    assert section.deterministic
+    assert not section.productions
+    assert len(section.section_productions) == 1
+    predicate = section.section_productions[0].predicate
+    assert predicate.lattice_rank == 6
+    assert predicate.internal_dimension == 3
+    assert predicate.learned_accepted_samples == 507
+    assert predicate.lift_residual < 1e-5
+    legacy = discover_recursive_program(iqc)
+    for action in range(7):
+        assert symbolic_atom_count(section, action) == legacy_symbolic_count(
+            iqc, legacy, action)
+    action, count = actions_to_at_least(section)
+    assert action == 6 and count >= 1_000_000
 
     sample = amorphous_hard_core_point_set(atom_count=507)
     amorphous = AtomicConfiguration(

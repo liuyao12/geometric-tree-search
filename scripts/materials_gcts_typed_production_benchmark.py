@@ -16,10 +16,12 @@ import math
 from dataclasses import asdict, dataclass
 from typing import Tuple
 
+import materials_gcts_blind_continuation as blind
 from materials_gcts_2d_generic_atlas import (
     _score, layered_hexagonal_configuration)
 from materials_gcts_fibonacci_3d import make_input
 from materials_gcts_generic import AtomicConfiguration, benchmark_systems
+from materials_gcts_icosahedral_modelset import oracle_patch
 from materials_gcts_recursive_program import (
     discover_recursive_program, explicit_apply,
     symbolic_count as reference_symbolic_count)
@@ -35,7 +37,8 @@ class TypedProductionCase:
     observation_kind: str
     observed_atoms: int
     recursive_types: int
-    productions: int
+    finite_productions: int
+    section_productions: int
     child_references: int
     section_marks: int
     materialized_atom_counts: Tuple[int, int, int]
@@ -52,7 +55,9 @@ class TypedProductionCase:
 @dataclass(frozen=True)
 class TypedProductionBenchmark:
     cases: Tuple[TypedProductionCase, ...]
-    same_recursive_executor: bool
+    shared_production_contract: bool
+    finite_counter_executor_cases: int
+    continuous_section_executor_cases: int
     family_label_used: bool
     amorphous_rejected: bool
     continuous_internal_section_compiled: bool
@@ -80,12 +85,31 @@ def _move_quasicrystal(configuration: AtomicConfiguration) -> AtomicConfiguratio
 
 
 def _fingerprint(program) -> tuple:
+    sections = tuple((item.parent_type, round(item.scale, 10),
+                      item.address_domain,
+                      item.predicate.section_kind,
+                      item.predicate.lattice_rank,
+                      item.predicate.physical_dimension,
+                      item.predicate.internal_dimension,
+                      round(item.predicate.algebraic_unit, 10),
+                      round(item.predicate.window_radius, 10),
+                      tuple(round(value, 10) for value in
+                            item.predicate.chemical_threshold_fractions),
+                      item.predicate.learned_accepted_samples)
+                     for item in program.section_productions)
     return (program.type_names, program.atomic_weights, program.root_counts,
             tuple((production.parent_type,
                    tuple((child.child_type, child.address,
                           child.section_mark)
                          for child in production.children))
-                  for production in program.productions))
+                  for production in program.productions),
+            sections)
+
+
+def _sites(configuration: AtomicConfiguration) -> set[tuple]:
+    return {(blind._site_key(point), chemical)
+            for point, chemical in zip(configuration.positions,
+                                       configuration.species)}
 
 
 def _case(configuration: AtomicConfiguration, mover,
@@ -100,20 +124,25 @@ def _case(configuration: AtomicConfiguration, mover,
     typed_counts = tuple(symbolic_atom_count(typed, action)
                          for action in range(3))
     if references is None:
+        exact_geometry = True
+    elif explicit_program.intrinsic_dimension == 2:
+        exact_geometry = all(_score(actual, target) == (1.0, 1.0, 1.0)
+                             for actual, target in zip(explicit, references))
+    else:
+        exact_geometry = all(_sites(actual) == _sites(target)
+                             for actual, target in zip(explicit, references))
+    if explicit_counts == typed_counts:
         executor_reference = explicit_counts
         reference_kind = "exact materialized atoms"
-        exact_geometry = True
     else:
         executor_reference = tuple(reference_symbolic_count(
             configuration, explicit_program, action) for action in range(3))
         reference_kind = "recursive address envelope"
-        exact_geometry = all(_score(actual, target) == (1.0, 1.0, 1.0)
-                             for actual, target in zip(explicit, references))
     million_action, million_atoms = actions_to_at_least(typed)
     return TypedProductionCase(
         configuration.name, typed.observation_kind,
         len(configuration.positions), len(typed.type_names),
-        len(typed.productions),
+        len(typed.productions), len(typed.section_productions),
         sum(len(item.children) for item in typed.productions),
         len({child.section_mark for item in typed.productions
              for child in item.children}),
@@ -135,7 +164,13 @@ def evaluate() -> TypedProductionBenchmark:
         f"typed-30deg-hBN-heldout-{action}",
         planar_program.observation_radius * 2 ** action,
         basis, angles, global_rotation=True) for action in (1, 2))
+    iqc, _ = oracle_patch(3, 9.0)
+    iqc_program = discover_recursive_program(iqc)
+    iqc_scale = iqc_program._payload.scale
+    iqc_references = (oracle_patch(4, 9.0 * iqc_scale)[0],
+                      oracle_patch(6, 9.0 * iqc_scale ** 2)[0])
     cases = (_case(nacl, _move_crystal),
+             _case(iqc, _move_quasicrystal, iqc_references),
              _case(make_input(9), _move_quasicrystal),
              _case(planar, _move_crystal, planar_references))
     sample = amorphous_hard_core_point_set(atom_count=507)
@@ -148,14 +183,16 @@ def evaluate() -> TypedProductionBenchmark:
     invariant = all(item.rigid_motion_invariant_graph for item in cases)
     no_labels = not any(induce_typed_transform_program(configuration).
                         family_label_used
-                        for configuration in (nacl, make_input(9), planar))
-    # Continuous internal-space sections need a different, non-finite child
-    # representation.  Keeping this false prevents the finite benchmark from
-    # quietly claiming the ideal icosahedral case.
-    continuous_compiled = False
+                        for configuration in (nacl, iqc, make_input(9), planar))
+    continuous_compiled = bool(cases[1].observation_kind ==
+                               "continuous internal-section observations")
     return TypedProductionBenchmark(
-        cases, True, not no_labels, rejected, continuous_compiled,
-        exact, invariant, rejected and exact and invariant and no_labels)
+        cases, True,
+        sum(bool(case.finite_productions) for case in cases),
+        sum(bool(case.section_productions) for case in cases),
+        not no_labels, rejected, continuous_compiled,
+        exact, invariant, rejected and exact and invariant and no_labels and
+        continuous_compiled)
 
 
 def main() -> None:

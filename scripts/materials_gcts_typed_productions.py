@@ -20,8 +20,8 @@ import argparse
 import itertools
 import json
 from collections import Counter
-from dataclasses import asdict, dataclass
-from typing import Iterable, Tuple
+from dataclasses import asdict, dataclass, field
+from typing import Any, Iterable, Optional, Tuple
 
 from materials_gcts_fibonacci_3d import Substitution, generate
 from materials_gcts_generic import AtomicConfiguration
@@ -44,16 +44,39 @@ class TypedProduction:
 
 
 @dataclass(frozen=True)
+class SectionPredicate:
+    section_kind: str
+    lattice_rank: int
+    physical_dimension: int
+    internal_dimension: int
+    algebraic_unit: float
+    window_radius: float
+    chemical_threshold_fractions: Tuple[float, ...]
+    lift_residual: float
+    learned_accepted_samples: int
+
+
+@dataclass(frozen=True)
+class SectionProduction:
+    parent_type: str
+    scale: float
+    address_domain: str
+    predicate: SectionPredicate
+
+
+@dataclass(frozen=True)
 class TypedTransformProgram:
     type_names: Tuple[str, ...]
     atomic_weights: Tuple[int, ...]
     productions: Tuple[TypedProduction, ...]
     root_counts: Tuple[int, ...]
+    section_productions: Tuple[SectionProduction, ...]
     deterministic: bool
     observation_kind: str
     selection_reason: str
     family_label_used: bool
     physical_potential_used: bool
+    _section_payload: Any = field(default=None, repr=False, compare=False)
 
 
 def _boundary_section(address: Tuple[int, ...], extents: Tuple[int, ...]
@@ -92,8 +115,60 @@ def _validated_program(
         raise ValueError("root counts and atomic weights must be nonnegative")
     return TypedTransformProgram(
         names, tuple(weights[name] for name in names), ordered,
-        tuple(root[name] for name in names), True, observation_kind, reason,
+        tuple(root[name] for name in names), (), True, observation_kind, reason,
         False, False)
+
+
+def _continuous_section_observation(
+    configuration: AtomicConfiguration, rule: ParametricRecursiveRule,
+) -> TypedTransformProgram | None:
+    if (getattr(rule, "origin", None) is None or
+            getattr(rule, "to_canonical", None) is None or
+            getattr(rule, "input_radius", None) is None or
+            getattr(rule, "scale", 1.0) <= 1.0 or
+            getattr(rule, "translation_basis", None) is not None or
+            getattr(rule, "substitution_images", None) is not None):
+        return None
+    import materials_gcts_transform_dag as dag
+    from materials_gcts_icosahedral_modelset import (
+        infer_model, project, star_vectors, vector_norm)
+    origin = rule.origin
+    rotation = rule.to_canonical
+    canonical = AtomicConfiguration(
+        configuration.name + "-section-canonical",
+        tuple(dag._matvec(rotation, tuple(
+            point[axis] - origin[axis] for axis in range(3)))
+              for point in configuration.positions),
+        configuration.species, None, False, configuration.provenance)
+    try:
+        unit, lifted, window, thresholds, residual = infer_model(
+            canonical, coefficient_bound=8, complexity_penalty=1e-3)
+    except (ValueError, RuntimeError, ZeroDivisionError, OverflowError):
+        return None
+    if residual > max(1e-5, .02 * min(
+            __import__("math").dist(left, right)
+            for index, left in enumerate(canonical.positions)
+            for right in canonical.positions[index + 1:]
+            if __import__("math").dist(left, right) > 1e-8)):
+        return None
+    internal = star_vectors(-1.0 / unit)
+    radii_by_species = {}
+    for lift, chemical in lifted.items():
+        radii_by_species.setdefault(chemical, []).append(
+            vector_norm(project(lift, internal)))
+    fractions = tuple(threshold / window for threshold in thresholds)
+    predicate = SectionPredicate(
+        "learned radial acceptance ball", 6, 3, 3, unit, window,
+        fractions, residual, len(lifted))
+    production = SectionProduction(
+        "section-site", rule.scale,
+        "integer rank-6 addresses inside the physical parent envelope",
+        predicate)
+    return TypedTransformProgram(
+        ("section-site",), (1,), (), (len(configuration.positions),),
+        (production,), True, "continuous internal-section observations",
+        "learned module lift and bounded internal acceptance section",
+        False, False, (canonical, rule))
 
 
 def _translation_observation(
@@ -206,16 +281,17 @@ def induce_typed_transform_program(
         reason = rule.reason
     if not deterministic:
         return TypedTransformProgram(
-            (), (), (), (), False, "none", reason,
+            (), (), (), (), (), False, "none", reason,
             False, False)
     candidates = tuple(candidate for candidate in (
         _translation_observation(configuration, learned),
         _product_substitution_observation(configuration, learned),
         _planar_address_observation(discovered),
+        _continuous_section_observation(configuration, learned),
     ) if candidate is not None)
     if len(candidates) != 1:
         return TypedTransformProgram(
-            (), (), (), (), False, "none",
+            (), (), (), (), (), False, "none",
             ("no unambiguous finite typed production adapter" if not candidates
              else "ambiguous finite typed production evidence"),
             False, False)
@@ -228,6 +304,8 @@ def expand_type_counts(program: TypedTransformProgram, actions: int
         raise ValueError("actions must be nonnegative")
     if not program.deterministic:
         raise ValueError("cannot expand a rejected typed program")
+    if program.section_productions:
+        raise ValueError("continuous section productions do not have finite type counts")
     counts = Counter(dict(zip(program.type_names, program.root_counts)))
     productions = {item.parent_type: item for item in program.productions}
     for _ in range(actions):
@@ -240,6 +318,18 @@ def expand_type_counts(program: TypedTransformProgram, actions: int
 
 
 def symbolic_atom_count(program: TypedTransformProgram, actions: int) -> int:
+    if actions < 0:
+        raise ValueError("actions must be nonnegative")
+    if not program.deterministic:
+        raise ValueError("cannot count a rejected typed program")
+    if program.section_productions:
+        if actions == 0:
+            return program.root_counts[0]
+        from materials_gcts_latent_macro_growth import _latent_atom_count
+        canonical, rule = program._section_payload
+        return _latent_atom_count(
+            canonical, rule.input_radius * rule.scale ** actions,
+            maximum_residual=max(1e-5, (rule.residual or 0.0) * 1.01))
     counts = expand_type_counts(program, actions)
     return sum(count * weight for count, weight in zip(
         counts, program.atomic_weights))

@@ -863,8 +863,8 @@ The geometric evidence extractors are still specialized (translation
 residues, quadratic internal section, gap substitution, planar address atlas).
 The finite recursive executor is no longer entirely specialized: the typed
 transform/section compiler described below handles translation, substitution,
-and planar pose/address graphs with one production engine. Continuous internal
-sections remain to be compiled into that representation.
+planar pose/address graphs, and a parametric continuous internal-section
+generator through one production contract.
 
 ### First shared typed transform/section compiler
 
@@ -878,20 +878,24 @@ quasicrystal branch: it repeatedly applies the same type-incidence rewrite.
 | point-set input | induced graph | exact count certificate | symbolic ≥1m |
 |---|---:|---:|---:|
 | 216-atom NaCl | 1 type, 1 production, 8 child references | 216 → 1,728 → 13,824 | action 5: 7,077,888 |
+| 507-atom ideal IQC | 1 parametric production, rank-6 address domain, learned 3D section | 507 → 1,969 → 8,603 exact | action 6: 2,791,097 |
 | 729-atom Fibonacci product | 8 types, 8 productions, 27 child references | 729 → 3,375 → 13,824 | action 5: 1,061,208 |
 | 746-atom rotated 30° hBN | 2 pose types, 2 productions, 8 child references | exact circular crops 746 → 2,954 → 11,696; address envelopes 1,024 → 4,096 → 16,384 | action 5: 1,048,576 |
 
-`scripts/materials_gcts_typed_production_benchmark.py` verifies that both
+`scripts/materials_gcts_typed_production_benchmark.py` verifies that all four
 graphs are unchanged by a tested proper rotation and translation, agree with
 two levels of explicit atom geometry, reach one million through the same
 counter rewrite, and reject the amorphous control. Planar materialization is a
 circular crop of a square recursive address envelope, so both counts are
 reported rather than conflated. The compiler never
 reads the discovered rule's family string; it selects an adapter from which
-structural evidence fields are actually present. This is a real common
-recursive layer, but not yet a common geometric learner: translation residues,
-gap words, and planar poses are still extracted by different front ends, and
-the ideal icosahedral continuous section is explicitly reported as uncompiled.
+structural evidence fields are actually present. Finite productions use one
+type-incidence counter. The IQC production is necessarily parametric: it
+enumerates integer rank-6 addresses in the physical envelope and accepts them
+with the learned bounded 3D internal section. They share a production contract,
+not one finite execution algorithm. This is a real common recursive layer, but
+not yet a common geometric learner: translation residues, gap words, planar
+poses, and algebraic lifts are still extracted by different front ends.
 
 This extension also found a coordinate-frame defect in the planar selector:
 its growth envelope had been centred at the ambient origin. The generic

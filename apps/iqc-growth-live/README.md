@@ -268,11 +268,13 @@ six recursive promotions, with minimum per-action factors from 3.884x to 8x
 and flat-cluster action reductions from 33,221x to 176,942x. The shared
 selector receives positions and species only and rejects the amorphous
 control. A second finite-grammar gate now compiles NaCl, the Fibonacci product,
-and the 30-degree hBN pose/address atlas into the same typed
+the 30-degree hBN pose/address atlas, and the ideal icosahedral section into the same typed
 parent/child/address/section representation. One family-free counter rewrite
-matches their two-level certificates and symbolic million-site counts; the
-graphs also survive tested rigid motions. The planar row distinguishes its
-square address envelope from the exact circular atom crop. The continuous
-icosahedral section remains the next compiler target.
+contract. Three finite graphs use the same counter rewrite; the IQC uses a
+rank-6 address generator gated by its learned bounded 3D internal section.
+All match their two-level certificates and symbolic million-site counts, and
+survive tested rigid motions. The planar row distinguishes its
+square address envelope from the exact circular atom crop. Geometry discovery
+front ends remain specialized and are the next unification target.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.
