@@ -465,6 +465,19 @@ training clusters is anti-informative on the incomplete frontier. The sealed
 generic gate is therefore red; the next marking must use overlap-port
 incidence among already placed clusters.
 
+The first symmetry-quotiented motif-centre port atlas now supplies a positive
+answer at limited recall. A port stores the two frozen local motif types and
+their exact separation, then divides that separation by the current recursive
+level scale before lookup. It is invariant to translation, arbitrary rotation,
+atom order, and inflation level. Twenty-five of 444 seed-only port classes are
+accepted. On the unseen 1,969-site frontier they generate 380 distinct sites;
+all 380 occur in the 8,603-site target, for 100% precision and 5.73% recall.
+Every site has two or three independent overlapping-port votes. The otherwise
+identical 0.5-wide separation-bin marking produces 3,404 sites at 14.69%
+precision, so the metric port improves precision 6.81x. The next target is to
+increase port coverage without sacrificing this exactness, then iterate the
+accepted sites as an actual growth state.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

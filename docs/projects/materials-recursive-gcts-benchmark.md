@@ -1327,6 +1327,23 @@ also anti-informative, confirming that the useful GCTS section is a graph of
 incoming overlap ports, not a potential-like coordination score. This sealed
 result is now the causal generic connection baseline and is intentionally red.
 
+`materials_gcts_metric_port_atlas.py` makes the first useful generic
+connection correction. The coarse 0.5-wide separation bin is replaced by the
+motif-centre connection length itself. At application, the length is divided
+by the current recursively inferred scale before matching. Thus a port class
+is `(parent motif type, source motif type, normalized metric length)` and is
+invariant to translation, arbitrary rotation, atom ordering, and inflation
+level. No proposed coordinate or target occupancy enters the key.
+
+From 93 seed-interior parents, 25 of 444 observed metric port classes pass the
+train-only support/purity rule. Frozen on the 1,969-site frontier, they admit
+5,052 connection actions whose overlaps collapse to 380 distinct novel sites.
+All 380 are present in the 8,603-site held-out target: 100% precision, 5.73%
+recall, and two or three independent votes per site. The matched coarse-state
+ablation proposes 3,404 sites with 500 true (14.69% precision), so metric ports
+give a 6.81x precision gain. This gate is green for exact transferred port
+execution, while recursive full-growth recall remains red.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives
