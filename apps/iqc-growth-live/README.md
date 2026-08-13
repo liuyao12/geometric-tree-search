@@ -336,4 +336,15 @@ currently describes only 33% of NaCl occurrences and 30% of IQC occurrences.
 Context-marked alternatives and held-out geometric continuation are required
 before this generic grammar can inherit the million-site claim.
 
+The follow-up frozen occurrence split makes that requirement executable rather
+than rhetorical. A 2:1 spatial ordering split learns 70 finite NaCl and 59
+finite IQC right-hand-side alternatives; these vocabularies contain the true
+held-out alternative for 100% and 99.60% of cases. However, both the original
+bounded halo and the first child-port section choose exactly the same modal
+production as the parent type alone: 90.0% held-out accuracy for NaCl and
+88.49% for IQC, with zero marking gain. The negative control is committed as a
+red test. It prevents merely storing alternatives from being reported as
+GCTS: the next marking must use already-placed connection/overlap context and
+beat this frozen modal baseline before an unseen-window claim is allowed.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

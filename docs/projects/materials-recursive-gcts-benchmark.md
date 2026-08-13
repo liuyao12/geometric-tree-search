@@ -1062,6 +1062,27 @@ inner window, and measure exact replay on unseen outer occurrences. Until that
 passes, the million-site rows above remain certificates of the specialized
 quotient/substitution/section/address backends—not of this generic grammar.
 
+### Frozen alternative-selection gate
+
+`scripts/materials_gcts_contextual_alternatives.py` now retains a finite set of
+right-hand-side alternatives instead of silently discarding every non-modal
+cover. It uses a deterministic two-training/one-held-out occurrence split and
+freezes the rule table before scoring held-out occurrences.
+
+| finite cloud | train / held-out occurrences | RHS alternatives | held-out RHS seen in train | parent-only modal | bounded halo / port mark |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| NaCl | 438 / 210 | 70 | 100% | 90.0% | 90.0% |
+| ideal IQC | 1,014 / 504 | 59 | 99.60% | 88.49% | 88.49% |
+
+This is another intentional red gate. The finite vocabulary is adequate, but
+the current halo is constant within each coarse parent type and the first
+bounded child-port multiset adds no discriminating information. A GCTS marking
+must use already-placed incoming connection/overlap ports—not atoms that the
+candidate would create—and must beat both the parent-only modal rule and a
+shuffled-port control. Because overlapping occurrences share atoms, this split
+is diagnostic only; the acceptance benchmark will train inside one window and
+test outside a guard band in larger NaCl and IQC windows.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
