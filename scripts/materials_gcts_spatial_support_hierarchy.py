@@ -14,7 +14,7 @@ import math
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from statistics import median
-from typing import Hashable, Mapping, Sequence, Tuple
+from typing import Hashable, Mapping, Optional, Sequence, Tuple
 
 
 Point = Tuple[float, float, float]
@@ -135,6 +135,7 @@ def learn_spatial_support_hierarchy(
     radius_scales: Sequence[float] = (1.08, 2.0, 3.7),
     minimum_domains: int = 2,
     minimum_occurrences: int = 2,
+    frozen_length_unit: Optional[float] = None,
 ) -> SpatialSupportHierarchy:
     if not positions or len(positions) != len(species):
         raise ValueError("positions and species must be nonempty and aligned")
@@ -142,7 +143,19 @@ def learn_spatial_support_hierarchy(
         raise ValueError("domains and positive radius scales are required")
     normalized = tuple(tuple(float(value) for value in point)
                        for point in positions)
-    unit = nearest_neighbor_scale(normalized)
+    assigned = set(index for indices in domains.values()
+                   for index in set(indices))
+    if any(index < 0 or index >= len(normalized) for index in assigned):
+        raise ValueError("domain index out of range")
+    if sum(len(set(indices)) for indices in domains.values()) != len(assigned):
+        raise ValueError("spatial hierarchy domains must be disjoint")
+    if len(assigned) < 2:
+        raise ValueError("at least two assigned atoms are required")
+    unit = (frozen_length_unit if frozen_length_unit is not None else
+            nearest_neighbor_scale(tuple(normalized[index]
+                                         for index in sorted(assigned))))
+    if unit <= 0:
+        raise ValueError("length unit must be positive")
     radii = tuple(unit * scale for scale in radius_scales)
     domain_nodes = {
         label: tuple(SpatialClusterOccurrence(
@@ -151,12 +164,6 @@ def learn_spatial_support_hierarchy(
             ()) for index in sorted(set(indices)))
         for label, indices in domains.items()
     }
-    assigned = set(index for nodes in domain_nodes.values()
-                   for node in nodes for index in node.support)
-    if any(index < 0 or index >= len(normalized) for index in assigned):
-        raise ValueError("domain index out of range")
-    if sum(len(set(indices)) for indices in domains.values()) != len(assigned):
-        raise ValueError("spatial hierarchy domains must be disjoint")
 
     levels = []
     largest = []
@@ -226,10 +233,12 @@ def learn_spatial_support_hierarchy(
 
 def guarded_octants(
     positions: Sequence[Sequence[float]], margin: float,
+    center: Optional[Sequence[float]] = None,
 ) -> Mapping[Tuple[bool, bool, bool], Tuple[int, ...]]:
     """Create eight disjoint spatial evaluation domains, excluding planes."""
-    center = tuple(median(point[axis] for point in positions)
-                   for axis in range(3))
+    center = (tuple(float(value) for value in center) if center is not None else
+              tuple(median(point[axis] for point in positions)
+                    for axis in range(3)))
     grouped = defaultdict(list)
     for index, point in enumerate(positions):
         delta = tuple(point[axis] - center[axis] for axis in range(3))

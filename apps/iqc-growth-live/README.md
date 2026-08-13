@@ -402,6 +402,14 @@ or construction order. Extrapolating the smaller measured factor suggests nine
 additional promotions to one million represented sites, but that number is
 explicitly unverified until those unseen productions replay.
 
+A sealed spatial grammar test then fits the distance scale, type vocabularies,
+and parent-to-child productions on four negative-x sectors (148 atoms) and
+replays them on the four positive-x sectors (148 atoms). The frozen `4 / 3 / 1`
+type dictionaries and eight productions obtain 100% held-out occurrence, atom,
+and production coverage at all three levels, with no held-out geometry used for
+fitting. All eight parent types have one RHS in this symmetric fixture, so the
+GCTS marking result remains the separate causal frontier-ranking ablation.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

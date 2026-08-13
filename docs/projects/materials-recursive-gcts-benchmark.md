@@ -1188,6 +1188,21 @@ represented sites. That is a projection, not yet a growth certificate:
 unseen-level production replay, causal GCTS marking on the promoted ports, and
 explicit output checks remain required.
 
+The companion frozen test separates the eight domains by the sign of `x`.
+`materials_gcts_frozen_spatial_grammar.py` fits its length unit, type
+dictionaries, and production alternatives using only four negative-x domains
+(148 atoms), then transforms the four positive-x domains (148 atoms) with those
+objects frozen. The origin and guard width are predeclared from the known inner
+configuration, rather than estimated from held-out frontier atoms.
+
+The learned vocabularies contain `4 / 3 / 1` types and eight parent-to-child
+productions. Held-out type occurrence coverage, atom coverage, and exact child
+production agreement are all 100% at all three levels; there are no unseen
+types or productions. This is dictionary and cover-grammar transfer across a
+spatial half-space, not yet causal outward growth. Each parent has exactly one
+RHS in this fixture, so a marking cannot improve decomposition; the separate
+live-frontier ablation is where incoming GCTS marking has a causal choice.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives

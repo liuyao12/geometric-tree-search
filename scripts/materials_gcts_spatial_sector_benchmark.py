@@ -11,8 +11,7 @@ from typing import Tuple
 
 from materials_gcts_frontier_attachment_benchmark import evaluate as frontier
 from materials_gcts_spatial_support_hierarchy import (
-    guarded_octants, learn_spatial_support_hierarchy,
-    nearest_neighbor_scale)
+    guarded_octants, learn_spatial_support_hierarchy)
 
 
 @dataclass(frozen=True)
@@ -49,8 +48,11 @@ def evaluate(waves=16):
                     for color in trace.species)
     if any(wave.false_sites for wave in growth.regenerative_growth_waves):
         raise RuntimeError("spatial sector benchmark requires exact growth")
-    scale = nearest_neighbor_scale(positions)
-    domains = guarded_octants(positions, margin=.08 * scale)
+    # The model-set origin and guard scale come from the already-known inner
+    # configuration, not from the held-out frontier geometry.
+    domains = guarded_octants(
+        positions, margin=.08 * growth.learned_minimum_separation,
+        center=(0.0, 0.0, 0.0))
     radius_scales = (1.08, 2.0, 3.7)
     hierarchy = learn_spatial_support_hierarchy(
         positions, species, domains, radius_scales=radius_scales)
