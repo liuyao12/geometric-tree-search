@@ -54,8 +54,7 @@ def evaluate():
     edges = (1.4, 2.1, 2.8, 3.81)
     seed_types = local_cluster_types(seed.positions, seed.species, edges)
     state_types = local_cluster_types(state.positions, state.species, edges)
-    parents = tuple(index for index, point in enumerate(seed.positions)
-                    if math.dist(point, (0.0, 0.0, 0.0)) <= 9.0 / scale)
+    parents = tuple(range(len(seed.positions)))
     frontier = tuple(index for index, point in enumerate(state.positions)
                      if math.dist(point, (0.0, 0.0, 0.0)) >= 8.0)
     known = {point_key(point) for point in state.positions}
@@ -63,7 +62,8 @@ def evaluate():
 
     atlas = fit_metric_port_atlas(
         seed.positions, seed_types, seed.positions, scale,
-        parent_indices=parents, target_colors=seed.species)
+        parent_indices=parents, target_colors=seed.species,
+        observable_radius=9.0)
     result = propose_with_metric_ports(
         atlas, state.positions, state_types, level_scale=scale,
         parent_indices=frontier)
@@ -71,11 +71,14 @@ def evaluate():
                      if point not in known})
     true = len(set(votes) & heldout)
     components = overlapping_consensus_components(
-        result, excluded_points=known)
+        result, minimum_votes=1, excluded_points=known)
 
+    # Retain the original sealed coarse baseline for direct comparison.
+    coarse_parents = tuple(index for index, point in enumerate(seed.positions)
+                           if math.dist(point, (0.0, 0.0, 0.0)) <= 9.0 / scale)
     coarse = learn_recursive_connection_marking(
         seed.positions, seed_types, seed.positions, scale,
-        parent_indices=parents, target_colors=seed.species,
+        parent_indices=coarse_parents, target_colors=seed.species,
         minimum_positive_support=2, minimum_purity=.75)
     coarse_result = propose_with_recursive_marking(
         coarse, state.positions, state_types, scale,

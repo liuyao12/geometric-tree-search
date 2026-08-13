@@ -60,6 +60,8 @@ def fit_metric_port_atlas(
         target_positions: Iterable[Point], scale: float, *,
         parent_indices: Iterable[int] | None = None,
         target_colors: Sequence[object] | None = None,
+        observable_center: Point = (0.0, 0.0, 0.0),
+        observable_radius: float | None = None,
         distance_digits: int = 5, minimum_positive_support: int = 2,
         minimum_purity: float = .75) -> MetricPortAtlas:
     """Fit ports using exact separation modulo rotation and recursive scale."""
@@ -81,6 +83,12 @@ def fit_metric_port_atlas(
                           distance_digits))
             proposed = point_key(_proposal(
                 positions[parent], source_point, scale))
+            proposed_point = tuple(value * 1e-6 for value in proposed)
+            if (observable_radius is not None and
+                    math.dist(proposed_point, observable_center) >
+                    observable_radius + 1e-9):
+                # Outside the observed window means censored, not negative.
+                continue
             evidence[port][1] += 1
             evidence[port][0] += proposed in targets
             if proposed in colors:
@@ -164,4 +172,5 @@ def overlapping_consensus_components(
                     unseen.remove(neighbor)
                     stack.append(neighbor)
         components.append(tuple(sorted(component)))
+    # Sites without a shared supporting centre are valid singleton macros.
     return tuple(sorted(components, key=lambda item: (-len(item), item)))

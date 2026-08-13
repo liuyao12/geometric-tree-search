@@ -469,29 +469,27 @@ The first symmetry-quotiented motif-centre port atlas now supplies a positive
 answer at limited recall. A port stores the two frozen local motif types and
 their exact separation, then divides that separation by the current recursive
 level scale before lookup. It is invariant to translation, arbitrary rotation,
-atom order, and inflation level. Twenty-five of 444 seed-only port classes are
-accepted. On the unseen 1,969-site frontier they generate 380 distinct sites;
-all 380 occur in the 8,603-site target, for 100% precision and 5.73% recall.
-Every site has two or three independent overlapping-port votes. The otherwise
+atom order, and inflation level. Proposals outside the finite seed are censored
+rather than treated as negative; 73 of 1,888 observable seed-only port classes
+are accepted. On the unseen frontier they generate 860 distinct sites; all 860
+occur in the target, for 100% precision and 12.96% recall. The otherwise
 identical 0.5-wide separation-bin marking produces 3,404 sites at 14.69%
 precision, so the metric port improves precision 6.81x. The next target is to
 increase port coverage without sacrificing this exactness, then iterate the
 accepted sites as an actual growth state.
 
-That iteration is now explicit. The 380 predicted species-labelled atoms are
+That iteration is now explicit. The 860 predicted species-labelled atoms are
 inserted using only the atlas's train-only color votes, growing the state from
-1,969 to 2,349 atoms with 100% correctness. Retyping the partial cloud and
-reapplying the same frozen atlas produces 3,960 novel single-port candidates
-but no site with the required two-port consensus, so wave 2 adds nothing. The
-regenerative gate stays red. This localizes the next clusters-of-clusters
-problem: an accepted macro must also reconstruct the overlap-incidence graph
-needed to support its successor, rather than emit isolated correct atoms.
+1,969 to 2,829 atoms with 100% correctness. Retyping and admitting every
+train-supported single port produces 13,020 wave-2 sites, all false. The
+regenerative gate rejects this exponential error branch: single-port support
+is insufficient.
 
 Promoting the action-incidence graph does uncover two genuine overlapping
 superclusters: accepted sites are connected when their supporting port actions
-share a parent or source motif centre. The two components contain 240 and 140
-exact sites. They are conflict-free parallel macro actions, giving 190 sites
-per supercluster action. They are different isometry classes, however, and
+share a parent or source motif centre. The exact 860-site patch has two large
+components of 240 and 140 sites plus 32 smaller components. They are
+conflict-free parallel macro actions. They are different isometry classes, and
 scaling either component does not generate its successor. This is meaningful
 clusters-of-clusters action compression, not yet an exponential production.
 

@@ -1335,29 +1335,26 @@ is `(parent motif type, source motif type, normalized metric length)` and is
 invariant to translation, arbitrary rotation, atom ordering, and inflation
 level. No proposed coordinate or target occupancy enters the key.
 
-From 93 seed-interior parents, 25 of 444 observed metric port classes pass the
-train-only support/purity rule. Frozen on the 1,969-site frontier, they admit
-5,052 connection actions whose overlaps collapse to 380 distinct novel sites.
-All 380 are present in the 8,603-site held-out target: 100% precision, 5.73%
-recall, and two or three independent votes per site. The matched coarse-state
+Proposals leaving the observed seed are censored rather than mislabeled
+negative. Across all 507 parents, 73 of 1,888 observable metric port classes
+pass the train-only rule. Frozen on the 1,969-site frontier, they collapse to
+860 distinct novel sites. All 860 are in the held-out target: 100% precision
+and 12.96% recall. The matched coarse-state
 ablation proposes 3,404 sites with 500 true (14.69% precision), so metric ports
 give a 6.81x precision gain. This gate is green for exact transferred port
 execution, while recursive full-growth recall remains red.
 
-The executor now inserts the 380 predicted species labels, recomputes motif
-types on the resulting 2,349-site partial cloud, and reapplies the same frozen
-atlas. No oracle species or positions are inserted. Wave 2 exposes 3,960 novel
-one-port candidates but none has the two independent overlaps required for
-acceptance, so growth stalls. This is a sharper red regenerative gate: metric
-ports transfer and execute, but the first action does not reconstruct the
-higher-order port-incidence state needed by the next action. The next learned
-supercluster must carry that incidence graph as part of its production.
+The executor inserts the 860 predicted species labels, producing a 2,829-site
+partial cloud with 100% correctness. No oracle species or positions are
+inserted. Admitting every train-supported single port then adds 13,020 sites
+and every one is false. The regenerative gate rejects this branch: metric
+ports transfer once, but do not reconstruct the higher-order overlap state.
 
 The accepted port-action incidence graph is now promoted explicitly. Two sites
 are in the same supercluster when a chain of accepted overlaps shares parent
-or source motif centres. The 380-site exact patch decomposes into two connected
-components of 240 and 140 sites, so a renderer/executor may apply two
-nonconflicting macros instead of 380 atom insertions (190 sites per action).
+or source motif centres. The 860-site exact patch has two large connected
+components of 240 and 140 sites plus 32 smaller components, all available as
+nonconflicting macros.
 Their coordinate fingerprints are different isometry classes, and direct
 inflation of either component produces no valid next sites. Accordingly this
 is a real clusters-of-clusters representation and parallel-action compression,

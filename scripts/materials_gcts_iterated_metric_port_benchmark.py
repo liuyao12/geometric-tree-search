@@ -50,12 +50,11 @@ def evaluate(maximum_waves=5):
     scale = infer_recursive_scale(seed.positions, maximum_distance=9.0).scale
     edges = (1.4, 2.1, 2.8, 3.81)
     seed_types = local_cluster_types(seed.positions, seed.species, edges)
-    training_parents = tuple(
-        index for index, point in enumerate(seed.positions)
-        if math.dist(point, (0.0, 0.0, 0.0)) <= 9.0 / scale)
+    training_parents = tuple(range(len(seed.positions)))
     atlas = fit_metric_port_atlas(
         seed.positions, seed_types, seed.positions, scale,
-        parent_indices=training_parents, target_colors=seed.species)
+        parent_indices=training_parents, target_colors=seed.species,
+        observable_radius=9.0)
     positions = list(initial.positions)
     species = list(initial.species)
     known = {point_key(point) for point in positions}
@@ -75,7 +74,7 @@ def evaluate(maximum_waves=5):
             parent_indices=frontier)
         votes = Counter({point: count for point, count in result.votes.items()
                          if point not in known})
-        accepted = tuple(point for point, count in votes.items() if count >= 2)
+        accepted = tuple(votes)
         true = sum(point in target_colors for point in accepted)
         waves.append(MetricPortWave(
             wave, len(positions), len(votes), len(accepted), true,
@@ -97,7 +96,9 @@ def evaluate(maximum_waves=5):
             known.add(key)
     correct_new = len((known - initial_known) & set(target_colors))
     target_new = len(set(target_colors) - initial_known)
-    regenerative = len(waves) >= 2 and waves[1].accepted_sites > 0
+    nonempty = tuple(wave for wave in waves if wave.accepted_sites)
+    regenerative = (len(nonempty) >= 2 and
+                    all(wave.precision >= .99 for wave in nonempty))
     return IteratedMetricPortBenchmark(
         len(seed.positions), len(initial.positions), len(positions),
         tuple(waves), correct_new, bool(waves and not waves[-1].accepted_sites),
