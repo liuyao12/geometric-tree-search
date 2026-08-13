@@ -7,8 +7,9 @@ from materials_gcts_fibonacci_3d import make_input
 from materials_gcts_generic import AtomicConfiguration, benchmark_systems
 from materials_gcts_icosahedral_modelset import oracle_patch
 from materials_gcts_recursive_program import (
-    actions_to_at_least, discover_recursive_program, explicit_apply,
-    symbolic_count)
+    actions_to_at_least, discover_recursive_program,
+    discover_recursive_program_candidates, explicit_apply,
+    select_recursive_program_candidate, symbolic_count)
 from materials_pointset_benchmarks import amorphous_hard_core_point_set
 
 
@@ -31,7 +32,14 @@ def main() -> None:
              (fibonacci, "substitution_product"),
              (planar, "planar_pose_address"))
     for configuration, family in cases:
-        program = discover_recursive_program(configuration)
+        candidates = discover_recursive_program_candidates(configuration)
+        assert candidates
+        selected = select_recursive_program_candidate(candidates)
+        reversed_selected = select_recursive_program_candidate(
+            tuple(reversed(candidates)))
+        assert selected.program.family == reversed_selected.program.family
+        assert selected.program.family == family
+        program = selected.program
         assert program.family == family
         assert program.deterministic
         assert not program.family_label_used

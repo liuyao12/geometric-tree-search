@@ -7,7 +7,8 @@ from materials_gcts_generic import AtomicConfiguration, benchmark_systems
 from materials_gcts_periodic_growth import replicate
 from materials_gcts_fibonacci_3d import make_input
 from materials_gcts_icosahedral_modelset import oracle_patch
-from materials_gcts_parametric_recursive import apply_rule, discover_rule, evaluate
+from materials_gcts_parametric_recursive import (
+    apply_rule, discover_rule, discover_rule_candidates, evaluate)
 
 
 def test_generic_parametric_recursive_dispatch() -> None:
@@ -35,6 +36,24 @@ def test_generic_parametric_recursive_dispatch() -> None:
     assert not result.amorphous.deterministic
     assert result.amorphous.projected_atoms is None
     assert tuple(result.amorphous.hierarchy_supports) == (0, 0, 0)
+
+
+def test_all_geometric_hypotheses_share_one_model_selection_gate() -> None:
+    nacl = next(item for item in benchmark_systems()
+                if item.name == "NaCl-rocksalt")
+    iqc, _ = oracle_patch(3, 9.0)
+    fibonacci = make_input(9)
+    for configuration, expected in (
+            (nacl, "translation_quotient"),
+            (iqc, "internal_section_inflation"),
+            (fibonacci, "substitution_product")):
+        candidates = discover_rule_candidates(configuration)
+        assert candidates
+        assert candidates[0].rule.family == expected
+        assert candidates[0].seed_replay_exact
+        assert all(candidate.recurring_levels == 3 for candidate in candidates)
+        assert tuple(candidate.selection_score for candidate in candidates) == \
+            tuple(sorted(candidate.selection_score for candidate in candidates))
 
 
 def test_iqc_rule_is_rotation_and_translation_invariant() -> None:

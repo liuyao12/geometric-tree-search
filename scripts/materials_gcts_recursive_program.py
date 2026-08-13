@@ -21,7 +21,8 @@ from materials_gcts_fibonacci_3d import Substitution, apply_substitution, genera
 from materials_gcts_generic import AtomicConfiguration
 from materials_gcts_latent_macro_growth import _latent_atom_count
 from materials_gcts_parametric_recursive import (
-    ParametricRecursiveRule, apply_rule_actions, discover_rule)
+    ParametricRecursiveRule, apply_rule_actions, discover_rule,
+    discover_rule_candidates)
 
 
 @dataclass(frozen=True)
@@ -44,6 +45,17 @@ class RecursiveProgram:
     heldout_atoms_used: bool
     physical_potential_used: bool
     _payload: Any = field(repr=False, compare=False)
+
+
+@dataclass(frozen=True)
+class RecursiveProgramCandidate:
+    program: RecursiveProgram
+    normalized_residual: float
+    description_entries: int
+    seed_replay_exact: bool
+    seed_mismatch_fraction: float
+    selection_score: float
+    evidence_kind: str
 
 
 def _covariance_eigenvalues(configuration: AtomicConfiguration) -> tuple[float, float, float]:
@@ -141,17 +153,8 @@ def _try_planar(configuration: AtomicConfiguration) -> RecursiveProgram | None:
         False, False, atlas)
 
 
-def discover_recursive_program(configuration: AtomicConfiguration) -> RecursiveProgram:
-    planar = _try_planar(configuration)
-    if planar is not None:
-        return planar
-    rule = discover_rule(configuration)
-    if not rule.deterministic:
-        return RecursiveProgram(
-            "none", False, 3, 0, 0, 0, 1.0, rule.marking,
-            rule.hierarchy_supports, len(configuration.positions),
-            len(configuration.positions), 0, 0.0, rule.reason,
-            False, False, False, rule)
+def _program_from_rule(configuration: AtomicConfiguration,
+                       rule: ParametricRecursiveRule) -> RecursiveProgram:
     primitive = (len(rule.translation_motif)
                  if rule.family == "translation_quotient"
                  else max(1, rule.hierarchy_supports[0]))
@@ -165,6 +168,57 @@ def discover_recursive_program(configuration: AtomicConfiguration) -> RecursiveP
         rule.marking, rule.hierarchy_supports, len(configuration.positions),
         len(configuration.positions), 0, rule.input_radius or 0.0,
         rule.reason, False, False, False, rule)
+
+
+def discover_recursive_program_candidates(
+    configuration: AtomicConfiguration,
+) -> Tuple[RecursiveProgramCandidate, ...]:
+    """Evaluate planar and 3-D hypotheses before choosing either one."""
+    candidates = []
+    planar = _try_planar(configuration)
+    if planar is not None:
+        atlas: GenericPlanarAtlas = planar._payload
+        complexity = (sum(len(component.motif) + 2
+                          for component in atlas.components) +
+                      len(atlas.components))
+        score = complexity / len(configuration.positions)
+        candidates.append(RecursiveProgramCandidate(
+            planar, 0.0, complexity, True, 0.0, score,
+            "exact planar seed replay"))
+    for candidate in discover_rule_candidates(configuration):
+        candidates.append(RecursiveProgramCandidate(
+            _program_from_rule(configuration, candidate.rule),
+            candidate.normalized_residual,
+            candidate.description_entries,
+            candidate.seed_replay_exact,
+            candidate.seed_mismatch_fraction,
+            candidate.selection_score,
+            "3-D geometric hypothesis"))
+    return tuple(sorted(candidates, key=lambda candidate: (
+        candidate.selection_score, candidate.description_entries,
+        candidate.program.marking)))
+
+
+def select_recursive_program_candidate(
+    candidates: Tuple[RecursiveProgramCandidate, ...],
+) -> RecursiveProgramCandidate:
+    if not candidates:
+        raise ValueError("no admitted recursive program candidate")
+    return min(candidates, key=lambda candidate: (
+        candidate.selection_score, candidate.description_entries,
+        candidate.program.marking))
+
+
+def discover_recursive_program(configuration: AtomicConfiguration) -> RecursiveProgram:
+    candidates = discover_recursive_program_candidates(configuration)
+    if candidates:
+        return select_recursive_program_candidate(candidates).program
+    rule = discover_rule(configuration)
+    return RecursiveProgram(
+        "none", False, 3, 0, 0, 0, 1.0, rule.marking,
+        rule.hierarchy_supports, len(configuration.positions),
+        len(configuration.positions), 0, 0.0, rule.reason,
+        False, False, False, rule)
 
 
 def explicit_apply(configuration: AtomicConfiguration,

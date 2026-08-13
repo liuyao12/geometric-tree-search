@@ -902,6 +902,28 @@ its growth envelope had been centred at the ambient origin. The generic
 recursive entry point now infers the observation centre from the finite sample,
 so a translated and rotated input produces the same typed graph.
 
+### Family-blind hypothesis competition
+
+The earlier selector still tried recognizers in a hand-written order and
+returned after the first successful family. That control flow has now been
+removed. `discover_recursive_program_candidates` attempts the planar,
+translation, product-substitution, and internal-section hypotheses without a
+phase-category guard. Every admitted proposal reports normalized seed
+residual, description entries, exact seed replay, recursive hierarchy support,
+seed mismatch, and a common fit-plus-description score. Selection is the
+minimum score and is invariant to proposal order.
+
+`scripts/materials_gcts_model_selection_benchmark.py` provides a nontrivial
+competition rather than four one-candidate demonstrations. The Fibonacci
+product admits both its exact substitution grammar and an approximate finite
+translation quotient. That quotient reproduces only 194 of 729 observed sites
+exactly and is penalized for its seed mismatch. The common score selects
+substitution at 0.019204 versus 1.560741 for the quotient, a margin of
+1.541536. NaCl selects its quotient,
+the ideal IQC its internal section, and rotated 30-degree hBN its planar atlas.
+The amorphous control admits zero proposals. No crystal, quasicrystal, planar,
+or amorphous label is provided to proposal generation or selection.
+
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
 | NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |

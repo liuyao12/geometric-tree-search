@@ -267,14 +267,23 @@ is admitted. All four reach at least one million represented sites in five or
 six recursive promotions, with minimum per-action factors from 3.884x to 8x
 and flat-cluster action reductions from 33,221x to 176,942x. The shared
 selector receives positions and species only and rejects the amorphous
-control. A second finite-grammar gate now compiles NaCl, the Fibonacci product,
-the 30-degree hBN pose/address atlas, and the ideal icosahedral section into the same typed
-parent/child/address/section representation. One family-free counter rewrite
-contract. Three finite graphs use the same counter rewrite; the IQC uses a
+control. A second production gate now compiles NaCl, the Fibonacci product,
+the 30-degree hBN pose/address atlas, and the ideal icosahedral section into
+the same typed parent/child/address/section contract. Three finite graphs use
+the same counter rewrite; the IQC uses a
 rank-6 address generator gated by its learned bounded 3D internal section.
 All match their two-level certificates and symbolic million-site counts, and
 survive tested rigid motions. The planar row distinguishes its
 square address envelope from the exact circular atom crop. Geometry discovery
 front ends remain specialized and are the next unification target.
+
+Model selection no longer means “try families in order and stop at the first
+success.” The planar and three 3D hypotheses are all proposed before a common
+fit-plus-description-and-seed-mismatch score is minimized. The Fibonacci
+control is the first competing-hypothesis gate: its exact substitution program
+scores 0.0192 while an inexact translation quotient scores 1.5607, independent
+of proposal order. NaCl, ideal IQC, and 30-degree hBN select their expected
+programs with exact seed replay, while the amorphous control produces no
+admitted proposal.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

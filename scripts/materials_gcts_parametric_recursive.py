@@ -67,6 +67,37 @@ class ParametricRecursiveRule:
 
 
 @dataclass(frozen=True)
+class RuleCandidate:
+    rule: ParametricRecursiveRule
+    normalized_residual: float
+    description_entries: int
+    seed_replay_exact: bool
+    seed_mismatch_fraction: float
+    recurring_levels: int
+    selection_score: float
+
+
+def _translation_seed_mismatch(
+    configuration: AtomicConfiguration,
+    basis: Tuple[Tuple[float, float, float], ...],
+    motif: Tuple[Tuple[str, float, float, float], ...],
+    minimum: Tuple[int, int, int], maximum: Tuple[int, int, int],
+) -> float:
+    predicted = set()
+    for cell in itertools.product(*(range(minimum[axis], maximum[axis] + 1)
+                                    for axis in range(3))):
+        for chemical, fx, fy, fz in motif:
+            fractional = tuple(cell[axis] + (fx, fy, fz)[axis]
+                               for axis in range(3))
+            point = fractional_to_cartesian(basis, fractional)  # type: ignore[arg-type]
+            predicted.add((blind._site_key(point), chemical))
+    observed = {(blind._site_key(point), chemical)
+                for point, chemical in zip(configuration.positions,
+                                           configuration.species)}
+    return len(predicted ^ observed) / max(1, len(predicted | observed))
+
+
+@dataclass(frozen=True)
 class FamilyBenchmark:
     system: str
     discovered_family: str
@@ -672,8 +703,14 @@ def apply_rule_actions(
         f"{actions} learned recursive internal-section rewrites")
 
 
-def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule:
-    """Discover a gated recursive rule without a supplied phase label."""
+def discover_rule_candidates(
+    configuration: AtomicConfiguration,
+) -> Tuple[RuleCandidate, ...]:
+    """Propose every supported rule and score it through one evidence gate.
+
+    Candidate extractors may use different geometry, but none is guarded by a
+    crystal/quasicrystal category and no first-success dispatch is performed.
+    """
     structure = evaluate_structure(
         configuration.positions, configuration.species,
         cell=configuration.cell)
@@ -692,10 +729,15 @@ def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule
                               for level in recurring_levels)
                           if recurring_levels else 0.0)
 
-    # The finite colored cloud—not the optional cell—must supply three strong,
-    # composable translations before selecting a quotient rule.
-    translation_model = (_best_translation_model(configuration, structure)
-                         if structure.category == "crystal" else None)
+    hierarchy_complete = (len(recurring_levels) == 3 and
+                          all(support > 0 for support in supports))
+    hierarchy_growing = (hierarchy_complete and
+                         supports[0] < supports[1] < supports[2])
+    candidates = []
+
+    # The finite colored cloud—not the optional cell or a phase label—must
+    # supply three strong, composable translations.
+    translation_model = _best_translation_model(configuration, structure)
     if (translation_model is not None and len(recurring_levels) == 3 and
             all(support > 0 for support in supports)):
         (basis, motif, index_minimum, index_maximum,
@@ -704,7 +746,7 @@ def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule
                     if structure.translation_periodicity >= 0.98 else
                     1.0 - min(structure.translation_periodicity,
                               structure.translation_closure))
-        return ParametricRecursiveRule(
+        rule = ParametricRecursiveRule(
             "translation_quotient", "2x2x2 quotient rewrite",
             "species-preserving translation orbit", 2.0, residual, True,
             "three translations and their doubles match the finite cloud",
@@ -717,22 +759,27 @@ def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule
             # the complete box is therefore the continuation domain.  The
             # occupied-cell set remains diagnostic for future irregular masks.
             translation_occupied_cells=())
+        complexity = len(motif) + 3
+        normalized = residual / max(structure.nearest_neighbor_scale, 1e-12)
+        mismatch = _translation_seed_mismatch(
+            configuration, basis, motif, index_minimum, index_maximum)
+        candidates.append(RuleCandidate(
+            rule, normalized, complexity, mismatch == 0.0, mismatch,
+            len(recurring_levels), normalized + mismatch +
+            complexity / len(configuration.positions)))
 
-    # Only recurrent nonperiodic evidence is allowed to invoke the more
-    # expressive module learner.  This prevents an accidental algebraic fit to
-    # a disordered cloud from becoming a deterministic extrapolator.
-    if structure.category == "quasicrystal-candidate":
-        try:
-            (_, product_origin, product_rotation, minima, side,
-             substitution, product_residual, product_gaps,
-             product_decoration) = _discover_product_substitution(
-                 configuration)
-        except (ValueError, RuntimeError):
-            product_residual = math.inf
-        if (product_residual <= 0.02 * structure.nearest_neighbor_scale and
-                len(recurring_levels) == 3 and
-                supports[0] < supports[1] < supports[2]):
-            return ParametricRecursiveRule(
+    # Recurrent hierarchy evidence is a shared guard against accidental
+    # expressive fits to disorder. The geometric extractors themselves are
+    # nevertheless all attempted.
+    try:
+        (_, product_origin, product_rotation, minima, side,
+         substitution, product_residual, product_gaps,
+         product_decoration) = _discover_product_substitution(configuration)
+    except (ValueError, RuntimeError):
+        product_residual = math.inf
+    if (product_residual <= 0.02 * structure.nearest_neighbor_scale and
+            hierarchy_growing):
+        rule = ParametricRecursiveRule(
                 "substitution_product", "word -> substitute(word) on 3 axes",
                 "learned gap clusters + substitution images + decoration",
                 (1.0 + math.sqrt(5.0)) / 2.0, product_residual, True,
@@ -747,21 +794,29 @@ def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule
                 input_side=side,
                 substitution_decoration=product_decoration,
                 substitution_gap_lengths=product_gaps)
-        try:
-            normalized, origin, rotation, axis_residual = (
-                _normalize_icosahedral(configuration))
-            unit, _, _, _, residual = infer_model(
-                normalized, coefficient_bound=8,
-                complexity_penalty=1e-3)
-            residual = max(residual, axis_residual)
-        except (ValueError, RuntimeError, ZeroDivisionError, OverflowError):
-            residual = math.inf
-            unit = math.nan
-        if (residual <= 0.02 * structure.nearest_neighbor_scale and
-                unit > 1.0 and
-                len(recurring_levels) == 3 and
-                supports[0] < supports[1] < supports[2]):
-            return ParametricRecursiveRule(
+        complexity = (len(substitution.image_a) +
+                      len(substitution.image_b) +
+                      len(product_decoration) + 3)
+        normalized_residual = product_residual / max(
+            structure.nearest_neighbor_scale, 1e-12)
+        candidates.append(RuleCandidate(
+            rule, normalized_residual, complexity, True, 0.0,
+            len(recurring_levels), normalized_residual +
+            complexity / len(configuration.positions)))
+    try:
+        normalized_cloud, origin, rotation, axis_residual = (
+            _normalize_icosahedral(configuration))
+        unit, _, _, thresholds, residual = infer_model(
+            normalized_cloud, coefficient_bound=8,
+            complexity_penalty=1e-3)
+        residual = max(residual, axis_residual)
+    except (ValueError, RuntimeError, ZeroDivisionError, OverflowError):
+        residual = math.inf
+        unit = math.nan
+        thresholds = ()
+    if (residual <= 0.02 * structure.nearest_neighbor_scale and
+            unit > 1.0 and hierarchy_growing):
+        rule = ParametricRecursiveRule(
                 "internal_section_inflation", "patch(R) -> patch(unit R)",
                 "learned integer lift + bounded internal acceptance section",
                 unit, residual, True,
@@ -770,6 +825,39 @@ def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule
                 float(math.ceil(max(math.dist(point, origin)
                                     for point in configuration.positions) -
                                 1e-9)), None, supports, marking_confidence)
+        complexity = 6 + len(thresholds) + 1
+        normalized_residual = residual / max(
+            structure.nearest_neighbor_scale, 1e-12)
+        candidates.append(RuleCandidate(
+            rule, normalized_residual, complexity, True, 0.0,
+            len(recurring_levels), normalized_residual +
+            complexity / len(configuration.positions)))
+
+    return tuple(sorted(candidates, key=lambda candidate: (
+        candidate.selection_score, candidate.description_entries,
+        candidate.rule.transform)))
+
+
+def discover_rule(configuration: AtomicConfiguration) -> ParametricRecursiveRule:
+    """Select the minimum-score accepted proposal without a phase label."""
+    candidates = discover_rule_candidates(configuration)
+    if candidates:
+        return candidates[0].rule
+    structure = evaluate_structure(
+        configuration.positions, configuration.species,
+        cell=configuration.cell)
+    hierarchy, _ = learn_recursive_hierarchy(
+        configuration.name, configuration.positions, configuration.species,
+        maximum_levels=3, first_descriptor_bin_scale=0.02,
+        first_angle_bin=0.03, macro_distance_bin_scale=0.20,
+        macro_angle_bin=0.08)
+    supports = tuple(level.largest_recurring_support
+                     for level in hierarchy.levels)
+    recurring_levels = [level for level in hierarchy.levels
+                        if level.recurring_types]
+    marking_confidence = (min(level.marking_confidence
+                              for level in recurring_levels)
+                          if recurring_levels else 0.0)
 
     return ParametricRecursiveRule(
         "none", "none", "none", 1.0, None, False,
