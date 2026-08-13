@@ -1415,12 +1415,21 @@ fixed anchor. Learned from the 729-site seed, it emits 2,090 / 2,090 and then
 7,222 / 7,222 exact novel sites on the 3,375 → 13,824 and 13,824 → 59,319
 transitions. This is substantially denser than the IQC pair batch.
 
-It is not yet a common-model victory. The anchor section fails on the IQC,
-while the spherical port-pair section fails on the Fibonacci product. The
-present code therefore has two successful marking hypotheses but no frozen,
-family-blind model-selection rule that chooses between them. The explicit
-`shared_frozen_marking_selected_without_family_label = false` assertion keeps
-the transfer gate red. This is the next algorithmic target.
+The anchor section fails on the IQC, while the spherical port-pair section
+fails on the Fibonacci product, so the grammar exposes both as finite marking
+hypotheses. A shared seed-only selector chooses the anchor hypothesis only when
+at least 25% of observed sites have an exact similarity image. IQC has 61/507
+anchor support and selects port pairs; Fibonacci has 216/729 and selects the
+anchor. The threshold, hypotheses, and tie-break are frozen before held-out
+scoring, and no phase label enters selection. Both selected markings pass two
+unseen scales, turning this cross-family selection gate green.
+
+The competition also includes the translation-quotient hypothesis. On the
+216-site NaCl cloud it is selected from colored point geometry and emits the
+exact 1,728- and 13,824-site continuations. Crystal, icosahedral, and
+substitution-quasiperiodic systems therefore share one hypothesis-selection
+interface and all pass two unseen levels. Their executors remain distinct;
+unifying those into one port/cover interpreter is still the larger red gate.
 
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning

@@ -513,13 +513,21 @@ scales. No held-out geometry chooses the thresholds. This is a genuine
 clusters-of-clusters exponential-style certificate, but it is sparse (1.21%
 and 1.69% novel recall) and is not yet a generic million-site rollout.
 
-A cross-family audit now prevents that result from being mistaken for a
+A cross-family selector now prevents that result from being mistaken for a
 universal marking. A fixed-anchor similarity section learned on the 729-site
 3-D Fibonacci product emits 2,090 and then 7,222 exact novel sites at two
 unseen scales. The IQC port-pair section and this anchor section are both
-successful, but currently selected separately. Until a train-only,
-family-blind selector chooses the right finite marking, the shared generic
-gate remains red.
+successful. A shared seed-only recurrence test selects the anchor hypothesis
+when at least 25% of seed sites have an exact similarity image; otherwise it
+selects the overlap section. It chooses the IQC pair section from 61/507 anchor
+support and the Fibonacci anchor from 216/729, without phase labels or held-out
+targets, then passes both unseen scales for both controls.
+
+The same competition includes the translation-quotient hypothesis and selects
+it for the NaCl crystal from its colored point geometry. It emits 1,728 and
+13,824 exact sites over two unseen levels. Thus crystal, icosahedral, and
+substitution-quasiperiodic controls now enter one family-blind hypothesis
+interface, even though each selected rule still has a specialized executor.
 
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
