@@ -45,8 +45,11 @@ class SelectionRobustnessBenchmark:
     all_clean_precision_above_99_percent: bool
     all_clean_recall_above_99_percent: bool
     iqc_vacancy_proposals: int
-    iqc_vacancy_rejection_seconds: float
-    bounded_bad_hypothesis_rejection: bool
+    iqc_vacancy_selected_program: str
+    iqc_vacancy_clean_precision: float
+    iqc_vacancy_clean_recall: float
+    iqc_vacancy_fit_seconds: float
+    bounded_vacancy_fit: bool
     defect_crystal_selected_program: str
     defect_crystal_seed_replay_exact: bool
     amorphous_trials: int
@@ -112,7 +115,11 @@ def evaluate() -> SelectionRobustnessBenchmark:
     vacancy_iqc = _remove_fraction(perturb(iqc, .005, 123), .01, 9)
     started = time.perf_counter()
     vacancy_candidates = discover_recursive_program_candidates(vacancy_iqc)
-    rejection_seconds = time.perf_counter() - started
+    vacancy_seconds = time.perf_counter() - started
+    vacancy_selected = select_recursive_program_candidate(vacancy_candidates)
+    vacancy_grown = explicit_apply(vacancy_iqc, vacancy_selected.program, 1)
+    vacancy_precision, vacancy_recall, vacancy_chemistry, _ = _registered_score(
+        vacancy_grown, targets[1], tolerance=.16)
 
     defect_species = list(nacl.species)
     defect_species[len(defect_species) // 2] = "K"
@@ -133,14 +140,18 @@ def evaluate() -> SelectionRobustnessBenchmark:
     retained = tuple(case.selected_program for case in cases) == expected
     precision = all(case.clean_precision >= .99 for case in cases)
     recall = all(case.clean_recall >= .99 for case in cases)
-    bounded = not vacancy_candidates and rejection_seconds < 10.0
+    bounded = (vacancy_selected.program.family ==
+               "internal_section_inflation" and vacancy_seconds < 10.0 and
+               min(vacancy_precision, vacancy_recall,
+                   vacancy_chemistry) == 1.0)
     defect_ok = (defect_selected.program.family == "translation_quotient" and
                  not defect_selected.seed_replay_exact)
     passed = (retained and precision and recall and bounded and defect_ok and
               false_positives == 0)
     return SelectionRobustnessBenchmark(
         cases, expected, retained, precision, recall,
-        len(vacancy_candidates), rejection_seconds, bounded,
+        len(vacancy_candidates), vacancy_selected.program.family,
+        vacancy_precision, vacancy_recall, vacancy_seconds, bounded,
         defect_selected.program.family, defect_selected.seed_replay_exact,
         trials, false_positives, passed)
 

@@ -939,13 +939,16 @@ known family-specific learner directly.
 | 30-degree hBN + 0.006 A noise + 3.5% vacancies | planar pose/address | 100% / 99.20% / 100% | 0.0149 A |
 
 A single NaCl chemical substitution retains the quotient hypothesis but is
-correctly marked as an inexact seed replay. Conversely, a 1%-vacancy noisy IQC
-does not yet support reliable module recovery and is conservatively rejected.
-A new lift-complexity preflight rejects that malformed rank-6 hypothesis in
-1.58 seconds in the recorded run instead of entering an unbounded coefficient
-box. Two independently seeded amorphous controls still admit zero proposals.
-Thus the present positive claim is noise-robust scaffold recovery; general 3D
-vacancy recovery, especially for quasicrystals, remains open.
+correctly marked as an inexact seed replay. A 1%-vacancy noisy IQC initially
+exposed a frame-origin failure: the arithmetic centroid moves off the
+algebraic module when atoms are missing. The learner now estimates the
+inversion centre from the densest cluster of antipodal-pair midpoints. With no
+oracle centre or hidden lift, it selects the internal section in 1.74 seconds
+and reconstructs all 1,969 clean first-level sites at 100% position/species
+precision and recall. A bounded lift-complexity preflight still prevents an
+invalid frame from entering a large coefficient box. Two independently seeded
+amorphous controls admit zero proposals. More severe and nonuniform 3D damage
+remains open.
 
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |

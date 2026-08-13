@@ -17,6 +17,7 @@ the quadratic module below.
 from __future__ import annotations
 
 import argparse
+import collections
 import itertools
 import json
 import math
@@ -172,6 +173,40 @@ def _icosahedral_reference_axes():
                        for value in axis) for axis in raw)
 
 
+def _robust_inversion_center(configuration: AtomicConfiguration) -> Tuple[float, float, float]:
+    """Estimate the centre from repeated antipodal-pair midpoints.
+
+    A finite spherical model-set patch contains many ``p, -p`` witnesses.
+    Missing atoms bias the ordinary centroid, while their surviving pair
+    midpoints still vote for the same centre. The bin width is tied to the
+    nearest-neighbour scale and remains far below an atomic separation.
+    """
+    points = configuration.positions
+    centroid = tuple(sum(point[axis] for point in points) / len(points)
+                     for axis in range(3))
+    nearest = min(math.dist(left, right)
+                  for index, left in enumerate(points)
+                  for right in points[index + 1:]
+                  if math.dist(left, right) > 1e-8)
+    width = max(1e-5, nearest * .04)
+    maximum_offset = nearest * .35
+    bins = collections.defaultdict(list)
+    for left_index, left in enumerate(points):
+        for right in points[left_index:]:
+            midpoint = tuple((left[axis] + right[axis]) * .5
+                             for axis in range(3))
+            if math.dist(midpoint, centroid) > maximum_offset:
+                continue
+            key = tuple(round(value / width) for value in midpoint)
+            bins[key].append(midpoint)
+    if not bins:
+        return centroid
+    winning = max(bins.values(), key=lambda values: (len(values),
+                                                      -math.dist(values[0], centroid)))
+    return tuple(sum(point[axis] for point in winning) / len(winning)
+                 for axis in range(3))
+
+
 def _register_axis_sets_approximately(source, target):
     best = None
     for first in range(len(source)):
@@ -219,8 +254,7 @@ def _normalize_icosahedral(configuration: AtomicConfiguration):
         raise ValueError(f"expected ten shortest-bond axes, found {len(axes)}")
     reference = _icosahedral_reference_axes()
     rotation, axis_residual = _register_axis_sets_approximately(axes, reference)
-    origin = tuple(sum(point[axis] for point in configuration.positions) /
-                   len(configuration.positions) for axis in range(3))
+    origin = _robust_inversion_center(configuration)
     positions = tuple(dag._matvec(rotation, tuple(
         point[axis] - origin[axis] for axis in range(3)))
         for point in configuration.positions)

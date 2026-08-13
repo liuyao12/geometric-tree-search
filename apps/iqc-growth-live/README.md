@@ -291,8 +291,10 @@ Gaussian coordinate noise, NaCl, the ideal IQC, and the Fibonacci product all
 retain the correct production and reconstruct the clean first growth level at
 100% position recall and precision. A 30-degree hBN seed with 0.006 Angstrom
 noise and 3.5% vacancies retains its planar production and reaches 100%
-precision / 99.20% recall on the clean continuation. A noisy 1%-vacancy IQC is
-conservatively rejected; bounded lift-complexity preflight prevents expensive
-invalid rank-6 enumeration. General 3D vacancy recovery remains open.
+precision / 99.20% recall on the clean continuation. A noisy 1%-vacancy IQC
+now recovers its module origin from repeated antipodal-pair midpoints and
+reconstructs the clean first level at 100% precision and recall. Bounded
+lift-complexity preflight prevents expensive invalid rank-6 enumeration. More
+severe and nonuniform 3D damage remains open.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.
