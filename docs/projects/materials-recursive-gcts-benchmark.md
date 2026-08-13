@@ -860,6 +860,27 @@ Keeping only one pose per motif-isometry class leaves both bilayers at exactly
 50% recall; restoring the learned cluster-of-clusters pose marking restores
 100%.  This is a causal marking ablation with the motif dictionary fixed.
 
+### Cross-layer registry model selection
+
+Compact whole-structure generation does not imply that exact local interlayer
+registry has a finite vocabulary. `scripts/materials_gcts_2d_registry_selection.py`
+learns rotation-invariant, species-resolved cross-layer sections at increasing
+radii inside the same 932-atom seed, then chooses its marking representation
+before opening a 2,384-atom held-out disk.
+
+| bilayer | local states at 5 / 10 / 15 Å | seed-local coverage on held-out registry | selected marking |
+|---|---:|---:|---|
+| aligned | 2 / 2 / 2 | 100% | finite local registry + pose fallback |
+| commensurate 21.7868° | 10 / 10 / 10 | 99.53% | finite local registry + pose fallback |
+| 30° incommensurate | 10 / 33 / 71 | 30.22% | two-state cluster-of-clusters relative pose |
+
+The 30° local vocabulary has empirical growth exponent 0.890 and reaches 223
+states in the held-out window, so the learner rejects it as an unbounded exact
+local marking rather than memorizing ever more environments. Its two learned
+component poses still generate the held-out structure exactly. The choice uses
+only vocabulary growth inside the seed; family labels and held-out atoms are
+excluded.
+
 `scripts/materials_gcts_2d_robustness.py` deletes 3.35% of a 746-atom hBN seed
 and adds 0.006 Angstrom Gaussian coordinate noise.  The learner covers the
 vacancy-isolated residual atoms, recovers both BN poses with minimum translation
@@ -877,3 +898,28 @@ expands to the independent 2,990-atom held-out disk.  Level 9 represents
 seed-equivalent level requires five hierarchy promotions, versus 499,627 flat
 motif placements, a 99,925x symbolic action-count reduction.  Explicit output
 remains linear and is reported separately.
+
+## Molecular cover gate: ice Ih and ice Ic
+
+`scripts/materials_gcts_ice_cover.py` tests a qualitatively different failure
+mode. An ice configuration is not usefully connected by treating each atom as
+the center of a fixed-radius cluster. The geometry-first learner instead finds
+one H2O isometry class, overlapping water-dimer bridges, and six-water
+oxygen-ring boundaries. The ring interiors contain no atoms, but their
+boundaries are retained as gap/connection clusters.
+
+| fixture | atoms / H2O | H2O classes | bridge occurrences / classes | ring gaps / classes | water-only recall | full cover search |
+|---|---:|---:|---:|---:|---:|---:|
+| proton-ordered ice Ih | 216 / 72 | 1 | 115 / 6 | 38 / 17 | 1.39% | 100%, 37 placements, 0 backtracks |
+| proton-ordered ice Ic | 192 / 64 | 1 | 98 / 4 | 23 / 12 | 1.56% | 100%, 32 placements, 0 backtracks |
+
+This is a causal cluster-representation result: the atom dictionary and target
+are fixed, and only the overlapping connection/gap clusters are ablated. It
+certifies reconstruction of each known periodic window, not yet blind
+continuation into a larger ice crystal or prediction of proton disorder.
+
+The live sample selector now exposes three complementary paths: saved curated
+families (including ice and intrinsic-2D controls), composition-first random
+search over NOMAD, and the existing advanced local import. Database search
+does not assign a structural family before growth; curated labels are explicit
+benchmark metadata and remain excluded from the learner.

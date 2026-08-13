@@ -69,17 +69,28 @@
               <div class="periodic-key"><span class="key-solid">solid</span><span class="key-liquid">liquid</span><span class="key-gas">gas</span><small>standard state near 25 °C</small></div>
             </div>
           </div>
-          <label class="field" for="scenarioSelect">
-            <span>Or use a built-in control</span>
+          <label class="field sample-picker" for="scenarioSelect">
+            <span>Or choose a curated sample family</span>
             <select id="scenarioSelect">
-              <option value="competition">NaCl rocksalt crystal</option>
-              <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
-              <option value="iqc">Al–Cu–Fe IQC approximant</option>
-              <option value="moire">30° twisted hBN bilayer</option>
-              <option value="bc8">Silicon BC8-like network</option>
+              <optgroup label="Ice polymorphs · molecular covers">
+                <option value="iceIh">Ice Ih · hexagonal</option>
+                <option value="iceIc">Ice Ic · cubic</option>
+              </optgroup>
+              <optgroup label="2D materials">
+                <option value="graphene">Graphene monolayer</option>
+                <option value="hbn">Aligned hBN bilayer</option>
+                <option value="moire">30° twisted hBN bilayer</option>
+              </optgroup>
+              <optgroup label="Crystals, quasicrystals &amp; glass controls">
+                <option value="competition" selected>NaCl rocksalt crystal</option>
+                <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
+                <option value="iqc">Al–Cu–Fe IQC approximant</option>
+                <option value="bc8">Silicon BC8-like network</option>
+              </optgroup>
               <option value="imported" disabled>Imported structure</option>
             </select>
           </label>
+          <p class="sample-note">Curated fixtures are saved, deterministic controls. Composition search above draws a fresh public database entry.</p>
           <details class="local-import">
             <summary>Advanced · local file or fixture</summary>
             <label class="file-field" for="structureFileInput">

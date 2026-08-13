@@ -247,4 +247,16 @@ inner examples, exposing the sample-complexity problem rather than concealing
 it. The next model will retain individual marks and learn only a compact
 residual consensus correction.
 
+The sample selector now separates saved benchmark families from
+composition-first NOMAD search. Saved families include graphene, aligned and
+30-degree hBN, and proton-ordered ice Ih/Ic; choosing a fixture supplies only
+its element-labelled coordinates to the learner. The ice path uses a
+molecular overlap cover rather than atom-centred shells: one H2O type,
+water-dimer connection clusters, and oxygen-ring gap boundaries. The live
+strict replay search recovers 216/216 Ih sites in 35 decisions and 192/192 Ic
+sites in 30 decisions. The independent Python headless gate records the
+water-only ablation and full-cover result in
+`scripts/test_materials_gcts_ice_cover.py`. This certifies reconstruction of
+the known windows; larger blind ice continuation remains open.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

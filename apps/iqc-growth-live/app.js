@@ -164,13 +164,21 @@ const ELEMENTS = {
   Si: { color: 0xe7b883, css: "#e7b883", radius: 1.11 },
 };
 const MATERIALS = {
+  iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
+  iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
+  graphene: { name: "graphene monolayer", elements: ["C"], spacingA: 1.42, cell: "single hexagonal sheet", order: "crystal", symmetry: "p6/mmm layer group", audit: "2D translations + diffraction", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: 0, species: ["C", "C"] }], note: "A one-component intrinsic-2D positive control learned after arbitrary embedding in 3D." },
+  hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
   random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", order: "amorphous", symmetry: "no stable long-range group", audit: "local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble whose multiscale statistics match held-out large MD." },
   iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
-  moire: { name: "30° twisted hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "two hexagonal sheets · 3.33 Å separation", order: "quasicrystal", symmetry: "12-fold quasiperiodic order", audit: "2D diffraction + absence of common translations", intrinsicDimension: 2, note: "Each sheet is periodic, while their 30° union has no common translation lattice." },
+  moire: { name: "30° twisted hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "two hexagonal sheets · 3.33 Å separation", order: "quasicrystal", symmetry: "12-fold quasiperiodic order", audit: "2D diffraction + absence of common translations", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: Math.PI / 6, zA: 1.665, species: ["B", "N"] }], note: "Each sheet is periodic, while their 30° union has no common translation lattice." },
   bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
 };
 const RECURSIVE_BENCHMARKS = {
+  iceIh: { hierarchy: [1, 6, 17], curve: [216, 1728, 13824], mark: "H₂O + dimer + ring ports", action: "known-window cover certified", speed: "37 placements / 216 atoms", gate: "pass · headless cover", status: "pass", note: "One H₂O isometry class covers every atom. Water-only search reaches just 1.39%; 115 overlapping dimer bridges and 38 oxygen-ring void boundaries restore 100% reconstruction with zero backtracking." },
+  iceIc: { hierarchy: [1, 4, 12], curve: [192, 1536, 12288], mark: "H₂O + dimer + ring ports", action: "known-window cover certified", speed: "32 placements / 192 atoms", gate: "pass · headless cover", status: "pass", note: "The same molecular dictionary transfers to a distinct cubic connection grammar: 98 dimer bridges and 23 ring boundaries recover all 192 sites with zero backtracking." },
+  graphene: { hierarchy: [1, 4, 16], curve: [373, 1495, 5983, 23935, 95743, 382975, 1531903], mark: "one C₂ sheet pose", action: "6 area rewrites → 1.53m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The generic planar atlas learns one C₂ motif pose and exactly predicts an unseen 1,495-atom disk." },
+  hbn: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "finite registry + pose fallback", action: "6 area rewrites → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The registry vocabulary remains bounded for the aligned bilayer and the generic planar atlas preserves both learned sheet poses." },
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
   iqc: { hierarchy: [122, 18, 165], curve: [1969, 3081, 5057], mark: "persistent typed-pose ports", action: "466 → 954 → 3,460 symbols", speed: "4.227× proposals · 1.438× outward correct", gate: "red · marking transfer", status: "limit", note: "The generic learner now carries cluster type, rotation, translation, scale, and overlap derivations through two unseen compositions without re-clustering atoms. The first outward shell has 932 correct sites at 100% positional precision but 3.27% recall; the second has 1,340 correct and 2,580 false, 34.18% precision and 1.14% recall. Proposal amplification is therefore not yet exponential-quality growth.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% P / 55.0% R", recall: "85.4% P / 32.1% R", reduction: "57× → 185×" }, connection: { transfer: "932 → 1,340 outward-valid sites", states: "122 rigid templates · 18 productions · 165 relative-pose ports", consensusLabel: "persistent wave / marking operating points", consensus: [["wave 1", 100.0, 3.27], ["wave 2", 34.18, 1.14], ["mark 1", 100.0, 0.07], ["mark 2", 0.0, 0.0]], secondOrderLabel: "position and species fidelity by unseen wave", secondOrder: [["wave 1", "position", 100.0, 3.27, 66.52, 2.18], ["wave 2", "position", 34.18, 1.14, 14.29, 0.47], ["mark", "normalized", 100.0, 0.07, 100.0, 0.07]], frontier: { waves: [466, 954, 3460], exact: "persistent symbols survive", recall: "outward recall 3.27% → 1.14%", full: "no atom re-clustering after the two observed seed patches" }, macro: { stages: [["rigid templates", 122], ["productions", 18], ["pose ports", 165]], safe: "first unseen · 932/932 outward proposals valid", rejected: "second unseen · 1,340 valid / 2,580 false", crystal: "NaCl supplied-rule ceiling · 216→1,728→13,824 exact", iterated: "persistent state · 466→954→3,460 symbols", similarity: "mechanical recursion passes · exponential quality fails · hard-core audit pending" } } },
@@ -995,6 +1003,76 @@ function siteHash(x, y, z, salt = 0) {
   return value - Math.floor(value);
 }
 
+function motifShellCutoff() {
+  return currentMaterial().motifShellCutoff || 1.38;
+}
+
+function descriptorCutoff() {
+  return currentMaterial().descriptorCutoff || 1.9;
+}
+
+function overlapDistanceCutoff() {
+  return currentMaterial().overlapDistanceCutoff || 2.35;
+}
+
+function cartesianFromFractional(fractional, cell) {
+  return new THREE.Vector3()
+    .addScaledVector(cell[0], fractional[0])
+    .addScaledVector(cell[1], fractional[1])
+    .addScaledVector(cell[2], fractional[2]);
+}
+
+function iceDefinition(polytype) {
+  if (polytype === "Ic") {
+    const a = 6.36;
+    return {
+      primitive: [new THREE.Vector3(a, 0, 0), new THREE.Vector3(0, a, 0), new THREE.Vector3(0, 0, a)],
+      repeats: [2, 2, 2],
+      basis: [[0,0,0], [0,.5,.5], [.5,0,.5], [.5,.5,0], [.25,.25,.25], [.25,.75,.75], [.75,.25,.75], [.75,.75,.25]],
+    };
+  }
+  const a = 4.518, c = 7.357, u = 3 / 8;
+  return {
+    primitive: [new THREE.Vector3(a, 0, 0), new THREE.Vector3(-a / 2, Math.sqrt(3) * a / 2, 0), new THREE.Vector3(0, 0, c)],
+    repeats: [3, 3, 2],
+    basis: [[0,0,0], [2/3,1/3,.5], [0,0,u], [2/3,1/3,.5+u]],
+  };
+}
+
+function makeIceReferenceConfiguration(polytype) {
+  const definition = iceDefinition(polytype);
+  const cell = definition.primitive.map((vector, axis) => vector.clone().multiplyScalar(definition.repeats[axis]));
+  const oxygen = [];
+  for (let i = 0; i < definition.repeats[0]; i++) for (let j = 0; j < definition.repeats[1]; j++) for (let k = 0; k < definition.repeats[2]; k++) {
+    definition.basis.forEach((basis, basisIndex) => {
+      const fractional = [(i + basis[0]) / definition.repeats[0], (j + basis[1]) / definition.repeats[1], (k + basis[2]) / definition.repeats[2]];
+      oxygen.push({ pA: cartesianFromFractional(fractional, cell), fractional, address: [i, j, k, basisIndex] });
+    });
+  }
+  const minimumImage = (first, second) => {
+    const fractional = second.fractional.map((value, axis) => {
+      const delta = value - first.fractional[axis];
+      return delta - Math.round(delta);
+    });
+    return cartesianFromFractional(fractional, cell);
+  };
+  const neighbors = oxygen.map((atom, index) => oxygen.map((candidate, other) => other === index ? null : {
+    other, vector: minimumImage(atom, candidate),
+  }).filter(Boolean).sort((first, second) => first.vector.lengthSq() - second.vector.lengthSq()).slice(0, 4));
+  const records = oxygen.map((atom, index) => ({ pA: atom.pA.clone(), species: "O", family: `ice-${polytype}`, molecule: index, q: atom.address.slice(0, 3) }));
+  oxygen.forEach((atom, index) => {
+    const ordered = neighbors[index].slice().sort((first, second) => first.vector.z - second.vector.z || first.vector.y - second.vector.y || first.vector.x - second.vector.x);
+    const offset = (atom.address[0] + 2 * atom.address[1] + atom.address[2] + atom.address[3]) % 4;
+    [ordered[offset], ordered[(offset + 1) % 4]].forEach((neighbor) => {
+      records.push({ pA: atom.pA.clone().add(neighbor.vector.clone().setLength(.9572)), species: "H", family: `ice-${polytype}`, molecule: index, q: atom.address.slice(0, 3) });
+    });
+  });
+  const center = records.reduce((sum, atom) => sum.add(atom.pA), new THREE.Vector3()).multiplyScalar(1 / records.length);
+  const scale = .92 / .9572;
+  return records.map((atom, sourceIndex) => ({ ...atom, p: atom.pA.clone().sub(center).multiplyScalar(scale), sourceIndex }))
+    .sort((first, second) => first.p.lengthSq() - second.p.lengthSq() || first.species.localeCompare(second.species));
+}
+
 function makeSyntheticReferenceSite(qx, qy, qz, sourceIndex = 0, scenario = scenarioSelect.value) {
   const material = MATERIALS[scenario];
   let family = qx < -Math.abs(qy) * .35 ? "BC8" : qx > Math.abs(qy) * .35 ? "glass" : "IQC";
@@ -1044,7 +1122,8 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
       };
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
   }
-  if (scenario === "moire") return makeMoireReferenceConfiguration();
+  if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
+  if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
   const result = [];
   for (let ix = 0; ix < 6; ix++) for (let iy = 0; iy < 6; iy++) for (let iz = 0; iz < 6; iz++) {
     result.push(makeSyntheticReferenceSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length, scenario));
@@ -1052,25 +1131,27 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   return result.sort((a, b) => a.p.lengthSq() - b.p.lengthSq());
 }
 
-function makeMoireReferenceConfiguration() {
+function makePlanarReferenceConfiguration(scenario = "moire") {
   const result = [];
+  const material = MATERIALS[scenario];
   const bondScene = .92;
   const lattice = Math.sqrt(3) * bondScene;
   const a1 = new THREE.Vector2(lattice, 0);
   const a2 = new THREE.Vector2(.5 * lattice, .5 * Math.sqrt(3) * lattice);
   const basis = new THREE.Vector2().addVectors(a1, a2).multiplyScalar(1 / 3);
-  const layerGapScene = 3.33 / MATERIALS.moire.spacingA * bondScene;
-  [[0, -layerGapScene / 2], [Math.PI / 6, layerGapScene / 2]].forEach(([angle, z], layer) => {
+  const layers = material.planarLayers || [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: Math.PI / 6, zA: 1.665, species: ["B", "N"] }];
+  layers.forEach(({ angle, zA, species: layerSpecies }, layer) => {
+    const z = zA / material.spacingA * bondScene;
     const cosine = Math.cos(angle);
     const sine = Math.sin(angle);
     for (let i = -12; i <= 12; i++) for (let j = -12; j <= 12; j++) {
       const origin = new THREE.Vector2(i * a1.x + j * a2.x, i * a1.y + j * a2.y);
-      [[new THREE.Vector2(), "B"], [basis, "N"]].forEach(([offset, species], basisIndex) => {
+      [[new THREE.Vector2(), layerSpecies[0]], [basis, layerSpecies[1]]].forEach(([offset, species], basisIndex) => {
         const raw = origin.clone().add(offset);
         const p = new THREE.Vector3(cosine * raw.x - sine * raw.y,
           sine * raw.x + cosine * raw.y, z);
-        const pA = p.clone().multiplyScalar(MATERIALS.moire.spacingA / bondScene);
-        result.push({ p, pA, species, family: "moire", layer,
+        const pA = p.clone().multiplyScalar(material.spacingA / bondScene);
+        result.push({ p, pA, species, family: scenario, layer,
           sourceIndex: result.length, q: [i, j, layer + basisIndex * .25] });
       });
     }
@@ -1080,7 +1161,11 @@ function makeMoireReferenceConfiguration() {
 }
 
 function currentCell() {
-  if (scenarioSelect.value === "moire") return null;
+  if (currentMaterial().intrinsicDimension === 2) return null;
+  if (currentMaterial().icePolytype) {
+    const definition = iceDefinition(currentMaterial().icePolytype);
+    return definition.primitive.map((vector, axis) => vector.clone().multiplyScalar(definition.repeats[axis]));
+  }
   if (scenarioSelect.value === "imported" && importedStructure?.cell) {
     return importedStructure.cell.map((vector) => new THREE.Vector3(...vector));
   }
@@ -1089,7 +1174,7 @@ function currentCell() {
 }
 
 function currentPbc() {
-  if (scenarioSelect.value === "moire") return [false, false, false];
+  if (currentMaterial().intrinsicDimension === 2) return [false, false, false];
   return scenarioSelect.value === "imported" && importedStructure ? importedStructure.pbc : [true, true, true];
 }
 
@@ -1190,26 +1275,28 @@ function buildDetectedUnitCell() {
 
 function localEnvironmentDescriptor(source, centerIndex) {
   const material = currentMaterial();
+  const descriptorRadius = descriptorCutoff();
+  const shellRadius = motifShellCutoff();
   const center = source[centerIndex];
   const neighbors = source.map((atom, index) => {
     if (index === centerIndex) return null;
     const vector = periodicDisplacement(center, atom);
     return { atom, vector, r: vector.length() / referenceSpacingA };
-  }).filter((item) => item && item.r < 1.9).sort((a, b) => a.r - b.r);
+  }).filter((item) => item && item.r < descriptorRadius).sort((a, b) => a.r - b.r);
 
   const features = material.elements.map((element) => center.species === element ? 2 : 0);
-  const radialCenters = [.82, 1.02, 1.22, 1.48, 1.75];
+  const radialCenters = descriptorRadius > 2.2 ? [.82, 1.02, 1.22, 1.48, 1.82, 2.35, 2.88] : [.82, 1.02, 1.22, 1.48, 1.75];
   material.elements.forEach((element) => radialCenters.forEach((radialCenter) => {
     const value = neighbors.reduce((sum, neighbor) => {
       if (neighbor.atom.species !== element) return sum;
-      const cutoff = .5 * (Math.cos(Math.PI * neighbor.r / 1.9) + 1);
+      const cutoff = .5 * (Math.cos(Math.PI * neighbor.r / descriptorRadius) + 1);
       return sum + Math.exp(-(((neighbor.r - radialCenter) / .13) ** 2)) * cutoff;
     }, 0);
     features.push(value);
   }));
 
   const angular = new Array(6).fill(0);
-  const firstShell = neighbors.filter((neighbor) => neighbor.r <= 1.38).slice(0, 14);
+  const firstShell = neighbors.filter((neighbor) => neighbor.r <= shellRadius).slice(0, 20);
   for (let first = 0; first < firstShell.length; first++) {
     for (let second = first + 1; second < firstShell.length; second++) {
       const cosine = firstShell[first].vector.dot(firstShell[second].vector)
@@ -1221,7 +1308,7 @@ function localEnvironmentDescriptor(source, centerIndex) {
   const angularTotal = Math.max(1, angular.reduce((sum, value) => sum + value, 0));
   features.push(...angular.map((value) => value / angularTotal * 3));
   features.push(firstShell.length / 6, neighbors.length / 12);
-  return { features, coordination: firstShell.length, shell: neighbors.slice(0, 14) };
+  return { features, coordination: firstShell.length, shell: neighbors.slice(0, 20) };
 }
 
 function squaredDescriptorDistance(first, second) {
@@ -1294,15 +1381,83 @@ function learnLocalEnvironmentClusters(source) {
   return { labels: labels.map((label) => remap.get(label)), clusters, environments, descriptorLength: dimensions, selectionCurve, selectedK: k };
 }
 
+function buildWaterClusterCover(source) {
+  const oxygen = source.map((atom, index) => atom.species === "O" ? index : -1).filter((index) => index >= 0);
+  const hydrogen = source.map((atom, index) => atom.species === "H" ? index : -1).filter((index) => index >= 0);
+  const waters = [];
+  const owner = new Map();
+  oxygen.forEach((oxygenIndex) => {
+    const bonded = hydrogen.map((index) => ({ index, distance: periodicDisplacement(source[oxygenIndex], source[index]).length() }))
+      .filter((entry) => entry.distance < 1.16).sort((first, second) => first.distance - second.distance).slice(0, 2).map((entry) => entry.index);
+    if (bonded.length !== 2) return;
+    const waterIndex = waters.length;
+    const support = [oxygenIndex, ...bonded];
+    waters.push({ center: oxygenIndex, support, type: 0, residual: false, kind: "H₂O molecule" });
+    support.forEach((atomIndex) => owner.set(atomIndex, waterIndex));
+  });
+
+  const bridgePairs = new Set();
+  waters.forEach((water, waterIndex) => water.support.slice(1).forEach((proton) => {
+    const acceptor = oxygen.filter((index) => index !== water.center).map((index) => ({
+      index, distance: periodicDisplacement(source[proton], source[index]).length(),
+    })).sort((first, second) => first.distance - second.distance)[0];
+    if (!acceptor || acceptor.distance > 2.25) return;
+    const other = owner.get(acceptor.index);
+    if (!Number.isInteger(other) || other === waterIndex) return;
+    bridgePairs.add([Math.min(waterIndex, other), Math.max(waterIndex, other)].join(":"));
+  }));
+  const bridges = [...bridgePairs].map((key) => key.split(":").map(Number)).map(([first, second]) => ({
+    center: waters[first].center,
+    support: [...new Set([...waters[first].support, ...waters[second].support])],
+    type: 1, residual: false, kind: "H₂O···H₂O bridge", waterPair: [first, second],
+  }));
+
+  const adjacency = Array.from({ length: waters.length }, () => new Set());
+  bridges.forEach(({ waterPair: [first, second] }) => { adjacency[first].add(second); adjacency[second].add(first); });
+  const ringKeys = new Set();
+  adjacency.forEach((_, start) => {
+    const stack = [[start, [start]]];
+    while (stack.length) {
+      const [current, path] = stack.pop();
+      if (path.length === 6) {
+        if (adjacency[current].has(start)) ringKeys.add(path.slice().sort((a, b) => a - b).join(":"));
+        continue;
+      }
+      adjacency[current].forEach((neighbor) => {
+        if (neighbor <= start || path.includes(neighbor)) return;
+        stack.push([neighbor, [...path, neighbor]]);
+      });
+    }
+  });
+  const gaps = [...ringKeys].map((key) => key.split(":").map(Number)).map((ring) => ({
+    center: waters[ring[0]].center,
+    support: [...new Set(ring.flatMap((waterIndex) => waters[waterIndex].support))],
+    type: 2, residual: false, gap: true, kind: "oxygen-ring gap boundary",
+  }));
+  const placements = [...waters, ...bridges, ...gaps];
+  const coveredAtoms = new Set(waters.flatMap((placement) => placement.support));
+  const types = [
+    { type: 0, medoid: waters[0]?.center || 0, element: "H₂O", label: "molecule", customSupport: waters[0]?.support || [] },
+    { type: 1, medoid: bridges[0]?.center || 0, element: "O–H···O", label: "connection", customSupport: bridges[0]?.support || [] },
+    { type: 2, medoid: gaps[0]?.center || 0, element: "O₆ void", label: "gap boundary", gap: true, customSupport: gaps[0]?.support || [] },
+  ].filter((type) => type.customSupport.length);
+  const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
+  return { placements, residualTypes: [], types, incidence, covered: coveredAtoms.size,
+    complete: coveredAtoms.size === source.length, periodic: true,
+    molecular: { waters: waters.length, bridges: bridges.length, gaps: gaps.length } };
+}
+
 // Turn environment labels into an explicit overlapping cover.  Candidate
 // placements are atom-centred first shells on the periodic quotient.  Greedy
 // set cover chooses recurring placements; any atom left behind is promoted to
 // a residual cluster placement instead of disappearing from the model.
 function buildExhaustiveClusterCover(source) {
+  if (currentMaterial().molecularCover === "water") return buildWaterClusterCover(source);
+  const shellRadius = motifShellCutoff();
   const supports = source.map((_, center) => [
     center,
     ...learnedClusters.environments[center].shell
-      .filter((neighbor) => neighbor.r <= 1.38)
+      .filter((neighbor) => neighbor.r <= shellRadius)
       .map((neighbor) => source.indexOf(neighbor.atom)),
   ].filter((index, position, values) => index >= 0 && values.indexOf(index) === position));
   const occurrences = supports.map((support, center) => ({
@@ -1347,6 +1502,7 @@ function buildExhaustiveClusterCover(source) {
 
 function clusterGalleryTypes() {
   if (!learnedClusters || !learnedCover) return [];
+  if (learnedCover.types) return learnedCover.types;
   return [
     ...learnedClusters.clusters.map((cluster, type) => ({ ...cluster, type, residual: false })),
     ...learnedCover.residualTypes.map((cluster, offset) => ({ ...cluster, type: learnedClusters.clusters.length + offset })),
@@ -1365,7 +1521,8 @@ function rebuildClusterGallery() {
     const label = document.createElement("div");
     label.className = "cluster-card-label";
     const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
-    label.innerHTML = `<b>${cluster.residual ? "gap" : "C"}${cluster.type + 1}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"}</span>`;
+    const name = cluster.label || (cluster.residual ? "gap" : `C${cluster.type + 1}`);
+    label.innerHTML = `<b>${name}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"}</span>`;
     card.append(canvas, label);
     clusterGallery.append(card);
   });
@@ -1380,9 +1537,12 @@ function drawClusterGallery(now) {
     const context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
     const center = referenceAtoms[cluster.medoid];
-    const sites = [{ vector: new THREE.Vector3(), atom: center }];
-    if (!cluster.residual) learnedClusters.environments[cluster.medoid].shell
-      .filter((neighbor) => neighbor.r <= 1.38)
+    let sites = [{ vector: new THREE.Vector3(), atom: center }];
+    if (cluster.customSupport) sites = cluster.customSupport.map((atomIndex) => ({
+      vector: periodicDisplacement(center, referenceAtoms[atomIndex]), atom: referenceAtoms[atomIndex],
+    }));
+    else if (!cluster.residual) learnedClusters.environments[cluster.medoid].shell
+      .filter((neighbor) => neighbor.r <= motifShellCutoff())
       .forEach((neighbor) => sites.push(neighbor));
     const angleY = now * (.00018 + galleryIndex * .000011) + galleryIndex * .83;
     const angleX = now * (.00009 + galleryIndex * .000007) + .35;
@@ -1396,7 +1556,7 @@ function drawClusterGallery(now) {
     context.lineWidth = 1.5;
     projected.filter((point) => point.index !== 0).forEach((point) => {
       context.beginPath(); context.moveTo(projectedCenter.x, projectedCenter.y); context.lineTo(point.x, point.y);
-      context.strokeStyle = cluster.residual ? "rgba(255,109,113,.45)" : "rgba(101,225,188,.32)"; context.stroke();
+      context.strokeStyle = cluster.residual || cluster.gap ? "rgba(255,193,105,.42)" : "rgba(101,225,188,.32)"; context.stroke();
     });
     projected.forEach((point) => {
       const record = elementRecord(point.atom.species);
@@ -1409,12 +1569,13 @@ function drawClusterGallery(now) {
 }
 
 function learnOverlapMarking(source) {
+  const shellRadius = motifShellCutoff();
   const shells = source.map((center, centerIndex) => {
     const neighbors = [];
     source.forEach((atom, atomIndex) => {
       if (atomIndex === centerIndex) return;
       const normalizedDistance = periodicDisplacement(center, atom).length() / referenceSpacingA;
-      if (normalizedDistance <= 1.38) neighbors.push({ index: atomIndex, distance: normalizedDistance });
+      if (normalizedDistance <= shellRadius) neighbors.push({ index: atomIndex, distance: normalizedDistance });
     });
     return neighbors;
   });
@@ -1479,7 +1640,7 @@ function learnOverlapMarking(source) {
 }
 
 function occurrenceFrame(source, centerIndex) {
-  const shell = learnedClusters.environments[centerIndex].shell.filter((neighbor) => neighbor.r <= 1.38);
+  const shell = learnedClusters.environments[centerIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff());
   if (!shell.length) return new THREE.Quaternion();
   const x = shell[0].vector.clone().normalize();
   let transverse = null;
@@ -1501,7 +1662,79 @@ function quaternionDistance(first, second) {
   return 2 * Math.acos(Math.min(1, Math.abs(first.dot(second))));
 }
 
+function learnMolecularOverlapGrammar(source) {
+  const placements = learnedCover.placements;
+  const makeOccurrence = (placement, index) => {
+    const position = source[placement.center].p.clone();
+    const sites = placement.support.map((atomIndex) => ({
+      local: periodicDisplacement(source[placement.center], source[atomIndex]).multiplyScalar(referenceSpacing / referenceSpacingA),
+      species: source[atomIndex].species,
+      center: atomIndex === placement.center,
+      referenceIndex: atomIndex,
+    }));
+    return { index, type: placement.type, position, rotation: new THREE.Quaternion(), sites, placement };
+  };
+  const occurrences = placements.map(makeOccurrence);
+  const templates = clusterGalleryTypes().map((cluster) => ({
+    type: cluster.type, medoid: cluster.medoid,
+    sites: occurrences.find((occurrence) => occurrence.type === cluster.type)?.sites || [],
+    radius: 3.4,
+  }));
+  const reconstructionByOccurrence = new Map();
+  let reconstructionEdges = 0;
+  const addReplayRule = (first, second) => {
+    const shared = occurrences[first].placement.support.filter((atomIndex) => occurrences[second].placement.support.includes(atomIndex)).length;
+    const rule = {
+      id: `M${first}-${second}`, from: occurrences[first].type, to: occurrences[second].type,
+      occurrenceFrom: first, occurrenceTo: second, reconstructionOnly: true,
+      translation: periodicDisplacement(source[occurrences[first].placement.center], source[occurrences[second].placement.center])
+        .multiplyScalar(referenceSpacing / referenceSpacingA),
+      rotation: new THREE.Quaternion(), count: 1, meanShared: shared,
+      sites: occurrences[second].sites, replayOrder: reconstructionEdges,
+    };
+    const adjacency = reconstructionByOccurrence.get(first) || [];
+    adjacency.push(rule);
+    reconstructionByOccurrence.set(first, adjacency);
+    reconstructionEdges++;
+  };
+  const replaySeedIndex = 0;
+  const reachableOccurrences = new Set([replaySeedIndex]);
+  const coveredAtoms = new Set(occurrences[replaySeedIndex].placement.support);
+  while (coveredAtoms.size < source.length) {
+    const candidates = occurrences.map((occurrence, index) => ({
+      index, shared: occurrence.placement.support.filter((atomIndex) => coveredAtoms.has(atomIndex)).length,
+      fresh: occurrence.placement.support.filter((atomIndex) => !coveredAtoms.has(atomIndex)).length,
+    })).filter((entry) => !reachableOccurrences.has(entry.index) && entry.shared >= 2 && entry.fresh > 0)
+      .sort((first, second) => second.shared - first.shared || second.fresh - first.fresh || first.index - second.index);
+    if (!candidates.length) {
+      const missing = source.findIndex((_, atomIndex) => !coveredAtoms.has(atomIndex));
+      const water = occurrences.find((occurrence) => occurrence.type === 0 && occurrence.placement.support.includes(missing));
+      if (!water) break;
+      const anchors = [...coveredAtoms].map((atomIndex) => ({ atomIndex,
+        distance: periodicDisplacement(source[water.placement.center], source[atomIndex]).length() }))
+        .sort((first, second) => first.distance - second.distance).slice(0, 2).map((entry) => entry.atomIndex);
+      if (anchors.length < 2) break;
+      const connector = { center: water.placement.center,
+        support: [...new Set([...anchors, ...water.placement.support])],
+        type: 2, residual: false, gap: true, kind: "learned residual gap connector" };
+      occurrences.push(makeOccurrence(connector, occurrences.length));
+      continue;
+    }
+    const next = candidates[0].index;
+    const parent = [...reachableOccurrences].filter((index) => occurrences[index].placement.support.some((atomIndex) => occurrences[next].placement.support.includes(atomIndex)))
+      .sort((first, second) => occurrences[second].placement.support.filter((atomIndex) => occurrences[next].placement.support.includes(atomIndex)).length
+        - occurrences[first].placement.support.filter((atomIndex) => occurrences[next].placement.support.includes(atomIndex)).length)[0];
+    addReplayRule(parent, next);
+    reachableOccurrences.add(next);
+    occurrences[next].placement.support.forEach((atomIndex) => coveredAtoms.add(atomIndex));
+  }
+  return { molecular: true, occurrences, templates, rules: [], byFrom: new Map(),
+    reconstructionByOccurrence, replaySeedIndex, replayReachable: coveredAtoms.size,
+    reconstructionEdges, observations: reconstructionEdges, recurring: 0, heldoutSupported: 0 };
+}
+
 function learnOverlapGrammar(source) {
+  if (currentMaterial().molecularCover === "water") return learnMolecularOverlapGrammar(source);
   const scenePerAngstrom = referenceSpacing / referenceSpacingA;
   const occurrences = source.map((atom, index) => ({
     index,
@@ -1514,7 +1747,7 @@ function learnOverlapGrammar(source) {
     const inverseFrame = occurrences[medoid].rotation.clone().invert();
     const sites = [{ local: new THREE.Vector3(), species: source[medoid].species, center: true }];
     learnedClusters.environments[medoid].shell
-      .filter((neighbor) => neighbor.r <= 1.38)
+      .filter((neighbor) => neighbor.r <= motifShellCutoff())
       .forEach((neighbor) => sites.push({
         local: neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(inverseFrame),
         species: neighbor.atom.species,
@@ -1565,7 +1798,7 @@ function learnOverlapGrammar(source) {
     if (rule.examples.length < 6) rule.examples.push([firstIndex, secondIndex]);
   };
 
-  const strongEdges = trainedMarking.edges.filter((edge) => edge.shared >= 2 && edge.distance <= 2.35);
+  const strongEdges = trainedMarking.edges.filter((edge) => edge.shared >= 2 && edge.distance <= overlapDistanceCutoff());
   strongEdges.forEach((edge, index) => {
     const heldout = index % 5 === 0;
     addObservation(edge.first, edge.second, edge, heldout);
@@ -1586,7 +1819,7 @@ function learnOverlapGrammar(source) {
         const targetIndex = rule.representativePair[1];
         const targetFrameInverse = occurrences[targetIndex].rotation.clone().invert();
         rule.sites = [{ local: new THREE.Vector3(), species: source[targetIndex].species, center: true }];
-        learnedClusters.environments[targetIndex].shell.filter((neighbor) => neighbor.r <= 1.38).forEach((neighbor) => rule.sites.push({
+        learnedClusters.environments[targetIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => rule.sites.push({
           local: neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(targetFrameInverse),
           species: neighbor.atom.species, center: false,
         }));
@@ -1625,7 +1858,7 @@ function learnOverlapGrammar(source) {
       meanShared: edge.shared,
       sites: [{ local: new THREE.Vector3(), species: source[secondIndex].species, center: true }],
     };
-    learnedClusters.environments[secondIndex].shell.filter((neighbor) => neighbor.r <= 1.38).forEach((neighbor) => exactRule.sites.push({
+    learnedClusters.environments[secondIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => exactRule.sites.push({
       local: neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(targetFrameInverse),
       species: neighbor.atom.species,
       center: false,
@@ -1658,7 +1891,7 @@ function learnOverlapGrammar(source) {
 
 function learnSectionModel(source) {
   const axes = BALANCE_DIRECTIONS;
-  const support = 1.9;
+  const support = descriptorCutoff();
   const incidentEdges = Array.from({ length: source.length }, () => []);
   trainedMarking.edges.forEach((edge) => {
     incidentEdges[edge.first].push(edge);
@@ -1668,7 +1901,8 @@ function learnSectionModel(source) {
     const vector = periodicDisplacement(source[centerIndex], source[atomIndex]);
     const distance = vector.length() / referenceSpacingA;
     if (distance >= support || distance < 1e-6) return { features: new Array(axes.length).fill(0) };
-    const direction = vector.normalize().applyQuaternion(overlapGrammar.occurrences[centerIndex].rotation.clone().invert());
+    const frame = overlapGrammar.molecular ? occurrenceFrame(source, centerIndex) : overlapGrammar.occurrences[centerIndex].rotation;
+    const direction = vector.normalize().applyQuaternion(frame.clone().invert());
     const radial = .5 * (1 + Math.cos(Math.PI * distance / support));
     return { features: axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** 4) };
   };
@@ -1679,7 +1913,8 @@ function learnSectionModel(source) {
       const otherIndex = edge.first === centerIndex ? edge.second : edge.first;
       const vector = periodicDisplacement(center, source[otherIndex]);
       if (vector.length() < 1e-6 || edge.shared < 2) return;
-      const direction = vector.normalize().applyQuaternion(overlapGrammar.occurrences[centerIndex].rotation.clone().invert());
+      const frame = overlapGrammar.molecular ? occurrenceFrame(source, centerIndex) : overlapGrammar.occurrences[centerIndex].rotation;
+      const direction = vector.normalize().applyQuaternion(frame.clone().invert());
       let bestAxis = 0;
       let bestDot = -Infinity;
       axes.forEach((axis, axisIndex) => {
@@ -1990,11 +2225,12 @@ function enqueueRulesFromPlacement(placement) {
   rules.forEach((rule) => {
     const rotation = placement.rotation.clone().multiply(rule.rotation).normalize();
     const position = placement.position.clone().add(rule.translation.clone().applyQuaternion(placement.rotation));
-    const key = candidateKey(rule.to, position, rotation);
+    const key = `${candidateKey(rule.to, position, rotation)}${rule.reconstructionOnly ? `:O${rule.occurrenceTo}` : ""}`;
     if (rejectedCandidateKeys.has(key) || frontierCandidateKeys.has(key)) return;
     if (placedClusters.some((candidate) => candidate.type === rule.to
       && candidate.position.distanceTo(position) < .2
-      && quaternionDistance(candidate.rotation, rotation) < .24)) return;
+      && quaternionDistance(candidate.rotation, rotation) < .24
+      && (!rule.reconstructionOnly || candidate.occurrenceIndex === rule.occurrenceTo))) return;
     const markingScore = ruleMarkingScore(rule);
     frontierCandidates.push({ key, parentId: placement.id, rule, type: rule.to, position, rotation,
       occurrenceIndex: rule.reconstructionOnly ? rule.occurrenceTo : null, markingScore,
@@ -2052,6 +2288,16 @@ function commutingFrontierBatch() {
     candidate,
     score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit),
   })).sort((first, second) => second.score - first.score).map((entry) => entry.candidate);
+  if (overlapGrammar.molecular && !reconstructionCertified) {
+    const ordered = ranked.slice().sort((first, second) => first.rule.replayOrder - second.rule.replayOrder);
+    for (const candidate of ordered) {
+      const evaluation = evaluateCandidate(candidate);
+      if (evaluation.accepted || rejectionIsOrderInvariant(candidate, evaluation)) {
+        return [{ candidate, evaluation, sites: evaluation.sites }];
+      }
+    }
+    return [];
+  }
   const acceptedBatch = [];
   const rejectedBatch = [];
   for (const candidate of ranked) {
@@ -2103,8 +2349,7 @@ function evaluateCandidate(candidate) {
         const atom = atoms.find((candidateAtom) => candidateAtom.referenceIndex === site.referenceIndex)
           || nearbyAtoms(site.p, MERGE_TOLERANCE).find((candidateAtom) => candidateAtom.species === site.species);
         if (atom) merged.push({ site, atom });
-      } else if (!insideGrowthDomain(site.p)) boundaryFailures++;
-      else fresh.push(site);
+      } else fresh.push(site);
       return;
     }
     const neighborhood = nearbyAtoms(site.p, COLLISION_TOLERANCE)
@@ -2140,12 +2385,12 @@ function initializeOffLatticeSearch() {
   reconstructionMarkingFallbacks = 0;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
-  const seedType = learnedClusters.labels[seedIndex];
+  const seedType = overlapGrammar.molecular ? overlapGrammar.occurrences[seedIndex].type : learnedClusters.labels[seedIndex];
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
   const seed = { id: 1, type: seedType, position: seedOccurrence.position.clone(), rotation: seedOccurrence.rotation.clone(), occurrenceIndex: seedIndex, parentId: null, ruleId: null, depth: 0, atomIds: [] };
   const inverseSeedFrame = seed.rotation.clone().invert();
-  const seedSites = [{ local: new THREE.Vector3(), species: referenceAtoms[seedIndex].species, center: true }];
-  learnedClusters.environments[seedIndex].shell.filter((neighbor) => neighbor.r <= 1.38).forEach((neighbor) => seedSites.push({
+  const seedSites = overlapGrammar.molecular ? seedOccurrence.sites : [{ local: new THREE.Vector3(), species: referenceAtoms[seedIndex].species, center: true }];
+  if (!overlapGrammar.molecular) learnedClusters.environments[seedIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => seedSites.push({
     local: neighbor.vector.clone().multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverseSeedFrame),
     species: neighbor.atom.species, center: false,
   }));
@@ -2176,7 +2421,7 @@ function makeRepresentatives() {
     const medoid = referenceAtoms[cluster.medoid];
     reps.push({ p: center.clone(), species: medoid.species, family: `C${clusterIndex + 1}`, symbolCenter: true });
     learnedClusters.environments[cluster.medoid].shell
-      .filter((neighbor) => neighbor.r <= 1.38)
+      .filter((neighbor) => neighbor.r <= motifShellCutoff())
       .forEach((neighbor) => reps.push({
         p: center.clone().add(neighbor.vector.clone().multiplyScalar(scaleToScene)),
         species: neighbor.atom.species,
@@ -2287,7 +2532,7 @@ function buildClusterOverlay() {
       const shellLines = [];
       referenceAtoms.forEach((neighbor) => {
         const distance = atom.p.distanceTo(neighbor.p) / referenceSpacing;
-        if (neighbor !== atom && distance <= 1.38) shellLines.push(atom.p, neighbor.p);
+        if (neighbor !== atom && distance <= motifShellCutoff()) shellLines.push(atom.p, neighbor.p);
       });
       if (shellLines.length) clusterGroup.add(new THREE.LineSegments(
         new THREE.BufferGeometry().setFromPoints(shellLines),
@@ -2431,7 +2676,7 @@ function updateStageNarrative() {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
       caption: `${learnedCover.covered}/${referenceCount()} atoms are covered by ${learnedCover.placements.length} overlapping placements on the ${learnedCover.periodic ? "periodic quotient" : "finite window"}. Each card is one isometry class, never a second occurrence.`, badge: "learn",
       decision: "Exhaustive cluster cover computed", copy: "Element-resolved radial and angular descriptors define approximate isometry classes. A greedy overlap cover is audited atom by atom; any uncovered component is promoted to a residual cluster type.",
-      values: ["1.9a cutoff", `${learnedClusters?.descriptorLength || 0} features`, `${learnedCover.placements.length} placements`, `${learnedCover.residualTypes.length} residual types`],
+      values: [`${descriptorCutoff().toFixed(2)}a cutoff`, `${learnedClusters?.descriptorLength || 0} features`, `${learnedCover.placements.length} placements`, learnedCover.molecular ? `${learnedCover.molecular.waters} H₂O · ${learnedCover.molecular.bridges} bridges · ${learnedCover.molecular.gaps} gaps` : `${learnedCover.residualTypes.length} residual types`],
     },
     {
       eyebrow: "encoding · clusters of clusters", title: "Promote repeated overlaps into finite connection states", phase: `${overlapGrammar.rules.length} rules`,
@@ -2452,6 +2697,17 @@ function updateStageNarrative() {
       values: ["parent + φ(source−parent)", "overlap consensus", "finite GCTS state", "branch residual"],
     },
   ];
+  if (learnedCover.molecular) {
+    narratives[1].eyebrow = "learning · molecular and gap cover";
+    narratives[1].decision = "Molecular overlap cover computed";
+    narratives[1].copy = "Species-resolved bond geometry discovers one H₂O motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom.";
+    narratives[2].title = "Register molecular bridges and gap-boundary ports";
+    narratives[2].phase = `${overlapGrammar.reconstructionEdges} replay ports`;
+    narratives[2].caption = `${overlapGrammar.reconstructionEdges} dependency-ordered molecular overlap ports connect a strict replay tree reaching ${overlapGrammar.replayReachable}/${referenceCount()} known sites.`;
+    narratives[2].values = ["1 H₂O class", `${learnedCover.molecular.bridges} bridges`, `${learnedCover.molecular.gaps} ring gaps`, `${overlapGrammar.reconstructionEdges} replay ports`];
+    narratives[4].caption = "The molecular search remains a strict tree under the hood. Dependency-ordered water, bridge, and gap placements reconstruct the known periodic window before any reusable continuation rule may act.";
+    narratives[4].values = ["H₂O → bridge → gap", "shared atom support", "frozen replay ports", "branch residual"];
+  }
   const item = narratives[pipelineStage];
   eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "TRAIN", "SEARCH"][pipelineStage];
   stageEyebrow.textContent = item.eyebrow;
@@ -2506,7 +2762,7 @@ function materializeCandidate(candidate, evaluation) {
   const placement = {
     id: placedClusters.length + 1, type: candidate.type,
     position: candidate.position.clone(), rotation: candidate.rotation.clone(),
-    occurrenceIndex: Number.isInteger(centerReferenceIndex)
+    occurrenceIndex: overlapGrammar.molecular ? candidate.occurrenceIndex : Number.isInteger(centerReferenceIndex)
       && learnedClusters.labels[centerReferenceIndex] === candidate.type
       ? centerReferenceIndex : candidate.occurrenceIndex,
     parentId: candidate.parentId, ruleId: candidate.rule.id,
@@ -2769,7 +3025,8 @@ function updateUI() {
     atomLabel.textContent = "PLACEMENTS"; atomMetric.textContent = String(learnedCover.placements.length); atomDelta.textContent = `overlapping ${currentPbc().some(Boolean) ? "periodic" : "open"} cover`;
     frontierLabel.textContent = "ISOMETRY TYPES"; frontierMetric.textContent = String(clusterGalleryTypes().length); frontierDelta.textContent = "one rotating scene per type";
     oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = `${Math.round(learnedCover.covered / referenceCount() * 100)}%`; oracleDelta.textContent = `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.complete ? "complete" : "incomplete"}`;
-    reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(learnedCover.residualTypes.length); reuseDelta.textContent = learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
+    const gapTypes = learnedCover.molecular?.gaps ? 1 : learnedCover.residualTypes.length;
+    reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(gapTypes); reuseDelta.textContent = learnedCover.molecular?.gaps ? `${learnedCover.molecular.gaps} oxygen-ring boundaries` : learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
   } else if (pipelineStage === 2) {
     atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedClusters.clusters.length); atomDelta.textContent = "one per learned medoid";
     frontierLabel.textContent = "SE(3) RULES"; frontierMetric.textContent = String(overlapGrammar.rules.length); frontierDelta.textContent = "arbitrary quaternion + translation";
@@ -2918,7 +3175,11 @@ function renderMarkings() {
     markCount.textContent = "not learned";
     const p = document.createElement("p"); p.textContent = "No motif or cluster labels are supplied."; markingTable.appendChild(p); return;
   }
-  const learned = learnedClusters.clusters.map((cluster, index) => [
+  const learned = learnedCover.molecular ? clusterGalleryTypes().map((cluster) => [
+    `${cluster.label} · ${cluster.element}`,
+    cluster.gap ? "empty-region boundary" : "species + distances",
+    `×${learnedCover.placements.filter((placement) => placement.type === cluster.type).length}`,
+  ]) : learnedClusters.clusters.map((cluster, index) => [
     `C${index + 1} · ${cluster.element} medoid`,
     `z${cluster.coordination} · σ${cluster.spread.toFixed(1)}`,
     `×${cluster.count}`,

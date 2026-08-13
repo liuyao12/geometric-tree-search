@@ -93,6 +93,8 @@ a { color: inherit; }
   width: 100%; height: 36px; padding: 0 9px; border: 1px solid var(--line); border-radius: 0;
   background: #0b1a1b; color: #dce7e3; font-size: 10px;
 }
+.sample-picker select { border-color: rgba(181,148,255,.28); background-color: rgba(181,148,255,.04); }
+.sample-note { margin: 6px 1px 0; color: #627873; font-size: 8px; line-height: 1.4; }
 .database-picker { position: relative; padding: 10px; border: 1px solid rgba(101,225,188,.25); background: rgba(101,225,188,.035); }
 .database-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .database-heading strong { color: var(--mint); font-size: 10px; }
