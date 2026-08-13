@@ -91,7 +91,7 @@ def evaluate(maximum_waves=5):
         if not additions:
             break
         for key, chemical in additions:
-            positions.append(tuple(value * 1e-6 for value in key))
+            positions.append(key)
             species.append(chemical)
             known.add(key)
     correct_new = len((known - initial_known) & set(target_colors))

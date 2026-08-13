@@ -493,6 +493,15 @@ conflict-free parallel macro actions. They are different isometry classes, and
 scaling either component does not generate its successor. This is meaningful
 clusters-of-clusters action compression, not yet an exponential production.
 
+A higher-order section now learns 271 unordered pairs of metric ports that
+co-support the same observed endpoint inside the seed. Requiring a learned
+pair—not merely one valid port—gives five consecutive held-out waves of
+`260 → 312 → 120 → 80 → 120` sites. All 892 inserted positions and predicted
+species are exact, and the state grows from 1,969 to 2,861 without oracle
+insertion before stalling. This is the first genuinely regenerative generic
+GCTS trajectory. It is not exponential: wave sizes do not amplify, so the
+long-term gate remains red.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

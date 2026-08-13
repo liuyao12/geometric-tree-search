@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import math
 import ast
+import itertools
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from typing import Iterable, Mapping, Sequence, Tuple
@@ -40,6 +41,16 @@ class MetricPortProposals:
     target_color_votes: Mapping[Point, Counter[str]]
     supporting_centers: Mapping[Point, frozenset[int]]
     accepted_actions: int
+
+
+@dataclass(frozen=True)
+class PortPairSection:
+    accepted_pairs: frozenset[Tuple[MetricPort, MetricPort]]
+    minimum_support: int
+
+
+def _ordered_pair(left: MetricPort, right: MetricPort):
+    return tuple(sorted((left, right), key=repr))
 
 
 def _restore_color(color_key: str):
@@ -83,9 +94,8 @@ def fit_metric_port_atlas(
                           distance_digits))
             proposed = point_key(_proposal(
                 positions[parent], source_point, scale))
-            proposed_point = tuple(value * 1e-6 for value in proposed)
             if (observable_radius is not None and
-                    math.dist(proposed_point, observable_center) >
+                    math.dist(proposed, observable_center) >
                     observable_radius + 1e-9):
                 # Outside the observed window means censored, not negative.
                 continue
@@ -140,6 +150,73 @@ def propose_with_metric_ports(
         votes, dict(colors),
         {point: frozenset(centers) for point, centers in
          supporting_centers.items()}, actions)
+
+
+def fit_port_pair_section(
+        atlas: MetricPortAtlas, positions: Sequence[Point],
+        cluster_types: Sequence[LocalClusterType],
+        target_positions: Iterable[Point], *, minimum_support: int = 2,
+        parent_indices: Iterable[int] | None = None) -> PortPairSection:
+    """Learn which pairs of valid ports co-support one observed endpoint."""
+    mapped = map_to_prototypes(cluster_types, atlas.prototypes)
+    targets = {point_key(point) for point in target_positions}
+    parents = tuple(range(len(positions)) if parent_indices is None
+                    else parent_indices)
+    ports_by_target = defaultdict(Counter)
+    for parent in parents:
+        for source, source_point in enumerate(positions):
+            if parent == source:
+                continue
+            port = (mapped[parent], mapped[source], round(
+                math.dist(positions[parent], source_point),
+                atlas.distance_digits))
+            if port not in atlas.accepted_ports:
+                continue
+            proposed = point_key(_proposal(
+                positions[parent], source_point, atlas.scale))
+            if proposed in targets:
+                ports_by_target[proposed][port] += 1
+    support = Counter()
+    for ports in ports_by_target.values():
+        unique = sorted(ports, key=repr)
+        for left, right in itertools.combinations_with_replacement(unique, 2):
+            if left != right or ports[left] >= 2:
+                support[_ordered_pair(left, right)] += 1
+    return PortPairSection(
+        frozenset(pair for pair, count in support.items()
+                  if count >= minimum_support), minimum_support)
+
+
+def pair_section_sites(
+        section: PortPairSection, atlas: MetricPortAtlas,
+        positions: Sequence[Point], cluster_types: Sequence[LocalClusterType],
+        *, level_scale: float = 1.0,
+        parent_indices: Iterable[int] | None = None) -> frozenset[Point]:
+    """Accept only candidate sites with a train-supported incoming port pair."""
+    mapped = map_to_prototypes(cluster_types, atlas.prototypes)
+    parents = tuple(range(len(positions)) if parent_indices is None
+                    else parent_indices)
+    ports_by_target = defaultdict(Counter)
+    for parent in parents:
+        for source, source_point in enumerate(positions):
+            if parent == source:
+                continue
+            port = (mapped[parent], mapped[source], round(
+                math.dist(positions[parent], source_point) / level_scale,
+                atlas.distance_digits))
+            if port not in atlas.accepted_ports:
+                continue
+            proposed = point_key(_proposal(
+                positions[parent], source_point, atlas.scale))
+            ports_by_target[proposed][port] += 1
+    accepted = set()
+    for proposed, ports in ports_by_target.items():
+        unique = sorted(ports, key=repr)
+        if any(_ordered_pair(left, right) in section.accepted_pairs
+               for left, right in itertools.combinations_with_replacement(
+                   unique, 2) if left != right or ports[left] >= 2):
+            accepted.add(proposed)
+    return frozenset(accepted)
 
 
 def overlapping_consensus_components(
