@@ -1152,6 +1152,16 @@ gate pass: it certifies one 120-site forced macro, while sustained recursive
 macro amplification and the third cumulatively guarded IQC hierarchy level
 remain open.
 
+`scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
+regenerative trace into an explicit red scaling gate. Its eight pure waves are
+`12, 104, 12, 4, 36, 24, 24, 12`, totaling 228/228 correct sites. Frontier
+supply increases despite accepted candidates being removed, and the largest
+forced macro contains 104 sites. But consecutive macro sizes oscillate and the
+last three do not double; therefore the represented-sites-per-wave and
+exponential-fit gates fail. The next hierarchy must promote recurrent frontier
+wave states, rather than treating these exact local macros as exponential by
+fiat.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

@@ -391,4 +391,13 @@ marker beats every shuffle; no held-out label is used in training. This is a
 causal role for GCTS at the correct interface, though 120 sites are one forced
 frontier macro rather than exponential continuation.
 
+The companion regenerative scaling audit makes the remaining gap quantitative.
+Eight exact waves add `12, 104, 12, 4, 36, 24, 24, 12` sites for 228/228
+correct continuation sites, and the available frontier grows while proposals
+are consumed. The largest forced macro is 104 sites. However, successive macro
+sizes oscillate rather than doubling, so the exponential gate explicitly
+fails. The next algorithmic target is to promote recurrent *frontier wave
+states* into higher-order nodes whose support grows across consecutive waves,
+not simply to repeat more exact local waves.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
