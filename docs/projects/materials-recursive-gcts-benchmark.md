@@ -1152,23 +1152,41 @@ gate pass: it certifies one 120-site forced macro, while sustained recursive
 macro amplification and the third cumulatively guarded IQC hierarchy level
 remain open.
 
-### Spatial macro audit
+### Order-independent spatial support hierarchy
 
-`materials_gcts_spatial_macro_audit.py` records the colored 3D coordinates of
-all 368 sites accepted exactly over 16 regenerative waves. It constructs
-connected components within fixed four-wave observation windows using the
-pipeline's predeclared second cluster edge (2.1 model units), then compares the
-components by species-labelled pair distances, invariant to translation,
-rotation, and point ordering.
+The earlier `materials_gcts_spatial_macro_audit.py` records the colored 3D
+coordinates of all 368 sites accepted exactly over 16 regenerative waves. Its
+time-window analysis found 12 four-site candidates of one rigid type, but every
+occurrence lay in one window. That candidate is still rejected: grouping
+consecutive moves is not clusters-of-clusters evidence.
 
-The audit finds four spatial isometry types. Two recurring multi-site types are
-dimers. Pairing those promoted dimers at the separately predeclared 3.81 edge
-produces 12 four-site candidates of one rigid type, but every occurrence lies
-in the same observation window. The type therefore fails spatial-window
-transfer and is not promoted. Thus the current policy has one certified spatial
-macro level, but no recurring macro composed of macros. The exponential
-hierarchy gate remains red; grouping consecutive wave counts is explicitly not
-accepted as clusters-of-clusters evidence.
+`materials_gcts_spatial_support_hierarchy.py` removes construction order from
+the learner. Given only colored positions, disjoint domain labels, and bounded
+radii, it makes an exact connected cover, then recursively covers the resulting
+clusters with clusters. Its fast type key is the species-labelled pair-distance
+multiset, so translation, rotation, reflection, point permutation, atom IDs,
+lattice metadata, and phase labels do not enter. A production compiler must
+still collision-resolve homometric keys by explicit congruence. Unpromoted
+components remain explicit gap terminals, so each level still covers its entire
+assigned domain.
+
+`materials_gcts_spatial_sector_benchmark.py` applies this generic learner to
+the accumulated exact IQC frontier. Eight octants are separated by a small
+guard around their coordinate planes; 296 of 368 atoms remain. The result is:
+
+| level | recurrent geometry types | recurrent occurrences | largest support | assigned-atom coverage |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 4 | 152 | 3 | 100% |
+| 2 | 3 | 56 | 11 | 100% |
+| 3 | 1 | 8 | 37 | 100% |
+
+Support amplification is therefore `11/3 = 3.67x` and `37/11 = 3.36x`.
+This passes the scoped three-level spatial hierarchy gate and gives a genuine
+cluster-of-clusters certificate independent of move order. At the smaller
+observed factor, nine additional symbolic promotions would exceed one million
+represented sites. That is a projection, not yet a growth certificate:
+unseen-level production replay, causal GCTS marking on the promoted ports, and
+explicit output checks remain required.
 
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen

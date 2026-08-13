@@ -391,15 +391,16 @@ marker beats every shuffle; no held-out label is used in training. This is a
 causal role for GCTS at the correct interface, though 120 sites are one forced
 frontier macro rather than exponential continuation.
 
-The follow-on spatial macro audit preserves every colored point accepted in 16
-exact regenerative waves. It does not treat time bundles as clusters. Across
-fixed four-wave windows, connected components at the already-declared 2.1 model
-unit cluster edge reduce to four rigid isometry types. Two recurring multi-site
-types are dimers; the largest contains two sites. Pairing promoted dimers at
-the already-declared 3.81 edge produces 12 identical four-site candidates, but
-only in one observation window. They fail transfer and are not promoted. This
-proves a first spatial macro vocabulary, but not a cluster-of-clusters level or
-exponential growth.
+The first temporal-window macro audit correctly rejected a tempting false
+positive: its four-site candidates all came from one time window. The successor
+is order-independent. It partitions the accumulated exact frontier into eight
+guarded spatial domains and runs one generic colored-point cover learner. On
+296 off-boundary sites, every level is an exact cover and recurrent supports
+grow `3 → 11 → 37`, or `3.67x` then `3.36x`. This certifies three spatial
+levels—including clusters of clusters—without lattice metadata, phase labels,
+or construction order. Extrapolating the smaller measured factor suggests nine
+additional promotions to one million represented sites, but that number is
+explicitly unverified until those unseen productions replay.
 
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
