@@ -267,11 +267,12 @@ is admitted. All four reach at least one million represented sites in five or
 six recursive promotions, with minimum per-action factors from 3.884x to 8x
 and flat-cluster action reductions from 33,221x to 176,942x. The shared
 selector receives positions and species only and rejects the amorphous
-control. A second finite-grammar gate now compiles NaCl and the Fibonacci
-product into the same typed parent/child/address/section representation. One
-family-free counter rewrite exactly matches both explicit two-level counts and
-their symbolic million-site counts; the graphs also survive tested rigid
-motions. The continuous icosahedral section and planar atlas still use their
-specialized recursive executors and remain the next compiler targets.
+control. A second finite-grammar gate now compiles NaCl, the Fibonacci product,
+and the 30-degree hBN pose/address atlas into the same typed
+parent/child/address/section representation. One family-free counter rewrite
+matches their two-level certificates and symbolic million-site counts; the
+graphs also survive tested rigid motions. The planar row distinguishes its
+square address envelope from the exact circular atom crop. The continuous
+icosahedral section remains the next compiler target.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

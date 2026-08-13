@@ -8,10 +8,10 @@ label, not an energy or physical potential.  Once productions are induced,
 the same counter rewrite evaluates crystals and substitution quasicrystals;
 no family branch remains in the recursive executor.
 
-The current observation adapters cover translation quotients and finite
-substitution products.  Icosahedral internal-space inflation is deliberately
-reported as unsupported until its continuous section can be compiled into a
-finite typed graph.
+The current observation adapters cover translation quotients, finite
+substitution products, and planar pose/address atlases. Icosahedral
+internal-space inflation is deliberately reported as unsupported until its
+continuous section can be compiled into a finite typed graph.
 """
 
 from __future__ import annotations
@@ -99,8 +99,9 @@ def _validated_program(
 def _translation_observation(
     configuration: AtomicConfiguration, rule: ParametricRecursiveRule,
 ) -> TypedTransformProgram | None:
-    if (rule.translation_basis is None or not rule.translation_motif or
-            rule.substitution_images is not None):
+    if (getattr(rule, "translation_basis", None) is None or
+            not getattr(rule, "translation_motif", ()) or
+            getattr(rule, "substitution_images", None) is not None):
         return None
     motif_atoms = len(rule.translation_motif)
     if len(configuration.positions) % motif_atoms:
@@ -119,8 +120,9 @@ def _translation_observation(
 def _product_substitution_observation(
     configuration: AtomicConfiguration, rule: ParametricRecursiveRule,
 ) -> TypedTransformProgram | None:
-    if (rule.substitution_images is None or rule.input_side is None or
-            rule.translation_basis is not None):
+    if (getattr(rule, "substitution_images", None) is None or
+            getattr(rule, "input_side", None) is None or
+            getattr(rule, "translation_basis", None) is not None):
         return None
     image_a, image_b, seed = rule.substitution_images
     substitution = Substitution(image_a, image_b, seed)
@@ -154,19 +156,62 @@ def _product_substitution_observation(
         "Cartesian products of two learned gap-cluster productions")
 
 
+def _planar_address_observation(
+    discovered,
+) -> TypedTransformProgram | None:
+    atlas = getattr(discovered, "_payload", None)
+    components = getattr(atlas, "components", ())
+    seed_level = getattr(discovered, "seed_equivalent_level", None)
+    if (not components or seed_level is None or
+            any(len(getattr(component, "translations", ())) != 2
+                for component in components)):
+        return None
+    names = tuple(f"pose-{index}" for index in range(len(components)))
+    weights = {name: len(component.motif)
+               for name, component in zip(names, components)}
+    root = Counter({name: 4 ** seed_level for name in names})
+    productions = []
+    for name, component in zip(names, components):
+        children = tuple(TypedChild(
+            name, address,
+            (f"pose:{component.motif_isometry_class}",
+             *_boundary_section(address, (2, 2))))
+            for address in itertools.product(range(2), repeat=2))
+        productions.append(TypedProduction(
+            name, children, max(2, component.atoms_covered //
+                                max(1, len(component.motif)))))
+    return _validated_program(
+        names, weights, productions, root, "planar pose/address observations",
+        "two learned translation ports promoted within each finite pose state")
+
+
 def induce_typed_transform_program(
     configuration: AtomicConfiguration,
     rule: ParametricRecursiveRule | None = None,
 ) -> TypedTransformProgram:
-    """Compile geometric evidence without consulting ``rule.family``."""
-    learned = discover_rule(configuration) if rule is None else rule
-    if not learned.deterministic:
+    """Compile geometric evidence without consulting a family string."""
+    if rule is None:
+        # Delayed import avoids making the common discovery interface depend
+        # on this compiler.  It also lets intrinsic-dimensionality evidence
+        # reach the same production representation.
+        from materials_gcts_recursive_program import discover_recursive_program
+        discovered = discover_recursive_program(configuration)
+        learned = discovered._payload
+        deterministic = discovered.deterministic
+        reason = discovered.selection_reason
+    else:
+        discovered = rule
+        learned = rule
+        deterministic = rule.deterministic
+        reason = rule.reason
+    if not deterministic:
         return TypedTransformProgram(
-            (), (), (), (), False, "none", learned.reason,
+            (), (), (), (), False, "none", reason,
             False, False)
     candidates = tuple(candidate for candidate in (
         _translation_observation(configuration, learned),
         _product_substitution_observation(configuration, learned),
+        _planar_address_observation(discovered),
     ) if candidate is not None)
     if len(candidates) != 1:
         return TypedTransformProgram(

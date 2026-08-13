@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 from dataclasses import replace
+import math
 
+from materials_gcts_2d_generic_atlas import layered_hexagonal_configuration
 from materials_gcts_fibonacci_3d import make_input
 from materials_gcts_generic import AtomicConfiguration, benchmark_systems
 from materials_gcts_recursive_program import (
@@ -18,7 +20,11 @@ def main() -> None:
     fibonacci = make_input(9)
     for configuration, types, children in (
             (nacl, 1, (8,)),
-            (fibonacci, 8, (1, 2, 4, 8))):
+            (fibonacci, 8, (1, 2, 4, 8)),
+            (layered_hexagonal_configuration(
+                "typed-planar", 18.0,
+                ((0.0, 0.0, 0.0, "B"), (1 / 3, 1 / 3, 0.0, "N")),
+                (0.0, math.pi / 6), global_rotation=True), 2, (4,))):
         typed = induce_typed_transform_program(configuration)
         assert typed.deterministic
         assert len(typed.type_names) == types

@@ -109,7 +109,14 @@ def _try_planar(configuration: AtomicConfiguration) -> RecursiveProgram | None:
     if ratio >= .25:
         return None
     try:
-        atlas = learn_planar_atlas(configuration)
+        # The address envelope is centred on the observed finite sample, not
+        # the ambient coordinate origin.  Inferring this point is necessary
+        # for translation-equivariant discovery on arbitrary imported data.
+        observation_center = tuple(
+            sum(point[axis] for point in configuration.positions) /
+            len(configuration.positions) for axis in range(3))
+        atlas = learn_planar_atlas(
+            configuration, observation_center=observation_center)
     except (AssertionError, RuntimeError, ValueError, ZeroDivisionError):
         return None
     if (not atlas.components or atlas.seed_atoms_covered != len(configuration.positions)

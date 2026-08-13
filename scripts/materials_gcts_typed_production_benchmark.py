@@ -2,9 +2,10 @@
 """Benchmark the first shared finite recursive-production compiler.
 
 The geometric front end is still allowed to infer different evidence
-(translation residues or gap substitutions).  After compilation, both cases
-must use exactly the same typed-child counter rewrite and must agree with two
-levels of independently checked explicit materialization.
+(translation residues, gap substitutions, or planar poses). After compilation,
+all cases use exactly the same typed-child counter rewrite and must agree with
+two independently checked explicit geometry levels. A planar square address
+envelope is counted separately from its circular materialization crop.
 """
 
 from __future__ import annotations
@@ -15,10 +16,13 @@ import math
 from dataclasses import asdict, dataclass
 from typing import Tuple
 
+from materials_gcts_2d_generic_atlas import (
+    _score, layered_hexagonal_configuration)
 from materials_gcts_fibonacci_3d import make_input
 from materials_gcts_generic import AtomicConfiguration, benchmark_systems
 from materials_gcts_recursive_program import (
-    discover_recursive_program, explicit_apply)
+    discover_recursive_program, explicit_apply,
+    symbolic_count as reference_symbolic_count)
 from materials_gcts_typed_productions import (
     actions_to_at_least, induce_typed_transform_program,
     symbolic_atom_count)
@@ -34,9 +38,12 @@ class TypedProductionCase:
     productions: int
     child_references: int
     section_marks: int
-    explicit_counts: Tuple[int, int, int]
+    materialized_atom_counts: Tuple[int, int, int]
+    executor_reference_counts: Tuple[int, int, int]
     typed_counts: Tuple[int, int, int]
-    exact_count_each_unseen_level: bool
+    count_reference_kind: str
+    exact_executor_count_each_level: bool
+    exact_position_species_each_unseen_level: bool
     rigid_motion_invariant_graph: bool
     million_action: int
     million_atoms: int
@@ -81,7 +88,8 @@ def _fingerprint(program) -> tuple:
                   for production in program.productions))
 
 
-def _case(configuration: AtomicConfiguration, mover) -> TypedProductionCase:
+def _case(configuration: AtomicConfiguration, mover,
+          references=None) -> TypedProductionCase:
     typed = induce_typed_transform_program(configuration)
     moved = induce_typed_transform_program(mover(configuration))
     explicit_program = discover_recursive_program(configuration)
@@ -91,6 +99,16 @@ def _case(configuration: AtomicConfiguration, mover) -> TypedProductionCase:
                        len(explicit[0].positions), len(explicit[1].positions))
     typed_counts = tuple(symbolic_atom_count(typed, action)
                          for action in range(3))
+    if references is None:
+        executor_reference = explicit_counts
+        reference_kind = "exact materialized atoms"
+        exact_geometry = True
+    else:
+        executor_reference = tuple(reference_symbolic_count(
+            configuration, explicit_program, action) for action in range(3))
+        reference_kind = "recursive address envelope"
+        exact_geometry = all(_score(actual, target) == (1.0, 1.0, 1.0)
+                             for actual, target in zip(explicit, references))
     million_action, million_atoms = actions_to_at_least(typed)
     return TypedProductionCase(
         configuration.name, typed.observation_kind,
@@ -99,7 +117,8 @@ def _case(configuration: AtomicConfiguration, mover) -> TypedProductionCase:
         sum(len(item.children) for item in typed.productions),
         len({child.section_mark for item in typed.productions
              for child in item.children}),
-        explicit_counts, typed_counts, explicit_counts == typed_counts,
+        explicit_counts, executor_reference, typed_counts, reference_kind,
+        executor_reference == typed_counts, exact_geometry,
         _fingerprint(typed) == _fingerprint(moved),
         million_action, million_atoms)
 
@@ -107,17 +126,29 @@ def _case(configuration: AtomicConfiguration, mover) -> TypedProductionCase:
 def evaluate() -> TypedProductionBenchmark:
     nacl = next(item for item in benchmark_systems()
                 if item.name == "NaCl-rocksalt")
+    basis = ((0.0, 0.0, 0.0, "B"), (1 / 3, 1 / 3, 0.0, "N"))
+    angles = (0.0, math.pi / 6)
+    planar = layered_hexagonal_configuration(
+        "typed-30deg-hBN", 18.0, basis, angles, global_rotation=True)
+    planar_program = discover_recursive_program(planar)
+    planar_references = tuple(layered_hexagonal_configuration(
+        f"typed-30deg-hBN-heldout-{action}",
+        planar_program.observation_radius * 2 ** action,
+        basis, angles, global_rotation=True) for action in (1, 2))
     cases = (_case(nacl, _move_crystal),
-             _case(make_input(9), _move_quasicrystal))
+             _case(make_input(9), _move_quasicrystal),
+             _case(planar, _move_crystal, planar_references))
     sample = amorphous_hard_core_point_set(atom_count=507)
     amorphous = AtomicConfiguration(
         sample.name, sample.positions, sample.species)
     rejected = not induce_typed_transform_program(amorphous).deterministic
-    exact = all(item.exact_count_each_unseen_level for item in cases)
+    exact = all(item.exact_executor_count_each_level and
+                item.exact_position_species_each_unseen_level
+                for item in cases)
     invariant = all(item.rigid_motion_invariant_graph for item in cases)
     no_labels = not any(induce_typed_transform_program(configuration).
                         family_label_used
-                        for configuration in (nacl, make_input(9)))
+                        for configuration in (nacl, make_input(9), planar))
     # Continuous internal-space sections need a different, non-finite child
     # representation.  Keeping this false prevents the finite benchmark from
     # quietly claiming the ideal icosahedral case.
