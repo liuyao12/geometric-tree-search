@@ -33,6 +33,10 @@ class SpatialMacroAudit:
     recurrent_multisite_types: int
     largest_recurrent_patch_sites: int
     greatest_wave_span: int
+    second_level_candidates: int
+    second_level_types: int
+    recurrent_second_level_types: int
+    largest_recurrent_second_level_sites: int
     hierarchy_depth_proved: int
     spatial_recurrence_gate_passed: bool
     exponential_macro_gate_passed: bool
@@ -100,6 +104,7 @@ def evaluate(waves=16, connection_radius=2.1, window_width=4):
         counts_by_wave.append(len(components))
     window_counts = []
     window_sizes = []
+    window_components = []
     traces = result.regenerative_growth_traces
     for start in range(0, len(traces), window_width):
         window = traces[start:start + window_width]
@@ -108,6 +113,7 @@ def evaluate(waves=16, connection_radius=2.1, window_width=4):
         positions = tuple(point for trace in window for point in trace.positions)
         species = tuple(color for trace in window for color in trace.species)
         components = _components(positions, radius)
+        window_components.append((positions, species, components))
         window_counts.append(len(components))
         window_sizes.append(tuple(sorted(
             (len(component) for component in components), reverse=True)))
@@ -130,16 +136,46 @@ def evaluate(waves=16, connection_radius=2.1, window_width=4):
         (max(signature_windows[signature]) - min(signature_windows[signature]) + 1
          for signature in recurrent_multisite), default=0)
     recurrence_gate = bool(recurrent_multisite) and greatest_span >= 2
-    # A recurrent first-level patch is evidence for one spatial macro level,
-    # not yet for a macro made from recurring macros.
-    depth = 1 if recurrence_gate else 0
+    second_signatures = Counter()
+    second_windows = defaultdict(set)
+    macro_radius_squared = 3.81 ** 2 + 1e-10
+    for window_id, (positions, species, components) in enumerate(
+            window_components):
+        promoted = []
+        for component in components:
+            signature = _patch_signature(
+                positions, species, component,
+                result.learned_minimum_separation)
+            if signature in recurrent_multisite:
+                promoted.append(component)
+        for left_index, left in enumerate(promoted):
+            for right in promoted[left_index + 1:]:
+                if min(_distance_squared(positions[a], positions[b])
+                       for a in left for b in right) > macro_radius_squared:
+                    continue
+                union = tuple(sorted(left + right))
+                signature = _patch_signature(
+                    positions, species, union,
+                    result.learned_minimum_separation)
+                second_signatures[signature] += 1
+                second_windows[signature].add(window_id)
+    recurrent_second = {
+        signature: count for signature, count in second_signatures.items()
+        if count >= 2 and len(second_windows[signature]) >= 2}
+    largest_second = max(
+        (signature[0] for signature in recurrent_second), default=0)
+    # A recurrent union of two independently promoted level-one macros is the
+    # first genuine cluster-of-clusters level.
+    depth = 2 if recurrent_second else (1 if recurrence_gate else 0)
     exponential = depth >= 3
     return SpatialMacroAudit(
         len(result.regenerative_growth_traces), exact_sites, radius,
         tuple(counts_by_wave), tuple(sizes_by_wave), window_width,
         tuple(window_counts), tuple(window_sizes), sum(signatures.values()),
         len(signatures), len(recurrent), sum(recurrent.values()),
-        len(recurrent_multisite), largest, greatest_span, depth,
+        len(recurrent_multisite), largest, greatest_span,
+        sum(second_signatures.values()), len(second_signatures),
+        len(recurrent_second), largest_second, depth,
         recurrence_gate, exponential,
         ("recurrent rigid spatial patches found, but no clusters-of-clusters "
          "amplification is yet proved" if recurrence_gate else

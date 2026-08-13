@@ -1162,10 +1162,13 @@ components by species-labelled pair distances, invariant to translation,
 rotation, and point ordering.
 
 The audit finds four spatial isometry types. Two recurring multi-site types are
-dimers, and no larger recurring patch appears. Thus the current policy has one
-certified spatial macro level, but no recurring macro composed of macros. The
-exponential hierarchy gate remains red; grouping consecutive wave counts is
-explicitly not accepted as clusters-of-clusters evidence.
+dimers. Pairing those promoted dimers at the separately predeclared 3.81 edge
+produces 12 four-site candidates of one rigid type, but every occurrence lies
+in the same observation window. The type therefore fails spatial-window
+transfer and is not promoted. Thus the current policy has one certified spatial
+macro level, but no recurring macro composed of macros. The exponential
+hierarchy gate remains red; grouping consecutive wave counts is explicitly not
+accepted as clusters-of-clusters evidence.
 
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen

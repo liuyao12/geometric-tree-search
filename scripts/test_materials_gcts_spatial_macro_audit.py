@@ -11,6 +11,9 @@ def test_temporal_waves_are_not_mislabeled_as_spatial_macro_hierarchy() -> None:
     assert result.window_width == 4
     assert result.recurrent_multisite_types == 2
     assert result.largest_recurrent_patch_sites == 2
+    assert result.second_level_candidates == 12
+    assert result.second_level_types == 1
+    assert result.recurrent_second_level_types == 0
     assert result.hierarchy_depth_proved == 1
     assert result.spatial_recurrence_gate_passed
     assert not result.exponential_macro_gate_passed

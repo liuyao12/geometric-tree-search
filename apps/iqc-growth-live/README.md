@@ -395,8 +395,11 @@ The follow-on spatial macro audit preserves every colored point accepted in 16
 exact regenerative waves. It does not treat time bundles as clusters. Across
 fixed four-wave windows, connected components at the already-declared 2.1 model
 unit cluster edge reduce to four rigid isometry types. Two recurring multi-site
-types are dimers; the largest contains two sites. This proves a first spatial
-macro vocabulary, but not a cluster-of-clusters level or exponential growth.
+types are dimers; the largest contains two sites. Pairing promoted dimers at
+the already-declared 3.81 edge produces 12 identical four-site candidates, but
+only in one observation window. They fail transfer and are not promoted. This
+proves a first spatial macro vocabulary, but not a cluster-of-clusters level or
+exponential growth.
 
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
