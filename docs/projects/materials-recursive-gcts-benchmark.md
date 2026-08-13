@@ -536,6 +536,20 @@ materializing run produced 1,007,649 atoms at radius 115 in 2.32 seconds, with
 about 400 MB peak memory.  These are algorithm/runtime benchmarks, not MD
 equivalence: no dynamics, defects, stresses, or thermodynamics are inferred.
 
+`scripts/materials_gcts_million_emission_benchmark.py` replaces that earlier
+ad-hoc materialization note with a reproducible explicit certificate. The
+learned 216-atom NaCl quotient streams 7,077,888 species-labelled positions in
+five macro actions (12.9 seconds in the recorded Python run). The learned
+507-atom IQC section streams 2,791,097 positions in six actions (4.0 seconds).
+Neither output cloud is retained. Instead, an order-independent 256-bit sum of
+per-site cryptographic hashes is compared with a structurally independent
+oracle: direct rocksalt half-grid parity for NaCl, and the sealed unit/window/
+shell constants for the IQC. Both digests and species counts match exactly.
+The observed geometric means are 8.000 and 4.202 sites per recursive action.
+This closes the **explicit million-site emission** benchmark for the two ideal
+systems while preserving the crucial distinction: writing coordinates is
+O(N), and the generic locally learned cover grammar remains red.
+
 ## Perturbation gate
 
 `scripts/materials_gcts_noise_robustness_benchmark.py` adds independent Gaussian
