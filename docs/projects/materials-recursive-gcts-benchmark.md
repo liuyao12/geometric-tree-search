@@ -1083,6 +1083,17 @@ shuffled-port control. Because overlapping occurrences share atoms, this split
 is diagnostic only; the acceptance benchmark will train inside one window and
 test outside a guard band in larger NaCl and IQC windows.
 
+`scripts/materials_gcts_guarded_spatial_split.py` establishes that stronger
+test geometry on 13,824-site NaCl and 8,603-site IQC clouds. A fixed plane with
+normal `(1,2,3)/sqrt(14)` separates training and held-out centres. At each
+level the unused band is the full body radius plus marking width, and the outer
+boundary is eroded by the same amount. The minimum level-three populations are
+3,341 / 3,341 for NaCl and 271 / 271 for IQC. In every case the projected
+centre separation is strictly greater than twice the complete local-domain
+radius, proving that training and held-out domains cannot share an atom. This
+fixture now blocks random overlapping-occurrence splits from becoming the
+acceptance result.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

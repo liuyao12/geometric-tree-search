@@ -347,4 +347,15 @@ red test. It prevents merely storing alternatives from being reported as
 GCTS: the next marking must use already-placed connection/overlap context and
 beat this frozen modal baseline before an unseen-window claim is allowed.
 
+The acceptance split is now fixed before the encoder refactor. Two recursive
+NaCl replications provide 13,824 atoms; the independent IQC level provides
+8,603. At hierarchy levels 1--3, a fixed irrational-direction half-space and a
+guard at least as wide as the complete cluster-plus-halo domain leave 3,341
+training and 3,341 held-out NaCl centres, and 271 / 271 IQC centres at the
+deepest level. The projected separation exceeds twice the guarded radius at
+every level, so the train and held-out local domains cannot share atoms. The
+next learner must freeze its scale, bins, type maps, promoted colors, and
+production/marking tables on the training side and transform the held-out side
+without regrouping or renumbering types.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
