@@ -950,6 +950,30 @@ invalid frame from entering a large coefficient box. Two independently seeded
 amorphous controls admit zero proposals. More severe and nonuniform 3D damage
 remains open.
 
+### Finite-window and minimum-description stability
+
+`scripts/materials_gcts_finite_window_benchmark.py` changes the observed
+window before discovery. It covers cubic crystal boxes, spherical IQC crops,
+Cartesian substitution products, and circular bilayer disks. For every input,
+the family-blind selector is rerun, its learned parameter signature is compared
+across sizes, and one clean continuation beyond the observed window is checked
+by exact position/species set.
+
+| family | observed atom range | windows | stable learned parameters | next window |
+|---|---:|---:|---|---|
+| NaCl quotient | 64–512 | 3 | 8-atom motif; 5.64 A orthogonal translation Gram matrix | exact |
+| ideal IQC section | 345–919 | 3 | unit phi; window 1.5; shell fractions 0.5 / 0.75 | exact |
+| Fibonacci substitution | 216–1,728 | 3 | `A -> AB`, `B -> A`; same eight decorations | exact |
+| twisted hBN atlas | 470–1,130 | 3 | one motif class, two poses, same translation Gram matrices | exact |
+
+The test exposed a periodic overfit: the 512-atom NaCl window initially chose
+a perfectly fitting 64-atom 2x supercell motif. The old tie-breaker favored
+larger determinant. It now minimizes quotient description length after fit
+quality and recovers the primitive 8-atom motif at all three sizes. Parameter
+stability is therefore a separate gate from exact growth: a redundant
+supercell can continue exactly while failing to learn the smallest recurring
+cluster-of-clusters rule.
+
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
 | NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |

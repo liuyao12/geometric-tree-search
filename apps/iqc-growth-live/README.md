@@ -297,4 +297,12 @@ reconstructs the clean first level at 100% precision and recall. Bounded
 lift-complexity preflight prevents expensive invalid rank-6 enumeration. More
 severe and nonuniform 3D damage remains open.
 
+A 12-case finite-window gate repeats discovery at three sizes per family.
+NaCl keeps its primitive 8-atom quotient from 64 to 512 observed atoms; the
+ideal IQC keeps phi, window 1.5, and shell fractions 0.5/0.75 from 345 to 919;
+Fibonacci keeps `A -> AB, B -> A` from 216 to 1,728; and twisted hBN keeps the
+same two-pose atlas from 470 to 1,130 atoms. Every next-window continuation is
+exact. This gate fixed a minimum-description bug where the largest NaCl crop
+preferred a redundant 2x supercell despite exact primitive-cell evidence.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

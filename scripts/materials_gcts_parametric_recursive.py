@@ -471,7 +471,13 @@ def _best_translation_model(configuration, structure):
         support_penalty = 0.05 * (1.0 - min(
             first.match_fraction, second.match_fraction,
             third.match_fraction))
-        score = (mismatch + support_penalty, mismatch, -determinant)
+        # Equivalent supercells can replay the finite seed exactly. Prefer the
+        # shortest quotient description instead of the largest determinant;
+        # otherwise a larger observation window can spuriously promote a 2x
+        # supercell into a new cluster type.
+        description_penalty = len(motif) / max(1, len(configuration.positions))
+        score = (mismatch + support_penalty + description_penalty,
+                 mismatch, len(motif), determinant)
         if best is None or score < best[0]:
             best = (score, basis, motif, minimum, maximum, occupied)
     if best is None:
