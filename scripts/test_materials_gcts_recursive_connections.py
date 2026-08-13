@@ -31,6 +31,10 @@ class RecursiveConnectionMarkingTest(unittest.TestCase):
 
     def test_frozen_ideal_iqc_marking_recovers_most_next_level(self):
         result = evaluate()
+        self.assertTrue(result.scale_inferred_from_seed_only)
+        self.assertLess(result.scale_absolute_error, 2e-6)
+        self.assertGreater(min(result.one_level_distance_closure,
+                               result.two_level_distance_closure), .5)
         self.assertEqual(result.atom_counts, (507, 1969, 8603))
         self.assertFalse(result.trained_on_heldout_labels)
         self.assertFalse(result.lattice_coordinates_used)

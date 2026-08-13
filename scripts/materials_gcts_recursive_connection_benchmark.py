@@ -11,7 +11,7 @@ from typing import Tuple
 
 from materials_gcts_icosahedral_modelset import HIDDEN_UNIT, oracle_patch
 from materials_gcts_recursive_connections import (
-    consensus_sites, learn_recursive_connection_marking,
+    consensus_sites, infer_recursive_scale, learn_recursive_connection_marking,
     local_cluster_types, propose_with_recursive_marking, point_key)
 
 
@@ -29,6 +29,10 @@ class ConsensusOperatingPoint:
 class RecursiveConnectionBenchmark:
     atom_counts: Tuple[int, int, int]
     inflation_scale: float
+    scale_inferred_from_seed_only: bool
+    scale_absolute_error: float
+    one_level_distance_closure: float
+    two_level_distance_closure: float
     training_states: int
     accepted_states: int
     heldout_pair_actions: int
@@ -53,10 +57,11 @@ def evaluate() -> RecursiveConnectionBenchmark:
     edges = (1.4, 2.1, 2.8, 3.81)
     first_types = local_cluster_types(first.positions, first.species, edges)
     second_types = local_cluster_types(second.positions, second.species, edges)
+    scale = infer_recursive_scale(first.positions, maximum_distance=9.0)
     marking = learn_recursive_connection_marking(
-        first.positions, first_types, second.positions, HIDDEN_UNIT)
+        first.positions, first_types, second.positions, scale.scale)
     result = propose_with_recursive_marking(
-        marking, second.positions, second_types, HIDDEN_UNIT, third.positions)
+        marking, second.positions, second_types, scale.scale, third.positions)
     known = {point_key(point) for point in second.positions}
     targets = ({point_key(point) for point in third.positions} - known)
     novel_votes = Counter({point: votes for point, votes in result.votes.items()
@@ -72,7 +77,10 @@ def evaluate() -> RecursiveConnectionBenchmark:
             true / len(proposed) if proposed else 0.0, true / len(targets)))
     return RecursiveConnectionBenchmark(
         (len(first.positions), len(second.positions), len(third.positions)),
-        HIDDEN_UNIT, len(marking.evidence), len(marking.accepted_states),
+        scale.scale, scale.learned_from_positions_only,
+        abs(scale.scale - HIDDEN_UNIT), scale.one_level_closure,
+        scale.two_level_closure,
+        len(marking.evidence), len(marking.accepted_states),
         result.accepted_pair_actions, result.true_pair_actions or 0,
         (result.true_pair_actions or 0) / result.accepted_pair_actions,
         len(novel_votes), marked_true, len(novel_votes) - marked_true,

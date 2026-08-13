@@ -66,8 +66,83 @@ class MarkedProposalResult:
     parent_votes: Mapping[Point, Counter[int]]
 
 
+@dataclass(frozen=True)
+class RecursiveScaleEstimate:
+    scale: float
+    one_level_closure: float
+    two_level_closure: float
+    candidate_scales: int
+    learned_from_positions_only: bool
+
+
 def point_key(point: Sequence[float], digits: int = 6) -> Point:
     return tuple(round(float(value), digits) for value in point)  # type: ignore[return-value]
+
+
+def infer_recursive_scale(
+        positions: Sequence[Point], *, minimum_scale: float = 1.3,
+        maximum_scale: float = 2.2, maximum_distance: float | None = None,
+        distance_digits: int = 5, minimum_peak_count: int = 30,
+        matching_tolerance: float = 1e-3) -> RecursiveScaleEstimate:
+    """Infer an inflation from two-level closure of the distance spectrum.
+
+    A genuine recursive scale should map recurrent separations to recurrent
+    separations at both ``s`` and ``s**2``. Testing the second power rejects
+    accidental ratios that fit only one pair of shells. No target window,
+    lattice coordinate, phase label, or chemical potential enters the score.
+    """
+    if len(positions) < 3 or not 1.0 < minimum_scale < maximum_scale:
+        raise ValueError("need three points and a valid scale interval")
+    if maximum_distance is None:
+        center = tuple(sum(point[axis] for point in positions) / len(positions)
+                       for axis in range(3))
+        maximum_distance = max(math.dist(center, point) for point in positions)
+    spectrum = Counter(
+        round(math.dist(left, right), distance_digits)
+        for index, left in enumerate(positions)
+        for right in positions[index + 1:]
+        if 0.0 < math.dist(left, right) <= maximum_distance)
+    peaks = tuple((distance, count) for distance, count in spectrum.items()
+                  if count >= minimum_peak_count)
+    candidates = {
+        right / left: False
+        for left, _ in peaks for right, _ in peaks
+        if minimum_scale <= right / left <= maximum_scale}
+    # Recursive scales commonly have a short algebraic description. Add all
+    # positive roots of x^2-a*x-b with small integer coefficients; the same
+    # closure score, not a named constant, decides whether any is useful.
+    for coefficient in range(-4, 5):
+        for constant in range(-4, 5):
+            discriminant = coefficient * coefficient + 4 * constant
+            if discriminant < 0:
+                continue
+            root = (coefficient + math.sqrt(discriminant)) / 2
+            if minimum_scale <= root <= maximum_scale:
+                candidates[root] = True
+    if not candidates:
+        raise ValueError("no recurrent multiscale distance ratio")
+
+    def closure(scale):
+        matched = total = 0
+        distances = tuple(spectrum)
+        for distance, count in peaks:
+            target = distance * scale
+            if target > maximum_distance:
+                continue
+            total += count
+            nearest = min(distances, key=lambda value: abs(value - target))
+            if abs(nearest - target) <= matching_tolerance:
+                matched += min(count, spectrum[nearest])
+        return matched / max(1, total)
+
+    scored = []
+    for scale, algebraic in candidates.items():
+        first, second = closure(scale), closure(scale * scale)
+        scored.append((min(first, second), first * second, algebraic,
+                       -(abs(scale - 1.0)), scale, first, second))
+    _, _, _, _, scale, first, second = max(scored)
+    return RecursiveScaleEstimate(
+        scale, first, second, len(candidates), True)
 
 
 def local_cluster_types(

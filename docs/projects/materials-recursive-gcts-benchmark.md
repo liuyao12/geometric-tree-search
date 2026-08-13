@@ -1304,6 +1304,16 @@ exactly recurring incoming contexts. The overall gate stays red until a
 symmetry-quotiented port representation transfers at every recursive level and
 drives proper-pose execution at matched output quality.
 
+The recursive centre-connection benchmark previously received the ideal
+inflation factor as an argument. It now infers that factor from the 507-atom
+seed alone. Candidate ratios come from recurrent peaks in the pair-distance
+spectrum plus generic positive roots of low-coefficient quadratic polynomials.
+They are ranked by weighted spectral closure at both `s` and `s²`; requiring
+two levels rejects a tempting one-level ratio near 1.902. The selected value is
+`1.618033988749895`, with 51.24% and 55.85% closure. This inferred value—not a
+hidden φ constant—now trains and applies the frozen recursive connection
+marking. Target windows remain scoring-only.
+
 `scripts/materials_gcts_regenerative_scaling_audit.py` turns the existing
 regenerative trace into an explicit red scaling gate. Extending the frozen
 policy to 16 waves gives

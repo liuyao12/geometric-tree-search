@@ -445,6 +445,15 @@ refits. The effect is therefore not explained by parent-class frequency, but
 13.9% context coverage is too low and exact contexts do not transfer at levels
 2–3. This is a positive ablation, not a passed growth benchmark.
 
+The recursive centre-connection path also no longer receives the hidden
+inflation factor. A seed-only estimator builds the recurrent pair-distance
+spectrum and scores every candidate ratio by closure at both `s` and `s²`.
+This rejects a stronger one-level accidental ratio near 1.902. A generic set
+of low-degree integer-polynomial roots is admitted under the same score, and
+the 507-atom IQC selects `1.618033988749895`, with 51.2% and 55.8% weighted
+distance closure. The existing frozen connection marking then produces the
+same held-out result using this inferred scale.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for
