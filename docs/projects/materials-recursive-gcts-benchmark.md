@@ -828,6 +828,43 @@ parent actions or a complete substitution cover.
 
 ## Current crystal/quasicrystal scaling gates
 
+### Common two-level exponential-action protocol
+
+`scripts/materials_gcts_recursive_program.py` now gives the planar atlas and
+the three 3D recursive learners one family-blind contract. It first uses a
+rotation-invariant covariance screen plus exact seed replay to recognize an
+intrinsically planar union; otherwise it calls the existing structure-blind
+3D dispatcher. No crystal, quasicrystal, dimensionality, cell, or held-out
+label is passed to the selector.
+
+`scripts/materials_gcts_common_recursive_benchmark.py` applies the same gate
+to every admitted program: exactly materialize two independently generated
+unseen levels, then—and only then—allow a symbolic count to one million. A
+flat action means placing one learned primitive cluster; a recursive action
+means promoting one cluster-of-clusters program level.
+
+| learned from positions + species | explicit certificate | minimum sites/action factor | first symbolic ≥1m | flat cluster actions / recursive actions | compression | marking ablation effect |
+|---|---:|---:|---:|---:|---:|---:|
+| NaCl translation quotient | 216 → 1,728 → 13,824 exact | 8.000× | action 5: 7,077,888 | 884,709 / 5 | 176,942× | rejects all but one colored quotient decoration |
+| icosahedral internal section | 507 → 1,969 → 8,603 exact | 3.884× | action 6: 2,791,097 | 199,328 / 6 | 33,221× | rejects 99.86% of algebraic lift candidates |
+| Fibonacci-product substitution | 729 → 3,375 → 13,824 exact | 4.096× | action 5: 1,061,208 | 265,120 / 5 | 53,024× | rejects 98.47% of bounded rewrite grammars |
+| rotated 30° hBN pose/address macro | 746 → 2,954 → 11,696 exact | 4.000× | action 5: 1,048,576 | 261,958 / 5 | 52,392× | pose ablation loses 50% recall |
+
+The common pass criteria are deliberately stronger than a million-site count:
+two exact unseen levels, minimum multiplicative factor above 3, at most six
+recursive actions to one million represented atoms, at least 10,000× fewer
+program actions than flat primitive-cluster placement, a causal marking
+ablation, and rejection of the amorphous negative control. Explicit coordinate
+emission remains linear in atom count. The exponential result is compression
+of represented structure per recursive action, not a claim of sublinear MD or
+free materialization.
+
+The shared interface is now generic, but its rule backends are still
+specialized (translation quotient, quadratic internal section, product
+substitution, planar address atlas). Replacing those hand-built backend
+families with learned typed transform/section programs is the next algorithmic
+gate.
+
 | system | observed input | learned supports | recursive factor | million-site gate | strongest certificate |
 | --- | ---: | --- | ---: | ---: | --- |
 | NaCl crystal | 216 atoms | 7 -> 27 -> 164 | exactly 8x/action | action 5: 7,077,888 | exact position/species quotient |

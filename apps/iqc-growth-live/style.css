@@ -315,6 +315,15 @@ a { color: inherit; }
 .recursive-grid dt { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
 .recursive-grid dd { overflow: hidden; margin: 3px 0 0; color: #cbd8d4; font: 8px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
 .recursive-card > p { margin: 8px 0 0; color: var(--faint); font-size: 7px; line-height: 1.45; }
+.common-gate { margin-top: 10px; border: 1px solid rgba(101,225,188,.22); background: rgba(101,225,188,.025); }
+.common-gate summary { display: flex; justify-content: space-between; padding: 8px; color: var(--faint); font: 7px var(--mono); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+.common-gate summary strong { color: var(--mint); font-weight: 500; }
+.common-gate > p, .common-gate > small { display: block; margin: 0; padding: 0 8px 7px; color: var(--faint); font: 6px/1.45 var(--mono); }
+.common-gate > div { display: grid; grid-template-columns: 1.45fr .72fr .42fr .86fr; gap: 4px; min-height: 19px; align-items: center; padding: 0 8px; border-top: 1px solid var(--line); font: 6px var(--mono); }
+.common-gate > div b { overflow: hidden; color: #aebeb9; font-weight: 400; white-space: nowrap; text-overflow: ellipsis; }
+.common-gate > div em, .common-gate > div i { color: var(--violet); font-style: normal; }
+.common-gate > div code { color: var(--mint); font: inherit; text-align: right; }
+.common-gate > .common-gate-head { color: #536a65; text-transform: uppercase; }
 .external-audit { margin-top: 8px; padding: 7px; border: 1px solid rgba(101,225,188,.22); background: rgba(101,225,188,.035); }
 .external-audit[hidden] { display: none; }
 .external-audit > div { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }

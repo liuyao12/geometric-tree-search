@@ -259,4 +259,14 @@ water-only ablation and full-cover result in
 `scripts/test_materials_gcts_ice_cover.py`. This certifies reconstruction of
 the known windows; larger blind ice continuation remains open.
 
+A common recursive-program gate now prevents the crystal and quasicrystal
+cards from using incomparable meanings of "action." NaCl, the icosahedral
+model set, the Fibonacci-product control, and rotated 30-degree hBN must each
+exactly materialize two unseen levels before their symbolic million-site curve
+is admitted. All four reach at least one million represented sites in five or
+six recursive promotions, with minimum per-action factors from 3.884x to 8x
+and flat-cluster action reductions from 33,221x to 176,942x. The shared
+selector receives positions and species only and rejects the amorphous
+control. The specialized rule backends remain an explicit open limitation.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
