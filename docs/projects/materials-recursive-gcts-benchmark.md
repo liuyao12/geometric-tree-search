@@ -839,3 +839,30 @@ parent actions or a complete substitution cover.
 The first three rows set the exponential-style action benchmark.  The
 experimental row must match their multi-step certificate before its learned
 phi action is allowed to project a million-site count.
+
+## Generic intrinsic-2D atlas gate
+
+`scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
+fixture's assumptions of exactly two binary XY sheets.  From positions and
+species alone it learns connected affine components, rank-two colored
+translations in arbitrary 3D orientation, the complete motif modulo the
+translation torus, motif isometry classes, and one finite pose marking per
+component.
+
+| control | seed -> held-out | learned motif poses | atoms per pose action | position/species |
+| --- | ---: | --- | ---: | ---: |
+| globally rotated graphene-like monolayer | 373 -> 1,495 | 1 x C2 | 1,122 | 100% / 100% |
+| globally rotated 30-degree hBN-like bilayer | 746 -> 2,990 | 2 x BN | 1,122 | 100% / 100% |
+| globally rotated 13-degree Janus MoSSe-like bilayer | 878 -> 3,578 | 2 x MoSSe | 1,350 | 100% / 100% |
+
+Keeping only one pose per motif-isometry class leaves both bilayers at exactly
+50% recall; restoring the learned cluster-of-clusters pose marking restores
+100%.  This is a causal marking ablation with the motif dictionary fixed.
+
+`scripts/materials_gcts_2d_robustness.py` deletes 3.35% of a 746-atom hBN seed
+and adds 0.006 Angstrom Gaussian coordinate noise.  The learner covers the
+vacancy-isolated residual atoms, recovers both BN poses with minimum translation
+support 0.878, and reconstructs the clean 2,990-atom scaffold at 100% registered
+position/species precision and recall with 0.0031 Angstrom RMS error.  The pose
+ablation remains at 50%.  This is scaffold recovery, not prediction of future
+random defects or thermal displacements.
