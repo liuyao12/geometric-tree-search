@@ -557,6 +557,18 @@ and the partial cloud reaches 4,337 atoms without any held-out atom or oracle
 color entering state. Totals by recursive level are `652 → 996 → 720`, so this
 passes self-fed multiscale regeneration but not exponential amplification.
 
+A complementary gap node now gives the learned level set a causal accept/reject
+role. A single metric port proposes a missing site; the IQC internal section accepts
+or rejects that connection before insertion and supplies its chemical color.
+It rejects 420 invalid endpoints and self-feeds six recursive levels with exact
+totals `3,304 → 1,332 → 300 → 2,520 → 780 → 120`. Across 20 nonempty waves it
+adds 8,356 / 8,356 correct colored sites, growing 1,969 → 10,325. The hidden
+model is used only by the independent scorer. The level-4 resurgence does not
+persist through levels 5–6, so exponential growth remains explicitly false.
+This is a section-assisted ceiling: the global superspace coordinate is learned
+from the seed, but it is stronger than the intended bounded local cluster halo.
+Replacing it with finite local marking data remains a genericity requirement.
+
 The companion regenerative scaling audit makes the remaining gap quantitative.
 Extending the same frozen policy to 16 waves adds
 `12, 104, 12, 4, 36, 24, 24, 12, 8, 24, 24, 24, 24, 12, 12, 12` sites for

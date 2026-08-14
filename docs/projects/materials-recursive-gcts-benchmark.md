@@ -1504,6 +1504,39 @@ does not grow monotonically. Dense growth will require learning another parent
 frontier state or a complementary gap-production node rather than lowering the
 precision gate.
 
+### Section-assisted gap production
+
+Pair consensus is precise but leaves holes that eventually remove its own
+frontier support. The complementary graph node binds one learned metric port,
+uses its affine endpoint as a gap proposal, then evaluates the learned bounded
+section as an actual connection/failure predicate. Only an accepted endpoint
+is colored and inserted. This operationalizes the accept/reject surface
+requested for the visual pipeline. However, this section is evaluated in the
+learned global IQC superspace; it is not yet a fixed-radius local halo around a
+cluster.
+
+| recursive level | exact self-fed sites | nonempty waves |
+| ---: | ---: | ---: |
+| 1 | 3,304 | 8 |
+| 2 | 1,332 | 4 |
+| 3 | 300 | 2 |
+| 4 | 2,520 | 3 |
+| 5 | 780 | 2 |
+| 6 | 120 | 1 |
+
+The section rejects 420 invalid candidate endpoints. All 8,356 accepted sites
+are independently certified against the hidden six-dimensional model in both
+position and species, while the hidden model contributes nothing to fitting or
+state. The cloud grows from 1,969 to 10,325 atoms over 20 nonempty self-fed
+waves. A coordinate-magnitude-derived lift bound replaces the old fixed bound
+16; without that numerical correction, valid large-level sites were
+misclassified by the scorer and marking.
+
+This greatly improves generic coverage but still fails the exponential gate:
+per-level support oscillates and ends `2,520 → 780 → 120`. A successful next
+production must promote the recurrent level-4 frontier state while replacing
+the global internal section with a finite, bounded local cluster marking.
+
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
 all atom pairs; a brute-force regression certifies identical local colors.

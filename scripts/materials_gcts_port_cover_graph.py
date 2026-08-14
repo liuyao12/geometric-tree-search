@@ -86,6 +86,8 @@ class Binding:
 class GraphExecution:
     visited_nodes: Tuple[str, ...]
     emitted_sites: frozenset[ColoredSite]
+    novel_candidate_groups: int
+    rejected_candidate_groups: int
 
 
 def compile_instruction(instruction: GeometryInstruction) -> PortCoverGraph:
@@ -117,6 +119,22 @@ def compile_instruction(instruction: GeometryInstruction) -> PortCoverGraph:
         raise ValueError("unsupported geometry instruction payload")
     return PortCoverGraph(
         (node,), ("root",), instruction.learned_from_seed_only,
+        instruction.family_label_used, instruction.physical_potential_used)
+
+
+def compile_gap_instruction(instruction: GeometryInstruction) -> PortCoverGraph:
+    """Compile accepted single ports gated by the learned bounded section."""
+    payload = instruction.payload
+    if not isinstance(payload, OverlapPayload):
+        raise ValueError("a gap node requires an overlap-port payload")
+    node = CoverNode(
+        "gap", BindingDomain(2, "metric_ports", payload),
+        AffineOutput((1.0 - payload.scale, payload.scale),
+                     (0.0, 0.0, 0.0)),
+        ConnectionSection("bounded_section", payload.color_section, "one"),
+        ColorSection("bounded_section", payload.color_section), ("gap",))
+    return PortCoverGraph(
+        (node,), ("gap",), instruction.learned_from_seed_only,
         instruction.family_label_used, instruction.physical_potential_used)
 
 
@@ -210,11 +228,26 @@ def _output(output: AffineOutput, binding: Binding) -> Point:
         zip(output.coefficients, binding.points)) for axis in range(3)))
 
 
-def _accepted(node: CoverNode, bindings: Tuple[Binding, ...], level: int) -> bool:
+def _inside_section(section: InternalColorSection, point: Point) -> bool:
+    centered = tuple(point[axis] - section.origin[axis] for axis in range(3))
+    canonical = matvec(section.to_canonical, centered)  # type: ignore[arg-type]
+    from materials_gcts_icosahedral_modelset import (
+        lift_point, project, vector_norm)
+    coefficient_bound = max(16, math.ceil(max(map(abs, canonical))) + 8)
+    lift, residual = lift_point(
+        canonical, section.unit, coefficient_bound=coefficient_bound)
+    return (residual <= 1e-5 and vector_norm(project(
+        lift, section.internal_vectors)) <= section.window_radius + 1e-9)
+
+
+def _accepted(node: CoverNode, point: Point,
+              bindings: Tuple[Binding, ...], level: int) -> bool:
     if node.connection.predicate == "always":
         return True
     if node.connection.predicate == "admitted_type":
         return bindings[0].mark in node.connection.parameters
+    if node.connection.predicate == "bounded_section":
+        return _inside_section(node.connection.parameters, point)
     if node.connection.predicate == "port_pair_consensus":
         payload: OverlapPayload = node.connection.parameters
         ports = Counter(binding.mark for binding in bindings)
@@ -251,6 +284,7 @@ def execute_graph(graph: PortCoverGraph, state: AtomicConfiguration,
     pending = list(graph.root_nodes)
     visited = []
     emitted = set()
+    novel_candidates = 0
     known_points = {point_key(point) for point in state.positions}
     while pending:
         node_id = pending.pop(0)
@@ -263,8 +297,12 @@ def execute_graph(graph: PortCoverGraph, state: AtomicConfiguration,
             grouped[_output(node.output, binding)].append(binding)
         for point, candidates in grouped.items():
             frozen = tuple(candidates)
-            if point not in known_points and _accepted(node, frozen, level):
-                emitted.add((point, _color(node, point, frozen)))
+            if point not in known_points:
+                novel_candidates += 1
+                if _accepted(node, point, frozen, level):
+                    emitted.add((point, _color(node, point, frozen)))
         pending.extend(child for child in node.child_nodes
                        if child not in visited)
-    return GraphExecution(tuple(visited), frozenset(emitted))
+    return GraphExecution(
+        tuple(visited), frozenset(emitted), novel_candidates,
+        novel_candidates - len(emitted))

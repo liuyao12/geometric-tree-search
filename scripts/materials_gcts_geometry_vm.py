@@ -50,6 +50,7 @@ class InternalColorSection:
     internal_vectors: Tuple[Tuple[float, float, float], ...]
     ordered_species: Tuple[str, ...]
     thresholds: Tuple[float, ...]
+    window_radius: float
     origin: Tuple[float, float, float]
     to_canonical: Tuple[Tuple[float, float, float], ...]
 
@@ -131,7 +132,9 @@ def _section_color(section: InternalColorSection,
                    point: Tuple[float, float, float]) -> str:
     centered = tuple(point[axis] - section.origin[axis] for axis in range(3))
     canonical = matvec(section.to_canonical, centered)  # type: ignore[arg-type]
-    lift, residual = lift_point(canonical, section.unit)
+    coefficient_bound = max(16, math.ceil(max(map(abs, canonical))) + 8)
+    lift, residual = lift_point(
+        canonical, section.unit, coefficient_bound=coefficient_bound)
     if residual > 1e-5:
         raise ValueError("accepted port endpoint is outside the learned module")
     radius = vector_norm(project(lift, section.internal_vectors))
@@ -217,7 +220,7 @@ def compile_overlap(seed: AtomicConfiguration, scale: float,
             point[axis] - rule.origin[axis] for axis in range(3)))
             for point in seed.positions), seed.species, None, False,
         seed.provenance)
-    unit, lifted, _, thresholds, residual = infer_model(canonical)
+    unit, lifted, window, thresholds, residual = infer_model(canonical)
     if residual > 1e-5:
         raise ValueError("overlap color section needs an exact learned module")
     internal = star_vectors(-1.0 / unit)
@@ -227,7 +230,8 @@ def compile_overlap(seed: AtomicConfiguration, scale: float,
     ordered = tuple(sorted(radii, key=lambda chemical:
                            sum(radii[chemical]) / len(radii[chemical])))
     color = InternalColorSection(
-        unit, internal, ordered, thresholds, rule.origin, rule.to_canonical)
+        unit, internal, ordered, thresholds, window, rule.origin,
+        rule.to_canonical)
     return GeometryInstruction("overlap_section", OverlapPayload(
         scale, radial_edges, atlas, pair_section, seed_minimum_votes, color))
 
@@ -261,7 +265,8 @@ def transform_instruction(
                                   for column in range(3)) for row in range(3))
         color = InternalColorSection(
             section.unit, section.internal_vectors, section.ordered_species,
-            section.thresholds, move(section.origin), moved_frame)
+            section.thresholds, section.window_radius, move(section.origin),
+            moved_frame)
         payload = OverlapPayload(
             payload.scale, payload.radial_edges, payload.atlas,
             payload.section, payload.seed_minimum_votes, color)

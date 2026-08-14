@@ -100,7 +100,7 @@ def _fibonacci(return_instruction=False):
     return (case, instruction) if return_instruction else case
 
 
-def _iqc(return_instruction=False):
+def _compile_iqc_instruction():
     seed, _ = oracle_patch(3, 9.0)
     edges = (1.4, 2.1, 2.8, 3.81)
     types = local_cluster_types(seed.positions, seed.species, edges)
@@ -117,6 +117,11 @@ def _iqc(return_instruction=False):
     instruction = compile_overlap(
         seed, HIDDEN_UNIT, edges, atlas, section, minimum,
         discover_rule(seed))
+    return seed, instruction
+
+
+def _iqc(return_instruction=False):
+    seed, instruction = _compile_iqc_instruction()
     reports = []
     for action, state_bound, target_bound in ((1, 4, 6), (2, 6, 10)):
         state, _ = oracle_patch(
