@@ -596,4 +596,13 @@ The IQC emitter does not lift output coordinates or refit the model. Translation
 substitution, and marked-address expansion still remain distinct production
 kinds behind the common API, so the strict single-production gate stays red.
 
+The first published real-material model transfer is now sealed as well. A
+provenance-pinned offline port of the Cd5.7Yb generator supplies nested 546,
+2,942, and 4,654-atom radial windows. Only the 546 positions and species enter
+the learner. The current generic adapter records a complete local cover but
+finds no admissible recursive production, so it refuses to invent atoms: its
+provenance and cover gates pass while held-out continuation, hierarchy depth,
+and marking speedup remain explicitly red. This is the benchmark that the next
+irregular-cluster and oriented-overlap implementation must improve.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

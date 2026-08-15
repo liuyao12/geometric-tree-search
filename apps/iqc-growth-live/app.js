@@ -113,6 +113,12 @@ const connectionConsensus = $("connectionConsensus");
 const connectionSecondOrder = $("connectionSecondOrder");
 const connectionFrontier = $("connectionFrontier");
 const pipelineSteps = [...document.querySelectorAll("[data-pipeline-stage]")];
+const VISIBLE_PIPELINE_STAGES = [0, 1, 3, 4];
+const visiblePipelineOrdinal = (stage) => Math.max(0, VISIBLE_PIPELINE_STAGES.indexOf(stage)) + 1;
+const nextVisiblePipelineStage = (stage) => VISIBLE_PIPELINE_STAGES[Math.min(
+  VISIBLE_PIPELINE_STAGES.length - 1,
+  Math.max(0, VISIBLE_PIPELINE_STAGES.indexOf(stage)) + 1,
+)];
 
 const COLORS = {
   blue: 0x55c8ff,
@@ -2641,10 +2647,11 @@ function enterPipelineStage(index, options = {}) {
 }
 
 function updatePipelineButtons() {
-  pipelineSteps.forEach((button, index) => {
-    button.classList.toggle("active", index === pipelineStage);
-    button.classList.toggle("complete", index < pipelineStage);
-    button.setAttribute("aria-current", index === pipelineStage ? "step" : "false");
+  pipelineSteps.forEach((button) => {
+    const stage = Number(button.dataset.pipelineStage);
+    button.classList.toggle("active", stage === pipelineStage);
+    button.classList.toggle("complete", stage < pipelineStage);
+    button.setAttribute("aria-current", stage === pipelineStage ? "step" : "false");
   });
   pipelineButton.classList.toggle("running", pipelineAuto);
   pipelineButton.textContent = pipelineAuto ? "Stop full pipeline" : "Run full pipeline";
@@ -2871,7 +2878,7 @@ function performEvent() {
     return;
   }
   if (pipelineStage < 4) {
-    enterPipelineStage(pipelineStage + 1, { play: pipelineAuto });
+    enterPipelineStage(nextVisiblePipelineStage(pipelineStage), { play: pipelineAuto });
     return;
   }
   performOffLatticeEvent();
@@ -3142,7 +3149,7 @@ function renderStack() {
     return;
   }
   const rows = stackHistory.slice(-6).reverse();
-  stackDepth.textContent = pipelineStage < 4 ? `stage ${pipelineStage + 1}/5` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
+  stackDepth.textContent = pipelineStage < 4 ? `stage ${visiblePipelineOrdinal(pipelineStage)}/4` : `depth ${Math.max(0, ...atoms.map((atom) => atom.depth))}`;
   searchStack.replaceChildren();
   if (!rows.length) {
     const row = document.createElement("li");
@@ -3237,7 +3244,7 @@ function setPlaying(value) {
   playLabel.textContent = playing ? "Pause" : pipelineStage === 4 ? `Grow ${growthDurationSeconds() / 60} min` : "Play";
   playButton.setAttribute("aria-label", playing ? "Pause pipeline" : pipelineStage === 4 ? `Grow explicit atoms for ${growthDurationSeconds() / 60} minute${growthDurationSeconds() === 60 ? "" : "s"}` : "Play pipeline");
   document.querySelector(".run-state").classList.toggle("running", playing);
-  runStateText.textContent = playing ? `Stage ${pipelineStage + 1} running` : `Stage ${pipelineStage + 1} paused`;
+  runStateText.textContent = playing ? `Stage ${visiblePipelineOrdinal(pipelineStage)} running` : `Stage ${visiblePipelineOrdinal(pipelineStage)} paused`;
 }
 
 function pauseGrowth(reason) {
@@ -3372,7 +3379,7 @@ function animate(now) {
       }
     } else if (pipelineStage < 4) {
       stageElapsed += delta;
-      if (stageElapsed >= 1.8) enterPipelineStage(pipelineStage + 1, { play: true });
+      if (stageElapsed >= 1.8) enterPipelineStage(nextVisiblePipelineStage(pipelineStage), { play: true });
     } else {
       if (growthDeadline && now >= growthDeadline) {
         pauseGrowth("Timed growth complete.");

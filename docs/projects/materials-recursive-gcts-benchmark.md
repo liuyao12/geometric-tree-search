@@ -1752,3 +1752,43 @@ families (including ice and intrinsic-2D controls), composition-first random
 search over NOMAD, and the existing advanced local import. Database search
 does not assign a structural family before growth; curated labels are explicit
 benchmark metadata and remain excluded from the learner.
+
+## Published Cd5.7Yb nested-window transfer gate
+
+`scripts/materials_gcts_cdyb_oracle.py` is an offline standard-library port of
+the published Feuerbacher V1.5 generator. It preserves the six-dimensional
+projections, V/B/E occupation domains, truncations, and physical-space shifts,
+and independently matches the archived NumPy notebook at ten decimal places.
+The archive DOI, CC-BY-4.0 license, MD5, and SHA-256 are pinned in the module.
+Artificial `Zn` empty-centre markers are excluded from the physical Cd/Yb
+configuration.
+
+`scripts/materials_gcts_nested_transfer_benchmark.py` defines the reusable
+sealed protocol. A fitter receives only an inner colored point cloud; the
+frozen program and that same seed are the only inputs to marked and unmarked
+growth. Two larger annuli remain scorer-only. The pass gate requires complete
+seed coverage including residual/gap classes, at least 99% precision and 90%
+recall on both unseen annuli, 99% species accuracy, three hierarchy levels,
+and a 10x marking reduction in total and failed proposals at matched recall.
+It also rejects program mutation, known-region contradictions, out-of-boundary
+emissions, phase-label use, and physical-potential use.
+
+The first real-model baseline uses converged 60 Angstrom oracle geometry:
+
+| radial window | physical Cd/Yb atoms | role |
+|---:|---:|---|
+| 14.0 Angstrom | 546 | learner input |
+| 25.5 Angstrom | 2,942 | validation annulus |
+| 29.5 Angstrom | 4,654 | test annulus |
+
+The normalized outer fixture hash is
+`d886b8dbd24d1cf7288b3b1204e8c4b7ea2a3bd71147ba74727773f6809a4427`.
+The current generic adapter covers all 546 seed atoms by recurring local
+supports plus explicit singleton residual classes, uses no family label, and
+keeps its fitted artifact immutable. However, the common recursive selector
+admits no production and the engine conservatively emits zero held-out sites.
+Thus provenance and cover pass while transfer, hierarchy, and marking ablation
+remain red. This is the intended next implementation target: irregular
+cluster covers, finite oriented overlap ports, and cluster-of-cluster
+promotion must improve this same frozen benchmark rather than route Cd--Yb
+through the ideal-IQC oracle.
