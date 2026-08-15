@@ -1624,6 +1624,16 @@ unification target is to express translation and substitution as the same
 carried port/cover production used by the promoted IQC, rather than hiding
 their distinct executors behind a dispatcher.
 
+The frozen IQC production also executes a fourth promoted scale: it adds
+35,414 / 35,414 exact colored sites and reaches 66,935 atoms. This is another
+2.00× increase in novel sites, but it exposes a computational failure in the
+radial-port implementation. A volume-style neighbor scan took 609.8 s for that
+wave. An exact bounding-box spherical-shell index reduces it to 440.8 s
+(27.7%) while returning the identical sites. The runtime is still far from a
+credible million-atom engine. The implementation now uses the faster grid on
+small clouds and shell pruning above 25,000 sites; the next kernel must index
+exposed promoted ports rather than repeatedly joining atom pairs.
+
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
 all atom pairs; a brute-force regression certifies identical local colors.

@@ -90,6 +90,73 @@ class GraphExecution:
     rejected_candidate_groups: int
 
 
+@dataclass(frozen=True)
+class _ShellNode:
+    lower: Point
+    upper: Point
+    indices: tuple[int, ...]
+    left: "_ShellNode | None" = None
+    right: "_ShellNode | None" = None
+
+
+class _SpatialShellIndex:
+    """Pure-Python exact spherical-shell queries with bounding-box pruning."""
+
+    def __init__(self, points: Tuple[Point, ...], leaf_size: int = 24):
+        self.points = points
+        self.leaf_size = leaf_size
+        self.root = self._build(tuple(range(len(points))))
+
+    def _build(self, indices: tuple[int, ...]) -> _ShellNode:
+        lower = tuple(min(self.points[index][axis] for index in indices)
+                      for axis in range(3))
+        upper = tuple(max(self.points[index][axis] for index in indices)
+                      for axis in range(3))
+        if len(indices) <= self.leaf_size:
+            return _ShellNode(lower, upper, indices)
+        axis = max(range(3), key=lambda item: upper[item] - lower[item])
+        ordered = tuple(sorted(indices,
+                               key=lambda index: self.points[index][axis]))
+        middle = len(ordered) // 2
+        return _ShellNode(
+            lower, upper, (), self._build(ordered[:middle]),
+            self._build(ordered[middle:]))
+
+    @staticmethod
+    def _distance_bounds(point: Point, node: _ShellNode) -> tuple[float, float]:
+        minimum = maximum = 0.0
+        for axis in range(3):
+            value = point[axis]
+            if value < node.lower[axis]:
+                minimum += (node.lower[axis] - value) ** 2
+            elif value > node.upper[axis]:
+                minimum += (value - node.upper[axis]) ** 2
+            maximum += max(abs(value - node.lower[axis]),
+                           abs(value - node.upper[axis])) ** 2
+        return minimum, maximum
+
+    def shell(self, point: Point, radius: float,
+              tolerance: float) -> Iterable[int]:
+        lower_squared = max(0.0, radius - tolerance) ** 2
+        upper_squared = (radius + tolerance) ** 2
+        pending = [self.root]
+        while pending:
+            node = pending.pop()
+            minimum, maximum = self._distance_bounds(point, node)
+            if minimum > upper_squared or maximum < lower_squared:
+                continue
+            if node.indices:
+                for index in node.indices:
+                    distance = math.dist(point, self.points[index])
+                    if abs(distance - radius) <= tolerance:
+                        yield index
+            else:
+                if node.left is not None:
+                    pending.append(node.left)
+                if node.right is not None:
+                    pending.append(node.right)
+
+
 def compile_instruction(instruction: GeometryInstruction) -> PortCoverGraph:
     """Normalize a selected VM instruction into the common graph schema."""
     payload = instruction.payload
@@ -183,30 +250,62 @@ def _port_bindings(payload: OverlapPayload, state: AtomicConfiguration,
         payload.section, payload.atlas) * payload.scale ** max(0, level - 1)
     parents = (index for index, point in enumerate(state.positions)
                if math.dist(point, center) >= maximum_radius - width)
-    maximum_distance = max((port[2] for port in payload.atlas.accepted_ports),
-                           default=0.0) * payload.scale ** level + 1e-4
-    cell_size = max(maximum_distance, 1e-9)
-    grid = defaultdict(list)
-    for index, point in enumerate(state.positions):
-        grid[tuple(math.floor(value / cell_size) for value in point)].append(index)
+    level_scale = payload.scale ** level
+    admitted = defaultdict(set)
+    for parent_type, source_type, distance in payload.atlas.accepted_ports:
+        admitted[(parent_type, distance)].add(source_type)
+    distances_by_parent = defaultdict(set)
+    for parent_type, distance in admitted:
+        distances_by_parent[parent_type].add(distance)
+    tolerance = (0.51 * 10 ** -payload.atlas.distance_digits * level_scale +
+                 1e-6)
+    if len(state.positions) < 25_000:
+        maximum_distance = max(
+            (port[2] for port in payload.atlas.accepted_ports), default=0.0
+        ) * level_scale + tolerance
+        cell_size = max(maximum_distance, 1e-9)
+        grid = defaultdict(list)
+        for index, point in enumerate(state.positions):
+            grid[tuple(math.floor(value / cell_size)
+                       for value in point)].append(index)
+        for parent in parents:
+            point = state.positions[parent]
+            cell = tuple(math.floor(value / cell_size) for value in point)
+            for delta in itertools.product((-1, 0, 1), repeat=3):
+                neighbor_cell = tuple(cell[axis] + delta[axis]
+                                      for axis in range(3))
+                for source in grid.get(neighbor_cell, ()):
+                    if source == parent:
+                        continue
+                    source_point = state.positions[source]
+                    separation = math.dist(point, source_point)
+                    distance = round(separation / level_scale,
+                                     payload.atlas.distance_digits)
+                    parent_type = mapped[parent]
+                    if (distance in distances_by_parent[parent_type] and
+                            mapped[source] in admitted[(parent_type, distance)]):
+                        port = (parent_type, mapped[source], distance)
+                        yield Binding((point, source_point),
+                                      (parent_type, mapped[source]), port)
+        return
+    shell_index = _SpatialShellIndex(state.positions)
     for parent in parents:
         point = state.positions[parent]
-        cell = tuple(math.floor(value / cell_size) for value in point)
-        for delta in itertools.product((-1, 0, 1), repeat=3):
-            neighbor_cell = tuple(cell[axis] + delta[axis] for axis in range(3))
-            for source in grid.get(neighbor_cell, ()):
+        parent_type = mapped[parent]
+        for normalized_distance in distances_by_parent.get(parent_type, ()):
+            radius = normalized_distance * level_scale
+            for source in shell_index.shell(point, radius, tolerance):
                 if source == parent:
                     continue
                 source_point = state.positions[source]
                 separation = math.dist(point, source_point)
-                if separation > maximum_distance:
-                    continue
-                port = (mapped[parent], mapped[source], round(
-                    separation / payload.scale ** level,
-                    payload.atlas.distance_digits))
-                if port in payload.atlas.accepted_ports:
+                distance = round(separation / level_scale,
+                                 payload.atlas.distance_digits)
+                if (distance == normalized_distance and mapped[source] in
+                        admitted[(parent_type, normalized_distance)]):
+                    port = (parent_type, mapped[source], distance)
                     yield Binding((point, source_point),
-                                  (mapped[parent], mapped[source]), port)
+                                  (parent_type, mapped[source]), port)
 
 
 def _bindings(node: CoverNode, state: AtomicConfiguration,
