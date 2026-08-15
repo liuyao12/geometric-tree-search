@@ -391,52 +391,73 @@ def learn_overlap_ports(
             rejected_improper += 1
             continue
         valid.append(occurrence)
+    valid_by_id = {occurrence.occurrence_id: occurrence
+                   for occurrence in valid}
+    if allowed_occurrence_pairs is None:
+        candidate_pairs = (
+            (parent_occurrence, child_occurrence)
+            for parent_occurrence in valid for child_occurrence in valid
+            if parent_occurrence.occurrence_id !=
+            child_occurrence.occurrence_id)
+    else:
+        # The caller has already supplied the exact witnessed-pair set.  Do
+        # not rescan the full Cartesian product merely to reject almost all
+        # pairs; deterministic sorting keeps atlas output byte-stable.
+        candidate_pairs = (
+            (valid_by_id[parent_id], valid_by_id[child_id])
+            for parent_id, child_id in sorted(allowed_occurrence_pairs)
+            if parent_id in valid_by_id and child_id in valid_by_id and
+            parent_id != child_id)
     aggregates = {}
+    canonical_cache = {}
+    overlap_cache = {}
     relation_classes = []
     witnessed = rejected_conflicts = 0
-    for parent_occurrence in valid:
-        for child_occurrence in valid:
-            if parent_occurrence.occurrence_id == child_occurrence.occurrence_id:
-                continue
-            if (allowed_occurrence_pairs is not None and
-                    (parent_occurrence.occurrence_id,
-                     child_occurrence.occurrence_id) not in
-                    allowed_occurrence_pairs):
-                continue
-            type_pair = (parent_occurrence.type_id, child_occurrence.type_id)
-            if allowed_type_pairs is not None and type_pair not in allowed_type_pairs:
-                continue
-            parent = by_type[parent_occurrence.type_id]
-            child = by_type[child_occurrence.type_id]
-            inverse_parent = transpose(parent_occurrence.rotation)
-            relative_rotation = matmul(inverse_parent,
-                                      child_occurrence.rotation)
-            relative_translation = matvec(inverse_parent, _subtract(
-                child_occurrence.translation,
-                parent_occurrence.translation))
-            canonical_rotation, canonical_translation, pose_key = (
-                canonical_relative_pose(parent, child, relative_rotation,
-                                        relative_translation,
-                                        overlap_tolerance))
-            overlap, conflict = _overlap(
+    for parent_occurrence, child_occurrence in candidate_pairs:
+        type_pair = (parent_occurrence.type_id, child_occurrence.type_id)
+        if allowed_type_pairs is not None and type_pair not in allowed_type_pairs:
+            continue
+        parent = by_type[parent_occurrence.type_id]
+        child = by_type[child_occurrence.type_id]
+        inverse_parent = transpose(parent_occurrence.rotation)
+        relative_rotation = matmul(inverse_parent,
+                                  child_occurrence.rotation)
+        relative_translation = matvec(inverse_parent, _subtract(
+            child_occurrence.translation,
+            parent_occurrence.translation))
+        raw_pose_key = (type_pair + _pose_key(
+            relative_rotation, relative_translation, overlap_tolerance))
+        canonical = canonical_cache.get(raw_pose_key)
+        if canonical is None:
+            canonical = canonical_relative_pose(
+                parent, child, relative_rotation, relative_translation,
+                overlap_tolerance)
+            canonical_cache[raw_pose_key] = canonical
+        canonical_rotation, canonical_translation, pose_key = canonical
+        geometry_key = type_pair + (pose_key,)
+        geometry = overlap_cache.get(geometry_key)
+        if geometry is None:
+            geometry = _overlap(
                 parent, child, canonical_rotation, canonical_translation,
                 overlap_tolerance, exclusion_distance)
-            if conflict:
-                rejected_conflicts += 1
-                continue
-            if len(overlap) < minimum_overlap:
-                continue
-            witnessed += 1
-            key = type_pair + (pose_key,)
-            relation_classes.append((
-                parent_occurrence.occurrence_id,
-                child_occurrence.occurrence_id,
-                parent_occurrence.type_id, child_occurrence.type_id,
-                pose_key))
-            if key not in aggregates:
-                aggregates[key] = [canonical_rotation,
-                                   canonical_translation, overlap, 0]
-            aggregates[key][3] += 1
+            overlap_cache[geometry_key] = geometry
+        overlap, conflict = geometry
+        if conflict:
+            rejected_conflicts += 1
+            continue
+        if len(overlap) < minimum_overlap:
+            continue
+        witnessed += 1
+        key = type_pair + (pose_key,)
+        relation_classes.append((
+            parent_occurrence.occurrence_id,
+            child_occurrence.occurrence_id,
+            parent_occurrence.type_id, child_occurrence.type_id,
+            pose_key))
+        if key not in aggregates:
+            aggregates[key] = [canonical_rotation,
+                               canonical_translation, overlap, 0]
+        aggregates[key][3] += 1
     ports = []
     discarded_rare = 0
     for key in sorted(aggregates, key=repr):

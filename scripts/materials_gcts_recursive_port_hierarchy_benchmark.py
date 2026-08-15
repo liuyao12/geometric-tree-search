@@ -21,11 +21,15 @@ class RecursiveHierarchyCase:
     atoms: int
     realized_levels: int
     first_level_source_types: int
+    first_level_admitted_macro_types: int
+    first_level_quotient_macro_types: int
     first_level_macro_types: int
     first_level_atom_supports: tuple[int, ...]
     first_level_production_types: int
     first_level_total_mdl_saving: int
     level_source_type_counts: tuple[int, ...]
+    level_admitted_macro_counts: tuple[int, ...]
+    level_quotient_macro_counts: tuple[int, ...]
     level_positive_macro_counts: tuple[int, ...]
     level_atom_supports: tuple[tuple[int, ...], ...]
     level_production_type_counts: tuple[int, ...]
@@ -47,9 +51,12 @@ def _case(configuration: AtomicConfiguration) -> RecursiveHierarchyCase:
     return RecursiveHierarchyCase(
         configuration.name, len(configuration.positions),
         len(hierarchy.levels), first.source_type_count,
+        first.admitted_macro_types, first.quotient_macro_types,
         first.positive_macro_types, first.atom_supports,
         first.production_type_count, first.total_mdl_saving,
         tuple(level.source_type_count for level in hierarchy.levels),
+        tuple(level.admitted_macro_types for level in hierarchy.levels),
+        tuple(level.quotient_macro_types for level in hierarchy.levels),
         tuple(level.positive_macro_types for level in hierarchy.levels),
         tuple(level.atom_supports for level in hierarchy.levels),
         tuple(level.production_type_count for level in hierarchy.levels),

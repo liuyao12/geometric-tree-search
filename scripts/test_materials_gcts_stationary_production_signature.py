@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 import math
+from dataclasses import replace
 
 from materials_gcts_oriented_overlap_ports import IDENTITY, matmul, matvec
 from materials_gcts_stationary_production_signature import (
     PortGraphProduction, ProductionBoundary, ProductionChild,
     ProductionPort, PromotionObservation, canonicalize_production,
+    audit_chemical_population_substitution,
     compare_stationary_productions, stationary_evidence)
 
 ROTATION = ((0.0, -1.0, 0.0),
@@ -46,6 +48,15 @@ def _production(scale=1.0, rotation=IDENTITY, shift=(0., 0., 0.),
 
 def _observation(level, production):
     return PromotionObservation(level, production, 3, 0.0, 10, True)
+
+
+def _with_population(production, factor, inconsistent=False):
+    children = []
+    for index, child in enumerate(production.children):
+        count = factor + (1 if inconsistent and index == 2 else 0)
+        children.append(replace(
+            child, chemical_population=((child.chemistry_key[0], count),)))
+    return replace(production, children=tuple(children))
 
 
 def test_signature_quotients_only_admissible_similarity_gauges():
@@ -151,10 +162,91 @@ def test_arbitrary_copied_patch_and_amorphous_levels_are_rejected():
     assert not amorphous.stationary
 
 
+def test_eight_child_crystal_octuplication_is_supported_without_factorial_search():
+    points = tuple((float(x), float(y), float(z))
+                   for x in (0, 1) for y in (0, 1) for z in (0, 1))
+    children = tuple(ProductionChild(
+        ("NaCl-block",), "achiral", IDENTITY, point)
+                     for point in points)
+    # A connected cube edge graph; directed incidence remains part of the key.
+    ports = tuple(ProductionPort(
+        left, right, ("face-adjacent",), ("Na", "Cl"))
+        for left, point in enumerate(points)
+        for right, other in enumerate(points)
+        if left < right and math.dist(point, other) == 1.0)
+    base = PortGraphProduction(children, ports)
+    order = (7, 3, 5, 1, 6, 2, 4, 0)
+    transformed_children = tuple(ProductionChild(
+        children[index].chemistry_key, children[index].chirality_key,
+        ROTATION, tuple(4.0 * value + shift for value, shift in zip(
+            matvec(ROTATION, points[index]), (2., -7., 3.))))
+                                 for index in order)
+    old_to_new = {old: new for new, old in enumerate(order)}
+    transformed_ports = tuple(ProductionPort(
+        old_to_new[port.source], old_to_new[port.target], port.port_key,
+        port.overlap_chemistry) for port in ports)
+    comparison = compare_stationary_productions(
+        base, PortGraphProduction(transformed_children, transformed_ports))
+    assert comparison.stationary
+    assert math.isclose(comparison.learned_similarity_scale, 4.0)
+
+
+def test_quantization_tied_child_records_do_not_fall_back_to_input_index():
+    points = ((-.49, -.49, -.49), (.49, .49, .49),
+              (3., 0., 0.), (0., 4., 0.))
+    children = tuple(ProductionChild(
+        ("same",), "achiral", IDENTITY, point) for point in points)
+    ports = (ProductionPort(0, 2, ("p",), ("A",)),
+             ProductionPort(1, 3, ("q",), ("A",)),
+             ProductionPort(2, 3, ("r",), ("A",)))
+    original = PortGraphProduction(children, ports)
+    order = (1, 0, 3, 2)
+    old_to_new = {old: new for new, old in enumerate(order)}
+    permuted = PortGraphProduction(
+        tuple(children[index] for index in order),
+        tuple(ProductionPort(
+            old_to_new[port.source], old_to_new[port.target],
+            port.port_key, port.overlap_chemistry) for port in ports))
+    # With this coarse tolerance the first two transformed point records can
+    # share a quantization bin. Directed incidence, not original index, must
+    # choose their canonical order.
+    assert (canonicalize_production(original, tolerance=1.0).normalized_key ==
+            canonicalize_production(permuted, tolerance=1.0).normalized_key)
+
+
+def test_exact_integer_population_substitution_is_a_separate_stationarity_gate():
+    lower = _with_population(_production(), 1)
+    middle = _with_population(_production(2.0), 2)
+    upper = _with_population(_production(4.0), 4)
+    audit = audit_chemical_population_substitution(lower, middle)
+    assert audit.checked and audit.consistent and audit.expanding
+    assert all(sum(row) == 2 for row in audit.substitution_matrix)
+    evidence = stationary_evidence((
+        _observation(0, lower), _observation(1, middle),
+        _observation(2, upper)))
+    assert evidence.stationary
+
+    incompatible = _with_population(_production(2.0), 2, inconsistent=True)
+    comparison = compare_stationary_productions(lower, incompatible)
+    assert not comparison.stationary
+    assert comparison.chemical_population_audit.checked
+    assert not comparison.chemical_population_audit.consistent
+
+    # Both adjacent mappings exist, but 2x followed by 3x is not one
+    # stationary substitution matrix.
+    changing = stationary_evidence((
+        _observation(0, lower), _observation(1, middle),
+        _observation(2, _with_population(_production(4.0), 6))))
+    assert not changing.stationary
+
+
 if __name__ == "__main__":
     test_signature_quotients_only_admissible_similarity_gauges()
     test_chemistry_chirality_and_directed_port_incidence_are_preserved()
     test_improper_mirror_and_nonuniform_dilation_do_not_compare_stationary()
     test_stationarity_needs_two_adjacent_scale_comparisons()
     test_arbitrary_copied_patch_and_amorphous_levels_are_rejected()
+    test_eight_child_crystal_octuplication_is_supported_without_factorial_search()
+    test_quantization_tied_child_records_do_not_fall_back_to_input_index()
+    test_exact_integer_population_substitution_is_a_separate_stationarity_gate()
     print("normalized stationary production signature: all assertions passed")

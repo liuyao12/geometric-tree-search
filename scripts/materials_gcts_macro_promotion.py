@@ -127,15 +127,31 @@ def _fit_boundary_ports(
     admitted_atomic = {
         (port.parent_type, port.child_type, port.symmetry_orbit_key)
         for port in atomic_program.atlas.ports}
+    source_relations = [
+        (parent, child, parent_type, child_type, pose_key)
+        for parent, child, parent_type, child_type, pose_key in
+        atomic_program.atlas.relation_classes
+        if (parent_type, child_type, pose_key) in admitted_atomic]
+    # A promoted program carries witnessed non-overlap adjacency separately.
+    # Feed that evidence forward too, so boundary semantics survive recursive
+    # promotion instead of silently reverting to overlap-only relations.
+    admitted_boundary = {
+        (port.parent_type, port.child_type, port.symmetry_orbit_key)
+        for port in getattr(atomic_program, "boundary_ports", ())}
+    source_relations.extend(
+        (relation.parent_occurrence, relation.child_occurrence,
+         relation.parent_type, relation.child_type,
+         relation.symmetry_orbit_key)
+        for relation in getattr(
+            atomic_program, "boundary_relation_classes", ())
+        if (relation.parent_type, relation.child_type,
+            relation.symmetry_orbit_key) in admitted_boundary)
     membership: dict[int, list[int]] = {}
     for macro_occurrence, nodes in macro_nodes.items():
         for node in nodes:
             membership.setdefault(node, []).append(macro_occurrence)
     witness_counts = Counter()
-    for parent, child, parent_type, child_type, pose_key in (
-            atomic_program.atlas.relation_classes):
-        if (parent_type, child_type, pose_key) not in admitted_atomic:
-            continue
+    for parent, child, parent_type, child_type, pose_key in source_relations:
         for parent_macro in membership.get(parent, ()):
             for child_macro in membership.get(child, ()):
                 if parent_macro != child_macro:
@@ -143,16 +159,25 @@ def _fit_boundary_ports(
     occurrence_by_id = {item.occurrence_id: item for item in occurrences}
     prototype_by_id = {item.type_id: item for item in prototypes}
     grouped = {}
+    canonical_cache = {}
     raw_relations = []
     for (parent_id, child_id), witnesses in sorted(witness_counts.items()):
         parent = occurrence_by_id[parent_id]
         child = occurrence_by_id[child_id]
         rotation, translation = _relative(parent, child)
-        canonical_rotation, canonical_translation, key = (
-            canonical_relative_pose(
+        raw_key = ((parent.type_id, child.type_id) +
+                   tuple(round(value / tolerance)
+                         for row in rotation for value in row) +
+                   tuple(round(value / tolerance)
+                         for value in translation))
+        canonical = canonical_cache.get(raw_key)
+        if canonical is None:
+            canonical = canonical_relative_pose(
                 prototype_by_id[parent.type_id],
                 prototype_by_id[child.type_id], rotation, translation,
-                tolerance))
+                tolerance)
+            canonical_cache[raw_key] = canonical
+        canonical_rotation, canonical_translation, key = canonical
         group_key = parent.type_id, child.type_id, key
         if group_key not in grouped:
             grouped[group_key] = [canonical_rotation,
@@ -211,7 +236,9 @@ def promote_macro_types(
             prototype_failures += 1
             continue
         fitted_for_type = []
-        for macro_occurrence in macro.occurrences:
+        promotion_occurrences = (macro.promotion_occurrences or
+                                 macro.occurrences)
+        for macro_occurrence in promotion_occurrences:
             observed = _render_macro_embedding(
                 macro_occurrence.node_occurrences, atomic_occurrences,
                 atomic_prototypes, pose_tolerance)
@@ -244,13 +271,24 @@ def promote_macro_types(
                              macro_occurrence.atom_indices))
             macro_nodes[fitted.occurrence_id] = frozenset(
                 macro_occurrence.node_occurrences)
-    support_by_id = dict(supports)
-    allowed = frozenset(
-        (parent.occurrence_id, child.occurrence_id)
-        for parent in occurrences for child in occurrences
-        if parent.occurrence_id != child.occurrence_id and
-        len(set(support_by_id[parent.occurrence_id]).intersection(
-            support_by_id[child.occurrence_id])) >= minimum_shared_atoms)
+    # Enumerate only support-overlapping pairs.  Dense promotion can contain
+    # thousands of occurrences, while each atom belongs to a small local
+    # number of them; an inverted support index therefore preserves the exact
+    # pair predicate without an O(M^2) scan.
+    support_membership = {}
+    for occurrence_id, atom_indices in supports:
+        for atom_index in atom_indices:
+            support_membership.setdefault(atom_index, []).append(
+                occurrence_id)
+    shared_counts = Counter()
+    for member_ids in support_membership.values():
+        unique_ids = tuple(sorted(set(member_ids)))
+        for parent_id in unique_ids:
+            for child_id in unique_ids:
+                if parent_id != child_id:
+                    shared_counts[(parent_id, child_id)] += 1
+    allowed = frozenset(pair for pair, count in shared_counts.items()
+                        if count >= minimum_shared_atoms)
     minimum_distance = getattr(
         atomic_program, "minimum_distance", getattr(
             getattr(atomic_program, "cover", None), "minimum_distance",

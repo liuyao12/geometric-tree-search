@@ -79,6 +79,11 @@ class MacroType:
     maximum_occurrence_atom_overlap_fraction: float
     exact_graph_isomorphism_verified: bool
     se3_cycle_consistent: bool
+    # ``occurrences`` is the nearly atom-disjoint evidence used by the MDL
+    # recurrence gate.  The next hierarchy level must not be starved to that
+    # proof subset: it may use every exact embedding, after identical atom
+    # unions have been deterministically deduplicated.
+    promotion_occurrences: tuple[MacroOccurrence, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -309,6 +314,20 @@ def _select_disjoint(embeddings: Sequence[_Embedding],
     return tuple(selected), rejected
 
 
+def _unique_embeddings(embeddings: Sequence[_Embedding]) -> tuple[_Embedding, ...]:
+    """Keep one deterministic pose for each exact covered atom union.
+
+    A rooted enumeration can rediscover one physical macro through several
+    roots or traversal orders.  Those are one occurrence for promotion, while
+    genuinely overlapping macros on different atom unions remain available.
+    """
+    unique = {}
+    for embedding in sorted(embeddings, key=lambda item: (
+            item.atom_indices, item.order, item.geometry_code)):
+        unique.setdefault(embedding.atom_indices, embedding)
+    return tuple(unique[key] for key in sorted(unique))
+
+
 def _atom_union(
     embedding: _Embedding, occurrence_type: dict[int, int],
     prototypes: dict[int, ClusterPrototype], tolerance: float,
@@ -419,6 +438,10 @@ def mine_port_graph_macros(
         macro_occurrences = tuple(MacroOccurrence(
             embedding.order[0], embedding.order, embedding.atom_indices,
             embedding.cycle_residual) for embedding in selected)
+        promotion_occurrences = tuple(MacroOccurrence(
+            embedding.order[0], embedding.order, embedding.atom_indices,
+            embedding.cycle_residual)
+            for embedding in _unique_embeddings(embeddings))
         maximum_overlap = max((
             len(set(left.atom_indices).intersection(right.atom_indices)) /
             min(len(left.atom_indices), len(right.atom_indices))
@@ -428,7 +451,7 @@ def mine_port_graph_macros(
             len(macros), node_types, macro_edges, placements, union,
             _boundary_slots(selected, edges, occurrence_type),
             macro_occurrences, primitive, dictionary, references, saving,
-            maximum_overlap, True, True))
+            maximum_overlap, True, True, promotion_occurrences))
     return MacroMiningResult(
         sparse.source_nodes, sparse.source_edges,
         len(occurrence_type), len(edges), len(sparse.retained_edges),

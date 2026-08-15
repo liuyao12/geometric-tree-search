@@ -33,6 +33,7 @@ class HierarchyMacroSummary:
     mdl_saving: int
     production_signature: ProductionSignature
     stationarity_certified: bool = False
+    stationary_observation: Any = None
 
 
 @dataclass(frozen=True)
@@ -40,12 +41,17 @@ class MinedHierarchyLevel:
     source_type_count: int
     macros: tuple[HierarchyMacroSummary, ...]
     promotion_payload: Any = None
+    # Raw positive-MDL types before any exact execution-equivalence quotient.
+    # ``None`` preserves the injectable callback contract.
+    admitted_macro_type_count: int | None = None
 
 
 @dataclass(frozen=True)
 class HierarchyLevelRecord:
     level: int
     source_type_count: int
+    admitted_macro_types: int
+    quotient_macro_types: int
     positive_macro_types: int
     atom_supports: tuple[int, ...]
     child_supports: tuple[int, ...]
@@ -153,16 +159,53 @@ def summarize_port_macro(macro: MacroType) -> HierarchyMacroSummary:
 
 
 def real_first_level_callbacks(
-    *, maximum_nodes: int = 3,
+    *, maximum_nodes: int = 3, dense_deployment: bool = False,
 ) -> HierarchyCallbacks:
-    """Bind the generic miner and the newly available macro promoter."""
+    """Bind admission, optional dense deployment, quotient, and promotion.
+
+    Dense deployment is kept optional until the full IQC matcher is scalable,
+    but its position is fixed: it may enlarge only ``promotion_occurrences``
+    after sparse/disjoint MDL admission and before exact-support quotienting.
+    """
     def mine(artifact: Any, level: int) -> MinedHierarchyLevel:
+        from materials_gcts_macro_stationary_adapter import adapt_macro_type
+        from materials_gcts_stationary_production_signature import (
+            PromotionObservation)
         result = mine_port_graph_macros(
             artifact, maximum_nodes=maximum_nodes)
+        admitted_macros = result.macro_types
+        if dense_deployment:
+            from materials_gcts_dense_macro_matching import (
+                match_dense_macro_types)
+            admitted_macros = match_dense_macro_types(
+                artifact, admitted_macros).dense_macro_types
+        from materials_gcts_promoted_type_quotient import (
+            quotient_macro_supports)
+        quotient = quotient_macro_supports(admitted_macros)
+        summaries = []
+        semantic_cache = {}
+        for macro in quotient.quotient_macros:
+            try:
+                adapted = adapt_macro_type(
+                    artifact, macro,
+                    prototype_semantics_cache=semantic_cache)
+            except ValueError:
+                summaries.append(summarize_port_macro(macro))
+                continue
+            summaries.append(HierarchyMacroSummary(
+                len(macro.atom_union), len(macro.node_types),
+                macro.mdl_saving,
+                ("stationary-production-v1",
+                 adapted.canonical.normalized_key),
+                adapted.leakage_clean,
+                PromotionObservation(
+                    level, adapted.production, len(macro.occurrences),
+                    macro.maximum_occurrence_atom_overlap_fraction,
+                    macro.mdl_saving, adapted.leakage_clean)))
         return MinedHierarchyLevel(
             len(artifact.prototypes),
-            tuple(summarize_port_macro(macro)
-                  for macro in result.macro_types), result.macro_types)
+            tuple(summaries), quotient.quotient_macros,
+            len(result.macro_types))
 
     def promote(artifact: Any, mined: MinedHierarchyLevel,
                 level: int) -> Any:
@@ -182,19 +225,24 @@ def drive_recursive_port_hierarchy(
         raise ValueError("maximum_levels must be positive")
     artifact = initial_artifact
     levels = []
+    positive_summaries = []
     promotion_available = True
     termination = "level_limit"
     for level in range(maximum_levels):
         mined = callbacks.mine(artifact, level)
         positive = tuple(macro for macro in mined.macros
                          if macro.mdl_saving > 0)
+        positive_summaries.append(positive)
         signatures = tuple(sorted(
             {macro.production_signature for macro in positive}, key=repr))
         certified = tuple(sorted(
             {macro.production_signature for macro in positive
              if macro.stationarity_certified}, key=repr))
         levels.append(HierarchyLevelRecord(
-            level, mined.source_type_count, len(positive),
+            level, mined.source_type_count,
+            (mined.admitted_macro_type_count
+             if mined.admitted_macro_type_count is not None else
+             len(positive)), len(positive), len(positive),
             tuple(sorted(macro.atom_support for macro in positive)),
             tuple(sorted(macro.child_support for macro in positive)),
             len(signatures), signatures, certified,
@@ -209,12 +257,41 @@ def drive_recursive_port_hierarchy(
             break
         artifact = promoted
     witnesses = []
-    for lower, upper in zip(levels, levels[1:]):
+    for level_index, (lower, upper) in enumerate(zip(levels, levels[1:])):
         common = set(lower.certified_stationarity_signatures).intersection(
             upper.certified_stationarity_signatures)
+        # Legacy injected summaries can exercise the generic driver, but real
+        # adapter summaries carry full observations and must satisfy the
+        # stronger three-level evidence path below.
+        real = {macro.production_signature for macro in
+                positive_summaries[level_index] +
+                positive_summaries[level_index + 1]
+                if macro.stationary_observation is not None}
         witnesses.extend(StationaryProductionWitness(
             lower.level, upper.level, signature)
-            for signature in sorted(common, key=repr))
+            for signature in sorted(common - real, key=repr))
+    from materials_gcts_stationary_production_signature import (
+        stationary_evidence)
+    for index in range(max(0, len(positive_summaries) - 2)):
+        groups = []
+        for summaries in positive_summaries[index:index + 3]:
+            by_signature = {}
+            for summary in summaries:
+                if summary.stationary_observation is not None:
+                    by_signature.setdefault(summary.production_signature, []).append(
+                        summary.stationary_observation)
+            groups.append(by_signature)
+        common = set(groups[0]).intersection(groups[1], groups[2])
+        for signature in sorted(common, key=repr):
+            certified = any(stationary_evidence(observations).stationary
+                            for observations in itertools.product(
+                                groups[0][signature], groups[1][signature],
+                                groups[2][signature]))
+            if certified:
+                witnesses.extend((
+                    StationaryProductionWitness(index, index + 1, signature),
+                    StationaryProductionWitness(index + 1, index + 2,
+                                                signature)))
     return RecursivePortHierarchy(
         tuple(levels), tuple(witnesses), termination,
         termination == "no_positive_mdl", promotion_available,

@@ -1942,9 +1942,24 @@ The callback-based contract has passing and deliberately failing harness tests,
 but the current macro miner does not yet implement those callbacks. Therefore
 the stationary/exponential gate remains explicitly red.
 
-### Recursive macro-as-node promotion
+### Recursive macro-as-node promotion with exact support quotient
 
-`scripts/materials_gcts_macro_promotion.py` turns each retained `MacroType`
+After the unchanged positive-MDL admission gate,
+`scripts/materials_gcts_promoted_type_quotient.py` groups only colored atomic
+supports that are exactly congruent by a proper rigid motion. It selects a
+deterministic minimum-dictionary representative and retains every unique exact
+training support for promotion. It does not pool duplicate derivations into
+extra MDL evidence. Improper mirrors, changed chemistry, and uniform-scale-only
+similarity remain distinct; the latter cannot be merged while occurrences
+carry SE(3) poses without an explicit scale.
+
+The callback order is explicitly sparse/disjoint admission, optional dense
+exact matching over the frozen training graph, exact-support quotient, then
+promotion. Dense deployment is disabled in the default cross-family timing
+run until the IQC matcher is scalable; enabling it changes deployment support,
+never the admitted types, their disjoint evidence, or their MDL scores.
+
+`scripts/materials_gcts_macro_promotion.py` then turns each quotient `MacroType`
 into the next level's ordinary oriented node. The exact colored atom union is
 recentered into a prototype and its proper rotational automorphism group is
 learned. Every macro occurrence is independently re-rendered from its child
@@ -1953,29 +1968,31 @@ Only training macro pairs with witnessed shared atoms enter the overlap atlas.
 Cross-boundary child-port witnesses form a separate finite boundary atlas, so
 non-overlapping adjacency is carried without pretending that it covers atoms.
 
-| system | promoted prototypes / occurrences | overlap ports / relations | boundary ports / relations | largest promoted union | fit/conflict failures |
-|---|---:|---:|---:|---:|---:|
-| NaCl | 3 / 6 | 2 / 12 | 2 / 4 | 18 | 0 |
-| ideal IQC | 42 / 108 | 146 / 2,820 | 146 / 314 | 35 | 0 |
-| Cd--Yb | 2 / 4 | 2 / 12 | 2 / 4 | 40 | 0 |
+| system | admitted types | exact quotient types | occurrence records / unique exact supports | fit failures |
+|---|---:|---:|---:|---:|
+| NaCl | 3 | 2 | 6 / 4 | 0 |
+| ideal IQC | 75 | 32 | 198 / 87 | 0 |
+| Cd--Yb | 2 | 1 | 4 / 2 | 0 |
 
 The promoted program exposes the same prototype/occurrence/support/atlas
 contract as the primitive program. `scripts/materials_gcts_recursive_port_hierarchy.py`
 therefore applies the unchanged sparse reducer and exact macro miner repeatedly,
 stopping when no positive-MDL macros remain:
 
-| system | source types by level | positive macros by level | total structural MDL saving | largest support reached | termination |
-|---|---:|---:|---:|---:|---|
-| NaCl | 7, 3 | 3, 0 | 6, 0 | 18 | no positive MDL |
-| ideal IQC | 13, 75, 11 | 75, 11, 0 | 339, 31, 0 | 94 | no positive MDL |
-| Cd--Yb | 91, 2 | 2, 0 | 4, 0 | 40 | no positive MDL |
+| system | source types by level | admitted macros | quotient macros | representative MDL saving | largest support reached | termination |
+|---|---:|---:|---:|---:|---:|---|
+| NaCl | 7, 2 | 3, 0 | 2, 0 | 4, 0 | 18 | no positive MDL |
+| ideal IQC | 13, 32, 9 | 75, 22, 0 | 32, 9, 0 | 139, 21, 0 | 94 | no positive MDL |
+| Cd--Yb | 91, 1 | 2, 0 | 1, 0 | 2, 0 | 40 | no positive MDL |
 
-Thus the ideal IQC now exhibits two genuine learned compression levels. NaCl
-and Cd--Yb stop after one. None is yet an exponential certificate.
+Thus the exact quotient substantially removes duplicate execution dictionaries
+without changing the admitted evidence or the covered training supports. The
+ideal IQC still exhibits two learned compression levels; NaCl and Cd--Yb stop
+after one. None is yet an exponential certificate.
 
 `scripts/materials_gcts_stationary_production_signature.py` supplies the
 strong comparison that prevents a raw pose-key coincidence from becoming a
-stationary claim. It canonicalizes a connected 3--7-child production modulo
+stationary claim. It canonicalizes a connected finite-child production modulo
 global proper SE(3), child order, declared proper child gauges, and one inferred
 uniform translation scale. It preserves child chemistry and chirality,
 relative rotations, directed port incidence, overlap chemistry, and boundary
@@ -1986,7 +2003,52 @@ provenance.
 
 Controls for a single repeated scale, disconnected copied patches, perturbed
 amorphous geometry, nonuniform dilation, an improper mirror, changed chemistry
-or chirality, and reversed port direction all stay red. The current real
-hierarchy has no complete atlas-to-semantic adapter satisfying this contract;
-its raw normalized signatures are marked diagnostic-only. Consequently all
+or chirality, and reversed port direction all stay red. The real adapter can
+certify individual chemistry/chirality-preserving production signatures, but
+the learned hierarchies do not supply three consecutive positive levels with a
+single common production and equal learned adjacent scales. Consequently all
 real stationary witness counts are zero and the million-site gate remains red.
+
+### Learned stationary crystal control
+
+`scripts/materials_gcts_crystal_stationary_benchmark.py` supplies the positive
+control without receiving a unit cell, axes, a space group, a material-family
+label, a radix, or a target scale. From the colored point cloud and the admitted
+irregular-support occurrence graph, it finds three independent recurring
+species-preserving translations. It then infers an integer radix and the
+complete child-offset set only when the same nested production is witnessed at
+three scales in each of two independent training configurations and improves a
+two-part description length.
+
+For NaCl, a 216-atom discovery subset and two 1,024-atom training samples yield
+three generators, radix 2, eight child offsets, scale 2, and population
+substitution matrix `((8,),)`. The frozen rule recursively materializes two
+separate held-out configurations with one-to-one species/position equality: 16
+sites at the first level and 128 at the second. Seven symbolic applications
+represent 4,194,304 sites from the two-site motif. A ternary synthetic control
+independently infers radix 3 and 27 children, guarding against a hidden binary
+octuplication constant. The identical pipeline rejects the ideal IQC and an
+amorphous cloud because neither has three independent recurring colored
+translations. This closes the learned *crystal* stationary benchmark; it does
+not close the generic quasicrystal benchmark.
+
+### Sparse evidence, dense deployment, and the current marking result
+
+`scripts/materials_gcts_dense_macro_matching.py` preserves the nearly
+atom-disjoint sparse occurrences as recurrence/MDL evidence, while finding all
+exact proper-SE(3) deployments of admitted macro types for execution. This
+separation prevents abundant overlapping placements from manufacturing
+recurrence evidence. On the 507-atom ideal-IQC training configuration, a
+one-macro seed produces 16 accepted placements and 86 / 86 correct novel atoms.
+Because the same configuration supplied the dense matching geometry, this is a
+target-blind reconstruction test, not a held-out continuation result.
+
+The dense NaCl reconstruction exposes genuine policy headroom. A bounded
+train-frequency connection score reaches the matched correct output with fewer
+proposals and higher precision than the unmarked ordering, but it does not beat
+31 within-parent shuffled-label controls: its wrong-placement-plus-backtrack
+work has empirical `p = 0.40625`. The causal GCTS-marking gate therefore stays
+red. A future pass must fit the support grammar, dense deployments, and marking
+on a genuinely disjoint training domain, enumerate the same frozen actions in
+every arm, and beat both the parent-only baseline and shuffled controls on an
+unseen outward frontier.
