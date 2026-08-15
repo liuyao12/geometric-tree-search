@@ -1592,7 +1592,7 @@ This clears a finite three-level exponential-style promotion gate. It is not
 yet a million-atom or cross-family result: vocabulary size (789 ports) is high
 enough that description length must be compared with a flat generator, and
 the same promotion code must transfer to the crystal and second-quasicrystal
-controls before it can satisfy the common benchmark.
+controls before it can satisfy the stricter single-production benchmark.
 
 The seed compiler no longer receives the IQC's physical unit or hand-written
 radial cutoffs. It discovers the inflation rule, clusters the observed
@@ -1600,6 +1600,29 @@ nearest-neighbor distances, selects the smallest shell with at least 5% seed
 support, expresses four descriptor radii in that learned unit, and treats the
 outer observation boundary as censored. This family-blind route recovers the
 same compact 73-port seed atlas and 271 port-pair section.
+
+### Executed cross-family program gate
+
+`scripts/materials_gcts_executable_program.py` now exposes one discovery call
+and one explicit-action call. The selector receives only positions and species;
+it chooses a translation quotient, carried-port promotion, or substitution
+production from seed evidence. `scripts/materials_gcts_common_executed_benchmark.py`
+then executes and scores three materialized actions rather than accepting a
+symbolic atom count:
+
+| seed | learned production | explicitly scored atom counts | per-action total growth |
+|---|---|---|---|
+| 216-atom NaCl | translation quotient | `216 → 1,728 → 13,824 → 110,592` | `8.00×, 8.00×, 8.00×` |
+| 507-atom IQC | carried-port promotion | `507 → 4,923 → 13,847 → 31,521` | `9.71×, 2.81×, 2.28×` |
+| 729-atom Fibonacci product | substitution product | `729 → 3,375 → 13,824 → 59,319` | `4.63×, 4.10×, 4.29×` |
+
+All 252,953 materialized output sites are exact in position and species, all
+states are self-fed, and neither family labels nor held-out atoms enter growth.
+This makes the cross-family execution gate green. A stricter gate remains red:
+three learned production kinds still sit behind the common API. The next
+unification target is to express translation and substitution as the same
+carried port/cover production used by the promoted IQC, rather than hiding
+their distinct executors behind a dispatcher.
 
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
