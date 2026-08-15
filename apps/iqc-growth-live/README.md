@@ -636,4 +636,23 @@ but frozen-target gains remain only 1.009x, 1.060x, and 1.000x over the
 unmarked arm; IQC ties shuffled labels and Cd--Yb has zero context coverage.
 This remains a red causal marking result.
 
+The first generic clusters-of-clusters pass is now implemented. A deterministic
+overlapping set-cover approximation selects a sparse occurrence graph, adds
+only witnessed connector occurrences, retains a maximum-overlap spanning
+forest, and preserves canonical short cycles. It reduces NaCl/IQC/Cd--Yb from
+576/780/623 oriented occurrences to 37/52/57 and removes 99.74%/99.68%/99.78%
+of redundant overlap edges while preserving the complete repeated-support
+cover. The Cd--Yb source graph itself has 19 components; the reducer honestly
+leaves 11 rather than inventing edges.
+
+Exact directed port-graph isomorphism, root-local colored SE(3) geometry,
+cycle consistency, at least two nearly atom-disjoint occurrences, and positive
+structural MDL saving retain 3 NaCl, 42 ideal-IQC, and 2 Cd--Yb two-child macro
+types. Their largest atom unions contain 18, 35, and 40 atoms. These are real
+first-level cluster-of-cluster types, but recursive macro-as-node promotion is
+still pending. A new stationary-production contract keeps the final claim red
+until one generic `recurring_port_graph_macro` production is observed at two
+adjacent learned scales, reproduces two explicit unseen levels, grows by more
+than 3x for three actions, and represents one million sites within seven.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.

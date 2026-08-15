@@ -1879,3 +1879,65 @@ subgraphs with SE(3) cycle consistency, promote their boundary ports, and
 admit a stationary recursive production only after the normalized rule is
 observed at two adjacent learned scales. Frozen target enumeration remains
 scoring-only throughout that promotion loop.
+
+### Sparse recurring port-graph macros
+
+`scripts/materials_gcts_sparse_occurrence_graph.py` reduces the raw overlap
+hypergraph before any macro is mined. Its deterministic approximation first
+chooses an overlapping cover, then adds minimum-new-node witnessed connector
+paths, a maximum-overlap spanning forest, and one canonical representative of
+each short cycle signature. It makes no global set-cover or Steiner optimality
+claim.
+
+| system | source occurrences / undirected edges | cover + connector occurrences | retained edges | node / edge reduction | retained components |
+|---|---:|---:|---:|---:|---:|
+| NaCl | 576 / 24,888 | 36 + 1 | 65 | 93.58% / 99.739% | 1 |
+| ideal IQC | 780 / 26,880 | 52 + 0 | 87 | 93.33% / 99.676% | 1 |
+| Cd--Yb | 623 / 39,072 | 55 + 2 | 85 | 90.85% / 99.782% | 11 |
+
+Every repeated-support atom remains covered. The Cd--Yb source graph already
+has 19 connected components, so the retained graph cannot become connected
+without unsupported edges; eleven components remain.
+
+`scripts/materials_gcts_port_graph_macros.py` mines rooted connected induced
+subgraphs of this sparse graph. A cheap graph code is only a bucket: retained
+classes must agree under exact directed port-labelled graph isomorphism and
+under root-symmetry-canonical full colored SE(3) geometry. Observed poses also
+close every internal edge composition. Evidence requires at least two macro
+atom unions with at most 10% overlap and positive structural-token MDL saving.
+
+| system | sparse directed edges | positive-MDL two-child macro types | largest atom union | largest MDL saving | maximum cycle residual |
+|---|---:|---:|---:|---:|---:|
+| NaCl | 130 | 3 | 18 | 2 tokens | 1.49e-15 |
+| ideal IQC | 174 | 42 | 35 | 11 tokens | 4.47e-15 |
+| Cd--Yb | 170 | 2 | 40 | 2 tokens | 2.28e-15 |
+
+Each `MacroType` stores child placements, exact colored atom union, internal
+ports, boundary slots with occurrence frequency, and independent occurrence
+proofs. This is the first generic cluster-of-clusters representation in the
+new pipeline. It is not yet recursion: macro types are not yet fed back as
+nodes, structural tokens are not entropy-coded bits, and canonicalization is
+currently bounded to five nodes.
+
+### Stationary recursive-production contract
+
+`scripts/materials_gcts_stationary_port_graph_contract.py` defines the sealed
+gate for the next pass. Compilation sees only a finite colored Cartesian cloud;
+execution sees only the frozen program and seed; two held-out point clouds enter
+the scorer afterward. A pass requires exactly one production kind,
+`recurring_port_graph_macro`, across crystal, ideal-IQC, and Cd--Yb roles, plus:
+
+- the same normalized production and learned similarity at two adjacent
+  observed promotion levels;
+- complete training cover, at least 95% repeated coverage, finite oriented
+  ports, carried causal marking, and self-fed execution;
+- exact species/position output for the first two unseen levels and independent
+  reconciliation of explicit and symbolic unique-site counts;
+- strictly greater than 3x represented-site growth for three consecutive
+  actions and at least one million represented sites by action seven;
+- permutation/proper-SE(3) invariant program signature, equivariant output,
+  clean leakage audit, and deterministic rejection of an amorphous control.
+
+The callback-based contract has passing and deliberately failing harness tests,
+but the current macro miner does not yet implement those callbacks. Therefore
+the stationary/exponential gate remains explicitly red.
