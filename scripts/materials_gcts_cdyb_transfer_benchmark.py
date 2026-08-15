@@ -39,10 +39,13 @@ class CurrentGenericProgram:
     recursive_candidates: tuple[str, ...]
 
 
-def _configuration(name: str, atoms: CdYbAtoms, radius: float) -> AtomicConfiguration:
+def _configuration(
+    name: str, atoms: CdYbAtoms, origin: tuple[float, float, float],
+    radius: float,
+) -> AtomicConfiguration:
     selected = tuple(
         (point, species) for point, species in zip(atoms.positions, atoms.symbols)
-        if math.dist((0.0, 0.0, 0.0), point) <= radius + 1e-10)
+        if math.dist(origin, point) <= radius + 1e-10)
     return AtomicConfiguration(
         name,
         tuple(point for point, _ in selected),
@@ -55,17 +58,25 @@ def _configuration(name: str, atoms: CdYbAtoms, radius: float) -> AtomicConfigur
 
 def build_cdyb_split(
     *, max_index: int = 4, box_size: float = 60.0,
-    radii: tuple[float, float, float] = (14.0, 25.5, 29.5),
+    origin: tuple[float, float, float] = (3.1, 5.7, 8.2),
+    radii: tuple[float, float, float] = (14.0, 18.0, 21.0),
 ) -> NestedCropSplit:
-    """Generate converged nested crops (546/2,942/4,654 by default)."""
+    """Generate nonsymmetric nested crops (506/1,056/1,672 by default).
+
+    The predeclared generic origin avoids turning the icosahedral fixed point's
+    global rotation orbits into apparent independent motif repetitions.
+    """
     atoms = generate_cdyb(max_index, (box_size,) * 3)
-    crops = tuple(_configuration(label, atoms, radius)
-                  for label, radius in zip(("seed", "validation", "test"), radii))
+    crops = tuple(_configuration(label, atoms, origin, radius)
+                  for label, radius in zip(
+                      ("Cd5.7Yb-offcenter-seed",
+                       "Cd5.7Yb-offcenter-validation",
+                       "Cd5.7Yb-offcenter-test"), radii))
     outer_records = CdYbAtoms(
         crops[-1].species, crops[-1].positions,
         tuple("withheld" for _ in crops[-1].positions))
     return NestedCropSplit(
-        crops[0], crops[1], crops[2], (0.0, 0.0, 0.0), radii,
+        crops[0], crops[1], crops[2], origin, radii,
         outer_records.canonical_sha256())
 
 
@@ -114,10 +125,11 @@ def serialize_current_generic(program: CurrentGenericProgram) -> bytes:
 
 def evaluate(
     *, max_index: int = 4, box_size: float = 60.0,
-    radii: tuple[float, float, float] = (14.0, 25.5, 29.5),
+    origin: tuple[float, float, float] = (3.1, 5.7, 8.2),
+    radii: tuple[float, float, float] = (14.0, 18.0, 21.0),
 ):
     split = build_cdyb_split(
-        max_index=max_index, box_size=box_size, radii=radii)
+        max_index=max_index, box_size=box_size, origin=origin, radii=radii)
     return evaluate_nested_transfer(
         split, fit_current_generic, grow_current_generic,
         serialize_current_generic, TransferThresholds(matching_tolerance=.15))

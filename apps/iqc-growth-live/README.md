@@ -597,12 +597,23 @@ substitution, and marked-address expansion still remain distinct production
 kinds behind the common API, so the strict single-production gate stays red.
 
 The first published real-material model transfer is now sealed as well. A
-provenance-pinned offline port of the Cd5.7Yb generator supplies nested 546,
-2,942, and 4,654-atom radial windows. Only the 546 positions and species enter
-the learner. The current generic adapter records a complete local cover but
-finds no admissible recursive production, so it refuses to invent atoms: its
-provenance and cover gates pass while held-out continuation, hierarchy depth,
-and marking speedup remain explicitly red. This is the benchmark that the next
-irregular-cluster and oriented-overlap implementation must improve.
+provenance-pinned offline port of the Cd5.7Yb generator supplies nested 506,
+1,056, and 1,672-atom windows around the fixed off-centre point
+`(3.1, 5.7, 8.2) Angstrom`. Only the 506 positions and species enter the
+learner. The offset is important: a crop centred at the model's global
+icosahedral origin made rotational shell orbits look like independently
+reusable local clusters.
+
+The cell-free learner now merges touching adaptive-shell seeds into irregular
+supports, distinguishes colored metric graphs up to proper rigid motion, and
+adds an explicit residual class for complete cover. Repeated supports cover
+99.4% of the seed and the frozen dictionary covers 77.1% of the first unseen
+annulus. Learned proper-SE(3) overlap ports transfer 31.2% of held-out witnessed
+relations on a greedy target cover. These are representation and connection
+transfer results, not autonomous growth: the common recursive selector still
+emits no held-out atoms. A causal incoming-port marking reduces proposal work
+slightly, but does not beat shuffled-label controls for either quasicrystal.
+Continuation, hierarchy depth, and meaningful marking speedup therefore remain
+explicitly red.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

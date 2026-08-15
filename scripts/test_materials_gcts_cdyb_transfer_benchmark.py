@@ -7,10 +7,13 @@ from materials_gcts_nested_transfer_benchmark import validate_nested_crops
 
 def test_small_published_cdyb_transfer_gate_is_honestly_red() -> None:
     radii = (8.0, 14.0, 19.5)
-    split = build_cdyb_split(max_index=3, box_size=40.0, radii=radii)
+    origin = (1.1, 2.2, 3.3)
+    split = build_cdyb_split(
+        max_index=3, box_size=40.0, origin=origin, radii=radii)
     validate_nested_crops(split)
     fitted = fit_current_generic(split.training)
-    report = evaluate(max_index=3, box_size=40.0, radii=radii)
+    report = evaluate(
+        max_index=3, box_size=40.0, origin=origin, radii=radii)
     assert report.training_atoms < report.validation_atoms < report.test_atoms
     assert fitted.audit.learned_from_seed_only
     assert not fitted.audit.family_label_used
