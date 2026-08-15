@@ -547,17 +547,20 @@ equivalence: no dynamics, defects, stresses, or thermodynamics are inferred.
 `scripts/materials_gcts_million_emission_benchmark.py` replaces that earlier
 ad-hoc materialization note with a reproducible explicit certificate. The
 learned 216-atom NaCl quotient streams 7,077,888 species-labelled positions in
-five macro actions (16.45 seconds in the current recorded Python run). The
+five macro actions (16.2 seconds in the current recorded Python run). The
 507-atom IQC first learns the same three-component GCTS mark used by local
 port growth, then promotes it to a rank-six address macro and streams 2,791,097
-positions in six actions (9.55 seconds).
+positions in six actions (9.7 seconds). The learned Fibonacci-product
+substitution streams 1,061,208 sites in five actions (2.6 seconds).
 Neither output cloud is retained. Instead, an order-independent 256-bit sum of
 per-site cryptographic hashes is compared with a structurally independent
-oracle: direct rocksalt half-grid parity for NaCl, and the sealed unit/window/
-shell constants for the IQC. Both digests and species counts match exactly.
-The observed geometric means are 8.000 and 4.202 sites per recursive action.
-This closes the **explicit million-site emission** benchmark for the two ideal
-systems. IQC emission performs no coordinate lifting, model refit, target
+oracle: direct rocksalt half-grid parity for NaCl, sealed unit/window/shell
+constants for the IQC, and an independently generated hidden substitution
+word for the Fibonacci product. All three digests and species counts match
+exactly. The observed geometric means are 8.000, 4.202, and 4.292 sites per
+recursive action. This closes the **explicit million-site emission** benchmark
+for one crystal and two quasicrystal controls. IQC emission performs no
+coordinate lifting, model refit, target
 lookup, or physical-potential call; a regression makes coordinate lifting
 raise during macro inference. This gives GCTS a concrete multiscale role:
 local port search validates and propagates the marking through 66,935 exact

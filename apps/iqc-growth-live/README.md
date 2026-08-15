@@ -582,12 +582,15 @@ waves.
 
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
-species-labelled positions in 16.45 seconds. From a 507-atom IQC seed, the
+species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the
 locally propagated three-component GCTS mark is promoted into a rank-six
-address macro; six actions stream 2,791,097 positions in 9.55 seconds. Both
+address macro; six actions stream 2,791,097 positions in 9.7 seconds. A
+729-atom Fibonacci-product seed learns its substitution and streams 1,061,208
+positions in five actions (2.6 seconds). All three
 streams are checked with order-independent 256-bit coordinate/species digests
-against structurally independent oracles (a rocksalt half-grid and the sealed
-cut-and-project constants). The output clouds are not retained. This proves
+against structurally independent oracles (a rocksalt half-grid, sealed
+cut-and-project constants, and a hidden substitution word). The output clouds
+are not retained. This proves
 exponential representation/action compression and linear coordinate emission.
 The IQC emitter does not lift output coordinates or refit the model. Translation,
 substitution, and marked-address expansion still remain distinct production

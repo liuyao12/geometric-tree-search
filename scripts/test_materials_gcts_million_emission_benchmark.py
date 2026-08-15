@@ -13,6 +13,12 @@ def test_learned_programs_explicitly_emit_and_certify_millions() -> None:
     assert result.quasicrystal.minimum_growth_per_action > 4.1
     assert result.quasicrystal.coordinate_digest == (
         result.quasicrystal.independent_oracle_digest)
+    assert result.fibonacci_quasicrystal.sites_emitted == 1_061_208
+    assert result.fibonacci_quasicrystal.macro_actions == 5
+    assert result.fibonacci_quasicrystal.coordinate_digest == (
+        result.fibonacci_quasicrystal.independent_oracle_digest)
+    assert result.all_three_explicitly_exceed_one_million
+    assert result.all_three_exact
     assert not result.heldout_sites_used_for_learning
     assert not result.physical_potential_used
     assert result.quasicrystal_gcts_marking_compiled
@@ -22,4 +28,4 @@ def test_learned_programs_explicitly_emit_and_certify_millions() -> None:
 
 if __name__ == "__main__":
     test_learned_programs_explicitly_emit_and_certify_millions()
-    print("explicit million-site crystal/IQC certificate passed")
+    print("explicit million-site crystal/two-QC certificate passed")

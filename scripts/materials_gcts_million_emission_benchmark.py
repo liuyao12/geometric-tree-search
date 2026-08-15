@@ -15,6 +15,9 @@ from dataclasses import asdict, dataclass
 from typing import Iterable, Tuple
 
 from materials_gcts_generic import benchmark_systems
+from materials_gcts_fibonacci_3d import (
+    HIDDEN_FIBONACCI, Substitution, apply_substitution,
+    coordinates_from_gaps, generate, make_input, species_at)
 from materials_gcts_geometry_vm import compile_metric_overlap_from_seed
 from materials_gcts_icosahedral_modelset import (
     HIDDEN_SPECIES_THRESHOLDS, HIDDEN_UNIT, HIDDEN_WINDOW, hidden_species,
@@ -50,8 +53,11 @@ class MillionEmissionCurve:
 class MillionEmissionBenchmark:
     crystal: MillionEmissionCurve
     quasicrystal: MillionEmissionCurve
+    fibonacci_quasicrystal: MillionEmissionCurve
     both_explicitly_exceed_one_million: bool
     both_exact: bool
+    all_three_explicitly_exceed_one_million: bool
+    all_three_exact: bool
     physical_potential_used: bool
     heldout_sites_used_for_learning: bool
     quasicrystal_gcts_marking_compiled: bool
@@ -142,6 +148,40 @@ def _hidden_nacl_sites(cells, lattice_constant):
                 k * lattice_constant / 2), chemical)
 
 
+def _fibonacci_sites(rule, actions):
+    image_a, image_b, seed = rule.substitution_images
+    substitution = Substitution(image_a, image_b, seed)
+    word = generate(substitution, rule.input_side)
+    for _ in range(actions):
+        word = apply_substitution(word, substitution)
+    short, long = rule.substitution_gap_lengths
+    coordinates = [0.0]
+    for symbol in word[:-1]:
+        coordinates.append(coordinates[-1] +
+                           (long if symbol == "A" else short))
+    decoration = {item[:3]: item[3]
+                  for item in rule.substitution_decoration}
+    inverse = tuple(tuple(rule.to_canonical[column][row]
+                          for column in range(3)) for row in range(3))
+    minimum = rule.canonical_minimum
+    for i, j, k in itertools.product(range(len(word)), repeat=3):
+        canonical = (coordinates[i] + minimum[0],
+                     coordinates[j] + minimum[1],
+                     coordinates[k] + minimum[2])
+        point = tuple(sum(inverse[row][column] * canonical[column]
+                          for column in range(3)) + rule.origin[row]
+                      for row in range(3))
+        yield point, decoration[(word[i], word[j], word[k])]
+
+
+def _hidden_fibonacci_sites(side):
+    word = generate(HIDDEN_FIBONACCI, side)
+    coordinates = coordinates_from_gaps(word[:side - 1])
+    for i, j, k in itertools.product(range(side), repeat=3):
+        yield ((coordinates[i], coordinates[j], coordinates[k]),
+               "A" if species_at(word, i, j, k) == 0 else "B")
+
+
 def _curve(system, family, seed_atoms, actions,
            seconds, result, oracle_digest=None):
     total, species, digest = result
@@ -187,12 +227,30 @@ def evaluate():
     iqc_curve = _curve(
         iqc.name, "carried_mark_address_macro", len(iqc.positions), iqc_actions,
         iqc_seconds, iqc_result, hidden_digest)
+
+    fibonacci = make_input(9)
+    fibonacci_program = discover_recursive_program(fibonacci)
+    fibonacci_actions = 5
+    started = time.perf_counter()
+    fibonacci_result = _digest(_fibonacci_sites(
+        fibonacci_program._payload, fibonacci_actions))
+    fibonacci_seconds = time.perf_counter() - started
+    fibonacci_side = round(fibonacci_result[0] ** (1.0 / 3.0))
+    hidden_fibonacci = _digest(_hidden_fibonacci_sites(fibonacci_side))
+    fibonacci_curve = _curve(
+        fibonacci.name, fibonacci_program.family, len(fibonacci.positions),
+        fibonacci_actions, fibonacci_seconds, fibonacci_result,
+        hidden_fibonacci[2])
     million = min(crystal_curve.sites_emitted,
                   iqc_curve.sites_emitted) >= 1_000_000
     exact = crystal_curve.exact_certificate and iqc_curve.exact_certificate
+    all_million = min(crystal_curve.sites_emitted, iqc_curve.sites_emitted,
+                      fibonacci_curve.sites_emitted) >= 1_000_000
+    all_exact = exact and fibonacci_curve.exact_certificate
     return MillionEmissionBenchmark(
-        crystal_curve, iqc_curve, million, exact, False, False, True, False,
-        million and exact)
+        crystal_curve, iqc_curve, fibonacci_curve, million, exact,
+        all_million, all_exact, False, False, True, False,
+        all_million and all_exact)
 
 
 def main():
