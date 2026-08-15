@@ -1557,8 +1557,8 @@ Thus 507 atoms become 1,689 using 1,182 / 1,182 exact locally marked additions.
 This is the first operational bounded connection marking rather than a global
 candidate lookup. It also exposes the next obstruction cleanly: the available
 port grammar exhausts after two levels, so the exponential gate remains red.
-The next production must promote the 1,689-site recurrent cover (a genuine
-cluster of clusters) and learn ports between those promoted objects.
+The next production therefore promotes the 1,689-site recurrent cover and
+learns ports between larger-support objects.
 
 A categorical-distillation control explains why the carried state matters. A
 whitelist of the seed's ten exact port-multiset contexts has perfect acceptance
@@ -1567,6 +1567,29 @@ six-level ceiling trace. Coarser port-pair membership reaches 13.16% recall at
 97.35% precision. Moreover, one transferred context changes chemical color.
 Local incident categories alone therefore do not contain the phase information
 needed by the IQC; it must be carried and updated by the marking.
+
+### Self-fed clusters-of-clusters promotion
+
+`scripts/materials_gcts_cluster_promotion_benchmark.py` performs that loop
+without introducing a held-out target. It enlarges each cluster's observation
+radius by the learned recursive scale, recomputes isometry-invariant colored
+support types on the 1,689 sites generated above, and fits their ports against
+that generated cover only. The number of recurrent types stays finite at 30,
+while average support rises from 29.70 atoms to 98.57 atoms (3.32×) and the
+largest promoted cluster covers 225 atoms. This is a cluster of clusters in
+the operational sense: the symbol count remains fixed while each symbol's
+covered child support grows.
+
+The promoted grammar contains 789 ports and 13,111 compatible port pairs. Its
+first frozen promoted wave adds 3,234 / 3,234 exact colored sites, 1.91× the
+entire 1,689-site parent. Candidate acceptance and chemistry still use only
+the carried three-component marks; the hidden model is a post-hoc scorer.
+
+This clears a one-transition promotion/amplification gate, not the exponential
+gate. We have not yet frozen this promoted grammar and demonstrated increasing
+support on two additional unseen promotion levels. Vocabulary size (789 ports)
+is also high enough that description length and transfer must be measured
+before claiming a cost advantage over a flat generator.
 
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
