@@ -61,6 +61,8 @@ class ActionMacroType:
     macro_id: int
     wave: int
     component: int
+    world_rotation: Matrix
+    world_translation: Vector
     children: tuple[ActionMacroChild, ...]
     edges: tuple[ActionMacroEdge, ...]
     atom_union: tuple[Site, ...]
@@ -320,7 +322,8 @@ def promote_batch_action_macros(
                 pairwise_compatible_antichain,
                 union_keys, hashlib.sha256(payload).hexdigest())
             macros.append(ActionMacroType(
-                len(macros), wave, component_index, children, tuple(edges),
+                len(macros), wave, component_index,
+                root.rotation, root.translation, children, tuple(edges),
                 atom_union, tuple(boundaries), certificate, production,
                 normalized_key, failure))
     grouped = defaultdict(list)

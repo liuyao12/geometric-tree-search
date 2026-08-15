@@ -2129,3 +2129,82 @@ only one wave. The three-wave recurrence count is therefore zero and no scale
 law is claimed. A synthetic control accepts three translated congruent waves
 and rejects a noncongruent third wave, verifying that this red IQC result is not
 caused by a promoter incapable of detecting recurrence.
+
+### Recurring action subclusters across independent patches
+
+Whole-wave components are too coarse to be the only hierarchy candidates.
+`scripts/materials_gcts_action_submacro_mining.py` therefore enumerates every
+connected induced subgraph of two through five accepted cluster placements.
+Its canonical key retains cluster types, directed connection semantics, the
+complete symmetry-quotiented proper-SE(3) pair-pose matrix, and the exact
+colored atomic union. Admission requires two nearly node- and atom-disjoint
+occurrences and a positive description-length saving. Patch namespaces prevent
+reused local node IDs or coordinates from fabricating overlap between samples.
+
+The exact five-wave confirmation is an important negative control: all 5,254
+connected candidates have different canonical keys. Repetition therefore
+cannot be inferred from one visually coherent growth trace. A separate
+target-free corpus freezes the same grammar and executor on six predeclared
+radius-7 seeds with radius-11 public boundaries. The six patches are pairwise
+atom-disjoint and disjoint from the 887-atom training crop; posthoc errors are
+retained rather than filtered out. Across 311 accepted action edges, the miner
+finds:
+
+| quantity | result |
+|---|---:|
+| connected induced candidates | 3,844 |
+| exact canonical classes | 3,797 |
+| admitted positive-MDL submacro types | 47 |
+| types supported by two independent patches | 46 |
+| admitted sizes (2 / 3 / 4 / 5 children) | 18 / 14 / 10 / 5 |
+
+All 47 admitted unions pass the finite colored proper-SE(3) prototype gate.
+This is the first target-free reusable cluster-of-clusters vocabulary in the
+executed IQC path.
+
+`scripts/materials_gcts_action_submacro_promotion.py` now turns that vocabulary
+into the same generic oriented occurrence/port contract used at lower levels.
+All 47 prototypes and all 94 dense occurrences fit their witnessed colored
+unions with zero prototype or pose failures. The promoted atlas contains 1,694
+overlap ports / 3,388 relation witnesses plus 1,352 separately carried boundary
+ports / 2,704 relation witnesses. The sparse reducer shrinks the overlap graph
+from 94 nodes / 1,694 edges to 12 / 9 before the next mining pass.
+
+| recursive pass | positive-MDL macros | exact-support quotient types |
+|---:|---:|---:|
+| first promoted pass | 6 | 3 |
+| second promoted pass | 2 | 1 |
+| third promoted pass | 0 | 0 |
+
+This is genuine two-level recursive compression after the action-subcluster
+vocabulary. It is not yet exponential: the third recursively mined level is
+empty, so there is no three-level production sequence on which to evaluate a
+stationary scale law. Boundary relations are preserved for execution and later
+promotion, but the current generic reducer uses overlap relations as graph
+edges; admitting witnessed non-overlap boundary edges is a concrete next
+representation test.
+
+A complementary clean training corpus uses known atoms only inside the same
+887-atom training cloud. Five radius-5 seeds and radius-7 public domains produce
+141 exact actions, 173 nodes, 56 cluster types, and 118 production types; 317
+unique emitted training atoms cover 35.74% of the cloud. No held-out patch or
+label enters this corpus. It supplies supervised recurrence evidence without
+turning the deployment patches into training data. Exact 2–5-node mining over
+these traces enumerates 19,547 candidates / 18,931 semantic classes and admits
+344 positive-MDL types after requiring different patches and at most 10%
+colored-atom overlap. Their size histogram is 20 / 53 / 111 / 160. Every type
+has exactly two independent occurrences and none reaches three patches, so this
+large clean vocabulary is deliberately treated as weak two-copy evidence, not
+as stationary recursion.
+
+`scripts/materials_gcts_recurring_action_submacro_audit.py` defines the final
+claim boundary. A stationary witness must preserve one normalized connected
+chemistry/chirality/port production over three consecutive positive-MDL levels,
+with equal learned adjacent scales, equal inferred nonnegative-integer chemical
+population substitution matrices, and at least two spatially independent
+occurrences at every level. One-scale copies, disconnected patches, amorphous
+perturbations, unequal scales or substitutions, overlapping evidence, and
+target leakage all fail controls. The current real ideal-IQC hierarchy has only
+two eligible promoted levels, zero common three-level keys, and zero stationary
+witnesses. Thus finite growth, causal marking, and a reusable submacro
+vocabulary are green; generic stationary/exponential IQC growth remains red.
