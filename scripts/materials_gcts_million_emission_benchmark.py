@@ -23,7 +23,8 @@ from materials_gcts_icosahedral_modelset import (
     HIDDEN_SPECIES_THRESHOLDS, HIDDEN_UNIT, HIDDEN_WINDOW, hidden_species,
     oracle_patch)
 from materials_gcts_propagated_marking import (
-    emit_marked_macro_sites, fit_propagated_marking)
+    compile_marked_address_macro, emit_marked_macro_sites,
+    fit_propagated_marking)
 from materials_gcts_recursive_program import discover_recursive_program
 
 
@@ -214,11 +215,12 @@ def evaluate():
     iqc_program = discover_recursive_program(iqc)
     iqc_instruction = compile_metric_overlap_from_seed(iqc)
     iqc_marking = fit_propagated_marking(iqc_instruction, iqc)
+    iqc_macro = compile_marked_address_macro(iqc_instruction, iqc_marking)
     iqc_actions = 6
     radius = 9.0 * iqc_program._payload.scale ** iqc_actions
     started = time.perf_counter()
     iqc_result = _digest(emit_marked_macro_sites(
-        iqc_instruction, iqc_marking, radius))
+        iqc_macro, radius))
     iqc_seconds = time.perf_counter() - started
     _, hidden_species_counts, hidden_digest = _digest(
         _hidden_iqc_sites(radius))

@@ -568,6 +568,16 @@ sites, then the same mark becomes the fast clusters-of-clusters address
 production. Writing coordinates remains O(N), and the stricter requirement
 that crystal, substitution, and IQC use one production kind remains red.
 
+The inference artifacts are now physically separated from their trainers.
+The local `PortCoverGraph` retains the 789 promoted typed-distance ports,
+frontier width, origin, and carried mark, but drops all 13,111 fitting-only
+port pairs and the global section. The promoted million-site artifact is
+smaller still: `MarkedAddressMacro` contains only the learned algebraic unit,
+window radius, species thresholds, origin, and rigid frame. It contains no
+port atlas, seed marks, target sites, or fitting model. Structural regressions
+enforce both exclusions, so the cost comparison no longer counts discarded
+training evidence as required inference state.
+
 ## Perturbation gate
 
 `scripts/materials_gcts_noise_robustness_benchmark.py` adds independent Gaussian

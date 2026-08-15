@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import math
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Tuple
 
 from materials_gcts_generic import AtomicConfiguration, inverse3, matvec
@@ -20,7 +20,8 @@ from materials_gcts_geometry_vm import GeometryInstruction
 from materials_gcts_icosahedral_modelset import (
     learned_species, lift_point, project, vector_norm)
 from materials_gcts_port_cover_graph import (
-    _bindings, _output, compile_gap_instruction)
+    ColorSection, ConnectionSection, PortCoverGraph, _bindings, _output,
+    compile_gap_instruction)
 from materials_gcts_recursive_connections import point_key
 
 Point = Tuple[float, float, float]
@@ -65,6 +66,40 @@ class PromotionReport:
     maximum_promoted_support: int
     promoted_ports: int
     promoted_port_pairs: int
+
+
+@dataclass(frozen=True)
+class MarkedAddressMacro:
+    unit: float
+    window_radius: float
+    ordered_species: tuple[str, ...]
+    thresholds: tuple[float, ...]
+    origin: Point
+    from_canonical: tuple[tuple[float, float, float], ...]
+
+
+def compile_propagated_port_program(
+        instruction: GeometryInstruction) -> PortCoverGraph:
+    """Drop fitting-only global sections from the local inference graph."""
+    graph = compile_gap_instruction(instruction)
+    node = graph.nodes[0]
+    compact = replace(
+        node,
+        connection=ConnectionSection("carried_mark", None,
+                                     "transported local mark"),
+        color=ColorSection("carried_mark", None))
+    return PortCoverGraph(
+        (compact,), graph.root_nodes, graph.learned_from_seed_only,
+        graph.family_label_used, graph.physical_potential_used)
+
+
+def compile_marked_address_macro(
+        instruction: GeometryInstruction,
+        marking: PropagatedSectionMarking) -> MarkedAddressMacro:
+    section = instruction.payload.color_section
+    return MarkedAddressMacro(
+        section.unit, marking.window_radius, marking.ordered_species,
+        marking.thresholds, section.origin, inverse3(section.to_canonical))
 
 
 def _seed_mark(section, point: Point) -> Mark:
@@ -112,13 +147,15 @@ def _transport(binding, known_marks, coefficients) -> Mark | None:
 
 
 def execute_propagated_wave(
-        instruction: GeometryInstruction,
+        instruction: GeometryInstruction | PortCoverGraph,
         marking: PropagatedSectionMarking,
         state: MarkedConfiguration,
         *, level: int,
         consensus_tolerance: float = 1e-5) -> PropagatedWave:
     """Apply one local frontier wave using only incoming carried marks."""
-    node = compile_gap_instruction(instruction).nodes[0]
+    graph = (instruction if isinstance(instruction, PortCoverGraph) else
+             compile_propagated_port_program(instruction))
+    node = graph.nodes[0]
     known_marks = dict(state.marks)
     known_points = {point_key(point)
                     for point in state.configuration.positions}
@@ -246,8 +283,7 @@ def promote_port_instruction(
 
 
 def emit_marked_macro_sites(
-        instruction: GeometryInstruction,
-        marking: PropagatedSectionMarking,
+        macro: MarkedAddressMacro,
         physical_radius: float):
     """Expand the carried section mark as one address-domain macro action.
 
@@ -256,11 +292,10 @@ def emit_marked_macro_sites(
     The parity relations are part of the learned rank-six address production;
     the rigid frame maps its canonical output back to the observed sample.
     """
-    section = instruction.payload.color_section
-    unit = section.unit
+    unit = macro.unit
     conjugate = -1.0 / unit
     denominator = unit - conjugate
-    window = marking.window_radius
+    window = macro.window_radius
     bound_a = math.ceil((unit * window + abs(conjugate) * physical_radius) /
                         denominator + 1e-9)
     bound_b = math.ceil((physical_radius + window) /
@@ -276,7 +311,6 @@ def emit_marked_macro_sites(
                     coefficient_a, coefficient_b, physical, internal))
     physical_squared = physical_radius ** 2
     window_squared = window ** 2
-    from_canonical = inverse3(section.to_canonical)
     for xa, xb, x, xi in coordinate_pairs:
         for ya, yb, y, yi in coordinate_pairs:
             if (x * x + y * y > physical_squared + 1e-10 or
@@ -291,10 +325,10 @@ def emit_marked_macro_sites(
                         window_squared + 1e-10):
                     continue
                 canonical = (x, y, z)
-                offset = matvec(from_canonical, canonical)
-                point = tuple(section.origin[axis] + offset[axis]
+                offset = matvec(macro.from_canonical, canonical)
+                point = tuple(macro.origin[axis] + offset[axis]
                               for axis in range(3))
                 internal_radius = math.sqrt(xi * xi + yi * yi + zi * zi)
                 yield point, learned_species(
-                    internal_radius, marking.ordered_species,
-                    marking.thresholds)
+                    internal_radius, macro.ordered_species,
+                    macro.thresholds)

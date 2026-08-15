@@ -9,7 +9,8 @@ from typing import Any
 from materials_gcts_generic import AtomicConfiguration
 from materials_gcts_geometry_vm import compile_metric_overlap_from_seed
 from materials_gcts_propagated_marking import (
-    MarkedConfiguration, execute_propagated_wave,
+    MarkedConfiguration, compile_propagated_port_program,
+    execute_propagated_wave,
     extend_marked_configuration, fit_propagated_marking,
     initial_marked_configuration, promote_port_instruction)
 from materials_gcts_recursive_program import (
@@ -49,6 +50,7 @@ def _prepare_promoted_parent(
         seed: AtomicConfiguration,
         program: ExecutableGrowthProgram) -> tuple[MarkedConfiguration, Any]:
     state = initial_marked_configuration(seed, program._marking)
+    port_program = compile_propagated_port_program(program._instruction)
     # Exhaust every seed-trained port scale before promoting. This is a
     # family-independent stopping rule: promotion occurs only after no local
     # production remains, rather than at a target atom count or radius.
@@ -56,7 +58,7 @@ def _prepare_promoted_parent(
         generated_at_level = False
         for _ in range(25):
             wave = execute_propagated_wave(
-                program._instruction, program._marking, state, level=level)
+                port_program, program._marking, state, level=level)
             if not wave.emitted_sites:
                 break
             generated_at_level = True
@@ -64,7 +66,7 @@ def _prepare_promoted_parent(
         if level > 1 and not generated_at_level:
             break
     promoted, _ = promote_port_instruction(program._instruction, state)
-    return state, promoted
+    return state, compile_propagated_port_program(promoted)
 
 
 def execute_program(

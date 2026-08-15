@@ -10,7 +10,8 @@ from dataclasses import asdict, dataclass
 from materials_gcts_gap_node_benchmark import _hidden_site
 from materials_gcts_geometry_vm_benchmark import _compile_iqc_instruction
 from materials_gcts_propagated_marking import (
-    execute_propagated_wave, extend_marked_configuration,
+    compile_propagated_port_program, execute_propagated_wave,
+    extend_marked_configuration,
     fit_propagated_marking, initial_marked_configuration,
     promote_port_instruction)
 
@@ -46,20 +47,22 @@ class ClusterPromotionBenchmark:
 def evaluate(promoted_levels=3):
     seed, instruction = _compile_iqc_instruction()
     marking = fit_propagated_marking(instruction, seed)
+    port_program = compile_propagated_port_program(instruction)
     state = initial_marked_configuration(seed, marking)
     for level in (1, 2):
         for _ in range(10):
             wave = execute_propagated_wave(
-                instruction, marking, state, level=level)
+                port_program, marking, state, level=level)
             if not wave.emitted_sites:
                 break
             state = extend_marked_configuration(state, wave)
     promoted, report = promote_port_instruction(instruction, state)
+    promoted_program = compile_propagated_port_program(promoted)
     level_sites = []
     exact_level_sites = []
     for level in range(1, promoted_levels + 1):
         wave = execute_propagated_wave(
-            promoted, marking, state, level=level)
+            promoted_program, marking, state, level=level)
         exact = sum(_hidden_site(*site) for site in wave.emitted_sites)
         level_sites.append(len(wave.emitted_sites))
         exact_level_sites.append(exact)

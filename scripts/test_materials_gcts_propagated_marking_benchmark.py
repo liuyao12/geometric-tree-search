@@ -18,6 +18,19 @@ class PropagatedMarkingBenchmarkTest(unittest.TestCase):
         self.assertEqual(instruction.payload.seed_minimum_votes, 11)
         self.assertFalse(instruction.family_label_used)
 
+    def test_compact_runtime_drops_fitting_only_sections(self):
+        seed, instruction = _compile_iqc_instruction()
+        marking = propagated.fit_propagated_marking(instruction, seed)
+        program = propagated.compile_propagated_port_program(instruction)
+        node = program.nodes[0]
+        self.assertFalse(hasattr(node.domain.parameters, "section"))
+        self.assertFalse(hasattr(node.domain.parameters, "color_section"))
+        self.assertIsNone(node.connection.parameters)
+        self.assertIsNone(node.color.parameters)
+        macro = propagated.compile_marked_address_macro(instruction, marking)
+        self.assertFalse(hasattr(macro, "atlas"))
+        self.assertFalse(hasattr(macro, "seed_marks"))
+
     def test_seed_marks_drive_two_exact_recursive_levels(self):
         result = evaluate()
         self.assertEqual(result.training_atoms, 507)
@@ -54,6 +67,7 @@ class PropagatedMarkingBenchmarkTest(unittest.TestCase):
     def test_address_macro_does_not_lift_output_coordinates(self):
         seed, instruction = _compile_iqc_instruction()
         marking = propagated.fit_propagated_marking(instruction, seed)
+        macro = propagated.compile_marked_address_macro(instruction, marking)
         original = propagated.lift_point
 
         def forbidden(*_args, **_kwargs):
@@ -63,7 +77,7 @@ class PropagatedMarkingBenchmarkTest(unittest.TestCase):
         try:
             sites = tuple(itertools.islice(
                 propagated.emit_marked_macro_sites(
-                    instruction, marking, 20.0), 100))
+                    macro, 20.0), 100))
         finally:
             propagated.lift_point = original
         self.assertEqual(len(sites), 100)

@@ -10,7 +10,8 @@ from dataclasses import asdict, dataclass
 from materials_gcts_gap_node_benchmark import _hidden_site
 from materials_gcts_geometry_vm_benchmark import _compile_iqc_instruction
 from materials_gcts_propagated_marking import (
-    execute_propagated_wave, extend_marked_configuration,
+    compile_propagated_port_program, execute_propagated_wave,
+    extend_marked_configuration,
     fit_propagated_marking, initial_marked_configuration)
 
 
@@ -42,6 +43,7 @@ class PropagatedMarkingBenchmark:
 def evaluate(maximum_level=6, maximum_waves=10):
     seed, instruction = _compile_iqc_instruction()
     marking = fit_propagated_marking(instruction, seed)
+    port_program = compile_propagated_port_program(instruction)
     state = initial_marked_configuration(seed, marking)
     levels = []
     for level in range(1, maximum_level + 1):
@@ -50,7 +52,7 @@ def evaluate(maximum_level=6, maximum_waves=10):
         rejected = 0
         for _ in range(maximum_waves):
             wave = execute_propagated_wave(
-                instruction, marking, state, level=level)
+                port_program, marking, state, level=level)
             rejected += (wave.outside_section_rejections +
                          wave.inconsistent_mark_rejections)
             if not wave.emitted_sites:

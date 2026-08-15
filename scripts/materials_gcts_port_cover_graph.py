@@ -37,6 +37,15 @@ class BindingDomain:
 
 
 @dataclass(frozen=True)
+class MetricPortDomain:
+    scale: float
+    radial_edges: Tuple[float, ...]
+    atlas: Any
+    origin: Point
+    frontier_width: float
+
+
+@dataclass(frozen=True)
 class AffineOutput:
     coefficients: Tuple[float, ...]
     offset: Point
@@ -194,8 +203,12 @@ def compile_gap_instruction(instruction: GeometryInstruction) -> PortCoverGraph:
     payload = instruction.payload
     if not isinstance(payload, OverlapPayload):
         raise ValueError("a gap node requires an overlap-port payload")
+    domain = MetricPortDomain(
+        payload.scale, payload.radial_edges, payload.atlas,
+        payload.color_section.origin,
+        pair_section_frontier_width(payload.section, payload.atlas))
     node = CoverNode(
-        "gap", BindingDomain(2, "metric_ports", payload),
+        "gap", BindingDomain(2, "metric_ports", domain),
         AffineOutput((1.0 - payload.scale, payload.scale),
                      (0.0, 0.0, 0.0)),
         ConnectionSection("bounded_section", payload.color_section, "one"),
@@ -239,15 +252,19 @@ def _typed_bindings(payload: AnchorPayload,
         yield Binding((point,), (chemical,), cluster_type)
 
 
-def _port_bindings(payload: OverlapPayload, state: AtomicConfiguration,
+def _port_bindings(payload: OverlapPayload | MetricPortDomain,
+                   state: AtomicConfiguration,
                    level: int) -> Iterable[Binding]:
     types = local_cluster_types(
         state.positions, state.species, payload.radial_edges)
     mapped = map_to_prototypes(types, payload.atlas.prototypes)
-    center = payload.color_section.origin
+    center = (payload.origin if isinstance(payload, MetricPortDomain)
+              else payload.color_section.origin)
     maximum_radius = max(math.dist(point, center) for point in state.positions)
-    width = pair_section_frontier_width(
-        payload.section, payload.atlas) * payload.scale ** max(0, level - 1)
+    base_width = (payload.frontier_width
+                  if isinstance(payload, MetricPortDomain) else
+                  pair_section_frontier_width(payload.section, payload.atlas))
+    width = base_width * payload.scale ** max(0, level - 1)
     parents = (index for index, point in enumerate(state.positions)
                if math.dist(point, center) >= maximum_radius - width)
     level_scale = payload.scale ** level
