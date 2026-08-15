@@ -8,6 +8,7 @@ class ClusterPromotionBenchmarkTest(unittest.TestCase):
         result = evaluate()
         self.assertEqual(result.training_atoms, 507)
         self.assertEqual(result.self_generated_parent_atoms, 1689)
+        self.assertEqual(result.final_atoms, 30499)
         self.assertEqual(result.base_cluster_types, 30)
         self.assertEqual(result.promoted_cluster_types, 30)
         self.assertGreater(result.support_growth_factor, 3.0)
@@ -17,11 +18,16 @@ class ClusterPromotionBenchmarkTest(unittest.TestCase):
         self.assertEqual(result.promoted_wave_sites, 3234)
         self.assertEqual(result.exact_promoted_wave_sites, 3234)
         self.assertGreater(result.promoted_wave_to_parent_ratio, 1.9)
+        self.assertEqual(result.promoted_level_sites, (3234, 8384, 17192))
+        self.assertEqual(result.exact_promoted_level_sites,
+                         result.promoted_level_sites)
+        self.assertGreater(min(result.promoted_level_growth_factors), 2.0)
+        self.assertGreater(result.geometric_mean_level_growth, 2.3)
         self.assertFalse(result.heldout_atoms_used_for_promotion)
         self.assertFalse(result.global_section_queried_at_inference)
         self.assertTrue(result.larger_support_clusters_promoted)
         self.assertTrue(result.amplified_exact_growth)
-        self.assertFalse(result.exponential_growth)
+        self.assertTrue(result.exponential_growth)
         self.assertTrue(result.promotion_gate_passed)
 
 

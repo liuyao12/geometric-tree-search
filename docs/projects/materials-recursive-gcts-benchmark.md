@@ -1580,16 +1580,19 @@ largest promoted cluster covers 225 atoms. This is a cluster of clusters in
 the operational sense: the symbol count remains fixed while each symbol's
 covered child support grows.
 
-The promoted grammar contains 789 ports and 13,111 compatible port pairs. Its
-first frozen promoted wave adds 3,234 / 3,234 exact colored sites, 1.91× the
-entire 1,689-site parent. Candidate acceptance and chemistry still use only
-the carried three-component marks; the hidden model is a post-hoc scorer.
+The promoted grammar contains 789 ports and 13,111 compatible port pairs. It is
+then frozen and self-fed at three increasing port scales. Exact colored
+additions are `3,234 → 8,384 → 17,192`, successive factors 2.59× and 2.05×
+(geometric mean 2.31×). The cloud reaches 30,499 atoms from the 507-atom seed.
+Every one of the 28,810 promoted additions is independently certified against
+the hidden model, which is a post-hoc scorer only. Candidate acceptance and
+chemistry use the carried three-component marks.
 
-This clears a one-transition promotion/amplification gate, not the exponential
-gate. We have not yet frozen this promoted grammar and demonstrated increasing
-support on two additional unseen promotion levels. Vocabulary size (789 ports)
-is also high enough that description length and transfer must be measured
-before claiming a cost advantage over a flat generator.
+This clears a finite three-level exponential-style promotion gate. It is not
+yet a million-atom or cross-family result: vocabulary size (789 ports) is high
+enough that description length must be compared with a flat generator, and
+the same promotion code must transfer to the crystal and second-quasicrystal
+controls before it can satisfy the common benchmark.
 
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
