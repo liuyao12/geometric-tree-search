@@ -1537,6 +1537,37 @@ per-level support oscillates and ends `2,520 → 780 → 120`. A successful next
 production must promote the recurrent level-4 frontier state while replacing
 the global internal section with a finite, bounded local cluster marking.
 
+### Carried local section marking
+
+`scripts/materials_gcts_propagated_marking.py` makes that replacement at
+inference time. The fitted 507-atom seed gives every seed cluster a
+three-component mark. A two-cluster port transports those incoming marks to a
+candidate with one learned affine rule; the transported mark alone decides
+connection/failure and species. The growth loop never lifts a candidate's
+global coordinate and never queries the global section. A regression replaces
+the lift function with an exception during inference to enforce this boundary.
+
+| recursive level | self-fed waves | exact colored sites |
+| ---: | --- | ---: |
+| 1 | `582, 60` | 642 |
+| 2 | `360, 180` | 540 |
+| 3–6 | none | 0 |
+
+Thus 507 atoms become 1,689 using 1,182 / 1,182 exact locally marked additions.
+This is the first operational bounded connection marking rather than a global
+candidate lookup. It also exposes the next obstruction cleanly: the available
+port grammar exhausts after two levels, so the exponential gate remains red.
+The next production must promote the 1,689-site recurrent cover (a genuine
+cluster of clusters) and learn ports between those promoted objects.
+
+A categorical-distillation control explains why the carried state matters. A
+whitelist of the seed's ten exact port-multiset contexts has perfect acceptance
+precision on only 540 of 8,356 section-accepted sites (6.46% recall) in the
+six-level ceiling trace. Coarser port-pair membership reaches 13.16% recall at
+97.35% precision. Moreover, one transferred context changes chemical color.
+Local incident categories alone therefore do not contain the phase information
+needed by the IQC; it must be carried and updated by the marking.
+
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning
 all atom pairs; a brute-force regression certifies identical local colors.
