@@ -1941,3 +1941,52 @@ the scorer afterward. A pass requires exactly one production kind,
 The callback-based contract has passing and deliberately failing harness tests,
 but the current macro miner does not yet implement those callbacks. Therefore
 the stationary/exponential gate remains explicitly red.
+
+### Recursive macro-as-node promotion
+
+`scripts/materials_gcts_macro_promotion.py` turns each retained `MacroType`
+into the next level's ordinary oriented node. The exact colored atom union is
+recentered into a prototype and its proper rotational automorphism group is
+learned. Every macro occurrence is independently re-rendered from its child
+poses and fitted back to the prototype; atom-index unions remain explicit.
+Only training macro pairs with witnessed shared atoms enter the overlap atlas.
+Cross-boundary child-port witnesses form a separate finite boundary atlas, so
+non-overlapping adjacency is carried without pretending that it covers atoms.
+
+| system | promoted prototypes / occurrences | overlap ports / relations | boundary ports / relations | largest promoted union | fit/conflict failures |
+|---|---:|---:|---:|---:|---:|
+| NaCl | 3 / 6 | 2 / 12 | 2 / 4 | 18 | 0 |
+| ideal IQC | 42 / 108 | 146 / 2,820 | 146 / 314 | 35 | 0 |
+| Cd--Yb | 2 / 4 | 2 / 12 | 2 / 4 | 40 | 0 |
+
+The promoted program exposes the same prototype/occurrence/support/atlas
+contract as the primitive program. `scripts/materials_gcts_recursive_port_hierarchy.py`
+therefore applies the unchanged sparse reducer and exact macro miner repeatedly,
+stopping when no positive-MDL macros remain:
+
+| system | source types by level | positive macros by level | total structural MDL saving | largest support reached | termination |
+|---|---:|---:|---:|---:|---|
+| NaCl | 7, 3 | 3, 0 | 6, 0 | 18 | no positive MDL |
+| ideal IQC | 13, 75, 11 | 75, 11, 0 | 339, 31, 0 | 94 | no positive MDL |
+| Cd--Yb | 91, 2 | 2, 0 | 4, 0 | 40 | no positive MDL |
+
+Thus the ideal IQC now exhibits two genuine learned compression levels. NaCl
+and Cd--Yb stop after one. None is yet an exponential certificate.
+
+`scripts/materials_gcts_stationary_production_signature.py` supplies the
+strong comparison that prevents a raw pose-key coincidence from becoming a
+stationary claim. It canonicalizes a connected 3--7-child production modulo
+global proper SE(3), child order, declared proper child gauges, and one inferred
+uniform translation scale. It preserves child chemistry and chirality,
+relative rotations, directed port incidence, overlap chemistry, and boundary
+direction/outside chemistry. Stationarity requires three consecutive observed
+levels, two matching adjacent comparisons with the same learned scale,
+independent low-overlap occurrences, positive MDL saving, and train-only
+provenance.
+
+Controls for a single repeated scale, disconnected copied patches, perturbed
+amorphous geometry, nonuniform dilation, an improper mirror, changed chemistry
+or chirality, and reversed port direction all stay red. The current real
+hierarchy has no complete atlas-to-semantic adapter satisfying this contract;
+its raw normalized signatures are marked diagnostic-only. Consequently all
+real stationary witness counts are zero and the million-site gate remains red.

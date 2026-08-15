@@ -655,4 +655,24 @@ until one generic `recurring_port_graph_macro` production is observed at two
 adjacent learned scales, reproduces two explicit unseen levels, grows by more
 than 3x for three actions, and represents one million sites within seven.
 
+Macro-as-node promotion is now operational. Each exact macro atom union becomes
+a centered colored prototype with its own proper symmetry group; every retained
+embedding is independently re-rendered and registered. Shared training atoms
+learn macro-overlap ports, while witnessed cross-boundary child connections
+produce a separate finite boundary-port atlas. In the two-child promotion
+audit, NaCl/IQC/Cd--Yb yield
+3/42/2 macro prototypes, 6/108/4 occurrences, and 2/146/2 overlap-port types,
+with no pose-fit or colored-union failures.
+
+The unchanged reducer/miner then runs recursively. With up to three children,
+NaCl has positive macro counts `(3, 0)` and Cd--Yb `(2, 0)`, terminating after
+one promoted level. The ideal IQC produces `(75, 11, 0)` across three realized
+levels; second-level supports reach 94 atoms and the structural MDL savings are
+`339, 31, 0`. This is genuine recursive compression, not yet stationary
+growth. A separate production canonicalizer removes only global proper SE(3),
+child order/proper gauge, and one learned uniform scale while retaining
+chemistry, chirality, directed port incidence, overlap chemistry, and boundary
+semantics. No real adjacent production is certified by that stronger contract,
+so every stationary witness remains zero.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
