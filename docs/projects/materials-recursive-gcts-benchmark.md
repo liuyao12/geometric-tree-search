@@ -547,16 +547,23 @@ equivalence: no dynamics, defects, stresses, or thermodynamics are inferred.
 `scripts/materials_gcts_million_emission_benchmark.py` replaces that earlier
 ad-hoc materialization note with a reproducible explicit certificate. The
 learned 216-atom NaCl quotient streams 7,077,888 species-labelled positions in
-five macro actions (12.9 seconds in the recorded Python run). The learned
-507-atom IQC section streams 2,791,097 positions in six actions (4.0 seconds).
+five macro actions (16.45 seconds in the current recorded Python run). The
+507-atom IQC first learns the same three-component GCTS mark used by local
+port growth, then promotes it to a rank-six address macro and streams 2,791,097
+positions in six actions (9.55 seconds).
 Neither output cloud is retained. Instead, an order-independent 256-bit sum of
 per-site cryptographic hashes is compared with a structurally independent
 oracle: direct rocksalt half-grid parity for NaCl, and the sealed unit/window/
 shell constants for the IQC. Both digests and species counts match exactly.
 The observed geometric means are 8.000 and 4.202 sites per recursive action.
 This closes the **explicit million-site emission** benchmark for the two ideal
-systems while preserving the crucial distinction: writing coordinates is
-O(N), and the generic locally learned cover grammar remains red.
+systems. IQC emission performs no coordinate lifting, model refit, target
+lookup, or physical-potential call; a regression makes coordinate lifting
+raise during macro inference. This gives GCTS a concrete multiscale role:
+local port search validates and propagates the marking through 66,935 exact
+sites, then the same mark becomes the fast clusters-of-clusters address
+production. Writing coordinates remains O(N), and the stricter requirement
+that crystal, substitution, and IQC use one production kind remains red.
 
 ## Perturbation gate
 

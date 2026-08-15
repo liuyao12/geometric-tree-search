@@ -15,7 +15,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from typing import Tuple
 
-from materials_gcts_generic import AtomicConfiguration, matvec
+from materials_gcts_generic import AtomicConfiguration, inverse3, matvec
 from materials_gcts_geometry_vm import GeometryInstruction
 from materials_gcts_icosahedral_modelset import (
     learned_species, lift_point, project, vector_norm)
@@ -243,3 +243,58 @@ def promote_port_instruction(
         max(promoted_supports), len(atlas.accepted_ports),
         len(section.accepted_pairs))
     return promoted, report
+
+
+def emit_marked_macro_sites(
+        instruction: GeometryInstruction,
+        marking: PropagatedSectionMarking,
+        physical_radius: float):
+    """Expand the carried section mark as one address-domain macro action.
+
+    This enumerator consumes the already fitted GCTS marking. It does not
+    refit a model, lift an output coordinate, or query a target configuration.
+    The parity relations are part of the learned rank-six address production;
+    the rigid frame maps its canonical output back to the observed sample.
+    """
+    section = instruction.payload.color_section
+    unit = section.unit
+    conjugate = -1.0 / unit
+    denominator = unit - conjugate
+    window = marking.window_radius
+    bound_a = math.ceil((unit * window + abs(conjugate) * physical_radius) /
+                        denominator + 1e-9)
+    bound_b = math.ceil((physical_radius + window) /
+                        denominator + 1e-9)
+    coordinate_pairs = []
+    for coefficient_a in range(-bound_a, bound_a + 1):
+        for coefficient_b in range(-bound_b, bound_b + 1):
+            physical = coefficient_a + coefficient_b * unit
+            internal = coefficient_a + coefficient_b * conjugate
+            if (abs(physical) <= physical_radius + 1e-10 and
+                    abs(internal) <= window + 1e-10):
+                coordinate_pairs.append((
+                    coefficient_a, coefficient_b, physical, internal))
+    physical_squared = physical_radius ** 2
+    window_squared = window ** 2
+    from_canonical = inverse3(section.to_canonical)
+    for xa, xb, x, xi in coordinate_pairs:
+        for ya, yb, y, yi in coordinate_pairs:
+            if (x * x + y * y > physical_squared + 1e-10 or
+                    xi * xi + yi * yi > window_squared + 1e-10 or
+                    (xa - yb) % 2):
+                continue
+            for za, zb, z, zi in coordinate_pairs:
+                if ((ya - zb) % 2 or (za - xb) % 2 or
+                        x * x + y * y + z * z >
+                        physical_squared + 1e-10 or
+                        xi * xi + yi * yi + zi * zi >
+                        window_squared + 1e-10):
+                    continue
+                canonical = (x, y, z)
+                offset = matvec(from_canonical, canonical)
+                point = tuple(section.origin[axis] + offset[axis]
+                              for axis in range(3))
+                internal_radius = math.sqrt(xi * xi + yi * yi + zi * zi)
+                yield point, learned_species(
+                    internal_radius, marking.ordered_species,
+                    marking.thresholds)

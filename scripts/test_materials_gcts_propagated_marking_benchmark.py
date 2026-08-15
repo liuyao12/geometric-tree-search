@@ -1,4 +1,5 @@
 import unittest
+import itertools
 
 import materials_gcts_propagated_marking as propagated
 from materials_gcts_geometry_vm import compile_metric_overlap_from_seed
@@ -49,6 +50,23 @@ class PropagatedMarkingBenchmarkTest(unittest.TestCase):
         finally:
             propagated.lift_point = original
         self.assertEqual(len(wave.emitted_sites), 582)
+
+    def test_address_macro_does_not_lift_output_coordinates(self):
+        seed, instruction = _compile_iqc_instruction()
+        marking = propagated.fit_propagated_marking(instruction, seed)
+        original = propagated.lift_point
+
+        def forbidden(*_args, **_kwargs):
+            raise AssertionError("coordinate lift leaked into macro emission")
+
+        propagated.lift_point = forbidden
+        try:
+            sites = tuple(itertools.islice(
+                propagated.emit_marked_macro_sites(
+                    instruction, marking, 20.0), 100))
+        finally:
+            propagated.lift_point = original
+        self.assertEqual(len(sites), 100)
 
 
 if __name__ == "__main__":

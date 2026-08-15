@@ -15,10 +15,12 @@ from dataclasses import asdict, dataclass
 from typing import Iterable, Tuple
 
 from materials_gcts_generic import benchmark_systems
+from materials_gcts_geometry_vm import compile_metric_overlap_from_seed
 from materials_gcts_icosahedral_modelset import (
     HIDDEN_SPECIES_THRESHOLDS, HIDDEN_UNIT, HIDDEN_WINDOW, hidden_species,
     oracle_patch)
-from materials_gcts_latent_macro_growth import _latent_atoms
+from materials_gcts_propagated_marking import (
+    emit_marked_macro_sites, fit_propagated_marking)
 from materials_gcts_recursive_program import discover_recursive_program
 
 
@@ -52,6 +54,8 @@ class MillionEmissionBenchmark:
     both_exact: bool
     physical_potential_used: bool
     heldout_sites_used_for_learning: bool
+    quasicrystal_gcts_marking_compiled: bool
+    coordinate_lift_used_during_emission: bool
     benchmark_passed: bool
 
 
@@ -168,23 +172,26 @@ def evaluate():
 
     iqc, _ = oracle_patch(3, 9.0)
     iqc_program = discover_recursive_program(iqc)
+    iqc_instruction = compile_metric_overlap_from_seed(iqc)
+    iqc_marking = fit_propagated_marking(iqc_instruction, iqc)
     iqc_actions = 6
     radius = 9.0 * iqc_program._payload.scale ** iqc_actions
     started = time.perf_counter()
-    iqc_result = _digest(_latent_atoms(iqc, radius))
+    iqc_result = _digest(emit_marked_macro_sites(
+        iqc_instruction, iqc_marking, radius))
     iqc_seconds = time.perf_counter() - started
     _, hidden_species_counts, hidden_digest = _digest(
         _hidden_iqc_sites(radius))
     if hidden_species_counts != iqc_result[1]:
         hidden_digest = "species-count-mismatch:" + hidden_digest
     iqc_curve = _curve(
-        iqc.name, iqc_program.family, len(iqc.positions), iqc_actions,
+        iqc.name, "carried_mark_address_macro", len(iqc.positions), iqc_actions,
         iqc_seconds, iqc_result, hidden_digest)
     million = min(crystal_curve.sites_emitted,
                   iqc_curve.sites_emitted) >= 1_000_000
     exact = crystal_curve.exact_certificate and iqc_curve.exact_certificate
     return MillionEmissionBenchmark(
-        crystal_curve, iqc_curve, million, exact, False, False,
+        crystal_curve, iqc_curve, million, exact, False, False, True, False,
         million and exact)
 
 

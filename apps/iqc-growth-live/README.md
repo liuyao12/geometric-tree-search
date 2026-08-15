@@ -580,15 +580,17 @@ explicitly fails. The next algorithmic target is to promote recurrent
 *frontier wave states* whose support grows, not simply bundle more exact local
 waves.
 
-The specialized learned-program benchmark now also has an explicit output
-certificate. From a 216-atom NaCl seed, five quotient actions stream 7,077,888
-species-labelled positions in 12.9 seconds. From a 507-atom IQC seed, six
-internal-section actions stream 2,791,097 positions in 4.0 seconds. Both
+The learned-program benchmark now also has an explicit output certificate.
+From a 216-atom NaCl seed, five quotient actions stream 7,077,888
+species-labelled positions in 16.45 seconds. From a 507-atom IQC seed, the
+locally propagated three-component GCTS mark is promoted into a rank-six
+address macro; six actions stream 2,791,097 positions in 9.55 seconds. Both
 streams are checked with order-independent 256-bit coordinate/species digests
 against structurally independent oracles (a rocksalt half-grid and the sealed
 cut-and-project constants). The output clouds are not retained. This proves
-exponential representation/action compression and linear coordinate emission
-for the specialized programs; it does not repair the still-red generic local
-cluster-production transfer gate.
+exponential representation/action compression and linear coordinate emission.
+The IQC emitter does not lift output coordinates or refit the model. Translation,
+substitution, and marked-address expansion still remain distinct production
+kinds behind the common API, so the strict single-production gate stays red.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

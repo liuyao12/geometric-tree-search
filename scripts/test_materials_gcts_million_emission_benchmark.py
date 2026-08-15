@@ -15,6 +15,8 @@ def test_learned_programs_explicitly_emit_and_certify_millions() -> None:
         result.quasicrystal.independent_oracle_digest)
     assert not result.heldout_sites_used_for_learning
     assert not result.physical_potential_used
+    assert result.quasicrystal_gcts_marking_compiled
+    assert not result.coordinate_lift_used_during_emission
     assert result.benchmark_passed
 
 
