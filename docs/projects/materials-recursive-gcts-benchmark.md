@@ -2052,3 +2052,80 @@ red. A future pass must fit the support grammar, dense deployments, and marking
 on a genuinely disjoint training domain, enumerate the same frozen actions in
 every arm, and beat both the parent-only baseline and shuffled controls on an
 unseen outward frontier.
+
+### Spatially disjoint IQC continuation and confirmatory marking
+
+The next gate removes the fitted-geometry ambiguity. The exact IQC oracle is
+used only to prepare immutable colored Cartesian crops; no lift, family label,
+cell, golden-ratio value, or target site crosses into the learner. A sphere of
+radius 11 about `(-16, 0, 0)` supplies 887 training atoms. A radius-7 sphere
+about `(5, -17, 4)` supplies a 231-atom seed, while its radius-11 extension is
+reserved for scoring. The training and scoring crops have zero raw atom IDs in
+common, their centres are 27.313 units apart (greater than the sum of their
+radii), and their squared norms differ, so no origin-fixing proper rotation
+maps one benchmark centre to the other.
+
+`scripts/materials_gcts_frozen_frontier_replay.py` now uses an incremental
+27-cell spatial index, occupied-site map, pose set, and lazy port-orbit cache.
+Exact brute-force parity covers candidate identity, action order, and replay
+certificates. On the earlier exploratory disjoint patch, the frozen primitive
+grammar grows target-blind from 223 atoms:
+
+| actions | proposed atoms | correct atoms | precision | held-out recall |
+|---:|---:|---:|---:|---:|
+| 1 | 2 | 2 | 100% | 0.31% |
+| 10 | 23 | 21 | 91.30% | 3.21% |
+| 100 | 266 | 201 | 75.56% | 30.73% |
+
+Thus the primitive irregular grammar really has unseen exterior actions, but
+unmarked precision decays. The densely promoted macro grammar remains a useful
+negative control: all 3,144,240 composed IQC proposals reproduce already known
+poses, so it has no exterior action yet.
+
+`scripts/materials_gcts_confirmatory_action_consensus_benchmark.py` freezes a
+simple rule after that exploratory patch: rank an entire cluster placement by
+the sum of normalized train-production frequency and the minimum live support
+for any atom it would emit. Live support counts distinct candidate poses, so it
+is a finite GCTS connection/overlap marking rather than a potential. The rule,
+100-action budget, candidate geometry, and 31 degree-preserving bipartite
+incidence shuffles are frozen before the confirmatory target crop is built. A
+public radius-11 boundary censors unscored exterior proposals before labels.
+
+| confirmatory arm | exact actions in first 100 | wrong emitted-site counts | work to recover the same 177 correct sites |
+|---|---:|---:|---:|
+| frequency + GCTS consensus | **97** | **4** | **99 proposals + 3 backtracks** |
+| frequency only | 90 | 14 | 145 + 24 |
+| consensus only | 95 | 6 | 240 + 44 |
+| 31 degree-preserving shuffles | at most 93 | at least 9 | best total 151 |
+
+Exact-action, wrong-site, and matched-work empirical p-values are each
+`1 / 32 = 0.03125`. This is the first sealed result in this pipeline where the
+GCTS marking itself significantly improves whole-cluster search ordering.
+Invalid actions are scorer-labelled for the ablation; it is an ordering test,
+not a claim that every wrong proposal is immediately observable online.
+
+`scripts/materials_gcts_batch_frontier_search.py` supplies the corresponding
+target-free executor. Each wave freezes the current candidates, computes
+whole-placement consensus, and commits a mutually compatible antichain; only
+those accepted occurrences feed the next wave. With the strict action-level
+threshold ratio `15 / 21` learned on the training patch, the confirmatory run
+accepts `3, 17, 4, 30, 5` clusters over five waves and emits 109 / 109 exact
+novel atoms (16.62% held-out recall). Fixed diagnostic thresholds expose the
+trade-off: zero threshold emits 409 / 435 correct, while 0.5 emits 312 / 320.
+The exact five-wave result is genuine self-fed finite continuation. Its
+nonstationary wave counts do not certify exponential growth; promotion of
+these accepted action graphs is the next clusters-of-clusters gate.
+
+`scripts/materials_gcts_action_macro_promotion.py` now performs that promotion
+without a scorer. It renders every accepted occurrence, joins nodes through
+exact colored overlap or a witnessed shared-parent attachment, splits connected
+components, and records proper-SE(3) child poses, colored unions, overlap and
+frozen-boundary certificates. On the exact five-wave confirmation, 59 accepted
+placements become eight action macros with child counts
+`3, 17, 3, 1, 26, 4, 4, 1`. All eight exactly cover their accepted nodes and
+pass union, overlap, boundary-port, and antichain audits. Six nontrivial
+components admit stationary canonicalization; each normalized key occurs in
+only one wave. The three-wave recurrence count is therefore zero and no scale
+law is claimed. A synthetic control accepts three translated congruent waves
+and rejects a noncongruent third wave, verifying that this red IQC result is not
+caused by a promoter incapable of detecting recurrence.

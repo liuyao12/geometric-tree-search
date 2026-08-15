@@ -18,6 +18,7 @@ generator of a tree search or GCTS marking policy.
 from __future__ import annotations
 
 import math
+from collections import defaultdict
 from dataclasses import dataclass
 from typing import Callable, Hashable, Mapping, Sequence
 
@@ -231,12 +232,65 @@ def _classify_candidate(
     return overlap, tuple(novel), False
 
 
+class _SpatialSiteIndex:
+    """Incremental exact-radius cell list for occupied replay sites."""
+
+    def __init__(self, sites: Sequence[Site], cell_size: float):
+        self.cell_size = cell_size
+        self.cells = defaultdict(list)
+        self.extend(sites)
+
+    def _cell(self, point: Vector) -> tuple[int, int, int]:
+        return tuple(math.floor(value / self.cell_size)
+                     for value in point)  # type: ignore[return-value]
+
+    def _nearby(self, point: Vector):
+        center = self._cell(point)
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    yield from self.cells.get((
+                        center[0] + dx, center[1] + dy,
+                        center[2] + dz), ())
+
+    def extend(self, sites: Sequence[Site]) -> None:
+        for site in sites:
+            self.cells[self._cell(site[1])].append(site)
+
+    def classify(
+        self, sites: Sequence[Site], overlap_tolerance: float,
+        exclusion_distance: float,
+    ) -> tuple[int, tuple[Site, ...], bool]:
+        overlap = 0
+        novel = []
+        for species, point in sites:
+            nearby = tuple(self._nearby(point))
+            matches = tuple(
+                (known_species, known_point)
+                for known_species, known_point in nearby
+                if math.dist(point, known_point) <= overlap_tolerance)
+            if matches:
+                if any(known_species != species
+                       for known_species, _ in matches):
+                    return 0, (), True
+                overlap += 1
+                continue
+            if any(math.dist(point, known_point) < exclusion_distance
+                   for _, known_point in nearby):
+                return 0, (), True
+            novel.append((species, point))
+        return overlap, tuple(novel), False
+
+
 def enumerate_frontier(
     program: FrozenFrontierProgram,
     placed_occurrences: Sequence[ClusterOccurrence],
     *, explicit_gap_sites: Sequence[Site] = (),
     boundary: RadialBoundary | None = None,
     incoming_ports: Mapping[int, PortKey] | None = None,
+    _occupied_index: _SpatialSiteIndex | None = None,
+    _existing_poses: set[tuple[int, ...]] | None = None,
+    _orbit_cache: dict[int, tuple[tuple[Matrix, Vector], ...]] | None = None,
 ) -> FrontierEnumeration:
     """Enumerate actions solely by composing frozen ports with placed poses."""
     prototypes = {prototype.type_id: prototype
@@ -250,19 +304,28 @@ def enumerate_frontier(
             not all(math.isfinite(value) for value in boundary.origin) or
             not math.isfinite(boundary.outer_radius)):
         raise ValueError("radial boundary must be finite with positive radius")
-    occupied = _placed_sites(
-        program, placed_occurrences, explicit_gap_sites)
-    existing_poses = {_pose_key(occurrence, program.overlap_tolerance)
-                      for occurrence in placed_occurrences}
+    occupied_index = _occupied_index
+    if occupied_index is None:
+        occupied_index = _SpatialSiteIndex(_placed_sites(
+            program, placed_occurrences, explicit_gap_sites),
+            program.exclusion_distance)
+    existing_poses = (_existing_poses if _existing_poses is not None else
+                      {_pose_key(occurrence, program.overlap_tolerance)
+                       for occurrence in placed_occurrences})
+    orbit_cache = _orbit_cache if _orbit_cache is not None else {}
     candidates = {}
     attempted = duplicates = conflicts = insufficient = interior = outside = 0
     for parent in placed_occurrences:
         parent_prototype = prototypes[parent.type_id]
         for production in productions_by_parent.get(parent.type_id, ()):
             child_prototype = prototypes[production.child_type]
-            for relative_rotation, relative_translation in expand_port_orbit(
+            orbit = orbit_cache.get(production.production_id)
+            if orbit is None:
+                orbit = expand_port_orbit(
                     parent_prototype, child_prototype, production.port,
-                    program.overlap_tolerance):
+                    program.overlap_tolerance)
+                orbit_cache[production.production_id] = orbit
+            for relative_rotation, relative_translation in orbit:
                 attempted += 1
                 rotation = matmul(parent.rotation, relative_rotation)
                 translation = _add(
@@ -281,8 +344,8 @@ def enumerate_frontier(
                         for _, point in rendered):
                     outside += 1
                     continue
-                overlap, novel, conflict = _classify_candidate(
-                    rendered, occupied, program.overlap_tolerance,
+                overlap, novel, conflict = occupied_index.classify(
+                    rendered, program.overlap_tolerance,
                     program.exclusion_distance)
                 if conflict:
                     conflicts += 1
@@ -356,6 +419,14 @@ def replay_frontier(
         for index, occurrence in enumerate(seed.occurrences)]
     oriented_initial = _placed_sites(program, placed)
     initial_sites = _placed_sites(program, placed, seed.explicit_gap_sites)
+    occupied_by_key = {
+        _site_key(site, program.overlap_tolerance): site
+        for site in initial_sites}
+    occupied_index = _SpatialSiteIndex(
+        initial_sites, program.exclusion_distance)
+    existing_poses = {_pose_key(occurrence, program.overlap_tolerance)
+                      for occurrence in placed}
+    orbit_cache = {}
     accepted = []
     attempted = conflicts = outside = rounds = 0
     incoming_ports: dict[int, PortKey] = {}
@@ -363,7 +434,9 @@ def replay_frontier(
     for _ in range(maximum_steps):
         frontier = enumerate_frontier(
             program, placed, explicit_gap_sites=seed.explicit_gap_sites,
-            boundary=boundary, incoming_ports=incoming_ports)
+            boundary=boundary, incoming_ports=incoming_ports,
+            _occupied_index=occupied_index,
+            _existing_poses=existing_poses, _orbit_cache=orbit_cache)
         rounds += 1
         attempted += frontier.attempted_poses
         conflicts += frontier.conflicting_placements
@@ -373,12 +446,22 @@ def replay_frontier(
             break
         candidate = (min(frontier.candidates, key=ranker)
                      if ranker is not None else frontier.candidates[0])
-        placed.append(ClusterOccurrence(
+        occurrence = ClusterOccurrence(
             len(placed), candidate.child_type,
-            candidate.rotation, candidate.translation))
+            candidate.rotation, candidate.translation)
+        placed.append(occurrence)
+        existing_poses.add(_pose_key(
+            occurrence, program.overlap_tolerance))
+        new_sites = []
+        for site in candidate.novel_sites:
+            key = _site_key(site, program.overlap_tolerance)
+            if key not in occupied_by_key:
+                occupied_by_key[key] = site
+                new_sites.append(site)
+        occupied_index.extend(new_sites)
         accepted.append(candidate.production_id)
         incoming_ports[len(placed) - 1] = candidate.outgoing_port
-    sites = _placed_sites(program, placed, seed.explicit_gap_sites)
+    sites = tuple(occupied_by_key[key] for key in sorted(occupied_by_key))
     return ReplayResult(
         len(seed.occurrences), tuple(placed), initial_sites,
         len(oriented_initial), len(seed.explicit_gap_sites), sites,
