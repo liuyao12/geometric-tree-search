@@ -1823,3 +1823,59 @@ generic task: learn a lower-cardinality bounded
 section/backoff over oriented ports, then replay frozen productions at a live
 frontier. The common recursive selector still emits zero held-out Cd--Yb sites;
 no representation-transfer number here is reported as autonomous continuation.
+
+### Target-blind frontier replay
+
+`scripts/materials_gcts_frozen_frontier_replay.py` closes an important causal
+gap between vocabulary transfer and growth. Fitting detaches only proper
+cluster prototypes and train-admitted overlap ports. Replay receives that
+artifact, already placed occurrences, explicit residual atoms, and an optional
+public radial boundary. It cannot enumerate supports or fit poses against a
+target. Candidate positions are obtained only by composing a frozen relative
+SE(3) port with a placed pose; held-out atoms enter the separate scorer after
+the run.
+
+The cross-family one-step gate deliberately distinguishes three questions:
+
+| system | frozen productions | sealed candidates | greedy novel / correct | best correct atoms among the same candidates | conclusion |
+|---|---:|---:|---:|---:|---|
+| NaCl, 216 -> symmetric 5,832-site scorer crop | 1,424 | 33 | 1 / 1 | 6 | grammar has an exterior action; policy is weak |
+| ideal IQC, 507 -> 2,229 | 896 | 0 | 0 / 0 | 0 | missing exterior production |
+| off-centre Cd--Yb, 506 -> 1,056 | 11,870 | 52 | 3 / 3 | 19 | grammar has useful actions; policy and recall are weak |
+
+The oracle column is computed only after target-blind enumeration and never
+selects the replayed action. It is a ceiling on what a marking could achieve
+with the exact frozen action set. NaCl uses a symmetric explicit oracle crop;
+the previous positive-octant replication incorrectly penalized a valid
+outward move on the omitted side. One correct action is not a continuation
+pass: Cd--Yb recall is only 0.545%, and the ideal IQC cannot move at all.
+
+### Lower-cardinality bounded port marking
+
+`scripts/materials_gcts_bounded_port_marking.py` removes proper-prototype IDs
+from the marking state and action abstraction. Its bounded local tokens use
+support size and species histogram, overlap composition/count, normalized
+translation, proper-rotation angle, and the incoming-to-outgoing angle in the
+shared cluster frame. Exact port IDs remain the candidate actions and stable
+tie-breaks. Tables are capped at two incoming ports, 32 exact states, and 64
+one-port backoff states, with minimum train support 32.
+
+Scientific scoring uses larger frozen windows, not an interleaved occurrence
+split. Target relations are admitted only when their canonical pose is already
+one of the train-frozen port keys. Marked, unmarked, and shuffled-label arms
+have identical candidate digests.
+
+| system | raw ports -> abstract action states | target decisions | exact / backoff coverage | mean checks marked / unmarked / shuffle median | gain over unmarked |
+|---|---:|---:|---:|---:|---:|
+| NaCl | 1,424 -> 468 | 352 | 1.42% / 4.26% | 113.18 / 114.20 / 114.98 | 1.009x |
+| ideal IQC | 896 -> 411 | 360 | 0% / 39.44% | 26.28 / 27.86 / 26.28 | 1.060x |
+| Cd--Yb | 11,870 -> 4,183 | 258 | 0% / 0% | 132.44 / 132.44 / 132.44 | 1.000x |
+
+The IQC improvement is exactly reproduced by shuffled labels, and Cd--Yb has
+no transferred marking context. The causal gate therefore stays red. The next
+generic implementation target is a sparse recurring port-graph grammar:
+reduce the redundant overlapping occurrence graph, mine exact port-labelled
+subgraphs with SE(3) cycle consistency, promote their boundary ports, and
+admit a stationary recursive production only after the normalized rule is
+observed at two adjacent learned scales. Frozen target enumeration remains
+scoring-only throughout that promotion loop.

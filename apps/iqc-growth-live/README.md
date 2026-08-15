@@ -616,4 +616,24 @@ slightly, but does not beat shuffled-label controls for either quasicrystal.
 Continuation, hierarchy depth, and meaningful marking speedup therefore remain
 explicitly red.
 
+The next architectural boundary is now executable rather than aspirational.
+`materials_gcts_frozen_frontier_replay.py` detaches prototypes and admitted
+proper-SE(3) ports from training, then generates frontier candidates solely by
+composition with already placed occurrences. Held-out atoms are accepted only
+by a separate scorer after replay. A public radial boundary rejects and counts
+out-of-domain placements; unoriented residual atoms remain explicit and take
+part in compatibility checks. In the one-step gate, greedy replay emits one
+correct NaCl atom and three correct Cd--Yb atoms. Post-hoc oracle scoring of the
+same sealed candidates finds a six-atom NaCl action and a nineteen-atom Cd--Yb
+action. The ideal IQC has no exterior candidate, cleanly separating a grammar
+failure from a ranking failure.
+
+A second bounded marking replaces prototype IDs with local support-size and
+species histograms, overlap chemistry, normalized translation and rotation,
+and incoming-to-outgoing angle bins. It reduces raw port classes from
+1,424/896/11,870 to 468/411/4,183 static action states for NaCl/IQC/Cd--Yb,
+but frozen-target gains remain only 1.009x, 1.060x, and 1.000x over the
+unmarked arm; IQC ties shuffled labels and Cd--Yb has zero context coverage.
+This remains a red causal marking result.
+
 Serve the repository root and open `/apps/iqc-growth-live/`.
