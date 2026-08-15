@@ -21,8 +21,9 @@ from materials_gcts_icosahedral_modelset import (
     infer_model, learned_species, lift_point, project, star_vectors,
     vector_norm)
 from materials_gcts_metric_port_atlas import (
-    MetricPortAtlas, PortPairSection, pair_section_frontier_width,
-    pair_section_sites, propose_with_metric_ports)
+    MetricPortAtlas, PortPairSection, fit_metric_port_atlas,
+    fit_port_pair_section, pair_section_frontier_width, pair_section_sites,
+    propose_with_metric_ports)
 from materials_gcts_recursive_connections import (
     LocalClusterType, local_cluster_types, map_to_prototypes, point_key)
 
@@ -234,6 +235,61 @@ def compile_overlap(seed: AtomicConfiguration, scale: float,
         rule.to_canonical)
     return GeometryInstruction("overlap_section", OverlapPayload(
         scale, radial_edges, atlas, pair_section, seed_minimum_votes, color))
+
+
+def compile_metric_overlap_from_seed(
+        seed: AtomicConfiguration) -> GeometryInstruction:
+    """Discover and compile an overlap program without a family label.
+
+    Radial descriptors are expressed in units of the observed median nearest
+    neighbor distance.  The dimensionless boundaries are generic shell bins,
+    not material-specific distances.  The recursive scale and internal section
+    are accepted only when ``discover_rule`` finds them from the same seed.
+    """
+    from materials_gcts_parametric_recursive import discover_rule
+
+    rule = discover_rule(seed)
+    if (rule.family != "internal_section_inflation" or rule.scale is None or
+            rule.origin is None):
+        raise ValueError("seed does not admit an internal-section overlap rule")
+    nearest = tuple(min(math.dist(point, other)
+                        for other_index, other in enumerate(seed.positions)
+                        if other_index != index)
+                    for index, point in enumerate(seed.positions))
+    nearest_shells = Counter(round(distance, 5) for distance in nearest)
+    minimum_shell_support = max(2, math.ceil(.05 * len(nearest)))
+    recurrent_shells = tuple(distance for distance, support in
+                             nearest_shells.items()
+                             if support >= minimum_shell_support)
+    if not recurrent_shells:
+        raise ValueError("seed has no recurrent nearest-neighbor shell")
+    unit_distance = min(recurrent_shells)
+    radial_edges = tuple(unit_distance * ratio for ratio in
+                         (1.31, 1.97, 2.62, 3.56))
+    types = local_cluster_types(seed.positions, seed.species, radial_edges)
+    atlas = fit_metric_port_atlas(
+        seed.positions, types, seed.positions, rule.scale,
+        target_colors=seed.species,
+        observable_center=rule.origin,
+        # The outermost observed site is inside, rather than exactly on, the
+        # unknown sampling boundary. A small learned-shell padding prevents
+        # treating valid boundary proposals as observed negatives.
+        observable_radius=(max(math.dist(point, rule.origin)
+                               for point in seed.positions) +
+                           .1 * unit_distance))
+    section = fit_port_pair_section(
+        atlas, seed.positions, types, seed.positions)
+    proposals = propose_with_metric_ports(
+        atlas, seed.positions, types)
+    known = {point_key(point) for point in seed.positions}
+    pair_sites = pair_section_sites(
+        section, atlas, seed.positions, types)
+    votes = tuple(proposals.votes[point] for point in pair_sites
+                  if point in known)
+    if not votes:
+        raise ValueError("learned overlap program has no seed-supported sites")
+    return compile_overlap(
+        seed, rule.scale, radial_edges, atlas, section, min(votes), rule)
 
 
 def transform_instruction(

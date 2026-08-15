@@ -11,14 +11,11 @@ from materials_gcts_cross_family_transfer_audit import _learn_anchor
 from materials_gcts_fibonacci_3d import PHI, make_input
 from materials_gcts_generic import benchmark_systems
 from materials_gcts_geometry_vm import (
-    compile_anchor, compile_overlap, compile_translation)
+    compile_anchor, compile_metric_overlap_from_seed, compile_translation)
 from materials_gcts_icosahedral_modelset import (
     HIDDEN_UNIT, oracle_patch, oracle_patch_fast)
-from materials_gcts_metric_port_atlas import (
-    fit_metric_port_atlas, fit_port_pair_section, pair_section_sites,
-    propose_with_metric_ports)
 from materials_gcts_parametric_recursive import discover_rule
-from materials_gcts_recursive_connections import local_cluster_types, point_key
+from materials_gcts_recursive_connections import point_key
 from materials_gcts_port_cover_graph import compile_instruction, execute_graph
 
 
@@ -102,22 +99,7 @@ def _fibonacci(return_instruction=False):
 
 def _compile_iqc_instruction():
     seed, _ = oracle_patch(3, 9.0)
-    edges = (1.4, 2.1, 2.8, 3.81)
-    types = local_cluster_types(seed.positions, seed.species, edges)
-    atlas = fit_metric_port_atlas(
-        seed.positions, types, seed.positions, HIDDEN_UNIT,
-        target_colors=seed.species, observable_radius=9.0)
-    section = fit_port_pair_section(atlas, seed.positions, types,
-                                    seed.positions)
-    proposals = propose_with_metric_ports(atlas, seed.positions, types)
-    targets = set(map(point_key, seed.positions))
-    pair_sites = pair_section_sites(section, atlas, seed.positions, types)
-    minimum = min(proposals.votes[point] for point in pair_sites
-                  if point in targets)
-    instruction = compile_overlap(
-        seed, HIDDEN_UNIT, edges, atlas, section, minimum,
-        discover_rule(seed))
-    return seed, instruction
+    return seed, compile_metric_overlap_from_seed(seed)
 
 
 def _iqc(return_instruction=False):

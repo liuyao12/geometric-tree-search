@@ -1582,9 +1582,9 @@ covered child support grows.
 
 The promoted grammar contains 789 ports and 13,111 compatible port pairs. It is
 then frozen and self-fed at three increasing port scales. Exact colored
-additions are `3,234 → 8,384 → 17,192`, successive factors 2.59× and 2.05×
-(geometric mean 2.31×). The cloud reaches 30,499 atoms from the 507-atom seed.
-Every one of the 28,810 promoted additions is independently certified against
+additions are `3,234 → 8,924 → 17,674`, successive factors 2.76× and 1.98×
+(geometric mean 2.34×). The cloud reaches 31,521 atoms from the 507-atom seed.
+Every one of the 29,832 promoted additions is independently certified against
 the hidden model, which is a post-hoc scorer only. Candidate acceptance and
 chemistry use the carried three-component marks.
 
@@ -1593,6 +1593,13 @@ yet a million-atom or cross-family result: vocabulary size (789 ports) is high
 enough that description length must be compared with a flat generator, and
 the same promotion code must transfer to the crystal and second-quasicrystal
 controls before it can satisfy the common benchmark.
+
+The seed compiler no longer receives the IQC's physical unit or hand-written
+radial cutoffs. It discovers the inflation rule, clusters the observed
+nearest-neighbor distances, selects the smallest shell with at least 5% seed
+support, expresses four descriptor radii in that learned unit, and treats the
+outer observation boundary as censored. This family-blind route recovers the
+same compact 73-port seed atlas and 271 port-pair section.
 
 The bounded descriptor and port scans now use exact spatial hashes. Their
 runtime depends on local density and learned port radius rather than scanning

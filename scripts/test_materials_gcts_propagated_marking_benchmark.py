@@ -1,11 +1,22 @@
 import unittest
 
 import materials_gcts_propagated_marking as propagated
+from materials_gcts_geometry_vm import compile_metric_overlap_from_seed
 from materials_gcts_geometry_vm_benchmark import _compile_iqc_instruction
+from materials_gcts_icosahedral_modelset import oracle_patch
 from materials_gcts_propagated_marking_benchmark import evaluate
 
 
 class PropagatedMarkingBenchmarkTest(unittest.TestCase):
+    def test_overlap_compiler_derives_scale_and_shells_from_seed(self):
+        seed, _ = oracle_patch(3, 9.0)
+        instruction = compile_metric_overlap_from_seed(seed)
+        self.assertEqual(instruction.opcode, "overlap_section")
+        self.assertEqual(len(instruction.payload.atlas.accepted_ports), 73)
+        self.assertEqual(len(instruction.payload.section.accepted_pairs), 271)
+        self.assertEqual(instruction.payload.seed_minimum_votes, 11)
+        self.assertFalse(instruction.family_label_used)
+
     def test_seed_marks_drive_two_exact_recursive_levels(self):
         result = evaluate()
         self.assertEqual(result.training_atoms, 507)
