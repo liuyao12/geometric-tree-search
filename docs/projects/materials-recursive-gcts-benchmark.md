@@ -2032,6 +2032,29 @@ amorphous cloud because neither has three independent recurring colored
 translations. This closes the learned *crystal* stationary benchmark; it does
 not close the generic quasicrystal benchmark.
 
+The hardened full-relation audit asks whether that learned crystal vocabulary
+is also supported by the generic oriented-port representation. A single sparse
+216-atom presentation remains evidence-starved: exact width-eight search admits
+only six size-two macros. The confirmatory audit therefore uses two independent
+bounded 216-atom presentations. Their complete learned relation graph has
+29,988 relations joining 52 cells and admits maximum child width eight. The
+exported macro has 8 children, 24 directed ports, a 52-atom colored union, 2
+atom-disjoint occurrences, and structural MDL saving 30.
+
+The relation program is frozen before recursive replay. Across three learned
+factors the independent witnessed-relation totals are `1,478 / 750 / 86`; the
+strong chemistry, chirality, directed-incidence, exact-population, and
+stationarity contract accepts the common production with learned scale 2.
+Input permutation and global proper-SE(3) metamorphic tests pass, as do the
+ideal-IQC, amorphous, and ternary controls.
+
+One limitation remains explicit. The radix and child-offset vocabulary is
+proposed by the positions-only stationary grid learner and then validated
+against frozen port relations. A pure-port learner that discovers this closure
+vocabulary without the grid proposal is future work. The certificate therefore
+strengthens the separate crystal baseline without changing the red generic IQC
+stationarity result.
+
 ### Sparse evidence, dense deployment, and the current marking result
 
 `scripts/materials_gcts_dense_macro_matching.py` preserves the nearly
@@ -2130,81 +2153,90 @@ law is claimed. A synthetic control accepts three translated congruent waves
 and rejects a noncongruent third wave, verifying that this red IQC result is not
 caused by a promoter incapable of detecting recurrence.
 
-### Recurring action subclusters across independent patches
+### Canonical IQC hierarchy: action history versus atomic re-clustering
 
-Whole-wave components are too coarse to be the only hierarchy candidates.
-`scripts/materials_gcts_action_submacro_mining.py` therefore enumerates every
-connected induced subgraph of two through five accepted cluster placements.
-Its canonical key retains cluster types, directed connection semantics, the
-complete symmetry-quotiented proper-SE(3) pair-pose matrix, and the exact
-colored atomic union. Admission requires two nearly node- and atom-disjoint
-occurrences and a positive description-length saving. Patch namespaces prevent
-reused local node IDs or coordinates from fabricating overlap between samples.
+The action-history route remains a useful negative baseline. Exact connected
+subgraphs retain colored unions, directed port incidence, and
+symmetry-quotiented proper-SE(3) relative poses. With the corrected invariant
+canonicalizer it admits 11 types; every type has maximum dense multiplicity two,
+and promotion reaches only two positive levels. Previously reported
+action-history counts are superseded and must not be used as the current
+recursion evidence.
 
-The exact five-wave confirmation is an important negative control: all 5,254
-connected candidates have different canonical keys. Repetition therefore
-cannot be inferred from one visually coherent growth trace. A separate
-target-free corpus freezes the same grammar and executor on six predeclared
-radius-7 seeds with radius-11 public boundaries. The six patches are pairwise
-atom-disjoint and disjoint from the 887-atom training crop; posthoc errors are
-retained rather than filtered out. Across 311 accepted action edges, the miner
-finds:
+The stronger history-free route re-clusters the atoms after growth instead of
+requiring a repeated move history. Six patch-local clouds contain 2,064 atoms.
+Seventy-eight repeated irregular support types have 1,122 occurrences; explicit
+gap clusters cover the remaining atoms, giving a complete cover. No action ID,
+material-family label, unit cell, or target enters discovery. Boundary-aware
+recursive promotion produces:
 
-| quantity | result |
-|---|---:|
-| connected induced candidates | 3,844 |
-| exact canonical classes | 3,797 |
-| admitted positive-MDL submacro types | 47 |
-| types supported by two independent patches | 46 |
-| admitted sizes (2 / 3 / 4 / 5 children) | 18 / 14 / 10 / 5 |
+| route | exact-support quotient types by pass | claim |
+|---|---|---|
+| one representative per geometry class | `73 -> 17 -> 5 -> 3 -> 2 -> 1 -> 0` | six positive train-compression levels |
+| mutually exclusive exact derivations retained | `73 -> 17 -> 6 -> 3 -> 2 -> 1 -> 0` | more exact alternatives, same depth |
 
-All 47 admitted unions pass the finite colored proper-SE(3) prototype gate.
-This is the first target-free reusable cluster-of-clusters vocabulary in the
-executed IQC path.
+The strict production comparison successively audits topology/arity, species
+identity and decoration chirality, directed port semantics, normalized proper-
+SE(3) poses, and exact nonnegative-integer population substitution. No common
+production survives the required three consecutive levels with equal learned
+adjacent scales. Stationarity therefore remains red despite the deeper train
+compression.
 
-`scripts/materials_gcts_action_submacro_promotion.py` now turns that vocabulary
-into the same generic oriented occurrence/port contract used at lower levels.
-All 47 prototypes and all 94 dense occurrences fit their witnessed colored
-unions with zero prototype or pose failures. The promoted atlas contains 1,694
-overlap ports / 3,388 relation witnesses plus 1,352 separately carried boundary
-ports / 2,704 relation witnesses. The sparse reducer shrinks the overlap graph
-from 94 nodes / 1,694 edges to 12 / 9 before the next mining pass.
+### Sealed transfer of the history-free hierarchy
 
-| recursive pass | positive-MDL macros | exact-support quotient types |
-|---:|---:|---:|
-| first promoted pass | 6 | 3 |
-| second promoted pass | 2 | 1 |
-| third promoted pass | 0 | 0 |
+Eight predeclared, mutually raw-ID-disjoint grown patches are split five for
+training and three for heldout scoring. Frozen primitive supports cover all
+1,248 / 1,248 held-out atoms, including explicit gaps. At the first promoted
+level, 256 of 259 frozen quotient types replay and their exact unions still
+cover every held-out atom. The three absent types are scientifically decisive:
+the frozen type map is not preserved, so recursive transfer stops at level one
+and no six-level heldout claim is made.
 
-This is genuine two-level recursive compression after the action-subcluster
-vocabulary. It is not yet exponential: the third recursively mined level is
-empty, so there is no three-level production sequence on which to evaluate a
-stationary scale law. Boundary relations are preserved for execution and later
-promotion, but the current generic reducer uses overlap relations as graph
-edges; admitting witnessed non-overlap boundary edges is a concrete next
-representation test.
+This separates three claims that should not be merged:
 
-A complementary clean training corpus uses known atoms only inside the same
-887-atom training cloud. Five radius-5 seeds and radius-7 public domains produce
-141 exact actions, 173 nodes, 56 cluster types, and 118 production types; 317
-unique emitted training atoms cover 35.74% of the cloud. No held-out patch or
-label enters this corpus. It supplies supervised recurrence evidence without
-turning the deployment patches into training data. Exact 2–5-node mining over
-these traces enumerates 19,547 candidates / 18,931 semantic classes and admits
-344 positive-MDL types after requiring different patches and at most 10%
-colored-atom overlap. Their size histogram is 20 / 53 / 111 / 160. Every type
-has exactly two independent occurrences and none reaches three patches, so this
-large clean vocabulary is deliberately treated as weak two-copy evidence, not
-as stationary recursion.
+| claim | status |
+|---|---|
+| train compression on re-clustered grown atoms | green through six positive quotient levels |
+| primitive heldout support/atom coverage | green, 1,248 / 1,248 |
+| promoted type-map transfer and stationary/exponential growth | red; 3 / 259 level-one types missing and zero stationary witnesses |
 
-`scripts/materials_gcts_recurring_action_submacro_audit.py` defines the final
-claim boundary. A stationary witness must preserve one normalized connected
-chemistry/chirality/port production over three consecutive positive-MDL levels,
-with equal learned adjacent scales, equal inferred nonnegative-integer chemical
-population substitution matrices, and at least two spatially independent
-occurrences at every level. One-scale copies, disconnected patches, amorphous
-perturbations, unequal scales or substitutions, overlapping evidence, and
-target leakage all fail controls. The current real ideal-IQC hierarchy has only
-two eligible promoted levels, zero common three-level keys, and zero stationary
-witnesses. Thus finite growth, causal marking, and a reusable submacro
-vocabulary are green; generic stationary/exponential IQC growth remains red.
+### Train-only hierarchy selection and semantic controls
+
+`scripts/materials_gcts_hierarchy_selection_environment.py` exposes a bounded
+future-RL interface: state is the current exact promoted program plus retained
+derivation alternatives; actions choose a train-admitted quotient subset or
+derivation policy; reward combines exact cover, MDL saving, and future witnessed
+port connectivity. Stationarity is an external gate, never a branch label.
+
+A deterministic width-three beam over a fixed eight-level horizon chooses the
+alternative-consistent policy. Relative to the all-representative greedy path,
+it changes promoted occurrence retention from
+`153 -> 34 -> 10 -> 6 -> 4 -> 2` to
+`324 -> 78 -> 26 -> 12 -> 8 -> 4` and improves the fixed-horizon score from
+`-63.205` to `-34.592`. It still reaches only six positive levels and produces
+no stationary witness. The result is therefore improved hierarchy selection,
+not avoidance of evidence exhaustion. Promoted heldout matching also remains
+explicitly unimplemented rather than incorrectly invoking the primitive
+occurrence matcher.
+
+The guarded semantic-quotient experiment preserves every exact proper-SE(3)
+terminal as a replay alternative, but the exact quotient is rejected by the
+train-only shuffle and perturbation controls.
+Approximate connection grammars are labelled approximate and cannot satisfy the
+strict exact-recursion gate.
+
+### Width-eight search and the hardened NaCl relation certificate
+
+Cached partition refinement removes factorial child-order enumeration while
+preserving exact permutation and proper-SE(3) invariance. The apparent earlier
+negative was an evidence issue: one sparse 216-atom audit finds only six
+size-two macros. With two independent bounded presentations and all 29,988
+learned relations retained, the search admits child width eight and exports the
+`8 children / 24 directed ports / 52 atoms / 2 atom-disjoint occurrences /
+MDL 30` production summarized in the crystal section above. Frozen-relation
+replay supplies `1,478 / 750 / 86` witnesses over three learned factors and the
+strong stationary signature recurs at scale 2.
+
+This does not erase the discovery boundary: the positions-only grid learner
+still proposes radix and offsets before the port graph validates them. Pure-
+port closure learning remains open, and the IQC stationary result remains red.

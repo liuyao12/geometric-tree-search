@@ -11,7 +11,6 @@ prescribed hierarchy scale.
 
 from __future__ import annotations
 
-import itertools
 import json
 import math
 from dataclasses import dataclass
@@ -125,29 +124,56 @@ def _proper_geometry_code(sites, scale: float, tolerance: float):
         for index, (species, point) in enumerate(sites))
     fingerprint_rank = {value: rank for rank, value in
                         enumerate(sorted(set(fingerprints)))}
-    best_invariant = None
-    anchors = []
-    for first, second, third in itertools.permutations(range(len(sites)), 3):
-        origin = sites[first][1]
-        first_vector = _subtract(sites[second][1], origin)
-        second_vector = _subtract(sites[third][1], origin)
-        if _norm(_cross(first_vector, second_vector)) <= tolerance * scale:
-            continue
-        invariant = (
-            fingerprint_rank[fingerprints[first]],
-            fingerprint_rank[fingerprints[second]],
-            fingerprint_rank[fingerprints[third]],
+    # Recover exactly the same lexicographically minimal six-field anchor
+    # invariant as exhaustive O(n^3) permutation enumeration, but filter one
+    # field at a time.  In symmetric point clouds the minimum-distance pair
+    # filter removes almost every pair before third-anchor expansion.
+    pairs = []
+    threshold = tolerance * scale
+    for first in range(len(sites)):
+        for second in range(len(sites)):
+            if first == second:
+                continue
+            first_vector = _subtract(
+                sites[second][1], sites[first][1])
+            if any(third != first and third != second and
+                   _norm(_cross(first_vector, _subtract(
+                       sites[third][1], sites[first][1]))) > threshold
+                   for third in range(len(sites))):
+                pairs.append((first, second))
+    if not pairs:
+        raise ValueError("prototype needs a non-collinear proper frame")
+    rank_pair = min((fingerprint_rank[fingerprints[first]],
+                     fingerprint_rank[fingerprints[second]])
+                    for first, second in pairs)
+    pairs = [(first, second) for first, second in pairs
+             if (fingerprint_rank[fingerprints[first]],
+                 fingerprint_rank[fingerprints[second]]) == rank_pair]
+    third_rank = min(
+        fingerprint_rank[fingerprints[third]]
+        for first, second in pairs for third in range(len(sites))
+        if third != first and third != second and
+        _norm(_cross(_subtract(sites[second][1], sites[first][1]),
+                     _subtract(sites[third][1], sites[first][1]))) > threshold)
+    triples = [(first, second, third)
+               for first, second in pairs for third in range(len(sites))
+               if third != first and third != second and
+               fingerprint_rank[fingerprints[third]] == third_rank and
+               _norm(_cross(_subtract(sites[second][1], sites[first][1]),
+                            _subtract(sites[third][1],
+                                      sites[first][1]))) > threshold]
+    def distances(anchor):
+        first, second, third = anchor
+        return (
             round(math.dist(sites[first][1], sites[second][1]) /
                   scale / tolerance),
             round(math.dist(sites[first][1], sites[third][1]) /
                   scale / tolerance),
             round(math.dist(sites[second][1], sites[third][1]) /
                   scale / tolerance))
-        if best_invariant is None or invariant < best_invariant:
-            best_invariant = invariant
-            anchors = [(first, second, third)]
-        elif invariant == best_invariant:
-            anchors.append((first, second, third))
+    minimum_distances = min(map(distances, triples))
+    anchors = [anchor for anchor in triples
+               if distances(anchor) == minimum_distances]
     alternatives = []
     for first, second, third in anchors:
         origin = sites[first][1]
@@ -231,14 +257,20 @@ def adapt_macro_type(
         for port in artifact.atlas.ports}
     if len(port_lookup) != len(artifact.atlas.ports):
         raise ValueError("atlas contains duplicate admitted port ids")
+    boundary_lookup = {
+        (port.parent_type, port.child_type, port.symmetry_orbit_key): port
+        for port in getattr(artifact, "boundary_ports", ())}
+    if len(boundary_lookup) != len(getattr(artifact, "boundary_ports", ())):
+        raise ValueError("boundary atlas contains duplicate admitted port ids")
     scale = _macro_scale(macro, tolerance)
     resolved = set()
 
     def port_semantics(raw):
         raw = tuple(raw)
-        if raw not in port_lookup:
+        if raw not in port_lookup and raw not in boundary_lookup:
             raise ValueError("macro port is not admitted by the source atlas")
-        port: OrientedOverlapPort = port_lookup[raw]
+        port = port_lookup.get(raw, boundary_lookup.get(raw))
+        assert port is not None
         parent = prototypes[port.parent_type]
         child = prototypes[port.child_type]
         for type_id, prototype in ((port.parent_type, parent),
@@ -246,11 +278,13 @@ def adapt_macro_type(
             if type_id not in semantics:
                 semantics[type_id] = prototype_semantics(
                     prototype, tolerance=tolerance)
+        overlap_species = getattr(port, "overlap_species", ())
         overlap, _ = _chemistry(tuple(
-            _species(species) for species in port.overlap_species)) \
-            if port.overlap_species else ((), ())
+            _species(species) for species in overlap_species)) \
+            if overlap_species else ((), ())
         key = (
-            "colored-overlap",
+            ("colored-overlap" if raw in port_lookup else
+             "witnessed-boundary"),
             "overlap:" + json.dumps(overlap, separators=(",", ":")),
             "proper-R:" + ",".join(map(str, _matrix_key(
                 port.relative_rotation, tolerance))),

@@ -18,6 +18,8 @@ from materials_gcts_irregular_port_atlas import compile_irregular_port_program
 from materials_gcts_macro_promotion import promote_macro_types
 from materials_gcts_port_graph_macros import mine_port_graph_macros
 from materials_gcts_promoted_type_quotient import quotient_macro_supports
+from materials_gcts_recurring_action_submacro_audit import (
+    PromotedSubmacroLevel, audit_promoted_submacro_levels)
 from materials_gcts_sealed_iqc_causal_marking_benchmark import _crop
 from materials_gcts_sparse_occurrence_graph import reduce_occurrence_graph
 
@@ -33,6 +35,7 @@ class RecursiveActionSubmacroBenchmark:
     promoted_overlap_relations: int
     promoted_boundary_ports: int
     promoted_boundary_relations: int
+    base_dense_occurrence_multiplicity_histogram: tuple[tuple[int, int], ...]
     sparse_source_nodes: int
     sparse_source_edges: int
     sparse_retained_nodes: int
@@ -50,6 +53,16 @@ class RecursiveActionSubmacroBenchmark:
     fourth_level_promoted_occurrences: int
     fourth_level_admitted_types: int
     fourth_level_quotient_types: int
+    boundary_sparse_source_edges: int
+    boundary_sparse_retained_nodes: int
+    boundary_sparse_retained_edges: int
+    boundary_admitted_types_by_level: tuple[int, ...]
+    boundary_quotient_types_by_level: tuple[int, ...]
+    boundary_artifact_occurrences_by_level: tuple[int, ...]
+    boundary_source_edges_by_level: tuple[int, ...]
+    boundary_admitted_occurrence_multiplicities_by_level: tuple[tuple[int, ...], ...]
+    boundary_quotient_promotion_multiplicities_by_level: tuple[tuple[int, ...], ...]
+    boundary_terminated: bool
     three_recursive_mined_levels_available: bool
     strict_stationary_audit_invoked: bool
     stationary: bool
@@ -101,17 +114,62 @@ def evaluate() -> RecursiveActionSubmacroBenchmark:
             fourth_quotient_types = quotient_macro_supports(
                 fourth_mined.macro_types).quotient_types
 
+    boundary_sparse = reduce_occurrence_graph(
+        promoted, include_boundary_relations=True)
+    boundary_artifact = promoted
+    boundary_levels = []
+    boundary_admitted = []
+    boundary_quotients = []
+    boundary_artifact_occurrences = []
+    boundary_source_edges = []
+    boundary_admitted_multiplicities = []
+    boundary_quotient_multiplicities = []
+    boundary_terminated = False
+    for hierarchy_level in range(12):
+        level_sparse = reduce_occurrence_graph(
+            boundary_artifact, include_boundary_relations=True)
+        boundary_mined = mine_port_graph_macros(
+            boundary_artifact, maximum_nodes=3,
+            include_boundary_relations=True)
+        boundary_quotient = quotient_macro_supports(
+            boundary_mined.macro_types)
+        boundary_admitted.append(len(boundary_mined.macro_types))
+        boundary_quotients.append(boundary_quotient.quotient_types)
+        boundary_artifact_occurrences.append(
+            len(boundary_artifact.occurrences))
+        boundary_source_edges.append(level_sparse.source_edges)
+        boundary_admitted_multiplicities.append(tuple(sorted(
+            len(item.occurrences) for item in boundary_mined.macro_types)))
+        boundary_quotient_multiplicities.append(tuple(sorted(
+            len(item.promotion_occurrences or item.occurrences)
+            for item in boundary_quotient.quotient_macros)))
+        if not boundary_quotient.quotient_macros:
+            boundary_terminated = True
+            break
+        boundary_levels.append(PromotedSubmacroLevel(
+            hierarchy_level, boundary_artifact,
+            tuple(boundary_quotient.quotient_macros)))
+        boundary_artifact = promote_macro_types(
+            boundary_artifact, boundary_quotient.quotient_macros,
+            level=boundary_artifact.level + 1)
+    if not boundary_terminated:
+        raise RuntimeError("boundary-recursive hierarchy did not terminate")
+
     # The strict audit consumes three recursively mined MacroType levels.
     # Initial action-submacro admission supplies the promoted vocabulary but
     # is not silently treated as an atlas-resolved MacroType production.
     three_levels = bool(next_quotient.quotient_types and
                         third_quotient_types and fourth_quotient_types)
+    strict_eligible = len(boundary_levels) >= 3
+    strict_result = (audit_promoted_submacro_levels(boundary_levels)
+                     if strict_eligible else None)
     return RecursiveActionSubmacroBenchmark(
         corpus.corpus_digest, len(mined_actions.submacro_types),
         promotion.promoted_types, promotion.promoted_occurrences,
         promotion.namespaced_support_atoms, promotion.overlap_ports,
         promotion.overlap_relations, promotion.boundary_ports,
-        promotion.boundary_relations, sparse.source_nodes,
+        promotion.boundary_relations,
+        ((2, len(mined_actions.submacro_types)),), sparse.source_nodes,
         sparse.source_edges, len(sparse.retained_nodes),
         len(sparse.retained_edges), next_mined.rooted_connected_candidates,
         next_mined.exact_geometry_classes, len(next_mined.macro_types),
@@ -119,8 +177,16 @@ def evaluate() -> RecursiveActionSubmacroBenchmark:
         third_promoted_prototypes, third_promoted_occurrences,
         third_admitted, third_quotient_types,
         fourth_promoted_prototypes, fourth_promoted_occurrences,
-        fourth_admitted, fourth_quotient_types, three_levels,
-        False, False,
+        fourth_admitted, fourth_quotient_types,
+        boundary_sparse.source_edges,
+        len(boundary_sparse.retained_nodes),
+        len(boundary_sparse.retained_edges), tuple(boundary_admitted),
+        tuple(boundary_quotients), tuple(boundary_artifact_occurrences),
+        tuple(boundary_source_edges),
+        tuple(boundary_admitted_multiplicities),
+        tuple(boundary_quotient_multiplicities), boundary_terminated,
+        three_levels or strict_eligible,
+        strict_eligible, bool(strict_result and strict_result.stationary),
         corpus.target_used_during_execution or promotion.target_used or
         promoted.target_used)
 

@@ -76,6 +76,20 @@ class RecurringActionSubmacroAudit:
     reason: str
 
 
+def _topology_signature(macro: Any) -> tuple:
+    """Cheap necessary invariant before expensive prototype semantics."""
+    count = len(macro.node_types)
+    alternatives = []
+    for order in itertools.permutations(range(count)):
+        mapping = {old: new for new, old in enumerate(order)}
+        edges = tuple(sorted((mapping[item.source], mapping[item.target])
+                             for item in macro.edges))
+        boundary = tuple(sorted((mapping[item.node], item.direction)
+                                for item in macro.boundary_slots))
+        alternatives.append((count, edges, boundary))
+    return min(alternatives)
+
+
 def _overlap_fraction(left: frozenset[int], right: frozenset[int]) -> float:
     denominator = min(len(left), len(right))
     return 1.0 if denominator == 0 else len(left & right) / denominator
@@ -124,11 +138,39 @@ def adapt_promoted_submacro_levels(
     """
     records = []
     rejected = []
+    topology_by_level = {
+        level.hierarchy_level: {
+            _topology_signature(macro) for macro in level.submacros
+            if len(macro.node_types) >= 3}
+        for level in levels}
+    eligible_topology_by_level = {level.hierarchy_level: set()
+                                  for level in levels}
+    ordered_levels = sorted(topology_by_level)
+    for hierarchy_level in ordered_levels:
+        if (hierarchy_level + 1 not in topology_by_level or
+                hierarchy_level + 2 not in topology_by_level):
+            continue
+        common = (topology_by_level[hierarchy_level].intersection(
+            topology_by_level[hierarchy_level + 1],
+            topology_by_level[hierarchy_level + 2]))
+        for offset in range(3):
+            eligible_topology_by_level[hierarchy_level + offset].update(common)
     for level in sorted(levels, key=lambda item: item.hierarchy_level):
         semantics_cache = {}
         for ordinal, macro in enumerate(level.submacros):
             macro_id = getattr(macro, "macro_id", ordinal)
             record_id = f"L{level.hierarchy_level}:M{macro_id}"
+            if len(macro.node_types) < 3:
+                rejected.append(RejectedSubmacro(
+                    level.hierarchy_level, record_id,
+                    "stationary production needs at least three children"))
+                continue
+            if (_topology_signature(macro) not in
+                    eligible_topology_by_level[level.hierarchy_level]):
+                rejected.append(RejectedSubmacro(
+                    level.hierarchy_level, record_id,
+                    "topology absent from every consecutive three-level intersection"))
+                continue
             try:
                 adapted = adapter(
                     level.artifact, macro, tolerance=tolerance,

@@ -17,6 +17,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 import math
+from collections import Counter
 from typing import Hashable, Sequence
 
 from materials_gcts_oriented_overlap_ports import (
@@ -39,6 +40,98 @@ class MacroSupportQuotient:
     improper_reflections_merged: bool
     uniform_scale_merged: bool
     target_or_material_metadata_used: bool
+    derivation_classes: tuple["GeometryClassDerivations", ...] = ()
+    alternative_macros: tuple[MacroType, ...] = ()
+
+
+@dataclass(frozen=True)
+class DerivationAlternative:
+    alternative_id: int
+    source_macro_id: int
+    node_types: tuple[int, ...]
+    edges: tuple
+    child_placements: tuple
+    boundary_slots: tuple
+
+
+@dataclass(frozen=True)
+class SupportDerivationAlternatives:
+    atom_indices: tuple[int, ...]
+    alternatives: tuple[tuple[int, MacroOccurrence], ...]
+
+
+@dataclass(frozen=True)
+class GeometryClassDerivations:
+    geometry_class_id: int
+    source_macro_ids: tuple[int, ...]
+    alternatives: tuple[DerivationAlternative, ...]
+    occurrences: tuple[SupportDerivationAlternatives, ...]
+
+
+@dataclass(frozen=True)
+class DerivationAlternativeMarking:
+    maximum_context_order: int
+    exact_scores: tuple[tuple[tuple[int, tuple], tuple[tuple[int, int], ...]], ...]
+    marginal_scores: tuple[tuple[int, tuple[tuple[int, int], ...]], ...]
+    training_samples: int
+    target_used: bool
+
+
+def fit_derivation_alternative_marking(
+        quotient: MacroSupportQuotient, *, maximum_context_order: int = 2,
+) -> DerivationAlternativeMarking:
+    """Fit a bounded train-only policy over already fixed exact alternatives."""
+    if maximum_context_order < 0:
+        raise ValueError("context order cannot be negative")
+    exact = {}
+    marginal = {}
+    samples = 0
+    for geometry in quotient.derivation_classes:
+        alternatives = {item.alternative_id: item for item in
+                        geometry.alternatives}
+        for occurrence in geometry.occurrences:
+            for alternative_id, _ in occurrence.alternatives:
+                alternative = alternatives[alternative_id]
+                incoming_values = [(
+                    slot.direction, getattr(slot, "port_key",
+                                            getattr(slot, "port", ())))
+                    for slot in alternative.boundary_slots
+                    if slot.direction == "incoming"]
+                incoming = tuple(sorted(incoming_values, key=repr))
+                context = incoming[:maximum_context_order]
+                exact.setdefault((geometry.geometry_class_id, context),
+                                 Counter())[alternative_id] += 1
+                marginal.setdefault(geometry.geometry_class_id,
+                                    Counter())[alternative_id] += 1
+                samples += 1
+    return DerivationAlternativeMarking(
+        maximum_context_order,
+        tuple(sorted((key, tuple(sorted(value.items())))
+                     for key, value in exact.items())),
+        tuple(sorted((key, tuple(sorted(value.items())))
+                     for key, value in marginal.items())),
+        samples, False)
+
+
+def rank_derivation_alternatives(
+        quotient: MacroSupportQuotient,
+        marking: DerivationAlternativeMarking, geometry_class_id: int,
+        incoming_context: Sequence = (),
+) -> tuple[int, ...]:
+    """Rank fixed alternatives; never changes their geometry or incidence."""
+    geometry = next((item for item in quotient.derivation_classes
+                     if item.geometry_class_id == geometry_class_id), None)
+    if geometry is None:
+        raise ValueError("unknown geometry class")
+    context = tuple(sorted(incoming_context, key=repr))[
+        :marking.maximum_context_order]
+    exact = dict(marking.exact_scores)
+    marginal = dict(marking.marginal_scores)
+    exact_count = dict(exact.get((geometry_class_id, context), ()))
+    marginal_count = dict(marginal.get(geometry_class_id, ()))
+    return tuple(sorted((item.alternative_id for item in geometry.alternatives),
+                        key=lambda item: (-exact_count.get(item, 0),
+                                          -marginal_count.get(item, 0), item)))
 
 
 def _species_key(value: Hashable) -> str:
@@ -119,19 +212,47 @@ def quotient_macro_supports(
 
     quotient = []
     exact_classes = []
+    derivation_classes = []
+    alternative_macros = []
     for new_id, group in enumerate(groups):
         representative = min(group, key=lambda item: (
             item.dictionary_tokens, -item.mdl_saving,
             -len(item.promotion_occurrences or item.occurrences),
             item.macro_id))
-        promotion = _dedupe_occurrences(tuple(
+        all_derivations = tuple(
             occurrence for member in group
             for occurrence in (member.promotion_occurrences or
-                               member.occurrences)))
+                               member.occurrences))
+        promotion = _dedupe_occurrences(all_derivations)
         quotient.append(replace(
             representative, macro_id=new_id,
-            promotion_occurrences=promotion))
+            promotion_occurrences=promotion,
+            promotion_derivations=all_derivations))
         exact_classes.append(tuple(item.macro_id for item in group))
+        alternatives = tuple(DerivationAlternative(
+            index, member.macro_id, member.node_types, member.edges,
+            member.child_placements, member.boundary_slots)
+                             for index, member in enumerate(sorted(
+                                 group, key=lambda item: item.macro_id)))
+        alternative_id = {item.source_macro_id: item.alternative_id
+                          for item in alternatives}
+        by_support = {}
+        for member in group:
+            for occurrence in (member.promotion_occurrences or
+                               member.occurrences):
+                by_support.setdefault(tuple(occurrence.atom_indices), []).append(
+                    (alternative_id[member.macro_id], occurrence))
+        derivation_classes.append(GeometryClassDerivations(
+            new_id, tuple(item.macro_id for item in group), alternatives,
+            tuple(SupportDerivationAlternatives(
+                support, tuple(sorted(values, key=lambda item: (
+                    item[0], item[1].node_occurrences))))
+                  for support, values in sorted(by_support.items()))))
+        for member in sorted(group, key=lambda item: item.macro_id):
+            alternative_macros.append(replace(
+                member, macro_id=len(alternative_macros),
+                promotion_derivations=(member.promotion_occurrences or
+                                       member.occurrences)))
 
     scale_groups = {}
     for macro in ordered:
@@ -154,4 +275,4 @@ def quotient_macro_supports(
         source_occurrences, retained_occurrences,
         source_cover == retained_cover,
         max(0, scale_pair_count - exact_pair_count), True, True, False, False,
-        False)
+        False, tuple(derivation_classes), tuple(alternative_macros))

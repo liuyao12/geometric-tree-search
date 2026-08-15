@@ -15,6 +15,7 @@ graph productions; it does not infer an exterior continuation or rank actions.
 from __future__ import annotations
 
 import itertools
+import hashlib
 import math
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -84,6 +85,11 @@ class MacroType:
     # proof subset: it may use every exact embedding, after identical atom
     # unions have been deterministically deduplicated.
     promotion_occurrences: tuple[MacroOccurrence, ...] = ()
+    # All exact graph derivations of the retained geometric support. Ordinary
+    # promotion uses one derivation per support; an explicit diagnostic may
+    # union their witnessed boundaries, while safe alternative-aware
+    # promotion keeps them separate.
+    promotion_derivations: tuple[MacroOccurrence, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -114,6 +120,23 @@ class _Embedding:
     translations: tuple[Vector, ...]
     atom_indices: tuple[int, ...]
     cycle_residual: float
+
+
+@dataclass(frozen=True)
+class _GraphCandidate:
+    root: int
+    nodes: frozenset[int]
+    colors: tuple[tuple[int, str], ...]
+    bucket: tuple
+    atom_indices: tuple[int, ...]
+
+
+@dataclass
+class _ExactGraphClass:
+    representative: _GraphCandidate
+    graph_code: tuple
+    canonical_orders: tuple[tuple[int, ...], ...]
+    candidates: list[tuple[_GraphCandidate, dict[int, int]]]
 
 
 def _add(left: Vector, right: Vector) -> Vector:
@@ -153,25 +176,48 @@ def _compose(rotation: Matrix, translation: Vector,
             _add(translation, matvec(rotation, relative_translation)))
 
 
-def _port_graph(program: IrregularPortProgram):
-    sparse = reduce_occurrence_graph(program)
+def _port_graph(program: IrregularPortProgram, *,
+                include_boundary_relations: bool = False):
+    sparse = reduce_occurrence_graph(
+        program, include_boundary_relations=include_boundary_relations)
     admitted = {(port.parent_type, port.child_type,
                  port.symmetry_orbit_key)
                 for port in program.atlas.ports}
     occurrence_type = {occurrence.occurrence_id: occurrence.type_id
                        for occurrence in program.occurrences
                        if occurrence.occurrence_id in sparse.retained_nodes}
-    retained_pairs = {
-        (edge.left, edge.right) for edge in sparse.retained_edges}
+    retained_pair_kinds = {
+        (edge.left, edge.right, edge.connection_kind)
+        for edge in sparse.retained_edges}
     edges = set()
     for parent, child, parent_type, child_type, pose_key in (
             program.atlas.relation_classes):
         label = parent_type, child_type, pose_key
         pair = min(parent, child), max(parent, child)
-        if (label in admitted and pair in retained_pairs and
+        if (label in admitted and pair + ("overlap",) in retained_pair_kinds and
                 parent in occurrence_type and child in occurrence_type and
                 parent != child):
             edges.add((parent, child, label))
+    if include_boundary_relations:
+        admitted_boundary = {
+            (port.parent_type, port.child_type, port.symmetry_orbit_key)
+            for port in getattr(program, "boundary_ports", ())}
+        for relation in getattr(program, "boundary_relation_classes", ()):
+            if getattr(relation, "child_port_witnesses", 0) <= 0:
+                continue
+            label = (relation.parent_type, relation.child_type,
+                     relation.symmetry_orbit_key)
+            pair = (min(relation.parent_occurrence,
+                        relation.child_occurrence),
+                    max(relation.parent_occurrence,
+                        relation.child_occurrence))
+            if (label in admitted_boundary and
+                    pair + ("boundary",) in retained_pair_kinds and
+                    relation.parent_occurrence in occurrence_type and
+                    relation.child_occurrence in occurrence_type and
+                    relation.parent_occurrence != relation.child_occurrence):
+                edges.add((relation.parent_occurrence,
+                           relation.child_occurrence, label))
     adjacency: dict[int, set[int]] = {
         occurrence_id: set() for occurrence_id in occurrence_type}
     for parent, child, _ in edges:
@@ -214,6 +260,150 @@ def _graph_code(order: Sequence[int], occurrence_type: dict[int, int],
         for parent, child, label in edges
         if parent in index and child in index))
     return (tuple(occurrence_type[node] for node in order), internal)
+
+
+def _edge_matrix(nodes, edges):
+    allowed = set(nodes)
+    result = defaultdict(list)
+    for parent, child, label in edges:
+        if parent in allowed and child in allowed:
+            result[parent, child].append(label)
+    return {key: tuple(sorted(value, key=repr))
+            for key, value in result.items()}
+
+
+def _refined_graph_bucket(root, nodes, occurrence_type, edges):
+    """Collision-safe WL bucket; exact isomorphism follows every match."""
+    matrix = _edge_matrix(nodes, edges)
+    colors = {node: hashlib.sha256(repr(
+        (node == root, occurrence_type[node])).encode()).hexdigest()
+              for node in nodes}
+    for _ in range(len(nodes)):
+        refined = {}
+        for node in nodes:
+            outgoing = tuple(sorted(
+                (repr(labels), colors[other])
+                for (source, other), labels in matrix.items()
+                if source == node))
+            incoming = tuple(sorted(
+                (repr(labels), colors[other])
+                for (other, target), labels in matrix.items()
+                if target == node))
+            refined[node] = hashlib.sha256(repr((
+                colors[node], outgoing, incoming)).encode()).hexdigest()
+        if refined == colors:
+            break
+        colors = refined
+    bucket = (
+        len(nodes), tuple(sorted(colors.values())),
+        tuple(sorted((colors[parent], colors[child], repr(labels))
+                     for (parent, child), labels in matrix.items())))
+    return colors, bucket
+
+
+def _canonical_graph_orders(candidate, occurrence_type, edges):
+    colors = dict(candidate.colors)
+    cells = defaultdict(list)
+    for node in candidate.nodes:
+        if node != candidate.root:
+            cells[colors[node]].append(node)
+    ordered_cells = tuple(tuple(sorted(cells[color]))
+                          for color in sorted(cells))
+    minimum = None
+    orders = []
+    products = itertools.product(*(
+        itertools.permutations(cell) for cell in ordered_cells))
+    for cell_orders in products:
+        order = (candidate.root,) + tuple(
+            node for cell in cell_orders for node in cell)
+        code = _graph_code(order, occurrence_type, edges)
+        if minimum is None or code < minimum:
+            minimum, orders = code, [order]
+        elif code == minimum:
+            orders.append(order)
+    assert minimum is not None
+    return minimum, tuple(orders)
+
+
+def _first_exact_isomorphism(left, right, occurrence_type, edges):
+    """Return one root-preserving exact labelled directed isomorphism."""
+    if len(left.nodes) != len(right.nodes):
+        return None
+    left_colors, right_colors = dict(left.colors), dict(right.colors)
+    left_matrix = _edge_matrix(left.nodes, edges)
+    right_matrix = _edge_matrix(right.nodes, edges)
+    mapping = {left.root: right.root}
+    used = {right.root}
+    remaining = tuple(sorted(left.nodes - {left.root}, key=lambda node: (
+        sum(left_colors[other] == left_colors[node] for other in left.nodes),
+        left_colors[node], occurrence_type[node], node)))
+
+    def compatible(source, target):
+        if (left_colors[source] != right_colors[target] or
+                occurrence_type[source] != occurrence_type[target]):
+            return False
+        for prior_source, prior_target in mapping.items():
+            if (left_matrix.get((source, prior_source), ()) !=
+                    right_matrix.get((target, prior_target), ()) or
+                    left_matrix.get((prior_source, source), ()) !=
+                    right_matrix.get((prior_target, target), ())):
+                return False
+        return True
+
+    def search(depth):
+        if depth == len(remaining):
+            return dict(mapping)
+        source = remaining[depth]
+        choices = sorted(
+            (node for node in right.nodes - used
+             if compatible(source, node)),
+            key=lambda node: (right_colors[node], occurrence_type[node], node))
+        for target in choices:
+            mapping[source] = target
+            used.add(target)
+            result = search(depth + 1)
+            if result is not None:
+                return result
+            used.remove(target)
+            del mapping[source]
+        return None
+
+    return search(0)
+
+
+def _canonical_embedding_from_class(
+    candidate, candidate_to_representative, graph_class, occurrence_type,
+    edges, occurrences, prototypes, support_by_id, tolerance,
+):
+    representative_to_candidate = {
+        target: source for source, target in candidate_to_representative.items()}
+    alternatives = tuple(tuple(representative_to_candidate[node]
+                               for node in order)
+                         for order in graph_class.canonical_orders)
+    root_prototype = prototypes[occurrence_type[candidate.root]]
+    geometric = []
+    for order in alternatives:
+        for symmetry in root_prototype.proper_symmetries:
+            code, rotations, translations = _geometry(
+                order, symmetry, occurrences, prototypes, tolerance)
+            geometric.append((code, order, rotations, translations))
+    geometry_code, order, rotations, translations = min(
+        geometric, key=lambda item: (item[0], item[1]))
+    return _Embedding(
+        order, graph_class.graph_code, geometry_code, rotations, translations,
+        candidate.atom_indices, _cycle_residual(order, edges, occurrences))
+
+
+def _has_independent_candidates(candidates, maximum_overlap_fraction):
+    for index, left in enumerate(candidates):
+        left_atoms = set(left.atom_indices)
+        for right in candidates[index + 1:]:
+            right_atoms = set(right.atom_indices)
+            if (len(left_atoms.intersection(right_atoms)) <=
+                    maximum_overlap_fraction * min(
+                        len(left_atoms), len(right_atoms))):
+                return True
+    return False
 
 
 def _geometry(
@@ -375,17 +565,19 @@ def mine_port_graph_macros(
     program: IrregularPortProgram, *, maximum_nodes: int = 3,
     minimum_occurrences: int = 2, maximum_atom_overlap_fraction: float = .1,
     geometry_tolerance: float = .03, cycle_tolerance: float = 1e-6,
+    include_boundary_relations: bool = False,
 ) -> MacroMiningResult:
     """Mine exact repeated rooted connected macros with an MDL gate."""
-    if not 2 <= maximum_nodes <= 5:
-        raise ValueError("maximum_nodes must be between two and five")
+    if not 2 <= maximum_nodes <= 8:
+        raise ValueError("maximum_nodes must be between two and eight")
     if minimum_occurrences < 2:
         raise ValueError("minimum_occurrences must be at least two")
     if not 0 <= maximum_atom_overlap_fraction < 1:
         raise ValueError("atom overlap fraction must be in [0, 1)")
     if geometry_tolerance <= 0 or cycle_tolerance <= 0:
         raise ValueError("geometry and cycle tolerances must be positive")
-    occurrence_type, edges, adjacency, sparse = _port_graph(program)
+    occurrence_type, edges, adjacency, sparse = _port_graph(
+        program, include_boundary_relations=include_boundary_relations)
     occurrences = {item.occurrence_id: item for item in program.occurrences}
     prototypes = {item.type_id: item for item in program.prototypes}
     all_supports = dict(program.occurrence_supports)
@@ -396,19 +588,58 @@ def mine_port_graph_macros(
            for item in program.occurrences):
         raise ValueError("macro graph contains an improper occurrence pose")
     rooted = _rooted_connected_sets(adjacency, maximum_nodes)
+    wl_buckets = defaultdict(list)
+    for root, nodes in rooted:
+        colors, bucket = _refined_graph_bucket(
+            root, nodes, occurrence_type, edges)
+        atoms = tuple(sorted({atom for node in nodes for atom in supports[node]}))
+        wl_buckets[bucket].append(_GraphCandidate(
+            root, nodes, tuple(sorted(colors.items())), bucket, atoms))
+    exact_graph_classes = []
+    for bucket in sorted(wl_buckets, key=repr):
+        candidates = wl_buckets[bucket]
+        if len(candidates) < minimum_occurrences:
+            continue
+        classes = []
+        for candidate in candidates:
+            matched = None
+            for graph_class in classes:
+                mapping = _first_exact_isomorphism(
+                    candidate, graph_class.representative,
+                    occurrence_type, edges)
+                if mapping is not None:
+                    matched = graph_class, mapping
+                    break
+            if matched is None:
+                code, orders = _canonical_graph_orders(
+                    candidate, occurrence_type, edges)
+                identity = {node: node for node in candidate.nodes}
+                classes.append(_ExactGraphClass(
+                    candidate, code, orders, [(candidate, identity)]))
+            else:
+                matched[0].candidates.append((candidate, matched[1]))
+        exact_graph_classes.extend(classes)
     grouped = defaultdict(list)
     rejected_cycle = 0
-    for root, nodes in rooted:
-        embedding = _canonical_embedding(
-            root, nodes, occurrence_type, edges, occurrences, prototypes,
-            supports, geometry_tolerance)
-        if embedding.cycle_residual > cycle_tolerance:
-            rejected_cycle += 1
+    rejected_overlap = 0
+    for graph_class in exact_graph_classes:
+        graph_candidates = [item[0] for item in graph_class.candidates]
+        if (len(graph_candidates) < minimum_occurrences or
+                not _has_independent_candidates(
+                    graph_candidates, maximum_atom_overlap_fraction)):
+            rejected_overlap += len(graph_candidates)
             continue
-        grouped[(embedding.graph_code,
-                 embedding.geometry_code)].append(embedding)
+        for candidate, mapping in graph_class.candidates:
+            embedding = _canonical_embedding_from_class(
+                candidate, mapping, graph_class, occurrence_type, edges,
+                occurrences, prototypes, supports, geometry_tolerance)
+            if embedding.cycle_residual > cycle_tolerance:
+                rejected_cycle += 1
+                continue
+            grouped[(embedding.graph_code,
+                     embedding.geometry_code)].append(embedding)
     macros = []
-    rejected_overlap = rejected_mdl = 0
+    rejected_mdl = 0
     for _, embeddings in sorted(grouped.items(), key=lambda item: repr(item[0])):
         selected, rejected = _select_disjoint(
             embeddings, maximum_atom_overlap_fraction)

@@ -208,6 +208,7 @@ def promote_macro_types(
     macro_types: Sequence[MacroType], *, level: int = 1,
     pose_tolerance: float = .03, minimum_shared_atoms: int = 2,
     minimum_port_observations: int = 2,
+    union_derivation_witnesses: bool = False,
 ) -> PromotedMacroProgram:
     """Compile exact retained macros into a generic next-level program."""
     if level < 1:
@@ -238,6 +239,11 @@ def promote_macro_types(
         fitted_for_type = []
         promotion_occurrences = (macro.promotion_occurrences or
                                  macro.occurrences)
+        derivations_by_support = {}
+        for derivation in (macro.promotion_derivations or
+                           promotion_occurrences):
+            derivations_by_support.setdefault(
+                tuple(derivation.atom_indices), []).append(derivation)
         for macro_occurrence in promotion_occurrences:
             observed = _render_macro_embedding(
                 macro_occurrence.node_occurrences, atomic_occurrences,
@@ -269,8 +275,13 @@ def promote_macro_types(
             occurrences.append(fitted)
             supports.append((fitted.occurrence_id,
                              macro_occurrence.atom_indices))
+            witnessed = derivations_by_support.get(
+                tuple(macro_occurrence.atom_indices), (macro_occurrence,))
             macro_nodes[fitted.occurrence_id] = frozenset(
-                macro_occurrence.node_occurrences)
+                node for derivation in (
+                    witnessed if union_derivation_witnesses else
+                    (macro_occurrence,))
+                for node in derivation.node_occurrences)
     # Enumerate only support-overlapping pairs.  Dense promotion can contain
     # thousands of occurrences, while each atom belongs to a small local
     # number of them; an inverted support index therefore preserves the exact

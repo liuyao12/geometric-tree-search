@@ -3,7 +3,8 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
+import math
 from typing import Hashable, Sequence
 
 from materials_gcts_irregular_supports import (
@@ -54,10 +55,59 @@ def compile_irregular_port_program(
     """
     if minimum_shared_atoms < 1:
         raise ValueError("minimum_shared_atoms must be positive")
-    points = tuple(tuple(float(value) for value in point)
-                   for point in positions)
+    input_species = tuple(species)
+    input_points = tuple(tuple(float(value) for value in point)
+                         for point in positions)
+    # Discovery runs in a canonical serialization order.  This removes atom
+    # enumeration from prototype choice and occurrence IDs.  Original atom
+    # indices are restored on every public cover/support record below.
+    canonical_order = tuple(sorted(
+        range(len(input_points)),
+        key=lambda index: (repr(input_species[index]), input_points[index])))
+    species = tuple(input_species[index] for index in canonical_order)
+    points = tuple(input_points[index] for index in canonical_order)
+    order_quantum = max(1e-8, support_tolerance * .01)
+
+    def atom_profile(index):
+        return (repr(species[index]), tuple(sorted(
+            (repr(species[other]),
+             round(math.dist(points[index], points[other]) / order_quantum))
+            for other in range(len(points)) if other != index)))
+
+    atom_profiles = tuple(atom_profile(index) for index in range(len(points)))
+
+    def occurrence_key(occurrence):
+        members = occurrence.member_indices
+        centroid = tuple(sum(points[index][axis] for index in members) /
+                         len(members) for axis in range(3))
+        radial_context = tuple(sorted(
+            (repr(species[index]),
+             round(math.dist(centroid, points[index]) / order_quantum))
+            for index in range(len(points))))
+        return (tuple(sorted(atom_profiles[index] for index in members)),
+                radial_context)
+
     vocabulary, cover = fit_frozen_vocabulary(
         species, points, distance_tolerance=support_tolerance)
+    canonical_to_input = dict(enumerate(canonical_order))
+
+    def remap_members(members):
+        return tuple(sorted(canonical_to_input[index] for index in members))
+
+    remapped_types = tuple(replace(
+        support_type,
+        representative_members=remap_members(
+            support_type.representative_members),
+        occurrences=tuple(replace(
+            occurrence,
+            member_indices=remap_members(occurrence.member_indices))
+            for occurrence in support_type.occurrences))
+        for support_type in cover.support_types)
+    public_cover = replace(
+        cover, support_types=remapped_types,
+        covered_indices=remap_members(cover.covered_indices),
+        repeated_covered_indices=remap_members(
+            cover.repeated_covered_indices))
     prototypes = []
     prototype_support_types = []
     occurrences = []
@@ -72,9 +122,15 @@ def compile_irregular_port_program(
         # metric class into proper-congruence subclasses here so a reflection
         # is never silently encoded as a rotation or discarded from coverage.
         proper_subtypes: list[ClusterPrototype] = []
-        for occurrence in support_type.occurrences:
+        ordered_occurrences = sorted(
+            support_type.occurrences,
+            key=lambda item: (occurrence_key(item), item.member_indices))
+        for occurrence in ordered_occurrences:
+            ordered_members = sorted(
+                occurrence.member_indices,
+                key=lambda index: (atom_profiles[index], index))
             observed = tuple((species[index], points[index])
-                             for index in occurrence.member_indices)
+                             for index in ordered_members)
             fitted = None
             for prototype in proper_subtypes:
                 try:
@@ -105,7 +161,8 @@ def compile_irregular_port_program(
                 continue
             occurrences.append(fitted)
             occurrence_supports.append(
-                (next_occurrence_id, occurrence.member_indices))
+                (next_occurrence_id,
+                 remap_members(occurrence.member_indices)))
             next_occurrence_id += 1
 
     support_by_id = dict(occurrence_supports)
@@ -123,7 +180,7 @@ def compile_irregular_port_program(
         exclusion_distance=max(pose_tolerance, cover.minimum_distance * .45),
         allowed_occurrence_pairs=allowed)
     return IrregularPortProgram(
-        cover, vocabulary, tuple(prototypes),
+        public_cover, vocabulary, tuple(prototypes),
         tuple(prototype_support_types), tuple(occurrences),
         tuple(occurrence_supports), atlas, failures, len(allowed),
         minimum_shared_atoms, False, False, False)

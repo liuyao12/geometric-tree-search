@@ -636,43 +636,56 @@ but frozen-target gains remain only 1.009x, 1.060x, and 1.000x over the
 unmarked arm; IQC ties shuffled labels and Cd--Yb has zero context coverage.
 This remains a red causal marking result.
 
-The first generic clusters-of-clusters pass is now implemented. A deterministic
-overlapping set-cover approximation selects a sparse occurrence graph, adds
-only witnessed connector occurrences, retains a maximum-overlap spanning
-forest, and preserves canonical short cycles. It reduces NaCl/IQC/Cd--Yb from
-576/780/623 oriented occurrences to 37/52/57 and removes 99.74%/99.68%/99.78%
-of redundant overlap edges while preserving the complete repeated-support
-cover. The Cd--Yb source graph itself has 19 components; the reducer honestly
-leaves 11 rather than inventing edges.
+The original action-history route is now retained as a negative baseline, not
+the main hierarchy result. Its invariant proper-SE(3) canonicalizer admits 11
+action-submacro types, every one with maximum dense occurrence multiplicity two,
+and the recursion reaches only two positive levels. This diagnoses limited
+independent evidence as well as representation loss; the earlier
+action-history figures are no longer the canonical result.
 
-Exact directed port-graph isomorphism, root-local colored SE(3) geometry,
-cycle consistency, at least two nearly atom-disjoint occurrences, and positive
-structural MDL saving retain 3 NaCl, 42 ideal-IQC, and 2 Cd--Yb two-child macro
-types. Their largest atom unions contain 18, 35, and 40 atoms. These are real
-first-level cluster-of-cluster types, but recursive macro-as-node promotion is
-still pending. A new stationary-production contract keeps the final claim red
-until one generic `recurring_port_graph_macro` production is observed at two
-adjacent learned scales, reproduces two explicit unseen levels, grows by more
-than 3x for three actions, and represents one million sites within seven.
+The stronger route forgets action history and re-clusters the grown colored
+point clouds. Across six patches it processes 2,064 atoms, identifies 78
+repeated irregular support types with 1,122 occurrences, and adds explicit gap
+clusters so the atomic configuration is completely covered. The unchanged
+boundary-aware reducer, exact proper-SE(3) miner, quotient, and promoter produce
+quotient counts `73 -> 17 -> 5 -> 3 -> 2 -> 1 -> 0`. A derivation-aware version
+that keeps mutually exclusive exact right-hand-side alternatives separate gives
+`73 -> 17 -> 6 -> 3 -> 2 -> 1 -> 0`. Neither route has a common normalized
+chemistry/chirality/port production across three consecutive levels, so strict
+stationarity and generic exponential growth remain red.
 
-Macro-as-node promotion is now operational. Each exact macro atom union becomes
-a centered colored prototype with its own proper symmetry group; every retained
-embedding is independently re-rendered and registered. Shared training atoms
-learn macro-overlap ports, while witnessed cross-boundary child connections
-produce a separate finite boundary-port atlas. In the two-child promotion
-audit, NaCl/IQC/Cd--Yb yield
-3/42/2 macro prototypes, 6/108/4 occurrences, and 2/146/2 overlap-port types,
-with no pose-fit or colored-union failures.
+Train compression is not presented as transfer. In a sealed split, five
+predeclared grown patches fit the primitive vocabulary and three raw-ID-disjoint
+patches are held out. Frozen primitive supports cover all 1,248 / 1,248 held-out
+atoms. At the first promoted level, 256 of 259 frozen quotient types replay and
+their unions still cover every atom, but the three missing types break exact
+type-map preservation and stop recursive transfer at that level.
 
-The unchanged reducer/miner then runs recursively. With up to three children,
-NaCl has positive macro counts `(3, 0)` and Cd--Yb `(2, 0)`, terminating after
-one promoted level. The ideal IQC produces `(75, 11, 0)` across three realized
-levels; second-level supports reach 94 atoms and the structural MDL savings are
-`339, 31, 0`. This is genuine recursive compression, not yet stationary
-growth. A separate production canonicalizer removes only global proper SE(3),
-child order/proper gauge, and one learned uniform scale while retaining
-chemistry, chirality, directed port incidence, overlap chemistry, and boundary
-semantics. No real adjacent production is certified by that stronger contract,
-so every stationary witness remains zero.
+A deterministic train-only beam provides the bounded future-RL comparator. It
+chooses alternative-consistent exact derivations and improves occurrence
+retention from `153 -> 34 -> 10 -> 6 -> 4 -> 2` to
+`324 -> 78 -> 26 -> 12 -> 8 -> 4`; its fixed-eight-level score improves from
+`-63.205` to `-34.592`. Both paths still end after six positive levels and both
+fail the unchanged stationary audit. The exact semantic quotient is rejected
+by the train-only shuffle and perturbation controls; approximate pooling is
+never relabelled as exact recursion.
+
+The child-width implementation is not the bottleneck. The single sparse
+216-atom NaCl audit is evidence-starved and admits only six size-two macros.
+With two independent bounded 216-atom presentations, cached nonfactorial
+partition refinement reaches maximum child width eight. The complete learned
+relation graph contains 29,988 relations joining 52 cells and exports an exact
+macro with 8 children, 24 directed ports, a 52-atom colored union, 2
+atom-disjoint occurrences, and structural MDL saving 30. Independent replay of
+the frozen relations over three learned factors yields witness totals
+`1,478 / 750 / 86` and the strong contract certifies stationary scale 2.
+Input permutation, global proper-SE(3), ideal-IQC, amorphous, and ternary
+controls all pass.
+
+This is a hardened crystal baseline, not a pure-port discovery result. The
+radix and child-offset vocabulary still comes from the positions-only
+stationary grid learner and is subsequently validated against the frozen port
+relations. Learning the closure vocabulary from ports alone remains future
+work. None of these stronger NaCl results changes the red stationary IQC gate.
 
 Serve the repository root and open `/apps/iqc-growth-live/`.

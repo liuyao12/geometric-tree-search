@@ -15,16 +15,16 @@ atomic = compile_irregular_port_program(
     configuration.species, configuration.positions)
 mined = mine_port_graph_macros(atomic, maximum_nodes=3)
 quotient = quotient_macro_supports(mined.macro_types)
-assert quotient.source_types == 75
-assert quotient.quotient_types == 32
-assert quotient.retained_promotion_occurrences == 87
+assert quotient.source_types == 83
+assert quotient.quotient_types == 36
+assert quotient.retained_promotion_occurrences == 93
 assert quotient.exact_train_support_cover_preserved
 assert quotient.exact_geometry_preserved
 assert quotient.chemistry_population_preserved
 assert not quotient.uniform_scale_merged
 assert not quotient.improper_reflections_merged
 promoted = promote_macro_types(atomic, quotient.quotient_macros)
-assert len(promoted.prototypes) == 32
+assert len(promoted.prototypes) == quotient.quotient_types
 assert promoted.pose_fit_failures == 0
 
 # A deliberately colored scalene tetrahedron has a proper-frame handedness.

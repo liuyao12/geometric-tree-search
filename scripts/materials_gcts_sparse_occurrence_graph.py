@@ -38,6 +38,7 @@ class SparseOccurrenceEdge:
     right: int
     overlap_atoms: int
     canonical_port_label: PortLabel
+    connection_kind: str = "overlap"
 
 
 @dataclass(frozen=True)
@@ -84,7 +85,10 @@ class _DisjointSet:
         return True
 
 
-def _source_edges(program: IrregularPortProgram) -> tuple[SparseOccurrenceEdge, ...]:
+def _source_edges(
+        program: IrregularPortProgram, *,
+        include_boundary_relations: bool = False,
+) -> tuple[SparseOccurrenceEdge, ...]:
     admitted = {
         (port.parent_type, port.child_type, port.symmetry_orbit_key)
         for port in program.atlas.ports}
@@ -105,6 +109,28 @@ def _source_edges(program: IrregularPortProgram) -> tuple[SparseOccurrenceEdge, 
             continue
         result.append(SparseOccurrenceEdge(
             left, right, overlap, min(pair_labels, key=repr)))
+    if include_boundary_relations:
+        admitted_boundary = {
+            (port.parent_type, port.child_type, port.symmetry_orbit_key)
+            for port in getattr(program, "boundary_ports", ())}
+        boundary_labels = set()
+        for relation in getattr(program, "boundary_relation_classes", ()):
+            if getattr(relation, "child_port_witnesses", 0) <= 0:
+                continue
+            label = (relation.parent_type, relation.child_type,
+                     relation.symmetry_orbit_key)
+            if label not in admitted_boundary:
+                continue
+            pair = (min(relation.parent_occurrence,
+                        relation.child_occurrence),
+                    max(relation.parent_occurrence,
+                        relation.child_occurrence))
+            boundary_labels.add((pair, label))
+        result.extend(SparseOccurrenceEdge(
+            pair[0], pair[1],
+            len(supports[pair[0]].intersection(supports[pair[1]])),
+            label, "boundary")
+            for pair, label in sorted(boundary_labels, key=repr))
     return tuple(result)
 
 
@@ -241,7 +267,8 @@ def _cycle_signature(
     nodes: tuple[int, ...], path_edges: tuple[SparseOccurrenceEdge, ...],
     closing: SparseOccurrenceEdge, node_types: dict[int, int],
 ) -> tuple[str, ...]:
-    edge_labels = tuple(repr(edge.canonical_port_label)
+    edge_labels = tuple(repr((edge.connection_kind,
+                              edge.canonical_port_label))
                         for edge in path_edges + (closing,))
     node_labels = tuple(str(node_types[node]) for node in nodes)
     sequence = tuple(value for pair in zip(node_labels, edge_labels)
@@ -257,6 +284,7 @@ def _cycle_signature(
 
 def reduce_occurrence_graph(
     program: IrregularPortProgram, *, maximum_cycle_length: int = 4,
+    include_boundary_relations: bool = False,
 ) -> SparseOccurrenceGraph:
     """Return a sparse, covering, witnessed occurrence graph."""
     if maximum_cycle_length < 3:
@@ -265,7 +293,8 @@ def reduce_occurrence_graph(
                 for occurrence_id, members in program.occurrence_supports}
     node_types = {occurrence.occurrence_id: occurrence.type_id
                   for occurrence in program.occurrences}
-    edges = _source_edges(program)
+    edges = _source_edges(
+        program, include_boundary_relations=include_boundary_relations)
     adjacency: dict[int, set[int]] = defaultdict(set)
     edge_by_pair = {}
     for edge in edges:
@@ -296,18 +325,20 @@ def reduce_occurrence_graph(
     union = _DisjointSet(selected)
     spanning = []
     for edge in sorted(induced_edges, key=lambda item: (
-            -item.overlap_atoms, repr(item.canonical_port_label),
-            item.left, item.right)):
+            -item.overlap_atoms, item.connection_kind,
+            item.left, item.right,
+            repr(item.canonical_port_label))):
         if union.union(edge.left, edge.right):
             spanning.append(edge)
     tree_adjacency: dict[int, list[tuple[int, SparseOccurrenceEdge]]] = defaultdict(list)
     for edge in spanning:
         tree_adjacency[edge.left].append((edge.right, edge))
         tree_adjacency[edge.right].append((edge.left, edge))
-    tree_pairs = {(edge.left, edge.right) for edge in spanning}
+    tree_pair_kinds = {(edge.left, edge.right, edge.connection_kind)
+                       for edge in spanning}
     cycle_representatives: dict[tuple[str, ...], SparseOccurrenceEdge] = {}
     for edge in induced_edges:
-        if (edge.left, edge.right) in tree_pairs:
+        if (edge.left, edge.right, edge.connection_kind) in tree_pair_kinds:
             continue
         path = _tree_path(edge.left, edge.right, tree_adjacency)
         if path is None:
@@ -319,8 +350,10 @@ def reduce_occurrence_graph(
         signature = _cycle_signature(
             path_nodes, path_edges, edge, node_types)
         prior = cycle_representatives.get(signature)
-        if prior is None or (-edge.overlap_atoms, edge.left, edge.right) < (
-                -prior.overlap_atoms, prior.left, prior.right):
+        if prior is None or (-edge.overlap_atoms, edge.connection_kind,
+                             edge.left, edge.right) < (
+                -prior.overlap_atoms, prior.connection_kind,
+                prior.left, prior.right):
             cycle_representatives[signature] = edge
     cycle_edges = tuple(sorted(cycle_representatives.values(),
                                key=lambda item: (item.left, item.right)))
