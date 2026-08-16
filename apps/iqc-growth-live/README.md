@@ -734,6 +734,18 @@ four recolors and ten removals on the unopened window, reducing the result to
 124 correct / 16 wrong (88.6% precision). It remains a red diagnostic and is
 not integrated into the executor.
 
+The replacement representation now learns geometry before chemistry. With
+species hidden, 35 irregular support types transfer to the disjoint window and
+cover 841 / 873 atoms. Their 275 train-observed proper-rotation decoration
+alternatives cover 795 atoms; a naive colored expansion would require 49,735
+port classes instead of 7,731 factored geometry classes (6.43x). A bounded
+two-incoming-port section improves decoration accuracy over one port and the
+modal alternative, but loses to within-geometry label shuffles (`p = 0.875`).
+Optional overlap propagation from 226 known seed species then infers 279 outer
+labels, 267 correctly (95.7% precision, 41.3% recall), while outer species
+remain scorer-only. This is a stronger reconstruction baseline; it is still
+below the 99% / 90% gate and is not autonomous coordinate growth.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned

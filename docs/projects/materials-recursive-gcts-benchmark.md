@@ -2356,6 +2356,38 @@ honest red diagnostic and is not integrated into self-fed execution. The next
 marking representation must learn reusable decoration alternatives at the
 cluster/cluster-of-clusters level rather than postprocess isolated sites.
 
+That geometry-first representation is now explicit. The learner hides all
+species labels while fitting 35 irregular geometric support types from the
+4,405-atom training corpus, then attaches the observed colored decorations
+modulo each support's proper rotational symmetry. The factored vocabulary has
+275 exact decoration alternatives; 29 / 35 geometry types have more than one.
+On the disjoint 873-atom window, every geometry type transfers and supports
+cover 841 atoms (96.33%). Train-seen decorations cover 795 atoms (91.07%),
+although only 706 / 4,519 frozen occurrences have their exact decoration in
+training. Expanding the alternatives naively would produce 49,735 colored port
+classes, versus 7,731 factored geometry ports for the same 778,380 witnessed
+relations, a 6.43-fold vocabulary penalty.
+
+The first bounded GCTS decoration section uses one or two already-inward
+overlap ports. On a common heldout causal sample, two-port composition predicts
+30.37% of decorations, versus 25.79% for one port and 20.34% for the modal
+geometry decoration. This apparent gain is not yet causal evidence: 31
+within-geometry label shuffles have median accuracy 31.81% and give
+`p = 0.875`. The marking gate therefore remains red.
+
+An overlap-cover solver now tests the alternatives jointly. The complete
+heldout positions are supplied, the radius-7 seed contributes 226 known
+species, and all 647 outer species stay sealed until scoring. All 4,519 frozen
+geometry occurrences are optional covering proposals. A proposal may
+propagate only after overlapping an already labelled atom, and only labels
+unanimous across its remaining train-observed alternatives are committed. The
+solver retains geometry over 831 / 873 atoms and infers 279 outer labels: 267
+are correct and 12 wrong, for 95.70% precision and 41.27% recall. It is a
+reconstruction baseline, not autonomous coordinate growth; the unchanged 99%
+precision / 90% recall gate remains red. The next step is bounded branch-and-
+backtrack selection among exact decoration alternatives, with marking used to
+order identical candidate sets.
+
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring
 atoms overlap a training window. It is retained only as a depth diagnostic and
