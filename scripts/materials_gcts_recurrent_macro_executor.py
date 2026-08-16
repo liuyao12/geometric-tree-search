@@ -106,6 +106,9 @@ class EligibleMacroCandidate:
     overlap_atoms: int
     emitted_site_keys: tuple[SiteKey, ...]
     geometry_features: tuple[float, ...] = ()
+    proposal_witnesses: int = 1
+    minimum_site_support_fraction: float = 0.
+    mean_site_support_fraction: float = 0.
 
 
 @dataclass(frozen=True)
@@ -246,6 +249,8 @@ GEOMETRY_LINEAR_FEATURE_NAMES = (
     "incoming_port_count", "incoming_boundary_fraction",
     "incoming_translation_over_scale_mean",
     "incoming_rotation_angle_over_pi_mean",
+    "log_proposal_witnesses", "minimum_site_support_fraction",
+    "mean_site_support_fraction",
 )
 
 
@@ -296,6 +301,8 @@ def _port_linear_geometry(port, scale: float) -> tuple[float, float]:
 def _linear_geometry_features(
     prototypes, productions, ports, scale, *, production_id,
     incoming_context, overlap_atoms, emitted_atoms,
+    proposal_witnesses=1, minimum_site_support_fraction=0.,
+    mean_site_support_fraction=0.,
 ) -> tuple[float, ...]:
     production = productions[production_id]
     parent = prototypes[production.parent_type]
@@ -339,6 +346,8 @@ def _linear_geometry_features(
         incoming_boundary / max(1, len(incoming_context)),
         _mean(tuple(item[0] for item in incoming_geometry)),
         _mean(tuple(item[1] for item in incoming_geometry)),
+        math.log1p(proposal_witnesses), minimum_site_support_fraction,
+        mean_site_support_fraction,
     )
 
 
@@ -357,7 +366,11 @@ def geometry_candidate_features(
         production_id=candidate.production_id,
         incoming_context=candidate.marking_context,
         overlap_atoms=candidate.overlap_atoms,
-        emitted_atoms=len(candidate.emitted_site_keys))
+        emitted_atoms=len(candidate.emitted_site_keys),
+        proposal_witnesses=candidate.proposal_witnesses,
+        minimum_site_support_fraction=
+        candidate.minimum_site_support_fraction,
+        mean_site_support_fraction=candidate.mean_site_support_fraction)
 
 
 def _validate_linear_geometry_scorer(
@@ -460,14 +473,19 @@ def execute_recurrent_macro_program(
     port_geometry = _production_ports(program)
     linear_feature_cache = {}
 
-    def live_linear_features(production_id, context, overlap, emitted):
-        key = (production_id, tuple(context), overlap, emitted)
+    def live_linear_features(production_id, context, overlap, emitted,
+                             witnesses=1, minimum_support_fraction=0.,
+                             mean_support_fraction=0.):
+        key = (production_id, tuple(context), overlap, emitted, witnesses,
+               minimum_support_fraction, mean_support_fraction)
         if key not in linear_feature_cache:
             linear_feature_cache[key] = _linear_geometry_features(
                 prototypes, production_by_id, port_geometry,
                 program.minimum_distance, production_id=production_id,
                 incoming_context=context, overlap_atoms=overlap,
-                emitted_atoms=emitted)
+                emitted_atoms=emitted, proposal_witnesses=witnesses,
+                minimum_site_support_fraction=minimum_support_fraction,
+                mean_site_support_fraction=mean_support_fraction)
         return linear_feature_cache[key]
 
     by_parent = {}
@@ -686,9 +704,12 @@ def execute_recurrent_macro_program(
                 translation_width=policy.geometry_translation_bin_width,
                 rotation_width=policy.geometry_rotation_bin_width,
                 kind_only=True, include_incoming=False)
+            supports = tuple(len(site_support[key]) / maximum_support
+                             for key in emitted_keys)
             linear_features = live_linear_features(
                 candidate.production_id, context, len(candidate.overlap),
-                len(candidate.emitted))
+                len(candidate.emitted), len(_witnesses),
+                min(supports, default=0.), _mean(supports))
             if policy.strategy == "geometry-linear":
                 score = _linear_geometry_score(
                     policy.geometry_linear_scorer, linear_features)
@@ -730,9 +751,14 @@ def execute_recurrent_macro_program(
                    candidate.production_id,
                    node_context[candidate.parent_node])
             backoff = (key[0], key[1], ())
+            emitted_keys = {_site_key(site, pose_tolerance)
+                            for site in candidate.emitted}
+            supports = tuple(len(site_support[site]) / maximum_support
+                             for site in emitted_keys)
             features = live_linear_features(
                 key[1], key[2], len(candidate.overlap),
-                len(candidate.emitted))
+                len(candidate.emitted), len(_witnesses),
+                min(supports, default=0.), _mean(supports))
             if policy.strategy == "geometry-linear":
                 score = _linear_geometry_score(
                     policy.geometry_linear_scorer, features)
@@ -776,7 +802,9 @@ def execute_recurrent_macro_program(
                 candidate.child_type, context, score,
                 len(candidate.overlap), tuple(sorted(
                     _site_key(site, pose_tolerance)
-                    for site in candidate.emitted)), features))
+                    for site in candidate.emitted)), features,
+                len(_witnesses), min(supports, default=0.),
+                _mean(supports)))
         for _ranking, candidate, candidate_id, witnesses in ordered:
             context, marking_score = candidate_marking[candidate_id]
             emitted_keys = {_site_key(site, pose_tolerance)

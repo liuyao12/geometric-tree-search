@@ -2307,13 +2307,14 @@ matched exact-action work falls from 71 to 51; with 31 label shuffles the
 empirical result is only `p = 0.25`, so it is useful compression but not yet a
 causal marking win.
 
-A second, continuous mark uses 32 ID-free proper-SE(3) invariants: prototype
+A second, continuous mark now uses 35 ID-free proper-SE(3) invariants: prototype
 composition, radial/pair moments and proper-symmetry counts; normalized port
 translation/rotation and overlap chemistry; live overlap/emission fractions;
-train evidence; and at most two incoming-port summaries. Ridge strength is
+train evidence; at most two incoming-port summaries; and live proposal-witness
+and emitted-site-consensus statistics. Ridge strength is
 selected only by five-fold spatial training validation. Its log loss is
-`0.0158` versus the global prior's `0.1511`; the unopened evaluation frontier
-gets 22 distinct first-wave scores and 360 rank inversions. Yet unpruned
+`0.0186` versus the global prior's `0.1511`; the unopened evaluation frontier
+gets 29 distinct first-wave scores and 362 rank inversions. Yet unpruned
 execution again produces 136 / 148. A threshold frozen from out-of-fold
 training at 100% precision/recall prunes to 14 macro placements but produces
 134 correct and the same 12 wrong atoms (91.78% precision). Some shuffled
@@ -2330,6 +2331,30 @@ standardized role distance remains 5.32. The apparent validation improvement
 is positive duplication, while projected score spread contracts. This
 augmentation is rejected; the next sampler must maximize train-only role and
 failure diversity explicitly.
+
+That sampler is now implemented. It enumerates 596 patch-specific
+boundary-exposed representatives and selects a geometry-only cover of all 141
+learned parent macro types before candidate labels exist. The result rules out
+simple role omission: every one of the 48 incorrect sealed candidate actions
+uses an exact `(parent type, production)` pair observed as correct in the
+training windows. Ranking therefore cannot infer failure from rule identity.
+Inward-prefix contexts and class balancing change work order but do not remove
+the errors; a fifth-patch threshold rejects correct actions instead.
+
+The terminal-level diagnosis is sharper. Eight of the 12 final wrong atoms
+sit at exact target coordinates but carry `Y` where the sealed target carries
+`Z`; four proposed `Z` sites are absent, one nearest-neighbour spacing from the
+closest target site. Thus the remaining error is mostly context-dependent
+chemical decoration of otherwise useful geometry. A bounded colored-site
+section uses only the proposed species plus rotation-invariant local neighbour
+distances. Four patches provide 3,047 deduplicated terminal records, only ten
+of which are recolor/absence cases; the fifth patch freezes the alternative
+margin at 100% precision and recall. Before the sixth target is opened, the
+section predicts four recolors and ten absences. Posthoc scoring is worse:
+124 correct and 16 wrong atoms, 88.57% precision. This is retained as an
+honest red diagnostic and is not integrated into self-fed execution. The next
+marking representation must learn reusable decoration alternatives at the
+cluster/cluster-of-clusters level rather than postprocess isolated sites.
 
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring

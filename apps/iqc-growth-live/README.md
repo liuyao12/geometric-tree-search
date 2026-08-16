@@ -709,9 +709,10 @@ the target. Exact ID-based contexts transfer 0 / 62. An ID-free port-pose →
 overlap-chemistry → port-kind hierarchy instead covers all 62, creates five
 first-wave scores and 112 rank inversions, and cuts matched exact-action work
 from 71 to 51. It still reconstructs the same 136 / 148 atoms and reaches only
-`p = 0.25` against 31 label shuffles. A 32-feature continuous proper-SE(3)
-mark has excellent train-only validation loss (0.0158 versus 0.1511 global)
-and 360 first-wave inversions, but neither ranking nor a frozen high-precision
+`p = 0.25` against 31 label shuffles. A 35-feature continuous proper-SE(3)
+mark, now including live proposal-witness and site-consensus invariants, has
+strong train-only validation loss (0.0186 versus 0.1511 global) and 362
+first-wave inversions, but neither ranking nor a frozen high-precision
 threshold removes the 12 wrong atoms. The threshold yields 134 correct and 12
 wrong. The marking gate remains red because training calibration still does
 not transfer to exterior correctness. Uniformly shifting the five training
@@ -719,6 +720,19 @@ nuclei is rejected too: it grows 718 candidates to 3,119 but adds only five
 failures and still covers 0 / 62 exterior parent roles. The next sampler must
 seek train-only role and failure diversity rather than duplicate easy
 positives.
+
+The role-diversity audit now selects a boundary-exposed occurrence of every
+one of the 141 learned macro types from the five training windows. This rules
+out the earlier zero-role-coverage explanation: all 48 incorrect evaluation
+actions use exact parent/production rules that were observed as correct in
+training. The residual is chiefly colored decoration, not placement geometry.
+Of the final 12 wrong atoms, eight occupy exact target coordinates with the
+wrong species and four are unsupported terminals. A causal local site section
+fit on four windows and calibrated on the fifth sees 3,047 terminal records,
+but only ten are recolor/absence examples. Its wider transferable margin makes
+four recolors and ten removals on the unopened window, reducing the result to
+124 correct / 16 wrong (88.6% precision). It remains a red diagnostic and is
+not integrated into the executor.
 
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
