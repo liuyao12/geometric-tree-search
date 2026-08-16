@@ -2,7 +2,7 @@
 """Whole-placement consensus and primitive replay safety tests."""
 
 from materials_gcts_batch_frontier_search import (
-    _candidate_id, run_batch_frontier_search)
+    FrozenPortPairMarking, _candidate_id, run_batch_frontier_search)
 from materials_gcts_frozen_frontier_replay import (
     FrozenFrontierProgram, FrozenProduction, _classify_candidate,
     _placed_sites, _site_key, enumerate_frontier,
@@ -93,7 +93,44 @@ def test_primitive_candidate_identity_support_and_pairwise_safety():
         key=lambda site: _site_key(site, program.overlap_tolerance)))
 
 
+def test_bounded_port_pair_marking_fails_closed_without_changing_candidates():
+    program, seed = _synthetic_frozen_program()
+    baseline = run_batch_frontier_search(
+        program, (seed,), threshold_ratio=1.0, maximum_waves=1)
+    production_id = program.productions[0].production_id
+    admitted = FrozenPortPairMarking(
+        ((None, production_id, 3, 1.0),), 2, .99)
+    marked = run_batch_frontier_search(
+        program, (seed,), threshold_ratio=1.0, maximum_waves=1,
+        marking=admitted)
+    assert tuple(item.candidate_id for item in baseline.waves[0].candidates) == (
+        tuple(item.candidate_id for item in marked.waves[0].candidates))
+    assert marked.waves[0].accepted_candidates == 6
+    assert all(item.marking_supported and item.marking_probability == 1.0
+               for item in marked.waves[0].candidates)
+    rejected = FrozenPortPairMarking((), 1, .5)
+    closed = run_batch_frontier_search(
+        program, (seed,), threshold_ratio=1.0, maximum_waves=1,
+        marking=rejected)
+    assert closed.waves[0].candidate_count == 6
+    assert closed.waves[0].accepted_candidates == 0
+    assert closed.waves[0].rejected_marking == 6
+    assert all(item.rejection == "marking-rejected"
+               for item in closed.waves[0].candidates)
+    assert closed.bounded_port_pair_marking_used
+    leaked = FrozenPortPairMarking((), 1, .5, target_used_during_fit=True)
+    try:
+        run_batch_frontier_search(
+            program, (seed,), threshold_ratio=1.0, maximum_waves=1,
+            marking=leaked)
+    except ValueError as error:
+        assert "target-conditioned" in str(error)
+    else:
+        raise AssertionError("target-conditioned marking must fail closed")
+
+
 if __name__ == "__main__":
     test_synthetic_consensus_commits_whole_compatible_placements()
     test_primitive_candidate_identity_support_and_pairwise_safety()
+    test_bounded_port_pair_marking_fails_closed_without_changing_candidates()
     print("whole-placement batch frontier consensus: passed")

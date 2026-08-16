@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import math
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Callable, Hashable, Mapping, Sequence
 
 from materials_gcts_irregular_port_atlas import IrregularPortProgram
@@ -64,6 +64,7 @@ class FrozenFrontierProgram:
     lattice_used: bool
     physical_potential_used: bool
     target_artifacts_stored: bool
+    nearest_neighbor_scale: float = 1.0
 
 
 @dataclass(frozen=True)
@@ -78,6 +79,7 @@ class FrontierCandidate:
     novel_sites: tuple[Site, ...]
     incoming_port: PortKey | None
     outgoing_port: PortKey
+    connection_witnesses: tuple[tuple[PortKey | None, PortKey], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -175,7 +177,8 @@ def fit_frozen_frontier_program(
         training.prototypes, tuple(productions), overlap_tolerance, exclusion,
         training.minimum_shared_atoms, training.cover.point_count,
         training.family_label_used, training.lattice_used,
-        training.physical_potential_used, False)
+        training.physical_potential_used, False,
+        training.cover.minimum_distance)
 
 
 def _placed_sites(
@@ -314,6 +317,7 @@ def enumerate_frontier(
                        for occurrence in placed_occurrences})
     orbit_cache = _orbit_cache if _orbit_cache is not None else {}
     candidates = {}
+    connection_witnesses = defaultdict(set)
     attempted = duplicates = conflicts = insufficient = interior = outside = 0
     for parent in placed_occurrences:
         parent_prototype = prototypes[parent.type_id]
@@ -367,6 +371,8 @@ def enumerate_frontier(
                     (production.port.parent_type,
                      production.port.child_type,
                      production.port.symmetry_orbit_key))
+                connection_witnesses[rendered_key].add((
+                    candidate.incoming_port, candidate.outgoing_port))
                 prior = candidates.get(rendered_key)
                 if prior is None or (
                         -candidate.overlap_atoms, candidate.production_id,
@@ -376,6 +382,10 @@ def enumerate_frontier(
                     candidates[rendered_key] = candidate
                 else:
                     duplicates += 1
+    candidates = {
+        key: replace(candidate, connection_witnesses=tuple(sorted(
+            connection_witnesses[key], key=repr)))
+        for key, candidate in candidates.items()}
     ordered = tuple(sorted(candidates.values(), key=lambda candidate: (
         -candidate.overlap_atoms, -len(candidate.novel_sites),
         candidate.production_id, candidate.child_type,

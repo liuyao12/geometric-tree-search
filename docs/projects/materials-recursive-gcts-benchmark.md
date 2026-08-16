@@ -2498,6 +2498,39 @@ three waves. Continuing the same threshold past the calibrated five waves also
 accumulates errors. The result is therefore finite autonomous real-material
 continuation, not sustained stationarity or exponential symbolic growth.
 
+### Bounded local section and causal growth ablation
+
+The first autonomous errors are locally valid port applications, so raw
+production identity and prototype-size envelopes do not transfer reliably.
+The improved marking uses the local frontier itself. For every candidate it
+measures the closest proposed-site distance to the already placed cloud in the
+training-derived nearest-neighbor unit and counts distinct frozen
+cluster-connection witnesses for the same pose. Among the 390 train-selected
+candidate samples, the distance distribution has a train-fitted gap at 2.118
+nearest-neighbor units. On its close side, the minimum witnessed correct action
+has five independent connections. The frozen section therefore rejects a close
+proposal with fewer than five witnesses. It neither generates coordinates nor
+uses absolute position, direction, family, cell, potential, source-site label,
+or evaluation target.
+
+The original evaluation nucleus now executes
+`3 -> 18 -> 9 -> 35 -> 5 -> 1 -> 0` placements and emits 178 / 178 correct
+atoms (100% precision, 42.48% outer recall). A second predeclared radius-14
+nucleus at `(-15, 10, -15)`, disjoint from both training crops and the first
+evaluation crop, executes `2 -> 12 -> 6 -> 4 -> 10 -> 14 -> 0` and emits
+117 / 117 (100% precision, 27.73% recall). The corresponding unmarked runs
+emit 193 / 220 and 168 / 224, for 83 false atoms in aggregate.
+
+The causal null preserves every frozen candidate and, separately within each
+wave, the complete witness-count multiset, but permutes witness counts among
+placements before the scorer is opened. All 31 shuffled policies run their
+full self-fed consequences on both nuclei. None reaches the learned section's
+295 correct atoms at zero error (`p = 0.03125`). Thus finite autonomous
+continuation, transfer across two nuclei, and the matched GCTS-marking gate are
+green on the published Cd--Yb model. Target-free promotion certifies the
+resulting action macros, but no normalized production recurs across three
+waves; sustained stationary and exponential quasicrystal growth remain red.
+
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring
 atoms overlap a training window. It is retained only as a depth diagnostic and

@@ -797,6 +797,22 @@ macro signature recurs across three waves. Finite autonomous Cd--Yb
 continuation is therefore green; sustained/stationary and exponential growth
 remain red.
 
+A bounded local GCTS section now resolves the finite-growth precision failure
+without using a material label or global coordinate. On the two training
+frontiers, the accepted candidate distances have a learned gap at 2.118
+nearest-neighbor units. Proposals on the close side must have at least five
+independent frozen cluster-connection witnesses. The rule sees only already
+placed atoms and the candidate's overlap witnesses. On two mutually disjoint
+evaluation nuclei it emits 178 / 178 and 117 / 117 correct atoms; the unmarked
+executions emit 193 / 220 and 168 / 224. Across both nuclei that is 295 / 295
+for the section versus 361 / 444 unmarked. Thirty-one controls preserve each
+wave's candidates and witness-count multiset but permute which placement owns
+which count; none matches the learned zero-error reach (`p = 0.03125`). This is
+the first causal GCTS-marking win during autonomous growth of the published
+quasicrystal model. Both marked runs still reach finite fixed points, and their
+promoted action macros have no three-wave recurrence, so sustained and
+exponential growth remain red.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned
