@@ -704,13 +704,21 @@ cap changes the display to three nonempty waves without changing the final
 contains 12 wrong atoms and has no stationary amplification.
 
 A candidate-level marking audit trains on all 718 eligible actions from five
-train-only frontiers (693 valid, 25 invalid), freezes 310 bounded order-two
-states, and runs marked, unmarked, and 31 shuffled arms before opening the
-target. All 62 evaluated commit contexts are unseen—not even the
-parent/production backoff transfers—so the first wave has one score and zero
-rank inversions. Marked and unmarked both recover 136 / 148 atoms, every
-shuffle ties, and `p = 1`. The marking gate therefore stays red because its
-local vocabulary does not yet transfer to exterior macro roles.
+train-only frontiers (693 valid, 25 invalid) and runs every arm before opening
+the target. Exact ID-based contexts transfer 0 / 62. An ID-free port-pose →
+overlap-chemistry → port-kind hierarchy instead covers all 62, creates five
+first-wave scores and 112 rank inversions, and cuts matched exact-action work
+from 71 to 51. It still reconstructs the same 136 / 148 atoms and reaches only
+`p = 0.25` against 31 label shuffles. A 32-feature continuous proper-SE(3)
+mark has excellent train-only validation loss (0.0158 versus 0.1511 global)
+and 360 first-wave inversions, but neither ranking nor a frozen high-precision
+threshold removes the 12 wrong atoms. The threshold yields 134 correct and 12
+wrong. The marking gate remains red because training calibration still does
+not transfer to exterior correctness. Uniformly shifting the five training
+nuclei is rejected too: it grows 718 candidates to 3,119 but adds only five
+failures and still covers 0 / 62 exterior parent roles. The next sampler must
+seek train-only role and failure diversity rather than duplicate easy
+positives.
 
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and

@@ -192,9 +192,11 @@ def evaluate() -> AutonomousGrowthContractAudit:
             "NaCl exact autonomous output uses the specialized positions-only "
             "grid backend, not the generic recurrent port-macro production.",
             "The promoted-macro marking audit labels 718 train-frontier "
-            "candidates, including 25 invalid actions, but all 62 evaluation "
-            "commit contexts are unseen. Marked, unmarked, and 31 shuffled "
-            "arms tie, so the matched marking gate remains red.",
+            "candidates, including 25 invalid actions. An ID-free geometric "
+            "backoff covers all 62 evaluation candidates and reduces matched "
+            "work 71 to 51, but preserves the same 136/148 atom result and "
+            "reaches only p=0.25. A continuous mark and frozen threshold also "
+            "fail to remove the 12 wrong atoms, so marking remains red.",
             "The sealed IQC R11 executor certifies causal depth two and then "
             "reaches a finite fixed point. Changing the batch cap changes "
             "the displayed wave count but not its 148-atom final union, so "

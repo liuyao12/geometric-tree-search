@@ -2295,6 +2295,42 @@ give empirical `p = 1`. The causal macro-marking gate therefore remains red
 for a precise reason: the present marking vocabulary does not transfer from
 internal training frontiers to the exterior evaluation roles.
 
+An ID-free quotient now addresses that exact failure without changing the
+candidate geometry. Its hierarchy uses a symmetry-canonical port-pose key,
+then `(connection kind, overlap-species set)`, then a kind-only marginal. Bin
+widths are chosen by leave-one-training-patch-out log loss over nine fixed
+schemas. Coverage rises from zero to all 62 evaluated candidates: 16 use the
+full incident context, 14 the pose-only backoff, 30 the overlap-chemistry
+backoff, and 2 the kind marginal. It creates five distinct first-wave scores
+and 112 pairwise rank inversions. The final atom set is still 136 / 148, while
+matched exact-action work falls from 71 to 51; with 31 label shuffles the
+empirical result is only `p = 0.25`, so it is useful compression but not yet a
+causal marking win.
+
+A second, continuous mark uses 32 ID-free proper-SE(3) invariants: prototype
+composition, radial/pair moments and proper-symmetry counts; normalized port
+translation/rotation and overlap chemistry; live overlap/emission fractions;
+train evidence; and at most two incoming-port summaries. Ridge strength is
+selected only by five-fold spatial training validation. Its log loss is
+`0.0158` versus the global prior's `0.1511`; the unopened evaluation frontier
+gets 22 distinct first-wave scores and 360 rank inversions. Yet unpruned
+execution again produces 136 / 148. A threshold frozen from out-of-fold
+training at 100% precision/recall prunes to 14 macro placements but produces
+134 correct and the same 12 wrong atoms (91.78% precision). Some shuffled
+threshold arms emit no shared correct atom, so matched work is explicitly
+incomparable rather than selectively dropping those controls. This exposes a
+train-to-exterior calibration shift; neither mark is integrated as the
+default policy.
+
+Uniformly jittering the five training nuclei is not the remedy. Thirty
+predeclared ±1-nearest-neighbor shifts yield 25 executable frontiers and grow
+the training table from 718 to 3,119 candidates, but failures rise only from
+25 to 30. Evaluation parent-role coverage remains 0 / 62 and the median
+standardized role distance remains 5.32. The apparent validation improvement
+is positive duplication, while projected score spread contracts. This
+augmentation is rejected; the next sampler must maximize train-only role and
+failure diversity explicitly.
+
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring
 atoms overlap a training window. It is retained only as a depth diagnostic and
