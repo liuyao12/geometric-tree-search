@@ -260,12 +260,8 @@ def enumerate_frozen_port_occurrences(
             occurrences.append(fitted)
             supports.append((next_id, occurrence.member_indices))
             next_id += 1
-    support_by_id = dict(supports)
-    relations = sum(
-        parent.occurrence_id != child.occurrence_id and
-        len(set(support_by_id[parent.occurrence_id]).intersection(
-            support_by_id[child.occurrence_id])) >= program.minimum_shared_atoms
-        for parent in occurrences for child in occurrences)
+    relations = len(_overlap_pairs_from_supports(
+        supports, program.minimum_shared_atoms))
     return FrozenPortEnumeration(
         tuple(occurrences), tuple(supports), relations,
         sum(len(group) for group in frozen.occurrences_by_type), failures)
@@ -276,14 +272,8 @@ def compile_frozen_target_atlas(
     enumeration: FrozenPortEnumeration, *, pose_tolerance: float = .03,
 ) -> PortAtlas:
     """Score target relations using the frozen prototypes and port schema."""
-    support_by_id = dict(enumeration.occurrence_supports)
-    allowed = frozenset(
-        (parent.occurrence_id, child.occurrence_id)
-        for parent in enumeration.occurrences
-        for child in enumeration.occurrences
-        if parent.occurrence_id != child.occurrence_id and
-        len(set(support_by_id[parent.occurrence_id]).intersection(
-            support_by_id[child.occurrence_id])) >= program.minimum_shared_atoms)
+    allowed = _overlap_pairs_from_supports(
+        enumeration.occurrence_supports, program.minimum_shared_atoms)
     return learn_overlap_ports(
         program.prototypes, enumeration.occurrences,
         minimum_overlap=program.minimum_shared_atoms,
@@ -291,3 +281,29 @@ def compile_frozen_target_atlas(
         exclusion_distance=max(
             pose_tolerance, program.cover.minimum_distance * .45),
         allowed_occurrence_pairs=allowed)
+
+
+def _overlap_pairs_from_supports(occurrence_supports, minimum_shared_atoms):
+    """Return directed overlapping pairs through an atom-inverted index.
+
+    This is exactly equivalent to the former Cartesian occurrence-pair scan,
+    but its work follows witnessed co-membership rather than O(M^2) possible
+    occurrence pairs.
+    """
+    if minimum_shared_atoms <= 0:
+        raise ValueError("minimum shared atoms must be positive")
+    membership = {}
+    for occurrence_id, support in occurrence_supports:
+        for atom in set(support):
+            membership.setdefault(atom, []).append(occurrence_id)
+    shared = {}
+    for occurrence_ids in membership.values():
+        unique = tuple(sorted(set(occurrence_ids)))
+        for parent in unique:
+            for child in unique:
+                if parent == child:
+                    continue
+                pair = parent, child
+                shared[pair] = shared.get(pair, 0) + 1
+    return frozenset(pair for pair, count in shared.items()
+                     if count >= minimum_shared_atoms)

@@ -746,6 +746,23 @@ labels, 267 correctly (95.7% precision, 41.3% recall), while outer species
 remain scorer-only. This is a stronger reconstruction baseline; it is still
 below the 99% / 90% gate and is not autonomous coordinate growth.
 
+The alternatives now feed a bounded overlap tree search. All arms see the same
+55,483 frozen occurrence-decoration actions. With six shared atoms and a 99%
+train-posterior threshold, the GCTS ranking/admission policy infers 354 / 415 labels correctly
+(85.3% precision, 54.7% recall), versus 116 / 140 for the modal ordering. All
+31 within-geometry shuffles fall back to the modal result, giving
+`p = 0.03125`; marking now has a significant role in search, although 61 wrong
+labels keep reconstruction red.
+
+Naively coloring promoted geometry does not solve that residual. The first
+uncolored clusters-of-clusters level retains 457 geometry types and 18,660
+train occurrences, but none of 13 transferred heldout macro occurrences has a
+train-seen whole-macro decoration. Macro type plus child role improves the same
+27 child samples from 2 to 5 correct, yet loses to shuffle controls
+(`p = 0.1875`). Chemistry must therefore remain a finite child alternative;
+the next mark should quotient macro boundary context rather than memorize an
+entire colored macro.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned

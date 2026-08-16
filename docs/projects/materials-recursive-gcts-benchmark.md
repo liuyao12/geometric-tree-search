@@ -2388,6 +2388,40 @@ precision / 90% recall gate remains red. The next step is bounded branch-and-
 backtrack selection among exact decoration alternatives, with marking used to
 order identical candidate sets.
 
+That bounded search is now executable. It freezes 55,483 exact actions—one
+geometric occurrence, one train-observed decoration, and one proper rotational
+gauge—and exposes no target-species argument. A beam state stores only seed or
+committed species and selected occurrences; unlike-species overlap prunes the
+branch. Every arm receives the identical candidate SHA. With a predeclared
+six-atom overlap and 99% train-posterior threshold, the GCTS connection policy
+finds 354 correct labels among 415 inferred outer atoms (85.30% precision,
+54.71% recall). The modal arm finds only 116 / 140 (82.86% precision, 17.93%
+recall). All 31 within-geometry label shuffles collapse to the modal result, so
+both precision and correct-atom comparisons give `p = 0.03125`. This is the
+first significant evidence that learned GCTS ranking/admission improves the covering
+search over identical cluster alternatives. It is not a reconstruction pass:
+61 labels remain wrong and the 99% / 90% gate stays red.
+
+The first geometry-first cluster-of-clusters decoration audit also prevents a
+misleading shortcut. Width-three mining admits 1,263 macros and exact geometry
+quotienting retains 457 types with 18,660 dense train occurrences and 15–55
+atoms per support. On a deterministic sparse heldout primitive cover, only 12
+macro geometry types / 13 occurrences transfer, covering 254 atoms. The train
+vocabulary contains 1,229 whole-macro decoration alternatives, but none of the
+13 heldout macro decorations is train-seen. Treating a whole macro's chemistry
+as its identity therefore increases memorization rather than transfer.
+
+Using macro geometry only as a bounded mark on each primitive child is better
+but still red. `(macro type, child role)` covers all 27 transferred child
+samples and predicts 5 / 27 decorations, versus 2 / 27 for the primitive modal
+baseline. Thirty-one within-primitive-type shuffles reach as high as 6 / 27;
+the learned result has `p = 0.1875`. The next hierarchy representation must
+retain exact child decoration alternatives while quotienting the macro boundary
+mark more coarsely than exact macro type/role. Full promoted-atlas construction
+was also removed from this audit: an atom-inverted exact overlap index and
+lightweight prototype/pose deployment avoid an unnecessary multi-gigabyte
+all-pairs port expansion.
+
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring
 atoms overlap a training window. It is retained only as a depth diagnostic and
