@@ -19,6 +19,14 @@ def test_geometry_decoration_hierarchy_benchmark():
     assert result.heldout_primitive_modal_accuracy_on_same_samples == 2 / 27
     assert result.macro_role_empirical_p_value == .1875
     assert not result.macro_role_beats_shuffled_controls
+    assert result.selected_macro_boundary_schema == "boundary_fine"
+    assert result.heldout_macro_boundary_decoration_accuracy == 5 / 27
+    assert result.macro_boundary_empirical_p_value == .125
+    assert result.heldout_macro_boundary_unique_children == 19
+    assert result.heldout_macro_boundary_consensus_accuracy == 3 / 19
+    assert result.macro_boundary_consensus_empirical_p_value == .21875
+    assert result.heldout_macro_child_train_seen_alternative_samples == 9
+    assert result.heldout_macro_boundary_unique_children_with_train_seen_alternative == 7
     assert result.heldout_promoted_occurrences >= \
         result.heldout_known_decoration_occurrences
     assert result.geometry_fit_before_target_opened

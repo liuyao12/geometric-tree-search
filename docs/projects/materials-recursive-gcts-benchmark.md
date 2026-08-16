@@ -2422,6 +2422,53 @@ was also removed from this audit: an atom-inverted exact overlap index and
 lightweight prototype/pose deployment avoid an unnecessary multi-gigabyte
 all-pairs port expansion.
 
+A train-selected lower-cardinality macro-boundary key does not rescue the
+ideal-IQC chemistry. Leave-one-patch-out selects a `boundary_fine` descriptor
+from child geometry, macro arity, graph degree, boundary incidence/direction,
+normalized radial role, and support-size ratios; it contains no macro or
+occurrence ID and no world pose. It still predicts only 5 / 27 heldout child
+decorations (`p = 0.125` against 31 within-child-type shuffles). Combining all
+boundary marks per unique child gives 3 / 19 (`p = 0.21875`). The exact
+alternative ceiling explains much of the failure: only 9 / 27 role samples and
+7 / 19 unique children have their correct full decoration anywhere in train.
+
+Factorizing a decoration into a maximum-information tree of unary and pairwise
+site sections can emit unseen combinations, but unconstrained composition is
+also insufficient. On ideal IQC it raises heldout exact occurrence accuracy
+only from 4.96% to 5.44% and site accuracy from 68.68% to 69.78%; 811 predicted
+whole decorations are unseen in train and none is exactly correct. The partial
+section is retained as an honest red generator, not added to search.
+
+### Published Cd--Yb disjoint reconstruction
+
+The same generic geometry/decoration pipeline now has a stronger real-material
+test. Two predeclared, mutually disjoint radius-14 crops of the published
+Cd5.7Yb model provide 969 train atoms; a third radius-14 crop, at least 30.55
+angstrom from either train centre, provides 478 evaluation atoms. The learner
+receives positions/species only—no cut-and-project coordinates, source-site
+labels, family name, cell, or physical potential. With species hidden during
+geometry fitting, 166 support types and 713 frozen evaluation occurrences
+cover 449 / 478 atoms (93.93%). This is a large improvement over the earlier
+single 506-atom crop's 277 / 478 (57.95%) coverage. Whole-decoration modal and
+pair-factor models both reach 66.20% exact occurrence and 94.57% site accuracy;
+the remaining 29 explicit singleton gap clusters are only 27 / 29 correct
+under a bounded radial/nearby-cluster KNN mark.
+
+Joint covering search resolves that ambiguity much more strongly than
+independent classification. A radius-7 colored seed contains 59 atoms. Every
+arm then receives the same 1,385 exact actions formed from 713 frozen geometry
+occurrences and 174 train-observed decoration alternatives. With a five-atom
+overlap and 99% train-posterior threshold, GCTS reconstructs 378 / 378 novel
+atoms exactly: 100% precision and 90.21% recall over the 419-atom outer region.
+The modal arm and all 31 within-geometry label shuffles reconstruct 377 / 377,
+for 89.98% recall. Precision is at 100% for every arm; the meaningful causal
+comparison is extra correct reach at no precision loss, where GCTS gives
+`p = 0.03125`. Thus the unchanged 99%-precision / 90%-recall reconstruction
+gate and the matched-quality GCTS marking gate are green on a published
+icosahedral material model. Coordinates are supplied and the search reaches a
+finite fixed point, so autonomous continuation, stationary recurrence, and
+exponential growth remain red.
+
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring
 atoms overlap a training window. It is retained only as a depth diagnostic and

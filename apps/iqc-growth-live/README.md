@@ -763,6 +763,25 @@ train-seen whole-macro decoration. Macro type plus child role improves the same
 the next mark should quotient macro boundary context rather than memorize an
 entire colored macro.
 
+The lower-cardinality boundary follow-up remains red on ideal IQC. A
+train-selected ID-free macro-boundary descriptor predicts 5 / 27 child
+decorations (`p = 0.125`); consensus over unique children gives 3 / 19
+(`p = 0.21875`). Only 9 / 27 role samples have their correct full decoration
+anywhere in training. Unary/pair partial sections can generate unseen whole
+decorations, but improve heldout site accuracy only from 68.68% to 69.78%; none
+of 811 unseen predictions is exactly correct.
+
+The published Cd5.7Yb model is a much stronger positive case. Two disjoint
+radius-14 crops provide 969 train atoms and a third disjoint crop provides 478
+evaluation atoms. Frozen geometry covers 449 / 478 atoms. From a 59-atom
+colored inner seed, every search arm sees the same 1,385 exact actions. GCTS
+reconstructs 378 / 378 novel atoms (100% precision, 90.21% outer recall), while
+modal and all 31 within-geometry shuffles stop at 377 / 377 (89.98% recall).
+The extra correct reach at unchanged perfect precision gives `p = 0.03125`.
+This turns the fixed quasicrystal reconstruction and GCTS-ablation gates green
+on a published real-material model. Positions are supplied and the frontier
+reaches a finite fixed point, so autonomous and exponential gates remain red.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned
