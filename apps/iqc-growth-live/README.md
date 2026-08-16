@@ -782,6 +782,21 @@ This turns the fixed quasicrystal reconstruction and GCTS-ablation gates green
 on a published real-material model. Positions are supplied and the frontier
 reaches a finite fixed point, so autonomous and exponential gates remain red.
 
+The same split now has a genuinely autonomous coordinate-emission test. A
+colored irregular-support grammar is frozen from the two training crops, and a
+consensus threshold is selected only by radius-7 to radius-14 reconstruction
+inside those training domains. The selected threshold, 0.6, is then applied to
+the disjoint 59-atom seed with only a public radius-14 boundary. Before the
+478-atom target is opened, five self-fed waves accept `3 -> 18 -> 9 -> 35 -> 7`
+whole clusters and emit 179 coordinates. The sealed scorer finds 177 correct
+and 2 wrong: 98.88% precision and 42.24% recall over the 419-atom outer region.
+The unfiltered arm reaches 68.26% recall but only 78.14% precision; strict
+consensus is exact but reaches only 4.53%. The accepted antichains are promoted
+target-free into exactly certified colored action macros, but no normalized
+macro signature recurs across three waves. Finite autonomous Cd--Yb
+continuation is therefore green; sustained/stationary and exponential growth
+remain red.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned

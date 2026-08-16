@@ -2469,6 +2469,35 @@ icosahedral material model. Coordinates are supplied and the search reaches a
 finite fixed point, so autonomous continuation, stationary recurrence, and
 exponential growth remain red.
 
+### Published Cd--Yb autonomous frontier continuation
+
+Reconstruction no longer supplies the outer coordinates in this follow-up.
+The two 969-atom training crops fit 175 colored irregular cluster types, 804
+occurrences, and 14,595 finite proper-SE(3) overlap ports. Six candidate
+consensus thresholds are evaluated only on radius-7 to radius-14 training
+reconstructions. Threshold 0.6 is the highest-reach choice for which both
+training windows retain at least 99% precision (both are in fact exact).
+
+The frozen grammar then sees only the disjoint 59-atom colored seed and a
+public radius-14 boundary. Six recognized clusters cover 49 seed atoms; ten
+explicit singleton gap clusters complete the seed. All evaluation executions
+finish and their candidate/action/site digests are frozen before the 478-atom
+target factory is called. Five self-fed waves accept
+`3 -> 18 -> 9 -> 35 -> 7` complete clusters and emit 179 novel coordinates;
+the scorer finds 177 correct and 2 wrong, or 98.88% precision and 42.24% recall
+over the 419 outer atoms. An unfiltered diagnostic emits 366 atoms and reaches
+68.26% recall at 78.14% precision, while strict consensus emits 19 / 19 at
+only 4.53% recall. This makes the bounded finite-autonomous continuation gate
+green without hiding its precision/coverage trade-off.
+
+The selected target-free trace also feeds the cluster-of-clusters loop.
+Commuting wave placements become colored action macros with exact node cover,
+proper poses, colored unions, overlap intersections, frozen incoming ports,
+and antichain certificates. No normalized action-macro production recurs over
+three waves. Continuing the same threshold past the calibrated five waves also
+accumulates errors. The result is therefore finite autonomous real-material
+continuation, not sustained stationarity or exponential symbolic growth.
+
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring
 atoms overlap a training window. It is retained only as a depth diagnostic and
