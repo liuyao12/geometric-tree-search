@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from dataclasses import asdict, dataclass
@@ -70,8 +71,16 @@ class ContinuousCompletionMarkingAudit:
     outer_lopo_logloss: float
     outer_lopo_auc: float
     outer_lopo_unique_scores: int
+    shift_admission_uses_all_five_labels: bool
+    lopo_diagnostic_not_fully_nested: bool
+    nested_outer_expansion_admitted_by_fold: tuple[bool, ...]
+    nested_outer_lopo_logloss: float
+    nested_outer_lopo_auc: float
+    nested_outer_lopo_unique_scores: int
     selected_final_lambda: float
     frozen_model: FrozenContinuousCompletionMarking
+    training_corpus_digest: str
+    frozen_model_digest: str
     all_samples_from_five_training_windows: bool
     confirmatory_nucleus_opened_or_scored: bool
     target_used_outside_training_windows: bool
@@ -186,6 +195,23 @@ def _dedupe(rows):
 def _role_count(rows):
     return len({tuple(round(value, 3) for value in row.features)
                 for row in rows if not row.successful})
+
+
+def _corpus_digest(rows):
+    payload = tuple((row.window, row.candidate_id,
+                     tuple(float(value) for value in row.features),
+                     bool(row.successful))
+                    for row in sorted(rows, key=lambda item: (
+                        item.window, item.candidate_id, item.features)))
+    serialized = json.dumps(payload, sort_keys=True, separators=(",", ":"),
+                            allow_nan=False)
+    return hashlib.sha256(serialized.encode()).hexdigest()
+
+
+def _model_digest(model):
+    serialized = json.dumps(asdict(model), sort_keys=True,
+                            separators=(",", ":"), allow_nan=False)
+    return hashlib.sha256(serialized.encode()).hexdigest()
 
 
 def _sigmoid(value):
@@ -325,6 +351,29 @@ def evaluate():
         predictions.extend(_predict(model, row) for row in heldout_rows)
         prediction_rows.extend(heldout_rows)
         selected_lambdas.append(ridge)
+    # Diagnostic only: unlike the published outer score above, each fold now
+    # decides whether shifted seeds are admissible from its four discovery
+    # windows.  This does not alter the already frozen final corpus or model.
+    nested_decisions = []
+    nested_predictions = []
+    nested_prediction_rows = []
+    for heldout in range(len(TRAIN_CENTERS)):
+        base_fit = tuple(row for row in base if row.window != heldout)
+        expanded_fit = tuple(row for row in expanded if row.window != heldout)
+        decision = (
+            sum(not row.successful for row in expanded_fit) >
+            sum(not row.successful for row in base_fit) and
+            _role_count(expanded_fit) > _role_count(base_fit))
+        nested_decisions.append(decision)
+        selected = expanded if decision else base
+        fit_rows = tuple(row for row in selected if row.window != heldout)
+        validation_rows = tuple(row for row in selected
+                                if row.window == heldout)
+        ridge = _select_lambda(selected, heldout)
+        nested_model = _fit(fit_rows, ridge)
+        nested_predictions.extend(
+            _predict(nested_model, row) for row in validation_rows)
+        nested_prediction_rows.extend(validation_rows)
     final_lambda = _select_lambda(rows)
     model = _fit(rows, final_lambda)
     return ContinuousCompletionMarkingAudit(
@@ -339,8 +388,13 @@ def evaluate():
         FEATURE_NAMES, len(TRAIN_CENTERS),
         _logloss(prediction_rows, predictions),
         _auc(prediction_rows, predictions),
-        len({round(value, 12) for value in predictions}), final_lambda,
-        model, True, False, False, False,
+        len({round(value, 12) for value in predictions}), True, True,
+        tuple(nested_decisions),
+        _logloss(nested_prediction_rows, nested_predictions),
+        _auc(nested_prediction_rows, nested_predictions),
+        len({round(value, 12) for value in nested_predictions}), final_lambda,
+        model, _corpus_digest(rows), _model_digest(model),
+        True, False, False, False,
         bool(rows) and len(set(row.window for row in rows)) == 5)
 
 

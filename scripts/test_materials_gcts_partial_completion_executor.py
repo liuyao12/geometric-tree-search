@@ -2,6 +2,7 @@
 """Synthetic two-level control for target-blind partial macro execution."""
 
 from types import SimpleNamespace
+import copy
 
 from materials_gcts_oriented_overlap_ports import (
     ClusterOccurrence, IDENTITY, OrientedOverlapPort, PortAtlas,
@@ -119,7 +120,34 @@ def test_same_level_second_wave_uses_committed_children():
     assert len(set(item.candidate_digest for item in result.waves)) == 2
 
 
+def test_admitted_label_with_wrong_child_geometry_fails_certificate():
+    seed_prototype, levels = _fixture()
+    level = levels[0]
+    macro = copy.deepcopy(level.alternatives[0])
+    # The boundary label still says +2, but the missing child pose says +3.
+    placements = list(macro.child_placements)
+    placements[1] = MacroChildPlacement(1, 1, IDENTITY, (3., 0., 0.))
+    macro.child_placements = tuple(placements)
+    wrong_parent = make_prototype(10, _union(
+        _render(level.frozen_lower_program.prototypes[0], (0., 0., 0.)),
+        _render(level.frozen_lower_program.prototypes[1], (3., 0., 0.)),
+        _render(level.frozen_lower_program.prototypes[0], (4., 0., 0.))))
+    adversarial = PartialCompletionLevel(
+        level.frozen_lower_program, (macro,), level.alternative_parent_types,
+        SimpleNamespace(prototypes=(wrong_parent,)))
+    seed = (ClusterOccurrence(0, 0, IDENTITY, (0., 0., 0.)),)
+    result = execute_partial_completion_level(
+        adversarial, seed, explicit_seed_sites=seed_prototype.sites,
+        maximum_waves=1, maximum_accepted_per_wave=1,
+        pose_tolerance=1e-6)
+    assert result.waves[0].candidate_count > 0
+    assert result.waves[0].accepted_whole_macros == 0
+    assert result.waves[0].rejected_batch_conflicts > 0
+    assert not result.certificates
+
+
 if __name__ == "__main__":
     test_two_level_whole_macro_batches_self_feed_without_target()
     test_same_level_second_wave_uses_committed_children()
+    test_admitted_label_with_wrong_child_geometry_fails_certificate()
     print("partial completion multiwave executor: passed")

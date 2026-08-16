@@ -11,10 +11,10 @@ from typing import Hashable, Sequence
 
 from materials_gcts_oriented_overlap_ports import (
     ClusterOccurrence, PortAtlas, canonical_relative_pose,
-    fit_occurrence_pose, is_proper_rotation, matmul, matvec)
-from materials_gcts_partial_completion_marking import (
-    FrozenCompletionMarking, freeze_completion_candidate,
-    rank_completion_candidates)
+    fit_occurrence_pose, is_proper_rotation, matmul, matvec, transpose)
+from materials_gcts_partial_completion_marking import freeze_completion_candidate
+from materials_gcts_partial_completion_execution_policy import (
+    CompletionExecutionPolicy, rank_execution_candidates)
 from materials_gcts_partial_promoted_frontier import (
     enumerate_partial_promoted_completions)
 
@@ -47,9 +47,11 @@ class PartialCompletionWave:
     wave: int
     candidate_count: int
     candidate_digest: str
+    candidate_ids: tuple[str, ...]
     accepted_whole_macros: int
     rejected_batch_conflicts: int
     rejected_redundant: int
+    rejected_below_threshold: int
     emitted_atoms: int
     appended_child_occurrences: int
     promoted_occurrences: int
@@ -188,17 +190,70 @@ def _full_rhs_sites(completion, macro, prototypes):
     return tuple(result[key] for key in sorted(result))
 
 
+def _placement_port_semantic(source, target, prototypes, tolerance):
+    inverse = transpose(source.rotation)
+    relative_rotation = matmul(inverse, target.rotation)
+    relative_translation = matvec(inverse, tuple(
+        target.translation[index] - source.translation[index]
+        for index in range(3)))
+    _rotation, _translation, key = canonical_relative_pose(
+        prototypes[source.cluster_type], prototypes[target.cluster_type],
+        relative_rotation, relative_translation, tolerance)
+    return source.cluster_type, target.cluster_type, key
+
+
+def _verify_frozen_completion_ports(frozen, macro, completion, prototypes,
+                                    tolerance):
+    """Recompose accepted child poses and verify their frozen directed ports."""
+    admitted = {(item.parent_type, item.child_type,
+                 item.symmetry_orbit_key)
+                for item in getattr(frozen.atlas, "ports", ())}
+    admitted.update((item.parent_type, item.child_type,
+                     item.symmetry_orbit_key)
+                    for item in getattr(frozen, "boundary_ports", ()))
+    placements = {item.node: item for item in macro.child_placements}
+    matched = set(completion.matched_nodes)
+    missing = {item.node for item in completion.missing_children}
+    crossing = False
+    for edge in getattr(macro, "edges", ()):
+        if edge.source not in placements or edge.target not in placements:
+            return False
+        semantic = _placement_port_semantic(
+            placements[edge.source], placements[edge.target],
+            prototypes, tolerance)
+        if semantic != tuple(edge.port) or semantic not in admitted:
+            return False
+        crossing |= edge.source in matched and edge.target in missing
+    for slot in getattr(macro, "boundary_slots", ()):
+        if (slot.node not in matched or slot.direction != "outgoing" or
+                slot.node not in placements or slot.occurrence_support <= 0 or
+                tuple(slot.port) not in admitted):
+            continue
+        for child_node in missing:
+            target = placements.get(child_node)
+            if target is None or target.cluster_type != slot.outside_type:
+                continue
+            semantic = _placement_port_semantic(
+                placements[slot.node], target, prototypes, tolerance)
+            crossing |= semantic == tuple(slot.port)
+    return crossing
+
+
 def execute_partial_completion_level(
     level: PartialCompletionLevel,
     seed_occurrences: Sequence[ClusterOccurrence], *,
     explicit_seed_sites: Sequence[Site] = (), public_boundary=None,
-    marking: FrozenCompletionMarking | None = None,
+    marking: CompletionExecutionPolicy = None,
     maximum_waves: int = 3, maximum_accepted_per_wave: int = 32,
     minimum_child_coverage: float = 0., pose_tolerance: float = .03,
+    minimum_marking_score: float | None = None,
     level_index: int = 1,
 ) -> PartialCompletionExecution:
     if not seed_occurrences or maximum_waves < 0 or maximum_accepted_per_wave < 1:
         raise ValueError("invalid partial completion execution seed/limits")
+    if (minimum_marking_score is not None and
+            not math.isfinite(minimum_marking_score)):
+        raise ValueError("minimum marking score must be finite")
     frozen = level.frozen_lower_program
     prototypes = {item.type_id: item for item in frozen.prototypes}
     promoted_prototypes = {item.type_id: item
@@ -248,12 +303,17 @@ def execute_partial_completion_level(
                 pose_tolerance=pose_tolerance)
             candidates.append(frozen_candidate)
             completion_by_id[frozen_candidate.candidate_id] = completion
-        ranking = rank_completion_candidates(candidates, marking)
+        ranking = rank_execution_candidates(
+            candidates, completion_by_id, macros, minimum_distance, marking)
         digest = ranking.candidate_digest
-        accepted = conflicts = redundant = emitted_count = child_count = 0
+        accepted = conflicts = redundant = below = emitted_count = child_count = 0
         batch_sites = dict(occupied)
         for ranked in ranking.ranked:
             if accepted >= maximum_accepted_per_wave:
+                break
+            if (minimum_marking_score is not None and
+                    ranked.marking_score < minimum_marking_score):
+                below = len(ranking.ranked) - ranked.rank + 1
                 break
             candidate = ranked.candidate
             completion = completion_by_id[candidate.candidate_id]
@@ -270,6 +330,12 @@ def execute_partial_completion_level(
                 continue
             full_sites = _full_rhs_sites(
                 completion, macros[completion.macro_id], prototypes)
+            port_witnessed = _verify_frozen_completion_ports(
+                frozen, macros[completion.macro_id], completion,
+                prototypes, pose_tolerance)
+            if not port_witnessed:
+                conflicts += 1
+                continue
             parent_type = parent_by_macro[completion.macro_id]
             try:
                 fitted = fit_occurrence_pose(
@@ -310,7 +376,7 @@ def execute_partial_completion_level(
             certificates.append(PartialCompletionCertificate(
                 candidate.candidate_id,
                 completion.exact_frozen_rhs_geometry,
-                is_proper_rotation(completion.macro_rotation), True,
+                is_proper_rotation(completion.macro_rotation), port_witnessed,
                 all(_site_key(site, pose_tolerance) not in occupied
                     for site in emitted), not invalid, True,
                 hashlib.sha256(repr(payload).encode()).hexdigest()))
@@ -320,8 +386,9 @@ def execute_partial_completion_level(
             emitted_count += len(emitted)
         occupied = batch_sites
         waves.append(PartialCompletionWave(
-            wave_index, len(candidates), digest, accepted, conflicts,
-            redundant, emitted_count, child_count,
+            wave_index, len(candidates), digest,
+            tuple(sorted(item.candidate_id for item in candidates)),
+            accepted, conflicts, redundant, below, emitted_count, child_count,
             len(promoted) - sum(item.promoted_occurrences for item in waves)))
         if not accepted:
             break
@@ -348,9 +415,10 @@ def execute_partial_completion_hierarchy(
     levels: Sequence[PartialCompletionLevel],
     seed_occurrences: Sequence[ClusterOccurrence], *,
     explicit_seed_sites: Sequence[Site] = (), public_boundary=None,
-    markings: Sequence[FrozenCompletionMarking | None] = (),
+    markings: Sequence[CompletionExecutionPolicy] = (),
     maximum_waves_per_level: int = 2,
     maximum_accepted_per_wave: int = 32,
+    minimum_marking_score: float | None = None,
     pose_tolerance: float = .03,
 ) -> PartialCompletionHierarchyExecution:
     occurrences = tuple(seed_occurrences)
@@ -365,6 +433,7 @@ def execute_partial_completion_hierarchy(
             public_boundary=public_boundary, marking=marking,
             maximum_waves=maximum_waves_per_level,
             maximum_accepted_per_wave=maximum_accepted_per_wave,
+            minimum_marking_score=minimum_marking_score,
             pose_tolerance=pose_tolerance, level_index=index)
         results.append(result)
         sites = result.sites
