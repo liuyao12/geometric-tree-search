@@ -2608,6 +2608,49 @@ and four-level frozen deployment are stronger clusters-of-clusters evidence,
 while transferable vocabulary closure, stationary recurrence, and exponential
 Cd--Yb growth remain red.
 
+### From hierarchy re-encoding to seed-only macro execution
+
+The next benchmark asks whether the frozen higher levels can actually emit
+coordinates. It uses the same five training crops and a predeclared evaluation
+centre `(35, 30, 20)` in a wider published-model crop. The learner receives a
+478-atom radius-14 seed and a public radius-25 boundary. The 2,696-atom scoring
+target is at least 49.244 angstrom from every training centre—greater than the
+39-angstrom sum of train and target radii—and is opened only after every
+candidate trace is immutable.
+
+The seed contains 276 frozen primitive occurrences and 500 train-admitted
+primitive relations, but no complete level-one promoted macro. Consequently,
+the exact hierarchy executor cannot start any of its nine frozen levels. A
+NaCl control recognizes and executes its frozen level-one macro with exact
+certificates, so this is a Cd--Yb vocabulary/recognition failure rather than a
+missing executor API.
+
+GCTS can recognize a partial macro instead. The generic matcher anchors a
+frozen RHS on already observed child clusters, enumerates every finite proper
+symmetry gauge, requires a train-admitted internal or boundary port from the
+anchor to a missing child, and rejects collisions, public-boundary violations,
+and cross-parent ambiguity. Two-child recognition remains empty. Allowing one
+finite child witness over all 181 exact derivation alternatives produces 82
+target-blind completion candidates and 333 unique proposed atoms. Posthoc only
+6 / 82 complete actions are exact; the other 76 show why completion must be a
+tree-search decision rather than an unconditional macro copy.
+
+A bounded GCTS mark is fitted only on five radius-7 to radius-14 training
+frontiers. Those contain 14 completion candidates—8 positive and 6 negative.
+Five-fold leave-one-patch-out freezes threshold 0.25 and a top-five budget.
+On the sealed radius-14 to radius-25 frontier, the marked top five contain one
+exact and four wrong actions, emitting 16 correct and 18 wrong sites. Constant
+ordering also finds one exact action (13 correct / 24 wrong sites); a
+frequency baseline finds none. All 31 within-parent train-label shuffles tie
+the marked result, giving `p = 1`.
+
+Thus partial promoted completion is now finite, target-blind, proper-SE(3),
+port-witnessed, and executable in principle, but its current marking does not
+transfer. The next algorithmic target is a lower-cardinality or learned
+continuous local section trained on a more diverse set of train-only frontier
+failures, followed by a newly predeclared confirmatory nucleus. No autonomous
+hierarchical or exponential claim is made from this red result.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

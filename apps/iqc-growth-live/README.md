@@ -841,6 +841,22 @@ no absent type. Since heldout coordinates are supplied for matching, the four
 levels are exact re-encoding, not autonomous growth. Transferable vocabulary
 closure, stationary recurrence, and exponential Cd--Yb growth remain red.
 
+The hierarchy now has a seed-only execution gate. A predeclared 478-atom
+radius-14 Cd--Yb seed is spatially disjoint from all five training windows and
+the radius-25 target remains unopened during execution. It recognizes 276
+primitive occurrences but zero complete level-one macros, so the exact frozen
+hierarchy cannot start. A NaCl control executes its recognized macro exactly.
+
+The generic fallback recognizes a promoted macro from a finite partial RHS.
+It enumerates proper symmetry gauges, requires a train-admitted port from the
+observed anchor to a missing child, and rejects collision, boundary, or parent
+ambiguity. One-child recognition produces 82 target-blind candidates; only six
+are exact posthoc. A GCTS mark trained on five radius-7 to radius-14 frontiers
+selects one exact action among its top five and emits 16 correct / 18 wrong
+sites, versus constant ordering's 13 / 24. All 31 within-parent label shuffles
+tie it (`p = 1`). The partial macro search machinery is now present, but
+transferable ranking and autonomous hierarchical growth remain red.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned
