@@ -29,6 +29,9 @@ class ExecutionBoundary:
 class FrozenExecutionPolicy:
     strategy: str = "overlap-first"
     minimum_consensus_ratio: float = 0.
+    maximum_incoming_context: int = 2
+    marking_scores: tuple[
+        tuple[tuple[int, int, tuple[int, ...]], float], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -43,6 +46,8 @@ class RecurrentCandidateTrace:
     overlap_atoms: int
     emitted_atoms: int
     decision: str
+    marking_context: tuple[int, ...] = ()
+    marking_score: float = 0.
 
 
 @dataclass(frozen=True)
@@ -51,6 +56,21 @@ class AcceptedMacroPlacement:
     candidate_id: str
     node: SymbolicMacroNode
     certificate: OverlapInclusionCertificate
+
+
+@dataclass(frozen=True)
+class EligibleMacroCandidate:
+    wave: int
+    candidate_id: str
+    parent_node: int
+    parent_type: int
+    production_id: int
+    production_kind: str
+    child_type: int
+    marking_context: tuple[int, ...]
+    marking_score: float
+    overlap_atoms: int
+    emitted_site_keys: tuple[SiteKey, ...]
 
 
 @dataclass(frozen=True)
@@ -72,6 +92,7 @@ class RecurrentMacroExecution:
     seed_sites: tuple[Site, ...]
     nodes: tuple[SymbolicMacroNode, ...]
     accepted: tuple[AcceptedMacroPlacement, ...]
+    eligible_candidates: tuple[EligibleMacroCandidate, ...]
     waves: tuple[RecurrentMacroWave, ...]
     trace: tuple[RecurrentCandidateTrace, ...]
     sites: tuple[Site, ...]
@@ -81,8 +102,12 @@ class RecurrentMacroExecution:
     rejected_colored_collisions: int
     rejected_insufficient_overlap: int
     rejected_commit_conflicts: int
+    deferred_by_wave_cap: int
     rejection_trace_complete: bool
     exhausted: bool
+    longest_parent_child_depth: int
+    reachable_fixed_point: bool
+    stopped_by_wave_limit: bool
     self_fed: bool
     exact_certificates: bool
     target_used_for_proposals_or_ranking: bool
@@ -145,9 +170,15 @@ def execute_recurrent_macro_program(
         raise ValueError("pose tolerance must be finite and positive")
     _validate_boundary(boundary)
     if (policy.strategy not in {
-            "overlap-first", "evidence-first", "consensus"} or
-            not 0 <= policy.minimum_consensus_ratio <= 1):
+            "overlap-first", "evidence-first", "consensus",
+            "causal-marking"} or
+            not 0 <= policy.minimum_consensus_ratio <= 1 or
+            not 0 <= policy.maximum_incoming_context <= 2):
         raise ValueError("unknown or invalid frozen execution policy")
+    marking_scores = dict(policy.marking_scores)
+    if (len(marking_scores) != len(policy.marking_scores) or
+            any(not math.isfinite(value) for value in marking_scores.values())):
+        raise ValueError("frozen marking table has duplicate or invalid scores")
     prototypes = {item.type_id: item for item in program.prototypes}
     productions = _compile_productions(program)
     port_geometry = _production_ports(program)
@@ -191,6 +222,7 @@ def execute_recurrent_macro_program(
                                 node.translation, pose_tolerance)
                       for node in nodes}
     orbit_cache = {}
+    node_context = {}
     frontier = tuple(nodes)
     trace = []
 
@@ -198,11 +230,39 @@ def execute_recurrent_macro_program(
         if trace_rejections or event.phase == "commit":
             trace.append(event)
     accepted = []
+    eligible_snapshots = []
     waves = []
     attempted = duplicate = outside = collision = insufficient = commit = 0
+    cap_deferred = 0
     exhausted = False
     for wave in range(1, maximum_waves + 1):
         eligible = {}
+        incident_context = {}
+        for parent in frontier:
+            incident = []
+            parent_pose = _pose_key(parent.macro_type, parent.rotation,
+                                    parent.translation, pose_tolerance)
+            for production in by_parent.get(parent.macro_type, ()):
+                child_prototype = prototypes[production.child_type]
+                orbit = orbit_cache.get(production.production_id)
+                if orbit is None:
+                    orbit = expand_port_orbit(
+                        prototypes[production.parent_type], child_prototype,
+                        port_geometry[production.production_id],
+                        pose_tolerance)
+                    orbit_cache[production.production_id] = orbit
+                for relative_rotation, relative_translation in orbit:
+                    rotation = matmul(parent.rotation, relative_rotation)
+                    translation = _add(parent.translation, matvec(
+                        parent.rotation, relative_translation))
+                    pose = _pose_key(production.child_type, rotation,
+                                     translation, pose_tolerance)
+                    if pose != parent_pose and pose in existing_poses:
+                        incident.append(production.production_id)
+            incident_context[parent.node_id] = tuple(sorted(incident))[
+                :policy.maximum_incoming_context]
+            node_context.setdefault(parent.node_id,
+                                    incident_context[parent.node_id])
         for parent in frontier:
             for production in by_parent.get(parent.macro_type, ()):
                 child_prototype = prototypes[production.child_type]
@@ -279,8 +339,15 @@ def execute_recurrent_macro_program(
                                 productions[prior[1].production_id].production_kind,
                                 prior[1].child_type, len(prior[1].overlap),
                                 len(prior[1].emitted), "duplicate-rendered-union"))
-                        eligible[rendered_key] = (ranking, candidate, candidate_id)
+                        witnesses = ({(parent.node_id,
+                                       production.production_id)} if prior is None
+                                     else set(prior[3]) | {(parent.node_id,
+                                                           production.production_id)})
+                        eligible[rendered_key] = (
+                            ranking, candidate, candidate_id, witnesses)
                     else:
+                        prior[3].add((parent.node_id,
+                                      production.production_id))
                         duplicate += 1
                         record(RecurrentCandidateTrace(
                             *common, len(overlap), len(emitted),
@@ -289,7 +356,7 @@ def execute_recurrent_macro_program(
         candidate_digest = hashlib.sha256(repr(tuple(sorted(
             item[2] for item in eligible_values))).encode("utf-8")).hexdigest()
         site_support = {}
-        for _ranking, candidate, candidate_id in eligible_values:
+        for _ranking, candidate, candidate_id, _witnesses in eligible_values:
             for site in {_site_key(item, pose_tolerance)
                          for item in candidate.emitted}:
                 site_support.setdefault(site, set()).add(candidate_id)
@@ -297,7 +364,7 @@ def execute_recurrent_macro_program(
                               default=1)
 
         def policy_key(item):
-            _ranking, candidate, candidate_id = item
+            _ranking, candidate, candidate_id, _witnesses = item
             production = productions[candidate.production_id]
             evidence = (production.training_observations +
                         production.training_child_port_witnesses)
@@ -307,6 +374,17 @@ def execute_recurrent_macro_program(
                             default=0)
             stable = (production.production_kind != "overlap",
                       production.production_id, candidate_id)
+            parent_node = nodes[candidate.parent_node]
+            context = node_context[candidate.parent_node]
+            if policy.strategy == "causal-marking":
+                key = (parent_node.macro_type,
+                       candidate.production_id, context)
+                backoff = (parent_node.macro_type,
+                           candidate.production_id, ())
+                score = marking_scores.get(
+                    key, marking_scores.get(backoff, 0.))
+                return (-score, -len(candidate.overlap),
+                        -len(candidate.emitted), -evidence, *stable)
             if policy.strategy == "evidence-first":
                 return (-evidence, -len(candidate.overlap),
                         -len(candidate.emitted), *stable)
@@ -319,7 +397,28 @@ def execute_recurrent_macro_program(
         ordered = sorted(eligible_values, key=policy_key)
         accepted_nodes = []
         wave_emitted = 0
-        for _ranking, candidate, candidate_id in ordered:
+        candidate_marking = {}
+        for item in ordered:
+            _ranking, candidate, candidate_id, _witnesses = item
+            key = (nodes[candidate.parent_node].macro_type,
+                   candidate.production_id,
+                   node_context[candidate.parent_node])
+            backoff = (key[0], key[1], ())
+            candidate_marking[candidate_id] = (
+                key[2], marking_scores.get(
+                    key, marking_scores.get(backoff, 0.)))
+            context, score = candidate_marking[candidate_id]
+            production = productions[candidate.production_id]
+            eligible_snapshots.append(EligibleMacroCandidate(
+                wave, candidate_id, candidate.parent_node,
+                nodes[candidate.parent_node].macro_type,
+                candidate.production_id, production.production_kind,
+                candidate.child_type, context, score,
+                len(candidate.overlap), tuple(sorted(
+                    _site_key(site, pose_tolerance)
+                    for site in candidate.emitted))))
+        for _ranking, candidate, candidate_id, witnesses in ordered:
+            context, marking_score = candidate_marking[candidate_id]
             emitted_keys = {_site_key(site, pose_tolerance)
                             for site in candidate.emitted}
             consensus = min((len(site_support[key]) for key in emitted_keys),
@@ -332,15 +431,18 @@ def execute_recurrent_macro_program(
                     candidate.production_id,
                     productions[candidate.production_id].production_kind,
                     candidate.child_type, len(candidate.overlap),
-                    len(candidate.emitted), "below-frozen-consensus"))
+                    len(candidate.emitted), "below-frozen-consensus",
+                    context, marking_score))
                 continue
             if len(accepted_nodes) >= maximum_accepted_per_wave:
+                cap_deferred += 1
                 record(RecurrentCandidateTrace(
                     wave, "commit", candidate_id, candidate.parent_node,
                     candidate.production_id,
                     productions[candidate.production_id].production_kind,
                     candidate.child_type, len(candidate.overlap),
-                    len(candidate.emitted), "wave-cap"))
+                    len(candidate.emitted), "wave-cap", context,
+                    marking_score))
                 continue
             overlap, emitted, invalid = occupied_index.classify(
                 candidate.rendered, pose_tolerance, exclusion)
@@ -352,7 +454,7 @@ def execute_recurrent_macro_program(
                     wave, "commit", candidate_id, candidate.parent_node,
                     candidate.production_id, production.production_kind,
                     candidate.child_type, len(overlap), len(emitted),
-                    "commit-conflict"))
+                    "commit-conflict", context, marking_score))
                 continue
             node = SymbolicMacroNode(
                 len(nodes), candidate.child_type, candidate.rotation,
@@ -386,6 +488,9 @@ def execute_recurrent_macro_program(
                 node.macro_type, node.rotation, node.translation,
                 pose_tolerance))
             nodes.append(node)
+            node_context[node.node_id] = tuple(sorted({
+                production_id for _parent_id, production_id in witnesses
+            }))[:policy.maximum_incoming_context]
             accepted_nodes.append(node)
             accepted.append(AcceptedMacroPlacement(
                 wave, candidate_id, node, certificate))
@@ -393,7 +498,8 @@ def execute_recurrent_macro_program(
             record(RecurrentCandidateTrace(
                 wave, "commit", candidate_id, candidate.parent_node,
                 candidate.production_id, production.production_kind,
-                candidate.child_type, len(overlap), len(new_sites), "accepted"))
+                candidate.child_type, len(overlap), len(new_sites), "accepted",
+                context, marking_score))
         occupied = tuple(occupied_by_coordinate[key]
                          for key in sorted(occupied_by_coordinate))
         waves.append(RecurrentMacroWave(
@@ -408,11 +514,15 @@ def execute_recurrent_macro_program(
         item.certificate.emitted_is_exact_difference and
         item.certificate.adjacency_witnessed_in_training and
         item.certificate.conflicting_sites == 0 for item in accepted)
+    longest_depth = max((node.depth for node in nodes), default=0)
+    fixed_point = exhausted and cap_deferred == 0
     return RecurrentMacroExecution(
         policy, productions, len(seed_occurrences), seed_sites, tuple(nodes),
-        tuple(accepted), tuple(waves), tuple(trace), occupied, attempted,
-        duplicate, outside, collision, insufficient, commit,
-        trace_rejections, exhausted,
+        tuple(accepted), tuple(eligible_snapshots), tuple(waves),
+        tuple(trace), occupied, attempted,
+        duplicate, outside, collision, insufficient, commit, cap_deferred,
+        trace_rejections, exhausted, longest_depth, fixed_point,
+        not exhausted,
         True, exact, False)
 
 

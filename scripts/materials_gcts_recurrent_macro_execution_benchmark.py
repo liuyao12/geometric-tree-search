@@ -51,6 +51,10 @@ class ExecutionCase:
     waves: tuple[int, ...]
     emitted_atoms_by_wave: tuple[int, ...]
     accepted_placements: int
+    longest_parent_child_depth: int
+    reachable_fixed_point: bool
+    stopped_by_wave_limit: bool
+    deferred_by_wave_cap: int
     attempted_port_poses: int
     rejected_outside_boundary: int
     rejected_collisions: int
@@ -76,6 +80,31 @@ class RecurrentMacroExecutionBenchmark:
     all_candidates_from_frozen_ports: bool
     all_acceptances_self_fed: bool
     elapsed_seconds: float
+
+
+@dataclass(frozen=True)
+class DisjointIQCExecutionFixture:
+    program: object
+    seed_occurrences: tuple
+    explicit_seed_sites: tuple
+    boundary: ExecutionBoundary
+    maximum_waves: int
+    maximum_accepted_per_wave: int
+    training_atoms: int
+    raw_macro_types: int
+    recurrent_macro_types: int
+    training_sites: tuple
+    training_patch_ids: tuple[int, ...]
+    training_frontiers: tuple
+
+
+@dataclass(frozen=True)
+class TrainingMacroFrontier:
+    patch_id: int
+    seed_occurrences: tuple
+    explicit_seed_sites: tuple
+    boundary: ExecutionBoundary
+    known_target_sites: tuple
 
 
 def _fit_selected(train_species, train_positions, train_patch,
@@ -140,7 +169,9 @@ def _nacl_case() -> ExecutionCase:
         tuple(item.candidate_digest for item in execution.waves),
         tuple(item.accepted_placements for item in execution.waves),
         tuple(item.emitted_atoms for item in execution.waves),
-        len(execution.accepted), execution.attempted_port_poses,
+        len(execution.accepted), execution.longest_parent_child_depth,
+        execution.reachable_fixed_point, execution.stopped_by_wave_limit,
+        execution.deferred_by_wave_cap, execution.attempted_port_poses,
         execution.rejected_outside_boundary,
         execution.rejected_colored_collisions,
         score.proposed_novel_atoms, score.correct_novel_atoms,
@@ -152,7 +183,7 @@ def _nacl_case() -> ExecutionCase:
         execution.exact_certificates)
 
 
-def _iqc_cases() -> tuple[ExecutionCase, ExecutionCase]:
+def _iqc_setup():
     oracle, _ = oracle_patch_fast(12, 55.)
     executions = []
     raw_domains = []
@@ -166,11 +197,85 @@ def _iqc_cases() -> tuple[ExecutionCase, ExecutionCase]:
         executions, TRAIN_PATCH_IDS)
     atomic, quotient, selection, selected, promoted = _fit_selected(
         train_species, train_positions, train_patch, 3)
+    local_radii = []
+    for patch_id in TRAIN_PATCH_IDS:
+        patch_center = PATCH_CENTERS[patch_id]
+        local_radii.append(max(math.dist(point, patch_center)
+                               for _species, point in
+                               executions[patch_id].sites))
+    separation = 4 * max(local_radii) + 1.
+    promoted_supports = dict(promoted.occurrence_supports)
+    training_frontiers = []
+    for corpus_patch, patch_id in enumerate(TRAIN_PATCH_IDS):
+        origin = (corpus_patch * separation, 0., 0.)
+        patch_atoms = {index for index, value in enumerate(train_patch)
+                       if value == patch_id}
+        seed_atoms = {index for index in patch_atoms
+                      if math.dist(train_positions[index], origin) <= 7. + 1e-10}
+        seed_occurrences = tuple(
+            occurrence for occurrence in promoted.occurrences
+            if set(promoted_supports[occurrence.occurrence_id]) <= seed_atoms)
+        training_frontiers.append(TrainingMacroFrontier(
+            patch_id, seed_occurrences,
+            tuple((train_species[index], train_positions[index])
+                  for index in sorted(seed_atoms)),
+            ExecutionBoundary(origin, 11.),
+            tuple((train_species[index], train_positions[index])
+                  for index in sorted(patch_atoms))))
     center = (40., 0., 0.)
     seed_cloud, seed_ids = _crop(
         oracle, center, 7., "recurrent-executor-iqc-seed")
     seeds = _seed_occurrences(
         atomic, selected, promoted, seed_cloud.species, seed_cloud.positions)
+    return (oracle, tuple(raw_domains), train_species, train_positions,
+            train_patch, quotient, selection, promoted, center, seed_cloud,
+            seed_ids, seeds, tuple(training_frontiers))
+
+
+def compile_disjoint_iqc_execution_fixture():
+    """Compile a reusable target-free fixture and unopened target factory."""
+    (_oracle, _raw_domains, train_species, train_positions, train_patch,
+     quotient, selection, promoted, center, seed_cloud, _seed_ids, seeds,
+     training_frontiers) = _iqc_setup()
+    fixture = DisjointIQCExecutionFixture(
+        promoted, tuple(seeds),
+        tuple(zip(seed_cloud.species, seed_cloud.positions)),
+        ExecutionBoundary(center, 11.), 3, 40, len(train_positions),
+        len(quotient.quotient_macros), len(selection.selected_macro_ids),
+        tuple(zip(train_species, train_positions)), tuple(train_patch),
+        training_frontiers)
+
+    def open_target():
+        fresh_oracle, _ = oracle_patch_fast(12, 55.)
+        return _crop(fresh_oracle, center, 11.,
+                     "recurrent-executor-iqc-disjoint-score")[0]
+
+    return fixture, open_target
+
+
+def execute_disjoint_iqc_before_target(*, policy=None):
+    """Return an immutable execution before exposing a zero-argument target.
+
+    The factory recomputes the oracle and crop only after the caller already
+    owns the frozen execution.  This makes scorer call order enforceable by an
+    adapter rather than merely asserted in a result flag.
+    """
+    fixture, open_target = compile_disjoint_iqc_execution_fixture()
+    keyword = {} if policy is None else {"policy": policy}
+    execution = execute_recurrent_macro_program(
+        fixture.program, fixture.seed_occurrences,
+        explicit_seed_sites=fixture.explicit_seed_sites,
+        boundary=fixture.boundary, maximum_waves=fixture.maximum_waves,
+        maximum_accepted_per_wave=fixture.maximum_accepted_per_wave,
+        **keyword)
+
+    return execution, open_target
+
+
+def _iqc_cases() -> tuple[ExecutionCase, ExecutionCase]:
+    (oracle, raw_domains, _train_species, train_positions, _train_patch,
+     quotient, selection, promoted, center, seed_cloud, seed_ids, seeds,
+     _training_frontiers) = _iqc_setup()
     train_ids = set().union(*(raw_domains[index]
                               for index in TRAIN_PATCH_IDS))
 
@@ -198,7 +303,9 @@ def _iqc_cases() -> tuple[ExecutionCase, ExecutionCase]:
             tuple(item.candidate_digest for item in execution.waves),
             tuple(item.accepted_placements for item in execution.waves),
             tuple(item.emitted_atoms for item in execution.waves),
-            len(execution.accepted), execution.attempted_port_poses,
+            len(execution.accepted), execution.longest_parent_child_depth,
+            execution.reachable_fixed_point, execution.stopped_by_wave_limit,
+            execution.deferred_by_wave_cap, execution.attempted_port_poses,
             execution.rejected_outside_boundary,
             execution.rejected_colored_collisions,
             score.proposed_novel_atoms, score.correct_novel_atoms,

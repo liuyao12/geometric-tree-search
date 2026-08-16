@@ -698,8 +698,19 @@ radius-11 boundary it accepts `16 -> 8 -> 0` placements and emits
 `92 -> 56 -> 0` atoms. Only after execution is frozen does scoring expose the
 873-atom target: 136 of 148 emitted atoms match, giving 91.9% precision and
 21.0% recall outside the seed. This is autonomous clusters-of-clusters
-continuation, but it remains red because it stalls after two nonempty waves,
-contains 12 wrong atoms, and has no stationary amplification.
+continuation, but it is a finite depth-two continuation: lowering the batch
+cap changes the display to three nonempty waves without changing the final
+148-atom union, and the reachable frontier then reaches a fixed point. It
+contains 12 wrong atoms and has no stationary amplification.
+
+A candidate-level marking audit trains on all 718 eligible actions from five
+train-only frontiers (693 valid, 25 invalid), freezes 310 bounded order-two
+states, and runs marked, unmarked, and 31 shuffled arms before opening the
+target. All 62 evaluated commit contexts are unseen—not even the
+parent/production backoff transfers—so the first wave has one score and zero
+rank inversions. Marked and unmarked both recover 136 / 148 atoms, every
+shuffle ties, and `p = 1`. The marking gate therefore stays red because its
+local vocabulary does not yet transfer to exterior macro roles.
 
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and

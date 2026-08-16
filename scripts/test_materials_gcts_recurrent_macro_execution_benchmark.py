@@ -21,6 +21,8 @@ def test_target_blind_recurrent_macro_execution_control_and_iqc_gate():
     assert nacl.proposed_novel_atoms == nacl.correct_novel_atoms == 64
     assert nacl.wrong_novel_atoms == 0 and nacl.precision == 1.0
     assert nacl.exact_certificates
+    assert nacl.longest_parent_child_depth == 1
+    assert not nacl.reachable_fixed_point and nacl.stopped_by_wave_limit
     assert not nacl.target_used_for_proposals_or_ranking
     assert not nacl.spatially_disjoint_train_and_evaluation
     assert not nacl.rejection_trace_complete  # Aggregate counts retained.
@@ -33,6 +35,9 @@ def test_target_blind_recurrent_macro_execution_control_and_iqc_gate():
     assert iqc.target_atoms == 873
     assert iqc.eligible_candidates_by_wave == (44, 18, 0)
     assert iqc.waves == (16, 8, 0)
+    assert iqc.longest_parent_child_depth == 2
+    assert iqc.reachable_fixed_point and not iqc.stopped_by_wave_limit
+    assert iqc.deferred_by_wave_cap == 0
     assert iqc.emitted_atoms_by_wave == (92, 56, 0)
     assert iqc.proposed_novel_atoms == 148
     assert iqc.correct_novel_atoms == 136
@@ -48,6 +53,9 @@ def test_target_blind_recurrent_macro_execution_control_and_iqc_gate():
     assert extended.target_atoms == 7862
     assert extended.eligible_candidates_by_wave == (44, 46, 114)
     assert extended.waves == (16, 24, 22)
+    assert extended.longest_parent_child_depth == 3
+    assert not extended.reachable_fixed_point
+    assert extended.stopped_by_wave_limit
     assert extended.emitted_atoms_by_wave == (92, 182, 142)
     assert extended.proposed_novel_atoms == 416
     assert extended.correct_novel_atoms == 374

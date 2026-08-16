@@ -30,6 +30,8 @@ def test_executor_self_feeds_frozen_ports_before_posthoc_scoring():
     assert len(result.waves) == 2
     assert result.waves[1].frontier_nodes == result.waves[0].accepted_placements
     assert result.self_fed and result.exact_certificates
+    assert result.longest_parent_child_depth == 1
+    assert result.reachable_fixed_point and not result.stopped_by_wave_limit
     assert not result.target_used_for_proposals_or_ranking
     assert all(item.decision in {
         "accepted", "duplicate-pose", "outside-public-boundary",
@@ -51,9 +53,17 @@ def test_executor_self_feeds_frozen_ports_before_posthoc_scoring():
         maximum_accepted_per_wave=8, pose_tolerance=1e-6,
         boundary=ExecutionBoundary((0., 0., 0.), 100.),
         policy=FrozenExecutionPolicy("consensus", .5))
+    causal = execute_recurrent_macro_program(
+        level, level.occurrences[:1], maximum_waves=1,
+        maximum_accepted_per_wave=8, pose_tolerance=1e-6,
+        boundary=ExecutionBoundary((0., 0., 0.), 100.),
+        policy=FrozenExecutionPolicy(
+            strategy="causal-marking", maximum_incoming_context=2,
+            marking_scores=(((0, 0, ()), 1.),)))
     assert (result.waves[0].candidate_digest ==
             evidence.waves[0].candidate_digest ==
-            consensus.waves[0].candidate_digest)
+            consensus.waves[0].candidate_digest ==
+            causal.waves[0].candidate_digest)
 
 
 def test_public_boundary_and_subminimum_collision_fail_closed():
@@ -66,6 +76,7 @@ def test_public_boundary_and_subminimum_collision_fail_closed():
     assert not bounded.accepted
     assert bounded.rejected_outside_boundary > 0
     assert bounded.exhausted
+    assert bounded.reachable_fixed_point
 
     baseline = execute_recurrent_macro_program(
         level, seed, maximum_waves=1, pose_tolerance=1e-6,

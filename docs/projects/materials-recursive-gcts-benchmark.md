@@ -2275,9 +2275,25 @@ wrong: precision is 91.89% and recall over the 647 atoms outside the seed is
 21.02%. Candidate batches have immutable SHA digests, all 24 acceptances are
 self-fed clusters-of-clusters actions, and target use during proposal or
 ranking is false. Thus autonomous macro continuation is now implemented and
-measured, but the gate remains red: it exhausts after two nonempty waves,
-precision is below 99%, recall is far below 95%, marking has not yet beaten a
-matched shuffled control, and there is no recursive amplification.
+measured, but the gate remains red. A scheduling audit shows that “number of
+waves” is not a scientific depth measure: lowering the per-wave batch cap from
+40 to 8 changes `16 -> 8 -> 0` into `8 -> 8 -> 8 -> 0`, while producing the
+identical 148-atom union. The invariant parent-child DAG has causal depth two
+and reaches a finite fixed point. Precision is below 99%, recall is far below
+95%, and there is no recursive amplification.
+
+The first matched marking audit now labels every eligible proposal on five
+train-only radius-7 to radius-11 frontiers, rather than fitting only accepted
+connections. This supplies 718 actions (693 valid and 25 invalid) and freezes
+310 bounded order-two log-odds states. All 33 evaluation arms share the same
+44 first-wave candidates, and every trace is frozen before the target factory
+is opened. However, all 62 evaluated commit candidates have unseen marking
+contexts: exact transfer is 0, parent/production backoff transfer is 0, the
+first wave has one score and zero rank inversions. Marked and unmarked both
+emit 148 atoms with 136 correct; all 31 within-parent label shuffles tie and
+give empirical `p = 1`. The causal macro-marking gate therefore remains red
+for a precise reason: the present marking vocabulary does not transfer from
+internal training frontiers to the exterior evaluation roles.
 
 An extended radius-25 diagnostic from the same first-wave candidate batch emits
 416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring

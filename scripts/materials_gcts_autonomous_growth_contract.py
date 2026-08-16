@@ -26,6 +26,11 @@ class FrozenAutonomousTrace:
     accepted_actions_per_wave: tuple[int, ...]
     emitted_sites_per_wave: tuple[int, ...]
     self_fed: bool
+    exact_execution_certificates: bool
+    longest_parent_child_depth: int
+    reachable_fixed_point: bool
+    stopped_by_execution_limit: bool
+    deferred_by_execution_cap: int
     cluster_actions: int
     promoted_cluster_of_cluster_actions: int
     seed_sites: tuple[tuple[Hashable, tuple[float, float, float]], ...]
@@ -58,7 +63,8 @@ class AutonomousGrowthCaseAudit:
     precision: float
     recall: float
     precision_recall_gate: bool
-    self_fed_multiwave_gate: bool
+    causal_self_feed_gate: bool
+    sustained_autonomous_growth_gate: bool
     generic_clusters_of_clusters_gate: bool
     marking_ablation_gate: bool
     symbolic_amplification_factors: tuple[float, ...]
@@ -92,7 +98,10 @@ def freeze_trace(trace: FrozenAutonomousTrace) -> FrozenAutonomousTrace:
         trace.train_digest, trace.seed_digest,
         trace.candidate_wave_digests,
         trace.accepted_actions_per_wave, trace.emitted_sites_per_wave,
-        trace.self_fed, trace.cluster_actions,
+        trace.self_fed, trace.exact_execution_certificates,
+        trace.longest_parent_child_depth, trace.reachable_fixed_point,
+        trace.stopped_by_execution_limit, trace.deferred_by_execution_cap,
+        trace.cluster_actions,
         trace.promoted_cluster_of_cluster_actions,
         tuple(sorted(trace.seed_sites, key=repr)),
         tuple(sorted(trace.proposed_sites, key=repr)),
@@ -135,10 +144,16 @@ def audit_growth_case(
     accuracy = (score.proposed_novel_atoms > 0 and
                 score.precision >= minimum_precision and
                 score.recall >= minimum_recall)
-    nonempty_waves = sum(value > 0 for value in
-                         trace.accepted_actions_per_wave)
-    multiwave = (trace.self_fed and nonempty_waves >= 3 and
-                 trace.cluster_actions >= nonempty_waves)
+    causal_self_feed = (
+        trace.self_fed and trace.exact_execution_certificates and
+        trace.longest_parent_child_depth >= 2 and
+        trace.deferred_by_execution_cap == 0)
+    sustained = (
+        causal_self_feed and trace.longest_parent_child_depth >= 3 and
+        trace.stopped_by_execution_limit and
+        not trace.reachable_fixed_point and
+        bool(trace.emitted_sites_per_wave) and
+        trace.emitted_sites_per_wave[-1] > 0)
     macro = (trace.production_kind == "recurring_port_graph_macro" and
              trace.promoted_cluster_of_cluster_actions > 0)
     marking = (
@@ -162,17 +177,19 @@ def audit_growth_case(
         all(len(value) == 64 for value in trace.candidate_wave_digests) and
         len(trace.train_digest) == len(trace.seed_digest) ==
         len(trace.trace_digest) == 64)
-    passed = accuracy and multiwave and macro and marking and amplification and \
-        leak_free
+    passed = accuracy and sustained and macro and marking and amplification \
+        and leak_free
     failed = tuple(name for name, value in (
-        ("precision/recall", accuracy), ("self-fed multiwave", multiwave),
+        ("precision/recall", accuracy),
+        ("sustained autonomous growth", sustained),
         ("generic clusters-of-clusters", macro),
         ("matched marking ablation", marking),
         ("symbolic amplification", amplification),
         ("leakage", leak_free)) if not value)
     return AutonomousGrowthCaseAudit(
         trace.system, role, trace.backend, score.precision, score.recall,
-        accuracy, multiwave, macro, marking, factors, amplification,
+        accuracy, causal_self_feed, sustained, macro, marking, factors,
+        amplification,
         leak_free, target_constructed_after_trace_frozen, passed,
         "" if passed else "failed: " + ", ".join(failed))
 

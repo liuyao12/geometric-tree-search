@@ -72,7 +72,7 @@ def _nacl_case():
             program.family, cloud_digest(training.species,
                                          training.positions),
             cloud_digest(initial.species, initial.positions), "", (),
-            (1, 1, 1), emitted, True, 3, 0,
+            (1, 1, 1), emitted, True, True, 3, False, True, 0, 3, 0,
             _configuration_sites(initial), proposed,
             False, None, None, None, None,
             tuple(symbolic_count(initial, program, action)
@@ -136,7 +136,11 @@ def _iqc_case():
             tuple(item.candidate_digest for item in execution.waves),
             tuple(item.accepted_placements for item in execution.waves),
             tuple(item.emitted_atoms for item in execution.waves),
-            execution.self_fed, len(execution.accepted),
+            execution.self_fed, execution.exact_certificates,
+            execution.longest_parent_child_depth,
+            execution.reachable_fixed_point,
+            execution.stopped_by_wave_limit,
+            execution.deferred_by_wave_cap, len(execution.accepted),
             len(execution.accepted), tuple(execution.seed_sites), proposed,
             False, None, None, None, None, (), True,
             execution.target_used_for_proposals_or_ranking, False)
@@ -187,12 +191,14 @@ def evaluate() -> AutonomousGrowthContractAudit:
         nonqualifying_evidence_notes=(
             "NaCl exact autonomous output uses the specialized positions-only "
             "grid backend, not the generic recurrent port-macro production.",
-            "The existing statistically significant IQC marking ablation "
-            "orders primitive-port actions, not the frozen promoted-macro "
-            "candidate trace used here.",
-            "The promoted IQC R25 diagnostic has three nonempty waves but "
-            "overlaps a raw training window, so the contract scores the "
-            "strictly disjoint R11 arm, which stalls after two waves.",
+            "The promoted-macro marking audit labels 718 train-frontier "
+            "candidates, including 25 invalid actions, but all 62 evaluation "
+            "commit contexts are unseen. Marked, unmarked, and 31 shuffled "
+            "arms tie, so the matched marking gate remains red.",
+            "The sealed IQC R11 executor certifies causal depth two and then "
+            "reaches a finite fixed point. Changing the batch cap changes "
+            "the displayed wave count but not its 148-atom final union, so "
+            "wave count is not used as an autonomous-growth gate.",
         ))
 
 

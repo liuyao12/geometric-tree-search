@@ -13,7 +13,8 @@ def _passing_trace():
         "fixture", "generic", "recurring_port_graph_macro",
         "0" * 64, "1" * 64, "2" * 64, ("3" * 64,),
         (2, 3, 4), (20, 80, 400),
-        True, 9, 3, (), (("A", (0., 0., 0.)),),
+        True, True, 3, False, True, 0, 9, 3, (),
+        (("A", (0., 0., 0.)),),
         True, 10, 20, 18, .03125,
         (10, 40, 200, 1000, 1_200_000), True, False, False)
 
@@ -74,14 +75,18 @@ def test_current_real_executors_remain_below_authoritative_gate():
     assert result.amorphous_rejected
     crystal, iqc = result.cases
     assert crystal.precision_recall_gate
-    assert crystal.self_fed_multiwave_gate
+    assert crystal.causal_self_feed_gate
+    assert crystal.sustained_autonomous_growth_gate
     assert crystal.symbolic_amplification_gate
     assert not crystal.generic_clusters_of_clusters_gate
     assert not crystal.marking_ablation_gate
     assert .91 < iqc.precision < .93
     # The executor genuinely self-feeds, but the disjoint R11 frontier stalls
-    # after two nonempty waves; the third recorded wave has no action.
-    assert not iqc.self_fed_multiwave_gate
+    # The sealed IQC continuation is genuinely self-fed to depth two, but it
+    # reaches a fixed point. Batch scheduling can change the displayed number
+    # of waves without changing the final atom union.
+    assert iqc.causal_self_feed_gate
+    assert not iqc.sustained_autonomous_growth_gate
     assert not iqc.precision_recall_gate
     assert iqc.generic_clusters_of_clusters_gate
     assert not iqc.marking_ablation_gate
