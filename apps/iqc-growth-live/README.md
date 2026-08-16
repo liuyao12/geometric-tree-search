@@ -657,9 +657,34 @@ stationarity and generic exponential growth remain red.
 Train compression is not presented as transfer. In a sealed split, five
 predeclared grown patches fit the primitive vocabulary and three raw-ID-disjoint
 patches are held out. Frozen primitive supports cover all 1,248 / 1,248 held-out
-atoms. At the first promoted level, 256 of 259 frozen quotient types replay and
-their unions still cover every atom, but the three missing types break exact
-type-map preservation and stop recursive transfer at that level.
+atoms. The original width-three audit replayed 256 of 259 first-level quotient
+types. The missing IDs `184 / 185 / 252` all require the same 23-atom primitive
+type 49, observed only twice in training, both in patch 2 near its public crop
+boundary, and never in heldout. Their required ports consequently have no
+heldout witness. Trying every train-fitted exact semantic derivation remains at
+256 / 259 with zero ambiguity; this is a patch-local boundary artifact, not an
+alternative-derivation repair.
+
+The corrected executable policy selects a recurrent core using training
+namespaces only: an exact macro must occur in a strict majority of the five
+training patches. Original macro IDs and exact action terminals are retained;
+atoms outside the core remain explicit colored residual terminals. At width
+five the frozen heldout **re-encoding** has raw/selected exact type counts
+`520 / 148`, `53 / 10`, `16 / 4`, and `3 / 1`, with
+`1,495 -> 85 -> 29 -> 9` occurrences.
+Exact core atom coverage is `1,220 -> 1,033 -> 925 -> 870` of 1,248, paired
+with `28 -> 215 -> 323 -> 378` residual atoms; coordinate/species SHA
+certificates verify a complete representation at every level. Minimum heldout
+namespace support is `2 / 3 / 3 / 3`, and maximum exact support size is
+`78 / 78 / 110 / 111` atoms.
+
+This audit observes the complete heldout positions before matching; only the
+learned vocabulary—including supports, ports, quotient alternatives, and the
+recurrence rule—is frozen. It therefore measures transfer of a representation,
+not continuation or growth.
+There is no greater-than-three recursive amplification, no normalized
+stationary key common to three levels, and both autonomous-growth and
+exponential gates remain red.
 
 A deterministic train-only beam provides the bounded future-RL comparator. It
 chooses alternative-consistent exact derivations and improves occurrence

@@ -2182,15 +2182,22 @@ production survives the required three consecutive levels with equal learned
 adjacent scales. Stationarity therefore remains red despite the deeper train
 compression.
 
-### Sealed transfer of the history-free hierarchy
+### Sealed re-encoding of the history-free hierarchy
 
 Eight predeclared, mutually raw-ID-disjoint grown patches are split five for
 training and three for heldout scoring. Frozen primitive supports cover all
 1,248 / 1,248 held-out atoms, including explicit gaps. At the first promoted
 level, 256 of 259 frozen quotient types replay and their exact unions still
-cover every held-out atom. The three absent types are scientifically decisive:
-the frozen type map is not preserved, so recursive transfer stops at level one
-and no six-level heldout claim is made.
+cover every held-out atom. The three absent IDs are `184`, `185`, and `252`.
+All three require primitive type 49, a 23-atom support with exactly two training
+occurrences, both in patch 2 near the public crop boundary, and zero heldout
+occurrences. Their associated port relations therefore have no heldout witness.
+This is a rare patch-local boundary/crop artifact and insufficient independent
+multiplicity. It is not a failure to try the right exact derivation: the frozen
+semantic mapper tests every train-fitted alternative, preserves its exact
+action-terminal identity, has zero ambiguous atom unions and exact assignment
+precision 1.0, but remains at 256 / 259 types. No heldout atom is novel to the
+primitive support vocabulary.
 
 This separates three claims that should not be merged:
 
@@ -2198,7 +2205,43 @@ This separates three claims that should not be merged:
 |---|---|
 | train compression on re-clustered grown atoms | green through six positive quotient levels |
 | primitive heldout support/atom coverage | green, 1,248 / 1,248 |
-| promoted type-map transfer and stationary/exponential growth | red; 3 / 259 level-one types missing and zero stationary witnesses |
+| unfiltered promoted type map | red; 3 / 259 level-one types are patch-2-only boundary artifacts |
+| strict-majority recurrent-core re-encoding | green through four exact levels, with explicit residual terminals |
+| autonomous continuation and stationary/exponential growth | red; heldout positions are observed and stationary witnesses remain zero |
+
+The production policy now fails closed on patch-local artifacts. A generic
+train-only recurrent-core selector retains an exact quotient macro only when it
+occurs in a strict majority of the five independent training namespaces
+(`3 / 5`). Repeated occurrences inside one patch cannot satisfy the gate,
+cross-patch occurrences are invalid evidence, and the original macro IDs and
+exact action terminals are never renumbered. Atoms not represented by the
+selected core are exported as exact `(patch, raw index, species, position)`
+terminals. The core plus those terminals has a coordinate/species SHA
+certificate equal to the complete atom cloud.
+
+The main width-five audit freezes the learned training vocabulary—including
+supports, ports, quotient types, and exact derivation alternatives—then
+**re-encodes** the three fully observed heldout patches without refitting:
+
+| recursive level | raw -> selected/exact types | exact occurrences | exact core atoms / 1,248 | residual atom terminals | minimum heldout namespaces | maximum support atoms |
+|---|---:|---:|---:|---:|---:|---:|
+| 1 | `520 -> 148` | 1,495 | 1,220 | 28 | 2 | 78 |
+| 2 | `53 -> 10` | 85 | 1,033 | 215 | 3 | 78 |
+| 3 | `16 -> 4` | 29 | 925 | 323 | 3 | 110 |
+| 4 | `3 -> 1` | 9 | 870 | 378 | 3 | 111 |
+
+Every selected type has at least two exact proper-SE(3) heldout occurrences,
+and the residual certificate makes every level a complete representation.
+However, the matcher receives all 1,248 heldout positions: heldout geometry is
+observed to enumerate and match types, while only the learned vocabulary is
+frozen. These numbers are therefore frozen-vocabulary representation
+transfer, not target-blind proposal, continuation, or material growth.
+
+The selected hierarchy has no action amplification above three, no normalized
+stationary production key common to three consecutive levels, and no evidence
+of a self-fed exterior executor. Accordingly `autonomous_growth = false` and
+`exponential = false`; the IQC gate remains red. The separate learned NaCl
+stationary crystal control is unchanged.
 
 ### Train-only hierarchy selection and semantic controls
 
@@ -2215,9 +2258,9 @@ it changes promoted occurrence retention from
 `324 -> 78 -> 26 -> 12 -> 8 -> 4` and improves the fixed-horizon score from
 `-63.205` to `-34.592`. It still reaches only six positive levels and produces
 no stationary witness. The result is therefore improved hierarchy selection,
-not avoidance of evidence exhaustion. Promoted heldout matching also remains
-explicitly unimplemented rather than incorrectly invoking the primitive
-occurrence matcher.
+not avoidance of evidence exhaustion. This beam is a train-compression
+comparator rather than the executable transfer policy; promoted heldout
+matching is supplied by the strict-majority re-encoding above.
 
 The guarded semantic-quotient experiment preserves every exact proper-SE(3)
 terminal as a replay alternative, but the exact quotient is rejected by the

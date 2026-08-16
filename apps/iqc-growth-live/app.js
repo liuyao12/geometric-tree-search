@@ -197,8 +197,32 @@ RECURSIVE_BENCHMARKS.iqc.connection.macro.selection = "autonomous first-wave mar
 // The re-clustered hierarchy records type/occurrence retention, not emitted
 // atom counts. Keep the atom curve to its one measured input cloud instead of
 // presenting shrinking evidence counts as recursive material growth.
-RECURSIVE_BENCHMARKS.iqc.hierarchy = ["78 types", "73 L1", "17 L2"];
-RECURSIVE_BENCHMARKS.iqc.curve = [2064];
+Object.assign(RECURSIVE_BENCHMARKS.iqc, {
+  hierarchy: ["148 L1", "10 L2", "4 L3"],
+  curve: [2064],
+  mark: "strict-majority recurrent ports",
+  action: "4 frozen re-encoding levels",
+  speed: "SHA-complete · no emission",
+  gate: "red · autonomous growth",
+  note: "A train-only 3-of-5 patch recurrence gate removes boundary-only types. Four frozen vocabularies exactly re-encode three fully observed heldout patches, with residual atoms completing every level. Maximum support grows only 78 → 78 → 110 → 111, no stationary production recurs, and no unseen atom is emitted; this is representation transfer, not exponential growth.",
+});
+Object.assign(RECURSIVE_BENCHMARKS.iqc.connection, {
+  transfer: "4 exact heldout re-encoding levels · autonomous growth false",
+  states: "raw/selected types · 520/148 · 53/10 · 16/4 · 3/1",
+});
+Object.assign(RECURSIVE_BENCHMARKS.iqc.connection.frontier, {
+  waves: [1495, 85, 29, 9],
+  exact: "frozen type maps and residual SHA pass",
+  recall: "core coverage 97.8% → 69.7%",
+  full: "all heldout positions are observed during matching",
+});
+Object.assign(RECURSIVE_BENCHMARKS.iqc.connection.macro, {
+  stages: [["L1 recurrent types", 148], ["L2 recurrent types", 10], ["L3 recurrent types", 4]],
+  safe: "core + residuals · 1,248/1,248 atoms",
+  rejected: "autonomous emission · not implemented",
+  iterated: "heldout occurrences · 1,495→85→29→9",
+  similarity: "no common stationary key · no >3 amplification",
+});
 const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
 const clusterColor = (index) => CLUSTER_COLORS[index % CLUSTER_COLORS.length];
 const BALANCE_DIRECTIONS = [
