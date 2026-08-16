@@ -198,30 +198,30 @@ RECURSIVE_BENCHMARKS.iqc.connection.macro.selection = "autonomous first-wave mar
 // atom counts. Keep the atom curve to its one measured input cloud instead of
 // presenting shrinking evidence counts as recursive material growth.
 Object.assign(RECURSIVE_BENCHMARKS.iqc, {
-  hierarchy: ["148 L1", "10 L2", "4 L3"],
-  curve: [2064],
-  mark: "strict-majority recurrent ports",
-  action: "4 frozen re-encoding levels",
-  speed: "SHA-complete · no emission",
-  gate: "red · autonomous growth",
-  note: "A train-only 3-of-5 patch recurrence gate removes boundary-only types. Four frozen vocabularies exactly re-encode three fully observed heldout patches, with residual atoms completing every level. Maximum support grows only 78 → 78 → 110 → 111, no stationary production recurs, and no unseen atom is emitted; this is representation transfer, not exponential growth.",
+  hierarchy: ["141 recurrent L1", "16 wave 1", "8 wave 2"],
+  curve: [226, 318, 374],
+  mark: "frozen recurrent macro ports",
+  action: "2 autonomous macro waves",
+  speed: "148 emitted · 136 correct",
+  gate: "red · 91.9% P / 21.0% R",
+  note: "Five raw, disjoint IQC windows learn a train-only strict-majority recurrent macro grammar. From a sixth 226-atom seed, frozen overlap and boundary ports autonomously place 16 then 8 whole clusters-of-clusters and emit 148 atoms; 136 match the sealed outer shell. This is genuine target-blind continuation, but the search stalls after two waves, precision is 91.9%, recall is 21.0%, and no stationary or exponential rule is present.",
 });
 Object.assign(RECURSIVE_BENCHMARKS.iqc.connection, {
-  transfer: "4 exact heldout re-encoding levels · autonomous growth false",
-  states: "raw/selected types · 520/148 · 53/10 · 16/4 · 3/1",
+  transfer: "sealed target-blind recurrent-macro execution · red",
+  states: "raw/selected L1 types · 322/141 · seed macro poses 2",
 });
 Object.assign(RECURSIVE_BENCHMARKS.iqc.connection.frontier, {
-  waves: [1495, 85, 29, 9],
-  exact: "frozen type maps and residual SHA pass",
-  recall: "core coverage 97.8% → 69.7%",
-  full: "all heldout positions are observed during matching",
+  waves: [16, 8, 0],
+  exact: "136 / 148 emitted atoms match",
+  recall: "precision 91.9% · shell recall 21.0%",
+  full: "train/evaluation raw IDs disjoint · target opened after execution",
 });
 Object.assign(RECURSIVE_BENCHMARKS.iqc.connection.macro, {
-  stages: [["L1 recurrent types", 148], ["L2 recurrent types", 10], ["L3 recurrent types", 4]],
-  safe: "core + residuals · 1,248/1,248 atoms",
-  rejected: "autonomous emission · not implemented",
-  iterated: "heldout occurrences · 1,495→85→29→9",
-  similarity: "no common stationary key · no >3 amplification",
+  stages: [["recurrent L1 types", 141], ["wave-1 placements", 16], ["wave-2 placements", 8]],
+  safe: "whole-macro SE(3) placements · exact collision certificates",
+  rejected: "12 wrong atoms · frontier exhausted",
+  iterated: "self-fed placements · 16→8→0",
+  similarity: "no stationary key · no finite-state cycle · no amplification",
 });
 const CLUSTER_COLORS = [0x55c8ff, 0xb594ff, 0x65e1bc, 0xf0c96a, 0xff7f88, 0x7ee1e8];
 const clusterColor = (index) => CLUSTER_COLORS[index % CLUSTER_COLORS.length];

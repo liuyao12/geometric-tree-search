@@ -159,4 +159,5 @@ def filter_quotient_by_recurrent_core(quotient, selection):
         derivation_classes=derivations,
         alternative_macros=tuple(alternatives),
         retained_promotion_occurrences=sum(
-            len(item.promotion_occurrences) for item in selected_macros))
+            len(item.promotion_occurrences or item.occurrences)
+            for item in selected_macros))

@@ -686,6 +686,28 @@ There is no greater-than-three recursive amplification, no normalized
 stationary key common to three levels, and both autonomous-growth and
 exponential gates remain red.
 
+The first target-blind recurrent-macro executor is now separate from that
+re-encoding audit. Five mutually disjoint **raw** IQC radius-11 windows train
+the support, port, and strict-majority macro vocabulary (`322 -> 141` exact
+first-level types). A sixth raw-ID-disjoint radius-7 seed contains 226 atoms
+and two recognized recurrent macro poses. With no target argument, the
+executor composes frozen overlap and witnessed non-overlap boundary ports,
+commits whole proper-SE(3) macros with exact colored collision and inclusion
+certificates, and feeds accepted placements into the next wave. Under a public
+radius-11 boundary it accepts `16 -> 8 -> 0` placements and emits
+`92 -> 56 -> 0` atoms. Only after execution is frozen does scoring expose the
+873-atom target: 136 of 148 emitted atoms match, giving 91.9% precision and
+21.0% recall outside the seed. This is autonomous clusters-of-clusters
+continuation, but it remains red because it stalls after two nonempty waves,
+contains 12 wrong atoms, and has no stationary amplification.
+
+A strict finite-state substitution-cycle audit also remains red. A nontrivial
+period-`p` cycle requires `2p+1` consecutive exact levels so each state and
+directed transition is witnessed twice, plus equal independently learned
+transition scales and exact population substitutions on heldout/self-fed
+evidence. The current four-level IQC hierarchy is one level short even for
+period two and has zero exact adjacent production-state intersections.
+
 A deterministic train-only beam provides the bounded future-RL comparator. It
 chooses alternative-consistent exact derivations and improves occurrence
 retention from `153 -> 34 -> 10 -> 6 -> 4 -> 2` to

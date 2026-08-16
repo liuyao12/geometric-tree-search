@@ -2243,6 +2243,67 @@ of a self-fed exterior executor. Accordingly `autonomous_growth = false` and
 `exponential = false`; the IQC gate remains red. The separate learned NaCl
 stationary crystal control is unchanged.
 
+### Target-blind recurrent-macro continuation
+
+The re-encoding result above is no longer the strongest executable IQC claim.
+A separate sealed benchmark trains on five mutually raw-ID-disjoint **raw IQC**
+radius-11 windows (4,405 atoms), rather than on patches produced by an earlier
+growth policy. The generic width-three miner yields 322 exact first-level
+macros; the train-only strict-majority gate retains 141, represented by 844
+training occurrences, 5,886 overlap ports, and 5,820 witnessed boundary ports.
+
+The evaluation window is centered at `(40, 0, 0)` and shares no raw atom ID
+with the five training windows. Its radius-7 seed contains 226 atoms. Frozen
+support enumeration and exact macro fitting find two placed first-level macro
+occurrences; all seed atoms, including those outside those macro supports,
+remain explicit collision constraints. The executor has no target or ranker
+callback. It composes only frozen port orbits with the preceding placed
+frontier, rejects improper poses, unlike-species coincidences, sub-minimum
+collisions, insufficient overlap, and positions outside the public radius-11
+boundary, then commits compatible whole macros. Every accepted placement
+carries an overlap-inclusion and train-witnessed-adjacency certificate.
+
+| wave | eligible whole macros | accepted | emitted atoms |
+|---:|---:|---:|---:|
+| 1 | 44 | 16 | 92 |
+| 2 | 18 | 8 | 56 |
+| 3 | 0 | 0 | 0 |
+
+The 873-atom scoring crop is opened only after the proposal trace is frozen.
+Of 148 proposed novel atoms, 136 are exact species/position matches and 12 are
+wrong: precision is 91.89% and recall over the 647 atoms outside the seed is
+21.02%. Candidate batches have immutable SHA digests, all 24 acceptances are
+self-fed clusters-of-clusters actions, and target use during proposal or
+ranking is false. Thus autonomous macro continuation is now implemented and
+measured, but the gate remains red: it exhausts after two nonempty waves,
+precision is below 99%, recall is far below 95%, marking has not yet beaten a
+matched shuffled control, and there is no recursive amplification.
+
+An extended radius-25 diagnostic from the same first-wave candidate batch emits
+416 atoms over three waves and matches 374 (89.90% precision), but 39 scoring
+atoms overlap a training window. It is retained only as a depth diagnostic and
+is not a sealed result.
+
+### Finite-state substitution cycles
+
+Stationarity is not broadened informally to rescue the IQC result. A strict
+finite-state alternative permits a period-`p` sequence of exact production
+states only after `2p+1` consecutive observations, so every state and directed
+transition is seen twice. State identity preserves canonical chemistry,
+chirality, proper geometry, directed overlap/boundary ports, and overlap
+chemistry. Repeated transitions must have equal independently learned scales
+and identical exact population-substitution matrices, and the entire cycle
+must recur on heldout or self-fed evidence. A synthetic two-state cycle passes;
+short prefixes, shuffled states, chemistry/population mutations, and replayed
+rather than independently observed heldout scales fail.
+
+The current IQC hierarchy has four positive levels, while the smallest
+nontrivial period-two cycle needs five. Its exact adjacent-state intersections
+are `0, 0, 0`, its exact three-level intersections are `0, 0`, and heldout
+levels merely re-encode frozen geometry rather than independently observe a
+scale. Finite-state recurrence therefore remains red alongside stationary
+recurrence.
+
 ### Train-only hierarchy selection and semantic controls
 
 `scripts/materials_gcts_hierarchy_selection_environment.py` exposes a bounded
