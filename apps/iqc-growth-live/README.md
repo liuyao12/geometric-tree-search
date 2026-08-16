@@ -825,12 +825,21 @@ independence. The strict stationary audit nevertheless finds no three-level
 common production, with child-count/topology already failing.
 
 Two reserved windows provide an honest frozen-transfer boundary. Without
-refitting or renumbering, level one transfers 53 / 80 types in 92 exact
-occurrences and covers 560 / 959 observed atoms; 399 atoms remain explicit
-coordinate/species residuals. The audit then stops fail-closed. Since those
-heldout coordinates are supplied for matching, this is exact re-encoding, not
-autonomous growth. The deep hierarchy is therefore a train-compression result,
-and transferable recursive or exponential Cd--Yb growth remains red.
+refitting or renumbering, the entire frozen vocabulary remains available while
+types absent from the finite region stay dormant. Exact active
+types/occurrences continue through four levels:
+`53/92 -> 20/26 -> 8/8 -> 2/2`, covering respectively
+`560 -> 445 -> 314 -> 170` of 959 observed atoms. Level five has no active
+occurrence and stops. Every attempted level retains frozen IDs and ports, exact
+proper-SE(3) replay, and complete representation through explicit residuals.
+
+Simple filtering does not manufacture this result: all 27 absent first-level
+types have the same two-window training prevalence as 50 / 53 active types; a
+strict-majority core covers only 13.56%. Predeclared semantic descriptors find
+no recurrent port-consistent class and exact derivation alternatives recover
+no absent type. Since heldout coordinates are supplied for matching, the four
+levels are exact re-encoding, not autonomous growth. Transferable vocabulary
+closure, stationary recurrence, and exponential Cd--Yb growth remain red.
 
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and

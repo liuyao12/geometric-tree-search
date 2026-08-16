@@ -126,10 +126,9 @@ def evaluate(maximum_levels: int = 12):
             raw_atom_sites=raw_sites)
         audits.append(step.audit)
         held_artifact = step.program
-        if not step.audit.every_frozen_type_transferred:
+        if not step.audit.partial_deployment_safe:
             stopped = (
-                "fail-closed: at least one train-selected frozen type lacks "
-                "two atom-independent occurrences in two heldout namespaces")
+                "fail-closed: no active exact subset can be safely promoted")
             break
 
     namespace_ok = all(

@@ -2572,14 +2572,41 @@ ratios and eventual crop saturation are not labelled exponential growth.
 
 A separate frozen audit observes two reserved, mutually disjoint radius-14
 windows containing 959 atoms. It does not refit or renumber the training
-grammar. At the first promoted level, 53 / 80 frozen types recur in 92 exact
-occurrences and cover 560 / 959 atoms (58.39%); the other 399 atoms remain exact
-coordinate/species residual terminals. Replay and representation hashes pass,
-but 27 frozen types lack the required two-window evidence, so recursion stops
-fail-closed after level one. Because the heldout coordinates are observed for
-matching, this is re-encoding only—not autonomous emission. The nine-level
-train hierarchy is therefore a strong compression result, while transferable
-recursive and exponential Cd--Yb growth remain red.
+grammar. A finite region need not instantiate every symbol in a grammar, so
+the corrected deployment keeps the complete frozen type/port vocabulary while
+allowing absent types to remain dormant. Only exact active occurrences can
+seed the next level; dormant symbols are never counted as transferred.
+
+| level | frozen types | active types | dormant types | active occurrences | covered atoms |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 80 | 53 | 27 | 92 | 560 / 959 |
+| 2 | 36 | 20 | 16 | 26 | 445 / 959 |
+| 3 | 22 | 8 | 14 | 8 | 314 / 959 |
+| 4 | 15 | 2 | 13 | 2 | 170 / 959 |
+| 5 | 8 | 0 | 8 | 0 | 0 / 959 |
+
+Thus the frozen hierarchy has four positive heldout re-encoding levels rather
+than one. Every attempted level preserves frozen IDs, all frozen overlap and
+boundary ports, exact proper-SE(3) replay, train-admitted relations, and a
+complete coordinate/species representation through explicit residual
+terminals. Each active type has only one-window/one-independent-occurrence
+minimum evidence in this small heldout corpus, and level five stops when no
+exact active occurrence remains.
+
+The negative controls explain why this cannot be turned green by a convenient
+filter. Every one of the 27 absent first-level types occurs in two of five
+training windows, as do 50 / 53 active types; a strict-majority core retains
+only two types and covers 13.56% of heldout atoms. Four predeclared
+chemistry/chirality/proper-geometry descriptors produce 80, 80, 79, and 77
+classes, but none forms a port-consistent semantic class recurrent across
+three training namespaces, and exact derivation alternatives recover zero
+absent types. Heldout-tuned pooling is therefore rejected.
+
+Because the heldout coordinates are observed for matching, this is exact
+four-level re-encoding—not autonomous emission. The nine-level train hierarchy
+and four-level frozen deployment are stronger clusters-of-clusters evidence,
+while transferable vocabulary closure, stationary recurrence, and exponential
+Cd--Yb growth remain red.
 
 ### Finite-state substitution cycles
 

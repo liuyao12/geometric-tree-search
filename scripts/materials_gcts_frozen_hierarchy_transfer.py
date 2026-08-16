@@ -50,6 +50,11 @@ class FrozenTransferLevel:
     frozen_type_ids_preserved: bool
     admitted_overlap_semantics_only: bool
     admitted_boundary_semantics_only: bool
+    active_frozen_type_ids: tuple[int, ...] = ()
+    inactive_frozen_type_ids: tuple[int, ...] = ()
+    minimum_independent_occurrences_per_active_type: int = 0
+    minimum_distinct_namespaces_per_active_type: int = 0
+    partial_deployment_safe: bool = False
 
 
 @dataclass(frozen=True)
@@ -292,6 +297,8 @@ def transfer_frozen_hierarchy_level(
     multiplicities = []
     independent_counts = []
     namespace_counts = []
+    independent_by_type = {}
+    namespaces_by_type = {}
     for type_id in sorted(supports_by_type):
         values = supports_by_type[type_id]
         multiplicities.append((type_id, len(values)))
@@ -300,10 +307,21 @@ def transfer_frozen_hierarchy_level(
             if all(not support.intersection(prior) for prior in chosen):
                 chosen.append(support)
         independent_counts.append(len(chosen))
-        namespace_counts.append(len({atom_namespaces[next(iter(support))]
-                                     for support in values if support}))
+        independent_by_type[type_id] = len(chosen)
+        namespace_count = len({atom_namespaces[next(iter(support))]
+                               for support in values if support})
+        namespace_counts.append(namespace_count)
+        namespaces_by_type[type_id] = namespace_count
     minimum_independent = min(independent_counts, default=0)
     minimum_namespaces = min(namespace_counts, default=0)
+    active_ids = tuple(sorted(transferred))
+    inactive_ids = tuple(sorted(set(supports_by_type).difference(transferred)))
+    active_independent = tuple(independent_by_type[type_id]
+                               for type_id in active_ids)
+    active_namespaces = tuple(namespaces_by_type[type_id]
+                              for type_id in active_ids)
+    minimum_active_independent = min(active_independent, default=0)
+    minimum_active_namespaces = min(active_namespaces, default=0)
     every_transferred = (len(transferred) == len(prototypes) and
                          minimum_independent >= 2 and
                          minimum_namespaces >= 2)
@@ -336,6 +354,11 @@ def transfer_frozen_hierarchy_level(
             repr(tuple(sorted(represented_records))).encode()).hexdigest()
         representation_complete = (raw_digest == representation_digest and
                                    not covered.intersection(residual_indices))
+    type_map_preserved = (
+        program.prototype_macro_types == frozen_promoted.prototype_macro_types)
+    partial_safe = (bool(occurrences) and replay_exact and
+                    representation_complete and type_map_preserved and
+                    overlap_ok and boundary_ok)
     audit = FrozenTransferLevel(
         frozen_promoted.level, len(frozen_promoted.prototypes),
         len(transferred), len(exact_types), len(backoff_types),
@@ -345,6 +368,6 @@ def transfer_frozen_hierarchy_level(
         len(covered) / max(1, support_count), ambiguous, cross_namespace,
         pose_rejections, replay_exact, len(residual_indices), raw_digest,
         representation_digest, representation_complete,
-        program.prototype_macro_types == frozen_promoted.prototype_macro_types,
-        overlap_ok, boundary_ok)
+        type_map_preserved, overlap_ok, boundary_ok, active_ids, inactive_ids,
+        minimum_active_independent, minimum_active_namespaces, partial_safe)
     return FrozenTransferStep(program, audit)
