@@ -813,6 +813,25 @@ quasicrystal model. Both marked runs still reach finite fixed points, and their
 promoted action macros have no three-wave recurrence, so sustained and
 exponential growth remain red.
 
+The history-free hierarchy now has a deeper real-material test. Five disjoint
+radius-14 Cd--Yb windows contain 2,385 atoms and learn a complete irregular
+cover. Exact macro quotienting produces nine positive levels,
+`80 -> 36 -> 22 -> 15 -> 8 -> 6 -> 4 -> 2 -> 1`, while the largest colored
+support grows from 67 to 472 atoms. Every support stays inside its packed crop
+namespace. At level one, 79 / 80 retained types have proof occurrences in at
+least two disjoint windows; every later retained type does. The five windows
+are distinct configurations, although disjointness alone is not statistical
+independence. The strict stationary audit nevertheless finds no three-level
+common production, with child-count/topology already failing.
+
+Two reserved windows provide an honest frozen-transfer boundary. Without
+refitting or renumbering, level one transfers 53 / 80 types in 92 exact
+occurrences and covers 560 / 959 observed atoms; 399 atoms remain explicit
+coordinate/species residuals. The audit then stops fail-closed. Since those
+heldout coordinates are supplied for matching, this is exact re-encoding, not
+autonomous growth. The deep hierarchy is therefore a train-compression result,
+and transferable recursive or exponential Cd--Yb growth remains red.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned

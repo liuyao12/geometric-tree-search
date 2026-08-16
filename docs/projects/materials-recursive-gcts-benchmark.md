@@ -2536,6 +2536,51 @@ An extended radius-25 diagnostic from the same first-wave candidate batch emits
 atoms overlap a training window. It is retained only as a depth diagnostic and
 is not a sealed result.
 
+### Deep Cd--Yb hierarchy and frozen transfer boundary
+
+The history-free cluster-of-clusters loop now has a substantially larger
+real-material corpus. Five mutually disjoint radius-14 crops of the published
+Cd5.7Yb model contain 2,385 atoms. Each crop is recentered and packed into a
+separate 80-angstrom namespace before learning, which prevents a support or
+port from joining nearly touching crop boundaries. The positions/species-only
+cover is complete: 2,360 atoms belong to recurring irregular supports and 25
+are explicit gap terminals. It learns 274 primitive support types, 1,697
+occurrences, and 21,056 finite proper-SE(3) ports.
+
+Exact macro mining, derivation quotienting, and promotion then produce nine
+positive levels:
+
+`80 -> 36 -> 22 -> 15 -> 8 -> 6 -> 4 -> 2 -> 1 -> 0`.
+
+The largest exact colored support rises from 67 to 472 atoms. Every admitted
+macro has at least two low-overlap proof occurrences and every occurrence is
+confined to one crop namespace. At level one, 79 / 80 retained quotient types
+are witnessed in at least two disjoint windows; the remaining type is confined
+to one. Every retained type at the later positive levels has two-window
+evidence. The five windows are distinct exact configurations, although
+disjoint atom domains alone do not imply statistical independence. The loop
+terminates at evidence exhaustion. This is genuine deep clusters-of-clusters
+compression, not a visible extra pipeline stage. The exact nine-level depth is
+deterministic on this packed corpus; robustness to resampling and positional
+perturbation has not yet been established.
+
+The unchanged strict stationarity audit remains red. No production key is
+shared across three consecutive levels; the first failing field is already
+child-count/topology, before chemistry, directed ports, normalized proper pose,
+scale, or population substitution can rescue it. Declining support-growth
+ratios and eventual crop saturation are not labelled exponential growth.
+
+A separate frozen audit observes two reserved, mutually disjoint radius-14
+windows containing 959 atoms. It does not refit or renumber the training
+grammar. At the first promoted level, 53 / 80 frozen types recur in 92 exact
+occurrences and cover 560 / 959 atoms (58.39%); the other 399 atoms remain exact
+coordinate/species residual terminals. Replay and representation hashes pass,
+but 27 frozen types lack the required two-window evidence, so recursion stops
+fail-closed after level one. Because the heldout coordinates are observed for
+matching, this is re-encoding only—not autonomous emission. The nine-level
+train hierarchy is therefore a strong compression result, while transferable
+recursive and exponential Cd--Yb growth remain red.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
