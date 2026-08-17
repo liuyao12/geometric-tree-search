@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import math
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -38,6 +39,20 @@ class FrozenIncidenceTokenMarking:
     minimum_support: int
     minimum_groups: int
     shrinkage: float
+
+
+def incidence_marking_digest(marking: FrozenIncidenceTokenMarking) -> str:
+    """Return a process-stable digest of a frozen token marking."""
+    weights = tuple(sorted(
+        marking.token_weights.items(), key=lambda row: repr(row[0])))
+    evidence = tuple(sorted(
+        ((token, row.positive, row.total, row.independent_groups)
+         for token, row in marking.token_evidence.items()),
+        key=lambda row: repr(row[0])))
+    payload = (marking.intercept, weights, evidence,
+               marking.minimum_support, marking.minimum_groups,
+               marking.shrinkage)
+    return hashlib.sha256(repr(payload).encode()).hexdigest()
 
 
 def _bucket(value: int) -> int:

@@ -100,7 +100,7 @@ def _key(point):
     return tuple(round(value, 6) for value in point)
 
 
-def _build_candidate_sources():
+def _build_candidate_fixture():
     origin_seed, _ = oracle_patch(3, 9.)
     origin_target, _ = oracle_patch(4, EVALUATION_TARGET_RADIUS)
     prototypes = local_cluster_types(
@@ -123,7 +123,11 @@ def _build_candidate_sources():
         sources.append(_CandidateSource(
             center, proposals, tuple(seed.positions), tuple(seed.species),
             truth, minimum))
-    return tuple(sources)
+    return prototypes, connection, tuple(sources)
+
+
+def _build_candidate_sources():
+    return _build_candidate_fixture()[2]
 
 
 def _candidate_groups_for_geometry(

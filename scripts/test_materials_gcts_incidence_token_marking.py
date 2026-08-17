@@ -6,6 +6,7 @@ from collections import Counter
 from materials_gcts_incidence_token_marking import (
     CandidateIncidenceDescriptor, IncidenceTokenExample,
     candidate_incidence_descriptors, fit_incidence_token_marking,
+    incidence_marking_digest,
     score_incidence_descriptor, score_incidence_descriptor_by_channel)
 from materials_gcts_recursive_connections import (
     LocalClusterType, MarkedProposalResult, RecursiveConnectionState)
@@ -86,10 +87,27 @@ def test_channel_projection_counts_each_family_once():
         marker, repeated_family) - expected) < 1e-12
 
 
+def test_marking_digest_is_mapping_order_invariant():
+    examples = tuple(IncidenceTokenExample(
+        group, CandidateIncidenceDescriptor((("role", role),)), successful)
+        for group, role, successful in (
+            ("a", "left", True), ("b", "left", True),
+            ("a", "right", False), ("b", "right", False)))
+    marker = fit_incidence_token_marking(
+        examples, minimum_support=2, minimum_groups=2)
+    reversed_marker = type(marker)(
+        marker.intercept, dict(reversed(tuple(marker.token_weights.items()))),
+        dict(reversed(tuple(marker.token_evidence.items()))),
+        marker.minimum_support, marker.minimum_groups, marker.shrinkage)
+    assert incidence_marking_digest(marker) == \
+        incidence_marking_digest(reversed_marker)
+
+
 def main():
     test_descriptor_is_permutation_translation_rotation_invariant()
     test_train_only_tokens_rank_supported_context()
     test_channel_projection_counts_each_family_once()
+    test_marking_digest_is_mapping_order_invariant()
     print("incidence token marking tests passed")
 
 

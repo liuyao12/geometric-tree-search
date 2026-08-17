@@ -13,7 +13,7 @@ def test_symmetry_orbit_channel_rule_passes_every_development_nucleus():
     assert report.descriptor_digest == \
         "4da17ec209403e5ce43b13d3a6f6d7e96fb94603e17ceeb31af615d8e48d8743"
     assert report.fold_model_digest == \
-        "1b2d547a852f2ee463e402426cde43f4bb15a4f0bca915c9dbdbbda5f3354594"
+        "eefce584a71baa0077824827cf8cecd733fb6a7a834e49616d8b33d86db6e96a"
     assert report.candidates_by_group == (
         4164, 5156, 5008, 4842, 5034, 5034, 5034, 5034, 5296)
     assert report.detailed_top_band_by_group == (8, 4, 1, 6, 1, 1, 1, 1, 1)

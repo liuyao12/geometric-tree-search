@@ -18,7 +18,8 @@ import json
 from dataclasses import asdict, dataclass
 
 from materials_gcts_incidence_token_marking import (
-    score_incidence_descriptor, score_incidence_descriptor_by_channel)
+    incidence_marking_digest, score_incidence_descriptor,
+    score_incidence_descriptor_by_channel)
 from materials_gcts_iqc_channel_count_confirmation import (
     CONFIRMATION_CENTER as EIGHTH_CENTER)
 from materials_gcts_iqc_contextual_value_confirmation import (
@@ -104,8 +105,7 @@ def evaluate():
         model = _fit_from_groups(
             statistics, tuple(index for index in range(len(groups))
                               if index != heldout_index))
-        model_digests.append(hashlib.sha256(
-            repr(model).encode()).hexdigest())
+        model_digests.append(incidence_marking_digest(model))
         detailed = _score(rows, model, score_incidence_descriptor)
         channel = _score(
             rows, model, score_incidence_descriptor_by_channel)
