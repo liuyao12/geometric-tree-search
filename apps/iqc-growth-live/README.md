@@ -705,6 +705,14 @@ and hard-core checks do not separate the branches. Candidate generation is
 therefore sufficient; the open task is a target-free cluster-of-clusters
 lookahead marking with rollback across locally legal phason alternatives.
 
+That lookahead now runs on the frozen top-two fork. Expanding each branch once
+without target access gives future boundary scores 0.9997197 for greedy rank 1
+and 0.9997951 for rank 2. A leaf-consistency-first beam therefore rolls back
+the 60-site error and selects the 48/48 exact sibling. Summing immediate and
+future scores would still choose incorrectly, so the implementation keeps
+search value distinct from the local marking. This is an exploratory recovery
+on the diagnosed trace, not yet an independent confirmatory growth gate.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

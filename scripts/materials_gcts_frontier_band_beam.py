@@ -24,6 +24,7 @@ def search_frontier_bands(
     roots: tuple[FrontierBand, ...],
     expand: Callable[[FrontierBand], tuple[FrontierBand, ...]], *,
     beam_width: int = 2, lookahead_depth: int = 2,
+    leaf_boundary_first: bool = False,
 ) -> BeamTrace:
     if beam_width < 1 or lookahead_depth < 1:
         raise ValueError("beam width and lookahead must be positive")
@@ -44,6 +45,7 @@ def search_frontier_bands(
                 candidates.append((path + (child,), score +
                                    child.marking_score + child.boundary_score))
         beam = tuple(sorted(candidates, key=lambda row: (
+            -row[0][-1].boundary_score if leaf_boundary_first else 0.,
             -row[1], tuple(map(repr, (item.band_id for item in row[0])))))
                      [:beam_width])
     best = beam[0][0]

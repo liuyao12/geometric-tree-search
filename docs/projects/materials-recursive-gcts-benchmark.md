@@ -1747,6 +1747,16 @@ contains the correct branch; the next generic gate is beam lookahead and
 rollback using boundary connection state only. Later waves are not admitted as
 exact recurrence evidence until that branch choice is repaired.
 
+The first beam implementation freezes ranks 1--2, expands both through the
+same target-free connection grammar, and ranks the leaves by future boundary
+consistency before using the immediate marking as a tie-break. The wrong branch
+has future score 0.9997197; the exact sibling has 0.9997951, so one rollback
+recovers all 48 sites. A cumulative sum would remain wrong. This separates the
+roles cleanly: the marking proposes locally plausible actions, while search
+value adjudicates delayed compatibility. Because the policy was diagnosed on
+this same trace, the result is exploratory and the confirmatory flag remains
+false.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

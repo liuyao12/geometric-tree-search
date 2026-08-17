@@ -65,6 +65,9 @@ class RegenerativeScoreBand:
     true_sites: int
     false_sites: int
     hard_core_conflicts: int
+    lookahead_maximum_score: float
+    lookahead_plateau_sites: int
+    lookahead_frontier_candidates: int
     positions: Tuple[Tuple[float, float, float], ...]
     species: Tuple[object, ...]
 
@@ -296,6 +299,31 @@ def _regenerative_maximum_plateaus(
         return sum((point[axis] - center[axis]) ** 2
                    for axis in range(3)) ** .5 <= radius_limit + 1e-8
 
+    def advance(positions, colors, source_remaining, plateau, plateau_colors):
+        branch_positions = list(positions) + list(plateau)
+        branch_colors = list(colors) + list(plateau_colors)
+        old_count = len(positions)
+        new_indices = tuple(range(old_count, len(branch_positions)))
+        all_indices = tuple(range(len(branch_positions)))
+        old_indices = tuple(range(old_count))
+        updated_types = local_cluster_types(
+            tuple(branch_positions), tuple(branch_colors), cluster_edges)
+        new_parents = propose_with_recursive_marking(
+            connection_marker, tuple(branch_positions), updated_types,
+            HIDDEN_UNIT, parent_indices=new_indices,
+            source_indices=all_indices)
+        old_parents_new_sources = propose_with_recursive_marking(
+            connection_marker, tuple(branch_positions), updated_types,
+            HIDDEN_UNIT, parent_indices=old_indices,
+            source_indices=new_indices)
+        following = _without_known_sites(source_remaining, plateau)
+        following = merge_marked_proposal_results(
+            (following, new_parents, old_parents_new_sources))
+        following = _without_known_sites(following, branch_positions)
+        following = _subset_proposals(
+            following, (point for point in following.votes if within(point)))
+        return branch_positions, branch_colors, following
+
     remaining = _subset_proposals(
         proposals, (point for point in proposals.votes if within(point)))
     accepted = []
@@ -333,9 +361,33 @@ def _regenerative_maximum_plateaus(
                     minimum_separation - 1e-8
                     for index, point in enumerate(band)
                     for other in tuple(current_positions) + band[index + 1:])
+                next_maximum = 0.0
+                next_plateau = 0
+                next_candidates = 0
+                if rank <= 2:
+                    branch_positions, branch_colors, branch_remaining = advance(
+                        current_positions, current_colors, remaining,
+                        band, band_colors)
+                    if branch_remaining.votes:
+                        next_frontier = score_frontier_attachments(
+                            frontier_marker, branch_remaining,
+                            branch_positions, branch_colors)
+                        next_augmented = _augmented_frontier(
+                            branch_remaining, next_frontier,
+                            branch_positions, branch_colors,
+                            min(provisional_pool, len(next_frontier)))
+                        next_scores = score_frontier_attachments(
+                            refinement_marker, branch_remaining,
+                            *next_augmented)
+                        next_maximum = max(next_scores.values())
+                        next_plateau = sum(
+                            next_maximum - score <= 1e-12
+                            for score in next_scores.values())
+                        next_candidates = len(next_scores)
                 diagnostic_bands.append(RegenerativeScoreBand(
                     wave, rank, level, len(band), band_true,
-                    len(band) - band_true, conflicts, band, band_colors))
+                    len(band) - band_true, conflicts, next_maximum,
+                    next_plateau, next_candidates, band, band_colors))
         maximum = max(scores.values())
         plateau = tuple(sorted(point for point, score in scores.items()
                                if maximum - score <= 1e-12))
@@ -351,28 +403,9 @@ def _regenerative_maximum_plateaus(
         traces.append(RegenerativeGrowthTrace(
             wave, plateau, plateau_colors))
 
-        old_count = len(current_positions)
-        current_positions.extend(plateau)
-        current_colors.extend(plateau_colors)
-        new_indices = tuple(range(old_count, len(current_positions)))
-        all_indices = tuple(range(len(current_positions)))
-        old_indices = tuple(range(old_count))
-        updated_types = local_cluster_types(
-            tuple(current_positions), tuple(current_colors), cluster_edges)
-        new_parents = propose_with_recursive_marking(
-            connection_marker, tuple(current_positions), updated_types,
-            HIDDEN_UNIT, parent_indices=new_indices,
-            source_indices=all_indices)
-        old_parents_new_sources = propose_with_recursive_marking(
-            connection_marker, tuple(current_positions), updated_types,
-            HIDDEN_UNIT, parent_indices=old_indices,
-            source_indices=new_indices)
-        remaining = _without_known_sites(remaining, plateau)
-        remaining = merge_marked_proposal_results(
-            (remaining, new_parents, old_parents_new_sources))
-        remaining = _without_known_sites(remaining, current_positions)
-        remaining = _subset_proposals(
-            remaining, (point for point in remaining.votes if within(point)))
+        current_positions, current_colors, remaining = advance(
+            current_positions, current_colors, remaining,
+            plateau, plateau_colors)
         if not remaining.votes:
             break
     return tuple(records), tuple(traces), tuple(diagnostic_bands)
