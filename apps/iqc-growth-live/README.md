@@ -776,6 +776,19 @@ repeatedly falsifies frontier cardinality as a value function while validating
 the persistent beam as the substrate on which a learned connection value must
 now operate.
 
+A first learned value replaces that falsified scalar without changing the
+candidate grammar or beam. The two completed diagnostics supply exact-action
+counts by root rank `(0, 0, 1, 2)` out of two observations each. A fixed
+Beta(1,1) posterior gives finite values `(0.25, 0.25, 0.50, 0.75)`; no target
+coordinate, material label, or global direction is a feature. The model is
+frozen and applied once at a sixth centre `(-20, -20, -25)`, whose target ball
+is at least 37.749 Å in centre separation from every earlier ball. The exact
+1-site action is rank four; the value-guided three-depth beam selects path
+`4 → 2 → 2` and emits that site exactly after 36 target-free branch
+expansions. This is the first green spatial confirmation of learned IQC branch
+selection. It certifies one action only—sustained autonomous growth,
+stationarity, and exponential amplification remain red.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

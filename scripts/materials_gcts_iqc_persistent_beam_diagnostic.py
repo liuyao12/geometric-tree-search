@@ -28,6 +28,7 @@ class PersistentBeamDiagnostic:
     target_atoms: int
     first_candidate_true_sites: tuple[int, ...]
     first_candidate_false_sites: tuple[int, ...]
+    first_candidate_value_scores: tuple[float, ...]
     selected_path_ranks: tuple[int, ...]
     evaluated_branches: int
     terminal_frontier_candidates: int
@@ -41,7 +42,8 @@ class PersistentBeamDiagnostic:
 
 
 def evaluate(*, lookahead_depth=3, beam_width=4, branching_width=4,
-             robust_marking=False, evaluation_center=CONFIRMATION_CENTER):
+             robust_marking=False, evaluation_center=CONFIRMATION_CENTER,
+             root_rank_values=None):
     center = tuple(float(value) for value in evaluation_center)
     (prototypes, connection, training_seeds, training_targets,
      _training_proposals, marker, refinement, robust_marker,
@@ -65,7 +67,7 @@ def evaluate(*, lookahead_depth=3, beam_width=4, branching_width=4,
         seed.positions, seed.species, CLUSTER_EDGES, pool,
         center, EVALUATION_TARGET_RADIUS, waves=1,
         beam_width=beam_width, branching_width=branching_width,
-        lookahead_depth=lookahead_depth)
+        lookahead_depth=lookahead_depth, root_rank_values=root_rank_values)
 
     # This nucleus has already completed its confirmation role; truth is still
     # attached only after the new persistent-beam decision is immutable.
@@ -91,7 +93,8 @@ def evaluate(*, lookahead_depth=3, beam_width=4, branching_width=4,
     return PersistentBeamDiagnostic(
         center, robust_marking, lookahead_depth, beam_width, branching_width,
         len(seed.positions), len(target.positions), candidate_true,
-        candidate_false, first.selected_path_ranks,
+        candidate_false, first.first_candidate_value_scores,
+        first.selected_path_ranks,
         first.evaluated_branches, first.terminal_frontier_candidates,
         emitted, correct, false, True,
         execution.target_used_for_selection, recovered,

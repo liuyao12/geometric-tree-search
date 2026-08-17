@@ -1835,6 +1835,25 @@ frontier size—even after real multi-depth search—is not a transferable value
 function. The next admissible change is a train-only learned value over branch
 connection state, using this persistent beam unchanged.
 
+The first such value model is deliberately finite and auditable. Across the
+two completed diagnostic nuclei, exact-action counts for root ranks one through
+four are `(0, 0, 1, 2)` out of two each. With a frozen Beta(1,1) prior, the
+rank-value channel is `(0.25, 0.25, 0.50, 0.75)`. Rank is the ordering of the
+already learned local marking, not an absolute coordinate or IQC label; future
+frontier cardinality remains only a tie-break. The candidate set, robust
+leave-one-nucleus-out marking, width four, branching four, and depth three are
+otherwise unchanged.
+
+This model is frozen before a sixth nucleus at `(-20, -20, -25)` is opened.
+Its complete scoring ball is separated from every prior ball by at least
+37.749, versus 29.125 required. The four candidate roots contain one exact
+1-site action at rank four. After 36 target-free branch expansions, the value
+selects path `4 / 2 / 2`; posthoc scoring confirms 1 / 1 correct colored site
+and zero false sites. The one-action spatial branch-selection gate is green.
+This is not yet a sustained-growth result: no second confirmed action,
+stationary production, amplification factor, or exponential certificate is
+inferred from it.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
