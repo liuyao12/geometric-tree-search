@@ -879,6 +879,17 @@ section has not been trained on post-commit frontier neighborhoods. The next
 model must add self-fed training states from known nuclei rather than widen the
 beam or revive ordinal rank as state.
 
+That controlled intervention is also tested. Eight training nuclei provide an
+exact teacher-forced first action; their post-commit frontiers contain 44,439
+candidates and 3,205 exact colored positives. A second continuous section is
+fit only on those states and staged after the first commit. On a new disjoint
+centre `(-50, 0, 0)`, wave one is again 4 / 4. At wave two the exact action is
+present at rank four, but the self-fed section still selects rank one and emits
+0 / 4. Thus exposure to post-commit states alone is insufficient. The current
+descriptor is radial/color/vote based and does not continuously encode the
+parent/source port-state distribution; that missing connection geometry is the
+next justified feature, not more rank channels.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

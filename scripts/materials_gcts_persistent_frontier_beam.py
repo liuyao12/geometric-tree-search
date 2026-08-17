@@ -67,6 +67,38 @@ def semantic_channel_descriptor(proposals, band, abstraction="exact"):
     return hashlib.sha256(repr(descriptor).encode()).hexdigest()
 
 
+def advance_frontier_configuration(
+        connection_marker, remaining, positions, colors, band, band_colors,
+        cluster_edges, center, radius_limit):
+    """Apply one exact candidate band and construct its self-fed frontier."""
+    center = tuple(center)
+    positions = tuple(positions)
+    colors = tuple(colors)
+    band = tuple(band)
+    band_colors = tuple(band_colors)
+    next_positions = positions + band
+    next_colors = colors + band_colors
+    old_count = len(positions)
+    new_indices = tuple(range(old_count, len(next_positions)))
+    all_indices = tuple(range(len(next_positions)))
+    old_indices = tuple(range(old_count))
+    types = local_cluster_types(next_positions, next_colors, cluster_edges)
+    new_parents = propose_with_recursive_marking(
+        connection_marker, next_positions, types, HIDDEN_UNIT,
+        parent_indices=new_indices, source_indices=all_indices)
+    old_parents = propose_with_recursive_marking(
+        connection_marker, next_positions, types, HIDDEN_UNIT,
+        parent_indices=old_indices, source_indices=new_indices)
+    next_remaining = _without_known_sites(remaining, band)
+    next_remaining = merge_marked_proposal_results(
+        (next_remaining, new_parents, old_parents))
+    next_remaining = _without_known_sites(next_remaining, next_positions)
+    next_remaining = _subset_proposals(
+        next_remaining, (point for point in next_remaining.votes
+                         if math.dist(point, center) <= radius_limit + 1e-8))
+    return next_positions, next_colors, next_remaining
+
+
 @dataclass(frozen=True)
 class PersistentBeamDecision:
     wave: int
@@ -110,7 +142,8 @@ def run_persistent_frontier_beam(
         center, radius_limit, *, waves=1, beam_width=4,
         branching_width=4, lookahead_depth=3, root_rank_values=None,
         candidate_snapshot_width=None, root_rank_values_by_previous=None,
-        forced_root_ranks=()):
+        forced_root_ranks=(), frontier_markers_by_depth=None,
+        refinement_markers_by_depth=None):
     """Retain complete alternative states for several depths before commit."""
     if (waves < 1 or beam_width < 2 or branching_width < 2 or
             lookahead_depth < 2):
@@ -131,40 +164,33 @@ def run_persistent_frontier_beam(
     def within(point):
         return math.dist(point, center) <= radius_limit + 1e-8
 
-    def score(state):
+    frontier_stages = tuple(frontier_markers_by_depth or (frontier_marker,))
+    refinement_stages = tuple(
+        refinement_markers_by_depth or (refinement_marker,))
+    if not frontier_stages or not refinement_stages:
+        raise ValueError("staged marking sequences cannot be empty")
+
+    def score(state, absolute_depth):
         if not state.remaining.votes:
             return {}, 0.
+        active_frontier = frontier_stages[min(
+            absolute_depth, len(frontier_stages) - 1)]
+        active_refinement = refinement_stages[min(
+            absolute_depth, len(refinement_stages) - 1)]
         frontier = score_frontier_attachments(
-            frontier_marker, state.remaining,
+            active_frontier, state.remaining,
             state.positions, state.colors)
         augmented = _augmented_frontier(
             state.remaining, frontier, state.positions, state.colors,
             min(provisional_pool, len(frontier)))
         scores = score_frontier_attachments(
-            refinement_marker, state.remaining, *augmented)
+            active_refinement, state.remaining, *augmented)
         return scores, max(scores.values(), default=0.)
 
     def advance(state, band, band_colors):
-        positions = state.positions + band
-        colors = state.colors + band_colors
-        old_count = len(state.positions)
-        new_indices = tuple(range(old_count, len(positions)))
-        all_indices = tuple(range(len(positions)))
-        old_indices = tuple(range(old_count))
-        types = local_cluster_types(positions, colors, cluster_edges)
-        new_parents = propose_with_recursive_marking(
-            connection_marker, positions, types, HIDDEN_UNIT,
-            parent_indices=new_indices, source_indices=all_indices)
-        old_parents = propose_with_recursive_marking(
-            connection_marker, positions, types, HIDDEN_UNIT,
-            parent_indices=old_indices, source_indices=new_indices)
-        remaining = _without_known_sites(state.remaining, band)
-        remaining = merge_marked_proposal_results(
-            (remaining, new_parents, old_parents))
-        remaining = _without_known_sites(remaining, positions)
-        remaining = _subset_proposals(
-            remaining, (point for point in remaining.votes if within(point)))
-        return positions, colors, remaining
+        return advance_frontier_configuration(
+            connection_marker, state.remaining, state.positions, state.colors,
+            band, band_colors, cluster_edges, center, radius_limit)
 
     remaining = _subset_proposals(
         proposals, (point for point in proposals.votes if within(point)))
@@ -195,7 +221,7 @@ def run_persistent_frontier_beam(
         for depth in range(search_depth):
             children = []
             for state in frontier_states:
-                scores, _maximum = score(state)
+                scores, _maximum = score(state, wave - 1 + depth)
                 if depth == 0 and state is root:
                     snapshot_levels = sorted(
                         set(scores.values()), reverse=True)[:snapshot_width]
@@ -231,7 +257,8 @@ def run_persistent_frontier_beam(
                         state.path_bands + (band,),
                         state.path_colors + (band_colors,),
                         len(child_remaining.votes), level)
-                    next_scores, next_maximum = score(child_shell)
+                    next_scores, next_maximum = score(
+                        child_shell, wave + depth)
                     child_shell = _State(
                         child_shell.positions, child_shell.colors,
                         child_shell.remaining, child_shell.path_ranks,

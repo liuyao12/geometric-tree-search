@@ -1960,6 +1960,18 @@ The continuous section was trained only on seed frontiers; the justified next
 step is to include target-free post-commit states from the known training
 nuclei, not to carry ordinal rank or tune against this failed target.
 
+The follow-up performs exactly that intervention without using the failed
+nucleus. Eight of nine training nuclei expose an exact teacher-forced first
+band. Their post-commit states supply 44,439 candidates and 3,205 exact colored
+positives; a separate continuous section is fitted and selected at every depth
+after the first commit. At a new disjoint centre `(-50, 0, 0)`, wave one emits
+4 / 4 exactly. Wave two retains an exact action at rank four, but selects rank
+one and emits 0 / 4. The gate remains red. Therefore training-state exposure
+is not the only problem: the existing continuous descriptor contains bounded
+radial/color/vote statistics but not a continuous summary of the actual
+parent/source port states. That symmetry-invariant connection distribution is
+the next representation change to test.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
