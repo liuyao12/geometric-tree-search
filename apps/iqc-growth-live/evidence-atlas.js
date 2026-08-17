@@ -108,7 +108,7 @@ const CLAIMS = [
   ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC sites; four rules are heterogeneous, but no closed state matrix recurs across transitions."],
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],
-  ["open", "Expanding IQC frontier production", "The vector executor passes a φ-growth control, but the four real multi-child IQC rules are transition-local and non-compressive. The repeated golden-ratio dimer shrinks 24 → 12 → 8."],
+  ["open", "IQC branch selection", "At wave 17 greedy chooses 60/60 wrong locally legal sites, while rank 2 is 48/48 exact. The correct branch exists; target-free lookahead and rollback are now the first blocker."],
   ["open", "Generic million-site QC growth", "Specialized/address ceilings cross one million; the family-blind cluster-of-clusters executor does not yet."],
   ["open", "Pure-port crystal closure", "NaCl's port graph certifies the learned cell rule, but the radix/offset proposal still comes from a positions-only grid learner."],
   ["open", "Explicit output cost", "Symbolic derivations compress actions; emitting every atom remains linear and is not claimed to replace molecular dynamics time integration."],

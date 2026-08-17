@@ -57,6 +57,19 @@ class RegenerativeGrowthTrace:
 
 
 @dataclass(frozen=True)
+class RegenerativeScoreBand:
+    wave: int
+    rank: int
+    score: float
+    sites: int
+    true_sites: int
+    false_sites: int
+    hard_core_conflicts: int
+    positions: Tuple[Tuple[float, float, float], ...]
+    species: Tuple[object, ...]
+
+
+@dataclass(frozen=True)
 class FrontierAttachmentBenchmark:
     atom_counts: Tuple[int, int, int]
     training_candidates: int
@@ -83,6 +96,7 @@ class FrontierAttachmentBenchmark:
     iterative_growth_waves: Tuple[IterativeGrowthWave, ...]
     regenerative_growth_waves: Tuple[IterativeGrowthWave, ...]
     regenerative_growth_traces: Tuple[RegenerativeGrowthTrace, ...]
+    regenerative_wave17_score_bands: Tuple[RegenerativeScoreBand, ...]
     learned_envelope_scale: float
     regenerative_radius_limit: float
     learned_minimum_separation: float
@@ -290,6 +304,7 @@ def _regenerative_maximum_plateaus(
     current_colors = list(known_colors)
     records = []
     traces = []
+    diagnostic_bands = []
     for wave in range(1, waves + 1):
         frontier_scores = score_frontier_attachments(
             frontier_marker, remaining, current_positions, current_colors)
@@ -298,6 +313,29 @@ def _regenerative_maximum_plateaus(
             min(provisional_pool, len(frontier_scores)))
         scores = score_frontier_attachments(
             refinement_marker, remaining, *augmented)
+        if wave == 17:
+            minimum_separation = min(
+                sum((left - right) ** 2 for left, right in zip(point, other))
+                ** .5
+                for index, point in enumerate(known_positions)
+                for other in known_positions[index + 1:])
+            levels = sorted(set(scores.values()), reverse=True)[:12]
+            for rank, level in enumerate(levels, 1):
+                band = tuple(point for point, score in scores.items()
+                             if abs(score - level) <= 1e-12)
+                band_true = sum(point in targets for point in band)
+                band_colors = tuple(
+                    _dominant_source_color(remaining, point)
+                    for point in band)
+                conflicts = sum(
+                    0 < sum((left - right) ** 2
+                            for left, right in zip(point, other)) ** .5 <
+                    minimum_separation - 1e-8
+                    for index, point in enumerate(band)
+                    for other in tuple(current_positions) + band[index + 1:])
+                diagnostic_bands.append(RegenerativeScoreBand(
+                    wave, rank, level, len(band), band_true,
+                    len(band) - band_true, conflicts, band, band_colors))
         maximum = max(scores.values())
         plateau = tuple(sorted(point for point, score in scores.items()
                                if maximum - score <= 1e-12))
@@ -337,7 +375,7 @@ def _regenerative_maximum_plateaus(
             remaining, (point for point in remaining.votes if within(point)))
         if not remaining.votes:
             break
-    return tuple(records), tuple(traces)
+    return tuple(records), tuple(traces), tuple(diagnostic_bands)
 
 
 def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
@@ -440,7 +478,8 @@ def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
     second_center, second_radius = _center_and_radius(second.positions)
     envelope_scale = second_radius / first_radius
     regenerative_limit = second_radius * envelope_scale
-    regenerative_waves, regenerative_traces = _regenerative_maximum_plateaus(
+    regenerative_waves, regenerative_traces, regenerative_bands = \
+        _regenerative_maximum_plateaus(
         marker, refinement_marker, connection_marking, heldout,
         second.positions, second.species, cluster_edges, heldout_targets,
         heldout_pool, second_center, regenerative_limit,
@@ -454,6 +493,7 @@ def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
         third_training_prefix, third_projected_prefix, third_projected,
         landmarks, gap_rank, gap,
         iterative_waves, regenerative_waves, regenerative_traces,
+        regenerative_bands,
         envelope_scale,
         regenerative_limit,
         minimum_separation, False, True, True)

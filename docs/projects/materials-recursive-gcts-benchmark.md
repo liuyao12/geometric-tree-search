@@ -1737,6 +1737,16 @@ every individual rule to branch. It remains a generic algebra/control. The
 actual 16-wave IQC trace produces no recurrent closed state set, so its
 multi-state exponential gate remains red.
 
+A fixed 24-wave extension rules out a simple observation-horizon explanation.
+The first 16 waves are exact; wave 17 greedily selects 60 false sites, although
+the rank-2 band is 48/48 exact and ranks 3--4 are also exact. All four bands are
+hard-core valid, and the wrong band has substantial recurring-state cover, so
+neither collision rejection nor internal compression is a causal selector.
+The score gap between ranks 1 and 2 is 0.0001877. The candidate tree already
+contains the correct branch; the next generic gate is beam lookahead and
+rollback using boundary connection state only. Later waves are not admitted as
+exact recurrence evidence until that branch choice is repaired.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

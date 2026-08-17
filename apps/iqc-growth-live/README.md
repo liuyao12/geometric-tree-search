@@ -695,6 +695,16 @@ digest. This is an executable multi-state exponential capability control, not
 a claim that the ideal IQC trace has passed: its five real rules still contain
 no closed production system recurring across transitions.
 
+An untuned 24-wave extension identifies the next tree-search failure precisely.
+Waves 1--16 remain 368/368 exact. At wave 17 the greedy maximum-score band
+contains 60/60 wrong but locally collision-free sites; the immediately adjacent
+rank-2 band contains 48/48 exact sites, and ranks 3--4 are also exact. The
+score gap is only 0.0001877. Lift bounds 6, 7, and 8 all give the same 8,603-site
+oracle crop, so this is not target truncation. Internal recurring-cluster cover
+and hard-core checks do not separate the branches. Candidate generation is
+therefore sufficient; the open task is a target-free cluster-of-clusters
+lookahead marking with rollback across locally legal phason alternatives.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the
