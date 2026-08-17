@@ -243,25 +243,25 @@
 
           <div id="clusterGeometryOptions" hidden>
             <label class="field" for="geometryModeSelect">
-              <span>Geometry support <b id="geometryModeHint">infer from positions</b></span>
+              <span>Placement domain <b id="geometryModeHint">infer from positions</b></span>
               <select id="geometryModeSelect">
-                <option value="auto" selected>Auto · infer lattice or non-regular support</option>
-                <option value="lattice">Periodic lattice · discrete translations</option>
-                <option value="module">Aperiodic module · discrete non-periodic support</option>
-                <option value="offlattice">Observed point set · free SE(3) support</option>
+                <option value="auto" selected>Auto · test translation closure</option>
+                <option value="lattice">Lattice-constrained · periodic translations</option>
+                <option value="module">Aperiodic module · finite-rank non-periodic support</option>
+                <option value="offlattice">Free SE(3) · unrestricted point-set support</option>
               </select>
             </label>
             <div class="geometry-audit" aria-label="Inferred geometric degrees of freedom">
               <div><small>translations</small><strong id="translationSupport">—</strong></div>
               <i>×</i>
-              <div><small>pose atlas</small><strong id="rotationSupport">—</strong></div>
+              <div><small>cluster rotations</small><strong id="rotationSupport">—</strong></div>
               <i>→</i>
-              <div><small>channel basis</small><strong id="channelRankSupport">—</strong></div>
+              <div><small>derived marking</small><strong id="channelRankSupport">—</strong></div>
             </div>
-            <div class="pose-atlas-heading"><span>required pose orbits × connection roles</span><b id="poseAtlasTotal">—</b></div>
+            <div class="pose-atlas-heading"><span>symmetry-quotiented pose × connection atlas</span><b id="poseAtlasTotal">—</b></div>
             <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
             <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
-            <p class="rank-note"><b>Auto channels</b> = two compatibility / failure fields + the observed pose × port incidence rank (capped at 12). Symmetry-equivalent rotations share a pose orbit and do not consume separate channels.</p>
+            <p class="rank-note"><b>Auto channels are derived after clustering.</b> Two compatibility / failure fields are augmented by the observed pose × port incidence rank (capped at 12). Symmetry-equivalent rotations share an orbit; repeated copies do not consume extra channels.</p>
           </div>
 
           <div id="markingTrainingOptions">

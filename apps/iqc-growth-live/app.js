@@ -2998,8 +2998,8 @@ function syncStageOptions() {
     translationSupport.textContent = geometryMode === "lattice" || (geometryMode === "auto" && latticeDetected)
       ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "observed point set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
-    rotationSupport.textContent = `${totalPoses} required pose orbit${totalPoses === 1 ? "" : "s"}`;
-    channelRankSupport.textContent = `${automaticMarkingChannels()} coupled channels`;
+    rotationSupport.textContent = `${totalPoses} proper pose orbit${totalPoses === 1 ? "" : "s"}`;
+    channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
     renderPoseAtlas();
     stageOptionsState.textContent = geometryMode === "module" ? "aperiodic module"
       : geometryMode === "offlattice" ? "free SE(3)"
@@ -3024,7 +3024,7 @@ function syncStageOptions() {
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${referenceCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
-    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (auto from pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. The pose atlas is frozen at clustering; symmetry-equivalent rotations share channels.`;
+    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. Clustering fixes the required proper-rotation orbits before this fit; symmetry-equivalent rotations share channels.`;
   } else {
     renderMarkingLibrary();
     const active = selectedMarking();
