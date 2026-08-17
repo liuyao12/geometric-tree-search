@@ -2090,6 +2090,21 @@ expanding the section to 32 neighbors. The centred stratum is therefore an
 explicit out-of-distribution red control; it is not dropped or used to justify
 opening the reserved confirmation nucleus.
 
+The next fixed experiment projects the same tokens into semantic channels: all
+members of one token family contribute their average evidence, so orbit size
+cannot multiply a family's vote. A target-free selector uses the larger exact
+top-score equality orbit to choose detailed versus channel scoring, with ties
+fixed to detailed. At reach three, distance width 0.25, eight neighbors, and a
+two-action antichain, leave-one-nucleus-out development is 18 / 18 exact. The
+rule is frozen in commit `644d69f`; a second preregistration commit fixes the
+reserved target order and protocol digest before execution. The disjoint
+confirmation at `(0, 0, -50)` is 0 / 2: the detailed and channel top bands have
+sizes four and two, the rule chooses detailed, and both selected placements are
+false. The target is opened once after the candidate, descriptor, model, and
+selection hashes are immutable. This falsifies orbit-size selection rather
+than the finite pose/port representation and supplies a concrete requirement
+for a learned joint role-incidence geometry section.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

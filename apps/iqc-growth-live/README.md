@@ -1258,6 +1258,20 @@ neighbors moves the first exact centred action only from rank 189 to 121 and
 does not change the top-two failure. Thus neither wider reach nor nested
 parameter selection passes the unchanged all-nucleus gate.
 
+A symmetry-orbit channel projection then prevents a large family of equivalent
+rotation or metric-edge tokens from receiving extra weight merely because it
+has more representatives. A label-free selector chooses between the detailed
+and channel scores by the size of their exact top-score equality orbit. Fixed
+at three-shell reach, 0.25 distance bins, eight neighbors, and two actions per
+nucleus, it reaches 18 / 18 exact placements on the nine development nuclei.
+The rule and candidate/model digests were committed before the reserved centre
+was imported. The one-shot spatially disjoint confirmation is red: detailed
+and channel top bands contain four and two actions respectively, the frozen
+rule chooses detailed, and both selected actions are false (0 / 2). The target
+was constructed once after the selection digest was frozen. Orbit multiplicity
+is therefore rejected as a transferable value function even though
+symmetry-quotiented pose channels remain the correct representation.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
