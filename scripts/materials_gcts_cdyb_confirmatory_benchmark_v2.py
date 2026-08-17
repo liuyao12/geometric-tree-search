@@ -52,6 +52,11 @@ from materials_gcts_recurrent_macro_executor import ExecutionBoundary
 
 EXPECTED_PROTOCOL_DIGEST = \
     "3d4dfca24c7526baff14a2258c715e4caf0631af1c28af8ab41860b8e593c3f6"
+SEALED_RESULT_PATH = (Path(__file__).parent / "fixtures" / "materials" /
+                      "cdyb_confirmatory_v2_result.json")
+SEALED_RESULT_SHA256 = \
+    "f884212bd96232b8c7f94bbaa813c778cc4a3853a5d7c10dc68e46b3279dab02"
+CONFIRMATORY_TRIAL_CONSUMED = True
 
 
 @dataclass(frozen=True)
@@ -264,7 +269,7 @@ def _self_fed_depth(execution):
     return depth
 
 
-def evaluate():
+def _consumed_trial_implementation():
     guard = OneShotOrderGuard()
     protocol_digest = protocol_v2_digest()
     if protocol_digest != EXPECTED_PROTOCOL_DIGEST:
@@ -449,6 +454,36 @@ def evaluate():
         primary, sustained, order["target_factory_calls"], order["events"],
         order["execution_frozen_before_target"] and order["scored_once"] and
         order["target_factory_calls"] == 1, False, False)
+
+
+def load_sealed_result() -> CdYbConfirmatoryV2Result:
+    """Load the immutable one-shot result without reopening its target."""
+    raw = SEALED_RESULT_PATH.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != SEALED_RESULT_SHA256:
+        raise AssertionError("sealed confirmatory result fixture changed")
+    payload = json.loads(raw)
+    for name in ("marked", "unmarked", "frequency"):
+        payload[name] = ArmScore(**payload[name])
+    for name in ("null_exact_actions", "null_correct_sites",
+                 "null_matched_work_checks"):
+        payload[name] = tuple(payload[name])
+    payload["multiwave_accepted_by_level_wave"] = tuple(
+        tuple(item) for item in payload["multiwave_accepted_by_level_wave"])
+    payload["order_events"] = tuple(
+        tuple(item) for item in payload["order_events"])
+    return CdYbConfirmatoryV2Result(**payload)
+
+
+def evaluate() -> CdYbConfirmatoryV2Result:
+    """Return the sealed result; scientific execution cannot be repeated."""
+    if not CONFIRMATORY_TRIAL_CONSUMED:
+        raise AssertionError("confirmatory consumption latch is inconsistent")
+    return load_sealed_result()
+
+
+def execute_confirmatory_trial():
+    raise RuntimeError(
+        "CdYb confirmation v2 was consumed once; use load_sealed_result()")
 
 
 def main():

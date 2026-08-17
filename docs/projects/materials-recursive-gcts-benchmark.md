@@ -2651,6 +2651,43 @@ continuous local section trained on a more diverse set of train-only frontier
 failures, followed by a newly predeclared confirmatory nucleus. No autonomous
 hierarchical or exponential claim is made from this red result.
 
+### Publicly preregistered second nucleus
+
+The next test was frozen in two public commits before its target was accessed.
+The geometry manifest fixes centre `(35, 35, -35)`, radius-14 seed, radius-25
+public boundary, and an atom-domain separation above 55 angstrom from every
+training window and the previously opened evaluation nucleus. Protocol v2
+additionally freezes the actual 28-row training-corpus digest, continuous-model
+weights and digest, five source-file hashes, feature schema, top-five/no-threshold
+decision rule, three waves per level, four levels, and 31 deterministic
+within-window label-shuffle refits. Its one-shot guard enforces the order
+
+`protocol -> train -> model -> seed -> candidates -> controls -> execution -> target -> score`.
+
+One harness invocation aborted before the seed because it looked for geometry
+fields on protocol v2 rather than the referenced v1 geometry manifest. The
+zero-target-access abort and sole field-source correction were committed as an
+erratum before proceeding. The scientific run then opened and scored the target
+exactly once.
+
+The common first wave contains 36 target-blind candidates. None is a completely
+exact macro action. The continuous mark's top five emit 27 correct among 56
+unique proposed sites (48.21% site precision); stable and frozen-frequency
+ordering each emit 10 correct among 41 (24.39%). This numerical improvement is
+not causal evidence: all 31 shuffled-label refits select the same marked result,
+so exact-action, correct-site, and matched-work tests all give `p = 1`. Marked
+matched work is 8 checks versus 14, a 1.75x reduction below the frozen 2x gate.
+
+The marked executor still demonstrates real clusters-of-clusters mechanics. It
+accepts `5 -> 5 -> 5` placements at level one, `5 -> 5 -> 5` at level two,
+`1 -> 0` at level three, and `0` at level four. That is seven consecutive
+nonempty self-fed waves. Posthoc, its frozen union contains 247 of the 2,217
+outer-shell target atoms, or 11.14% recall. The primary marking gate and the
+sustained-growth gate both remain red; stationarity and exponential growth are
+unchanged and red. The complete result, event sequence, candidate/plan/execution
+digests, and null arrays are stored as a hash-checked fixture, and the benchmark
+now refuses to reopen the consumed scientific target.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

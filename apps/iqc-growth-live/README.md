@@ -857,6 +857,19 @@ sites, versus constant ordering's 13 / 24. All 31 within-parent label shuffles
 tie it (`p = 1`). The partial macro search machinery is now present, but
 transferable ranking and autonomous hierarchical growth remain red.
 
+A second, publicly preregistered Cd--Yb nucleus now tests whether a continuous
+ID-free section fixes that transfer failure. The complete model, 28-row
+training corpus, source hashes, top-five policy, 31 within-window shuffled
+refits, and centre `(35, 35, -35)` were committed before the target opened.
+The common first frontier has 36 candidates and no completely exact macro
+action. The marked top five emit 27 / 56 correct sites versus stable and
+frequency ordering's 10 / 41, but all 31 shuffled models reproduce the marked
+result (`p = 1`), so the causal marking gate is red. Target-blind execution does
+self-feed through seven nonempty waves over four hierarchy levels and reaches
+247 / 2,217 outer-shell atoms (11.14% recall), but the preregistered primary and
+sustained-growth gates both fail. The sole target opening and result are now
+sealed in a hash-checked, non-rerunnable fixture.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned

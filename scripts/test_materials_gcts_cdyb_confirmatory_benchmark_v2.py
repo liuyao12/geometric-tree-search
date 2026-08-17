@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-from materials_gcts_cdyb_confirmatory_benchmark_v2 import evaluate
+from materials_gcts_cdyb_confirmatory_benchmark_v2 import (
+    CONFIRMATORY_TRIAL_CONSUMED, evaluate, execute_confirmatory_trial)
 
 
 def test_one_shot_cdyb_confirmation_v2():
@@ -20,6 +21,23 @@ def test_one_shot_cdyb_confirmation_v2():
     assert result.all_order_events_passed
     assert not result.target_used_before_open
     assert not result.refit_or_retuning_after_target
+    assert CONFIRMATORY_TRIAL_CONSUMED
+    assert result.first_wave_candidates == 36
+    assert result.marked.correct_emitted_sites == 27
+    assert result.marked.unique_emitted_sites == 56
+    assert result.unmarked.correct_emitted_sites == 10
+    assert result.correct_site_p == 1.0
+    assert result.self_fed_depth == 7
+    assert result.outer_shell_correct_emitted_atoms == 247
+    assert result.outer_atom_recall == 0.11141181777176365
+    assert not result.primary_gate_passed
+    assert not result.sustained_growth_gate_passed
+    try:
+        execute_confirmatory_trial()
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError("consumed scientific target could be reopened")
 
 
 if __name__ == "__main__":
