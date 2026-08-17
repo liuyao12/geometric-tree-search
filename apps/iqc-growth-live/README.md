@@ -789,6 +789,18 @@ expansions. This is the first green spatial confirmation of learned IQC branch
 selection. It certifies one action only—sustained autonomous growth,
 stationarity, and exponential amplification remain red.
 
+Executing the frozen policy for two self-fed waves on that now-diagnostic sixth
+nucleus separates value failure from channel coverage. Wave one remains exact.
+At wave two, none of the four actively expanded root channels is correct, so
+the executor emits one false site. A target-free snapshot of the first twelve
+immutable score bands—without expanding the extra branches—shows exact 1-site
+actions at ranks six and twelve. Candidate geometry is therefore still
+present; the learned action representation is too narrow for this frontier.
+The benchmark now records active branching width and diagnostic channel reach
+separately. The next channel count must be selected from training recurrence or
+pose/port coverage, then frozen before another spatial nucleus; this diagnostic
+cannot justify silently widening the live search.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

@@ -56,13 +56,17 @@ def run_persistent_frontier_beam(
         frontier_marker, refinement_marker, connection_marker, proposals,
         known_positions, known_colors, cluster_edges, provisional_pool,
         center, radius_limit, *, waves=1, beam_width=4,
-        branching_width=4, lookahead_depth=3, root_rank_values=None):
+        branching_width=4, lookahead_depth=3, root_rank_values=None,
+        candidate_snapshot_width=None):
     """Retain complete alternative states for several depths before commit."""
     if (waves < 1 or beam_width < 2 or branching_width < 2 or
             lookahead_depth < 2):
         raise ValueError("invalid persistent-beam dimensions")
     center = tuple(center)
     rank_values = dict(root_rank_values or {})
+    snapshot_width = candidate_snapshot_width or branching_width
+    if snapshot_width < branching_width:
+        raise ValueError("candidate snapshot cannot be narrower than branching")
     minimum_separation = min(
         math.dist(point, other)
         for index, point in enumerate(known_positions)
@@ -119,11 +123,20 @@ def run_persistent_frontier_beam(
                       len(remaining.votes), 0.)
         frontier_states = (root,)
         first_rows = None
+        first_snapshot = None
         evaluated = 0
         for depth in range(lookahead_depth):
             children = []
             for state in frontier_states:
                 scores, _maximum = score(state)
+                if depth == 0 and state is root:
+                    snapshot_levels = sorted(
+                        set(scores.values()), reverse=True)[:snapshot_width]
+                    first_snapshot = tuple((
+                        rank,
+                        tuple(sorted(point for point, value in scores.items()
+                                     if abs(value - level) <= 1e-12)))
+                        for rank, level in enumerate(snapshot_levels, 1))
                 levels = sorted(set(scores.values()), reverse=True)[
                     :branching_width]
                 rows = []
@@ -178,14 +191,17 @@ def run_persistent_frontier_beam(
             float("nan"), best.terminal_maximum, len(root.remaining.votes)))
         traces.append(RegenerativeGrowthTrace(wave, band, band_colors))
         first_rows = first_rows or ()
+        snapshot = tuple((rank, band, tuple(_dominant_source_color(
+            root.remaining, point) for point in band))
+                         for rank, band in (first_snapshot or ()))
         decisions.append(PersistentBeamDecision(
             wave, lookahead_depth, len(frontier_states), evaluated,
             best.path_ranks,
-            tuple(row[0] for row in first_rows),
-            tuple(len(row[1]) for row in first_rows),
-            tuple(row[1] for row in first_rows),
-            tuple(row[2] for row in first_rows),
-            tuple(rank_values.get(row[0], 0.) for row in first_rows),
+            tuple(row[0] for row in snapshot),
+            tuple(len(row[1]) for row in snapshot),
+            tuple(row[1] for row in snapshot),
+            tuple(row[2] for row in snapshot),
+            tuple(rank_values.get(row[0], 0.) for row in snapshot),
             best.terminal_candidates, False))
         if not remaining.votes:
             break

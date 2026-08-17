@@ -1854,6 +1854,17 @@ This is not yet a sustained-growth result: no second confirmed action,
 stationary production, amplification factor, or exponential certificate is
 inferred from it.
 
+The same sixth nucleus is then reused only diagnostically for two self-fed
+waves. The first action stays exact, while the second width-four choice is
+false. Crucially, a frozen snapshot of twelve score bands (the extra bands are
+inspected but not expanded) contains exact 1-site actions at ranks six and
+twelve; ranks one through five are all false. Thus the second-wave failure is
+not missing geometry and cannot be repaired by a different value over the same
+four roots. It is a learned action-channel coverage failure. Active branching
+width and diagnostic snapshot reach are now separate audit fields. Any move to
+six or twelve active channels must be chosen using training-side pose/port
+coverage and face a new nucleus; the opened sixth target is not a tuning gate.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
