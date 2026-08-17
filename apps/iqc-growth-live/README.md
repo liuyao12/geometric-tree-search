@@ -69,6 +69,9 @@ channel per rotation: proper-symmetry-equivalent frames share equivariant
 fields, while chemistry, successful connection, and failure information can
 require more than one field even when a cluster has only one physical pose.
 The marking stage retains a manual override for controlled ablations.
+The clustering controls summarize that dependency explicitly as
+`translation support × proper-pose orbits → coupled marking rank`, with a
+per-cluster audit underneath rather than a single unexplained channel slider.
 
 ## Finite rigid overlap grammar
 
@@ -114,8 +117,10 @@ the live fit and held-out curves combine signed-port mismatch with
 shared-support disagreement.
 
 A completed fit can be frozen into the browser's marking library. Each entry
-retains its material, configuration, coefficients, sample count, and held-out
-loss. The growth stage can select any compatible saved marking, the unmarked
+retains its material, geometric-support hypothesis, configuration,
+coefficients, sample count, and held-out loss. A lattice-trained marking is not
+offered under the aperiodic-module or free-`SE(3)` hypotheses. The growth stage
+can select any compatible saved marking, the unmarked
 colored-action baseline, or the exact-local-oracle diagnostic ceiling. “Train a
 different marking” returns to stage three without deleting earlier entries.
 

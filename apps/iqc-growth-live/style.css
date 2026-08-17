@@ -276,6 +276,12 @@ body.atlas-open { overflow: hidden; }
 .stage-options-heading strong { display: block; color: #dce7e3; font-size: 11px; font-weight: 500; }
 .option-state { flex: 0 0 auto; padding: 4px 6px; border: 1px solid rgba(181,148,255,.35); color: var(--violet); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 .stage-options .field b { color: var(--mint); font: 7px var(--mono); font-weight: 400; }
+.geometry-audit { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 5px; margin-top: 9px; }
+.geometry-audit div { min-width: 0; padding: 7px; border: 1px solid rgba(101,225,188,.16); background: rgba(5,17,18,.45); }
+.geometry-audit small, .geometry-audit strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.geometry-audit small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
+.geometry-audit strong { margin-top: 4px; color: #d9e7e2; font: 8px var(--mono); font-weight: 400; }
+.geometry-audit i { align-self: center; color: rgba(181,148,255,.62); font: 9px var(--mono); font-style: normal; }
 .pose-atlas-heading { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; color: var(--faint); font: 6px var(--mono); text-transform: uppercase; line-height: 1.4; }
 .pose-atlas-heading b { flex: 0 0 auto; color: var(--violet); font-weight: 400; }
 .pose-atlas { display: grid; gap: 4px; margin-top: 6px; }
@@ -283,6 +289,8 @@ body.atlas-open { overflow: hidden; }
 .pose-atlas-row code { color: #cbd8d4; font: 7px var(--mono); }
 .pose-atlas-row span { overflow: hidden; color: #718780; font: 7px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
 .pose-atlas-row b { color: var(--mint); font: 8px var(--mono); font-weight: 400; }
+.rank-note { margin: 7px 0 0; color: #627873; font: 7px var(--mono); line-height: 1.45; }
+.rank-note b { color: var(--violet); font-weight: 400; }
 .option-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6px; margin-top: 11px; }
 .option-actions button, .train-variant { min-height: 31px; padding: 0 8px; border: 1px solid var(--line); background: #0b1a1b; color: var(--muted); font: 8px var(--mono); cursor: pointer; }
 .option-actions button:hover, .train-variant:hover { border-color: rgba(101,225,188,.55); color: var(--mint); }

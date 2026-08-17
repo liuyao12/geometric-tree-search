@@ -32,6 +32,9 @@ const clusterGeometryOptions = $("clusterGeometryOptions");
 const geometryModeSelect = $("geometryModeSelect");
 const geometryModeHint = $("geometryModeHint");
 const geometryModeNote = $("geometryModeNote");
+const translationSupport = $("translationSupport");
+const rotationSupport = $("rotationSupport");
+const channelRankSupport = $("channelRankSupport");
 const poseAtlasTotal = $("poseAtlasTotal");
 const poseAtlas = $("poseAtlas");
 const markingTrainingOptions = $("markingTrainingOptions");
@@ -2065,7 +2068,10 @@ function restoreMarkingLibrary() {
     const stored = JSON.parse(localStorage.getItem(MARKING_LIBRARY_STORAGE) || "null");
     if (!stored || !Array.isArray(stored.markings)) return;
     markingLibrary = stored.markings.filter((marking) => marking?.id && marking?.config
-      && Array.isArray(marking.coefficients) && MARKING_REPRESENTATIONS[marking.config.representation]);
+      && Array.isArray(marking.coefficients) && MARKING_REPRESENTATIONS[marking.config.representation])
+      .map((marking) => ({ ...marking, config: {
+        ...marking.config, geometryMode: marking.config.geometryMode || "auto",
+      } }));
     activeMarkingId = stored.activeMarkingId || null;
     nextMarkingId = Math.max(1, ...markingLibrary.map((marking) => Number(marking.id.split("-").at(-1)) + 1 || 1));
   } catch (_) {
@@ -2089,6 +2095,7 @@ function currentMarkingConfig() {
     channelMode: requestedChannels ? "manual" : "auto",
     reach: Number(markingDraft.reach),
     representation: markingDraft.representation,
+    geometryMode,
   };
 }
 
@@ -2248,7 +2255,7 @@ function currentSectionCoefficients(cluster) {
 }
 
 function selectedMarking() {
-  return markingLibrary.find((marking) => marking.id === activeMarkingId) || null;
+  return compatibleMarkings().find((marking) => marking.id === activeMarkingId) || null;
 }
 
 function searchSectionCoefficients() {
@@ -2811,23 +2818,26 @@ function nearestParent(position) {
 function markingName(config, id) {
   const representation = MARKING_REPRESENTATIONS[config.representation]?.short || config.representation;
   const channels = config.channelMode === "auto" ? `auto→${config.channels}ch` : `${config.channels}ch`;
-  return `M${String(id).padStart(2, "0")} · ${channels} · R${config.reach} · ${representation}`;
+  const domain = { auto: "auto", lattice: "lattice", module: "module", offlattice: "SE(3)" }[config.geometryMode || "auto"];
+  return `M${String(id).padStart(2, "0")} · ${domain} · ${channels} · R${config.reach} · ${representation}`;
 }
 
 function compatibleMarkings() {
   const key = markingMaterialKey();
-  return markingLibrary.filter((marking) => marking.materialKey === key);
+  return markingLibrary.filter((marking) => marking.materialKey === key
+    && (marking.config.geometryMode || "auto") === geometryMode);
 }
 
 function freezeCurrentMarking() {
   if (!sectionModel) return null;
   const config = { channels: sectionModel.channels, channelMode: sectionModel.channelMode,
-    reach: sectionModel.reach, representation: sectionModel.representation };
+    reach: sectionModel.reach, representation: sectionModel.representation, geometryMode };
   const materialKey = markingMaterialKey();
   let marking = markingLibrary.find((candidate) => candidate.materialKey === materialKey
     && candidate.config.channels === config.channels
     && (candidate.config.channelMode || "manual") === config.channelMode
     && candidate.config.reach === config.reach
+    && (candidate.config.geometryMode || "auto") === config.geometryMode
     && candidate.config.representation === config.representation);
   if (!marking) {
     const serial = nextMarkingId++;
@@ -2937,6 +2947,11 @@ function syncStageOptions() {
         : geometryMode === "module"
           ? "No unit cell or periodic wrapping is assumed. Connections are learned from a discrete, finitely generated aperiodic pose/translation atlas—the natural hypothesis for model sets and quasicrystals."
           : "No discrete translation support is assumed. Every observed proper-SE(3) pose and connection must be learned from local geometry.";
+    translationSupport.textContent = geometryMode === "lattice" || (geometryMode === "auto" && latticeDetected)
+      ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "observed point set";
+    const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
+    rotationSupport.textContent = `${totalPoses} proper pose orbit${totalPoses === 1 ? "" : "s"}`;
+    channelRankSupport.textContent = `${automaticMarkingChannels()} coupled channels`;
     renderPoseAtlas();
     stageOptionsState.textContent = geometryMode === "module" ? "aperiodic module"
       : geometryMode === "offlattice" ? "free SE(3)"

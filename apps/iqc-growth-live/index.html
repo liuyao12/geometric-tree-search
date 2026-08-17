@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260816-3">
+  <link rel="stylesheet" href="./style.css?v=20260816-4">
   <script type="importmap">
     {
       "imports": {
@@ -243,7 +243,7 @@
 
           <div id="clusterGeometryOptions" hidden>
             <label class="field" for="geometryModeSelect">
-              <span>Geometric support <b id="geometryModeHint">infer from positions</b></span>
+              <span>Placement domain <b id="geometryModeHint">infer from positions</b></span>
               <select id="geometryModeSelect">
                 <option value="auto" selected>Auto · test lattice closure</option>
                 <option value="lattice">Lattice-constrained · periodic translations</option>
@@ -251,16 +251,24 @@
                 <option value="offlattice">Free SE(3) · unrestricted off-lattice support</option>
               </select>
             </label>
-            <div class="pose-atlas-heading"><span>pose atlas and suggested marking rank</span><b id="poseAtlasTotal">—</b></div>
+            <div class="geometry-audit" aria-label="Inferred geometric degrees of freedom">
+              <div><small>translations</small><strong id="translationSupport">—</strong></div>
+              <i>×</i>
+              <div><small>rotations</small><strong id="rotationSupport">—</strong></div>
+              <i>→</i>
+              <div><small>marking rank</small><strong id="channelRankSupport">—</strong></div>
+            </div>
+            <div class="pose-atlas-heading"><span>symmetry-quotiented pose / port atlas</span><b id="poseAtlasTotal">—</b></div>
             <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
             <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
+            <p class="rank-note"><b>Auto rank</b> is a compact coupled basis over pose orbits and outgoing port roles—not one channel per raw rotation.</p>
           </div>
 
           <div id="markingTrainingOptions">
             <label class="field" for="markingChannelsSelect">
               <span>Marking channels <b id="markingChannelsHint">3 coupled fields</b></span>
               <select id="markingChannelsSelect">
-                <option value="0" selected>Auto · pose/port rank</option>
+                <option value="0" selected>Auto · learned pose/port rank</option>
                 <option value="1">1 · scalar compatibility</option>
                 <option value="3">3 · connection / species / failure</option>
                 <option value="6">6 · directional multi-channel</option>
@@ -530,7 +538,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260816-3"></script>
+  <script type="module" src="./app.js?v=20260816-4"></script>
   <script type="module" src="./evidence-atlas.js?v=20260816-7"></script>
 </body>
 </html>
