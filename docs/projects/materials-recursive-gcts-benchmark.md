@@ -1991,6 +1991,54 @@ green with no ordinal carried state. This proves self-fed finite marking
 transfer; four-site wave size, no promoted recurring rule, and no amplification
 leave stationary and exponential IQC growth red.
 
+### Whole-action antichain preflight
+
+The next experiment does not reinterpret the successful `4 + 4` sites as
+parallel growth. It asks the continuous section to admit several complete
+score bands that are pairwise compatible with the seed and with one another.
+Such a batch is an antichain: every band remains an ordinary tree-search
+action, but the accepted bands can be committed in any permutation.
+
+The first train-only calibration uses the raw port-state probabilities. A
+zero-error cutoff selects 50 / 50 seed-state sites from 49,716 rows and 24 / 24
+self-fed sites from 50,065 rows. Frozen on a new disjoint centre `(0, 0, 50)`,
+neither cutoff admits a band, so execution stops before wave one. This is a
+score-scale transfer failure, not a collision or target-leakage result.
+
+The replacement acts on whole bands. Its 15 rigid-motion-invariant features
+contain score margin/rank, band and frontier size, vote consensus, source and
+target port-role purity, state entropy, and parent multiplicity. They contain
+no candidate coordinate, raw type ID, nucleus ID, phase label, or heldout
+atom. The first 24 bands in each of nine nuclei give 216 seed actions with 57
+pure positives and 216 self-fed actions with 48 pure positives. Ridge strength
+and threshold are selected by leaving out entire nuclei. No threshold reaches
+the predeclared 95% action precision for either stage, so the benchmark fails
+closed before constructing the reserved `(50, 50, 0)` seed or target.
+
+This is a stronger and more useful red result than another hand-chosen score
+cutoff. The continuous section transfers as a ranking for one action, but local
+scores do not yet authorize a multi-action batch. The justified next search
+state must carry unresolved outgoing port obligations through bounded
+lookahead/backtracking; exact geometry, collision checks, and the final sealed
+site/species score remain separate gates.
+
+A first target-free lookahead implements that search-state change at aggregate
+resolution. Every candidate band is applied to the exact training frontier;
+the resulting frozen proposals supply connection consensus, recurrent-state
+support/purity, parent multiplicity, and unresolved singleton load. Those 28
+future/delta values augment the 15 local band values. They contain neither
+coordinates nor raw IDs and are rigid-motion and insertion-order invariant.
+
+The group-heldout models now find a zero-error operating point, but only by
+retaining one seed action and one self-fed action out of 216 in each table.
+That is insufficient for the stated parallel-growth task. Before any new
+target is opened, the preflight requires 95% precision and at least 18 retained
+actions per stage—two per training nucleus in aggregate. The measured `1 / 18`
+and `1 / 18` coverage therefore keep the gate red. Aggregate successor
+statistics improve purity but collapse action coverage; the next justified
+representation carries the actual bounded incidence multiset of unresolved
+ports through backtracking rather than compressing it to moments.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
