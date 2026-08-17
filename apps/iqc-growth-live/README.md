@@ -734,6 +734,20 @@ supply grows from 63,890 to 67,806. This passes the same-trace temporal search
 gate. Spatially disjoint confirmation, a recurring production, and exponential
 IQC growth remain open and are reported separately.
 
+The first spatial confirmation is now recorded rather than silently widening
+the beam until it works. Training uses only the concentric 507 → 1,969 atom
+origin crops. At the disjoint centre `(30, 0, 0)`, width four fails and the
+first exact colored score band is rank five, so width five is frozen. A second
+centre `(18, 25, 14)` is then used once; its complete radius-14.562 target ball
+is disjoint from both the training ball and the first diagnostic ball, and its
+different centre norm excludes an origin-fixing rotation between the two
+tests. Before the second target is opened, the frozen grammar proposes 5,616
+bounded sites, 431 of which later prove color-correct. Nevertheless the five
+retained option-preserving branches are all false; the first correct and first
+pure-correct bands are both rank seven. Spatial confirmation therefore stays
+red. This isolates the next problem to a transferable, target-free branch
+value or adaptive breadth rule—not missing candidate geometry.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

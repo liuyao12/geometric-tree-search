@@ -79,6 +79,8 @@ class RegenerativeBeamDecision:
     selection_objective: str
     candidate_ranks: Tuple[int, ...]
     candidate_sites: Tuple[int, ...]
+    candidate_positions: Tuple[Tuple[Point, ...], ...]
+    candidate_species: Tuple[Tuple[object, ...], ...]
     current_scores: Tuple[float, ...]
     lookahead_scores: Tuple[float, ...]
     lookahead_plateau_sites: Tuple[int, ...]
@@ -323,6 +325,9 @@ def _regenerative_maximum_plateaus(
         raise ValueError("beam execution requires a positive start and width >= 2")
     if beam_objective not in ("leaf-score", "frontier-supply"):
         raise ValueError("unknown beam objective")
+    if targets is None and diagnostic_waves:
+        raise ValueError("truth diagnostics require posthoc targets")
+    truth_available = targets is not None
     def within(point):
         return sum((point[axis] - center[axis]) ** 2
                    for axis in range(3)) ** .5 <= radius_limit + 1e-8
@@ -448,7 +453,8 @@ def _regenerative_maximum_plateaus(
                    if beam_wave else max(scores.values()))
         plateau = tuple(sorted(point for point, score in scores.items()
                                if abs(maximum - score) <= 1e-12))
-        true = sum(point in targets for point in plateau)
+        true = (sum(point in targets for point in plateau)
+                if truth_available else -1)
         if diagnostic_wave:
             for (rank, level, band, band_colors, conflicts, next_maximum,
                  next_plateau, next_candidates) in band_rows:
@@ -459,27 +465,36 @@ def _regenerative_maximum_plateaus(
                     next_plateau, next_candidates, band, band_colors))
         if beam_wave:
             choice_rows = tuple(band_rows[:beam_width])
-            candidate_true = tuple(
+            candidate_true = (tuple(
                 sum(point in targets for point in row[2])
-                for row in choice_rows)
+                for row in choice_rows) if truth_available else ())
             beam_decisions.append(RegenerativeBeamDecision(
                 wave, beam_objective, tuple(row[0] for row in choice_rows),
                 tuple(len(row[2]) for row in choice_rows),
+                tuple(row[2] for row in choice_rows),
+                tuple(row[3] for row in choice_rows),
                 tuple(row[1] for row in choice_rows),
                 tuple(row[5] for row in choice_rows),
                 tuple(row[6] for row in choice_rows),
                 tuple(row[7] for row in choice_rows), candidate_true,
-                tuple(len(row[2]) - count for row, count in
-                      zip(choice_rows, candidate_true)),
-                selected_rank, len(plateau), true, len(plateau) - true,
+                (tuple(len(row[2]) - count for row, count in
+                       zip(choice_rows, candidate_true))
+                 if truth_available else ()),
+                selected_rank, len(plateau), true,
+                len(plateau) - true if truth_available else -1,
                 greedy_rollback, False))
         accepted.extend(plateau)
-        accepted_true += true
+        if truth_available:
+            accepted_true += true
         plateau_colors = tuple(
             _dominant_source_color(remaining, point) for point in plateau)
         records.append(IterativeGrowthWave(
-            wave, len(plateau), true, len(plateau) - true, len(accepted),
-            accepted_true / len(accepted), accepted_true / len(targets),
+            wave, len(plateau), true,
+            len(plateau) - true if truth_available else -1, len(accepted),
+            (accepted_true / len(accepted) if truth_available else
+             float("nan")),
+            (accepted_true / len(targets) if truth_available else
+             float("nan")),
             maximum, len(scores)))
         traces.append(RegenerativeGrowthTrace(
             wave, plateau, plateau_colors))
@@ -491,6 +506,43 @@ def _regenerative_maximum_plateaus(
             break
     return (tuple(records), tuple(traces), tuple(diagnostic_bands),
             tuple(beam_decisions))
+
+
+def score_regenerative_growth(
+        records, traces, known_positions, target_positions, target_species):
+    """Attach colored-site truth only after a target-blind trace is frozen."""
+    if (len(records) != len(traces) or
+            len(target_positions) != len(target_species) or
+            any(len(trace.positions) != len(trace.species)
+                for trace in traces) or
+            any(record.wave != trace.wave
+                for record, trace in zip(records, traces))):
+        raise ValueError("growth records, traces, and target must align")
+    known = {point_key(point) for point in known_positions}
+    target = {point_key(point): species
+              for point, species in zip(target_positions, target_species)}
+    novel_targets = set(target) - known
+    accepted = set()
+    accepted_true = 0
+    scored = []
+    for record, trace in zip(records, traces):
+        true = false = 0
+        for point, species in zip(trace.positions, trace.species):
+            key = point_key(point)
+            if key in accepted:
+                continue
+            accepted.add(key)
+            if key in novel_targets and target[key] == species:
+                true += 1
+            else:
+                false += 1
+        accepted_true += true
+        scored.append(IterativeGrowthWave(
+            record.wave, true + false, true, false, len(accepted),
+            accepted_true / len(accepted) if accepted else 0.,
+            accepted_true / len(novel_targets) if novel_targets else 0.,
+            record.maximum_score, record.frontier_candidates))
+    return tuple(scored)
 
 
 def evaluate(regenerative_wave_count: int = 8, *, beam_start_wave=None,

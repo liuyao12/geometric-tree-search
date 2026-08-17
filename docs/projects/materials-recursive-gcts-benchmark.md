@@ -1775,6 +1775,26 @@ green. The run is not spatially independent, its 24 constant-size waves do not
 form a stationary substitution, and the generic exponential IQC gate remains
 red.
 
+The spatial confirmation is deliberately fail-closed. The marking and
+connection grammar are fit only on the 507- and 1,969-site concentric origin
+windows. At a disjoint diagnostic centre `(30, 0, 0)`, width four misses even
+though the first exact colored score band is rank five; that observation
+freezes width five before a second centre is evaluated. The second centre
+`(18, 25, 14)` is 33.838 from the origin and 31.064 from the first centre, so
+its whole radius-14.562 scoring ball overlaps neither the training domain nor
+the first scoring ball. The centre norms also differ, excluding any
+origin-fixing proper rotation between the nuclei.
+
+The second run freezes 5,616 bounded candidate sites and the width-five branch
+decision before constructing the target. Posthoc scoring finds 431 correct
+colored candidates in that frozen universe, but all five retained score bands
+are false; the first band containing any correct colored site and the first
+pure-correct band are both rank seven. Thus candidate generation transfers,
+while the fixed breadth/value policy does not. The one-shot spatial gate is
+red and is not a stationary or exponential certificate. The next admissible
+improvement must choose breadth or branch value from training/frontier state,
+then face a new spatial nucleus; this target cannot be reused for tuning.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
