@@ -1757,6 +1757,24 @@ value adjudicates delayed compatibility. Because the policy was diagnosed on
 this same trace, the result is exploratory and the confirmatory flag remains
 false.
 
+The implementation now executes the policy beyond that single fork. Width two
+fails immediately: waves 18--24 contain 40 correct and 72 false selected sites.
+Increasing to width four reaches the exact rank-4 wave-18 band, but a pure leaf
+score still yields only 36 correct versus 68 false sites on waves 19--24. The
+first exact continuation at waves 18 and 19 is rank 4; the correct branch is
+present, but scalar score is not a transferable branch value.
+
+A second target-free objective ranks the same four immutable bands by the
+number of compatible frozen frontier actions remaining after provisional
+placement, using future marking score only as a tie-break. It selects exact
+ranks 2 / 4 / 4 on exploratory waves 17--19. Frozen before wave 20, it selects
+ranks 2 / 3 / 1 / 4 / 4 on waves 20--24 and adds 120 / 120 exact sites with
+four rollbacks. The complete option-preserving trace is 572 / 572 exact and
+frontier supply rises from 63,890 to 67,806. The temporal held-forward gate is
+green. The run is not spatially independent, its 24 constant-size waves do not
+form a stationary substitution, and the generic exponential IQC gate remains
+red.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

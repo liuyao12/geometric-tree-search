@@ -14,6 +14,7 @@ from materials_gcts_consensus_neighborhood_benchmark import (
     _cross_fitted_training_votes, _without_known_sites)
 from materials_gcts_frontier_attachment import (
     fit_frontier_attachment_marker, score_frontier_attachments)
+from materials_gcts_frontier_band_beam import FrontierBand, search_frontier_bands
 from materials_gcts_icosahedral_modelset import HIDDEN_UNIT, oracle_patch
 from materials_gcts_recursive_connections import (
     MarkedProposalResult, learn_recursive_connection_marking, local_cluster_types,
@@ -73,6 +74,26 @@ class RegenerativeScoreBand:
 
 
 @dataclass(frozen=True)
+class RegenerativeBeamDecision:
+    wave: int
+    selection_objective: str
+    candidate_ranks: Tuple[int, ...]
+    candidate_sites: Tuple[int, ...]
+    current_scores: Tuple[float, ...]
+    lookahead_scores: Tuple[float, ...]
+    lookahead_plateau_sites: Tuple[int, ...]
+    lookahead_frontier_candidates: Tuple[int, ...]
+    candidate_true_sites: Tuple[int, ...]
+    candidate_false_sites: Tuple[int, ...]
+    selected_rank: int
+    selected_sites: int
+    selected_true_sites: int
+    selected_false_sites: int
+    greedy_rollback: int
+    target_used_for_selection: bool
+
+
+@dataclass(frozen=True)
 class FrontierAttachmentBenchmark:
     atom_counts: Tuple[int, int, int]
     training_candidates: int
@@ -100,6 +121,7 @@ class FrontierAttachmentBenchmark:
     regenerative_growth_waves: Tuple[IterativeGrowthWave, ...]
     regenerative_growth_traces: Tuple[RegenerativeGrowthTrace, ...]
     regenerative_wave17_score_bands: Tuple[RegenerativeScoreBand, ...]
+    regenerative_beam_decisions: Tuple[RegenerativeBeamDecision, ...]
     learned_envelope_scale: float
     regenerative_radius_limit: float
     learned_minimum_separation: float
@@ -294,7 +316,13 @@ def _center_and_radius(positions):
 def _regenerative_maximum_plateaus(
         frontier_marker, refinement_marker, connection_marker, proposals,
         known_positions, known_colors, cluster_edges, targets,
-        provisional_pool, center, radius_limit, waves=8):
+        provisional_pool, center, radius_limit, waves=8,
+        beam_start_wave=None, beam_width=2, diagnostic_waves=(17,),
+        beam_objective="leaf-score"):
+    if beam_start_wave is not None and (beam_start_wave < 1 or beam_width < 2):
+        raise ValueError("beam execution requires a positive start and width >= 2")
+    if beam_objective not in ("leaf-score", "frontier-supply"):
+        raise ValueError("unknown beam objective")
     def within(point):
         return sum((point[axis] - center[axis]) ** 2
                    for axis in range(3)) ** .5 <= radius_limit + 1e-8
@@ -333,6 +361,7 @@ def _regenerative_maximum_plateaus(
     records = []
     traces = []
     diagnostic_bands = []
+    beam_decisions = []
     for wave in range(1, waves + 1):
         frontier_scores = score_frontier_attachments(
             frontier_marker, remaining, current_positions, current_colors)
@@ -341,17 +370,22 @@ def _regenerative_maximum_plateaus(
             min(provisional_pool, len(frontier_scores)))
         scores = score_frontier_attachments(
             refinement_marker, remaining, *augmented)
-        if wave == 17:
+        diagnostic_wave = wave in diagnostic_waves
+        beam_wave = beam_start_wave is not None and wave >= beam_start_wave
+        # These rows deliberately exclude target membership. The beam commits
+        # from this frozen evidence before any posthoc truth is attached.
+        band_rows = []
+        if diagnostic_wave or beam_wave:
             minimum_separation = min(
                 sum((left - right) ** 2 for left, right in zip(point, other))
                 ** .5
                 for index, point in enumerate(known_positions)
                 for other in known_positions[index + 1:])
-            levels = sorted(set(scores.values()), reverse=True)[:12]
+            levels = sorted(set(scores.values()), reverse=True)[:max(
+                12 if diagnostic_wave else 0, beam_width if beam_wave else 0)]
             for rank, level in enumerate(levels, 1):
                 band = tuple(point for point, score in scores.items()
                              if abs(score - level) <= 1e-12)
-                band_true = sum(point in targets for point in band)
                 band_colors = tuple(
                     _dominant_source_color(remaining, point)
                     for point in band)
@@ -364,7 +398,8 @@ def _regenerative_maximum_plateaus(
                 next_maximum = 0.0
                 next_plateau = 0
                 next_candidates = 0
-                if rank <= 2:
+                if rank <= max(2 if diagnostic_wave else 0,
+                               beam_width if beam_wave else 0):
                     branch_positions, branch_colors, branch_remaining = advance(
                         current_positions, current_colors, remaining,
                         band, band_colors)
@@ -384,14 +419,60 @@ def _regenerative_maximum_plateaus(
                             next_maximum - score <= 1e-12
                             for score in next_scores.values())
                         next_candidates = len(next_scores)
+                band_rows.append((rank, level, band, band_colors, conflicts,
+                                  next_maximum, next_plateau,
+                                  next_candidates))
+        selected_rank = 1
+        greedy_rollback = 0
+        if beam_wave:
+            choice_rows = tuple(band_rows[:beam_width])
+            evidence = tuple((row[0], row[1], row[5])
+                             for row in choice_rows)
+            roots = tuple(FrontierBand(rank, current, 0.)
+                          for rank, current, _future in evidence)
+            if beam_objective == "frontier-supply":
+                future = {row[0]: (FrontierBand(
+                    f"future-{wave}-{row[0]}", row[5], float(row[7])),)
+                    for row in choice_rows}
+            else:
+                future = {rank: (FrontierBand(
+                    f"future-{wave}-{rank}", 0., value),)
+                    for rank, _current, value in evidence}
+            beam_trace = search_frontier_bands(
+                roots, lambda band: future.get(band.band_id, ()),
+                beam_width=beam_width, lookahead_depth=2,
+                leaf_boundary_first=True)
+            selected_rank = int(beam_trace.selected_ids[0])
+            greedy_rollback = beam_trace.greedy_rollbacks
+        maximum = (band_rows[selected_rank - 1][1]
+                   if beam_wave else max(scores.values()))
+        plateau = tuple(sorted(point for point, score in scores.items()
+                               if abs(maximum - score) <= 1e-12))
+        true = sum(point in targets for point in plateau)
+        if diagnostic_wave:
+            for (rank, level, band, band_colors, conflicts, next_maximum,
+                 next_plateau, next_candidates) in band_rows:
+                band_true = sum(point in targets for point in band)
                 diagnostic_bands.append(RegenerativeScoreBand(
                     wave, rank, level, len(band), band_true,
                     len(band) - band_true, conflicts, next_maximum,
                     next_plateau, next_candidates, band, band_colors))
-        maximum = max(scores.values())
-        plateau = tuple(sorted(point for point, score in scores.items()
-                               if maximum - score <= 1e-12))
-        true = sum(point in targets for point in plateau)
+        if beam_wave:
+            choice_rows = tuple(band_rows[:beam_width])
+            candidate_true = tuple(
+                sum(point in targets for point in row[2])
+                for row in choice_rows)
+            beam_decisions.append(RegenerativeBeamDecision(
+                wave, beam_objective, tuple(row[0] for row in choice_rows),
+                tuple(len(row[2]) for row in choice_rows),
+                tuple(row[1] for row in choice_rows),
+                tuple(row[5] for row in choice_rows),
+                tuple(row[6] for row in choice_rows),
+                tuple(row[7] for row in choice_rows), candidate_true,
+                tuple(len(row[2]) - count for row, count in
+                      zip(choice_rows, candidate_true)),
+                selected_rank, len(plateau), true, len(plateau) - true,
+                greedy_rollback, False))
         accepted.extend(plateau)
         accepted_true += true
         plateau_colors = tuple(
@@ -408,10 +489,14 @@ def _regenerative_maximum_plateaus(
             plateau, plateau_colors)
         if not remaining.votes:
             break
-    return tuple(records), tuple(traces), tuple(diagnostic_bands)
+    return (tuple(records), tuple(traces), tuple(diagnostic_bands),
+            tuple(beam_decisions))
 
 
-def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
+def evaluate(regenerative_wave_count: int = 8, *, beam_start_wave=None,
+             beam_width: int = 2, diagnostic_waves=(17,),
+             beam_objective="leaf-score") \
+        -> FrontierAttachmentBenchmark:
     if regenerative_wave_count < 1:
         raise ValueError("regenerative wave count must be positive")
     first, _ = oracle_patch(3, 9.0)
@@ -511,12 +596,15 @@ def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
     second_center, second_radius = _center_and_radius(second.positions)
     envelope_scale = second_radius / first_radius
     regenerative_limit = second_radius * envelope_scale
-    regenerative_waves, regenerative_traces, regenerative_bands = \
+    (regenerative_waves, regenerative_traces, regenerative_bands,
+     regenerative_beam_decisions) = \
         _regenerative_maximum_plateaus(
         marker, refinement_marker, connection_marking, heldout,
         second.positions, second.species, cluster_edges, heldout_targets,
         heldout_pool, second_center, regenerative_limit,
-        waves=regenerative_wave_count)
+        waves=regenerative_wave_count, beam_start_wave=beam_start_wave,
+        beam_width=beam_width, diagnostic_waves=diagnostic_waves,
+        beam_objective=beam_objective)
     return FrontierAttachmentBenchmark(
         (len(first.positions), len(second.positions), len(third.positions)),
         len(training.votes), len(training_targets), len(heldout.votes),
@@ -526,7 +614,7 @@ def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
         third_training_prefix, third_projected_prefix, third_projected,
         landmarks, gap_rank, gap,
         iterative_waves, regenerative_waves, regenerative_traces,
-        regenerative_bands,
+        regenerative_bands, regenerative_beam_decisions,
         envelope_scale,
         regenerative_limit,
         minimum_separation, False, True, True)
@@ -535,8 +623,16 @@ def evaluate(regenerative_wave_count: int = 8) -> FrontierAttachmentBenchmark:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--regenerative-waves", type=int, default=8)
+    parser.add_argument("--beam-start-wave", type=int)
+    parser.add_argument("--beam-width", type=int, default=2)
+    parser.add_argument("--beam-objective", choices=(
+        "leaf-score", "frontier-supply"), default="leaf-score")
     arguments = parser.parse_args()
-    result = evaluate()
+    result = evaluate(arguments.regenerative_waves,
+                      beam_start_wave=arguments.beam_start_wave,
+                      beam_width=arguments.beam_width,
+                      beam_objective=arguments.beam_objective)
     print(json.dumps(asdict(result), indent=2)
           if arguments.json else result)
 

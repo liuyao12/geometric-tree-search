@@ -718,6 +718,22 @@ future scores would still choose incorrectly, so the implementation keeps
 search value distinct from the local marking. This is an exploratory recovery
 on the diagnosed trace, not yet an independent confirmatory growth gate.
 
+Executing that width-two rule rather than stopping at the attractive example is
+decisive: waves 18--24 contain only 40 correct versus 72 false selected sites.
+A width-four leaf-score beam recovers waves 17--18, but its held-forward suffix
+still contains 36 correct and 68 false sites. The first exact bands remain in
+the top four; the scalar leaf score is the failure, not candidate generation.
+
+The replacement tree value asks how many frozen, compatible frontier actions
+survive after a provisional branch. This is a target-free option-preservation
+measure, not an oracle similarity. Within width four it selects exact ranks
+2, 4, and 4 on the three exploratory forks. Frozen before wave 20, it then
+selects ranks 2, 3, 1, 4, and 4 and adds 120/120 exact held-forward sites with
+four real rollbacks. The full 24-wave trace is 572/572 exact while candidate
+supply grows from 63,890 to 67,806. This passes the same-trace temporal search
+gate. Spatially disjoint confirmation, a recurring production, and exponential
+IQC growth remain open and are reported separately.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the
