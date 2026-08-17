@@ -2105,6 +2105,17 @@ selection hashes are immutable. This falsifies orbit-size selection rather
 than the finite pose/port representation and supplies a concrete requirement
 for a learned joint role-incidence geometry section.
 
+Post-confirmation development keeps the next disjoint centre sealed. A
+deterministic disagreement selector—channel scoring whenever detailed and
+channel top-orbit cardinalities differ—recovers 18 / 20 group-heldout actions,
+not the required 20 / 20. A second, fully nested candidate-level learner
+cross-fits the base token marking inside every outer fold and fits a 15-feature
+linear section over score, rank, orbit cardinality, token-family count, and
+evidence coverage. Ridge values 0.1, 1, and 10 all select 0 / 20 exact actions.
+The candidate graph digest is unchanged. These controls rule out scalar
+mixtures of the two sections; transferable selection must preserve joint
+port-incidence geometry rather than summarize it into scores.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

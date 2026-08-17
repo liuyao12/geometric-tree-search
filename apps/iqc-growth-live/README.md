@@ -1272,6 +1272,16 @@ was constructed once after the selection digest was frozen. Orbit multiplicity
 is therefore rejected as a transferable value function even though
 symmetry-quotiented pose channels remain the correct representation.
 
+The consumed nucleus then joins development for a stricter follow-up. Choosing
+the channel view whenever detailed and channel orbit cardinalities disagree
+reaches 18 / 20 group-heldout actions. A nested candidate-level linear section
+cross-fits the base token model again for every meta-training nucleus, then
+uses 15 invariant score, rank, orbit-size, token-family, and evidence-coverage
+features. Fixed ridge strengths 0.1, 1, and 10 each select 0 / 20 exact
+actions. Candidate positions and colors are identical throughout, and the next
+disjoint centre remains unopened. This rejects scalar score stacking as the
+missing marking: the next model must operate on the joint incidence graph.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
