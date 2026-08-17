@@ -29,6 +29,7 @@ class PersistentBeamDecision:
     first_candidate_species: tuple[tuple[object, ...], ...]
     first_candidate_value_scores: tuple[float, ...]
     terminal_frontier_candidates: int
+    forced_by_frozen_prefix: bool
     target_used_for_selection: bool
 
 
@@ -57,7 +58,8 @@ def run_persistent_frontier_beam(
         known_positions, known_colors, cluster_edges, provisional_pool,
         center, radius_limit, *, waves=1, beam_width=4,
         branching_width=4, lookahead_depth=3, root_rank_values=None,
-        candidate_snapshot_width=None, root_rank_values_by_previous=None):
+        candidate_snapshot_width=None, root_rank_values_by_previous=None,
+        forced_root_ranks=()):
     """Retain complete alternative states for several depths before commit."""
     if (waves < 1 or beam_width < 2 or branching_width < 2 or
             lookahead_depth < 2):
@@ -122,6 +124,10 @@ def run_persistent_frontier_beam(
     decisions = []
     cumulative = 0
     committed_root_ranks = []
+    forced_prefix = tuple(int(rank) for rank in forced_root_ranks)
+    if (len(forced_prefix) > waves or
+            any(rank < 1 or rank > branching_width for rank in forced_prefix)):
+        raise ValueError("frozen prefix ranks are invalid")
     for wave in range(1, waves + 1):
         previous_rank = committed_root_ranks[-1] if committed_root_ranks else 0
         rank_values = contextual_rank_values.get(
@@ -132,7 +138,10 @@ def run_persistent_frontier_beam(
         first_rows = None
         first_snapshot = None
         evaluated = 0
-        for depth in range(lookahead_depth):
+        forced_rank = (forced_prefix[wave - 1]
+                       if wave <= len(forced_prefix) else None)
+        search_depth = 1 if forced_rank is not None else lookahead_depth
+        for depth in range(search_depth):
             children = []
             for state in frontier_states:
                 scores, _maximum = score(state)
@@ -144,10 +153,13 @@ def run_persistent_frontier_beam(
                         tuple(sorted(point for point, value in scores.items()
                                      if abs(value - level) <= 1e-12)))
                         for rank, level in enumerate(snapshot_levels, 1))
-                levels = sorted(set(scores.values()), reverse=True)[
-                    :branching_width]
+                ranked_levels = tuple(enumerate(sorted(
+                    set(scores.values()), reverse=True)[:branching_width], 1))
+                if depth == 0 and forced_rank is not None:
+                    ranked_levels = tuple(
+                        row for row in ranked_levels if row[0] == forced_rank)
                 rows = []
-                for rank, level in enumerate(levels, 1):
+                for rank, level in ranked_levels:
                     band = tuple(sorted(
                         point for point, value in scores.items()
                         if abs(value - level) <= 1e-12))
@@ -181,6 +193,14 @@ def run_persistent_frontier_beam(
                     first_rows = tuple(rows)
             if not children:
                 break
+            if depth == 0 and forced_rank is not None:
+                forced_children = tuple(
+                    child for child in children
+                    if child.path_ranks[0] == forced_rank)
+                if len(forced_children) != 1:
+                    raise ValueError("frozen prefix rank is unavailable")
+                frontier_states = forced_children
+                continue
             frontier_states = tuple(sorted(children, key=lambda state: (
                 -rank_values.get(state.path_ranks[0], 0.),
                 -state.terminal_candidates, -state.terminal_maximum,
@@ -210,7 +230,7 @@ def run_persistent_frontier_beam(
             tuple(row[1] for row in snapshot),
             tuple(row[2] for row in snapshot),
             tuple(rank_values.get(row[0], 0.) for row in snapshot),
-            best.terminal_candidates, False))
+            best.terminal_candidates, forced_rank is not None, False))
         if not remaining.votes:
             break
     return PersistentBeamResult(

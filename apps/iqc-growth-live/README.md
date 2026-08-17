@@ -828,6 +828,17 @@ of multiwave, self-fed generic IQC tree search. Wave size is still one and no
 stationary production or amplification is certified, so exponential growth
 remains red.
 
+Extending the ordinal context one more step exposes its limit. After the
+confirmed `4 → 12` prefix, three independent diagnostic nuclei all place the
+next exact action at rank six, so a third state values rank six at `4/5`.
+Frozen for three waves on a tenth disjoint nucleus `(30, -25, -20)`, however,
+the exact initial action has moved to rank eleven. The rank-context policy
+selects rank four and all three committed sites are false. Exact candidates
+remain in the twelve-channel snapshots, but their ordinal ranks drift across
+nuclei. Therefore score rank is not a physical GCTS channel. The next marking
+must key on the symmetry-quotiented parent/source cluster and connection-port
+semantics; rank remains only an executor-local ordering.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

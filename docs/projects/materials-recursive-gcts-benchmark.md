@@ -1901,6 +1901,22 @@ self-fed colored sites. The two-wave spatial tree-search gate is green. Its
 unit wave sizes show no amplification, and no repeating production or scale is
 inferred; stationary and exponential IQC gates remain red.
 
+A third ordinal context is then trained without ambiguity: after the confirmed
+`4 / 12` prefix, the sixth, eighth, and ninth diagnostic nuclei all have an
+exact rank-six action, yielding posterior `4/5`. The resulting states are
+`0`, `4`, and `12`. On a tenth disjoint nucleus `(30, -25, -20)`, the model is
+executed for three target-free waves. It fails immediately: the exact initial
+action is rank eleven, while the table selects rank four. The later frozen
+snapshots likewise contain exact geometry at different ranks, but the already
+wrong state makes those paths unusable. All three emitted sites are false.
+
+This is a constructive red result: finite channel reach 12 is adequate, but
+ordinal score rank is not a transferable channel identity. Rank changes when
+the local candidate population changes even if the underlying port relation is
+the same. Subsequent GCTS values must be indexed by symmetry-quotiented
+parent/source cluster identity and connection-port semantics; rank may only be
+a deterministic executor ordering and cannot carry physical state.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

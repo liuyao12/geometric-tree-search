@@ -52,7 +52,7 @@ class PersistentBeamDiagnostic:
 def evaluate(*, lookahead_depth=3, beam_width=4, branching_width=4,
              robust_marking=False, evaluation_center=CONFIRMATION_CENTER,
              root_rank_values=None, waves=1, candidate_snapshot_width=None,
-             root_rank_values_by_previous=None):
+             root_rank_values_by_previous=None, forced_root_ranks=()):
     center = tuple(float(value) for value in evaluation_center)
     (prototypes, connection, training_seeds, training_targets,
      _training_proposals, marker, refinement, robust_marker,
@@ -78,7 +78,8 @@ def evaluate(*, lookahead_depth=3, beam_width=4, branching_width=4,
         beam_width=beam_width, branching_width=branching_width,
         lookahead_depth=lookahead_depth, root_rank_values=root_rank_values,
         candidate_snapshot_width=candidate_snapshot_width,
-        root_rank_values_by_previous=root_rank_values_by_previous)
+        root_rank_values_by_previous=root_rank_values_by_previous,
+        forced_root_ranks=forced_root_ranks)
 
     # This nucleus has already completed its confirmation role; truth is still
     # attached only after the new persistent-beam decision is immutable.
