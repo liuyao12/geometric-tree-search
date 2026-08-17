@@ -680,6 +680,21 @@ proves the machinery can execute both homogeneous and heterogeneous
 cluster-of-clusters rules without granting an exponential claim to the real
 IQC trace.
 
+The next correction makes child ownership global across the entire typed
+frontier. A next-wave occurrence is assigned to exactly one nearest previous
+occurrence, rather than being copied once into every possible parent type. On
+a sealed two-state algebra/control, the generic learner now recovers the closed
+rules `A -> AB` and `B -> A`, including their proper relative poses and common
+learned scale 2. The inferred substitution matrix is
+`[[1,1],[1,0]]`; its measured Perron growth is 1.6180339887. Two observed
+levels replay exactly and the frozen grammar predicts a sealed 48-site fourth
+wave exactly. The complete grammar has positive description saving, and 24
+symbolic vector actions represent 1,178,508 colored sites. Permuting the
+input and applying a generic proper rigid motion preserves the frozen program
+digest. This is an executable multi-state exponential capability control, not
+a claim that the ideal IQC trace has passed: its five real rules still contain
+no closed production system recurring across transitions.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

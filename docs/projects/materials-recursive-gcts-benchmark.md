@@ -1717,6 +1717,26 @@ recurrence requires a learned vector substitution matrix. Thus execution is no
 longer the missing API. The remaining scientific blocker is cross-transition
 recurrence and compression of the real IQC frontier productions.
 
+The transition learner now also enforces global child ownership: each
+next-wave state is assigned once across all typed parents. This removes a
+second optimistic failure mode in which the same child could appear in several
+incompatible parent rules. A dedicated positions-and-species-only control then
+learns the closed two-state system `A -> AB`, `B -> A` from three explicit
+waves containing 12, 18, and 30 colored sites. The common proper-similarity
+scale is learned as 2, the matrix `[[1,1],[1,0]]` has spectral growth
+1.6180339887, and total description saving is 3 despite the necessary unary
+second row. The target-free executor reproduces both observed explicit levels
+and, without receiving it during fitting, exactly predicts the 48-site fourth
+wave; the vector symbolic evaluator reaches 1,178,508 represented sites in 24
+actions. Its program digest is invariant under atom permutation
+and a generic proper rigid motion.
+
+This closes an important API gap for quasicrystal-like grammars: expansion is
+audited for a complete finite-state substitution matrix, rather than requiring
+every individual rule to branch. It remains a generic algebra/control. The
+actual 16-wave IQC trace produces no recurrent closed state set, so its
+multi-state exponential gate remains red.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

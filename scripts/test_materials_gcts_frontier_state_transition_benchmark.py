@@ -37,6 +37,8 @@ def test_real_iqc_state_transitions_are_executable_but_not_stationary():
     assert result.maximum_distinct_child_types == 3
     assert result.rules_seen_on_multiple_transitions == 0
     assert result.positive_mdl_rules == 0
+    assert result.closed_substitution_state_types == 0
+    assert result.closed_substitution_growth == 0
     assert not result.stationary_rule_ids
     assert not result.executable_stationary_rule
     assert not result.generic_million_site_iqc_claim

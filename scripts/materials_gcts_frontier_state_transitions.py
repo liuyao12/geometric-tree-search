@@ -59,6 +59,7 @@ class FrontierTransitionRule:
     observations: tuple[FrontierTransitionObservation, ...]
     independent_transition_waves: int
     description_saving: int
+    recurrent: bool
     stationary: bool
 
     @property
@@ -103,6 +104,40 @@ class SymbolicFrontierExpansion:
     rule_id: int
     action_counts: tuple[int, ...]
     represented_site_counts: tuple[int, ...]
+    million_site_action: int | None
+
+
+@dataclass(frozen=True)
+class FrontierSubstitutionSystem:
+    rule_ids: tuple[int, ...]
+    state_types: tuple[int, ...]
+    substitution_matrix: tuple[tuple[int, ...], ...]
+    learned_scale: float
+    total_description_saving: int
+    asymptotic_growth: float
+    exponential_gate_passed: bool
+    target_used: bool
+    system_digest: str
+
+
+@dataclass(frozen=True)
+class FrontierSubstitutionExecution:
+    system_digest: str
+    parents: tuple[GeneratedFrontierState, ...]
+    children: tuple[GeneratedFrontierState, ...]
+    sites: tuple[tuple[object, Point], ...]
+    exact_colored_union: bool
+    collision_free: bool
+    target_used: bool
+
+
+@dataclass(frozen=True)
+class SymbolicFrontierSubstitutionExpansion:
+    system_digest: str
+    state_types: tuple[int, ...]
+    action_type_counts: tuple[tuple[int, ...], ...]
+    represented_site_counts: tuple[int, ...]
+    asymptotic_growth: float
     million_site_action: int | None
 
 
@@ -217,37 +252,40 @@ def compile_frontier_transition_grammar(
     for source_wave in wave_numbers:
         if source_wave + 1 not in waves:
             continue
-        for parent_type, parent_state in proper.items():
-            parents = packed.get((parent_type, source_wave), ())
-            if not parents:
-                continue
-            children = tuple(
-                (child_type, child)
-                for child_type in sorted(proper)
-                for child in packed.get((child_type, source_wave + 1), ()))
-            if not children:
-                continue
-            assigned = defaultdict(list)
-            for child_type, child in children:
-                parent = min(parents, key=lambda candidate: (
-                    math.dist(candidate.translation, child.translation),
-                    candidate.member_indices))
-                assigned[parent].append((child_type, child))
-            for parent, rows in assigned.items():
-                placements = tuple(_raw_placement(
-                    parent, child, child_type)
-                    for child_type, child in sorted(
-                        rows, key=lambda item: (
-                            item[0], item[1].member_indices)))
-                code = _canonical_code(
-                    prototypes[parent_type], prototypes, placements,
-                    {type_id: state.normalized_signature
-                     for type_id, state in proper.items()}, tolerance)
-                observations.append((
-                    parent_type, code,
-                    FrontierTransitionObservation(
-                        source_wave, parent.member_indices, placements,
-                        code)))
+        parents = tuple(
+            (parent_type, parent)
+            for parent_type in sorted(proper)
+            for parent in packed.get((parent_type, source_wave), ()))
+        children = tuple(
+            (child_type, child)
+            for child_type in sorted(proper)
+            for child in packed.get((child_type, source_wave + 1), ()))
+        if not parents or not children:
+            continue
+        # Each next-wave occurrence belongs to exactly one nearest previous
+        # occurrence across the complete typed frontier.  Assigning it once per
+        # parent type duplicates geometry into mutually incompatible rules.
+        assigned = defaultdict(list)
+        for child_type, child in children:
+            parent_type, parent = min(parents, key=lambda candidate: (
+                math.dist(candidate[1].translation, child.translation),
+                candidate[0], candidate[1].member_indices))
+            assigned[parent_type, parent].append((child_type, child))
+        for (parent_type, parent), rows in assigned.items():
+            placements = tuple(_raw_placement(
+                parent, child, child_type)
+                for child_type, child in sorted(
+                    rows, key=lambda item: (
+                        item[0], item[1].member_indices)))
+            code = _canonical_code(
+                prototypes[parent_type], prototypes, placements,
+                {type_id: state.normalized_signature
+                 for type_id, state in proper.items()}, tolerance)
+            observations.append((
+                parent_type, code,
+                FrontierTransitionObservation(
+                    source_wave, parent.member_indices, placements,
+                    code)))
 
     grouped = defaultdict(list)
     for parent_type, code, observation in observations:
@@ -261,28 +299,29 @@ def compile_frontier_transition_grammar(
         if any(len(item.placements) != child_count for item in items):
             raise AssertionError("canonical production changed child count")
         saving = len(items) * child_count - (child_count + len(items))
-        stationary = (
-            child_count > 1 and saving > 0 and
+        recurrent = (
             any(wave + 1 in waves_seen for wave in waves_seen) and
             all(sum(item.source_wave == wave for item in items) >= 2
                 for wave in waves_seen
                 if wave + 1 in waves_seen) and
             all(sum(item.source_wave == wave + 1 for item in items) >= 2
                 for wave in waves_seen if wave + 1 in waves_seen))
+        stationary = child_count > 1 and saving > 0 and recurrent
         child_types = tuple(item.child_type
                             for item in items[0].placements)
         rows.append((parent_type, child_types, code, items,
-                     len(waves_seen), saving, stationary))
+                     len(waves_seen), saving, recurrent, stationary))
     rows.sort(key=lambda row: (row[0], row[1], repr(row[2])))
     rules = tuple(FrontierTransitionRule(
         rule_id, parent_type, child_types, items[0].placements, code, items,
-        independent, saving, stationary)
+        independent, saving, recurrent, stationary)
         for rule_id, (parent_type, child_types, code, items,
-                      independent, saving, stationary) in enumerate(rows))
+                      independent, saving, recurrent,
+                      stationary) in enumerate(rows))
     payload = tuple((
         rule.parent_type, rule.child_types, rule.canonical_code,
         tuple(item.source_wave for item in rule.observations),
-        rule.stationary) for rule in rules)
+        rule.recurrent, rule.stationary) for rule in rules)
     digest = hashlib.sha256(json.dumps(
         payload, sort_keys=True, separators=(",", ":"), default=repr
     ).encode()).hexdigest()
@@ -398,3 +437,159 @@ def symbolic_frontier_expansion(
             million = action
     return SymbolicFrontierExpansion(
         rule.rule_id, tuple(counts), tuple(sites), million)
+
+
+def _matrix_growth(matrix: tuple[tuple[int, ...], ...],
+                   iterations: int = 80) -> float:
+    vector = [1.0 / len(matrix)] * len(matrix)
+    growth = 0.0
+    for _ in range(iterations):
+        following = [sum(vector[parent] * matrix[parent][child]
+                         for parent in range(len(matrix)))
+                     for child in range(len(matrix))]
+        total = sum(following)
+        if total <= 0:
+            return 0.0
+        growth = total
+        vector = [value / total for value in following]
+    return growth
+
+
+def compile_frontier_substitution_system(
+    grammar: FrontierTransitionGrammar, *, tolerance: float = 1e-6,
+) -> FrontierSubstitutionSystem | None:
+    """Extract a closed expanding finite-state system from recurrent rules.
+
+    A unary production can be essential to a multi-state substitution, so MDL
+    and expansion are audited for the complete matrix rather than per row.
+    Ambiguous parent states with multiple recurrent right-hand sides fail
+    closed instead of choosing a modal rule.
+    """
+    if grammar.target_used:
+        return None
+    recurrent_by_parent = defaultdict(list)
+    for rule in grammar.rules:
+        if rule.recurrent:
+            recurrent_by_parent[rule.parent_type].append(rule)
+    unique = {parent: rules[0]
+              for parent, rules in recurrent_by_parent.items()
+              if len(rules) == 1}
+    active = set(unique)
+    changed = True
+    while changed:
+        changed = False
+        for parent in tuple(active):
+            if not set(unique[parent].child_types).issubset(active):
+                active.remove(parent)
+                changed = True
+    if not active:
+        return None
+    state_types = tuple(sorted(active))
+    rules = tuple(unique[type_id] for type_id in state_types)
+    scales = tuple(
+        placement.relative_scale
+        for rule in rules for placement in rule.child_placements)
+    if not scales or min(scales) <= 1.0 + tolerance or not math.isclose(
+            min(scales), max(scales), rel_tol=tolerance,
+            abs_tol=tolerance):
+        return None
+    matrix = tuple(tuple(sum(
+        child_type == target for child_type in rule.child_types)
+        for target in state_types) for rule in rules)
+    if any(sum(row) == 0 for row in matrix):
+        return None
+    saving = sum(rule.description_saving for rule in rules)
+    growth = _matrix_growth(matrix)
+    passed = saving > 0 and growth > 1.0 + tolerance
+    if not passed:
+        return None
+    payload = (
+        grammar.grammar_digest, tuple(rule.rule_id for rule in rules),
+        state_types, matrix, round(sum(scales) / len(scales) / tolerance),
+        saving)
+    digest = hashlib.sha256(json.dumps(
+        payload, sort_keys=True, separators=(",", ":"), default=repr
+    ).encode()).hexdigest()
+    return FrontierSubstitutionSystem(
+        tuple(rule.rule_id for rule in rules), state_types, matrix,
+        sum(scales) / len(scales), saving, growth, True, False, digest)
+
+
+def execute_frontier_substitution(
+    grammar: FrontierTransitionGrammar,
+    system: FrontierSubstitutionSystem,
+    states: tuple[FrontierStateType, ...],
+    parents: tuple[GeneratedFrontierState, ...], *,
+    occupied_sites: tuple[tuple[object, Point], ...] = (),
+    tolerance: float = 1e-6,
+) -> FrontierSubstitutionExecution:
+    if grammar.target_used or system.target_used:
+        raise ValueError("target-tainted substitutions cannot execute")
+    if not system.exponential_gate_passed:
+        raise ValueError("substitution system did not pass the exponential gate")
+    rules = {rule.rule_id: rule for rule in grammar.rules}
+    rendered = {_point_key(point, tolerance): (species, point)
+                for species, point in occupied_sites}
+    emitted = {}
+    children = []
+    exact = True
+    collision_free = True
+    for rule_id in system.rule_ids:
+        rule = rules[rule_id]
+        selected = tuple(parent for parent in parents
+                         if parent.type_id == rule.parent_type)
+        if not selected:
+            continue
+        execution = execute_frontier_transition(
+            grammar, states, rule_id, selected,
+            occupied_sites=tuple(rendered.values()), tolerance=tolerance)
+        exact = exact and execution.exact_colored_union
+        collision_free = collision_free and execution.collision_free
+        children.extend(execution.children)
+        for species, point in execution.sites:
+            key = _point_key(point, tolerance)
+            previous = rendered.get(key) or emitted.get(key)
+            if previous is not None and previous[0] != species:
+                exact = False
+                collision_free = False
+            emitted[key] = species, point
+        rendered.update(emitted)
+    return FrontierSubstitutionExecution(
+        system.system_digest, parents, tuple(children),
+        tuple(emitted[key] for key in sorted(emitted)),
+        exact, collision_free, False)
+
+
+def symbolic_frontier_substitution_expansion(
+    system: FrontierSubstitutionSystem,
+    states: tuple[FrontierStateType, ...],
+    seed_type_counts: tuple[int, ...], actions: int,
+) -> SymbolicFrontierSubstitutionExpansion:
+    if not system.exponential_gate_passed:
+        raise ValueError("substitution system did not pass the exponential gate")
+    if len(seed_type_counts) != len(system.state_types) or not any(
+            seed_type_counts) or any(count < 0 for count in seed_type_counts):
+        raise ValueError("seed counts must match the nonempty state vocabulary")
+    if actions < 0:
+        raise ValueError("actions must be nonnegative")
+    state_by_id = {state.type_id: state for state in states}
+    counts = [tuple(seed_type_counts)]
+    sites = [sum(seed_type_counts[index] *
+                 state_by_id[type_id].support_size
+                 for index, type_id in enumerate(system.state_types))]
+    million = 0 if sites[0] >= 1_000_000 else None
+    for action in range(1, actions + 1):
+        previous = counts[-1]
+        following = tuple(sum(
+            previous[parent] * system.substitution_matrix[parent][child]
+            for parent in range(len(previous)))
+            for child in range(len(previous)))
+        counts.append(following)
+        sites.append(sum(following[index] *
+                         state_by_id[type_id].support_size
+                         for index, type_id in enumerate(system.state_types)))
+        if million is None and sites[-1] >= 1_000_000:
+            million = action
+    return SymbolicFrontierSubstitutionExpansion(
+        system.system_digest, system.state_types, tuple(counts),
+        tuple(sites), system.asymptotic_growth, million)

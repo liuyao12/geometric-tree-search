@@ -11,7 +11,7 @@ from materials_gcts_frontier_attachment_benchmark import evaluate as frontier
 from materials_gcts_frontier_state_grammar import (
     FrontierWaveSnapshot, compile_frontier_state_grammar)
 from materials_gcts_frontier_state_transitions import (
-    compile_frontier_transition_grammar)
+    compile_frontier_substitution_system, compile_frontier_transition_grammar)
 
 
 @dataclass(frozen=True)
@@ -32,6 +32,8 @@ class FrontierStateTransitionBenchmark:
     maximum_distinct_child_types: int
     rules_seen_on_multiple_transitions: int
     positive_mdl_rules: int
+    closed_substitution_state_types: int
+    closed_substitution_growth: float
     stationary_rule_ids: tuple[int, ...]
     executable_stationary_rule: bool
     generic_million_site_iqc_claim: bool
@@ -44,6 +46,7 @@ class FrontierStateTransitionBenchmark:
 def audit_snapshots(snapshots, source_sites_exact=True):
     states = compile_frontier_state_grammar(snapshots, maximum_nodes=5)
     transitions = compile_frontier_transition_grammar(states, snapshots)
+    substitution = compile_frontier_substitution_system(transitions)
     multi_child = sum(len(rule.child_placements) > 1
                       for rule in transitions.rules)
     heterogeneous = sum(len(set(rule.child_types)) > 1
@@ -61,6 +64,8 @@ def audit_snapshots(snapshots, source_sites_exact=True):
         sum(rule.independent_transition_waves >= 2
             for rule in transitions.rules),
         sum(rule.description_saving > 0 for rule in transitions.rules),
+        len(substitution.state_types) if substitution else 0,
+        substitution.asymptotic_growth if substitution else 0.,
         transitions.stationary_rule_ids,
         bool(transitions.stationary_rule_ids), False,
         transitions.target_used, transitions.grammar_digest,
