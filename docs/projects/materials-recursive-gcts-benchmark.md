@@ -2699,20 +2699,24 @@ RHS centre, seed, witnessed children and other emissions, local coordination,
 overlap multiplicity, matched-child fraction, missing-child count, and frozen
 port evidence.
 
-The five authorized training windows and their predeclared shifted inner seeds
-produce 28 macro candidates and 360 unique site examples, of which 250 are
-supported and 110 unsupported. Nested grouped validation gives site AUC 0.7455
-and log loss 0.6060. All 31 within-window label shuffles have lower site AUC
-(best 0.6971), for `p = 0.03125`. Minimum aggregation gives action AUC 0.8571,
-but the action null reaches 1.0 and the action-level p-value is 0.50. Thus the
-local section is train-supported at site level, not yet at whole-action level.
-Threshold selection is separately fail-closed: the fixed grid is searched
-inside grouped training folds for a nonempty selection with at least 95%
-precision. Four folds select the no-accept threshold and the remaining fold's
-`0.65` threshold transfers at only 64.71% precision. Across all five windows no
-nonempty threshold passes, so the serialized frozen model uses threshold `1.0`,
-accepts zero sites, and has zero recall. The AUC result is evidence for useful
-ordering, not permission to deploy the rule.
+The five authorized training windows now use three predeclared inner radii
+(`5.6`, `7.0`, and `8.4` Angstrom) and the same fixed nearest-neighbor shifts.
+They produce 123 macro candidates and 1,245 unique candidate-site examples, of
+which 871 are supported and 374 unsupported. Nested grouped validation gives
+site AUC 0.8864 and action AUC 1.0. Both exceed every one of 31 within-window
+label shuffles (`p = 0.03125`). The broader corpus therefore improves both site
+and whole-action ordering rather than merely duplicating easy positives.
+
+Admission remains more stringent than ranking. A zero-observed-error threshold
+is placed 1.5 logit units above the largest negative grouped-OOF score. Holding
+that margin fixed gives 172 / 176 correct held-window selections (97.73%
+precision, 19.75% recall), and every nonempty fold is at least 96.15% precise.
+The final serialized threshold is `0.9990244124431729` and selects 70 / 70 OOF
+sites (8.04% recall). But the margin was selected using all five training
+windows. When margin selection is repeated inside every outer fold, it reaches
+274 / 290 correct (94.48% precision), below the unchanged 95% deployment gate.
+The candidate model is now nonempty and substantially better calibrated, but
+the model-selection procedure remains red; no new Cd--Yb target is opened.
 
 A separate exact-decomposition control tests whether geometry alone should cut
 the action more finely. Port-connected missing children do not split these 14

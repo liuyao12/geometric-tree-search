@@ -871,13 +871,15 @@ sustained-growth gates both fail. The sole target opening and result are now
 sealed in a hash-checked, non-rerunnable fixture.
 
 The next train-only section moves the mark inside the macro. Across the same
-five training windows, 28 fixed macro candidates provide 360 emitted-site
-examples: 250 supported and 110 unsupported. A ten-feature local proper-SE(3)
-section reaches grouped site AUC 0.7455; every one of 31 within-window label
-shuffles is lower (`p = 0.03125`). Whole-action aggregation remains red
-(`p = 0.50`). This ranking signal is not enough to authorize growth: no
-nonempty site threshold reaches 95% precision under grouped validation. The
-frozen threshold is therefore `1.0`, accepts zero sites, and fails closed. A
+five training windows, three predeclared seed radii and fixed nearest-neighbor
+shifts supply 123 macro candidates and 1,245 emitted-site examples: 871
+supported and 374 unsupported. The ten-feature local proper-SE(3) section
+reaches grouped site AUC 0.8864 and whole-action AUC 1.0; every one of 31
+within-window label shuffles is lower for both (`p = 0.03125`). A train-selected
+zero-error logit safety margin of 1.5 gives 97.73% fixed-margin held-window
+precision, and its final threshold selects 70 / 70 cross-window sites. That is
+not yet permission to open another target: when margin selection itself is
+fully nested, precision is 94.48%, below the fixed 95% deployment gate. A
 structural atomic peel is also rejected: it preserves the
 complete cover through explicit residual subclusters but lowers train precision
 from 110 / 148 to 62 / 90. The generic executor therefore keeps exact
@@ -887,7 +889,7 @@ A partial mask never becomes a cluster occurrence; a child appears only after
 its full colored support is present, and a parent appears only after all
 children and frozen ports are independently reverified. Synthetic controls and
 the NaCl control pass (48 / 48 emitted sites correct), but Cd--Yb deployment is
-disabled until train-only high-precision calibration succeeds.
+disabled until fully nested train-only high-precision calibration succeeds.
 
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and

@@ -29,9 +29,10 @@ from materials_gcts_recurrent_macro_executor import ExecutionBoundary
 
 
 SEED_RADIUS = 7.
+SEED_RADII = (.4 * RADIUS, .5 * RADIUS, .6 * RADIUS)
 LAMBDAS = (.01, .1, 1., 10.)
 AGGREGATIONS = ("minimum", "lower-quartile", "mean")
-SITE_ACCEPTANCE_THRESHOLDS = tuple(index / 20 for index in range(1, 20))
+ZERO_ERROR_LOGIT_MARGINS = (0., .1, .25, .5, .75, 1., 1.5, 2.)
 FEATURE_NAMES = (
     "same_species_fraction", "rhs_radial_distance_nn",
     "nearest_seed_distance_nn", "nearest_witness_distance_nn",
@@ -58,6 +59,7 @@ class FrozenSiteSection:
 class SiteSectionAudit:
     train_windows: int
     shifted_frontiers: int
+    seed_radii: tuple[float, ...]
     frozen_macro_candidates: int
     site_samples: int
     supported_sites: int
@@ -85,6 +87,14 @@ class SiteSectionAudit:
     final_threshold_oof_recall: float
     final_threshold_oof_accepted: int
     nonempty_95_precision_threshold_found: bool
+    selected_zero_error_logit_margin: float
+    fixed_margin_outer_precision: float
+    fixed_margin_outer_recall: float
+    fixed_margin_minimum_nonempty_fold_precision: float
+    fixed_margin_nonempty_folds: int
+    fully_nested_margin_selection_precision: float
+    fully_nested_margin_selection_recall: float
+    fully_nested_margin_selection_passed: bool
     null_trials: int
     null_site_auc_median: float
     null_site_auc_best: float
@@ -182,10 +192,11 @@ def _site_features(site, emitted_sites, seed_sites, witness_sites,
 
 
 def _frontier_rows(primitive, quotient, parent_map, species, positions,
-                   namespaces, patch, seed_center):
+                   namespaces, patch, seed_center,
+                   seed_radius=SEED_RADIUS):
     indices = tuple(index for index, point in enumerate(positions)
                     if namespaces[index] == patch and
-                    math.dist(point, seed_center) <= SEED_RADIUS + 1e-10)
+                    math.dist(point, seed_center) <= seed_radius + 1e-10)
     seed_species = tuple(species[index] for index in indices)
     seed_positions = tuple(positions[index] for index in indices)
     seed_sites = tuple(zip(seed_species, seed_positions))
@@ -316,7 +327,7 @@ def _auc(labels, scores):
 
 
 def _grouped_lambda(rows, excluded=None):
-    windows = tuple(window for window in range(len(TRAIN_CENTERS))
+    windows = tuple(window for window in sorted({row.window for row in rows})
                     if window != excluded)
     choices = []
     for ridge in LAMBDAS:
@@ -393,16 +404,80 @@ def _threshold_metrics(labels, scores, threshold):
     return precision, recall, len(accepted), correct
 
 
-def _select_site_threshold(labels, scores):
-    admitted = []
-    for threshold in SITE_ACCEPTANCE_THRESHOLDS:
-        precision, recall, accepted, correct = _threshold_metrics(
-            labels, scores, threshold)
-        if accepted and precision >= .95:
-            admitted.append((correct, recall, accepted, -threshold,
-                             threshold))
-    # A no-accept threshold is deliberately outside the candidate score range.
-    return max(admitted)[-1] if admitted else 1.
+def _logit(probability):
+    probability = min(1 - 1e-12, max(1e-12, probability))
+    return math.log(probability / (1 - probability))
+
+
+def _zero_error_threshold(rows, scores, margin):
+    negative_scores = tuple(score for row, score in zip(rows, scores)
+                            if not row.successful)
+    if not negative_scores:
+        return 1.
+    return _sigmoid(_logit(max(negative_scores)) + margin)
+
+
+def _fixed_margin_audit(rows, margin):
+    folds = []
+    for held in sorted({row.window for row in rows}):
+        fit = tuple(row for row in rows if row.window != held)
+        validation = tuple(row for row in rows if row.window == held)
+        inner_rows, inner_scores = _inner_site_predictions(rows, held)
+        threshold = _zero_error_threshold(inner_rows, inner_scores, margin)
+        model = _fit(fit, _grouped_lambda(rows, held))
+        scores = tuple(_predict(model, row) for row in validation)
+        folds.append((held, threshold) + _threshold_metrics(
+            tuple(row.successful for row in validation), scores, threshold))
+    accepted = sum(item[4] for item in folds)
+    correct = sum(item[5] for item in folds)
+    positives = sum(row.successful for row in rows)
+    nonempty = tuple(item for item in folds if item[4])
+    return {
+        "folds": tuple(folds),
+        "precision": correct / accepted if accepted else 1.,
+        "recall": correct / positives if positives else 0.,
+        "accepted": accepted,
+        "correct": correct,
+        "minimum_nonempty_precision": min(
+            (item[2] for item in nonempty), default=1.),
+        "nonempty_folds": len(nonempty),
+    }
+
+
+def _select_zero_error_margin(rows):
+    required_folds = max(2, len({row.window for row in rows}) - 1)
+    choices = []
+    for margin in ZERO_ERROR_LOGIT_MARGINS:
+        audit = _fixed_margin_audit(rows, margin)
+        if (audit["accepted"] and audit["precision"] >= .95 and
+                audit["minimum_nonempty_precision"] >= .95 and
+                audit["nonempty_folds"] >= required_folds):
+            choices.append((audit["correct"], audit["recall"], -margin,
+                            margin, audit))
+    return max(choices) if choices else None
+
+
+def _fully_nested_margin_audit(rows):
+    folds = []
+    for held in sorted({row.window for row in rows}):
+        discovery = tuple(row for row in rows if row.window != held)
+        selection = _select_zero_error_margin(discovery)
+        margin = selection[3] if selection is not None else \
+            ZERO_ERROR_LOGIT_MARGINS[-1]
+        calibration_rows, calibration_scores = _inner_site_predictions(
+            discovery, None)
+        threshold = _zero_error_threshold(
+            calibration_rows, calibration_scores, margin)
+        validation = tuple(row for row in rows if row.window == held)
+        model = _fit(discovery, _grouped_lambda(rows, held))
+        scores = tuple(_predict(model, row) for row in validation)
+        folds.append((held, margin, threshold) + _threshold_metrics(
+            tuple(row.successful for row in validation), scores, threshold))
+    accepted = sum(item[5] for item in folds)
+    correct = sum(item[6] for item in folds)
+    positives = sum(row.successful for row in rows)
+    return (tuple(folds), correct / accepted if accepted else 1.,
+            correct / positives if positives else 0., accepted, correct)
 
 
 def _nested_predictions(rows):
@@ -411,15 +486,10 @@ def _nested_predictions(rows):
     aggregations = []
     action_labels = []
     action_scores = []
-    thresholds = []
-    threshold_metrics = []
     for held in range(len(TRAIN_CENTERS)):
         fit = tuple(row for row in rows if row.window != held)
         validation = tuple(row for row in rows if row.window == held)
         aggregation = _select_aggregation(rows, held)
-        inner_rows, inner_scores = _inner_site_predictions(rows, held)
-        threshold = _select_site_threshold(
-            tuple(row.successful for row in inner_rows), inner_scores)
         ridge = _grouped_lambda(rows, held)
         model = _fit(fit, ridge)
         scores = tuple(_predict(model, row) for row in validation)
@@ -429,12 +499,8 @@ def _nested_predictions(rows):
         action_labels.extend(item[0] for item in actions)
         action_scores.extend(item[1] for item in actions)
         aggregations.append(aggregation)
-        thresholds.append(threshold)
-        threshold_metrics.append(_threshold_metrics(
-            tuple(row.successful for row in validation), scores, threshold))
     return (tuple(site_rows), tuple(site_scores), tuple(action_labels),
-            tuple(action_scores), tuple(aggregations), tuple(thresholds),
-            tuple(threshold_metrics))
+            tuple(action_scores), tuple(aggregations))
 
 
 def _shuffle(rows, seed):
@@ -473,21 +539,33 @@ def evaluate():
                (0., scale, 0.), (0., -scale, 0.),
                (0., 0., scale), (0., 0., -scale))
     raw = []
-    for patch in range(len(TRAIN_CENTERS)):
-        origin = (patch * PACK_SEPARATION, 0., 0.)
-        for offset in offsets:
-            center = tuple(origin[axis] + offset[axis] for axis in range(3))
-            raw.extend(_frontier_rows(
-                primitive, quotient, parent_map, species, positions,
-                namespaces, patch, center))
+    for seed_radius in SEED_RADII:
+        for patch in range(len(TRAIN_CENTERS)):
+            origin = (patch * PACK_SEPARATION, 0., 0.)
+            for offset in offsets:
+                center = tuple(origin[axis] + offset[axis]
+                               for axis in range(3))
+                raw.extend(_frontier_rows(
+                    primitive, quotient, parent_map, species, positions,
+                    namespaces, patch, center, seed_radius))
     rows = _dedupe(raw)
-    (outer_rows, outer_scores, action_labels, action_scores, aggregations,
-     thresholds, fold_threshold_metrics) = _nested_predictions(rows)
+    (outer_rows, outer_scores, action_labels, action_scores,
+     aggregations) = _nested_predictions(rows)
     final_lambda = _grouped_lambda(rows)
     final_aggregation = _select_aggregation(rows, None)
     final_oof_rows, final_oof_scores = _inner_site_predictions(rows, None)
-    final_threshold = _select_site_threshold(
-        tuple(row.successful for row in final_oof_rows), final_oof_scores)
+    margin_selection = _select_zero_error_margin(rows)
+    selected_margin = (margin_selection[3] if margin_selection is not None
+                       else ZERO_ERROR_LOGIT_MARGINS[-1])
+    margin_audit = (margin_selection[4] if margin_selection is not None
+                    else _fixed_margin_audit(rows, selected_margin))
+    nested_margin = _fully_nested_margin_audit(rows)
+    thresholds = tuple(item[2] for item in nested_margin[0])
+    fold_threshold_metrics = tuple(
+        (item[3], item[4], item[5], item[6])
+        for item in nested_margin[0])
+    final_threshold = _zero_error_threshold(
+        final_oof_rows, final_oof_scores, selected_margin)
     final_threshold_metrics = _threshold_metrics(
         tuple(row.successful for row in final_oof_rows), final_oof_scores,
         final_threshold)
@@ -499,8 +577,8 @@ def evaluate():
     null_action_auc = []
     for trial in range(31):
         shuffled = _shuffle(rows, 441_901 + trial)
-        (null_rows, null_scores, null_actions, null_action_scores, _null_agg,
-         _null_thresholds, _null_metrics) = _nested_predictions(shuffled)
+        (null_rows, null_scores, null_actions, null_action_scores,
+         _null_agg) = _nested_predictions(shuffled)
         null_site_auc.append(_auc(
             tuple(row.successful for row in null_rows), null_scores))
         null_action_auc.append(_auc(null_actions, null_action_scores))
@@ -516,8 +594,11 @@ def evaluate():
         "schema": "cdyb-site-resolved-section-v1",
         "site_corpus_digest": site_corpus_digest,
         "serialized_frozen_section": serialized_section,
-        "threshold_grid": SITE_ACCEPTANCE_THRESHOLDS,
         "minimum_selection_precision": .95,
+        "seed_radii": SEED_RADII,
+        "zero_error_logit_margin_grid": ZERO_ERROR_LOGIT_MARGINS,
+        "selected_zero_error_logit_margin": selected_margin,
+        "margin_selected_on_all_five_training_windows": True,
         "grouping": "original-training-window",
     }
     candidate_count = len({(row.window, row.candidate_id) for row in rows})
@@ -530,7 +611,9 @@ def evaluate():
     total_threshold_correct = sum(item[3] for item in fold_threshold_metrics)
     return SiteSectionAudit(
         train_windows=len(TRAIN_CENTERS),
-        shifted_frontiers=len(TRAIN_CENTERS) * len(offsets),
+        shifted_frontiers=(len(TRAIN_CENTERS) * len(offsets) *
+                           len(SEED_RADII)),
+        seed_radii=SEED_RADII,
         frozen_macro_candidates=candidate_count,
         site_samples=len(rows),
         supported_sites=sum(row.successful for row in rows),
@@ -568,6 +651,16 @@ def evaluate():
         nonempty_95_precision_threshold_found=(
             final_threshold_metrics[2] > 0 and
             final_threshold_metrics[0] >= .95),
+        selected_zero_error_logit_margin=selected_margin,
+        fixed_margin_outer_precision=margin_audit["precision"],
+        fixed_margin_outer_recall=margin_audit["recall"],
+        fixed_margin_minimum_nonempty_fold_precision=(
+            margin_audit["minimum_nonempty_precision"]),
+        fixed_margin_nonempty_folds=margin_audit["nonempty_folds"],
+        fully_nested_margin_selection_precision=nested_margin[1],
+        fully_nested_margin_selection_recall=nested_margin[2],
+        fully_nested_margin_selection_passed=(
+            nested_margin[3] > 0 and nested_margin[1] >= .95),
         null_trials=31,
         null_site_auc_median=sorted(null_site_auc)[15],
         null_site_auc_best=max(null_site_auc),
