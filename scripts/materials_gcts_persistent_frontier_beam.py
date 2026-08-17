@@ -57,13 +57,16 @@ def run_persistent_frontier_beam(
         known_positions, known_colors, cluster_edges, provisional_pool,
         center, radius_limit, *, waves=1, beam_width=4,
         branching_width=4, lookahead_depth=3, root_rank_values=None,
-        candidate_snapshot_width=None):
+        candidate_snapshot_width=None, root_rank_values_by_previous=None):
     """Retain complete alternative states for several depths before commit."""
     if (waves < 1 or beam_width < 2 or branching_width < 2 or
             lookahead_depth < 2):
         raise ValueError("invalid persistent-beam dimensions")
     center = tuple(center)
-    rank_values = dict(root_rank_values or {})
+    base_rank_values = dict(root_rank_values or {})
+    contextual_rank_values = {
+        int(context): dict(values)
+        for context, values in (root_rank_values_by_previous or {}).items()}
     snapshot_width = candidate_snapshot_width or branching_width
     if snapshot_width < branching_width:
         raise ValueError("candidate snapshot cannot be narrower than branching")
@@ -118,7 +121,11 @@ def run_persistent_frontier_beam(
     traces = []
     decisions = []
     cumulative = 0
+    committed_root_ranks = []
     for wave in range(1, waves + 1):
+        previous_rank = committed_root_ranks[-1] if committed_root_ranks else 0
+        rank_values = contextual_rank_values.get(
+            previous_rank, base_rank_values)
         root = _State(positions, colors, remaining, (), (), (),
                       len(remaining.votes), 0.)
         frontier_states = (root,)
@@ -185,6 +192,7 @@ def run_persistent_frontier_beam(
         band_colors = best.path_colors[0]
         committed = advance(root, band, band_colors)
         positions, colors, remaining = committed
+        committed_root_ranks.append(best.path_ranks[0])
         cumulative += len(band)
         records.append(IterativeGrowthWave(
             wave, len(band), -1, -1, cumulative, float("nan"),

@@ -814,6 +814,20 @@ prior ball. The target-free search evaluates 108 branches, selects path
 one-action channel/value confirmation. It does not yet certify a second
 self-fed action, stationary recurrence, or exponential growth.
 
+The repeated sixth/eighth second-wave pattern supplies the missing bounded
+GCTS context. Initial-frontier observations make rank four the dominant
+channel (`5/6` after smoothing). After arriving through rank four, two
+independent diagnostic nuclei both place exact next actions at ranks six and
+twelve, so the carried-context table assigns each `3/4`. This order-one finite
+marking is frozen—no coordinate, material label, or target atom is a key—and
+tested for two waves at a ninth centre `(-25, -20, 20)`, disjoint from every
+prior ball. The persistent beam evaluates 108 branches per wave and commits
+paths `4 → 12 → 11` then `12 → 9 → 10`. Posthoc scoring is 2 / 2 exact colored
+sites with zero false placements. This is the first green spatial confirmation
+of multiwave, self-fed generic IQC tree search. Wave size is still one and no
+stationary production or amplification is certified, so exponential growth
+remains red.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

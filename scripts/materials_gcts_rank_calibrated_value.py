@@ -29,6 +29,25 @@ class FrozenRankValue:
                 for rank in range(1, self.maximum_rank + 1)}
 
 
+@dataclass(frozen=True)
+class ContextualRankValueObservation:
+    previous_rank: int
+    observation: RankValueObservation
+
+
+@dataclass(frozen=True)
+class FrozenContextualRankValue:
+    contexts: tuple[int, ...]
+    models: tuple[FrozenRankValue, ...]
+    artifact_digest: str
+    maximum_context_order: int
+    target_used_during_application: bool
+
+    def as_mapping(self):
+        return {context: model.as_mapping()
+                for context, model in zip(self.contexts, self.models)}
+
+
 def fit_rank_value(observations, *, maximum_rank=4,
                    prior_positive=1., prior_negative=1.):
     observations = tuple(observations)
@@ -60,3 +79,19 @@ def fit_rank_value(observations, *, maximum_rank=4,
         maximum_rank, tuple(positives), tuple(totals), posterior,
         tuple(item.source_digest for item in observations),
         hashlib.sha256(repr(payload).encode()).hexdigest(), False)
+
+
+def fit_contextual_rank_value(observations, *, maximum_rank):
+    observations = tuple(observations)
+    if not observations or any(item.previous_rank < 0 for item in observations):
+        raise ValueError("contextual rank observations are invalid")
+    contexts = tuple(sorted({item.previous_rank for item in observations}))
+    models = tuple(fit_rank_value(
+        tuple(item.observation for item in observations
+              if item.previous_rank == context),
+        maximum_rank=maximum_rank) for context in contexts)
+    payload = tuple((context, model.artifact_digest)
+                    for context, model in zip(contexts, models))
+    return FrozenContextualRankValue(
+        contexts, models, hashlib.sha256(repr(payload).encode()).hexdigest(),
+        1, False)

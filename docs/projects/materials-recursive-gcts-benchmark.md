@@ -1882,6 +1882,25 @@ path `4 / 12 / 11`, and emits 1 / 1 exact colored site. The one-action learned
 channel/value gate is green on this fresh nucleus. Sustained self-fed growth,
 stationarity, and exponential amplification remain separate red gates.
 
+Two completed second-wave diagnostics then justify one bounded contextual
+extension. In the initial state, exact rank four appears in all four available
+frontiers, giving posterior value `5/6`. Conditional on the previous committed
+root being rank four, both independent observations contain exact ranks six and
+twelve, giving each `3/4`; all other ranks receive `1/4`. This is an order-one
+carried connection mark. It contains only the previous finite channel ID and
+the candidate channel rank, never a coordinate, target site, nucleus identity,
+or material-family label.
+
+The contextual artifact is frozen and executed for two waves at a ninth centre
+`(-25, -20, 20)`, whose radius-14.562 target ball is disjoint from every prior
+ball by at least 37.749. Twelve root channels are enumerated, four complete
+states are retained, and 108 real branches are expanded per wave. The selected
+paths are `4 / 12 / 11` and, after carrying context four, `12 / 9 / 10`.
+Posthoc scoring gives wave truth `(1, 1)`, falsehood `(0, 0)`: two exact
+self-fed colored sites. The two-wave spatial tree-search gate is green. Its
+unit wave sizes show no amplification, and no repeating production or scale is
+inferred; stationary and exponential IQC gates remain red.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
