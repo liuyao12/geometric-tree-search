@@ -5,7 +5,8 @@ import unittest
 from collections import Counter
 
 from materials_gcts_frontier_attachment import (
-    FrontierAttachmentExample, describe_frontier_attachments,
+    FrontierAttachmentEnsemble, FrontierAttachmentExample,
+    describe_frontier_attachments,
     fit_frontier_attachment_marker_examples, score_frontier_attachments)
 from materials_gcts_frontier_attachment_benchmark import evaluate
 from materials_gcts_recursive_connections import MarkedProposalResult
@@ -38,6 +39,10 @@ class FrontierAttachmentTest(unittest.TestCase):
                                tuple(scores[1].values())[0])
         self.assertAlmostEqual(tuple(scores[0].values())[1],
                                tuple(scores[1].values())[1])
+        ensemble = FrontierAttachmentEnsemble((marker, marker))
+        self.assertEqual(score_frontier_attachments(
+            ensemble, fixtures[0][0], fixtures[0][1], fixtures[0][2]),
+            scores[0])
 
     def test_descriptor_is_rigid_motion_invariant(self):
         votes = Counter({(1., 1., 0.): 3, (2., 0., 0.): 2})

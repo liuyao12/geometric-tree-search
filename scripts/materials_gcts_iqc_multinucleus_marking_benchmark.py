@@ -10,8 +10,8 @@ import math
 from dataclasses import asdict, dataclass
 
 from materials_gcts_frontier_attachment import (
-    FrontierAttachmentExample, fit_frontier_attachment_marker_examples,
-    score_frontier_attachments)
+    FrontierAttachmentEnsemble, FrontierAttachmentExample,
+    fit_frontier_attachment_marker_examples, score_frontier_attachments)
 from materials_gcts_frontier_attachment_benchmark import (
     _augmented_frontier, _dominant_source_color,
     _regenerative_maximum_plateaus, _subset_proposals,
@@ -76,9 +76,8 @@ def _pairwise_disjoint(centers):
                for right in centers[index + 1:])
 
 
-def evaluate(waves: int = 1) -> MultiNucleusMarkingBenchmark:
-    if waves < 1:
-        raise ValueError("waves must be positive")
+def fit_multinucleus_marking():
+    """Fit only from the three completed training nuclei."""
     origin_seed, _ = oracle_patch(3, EVALUATION_SEED_RADIUS)
     origin_target, _ = oracle_patch(4, EVALUATION_TARGET_RADIUS)
     prototypes = local_cluster_types(
@@ -101,10 +100,12 @@ def evaluate(waves: int = 1) -> MultiNucleusMarkingBenchmark:
     marker = fit_frontier_attachment_marker_examples(examples)
 
     held_scores = []
+    fold_markers = []
     for held_index, (proposal, seed) in enumerate(zip(proposals, seeds)):
         fold_marker = fit_frontier_attachment_marker_examples(tuple(
             example for index, example in enumerate(examples)
             if index != held_index))
+        fold_markers.append(fold_marker)
         held_scores.append(score_frontier_attachments(
             fold_marker, proposal, seed.positions, seed.species))
     augmented_examples = []
@@ -122,6 +123,20 @@ def evaluate(waves: int = 1) -> MultiNucleusMarkingBenchmark:
             tuple(target.positions)))
     refinement = fit_frontier_attachment_marker_examples(
         tuple(augmented_examples))
+    fold_refinements = tuple(fit_frontier_attachment_marker_examples(tuple(
+        example for index, example in enumerate(augmented_examples)
+        if index != held_index)) for held_index in range(len(examples)))
+    return (prototypes, connection, seeds, targets, proposals, marker,
+            refinement, FrontierAttachmentEnsemble(tuple(fold_markers)),
+            FrontierAttachmentEnsemble(fold_refinements))
+
+
+def evaluate(waves: int = 1) -> MultiNucleusMarkingBenchmark:
+    if waves < 1:
+        raise ValueError("waves must be positive")
+    (prototypes, connection, seeds, targets, _training_proposals, marker,
+     refinement, _robust_marker,
+     _robust_refinement) = fit_multinucleus_marking()
 
     seed = _seed_crop(CONFIRMATION_CENTER)
     proposal = _bounded_proposals(

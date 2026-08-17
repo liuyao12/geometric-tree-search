@@ -32,6 +32,16 @@ class FrontierAttachmentMarker:
 
 
 @dataclass(frozen=True)
+class FrontierAttachmentEnsemble:
+    markers: Tuple[FrontierAttachmentMarker, ...]
+    reduction: str = "minimum"
+
+    def __post_init__(self):
+        if len(self.markers) < 2 or self.reduction not in ("minimum", "mean"):
+            raise ValueError("an ensemble needs multiple markers and a reduction")
+
+
+@dataclass(frozen=True)
 class FrontierAttachmentExample:
     proposals: MarkedProposalResult
     known_positions: Tuple[Point, ...]
@@ -181,9 +191,19 @@ def fit_frontier_attachment_marker(
 
 
 def score_frontier_attachments(
-        marker: FrontierAttachmentMarker, proposals: MarkedProposalResult,
+        marker: FrontierAttachmentMarker | FrontierAttachmentEnsemble,
+        proposals: MarkedProposalResult,
         known_positions: Sequence[Point], known_colors: Sequence[Hashable],
         ) -> Dict[Point, float]:
+    if isinstance(marker, FrontierAttachmentEnsemble):
+        scored = tuple(score_frontier_attachments(
+            item, proposals, known_positions, known_colors)
+                       for item in marker.markers)
+        if marker.reduction == "minimum":
+            return {point: min(row[point] for row in scored)
+                    for point in scored[0]}
+        return {point: sum(row[point] for row in scored) / len(scored)
+                for point in scored[0]}
     described = describe_frontier_attachments(
         proposals, known_positions, known_colors,
         marker.radial_edges, marker.color_keys)

@@ -1814,6 +1814,27 @@ alternative configurations alive for multiple depths and count actual
 rollback/backtrack work before committing; widening the same one-step rule is
 already falsified.
 
+The executor now implements that persistent state explicitly. Four complete
+configuration states—atoms, colors, remaining frozen proposals, regenerated
+ports, and collision state—are carried through three depths; 36 branches are
+evaluated before the first move is committed. A robust local marking uses the
+minimum score across three leave-one-nucleus-out models. On the fourth nucleus,
+this combination selects path `4 / 3 / 3` and recovers an exact 3-site first
+action. This is diagnostic because the fourth target was already opened by the
+preceding test.
+
+The policy is frozen without modification and tested once at a fifth centre
+`(20, -25, 20)`. Its target-ball separation from every prior centre is at least
+33.541, above the required 29.125. The exact 1-site action again appears inside
+the four retained roots at rank four, but the three-depth frontier-cardinality
+objective selects `2 / 3 / 2` and emits one false site. Target membership is
+attached only after all 36 branch expansions and the choice are immutable.
+The fifth-nucleus gate is therefore red. Two independent nuclei now show the
+same causal boundary: multi-nucleus marking retains the correct geometry, while
+frontier size—even after real multi-depth search—is not a transferable value
+function. The next admissible change is a train-only learned value over branch
+connection state, using this persistent beam unchanged.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

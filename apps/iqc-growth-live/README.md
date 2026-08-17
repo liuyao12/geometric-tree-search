@@ -760,6 +760,22 @@ next implementation precisely: retain alternative configurations across
 multiple tree depths, then roll back a branch when its future frontier fails,
 rather than committing after one-step lookahead.
 
+That persistent search substrate now exists. It retains four complete
+atom/cluster/port states, expands each through three tree depths, regenerates
+the local marking and collision state on every branch, and only then commits
+the first action. A robust companion marking takes the minimum probability
+over three leave-one-nucleus-out models, penalizing a connection that is
+supported by only one local environment. On the fourth (now diagnostic)
+nucleus, the combined policy evaluates 36 branches and recovers an exact
+3-site path `4 → 3 → 3`. Frozen exactly as-is, it is then tested once at a
+fifth centre `(20, -25, 20)`, whose full target ball is disjoint from all three
+training balls and the fourth diagnostic ball. The exact 1-site action is again
+inside the top four at rank four, but frontier-count value selects path
+`2 → 3 → 2` and emits one false site. The fifth-nucleus gate is red. This
+repeatedly falsifies frontier cardinality as a value function while validating
+the persistent beam as the substrate on which a learned connection value must
+now operate.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the
