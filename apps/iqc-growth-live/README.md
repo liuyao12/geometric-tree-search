@@ -1282,6 +1282,17 @@ actions. Candidate positions and colors are identical throughout, and the next
 disjoint centre remains unopened. This rejects scalar score stacking as the
 missing marking: the next model must operate on the joint incidence graph.
 
+That graph is now explicit. The primary symmetry-quotiented connection role is
+coupled to every occupied colored shell and every pairwise metric edge, giving
+6,140 role--shell and 19,837 role--edge types without changing any candidate.
+Across ten held-out nuclei, 97.66% of descriptor tokens receive a train-frozen
+weight. The best fixed fit nevertheless selects only 15 / 20 exact actions;
+support/group floors of 16/3 or 32/3 give 14 / 20, and the strongest 64/5
+regularization gives 8 / 20. The remaining failure is therefore topological:
+independent edge weights cannot represent the arrangement of a local incidence
+graph. The next section must use finite canonical subgraphs or bounded message
+passing while retaining the same exact placement layer.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

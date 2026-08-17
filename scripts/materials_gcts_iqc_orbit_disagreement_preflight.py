@@ -75,7 +75,7 @@ def _top_band_size(scored):
     return sum(abs(score - top) <= 1e-15 for score, _row in scored)
 
 
-def _development_groups():
+def _development_sources():
     prototypes, connection, original_sources = _build_candidate_fixture()
     seed = _seed_crop(CONSUMED_CONFIRMATION_CENTER)
     target = _open_target(CONSUMED_CONFIRMATION_CENTER)
@@ -87,10 +87,15 @@ def _development_groups():
             target.positions, target.species)},
         _minimum_distance(seed.positions))
     sources = original_sources + (consumed_source,)
+    return sources
+
+
+def _development_groups(*, joint_role_geometry=False):
     return _candidate_groups_for_geometry(
-        sources, neighborhood_reach=NEIGHBORHOOD_REACH,
+        _development_sources(), neighborhood_reach=NEIGHBORHOOD_REACH,
         distance_bin_width=DISTANCE_BIN_WIDTH,
-        maximum_neighbors=MAXIMUM_NEIGHBORS)
+        maximum_neighbors=MAXIMUM_NEIGHBORS,
+        joint_role_geometry=joint_role_geometry)
 
 
 def evaluate() -> OrbitDisagreementPreflight:

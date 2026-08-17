@@ -69,7 +69,8 @@ def _top_roles(proposals, point, maximum=3):
 def candidate_incidence_descriptors(
         proposals, *, distance_scale: float, neighborhood_reach: float = 3.,
         distance_bin_width: float = .5, maximum_neighbors: int = 8,
-        maximum_roles: int = 3, occupied_positions=(),
+        maximum_roles: int = 3, joint_role_geometry: bool = False,
+        occupied_positions=(),
         occupied_species=()):
     """Describe every candidate using invariant local port-incidence tokens.
 
@@ -151,6 +152,9 @@ def candidate_incidence_descriptors(
                 distance / (distance_scale * distance_bin_width))
             tokens.add(("occupied-shell", rank, species, distance_bin))
             tokens.add(("occupied-shell-colorless", rank, distance_bin))
+            if joint_role_geometry and own_roles:
+                tokens.add(("role-occupied-shell", own_roles[0], rank,
+                            species, distance_bin))
         # Radial shells alone conflate distinct angular environments.  The
         # colored metric graph of the nearest occupied neighbors is a proper-
         # motion invariant angular surrogate and does not require a global
@@ -174,6 +178,9 @@ def candidate_incidence_descriptors(
                                  (distance_scale * distance_bin_width))
                 tokens.add(("occupied-metric-edge", species_pair,
                             radii, pair_bin))
+                if joint_role_geometry and own_roles:
+                    tokens.add(("role-occupied-metric-edge", own_roles[0],
+                                species_pair, radii, pair_bin))
         result[point] = CandidateIncidenceDescriptor(
             tuple(sorted(tokens, key=repr)))
     return result

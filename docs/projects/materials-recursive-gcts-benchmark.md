@@ -2116,6 +2116,16 @@ The candidate graph digest is unchanged. These controls rule out scalar
 mixtures of the two sections; transferable selection must preserve joint
 port-incidence geometry rather than summarize it into scores.
 
+The first graph-valued correction couples the primary symmetry-quotiented port
+role directly to each occupied colored shell and occupied-neighbor metric edge.
+It adds 6,140 role--shell and 19,837 role--edge types while preserving the exact
+candidate digest. In ten outer held-out folds, 97.66% of descriptor tokens have
+train-frozen weights, but the best two-action result is 15 / 20. Raising the
+minimum support/group evidence from 4/2 to 16/3 or 32/3 yields 14 / 20; a 64/5
+floor yields 8 / 20. This is not a vocabulary-coverage problem. A marginal sum
+over relational edge tokens loses graph topology, so the next bounded marking
+must canonicalize finite incidence subgraphs or perform finite message passing.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

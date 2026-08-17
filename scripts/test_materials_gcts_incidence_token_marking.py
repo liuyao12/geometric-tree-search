@@ -48,6 +48,20 @@ def test_descriptor_is_permutation_translation_rotation_invariant():
     assert sorted((row.tokens for row in first.values()), key=repr) == \
         sorted((row.tokens for row in second.values()), key=repr)
 
+    first_joint = candidate_incidence_descriptors(
+        _proposals(), distance_scale=1., occupied_positions=occupied,
+        occupied_species=species, joint_role_geometry=True)
+    second_joint = candidate_incidence_descriptors(
+        second_raw, distance_scale=1.,
+        occupied_positions=tuple(
+            (7. - point[1], -3. + point[0], 11. + point[2])
+            for point in occupied), occupied_species=species,
+        joint_role_geometry=True)
+    assert sorted((row.tokens for row in first_joint.values()), key=repr) == \
+        sorted((row.tokens for row in second_joint.values()), key=repr)
+    assert any(token[0] == "role-occupied-shell"
+               for row in first_joint.values() for token in row.tokens)
+
 
 def test_train_only_tokens_rank_supported_context():
     positive = CandidateIncidenceDescriptor((('role', 'good'),))

@@ -132,7 +132,8 @@ def _build_candidate_sources():
 
 def _candidate_groups_for_geometry(
         sources, *, neighborhood_reach: float = 3.,
-        distance_bin_width: float = .5, maximum_neighbors: int = 8):
+        distance_bin_width: float = .5, maximum_neighbors: int = 8,
+        joint_role_geometry: bool = False):
     groups = []
     for source in sources:
         descriptors = candidate_incidence_descriptors(
@@ -140,6 +141,7 @@ def _candidate_groups_for_geometry(
             neighborhood_reach=neighborhood_reach,
             distance_bin_width=distance_bin_width,
             maximum_neighbors=maximum_neighbors,
+            joint_role_geometry=joint_role_geometry,
             occupied_positions=source.seed_positions,
             occupied_species=source.seed_species)
         rows = []
