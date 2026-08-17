@@ -27,6 +27,13 @@ encodings, not electron densities or physical potentials.
 
 ## Environment discovery
 
+The cluster stage exposes the geometric hypothesis explicitly. **Auto** tests
+translation closure from the positions, **lattice-constrained** applies periodic
+translations, and **off-lattice** learns a finite observed `SE(3)` pose atlas
+without periodic wrapping. This setting changes the displacement geometry used
+by descriptors and the complete cover; it is not a preassigned crystal or
+quasicrystal label.
+
 For every atom the browser builds a periodic, rotation-invariant descriptor
 containing central and neighbor element channels, Gaussian radial functions
 through `1.9a`, a first-shell angular histogram, and coordination terms.
@@ -43,6 +50,14 @@ measured, element-labelled first shell. The visualization does not substitute a
 fixed catalogue of demonstration polyhedra. Each approximate isometry class has
 its own independently rotating canvas card; repeated placements do not create
 duplicate cards.
+
+The same stage reports how many symmetry-inequivalent orientations of every
+cluster are actually needed to cover the observation. It compares centered,
+element-coloured directional neighborhoods in the laboratory frame. Proper
+self-symmetries of a cluster therefore collapse automatically: the Na and Cl
+octahedra in periodic rocksalt each require one physical pose, even though one
+may write many equivalent local frames for an octahedron. Removing periodic
+wrapping exposes boundary environment types and their larger finite pose atlas.
 
 ## Finite rigid overlap grammar
 
@@ -69,10 +84,14 @@ reconstruction is certified, so they cannot leak into continuation.
 ## GCTS connection sections and experiment library
 
 The marking stage is separate from both cluster discovery and rule extraction.
-Its stage-local controls choose 1, 3, 6, or 12 marking channels; one-, two-, or
-three-shell neighborhood reach; and a site-resolved, connection-port, or
-whole-cluster action representation. These choices rebuild the learned section
-model rather than merely relabeling the display. Strong observed overlaps label
+Its stage-local controls choose an automatically derived channel rank or a
+manual 1, 3, 6, or 12 channels; one-, two-, or three-shell neighborhood reach;
+and a site-resolved, connection-port, or whole-cluster action representation.
+The automatic rank is derived from symmetry-inequivalent pose classes and
+observed outgoing port roles. It is not the raw number of rotations: a
+symmetry quotient may need one pose while chemistry, connection, and failure
+remain distinct channels. These choices rebuild the learned section model
+rather than merely relabeling the display. Strong observed overlaps label
 compatible directional ports; directions without evidence supply
 unsupported/failed-port examples. On shared atoms the loss penalizes
 disagreement between the two transported sections.

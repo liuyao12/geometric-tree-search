@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260816-2">
+  <link rel="stylesheet" href="./style.css?v=20260816-3">
   <script type="importmap">
     {
       "imports": {
@@ -241,12 +241,27 @@
             <span id="stageOptionsState" class="option-state">draft</span>
           </div>
 
+          <div id="clusterGeometryOptions" hidden>
+            <label class="field" for="geometryModeSelect">
+              <span>Geometric support <b id="geometryModeHint">infer from positions</b></span>
+              <select id="geometryModeSelect">
+                <option value="auto" selected>Auto · test lattice closure</option>
+                <option value="lattice">Lattice-constrained · periodic translations</option>
+                <option value="offlattice">Off-lattice · observed finite SE(3) atlas</option>
+              </select>
+            </label>
+            <div class="pose-atlas-heading"><span>symmetry-inequivalent poses needed for this cover</span><b id="poseAtlasTotal">—</b></div>
+            <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
+            <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
+          </div>
+
           <div id="markingTrainingOptions">
             <label class="field" for="markingChannelsSelect">
               <span>Marking channels <b id="markingChannelsHint">3 coupled fields</b></span>
               <select id="markingChannelsSelect">
+                <option value="0" selected>Auto · pose/port rank</option>
                 <option value="1">1 · scalar compatibility</option>
-                <option value="3" selected>3 · connection / species / failure</option>
+                <option value="3">3 · connection / species / failure</option>
                 <option value="6">6 · directional multi-channel</option>
                 <option value="12">12 · high-rank local section</option>
               </select>
@@ -514,7 +529,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260816-1"></script>
+  <script type="module" src="./app.js?v=20260816-2"></script>
   <script type="module" src="./evidence-atlas.js?v=20260816-3"></script>
 </body>
 </html>

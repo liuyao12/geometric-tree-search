@@ -28,6 +28,12 @@ const stageOptionsPanel = $("stageOptionsPanel");
 const stageOptionsEyebrow = $("stageOptionsEyebrow");
 const stageOptionsTitle = $("stageOptionsTitle");
 const stageOptionsState = $("stageOptionsState");
+const clusterGeometryOptions = $("clusterGeometryOptions");
+const geometryModeSelect = $("geometryModeSelect");
+const geometryModeHint = $("geometryModeHint");
+const geometryModeNote = $("geometryModeNote");
+const poseAtlasTotal = $("poseAtlasTotal");
+const poseAtlas = $("poseAtlas");
 const markingTrainingOptions = $("markingTrainingOptions");
 const growthSearchOptions = $("growthSearchOptions");
 const markingChannelsSelect = $("markingChannelsSelect");
@@ -352,11 +358,13 @@ let growthStopReason = "";
 let slowFrameSeconds = 0;
 let importedStructure = null;
 let selectedDatabaseElements = ["Na", "Cl"];
-let markingDraft = { channels: 3, reach: 2, representation: "sites" };
+let markingDraft = { channels: 0, reach: 2, representation: "sites" };
 let markingLibrary = [];
 let activeMarkingId = null;
 let hierarchyEnabled = true;
 let nextMarkingId = 1;
+let geometryMode = "auto";
+let orientationAtlas = [];
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -1235,6 +1243,8 @@ function currentCell() {
 }
 
 function currentPbc() {
+  if (geometryMode === "offlattice") return [false, false, false];
+  if (geometryMode === "lattice") return currentCell() ? [true, true, true] : [false, false, false];
   if (currentMaterial().intrinsicDimension === 2) return [false, false, false];
   return scenarioSelect.value === "imported" && importedStructure ? importedStructure.pbc : [true, true, true];
 }
@@ -1442,6 +1452,88 @@ function learnLocalEnvironmentClusters(source) {
   return { labels: labels.map((label) => remap.get(label)), clusters, environments, descriptorLength: dimensions, selectionCurve, selectedK: k };
 }
 
+function directionalPoseDescriptor(shell) {
+  const values = [];
+  currentMaterial().elements.forEach((element) => BALANCE_DIRECTIONS.forEach((axis) => {
+    const value = shell.reduce((sum, neighbor) => {
+      const species = neighbor.atom?.species || neighbor.species;
+      if (species !== element || neighbor.vector.lengthSq() < 1e-12) return sum;
+      const direction = neighbor.vector.clone().normalize();
+      const radial = Math.exp(-(((neighbor.r - 1) / .42) ** 2));
+      return sum + radial * Math.max(0, direction.dot(axis)) ** 6;
+    }, 0);
+    values.push(value);
+  }));
+  const norm = Math.sqrt(values.reduce((sum, value) => sum + value * value, 0)) || 1;
+  return values.map((value) => value / norm);
+}
+
+function orientationDescriptor(environment) {
+  return directionalPoseDescriptor(environment.shell.filter((neighbor) => neighbor.r <= motifShellCutoff()));
+}
+
+function supportOrientationDescriptor(placement) {
+  const center = referenceAtoms[placement.center];
+  return directionalPoseDescriptor(placement.support.filter((index) => index !== placement.center).map((index) => {
+    const vector = periodicDisplacement(center, referenceAtoms[index]);
+    return { species: referenceAtoms[index].species, vector, r: vector.length() / referenceSpacingA };
+  }));
+}
+
+function orientationDistance(first, second) {
+  return Math.sqrt(first.reduce((sum, value, index) => sum + (value - second[index]) ** 2, 0));
+}
+
+function learnOrientationAtlas() {
+  if (!learnedClusters) return [];
+  if (learnedCover?.types) return learnedCover.types.map((cluster, clusterIndex) => {
+    const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type);
+    const representatives = [];
+    const populations = [];
+    placements.forEach((placement) => {
+      const descriptor = supportOrientationDescriptor(placement);
+      let pose = representatives.findIndex((candidate) => orientationDistance(candidate, descriptor) <= .16);
+      if (pose < 0) { pose = representatives.length; representatives.push(descriptor); populations.push(0); }
+      populations[pose]++;
+    });
+    return { cluster: clusterIndex, element: cluster.element, occurrences: placements.length,
+      orientations: representatives.length, populations: populations.sort((first, second) => second - first) };
+  });
+  return learnedClusters.clusters.map((cluster, clusterIndex) => {
+    const occurrences = learnedClusters.labels.map((label, index) => label === clusterIndex ? index : -1)
+      .filter((index) => index >= 0);
+    const representatives = [];
+    const populations = [];
+    occurrences.forEach((index) => {
+      const descriptor = orientationDescriptor(learnedClusters.environments[index]);
+      let pose = representatives.findIndex((candidate) => orientationDistance(candidate, descriptor) <= .16);
+      if (pose < 0) {
+        pose = representatives.length;
+        representatives.push(descriptor);
+        populations.push(0);
+      }
+      populations[pose]++;
+    });
+    return {
+      cluster: clusterIndex,
+      element: cluster.element,
+      occurrences: occurrences.length,
+      orientations: representatives.length,
+      populations: populations.sort((first, second) => second - first),
+    };
+  });
+}
+
+function automaticMarkingChannels() {
+  const maximumPoses = Math.max(1, ...orientationAtlas.map((entry) => entry.orientations));
+  const portRank = overlapGrammar
+    ? Math.max(1, ...learnedClusters.clusters.map((_, cluster) =>
+      new Set(overlapGrammar.rules.filter((rule) => rule.from === cluster).map((rule) => rule.to)).size))
+    : 1;
+  return Math.min(12, Math.max(3,
+    2 + Math.ceil(Math.log2(maximumPoses + 1)) + Math.min(3, Math.ceil(Math.log2(portRank + 1)))));
+}
+
 function buildWaterClusterCover(source) {
   const oxygen = source.map((atom, index) => atom.species === "O" ? index : -1).filter((index) => index >= 0);
   const hydrogen = source.map((atom, index) => atom.species === "H" ? index : -1).filter((index) => index >= 0);
@@ -1582,8 +1674,9 @@ function rebuildClusterGallery() {
     const label = document.createElement("div");
     label.className = "cluster-card-label";
     const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
+    const poses = orientationAtlas.find((entry) => entry.cluster === galleryIndex)?.orientations || 0;
     const name = cluster.label || (cluster.residual ? "gap" : `C${cluster.type + 1}`);
-    label.innerHTML = `<b>${name}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"}</span>`;
+    label.innerHTML = `<b>${name}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${poses || "—"} pose${poses === 1 ? "" : "s"}</span>`;
     card.append(canvas, label);
     clusterGallery.append(card);
   });
@@ -1980,7 +2073,13 @@ function persistMarkingLibrary() {
 }
 
 function currentMarkingConfig() {
-  return { channels: Number(markingDraft.channels), reach: Number(markingDraft.reach), representation: markingDraft.representation };
+  const requestedChannels = Number(markingDraft.channels);
+  return {
+    channels: requestedChannels || automaticMarkingChannels(),
+    channelMode: requestedChannels ? "manual" : "auto",
+    reach: Number(markingDraft.reach),
+    representation: markingDraft.representation,
+  };
 }
 
 function markingMaterialKey() {
@@ -2125,7 +2224,8 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     };
   });
   return { axes, targets, initial, initialPoint, curve, support, channels: config.channels,
-    reach: config.reach, representation: config.representation, overlapWeight, exponent, channelGain,
+    channelMode: config.channelMode || "manual", reach: config.reach,
+    representation: config.representation, overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length };
 }
 
@@ -2700,7 +2800,8 @@ function nearestParent(position) {
 
 function markingName(config, id) {
   const representation = MARKING_REPRESENTATIONS[config.representation]?.short || config.representation;
-  return `M${String(id).padStart(2, "0")} · ${config.channels}ch · R${config.reach} · ${representation}`;
+  const channels = config.channelMode === "auto" ? `auto→${config.channels}ch` : `${config.channels}ch`;
+  return `M${String(id).padStart(2, "0")} · ${channels} · R${config.reach} · ${representation}`;
 }
 
 function compatibleMarkings() {
@@ -2710,10 +2811,13 @@ function compatibleMarkings() {
 
 function freezeCurrentMarking() {
   if (!sectionModel) return null;
-  const config = { channels: sectionModel.channels, reach: sectionModel.reach, representation: sectionModel.representation };
+  const config = { channels: sectionModel.channels, channelMode: sectionModel.channelMode,
+    reach: sectionModel.reach, representation: sectionModel.representation };
   const materialKey = markingMaterialKey();
   let marking = markingLibrary.find((candidate) => candidate.materialKey === materialKey
-    && candidate.config.channels === config.channels && candidate.config.reach === config.reach
+    && candidate.config.channels === config.channels
+    && (candidate.config.channelMode || "manual") === config.channelMode
+    && candidate.config.reach === config.reach
     && candidate.config.representation === config.representation);
   if (!marking) {
     const serial = nextMarkingId++;
@@ -2777,16 +2881,54 @@ function renderMarkingLibrary() {
   markingLibraryCount.textContent = `${compatible.length} saved`;
 }
 
+function renderPoseAtlas() {
+  poseAtlas.replaceChildren();
+  const total = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
+  poseAtlasTotal.textContent = `${total} across ${orientationAtlas.length} types`;
+  orientationAtlas.slice(0, 10).forEach((entry) => {
+    const row = document.createElement("div");
+    row.className = "pose-atlas-row";
+    row.style.setProperty("--pose-color", `#${CLUSTER_COLORS[entry.cluster % CLUSTER_COLORS.length].toString(16).padStart(6, "0")}`);
+    const code = document.createElement("code"); code.textContent = `C${entry.cluster + 1}`;
+    const detail = document.createElement("span");
+    detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · proper-symmetry quotient`;
+    const count = document.createElement("b"); count.textContent = `${entry.orientations} pose${entry.orientations === 1 ? "" : "s"}`;
+    row.append(code, detail, count);
+    poseAtlas.appendChild(row);
+  });
+}
+
 function syncStageOptions() {
-  const visible = pipelineStage === 3 || pipelineStage === 4;
+  const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
+  const clustering = pipelineStage === 1;
   const training = pipelineStage === 3;
+  clusterGeometryOptions.hidden = !clustering;
   markingTrainingOptions.hidden = !training;
-  growthSearchOptions.hidden = training;
-  stageOptionsEyebrow.textContent = training ? "03 · marking experiment" : "04 · search experiment";
-  stageOptionsTitle.textContent = training ? "Train a connection marking" : "Choose the search grammar";
-  markingChannelsHint.textContent = `${markingDraft.channels} coupled field${markingDraft.channels === 1 ? "" : "s"}`;
+  growthSearchOptions.hidden = clustering || training;
+  stageOptionsEyebrow.textContent = clustering ? "02 · geometric hypothesis" : training ? "03 · marking experiment" : "04 · search experiment";
+  stageOptionsTitle.textContent = clustering ? "Learn the pose atlas" : training ? "Train a connection marking" : "Choose the search grammar";
+  if (clustering) {
+    geometryModeSelect.value = geometryMode;
+    const latticeDetected = Boolean(detectedUnitCell);
+    const periodicSupport = currentPbc().some(Boolean);
+    geometryModeHint.textContent = geometryMode === "auto"
+      ? latticeDetected ? "translation closure found" : periodicSupport ? "periodic window; basis unresolved" : "no lattice closure"
+      : geometryMode === "lattice" ? "periodic constraint" : "finite SE(3) atlas";
+    geometryModeNote.textContent = geometryMode === "auto"
+      ? `${latticeDetected ? "A translation basis was inferred" : periodicSupport ? "The input declares a periodic quotient, but the finite sample did not yield a stable basis" : "No stable translation basis was inferred"}; the pose classes still come only from the supplied positions.`
+      : geometryMode === "lattice"
+        ? "Periodic wrapping is applied before clustering; orientations are still quotiented by each cluster's proper symmetry."
+        : "No periodic wrapping is used. Every required symmetry-inequivalent rigid pose must be represented in the finite observed atlas.";
+    renderPoseAtlas();
+    stageOptionsState.textContent = latticeDetected ? "lattice candidate" : periodicSupport ? "periodic quotient" : "off-lattice";
+    return;
+  }
+  const resolvedChannels = sectionModel?.channels || currentMarkingConfig().channels;
+  markingChannelsHint.textContent = markingDraft.channels
+    ? `${markingDraft.channels} coupled field${markingDraft.channels === 1 ? "" : "s"}`
+    : `auto → ${resolvedChannels} from pose/port rank`;
   markingReachHint.textContent = `${markingDraft.reach} shell${markingDraft.reach === 1 ? "" : "s"}`;
   markingRepresentationHint.textContent = MARKING_REPRESENTATIONS[markingDraft.representation].short;
   markingChannelsSelect.value = String(markingDraft.channels);
@@ -2794,12 +2936,14 @@ function syncStageOptions() {
   markingRepresentationSelect.value = markingDraft.representation;
   if (training) {
     const complete = trainingProgress >= referenceCount();
-    const existing = compatibleMarkings().some((marking) => marking.config.channels === markingDraft.channels
-      && marking.config.reach === markingDraft.reach && marking.config.representation === markingDraft.representation);
+    const config = currentMarkingConfig();
+    const existing = compatibleMarkings().some((marking) => marking.config.channels === config.channels
+      && (marking.config.channelMode || "manual") === config.channelMode
+      && marking.config.reach === config.reach && marking.config.representation === config.representation);
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${referenceCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
-    markingConfigNote.textContent = `${sectionModel?.channels || markingDraft.channels} channels · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. The mark records connection compatibility, not physical energy.`;
+    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual)" : " (auto from pose/port rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. Channels transform with the learned pose atlas; they do not enumerate raw frame rotations.`;
   } else {
     renderMarkingLibrary();
     const active = selectedMarking();
@@ -2859,15 +3003,17 @@ function enterPipelineStage(index, options = {}) {
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean));
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
   learnedCover = buildExhaustiveClusterCover(referenceAtoms);
-  detectedUnitCell = inferTranslationCell(referenceAtoms);
+  detectedUnitCell = geometryMode === "offlattice" ? null : inferTranslationCell(referenceAtoms);
   trainedMarking = learnOverlapMarking(referenceAtoms);
   overlapGrammar = learnOverlapGrammar(referenceAtoms);
+  orientationAtlas = learnOrientationAtlas();
   const compatibleActive = markingLibrary.find((marking) => marking.id === activeMarkingId
     && marking.materialKey === markingMaterialKey());
   const growthMarking = compatibleActive || (pipelineStage === 4 ? compatibleMarkings().at(-1) : null);
   if (pipelineStage === 4 && growthMarking) {
     activeMarkingId = growthMarking.id;
-    markingDraft = { ...growthMarking.config };
+    markingDraft = { ...growthMarking.config,
+      channels: growthMarking.config.channelMode === "auto" ? 0 : growthMarking.config.channels };
   }
   sectionModel = learnSectionModel(referenceAtoms, currentMarkingConfig());
   if (pipelineStage !== 3) trainingProgress = referenceCount();
@@ -2932,9 +3078,9 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
-      caption: `${learnedCover.covered}/${referenceCount()} atoms are covered by ${learnedCover.placements.length} overlapping placements on the ${learnedCover.periodic ? "periodic quotient" : "finite window"}. Each card is one isometry class, never a second occurrence.`, badge: "learn",
-      decision: "Exhaustive cluster cover computed", copy: "Element-resolved radial and angular descriptors define approximate isometry classes. A greedy overlap cover is audited atom by atom; any uncovered component is promoted to a residual cluster type.",
-      values: [`${descriptorCutoff().toFixed(2)}a cutoff`, `${learnedClusters?.descriptorLength || 0} features`, `${learnedCover.placements.length} placements`, learnedCover.molecular ? `${learnedCover.molecular.waters} H₂O · ${learnedCover.molecular.bridges} bridges · ${learnedCover.molecular.gaps} gaps` : `${learnedCover.residualTypes.length} residual types`],
+      caption: `${learnedCover.covered}/${referenceCount()} atoms are covered by ${learnedCover.placements.length} overlapping placements on the ${currentPbc().some(Boolean) ? "periodic quotient" : "finite non-periodic window"}. ${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} symmetry-inequivalent cluster poses cover all observed occurrences.`, badge: "learn",
+      decision: "Cluster cover and pose atlas computed", copy: "Element-resolved radial and angular descriptors define approximate isometry classes. Their centered colored point sets are compared in the laboratory frame, automatically quotienting each cluster's proper self-symmetries; uncovered components remain explicit residual types.",
+      values: [`${descriptorCutoff().toFixed(2)}a cutoff`, `${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} pose classes`, `${learnedCover.placements.length} placements`, learnedCover.molecular ? `${learnedCover.molecular.waters} H₂O · ${learnedCover.molecular.bridges} bridges · ${learnedCover.molecular.gaps} gaps` : `${learnedCover.residualTypes.length} residual types`],
     },
     {
       eyebrow: "encoding · clusters of clusters", title: "Promote repeated overlaps into finite connection states", phase: `${overlapGrammar.rules.length} rules`,
@@ -3584,6 +3730,10 @@ loadFixtureButton.addEventListener("click", async () => {
   }
 });
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
+geometryModeSelect.addEventListener("change", () => {
+  geometryMode = geometryModeSelect.value;
+  enterPipelineStage(1);
+});
 markingChannelsSelect.addEventListener("change", () => {
   markingDraft.channels = Number(markingChannelsSelect.value);
   restartMarkingTraining();
@@ -3610,7 +3760,8 @@ markingLibrarySelect.addEventListener("change", () => {
     const marking = markingLibrary.find((candidate) => candidate.id === value);
     if (!marking) return;
     activeMarkingId = marking.id;
-    markingDraft = { ...marking.config };
+    markingDraft = { ...marking.config,
+      channels: marking.config.channelMode === "auto" ? 0 : marking.config.channels };
     policySelect.value = "marked";
     persistMarkingLibrary();
   }
@@ -3618,7 +3769,8 @@ markingLibrarySelect.addEventListener("change", () => {
 });
 trainVariantButton.addEventListener("click", () => {
   const marking = selectedMarking();
-  if (marking) markingDraft = { ...marking.config };
+  if (marking) markingDraft = { ...marking.config,
+    channels: marking.config.channelMode === "auto" ? 0 : marking.config.channels };
   enterPipelineStage(3);
 });
 primitiveGrowthButton.addEventListener("click", () => {

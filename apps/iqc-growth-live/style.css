@@ -276,6 +276,13 @@ body.atlas-open { overflow: hidden; }
 .stage-options-heading strong { display: block; color: #dce7e3; font-size: 11px; font-weight: 500; }
 .option-state { flex: 0 0 auto; padding: 4px 6px; border: 1px solid rgba(181,148,255,.35); color: var(--violet); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 .stage-options .field b { color: var(--mint); font: 7px var(--mono); font-weight: 400; }
+.pose-atlas-heading { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; color: var(--faint); font: 6px var(--mono); text-transform: uppercase; line-height: 1.4; }
+.pose-atlas-heading b { flex: 0 0 auto; color: var(--violet); font-weight: 400; }
+.pose-atlas { display: grid; gap: 4px; margin-top: 6px; }
+.pose-atlas-row { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 6px; min-height: 25px; padding: 0 7px; border-left: 2px solid var(--pose-color); background: rgba(255,255,255,.025); }
+.pose-atlas-row code { color: #cbd8d4; font: 7px var(--mono); }
+.pose-atlas-row span { overflow: hidden; color: #718780; font: 7px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
+.pose-atlas-row b { color: var(--mint); font: 8px var(--mono); font-weight: 400; }
 .option-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6px; margin-top: 11px; }
 .option-actions button, .train-variant { min-height: 31px; padding: 0 8px; border: 1px solid var(--line); background: #0b1a1b; color: var(--muted); font: 8px var(--mono); cursor: pointer; }
 .option-actions button:hover, .train-variant:hover { border-color: rgba(101,225,188,.55); color: var(--mint); }
