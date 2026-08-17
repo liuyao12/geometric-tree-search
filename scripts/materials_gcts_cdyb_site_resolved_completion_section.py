@@ -31,6 +31,7 @@ from materials_gcts_recurrent_macro_executor import ExecutionBoundary
 SEED_RADIUS = 7.
 LAMBDAS = (.01, .1, 1., 10.)
 AGGREGATIONS = ("minimum", "lower-quartile", "mean")
+SITE_ACCEPTANCE_THRESHOLDS = tuple(index / 20 for index in range(1, 20))
 FEATURE_NAMES = (
     "same_species_fraction", "rhs_radial_distance_nn",
     "nearest_seed_distance_nn", "nearest_witness_distance_nn",
@@ -48,6 +49,7 @@ class FrozenSiteSection:
     intercept: float
     ridge_lambda: float
     whole_action_aggregation: str
+    site_acceptance_threshold: float
     target_used: bool
     candidate_id_or_global_coordinate_feature_used: bool
 
@@ -69,8 +71,20 @@ class SiteSectionAudit:
     outer_action_logloss: float
     outer_action_auc: float
     outer_aggregation_by_fold: tuple[str, ...]
+    outer_site_threshold_by_fold: tuple[float, ...]
+    outer_site_precision_by_fold: tuple[float, ...]
+    outer_site_recall_by_fold: tuple[float, ...]
+    outer_site_accepted_by_fold: tuple[int, ...]
+    outer_site_threshold_precision: float
+    outer_site_threshold_recall: float
+    outer_site_threshold_accepted: int
     final_ridge_lambda: float
     final_action_aggregation: str
+    final_site_acceptance_threshold: float
+    final_threshold_oof_precision: float
+    final_threshold_oof_recall: float
+    final_threshold_oof_accepted: int
+    nonempty_95_precision_threshold_found: bool
     null_trials: int
     null_site_auc_median: float
     null_site_auc_best: float
@@ -80,6 +94,9 @@ class SiteSectionAudit:
     action_auc_empirical_p: float
     corpus_digest: str
     frozen_section_digest: str
+    site_corpus_digest: str
+    serialized_frozen_section: str
+    model_manifest_digest: str
     frozen_section: FrozenSiteSection
     all_fit_and_selection_data_from_five_training_windows: bool
     confirmatory_or_prior_eval_nucleus_used: bool
@@ -338,7 +355,7 @@ def _action_rows(rows, scores, aggregation):
                  for _key, values in sorted(grouped.items()))
 
 
-def _select_aggregation(rows, excluded):
+def _inner_site_predictions(rows, excluded):
     discovery = tuple(row for row in rows if row.window != excluded)
     predictions = []
     prediction_rows = []
@@ -353,6 +370,11 @@ def _select_aggregation(rows, excluded):
         model = _fit(fit, ridge)
         predictions.extend(_predict(model, row) for row in validation)
         prediction_rows.extend(validation)
+    return tuple(prediction_rows), tuple(predictions)
+
+
+def _select_aggregation(rows, excluded):
+    prediction_rows, predictions = _inner_site_predictions(rows, excluded)
     choices = []
     for kind in AGGREGATIONS:
         actions = _action_rows(prediction_rows, predictions, kind)
@@ -361,16 +383,43 @@ def _select_aggregation(rows, excluded):
     return min(choices)[1]
 
 
+def _threshold_metrics(labels, scores, threshold):
+    accepted = tuple(index for index, score in enumerate(scores)
+                     if score >= threshold)
+    correct = sum(labels[index] for index in accepted)
+    precision = correct / len(accepted) if accepted else 1.
+    positives = sum(labels)
+    recall = correct / positives if positives else 0.
+    return precision, recall, len(accepted), correct
+
+
+def _select_site_threshold(labels, scores):
+    admitted = []
+    for threshold in SITE_ACCEPTANCE_THRESHOLDS:
+        precision, recall, accepted, correct = _threshold_metrics(
+            labels, scores, threshold)
+        if accepted and precision >= .95:
+            admitted.append((correct, recall, accepted, -threshold,
+                             threshold))
+    # A no-accept threshold is deliberately outside the candidate score range.
+    return max(admitted)[-1] if admitted else 1.
+
+
 def _nested_predictions(rows):
     site_rows = []
     site_scores = []
     aggregations = []
     action_labels = []
     action_scores = []
+    thresholds = []
+    threshold_metrics = []
     for held in range(len(TRAIN_CENTERS)):
         fit = tuple(row for row in rows if row.window != held)
         validation = tuple(row for row in rows if row.window == held)
         aggregation = _select_aggregation(rows, held)
+        inner_rows, inner_scores = _inner_site_predictions(rows, held)
+        threshold = _select_site_threshold(
+            tuple(row.successful for row in inner_rows), inner_scores)
         ridge = _grouped_lambda(rows, held)
         model = _fit(fit, ridge)
         scores = tuple(_predict(model, row) for row in validation)
@@ -380,8 +429,12 @@ def _nested_predictions(rows):
         action_labels.extend(item[0] for item in actions)
         action_scores.extend(item[1] for item in actions)
         aggregations.append(aggregation)
+        thresholds.append(threshold)
+        threshold_metrics.append(_threshold_metrics(
+            tuple(row.successful for row in validation), scores, threshold))
     return (tuple(site_rows), tuple(site_scores), tuple(action_labels),
-            tuple(action_scores), tuple(aggregations))
+            tuple(action_scores), tuple(aggregations), tuple(thresholds),
+            tuple(threshold_metrics))
 
 
 def _shuffle(rows, seed):
@@ -428,20 +481,26 @@ def evaluate():
                 primitive, quotient, parent_map, species, positions,
                 namespaces, patch, center))
     rows = _dedupe(raw)
-    (outer_rows, outer_scores, action_labels, action_scores,
-     aggregations) = _nested_predictions(rows)
+    (outer_rows, outer_scores, action_labels, action_scores, aggregations,
+     thresholds, fold_threshold_metrics) = _nested_predictions(rows)
     final_lambda = _grouped_lambda(rows)
     final_aggregation = _select_aggregation(rows, None)
+    final_oof_rows, final_oof_scores = _inner_site_predictions(rows, None)
+    final_threshold = _select_site_threshold(
+        tuple(row.successful for row in final_oof_rows), final_oof_scores)
+    final_threshold_metrics = _threshold_metrics(
+        tuple(row.successful for row in final_oof_rows), final_oof_scores,
+        final_threshold)
     means, scales, weights, intercept = _fit(rows, final_lambda)
     section = FrozenSiteSection(
         FEATURE_NAMES, means, scales, weights, intercept, final_lambda,
-        final_aggregation, False, False)
+        final_aggregation, final_threshold, False, False)
     null_site_auc = []
     null_action_auc = []
     for trial in range(31):
         shuffled = _shuffle(rows, 441_901 + trial)
-        null_rows, null_scores, null_actions, null_action_scores, _ = \
-            _nested_predictions(shuffled)
+        (null_rows, null_scores, null_actions, null_action_scores, _null_agg,
+         _null_thresholds, _null_metrics) = _nested_predictions(shuffled)
         null_site_auc.append(_auc(
             tuple(row.successful for row in null_rows), null_scores))
         null_action_auc.append(_auc(null_actions, null_action_scores))
@@ -449,27 +508,84 @@ def evaluate():
     action_auc = _auc(action_labels, action_scores)
     corpus_payload = tuple((row.window, row.candidate_id, row.site_key,
                             row.features, row.successful) for row in rows)
+    site_corpus_digest = _digest(corpus_payload)
+    serialized_section = json.dumps(
+        asdict(section), sort_keys=True, separators=(",", ":"),
+        allow_nan=False)
+    manifest_payload = {
+        "schema": "cdyb-site-resolved-section-v1",
+        "site_corpus_digest": site_corpus_digest,
+        "serialized_frozen_section": serialized_section,
+        "threshold_grid": SITE_ACCEPTANCE_THRESHOLDS,
+        "minimum_selection_precision": .95,
+        "grouping": "original-training-window",
+    }
     candidate_count = len({(row.window, row.candidate_id) for row in rows})
     exact_actions = sum(all(item.successful for item in rows
                             if item.window == window and
                             item.candidate_id == candidate)
                         for window, candidate in {
                             (row.window, row.candidate_id) for row in rows})
+    total_threshold_accepted = sum(item[2] for item in fold_threshold_metrics)
+    total_threshold_correct = sum(item[3] for item in fold_threshold_metrics)
     return SiteSectionAudit(
-        len(TRAIN_CENTERS), len(TRAIN_CENTERS) * len(offsets),
-        candidate_count, len(rows), sum(row.successful for row in rows),
-        sum(not row.successful for row in rows), exact_actions,
-        candidate_count - exact_actions, len(FEATURE_NAMES),
-        len(TRAIN_CENTERS),
-        _logloss(tuple(row.successful for row in outer_rows), outer_scores),
-        site_auc, _logloss(action_labels, action_scores), action_auc,
-        aggregations, final_lambda, final_aggregation, 31,
-        sorted(null_site_auc)[15], max(null_site_auc),
-        sorted(null_action_auc)[15], max(null_action_auc),
-        (1 + sum(value >= site_auc for value in null_site_auc)) / 32,
-        (1 + sum(value >= action_auc for value in null_action_auc)) / 32,
-        _digest(corpus_payload), _digest(asdict(section)), section,
-        True, False, False)
+        train_windows=len(TRAIN_CENTERS),
+        shifted_frontiers=len(TRAIN_CENTERS) * len(offsets),
+        frozen_macro_candidates=candidate_count,
+        site_samples=len(rows),
+        supported_sites=sum(row.successful for row in rows),
+        unsupported_sites=sum(not row.successful for row in rows),
+        exact_actions=exact_actions,
+        mixed_or_wrong_actions=candidate_count - exact_actions,
+        feature_count=len(FEATURE_NAMES),
+        grouped_outer_folds=len(TRAIN_CENTERS),
+        outer_site_logloss=_logloss(
+            tuple(row.successful for row in outer_rows), outer_scores),
+        outer_site_auc=site_auc,
+        outer_action_logloss=_logloss(action_labels, action_scores),
+        outer_action_auc=action_auc,
+        outer_aggregation_by_fold=aggregations,
+        outer_site_threshold_by_fold=thresholds,
+        outer_site_precision_by_fold=tuple(item[0] for item in
+                                           fold_threshold_metrics),
+        outer_site_recall_by_fold=tuple(item[1] for item in
+                                        fold_threshold_metrics),
+        outer_site_accepted_by_fold=tuple(item[2] for item in
+                                          fold_threshold_metrics),
+        outer_site_threshold_precision=(
+            total_threshold_correct / total_threshold_accepted
+            if total_threshold_accepted else 1.),
+        outer_site_threshold_recall=(
+            total_threshold_correct / sum(row.successful for row in outer_rows)
+            if outer_rows else 0.),
+        outer_site_threshold_accepted=total_threshold_accepted,
+        final_ridge_lambda=final_lambda,
+        final_action_aggregation=final_aggregation,
+        final_site_acceptance_threshold=final_threshold,
+        final_threshold_oof_precision=final_threshold_metrics[0],
+        final_threshold_oof_recall=final_threshold_metrics[1],
+        final_threshold_oof_accepted=final_threshold_metrics[2],
+        nonempty_95_precision_threshold_found=(
+            final_threshold_metrics[2] > 0 and
+            final_threshold_metrics[0] >= .95),
+        null_trials=31,
+        null_site_auc_median=sorted(null_site_auc)[15],
+        null_site_auc_best=max(null_site_auc),
+        null_action_auc_median=sorted(null_action_auc)[15],
+        null_action_auc_best=max(null_action_auc),
+        site_auc_empirical_p=(
+            1 + sum(value >= site_auc for value in null_site_auc)) / 32,
+        action_auc_empirical_p=(
+            1 + sum(value >= action_auc for value in null_action_auc)) / 32,
+        corpus_digest=site_corpus_digest,
+        frozen_section_digest=_digest(asdict(section)),
+        site_corpus_digest=site_corpus_digest,
+        serialized_frozen_section=serialized_section,
+        model_manifest_digest=_digest(manifest_payload),
+        frozen_section=section,
+        all_fit_and_selection_data_from_five_training_windows=True,
+        confirmatory_or_prior_eval_nucleus_used=False,
+        candidate_geometry_or_ids_changed=False)
 
 
 def main():

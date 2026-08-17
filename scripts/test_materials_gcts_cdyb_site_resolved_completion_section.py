@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import json
+from dataclasses import asdict
+
 from materials_gcts_cdyb_site_resolved_completion_section import (
     aggregate_action_confidence, evaluate, score_site_confidence)
 
@@ -24,10 +27,23 @@ def test_site_resolved_section_is_train_only_and_nested():
     # Site confidence transfers between train windows; the whole-action
     # aggregation is not significant against site-label nulls and remains red.
     assert result.action_auc_empirical_p == .5
+    assert result.outer_site_threshold_by_fold == (1., 1., 1., .65, 1.)
+    assert result.outer_site_accepted_by_fold == (0, 0, 0, 68, 0)
+    assert result.outer_site_threshold_precision < .95
+    assert result.final_site_acceptance_threshold == 1.
+    assert result.final_threshold_oof_precision == 1.
+    assert result.final_threshold_oof_recall == 0.
+    assert result.final_threshold_oof_accepted == 0
+    assert not result.nonempty_95_precision_threshold_found
     assert result.corpus_digest == (
         "8d17c6876984ab0c172779bfed25e11df6bf0adced8a490b7fbb6ea666dbc7c6")
+    assert result.site_corpus_digest == result.corpus_digest
     assert result.frozen_section_digest == (
-        "aaced89da41515194aeda6a058c8e7d49abd63585aa0bacb441e42baf69d2a1f")
+        "e51ea838175a4ab932f5c10188c1f47d68ed2a7951c52b1e9b49f5870e1c0073")
+    assert result.model_manifest_digest == (
+        "0c0993d5920b8901621fc9670bb63b9bac013fc3b275917ebd4f6e800e1c09f6")
+    assert json.loads(result.serialized_frozen_section) == json.loads(
+        json.dumps(asdict(result.frozen_section)))
     assert not result.frozen_section.target_used
     assert not result.frozen_section.candidate_id_or_global_coordinate_feature_used
     assert result.all_fit_and_selection_data_from_five_training_windows

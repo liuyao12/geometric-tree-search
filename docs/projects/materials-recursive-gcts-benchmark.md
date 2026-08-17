@@ -2706,6 +2706,13 @@ and log loss 0.6060. All 31 within-window label shuffles have lower site AUC
 (best 0.6971), for `p = 0.03125`. Minimum aggregation gives action AUC 0.8571,
 but the action null reaches 1.0 and the action-level p-value is 0.50. Thus the
 local section is train-supported at site level, not yet at whole-action level.
+Threshold selection is separately fail-closed: the fixed grid is searched
+inside grouped training folds for a nonempty selection with at least 95%
+precision. Four folds select the no-accept threshold and the remaining fold's
+`0.65` threshold transfers at only 64.71% precision. Across all five windows no
+nonempty threshold passes, so the serialized frozen model uses threshold `1.0`,
+accepts zero sites, and has zero recall. The AUC result is evidence for useful
+ordering, not permission to deploy the rule.
 
 A separate exact-decomposition control tests whether geometry alone should cut
 the action more finely. Port-connected missing children do not split these 14
@@ -2716,12 +2723,17 @@ emitted-site precision from 110 / 148 to 62 / 90 without changing the 8 exact /
 
 The generic executor therefore uses exact port-connected components as the
 atomic commitment boundary, applies the frozen site section within each
-component, accepts a conflict-free high-score subset, and defers the rest.
-Accepted child occurrences feed the next wave; a promoted parent is emitted
-only after every exact frozen child pose exists and all ports are independently
-reverified. Synthetic controls demonstrate selective deferral and later exact
-promotion. NaCl remains exact at 24 / 24 emitted atoms. No new Cd--Yb target is
-used in fitting or these controls.
+component, accepts a conflict-free high-score subset, and records every
+unaccepted obligation as an exact species/position/owner residual. A partial
+site mask never creates an occurrence. A child occurrence becomes admissible
+only after its entire frozen colored support is present; a parent is promoted
+only after every child is complete, every internal and boundary port is
+admitted and independently reverified, and an exact proper-SE(3) prototype fit
+succeeds. Synthetic controls demonstrate partial deferral, later child
+completion, and exact parent promotion. The NaCl two-wave control emits 48 / 48
+correct sites, while making no compression claim. Because the Cd--Yb threshold
+fails closed, this machinery is not yet deployed on a new Cd--Yb target. No new
+Cd--Yb target is used in fitting or these controls.
 
 ### Finite-state substitution cycles
 

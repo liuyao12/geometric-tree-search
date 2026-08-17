@@ -57,7 +57,7 @@ def test_generic_features_exactly_match_train_module():
         FEATURE_NAMES, tuple(index / 10 for index in range(10)),
         tuple(1 + index / 10 for index in range(10)),
         tuple((index - 4) / 20 for index in range(10)),
-        -.2, .1, "lower-quartile", False, False)
+        -.2, .1, "lower-quartile", .5, False, False)
     policy = adapt_frozen_site_section(model)
     train_scores = tuple(score_site_confidence(model, row)
                          for row in feature_rows)
@@ -77,7 +77,7 @@ def test_frozen_site_section_selects_subset_without_changing_enumeration():
         FEATURE_NAMES, (0.,) * len(FEATURE_NAMES),
         (1.,) * len(FEATURE_NAMES),
         (0., 0., -1.) + (0.,) * (len(FEATURE_NAMES) - 3),
-        6., .1, "minimum", False, False)
+        6., .1, "minimum", .5, False, False)
     policy = adapt_frozen_site_section(raw_model)
     baseline = execute_partial_completion_sections(
         level, seed, explicit_seed_sites=seed_prototype.sites,
@@ -103,7 +103,7 @@ def test_tainted_site_section_fails_closed():
     model = FrozenSiteSection(
         FEATURE_NAMES, (0.,) * len(FEATURE_NAMES),
         (1.,) * len(FEATURE_NAMES), (0.,) * len(FEATURE_NAMES),
-        0., .1, "mean", True, False)
+        0., .1, "mean", .5, True, False)
     try:
         adapt_frozen_site_section(model)
     except ValueError:

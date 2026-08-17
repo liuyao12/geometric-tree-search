@@ -875,12 +875,19 @@ five training windows, 28 fixed macro candidates provide 360 emitted-site
 examples: 250 supported and 110 unsupported. A ten-feature local proper-SE(3)
 section reaches grouped site AUC 0.7455; every one of 31 within-window label
 shuffles is lower (`p = 0.03125`). Whole-action aggregation remains red
-(`p = 0.50`). A structural atomic peel is also rejected: it preserves the
+(`p = 0.50`). This ranking signal is not enough to authorize growth: no
+nonempty site threshold reaches 95% precision under grouped validation. The
+frozen threshold is therefore `1.0`, accepts zero sites, and fails closed. A
+structural atomic peel is also rejected: it preserves the
 complete cover through explicit residual subclusters but lowers train precision
 from 110 / 148 to 62 / 90. The generic executor therefore keeps exact
 port-connected components, scores their sites, accepts compatible high-score
-sections, defers the rest, and promotes only after the complete frozen RHS is
-present.
+sections, and keeps every deferred obligation as an exact residual terminal.
+A partial mask never becomes a cluster occurrence; a child appears only after
+its full colored support is present, and a parent appears only after all
+children and frozen ports are independently reverified. Synthetic controls and
+the NaCl control pass (48 / 48 emitted sites correct), but Cd--Yb deployment is
+disabled until train-only high-precision calibration succeeds.
 
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and

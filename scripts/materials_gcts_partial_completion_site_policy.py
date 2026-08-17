@@ -26,6 +26,7 @@ class FrozenLocalSiteSectionPolicy:
     weights: tuple[float, ...]
     intercept: float
     aggregation: str
+    site_acceptance_threshold: float
     target_used: bool = False
     candidate_id_or_global_coordinate_feature_used: bool = False
 
@@ -55,12 +56,15 @@ def adapt_frozen_site_section(model) -> FrozenLocalSiteSectionPolicy:
     aggregation = model.whole_action_aggregation
     if aggregation not in SITE_SECTION_AGGREGATIONS:
         raise ValueError("site section has unknown frozen aggregation")
+    threshold = float(model.site_acceptance_threshold)
+    if not 0 <= threshold <= 1 or not math.isfinite(threshold):
+        raise ValueError("site section has invalid frozen site threshold")
     values = (*vectors[0], *vectors[1], *vectors[2], float(model.intercept))
     if any(not math.isfinite(value) for value in values):
         raise ValueError("site section contains nonfinite parameters")
     return FrozenLocalSiteSectionPolicy(
         names, vectors[0], vectors[1], vectors[2], float(model.intercept),
-        aggregation, False, False)
+        aggregation, threshold, False, False)
 
 
 def _add(left, right):
