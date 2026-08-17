@@ -247,10 +247,11 @@
               <select id="geometryModeSelect">
                 <option value="auto" selected>Auto · test lattice closure</option>
                 <option value="lattice">Lattice-constrained · periodic translations</option>
-                <option value="offlattice">Off-lattice · observed finite SE(3) atlas</option>
+                <option value="module">Aperiodic module · discrete non-periodic support</option>
+                <option value="offlattice">Free SE(3) · unrestricted off-lattice support</option>
               </select>
             </label>
-            <div class="pose-atlas-heading"><span>symmetry-inequivalent poses needed for this cover</span><b id="poseAtlasTotal">—</b></div>
+            <div class="pose-atlas-heading"><span>pose atlas and suggested marking rank</span><b id="poseAtlasTotal">—</b></div>
             <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
             <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
           </div>

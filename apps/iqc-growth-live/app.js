@@ -1243,7 +1243,7 @@ function currentCell() {
 }
 
 function currentPbc() {
-  if (geometryMode === "offlattice") return [false, false, false];
+  if (geometryMode === "module" || geometryMode === "offlattice") return [false, false, false];
   if (geometryMode === "lattice") return currentCell() ? [true, true, true] : [false, false, false];
   if (currentMaterial().intrinsicDimension === 2) return [false, false, false];
   return scenarioSelect.value === "imported" && importedStructure ? importedStructure.pbc : [true, true, true];
@@ -1525,13 +1525,23 @@ function learnOrientationAtlas() {
 }
 
 function automaticMarkingChannels() {
-  const maximumPoses = Math.max(1, ...orientationAtlas.map((entry) => entry.orientations));
-  const portRank = overlapGrammar
-    ? Math.max(1, ...learnedClusters.clusters.map((_, cluster) =>
-      new Set(overlapGrammar.rules.filter((rule) => rule.from === cluster).map((rule) => rule.to)).size))
-    : 1;
-  return Math.min(12, Math.max(3,
-    2 + Math.ceil(Math.log2(maximumPoses + 1)) + Math.min(3, Math.ceil(Math.log2(portRank + 1)))));
+  return Math.max(3, ...orientationAtlas.map((entry) => recommendedChannelsForCluster(entry.cluster, entry.orientations)));
+}
+
+function clusterPortRank(cluster) {
+  if (!overlapGrammar) return 1;
+  return Math.max(1, new Set(overlapGrammar.rules
+    .filter((rule) => rule.from === cluster)
+    .map((rule) => `${rule.to}:${Math.round((rule.meanShared || 0) * 2)}`)).size);
+}
+
+function recommendedChannelsForCluster(cluster, poses) {
+  const portRank = clusterPortRank(cluster);
+  // The fields form a symmetry-aware local basis; they are not one-hot pose
+  // labels. Pose and port orbit complexity therefore enter logarithmically.
+  return Math.min(12, Math.max(3, 2
+    + Math.ceil(Math.log2(Math.max(1, poses) + 1))
+    + Math.min(3, Math.ceil(Math.log2(portRank + 1)))));
 }
 
 function buildWaterClusterCover(source) {
@@ -2884,15 +2894,18 @@ function renderMarkingLibrary() {
 function renderPoseAtlas() {
   poseAtlas.replaceChildren();
   const total = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
-  poseAtlasTotal.textContent = `${total} across ${orientationAtlas.length} types`;
+  poseAtlasTotal.textContent = `${total} poses · auto ${automaticMarkingChannels()}ch`;
   orientationAtlas.slice(0, 10).forEach((entry) => {
     const row = document.createElement("div");
     row.className = "pose-atlas-row";
     row.style.setProperty("--pose-color", `#${CLUSTER_COLORS[entry.cluster % CLUSTER_COLORS.length].toString(16).padStart(6, "0")}`);
     const code = document.createElement("code"); code.textContent = `C${entry.cluster + 1}`;
     const detail = document.createElement("span");
-    detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · proper-symmetry quotient`;
-    const count = document.createElement("b"); count.textContent = `${entry.orientations} pose${entry.orientations === 1 ? "" : "s"}`;
+    const portRank = clusterPortRank(entry.cluster);
+    const channels = recommendedChannelsForCluster(entry.cluster, entry.orientations);
+    detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · ${portRank} outgoing port role${portRank === 1 ? "" : "s"}`;
+    const count = document.createElement("b");
+    count.textContent = `${entry.orientations} pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`;
     row.append(code, detail, count);
     poseAtlas.appendChild(row);
   });
@@ -2915,14 +2928,19 @@ function syncStageOptions() {
     const periodicSupport = currentPbc().some(Boolean);
     geometryModeHint.textContent = geometryMode === "auto"
       ? latticeDetected ? "translation closure found" : periodicSupport ? "periodic window; basis unresolved" : "no lattice closure"
-      : geometryMode === "lattice" ? "periodic constraint" : "finite SE(3) atlas";
+      : geometryMode === "lattice" ? "periodic constraint"
+        : geometryMode === "module" ? "finite-rank aperiodic hypothesis" : "continuous placement hypothesis";
     geometryModeNote.textContent = geometryMode === "auto"
       ? `${latticeDetected ? "A translation basis was inferred" : periodicSupport ? "The input declares a periodic quotient, but the finite sample did not yield a stable basis" : "No stable translation basis was inferred"}; the pose classes still come only from the supplied positions.`
       : geometryMode === "lattice"
         ? "Periodic wrapping is applied before clustering; orientations are still quotiented by each cluster's proper symmetry."
-        : "No periodic wrapping is used. Every required symmetry-inequivalent rigid pose must be represented in the finite observed atlas.";
+        : geometryMode === "module"
+          ? "No unit cell or periodic wrapping is assumed. Connections are learned from a discrete, finitely generated aperiodic pose/translation atlas—the natural hypothesis for model sets and quasicrystals."
+          : "No discrete translation support is assumed. Every observed proper-SE(3) pose and connection must be learned from local geometry.";
     renderPoseAtlas();
-    stageOptionsState.textContent = latticeDetected ? "lattice candidate" : periodicSupport ? "periodic quotient" : "off-lattice";
+    stageOptionsState.textContent = geometryMode === "module" ? "aperiodic module"
+      : geometryMode === "offlattice" ? "free SE(3)"
+        : latticeDetected ? "lattice candidate" : periodicSupport ? "periodic quotient" : "off-lattice";
     return;
   }
   const resolvedChannels = sectionModel?.channels || currentMarkingConfig().channels;
@@ -3003,7 +3021,7 @@ function enterPipelineStage(index, options = {}) {
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean));
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
   learnedCover = buildExhaustiveClusterCover(referenceAtoms);
-  detectedUnitCell = geometryMode === "offlattice" ? null : inferTranslationCell(referenceAtoms);
+  detectedUnitCell = geometryMode === "module" || geometryMode === "offlattice" ? null : inferTranslationCell(referenceAtoms);
   trainedMarking = learnOverlapMarking(referenceAtoms);
   overlapGrammar = learnOverlapGrammar(referenceAtoms);
   orientationAtlas = learnOrientationAtlas();

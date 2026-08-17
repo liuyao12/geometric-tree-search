@@ -29,9 +29,11 @@ encodings, not electron densities or physical potentials.
 
 The cluster stage exposes the geometric hypothesis explicitly. **Auto** tests
 translation closure from the positions, **lattice-constrained** applies periodic
-translations, and **off-lattice** learns a finite observed `SE(3)` pose atlas
-without periodic wrapping. This setting changes the displacement geometry used
-by descriptors and the complete cover; it is not a preassigned crystal or
+translations, **aperiodic module** assumes a discrete but non-periodic
+pose/translation atlas (the natural model-set or quasicrystal hypothesis), and
+**free SE(3)** makes no discrete translation assumption. The latter two apply no
+periodic wrapping. This setting changes the displacement geometry used by
+descriptors and the complete cover; it is not a preassigned crystal or
 quasicrystal label.
 
 For every atom the browser builds a periodic, rotation-invariant descriptor
@@ -58,6 +60,15 @@ self-symmetries of a cluster therefore collapse automatically: the Na and Cl
 octahedra in periodic rocksalt each require one physical pose, even though one
 may write many equivalent local frames for an octahedron. Removing periodic
 wrapping exposes boundary environment types and their larger finite pose atlas.
+
+The pose atlas is learned before the GCTS marking. Each cluster card reports
+its observed symmetry-inequivalent pose count, outgoing connection-port rank,
+and an automatic channel recommendation. The recommendation grows
+logarithmically with pose and port-orbit complexity. It is deliberately not one
+channel per rotation: proper-symmetry-equivalent frames share equivariant
+fields, while chemistry, successful connection, and failure information can
+require more than one field even when a cluster has only one physical pose.
+The marking stage retains a manual override for controlled ablations.
 
 ## Finite rigid overlap grammar
 
