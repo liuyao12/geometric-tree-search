@@ -6,7 +6,7 @@ from collections import Counter
 from materials_gcts_incidence_token_marking import (
     CandidateIncidenceDescriptor, IncidenceTokenExample,
     candidate_incidence_descriptors, fit_incidence_token_marking,
-    score_incidence_descriptor)
+    score_incidence_descriptor, score_incidence_descriptor_by_channel)
 from materials_gcts_recursive_connections import (
     LocalClusterType, MarkedProposalResult, RecursiveConnectionState)
 
@@ -24,15 +24,15 @@ def _proposals(reverse=False, transform=lambda point: point):
     states = {point: Counter({left: 2, right: 1}) for point in points}
     colors = {point: Counter({"A": 2}) for point in points}
     targets = {point: Counter({"B": 2}) for point in points}
-    parents = {point: Counter({index: 2})
-               for index, point in enumerate(points)}
+    parents = {point: Counter({canonical_points.index(point): 2})
+               for point in points}
     return MarkedProposalResult(
         votes, 0, None, colors, targets, states, parents)
 
 
 def test_descriptor_is_permutation_translation_rotation_invariant():
-    occupied = ((-.5, 0., 0.), (0., -.5, 0.))
-    species = ("A", "B")
+    occupied = ((-.5, 0., 0.), (0., -.5, 0.), (.5, .5, 0.))
+    species = ("A", "B", "A")
     first = candidate_incidence_descriptors(
         _proposals(), distance_scale=1., occupied_positions=occupied,
         occupied_species=species)
@@ -65,9 +65,31 @@ def test_train_only_tokens_rank_supported_context():
                for token in marker.token_weights)
 
 
+def test_channel_projection_counts_each_family_once():
+    positive = CandidateIncidenceDescriptor((('role', 'good'),))
+    negative = CandidateIncidenceDescriptor((('role', 'bad'),))
+    examples = tuple(
+        IncidenceTokenExample(group, positive, True)
+        for group in ("a", "b", "c") for _ in range(3)) + tuple(
+        IncidenceTokenExample(group, negative, False)
+        for group in ("a", "b", "c") for _ in range(3))
+    marker = fit_incidence_token_marking(
+        examples, minimum_support=2, minimum_groups=2)
+    repeated_family = CandidateIncidenceDescriptor((
+        ('role', 'good'), ('role', 'bad')))
+    mean_weight = .5 * (
+        marker.token_weights[('role', 'good')] +
+        marker.token_weights[('role', 'bad')])
+    expected = 1 / (1 + __import__('math').exp(-(
+        marker.intercept + mean_weight)))
+    assert abs(score_incidence_descriptor_by_channel(
+        marker, repeated_family) - expected) < 1e-12
+
+
 def main():
     test_descriptor_is_permutation_translation_rotation_invariant()
     test_train_only_tokens_rank_supported_context()
+    test_channel_projection_counts_each_family_once()
     print("incidence token marking tests passed")
 
 

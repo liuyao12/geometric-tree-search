@@ -1735,8 +1735,12 @@ function rebuildClusterGallery() {
     label.className = "cluster-card-label";
     const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
     const poses = orientationAtlas.find((entry) => entry.cluster === galleryIndex)?.orientations || 0;
+    const channels = cluster.residual ? 0 : recommendedChannelsForCluster(galleryIndex);
     const name = cluster.label || (cluster.residual ? "gap" : `C${cluster.type + 1}`);
-    label.innerHTML = `<b>${name}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${poses || "—"} pose${poses === 1 ? "" : "s"}</span>`;
+    const learnedDegrees = cluster.residual
+      ? "explicit residual"
+      : `${poses || "—"} pose orbit${poses === 1 ? "" : "s"} · ${channels}ch`;
+    label.innerHTML = `<b>${name}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span>`;
     card.append(canvas, label);
     clusterGallery.append(card);
   });

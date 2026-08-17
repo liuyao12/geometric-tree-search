@@ -213,3 +213,30 @@ def score_incidence_descriptor(
         return 1. / (1. + inverse)
     exponential = math.exp(max(value, -50.))
     return exponential / (1. + exponential)
+
+
+def score_incidence_descriptor_by_channel(
+        marking: FrozenIncidenceTokenMarking,
+        descriptor: CandidateIncidenceDescriptor) -> float:
+    """Score a low-rank projection with one vote per token family.
+
+    A family is the first field of a descriptor token (for example ``role``,
+    ``neighbor-role``, or ``occupied-metric-edge``). Averaging within a family
+    prevents a large rotation/edge orbit from receiving extra weight merely
+    because it has more discrete representatives. Exact candidate geometry
+    and train-frozen token evidence are unchanged.
+    """
+    families = defaultdict(list)
+    for token in descriptor.tokens:
+        if token not in marking.token_weights:
+            continue
+        family = token[0] if isinstance(token, tuple) and token else token
+        families[family].append(marking.token_weights[token])
+    values = tuple(sum(rows) / len(rows) for rows in families.values())
+    value = marking.intercept + (sum(values) / math.sqrt(len(values))
+                                 if values else 0.)
+    if value >= 0:
+        inverse = math.exp(-min(value, 50.))
+        return 1. / (1. + inverse)
+    exponential = math.exp(max(value, -50.))
+    return exponential / (1. + exponential)

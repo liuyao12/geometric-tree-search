@@ -261,7 +261,7 @@
             <div class="pose-atlas-heading"><span>symmetry-quotiented pose × connection atlas</span><b id="poseAtlasTotal">—</b></div>
             <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
             <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
-            <p class="rank-note"><b>Auto channels are derived after clustering.</b> Two compatibility / failure fields are augmented by the observed pose × port incidence rank (capped at 12). Symmetry-equivalent rotations share an orbit; repeated copies do not consume extra channels.</p>
+            <p class="rank-note"><b>Auto channels are derived after clustering, per cluster.</b> Raw orientations are first quotiented by the cluster's proper rotational symmetry. Two compatibility / failure fields are then augmented by the observed pose-orbit × connection-port incidence rank (capped at 12). Repeated copies and symmetry-equivalent rotations do not consume extra channels.</p>
           </div>
 
           <div id="markingTrainingOptions">
