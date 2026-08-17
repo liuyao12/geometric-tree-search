@@ -39,6 +39,7 @@ class SelfFedSectionConfirmation:
     confirmation_center: tuple[float, float, float]
     base_model_digest: str
     base_model_matches_published: bool
+    descriptor_version: str
     self_fed_model_digest: str
     teacher_forced_nuclei: int
     teacher_first_exact_ranks: tuple[int, ...]
@@ -83,9 +84,9 @@ def _band_truth(proposals, band, target):
     return correct, len(band) - correct
 
 
-def fit_self_fed_section():
+def fit_self_fed_section(descriptor_version="radial-v1"):
     (prototypes, connection, seeds, targets, base_marker, base_refinement,
-     _folds) = fit_continuous_section()
+     _folds) = fit_continuous_section(descriptor_version)
     states = []
     ranks = []
     for center, seed, target in zip(
@@ -130,7 +131,8 @@ def fit_self_fed_section():
         for proposals, positions, colors, target in states)
     if len(examples) < 2:
         raise ValueError("self-fed section needs multiple training nuclei")
-    marker = fit_frontier_attachment_marker_examples(examples)
+    marker = fit_frontier_attachment_marker_examples(
+        examples, descriptor_version=descriptor_version)
     augmented_examples = []
     for proposals, positions, colors, target in states:
         scores = score_frontier_attachments(
@@ -146,21 +148,24 @@ def fit_self_fed_section():
             proposals, tuple(augmented[0]), tuple(augmented[1]),
             tuple(target.positions), tuple(target.species)))
     refinement = fit_frontier_attachment_marker_examples(
-        tuple(augmented_examples))
+        tuple(augmented_examples), descriptor_version=descriptor_version)
     return (prototypes, connection, seeds, targets, base_marker,
             base_refinement, marker, refinement, tuple(ranks))
 
 
-def evaluate():
+def evaluate(*, confirmation_center=CONFIRMATION_CENTER,
+             descriptor_version="radial-v1", prior_confirmation_centers=()):
+    confirmation_center = tuple(float(value) for value in confirmation_center)
     (prototypes, connection, seeds, targets, base_marker, base_refinement,
-     self_marker, self_refinement, teacher_ranks) = fit_self_fed_section()
+     self_marker, self_refinement, teacher_ranks) = fit_self_fed_section(
+         descriptor_version)
     base_digest = hashlib.sha256(
         repr((base_marker, base_refinement)).encode()).hexdigest()
     self_digest = hashlib.sha256(
         repr((self_marker, self_refinement)).encode()).hexdigest()
-    seed = _seed_crop(CONFIRMATION_CENTER)
+    seed = _seed_crop(confirmation_center)
     proposals = _bounded_proposals(
-        connection, prototypes, seed, CONFIRMATION_CENTER)
+        connection, prototypes, seed, confirmation_center)
     learned_factor = sum(len(target.positions) / len(seed_.positions)
                          for seed_, target in zip(seeds, targets)) / len(seeds)
     pool = min(len(proposals.votes), 2 * max(
@@ -170,7 +175,7 @@ def evaluate():
     result = run_persistent_frontier_beam(
         base_marker, base_refinement, connection, proposals,
         seed.positions, seed.species, CLUSTER_EDGES, pool,
-        CONFIRMATION_CENTER, EVALUATION_TARGET_RADIUS, waves=WAVES,
+        confirmation_center, EVALUATION_TARGET_RADIUS, waves=WAVES,
         beam_width=BEAM_WIDTH, branching_width=CHANNEL_REACH,
         lookahead_depth=LOOKAHEAD_DEPTH, root_rank_values=rank_values,
         candidate_snapshot_width=CHANNEL_REACH,
@@ -180,7 +185,7 @@ def evaluate():
         repr((base_digest, self_digest, result)).encode()).hexdigest()
 
     # First construction of this outer target follows both frozen decisions.
-    target = _open_target(CONFIRMATION_CENTER)
+    target = _open_target(confirmation_center)
     scored = score_regenerative_growth(
         result.records, result.traces, seed.positions,
         target.positions, target.species)
@@ -196,8 +201,9 @@ def evaluate():
             decision.first_candidate_ranks, truth)
             if total and correct == total), None))
     prior = COMPLETED_TRAINING_CENTERS + (
-        FIRST_CONTINUOUS_CENTER, FAILED_MULTISTEP_CENTER)
-    minimum = min(math.dist(CONFIRMATION_CENTER, center) for center in prior)
+        FIRST_CONTINUOUS_CENTER, FAILED_MULTISTEP_CENTER) + tuple(
+            prior_confirmation_centers)
+    minimum = min(math.dist(confirmation_center, center) for center in prior)
     required = 2. * EVALUATION_TARGET_RADIUS
     correct_by_wave = tuple(row.true_sites for row in scored)
     false_by_wave = tuple(row.false_sites for row in scored)
@@ -213,10 +219,10 @@ def evaluate():
         all(decision.selected_path_ranks[0] == rank
             for decision, rank in zip(result.decisions, exact_ranks)))
     return SelfFedSectionConfirmation(
-        COMPLETED_TRAINING_CENTERS, CONFIRMATION_CENTER,
-        base_digest, base_digest ==
+        COMPLETED_TRAINING_CENTERS, confirmation_center,
+        base_digest, descriptor_version == "radial-v1" and base_digest ==
         "bb891f2c5055afe529c77c2834632c4df654bb2c9c944b1a4ae888535d980697",
-        self_digest, len(teacher_ranks), teacher_ranks,
+        descriptor_version, self_digest, len(teacher_ranks), teacher_ranks,
         self_marker.training_examples, self_marker.training_positives,
         CHANNEL_REACH, BEAM_WIDTH, LOOKAHEAD_DEPTH, minimum, required,
         minimum > required, len(seed.positions), len(target.positions),

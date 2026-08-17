@@ -890,6 +890,24 @@ descriptor is radial/color/vote based and does not continuously encode the
 parent/source port-state distribution; that missing connection geometry is the
 next justified feature, not more rank channels.
 
+Adding that feature closes the two-wave gate on a new nucleus. The
+`port-state-v2` descriptor augments the bounded radial section with continuous
+invariants of its exact connection evidence: separation-bin moments,
+parent/source neighborhood sizes, same-color and same-shape fractions,
+state/parent diversity and purity, and color entropy. It contains no type ID,
+coordinate, global axis, phase label, or target atom. All nine training nuclei
+now provide a teacher-forced post-commit state, yielding 50,065 examples with
+3,677 exact colored positives.
+
+Both marking artifacts are frozen before the new disjoint centre
+`(0, -50, 0)` is opened. The twelve-band, width-four, depth-three search ranks
+the exact action first at both waves, selects paths `1 -> 6 -> 8` and
+`1 -> 7 -> 6`, and emits 4 / 4 then 4 / 4 exact colored sites. The 8 / 8 result
+has zero false sites and no ordinal rank state. This is a green spatial
+confirmation of a self-fed continuous GCTS connection section. Wave size is
+still four and no promoted stationary production or amplification is present,
+so the generic exponential IQC gate remains red.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

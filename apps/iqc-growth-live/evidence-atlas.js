@@ -27,7 +27,7 @@ const SYSTEMS = {
     verdict: ["open", "Finite exact growth passes · generic stationary/exponential rule remains open"],
     evidence: [
       ["Generic VM", "31,521 exact sites", "One relational evaluator; no material-family dispatch."],
-      ["Continuous section", "4 / 4 first wave · 0 / 4 second", "A post-commit refit also fails; continuous port-state geometry is the missing feature."],
+      ["Continuous section", "4 / 4 + 4 / 4 fresh", "Continuous port-state invariants rank both self-fed colored actions first."],
       ["Clusters²", "6 positive quotient levels", "History-free re-clustering improves proof depth."],
       ["Frontier states", "336 / 368 sites", "Four heterogeneous multi-child rules are real, but no closed state matrix repeats across transitions."],
       ["Strict audit", "0 common three-level keys", "Topology, chemistry, chirality, ports, pose, and populations stay exact."],
@@ -92,7 +92,7 @@ const TIMELINE = [
   ["08", "History-free hierarchy", "Re-clustering generated deeper IQC and nine-level Cd–Yb compression without encoding action order as geometry.", "progress"],
   ["09", "Site-resolved completion", "Partial macro sites now remain explicit obligations; no child or parent exists until its full colored support and ports verify.", "proved"],
   ["10", "Vector frontier substitutions", "Global one-owner matching learns and executes A→AB, B→A with spectral growth φ; the real IQC still has no closed recurrent matrix.", "progress"],
-  ["11", "Continuous spatial section", "A species-aware local section ranks a fresh four-site IQC action first. A 44,439-example self-fed refit still misranks the second wave, isolating missing continuous port-state geometry.", "progress"],
+  ["11", "Continuous port-state section", "Adding invariant parent/source connection statistics makes both fresh self-fed actions rank first: 4 / 4 plus 4 / 4 exact colored sites.", "proved"],
   ["12", "Open frontier", "Carry the continuous section through sustained promoted growth, then learn a finite oriented production whose scale and unique support amplify without a family-specific backend.", "open"],
 ];
 
@@ -107,7 +107,7 @@ const CLAIMS = [
   ["progress", "Deep QC compression", "Ideal IQC reaches six positive quotient levels; Cd–Yb reaches nine on five disjoint training windows."],
   ["progress", "Frozen hierarchy transfer", "IQC primitive cover transfers completely and Cd–Yb promoted vocabularies re-encode four held-out levels, with dormant symbols explicit."],
   ["progress", "Site-resolved marking", "A 1,245-site train corpus gives site AUC 0.8864 and action AUC 1.0, both significant against 31 shuffles."],
-  ["progress", "Continuous IQC section", "First-wave transfer is 4 / 4; a self-fed 44,439-example refit is still 0 / 4 at wave two, with exact geometry available at rank four."],
+  ["proved", "Continuous IQC section", "A 50,065-example post-commit port-state section transfers for two fresh self-fed waves, emitting 8 / 8 exact colored sites."],
   ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC sites; four rules are heterogeneous, but no closed state matrix recurs across transitions."],
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],

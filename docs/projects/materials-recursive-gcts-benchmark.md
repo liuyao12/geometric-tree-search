@@ -1972,6 +1972,25 @@ radial/color/vote statistics but not a continuous summary of the actual
 parent/source port states. That symmetry-invariant connection distribution is
 the next representation change to test.
 
+That representation change succeeds. `port-state-v2` adds only continuous,
+rigid-motion-invariant summaries of the already frozen connection evidence:
+weighted separation-bin moments, parent/source neighborhood sizes,
+same-color/same-shape fractions, state and parent diversity/purity, and source
+and target color entropy. It contains no raw type identifier, Cartesian
+position, global direction, nucleus ID, phase label, or heldout atom. Exact
+proper-SE(3) ports, species votes, and collision checks remain unchanged.
+
+All nine training nuclei now supply an exact teacher-forced first action. Their
+post-commit corpus has 50,065 candidates and 3,677 exact colored positives.
+The seed and self-fed model digests are respectively `d489513f...eecbb5` and
+`0629b18e...dfe0b`. Both freeze before the outer target about `(0, -50, 0)` is
+constructed. The unchanged twelve-band, width-four, depth-three executor ranks
+the exact action first on both frontiers, selects `1 / 6 / 8` then `1 / 7 / 6`,
+and emits 4 / 4 plus 4 / 4 exact colored sites. The two-wave spatial gate is
+green with no ordinal carried state. This proves self-fed finite marking
+transfer; four-site wave size, no promoted recurring rule, and no amplification
+leave stationary and exponential IQC growth red.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

@@ -100,6 +100,18 @@ class FrontierAttachmentTest(unittest.TestCase):
             self.assertEqual(len(left), len(right))
             for first, second in zip(left, right):
                 self.assertAlmostEqual(first, second, places=5)
+        original_ports = describe_frontier_attachments(
+            proposals, known, known_colors, (1.4, 2.1, 3.0),
+            descriptor_version="port-state-v2")
+        transformed_ports = describe_frontier_attachments(
+            moved, tuple(map(transform, known)), known_colors,
+            (1.4, 2.1, 3.0), descriptor_version="port-state-v2")
+        self.assertGreater(len(next(iter(original_ports.values()))),
+                           len(next(iter(original.values()))))
+        for left, right in zip(sorted(original_ports.values()),
+                               sorted(transformed_ports.values())):
+            for first, second in zip(left, right):
+                self.assertAlmostEqual(first, second, places=5)
 
     def test_iterated_maximum_plateaus_are_exact_macro_moves(self):
         result = evaluate()

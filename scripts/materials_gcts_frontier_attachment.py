@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import math
 from collections import Counter, defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, Hashable, Iterable, List, Sequence, Tuple
 
 from materials_gcts_recursive_connections import MarkedProposalResult, Point, point_key
@@ -29,6 +29,7 @@ class FrontierAttachmentMarker:
     bias: float
     training_examples: int
     training_positives: int
+    descriptor_version: str = field(default="radial-v1", repr=False)
 
 
 @dataclass(frozen=True)
@@ -67,9 +68,12 @@ def _nearby_cells(key: Tuple[int, int, int]):
 def describe_frontier_attachments(
         proposals: MarkedProposalResult, known_positions: Sequence[Point],
         known_colors: Sequence[Hashable], radial_edges: Sequence[float],
-        color_keys: Sequence[str] | None = None) -> Dict[Point, Descriptor]:
+        color_keys: Sequence[str] | None = None,
+        descriptor_version: str = "radial-v1") -> Dict[Point, Descriptor]:
     if len(known_positions) != len(known_colors) or not known_positions:
         raise ValueError("known positions and colors must be nonempty and aligned")
+    if descriptor_version not in ("radial-v1", "port-state-v2"):
+        raise ValueError("unknown frontier descriptor version")
     edges = tuple(float(edge) for edge in radial_edges)
     if not proposals.votes or not edges or any(
             left >= right for left, right in zip(edges, edges[1:])):
@@ -108,6 +112,61 @@ def describe_frontier_attachments(
                 for distance, neighbor_color in neighbors))
                 for edge in edges)
         descriptor.extend((separations + [edges[-1] + 1.0] * 6)[:6])
+        if descriptor_version == "port-state-v2":
+            states = proposals.state_votes.get(candidate, Counter())
+            total = sum(states.values())
+            probabilities = tuple(count / total for count in states.values()) \
+                if total else ()
+
+            def weighted(values):
+                if not total:
+                    return 0., 0., 0., 0.
+                mean = sum(value * count for value, count in values) / total
+                variance = sum(count * (value - mean) ** 2
+                               for value, count in values) / total
+                expanded = tuple(value for value, _count in values)
+                return mean, math.sqrt(variance), min(expanded), max(expanded)
+
+            separation = weighted(tuple(
+                (float(state.normalized_separation_bin), count)
+                for state, count in states.items()))
+            parent_size = weighted(tuple((float(
+                state.parent_type.cumulative_neighbor_counts[-1]
+                if state.parent_type.cumulative_neighbor_counts else 0), count)
+                for state, count in states.items()))
+            source_size = weighted(tuple((float(
+                state.source_type.cumulative_neighbor_counts[-1]
+                if state.source_type.cumulative_neighbor_counts else 0), count)
+                for state, count in states.items()))
+            same_color = sum(count for state, count in states.items()
+                             if state.parent_type.color_key ==
+                             state.source_type.color_key) / max(1, total)
+            same_shape = sum(count for state, count in states.items()
+                             if state.parent_type.cumulative_neighbor_counts ==
+                             state.source_type.cumulative_neighbor_counts) / \
+                max(1, total)
+            parents = proposals.parent_votes.get(candidate, Counter())
+            parent_total = sum(parents.values())
+
+            def entropy(counts, denominator):
+                return -sum((count / denominator) * math.log(
+                    max(1e-12, count / denominator))
+                    for count in counts) if denominator else 0.
+
+            descriptor.extend((
+                math.log1p(len(states)),
+                math.log1p(total),
+                max(probabilities, default=0.),
+                entropy(states.values(), total),
+                *separation,
+                parent_size[0], parent_size[1],
+                source_size[0], source_size[1],
+                same_color, same_shape,
+                math.log1p(len(parents)),
+                max(parents.values(), default=0) / max(1, parent_total),
+                entropy(source_colors.values(), vote_count),
+                entropy(target_colors.values(), vote_count),
+            ))
         result[candidate] = tuple(descriptor)
     return result
 
@@ -121,7 +180,7 @@ def _sigmoid(value: float) -> float:
 
 
 def _fit_frontier_rows(rows, labels, radial_edges, color_keys, epochs,
-                       learning_rate, regularization):
+                       learning_rate, regularization, descriptor_version):
     positives = sum(labels)
     negatives = len(labels) - positives
     if not positives or not negatives:
@@ -157,14 +216,15 @@ def _fit_frontier_rows(rows, labels, radial_edges, color_keys, epochs,
         bias -= step * bias_gradient
     return FrontierAttachmentMarker(
         tuple(radial_edges), color_keys, means, scales, tuple(weights), bias,
-        len(rows), positives)
+        len(rows), positives, descriptor_version)
 
 
 def fit_frontier_attachment_marker_examples(
         examples: Sequence[FrontierAttachmentExample],
         radial_edges: Sequence[float] = (1.4, 2.1, 2.8, 3.81),
         epochs: int = 500, learning_rate: float = .4,
-        regularization: float = .01) -> FrontierAttachmentMarker:
+        regularization: float = .01,
+        descriptor_version: str = "radial-v1") -> FrontierAttachmentMarker:
     """Fit one rigid-motion-invariant marking over several configurations."""
     if not examples:
         raise ValueError("frontier training requires at least one example")
@@ -178,7 +238,8 @@ def fit_frontier_attachment_marker_examples(
             raise ValueError("target positions and colors must be aligned")
         described = describe_frontier_attachments(
             example.proposals, example.known_positions,
-            example.known_colors, radial_edges, color_keys)
+            example.known_colors, radial_edges, color_keys,
+            descriptor_version)
         if example.target_colors:
             targets = {
                 point_key(point): repr(color)
@@ -197,7 +258,7 @@ def fit_frontier_attachment_marker_examples(
                  targets[point_key(point)])))
     return _fit_frontier_rows(
         tuple(rows), tuple(labels), radial_edges, color_keys, epochs,
-        learning_rate, regularization)
+        learning_rate, regularization, descriptor_version)
 
 
 def fit_frontier_attachment_marker(
@@ -205,12 +266,14 @@ def fit_frontier_attachment_marker(
         known_colors: Sequence[Hashable], target_positions: Iterable[Point],
         radial_edges: Sequence[float] = (1.4, 2.1, 2.8, 3.81),
         epochs: int = 500, learning_rate: float = .4,
-        regularization: float = .01) -> FrontierAttachmentMarker:
+        regularization: float = .01,
+        descriptor_version: str = "radial-v1") -> FrontierAttachmentMarker:
     example = FrontierAttachmentExample(
         proposals, tuple(known_positions), tuple(known_colors),
         tuple(target_positions))
     return fit_frontier_attachment_marker_examples(
-        (example,), radial_edges, epochs, learning_rate, regularization)
+        (example,), radial_edges, epochs, learning_rate, regularization,
+        descriptor_version)
 
 
 def score_frontier_attachments(
@@ -229,7 +292,7 @@ def score_frontier_attachments(
                 for point in scored[0]}
     described = describe_frontier_attachments(
         proposals, known_positions, known_colors,
-        marker.radial_edges, marker.color_keys)
+        marker.radial_edges, marker.color_keys, marker.descriptor_version)
     result = {}
     for point, row in described.items():
         normalized = tuple(max(-8., min(8.,

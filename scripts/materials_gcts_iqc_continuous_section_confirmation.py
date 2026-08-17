@@ -104,7 +104,7 @@ def _colored_truth(proposals, band, target):
     return correct, len(band) - correct
 
 
-def fit_continuous_section():
+def fit_continuous_section(descriptor_version="radial-v1"):
     """Fit one colored, rigid-motion-invariant section on completed nuclei."""
     origin_seed, _ = oracle_patch(3, 9.)
     origin_target, _ = oracle_patch(4, EVALUATION_TARGET_RADIUS)
@@ -131,7 +131,8 @@ def fit_continuous_section():
     for held_index, (proposal, seed) in enumerate(zip(proposals, seeds)):
         marker = fit_frontier_attachment_marker_examples(tuple(
             example for index, example in enumerate(examples)
-            if index != held_index))
+            if index != held_index),
+            descriptor_version=descriptor_version)
         fold_markers.append(marker)
         held_scores.append(score_frontier_attachments(
             marker, proposal, seed.positions, seed.species))
@@ -150,10 +151,12 @@ def fit_continuous_section():
             tuple(target.positions), tuple(target.species)))
     fold_refinements = tuple(fit_frontier_attachment_marker_examples(tuple(
         example for index, example in enumerate(augmented_examples)
-        if index != held_index)) for held_index in range(len(examples)))
-    marker = fit_frontier_attachment_marker_examples(examples)
+        if index != held_index), descriptor_version=descriptor_version)
+        for held_index in range(len(examples)))
+    marker = fit_frontier_attachment_marker_examples(
+        examples, descriptor_version=descriptor_version)
     refinement = fit_frontier_attachment_marker_examples(
-        tuple(augmented_examples))
+        tuple(augmented_examples), descriptor_version=descriptor_version)
 
     folds = []
     for center, proposal, seed, target, first, second in zip(
