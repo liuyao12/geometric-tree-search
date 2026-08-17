@@ -1493,20 +1493,23 @@ function learnOrientationAtlas() {
     const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type);
     const representatives = [];
     const populations = [];
+    const poseByCenter = new Map();
     placements.forEach((placement) => {
       const descriptor = supportOrientationDescriptor(placement);
       let pose = representatives.findIndex((candidate) => orientationDistance(candidate, descriptor) <= .16);
       if (pose < 0) { pose = representatives.length; representatives.push(descriptor); populations.push(0); }
       populations[pose]++;
+      poseByCenter.set(placement.center, pose);
     });
     return { cluster: clusterIndex, element: cluster.element, occurrences: placements.length,
-      orientations: representatives.length, populations: populations.sort((first, second) => second - first) };
+      orientations: representatives.length, populations: populations.slice().sort((first, second) => second - first), poseByCenter };
   });
   return learnedClusters.clusters.map((cluster, clusterIndex) => {
     const occurrences = learnedClusters.labels.map((label, index) => label === clusterIndex ? index : -1)
       .filter((index) => index >= 0);
     const representatives = [];
     const populations = [];
+    const poseByCenter = new Map();
     occurrences.forEach((index) => {
       const descriptor = orientationDescriptor(learnedClusters.environments[index]);
       let pose = representatives.findIndex((candidate) => orientationDistance(candidate, descriptor) <= .16);
@@ -1516,13 +1519,15 @@ function learnOrientationAtlas() {
         populations.push(0);
       }
       populations[pose]++;
+      poseByCenter.set(index, pose);
     });
     return {
       cluster: clusterIndex,
       element: cluster.element,
       occurrences: occurrences.length,
       orientations: representatives.length,
-      populations: populations.sort((first, second) => second - first),
+      populations: populations.slice().sort((first, second) => second - first),
+      poseByCenter,
     };
   });
 }
@@ -1533,18 +1538,60 @@ function automaticMarkingChannels() {
 
 function clusterPortRank(cluster) {
   if (!overlapGrammar) return 1;
-  return Math.max(1, new Set(overlapGrammar.rules
-    .filter((rule) => rule.from === cluster)
-    .map((rule) => `${rule.to}:${Math.round((rule.meanShared || 0) * 2)}`)).size);
+  return Math.max(1, new Set(overlapGrammar.rules.filter((rule) => rule.from === cluster).map(portRoleKey)).size);
 }
 
-function recommendedChannelsForCluster(cluster, poses) {
-  const portRank = clusterPortRank(cluster);
-  // The fields form a symmetry-aware local basis; they are not one-hot pose
-  // labels. Pose and port orbit complexity therefore enter logarithmically.
-  return Math.min(12, Math.max(3, 2
-    + Math.ceil(Math.log2(Math.max(1, poses) + 1))
-    + Math.min(3, Math.ceil(Math.log2(portRank + 1)))));
+function portRoleKey(rule) {
+  const separation = Math.round(rule.translation?.length?.() || 0);
+  const rotation = Math.round((rule.rotationAngle || 0) / (Math.PI / 6));
+  return `${rule.to}:${Math.round((rule.meanShared || 0) * 2)}:${separation}:${rotation}`;
+}
+
+function numericMatrixRank(matrix, tolerance = 1e-8) {
+  if (!matrix.length || !matrix[0]?.length) return 0;
+  const work = matrix.map((row) => row.slice());
+  let rank = 0;
+  for (let column = 0; column < work[0].length && rank < work.length; column++) {
+    let pivot = rank;
+    for (let row = rank + 1; row < work.length; row++) {
+      if (Math.abs(work[row][column]) > Math.abs(work[pivot][column])) pivot = row;
+    }
+    if (Math.abs(work[pivot][column]) <= tolerance) continue;
+    [work[rank], work[pivot]] = [work[pivot], work[rank]];
+    const divisor = work[rank][column];
+    for (let entry = column; entry < work[rank].length; entry++) work[rank][entry] /= divisor;
+    for (let row = 0; row < work.length; row++) {
+      if (row === rank || Math.abs(work[row][column]) <= tolerance) continue;
+      const factor = work[row][column];
+      for (let entry = column; entry < work[row].length; entry++) work[row][entry] -= factor * work[rank][entry];
+    }
+    rank++;
+  }
+  return rank;
+}
+
+function clusterPosePortRank(cluster) {
+  const atlas = orientationAtlas.find((entry) => entry.cluster === cluster);
+  const rules = overlapGrammar?.rules.filter((rule) => rule.from === cluster) || [];
+  if (!atlas?.orientations || !rules.length) return 1;
+  const roles = [...new Set(rules.map(portRoleKey))].sort();
+  const roleIndex = new Map(roles.map((role, index) => [role, index]));
+  const matrix = Array.from({ length: atlas.orientations }, () => new Array(roles.length).fill(0));
+  rules.forEach((rule) => {
+    const centers = rule.examples?.map((example) => example[0]) || [rule.representativePair?.[0]];
+    centers.forEach((center) => {
+      const pose = atlas.poseByCenter?.get(center);
+      if (pose !== undefined) matrix[pose][roleIndex.get(portRoleKey(rule))]++;
+    });
+  });
+  return Math.max(1, numericMatrixRank(matrix));
+}
+
+function recommendedChannelsForCluster(cluster) {
+  // Two scalar fields retain compatibility and failure evidence. The remaining
+  // fields span only the observed coupling between proper pose orbits and
+  // outgoing connection roles, rather than one-hot encoding raw rotations.
+  return Math.min(12, Math.max(3, 2 + clusterPosePortRank(cluster)));
 }
 
 function buildWaterClusterCover(source) {
@@ -2912,10 +2959,11 @@ function renderPoseAtlas() {
     const code = document.createElement("code"); code.textContent = `C${entry.cluster + 1}`;
     const detail = document.createElement("span");
     const portRank = clusterPortRank(entry.cluster);
-    const channels = recommendedChannelsForCluster(entry.cluster, entry.orientations);
-    detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · ${portRank} outgoing port role${portRank === 1 ? "" : "s"}`;
+    const coupledRank = clusterPosePortRank(entry.cluster);
+    const channels = recommendedChannelsForCluster(entry.cluster);
+    detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · ${portRank} port role${portRank === 1 ? "" : "s"} · coupled rank ${coupledRank}`;
     const count = document.createElement("b");
-    count.textContent = `${entry.orientations} pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`;
+    count.textContent = `${entry.orientations} required pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`;
     row.append(code, detail, count);
     poseAtlas.appendChild(row);
   });
@@ -2950,7 +2998,7 @@ function syncStageOptions() {
     translationSupport.textContent = geometryMode === "lattice" || (geometryMode === "auto" && latticeDetected)
       ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "observed point set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
-    rotationSupport.textContent = `${totalPoses} proper pose orbit${totalPoses === 1 ? "" : "s"}`;
+    rotationSupport.textContent = `${totalPoses} required pose orbit${totalPoses === 1 ? "" : "s"}`;
     channelRankSupport.textContent = `${automaticMarkingChannels()} coupled channels`;
     renderPoseAtlas();
     stageOptionsState.textContent = geometryMode === "module" ? "aperiodic module"
@@ -2976,7 +3024,7 @@ function syncStageOptions() {
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${referenceCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
-    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual)" : " (auto from pose/port rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. Channels transform with the learned pose atlas; they do not enumerate raw frame rotations.`;
+    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (auto from pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. The pose atlas is frozen at clustering; symmetry-equivalent rotations share channels.`;
   } else {
     renderMarkingLibrary();
     const active = selectedMarking();

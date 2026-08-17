@@ -28,11 +28,11 @@ encodings, not electron densities or physical potentials.
 ## Environment discovery
 
 The cluster stage exposes the geometric hypothesis explicitly. **Auto** tests
-translation closure from the positions, **lattice-constrained** applies periodic
+translation closure from the positions, **periodic lattice** applies periodic
 translations, **aperiodic module** assumes a discrete but non-periodic
 pose/translation atlas (the natural model-set or quasicrystal hypothesis), and
-**free SE(3)** makes no discrete translation assumption. The latter two apply no
-periodic wrapping. This setting changes the displacement geometry used by
+**observed point set / free SE(3)** makes no discrete translation assumption.
+The latter two apply no periodic wrapping. This setting changes the displacement geometry used by
 descriptors and the complete cover; it is not a preassigned crystal or
 quasicrystal label.
 
@@ -63,14 +63,16 @@ wrapping exposes boundary environment types and their larger finite pose atlas.
 
 The pose atlas is learned before the GCTS marking. Each cluster card reports
 its observed symmetry-inequivalent pose count, outgoing connection-port rank,
-and an automatic channel recommendation. The recommendation grows
-logarithmically with pose and port-orbit complexity. It is deliberately not one
+and an automatic channel recommendation. The browser builds the observed
+pose-by-port incidence matrix for that cluster and uses its numerical rank plus
+two compatibility/failure fields, capped at twelve. It is deliberately not one
 channel per rotation: proper-symmetry-equivalent frames share equivariant
-fields, while chemistry, successful connection, and failure information can
-require more than one field even when a cluster has only one physical pose.
+fields, and poses that induce the same connection behavior share the same
+basis direction. Chemistry, successful connection, and failure information can
+still require more than one field when a cluster has only one physical pose.
 The marking stage retains a manual override for controlled ablations.
 The clustering controls summarize that dependency explicitly as
-`translation support × proper-pose orbits → coupled marking rank`, with a
+`translation support × required pose orbits → pose/port channel basis`, with a
 per-cluster audit underneath rather than a single unexplained channel slider.
 
 ## Finite rigid overlap grammar
@@ -101,10 +103,10 @@ The marking stage is separate from both cluster discovery and rule extraction.
 Its stage-local controls choose an automatically derived channel rank or a
 manual 1, 3, 6, or 12 channels; one-, two-, or three-shell neighborhood reach;
 and a site-resolved, connection-port, or whole-cluster action representation.
-The automatic rank is derived from symmetry-inequivalent pose classes and
-observed outgoing port roles. It is not the raw number of rotations: a
-symmetry quotient may need one pose while chemistry, connection, and failure
-remain distinct channels. These choices rebuild the learned section model
+The automatic rank is derived from the observed incidence of
+symmetry-inequivalent pose classes with outgoing port roles. It is not the raw
+number of rotations: a symmetry quotient may need one pose while chemistry,
+connection, and failure remain distinct channels. These choices rebuild the learned section model
 rather than merely relabeling the display. Strong observed overlaps label
 compatible directional ports; directions without evidence supply
 unsupported/failed-port examples. On shared atoms the loss penalizes
