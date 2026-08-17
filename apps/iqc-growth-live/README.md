@@ -1,14 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
 A static GitHub Pages visualization of a multi-element, dimension-aware
-materials-GCTS pipeline. It begins with 216 element-labelled atomic positions
-and runs five computed stages:
+materials-GCTS pipeline. It begins with element-labelled atomic positions and
+runs four visible stages:
 
 1. ingest Cartesian positions in ångströms with no cluster labels;
-2. discover rotation-invariant local-environment clusters;
-3. register observed cluster overlaps and compress them into finite `SE(3)` rules;
-4. train bounded connection-valued GCTS sections in cluster-local frames;
-5. grow an explicit off-lattice covering by transporting and overlapping clusters.
+2. discover a complete irregular cluster cover, including explicit residuals;
+3. register finite proper-`SE(3)` connections and train bounded GCTS markings;
+4. grow an explicit off-lattice covering and recursively promote clusters of clusters.
+
+The **Evidence Atlas** in the top bar is the materials-science presentation of
+the backend research program. It separates complete representation, held-out
+continuation, hierarchical compression, and stationary/exponential growth into
+distinct claims. Interactive system cards compare NaCl, an ideal icosahedral
+quasicrystal, the published Cd–Yb quasicrystal model, and an amorphous control;
+the GCTS anatomy view explains covers, oriented ports, markings, search, and
+promotion; and the claim ledger keeps proved, measured, and open results visibly
+separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
 The selectable inputs are an exact NaCl rocksalt positive control, a Cu-Zr
 metallic-glass surrogate, an Al-Cu-Fe icosahedral-approximant surrogate, a 30°

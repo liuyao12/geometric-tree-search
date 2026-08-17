@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260812-9">
+  <link rel="stylesheet" href="./style.css?v=20260816-1">
   <script type="importmap">
     {
       "imports": {
@@ -25,7 +25,10 @@
         <img class="brand-art" src="./materials-growth-banner-v2.png" alt="" aria-hidden="true" fetchpriority="high">
       </a>
       <div class="run-state"><i id="runStateDot"></i><span id="runStateText">Paused at seed</span></div>
-      <a class="method-link" href="#auditedBenchmark">Order audit &amp; limits ↓</a>
+      <div class="topbar-actions">
+        <button id="evidenceAtlasButton" class="atlas-launch" type="button" aria-controls="evidenceAtlas" aria-expanded="false">Evidence atlas</button>
+        <a class="method-link" href="#auditedBenchmark">Methods ↓</a>
+      </div>
     </header>
 
     <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
@@ -34,6 +37,123 @@
       <button type="button" data-pipeline-stage="3"><small>03 · learn</small><strong>GCTS learning</strong><span>connection sections over clusters</span></button>
       <button type="button" data-pipeline-stage="4"><small>04 · grow</small><strong>Material growth</strong><span>covering search + recursive promotion</span></button>
     </nav>
+
+    <section class="evidence-ribbon" aria-label="Current benchmark status">
+      <div><span class="evidence-pulse" aria-hidden="true"></span><small>current evidence</small><strong>Crystal stationary recurrence</strong><b class="status-pass">passed</b></div>
+      <div><small>quasicrystal</small><strong>Exact self-fed continuation</strong><b class="status-pass">passed</b></div>
+      <div><small>generic GCTS</small><strong>Stationary exponential QC rule</strong><b class="status-open">open</b></div>
+      <button id="evidenceRibbonButton" type="button">Explore the evidence <span>↗</span></button>
+    </section>
+
+    <section id="evidenceAtlas" class="evidence-atlas" hidden aria-label="GCTS evidence atlas" aria-modal="true" role="dialog">
+      <div class="atlas-shell">
+        <header class="atlas-header">
+          <div class="atlas-title-block">
+            <p class="eyebrow">materials-science evidence atlas · positions + species in, generative structure out</p>
+            <h1>From atomic snapshots to a <em>structural continuation grammar</em></h1>
+            <p>What GCTS has learned, what it can regenerate, and exactly where the quasicrystal benchmark remains open.</p>
+          </div>
+          <button id="evidenceAtlasClose" class="atlas-close" type="button" aria-label="Close evidence atlas">×</button>
+        </header>
+
+        <nav class="atlas-tabs" aria-label="Evidence atlas sections">
+          <button class="active" type="button" data-atlas-tab="overview">01 · result</button>
+          <button type="button" data-atlas-tab="systems">02 · systems</button>
+          <button type="button" data-atlas-tab="anatomy">03 · GCTS anatomy</button>
+          <button type="button" data-atlas-tab="journey">04 · research journey</button>
+          <button type="button" data-atlas-tab="ledger">05 · claim ledger</button>
+        </nav>
+
+        <div class="atlas-scroll">
+          <section class="atlas-panel active" data-atlas-panel="overview">
+            <div class="atlas-hero-grid">
+              <article class="atlas-thesis">
+                <span class="atlas-kicker">the scientific result</span>
+                <h2>A crystal can now be represented by a learned stationary cluster grammar. A quasicrystal can be continued exactly—but its generic stationary grammar is not yet proved.</h2>
+                <p>The same family-blind pipeline discovers irregular covers, finite proper-SE(3) connection ports, bounded local markings, conflict-free tree-search actions, and promoted clusters of clusters. Red gates are preserved as results, not hidden as demos.</p>
+                <div class="claim-key"><span class="pass">proved</span><span class="progress">measured, incomplete</span><span class="open">open benchmark</span></div>
+              </article>
+              <div class="atlas-scoreboard" aria-label="Headline benchmark metrics">
+                <article><small>crystal symbolic scale</small><strong>4.19M</strong><span>NaCl sites represented in 7 learned actions</span><i class="pass">stationary · green</i></article>
+                <article><small>generic IQC execution</small><strong>31,521</strong><span>exact sites after three self-fed actions</span><i class="progress">finite growth · green</i></article>
+                <article><small>published Cd–Yb hierarchy</small><strong>9</strong><span>positive clusters-of-clusters levels in training</span><i class="progress">transfer partial</i></article>
+                <article><small>QC stationary witness</small><strong>0</strong><span>common exact production across three scales</span><i class="open">exponential gate · red</i></article>
+              </div>
+            </div>
+
+            <div class="atlas-section-heading"><div><span>benchmark ladder</span><h2>Four distinct claims—never conflated</h2></div><p>Click a cell for the evidence behind it.</p></div>
+            <div id="benchmarkMatrix" class="benchmark-matrix" role="table" aria-label="Benchmark ladder by material family">
+              <div class="matrix-head" role="row"><span>system</span><span>complete cover</span><span>held-out continuation</span><span>clusters²</span><span>stationary / exponential</span></div>
+            </div>
+            <article id="matrixDetail" class="matrix-detail" aria-live="polite"></article>
+
+            <div class="atlas-principles">
+              <article><b>Input</b><strong>No labels</strong><p>Only element identities and Cartesian positions. No phase, cell, space group, potential, or cut-and-project coordinates.</p></article>
+              <article><b>Marking</b><strong>Connections, not energy</strong><p>The GCTS section records compatible and failed neighboring-cluster attachments. It is not a physical potential.</p></article>
+              <article><b>Search</b><strong>Tree underneath, antichain on screen</strong><p>Each placement is a branch decision; mutually compatible frontier moves may be committed together in any order.</p></article>
+              <article><b>Scale</b><strong>Symbolic ≠ free output</strong><p>The derivation can be logarithmic in scale. Explicitly materializing N atoms remains O(N).</p></article>
+            </div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="systems" hidden>
+            <div class="atlas-section-heading"><div><span>cross-family benchmark</span><h2>One question, four very different structures</h2></div><p>Choose a system to inspect its measured growth curve and limiting gate.</p></div>
+            <div id="atlasSystemTabs" class="system-tabs" role="tablist" aria-label="Benchmark systems"></div>
+            <div class="system-dashboard">
+              <article class="system-story">
+                <div class="system-name"><span id="atlasSystemKind">crystal</span><h2 id="atlasSystemName">NaCl rocksalt</h2></div>
+                <p id="atlasSystemSummary"></p>
+                <dl id="atlasSystemMetrics" class="system-metrics"></dl>
+                <div id="atlasSystemVerdict" class="system-verdict"></div>
+              </article>
+              <article class="growth-card">
+                <div><span>represented or explicit sites</span><strong id="atlasCurveTitle">growth by learned action</strong></div>
+                <svg id="atlasGrowthChart" viewBox="0 0 720 300" role="img" aria-label="Log-scale growth curve"></svg>
+                <div class="growth-legend"><span class="observed">explicit / verified</span><span class="symbolic">symbolic representation</span><small>log scale · labels show exact counts</small></div>
+              </article>
+            </div>
+            <div id="systemEvidenceCards" class="system-evidence-cards"></div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="anatomy" hidden>
+            <div class="atlas-section-heading"><div><span>generic algorithm</span><h2>How a marking becomes material growth</h2></div><p>Select a layer to see what is learned and what is certified.</p></div>
+            <div id="gctsAnatomy" class="gcts-anatomy">
+              <button class="active" type="button" data-anatomy="cover"><span>01</span><i class="motif-dots" aria-hidden="true"></i><strong>Irregular cover</strong><small>repeated colored point sets + residual gaps</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="ports"><span>02</span><i class="motif-halo" aria-hidden="true"></i><strong>Finite ports</strong><small>proper-SE(3) overlap and boundary relations</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="mark"><span>03</span><i class="motif-section" aria-hidden="true"></i><strong>Local section</strong><small>incoming connections rank exact alternatives</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="search"><span>04</span><i class="motif-tree" aria-hidden="true"></i><strong>Covering search</strong><small>branch, reject conflicts, commit an antichain</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="promote"><span>05</span><i class="motif-macro" aria-hidden="true"></i><strong>Promote</strong><small>re-cluster output into clusters of clusters</small></button>
+            </div>
+            <article id="anatomyDetail" class="anatomy-detail" aria-live="polite"></article>
+            <div class="causality-strip">
+              <div><span>candidate generation</span><strong>frozen exact geometry</strong><small>identical candidate IDs in every ablation arm</small></div>
+              <i>+</i><div><span>GCTS mark</span><strong>local connection context</strong><small>may reorder or admit; cannot invent geometry</small></div>
+              <i>→</i><div><span>certificate</span><strong>colored overlap + collision</strong><small>whole action or explicit residual; no silent partial cluster</small></div>
+            </div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="journey" hidden>
+            <div class="atlas-section-heading"><div><span>research history</span><h2>Every red result changed the algorithm</h2></div><p>The path from atom-centred toy shells to a leakage-safe hierarchical executor.</p></div>
+            <div id="researchTimeline" class="research-timeline"></div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="ledger" hidden>
+            <div class="atlas-section-heading"><div><span>auditable claims</span><h2>What is proved, promising, and still open</h2></div><p>Filter the ledger; every card states its evidence boundary.</p></div>
+            <div id="ledgerFilters" class="ledger-filters" role="group" aria-label="Filter scientific claims">
+              <button class="active" type="button" data-ledger-filter="all">all</button>
+              <button type="button" data-ledger-filter="proved">proved</button>
+              <button type="button" data-ledger-filter="progress">measured</button>
+              <button type="button" data-ledger-filter="open">open</button>
+            </div>
+            <div id="claimLedger" class="claim-ledger"></div>
+            <a class="atlas-method-link" href="#auditedBenchmark" id="atlasMethodLink">Open the exhaustive methods and limitations ledger ↓</a>
+          </section>
+        </div>
+      </div>
+    </section>
 
     <main class="lab-grid">
       <aside class="control-panel" aria-label="Simulation controls">
@@ -345,5 +465,6 @@
   </div>
 
   <script type="module" src="./app.js?v=20260812-4"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260816-1"></script>
 </body>
 </html>
