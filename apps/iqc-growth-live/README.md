@@ -801,6 +801,19 @@ separately. The next channel count must be selected from training recurrence or
 pose/port coverage, then frozen before another spatial nucleus; this diagnostic
 cannot justify silently widening the live search.
 
+Channel selection is then made explicit. Across four completed frontier
+observations, exact alternatives occurred at ranks `{3, 4, 6, 7, 12}`; keeping
+all observed exact channels therefore learns reach 12. Per-rank Beta-smoothed
+values use their actual support counts (four observations for ranks 1–4, two
+for ranks 5–12), while the configuration beam remains width four. The first
+predeclared seventh-nucleus process lost its result at the execution transport
+boundary and is recorded as consumed/unknown—not rerun. With the policy still
+unchanged, a new eighth centre `(-25, 20, -20)` is tested, disjoint from every
+prior ball. The target-free search evaluates 108 branches, selects path
+`4 → 12 → 11`, and posthoc emits the exact 1 / 1 colored site. This is a green
+one-action channel/value confirmation. It does not yet certify a second
+self-fed action, stationary recurrence, or exponential growth.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

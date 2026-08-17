@@ -38,13 +38,14 @@ def fit_rank_value(observations, *, maximum_rank=4,
     positives = [0] * maximum_rank
     totals = [0] * maximum_rank
     for observation in observations:
-        if (len(observation.correct_sites) < maximum_rank or
-                len(observation.false_sites) < maximum_rank or
+        if (not observation.correct_sites or
+                len(observation.correct_sites) != len(
+                    observation.false_sites) or
+                len(observation.correct_sites) > maximum_rank or
                 len(observation.source_digest) != 64):
             raise ValueError("rank observation is incomplete")
-        for index in range(maximum_rank):
-            correct = observation.correct_sites[index]
-            false = observation.false_sites[index]
+        for index, (correct, false) in enumerate(zip(
+                observation.correct_sites, observation.false_sites)):
             if correct < 0 or false < 0 or not correct + false:
                 raise ValueError("rank labels must describe a nonempty action")
             positives[index] += int(correct > 0 and false == 0)

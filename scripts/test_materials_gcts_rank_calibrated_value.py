@@ -19,6 +19,10 @@ def test_beta_smoothed_rank_value_is_finite_and_target_free():
     assert model.as_mapping()[4] == .75
     assert not model.target_used_during_application
 
+    partial = fit_rank_value(observations, maximum_rank=6)
+    assert partial.total_counts == (2, 2, 2, 2, 0, 0)
+    assert partial.posterior_values[4:] == (.5, .5)
+
 
 if __name__ == "__main__":
     test_beta_smoothed_rank_value_is_finite_and_target_free()

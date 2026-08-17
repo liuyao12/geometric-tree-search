@@ -1865,6 +1865,23 @@ width and diagnostic snapshot reach are now separate audit fields. Any move to
 six or twelve active channels must be chosen using training-side pose/port
 coverage and face a new nucleus; the opened sixth target is not a tuning gate.
 
+The finite channel learner therefore retains every rank at which an exact
+alternative occurred in the completed training observations. Those ranks are
+`3, 4, 6, 7, 12`, fixing channel reach at 12. The rank-value posterior is
+refit with heterogeneous support: ranks 1--4 have four observations, ranks
+5--12 have two. Enumeration width becomes 12, while only four complete
+configuration states survive each beam layer. This ties channel count to
+observed connection/pose coverage rather than to a manually selected slider.
+
+The predeclared seventh-nucleus invocation lost its result at the execution
+transport boundary. Because it may have opened the target, it is recorded as
+consumed/unknown and is never rerun. The unchanged artifact is tested at an
+eighth centre `(-25, 20, -20)`, separated from every prior target centre by at
+least 37.749. It evaluates 108 target-free branches over three depths, selects
+path `4 / 12 / 11`, and emits 1 / 1 exact colored site. The one-action learned
+channel/value gate is green on this fresh nucleus. Sustained self-fed growth,
+stationarity, and exponential amplification remain separate red gates.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
