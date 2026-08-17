@@ -50,6 +50,16 @@ class _Candidate:
 
 
 @dataclass(frozen=True)
+class _CandidateSource:
+    group: tuple[float, float, float]
+    proposals: object
+    seed_positions: tuple[tuple[float, float, float], ...]
+    seed_species: tuple[str, ...]
+    truth: dict[tuple[float, float, float], str]
+    minimum_distance: float
+
+
+@dataclass(frozen=True)
 class CandidateIncidencePreflight:
     training_centers: tuple[tuple[float, float, float], ...]
     candidate_graph_digest: str
@@ -90,7 +100,7 @@ def _key(point):
     return tuple(round(value, 6) for value in point)
 
 
-def _build_candidate_groups():
+def _build_candidate_sources():
     origin_seed, _ = oracle_patch(3, 9.)
     origin_target, _ = oracle_patch(4, EVALUATION_TARGET_RADIUS)
     prototypes = local_cluster_types(
@@ -103,28 +113,53 @@ def _build_candidate_groups():
         _seed_crop(center) for center in COMPLETED_TRAINING_CENTERS[1:])
     targets = (origin_target,) + tuple(
         _open_target(center) for center in COMPLETED_TRAINING_CENTERS[1:])
-    groups = []
+    sources = []
     for center, seed, target in zip(
             COMPLETED_TRAINING_CENTERS, seeds, targets):
         proposals = _bounded_proposals(connection, prototypes, seed, center)
-        descriptors = candidate_incidence_descriptors(
-            proposals, distance_scale=HIDDEN_UNIT,
-            occupied_positions=seed.positions,
-            occupied_species=seed.species)
         truth = {_key(point): color for point, color in zip(
             target.positions, target.species)}
         minimum = _minimum_distance(seed.positions)
+        sources.append(_CandidateSource(
+            center, proposals, tuple(seed.positions), tuple(seed.species),
+            truth, minimum))
+    return tuple(sources)
+
+
+def _candidate_groups_for_geometry(
+        sources, *, neighborhood_reach: float = 3.,
+        distance_bin_width: float = .5, maximum_neighbors: int = 8):
+    groups = []
+    for source in sources:
+        descriptors = candidate_incidence_descriptors(
+            source.proposals, distance_scale=HIDDEN_UNIT,
+            neighborhood_reach=neighborhood_reach,
+            distance_bin_width=distance_bin_width,
+            maximum_neighbors=maximum_neighbors,
+            occupied_positions=source.seed_positions,
+            occupied_species=source.seed_species)
         rows = []
-        for point in sorted(proposals.votes):
-            if any(math.dist(point, occupied) < minimum - 1e-8
-                   for occupied in seed.positions):
+        for point in sorted(source.proposals.votes):
+            if any(math.dist(point, occupied) <
+                   source.minimum_distance - 1e-8
+                   for occupied in source.seed_positions):
                 continue
-            color = _dominant_source_color(proposals, point)
+            color = _dominant_source_color(source.proposals, point)
             rows.append(_Candidate(
-                center, point, color, descriptors[point],
-                truth.get(_key(point)) == color, minimum))
+                source.group, point, color, descriptors[point],
+                source.truth.get(_key(point)) == color,
+                source.minimum_distance))
         groups.append(tuple(rows))
     return tuple(groups)
+
+
+def _build_candidate_groups(*, neighborhood_reach: float = 3.,
+                            distance_bin_width: float = .5,
+                            maximum_neighbors: int = 8):
+    return _candidate_groups_for_geometry(
+        _build_candidate_sources(), neighborhood_reach=neighborhood_reach,
+        distance_bin_width=distance_bin_width,
+        maximum_neighbors=maximum_neighbors)
 
 
 def _threshold(scores):

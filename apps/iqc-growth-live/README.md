@@ -1245,6 +1245,19 @@ the calibrated complete score level admits 25 / 26 compatible placements
 (96.15% precision). It covers only four of nine nuclei, below the predeclared
 all-nucleus gate, so the reserved confirmation remains sealed.
 
+The user-visible geometry settings are also audited rather than treated as
+cosmetic knobs. A bounded grid crosses one-, two-, and three-shell reach with
+coarse/fine distance quantization. For each outer held-out nucleus, a nested
+leave-one-nucleus-out loop on the remaining eight selects both geometry and a
+complete-score threshold. Those absolute thresholds drift when the final
+training fold is added and achieve only 41 / 65 correct actions (63.08%). A
+fixed top-two rank is more stable: it selects 16 / 16 exact actions on the
+eight generic nuclei, but two false actions on the sole symmetry-centred
+nucleus, hence 16 / 18 overall (88.89%). Increasing the section to 32 nearest
+neighbors moves the first exact centred action only from rank 189 to 121 and
+does not change the top-two failure. Thus neither wider reach nor nested
+parameter selection passes the unchanged all-nucleus gate.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

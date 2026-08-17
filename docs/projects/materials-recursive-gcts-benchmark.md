@@ -2075,6 +2075,21 @@ assign fitted weight to 98.89%. The complete calibrated score level admits
 nuclei. The unchanged gate requires at least 18 placements and coverage of all
 nine, so the reserved confirmation remains sealed.
 
+The interface geometry controls now have a direct backend audit. The bounded
+hypothesis grid is exactly one/two/three-shell reach crossed with coarse/fine
+distance quantization; all six arms see the same 44,602 exact candidate
+placements. In every outer fold an inner leave-one-nucleus-out loop on the
+other eight chooses the descriptor geometry and a complete-score threshold.
+This fully nested selection exposes calibration shift rather than curing it:
+the frozen outer models select 41 / 65 correct actions (63.08%) and only six
+nuclei are error-free. A fixed top-two rank removes the score-scale failure
+and gives two exact actions on each of eight generic nuclei, but both actions
+at the unique symmetry-centred nucleus are false (16 / 18, 88.89%). Its first
+exact action is rank 189 with eight neighbors and remains rank 121 after
+expanding the section to 32 neighbors. The centred stratum is therefore an
+explicit out-of-distribution red control; it is not dropped or used to justify
+opening the reserved confirmation nucleus.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are
