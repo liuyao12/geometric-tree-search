@@ -31,6 +31,8 @@ const SYSTEMS = {
       ["Parallel section preflight", "57 / 216 · 48 / 216 pure bands", "No whole-action threshold reaches 95% group-heldout precision; the fresh antichain target stays sealed."],
       ["Carried obligations", "1 + 1 pure actions retained", "Future port-consensus features reach perfect precision only at one action per stage; the 18-action coverage gate stays red."],
       ["Explicit incidences", "8 / 9 connected paths · 0 / 16 exact", "Role vocabulary transfers at 97.4% mass, but connection closure alone selects structurally legal false branches."],
+      ["Candidate section", "14 / 14 exact · 4 / 9 nuclei", "A local pose–port section fixes precision, but its absolute threshold does not yet cover every boundary environment."],
+      ["Individual port paths", "9 / 9 exact paths exist · 0 / 9 selected", "Canonical candidate supply is complete at two steps; marginal and bounded joint transition scores still choose false paths."],
       ["Clusters²", "6 positive quotient levels", "History-free re-clustering improves proof depth."],
       ["Frontier states", "336 / 368 sites", "Four heterogeneous multi-child rules are real, but no closed state matrix repeats across transitions."],
       ["Strict audit", "0 common three-level keys", "Topology, chemistry, chirality, ports, pose, and populations stay exact."],
@@ -99,7 +101,9 @@ const TIMELINE = [
   ["12", "Whole-action calibration", "Absolute pure thresholds select 50 and 24 training sites but transfer no actions; a 15-feature band section also fails the 95% group-heldout precision preflight.", "open"],
   ["13", "Carried obligations", "One-step successor-port summaries isolate one pure seed and one pure self-fed action, but fail the predeclared two-actions-per-nucleus aggregate coverage gate.", "progress"],
   ["14", "Explicit port incidence", "Bounded backtracking finds two-action connected paths on 8 / 9 held-out nuclei, but all 16 selected actions are false; role closure is necessary, not sufficient.", "progress"],
-  ["15", "Open frontier", "Learn a transferable section on role-incidence geometry, then obtain a broad exact antichain and a recurring oriented production.", "open"],
+  ["15", "Candidate-level section", "Replacing whole score bands with individual local pose–port descriptors yields 14 / 14 exact compatible placements, but only across four of nine nuclei.", "progress"],
+  ["16", "Individual port paths", "Every nucleus now contains exact two-step root→child paths in a fixed target-free supply; current joint transition ranking nevertheless selects 0 / 9.", "progress"],
+  ["17", "Open frontier", "Learn a transferable connection section that selects the existing exact paths, then promote the resulting antichain into a recurring oriented production.", "open"],
 ];
 
 const CLAIMS = [
@@ -117,6 +121,8 @@ const CLAIMS = [
   ["open", "Parallel IQC action marking", "Whole-action band labels are 57 / 216 and 48 / 216 positive, but no group-heldout threshold reaches 95% precision; local scores alone cannot yet admit an exact antichain."],
   ["progress", "Port-obligation lookahead", "One-step future-frontier features find one zero-error action per stage, but retain 1 / 18 required actions; explicit incidence-level search is still needed."],
   ["progress", "Explicit incidence search", "A 504-action, target-free two-level graph carries semantic port roles and backtracks stranded branches. It finds 8 / 9 connected paths, but all 16 selected actions are false; 97.4% role transfer shows the missing signal is joint local section geometry, not vocabulary coverage."],
+  ["progress", "Candidate pose–port section", "Across 44,602 collision-free candidates, the group-heldout local section admits 14 / 14 exact placements. They cover only four of nine nuclei, so the reserved target stays sealed."],
+  ["progress", "Exact two-step path supply", "One hundred twenty-eight target-free descriptor classes per nucleus contain exact root→child connections in all nine nuclei. Current joint transition marking still selects 0 / 9, separating candidate supply from policy failure."],
   ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC sites; four rules are heterogeneous, but no closed state matrix recurs across transitions."],
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],

@@ -2060,6 +2060,33 @@ admission and topological closure as sufficient GCTS markings; the next model
 must retain joint incidence geometry while exact placement and collision
 certificates remain unchanged.
 
+The next preflight changes the action resolution rather than the target. Whole
+equal-score bands are split into 44,602 collision-free candidate cluster
+centres (3,689 exact colored positives). Each ID-free descriptor combines the
+semantic port roles and order-two incidences with proposal-neighbour distances
+and a colored distance shell to the already occupied configuration. It is
+invariant under atom permutation and common proper-SE(3) motion; absolute
+coordinates, the nucleus centre, target atoms, and raw occurrence IDs are not
+serialized. Nine leave-one-nucleus-out models see 99.40% of heldout tokens and
+assign fitted weight to 98.70%. The complete calibrated score level admits
+14 / 14 exact compatible candidates, but they occur in only four of nine
+nuclei. The unchanged gate requires at least 18 placements and coverage of all
+nine, so the reserved confirmation remains sealed.
+
+An individual two-step port graph then separates candidate supply from marking
+failure. One canonical representative of each local descriptor class is
+ranked by the frozen connection score, and the first 128 per nucleus are
+expanded without a target. A child is admitted to the graph only when the
+newly placed root is one of its witnessed parents and exact exclusion geometry
+passes. All nine known nuclei contain exact root→child pairs; their counts are
+`12 / 53 / 24 / 14 / 27 / 27 / 27 / 27 / 6`. The carried obligation is one
+primary symmetry-quotiented port (vote multiplicity is evidence, not extra
+cardinality), while the remaining roles stay as order-two marking patterns.
+Nevertheless, group-heldout marginal and bounded joint transition markings
+select zero of nine exact paths. This is a sharper red result: the finite exact
+tree already contains the answer in every nucleus, so the remaining failure is
+the transferable local section/value policy, not missing candidate geometry.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
