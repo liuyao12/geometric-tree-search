@@ -11,6 +11,8 @@ def test_candidate_incidence_preflight_is_honestly_gated():
     assert report.positive_candidates == 3689
     assert report.threshold_precision >= .95
     assert report.antichain_precision >= .95
+    assert report.antichain_correct_candidates == 25
+    assert report.antichain_false_candidates == 1
     assert report.antichain_selected_candidates < 18 or \
         report.exact_groups < 9
     assert report.preflight_passed is False

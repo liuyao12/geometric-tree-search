@@ -2064,12 +2064,14 @@ The next preflight changes the action resolution rather than the target. Whole
 equal-score bands are split into 44,602 collision-free candidate cluster
 centres (3,689 exact colored positives). Each ID-free descriptor combines the
 semantic port roles and order-two incidences with proposal-neighbour distances
-and a colored distance shell to the already occupied configuration. It is
+and the colored metric graph of the nearest occupied neighbors. Pairwise
+neighbor distances supply an invariant angular surrogate that radial shells
+alone cannot encode. The descriptor is
 invariant under atom permutation and common proper-SE(3) motion; absolute
 coordinates, the nucleus centre, target atoms, and raw occurrence IDs are not
-serialized. Nine leave-one-nucleus-out models see 99.40% of heldout tokens and
-assign fitted weight to 98.70%. The complete calibrated score level admits
-14 / 14 exact compatible candidates, but they occur in only four of nine
+serialized. Nine leave-one-nucleus-out models see 99.49% of heldout tokens and
+assign fitted weight to 98.89%. The complete calibrated score level admits
+25 / 26 exact compatible candidates (96.15% precision), but they occur in only four of nine
 nuclei. The unchanged gate requires at least 18 placements and coverage of all
 nine, so the reserved confirmation remains sealed.
 
@@ -2082,10 +2084,25 @@ passes. All nine known nuclei contain exact root→child pairs; their counts are
 `12 / 53 / 24 / 14 / 27 / 27 / 27 / 27 / 6`. The carried obligation is one
 primary symmetry-quotiented port (vote multiplicity is evidence, not extra
 cardinality), while the remaining roles stay as order-two marking patterns.
-Nevertheless, group-heldout marginal and bounded joint transition markings
-select zero of nine exact paths. This is a sharper red result: the finite exact
-tree already contains the answer in every nucleus, so the remaining failure is
-the transferable local section/value policy, not missing candidate geometry.
+The first executor nevertheless selected zero of nine exact paths because it
+added an unrelated raw child-vote score after evaluating the learned joint
+root→child value. Removing that double count leaves the candidate graph fixed
+and raises group-heldout selection to five of nine. This is a sharper red
+result: the finite exact tree already contains the answer in every nucleus,
+and correct score composition exposes useful marking transfer, while four
+boundary environments still require a transferable path-value section.
+
+A fixed third-frontier control asks whether that value is simply the size or
+quality of the immediately available continuation. For each nucleus, the 512
+highest raw-child-evidence paths are frozen without labels; exact alternatives
+remain present in every shortlist (`12 / 22 / 15 / 10 / 13 / 13 / 13 / 13 /
+2`). Each path is executed one additional step without committing it. The
+bounded descriptor records the outgoing semantic roles, order-two incidence
+patterns, vote and parent mass, predicted color set, and normalized radial
+histogram—never a target coordinate or global origin. Group-heldout selection
+is only four of nine, worse than the corrected two-step section's five of nine.
+Immediate frontier supply is therefore another measured negative value
+function, not justification to open the reserved nucleus.
 
 ## Generic intrinsic-2D atlas gate
 

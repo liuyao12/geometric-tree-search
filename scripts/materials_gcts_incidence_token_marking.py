@@ -136,6 +136,29 @@ def candidate_incidence_descriptors(
                 distance / (distance_scale * distance_bin_width))
             tokens.add(("occupied-shell", rank, species, distance_bin))
             tokens.add(("occupied-shell-colorless", rank, distance_bin))
+        # Radial shells alone conflate distinct angular environments.  The
+        # colored metric graph of the nearest occupied neighbors is a proper-
+        # motion invariant angular surrogate and does not require a global
+        # frame or a lattice axis.
+        nearest = sorted(
+            ((math.dist(point, other), str(species), tuple(other))
+             for other, species in zip(occupied_positions, occupied_species)
+             if math.dist(point, other) <= cell_size + 1e-12),
+            key=lambda row: (row[0], row[1], row[2]))[:maximum_neighbors]
+        for left_index, (left_radius, left_species, left_point) in enumerate(
+                nearest):
+            for right_radius, right_species, right_point in nearest[
+                    left_index + 1:]:
+                radii = tuple(sorted((
+                    round(left_radius /
+                          (distance_scale * distance_bin_width)),
+                    round(right_radius /
+                          (distance_scale * distance_bin_width)))))
+                species_pair = tuple(sorted((left_species, right_species)))
+                pair_bin = round(math.dist(left_point, right_point) /
+                                 (distance_scale * distance_bin_width))
+                tokens.add(("occupied-metric-edge", species_pair,
+                            radii, pair_bin))
         result[point] = CandidateIncidenceDescriptor(
             tuple(sorted(tokens, key=repr)))
     return result

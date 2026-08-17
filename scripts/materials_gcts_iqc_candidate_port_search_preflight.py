@@ -61,6 +61,17 @@ class _Pair:
     root_successful: bool
     child_successful: bool
     descriptor: CandidateIncidenceDescriptor
+    raw_child_score: float
+
+
+@dataclass(frozen=True)
+class _PairContext:
+    center: tuple[float, float, float]
+    connection: object
+    proposals: object
+    seed_positions: tuple[tuple[float, float, float], ...]
+    seed_species: tuple[str, ...]
+    minimum_distance: float
 
 
 @dataclass(frozen=True)
@@ -146,6 +157,7 @@ def _build_pairs():
     targets = (origin_target,) + tuple(
         _open_target(center) for center in COMPLETED_TRAINING_CENTERS[1:])
     pair_groups = []
+    contexts = []
     root_counts = []
     root_positive_counts = []
     for group_index, (center, seed, target) in enumerate(zip(
@@ -156,6 +168,9 @@ def _build_pairs():
             occupied_positions=seed.positions,
             occupied_species=seed.species)
         minimum = _minimum_distance(seed.positions)
+        contexts.append(_PairContext(
+            center, connection, proposals, tuple(seed.positions),
+            tuple(seed.species), minimum))
         classes = defaultdict(list)
         for point, descriptor in descriptors.items():
             if not any(math.dist(point, occupied) < minimum - 1e-8
@@ -207,7 +222,11 @@ def _build_pairs():
                     patterns)
                 child_action = PortIncidenceAction(
                     pair_id + ":child", child_state, _empty_state(),
-                    future_scores[child], 1,
+                    # The root action's learned descriptor already describes
+                    # this exact root->child transition.  Adding the raw child
+                    # vote score here would double-count the edge and can
+                    # override its train-frozen joint value.
+                    0., 1,
                     {"point": child, "color": child_color})
                 pairs.append(_Pair(
                     center, root_action, child_action,
@@ -215,14 +234,14 @@ def _build_pairs():
                     root_successful, child_successful,
                     _transition_descriptor(
                         root_state, child_state, patterns,
-                        color, child_color)))
+                        color, child_color), future_scores[child]))
         pair_groups.append(tuple(pairs))
     return (tuple(pair_groups), tuple(root_counts),
-            tuple(root_positive_counts))
+            tuple(root_positive_counts), tuple(contexts))
 
 
 def evaluate():
-    groups, root_counts, root_positive = _build_pairs()
+    groups, root_counts, root_positive, _contexts = _build_pairs()
     graph_digest = hashlib.sha256(repr(tuple(
         (pair.group, pair.root, pair.child)
         for group in groups for pair in group)).encode()).hexdigest()

@@ -1238,11 +1238,12 @@ The marking has therefore moved from whole equal-score bands to individual
 candidate cluster centres. The finite descriptor contains semantic port roles,
 order-two incidences, proposal-neighbour distances, and the colored distance
 shell to already occupied atoms; it contains no origin, global frame, raw
-occurrence ID, target atom, or material label. Across 44,602 collision-free
-candidates and nine leave-one-nucleus-out folds, the calibrated complete score
-level admits 14 / 14 compatible placements exactly. It covers only four of
-nine nuclei, below the predeclared 18-action and all-nucleus gate, so the
-reserved confirmation remains sealed.
+occurrence ID, target atom, or material label. Adding the colored metric graph
+of the nearest occupied neighbors supplies the missing angular invariant.
+Across 44,602 collision-free candidates and nine leave-one-nucleus-out folds,
+the calibrated complete score level admits 25 / 26 compatible placements
+(96.15% precision). It covers only four of nine nuclei, below the predeclared
+all-nucleus gate, so the reserved confirmation remains sealed.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
@@ -1250,9 +1251,21 @@ each proposed root once, and records only child actions connected through the
 newly placed parent. Exact two-step pairs exist in all nine nuclei, with
 positive counts `12 / 53 / 24 / 14 / 27 / 27 / 27 / 27 / 6`. The current
 primary-port discharge plus bounded joint incoming→outgoing transition marking
-still selects `0 / 9` exact paths. Thus the geometry and finite tree are broad
-enough; transferable ranking of their existing alternatives is the next red
-gate. No reserved target was imported or opened.
+initially selected `0 / 9` exact paths because the executor added an unrelated
+raw child-vote score after the learned root→child value. Removing that double
+count, while leaving every action unchanged, selects `5 / 9` exact paths. Thus
+the geometry and finite tree are broad enough; four boundary environments and
+transferable ranking of their existing alternatives are the next red gate. No
+reserved target was imported or opened.
+
+A bounded third-frontier control tests whether the missing value is simply
+future candidate supply. The shortlist is fixed without labels by raw child
+evidence at 512 paths per nucleus and contains exact alternatives in all nine.
+Every path is executed one additional target-free step; the value section sees
+only outgoing roles, order-two incidences, vote/parent mass, predicted colors,
+and normalized child-to-frontier distances. It selects 4 / 9 exact paths,
+worse than the corrected two-step section's 5 / 9. The larger immediate
+frontier is therefore rejected again as a GCTS value function.
 
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
