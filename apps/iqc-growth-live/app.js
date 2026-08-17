@@ -24,6 +24,27 @@ const databaseStatus = $("databaseStatus");
 const databaseSourceLink = $("databaseSourceLink");
 const confinementSelect = $("confinementSelect");
 const policySelect = $("policySelect");
+const stageOptionsPanel = $("stageOptionsPanel");
+const stageOptionsEyebrow = $("stageOptionsEyebrow");
+const stageOptionsTitle = $("stageOptionsTitle");
+const stageOptionsState = $("stageOptionsState");
+const markingTrainingOptions = $("markingTrainingOptions");
+const growthSearchOptions = $("growthSearchOptions");
+const markingChannelsSelect = $("markingChannelsSelect");
+const markingChannelsHint = $("markingChannelsHint");
+const markingReachSelect = $("markingReachSelect");
+const markingReachHint = $("markingReachHint");
+const markingRepresentationSelect = $("markingRepresentationSelect");
+const markingRepresentationHint = $("markingRepresentationHint");
+const restartMarkingButton = $("restartMarkingButton");
+const saveMarkingButton = $("saveMarkingButton");
+const markingConfigNote = $("markingConfigNote");
+const markingLibrarySelect = $("markingLibrarySelect");
+const markingLibraryCount = $("markingLibraryCount");
+const trainVariantButton = $("trainVariantButton");
+const primitiveGrowthButton = $("primitiveGrowthButton");
+const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
+const growthModeNote = $("growthModeNote");
 const pipelineButton = $("pipelineButton");
 const playButton = $("playButton");
 const playIcon = $("playIcon");
@@ -331,6 +352,11 @@ let growthStopReason = "";
 let slowFrameSeconds = 0;
 let importedStructure = null;
 let selectedDatabaseElements = ["Na", "Cl"];
+let markingDraft = { channels: 3, reach: 2, representation: "sites" };
+let markingLibrary = [];
+let activeMarkingId = null;
+let hierarchyEnabled = true;
+let nextMarkingId = 1;
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -1924,9 +1950,53 @@ function learnOverlapGrammar(source) {
     observations: strongEdges.length * 2, recurring, heldoutSupported };
 }
 
-function learnSectionModel(source) {
+const MARKING_REPRESENTATIONS = {
+  sites: { label: "site-resolved section", short: "site resolved", exponent: 4, overlapWeight: .58 },
+  ports: { label: "connection-port vector", short: "port vector", exponent: 6, overlapWeight: .70 },
+  whole: { label: "whole-cluster action", short: "whole action", exponent: 2, overlapWeight: .38 },
+};
+const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v1";
+
+function restoreMarkingLibrary() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(MARKING_LIBRARY_STORAGE) || "null");
+    if (!stored || !Array.isArray(stored.markings)) return;
+    markingLibrary = stored.markings.filter((marking) => marking?.id && marking?.config
+      && Array.isArray(marking.coefficients) && MARKING_REPRESENTATIONS[marking.config.representation]);
+    activeMarkingId = stored.activeMarkingId || null;
+    nextMarkingId = Math.max(1, ...markingLibrary.map((marking) => Number(marking.id.split("-").at(-1)) + 1 || 1));
+  } catch (_) {
+    markingLibrary = [];
+    activeMarkingId = null;
+  }
+}
+
+function persistMarkingLibrary() {
+  try {
+    localStorage.setItem(MARKING_LIBRARY_STORAGE, JSON.stringify({ markings: markingLibrary, activeMarkingId }));
+  } catch (_) {
+    // The live lab remains fully functional when storage is unavailable.
+  }
+}
+
+function currentMarkingConfig() {
+  return { channels: Number(markingDraft.channels), reach: Number(markingDraft.reach), representation: markingDraft.representation };
+}
+
+function markingMaterialKey() {
+  return scenarioSelect.value === "imported"
+    ? `imported:${importedStructure?.metadata?.entryId || importedStructure?.metadata?.name || referenceCount()}`
+    : scenarioSelect.value;
+}
+
+function learnSectionModel(source, config = currentMarkingConfig()) {
   const axes = BALANCE_DIRECTIONS;
-  const support = descriptorCutoff();
+  const representation = MARKING_REPRESENTATIONS[config.representation] || MARKING_REPRESENTATIONS.sites;
+  const reachScale = { 1: .72, 2: 1, 3: 1.35 }[config.reach] || 1;
+  const support = descriptorCutoff() * reachScale;
+  const exponent = representation.exponent;
+  const overlapWeight = representation.overlapWeight;
+  const channelGain = 1 + Math.log2(Math.max(1, config.channels)) * .065;
   const incidentEdges = Array.from({ length: source.length }, () => []);
   trainedMarking.edges.forEach((edge) => {
     incidentEdges[edge.first].push(edge);
@@ -1939,11 +2009,11 @@ function learnSectionModel(source) {
     const frame = overlapGrammar.molecular ? occurrenceFrame(source, centerIndex) : overlapGrammar.occurrences[centerIndex].rotation;
     const direction = vector.normalize().applyQuaternion(frame.clone().invert());
     const radial = .5 * (1 + Math.cos(Math.PI * distance / support));
-    return { features: axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** 4) };
+    return { features: axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** exponent) };
   };
   const fieldAt = (coefficients, basis) => basis.features.reduce((sum, feature, axis) => sum + feature * coefficients[axis], 0);
   const targets = source.map((center, centerIndex) => {
-    const values = new Array(axes.length).fill(-.18);
+    const values = new Array(axes.length).fill(-.18 / channelGain);
     incidentEdges[centerIndex].forEach((edge) => {
       const otherIndex = edge.first === centerIndex ? edge.second : edge.first;
       const vector = periodicDisplacement(center, source[otherIndex]);
@@ -1956,13 +2026,13 @@ function learnSectionModel(source) {
         const dot = direction.dot(axis);
         if (dot > bestDot) { bestDot = dot; bestAxis = axisIndex; }
       });
-      values[bestAxis] = Math.max(values[bestAxis], Math.min(.32, .10 + edge.shared * .035));
+      values[bestAxis] = Math.max(values[bestAxis], Math.min(.36, (.10 + edge.shared * .035) * channelGain));
     });
     return values;
   });
   const clusterCount = learnedClusters.clusters.length;
   const initial = Array.from({ length: clusterCount }, (_, cluster) =>
-    axes.map((_, axis) => (siteHash(cluster, axis, 17, 4) - .5) * .34));
+    axes.map((_, axis) => (siteHash(cluster, axis, 17, 4) - .5) * .34 / Math.sqrt(channelGain)));
   const coefficients = initial.map((values) => [...values]);
   const fitIndices = source.map((_, index) => index).filter((index) => index % 5 !== 0);
   const holdoutIndices = source.map((_, index) => index).filter((index) => index % 5 === 0);
@@ -1989,7 +2059,7 @@ function learnSectionModel(source) {
     return loss / Math.max(1, count);
   };
   const totalLossFor = (indices, membership, values = coefficients) =>
-    .42 * portLossFor(indices, values) + .58 * overlapLossFor(membership, values);
+    (1 - overlapWeight) * portLossFor(indices, values) + overlapWeight * overlapLossFor(membership, values);
   const initialPoint = {
     samples: 0,
     fitSamples: 0,
@@ -2007,7 +2077,8 @@ function learnSectionModel(source) {
     if (index % 5 === 0) holdoutSamples++;
     else {
       fitSamples++;
-      coefficients[cluster] = coefficients[cluster].map((value, axis) => value + .14 * (targets[index][axis] - value));
+      const channelStep = .14 / (1 + Math.log2(Math.max(1, config.channels)) * .12);
+      coefficients[cluster] = coefficients[cluster].map((value, axis) => value + channelStep * (targets[index][axis] - value));
       const incident = incidentEdges[index].filter((edge) => Math.max(edge.first, edge.second) <= index);
       const gradient = new Array(axes.length).fill(0);
       let constraints = 0;
@@ -2041,7 +2112,7 @@ function learnSectionModel(source) {
         overlapConstraints++;
       });
     });
-    const sampleLoss = .42 * portLoss + .58 * overlapLoss / Math.max(1, overlapConstraints);
+    const sampleLoss = (1 - overlapWeight) * portLoss + overlapWeight * overlapLoss / Math.max(1, overlapConstraints);
     if (index % 5 === 0) validationLoss = .92 * validationLoss + .08 * sampleLoss;
     else trainLoss = .92 * trainLoss + .08 * sampleLoss;
     return {
@@ -2053,7 +2124,9 @@ function learnSectionModel(source) {
       coefficients: coefficients.map((values) => [...values]),
     };
   });
-  return { axes, targets, initial, initialPoint, curve, support, channels: 1, fitCount: fitIndices.length, holdoutCount: holdoutIndices.length };
+  return { axes, targets, initial, initialPoint, curve, support, channels: config.channels,
+    reach: config.reach, representation: config.representation, overlapWeight, exponent, channelGain,
+    fitCount: fitIndices.length, holdoutCount: holdoutIndices.length };
 }
 
 function currentSectionPoint() {
@@ -2062,6 +2135,24 @@ function currentSectionPoint() {
 
 function currentSectionCoefficients(cluster) {
   return currentSectionPoint().coefficients[cluster];
+}
+
+function selectedMarking() {
+  return markingLibrary.find((marking) => marking.id === activeMarkingId) || null;
+}
+
+function searchSectionCoefficients() {
+  const marking = selectedMarking();
+  return marking?.coefficients?.length === learnedClusters.clusters.length
+    ? marking.coefficients : sectionModel.curve.at(-1).coefficients;
+}
+
+function markingAcceptanceThreshold() {
+  const marking = selectedMarking();
+  const representation = marking?.config.representation || sectionModel?.representation || "sites";
+  const base = { sites: -.24, ports: -.14, whole: -.30 }[representation] ?? -.24;
+  const channels = marking?.config.channels || sectionModel?.channels || 1;
+  return base - Math.min(.06, Math.log2(Math.max(1, channels)) * .012);
 }
 
 function sectionLossForCluster(cluster) {
@@ -2092,20 +2183,21 @@ function currentTrainingPoint() {
 
 function seedTrainedMarking() {
   const finalPoint = sectionModel.curve.at(-1);
+  const coefficients = searchSectionCoefficients();
   markingCache = new Map(overlapGrammar.rules.map((rule) => {
-    const score = ruleMarkingScore(rule, finalPoint.coefficients);
+    const score = ruleMarkingScore(rule, coefficients);
     return [`r${rule.id}:C${rule.from + 1}>C${rule.to + 1}`, {
       count: rule.count, min: score - finalPoint.validationLoss, max: score + finalPoint.validationLoss, sum: score * rule.count,
     }];
   }));
 }
 
-function sectionValue(cluster, localDirection, coefficients = currentSectionPoint().coefficients) {
+function sectionValue(cluster, localDirection, coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients) {
   return sectionModel.axes.reduce((sum, axis, index) =>
-    sum + coefficients[cluster][index] * Math.max(0, localDirection.dot(axis)) ** 4, 0);
+    sum + coefficients[cluster][index] * Math.max(0, localDirection.dot(axis)) ** sectionModel.exponent, 0);
 }
 
-function ruleMarkingScore(rule, coefficients = currentSectionPoint().coefficients) {
+function ruleMarkingScore(rule, coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients) {
   const forward = rule.translation.clone().normalize();
   const reverse = rule.translation.clone().negate().normalize().applyQuaternion(rule.rotation.clone().invert());
   const first = sectionValue(rule.from, forward, coefficients);
@@ -2253,7 +2345,8 @@ function candidateKey(type, position, rotation) {
 }
 
 function enqueueRulesFromPlacement(placement) {
-  const continuationRules = overlapGrammar.byFrom.get(placement.type) || [];
+  const continuationRules = hierarchyEnabled || placement.depth === 0
+    ? overlapGrammar.byFrom.get(placement.type) || [] : [];
   const replayRules = !reconstructionCertified && Number.isInteger(placement.occurrenceIndex)
     ? overlapGrammar.reconstructionByOccurrence.get(placement.occurrenceIndex) || [] : [];
   const rules = [...replayRules, ...continuationRules];
@@ -2312,7 +2405,7 @@ function batchRetainsNovelSites(entries) {
 }
 
 function rejectionIsOrderInvariant(candidate, evaluation) {
-  const markingRejected = policySelect.value === "marked" && candidate.markingScore <= -.24;
+  const markingRejected = policySelect.value === "marked" && candidate.markingScore <= markingAcceptanceThreshold();
   return evaluation.conflicts > 0 || evaluation.boundaryFailures > 0
     || evaluation.fresh.length === 0 || markingRejected;
 }
@@ -2395,7 +2488,7 @@ function evaluateCandidate(candidate) {
     else if (!insideGrowthDomain(site.p)) boundaryFailures++;
     else fresh.push(site);
   });
-  const markingAccepted = policySelect.value !== "marked" || candidate.markingScore > -.24;
+  const markingAccepted = policySelect.value !== "marked" || candidate.markingScore > markingAcceptanceThreshold();
   const knownFailures = reconstructing ? canonical.failures : 0;
   const markingFallback = reconstructing && knownFailures === 0 && !markingAccepted;
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
@@ -2403,7 +2496,7 @@ function evaluateCandidate(candidate) {
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
-    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : candidate.markingScore <= -.24 ? "marking mismatch" : "compatible overlap" };
+    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : candidate.markingScore <= markingAcceptanceThreshold() ? "marking mismatch" : "compatible overlap" };
 }
 
 function referenceCoverageCount() {
@@ -2533,20 +2626,21 @@ function buildSectionHalos() {
     coefficients.forEach((coefficient, axisIndex) => {
       const compatible = coefficient >= 0;
       const strength = Math.min(1, Math.abs(coefficient) / .28);
-      [0, 1].forEach((level) => {
+      Array.from({ length: Math.min(4, sectionModel.channels) }, (_, level) => level).forEach((level) => {
         const direction = sectionModel.axes[axisIndex];
         const material = new THREE.MeshBasicMaterial({
           color: compatible ? markingColor(selectedKey) : COLORS.red,
           wireframe: true,
           transparent: true,
-          opacity: dim ? .02 : (.08 + strength * .22) * (level ? .55 : 1),
+          opacity: dim ? .02 : (.08 + strength * .22) * (1 / (1 + level * .48)),
           depthWrite: false,
         });
         const mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 8, 5), material);
-        mesh.position.copy(centers[cluster]).addScaledVector(direction, .80 + strength * .32 + level * .12);
+        const reachOffset = .72 + sectionModel.reach * .08;
+        mesh.position.copy(centers[cluster]).addScaledVector(direction, reachOffset + strength * .32 + level * .10);
         mesh.quaternion.setFromUnitVectors(up, direction);
-        const transverse = .11 + strength * .15 + level * .045;
-        const longitudinal = .22 + strength * .28 + level * .08;
+        const transverse = .10 + strength * .15 + level * .038;
+        const longitudinal = .20 + strength * .28 + level * .07;
         mesh.scale.set(transverse, longitudinal, transverse);
         if (markingSelection === selectedKey) mesh.scale.multiplyScalar(1.08);
         clusterGroup.add(mesh);
@@ -2604,6 +2698,122 @@ function nearestParent(position) {
   return best;
 }
 
+function markingName(config, id) {
+  const representation = MARKING_REPRESENTATIONS[config.representation]?.short || config.representation;
+  return `M${String(id).padStart(2, "0")} · ${config.channels}ch · R${config.reach} · ${representation}`;
+}
+
+function compatibleMarkings() {
+  const key = markingMaterialKey();
+  return markingLibrary.filter((marking) => marking.materialKey === key);
+}
+
+function freezeCurrentMarking() {
+  if (!sectionModel) return null;
+  const config = { channels: sectionModel.channels, reach: sectionModel.reach, representation: sectionModel.representation };
+  const materialKey = markingMaterialKey();
+  let marking = markingLibrary.find((candidate) => candidate.materialKey === materialKey
+    && candidate.config.channels === config.channels && candidate.config.reach === config.reach
+    && candidate.config.representation === config.representation);
+  if (!marking) {
+    const serial = nextMarkingId++;
+    marking = {
+      id: `marking-${serial}`,
+      name: markingName(config, serial),
+      materialKey,
+      materialName: currentMaterial().name,
+      config,
+      coefficients: sectionModel.curve.at(-1).coefficients.map((values) => [...values]),
+      validationLoss: sectionModel.curve.at(-1).validationLoss,
+      samples: referenceCount(),
+    };
+    markingLibrary.push(marking);
+  } else {
+    marking.coefficients = sectionModel.curve.at(-1).coefficients.map((values) => [...values]);
+    marking.validationLoss = sectionModel.curve.at(-1).validationLoss;
+    marking.samples = referenceCount();
+  }
+  activeMarkingId = marking.id;
+  policySelect.value = "marked";
+  persistMarkingLibrary();
+  syncStageOptions();
+  return marking;
+}
+
+function restartMarkingTraining() {
+  if (pipelineStage !== 3) return;
+  setPlaying(false);
+  trainingProgress = 0;
+  eventIndex = 0;
+  markingSelection = null;
+  sectionModel = learnSectionModel(referenceAtoms, currentMarkingConfig());
+  markingCache.clear();
+  buildClusterOverlay();
+  rebuildWorld();
+  updateUI();
+  syncStageOptions();
+}
+
+function renderMarkingLibrary() {
+  const compatible = compatibleMarkings();
+  markingLibrarySelect.replaceChildren();
+  const baseline = document.createElement("option");
+  baseline.value = "action";
+  baseline.textContent = "No marking · colored-action baseline";
+  markingLibrarySelect.appendChild(baseline);
+  const oracle = document.createElement("option");
+  oracle.value = "direct";
+  oracle.textContent = "Exact local oracle · diagnostic ceiling";
+  markingLibrarySelect.appendChild(oracle);
+  compatible.forEach((marking) => {
+    const option = document.createElement("option");
+    option.value = marking.id;
+    option.textContent = `${marking.name} · loss ${marking.validationLoss.toFixed(3)}`;
+    markingLibrarySelect.appendChild(option);
+  });
+  const wanted = policySelect.value === "marked" ? activeMarkingId : policySelect.value;
+  markingLibrarySelect.value = [...markingLibrarySelect.options].some((option) => option.value === wanted)
+    ? wanted : compatible.at(-1)?.id || "action";
+  markingLibraryCount.textContent = `${compatible.length} saved`;
+}
+
+function syncStageOptions() {
+  const visible = pipelineStage === 3 || pipelineStage === 4;
+  stageOptionsPanel.hidden = !visible;
+  if (!visible) return;
+  const training = pipelineStage === 3;
+  markingTrainingOptions.hidden = !training;
+  growthSearchOptions.hidden = training;
+  stageOptionsEyebrow.textContent = training ? "03 · marking experiment" : "04 · search experiment";
+  stageOptionsTitle.textContent = training ? "Train a connection marking" : "Choose the search grammar";
+  markingChannelsHint.textContent = `${markingDraft.channels} coupled field${markingDraft.channels === 1 ? "" : "s"}`;
+  markingReachHint.textContent = `${markingDraft.reach} shell${markingDraft.reach === 1 ? "" : "s"}`;
+  markingRepresentationHint.textContent = MARKING_REPRESENTATIONS[markingDraft.representation].short;
+  markingChannelsSelect.value = String(markingDraft.channels);
+  markingReachSelect.value = String(markingDraft.reach);
+  markingRepresentationSelect.value = markingDraft.representation;
+  if (training) {
+    const complete = trainingProgress >= referenceCount();
+    const existing = compatibleMarkings().some((marking) => marking.config.channels === markingDraft.channels
+      && marking.config.reach === markingDraft.reach && marking.config.representation === markingDraft.representation);
+    stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${referenceCount()}`;
+    saveMarkingButton.disabled = !complete;
+    saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
+    markingConfigNote.textContent = `${sectionModel?.channels || markingDraft.channels} channels · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. The mark records connection compatibility, not physical energy.`;
+  } else {
+    renderMarkingLibrary();
+    const active = selectedMarking();
+    stageOptionsState.textContent = policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline";
+    primitiveGrowthButton.classList.toggle("active", !hierarchyEnabled);
+    primitiveGrowthButton.setAttribute("aria-pressed", String(!hierarchyEnabled));
+    hierarchicalGrowthButton.classList.toggle("active", hierarchyEnabled);
+    hierarchicalGrowthButton.setAttribute("aria-pressed", String(hierarchyEnabled));
+    growthModeNote.textContent = hierarchyEnabled
+      ? "Accepted clusters expose frozen ports and may promote into clusters². The selected marking ranks and prunes those exact candidate placements."
+      : "Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier.";
+  }
+}
+
 function resetCounters() {
   eventIndex = 0;
   oracleCalls = 0;
@@ -2652,8 +2862,19 @@ function enterPipelineStage(index, options = {}) {
   detectedUnitCell = inferTranslationCell(referenceAtoms);
   trainedMarking = learnOverlapMarking(referenceAtoms);
   overlapGrammar = learnOverlapGrammar(referenceAtoms);
-  sectionModel = learnSectionModel(referenceAtoms);
+  const compatibleActive = markingLibrary.find((marking) => marking.id === activeMarkingId
+    && marking.materialKey === markingMaterialKey());
+  const growthMarking = compatibleActive || (pipelineStage === 4 ? compatibleMarkings().at(-1) : null);
+  if (pipelineStage === 4 && growthMarking) {
+    activeMarkingId = growthMarking.id;
+    markingDraft = { ...growthMarking.config };
+  }
+  sectionModel = learnSectionModel(referenceAtoms, currentMarkingConfig());
   if (pipelineStage !== 3) trainingProgress = referenceCount();
+  if (pipelineStage === 4) {
+    const compatible = compatibleMarkings();
+    if (!compatible.length) freezeCurrentMarking();
+  }
   if (pipelineStage >= 3 && policySelect.value === "marked") seedTrainedMarking();
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
@@ -2671,6 +2892,7 @@ function enterPipelineStage(index, options = {}) {
   rebuildWorld();
   updateUI();
   updatePipelineButtons();
+  syncStageOptions();
   frameStage();
   if (options.play) setPlaying(true);
 }
@@ -2724,13 +2946,13 @@ function updateStageNarrative() {
       eyebrow: "training · recursive connection sections", title: "Freeze a bounded marking across hierarchy levels", phase: `loss ${trainingPoint.validationLoss.toFixed(3)}`,
       caption: `${trainingPoint.samples}/${referenceCount()} centers processed · ${trainingPoint.overlaps.toLocaleString()} support overlaps · held-out mismatch ${trainingPoint.validationLoss.toFixed(3)}.`, badge: "train",
       decision: "Recursive marking training", copy: "Each local cluster begins with random directional ports. Observed higher-order connections shape the section; the resulting parent/source marking is frozen, rescaled, and evaluated on the next unseen cluster level.",
-      values: ["fit m_C(x)", `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), `${sectionModel.axes.length} signed ports`],
+      values: [`fit ${sectionModel.channels}-channel m_C(x)`, `ball R=${sectionModel.support.toFixed(1)}a`, trainingPoint.validationLoss.toFixed(4), MARKING_REPRESENTATIONS[sectionModel.representation].label],
     },
     {
       eyebrow: "search · off-lattice recursive covering", title: "Let overlapping higher-order parents vote, then branch", phase: "seed cluster",
       caption: "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is one maximal commuting frontier set: every displayed placement is valid in every permutation, while dependent residuals remain explicit tree branches.", badge: "search",
       decision: "Recursive consensus frontier initialized", copy: "The same frozen connection marking proposes the next scale. A frontier antichain is displayed together only after pairwise species and hard-core checks, plus a unique-new-support check for every accepted placement.",
-      values: ["parent + φ(source−parent)", "overlap consensus", "finite GCTS state", "branch residual"],
+      values: ["parent + φ(source−parent)", policySelect.value === "marked" ? selectedMarking()?.name || "active marking" : policySelect.value === "direct" ? "exact local oracle" : "unmarked action", hierarchyEnabled ? "clusters² promotion" : "primitive clusters", "branch residual"],
     },
   ];
   if (learnedCover.molecular) {
@@ -3085,10 +3307,12 @@ function updateUI() {
     actionValue.textContent = "fit m_C(x)";
     domainValue.textContent = `ball R=${sectionModel.support.toFixed(1)}a`;
     energyValue.textContent = point.validationLoss.toFixed(4);
-    resolverValue.textContent = `${sectionModel.axes.length} signed ports`;
+    resolverValue.textContent = `${sectionModel.channels}ch · ${MARKING_REPRESENTATIONS[sectionModel.representation].short}`;
   } else {
     stageEyebrow.textContent = "search · recursive off-lattice covering";
-    stageTitle.textContent = "Transport parents, merge overlap votes, branch on residuals";
+    stageTitle.textContent = hierarchyEnabled
+      ? "Transport parents, merge overlap votes, promote clusters²"
+      : "Search one primitive-cluster frontier without promotion";
     phaseReadout.textContent = playing && growthDeadline
       ? `${placedClusters.length.toLocaleString()} clusters · ${formatDuration(growthTimeRemaining())} left`
       : `${atoms.length.toLocaleString()} atoms · ${placedClusters.length.toLocaleString()} clusters`;
@@ -3111,6 +3335,7 @@ function updateUI() {
   renderMarkings();
   renderStructureStats();
   renderLegend();
+  syncStageOptions();
 }
 
 function renderLegend() {
@@ -3359,6 +3584,53 @@ loadFixtureButton.addEventListener("click", async () => {
   }
 });
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
+markingChannelsSelect.addEventListener("change", () => {
+  markingDraft.channels = Number(markingChannelsSelect.value);
+  restartMarkingTraining();
+});
+markingReachSelect.addEventListener("change", () => {
+  markingDraft.reach = Number(markingReachSelect.value);
+  restartMarkingTraining();
+});
+markingRepresentationSelect.addEventListener("change", () => {
+  markingDraft.representation = markingRepresentationSelect.value;
+  restartMarkingTraining();
+});
+restartMarkingButton.addEventListener("click", restartMarkingTraining);
+saveMarkingButton.addEventListener("click", () => {
+  if (trainingProgress < referenceCount()) return;
+  freezeCurrentMarking();
+  updateUI();
+});
+markingLibrarySelect.addEventListener("change", () => {
+  const value = markingLibrarySelect.value;
+  if (value === "action" || value === "direct") {
+    policySelect.value = value;
+  } else {
+    const marking = markingLibrary.find((candidate) => candidate.id === value);
+    if (!marking) return;
+    activeMarkingId = marking.id;
+    markingDraft = { ...marking.config };
+    policySelect.value = "marked";
+    persistMarkingLibrary();
+  }
+  if (pipelineStage === 4) enterPipelineStage(4);
+});
+trainVariantButton.addEventListener("click", () => {
+  const marking = selectedMarking();
+  if (marking) markingDraft = { ...marking.config };
+  enterPipelineStage(3);
+});
+primitiveGrowthButton.addEventListener("click", () => {
+  if (!hierarchyEnabled) return;
+  hierarchyEnabled = false;
+  if (pipelineStage === 4) enterPipelineStage(4);
+});
+hierarchicalGrowthButton.addEventListener("click", () => {
+  if (hierarchyEnabled) return;
+  hierarchyEnabled = true;
+  if (pipelineStage === 4) enterPipelineStage(4);
+});
 policySelect.addEventListener("change", () => {
   if (pipelineStage === 4) enterPipelineStage(4);
   else {
@@ -3438,6 +3710,7 @@ function animate(now) {
   renderer.render(scene, camera);
 }
 
+restoreMarkingLibrary();
 buildPeriodicTable();
 enterPipelineStage(0);
 resize();

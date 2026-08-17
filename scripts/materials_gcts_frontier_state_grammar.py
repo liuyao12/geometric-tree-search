@@ -209,7 +209,7 @@ def _normalized_sites(sites: Sequence[Site], scale: float) -> tuple[Site, ...]:
                  for species, point in sites)
 
 
-def _fit_occurrences(type_id: int, rows, waves, proper: bool,
+def _fit_occurrences(type_id: int, rows, waves, signature, proper: bool,
                      tolerance: float):
     first_wave, first_members, first_scale = rows[0]
     first = waves[first_wave]
@@ -218,6 +218,19 @@ def _fit_occurrences(type_id: int, rows, waves, proper: bool,
     normalized = _normalized_sites(first_sites, first_scale)
     prototype: ClusterPrototype | None = None
     if proper:
+        # Store the lexicographically canonical right-handed coordinates, not
+        # the arbitrary frame of the first observed occurrence.  This makes
+        # downstream transition translations invariant to a global rotation.
+        species_lookup = {_species_key(species): species
+                          for species, _point in first_sites}
+        canonical = tuple((
+            species_lookup[species_key],
+            (x * tolerance, y * tolerance, z * tolerance))
+            for species_key, x, y, z in signature[1])
+        canonical_center = _centroid(tuple(point for _species, point
+                                            in canonical))
+        normalized = tuple((species, _subtract(point, canonical_center))
+                           for species, point in canonical)
         prototype = make_prototype(type_id, normalized, tolerance)
     occurrences = []
     for wave_index, members, scale in rows:
@@ -338,7 +351,7 @@ def compile_frontier_state_grammar(
     for type_id, ((support_size, signature, proper), rows,
                   independent, saving) in enumerate(admitted):
         prototype_sites, occurrences = _fit_occurrences(
-            type_id, rows, by_number, proper, tolerance)
+            type_id, rows, by_number, signature, proper, tolerance)
         state_types.append(FrontierStateType(
             type_id, support_size, signature,
             tuple(species for species, _point in prototype_sites),

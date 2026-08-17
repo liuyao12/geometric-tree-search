@@ -1692,6 +1692,25 @@ support, and the strict witness count remains zero. A synthetic
 compiler; colored mirror and amorphous controls remain red. The next generic
 step is a certified transition grammar among frontier-state types.
 
+That transition grammar is now implemented. It packs atom-disjoint finite
+proper occurrences independently by state type, assigns each next-wave state
+to its nearest compatible parent, and stores the entire child set in the
+parent's normalized frame. The canonical key jointly quotients the parent
+proper symmetry and each child symmetry while retaining relative scale,
+rotation, translation, chemistry, and multiplicity. A stationary rule needs
+the identical multi-child key on two consecutive transitions with at least two
+independent parent occurrences on each.
+
+The exact IQC trace contains three finite proper types, 30 packed occurrences,
+and 14 parent-to-child observations. They form eight exact rules, but every
+rule is unary, transition-local, and has non-positive description saving. No
+stationary rule reaches the target-free executor. A generic expanding control
+does pass: two colored triangle parents learn the same two-child rule twice,
+the executor reproduces the next two explicit waves, and 18 symbolic actions
+represent 1,572,864 sites. Thus execution and the million-site gate are no
+longer missing APIs; the remaining scientific blocker is learning a repeated
+multi-child rule from the IQC frontier itself.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

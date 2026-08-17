@@ -270,6 +270,26 @@ body.atlas-open { overflow: hidden; }
 .range-field output { color: var(--mint); font: 9px var(--mono); }
 .range-field input { width: 100%; height: 3px; margin: 4px 0 0; accent-color: var(--mint); cursor: pointer; }
 .control-note { margin: 8px 0 0; color: #6f847e; font-size: 9px; line-height: 1.45; }
+.stage-options { padding: 12px; border: 1px solid rgba(101,225,188,.28); background: linear-gradient(145deg, rgba(101,225,188,.055), rgba(181,148,255,.035)); }
+.stage-options-heading { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+.stage-options-heading .eyebrow { margin-bottom: 5px; }
+.stage-options-heading strong { display: block; color: #dce7e3; font-size: 11px; font-weight: 500; }
+.option-state { flex: 0 0 auto; padding: 4px 6px; border: 1px solid rgba(181,148,255,.35); color: var(--violet); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+.stage-options .field b { color: var(--mint); font: 7px var(--mono); font-weight: 400; }
+.option-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6px; margin-top: 11px; }
+.option-actions button, .train-variant { min-height: 31px; padding: 0 8px; border: 1px solid var(--line); background: #0b1a1b; color: var(--muted); font: 8px var(--mono); cursor: pointer; }
+.option-actions button:hover, .train-variant:hover { border-color: rgba(101,225,188,.55); color: var(--mint); }
+.option-actions .option-primary { border-color: rgba(101,225,188,.45); background: rgba(101,225,188,.08); color: var(--mint); }
+.option-actions .option-primary:disabled { cursor: not-allowed; opacity: .38; }
+.train-variant { width: 100%; margin-top: 7px; color: var(--violet); border-color: rgba(181,148,255,.35); background: rgba(181,148,255,.05); }
+.hierarchy-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 11px; }
+.hierarchy-choice button { min-width: 0; min-height: 67px; padding: 8px; border: 1px solid var(--line); background: #0b1a1b; color: var(--faint); text-align: left; cursor: pointer; }
+.hierarchy-choice button:hover { border-color: rgba(101,225,188,.4); }
+.hierarchy-choice button.active { border-color: rgba(101,225,188,.55); background: rgba(101,225,188,.075); color: var(--text); box-shadow: inset 0 -2px var(--mint); }
+.hierarchy-choice small, .hierarchy-choice strong, .hierarchy-choice span { display: block; overflow: hidden; text-overflow: ellipsis; }
+.hierarchy-choice small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+.hierarchy-choice strong { margin-top: 5px; color: inherit; font-size: 9px; font-weight: 500; }
+.hierarchy-choice span { margin-top: 4px; color: #617772; font: 6px var(--mono); white-space: nowrap; }
 .toggle-stack { border: 1px solid var(--line); }
 .toggle-stack label { display: flex; align-items: center; gap: 9px; min-height: 34px; padding: 0 10px; border-bottom: 1px solid var(--line); color: #93a6a1; font-size: 10px; cursor: pointer; }
 .toggle-stack label:last-child { border-bottom: 0; }
