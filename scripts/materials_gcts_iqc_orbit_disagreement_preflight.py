@@ -90,12 +90,14 @@ def _development_sources():
     return sources
 
 
-def _development_groups(*, joint_role_geometry=False):
+def _development_groups(*, joint_role_geometry=False,
+                        message_passing_rounds=0):
     return _candidate_groups_for_geometry(
         _development_sources(), neighborhood_reach=NEIGHBORHOOD_REACH,
         distance_bin_width=DISTANCE_BIN_WIDTH,
         maximum_neighbors=MAXIMUM_NEIGHBORS,
-        joint_role_geometry=joint_role_geometry)
+        joint_role_geometry=joint_role_geometry,
+        message_passing_rounds=message_passing_rounds)
 
 
 def evaluate() -> OrbitDisagreementPreflight:

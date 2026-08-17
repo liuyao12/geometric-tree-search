@@ -1293,6 +1293,16 @@ independent edge weights cannot represent the arrangement of a local incidence
 graph. The next section must use finite canonical subgraphs or bounded message
 passing while retaining the same exact placement layer.
 
+A bounded message-passing control retains that topology explicitly. Occupied
+nodes begin with species and candidate-relative radial shell, then exchange
+their complete pair-distance-labelled neighbor multisets for one or two rounds;
+the primary port conditions every node and whole-graph color. Both depths score
+14 / 20 exact group-heldout actions. Exact message hashes create 80,323
+one-round and 161,768 two-round role-conditioned node colors, respectively, so
+recurrence fragments instead of improving. These hashes only rank already
+certified candidates and never authorize geometry. The next section must learn
+a train-only finite quotient of message colors before applying the marking.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

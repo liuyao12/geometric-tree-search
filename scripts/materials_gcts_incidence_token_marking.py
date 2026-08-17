@@ -70,6 +70,7 @@ def candidate_incidence_descriptors(
         proposals, *, distance_scale: float, neighborhood_reach: float = 3.,
         distance_bin_width: float = .5, maximum_neighbors: int = 8,
         maximum_roles: int = 3, joint_role_geometry: bool = False,
+        message_passing_rounds: int = 0,
         occupied_positions=(),
         occupied_species=()):
     """Describe every candidate using invariant local port-incidence tokens.
@@ -81,7 +82,7 @@ def candidate_incidence_descriptors(
     if (len(occupied_positions) != len(occupied_species) or
             distance_scale <= 0 or neighborhood_reach <= 0 or
             distance_bin_width <= 0 or maximum_neighbors < 1 or
-            maximum_roles < 1):
+            maximum_roles < 1 or not 0 <= message_passing_rounds <= 3):
         raise ValueError("invalid incidence descriptor settings")
     points = tuple(sorted(proposals.votes))
     roles = {point: _top_roles(proposals, point, maximum_roles)
@@ -164,6 +165,14 @@ def candidate_incidence_descriptors(
              for other, species in zip(occupied_positions, occupied_species)
              if math.dist(point, other) <= cell_size + 1e-12),
             key=lambda row: (row[0], row[1], row[2]))[:maximum_neighbors]
+        node_colors = tuple((species, round(
+            radius / (distance_scale * distance_bin_width)))
+            for radius, species, _neighbor in nearest)
+        edge_bins = {(left, right): round(math.dist(
+            nearest[left][2], nearest[right][2]) /
+            (distance_scale * distance_bin_width))
+            for left in range(len(nearest))
+            for right in range(left + 1, len(nearest))}
         for left_index, (left_radius, left_species, left_point) in enumerate(
                 nearest):
             for right_radius, right_species, right_point in nearest[
@@ -181,6 +190,22 @@ def candidate_incidence_descriptors(
                 if joint_role_geometry and own_roles:
                     tokens.add(("role-occupied-metric-edge", own_roles[0],
                                 species_pair, radii, pair_bin))
+        for message_round in range(1, message_passing_rounds + 1):
+            refined = []
+            for node, color in enumerate(node_colors):
+                messages = tuple(sorted(((
+                    edge_bins[min(node, other), max(node, other)],
+                    node_colors[other]) for other in range(len(node_colors))
+                    if other != node), key=repr))
+                refined.append(hashlib.sha256(repr(
+                    (color, messages)).encode()).hexdigest()[:20])
+            node_colors = tuple(refined)
+            if own_roles:
+                tokens.update(("role-occupied-message-node", message_round,
+                               own_roles[0], color)
+                              for color in node_colors)
+                tokens.add(("role-occupied-message-graph", message_round,
+                            own_roles[0], tuple(sorted(node_colors))))
         result[point] = CandidateIncidenceDescriptor(
             tuple(sorted(tokens, key=repr)))
     return result

@@ -2126,6 +2126,17 @@ floor yields 8 / 20. This is not a vocabulary-coverage problem. A marginal sum
 over relational edge tokens loses graph topology, so the next bounded marking
 must canonicalize finite incidence subgraphs or perform finite message passing.
 
+The bounded message-passing control initializes occupied nodes by species and
+candidate-relative radial shell and performs one or two complete-graph message
+rounds with quantized pair distance as the edge label. Every resulting node and
+graph color is conditioned on the primary symmetry-quotiented port. Both depths
+select 14 / 20 exact heldout actions. The exact hashes produce 80,323 node
+colors after one round and 161,768 after two, revealing representation
+fragmentation rather than missing candidate geometry. Because these colors are
+ranking features only, collisions cannot authorize a placement. The next
+bounded learner must fit a finite quotient of message colors on training folds
+instead of retaining exact neighborhood hashes.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are
