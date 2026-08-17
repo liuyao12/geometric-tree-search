@@ -10,8 +10,9 @@ proper symmetries and independently by every child's proper symmetries.
 
 A stationary rule needs the identical normalized child production on two
 consecutive transitions, at least two independent parent occurrences in each,
-and more than one self-similar child.  The executor then applies that frozen
-rule to state instances; it has no scoring or target API.
+and more than one child.  The executor applies homogeneous or heterogeneous
+frozen rules to state instances; the scalar symbolic counter is intentionally
+restricted to closed one-state rules.  Neither API accepts a target.
 """
 
 from __future__ import annotations
@@ -52,13 +53,19 @@ class FrontierTransitionObservation:
 class FrontierTransitionRule:
     rule_id: int
     parent_type: int
-    child_type: int
+    child_types: tuple[int, ...]
     child_placements: tuple[FrontierChildPlacement, ...]
     canonical_code: tuple
     observations: tuple[FrontierTransitionObservation, ...]
     independent_transition_waves: int
     description_saving: int
     stationary: bool
+
+    @property
+    def child_type(self) -> int:
+        """Return the unique child type, or ``-1`` for a heterogeneous RHS."""
+        unique = set(self.child_types)
+        return next(iter(unique)) if len(unique) == 1 else -1
 
 
 @dataclass(frozen=True)
@@ -157,13 +164,14 @@ def _raw_placement(parent: FrontierStateOccurrence,
         child_type, child.scale / parent.scale, rotation, translation)
 
 
-def _canonical_code(parent_prototype, child_prototype, placements,
-                    child_signature, tolerance):
+def _canonical_code(parent_prototype, child_prototypes, placements,
+                    child_signatures, tolerance):
     alternatives = []
     for parent_symmetry in parent_prototype.proper_symmetries:
         inverse_parent = transpose(parent_symmetry)
         records = []
         for placement in placements:
+            child_prototype = child_prototypes[placement.child_type]
             translation = matvec(
                 inverse_parent, placement.relative_translation)
             base_rotation = matmul(
@@ -173,22 +181,12 @@ def _canonical_code(parent_prototype, child_prototype, placements,
                  for symmetry in child_prototype.proper_symmetries),
                 key=lambda value: _matrix_key(value, tolerance))
             records.append((
-                child_signature,
+                child_signatures[placement.child_type],
                 round(placement.relative_scale / tolerance),
                 _point_key(translation, tolerance),
                 _matrix_key(rotation, tolerance)))
         alternatives.append(tuple(sorted(records, key=repr)))
     return min(alternatives, key=repr)
-
-
-def _assign_children(parents, children):
-    result = defaultdict(list)
-    for child in children:
-        parent = min(parents, key=lambda candidate: (
-            math.dist(candidate.translation, child.translation),
-            candidate.member_indices))
-        result[parent].append(child)
-    return result
 
 
 def compile_frontier_transition_grammar(
@@ -223,29 +221,39 @@ def compile_frontier_transition_grammar(
             parents = packed.get((parent_type, source_wave), ())
             if not parents:
                 continue
-            for child_type, child_state in proper.items():
-                children = packed.get((child_type, source_wave + 1), ())
-                if not children:
-                    continue
-                assigned = _assign_children(parents, children)
-                for parent, rows in assigned.items():
-                    placements = tuple(_raw_placement(
-                        parent, child, child_type) for child in rows)
-                    code = _canonical_code(
-                        prototypes[parent_type], prototypes[child_type],
-                        placements, child_state.normalized_signature,
-                        tolerance)
-                    observations.append((
-                        parent_type, child_type, code,
-                        FrontierTransitionObservation(
-                            source_wave, parent.member_indices, placements,
-                            code)))
+            children = tuple(
+                (child_type, child)
+                for child_type in sorted(proper)
+                for child in packed.get((child_type, source_wave + 1), ()))
+            if not children:
+                continue
+            assigned = defaultdict(list)
+            for child_type, child in children:
+                parent = min(parents, key=lambda candidate: (
+                    math.dist(candidate.translation, child.translation),
+                    candidate.member_indices))
+                assigned[parent].append((child_type, child))
+            for parent, rows in assigned.items():
+                placements = tuple(_raw_placement(
+                    parent, child, child_type)
+                    for child_type, child in sorted(
+                        rows, key=lambda item: (
+                            item[0], item[1].member_indices)))
+                code = _canonical_code(
+                    prototypes[parent_type], prototypes, placements,
+                    {type_id: state.normalized_signature
+                     for type_id, state in proper.items()}, tolerance)
+                observations.append((
+                    parent_type, code,
+                    FrontierTransitionObservation(
+                        source_wave, parent.member_indices, placements,
+                        code)))
 
     grouped = defaultdict(list)
-    for parent_type, child_type, code, observation in observations:
-        grouped[parent_type, child_type, code].append(observation)
+    for parent_type, code, observation in observations:
+        grouped[parent_type, code].append(observation)
     rows = []
-    for (parent_type, child_type, code), items in grouped.items():
+    for (parent_type, code), items in grouped.items():
         items = tuple(sorted(items, key=lambda row: (
             row.source_wave, row.parent_members)))
         waves_seen = sorted({item.source_wave for item in items})
@@ -261,16 +269,18 @@ def compile_frontier_transition_grammar(
                 if wave + 1 in waves_seen) and
             all(sum(item.source_wave == wave + 1 for item in items) >= 2
                 for wave in waves_seen if wave + 1 in waves_seen))
-        rows.append((parent_type, child_type, code, items,
+        child_types = tuple(item.child_type
+                            for item in items[0].placements)
+        rows.append((parent_type, child_types, code, items,
                      len(waves_seen), saving, stationary))
     rows.sort(key=lambda row: (row[0], row[1], repr(row[2])))
     rules = tuple(FrontierTransitionRule(
-        rule_id, parent_type, child_type, items[0].placements, code, items,
+        rule_id, parent_type, child_types, items[0].placements, code, items,
         independent, saving, stationary)
-        for rule_id, (parent_type, child_type, code, items,
+        for rule_id, (parent_type, child_types, code, items,
                       independent, saving, stationary) in enumerate(rows))
     payload = tuple((
-        rule.parent_type, rule.child_type, rule.canonical_code,
+        rule.parent_type, rule.child_types, rule.canonical_code,
         tuple(item.source_wave for item in rule.observations),
         rule.stationary) for rule in rules)
     digest = hashlib.sha256(json.dumps(
@@ -305,16 +315,19 @@ def execute_frontier_transition(
         raise ValueError("parent state type does not match the rule")
     state_by_id = {state.type_id: state for state in states}
     parent_prototype = _prototype(state_by_id[rule.parent_type], tolerance)
-    child_prototype = _prototype(state_by_id[rule.child_type], tolerance)
+    child_prototypes = {
+        type_id: _prototype(state_by_id[type_id], tolerance)
+        for type_id in set(rule.child_types)}
     if any(placement.relative_scale <= 0 or
            not math.isfinite(placement.relative_scale) or
            not is_proper_rotation(placement.relative_rotation)
            for placement in rule.child_placements):
         raise ValueError("transition placements must be finite proper similarities")
     if _canonical_code(
-            parent_prototype, child_prototype, rule.child_placements,
-            state_by_id[rule.child_type].normalized_signature,
-            tolerance) != rule.canonical_code:
+            parent_prototype, child_prototypes, rule.child_placements,
+            {type_id: state_by_id[type_id].normalized_signature
+             for type_id in child_prototypes}, tolerance) != \
+            rule.canonical_code:
         raise ValueError("transition rule geometry does not match its frozen code")
     children = []
     rendered = {}

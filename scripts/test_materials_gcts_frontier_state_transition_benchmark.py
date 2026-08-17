@@ -29,9 +29,12 @@ def test_real_iqc_state_transitions_are_executable_but_not_stationary():
     assert result.recurring_state_types == 5
     assert result.finite_proper_state_types == 3
     assert result.packed_proper_occurrences == 30
-    assert result.transition_observations == 14
-    assert result.exact_transition_rules == 8
-    assert result.maximum_children_per_rule == 1
+    assert result.transition_observations == 8
+    assert result.exact_transition_rules == 5
+    assert result.maximum_children_per_rule == 3
+    assert result.multi_child_rules == 4
+    assert result.heterogeneous_child_rules == 4
+    assert result.maximum_distinct_child_types == 3
     assert result.rules_seen_on_multiple_transitions == 0
     assert result.positive_mdl_rules == 0
     assert not result.stationary_rule_ids

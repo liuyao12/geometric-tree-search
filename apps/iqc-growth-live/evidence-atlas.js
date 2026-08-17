@@ -28,7 +28,7 @@ const SYSTEMS = {
     evidence: [
       ["Generic VM", "31,521 exact sites", "One relational evaluator; no material-family dispatch."],
       ["Clusters²", "6 positive quotient levels", "History-free re-clustering improves proof depth."],
-      ["Frontier states", "336 / 368 sites", "Five recurring types compile to 14 exact transitions; every real production is still unary."],
+      ["Frontier states", "336 / 368 sites", "Five exact rules include four heterogeneous multi-child productions; none repeats across transitions."],
       ["Strict audit", "0 common three-level keys", "Topology, chemistry, chirality, ports, pose, and populations stay exact."],
     ],
   },
@@ -90,7 +90,7 @@ const TIMELINE = [
   ["07", "Quasicrystal continuation", "Ideal IQC and published Cd–Yb systems achieved exact, self-fed finite growth with causal local markings.", "progress"],
   ["08", "History-free hierarchy", "Re-clustering generated deeper IQC and nine-level Cd–Yb compression without encoding action order as geometry.", "progress"],
   ["09", "Site-resolved completion", "Partial macro sites now remain explicit obligations; no child or parent exists until its full colored support and ports verify.", "proved"],
-  ["10", "Frontier-state transitions", "Five recurring states cover 336 / 368 sites and compile to a target-free proper-frame executor; the real IQC rules remain unary.", "progress"],
+  ["10", "Frontier-state transitions", "Five recurring states cover 336 / 368 sites; four exact rules now join mixed child types, but none recurs on another transition.", "progress"],
   ["11", "Open frontier", "Learn a finite oriented frontier production whose scale and unique support both amplify, then execute it to the million-site benchmark without a family-specific backend.", "open"],
 ];
 
@@ -104,10 +104,10 @@ const CLAIMS = [
   ["progress", "Deep QC compression", "Ideal IQC reaches six positive quotient levels; Cd–Yb reaches nine on five disjoint training windows."],
   ["progress", "Frozen hierarchy transfer", "IQC primitive cover transfers completely and Cd–Yb promoted vocabularies re-encode four held-out levels, with dormant symbols explicit."],
   ["progress", "Site-resolved marking", "A 1,245-site train corpus gives site AUC 0.8864 and action AUC 1.0, both significant against 31 shuffles."],
-  ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC continuation sites; 14 parent→child observations now compile into an executable proper-frame grammar."],
+  ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC continuation sites; eight complete observations compile into five exact rules, four heterogeneous."],
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],
-  ["open", "Expanding frontier production", "The real proper-state grammar has eight exact rules, all unary and transition-local. The only repeated golden-ratio dimer shrinks 24 → 12 → 8 and is not finitely oriented."],
+  ["open", "Expanding frontier production", "The real proper-state grammar has four multi-child rules (up to three child types), but all are transition-local and non-compressive. The repeated golden-ratio dimer still shrinks 24 → 12 → 8."],
   ["open", "Generic million-site QC growth", "Specialized/address ceilings cross one million; the family-blind cluster-of-clusters executor does not yet."],
   ["open", "Pure-port crystal closure", "NaCl's port graph certifies the learned cell rule, but the radix/offset proposal still comes from a positions-only grid learner."],
   ["open", "Explicit output cost", "Symbolic derivations compress actions; emitting every atom remains linear and is not claimed to replace molecular dynamics time integration."],

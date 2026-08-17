@@ -27,6 +27,9 @@ class FrontierStateTransitionBenchmark:
     transition_observations: int
     exact_transition_rules: int
     maximum_children_per_rule: int
+    multi_child_rules: int
+    heterogeneous_child_rules: int
+    maximum_distinct_child_types: int
     rules_seen_on_multiple_transitions: int
     positive_mdl_rules: int
     stationary_rule_ids: tuple[int, ...]
@@ -41,6 +44,12 @@ class FrontierStateTransitionBenchmark:
 def audit_snapshots(snapshots, source_sites_exact=True):
     states = compile_frontier_state_grammar(snapshots, maximum_nodes=5)
     transitions = compile_frontier_transition_grammar(states, snapshots)
+    multi_child = sum(len(rule.child_placements) > 1
+                      for rule in transitions.rules)
+    heterogeneous = sum(len(set(rule.child_types)) > 1
+                        for rule in transitions.rules)
+    maximum_types = max((len(set(rule.child_types))
+                         for rule in transitions.rules), default=0)
     return FrontierStateTransitionBenchmark(
         len(snapshots), states.atom_count, source_sites_exact, True, False,
         len(states.recurring_state_types), transitions.proper_state_types,
@@ -48,18 +57,20 @@ def audit_snapshots(snapshots, source_sites_exact=True):
         len(transitions.rules),
         max((len(rule.child_placements) for rule in transitions.rules),
             default=0),
+        multi_child, heterogeneous, maximum_types,
         sum(rule.independent_transition_waves >= 2
             for rule in transitions.rules),
         sum(rule.description_saving > 0 for rule in transitions.rules),
         transitions.stationary_rule_ids,
         bool(transitions.stationary_rule_ids), False,
         transitions.target_used, transitions.grammar_digest,
-        ("The benchmark now compiles finite parent-to-child frontier-state "
-         "productions in proper local frames and has a target-free executor; "
-         "it no longer stops at a count or component recurrence."),
-        ("All exact IQC frontier productions are unary and confined to one "
-         "transition. No proper state emits a repeated multi-child set, so "
-         "there is no executable stationary or million-site generic IQC rule."))
+        ("The compiler now retains one complete heterogeneous child set per "
+         "parent occurrence instead of splitting mixed cluster-of-clusters "
+         "productions into unrelated unary rules."),
+        (f"The IQC trace contains {multi_child} exact multi-child rules "
+         f"({heterogeneous} heterogeneous), but none recur on multiple "
+         "transitions or save description length. There is still no "
+         "stationary or million-site generic IQC rule."))
 
 
 def evaluate(waves=16):

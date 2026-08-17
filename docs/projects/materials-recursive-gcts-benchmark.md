@@ -1702,14 +1702,20 @@ the identical multi-child key on two consecutive transitions with at least two
 independent parent occurrences on each.
 
 The exact IQC trace contains three finite proper types, 30 packed occurrences,
-and 14 parent-to-child observations. They form eight exact rules, but every
-rule is unary, transition-local, and has non-positive description saving. No
-stationary rule reaches the target-free executor. A generic expanding control
-does pass: two colored triangle parents learn the same two-child rule twice,
-the executor reproduces the next two explicit waves, and 18 symbolic actions
-represent 1,572,864 sites. Thus execution and the million-site gate are no
-longer missing APIs; the remaining scientific blocker is learning a repeated
-multi-child rule from the IQC frontier itself.
+and eight complete parent-production observations. They form five exact rules.
+Four are heterogeneous multi-child rules, and the largest contains three
+children of three distinct state types. This corrects an earlier compiler
+artifact that split each child type into a separate unary rule. The scientific
+gate stays red for the stronger reason: none of those mixed rules occurs on a
+second transition and none has positive description saving. No stationary rule
+reaches the target-free executor. A generic expanding control does pass: two
+colored triangle parents learn the same two-child rule twice, the executor
+reproduces the next two explicit waves, and 18 symbolic actions represent
+1,572,864 sites. A separate heterogeneous two-type control also replays two
+levels exactly, but is not fed to the scalar symbolic counter; a mixed-state
+recurrence requires a learned vector substitution matrix. Thus execution is no
+longer the missing API. The remaining scientific blocker is cross-transition
+recurrence and compression of the real IQC frontier productions.
 
 ## Generic intrinsic-2D atlas gate
 

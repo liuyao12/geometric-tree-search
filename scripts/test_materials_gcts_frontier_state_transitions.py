@@ -17,6 +17,7 @@ LOCAL = ((-0.5, -math.sqrt(3) / 6, 0.),
          (0.5, -math.sqrt(3) / 6, 0.),
          (0., math.sqrt(3) / 3, 0.))
 SPECIES = ("A", "B", "C")
+OTHER_SPECIES = ("D", "E", "F")
 
 
 def _add(left, right):
@@ -65,6 +66,30 @@ def _fixture():
     return tuple(waves)
 
 
+def _heterogeneous_fixture():
+    """Two proper state colors under one repeated mixed-child production."""
+    waves = []
+    for wave in range(1, 4):
+        scale = 2 ** (wave - 1)
+        sites = []
+        for origin in (-100., 100.):
+            groups = [(SPECIES, origin)]
+            if wave > 1:
+                groups.append((
+                    OTHER_SPECIES,
+                    origin + 10. * 2 ** (wave - 2)))
+            for species_group, offset in groups:
+                for species, local in zip(species_group, LOCAL):
+                    sites.append((species, (
+                        offset + scale * local[0],
+                        scale * local[1], 0.)))
+        sites.sort(key=repr)
+        waves.append(FrontierWaveSnapshot(
+            wave, tuple(point for _species, point in sites),
+            tuple(species for species, _point in sites)))
+    return tuple(waves)
+
+
 def _site_keys(sites, tolerance=5e-6):
     return {(repr(species), tuple(round(value / tolerance) for value in point))
             for species, point in sites}
@@ -99,6 +124,42 @@ def test_stationary_transition_executes_two_levels_and_crosses_million():
     assert symbolic.represented_site_counts[:3] == (6, 12, 24)
     assert symbolic.million_site_action == 18
     assert symbolic.represented_site_counts[-1] == 1_572_864
+
+
+def test_heterogeneous_child_production_replays_but_is_not_scalar_recursion():
+    waves = _heterogeneous_fixture()
+    states = compile_frontier_state_grammar(waves, maximum_nodes=3)
+    transitions = compile_frontier_transition_grammar(states, waves)
+    assert len(transitions.stationary_rule_ids) == 1
+    rule = transitions.rules[transitions.stationary_rule_ids[0]]
+    assert len(rule.child_placements) == 2
+    assert len(set(rule.child_types)) == 2
+    assert rule.child_type == -1
+    parent_state = next(state for state in states.recurring_state_types
+                        if state.type_id == rule.parent_type)
+    parents = tuple(as_generated_state(parent_state.type_id, occurrence)
+                    for occurrence in parent_state.occurrences
+                    if occurrence.wave == 1)
+    first = execute_frontier_transition(
+        transitions, states.recurring_state_types, rule.rule_id, parents)
+    assert first.exact_colored_union and first.collision_free
+    assert _site_keys(first.sites) == _site_keys(tuple(zip(
+        waves[1].species, waves[1].positions)))
+    recursive_parents = tuple(child for child in first.children
+                              if child.type_id == rule.parent_type)
+    second = execute_frontier_transition(
+        transitions, states.recurring_state_types, rule.rule_id,
+        recursive_parents)
+    assert second.exact_colored_union and second.collision_free
+    assert _site_keys(second.sites) == _site_keys(tuple(zip(
+        waves[2].species, waves[2].positions)))
+    try:
+        symbolic_frontier_expansion(rule, parent_state, 2, 4)
+    except ValueError as error:
+        assert "one recurring state type" in str(error)
+    else:
+        raise AssertionError(
+            "mixed-state recurrence needs a vector/substitution expansion")
 
 
 def test_target_taint_fails_closed_before_transition_learning():
@@ -170,6 +231,7 @@ def test_transition_grammar_is_rigid_motion_and_permutation_invariant():
 
 if __name__ == "__main__":
     test_stationary_transition_executes_two_levels_and_crosses_million()
+    test_heterogeneous_child_production_replays_but_is_not_scalar_recursion()
     test_target_taint_fails_closed_before_transition_learning()
     test_altered_frozen_rule_geometry_is_rejected()
     test_child_batches_reject_subminimum_inter_parent_collisions()

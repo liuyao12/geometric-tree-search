@@ -664,14 +664,21 @@ stationary only if the identical multi-child production has at least two
 independent parents on each of two consecutive transitions.
 
 On the real IQC trace, three finite proper state types yield 30 packed
-occurrences and 14 transition observations. They split into eight exact rules;
-every rule has one child, none appears on multiple transitions, and none saves
-description length. The target-free executor is therefore available but has no
-stationary IQC rule to run. Its generic expanding control does: two colored
-triangle parents learn the same two-child rule twice, replay the next two
-explicit waves exactly, and reach 1,572,864 represented sites after 18
-symbolic actions. This proves the new machinery can cross the exponential
-benchmark without granting that claim to the real IQC trace.
+occurrences and eight complete parent-production observations. They form five
+exact rules. Four rules are genuine heterogeneous multi-child productions,
+with as many as three children of three distinct types; this fixes the earlier
+compiler artifact that split a mixed right-hand side into unrelated unary
+rules. None of the five rules appears on multiple transitions, however, and
+none saves description length. The target-free executor is therefore available
+but has no stationary IQC rule to run. Its generic expanding control does: two
+colored triangle parents learn the same two-child rule twice, replay the next
+two explicit waves exactly, and reach 1,572,864 represented sites after 18
+symbolic actions. A second synthetic control exactly replays a mixed two-type
+right-hand side; it is intentionally excluded from the scalar symbolic counter
+because heterogeneous recurrence needs a vector substitution matrix. This
+proves the machinery can execute both homogeneous and heterogeneous
+cluster-of-clusters rules without granting an exponential claim to the real
+IQC trace.
 
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
