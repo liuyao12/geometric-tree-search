@@ -748,6 +748,18 @@ pure-correct bands are both rank seven. Spatial confirmation therefore stays
 red. This isolates the next problem to a transferable, target-free branch
 value or adaptive breadth rule—not missing candidate geometry.
 
+The next feedback-loop iteration trains one rigid-motion-invariant attachment
+marker jointly on the origin and those two completed diagnostic nuclei. The
+three radius-14.562 training balls are mutually disjoint and contribute 15,830
+candidate examples with 3,171 positives. On a fourth mutually disjoint centre
+`(-20, 20, 20)`, the correct 2-site action moves into the frozen width-four
+beam at rank four. That is real improvement in marking transfer. The current
+one-step option-supply value nevertheless chooses the false rank-two action
+(three wrong sites). The benchmark therefore remains red and specifies the
+next implementation precisely: retain alternative configurations across
+multiple tree depths, then roll back a branch when its future frontier fails,
+rather than committing after one-step lookahead.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

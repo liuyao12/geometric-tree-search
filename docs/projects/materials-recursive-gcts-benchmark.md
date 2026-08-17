@@ -1795,6 +1795,25 @@ red and is not a stationary or exponential certificate. The next admissible
 improvement must choose breadth or branch value from training/frontier state,
 then face a new spatial nucleus; this target cannot be reused for tuning.
 
+A multi-configuration learner implements that feedback loop without adding a
+material or origin label. It pools the same rigid-motion-invariant local
+descriptor over three mutually disjoint nuclei—the origin and the two completed
+diagnostics—giving 15,830 training candidates and 3,171 positives. The marker
+and width-four option-supply search are then frozen before opening a fourth
+radius-14.562 nucleus at `(-20, 20, 20)`, disjoint from all three training
+balls. The exact 2-site action is now present at rank four inside the retained
+beam, whereas the single-origin marking placed the correct basin below its
+frozen breadth. This is a genuine proposal-ranking improvement.
+
+The one-step branch value still selects rank two, emitting three false sites.
+Accordingly the multi-nucleus spatial gate remains red. Its failure is more
+specific: candidate geometry transfers and the learned marking retains the
+right action, but the executor collapses the beam to one configuration after
+only one lookahead. The next tree-search benchmark must keep complete
+alternative configurations alive for multiple depths and count actual
+rollback/backtrack work before committing; widening the same one-step rule is
+already falsified.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

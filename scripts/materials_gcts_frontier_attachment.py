@@ -31,6 +31,14 @@ class FrontierAttachmentMarker:
     training_positives: int
 
 
+@dataclass(frozen=True)
+class FrontierAttachmentExample:
+    proposals: MarkedProposalResult
+    known_positions: Tuple[Point, ...]
+    known_colors: Tuple[Hashable, ...]
+    target_positions: Tuple[Point, ...]
+
+
 def _nearby_cells(key: Tuple[int, int, int]):
     for dx in (-1, 0, 1):
         for dy in (-1, 0, 1):
@@ -94,19 +102,8 @@ def _sigmoid(value: float) -> float:
     return exponential / (1.0 + exponential)
 
 
-def fit_frontier_attachment_marker(
-        proposals: MarkedProposalResult, known_positions: Sequence[Point],
-        known_colors: Sequence[Hashable], target_positions: Iterable[Point],
-        radial_edges: Sequence[float] = (1.4, 2.1, 2.8, 3.81),
-        epochs: int = 500, learning_rate: float = .4,
-        regularization: float = .01) -> FrontierAttachmentMarker:
-    color_keys = tuple(sorted({repr(color) for color in known_colors}))
-    described = describe_frontier_attachments(
-        proposals, known_positions, known_colors, radial_edges, color_keys)
-    points = tuple(sorted(described))
-    rows = tuple(described[point] for point in points)
-    targets = {point_key(point) for point in target_positions}
-    labels = tuple(int(point in targets) for point in points)
+def _fit_frontier_rows(rows, labels, radial_edges, color_keys, epochs,
+                       learning_rate, regularization):
     positives = sum(labels)
     negatives = len(labels) - positives
     if not positives or not negatives:
@@ -143,6 +140,44 @@ def fit_frontier_attachment_marker(
     return FrontierAttachmentMarker(
         tuple(radial_edges), color_keys, means, scales, tuple(weights), bias,
         len(rows), positives)
+
+
+def fit_frontier_attachment_marker_examples(
+        examples: Sequence[FrontierAttachmentExample],
+        radial_edges: Sequence[float] = (1.4, 2.1, 2.8, 3.81),
+        epochs: int = 500, learning_rate: float = .4,
+        regularization: float = .01) -> FrontierAttachmentMarker:
+    """Fit one rigid-motion-invariant marking over several configurations."""
+    if not examples:
+        raise ValueError("frontier training requires at least one example")
+    color_keys = tuple(sorted({repr(color) for example in examples
+                               for color in example.known_colors}))
+    rows = []
+    labels = []
+    for example in examples:
+        described = describe_frontier_attachments(
+            example.proposals, example.known_positions,
+            example.known_colors, radial_edges, color_keys)
+        targets = {point_key(point) for point in example.target_positions}
+        for point in sorted(described):
+            rows.append(described[point])
+            labels.append(int(point_key(point) in targets))
+    return _fit_frontier_rows(
+        tuple(rows), tuple(labels), radial_edges, color_keys, epochs,
+        learning_rate, regularization)
+
+
+def fit_frontier_attachment_marker(
+        proposals: MarkedProposalResult, known_positions: Sequence[Point],
+        known_colors: Sequence[Hashable], target_positions: Iterable[Point],
+        radial_edges: Sequence[float] = (1.4, 2.1, 2.8, 3.81),
+        epochs: int = 500, learning_rate: float = .4,
+        regularization: float = .01) -> FrontierAttachmentMarker:
+    example = FrontierAttachmentExample(
+        proposals, tuple(known_positions), tuple(known_colors),
+        tuple(target_positions))
+    return fit_frontier_attachment_marker_examples(
+        (example,), radial_edges, epochs, learning_rate, regularization)
 
 
 def score_frontier_attachments(

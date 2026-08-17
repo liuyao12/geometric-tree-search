@@ -4,12 +4,41 @@ import math
 import unittest
 from collections import Counter
 
-from materials_gcts_frontier_attachment import describe_frontier_attachments
+from materials_gcts_frontier_attachment import (
+    FrontierAttachmentExample, describe_frontier_attachments,
+    fit_frontier_attachment_marker_examples, score_frontier_attachments)
 from materials_gcts_frontier_attachment_benchmark import evaluate
 from materials_gcts_recursive_connections import MarkedProposalResult
 
 
 class FrontierAttachmentTest(unittest.TestCase):
+    def test_multiple_configurations_share_one_invariant_marker(self):
+        def fixture(offset):
+            candidates = ((offset + 1., 0., 0.), (offset + 2., 0., 0.))
+            votes = Counter({point: 2 for point in candidates})
+            colors = {point: Counter({"'A'": 2}) for point in candidates}
+            proposals = MarkedProposalResult(
+                votes, 4, None, colors, colors,
+                {point: Counter() for point in candidates},
+                {point: Counter() for point in candidates})
+            known = ((offset, 0., 0.), (offset, 1., 0.))
+            return proposals, known, ("A", "A"), (candidates[0],)
+
+        fixtures = (fixture(0.), fixture(10.))
+        marker = fit_frontier_attachment_marker_examples(tuple(
+            FrontierAttachmentExample(
+                proposal, known, colors, targets)
+            for proposal, known, colors, targets in fixtures))
+        self.assertEqual(marker.training_examples, 4)
+        self.assertEqual(marker.training_positives, 2)
+        scores = [score_frontier_attachments(
+            marker, proposal, known, colors)
+                  for proposal, known, colors, _targets in fixtures]
+        self.assertAlmostEqual(tuple(scores[0].values())[0],
+                               tuple(scores[1].values())[0])
+        self.assertAlmostEqual(tuple(scores[0].values())[1],
+                               tuple(scores[1].values())[1])
+
     def test_descriptor_is_rigid_motion_invariant(self):
         votes = Counter({(1., 1., 0.): 3, (2., 0., 0.): 2})
         colors = {point: Counter({"'A'": count})
