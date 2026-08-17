@@ -1221,6 +1221,19 @@ children and frozen ports are independently reverified. Synthetic controls and
 the NaCl control pass (48 / 48 emitted sites correct), but Cd--Yb deployment is
 disabled until fully nested train-only high-precision calibration succeeds.
 
+For the ideal IQC parallel-action gate, the backend now carries the port
+incidences themselves instead of only their aggregate moments. A role is the
+symmetry-quotiented parent/source local type plus normalized separation; each
+action state keeps at most eight roles. A child must consume a carried role,
+and bounded search backtracks a branch whose explicit obligations have no
+frozen continuation. On a 504-action nine-nucleus audit, 97.4% of held-out role
+mass is train-seen. The search finds connected two-action paths on eight of
+nine nuclei, but posthoc all 16 selected actions are false (120 false sites).
+Individual roles and order-two same-site role patterns are not transferable
+success labels. The reserved confirmation nucleus remains unopened: the next
+marking needs joint incidence geometry, while the exact action/collision layer
+stays fixed.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned

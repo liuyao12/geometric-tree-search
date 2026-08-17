@@ -2039,6 +2039,27 @@ statistics improve purity but collapse action coverage; the next justified
 representation carries the actual bounded incidence multiset of unresolved
 ports through backtracking rather than compressing it to moments.
 
+That explicit state is now implemented. A semantic role contains only the
+parent and source cluster colors, their cumulative neighbor-count types, and a
+normalized separation bin. Whole actions carry at most eight such roles;
+action IDs remain exact search identities but never enter the state. A child
+must consume at least one carried role, and a branch is rolled back when an
+explicit obligation has no candidate continuation. Synthetic adversarial
+tests reject a higher-scoring stranded root and a disconnected child.
+
+The nine-nucleus train-only audit builds 504 exact actions with 23 pure
+coordinate-and-species positives. Leaving out whole nuclei, 97.40% of role
+mass is already present in the remaining training folds, so vocabulary
+novelty is not the principal failure. The explicit search explores 306 actions,
+backtracks 49, and finds two-action connected paths on eight of nine folds.
+Posthoc, however, all 16 selected actions are false and emit 120 false sites.
+No individual role or order-two same-site role pattern reaches transferable
+90% purity: apparently pure patterns occur in only one nucleus. The reserved
+confirmation centre is still unopened. This rules out both marginal port
+admission and topological closure as sufficient GCTS markings; the next model
+must retain joint incidence geometry while exact placement and collision
+certificates remain unchanged.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
