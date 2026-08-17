@@ -839,6 +839,35 @@ nuclei. Therefore score rank is not a physical GCTS channel. The next marking
 must key on the symmetry-quotiented parent/source cluster and connection-port
 semantics; rank remains only an executor-local ordering.
 
+The semantic-key audit then prevents overcorrecting with another brittle table.
+Across five completed nuclei, exact evidence keys, full structural port keys,
+and coarse colored parent/source/port keys each have 0% coverage on the tenth
+nucleus. A chemistry-only backoff covers 25% of its twelve candidates but does
+not recognize its one exact action. The failure is not leakage—the candidate
+sites, colors, and keys freeze before each target opens—and coarsening only
+affects ranking, never geometric admission. The result rules out a categorical
+lookup at these resolutions. The next marking is a continuous local section
+fit across spatial nuclei, with the exact port and collision layers retained as
+hard certificates.
+
+That replacement now passes its first spatial confirmation. Nine previously
+completed, mutually separated nuclei provide 49,716 frozen candidate examples,
+including 3,695 exact coordinate-and-species positives. Unlike the earlier
+geometry-only fit, a candidate at the right coordinate with the wrong element
+is a negative. A rigid-motion-invariant continuous section is fitted without a
+nucleus ID, global direction, phase label, or target coordinate. Eight of nine
+leave-one-nucleus-out folds contain an exact action within the predeclared
+twelve-channel reach, although only two rank it first.
+
+The model is then frozen (SHA-256 `bb891f2c...d980697`) before a new centre
+`(0, 0, -50)` is opened. Its target ball is separated from every training ball
+by at least 37.749, versus 29.125 required for disjointness. The target-free
+three-depth beam selects path `1 -> 5 -> 12`; posthoc scoring gives 4 / 4 exact
+colored sites and zero false sites. This validates continuous local-section
+transfer and replaces ordinal rank as the marking representation. It is still
+one committed action: sustained growth, clusters-of-clusters amplification,
+stationarity, and exponential IQC growth remain red.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

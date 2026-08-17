@@ -1917,6 +1917,38 @@ the same. Subsequent GCTS values must be indexed by symmetry-quotiented
 parent/source cluster identity and connection-port semantics; rank may only be
 a deterministic executor ordering and cannot carry physical state.
 
+Four ID-free categorical quotients are evaluated next on the same frozen
+candidate geometry. Exact local evidence, full parent/source radial types,
+and coarse colored port types each have zero held-out channel coverage on the
+tenth nucleus. Removing geometry down to connection chemistry raises overall
+candidate coverage to 25%, but the one exact held-out action is still not a
+train-exact chemistry class. No key sees target membership before it freezes,
+and none authorizes geometry; they only rank existing certified candidates.
+This falsifies a finite lookup-table marking at the tested resolutions. The
+next admissible representation is a continuous rigid-motion-invariant section
+learned across multiple nuclei, backed by the unchanged exact port/collision
+certificates.
+
+The continuous replacement is now measured on a fresh eleventh nucleus. Nine
+completed disjoint nuclei supply 49,716 candidate rows and 3,695 exact colored
+positives. The label is species-aware: correct position with incorrect species
+is negative. The descriptor remains a bounded radial/color/vote section and is
+invariant under common proper-SE(3); exact ports and collision checks remain the
+admission layer. Leave-one-nucleus-out fitting places an exact action within
+the fixed twelve-band reach in 8 / 9 nuclei (first in 2 / 9), so the training
+evidence is useful but not uniformly easy.
+
+The full model digest is
+`bb891f2c5055afe529c77c2834632c4df654bb2c9c944b1a4ae888535d980697`.
+It is frozen before constructing the radius-14.562 target about
+`(0, 0, -50)`. Minimum separation from every training centre is 37.749, above
+the 29.125 disjoint-ball requirement. The target-free width-four,
+twelve-channel, depth-three search selects path `1 / 5 / 12`; the first band
+is the exact action and emits 4 / 4 correct colored sites with no false site.
+This is a green one-action spatial confirmation for a continuous GCTS local
+section. It does not certify a second self-fed wave, a promoted macro,
+stationarity, amplification, or exponential IQC growth.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

@@ -13,6 +13,26 @@ from materials_gcts_recursive_connections import MarkedProposalResult
 
 
 class FrontierAttachmentTest(unittest.TestCase):
+    def test_colored_examples_reject_wrong_species_at_known_site(self):
+        candidates = ((1., 0., 0.), (2., 0., 0.))
+        votes = Counter({point: 2 for point in candidates})
+        colors = {point: Counter({"'A'": 2}) for point in candidates}
+        proposals = MarkedProposalResult(
+            votes, 4, None, colors, colors,
+            {point: Counter() for point in candidates},
+            {point: Counter() for point in candidates})
+        known = ((0., 0., 0.),)
+
+        marker = fit_frontier_attachment_marker_examples((
+            FrontierAttachmentExample(
+                proposals, known, ("A",), candidates, ("A", "B")),))
+        self.assertEqual(marker.training_examples, 2)
+        self.assertEqual(marker.training_positives, 1)
+        with self.assertRaisesRegex(ValueError, "aligned"):
+            fit_frontier_attachment_marker_examples((
+                FrontierAttachmentExample(
+                    proposals, known, ("A",), candidates, ("A",)),))
+
     def test_multiple_configurations_share_one_invariant_marker(self):
         def fixture(offset):
             candidates = ((offset + 1., 0., 0.), (offset + 2., 0., 0.))

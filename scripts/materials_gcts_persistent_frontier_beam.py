@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import math
+import hashlib
 from dataclasses import dataclass
 
 from materials_gcts_frontier_attachment import score_frontier_attachments
@@ -14,6 +15,56 @@ from materials_gcts_icosahedral_modelset import HIDDEN_UNIT
 from materials_gcts_recursive_connections import (
     local_cluster_types, merge_marked_proposal_results,
     propose_with_recursive_marking)
+
+
+def semantic_channel_descriptor(proposals, band, abstraction="exact"):
+    """ID-free finite channel key from frozen cluster/connection evidence."""
+    if abstraction not in ("exact", "port", "coarse", "chemistry"):
+        raise ValueError("unknown semantic channel abstraction")
+    entries = []
+    for point in band:
+        vote_count = proposals.votes[point]
+        states = proposals.state_votes.get(point, {})
+        state_rows = []
+        for state, count in sorted(
+                states.items(), key=lambda item: (-item[1], item[0]))[:3]:
+            exact = (state.parent_type.color_key,
+                     state.parent_type.cumulative_neighbor_counts,
+                     state.source_type.color_key,
+                     state.source_type.cumulative_neighbor_counts,
+                     state.normalized_separation_bin,
+                     round(count / vote_count, 3))
+            port = exact[:-1]
+            coarse = (exact[0], exact[2], exact[4])
+            state_rows.append({"exact": exact, "port": port,
+                               "coarse": coarse,
+                               "chemistry": (exact[0], exact[2])}[abstraction])
+        source_colors = proposals.color_votes[point]
+        target_colors = proposals.target_color_votes[point]
+        source = tuple(sorted(
+            (color, round(count / vote_count, 3))
+            for color, count in source_colors.items()))
+        target = tuple(sorted(
+            (color, round(count / vote_count, 3))
+            for color, count in target_colors.items()))
+        parent_counts = proposals.parent_votes.get(point, {})
+        if abstraction == "exact":
+            entries.append((
+                tuple(state_rows), source, target, len(parent_counts),
+                round(max(parent_counts.values(), default=0) / vote_count, 3),
+                round(math.log1p(vote_count), 3)))
+        elif abstraction == "port":
+            entries.append((tuple(state_rows), tuple(color for color, _ in source),
+                            tuple(color for color, _ in target)))
+        elif abstraction == "coarse":
+            entries.append((tuple(state_rows), tuple(color for color, _ in source),
+                            tuple(color for color, _ in target)))
+        else:
+            entries.append((tuple(sorted(set(state_rows))),
+                            tuple(color for color, _ in source),
+                            tuple(color for color, _ in target)))
+    descriptor = tuple(sorted(entries))
+    return hashlib.sha256(repr(descriptor).encode()).hexdigest()
 
 
 @dataclass(frozen=True)

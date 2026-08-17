@@ -47,6 +47,14 @@ class FrontierAttachmentExample:
     known_positions: Tuple[Point, ...]
     known_colors: Tuple[Hashable, ...]
     target_positions: Tuple[Point, ...]
+    target_colors: Tuple[Hashable, ...] = ()
+
+
+def _dominant_encoded_color(proposals: MarkedProposalResult,
+                            point: Point) -> str:
+    """Return the deterministic color proposed for one candidate site."""
+    counts = proposals.color_votes[point]
+    return min(counts, key=lambda color: (-counts[color], color))
 
 
 def _nearby_cells(key: Tuple[int, int, int]):
@@ -165,13 +173,28 @@ def fit_frontier_attachment_marker_examples(
     rows = []
     labels = []
     for example in examples:
+        if example.target_colors and (
+                len(example.target_colors) != len(example.target_positions)):
+            raise ValueError("target positions and colors must be aligned")
         described = describe_frontier_attachments(
             example.proposals, example.known_positions,
             example.known_colors, radial_edges, color_keys)
-        targets = {point_key(point) for point in example.target_positions}
+        if example.target_colors:
+            targets = {
+                point_key(point): repr(color)
+                for point, color in zip(example.target_positions,
+                                        example.target_colors)
+            }
+        else:
+            targets = {point_key(point): None
+                       for point in example.target_positions}
         for point in sorted(described):
             rows.append(described[point])
-            labels.append(int(point_key(point) in targets))
+            labels.append(int(
+                point_key(point) in targets and
+                (not example.target_colors or
+                 _dominant_encoded_color(example.proposals, point) ==
+                 targets[point_key(point)])))
     return _fit_frontier_rows(
         tuple(rows), tuple(labels), radial_edges, color_keys, epochs,
         learning_rate, regularization)
