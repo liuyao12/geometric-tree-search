@@ -868,6 +868,17 @@ transfer and replaces ordinal rank as the marking representation. It is still
 one committed action: sustained growth, clusters-of-clusters amplification,
 stationarity, and exponential IQC growth remain red.
 
+The unchanged model is then tested for two waves at another unopened centre,
+`(0, 50, 0)`. Its SHA-256 matches exactly and both waves retain twelve frozen
+candidate bands. Wave one again selects rank one and emits 4 / 4 exact colored
+sites. After those sites self-feed, an exact second action is present at rank
+five, but the seed-trained section selects rank one and emits 0 / 4 correct.
+The two-wave gate is therefore red at 4 / 8 overall. This localizes the next
+problem: candidate geometry and reach are sufficient, while the continuous
+section has not been trained on post-commit frontier neighborhoods. The next
+model must add self-fed training states from known nuclei rather than widen the
+beam or revive ordinal rank as state.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the

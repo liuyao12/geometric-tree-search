@@ -1949,6 +1949,17 @@ This is a green one-action spatial confirmation for a continuous GCTS local
 section. It does not certify a second self-fed wave, a promoted macro,
 stationarity, amplification, or exponential IQC growth.
 
+The identical model is next frozen for two waves at `(0, 50, 0)`, again outside
+every prior target ball. Both decisions enumerate twelve candidate bands.
+Wave one selects path `1 / 5 / 12` and emits 4 / 4 exact colored sites. On the
+self-fed frontier, the exact action remains available at rank five, but the
+section selects path `1 / 7 / 8` and emits 0 / 4 correct sites. Overall
+precision is therefore 4 / 8 and the two-wave spatial gate is red. This rules
+out missing geometry and insufficient channel reach as the immediate cause.
+The continuous section was trained only on seed frontiers; the justified next
+step is to include target-free post-commit states from the known training
+nuclei, not to carry ordinal rank or tune against this failed target.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire
