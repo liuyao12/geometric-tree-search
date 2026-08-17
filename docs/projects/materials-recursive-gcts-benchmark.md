@@ -1669,6 +1669,29 @@ fit has R² 0.605. Thus neither local waves nor naively grouped wave states
 amplify. The next hierarchy must learn a different recurrent frontier state,
 rather than treating these exact local macros as exponential by fiat.
 
+`scripts/materials_gcts_frontier_state_grammar.py` now makes that next state
+search structural rather than count-based. It builds an adaptive
+nearest-neighbour graph on each target-free wave, enumerates connected colored
+subgraphs through five sites, and canonicalizes them modulo translation,
+positive uniform scale, and proper rotation. The 16-wave IQC trace produces
+2,563 candidates and 119 normalized classes. Five classes recur across
+independent waves: two two-site, two three-site, and one four-site type. A
+deterministic non-overlapping cover selects 156 occurrences covering 336 / 368
+exact emitted sites; 32 colored sites remain explicit residual terminals. All
+92 admitted non-collinear occurrences replay through fitted proper-SE(3)
+poses.
+
+This improves representation without relaxing stationarity. One two-site class
+repeats the golden-ratio scale over waves 7--9, but its unique support contracts
+`24 -> 12 -> 8`; as a segment it also has a continuous rotational stabilizer
+and is not a finite oriented port state. The proper three-site class seen on
+waves 14--16 has constant 12-site support and scale ratios 1.2217 then 0.9654.
+No class therefore has both repeated expanding scale and repeated expanding
+support, and the strict witness count remains zero. A synthetic
+`3 -> 6 -> 12` triangle control at scales `1 -> 2 -> 4` passes the same
+compiler; colored mirror and amorphous controls remain red. The next generic
+step is a certified transition grammar among frontier-state types.
+
 ## Generic intrinsic-2D atlas gate
 
 `scripts/materials_gcts_2d_generic_atlas.py` removes the original moire

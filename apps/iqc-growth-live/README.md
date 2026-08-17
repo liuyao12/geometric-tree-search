@@ -588,6 +588,27 @@ explicitly fails. The next algorithmic target is to promote recurrent
 *frontier wave states* whose support grows, not simply bundle more exact local
 waves.
 
+That target is now executable. A material-blind frontier-state compiler builds
+an adaptive nearest-neighbour graph independently on every exact wave,
+enumerates connected colored subgraphs through five sites, and canonicalizes
+them modulo translation, positive scale, and proper 3-D rotation. Five
+recurring normalized types cover 336 of the 368 emitted sites; the remaining
+32 sites are explicit residual terminals, so the cover is complete. Ninety-two
+occurrences have independently fitted finite proper poses. This is a genuine
+structural promotion beyond the old count-only `132 -> 96 -> 80 -> 60` wave
+bundles.
+
+The stricter exponential gate remains red for a newly precise reason. One
+two-site state repeats the golden-ratio scale over waves 7--9, but its unique
+support shrinks `24 -> 12 -> 8`. It also has a continuous rotational
+stabilizer, so it cannot define a finite oriented GCTS port state. The proper
+three-site state recurring over waves 14--16 has constant 12-site support and
+unequal learned scale ratios. A synthetic expanding triangle control learns
+`3 -> 6 -> 12` support with scale `1 -> 2 -> 4` and passes, while a colored
+chiral reflection and amorphous clouds stay separate/red. The remaining task
+is therefore a transition grammar between frontier-state types, not another
+larger fixed window of exact local waves.
+
 The learned-program benchmark now also has an explicit output certificate.
 From a 216-atom NaCl seed, five quotient actions stream 7,077,888
 species-labelled positions in 16.2 seconds. From a 507-atom IQC seed, the
