@@ -870,6 +870,18 @@ self-feed through seven nonempty waves over four hierarchy levels and reaches
 sustained-growth gates both fail. The sole target opening and result are now
 sealed in a hash-checked, non-rerunnable fixture.
 
+The next train-only section moves the mark inside the macro. Across the same
+five training windows, 28 fixed macro candidates provide 360 emitted-site
+examples: 250 supported and 110 unsupported. A ten-feature local proper-SE(3)
+section reaches grouped site AUC 0.7455; every one of 31 within-window label
+shuffles is lower (`p = 0.03125`). Whole-action aggregation remains red
+(`p = 0.50`). A structural atomic peel is also rejected: it preserves the
+complete cover through explicit residual subclusters but lowers train precision
+from 110 / 148 to 62 / 90. The generic executor therefore keeps exact
+port-connected components, scores their sites, accepts compatible high-score
+sections, defers the rest, and promotes only after the complete frozen RHS is
+present.
+
 A strict finite-state substitution-cycle audit also remains red. A nontrivial
 period-`p` cycle requires `2p+1` consecutive exact levels so each state and
 directed transition is witnessed twice, plus equal independently learned

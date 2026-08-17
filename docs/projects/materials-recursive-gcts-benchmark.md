@@ -2688,6 +2688,41 @@ unchanged and red. The complete result, event sequence, candidate/plan/execution
 digests, and null arrays are stored as a hash-checked fixture, and the benchmark
 now refuses to reopen the consumed scientific target.
 
+### Moving the section inside a macro
+
+The sealed failure shows why a whole promoted macro is too coarse a GCTS
+decision: none of its first-wave actions is entirely exact, although 27 of the
+56 marked emitted atoms are correct. The replacement section does not alter
+candidate geometry or IDs. It learns a bounded score for each emitted site
+from ten local proper-SE(3)-invariant quantities: chemistry, distances to the
+RHS centre, seed, witnessed children and other emissions, local coordination,
+overlap multiplicity, matched-child fraction, missing-child count, and frozen
+port evidence.
+
+The five authorized training windows and their predeclared shifted inner seeds
+produce 28 macro candidates and 360 unique site examples, of which 250 are
+supported and 110 unsupported. Nested grouped validation gives site AUC 0.7455
+and log loss 0.6060. All 31 within-window label shuffles have lower site AUC
+(best 0.6971), for `p = 0.03125`. Minimum aggregation gives action AUC 0.8571,
+but the action null reaches 1.0 and the action-level p-value is 0.50. Thus the
+local section is train-supported at site level, not yet at whole-action level.
+
+A separate exact-decomposition control tests whether geometry alone should cut
+the action more finely. Port-connected missing children do not split these 14
+training candidates. A Gabriel-graph frontier peel creates ten explicit
+residual subclusters and preserves all 148 novel sites exactly, but lowers
+emitted-site precision from 110 / 148 to 62 / 90 without changing the 8 exact /
+6 mixed action count. It is retained as a negative control, not a growth rule.
+
+The generic executor therefore uses exact port-connected components as the
+atomic commitment boundary, applies the frozen site section within each
+component, accepts a conflict-free high-score subset, and defers the rest.
+Accepted child occurrences feed the next wave; a promoted parent is emitted
+only after every exact frozen child pose exists and all ports are independently
+reverified. Synthetic controls demonstrate selective deferral and later exact
+promotion. NaCl remains exact at 24 / 24 emitted atoms. No new Cd--Yb target is
+used in fitting or these controls.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
