@@ -137,7 +137,7 @@ const orientationPointMaterial = new THREE.PointsMaterial({
   size: 0.07,
   sizeAttenuation: true,
   transparent: true,
-  opacity: 0.96,
+  opacity: 1,
   depthWrite: false
 });
 const orientationPoints = new THREE.Points(orientationPointGeometry, orientationPointMaterial);
@@ -316,7 +316,7 @@ function orientationColorFromQuaternion(quaternion) {
   const canonical = canonicalizeQuaternion(quaternion.clone().normalize());
   const azimuth = Math.atan2(canonical.y, canonical.x) / (Math.PI * 2) + 0.5;
   const hue = (azimuth + canonical.z * 0.16 + (1 - canonical.w) * 0.08 + 1) % 1;
-  return new THREE.Color().setHSL(hue, 0.52, 0.52);
+  return new THREE.Color().setHSL(hue, 0.84, 0.55);
 }
 
 function orientationColor(matrix) {
@@ -383,7 +383,7 @@ function drawOrientationBall(transforms) {
 function refreshOrientationPointColors() {
   const colors = orientationPointGeometry.getAttribute("color");
   if (!colors) return;
-  const muted = new THREE.Color(0x8f9794);
+  const muted = new THREE.Color(0xa8afac);
   for (let index = 0; index < orientationPointKeys.length; index += 1) {
     const color = selectedOrientationKey === null || orientationPointKeys[index] === selectedOrientationKey
       ? orientationPointBaseColors[index]
@@ -397,8 +397,8 @@ function displayedOrientationColor(matrix) {
   const color = orientationColor(matrix);
   if (selectedOrientationKey === null) return color;
   const key = orientationKey(canonicalQuaternion(matrix));
-  if (key === selectedOrientationKey) return color.offsetHSL(0, 0.18, 0.12);
-  return new THREE.Color(0x7f8885);
+  if (key === selectedOrientationKey) return color.offsetHSL(0, 0.1, 0.08);
+  return new THREE.Color(0xa8afac);
 }
 
 function makeTransparentMaterial({ line = false, opacity } = {}) {
@@ -496,6 +496,18 @@ function refreshVisualColors(visual) {
   }
   faceColors.needsUpdate = true;
   edgeColors.needsUpdate = true;
+  refreshVisualEmphasis(visual);
+}
+
+function refreshVisualEmphasis(visual) {
+  if (!visual) return;
+  for (const material of visual.materials) {
+    const boost = selectedOrientationKey === null ? 1 : material.isLineBasicMaterial ? 3 : 2.4;
+    material.opacity = Math.min(
+      0.82,
+      material.userData.baseOpacity * (material.userData.transitionAmount ?? 1) * boost
+    );
+  }
 }
 
 function selectOrientation(key) {
@@ -560,8 +572,9 @@ function disposeVisual(visual) {
 
 function setVisualOpacity(visual, amount) {
   for (const material of visual.materials) {
-    material.opacity = material.userData.baseOpacity * amount;
+    material.userData.transitionAmount = amount;
   }
+  refreshVisualEmphasis(visual);
 }
 
 function stateAtGeneration(targetGeneration) {
