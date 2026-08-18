@@ -59,6 +59,7 @@ const treePanel = $("treePanel");
 const viewport = $("viewport");
 const elapsedTime = $("elapsedTime");
 const growthChart = $("growthChart");
+const growthViewState = $("growthViewState");
 const growthBenchmarkStatus = $("growthBenchmarkStatus");
 
 const metricTiles = $("metricTiles");
@@ -211,6 +212,11 @@ const growthWorkers = new Map();
 let growthSequence = 0;
 let growthRunning = false;
 const growthSeries = new Map();
+let growthInspection = { modeId: "free_range", pointIndex: null };
+let growthPlotClickBound = false;
+let growthPlotBackgroundBound = false;
+let growthPointerWasNearPoint = false;
+let growthPlotRevision = 0;
 const PROPOSAL_CACHE_STORAGE_KEY = "gcts-3d-learned-proposals-v2";
 const readProposalCache = () => {
   try {
@@ -2758,12 +2764,11 @@ function pauseRun() {
   setStatus("Paused");
 }
 
-const SVG_NS = "http://www.w3.org/2000/svg";
 const GROWTH_MODES = [
-  { id: "free_range", strategy: "free_range", label: "Free-range" },
-  { id: "learning", strategy: "learning_free_range", label: "Learning Free-range" },
-  { id: "translational", strategy: "translational", label: "Translational" },
-  { id: "isohedral", strategy: "isohedral", label: "Isohedral" }
+  { id: "free_range", strategy: "free_range", label: "Free-range", color: "#6f7c77", symbol: "square-open", dash: "dash" },
+  { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
+  { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
+  { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
 ];
 
 function selectedGrowthMode() {
@@ -2771,106 +2776,198 @@ function selectedGrowthMode() {
   return GROWTH_MODES.find(mode => mode.strategy === strategy)?.id ?? "free_range";
 }
 
+function activateGrowthMode(modeId) {
+  const mode = GROWTH_MODES.find(candidate => candidate.id === modeId);
+  if (!mode) return;
+  setRadioValue(strategyRadios, mode.strategy, "free_range");
+  strategySelect.value = mode.strategy;
+  updateStrategyUI();
+}
+
+function showGrowthSnapshot(modeId, pointIndex = null) {
+  const series = growthSeries.get(modeId);
+  const inspectedPoint = Number.isInteger(pointIndex) ? series?.points?.[pointIndex] : null;
+  const snapshot = inspectedPoint?.snapshot ?? (pointIndex == null ? series?.snapshot : null);
+  growthInspection = {
+    modeId,
+    pointIndex: inspectedPoint?.snapshot ? pointIndex : null
+  };
+  const modeLabel = series?.mode?.label
+    ?? GROWTH_MODES.find(mode => mode.id === modeId)?.label
+    ?? modeId;
+  if (growthInspection.pointIndex == null) {
+    growthViewState.textContent = `Current · ${modeLabel}`;
+  } else {
+    growthViewState.textContent = `Sample · ${modeLabel} · ${inspectedPoint.tiles} tiles at ${(inspectedPoint.milliseconds / 1000).toFixed(2)}s`;
+  }
+  if (!snapshot) return;
+  if (series.prototileInfo) initTileControls(series.prototileInfo);
+  lastSnapshot = snapshot;
+  rootCentered = false;
+  updateScene(snapshot, { preserveView: false });
+  const displayedPoint = growthInspection.pointIndex == null ? series.points?.at(-1) : inspectedPoint;
+  const tiles = displayedPoint?.tiles ?? snapshot.tile_count ?? 0;
+  const time = displayedPoint ? ` at ${(displayedPoint.milliseconds / 1000).toFixed(2)}s` : "";
+  setStatus(`${modeLabel}: ${tiles} tiles${time}${growthInspection.pointIndex == null ? " · current" : " · historical sample"}`);
+}
+
 function showSelectedGrowthSnapshot() {
   const modeId = selectedGrowthMode();
-  growthChart.dataset.activeMode = modeId;
-  const series = growthSeries.get(modeId);
-  if (!series?.snapshot) return;
-  if (series.prototileInfo) initTileControls(series.prototileInfo);
-  lastSnapshot = series.snapshot;
-  rootCentered = false;
-  updateScene(series.snapshot, { preserveView: false });
-  const latest = series.points?.at(-1);
-  setStatus(`${series.mode?.label ?? modeId}: ${latest?.tiles ?? series.snapshot.tile_count ?? 0} tiles`);
+  showGrowthSnapshot(modeId, null);
 }
 
-function svgNode(name, attributes = {}, textContent = null) {
-  const node = document.createElementNS(SVG_NS, name);
-  for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, String(value));
-  if (textContent != null) node.textContent = textContent;
-  return node;
+function handleGrowthPlotClick(event) {
+  const selectedPoint = event?.points?.[0];
+  if (!selectedPoint || !growthPointerWasNearPoint) {
+    const modeId = growthInspection.modeId ?? selectedGrowthMode();
+    activateGrowthMode(modeId);
+    showGrowthSnapshot(modeId, null);
+    renderGrowthChart();
+    return;
+  }
+  const [modeId, pointIndex] = selectedPoint.customdata ?? [];
+  if (!modeId || !Number.isInteger(pointIndex)) return;
+  activateGrowthMode(modeId);
+  showGrowthSnapshot(modeId, pointIndex);
+  renderGrowthChart();
 }
 
-function niceGrowthMaximum(value, ticks = 4) {
-  if (!Number.isFinite(value) || value <= 0) return ticks;
-  const rough = value / ticks;
-  const power = 10 ** Math.floor(Math.log10(rough));
-  const fraction = rough / power;
-  const step = (fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10) * power;
-  return Math.ceil(value / step) * step;
-}
-
-function renderGrowthChart() {
-  growthChart.dataset.activeMode = selectedGrowthMode();
-  growthChart.replaceChildren();
+async function renderGrowthChart() {
+  const plotly = window.Plotly;
+  const revision = ++growthPlotRevision;
   const allPoints = [...growthSeries.values()].flatMap(series => series.points ?? []);
-  if (!allPoints.length) {
-    growthChart.append(svgNode("text", { class: "growth-empty", x: 380, y: 106, "text-anchor": "middle" }, "Run the comparison to measure this tile system."));
+  if (!plotly?.react) {
+    growthChart.replaceChildren();
+    const fallback = document.createElement("div");
+    fallback.className = "growth-empty";
+    fallback.textContent = "Interactive chart unavailable.";
+    growthChart.appendChild(fallback);
     return;
   }
 
-  const width = 760, height = 210;
-  const margin = { left: 48, right: 18, top: 37, bottom: 31 };
-  const plotWidth = width - margin.left - margin.right;
-  const plotHeight = height - margin.top - margin.bottom;
-  const maxMilliseconds = niceGrowthMaximum(Math.max(1, ...allPoints.map(point => point.milliseconds)), 5);
-  const maxTiles = Math.max(1, Math.ceil(Math.max(...allPoints.map(point => point.tiles)) / 4) * 4);
-  const x = milliseconds => margin.left + Math.max(0, milliseconds) / maxMilliseconds * plotWidth;
-  const y = tiles => margin.top + plotHeight - Math.max(0, tiles) / maxTiles * plotHeight;
-
-  growthChart.append(
-    svgNode("title", {}, "Measured tiling growth curves"),
-    svgNode("desc", {}, "Step chart of four tiling searches running concurrently against the same wall clock.")
-  );
-
-  for (let index = 0; index <= 4; index += 1) {
-    const value = maxTiles * index / 4;
-    const yy = y(value);
-    growthChart.append(svgNode("line", { class: "growth-grid", x1: margin.left, y1: yy, x2: width - margin.right, y2: yy }));
-    growthChart.append(svgNode("text", { class: "growth-tick", x: margin.left - 8, y: yy + 4, "text-anchor": "end" }, Number.isInteger(value) ? value : value.toFixed(1)));
-  }
-  for (let index = 0; index <= 5; index += 1) {
-    const value = maxMilliseconds * index / 5;
-    const xx = x(value);
-    growthChart.append(svgNode("line", { class: "growth-grid", x1: xx, y1: margin.top, x2: xx, y2: margin.top + plotHeight }));
-    growthChart.append(svgNode("text", { class: "growth-tick", x: xx, y: height - 12, "text-anchor": "middle" }, (value / 1000).toFixed(value < 1000 ? 2 : 1)));
-  }
-  growthChart.append(
-    svgNode("line", { class: "growth-axis", x1: margin.left, y1: margin.top + plotHeight, x2: width - margin.right, y2: margin.top + plotHeight }),
-    svgNode("line", { class: "growth-axis", x1: margin.left, y1: margin.top, x2: margin.left, y2: margin.top + plotHeight }),
-    svgNode("text", { class: "growth-axis-label", x: margin.left + plotWidth / 2, y: height - 1, "text-anchor": "middle" }, "elapsed time (seconds)"),
-    svgNode("text", { class: "growth-axis-label", x: 12, y: margin.top + plotHeight / 2, transform: `rotate(-90 12 ${margin.top + plotHeight / 2})`, "text-anchor": "middle" }, "tiles")
-  );
-
-  GROWTH_MODES.forEach((mode, index) => {
-    const legendX = margin.left + index * 166;
-    growthChart.append(svgNode("line", { class: `growth-series growth-series-${mode.id}`, x1: legendX, y1: 14, x2: legendX + 24, y2: 14 }));
-    growthChart.append(svgNode("text", { class: "growth-legend", x: legendX + 30, y: 18 }, mode.label));
-  });
-
-  for (const mode of GROWTH_MODES) {
+  const activeMode = growthInspection.modeId ?? selectedGrowthMode();
+  const traces = GROWTH_MODES.map(mode => {
     const series = growthSeries.get(mode.id);
     const points = series?.points ?? [];
-    if (!points.length) continue;
-    let path = `M ${x(points[0].milliseconds)} ${y(points[0].tiles)}`;
-    for (let index = 1; index < points.length; index += 1) {
-      path += ` H ${x(points[index].milliseconds)} V ${y(points[index].tiles)}`;
-    }
-    const finalTime = series?.result?.milliseconds ?? points.at(-1).milliseconds;
-    path += ` H ${x(Math.min(finalTime, maxMilliseconds))}`;
-    growthChart.append(svgNode("path", { class: `growth-series growth-series-${mode.id}`, d: path }));
+    const selectedIndex = mode.id === activeMode ? growthInspection.pointIndex : null;
+    return {
+      type: "scatter",
+      mode: "lines+markers",
+      name: mode.label,
+      x: points.map(point => point.milliseconds / 1000),
+      y: points.map(point => point.tiles),
+      customdata: points.map((_, index) => [mode.id, index]),
+      line: {
+        color: mode.color,
+        width: mode.id === activeMode ? 3.5 : 2.2,
+        dash: mode.dash,
+        shape: "hv"
+      },
+      marker: {
+        color: mode.color,
+        symbol: mode.symbol,
+        size: points.map((_, index) => index === selectedIndex ? 13 : mode.id === activeMode ? 8 : 6),
+        line: {
+          color: points.map((_, index) => index === selectedIndex ? "#ffffff" : mode.color),
+          width: points.map((_, index) => index === selectedIndex ? 3 : 1.5)
+        }
+      },
+      opacity: mode.id === activeMode ? 1 : 0.28,
+      hovertemplate: `<b>${mode.label}</b><br>%{y} tiles<br>%{x:.2f} seconds<extra></extra>`
+    };
+  });
 
-    for (const point of points) {
-      const className = `growth-marker growth-marker-${mode.id}`;
-      if (mode.id === "free_range") {
-        growthChart.append(svgNode("rect", { class: className, x: x(point.milliseconds) - 3, y: y(point.tiles) - 3, width: 6, height: 6 }));
-      } else if (mode.id === "learning") {
-        const xx = x(point.milliseconds), yy = y(point.tiles);
-        growthChart.append(svgNode("path", { class: className, d: `M ${xx} ${yy - 4} L ${xx + 4} ${yy + 3} L ${xx - 4} ${yy + 3} Z` }));
-      } else {
-        growthChart.append(svgNode("circle", { class: className, cx: x(point.milliseconds), cy: y(point.tiles), r: 3.2 }));
-      }
-    }
+  const hasPoints = allPoints.length > 0;
+  const layout = {
+    autosize: true,
+    paper_bgcolor: "rgba(0,0,0,0)",
+    plot_bgcolor: "rgba(246,248,245,0.7)",
+    margin: { l: 52, r: 18, t: 42, b: 42 },
+    font: {
+      family: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      color: "#62716b",
+      size: 11
+    },
+    hovermode: "closest",
+    clickmode: "event",
+    clickanywhere: true,
+    dragmode: false,
+    showlegend: hasPoints,
+    legend: {
+      orientation: "h",
+      x: 0,
+      xanchor: "left",
+      y: 1.16,
+      yanchor: "top",
+      bgcolor: "rgba(255,255,255,0)",
+      font: { size: 10 }
+    },
+    xaxis: {
+      visible: hasPoints,
+      title: { text: "Elapsed time (seconds)", standoff: 10, font: { size: 11 } },
+      rangemode: "tozero",
+      fixedrange: true,
+      showline: false,
+      zeroline: false,
+      gridcolor: "rgba(98,113,107,0.13)",
+      tickcolor: "rgba(98,113,107,0.25)",
+      automargin: true
+    },
+    yaxis: {
+      visible: hasPoints,
+      title: { text: "Tiles", standoff: 8, font: { size: 11 } },
+      rangemode: "tozero",
+      fixedrange: true,
+      showline: false,
+      zeroline: false,
+      gridcolor: "rgba(98,113,107,0.13)",
+      tickcolor: "rgba(98,113,107,0.25)",
+      automargin: true,
+      dtick: hasPoints && Math.max(...allPoints.map(point => point.tiles)) <= 12 ? 2 : undefined
+    },
+    annotations: hasPoints ? [] : [{
+      x: 0.5,
+      y: 0.5,
+      xref: "paper",
+      yref: "paper",
+      text: "Run the comparison to measure this tile system.",
+      showarrow: false,
+      font: { color: "#62716b", size: 12 }
+    }],
+    transition: { duration: 160, easing: "cubic-in-out" }
+  };
+
+  await plotly.react(growthChart, traces, layout, {
+    responsive: true,
+    displayModeBar: false,
+    displaylogo: false,
+    staticPlot: false
+  });
+  if (revision !== growthPlotRevision) return;
+  if (!growthPlotClickBound && typeof growthChart.on === "function") {
+    growthChart.on("plotly_click", handleGrowthPlotClick);
+    growthPlotClickBound = true;
+  }
+  if (!growthPlotBackgroundBound) {
+    growthChart.addEventListener("click", event => {
+      if (growthPointerWasNearPoint) return;
+      queueMicrotask(() => {
+        const modeId = growthInspection.modeId ?? selectedGrowthMode();
+        activateGrowthMode(modeId);
+        showGrowthSnapshot(modeId, null);
+        renderGrowthChart();
+      });
+    }, true);
+    growthChart.addEventListener("pointerdown", event => {
+      const threshold = 13;
+      growthPointerWasNearPoint = [...growthChart.querySelectorAll(".point")].some(point => {
+        const bounds = point.getBoundingClientRect();
+        const centerX = bounds.left + bounds.width / 2;
+        const centerY = bounds.top + bounds.height / 2;
+        return Math.hypot(event.clientX - centerX, event.clientY - centerY) <= threshold;
+      });
+    }, true);
+    growthPlotBackgroundBound = true;
   }
 }
 
@@ -2941,6 +3038,7 @@ function startGrowthBenchmark() {
   if (growthWorkers.size) stopGrowthBenchmark();
   resetRunView();
   growthSeries.clear();
+  growthInspection = { modeId: selectedGrowthMode(), pointIndex: null };
   for (const mode of GROWTH_MODES) {
     growthSeries.set(mode.id, { mode, points: [], snapshot: null, result: null, status: "starting" });
   }
@@ -2994,10 +3092,15 @@ function startGrowthBenchmark() {
       } else if (message.type === "mode-status") {
         series.status = message.text;
       } else if (message.type === "sample") {
-        series.points.push(message.point);
+        series.points.push({ ...message.point, snapshot: message.snapshot ?? null });
         if (message.snapshot) series.snapshot = message.snapshot;
         renderGrowthChart();
-        if (selectedGrowthMode() === mode.id && message.snapshot) showSelectedGrowthSnapshot();
+        if (
+          selectedGrowthMode() === mode.id
+          && growthInspection.modeId === mode.id
+          && growthInspection.pointIndex == null
+          && message.snapshot
+        ) showSelectedGrowthSnapshot();
       } else if (message.type === "series-finished") {
         series.result = message.result;
         if (mode.id === "learning" && message.result.learnedProgram) {
@@ -3156,5 +3259,6 @@ applyModeDefaults();
 refreshFigureSelectionUI();
 bindControls();
 setRunButton();
+renderGrowthChart();
 animate();
 void restoreLatestCheckpoint();

@@ -15,7 +15,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260818-frontier-select-v32">
+  <link rel="stylesheet" href="./style.css?v=20260818-plotly-growth-v33">
 </head>
 <body>
   <div class="app-shell">
@@ -177,13 +177,12 @@
         <div class="growth-header">
           <div>
             <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
-            <small>Four searches run simultaneously. Select a mode at left to show its latest patch.</small>
+            <small>Click a sample to inspect it; click empty chart space to return to that mode's current patch.</small>
           </div>
+          <span id="growthViewState" class="growth-view-state">Current · Free-range</span>
         </div>
         <div class="growth-chart-wrap">
-          <svg id="growthChart" viewBox="0 0 760 210" role="img" aria-label="Growth curve comparing tile count over elapsed seconds">
-            <text class="growth-empty" x="380" y="106" text-anchor="middle">Run the comparison to measure this tile system.</text>
-          </svg>
+          <div id="growthChart" class="growth-chart" role="img" aria-label="Interactive growth curve comparing tile count over elapsed seconds"></div>
         </div>
         <div id="growthBenchmarkStatus" class="growth-status">No benchmark run yet.</div>
       </section>
@@ -233,6 +232,7 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260818-frontier-select-v35"></script>
+  <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
+  <script type="module" src="./app.js?v=20260818-plotly-growth-v36"></script>
 </body>
 </html>

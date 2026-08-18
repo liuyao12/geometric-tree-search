@@ -64,8 +64,11 @@ workers:
    tile class. Without that certificate the result is exhausted or
    inconclusive and the displayed patch rolls back to the root.
 
-The growth chart uses one wall clock for all four workers. Selecting a mode
-switches the viewport to its latest patch without stopping the other searches.
+The interactive Plotly growth chart uses one wall clock for all four workers.
+Every plotted sample retains its exact 3D snapshot: clicking a marker replays
+that historical patch, while clicking empty chart space restores the latest
+patch for that marker's mode. Selecting a mode also switches the viewport to
+its latest patch without stopping the other searches.
 An exhausted isohedral search drops to zero and restores the root view. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an
 explicit search cap.
