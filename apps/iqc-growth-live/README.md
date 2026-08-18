@@ -1427,6 +1427,23 @@ rank one and moves the rare nucleus's sole exact path from rank 101 to rank 21,
 a `4.81×` pruning gain. Because it still does not select that path first,
 clusters-of-clusters pruning is reported separately from autonomous selection.
 
+The next audit corrects an overly restrictive search interpretation. A prior
+third-step check required every new action to be causally attached to the most
+recently inserted cluster. That is a valid directed-path diagnostic, but it is
+not the intended order-independent covering search: after a commit, any
+exposed frozen port on the whole configuration may act next. Ten authorized
+training nuclei now provide 20,716 candidate descriptors and 1,151 exact
+actions over three self-fed stages. A stage-aware leave-one-nucleus-out grid
+selects a support-4 / two-group / 0.5-shrinkage finite incidence marking.
+Conditional on a known-exact two-action prefix, every one of the eight heldout
+configurations contains 57--75 exact global frontier actions. The previous
+clusters² compatibility ranks `3 / 3 / 4 / 4 / 1 / 9 / 9 / 9`; the new
+post-commit marking gives `3 / 4 / 3 / 3 / 1 / 1 / 1 / 1`. Thus width four
+has complete conditional supply, while top-one selection remains only `4 / 8`.
+Heldout truth constructs the exact prefix and scores the frozen frontier, so
+this explicitly does **not** certify autonomous, sustained, stationary, or
+exponential IQC growth.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

@@ -2282,6 +2282,23 @@ rank falls from 101 to 21 (`4.81×` less branch work before reaching it).
 This is a measured clusters-of-clusters pruning gain, not a passed autonomous,
 stationary, or exponential gate.
 
+The follow-on audit corrects an overly restrictive execution assumption. The
+directed-path diagnostic required every third action to descend from the last
+inserted cluster, although the intended GCTS covering search may next use any
+exposed frozen port in the current configuration. Ten training nuclei provide
+20,716 candidate descriptors and 1,151 correct actions across three self-fed
+stages. A stage-aware leave-one-nucleus-out grid selects a support-4,
+two-independent-group, 0.5-shrinkage finite incidence marking without reading
+heldout targets. Conditional on one known-exact two-action prefix per heldout
+nucleus, the complete post-commit frontiers contain 57--75 exact actions. The
+clusters-of-clusters compatibility baseline reaches the first exact action at
+ranks `3 / 3 / 4 / 4 / 1 / 9 / 9 / 9`; the finite post-commit marking reaches
+`3 / 4 / 3 / 3 / 1 / 1 / 1 / 1`. A width-four configuration beam therefore
+has complete conditional supply, but top-one selection succeeds in only four
+of eight. Because heldout truth constructs the exact prefix, this is explicitly
+a conditional search audit, not autonomous continuation, stationarity, or an
+exponential IQC certificate.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are
