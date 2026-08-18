@@ -6,7 +6,7 @@ const inflateButton = document.getElementById("inflate-button");
 const backButton = document.getElementById("back-button");
 const generationValue = document.getElementById("generation-value");
 const tileValue = document.getElementById("tile-value");
-const cubeValue = document.getElementById("cube-value");
+const volumeValue = document.getElementById("volume-value");
 const hierarchyPlot = document.getElementById("hierarchy-plot");
 
 const MAX_GENERATION = 2;
@@ -29,10 +29,10 @@ const CUBE_FACES = [
   [0, 1, 5, 4], [2, 6, 7, 3],
   [0, 4, 6, 2], [1, 3, 7, 5]
 ];
-const CUBE_EDGES = [
-  [0, 1], [1, 3], [3, 2], [2, 0],
-  [4, 5], [5, 7], [7, 6], [6, 4],
-  [0, 4], [1, 5], [2, 6], [3, 7]
+const FACE_NEIGHBORS = [
+  [0, 0, -1], [0, 0, 1],
+  [0, -1, 0], [0, 1, 0],
+  [-1, 0, 0], [1, 0, 0]
 ];
 const CUBE_CORNERS = [
   [0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 1, 0],
@@ -131,38 +131,32 @@ function leafCells(leaf) {
   return cells;
 }
 
-function appendCube(origin, color, facePositions, faceColors, edgePositions, edgeColors) {
-  const corners = CUBE_CORNERS.map(([x, y, z]) => [origin[0] + x, origin[1] + y, origin[2] + z]);
-  for (const face of CUBE_FACES) {
-    for (const index of [face[0], face[1], face[2], face[0], face[2], face[3]]) {
-      facePositions.push(...corners[index]);
-      faceColors.push(color.r, color.g, color.b);
-    }
+function makeChairGeometry(leaf) {
+  const cells = leafCells(leaf);
+  const occupied = new Set(cells.map((cell) => cell.join(",")));
+  const positions = [];
+  for (const cell of cells) {
+    const corners = CUBE_CORNERS.map(([x, y, z]) => [cell[0] + x, cell[1] + y, cell[2] + z]);
+    CUBE_FACES.forEach((face, faceIndex) => {
+      const neighbor = add(cell, FACE_NEIGHBORS[faceIndex]);
+      if (occupied.has(neighbor.join(","))) return;
+      for (const index of [face[0], face[1], face[2], face[0], face[2], face[3]]) {
+        positions.push(...corners[index]);
+      }
+    });
   }
-  for (const [start, end] of CUBE_EDGES) {
-    edgePositions.push(...corners[start], ...corners[end]);
-    edgeColors.push(color.r, color.g, color.b, color.r, color.g, color.b);
-  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geometry.computeVertexNormals();
+  return geometry;
 }
 
 function makeParentOutline(size) {
   const half = size / 2;
-  const points = [];
-  for (let x = 0; x < 2; x += 1) {
-    for (let y = 0; y < 2; y += 1) {
-      for (let z = 0; z < 2; z += 1) {
-        if (x === 1 && y === 1 && z === 1) continue;
-        const origin = [x * half, y * half, z * half];
-        const corners = CUBE_CORNERS.map(([cx, cy, cz]) => new THREE.Vector3(
-          origin[0] + cx * half - size / 2,
-          origin[1] + cy * half - size / 2,
-          origin[2] + cz * half - size / 2
-        ));
-        for (const [start, end] of CUBE_EDGES) points.push(corners[start], corners[end]);
-      }
-    }
-  }
-  const geometry = new THREE.BufferGeometry().setFromPoints(points);
+  const surface = makeChairGeometry({ origin: [0, 0, 0], missingCorner: [1, 1, 1] });
+  surface.scale(half, half, half);
+  const geometry = new THREE.EdgesGeometry(surface, 1);
+  surface.dispose();
   const material = new THREE.LineDashedMaterial({
     color: 0x1d6b62,
     transparent: true,
@@ -180,63 +174,54 @@ function makeParentOutline(size) {
 function makeVisual(level) {
   const leaves = chairLeaves(level);
   const size = 2 ** (level + 1);
-  const facePositions = [];
-  const faceColors = [];
-  const edgePositions = [];
-  const edgeColors = [];
-
+  const group = new THREE.Group();
+  const materials = [];
+  const geometries = [];
+  const faceOpacity = Math.max(0.035, 0.2 / (2 ** level));
+  const edgeOpacity = Math.max(0.11, 0.58 / (2 ** level));
   for (const leaf of leaves) {
     const color = new THREE.Color(ORIENTATION_COLORS[orientationIndex(leaf.missingCorner)]);
-    for (const cell of leafCells(leaf)) {
-      appendCube(cell, color, facePositions, faceColors, edgePositions, edgeColors);
-    }
+    const geometry = makeChairGeometry(leaf);
+    const faceMaterial = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: faceOpacity,
+      depthWrite: false,
+      depthTest: true,
+      side: THREE.DoubleSide
+    });
+    faceMaterial.userData.baseOpacity = faceOpacity;
+    const mesh = new THREE.Mesh(geometry, faceMaterial);
+    mesh.renderOrder = 1;
+    group.add(mesh);
+
+    const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
+    const edgeMaterial = new THREE.LineBasicMaterial({
+      color: color.clone().multiplyScalar(0.68),
+      transparent: true,
+      opacity: edgeOpacity,
+      depthWrite: false,
+      depthTest: true
+    });
+    edgeMaterial.userData.baseOpacity = edgeOpacity;
+    const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+    edges.renderOrder = 2;
+    group.add(edges);
+    geometries.push(geometry, edgeGeometry);
+    materials.push(faceMaterial, edgeMaterial);
   }
-
-  const faceGeometry = new THREE.BufferGeometry();
-  faceGeometry.setAttribute("position", new THREE.Float32BufferAttribute(facePositions, 3));
-  faceGeometry.setAttribute("color", new THREE.Float32BufferAttribute(faceColors, 3));
-  faceGeometry.computeVertexNormals();
-  const faceOpacity = Math.max(0.025, 0.18 / (2 ** level));
-  const faceMaterial = new THREE.MeshBasicMaterial({
-    vertexColors: true,
-    transparent: true,
-    opacity: faceOpacity,
-    depthWrite: false,
-    depthTest: true,
-    side: THREE.DoubleSide
-  });
-  faceMaterial.userData.baseOpacity = faceOpacity;
-  const mesh = new THREE.Mesh(faceGeometry, faceMaterial);
-  mesh.renderOrder = 1;
-
-  const edgeGeometry = new THREE.BufferGeometry();
-  edgeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(edgePositions, 3));
-  edgeGeometry.setAttribute("color", new THREE.Float32BufferAttribute(edgeColors, 3));
-  const edgeOpacity = Math.max(0.055, 0.38 / (2 ** level));
-  const edgeMaterial = new THREE.LineBasicMaterial({
-    vertexColors: true,
-    transparent: true,
-    opacity: edgeOpacity,
-    depthWrite: false,
-    depthTest: true
-  });
-  edgeMaterial.userData.baseOpacity = edgeOpacity;
-  const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
-  edges.renderOrder = 2;
-
   const parent = makeParentOutline(size);
-  const group = new THREE.Group();
   group.position.set(-size / 2, -size / 2, -size / 2);
-  group.add(mesh, edges);
-  parent.outline.position.set(size / 2, size / 2, size / 2);
   group.add(parent.outline);
+  materials.push(parent.material);
+  geometries.push(parent.geometry);
 
   return {
     group,
     level,
     leaves,
-    materials: [faceMaterial, edgeMaterial, parent.material],
-    geometries: [faceGeometry, edgeGeometry, parent.geometry]
+    materials,
+    geometries
   };
 }
 
@@ -256,7 +241,7 @@ function updateReadout() {
   const chairs = 8 ** generation;
   generationValue.textContent = String(generation);
   tileValue.textContent = chairs.toLocaleString();
-  cubeValue.textContent = (chairs * 7).toLocaleString();
+  volumeValue.textContent = (chairs * 7).toLocaleString();
 }
 
 function updateActionButtons() {
