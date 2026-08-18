@@ -52,7 +52,6 @@ fillLight.position.set(-6, -2, 4);
 scene.add(fillLight);
 
 const camera = new THREE.PerspectiveCamera(34, 1, 0.002, 320);
-camera.up.set(0, 1, 0);
 
 let renderer;
 try {
@@ -129,12 +128,11 @@ orientationScene.add(orientationPoints);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.055;
+controls.dampingFactor = 0.08;
 controls.minDistance = 0.025;
 controls.maxDistance = 420;
 
 const root = new THREE.Group();
-root.rotation.set(-0.12, -0.18, 0.04);
 root.position.set(0.38, -0.08, 0);
 scene.add(root);
 

@@ -48,7 +48,6 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xedf1ef);
 
 const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 500);
-camera.up.set(0, 1, 0);
 camera.position.set(7.2, 5.6, 8.4);
 
 let renderer;
@@ -65,14 +64,13 @@ viewport.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.055;
+controls.dampingFactor = 0.08;
 controls.minDistance = 1.4;
 controls.maxDistance = 180;
 controls.target.set(0, 0, 0);
 controls.update();
 
 const root = new THREE.Group();
-root.rotation.set(-0.12, -0.18, 0.03);
 scene.add(root);
 
 function add(left, right) {
