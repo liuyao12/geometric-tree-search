@@ -1,14 +1,18 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260728-refined-proposals-v27";
+import { tileSpecs } from "./engine.js?v=20260817-census-candidates-v28";
 import {
   normalizeProposalProgram,
   proposalTileKey
-} from "./proposal-learner.js?v=20260728-refined-proposals-v27";
+} from "./proposal-learner.js?v=20260817-census-candidates-v28";
 
 const $ = (id) => document.getElementById(id);
 
 const selectedTilesEl = $("selectedTiles");
+const candidateResearchPanel = $("candidateResearchPanel");
+const candidateResearchTitle = $("candidateResearchTitle");
+const candidateResearchDetail = $("candidateResearchDetail");
+const candidateSearchButton = $("candidateSearchButton");
 const statusEl = $("status");
 const maxTilesInput = $("maxTilesInput");
 const layerInput = $("layerInput");
@@ -776,6 +780,7 @@ function polycubeCubeCount(figure) {
 }
 
 const catalogGroupDefinitions = [
+  { id: "unresolved", title: "16 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -790,6 +795,9 @@ function catalogGroupForFigure(figure) {
 
 function sortCatalogFigures(groupId, figures) {
   return figures.slice().sort((a, b) => {
+    if (groupId === "unresolved") {
+      return (a.census_candidate?.priority ?? Infinity) - (b.census_candidate?.priority ?? Infinity);
+    }
     if (groupId === "polycubes") {
       const cubeDelta = polycubeCubeCount(a) - polycubeCubeCount(b);
       if (cubeDelta !== 0) return cubeDelta;
@@ -1276,6 +1284,37 @@ function handleCustomPolycubeChanged() {
   refreshFigureSelectionUI();
 }
 
+function selectedCensusCandidate() {
+  return rootFigure()?.census_candidate ?? null;
+}
+
+function applyCandidateSearchPreset({ invalidate = true } = {}) {
+  if (!selectedCensusCandidate()) return;
+  document.querySelector('input[name="criterion"][value="count"]').checked = true;
+  maxTilesInput.value = "120";
+  strategySelect.value = setRadioValue(strategyRadios, "free_range", "free_range");
+  faceOrderSelect.value = "mrv";
+  moveOrderSelect.value = "balanced";
+  snapshotSelect.value = "0";
+  timeCapInput.value = "30";
+  nodeCapInput.value = "0";
+  candidateCapInput.value = "0";
+  branchCapInput.value = "0";
+  exhaustiveCheckbox.checked = true;
+  mirrorCheckbox.checked = false;
+  updateCriterionUI();
+  updateStrategyUI();
+  if (invalidate) invalidatePausedRunIfNeeded();
+}
+
+function updateCandidateResearchPanel() {
+  const candidate = selectedCensusCandidate();
+  candidateResearchPanel.classList.toggle("is-hidden", !candidate);
+  if (!candidate) return;
+  candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
+  candidateResearchDetail.textContent = `Priority ${candidate.priority}/16 · ${candidate.lattice_points} lattice points · unresolved, not a known tiler. Four search modes run side by side.`;
+}
+
 function renderSystemTileList() {
   systemTileList.replaceChildren();
   for (const group of groupedCatalogFigures()) {
@@ -1289,7 +1328,7 @@ function renderSystemTileList() {
 
     for (const figure of group.figures) {
       const selected = selectedFigureIds.includes(figure.id);
-      const compatible = isFigureCompatibleWithSelection(figure);
+      const compatible = !!figure.census_candidate || isFigureCompatibleWithSelection(figure);
       const row = document.createElement("button");
       row.type = "button";
       row.className = "figure-card";
@@ -1306,6 +1345,9 @@ function renderSystemTileList() {
       row.addEventListener("click", () => {
         if (selected) {
           selectedFigureIds = selectedFigureIds.filter(id => id !== figure.id);
+        } else if (figure.census_candidate) {
+          selectedFigureIds = [figure.id];
+          applyCandidateSearchPreset({ invalidate: false });
         } else if (compatible && !selectedFigureIds.includes(figure.id)) {
           selectedFigureIds.push(figure.id);
         }
@@ -1321,7 +1363,12 @@ function renderSystemTileList() {
       name.title = `${figureSourceTitle(figure)}: ${prettyName(figure.name)}\n${angleTitle}`;
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
-      angles.innerHTML = solidAngleListHtml(figure.solid_angles);
+      if (figure.census_candidate) {
+        angles.textContent = `priority ${figure.census_candidate.priority}/16 · ${figure.census_candidate.lattice_points} points`;
+        angles.classList.add("is-census-label");
+      } else {
+        angles.innerHTML = solidAngleListHtml(figure.solid_angles);
+      }
       row.append(image, name, angles);
       grid.appendChild(row);
     }
@@ -1335,6 +1382,7 @@ function refreshFigureSelectionUI() {
   renderSelectedTiles();
   renderSystemTileList();
   updateMirrorAvailability();
+  updateCandidateResearchPanel();
 }
 
 function keyToVoxel(key) {
@@ -1723,12 +1771,13 @@ function updateSearchMetrics(stats = null) {
   const totalPaths = stats?.progress_total_paths ?? stats?.estimated_nodes_at_depth ?? null;
   const completedPathLabel = stats?.progress_completed_paths_label ?? completedPaths;
   const totalPathLabel = stats?.progress_total_paths_label ?? totalPaths;
+  const visitedNodes = stats?.visited_nodes ?? treeMap.size;
 
   metricVisited.textContent = formatVisitedPercent(visitedPercent);
   metricVisitedDetail.textContent = `DFS estimate, depth ${progressDepth}`;
   metricNodes.textContent = totalPathLabel
-    ? `${completedPathLabel}/${totalPathLabel} paths`
-    : `${completedPaths} paths`;
+    ? `${visitedNodes} nodes · ${completedPathLabel}/${totalPathLabel} paths`
+    : `${visitedNodes} nodes`;
   const isotropy = Number(stats?.growth_isotropy);
   const spans = stats?.growth_spans ?? [0, 0, 0];
   metricGrowth.textContent = Number.isFinite(isotropy) ? `${Math.round(isotropy * 100)}%` : "—";
@@ -2574,7 +2623,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260728-refined-proposals-v27", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-census-candidates-v28", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2907,7 +2956,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260728-refined-proposals-v27", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-census-candidates-v28", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3022,6 +3071,12 @@ function bindControls() {
     else startGrowthBenchmark();
   });
 
+  candidateSearchButton.addEventListener("click", () => {
+    applyCandidateSearchPreset();
+    setStatus("Long-growth preset ready: four modes race to 120 tiles for up to 30 seconds.");
+    setRunButton();
+  });
+
   customBuilderButton.addEventListener("click", openCustomBuilderDialog);
   closeBuilderButton.addEventListener("click", closeCustomBuilderDialog);
   customBuilderDialog.addEventListener("click", (event) => {
@@ -3064,6 +3119,14 @@ function animate() {
 
 initFigureSelection();
 applySearchParams();
+{
+  const startupParams = new URLSearchParams(window.location.search);
+  const hasExplicitSearchSettings = ["criterion", "target", "target_val", "time_limit", "tiling_strategy"]
+    .some(name => startupParams.has(name));
+  if (selectedCensusCandidate() && !hasExplicitSearchSettings) {
+    applyCandidateSearchPreset({ invalidate: false });
+  }
+}
 updateCriterionUI();
 updateStrategyUI();
 applyModeDefaults();

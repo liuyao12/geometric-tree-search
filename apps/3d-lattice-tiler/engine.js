@@ -2,6 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
+import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const createTilingStream = (() => {
@@ -533,7 +534,9 @@ export const createTilingStream = (() => {
         progress_paths_capped: branchProgress.completed_capped || branchProgress.total_capped,
         branch_widths: branchProgress.widths,
         branch_next_indices: branchProgress.next_indices,
-        visited_nodes: branchProgress.completed,
+        // Actual work performed. The path estimate can saturate at 1e12 after
+        // only a modest number of genuinely visited search nodes.
+        visited_nodes: 1 + searchStats.forced_total + searchStats.branch_choices_visited,
         estimated_nodes_at_depth: branchProgress.total,
         visited_percent: branchProgress.percent
       };
@@ -3603,7 +3606,9 @@ export const createTilingStream = (() => {
       }
       const forcedBatch = [];
       const doReturn = async function* (retval) {
-        if (retval && !exhaustive) return true;
+        // Exhaustive controls whether failure is a certificate; it must not
+        // continue a satisfiability search after finding a witness.
+        if (retval) return true;
         while (forcedBatch.length) {
           const [mv, rb] = forcedBatch.pop();
           undoMove(mv, rb);
@@ -3836,7 +3841,6 @@ export const createTilingStream = (() => {
       
       yield branchSet(parentId, payload);
 
-      let anySuccess = false;
       for (let i = 0; i < bestMoves.length; i++) {
         await yieldToBrowser();
         if (overBudget()) {
@@ -3873,9 +3877,8 @@ export const createTilingStream = (() => {
         const child = yield* search(mv.node_id, depth + 1);
         if (usePolicyAgent) rlAgent.observe(mv, child);
         if (child) {
-          anySuccess = true;
           yield nodeStatus(mv.node_id, "success");
-          if (!exhaustive) return yield* doReturn(true);
+          return yield* doReturn(true);
         } else {
           searchStats.backtracks += 1;
           yield nodeStatus(mv.node_id, "fail");
@@ -3885,7 +3888,6 @@ export const createTilingStream = (() => {
         setBranchCursor(depth, bestMoves.length, i + 1);
       }
 
-      if (anySuccess && exhaustive) { yield nodeStatus(parentId, "success"); return yield* doReturn(true); }
       yield nodeStatus(parentId, "fail");
       return yield* doReturn(false);
     }
@@ -5140,6 +5142,12 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
+    ...Object.fromEntries(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => [candidate.registry_id, {
+      name: candidate.name,
+      category: ["Unresolved Lattice Candidates"],
+      census_candidate: candidate,
+      build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
+    }])),
     "1_cross": { name:"1-Cross (Heptacube)", category:["Polycubes"], build: () => [make_tile("1-Cross", gen_n_cross_data(1))] },
     "2_cross": { name:"2-Cross (Tridecacube)", category:["Polycubes"], build: () => [make_tile("2-Cross", gen_n_cross_data(2))] },
     "3_cross": { name:"3-Cross (Nonadecacube)", category:["Polycubes"], build: () => [make_tile("3-Cross", gen_n_cross_data(3))] },
@@ -5288,7 +5296,9 @@ export const tileSpecs = (() => {
     const sourceName = String(name ?? "Tile");
     const reflected = sourceName.startsWith("reflected ");
     const baseName = reflected ? sourceName.slice("reflected ".length) : sourceName;
-    const cleaned = displayTileNameMap.get(baseName)
+    const cleaned = /^Candidate \d+_\d+$/u.test(baseName)
+      ? baseName
+      : displayTileNameMap.get(baseName)
       ?? baseName
         .replace(/_\((FCC|HCP)\)$/i, "")
         .replace(/\s*\((FCC|HCP|Root:\s*(FCC|HCP))\)\s*$/i, "")
@@ -5323,7 +5333,7 @@ export const tileSpecs = (() => {
   const metadata = {};
   for (const [k,v] of Object.entries(TILING_REGISTRY)) {
     const tiles = v.build();
-    metadata[k] = { name: v.name, category: v.category || [], is_chiral: !!tiles[0]?.is_chiral, default_viz: v.default_viz || {} };
+    metadata[k] = { name: v.name, category: v.category || [], census_candidate: v.census_candidate || null, is_chiral: !!tiles[0]?.is_chiral, default_viz: v.default_viz || {} };
   }
   const categories = new Map();
   for (const [k,meta] of Object.entries(metadata)) {
@@ -5355,6 +5365,7 @@ export const tileSpecs = (() => {
           system_name: entry.name,
           system_names: [entry.name],
           category: [...(entry.category || ["Other"])],
+          census_candidate: entry.census_candidate || null,
           is_chiral: !!tile.is_chiral,
           solid_angle: tile.solid_angle,
           solid_angles: solidAngleValues(tile),

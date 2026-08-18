@@ -1,8 +1,8 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260728-refined-proposals-v27";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-census-candidates-v28";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
-} from "./proposal-learner.js?v=20260728-refined-proposals-v27";
+} from "./proposal-learner.js?v=20260817-census-candidates-v28";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
