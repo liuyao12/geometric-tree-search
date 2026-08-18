@@ -1578,6 +1578,30 @@ generalization estimate. It is red regardless—the predeclared gate requires at
 least `18 / 20` exact selections—so it does not authorize opening a new
 confirmation nucleus.
 
+A subsequent audit removes that caveat and tests the channel representation
+directly. Each fold refits its upstream pose-port marking without the four
+heldout nuclei before generating both the broad and on-policy trees. A branch
+action carries five bounded proper-SE(3)-quotiented channel responses. The
+responses are sorted as an action multiset so commuting order is irrelevant;
+six relative-distance fields associate geometry with the `XX / XY / XZ / YY /
+YZ / ZZ` color roles. Raw positions and cluster IDs never enter the value fit.
+
+At identical search reach and beam work, the fully nested feature ablation is:
+
+- base branch statistics: `14 / 20` exact selections, `17 / 20` terminal
+  supply;
+- base plus colored relative geometry: `15 / 20`, supply `17 / 20`;
+- base plus pose-port channel responses: `14 / 20`, supply `16 / 20`;
+- all coupled fields: `15 / 20`, supply `16 / 20`.
+
+One on-policy refit of the coupled representation falls from `15 / 20` to
+`14 / 20`; it is rejected. The result sharpens the channel rule used by the
+interface: clustering may determine the pose-orbit basis and hence available
+channel rank, but raw orientation/channel count is not itself predictive.
+GCTS needs the connection section that couples those channels to colored local
+geometry. Even the best current ablation is only 75%, below the `18 / 20` gate,
+so no new confirmation target is opened.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

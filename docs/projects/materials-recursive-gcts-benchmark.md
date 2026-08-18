@@ -3548,6 +3548,35 @@ the target-free closed-loop candidate digest is
 These results are development cross-validation, not an autonomous-growth or
 stationary-production certificate.
 
+The follow-up fully nests the upstream marking and makes the proposed channel
+semantics explicit. For every fold, the pose-port model is refit without all
+four heldout nuclei before either broad or on-policy branches are generated.
+Each action contributes five finite proper-SE(3)-quotiented channel responses;
+the responses form an order-independent multiset, while six colored pair-
+distance fields retain how connection geometry is assigned to `XX / XY / XZ /
+YY / YZ / ZZ` roles. Exact coordinates remain only in candidate construction
+and scoring certificates.
+
+With the candidate reach and recurrent-state beam held fixed, the ablation is:
+
+| branch representation | exact selected | exact terminal supplied |
+|---|---:|---:|
+| base aggregate statistics | 14 / 20 | 17 / 20 |
+| base + colored connection geometry | 15 / 20 | 17 / 20 |
+| base + five pose-port channels/action | 14 / 20 | 16 / 20 |
+| coupled geometry + pose-port channels | 15 / 20 | 16 / 20 |
+
+The one-round on-policy refit of the coupled model decreases exact selection
+to `14 / 20`; it is not retained as an improvement. Raw pose-orbit/channel
+identity alone therefore does not improve the value function. The modest
+positive signal comes from channel-conditioned colored geometry, consistent
+with treating a GCTS marking as a local connection section rather than one
+scalar or one slot per observed rotation. The result is fully nested but still
+red at 75%, below the 90% gate. Its corpus digest is
+`8ebfa3e6cc445fd84d33089ef92c96dbe238108dc6958a73ef6e929953e7d0e3`;
+its target-free closed-loop candidate digest is
+`3658d67adddd8f92d07471e5681b6ce60583861bbbf655a3ed84cb0bf76871af`.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
