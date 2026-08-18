@@ -2115,6 +2115,7 @@ function learnOverlapGrammar(source) {
 const MARKING_REPRESENTATIONS = {
   sites: { label: "site-resolved section", short: "site resolved", exponent: 4, overlapWeight: .58 },
   halo: { label: "local radial / angular halo", short: "local halo", exponent: 5, overlapWeight: .64 },
+  "chiral-halo": { label: "chiral local halo", short: "chiral halo", exponent: 5.5, overlapWeight: .66 },
   ports: { label: "connection-port vector", short: "port vector", exponent: 6, overlapWeight: .70 },
   whole: { label: "whole-cluster action", short: "whole action", exponent: 2, overlapWeight: .38 },
 };

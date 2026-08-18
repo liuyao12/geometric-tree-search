@@ -37,8 +37,20 @@
   "mixed_top_ties": 0,
   "joint_support_control": {"selected_exact": 17, "selected_correct": 54},
   "prototype_closure_selected_folds": 0,
+  "explicit_chirality_control": {
+    "features": 210,
+    "selected_representations": [
+      "radial", "base-section", "base-section-chirality",
+      "section-chirality", "base-radial"
+    ],
+    "selected_neighbors": [1, 3, 5, 15, 3],
+    "chirality_selected_folds": 2,
+    "selected_exact": 15,
+    "selected_correct": 55,
+    "mixed_top_ties": 0,
+    "combined_digest": "ec6f7290b540b417f3f0475257884f45c6f2142f2bd14aa18663e0bd6e5a63e2"
+  },
   "development_gate": {"minimum_selected_exact": 18},
   "target_used_before_selection": false,
   "fresh_confirmation_opened": false
 }
-

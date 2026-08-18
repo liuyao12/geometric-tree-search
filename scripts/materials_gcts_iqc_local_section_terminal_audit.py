@@ -23,6 +23,10 @@ class IQCLocalSectionTerminalAudit:
     gain_over_baseline: int
     joint_support_selected_exact: int
     closure_selected_folds: int
+    chiral_features: int
+    chirality_selected_folds: int
+    chiral_selected_exact: int
+    chiral_selected_correct: int
     proper_se3_invariant: bool
     lattice_coordinates_used: bool
     chirality_preserved: bool
@@ -40,6 +44,7 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
             data["source_fixture_sha256"]:
         raise AssertionError("terminal-value source changed")
     schema = data["schema"]
+    chiral = data["explicit_chirality_control"]
     if (data["groups"] != 20 or data["terminal_supply"] != 18
             or len(data["selected_representations"]) != 5
             or len(data["selected_neighbors"]) != 5
@@ -56,6 +61,8 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         data["selected_exact"] - data["baseline_selected_exact"],
         data["joint_support_control"]["selected_exact"],
         data["prototype_closure_selected_folds"],
+        chiral["features"], chiral["chirality_selected_folds"],
+        chiral["selected_exact"], chiral["selected_correct"],
         schema["proper_se3_invariant"],
         schema["lattice_coordinates_used"], schema["chirality_preserved"],
         gate, gate and not target_used and
@@ -64,4 +71,3 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
 
 if __name__ == "__main__":
     print(evaluate())
-

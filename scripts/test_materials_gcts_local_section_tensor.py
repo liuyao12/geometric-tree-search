@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import itertools
 import math
 
 from materials_gcts_local_section_tensor import (
@@ -61,7 +62,45 @@ def test_local_section_rejects_tainted_or_invalid_inputs():
             raise AssertionError("invalid section geometry was accepted")
 
 
+def test_explicit_chirality_channel_is_proper_invariant_and_mirror_odd():
+    schema = LocalSectionSchema(("X",), 1., angular_cutoff=4.,
+                                include_chirality=True)
+    action = ((0., 0., 0.),)
+    occupied = ((1., 0., 0.), (0., 2., 0.), (0., 0., 3.))
+    source = local_section_tensor(
+        action, ("X",), occupied, ("X",) * 3, schema)
+    proper = local_section_tensor(
+        tuple(_transform(point) for point in action), ("X",),
+        tuple(_transform(point) for point in occupied), ("X",) * 3,
+        schema)
+    mirror = local_section_tensor(
+        tuple((-point[0], point[1], point[2]) for point in action), ("X",),
+        tuple((-point[0], point[1], point[2]) for point in occupied),
+        ("X",) * 3, schema)
+    assert source.chirality_preserved
+    assert len(source.values) == len(local_section_feature_names(schema)) == 15
+    assert all(abs(left - right) < 1e-12
+               for left, right in zip(source.values, proper.values))
+    assert abs(source.values[-1]) > 1e-6
+    brute = 0.
+    for first, second, third in itertools.permutations(occupied, 3):
+        radii = tuple(math.sqrt(sum(value * value for value in point))
+                      for point in (first, second, third))
+        unit = tuple(tuple(value / radius for value in point)
+                     for point, radius in zip((first, second, third), radii))
+        determinant = (unit[0][0] * (unit[1][1] * unit[2][2] -
+                       unit[1][2] * unit[2][1]) - unit[0][1] *
+                       (unit[1][0] * unit[2][2] - unit[1][2] * unit[2][0]) +
+                       unit[0][2] * (unit[1][0] * unit[2][1] -
+                       unit[1][1] * unit[2][0]))
+        brute += determinant * (radii[1] / 4.) * (radii[2] / 4.) ** 2
+    assert abs(source.values[-1] - brute) < 1e-12
+    assert abs(source.values[-1] + mirror.values[-1]) < 1e-12
+    assert source.values[:-1] == mirror.values[:-1]
+
+
 if __name__ == "__main__":
     test_local_section_is_permutation_and_proper_se3_invariant()
     test_local_section_rejects_tainted_or_invalid_inputs()
+    test_explicit_chirality_channel_is_proper_invariant_and_mirror_odd()
     print("local-section tensor tests passed")

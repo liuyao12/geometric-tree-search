@@ -25,6 +25,7 @@ class LocalSectionSchema:
     radial_bins: int = 8
     angular_cutoff: float = 3.
     angular_bins: int = 6
+    include_chirality: bool = False
     target_used: bool = False
 
 
@@ -35,8 +36,6 @@ class LocalSectionTensor:
     proper_se3_invariant: bool = True
     lattice_coordinates_used: bool = False
     target_used: bool = False
-    # Pair angles do not distinguish a section from its mirror.  An explicit
-    # proper-frame/chirality channel must be added for chiral applications.
     chirality_preserved: bool = False
 
 
@@ -56,7 +55,14 @@ def local_section_feature_names(schema: LocalSectionSchema) -> tuple[str, ...]:
         for index, left in enumerate(schema.species)
         for right in schema.species[index:]
         for bucket in range(schema.angular_bins))
-    return radial + angular
+    chiral = (() if not schema.include_chirality else tuple(
+        f"chirality:{action}:{first}{second}{third}"
+        for action in schema.species
+        for first_index, first in enumerate(schema.species)
+        for second_index, second in enumerate(
+                schema.species[first_index:], first_index)
+        for third in schema.species[second_index:]))
+    return radial + angular + chiral
 
 
 def _validate_schema(schema: LocalSectionSchema) -> None:
@@ -78,6 +84,12 @@ def _points(rows: Sequence[Sequence[float]]) -> tuple[Point, ...]:
 
 def _bin(value: float, width: float, count: int) -> int:
     return min(count - 1, max(0, int(value / width + 1e-10)))
+
+
+def _determinant(left: Point, middle: Point, right: Point) -> float:
+    return (left[0] * (middle[1] * right[2] - middle[2] * right[1])
+            - left[1] * (middle[0] * right[2] - middle[2] * right[0])
+            + left[2] * (middle[0] * right[1] - middle[1] * right[0]))
 
 
 def local_section_tensor(
@@ -110,6 +122,12 @@ def local_section_tensor(
                for index, left in enumerate(schema.species)
                for right in schema.species[index:]
                for bucket in range(schema.angular_bins)}
+    chiral = {(action, first, second, third): 0.
+              for action in schema.species
+              for first_index, first in enumerate(schema.species)
+              for second_index, second in enumerate(
+                      schema.species[first_index:], first_index)
+              for third in schema.species[second_index:]}
     action_counts = {item: action_species.count(item)
                      for item in schema.species}
     radial_cutoff = schema.radial_bins * schema.radial_bin_width
@@ -135,12 +153,39 @@ def local_section_tensor(
                 angular[(action_color, pair[0], pair[1], _bin(
                     cosine + 1., 2. / schema.angular_bins,
                     schema.angular_bins))] += 1.
+        if schema.include_chirality:
+            # By determinant multilinearity this equals the sum over every
+            # ordered neighbor triple, but costs O(neighbors + channels)
+            # rather than O(neighbors^3). Terms reusing one atom vanish
+            # automatically because two columns are parallel.
+            moments = {color: [[0., 0., 0.] for _power in range(3)]
+                       for color in schema.species}
+            for color, vector, radius in neighbors:
+                unit = tuple(value / radius for value in vector)
+                normalized_radius = radius / schema.angular_cutoff
+                for power in range(3):
+                    weight = normalized_radius ** power
+                    for axis in range(3):
+                        moments[color][power][axis] += unit[axis] * weight
+            for first_index, first in enumerate(schema.species):
+                for second_index, second in enumerate(
+                        schema.species[first_index:], first_index):
+                    for third in schema.species[second_index:]:
+                        chiral[(action_color, first, second, third)] += \
+                            _determinant(
+                                tuple(moments[first][0]),
+                                tuple(moments[second][1]),
+                                tuple(moments[third][2]))
 
     values = tuple(radial[key] / max(1, action_counts[key[0]])
                    for key in radial)
     values += tuple(angular[key] / max(1, action_counts[key[0]])
                     for key in angular)
+    if schema.include_chirality:
+        values += tuple(chiral[key] / max(1, action_counts[key[0]])
+                        for key in chiral)
     if len(values) != len(local_section_feature_names(schema)):
         raise AssertionError("local-section tensor schema mismatch")
-    return LocalSectionTensor(values, local_section_schema_digest(schema))
-
+    return LocalSectionTensor(
+        values, local_section_schema_digest(schema),
+        chirality_preserved=schema.include_chirality)

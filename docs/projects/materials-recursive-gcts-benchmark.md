@@ -3656,8 +3656,14 @@ gate. A larger joint-support tensor stays at 17 and loses one correct move;
 legacy atom-centred prototype-closure scalars are chosen in zero folds. Only
 the compact halo enters the experimental marking library. Because radial and
 pair-angle invariants also quotient reflection, this version reports
-`chirality_preserved=false`; a chiral material needs an explicit proper-frame
-channel before this representation can authorize a claim.
+`chirality_preserved=false`. A separate 30-channel pseudoscalar extension sums
+species-labelled ordered neighbor triple products with fixed radial moments.
+It is invariant under atom permutation and proper SE(3), changes sign under
+reflection, and reports `chirality_preserved=true`. The inner selector chooses
+it in two folds, but outer transfer falls to `15 / 20` exact terminals while
+remaining at `55 / 60` correct moves. It is therefore exposed only as an
+opt-in chiral-material marking; the nonchiral 180-channel halo remains the IQC
+default.
 
 ### Finite-state substitution cycles
 

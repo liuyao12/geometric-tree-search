@@ -1665,8 +1665,13 @@ still below gate. Adding pairwise shared-neighbor slack/balance remains
 `17 / 20` and drops to `54 / 60`; legacy atom-centred prototype-closure
 features are selected in zero folds. The compact halo is exposed as an
 experimental marking-library representation. Its distance/angle tensor is
-also mirror-invariant; preserving chirality requires a future explicit proper-
-frame channel.
+also mirror-invariant. A separate 30-channel pseudoscalar extension sums
+species-labelled neighbor triple products with fixed radial moments. It is
+invariant under atom permutation and proper SE(3), and flips sign under
+reflection. Inner folds select the chiral representation twice, but outer
+selection falls to `15 / 20` exact terminals (`55 / 60` correct moves). The
+chiral halo therefore remains an opt-in marking-library choice for genuinely
+chiral structures, not the default IQC value.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
