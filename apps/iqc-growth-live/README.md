@@ -1699,6 +1699,21 @@ Nested selection uses the incidence representation in two folds, but remains
 support is also insufficient; the next useful object must retain the typed,
 oriented port-incidence graph rather than collapsing it to four scalars.
 
+That graph is now implemented. Nodes retain recurrent irregular-support type,
+action chemistry, partial coverage, and independent-nucleus support. Edges
+retain the colored shared-site multiset, normalized action separation, both
+endpoint-to-interface distance profiles, and a signed local volume only when
+the endpoint and shared-site roles resolve its symmetry. Canonicalization is
+invariant to atom/action permutation and arbitrary proper SE(3), while a
+reflection flips the certified chirality bit. A finite value table backs off
+from exact graph to typed nodes, then port geometry, then the train prior.
+Despite retaining the desired GCTS object, grouped inner selection chooses it
+in zero of five folds: best exact-group counts are
+`23 / 25`, `24 / 26`, `16 / 25`, `20 / 26`, and `24 / 25`. Exact categorical
+graph identity is too sparse. The next justified value is a continuous graph
+kernel or bounded message-passing section over these same certified nodes and
+edges—not another looser geometry generator.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

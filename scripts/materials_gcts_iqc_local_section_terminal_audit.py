@@ -30,6 +30,8 @@ class IQCLocalSectionTerminalAudit:
     irregular_incidence_selected_folds: int
     irregular_incidence_selected_exact: int
     irregular_incidence_selected_correct: int
+    typed_port_graph_selected_folds: int
+    typed_port_graph_best_inner_exact: int
     chiral_features: int
     chirality_selected_folds: int
     chiral_selected_exact: int
@@ -53,6 +55,7 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
     schema = data["schema"]
     irregular = data["irregular_support_control"]
     incidence = irregular["pair_incidence_control"]
+    typed_graph = irregular["typed_port_graph_control"]
     chiral = data["explicit_chirality_control"]
     if (data["groups"] != 20 or data["terminal_supply"] != 18
             or len(data["selected_representations"]) != 5
@@ -77,6 +80,8 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         sum("incidence" in row
             for row in incidence["selected_representations"]),
         incidence["selected_exact"], incidence["selected_correct"],
+        typed_graph["selected_folds"],
+        max(typed_graph["inner_selected_exact"]),
         chiral["features"], chiral["chirality_selected_folds"],
         chiral["selected_exact"], chiral["selected_correct"],
         schema["proper_se3_invariant"],
