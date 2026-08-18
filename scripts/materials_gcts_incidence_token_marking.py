@@ -71,6 +71,9 @@ def candidate_incidence_descriptors(
         distance_bin_width: float = .5, maximum_neighbors: int = 8,
         maximum_roles: int = 3, joint_role_geometry: bool = False,
         message_passing_rounds: int = 0,
+        message_distance_divisor: int = 1,
+        message_role_mode: str = "exact",
+        message_encoding: str = "exact",
         occupied_positions=(),
         occupied_species=()):
     """Describe every candidate using invariant local port-incidence tokens.
@@ -82,7 +85,12 @@ def candidate_incidence_descriptors(
     if (len(occupied_positions) != len(occupied_species) or
             distance_scale <= 0 or neighborhood_reach <= 0 or
             distance_bin_width <= 0 or maximum_neighbors < 1 or
-            maximum_roles < 1 or not 0 <= message_passing_rounds <= 3):
+            maximum_roles < 1 or not 0 <= message_passing_rounds <= 3 or
+            not 1 <= message_distance_divisor <= 8 or
+            message_role_mode not in {"exact", "coarse", "colors"} or
+            message_encoding not in {"exact", "incidence"} or
+            (message_encoding == "incidence" and
+             message_passing_rounds > 1)):
         raise ValueError("invalid incidence descriptor settings")
     points = tuple(sorted(proposals.votes))
     roles = {point: _top_roles(proposals, point, maximum_roles)
@@ -92,6 +100,11 @@ def candidate_incidence_descriptors(
     for point in points:
         cell = tuple(math.floor(value / cell_size) for value in point)
         cells[cell].append(point)
+    occupied_cells = defaultdict(list)
+    for position, species in zip(occupied_positions, occupied_species):
+        position = tuple(position)
+        cell = tuple(math.floor(value / cell_size) for value in position)
+        occupied_cells[cell].append((position, str(species)))
 
     result = {}
     offsets = tuple((x, y, z) for x in (-1, 0, 1)
@@ -141,10 +154,17 @@ def candidate_incidence_descriptors(
                         tuple(sorted(predicted)),
                         tuple(sorted(proposals.target_color_votes.get(
                         other, {}))), distance_bin))
+        nearby_occupied = []
+        for offset in offsets:
+            cell = tuple(base_cell[axis] + offset[axis]
+                         for axis in range(3))
+            for other, species in occupied_cells.get(cell, ()):
+                distance = math.dist(point, other)
+                if distance <= cell_size + 1e-12:
+                    nearby_occupied.append((distance, species, other))
         occupied = sorted(
-            ((math.dist(point, other), str(species))
-             for other, species in zip(occupied_positions, occupied_species)
-             if math.dist(point, other) <= cell_size + 1e-12),
+            ((distance, species)
+             for distance, species, _other in nearby_occupied),
             key=lambda row: (row[0], row[1]))
         tokens.add(("occupied-count", _bucket(len(occupied))))
         for rank, (distance, species) in enumerate(
@@ -160,17 +180,17 @@ def candidate_incidence_descriptors(
         # colored metric graph of the nearest occupied neighbors is a proper-
         # motion invariant angular surrogate and does not require a global
         # frame or a lattice axis.
-        nearest = sorted(
-            ((math.dist(point, other), str(species), tuple(other))
-             for other, species in zip(occupied_positions, occupied_species)
-             if math.dist(point, other) <= cell_size + 1e-12),
-            key=lambda row: (row[0], row[1], row[2]))[:maximum_neighbors]
-        node_colors = tuple((species, round(
-            radius / (distance_scale * distance_bin_width)))
+        nearest = sorted(nearby_occupied,
+                         key=lambda row: (row[0], row[1], row[2]))[
+                             :maximum_neighbors]
+        node_colors = tuple((species, round(round(
+            radius / (distance_scale * distance_bin_width)) /
+            message_distance_divisor))
             for radius, species, _neighbor in nearest)
-        edge_bins = {(left, right): round(math.dist(
+        edge_bins = {(left, right): round(round(math.dist(
             nearest[left][2], nearest[right][2]) /
-            (distance_scale * distance_bin_width))
+            (distance_scale * distance_bin_width)) /
+            message_distance_divisor)
             for left in range(len(nearest))
             for right in range(left + 1, len(nearest))}
         for left_index, (left_radius, left_species, left_point) in enumerate(
@@ -190,22 +210,55 @@ def candidate_incidence_descriptors(
                 if joint_role_geometry and own_roles:
                     tokens.add(("role-occupied-metric-edge", own_roles[0],
                                 species_pair, radii, pair_bin))
-        for message_round in range(1, message_passing_rounds + 1):
-            refined = []
-            for node, color in enumerate(node_colors):
-                messages = tuple(sorted(((
-                    edge_bins[min(node, other), max(node, other)],
-                    node_colors[other]) for other in range(len(node_colors))
-                    if other != node), key=repr))
-                refined.append(hashlib.sha256(repr(
-                    (color, messages)).encode()).hexdigest()[:20])
-            node_colors = tuple(refined)
-            if own_roles:
-                tokens.update(("role-occupied-message-node", message_round,
-                               own_roles[0], color)
-                              for color in node_colors)
-                tokens.add(("role-occupied-message-graph", message_round,
-                            own_roles[0], tuple(sorted(node_colors))))
+        if own_roles:
+            primary = own_roles[0]
+            message_role = primary if message_role_mode == "exact" else (
+                primary.parent_color, primary.source_color,
+                primary.separation_bin) if message_role_mode == "coarse" \
+                else (primary.parent_color, primary.source_color)
+        if message_encoding == "exact":
+            for message_round in range(1, message_passing_rounds + 1):
+                refined = []
+                for node, color in enumerate(node_colors):
+                    messages = tuple(sorted(((
+                        edge_bins[min(node, other), max(node, other)],
+                        node_colors[other])
+                        for other in range(len(node_colors))
+                        if other != node), key=repr))
+                    refined.append(hashlib.sha256(repr(
+                        (color, messages)).encode()).hexdigest()[:20])
+                node_colors = tuple(refined)
+                if own_roles:
+                    tokens.update(("role-occupied-message-node",
+                                   message_round, message_role, color)
+                                  for color in node_colors)
+                    tokens.add(("role-occupied-message-graph",
+                                message_round, message_role,
+                                tuple(sorted(node_colors))))
+        elif message_passing_rounds and own_roles:
+            # Finite additive quotient of one Weisfeiler-Lehman incidence
+            # round.  It retains colored radial node states and all colored
+            # metric-edge messages, but replaces the near-unique hash of an
+            # entire neighborhood with bounded multiplicity tokens.  Exact
+            # action geometry remains outside this marking and is unchanged.
+            node_counts = Counter(node_colors)
+            edge_counts = Counter()
+            for (left, right), edge_bin in edge_bins.items():
+                states = tuple(sorted(
+                    (node_colors[left], node_colors[right]), key=repr))
+                edge_counts[(states, edge_bin)] += 1
+            tokens.update(("role-occupied-message-node", 1,
+                           message_role, state, _bucket(count))
+                          for state, count in node_counts.items())
+            tokens.update(("role-occupied-message-edge", 1,
+                           message_role, states, edge_bin, _bucket(count))
+                          for (states, edge_bin), count in edge_counts.items())
+            species_counts = Counter(state[0] for state in node_colors)
+            tokens.add(("role-occupied-message-graph", 1, message_role,
+                        _bucket(len(node_colors)), _bucket(len(edge_bins)),
+                        tuple(sorted((species, _bucket(count))
+                                     for species, count
+                                     in species_counts.items()))))
         result[point] = CandidateIncidenceDescriptor(
             tuple(sorted(tokens, key=repr)))
     return result

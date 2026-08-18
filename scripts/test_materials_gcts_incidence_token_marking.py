@@ -77,6 +77,24 @@ def test_descriptor_is_permutation_translation_rotation_invariant():
     assert any(token[0] == "role-occupied-message-graph"
                for row in first_messages.values() for token in row.tokens)
 
+    first_incidence = candidate_incidence_descriptors(
+        _proposals(), distance_scale=1., occupied_positions=occupied,
+        occupied_species=species, joint_role_geometry=True,
+        message_passing_rounds=1, message_distance_divisor=2,
+        message_role_mode="coarse", message_encoding="incidence")
+    second_incidence = candidate_incidence_descriptors(
+        second_raw, distance_scale=1.,
+        occupied_positions=tuple(
+            (7. - point[1], -3. + point[0], 11. + point[2])
+            for point in occupied), occupied_species=species,
+        joint_role_geometry=True, message_passing_rounds=1,
+        message_distance_divisor=2, message_role_mode="coarse",
+        message_encoding="incidence")
+    assert sorted((row.tokens for row in first_incidence.values()), key=repr) \
+        == sorted((row.tokens for row in second_incidence.values()), key=repr)
+    assert any(token[0] == "role-occupied-message-edge"
+               for row in first_incidence.values() for token in row.tokens)
+
 
 def test_train_only_tokens_rank_supported_context():
     positive = CandidateIncidenceDescriptor((('role', 'good'),))

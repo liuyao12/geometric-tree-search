@@ -91,13 +91,19 @@ def _development_sources():
 
 
 def _development_groups(*, joint_role_geometry=False,
-                        message_passing_rounds=0):
+                        message_passing_rounds=0,
+                        message_distance_divisor=1,
+                        message_role_mode="exact",
+                        message_encoding="exact"):
     return _candidate_groups_for_geometry(
         _development_sources(), neighborhood_reach=NEIGHBORHOOD_REACH,
         distance_bin_width=DISTANCE_BIN_WIDTH,
         maximum_neighbors=MAXIMUM_NEIGHBORS,
         joint_role_geometry=joint_role_geometry,
-        message_passing_rounds=message_passing_rounds)
+        message_passing_rounds=message_passing_rounds,
+        message_distance_divisor=message_distance_divisor,
+        message_role_mode=message_role_mode,
+        message_encoding=message_encoding)
 
 
 def evaluate() -> OrbitDisagreementPreflight:

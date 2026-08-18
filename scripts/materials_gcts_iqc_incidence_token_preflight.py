@@ -134,7 +134,10 @@ def _candidate_groups_for_geometry(
         sources, *, neighborhood_reach: float = 3.,
         distance_bin_width: float = .5, maximum_neighbors: int = 8,
         joint_role_geometry: bool = False,
-        message_passing_rounds: int = 0):
+        message_passing_rounds: int = 0,
+        message_distance_divisor: int = 1,
+        message_role_mode: str = "exact",
+        message_encoding: str = "exact"):
     groups = []
     for source in sources:
         descriptors = candidate_incidence_descriptors(
@@ -144,6 +147,9 @@ def _candidate_groups_for_geometry(
             maximum_neighbors=maximum_neighbors,
             joint_role_geometry=joint_role_geometry,
             message_passing_rounds=message_passing_rounds,
+            message_distance_divisor=message_distance_divisor,
+            message_role_mode=message_role_mode,
+            message_encoding=message_encoding,
             occupied_positions=source.seed_positions,
             occupied_species=source.seed_species)
         rows = []

@@ -2137,6 +2137,21 @@ ranking features only, collisions cannot authorize a placement. The next
 bounded learner must fit a finite quotient of message colors on training folds
 instead of retaining exact neighborhood hashes.
 
+That finite-quotient gate has now been run. Exact one-round colors are
+coarsened by train-development distance divisors two, four, and eight and by
+symmetry-reduced parent/source role projections. The smallest exact arm has
+12,954 node and 5,787 graph colors, but every exact-hash arm still selects
+14 / 20 actions. An additive incidence quotient replaces whole-graph hashes
+with bounded colored node and metric-edge multiplicity tokens; it compresses
+to 457 node and 976 graph types and improves only to 15 / 20. A separate
+positive codebook then admits a prototype only when its finite graph view
+occurs in at least two or three independent train nuclei. The selected
+three-nucleus codebook contains 356--358 prototypes across folds and selects
+11 / 20. All arms rank the same exact candidate graph, and the declared next
+centre `(0, 50, 0)` is not constructed. The result is therefore a clean red
+gate: finite compression is real, but neither additive bags nor nearest
+recurrent graph prototypes provide the missing branch value.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

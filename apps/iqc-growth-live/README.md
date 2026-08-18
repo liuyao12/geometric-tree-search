@@ -1303,6 +1303,20 @@ recurrence fragments instead of improving. These hashes only rank already
 certified candidates and never authorize geometry. The next section must learn
 a train-only finite quotient of message colors before applying the marking.
 
+The first finite-quotient audit is now complete and remains red. Coarsening
+message distances by factors two, four, or eight and replacing full port roles
+with parent/source color roles reduces the exact one-round vocabulary as far as
+12,954 node and 5,787 graph colors, but all exact-hash variants remain at
+14 / 20. A stronger additive quotient records bounded colored node-state and
+metric-edge multiplicities instead of hashing the whole neighborhood. It uses
+only 457 node and 976 graph types and reaches 15 / 20. Finally, a positive
+prototype is admitted to a finite codebook only when its graph view recurs in
+at least two or three independent nuclei. The selected three-nucleus codebook
+contains 356--358 prototypes per fold but falls to 11 / 20. Candidate geometry,
+collision certificates, and the two-action antichain are identical in every
+arm; the next disjoint centre remains unopened. This rejects vocabulary size
+and nearest recurring graph prototype as sufficient GCTS value functions.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
