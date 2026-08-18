@@ -2,11 +2,8 @@ import assert from "node:assert/strict";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 16, "the research catalog must expose all screened candidates");
-const survivors = candidates.filter(figure => figure.census_candidate.screen_status === "unresolved");
-const isohedralGrowers = candidates.filter(figure => figure.census_candidate.screen_status === "isohedral_grower");
-assert.equal(survivors.length, 6, "only candidates that pass the bounded isohedral screen remain unresolved");
-assert.equal(isohedralGrowers.length, 10, "long isohedral growers must be retained only as screened-out controls");
+assert.equal(candidates.length, 6, "screened-out isohedral growers must not remain in the catalog");
+const survivors = candidates;
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.survivor_priority),
   Array.from({ length: 6 }, (_, index) => index + 1),
@@ -63,10 +60,34 @@ const exhaustiveWitness = await solve({
 assert.equal(exhaustiveWitness.final.success, true, "exhaustive mode must stop when it finds a witness");
 assert.equal(exhaustiveWitness.final.result_kind, "patch_found");
 
+const conwayFigure = tileSpecs.figureCatalog.find(figure => figure.mode_key === "scd_conway");
+assert.ok(conwayFigure?.aperiodic_tile, "the Conway biprism must be visible as a known aperiodic monotile");
+const conwayTile = tileSpecs.TILING_REGISTRY.scd_conway.build()[0];
+assert.ok(conwayTile.verts.flat().every(Number.isInteger), "the catalog realization must have lattice vertices");
+const conwayRun = await solve({
+  mode_key: "scd_conway",
+  custom_system: {
+    name: "SCD layered construction",
+    figure_refs: ["scd_conway::0"],
+    polycubes: [],
+    polycube_lattice: "z3"
+  },
+  criterion: "count",
+  target_val: 24,
+  tiling_strategy: "free_range",
+  include_mirrors: false,
+  snapshot_every: 1,
+  placement_details: true
+});
+assert.equal(conwayRun.final.success, true);
+assert.equal(conwayRun.final.can_tile, true);
+assert.equal(conwayRun.final.result_kind, "known_aperiodic_construction");
+assert.equal(conwayRun.largestPatch, 24);
+
 console.log("3D census candidate regressions passed", {
   candidates: candidates.length,
-  survivors: survivors.length,
   firstCandidate: first.census_candidate.id,
   firstPatch: candidateRun.largestPatch,
-  visitedNodes: candidateRun.final.search_stats.visited_nodes
+  visitedNodes: candidateRun.final.search_stats.visited_nodes,
+  conwayPatch: conwayRun.largestPatch
 });

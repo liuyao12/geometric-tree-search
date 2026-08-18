@@ -2,7 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
-import { LATTICE_POLYHEDRON_CENSUS_TILES } from "../../assets/lattice-polyhedron-survivors.js";
+import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const createTilingStream = (() => {
@@ -372,6 +372,134 @@ export const createTilingStream = (() => {
       default_opacities: modeDef.default_viz?.opacities ?? [],
       default_internal: !!modeDef.default_viz?.internal
     };
+
+    const conwayFigureRefs = customSystem?.figure_refs ?? [];
+    const isDirectConwaySystem = !includeMirrors && config.tiling_strategy === "free_range" && (
+      mode_key === "scd_conway"
+      || (conwayFigureRefs.length === 1 && conwayFigureRefs[0] === "scd_conway::0")
+    );
+    if (isDirectConwaySystem) {
+      // The general lattice search uses only the 24 orientation-preserving
+      // symmetries of Z^3. SCD layers require successive rotations by
+      // -atan(3/4), so emit the published layered construction directly.
+      const target = Math.max(1, Number(config.target_val) || 80);
+      const tile = prototiles[0];
+      const layerAngle = -Math.atan2(3, 4);
+      const latticeA = [10, 0, 0];
+      const latticeB = [6, 8, 0];
+      const topOffset = [3, 4, 2];
+      const positions = [];
+      for (let radius = 0; positions.length < target; radius += 1) {
+        for (let layer = -radius; layer <= radius; layer += 1) {
+          for (let i = -radius; i <= radius; i += 1) {
+            for (let j = -radius; j <= radius; j += 1) {
+              if (Math.max(Math.abs(layer), Math.abs(i), Math.abs(j)) !== radius) continue;
+              positions.push({ layer, i, j });
+            }
+          }
+        }
+      }
+      positions.sort((a, b) =>
+        (a.layer * a.layer + a.i * a.i + a.j * a.j)
+        - (b.layer * b.layer + b.i * b.i + b.j * b.j)
+        || a.layer - b.layer || a.i - b.i || a.j - b.j
+      );
+
+      const transformVertex = (vertex, placement) => {
+        const x = vertex[0] - topOffset[0] + placement.i * latticeA[0] + placement.j * latticeB[0];
+        const y = vertex[1] - topOffset[1] + placement.i * latticeA[1] + placement.j * latticeB[1];
+        const z = vertex[2] - topOffset[2] + placement.i * latticeA[2] + placement.j * latticeB[2];
+        const angle = placement.layer * layerAngle;
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        return [
+          cos * x - sin * y,
+          sin * x + cos * y,
+          z + 2 * placement.layer
+        ];
+      };
+      const pointKey = point => point.map(value => Math.round(value * 1e8)).join(",");
+      const conwaySnapshot = count => {
+        const faces = [];
+        const faceGroups = new Map();
+        const centers = [];
+        for (let index = 0; index < count; index += 1) {
+          const placement = positions[index];
+          const transformed = tile.verts.map(vertex => transformVertex(vertex, placement));
+          centers.push([0, 1, 2].map(axis =>
+            transformed.reduce((sum, vertex) => sum + vertex[axis], 0) / transformed.length
+          ));
+          for (const faceIndices of tile.faces) {
+            const vertices = faceIndices.map(vertexIndex => transformed[vertexIndex]);
+            const face = {
+              v: vertices,
+              color: COLOR_PALETTE[((placement.layer % BASE_COLOR_PALETTE_SIZE) + BASE_COLOR_PALETTE_SIZE) % BASE_COLOR_PALETTE_SIZE],
+              color_id: ((placement.layer % BASE_COLOR_PALETTE_SIZE) + BASE_COLOR_PALETTE_SIZE) % BASE_COLOR_PALETTE_SIZE,
+              prototile_idx: 0,
+              internal: false
+            };
+            const key = vertices.map(pointKey).sort().join("|");
+            const group = faceGroups.get(key) ?? [];
+            group.push(face);
+            faceGroups.set(key, group);
+            faces.push(face);
+          }
+        }
+        for (const group of faceGroups.values()) {
+          if (group.length > 1) for (const face of group) face.internal = true;
+        }
+        const spans = [0, 1, 2].map(axis =>
+          Math.max(...centers.map(center => center[axis])) - Math.min(...centers.map(center => center[axis]))
+        );
+        const maxSpan = Math.max(...spans);
+        return {
+          type: "full_update",
+          tile_count: count,
+          tile_counts: [{ type_idx: 0, name: "Conway Biprism", color: COLOR_PALETTE[0], count }],
+          faces,
+          frontier_points: [],
+          frontier_stats: { point_count: 0, count: 0, min_gen: Math.max(0, ...positions.slice(0, count).map(item => Math.abs(item.layer))) },
+          search_stats: {
+            tiling_strategy: "scd_layered_construction",
+            visited_nodes: count,
+            forced_total: Math.max(0, count - 1),
+            branch_choices_visited: 0,
+            backtracks: 0,
+            growth_axis_rank: spans.filter(span => span > 1e-9).length,
+            growth_spans: spans,
+            growth_isotropy: maxSpan > 0 ? Math.min(...spans) / maxSpan : 0,
+            visited_percent: 100,
+            progress_depth: 0,
+            progress_completed_paths_label: "1",
+            progress_total_paths_label: "1"
+          }
+        };
+      };
+
+      for (let count = 1; count <= target; count += 1) {
+        if (stopToken.stop) return;
+        yield conwaySnapshot(count);
+        await yieldToBrowser();
+      }
+      const finalSnapshot = conwaySnapshot(target);
+      yield {
+        type: "finished",
+        tile_count: target,
+        search_stats: finalSnapshot.search_stats,
+        success: true,
+        result_kind: "known_aperiodic_construction",
+        can_tile: true,
+        search_incomplete: false,
+        tiling_evidence: {
+          kind: "schmitt_conway_danzer_layered_construction",
+          certified: true,
+          can_tile: true,
+          translational_symmetry: false,
+          layer_rotation_radians: layerAngle
+        }
+      };
+      return;
+    }
 
     const state = {
       placements: [],
@@ -5142,14 +5270,28 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
-    ...Object.fromEntries(LATTICE_POLYHEDRON_CENSUS_TILES.map(candidate => [candidate.registry_id, {
+    ...Object.fromEntries(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => [candidate.registry_id, {
       name: candidate.name,
-      category: [candidate.screen_status === "unresolved"
-        ? "Unresolved Lattice Candidates"
-        : "Screened-Out Isohedral Growers"],
+      category: ["Unresolved Lattice Candidates"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),
+    "scd_conway": {
+      name: "Schmitt–Conway–Danzer Biprism",
+      category: ["Aperiodic Monotiles"],
+      aperiodic_tile: {
+        kind: "weakly aperiodic",
+        lattice_realization: "3–4–5 incommensurate SCD biprism",
+        reflections_forbidden: true
+      },
+      // Twice the standard construction with a=(5,0,0), b=(3,4,0),
+      // lambda=1/2 and height=1. The vertices are integral while the layer
+      // rotation phi=atan(3/4) is incommensurate with pi.
+      build: () => [make_tile("Conway Biprism", createScaledTileData([
+        [0,0,0], [10,0,0], [6,8,0], [16,8,0],
+        [3,4,2], [13,4,2], [5,0,-2], [11,8,-2]
+      ], [], true))]
+    },
     "1_cross": { name:"1-Cross (Heptacube)", category:["Polycubes"], build: () => [make_tile("1-Cross", gen_n_cross_data(1))] },
     "2_cross": { name:"2-Cross (Tridecacube)", category:["Polycubes"], build: () => [make_tile("2-Cross", gen_n_cross_data(2))] },
     "3_cross": { name:"3-Cross (Nonadecacube)", category:["Polycubes"], build: () => [make_tile("3-Cross", gen_n_cross_data(3))] },
@@ -5335,7 +5477,7 @@ export const tileSpecs = (() => {
   const metadata = {};
   for (const [k,v] of Object.entries(TILING_REGISTRY)) {
     const tiles = v.build();
-    metadata[k] = { name: v.name, category: v.category || [], census_candidate: v.census_candidate || null, is_chiral: !!tiles[0]?.is_chiral, default_viz: v.default_viz || {} };
+    metadata[k] = { name: v.name, category: v.category || [], census_candidate: v.census_candidate || null, aperiodic_tile: v.aperiodic_tile || null, is_chiral: !!tiles[0]?.is_chiral, default_viz: v.default_viz || {} };
   }
   const categories = new Map();
   for (const [k,meta] of Object.entries(metadata)) {
@@ -5368,6 +5510,7 @@ export const tileSpecs = (() => {
           system_names: [entry.name],
           category: [...(entry.category || ["Other"])],
           census_candidate: entry.census_candidate || null,
+          aperiodic_tile: entry.aperiodic_tile || null,
           is_chiral: !!tile.is_chiral,
           solid_angle: tile.solid_angle,
           solid_angles: solidAngleValues(tile),

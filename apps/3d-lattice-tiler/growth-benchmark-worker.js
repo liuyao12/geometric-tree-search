@@ -1,8 +1,8 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-isohedral-screen-v29";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-conway-biprism-v30";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
-} from "./proposal-learner.js?v=20260817-isohedral-screen-v29";
+} from "./proposal-learner.js?v=20260817-conway-biprism-v30";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
