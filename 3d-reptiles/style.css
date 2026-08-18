@@ -250,7 +250,7 @@ h1 {
 
 .orientation-heading strong {
   color: var(--ink);
-  font: italic 400 23px/1.15 Georgia, "Times New Roman", serif;
+  font: 400 23px/1.15 Georgia, "Times New Roman", serif;
 }
 
 .orientation-count { justify-items: end; }

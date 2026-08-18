@@ -88,11 +88,6 @@ const orientationShell = new THREE.Mesh(
   new THREE.MeshBasicMaterial({ color: 0xf8fbf9, transparent: true, opacity: 0.11, depthWrite: false, side: THREE.DoubleSide })
 );
 orientationScene.add(orientationShell);
-const orientationWire = new THREE.Mesh(
-  orientationShellGeometry,
-  new THREE.MeshBasicMaterial({ color: 0x46524e, transparent: true, opacity: 0.11, wireframe: true, depthWrite: false })
-);
-orientationScene.add(orientationWire);
 
 function makeOrientationDiameter(axis, color) {
   const geometry = new THREE.BufferGeometry().setFromPoints([
