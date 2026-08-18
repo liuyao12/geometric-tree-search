@@ -3714,6 +3714,24 @@ reserved confirmation remains unopened. A learned scalar head is therefore
 rejected, while train-learned equivariant message updates remain an open model
 class.
 
+That equivariant interaction class is now tested without changing search
+geometry. The action representation is a complete canonical incidence graph:
+witnessed overlaps/connections preserve shared colored geometry and every
+non-connection remains an explicit typed failure edge. A group-balanced
+pairwise ridge model learns proper-SE(3)-invariant source × port × neighbor
+interactions. Its score may only supply a within-candidate percentile-rank
+correction to the established scalar local section. Representation, scalar
+neighbor count, and correction weight are selected by true
+leave-one-nucleus-out fits inside each outer fold; replacement requires a
+strict inner exact-path win. Folds 0, 1, and 2 replace the incumbent. The
+fixed outer result is `3 / 4`, `4 / 4`, `3 / 4`, `4 / 4`, `4 / 4`, or
+`18 / 20` exact terminals, with `56 / 60` correct moves from unchanged
+`18 / 20` terminal supply. This passes the predeclared development-performance
+gate. It does not yet prove learned causal value: 2 of 31 within-nucleus label
+shuffles also reach 18 exact groups, for a conditional plus-one `p = .09375`
+(`p = .21875` for at least 56 correct moves). The causal gate therefore
+remains red and no fresh confirmation is opened.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

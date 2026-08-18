@@ -203,15 +203,15 @@ const ELEMENTS = {
   Si: { color: 0xe7b883, css: "#e7b883", radius: 1.11 },
 };
 const MATERIALS = {
-  iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
-  iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
+  iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
+  iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
   graphene: { name: "graphene monolayer", elements: ["C"], spacingA: 1.42, cell: "single hexagonal sheet", order: "crystal", symmetry: "p6/mmm layer group", audit: "2D translations + diffraction", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: 0, species: ["C", "C"] }], note: "A one-component intrinsic-2D positive control learned after arbitrary embedding in 3D." },
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
-  competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
-  random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", order: "amorphous", symmetry: "no stable long-range group", audit: "local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble whose multiscale statistics match held-out large MD." },
-  iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
+  competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", periodicWindow: true, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
+  random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", periodicWindow: false, order: "amorphous", symmetry: "no stable long-range group", audit: "local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble whose multiscale statistics match held-out large MD." },
+  iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", periodicWindow: false, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
   moire: { name: "30° twisted hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "two hexagonal sheets · 3.33 Å separation", order: "quasicrystal", symmetry: "12-fold quasiperiodic order", audit: "2D diffraction + absence of common translations", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: Math.PI / 6, zA: 1.665, species: ["B", "N"] }], note: "Each sheet is periodic, while their 30° union has no common translation lattice." },
-  bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
+  bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", periodicWindow: true, order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
 };
 const RECURSIVE_BENCHMARKS = {
   iceIh: { hierarchy: [1, 6, 17], curve: [216, 1728, 13824], mark: "H₂O + dimer + ring ports", action: "known-window cover certified", speed: "37 placements / 216 atoms", gate: "pass · headless cover", status: "pass", note: "One H₂O isometry class covers every atom. Water-only search reaches just 1.39%; 115 overlapping dimer bridges and 38 oxygen-ring void boundaries restore 100% reconstruction with zero backtracking." },
@@ -1252,7 +1252,8 @@ function currentPbc() {
   if (geometryMode === "module" || geometryMode === "offlattice") return [false, false, false];
   if (geometryMode === "lattice") return currentCell() ? [true, true, true] : [false, false, false];
   if (currentMaterial().intrinsicDimension === 2) return [false, false, false];
-  return scenarioSelect.value === "imported" && importedStructure ? importedStructure.pbc : [true, true, true];
+  if (scenarioSelect.value === "imported" && importedStructure) return importedStructure.pbc;
+  return currentMaterial().periodicWindow ? [true, true, true] : [false, false, false];
 }
 
 function getOrderPrototypeLibrary() {
@@ -1533,6 +1534,25 @@ function learnOrientationAtlas() {
       poseByCenter,
     };
   });
+}
+
+function poseAtlasEntryStatus(entry) {
+  const sampledFraction = entry.orientations / Math.max(1, entry.occurrences);
+  return entry.occurrences >= 12 && sampledFraction >= .8 ? "sampled continuum" : "finite required set";
+}
+
+function resolvedGeometryMode() {
+  if (geometryMode !== "auto") return geometryMode;
+  if (detectedUnitCell) return "lattice";
+  if (currentMaterial().intrinsicDimension === 2) {
+    const angles = new Set((currentMaterial().planarLayers || []).map((layer) => Math.round((layer.angle || 0) * 1e6)));
+    return angles.size > 1 ? "module" : "lattice";
+  }
+  return "offlattice";
+}
+
+function resolvedGeometryLabel() {
+  return { lattice: "lattice", module: "finite-rank module", offlattice: "general point set" }[resolvedGeometryMode()];
 }
 
 function automaticMarkingChannels() {
@@ -2962,7 +2982,8 @@ function renderMarkingLibrary() {
 function renderPoseAtlas() {
   poseAtlas.replaceChildren();
   const total = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
-  poseAtlasTotal.textContent = `${total} poses · auto ${automaticMarkingChannels()}ch`;
+  const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
+  poseAtlasTotal.textContent = `${total} sampled poses${freeTypes ? ` · ${freeTypes} free-SO(3) type${freeTypes === 1 ? "" : "s"}` : ""} · auto ${automaticMarkingChannels()}ch`;
   orientationAtlas.slice(0, 10).forEach((entry) => {
     const row = document.createElement("div");
     row.className = "pose-atlas-row";
@@ -2974,7 +2995,10 @@ function renderPoseAtlas() {
     const channels = recommendedChannelsForCluster(entry.cluster);
     detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · ${portRank} port role${portRank === 1 ? "" : "s"} · coupled rank ${coupledRank}`;
     const count = document.createElement("b");
-    count.textContent = `${entry.orientations} required pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`;
+    const finite = poseAtlasEntryStatus(entry) === "finite required set";
+    count.textContent = finite
+      ? `${entry.orientations} required pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`
+      : `${entry.orientations} sampled · free SO(3) → ${channels}ch`;
     row.append(code, detail, count);
     poseAtlas.appendChild(row);
   });
@@ -2994,35 +3018,41 @@ function syncStageOptions() {
   if (clustering) {
     geometryModeSelect.value = geometryMode;
     const latticeDetected = Boolean(detectedUnitCell);
-    const periodicSupport = currentPbc().some(Boolean);
+    const resolvedMode = resolvedGeometryMode();
     geometryModeHint.textContent = geometryMode === "auto"
-      ? latticeDetected ? "translation closure found" : periodicSupport ? "periodic window; basis unresolved" : "no lattice closure"
+      ? resolvedMode === "lattice" ? latticeDetected ? "translation closure found" : "intrinsic planar lattice"
+        : resolvedMode === "module" ? "multiple incommensurate generators" : "no lattice closure"
       : geometryMode === "lattice" ? "periodic translation group"
         : geometryMode === "module" ? "finite-rank aperiodic support" : "observed / generated support";
     geometryModeNote.textContent = geometryMode === "auto"
-      ? `${latticeDetected ? "A translation basis was inferred" : periodicSupport ? "The input declares a periodic quotient, but the finite sample did not yield a stable basis" : "No stable translation basis was inferred"}; the pose classes still come only from the supplied positions.`
+      ? `${resolvedMode === "lattice" ? latticeDetected ? "A translation basis was inferred" : "A two-dimensional translation support was inferred" : resolvedMode === "module" ? "A finite-rank non-periodic support is the active hypothesis" : "No stable translation basis was inferred; the observed point set is retained without periodic wrapping"}; the pose classes still come only from the supplied positions.`
       : geometryMode === "lattice"
         ? "Periodic wrapping is applied before clustering; orientations are still quotiented by each cluster's proper symmetry."
         : geometryMode === "module"
           ? "No unit cell or periodic wrapping is assumed. Connections are learned from a discrete, finitely generated aperiodic pose/translation atlas—the natural hypothesis for model sets and quasicrystals."
           : "No discrete translation group is assumed. Candidate sites may come from an observed point set or a generator; every proper-SE(3) pose and connection is still learned from local geometry.";
-    translationSupport.textContent = geometryMode === "lattice" || (geometryMode === "auto" && latticeDetected)
-      ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "non-lattice point set";
+    translationSupport.textContent = resolvedMode === "lattice"
+      ? currentMaterial().intrinsicDimension === 2 ? "2 periodic generators" : "3 periodic generators"
+      : resolvedMode === "module" ? "finite-rank module" : "general point set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
-    rotationSupport.textContent = `${totalPoses} proper pose orbit${totalPoses === 1 ? "" : "s"}`;
+    const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
+    rotationSupport.textContent = freeTypes
+      ? `${totalPoses} sampled · ${freeTypes} free-SO(3) type${freeTypes === 1 ? "" : "s"}`
+      : `${totalPoses} finite pose orbit${totalPoses === 1 ? "" : "s"}`;
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
     renderPoseAtlas();
-    stageOptionsState.textContent = geometryMode === "module" ? "aperiodic module"
-      : geometryMode === "offlattice" ? "observed-set SE(3)"
-        : latticeDetected ? "lattice candidate" : periodicSupport ? "periodic quotient" : "off-lattice";
+    stageOptionsState.textContent = resolvedMode === "module" ? "aperiodic module"
+      : resolvedMode === "offlattice" ? "observed-set SE(3)" : "lattice candidate";
     return;
   }
   const resolvedChannels = sectionModel?.channels || currentMarkingConfig().channels;
-  const inheritedDomain = geometryMode === "lattice" || (geometryMode === "auto" && detectedUnitCell)
-    ? "lattice" : geometryMode === "module" ? "finite-rank module" : "non-regular SE(3) atlas";
+  const inheritedDomain = resolvedGeometryLabel();
   const inheritedPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
+  const inheritedFreeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
   inheritedGeometryMode.textContent = inheritedDomain;
-  inheritedPoseCount.textContent = `${inheritedPoses} proper pose orbit${inheritedPoses === 1 ? "" : "s"}`;
+  inheritedPoseCount.textContent = inheritedFreeTypes
+    ? `${inheritedPoses} sampled poses · ${inheritedFreeTypes} free-SO(3) type${inheritedFreeTypes === 1 ? "" : "s"}`
+    : `${inheritedPoses} finite pose orbit${inheritedPoses === 1 ? "" : "s"}`;
   inheritedChannelCount.textContent = `auto ${automaticMarkingChannels()}ch`;
   markingChannelsHint.textContent = markingDraft.channels
     ? `${markingDraft.channels} coupled field${markingDraft.channels === 1 ? "" : "s"}`
@@ -3041,7 +3071,7 @@ function syncStageOptions() {
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${referenceCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
-    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. Clustering fixes the required proper-rotation orbits before this fit; symmetry-equivalent rotations share channels.`;
+    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels.`;
   } else {
     renderMarkingLibrary();
     const active = selectedMarking();

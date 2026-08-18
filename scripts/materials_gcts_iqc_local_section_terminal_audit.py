@@ -46,6 +46,11 @@ class IQCLocalSectionTerminalAudit:
     learned_message_integrated_exact: int
     learned_message_integrated_correct: int
     learned_message_exact_shuffle_p: float
+    equivariant_fusion_selected_folds: int
+    equivariant_fusion_selected_exact: int
+    equivariant_fusion_selected_correct: int
+    equivariant_fusion_exact_shuffle_p: float
+    equivariant_fusion_causal_gate_passed: bool
     chiral_features: int
     chirality_selected_folds: int
     chiral_selected_exact: int
@@ -73,6 +78,7 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
     graph_kernel = irregular["continuous_graph_kernel_control"]
     message_passing = irregular["bounded_message_passing_control"]
     learned_message = irregular["learned_message_readout_control"]
+    fusion = data["equivariant_port_rank_fusion_control"]
     chiral = data["explicit_chirality_control"]
     if (data["groups"] != 20 or data["terminal_supply"] != 18
             or len(data["selected_representations"]) != 5
@@ -102,8 +108,25 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
             or learned_message["development_gate_passed"]
             or learned_message["target_used_before_selection"]):
         raise AssertionError("learned message-readout protocol changed")
-    target_used = bool(data["target_used_before_selection"])
-    gate = data["selected_exact"] >= \
+    if (fusion["selected_folds"] != [0, 1, 2]
+            or fusion["outer_selected_exact_by_fold"] != [3, 4, 3, 4, 4]
+            or fusion["outer_selected_correct_by_fold"] != [11, 12, 9, 12, 12]
+            or len(fusion["candidate_digests"]) != 5
+            or len(fusion["model_digests"]) != 5
+            or len(fusion["conditional_null_exact"]) != 31
+            or fusion["conditional_exact_plus_one_p"] != (
+                1 + sum(value >= fusion["selected_exact"]
+                        for value in fusion["conditional_null_exact"])) / 32
+            or fusion["conditional_correct_plus_one_p"] != (
+                1 + sum(value >= fusion["selected_correct"]
+                        for value in fusion["conditional_null_correct"])) / 32
+            or not fusion["development_gate_passed"]
+            or fusion["target_used_before_selection"]
+            or fusion["causal_superiority_gate_passed"]):
+        raise AssertionError("equivariant port-fusion protocol changed")
+    target_used = bool(data["target_used_before_selection"] or
+                       fusion["target_used_before_selection"])
+    gate = fusion["selected_exact"] >= \
         data["development_gate"]["minimum_selected_exact"]
     return IQCLocalSectionTerminalAudit(
         data["groups"], schema["features"], data["terminal_supply"],
@@ -135,12 +158,17 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         learned_message["integrated_selected_exact"],
         learned_message["integrated_selected_correct"],
         learned_message["integrated_exact_plus_one_p"],
+        len(fusion["selected_folds"]), fusion["selected_exact"],
+        fusion["selected_correct"],
+        fusion["conditional_exact_plus_one_p"],
+        fusion["causal_superiority_gate_passed"],
         chiral["features"], chiral["chirality_selected_folds"],
         chiral["selected_exact"], chiral["selected_correct"],
         schema["proper_se3_invariant"],
         schema["lattice_coordinates_used"], schema["chirality_preserved"],
         gate, gate and not target_used and
-        not data["fresh_confirmation_opened"], target_used)
+        fusion["causal_superiority_gate_passed"] and
+        not fusion["fresh_confirmation_opened"], target_used)
 
 
 if __name__ == "__main__":

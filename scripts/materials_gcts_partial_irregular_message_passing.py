@@ -11,10 +11,11 @@ from __future__ import annotations
 import hashlib
 import math
 from dataclasses import dataclass
-from typing import Hashable, Mapping, Sequence
+from typing import Hashable, Mapping, Sequence, Union
 
 from materials_gcts_partial_irregular_port_graph import (
-    PartialIrregularPortGraph, PartialPortEdge, PartialPortNode)
+    PartialIncidenceEdge, PartialIrregularPortGraph, PartialPortEdge,
+    PartialPortNode)
 
 
 FeatureKey = tuple[Hashable, ...]
@@ -65,8 +66,11 @@ def _node_features(node: PartialPortNode,
     return result
 
 
-def _edge_features(edge: PartialPortEdge) -> dict[FeatureKey, float]:
+def _edge_features(edge: Union[PartialPortEdge, PartialIncidenceEdge]
+                   ) -> dict[FeatureKey, float]:
     result: dict[FeatureKey, float] = {}
+    _add(result, ("connection-witnessed",
+                  bool(getattr(edge, "connection_witnessed", True))), 1.)
     shared_total = max(1, sum(count for _species, count in
                               edge.shared_species))
     for species, count in edge.shared_species:
@@ -92,6 +96,14 @@ def _incident(edges: Sequence[PartialPortEdge], node: PartialPortNode):
             yield edge, right
         if node == right:
             yield edge, left
+
+
+def _indexed_incident(graph: PartialIrregularPortGraph, node_index: int):
+    for edge in graph.incidence_edges:
+        if edge.left_index == node_index:
+            yield edge, edge.right_index
+        elif edge.right_index == node_index:
+            yield edge, edge.left_index
 
 
 def partial_message_passing_embedding(
@@ -125,13 +137,20 @@ def partial_message_passing_embedding(
         for node_index, node in enumerate(nodes):
             row = {("self",) + key: .5 * value
                    for key, value in current[node_index].items()}
-            incidents = tuple(_incident(edges, node))
+            has_indexed_incidence = bool(graph.incidence_edges)
+            indexed = tuple(_indexed_incident(graph, node_index))
+            incidents = indexed if has_indexed_incidence else tuple(
+                _incident(edges, node))
             normalization = spec.message_weight / max(1, len(incidents))
             for edge, neighbor in incidents:
-                try:
-                    neighbor_index = nodes.index(neighbor)
-                except ValueError as error:
-                    raise ValueError("port endpoint is absent from graph") from error
+                if has_indexed_incidence:
+                    neighbor_index = neighbor
+                else:
+                    try:
+                        neighbor_index = nodes.index(neighbor)
+                    except ValueError as error:
+                        raise ValueError(
+                            "port endpoint is absent from graph") from error
                 for key, value in current[neighbor_index].items():
                     _add(row, ("neighbor",) + key,
                          normalization * value)
@@ -144,9 +163,10 @@ def partial_message_passing_embedding(
 
     # Global port chemistry is retained without endpoint IDs.  Incidence is
     # supplied only by the bounded propagation above.
-    if edges:
-        scale = 1 / len(edges)
-        for edge in edges:
+    pooled_edges = graph.incidence_edges or edges
+    if pooled_edges:
+        scale = 1 / len(pooled_edges)
+        for edge in pooled_edges:
             for key, value in _edge_features(edge).items():
                 _add(pooled, ("global-port",) + key, scale * value)
     _add(pooled, ("isolated-fraction",),

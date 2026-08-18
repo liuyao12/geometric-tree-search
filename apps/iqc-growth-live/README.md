@@ -31,12 +31,14 @@ The cluster stage exposes the geometry domain explicitly. **Auto** tests
 translation closure from the positions, **periodic lattice** applies periodic
 translations, **aperiodic module** assumes a discrete but non-periodic
 pose/translation atlas (the natural model-set or quasicrystal hypothesis), and
-**non-lattice point set / free SE(3)** makes no discrete translation assumption.
-The latter two apply no periodic wrapping. This setting changes the displacement geometry used by
+**general point set / free SE(3)** makes no discrete translation assumption.
+The latter two apply no periodic wrapping. Curated fixtures declare whether their supplied window
+is periodically closed; imported structures use their PBC flags. Auto still reports a lattice only
+when translation closure is recovered from the positions. This setting changes the displacement geometry used by
 descriptors and the complete cover; it is not a preassigned crystal or
 quasicrystal label.
 
-For every atom the browser builds a periodic, rotation-invariant descriptor
+For every atom the browser builds a boundary-aware, rotation-invariant descriptor
 containing central and neighbor element channels, Gaussian radial functions
 through `1.9a`, a first-shell angular histogram, and coordination terms.
 Standardized features are grouped by deterministic k-medoids. A bounded
@@ -59,7 +61,10 @@ element-coloured directional neighborhoods in the laboratory frame. Proper
 self-symmetries of a cluster therefore collapse automatically: the Na and Cl
 octahedra in periodic rocksalt each require one physical pose, even though one
 may write many equivalent local frames for an octahedron. Removing periodic
-wrapping exposes boundary environment types and their larger finite pose atlas.
+wrapping exposes boundary environment types and their larger pose atlas. If
+the sampled orientations do not close into a stable finite atlas, the UI marks
+that cluster type as free `SO(3)` and reports the number sampled rather than
+pretending those samples are a finite set of allowed rotations.
 
 The pose atlas is learned before the GCTS marking. Each cluster card reports
 its observed symmetry-inequivalent pose count, outgoing connection-port rank,
@@ -1747,9 +1752,25 @@ then falls from the established `17 / 20` to `16 / 20` exact terminals while
 remaining at `54 / 60` correct moves. The learned head alone is `15 / 20` and
 `53 / 60`; against 31 within-nucleus label shuffles its integrated exact-path
 plus-one p-value is `.375`. Candidate geometry and certificates are unchanged,
-and the reserved confirmation remains unopened. This rules out a scalar linear
+and no new value-model confirmation is opened. This rules out a scalar linear
 readout of the present bounded messages; a useful learned section must update
 the equivariant messages themselves or preserve a higher-order graph object.
+
+The higher-order graph is now explicit. Every action pair is represented in a
+canonical complete incidence graph: observed overlap/connection edges retain
+their shared colored geometry, while absent connections remain typed failure
+edges rather than disappearing. A group-balanced pairwise ridge model learns
+invariant source × port × neighbor interactions on that graph. It cannot
+replace candidate geometry or the established value; inside each immutable
+candidate set its percentile rank is only a bounded correction to the scalar
+section. Representation, scalar neighbor count, and graph weight are selected
+by true leave-one-nucleus-out fits inside each outer fold. Folds 0–2 pass the
+strict inner replacement rule. The sealed development aggregate reaches
+`18 / 20` exact terminals and `56 / 60` correct moves from the same `18 / 20`
+supply, passing the predeclared performance threshold. However, 2 of 31
+within-nucleus graph-label shuffles also reach `18 / 20` (`p = .09375`;
+correct-move `p = .21875`). This is the best generic terminal value so far,
+but the causal marking gate remains red and no fresh confirmation is opened.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

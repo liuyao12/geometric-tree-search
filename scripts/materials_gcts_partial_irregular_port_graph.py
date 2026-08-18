@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import hashlib
+import itertools
 import math
 from collections import Counter
 from dataclasses import dataclass
@@ -35,6 +36,20 @@ class PartialPortEdge:
     chirality: int
 
 
+@dataclass(frozen=True, order=True)
+class PartialIncidenceEdge:
+    """One exact unlabeled-graph edge in a canonical node ordering."""
+
+    left_index: int
+    right_index: int
+    shared_species: tuple[tuple[SpeciesKey, int], ...]
+    separation_bin: int
+    shared_distance_profiles: tuple[
+        tuple[SpeciesKey, tuple[int, int]], ...]
+    chirality: int
+    connection_witnessed: bool = True
+
+
 @dataclass(frozen=True)
 class PartialIrregularPortGraph:
     nodes: tuple[PartialPortNode, ...]
@@ -44,6 +59,41 @@ class PartialIrregularPortGraph:
     proper_se3_invariant: bool = True
     lattice_coordinates_used: bool = False
     target_used: bool = False
+    incidence_edges: tuple[PartialIncidenceEdge, ...] = ()
+
+
+def _canonical_incidence(nodes, raw_edges):
+    """Quotient node order while preserving the exact finite incidence graph.
+
+    The bounded terminal-value graph has only a few simultaneous actions.  We
+    enumerate permutations solely inside equal-color node cells; distinct
+    node colors already have a fixed order.  A deliberately finite guard
+    rejects a high-symmetry action set instead of silently dropping incidence.
+    """
+    cells = []
+    for node in sorted(set(nodes)):
+        cells.append(tuple(index for index, value in enumerate(nodes)
+                           if value == node))
+    permutations = math.prod(math.factorial(len(cell)) for cell in cells)
+    if permutations > 40320:
+        raise ValueError("incidence canonicalization exceeds bounded guard")
+    canonical_nodes = tuple(sorted(nodes))
+    minimum = None
+    selected = ()
+    for cell_orders in itertools.product(*(
+            itertools.permutations(cell) for cell in cells)):
+        order = tuple(index for cell in cell_orders for index in cell)
+        inverse = {old: new for new, old in enumerate(order)}
+        incidence = tuple(sorted(PartialIncidenceEdge(
+            min(inverse[left], inverse[right]),
+            max(inverse[left], inverse[right]), edge.shared_species,
+            edge.separation_bin, edge.shared_distance_profiles,
+            edge.chirality, edge.connection_witnessed)
+            for left, right, edge in raw_edges))
+        code = canonical_nodes, incidence
+        if minimum is None or code < minimum:
+            minimum, selected = code, incidence
+    return canonical_nodes, selected
 
 
 def _points(rows: Sequence[Sequence[float]]) -> tuple[Point, ...]:
@@ -91,14 +141,13 @@ def partial_irregular_port_graph(
         index for index in match.matched_target_indices if index < limit))
         for match in section.action_matches)
     edges = []
+    raw_edges = []
     incident = set()
     quantum = distance_scale * distance_bin_width
     for left in range(len(actions)):
         for right in range(left + 1, len(actions)):
             shared = tuple(sorted(set(occupied_by_action[left]) &
                                   set(occupied_by_action[right])))
-            if not shared:
-                continue
             left_node, right_node = nodes_by_action[left], nodes_by_action[right]
             if right_node < left_node:
                 oriented_left, oriented_right = right, left
@@ -132,14 +181,21 @@ def partial_irregular_port_graph(
                     _sub(occupied[second], actions[oriented_left]))
                 epsilon = 1e-10 * distance_scale ** 3
                 chirality = int(volume > epsilon) - int(volume < -epsilon)
-            edges.append(PartialPortEdge(
+            edge = PartialPortEdge(
                 endpoint_types, shared_species,
                 int(round(math.dist(actions[left], actions[right]) / quantum)),
-                profiles, chirality))
-            incident.update((left, right))
-    nodes = tuple(sorted(nodes_by_action))
+                profiles, chirality)
+            if shared:
+                edges.append(edge)
+                incident.update((left, right))
+            raw_edges.append((left, right, PartialIncidenceEdge(
+                left, right, shared_species, edge.separation_bin, profiles,
+                chirality, bool(shared))))
+    nodes, incidence_edges = _canonical_incidence(
+        nodes_by_action, tuple(raw_edges))
     edge_rows = tuple(sorted(edges))
-    code = (nodes, edge_rows)
+    code = (nodes, incidence_edges)
     return PartialIrregularPortGraph(
         nodes, edge_rows, len(actions) - len(incident),
-        hashlib.sha256(repr(code).encode()).hexdigest())
+        hashlib.sha256(repr(code).encode()).hexdigest(),
+        incidence_edges=incidence_edges)

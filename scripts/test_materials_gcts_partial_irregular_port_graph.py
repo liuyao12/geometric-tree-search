@@ -53,6 +53,9 @@ def test_typed_port_graph_is_proper_motion_and_action_order_invariant():
     assert base.nodes[0].action_species in (_species_key("A"),
                                             _species_key("B"))
     assert base.isolated_nodes == 0
+    assert len(base.incidence_edges) == 1
+    assert base.incidence_edges[0].left_index == 0
+    assert base.incidence_edges[0].right_index == 1
     assert base.proper_se3_invariant
     assert not base.lattice_coordinates_used
     assert not base.target_used
@@ -69,7 +72,23 @@ def test_port_graph_rejects_schema_mismatch():
         raise AssertionError("mismatched action graph was accepted")
 
 
+def test_complete_incidence_retains_connection_failures():
+    rows = (
+        PartialSupportMatch(0, 7, 2, 5, .4, 4, 12, (0, 2)),
+        PartialSupportMatch(1, 9, 2, 6, 1 / 3, 5, 13, (1, 3)))
+    section = PartialIrregularSection(
+        rows, 1 / 3, (0.4 + 1 / 3) / 2, 2, (0,), 0, 0., 0, 0, False)
+    graph = partial_irregular_port_graph(
+        section, ((0., 0., 0.), (0., 1., 0.)), ("X", "Y"),
+        ((1., 0., 0.), (0., 0., 1.)), ("A", "B"), distance_scale=1.)
+    assert not graph.edges
+    assert len(graph.incidence_edges) == 1
+    assert not graph.incidence_edges[0].connection_witnessed
+    assert graph.incidence_edges[0].shared_species == ()
+
+
 if __name__ == "__main__":
     test_typed_port_graph_is_proper_motion_and_action_order_invariant()
     test_port_graph_rejects_schema_mismatch()
+    test_complete_incidence_retains_connection_failures()
     print("partial irregular-port graph tests passed")

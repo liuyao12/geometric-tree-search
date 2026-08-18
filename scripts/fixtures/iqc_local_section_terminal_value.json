@@ -194,6 +194,64 @@
     "lattice_coordinates_used": false,
     "target_used_before_selection": false
   },
+  "equivariant_port_rank_fusion_control": {
+    "candidate_geometry_unchanged": true,
+    "port_graph": "complete canonical action-pair incidence with witnessed connection and explicit failure edges",
+    "readout": "group-balanced pairwise ridge logistic over invariant source-port-neighbor interactions",
+    "fusion": "within-candidate scalar percentile rank + alpha times graph percentile rank",
+    "interaction_order": 3,
+    "support_type_weight": 0.25,
+    "ridge": 10.0,
+    "minimum_feature_groups": 2,
+    "optimization_steps": 100,
+    "learning_rate": 0.16,
+    "graph_rank_weights": [0.0, 0.125, 0.25, 0.5, 1.0, 2.0],
+    "candidate_neighbors": [1, 3, 5, 9, 15, 25],
+    "selection": "true leave-one-nucleus-out inside each outer fold; replace incumbent only on a strict inner exact-path win",
+    "selected_folds": [0, 1, 2],
+    "selected_representations": [
+      "partial-incidence", "incidence", "incidence",
+      "base-partial", "base-radial"
+    ],
+    "selected_neighbors": [1, 1, 1, 25, 3],
+    "selected_graph_rank_weights": [2.0, 2.0, 2.0, 0.0, 0.0],
+    "inner_selected_exact": [25, 26, 24, 24, 25],
+    "inner_first_exact_rank_sums": [25, 26, 25, 29, 25],
+    "outer_selected_exact_by_fold": [3, 4, 3, 4, 4],
+    "outer_selected_correct_by_fold": [11, 12, 9, 12, 12],
+    "terminal_supply": 18,
+    "selected_exact": 18,
+    "selected_correct": 56,
+    "candidate_digests": [
+      "b914bd1a971ea21dcf37f0a3460119504ea728f316d12328a73db1a79cb87650",
+      "b698c79947fa5974d9649176b94aac128243ec76f0062360a9115d987c79138f",
+      "74033d9be956eec71276871e264698437db090a38173f96fbf01142a9e09378d",
+      "33e343cc5d134ff8f0769657839af09ac52f3c64971826b4c8eb49b60ba4e29f",
+      "9b5688b90056127e8517a365f8035e6f7cd4d0b76b4b451bacd994afbbf5d8c2"
+    ],
+    "model_digests": [
+      "6b62c10234b0f34348a465b7650db0f08febc0627503a5ccd908adfb62c0d7e6",
+      "505b65481e3fe2cc25a284ba8dc175e3a794465c2c7bd726f5448c1fac6bbef5",
+      "5914a9a32bbd43e408ca8921b2c56853330264306c02411b51420281b204e0a5",
+      "aacb567ac945add1091d0cdf95044ff253899ba14273b7ad3249df2f145ea09a",
+      "80993f58cc8873dadf8704cb8726d251fedb4176743271ba5e2a75420114a07a"
+    ],
+    "within_group_label_shuffles": 31,
+    "conditional_null_exact": [
+      17, 16, 17, 16, 17, 17, 16, 18, 17, 16, 17, 17, 17, 16, 16, 17,
+      16, 16, 17, 17, 15, 17, 15, 18, 15, 16, 17, 17, 16, 17, 15
+    ],
+    "conditional_null_correct": [
+      53, 54, 55, 54, 56, 54, 54, 56, 55, 53, 53, 55, 54, 53, 53, 55,
+      55, 53, 56, 54, 53, 55, 52, 57, 52, 53, 57, 57, 54, 54, 52
+    ],
+    "conditional_exact_plus_one_p": 0.09375,
+    "conditional_correct_plus_one_p": 0.21875,
+    "development_gate_passed": true,
+    "causal_superiority_gate_passed": false,
+    "target_used_before_selection": false,
+    "fresh_confirmation_opened": false
+  },
   "explicit_chirality_control": {
     "features": 210,
     "selected_representations": [

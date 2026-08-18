@@ -3,7 +3,7 @@
 from materials_gcts_iqc_local_section_terminal_audit import evaluate
 
 
-def test_local_section_improves_but_does_not_pass_the_sealed_gate():
+def test_port_fusion_passes_development_but_not_causal_gate():
     report = evaluate()
     assert report.groups == 20
     assert report.features == 180
@@ -37,6 +37,11 @@ def test_local_section_improves_but_does_not_pass_the_sealed_gate():
     assert report.learned_message_integrated_exact == 16
     assert report.learned_message_integrated_correct == 54
     assert report.learned_message_exact_shuffle_p == .375
+    assert report.equivariant_fusion_selected_folds == 3
+    assert report.equivariant_fusion_selected_exact == 18
+    assert report.equivariant_fusion_selected_correct == 56
+    assert report.equivariant_fusion_exact_shuffle_p == .09375
+    assert not report.equivariant_fusion_causal_gate_passed
     assert report.chiral_features == 210
     assert report.chirality_selected_folds == 2
     assert report.chiral_selected_exact == 15
@@ -44,11 +49,11 @@ def test_local_section_improves_but_does_not_pass_the_sealed_gate():
     assert report.proper_se3_invariant
     assert not report.lattice_coordinates_used
     assert not report.chirality_preserved
-    assert not report.development_gate_passed
+    assert report.development_gate_passed
     assert not report.fresh_confirmation_authorized
     assert not report.target_used
 
 
 if __name__ == "__main__":
-    test_local_section_improves_but_does_not_pass_the_sealed_gate()
+    test_port_fusion_passes_development_but_not_causal_gate()
     print("IQC local-section terminal audit passed")
