@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260817-census-candidates-v28";
+import { tileSpecs } from "./engine.js?v=20260817-isohedral-screen-v29";
 import {
   normalizeProposalProgram,
   proposalTileKey
-} from "./proposal-learner.js?v=20260817-census-candidates-v28";
+} from "./proposal-learner.js?v=20260817-isohedral-screen-v29";
 
 const $ = (id) => document.getElementById(id);
 
@@ -780,7 +780,8 @@ function polycubeCubeCount(figure) {
 }
 
 const catalogGroupDefinitions = [
-  { id: "unresolved", title: "16 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "unresolved", title: "6 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "isohedral-growers", title: "Screened out · isohedral growers", test: figure => figureHasCategory(figure, "Screened-Out Isohedral Growers") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -796,6 +797,9 @@ function catalogGroupForFigure(figure) {
 function sortCatalogFigures(groupId, figures) {
   return figures.slice().sort((a, b) => {
     if (groupId === "unresolved") {
+      return (a.census_candidate?.survivor_priority ?? Infinity) - (b.census_candidate?.survivor_priority ?? Infinity);
+    }
+    if (groupId === "isohedral-growers") {
       return (a.census_candidate?.priority ?? Infinity) - (b.census_candidate?.priority ?? Infinity);
     }
     if (groupId === "polycubes") {
@@ -1311,8 +1315,13 @@ function updateCandidateResearchPanel() {
   const candidate = selectedCensusCandidate();
   candidateResearchPanel.classList.toggle("is-hidden", !candidate);
   if (!candidate) return;
-  candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-  candidateResearchDetail.textContent = `Priority ${candidate.priority}/16 · ${candidate.lattice_points} lattice points · unresolved, not a known tiler. Four search modes run side by side.`;
+  if (candidate.screen_status === "isohedral_grower") {
+    candidateResearchTitle.textContent = `Screened out: ${candidate.id}`;
+    candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · reached ${candidate.isohedral_screen_tiles} tiles in bounded isohedral growth. Retained only for comparison.`;
+  } else {
+    candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
+    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/6 · ${candidate.lattice_points} lattice points · no 24-tile isohedral patch found in the bounded screen.`;
+  }
 }
 
 function renderSystemTileList() {
@@ -1364,7 +1373,9 @@ function renderSystemTileList() {
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
-        angles.textContent = `priority ${figure.census_candidate.priority}/16 · ${figure.census_candidate.lattice_points} points`;
+        angles.textContent = figure.census_candidate.screen_status === "isohedral_grower"
+          ? `screened out · isohedral ${figure.census_candidate.isohedral_screen_tiles} tiles`
+          : `survivor ${figure.census_candidate.survivor_priority}/6 · ${figure.census_candidate.lattice_points} points`;
         angles.classList.add("is-census-label");
       } else {
         angles.innerHTML = solidAngleListHtml(figure.solid_angles);
@@ -2623,7 +2634,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-census-candidates-v28", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-isohedral-screen-v29", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2876,7 +2887,10 @@ function formatGrowthResult(result, target) {
         : ""
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
-  if (targetPoint) return `${result.label} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
+  if (targetPoint) {
+    const witness = result?.mode === "isohedral" ? ` reached ${target}-tile patch` : "";
+    return `${result.label}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
+  }
   return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
 }
 
@@ -2956,7 +2970,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-census-candidates-v28", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-isohedral-screen-v29", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

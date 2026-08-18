@@ -3,10 +3,14 @@ import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.j
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
 assert.equal(candidates.length, 16, "the research catalog must expose all screened candidates");
+const survivors = candidates.filter(figure => figure.census_candidate.screen_status === "unresolved");
+const isohedralGrowers = candidates.filter(figure => figure.census_candidate.screen_status === "isohedral_grower");
+assert.equal(survivors.length, 6, "only candidates that pass the bounded isohedral screen remain unresolved");
+assert.equal(isohedralGrowers.length, 10, "long isohedral growers must be retained only as screened-out controls");
 assert.deepEqual(
-  candidates.map(figure => figure.census_candidate.priority),
-  Array.from({ length: 16 }, (_, index) => index + 1),
-  "candidate priority metadata must be complete"
+  survivors.map(figure => figure.census_candidate.survivor_priority),
+  Array.from({ length: 6 }, (_, index) => index + 1),
+  "survivor priority metadata must be complete"
 );
 
 async function solve(config) {
@@ -20,7 +24,7 @@ async function solve(config) {
   return { final, largestPatch };
 }
 
-const first = candidates[0];
+const first = survivors[0];
 const candidateRun = await solve({
   mode_key: first.mode_key,
   custom_system: {
@@ -61,6 +65,7 @@ assert.equal(exhaustiveWitness.final.result_kind, "patch_found");
 
 console.log("3D census candidate regressions passed", {
   candidates: candidates.length,
+  survivors: survivors.length,
   firstCandidate: first.census_candidate.id,
   firstPatch: candidateRun.largestPatch,
   visitedNodes: candidateRun.final.search_stats.visited_nodes

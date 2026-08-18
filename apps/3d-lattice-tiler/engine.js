@@ -2,7 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
-import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js";
+import { LATTICE_POLYHEDRON_CENSUS_TILES } from "../../assets/lattice-polyhedron-survivors.js";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const createTilingStream = (() => {
@@ -5142,9 +5142,11 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
-    ...Object.fromEntries(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => [candidate.registry_id, {
+    ...Object.fromEntries(LATTICE_POLYHEDRON_CENSUS_TILES.map(candidate => [candidate.registry_id, {
       name: candidate.name,
-      category: ["Unresolved Lattice Candidates"],
+      category: [candidate.screen_status === "unresolved"
+        ? "Unresolved Lattice Candidates"
+        : "Screened-Out Isohedral Growers"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),

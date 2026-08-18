@@ -1,8 +1,8 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-census-candidates-v28";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-isohedral-screen-v29";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
-} from "./proposal-learner.js?v=20260817-census-candidates-v28";
+} from "./proposal-learner.js?v=20260817-isohedral-screen-v29";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
