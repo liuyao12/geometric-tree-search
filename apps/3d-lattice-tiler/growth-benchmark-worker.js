@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-generation-band-v31";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-general-translational-v32";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -121,6 +121,7 @@ async function runMode(sequence, baseConfig, mode) {
     learnedProgram,
     reusedLearnedPatch: !!priorProgram,
     resultKind: final?.result_kind ?? null,
+    certificatePatchSize: final?.tiling_evidence?.patch_size ?? null,
     searchIncomplete: !!final?.search_incomplete
   };
   post(sequence, { type: "series-finished", result });

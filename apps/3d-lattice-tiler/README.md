@@ -39,6 +39,12 @@ workers:
 3. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
    copies of the certified whole patch tile 3-space. Certified translation
+   motifs may contain multiple orientations and multiple prototile species.
+   Polycubes use a lattice-cell exact cover fast path; general lattice
+   polyhedra use connected motif enumeration followed by exact boundary-face
+   pairing, a rank-3 period-lattice check, and equality of motif volume and
+   lattice covolume.
+   Certified translation
    cells use an RGB parity code applied relative to each motif tile's assigned
    base color: moving by the first period vector changes red by 128 modulo 256,
    the second changes green, and the third changes blue. Thus a multi-tile unit
@@ -178,6 +184,7 @@ node scripts/test-3d-balanced-growth.mjs
 node scripts/test-3d-strategies.mjs
 node scripts/test-3d-proposal-learning.mjs
 node scripts/test-3d-translational-polyhedra.mjs
+node scripts/test-3d-general-translational-motif.mjs
 node scripts/test-3d-mixed-periodic.mjs
 node scripts/test-3d-custom-polyhedron.mjs
 node scripts/test-3d-region.mjs

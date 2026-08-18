@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260817-generation-band-v31";
+import { tileSpecs } from "./engine.js?v=20260817-general-translational-v32";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -2632,7 +2632,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-generation-band-v31", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-general-translational-v32", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2889,7 +2889,11 @@ function formatGrowthResult(result, target) {
     return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
   if (targetPoint) {
-    const witness = result?.mode === "isohedral" ? ` reached ${target}-tile patch` : "";
+    const witness = result?.mode === "isohedral"
+      ? ` reached ${target}-tile patch`
+      : result?.mode === "translational" && result?.resultKind === "certified_tiling"
+        ? ` certified ${result.certificatePatchSize ?? "finite"}-tile unit cell`
+        : "";
     return `${result.label}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
   }
   return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
@@ -2971,7 +2975,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-generation-band-v31", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-general-translational-v32", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

@@ -536,6 +536,8 @@ export const createTilingStream = (() => {
       forced_throttles: 0,
       generation_band_deferrals: 0,
       periodic_repeat_throttles: 0,
+      periodic_motif_nodes: 0,
+      periodic_motif_states: 0,
       reflection_continuations_seen: 0,
       branch_choices_visited: 0,
       failed_leaves: 0,
@@ -2756,6 +2758,215 @@ export const createTilingStream = (() => {
     const isohedralPreflightEnabled = preflightEnabled
       && (tilingStrategy === "auto" || tilingStrategy === "isohedral");
     let tilingEvidence = null;
+
+    const vectorCoordinatesInBasis = (vector, basis) => {
+      const determinant = determinant3(basis);
+      if (Math.abs(determinant) <= 1e-9) return null;
+      return [
+        determinant3([vector, basis[1], basis[2]]) / determinant,
+        determinant3([basis[0], vector, basis[2]]) / determinant,
+        determinant3([basis[0], basis[1], vector]) / determinant
+      ];
+    };
+    const vectorIsInBasisLattice = (vector, basis) => {
+      const coordinates = vectorCoordinatesInBasis(vector, basis);
+      return coordinates?.every(value => Math.abs(value - Math.round(value)) <= 1e-9) ?? false;
+    };
+    const translatedReverseFaceVector = (source, target) => {
+      if (source.length !== target.length || source.length < 3) return null;
+      for (const targetVertex of target) {
+        const translation = vecSub(targetVertex, source[0]);
+        if (translation.every(value => value === 0)) continue;
+        const translated = source.map(vertex => vecAdd(vertex, translation));
+        if (isCyclicPermutation(translated, [...target].reverse())) return translation;
+      }
+      return null;
+    };
+    const motifFromCurrentPatch = () => {
+      const rootTranslation = state.placements[0].translation;
+      return state.placements.map(placement => {
+        const tile = prototiles[placement.prototile_idx];
+        const orientationIndex = tile.unique_orientations.indexOf(placement.orient);
+        return {
+          prototile_idx: placement.prototile_idx,
+          orientation_index: orientationIndex,
+          orientation_id: placement.orient.__orientation_id ?? null,
+          translation: vecSub(placement.translation, rootTranslation)
+        };
+      });
+    };
+    const findBoundaryPeriodicTemplate = requestedPeriod => {
+      if (state.placements.length !== requestedPeriod || !state.frontier.size) return null;
+      const requireAllTypes = prototiles.length > 1 && config.periodic_require_all_types !== false;
+      const usedTypes = new Set(state.placements.map(placement => placement.prototile_idx));
+      if (requireAllTypes && usedTypes.size !== prototiles.length) return null;
+
+      const boundaryFaces = [...state.frontier.values()].map((entry, index) => ({
+        index,
+        vertices: entry.ordered_verts,
+        signature: faceSignatureUndirected(entry.ordered_verts)
+      }));
+      const faceTranslations = Array.from({ length: boundaryFaces.length }, () => []);
+      const uniqueVectors = new Map();
+      for (let left = 0; left < boundaryFaces.length; left++) {
+        for (let right = left + 1; right < boundaryFaces.length; right++) {
+          if (boundaryFaces[left].signature !== boundaryFaces[right].signature) continue;
+          const translation = translatedReverseFaceVector(
+            boundaryFaces[left].vertices,
+            boundaryFaces[right].vertices
+          );
+          if (!translation || !translation.every(Number.isInteger)) continue;
+          const reverse = translation.map(value => -value);
+          faceTranslations[left].push({ face: right, vector: translation });
+          faceTranslations[right].push({ face: left, vector: reverse });
+          uniqueVectors.set(vecKey(translation), translation);
+          uniqueVectors.set(vecKey(reverse), reverse);
+        }
+      }
+      if (faceTranslations.some(options => options.length === 0)) return null;
+
+      const motifVolume = state.placements.reduce(
+        (sum, placement) => sum + (tileVolumes[placement.prototile_idx] ?? 0),
+        0
+      );
+      const tolerance = 1e-8 * Math.max(1, motifVolume);
+      const vectors = [...uniqueVectors.values()]
+        .sort((left, right) =>
+          left.reduce((sum, value) => sum + value * value, 0)
+          - right.reduce((sum, value) => sum + value * value, 0)
+          || vecKey(left).localeCompare(vecKey(right))
+        );
+      for (let first = 0; first < vectors.length; first++) {
+        for (let second = first + 1; second < vectors.length; second++) {
+          for (let third = second + 1; third < vectors.length; third++) {
+            if (overBudget()) {
+              noteIncompleteSearch();
+              return null;
+            }
+            const basis = [vectors[first], vectors[second], vectors[third]];
+            const determinant = determinant3(basis);
+            if (Math.abs(Math.abs(determinant) - motifVolume) > tolerance) continue;
+            if (basis.some(vector => prototiles.some(tile =>
+              tile.is_polycube && !isPolycubeTranslationVector(tile, vector)
+            ))) continue;
+            const allowedMatches = faceTranslations.map(options => options.filter(option =>
+              vectorIsInBasisLattice(option.vector, basis)
+            ));
+            if (allowedMatches.some(options => options.length === 0)) continue;
+            const matchBoundary = (remaining, chosen) => {
+              if (!remaining.size) return chosen;
+              let pivot = null;
+              let pivotOptions = null;
+              for (const faceIndex of remaining) {
+                const options = allowedMatches[faceIndex].filter(option => remaining.has(option.face));
+                if (!options.length) return null;
+                if (!pivotOptions || options.length < pivotOptions.length) {
+                  pivot = faceIndex;
+                  pivotOptions = options;
+                }
+              }
+              for (const option of pivotOptions) {
+                const next = new Set(remaining);
+                next.delete(pivot);
+                next.delete(option.face);
+                const result = matchBoundary(next, [...chosen, {
+                  source_face: pivot,
+                  target_face: option.face,
+                  translation: option.vector.slice(),
+                  lattice_coordinates: vectorCoordinatesInBasis(option.vector, basis).map(Math.round)
+                }]);
+                if (result) return result;
+              }
+              return null;
+            };
+            const boundaryPairing = matchBoundary(
+              new Set(boundaryFaces.map((_, index) => index)),
+              []
+            );
+            if (!boundaryPairing) continue;
+
+            const motif = motifFromCurrentPatch();
+            if (motif.some(item => item.orientation_index < 0)) return null;
+            const prototileCounts = new Map();
+            for (const item of motif) {
+              prototileCounts.set(item.prototile_idx, (prototileCounts.get(item.prototile_idx) ?? 0) + 1);
+            }
+            return {
+              kind: requestedPeriod === 1
+                ? "one_tile_boundary_quotient"
+                : `${requestedPeriod}_tile_boundary_quotient`,
+              tile_volume: motifVolume / requestedPeriod,
+              tile_volumes: tileVolumes.slice(),
+              cell_volume: Math.abs(determinant),
+              period_vectors: basis.map(vector => vector.slice()),
+              motif,
+              mixed_prototile: prototileCounts.size > 1,
+              prototile_counts: [...prototileCounts.entries()]
+                .sort((left, right) => left[0] - right[0])
+                .map(([prototile_idx, count]) => ({ prototile_idx, count })),
+              proof: {
+                method: "face_paired_boundary_equal_covolume",
+                boundary_face_count: boundaryFaces.length,
+                boundary_pairing: boundaryPairing,
+                motif_volume: motifVolume,
+                lattice_determinant: Math.abs(determinant)
+              }
+            };
+          }
+        }
+      }
+      return null;
+    };
+    const periodicPatchStateKey = () => state.placements
+      .map(placement => placementGeometryKey(placement))
+      .sort()
+      .join(";;");
+    const periodicMotifCandidates = () => {
+      const candidates = new Map();
+      for (const moves of faceCandidatesByFrontierPoint().values()) {
+        for (const move of moves) candidates.set(move.dedup_key ?? placementGeometryKey(move), move);
+      }
+      return [...candidates.values()].sort(compareMoves);
+    };
+    const findPeriodicMotifByBoundarySearch = requestedPeriod => {
+      if (requestedPeriod < state.placements.length) return null;
+      const seenBySize = Array.from({ length: requestedPeriod + 1 }, () => new Set());
+      const configuredNodeLimit = Number(config.periodic_motif_node_limit);
+      const nodeLimit = Number.isFinite(configuredNodeLimit) && configuredNodeLimit > 0
+        ? Math.floor(configuredNodeLimit)
+        : Infinity;
+      let localNodes = 0;
+      const visit = () => {
+        if (overBudget() || localNodes >= nodeLimit) {
+          noteIncompleteSearch();
+          return null;
+        }
+        localNodes += 1;
+        searchStats.periodic_motif_nodes += 1;
+        const size = state.placements.length;
+        const stateKey = periodicPatchStateKey();
+        if (seenBySize[size].has(stateKey)) return null;
+        seenBySize[size].add(stateKey);
+        searchStats.periodic_motif_states += 1;
+        if (size === requestedPeriod) return findBoundaryPeriodicTemplate(requestedPeriod);
+
+        for (const move of periodicMotifCandidates()) {
+          if (overBudget() || localNodes >= nodeLimit) {
+            noteIncompleteSearch();
+            return null;
+          }
+          const validity = checkMoveViability(move);
+          if (!validity) continue;
+          move.occupancy_data = validity.occData;
+          const rollback = applyMove(move);
+          const template = visit();
+          undoMove(move, rollback, { captureBest: false });
+          if (template) return template;
+        }
+        return null;
+      };
+      return visit();
+    };
     const vectorScaleAdd = (base, vector, scale) => [
       base[0] + vector[0] * scale,
       base[1] + vector[1] * scale,
@@ -2891,6 +3102,7 @@ export const createTilingStream = (() => {
           preflightStatusPayload()
         );
         template = findPeriodicTemplate(patchSize);
+        if (!template) template = findPeriodicMotifByBoundarySearch(patchSize);
         yield {
           type: "translational_check",
           patch_size: patchSize,

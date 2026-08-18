@@ -98,16 +98,19 @@ const progressivePatchCheck = await solve({
 });
 assert.deepEqual(
   progressivePatchCheck.translationalChecks.map(check => check.patchSize),
-  [1, 2, 3, 4],
+  [1, 2, 3],
   "translational mode must test candidate patch sizes progressively"
 );
+assert.equal(progressivePatchCheck.final.success, true);
+assert.equal(progressivePatchCheck.periodicCertificate?.motif.length, 3);
 
 const unboundedPatchCheck = await solve({
-  mode_key: "tet_oct",
+  mode_key: "census_10_24775",
   target_val: 8,
   tiling_strategy: "translational",
   periodic_patch_unbounded: true,
   periodic_patch_max_tiles: null,
+  periodic_motif_node_limit: 1,
   time_limit_ms: 50
 });
 assert.ok(
