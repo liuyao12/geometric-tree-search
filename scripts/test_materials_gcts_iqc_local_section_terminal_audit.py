@@ -27,6 +27,10 @@ def test_local_section_improves_but_does_not_pass_the_sealed_gate():
     assert report.graph_kernel_best_inner_exact == 25
     assert report.graph_kernel_selected_exact == 17
     assert report.graph_kernel_selected_correct == 54
+    assert report.message_passing_selected_folds == 0
+    assert report.message_passing_best_inner_exact == 24
+    assert report.message_passing_selected_exact == 17
+    assert report.message_passing_selected_correct == 54
     assert report.chiral_features == 210
     assert report.chirality_selected_folds == 2
     assert report.chiral_selected_exact == 15

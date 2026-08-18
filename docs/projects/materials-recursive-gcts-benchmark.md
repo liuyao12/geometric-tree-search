@@ -3686,6 +3686,19 @@ port-graph similarity is therefore retained as an honest research control,
 not promoted to the default marking, and the reserved confirmation target
 remains unopened.
 
+A bounded message-passing control then transports action chemistry,
+partial-support completion, independent-nucleus evidence, shared-interface
+chemistry, normalized separation/profile moments, and certified chirality
+through the same ports for at most two rounds. It contains no coordinates,
+global frame, lattice index, action ID, or target label. The fully nested
+selector chooses one round in every fold; inner exact-group counts are
+`23 / 25`, `24 / 26`, `22 / 25`, `22 / 26`, and `24 / 25`. It is strictly
+preferred over the existing scalar, categorical, and assignment-kernel values
+in zero folds. The fixed message encoder is therefore rejected without
+changing the `17 / 20` outer result or opening confirmation. A future learned
+message map would require its own grouped regularization and shuffled-label
+control rather than inheriting credit from this negative.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

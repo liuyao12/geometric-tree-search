@@ -1726,6 +1726,18 @@ The proper-SE(3) graph representation is retained as a research control, not
 promoted into the default marking library, and the reserved confirmation
 nucleus remains unopened.
 
+A bounded message-passing section is the next stricter control. Initial node
+states contain action chemistry, partial-support completion, support size, and
+independent-nucleus evidence; certified ports transport shared chemistry,
+normalized separation/profile moments, and symmetry-resolved chirality for at
+most two rounds. Node and edge order, global pose, coordinates, action IDs,
+and target labels are absent. Nested choices cover depths `1 / 2`, support-ID
+weights `0 / .25 / 1`, and the same six neighbor counts. All five folds select
+one round, with inner exact counts `23 / 25`, `24 / 26`, `22 / 25`, `22 / 26`,
+and `24 / 25`. It is strictly preferred in zero folds, so the outer result and
+red confirmation gate are unchanged. This rejects the present fixed encoder;
+it does not reject a train-learned equivariant message function.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
