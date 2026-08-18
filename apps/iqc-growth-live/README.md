@@ -1714,6 +1714,18 @@ graph identity is too sparse. The next justified value is a continuous graph
 kernel or bounded message-passing section over these same certified nodes and
 edges—not another looser geometry generator.
 
+That continuous control is now measured. It uses optimal assignment between
+the certified typed nodes and ports, with support-type weights `0 / .25 / 1`,
+node/edge weights `(1,.5) / (1,1) / (.5,1)`, and neighbors
+`1 / 3 / 5 / 9 / 15 / 25` selected strictly inside each outer fold. The
+continuous kernel is preferred over both scalar completion and categorical
+port tables in folds 1 and 2, demonstrating transferable similarity beyond
+exact graph identity. On the sealed outer groups, however, the combined
+selector remains `17 / 20` exact and `54 / 60` correct from `18 / 20` supply.
+The proper-SE(3) graph representation is retained as a research control, not
+promoted into the default marking library, and the reserved confirmation
+nucleus remains unopened.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

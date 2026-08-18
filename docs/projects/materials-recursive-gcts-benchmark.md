@@ -3665,6 +3665,27 @@ remaining at `55 / 60` correct moves. It is therefore exposed only as an
 opt-in chiral-material marking; the nonchiral 180-channel halo remains the IQC
 default.
 
+The follow-on cluster section removes the atom-centred assumption. Ten
+geometry-only nuclei are fitted independently, and exact colored metric-graph
+isomorphism retains 53 irregular support classes recurring in at least three
+nuclei. Scalar partial completion reaches `17 / 20` exact and `55 / 60`
+correct; pair-incidence summaries remain `17 / 20` and fall to `54 / 60`.
+An exact typed port graph preserves support identity, shared-species distance
+profiles, and symmetry-resolved chirality, but sparse categorical backoffs are
+selected in zero folds.
+
+The continuous graph-kernel control therefore compares those same certified
+nodes and ports by optimal assignment. Every capacity choice is nested inside
+the corresponding outer fold: support-type weights are `0 / .25 / 1`,
+node/edge weights are `(1,.5) / (1,1) / (.5,1)`, and neighbor counts are
+`1 / 3 / 5 / 9 / 15 / 25`. Inner selection prefers the kernel in folds 1 and
+2, showing useful similarity beyond exact graph identity. The sealed aggregate
+nevertheless remains `17 / 20` exact and `54 / 60` correct from `18 / 20`
+supplied terminals. No target label is available before selection. Continuous
+port-graph similarity is therefore retained as an honest research control,
+not promoted to the default marking, and the reserved confirmation target
+remains unopened.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

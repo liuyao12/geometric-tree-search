@@ -32,6 +32,10 @@ class IQCLocalSectionTerminalAudit:
     irregular_incidence_selected_correct: int
     typed_port_graph_selected_folds: int
     typed_port_graph_best_inner_exact: int
+    graph_kernel_selected_folds: int
+    graph_kernel_best_inner_exact: int
+    graph_kernel_selected_exact: int
+    graph_kernel_selected_correct: int
     chiral_features: int
     chirality_selected_folds: int
     chiral_selected_exact: int
@@ -56,6 +60,7 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
     irregular = data["irregular_support_control"]
     incidence = irregular["pair_incidence_control"]
     typed_graph = irregular["typed_port_graph_control"]
+    graph_kernel = irregular["continuous_graph_kernel_control"]
     chiral = data["explicit_chirality_control"]
     if (data["groups"] != 20 or data["terminal_supply"] != 18
             or len(data["selected_representations"]) != 5
@@ -63,6 +68,13 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
             or schema["features"] != 180
             or data["mixed_top_ties"] != 0):
         raise AssertionError("local-section protocol changed")
+    if (graph_kernel["selected_folds"] != [1, 2]
+            or len(graph_kernel["selected_capacities"]) != 5
+            or len(graph_kernel["model_digests"]) != 5
+            or graph_kernel["terminal_supply"] != data["terminal_supply"]
+            or graph_kernel["development_gate_passed"]
+            or graph_kernel["target_used_before_selection"]):
+        raise AssertionError("continuous graph-kernel protocol changed")
     target_used = bool(data["target_used_before_selection"])
     gate = data["selected_exact"] >= \
         data["development_gate"]["minimum_selected_exact"]
@@ -82,6 +94,10 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         incidence["selected_exact"], incidence["selected_correct"],
         typed_graph["selected_folds"],
         max(typed_graph["inner_selected_exact"]),
+        len(graph_kernel["selected_folds"]),
+        max(graph_kernel["inner_selected_exact"]),
+        graph_kernel["selected_exact"],
+        graph_kernel["selected_correct"],
         chiral["features"], chiral["chirality_selected_folds"],
         chiral["selected_exact"], chiral["selected_correct"],
         schema["proper_se3_invariant"],
