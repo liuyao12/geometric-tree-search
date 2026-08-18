@@ -1471,6 +1471,17 @@ green conditional branch-selection gate. Heldout truth still supplies the
 two-action prefix, so autonomous, sustained, stationary, and exponential IQC
 growth remain unclaimed pending a newly sealed self-fed confirmation.
 
+That confirmation is now consumed. The first preregistered centre was retired
+unscored when lift bounds 24 and 25 produced different target crops. A second
+centre at `(-50, 50, -10)` was committed 40.31 units from every prior domain,
+with bound-32 / bound-33 stability required. Before one target-open call, the
+frozen 437-state model built a width-four, reach-four, depth-three
+configuration tree with candidate counts `4 / 16 / 16` and retained four
+configurations at every depth. Its selected self-fed branch emitted three
+colored sites. Posthoc only `1 / 3` was exact. Thus the conditional `8 / 8`
+gate remains useful evidence for the marking representation, but the first
+autonomous top-one gate is red; no sustained or exponential claim follows.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

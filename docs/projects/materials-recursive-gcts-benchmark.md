@@ -2330,6 +2330,21 @@ its candidate/descriptor digest is
 This still uses truth to construct the known-exact two-action prefix; a new
 sealed self-fed nucleus is required before calling the selection autonomous.
 
+The sealed self-fed check has now been run and fails. The first preregistered
+centre `(-70, -70, 30)` is recorded consumed/unknown after bound-24 and
+bound-25 target crops disagreed; no score was computed and that nucleus is not
+reused. A replacement at `(-50, 50, -10)` is 40.31 units from every prior
+target centre and uses a bound-32 / bound-33 stable crop. The frozen 437-state
+policy constructs a target-free width-four, reach-four, depth-three tree with
+`4 / 16 / 16` candidate snapshots and four retained configurations per depth.
+The chosen branch is genuinely self-fed but posthoc only one of its three
+colored sites is exact. Candidate digest
+`028acae9f4c2105f506b06de0e2c8d6aa238bd8d6e7fb3932c8d682af148529e`
+and pre-target trace digest
+`d2a0290f5bf819a7234803b71ac38fcb539e8ace4409b8156e2c73aeb6f6e49d`
+freeze the failure. Conditional branch selection is green; autonomous top-one,
+sustained, stationary, and exponential IQC growth remain red.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are
