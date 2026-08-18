@@ -96,6 +96,36 @@ def test_descriptor_is_permutation_translation_rotation_invariant():
                for row in first_incidence.values() for token in row.tokens)
 
 
+def test_oriented_port_channels_quotient_proper_rotation_not_reflection():
+    state = RecursiveConnectionState(
+        LocalClusterType("A", (1, 3)), LocalClusterType("B", (2, 4)), 2)
+
+    def fixture(transform):
+        point = transform((0., 0., 0.))
+        occupied = tuple(transform(row) for row in (
+            (-1., 0., 0.), (0., -1., 0.), (0., 0., -1.)))
+        proposals = MarkedProposalResult(
+            Counter({point: 6}), 0, None,
+            {point: Counter({"A": 6})}, {point: Counter({"B": 6})},
+            {point: Counter({state: 6})},
+            {point: Counter({0: 3, 1: 2, 2: 1})})
+        return candidate_incidence_descriptors(
+            proposals, distance_scale=1., occupied_positions=occupied,
+            occupied_species=("A", "B", "A"),
+            oriented_port_geometry=True)[point]
+
+    identity = fixture(lambda point: point)
+    proper = fixture(lambda point: (
+        7. - point[1], -3. + point[0], 11. + point[2]))
+    reflected = fixture(lambda point: (-point[0], point[1], point[2]))
+    assert identity == proper
+    assert identity != reflected
+    assert any(token[0] == "port-neighbor-angle"
+               for token in identity.tokens)
+    assert ("port-axis-handedness", 4) in identity.tokens
+    assert ("port-axis-handedness", -4) in reflected.tokens
+
+
 def test_train_only_tokens_rank_supported_context():
     positive = CandidateIncidenceDescriptor((('role', 'good'),))
     negative = CandidateIncidenceDescriptor((('role', 'bad'),))
@@ -152,6 +182,7 @@ def test_marking_digest_is_mapping_order_invariant():
 
 def main():
     test_descriptor_is_permutation_translation_rotation_invariant()
+    test_oriented_port_channels_quotient_proper_rotation_not_reflection()
     test_train_only_tokens_rank_supported_context()
     test_channel_projection_counts_each_family_once()
     test_marking_digest_is_mapping_order_invariant()

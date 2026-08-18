@@ -70,6 +70,8 @@ def candidate_incidence_descriptors(
         proposals, *, distance_scale: float, neighborhood_reach: float = 3.,
         distance_bin_width: float = .5, maximum_neighbors: int = 8,
         maximum_roles: int = 3, joint_role_geometry: bool = False,
+        oriented_port_geometry: bool = False,
+        angular_bin_width: float = .25,
         message_passing_rounds: int = 0,
         message_distance_divisor: int = 1,
         message_role_mode: str = "exact",
@@ -85,7 +87,8 @@ def candidate_incidence_descriptors(
     if (len(occupied_positions) != len(occupied_species) or
             distance_scale <= 0 or neighborhood_reach <= 0 or
             distance_bin_width <= 0 or maximum_neighbors < 1 or
-            maximum_roles < 1 or not 0 <= message_passing_rounds <= 3 or
+            maximum_roles < 1 or angular_bin_width <= 0 or
+            not 0 <= message_passing_rounds <= 3 or
             not 1 <= message_distance_divisor <= 8 or
             message_role_mode not in {"exact", "coarse", "colors"} or
             message_encoding not in {"exact", "incidence"} or
@@ -183,6 +186,60 @@ def candidate_incidence_descriptors(
         nearest = sorted(nearby_occupied,
                          key=lambda row: (row[0], row[1], row[2]))[
                              :maximum_neighbors]
+        if oriented_port_geometry:
+            # The proposal direction relative to already occupied atoms is
+            # the missing pose channel.  Dot products and signed scalar
+            # triple products quotient global proper rotation and
+            # translation while preserving genuinely different attachment
+            # orientations and chirality.  Parent indices refer only to the
+            # public occupied seed, never a held-out target.
+            axes = []
+            for parent_index, multiplicity in sorted(
+                    parents.items(), key=lambda row: (-row[1], row[0])):
+                if not 0 <= parent_index < len(occupied_positions):
+                    raise ValueError("proposal parent index is outside seed")
+                vector = tuple(point[axis] -
+                               occupied_positions[parent_index][axis]
+                               for axis in range(3))
+                norm = math.sqrt(sum(value * value for value in vector))
+                if norm > 1e-12:
+                    axes.append((tuple(value / norm for value in vector),
+                                 _bucket(int(multiplicity))))
+            axes = axes[:maximum_roles]
+            neighbor_axes = []
+            for radius, species, neighbor in nearest:
+                if radius <= 1e-12:
+                    continue
+                neighbor_axes.append((
+                    tuple((neighbor[axis] - point[axis]) / radius
+                          for axis in range(3)), species,
+                    round(radius / (distance_scale * distance_bin_width))))
+            for axis, multiplicity in axes:
+                tokens.add(("port-axis-multiplicity", multiplicity))
+                for neighbor_axis, species, radius_bin in neighbor_axes:
+                    cosine = sum(axis[index] * neighbor_axis[index]
+                                 for index in range(3))
+                    tokens.add(("port-neighbor-angle", species, radius_bin,
+                                round(cosine / angular_bin_width)))
+                    if own_roles:
+                        tokens.add(("role-port-neighbor-angle", own_roles[0],
+                                    species, radius_bin,
+                                    round(cosine / angular_bin_width)))
+            for left in range(len(axes)):
+                for right in range(left + 1, len(axes)):
+                    cosine = sum(axes[left][0][axis] * axes[right][0][axis]
+                                 for axis in range(3))
+                    tokens.add(("port-axis-angle",
+                                round(cosine / angular_bin_width)))
+            if len(axes) >= 3:
+                left, middle, right = (axes[index][0] for index in range(3))
+                cross = (middle[1] * right[2] - middle[2] * right[1],
+                         middle[2] * right[0] - middle[0] * right[2],
+                         middle[0] * right[1] - middle[1] * right[0])
+                handedness = sum(left[index] * cross[index]
+                                 for index in range(3))
+                tokens.add(("port-axis-handedness",
+                            round(handedness / angular_bin_width)))
         node_colors = tuple((species, round(round(
             radius / (distance_scale * distance_bin_width)) /
             message_distance_divisor))

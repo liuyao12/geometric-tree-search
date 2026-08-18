@@ -1335,6 +1335,23 @@ expanded corpus rejects both "more recurrence support" and "whole-state
 lookup" as sufficient explanations. Candidate geometry is unchanged and the
 reserved centre `(0, 50, 0)` remains unopened.
 
+The marking now also retains the orientation that a frozen port presents to
+the occupied neighborhood. Candidate-to-parent axes are compared with nearby
+occupied directions by dot products; signed scalar triple products preserve
+handedness. These features quotient arbitrary proper rotation and translation
+and require no lattice axis. Angular widths 0.125 / 0.25 / 0.5 create 9,580 /
+6,501 / 4,414 finite orientation tokens. The coarsest arm ties the 30 / 36
+unoriented result, while finer arms select 28--29 / 36.
+
+An order-independent search control then enumerates all 120 compatible
+unordered pairs in each 16-action shortlist. Every one of the eighteen nuclei
+contains an exact pair (at least six per shortlist), and pair fitting is nested
+so an outer nucleus influences neither its candidate shortlist nor its pair
+marking. The selected pair model remains at 30 / 36. Thus candidate supply,
+attachment rotations, and greedy action order have been separated from the
+remaining transferable-value failure. The reserved confirmation is still
+sealed.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

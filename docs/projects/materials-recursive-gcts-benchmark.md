@@ -2171,6 +2171,25 @@ missing GCTS value. The exact candidate graph is unchanged, all expanded
 targets are development data, and the reserved `(0, 50, 0)` confirmation has
 not been constructed.
 
+The next correction restores attachment orientation rather than treating the
+separation bin as a complete pose. Candidate-to-parent axes are related to the
+already occupied neighborhood through dot products and signed scalar triple
+products. This is invariant under global proper SE(3), retains chirality, and
+does not introduce a lattice axis. Angular widths 0.125, 0.25, and 0.5 produce
+9,580, 6,501, and 4,414 finite orientation tokens. Fine channels score 28--29 /
+36; the coarsest exactly ties the 30 / 36 unoriented baseline.
+
+A nested order-independent control then replaces greedy placement by one tree
+node containing an unordered compatible pair. Each outer fold fits its
+individual shortlist on the other seventeen nuclei; every inner pair corpus is
+formed with the inner nucleus excluded as well. All 120 compatible pairs from
+the top sixteen actions are scored. Every nucleus contains an exact pair in
+that frozen shortlist (6--120 exact pairs per nucleus), yet all bounded pair
+grids again select 30 / 36. Therefore the current six failures cannot be
+attributed to missing rotations, absence of correct candidate pairs, or action
+permutation order. The exact candidate graph is unchanged and the reserved
+confirmation remains unopened.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are
