@@ -1,8 +1,8 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-conway-biprism-v30";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-generation-band-v31";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
-} from "./proposal-learner.js?v=20260817-conway-biprism-v30";
+} from "./proposal-learner.js?v=20260817-generation-band-v31";
 
 let activeSequence = 0;
 let stopToken = { stop: false };

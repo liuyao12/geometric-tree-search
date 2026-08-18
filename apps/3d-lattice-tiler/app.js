@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260817-conway-biprism-v30";
+import { tileSpecs } from "./engine.js?v=20260817-generation-band-v31";
 import {
   normalizeProposalProgram,
   proposalTileKey
-} from "./proposal-learner.js?v=20260817-conway-biprism-v30";
+} from "./proposal-learner.js?v=20260817-generation-band-v31";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1585,7 +1585,7 @@ function configKey() {
     return null;
   };
   const seconds = positiveOrNull(timeCapInput);
-  const forcedLayerLagCap = positiveSearchParam("forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 3;
+  const forcedLayerLagCap = positiveSearchParam("generation_lag_cap", "forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 2;
   const selectedCriterion = criterion();
   const tilingStrategy = checkedRadioValue(strategyRadios, "free_range");
   const isFreeRange = tilingStrategy === "free_range";
@@ -2632,7 +2632,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-conway-biprism-v30", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-generation-band-v31", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2971,7 +2971,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-conway-biprism-v30", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-generation-band-v31", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

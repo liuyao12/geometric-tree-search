@@ -534,6 +534,7 @@ export const createTilingStream = (() => {
         : "auto",
       forced_total: 0,
       forced_throttles: 0,
+      generation_band_deferrals: 0,
       periodic_repeat_throttles: 0,
       reflection_continuations_seen: 0,
       branch_choices_visited: 0,
@@ -846,6 +847,7 @@ export const createTilingStream = (() => {
         frontier_stats: extra.frontier_stats ?? frontierStatsWithCandidateCount(),
         search_stats: searchStatsSnapshot()
       };
+      if (Number.isFinite(move?.generation_lag)) message.generation_lag = move.generation_lag;
       if (action === "add") {
         message.faces = [...newKeys, ...coveredKeys]
           .map(key => state.viz_faces.get(key)?.at(-1))
@@ -1469,7 +1471,14 @@ export const createTilingStream = (() => {
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
     const forcedMoveLayerLagCap = Number.isFinite(configuredForcedLagCap)
       ? configuredForcedLagCap > 0 ? configuredForcedLagCap : Infinity
-      : 3;
+      : 2;
+    searchStats.generation_lag_cap = forcedMoveLayerLagCap;
+    const moveWithinGenerationBand = (move) => {
+      const layerLag = moveLayerLagInfo(move);
+      move.generation_lag = layerLag.layer_lag;
+      return !Number.isFinite(forcedMoveLayerLagCap)
+        || layerLag.layer_lag <= forcedMoveLayerLagCap;
+    };
     const branchDetails = !!config.branch_details;
     const startedAt = performance.now();
     const configuredSafetyMax = Number(config.safety_max_tiles);
@@ -2719,9 +2728,8 @@ export const createTilingStream = (() => {
             occupancy_data: candidate.occupancy_data
           };
           const features = moveAgentFeatures(move, option);
-          if (!agentExhaustive && Number.isFinite(forcedMoveLayerLagCap) &&
-              features.layer_lag > forcedMoveLayerLagCap &&
-              (features.periodic_evidence > 0 || features.linear_repeat > 0)) {
+          if (!moveWithinGenerationBand(move)) {
+            searchStats.generation_band_deferrals += 1;
             continue;
           }
           const score = rlAgent.score(move, option);
@@ -3273,6 +3281,10 @@ export const createTilingStream = (() => {
             seedCandidateLimit - candidates.length
           );
           for (const move of moves) {
+            if (!moveWithinGenerationBand(move)) {
+              searchStats.generation_band_deferrals += 1;
+              continue;
+            }
             const rootScore = coveredFrontierFaceScore(move, 0);
             if (
               rootScore <= 0
@@ -3647,6 +3659,10 @@ export const createTilingStream = (() => {
       for (const option of frontierPointOptions()) {
         const moves = await preflightFaceCandidatesForOption(option, candidateCap);
         for (const move of moves) {
+          if (!moveWithinGenerationBand(move)) {
+            searchStats.generation_band_deferrals += 1;
+            continue;
+          }
           if (move.prototile_idx !== state.placements[0].prototile_idx) continue;
           if (moveOldestFrontierTouches(move) === 0) continue;
           candidateMap.set(move.dedup_key ?? placementGeometryKey(move), move);
@@ -3857,6 +3873,7 @@ export const createTilingStream = (() => {
           const option = analysis.forced[0];
           const mv = option.unique_candidates[0];
           const layerLag = moveLayerLagInfo(mv);
+          mv.generation_lag = layerLag.layer_lag;
           if (Number.isFinite(forcedMoveLayerLagCap) && layerLag.layer_lag > forcedMoveLayerLagCap) {
             branchAnalysis = throttledForcedBranchAnalysis(analysis);
             searchStats.forced_throttles += 1;
@@ -3920,7 +3937,9 @@ export const createTilingStream = (() => {
         let bestPointScore = null;
         for (const option of branchOptions) {
           await yieldToBrowser();
-          const moves = option.unique_candidates ?? await nodeCandidatesForVertexOption(option, candidateCap);
+          const optionMoves = option.unique_candidates ?? await nodeCandidatesForVertexOption(option, candidateCap);
+          const moves = optionMoves.filter(moveWithinGenerationBand);
+          searchStats.generation_band_deferrals += optionMoves.length - moves.length;
           if (!moves.length) continue;
           let bestCoverage = -1;
           for (const m of moves) bestCoverage = Math.max(bestCoverage, moveCoverage(m));
@@ -3940,7 +3959,9 @@ export const createTilingStream = (() => {
         if (!bestOption) {
           for (const option of branchOptions) {
             await yieldToBrowser();
-            const moves = option.unique_candidates ?? await nodeCandidatesForVertexOption(option, candidateCap);
+            const optionMoves = option.unique_candidates ?? await nodeCandidatesForVertexOption(option, candidateCap);
+            const moves = optionMoves.filter(moveWithinGenerationBand);
+            searchStats.generation_band_deferrals += optionMoves.length - moves.length;
             if (moves.length) { bestOption = option; bestOptionMoves = moves; break; }
           }
         }
@@ -3959,6 +3980,7 @@ export const createTilingStream = (() => {
           right._agent_proposal_score ?? rlAgent.score(right)
         )
       );
+      bestMoves = bestMoves.filter(moveWithinGenerationBand);
       if (!usePolicyAgent && !exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
         bestMoves = bestMoves.slice(0, branchCap);
       }
@@ -4079,6 +4101,13 @@ export const createTilingStream = (() => {
           break;
         }
         move.occupancy_data = validity.occData;
+        if (!moveWithinGenerationBand(move)) {
+          searchStats.generation_band_deferrals += 1;
+          searchStats.proposal_patch_conflicts += 1;
+          searchStats.proposal_patch_conflict_index = descriptor.index;
+          searchStats.proposal_patch_conflict_reason = "generation-band";
+          break;
+        }
         const rollback = applyMove(move);
         replayed += 1;
         searchStats.proposal_patch_tiles_replayed += 1;
