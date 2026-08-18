@@ -85,6 +85,29 @@
     "proposal_checks": 7312,
     "target_used_before_selection": false
   },
+  "commuting_order_multiplicity_control": {
+    "digest": "a127f37312fa2b2fbd6b663a3c822c4ec9238164ab03a6579b789f1af2962e1c",
+    "fold_digests": [
+      "256a6d0f42d43bc31af50d02ed1a9d4ab4ae801fa12fa4fc7e4890a136b3ef62",
+      "94bf4580be97cd57b9d83b6a253c2edc58a0e90af786198439017ce98fde466d",
+      "22ddb8c2403b9c5b1d09173021143613a50e094563551f99eb17260c848e41e0",
+      "23664c70474183870deac5fb52e9363905eba6831b23a8303b3b40e9730ef84c",
+      "47bcbad35a6e23b6eb45d005be1df47ec2527402cdbb794e89946c9e84ff6717"
+    ],
+    "proposal_reach": [12, 4, 8],
+    "maximum_orderings": 6,
+    "proposal_checks": 7312,
+    "groups_with_exact_multiplicity_six": 17,
+    "groups_with_false_multiplicity_six": 11,
+    "groups_where_exact_and_false_both_have_six": 8,
+    "rankings": {
+      "score": {"selected_exact": 15, "selected_correct": 53},
+      "multiplicity_then_score": {"selected_exact": 14, "selected_correct": 52},
+      "score_times_multiplicity": {"selected_exact": 14, "selected_correct": 52},
+      "score_plus_0.1_log_multiplicity": {"selected_exact": 15, "selected_correct": 53}
+    },
+    "target_used_before_selection": false
+  },
   "development_gate": {"minimum_selected_exact": 18},
   "target_used": false
 }

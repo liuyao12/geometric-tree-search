@@ -24,6 +24,10 @@ def test_pruning_controls_are_preserved_as_honest_negative_results():
     assert report.pose_edge_representation_selected_folds == 0
     assert report.action_consensus_selected_exact == 13
     assert report.action_consensus_selected_correct == 49
+    assert report.multiplicity_selected_exact == 14
+    assert report.multiplicity_selected_correct == 52
+    assert report.multiplicity_score_selected_exact == 15
+    assert report.groups_where_exact_and_false_have_full_order_support == 8
     assert not report.controls_improve_baseline
     assert not report.development_gate_passed
     assert not report.fresh_confirmation_authorized

@@ -1639,6 +1639,14 @@ associating each pose/port channel with its three inter-action edge lengths
 reaches `15 / 20`; none of the five inner folds selects that new representation.
 A train-selected minimum-support consensus over existing valid terminal
 branches reaches `13 / 20`. These are rejected controls, not menu additions.
+Before unordered action sets are deduplicated, a separate audit also counts
+the distinct valid placement orders reaching each three-action terminal. There
+can be at most six. Correct terminals reach multiplicity six in `17 / 20`
+nuclei, but false terminals also do so in `11 / 20`, and both classes do so in
+the same `8 / 20`. Multiplicity-first and score-times-multiplicity select only
+`14 / 20` exact paths (`52 / 60` correct moves); adding `0.1 log(multiplicity)`
+merely ties the broad score at `15 / 20` (`53 / 60`). The count remains useful
+for displaying commuting red flashes, but is rejected as a pruning value.
 The unchanged `16 / 20` portfolio terminal value remains best: proposal supply
 is solved on development data, while transferable terminal valuation is open.
 

@@ -3630,6 +3630,18 @@ group-heldout action-consensus policy chooses support widths `1 / 1 / 3 / 9 /
 valuation. The `18 / 20` confirmation gate remains red and no new target is
 opened.
 
+The executor's unordered branch deduplication does not erase whether the same
+compatible three-action set could have been assembled in several orders. A
+fixed audit counts those parent/order derivations first (maximum `3! = 6`) and
+then applies four target-blind terminal rankings. Correct terminals have full
+six-order support in `17 / 20` nuclei, but false terminals also have it in
+`11 / 20`; both occur in the same `8 / 20`. Multiplicity-first and
+score-times-multiplicity fall to `14 / 20` exact selections and `52 / 60`
+correct moves. Adding `0.1 log(multiplicity)` only ties the unmodified broad
+score at `15 / 20` and `53 / 60`. Order multiplicity is therefore retained as
+a truthful visualization of commuting moves, not promoted to a GCTS value
+channel.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
