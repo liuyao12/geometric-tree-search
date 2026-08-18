@@ -1458,6 +1458,19 @@ This is why the interface reports observed symmetry-inequivalent poses but
 derives Auto capacity from recurrent pose × connection-port rank: one channel
 per observed rotation is a high-cardinality overfit, not a GCTS principle.
 
+The replacement now respects the pipeline boundary explicitly. Clustering
+freezes the 0.125-radian proper-pose atlas first; marking learning is not
+allowed to refit that geometry. It pools the frozen descriptor evidence into
+five invariant channels—connection role, proposal multiplicity, occupied
+shell, neighboring incidence, and pose/chirality—and train-selects a bounded
+quantization of their normalized responses. The chosen support-4 / two-group /
+state-width-1 model contains 437 recurrent states. On the same eight
+conditional heldout frontiers it ranks an exact action first in `8 / 8`,
+improving the unquotiented `4 / 8` result with identical candidates. This is a
+green conditional branch-selection gate. Heldout truth still supplies the
+two-action prefix, so autonomous, sustained, stationary, and exponential IQC
+growth remain unclaimed pending a newly sealed self-fed confirmation.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

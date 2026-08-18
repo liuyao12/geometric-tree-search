@@ -2313,6 +2313,23 @@ cluster rotations are an input to the marking representation, but raw rotation
 cardinality is not the channel count. Capacity remains admissible only when a
 finite recurrent pose × port quotient improves heldout evidence.
 
+That quotient is now implemented with the stage ownership requested by the
+interactive lab. The clustering audit freezes the 0.125-radian proper-pose
+atlas upstream; the marking fit cannot silently change its angular resolution.
+Five invariant evidence channels pool connection role, proposal multiplicity,
+occupied shell, neighboring incidence, and pose/chirality token responses.
+Grouped train-only selection chooses token support 4 across two independent
+nuclei and state width 1.0, yielding 437 recurrent states. The exact candidate
+set is unchanged. On the eight conditional post-commit frontiers the first
+exact ranks become `1 / 1 / 1 / 1 / 1 / 1 / 1 / 1`, versus
+`3 / 4 / 3 / 3 / 1 / 1 / 1 / 1` before the quotient. The conditional top-one
+development gate is therefore green. Its model digest is
+`9b83898155f5d729499c441bcbafa6491b553196fe87de756cb6281b8b856b13` and
+its candidate/descriptor digest is
+`a241b449374deadd73ff32fc48f45c87412e0fa8073c6fac35848e5bc5e785b4`.
+This still uses truth to construct the known-exact two-action prefix; a new
+sealed self-fed nucleus is required before calling the selection autonomous.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are
