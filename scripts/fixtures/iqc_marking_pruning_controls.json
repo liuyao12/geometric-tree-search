@@ -1,0 +1,49 @@
+{
+  "format": "iqc-marking-pruning-controls-v1",
+  "source_fixture": "iqc_marking_portfolio_terminal_value.json",
+  "source_fixture_sha256": "02ddd6e599c1ee259ff5e3bbd0ec1f80331850ef04cc8399ebceb6284db12df1",
+  "groups": 20,
+  "beam": [4, 4, 8],
+  "portfolio_terminal_baseline": {
+    "terminal_supply": 18,
+    "selected_exact": 16,
+    "selected_correct": 54
+  },
+  "root_reach_control": {
+    "digest": "6f934aa924462a32a5f2d0bfa504eb8950e99daf709b0b26d46a6d9ac6064b03",
+    "results": {
+      "5": {"stage_supply": [20, 18, 18], "terminal_supply": 18, "selected_exact": 13, "selected_correct": 50},
+      "8": {"stage_supply": [20, 19, 17], "terminal_supply": 17, "selected_exact": 13, "selected_correct": 50},
+      "12": {"stage_supply": [20, 20, 19], "terminal_supply": 17, "selected_exact": 13, "selected_correct": 50}
+    },
+    "target_used": false
+  },
+  "independent_stage_value_control": {
+    "digest": "3db11a3c76abbccfcaeef3d722bd0ea4df12492928af911318f0c50802c8834a",
+    "training_digest": "1094b40562407b99f58167b1b9f991945e3cfe154dcb6741ef1ccbf043219354",
+    "selected_heads": [
+      [["base", 15], ["ports", 1], ["ports", 1]],
+      [["base", 15], ["ports", 1], ["base", 9]],
+      [["base", 3], ["colored", 5], ["coupled", 25]],
+      [["base", 5], ["colored", 1], ["ports", 15]],
+      [["base", 1], ["colored", 1], ["base", 15]]
+    ],
+    "summary": {"stage_supply": [19, 17, 17], "terminal_supply": 17, "selected_exact": 16, "selected_correct": 54},
+    "target_used": false
+  },
+  "descendant_viability_control": {
+    "digest": "75c3aaa22891b02342998ddec925ac2e713595942e953060813dcd1d06b6a4e1",
+    "training_digest": "9981c2fda83fa0260eded96a196b4a145172176ca12cf10cb825f82d9cd0869d",
+    "selected_heads": [
+      [["base", 15], ["coupled", 9], ["ports", 1]],
+      [["ports", 15], ["base", 5], ["base", 9]],
+      [["base", 15], ["base", 3], ["coupled", 25]],
+      [["ports", 15], ["base", 5], ["ports", 15]],
+      [["ports", 15], ["ports", 9], ["base", 15]]
+    ],
+    "summary": {"stage_supply": [19, 16, 16], "terminal_supply": 16, "selected_exact": 15, "selected_correct": 54},
+    "target_used": false
+  },
+  "development_gate": {"minimum_selected_exact": 18},
+  "target_used": false
+}
