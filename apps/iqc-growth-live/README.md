@@ -1358,25 +1358,22 @@ cluster types and connection proposals are recomputed, and the marking sees
 the count, vote mass, chemistry, finite port roles, and order-two incidences of
 the newly exposed frontier. It never sees the target during rollout. The
 strongest independently supported successor section improves selection from
-30 / 36 to 31 / 36, fixing one prior all-wrong nucleus. Five actions remain
-wrong, so this is a positive development result rather than permission to open
-the reserved confirmation. A bounded second successor step evaluates 76--184
-child branches per nucleus and increases the supported rollout vocabulary, but
-remains exactly 31 / 36. The informative object is therefore not another
-unordered frontier shell; it is the obligation carried along a particular
-root-to-child path.
+30 / 36 to 32 / 36 once both causal endpoints of every affine connection are
+carried. A bounded second successor step evaluates 76--184 child branches per
+nucleus and reaches 33 / 36 with 16 / 18 exact nuclei. The informative object
+is therefore not another unordered frontier shell alone; it is the obligation
+carried along a particular root-to-child path.
 
 Retaining that path produces the strongest expanded result so far. Each
 descriptor binds the root successor, the incoming child-port roles and
 order-two patterns, and the child successor into one directed record. Geometry
 is frozen before labels enter; a path is positive only when both placements
 are correct. Scoring each root by its best supported four-child continuation
-raises selection to 33 / 36 and 16 / 18 exact nuclei. The remaining supply
-audit finds a correct child only near rank 13 in one failed nucleus. Widening
-the exact tree from four to sixteen children supplies four exact paths there,
-but remains 33 / 36; two other nuclei expose no exact immediate child at all.
-The residual problem is transfer and connection closure, not branch width, and
-the confirmation remains sealed.
+reaches 33 / 36 at width four. Widening the exact tree from four to sixteen
+children supplies at least two exact paths in every nucleus and raises
+selection to 34 / 36, with 16 / 18 exact nuclei. Candidate supply is complete
+at this bounded depth; the two remaining failures are ranking errors among
+present alternatives.
 
 Pooling connection markings before quotienting cluster identity fails. The new
 generic merger requires pooled purity, positive support, and positive evidence
@@ -1391,11 +1388,13 @@ That ordering now has a direct held-out audit. Ten training nuclei learn 455
 local pose classes that recur in at least two independent configurations;
 only then are their connection states pooled. On eight expanded validation
 nuclei the frozen quotient supplies at least one correct first action in all
-eight and an exact root-to-child continuation in seven. The remaining nucleus
-still has no exact continuation, so the supply gate remains red and the
-reserved confirmation remains unopened. This is a large improvement over the
-raw-type 7 / 18 result, but not permission to smooth over the last missing
-connection class.
+eight and an exact root-to-child continuation in all eight. The formerly
+missing continuation exposed a causal bookkeeping error rather than a missing
+port: an affine action depends on both its ordered parent and source, but the
+successor search had retained only the parent index. The engine now carries a
+separate causal-endpoint map while preserving the geometric parent role used
+by marking features. No evidence threshold was relaxed, and the reserved
+confirmation remains unopened until this exact rule is committed.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

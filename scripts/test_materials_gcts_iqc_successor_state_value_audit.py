@@ -9,13 +9,13 @@ def main():
     assert report.total_groups == 18
     assert report.shortlist_size == 16
     assert report.additive_baseline_correct_actions == 30
-    assert report.selected_correct_actions == 31
-    assert report.selected_false_actions == 5
-    assert report.exact_groups == 14
+    assert report.selected_correct_actions == 32
+    assert report.selected_false_actions == 4
+    assert report.exact_groups == 15
     assert report.selected_correct_by_group == (
-        2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1, 2, 2, 2, 1, 2, 2, 2)
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 2, 2, 2, 1, 2, 2, 2)
     assert report.successor_descriptor_digest == \
-        "9e4cee87a212702b138df8ec8fdded1249fbb4528ee792fa75ddf157cc543e69"
+        "315e088505ff03aadb12d2c5c78cb9f2cfd0815357113bd6dcb8cf6ead81870d"
     assert min(report.unique_successors_by_group) >= 19
     assert all(low <= high for low, high in zip(
         report.outgoing_minimum_by_group, report.outgoing_maximum_by_group))

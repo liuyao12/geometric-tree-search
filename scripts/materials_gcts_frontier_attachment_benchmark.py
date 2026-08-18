@@ -215,7 +215,9 @@ def _subset_proposals(proposals, selected):
         {point: proposals.color_votes[point] for point in points},
         {point: proposals.target_color_votes[point] for point in points},
         {point: proposals.state_votes[point] for point in points},
-        {point: proposals.parent_votes[point] for point in points})
+        {point: proposals.parent_votes[point] for point in points},
+        None if proposals.causal_endpoint_votes is None else
+        {point: proposals.causal_endpoint_votes[point] for point in points})
 
 
 def _cross_fitted_frontier_scores(training, known, known_colors, targets):

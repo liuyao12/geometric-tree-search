@@ -10,8 +10,8 @@ def main():
     assert report.validation_groups == 8
     assert report.selected_prototype_minimum_groups == 2
     assert report.selected_groups_with_correct_candidates == 8
-    assert report.selected_groups_with_exact_path == 7
-    assert not report.supply_gate_passed
+    assert report.selected_groups_with_exact_path == 8
+    assert report.supply_gate_passed
     assert report.cluster_vocabulary_fit_on_training_seeds_only
     assert report.connection_fit_uses_training_targets_only
     assert report.validation_targets_used_only_for_supply_scoring
@@ -20,7 +20,7 @@ def main():
                     if row.prototype_minimum_groups == 2)
     assert selected.recurrent_prototypes == 455
     assert selected.exact_path_available_by_validation_group == (
-        True, True, True, True, False, True, True, True)
+        True, True, True, True, True, True, True, True)
     print("IQC recurrent prototype connection audit passed")
 
 

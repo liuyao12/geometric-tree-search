@@ -2198,13 +2198,13 @@ new outgoing frontier's size, vote and parent mass, chemistry, port roles,
 order-two incidences, and normalized distances. The development target is used
 only for fold labels, never to construct the successor. Across folds, 19--46
 unique candidate successors are evaluated per nucleus. With support/group
-floors 16/4 and unit mixing, the value selects 31 / 36 rather than 30 / 36.
-One previously all-wrong nucleus becomes exact. A bounded second step then
+floors 16/4 and unit mixing, the corrected causal-endpoint value selects
+32 / 36 rather than 30 / 36. A bounded second step then
 executes the four strongest target-free outgoing children of every root. It
 evaluates 76--184 child branches per nucleus and increases supported rollout
-tokens from 115--134 to 251--275 at the strictest floor, but selection remains
-exactly 31 / 36. Thus another unordered frontier shell is not the missing
-value; the next representation must retain which port obligation survives
+tokens substantially and reaches 33 / 36 with 16 / 18 exact nuclei. Thus
+another unordered frontier shell is not sufficient; the next representation
+must retain which port obligation survives
 along which root-to-child path. The reserved confirmation remains sealed.
 
 Keeping the directed path instead of pooling it is materially better. A path
@@ -2212,16 +2212,12 @@ descriptor joins the root successor, the incoming child-port roles and
 order-two patterns, and the child successor. All path geometry is serialized
 before labels are read; a training path is positive only when both root and
 child have the correct species-position. The root value is the maximum over
-four train-supported child continuations. This reaches 33 / 36 actions and 16
-/ 18 exact nuclei, compared with 31 / 36 for both one-step and pooled two-step
-values. A separate supply check places the first exact child at rank 13 for one
-remaining failed nucleus, while two other nuclei expose no exact immediate
-child for otherwise correct roots. The same audit widened from four to sixteen
-children, producing 164--242 paths per heldout nucleus and four exact paths in
-the former rank-13 failure. Selection nevertheless remains 33 / 36. Tree width
-is therefore rejected as the missing value; score transfer and finite
-connection closure remain distinct limits. The reserved confirmation remains
-unopened.
+four train-supported child continuations. This reaches 33 / 36 actions. The
+same audit widened from four to sixteen children, producing 176--256 paths per
+heldout nucleus and at least two exact paths in every nucleus. Selection rises
+to 34 / 36 with 16 / 18 exact nuclei. Candidate supply is therefore complete
+at this bounded depth; the remaining two mistakes are score-transfer failures
+among present alternatives. The reserved confirmation remains unopened.
 
 A generic multi-configuration connection merger was then tested before any
 further scoring change. It pools positive and negative state counts, target
@@ -2239,11 +2235,14 @@ The recurrent-first order was then tested directly. From ten training nuclei,
 the generic learner retains 455 local pose classes occurring in at least two
 independent configurations, maps each raw local type to that frozen quotient,
 and only afterward pools connection evidence. All eight expanded validation
-nuclei contain a correct first action and seven contain an exact root-to-child
-continuation. The eighth still fails continuation supply. The recurrent
-quotient is therefore a real improvement over raw-type merging, but it does
-not pass the 8 / 8 preregistration gate; the reserved confirmation crop remains
-unopened.
+nuclei contain a correct first action and an exact root-to-child continuation.
+The former 7 / 8 result was caused by a directed bookkeeping defect: a newly
+placed cluster may be the source endpoint of an affine connection, yet the
+successor search retained only geometric-parent indices. A separate causal
+endpoint map now preserves both dependencies without changing the ordered
+parent/source state used by the marking. This passes the 8 / 8 development
+supply gate without relaxing support or purity; the reserved confirmation crop
+remains unopened until the corrected rule is committed and preregistered.
 
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is

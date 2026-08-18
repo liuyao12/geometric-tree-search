@@ -65,6 +65,10 @@ class MarkedProposalResult:
     target_color_votes: Mapping[Point, Counter[str]]
     state_votes: Mapping[Point, Counter[RecursiveConnectionState]]
     parent_votes: Mapping[Point, Counter[int]]
+    # Both ordered endpoints are causal dependencies of an affine action.
+    # This stays separate from the geometric ``parent_votes`` role because a
+    # newly placed source can expose a continuation just as a new parent can.
+    causal_endpoint_votes: Mapping[Point, Counter[int]] | None = None
 
 
 @dataclass(frozen=True)
@@ -395,6 +399,7 @@ def propose_with_recursive_marking(
     state_votes: Dict[Point, Counter[RecursiveConnectionState]] = defaultdict(
         Counter)
     parent_votes: Dict[Point, Counter[int]] = defaultdict(Counter)
+    endpoint_votes: Dict[Point, Counter[int]] = defaultdict(Counter)
     accepted_pairs = 0
     true_pairs = 0
     parents = tuple(range(len(positions)) if parent_indices is None
@@ -431,12 +436,14 @@ def propose_with_recursive_marking(
             target_color_votes[target][predicted_target_color] += 1
             state_votes[target][state] += 1
             parent_votes[target][parent_index] += 1
+            endpoint_votes[target][parent_index] += 1
+            endpoint_votes[target][source_index] += 1
             if targets is not None:
                 true_pairs += target in targets
     return MarkedProposalResult(
         votes, accepted_pairs, None if targets is None else true_pairs,
         dict(color_votes), dict(target_color_votes), dict(state_votes),
-        dict(parent_votes))
+        dict(parent_votes), dict(endpoint_votes))
 
 
 def consensus_sites(votes: Counter[Point], minimum_votes: int) -> frozenset[Point]:
@@ -454,6 +461,7 @@ def merge_marked_proposal_results(
     target_colors: Dict[Point, Counter[str]] = defaultdict(Counter)
     states: Dict[Point, Counter[RecursiveConnectionState]] = defaultdict(Counter)
     parents: Dict[Point, Counter[int]] = defaultdict(Counter)
+    endpoints: Dict[Point, Counter[int]] = defaultdict(Counter)
     accepted_pairs = 0
     true_pairs = 0
     labels_available = True
@@ -472,6 +480,12 @@ def merge_marked_proposal_results(
             states[point].update(evidence)
         for point, evidence in result.parent_votes.items():
             parents[point].update(evidence)
+        dependency = (result.causal_endpoint_votes
+                      if result.causal_endpoint_votes is not None
+                      else result.parent_votes)
+        for point, evidence in dependency.items():
+            endpoints[point].update(evidence)
     return MarkedProposalResult(
         votes, accepted_pairs, true_pairs if labels_available else None,
-        dict(colors), dict(target_colors), dict(states), dict(parents))
+        dict(colors), dict(target_colors), dict(states), dict(parents),
+        dict(endpoints))

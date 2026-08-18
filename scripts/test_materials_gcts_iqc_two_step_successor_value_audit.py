@@ -10,13 +10,13 @@ def main():
     assert report.rollout_branching == 4
     assert report.additive_baseline_correct_actions == 30
     assert report.one_step_successor_correct_actions == 31
-    assert report.selected_correct_actions == 31
-    assert report.selected_false_actions == 5
-    assert report.exact_groups == 14
+    assert report.selected_correct_actions == 33
+    assert report.selected_false_actions == 3
+    assert report.exact_groups == 16
     assert report.selected_correct_by_group == (
-        2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1, 2, 2, 2, 1, 2, 2, 2)
+        2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 2, 2, 2, 2, 2, 2, 2, 2)
     assert report.rollout_descriptor_digest == \
-        "bd9d0877bb9f7af16a3c8134a76f474e77e3c8d423a67cc6d7a54dcb34593a97"
+        "a4d4703ef4d9223f230bd10b1fa57418ab7181abc31af99b372202c396f1705c"
     assert min(report.evaluated_child_branches_by_group) >= 76
     assert report.rollout_constructed_target_free
     assert not report.exact_candidate_geometry_changed

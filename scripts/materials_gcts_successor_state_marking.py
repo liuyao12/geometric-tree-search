@@ -21,8 +21,11 @@ def successor_outgoing_points(
     if (new_parent_index < 0 or new_parent_index >= len(occupied_positions) or
             minimum_distance <= 0):
         raise ValueError("invalid successor frontier inputs")
+    dependency_votes = (proposals.causal_endpoint_votes
+                        if proposals.causal_endpoint_votes is not None
+                        else proposals.parent_votes)
     return tuple(sorted(point for point in proposals.votes
-        if new_parent_index in proposals.parent_votes.get(point, {}) and
+        if new_parent_index in dependency_votes.get(point, {}) and
         not any(math.dist(point, occupied) < minimum_distance - 1e-8
                 for occupied in occupied_positions)))
 
