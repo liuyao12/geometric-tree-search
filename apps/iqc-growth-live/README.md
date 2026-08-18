@@ -1545,8 +1545,18 @@ search on the already-consumed confirmation nucleus, beam widths 4, 8, and 16
 all finish with zero exact terminal configurations and the selected branch
 remains `2 / 3` correct. The implementation is therefore retained as a
 selectable depth-conditioned marking, while the autonomous gate stays red.
-The next scheduler must preserve recurrent connection-state diversity, not
-merely action-color population or a larger raw beam.
+
+The next scheduler now preserves recurrent connection-state diversity rather
+than only action-color population. It normalizes each partial branch with its
+train-fold head, quantizes the resulting invariant vector, and allocates a
+finite quota per recurrent state. Train-only selection chooses state widths
+`4 / 4 / 2`, quotas `1 / 2 / 1`, and total beam budgets `4 / 4 / 8`. This
+retains an exact prefix in every one of the 85 supplied frozen snapshots.
+Nevertheless the consumed closed-loop nucleus remains red: it retains
+`2 / 4 / 8` configurations across the three depths, produces zero exact
+terminals, and again selects `2 / 3` correct sites. Snapshot coverage is now
+green; transfer of the carried state under self-fed distribution shift is the
+remaining blocker.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

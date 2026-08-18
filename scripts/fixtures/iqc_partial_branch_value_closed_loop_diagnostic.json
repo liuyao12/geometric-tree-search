@@ -4,6 +4,11 @@
   "exact_terminal_configurations": [0, 0, 0],
   "head_neighbors": [25, 15, 9],
   "postconfirmation_development_only": true,
+  "recurrent_state_candidate_counts": [4, 7, 28],
+  "recurrent_state_exact_terminals": 0,
+  "recurrent_state_retained_counts": [2, 4, 8],
+  "recurrent_state_schema": [[4.0, 1, 4], [4.0, 2, 4], [2.0, 1, 8]],
+  "recurrent_state_selected_correct_sites": 2,
   "selected_correct_sites": [2, 2, 2],
   "target_reopened_after_immutable_confirmation": true,
   "target_stable": true

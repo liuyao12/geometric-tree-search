@@ -3510,6 +3510,17 @@ and 16; every selected result remains `2 / 3` correct. Thus the new heads are a
 real transferable marking improvement on frozen partial states, but not yet a
 self-fed autonomous scheduler or an exponential-growth certificate.
 
+A finite recurrent-state beam then replaces color-only diversity. Each
+candidate is normalized by its train-fold depth head and quantized without
+coordinates, IDs, material labels, or target atoms. The selected state widths
+are `4 / 4 / 2`, per-state quotas `1 / 2 / 1`, and total budgets `4 / 4 / 8`.
+This retains at least one exact prefix in all `29 / 29`, `28 / 28`, and
+`28 / 28` supplied frozen stages—85 / 85 overall. The same fixed scheduler is
+still red in the consumed closed loop: it keeps `2 / 4 / 8` configurations,
+finds zero exact terminal branches, and selects `2 / 3` correct colored sites.
+The remaining failure is therefore transfer under the self-fed state
+distribution, not raw beam capacity or frozen-snapshot state coverage.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
