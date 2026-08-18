@@ -2993,23 +2993,23 @@ function syncStageOptions() {
     const periodicSupport = currentPbc().some(Boolean);
     geometryModeHint.textContent = geometryMode === "auto"
       ? latticeDetected ? "translation closure found" : periodicSupport ? "periodic window; basis unresolved" : "no lattice closure"
-      : geometryMode === "lattice" ? "periodic constraint"
-        : geometryMode === "module" ? "finite-rank aperiodic hypothesis" : "continuous placement hypothesis";
+      : geometryMode === "lattice" ? "periodic translation group"
+        : geometryMode === "module" ? "finite-rank aperiodic support" : "observed / generated support";
     geometryModeNote.textContent = geometryMode === "auto"
       ? `${latticeDetected ? "A translation basis was inferred" : periodicSupport ? "The input declares a periodic quotient, but the finite sample did not yield a stable basis" : "No stable translation basis was inferred"}; the pose classes still come only from the supplied positions.`
       : geometryMode === "lattice"
         ? "Periodic wrapping is applied before clustering; orientations are still quotiented by each cluster's proper symmetry."
         : geometryMode === "module"
           ? "No unit cell or periodic wrapping is assumed. Connections are learned from a discrete, finitely generated aperiodic pose/translation atlas—the natural hypothesis for model sets and quasicrystals."
-          : "No discrete translation support is assumed. Every observed proper-SE(3) pose and connection must be learned from local geometry.";
+          : "No discrete translation group is assumed. Candidate sites may come from an observed point set or a generator; every proper-SE(3) pose and connection is still learned from local geometry.";
     translationSupport.textContent = geometryMode === "lattice" || (geometryMode === "auto" && latticeDetected)
-      ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "observed point set";
+      ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "observed / generated set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
     rotationSupport.textContent = `${totalPoses} proper pose orbit${totalPoses === 1 ? "" : "s"}`;
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
     renderPoseAtlas();
     stageOptionsState.textContent = geometryMode === "module" ? "aperiodic module"
-      : geometryMode === "offlattice" ? "free SE(3)"
+      : geometryMode === "offlattice" ? "observed-set SE(3)"
         : latticeDetected ? "lattice candidate" : periodicSupport ? "periodic quotient" : "off-lattice";
     return;
   }

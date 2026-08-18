@@ -1458,6 +1458,15 @@ This is why the interface reports observed symmetry-inequivalent poses but
 derives Auto capacity from recurrent pose × connection-port rank: one channel
 per observed rotation is a high-cardinality overfit, not a GCTS principle.
 
+The cluster-identification stage therefore exposes the translation support as
+an explicit hypothesis: a periodic lattice, a finite-rank aperiodic module, or
+an observed/generated non-regular point set with free proper-SE(3) placement.
+It also freezes a separate proper-pose atlas for every cluster isometry class.
+Only after that atlas and its connection ports are known does the marking stage
+derive its per-cluster channel rank. The UI allocates the largest required rank
+as a shared tensor width and masks unused channels for lower-rank clusters;
+manual channel counts are capacity ablations, not alternative rotation atlases.
+
 The replacement now respects the pipeline boundary explicitly. Clustering
 freezes the 0.125-radian proper-pose atlas first; marking learning is not
 allowed to refit that geometry. It pools the frozen descriptor evidence into
