@@ -2223,6 +2223,18 @@ is therefore rejected as the missing value; score transfer and finite
 connection closure remain distinct limits. The reserved confirmation remains
 unopened.
 
+A generic multi-configuration connection merger was then tested before any
+further scoring change. It pools positive and negative state counts, target
+chemistry, and the number of independent configurations with a correct
+connection. Directly merging exact raw local types is strongly negative:
+boundary-perturbed cluster-count identities fragment the state key. At the
+loosest 2-support / 2-group / 0.5-purity gate, correct root candidates exist in
+14 / 18 heldout nuclei and an exact root→child continuation in only 7 / 18;
+stricter recurrence floors collapse supply further. The heldout target is used
+only after candidate generation to score this ceiling. Multi-configuration
+evidence therefore must be learned after a shared recurrent cluster quotient,
+not by unioning raw connection markings.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

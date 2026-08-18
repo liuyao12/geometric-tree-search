@@ -1378,6 +1378,15 @@ but remains 33 / 36; two other nuclei expose no exact immediate child at all.
 The residual problem is transfer and connection closure, not branch width, and
 the confirmation remains sealed.
 
+Pooling connection markings before quotienting cluster identity fails. The new
+generic merger requires pooled purity, positive support, and positive evidence
+from independent configurations, and retains chemistry evidence. Yet exact raw
+local types include crop-boundary variants: the loosest fold-frozen merge
+supplies correct root candidates in only 14 / 18 nuclei and exact root→child
+continuations in 7 / 18. Therefore expanded configurations must first be
+mapped to a shared recurrent cluster vocabulary; a union of raw markings is
+not a valid shortcut.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

@@ -272,6 +272,81 @@ def learn_recursive_connection_marking(
         dict(target_color_evidence))
 
 
+def merge_recursive_connection_markings(
+        markings: Sequence[RecursiveConnectionMarking], *,
+        minimum_positive_support: int = 2,
+        minimum_positive_groups: int = 2,
+        minimum_purity: float = .5,
+        positive_states_by_marking: Sequence[
+            Iterable[RecursiveConnectionState]] | None = None,
+        ) -> RecursiveConnectionMarking:
+    """Merge finite port evidence from independent known configurations.
+
+    States remain exact local cluster-color/separation records. A state is
+    admitted only when its pooled evidence is sufficiently pure and it has at
+    least one correct connection in the requested number of independent input
+    markings. No material label, target outside those training markings, or
+    global coordinate enters the merged grammar.
+    """
+    markings = tuple(markings)
+    if (not markings or minimum_positive_support < 1 or
+            minimum_positive_groups < 1 or
+            not 0. < minimum_purity <= 1.):
+        raise ValueError("invalid recursive marking merge")
+    scale = markings[0].scale
+    width = markings[0].separation_bin_width
+    if any(abs(row.scale - scale) > 1e-12 or
+           abs(row.separation_bin_width - width) > 1e-12
+           for row in markings):
+        raise ValueError("recursive markings use incompatible scales or bins")
+    if positive_states_by_marking is None:
+        positive_rows = tuple(tuple(
+            state for state, row in marking.evidence.items()
+            if row.positive > 0) for marking in markings)
+    else:
+        positive_rows = tuple(tuple(rows)
+                              for rows in positive_states_by_marking)
+        if len(positive_rows) != len(markings):
+            raise ValueError("positive-state indices must align with markings")
+    positive_groups: Counter[RecursiveConnectionState] = Counter()
+    positive_support: Counter[RecursiveConnectionState] = Counter()
+    for marking, states in zip(markings, positive_rows):
+        for state in states:
+            row = marking.evidence.get(state)
+            if row is None or row.positive <= 0:
+                raise ValueError("positive-state index contains invalid state")
+            positive_groups[state] += 1
+            positive_support[state] += row.positive
+    candidate_states = frozenset(
+        state for state, groups in positive_groups.items()
+        if groups >= minimum_positive_groups and
+        positive_support[state] >= minimum_positive_support)
+    counts: Dict[RecursiveConnectionState, list[int]] = {
+        state: [0, 0, positive_groups[state]] for state in candidate_states}
+    colors: Dict[RecursiveConnectionState, Counter[str]] = defaultdict(Counter)
+    for marking in markings:
+        for state in candidate_states:
+            row = marking.evidence.get(state)
+            if row is None:
+                continue
+            counts[state][0] += row.positive
+            counts[state][1] += row.total
+            evidence = marking.target_color_evidence.get(state)
+            if evidence:
+                colors[state].update(evidence)
+    evidence = {state: StateEvidence(row[0], row[1])
+                for state, row in counts.items()}
+    accepted = frozenset(state for state, row in counts.items()
+        if row[0] >= minimum_positive_support and
+        row[2] >= minimum_positive_groups and
+        row[0] / row[1] >= minimum_purity)
+    return RecursiveConnectionMarking(
+        scale, width, tuple(sorted({prototype for marking in markings
+                                    for prototype in marking.prototypes})),
+        evidence, accepted, minimum_positive_support, minimum_purity,
+        dict(colors))
+
+
 def propose_with_recursive_marking(
         marking: RecursiveConnectionMarking, positions: Sequence[Point],
         cluster_types: Sequence[LocalClusterType], level_scale: float = 1.0,
