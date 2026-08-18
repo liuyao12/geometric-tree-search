@@ -3577,6 +3577,41 @@ red at 75%, below the 90% gate. Its corpus digest is
 its target-free closed-loop candidate digest is
 `3658d67adddd8f92d07471e5681b6ce60583861bbbf655a3ed84cb0bf76871af`.
 
+### Fixed-width marking library and terminal value
+
+The four representations are also executed as a marking-library portfolio.
+Each marking produces a state-diverse ordering, but round-robin allocation
+shares the unchanged `4 / 4 / 8` total beam; this is not a fourfold beam or
+proposal-budget increase. The portfolio raises exact-terminal supply from the
+single coupled marking's `16 / 20` to `18 / 20`. Its raw order is deliberately
+not presented as a value win: it selects only `13 / 20` exact paths and
+`51 / 60` correct moves.
+
+For each outer fold, the terminal value is fitted on the portfolio terminal
+states actually visited in the other 26 nuclei. A nested whole-nucleus audit
+selects both the representation and nearest-recurrent capacity from the fixed
+grid. Fold choices are `ports:k3`, then `base:k9 / k5 / k1 / k9`. Frozen on the
+four outer nuclei, this value selects `16 / 20` exact terminal paths and
+`54 / 60` correct colored moves. Every score equality class is checked in
+full; mixed exact/false top ties are zero. Relative to the portfolio, this is a
+three-nucleus gain; relative to the best single marking it is a one-nucleus
+gain.
+
+The audit now separates four remaining failures: two are exact-terminal supply
+failures and two are supplied-but-misranked. A fully nested ridge-logistic
+control does not solve the discrete port alternatives: broad-only execution is
+`12 / 20`, and merging the on-policy rows reduces it to `10 / 20`. It is
+rejected rather than added as another marking option.
+
+The portfolio terminal corpus digest is
+`9625d469f8d6b1e6956cf56690aeb919fe6b465a28374b7f2d61e2067e11ed81`;
+the portfolio trace digest is
+`56b41e6a3d25223d844260c6c1a011d688f585794be064eb55d9e078bad8c47f`;
+the terminal-value trace digest is
+`3eb94332bd850eff19b1612ca3d833b15bdcd7044240a5226381731495afee37`.
+The exact-selection rate is 80%, still below the committed 90% development
+gate, so no new one-shot confirmation is authorized.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

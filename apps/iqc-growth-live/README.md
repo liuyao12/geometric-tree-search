@@ -1602,6 +1602,28 @@ GCTS needs the connection section that couples those channels to colored local
 geometry. Even the best current ablation is only 75%, below the `18 / 20` gate,
 so no new confirmation target is opened.
 
+The marking library is now tested as an executable portfolio rather than only
+as four separate menu choices. Base, colored-geometry, pose-port, and coupled
+markings each propose their bounded state-diverse ordering, but they share one
+unchanged total beam of `4 / 4 / 8`; round-robin allocation cannot increase
+search work. This raises exact-terminal supply to `18 / 20`, although the raw
+portfolio order selects only `13 / 20` and `51 / 60` correct moves.
+
+A second value head is therefore fitted only on the terminal configurations
+the portfolio actually retains in each fold's 26 authorized nuclei. Inner
+whole-nucleus selection chooses representation and neighbor count before the
+four outer heldout executions. The five choices are
+`ports:k3, base:k9, base:k5, base:k1, base:k9`. The resulting terminal value
+selects `16 / 20` exact paths and `54 / 60` correct moves. All top-score ties
+are either absent or uniformly exact; there are no mixed ties resolved by
+candidate order. The remaining error is now sharply split into two nuclei with
+no exact terminal and two with a supplied exact terminal that is misranked.
+
+A nested ridge-logistic control is worse: `12 / 20` from broad states and
+`10 / 20` after on-policy merging, so a smooth linear interaction is rejected.
+The portfolio terminal value is the new development baseline, but 80% is still
+below the committed 90% gate. The next sealed nucleus remains unopened.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
