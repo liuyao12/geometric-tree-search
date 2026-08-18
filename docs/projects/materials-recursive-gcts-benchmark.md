@@ -2152,6 +2152,25 @@ centre `(0, 50, 0)` is not constructed. The result is therefore a clean red
 gate: finite compression is real, but neither additive bags nor nearest
 recurrent graph prototypes provide the missing branch value.
 
+The development corpus was then expanded under a separate committed protocol.
+Eight radius-14.562 centres were selected geometrically and committed in
+`fc80434` before any of their atoms were materialized. Their minimum separation
+from prior or reserved domains is 37.417, and their mutual minimum is 44.721,
+both above the required 29.125. The common model-set crop is stable between
+coefficient bounds 24 and 25, with 476--496 seed and 2,028--2,064 target atoms
+per new nucleus. The frozen additive quotient selects 14 / 16 new actions and
+30 / 36 over all eighteen leave-one-nucleus-out folds. Increasing recurrence
+support/group floors gives 28, 24, or 27 / 36 rather than an improvement.
+
+The next train-only model treats the bounded incidence configuration as a
+conditional state. It learns full node/edge/graph purity, then backs off to
+node/graph, graph/port, and coarse port/color/occupancy states when evidence is
+insufficient. Its best fixed floor has 4,353--4,636 supported fine states per
+fold but selects only 29 / 36 actions. This falsifies whole-state lookup as the
+missing GCTS value. The exact candidate graph is unchanged, all expanded
+targets are development data, and the reserved `(0, 50, 0)` confirmation has
+not been constructed.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

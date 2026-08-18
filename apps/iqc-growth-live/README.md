@@ -1317,6 +1317,24 @@ collision certificates, and the two-action antichain are identical in every
 arm; the next disjoint centre remains unopened. This rejects vocabulary size
 and nearest recurring graph prototype as sufficient GCTS value functions.
 
+To distinguish small-sample instability from the wrong model class, eight new
+development centres were frozen in commit `fc80434` before any corresponding
+seed or target was generated. Their radius-14.562 domains are mutually
+disjoint and remain at least 37.417 from every prior, consumed-confirmation,
+and reserved-confirmation domain. A common model-set crop at coefficient bound
+24 has identical per-centre seed/target counts at bound 25: 476--496 seed atoms
+and 2,028--2,064 target atoms. On those stable crops the previously frozen
+457-state quotient selects 14 / 16 new actions and 30 / 36 across all eighteen
+nuclei. Stricter support/group floors fall to 28, 24, or 27 / 36.
+
+A finite conditional-state model then learns complete node/edge/graph-state
+purity and backs off deterministically through node/graph, graph/port, and
+coarse port/color/occupancy states. It reaches 29 / 36, below the additive
+baseline, despite thousands of independently supported fine states. Thus the
+expanded corpus rejects both "more recurrence support" and "whole-state
+lookup" as sufficient explanations. Candidate geometry is unchanged and the
+reserved centre `(0, 50, 0)` remains unopened.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
