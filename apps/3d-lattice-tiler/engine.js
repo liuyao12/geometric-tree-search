@@ -2,7 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
-import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js";
+import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260817-exact-rescreen-v34";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const createTilingStream = (() => {
@@ -3114,6 +3114,7 @@ export const createTilingStream = (() => {
         if (template) break;
         await tick();
       }
+      if (!template && overBudget()) noteIncompleteSearch();
       if (!template) return false;
       const motifBaseColorIds = [0];
       let availableBaseColors = Array.from(
@@ -3674,6 +3675,217 @@ export const createTilingStream = (() => {
         _isohedral_transform: transform
       };
     };
+    const periodicCosetKey = (placement, basis, rootTranslation) => {
+      const determinant = determinant3(basis);
+      const modulus = Math.abs(Math.round(determinant));
+      if (!modulus || Math.abs(determinant - Math.round(determinant)) > ISOHEDRAL_EPSILON) return null;
+      const delta = vecSub(placement.translation, rootTranslation);
+      const numerators = [
+        determinant3([delta, basis[1], basis[2]]),
+        determinant3([basis[0], delta, basis[2]]),
+        determinant3([basis[0], basis[1], delta])
+      ];
+      if (numerators.some(value => Math.abs(value - Math.round(value)) > ISOHEDRAL_EPSILON)) return null;
+      const residues = numerators.map(value => euclideanMod(Math.round(value), modulus));
+      return `${placement.prototile_idx}:${placement.orient.__orientation_id ?? ""}::${residues.join(",")}`;
+    };
+    const quotientFaceTranslation = (source, target) => {
+      if (source.length !== target.length || source.length < 3) return null;
+      for (const targetVertex of target) {
+        const translation = vecSub(targetVertex, source[0]);
+        const translated = source.map(vertex => vecAdd(vertex, translation));
+        if (isCyclicPermutation(translated, [...target].reverse())) return translation;
+      }
+      return null;
+    };
+    const certifyPeriodicPlacementMotif = (placements, basis) => {
+      const determinant = determinant3(basis);
+      const cellVolume = Math.abs(determinant);
+      if (cellVolume <= ISOHEDRAL_EPSILON) return null;
+      const motifVolume = placements.reduce(
+        (sum, placement) => sum + (tileVolumes[placement.prototile_idx] ?? 0),
+        0
+      );
+      if (Math.abs(cellVolume - motifVolume) > 1e-8 * Math.max(1, motifVolume)) return null;
+      if (basis.some(vector => prototiles.some(tile =>
+        tile.is_polycube && !isPolycubeTranslationVector(tile, vector)
+      ))) return null;
+
+      const faces = [];
+      for (const placement of placements) {
+        const vertices = globalPlacementVertices(placement);
+        for (const face of placement.orient.faces) {
+          faces.push(face.map(index => vertices[index]));
+        }
+      }
+      const allowed = Array.from({ length: faces.length }, () => []);
+      for (let left = 0; left < faces.length; left++) {
+        for (let right = left + 1; right < faces.length; right++) {
+          if (faceSignatureUndirected(faces[left]) !== faceSignatureUndirected(faces[right])) continue;
+          const translation = quotientFaceTranslation(faces[left], faces[right]);
+          if (!translation || !vectorIsInBasisLattice(translation, basis)) continue;
+          allowed[left].push({ face: right, vector: translation });
+          allowed[right].push({ face: left, vector: translation.map(value => -value) });
+        }
+      }
+      if (allowed.some(options => options.length === 0)) return null;
+      const matchFaces = (remaining, chosen) => {
+        if (!remaining.size) return chosen;
+        let pivot = null;
+        let options = null;
+        for (const faceIndex of remaining) {
+          const available = allowed[faceIndex].filter(option => remaining.has(option.face));
+          if (!available.length) return null;
+          if (!options || available.length < options.length) {
+            pivot = faceIndex;
+            options = available;
+          }
+        }
+        for (const option of options) {
+          const next = new Set(remaining);
+          next.delete(pivot);
+          next.delete(option.face);
+          const result = matchFaces(next, [...chosen, {
+            source_face: pivot,
+            target_face: option.face,
+            translation: option.vector.slice()
+          }]);
+          if (result) return result;
+        }
+        return null;
+      };
+      const facePairing = matchFaces(new Set(faces.map((_, index) => index)), []);
+      if (!facePairing) return null;
+
+      const rootTranslation = placements[0].translation;
+      const motif = [];
+      for (const placement of placements) {
+        const orientationIndex = prototiles[placement.prototile_idx].unique_orientations.indexOf(placement.orient);
+        if (orientationIndex < 0) return null;
+        motif.push({
+          prototile_idx: placement.prototile_idx,
+          orientation_index: orientationIndex,
+          orientation_id: placement.orient.__orientation_id ?? null,
+          translation: vecSub(placement.translation, rootTranslation)
+        });
+      }
+      const prototileCounts = new Map();
+      for (const item of motif) {
+        prototileCounts.set(item.prototile_idx, (prototileCounts.get(item.prototile_idx) ?? 0) + 1);
+      }
+      return {
+        kind: `${motif.length}_tile_periodic_symmetry_quotient`,
+        tile_volume: motifVolume / motif.length,
+        tile_volumes: tileVolumes.slice(),
+        cell_volume: cellVolume,
+        period_vectors: basis.map(vector => vector.slice()),
+        motif,
+        mixed_prototile: prototileCounts.size > 1,
+        prototile_counts: [...prototileCounts.entries()]
+          .map(([prototile_idx, count]) => ({ prototile_idx, count })),
+        proof: {
+          method: "quotient_face_pairing_equal_covolume",
+          face_pairing: facePairing,
+          motif_volume: motifVolume,
+          lattice_determinant: cellVolume
+        }
+      };
+    };
+    const isohedralSymmetryCertificate = (template, placements) => {
+      if (prototiles.length !== 1 || !placements.length) return null;
+      const basis = template.period_vectors;
+      const rootTranslation = placements[0].translation;
+      const motifKeys = new Set(placements.map(placement =>
+        periodicCosetKey(placement, basis, rootTranslation)
+      ));
+      if (motifKeys.has(null) || motifKeys.size !== placements.length) return null;
+      const orbitTransforms = [];
+      for (const target of placements) {
+        let witness = null;
+        for (const transform of isohedralRootTransformsTo(target)) {
+          if (basis.some(vector =>
+            !vectorIsInBasisLattice(isohedralMatrixVector(transform.rotation, vector), basis)
+          )) continue;
+          let preservesMotif = true;
+          for (const placement of placements) {
+            const image = isohedralTransformPlacement(placement, transform);
+            const imageKey = image && periodicCosetKey(image, basis, rootTranslation);
+            if (!imageKey || !motifKeys.has(imageKey)) {
+              preservesMotif = false;
+              break;
+            }
+          }
+          if (!preservesMotif) continue;
+          witness = transform;
+          break;
+        }
+        if (!witness) return null;
+        orbitTransforms.push(witness);
+      }
+      return {
+        ...template,
+        kind: `${placements.length}_tile_isohedral_periodic_quotient`,
+        proof: {
+          ...template.proof,
+          isohedral_method: "tile_transitive_quotient_symmetry_group",
+          orbit_transforms: orbitTransforms
+        }
+      };
+    };
+    const mineIsohedralPeriodicTemplate = () => {
+      if (prototiles.length !== 1 || state.placements.length < 2) return null;
+      const rootTranslation = state.placements[0].translation;
+      const vectorsByKey = new Map();
+      for (let left = 0; left < state.placements.length; left++) {
+        for (let right = left + 1; right < state.placements.length; right++) {
+          const a = state.placements[left];
+          const b = state.placements[right];
+          if (a.prototile_idx !== b.prototile_idx || a.orient !== b.orient) continue;
+          const vector = vecSub(b.translation, a.translation);
+          if (!vector.some(Boolean) || !vector.every(Number.isInteger)) continue;
+          const reverse = vector.map(value => -value);
+          const canonical = vecKey(vector) < vecKey(reverse) ? vector : reverse;
+          vectorsByKey.set(vecKey(canonical), canonical);
+        }
+      }
+      const configuredVectorLimit = Number(config.isohedral_period_vector_limit);
+      const vectorLimit = Number.isFinite(configuredVectorLimit) && configuredVectorLimit > 0
+        ? Math.floor(configuredVectorLimit)
+        : 48;
+      const vectors = [...vectorsByKey.values()].sort((left, right) =>
+        left.reduce((sum, value) => sum + value * value, 0)
+        - right.reduce((sum, value) => sum + value * value, 0)
+      ).slice(0, vectorLimit);
+      const tileVolume = tileVolumes[0];
+      for (let first = 0; first < vectors.length; first++) {
+        for (let second = first + 1; second < vectors.length; second++) {
+          for (let third = second + 1; third < vectors.length; third++) {
+            if (overBudget()) {
+              noteIncompleteSearch();
+              return null;
+            }
+            const basis = [vectors[first], vectors[second], vectors[third]];
+            const determinant = Math.abs(determinant3(basis));
+            const motifSize = Math.round(determinant / tileVolume);
+            if (!motifSize || motifSize > state.placements.length) continue;
+            if (Math.abs(determinant - motifSize * tileVolume) > 1e-8 * Math.max(1, determinant)) continue;
+            const representatives = new Map();
+            for (const placement of state.placements) {
+              const key = periodicCosetKey(placement, basis, rootTranslation);
+              if (!key) break;
+              if (!representatives.has(key)) representatives.set(key, placement);
+            }
+            if (representatives.size !== motifSize) continue;
+            const placements = [...representatives.values()];
+            const periodic = certifyPeriodicPlacementMotif(placements, basis);
+            if (!periodic) continue;
+            const isohedral = isohedralSymmetryCertificate(periodic, placements);
+            if (isohedral) return isohedral;
+          }
+        }
+      }
+      return null;
+    };
     const rollbackIsohedralMoves = applied => {
       while (applied.length) {
         const entry = applied.pop();
@@ -3859,12 +4071,29 @@ export const createTilingStream = (() => {
         return false;
       }
       if (isohedralGoalMet()) {
-        yield nodeStatus(parentId, "success", "isohedral patch closure");
-        return true;
+        const template = mineIsohedralPeriodicTemplate();
+        if (template) {
+          tilingEvidence = {
+            kind: "isohedral_certificate",
+            certified: true,
+            strategy: "isohedral",
+            patch_size: template.motif.length,
+            certificate_kind: template.kind,
+            period_vectors: template.period_vectors.map(vector => vector.slice()),
+            periodic_template: template
+          };
+          yield nodeStatus(parentId, "success", "certified tile-transitive quotient", preflightStatusPayload(template));
+          return true;
+        }
+        yield nodeStatus(parentId, "fail", "finite isohedral-looking patch has no exact quotient certificate");
+        yield* rollbackPropagated();
+        return false;
       }
       if (frontierPointOptions().length === 0) {
-        yield nodeStatus(parentId, "success", "closed isohedral patch");
-        return true;
+        searchStats.failed_leaves += 1;
+        yield nodeStatus(parentId, "fail", "finite closed patch does not tile 3-space");
+        yield* rollbackPropagated();
+        return false;
       }
 
       const candidateMap = new Map();
@@ -4367,7 +4596,10 @@ export const createTilingStream = (() => {
     success = success || !!(tilingEvidence?.certified && tilingEvidence?.can_tile !== false);
     yield nodeStatus(rootId, success ? "success" : "fail");
     const terminalSnapshot = snapshot(null);
-    const finalSnapshot = bestSnapshot && isBetterSnapshot(bestSnapshot, terminalSnapshot)
+    const retainBestEffortSnapshot = tilingStrategy !== "isohedral";
+    const finalSnapshot = retainBestEffortSnapshot
+      && bestSnapshot
+      && isBetterSnapshot(bestSnapshot, terminalSnapshot)
       ? { ...cloneSnapshot(bestSnapshot), node_id: null }
       : terminalSnapshot;
     yield finalSnapshot;

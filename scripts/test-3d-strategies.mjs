@@ -105,7 +105,7 @@ assert.equal(progressivePatchCheck.final.success, true);
 assert.equal(progressivePatchCheck.periodicCertificate?.motif.length, 3);
 
 const unboundedPatchCheck = await solve({
-  mode_key: "census_10_24775",
+  mode_key: "census_10_45026",
   target_val: 8,
   tiling_strategy: "translational",
   periodic_patch_unbounded: true,
@@ -123,9 +123,10 @@ const isohedral = await solve({
   target_val: 12
 });
 assert.equal(isohedral.final.success, true);
-assert.equal(isohedral.final.result_kind, "patch_found");
-assert.equal(isohedral.final.can_tile, null, "a finite isohedral patch is not a global tiling proof");
-assert.equal(isohedral.periodicCertificate, null, "isohedral mode must skip translational certificates");
+assert.equal(isohedral.final.result_kind, "certified_tiling");
+assert.equal(isohedral.final.can_tile, true, "isohedral success requires a tile-transitive quotient certificate");
+assert.equal(isohedral.final.tiling_evidence?.kind, "isohedral_certificate");
+assert.match(isohedral.periodicCertificate?.kind ?? "", /isohedral_periodic_quotient$/);
 assert.equal(isohedral.final.search_stats.growth_axis_rank, 3);
 
 const generic = await solve({
@@ -223,12 +224,12 @@ assert.equal(
 
 const reflectionHoneycomb = await solve({
   mode_key: "tetragonal_disphenoid",
-  criterion: "layer",
-  target_val: 1,
+  criterion: "count",
+  target_val: 40,
   tiling_strategy: "isohedral",
   include_mirrors: true
 });
-assert.equal(reflectionHoneycomb.final.result_kind, "patch_found");
+assert.equal(reflectionHoneycomb.final.result_kind, "certified_tiling");
 assert.equal(reflectionHoneycomb.final.success, true);
 assert.equal(reflectionHoneycomb.final.search_stats.growth_axis_rank, 3);
 assert.ok(

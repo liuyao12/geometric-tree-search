@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260817-general-translational-v32";
+import { tileSpecs } from "./engine.js?v=20260817-exact-rescreen-v34";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -544,7 +544,7 @@ const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
   learning_free_range: "Runs the same tree search, remembers its best legal patch, and replays that proposal on later runs.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
-  isohedral: "Lifts the whole patch by root-to-tile rigid motions, deferring every copy that skips the oldest frontier layer."
+  isohedral: "Searches tile-transitive patches, then requires an exact periodic quotient preserved by symmetries taking the root to every tile class."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -782,7 +782,7 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
-  { id: "unresolved", title: "6 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "unresolved", title: "5 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -1317,7 +1317,7 @@ function updateCandidateResearchPanel() {
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
   if (candidate) {
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/6 · ${candidate.lattice_points} lattice points · no 24-tile isohedral patch found in the bounded screen.`;
+    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 5} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.`;
   } else if (knownAperiodic) {
     candidateResearchTitle.textContent = "Known weakly aperiodic monotile";
     candidateResearchDetail.textContent = "Integral 3–4–5 Schmitt–Conway–Danzer biprism. Free-range shows the published rotated-layer construction; mirror copies must remain disabled.";
@@ -1373,7 +1373,7 @@ function renderSystemTileList() {
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
-        angles.textContent = `survivor ${figure.census_candidate.survivor_priority}/6 · ${figure.census_candidate.lattice_points} points`;
+        angles.textContent = `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 5} · ${figure.census_candidate.lattice_points} points`;
         angles.classList.add("is-census-label");
       } else {
         angles.innerHTML = solidAngleListHtml(figure.solid_angles);
@@ -2632,7 +2632,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-general-translational-v32", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260817-exact-rescreen-v34", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2888,10 +2888,16 @@ function formatGrowthResult(result, target) {
   if (result?.resultKind === "known_aperiodic_construction") {
     return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
+  if (result?.mode === "isohedral" && result?.resultKind === "certified_tiling") {
+    return `${result.label} certified ${result.certificatePatchSize ?? "finite"}-tile unit cell ${formatElapsed(result.milliseconds)}`;
+  }
+  if (result?.mode === "isohedral" && !result?.success) {
+    return result.searchIncomplete
+      ? `${result.label} inconclusive at search limit`
+      : `${result.label} exhausted without a certificate`;
+  }
   if (targetPoint) {
-    const witness = result?.mode === "isohedral"
-      ? ` reached ${target}-tile patch`
-      : result?.mode === "translational" && result?.resultKind === "certified_tiling"
+    const witness = result?.mode === "translational" && result?.resultKind === "certified_tiling"
         ? ` certified ${result.certificatePatchSize ?? "finite"}-tile unit cell`
         : "";
     return `${result.label}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
@@ -2975,7 +2981,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-general-translational-v32", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260817-exact-rescreen-v34", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

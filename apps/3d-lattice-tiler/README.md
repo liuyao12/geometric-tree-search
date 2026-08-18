@@ -57,11 +57,16 @@ workers:
    relation can therefore generate first, second, and later surroundings very
    quickly. Forced patch images and searched relations must touch the oldest
    active frontier layer before newer layers may advance; balanced rank-3
-   growth breaks ties and is required for count targets.
+   growth breaks ties and is required for count targets. Reaching a finite
+   tile-count horizon is not success: the lane mines a rank-3 periodic
+   quotient from the patch, pairs every quotient face, checks volume against
+   lattice covolume, and verifies symmetries carrying the root tile to every
+   tile class. Without that certificate the result is exhausted or
+   inconclusive and the displayed patch rolls back to the root.
 
 The growth chart uses one wall clock for all four workers. Selecting a mode
 switches the viewport to its latest patch without stopping the other searches.
-An exhausted isohedral search drops to zero. An uncertified translational search
+An exhausted isohedral search drops to zero and restores the root view. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an
 explicit search cap.
 
@@ -182,6 +187,7 @@ must form a closed convex shell.
 ```bash
 node scripts/test-3d-balanced-growth.mjs
 node scripts/test-3d-strategies.mjs
+node scripts/test-3d-isohedral-certificates.mjs
 node scripts/test-3d-proposal-learning.mjs
 node scripts/test-3d-translational-polyhedra.mjs
 node scripts/test-3d-general-translational-motif.mjs
@@ -191,6 +197,16 @@ node scripts/test-3d-region.mjs
 node scripts/audit-3d-catalog.mjs --quick
 node scripts/audit-3d-catalog.mjs --strict
 ```
+
+To repeat the resource-bounded screen of the original 16 census candidates:
+
+```bash
+node scripts/rescreen-lattice-polyhedra.mjs --time-ms=20000 --periodic-max=8 --isohedral-target=60
+```
+
+The checked-in 2026-08-17 result, including every exact rejection certificate
+and the five unresolved survivors, is in
+`data/lattice-polyhedron-rescreen-2026-08-17.json`.
 
 The strict audit covers every registered system and every deduplicated catalog
 figure. It distinguishes exact certificates, certified local obstructions,

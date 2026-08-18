@@ -1,0 +1,38 @@
+{
+  "screen_date": "2026-08-17",
+  "source_pool_size": 16,
+  "model": "face-to-face congruent lattice-polyhedron tilings using proper cubic lattice orientations",
+  "exact_rejections": [
+    { "id": "8_2480", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[-1,-1,0],[-1,0,-2],[0,-1,-2]] },
+    { "id": "9_9043", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[0,-1,-1],[-1,-1,1],[-1,1,-1]] },
+    { "id": "9_11679", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[0,-1,-1],[0,-1,1],[-2,-1,0]] },
+    { "id": "10_27010", "certificate": "isohedral_periodic_quotient", "motif_tiles": 24, "period_vectors": [[0,0,-4],[-4,0,0],[0,-4,0]] },
+    { "id": "10_24235", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[-1,-1,0],[-1,1,0],[0,0,-2]] },
+    { "id": "9_3239", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[-1,0,-2],[0,-1,-2],[-1,-1,2]] },
+    { "id": "10_44867", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[-1,1,0],[-1,-1,-1],[-1,0,2]] },
+    { "id": "10_45035", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[0,-1,-1],[0,-1,1],[-2,0,-1]] },
+    { "id": "8_2431", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[-1,-1,1],[-1,0,3],[0,-1,3]] },
+    { "id": "10_24775", "certificate": "translational", "motif_tiles": 3, "period_vectors": [[-1,-1,2],[-1,-2,-1],[-2,1,-1]] },
+    { "id": "10_44266", "certificate": "translational", "motif_tiles": 2, "period_vectors": [[-1,-1,0],[-1,1,0],[-1,-2,-3]] }
+  ],
+  "inconclusive_survivors": [
+    "10_16113",
+    "10_26470",
+    "10_45026",
+    "10_45033",
+    "9_11683"
+  ],
+  "survivor_search": {
+    "translational": {
+      "seconds_per_tile": 20,
+      "maximum_requested_motif_tiles": 8,
+      "result": "no certificate found before limit"
+    },
+    "isohedral": {
+      "seconds_per_tile": 60,
+      "growth_horizon_tiles": 60,
+      "result": "no tile-transitive periodic quotient certificate found before limit"
+    }
+  },
+  "interpretation": "A survivor is unresolved, not certified non-periodic and not evidence of aperiodicity. A search limit always yields inconclusive."
+}

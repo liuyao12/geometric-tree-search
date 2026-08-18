@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-general-translational-v32";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-exact-rescreen-v34";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -72,6 +72,7 @@ async function runMode(sequence, baseConfig, mode) {
   let final = null;
   let latestStats = null;
   let bestSnapshot = null;
+  let terminalSnapshot = null;
   const points = [];
   post(sequence, { type: "series-start", mode });
   for await (const message of createTilingStream(config, tileSpecs, stopToken)) {
@@ -96,6 +97,7 @@ async function runMode(sequence, baseConfig, mode) {
       if (mode.id === "learning" && Array.isArray(snapshot?.placements)) bestSnapshot = snapshot;
       post(sequence, { type: "sample", mode: mode.id, point, snapshot });
     }
+    if (message.type === "full_update") terminalSnapshot = message;
     if (message.type === "finished") final = message;
   }
 
@@ -106,7 +108,7 @@ async function runMode(sequence, baseConfig, mode) {
   if (mode.id === "isohedral" && final?.success === false) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
     points.push(point);
-    post(sequence, { type: "sample", mode: mode.id, point, snapshot: null });
+    post(sequence, { type: "sample", mode: mode.id, point, snapshot: terminalSnapshot });
   }
   const result = {
     mode: mode.id,

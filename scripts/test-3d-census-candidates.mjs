@@ -2,11 +2,11 @@ import assert from "node:assert/strict";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 6, "screened-out isohedral growers must not remain in the catalog");
+assert.equal(candidates.length, 5, "certified periodic and isohedral tiles must not remain in the catalog");
 const survivors = candidates;
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.survivor_priority),
-  Array.from({ length: 6 }, (_, index) => index + 1),
+  Array.from({ length: 5 }, (_, index) => index + 1),
   "survivor priority metadata must be complete"
 );
 

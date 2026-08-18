@@ -3,7 +3,17 @@ import assert from "node:assert/strict";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 
 const config = {
-  mode_key: "census_10_24775",
+  mode_key: "cube",
+  custom_system: {
+    name: "Census 10_24775 translational regression",
+    figure_refs: [],
+    polycubes: [],
+    polyhedra: [{
+      name: "Candidate 10_24775",
+      vertices: [[-1,-1,0],[-1,1,1],[0,0,2],[0,1,-1],[1,0,0],[1,2,1]]
+    }],
+    polycube_lattice: "z3"
+  },
   criterion: "count",
   target_val: 60,
   tiling_strategy: "translational",
