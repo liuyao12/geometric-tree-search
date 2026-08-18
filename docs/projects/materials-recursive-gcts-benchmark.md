@@ -2268,6 +2268,20 @@ path among 293 frozen alternatives. Candidate supply therefore passes, while
 the autonomous selector gate remains red and no new sealed confirmation is
 authorized.
 
+The first explicit clusters-of-clusters path value adds a target-free
+compatibility calculation rather than another token reweighting. For every
+tentative root→child insertion it incrementally recomputes the nearest frozen
+prototype residual of both new clusters and every affected existing cluster.
+An exact parity test compares those increments to full reclustering, while
+proper rigid motion and input permutation leave the result unchanged. The
+bounded section also carries the connection direction relative to a frontier
+normal estimated from the nearest eight occupied sites; no global origin or
+target coordinate enters. With fixed eight-to-one hard-negative sampling and
+ridge `0.1`, group-heldout selection remains `7 / 8`, but the lone exact path's
+rank falls from 101 to 21 (`4.81×` less branch work before reaching it).
+This is a measured clusters-of-clusters pruning gain, not a passed autonomous,
+stationary, or exponential gate.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

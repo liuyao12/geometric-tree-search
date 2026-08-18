@@ -1417,6 +1417,16 @@ among 293 candidates, so supply is green while autonomous path selection stays
 red. No new reserved nucleus is opened for a selector that has not passed its
 development gate.
 
+A first behind-the-scenes clusters-of-clusters value now evaluates each
+tentative root→child pair against the frozen recurrent cluster vocabulary. The
+incremental calculation has exact parity with full reclustering: it records
+the two inserted-cluster residuals, the residual induced on affected existing
+clusters, and an invariant frontier angle estimated from the nearest eight
+occupied sites. A group-heldout linear section keeps the seven easy nuclei at
+rank one and moves the rare nucleus's sole exact path from rank 101 to rank 21,
+a `4.81×` pruning gain. Because it still does not select that path first,
+clusters-of-clusters pruning is reported separately from autonomous selection.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
