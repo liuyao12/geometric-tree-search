@@ -1558,6 +1558,20 @@ terminals, and again selects `2 / 3` correct sites. Snapshot coverage is now
 green; transfer of the carried state under self-fed distribution shift is the
 remaining blocker.
 
+The next audit performs exactly one group-sealed on-policy aggregation round.
+For each of five folds, all four heldout nuclei are excluded from the broad
+corpus, pose-port fit, and policy rollouts; the frozen policy is rolled only on
+the other 26 nuclei. This adds 4,037 invariant partial branches, including
+3,224 exact prefixes. Exact duplicate rows are removed, but opposite outcomes
+for the same descriptor are retained; 15 fold-local descriptor classes expose
+real representation aliasing. Closed-loop exact terminal supply improves from
+`16 / 20` to `18 / 20`, exact selected paths from `10 / 20` to `13 / 20`, and
+correct selected moves from `44 / 60` to `51 / 60`. Two failures are therefore
+candidate-supply failures and five are supplied-but-misranked failures. The
+predeclared development gate requires at least `18 / 20` exact selections, so
+the result remains red and does not authorize opening a new confirmation
+nucleus.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

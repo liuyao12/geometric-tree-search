@@ -3521,6 +3521,27 @@ finds zero exact terminal branches, and selects `2 / 3` correct colored sites.
 The remaining failure is therefore transfer under the self-fed state
 distribution, not raw beam capacity or frozen-snapshot state coverage.
 
+One group-sealed on-policy aggregation round now targets that distribution
+shift directly. In each of five folds, four heldout nuclei are absent from the
+broad examples, pose-port state fit, and on-policy rollouts. The other 26
+nuclei contribute 4,037 visited partial branches (3,224 exact); the fit keeps
+both labels when identical invariant descriptors have different futures,
+rather than using candidate order to erase the alias. The frozen closed-loop
+audit improves terminal exact-path supply from `16 / 20` to `18 / 20`, top
+selection from `10 / 20` to `13 / 20`, and selected correct moves from
+`44 / 60` to `51 / 60`. This gives a sharper failure decomposition: two
+nuclei have no exact retained terminal, while five contain an exact terminal
+that is misranked. The scientific gate requires both at least 90% supply and
+90% exact selection. Supply is exactly green; selection is only 65%, so the
+combined gate remains red and a new sealed confirmation is not authorized.
+
+The immutable on-policy corpus digest is
+`3683f5091e954c0605fa0115193365a9210a26074e61f1ee539cbbd12831d53f`;
+the target-free closed-loop candidate digest is
+`395eba0f5a5e66a43a4367cb5e447d48082c67aed60497c9a5631791e5d76cbd`.
+These results are development cross-validation, not an autonomous-growth or
+stationary-production certificate.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
