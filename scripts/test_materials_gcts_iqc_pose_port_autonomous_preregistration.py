@@ -16,8 +16,9 @@ def test_autonomous_confirmation_is_frozen_without_materialization():
     assert not report.seed_or_target_materialized
     assert not report.candidate_or_score_computed
     assert report.seed_radius == 9.
+    assert report.oracle_lift_bound == 24
     assert report.manifest_digest == \
-        "095ab41c2d5e5a62d3bb92f7dd1f39fe4c08b919a3df30808f063d4e7b934156"
+        "a444b728dc48e30dc3a95778e20e3b5cbc6b5cde96bb91056db6e30814e1d6f4"
 
 
 if __name__ == "__main__":

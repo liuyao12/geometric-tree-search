@@ -20,6 +20,7 @@ SOURCE_COMMIT = "b7356f82d7c085f9f5a6b4bb683bf5b597533b2b"
 CONFIRMATION_CENTER = (-70., -70., 30.)
 SEED_RADIUS = 9.
 TARGET_RADIUS = 14.562305898749054
+ORACLE_LIFT_BOUND = 24
 REQUIRED_CENTER_SEPARATION = 2. * TARGET_RADIUS
 PRIOR_CENTERS = (
     (0., 0., 0.), (30., 0., 0.), (18., 25., 14.),
@@ -58,6 +59,10 @@ TARGET_OPEN_RULE = (
     "seed; execute and serialize all depth-three beam candidates, selected "
     "branch, sites, and digests; only then open the outer target exactly once"
 )
+ORACLE_STABILITY_RULE = (
+    "seed and target crops use lift bound 24; the single target-factory call "
+    "also constructs bound 25 and fails unless the two detached crops agree"
+)
 POSTHOC_GATE = (
     "selected depth-three branch emits three novel sites and all three match "
     "the opened target in coordinate and species with zero false sites"
@@ -75,6 +80,8 @@ SOURCE_FILE_HASHES = (
      "29db1548af9f4d8320b953a9dfc2f55cef78cfdc6a093ddf2ed99a94740a71a6"),
     ("materials_gcts_iqc_expanded_development_baseline.py",
      "9e454dbe21bd24314d97ee664222a613f1cef55c41e7bd108e4d826412474b41"),
+    ("materials_gcts_icosahedral_modelset.py",
+     "4b26fdc72051f7cafba9fd4bd8ea7ab2778dba5344373d668f19f8442365315a"),
 )
 
 
@@ -84,6 +91,7 @@ class IQCPosePortAutonomousPreregistration:
     confirmation_center: tuple[float, float, float]
     seed_radius: float
     target_radius: float
+    oracle_lift_bound: int
     required_center_separation: float
     minimum_prior_center_separation: float
     domains_disjoint: bool
@@ -102,6 +110,7 @@ class IQCPosePortAutonomousPreregistration:
     search_depth: int
     branch_value: str
     target_open_rule: str
+    oracle_stability_rule: str
     posthoc_gate: str
     source_file_hashes: tuple[tuple[str, str], ...]
     source_hashes_match: bool
@@ -125,6 +134,7 @@ def audit() -> IQCPosePortAutonomousPreregistration:
         "confirmation_center": CONFIRMATION_CENTER,
         "seed_radius": SEED_RADIUS,
         "target_radius": TARGET_RADIUS,
+        "oracle_lift_bound": ORACLE_LIFT_BOUND,
         "required_center_separation": REQUIRED_CENTER_SEPARATION,
         "minimum_prior_center_separation": separation,
         "domains_disjoint": separation > REQUIRED_CENTER_SEPARATION,
@@ -144,6 +154,7 @@ def audit() -> IQCPosePortAutonomousPreregistration:
         "search_depth": SEARCH_DEPTH,
         "branch_value": BRANCH_VALUE,
         "target_open_rule": TARGET_OPEN_RULE,
+        "oracle_stability_rule": ORACLE_STABILITY_RULE,
         "posthoc_gate": POSTHOC_GATE,
         "source_file_hashes": SOURCE_FILE_HASHES,
         "source_hashes_match": hashes_match,
@@ -154,6 +165,7 @@ def audit() -> IQCPosePortAutonomousPreregistration:
         payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
     return IQCPosePortAutonomousPreregistration(
         SOURCE_COMMIT, CONFIRMATION_CENTER, SEED_RADIUS, TARGET_RADIUS,
+        ORACLE_LIFT_BOUND,
         REQUIRED_CENTER_SEPARATION, separation,
         separation > REQUIRED_CENTER_SEPARATION, CENTER_SELECTION_RULE,
         UPSTREAM_ANGULAR_BIN_WIDTH, STATE_BIN_WIDTH, MINIMUM_TOKEN_SUPPORT,
@@ -161,7 +173,8 @@ def audit() -> IQCPosePortAutonomousPreregistration:
         MINIMUM_STATE_GROUPS, EXPECTED_MODEL_DIGEST,
         EXPECTED_DEVELOPMENT_CANDIDATE_DIGEST, BEAM_WIDTH,
         ACTION_REACH_PER_CONFIGURATION, SEARCH_DEPTH, BRANCH_VALUE,
-        TARGET_OPEN_RULE, POSTHOC_GATE, SOURCE_FILE_HASHES, hashes_match,
+        TARGET_OPEN_RULE, ORACLE_STABILITY_RULE, POSTHOC_GATE,
+        SOURCE_FILE_HASHES, hashes_match,
         False, False, digest)
 
 
