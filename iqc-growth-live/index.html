@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Canonical root-level entry point; assets remain in apps/iqc-growth-live. -->
+  <base href="../apps/iqc-growth-live/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071112">
+  <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
+  <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
+  <link rel="stylesheet" href="./style.css?v=20260816-4">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../3d-lattice-tiler/vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "../3d-lattice-tiler/vendor/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="liveLab" class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="../../" aria-label="Back to GCTS home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>Materials Growth Lab</strong><small>GCTS structural continuation</small></span>
+        <img class="brand-art" src="./materials-growth-banner-v2.png" alt="" aria-hidden="true" fetchpriority="high">
+      </a>
+      <div class="run-state"><i id="runStateDot"></i><span id="runStateText">Paused at seed</span></div>
+      <div class="topbar-actions">
+        <button id="evidenceAtlasButton" class="atlas-launch" type="button" aria-controls="evidenceAtlas" aria-expanded="false">Evidence atlas</button>
+        <a class="method-link" href="#auditedBenchmark">Methods ↓</a>
+      </div>
+    </header>
+
+    <nav class="pipeline-nav" aria-label="Materials GCTS pipeline">
+      <button class="active" type="button" data-pipeline-stage="0"><small>01 · input</small><strong>Known positions</strong><span>elements + coordinates in Å</span></button>
+      <button type="button" data-pipeline-stage="1"><small>02 · identify</small><strong>Cluster identification</strong><span>complete overlap cover + residuals</span></button>
+      <button type="button" data-pipeline-stage="3"><small>03 · learn</small><strong>GCTS learning</strong><span>connection sections over clusters</span></button>
+      <button type="button" data-pipeline-stage="4"><small>04 · grow</small><strong>Material growth</strong><span>covering search + recursive promotion</span></button>
+    </nav>
+
+    <section class="evidence-ribbon" aria-label="Current benchmark status">
+      <div><span class="evidence-pulse" aria-hidden="true"></span><small>current evidence</small><strong>Crystal stationary recurrence</strong><b class="status-pass">passed</b></div>
+      <div><small>quasicrystal</small><strong>Exact self-fed continuation</strong><b class="status-pass">passed</b></div>
+      <div><small>generic GCTS</small><strong>Stationary exponential QC rule</strong><b class="status-open">open</b></div>
+      <button id="evidenceRibbonButton" type="button">Explore the evidence <span>↗</span></button>
+    </section>
+
+    <section id="evidenceAtlas" class="evidence-atlas" hidden aria-label="GCTS evidence atlas" aria-modal="true" role="dialog">
+      <div class="atlas-shell">
+        <header class="atlas-header">
+          <div class="atlas-title-block">
+            <p class="eyebrow">materials-science evidence atlas · positions + species in, generative structure out</p>
+            <h1>From atomic snapshots to a <em>structural continuation grammar</em></h1>
+            <p>What GCTS has learned, what it can regenerate, and exactly where the quasicrystal benchmark remains open.</p>
+          </div>
+          <button id="evidenceAtlasClose" class="atlas-close" type="button" aria-label="Close evidence atlas">×</button>
+        </header>
+
+        <nav class="atlas-tabs" aria-label="Evidence atlas sections">
+          <button class="active" type="button" data-atlas-tab="overview">01 · result</button>
+          <button type="button" data-atlas-tab="systems">02 · systems</button>
+          <button type="button" data-atlas-tab="anatomy">03 · GCTS anatomy</button>
+          <button type="button" data-atlas-tab="journey">04 · research journey</button>
+          <button type="button" data-atlas-tab="ledger">05 · claim ledger</button>
+        </nav>
+
+        <div class="atlas-scroll">
+          <section class="atlas-panel active" data-atlas-panel="overview">
+            <div class="atlas-hero-grid">
+              <article class="atlas-thesis">
+                <span class="atlas-kicker">the scientific result</span>
+                <h2>A crystal can now be represented by a learned stationary cluster grammar. A quasicrystal can be continued exactly—but its generic stationary grammar is not yet proved.</h2>
+                <p>The same family-blind pipeline discovers irregular covers, finite proper-SE(3) connection ports, bounded local markings, conflict-free tree-search actions, and promoted clusters of clusters. Red gates are preserved as results, not hidden as demos.</p>
+                <div class="claim-key"><span class="pass">proved</span><span class="progress">measured, incomplete</span><span class="open">open benchmark</span></div>
+              </article>
+              <div class="atlas-scoreboard" aria-label="Headline benchmark metrics">
+                <article><small>crystal symbolic scale</small><strong>4.19M</strong><span>NaCl sites represented in 7 learned actions</span><i class="pass">stationary · green</i></article>
+                <article><small>generic IQC execution</small><strong>31,521</strong><span>exact sites after three self-fed actions</span><i class="progress">finite growth · green</i></article>
+                <article><small>published Cd–Yb hierarchy</small><strong>9</strong><span>positive clusters-of-clusters levels in training</span><i class="progress">transfer partial</i></article>
+                <article><small>QC stationary witness</small><strong>0</strong><span>common exact production across three scales</span><i class="open">exponential gate · red</i></article>
+              </div>
+            </div>
+
+            <div class="atlas-section-heading"><div><span>benchmark ladder</span><h2>Four distinct claims—never conflated</h2></div><p>Click a cell for the evidence behind it.</p></div>
+            <div id="benchmarkMatrix" class="benchmark-matrix" role="table" aria-label="Benchmark ladder by material family">
+              <div class="matrix-head" role="row"><span>system</span><span>complete cover</span><span>held-out continuation</span><span>clusters²</span><span>stationary / exponential</span></div>
+            </div>
+            <article id="matrixDetail" class="matrix-detail" aria-live="polite"></article>
+
+            <div class="atlas-principles">
+              <article><b>Input</b><strong>No labels</strong><p>Only element identities and Cartesian positions. No phase, cell, space group, potential, or cut-and-project coordinates.</p></article>
+              <article><b>Marking</b><strong>Connections, not energy</strong><p>The GCTS section records compatible and failed neighboring-cluster attachments. It is not a physical potential.</p></article>
+              <article><b>Search</b><strong>Tree underneath, antichain on screen</strong><p>Each placement is a branch decision; mutually compatible frontier moves may be committed together in any order.</p></article>
+              <article><b>Scale</b><strong>Symbolic ≠ free output</strong><p>The derivation can be logarithmic in scale. Explicitly materializing N atoms remains O(N).</p></article>
+            </div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="systems" hidden>
+            <div class="atlas-section-heading"><div><span>cross-family benchmark</span><h2>One question, four very different structures</h2></div><p>Choose a system to inspect its measured growth curve and limiting gate.</p></div>
+            <div id="atlasSystemTabs" class="system-tabs" role="tablist" aria-label="Benchmark systems"></div>
+            <div class="system-dashboard">
+              <article class="system-story">
+                <div class="system-name"><span id="atlasSystemKind">crystal</span><h2 id="atlasSystemName">NaCl rocksalt</h2></div>
+                <p id="atlasSystemSummary"></p>
+                <dl id="atlasSystemMetrics" class="system-metrics"></dl>
+                <div id="atlasSystemVerdict" class="system-verdict"></div>
+              </article>
+              <article class="growth-card">
+                <div><span>represented or explicit sites</span><strong id="atlasCurveTitle">growth by learned action</strong></div>
+                <svg id="atlasGrowthChart" viewBox="0 0 720 300" role="img" aria-label="Log-scale growth curve"></svg>
+                <div class="growth-legend"><span class="observed">explicit / verified</span><span class="symbolic">symbolic representation</span><small>log scale · labels show exact counts</small></div>
+              </article>
+            </div>
+            <div id="systemEvidenceCards" class="system-evidence-cards"></div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="anatomy" hidden>
+            <div class="atlas-section-heading"><div><span>generic algorithm</span><h2>How a marking becomes material growth</h2></div><p>Select a layer to see what is learned and what is certified.</p></div>
+            <div id="gctsAnatomy" class="gcts-anatomy">
+              <button class="active" type="button" data-anatomy="cover"><span>01</span><i class="motif-dots" aria-hidden="true"></i><strong>Irregular cover</strong><small>repeated colored point sets + residual gaps</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="ports"><span>02</span><i class="motif-halo" aria-hidden="true"></i><strong>Finite ports</strong><small>proper-SE(3) overlap and boundary relations</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="mark"><span>03</span><i class="motif-section" aria-hidden="true"></i><strong>Local section</strong><small>incoming connections rank exact alternatives</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="search"><span>04</span><i class="motif-tree" aria-hidden="true"></i><strong>Covering search</strong><small>branch, reject conflicts, commit an antichain</small></button>
+              <b>→</b>
+              <button type="button" data-anatomy="promote"><span>05</span><i class="motif-macro" aria-hidden="true"></i><strong>Promote</strong><small>re-cluster output into clusters of clusters</small></button>
+            </div>
+            <article id="anatomyDetail" class="anatomy-detail" aria-live="polite"></article>
+            <div class="causality-strip">
+              <div><span>candidate generation</span><strong>frozen exact geometry</strong><small>identical candidate IDs in every ablation arm</small></div>
+              <i>+</i><div><span>GCTS mark</span><strong>local connection context</strong><small>may reorder or admit; cannot invent geometry</small></div>
+              <i>→</i><div><span>certificate</span><strong>colored overlap + collision</strong><small>whole action or explicit residual; no silent partial cluster</small></div>
+            </div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="journey" hidden>
+            <div class="atlas-section-heading"><div><span>research history</span><h2>Every red result changed the algorithm</h2></div><p>The path from atom-centred toy shells to a leakage-safe hierarchical executor.</p></div>
+            <div id="researchTimeline" class="research-timeline"></div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="ledger" hidden>
+            <div class="atlas-section-heading"><div><span>auditable claims</span><h2>What is proved, promising, and still open</h2></div><p>Filter the ledger; every card states its evidence boundary.</p></div>
+            <div id="ledgerFilters" class="ledger-filters" role="group" aria-label="Filter scientific claims">
+              <button class="active" type="button" data-ledger-filter="all">all</button>
+              <button type="button" data-ledger-filter="proved">proved</button>
+              <button type="button" data-ledger-filter="progress">measured</button>
+              <button type="button" data-ledger-filter="open">open</button>
+            </div>
+            <div id="claimLedger" class="claim-ledger"></div>
+            <a class="atlas-method-link" href="#auditedBenchmark" id="atlasMethodLink">Open the exhaustive methods and limitations ledger ↓</a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <main class="lab-grid">
+      <aside class="control-panel" aria-label="Simulation controls">
+        <section>
+          <p class="eyebrow">01 · experiment</p>
+          <div class="database-picker">
+            <div class="database-heading"><strong>Random real material</strong><span>NOMAD · public bulk data</span></div>
+            <button id="periodicTableButton" class="periodic-compact" type="button" aria-expanded="false" aria-controls="periodicTablePanel" aria-label="Expand periodic table">
+              <span class="periodic-compact-label">elements · click to expand</span>
+              <span id="periodicCompactGrid" class="periodic-compact-grid" aria-hidden="true"></span>
+              <span class="periodic-key compact-key" aria-hidden="true"><span class="key-solid">solid</span><span class="key-liquid">liquid</span><span class="key-gas">gas</span></span>
+            </button>
+            <div class="selection-label"><span>selected elements</span><strong id="selectedElementCount">2</strong></div>
+            <div id="selectedElements" class="selected-elements" aria-label="Selected elements"></div>
+            <div class="element-presets" aria-label="Example element sets">
+              <button type="button" data-element-preset="Na,Cl">NaCl</button>
+              <button type="button" data-element-preset="Al,Cu,Fe">Al–Cu–Fe</button>
+              <button type="button" data-element-preset="Cu,Zr">Cu–Zr</button>
+            </div>
+            <button id="randomMaterialButton" class="database-button" type="button">Find a random matching structure</button>
+            <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
+            <a id="databaseSourceLink" class="source-link" href="https://nomad-lab.eu/" target="_blank" rel="noreferrer">About the NOMAD materials database ↗</a>
+            <div id="periodicTablePanel" class="periodic-panel" hidden>
+              <div class="periodic-heading">
+                <div><small>multi-select</small><strong>choose 1–8 elements</strong></div>
+                <div class="periodic-actions">
+                  <button id="periodicClearButton" type="button">clear</button>
+                  <button id="periodicCloseButton" type="button" aria-label="Close periodic table">×</button>
+                </div>
+              </div>
+              <div id="periodicTableGrid" class="periodic-grid" role="group" aria-label="Periodic table elements"></div>
+              <div class="periodic-key"><span class="key-solid">solid</span><span class="key-liquid">liquid</span><span class="key-gas">gas</span><small>standard state near 25 °C</small></div>
+            </div>
+          </div>
+          <label class="field sample-picker" for="scenarioSelect">
+            <span>Or choose a curated sample family</span>
+            <select id="scenarioSelect">
+              <optgroup label="Ice polymorphs · molecular covers">
+                <option value="iceIh">Ice Ih · hexagonal</option>
+                <option value="iceIc">Ice Ic · cubic</option>
+              </optgroup>
+              <optgroup label="2D materials">
+                <option value="graphene">Graphene monolayer</option>
+                <option value="hbn">Aligned hBN bilayer</option>
+                <option value="moire">30° twisted hBN bilayer</option>
+              </optgroup>
+              <optgroup label="Crystals, quasicrystals &amp; glass controls">
+                <option value="competition" selected>NaCl rocksalt crystal</option>
+                <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
+                <option value="iqc">Al–Cu–Fe IQC approximant</option>
+                <option value="bc8">Silicon BC8-like network</option>
+              </optgroup>
+              <option value="imported" disabled>Imported structure</option>
+            </select>
+          </label>
+          <p class="sample-note">Curated fixtures are saved, deterministic controls. Composition search above draws a fresh public database entry.</p>
+          <details class="local-import">
+            <summary>Advanced · local file or fixture</summary>
+            <label class="file-field" for="structureFileInput">
+              <input id="structureFileInput" type="file" accept=".cif,.xyz,.extxyz,.vasp,.json,POSCAR,CONTCAR">
+              <span>Import CIF · POSCAR · XYZ · JSON</span>
+            </label>
+            <div id="importStatus" class="import-status" aria-live="polite">Parsed locally; files are not uploaded. Recommended: 32–1,200 atoms.</div>
+            <button id="loadFixtureButton" class="fixture-link" type="button">Load bundled 64-atom NaCl fixture</button>
+          </details>
+          <label class="field" for="confinementSelect">
+            <span>Confinement</span>
+            <select id="confinementSelect">
+              <option value="box">Box</option>
+              <option value="sphere">Sphere</option>
+              <option value="cylinder">Cylinder</option>
+              <option value="hourglass">Hourglass</option>
+            </select>
+          </label>
+          <select id="policySelect" hidden aria-hidden="true">
+            <option value="marked">Local-section GCTS marking</option>
+            <option value="direct">Exact local oracle</option>
+            <option value="action">Colored action only</option>
+          </select>
+        </section>
+
+        <section id="stageOptionsPanel" class="stage-options" hidden>
+          <div class="stage-options-heading">
+            <div><p id="stageOptionsEyebrow" class="eyebrow">03 · marking experiment</p><strong id="stageOptionsTitle">Train a connection marking</strong></div>
+            <span id="stageOptionsState" class="option-state">draft</span>
+          </div>
+
+          <div id="clusterGeometryOptions" hidden>
+            <label class="field" for="geometryModeSelect">
+              <span>Placement domain <b id="geometryModeHint">infer from positions</b></span>
+              <select id="geometryModeSelect">
+                <option value="auto" selected>Auto · test translation closure</option>
+                <option value="lattice">Lattice-constrained · periodic translations</option>
+                <option value="module">Aperiodic module · finite-rank non-periodic support</option>
+                <option value="offlattice">Free SE(3) · unrestricted point-set support</option>
+              </select>
+            </label>
+            <div class="geometry-audit" aria-label="Inferred geometric degrees of freedom">
+              <div><small>translations</small><strong id="translationSupport">—</strong></div>
+              <i>×</i>
+              <div><small>cluster rotations</small><strong id="rotationSupport">—</strong></div>
+              <i>→</i>
+              <div><small>derived marking</small><strong id="channelRankSupport">—</strong></div>
+            </div>
+            <div class="pose-atlas-heading"><span>symmetry-quotiented pose × connection atlas</span><b id="poseAtlasTotal">—</b></div>
+            <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
+            <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
+            <p class="rank-note"><b>Auto channels are derived after clustering, per cluster.</b> Raw orientations are first quotiented by the cluster's proper rotational symmetry. Two compatibility / failure fields are then augmented by the observed pose-orbit × connection-port incidence rank (capped at 12). Repeated copies and symmetry-equivalent rotations do not consume extra channels.</p>
+          </div>
+
+          <div id="markingTrainingOptions">
+            <div class="inherited-geometry" aria-label="Geometry inherited from cluster identification">
+              <span>frozen from clustering</span>
+              <b id="inheritedGeometryMode">—</b>
+              <i>·</i>
+              <b id="inheritedPoseCount">—</b>
+              <i>→</i>
+              <b id="inheritedChannelCount">—</b>
+            </div>
+            <label class="field" for="markingChannelsSelect">
+              <span>Marking channels <b id="markingChannelsHint">3 coupled fields</b></span>
+              <select id="markingChannelsSelect">
+                <option value="0" selected>Auto · learned pose/port rank</option>
+                <option value="1">1 · scalar compatibility</option>
+                <option value="3">3 · connection / species / failure</option>
+                <option value="6">6 · directional multi-channel</option>
+                <option value="12">12 · high-rank local section</option>
+              </select>
+            </label>
+            <label class="field" for="markingReachSelect">
+              <span>Neighborhood reach <b id="markingReachHint">2 shells</b></span>
+              <select id="markingReachSelect">
+                <option value="1">1 shell · nearest attachments</option>
+                <option value="2" selected>2 shells · overlap neighborhood</option>
+                <option value="3">3 shells · extended local context</option>
+              </select>
+            </label>
+            <label class="field" for="markingRepresentationSelect">
+              <span>Action representation <b id="markingRepresentationHint">site resolved</b></span>
+              <select id="markingRepresentationSelect">
+                <option value="sites" selected>Site-resolved section</option>
+                <option value="ports">Connection-port vector</option>
+                <option value="whole">Whole-cluster action</option>
+              </select>
+            </label>
+            <div class="option-actions">
+              <button id="restartMarkingButton" type="button">Restart fit</button>
+              <button id="saveMarkingButton" class="option-primary" type="button">Freeze to library</button>
+            </div>
+            <p id="markingConfigNote" class="control-note">The section is local and connection-valued; it is not a physical potential.</p>
+            <p class="rank-note"><b>Channels are not raw rotation bins.</b> Each cluster's observed rotations are quotiented by its proper symmetry; Auto then uses the rank of the pose × connection-port incidence, plus compatibility and failure fields. A manual choice is an ablation or capacity cap.</p>
+          </div>
+
+          <div id="growthSearchOptions" hidden>
+            <label class="field" for="markingLibrarySelect">
+              <span>Active marking <b id="markingLibraryCount">0 saved</b></span>
+              <select id="markingLibrarySelect"></select>
+            </label>
+            <button id="trainVariantButton" class="train-variant" type="button">↶ Train a different marking</button>
+            <div class="hierarchy-choice" role="group" aria-label="Cluster hierarchy mode">
+              <button id="primitiveGrowthButton" type="button" aria-pressed="false"><small>primitive</small><strong>Clusters only</strong><span>one frontier generation</span></button>
+              <button id="hierarchicalGrowthButton" class="active" type="button" aria-pressed="true"><small>recursive</small><strong>Clusters² enabled</strong><span>promote and self-feed</span></button>
+            </div>
+            <p id="growthModeNote" class="control-note">The selected marking ranks the same exact candidate geometry. Hierarchy controls whether accepted clusters may generate the next frontier.</p>
+          </div>
+        </section>
+
+        <section class="recursive-card" aria-label="Audited recursive GCTS benchmark">
+          <div class="section-heading"><p class="eyebrow">audited recursive engine</p><span id="recursiveStatus" class="recursive-status">control</span></div>
+          <div class="hierarchy-flow" aria-label="Learned hierarchy support sizes">
+            <span id="hierarchyL1">—</span><i>→</i><span id="hierarchyL2">—</span><i>→</i><span id="hierarchyL3">—</span>
+          </div>
+          <div id="recursiveCurve" class="recursive-curve" aria-label="Audited atoms represented after each recursive action"></div>
+          <dl class="recursive-grid">
+            <div><dt>hierarchical mark</dt><dd id="recursiveMark">—</dd></div>
+            <div><dt>selected action</dt><dd id="recursiveAction">—</dd></div>
+            <div><dt>action compression</dt><dd id="recursiveSpeed">—</dd></div>
+            <div><dt>benchmark gate</dt><dd id="recursiveGate">—</dd></div>
+          </dl>
+          <p id="recursiveNote">Select a material to see the measured recursive benchmark.</p>
+          <div id="externalAudit" class="external-audit" hidden>
+            <div><small>external held-out audit · not the live scene</small><strong id="externalAuditName">—</strong></div>
+            <dl>
+              <div><dt>superclusters</dt><dd id="externalAuditHierarchy">—</dd></div>
+              <div><dt>local section P / R</dt><dd id="externalAuditPrecision">—</dd></div>
+              <div><dt>+ recursive address P / R</dt><dd id="externalAuditRecall">—</dd></div>
+              <div><dt>false-branch reduction</dt><dd id="externalAuditReduction">—</dd></div>
+            </dl>
+          </div>
+          <div id="connectionAudit" class="connection-audit" hidden>
+            <div><small>generic frozen marking · held-out inflation</small><strong id="connectionAuditTransfer">—</strong></div>
+            <p id="connectionAuditStates">—</p>
+            <div id="connectionConsensus" class="connection-consensus" aria-label="Precision and coverage by overlap consensus threshold"></div>
+            <div id="connectionSecondOrder" class="connection-consensus second-order-consensus" aria-label="Second-order marking compared with vote-only ranking"></div>
+            <div id="connectionFrontier" class="frontier-audit" aria-label="Iterated third-order maximum-score growth plateaus"></div>
+          </div>
+        </section>
+
+        <details class="common-gate">
+          <summary><span>specialized ceiling / generic challenger</span><strong>ceiling green · generic red</strong></summary>
+          <p>Two exact unseen levels are required before a symbolic million-site count.</p>
+          <p><b>family-blind model selection:</b> every geometric hypothesis is scored before selection. On the competing Fibonacci control, substitution wins over an inexact quotient, 0.0192 vs 1.5607; proposal order does not change the result. This is the specialized ceiling: four different encoders still remain behind the shared interface, so it is not the generic-cluster victory condition.</p>
+          <p><b>robustness gate:</b> 0.005 Å noisy NaCl/IQC/Fibonacci continuations recover the clean first level at 100% P/R; a noisy 1%-vacancy IQC also recovers 100% P/R using its inferred inversion center. 30° hBN with 0.006 Å noise + 3.5% vacancies reaches 100% P / 99.20% R.</p>
+          <p><b>finite-window gate:</b> 12 / 12 pass. Selected productions and learned parameters remain stable over NaCl 64–512, IQC 345–919, Fibonacci 216–1,728, and twisted hBN 470–1,130 input atoms; every next-window continuation is exact.</p>
+          <p><b>measured cost:</b> learning 0.34–3.37 s; exact two-level emission 0.03–0.26 s. Finite million-site counts take 10–73 μs. IQC density counting takes 106 μs at 0.084% error versus a 2.49 s exact enumeration. This is representation/action compression, not an MD speed claim.</p>
+          <p><b>explicit million-site emission:</b> three independently digested streams now pass: NaCl emits 7,077,888 sites in five learned quotient actions (16.2 s); the IQC promotes its carried three-component GCTS mark into a rank-six address macro and emits 2,791,097 sites in six actions (9.7 s); the Fibonacci-product rule emits 1,061,208 sites in five actions (2.6 s). IQC macro emission performs no coordinate lift, model refit, target lookup, or potential call. Recursive factors are 8.000×, 4.202×, and 4.292×, while explicit output remains linear.</p>
+          <p><b>compact inference artifacts:</b> local IQC growth keeps typed ports, frontier geometry, and the carried mark but drops all 13,111 fitting-only port pairs and the global section. The promoted address macro keeps only the learned unit, window, species thresholds, origin, and frame—no atlas, seed marks, target sites, or fitting model.</p>
+          <p><b>published Cd–Yb transfer gate:</b> an immutable CC-BY-4.0 implementation of the published Cd5.7Yb cut-and-project model supplies sealed 506 / 1,056 / 1,672-atom windows about a fixed off-centre point. This avoids mistaking rotations about the model's global icosahedral origin for translated local repetition. From only the 506 seed atoms, the generic irregular-support learner covers 99.4% with repeated supports (100% with an explicit residual class) and its frozen vocabulary covers 77.1% of the first unseen annulus. Finite proper-SE(3) overlap ports transfer too, but exact incoming markings do not yet beat shuffled controls on the quasicrystal cases. Autonomous continuation, hierarchy, and causal marking gates remain red.</p>
+          <p><b>sealed frontier replay:</b> candidate poses are now generated only by composing train-frozen proper-SE(3) ports with already placed clusters; held-out atoms enter a separate scorer afterward. One-step replay places a correct NaCl atom and three correct Cd–Yb atoms. The same frozen Cd–Yb frontier already contains a 19-correct-atom action, exposing policy headroom. The ideal-IQC frontier contains no exterior action, so its failure is currently a missing grammar—not something a better ranker can hide.</p>
+          <p><b>clusters of clusters:</b> a sparse cover graph now removes more than 99.6% of redundant overlap edges before exact port-labelled macro mining. Independent recurrence, proper-SE(3) consistency, and positive-description-saving gates retain 3 NaCl, 42 ideal-IQC, and 2 Cd–Yb first-level macro types. These are genuine reusable unions of clusters, but not yet stationary recursive productions; the million-site generic macro gate remains red.</p>
+          <p><b>history-free recursive promotion:</b> the current canonical IQC route discards action history and re-clusters 2,064 grown atoms. Seventy-eight repeated support types with 1,122 occurrences, plus explicit gap clusters, cover the cloud completely. The boundary-aware exact-support quotient continues 73 → 17 → 5 → 3 → 2 → 1 → 0; retaining mutually exclusive exact derivations separately gives 73 → 17 → 6 → 3 → 2 → 1 → 0. This is deep train compression, but the chemistry, chirality, directed-port, normalized-pose, and population-substitution audit still finds no stationary production.</p>
+          <p><b>learned crystal stationary control:</b> from positions and species alone, the generic grid learner discovers three recurrent NaCl generators, radix 2, and all eight child offsets. Recursive execution reproduces separate held-out colored configurations exactly and represents 4,194,304 sites after seven symbolic actions. A hardened port audit then uses two independent bounded 216-atom presentations: 29,988 frozen relations join 52 cells and export an 8-child macro with 24 directed ports, a 52-atom union, two atom-disjoint occurrences, and MDL saving 30. Frozen-relation replay over three learned factors gives 1,478 / 750 / 86 witnesses and certifies strong stationarity at scale 2. Permutation, proper-SE(3), IQC, amorphous, and ternary controls pass. The radix/offset vocabulary still comes from the positions-only grid learner and is then validated against frozen ports; learning that closure from ports alone remains future work.</p>
+          <p><b>dense deployment and marking audit:</b> sparse independent occurrences decide which macros earn admission; an exact dense matcher then finds every deployment of those admitted types for execution. It reconstructs 86 / 86 locally emitted IQC atoms, but that geometry was present during fitting, so this is a target-blind training reconstruction rather than held-out growth. On the analogous dense NaCl frontier, frequency marking improves the unmarked order but does not beat within-parent shuffled controls (empirical <i>p</i> = 0.406); the causal marking gate remains red.</p>
+          <p><b>spatially disjoint IQC continuation:</b> the primitive irregular-port grammar is fit on an 887-atom off-centre patch and replayed from a non-isometric, spatially disjoint 223-atom seed. The 877-atom scoring crop is not constructed until replay finishes. Unmarked replay reaches 201 / 266 correct novel atoms in 100 actions; precision falls to 75.6%, exposing a real exterior grammar and a real branch-ordering problem rather than target leakage.</p>
+          <p><b>confirmatory GCTS marking:</b> a rule frozen on a separate exploratory patch combines train-only production frequency with live agreement among overlapping whole-cluster proposals. On a previously unopened confirmatory patch it ranks 97 / 100 exact actions, versus 90 for frequency and 95 for consensus alone. Thirty-one degree-preserving incidence shuffles reach at most 93; exact-action, wrong-site, and matched-work tests each give <i>p</i> = 0.03125. Recovering the same 177 correct sites costs 102 proposal-plus-backtrack work, versus at least 151 for every shuffle.</p>
+          <p><b>executed five-wave growth:</b> a stricter train-calibrated consensus threshold is run by the target-blind batch/tree executor, which commits only compatible antichains of complete colored clusters. Five self-fed waves accept 3 → 17 → 4 → 30 → 5 placements and add 109 / 109 correct atoms. The zero-threshold arm adds 409 / 435 and the 0.5 arm 312 / 320, demonstrating the precision/coverage trade-off. This is exact finite quasicrystal continuation; the wave counts are not stationary, so the exponential clusters-of-clusters gate remains red.</p>
+          <p><b>promoted action macros:</b> those 59 accepted placements are promoted target-free into eight connected clusters of clusters with child counts 3, 17, 3, 1, 26, 4, 4, 1. Every node, colored union, overlap, frozen boundary port, and antichain certificate is exact. Six nontrivial macros canonicalize, but every normalized signature occurs in only one wave; no three-wave recurrence or scale law is present yet.</p>
+          <p><b>action history versus re-clustering:</b> the invariant action-history route now admits 11 types, each with maximum dense multiplicity two, and reaches only two positive recursive levels. Re-clustering the resulting atomic clouds is the stronger route above: it raises proof multiplicity and reaches six positive quotient levels without treating move IDs as geometry.</p>
+          <p><b>sealed hierarchy re-encoding:</b> the width-three 256 / 259 stop is now diagnosed: missing IDs 184 / 185 / 252 all require primitive 49, a 23-atom support seen only twice near the boundary of training patch 2 and never in heldout. Exact semantic alternatives remain 256 / 259. A train-only strict-majority recurrent core removes such one-patch artifacts while retaining original IDs and exact residual atoms. At width five, raw / selected exact types are 520 / 148, 53 / 10, 16 / 4, and 3 / 1, with 1,495 → 85 → 29 → 9 heldout occurrences. Exact core coverage is 1,220 → 1,033 → 925 → 870 of 1,248 atoms; residuals 28 → 215 → 323 → 378 complete each coordinate/species SHA-certified representation. Minimum heldout namespace support is 2 / 3 / 3 / 3 and maximum support size is 78 / 78 / 110 / 111 atoms. The complete heldout positions are observed during matching—only the vocabulary is frozen—so this is representation transfer, not growth. No &gt;3 amplification or common three-level stationary key is found; autonomous and exponential IQC gates remain red.</p>
+          <p><b>sealed autonomous recurrent-macro execution:</b> the growth corpus is now five mutually disjoint raw IQC windows rather than self-generated reconstructions. A width-three train-only recurrence gate retains 141 of 322 first-level macro types. On a sixth raw-ID-disjoint window, two frozen macro poses seed a target-blind executor that composes only learned overlap and witnessed boundary ports. Within a public radius-11 boundary it accepts 16 then 8 whole macro placements and emits 92 then 56 atoms. The scorer is opened only afterward: 136 of 148 novel atoms are correct, for 91.9% precision and 21.0% unseen-shell recall. All placements have proper-SE(3), colored collision, overlap-inclusion, and training-adjacency certificates. A batch-cap audit can display the same final union as 8 → 8 → 8 placements, so the invariant claim is causal depth two followed by a finite fixed point—not “three growth waves.” Exact ID-based marking transfers to 0 / 62 evaluation candidates. An ID-free hierarchy covers all 62 and cuts matched work from 71 to 51, but keeps the same 136 / 148 atoms and reaches only <i>p</i> = 0.25 against 31 shuffles. A 35-feature continuous mark adds live proposal consensus but its threshold still yields 134 correct and 12 wrong. An all-role audit covers every one of 141 parent types and shows all 48 incorrect actions were exact rules seen as correct in training. Eight final errors are correct coordinates with the wrong species; four are unsupported sites. A causal colored-terminal section trained on 3,047 examples attempts four recolors and ten removals, but falls to 124 / 140 correct. The replacement geometry-first vocabulary learns 35 irregular supports and 275 proper-rotation decoration alternatives; it covers 841 / 873 heldout atoms geometrically and 795 with train-seen decorations. Factoring geometry from chemistry uses 7,731 rather than 49,735 colored port classes. Optional overlap propagation from 226 seed labels infers 267 / 279 outer labels. The new bounded tree search freezes 55,483 identical actions for every arm: the GCTS ranking/admission policy reaches 354 / 415 correct labels, versus 116 / 140 for modal and every one of 31 label shuffles (<i>p</i> = 0.03125). Precision is still only 85.3%. Naively promoting whole colored macros is worse—0 / 13 exact decorations transfer; macro-role context predicts 5 / 27 child decorations versus 2 / 27 modal, but fails shuffles (<i>p</i> = 0.1875). Autonomous continuation and a measurable GCTS search advantage are real; sustained growth, accurate transferable decoration, and exponential IQC growth remain red.</p>
+          <p><b>published Cd–Yb reconstruction:</b> two disjoint radius-14 crops of the published Cd5.7Yb model provide 969 train atoms; a third disjoint crop provides 478 evaluation atoms. The learner receives no cut-and-project coordinates, source-site labels, family name, cell, or potential. Frozen geometry covers 449 / 478 atoms. Starting from 59 known inner atoms, all arms see the same 1,385 exact actions. GCTS reconstructs 378 / 378 novel atoms—100% precision and 90.21% outer recall—while modal and all 31 within-geometry shuffles stop at 377 / 377 and 89.98% recall. Extra correct reach at unchanged perfect precision gives <i>p</i> = 0.03125. The real-quasicrystal reconstruction and matched GCTS gates are green; coordinates are supplied and the search reaches a finite fixed point, so autonomous and exponential growth remain red.</p>
+          <p><b>published Cd–Yb autonomous continuation:</b> the same two training crops now freeze 175 colored irregular cluster types and 14,595 proper-SE(3) ports. A consensus threshold is selected only on the training windows, then the executor receives just the disjoint 59-atom colored seed and a public radius-14 boundary. Before the 478-atom target is opened, five self-fed waves accept 3 → 18 → 9 → 35 → 7 complete clusters and emit 179 coordinates. The sealed scorer finds 177 correct and 2 wrong—98.88% precision and 42.24% outer recall. Unfiltered growth reaches 68.26% recall at 78.14% precision; strict consensus is exact but reaches only 4.53%. Accepted antichains promote into exactly certified colored action macros, but no production recurs across three waves. Finite autonomous real-material continuation is green; sustained/stationary and exponential growth remain red.</p>
+          <p><b>causal local GCTS section:</b> the marking now reads the bounded frontier instead of a raw rule ID. Training discovers a gap at 2.118 nearest-neighbor units; a proposed site on the close side needs at least five independent frozen cluster-connection witnesses. On two mutually disjoint Cd–Yb nuclei it autonomously emits 178 / 178 and 117 / 117 correct atoms. The same unmarked searches emit 193 / 220 and 168 / 224, or 83 false atoms in aggregate. Thirty-one controls preserve every wave's candidate actions and witness-count multiset but permute which candidate owns each count; none matches 295 correct atoms at zero error (<i>p</i> = 0.03125). This is a causal GCTS-marking win during autonomous growth of a published quasicrystal model. Both runs reach finite fixed points and promoted macros have no three-wave recurrence, so sustained/stationary and exponential growth remain red.</p>
+          <p><b>deep Cd–Yb clusters of clusters:</b> five disjoint radius-14 windows (2,385 atoms) learn a complete irregular cover and nine positive exact quotient levels, 80 → 36 → 22 → 15 → 8 → 6 → 4 → 2 → 1, with the largest colored support growing from 67 to 472 atoms. At level one, 79 / 80 retained types have witnesses in at least two windows; every retained later-level type does. On two untouched windows, the full frozen vocabulary stays intact while absent symbols remain dormant: exact active types/occurrences continue 53/92 → 20/26 → 8/8 → 2/2, then reach zero at level five. All levels preserve frozen IDs/ports and exact residual-complete replay. Since heldout coordinates are observed, this is four-level re-encoding, not growth. No three-level production key survives even topology, so stationary and exponential quasicrystal growth remain red.</p>
+          <p><b>seed-only hierarchical frontier:</b> a spatially disjoint 478-atom Cd–Yb seed recognizes 276 primitive occurrences but no complete frozen level-one macro, so exact macro execution cannot start. The new partial recognizer instead anchors train-frozen alternatives on one finite, port-connected child and exposes 82 proper-SE(3) completion candidates; posthoc only 6 are exact. A mark fitted on five radius-7 → radius-14 training frontiers selects one exact action in its top five and emits 16 correct / 18 wrong sites. Constant ordering emits 13 / 24, but all 31 within-parent label shuffles tie the learned result (<i>p</i> = 1). Partial macro search is now operational, while transferable GCTS ranking and autonomous hierarchical growth remain red.</p>
+          <p><b>preregistered hierarchical confirmation:</b> before opening a second Cd–Yb nucleus, the repository publicly froze the continuous ID-free mark, actual 28-row training corpus, source hashes, top-five rule, 31 within-window shuffled refits, and centre (35, 35, −35). Its common first frontier contains 36 candidates and no completely exact macro action. The marked top five emit 27 / 56 correct sites, versus 10 / 41 for stable and frequency ordering, but every shuffled model reproduces the marked result (<i>p</i> = 1). The target-blind hierarchy nevertheless self-feeds through seven nonempty waves over four levels and reaches 247 / 2,217 outer-shell atoms (11.14% recall). Both preregistered gates remain red. The only target opening and score are sealed in a hash-checked, non-rerunnable fixture.</p>
+          <p><b>site-resolved GCTS section:</b> keeping the same frozen macro geometry, three predeclared inner radii across five training windows provide 1,245 emitted-site examples (871 supported / 374 unsupported) from 123 macro candidates. The ten-feature local proper-SE(3) section reaches grouped site AUC 0.8864 and whole-action AUC 1.0; both beat all 31 within-window label shuffles (<i>p</i> = 0.03125). A zero-error logit margin of 1.5 gives 97.73% fixed-margin held-window precision, and the final threshold selects 70 / 70 cross-window sites. However, selection of that margin is not yet robust: the fully nested selector reaches only 94.48% precision, below the 95% deployment gate. The partial-site executor itself is exact: it keeps residual terminals explicit, creates a child only after its full colored support is present, and promotes a parent only after every child and frozen port is independently verified; synthetic and NaCl controls pass, with NaCl emitting 48 / 48 correct sites. Cd–Yb deployment therefore remains disabled, and no new evaluation target has been opened.</p>
+          <p><b>finite-state substitution audit:</b> allowing a quasicrystal to alternate among several exact production states does not weaken the stationary gate. A period-<i>p</i> cycle requires at least 2<i>p</i>+1 consecutive levels, repeated exact chemistry/chirality/port semantics, equal independently learned transition scales, and identical population substitutions on a sealed replay. The synthetic two-state control passes. The present IQC hierarchy has only four levels, zero exact adjacent-state intersections, and no independently observed heldout scale, so both stationary and finite-state exponential claims remain red.</p>
+          <p><b>hierarchy selection and stationary audit:</b> a target-blind deterministic beam retains exact derivation alternatives, improving the promoted occurrence path from 153 → 34 → 10 → 6 → 4 → 2 to 324 → 78 → 26 → 12 → 8 → 4 and the fixed-horizon train score from −63.205 to −34.592. It does not add a seventh positive level or produce a stationary witness. The exact semantic quotient is rejected by train-only shuffle/perturbation controls. Exponential status still requires one chemistry/chirality/port production across three consecutive levels, equal learned scales and integer substitutions, independent support, and exact replay.</p>
+          <p><b>width and crystal controls:</b> the single sparse 216-atom audit remains evidence-starved and admits only six size-two macros. This is not a width failure: with two independent bounded 216-atom presentations, the same nonfactorial exact search reaches child width eight and the full learned relation graph supplies the stationary 8-child certificate above. The stronger crystal baseline does not change the red IQC stationary result.</p>
+          <p><b>matched-quality marking ablation:</b> compiled sections cut full-recall proposal work 56× for substitution and 717× for IQC. On an unseen IQC inflation, a frozen learned local halo reaches the same 252 correct moves with 392 vs 526 proposal checks and 140 vs 274 failed branches.</p>
+          <p><b>generic cluster-of-clusters gate (in progress):</b> learned NaCl and IQC superclusters compile to coordinate-bearing child poses, explicit gap atoms, and overlap maps, and recursively replay every stored prototype exactly. On a frozen 2:1 occurrence split, 70 NaCl and 59 IQC right-hand-side alternatives cover &gt;99% of held-out cases, but the present bounded halo/port marking does not select them: it ties the parent-only modal baseline at 90.0% / 88.5%. The gate stays red until a train-only connection marking improves this result and then transfers across an unseen spatial guard band.</p>
+          <p><b>sealed spatial fixture:</b> recursive raw-atom guards use the sum of all lower-level radii plus the halo. The 13,824-site NaCl cloud certifies 3 disjoint levels (785 / 785 deepest centres); the 8,603-site IQC cloud certifies 2 (532 / 532). IQC level 3 is explicitly red until a larger patch leaves a nonempty cumulative guard.</p>
+          <p><b>frozen hierarchy transfer:</b> scale, signature dictionaries, promoted colors, and unknown labels are fit on the training side only. All held-out signatures are known across 3 NaCl and 2 certified IQC levels. A train-only 95%-coverage vocabulary gives ≥95.29% NaCl and ≥95.59% IQC promoted coverage (4/6/16 and 51/30 colors). Production and search transfer remain red.</p>
+          <p><b>causal incoming-halo ablation:</b> at the deepest cumulatively guarded levels, both systems have one RHS per parent—16/16 NaCl and 30/30 IQC—hence zero decomposition backtracks and no possible marking gain. RHS decomposition is not the use case that lights GCTS; the next ablation ranks neighboring frontier macro placements.</p>
+          <p><b>live-frontier marking gate:</b> on the actual 1,969 → 8,603 IQC frontier, every arm receives the same 66,110 proposals and stops after 120 correct novel sites. Incoming GCTS marking needs 120 checks / 0 failures; overlap-vote ordering needs 232 / 112. Thirty equal-budget train-label-shuffled markers need median 4,608 checks (best 404). No held-out label trains the marker.</p>
+          <p><b>order-independent spatial hierarchy:</b> the 368-site exact frontier is split into eight guarded spatial domains; 296 off-boundary sites are covered completely. The same generic colored-point learner finds recurrent supports 3 → 11 → 37, giving 3.67× and 3.36× amplification across three genuine cluster levels. Move order, lattice metadata, and phase labels are absent. Nine further promotions to one million sites are only a projection until unseen levels replay.</p>
+          <p><b>frozen spatial grammar:</b> the distance scale, type dictionaries, and eight parent→child productions are fit on four negative-x sectors (148 atoms) and replayed without refitting on four positive-x sectors (148). Vocabularies 4 / 3 / 1 achieve 100% held-out type, atom, and production coverage at all three levels. Each parent has one RHS here, so marking is tested separately on frontier choices.</p>
+          <p><b>large cumulative-guard gate:</b> an exact meet-in-the-middle 6D oracle generates a converged 155,097-site IQC in about 2.5 s. Bounded coordination+angular GCTS colors fit on 28,211 inner atoms cover 100% of 106,162 / 70,458 / 4,260 disjoint held-out centers at three recursive levels. A matched-density amorphous XYZ null reaches only 42.6% at level 1 and 24.1% at level 3 and is rejected. This proves color transfer, not yet outward geometry generation.</p>
+          <p><b>exact production replay:</b> on 1,024 frozen samples per level, parent colors transfer to 98.7% / 97.9% / 100% of held-out parents, but complete species-labelled child geometry transfers only 67.4% / 0% / 0%. Level 1 needs up to five RHS alternatives; higher levels encounter unseen geometry despite one training RHS. The next marking must condition alternatives on incoming ports. Pose-based execution remains red.</p>
+          <p><b>causal incoming-port ablation:</b> an outward proposal may inspect only smaller-radius atoms already behind the frontier. On the 285/2,048 held-out level-1 contexts that recur in training, this marking selects 104 exact outward productions, versus 31 for parent color alone and at most 44 in 30 within-parent label shuffles. This is a real marking effect, but context coverage is only 13.9% and levels 2–3 have no exact transferred contexts, so the overall gate remains red.</p>
+          <p><b>seed-only recursive scale:</b> the centre-connection learner no longer receives φ. It ranks ratios from the seed distance spectrum by closure at both <i>s</i> and <i>s²</i>, with a generic low-degree algebraic refinement. The 507-atom IQC selects 1.61803398875; recurrent-distance closure is 51.2% / 55.8%, and the frozen connection benchmark retains its held-out growth result.</p>
+          <p><b>sealed connection gate:</b> a stricter protocol learns connection labels only from 93 inner parents whose φ-images remain inside the 507-atom seed; the 1,969- and 8,603-atom windows are evaluation-only. It proposes 3,404 novel sites, of which 500 are correct (14.7% precision, 7.5% recall). Naive coordination-distance filtering does not help. This gate is red and replaces the earlier transition-trained result as the causal generic baseline.</p>
+          <p><b>metric motif-centre ports:</b> proposals outside the finite seed are censored rather than mislabeled negative. Exact connection length modulo the inferred recursive scale produces 860 / 860 correct held-out sites (100% precision, 12.96% recall), versus 14.7% precision for the otherwise identical coarse-state ablation. The 73 accepted ports are learned only inside the 507-atom seed.</p>
+          <p><b>iterated port growth:</b> the 860 predicted species-labelled atoms are inserted without oracle colors, growing 1,969 → 2,829 exactly. But admitting train-supported single ports in wave 2 proposes 13,020 / 13,020 false sites. GCTS overlap consensus is therefore essential; the regenerative gate rejects this branch rather than displaying exponential error growth.</p>
+          <p><b>overlap superclusters:</b> the exact 860-site action-incidence graph contains two large connected macro actions of 500 and 240 sites plus 32 smaller components. These are conflict-free parallel actions, but their scaled copies are not valid successors, so this is clusters-of-clusters action compression rather than exponential recursion.</p>
+          <p><b>higher-order port-pair section:</b> the seed learns 271 pairs of metric ports that co-support the same endpoint. Its frontier halo is also train-derived (6.155 Å). The frozen policy produces three exact waves, 260 → 192 → 60, adding 512 / 512 correct atoms before stalling at 2,481. This is genuine regenerative generic GCTS; the shrinking sequence keeps the exponential gate red.</p>
+          <p><b>amplifying pair macro:</b> the minimum seed endpoint has 11 supporting port actions. The frozen scale-normalized rule requires ⌈11 / s<sup>level</sup>⌉ votes: 7 then 5. It selects 80 / 80 exact sites at the first unseen scale and 480 / 480 at the second—a measured 6× batch amplification. This passes an exponential-style two-scale gate, but sparse coverage and no million-site generic rollout remain explicit limitations.</p>
+          <p><b>cross-family selector:</b> the shared seed-only competition now includes translation quotient, fixed-anchor similarity, and overlap-port sections. With no phase label or held-out target, it chooses translation for NaCl, port pairs for IQC (61/507 anchor support), and the anchor for the 3-D Fibonacci control (216/729). All three pass two exact unseen scales; Fibonacci emits 2,090 and 7,222 exact sites.</p>
+          <p><b>generic geometry VM:</b> all three selected markings compile to one colored-site interpreter. It emits exact species and positions at two unseen levels: NaCl adds 1,512 then 12,096 sites; IQC adds 80 then 1,254; Fibonacci adds 2,090 then 7,222. The IQC chemical decoration is evaluated by its learned bounded internal section, fixing a coordinate-only result that previously mislabeled the atoms.</p>
+          <p><b>recursive port/cover graph:</b> the three VM opcodes are now normalized to the same node schema: binding relation → affine output → coincident overlap group → connection section → color section. Every compiled control is one self-recursive node; the common relational evaluator reproduces all six exact colored-site outputs without an opcode or material-family dispatch.</p>
+          <p><b>self-fed multiscale graph:</b> starting from 1,969 IQC atoms, the graph inserts only its own colored predictions. It regenerates 260 → 192 → 120 → 80 sites at level 1, 792 → 204 at level 2, and 360 → 240 → 120 at level 3: 2,368 / 2,368 exact additions over nine waves, ending at 4,337 atoms. No held-out atom or oracle color enters the state. Level totals 652 → 996 → 720 are not monotonically amplifying, so the exponential gate remains red.</p>
+          <p><b>section-assisted gap ceiling:</b> single ports propose missing coverage and the learned IQC internal-space section acts as an accept/reject connection marking. It rejects 420 invalid endpoints and self-feeds six exact recursive levels totaling 3,304 → 1,332 → 300 → 2,520 → 780 → 120 sites. The cloud grows 1,969 → 10,325 with 8,356 / 8,356 exact colored additions. This global section is stronger than a bounded local GCTS halo, and later decline keeps the exponential generic gate red.</p>
+          <p><b>carried local marking:</b> each of the 507 seed clusters receives a learned three-component mark. Every new mark is transported through one two-cluster port, then locally selects connection/failure and species—without lifting the candidate coordinate or querying the global section. It grows 507 → 1,689 with 1,182 / 1,182 exact colored additions over two recursive levels (642 → 540).</p>
+          <p><b>clusters-of-clusters promotion:</b> the self-generated 1,689-site cover promotes the same 30 recurrent types from 29.70 to 98.57 atoms of average support (3.32×; maximum 225), then freezes 789 promoted ports. Three self-fed scales add 3,234 → 8,924 → 17,674 exact colored sites (2.76×, then 1.98×), reaching 31,521 atoms from the 507-atom seed. The seed compiler now derives its scale, radial shells, and boundary from the point cloud rather than receiving IQC constants.</p>
+          <p><b>executed cross-family gate:</b> one positions+species discovery API and one action API now materialize three exact self-fed actions for NaCl (216 → 1,728 → 13,824 → 110,592), IQC (507 → 4,923 → 13,847 → 31,521), and Fibonacci product (729 → 3,375 → 13,824 → 59,319). All 252,953 output sites are scored. Cross-family execution is green; the stricter single-production gate stays red because translation, promoted ports, and substitution remain three learned production kinds.</p>
+          <p><b>fourth IQC scale:</b> the same frozen production adds another 35,414 / 35,414 exact sites and reaches 66,935 atoms. Exact shell indexing cuts this wave from 609.8 s to 440.8 s, but that is still too slow for a credible million-atom rollout. The next performance target is indexing exposed promoted ports instead of repeatedly joining atom pairs.</p>
+          <p><b>regenerative scaling audit:</b> 16 exact waves add 368/368 correct sites while frontier supply grows. Four-wave supermacros shrink 132 → 96 → 80 → 60; mean wave growth is 1.0 and log-growth R² is 0.605. The exponential gate remains red.</p>
+          <p><b>option-preserving tree search:</b> the first top-two leaf-score rollback recovers the 48-site wave-17 branch but fails when executed forward; widening that scalar policy to four still admits false branches. The replacement width-four value keeps the provisional branch with the largest compatible frozen next frontier. Frozen before wave 20, it selects ranks 2 → 3 → 1 → 4 → 4 and adds 120 / 120 exact held-forward sites with four rollbacks. The complete 24-wave trace is 572 / 572 exact and frontier supply rises 63,890 → 67,806. This is a same-trace temporal pass, not spatial confirmation or an exponential rule.</p>
+          <p><b>spatial beam confirmation:</b> width five is frozen after an earlier disjoint nucleus reveals its first exact band at rank five, then tested once at a second non-rotationally-related nucleus whose full scoring ball overlaps neither training nor the earlier test. The target-free grammar freezes 5,616 bounded candidates; posthoc, 431 are color-correct, but all five retained branches are false and the first pure-correct band is rank seven. Candidate geometry transfers; the present branch value/breadth does not. The spatial and exponential gates remain red.</p>
+          <p><b>multi-nucleus marking feedback:</b> one rigid-motion-invariant marker is refit on three mutually disjoint completed nuclei (15,830 candidates; 3,171 positives), then frozen before a fourth disjoint nucleus is opened. The exact 2-site action now enters the width-four beam at rank four, but one-step frontier supply selects a false 3-site rank-two branch. The marking has improved; the next required mechanism is a persistent multi-depth beam of complete configurations with real rollback.</p>
+          <p><b>persistent-beam confirmation:</b> four complete atom/cluster/port states now survive for three depths (36 real branch expansions), while a robust marking takes the minimum support across three leave-one-nucleus-out models. It recovers an exact 3-site branch on the fourth diagnostic nucleus. Frozen unchanged on a fifth mutually disjoint nucleus, the exact 1-site action is again retained at rank four, but frontier-count value chooses path 2 → 3 → 2 and emits one false site. Persistent search works; frontier cardinality is now twice falsified as the value function.</p>
+          <p><b>learned branch value:</b> the two completed diagnostics give exact-action counts 0 / 2, 0 / 2, 1 / 2, and 2 / 2 for root ranks 1–4; a fixed Beta(1,1) channel freezes values .25 / .25 / .50 / .75. On a sixth mutually disjoint nucleus, the three-depth beam evaluates 36 branches, selects path 4 → 2 → 2, and emits the exact 1 / 1 colored site with no target access. The one-action spatial selection gate is green; sustained and exponential IQC growth remain red.</p>
+          <p><b>learned channel reach:</b> self-feeding the same frozen policy for a second diagnostic wave fails because none of its four active roots is correct. A target-free snapshot of twelve immutable bands finds the first exact next actions at ranks six and twelve. Geometry is available, but the action-channel representation is too narrow; active breadth must be learned from pose/port coverage and confirmed on a new nucleus.</p>
+          <p><b>12-channel confirmation:</b> exact training alternatives occur at ranks 3 / 4 / 6 / 7 / 12, so channel reach is learned as 12 while retained configuration width stays four. One predeclared trial is recorded consumed/unknown after its output transport failed. Frozen unchanged on a fresh eighth disjoint nucleus, the search evaluates 108 target-free branches, selects path 4 → 12 → 11, and emits the exact 1 / 1 colored site. The one-action channel/value gate is green; sustained and exponential growth remain red.</p>
+          <p><b>carried-context GCTS:</b> initial frontier context values rank four at 5/6; after an incoming rank-four connection, two independent diagnostics value ranks six and twelve at 3/4. Frozen on a ninth mutually disjoint nucleus, the 12-channel persistent beam evaluates 108 branches per wave and commits paths 4 → 12 → 11 then 12 → 9 → 10. Both self-fed colored sites are exact (2 / 2, zero false). The two-wave spatial search gate is green; unit wave size and no stationary rule keep exponential growth red.</p>
+          <p><b>semantic-channel correction:</b> a third ordinal state learns rank six from three repeated post-4→12 frontiers, but fails on a tenth disjoint nucleus because its exact initial action is rank eleven. All three committed sites are false although exact candidates remain inside the 12-channel snapshots. Score rank is therefore not a transferable GCTS channel; the replacement must use symmetry-quotiented cluster/port connection identity, with rank only as local ordering.</p>
+          <p><b>semantic quotient audit:</b> exact evidence, full structural ports, and coarse colored port keys each have 0% held-out coverage; chemistry-only keys cover 25% of candidates but miss the exact action. These target-free keys only rank certified geometry. The categorical table is therefore red, motivating a continuous local connection section trained across nuclei.</p>
+          <p><b>continuous-section confirmation:</b> nine completed disjoint nuclei provide 49,716 candidates and 3,695 exact coordinate-and-species positives. A rigid-motion-invariant local section is frozen before a fresh centre at (0, 0, −50) is opened. The twelve-channel, width-four, depth-three search selects path 1 → 5 → 12 and emits 4 / 4 exact colored sites with zero false sites. This replaces ordinal rank with a transferable continuous connection section; it is one action, not yet sustained or exponential growth.</p>
+          <p><b>continuous self-feed audit:</b> the identical model is frozen at a second fresh centre for two waves. Wave one again emits 4 / 4 exact colored sites. After self-feeding, an exact action remains available at rank five, but the seed-trained section selects rank one and emits 0 / 4. The two-wave gate is red: the next fit must include post-commit local neighborhoods, not wider channels or an ordinal rank state.</p>
+          <p><b>self-fed section refit:</b> eight known nuclei supply 44,439 post-commit candidates and 3,205 exact colored positives. Staging that section after wave one still fails on a new disjoint nucleus: wave one is 4 / 4, while wave two has an exact rank-four action but selects rank one and emits 0 / 4. The missing feature is now the continuous parent/source port-state distribution, not training-state exposure or channel reach.</p>
+          <p><b>continuous port-state confirmation:</b> the marking now adds separation, parent/source neighborhood, compatibility, purity, and entropy invariants from exact connection evidence—never raw IDs, coordinates, or target atoms. Nine nuclei supply 50,065 post-commit candidates. Frozen on a new disjoint nucleus, the same twelve-band search ranks both exact actions first and emits 4 / 4 + 4 / 4 colored sites with zero false placements. Self-fed marking transfer is green; four-site waves and no recurring promoted rule keep exponential growth red.</p>
+          <p><b>parallel-action preflight:</b> the next gate asks that section to admit several mutually compatible whole actions in one order-independent antichain. An absolute zero-error threshold selects 50 / 50 seed and 24 / 24 self-fed training sites, but transfers no action to a fresh disjoint frontier. A replacement 15-feature whole-band section sees 57 / 216 and 48 / 216 pure training actions; under nucleus-heldout calibration, no threshold reaches the predeclared 95% action precision. It therefore fails closed before constructing the next confirmation seed or target. The antichain executor is valid, but local action scores are not yet a safe admission rule; carried port obligations and bounded backtracking are the next gate.</p>
+          <p><b>carried-port lookahead:</b> each whole band is now simulated target-free and augmented by the successor frontier's connection consensus, recurrent-state purity, parent multiplicity, and unresolved singleton load. Group-heldout fitting isolates one zero-error seed action and one zero-error self-fed action, but the predeclared parallel-coverage gate requires at least 18 selected actions per stage—two per training nucleus in aggregate. With only 1 / 18 and 1 / 18 retained, the gate remains red and the reserved confirmation target remains unopened. Aggregate future statistics help precision but collapse coverage; the next state must carry explicit unresolved port incidences through bounded backtracking.</p>
+          <p><b>explicit port-incidence search:</b> the successor state now carries up to eight actual symmetry-quotiented parent/source/separation roles. A later whole action must consume a carried role; a branch backtracks when one of its explicit roles has no frozen child continuation. Across 504 train-only actions, 97.4% of held-out role mass is already present in the other nuclei. The bounded search finds connected two-action paths on eight of nine held-out nuclei, exploring 306 actions and backtracking 49—but all 16 selected actions are false, emitting 120 false sites. Connection closure is therefore necessary but not a sufficient marking. At this gate the reserved nucleus stayed unopened; the next section had to represent joint role-incidence geometry rather than marginal role purity or closure alone.</p>
+          <p><b>candidate-level pose–port section:</b> whole equal-score bands are no longer the atomic marking decision. Across 44,602 collision-free individual candidates, a group-heldout, proper-motion-invariant local section uses proposal incidences plus the colored metric graph of the nearest occupied neighbors. Its complete score threshold admits 25 / 26 exact compatible placements (96.15% precision), but only in four of nine nuclei; the predeclared all-nucleus coverage gate remains red.</p>
+          <p><b>geometry-setting transfer:</b> the visible one/two/three-shell and coarse/fine geometry choices are now tested as one bounded grid. For each held-out nucleus, an inner leave-one-nucleus-out loop chooses both section geometry and threshold from the other eight. Absolute calibration does not transfer: it admits 41 / 65 correct actions (63.1%). A fixed top-two rank is stable on the eight generic nuclei—16 / 16 exact—but chooses two false actions at the unique symmetry-centred nucleus, for 16 / 18 overall. Expanding to 32 neighbors still leaves the first exact centred action at rank 121. The then-reserved confirmation remained sealed for this audit.</p>
+          <p><b>symmetry-orbit channel confirmation:</b> a low-rank view gives one vote to each semantic marking family, so a large rotation or edge orbit cannot dominate merely by having more representatives. A target-free rule chooses the detailed or channel view by the size of its exact top-score equality orbit. It achieves 18 / 18 placements across the nine development nuclei and is frozen in commit <code>644d69f</code>. On the separately preregistered, spatially disjoint nucleus, however, the rule chooses the detailed view (top-band sizes 4 versus 2) and both retained actions are false: 0 / 2. The target opens exactly once after selection. This is a clean overfitting counterexample; automatic channel count is structurally motivated, but orbit multiplicity alone is not a transferable marking value.</p>
+          <p><b>post-confirmation section audit:</b> after the consumed nucleus becomes development evidence, a simpler “channel whenever orbit cardinalities disagree” rule reaches 18 / 20 group-heldout actions, still below the all-nucleus gate. A fully nested candidate-level linear section then stacks 15 invariant score, rank, orbit-size, token-family, and evidence-coverage features. All three fixed ridge strengths select 0 / 20 exact actions. Exact candidate geometry is unchanged and the next disjoint centre stays unopened. Scalar score stacking is therefore rejected; the next section must retain the joint incidence graph itself.</p>
+          <p><b>joint incidence-graph audit:</b> the primary symmetry-quotiented port is now attached explicitly to every occupied colored shell and every pairwise metric edge. This learns 6,140 role–shell and 19,837 role–edge types; 97.7% of held-out descriptor tokens receive train-frozen weight. Yet the best group-heldout result is 15 / 20, and stronger support/group regularization falls to 14 / 20 or 8 / 20. Relational vocabulary is no longer missing, but summing its edges independently still discards topology. The next bounded section must canonicalize or pass messages over the local incidence graph.</p>
+          <p><b>bounded message-passing audit:</b> occupied nodes start from species and radial shell, then exchange their complete pair-distance-labelled neighbor multisets for one or two rounds; the primary port conditions every resulting node and graph color. Candidate geometry and certificates remain unchanged. Both depths select 14 / 20 exact actions. Exact hashing yields 80,323 one-round and 161,768 two-round node colors, fragmenting recurrence rather than improving it. Message topology is now explicit, but its colors need a train-only finite quotient before they can serve as transferable GCTS channels.</p>
+          <p><b>finite message-quotient audit:</b> train-only distance and port-role quotients reduce one-round exact colors as far as 12,954 node / 5,787 graph types, but every exact-hash arm remains at 14 / 20. Replacing hashes with a bounded additive incidence bag compresses to 457 node and 976 graph types and reaches 15 / 20. Requiring positive graph prototypes to recur across at least three independent nuclei leaves 356–358 fold-specific codebook states but falls to 11 / 20. Exact candidate geometry never changes and the next disjoint nucleus remains unopened: neither smaller vocabulary nor nearest recurring prototype is yet the missing GCTS value.</p>
+          <p><b>expanded-development audit:</b> eight additional radius-14.562 nuclei were committed before materialization; every new outer domain is separated from all prior and reserved domains by at least 37.417. Their common finite oracle crop is stable at coefficient bounds 24 and 25. The frozen 457-state quotient selects 14 / 16 new actions and 30 / 36 across all eighteen nuclei. Raising recurrence floors only degrades that score. A new finite conditional table learns the purity of complete node/edge/graph states and backs off through four bounded levels, but reaches 29 / 36. More independent evidence is useful, yet neither marginal addition nor whole-state lookup supplies the missing transferable branch value; the reserved confirmation at (0, 50, 0) remains unopened.</p>
+          <p><b>pose-aware antichain audit:</b> attachment axes are now measured relative to the occupied neighborhood using only dot products and signed triple products. This quotients global proper rotation and translation, preserves chirality, and yields 4,414–9,580 finite learned orientation tokens without assuming a lattice. Coarse orientation ties the 30 / 36 baseline; finer channels fall to 28–29 / 36. A nested tree node then scores all 120 unordered compatible pairs in each 16-action shortlist. Every nucleus contains at least six exact pairs, but learned pair interactions again select 30 / 36. Rotations, pair supply, and greedy ordering are therefore no longer plausible explanations for the six remaining errors.</p>
+          <p><b>successor-state value:</b> the search now hypothetically places each action in the frozen top-16 shortlist, recomputes its local cluster types, and summarizes only the new outgoing port frontier. The scorer never reads target atoms during this rollout. Correctly carrying both causal endpoints of each affine connection raises one-step selection from 30 / 36 to 32 / 36. A bounded second step evaluates 76–184 target-free child branches per nucleus and reaches 33 / 36 with 16 / 18 exact nuclei. The richer causal graph helps; four one-step and three two-step actions remain wrong.</p>
+          <p><b>directed obligation value:</b> root state, incoming child-port obligation, and child successor remain one directed path record frozen before either label is read. Width four reaches 33 / 36. Widening the exact tree to 16 children now produces at least two exact paths in every nucleus and raises selection to 34 / 36, with 16 / 18 nuclei entirely exact. Candidate supply is therefore complete at this bounded depth; the two remaining errors are transferable ranking failures, not absent geometry.</p>
+          <p><b>connection-vocabulary audit:</b> a fold-frozen merger now pools positive, negative, chemistry, and independent-configuration evidence for exact port states. Applying it directly to raw local cluster IDs is a negative control: crop-boundary variants fragment the vocabulary, leaving correct root candidates in 14 / 18 nuclei and an exact root→child continuation in only 7 / 18. Learning a recurrent cluster quotient first is substantially better: from ten training nuclei, 455 pose classes recurring in at least two configurations supply a correct first action and an exact root→child continuation in all eight expanded validation nuclei. A causal-endpoint audit found the decisive implementation bug: a newly placed cluster can expose a learned affine connection as either its parent or source; preserving both dependencies recovers the formerly missing continuation without relaxing any evidence threshold.</p>
+          <p><b>sealed recurrent-supply confirmation:</b> after the 8 / 8 development gate, the exact rule and both-endpoint semantics were committed before the reserved nucleus at (0, 50, 0) was opened. The learner froze 455 recurrent pose classes, 21,841 admitted connection states, 672 root candidates, and 1,104 one-step successors before one target-open call. Posthoc scoring finds 38 exact colored roots and four exact root→child paths; the first occurs after eight correct roots. This confirms transferable GCTS candidate supply on a new spatially disjoint IQC nucleus. It does not select the path autonomously and is not a stationary or exponential certificate.</p>
+          <p><b>recurrent-path marking:</b> with supply frozen first, a group-heldout value section sees only symmetry-quotiented action, causal-endpoint, incoming-port, color, and distance tokens. A 256-root / 16-child tree contains exact paths in all eight development nuclei; the train-only marking ranks an exact path first in 7 / 8. The lone miss still contains one exact path among 293 candidates. This is a strong ranking-transfer result, but the autonomous selector gate remains red until every held-out nucleus is selected correctly.</p>
+          <p><b>clusters² compatibility:</b> a tentative root→child pair is now scored against the recurrent cluster vocabulary before commitment. The incremental section exactly matches full reclustering, measures the prototype residual induced on neighboring clusters, and combines it with an eight-neighbor local frontier normal. It leaves seven nuclei at rank one while moving the rare exact path from rank 101 to rank 21—a 4.81× pruning gain. This is useful tree-search work reduction, but it is not yet a correct top-one selector or an exponential-growth certificate.</p>
+          <p><b>individual carried-port paths:</b> candidate supply is now separated from ranking. For each nucleus, 128 canonical target-free descriptor classes are expanded into witnessed root→child port actions. Every nucleus contains exact two-step paths (12 / 53 / 24 / 14 / 27 / 27 / 27 / 27 / 6 exact pairs). The first executor incorrectly added an unrelated raw child score after evaluating the learned pair; removing that double count raises group-heldout selection from 0 / 9 to 5 / 9. Four boundary environments still fail, so the reserved confirmation nucleus remains unopened.</p>
+          <p><b>third-frontier value control:</b> a fixed raw-evidence shortlist of 512 paths per nucleus still contains exact alternatives everywhere. Each path is executed target-free for one additional step and described by its outgoing roles, order-two incidences, vote mass, colors, and normalized distance histogram. The group-heldout value selects only 4 / 9 exact paths—worse than the corrected two-step mark—so immediate frontier supply is rejected again as the missing search value.</p>
+          <div class="common-gate-head"><span>learned program</span><span>factor</span><span>≥1m</span><span>flat / recursive</span></div>
+          <div><b>NaCl quotient</b><em>8.000×</em><i>a5</i><code>176,942×</code></div>
+          <div><b>IQC section</b><em>≥3.884×</em><i>a6</i><code>33,221×</code></div>
+          <div><b>Fibonacci rule</b><em>≥4.096×</em><i>a5</i><code>53,024×</code></div>
+          <div><b>30° hBN address</b><em>4.000×</em><i>a5</i><code>52,392×</code></div>
+          <p>The finite typed compiler now removes the family branch from the recursive executor.</p>
+          <div class="common-gate-head"><span>typed production</span><span>types</span><span>children</span><span>two unseen levels</span></div>
+          <div><b>NaCl cell → cells</b><em>1</em><i>8</i><code>216 → 1,728 → 13,824</code></div>
+          <div><b>IQC section generator</b><em>1</em><i>rank 6</i><code>507 → 1,969 → 8,603</code></div>
+          <div><b>Fibonacci address rule</b><em>8</em><i>27</i><code>729 → 3,375 → 13,824</code></div>
+          <div><b>30° hBN pose/address</b><em>2</em><i>8</i><code>1,024 → 4,096 → 16,384</code></div>
+          <small>One production contract: three finite graphs use the incidence counter; IQC enumerates rank-6 addresses through its learned 3D internal section. The hBN row counts its square address envelope; exact circular crops are 746 → 2,954 → 11,696. Explicit coordinate output remains linear.</small>
+        </details>
+
+        <section>
+          <p class="eyebrow">02 · playback</p>
+          <button id="pipelineButton" class="pipeline-button" type="button">Run full pipeline</button>
+          <div class="transport">
+            <button id="playButton" class="primary-button" type="button" aria-label="Play growth">
+              <span id="playIcon" aria-hidden="true">▶</span><span id="playLabel">Play</span>
+            </button>
+            <button id="stepButton" type="button">Next update</button>
+            <button id="resetButton" type="button">Reset</button>
+          </div>
+          <label class="range-field" for="speedInput">
+            <span>Updates per second <output id="speedOutput">12</output></span>
+            <input id="speedInput" type="range" min="1" max="60" value="12">
+          </label>
+          <label class="field" for="growthDurationSelect">
+            <span>Timed growth burst</span>
+            <select id="growthDurationSelect">
+              <option value="60">1 minute</option>
+              <option value="120">2 minutes</option>
+            </select>
+          </label>
+          <p class="control-note">In search, Play grows explicit atoms for this long, then pauses. Click again to continue.</p>
+        </section>
+
+        <section>
+          <p class="eyebrow">03 · layers</p>
+          <div class="toggle-stack">
+            <label><input id="markingToggle" type="checkbox" checked><span>Marking domain</span></label>
+            <label><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
+            <label><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
+            <label><input id="rotateToggle" type="checkbox" checked><span>Auto rotate</span></label>
+          </div>
+        </section>
+
+        <section class="legend-section">
+          <p id="legendHeading" class="eyebrow">Elements &amp; state</p>
+          <div id="speciesLegend" class="legend"></div>
+        </section>
+      </aside>
+
+      <section class="stage" aria-label="Three-dimensional live growth">
+        <div class="stage-heading">
+          <div>
+            <p id="stageEyebrow" class="eyebrow">input · static atom coordinates</p>
+            <h1 id="stageTitle">Begin with the configuration we know</h1>
+          </div>
+          <div class="phase-readout"><small>emergent read</small><strong id="phaseReadout">competing</strong></div>
+        </div>
+
+        <div id="viewport" class="viewport">
+          <div id="clusterGallery" class="cluster-gallery" aria-label="One rotating three-dimensional scene per learned cluster type" hidden></div>
+          <div class="viewport-chrome top-left"><span id="eventKind">SEED</span><b id="eventCounter">0000</b></div>
+          <div class="viewport-chrome top-right"><span id="viewportHint">drag to orbit · wheel to zoom</span><b id="unitCellBadge" hidden>unit cell</b></div>
+          <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
+          <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
+        </div>
+
+        <div class="metrics-strip" aria-label="Live metrics">
+          <article><small id="atomLabel">ATOMS</small><strong id="atomMetric">216</strong><span id="atomDelta">known xyz + species</span></article>
+          <article><small id="frontierLabel">SPECIES</small><strong id="frontierMetric">2</strong><span id="frontierDelta">blue / green</span></article>
+          <article><small id="oracleLabel">LABELS GIVEN</small><strong id="oracleMetric">0</strong><span id="oracleDelta">clusters must be inferred</span></article>
+          <article class="accent-metric"><small id="reuseLabel">GROWTH MODE</small><strong id="reuseMetric">OPEN</strong><span id="reuseDelta">restartable timed bursts</span></article>
+        </div>
+
+        <section class="structure-stats" aria-label="Known and reconstructed structural statistics">
+          <article class="structure-card">
+            <div class="structure-heading">
+              <div><p id="rdfEyebrow" class="eyebrow">finite-window RDF</p><strong id="rdfTitle">g(r / a)</strong></div>
+              <span id="rdfStatus">known 216 · live 0</span>
+            </div>
+            <svg id="rdfChart" viewBox="0 0 360 118" role="img" aria-label="Radial distribution function for known positions and live reconstruction"></svg>
+            <div id="rdfLegend" class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span></div>
+          </article>
+          <article class="structure-card">
+            <div class="structure-heading">
+              <div><p id="coordEyebrow" class="eyebrow">first-shell coordination</p><strong id="coordTitle">P(z), r<sub>c</sub> = 1.32a</strong></div>
+              <div class="structure-status"><span id="coordStatus">mean z — · —</span><button id="coordClearButton" type="button" hidden>clear</button></div>
+            </div>
+            <svg id="coordChart" viewBox="0 0 360 118" role="img" aria-label="Coordination number distribution for known positions and live reconstruction"></svg>
+            <div id="coordLegend" class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span><em>click z to show all current shells</em></div>
+          </article>
+        </section>
+      </section>
+
+      <aside class="inspector-panel" aria-label="Search event inspector">
+        <section class="decision-card">
+          <div class="decision-heading"><p id="decisionEyebrow" class="eyebrow">pipeline stage</p><span id="decisionBadge" class="badge neutral">input</span></div>
+          <h2 id="decisionTitle">Observed configuration</h2>
+          <p id="decisionCopy">The learner receives only atomic species and Cartesian positions from one finite configuration.</p>
+          <dl class="decision-grid">
+            <div><dt>action</dt><dd id="actionValue">—</dd></div>
+            <div><dt>domain</dt><dd id="domainValue">—</dd></div>
+            <div><dt>compatibility interval</dt><dd id="energyValue">—</dd></div>
+            <div><dt>resolved by</dt><dd id="resolverValue">—</dd></div>
+          </dl>
+        </section>
+
+        <section>
+          <div class="section-heading"><p class="eyebrow">search stack</p><span id="stackDepth">depth 0</span></div>
+          <ol id="searchStack" class="search-stack">
+            <li class="empty-row">Accepted branches appear here.</li>
+          </ol>
+        </section>
+
+        <section>
+          <div class="section-heading"><p id="markingHeading" class="eyebrow">learned vocabulary</p><span id="markCount">not learned</span></div>
+          <div id="markingTable" class="marking-table"><p>No repeated domain yet.</p></div>
+        </section>
+
+        <section class="audit-card" id="auditedBenchmark">
+          <p class="eyebrow">live order inference</p>
+          <div><strong id="orderClassValue">analyzing…</strong><span>emergent class</span></div>
+          <div><strong id="structureNameValue">—</strong><span>best prototype</span></div>
+          <div><strong id="symmetryValue">—</strong><span>symmetry assignment</span></div>
+          <div><strong id="confidenceValue">0%</strong><span>structural match</span></div>
+          <p id="auditNote">The classifier waits for enough live atoms, then compares invariant RDF and coordination evidence with the reference library.</p>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js?v=20260817-1"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260817-4"></script>
+</body>
+</html>

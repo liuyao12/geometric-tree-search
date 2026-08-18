@@ -1483,4 +1483,4 @@ stationary grid learner and is subsequently validated against the frozen port
 relations. Learning the closure vocabulary from ports alone remains future
 work. None of these stronger NaCl results changes the red stationary IQC gate.
 
-Serve the repository root and open `/apps/iqc-growth-live/`.
+Serve the repository root and open `/iqc-growth-live/`.

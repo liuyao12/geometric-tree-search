@@ -13,12 +13,12 @@ Pages site. The main way to use it is to open the page in a browser:
 
 ## Browser Pages
 
-- [Held Circle Packing Search](./apps/circle-packing-search/)
+- [Held Circle Packing Search](./circle-packing-search/)
   Search corner-generated packings of circles with integer bends inside the
   unit disk. The browser solver removes rotational and reflectional symmetry,
   requires every circle to be locally held by surrounding contacts, and ships
   with a catalog of verified positive examples.
-- [Materials Growth Lab: imported atomic structures and off-lattice growth](https://liuyao12.github.io/geometric-tree-search/apps/iqc-growth-live/)
+- [Materials Growth Lab: imported atomic structures and off-lattice growth](https://liuyao12.github.io/geometric-tree-search/iqc-growth-live/)
   A live 3D, multi-species GCTS laboratory for crystalline, quasiperiodic, and
   amorphous controls. Choose one to eight species from a mini periodic table to
   sample a random public bulk structure with exactly that element set from
@@ -26,12 +26,12 @@ Pages site. The main way to use it is to open the page in a browser:
   It learns overlapping environments and finite SE(3) attachment
   rules, trains bounded connection sections, and continues the same explicit
   tree search beyond the observed configuration.
-- [Penrose Model-Set Tiler](./apps/penrose-model-set/)
+- [Penrose Model-Set Tiler](./penrose-model-set/)
   An exact cyclotomic search laboratory for genuine P2 kite–dart and P3 rhomb
   prototiles. Family presets stage a catalog that can be edited before running;
   mixed P2/P3 searches use a common exact atomization and expose placements,
   early prunes, and rollbacks live.
-- [A₂ Online Tiler](./apps/a2-online-tiler/)
+- [A₂ Online Tiler](./a2-online-tiler/)
   A separate live GCTS laboratory with outward growth around an arbitrary seed
   and exact finite-boundary decision modes. Its catalog supports Hat, Turtle,
   mixed systems, and custom closed A₂ loops; custom tiles can also be used as
@@ -44,18 +44,18 @@ Pages site. The main way to use it is to open the page in a browser:
   known Turtle marking, its unmarked comparison, and the online learner are
   separate constraint add-ons to the shared A₂ tiler rather than separate
   search implementations.
-- [A2 Tiling Studio](./apps/turtle-tiling-game/)
+- [A2 Tiling Studio](./turtle-tiling-game/)
   Repeat a Turtle, Hat, or custom closed A2-lattice loop around a single tile,
   Trefoil, or Hexagon center. The point editor validates loop closure,
   simplicity, and area before compiling boundary angles and occupancy for the
   same search engine. Online GCTS starts without marks, encodes immediate
   dead-frontier branches as sparse lattice mismatches, and replays the accepted
   prefix before committing each update.
-- [3D Lattice Tiler](https://liuyao12.github.io/geometric-tree-search/apps/3d-lattice-tiler/)
+- [3D Lattice Tiler](https://liuyao12.github.io/geometric-tree-search/3d-lattice-tiler/)
   A browser playground for lattice polyhedra and polycubes on the integer
   lattice. It supports mixed tile systems, custom polycube construction, search
   tree inspection, and intermediate tiling snapshots.
-- [Hat GCTS online memoization demo](./apps/hat-gcts-online-demo/)
+- [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate
   dead-frontier branches are encoded as sparse A2 mismatch certificates, with
@@ -94,7 +94,7 @@ http://127.0.0.1:5174/
 or go directly to the local app preview:
 
 ```text
-http://127.0.0.1:5174/apps/3d-lattice-tiler/
+http://127.0.0.1:5174/3d-lattice-tiler/
 ```
 
 ### Materials structure import

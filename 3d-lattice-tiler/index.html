@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Canonical root-level entry point; assets remain in apps/3d-lattice-tiler. -->
+  <base href="../apps/3d-lattice-tiler/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Lattice Tiler</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23178273%27/%3E%3Cpath d=%27M8 10 16 6l8 4v12l-8 4-8-4z%27 fill=%27%23fff%27 fill-opacity=%27.92%27/%3E%3Cpath d=%27M8 10l8 4 8-4M16 14v12%27 stroke=%27%23178273%27 stroke-width=%272%27 fill=%27none%27/%3E%3C/svg%3E">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css?v=20260817-generation-band-v31">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <h1>3D Lattice Tiler</h1>
+        <div class="status-line" id="status">Ready</div>
+      </header>
+
+      <section class="control-panel">
+        <div class="target-line">
+          <label class="inline-field is-active" id="maxTileField">
+            <input type="radio" name="criterion" value="count" checked>
+            <span>Tile</span>
+            <input id="maxTilesInput" type="number" value="80" min="1" max="2000">
+          </label>
+          <label class="inline-field" id="layerField">
+            <input type="radio" name="criterion" value="layer">
+            <span>Layer</span>
+            <input id="layerInput" type="number" value="2" min="1" max="50">
+          </label>
+          <label class="inline-field" id="regionField">
+            <input type="radio" name="criterion" value="region">
+            <span>Box</span>
+          </label>
+        </div>
+
+        <div id="regionSizeFields" class="split-fields region-fields is-hidden">
+          <label class="field"><span>Width</span><input id="regionWidthInput" type="number" value="4" min="1" max="100" step="1"></label>
+          <label class="field"><span>Depth</span><input id="regionDepthInput" type="number" value="4" min="1" max="100" step="1"></label>
+          <label class="field"><span>Height</span><input id="regionHeightInput" type="number" value="4" min="1" max="100" step="1"></label>
+        </div>
+
+        <fieldset class="choice-field">
+          <legend>Tiling mode</legend>
+          <div class="radio-cards mode-cards">
+            <label>
+              <input type="radio" name="tilingStrategy" value="free_range" checked>
+              <span><b>Free-range</b><small>Forced-first tree search without learning.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="learning_free_range">
+              <span><b>Learning Free-range</b><small>Remember and reuse successful proposal patches.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="translational">
+              <span><b>Translational</b><small>Grow patches until three exact period vectors work.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="isohedral">
+              <span><b>Isohedral</b><small>Search for an exact tile-transitive periodic quotient.</small></span>
+            </label>
+          </div>
+          <small id="strategyDescription">Prioritizes forced moves, then explores sensible legal placements with backtracking.</small>
+        </fieldset>
+
+        <fieldset class="choice-field">
+          <legend>Lattice frontier</legend>
+          <div class="radio-cards lattice-cards">
+            <label><input type="radio" name="polycubeLattice" value="z3" checked><span><b>Z³</b><small>integer points</small></span></label>
+            <label><input type="radio" name="polycubeLattice" value="fcc"><span><b>FCC</b><small>face centers</small></span></label>
+            <label><input type="radio" name="polycubeLattice" value="half"><span><b>½Z³</b><small>refined points</small></span></label>
+          </div>
+        </fieldset>
+
+        <div class="is-hidden" aria-hidden="true">
+          <select id="strategySelect">
+            <option value="free_range" selected>Free-range</option>
+            <option value="learning_free_range">Learning Free-range</option>
+            <option value="translational">Translational</option>
+            <option value="isohedral">Isohedral</option>
+          </select>
+          <select id="polycubeLatticeSelect">
+            <option value="z3" selected>Z³</option>
+            <option value="fcc">FCC</option>
+            <option value="half">½Z³</option>
+          </select>
+          <select id="faceOrderSelect"><option value="mrv" selected>MRV</option></select>
+          <select id="moveOrderSelect"><option value="balanced" selected>Balanced</option></select>
+          <select id="periodicTileCountSelect"><option value="4" selected>Up to 4</option></select>
+          <label class="field">
+            <span>Snapshots</span>
+            <select id="snapshotSelect">
+              <option value="0" selected>Final only</option>
+              <option value="1">Every step</option>
+              <option value="5">Every 5</option>
+              <option value="10">Every 10</option>
+              <option value="25">Every 25</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Branch cap</span>
+            <input id="branchCapInput" type="number" value="0" min="0" max="5000">
+          </label>
+          <label class="field">
+            <span>Node cap</span>
+            <input id="nodeCapInput" type="number" value="0" min="0" max="100000">
+          </label>
+          <label class="field">
+            <span>Candidate cap</span>
+            <input id="candidateCapInput" type="number" value="0" min="0" max="100000">
+          </label>
+          <label class="field">
+            <span>Time cap</span>
+            <input id="timeCapInput" type="number" value="0" min="0" max="3600">
+          </label>
+          <label><input id="mirrorCheckbox" type="checkbox"><span>Mirror tiles</span></label>
+          <label><input id="exhaustiveCheckbox" type="checkbox"><span>Exhaustive</span></label>
+          <label><input id="autoFitCheckbox" type="checkbox" checked><span>Auto fit</span></label>
+        </div>
+
+        <div class="action-row">
+          <button id="runButton" class="primary-button" type="button">Run</button>
+          <button id="fitButton" type="button">Fit</button>
+        </div>
+      </section>
+
+      <section class="selected-tile-panel">
+        <div class="selected-tile-header">
+          <h2>Selected tiles</h2>
+          <div class="display-toggles">
+            <label><input id="internalCheckbox" type="checkbox"><span>Internal faces</span></label>
+            <label><input id="edgesCheckbox" type="checkbox" checked><span>Edges</span></label>
+          </div>
+        </div>
+        <div id="selectedTiles" class="selected-tiles"></div>
+        <div id="candidateResearchPanel" class="candidate-research-panel is-hidden">
+          <div>
+            <b id="candidateResearchTitle">Unresolved census candidate</b>
+            <small id="candidateResearchDetail"></small>
+          </div>
+          <button id="candidateSearchButton" type="button">Apply long-growth preset</button>
+        </div>
+      </section>
+
+      <section class="metrics">
+        <div><b id="metricTiles">0</b><span>tiles</span></div>
+        <div><b id="metricFrontier">0</b><span>frontier points</span></div>
+        <div><b id="metricLayer">0</b><span id="metricLayerDetail">active layer</span></div>
+        <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
+        <div><b id="metricGrowth">—</b><span>3D growth balance</span><small id="metricGrowthDetail">center spans 0 × 0 × 0</small></div>
+      </section>
+
+      <section class="tile-panel">
+        <div class="catalog-section">
+          <h2>Tile catalog</h2>
+          <div class="catalog-scroll">
+            <div id="systemTileList" class="system-tile-list"></div>
+          </div>
+        </div>
+
+        <div class="custom-builder-launch">
+          <button id="customBuilderButton" type="button">Custom lattice tile</button>
+        </div>
+
+        <div id="tileList" class="tile-list is-hidden"></div>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <section class="viewport-panel">
+        <div id="viewport" class="viewport"></div>
+      </section>
+      <section class="growth-panel" aria-labelledby="growthChartTitle">
+        <div class="growth-header">
+          <div>
+            <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
+            <small>Four searches run simultaneously. Select a mode at left to show its latest patch.</small>
+          </div>
+        </div>
+        <div class="growth-chart-wrap">
+          <svg id="growthChart" viewBox="0 0 760 210" role="img" aria-label="Growth curve comparing tile count over elapsed seconds">
+            <text class="growth-empty" x="380" y="106" text-anchor="middle">Run the comparison to measure this tile system.</text>
+          </svg>
+        </div>
+        <div id="growthBenchmarkStatus" class="growth-status">No benchmark run yet.</div>
+      </section>
+      <section class="tree-panel is-hidden">
+        <div class="tree-header">
+          <h2>Search tree</h2>
+          <span id="elapsedTime">0.0s</span>
+        </div>
+        <div id="treePanel" class="tree"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="customBuilderDialog" class="custom-builder-dialog">
+    <div class="custom-builder-dialog-shell">
+      <div class="custom-builder-dialog-header">
+        <h2>Custom lattice tile</h2>
+        <button id="closeBuilderButton" type="button" aria-label="Close custom lattice tile builder">x</button>
+      </div>
+      <div class="custom-builder">
+        <div class="builder-topline">
+          <label><input id="customPolycubeCheckbox" type="checkbox"><span>Include</span></label>
+          <input id="customNameInput" type="text" value="Custom polycube">
+        </div>
+        <div id="customShapeMatch" class="custom-shape-match"></div>
+        <div id="polycubeBuilder" class="polycube-builder"></div>
+        <div class="builder-tools">
+          <button id="clearBuilderButton" type="button">Clear</button>
+        </div>
+        <div class="custom-polyhedron-editor">
+          <div class="builder-topline">
+            <label><input id="customPolyhedronCheckbox" type="checkbox"><span>Include convex polyhedron</span></label>
+          </div>
+          <label class="field">
+            <span>Integer-lattice polyhedron JSON</span>
+            <textarea id="customPolyhedronInput" rows="9" spellcheck="false">{
+  "name": "User lattice cube",
+  "vertices": [
+    [0,0,0], [1,0,0], [0,1,0], [1,1,0],
+    [0,0,1], [1,0,1], [0,1,1], [1,1,1]
+  ]
+}</textarea>
+          </label>
+          <div id="customPolyhedronStatus" class="custom-shape-match">Faces are optional; the convex hull is inferred.</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="./app.js?v=20260817-exact-rescreen-v34"></script>
+</body>
+</html>

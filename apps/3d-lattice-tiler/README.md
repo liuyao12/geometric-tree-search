@@ -14,7 +14,7 @@ python3 -m http.server 5174
 Then open:
 
 ```text
-http://127.0.0.1:5174/apps/3d-lattice-tiler/
+http://127.0.0.1:5174/3d-lattice-tiler/
 ```
 
 There is no GCTS runtime in this app. `engine.js` owns tile geometry, candidate

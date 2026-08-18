@@ -46,7 +46,7 @@ circle makes three or more contacts at once.
 
 ## Run
 
-Open the browser app at [`apps/circle-packing-search/`](../apps/circle-packing-search/)
+Open the browser app at [`circle-packing-search/`](./)
 through the repository's static server, or use the Python reference CLI below.
 The browser implementation shares the same move grammar and adds pausable,
 single-step tree search with a live contact-graph drawing.
