@@ -1647,8 +1647,26 @@ the same `8 / 20`. Multiplicity-first and score-times-multiplicity select only
 `14 / 20` exact paths (`52 / 60` correct moves); adding `0.1 log(multiplicity)`
 merely ties the broad score at `15 / 20` (`53 / 60`). The count remains useful
 for displaying commuting red flashes, but is rejected as a pruning value.
-The unchanged `16 / 20` portfolio terminal value remains best: proposal supply
-is solved on development data, while transferable terminal valuation is open.
+The unchanged `16 / 20` portfolio terminal value remains best among these
+pruning controls: proposal supply is solved on development data, while
+transferable terminal valuation is open.
+
+A subsequent local-section value improves that baseline without changing the
+portfolio states. For each proposed colored attachment, a fixed 180-component
+tensor bins distances and pair angles to species-labelled atoms that are
+already occupied. It is invariant under translation and proper rotation,
+uses no lattice coordinates or absolute origin, and receives no future or
+target atom. Whole-nucleus inner selection chooses among base, radial,
+radial+base, radial+angular, and combined representations. Its five outer-fold
+choices are `radial:k1`, `base+section:k3`, `base:k9`, `section:k15`, and
+`base+radial:k3`. The result is `17 / 20` exact terminals and `55 / 60`
+correct moves from the same `18 / 20` supply—a one-nucleus improvement, but
+still below gate. Adding pairwise shared-neighbor slack/balance remains
+`17 / 20` and drops to `54 / 60`; legacy atom-centred prototype-closure
+features are selected in zero folds. The compact halo is exposed as an
+experimental marking-library representation. Its distance/angle tensor is
+also mirror-invariant; preserving chirality requires a future explicit proper-
+frame channel.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

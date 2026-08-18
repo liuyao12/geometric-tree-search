@@ -3642,6 +3642,23 @@ score at `15 / 20` and `53 / 60`. Order multiplicity is therefore retained as
 a truthful visualization of commuting moves, not promoted to a GCTS value
 channel.
 
+The next value is a genuine local section rather than another branch-score
+transform. A fixed 180-component tensor records species-resolved radial and
+pair-angle histograms between the three proposed colored attachments and atoms
+already occupied by the search. It is invariant under proper SE(3), contains
+no lattice coordinates or absolute origin, and cannot alter the frozen action
+geometry. Nested whole-nucleus selection chooses representations
+`radial / base+section / base / section / base+radial` with neighbor counts
+`1 / 3 / 9 / 15 / 3`. On the same 20 outer nuclei it selects `17 / 20` exact
+terminals and `55 / 60` correct moves from `18 / 20` terminal supply, improving
+the fixed portfolio by one exact nucleus but remaining below the `18 / 20`
+gate. A larger joint-support tensor stays at 17 and loses one correct move;
+legacy atom-centred prototype-closure scalars are chosen in zero folds. Only
+the compact halo enters the experimental marking library. Because radial and
+pair-angle invariants also quotient reflection, this version reports
+`chirality_preserved=false`; a chiral material needs an explicit proper-frame
+channel before this representation can authorize a claim.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

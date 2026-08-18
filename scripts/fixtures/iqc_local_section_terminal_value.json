@@ -1,0 +1,44 @@
+{
+  "format": "iqc-local-section-terminal-value-v1",
+  "source_fixture": "iqc_marking_portfolio_terminal_value.json",
+  "source_fixture_sha256": "02ddd6e599c1ee259ff5e3bbd0ec1f80331850ef04cc8399ebceb6284db12df1",
+  "groups": 20,
+  "terminal_supply": 18,
+  "baseline_selected_exact": 16,
+  "baseline_selected_correct": 54,
+  "schema": {
+    "species": ["X", "Y", "Z"],
+    "distance_scale": "training-frozen nearest-neighbor unit",
+    "radial_bin_width": 0.5,
+    "radial_bins": 8,
+    "angular_cutoff": 3.0,
+    "angular_bins": 6,
+    "features": 180,
+    "proper_se3_invariant": true,
+    "lattice_coordinates_used": false,
+    "chirality_preserved": false
+  },
+  "representations": ["base", "radial", "base-radial", "section", "base-section"],
+  "candidate_neighbors": [1, 3, 5, 9, 15, 25],
+  "selected_representations": ["radial", "base-section", "base", "section", "base-radial"],
+  "selected_neighbors": [1, 3, 9, 15, 3],
+  "inner_selected_exact": [23, 25, 22, 23, 25],
+  "inner_supplied": [25, 26, 25, 26, 25],
+  "fold_digests": [
+    "6071a61f88af77abad27245e2e1cc43fb4400d3385202f3c3429e66d676d2be2",
+    "572f88cad4d759a2f056080e8135b25e32c978cdbc8143a4930a860ad72cadd1",
+    "75fd344ada86f077a06df14a4cc79123a7a5fe976e5e5f7c41dfdd559cd6eeff",
+    "b613d437d30be42c7b05f0abaa88dee1639b9ad44bb27c200f92183176cd6a95",
+    "e91f4fae147dc2a4f995f0dd5e2d7b74df73a7d92c83a97eb295d6a12e01cfad"
+  ],
+  "combined_digest": "c9052f32230d616ea8d6acd7f11eec1f1cde384da18a40331b4a8d329fd4221e",
+  "selected_exact": 17,
+  "selected_correct": 55,
+  "mixed_top_ties": 0,
+  "joint_support_control": {"selected_exact": 17, "selected_correct": 54},
+  "prototype_closure_selected_folds": 0,
+  "development_gate": {"minimum_selected_exact": 18},
+  "target_used_before_selection": false,
+  "fresh_confirmation_opened": false
+}
+
