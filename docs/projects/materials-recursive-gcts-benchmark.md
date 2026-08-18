@@ -2344,6 +2344,17 @@ and pre-target trace digest
 `d2a0290f5bf819a7234803b71ac38fcb539e8ace4409b8156e2c73aeb6f6e49d`
 freeze the failure. Conditional branch selection is green; autonomous top-one,
 sustained, stationary, and exponential IQC growth remain red.
+Post-confirmation replay on this now-consumed development nucleus separates
+supply from value. The tree contains one exact path, whose within-parent ranks
+are `1 / 4 / 4`; exact-candidate counts are `1 / 7 / 7`, and the exact prefix
+survives every depth. Yet cumulative state probability ranks that path 10th of
+10 terminal configurations, while the selected path has truth pattern
+`exact / false / false`. Group-heldout capacity controls show that beam
+4 / 8 / 16 at action reach four all retain exact paths in only 6 / 10 training
+nuclei and select 4 / 10; reach eight plus beam sixteen reaches only 7 / 10
+supply and still 4 / 10 selection. Individual correct-action ranks reach 17,
+28, and 847. Hence neither raw width nor geometry is the accepted fix: the
+next gate is a learned recurrent branch value with bounded search cost.
 
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is

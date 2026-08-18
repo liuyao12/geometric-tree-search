@@ -1481,6 +1481,13 @@ configurations at every depth. Its selected self-fed branch emitted three
 colored sites. Posthoc only `1 / 3` was exact. Thus the conditional `8 / 8`
 gate remains useful evidence for the marking representation, but the first
 autonomous top-one gate is red; no sustained or exponential claim follows.
+Post-confirmation diagnosis finds one all-exact path in the frozen tree, with
+within-parent ranks `1 -> 4 -> 4`, but cumulative pose-port probability ranks
+it 10th of 10 distinct terminal configurations. The selected path is
+`exact -> false -> false`. Merely widening the retained beam from 4 to 16
+does not repair grouped training supply; some held-out correct actions occur at
+ranks 17, 28, and 847. The next gate is therefore a transferable recurrent
+branch value at bounded reach, not a cosmetically enormous beam.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

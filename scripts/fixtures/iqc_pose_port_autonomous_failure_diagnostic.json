@@ -1,0 +1,35 @@
+{
+  "confirmation_candidate_digest": "028acae9f4c2105f506b06de0e2c8d6aa238bd8d6e7fb3932c8d682af148529e",
+  "confirmation_trace_digest": "d2a0290f5bf819a7234803b71ac38fcb539e8ace4409b8156e2c73aeb6f6e49d",
+  "confirmation_exact_candidates_by_depth": [1, 7, 7],
+  "confirmation_exact_prefixes_by_depth": [1, 1, 1],
+  "confirmation_exact_path_within_parent_ranks": [1, 4, 4],
+  "confirmation_selected_action_exact": [true, false, false],
+  "confirmation_distinct_terminal_configurations": 10,
+  "confirmation_exact_terminal_configurations": 1,
+  "confirmation_exact_terminal_cumulative_rank": 10,
+  "training_group_stage_first_exact_ranks": [
+    [1, 1, 1],
+    [9, 1, 11],
+    [1, 7, null],
+    [7, 9, 28],
+    [1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1],
+    [1, 1, 1],
+    [7, 28, 847],
+    [17, 1, null]
+  ],
+  "capacity_audits": [
+    {"action_reach": 4, "beam_width": 4, "groups_with_exact_path": 6, "groups_selected_exact": 4},
+    {"action_reach": 4, "beam_width": 8, "groups_with_exact_path": 6, "groups_selected_exact": 4},
+    {"action_reach": 4, "beam_width": 16, "groups_with_exact_path": 6, "groups_selected_exact": 4},
+    {"action_reach": 8, "beam_width": 4, "groups_with_exact_path": 6, "groups_selected_exact": 4},
+    {"action_reach": 8, "beam_width": 8, "groups_with_exact_path": 6, "groups_selected_exact": 4},
+    {"action_reach": 8, "beam_width": 16, "groups_with_exact_path": 7, "groups_selected_exact": 4}
+  ],
+  "target_status": "consumed confirmation reused only for posthoc diagnosis",
+  "supply_conclusion": "the confirmation contains one exact path, but small train-heldout trees do not provide complete supply",
+  "value_conclusion": "the exact confirmation path is generated but cumulative pose-port probability ranks it last among ten terminal configurations",
+  "next_gate": "learn a transferable recurrent branch value with bounded action reach before another sealed nucleus"
+}
