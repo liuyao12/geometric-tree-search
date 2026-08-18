@@ -3455,6 +3455,27 @@ correct sites, while making no compression claim. Because the Cd--Yb threshold
 fails closed, this machinery is not yet deployed on a new Cd--Yb target. No new
 Cd--Yb target is used in fitting or these controls.
 
+### Bounded recurrent branch value
+
+The first autonomous pose-port confirmation fails in value rather than
+geometry: its exact three-action terminal configuration is present but ranks
+tenth. A geometry-only maximin expansion adds twelve development nuclei and
+retains every one regardless of outcome. The resulting 30-group corpus has
+354 invariant depth-three branches, 211 exact, and exact supply in 21 groups.
+The cumulative state-probability product selects 17 / 21. A target-free
+nearest-recurrent value uses nine proper-SE(3)-invariant branch measurements
+plus the order-independent action-color population. Whole-group selection
+chooses `k = 9` and selects 20 / 21 exact branches (`95.24%`) without changing
+the candidate set. Its frozen model digest is
+`dcaae79dc2a8c3edf1caec7fc32b05054077c125e8b1e5ad93c11e8097be56ce`.
+
+Reusing the already-consumed failure only after fitting moves its exact branch
+from rank 10 to rank 1. Refitting the upstream finite pose-port model on all 30
+groups gives 12 / 12 exact terminal configurations on that diagnostic. This
+is green development evidence only. A separately committed, atom-domain-
+disjoint seed must execute before one target-open call to establish a new
+autonomous result; no stationary or exponential IQC claim follows yet.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

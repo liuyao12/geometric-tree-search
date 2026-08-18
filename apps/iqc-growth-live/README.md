@@ -1498,6 +1498,27 @@ does not repair grouped training supply; some held-out correct actions occur at
 ranks 17, 28, and 847. The next gate is therefore a transferable recurrent
 branch value at bounded reach, not a cosmetically enormous beam.
 
+That value now clears a development gate. Twelve additional nuclei are chosen
+by a geometry-only maximin rule, at least 47.17 units from the prior centres
+and 44.72 units from one another, and all are retained regardless of their
+labels. Across the resulting 30 spatial groups, the fixed reach-four /
+beam-four / depth-three search produces 354 terminal branches, 211 exact, with
+exact alternatives in 21 groups. The cumulative pose-port product selects an
+exact branch in 17 / 21. A group-heldout nearest-recurrent value appends only
+the order-independent action-color population to nine invariant branch
+statistics; train-only capacity selection chooses `k = 9` and reaches 20 / 21
+(`95.24%`) with identical candidates. The frozen model digest is
+`dcaae79dc2a8c3edf1caec7fc32b05054077c125e8b1e5ad93c11e8097be56ce`.
+
+On the already-consumed diagnostic tree, this model moves the sole exact
+terminal configuration from rank 10 to rank 1. When the upstream finite
+pose-port state model is also refit on all 30 groups, the same target-free tree
+contains 12 / 12 exact terminal configurations and the recurrent value selects
+one. These are post-development diagnostics, not another confirmation. A new
+maximin, atom-domain-disjoint nucleus must still execute from its seed before
+its target is opened; sustained, stationary, and exponential IQC growth remain
+red.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
