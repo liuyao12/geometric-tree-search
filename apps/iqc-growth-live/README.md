@@ -1372,8 +1372,11 @@ order-two patterns, and the child successor into one directed record. Geometry
 is frozen before labels enter; a path is positive only when both placements
 are correct. Scoring each root by its best supported four-child continuation
 raises selection to 33 / 36 and 16 / 18 exact nuclei. The remaining supply
-audit finds a correct child only near rank 13 in one failed nucleus, motivating
-a wider bounded tree while the confirmation remains sealed.
+audit finds a correct child only near rank 13 in one failed nucleus. Widening
+the exact tree from four to sixteen children supplies four exact paths there,
+but remains 33 / 36; two other nuclei expose no exact immediate child at all.
+The residual problem is transfer and connection closure, not branch width, and
+the confirmation remains sealed.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

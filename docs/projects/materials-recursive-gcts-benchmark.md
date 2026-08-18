@@ -2216,9 +2216,12 @@ four train-supported child continuations. This reaches 33 / 36 actions and 16
 / 18 exact nuclei, compared with 31 / 36 for both one-step and pooled two-step
 values. A separate supply check places the first exact child at rank 13 for one
 remaining failed nucleus, while two other nuclei expose no exact immediate
-child for otherwise correct roots. Branch width is therefore justified as a
-development variable, but finite connection vocabulary remains a distinct
-limit. The reserved confirmation remains unopened.
+child for otherwise correct roots. The same audit widened from four to sixteen
+children, producing 164--242 paths per heldout nucleus and four exact paths in
+the former rank-13 failure. Selection nevertheless remains 33 / 36. Tree width
+is therefore rejected as the missing value; score transfer and finite
+connection closure remain distinct limits. The reserved confirmation remains
+unopened.
 
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is

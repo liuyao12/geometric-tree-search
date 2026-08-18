@@ -76,7 +76,10 @@ class IQCPathConditionedSuccessorAudit:
     honest_status: str
 
 
-def evaluate() -> IQCPathConditionedSuccessorAudit:
+def evaluate(path_branching: int = PATH_BRANCHING) \
+        -> IQCPathConditionedSuccessorAudit:
+    if path_branching < 1 or path_branching > 16:
+        raise ValueError("path branching must be between one and sixteen")
     (sources, connection, groups, _statistics_rows, outer_models,
      shortlists, required, root_descriptors, successor_states,
      _outgoing_counts, additive) = _build_successor_fixture()
@@ -92,7 +95,7 @@ def evaluate() -> IQCPathConditionedSuccessorAudit:
             children = tuple(sorted(outgoing, key=lambda point: (
                 -future.votes[point],
                 -sum(future.parent_votes.get(point, {}).values()), point))[
-                    :PATH_BRANCHING])
+                    :path_branching])
             records = []
             for point in children:
                 color = _dominant_source_color(future, point)
@@ -181,7 +184,7 @@ def evaluate() -> IQCPathConditionedSuccessorAudit:
         for index in range(len(groups)))
     passed = selected.selected_correct_actions == 2 * len(groups)
     return IQCPathConditionedSuccessorAudit(
-        len(groups), PATH_BRANCHING, heldout_paths, heldout_exact,
+        len(groups), path_branching, heldout_paths, heldout_exact,
         hashlib.sha256(repr(tuple(sorted((key, tuple(
             descriptor for descriptor, _point, _color in rows))
             for key, rows in paths.items()))).encode()).hexdigest(),
@@ -198,8 +201,9 @@ def evaluate() -> IQCPathConditionedSuccessorAudit:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--branching", type=int, default=PATH_BRANCHING)
     args = parser.parse_args()
-    report = evaluate()
+    report = evaluate(args.branching)
     print(json.dumps(asdict(report), indent=2, sort_keys=True)
           if args.json else report)
 
