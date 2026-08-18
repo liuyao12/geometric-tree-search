@@ -2199,9 +2199,13 @@ order-two incidences, and normalized distances. The development target is used
 only for fold labels, never to construct the successor. Across folds, 19--46
 unique candidate successors are evaluated per nucleus. With support/group
 floors 16/4 and unit mixing, the value selects 31 / 36 rather than 30 / 36.
-One previously all-wrong nucleus becomes exact. Five actions still fail, so
-the next justified experiment is a bounded second successor step; the reserved
-confirmation remains sealed.
+One previously all-wrong nucleus becomes exact. A bounded second step then
+executes the four strongest target-free outgoing children of every root. It
+evaluates 76--184 child branches per nucleus and increases supported rollout
+tokens from 115--134 to 251--275 at the strictest floor, but selection remains
+exactly 31 / 36. Thus another unordered frontier shell is not the missing
+value; the next representation must retain which port obligation survives
+along which root-to-child path. The reserved confirmation remains sealed.
 
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is

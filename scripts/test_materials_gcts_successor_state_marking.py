@@ -5,7 +5,8 @@ from collections import Counter
 
 from materials_gcts_recursive_connections import (
     LocalClusterType, MarkedProposalResult, RecursiveConnectionState)
-from materials_gcts_successor_state_marking import successor_state_descriptor
+from materials_gcts_successor_state_marking import (
+    rollout_state_descriptor, successor_state_descriptor)
 
 
 def fixture(transform=lambda point: point):
@@ -37,6 +38,12 @@ def main():
     assert descriptor == rotated_descriptor
     assert ("successor-outgoing-count", 2) in descriptor.tokens
     assert any(token[0] == "successor-pattern" for token in descriptor.tokens)
+    rollout = rollout_state_descriptor(
+        descriptor, (rotated_descriptor, descriptor))
+    reversed_rollout = rollout_state_descriptor(
+        descriptor, (descriptor, rotated_descriptor))
+    assert rollout == reversed_rollout
+    assert ("rollout-branch-count", 2) in rollout.tokens
     try:
         successor_state_descriptor(
             first, new_parent_index=1, new_parent_position=parent,

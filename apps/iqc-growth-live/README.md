@@ -1360,7 +1360,11 @@ the newly exposed frontier. It never sees the target during rollout. The
 strongest independently supported successor section improves selection from
 30 / 36 to 31 / 36, fixing one prior all-wrong nucleus. Five actions remain
 wrong, so this is a positive development result rather than permission to open
-the reserved confirmation. A bounded second successor step is next.
+the reserved confirmation. A bounded second successor step evaluates 76--184
+child branches per nucleus and increases the supported rollout vocabulary, but
+remains exactly 31 / 36. The informative object is therefore not another
+unordered frontier shell; it is the obligation carried along a particular
+root-to-child path.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

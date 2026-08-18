@@ -73,3 +73,30 @@ def successor_state_descriptor(
                   for role, _count in state.roles)
     tokens.update(("successor-pattern", pattern) for pattern in patterns)
     return CandidateIncidenceDescriptor(tuple(sorted(tokens, key=repr)))
+
+
+ROLLOUT_TOKEN_FAMILIES = frozenset((
+    "successor-frontier-count", "successor-outgoing-count",
+    "successor-vote-mass", "successor-max-vote",
+    "successor-parent-mass", "successor-max-parent-mass",
+    "successor-source-colors", "successor-predicted-colors",
+    "successor-distance", "successor-coarse-role"))
+
+
+def rollout_state_descriptor(
+        root: CandidateIncidenceDescriptor,
+        branches) -> CandidateIncidenceDescriptor:
+    """Aggregate an unordered bounded set of next-successor descriptors."""
+    branches = tuple(branches)
+    tokens = {("rollout-branch-count", _bucket(len(branches)))}
+    tokens.update(("rollout-root", token) for token in root.tokens)
+    counts = Counter(token for branch in branches for token in branch.tokens
+                     if token[0] in ROLLOUT_TOKEN_FAMILIES)
+    tokens.update(("rollout-child-token", token, _bucket(count))
+                  for token, count in counts.items())
+    summaries = Counter(tuple(token for token in branch.tokens
+                              if token[0] in ROLLOUT_TOKEN_FAMILIES)
+                        for branch in branches)
+    tokens.update(("rollout-child-state", state, _bucket(count))
+                  for state, count in summaries.items())
+    return CandidateIncidenceDescriptor(tuple(sorted(tokens, key=repr)))

@@ -104,7 +104,7 @@ def _row_key(row):
     return row.group, row.point, row.color
 
 
-def evaluate() -> IQCSuccessorStateValueAudit:
+def _build_successor_fixture():
     sources, _crop_counts, connection = _expanded_fixture()
     groups = _candidate_groups_for_geometry(
         sources, neighborhood_reach=3., distance_bin_width=.25,
@@ -134,6 +134,7 @@ def evaluate() -> IQCSuccessorStateValueAudit:
                               ACTIONS_PER_NUCLEUS)))
 
     descriptors = {}
+    successor_states = {}
     outgoing_counts = [[] for _ in groups]
     for group_index, (source, rows) in enumerate(zip(sources, required)):
         for key, row in rows.items():
@@ -148,10 +149,20 @@ def evaluate() -> IQCSuccessorStateValueAudit:
                 minimum_distance=row.minimum_distance,
                 distance_scale=HIDDEN_UNIT)
             descriptors[key] = descriptor
+            successor_states[key] = (positions, colors, future, new_parent)
             outgoing_counts[group_index].append(len(successor_outgoing_points(
                 future, new_parent_index=new_parent,
                 occupied_positions=positions,
                 minimum_distance=row.minimum_distance)))
+    return (sources, connection, groups, statistics, tuple(outer_models),
+            tuple(shortlists), tuple(required), descriptors, successor_states,
+            tuple(tuple(rows) for rows in outgoing_counts), tuple(additive))
+
+
+def evaluate() -> IQCSuccessorStateValueAudit:
+    (sources, _connection, groups, _statistics_rows, outer_models,
+     shortlists, required, descriptors, _successor_states, outgoing_counts,
+     additive) = _build_successor_fixture()
 
     specs = tuple(SuccessorValueSpec(*row) for row in SUCCESSOR_GRID)
     audits = []
