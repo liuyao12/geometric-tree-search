@@ -3,6 +3,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 const viewport = document.getElementById("viewport");
 const substituteButton = document.getElementById("substitute-button");
+const backButton = document.getElementById("back-button");
 const generationValue = document.getElementById("generation-value");
 const tileValue = document.getElementById("tile-value");
 const orientationPlot = document.getElementById("orientation-plot");
@@ -436,35 +437,57 @@ function setVisualOpacity(visual, amount) {
   }
 }
 
-function applySubstitution() {
-  if (generation >= MAX_GENERATION || transition) return;
-  const nextWords = substitute(subdivisionWords);
-  fixedPath.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[BASE_DEPTH + generation]]);
-  const normalization = fixedPath.clone().invert();
-  const expandedTransforms = nextWords.map((word) => normalization.clone().multiply(word));
+function stateAtGeneration(targetGeneration) {
+  let words = [new THREE.Matrix4()];
+  const path = new THREE.Matrix4();
+  const depthLimit = BASE_DEPTH + targetGeneration;
+  for (let depth = 0; depth < depthLimit; depth += 1) {
+    words = substitute(words);
+    path.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]]);
+  }
+  const normalization = path.clone().invert();
+  return {
+    words,
+    path,
+    transforms: words.map((word) => normalization.clone().multiply(word))
+  };
+}
+
+function updateActionButtons() {
+  const busy = Boolean(transition);
+  backButton.disabled = busy || generation <= 0;
+  substituteButton.disabled = busy || generation >= MAX_GENERATION;
+  substituteButton.querySelector("span").textContent = generation >= MAX_GENERATION
+    ? "Maximum expansion reached"
+    : "Apply one more expansion";
+}
+
+function showGeneration(targetGeneration) {
+  if (transition || targetGeneration < 0 || targetGeneration > MAX_GENERATION || targetGeneration === generation) return;
+  const direction = targetGeneration > generation ? 1 : -1;
+  const nextState = stateAtGeneration(targetGeneration);
+  const expandedTransforms = nextState.transforms;
   currentExpandedTransforms = expandedTransforms;
   const nextVisual = makeVisual(expandedTransforms);
   setVisualOpacity(nextVisual, 0);
   content.add(nextVisual.group);
 
-  generation += 1;
-  subdivisionWords = nextWords;
+  generation = targetGeneration;
+  subdivisionWords = nextState.words;
+  fixedPath = nextState.path;
   generationValue.textContent = String(generation);
   tileValue.textContent = subdivisionWords.length.toLocaleString();
   drawOrientationBall(expandedTransforms);
-  if (generation >= MAX_GENERATION) {
-    substituteButton.disabled = true;
-    substituteButton.querySelector("span").textContent = "Two centered expansions shown";
-  }
 
   const cameraOffset = camera.position.clone().sub(controls.target);
-  const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(2));
+  const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(direction > 0 ? 2 : 0.5));
 
   if (prefersReducedMotion) {
     disposeVisual(currentVisual);
     currentVisual = nextVisual;
     setVisualOpacity(nextVisual, 1);
     camera.position.copy(cameraDestination);
+    updateActionButtons();
     return;
   }
 
@@ -476,9 +499,11 @@ function applySubstitution() {
     cameraStart: camera.position.clone(),
     cameraDestination
   };
+  updateActionButtons();
 }
 
-substituteButton.addEventListener("click", applySubstitution);
+substituteButton.addEventListener("click", () => showGeneration(generation + 1));
+backButton.addEventListener("click", () => showGeneration(generation - 1));
 
 function resize() {
   const width = Math.max(1, viewport.clientWidth);
@@ -507,6 +532,7 @@ function animate(time) {
       disposeVisual(transition.from);
       currentVisual = transition.to;
       transition = null;
+      updateActionButtons();
     }
   }
   renderer.render(scene, camera);
