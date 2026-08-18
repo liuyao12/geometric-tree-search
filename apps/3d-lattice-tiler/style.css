@@ -358,7 +358,7 @@ input[type="text"]:focus {
 
 .action-row {
   display: grid;
-  grid-template-columns: minmax(88px, 1fr) minmax(154px, 178px) auto;
+  grid-template-columns: minmax(154px, 178px) minmax(88px, 1fr) auto;
   gap: 8px;
   align-items: stretch;
 }
@@ -366,10 +366,10 @@ input[type="text"]:focus {
 .frontier-select-field {
   min-width: 0;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 6px;
-  align-items: center;
-  padding: 0 7px;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0;
+  align-items: stretch;
+  padding: 3px 7px 2px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--surface);
@@ -386,7 +386,7 @@ input[type="text"]:focus {
 
 .frontier-select-field select {
   width: 100%;
-  padding: 7px 0;
+  padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
