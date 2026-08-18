@@ -2299,6 +2299,20 @@ of eight. Because heldout truth constructs the exact prefix, this is explicitly
 a conditional search audit, not autonomous continuation, stationarity, or an
 exponential IQC certificate.
 
+The corresponding orientation-capacity control holds every exact candidate
+fixed and augments only its marking descriptor. Attachment axes are encoded by
+dot products and signed triple products in the occupied local frame, quotienting
+global proper rotation and translation while preserving chirality. A grouped
+training comparison over angular widths 0.125 / 0.25 / 0.5 and additive versus
+one-vote-per-channel scoring selects width 0.125 with channel normalization:
+it ranks an exact action first in 23 of 28 eligible training stages and retains
+28,558 weighted tokens. Heldout transfer is negative. The first-exact ranks are
+`5 / 1 / 7 / 6 / 1 / 3 / 3 / 3`, only two of eight top-one choices are exact,
+and the required conditional beam widens from four to seven. Hence observed
+cluster rotations are an input to the marking representation, but raw rotation
+cardinality is not the channel count. Capacity remains admissible only when a
+finite recurrent pose × port quotient improves heldout evidence.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

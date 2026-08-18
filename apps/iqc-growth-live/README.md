@@ -1444,6 +1444,20 @@ Heldout truth constructs the exact prefix and scores the frozen frontier, so
 this explicitly does **not** certify autonomous, sustained, stationary, or
 exponential IQC growth.
 
+An orientation-capacity ablation then asks whether the missing value is simply
+the cluster rotation channel requested by the UI. Candidate attachment axes
+are expressed only through dot products and signed triple products relative to
+the occupied neighborhood, so global proper rotation and translation are
+quotiented while chirality is retained. Angular widths 0.125 / 0.25 / 0.5 and
+additive versus one-vote-per-channel scoring are selected strictly by grouped
+training stages. The train winner uses width 0.125 and channel scoring, reaches
+`23 / 28` eligible stages, and retains 28,558 weighted tokens. On the eight
+conditional heldout frontiers, however, first-exact ranks worsen to
+`5 / 1 / 7 / 6 / 1 / 3 / 3 / 3` and top-one falls from `4 / 8` to `2 / 8`.
+This is why the interface reports observed symmetry-inequivalent poses but
+derives Auto capacity from recurrent pose × connection-port rank: one channel
+per observed rotation is a high-cardinality overfit, not a GCTS principle.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
