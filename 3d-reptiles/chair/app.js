@@ -8,6 +8,7 @@ const generationValue = document.getElementById("generation-value");
 const tileValue = document.getElementById("tile-value");
 const volumeValue = document.getElementById("volume-value");
 const hierarchyPlot = document.getElementById("hierarchy-plot");
+const chairColorFilter = document.getElementById("chair-color-filter");
 const tileSelect = document.getElementById("tile-select");
 
 tileSelect.addEventListener("change", () => {
@@ -117,6 +118,41 @@ function orientationIndex(missingCorner) {
   return missingCorner[0] + 2 * missingCorner[1] + 4 * missingCorner[2];
 }
 
+const chairOrientationKeys = [...new Set(
+  CANONICAL_CHILDREN.map(([, missingCorner]) => orientationIndex(missingCorner))
+)];
+let selectedChairOrientation = null;
+
+function updateChairColorButtons() {
+  chairColorFilter.querySelectorAll("button").forEach((button) => {
+    const key = Number(button.dataset.orientation);
+    const active = key === selectedChairOrientation;
+    button.setAttribute("aria-pressed", String(active));
+    button.classList.toggle("is-muted", selectedChairOrientation !== null && !active);
+  });
+}
+
+for (const key of chairOrientationKeys) {
+  const button = document.createElement("button");
+  const bits = [key & 1, (key >> 1) & 1, (key >> 2) & 1].join("");
+  button.type = "button";
+  button.dataset.orientation = String(key);
+  button.style.setProperty("--swatch", `#${ORIENTATION_COLORS[key].toString(16).padStart(6, "0")}`);
+  button.setAttribute("aria-label", `Highlight chairs missing corner ${bits}`);
+  button.setAttribute("aria-pressed", "false");
+  button.title = `Missing corner ${bits}`;
+  button.addEventListener("click", () => {
+    selectedChairOrientation = selectedChairOrientation === key ? null : key;
+    updateChairColorButtons();
+    refreshChairHighlight(currentVisual);
+    if (transition) {
+      refreshChairHighlight(transition.from);
+      refreshChairHighlight(transition.to);
+    }
+  });
+  chairColorFilter.appendChild(button);
+}
+
 function leafCells(leaf) {
   const cells = [];
   for (let x = 0; x < 2; x += 1) {
@@ -176,10 +212,12 @@ function makeVisual(level) {
   const group = new THREE.Group();
   const materials = [];
   const geometries = [];
+  const chairs = [];
   const faceOpacity = Math.max(0.035, 0.2 / (2 ** level));
   const edgeOpacity = Math.max(0.11, 0.58 / (2 ** level));
   for (const leaf of leaves) {
-    const color = new THREE.Color(ORIENTATION_COLORS[orientationIndex(leaf.missingCorner)]);
+    const orientation = orientationIndex(leaf.missingCorner);
+    const color = new THREE.Color(ORIENTATION_COLORS[orientation]);
     const geometry = makeChairGeometry(leaf);
     const faceMaterial = new THREE.MeshBasicMaterial({
       color,
@@ -208,6 +246,7 @@ function makeVisual(level) {
     group.add(edges);
     geometries.push(geometry, edgeGeometry);
     materials.push(faceMaterial, edgeMaterial);
+    chairs.push({ orientation, faceMaterial, edgeMaterial });
   }
   const parent = makeParentOutline(size);
   group.position.set(-size / 2, -size / 2, -size / 2);
@@ -219,6 +258,7 @@ function makeVisual(level) {
     group,
     level,
     leaves,
+    chairs,
     materials,
     geometries
   };
@@ -226,7 +266,24 @@ function makeVisual(level) {
 
 function setVisualOpacity(visual, amount) {
   for (const material of visual.materials) {
-    material.opacity = (material.userData.baseOpacity ?? 0.52) * amount;
+    material.userData.transitionAmount = amount;
+    material.opacity = (material.userData.baseOpacity ?? 0.52)
+      * (material.userData.highlightFactor ?? 1)
+      * amount;
+  }
+}
+
+function refreshChairHighlight(visual) {
+  if (!visual) return;
+  for (const chair of visual.chairs) {
+    const highlighted = selectedChairOrientation === null || chair.orientation === selectedChairOrientation;
+    chair.faceMaterial.userData.highlightFactor = highlighted ? 1 : 0.08;
+    chair.edgeMaterial.userData.highlightFactor = highlighted ? 1 : 0.12;
+  }
+  for (const material of visual.materials) {
+    material.opacity = (material.userData.baseOpacity ?? 0.52)
+      * (material.userData.highlightFactor ?? 1)
+      * (material.userData.transitionAmount ?? 1);
   }
 }
 
@@ -262,6 +319,7 @@ function showGeneration(targetGeneration) {
   if (transition || targetGeneration < 0 || targetGeneration > MAX_GENERATION || targetGeneration === generation) return;
   const direction = targetGeneration > generation ? 1 : -1;
   const nextVisual = makeVisual(targetGeneration);
+  refreshChairHighlight(nextVisual);
   setVisualOpacity(nextVisual, 0);
   root.add(nextVisual.group);
   generation = targetGeneration;

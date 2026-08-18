@@ -108,6 +108,29 @@ makeOrientationDiameter(new THREE.Vector3(1, 0, 0), 0xd16f59);
 makeOrientationDiameter(new THREE.Vector3(0, 1, 0), 0x4f81ad);
 makeOrientationDiameter(new THREE.Vector3(0, 0, 1), 0x4f9179);
 
+function makeOrientationCircle(color, opacity) {
+  const points = [];
+  for (let index = 0; index < 128; index += 1) {
+    const angle = (index / 128) * Math.PI * 2;
+    points.push(new THREE.Vector3(Math.cos(angle), Math.sin(angle), 0));
+  }
+  const circle = new THREE.LineLoop(
+    new THREE.BufferGeometry().setFromPoints(points),
+    new THREE.LineBasicMaterial({ color, transparent: true, opacity, depthWrite: false, depthTest: false })
+  );
+  circle.renderOrder = 2;
+  orientationScene.add(circle);
+  return circle;
+}
+
+const xyGreatCircle = makeOrientationCircle(0x4f9179, 0.28);
+const xzGreatCircle = makeOrientationCircle(0x4f81ad, 0.28);
+xzGreatCircle.rotation.x = Math.PI / 2;
+const yzGreatCircle = makeOrientationCircle(0xd16f59, 0.28);
+yzGreatCircle.rotation.y = Math.PI / 2;
+const orientationBoundary = makeOrientationCircle(0x17201e, 0.52);
+orientationBoundary.renderOrder = 3;
+
 const orientationPointGeometry = new THREE.BufferGeometry();
 const orientationPointMaterial = new THREE.PointsMaterial({
   vertexColors: true,
@@ -120,6 +143,21 @@ const orientationPointMaterial = new THREE.PointsMaterial({
 const orientationPoints = new THREE.Points(orientationPointGeometry, orientationPointMaterial);
 orientationPoints.renderOrder = 3;
 orientationScene.add(orientationPoints);
+const orientationSelectionMarker = new THREE.Mesh(
+  new THREE.SphereGeometry(0.105, 16, 12),
+  new THREE.MeshBasicMaterial({
+    color: 0x17201e,
+    transparent: true,
+    opacity: 0.9,
+    wireframe: true,
+    depthTest: false
+  })
+);
+orientationSelectionMarker.visible = false;
+orientationSelectionMarker.renderOrder = 4;
+orientationScene.add(orientationSelectionMarker);
+let orientationPointKeys = [];
+let selectedOrientationKey = null;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -315,9 +353,11 @@ function drawOrientationBall(transforms) {
   );
   const positions = [];
   const colors = [];
+  orientationPointKeys = [];
   for (const quaternion of orientations) {
     const point = axisAnglePoint(quaternion);
     const color = orientationColorFromQuaternion(quaternion);
+    orientationPointKeys.push(orientationKey(quaternion));
     positions.push(point.x, point.y, point.z);
     colors.push(color.r, color.g, color.b);
   }
@@ -325,12 +365,30 @@ function drawOrientationBall(transforms) {
   orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
   orientationPointGeometry.computeBoundingSphere();
   orientationPointMaterial.size = orientations.length > 1500 ? 0.018 : orientations.length > 250 ? 0.026 : orientations.length > 40 ? 0.04 : 0.075;
+  const selectedIndex = orientationPointKeys.indexOf(selectedOrientationKey);
+  orientationSelectionMarker.visible = selectedIndex >= 0;
+  if (selectedIndex >= 0) {
+    orientationSelectionMarker.position.fromArray(positions, selectedIndex * 3);
+    orientationCurrent.textContent = "One orientation is highlighted in the tiling. Click it again to clear.";
+  } else if (selectedOrientationKey !== null) {
+    selectedOrientationKey = null;
+    refreshVisualColors(currentVisual);
+  }
+}
+
+function displayedOrientationColor(matrix) {
+  const color = orientationColor(matrix);
+  if (selectedOrientationKey === null) return color;
+  const key = orientationKey(canonicalQuaternion(matrix));
+  if (key === selectedOrientationKey) return color.offsetHSL(0, 0.14, 0.1);
+  return color.lerp(new THREE.Color(0xaeb8b3), 0.82).multiplyScalar(0.42);
 }
 
 function makeTransparentMaterial({ line = false, opacity } = {}) {
   if (line) {
     const material = new THREE.LineBasicMaterial({
-      color: 0x17201e,
+      color: 0xffffff,
+      vertexColors: true,
       transparent: true,
       depthWrite: false,
       depthTest: true,
@@ -366,7 +424,7 @@ function makeVisual(transforms) {
   const transformed = CANONICAL_VERTICES.map(() => new THREE.Vector3());
 
   for (const matrix of transforms) {
-    const color = orientationColor(matrix);
+    const color = displayedOrientationColor(matrix);
     for (let i = 0; i < CANONICAL_VERTICES.length; i += 1) {
       transformed[i].copy(CANONICAL_VERTICES[i]).applyMatrix4(matrix);
     }
@@ -401,8 +459,69 @@ function makeVisual(transforms) {
 
   const group = new THREE.Group();
   group.add(mesh, edges);
-  return { group, materials: [faceMaterial, edgeMaterial], geometries: [faceGeometry, edgeGeometry] };
+  return { group, transforms, materials: [faceMaterial, edgeMaterial], geometries: [faceGeometry, edgeGeometry] };
 }
+
+function refreshVisualColors(visual) {
+  if (!visual) return;
+  const faceColors = visual.geometries[0].getAttribute("color");
+  const edgeColors = visual.geometries[1].getAttribute("color");
+  let faceOffset = 0;
+  let edgeOffset = 0;
+  for (const matrix of visual.transforms) {
+    const color = displayedOrientationColor(matrix);
+    for (let index = 0; index < FACE_INDICES.length; index += 1) {
+      faceColors.setXYZ(faceOffset++, color.r, color.g, color.b);
+    }
+    for (let index = 0; index < EDGE_INDICES.length; index += 1) {
+      edgeColors.setXYZ(edgeOffset++, color.r, color.g, color.b);
+    }
+  }
+  faceColors.needsUpdate = true;
+  edgeColors.needsUpdate = true;
+}
+
+function selectOrientation(key) {
+  selectedOrientationKey = selectedOrientationKey === key ? null : key;
+  refreshVisualColors(currentVisual);
+  if (transition) {
+    refreshVisualColors(transition.from);
+    refreshVisualColors(transition.to);
+  }
+  const selectedIndex = orientationPointKeys.indexOf(selectedOrientationKey);
+  orientationSelectionMarker.visible = selectedIndex >= 0;
+  if (selectedIndex >= 0) {
+    orientationSelectionMarker.position.fromBufferAttribute(
+      orientationPointGeometry.getAttribute("position"),
+      selectedIndex
+    );
+  }
+  orientationCurrent.textContent = selectedOrientationKey === null
+    ? `${orientationPointKeys.length.toLocaleString()} ${orientationPointKeys.length === 1 ? "occurs" : "occur"} in the current patch.`
+    : "One orientation is highlighted in the tiling. Click it again to clear.";
+}
+
+const orientationRaycaster = new THREE.Raycaster();
+orientationRaycaster.params.Points.threshold = 0.1;
+let orientationPointerStart = null;
+orientationRenderer.domElement.addEventListener("pointerdown", (event) => {
+  orientationPointerStart = { x: event.clientX, y: event.clientY };
+});
+orientationRenderer.domElement.addEventListener("pointerup", (event) => {
+  if (!orientationPointerStart) return;
+  const distance = Math.hypot(event.clientX - orientationPointerStart.x, event.clientY - orientationPointerStart.y);
+  orientationPointerStart = null;
+  if (distance > 5) return;
+  const rect = orientationRenderer.domElement.getBoundingClientRect();
+  const pointer = new THREE.Vector2(
+    ((event.clientX - rect.left) / rect.width) * 2 - 1,
+    -((event.clientY - rect.top) / rect.height) * 2 + 1
+  );
+  orientationRaycaster.setFromCamera(pointer, orientationCamera);
+  const hit = orientationRaycaster.intersectObject(orientationPoints, false)[0];
+  if (hit && Number.isInteger(hit.index)) selectOrientation(orientationPointKeys[hit.index]);
+  else if (selectedOrientationKey !== null) selectOrientation(null);
+});
 
 function makeParentOutline() {
   const points = [];
@@ -468,6 +587,7 @@ function showGeneration(targetGeneration) {
   generationValue.textContent = String(generation);
   tileValue.textContent = subdivisionWords.length.toLocaleString();
   drawOrientationBall(expandedTransforms);
+  refreshVisualColors(nextVisual);
 
   const cameraOffset = camera.position.clone().sub(controls.target);
   const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(direction > 0 ? 2 : 0.5));
@@ -522,6 +642,7 @@ drawOrientationBall(currentExpandedTransforms);
 function animate(time) {
   controls.update();
   orientationControls.update();
+  orientationBoundary.quaternion.copy(orientationCamera.quaternion);
   if (transition) {
     const raw = Math.min(1, (time - transition.start) / transition.duration);
     const eased = raw * raw * (3 - 2 * raw);
