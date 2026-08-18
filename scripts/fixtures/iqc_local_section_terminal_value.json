@@ -37,6 +37,31 @@
   "mixed_top_ties": 0,
   "joint_support_control": {"selected_exact": 17, "selected_correct": 54},
   "prototype_closure_selected_folds": 0,
+  "irregular_support_control": {
+    "independent_geometry_groups": 10,
+    "minimum_group_support": 3,
+    "recurrent_support_types": 53,
+    "support_sizes": [6, 22],
+    "features": 5,
+    "selected_representations": [
+      "partial", "base-section", "base", "base-partial", "base-radial"
+    ],
+    "selected_neighbors": [5, 3, 9, 25, 3],
+    "inner_selected_exact": [24, 25, 22, 24, 25],
+    "inner_supplied": [25, 26, 25, 26, 25],
+    "selected_exact": 17,
+    "selected_correct": 55,
+    "mixed_top_ties": 0,
+    "fold_digests": [
+      "b3db1013537545cacfaef1e8122d267f7d2d00fa6ab3c6de9807165331f30294",
+      "37d13f7d4551a2a22c314e57379b2f612c80f385c76cbdcb0d0efe3e639f8d86",
+      "df6478c140621fd10be130e895bc26e1b159187cb87b90afc5f7b403621bd0f7",
+      "b052786bbcff74ed7d521e2a117f7d20cced2cccd5d768ef8a0489b8c610a635",
+      "cbc6b553bf42c1db8b7152c847f5eb63d43ea7a1541b391e263f49827eb6abef"
+    ],
+    "lattice_coordinates_used": false,
+    "target_used_before_selection": false
+  },
   "explicit_chirality_control": {
     "features": 210,
     "selected_representations": [

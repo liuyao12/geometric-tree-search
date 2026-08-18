@@ -23,6 +23,10 @@ class IQCLocalSectionTerminalAudit:
     gain_over_baseline: int
     joint_support_selected_exact: int
     closure_selected_folds: int
+    irregular_support_types: int
+    irregular_support_selected_folds: int
+    irregular_selected_exact: int
+    irregular_selected_correct: int
     chiral_features: int
     chirality_selected_folds: int
     chiral_selected_exact: int
@@ -44,6 +48,7 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
             data["source_fixture_sha256"]:
         raise AssertionError("terminal-value source changed")
     schema = data["schema"]
+    irregular = data["irregular_support_control"]
     chiral = data["explicit_chirality_control"]
     if (data["groups"] != 20 or data["terminal_supply"] != 18
             or len(data["selected_representations"]) != 5
@@ -61,6 +66,10 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         data["selected_exact"] - data["baseline_selected_exact"],
         data["joint_support_control"]["selected_exact"],
         data["prototype_closure_selected_folds"],
+        irregular["recurrent_support_types"],
+        sum("partial" in row
+            for row in irregular["selected_representations"]),
+        irregular["selected_exact"], irregular["selected_correct"],
         chiral["features"], chiral["chirality_selected_folds"],
         chiral["selected_exact"], chiral["selected_correct"],
         schema["proper_se3_invariant"],

@@ -1673,6 +1673,22 @@ selection falls to `15 / 20` exact terminals (`55 / 60` correct moves). The
 chiral halo therefore remains an opt-in marking-library choice for genuinely
 chiral structures, not the default IQC value.
 
+The cluster-completion control is now genuinely non-centred. Ten geometry-only
+training nuclei are fitted independently; duplicate occurrences or rotational
+copies inside one nucleus contribute only one recurrence vote. Cheap colored
+distance signatures are followed by exact metric-graph isomorphism, so
+homometric collisions remain different classes. Requiring support in at least
+three nuclei retains 53 irregular support types of 6--22 atoms. For each exact
+candidate action, a bounded branch-and-bound section records the largest
+species-preserving partial support containing that action and already occupied
+sites; it never creates a site or reads target atoms. Whole-nucleus nested
+selection uses this partial-support representation in two of five folds, but
+the aggregate remains `17 / 20` exact terminals and `55 / 60` correct moves.
+This rules out both atom-centred closure and full/partial irregular-cluster
+completion as sufficient terminal values. It does not rule out a section over
+the *ports between* those irregular supports, which is the next generic GCTS
+representation to test.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

@@ -14,6 +14,10 @@ def test_local_section_improves_but_does_not_pass_the_sealed_gate():
     assert report.gain_over_baseline == 1
     assert report.joint_support_selected_exact == 17
     assert report.closure_selected_folds == 0
+    assert report.irregular_support_types == 53
+    assert report.irregular_support_selected_folds == 2
+    assert report.irregular_selected_exact == 17
+    assert report.irregular_selected_correct == 55
     assert report.chiral_features == 210
     assert report.chirality_selected_folds == 2
     assert report.chiral_selected_exact == 15
