@@ -18,6 +18,9 @@ def test_local_section_improves_but_does_not_pass_the_sealed_gate():
     assert report.irregular_support_selected_folds == 2
     assert report.irregular_selected_exact == 17
     assert report.irregular_selected_correct == 55
+    assert report.irregular_incidence_selected_folds == 2
+    assert report.irregular_incidence_selected_exact == 17
+    assert report.irregular_incidence_selected_correct == 54
     assert report.chiral_features == 210
     assert report.chirality_selected_folds == 2
     assert report.chiral_selected_exact == 15

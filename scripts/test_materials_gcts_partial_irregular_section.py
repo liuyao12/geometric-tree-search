@@ -33,12 +33,24 @@ def test_partial_section_detects_target_free_cluster_completion():
     assert exact.minimum_matched_fraction == 1.
     assert exact.minimum_matched_atoms == 3
     assert exact.action_matches[0].training_group_support == 4
+    assert exact.action_matches[0].matched_target_indices == (0, 1, 2)
     assert false.minimum_matched_fraction == 1 / 3
     assert exact.minimum_matched_fraction == \
         transformed.minimum_matched_fraction
     assert exact.all_searches_exact
     assert not exact.lattice_coordinates_used
     assert not exact.target_used
+
+
+def test_partial_section_exposes_only_aggregated_support_incidence():
+    row = partial_irregular_section(
+        _prototype(), (4,), ((0., 0., 0.),), ("X",),
+        ((1., 0., 0.), (0., 1., 0.)), ("Y", "Z"))
+    assert row.pair_shared_occupied_atoms == (1,)
+    assert row.minimum_pair_shared_occupied == 1
+    assert row.mean_pair_shared_occupied == 1.
+    assert row.maximum_pair_shared_occupied == 1
+    assert row.connected_action_pairs == 1
 
 
 def test_partial_section_rejects_overlap_and_schema_mismatch():
@@ -59,5 +71,6 @@ def test_partial_section_rejects_overlap_and_schema_mismatch():
 
 if __name__ == "__main__":
     test_partial_section_detects_target_free_cluster_completion()
+    test_partial_section_exposes_only_aggregated_support_incidence()
     test_partial_section_rejects_overlap_and_schema_mismatch()
     print("partial irregular-section tests passed")

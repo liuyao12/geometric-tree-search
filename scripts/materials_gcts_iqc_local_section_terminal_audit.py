@@ -27,6 +27,9 @@ class IQCLocalSectionTerminalAudit:
     irregular_support_selected_folds: int
     irregular_selected_exact: int
     irregular_selected_correct: int
+    irregular_incidence_selected_folds: int
+    irregular_incidence_selected_exact: int
+    irregular_incidence_selected_correct: int
     chiral_features: int
     chirality_selected_folds: int
     chiral_selected_exact: int
@@ -49,6 +52,7 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         raise AssertionError("terminal-value source changed")
     schema = data["schema"]
     irregular = data["irregular_support_control"]
+    incidence = irregular["pair_incidence_control"]
     chiral = data["explicit_chirality_control"]
     if (data["groups"] != 20 or data["terminal_supply"] != 18
             or len(data["selected_representations"]) != 5
@@ -70,6 +74,9 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         sum("partial" in row
             for row in irregular["selected_representations"]),
         irregular["selected_exact"], irregular["selected_correct"],
+        sum("incidence" in row
+            for row in incidence["selected_representations"]),
+        incidence["selected_exact"], incidence["selected_correct"],
         chiral["features"], chiral["chirality_selected_folds"],
         chiral["selected_exact"], chiral["selected_correct"],
         schema["proper_se3_invariant"],

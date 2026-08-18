@@ -30,6 +30,7 @@ class PartialSupportMatch:
     matched_fraction: float
     training_group_support: int
     search_nodes: int
+    matched_target_indices: tuple[int, ...]
 
 
 @dataclass(frozen=True)
@@ -38,6 +39,11 @@ class PartialIrregularSection:
     minimum_matched_fraction: float
     mean_matched_fraction: float
     minimum_matched_atoms: int
+    pair_shared_occupied_atoms: tuple[int, ...]
+    minimum_pair_shared_occupied: int
+    mean_pair_shared_occupied: float
+    maximum_pair_shared_occupied: int
+    connected_action_pairs: int
     all_searches_exact: bool
     lattice_coordinates_used: bool = False
     target_used: bool = False
@@ -59,8 +65,9 @@ def _maximum_anchored_match(
         prototype: FrozenSupportPrototype,
         positions: tuple[Point, ...], labels, anchor_target: int,
         tolerance: float, maximum_search_nodes: int,
-        ) -> tuple[int, int]:
+        ) -> tuple[int, int, tuple[int, ...]]:
     best = 1
+    best_targets = (anchor_target,)
     visited = 0
     for anchor_source, species in enumerate(prototype.species):
         if species != labels[anchor_target]:
@@ -85,12 +92,16 @@ def _maximum_anchored_match(
         used = {anchor_target}
 
         def search(depth: int) -> None:
-            nonlocal best, visited
+            nonlocal best, best_targets, visited
             visited += 1
             if visited > maximum_search_nodes:
                 raise PartialSupportSearchLimit(
                     "partial irregular-support search exceeded its bound")
-            best = max(best, len(mapping))
+            targets = tuple(sorted(mapping.values()))
+            if len(mapping) > best or (len(mapping) == best
+                                       and targets < best_targets):
+                best = len(mapping)
+                best_targets = targets
             if depth == len(order) or \
                     len(mapping) + len(order) - depth <= best:
                 return
@@ -114,7 +125,7 @@ def _maximum_anchored_match(
             search(depth + 1)
 
         search(0)
-    return best, visited
+    return best, visited, best_targets
 
 
 def partial_irregular_section(
@@ -150,20 +161,30 @@ def partial_irregular_section(
         for prototype, groups in zip(prototypes, support):
             if labels[anchor] not in prototype.species:
                 continue
-            matched, visited = _maximum_anchored_match(
+            matched, visited, targets = _maximum_anchored_match(
                 prototype, positions, labels, anchor,
                 vocabulary.distance_tolerance, maximum_search_nodes)
             rows.append((matched / len(prototype.species), matched, groups,
                          -len(prototype.species), -prototype.type_id,
-                         prototype, visited))
+                         prototype, visited, targets))
         if not rows:
             raise ValueError("no frozen support prototype has the action species")
-        fraction, matched, groups, _size, _type, prototype, visited = max(rows)
+        fraction, matched, groups, _size, _type, prototype, visited, targets = \
+            max(rows)
         matches.append(PartialSupportMatch(
             offset, prototype.type_id, matched, len(prototype.species),
-            fraction, groups, visited))
+            fraction, groups, visited, targets))
     fractions = tuple(row.matched_fraction for row in matches)
+    occupied_limit = len(occupied)
+    occupied_matches = tuple({index for index in row.matched_target_indices
+                              if index < occupied_limit} for row in matches)
+    pair_shared = tuple(len(left & right)
+                        for offset, left in enumerate(occupied_matches)
+                        for right in occupied_matches[offset + 1:])
     return PartialIrregularSection(
         tuple(matches), min(fractions), sum(fractions) / len(fractions),
-        min(row.matched_atoms for row in matches), True)
-
+        min(row.matched_atoms for row in matches), pair_shared,
+        min(pair_shared, default=0),
+        sum(pair_shared) / len(pair_shared) if pair_shared else 0.,
+        max(pair_shared, default=0), sum(value > 0 for value in pair_shared),
+        True)

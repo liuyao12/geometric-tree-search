@@ -1689,6 +1689,16 @@ completion as sufficient terminal values. It does not rule out a section over
 the *ports between* those irregular supports, which is the next generic GCTS
 representation to test.
 
+That first port control is now explicit rather than inferred from scalar
+completion. The exact matcher retains the occupied atom set supporting each
+candidate-centred partial cluster, then exposes only permutation-invariant
+pair summaries: minimum/mean/maximum shared occupied atoms and the number of
+connected action pairs. The value model never receives those atom indices.
+Nested selection uses the incidence representation in two folds, but remains
+`17 / 20` exact and falls to `54 / 60` correct moves. Hence a count of shared
+support is also insufficient; the next useful object must retain the typed,
+oriented port-incidence graph rather than collapsing it to four scalars.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
