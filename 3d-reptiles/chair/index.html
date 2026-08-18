@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f3ee">
+  <title>3D Chair Inflation — A Hierarchy Laboratory</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M5 7h18v9h-9v9H5z%27 fill=%27%231d6b62%27/%3E%3Cpath d=%27M14 7v9H5m9 0h9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%271.5%27/%3E%3C/svg%3E">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "../vendor/OrbitControls.js"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <header class="hero-copy">
+        <nav class="example-links" aria-label="3D substitution examples">
+          <a class="back-link" href="../../">← GCTS</a>
+          <a class="example-link" href="../">Quaquaversal →</a>
+        </nav>
+        <div class="title-block">
+          <p class="kicker">3D reptiles · example 02 · chair heptacube</p>
+          <h1 id="page-title">Chair inflation</h1>
+        </div>
+        <p class="lede">One missing corner organizes an exact hierarchy of eight children.</p>
+      </header>
+
+      <div class="scene-shell">
+        <div id="viewport" class="viewport" role="img" aria-label="Interactive scale-two inflation of the three-dimensional chair heptacube. Drag to rotate and scroll through its transparent cubes."></div>
+        <div class="scene-vignette" aria-hidden="true"></div>
+
+        <div class="scene-readout" aria-live="polite">
+          <span>inflations</span>
+          <strong id="generation-value">0</strong>
+          <span class="readout-divider" aria-hidden="true"></span>
+          <span>chairs</span>
+          <strong id="tile-value">1</strong>
+          <span class="readout-divider" aria-hidden="true"></span>
+          <span>cubes</span>
+          <strong id="cube-value">7</strong>
+        </div>
+
+        <aside class="orientation-panel hierarchy-panel" aria-labelledby="hierarchy-title">
+          <div class="orientation-heading">
+            <div>
+              <span>inflation rule</span>
+              <strong id="hierarchy-title">× 2</strong>
+            </div>
+            <div class="orientation-count">
+              <b>8</b>
+              <span>children</span>
+            </div>
+          </div>
+          <canvas id="hierarchy-plot" width="440" height="440" role="img" aria-label="Axonometric diagram of the eight child chairs and their missing-corner orientations"></canvas>
+          <div class="orientation-scale" aria-hidden="true">
+            <span>parent</span>
+            <span>child addresses</span>
+          </div>
+          <p>Color records which corner is missing from each child. The central child is what prevents the rule from being merely seven octants.</p>
+        </aside>
+
+        <p class="scene-instruction">Drag to orbit · scroll through transparent walls</p>
+        <div class="scene-actions">
+          <button id="back-button" class="scene-button back-button" type="button" disabled>
+            <b aria-hidden="true">↙</b>
+            <span>Go back</span>
+          </button>
+          <button id="inflate-button" class="scene-button substitute-button" type="button">
+            <span>Apply one more inflation</span>
+            <b aria-hidden="true">↗</b>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="essay-section" aria-labelledby="rule-title">
+      <div class="section-number">01</div>
+      <div class="essay-copy">
+        <p class="kicker">The rule</p>
+        <h2 id="rule-title">Seven cubes.<br>Eight smaller chairs.</h2>
+        <p class="body-large">
+          Remove one corner from a <span class="math">2 × 2 × 2</span> cube. Inflate the resulting chair by two. The enlarged seven-octant solid admits an exact cover by eight congruent chairs, including one translated central child. Repeating the rule builds a nested three-dimensional hierarchy.
+        </p>
+        <div class="turn-diagram chair-facts" aria-label="Chair inflation facts">
+          <div class="turn-card">
+            <span class="fact-glyph">7</span>
+            <strong>unit cubes</strong>
+            <small>in one chair</small>
+          </div>
+          <div class="turn-join" aria-hidden="true">→</div>
+          <div class="turn-card">
+            <span class="fact-glyph">8</span>
+            <strong>child chairs</strong>
+            <small>in one inflation</small>
+          </div>
+          <div class="turn-result">
+            <span>linear scale</span>
+            <strong>2 per level</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="essay-section matching-section" aria-labelledby="forcing-title">
+      <div class="section-number">02</div>
+      <div class="essay-copy">
+        <p class="kicker">Hierarchy versus shape</p>
+        <h2 id="forcing-title">The inflation is nonperiodic.<br>The bare tile is not.</h2>
+        <p class="body-large">
+          The unmarked heptacube can also assemble periodically, so its geometry alone does not force this hierarchy. A GCTS version must carry finite local state—face markings, child addresses, or collared neighborhoods—that makes every legal patch compose uniquely into larger chairs.
+        </p>
+        <div class="search-flow" aria-label="How a marked chair hierarchy can be recognized">
+          <div>
+            <span>1</span>
+            <strong>Match marked faces</strong>
+            <small>Geometry proposes placements; markings reject the wrong local phase.</small>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>2</span>
+            <strong>Recover eight-child groups</strong>
+            <small>Every legal neighborhood identifies its parent chair and address.</small>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>3</span>
+            <strong>Compose forever</strong>
+            <small>The same finite rule forces superchairs at every scale.</small>
+          </div>
+        </div>
+        <aside class="key-idea">
+          <p class="kicker">Why it belongs beside quaquaversal</p>
+          <p>The chair isolates hierarchical forcing on a lattice; quaquaversal adds dense orientations in continuous three-dimensional space.</p>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <p>Exact child placements follow the scale-two chair generator used by this project’s decorated-hierarchy experiments.</p>
+      <a href="../">Compare quaquaversal tiling</a>
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

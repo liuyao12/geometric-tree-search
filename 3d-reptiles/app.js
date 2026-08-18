@@ -11,8 +11,8 @@ const orientationValue = document.getElementById("orientation-value");
 const orientationCurrent = document.getElementById("orientation-current");
 
 const SQRT3 = Math.sqrt(3);
-const BASE_DEPTH = 3;
-const MAX_GENERATION = 2;
+const INITIAL_GENERATION = 3;
+const MAX_GENERATION = 5;
 const FIXED_CHILD_SEQUENCE = [5, 5, 3, 5, 5];
 const FACE_CENTER = new THREE.Vector3(SQRT3 / 2, 0.5, 0.5);
 const FACE_INDICES = [
@@ -77,17 +77,17 @@ root.add(content);
 
 controls.target.copy(root.position);
 camera.position.copy(root.position).add(
-  new THREE.Vector3(3.55, 2.45, 4.2).multiplyScalar(2 ** BASE_DEPTH)
+  new THREE.Vector3(3.55, 2.45, 4.2).multiplyScalar(2 ** INITIAL_GENERATION)
 );
 
 const parentOutline = makeParentOutline();
 content.add(parentOutline);
 
 const daughterTransforms = makeDaughterTransforms();
-let generation = 0;
+let generation = INITIAL_GENERATION;
 let subdivisionWords = [new THREE.Matrix4()];
 let fixedPath = new THREE.Matrix4();
-for (let depth = 0; depth < BASE_DEPTH; depth += 1) {
+for (let depth = 0; depth < INITIAL_GENERATION; depth += 1) {
   subdivisionWords = substitute(subdivisionWords);
   fixedPath.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]]);
 }
@@ -279,7 +279,7 @@ function projectOrientationPoint(point) {
 function drawOrientationBall(transforms) {
   if (!orientationPlot) return;
   const currentOrientations = distinctOrientations(transforms);
-  const sampleDepth = BASE_DEPTH + generation + 2;
+  const sampleDepth = generation + 2;
   const orientations = orientationOrbit(sampleDepth);
   orientationValue.textContent = orientations.length.toLocaleString();
   orientationCurrent.textContent = `${currentOrientations.length.toLocaleString()} ${currentOrientations.length === 1 ? "occurs" : "occur"} in the current patch.`;
@@ -440,7 +440,7 @@ function setVisualOpacity(visual, amount) {
 function stateAtGeneration(targetGeneration) {
   let words = [new THREE.Matrix4()];
   const path = new THREE.Matrix4();
-  const depthLimit = BASE_DEPTH + targetGeneration;
+  const depthLimit = targetGeneration;
   for (let depth = 0; depth < depthLimit; depth += 1) {
     words = substitute(words);
     path.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]]);
@@ -504,6 +504,7 @@ function showGeneration(targetGeneration) {
 
 substituteButton.addEventListener("click", () => showGeneration(generation + 1));
 backButton.addEventListener("click", () => showGeneration(generation - 1));
+updateActionButtons();
 
 function resize() {
   const width = Math.max(1, viewport.clientWidth);

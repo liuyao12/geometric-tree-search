@@ -41,7 +41,7 @@ button { font: inherit; }
   position: relative;
   z-index: 4;
   display: grid;
-  grid-template-columns: 110px minmax(0, 1fr) minmax(240px, 420px);
+  grid-template-columns: 160px minmax(0, 1fr) minmax(240px, 420px);
   gap: clamp(18px, 3vw, 54px);
   align-items: end;
   width: 100%;
@@ -56,6 +56,24 @@ button { font: inherit; }
   font-weight: 750;
   text-decoration: none;
 }
+
+.example-links {
+  display: grid;
+  gap: 5px;
+  align-self: end;
+  margin-bottom: 7px;
+}
+
+.example-links .back-link { margin: 0; }
+
+.example-link {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.example-link:hover { text-decoration: underline; }
 
 .kicker {
   margin: 0 0 12px;
@@ -198,12 +216,28 @@ h1 {
 .orientation-count { justify-items: end; }
 .orientation-count b { color: var(--ink); font: 400 17px/1.1 Georgia, "Times New Roman", serif; }
 
-#orientation-plot {
+#orientation-plot,
+#hierarchy-plot {
   display: block;
   width: 100%;
   aspect-ratio: 1;
   height: auto;
   margin: 10px 0 3px;
+}
+
+.hierarchy-panel > p {
+  margin-top: 13px;
+}
+
+.fact-glyph {
+  grid-row: 1 / 3;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font: 400 22px/1 Georgia, "Times New Roman", serif;
 }
 
 .orientation-scale {
@@ -412,7 +446,7 @@ footer p { margin: 0; }
     align-items: end;
     padding: 0 5px;
   }
-  .back-link { grid-row: 1 / 3; margin: 0 0 7px; }
+  .example-links { grid-row: 1 / 3; margin: 0 0 7px; }
   .title-block { min-width: 0; }
   .title-block .kicker { margin-bottom: 5px; }
   h1 { font-size: clamp(38px, 8.5vw, 64px); }
@@ -454,7 +488,8 @@ footer p { margin: 0; }
   .scene-actions { grid-template-columns: 112px minmax(0, 1fr); }
   .scene-button { gap: 10px; padding-inline: 12px; font-size: 11px; }
   .hero-copy { grid-template-columns: 1fr; }
-  .back-link { display: none; }
+  .example-links { display: flex; grid-row: auto; margin: 0; justify-content: space-between; }
+  .example-links .back-link { display: inline-block; }
   .lede { grid-column: 1; }
   h1 { font-size: clamp(37px, 11vw, 55px); }
   .essay-section { grid-template-columns: 42px minmax(0, 1fr); }

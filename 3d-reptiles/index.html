@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f3ee">
+  <title>Quaquaversal Tiling — An Orientation Laboratory</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M5 22 18 6l9 5-9 16z%27 fill=%27%231d6b62%27/%3E%3Cpath d=%27m5 22 13-5 9-6M18 6v11%27 fill=%27none%27 stroke=%27white%27 stroke-width=%271.5%27/%3E%3C/svg%3E">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <header class="hero-copy">
+        <nav class="example-links" aria-label="3D reptile examples">
+          <a class="back-link" href="../">← GCTS</a>
+          <a class="example-link" href="./chair/">3D chair →</a>
+        </nav>
+        <div class="title-block">
+          <p class="kicker">3D reptiles · example 01 · Conway–Radin, 1998</p>
+          <h1 id="page-title">Quaquaversal tiling</h1>
+        </div>
+        <p class="lede">A fixed prism gathers an expanding world of orientations.</p>
+      </header>
+
+      <div class="scene-shell">
+        <div id="viewport" class="viewport" role="img" aria-label="Interactive expanding Conway–Radin quaquaversal supertile. Drag to rotate and scroll through its transparent faces."></div>
+        <div class="scene-vignette" aria-hidden="true"></div>
+
+        <div class="scene-readout" aria-live="polite">
+          <span>stage</span>
+          <strong id="generation-value">3</strong>
+          <span class="readout-divider" aria-hidden="true"></span>
+          <span>prisms</span>
+          <strong id="tile-value">512</strong>
+        </div>
+
+        <aside class="orientation-panel" aria-labelledby="orientation-title">
+          <div class="orientation-heading">
+            <div>
+              <span>orientation ball</span>
+              <strong id="orientation-title">SO(3)</strong>
+            </div>
+            <div class="orientation-count">
+              <b id="orientation-value">1</b>
+              <span>sampled</span>
+            </div>
+          </div>
+          <canvas id="orientation-plot" width="440" height="440" role="img" aria-label="Axis-angle ball containing one distinct tile orientation"></canvas>
+          <div class="orientation-scale" aria-hidden="true">
+            <span>identity</span>
+            <span>π turns</span>
+          </div>
+          <p><span id="orientation-current">62 occur in the current patch.</span> Color matches the tile hues. Dots look two levels ahead; a filling ball is the visual signature, while density is the theorem.</p>
+        </aside>
+
+        <p class="scene-instruction">Drag to orbit the fixed tile · scroll through every face</p>
+        <div class="scene-actions">
+          <button id="back-button" class="scene-button back-button" type="button">
+            <b aria-hidden="true">↙</b>
+            <span>Go back</span>
+          </button>
+          <button id="substitute-button" class="scene-button substitute-button" type="button">
+            <span>Apply one more expansion</span>
+            <b aria-hidden="true">↗</b>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="essay-section" aria-labelledby="rule-title">
+      <div class="section-number">01</div>
+      <div class="essay-copy">
+        <p class="kicker">The rule</p>
+        <h2 id="rule-title">Eight congruent wedges.<br>Two perpendicular turns.</h2>
+        <p class="body-large">
+          Split the 30–60–90 prism into two half-depth slabs, then expand the result by two.
+          Each slab begins with four
+          half-scale copies. In one, a central pair turns by 90°; in the other, an
+          equilateral pair turns by 120°. Repeating those noncommuting rotations sends
+          tile orientations throughout <span class="math">SO(3)</span>. The scene follows
+          one distinguished descendant and applies the inverse similarity, so that tile
+          stays fixed while the supertile grows around its slanted-face center.
+        </p>
+        <div class="turn-diagram" aria-label="The two rotations used by the substitution">
+          <div class="turn-card">
+            <span class="turn-glyph quarter-turn" aria-hidden="true"></span>
+            <strong>π / 2</strong>
+            <small>about the long axis</small>
+          </div>
+          <div class="turn-join" aria-hidden="true">×</div>
+          <div class="turn-card">
+            <span class="turn-glyph third-turn" aria-hidden="true"></span>
+            <strong>2π / 3</strong>
+            <small>about an orthogonal axis</small>
+          </div>
+          <div class="turn-result">
+            <span>closure</span>
+            <strong>dense in SO(3)</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="essay-section matching-section" aria-labelledby="matching-title">
+      <div class="section-number">02</div>
+      <div class="essay-copy">
+        <p class="kicker">Substitution versus enforcement</p>
+        <h2 id="matching-title">Can local rules force the hierarchy?</h2>
+        <p class="body-large">
+          In principle, yes—with decorated or collared tile types. Goodman–Strauss showed
+          that broad classes of substitution tilings in dimension greater than one admit
+          finite local matching rules that force their global hierarchy. The theorem is
+          an existence-and-construction result; it does not turn the bare, unmarked prism
+          above into a known one-tile aperiodic set.
+        </p>
+
+        <div class="search-flow" aria-label="How geometric search works without a lattice">
+          <div>
+            <span>1</span>
+            <strong>Choose an exposed face</strong>
+            <small>Use the most constrained frontier face first.</small>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>2</span>
+            <strong>Mate a compatible face</strong>
+            <small>Its decoration determines finitely many rigid placements.</small>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>3</span>
+            <strong>Reject or remember</strong>
+            <small>Check overlap, local rules, then cache the geometric obstruction.</small>
+          </div>
+        </div>
+
+        <aside class="key-idea">
+          <p class="kicker">The important distinction</p>
+          <p>Continuous ambient motion does not imply continuous branching. Face-to-face contact discretizes each move; dense orientations emerge only after many locally finite choices.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="catalog-section" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <div>
+          <p class="kicker">A non-lattice collection</p>
+          <h2 id="catalog-title">What should join it?</h2>
+        </div>
+        <p>Start with systems that each isolate a different difficulty for geometric search.</p>
+      </div>
+
+      <div class="specimen-list">
+        <article>
+          <span class="specimen-index">A</span>
+          <div>
+            <h3>Pinwheel triangles</h3>
+            <p>The two-dimensional precursor: five-child substitution, infinitely many orientations, and the cleanest test of search modulo the full Euclidean group.</p>
+          </div>
+          <span class="specimen-tag">build next</span>
+        </article>
+        <article>
+          <span class="specimen-index">B</span>
+          <div>
+            <h3>Penrose rhombs</h3>
+            <p>Finite orientations but genuinely non-lattice vertices. Their explicit arrow rules make them the best control case for a face-decoration engine.</p>
+          </div>
+          <span class="specimen-tag">matching rules</span>
+        </article>
+        <article>
+          <span class="specimen-index">C</span>
+          <div>
+            <h3>Sphinx substitution</h3>
+            <p>A rep-tile whose hierarchy has an explicit Goodman–Strauss matching-rule construction—useful for comparing existence proofs with executable constraints.</p>
+          </div>
+          <span class="specimen-tag">hierarchy</span>
+        </article>
+        <article>
+          <span class="specimen-index">D</span>
+          <div>
+            <h3>SCD biprisms</h3>
+            <p>Schmitt–Conway–Danzer screw layers trade substitution for irrational relative rotation, probing whether the search can learn a global helical obstruction.</p>
+          </div>
+          <span class="specimen-tag">3D screw order</span>
+        </article>
+        <article>
+          <span class="specimen-index">E</span>
+          <div>
+            <h3>3D Penrose rhombohedra</h3>
+            <p>Golden prolate and oblate rhombohedra bring explicit three-dimensional matching rules without the quaquaversal tile’s dense orientation group.</p>
+          </div>
+          <span class="specimen-tag">3D local rules</span>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Sources:
+        <a href="https://doi.org/10.1007/s002220050138">Conway &amp; Radin, <em>Quaquaversal tilings and rotations</em></a>
+        ·
+        <a href="https://annals.math.princeton.edu/1998/147-1/p04">Goodman–Strauss, <em>Matching rules and substitution tilings</em></a>
+      </p>
+      <a href="../">Return to GCTS</a>
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
