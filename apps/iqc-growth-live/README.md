@@ -1396,6 +1396,16 @@ separate causal-endpoint map while preserving the geometric parent role used
 by marking features. No evidence threshold was relaxed, and the reserved
 confirmation remains unopened until this exact rule is committed.
 
+The rule was then committed and separately preregistered before the reserved
+nucleus at `(0, 50, 0)` was opened exactly once. Its complete target-free graph
+contains 672 root candidates and 1,104 causal successors; the model and both
+candidate layers were SHA-serialized before target access. Posthoc scoring
+finds 38 exact colored roots and four exact root-to-child paths, with the first
+path reached after eight correct roots. The domains are spatially disjoint and
+no target atom entered fitting or candidate generation. This confirms
+transferable candidate supply, not autonomous selection, stationary
+recurrence, or exponential IQC growth.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

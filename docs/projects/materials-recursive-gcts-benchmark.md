@@ -2244,6 +2244,18 @@ parent/source state used by the marking. This passes the 8 / 8 development
 supply gate without relaxing support or purity; the reserved confirmation crop
 remains unopened until the corrected rule is committed and preregistered.
 
+The corrected rule was committed, then separately preregistered with source
+hashes and a supply-only gate before the reserved centre `(0, 50, 0)` was
+opened once. The frozen model contains 455 recurrent prototypes and 21,841
+admitted states. Before target access it serializes 672 root candidates and
+1,104 causal one-step successors. Posthoc scoring finds 38 exact colored roots
+and four exact root-to-child paths; the first appears after scanning eight
+correct roots. The nearest development centre is 33.838 units away, above the
+29.125 disjoint-domain requirement. This is a positive transfer confirmation
+for finite GCTS candidate supply. Because target labels identify which paths
+are exact and no frozen value selects one, autonomous selection remains open;
+stationary and exponential claims remain red.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are
