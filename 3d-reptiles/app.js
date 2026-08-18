@@ -9,6 +9,11 @@ const tileValue = document.getElementById("tile-value");
 const orientationPlot = document.getElementById("orientation-plot");
 const orientationValue = document.getElementById("orientation-value");
 const orientationCurrent = document.getElementById("orientation-current");
+const tileSelect = document.getElementById("tile-select");
+
+tileSelect.addEventListener("change", () => {
+  window.location.href = tileSelect.value;
+});
 
 const SQRT3 = Math.sqrt(3);
 const INITIAL_GENERATION = 0;

@@ -20,15 +20,26 @@
   <main>
     <section class="hero" aria-labelledby="page-title">
       <header class="hero-copy">
-        <nav class="example-links" aria-label="3D reptile examples">
+        <div class="collection-mark">
           <a class="back-link" href="../">← GCTS</a>
-          <a class="example-link" href="./chair/">3D chair →</a>
-        </nav>
-        <div class="title-block">
-          <p class="kicker">3D reptiles · example 01 · Conway–Radin, 1998</p>
-          <h1 id="page-title">Quaquaversal tiling</h1>
+          <span>3D reptiles</span>
         </div>
-        <p class="lede">A fixed prism gathers an expanding world of orientations.</p>
+        <div class="title-block">
+          <p class="kicker">Example 01 · Conway–Radin, 1998</p>
+          <h1 id="page-title">Quaquaversal tiling</h1>
+          <p class="lede">A fixed prism gathers an expanding world of orientations.</p>
+        </div>
+        <div class="tile-picker">
+          <label for="tile-select">Choose tile</label>
+          <div class="select-shell">
+            <select id="tile-select">
+              <option value="./" selected>Quaquaversal prism</option>
+              <option value="./chair/">Chair heptacube</option>
+            </select>
+            <span aria-hidden="true">↕</span>
+          </div>
+          <small>Substitution and inflation systems</small>
+        </div>
       </header>
 
       <div class="scene-shell">

@@ -8,6 +8,11 @@ const generationValue = document.getElementById("generation-value");
 const tileValue = document.getElementById("tile-value");
 const volumeValue = document.getElementById("volume-value");
 const hierarchyPlot = document.getElementById("hierarchy-plot");
+const tileSelect = document.getElementById("tile-select");
+
+tileSelect.addEventListener("change", () => {
+  window.location.href = tileSelect.value;
+});
 
 const MAX_GENERATION = 2;
 const CANONICAL_CHILDREN = [
