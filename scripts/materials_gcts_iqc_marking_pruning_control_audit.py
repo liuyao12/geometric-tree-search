@@ -28,6 +28,9 @@ class IQCMarkingPruningControlReport:
     lookahead_terminal_supply: int
     lookahead_selected_exact: int
     lookahead_proposal_checks: int
+    pose_edge_selected_exact: int
+    pose_edge_selected_correct: int
+    pose_edge_representation_selected_folds: int
     controls_improve_baseline: bool
     development_gate_passed: bool
     fresh_confirmation_authorized: bool
@@ -48,6 +51,7 @@ def evaluate(path: Path = FIXTURE) -> IQCMarkingPruningControlReport:
     stage = data["independent_stage_value_control"]["summary"]
     viability = data["descendant_viability_control"]["summary"]
     lookahead = data["broad_terminal_lookahead_control"]
+    pose_edge = data["pose_edge_lookahead_control"]
     if (tuple(data["beam"]) != (4, 4, 8) or groups != 20 or
             any(len(row) != 3 for row in
                 data["independent_stage_value_control"]["selected_heads"]) or
@@ -59,16 +63,20 @@ def evaluate(path: Path = FIXTURE) -> IQCMarkingPruningControlReport:
         data["independent_stage_value_control"]["target_used"],
         data["descendant_viability_control"]["target_used"],
         data["broad_terminal_lookahead_control"]
+            ["target_used_before_selection"],
+        data["pose_edge_lookahead_control"]
             ["target_used_before_selection"]))
     controls_improve = max(
         reach["selected_exact"], stage["selected_exact"],
         viability["selected_exact"],
-        lookahead["selected_exact"]) > baseline["selected_exact"]
+        lookahead["selected_exact"],
+        pose_edge["selected_exact"]) > baseline["selected_exact"]
     gate = int(data["development_gate"]["minimum_selected_exact"])
     passed = max(baseline["selected_exact"], reach["selected_exact"],
                  stage["selected_exact"],
                  viability["selected_exact"],
-                 lookahead["selected_exact"]) >= gate
+                 lookahead["selected_exact"],
+                 pose_edge["selected_exact"]) >= gate
     return IQCMarkingPruningControlReport(
         groups, tuple(data["beam"]), baseline["selected_exact"],
         baseline["terminal_supply"], reach["stage_supply"][0],
@@ -77,6 +85,8 @@ def evaluate(path: Path = FIXTURE) -> IQCMarkingPruningControlReport:
         viability["selected_exact"], viability["terminal_supply"],
         lookahead["terminal_supply"], lookahead["selected_exact"],
         lookahead["proposal_checks"],
+        pose_edge["selected_exact"], pose_edge["selected_correct"],
+        pose_edge["edge_representation_selected_folds"],
         controls_improve, passed, passed and not target_used, target_used)
 
 

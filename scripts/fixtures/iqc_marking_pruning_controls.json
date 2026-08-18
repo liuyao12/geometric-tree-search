@@ -55,6 +55,20 @@
     "proposal_checks": 7312,
     "target_used_before_selection": false
   },
+  "pose_edge_lookahead_control": {
+    "digest": "ad9216a001350cebc11e33091467c789cea0b6700410c89c5e4a1a2cf054db21",
+    "trace_digest": "90bb00f75fbb99a619b32eceb2e048d1fc66d0cb9151d38d9b071936366659ed",
+    "proposal_reach": [12, 4, 8],
+    "selected_representations": ["ports", "base", "base", "base", "base"],
+    "selected_neighbors": [3, 9, 5, 1, 9],
+    "edge_representation_selected_folds": 0,
+    "stage_supply": [20, 20, 20],
+    "terminal_supply": 20,
+    "selected_exact": 15,
+    "selected_correct": 54,
+    "proposal_checks": 7312,
+    "target_used_before_selection": false
+  },
   "development_gate": {"minimum_selected_exact": 18},
   "target_used": false
 }
