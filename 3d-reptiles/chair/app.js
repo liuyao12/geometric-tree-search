@@ -6,7 +6,6 @@ const inflateButton = document.getElementById("inflate-button");
 const backButton = document.getElementById("back-button");
 const generationValue = document.getElementById("generation-value");
 const tileValue = document.getElementById("tile-value");
-const volumeValue = document.getElementById("volume-value");
 const hierarchyPlot = document.getElementById("hierarchy-plot");
 const chairColorFilter = document.getElementById("chair-color-filter");
 const tileSelect = document.getElementById("tile-select");
@@ -15,7 +14,7 @@ tileSelect.addEventListener("change", () => {
   window.location.href = tileSelect.value;
 });
 
-const MAX_GENERATION = 2;
+const MAX_GENERATION = 4;
 const CANONICAL_CHILDREN = [
   [[0, 0, 0], [1, 1, 1]],
   [[0, 0, 2], [1, 1, 0]],
@@ -213,12 +212,29 @@ function makeVisual(level) {
   const materials = [];
   const geometries = [];
   const chairs = [];
+  const orientationBuckets = new Map();
   const faceOpacity = Math.max(0.035, 0.2 / (2 ** level));
   const edgeOpacity = Math.max(0.11, 0.58 / (2 ** level));
+
   for (const leaf of leaves) {
     const orientation = orientationIndex(leaf.missingCorner);
-    const color = new THREE.Color(ORIENTATION_COLORS[orientation]);
     const geometry = makeChairGeometry(leaf);
+    const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
+    if (!orientationBuckets.has(orientation)) {
+      orientationBuckets.set(orientation, { facePositions: [], edgePositions: [] });
+    }
+    const bucket = orientationBuckets.get(orientation);
+    bucket.facePositions.push(...geometry.getAttribute("position").array);
+    bucket.edgePositions.push(...edgeGeometry.getAttribute("position").array);
+    geometry.dispose();
+    edgeGeometry.dispose();
+  }
+
+  for (const [orientation, bucket] of orientationBuckets) {
+    const color = new THREE.Color(ORIENTATION_COLORS[orientation]);
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(bucket.facePositions, 3));
+    geometry.computeVertexNormals();
     const faceMaterial = new THREE.MeshBasicMaterial({
       color,
       transparent: true,
@@ -232,7 +248,8 @@ function makeVisual(level) {
     mesh.renderOrder = 1;
     group.add(mesh);
 
-    const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
+    const edgeGeometry = new THREE.BufferGeometry();
+    edgeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(bucket.edgePositions, 3));
     const edgeMaterial = new THREE.LineBasicMaterial({
       color: color.clone().multiplyScalar(0.68),
       transparent: true,
@@ -297,7 +314,6 @@ function updateReadout() {
   const chairs = 8 ** generation;
   generationValue.textContent = String(generation);
   tileValue.textContent = chairs.toLocaleString();
-  volumeValue.textContent = (chairs * 7).toLocaleString();
 }
 
 function updateActionButtons() {
