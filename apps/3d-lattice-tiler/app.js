@@ -37,7 +37,6 @@ const internalCheckbox = $("internalCheckbox");
 const edgesCheckbox = $("edgesCheckbox");
 const autoFitCheckbox = $("autoFitCheckbox");
 const polycubeLatticeSelect = $("polycubeLatticeSelect");
-const polycubeLatticeRadios = [...document.querySelectorAll('input[name="polycubeLattice"]')];
 const periodicTileCountSelect = $("periodicTileCountSelect");
 const runButton = $("runButton");
 const fitButton = $("fitButton");
@@ -607,7 +606,6 @@ function applySearchParams() {
   setPositiveNumberParam(regionDepthInput, "region_depth");
   setPositiveNumberParam(regionHeightInput, "region_height");
   setRadioValue(strategyRadios, strategySelect.value, "translational");
-  setRadioValue(polycubeLatticeRadios, polycubeLatticeSelect.value, "z3");
 }
 
 function selectedFigures() {
@@ -823,7 +821,7 @@ function customPolycubeDisplayName() {
 }
 
 function selectedPolycubeLattice() {
-  return tileSpecs.normalizePolycubeLattice?.(checkedRadioValue(polycubeLatticeRadios, "z3")) ?? "z3";
+  return tileSpecs.normalizePolycubeLattice?.(polycubeLatticeSelect.value) ?? "z3";
 }
 
 function customPolycubeTile() {
@@ -1209,7 +1207,7 @@ function applyCheckpointUiState(ui = {}) {
   if (controls.moveOrder != null) moveOrderSelect.value = controls.moveOrder;
   if (controls.polycubeLattice != null) {
     const lattice = tileSpecs.normalizePolycubeLattice?.(controls.polycubeLattice) ?? "z3";
-    polycubeLatticeSelect.value = setRadioValue(polycubeLatticeRadios, lattice, "z3");
+    polycubeLatticeSelect.value = lattice;
   }
   if (controls.periodicTileCount != null) periodicTileCountSelect.value = String(controls.periodicTileCount);
   if (controls.branchCap != null) branchCapInput.value = controls.branchCap;
@@ -3049,7 +3047,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, strategySelect, ...strategyRadios, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, ...polycubeLatticeRadios, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
+  [maxTilesInput, layerInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, strategySelect, ...strategyRadios, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
     if (!control) return;
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);
@@ -3060,10 +3058,10 @@ function bindControls() {
     showSelectedGrowthSnapshot();
     renderGrowthChart();
   }));
-  polycubeLatticeRadios.forEach(radio => radio.addEventListener("change", () => {
-    polycubeLatticeSelect.value = selectedPolycubeLattice();
+  polycubeLatticeSelect.addEventListener("change", () => {
+    refreshFigureSelectionUI();
     if (lastSnapshot) updateScene(lastSnapshot, { preserveView: true, rebuildFaces: false });
-  }));
+  });
 
   customPolycubeCheckbox.addEventListener("change", handleCustomPolycubeChanged);
   customPolyhedronCheckbox.addEventListener("change", handleCustomPolycubeChanged);

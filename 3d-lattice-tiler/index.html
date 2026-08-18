@@ -15,7 +15,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260817-generation-band-v31">
+  <link rel="stylesheet" href="./style.css?v=20260818-frontier-select-v32">
 </head>
 <body>
   <div class="app-shell">
@@ -72,26 +72,12 @@
           <small id="strategyDescription">Prioritizes forced moves, then explores sensible legal placements with backtracking.</small>
         </fieldset>
 
-        <fieldset class="choice-field">
-          <legend>Lattice frontier</legend>
-          <div class="radio-cards lattice-cards">
-            <label><input type="radio" name="polycubeLattice" value="z3" checked><span><b>Z³</b><small>integer points</small></span></label>
-            <label><input type="radio" name="polycubeLattice" value="fcc"><span><b>FCC</b><small>face centers</small></span></label>
-            <label><input type="radio" name="polycubeLattice" value="half"><span><b>½Z³</b><small>refined points</small></span></label>
-          </div>
-        </fieldset>
-
         <div class="is-hidden" aria-hidden="true">
           <select id="strategySelect">
             <option value="free_range" selected>Free-range</option>
             <option value="learning_free_range">Learning Free-range</option>
             <option value="translational">Translational</option>
             <option value="isohedral">Isohedral</option>
-          </select>
-          <select id="polycubeLatticeSelect">
-            <option value="z3" selected>Z³</option>
-            <option value="fcc">FCC</option>
-            <option value="half">½Z³</option>
           </select>
           <select id="faceOrderSelect"><option value="mrv" selected>MRV</option></select>
           <select id="moveOrderSelect"><option value="balanced" selected>Balanced</option></select>
@@ -129,6 +115,14 @@
 
         <div class="action-row">
           <button id="runButton" class="primary-button" type="button">Run</button>
+          <label class="frontier-select-field">
+            <span>Frontier</span>
+            <select id="polycubeLatticeSelect" aria-label="Lattice frontier">
+              <option value="z3" selected>Z³ · integer</option>
+              <option value="fcc">FCC · faces</option>
+              <option value="half">½Z³ · refined</option>
+            </select>
+          </label>
           <button id="fitButton" type="button">Fit</button>
         </div>
       </section>
@@ -239,6 +233,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="./app.js?v=20260817-exact-rescreen-v34"></script>
+  <script type="module" src="./app.js?v=20260818-frontier-select-v35"></script>
 </body>
 </html>

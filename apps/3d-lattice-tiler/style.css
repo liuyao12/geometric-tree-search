@@ -358,8 +358,46 @@ input[type="text"]:focus {
 
 .action-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(88px, 1fr) minmax(154px, 178px) auto;
   gap: 8px;
+  align-items: stretch;
+}
+
+.frontier-select-field {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  padding: 0 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.frontier-select-field:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(23, 130, 115, 0.14);
+}
+
+.frontier-select-field select {
+  width: 100%;
+  padding: 7px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.frontier-select-field select:focus {
+  border: 0;
+  box-shadow: none;
 }
 
 .learning-status {
@@ -481,17 +519,8 @@ button:disabled {
   outline-offset: 2px;
 }
 
-.lattice-cards {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .mode-cards {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.lattice-cards label > span {
-  min-height: 42px;
-  padding: 6px 7px;
 }
 
 .custom-polyhedron-editor {
