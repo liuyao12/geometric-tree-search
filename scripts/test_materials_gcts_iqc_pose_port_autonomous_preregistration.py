@@ -15,8 +15,9 @@ def test_autonomous_confirmation_is_frozen_without_materialization():
     assert report.search_depth == 3
     assert not report.seed_or_target_materialized
     assert not report.candidate_or_score_computed
+    assert report.seed_radius == 9.
     assert report.manifest_digest == \
-        "cf220de05d44fdf52747464c9975c040aea33b53efd37533cf79157c7208f077"
+        "095ab41c2d5e5a62d3bb92f7dd1f39fe4c08b919a3df30808f063d4e7b934156"
 
 
 if __name__ == "__main__":
