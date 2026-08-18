@@ -27,11 +27,11 @@ encodings, not electron densities or physical potentials.
 
 ## Environment discovery
 
-The cluster stage exposes the geometric hypothesis explicitly. **Auto** tests
+The cluster stage exposes the geometry domain explicitly. **Auto** tests
 translation closure from the positions, **periodic lattice** applies periodic
 translations, **aperiodic module** assumes a discrete but non-periodic
 pose/translation atlas (the natural model-set or quasicrystal hypothesis), and
-**observed point set / free SE(3)** makes no discrete translation assumption.
+**non-lattice point set / free SE(3)** makes no discrete translation assumption.
 The latter two apply no periodic wrapping. This setting changes the displacement geometry used by
 descriptors and the complete cover; it is not a preassigned crystal or
 quasicrystal label.

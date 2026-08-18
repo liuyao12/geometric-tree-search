@@ -1740,9 +1740,11 @@ function rebuildClusterGallery() {
     const poses = orientationAtlas.find((entry) => entry.cluster === galleryIndex)?.orientations || 0;
     const channels = cluster.residual ? 0 : recommendedChannelsForCluster(galleryIndex);
     const name = cluster.label || (cluster.residual ? "gap" : `C${cluster.type + 1}`);
+    const ports = cluster.residual ? 0 : clusterPortRank(galleryIndex);
+    const coupledRank = cluster.residual ? 0 : clusterPosePortRank(galleryIndex);
     const learnedDegrees = cluster.residual
       ? "explicit residual"
-      : `${poses || "—"} pose orbit${poses === 1 ? "" : "s"} · ${channels}ch`;
+      : `${poses || "—"} required pose orbit${poses === 1 ? "" : "s"} × ${ports} port role${ports === 1 ? "" : "s"} · rank ${coupledRank} → ${channels}ch`;
     label.innerHTML = `<b>${name}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span>`;
     card.append(canvas, label);
     clusterGallery.append(card);
@@ -3003,7 +3005,7 @@ function syncStageOptions() {
           ? "No unit cell or periodic wrapping is assumed. Connections are learned from a discrete, finitely generated aperiodic pose/translation atlas—the natural hypothesis for model sets and quasicrystals."
           : "No discrete translation group is assumed. Candidate sites may come from an observed point set or a generator; every proper-SE(3) pose and connection is still learned from local geometry.";
     translationSupport.textContent = geometryMode === "lattice" || (geometryMode === "auto" && latticeDetected)
-      ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "observed / generated set";
+      ? "3 periodic generators" : geometryMode === "module" ? "finite-rank module" : "non-lattice point set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
     rotationSupport.textContent = `${totalPoses} proper pose orbit${totalPoses === 1 ? "" : "s"}`;
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
