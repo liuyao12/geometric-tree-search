@@ -1514,10 +1514,21 @@ On the already-consumed diagnostic tree, this model moves the sole exact
 terminal configuration from rank 10 to rank 1. When the upstream finite
 pose-port state model is also refit on all 30 groups, the same target-free tree
 contains 12 / 12 exact terminal configurations and the recurrent value selects
-one. These are post-development diagnostics, not another confirmation. A new
-maximin, atom-domain-disjoint nucleus must still execute from its seed before
-its target is opened; sustained, stationary, and exponential IQC growth remain
-red.
+one. These are post-development diagnostics, not another confirmation.
+
+The new maximin, atom-domain-disjoint confirmation at `(40, -40, -80)` is now
+consumed and honestly red. The 30-group state model was serialized before any
+seed access as a typed, compressed finite vocabulary with 148,729 token
+weights and 876 recurrent states. The branch model, reach four, beam four, and
+depth three were committed before materialization. The target-free execution
+froze `4 / 16 / 16` action candidates and four terminal configurations, with
+candidate digest `9ef36560339e20e6b384a6a85199e5e277b5213a3e9845ef81b07526fd1cda48`.
+Bounds 44 and 45 agree, and the target opened exactly once after the execution
+trace froze. Posthoc, none of the four terminals is all-exact; the selected
+branch places `2 / 3` colored sites correctly. This converts the next problem
+from value-only ranking to transferable candidate supply and beam retention.
+It does not justify widening the beam after seeing this target, and sustained,
+stationary, and exponential IQC growth remain red.
 
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

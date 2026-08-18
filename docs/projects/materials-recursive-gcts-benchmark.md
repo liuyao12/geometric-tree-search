@@ -3472,9 +3472,24 @@ the candidate set. Its frozen model digest is
 Reusing the already-consumed failure only after fitting moves its exact branch
 from rank 10 to rank 1. Refitting the upstream finite pose-port model on all 30
 groups gives 12 / 12 exact terminal configurations on that diagnostic. This
-is green development evidence only. A separately committed, atom-domain-
-disjoint seed must execute before one target-open call to establish a new
-autonomous result; no stationary or exponential IQC claim follows yet.
+is green development evidence only.
+
+The separately committed confirmation at `(40, -40, -80)` has now run once.
+Before its seed was generated, the 30-group pose-port marking was frozen as a
+typed compressed vocabulary containing 148,729 token weights and 876 recurrent
+states; its state and branch model digests, reach four, beam four, depth three,
+target-open ordering, and exact `3 / 3` gate were preregistered. The target-free
+tree froze `4 / 16 / 16` candidates, retained four configurations at each
+depth, and produced four terminal branches. Only then did a single target
+factory verify coefficient bounds 44 and 45 and expose 2,033 scoring atoms.
+No terminal branch is all-exact; the selected branch places `2 / 3` colored
+sites correctly. Candidate digest
+`9ef36560339e20e6b384a6a85199e5e277b5213a3e9845ef81b07526fd1cda48`
+and pre-target trace digest
+`0a30b5945c7fdcc81f4f71e3e6ccbdbdcd3bcd3b88936601afa27430290fcf80`
+are preserved. Thus the fresh failure is upstream candidate supply/beam
+retention, not merely terminal-value ranking. Autonomous, stationary, and
+exponential IQC growth remain red.
 
 ### Finite-state substitution cycles
 
