@@ -2190,6 +2190,19 @@ attributed to missing rotations, absence of correct candidate pairs, or action
 permutation order. The exact candidate graph is unchanged and the reserved
 confirmation remains unopened.
 
+The first model to improve the expanded result values the state created by an
+action. For every outer fold, the additive model supplies a top-16 shortlist.
+Each shortlisted action is placed hypothetically; local cluster types and
+connection proposals are recomputed, and a finite descriptor records only the
+new outgoing frontier's size, vote and parent mass, chemistry, port roles,
+order-two incidences, and normalized distances. The development target is used
+only for fold labels, never to construct the successor. Across folds, 19--46
+unique candidate successors are evaluated per nucleus. With support/group
+floors 16/4 and unit mixing, the value selects 31 / 36 rather than 30 / 36.
+One previously all-wrong nucleus becomes exact. Five actions still fail, so
+the next justified experiment is a bounded second successor step; the reserved
+confirmation remains sealed.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

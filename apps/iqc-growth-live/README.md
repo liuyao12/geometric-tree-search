@@ -1352,6 +1352,16 @@ attachment rotations, and greedy action order have been separated from the
 remaining transferable-value failure. The reserved confirmation is still
 sealed.
 
+The first causal value improvement comes from the state after an action. For
+each fold, only its frozen top-16 candidates are placed hypothetically. Local
+cluster types and connection proposals are recomputed, and the marking sees
+the count, vote mass, chemistry, finite port roles, and order-two incidences of
+the newly exposed frontier. It never sees the target during rollout. The
+strongest independently supported successor section improves selection from
+30 / 36 to 31 / 36, fixing one prior all-wrong nucleus. Five actions remain
+wrong, so this is a positive development result rather than permission to open
+the reserved confirmation. A bounded second successor step is next.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

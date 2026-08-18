@@ -75,7 +75,7 @@ def _source(center, prototypes, connection, seed, target):
         _minimum_distance(seed.positions))
 
 
-def _expanded_sources():
+def _expanded_fixture():
     protocol = preregistration_audit()
     if protocol.manifest_digest != EXPECTED_PREREGISTRATION_DIGEST:
         raise AssertionError("expanded-development protocol drift")
@@ -108,7 +108,12 @@ def _expanded_sources():
     expanded = tuple(_source(center, prototypes, connection, seed, target)
                      for center, (seed, target) in zip(
                          EXPANDED_DEVELOPMENT_CENTERS, crops))
-    return original_sources + (consumed,) + expanded, crop_counts
+    return original_sources + (consumed,) + expanded, crop_counts, connection
+
+
+def _expanded_sources():
+    sources, crop_counts, _connection = _expanded_fixture()
+    return sources, crop_counts
 
 
 def _expanded_groups():
