@@ -38,6 +38,9 @@ const channelRankSupport = $("channelRankSupport");
 const poseAtlasTotal = $("poseAtlasTotal");
 const poseAtlas = $("poseAtlas");
 const markingTrainingOptions = $("markingTrainingOptions");
+const inheritedGeometryMode = $("inheritedGeometryMode");
+const inheritedPoseCount = $("inheritedPoseCount");
+const inheritedChannelCount = $("inheritedChannelCount");
 const growthSearchOptions = $("growthSearchOptions");
 const markingChannelsSelect = $("markingChannelsSelect");
 const markingChannelsHint = $("markingChannelsHint");
@@ -3011,6 +3014,12 @@ function syncStageOptions() {
     return;
   }
   const resolvedChannels = sectionModel?.channels || currentMarkingConfig().channels;
+  const inheritedDomain = geometryMode === "lattice" || (geometryMode === "auto" && detectedUnitCell)
+    ? "lattice" : geometryMode === "module" ? "finite-rank module" : "non-regular SE(3) atlas";
+  const inheritedPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
+  inheritedGeometryMode.textContent = inheritedDomain;
+  inheritedPoseCount.textContent = `${inheritedPoses} proper pose orbit${inheritedPoses === 1 ? "" : "s"}`;
+  inheritedChannelCount.textContent = `auto ${automaticMarkingChannels()}ch`;
   markingChannelsHint.textContent = markingDraft.channels
     ? `${markingDraft.channels} coupled field${markingDraft.channels === 1 ? "" : "s"}`
     : `auto → ${resolvedChannels} from pose/port rank`;

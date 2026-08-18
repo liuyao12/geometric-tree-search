@@ -291,6 +291,11 @@ body.atlas-open { overflow: hidden; }
 .pose-atlas-row b { color: var(--mint); font: 8px var(--mono); font-weight: 400; }
 .rank-note { margin: 7px 0 0; color: #627873; font: 7px var(--mono); line-height: 1.45; }
 .rank-note b { color: var(--violet); font-weight: 400; }
+.inherited-geometry { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin: 9px 0 2px; padding: 7px; border: 1px solid rgba(181,148,255,.18); background: rgba(181,148,255,.045); font: 7px var(--mono); }
+.inherited-geometry span { margin-right: 2px; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; }
+.inherited-geometry b { color: #cbd8d4; font-weight: 400; }
+.inherited-geometry b:last-child { color: var(--mint); }
+.inherited-geometry i { color: rgba(181,148,255,.62); font-style: normal; }
 .option-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6px; margin-top: 11px; }
 .option-actions button, .train-variant { min-height: 31px; padding: 0 8px; border: 1px solid var(--line); background: #0b1a1b; color: var(--muted); font: 8px var(--mono); cursor: pointer; }
 .option-actions button:hover, .train-variant:hover { border-color: rgba(101,225,188,.55); color: var(--mint); }

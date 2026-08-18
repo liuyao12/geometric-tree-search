@@ -265,6 +265,14 @@
           </div>
 
           <div id="markingTrainingOptions">
+            <div class="inherited-geometry" aria-label="Geometry inherited from cluster identification">
+              <span>frozen from clustering</span>
+              <b id="inheritedGeometryMode">—</b>
+              <i>·</i>
+              <b id="inheritedPoseCount">—</b>
+              <i>→</i>
+              <b id="inheritedChannelCount">—</b>
+            </div>
             <label class="field" for="markingChannelsSelect">
               <span>Marking channels <b id="markingChannelsHint">3 coupled fields</b></span>
               <select id="markingChannelsSelect">
@@ -296,6 +304,7 @@
               <button id="saveMarkingButton" class="option-primary" type="button">Freeze to library</button>
             </div>
             <p id="markingConfigNote" class="control-note">The section is local and connection-valued; it is not a physical potential.</p>
+            <p class="rank-note"><b>Channels are not raw rotation bins.</b> Each cluster's observed rotations are quotiented by its proper symmetry; Auto then uses the rank of the pose × connection-port incidence, plus compatibility and failure fields. A manual choice is an ablation or capacity cap.</p>
           </div>
 
           <div id="growthSearchOptions" hidden>
