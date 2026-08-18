@@ -3612,6 +3612,24 @@ the terminal-value trace digest is
 The exact-selection rate is 80%, still below the committed 90% development
 gate, so no new one-shot confirmation is authorized.
 
+The subsequent pruning audit deliberately holds the benchmark gate fixed.
+Increasing root proposal reach to 12 makes a correct first action available in
+all 20 nuclei, but the unchanged `4 -> 4 -> 8` beam ends with only 17 exact
+terminals and selects 13. Independent depth values select 16 with supply 17;
+backward descendant-viability labels, propagated only along frozen tree edges,
+select 15 with supply 16.
+
+A target-free `12 -> 4 -> 8` lookahead evaluates 7,312 proposals and contains
+an exact terminal in all 20 nuclei. This is a supply ceiling, not a value win:
+a broad-distribution terminal model selects 12. A canonical feature binding
+each symmetry-quotiented pose/port response to its inter-action edge geometry
+selects 15, and all five inner folds reject the new edge representation. A
+group-heldout action-consensus policy chooses support widths `1 / 1 / 3 / 9 /
+5` but selects only 13. None beats the fixed portfolio terminal baseline of
+16, so the uncertainty has moved from proposal reach to transferable terminal
+valuation. The `18 / 20` confirmation gate remains red and no new target is
+opened.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

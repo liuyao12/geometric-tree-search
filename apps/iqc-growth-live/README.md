@@ -1624,6 +1624,24 @@ A nested ridge-logistic control is worse: `12 / 20` from broad states and
 The portfolio terminal value is the new development baseline, but 80% is still
 below the committed 90% gate. The next sealed nucleus remains unopened.
 
+Several fully nested pruning controls now isolate the remaining failure. Root
+proposal reaches `5 / 8 / 12` all retain the same `4 / 4 / 8` committed beam;
+reach 12 exposes an exact first action in all `20 / 20` nuclei, yet the direct
+portfolio order selects only `13 / 20`. Independent values at the three depths
+remain `16 / 20` with terminal supply `17 / 20`. A stricter label propagated
+backward only through actual frozen parent edges from exact terminals falls to
+`15 / 20`, supply `16 / 20`.
+
+A bounded target-free `12 / 4 / 8` lookahead removes retention as an excuse:
+7,312 proposal checks contain an exact terminal in every nucleus. A value fit
+to the broad terminal distribution selects only `12 / 20`. Canonically
+associating each pose/port channel with its three inter-action edge lengths
+reaches `15 / 20`; none of the five inner folds selects that new representation.
+A train-selected minimum-support consensus over existing valid terminal
+branches reaches `13 / 20`. These are rejected controls, not menu additions.
+The unchanged `16 / 20` portfolio terminal value remains best: proposal supply
+is solved on development data, while transferable terminal valuation is open.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

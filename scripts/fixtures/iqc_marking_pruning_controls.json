@@ -69,6 +69,22 @@
     "proposal_checks": 7312,
     "target_used_before_selection": false
   },
+  "action_consensus_lookahead_control": {
+    "fold_digests": [
+      "fd14fc15b5e6a1d9cdb6972a631939e1c0b06b3d51a3f6978594d26a529059b2",
+      "3b3f6deddcc9efd37daead597329a532555c99eadbc812fc12f1b4566b9f240e",
+      "c60678778c2fd29c0aae945de9de67756ca80f9bf0f040bd1817e5f5e50e164a",
+      "60eb85ca13d774c34e37f7d9472b94966d130add19265bc611eab4b6654b15c6",
+      "eb9a0fb94b3de67ae2f719aaf6ac6f25f19abf271c0f047520a1c3c15174ab7d"
+    ],
+    "consensus_counts": [1, 1, 3, 9, 5],
+    "aggregators": ["minimum", "minimum", "minimum", "minimum", "minimum"],
+    "terminal_supply": 20,
+    "selected_exact": 13,
+    "selected_correct": 49,
+    "proposal_checks": 7312,
+    "target_used_before_selection": false
+  },
   "development_gate": {"minimum_selected_exact": 18},
   "target_used": false
 }
