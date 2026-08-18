@@ -31,6 +31,12 @@ def test_local_section_improves_but_does_not_pass_the_sealed_gate():
     assert report.message_passing_best_inner_exact == 24
     assert report.message_passing_selected_exact == 17
     assert report.message_passing_selected_correct == 54
+    assert report.learned_message_selected_folds == 2
+    assert report.learned_message_best_inner_exact == 26
+    assert report.learned_message_standalone_exact == 15
+    assert report.learned_message_integrated_exact == 16
+    assert report.learned_message_integrated_correct == 54
+    assert report.learned_message_exact_shuffle_p == .375
     assert report.chiral_features == 210
     assert report.chirality_selected_folds == 2
     assert report.chiral_selected_exact == 15

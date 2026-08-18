@@ -40,6 +40,12 @@ class IQCLocalSectionTerminalAudit:
     message_passing_best_inner_exact: int
     message_passing_selected_exact: int
     message_passing_selected_correct: int
+    learned_message_selected_folds: int
+    learned_message_best_inner_exact: int
+    learned_message_standalone_exact: int
+    learned_message_integrated_exact: int
+    learned_message_integrated_correct: int
+    learned_message_exact_shuffle_p: float
     chiral_features: int
     chirality_selected_folds: int
     chiral_selected_exact: int
@@ -66,6 +72,7 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
     typed_graph = irregular["typed_port_graph_control"]
     graph_kernel = irregular["continuous_graph_kernel_control"]
     message_passing = irregular["bounded_message_passing_control"]
+    learned_message = irregular["learned_message_readout_control"]
     chiral = data["explicit_chirality_control"]
     if (data["groups"] != 20 or data["terminal_supply"] != 18
             or len(data["selected_representations"]) != 5
@@ -87,6 +94,14 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
             or message_passing["development_gate_passed"]
             or message_passing["target_used_before_selection"]):
         raise AssertionError("bounded message-passing protocol changed")
+    if (learned_message["selected_folds"] != [1, 2]
+            or learned_message["selected_depths"] != [1, 1, 1, 1, 1]
+            or len(learned_message["model_digests"]) != 5
+            or len(learned_message["fold_digests"]) != 5
+            or learned_message["terminal_supply"] != data["terminal_supply"]
+            or learned_message["development_gate_passed"]
+            or learned_message["target_used_before_selection"]):
+        raise AssertionError("learned message-readout protocol changed")
     target_used = bool(data["target_used_before_selection"])
     gate = data["selected_exact"] >= \
         data["development_gate"]["minimum_selected_exact"]
@@ -114,6 +129,12 @@ def evaluate(path: Path = FIXTURE) -> IQCLocalSectionTerminalAudit:
         max(message_passing["inner_selected_exact"]),
         message_passing["selected_exact"],
         message_passing["selected_correct"],
+        len(learned_message["selected_folds"]),
+        max(learned_message["inner_selected_exact"]),
+        learned_message["standalone_selected_exact"],
+        learned_message["integrated_selected_exact"],
+        learned_message["integrated_selected_correct"],
+        learned_message["integrated_exact_plus_one_p"],
         chiral["features"], chiral["chirality_selected_folds"],
         chiral["selected_exact"], chiral["selected_correct"],
         schema["proper_se3_invariant"],

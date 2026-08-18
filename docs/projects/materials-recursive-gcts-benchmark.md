@@ -3699,6 +3699,21 @@ changing the `17 / 20` outer result or opening confirmation. A future learned
 message map would require its own grouped regularization and shuffled-label
 control rather than inheriting credit from this negative.
 
+The grouped learned-readout control is now complete. A class-balanced
+ridge-logistic head receives the sparse one- or two-round certified message
+embedding. Five group-sealed inner folds choose message depth, support-type
+weight, and ridge strength; an outer fold replaces the established value only
+when its inner exact-path count is strictly larger. All five folds choose depth
+one and folds 1 and 2 pass that replacement rule. On their sealed outer groups,
+however, the integrated result is `16 / 20` exact terminals and `54 / 60`
+correct moves, versus `17 / 20` and `54 / 60` before replacement. The learned
+head alone reaches `15 / 20` and `53 / 60`. Thirty-one within-nucleus label
+shuffles give an integrated exact-path plus-one p-value of `.375`. The target
+is unavailable to feature fitting, capacity selection, and shuffles; the next
+reserved confirmation remains unopened. A learned scalar head is therefore
+rejected, while train-learned equivariant message updates remain an open model
+class.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

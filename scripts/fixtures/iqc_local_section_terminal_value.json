@@ -144,6 +144,46 @@
       "development_gate_passed": false,
       "target_used_before_selection": false
     },
+    "learned_message_readout_control": {
+      "proper_se3_invariant": true,
+      "candidate_geometry_unchanged": true,
+      "readout": "class-balanced ridge logistic over sparse bounded-message features",
+      "selection": "five group-sealed inner folds; replace the established value only on a strict inner exact-path win",
+      "depths": [1, 2],
+      "support_type_weights": [0.0, 0.25, 1.0],
+      "ridge_values": [0.01, 0.1, 1.0, 10.0],
+      "selected_depths": [1, 1, 1, 1, 1],
+      "selected_support_type_weights": [0.0, 0.25, 0.25, 0.25, 0.25],
+      "selected_ridge_values": [0.01, 0.01, 0.01, 10.0, 0.01],
+      "inner_selected_exact": [24, 26, 25, 24, 24],
+      "inner_first_exact_rank_sums": [26, 26, 25, 32, 26],
+      "inner_supplied": [25, 26, 25, 26, 25],
+      "selected_folds": [1, 2],
+      "standalone_selected_exact": 15,
+      "standalone_selected_correct": 53,
+      "integrated_selected_exact": 16,
+      "integrated_selected_correct": 54,
+      "terminal_supply": 18,
+      "within_group_label_shuffles": 31,
+      "integrated_exact_plus_one_p": 0.375,
+      "integrated_correct_plus_one_p": 0.40625,
+      "model_digests": [
+        "7ddc7731219cafa96e31108900b1c4a7225df4b7209c003b480133e28d0f139a",
+        "174b07c7d12516287f485e36061e1731ed37a06a78e07f232e0d317400ca6793",
+        "8d92cf1f491d7d1041daaa652b6de7b07bd28636ddf961d6fa6fe474089a4a4f",
+        "edbebacd7c3ec283239ec1cb0bdc5618e151d0fcd3b1e5f1053b68a7dc1d52b0",
+        "9854dd6731b73d7ed2d7b08614221ed3d0d82a860aa018610ac0316737542875"
+      ],
+      "fold_digests": [
+        "51c1089cd7a9faef3283f4b038e4a484076f8c9d4c27173d2168c0170ea8d733",
+        "792df156eec2081712240d13d60dc4c399696b79e61677e5afc0241b12b14b05",
+        "42a59e396aca9b15eb3a2444d6574471ce3e73c570be351d2f5709ac79fa0c3f",
+        "a6b5a642b00717e9b0d59553a6510082c1592fa9e84e1b6eef9bc51675b9b725",
+        "f08fe58bed6f91dc9079d8d9e9b71027c3ed8e4fd8ca9ea322c71dccd9afe60a"
+      ],
+      "development_gate_passed": false,
+      "target_used_before_selection": false
+    },
     "fold_digests": [
       "b3db1013537545cacfaef1e8122d267f7d2d00fa6ab3c6de9807165331f30294",
       "37d13f7d4551a2a22c314e57379b2f612c80f385c76cbdcb0d0efe3e639f8d86",

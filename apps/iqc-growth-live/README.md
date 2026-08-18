@@ -1738,6 +1738,19 @@ and `24 / 25`. It is strictly preferred in zero folds, so the outer result and
 red confirmation gate are unchanged. This rejects the present fixed encoder;
 it does not reject a train-learned equivariant message function.
 
+That learned readout has now been tested. A class-balanced ridge-logistic head
+fits the sparse one- or two-round node/port messages, with depth, support-type
+weight, and ridge strength selected only inside each outer fold. It may replace
+the established terminal value only after a strict inner exact-path win. Every
+fold selects one round; folds 1 and 2 admit the learned head. The replacement
+then falls from the established `17 / 20` to `16 / 20` exact terminals while
+remaining at `54 / 60` correct moves. The learned head alone is `15 / 20` and
+`53 / 60`; against 31 within-nucleus label shuffles its integrated exact-path
+plus-one p-value is `.375`. Candidate geometry and certificates are unchanged,
+and the reserved confirmation remains unopened. This rules out a scalar linear
+readout of the present bounded messages; a useful learned section must update
+the equivariant messages themselves or preserve a higher-order graph object.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
