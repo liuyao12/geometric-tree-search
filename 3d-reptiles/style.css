@@ -222,7 +222,15 @@ h1 {
   aspect-ratio: 1;
   height: auto;
   margin: 10px 0 3px;
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+  outline: none;
 }
+
+#orientation-plot:active { cursor: grabbing; }
+#orientation-plot:focus-visible { box-shadow: 0 0 0 2px rgba(29, 107, 98, .35); }
+#orientation-plot canvas { display: block; width: 100%; height: 100%; }
 
 .orientation-scale {
   display: flex;

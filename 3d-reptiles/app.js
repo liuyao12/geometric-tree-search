@@ -61,6 +61,67 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 viewport.appendChild(renderer.domElement);
 
+const orientationScene = new THREE.Scene();
+const orientationCamera = new THREE.PerspectiveCamera(34, 1, 0.1, 20);
+orientationCamera.up.set(0, 0, 1);
+orientationCamera.position.set(2.25, 1.65, 2.15);
+const orientationRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+orientationRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+orientationRenderer.setClearColor(0x000000, 0);
+orientationRenderer.outputColorSpace = THREE.SRGBColorSpace;
+orientationPlot.appendChild(orientationRenderer.domElement);
+
+const orientationControls = new OrbitControls(orientationCamera, orientationRenderer.domElement);
+orientationControls.enableDamping = true;
+orientationControls.dampingFactor = 0.065;
+orientationControls.enablePan = false;
+orientationControls.minDistance = 2.2;
+orientationControls.maxDistance = 5;
+
+const orientationShellGeometry = new THREE.SphereGeometry(1, 28, 18);
+const orientationShell = new THREE.Mesh(
+  orientationShellGeometry,
+  new THREE.MeshBasicMaterial({ color: 0xf8fbf9, transparent: true, opacity: 0.11, depthWrite: false, side: THREE.DoubleSide })
+);
+orientationScene.add(orientationShell);
+const orientationWire = new THREE.Mesh(
+  orientationShellGeometry,
+  new THREE.MeshBasicMaterial({ color: 0x46524e, transparent: true, opacity: 0.11, wireframe: true, depthWrite: false })
+);
+orientationScene.add(orientationWire);
+
+function makeOrientationDiameter(axis, color) {
+  const geometry = new THREE.BufferGeometry().setFromPoints([
+    axis.clone().multiplyScalar(-1),
+    axis.clone()
+  ]);
+  const line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.34, depthWrite: false }));
+  orientationScene.add(line);
+  const endpointGeometry = new THREE.BufferGeometry().setFromPoints([
+    axis.clone().multiplyScalar(-1),
+    axis.clone()
+  ]);
+  const endpoints = new THREE.Points(endpointGeometry, new THREE.PointsMaterial({ color, size: 0.055, sizeAttenuation: true, depthWrite: false }));
+  orientationScene.add(endpoints);
+}
+
+makeOrientationDiameter(new THREE.Vector3(1, 0, 0), 0xd16f59);
+makeOrientationDiameter(new THREE.Vector3(0, 1, 0), 0x4f81ad);
+makeOrientationDiameter(new THREE.Vector3(0, 0, 1), 0x4f9179);
+
+const orientationPointGeometry = new THREE.BufferGeometry();
+const orientationPointMaterial = new THREE.PointsMaterial({
+  vertexColors: true,
+  size: 0.07,
+  sizeAttenuation: true,
+  transparent: true,
+  opacity: 0.96,
+  depthWrite: false
+});
+const orientationPoints = new THREE.Points(orientationPointGeometry, orientationPointMaterial);
+orientationPoints.renderOrder = 3;
+orientationScene.add(orientationPoints);
+
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.055;
@@ -229,29 +290,6 @@ function orientationColor(matrix) {
   return orientationColorFromQuaternion(canonicalQuaternion(matrix));
 }
 
-const orientationOrbitCache = new Map();
-
-function orientationOrbit(depth) {
-  if (orientationOrbitCache.has(depth)) return orientationOrbitCache.get(depth);
-  const generators = distinctOrientations(daughterTransforms);
-  let current = new Map([["0.00000,0.00000,0.00000,1.00000", new THREE.Quaternion()]]);
-  for (let level = 0; level < depth; level += 1) {
-    const next = new Map();
-    for (const parent of current.values()) {
-      for (const generator of generators) {
-        const quaternion = parent.clone().multiply(generator).normalize();
-        const canonical = canonicalizeQuaternion(quaternion);
-        const key = orientationKey(canonical);
-        if (!next.has(key)) next.set(key, canonical);
-      }
-    }
-    current = next;
-  }
-  const result = [...current.values()];
-  orientationOrbitCache.set(depth, result);
-  return result;
-}
-
 function canonicalizeQuaternion(quaternion) {
   const shouldFlip = quaternion.w < -1e-10
     || (Math.abs(quaternion.w) <= 1e-10 && (
@@ -272,75 +310,27 @@ function axisAnglePoint(quaternion) {
     .multiplyScalar(angle / Math.PI);
 }
 
-function projectOrientationPoint(point) {
-  const yaw = 0.68;
-  const pitch = -0.42;
-  const x1 = Math.cos(yaw) * point.x + Math.sin(yaw) * point.z;
-  const z1 = -Math.sin(yaw) * point.x + Math.cos(yaw) * point.z;
-  const y2 = Math.cos(pitch) * point.y - Math.sin(pitch) * z1;
-  const z2 = Math.sin(pitch) * point.y + Math.cos(pitch) * z1;
-  return { x: x1, y: y2, depth: z2 };
-}
-
 function drawOrientationBall(transforms) {
   if (!orientationPlot) return;
-  const currentOrientations = distinctOrientations(transforms);
-  const sampleDepth = generation + 2;
-  const orientations = orientationOrbit(sampleDepth);
+  const orientations = distinctOrientations(transforms);
   orientationValue.textContent = orientations.length.toLocaleString();
-  orientationCurrent.textContent = `${currentOrientations.length.toLocaleString()} ${currentOrientations.length === 1 ? "occurs" : "occur"} in the current patch.`;
+  orientationCurrent.textContent = `${orientations.length.toLocaleString()} ${orientations.length === 1 ? "occurs" : "occur"} in the current patch.`;
   orientationPlot.setAttribute(
     "aria-label",
-    `Axis-angle ball sampling ${orientations.length.toLocaleString()} tile ${orientations.length === 1 ? "orientation" : "orientations"} through word depth ${sampleDepth}`
+    `Rotatable solid axis-angle ball containing ${orientations.length.toLocaleString()} current tile ${orientations.length === 1 ? "orientation" : "orientations"}`
   );
-
-  const size = Math.max(120, Math.round(orientationPlot.clientWidth || 220));
-  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-  orientationPlot.width = Math.round(size * pixelRatio);
-  orientationPlot.height = Math.round(size * pixelRatio);
-  const context = orientationPlot.getContext("2d");
-  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-  context.clearRect(0, 0, size, size);
-
-  const center = size / 2;
-  const radius = size * 0.43;
-  context.strokeStyle = "rgba(23, 32, 30, 0.20)";
-  context.lineWidth = 1;
-  context.beginPath();
-  context.arc(center, center, radius, 0, Math.PI * 2);
-  context.stroke();
-
-  context.strokeStyle = "rgba(23, 32, 30, 0.09)";
-  context.beginPath();
-  context.ellipse(center, center, radius, radius * 0.31, 0, 0, Math.PI * 2);
-  context.moveTo(center, center - radius);
-  context.bezierCurveTo(center + radius * 0.38, center - radius * 0.5, center + radius * 0.38, center + radius * 0.5, center, center + radius);
-  context.moveTo(center, center - radius);
-  context.bezierCurveTo(center - radius * 0.38, center - radius * 0.5, center - radius * 0.38, center + radius * 0.5, center, center + radius);
-  context.stroke();
-
-  const points = orientations
-    .map((quaternion) => ({
-      ...projectOrientationPoint(axisAnglePoint(quaternion)),
-      color: orientationColorFromQuaternion(quaternion)
-    }))
-    .sort((a, b) => a.depth - b.depth);
-  const pointRadius = points.length > 1500 ? 0.72 : points.length > 250 ? 1 : points.length > 40 ? 1.35 : 1.8;
-  for (const point of points) {
-    const alpha = 0.28 + 0.48 * ((point.depth + 1) / 2);
-    const red = Math.round(point.color.r * 255);
-    const green = Math.round(point.color.g * 255);
-    const blue = Math.round(point.color.b * 255);
-    context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha.toFixed(3)})`;
-    context.beginPath();
-    context.arc(center + point.x * radius, center - point.y * radius, pointRadius, 0, Math.PI * 2);
-    context.fill();
+  const positions = [];
+  const colors = [];
+  for (const quaternion of orientations) {
+    const point = axisAnglePoint(quaternion);
+    const color = orientationColorFromQuaternion(quaternion);
+    positions.push(point.x, point.y, point.z);
+    colors.push(color.r, color.g, color.b);
   }
-
-  context.fillStyle = "rgba(23, 32, 30, 0.72)";
-  context.beginPath();
-  context.arc(center, center, 1.8, 0, Math.PI * 2);
-  context.fill();
+  orientationPointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  orientationPointGeometry.computeBoundingSphere();
+  orientationPointMaterial.size = orientations.length > 1500 ? 0.018 : orientations.length > 250 ? 0.026 : orientations.length > 40 ? 0.04 : 0.075;
 }
 
 function makeTransparentMaterial({ line = false, opacity } = {}) {
@@ -520,15 +510,24 @@ function resize() {
   camera.updateProjectionMatrix();
 }
 
+function resizeOrientationBall() {
+  const size = Math.max(1, Math.round(orientationPlot.clientWidth));
+  orientationRenderer.setSize(size, size, false);
+  orientationCamera.aspect = 1;
+  orientationCamera.updateProjectionMatrix();
+}
+
 const resizeObserver = new ResizeObserver(resize);
 resizeObserver.observe(viewport);
-const orientationResizeObserver = new ResizeObserver(() => drawOrientationBall(currentExpandedTransforms));
+const orientationResizeObserver = new ResizeObserver(resizeOrientationBall);
 orientationResizeObserver.observe(orientationPlot);
 resize();
+resizeOrientationBall();
 drawOrientationBall(currentExpandedTransforms);
 
 function animate(time) {
   controls.update();
+  orientationControls.update();
   if (transition) {
     const raw = Math.min(1, (time - transition.start) / transition.duration);
     const eased = raw * raw * (3 - 2 * raw);
@@ -543,6 +542,7 @@ function animate(time) {
     }
   }
   renderer.render(scene, camera);
+  orientationRenderer.render(orientationScene, orientationCamera);
   requestAnimationFrame(animate);
 }
 
