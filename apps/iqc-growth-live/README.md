@@ -1387,6 +1387,16 @@ continuations in 7 / 18. Therefore expanded configurations must first be
 mapped to a shared recurrent cluster vocabulary; a union of raw markings is
 not a valid shortcut.
 
+That ordering now has a direct held-out audit. Ten training nuclei learn 455
+local pose classes that recur in at least two independent configurations;
+only then are their connection states pooled. On eight expanded validation
+nuclei the frozen quotient supplies at least one correct first action in all
+eight and an exact root-to-child continuation in seven. The remaining nucleus
+still has no exact continuation, so the supply gate remains red and the
+reserved confirmation remains unopened. This is a large improvement over the
+raw-type 7 / 18 result, but not permission to smooth over the last missing
+connection class.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

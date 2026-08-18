@@ -212,6 +212,35 @@ def map_to_prototypes(
                  for cluster_type in cluster_types)
 
 
+def learn_recurrent_cluster_prototypes(
+        cluster_types_by_group: Sequence[Sequence[LocalClusterType]], *,
+        minimum_groups: int = 2) -> Tuple[LocalClusterType, ...]:
+    """Learn a shared finite local-type vocabulary across configurations."""
+    groups = tuple(tuple(rows) for rows in cluster_types_by_group)
+    if (not groups or any(not rows for rows in groups) or
+            minimum_groups < 1 or minimum_groups > len(groups)):
+        raise ValueError("invalid recurrent prototype groups")
+    group_support: Counter[LocalClusterType] = Counter()
+    occurrence_support: Counter[LocalClusterType] = Counter()
+    colors = set()
+    for rows in groups:
+        group_support.update(set(rows))
+        occurrence_support.update(rows)
+        colors.update(row.color_key for row in rows)
+    selected = {row for row, support in group_support.items()
+                if support >= minimum_groups}
+    # Mapping must remain total for every chemistry represented in training.
+    for color in colors:
+        if any(row.color_key == color for row in selected):
+            continue
+        candidates = tuple(row for row in group_support
+                           if row.color_key == color)
+        selected.add(max(candidates, key=lambda row: (
+            group_support[row], occurrence_support[row],
+            tuple(-value for value in row.cumulative_neighbor_counts), row)))
+    return tuple(sorted(selected))
+
+
 def _proposal(parent: Point, source: Point, scale: float) -> Point:
     return tuple(parent[axis] + scale * (source[axis] - parent[axis])
                  for axis in range(3))  # type: ignore[return-value]

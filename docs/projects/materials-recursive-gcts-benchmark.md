@@ -2235,6 +2235,16 @@ only after candidate generation to score this ceiling. Multi-configuration
 evidence therefore must be learned after a shared recurrent cluster quotient,
 not by unioning raw connection markings.
 
+The recurrent-first order was then tested directly. From ten training nuclei,
+the generic learner retains 455 local pose classes occurring in at least two
+independent configurations, maps each raw local type to that frozen quotient,
+and only afterward pools connection evidence. All eight expanded validation
+nuclei contain a correct first action and seven contain an exact root-to-child
+continuation. The eighth still fails continuation supply. The recurrent
+quotient is therefore a real improvement over raw-type merging, but it does
+not pass the 8 / 8 preregistration gate; the reserved confirmation crop remains
+unopened.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

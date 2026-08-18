@@ -2,7 +2,8 @@
 """Controls for independent-configuration recursive connection merging."""
 
 from materials_gcts_recursive_connections import (
-    LocalClusterType, learn_recursive_connection_marking,
+    LocalClusterType, learn_recurrent_cluster_prototypes,
+    learn_recursive_connection_marking,
     merge_recursive_connection_markings)
 
 
@@ -25,6 +26,13 @@ def main():
     assert merged.accepted_states
     assert all(merged.evidence[state].positive >= 2
                for state in merged.accepted_states)
+    recurrent = learn_recurrent_cluster_prototypes((
+        (LocalClusterType("A", (1,)), LocalClusterType("B", (4,))),
+        (LocalClusterType("A", (1,)), LocalClusterType("B", (5,))),
+        (LocalClusterType("A", (1,)), LocalClusterType("B", (6,))),
+    ), minimum_groups=2)
+    assert LocalClusterType("A", (1,)) in recurrent
+    assert sum(row.color_key == "B" for row in recurrent) == 1
     try:
         merge_recursive_connection_markings(
             (first,), minimum_positive_groups=0)
