@@ -52,7 +52,7 @@ fillLight.position.set(-6, -2, 4);
 scene.add(fillLight);
 
 const camera = new THREE.PerspectiveCamera(34, 1, 0.002, 320);
-camera.up.set(0, 0, 1);
+camera.up.set(0, 1, 0);
 
 let renderer;
 try {
@@ -134,6 +134,7 @@ controls.minDistance = 0.025;
 controls.maxDistance = 420;
 
 const root = new THREE.Group();
+root.rotation.set(-0.12, -0.18, 0.04);
 root.position.set(0.38, -0.08, 0);
 scene.add(root);
 
@@ -146,11 +147,6 @@ camera.position.copy(root.position).add(
   new THREE.Vector3(3.55, 2.45, 4.2).multiplyScalar(2 ** INITIAL_GENERATION)
 );
 controls.update();
-const lockedAzimuth = controls.getAzimuthalAngle();
-controls.minAzimuthAngle = lockedAzimuth;
-controls.maxAzimuthAngle = lockedAzimuth;
-controls.minPolarAngle = 0.24;
-controls.maxPolarAngle = 1.34;
 
 const parentOutline = makeParentOutline();
 content.add(parentOutline);
