@@ -1,0 +1,10 @@
+{
+  "beam_widths": [4, 8, 16],
+  "candidate_counts": [[4, 10, 28], [4, 10, 51], [4, 10, 60]],
+  "exact_terminal_configurations": [0, 0, 0],
+  "head_neighbors": [25, 15, 9],
+  "postconfirmation_development_only": true,
+  "selected_correct_sites": [2, 2, 2],
+  "target_reopened_after_immutable_confirmation": true,
+  "target_stable": true
+}

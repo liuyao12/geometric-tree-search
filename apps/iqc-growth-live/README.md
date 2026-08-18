@@ -1530,6 +1530,24 @@ from value-only ranking to transferable candidate supply and beam retention.
 It does not justify widening the beam after seeing this target, and sustained,
 stationary, and exponential IQC growth remain red.
 
+The next implementation moves value estimation to the point where the failure
+occurs. A target-free diversity scheduler freezes 1,259 partial configurations
+from the 30 development groups; 934 prefixes contain only exact colored moves.
+Three recurrent value heads share the same invariant feature schema but select
+their capacities independently while leaving out every row from one spatial
+nucleus. Depths one, two, and three choose `k = 25 / 15 / 9` and select exact
+prefixes in `29 / 29`, `27 / 28`, and `25 / 28` supplied stages. The aggregate
+`81 / 85` (`95.29%`) passes the frozen-snapshot transfer gate with complete
+score-tie handling—an unresolved mixed top-score tie never counts as success.
+
+This does not yet solve the executor. When those heads control the self-fed
+search on the already-consumed confirmation nucleus, beam widths 4, 8, and 16
+all finish with zero exact terminal configurations and the selected branch
+remains `2 / 3` correct. The implementation is therefore retained as a
+selectable depth-conditioned marking, while the autonomous gate stays red.
+The next scheduler must preserve recurrent connection-state diversity, not
+merely action-color population or a larger raw beam.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

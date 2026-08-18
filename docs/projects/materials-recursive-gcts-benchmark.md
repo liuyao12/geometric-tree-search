@@ -3491,6 +3491,25 @@ are preserved. Thus the fresh failure is upstream candidate supply/beam
 retention, not merely terminal-value ranking. Autonomous, stationary, and
 exponential IQC growth remain red.
 
+The search-value implementation now acts before terminal pruning. A fixed
+target-free schedule (`4 / 4 / 8` local reach, bounded color-population
+diversity) freezes 1,259 partial configurations over the same 30 development
+nuclei, of which 934 have exact colored prefixes. Separate recurrent heads use
+the same ten invariant branch measurements and order-independent color counts;
+neighbor capacities are selected independently by leaving out whole nuclei.
+Depths one through three choose `k = 25 / 15 / 9` and select exact prefixes in
+`29 / 29`, `27 / 28`, and `25 / 28` supplied stages. The combined `81 / 85`
+(`95.29%`) clears the frozen-snapshot gate. Score ties are evaluated as complete
+equivalence classes: a mixed exact/false top tie cannot pass by insertion
+order. Candidate digest is
+`649fd2786f9030051bf160f6ff9dbc850c89002f25d44cc25d907e9c2769606c`.
+
+Closed-loop execution remains red. On the consumed confirmation nucleus, the
+three frozen heads produce zero exact terminal configurations at beams 4, 8,
+and 16; every selected result remains `2 / 3` correct. Thus the new heads are a
+real transferable marking improvement on frozen partial states, but not yet a
+self-fed autonomous scheduler or an exponential-growth certificate.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
