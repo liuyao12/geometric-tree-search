@@ -2256,6 +2256,18 @@ for finite GCTS candidate supply. Because target labels identify which paths
 are exact and no frozen value selects one, autonomous selection remains open;
 stationary and exponential claims remain red.
 
+The follow-on recurrent-path selector keeps that supply fixed and learns only
+a bounded connection value section. Its descriptor contains the candidate
+action incidence, the newly placed root's causal successor state, order-two
+incoming port patterns, predicted colors, and a normalized root-to-child
+distance; it contains no target coordinate. The prerequisite 256-root by
+16-child tree contains exact paths in all eight development nuclei, with
+posthoc counts `13 / 2 / 8 / 8 / 1 / 14 / 13 / 13`. Group-heldout marking
+selects an exact path first in `7 / 8`; the remaining nucleus has one exact
+path among 293 frozen alternatives. Candidate supply therefore passes, while
+the autonomous selector gate remains red and no new sealed confirmation is
+authorized.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

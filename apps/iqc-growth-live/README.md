@@ -1406,6 +1406,17 @@ no target atom entered fitting or candidate generation. This confirms
 transferable candidate supply, not autonomous selection, stationary
 recurrence, or exponential IQC growth.
 
+The corresponding recurrent-path value audit keeps geometry and labels in the
+right order. It first freezes a 256-root by 16-child target-free tree, which
+contains exact two-step paths in all eight development nuclei with counts
+`13 / 2 / 8 / 8 / 1 / 14 / 13 / 13`. Only afterward does each group-heldout
+fold label its frozen paths and fit a bounded incidence-token section on the
+other seven groups. The selected support-24 / five-group marking ranks an exact
+path first in `7 / 8` nuclei. The failed nucleus still contains one exact path
+among 293 candidates, so supply is green while autonomous path selection stays
+red. No new reserved nucleus is opened for a selector that has not passed its
+development gate.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
