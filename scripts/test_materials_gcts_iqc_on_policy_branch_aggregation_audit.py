@@ -27,6 +27,9 @@ def test_real_iqc_on_policy_aggregation_is_improved_but_still_red():
     assert report.improvement_gate_passed
     assert not report.development_gate_passed
     assert not report.fresh_confirmation_authorized
+    assert not report.broad_upstream_pose_port_fully_nested
+    assert report.on_policy_upstream_pose_port_fully_nested
+    assert not report.end_to_end_cross_validation_fully_nested
     assert report.on_policy_corpus_digest == \
         "3683f5091e954c0605fa0115193365a9210a26074e61f1ee539cbbd12831d53f"
     assert report.closed_loop_candidate_digest == \

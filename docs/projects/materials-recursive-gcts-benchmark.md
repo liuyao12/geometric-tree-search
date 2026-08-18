@@ -3521,19 +3521,25 @@ finds zero exact terminal branches, and selects `2 / 3` correct colored sites.
 The remaining failure is therefore transfer under the self-fed state
 distribution, not raw beam capacity or frozen-snapshot state coverage.
 
-One group-sealed on-policy aggregation round now targets that distribution
+One group-sealed branch-value aggregation round now targets that distribution
 shift directly. In each of five folds, four heldout nuclei are absent from the
-broad examples, pose-port state fit, and on-policy rollouts. The other 26
-nuclei contribute 4,037 visited partial branches (3,224 exact); the fit keeps
-both labels when identical invariant descriptors have different futures,
-rather than using candidate order to erase the alias. The frozen closed-loop
-audit improves terminal exact-path supply from `16 / 20` to `18 / 20`, top
-selection from `10 / 20` to `13 / 20`, and selected correct moves from
-`44 / 60` to `51 / 60`. This gives a sharper failure decomposition: two
-nuclei have no exact retained terminal, while five contain an exact terminal
-that is misranked. The scientific gate requires both at least 90% supply and
-90% exact selection. Supply is exactly green; selection is only 65%, so the
-combined gate remains red and a new sealed confirmation is not authorized.
+value fit; the pose-port state model used by the on-policy rollouts is likewise
+refit without them. The other 26 nuclei contribute 4,037 visited partial
+branches (3,224 exact). The fit keeps both labels when identical invariant
+descriptors have different futures rather than using candidate order to erase
+the alias. The frozen closed-loop audit improves terminal exact-path supply
+from `16 / 20` to `18 / 20`, top selection from `10 / 20` to `13 / 20`, and
+selected correct moves from `44 / 60` to `51 / 60`. This gives a sharper
+failure decomposition: two nuclei have no exact retained terminal, while five
+contain an exact terminal that is misranked.
+
+The estimate is not fully nested end to end. The older broad snapshot features
+were generated once with the shared upstream pose-port model, although rows
+from heldout nuclei are excluded from every branch-value fit. The 13 / 20
+result is therefore a branch-value development comparison rather than a sealed
+pipeline estimate. It is red even under that weaker interpretation: the gate
+requires both at least 90% supply and 90% exact selection; supply is exactly
+green, selection is only 65%, and a new confirmation is not authorized.
 
 The immutable on-policy corpus digest is
 `3683f5091e954c0605fa0115193365a9210a26074e61f1ee539cbbd12831d53f`;

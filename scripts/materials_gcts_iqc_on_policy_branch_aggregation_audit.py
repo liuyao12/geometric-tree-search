@@ -46,6 +46,9 @@ class IQCOnPolicyAggregationReport:
     improvement_gate_passed: bool
     development_gate_passed: bool
     fresh_confirmation_authorized: bool
+    broad_upstream_pose_port_fully_nested: bool
+    on_policy_upstream_pose_port_fully_nested: bool
+    end_to_end_cross_validation_fully_nested: bool
     on_policy_corpus_digest: str
     closed_loop_candidate_digest: str
     target_used: bool
@@ -140,6 +143,13 @@ def evaluate(path: Path = FIXTURE) -> IQCOnPolicyAggregationReport:
         development_gate_passed=development_gate,
         # A new one-shot target is opened only after the full development gate.
         fresh_confirmation_authorized=development_gate,
+        broad_upstream_pose_port_fully_nested=bool(
+            data["broad_upstream_pose_port_fully_nested"]),
+        on_policy_upstream_pose_port_fully_nested=bool(
+            data["on_policy_upstream_pose_port_fully_nested"]),
+        end_to_end_cross_validation_fully_nested=bool(
+            data["broad_upstream_pose_port_fully_nested"] and
+            data["on_policy_upstream_pose_port_fully_nested"]),
         on_policy_corpus_digest=corpus_digest,
         closed_loop_candidate_digest=closed["candidate_digest"],
         target_used=False)
