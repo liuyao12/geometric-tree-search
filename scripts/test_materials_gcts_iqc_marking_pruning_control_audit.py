@@ -16,6 +16,9 @@ def test_pruning_controls_are_preserved_as_honest_negative_results():
     assert report.stage_value_terminal_supply == 17
     assert report.descendant_viability_selected_exact == 15
     assert report.descendant_viability_terminal_supply == 16
+    assert report.lookahead_terminal_supply == 20
+    assert report.lookahead_selected_exact == 12
+    assert report.lookahead_proposal_checks == 7312
     assert not report.controls_improve_baseline
     assert not report.development_gate_passed
     assert not report.fresh_confirmation_authorized

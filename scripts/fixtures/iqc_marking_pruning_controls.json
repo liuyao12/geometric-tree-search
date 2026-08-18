@@ -44,6 +44,17 @@
     "summary": {"stage_supply": [19, 16, 16], "terminal_supply": 16, "selected_exact": 15, "selected_correct": 54},
     "target_used": false
   },
+  "broad_terminal_lookahead_control": {
+    "digest": "9a8f37be384376a75501cb1f875bf31af43fa63a276a16ca4ee3fe19174fbd16",
+    "trace_digest": "4551c853971696c6832cbed84ad30a6df120b11ab2a1ddab17ae2a18e741f87d",
+    "proposal_reach": [12, 4, 8],
+    "stage_supply": [20, 20, 20],
+    "terminal_supply": 20,
+    "selected_exact": 12,
+    "selected_correct": 49,
+    "proposal_checks": 7312,
+    "target_used_before_selection": false
+  },
   "development_gate": {"minimum_selected_exact": 18},
   "target_used": false
 }
