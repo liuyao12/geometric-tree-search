@@ -2207,6 +2207,19 @@ exactly 31 / 36. Thus another unordered frontier shell is not the missing
 value; the next representation must retain which port obligation survives
 along which root-to-child path. The reserved confirmation remains sealed.
 
+Keeping the directed path instead of pooling it is materially better. A path
+descriptor joins the root successor, the incoming child-port roles and
+order-two patterns, and the child successor. All path geometry is serialized
+before labels are read; a training path is positive only when both root and
+child have the correct species-position. The root value is the maximum over
+four train-supported child continuations. This reaches 33 / 36 actions and 16
+/ 18 exact nuclei, compared with 31 / 36 for both one-step and pooled two-step
+values. A separate supply check places the first exact child at rank 13 for one
+remaining failed nucleus, while two other nuclei expose no exact immediate
+child for otherwise correct roots. Branch width is therefore justified as a
+development variable, but finite connection vocabulary remains a distinct
+limit. The reserved confirmation remains unopened.
+
 An individual two-step port graph then separates candidate supply from marking
 failure. One canonical representative of each local descriptor class is
 ranked by the frozen connection score, and the first 128 per nucleus are

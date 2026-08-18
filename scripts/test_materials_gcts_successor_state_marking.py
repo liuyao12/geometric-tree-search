@@ -6,7 +6,10 @@ from collections import Counter
 from materials_gcts_recursive_connections import (
     LocalClusterType, MarkedProposalResult, RecursiveConnectionState)
 from materials_gcts_successor_state_marking import (
-    rollout_state_descriptor, successor_state_descriptor)
+    path_state_descriptor, rollout_state_descriptor,
+    successor_state_descriptor)
+from materials_gcts_port_incidence_search import (
+    port_incidence_patterns, port_incidence_state)
 
 
 def fixture(transform=lambda point: point):
@@ -44,6 +47,14 @@ def main():
         descriptor, (descriptor, rotated_descriptor))
     assert rollout == reversed_rollout
     assert ("rollout-branch-count", 2) in rollout.tokens
+    state = port_incidence_state(first, first.votes)
+    patterns = port_incidence_patterns(first, first.votes)
+    path = path_state_descriptor(
+        descriptor, rotated_descriptor, root_color="A", child_color="B",
+        normalized_distance_bin=4, incoming_state=state,
+        incoming_patterns=patterns)
+    assert ("path-colors", "A", "B") in path.tokens
+    assert any(token[0] == "path-incoming-role" for token in path.tokens)
     try:
         successor_state_descriptor(
             first, new_parent_index=1, new_parent_position=parent,

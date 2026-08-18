@@ -100,3 +100,22 @@ def rollout_state_descriptor(
     tokens.update(("rollout-child-state", state, _bucket(count))
                   for state, count in summaries.items())
     return CandidateIncidenceDescriptor(tuple(sorted(tokens, key=repr)))
+
+
+def path_state_descriptor(
+        root: CandidateIncidenceDescriptor,
+        child: CandidateIncidenceDescriptor, *, root_color, child_color,
+        normalized_distance_bin: int, incoming_state,
+        incoming_patterns) -> CandidateIncidenceDescriptor:
+    """Keep one directed root→child obligation and its successor states."""
+    tokens = {
+        ("path-colors", str(root_color), str(child_color)),
+        ("path-distance", int(normalized_distance_bin)),
+    }
+    tokens.update(("path-root", token) for token in root.tokens)
+    tokens.update(("path-child", token) for token in child.tokens)
+    tokens.update(("path-incoming-role", role, count)
+                  for role, count in incoming_state.roles)
+    tokens.update(("path-incoming-pattern", pattern)
+                  for pattern in incoming_patterns)
+    return CandidateIncidenceDescriptor(tuple(sorted(tokens, key=repr)))

@@ -1366,6 +1366,15 @@ remains exactly 31 / 36. The informative object is therefore not another
 unordered frontier shell; it is the obligation carried along a particular
 root-to-child path.
 
+Retaining that path produces the strongest expanded result so far. Each
+descriptor binds the root successor, the incoming child-port roles and
+order-two patterns, and the child successor into one directed record. Geometry
+is frozen before labels enter; a path is positive only when both placements
+are correct. Scoring each root by its best supported four-child continuation
+raises selection to 33 / 36 and 16 / 18 exact nuclei. The remaining supply
+audit finds a correct child only near rank 13 in one failed nucleus, motivating
+a wider bounded tree while the confirmation remains sealed.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
