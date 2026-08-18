@@ -144,7 +144,7 @@ const orientationPoints = new THREE.Points(orientationPointGeometry, orientation
 orientationPoints.renderOrder = 3;
 orientationScene.add(orientationPoints);
 const orientationSelectionMarker = new THREE.Mesh(
-  new THREE.SphereGeometry(0.105, 16, 12),
+  new THREE.SphereGeometry(0.135, 16, 12),
   new THREE.MeshBasicMaterial({
     color: 0x17201e,
     transparent: true,
@@ -157,6 +157,7 @@ orientationSelectionMarker.visible = false;
 orientationSelectionMarker.renderOrder = 4;
 orientationScene.add(orientationSelectionMarker);
 let orientationPointKeys = [];
+let orientationPointBaseColors = [];
 let selectedOrientationKey = null;
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -354,17 +355,19 @@ function drawOrientationBall(transforms) {
   const positions = [];
   const colors = [];
   orientationPointKeys = [];
+  orientationPointBaseColors = [];
   for (const quaternion of orientations) {
     const point = axisAnglePoint(quaternion);
     const color = orientationColorFromQuaternion(quaternion);
     orientationPointKeys.push(orientationKey(quaternion));
+    orientationPointBaseColors.push(color);
     positions.push(point.x, point.y, point.z);
     colors.push(color.r, color.g, color.b);
   }
   orientationPointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
   orientationPointGeometry.computeBoundingSphere();
-  orientationPointMaterial.size = orientations.length > 1500 ? 0.018 : orientations.length > 250 ? 0.026 : orientations.length > 40 ? 0.04 : 0.075;
+  orientationPointMaterial.size = orientations.length > 1500 ? 0.032 : orientations.length > 250 ? 0.046 : orientations.length > 40 ? 0.064 : 0.105;
   const selectedIndex = orientationPointKeys.indexOf(selectedOrientationKey);
   orientationSelectionMarker.visible = selectedIndex >= 0;
   if (selectedIndex >= 0) {
@@ -374,14 +377,28 @@ function drawOrientationBall(transforms) {
     selectedOrientationKey = null;
     refreshVisualColors(currentVisual);
   }
+  refreshOrientationPointColors();
+}
+
+function refreshOrientationPointColors() {
+  const colors = orientationPointGeometry.getAttribute("color");
+  if (!colors) return;
+  const muted = new THREE.Color(0x8f9794);
+  for (let index = 0; index < orientationPointKeys.length; index += 1) {
+    const color = selectedOrientationKey === null || orientationPointKeys[index] === selectedOrientationKey
+      ? orientationPointBaseColors[index]
+      : muted;
+    colors.setXYZ(index, color.r, color.g, color.b);
+  }
+  colors.needsUpdate = true;
 }
 
 function displayedOrientationColor(matrix) {
   const color = orientationColor(matrix);
   if (selectedOrientationKey === null) return color;
   const key = orientationKey(canonicalQuaternion(matrix));
-  if (key === selectedOrientationKey) return color.offsetHSL(0, 0.14, 0.1);
-  return color.lerp(new THREE.Color(0xaeb8b3), 0.82).multiplyScalar(0.42);
+  if (key === selectedOrientationKey) return color.offsetHSL(0, 0.18, 0.12);
+  return new THREE.Color(0x7f8885);
 }
 
 function makeTransparentMaterial({ line = false, opacity } = {}) {
@@ -483,6 +500,7 @@ function refreshVisualColors(visual) {
 
 function selectOrientation(key) {
   selectedOrientationKey = selectedOrientationKey === key ? null : key;
+  refreshOrientationPointColors();
   refreshVisualColors(currentVisual);
   if (transition) {
     refreshVisualColors(transition.from);
