@@ -3763,6 +3763,31 @@ advantage. This batch is additional development evidence, not a fresh
 confirmation, and it provides no sustained, stationary, or exponential IQC
 claim.
 
+The missing branches were then localized without changing the frozen geometry,
+marking, or target-order contract. Removing only final-depth truncation expands
+the eight retained terminals to `22–29` but leaves exact supply at `6 / 10`.
+Removing second-depth truncation expands them to `26–60` and still leaves
+`6 / 10`. Retaining the complete root frontier produces `60–68` terminals and
+raises supply to `9 / 10`, proving that first-depth pruning destroyed three of
+the four missing paths. Doubling only root action reach does not recover the
+last path. On the failed nucleus, a four-schedule ladder frozen before one
+target-open call finds the first exact branch at reach `8 -> 8 -> 8`; its scalar
+rank is one and fusion rank fifteen.
+
+The corresponding complete ten-nucleus `8 -> 8 -> 8` audit freezes `120–136`
+terminals per nucleus and contains an exact three-action terminal in all
+`10 / 10`. Exact scalar ranks are
+`1 / 9 / 9 / 1 / 5 / 4 / 5 / 3 / 3 / 2`; exact fusion ranks are
+`1 / 15 / 15 / 15 / 1 / 10 / 1 / 1 / 1 / 1`. Consequently a generic
+target-free portfolio retaining the first nine terminals from each immutable
+order preserves complete supply in at most eighteen unique states. It is a
+tree-search/rollback portfolio, not a winning value model: scalar top-one is
+exact on `2 / 10`, fusion top-one on `6 / 10`, and fusion selects `23 / 30`
+correct sites. The result uses the consumed development targets and is neither
+fresh spatial confirmation nor stationary/exponential evidence. The frozen
+result receipt is `9031bc59…514a5`; the compact result fixture is checked by
+SHA-256 in ordinary regression tests.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

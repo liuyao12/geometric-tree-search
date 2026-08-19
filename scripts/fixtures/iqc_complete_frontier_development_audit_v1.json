@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "scope": "consumed ten-nucleus IQC development set",
+  "candidate_geometry": "frozen pose-port grammar",
+  "target_used_for_candidate_or_ranking": false,
+  "fresh_confirmation_claimed": false,
+  "stationary_or_exponential_claimed": false,
+  "beam_ablation": [
+    {
+      "name": "final frontier complete",
+      "schedule": [4, 4, 8],
+      "unpruned_from_depth": 2,
+      "terminal_range": [22, 29],
+      "exact_supply": 6,
+      "newly_supplied": 0,
+      "receipt_digest": "ea7517421bab334cf8d7633186aa060ddde8859666bd210f867ee0500a15716b"
+    },
+    {
+      "name": "second and final frontiers complete",
+      "schedule": [4, 4, 8],
+      "unpruned_from_depth": 1,
+      "terminal_range": [26, 60],
+      "exact_supply": 6,
+      "newly_supplied": 0,
+      "receipt_digest": "0caa8fc26249252e8ecc4c2b3fddf936d8ba4a902f1334c91b6b7551789bba32"
+    },
+    {
+      "name": "complete frozen-reach tree",
+      "schedule": [4, 4, 8],
+      "unpruned_from_depth": 0,
+      "terminal_range": [60, 68],
+      "exact_supply": 9,
+      "newly_supplied": 3,
+      "receipt_digest": "57fe28e5a1785f4f59e86f7afe50624d75a5c150116232fc191cf0270e68860e"
+    },
+    {
+      "name": "root reach doubled",
+      "schedule": [8, 4, 8],
+      "unpruned_from_depth": 0,
+      "terminal_range": [96, 107],
+      "exact_supply": 9,
+      "newly_supplied": 3,
+      "receipt_digest": "12daaebd0012eaea220db68d1899eabce6451ed31ffd7ff015f211d5ada2bbcb"
+    },
+    {
+      "name": "complete widened tree",
+      "schedule": [8, 8, 8],
+      "unpruned_from_depth": 0,
+      "terminal_counts": [129, 129, 129, 136, 129, 120, 128, 120, 120, 128],
+      "exact_supply": 10,
+      "newly_supplied": 4,
+      "scalar_first_exact_ranks": [1, 9, 9, 1, 5, 4, 5, 3, 3, 2],
+      "fusion_first_exact_ranks": [1, 15, 15, 15, 1, 10, 1, 1, 1, 1],
+      "scalar_top_one_exact": 2,
+      "scalar_top_one_correct_sites": 22,
+      "fusion_top_one_exact": 6,
+      "fusion_top_one_correct_sites": 23,
+      "minimum_scalar_portfolio": 9,
+      "minimum_fusion_portfolio": 15,
+      "minimum_dual_portfolio_per_channel": 9,
+      "frozen_dual_portfolio_per_channel": 9,
+      "maximum_dual_portfolio_size": 18,
+      "receipt_digest": "9031bc59c1ee10a4477f0cf44f8a76e02c57a60753161174c9dce244152514a5"
+    }
+  ],
+  "missing_nucleus_reach_ladder": {
+    "center_index": 3,
+    "center": [10.0, 30.0, -70.0],
+    "schedules": [[4, 4, 8], [8, 4, 8], [8, 8, 8], [8, 8, 16]],
+    "terminal_counts": [60, 107, 136, 440],
+    "exact_supply": [false, false, true, true],
+    "scalar_first_exact_ranks": [null, null, 1, 19],
+    "fusion_first_exact_ranks": [null, null, 15, 73],
+    "first_supplying_schedule": [8, 8, 8],
+    "receipt_digest": "693a09f347bc014e7b5d0ae734bb334fdc1f96f417778d8af1a6e47e8769115d"
+  },
+  "honest_status": "candidate supply is complete under the bounded widened tree; top-one value selection and spatial confirmation remain open"
+}

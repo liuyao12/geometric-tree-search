@@ -1795,6 +1795,22 @@ three-action branch in all local environments—is now the measured bottleneck.
 This is additional development evidence, not a fresh confirmation, sustained
 growth, stationarity, or an exponential certificate.
 
+A complete-frontier audit now separates the missing geometry from value
+selection. It keeps the frozen pose/port grammar and marking unchanged, removes
+beam truncation one stage at a time, and freezes every candidate and both
+orders before reopening the already-consumed targets. Keeping all final states
+or all second-depth states leaves exact supply at `6 / 10`; keeping every root
+state raises it to `9 / 10`. The complete bounded `8 -> 8 -> 8` tree contains
+an exact three-action terminal in `10 / 10` nuclei, among `120–136` terminals
+per nucleus. Exact scalar ranks are at most nine and exact fusion ranks at most
+fifteen. A generic target-free dual-rank portfolio therefore retains the first
+nine states from each order—at most eighteen unique terminals—and preserves
+complete supply. Top-one selection is not solved: scalar chooses `2 / 10`
+exact terminals and fusion `6 / 10` (`22 / 30` versus `23 / 30` correct
+sites). This consumed-development result fixes the candidate-supply diagnosis;
+it does not constitute a new confirmation, transferable value win,
+stationarity, or exponential growth.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
