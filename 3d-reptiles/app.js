@@ -23,7 +23,7 @@ const MAX_GENERATION = 5;
 const FIXED_CHILD_SEQUENCE = [5, 5, 3, 5, 5];
 const TURNING_CHILD_INDICES = new Set([1, 2, 6, 7]);
 const TURN_GENERATION_COLORS = [
-  0xc6cbc9,
+  0xb8bfbc,
   0xf2553d,
   0xf2a51f,
   0x18a98b,
@@ -491,19 +491,19 @@ function displayedTileColor(matrix, turnGeneration) {
   const color = orientationColor(matrix);
   const key = orientationKey(canonicalQuaternion(matrix));
   if (visualEffect === "turn-generation") {
-    if (selectedOrientationKey !== null && key !== selectedOrientationKey) return new THREE.Color(0xc6cbc9);
+    if (selectedOrientationKey !== null && key !== selectedOrientationKey) return new THREE.Color(0xb8bfbc);
     if (turnGeneration === null) {
-      return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xc6cbc9);
+      return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xb8bfbc);
     }
     const generationColor = turnGenerationColor(turnGeneration);
     return selectedOrientationKey === key ? generationColor.offsetHSL(0, 0.08, 0.08) : generationColor;
   }
   if (mutedOrientationKeys.has(key)) {
-    return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xc6cbc9);
+    return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xb8bfbc);
   }
   if (selectedOrientationKey === null) return color;
   if (key === selectedOrientationKey) return color.offsetHSL(0, 0.1, 0.08);
-  return new THREE.Color(0xc6cbc9);
+  return new THREE.Color(0xb8bfbc);
 }
 
 function makeTransparentMaterial({ line = false, opacity } = {}) {
