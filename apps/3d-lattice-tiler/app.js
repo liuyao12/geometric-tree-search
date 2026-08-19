@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-checkpoint-screen-v68";
+import { tileSpecs } from "./engine.js?v=20260818-distinct-checkpoint-v70";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1339,7 +1339,10 @@ function updateCandidateResearchPanel() {
       const quotient = proof.checkpoint_quotient_checks
         ? ` Exact boundary-quotient checks completed at all ${proof.checkpoint_quotient_checks} newly reached patch sizes from 2 through ${proofProtocol.target_tiles} and certified none; this excludes those particular patches as translational fundamental domains, not other possible motifs.`
         : "";
-      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}`;
+      const distinctBranches = proof.distinct_checkpoint_checks
+        ? ` A separate ${proof.distinct_checkpoint_paths}-path bounded branch screen completed exact checks on ${proof.distinct_checkpoint_checks} distinct patch states through size ${proof.distinct_checkpoint_max_size}, with no certificate or timeout; ${proof.distinct_checkpoint_cap_skips} further eligible states were skipped at the four-per-size cap.`
+        : "";
+      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}`;
     })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
     candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
@@ -2660,7 +2663,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-checkpoint-screen-v68", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-distinct-checkpoint-v70", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3153,7 +3156,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-checkpoint-screen-v68", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-distinct-checkpoint-v70", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

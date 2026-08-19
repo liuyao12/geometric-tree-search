@@ -51,6 +51,11 @@ assert.match(
 assert.match(growthAppSource, /4 unresolved lattice candidates/, "the periodic checkpoint rejection must leave four catalog candidates");
 assert.match(
   growthAppSource,
+  /bounded branch screen completed exact checks on/,
+  "the catalog must expose the stronger distinct-branch checkpoint evidence"
+);
+assert.match(
+  growthAppSource,
   /that target patch is not a translational quotient/,
   "the completed proof-lane summary must retain the target-patch quotient result"
 );
@@ -72,6 +77,10 @@ const archivedDiversifiedScreening = JSON.parse(await readFile(
 ));
 const archivedProofScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-gcts-checkpoint-screen-2026-08-18.json", import.meta.url),
+  "utf8"
+));
+const archivedDistinctScreening = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -139,6 +148,34 @@ assert.deepEqual(
   "runtime target-patch quotient evidence must match the archived exact checks"
 );
 assert.deepEqual(archivedProofScreening.summary.rejected_candidates, ["10_26470"]);
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.distinct_patch_checkpoint_screen,
+  {
+    paths_screened: archivedDistinctScreening.summary.paths_screened,
+    maximum_checks_per_size_per_path:
+      archivedDistinctScreening.protocol.maximum_checks_per_size_per_path,
+    completed_checks: archivedDistinctScreening.summary.checkpoint_checks_completed,
+    checks_timed_out: archivedDistinctScreening.summary.checkpoint_checks_timed_out,
+    certificates_found: archivedDistinctScreening.summary.exact_periodic_certificates_found,
+    duplicate_states_skipped: archivedDistinctScreening.summary.duplicate_states_skipped,
+    per_size_cap_skips: archivedDistinctScreening.summary.per_size_cap_skips,
+    report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
+  },
+  "runtime distinct-patch evidence must match the archived executed screen"
+);
+assert.equal(archivedDistinctScreening.paths.length, 12);
+assert.ok(
+  archivedDistinctScreening.paths.every(path =>
+    path.checks_attempted === path.checks_completed
+    && path.checks_timed_out === 0
+    && !path.certificate_found
+    && path.check_count_ranges.reduce(
+      (sum, range) => sum + (range.to - range.from + 1) * range.count,
+      0
+    ) === path.checks_attempted
+  ),
+  "every archived distinct-patch check must be complete and internally accounted"
+);
 assert.ok(
   archivedProofScreening.paths
     .filter(path => path.id !== "10_26470")
@@ -158,6 +195,14 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
   assert.equal(candidate.gcts_proof_screening.focused_witness_hash, witness.witness_hash);
   assert.equal(candidate.gcts_proof_screening.checkpoint_quotient_checks, 39);
   assert.equal(candidate.gcts_proof_screening.checkpoint_quotient_certificates, 0);
+  const distinctSummary = archivedDistinctScreening.candidate_summary.find(item => item.id === candidate.id);
+  assert.ok(distinctSummary, `${candidate.id} must retain its distinct-branch screen summary`);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_paths, distinctSummary.paths);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_checks, distinctSummary.checks_completed);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_max_size, distinctSummary.maximum_patch);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_certificates, distinctSummary.certificates_found);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_timeouts, distinctSummary.checks_timed_out);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_cap_skips, distinctSummary.per_size_cap_skips);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL

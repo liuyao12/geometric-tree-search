@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "screen_date": "2026-08-18",
+  "engine_commit": "d691900580dfaaff2b5df8f4f1f4c887a1b7ba6d",
+  "model": "connected face-to-face patches of one congruent lattice polyhedron using proper cubic lattice orientations",
+  "protocol": {
+    "lane": "free_range_unbanded",
+    "target_tiles": 40,
+    "configured_node_limit": 500,
+    "time_limit_ms": 30000,
+    "seeds": [1, 2, 3],
+    "seeded_tie_breaks": true,
+    "minimum_checkpoint_tiles": 2,
+    "maximum_checkpoint_tiles": 40,
+    "distinct_patch_states": true,
+    "maximum_checks_per_size_per_path": 4,
+    "maximum_total_checks_per_path": 160,
+    "checkpoint_total_time_limit_ms_per_path": 10000,
+    "certificate_time_limit_ms_per_check": 2000,
+    "certificate_method": "face_paired_boundary_equal_covolume",
+    "generation_band": false,
+    "exact_failure_memo": true,
+    "translation_equivariant_nogoods": false,
+    "mirrors": false
+  },
+  "interpretation": [
+    "Each newly encountered patch state is keyed by its placed prototile geometry, so revisiting the same state through another move order does not repeat an exact quotient check.",
+    "Up to four distinct patch states at each tile count are checked on each seeded path, including states reached after backtracking.",
+    "A positive boundary-paired equal-covolume quotient would be an exact certificate of an infinite translational tiling.",
+    "A completed negative check excludes only that particular finite patch as a translational fundamental domain.",
+    "The per-size cap skipped additional eligible states, so the four candidates remain inconclusive rather than certified aperiodic or non-tiling."
+  ],
+  "paths": [
+    {
+      "id": "10_16113", "seed": 1, "largest_patch": 21, "visited_nodes": 627, "backtracks": 435,
+      "witness_hash": "bf1ecec2fd68388c", "termination_reason": "node_limit",
+      "checks_attempted": 68, "checks_completed": 68, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 20, "minimum_size_checked": 2, "maximum_size_checked": 21,
+      "check_count_ranges": [{"from":2,"to":4,"count":1},{"from":5,"to":5,"count":2},{"from":6,"to":20,"count":4},{"from":21,"to":21,"count":3}],
+      "duplicate_states_skipped": 0, "per_size_cap_skips": 558, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 19
+    },
+    {
+      "id": "10_16113", "seed": 2, "largest_patch": 22, "visited_nodes": 623, "backtracks": 429,
+      "witness_hash": "1e8d08e2cd54d840", "termination_reason": "node_limit",
+      "checks_attempted": 70, "checks_completed": 70, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 21, "minimum_size_checked": 2, "maximum_size_checked": 22,
+      "check_count_ranges": [{"from":2,"to":4,"count":1},{"from":5,"to":5,"count":2},{"from":6,"to":20,"count":4},{"from":21,"to":21,"count":3},{"from":22,"to":22,"count":2}],
+      "duplicate_states_skipped": 2, "per_size_cap_skips": 550, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 17
+    },
+    {
+      "id": "10_16113", "seed": 3, "largest_patch": 27, "visited_nodes": 641, "backtracks": 427,
+      "witness_hash": "913017bbeb925415", "termination_reason": "node_limit",
+      "checks_attempted": 91, "checks_completed": 91, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 26, "minimum_size_checked": 2, "maximum_size_checked": 27,
+      "check_count_ranges": [{"from":2,"to":4,"count":1},{"from":5,"to":5,"count":2},{"from":6,"to":26,"count":4},{"from":27,"to":27,"count":2}],
+      "duplicate_states_skipped": 1, "per_size_cap_skips": 548, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 30
+    },
+    {
+      "id": "10_45026", "seed": 1, "largest_patch": 14, "visited_nodes": 486, "backtracks": 454,
+      "witness_hash": "ca267abb58ed4c66", "termination_reason": "node_limit",
+      "checks_attempted": 50, "checks_completed": 50, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 13, "minimum_size_checked": 2, "maximum_size_checked": 14,
+      "check_count_ranges": [{"from":2,"to":2,"count":2},{"from":3,"to":14,"count":4}],
+      "duplicate_states_skipped": 4, "per_size_cap_skips": 431, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 8
+    },
+    {
+      "id": "10_45026", "seed": 2, "largest_patch": 17, "visited_nodes": 487, "backtracks": 440,
+      "witness_hash": "b4ad5cba53b90111", "termination_reason": "node_limit",
+      "checks_attempted": 52, "checks_completed": 52, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 16, "minimum_size_checked": 2, "maximum_size_checked": 17,
+      "check_count_ranges": [{"from":2,"to":4,"count":1},{"from":5,"to":5,"count":2},{"from":6,"to":6,"count":3},{"from":7,"to":17,"count":4}],
+      "duplicate_states_skipped": 11, "per_size_cap_skips": 423, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 16
+    },
+    {
+      "id": "10_45026", "seed": 3, "largest_patch": 16, "visited_nodes": 477, "backtracks": 445,
+      "witness_hash": "ef3f57db2e5ea8bf", "termination_reason": "node_limit",
+      "checks_attempted": 57, "checks_completed": 57, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 15, "minimum_size_checked": 2, "maximum_size_checked": 16,
+      "check_count_ranges": [{"from":2,"to":2,"count":2},{"from":3,"to":15,"count":4},{"from":16,"to":16,"count":3}],
+      "duplicate_states_skipped": 10, "per_size_cap_skips": 409, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 16
+    },
+    {
+      "id": "10_45033", "seed": 1, "largest_patch": 23, "visited_nodes": 425, "backtracks": 417,
+      "witness_hash": "4ff72ef6b74d881c", "termination_reason": "node_limit",
+      "checks_attempted": 63, "checks_completed": 63, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 22, "minimum_size_checked": 2, "maximum_size_checked": 23,
+      "check_count_ranges": [{"from":2,"to":7,"count":1},{"from":8,"to":8,"count":3},{"from":9,"to":14,"count":4},{"from":15,"to":16,"count":1},{"from":17,"to":23,"count":4}],
+      "duplicate_states_skipped": 4, "per_size_cap_skips": 357, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 48
+    },
+    {
+      "id": "10_45033", "seed": 2, "largest_patch": 36, "visited_nodes": 427, "backtracks": 376,
+      "witness_hash": "dc01dcccbba7abbf", "termination_reason": "node_limit",
+      "checks_attempted": 91, "checks_completed": 91, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 35, "minimum_size_checked": 2, "maximum_size_checked": 36,
+      "check_count_ranges": [{"from":2,"to":13,"count":1},{"from":14,"to":14,"count":3},{"from":15,"to":17,"count":4},{"from":18,"to":18,"count":2},{"from":19,"to":19,"count":4},{"from":20,"to":21,"count":1},{"from":22,"to":22,"count":3},{"from":23,"to":33,"count":4},{"from":34,"to":34,"count":3},{"from":35,"to":35,"count":4},{"from":36,"to":36,"count":2}],
+      "duplicate_states_skipped": 10, "per_size_cap_skips": 325, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 172
+    },
+    {
+      "id": "10_45033", "seed": 3, "largest_patch": 27, "visited_nodes": 416, "backtracks": 381,
+      "witness_hash": "35eae034b7d30321", "termination_reason": "node_limit",
+      "checks_attempted": 68, "checks_completed": 68, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 26, "minimum_size_checked": 2, "maximum_size_checked": 27,
+      "check_count_ranges": [{"from":2,"to":12,"count":1},{"from":13,"to":24,"count":4},{"from":25,"to":25,"count":2},{"from":26,"to":26,"count":4},{"from":27,"to":27,"count":3}],
+      "duplicate_states_skipped": 0, "per_size_cap_skips": 347, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 74
+    },
+    {
+      "id": "9_11683", "seed": 1, "largest_patch": 25, "visited_nodes": 480, "backtracks": 443,
+      "witness_hash": "410171399ec8c634", "termination_reason": "node_limit",
+      "checks_attempted": 90, "checks_completed": 90, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 24, "minimum_size_checked": 2, "maximum_size_checked": 25,
+      "check_count_ranges": [{"from":2,"to":3,"count":1},{"from":4,"to":25,"count":4}],
+      "duplicate_states_skipped": 3, "per_size_cap_skips": 386, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 55
+    },
+    {
+      "id": "9_11683", "seed": 2, "largest_patch": 19, "visited_nodes": 483, "backtracks": 461,
+      "witness_hash": "7b6e67b95c9369bf", "termination_reason": "node_limit",
+      "checks_attempted": 58, "checks_completed": 58, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 18, "minimum_size_checked": 2, "maximum_size_checked": 19,
+      "check_count_ranges": [{"from":2,"to":5,"count":1},{"from":6,"to":6,"count":2},{"from":7,"to":19,"count":4}],
+      "duplicate_states_skipped": 0, "per_size_cap_skips": 424, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 24
+    },
+    {
+      "id": "9_11683", "seed": 3, "largest_patch": 32, "visited_nodes": 461, "backtracks": 460,
+      "witness_hash": "e9d1724d88ab43c2", "termination_reason": "node_limit",
+      "checks_attempted": 113, "checks_completed": 113, "checks_timed_out": 0, "certificate_found": false,
+      "distinct_sizes_checked": 31, "minimum_size_checked": 2, "maximum_size_checked": 32,
+      "check_count_ranges": [{"from":2,"to":4,"count":1},{"from":5,"to":5,"count":2},{"from":6,"to":32,"count":4}],
+      "duplicate_states_skipped": 3, "per_size_cap_skips": 344, "total_cap_skips": 0,
+      "time_budget_skips": 0, "checkpoint_elapsed_ms": 120
+    }
+  ],
+  "candidate_summary": [
+    {"id":"10_16113","paths":3,"maximum_patch":27,"checks_completed":229,"certificates_found":0,"checks_timed_out":0,"duplicate_states_skipped":3,"per_size_cap_skips":1656,"checkpoint_elapsed_ms":66},
+    {"id":"10_45026","paths":3,"maximum_patch":17,"checks_completed":159,"certificates_found":0,"checks_timed_out":0,"duplicate_states_skipped":25,"per_size_cap_skips":1263,"checkpoint_elapsed_ms":40},
+    {"id":"10_45033","paths":3,"maximum_patch":36,"checks_completed":222,"certificates_found":0,"checks_timed_out":0,"duplicate_states_skipped":14,"per_size_cap_skips":1029,"checkpoint_elapsed_ms":294},
+    {"id":"9_11683","paths":3,"maximum_patch":32,"checks_completed":261,"certificates_found":0,"checks_timed_out":0,"duplicate_states_skipped":6,"per_size_cap_skips":1154,"checkpoint_elapsed_ms":199}
+  ],
+  "summary": {
+    "candidates_screened": 4,
+    "paths_screened": 12,
+    "checkpoint_checks_attempted": 871,
+    "checkpoint_checks_completed": 871,
+    "checkpoint_checks_timed_out": 0,
+    "exact_periodic_certificates_found": 0,
+    "duplicate_states_skipped": 48,
+    "per_size_cap_skips": 5102,
+    "total_cap_skips": 0,
+    "time_budget_skips": 0,
+    "checkpoint_elapsed_ms": 599,
+    "inconclusive_survivors": ["10_16113", "10_45026", "10_45033", "9_11683"]
+  }
+}

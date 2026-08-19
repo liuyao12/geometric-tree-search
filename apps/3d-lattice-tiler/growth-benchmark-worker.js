@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-checkpoint-screen-v68";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-distinct-checkpoint-v70";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
