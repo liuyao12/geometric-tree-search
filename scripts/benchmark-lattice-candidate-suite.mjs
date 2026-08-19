@@ -29,6 +29,11 @@ const failureMemoMaxStates = Math.max(0, Math.floor(numberArg("failure-memo-max-
 const geometricNogood = args.get("geometric-nogood") === "true";
 const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
 const geometricNogoodIndex = args.get("geometric-nogood-index") !== "false";
+const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
+const genericPeriodicCertificateTimeMs = Math.max(
+  1,
+  Math.floor(numberArg("generic-periodic-certificate-time-ms", 5000))
+);
 const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
   .split(",")
   .map(value => Math.floor(Number(value)))
@@ -102,6 +107,8 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_geometric_nogood: geometricNogood,
   generic_geometric_nogood_max_clauses: geometricNogoodMaxClauses,
   generic_geometric_nogood_index: geometricNogoodIndex,
+  generic_periodic_certificate: genericPeriodicCertificate && lane === "free_range_unbanded",
+  generic_periodic_certificate_time_limit_ms: genericPeriodicCertificateTimeMs,
   include_mirrors: false,
   template_preflight: !lane.startsWith("free_range"),
   periodic_patch_max_tiles: periodicMax,
@@ -176,6 +183,12 @@ async function runLane(benchmarkCase, lane, seed) {
     geometricNogoodClauseChecks: stats.generic_geometric_nogood_clause_checks ?? 0,
     geometricNogoodLinearClauseChecks: stats.generic_geometric_nogood_linear_clause_checks ?? 0,
     geometricNogoodAvoidedClauseChecks: stats.generic_geometric_nogood_avoided_clause_checks ?? 0,
+    genericPeriodicCertificateAttempted: !!stats.generic_periodic_certificate_attempted,
+    genericPeriodicCertificateCompleted: !!stats.generic_periodic_certificate_completed,
+    genericPeriodicCertificateTimedOut: !!stats.generic_periodic_certificate_timed_out,
+    genericPeriodicCertificateFound: !!stats.generic_periodic_certificate_found,
+    genericPeriodicCertificatePatchSize: stats.generic_periodic_certificate_patch_size ?? 0,
+    genericPeriodicCertificateElapsedMs: stats.generic_periodic_certificate_elapsed_ms ?? 0,
     terminationReason: stats.termination_reason
       ?? (final?.tiling_evidence?.certified
         ? "certificate_found"
@@ -250,6 +263,7 @@ const proofSearchPortfolio = id => {
   const depths = trials.map(row => row.largestPatch);
   const targetHits = trials.filter(row => row.largestPatch >= target).length;
   const certifiedNonTilerTrials = trials.filter(row => row.certified && row.canTile === false).length;
+  const certifiedPeriodicTrials = trials.filter(row => row.certified && row.canTile === true).length;
   return {
     target,
     trials: trials.length,
@@ -257,18 +271,21 @@ const proofSearchPortfolio = id => {
     targetHits,
     targetHitRate: targetHits / trials.length,
     certifiedNonTilerTrials,
+    certifiedPeriodicTrials,
     robustLargestPatch: Math.min(...depths),
     medianLargestPatch: median(depths),
     bestLargestPatch: Math.max(...depths),
     totalVisitedNodes: trials.reduce((sum, row) => sum + row.visitedNodes, 0),
     totalBacktracks: trials.reduce((sum, row) => sum + row.backtracks, 0),
-    outcome: certifiedNonTilerTrials
-      ? "certified_non_tiler"
-      : targetHits === trials.length
-        ? "robust_target_patch"
-        : targetHits
-          ? "seed_sensitive_target_patch"
-          : "bounded_below_target",
+    outcome: certifiedPeriodicTrials
+      ? "certified_periodic_target_patch"
+      : certifiedNonTilerTrials
+        ? "certified_non_tiler"
+        : targetHits === trials.length
+          ? "robust_target_patch"
+          : targetHits
+            ? "seed_sensitive_target_patch"
+            : "bounded_below_target",
     terminationReasons: Object.fromEntries([...new Set(trials.map(row => row.terminationReason ?? "completed"))]
       .map(reason => [reason, trials.filter(row => (row.terminationReason ?? "completed") === reason).length]))
   };
@@ -343,11 +360,13 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
       freeRangePortfolio: freeRangePortfolio(id),
       screeningConclusion: proofPortfolio?.certifiedNonTilerTrials > 0
         ? "reject_certified_non_tiler"
-        : "inconclusive"
+        : proofPortfolio?.certifiedPeriodicTrials > 0
+          ? "reject_certified_periodic"
+          : "inconclusive"
     };
   });
 const summary = {
-  schemaVersion: 7,
+  schemaVersion: 8,
   configuration: {
     target,
     timeMs,
@@ -361,6 +380,8 @@ const summary = {
     geometricNogood,
     geometricNogoodMaxClauses,
     geometricNogoodIndex,
+    genericPeriodicCertificate,
+    genericPeriodicCertificateTimeMs,
     lanes: requestedLanes.size ? [...requestedLanes] : null
   },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),

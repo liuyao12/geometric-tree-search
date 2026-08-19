@@ -621,6 +621,12 @@ export const createTilingStream = (() => {
       periodic_repeat_throttles: 0,
       periodic_motif_nodes: 0,
       periodic_motif_states: 0,
+      generic_periodic_certificate_attempted: false,
+      generic_periodic_certificate_completed: false,
+      generic_periodic_certificate_timed_out: false,
+      generic_periodic_certificate_found: false,
+      generic_periodic_certificate_patch_size: 0,
+      generic_periodic_certificate_elapsed_ms: 0,
       reflection_continuations_seen: 0,
       branch_choices_visited: 0,
       failed_leaves: 0,
@@ -2988,8 +2994,15 @@ export const createTilingStream = (() => {
         };
       });
     };
-    const findBoundaryPeriodicTemplate = requestedPeriod => {
+    const findBoundaryPeriodicTemplate = (requestedPeriod, options = {}) => {
       if (state.placements.length !== requestedPeriod || !state.frontier.size) return null;
+      const certificateBudgetExceeded = options.budget_exceeded ?? overBudget;
+      const recordCertificateBudgetExceeded = options.on_budget_exceeded ?? noteIncompleteSearch;
+      const stopForCertificateBudget = () => {
+        if (!certificateBudgetExceeded()) return false;
+        recordCertificateBudgetExceeded();
+        return true;
+      };
       const requireAllTypes = prototiles.length > 1 && config.periodic_require_all_types !== false;
       const usedTypes = new Set(state.placements.map(placement => placement.prototile_idx));
       if (requireAllTypes && usedTypes.size !== prototiles.length) return null;
@@ -3001,8 +3014,11 @@ export const createTilingStream = (() => {
       }));
       const faceTranslations = Array.from({ length: boundaryFaces.length }, () => []);
       const uniqueVectors = new Map();
+      let facePairChecks = 0;
       for (let left = 0; left < boundaryFaces.length; left++) {
         for (let right = left + 1; right < boundaryFaces.length; right++) {
+          facePairChecks += 1;
+          if ((facePairChecks & 255) === 0 && stopForCertificateBudget()) return null;
           if (boundaryFaces[left].signature !== boundaryFaces[right].signature) continue;
           const translation = translatedReverseFaceVector(
             boundaryFaces[left].vertices,
@@ -3032,10 +3048,7 @@ export const createTilingStream = (() => {
       for (let first = 0; first < vectors.length; first++) {
         for (let second = first + 1; second < vectors.length; second++) {
           for (let third = second + 1; third < vectors.length; third++) {
-            if (overBudget()) {
-              noteIncompleteSearch();
-              return null;
-            }
+            if (stopForCertificateBudget()) return null;
             const basis = [vectors[first], vectors[second], vectors[third]];
             const determinant = determinant3(basis);
             if (Math.abs(Math.abs(determinant) - motifVolume) > tolerance) continue;
@@ -3047,6 +3060,7 @@ export const createTilingStream = (() => {
             ));
             if (allowedMatches.some(options => options.length === 0)) continue;
             const matchBoundary = (remaining, chosen) => {
+              if (stopForCertificateBudget()) return null;
               if (!remaining.size) return chosen;
               let pivot = null;
               let pivotOptions = null;
@@ -4834,6 +4848,59 @@ export const createTilingStream = (() => {
       yield* tryPeriodicTemplatePatch(rootId);
       if (!goalMet()) yield* tryIsohedralCoronaSeed(rootId);
       success = goalMet() || (yield* search(rootId));
+    }
+    if (
+      success
+      && criterion === "count"
+      && tilingStrategy === "generic"
+      && config.generic_periodic_certificate === true
+      && !tilingEvidence
+    ) {
+      searchStats.generic_periodic_certificate_attempted = true;
+      searchStats.generic_periodic_certificate_patch_size = state.placements.length;
+      const certificateStartedAt = performance.now();
+      const configuredCertificateTimeLimit = Number(config.generic_periodic_certificate_time_limit_ms);
+      const certificateTimeLimitMs = Number.isFinite(configuredCertificateTimeLimit)
+        ? Math.max(1, configuredCertificateTimeLimit)
+        : 2000;
+      let certificateTimedOut = false;
+      const template = findBoundaryPeriodicTemplate(state.placements.length, {
+        budget_exceeded: () => performance.now() - certificateStartedAt >= certificateTimeLimitMs,
+        on_budget_exceeded: () => { certificateTimedOut = true; }
+      });
+      searchStats.generic_periodic_certificate_elapsed_ms = Math.round(performance.now() - certificateStartedAt);
+      searchStats.generic_periodic_certificate_timed_out = certificateTimedOut;
+      searchStats.generic_periodic_certificate_completed = !certificateTimedOut;
+      searchStats.generic_periodic_certificate_found = !!template;
+      yield {
+        type: "translational_check",
+        source: "generic_target_patch",
+        patch_size: state.placements.length,
+        certified: !!template,
+        check_completed: !certificateTimedOut,
+        periodic_template: template,
+        frontier_stats: frontierStatsWithCandidateCount(),
+        search_stats: searchStatsSnapshot()
+      };
+      if (template) {
+        tilingEvidence = {
+          kind: "translational_certificate",
+          certified: true,
+          can_tile: true,
+          strategy: "generic",
+          source: "gcts_target_patch",
+          patch_size: template.motif.length,
+          certificate_kind: template.kind,
+          period_vectors: template.period_vectors.map(vector => vector.slice()),
+          periodic_template: template
+        };
+        yield nodeStatus(
+          rootId,
+          "success",
+          "GCTS target patch is an exact translational quotient",
+          preflightStatusPayload(template)
+        );
+      }
     }
     // A periodic exact-cover certificate proves an infinite tiling even when the
     // bounded visualization patch did not reach the requested display count.

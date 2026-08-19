@@ -23,6 +23,11 @@ assert.match(
   "the proof lane must disable the generational band"
 );
 assert.match(growthWorkerSource, /generic_failure_memo: mode\.proof/, "the proof lane must memoize exact failures");
+assert.match(
+  growthWorkerSource,
+  /generic_periodic_certificate: !!mode\.proof/,
+  "the proof lane must test a reached target patch for an exact translational quotient"
+);
 assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof comparison lane may claim exhaustive search");
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");

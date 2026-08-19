@@ -87,6 +87,8 @@ async function runMode(sequence, baseConfig, mode) {
     forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
     generic_failure_memo: mode.proof,
     generic_geometric_nogood: false,
+    generic_periodic_certificate: !!mode.proof,
+    generic_periodic_certificate_time_limit_ms: 5000,
     exhaustive: !!mode.proof
   };
   const started = performance.now();
@@ -103,12 +105,19 @@ async function runMode(sequence, baseConfig, mode) {
     if (message.type === "prototile_info") post(sequence, { type: "prototile-info", mode: mode.id, info: message });
     if (message.type === "translational_check") {
       checkedPatchSize = Math.max(checkedPatchSize, message.patch_size ?? 0);
+      const targetPatchCheck = message.source === "generic_target_patch";
       post(sequence, {
         type: "mode-status",
         mode: mode.id,
-        text: message.certified
-          ? `certified ${message.patch_size}-tile patch`
-          : `no ${message.patch_size}-tile patch; expanding`
+        text: targetPatchCheck
+          ? message.certified
+            ? `target patch certifies a ${message.patch_size}-tile translational quotient`
+            : message.check_completed
+              ? `${message.patch_size}-tile target patch is not a translational quotient`
+              : `${message.patch_size}-tile target-patch quotient check timed out`
+          : message.certified
+            ? `certified ${message.patch_size}-tile patch`
+            : `no ${message.patch_size}-tile patch; expanding`
       });
     }
     if (message.search_stats) latestStats = message.search_stats;

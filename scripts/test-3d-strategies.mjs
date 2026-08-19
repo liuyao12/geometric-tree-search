@@ -137,6 +137,21 @@ assert.equal(generic.final.success, true);
 assert.equal(generic.periodicCertificate, null, "generic mode must skip structural fast paths");
 assert.ok(generic.final.search_stats.branch_choices_visited > 0);
 
+const genericPatchCertificate = await solve({
+  tiling_strategy: "generic",
+  target_val: 1,
+  template_preflight: false,
+  generic_periodic_certificate: true
+});
+assert.equal(genericPatchCertificate.final.result_kind, "certified_tiling");
+assert.equal(genericPatchCertificate.final.can_tile, true);
+assert.equal(genericPatchCertificate.final.tiling_evidence?.strategy, "generic");
+assert.equal(genericPatchCertificate.final.tiling_evidence?.source, "gcts_target_patch");
+assert.equal(genericPatchCertificate.periodicCertificate?.kind, "one_tile_boundary_quotient");
+assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certificate_attempted, true);
+assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certificate_completed, true);
+assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certificate_found, true);
+
 const freestyle = await solve({
   tiling_strategy: "freestyle",
   target_val: 12
