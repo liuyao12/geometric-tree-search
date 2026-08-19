@@ -325,6 +325,27 @@ engine peak at a work-budget boundary. `largest_patch` and `witness_hash`
 always refer to the last emitted placement snapshot; `max_live_tiles` retains
 the uncaptured peak for diagnostics.
 
+A subsequent controlled budget-and-order screen raised the target to 60 tiles.
+Balanced MRV weakly deepened every training path when its budget increased
+from 1,000 to 2,000 nodes, raising target hits from one to four; all four exact
+target-patch quotient checks completed without a certificate. At 1,000 nodes,
+MRV was the only tested frontier order to reach 60 tiles and its median depth
+of 32 was well above pocket (15), constrained (16), and coverage (18), so MRV
+remains the frontier default. The benchmark accepts `--face-order=...` to
+replay that control.
+
+Holding MRV fixed, crystal move ordering beat balanced on 8 of 12 training
+paths and 13 of 20 unseen holdout paths. Across all eight seeds it improved 21
+paths, worsened 11, and raised 60-tile target hits from one to seven. Its gain
+is candidate-specific: `10_45026` reaches 60 tiles in four of eight paths as
+two distinct witnesses, while `9_11683` still favors balanced on six of eight.
+All eight selected balanced/crystal target checks completed without timeout or
+translational certificate. Crystal is therefore added as an eighth,
+complementary proof-search trace rather than replacing balanced MRV. Replay it
+from the benchmark with `--unbanded-move-order=crystal`; full milestones and
+proof receipts are archived in
+`data/lattice-polyhedron-budget-order-screen-2026-08-19.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

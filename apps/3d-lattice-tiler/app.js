@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-captured-witness-v86";
+import { tileSpecs } from "./engine.js?v=20260819-crystal-order-v88";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1357,7 +1357,13 @@ function updateCandidateResearchPanel() {
       const holdout = proof.holdout_trials && proofProtocol.holdout_screen
         ? ` On five unseen seeds, the delayed policy ranged from ${holdoutRange} tiles${proof.holdout_nogood_target_hits ? ` and reached ${proofProtocol.target_tiles} tiles in ${proof.holdout_nogood_target_hits} seed${proof.holdout_nogood_target_hits === 1 ? "" : "s"}` : ""}. Across all three holdout policies, ${proof.holdout_checkpoint_checks} exact checks added ${proof.holdout_new_checkpoint_states} new geometries and expanded this candidate's eight-seed checked union to ${proof.expanded_checkpoint_states}. Globally, delayed nogoods beat immediate nogoods on ${proofProtocol.holdout_screen.delayed_better_than_immediate} holdout paths, tied ${proofProtocol.holdout_screen.delayed_equal_to_immediate}, and worsened ${proofProtocol.holdout_screen.delayed_worse_than_immediate}; they remain complementary rather than universally superior.`
         : "";
-      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}`;
+      const crystalRange = proof.crystal_robust_largest_patch === proof.crystal_best_largest_patch
+        ? `${proof.crystal_best_largest_patch}`
+        : `${proof.crystal_robust_largest_patch}–${proof.crystal_best_largest_patch}`;
+      const crystal = proof.crystal_trials && proofProtocol.budget_order_screen
+        ? ` In the eight-seed 1,000-node order screen, crystal ordering ranged from ${crystalRange} tiles, beat balanced on ${proof.crystal_better_than_balanced} paths, tied ${proof.crystal_equal_to_balanced}, and lost ${proof.crystal_worse_than_balanced}.${proof.crystal_target_hits ? ` It reached ${proofProtocol.budget_order_screen.target_tiles} tiles ${proof.crystal_target_hits} time${proof.crystal_target_hits === 1 ? "" : "s"} as ${proof.crystal_distinct_target_witnesses} distinct checked witness${proof.crystal_distinct_target_witnesses === 1 ? "" : "es"}.` : ""} Across all candidates, crystal beat balanced on ${proofProtocol.budget_order_screen.crystal_better_than_balanced} of 32 paths and raised 60-tile hits from ${proofProtocol.budget_order_screen.balanced_target_hits} to ${proofProtocol.budget_order_screen.crystal_target_hits}; it is an additional proof lane, not a replacement.`
+        : "";
+      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}${crystal}`;
     })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
     candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
@@ -2678,7 +2684,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-captured-witness-v86", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-crystal-order-v88", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3179,7 +3185,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-captured-witness-v86", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-crystal-order-v88", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

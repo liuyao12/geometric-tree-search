@@ -71,7 +71,8 @@ const reports = [
   ...balancedHoldoutReports,
   ...crystalHoldoutReports
 ];
-assert.ok(reports.every(report => report.schemaVersion === 17));
+const benchmarkSchemaVersions = [...new Set(reports.map(report => report.schemaVersion))].sort();
+assert.deepEqual(benchmarkSchemaVersions, [16, 17]);
 
 const candidateIds = ["10_16113", "10_45026", "10_45033", "9_11683"];
 const keyOf = row => `${row.case}:${row.seed}`;
@@ -106,7 +107,7 @@ const compact = (row, { milestones = true } = {}) => ({
   backtracks: row.backtracks,
   elapsed_ms: row.elapsedMs,
   termination_reason: row.terminationReason,
-  face_order: row.faceOrder,
+  face_order: row.faceOrder ?? "mrv",
   move_order: row.moveOrder,
   failure_memo_states: row.failureMemoStates,
   failure_memo_hits: row.failureMemoHits,
@@ -280,8 +281,11 @@ const targetFingerprintKeys = selectedTargetProofs.map(proof => `${proof.id}:${p
 const result = {
   schema_version: 1,
   screen_date: args.get("screen-date") ?? new Date().toISOString().slice(0, 10),
-  engine_commit: args.get("engine-commit") ?? null,
-  benchmark_schema_version: 17,
+  engine_commits: {
+    budget_scaling: args.get("budget-engine-commit") ?? null,
+    order_screen: args.get("order-engine-commit") ?? null
+  },
+  benchmark_schema_versions: benchmarkSchemaVersions,
   protocol: {
     candidate_ids: candidateIds,
     training_seeds: [1, 2, 3],

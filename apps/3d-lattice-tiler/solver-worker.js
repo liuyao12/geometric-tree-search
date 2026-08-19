@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-captured-witness-v86";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-crystal-order-v88";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

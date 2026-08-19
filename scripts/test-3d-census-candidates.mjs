@@ -194,6 +194,10 @@ const archivedStagnationNogoodAb = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-stagnation-nogood-ab-2026-08-19.json", import.meta.url),
   "utf8"
 ));
+const archivedBudgetOrder = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-budget-order-screen-2026-08-19.json", import.meta.url),
+  "utf8"
+));
 assert.deepEqual(
   {
     screen_date: LATTICE_POLYHEDRON_SCREENING.gcts_proof.screen_date,
@@ -539,6 +543,55 @@ assert.deepEqual(archivedStagnationNogoodAb.summary.combined_stagnation_10, {
   target_hits: 3,
   fixed_delayed_25_target_hits: 4
 });
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.budget_order_screen,
+  {
+    target_tiles: archivedBudgetOrder.protocol.target_tiles,
+    training_seeds: archivedBudgetOrder.protocol.training_seeds,
+    holdout_seeds: archivedBudgetOrder.protocol.holdout_seeds,
+    baseline_node_limits: archivedBudgetOrder.protocol.baseline_node_limits,
+    balanced_1000_target_hits: archivedBudgetOrder.budget_scaling.summary.balanced_1000.target_hits,
+    balanced_2000_target_hits: archivedBudgetOrder.budget_scaling.summary.balanced_2000.target_hits,
+    balanced_2000_exact_target_checks: archivedBudgetOrder.budget_scaling.summary.exact_target_checks_completed,
+    frontier_order_decision: archivedBudgetOrder.frontier_order_screen.policy_decision,
+    crystal_better_than_balanced: archivedBudgetOrder.move_order_screen.combined_comparison.better,
+    crystal_equal_to_balanced: archivedBudgetOrder.move_order_screen.combined_comparison.equal,
+    crystal_worse_than_balanced: archivedBudgetOrder.move_order_screen.combined_comparison.worse,
+    balanced_target_hits: archivedBudgetOrder.move_order_screen.combined_comparison.baseline_target_hits,
+    crystal_target_hits: archivedBudgetOrder.move_order_screen.combined_comparison.challenger_target_hits,
+    exact_target_checks_completed: archivedBudgetOrder.move_order_screen.exact_target_checks_completed,
+    exact_target_checks_timed_out: archivedBudgetOrder.move_order_screen.exact_target_checks_timed_out,
+    periodic_certificates_found: archivedBudgetOrder.move_order_screen.periodic_certificates_found,
+    distinct_candidate_target_witnesses: archivedBudgetOrder.move_order_screen.distinct_candidate_target_witnesses,
+    policy_decision: archivedBudgetOrder.move_order_screen.policy_decision,
+    report: "data/lattice-polyhedron-budget-order-screen-2026-08-19.json"
+  },
+  "the runtime crystal-lane decision must match the archived budget and order screen"
+);
+assert.deepEqual(archivedBudgetOrder.benchmark_schema_versions, [16, 17]);
+assert.deepEqual(archivedBudgetOrder.move_order_screen.training_comparison, {
+  better: 8,
+  equal: 0,
+  worse: 4,
+  baseline_target_hits: 1,
+  challenger_target_hits: 3
+});
+assert.deepEqual(archivedBudgetOrder.move_order_screen.holdout_comparison, {
+  better: 13,
+  equal: 0,
+  worse: 7,
+  baseline_target_hits: 0,
+  challenger_target_hits: 4
+});
+assert.ok(archivedBudgetOrder.budget_scaling.summary.all_paths_non_decreasing);
+assert.equal(archivedBudgetOrder.frontier_order_screen.policy_decision, "retain_mrv");
+assert.equal(archivedBudgetOrder.move_order_screen.exact_target_checks_completed, 8);
+assert.equal(archivedBudgetOrder.move_order_screen.exact_target_checks_timed_out, 0);
+assert.equal(archivedBudgetOrder.move_order_screen.periodic_certificates_found, 0);
+assert.equal(archivedBudgetOrder.move_order_screen.distinct_candidate_target_witnesses, 6);
+assert.ok(archivedBudgetOrder.move_order_screen.exact_target_proofs.every(path =>
+  path.target_check_completed && !path.target_check_timed_out && !path.target_certificate_found
+));
 for (const path of archivedDelayedNogood.paths) {
   for (const outcome of [path.baseline, path.immediate, ...Object.values(path.delayed)]) {
     assert.ok(outcome.max_live_tiles >= outcome.largest_patch);
@@ -775,6 +828,20 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
   assert.equal(candidate.gcts_proof_screening.holdout_checkpoint_checks, holdoutCoverage.holdout_checks_completed);
   assert.equal(candidate.gcts_proof_screening.holdout_new_checkpoint_states, holdoutCoverage.new_holdout_fingerprints);
   assert.equal(candidate.gcts_proof_screening.expanded_checkpoint_states, holdoutCoverage.expanded_eight_seed_fingerprints);
+  const crystalSummary = archivedBudgetOrder.move_order_screen.candidate_summary.find(item => item.id === candidate.id);
+  assert.ok(crystalSummary, `${candidate.id} must retain its balanced-versus-crystal evidence`);
+  assert.equal(candidate.gcts_proof_screening.crystal_trials, crystalSummary.paths);
+  assert.equal(candidate.gcts_proof_screening.crystal_better_than_balanced, crystalSummary.crystal_better);
+  assert.equal(candidate.gcts_proof_screening.crystal_equal_to_balanced, crystalSummary.crystal_equal);
+  assert.equal(candidate.gcts_proof_screening.crystal_worse_than_balanced, crystalSummary.crystal_worse);
+  assert.equal(candidate.gcts_proof_screening.crystal_robust_largest_patch, crystalSummary.crystal_robust_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.crystal_median_largest_patch, crystalSummary.crystal_median_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.crystal_best_largest_patch, crystalSummary.crystal_best_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.crystal_target_hits, crystalSummary.crystal_target_hits);
+  assert.equal(
+    candidate.gcts_proof_screening.crystal_distinct_target_witnesses,
+    crystalSummary.crystal_distinct_target_witnesses
+  );
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
