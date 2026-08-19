@@ -1772,6 +1772,29 @@ within-nucleus graph-label shuffles also reach `18 / 20` (`p = .09375`;
 correct-move `p = .21875`). This is the best generic terminal value so far,
 but the causal marking gate remains red and no fresh confirmation is opened.
 
+That policy has now been tested unchanged on a preregistered extension rather
+than tuned again on the original 20 cases. Before any new seed was generated,
+the exact recursive connection table, 53-support irregular vocabulary,
+pose/port state model, four portfolio branch heads, scalar section, and
+equivariant graph weights were migrated from temporary checkpoints into a
+2.4 MB explicit compressed-JSON artifact. The artifact reproduces model digest
+`505b6548…`, rejects mutation, and loads under both Python 3.9 and 3.12. A
+second published manifest froze ten mutually disjoint centres and all source
+hashes. After seed-only execution, a third published receipt fixed eight
+terminal branches and the scalar/fusion order for every centre before any
+outer crop was opened.
+
+The one-shot radius-9 → radius-14.5623 result is `6 / 10` exact selected
+terminals and `23 / 30` correct sites for both scalar and fused values. Fusion
+changes the selected terminal on five nuclei but changes no correctness
+outcome. More importantly, the immutable candidate set contains no exact
+terminal in four nuclei; the six supplied nuclei are all ranked correctly at
+one. Thus the larger batch validates transfer of the frozen policy but gives
+no incremental fusion advantage. Candidate supply—generating a correct
+three-action branch in all local environments—is now the measured bottleneck.
+This is additional development evidence, not a fresh confirmation, sustained
+growth, stationarity, or an exponential certificate.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

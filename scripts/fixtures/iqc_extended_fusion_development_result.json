@@ -1,0 +1,337 @@
+{
+  "bound_plus_one_stable_by_center": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "candidate_counts_by_depth": [
+    [
+      4,
+      7,
+      22
+    ],
+    [
+      4,
+      7,
+      28
+    ],
+    [
+      4,
+      7,
+      28
+    ],
+    [
+      4,
+      10,
+      29
+    ],
+    [
+      4,
+      7,
+      28
+    ],
+    [
+      4,
+      4,
+      26
+    ],
+    [
+      4,
+      7,
+      28
+    ],
+    [
+      4,
+      7,
+      28
+    ],
+    [
+      4,
+      7,
+      28
+    ],
+    [
+      4,
+      7,
+      28
+    ]
+  ],
+  "candidate_digests": [
+    "e60add370a4c1380f3feed5f9773541d92991f821f2e44009b8a465d4a7a4d26",
+    "0d8954155dcb4eacd86b3679d7c2bbde0816a1df34213c697c2f2e91662fc715",
+    "be5a31c9c5de25b430aaffaa222ef6bcc49624cb3269dc01c6009965d7da3ac1",
+    "47d7d20a8b1c2238e8ebf58e7d4185e13ba7ef92bf5f0905e6c7fdcfdb1d0315",
+    "a67611ba4c607ec39fef9ba0d0c221078873c4f0794fe2d2c3862952d4936722",
+    "b0bc6f6275e05f594673f1a3e1e974ed59329fff3109f2a8adbb17f0ae1d4d73",
+    "92f0c9ff2f577ad717d37e4b488fa170835293a033c86ef8d67f4268b101b844",
+    "3942d581978f8861946c12343141d60874220c93d18f2e2ed649a93942d26c49",
+    "68485ca35c73489ac365b4189f61f0ae34371ca98bd78530c088d4bc7e6c19b4",
+    "48242ff7b0906e3572b2a456ddedc71fbe3099ccc6b734a068d2d3afbf42ba09"
+  ],
+  "candidate_receipt_digest": "c19f9b99260e944ec3511dc92889dccf83ddacf2354dd3019b2a6319d4042da3",
+  "candidate_receipt_frozen_before_target": true,
+  "centers": [
+    [
+      -70.0,
+      30.0,
+      -50.0
+    ],
+    [
+      -10.0,
+      -10.0,
+      -90.0
+    ],
+    [
+      -10.0,
+      -10.0,
+      90.0
+    ],
+    [
+      10.0,
+      30.0,
+      -70.0
+    ],
+    [
+      30.0,
+      -70.0,
+      -50.0
+    ],
+    [
+      30.0,
+      50.0,
+      50.0
+    ],
+    [
+      30.0,
+      70.0,
+      -50.0
+    ],
+    [
+      50.0,
+      10.0,
+      -70.0
+    ],
+    [
+      50.0,
+      10.0,
+      70.0
+    ],
+    [
+      70.0,
+      -50.0,
+      -30.0
+    ]
+  ],
+  "execution_manifest_digest": "640853ab54df31b425c37c0df3bc09a6370ea046c419212b39215b48f6207579",
+  "fresh_confirmation_claimed": false,
+  "fusion_artifact_digest": "fbdbdf307227921ad24d11b81aea31e9835acf50ae2359d0807cc184b96c623c",
+  "fusion_first_exact_rank_by_center": [
+    1,
+    1,
+    1,
+    null,
+    1,
+    null,
+    1,
+    null,
+    null,
+    1
+  ],
+  "fusion_model_digest": "505b65481e3fe2cc25a284ba8dc175e3a794465c2c7bd726f5448c1fac6bbef5",
+  "fusion_noninferior_to_scalar": true,
+  "fusion_selected_correct": 23,
+  "fusion_selected_correct_by_center": [
+    3,
+    3,
+    3,
+    0,
+    3,
+    1,
+    3,
+    2,
+    2,
+    3
+  ],
+  "fusion_selected_exact": 6,
+  "fusion_selected_exact_by_center": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true
+  ],
+  "fusion_terminal_supply": 6,
+  "fusion_terminal_supply_by_center": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true
+  ],
+  "honest_status": "frozen fusion is noninferior on the preregistered extended development batch",
+  "oracle_lift_bound": 44,
+  "retained_counts_by_depth": [
+    [
+      2,
+      3,
+      8
+    ],
+    [
+      2,
+      4,
+      8
+    ],
+    [
+      2,
+      4,
+      8
+    ],
+    [
+      4,
+      4,
+      8
+    ],
+    [
+      2,
+      4,
+      8
+    ],
+    [
+      1,
+      4,
+      8
+    ],
+    [
+      2,
+      4,
+      8
+    ],
+    [
+      2,
+      4,
+      8
+    ],
+    [
+      2,
+      4,
+      8
+    ],
+    [
+      2,
+      4,
+      8
+    ]
+  ],
+  "scalar_first_exact_rank_by_center": [
+    1,
+    1,
+    1,
+    null,
+    1,
+    null,
+    1,
+    null,
+    null,
+    1
+  ],
+  "scalar_selected_correct": 23,
+  "scalar_selected_correct_by_center": [
+    3,
+    3,
+    3,
+    0,
+    3,
+    1,
+    3,
+    2,
+    2,
+    3
+  ],
+  "scalar_selected_exact": 6,
+  "scalar_selected_exact_by_center": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true
+  ],
+  "scalar_terminal_supply": 6,
+  "scalar_terminal_supply_by_center": [
+    true,
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    false,
+    true
+  ],
+  "seed_atoms": [
+    487,
+    470,
+    470,
+    494,
+    478,
+    477,
+    478,
+    482,
+    482,
+    478
+  ],
+  "seed_radius": 9.0,
+  "selected_sites": 30,
+  "stationary_or_exponential_claimed": false,
+  "target_atoms": [
+    2051,
+    2029,
+    2029,
+    2053,
+    2039,
+    2051,
+    2039,
+    2025,
+    2025,
+    2039
+  ],
+  "target_domains_pairwise_disjoint": true,
+  "target_open_count": 1,
+  "target_radius": 14.562305898749054,
+  "target_used_for_fit_features_candidates_or_ranking": false,
+  "terminal_counts": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+  ]
+}
+

@@ -3732,6 +3732,37 @@ shuffles also reach 18 exact groups, for a conditional plus-one `p = .09375`
 (`p = .21875` for at least 56 correct moves). The causal gate therefore
 remains red and no fresh confirmation is opened.
 
+The same fold-one policy is now frozen as an executable artifact rather than
+left in process-local experiment caches. Its recursive connection marking,
+53-class grouped irregular-support vocabulary, pose/port state table, four
+portfolio branch heads, scalar terminal section, and learned equivariant graph
+weights are serialized as inert, schema-checked compressed JSON. The 2.4 MB
+artifact reproduces the selected model digest
+`505b65481e3fe2cc25a284ba8dc175e3a794465c2c7bd726f5448c1fac6bbef5`
+and contains neither new-development atoms nor target sites. A published
+execution manifest then fixes source hashes, the `4 -> 4 -> 8` proposal reach,
+the `4 -> 4 -> 8` diverse-beam budgets, the scalar/fusion capacity, and ten new
+mutually disjoint development centres. Seed-only execution produces a second
+published receipt containing all 80 terminal action sets and both immutable
+orders; its target-open count is zero.
+
+Opening all ten radius-14.5623 targets once gives the following exact result:
+
+| frozen arm | exact-terminal supply | exact selected nuclei | correct selected sites |
+| --- | ---: | ---: | ---: |
+| scalar local section | 6 / 10 | 6 / 10 | 23 / 30 |
+| scalar + equivariant graph rank | 6 / 10 | 6 / 10 | 23 / 30 |
+
+Fusion changes the selected terminal on five nuclei but changes no correctness
+outcome. Every supplied exact terminal has rank one in both arms. The other
+four nuclei have no exact terminal among their eight frozen branches, so this
+batch turns candidate supply into a measured failure rather than attributing
+it to the value model. The unchanged policy therefore passes the predeclared
+noninferiority transfer check but does not demonstrate an incremental graph
+advantage. This batch is additional development evidence, not a fresh
+confirmation, and it provides no sustained, stationary, or exponential IQC
+claim.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
