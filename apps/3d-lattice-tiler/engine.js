@@ -87,6 +87,39 @@ export const createTilingStream = (() => {
       return true;
     };
 
+    const translatedReverseFaceMatches = (source, target, translation) => {
+      if (source.length !== target.length) return false;
+      const n = source.length;
+      const source0 = source[0];
+      const translated0 = [
+        source0[0] + translation[0],
+        source0[1] + translation[1],
+        source0[2] + translation[2]
+      ];
+      let targetStart = -1;
+      for (let i = 0; i < n; i++) {
+        if (
+          target[i][0] === translated0[0]
+          && target[i][1] === translated0[1]
+          && target[i][2] === translated0[2]
+        ) {
+          targetStart = i;
+          break;
+        }
+      }
+      if (targetStart < 0) return false;
+      for (let i = 1; i < n; i++) {
+        const sourceVertex = source[i];
+        const targetVertex = target[(targetStart - i + n) % n];
+        if (
+          sourceVertex[0] + translation[0] !== targetVertex[0]
+          || sourceVertex[1] + translation[1] !== targetVertex[1]
+          || sourceVertex[2] + translation[2] !== targetVertex[2]
+        ) return false;
+      }
+      return true;
+    };
+
     const add3 = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
     const gcd = (a, b) => {
       a = Math.abs(a | 0); b = Math.abs(b | 0);
@@ -1174,7 +1207,6 @@ export const createTilingStream = (() => {
           break;
         }
         const frontierVertices = frontierEntry.ordered_verts;
-        const reversedFrontierVertices = [...frontierVertices].reverse();
         const signature = faceSignatureUndirected(frontierVertices);
         for (const entry of orientedFacesBySignature.get(signature) ?? []) {
           if (overBudget()) {
@@ -1190,13 +1222,12 @@ export const createTilingStream = (() => {
             if (entry.tile.is_polycube
               ? !isPolycubeMoveTranslation(entry.tile, translation)
               : !translation.every(Number.isInteger)) continue;
-            const globalFace = entry.vertices.map(vertex => vecAdd(vertex, translation));
             // Cyclic equality against the reversed frontier is stronger than
             // comparing the unordered canonical face key: it proves both the
-            // same vertex set and the required opposing orientation. Avoiding
-            // the redundant stringification and sort matters here because this
-            // loop runs for every oriented face at every search state.
-            if (!isCyclicPermutation(globalFace, reversedFrontierVertices)) continue;
+            // same vertex set and the required opposing orientation. Compare
+            // translated coordinates in place because this loop runs for every
+            // oriented face at every search state.
+            if (!translatedReverseFaceMatches(entry.vertices, frontierVertices, translation)) continue;
             const move = {
               prototile_idx: entry.prototile_idx,
               translation,
@@ -2914,8 +2945,7 @@ export const createTilingStream = (() => {
       for (const targetVertex of target) {
         const translation = vecSub(targetVertex, source[0]);
         if (translation.every(value => value === 0)) continue;
-        const translated = source.map(vertex => vecAdd(vertex, translation));
-        if (isCyclicPermutation(translated, [...target].reverse())) return translation;
+        if (translatedReverseFaceMatches(source, target, translation)) return translation;
       }
       return null;
     };
@@ -3559,7 +3589,7 @@ export const createTilingStream = (() => {
     const preflightFaceCandidatesForOption = async (option, maxCandidates = Infinity) => {
       const dedup = new Map();
       const localCandidateCap = Math.min(maxCandidates, candidateCap);
-      for (const [frontierFaceKey, frontierEntry] of state.frontier) {
+      for (const frontierEntry of state.frontier.values()) {
         if (!frontierEntryPointKeys(frontierEntry).has(option.pointKey)) continue;
         if (overBudget()) {
           noteIncompleteSearch();
@@ -3577,9 +3607,7 @@ export const createTilingStream = (() => {
             if (entry.tile.is_polycube
               ? !isPolycubeMoveTranslation(entry.tile, translation)
               : !translation.every(Number.isInteger)) continue;
-            const globalFace = entry.vertices.map(vertex => vecAdd(vertex, translation));
-            if (keyFace(globalFace) !== frontierFaceKey) continue;
-            if (!isCyclicPermutation(globalFace, [...frontierVertices].reverse())) continue;
+            if (!translatedReverseFaceMatches(entry.vertices, frontierVertices, translation)) continue;
             const move = { prototile_idx: entry.prototile_idx, translation, orient: entry.orient };
             const geometryKey = placementGeometryKey(move);
             if (dedup.has(geometryKey)) continue;
@@ -3830,8 +3858,7 @@ export const createTilingStream = (() => {
       if (source.length !== target.length || source.length < 3) return null;
       for (const targetVertex of target) {
         const translation = vecSub(targetVertex, source[0]);
-        const translated = source.map(vertex => vecAdd(vertex, translation));
-        if (isCyclicPermutation(translated, [...target].reverse())) return translation;
+        if (translatedReverseFaceMatches(source, target, translation)) return translation;
       }
       return null;
     };

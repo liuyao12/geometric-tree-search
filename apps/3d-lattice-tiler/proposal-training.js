@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-face-match-v53";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-face-match-v55";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
