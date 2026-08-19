@@ -1917,7 +1917,27 @@ give `p = .3125`. The endpoint advantage is development overfit, not a causal
 rollback certificate; aggregate frontier volume is rejected in favor of a
 future typed-obligation/discharge representation.
 
-Candidate supply is no longer the uncertainty. A second train-only audit keeps
+That rule was nevertheless frozen for a genuine one-shot spatial audit rather
+than tuned further. Commit `18e45c9` preregisters a geometry-only maximin center
+at `(-70, 10, 70)`, 66.33 units from every recorded prior IQC center and beyond
+two second-block radii; the public harness and all model/rule digests were
+published before seed generation. From a 491-atom seed, the frozen first tree
+has candidate counts `4 → 7 → 29`, and its selected state is self-fed into 133
+second-block terminals. The topology and ordinal-yield markings retain states
+21 and 19, then both receive the same 12-step target-free rollout and score
+`1232`. Their complete receipt is hashed before the radius-23.56 target opens
+exactly once.
+
+The fresh result is red. The first block places `2 / 3` correct actions; the
+two second-block alternatives place `2 / 3` and `1 / 3`, so neither supplies
+an exact state, and the stable tie selects the latter. End-to-end correctness
+is `3 / 6`. This is not a rollback-value failure that a wider scalar can fix:
+exact portfolio supply is already absent and the upstream first block is
+inexact. The autonomous finite-commit, stationary, and exponential IQC gates
+remain red.
+
+On the consumed development set, candidate supply is no longer the immediate
+uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
 newly placed parent. Exact two-step pairs exist in all nine nuclei, with

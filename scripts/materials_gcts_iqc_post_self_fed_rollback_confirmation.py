@@ -64,8 +64,10 @@ from materials_gcts_recursive_connections import local_cluster_types
 ROOT = Path(__file__).resolve().parent
 DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_post_self_fed_rollback_confirmation_v1.json.gz"
-EXPECTED_FIXTURE_SHA256 = ""
-EXPECTED_RESULT_DIGEST = ""
+EXPECTED_FIXTURE_SHA256 = \
+    "7c5160afd8c2d374f837d006aee5cba88c84847117aeb147e2a0c0d41e763118"
+EXPECTED_RESULT_DIGEST = \
+    "5076ff58417c4c401a351749685a70340260f4321751cba2151565a35f72cd6e"
 HARNESS_LOGIC_COMMIT = "6200ec60d11d2fc308b988bbcf2f3492ac6e1ef9"
 
 

@@ -3953,6 +3953,30 @@ mass is a validated target-free rollback detector. The negative audit narrows
 the next representation to typed obligation identity and discharge history,
 not another scalar measure of frontier size.
 
+A fresh two-block confirmation then freezes the imperfect development rule
+instead of selecting another retrospective statistic. Public preregistration
+commit `18e45c9` fixes a geometry-only maximin center `(-70, 10, 70)`, the
+source/model/audit digests, the width-two marking portfolio, frontier-vote mass
+at horizon 12, and a single target-open call. The center's minimum separation
+from all 30 recorded development and confirmation centers is `66.3325`, larger
+than two second-block radii (`47.1246`). The execution harness is also
+published before it generates the 491-atom seed.
+
+The target-blind first tree has candidate counts `4 → 7 → 29` and retained
+widths `2 → 4 → 8`; its selected state is replayed uniquely and becomes the
+source for 133 second-block terminals. The typed-topology and ordinal-yield
+heads retain stable states 21 and 19. Both complete 16-step traces are frozen;
+the preregistered step-12 vote masses tie at `1232`, so the stable rule selects
+19. Only after receipt hashing does the 8,671-atom radius-23.56 target open,
+once, with lift-bound-plus-one equality.
+
+Posthoc scoring is unambiguously red: the selected first block is `2 / 3`
+correct, retained state 21 is `2 / 3`, retained state 19 is `1 / 3`, neither
+second-block state is exact, and the selected end-to-end path is `3 / 6`.
+Thus the missing capability precedes rollback: the fresh first-block value and
+width-two portfolio lose exact supply. No autonomous finite-commit,
+stationary-production, or exponential IQC claim is made.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
