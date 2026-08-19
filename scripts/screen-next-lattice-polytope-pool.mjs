@@ -4,7 +4,13 @@ import { createHash } from "node:crypto";
 import { writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
-import { BLANCO_SANTOS_CENSUS_URLS, parseBlancoSantosLatticePoints } from "../assets/lattice-polytope-census.js";
+import {
+  BLANCO_SANTOS_CENSUS_URLS,
+  parseBlancoSantosLatticePoints,
+  parsePolyDbLatticePolytopes,
+  POLYDB_FEW_LATTICE_POINTS_COUNTS,
+  polyDbLatticePolytopeAggregateRequest
+} from "../assets/lattice-polytope-census.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
   const separator = argument.indexOf("=");
@@ -16,8 +22,11 @@ const numberArg = (name, fallback) => {
   const value = Number(args.get(name));
   return Number.isFinite(value) ? value : fallback;
 };
-const size = Math.max(5, Math.min(11, Math.floor(numberArg("size", 11))));
-const allUrls = BLANCO_SANTOS_CENSUS_URLS(size);
+const size = Math.max(5, Math.min(15, Math.floor(numberArg("size", 11))));
+const source = args.get("source") ?? (size > 11 ? "polydb" : "blanco_santos");
+if (!["blanco_santos", "polydb"].includes(source)) throw new Error("--source must be blanco_santos or polydb");
+if (source === "blanco_santos" && size > 11) throw new Error("The Blanco–Santos text census stops at size 11; use --source=polydb");
+const allUrls = source === "blanco_santos" ? BLANCO_SANTOS_CENSUS_URLS(size) : [];
 const requestedParts = new Set(String(args.get("parts") ?? "")
   .split(",")
   .map(value => Math.floor(Number(value)))
@@ -25,27 +34,64 @@ const requestedParts = new Set(String(args.get("parts") ?? "")
 const urls = allUrls.filter((_, index) => !requestedParts.size || requestedParts.has(index + 1));
 const offset = Math.max(0, Math.floor(numberArg("offset", 0)));
 const maxCandidates = Math.max(1, Math.floor(numberArg("max-candidates", Infinity)));
+const polyDbStart = Math.max(0, Math.floor(numberArg("start", offset)));
+const polyDbEnd = Math.max(polyDbStart, Math.floor(numberArg(
+  "end",
+  Number.isFinite(maxCandidates)
+    ? polyDbStart + maxCandidates
+    : POLYDB_FEW_LATTICE_POINTS_COUNTS[size] ?? polyDbStart
+)));
+const polyDbPageSize = Math.max(10, Math.min(5000, Math.floor(numberArg("polydb-page-size", 1000))));
+const fetchRetries = Math.max(0, Math.min(10, Math.floor(numberArg("fetch-retries", 5))));
 const timeMs = Math.max(10, Math.floor(numberArg("time-ms", 250)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 200000)));
 const outputFile = args.get("output-file") ?? null;
 const progressEvery = Math.max(1, Math.floor(numberArg("progress-every", 1000)));
+const includeMirrors = args.get("include-mirrors") === "true";
 
 const sourceRecords = [];
 let candidates = [];
-for (const url of urls) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.status}`);
-  const text = await response.text();
-  const parsed = parseBlancoSantosLatticePoints(text);
+const sourceRequests = source === "polydb"
+  ? Array.from(
+      { length: Math.ceil((polyDbEnd - polyDbStart) / polyDbPageSize) },
+      (_, index) => polyDbLatticePolytopeAggregateRequest(
+        size,
+        polyDbStart + index * polyDbPageSize,
+        Math.min(polyDbEnd, polyDbStart + (index + 1) * polyDbPageSize)
+      )
+    )
+  : urls.map(url => ({ url }));
+const fetchText = async request => {
+  let lastError = null;
+  for (let attempt = 0; attempt <= fetchRetries; attempt += 1) {
+    try {
+      const response = await fetch(request.url);
+      if (response.ok) return response.text();
+      lastError = new Error(`Failed to fetch ${request.url}: ${response.status}`);
+      if (response.status < 500 || attempt === fetchRetries) throw lastError;
+    } catch (error) {
+      lastError = error;
+      if (attempt === fetchRetries) throw error;
+    }
+    await new Promise(resolve => setTimeout(resolve, Math.min(8000, 500 * 2 ** attempt)));
+  }
+  throw lastError;
+};
+for (const request of sourceRequests) {
+  const text = await fetchText(request);
+  const parsed = source === "polydb"
+    ? parsePolyDbLatticePolytopes(JSON.parse(text))
+    : parseBlancoSantosLatticePoints(text);
   sourceRecords.push({
-    url,
+    url: source === "polydb" ? new URL(request.url).origin + new URL(request.url).pathname : request.url,
+    ...(source === "polydb" ? { start: request.start, end: request.end } : {}),
     bytes: Buffer.byteLength(text),
     sha256: createHash("sha256").update(text).digest("hex"),
     candidates: parsed.length
   });
   candidates.push(...parsed);
 }
-candidates = candidates.slice(offset, offset + maxCandidates);
+if (source !== "polydb") candidates = candidates.slice(offset, offset + maxCandidates);
 
 const solveFirstExtendableShell = async candidate => {
   let final = null;
@@ -70,7 +116,7 @@ const solveFirstExtendableShell = async candidate => {
     generic_global_zero_face_pruning: true,
     generic_failure_memo: false,
     generic_geometric_nogood: false,
-    include_mirrors: false,
+    include_mirrors: includeMirrors,
     template_preflight: false,
     snapshot_every: 0,
     placement_details: false,
@@ -147,14 +193,16 @@ const report = {
   generatedAt: new Date().toISOString(),
   configuration: {
     size,
+    source,
+    ...(source === "polydb" ? { polyDbStart, polyDbEnd, polyDbPageSize, fetchRetries } : {}),
     parts: urls.map(url => allUrls.indexOf(url) + 1),
     offset,
     maxCandidates: Number.isFinite(maxCandidates) ? maxCandidates : null,
     timeMs,
     nodeLimit,
-    orientationGroup: "proper cubic rotations",
+    orientationGroup: includeMirrors ? "full cubic isometries" : "proper cubic rotations",
     translations: "integer",
-    mirrors: false,
+    mirrors: includeMirrors,
     globalZeroFacePruning: true
   },
   sources: sourceRecords,

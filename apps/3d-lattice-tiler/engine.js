@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-size11-controls-v98";
+import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-size12-controls-v100";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -3928,10 +3928,19 @@ export const createTilingStream = (() => {
         || placements[0].orient !== startMove.orient
         || !vecEq(placements[0].translation, startMove.translation)
       ) return null;
+      if (placements.length === 1) {
+        const oneTileTemplate = findTranslationalPolyhedronTemplate();
+        const configuredBasis = rawTemplate.period_vectors;
+        if (oneTileTemplate
+          && configuredBasis.every(vector => vectorIsInBasisLattice(vector, oneTileTemplate.period_vectors))
+          && oneTileTemplate.period_vectors.every(vector => vectorIsInBasisLattice(vector, configuredBasis))) {
+          return oneTileTemplate;
+        }
+      }
       return certifyPeriodicPlacementMotif(placements, rawTemplate.period_vectors);
     };
-    async function* tryPeriodicTemplatePatch(parentId) {
-      if (!periodicPreflightEnabled || goalMet()) return false;
+    async function* tryPeriodicTemplatePatch(parentId, { force = false } = {}) {
+      if (!periodicPreflightEnabled || (!force && goalMet())) return false;
       let template = certifyConfiguredPeriodicTemplate(config.known_periodic_template);
       if (config.known_periodic_template) {
         yield {
@@ -5704,7 +5713,7 @@ export const createTilingStream = (() => {
       };
       yield nodeStatus(rootId, "fail", "Local edge-angle obstruction");
     } else if (tilingStrategy === "translational") {
-      success = yield* tryPeriodicTemplatePatch(rootId);
+      success = yield* tryPeriodicTemplatePatch(rootId, { force: true });
       if (!success) {
         yield nodeStatus(rootId, "fail", "No exact translational patch certificate found");
       }

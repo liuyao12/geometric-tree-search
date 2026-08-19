@@ -90,3 +90,68 @@ export const BLANCO_SANTOS_CENSUS_URLS = size => {
     ? Array.from({ length: parts }, (_, index) => `https://personales.unican.es/santosf/3polytopes/Size_${size}_latticepoints_${index + 1}.txt`)
     : [BLANCO_SANTOS_CENSUS_URL(size)];
 };
+
+export const POLYDB_FEW_LATTICE_POINTS_COUNTS = Object.freeze({
+  12: 503443,
+  13: 1502640,
+  14: 4227528,
+  15: 11294824
+});
+
+export const POLYDB_FEW_LATTICE_POINTS_ID_WIDTH = Object.freeze({
+  12: 6,
+  13: 7,
+  14: 7,
+  15: 8
+});
+
+export const POLYDB_AGGREGATE_URL = "https://polydb.org/rest/query.php";
+export const POLYDB_FEW_LATTICE_POINTS_COLLECTION = "Polytopes.Lattice.FewLatticePoints3D";
+
+const rationalNumber = value => {
+  if (typeof value === "number") return value;
+  const [numerator, denominator = "1"] = String(value).split("/");
+  return Number(numerator) / Number(denominator);
+};
+
+export function parsePolyDbLatticePolytopes(documents) {
+  if (!Array.isArray(documents)) throw new Error("polyDB response must be an array");
+  return documents.map(document => {
+    if (!document?._id || !Array.isArray(document.VERTICES)) {
+      throw new Error("Malformed polyDB lattice-polytope document");
+    }
+    const vertices = document.VERTICES.map(row => {
+      if (!Array.isArray(row) || row.length !== 4 || rationalNumber(row[0]) !== 1) {
+        throw new Error(`Expected homogeneous lattice vertices for ${document._id}`);
+      }
+      const point = row.slice(1).map(rationalNumber);
+      if (!point.every(Number.isInteger)) throw new Error(`Non-integral vertex in ${document._id}`);
+      return point;
+    });
+    return {
+      id: document._id,
+      lattice_points: Number(document.N_LATTICE_POINTS),
+      vertices
+    };
+  });
+}
+
+export function polyDbLatticePolytopeAggregateRequest(size, start, end) {
+  const total = POLYDB_FEW_LATTICE_POINTS_COUNTS[size];
+  const width = POLYDB_FEW_LATTICE_POINTS_ID_WIDTH[size];
+  if (!total || !width) throw new Error(`polyDB size ${size} is not configured`);
+  const boundedStart = Math.max(0, Math.min(total, Math.floor(start)));
+  const boundedEnd = Math.max(boundedStart, Math.min(total, Math.floor(end)));
+  const id = index => `${size}_${String(index).padStart(width, "0")}`;
+  const query = [
+    { $match: { _id: { $gte: id(boundedStart), $lt: id(boundedEnd) }, N_LATTICE_POINTS: size } },
+    { $sort: { _id: 1 } },
+    { $project: { _id: 1, VERTICES: 1, N_LATTICE_POINTS: 1 } }
+  ];
+  const url = new URL(POLYDB_AGGREGATE_URL);
+  url.searchParams.set("task", "aggregate");
+  url.searchParams.set("collection", POLYDB_FEW_LATTICE_POINTS_COLLECTION);
+  url.searchParams.set("query", JSON.stringify(query));
+  url.searchParams.set("allowDiskUse", "1");
+  return { url: url.toString(), start: boundedStart, end: boundedEnd };
+}

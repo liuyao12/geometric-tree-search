@@ -21,12 +21,15 @@ const reports = await Promise.all(inputFiles.map(async file => ({
 
 const size = reports[0].report.configuration?.size;
 const expectedConfiguration = reports[0].report.configuration;
+const source = expectedConfiguration.source ?? "blanco_santos";
 const parts = new Set();
+const ranges = [];
 for (const { file, report } of reports) {
   if (report.kind !== "blanco_santos_extendable_shell_one_screen") {
     throw new Error(`${file} is not a first-stage census report`);
   }
   if (report.configuration?.size !== size) throw new Error(`${file} has a different census size`);
+  if ((report.configuration?.source ?? "blanco_santos") !== source) throw new Error(`${file} has a different census source`);
   for (const key of ["timeMs", "nodeLimit", "orientationGroup", "translations", "mirrors", "globalZeroFacePruning"]) {
     if (report.configuration?.[key] !== expectedConfiguration?.[key]) {
       throw new Error(`${file} has a different ${key} configuration`);
@@ -35,6 +38,22 @@ for (const { file, report } of reports) {
   for (const part of report.configuration?.parts ?? []) {
     if (parts.has(part)) throw new Error(`Census part ${part} appears more than once`);
     parts.add(part);
+  }
+  if (source === "polydb") {
+    for (const record of report.sources ?? []) {
+      if (!Number.isInteger(record.start) || !Number.isInteger(record.end) || record.end <= record.start) {
+        throw new Error(`${file} has an invalid polyDB source range`);
+      }
+      ranges.push({ start: record.start, end: record.end });
+    }
+  }
+}
+if (source === "polydb") {
+  ranges.sort((left, right) => left.start - right.start);
+  for (let index = 1; index < ranges.length; index += 1) {
+    if (ranges[index - 1].end !== ranges[index].start) {
+      throw new Error(`polyDB ranges have a gap or overlap at ${ranges[index - 1].end}/${ranges[index].start}`);
+    }
   }
 }
 
@@ -62,7 +81,15 @@ const report = {
   generatedAt: new Date().toISOString(),
   configuration: {
     size,
+    source,
     parts: [...parts].sort((left, right) => left - right),
+    ...(source === "polydb" ? {
+      ranges,
+      start: ranges[0]?.start ?? null,
+      end: ranges.at(-1)?.end ?? null,
+      completeConfiguredSize: ranges[0]?.start === 0
+        && ranges.at(-1)?.end === screenedCandidates
+    } : {}),
     timeMs: expectedConfiguration.timeMs,
     nodeLimit: expectedConfiguration.nodeLimit,
     orientationGroup: expectedConfiguration.orientationGroup,

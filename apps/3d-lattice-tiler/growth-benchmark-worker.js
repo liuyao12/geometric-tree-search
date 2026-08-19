@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-size11-controls-v98";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-size12-controls-v100";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot

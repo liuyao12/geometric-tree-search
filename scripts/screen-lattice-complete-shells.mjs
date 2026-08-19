@@ -24,6 +24,7 @@ const outputFile = args.get("output-file") ?? null;
 const includeWitness = args.get("include-witness") === "true";
 const initialPatchFile = args.get("initial-patch-file") ?? null;
 const failureMemo = args.get("failure-memo") !== "false";
+const includeMirrors = args.get("include-mirrors") === "true";
 const failureMemoSymmetry = args.get("memo-symmetry") === "fixed" ? "fixed" : "rigid";
 const seededTieBreaks = args.get("seeded-tie-breaks") !== "false";
 const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
@@ -92,7 +93,7 @@ const configFor = (candidate, seed, targetDepth) => ({
   generic_failure_memo_symmetry: failureMemoSymmetry,
   generic_failure_memo_max_states: 200000,
   generic_geometric_nogood: false,
-  include_mirrors: false,
+  include_mirrors: includeMirrors,
   template_preflight: false,
   snapshot_every: 1,
   placement_details: true,
@@ -273,6 +274,7 @@ const report = {
   generatedAt: new Date().toISOString(),
   configuration: {
     targetShellDepth,
+    includeMirrors,
     cascade,
     timeMs,
     nodeLimit,
@@ -291,7 +293,7 @@ const report = {
         }
       : null,
     candidatesFile,
-    orientationGroup: "proper cubic rotations",
+    orientationGroup: includeMirrors ? "full cubic isometries" : "proper cubic rotations",
     model: "face-to-face lattice tiling",
     shellDefinition: "minimum face-adjacency distance from the root among owners of exposed faces",
     deadFaceRule: "an exposed face with no currently legal face-mate is permanently unfillable and is pruned at every exact state"

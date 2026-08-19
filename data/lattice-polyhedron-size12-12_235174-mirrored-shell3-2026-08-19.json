@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_complete_shell_screen",
+  "generatedAt": "2026-08-19T14:07:02.612Z",
+  "configuration": {
+    "targetShellDepth": 3,
+    "includeMirrors": true,
+    "cascade": false,
+    "timeMs": 60000,
+    "nodeLimit": 1000000,
+    "seeds": [
+      1
+    ],
+    "failureMemo": false,
+    "failureMemoSymmetry": "rigid",
+    "seededTieBreaks": true,
+    "globalZeroFacePruning": true,
+    "includeWitness": true,
+    "initialPatch": null,
+    "candidatesFile": "data/lattice-polyhedron-size12-first-stage-2026-08-19.json",
+    "orientationGroup": "full cubic isometries",
+    "model": "face-to-face lattice tiling",
+    "shellDefinition": "minimum face-adjacency distance from the root among owners of exposed faces",
+    "deadFaceRule": "an exposed face with no currently legal face-mate is permanently unfillable and is pruned at every exact state"
+  },
+  "rows": [
+    {
+      "candidate": "12_235174",
+      "seed": 1,
+      "targetShellDepth": 3,
+      "resultKind": "search_incomplete",
+      "success": false,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": null,
+      "searchIncomplete": true,
+      "terminationReason": "time_limit",
+      "elapsedMs": 60011,
+      "bestShellDepth": 1,
+      "bestShellPatchTiles": 26,
+      "bestShellWitnessHash": "cfe82e83ee78fca8",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 1,
+          "orientation_id": "1:1",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 1,
+          "orientation_id": "1:1",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 1,
+          "orientation_id": "1:1",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            1,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            -3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            -1,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 1,
+          "orientation_id": "1:1",
+          "translation": [
+            0,
+            3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            -1,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -2,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 1,
+          "orientation_id": "1:1",
+          "translation": [
+            -2,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -3,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 3,
+          "orientation_id": "1:3",
+          "translation": [
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            0,
+            -5
+          ]
+        }
+      ],
+      "maxLiveTiles": 34,
+      "maxFrontierFaces": 68,
+      "maxGlobalCandidates": 4,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 34,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 11691,
+      "backtracks": 11690,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 5839,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 26,
+          "witnessHash": "cfe82e83ee78fca8",
+          "visitedNodes": 26,
+          "elapsedMs": 95
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate": "12_235174",
+      "trials": 1,
+      "targetHits": 0,
+      "deepestCompletedShell": 0,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 1,
+      "maximumBestShellDepth": 1,
+      "minimumShellWitnessTiles": 26,
+      "maximumShellWitnessTiles": 26,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 11691,
+      "totalBacktracks": 11690
+    }
+  ],
+  "totals": {
+    "trials": 1,
+    "targetHits": 0,
+    "certifiedNonTilerTrials": 0,
+    "incompleteTrials": 1
+  },
+  "interpretation": "Completing a finite shell while avoiding permanently unfillable exposed faces is necessary but not sufficient for an infinite face-to-face tiling. Exhaustion under these exact obligations is a non-tiling certificate; a time or node limit is inconclusive."
+}

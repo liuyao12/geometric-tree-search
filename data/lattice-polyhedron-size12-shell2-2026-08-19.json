@@ -1,0 +1,6011 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_complete_shell_screen",
+  "generatedAt": "2026-08-19T14:03:23.110Z",
+  "configuration": {
+    "targetShellDepth": 2,
+    "includeMirrors": false,
+    "cascade": false,
+    "timeMs": 30000,
+    "nodeLimit": 500000,
+    "seeds": [
+      1
+    ],
+    "failureMemo": false,
+    "failureMemoSymmetry": "rigid",
+    "seededTieBreaks": true,
+    "globalZeroFacePruning": true,
+    "includeWitness": true,
+    "initialPatch": null,
+    "candidatesFile": "data/lattice-polyhedron-size12-first-stage-2026-08-19.json",
+    "orientationGroup": "proper cubic rotations",
+    "model": "face-to-face lattice tiling",
+    "shellDefinition": "minimum face-adjacency distance from the root among owners of exposed faces",
+    "deadFaceRule": "an exposed face with no currently legal face-mate is permanently unfillable and is pruned at every exact state"
+  },
+  "rows": [
+    {
+      "candidate": "12_008578",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 72,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "cf1feb8b76d7495c",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -2,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            -2,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -2,
+            -1,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -2,
+            -2,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            2,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            2,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            3,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            3,
+            2,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -4,
+            -4,
+            26
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            4,
+            4,
+            -26
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 15,
+          "witnessHash": "250b8cef559429c2",
+          "visitedNodes": 15,
+          "elapsedMs": 49
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "cf1feb8b76d7495c",
+          "visitedNodes": 20,
+          "elapsedMs": 68
+        }
+      ]
+    },
+    {
+      "candidate": "12_086564",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 72,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "8139c15d0cde3834",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            0,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            0,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -1,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            3,
+            0,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            -1,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            1,
+            4
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 14,
+          "witnessHash": "5a9a56313773df30",
+          "visitedNodes": 14,
+          "elapsedMs": 47
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "8139c15d0cde3834",
+          "visitedNodes": 20,
+          "elapsedMs": 69
+        }
+      ]
+    },
+    {
+      "candidate": "12_087032",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 181,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 44,
+      "bestShellWitnessHash": "506c786aa2e03e9b",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            -1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            -2,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            -3,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -3,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            3,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            3,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            4,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -4,
+            2
+          ]
+        }
+      ],
+      "maxLiveTiles": 44,
+      "maxFrontierFaces": 162,
+      "maxGlobalCandidates": 4,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 44,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 44,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 30,
+          "witnessHash": "5e0fe2f8a0acd63c",
+          "visitedNodes": 30,
+          "elapsedMs": 106
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 44,
+          "witnessHash": "506c786aa2e03e9b",
+          "visitedNodes": 44,
+          "elapsedMs": 174
+        }
+      ]
+    },
+    {
+      "candidate": "12_093409",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 62,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "ea1da5694ddd1448",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -4,
+            -4,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -3,
+            -4,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -4,
+            -3,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -4,
+            -4,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            4,
+            4,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            4,
+            4,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            4,
+            5,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            5,
+            4,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -8,
+            -8,
+            26
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            8,
+            8,
+            -26
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 15,
+          "witnessHash": "6b750758a023e7e4",
+          "visitedNodes": 15,
+          "elapsedMs": 43
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "ea1da5694ddd1448",
+          "visitedNodes": 20,
+          "elapsedMs": 59
+        }
+      ]
+    },
+    {
+      "candidate": "12_146184",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 309,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 57,
+      "bestShellWitnessHash": "d76592bbfba703e3",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            -1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -2,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -2,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -2,
+            3,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            -1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            2,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            3,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            3,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            3,
+            -2,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            3,
+            -3,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            0,
+            3,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -3,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -3,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            2,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            3,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            4,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            -3,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -3,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            -2,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -2,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -4,
+            2
+          ]
+        }
+      ],
+      "maxLiveTiles": 57,
+      "maxFrontierFaces": 228,
+      "maxGlobalCandidates": 4,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 57,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 57,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 33,
+          "witnessHash": "56d549b08d641979",
+          "visitedNodes": 33,
+          "elapsedMs": 140
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 57,
+          "witnessHash": "d76592bbfba703e3",
+          "visitedNodes": 57,
+          "elapsedMs": 300
+        }
+      ]
+    },
+    {
+      "candidate": "12_171483",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 93,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 37,
+      "bestShellWitnessHash": "ada8349c000a781e",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -2,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -2,
+            -2,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -3,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -3,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            3,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            3,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            3,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            3,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            3,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            2,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -2,
+            4
+          ]
+        }
+      ],
+      "maxLiveTiles": 37,
+      "maxFrontierFaces": 116,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 37,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 37,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 15,
+          "witnessHash": "6438e01fbc8f60f1",
+          "visitedNodes": 15,
+          "elapsedMs": 29
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 37,
+          "witnessHash": "ada8349c000a781e",
+          "visitedNodes": 37,
+          "elapsedMs": 89
+        }
+      ]
+    },
+    {
+      "candidate": "12_186004",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 41,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "bcf18918d3dff84c",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            -2,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -4,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            2,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            4,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            0,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            -2,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            2,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            3
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 14,
+          "witnessHash": "aa17b74c88fec84a",
+          "visitedNodes": 14,
+          "elapsedMs": 25
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "bcf18918d3dff84c",
+          "visitedNodes": 20,
+          "elapsedMs": 38
+        }
+      ]
+    },
+    {
+      "candidate": "12_196957",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 97,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 37,
+      "bestShellWitnessHash": "cd912cf52307c7e1",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -2,
+            -2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            2,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -2,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -2,
+            -1,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -3,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            -3,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            -2,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -3,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -3,
+            -1,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -4,
+            -4,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -3,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -3,
+            -2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            3,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            3,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            2,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            3,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            3,
+            2,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            3,
+            1,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            3,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            4,
+            4,
+            -6
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -4,
+            -4,
+            6
+          ]
+        }
+      ],
+      "maxLiveTiles": 37,
+      "maxFrontierFaces": 116,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 37,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 37,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 13,
+          "witnessHash": "36a6fad0fc89a1fd",
+          "visitedNodes": 13,
+          "elapsedMs": 26
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 37,
+          "witnessHash": "cd912cf52307c7e1",
+          "visitedNodes": 37,
+          "elapsedMs": 93
+        }
+      ]
+    },
+    {
+      "candidate": "12_218797",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 49,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "736890a2a5478698",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            -1,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            0,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -1,
+            -1,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            1,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            1,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            2,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            2,
+            1,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -2,
+            26
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            2,
+            -26
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 15,
+          "witnessHash": "5786a9ed1d7f926b",
+          "visitedNodes": 15,
+          "elapsedMs": 33
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "736890a2a5478698",
+          "visitedNodes": 20,
+          "elapsedMs": 46
+        }
+      ]
+    },
+    {
+      "candidate": "12_235174",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 48,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "5fc9d0c44bc62379",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            3,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            1,
+            5
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 14,
+          "witnessHash": "f6a3115710a21d4a",
+          "visitedNodes": 14,
+          "elapsedMs": 30
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "5fc9d0c44bc62379",
+          "visitedNodes": 20,
+          "elapsedMs": 45
+        }
+      ]
+    },
+    {
+      "candidate": "12_249673",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 77,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 25,
+      "bestShellWitnessHash": "7af57edffd8ea4c5",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -2,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            0,
+            1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            -1,
+            1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            0,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            0,
+            2,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            1,
+            1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            -1,
+            2,
+            -10
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -2,
+            -1,
+            10
+          ]
+        }
+      ],
+      "maxLiveTiles": 25,
+      "maxFrontierFaces": 78,
+      "maxGlobalCandidates": 4,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 25,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 25,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 19,
+          "witnessHash": "5cf501defb7184a2",
+          "visitedNodes": 19,
+          "elapsedMs": 49
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 25,
+          "witnessHash": "7af57edffd8ea4c5",
+          "visitedNodes": 25,
+          "elapsedMs": 72
+        }
+      ]
+    },
+    {
+      "candidate": "12_257228",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 383,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 45,
+      "bestShellWitnessHash": "7ddab974a65aad39",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -3,
+            1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -4,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            3,
+            -2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            4,
+            -2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -3,
+            2,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            2,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            3,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -3,
+            3,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            3,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            3,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            0,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -3,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -2,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            -1,
+            3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            -1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 6,
+          "orientation_id": "0:6",
+          "translation": [
+            1,
+            2,
+            1
+          ]
+        }
+      ],
+      "maxLiveTiles": 45,
+      "maxFrontierFaces": 164,
+      "maxGlobalCandidates": 4,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 45,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 54,
+      "backtracks": 9,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 9,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 31,
+          "witnessHash": "0b4404416471f0aa",
+          "visitedNodes": 37,
+          "elapsedMs": 228
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 45,
+          "witnessHash": "7ddab974a65aad39",
+          "visitedNodes": 54,
+          "elapsedMs": 376
+        }
+      ]
+    },
+    {
+      "candidate": "12_300447",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 84,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 25,
+      "bestShellWitnessHash": "070a196a6831e64f",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 10,
+          "orientation_id": "0:10",
+          "translation": [
+            -2,
+            0,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 10,
+          "orientation_id": "0:10",
+          "translation": [
+            -1,
+            0,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 10,
+          "orientation_id": "0:10",
+          "translation": [
+            -2,
+            -1,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 10,
+          "orientation_id": "0:10",
+          "translation": [
+            -3,
+            0,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 10,
+          "orientation_id": "0:10",
+          "translation": [
+            -2,
+            1,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            -1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -4,
+            0,
+            10
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 10,
+          "orientation_id": "0:10",
+          "translation": [
+            2,
+            -1,
+            -10
+          ]
+        }
+      ],
+      "maxLiveTiles": 25,
+      "maxFrontierFaces": 78,
+      "maxGlobalCandidates": 8,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 25,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 25,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 19,
+          "witnessHash": "bb62e789424f35a6",
+          "visitedNodes": 19,
+          "elapsedMs": 57
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 25,
+          "witnessHash": "070a196a6831e64f",
+          "visitedNodes": 25,
+          "elapsedMs": 80
+        }
+      ]
+    },
+    {
+      "candidate": "12_357723",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 84,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 25,
+      "bestShellWitnessHash": "aea2d47bd3350891",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -2,
+            0,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -1,
+            0,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -2,
+            -1,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -3,
+            0,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -2,
+            1,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            0,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            0,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            -1,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            2,
+            1,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            3,
+            0,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -4,
+            0,
+            8
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            4,
+            -1,
+            -8
+          ]
+        }
+      ],
+      "maxLiveTiles": 25,
+      "maxFrontierFaces": 78,
+      "maxGlobalCandidates": 8,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 25,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 25,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 19,
+          "witnessHash": "14c00cf415acca39",
+          "visitedNodes": 19,
+          "elapsedMs": 57
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 25,
+          "witnessHash": "aea2d47bd3350891",
+          "visitedNodes": 25,
+          "elapsedMs": 79
+        }
+      ]
+    },
+    {
+      "candidate": "12_452558",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 57,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "e229b583bc3d5fe5",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -3,
+            -3,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -2,
+            -3,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -3,
+            -2,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            -3,
+            -3,
+            13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            3,
+            3,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            3,
+            3,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            3,
+            4,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 11,
+          "orientation_id": "0:11",
+          "translation": [
+            4,
+            3,
+            -13
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -6,
+            -6,
+            26
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            6,
+            6,
+            -26
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 15,
+          "witnessHash": "34f70523cff3fc78",
+          "visitedNodes": 15,
+          "elapsedMs": 39
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "e229b583bc3d5fe5",
+          "visitedNodes": 20,
+          "elapsedMs": 54
+        }
+      ]
+    },
+    {
+      "candidate": "12_464758",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 43,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 20,
+      "bestShellWitnessHash": "4f88d017d468cb1e",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 2,
+          "orientation_id": "0:2",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            0,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            -1,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            -1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            1,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 1,
+          "orientation_id": "0:1",
+          "translation": [
+            1,
+            0,
+            -5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -1,
+            5
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            5
+          ]
+        }
+      ],
+      "maxLiveTiles": 20,
+      "maxFrontierFaces": 50,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 20,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 20,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 14,
+          "witnessHash": "c04e05ce45fb62c2",
+          "visitedNodes": 14,
+          "elapsedMs": 26
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 20,
+          "witnessHash": "4f88d017d468cb1e",
+          "visitedNodes": 20,
+          "elapsedMs": 40
+        }
+      ]
+    },
+    {
+      "candidate": "12_490743",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "patch_found",
+      "success": true,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": "finite_complete_shell",
+      "searchIncomplete": false,
+      "terminationReason": "target_reached",
+      "elapsedMs": 92,
+      "bestShellDepth": 2,
+      "bestShellPatchTiles": 37,
+      "bestShellWitnessHash": "0b1f89968bbfd9a7",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            1,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            0,
+            -3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            -1,
+            1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            -1,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -2,
+            2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            0,
+            3,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            1,
+            -1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            -1,
+            -2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            -1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            1,
+            2,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            -4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            2,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            -2,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            2,
+            1,
+            -2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            2,
+            1,
+            2
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 3,
+          "orientation_id": "0:3",
+          "translation": [
+            3,
+            0,
+            0
+          ]
+        }
+      ],
+      "maxLiveTiles": 37,
+      "maxFrontierFaces": 116,
+      "maxGlobalCandidates": 1,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 37,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 37,
+      "backtracks": 0,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 9,
+          "witnessHash": "a4156f4f5685945a",
+          "visitedNodes": 9,
+          "elapsedMs": 14
+        },
+        {
+          "shellDepth": 2,
+          "tileCount": 37,
+          "witnessHash": "0b1f89968bbfd9a7",
+          "visitedNodes": 37,
+          "elapsedMs": 88
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate": "12_008578",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_086564",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_087032",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 44,
+      "maximumShellWitnessTiles": 44,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 44,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_093409",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_146184",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 57,
+      "maximumShellWitnessTiles": 57,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 57,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_171483",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 37,
+      "maximumShellWitnessTiles": 37,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 37,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_186004",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_196957",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 37,
+      "maximumShellWitnessTiles": 37,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 37,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_218797",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_235174",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_249673",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 25,
+      "maximumShellWitnessTiles": 25,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 25,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_257228",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 45,
+      "maximumShellWitnessTiles": 45,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 54,
+      "totalBacktracks": 9
+    },
+    {
+      "candidate": "12_300447",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 25,
+      "maximumShellWitnessTiles": 25,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 25,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_357723",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 25,
+      "maximumShellWitnessTiles": 25,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 25,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_452558",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_464758",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 20,
+      "maximumShellWitnessTiles": 20,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 20,
+      "totalBacktracks": 0
+    },
+    {
+      "candidate": "12_490743",
+      "trials": 1,
+      "targetHits": 1,
+      "deepestCompletedShell": 2,
+      "firstCertifiedObstructionDepth": null,
+      "certifiedNonTilerTrials": 0,
+      "minimumBestShellDepth": 2,
+      "maximumBestShellDepth": 2,
+      "minimumShellWitnessTiles": 37,
+      "maximumShellWitnessTiles": 37,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 37,
+      "totalBacktracks": 0
+    }
+  ],
+  "totals": {
+    "trials": 17,
+    "targetHits": 17,
+    "certifiedNonTilerTrials": 0,
+    "incompleteTrials": 0
+  },
+  "interpretation": "Completing a finite shell while avoiding permanently unfillable exposed faces is necessary but not sufficient for an infinite face-to-face tiling. Exhaustion under these exact obligations is a non-tiling certificate; a time or node limit is inconclusive."
+}

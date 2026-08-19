@@ -281,6 +281,17 @@ const frozenPeriodicTemplate = (periodVectors, motif) => Object.freeze({
   })))
 });
 
+const frozenMixedPeriodicTemplate = (periodVectors, motif) => Object.freeze({
+  kind: `${motif.length}_tile_periodic_symmetry_quotient`,
+  period_vectors: Object.freeze(periodVectors.map(vector => Object.freeze(vector))),
+  motif: Object.freeze(motif.map(([prototile_idx, orientation_index, translation]) => Object.freeze({
+    prototile_idx,
+    orientation_index,
+    orientation_id: `${prototile_idx}:${orientation_index}`,
+    translation: Object.freeze(translation)
+  })))
+});
+
 const SIZE11_PERIODIC_TEMPLATES = Object.freeze({
   "11_38606": frozenPeriodicTemplate([[-1,1,1],[-2,-1,0],[0,-1,2]], [[0,[0,0,0]],[21,[0,-1,0]]]),
   "11_57333": frozenPeriodicTemplate([[0,-1,0],[-1,-1,-4],[-1,1,4]], [[0,[0,0,0]],[1,[0,-1,-4]]]),
@@ -344,6 +355,79 @@ export const LATTICE_POLYHEDRON_SIZE11_CONTROLS = SIZE11_CANDIDATE_GEOMETRY.map(
     description: template
       ? `Size-11 periodic control ${candidate.id}; exact GCTS screening found a ${template.motif.length}-tile translational quotient.`
       : `Size-11 non-tiler control ${candidate.id}; exhaustive GCTS reaches shell 2 but proves shell 3 impossible.`
+  });
+});
+
+const SIZE12_CONTROL_DATA = Object.freeze([
+  { id: "12_008578", vertices: [[0,0,0],[1,0,0],[0,1,0],[2,2,13],[3,2,13],[2,3,13]], periods: [[-1,0,0],[-1,1,0],[-2,-2,13]], motif: [[0,[0,0,0]],[11,[1,0,0]]] },
+  { id: "12_086564", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,1,4],[1,2,0],[3,1,4]], periods: [[-1,0,0],[-2,-1,4],[-2,1,4]], motif: [[0,[0,0,0]],[2,[2,0,-4]]] },
+  { id: "12_087032", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[0,2,1],[0,1,2],[2,1,1],[1,2,1],[1,1,2],[0,2,2]], periods: [[0,-1,-1],[-2,0,-1],[0,-1,2]], motif: [[0,[0,0,0]],[6,[2,0,0]]] },
+  { id: "12_093409", vertices: [[0,0,0],[1,0,0],[0,1,0],[4,4,13],[5,4,13],[4,5,13]], periods: [[-1,0,0],[-1,1,0],[-4,-4,13]], motif: [[0,[0,0,0]],[11,[1,0,0]]] },
+  { id: "12_146184", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[-1,1,1],[-1,2,1],[-1,1,2],[1,1,1],[0,2,1],[0,1,2],[-1,2,2]], periods: [[0,-1,-1],[-2,0,0],[-1,-1,2]], motif: [[0,[0,0,0]],[6,[1,0,-1]]] },
+  { id: "12_171483", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,2],[3,2,1],[2,3,1],[2,1,2],[1,2,2]], periods: [[-1,1,0],[-1,-1,2],[-1,-2,-1]], motif: [[0,[0,0,0]],[11,[1,2,0]]] },
+  { id: "12_186004", vertices: [[0,0,0],[2,0,0],[0,1,0],[0,2,3],[2,1,0],[2,2,3]], periods: [[0,-1,0],[-2,0,0],[0,-1,3]], motif: [[0,[0,0,0]],[1,[0,0,0]]] },
+  { id: "12_196957", vertices: [[0,0,0],[1,0,0],[0,1,0],[2,2,3],[3,2,2],[2,3,2],[3,2,3],[2,3,3]], periods: [[-1,0,-1],[-1,1,0],[-2,-2,3]], motif: [[0,[0,0,0]],[11,[0,0,-1]]] },
+  { id: "12_218797", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,13],[2,1,13],[1,2,13]], periods: [[0,-1,0],[-1,1,0],[-1,-1,13]], motif: [[0,[0,0,0]],[11,[0,1,0]]] },
+  { id: "12_235174", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,1,5],[1,2,0],[3,1,5]], periods: [[-1,0,0],[-2,-1,5],[-2,1,5]], mixed_motif: [[0,0,[0,0,0]],[1,1,[2,0,-5]]], proper_obstruction_shell: 3 },
+  { id: "12_249673", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,0],[1,1,5],[2,1,5],[1,2,5],[2,2,5]], periods: [[-1,-1,5],[0,-1,0],[-1,0,0]], motif: [[0,[0,0,0]]] },
+  { id: "12_257228", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[-1,1,1],[-1,2,1],[-1,1,2],[0,2,1],[0,1,2]], periods: [[0,-1,-1],[-2,0,1],[0,-1,2]], motif: [[0,[0,0,0]],[6,[1,0,-1]]] },
+  { id: "12_300447", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,0],[1,2,5],[2,2,5],[1,3,5],[2,3,5]], periods: [[-1,-2,5],[0,-1,0],[-1,0,0]], motif: [[0,[0,0,0]]] },
+  { id: "12_357723", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,0],[2,1,4],[3,1,4],[2,2,4],[3,2,4]], periods: [[-2,-1,4],[0,-1,0],[-1,0,0]], motif: [[0,[0,0,0]]] },
+  { id: "12_452558", vertices: [[0,0,0],[1,0,0],[0,1,0],[3,3,13],[4,3,13],[3,4,13]], periods: [[-1,0,0],[-1,1,0],[-3,-3,13]], motif: [[0,[0,0,0]],[11,[1,0,0]]] },
+  { id: "12_464758", vertices: [[0,0,0],[1,0,0],[0,2,0],[1,1,5],[1,2,0],[2,1,5]], periods: [[-1,0,0],[-1,-1,5],[-1,1,5]], motif: [[0,[0,0,0]],[2,[1,0,-5]]] },
+  { id: "12_490743", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,2],[2,1,1],[1,2,1],[1,0,2],[0,1,2]], periods: [[-1,1,0],[0,0,-2],[-1,-2,-1]], motif: [[0,[0,0,0]],[3,[1,2,0]]] }
+]);
+
+export const LATTICE_POLYHEDRON_SIZE12_SCREENING = Object.freeze({
+  screen_date: "2026-08-19",
+  source: "polyDB Polytopes.Lattice.FewLatticePoints3D",
+  source_pool_size: 503443,
+  local_edge_obstructions: 503353,
+  extendable_shell_one_obstructions: 73,
+  shell_one_survivors: 17,
+  proper_rotation_shell_three_non_tilers: 1,
+  certified_periodic_tilers: 17,
+  reflection_required_periodic_tilers: 1,
+  unresolved: 0,
+  model: "face-to-face congruent lattice-polyhedron tilings using integer translations and cubic lattice isometries",
+  first_stage_report: "data/lattice-polyhedron-size12-first-stage-2026-08-19.json",
+  shell_report: "data/lattice-polyhedron-size12-shell3-2026-08-19.json",
+  periodic_report: "data/lattice-polyhedron-size12-easy-lanes-2026-08-19.json",
+  mirrored_periodic_report: "data/lattice-polyhedron-size12-12_235174-mirrored-easy-lanes-2026-08-19.json"
+});
+
+export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = SIZE12_CONTROL_DATA.map(candidate => {
+  const requiresMirrors = !!candidate.mixed_motif;
+  const template = requiresMirrors
+    ? frozenMixedPeriodicTemplate(candidate.periods, candidate.mixed_motif)
+    : frozenPeriodicTemplate(candidate.periods, candidate.motif);
+  const screening = rejected("translational", template.motif.length, template.period_vectors, template);
+  return Object.freeze({
+    id: candidate.id,
+    vertices: candidate.vertices,
+    lattice_points: 12,
+    registry_id: `census_${candidate.id}`,
+    name: `Candidate ${candidate.id}`,
+    screening: Object.freeze({
+      ...screening,
+      ...(requiresMirrors ? {
+        requires_mirrors: true,
+        proper_rotation_obstruction_shell: candidate.proper_obstruction_shell,
+        periodic_source: "exact mirrored two-tile quotient after a proper-rotation shell-3 obstruction",
+        report: LATTICE_POLYHEDRON_SIZE12_SCREENING.mirrored_periodic_report
+      } : {
+        periodic_source: "exact quotient found after the complete-shell screen",
+        report: LATTICE_POLYHEDRON_SIZE12_SCREENING.periodic_report
+      })
+    }),
+    last_screening: LATTICE_POLYHEDRON_SIZE12_SCREENING,
+    shell_screening: Object.freeze(requiresMirrors
+      ? { deepest_completed_shell: 2, obstruction_shell: 3, proper_rotations_only: true, periodic_motif_tiles: 2 }
+      : { deepest_completed_shell: 3, periodic_motif_tiles: template.motif.length }),
+    gcts_proof_screening: Object.freeze({}),
+    description: requiresMirrors
+      ? `Size-12 reflection-sensitive periodic control ${candidate.id}; proper rotations fail exactly at shell 3, while one tile and one reflected copy form a certified two-tile translational quotient.`
+      : `Size-12 periodic control ${candidate.id}; exact GCTS screening found a ${template.motif.length}-tile translational quotient.`
   });
 });
 
@@ -427,5 +511,6 @@ export const LATTICE_POLYHEDRON_GCTS_EXAMPLES = Object.freeze([
   ...LATTICE_POLYHEDRON_SURVIVORS,
   ...LATTICE_POLYHEDRON_PERIODIC_REJECTS,
   ...LATTICE_POLYHEDRON_SHELL_REJECTS,
-  ...LATTICE_POLYHEDRON_SIZE11_CONTROLS
+  ...LATTICE_POLYHEDRON_SIZE11_CONTROLS,
+  ...LATTICE_POLYHEDRON_SIZE12_CONTROLS
 ]);

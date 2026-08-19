@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-size11-controls-v98";
+import { tileSpecs } from "./engine.js?v=20260819-size12-controls-v100";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -641,7 +641,9 @@ function isFigureCompatibleWithSelection(figure) {
 }
 
 function updateMirrorAvailability() {
-  const isChiral = selectedFigures().some(figure => figure.is_chiral);
+  const isChiral = selectedFigures().some(figure =>
+    figure.is_chiral || figure.census_candidate?.screening?.requires_mirrors
+  );
   const reflectionsForbidden = selectedFigures().some(figure => figure.aperiodic_tile?.reflections_forbidden);
   mirrorCheckbox.disabled = !isChiral || reflectionsForbidden;
   mirrorCheckbox.parentElement.style.opacity = isChiral && !reflectionsForbidden ? "1" : "0.45";
@@ -1326,7 +1328,7 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
   candidateCapInput.value = "0";
   branchCapInput.value = "0";
   exhaustiveCheckbox.checked = true;
-  mirrorCheckbox.checked = false;
+  mirrorCheckbox.checked = !!candidate?.screening?.requires_mirrors;
   updateCriterionUI();
   updateStrategyUI();
   if (invalidate) invalidatePausedRunIfNeeded();
@@ -2751,7 +2753,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-size11-controls-v98", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-size12-controls-v100", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3285,7 +3287,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-size11-controls-v98", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-size12-controls-v100", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

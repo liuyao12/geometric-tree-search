@@ -11,6 +11,8 @@ import {
   LATTICE_POLYHEDRON_SHELL_REJECTS,
   LATTICE_POLYHEDRON_SIZE11_CONTROLS,
   LATTICE_POLYHEDRON_SIZE11_SCREENING,
+  LATTICE_POLYHEDRON_SIZE12_CONTROLS,
+  LATTICE_POLYHEDRON_SIZE12_SCREENING,
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
 
@@ -245,6 +247,22 @@ const archivedSize11ShellThree = JSON.parse(await readFile(
 ));
 const archivedSize11Periodic = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-size11-periodic-summary-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12FirstStage = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-first-stage-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12ShellThree = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-shell3-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12Periodic = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-easy-lanes-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12MirroredPeriodic = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-12_235174-mirrored-easy-lanes-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -1118,14 +1136,14 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 12, "the original four and eight size-11 GCTS controls must remain in the catalog");
+assert.equal(candidates.length, 29, "the original controls and all 17 size-12 controls must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
 const shellControls = candidates.filter(figure => figure.census_candidate.screening.certificate === "finite_extendable_shell_obstruction");
 const periodicControls = candidates.filter(figure => figure.census_candidate.screening.certificate === "translational");
 assert.equal(survivors.length, 0);
 assert.equal(shellControls.length, 5);
-assert.equal(periodicControls.length, 7);
+assert.equal(periodicControls.length, 24);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);
@@ -1141,6 +1159,21 @@ assert.deepEqual(archivedSize11FirstStage.counts, {
 assert.equal(archivedSize11ShellThree.totals.certifiedNonTilerTrials, 6);
 assert.equal(archivedSize11Periodic.rows.length, 6);
 assert.ok(archivedSize11Periodic.rows.every(row => row.translational?.certified));
+assert.equal(LATTICE_POLYHEDRON_SIZE12_CONTROLS.length, 17);
+assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.source_pool_size, 503443);
+assert.deepEqual(archivedSize12FirstStage.counts, {
+  localEdgeObstruction: 503353,
+  extendableShellObstruction: 73,
+  shellOneWitness: 17,
+  incomplete: 0,
+  other: 0
+});
+assert.equal(archivedSize12ShellThree.totals.certifiedNonTilerTrials, 1);
+assert.equal(archivedSize12Periodic.rows.length, 16);
+assert.ok(archivedSize12Periodic.rows.every(row => row.translational?.certified));
+assert.equal(archivedSize12MirroredPeriodic.rows[0].id, "12_235174");
+assert.equal(archivedSize12MirroredPeriodic.rows[0].translational?.certified, true);
+assert.equal(archivedSize12MirroredPeriodic.rows[0].translational?.certificate?.periodic_template?.mixed_prototile, true);
 assert.equal(archivedShellContinuation.checkpoints.at(-1).shellDepth, 7);
 assert.equal(archivedCandidatePeriodic.certificate.motif.length, 6);
 
@@ -1170,7 +1203,7 @@ for (const periodicControl of periodicControls) {
     target_val: periodicControl.census_candidate.screening.motif_tiles,
     tiling_strategy: "translational",
     exhaustive: true,
-    include_mirrors: false,
+    include_mirrors: !!periodicControl.census_candidate.screening.requires_mirrors,
     snapshot_every: 0,
     placement_details: true,
     face_order: "mrv",

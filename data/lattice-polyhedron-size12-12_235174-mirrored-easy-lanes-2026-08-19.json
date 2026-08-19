@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_easy_lane_screen",
+  "generatedAt": "2026-08-19T14:07:10.765Z",
+  "configuration": {
+    "candidatesFile": "data/lattice-polyhedron-size12-first-stage-2026-08-19.json",
+    "timeMs": 60000,
+    "periodicMax": 12,
+    "isohedralTarget": 500,
+    "displayTarget": 500,
+    "includeMirrors": true
+  },
+  "rows": [
+    {
+      "id": "12_235174",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          5
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          3,
+          1,
+          5
+        ]
+      ],
+      "classification": "reject_certified_periodic",
+      "translational": {
+        "strategy": "translational",
+        "outcome": "certified_tiling",
+        "success": true,
+        "certified": true,
+        "provenImpossible": false,
+        "canTile": true,
+        "certificate": {
+          "kind": "translational_certificate",
+          "certified": true,
+          "can_tile": true,
+          "strategy": "translational",
+          "patch_size": 2,
+          "certificate_kind": "2_tile_boundary_quotient",
+          "period_vectors": [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              -2,
+              -1,
+              5
+            ],
+            [
+              -2,
+              1,
+              5
+            ]
+          ],
+          "periodic_template": {
+            "kind": "2_tile_boundary_quotient",
+            "tile_volume": 5,
+            "tile_volumes": [
+              5,
+              5
+            ],
+            "cell_volume": 10,
+            "period_vectors": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -2,
+                -1,
+                5
+              ],
+              [
+                -2,
+                1,
+                5
+              ]
+            ],
+            "motif": [
+              {
+                "prototile_idx": 0,
+                "orientation_index": 0,
+                "orientation_id": "0:0",
+                "translation": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "prototile_idx": 1,
+                "orientation_index": 1,
+                "orientation_id": "1:1",
+                "translation": [
+                  2,
+                  0,
+                  -5
+                ]
+              }
+            ],
+            "mixed_prototile": true,
+            "prototile_counts": [
+              {
+                "prototile_idx": 0,
+                "count": 1
+              },
+              {
+                "prototile_idx": 1,
+                "count": 1
+              }
+            ],
+            "proof": {
+              "method": "face_paired_boundary_equal_covolume",
+              "boundary_face_count": 8,
+              "boundary_pairing": [
+                {
+                  "source_face": 0,
+                  "target_face": 7,
+                  "translation": [
+                    2,
+                    1,
+                    -5
+                  ],
+                  "lattice_coordinates": [
+                    0,
+                    -1,
+                    0
+                  ]
+                },
+                {
+                  "source_face": 1,
+                  "target_face": 3,
+                  "translation": [
+                    -1,
+                    0,
+                    0
+                  ],
+                  "lattice_coordinates": [
+                    1,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "source_face": 2,
+                  "target_face": 4,
+                  "translation": [
+                    2,
+                    -1,
+                    -5
+                  ],
+                  "lattice_coordinates": [
+                    0,
+                    0,
+                    -1
+                  ]
+                },
+                {
+                  "source_face": 5,
+                  "target_face": 6,
+                  "translation": [
+                    1,
+                    0,
+                    0
+                  ],
+                  "lattice_coordinates": [
+                    -1,
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "motif_volume": 10,
+              "lattice_determinant": 10
+            }
+          }
+        },
+        "incomplete": false,
+        "tiles": 500,
+        "largestPatch": 500,
+        "maxFrontierPoints": 641,
+        "maxCandidateCount": 0,
+        "checks": [
+          {
+            "size": 1,
+            "certified": false
+          },
+          {
+            "size": 2,
+            "certified": true
+          }
+        ],
+        "milliseconds": 2638,
+        "stats": {
+          "tiling_strategy": "translational",
+          "random_seed": 1,
+          "seeded_tie_breaks": false,
+          "termination_reason": null,
+          "move_order": "balanced",
+          "forced_total": 499,
+          "forced_throttles": 0,
+          "generation_band_deferrals": 0,
+          "generic_failure_memo_enabled": false,
+          "generic_failure_memo_states": 0,
+          "generic_failure_memo_hits": 0,
+          "generic_failure_memo_capacity": 0,
+          "generic_failure_memo_capacity_reached": false,
+          "generic_failure_memo_key_equivalence": "disabled",
+          "generic_connected_patch_enumeration": false,
+          "generic_connected_patch_candidate_states": 0,
+          "generic_connected_patch_max_candidates": 0,
+          "generic_complete_shell_enumeration": false,
+          "generic_global_extension_candidate_states": 0,
+          "generic_global_extension_max_candidates": 0,
+          "generic_global_zero_face_pruning": false,
+          "generic_global_zero_face_dead_ends": 0,
+          "max_complete_shell_depth": 2,
+          "initial_patch_requested_tiles": 0,
+          "initial_patch_applied_tiles": 0,
+          "initial_patch_base_shell_depth": 0,
+          "generic_geometric_nogood_enabled": false,
+          "generic_geometric_nogood_disable_reason": "not_requested",
+          "generic_geometric_nogood_clauses": 0,
+          "generic_geometric_nogood_prunes": 0,
+          "generic_geometric_nogood_failure_states": 0,
+          "generic_geometric_nogood_activation_failure_states": 0,
+          "generic_geometric_nogood_activation_stagnation_failure_states": 0,
+          "generic_geometric_nogood_failures_since_growth": 0,
+          "generic_geometric_nogood_growth_mark_tiles": 1,
+          "generic_geometric_nogood_activated": false,
+          "generic_geometric_nogood_capacity": 0,
+          "generic_geometric_nogood_capacity_reached": false,
+          "generic_geometric_nogood_pivot_index": false,
+          "generic_geometric_nogood_compatibility_checks": 0,
+          "generic_geometric_nogood_clause_checks": 0,
+          "generic_geometric_nogood_linear_clause_checks": 0,
+          "generic_geometric_nogood_avoided_clause_checks": 0,
+          "periodic_repeat_throttles": 0,
+          "periodic_motif_nodes": 6,
+          "periodic_motif_states": 6,
+          "generic_periodic_certificate_attempted": false,
+          "generic_periodic_certificate_completed": false,
+          "generic_periodic_certificate_timed_out": false,
+          "generic_periodic_certificate_found": false,
+          "generic_periodic_certificate_patch_size": 0,
+          "generic_periodic_certificate_elapsed_ms": 0,
+          "generic_periodic_certificate_checks_attempted": 0,
+          "generic_periodic_certificate_checks_completed": 0,
+          "generic_periodic_certificate_checks_timed_out": 0,
+          "generic_periodic_certificate_check_sizes": [],
+          "generic_periodic_certificate_check_sources": [],
+          "generic_periodic_certificate_total_elapsed_ms": 0,
+          "generic_periodic_certificate_distinct_patch_mode": false,
+          "generic_periodic_certificate_checkpoint_sampling_policy": "prefix",
+          "generic_periodic_certificate_checkpoint_sampling_stride": 1,
+          "generic_periodic_certificate_checkpoint_sampling_prefix": 4,
+          "generic_periodic_certificate_checkpoint_eligible_states": 0,
+          "generic_periodic_certificate_checkpoint_sampling_skips": 0,
+          "generic_periodic_certificate_duplicate_states_skipped": 0,
+          "generic_periodic_certificate_per_size_cap_skips": 0,
+          "generic_periodic_certificate_total_cap_skips": 0,
+          "generic_periodic_certificate_checkpoint_time_budget_skips": 0,
+          "generic_periodic_certificate_checkpoint_time_budget_exhausted": false,
+          "generic_periodic_certificate_target_attempted": false,
+          "generic_periodic_certificate_target_completed": false,
+          "generic_periodic_certificate_target_timed_out": false,
+          "generic_periodic_certificate_target_found": false,
+          "generic_periodic_certificate_method": "boundary_first",
+          "generic_periodic_internal_motif_attempted": false,
+          "generic_periodic_internal_motif_found": false,
+          "generic_periodic_internal_motif_vector_count": 0,
+          "generic_periodic_internal_motif_bases_tested": 0,
+          "generic_periodic_internal_motif_max_translation_support": 0,
+          "generic_periodic_internal_motif_top_translations": [],
+          "reflection_continuations_seen": 0,
+          "branch_choices_visited": 0,
+          "failed_leaves": 0,
+          "backtracks": 0,
+          "max_depth": 0,
+          "max_live_tiles": 500,
+          "isohedral_transforms_discovered": 0,
+          "isohedral_patch_copies_applied": 0,
+          "isohedral_tiles_propagated": 0,
+          "isohedral_patch_conflicts": 0,
+          "isohedral_newer_layer_deferrals": 0,
+          "isohedral_certificate_attempts": 0,
+          "isohedral_certificate_patch_size": 0,
+          "isohedral_certificate_patch_sizes_tried": [],
+          "isohedral_certificate_duplicate_states_skipped": 0,
+          "isohedral_search_horizon_tiles": null,
+          "marking_observed_failures": 0,
+          "marking_geometric_clauses": 0,
+          "proposal_program_id": null,
+          "proposal_patch_size": 0,
+          "proposal_sequence_steps_used": 0,
+          "proposal_patch_tiles_replayed": 0,
+          "proposal_patch_conflicts": 0,
+          "proposal_patch_conflict_index": null,
+          "proposal_patch_conflict_reason": null,
+          "backtracking_enabled": true,
+          "face_order": "mrv",
+          "generation_lag_cap": 2,
+          "growth_axis_rank": 3,
+          "growth_spans": [
+            13.333333333333332,
+            13,
+            13.333333333333332
+          ],
+          "growth_isotropy": 0.9750000000000001,
+          "periodic_translation_rank": 3,
+          "placed_volume": 2500,
+          "target_volume": null,
+          "region_type": null,
+          "forced_on_path": 499,
+          "progress_depth": 0,
+          "progress_completed_paths": 1,
+          "progress_total_paths": 1,
+          "progress_completed_paths_label": "1",
+          "progress_total_paths_label": "1",
+          "progress_paths_capped": false,
+          "branch_widths": [],
+          "branch_next_indices": [],
+          "visited_nodes": 504,
+          "estimated_nodes_at_depth": 1,
+          "visited_percent": 100
+        }
+      },
+      "isohedral": null
+    }
+  ]
+}

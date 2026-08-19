@@ -37,6 +37,7 @@ const displayTarget = numberArg("display-target", isohedralTarget);
 const translationalMoveOrder = args.get("translational-move-order") ?? "balanced";
 const skipIsohedral = args.get("skip-isohedral") === "true";
 const skipTranslational = args.get("skip-translational") === "true";
+const includeMirrors = args.get("include-mirrors") === "true";
 
 const baseConfig = candidate => ({
   mode_key: "cube",
@@ -50,7 +51,7 @@ const baseConfig = candidate => ({
   polycube_lattice: "z3",
   criterion: "count",
   exhaustive: true,
-  include_mirrors: false,
+  include_mirrors: includeMirrors,
   snapshot_every: 0,
   placement_details: false,
   face_order: "mrv",
@@ -131,6 +132,6 @@ if (outputFile) await writeFile(outputFile, `${JSON.stringify({
   schemaVersion: 1,
   kind: "lattice_polyhedron_easy_lane_screen",
   generatedAt: new Date().toISOString(),
-  configuration: { candidatesFile, timeMs, periodicMax, isohedralTarget, displayTarget },
+  configuration: { candidatesFile, timeMs, periodicMax, isohedralTarget, displayTarget, includeMirrors },
   rows
 }, null, 2)}\n`);
