@@ -28,6 +28,7 @@ const failureMemo = args.get("failure-memo") !== "false";
 const failureMemoMaxStates = Math.max(0, Math.floor(numberArg("failure-memo-max-states", 200000)));
 const geometricNogood = args.get("geometric-nogood") === "true";
 const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
+const geometricNogoodIndex = args.get("geometric-nogood-index") !== "false";
 const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
   .split(",")
   .map(value => Math.floor(Number(value)))
@@ -100,6 +101,7 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_failure_memo_max_states: failureMemoMaxStates,
   generic_geometric_nogood: geometricNogood,
   generic_geometric_nogood_max_clauses: geometricNogoodMaxClauses,
+  generic_geometric_nogood_index: geometricNogoodIndex,
   include_mirrors: false,
   template_preflight: !lane.startsWith("free_range"),
   periodic_patch_max_tiles: periodicMax,
@@ -169,6 +171,11 @@ async function runLane(benchmarkCase, lane, seed) {
     geometricNogoodPrunes: stats.generic_geometric_nogood_prunes ?? 0,
     geometricNogoodFailureStates: stats.generic_geometric_nogood_failure_states ?? 0,
     geometricNogoodCapacityReached: !!stats.generic_geometric_nogood_capacity_reached,
+    geometricNogoodPivotIndex: !!stats.generic_geometric_nogood_pivot_index,
+    geometricNogoodCompatibilityChecks: stats.generic_geometric_nogood_compatibility_checks ?? 0,
+    geometricNogoodClauseChecks: stats.generic_geometric_nogood_clause_checks ?? 0,
+    geometricNogoodLinearClauseChecks: stats.generic_geometric_nogood_linear_clause_checks ?? 0,
+    geometricNogoodAvoidedClauseChecks: stats.generic_geometric_nogood_avoided_clause_checks ?? 0,
     terminationReason: stats.termination_reason
       ?? (final?.tiling_evidence?.certified
         ? "certificate_found"
@@ -307,7 +314,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 5,
+  schemaVersion: 6,
   configuration: {
     target,
     timeMs,
@@ -320,6 +327,7 @@ const summary = {
     failureMemoMaxStates,
     geometricNogood,
     geometricNogoodMaxClauses,
+    geometricNogoodIndex,
     lanes: requestedLanes.size ? [...requestedLanes] : null
   },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),

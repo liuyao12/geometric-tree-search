@@ -78,7 +78,7 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 5);
+assert.equal(survivor.schemaVersion, 6);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 const portfolioLanes = new Set(["free_range", "free_range_no_brainer"]);
 const freeRangeRows = survivor.rows.filter(row => portfolioLanes.has(row.lane));
@@ -203,6 +203,48 @@ assert.ok(
 );
 assert.equal(nogoodRow.terminationReason, "node_limit");
 assert.equal(nogoodRow.geometricNogoodCapacityReached, false);
+assert.equal(nogoodRow.geometricNogoodPivotIndex, true);
+assert.ok(nogoodRow.geometricNogoodAvoidedClauseChecks >= 3_000_000);
+assert.ok(
+  nogoodRow.geometricNogoodClauseChecks * 20 < nogoodRow.geometricNogoodLinearClauseChecks,
+  "pivot indexing must avoid at least 95% of the reference linear clause checks"
+);
+const linearNogoodProbe = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=24",
+  "--time-ms=5000",
+  "--exact-time-ms=5000",
+  "--node-limit=200",
+  "--seeds=1",
+  "--geometric-nogood=true",
+  "--geometric-nogood-index=false"
+]);
+const linearNogoodRow = linearNogoodProbe.unresolved[0].freeRangeUnbanded;
+assert.equal(linearNogoodRow.geometricNogoodPivotIndex, false);
+assert.deepEqual(
+  [
+    nogoodRow.resultKind,
+    nogoodRow.terminationReason,
+    nogoodRow.largestPatch,
+    nogoodRow.visitedNodes,
+    nogoodRow.backtracks,
+    nogoodRow.geometricNogoodClauses,
+    nogoodRow.geometricNogoodPrunes
+  ],
+  [
+    linearNogoodRow.resultKind,
+    linearNogoodRow.terminationReason,
+    linearNogoodRow.largestPatch,
+    linearNogoodRow.visitedNodes,
+    linearNogoodRow.backtracks,
+    linearNogoodRow.geometricNogoodClauses,
+    linearNogoodRow.geometricNogoodPrunes
+  ],
+  "pivot indexing must preserve every bounded nogood-search decision"
+);
+assert.ok(nogoodRow.geometricNogoodClauseChecks * 20 < linearNogoodRow.geometricNogoodClauseChecks);
 
 console.log("Lattice candidate benchmark regressions passed", {
   controls: controls.rows.length,

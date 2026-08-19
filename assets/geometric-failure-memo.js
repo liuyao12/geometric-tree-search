@@ -10,13 +10,19 @@ const vectorKey = vector => vector.map(rounded).join(",");
  * keeps the clause exact and monotone when more tiles have been placed.
  */
 export class GeometricFailureMemo {
-  constructor({ describePlacement, contextMatch = "subset" }) {
+  constructor({ describePlacement, contextMatch = "subset", usePivotIndex = true }) {
     this.describePlacement = describePlacement;
     this.contextMatch = contextMatch;
+    this.usePivotIndex = usePivotIndex;
     this.clauses = [];
     this.byCandidate = new Map();
+    this.byCandidatePivot = new Map();
+    this.tokenFrequency = new Map();
     this.signatures = new Set();
     this.prunes = 0;
+    this.compatibilityChecks = 0;
+    this.clauseChecks = 0;
+    this.linearClauseChecks = 0;
   }
 
   representation(context, candidate) {
@@ -40,21 +46,49 @@ export class GeometricFailureMemo {
     if (this.signatures.has(signature)) {
       return { encoded: true, duplicate: true, clauses: this.clauses.length, signature };
     }
-    const clause = { ...representation, signature, metadata: { ...metadata } };
+    const frequencies = this.tokenFrequency.get(representation.candidate) ?? new Map();
+    const pivot = representation.required.length
+      ? representation.required.reduce((best, token) => {
+          const tokenFrequency = frequencies.get(token) ?? 0;
+          const bestFrequency = frequencies.get(best) ?? 0;
+          return tokenFrequency < bestFrequency || (tokenFrequency === bestFrequency && token < best)
+            ? token
+            : best;
+        })
+      : null;
+    const clause = { ...representation, pivot, signature, metadata: { ...metadata } };
     this.signatures.add(signature);
     this.clauses.push(clause);
     if (!this.byCandidate.has(clause.candidate)) this.byCandidate.set(clause.candidate, []);
     this.byCandidate.get(clause.candidate).push(clause);
+    if (!this.byCandidatePivot.has(clause.candidate)) this.byCandidatePivot.set(clause.candidate, new Map());
+    const pivotMap = this.byCandidatePivot.get(clause.candidate);
+    const pivotKey = pivot ?? "";
+    if (!pivotMap.has(pivotKey)) pivotMap.set(pivotKey, []);
+    pivotMap.get(pivotKey).push(clause);
+    for (const token of representation.required) frequencies.set(token, (frequencies.get(token) ?? 0) + 1);
+    this.tokenFrequency.set(representation.candidate, frequencies);
     return { encoded: true, duplicate: false, clauses: this.clauses.length, signature };
   }
 
   compatible(candidate, context, count = true) {
     const representation = this.representation(context, candidate);
     if (!representation) return true;
-    const clauses = this.byCandidate.get(representation.candidate);
-    if (!clauses?.length) return true;
+    const allClauses = this.byCandidate.get(representation.candidate);
+    if (!allClauses?.length) return true;
     const available = new Set(representation.required);
+    const clauses = this.usePivotIndex
+      ? [
+          ...(this.byCandidatePivot.get(representation.candidate)?.get("") ?? []),
+          ...[...available].flatMap(token =>
+            this.byCandidatePivot.get(representation.candidate)?.get(token) ?? []
+          )
+        ]
+      : allClauses;
+    this.compatibilityChecks += 1;
+    this.linearClauseChecks += allClauses.length;
     for (const clause of clauses) {
+      this.clauseChecks += 1;
       if (clause.required.length > available.size) continue;
       if (this.contextMatch === "exact" && clause.required.length !== available.size) continue;
       if (!clause.required.every(token => available.has(token))) continue;
@@ -65,6 +99,14 @@ export class GeometricFailureMemo {
   }
 
   stats() {
-    return { clauses: this.clauses.length, prunes: this.prunes };
+    return {
+      clauses: this.clauses.length,
+      prunes: this.prunes,
+      pivot_index_enabled: this.usePivotIndex,
+      compatibility_checks: this.compatibilityChecks,
+      clause_checks: this.clauseChecks,
+      linear_clause_checks: this.linearClauseChecks,
+      avoided_clause_checks: this.linearClauseChecks - this.clauseChecks
+    };
   }
 }

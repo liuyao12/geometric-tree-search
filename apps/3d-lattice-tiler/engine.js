@@ -2,7 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
-import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js";
+import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
 import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260818-isohedral-horizon-v36";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
@@ -551,6 +551,11 @@ export const createTilingStream = (() => {
       generic_geometric_nogood_failure_states: 0,
       generic_geometric_nogood_capacity: 0,
       generic_geometric_nogood_capacity_reached: false,
+      generic_geometric_nogood_pivot_index: false,
+      generic_geometric_nogood_compatibility_checks: 0,
+      generic_geometric_nogood_clause_checks: 0,
+      generic_geometric_nogood_linear_clause_checks: 0,
+      generic_geometric_nogood_avoided_clause_checks: 0,
       periodic_repeat_throttles: 0,
       periodic_motif_nodes: 0,
       periodic_motif_states: 0,
@@ -1528,8 +1533,10 @@ export const createTilingStream = (() => {
     const genericGeometricNogoodEnabled = config.generic_geometric_nogood === true
       && genericFailureMemoEnabled
       && genericGeometricNogoodCapacity > 0;
+    const genericGeometricNogoodPivotIndex = config.generic_geometric_nogood_index !== false;
     const genericGeometricNogood = new GeometricFailureMemo({
       contextMatch: "subset",
+      usePivotIndex: genericGeometricNogoodPivotIndex,
       describePlacement: placement => placement?.orient && Array.isArray(placement.translation)
         ? {
             kind: String(placement.prototile_idx),
@@ -1540,6 +1547,8 @@ export const createTilingStream = (() => {
         : null
     });
     searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
+    searchStats.generic_geometric_nogood_pivot_index = genericGeometricNogoodEnabled
+      && genericGeometricNogoodPivotIndex;
     searchStats.generic_geometric_nogood_capacity = genericGeometricNogoodEnabled
       ? genericGeometricNogoodCapacity
       : 0;
@@ -1547,6 +1556,11 @@ export const createTilingStream = (() => {
       const stats = genericGeometricNogood.stats();
       searchStats.generic_geometric_nogood_clauses = stats.clauses;
       searchStats.generic_geometric_nogood_prunes = stats.prunes;
+      searchStats.generic_geometric_nogood_pivot_index = stats.pivot_index_enabled;
+      searchStats.generic_geometric_nogood_compatibility_checks = stats.compatibility_checks;
+      searchStats.generic_geometric_nogood_clause_checks = stats.clause_checks;
+      searchStats.generic_geometric_nogood_linear_clause_checks = stats.linear_clause_checks;
+      searchStats.generic_geometric_nogood_avoided_clause_checks = stats.avoided_clause_checks;
     };
     const rememberGenericFailure = (key, placements) => {
       if (genericFailureMemoEnabled && key && !genericFailureMemo.has(key)) {

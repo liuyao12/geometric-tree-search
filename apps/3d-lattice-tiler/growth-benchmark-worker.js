@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-geometric-nogood-v47";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-nogood-pivot-v49";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot

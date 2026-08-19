@@ -254,7 +254,10 @@ equivariant geometric nogoods anchored at every tile. A clause retains the
 entire failed context and therefore prunes only exact translated subpatches,
 not radius-truncated or statistically generalized neighborhoods. Enable it
 with `--geometric-nogood=true`, compare against the default off arm, and use
-`--geometric-nogood-max-clauses=N` for its independent memory cap.
+`--geometric-nogood-max-clauses=N` for its independent memory cap. Clause
+matching uses an exact rare-token pivot index; `--geometric-nogood-index=false`
+runs the same clauses through the reference linear scan for a semantic and
+performance ablation.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
