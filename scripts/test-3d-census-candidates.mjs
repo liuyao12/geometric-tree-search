@@ -25,6 +25,11 @@ assert.match(
 assert.match(growthWorkerSource, /generic_failure_memo: mode\.proof/, "the proof lane must memoize exact failures");
 assert.match(
   growthWorkerSource,
+  /seeded_tie_breaks: !!mode\.proof/,
+  "the proof comparison lane must use replayable seeded tie diversification"
+);
+assert.match(
+  growthWorkerSource,
   /generic_periodic_certificate: !!mode\.proof/,
   "the proof lane must test a reached target patch for an exact translational quotient"
 );

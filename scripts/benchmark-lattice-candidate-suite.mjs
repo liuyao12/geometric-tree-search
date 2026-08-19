@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from "node:crypto";
 import { performance } from "node:perf_hooks";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 import {
@@ -30,6 +31,7 @@ const geometricNogood = args.get("geometric-nogood") === "true";
 const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
 const geometricNogoodIndex = args.get("geometric-nogood-index") !== "false";
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
+const seededTies = args.get("seeded-ties") !== "false";
 const genericPeriodicCertificateTimeMs = Math.max(
   1,
   Math.floor(numberArg("generic-periodic-certificate-time-ms", 5000))
@@ -115,11 +117,12 @@ const configFor = (benchmarkCase, lane, seed) => ({
   periodic_patch_unbounded: false,
   isohedral_search_horizon_tiles: isohedralHorizon,
   snapshot_every: 1,
-  placement_details: false,
+  placement_details: true,
   branch_cap: null,
   candidate_cap: null,
   node_limit: nodeLimit,
   random_seed: seed,
+  seeded_tie_breaks: seededTies && benchmarkCase.expected === "unresolved" && lane.startsWith("free_range"),
   time_limit_ms: lane.startsWith("free_range") ? timeMs : exactTimeMs,
   ui_yield_interval_ms: 1000000
 });
@@ -132,9 +135,23 @@ async function runLane(benchmarkCase, lane, seed) {
   let maxFrontierPoints = 0;
   let maxCandidateCount = 0;
   let checkedPatchSize = 0;
+  let witnessHash = null;
+  const hashPlacements = placements => createHash("sha256")
+    .update(placements.map(placement => [
+      placement.prototile_idx,
+      placement.orientation_id ?? placement.orientation_signature,
+      ...(placement.translation ?? [])
+    ].join(":"))
+      .sort()
+      .join("||"))
+    .digest("hex")
+    .slice(0, 16);
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     largestPatch = Math.max(largestPatch, snapshot?.tile_count ?? snapshot?.placements?.length ?? 0);
+    if (Array.isArray(snapshot?.placements) && snapshot.placements.length >= largestPatch) {
+      witnessHash = hashPlacements(snapshot.placements);
+    }
     maxFrontierPoints = Math.max(maxFrontierPoints, snapshot?.frontier_stats?.point_count ?? 0);
     maxCandidateCount = Math.max(maxCandidateCount, snapshot?.frontier_stats?.candidate_count ?? 0);
     if (message.type === "translational_check") checkedPatchSize = message.patch_size;
@@ -167,6 +184,8 @@ async function runLane(benchmarkCase, lane, seed) {
     maxDepth: stats.max_depth ?? 0,
     moveOrder: stats.move_order ?? null,
     effectiveSeed: stats.random_seed ?? null,
+    seededTieBreaks: !!stats.seeded_tie_breaks,
+    witnessHash,
     generationLagCap: stats.generation_lag_cap ?? null,
     generationBandDeferrals: stats.generation_band_deferrals ?? 0,
     failureMemoEnabled: !!stats.generic_failure_memo_enabled,
@@ -264,6 +283,9 @@ const proofSearchPortfolio = id => {
   const targetHits = trials.filter(row => row.largestPatch >= target).length;
   const certifiedNonTilerTrials = trials.filter(row => row.certified && row.canTile === false).length;
   const certifiedPeriodicTrials = trials.filter(row => row.certified && row.canTile === true).length;
+  const targetWitnessHashes = trials
+    .filter(row => row.largestPatch >= target && row.witnessHash)
+    .map(row => row.witnessHash);
   return {
     target,
     trials: trials.length,
@@ -272,6 +294,8 @@ const proofSearchPortfolio = id => {
     targetHitRate: targetHits / trials.length,
     certifiedNonTilerTrials,
     certifiedPeriodicTrials,
+    distinctTargetWitnesses: new Set(targetWitnessHashes).size,
+    targetWitnessHashes,
     robustLargestPatch: Math.min(...depths),
     medianLargestPatch: median(depths),
     bestLargestPatch: Math.max(...depths),
@@ -366,7 +390,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 8,
+  schemaVersion: 9,
   configuration: {
     target,
     timeMs,
@@ -382,6 +406,7 @@ const summary = {
     geometricNogoodIndex,
     genericPeriodicCertificate,
     genericPeriodicCertificateTimeMs,
+    seededTies,
     lanes: requestedLanes.size ? [...requestedLanes] : null
   },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),

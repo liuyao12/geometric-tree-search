@@ -588,6 +588,19 @@ export const createTilingStream = (() => {
       value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
       return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
     };
+    const seededTieBreaks = config.seeded_tie_breaks === true;
+    const seededTieValue = key => {
+      let hash = (2166136261 ^ randomSeed) >>> 0;
+      const text = String(key ?? "");
+      for (let index = 0; index < text.length; index++) {
+        hash = Math.imul(hash ^ text.charCodeAt(index), 16777619) >>> 0;
+      }
+      hash ^= hash >>> 16;
+      hash = Math.imul(hash, 0x7feb352d) >>> 0;
+      hash ^= hash >>> 15;
+      hash = Math.imul(hash, 0x846ca68b) >>> 0;
+      return (hash ^ (hash >>> 16)) >>> 0;
+    };
     const nowId = () => (++nodeCounter);
     const normalizedStrategy = ["freestyle", "free_range", "learning_free_range"].includes(config.tiling_strategy)
       ? "generic"
@@ -597,6 +610,7 @@ export const createTilingStream = (() => {
         ? normalizedStrategy
         : "auto",
       random_seed: randomSeed,
+      seeded_tie_breaks: seededTieBreaks,
       termination_reason: null,
       move_order: null,
       forced_total: 0,
@@ -2875,6 +2889,10 @@ export const createTilingStream = (() => {
         const diff = (bs[i] ?? 0) - (as[i] ?? 0);
         if (diff) return diff;
       }
+      if (seededTieBreaks) {
+        return seededTieValue(b.dedup_key ?? placementGeometryKey(b))
+          - seededTieValue(a.dedup_key ?? placementGeometryKey(a));
+      }
       if (moveOrder === "no_brainer" || moveOrder === "proposal") {
         if (!Number.isFinite(a._random_tie)) a._random_tie = nextRandom();
         if (!Number.isFinite(b._random_tie)) b._random_tie = nextRandom();
@@ -4638,12 +4656,12 @@ export const createTilingStream = (() => {
           let bestCoverage = -1;
           for (const m of moves) bestCoverage = Math.max(bestCoverage, moveCoverage(m));
           const score = faceOrder === "mrv"
-            ? [-moves.length, -(option.added_depth ?? 0), -frontierPointNorm(option), bestCoverage]
+            ? [-moves.length, -(option.added_depth ?? 0), -frontierPointNorm(option), bestCoverage, seededTieBreaks ? seededTieValue(`point:${option.pointKey}`) : 0]
             : faceOrder === "pocket"
-            ? [-(option.added_depth ?? 0), -frontierPointNorm(option), option.weight, -moves.length, bestCoverage]
+            ? [-(option.added_depth ?? 0), -frontierPointNorm(option), option.weight, -moves.length, bestCoverage, seededTieBreaks ? seededTieValue(`point:${option.pointKey}`) : 0]
             : faceOrder === "constrained"
-              ? [-(option.added_depth ?? 0), -frontierPointNorm(option), -moves.length, bestCoverage]
-              : [-(option.added_depth ?? 0), -frontierPointNorm(option), bestCoverage, -moves.length];
+              ? [-(option.added_depth ?? 0), -frontierPointNorm(option), -moves.length, bestCoverage, seededTieBreaks ? seededTieValue(`point:${option.pointKey}`) : 0]
+              : [-(option.added_depth ?? 0), -frontierPointNorm(option), bestCoverage, -moves.length, seededTieBreaks ? seededTieValue(`point:${option.pointKey}`) : 0];
           if (isBetterScore(score, bestPointScore)) {
             bestPointScore = score;
             bestOption = option;

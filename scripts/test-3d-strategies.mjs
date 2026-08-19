@@ -152,6 +152,32 @@ assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certifi
 assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certificate_completed, true);
 assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certificate_found, true);
 
+const seededPatch = async seed => solve({
+  tiling_strategy: "generic",
+  target_val: 20,
+  template_preflight: false,
+  placement_details: true,
+  random_seed: seed,
+  seeded_tie_breaks: true
+});
+const seededPatchA = await seededPatch(17);
+const seededPatchReplay = await seededPatch(17);
+const seededPatchB = await seededPatch(18);
+const placementWitness = run => run.latestSnapshot.placements
+  .map(placement => `${placement.orientation_id}@${placement.translation.join(",")}`)
+  .sort();
+assert.deepEqual(
+  placementWitness(seededPatchA),
+  placementWitness(seededPatchReplay),
+  "seeded balanced tie-breaking must replay exactly for the same seed"
+);
+assert.notDeepEqual(
+  placementWitness(seededPatchA),
+  placementWitness(seededPatchB),
+  "different seeds must diversify equally ranked balanced-search patches"
+);
+assert.equal(seededPatchA.final.search_stats.seeded_tie_breaks, true);
+
 const freestyle = await solve({
   tiling_strategy: "freestyle",
   target_val: 12
