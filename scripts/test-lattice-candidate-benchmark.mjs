@@ -78,7 +78,7 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 6);
+assert.equal(survivor.schemaVersion, 7);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 const portfolioLanes = new Set(["free_range", "free_range_no_brainer"]);
 const freeRangeRows = survivor.rows.filter(row => portfolioLanes.has(row.lane));
@@ -118,6 +118,17 @@ assert.equal(
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.lane, "free_range_unbanded");
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.generationLagCap, null);
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.failureMemoEnabled, true);
+assert.equal(survivor.unresolved[0].freeRangeUnbandedTrials.length, 3);
+assert.deepEqual(survivor.unresolved[0].proofSearchPortfolio.seeds, [1, 2, 3]);
+assert.equal(survivor.unresolved[0].proofSearchPortfolio.trials, 3);
+assert.equal(
+  survivor.unresolved[0].proofSearchPortfolio.robustLargestPatch,
+  Math.min(...survivor.unresolved[0].freeRangeUnbandedTrials.map(row => row.largestPatch))
+);
+assert.equal(
+  survivor.unresolved[0].proofSearchPortfolio.bestLargestPatch,
+  Math.max(...survivor.unresolved[0].freeRangeUnbandedTrials.map(row => row.largestPatch))
+);
 assert.equal(survivor.configuration.geometricNogood, false);
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.geometricNogoodEnabled, false);
 assert.ok(freeRangeRows.every(row => row.failureMemoEnabled === false));

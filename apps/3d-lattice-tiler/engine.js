@@ -71,9 +71,14 @@ export const createTilingStream = (() => {
     const isCyclicPermutation = (a, b) => {
       if (a.length !== b.length) return false;
       const n = a.length;
-      const a0 = a[0].join(",");
+      const a0 = a[0];
       let start = -1;
-      for (let i = 0; i < n; i++) if (b[i].join(",") === a0) { start = i; break; }
+      for (let i = 0; i < n; i++) {
+        if (b[i][0] === a0[0] && b[i][1] === a0[1] && b[i][2] === a0[2]) {
+          start = i;
+          break;
+        }
+      }
       if (start < 0) return false;
       for (let i = 0; i < n; i++) {
         const ai = a[i], bi = b[(start + i) % n];
@@ -1163,12 +1168,13 @@ export const createTilingStream = (() => {
       if (faceCandidateIndexVersion === stateVersion) return faceCandidateIndex;
       const candidateByGeometry = new Map();
       candidateScan:
-      for (const [frontierFaceKey, frontierEntry] of state.frontier) {
+      for (const frontierEntry of state.frontier.values()) {
         if (overBudget()) {
           noteIncompleteSearch();
           break;
         }
         const frontierVertices = frontierEntry.ordered_verts;
+        const reversedFrontierVertices = [...frontierVertices].reverse();
         const signature = faceSignatureUndirected(frontierVertices);
         for (const entry of orientedFacesBySignature.get(signature) ?? []) {
           if (overBudget()) {
@@ -1185,8 +1191,12 @@ export const createTilingStream = (() => {
               ? !isPolycubeMoveTranslation(entry.tile, translation)
               : !translation.every(Number.isInteger)) continue;
             const globalFace = entry.vertices.map(vertex => vecAdd(vertex, translation));
-            if (keyFace(globalFace) !== frontierFaceKey) continue;
-            if (!isCyclicPermutation(globalFace, [...frontierVertices].reverse())) continue;
+            // Cyclic equality against the reversed frontier is stronger than
+            // comparing the unordered canonical face key: it proves both the
+            // same vertex set and the required opposing orientation. Avoiding
+            // the redundant stringification and sort matters here because this
+            // loop runs for every oriented face at every search state.
+            if (!isCyclicPermutation(globalFace, reversedFrontierVertices)) continue;
             const move = {
               prototile_idx: entry.prototile_idx,
               translation,

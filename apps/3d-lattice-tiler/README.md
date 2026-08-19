@@ -233,13 +233,15 @@ node scripts/benchmark-lattice-candidate-suite.mjs --target=24 --time-ms=1000 --
 The suite gates a two-tile translational control, the 24-tile isohedral
 `10_27010` control, a certified local non-tiler, and the known Conway
 construction before reporting all five unresolved candidates. Each survivor
-runs translational, isohedral, balanced free-range, and no-brainer free-range
-lanes, with live-patch depth, frontier size, tree effort, certificate work, and
-duplicate quotient reuse in the JSON result. The portfolio summary separates
+runs translational, isohedral, balanced free-range, no-brainer free-range, and
+unbanded proof lanes, with live-patch depth, frontier size, tree effort,
+certificate work, and duplicate quotient reuse in the JSON result. The
+heuristic portfolio summary separates
 robust target growth (every policy/seed trial), policy- or seed-sensitive
 growth (only some trials), and bounded runs where no trial reaches the target;
 none of these bounded growth labels is treated as a tiling proof. Unresolved
-candidates run under three deterministic seeds by default, and every row
+candidates run all three free-range lanes under three deterministic seeds by
+default, and every row
 records its effective seed plus whether it stopped at the node limit, time
 limit, natural exhaustion, or the requested target. Use `--node-limit=N` to
 hold the tree-work cap fixed across machines and `--seeds=...` to expand or
@@ -247,10 +249,13 @@ reduce the stability sample. A separate unbanded lane disables the generation
 lag heuristic: only that branch-complete lane may turn exhaustive failure to
 reach the requested patch size into a certified finite-patch obstruction.
 Banded failure is explicitly inconclusive because deferred legal moves were
-not searched. The unbanded lane memoizes canonical failed placement sets, so
-commuting placement orders share one exact dead-state proof. Rows report memo
-states, hits, and capacity; use `--failure-memo=false` for an ablation or
-`--failure-memo-max-states=N` to control memory without pruning the search.
+not searched. Its separate proof-search portfolio reports robust, median, and
+best patch depth across seeds, plus the number of independently completed
+non-tiler certificates. The unbanded lane memoizes canonical failed placement
+sets, so commuting placement orders share one exact dead-state proof. Rows
+report memo states, hits, and capacity; use `--failure-memo=false` for an
+ablation or `--failure-memo-max-states=N` to control memory without pruning the
+search.
 Use `--lanes=free_range_unbanded` to isolate that proof lane for longer runs
 or memoization ablations.
 

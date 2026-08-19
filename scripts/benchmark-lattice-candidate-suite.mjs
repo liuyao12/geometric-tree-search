@@ -194,7 +194,7 @@ const rows = [];
 for (const benchmarkCase of cases) {
   for (const lane of benchmarkCase.lanes) {
     const laneSeeds = benchmarkCase.expected === "unresolved"
-      && (lane === "free_range" || lane === "free_range_no_brainer")
+      && lane.startsWith("free_range")
       ? seeds
       : [seeds[0]];
     for (const seed of laneSeeds) {
@@ -243,6 +243,35 @@ const preferredFreeRangePolicy = id => {
     if (balanced[metric] !== noBrainer[metric]) return balanced[metric] > noBrainer[metric] ? "balanced" : "no_brainer";
   }
   return balanced.totalVisitedNodes <= noBrainer.totalVisitedNodes ? "balanced" : "no_brainer";
+};
+const proofSearchPortfolio = id => {
+  const trials = rowsFor(id, "free_range_unbanded");
+  if (!trials.length) return null;
+  const depths = trials.map(row => row.largestPatch);
+  const targetHits = trials.filter(row => row.largestPatch >= target).length;
+  const certifiedNonTilerTrials = trials.filter(row => row.certified && row.canTile === false).length;
+  return {
+    target,
+    trials: trials.length,
+    seeds: trials.map(row => row.seed),
+    targetHits,
+    targetHitRate: targetHits / trials.length,
+    certifiedNonTilerTrials,
+    robustLargestPatch: Math.min(...depths),
+    medianLargestPatch: median(depths),
+    bestLargestPatch: Math.max(...depths),
+    totalVisitedNodes: trials.reduce((sum, row) => sum + row.visitedNodes, 0),
+    totalBacktracks: trials.reduce((sum, row) => sum + row.backtracks, 0),
+    outcome: certifiedNonTilerTrials
+      ? "certified_non_tiler"
+      : targetHits === trials.length
+        ? "robust_target_patch"
+        : targetHits
+          ? "seed_sensitive_target_patch"
+          : "bounded_below_target",
+    terminationReasons: Object.fromEntries([...new Set(trials.map(row => row.terminationReason ?? "completed"))]
+      .map(reason => [reason, trials.filter(row => (row.terminationReason ?? "completed") === reason).length]))
+  };
 };
 const freeRangePortfolio = id => {
   const balanced = freeRangePolicySummary(id, "free_range", "balanced");
@@ -297,6 +326,8 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
   .filter(id => !requestedIds.size || requestedIds.has(id))
   .map(id => {
     const freeRangeUnbanded = rowFor(id, "free_range_unbanded") ?? null;
+    const freeRangeUnbandedTrials = rowsFor(id, "free_range_unbanded");
+    const proofPortfolio = proofSearchPortfolio(id);
     return {
       id,
       translational: rowFor(id, "translational") ?? null,
@@ -304,17 +335,19 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
       freeRange: rowFor(id, "free_range") ?? null,
       freeRangeNoBrainer: rowFor(id, "free_range_no_brainer") ?? null,
       freeRangeUnbanded,
+      freeRangeUnbandedTrials,
+      proofSearchPortfolio: proofPortfolio,
       freeRangeTrials: rowsFor(id, "free_range"),
       freeRangeNoBrainerTrials: rowsFor(id, "free_range_no_brainer"),
       preferredFreeRangePolicy: preferredFreeRangePolicy(id),
       freeRangePortfolio: freeRangePortfolio(id),
-      screeningConclusion: freeRangeUnbanded?.certified && freeRangeUnbanded?.canTile === false
+      screeningConclusion: proofPortfolio?.certifiedNonTilerTrials > 0
         ? "reject_certified_non_tiler"
         : "inconclusive"
     };
   });
 const summary = {
-  schemaVersion: 6,
+  schemaVersion: 7,
   configuration: {
     target,
     timeMs,

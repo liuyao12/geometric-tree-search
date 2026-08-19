@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-nogood-pivot-v49";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-face-match-v53";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
