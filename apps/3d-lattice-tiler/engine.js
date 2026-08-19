@@ -648,6 +648,11 @@ export const createTilingStream = (() => {
       generic_periodic_certificate_check_sources: [],
       generic_periodic_certificate_total_elapsed_ms: 0,
       generic_periodic_certificate_distinct_patch_mode: false,
+      generic_periodic_certificate_checkpoint_sampling_policy: "prefix",
+      generic_periodic_certificate_checkpoint_sampling_stride: 1,
+      generic_periodic_certificate_checkpoint_sampling_prefix: 0,
+      generic_periodic_certificate_checkpoint_eligible_states: 0,
+      generic_periodic_certificate_checkpoint_sampling_skips: 0,
       generic_periodic_certificate_duplicate_states_skipped: 0,
       generic_periodic_certificate_per_size_cap_skips: 0,
       generic_periodic_certificate_total_cap_skips: 0,
@@ -3323,6 +3328,21 @@ export const createTilingStream = (() => {
     const genericPeriodicDistinctPatchMode = genericPeriodicCheckpointEnabled
       && config.generic_periodic_certificate_check_distinct_patches === true;
     searchStats.generic_periodic_certificate_distinct_patch_mode = genericPeriodicDistinctPatchMode;
+    const configuredGenericPeriodicSamplingPolicy =
+      config.generic_periodic_certificate_checkpoint_sampling_policy;
+    const genericPeriodicSamplingPolicy = genericPeriodicDistinctPatchMode
+      && ["spread", "hybrid"].includes(configuredGenericPeriodicSamplingPolicy)
+      ? configuredGenericPeriodicSamplingPolicy
+      : "prefix";
+    const configuredGenericPeriodicSamplingStride = Number(
+      config.generic_periodic_certificate_checkpoint_sampling_stride
+    );
+    const genericPeriodicSamplingStride = genericPeriodicSamplingPolicy === "spread"
+      || genericPeriodicSamplingPolicy === "hybrid"
+      ? Number.isFinite(configuredGenericPeriodicSamplingStride)
+        ? Math.max(2, Math.floor(configuredGenericPeriodicSamplingStride))
+        : 16
+      : 1;
     const configuredGenericPeriodicMin = Number(config.generic_periodic_certificate_checkpoint_min_tiles);
     const genericPeriodicCheckpointMin = Number.isFinite(configuredGenericPeriodicMin)
       ? Math.max(1, Math.floor(configuredGenericPeriodicMin))
@@ -3337,6 +3357,19 @@ export const createTilingStream = (() => {
     const genericPeriodicPerSizeCap = Number.isFinite(configuredGenericPeriodicPerSizeCap)
       ? Math.max(1, Math.floor(configuredGenericPeriodicPerSizeCap))
       : 4;
+    const configuredGenericPeriodicSamplingPrefix = Number(
+      config.generic_periodic_certificate_checkpoint_sampling_prefix
+    );
+    const genericPeriodicSamplingPrefix = genericPeriodicSamplingPolicy === "hybrid"
+      ? Number.isFinite(configuredGenericPeriodicSamplingPrefix)
+        ? Math.max(1, Math.floor(configuredGenericPeriodicSamplingPrefix))
+        : 4
+      : genericPeriodicSamplingPolicy === "prefix"
+        ? genericPeriodicPerSizeCap
+        : 1;
+    searchStats.generic_periodic_certificate_checkpoint_sampling_policy = genericPeriodicSamplingPolicy;
+    searchStats.generic_periodic_certificate_checkpoint_sampling_stride = genericPeriodicSamplingStride;
+    searchStats.generic_periodic_certificate_checkpoint_sampling_prefix = genericPeriodicSamplingPrefix;
     const configuredGenericPeriodicTotalCap = Number(
       config.generic_periodic_certificate_checkpoint_max_total_checks
     );
@@ -3350,7 +3383,9 @@ export const createTilingStream = (() => {
       ? Math.max(1, configuredGenericPeriodicCheckpointTimeBudget)
       : 10000;
     const genericPeriodicSizesAttempted = new Set();
+    const genericPeriodicStatesSeen = new Set();
     const genericPeriodicStatesAttempted = new Set();
+    const genericPeriodicEligibleBySize = new Map();
     const genericPeriodicAttemptsBySize = new Map();
     let genericPeriodicCheckpointChecksAttempted = 0;
     let genericPeriodicCheckpointElapsedMs = 0;
@@ -3371,14 +3406,25 @@ export const createTilingStream = (() => {
       }
       if (genericPeriodicDistinctPatchMode) {
         const stateKey = periodicPatchStateKey();
-        if (genericPeriodicStatesAttempted.has(stateKey)) {
+        if (source === "generic_growth_checkpoint" && genericPeriodicStatesSeen.has(stateKey)) {
           searchStats.generic_periodic_certificate_duplicate_states_skipped += 1;
           return null;
         }
+        if (source !== "generic_growth_checkpoint" && genericPeriodicStatesAttempted.has(stateKey)) return null;
         if (source === "generic_growth_checkpoint") {
+          genericPeriodicStatesSeen.add(stateKey);
+          const eligibleOrdinal = (genericPeriodicEligibleBySize.get(patchSize) ?? 0) + 1;
+          genericPeriodicEligibleBySize.set(patchSize, eligibleOrdinal);
+          searchStats.generic_periodic_certificate_checkpoint_eligible_states += 1;
           const attemptsAtSize = genericPeriodicAttemptsBySize.get(patchSize) ?? 0;
           if (attemptsAtSize >= genericPeriodicPerSizeCap) {
             searchStats.generic_periodic_certificate_per_size_cap_skips += 1;
+            return null;
+          }
+          const selectedByPrefix = eligibleOrdinal <= genericPeriodicSamplingPrefix;
+          const selectedByStride = (eligibleOrdinal - 1) % genericPeriodicSamplingStride === 0;
+          if (genericPeriodicSamplingPolicy !== "prefix" && !selectedByPrefix && !selectedByStride) {
+            searchStats.generic_periodic_certificate_checkpoint_sampling_skips += 1;
             return null;
           }
           if (genericPeriodicCheckpointChecksAttempted >= genericPeriodicTotalCap) {

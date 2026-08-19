@@ -35,6 +35,11 @@ assert.match(
 );
 assert.match(
   growthWorkerSource,
+  /generic_periodic_certificate_checkpoint_sampling_policy: mode\.proof \? "hybrid" : "prefix"/,
+  "the proof comparison lane must retain early patches and sample later branches"
+);
+assert.match(
+  growthWorkerSource,
   /generic_periodic_certificate: !!mode\.proof/,
   "the proof lane must test a reached target patch for an exact translational quotient"
 );

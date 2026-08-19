@@ -33,6 +33,18 @@ const geometricNogoodIndex = args.get("geometric-nogood-index") !== "false";
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
 const genericPeriodicCheckpoints = args.get("generic-periodic-checkpoints") === "true";
 const genericPeriodicDistinctPatches = args.get("generic-periodic-distinct-patches") === "true";
+const requestedGenericPeriodicSamplingPolicy = args.get("generic-periodic-sampling");
+const genericPeriodicSamplingPolicy = ["spread", "hybrid"].includes(requestedGenericPeriodicSamplingPolicy)
+  ? requestedGenericPeriodicSamplingPolicy
+  : "prefix";
+const genericPeriodicSamplingStride = Math.max(
+  2,
+  Math.floor(numberArg("generic-periodic-sampling-stride", 16))
+);
+const genericPeriodicSamplingPrefix = Math.max(
+  1,
+  Math.floor(numberArg("generic-periodic-sampling-prefix", 4))
+);
 const genericPeriodicMaxChecksPerSize = Math.max(
   1,
   Math.floor(numberArg("generic-periodic-max-checks-per-size", 4))
@@ -128,6 +140,9 @@ const configFor = (benchmarkCase, lane, seed) => ({
     genericPeriodicCheckpoints && lane === "free_range_unbanded",
   generic_periodic_certificate_check_distinct_patches:
     genericPeriodicDistinctPatches && lane === "free_range_unbanded",
+  generic_periodic_certificate_checkpoint_sampling_policy: genericPeriodicSamplingPolicy,
+  generic_periodic_certificate_checkpoint_sampling_stride: genericPeriodicSamplingStride,
+  generic_periodic_certificate_checkpoint_sampling_prefix: genericPeriodicSamplingPrefix,
   generic_periodic_certificate_checkpoint_max_checks_per_size: genericPeriodicMaxChecksPerSize,
   generic_periodic_certificate_checkpoint_max_total_checks: genericPeriodicMaxTotalChecks,
   generic_periodic_certificate_checkpoint_total_time_limit_ms: genericPeriodicCheckpointTotalTimeMs,
@@ -238,6 +253,16 @@ async function runLane(benchmarkCase, lane, seed) {
     genericPeriodicCertificateCheckSizes: stats.generic_periodic_certificate_check_sizes ?? [],
     genericPeriodicCertificateTotalElapsedMs: stats.generic_periodic_certificate_total_elapsed_ms ?? 0,
     genericPeriodicCertificateDistinctPatchMode: !!stats.generic_periodic_certificate_distinct_patch_mode,
+    genericPeriodicCertificateCheckpointSamplingPolicy:
+      stats.generic_periodic_certificate_checkpoint_sampling_policy ?? "prefix",
+    genericPeriodicCertificateCheckpointSamplingStride:
+      stats.generic_periodic_certificate_checkpoint_sampling_stride ?? 1,
+    genericPeriodicCertificateCheckpointSamplingPrefix:
+      stats.generic_periodic_certificate_checkpoint_sampling_prefix ?? 0,
+    genericPeriodicCertificateCheckpointEligibleStates:
+      stats.generic_periodic_certificate_checkpoint_eligible_states ?? 0,
+    genericPeriodicCertificateCheckpointSamplingSkips:
+      stats.generic_periodic_certificate_checkpoint_sampling_skips ?? 0,
     genericPeriodicCertificateDuplicateStatesSkipped:
       stats.generic_periodic_certificate_duplicate_states_skipped ?? 0,
     genericPeriodicCertificatePerSizeCapSkips:
@@ -434,7 +459,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 10,
+  schemaVersion: 11,
   configuration: {
     target,
     timeMs,
@@ -451,6 +476,9 @@ const summary = {
     genericPeriodicCertificate,
     genericPeriodicCheckpoints,
     genericPeriodicDistinctPatches,
+    genericPeriodicSamplingPolicy,
+    genericPeriodicSamplingStride,
+    genericPeriodicSamplingPrefix,
     genericPeriodicMaxChecksPerSize,
     genericPeriodicMaxTotalChecks,
     genericPeriodicCheckpointTotalTimeMs,

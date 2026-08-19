@@ -91,8 +91,11 @@ async function runMode(sequence, baseConfig, mode) {
     generic_periodic_certificate: !!mode.proof,
     generic_periodic_certificate_check_new_maximum: !!mode.proof,
     generic_periodic_certificate_check_distinct_patches: !!mode.proof,
-    generic_periodic_certificate_checkpoint_max_checks_per_size: 4,
-    generic_periodic_certificate_checkpoint_max_total_checks: 160,
+    generic_periodic_certificate_checkpoint_sampling_policy: mode.proof ? "hybrid" : "prefix",
+    generic_periodic_certificate_checkpoint_sampling_prefix: 4,
+    generic_periodic_certificate_checkpoint_sampling_stride: 16,
+    generic_periodic_certificate_checkpoint_max_checks_per_size: 7,
+    generic_periodic_certificate_checkpoint_max_total_checks: 280,
     generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
     generic_periodic_certificate_time_limit_ms: 1000,
     exhaustive: !!mode.proof

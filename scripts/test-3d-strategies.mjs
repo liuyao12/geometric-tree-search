@@ -219,6 +219,10 @@ const checkpointCandidateCertificate = await solve({
   node_limit: 500,
   generic_periodic_certificate: true,
   generic_periodic_certificate_check_new_maximum: true,
+  generic_periodic_certificate_check_distinct_patches: true,
+  generic_periodic_certificate_checkpoint_sampling_policy: "hybrid",
+  generic_periodic_certificate_checkpoint_sampling_prefix: 4,
+  generic_periodic_certificate_checkpoint_sampling_stride: 16,
   generic_periodic_certificate_time_limit_ms: 5000
 });
 assert.equal(checkpointCandidateCertificate.final.result_kind, "certified_tiling");
@@ -300,6 +304,77 @@ const distinctCheckpointPerSizeCap = await solve({
 const perSizeCheckSizes = distinctCheckpointPerSizeCap.final.search_stats.generic_periodic_certificate_check_sizes;
 assert.equal(new Set(perSizeCheckSizes).size, perSizeCheckSizes.length);
 assert.ok(distinctCheckpointPerSizeCap.final.search_stats.generic_periodic_certificate_per_size_cap_skips > 0);
+
+const spreadCheckpointConfig = {
+  mode_key: "cube",
+  custom_system: candidate1016113System,
+  tiling_strategy: "generic",
+  target_val: 40,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_failure_memo: true,
+  seeded_tie_breaks: true,
+  random_seed: 1,
+  node_limit: 100,
+  time_limit_ms: 5000,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_check_new_maximum: true,
+  generic_periodic_certificate_check_distinct_patches: true,
+  generic_periodic_certificate_checkpoint_sampling_policy: "spread",
+  generic_periodic_certificate_checkpoint_sampling_stride: 8,
+  generic_periodic_certificate_checkpoint_max_checks_per_size: 3,
+  generic_periodic_certificate_checkpoint_max_total_checks: 100,
+  generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
+  generic_periodic_certificate_time_limit_ms: 500
+};
+const spreadCheckpoint = await solve(spreadCheckpointConfig);
+const spreadCheckpointReplay = await solve(spreadCheckpointConfig);
+const spreadStats = spreadCheckpoint.final.search_stats;
+const spreadReplayStats = spreadCheckpointReplay.final.search_stats;
+assert.equal(spreadStats.generic_periodic_certificate_checkpoint_sampling_policy, "spread");
+assert.equal(spreadStats.generic_periodic_certificate_checkpoint_sampling_stride, 8);
+assert.ok(
+  spreadStats.generic_periodic_certificate_checkpoint_eligible_states
+  > spreadStats.generic_periodic_certificate_checks_attempted
+);
+assert.ok(spreadStats.generic_periodic_certificate_checkpoint_sampling_skips > 0);
+assert.ok(
+  new Set(spreadStats.generic_periodic_certificate_check_sizes).size
+  < spreadStats.generic_periodic_certificate_check_sizes.length,
+  "spread sampling must reach later alternative branches at already-seen sizes"
+);
+assert.deepEqual(
+  {
+    sizes: spreadStats.generic_periodic_certificate_check_sizes,
+    eligible: spreadStats.generic_periodic_certificate_checkpoint_eligible_states,
+    samplingSkips: spreadStats.generic_periodic_certificate_checkpoint_sampling_skips
+  },
+  {
+    sizes: spreadReplayStats.generic_periodic_certificate_check_sizes,
+    eligible: spreadReplayStats.generic_periodic_certificate_checkpoint_eligible_states,
+    samplingSkips: spreadReplayStats.generic_periodic_certificate_checkpoint_sampling_skips
+  },
+  "spread sampling must be exactly replayable"
+);
+
+const hybridCheckpoint = await solve({
+  ...spreadCheckpointConfig,
+  generic_periodic_certificate_checkpoint_sampling_policy: "hybrid",
+  generic_periodic_certificate_checkpoint_sampling_prefix: 4,
+  generic_periodic_certificate_checkpoint_max_checks_per_size: 7,
+  generic_periodic_certificate_checkpoint_max_total_checks: 280
+});
+const hybridStats = hybridCheckpoint.final.search_stats;
+assert.equal(hybridStats.generic_periodic_certificate_checkpoint_sampling_policy, "hybrid");
+assert.equal(hybridStats.generic_periodic_certificate_checkpoint_sampling_prefix, 4);
+assert.ok(hybridStats.generic_periodic_certificate_checkpoint_sampling_skips > 0);
+assert.ok(
+  hybridStats.generic_periodic_certificate_checks_attempted
+  > spreadStats.generic_periodic_certificate_checks_attempted,
+  "hybrid sampling must retain the prefix sample while adding later branch states"
+);
 
 const distinctCheckpointTimeBudget = await solve({
   mode_key: "cube",
