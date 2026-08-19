@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-delayed-nogood-v82";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-holdout-v84";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot

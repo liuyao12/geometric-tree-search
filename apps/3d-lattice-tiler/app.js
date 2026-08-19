@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-delayed-nogood-v82";
+import { tileSpecs } from "./engine.js?v=20260819-holdout-v84";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1351,7 +1351,13 @@ function updateCandidateResearchPanel() {
       const nogood = proof.nogood_checkpoint_checks
         ? ` A complementary translation-equivariant nogood policy, delayed until 25 failed states have been learned, ranged from ${nogoodRange} tiles across ${proof.trials} seeds${proof.nogood_target_hits ? ` and reached the ${proofProtocol.target_tiles}-tile target in ${proof.nogood_target_hits} seed${proof.nogood_target_hits === 1 ? "" : "s"}` : ""}. Its ${proof.nogood_checkpoint_checks} completed quotient checks add ${proof.nogood_new_checkpoint_states} rigid-motion patch geometries beyond the earlier baseline-plus-immediate-nogood screen, raising this candidate's three-policy checked union to ${proof.combined_checkpoint_states}; none certified periodicity.`
         : "";
-      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}`;
+      const holdoutRange = proof.holdout_nogood_robust_largest_patch === proof.holdout_nogood_best_largest_patch
+        ? `${proof.holdout_nogood_best_largest_patch}`
+        : `${proof.holdout_nogood_robust_largest_patch}–${proof.holdout_nogood_best_largest_patch}`;
+      const holdout = proof.holdout_trials && proofProtocol.holdout_screen
+        ? ` On five unseen seeds, the delayed policy ranged from ${holdoutRange} tiles${proof.holdout_nogood_target_hits ? ` and reached ${proofProtocol.target_tiles} tiles in ${proof.holdout_nogood_target_hits} seed${proof.holdout_nogood_target_hits === 1 ? "" : "s"}` : ""}. Across all three holdout policies, ${proof.holdout_checkpoint_checks} exact checks added ${proof.holdout_new_checkpoint_states} new geometries and expanded this candidate's eight-seed checked union to ${proof.expanded_checkpoint_states}. Globally, delayed nogoods beat immediate nogoods on ${proofProtocol.holdout_screen.delayed_better_than_immediate} holdout paths, tied ${proofProtocol.holdout_screen.delayed_equal_to_immediate}, and worsened ${proofProtocol.holdout_screen.delayed_worse_than_immediate}; they remain complementary rather than universally superior.`
+        : "";
+      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}`;
     })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
     candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
@@ -2672,7 +2678,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-delayed-nogood-v82", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-holdout-v84", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3167,7 +3173,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-delayed-nogood-v82", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-holdout-v84", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

@@ -123,6 +123,16 @@ assert.match(
 );
 assert.match(
   growthAppSource,
+  /On five unseen seeds/,
+  "the catalog must expose the holdout generalization screen"
+);
+assert.match(
+  growthAppSource,
+  /remain complementary rather than universally superior/,
+  "the catalog must not overstate delayed nogood generalization"
+);
+assert.match(
+  growthAppSource,
   /that target patch is not a translational quotient/,
   "the completed proof-lane summary must retain the target-patch quotient result"
 );
@@ -172,6 +182,10 @@ const archivedNogoodPortfolio = JSON.parse(await readFile(
 ));
 const archivedDelayedNogood = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-delayed-nogood-screen-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedHoldout = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-holdout-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -429,6 +443,95 @@ for (const coverage of archivedDelayedNogood.candidate_coverage) {
   assert.equal(coverage.three_policy_fingerprints, threePolicy.size);
   assert.equal(coverage.three_policy_digest_sha256, fingerprintDigest([...threePolicy]));
 }
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.holdout_screen,
+  {
+    seeds: archivedHoldout.summary.holdout_seeds,
+    paths_per_policy: archivedHoldout.summary.paths_per_policy,
+    total_policy_paths: archivedHoldout.summary.total_policy_paths,
+    delayed_better_than_immediate:
+      archivedHoldout.generalization.holdout_seeds_4_through_8.delayed_better_than_immediate,
+    delayed_equal_to_immediate:
+      archivedHoldout.generalization.holdout_seeds_4_through_8.delayed_equal_to_immediate,
+    delayed_worse_than_immediate:
+      archivedHoldout.generalization.holdout_seeds_4_through_8.delayed_worse_than_immediate,
+    baseline_target_hits: archivedHoldout.generalization.holdout_seeds_4_through_8.baseline_target_hits,
+    immediate_target_hits: archivedHoldout.generalization.holdout_seeds_4_through_8.immediate_target_hits,
+    delayed_target_hits: archivedHoldout.generalization.holdout_seeds_4_through_8.delayed_target_hits,
+    checkpoint_checks_completed: archivedHoldout.summary.exact_checks_completed,
+    checkpoint_checks_timed_out: archivedHoldout.summary.exact_checks_timed_out,
+    periodic_certificates_found: archivedHoldout.summary.periodic_certificates_found,
+    new_rigid_motion_fingerprints: archivedHoldout.summary.new_holdout_fingerprints,
+    expanded_rigid_motion_fingerprints: archivedHoldout.summary.expanded_eight_seed_fingerprints,
+    policy_decision: archivedHoldout.summary.policy_decision,
+    report: "data/lattice-polyhedron-holdout-screen-2026-08-19.json"
+  },
+  "the runtime holdout evidence must match the archived five-seed exact screen"
+);
+assert.equal(archivedHoldout.benchmark_schema_version, 15);
+assert.equal(archivedHoldout.search_paths.length, 20);
+assert.equal(archivedHoldout.proof_paths.length, 60);
+assert.equal(archivedHoldout.summary.exact_checks_completed, 5540);
+assert.equal(archivedHoldout.summary.exact_checks_timed_out, 0);
+assert.equal(archivedHoldout.summary.periodic_certificates_found, 0);
+assert.equal(archivedHoldout.summary.completed_target_patch_checks, 4);
+assert.equal(archivedHoldout.summary.distinct_target_witnesses, 2);
+assert.equal(archivedHoldout.summary.new_holdout_fingerprints, 2758);
+assert.equal(archivedHoldout.summary.expanded_eight_seed_fingerprints, 4831);
+assert.equal(
+  archivedHoldout.summary.policy_decision,
+  "retain_delayed_25_as_complementary_holdout_supported_lane"
+);
+assert.deepEqual(
+  archivedHoldout.generalization.holdout_seeds_4_through_8,
+  {
+    delayed_better_than_immediate: 5,
+    delayed_equal_to_immediate: 13,
+    delayed_worse_than_immediate: 2,
+    delayed_better_than_baseline: 6,
+    delayed_equal_to_baseline: 3,
+    delayed_worse_than_baseline: 11,
+    baseline_target_hits: 1,
+    immediate_target_hits: 1,
+    delayed_target_hits: 2
+  }
+);
+assert.ok(archivedHoldout.proof_paths.every(path =>
+  path.checks_attempted === path.fingerprints.length
+  && path.checks_completed === path.checks_attempted
+  && path.checks_timed_out === 0
+  && !path.certificate_found
+  && new Set(path.fingerprints).size === path.fingerprints.length
+  && path.fingerprint_digest_sha256 === fingerprintDigest(path.fingerprints)
+));
+for (const coverage of archivedHoldout.candidate_coverage) {
+  const priorBaselineCandidate = archivedGlobalOverlap.candidates.find(candidate => candidate.id === coverage.id);
+  const priorSet = new Set([
+    ...priorBaselineCandidate.paths.flatMap(path => path.fingerprints),
+    ...archivedNogoodPortfolio.proof_paths
+      .filter(path => path.id === coverage.id)
+      .flatMap(path => path.fingerprints),
+    ...archivedDelayedNogood.proof_paths
+      .filter(path => path.id === coverage.id)
+      .flatMap(path => path.fingerprints)
+  ]);
+  const holdoutByPolicy = Object.fromEntries(["baseline", "immediate", "delayed"].map(policy => [
+    policy,
+    new Set(archivedHoldout.proof_paths
+      .filter(path => path.id === coverage.id && path.policy === policy)
+      .flatMap(path => path.fingerprints))
+  ]));
+  const holdoutUnion = new Set(Object.values(holdoutByPolicy).flatMap(set => [...set]));
+  const expanded = new Set([...priorSet, ...holdoutUnion]);
+  assert.equal(coverage.prior_three_policy_fingerprints, priorSet.size);
+  assert.equal(coverage.holdout_baseline_fingerprints, holdoutByPolicy.baseline.size);
+  assert.equal(coverage.holdout_immediate_fingerprints, holdoutByPolicy.immediate.size);
+  assert.equal(coverage.holdout_delayed_fingerprints, holdoutByPolicy.delayed.size);
+  assert.equal(coverage.holdout_union_fingerprints, holdoutUnion.size);
+  assert.equal(coverage.new_holdout_fingerprints, [...holdoutUnion].filter(value => !priorSet.has(value)).length);
+  assert.equal(coverage.expanded_eight_seed_fingerprints, expanded.size);
+  assert.equal(coverage.expanded_digest_sha256, fingerprintDigest([...expanded]));
+}
 assert.equal(archivedDistinctScreening.paths.length, 12);
 assert.ok(
   archivedDistinctScreening.paths.every(path =>
@@ -592,6 +695,29 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
   assert.equal(candidate.gcts_proof_screening.nogood_checkpoint_distinct, nogoodCoverage.delayed_distinct_fingerprints);
   assert.equal(candidate.gcts_proof_screening.nogood_new_checkpoint_states, nogoodCoverage.new_delayed_fingerprints);
   assert.equal(candidate.gcts_proof_screening.combined_checkpoint_states, nogoodCoverage.three_policy_fingerprints);
+  const holdoutSummary = archivedHoldout.candidate_summary.find(item => item.id === candidate.id);
+  const holdoutCoverage = archivedHoldout.candidate_coverage.find(item => item.id === candidate.id);
+  assert.ok(holdoutSummary && holdoutCoverage, `${candidate.id} must retain its holdout evidence`);
+  assert.equal(candidate.gcts_proof_screening.holdout_trials, archivedHoldout.summary.holdout_seeds.length);
+  assert.equal(
+    candidate.gcts_proof_screening.holdout_nogood_robust_largest_patch,
+    holdoutSummary.holdout_delayed_robust_largest_patch
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.holdout_nogood_median_largest_patch,
+    holdoutSummary.holdout_delayed_median_largest_patch
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.holdout_nogood_best_largest_patch,
+    holdoutSummary.holdout_delayed_best_largest_patch
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.holdout_nogood_target_hits,
+    holdoutSummary.holdout_delayed_target_hits
+  );
+  assert.equal(candidate.gcts_proof_screening.holdout_checkpoint_checks, holdoutCoverage.holdout_checks_completed);
+  assert.equal(candidate.gcts_proof_screening.holdout_new_checkpoint_states, holdoutCoverage.new_holdout_fingerprints);
+  assert.equal(candidate.gcts_proof_screening.expanded_checkpoint_states, holdoutCoverage.expanded_eight_seed_fingerprints);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL

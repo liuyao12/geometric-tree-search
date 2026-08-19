@@ -297,6 +297,16 @@ added 199 rigid-motion geometries beyond the earlier two-policy union, for
 now uses this delayed policy. Milestone curves and exact fingerprints are in
 `data/lattice-polyhedron-delayed-nogood-screen-2026-08-19.json`.
 
+Five unseen seeds (4 through 8) then tested whether that three-seed result
+generalizes. Delayed-25 beat immediate nogoods on 5 of 20 paths, tied 13, and
+worsened 2, so it is not a universal dominance result. It nevertheless found
+two 40-tile witnesses versus one for immediate nogoods and one for baseline.
+Exact hybrid checking replayed all 60 policy paths without changing them:
+5,540 checks completed with no timeout or certificate. The holdout contributed
+2,758 new rigid-motion geometries and raised the eight-seed, three-policy union
+from 2,073 to 4,831. Full milestones and fingerprints are archived in
+`data/lattice-polyhedron-holdout-screen-2026-08-19.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.
