@@ -270,7 +270,11 @@ matching uses an exact rare-token pivot index; `--geometric-nogood-index=false`
 runs the same clauses through the reference linear scan for a semantic and
 performance ablation. Translation-equivariant clauses are automatically
 disabled for finite target regions, where moving a failed context can change
-its relationship to the boundary.
+its relationship to the boundary. Use
+`--geometric-nogood-activation-failures=N` to learn clauses immediately but
+delay applying them until `N` failed states have accumulated; a threshold
+larger than the run preserves the baseline path while still auditing the
+learned clause set.
 
 The four-candidate, three-seed A/B does not support replacing the baseline
 proof order with nogoods: five paths deepen, one ties, and six become
@@ -282,6 +286,16 @@ timeout or periodic certificate. The full paths, fingerprints, and policy
 decision are archived in
 `data/lattice-polyhedron-nogood-proof-portfolio-2026-08-19.json`; the web
 comparison exposes the two proof policies as separate traces.
+
+A follow-up activation sweep tested 25, 50, and 100 failed states. Threshold
+25 weakly dominated immediate nogood application on all 12 paths: two paths
+deepened and ten tied, with no regression. It produced two independently
+hashed 40-tile `10_45033` witnesses, both rejected as translational quotients.
+Its 1,116 exact checks completed without timeout or periodic certificate and
+added 199 rigid-motion geometries beyond the earlier two-policy union, for
+2,073 checked geometries across all three policies. The web proof-nogood trace
+now uses this delayed policy. Milestone curves and exact fingerprints are in
+`data/lattice-polyhedron-delayed-nogood-screen-2026-08-19.json`.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in

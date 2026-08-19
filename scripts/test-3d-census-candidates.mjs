@@ -61,6 +61,11 @@ assert.match(growthWorkerSource, /generic_geometric_nogood_max_clauses: 20000/);
 assert.match(growthWorkerSource, /generic_geometric_nogood_index: true/);
 assert.match(
   growthWorkerSource,
+  /generic_geometric_nogood_activation_failure_states: mode\.nogood \? 25 : 0/,
+  "the complementary web lane must delay nogood application until 25 failed states"
+);
+assert.match(
+  growthWorkerSource,
   /seeded_tie_breaks: !!mode\.proof/,
   "the proof comparison lane must use replayable seeded tie diversification"
 );
@@ -82,7 +87,7 @@ assert.match(
 assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof comparison lane may claim exhaustive search");
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
-assert.match(growthAppSource, /id: "proof_nogood"[\s\S]*?label: "Proof search · nogoods"/, "the complementary proof trace must be visible in the chart");
+assert.match(growthAppSource, /id: "proof_nogood"[\s\S]*?label: "Proof search · delayed nogoods"/, "the complementary proof trace must be visible in the chart");
 assert.match(growthAppSource, /All seven modes finished\./, "the comparison status must include all seven lanes");
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
 assert.match(
@@ -110,6 +115,11 @@ assert.match(
   growthAppSource,
   /complementary translation-equivariant nogood policy/,
   "the catalog must expose the complementary nogood screen"
+);
+assert.match(
+  growthAppSource,
+  /delayed until 25 failed states have been learned/,
+  "the catalog must disclose the benchmarked nogood activation delay"
 );
 assert.match(
   growthAppSource,
@@ -158,6 +168,10 @@ const archivedFailureMemoAb = JSON.parse(await readFile(
 ));
 const archivedNogoodPortfolio = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-nogood-proof-portfolio-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedDelayedNogood = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-delayed-nogood-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -332,6 +346,89 @@ for (const coverage of archivedNogoodPortfolio.candidate_coverage) {
   assert.equal(coverage.combined_distinct_fingerprints, combined.size);
   assert.equal(coverage.combined_digest_sha256, fingerprintDigest([...combined]));
 }
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.delayed_nogood_screen,
+  {
+    paths_screened: archivedDelayedNogood.summary.paths_per_policy,
+    activation_failure_states: 25,
+    improved_over_immediate_paths: archivedDelayedNogood.summary.delayed_25_better_than_immediate,
+    equal_to_immediate_paths: archivedDelayedNogood.summary.delayed_25_equal_to_immediate,
+    worsened_from_immediate_paths: archivedDelayedNogood.summary.delayed_25_worse_than_immediate,
+    target_hits: archivedDelayedNogood.summary.delayed_25_target_hits,
+    learned_clauses: archivedDelayedNogood.summary.delayed_25_nogood_clauses,
+    exact_prunes: archivedDelayedNogood.summary.delayed_25_nogood_prunes,
+    checkpoint_checks_completed: archivedDelayedNogood.summary.delayed_checkpoint_checks_completed,
+    checkpoint_checks_timed_out: archivedDelayedNogood.summary.delayed_checkpoint_checks_timed_out,
+    periodic_certificates_found: archivedDelayedNogood.summary.delayed_periodic_certificates_found,
+    new_rigid_motion_fingerprints: archivedDelayedNogood.summary.new_delayed_fingerprints,
+    combined_rigid_motion_fingerprints: archivedDelayedNogood.summary.three_policy_fingerprints,
+    policy_decision: archivedDelayedNogood.summary.policy_decision,
+    report: "data/lattice-polyhedron-delayed-nogood-screen-2026-08-19.json"
+  },
+  "the runtime delayed proof policy must match its archived activation sweep and exact screen"
+);
+assert.equal(archivedDelayedNogood.benchmark_schema_version, 15);
+assert.equal(archivedDelayedNogood.proof_paths.length, 12);
+assert.deepEqual(
+  archivedDelayedNogood.threshold_summary.find(summary => summary.activation_failure_states === 25),
+  {
+    activation_failure_states: 25,
+    better_than_immediate: 2,
+    equal_to_immediate: 10,
+    worse_than_immediate: 0,
+    better_than_baseline: 6,
+    equal_to_baseline: 1,
+    worse_than_baseline: 5,
+    target_hits: 2
+  }
+);
+assert.equal(archivedDelayedNogood.summary.delayed_checkpoint_checks_completed, 1116);
+assert.equal(archivedDelayedNogood.summary.delayed_checkpoint_checks_timed_out, 0);
+assert.equal(archivedDelayedNogood.summary.delayed_periodic_certificates_found, 0);
+assert.equal(archivedDelayedNogood.summary.new_delayed_fingerprints, 199);
+assert.equal(archivedDelayedNogood.summary.three_policy_fingerprints, 2073);
+assert.equal(archivedDelayedNogood.summary.policy_decision, "replace_immediate_nogood_lane_with_delayed_25");
+assert.ok(archivedDelayedNogood.proof_paths.every(path =>
+  path.checks_attempted === path.fingerprints.length
+  && path.checks_completed === path.checks_attempted
+  && path.checks_timed_out === 0
+  && !path.certificate_found
+  && new Set(path.fingerprints).size === path.fingerprints.length
+  && path.fingerprint_digest_sha256 === fingerprintDigest(path.fingerprints)
+));
+assert.deepEqual(
+  archivedDelayedNogood.proof_paths
+    .filter(path => path.target_check_completed)
+    .map(path => ({ id: path.id, seed: path.seed, largest_patch: path.largest_patch })),
+  [
+    { id: "10_45033", seed: 1, largest_patch: 40 },
+    { id: "10_45033", seed: 2, largest_patch: 40 }
+  ],
+  "the delayed policy must retain both checked 40-tile 10_45033 witnesses"
+);
+for (const coverage of archivedDelayedNogood.candidate_coverage) {
+  const baselineCandidate = archivedGlobalOverlap.candidates.find(candidate => candidate.id === coverage.id);
+  const baselineSet = new Set(baselineCandidate.paths.flatMap(path => path.fingerprints));
+  const immediateSet = new Set(
+    archivedNogoodPortfolio.proof_paths
+      .filter(path => path.id === coverage.id)
+      .flatMap(path => path.fingerprints)
+  );
+  const delayedSet = new Set(
+    archivedDelayedNogood.proof_paths
+      .filter(path => path.id === coverage.id)
+      .flatMap(path => path.fingerprints)
+  );
+  const priorTwoPolicy = new Set([...baselineSet, ...immediateSet]);
+  const threePolicy = new Set([...priorTwoPolicy, ...delayedSet]);
+  assert.equal(coverage.baseline_distinct_fingerprints, baselineSet.size);
+  assert.equal(coverage.immediate_distinct_fingerprints, immediateSet.size);
+  assert.equal(coverage.delayed_distinct_fingerprints, delayedSet.size);
+  assert.equal(coverage.prior_two_policy_fingerprints, priorTwoPolicy.size);
+  assert.equal(coverage.new_delayed_fingerprints, [...delayedSet].filter(value => !priorTwoPolicy.has(value)).length);
+  assert.equal(coverage.three_policy_fingerprints, threePolicy.size);
+  assert.equal(coverage.three_policy_digest_sha256, fingerprintDigest([...threePolicy]));
+}
 assert.equal(archivedDistinctScreening.paths.length, 12);
 assert.ok(
   archivedDistinctScreening.paths.every(path =>
@@ -480,21 +577,21 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
   assert.ok(overlapSummary, `${candidate.id} must retain its global checkpoint coverage summary`);
   assert.equal(candidate.gcts_proof_screening.global_checkpoint_states, overlapSummary.globally_distinct_fingerprints);
   assert.equal(candidate.gcts_proof_screening.repeated_checkpoint_path_pairs, overlapSummary.repeated_state_path_pairs);
-  const nogoodSummary = archivedNogoodPortfolio.candidate_search_summary.find(item => item.id === candidate.id);
-  const nogoodCoverage = archivedNogoodPortfolio.candidate_coverage.find(item => item.id === candidate.id);
-  assert.ok(nogoodSummary && nogoodCoverage, `${candidate.id} must retain its complementary nogood evidence`);
-  assert.equal(candidate.gcts_proof_screening.nogood_robust_largest_patch, nogoodSummary.nogood.robust_largest_patch);
-  assert.equal(candidate.gcts_proof_screening.nogood_median_largest_patch, nogoodSummary.nogood.median_largest_patch);
-  assert.equal(candidate.gcts_proof_screening.nogood_best_largest_patch, nogoodSummary.nogood.best_largest_patch);
-  assert.equal(candidate.gcts_proof_screening.nogood_target_hits, nogoodSummary.nogood.target_hits);
-  assert.equal(candidate.gcts_proof_screening.portfolio_robust_largest_patch, nogoodSummary.two_policy_portfolio.robust_largest_patch);
-  assert.equal(candidate.gcts_proof_screening.portfolio_median_largest_patch, nogoodSummary.two_policy_portfolio.median_largest_patch);
-  assert.equal(candidate.gcts_proof_screening.portfolio_best_largest_patch, nogoodSummary.two_policy_portfolio.best_largest_patch);
-  assert.equal(candidate.gcts_proof_screening.portfolio_target_hits, nogoodSummary.two_policy_portfolio.target_hits);
-  assert.equal(candidate.gcts_proof_screening.nogood_checkpoint_checks, nogoodCoverage.nogood_state_path_checks);
-  assert.equal(candidate.gcts_proof_screening.nogood_checkpoint_distinct, nogoodCoverage.nogood_distinct_fingerprints);
-  assert.equal(candidate.gcts_proof_screening.nogood_new_checkpoint_states, nogoodCoverage.new_fingerprints);
-  assert.equal(candidate.gcts_proof_screening.combined_checkpoint_states, nogoodCoverage.combined_distinct_fingerprints);
+  const nogoodSummary = archivedDelayedNogood.candidate_summary.find(item => item.id === candidate.id);
+  const nogoodCoverage = archivedDelayedNogood.candidate_coverage.find(item => item.id === candidate.id);
+  assert.ok(nogoodSummary && nogoodCoverage, `${candidate.id} must retain its delayed nogood evidence`);
+  assert.equal(candidate.gcts_proof_screening.nogood_robust_largest_patch, nogoodSummary.delayed_25_robust_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.nogood_median_largest_patch, nogoodSummary.delayed_25_median_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.nogood_best_largest_patch, nogoodSummary.delayed_25_best_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.nogood_target_hits, nogoodSummary.delayed_25_target_hits);
+  assert.equal(candidate.gcts_proof_screening.portfolio_robust_largest_patch, nogoodSummary.baseline_delayed_portfolio_robust_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.portfolio_median_largest_patch, nogoodSummary.baseline_delayed_portfolio_median_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.portfolio_best_largest_patch, nogoodSummary.baseline_delayed_portfolio_best_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.portfolio_target_hits, nogoodSummary.baseline_delayed_portfolio_target_hits);
+  assert.equal(candidate.gcts_proof_screening.nogood_checkpoint_checks, nogoodCoverage.delayed_state_path_checks);
+  assert.equal(candidate.gcts_proof_screening.nogood_checkpoint_distinct, nogoodCoverage.delayed_distinct_fingerprints);
+  assert.equal(candidate.gcts_proof_screening.nogood_new_checkpoint_states, nogoodCoverage.new_delayed_fingerprints);
+  assert.equal(candidate.gcts_proof_screening.combined_checkpoint_states, nogoodCoverage.three_policy_fingerprints);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL

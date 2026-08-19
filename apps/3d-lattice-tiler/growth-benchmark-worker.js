@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-nogood-portfolio-v80";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-delayed-nogood-v82";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -35,7 +35,7 @@ const MODES = {
   },
   proof_nogood: {
     id: "proof_nogood",
-    label: "Proof search · nogoods",
+    label: "Proof search · delayed nogoods",
     strategy: "free_range",
     moveOrder: "balanced",
     templates: false,
@@ -100,6 +100,7 @@ async function runMode(sequence, baseConfig, mode) {
     generic_geometric_nogood: !!mode.nogood,
     generic_geometric_nogood_max_clauses: 20000,
     generic_geometric_nogood_index: true,
+    generic_geometric_nogood_activation_failure_states: mode.nogood ? 25 : 0,
     seeded_tie_breaks: !!mode.proof,
     generic_periodic_certificate: !!mode.proof,
     generic_periodic_certificate_check_new_maximum: !!mode.proof,

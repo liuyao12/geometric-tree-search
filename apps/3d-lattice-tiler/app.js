@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-nogood-portfolio-v80";
+import { tileSpecs } from "./engine.js?v=20260819-delayed-nogood-v82";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1349,7 +1349,7 @@ function updateCandidateResearchPanel() {
         ? `${proof.nogood_best_largest_patch}`
         : `${proof.nogood_robust_largest_patch}–${proof.nogood_best_largest_patch}`;
       const nogood = proof.nogood_checkpoint_checks
-        ? ` A complementary translation-equivariant nogood policy ranged from ${nogoodRange} tiles across ${proof.trials} seeds${proof.nogood_target_hits ? ` and reached the ${proofProtocol.target_tiles}-tile target in ${proof.nogood_target_hits} seed${proof.nogood_target_hits === 1 ? "" : "s"}` : ""}. Its ${proof.nogood_checkpoint_checks} completed quotient checks add ${proof.nogood_new_checkpoint_states} new rigid-motion patch geometries, raising this candidate's two-policy checked union to ${proof.combined_checkpoint_states}; none certified periodicity.`
+        ? ` A complementary translation-equivariant nogood policy, delayed until 25 failed states have been learned, ranged from ${nogoodRange} tiles across ${proof.trials} seeds${proof.nogood_target_hits ? ` and reached the ${proofProtocol.target_tiles}-tile target in ${proof.nogood_target_hits} seed${proof.nogood_target_hits === 1 ? "" : "s"}` : ""}. Its ${proof.nogood_checkpoint_checks} completed quotient checks add ${proof.nogood_new_checkpoint_states} rigid-motion patch geometries beyond the earlier baseline-plus-immediate-nogood screen, raising this candidate's three-policy checked union to ${proof.combined_checkpoint_states}; none certified periodicity.`
         : "";
       return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}`;
     })() : "";
@@ -2672,7 +2672,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-nogood-portfolio-v80", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-delayed-nogood-v82", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2804,7 +2804,7 @@ const GROWTH_MODES = [
   { id: "free_range", strategy: "free_range", label: "Free-range · balanced", color: "#6f7c77", symbol: "square-open", dash: "dash" },
   { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
   { id: "proof", strategy: "free_range", label: "Proof search · unbanded", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
-  { id: "proof_nogood", strategy: "free_range", label: "Proof search · nogoods", color: "#a33f5b", symbol: "triangle-left-open", dash: "dashdot" },
+  { id: "proof_nogood", strategy: "free_range", label: "Proof search · delayed nogoods", color: "#a33f5b", symbol: "triangle-left-open", dash: "dashdot" },
   { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
@@ -3167,7 +3167,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-nogood-portfolio-v80", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-delayed-nogood-v82", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

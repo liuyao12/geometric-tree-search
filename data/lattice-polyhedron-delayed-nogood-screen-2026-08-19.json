@@ -1,0 +1,6403 @@
+{
+  "schema_version": 1,
+  "screen_date": "2026-08-19",
+  "engine_commit": "36a55d568accf16eed8d90ce229f04ac0cca7977",
+  "benchmark_schema_version": 15,
+  "prior_two_policy_report": "data/lattice-polyhedron-nogood-proof-portfolio-2026-08-19.json",
+  "protocol": {
+    "baseline": {
+      "target": 40,
+      "timeMs": 30000,
+      "exactTimeMs": 30000,
+      "isohedralHorizon": 24,
+      "periodicMax": 4,
+      "nodeLimit": 500,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "failureMemo": true,
+      "failureMemoSymmetry": "fixed",
+      "failureMemoMaxStates": 200000,
+      "geometricNogood": false,
+      "geometricNogoodMaxClauses": 20000,
+      "geometricNogoodIndex": true,
+      "genericPeriodicCertificate": false,
+      "genericPeriodicCheckpoints": false,
+      "genericPeriodicDistinctPatches": false,
+      "genericPeriodicSamplingPolicy": "prefix",
+      "genericPeriodicSamplingStride": 16,
+      "genericPeriodicSamplingPrefix": 4,
+      "genericPeriodicMaxChecksPerSize": 4,
+      "genericPeriodicMaxTotalChecks": 160,
+      "genericPeriodicCheckpointTotalTimeMs": 10000,
+      "genericPeriodicCertificateTimeMs": 5000,
+      "seededTies": true,
+      "lanes": [
+        "free_range_unbanded"
+      ]
+    },
+    "immediate_nogood": {
+      "target": 40,
+      "timeMs": 30000,
+      "exactTimeMs": 30000,
+      "isohedralHorizon": 24,
+      "periodicMax": 4,
+      "nodeLimit": 500,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "failureMemo": true,
+      "failureMemoSymmetry": "fixed",
+      "failureMemoMaxStates": 200000,
+      "geometricNogood": true,
+      "geometricNogoodMaxClauses": 20000,
+      "geometricNogoodIndex": true,
+      "genericPeriodicCertificate": false,
+      "genericPeriodicCheckpoints": false,
+      "genericPeriodicDistinctPatches": false,
+      "genericPeriodicSamplingPolicy": "prefix",
+      "genericPeriodicSamplingStride": 16,
+      "genericPeriodicSamplingPrefix": 4,
+      "genericPeriodicMaxChecksPerSize": 4,
+      "genericPeriodicMaxTotalChecks": 160,
+      "genericPeriodicCheckpointTotalTimeMs": 10000,
+      "genericPeriodicCertificateTimeMs": 5000,
+      "seededTies": true,
+      "lanes": [
+        "free_range_unbanded"
+      ],
+      "geometricNogoodActivationFailures": 0
+    },
+    "delayed_25_exact_screen": {
+      "target": 40,
+      "timeMs": 30000,
+      "exactTimeMs": 30000,
+      "isohedralHorizon": 24,
+      "periodicMax": 4,
+      "nodeLimit": 500,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "failureMemo": true,
+      "failureMemoSymmetry": "fixed",
+      "failureMemoMaxStates": 200000,
+      "geometricNogood": true,
+      "geometricNogoodMaxClauses": 20000,
+      "geometricNogoodIndex": true,
+      "geometricNogoodActivationFailures": 25,
+      "genericPeriodicCertificate": true,
+      "genericPeriodicCheckpoints": true,
+      "genericPeriodicDistinctPatches": true,
+      "genericPeriodicSamplingPolicy": "hybrid",
+      "genericPeriodicSamplingStride": 16,
+      "genericPeriodicSamplingPrefix": 4,
+      "genericPeriodicMaxChecksPerSize": 7,
+      "genericPeriodicMaxTotalChecks": 280,
+      "genericPeriodicCheckpointTotalTimeMs": 10000,
+      "genericPeriodicCertificateTimeMs": 2000,
+      "seededTies": true,
+      "lanes": [
+        "free_range_unbanded"
+      ]
+    },
+    "activation_sweep_failure_states": [
+      25,
+      50,
+      100
+    ]
+  },
+  "paths": [
+    {
+      "id": "10_16113",
+      "seed": 1,
+      "baseline": {
+        "largest_patch": 21,
+        "witness_hash": "bf1ecec2fd68388c",
+        "visited_nodes": 627,
+        "backtracks": 435,
+        "elapsed_ms": 3079,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 31,
+        "witness_hash": "0d277d30a620b275",
+        "visited_nodes": 740,
+        "backtracks": 418,
+        "elapsed_ms": 6883,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 398,
+        "nogood_clauses": 6465,
+        "nogood_prunes": 5446,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 31,
+          "witness_hash": "0d277d30a620b275",
+          "visited_nodes": 729,
+          "backtracks": 418,
+          "elapsed_ms": 4479,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 407,
+          "nogood_clauses": 6219,
+          "nogood_prunes": 4950,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 31,
+          "witness_hash": "0d277d30a620b275",
+          "visited_nodes": 727,
+          "backtracks": 419,
+          "elapsed_ms": 4392,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 403,
+          "nogood_clauses": 6075,
+          "nogood_prunes": 4601,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 31,
+          "witness_hash": "0d277d30a620b275",
+          "visited_nodes": 698,
+          "backtracks": 420,
+          "elapsed_ms": 3963,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 403,
+          "nogood_clauses": 5770,
+          "nogood_prunes": 3705,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": 10,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 22,
+          "witness_hash": "5df9b75a7d1e49a1"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 29,
+          "witness_hash": "bd16b60721ae29e6"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 34,
+          "witness_hash": "51c1559e8dab24ab"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 41,
+          "witness_hash": "2dd60149319bd2b4"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 48,
+          "witness_hash": "eb0e5551343d6638"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 51,
+          "witness_hash": "dd5f662ebdc9e5f1"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 10,
+          "backtracks": 1,
+          "elapsed_ms": 63,
+          "witness_hash": "b6d921474a9d0fb6"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 14,
+          "backtracks": 2,
+          "elapsed_ms": 82,
+          "witness_hash": "6e1f98268fd12f87"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 15,
+          "backtracks": 2,
+          "elapsed_ms": 86,
+          "witness_hash": "c722dbe3db6bccd7"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 16,
+          "backtracks": 2,
+          "elapsed_ms": 91,
+          "witness_hash": "a56d293bf9fc08e5"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 17,
+          "backtracks": 2,
+          "elapsed_ms": 99,
+          "witness_hash": "f9f9238879f19e98"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 18,
+          "backtracks": 2,
+          "elapsed_ms": 103,
+          "witness_hash": "7dbd1af622da2f0f"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 19,
+          "backtracks": 2,
+          "elapsed_ms": 105,
+          "witness_hash": "f0834a79531c9904"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 26,
+          "backtracks": 5,
+          "elapsed_ms": 146,
+          "witness_hash": "2ca0034c7b4d5b6d"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 28,
+          "backtracks": 6,
+          "elapsed_ms": 156,
+          "witness_hash": "5a32a6c8752f9eb8"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 43,
+          "backtracks": 16,
+          "elapsed_ms": 243,
+          "witness_hash": "1438394257c1d6da"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 45,
+          "backtracks": 17,
+          "elapsed_ms": 252,
+          "witness_hash": "041b77b639afad6e"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 46,
+          "backtracks": 17,
+          "elapsed_ms": 259,
+          "witness_hash": "92b041ce6ac9e94f"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 526,
+          "backtracks": 354,
+          "elapsed_ms": 2531,
+          "witness_hash": "141cb3e9fa60444a"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 540,
+          "backtracks": 360,
+          "elapsed_ms": 2602,
+          "witness_hash": "bf1ecec2fd68388c"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 5,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 15,
+          "witness_hash": "5df9b75a7d1e49a1"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 20,
+          "witness_hash": "bd16b60721ae29e6"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 24,
+          "witness_hash": "51c1559e8dab24ab"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 30,
+          "witness_hash": "2dd60149319bd2b4"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 36,
+          "witness_hash": "eb0e5551343d6638"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 38,
+          "witness_hash": "dd5f662ebdc9e5f1"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 10,
+          "backtracks": 1,
+          "elapsed_ms": 48,
+          "witness_hash": "b6d921474a9d0fb6"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 14,
+          "backtracks": 2,
+          "elapsed_ms": 67,
+          "witness_hash": "6e1f98268fd12f87"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 15,
+          "backtracks": 2,
+          "elapsed_ms": 72,
+          "witness_hash": "c722dbe3db6bccd7"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 16,
+          "backtracks": 2,
+          "elapsed_ms": 79,
+          "witness_hash": "a56d293bf9fc08e5"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 17,
+          "backtracks": 2,
+          "elapsed_ms": 86,
+          "witness_hash": "f9f9238879f19e98"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 18,
+          "backtracks": 2,
+          "elapsed_ms": 90,
+          "witness_hash": "7dbd1af622da2f0f"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 19,
+          "backtracks": 2,
+          "elapsed_ms": 93,
+          "witness_hash": "f0834a79531c9904"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 26,
+          "backtracks": 5,
+          "elapsed_ms": 128,
+          "witness_hash": "2ca0034c7b4d5b6d"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 28,
+          "backtracks": 6,
+          "elapsed_ms": 136,
+          "witness_hash": "5a32a6c8752f9eb8"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 43,
+          "backtracks": 16,
+          "elapsed_ms": 209,
+          "witness_hash": "1438394257c1d6da"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 45,
+          "backtracks": 17,
+          "elapsed_ms": 216,
+          "witness_hash": "041b77b639afad6e"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 46,
+          "backtracks": 17,
+          "elapsed_ms": 223,
+          "witness_hash": "91ea01ab6009eec0"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 389,
+          "backtracks": 238,
+          "elapsed_ms": 1717,
+          "witness_hash": "876a4334b6134857"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 390,
+          "backtracks": 238,
+          "elapsed_ms": 1722,
+          "witness_hash": "1abcfe29eae99739"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 391,
+          "backtracks": 238,
+          "elapsed_ms": 1727,
+          "witness_hash": "fd3716282fb0e4cd"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 438,
+          "backtracks": 256,
+          "elapsed_ms": 2019,
+          "witness_hash": "8ea45434fcaa485c"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 443,
+          "backtracks": 259,
+          "elapsed_ms": 2063,
+          "witness_hash": "fe83066e44dbaabf"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 444,
+          "backtracks": 259,
+          "elapsed_ms": 2074,
+          "witness_hash": "2ac8c23e2c244232"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 445,
+          "backtracks": 259,
+          "elapsed_ms": 2085,
+          "witness_hash": "63d111827772cb84"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 446,
+          "backtracks": 259,
+          "elapsed_ms": 2099,
+          "witness_hash": "64dfb335e2936bdf"
+        },
+        {
+          "patch_size": 28,
+          "visited_nodes": 447,
+          "backtracks": 259,
+          "elapsed_ms": 2109,
+          "witness_hash": "b89537aa2f40d839"
+        },
+        {
+          "patch_size": 29,
+          "visited_nodes": 448,
+          "backtracks": 259,
+          "elapsed_ms": 2117,
+          "witness_hash": "c1061469e66b59fb"
+        },
+        {
+          "patch_size": 30,
+          "visited_nodes": 449,
+          "backtracks": 259,
+          "elapsed_ms": 2127,
+          "witness_hash": "ca54fbdff5c1b7eb"
+        },
+        {
+          "patch_size": 31,
+          "visited_nodes": 517,
+          "backtracks": 294,
+          "elapsed_ms": 2785,
+          "witness_hash": "0d277d30a620b275"
+        }
+      ]
+    },
+    {
+      "id": "10_16113",
+      "seed": 2,
+      "baseline": {
+        "largest_patch": 22,
+        "witness_hash": "1e8d08e2cd54d840",
+        "visited_nodes": 623,
+        "backtracks": 429,
+        "elapsed_ms": 3051,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 28,
+        "witness_hash": "cfcbdd6e0d1abfe6",
+        "visited_nodes": 700,
+        "backtracks": 425,
+        "elapsed_ms": 5143,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 415,
+        "nogood_clauses": 5369,
+        "nogood_prunes": 3115,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 28,
+          "witness_hash": "cfcbdd6e0d1abfe6",
+          "visited_nodes": 694,
+          "backtracks": 424,
+          "elapsed_ms": 3844,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 414,
+          "nogood_clauses": 5356,
+          "nogood_prunes": 3046,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 28,
+          "witness_hash": "cfcbdd6e0d1abfe6",
+          "visited_nodes": 695,
+          "backtracks": 428,
+          "elapsed_ms": 3767,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 417,
+          "nogood_clauses": 5372,
+          "nogood_prunes": 3106,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 28,
+          "witness_hash": "cfcbdd6e0d1abfe6",
+          "visited_nodes": 700,
+          "backtracks": 432,
+          "elapsed_ms": 3760,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 423,
+          "nogood_clauses": 5430,
+          "nogood_prunes": 2975,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": 6,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 3,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 10,
+          "witness_hash": "5df9b75a7d1e49a1"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 17,
+          "witness_hash": "bd16b60721ae29e6"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 25,
+          "witness_hash": "51c1559e8dab24ab"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 31,
+          "witness_hash": "54903399ef44e7ce"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 40,
+          "witness_hash": "6ce83a49c4de0063"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 46,
+          "witness_hash": "61a450cb240fd27b"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 51,
+          "witness_hash": "13c4695e9fb069a5"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 58,
+          "witness_hash": "c8039aa4057dd8c0"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 64,
+          "witness_hash": "4d7f7310ef142f88"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 11,
+          "backtracks": 0,
+          "elapsed_ms": 71,
+          "witness_hash": "ca54c30f4215b67c"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 16,
+          "backtracks": 4,
+          "elapsed_ms": 96,
+          "witness_hash": "09f588cff9c2cebf"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 22,
+          "backtracks": 8,
+          "elapsed_ms": 129,
+          "witness_hash": "4a26d8ffe882c439"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 23,
+          "backtracks": 8,
+          "elapsed_ms": 138,
+          "witness_hash": "20fe29a756071937"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 146,
+          "backtracks": 100,
+          "elapsed_ms": 676,
+          "witness_hash": "2cdce634d44cd37b"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 150,
+          "backtracks": 101,
+          "elapsed_ms": 702,
+          "witness_hash": "0473fc2b47feeb06"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 259,
+          "backtracks": 169,
+          "elapsed_ms": 1187,
+          "witness_hash": "542b386219d6ad21"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 261,
+          "backtracks": 170,
+          "elapsed_ms": 1196,
+          "witness_hash": "11e80cf9de389080"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 393,
+          "backtracks": 256,
+          "elapsed_ms": 1847,
+          "witness_hash": "b31e3993fdda7c15"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 492,
+          "backtracks": 326,
+          "elapsed_ms": 2332,
+          "witness_hash": "2efb0fb6026c21b9"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 618,
+          "backtracks": 408,
+          "elapsed_ms": 3015,
+          "witness_hash": "8a9686fc569cac94"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 619,
+          "backtracks": 408,
+          "elapsed_ms": 3018,
+          "witness_hash": "1e8d08e2cd54d840"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 14,
+          "witness_hash": "5df9b75a7d1e49a1"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 19,
+          "witness_hash": "bd16b60721ae29e6"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 23,
+          "witness_hash": "51c1559e8dab24ab"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 28,
+          "witness_hash": "54903399ef44e7ce"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 33,
+          "witness_hash": "6ce83a49c4de0063"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 37,
+          "witness_hash": "61a450cb240fd27b"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 41,
+          "witness_hash": "13c4695e9fb069a5"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 45,
+          "witness_hash": "c8039aa4057dd8c0"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 50,
+          "witness_hash": "4d7f7310ef142f88"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 11,
+          "backtracks": 0,
+          "elapsed_ms": 55,
+          "witness_hash": "ca54c30f4215b67c"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 16,
+          "backtracks": 4,
+          "elapsed_ms": 74,
+          "witness_hash": "09f588cff9c2cebf"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 22,
+          "backtracks": 8,
+          "elapsed_ms": 101,
+          "witness_hash": "4a26d8ffe882c439"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 23,
+          "backtracks": 8,
+          "elapsed_ms": 108,
+          "witness_hash": "656c7962b34113f6"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 75,
+          "backtracks": 49,
+          "elapsed_ms": 332,
+          "witness_hash": "23ed85205ccee3d1"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 76,
+          "backtracks": 49,
+          "elapsed_ms": 340,
+          "witness_hash": "b5566532bfe70628"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 77,
+          "backtracks": 49,
+          "elapsed_ms": 348,
+          "witness_hash": "950b1ca4b7a88d9c"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 79,
+          "backtracks": 50,
+          "elapsed_ms": 358,
+          "witness_hash": "c20a339b915bdbed"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 80,
+          "backtracks": 50,
+          "elapsed_ms": 362,
+          "witness_hash": "92c1457312d83d4e"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 253,
+          "backtracks": 164,
+          "elapsed_ms": 1144,
+          "witness_hash": "1ccbc964dac44d0c"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 254,
+          "backtracks": 164,
+          "elapsed_ms": 1149,
+          "witness_hash": "2c16fb46ba8c94ef"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 339,
+          "backtracks": 215,
+          "elapsed_ms": 1745,
+          "witness_hash": "dcc3663ebf57179a"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 340,
+          "backtracks": 215,
+          "elapsed_ms": 1752,
+          "witness_hash": "0d447a42f2a37604"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 352,
+          "backtracks": 221,
+          "elapsed_ms": 1848,
+          "witness_hash": "2963f855a122bc00"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 370,
+          "backtracks": 229,
+          "elapsed_ms": 2001,
+          "witness_hash": "47c5a065abc64242"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 371,
+          "backtracks": 229,
+          "elapsed_ms": 2014,
+          "witness_hash": "695ee4afd0e16cbd"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 372,
+          "backtracks": 229,
+          "elapsed_ms": 2022,
+          "witness_hash": "ae2d16ad582bb80f"
+        },
+        {
+          "patch_size": 28,
+          "visited_nodes": 397,
+          "backtracks": 241,
+          "elapsed_ms": 2234,
+          "witness_hash": "cfcbdd6e0d1abfe6"
+        }
+      ]
+    },
+    {
+      "id": "10_16113",
+      "seed": 3,
+      "baseline": {
+        "largest_patch": 27,
+        "witness_hash": "913017bbeb925415",
+        "visited_nodes": 641,
+        "backtracks": 427,
+        "elapsed_ms": 3272,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 26,
+        "witness_hash": "ccf253260ac3d2a7",
+        "visited_nodes": 684,
+        "backtracks": 418,
+        "elapsed_ms": 5591,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 406,
+        "nogood_clauses": 5766,
+        "nogood_prunes": 4343,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 26,
+          "witness_hash": "ccf253260ac3d2a7",
+          "visited_nodes": 665,
+          "backtracks": 414,
+          "elapsed_ms": 4238,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 401,
+          "nogood_clauses": 5393,
+          "nogood_prunes": 3671,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 26,
+          "witness_hash": "ccf253260ac3d2a7",
+          "visited_nodes": 665,
+          "backtracks": 413,
+          "elapsed_ms": 4115,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 396,
+          "nogood_clauses": 5172,
+          "nogood_prunes": 3370,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 21,
+          "witness_hash": "be3e0f61b8506ab7",
+          "visited_nodes": 638,
+          "backtracks": 416,
+          "elapsed_ms": 3761,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 404,
+          "nogood_clauses": 5035,
+          "nogood_prunes": 2584,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": -1,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 8,
+          "witness_hash": "5df9b75a7d1e49a1"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 13,
+          "witness_hash": "bd16b60721ae29e6"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 17,
+          "witness_hash": "51c1559e8dab24ab"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 22,
+          "witness_hash": "adf4e5e719add2ec"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 28,
+          "witness_hash": "9905a9a5027f27d4"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 30,
+          "witness_hash": "4db1638261d94a32"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 10,
+          "backtracks": 1,
+          "elapsed_ms": 38,
+          "witness_hash": "2c61cb03dee134ed"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 14,
+          "backtracks": 2,
+          "elapsed_ms": 57,
+          "witness_hash": "e357dc64592b60d5"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 15,
+          "backtracks": 2,
+          "elapsed_ms": 63,
+          "witness_hash": "b76355710da06078"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 16,
+          "backtracks": 2,
+          "elapsed_ms": 68,
+          "witness_hash": "7ef505f1c90ebed3"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 17,
+          "backtracks": 2,
+          "elapsed_ms": 76,
+          "witness_hash": "e451de31adce787f"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 18,
+          "backtracks": 2,
+          "elapsed_ms": 80,
+          "witness_hash": "2e07fa1553d1a3c5"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 19,
+          "backtracks": 2,
+          "elapsed_ms": 83,
+          "witness_hash": "c21ae81bf923fc1c"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 26,
+          "backtracks": 5,
+          "elapsed_ms": 119,
+          "witness_hash": "f3bd4fd06510d20a"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 28,
+          "backtracks": 6,
+          "elapsed_ms": 126,
+          "witness_hash": "77619457afc49583"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 43,
+          "backtracks": 16,
+          "elapsed_ms": 205,
+          "witness_hash": "267c6f0633055aeb"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 45,
+          "backtracks": 17,
+          "elapsed_ms": 213,
+          "witness_hash": "31af66a468538d85"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 46,
+          "backtracks": 17,
+          "elapsed_ms": 221,
+          "witness_hash": "727596366530fa84"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 459,
+          "backtracks": 309,
+          "elapsed_ms": 2238,
+          "witness_hash": "e4d525c36085def0"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 461,
+          "backtracks": 310,
+          "elapsed_ms": 2251,
+          "witness_hash": "42f2f0ccfd44ed31"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 462,
+          "backtracks": 310,
+          "elapsed_ms": 2260,
+          "witness_hash": "68ce702be5aa2c3c"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 474,
+          "backtracks": 317,
+          "elapsed_ms": 2333,
+          "witness_hash": "38d902b327895beb"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 507,
+          "backtracks": 338,
+          "elapsed_ms": 2527,
+          "witness_hash": "0f9459f795657c32"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 509,
+          "backtracks": 339,
+          "elapsed_ms": 2538,
+          "witness_hash": "41a9943729659be8"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 542,
+          "backtracks": 357,
+          "elapsed_ms": 2710,
+          "witness_hash": "648539ec9d5ed621"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 549,
+          "backtracks": 360,
+          "elapsed_ms": 2747,
+          "witness_hash": "913017bbeb925415"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 6,
+          "witness_hash": "5df9b75a7d1e49a1"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "bd16b60721ae29e6"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 14,
+          "witness_hash": "51c1559e8dab24ab"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 18,
+          "witness_hash": "adf4e5e719add2ec"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 23,
+          "witness_hash": "9905a9a5027f27d4"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 25,
+          "witness_hash": "4db1638261d94a32"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 10,
+          "backtracks": 1,
+          "elapsed_ms": 33,
+          "witness_hash": "2c61cb03dee134ed"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 14,
+          "backtracks": 2,
+          "elapsed_ms": 50,
+          "witness_hash": "e357dc64592b60d5"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 15,
+          "backtracks": 2,
+          "elapsed_ms": 55,
+          "witness_hash": "b76355710da06078"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 16,
+          "backtracks": 2,
+          "elapsed_ms": 61,
+          "witness_hash": "7ef505f1c90ebed3"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 17,
+          "backtracks": 2,
+          "elapsed_ms": 68,
+          "witness_hash": "e451de31adce787f"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 18,
+          "backtracks": 2,
+          "elapsed_ms": 71,
+          "witness_hash": "2e07fa1553d1a3c5"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 19,
+          "backtracks": 2,
+          "elapsed_ms": 75,
+          "witness_hash": "c21ae81bf923fc1c"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 26,
+          "backtracks": 5,
+          "elapsed_ms": 110,
+          "witness_hash": "f3bd4fd06510d20a"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 28,
+          "backtracks": 6,
+          "elapsed_ms": 118,
+          "witness_hash": "77619457afc49583"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 43,
+          "backtracks": 16,
+          "elapsed_ms": 195,
+          "witness_hash": "267c6f0633055aeb"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 45,
+          "backtracks": 17,
+          "elapsed_ms": 202,
+          "witness_hash": "31af66a468538d85"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 46,
+          "backtracks": 17,
+          "elapsed_ms": 209,
+          "witness_hash": "218965d7fb078a9f"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 203,
+          "backtracks": 121,
+          "elapsed_ms": 959,
+          "witness_hash": "8b9fad312642eb06"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 204,
+          "backtracks": 121,
+          "elapsed_ms": 965,
+          "witness_hash": "e22aac106c8725f3"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 568,
+          "backtracks": 346,
+          "elapsed_ms": 3386,
+          "witness_hash": "4a571f76ed999bab"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 569,
+          "backtracks": 346,
+          "elapsed_ms": 3393,
+          "witness_hash": "6d0033633f896c18"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 585,
+          "backtracks": 351,
+          "elapsed_ms": 3524,
+          "witness_hash": "afce8ab9d0411810"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 588,
+          "backtracks": 352,
+          "elapsed_ms": 3557,
+          "witness_hash": "4b20d00f6ab93404"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 589,
+          "backtracks": 352,
+          "elapsed_ms": 3567,
+          "witness_hash": "ccf253260ac3d2a7"
+        }
+      ]
+    },
+    {
+      "id": "10_45026",
+      "seed": 1,
+      "baseline": {
+        "largest_patch": 14,
+        "witness_hash": "ca267abb58ed4c66",
+        "visited_nodes": 486,
+        "backtracks": 454,
+        "elapsed_ms": 2965,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 14,
+        "witness_hash": "025c7d17f7b58e97",
+        "visited_nodes": 539,
+        "backtracks": 442,
+        "elapsed_ms": 5579,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 431,
+        "nogood_clauses": 4252,
+        "nogood_prunes": 4119,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 14,
+          "witness_hash": "025c7d17f7b58e97",
+          "visited_nodes": 538,
+          "backtracks": 442,
+          "elapsed_ms": 4158,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 428,
+          "nogood_clauses": 4214,
+          "nogood_prunes": 4076,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 14,
+          "witness_hash": "025c7d17f7b58e97",
+          "visited_nodes": 535,
+          "backtracks": 443,
+          "elapsed_ms": 4070,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 421,
+          "nogood_clauses": 4134,
+          "nogood_prunes": 3934,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 14,
+          "witness_hash": "849ed53fe7f6d390",
+          "visited_nodes": 516,
+          "backtracks": 451,
+          "elapsed_ms": 3484,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 413,
+          "nogood_clauses": 3634,
+          "nogood_prunes": 3196,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": 0,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "835e4d7bf6c8ec56"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 12,
+          "witness_hash": "ee574935074960cc"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 16,
+          "witness_hash": "d28444bfa1d40570"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 6,
+          "backtracks": 1,
+          "elapsed_ms": 22,
+          "witness_hash": "f365cd6ddaf26337"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 7,
+          "backtracks": 1,
+          "elapsed_ms": 31,
+          "witness_hash": "b445a43b4b2bd036"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 27,
+          "backtracks": 17,
+          "elapsed_ms": 138,
+          "witness_hash": "fae7cb7f12e225f7"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 132,
+          "backtracks": 116,
+          "elapsed_ms": 640,
+          "witness_hash": "1c413f4f90066d76"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 154,
+          "backtracks": 133,
+          "elapsed_ms": 766,
+          "witness_hash": "b0d3a5215447dc28"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 274,
+          "backtracks": 245,
+          "elapsed_ms": 1461,
+          "witness_hash": "6385e2cb9084c502"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 302,
+          "backtracks": 272,
+          "elapsed_ms": 1652,
+          "witness_hash": "c492eb6b7b2d3a52"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 328,
+          "backtracks": 297,
+          "elapsed_ms": 1840,
+          "witness_hash": "06b058fff70b9a65"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 329,
+          "backtracks": 297,
+          "elapsed_ms": 1851,
+          "witness_hash": "dea51a6c5d669f03"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 449,
+          "backtracks": 405,
+          "elapsed_ms": 2706,
+          "witness_hash": "ca267abb58ed4c66"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 6,
+          "witness_hash": "835e4d7bf6c8ec56"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 8,
+          "witness_hash": "ee574935074960cc"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 13,
+          "witness_hash": "d28444bfa1d40570"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 6,
+          "backtracks": 1,
+          "elapsed_ms": 18,
+          "witness_hash": "f365cd6ddaf26337"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 7,
+          "backtracks": 1,
+          "elapsed_ms": 26,
+          "witness_hash": "b445a43b4b2bd036"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 27,
+          "backtracks": 17,
+          "elapsed_ms": 110,
+          "witness_hash": "e7304021323cd24c"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 81,
+          "backtracks": 65,
+          "elapsed_ms": 383,
+          "witness_hash": "eabbcc8e6327bfed"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 82,
+          "backtracks": 65,
+          "elapsed_ms": 391,
+          "witness_hash": "444764a4b6e6c3f4"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 110,
+          "backtracks": 92,
+          "elapsed_ms": 575,
+          "witness_hash": "5ba122092f8cf058"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 111,
+          "backtracks": 92,
+          "elapsed_ms": 586,
+          "witness_hash": "480b9647f899788e"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 141,
+          "backtracks": 117,
+          "elapsed_ms": 819,
+          "witness_hash": "b283de80dbe14988"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 317,
+          "backtracks": 258,
+          "elapsed_ms": 2302,
+          "witness_hash": "c98aa76bdbd9e447"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 493,
+          "backtracks": 399,
+          "elapsed_ms": 3763,
+          "witness_hash": "025c7d17f7b58e97"
+        }
+      ]
+    },
+    {
+      "id": "10_45026",
+      "seed": 2,
+      "baseline": {
+        "largest_patch": 17,
+        "witness_hash": "b4ad5cba53b90111",
+        "visited_nodes": 487,
+        "backtracks": 440,
+        "elapsed_ms": 3789,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 19,
+        "witness_hash": "d4ece99f39e9b09b",
+        "visited_nodes": 541,
+        "backtracks": 417,
+        "elapsed_ms": 6663,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 407,
+        "nogood_clauses": 4950,
+        "nogood_prunes": 1774,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 20,
+          "witness_hash": "65de691d33e8dbf6",
+          "visited_nodes": 511,
+          "backtracks": 440,
+          "elapsed_ms": 4070,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 422,
+          "nogood_clauses": 5010,
+          "nogood_prunes": 2934,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 20,
+          "witness_hash": "65de691d33e8dbf6",
+          "visited_nodes": 511,
+          "backtracks": 441,
+          "elapsed_ms": 3890,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 420,
+          "nogood_clauses": 4895,
+          "nogood_prunes": 2709,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 17,
+          "witness_hash": "7bdf692237ea8ef8",
+          "visited_nodes": 504,
+          "backtracks": 437,
+          "elapsed_ms": 3682,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 403,
+          "nogood_clauses": 4481,
+          "nogood_prunes": 2155,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 1,
+      "baseline_to_delayed_25_patch_delta": 3,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 4,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "d73307ad737ca8bc"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 12,
+          "witness_hash": "412f097dbac13ca8"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 18,
+          "witness_hash": "21881a619acc5961"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 24,
+          "witness_hash": "68525bc262af97e8"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 27,
+          "witness_hash": "4a0597867d41355b"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 9,
+          "backtracks": 1,
+          "elapsed_ms": 49,
+          "witness_hash": "ed8a69c303bf3e27"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 10,
+          "backtracks": 1,
+          "elapsed_ms": 55,
+          "witness_hash": "fe89d0573ce25102"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 15,
+          "backtracks": 5,
+          "elapsed_ms": 80,
+          "witness_hash": "1b2cda04e662975e"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 44,
+          "backtracks": 30,
+          "elapsed_ms": 261,
+          "witness_hash": "e8b30bbf4ad13e60"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 105,
+          "backtracks": 84,
+          "elapsed_ms": 644,
+          "witness_hash": "16c945f0bf961df3"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 127,
+          "backtracks": 101,
+          "elapsed_ms": 819,
+          "witness_hash": "32f937c68867cd17"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 134,
+          "backtracks": 106,
+          "elapsed_ms": 872,
+          "witness_hash": "ac3ae415aac3ba3e"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 179,
+          "backtracks": 147,
+          "elapsed_ms": 1246,
+          "witness_hash": "ed2d7a625f409c95"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 189,
+          "backtracks": 156,
+          "elapsed_ms": 1334,
+          "witness_hash": "01309a196cf9c1ae"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 215,
+          "backtracks": 178,
+          "elapsed_ms": 1560,
+          "witness_hash": "3f201b1b9f54a622"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 220,
+          "backtracks": 182,
+          "elapsed_ms": 1602,
+          "witness_hash": "b4ad5cba53b90111"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 8,
+          "witness_hash": "d73307ad737ca8bc"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 11,
+          "witness_hash": "412f097dbac13ca8"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 16,
+          "witness_hash": "21881a619acc5961"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 22,
+          "witness_hash": "68525bc262af97e8"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 25,
+          "witness_hash": "4a0597867d41355b"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 9,
+          "backtracks": 1,
+          "elapsed_ms": 40,
+          "witness_hash": "ed8a69c303bf3e27"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 10,
+          "backtracks": 1,
+          "elapsed_ms": 46,
+          "witness_hash": "fe89d0573ce25102"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 15,
+          "backtracks": 5,
+          "elapsed_ms": 69,
+          "witness_hash": "1b2cda04e662975e"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 44,
+          "backtracks": 30,
+          "elapsed_ms": 218,
+          "witness_hash": "4204554b4250a8ff"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 79,
+          "backtracks": 60,
+          "elapsed_ms": 428,
+          "witness_hash": "16c945f0bf961df3"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 80,
+          "backtracks": 60,
+          "elapsed_ms": 439,
+          "witness_hash": "32f937c68867cd17"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 87,
+          "backtracks": 65,
+          "elapsed_ms": 495,
+          "witness_hash": "021e88eba62b5d13"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 356,
+          "backtracks": 296,
+          "elapsed_ms": 2549,
+          "witness_hash": "25995b51f380f38a"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 424,
+          "backtracks": 353,
+          "elapsed_ms": 3063,
+          "witness_hash": "a2ea5d997307f22b"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 431,
+          "backtracks": 358,
+          "elapsed_ms": 3137,
+          "witness_hash": "300d1a953ffbf730"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 450,
+          "backtracks": 373,
+          "elapsed_ms": 3347,
+          "witness_hash": "53c8d6189c7416ec"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 455,
+          "backtracks": 377,
+          "elapsed_ms": 3402,
+          "witness_hash": "28a29ff15d72795d"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 456,
+          "backtracks": 377,
+          "elapsed_ms": 3415,
+          "witness_hash": "df17a5f90d7d33b6"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 457,
+          "backtracks": 377,
+          "elapsed_ms": 3428,
+          "witness_hash": "65de691d33e8dbf6"
+        }
+      ]
+    },
+    {
+      "id": "10_45026",
+      "seed": 3,
+      "baseline": {
+        "largest_patch": 16,
+        "witness_hash": "ef3f57db2e5ea8bf",
+        "visited_nodes": 477,
+        "backtracks": 445,
+        "elapsed_ms": 3169,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 17,
+        "witness_hash": "31ccbf4e9ae9f03a",
+        "visited_nodes": 543,
+        "backtracks": 439,
+        "elapsed_ms": 6201,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 424,
+        "nogood_clauses": 4144,
+        "nogood_prunes": 7258,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 17,
+          "witness_hash": "31ccbf4e9ae9f03a",
+          "visited_nodes": 543,
+          "backtracks": 439,
+          "elapsed_ms": 3724,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 420,
+          "nogood_clauses": 4077,
+          "nogood_prunes": 7189,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 17,
+          "witness_hash": "31ccbf4e9ae9f03a",
+          "visited_nodes": 540,
+          "backtracks": 439,
+          "elapsed_ms": 3529,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 412,
+          "nogood_clauses": 3947,
+          "nogood_prunes": 6815,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 15,
+          "witness_hash": "1dd266b12a0ad0e6",
+          "visited_nodes": 528,
+          "backtracks": 441,
+          "elapsed_ms": 3247,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 396,
+          "nogood_clauses": 3637,
+          "nogood_prunes": 5881,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": 1,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 12,
+          "witness_hash": "835e4d7bf6c8ec56"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 16,
+          "witness_hash": "ee574935074960cc"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 22,
+          "witness_hash": "d28444bfa1d40570"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 6,
+          "backtracks": 1,
+          "elapsed_ms": 28,
+          "witness_hash": "f365cd6ddaf26337"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 7,
+          "backtracks": 1,
+          "elapsed_ms": 36,
+          "witness_hash": "b445a43b4b2bd036"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 27,
+          "backtracks": 17,
+          "elapsed_ms": 148,
+          "witness_hash": "e0a8d5867ead155e"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 159,
+          "backtracks": 143,
+          "elapsed_ms": 875,
+          "witness_hash": "ab32476b7efb421e"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 226,
+          "backtracks": 204,
+          "elapsed_ms": 1312,
+          "witness_hash": "60324485992da50b"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 235,
+          "backtracks": 212,
+          "elapsed_ms": 1362,
+          "witness_hash": "08dab4f71eb5ddf7"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 257,
+          "backtracks": 229,
+          "elapsed_ms": 1499,
+          "witness_hash": "8410456451f75536"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 264,
+          "backtracks": 234,
+          "elapsed_ms": 1558,
+          "witness_hash": "9caf62fae1a9b448"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 298,
+          "backtracks": 265,
+          "elapsed_ms": 1796,
+          "witness_hash": "b509dc485b587c91"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 443,
+          "backtracks": 403,
+          "elapsed_ms": 2886,
+          "witness_hash": "e6a245bdcc209440"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 449,
+          "backtracks": 407,
+          "elapsed_ms": 2940,
+          "witness_hash": "b2fdf1f26b24a84e"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 454,
+          "backtracks": 411,
+          "elapsed_ms": 2987,
+          "witness_hash": "ef3f57db2e5ea8bf"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 7,
+          "witness_hash": "835e4d7bf6c8ec56"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "ee574935074960cc"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 13,
+          "witness_hash": "d28444bfa1d40570"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 6,
+          "backtracks": 1,
+          "elapsed_ms": 18,
+          "witness_hash": "f365cd6ddaf26337"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 7,
+          "backtracks": 1,
+          "elapsed_ms": 25,
+          "witness_hash": "b445a43b4b2bd036"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 27,
+          "backtracks": 17,
+          "elapsed_ms": 98,
+          "witness_hash": "d1ddb774f607bb19"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 135,
+          "backtracks": 106,
+          "elapsed_ms": 557,
+          "witness_hash": "291e764f5c5eed47"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 144,
+          "backtracks": 113,
+          "elapsed_ms": 602,
+          "witness_hash": "04ffabbbbee47bfc"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 189,
+          "backtracks": 150,
+          "elapsed_ms": 826,
+          "witness_hash": "a2d3a09e6c707e28"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 190,
+          "backtracks": 150,
+          "elapsed_ms": 834,
+          "witness_hash": "94b326e8efa2d43b"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 191,
+          "backtracks": 150,
+          "elapsed_ms": 842,
+          "witness_hash": "9b3b3e954dff47a3"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 360,
+          "backtracks": 289,
+          "elapsed_ms": 1991,
+          "witness_hash": "b61dc20cc94e47cc"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 361,
+          "backtracks": 289,
+          "elapsed_ms": 2003,
+          "witness_hash": "a87af104804297aa"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 362,
+          "backtracks": 289,
+          "elapsed_ms": 2011,
+          "witness_hash": "0ff25dcc65308ede"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 513,
+          "backtracks": 400,
+          "elapsed_ms": 3366,
+          "witness_hash": "1e8d72257250e591"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 529,
+          "backtracks": 412,
+          "elapsed_ms": 3551,
+          "witness_hash": "31ccbf4e9ae9f03a"
+        }
+      ]
+    },
+    {
+      "id": "10_45033",
+      "seed": 1,
+      "baseline": {
+        "largest_patch": 23,
+        "witness_hash": "4ff72ef6b74d881c",
+        "visited_nodes": 425,
+        "backtracks": 417,
+        "elapsed_ms": 4572,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 40,
+        "witness_hash": "2017c904dab99f1e",
+        "visited_nodes": 351,
+        "backtracks": 288,
+        "elapsed_ms": 14418,
+        "termination_reason": "target_reached",
+        "nogood_failure_states": 288,
+        "nogood_clauses": 6902,
+        "nogood_prunes": 961,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 40,
+          "witness_hash": "2017c904dab99f1e",
+          "visited_nodes": 369,
+          "backtracks": 306,
+          "elapsed_ms": 10565,
+          "termination_reason": "target_reached",
+          "nogood_failure_states": 306,
+          "nogood_clauses": 7115,
+          "nogood_prunes": 961,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 40,
+          "witness_hash": "869191428ea118fd",
+          "visited_nodes": 385,
+          "backtracks": 358,
+          "elapsed_ms": 10511,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 323,
+          "nogood_clauses": 7316,
+          "nogood_prunes": 938,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 38,
+          "witness_hash": "f9deaec87960971f",
+          "visited_nodes": 394,
+          "backtracks": 367,
+          "elapsed_ms": 10102,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 336,
+          "nogood_clauses": 7252,
+          "nogood_prunes": 833,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": 17,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 10,
+          "witness_hash": "33a0681f895121c2"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 13,
+          "witness_hash": "a77780d1c97d1879"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 24,
+          "witness_hash": "c23acc656d8ceb1c"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 38,
+          "witness_hash": "d0852006c35e1700"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 51,
+          "witness_hash": "b599456648ed4f2c"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 59,
+          "witness_hash": "6b7c19898ca99bcc"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 65,
+          "witness_hash": "3df88ab882792eed"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 73,
+          "witness_hash": "1ef967d0de60077f"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 79,
+          "witness_hash": "f1ef891953f046be"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 15,
+          "backtracks": 4,
+          "elapsed_ms": 115,
+          "witness_hash": "998a8c142804ef39"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 26,
+          "backtracks": 14,
+          "elapsed_ms": 207,
+          "witness_hash": "7834e137b5762435"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 200,
+          "backtracks": 187,
+          "elapsed_ms": 1904,
+          "witness_hash": "26e8198bcbea60b4"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 213,
+          "backtracks": 199,
+          "elapsed_ms": 2026,
+          "witness_hash": "b49483fd0f4925d8"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 300,
+          "backtracks": 282,
+          "elapsed_ms": 2873,
+          "witness_hash": "2ff4953e6491b35b"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 301,
+          "backtracks": 282,
+          "elapsed_ms": 2884,
+          "witness_hash": "3d3b479934108799"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 302,
+          "backtracks": 282,
+          "elapsed_ms": 2898,
+          "witness_hash": "7ce2dbc9e1e2b97b"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 303,
+          "backtracks": 282,
+          "elapsed_ms": 2905,
+          "witness_hash": "55c657dbe0c99b7e"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 317,
+          "backtracks": 295,
+          "elapsed_ms": 3090,
+          "witness_hash": "cc2ea3da564dc673"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 318,
+          "backtracks": 295,
+          "elapsed_ms": 3100,
+          "witness_hash": "cab02a53d04bc4a3"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 319,
+          "backtracks": 295,
+          "elapsed_ms": 3112,
+          "witness_hash": "e71e195f808780c9"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 348,
+          "backtracks": 323,
+          "elapsed_ms": 3519,
+          "witness_hash": "9f50af893a444b62"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 378,
+          "backtracks": 351,
+          "elapsed_ms": 3936,
+          "witness_hash": "4ff72ef6b74d881c"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 1,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 7,
+          "witness_hash": "33a0681f895121c2"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 10,
+          "witness_hash": "a77780d1c97d1879"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 18,
+          "witness_hash": "c23acc656d8ceb1c"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 28,
+          "witness_hash": "d0852006c35e1700"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 38,
+          "witness_hash": "b599456648ed4f2c"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 48,
+          "witness_hash": "6b7c19898ca99bcc"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 57,
+          "witness_hash": "3df88ab882792eed"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 70,
+          "witness_hash": "1ef967d0de60077f"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 79,
+          "witness_hash": "f1ef891953f046be"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 15,
+          "backtracks": 4,
+          "elapsed_ms": 115,
+          "witness_hash": "998a8c142804ef39"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 26,
+          "backtracks": 14,
+          "elapsed_ms": 199,
+          "witness_hash": "00cde31762cf4bed"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 104,
+          "backtracks": 91,
+          "elapsed_ms": 931,
+          "witness_hash": "f7cd030a7ed7b27e"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 111,
+          "backtracks": 97,
+          "elapsed_ms": 1009,
+          "witness_hash": "737f2cef7545ebad"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 118,
+          "backtracks": 102,
+          "elapsed_ms": 1106,
+          "witness_hash": "da48f1ec9f5a4ead"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 119,
+          "backtracks": 102,
+          "elapsed_ms": 1126,
+          "witness_hash": "776a3b51ece00bcb"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 125,
+          "backtracks": 107,
+          "elapsed_ms": 1213,
+          "witness_hash": "22ad49731a429fb4"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 136,
+          "backtracks": 117,
+          "elapsed_ms": 1408,
+          "witness_hash": "271dc601009376cd"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 157,
+          "backtracks": 137,
+          "elapsed_ms": 1776,
+          "witness_hash": "120e84824df22065"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 178,
+          "backtracks": 156,
+          "elapsed_ms": 2176,
+          "witness_hash": "d52ba3b45584132d"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 179,
+          "backtracks": 156,
+          "elapsed_ms": 2200,
+          "witness_hash": "547ef1e58bb3b8a5"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 180,
+          "backtracks": 156,
+          "elapsed_ms": 2224,
+          "witness_hash": "cce6e5bdc25d19e5"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 188,
+          "backtracks": 162,
+          "elapsed_ms": 2419,
+          "witness_hash": "da96f1b346ffc5ef"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 193,
+          "backtracks": 164,
+          "elapsed_ms": 2539,
+          "witness_hash": "3f0b5db32ef43899"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 194,
+          "backtracks": 164,
+          "elapsed_ms": 2568,
+          "witness_hash": "3f5792cca4c0a6a4"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 199,
+          "backtracks": 168,
+          "elapsed_ms": 2709,
+          "witness_hash": "cb683bb2133731d7"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 200,
+          "backtracks": 168,
+          "elapsed_ms": 2744,
+          "witness_hash": "7420122ac27d6a7f"
+        },
+        {
+          "patch_size": 28,
+          "visited_nodes": 208,
+          "backtracks": 175,
+          "elapsed_ms": 2987,
+          "witness_hash": "9a6cc4341b461737"
+        },
+        {
+          "patch_size": 29,
+          "visited_nodes": 209,
+          "backtracks": 175,
+          "elapsed_ms": 3024,
+          "witness_hash": "f8b89f440db1f1c1"
+        },
+        {
+          "patch_size": 30,
+          "visited_nodes": 210,
+          "backtracks": 175,
+          "elapsed_ms": 3066,
+          "witness_hash": "a7661c06fd98edc8"
+        },
+        {
+          "patch_size": 31,
+          "visited_nodes": 211,
+          "backtracks": 175,
+          "elapsed_ms": 3112,
+          "witness_hash": "8bac996d719dddaf"
+        },
+        {
+          "patch_size": 32,
+          "visited_nodes": 212,
+          "backtracks": 175,
+          "elapsed_ms": 3157,
+          "witness_hash": "a3945c2cbd394a2e"
+        },
+        {
+          "patch_size": 33,
+          "visited_nodes": 213,
+          "backtracks": 175,
+          "elapsed_ms": 3202,
+          "witness_hash": "c3d56d11ab24416f"
+        },
+        {
+          "patch_size": 34,
+          "visited_nodes": 215,
+          "backtracks": 176,
+          "elapsed_ms": 3281,
+          "witness_hash": "914074cbc7191be7"
+        },
+        {
+          "patch_size": 35,
+          "visited_nodes": 216,
+          "backtracks": 176,
+          "elapsed_ms": 3329,
+          "witness_hash": "3009bcd97ba71661"
+        },
+        {
+          "patch_size": 36,
+          "visited_nodes": 217,
+          "backtracks": 176,
+          "elapsed_ms": 3374,
+          "witness_hash": "fa44a74c38e828b4"
+        },
+        {
+          "patch_size": 37,
+          "visited_nodes": 235,
+          "backtracks": 188,
+          "elapsed_ms": 4192,
+          "witness_hash": "4811daec85811112"
+        },
+        {
+          "patch_size": 38,
+          "visited_nodes": 346,
+          "backtracks": 288,
+          "elapsed_ms": 9300,
+          "witness_hash": "5a038c789295257b"
+        },
+        {
+          "patch_size": 39,
+          "visited_nodes": 368,
+          "backtracks": 306,
+          "elapsed_ms": 10446,
+          "witness_hash": "869191428ea118fd"
+        },
+        {
+          "patch_size": 40,
+          "visited_nodes": 369,
+          "backtracks": 306,
+          "elapsed_ms": 10507,
+          "witness_hash": "2017c904dab99f1e"
+        }
+      ]
+    },
+    {
+      "id": "10_45033",
+      "seed": 2,
+      "baseline": {
+        "largest_patch": 36,
+        "witness_hash": "dc01dcccbba7abbf",
+        "visited_nodes": 427,
+        "backtracks": 376,
+        "elapsed_ms": 8362,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 27,
+        "witness_hash": "b400963821a4aacf",
+        "visited_nodes": 424,
+        "backtracks": 367,
+        "elapsed_ms": 11138,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 345,
+        "nogood_clauses": 7636,
+        "nogood_prunes": 1554,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 40,
+          "witness_hash": "de7fb84739a496c7",
+          "visited_nodes": 329,
+          "backtracks": 257,
+          "elapsed_ms": 12178,
+          "termination_reason": "target_reached",
+          "nogood_failure_states": 257,
+          "nogood_clauses": 6517,
+          "nogood_prunes": 1486,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 28,
+          "witness_hash": "88a4de9aa494f340",
+          "visited_nodes": 453,
+          "backtracks": 384,
+          "elapsed_ms": 16514,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 362,
+          "nogood_clauses": 9049,
+          "nogood_prunes": 2046,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 35,
+          "witness_hash": "2ee08d2dfe094921",
+          "visited_nodes": 423,
+          "backtracks": 365,
+          "elapsed_ms": 12794,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 337,
+          "nogood_clauses": 8618,
+          "nogood_prunes": 1691,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 13,
+      "baseline_to_delayed_25_patch_delta": 4,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 10,
+          "witness_hash": "16f347151b04849f"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 13,
+          "witness_hash": "a77780d1c97d1879"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 22,
+          "witness_hash": "9143f0b2e5cc99c4"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 33,
+          "witness_hash": "797353ccca6217d2"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 41,
+          "witness_hash": "40004462728d21e4"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 56,
+          "witness_hash": "d8709d7b6ffdcce4"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 65,
+          "witness_hash": "55c41c38334c6a24"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 72,
+          "witness_hash": "30a0c0c5744e8368"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 81,
+          "witness_hash": "8124c2089e1cc2f7"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 11,
+          "backtracks": 0,
+          "elapsed_ms": 94,
+          "witness_hash": "ac836fc7f00f43d1"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 12,
+          "backtracks": 0,
+          "elapsed_ms": 103,
+          "witness_hash": "36243e9802fcb563"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 13,
+          "backtracks": 0,
+          "elapsed_ms": 118,
+          "witness_hash": "2a23a99957748458"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 14,
+          "backtracks": 0,
+          "elapsed_ms": 129,
+          "witness_hash": "8822a0d70413ce25"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 15,
+          "backtracks": 0,
+          "elapsed_ms": 139,
+          "witness_hash": "f0fafb3da704cf08"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 23,
+          "backtracks": 7,
+          "elapsed_ms": 228,
+          "witness_hash": "26b74a93921e5398"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 26,
+          "backtracks": 8,
+          "elapsed_ms": 252,
+          "witness_hash": "be3d25d885336427"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 47,
+          "backtracks": 22,
+          "elapsed_ms": 485,
+          "witness_hash": "417f18cd35ed9614"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 48,
+          "backtracks": 22,
+          "elapsed_ms": 500,
+          "witness_hash": "5e5dd0fb1a636093"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 56,
+          "backtracks": 29,
+          "elapsed_ms": 615,
+          "witness_hash": "8b1a8b55ebaefd7e"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 57,
+          "backtracks": 29,
+          "elapsed_ms": 631,
+          "witness_hash": "466af573c7577a71"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 58,
+          "backtracks": 29,
+          "elapsed_ms": 644,
+          "witness_hash": "d8aa45278fc5f787"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 59,
+          "backtracks": 29,
+          "elapsed_ms": 660,
+          "witness_hash": "d7fa2caf0938e33d"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 74,
+          "backtracks": 43,
+          "elapsed_ms": 899,
+          "witness_hash": "4d5ada6fa0cc68e8"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 89,
+          "backtracks": 57,
+          "elapsed_ms": 1142,
+          "witness_hash": "75743cdabc9e7af1"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 91,
+          "backtracks": 58,
+          "elapsed_ms": 1173,
+          "witness_hash": "d226236b34b904b8"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 92,
+          "backtracks": 58,
+          "elapsed_ms": 1184,
+          "witness_hash": "97bf24f67b8ec349"
+        },
+        {
+          "patch_size": 28,
+          "visited_nodes": 94,
+          "backtracks": 59,
+          "elapsed_ms": 1218,
+          "witness_hash": "fe4f9761bb7792d4"
+        },
+        {
+          "patch_size": 29,
+          "visited_nodes": 96,
+          "backtracks": 60,
+          "elapsed_ms": 1244,
+          "witness_hash": "538ce6e1cdbd2ecb"
+        },
+        {
+          "patch_size": 30,
+          "visited_nodes": 98,
+          "backtracks": 61,
+          "elapsed_ms": 1276,
+          "witness_hash": "4d12b64706bd8e04"
+        },
+        {
+          "patch_size": 31,
+          "visited_nodes": 99,
+          "backtracks": 61,
+          "elapsed_ms": 1295,
+          "witness_hash": "0a42e3709531c3ec"
+        },
+        {
+          "patch_size": 32,
+          "visited_nodes": 102,
+          "backtracks": 63,
+          "elapsed_ms": 1341,
+          "witness_hash": "bb352d6d55b0950a"
+        },
+        {
+          "patch_size": 33,
+          "visited_nodes": 123,
+          "backtracks": 81,
+          "elapsed_ms": 1754,
+          "witness_hash": "8dd7981a5527754d"
+        },
+        {
+          "patch_size": 34,
+          "visited_nodes": 136,
+          "backtracks": 93,
+          "elapsed_ms": 2011,
+          "witness_hash": "b3c16b6e20f5565a"
+        },
+        {
+          "patch_size": 35,
+          "visited_nodes": 137,
+          "backtracks": 93,
+          "elapsed_ms": 2028,
+          "witness_hash": "60bab36aa483d31b"
+        },
+        {
+          "patch_size": 36,
+          "visited_nodes": 162,
+          "backtracks": 114,
+          "elapsed_ms": 2553,
+          "witness_hash": "dc01dcccbba7abbf"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 7,
+          "witness_hash": "16f347151b04849f"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 10,
+          "witness_hash": "a77780d1c97d1879"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 18,
+          "witness_hash": "9143f0b2e5cc99c4"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 27,
+          "witness_hash": "797353ccca6217d2"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 37,
+          "witness_hash": "40004462728d21e4"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 48,
+          "witness_hash": "d8709d7b6ffdcce4"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 57,
+          "witness_hash": "55c41c38334c6a24"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 67,
+          "witness_hash": "30a0c0c5744e8368"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 78,
+          "witness_hash": "8124c2089e1cc2f7"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 11,
+          "backtracks": 0,
+          "elapsed_ms": 87,
+          "witness_hash": "ac836fc7f00f43d1"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 12,
+          "backtracks": 0,
+          "elapsed_ms": 98,
+          "witness_hash": "36243e9802fcb563"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 13,
+          "backtracks": 0,
+          "elapsed_ms": 114,
+          "witness_hash": "2a23a99957748458"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 14,
+          "backtracks": 0,
+          "elapsed_ms": 126,
+          "witness_hash": "8822a0d70413ce25"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 15,
+          "backtracks": 0,
+          "elapsed_ms": 139,
+          "witness_hash": "f0fafb3da704cf08"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 23,
+          "backtracks": 7,
+          "elapsed_ms": 212,
+          "witness_hash": "26b74a93921e5398"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 26,
+          "backtracks": 8,
+          "elapsed_ms": 238,
+          "witness_hash": "be3d25d885336427"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 47,
+          "backtracks": 22,
+          "elapsed_ms": 449,
+          "witness_hash": "417f18cd35ed9614"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 48,
+          "backtracks": 22,
+          "elapsed_ms": 465,
+          "witness_hash": "48342cbf7febb3fb"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 56,
+          "backtracks": 29,
+          "elapsed_ms": 598,
+          "witness_hash": "23bee3743fd16ce3"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 57,
+          "backtracks": 29,
+          "elapsed_ms": 621,
+          "witness_hash": "5b12ce5ec4c8602d"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 58,
+          "backtracks": 29,
+          "elapsed_ms": 645,
+          "witness_hash": "562653cb289cb1e7"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 59,
+          "backtracks": 29,
+          "elapsed_ms": 669,
+          "witness_hash": "fe10922710a82a8a"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 60,
+          "backtracks": 29,
+          "elapsed_ms": 697,
+          "witness_hash": "33486b8f6afd1e16"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 124,
+          "backtracks": 84,
+          "elapsed_ms": 2618,
+          "witness_hash": "32143f7fbc049438"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 125,
+          "backtracks": 84,
+          "elapsed_ms": 2657,
+          "witness_hash": "cd0bffefa1d03bb2"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 126,
+          "backtracks": 84,
+          "elapsed_ms": 2726,
+          "witness_hash": "25acb2a176b1971c"
+        },
+        {
+          "patch_size": 28,
+          "visited_nodes": 269,
+          "backtracks": 211,
+          "elapsed_ms": 8752,
+          "witness_hash": "01f191541350e757"
+        },
+        {
+          "patch_size": 29,
+          "visited_nodes": 277,
+          "backtracks": 218,
+          "elapsed_ms": 9140,
+          "witness_hash": "4f6193006a1b9b34"
+        },
+        {
+          "patch_size": 30,
+          "visited_nodes": 297,
+          "backtracks": 237,
+          "elapsed_ms": 10057,
+          "witness_hash": "dd167750d2b26218"
+        },
+        {
+          "patch_size": 31,
+          "visited_nodes": 304,
+          "backtracks": 243,
+          "elapsed_ms": 10425,
+          "witness_hash": "fe599e14085ece03"
+        },
+        {
+          "patch_size": 32,
+          "visited_nodes": 305,
+          "backtracks": 243,
+          "elapsed_ms": 10468,
+          "witness_hash": "3915a36211049b28"
+        },
+        {
+          "patch_size": 33,
+          "visited_nodes": 308,
+          "backtracks": 244,
+          "elapsed_ms": 10624,
+          "witness_hash": "0e137b3425c358df"
+        },
+        {
+          "patch_size": 34,
+          "visited_nodes": 309,
+          "backtracks": 244,
+          "elapsed_ms": 10676,
+          "witness_hash": "3d7e756addec6d35"
+        },
+        {
+          "patch_size": 35,
+          "visited_nodes": 310,
+          "backtracks": 244,
+          "elapsed_ms": 10749,
+          "witness_hash": "581eec01bebc44f2"
+        },
+        {
+          "patch_size": 36,
+          "visited_nodes": 311,
+          "backtracks": 244,
+          "elapsed_ms": 10816,
+          "witness_hash": "807a4cf9bc817c23"
+        },
+        {
+          "patch_size": 37,
+          "visited_nodes": 312,
+          "backtracks": 244,
+          "elapsed_ms": 10889,
+          "witness_hash": "ef0b5c37ae5613b5"
+        },
+        {
+          "patch_size": 38,
+          "visited_nodes": 325,
+          "backtracks": 256,
+          "elapsed_ms": 11742,
+          "witness_hash": "1f27b788fc8f81f1"
+        },
+        {
+          "patch_size": 39,
+          "visited_nodes": 328,
+          "backtracks": 257,
+          "elapsed_ms": 11975,
+          "witness_hash": "8afd972d6b3d21a5"
+        },
+        {
+          "patch_size": 40,
+          "visited_nodes": 329,
+          "backtracks": 257,
+          "elapsed_ms": 12086,
+          "witness_hash": "de7fb84739a496c7"
+        }
+      ]
+    },
+    {
+      "id": "10_45033",
+      "seed": 3,
+      "baseline": {
+        "largest_patch": 27,
+        "witness_hash": "35eae034b7d30321",
+        "visited_nodes": 416,
+        "backtracks": 381,
+        "elapsed_ms": 6170,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 21,
+        "witness_hash": "8bec25b0181a05ea",
+        "visited_nodes": 455,
+        "backtracks": 398,
+        "elapsed_ms": 7767,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 381,
+        "nogood_clauses": 7071,
+        "nogood_prunes": 773,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 21,
+          "witness_hash": "8bec25b0181a05ea",
+          "visited_nodes": 448,
+          "backtracks": 392,
+          "elapsed_ms": 13301,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 374,
+          "nogood_clauses": 6863,
+          "nogood_prunes": 858,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 21,
+          "witness_hash": "8bec25b0181a05ea",
+          "visited_nodes": 450,
+          "backtracks": 396,
+          "elapsed_ms": 12780,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 377,
+          "nogood_clauses": 6900,
+          "nogood_prunes": 705,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 21,
+          "witness_hash": "8bec25b0181a05ea",
+          "visited_nodes": 450,
+          "backtracks": 399,
+          "elapsed_ms": 12107,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 382,
+          "nogood_clauses": 6913,
+          "nogood_prunes": 579,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": -6,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "16f347151b04849f"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 13,
+          "witness_hash": "a77780d1c97d1879"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 26,
+          "witness_hash": "df9df928a9f8cb9e"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 35,
+          "witness_hash": "797353ccca6217d2"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 48,
+          "witness_hash": "2413b41df80e5558"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 65,
+          "witness_hash": "cdc949698834e095"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 77,
+          "witness_hash": "433a97b3387c873b"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 85,
+          "witness_hash": "11ddec5838b23670"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 94,
+          "witness_hash": "a46934d47f281e64"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 11,
+          "backtracks": 0,
+          "elapsed_ms": 104,
+          "witness_hash": "15e6db8f88d0fad7"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 12,
+          "backtracks": 0,
+          "elapsed_ms": 115,
+          "witness_hash": "ddf3cdb8f037a660"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 13,
+          "backtracks": 0,
+          "elapsed_ms": 130,
+          "witness_hash": "131b79e8bbd9e360"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 14,
+          "backtracks": 0,
+          "elapsed_ms": 139,
+          "witness_hash": "830b356553d18e2d"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 25,
+          "backtracks": 10,
+          "elapsed_ms": 282,
+          "witness_hash": "4c50a62255d529cd"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 26,
+          "backtracks": 10,
+          "elapsed_ms": 293,
+          "witness_hash": "4f921f9fe8d2819e"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 27,
+          "backtracks": 10,
+          "elapsed_ms": 300,
+          "witness_hash": "75b5fd74a2620fbf"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 40,
+          "backtracks": 22,
+          "elapsed_ms": 482,
+          "witness_hash": "219086136e4f1e1c"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 41,
+          "backtracks": 22,
+          "elapsed_ms": 492,
+          "witness_hash": "f52aaa3301f0e3a2"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 49,
+          "backtracks": 29,
+          "elapsed_ms": 611,
+          "witness_hash": "0b54533b964d31ae"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 208,
+          "backtracks": 181,
+          "elapsed_ms": 2928,
+          "witness_hash": "919c10946a3e3f35"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 209,
+          "backtracks": 181,
+          "elapsed_ms": 2942,
+          "witness_hash": "6fe518f6a911bac2"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 374,
+          "backtracks": 325,
+          "elapsed_ms": 5408,
+          "witness_hash": "ec050d47d4cb8982"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 394,
+          "backtracks": 341,
+          "elapsed_ms": 5738,
+          "witness_hash": "618b756cabafd176"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 405,
+          "backtracks": 350,
+          "elapsed_ms": 5930,
+          "witness_hash": "f9d3e032f96e9a1b"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 406,
+          "backtracks": 350,
+          "elapsed_ms": 5948,
+          "witness_hash": "618a89007f28c6e5"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 411,
+          "backtracks": 354,
+          "elapsed_ms": 6067,
+          "witness_hash": "35eae034b7d30321"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 3,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 14,
+          "witness_hash": "16f347151b04849f"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 20,
+          "witness_hash": "a77780d1c97d1879"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 37,
+          "witness_hash": "df9df928a9f8cb9e"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 54,
+          "witness_hash": "797353ccca6217d2"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 64,
+          "witness_hash": "2413b41df80e5558"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 80,
+          "witness_hash": "cdc949698834e095"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 95,
+          "witness_hash": "433a97b3387c873b"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 9,
+          "backtracks": 0,
+          "elapsed_ms": 111,
+          "witness_hash": "11ddec5838b23670"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 10,
+          "backtracks": 0,
+          "elapsed_ms": 126,
+          "witness_hash": "a46934d47f281e64"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 11,
+          "backtracks": 0,
+          "elapsed_ms": 144,
+          "witness_hash": "15e6db8f88d0fad7"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 12,
+          "backtracks": 0,
+          "elapsed_ms": 162,
+          "witness_hash": "ddf3cdb8f037a660"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 13,
+          "backtracks": 0,
+          "elapsed_ms": 183,
+          "witness_hash": "131b79e8bbd9e360"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 14,
+          "backtracks": 0,
+          "elapsed_ms": 207,
+          "witness_hash": "830b356553d18e2d"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 25,
+          "backtracks": 10,
+          "elapsed_ms": 369,
+          "witness_hash": "4c50a62255d529cd"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 26,
+          "backtracks": 10,
+          "elapsed_ms": 389,
+          "witness_hash": "4f921f9fe8d2819e"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 27,
+          "backtracks": 10,
+          "elapsed_ms": 411,
+          "witness_hash": "75b5fd74a2620fbf"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 40,
+          "backtracks": 22,
+          "elapsed_ms": 674,
+          "witness_hash": "219086136e4f1e1c"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 41,
+          "backtracks": 22,
+          "elapsed_ms": 696,
+          "witness_hash": "dcdec5201e48644f"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 46,
+          "backtracks": 26,
+          "elapsed_ms": 824,
+          "witness_hash": "5a190e6e1e62b33c"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 99,
+          "backtracks": 71,
+          "elapsed_ms": 2267,
+          "witness_hash": "8bec25b0181a05ea"
+        }
+      ]
+    },
+    {
+      "id": "9_11683",
+      "seed": 1,
+      "baseline": {
+        "largest_patch": 25,
+        "witness_hash": "410171399ec8c634",
+        "visited_nodes": 480,
+        "backtracks": 443,
+        "elapsed_ms": 4136,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 19,
+        "witness_hash": "30d05b7b6ce65637",
+        "visited_nodes": 468,
+        "backtracks": 455,
+        "elapsed_ms": 3395,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 441,
+        "nogood_clauses": 5784,
+        "nogood_prunes": 2141,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 19,
+          "witness_hash": "30d05b7b6ce65637",
+          "visited_nodes": 468,
+          "backtracks": 455,
+          "elapsed_ms": 6263,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 441,
+          "nogood_clauses": 5784,
+          "nogood_prunes": 2141,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 19,
+          "witness_hash": "30d05b7b6ce65637",
+          "visited_nodes": 468,
+          "backtracks": 455,
+          "elapsed_ms": 5979,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 441,
+          "nogood_clauses": 5784,
+          "nogood_prunes": 2141,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 19,
+          "witness_hash": "30d05b7b6ce65637",
+          "visited_nodes": 468,
+          "backtracks": 455,
+          "elapsed_ms": 6191,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 441,
+          "nogood_clauses": 5784,
+          "nogood_prunes": 2141,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": -6,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 14,
+          "witness_hash": "856ee7bf818aba95"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 17,
+          "witness_hash": "61d0d351e0e4bf56"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 28,
+          "witness_hash": "17084df4e71447d2"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 38,
+          "witness_hash": "f15c89a6513317a1"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 44,
+          "witness_hash": "f8dee47edb2116b2"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 11,
+          "backtracks": 4,
+          "elapsed_ms": 64,
+          "witness_hash": "8ef0ea34268f5c27"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 12,
+          "backtracks": 4,
+          "elapsed_ms": 72,
+          "witness_hash": "6cb3739b6d509ecb"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 104,
+          "backtracks": 92,
+          "elapsed_ms": 614,
+          "witness_hash": "0e00d0f1d13648ee"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 113,
+          "backtracks": 100,
+          "elapsed_ms": 667,
+          "witness_hash": "d71d384bb39ba4d3"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 118,
+          "backtracks": 104,
+          "elapsed_ms": 699,
+          "witness_hash": "e26d4057eec1fa98"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 138,
+          "backtracks": 123,
+          "elapsed_ms": 857,
+          "witness_hash": "c61fe25be7670b3f"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 156,
+          "backtracks": 140,
+          "elapsed_ms": 951,
+          "witness_hash": "d0539effc58ad7b6"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 171,
+          "backtracks": 154,
+          "elapsed_ms": 1073,
+          "witness_hash": "a2421166a721ebef"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 172,
+          "backtracks": 154,
+          "elapsed_ms": 1081,
+          "witness_hash": "d7ce1dd40f6fe784"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 185,
+          "backtracks": 166,
+          "elapsed_ms": 1177,
+          "witness_hash": "c3b871f90403d299"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 232,
+          "backtracks": 212,
+          "elapsed_ms": 1597,
+          "witness_hash": "0a03a274264aacad"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 237,
+          "backtracks": 216,
+          "elapsed_ms": 1642,
+          "witness_hash": "fa4eddcd44a5e34b"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 252,
+          "backtracks": 230,
+          "elapsed_ms": 1795,
+          "witness_hash": "6859d137385bdeea"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 332,
+          "backtracks": 303,
+          "elapsed_ms": 2574,
+          "witness_hash": "92f1e1c47dbf8af1"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 333,
+          "backtracks": 303,
+          "elapsed_ms": 2591,
+          "witness_hash": "6bf42261e2e21c3e"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 360,
+          "backtracks": 323,
+          "elapsed_ms": 2874,
+          "witness_hash": "ad7c416600bdfaf4"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 362,
+          "backtracks": 324,
+          "elapsed_ms": 2888,
+          "witness_hash": "2cd41b8cbdf7b99c"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 370,
+          "backtracks": 328,
+          "elapsed_ms": 2968,
+          "witness_hash": "997dcbc7feb63e0d"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 371,
+          "backtracks": 328,
+          "elapsed_ms": 2982,
+          "witness_hash": "410171399ec8c634"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 12,
+          "witness_hash": "856ee7bf818aba95"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 17,
+          "witness_hash": "61d0d351e0e4bf56"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 27,
+          "witness_hash": "17084df4e71447d2"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 35,
+          "witness_hash": "f15c89a6513317a1"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 42,
+          "witness_hash": "f8dee47edb2116b2"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 11,
+          "backtracks": 4,
+          "elapsed_ms": 69,
+          "witness_hash": "8ef0ea34268f5c27"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 12,
+          "backtracks": 4,
+          "elapsed_ms": 78,
+          "witness_hash": "6cb3739b6d509ecb"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 104,
+          "backtracks": 92,
+          "elapsed_ms": 766,
+          "witness_hash": "0e00d0f1d13648ee"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 113,
+          "backtracks": 100,
+          "elapsed_ms": 851,
+          "witness_hash": "d71d384bb39ba4d3"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 118,
+          "backtracks": 104,
+          "elapsed_ms": 898,
+          "witness_hash": "e26d4057eec1fa98"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 138,
+          "backtracks": 123,
+          "elapsed_ms": 1111,
+          "witness_hash": "c61fe25be7670b3f"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 156,
+          "backtracks": 140,
+          "elapsed_ms": 1323,
+          "witness_hash": "c054d7ad94e51aea"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 173,
+          "backtracks": 155,
+          "elapsed_ms": 1550,
+          "witness_hash": "ab8436f38b860e02"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 205,
+          "backtracks": 186,
+          "elapsed_ms": 1989,
+          "witness_hash": "aafb2248e9517a92"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 239,
+          "backtracks": 218,
+          "elapsed_ms": 2443,
+          "witness_hash": "26458429d1b5b10f"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 309,
+          "backtracks": 285,
+          "elapsed_ms": 3490,
+          "witness_hash": "56dbf651cdd225f6"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 411,
+          "backtracks": 384,
+          "elapsed_ms": 5188,
+          "witness_hash": "577a4a7e5102aa6b"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 412,
+          "backtracks": 384,
+          "elapsed_ms": 5219,
+          "witness_hash": "30d05b7b6ce65637"
+        }
+      ]
+    },
+    {
+      "id": "9_11683",
+      "seed": 2,
+      "baseline": {
+        "largest_patch": 19,
+        "witness_hash": "7b6e67b95c9369bf",
+        "visited_nodes": 483,
+        "backtracks": 461,
+        "elapsed_ms": 4006,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 15,
+        "witness_hash": "5523148e17e0ba37",
+        "visited_nodes": 479,
+        "backtracks": 473,
+        "elapsed_ms": 2795,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 466,
+        "nogood_clauses": 5364,
+        "nogood_prunes": 1885,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 15,
+          "witness_hash": "5523148e17e0ba37",
+          "visited_nodes": 475,
+          "backtracks": 469,
+          "elapsed_ms": 4901,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 457,
+          "nogood_clauses": 5241,
+          "nogood_prunes": 1857,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 15,
+          "witness_hash": "5523148e17e0ba37",
+          "visited_nodes": 477,
+          "backtracks": 471,
+          "elapsed_ms": 4725,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 458,
+          "nogood_clauses": 5162,
+          "nogood_prunes": 1736,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 22,
+          "witness_hash": "d76e1d2df1d89fb2",
+          "visited_nodes": 460,
+          "backtracks": 454,
+          "elapsed_ms": 5920,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 438,
+          "nogood_clauses": 6308,
+          "nogood_prunes": 1487,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": -4,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 11,
+          "witness_hash": "6ff9dba51d703cf4"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 14,
+          "witness_hash": "8ef1e7291d3d8a56"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 21,
+          "witness_hash": "45fd55a84a5aacda"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 29,
+          "witness_hash": "d4d9410ee64242f9"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 35,
+          "witness_hash": "56813f64bafa5c1c"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 44,
+          "witness_hash": "0cfc506acd503f3b"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 52,
+          "witness_hash": "cf1e2388f42a25f0"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 18,
+          "backtracks": 9,
+          "elapsed_ms": 107,
+          "witness_hash": "0ac34c9217414678"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 34,
+          "backtracks": 24,
+          "elapsed_ms": 201,
+          "witness_hash": "212d43be22f1443e"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 85,
+          "backtracks": 74,
+          "elapsed_ms": 534,
+          "witness_hash": "783499cf93adbd5d"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 112,
+          "backtracks": 99,
+          "elapsed_ms": 713,
+          "witness_hash": "a20d796d559c7db2"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 127,
+          "backtracks": 113,
+          "elapsed_ms": 828,
+          "witness_hash": "e9a59825a600d458"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 133,
+          "backtracks": 118,
+          "elapsed_ms": 877,
+          "witness_hash": "1856541cfadfabae"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 134,
+          "backtracks": 118,
+          "elapsed_ms": 885,
+          "witness_hash": "ffc112a40542df41"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 143,
+          "backtracks": 126,
+          "elapsed_ms": 954,
+          "witness_hash": "7f65831d0483fa37"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 145,
+          "backtracks": 127,
+          "elapsed_ms": 972,
+          "witness_hash": "75daaee28fa0fb07"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 147,
+          "backtracks": 128,
+          "elapsed_ms": 991,
+          "witness_hash": "c8971565992ad1c8"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 317,
+          "backtracks": 279,
+          "elapsed_ms": 2545,
+          "witness_hash": "7b6e67b95c9369bf"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 1,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 6,
+          "witness_hash": "6ff9dba51d703cf4"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 9,
+          "witness_hash": "8ef1e7291d3d8a56"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 17,
+          "witness_hash": "45fd55a84a5aacda"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 26,
+          "witness_hash": "d4d9410ee64242f9"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 34,
+          "witness_hash": "56813f64bafa5c1c"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 44,
+          "witness_hash": "0cfc506acd503f3b"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 8,
+          "backtracks": 0,
+          "elapsed_ms": 52,
+          "witness_hash": "cf1e2388f42a25f0"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 18,
+          "backtracks": 9,
+          "elapsed_ms": 114,
+          "witness_hash": "0ac34c9217414678"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 34,
+          "backtracks": 24,
+          "elapsed_ms": 216,
+          "witness_hash": "212d43be22f1443e"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 53,
+          "backtracks": 42,
+          "elapsed_ms": 384,
+          "witness_hash": "871ec3462edb7826"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 77,
+          "backtracks": 64,
+          "elapsed_ms": 599,
+          "witness_hash": "49b2fec7f308e5ff"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 111,
+          "backtracks": 97,
+          "elapsed_ms": 944,
+          "witness_hash": "3fefacdc08249146"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 408,
+          "backtracks": 389,
+          "elapsed_ms": 4148,
+          "witness_hash": "64b7e00c6792b189"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 413,
+          "backtracks": 393,
+          "elapsed_ms": 4201,
+          "witness_hash": "5523148e17e0ba37"
+        }
+      ]
+    },
+    {
+      "id": "9_11683",
+      "seed": 3,
+      "baseline": {
+        "largest_patch": 32,
+        "witness_hash": "e9d1724d88ab43c2",
+        "visited_nodes": 461,
+        "backtracks": 460,
+        "elapsed_ms": 4512,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 0,
+        "nogood_clauses": 0,
+        "nogood_prunes": 0,
+        "nogood_activated": false
+      },
+      "immediate": {
+        "largest_patch": 16,
+        "witness_hash": "9ddac44b1d7179bd",
+        "visited_nodes": 479,
+        "backtracks": 470,
+        "elapsed_ms": 2798,
+        "termination_reason": "node_limit",
+        "nogood_failure_states": 457,
+        "nogood_clauses": 4925,
+        "nogood_prunes": 1785,
+        "nogood_activated": true
+      },
+      "delayed": {
+        "25": {
+          "largest_patch": 16,
+          "witness_hash": "9ddac44b1d7179bd",
+          "visited_nodes": 474,
+          "backtracks": 467,
+          "elapsed_ms": 4450,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 455,
+          "nogood_clauses": 4796,
+          "nogood_prunes": 1739,
+          "nogood_activated": true
+        },
+        "50": {
+          "largest_patch": 14,
+          "witness_hash": "75927297d9868a74",
+          "visited_nodes": 475,
+          "backtracks": 468,
+          "elapsed_ms": 4059,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 443,
+          "nogood_clauses": 4350,
+          "nogood_prunes": 1568,
+          "nogood_activated": true
+        },
+        "100": {
+          "largest_patch": 14,
+          "witness_hash": "75927297d9868a74",
+          "visited_nodes": 478,
+          "backtracks": 470,
+          "elapsed_ms": 4703,
+          "termination_reason": "node_limit",
+          "nogood_failure_states": 446,
+          "nogood_clauses": 4376,
+          "nogood_prunes": 1494,
+          "nogood_activated": true
+        }
+      },
+      "immediate_to_delayed_25_patch_delta": 0,
+      "baseline_to_delayed_25_patch_delta": -16,
+      "baseline_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 10,
+          "witness_hash": "6ff9dba51d703cf4"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 13,
+          "witness_hash": "8ef1e7291d3d8a56"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 21,
+          "witness_hash": "b7a8b8825eac2103"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 31,
+          "witness_hash": "96ec12ff61f77406"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 39,
+          "witness_hash": "ad3fb08acdc5f7cc"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 46,
+          "witness_hash": "f61c03755ae37b6c"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 12,
+          "backtracks": 4,
+          "elapsed_ms": 76,
+          "witness_hash": "253a1e2e3dd5640c"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 71,
+          "backtracks": 62,
+          "elapsed_ms": 398,
+          "witness_hash": "3051f8705619a144"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 80,
+          "backtracks": 70,
+          "elapsed_ms": 448,
+          "witness_hash": "55f0ca29780e1ec8"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 81,
+          "backtracks": 70,
+          "elapsed_ms": 453,
+          "witness_hash": "6d7ba4e4240b9acf"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 108,
+          "backtracks": 96,
+          "elapsed_ms": 626,
+          "witness_hash": "b0047ba61681fd23"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 122,
+          "backtracks": 109,
+          "elapsed_ms": 715,
+          "witness_hash": "304b2e2acbbafaf2"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 136,
+          "backtracks": 122,
+          "elapsed_ms": 810,
+          "witness_hash": "5553abdd11deba40"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 150,
+          "backtracks": 135,
+          "elapsed_ms": 916,
+          "witness_hash": "64c017ba47a54e2b"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 177,
+          "backtracks": 161,
+          "elapsed_ms": 1131,
+          "witness_hash": "0bcd8aaa4bbc55bb"
+        },
+        {
+          "patch_size": 17,
+          "visited_nodes": 191,
+          "backtracks": 174,
+          "elapsed_ms": 1265,
+          "witness_hash": "69b6120a8a4b1150"
+        },
+        {
+          "patch_size": 18,
+          "visited_nodes": 218,
+          "backtracks": 200,
+          "elapsed_ms": 1491,
+          "witness_hash": "11b52d5cd806cea5"
+        },
+        {
+          "patch_size": 19,
+          "visited_nodes": 232,
+          "backtracks": 213,
+          "elapsed_ms": 1625,
+          "witness_hash": "2cd9c4a275b265ac"
+        },
+        {
+          "patch_size": 20,
+          "visited_nodes": 246,
+          "backtracks": 226,
+          "elapsed_ms": 1773,
+          "witness_hash": "18b7b54a5cc29c09"
+        },
+        {
+          "patch_size": 21,
+          "visited_nodes": 260,
+          "backtracks": 239,
+          "elapsed_ms": 1930,
+          "witness_hash": "b1eba1cd379200f3"
+        },
+        {
+          "patch_size": 22,
+          "visited_nodes": 274,
+          "backtracks": 252,
+          "elapsed_ms": 2090,
+          "witness_hash": "78e66f7fd9629cc3"
+        },
+        {
+          "patch_size": 23,
+          "visited_nodes": 288,
+          "backtracks": 265,
+          "elapsed_ms": 2247,
+          "witness_hash": "0fb22a490290c645"
+        },
+        {
+          "patch_size": 24,
+          "visited_nodes": 315,
+          "backtracks": 291,
+          "elapsed_ms": 2575,
+          "witness_hash": "e3fd1c52e4a8fea8"
+        },
+        {
+          "patch_size": 25,
+          "visited_nodes": 329,
+          "backtracks": 304,
+          "elapsed_ms": 2734,
+          "witness_hash": "5ad326ed2182da49"
+        },
+        {
+          "patch_size": 26,
+          "visited_nodes": 343,
+          "backtracks": 317,
+          "elapsed_ms": 2889,
+          "witness_hash": "fd73d71d2270a541"
+        },
+        {
+          "patch_size": 27,
+          "visited_nodes": 357,
+          "backtracks": 330,
+          "elapsed_ms": 3061,
+          "witness_hash": "64f89fdfa5ad251f"
+        },
+        {
+          "patch_size": 28,
+          "visited_nodes": 384,
+          "backtracks": 356,
+          "elapsed_ms": 3419,
+          "witness_hash": "7792583c86e50ad9"
+        },
+        {
+          "patch_size": 29,
+          "visited_nodes": 398,
+          "backtracks": 369,
+          "elapsed_ms": 3614,
+          "witness_hash": "2c8888dc6971c7fb"
+        },
+        {
+          "patch_size": 30,
+          "visited_nodes": 412,
+          "backtracks": 382,
+          "elapsed_ms": 3801,
+          "witness_hash": "614e634f88b63906"
+        },
+        {
+          "patch_size": 31,
+          "visited_nodes": 426,
+          "backtracks": 395,
+          "elapsed_ms": 3997,
+          "witness_hash": "6ab6df282cb81c23"
+        },
+        {
+          "patch_size": 32,
+          "visited_nodes": 453,
+          "backtracks": 421,
+          "elapsed_ms": 4378,
+          "witness_hash": "e9d1724d88ab43c2"
+        }
+      ],
+      "delayed_25_growth_milestones": [
+        {
+          "patch_size": 1,
+          "visited_nodes": 1,
+          "backtracks": 0,
+          "elapsed_ms": 2,
+          "witness_hash": "fad5fcae702b6b11"
+        },
+        {
+          "patch_size": 2,
+          "visited_nodes": 2,
+          "backtracks": 0,
+          "elapsed_ms": 10,
+          "witness_hash": "6ff9dba51d703cf4"
+        },
+        {
+          "patch_size": 3,
+          "visited_nodes": 3,
+          "backtracks": 0,
+          "elapsed_ms": 15,
+          "witness_hash": "8ef1e7291d3d8a56"
+        },
+        {
+          "patch_size": 4,
+          "visited_nodes": 4,
+          "backtracks": 0,
+          "elapsed_ms": 21,
+          "witness_hash": "b7a8b8825eac2103"
+        },
+        {
+          "patch_size": 5,
+          "visited_nodes": 5,
+          "backtracks": 0,
+          "elapsed_ms": 28,
+          "witness_hash": "96ec12ff61f77406"
+        },
+        {
+          "patch_size": 6,
+          "visited_nodes": 6,
+          "backtracks": 0,
+          "elapsed_ms": 36,
+          "witness_hash": "ad3fb08acdc5f7cc"
+        },
+        {
+          "patch_size": 7,
+          "visited_nodes": 7,
+          "backtracks": 0,
+          "elapsed_ms": 43,
+          "witness_hash": "f61c03755ae37b6c"
+        },
+        {
+          "patch_size": 8,
+          "visited_nodes": 12,
+          "backtracks": 4,
+          "elapsed_ms": 78,
+          "witness_hash": "badb9bb6149a38de"
+        },
+        {
+          "patch_size": 9,
+          "visited_nodes": 123,
+          "backtracks": 114,
+          "elapsed_ms": 933,
+          "witness_hash": "3668820e63ac2a5a"
+        },
+        {
+          "patch_size": 10,
+          "visited_nodes": 190,
+          "backtracks": 180,
+          "elapsed_ms": 1501,
+          "witness_hash": "47f3f04810ae4555"
+        },
+        {
+          "patch_size": 11,
+          "visited_nodes": 195,
+          "backtracks": 184,
+          "elapsed_ms": 1545,
+          "witness_hash": "0b8423ffb6a6f96d"
+        },
+        {
+          "patch_size": 12,
+          "visited_nodes": 209,
+          "backtracks": 197,
+          "elapsed_ms": 1661,
+          "witness_hash": "ef1a50c59f9721bf"
+        },
+        {
+          "patch_size": 13,
+          "visited_nodes": 260,
+          "backtracks": 243,
+          "elapsed_ms": 2203,
+          "witness_hash": "4e17501aea8403cf"
+        },
+        {
+          "patch_size": 14,
+          "visited_nodes": 271,
+          "backtracks": 253,
+          "elapsed_ms": 2332,
+          "witness_hash": "82e93b7ae81dc67b"
+        },
+        {
+          "patch_size": 15,
+          "visited_nodes": 421,
+          "backtracks": 400,
+          "elapsed_ms": 3899,
+          "witness_hash": "309068037492b3e6"
+        },
+        {
+          "patch_size": 16,
+          "visited_nodes": 444,
+          "backtracks": 422,
+          "elapsed_ms": 4126,
+          "witness_hash": "9ddac44b1d7179bd"
+        }
+      ]
+    }
+  ],
+  "threshold_summary": [
+    {
+      "activation_failure_states": 25,
+      "better_than_immediate": 2,
+      "equal_to_immediate": 10,
+      "worse_than_immediate": 0,
+      "better_than_baseline": 6,
+      "equal_to_baseline": 1,
+      "worse_than_baseline": 5,
+      "target_hits": 2
+    },
+    {
+      "activation_failure_states": 50,
+      "better_than_immediate": 2,
+      "equal_to_immediate": 9,
+      "worse_than_immediate": 1,
+      "better_than_baseline": 5,
+      "equal_to_baseline": 1,
+      "worse_than_baseline": 6,
+      "target_hits": 1
+    },
+    {
+      "activation_failure_states": 100,
+      "better_than_immediate": 2,
+      "equal_to_immediate": 5,
+      "worse_than_immediate": 5,
+      "better_than_baseline": 4,
+      "equal_to_baseline": 2,
+      "worse_than_baseline": 6,
+      "target_hits": 0
+    }
+  ],
+  "proof_paths": [
+    {
+      "id": "10_16113",
+      "seed": 1,
+      "largest_patch": 31,
+      "witness_hash": "0d277d30a620b275",
+      "checks_attempted": 139,
+      "checks_completed": 139,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "fd4bcd31ace41480a9c3b53bc9fd2827741820cfdeae36eba3ab38dc5f725946",
+      "fingerprints": [
+        "35bb2f2c9830ed301232c58fe53631e9",
+        "352f2b557eece14eb5e08c52adc2eda2",
+        "e7970071c37675f7b17be70664a71e37",
+        "8770d33c82a2c7049f113ae1d0b75882",
+        "953f35de89e97d5941ef0fc34cdf9575",
+        "3729c0ffed39746e84dd1976609d0486",
+        "6f60625d7cbd7be8949eea52eeebdd5f",
+        "4ab78b64bd236a4766c16301ba33f518",
+        "6bc19d9d1cb751554655896459a597e1",
+        "f77fdc71ea52f57abc1800ef17c764e3",
+        "d9dd59b1cc9c361a8282abf9e3983bb4",
+        "449c9a828b4ca0d83c8eb3bae33adc71",
+        "437faa286910c880622c9c5cb130ed56",
+        "95d5f77ee6aa744bc178156c25a21fdd",
+        "d51845cdef06ea6650eb85dfceba9da4",
+        "784635291bd3c041d23bdba282c9041b",
+        "5aff543a4ae262b00071c5a6f5c25764",
+        "6b92e89ab18bcfa8868b31d6e63a088b",
+        "4ef8efc92d2a0f305679bb91bc994e31",
+        "ed5075c0b7de0848032b44d70c1070fa",
+        "65371b0e179716bbf2cb1abf0aa70757",
+        "9be2b92f3270ee966ce59f83603343fc",
+        "a754335da6523a3a8e656c19b0fd053d",
+        "2b7b0da8b0a5f51b0848a5db685d5415",
+        "5797085d3a38e9e8feccac172977f810",
+        "2af66be75e18c9e1ed4ae1faeae75c5e",
+        "00de256f83aee6e8d4888c5b2276ea09",
+        "87fd760e0f808379223ff693399c532c",
+        "6a28f47054298b6a7ef31a788caf64a7",
+        "e898c42040c5d7011653f83f1d4bb878",
+        "9c236c4e8acb9a2119b7381fc6c870a5",
+        "22ac7a7e0394b4c98907cd9289ef49ad",
+        "effd64b218d05f0556e18b1d21a29de8",
+        "783d9d84aab1080e4c9c79f29f251fde",
+        "92ef20bcf5bd6637030767ac60121e76",
+        "613f2261779dae7efe71c8dd1c4d05b1",
+        "0e8f714d34458e8376d595abc1ba61e0",
+        "03a573ce0ee6f2d1c4a88f5c7bb312f0",
+        "c3f7489e2eea0bac8e572ce05013de01",
+        "e976a9829c7064bdc834394c65b4c314",
+        "db04e6fea20802a1a8f180f083e3cab2",
+        "417e81fe0cffe01e6ba4e7d098eb2f5f",
+        "207feb4ad90c81cb3158a25d164b80f0",
+        "fd05d58bf740e164f9fbe337f1d5db6d",
+        "00281d3a84212ecf7271774bd108a680",
+        "8fd65a559adc3dd4cc379462f6f300bf",
+        "7bd9bb3319467bba02e98812bebf073c",
+        "64e793b84258da8c1d79ee0351c31efd",
+        "85bef70c58425cb6df67848a937b64dc",
+        "d54d403e81ac925c8f352c77d04af304",
+        "4fa146057b710cb40d7226afc500fbab",
+        "5f1bcf9c55562d29bf939d281d94af34",
+        "62f03ec75a7048ebc3efdd725e73244d",
+        "ebc508731031ca22e1669c859a21c534",
+        "7716f06339a58d03f1d0cb539c0bf209",
+        "35641bf0c1ca886bcf25d16e0153ddcb",
+        "9d4a76535e9fb1ad5f6c45da2c6ef592",
+        "6f771387aeea2532be19926c6628bdbf",
+        "9f502492235d40d397639be41853c48d",
+        "8b1074a065f6aaae00b5e02c0696605d",
+        "0a670de2349306d69c3bd92057b1f720",
+        "22f68f1a211946a40bc6c1c27cbb3ef4",
+        "8d275cf589d19d7584813daeb6315901",
+        "bf1f52d6775c65c28e7763e4575cd8fa",
+        "ff6a116e500e2a2b032ce9a682f72e7b",
+        "77dbd0202d14eb3010748f47487739ea",
+        "8d10da743cbfede4a05a9716aeed786d",
+        "8c05ef4bbe30b213a0e072933b169f30",
+        "5a185bef3701e006ef86584eae20e549",
+        "325d6f7e5eaf7ed7e1d4de2c8f55ff6d",
+        "6c67b43ce414424b2360341b7224a32b",
+        "5991bd343875c4b5af8ec6ed2148050c",
+        "86cf5fa4bcc392df85befa21aad25000",
+        "97cbe3d40e4be6470277258897c4be80",
+        "2bb09f4bdd8c6925c541eb54c3649903",
+        "f351caae4cf41aa65ed5f78e0ca5fbe4",
+        "81486f6f7ffd99b33305a639ee6ccd3c",
+        "13b2eb1c380af49d61a6c488b5b032d2",
+        "d73ed98e577c6323e5fcf0233dbdf153",
+        "63c7425204f79b4071aca834341c28a1",
+        "47472767654d63e106e3b22742a9acfa",
+        "54c1744cb1b1b0ca26dae3c725f6e2c5",
+        "18d493c7de7b05d718d8190a0dc68eee",
+        "edf0c40dbebf7b05bf097186fe9f6b35",
+        "4ca3026570e3a8738d3d6b8c53d5a4ac",
+        "138bdecf0c500c2a784b8de79d3270a7",
+        "f96fd5b5d00195178d9067223a92d0a8",
+        "c5a166a33dbc2894035f362b9781be01",
+        "606e5005d59d768fcee0cbdc47b97694",
+        "b7aea3bbfcd781d57addd9644eaf1167",
+        "766ea56b5fe5b902cfc248352fc54038",
+        "1c347878d39a8e77ffec173d6f80decd",
+        "21931aa51a68debecd42e94fe80827a4",
+        "f370d4db49f4c557473c564602e8c1ca",
+        "10bebf3fac2ca7729e9a69e39fbddb44",
+        "9ce82561da65a6e398d30ab1a543984d",
+        "9f94fe4752f9df435700d8026b67d156",
+        "6c7fa28cd0e53dd1b589303be55021a6",
+        "815bb15ea06edb281ed4019c93f025e1",
+        "04e966c892c0a05581192e746b5e2480",
+        "c692c9d742ffe0824fe06a2e8951fbfb",
+        "122c284ebc470f566d181852abf624be",
+        "96c4d6d3b473a22d0ddb28cfd1232813",
+        "5824d3699b05e350c7829c504d9a01d4",
+        "1511215d778ef8cbcd53e8967313f2a5",
+        "65847ad1fa5351d86a1c837071211068",
+        "696eb332cfb01361b9459452ca0fdf37",
+        "464387555e992625fe7a6eb1b7858299",
+        "2e719eda90b9fd6f16d2e4b62e3914bc",
+        "1621afcc68a59fdd5082890ea334180f",
+        "d6d97693eaa562553c80672f6489d848",
+        "76ff54e48ce31195fca4fd65ba7572b8",
+        "0793b48bc89766d1c4129ca4f2d56d2f",
+        "c3944c9dd56c31b1ab079341218e3a03",
+        "3efe1852a81d81c1f41abe7f0207824e",
+        "5deaed7596621a82480dc1231be18f9c",
+        "644c725d30357605013176f893be69db",
+        "74194e7b5fd678ce1a295ca999e0e1f0",
+        "2c48042d073bdc227f4704242d303549",
+        "26aa238847fcbb169c1e36dd4f1bf036",
+        "63334321e768415925bb75764a626ade",
+        "cc1d1fbb24863c9123e1f0402717887b",
+        "195f1d0a91e20730365d37fbafdcb047",
+        "0356c570e885490c62c92f531b3f47ab",
+        "4303a628c321f448140c7c3ac2ddaa99",
+        "be25b4d74d385c7338c544997017b37f",
+        "3b69ef73b2dc6242eadb41f6dd4cc618",
+        "bba40f93ac25de2798f667d423b48e49",
+        "49fccb00a5c6c9e292af07f9b95efb21",
+        "b631b39be4020bd6a9039b318c8be84f",
+        "47d8408662b8abc176f36ee8e23e7ded",
+        "bbd57150d9ab2af11cf1341a69c24f38",
+        "db47b817618e188352a36d98351d49bc",
+        "83996928b015eee630e0e118549d25fe",
+        "47c9d1889245714fda4e2a7ada74f7ba",
+        "0502659dc5a4f3e85ba16d4c1c692691",
+        "0dfd1966cd63a7f61c65bf97a60df57c",
+        "1d380f5fbc6792237d045bc2864ce9a9",
+        "6477135c7b3adf5171c56dcf952ebfb2"
+      ]
+    },
+    {
+      "id": "10_16113",
+      "seed": 2,
+      "largest_patch": 28,
+      "witness_hash": "cfcbdd6e0d1abfe6",
+      "checks_attempted": 118,
+      "checks_completed": 118,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "9e09cba5103c730648d01f4de0d55a2f6f5572958ee60367a0227b5db2e4e449",
+      "fingerprints": [
+        "35bb2f2c9830ed301232c58fe53631e9",
+        "352f2b557eece14eb5e08c52adc2eda2",
+        "e7970071c37675f7b17be70664a71e37",
+        "77dbd0202d14eb3010748f47487739ea",
+        "d7c9d676cfa53ada611cbf15213ba847",
+        "75e1818bfdfafce0af8cdb366ef3b21c",
+        "85d6f65905df63510dd8542e552adc5f",
+        "27b340c5d00298871bb389648c03dcbc",
+        "1aab0b2b5b524d4ac566adf832a81b91",
+        "849ce59ac58e9777b6721d9a2cec83a4",
+        "b03ad8f11109ca5468db22811c9f9906",
+        "08810dc23933f6e62eff76a98f98f372",
+        "cb619f160bf2b80dc2c184e86048b2d9",
+        "ff54ec29ae2c34525255452ea52d655c",
+        "32ff6c66b44646a499465f4a4fa70243",
+        "61176faf1139d71448e726ffff61886d",
+        "ae484ea49fade1181a3b0f29aa6d0396",
+        "fdc862c7dc7a99b10f050550b8209cf5",
+        "f1b596437ff3a2ac9bc36b85a89835e1",
+        "843f15099e086d63c8c497d818f6d804",
+        "88ff7c4d2d3cf342c0a23591bf2a2a75",
+        "c5f6c1c5aefcc69ef433354eb87b9ff7",
+        "1e923bc09001f98cc02633b1fe713d1f",
+        "2d0eaf9e3195d95cbbd3347e26abbc2c",
+        "d7bc2275ffd82c111622fd8dc2d24f4d",
+        "b0780b7b2603d2fd3c587130e5a0ae19",
+        "81fae4e1f0a6e07a9bb7cce1f44bfcf2",
+        "b659204fad1843e9a42894dc92481fec",
+        "0cc1cd6f88a71a2183b2b1505c63a22d",
+        "163e61339855b694d24da9533a2c3fda",
+        "f48825682484c44ae4d9a9854e4385d7",
+        "171a766496103ef68d2ec9395c0b5b04",
+        "f112807f703e0803bbec1744c8106823",
+        "2961d2db223c0b7424fac7d6712fed04",
+        "2135f472bad4f48c014ace0dc350a920",
+        "57e083dfc0631f167ad4636ef3e48ceb",
+        "637d210af9ecae2e22e057517ff7616a",
+        "d36cac7953c08755ac5f9081acfefdda",
+        "b7cdc30d1931c059c6035ec7d9f3cf31",
+        "6f901b819bbe32ff3310b36ff3484a7e",
+        "bde652353f25bf23d574830c0d3f2b8b",
+        "65f7d20a53ef3d3641de1d8f9df91e24",
+        "518e9ef37ec39001c071fed51bae5965",
+        "33b1571703a15d307ad6d4db4dd27b0b",
+        "73a533cdb2766e0f00e7f26f8c5e496e",
+        "c4967a00394472190c9159c746e6426d",
+        "34d0e4ac036e82f2067a80b0fee10cab",
+        "dbfa239dace9f99279da9432aafca4a7",
+        "8770d33c82a2c7049f113ae1d0b75882",
+        "8cc16ba21d781e4e94d68bca98f8b0d2",
+        "cb9edf670a67ffc5b1a086d4d5bfab01",
+        "093be2dc31c57286066eb0870e823a7e",
+        "c222e4dd08b8ebfc8021250a4f0af4e4",
+        "58d9dd8771295883e0746d2e57197a0b",
+        "d0fca4ae56e9510911a1fc323e50b854",
+        "aa3b4b2a558039fe5b33997bd3bbe62e",
+        "76136a5171d7274af175a27b2680d04c",
+        "b27391c60dec7e6d757e27ddcd2cf164",
+        "3d630fa2c8631db8798dc8f1187d3490",
+        "48e2732d36af7540bddb5a28a76401b5",
+        "66c7a090b24d81c3b95e4e4921ce631b",
+        "ca37a0097ebb9a4f5d2f46c2221224b5",
+        "38a673fd5761f0f6a8e0bd2438b04653",
+        "42a1e678eb4804531085b217d3dc29ae",
+        "d99994ce74a64787874975b6970813d5",
+        "1f5d2b0263c049da9b9e042b8f886943",
+        "a0f54fcae51afca6fe6868f065efdee8",
+        "022036b32ca067599dfebde8127c6973",
+        "b306df2d2ca641e3bdbc3bb8e6a0b0a4",
+        "12fb00e5fbbb5f67fb3bdc12fa6e2924",
+        "2bf18d84476b76f644bc67a8b73f121f",
+        "1111f77bb1b3e631916f91555b60fac1",
+        "0df83554126a8bce7596c42c0bbbc534",
+        "52afae19141081c6ae5c5eaa2e71c8db",
+        "ddd27e21aca37b9417e85f66ebc799d0",
+        "52a366998ff084720dfdf92599ddf1c8",
+        "3783c9091879435f45b9a7f716749bf9",
+        "802087b0108b61f45cae4653a4c2cb80",
+        "72af1a53f5c4fc179a305608c17af787",
+        "5818a74f418d3f56a2d1d4eca5870cf8",
+        "3393c6fc32397161ff7b626c29eba087",
+        "a2acaa85cc791fa1d9d3d862464b6860",
+        "4c3d7ac8eca0024f5ce676ce24ceda5e",
+        "1aa8acfd9b7a52c575f5d5f383ce8677",
+        "142effef9a0ea4538cc3c21618e78262",
+        "98ca2eabe15db464879419373a25661f",
+        "9dca9a636a4a85e2affa9c43af133b39",
+        "23976adf33154e89920a7cacd74cbb20",
+        "7c1bf4ba7bad54a68a93f5be4a6070b1",
+        "f493b2b87be5eabf05401e1ef07816ea",
+        "de78d259aadc8196747eb5f00292d6ca",
+        "5b978f5267f71a7bb9730c545c6fe5b5",
+        "8c62ced9523c42075d2e7c3ec4ef0215",
+        "fc969e0ebe5461ad1bb27481966d4286",
+        "790fa39610e04e91452e157d164f68c1",
+        "5ce3fd74e694dc71a4c70d60c564b3c8",
+        "b19107112b5f734398ca48e772aa72f5",
+        "210337bc36d99447a503f38daca9bac1",
+        "e41f4fb4674b942a56a19b95644cff5c",
+        "744c71512930418682c8ff2b65a4f05c",
+        "6e8a4f5f5ca542c1f24889f2ae15ade9",
+        "0e2276f1824d0de3b418887e085d650c",
+        "c1276cc77b53a271fa4c481f6de8aa13",
+        "6156cf5353bef50a59c8e4b47ca7f8dc",
+        "79fd990603da1c4a8c099e5d7314e649",
+        "21fa3c8f7c2cb4ae3c07675f3b8f552c",
+        "1dbfd9376f430736b0a34d849deac541",
+        "245a4e2c49ff363187607687fbbe5099",
+        "1fecf9a8bf3c5071007a71421a9b2933",
+        "9ffe85beb33715a25e61491719e90020",
+        "f9122fbccc87e0b5e7811f86c9929238",
+        "e5c0b78941d04b773a6597f360140105",
+        "ebc508731031ca22e1669c859a21c534",
+        "71f98c9125ed23682045daf8059ca04d",
+        "b88dd4c08862e61c16eaef1eb93434d0",
+        "c6e19c3a118abc3bcb630457b03ab42b",
+        "9d8eb5426801a29e2ac4e4b5104540a4",
+        "3fdde44ebc2e9f01f21b4ea49a16749e"
+      ]
+    },
+    {
+      "id": "10_16113",
+      "seed": 3,
+      "largest_patch": 26,
+      "witness_hash": "ccf253260ac3d2a7",
+      "checks_attempted": 117,
+      "checks_completed": 117,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "504f689cb068f538b9ab43116461b9d672ec4591e5c732335900a7d369f4eaf5",
+      "fingerprints": [
+        "35bb2f2c9830ed301232c58fe53631e9",
+        "352f2b557eece14eb5e08c52adc2eda2",
+        "e7970071c37675f7b17be70664a71e37",
+        "ebc508731031ca22e1669c859a21c534",
+        "16c9a0f185df2e2f3adf4d39a03b6bd5",
+        "8936789819a67ac0d88f29ae776710c6",
+        "d27157f76d08380fdcac77b1e615b937",
+        "3b15b63d62bf9efbdce9b23ac982911a",
+        "f835940f1e3005e44c051247480c28c9",
+        "5b3735e18948b5992739c02941c73fd7",
+        "276e5e401c6862d54b4343e2d034237c",
+        "62f7d19f05a9d4121e777deba3e994b1",
+        "8a63470dfae1652c9a1b6ec3c2855df6",
+        "e086e02ad66a9cdf274d6828110597a1",
+        "da29263806a2b1b42d81083afe86dcee",
+        "f1d92cd8e716902f6c5887357f9c8c2b",
+        "37d73c9031237cedca1e0a567c25219a",
+        "26be125f63370d199e8c645266d9163b",
+        "c1eb6dbb4b745d3b156334a17c98e1f1",
+        "074945abd509e3f2cb7b34503154568c",
+        "5cd65761038bbfa409a0a0a2bca90ebf",
+        "a0b3bf4ff5488c7c4dbec6265ec9923e",
+        "22a6ba5118d1c559324598ee9f2417ad",
+        "108a80f55385617ade125587540a7e55",
+        "6403ba81069a4a2167b0dd516b8d6f3a",
+        "75696b8d113a8fd1b89d3bcfb09cdf04",
+        "2fa6bfe874c832ee3b83c7923136bb19",
+        "633f2c5507bad7581fbe228d45187b96",
+        "3908aaa25f80d4f4d804883e93ad5817",
+        "b59ada769872c577ac4e272d0b81c72e",
+        "57e744c4160813c207c6560216cab9b5",
+        "49aaaeca5a22fdc7d712a2db43348e49",
+        "7b9efe36f5d75149f5aee74d6d6e5fde",
+        "7e5e90be1fdd5c70367c385a2425bb30",
+        "26248bb921dea89379a38cfc0632ab98",
+        "35166177e8de46b86b5d21e18f7e9a7d",
+        "8577d3e97250973d9311315989d6c802",
+        "66cf2e90266bda8d5479870329097992",
+        "46eb5c29a162c972fb7302deea59214d",
+        "a08e4e78e29f815be3ef90b3960cfa7e",
+        "a77a58ed2075260412262eca27c116c0",
+        "ac8872a5d8ec8c8b85b68e304af2473b",
+        "2fe903e8f53f0ba65935a7f28fe4beda",
+        "bae786bf3c3eebf357f28a6bbf35ddd5",
+        "9e316c57adb418a2013602b19482eb50",
+        "d25e6b0161dc85d1e329d72a8303659f",
+        "294c0abbb27f671afd97cbc50e38ad66",
+        "7b3e92afa7b84ac7bb49204b76d20291",
+        "89b6a551be04a73e33f7ab060028bbb4",
+        "bb630f7bd003930ffa172192fabcba7c",
+        "6952cbedd7652746c049ba58865d1af3",
+        "2f8837d4911904a2c563bc21fbcfdc8c",
+        "9b6019d4cd209a088089acc404a50fdf",
+        "8770d33c82a2c7049f113ae1d0b75882",
+        "e3b03c1aeace600967898e1295a43fd5",
+        "76b0be21d4d395b84c2ff2da5b0dbabb",
+        "b6a890573b58dae2b2da127f7134a75e",
+        "42e42f1d214684c183f9293757d5950b",
+        "e3ed19b63b4073f0f4d5ac770044168d",
+        "e69494cff9b498f80133da2c12a7496b",
+        "900c80a543aa9623d2a01381739e4da2",
+        "ba39e4dd37d54c1a5035251a4d39777e",
+        "10efbbb4c2b219c4a1159f969c0feed6",
+        "f1b5464050d4fcd285b5c24ddac080b1",
+        "d56cacfa8e83fe3c761c203413fdfdbb",
+        "a64bbd8b44684f692f6c14b9f92ad16a",
+        "2f1ce4d6c8cac1bd66f490a7d16cc3f2",
+        "68eb05c55eb2612a5b161375f2f5aa8d",
+        "56a776b9df20ddd797b4c20cb59e1406",
+        "0dd0c52eaab08ed5eac3f86f1955e95a",
+        "d6ee225cf38b3f16a1127f1d15951819",
+        "36292faf9dbee84d4576846a3546b375",
+        "49fd77bbb2f79a5b130150a809ba7c90",
+        "46fdf74509b6370c1945c40dff69a581",
+        "27e5333be47ee0d3e087e477bc51a3fb",
+        "55a587d8cabb1f963e4fa8686dc9eae0",
+        "0976604c03e596e67f76f9edb3d5a3fe",
+        "8aa9489c582aeb3527450dcd266ee271",
+        "c86c5f2e9ed048fe6664fc75a28b1753",
+        "0818e7b33a314809c0467fe2da1b1ba1",
+        "77dbd0202d14eb3010748f47487739ea",
+        "fdf46e3195bb6d06bf622838c643bf73",
+        "4c733a68ac3fdf1a6ed7bb77ce3ce748",
+        "4a412a5aff6cb6325317bf98e17a6438",
+        "7ab3ba8d824736477bfa533d77555577",
+        "4f33a155096709b8480dc68ed5f200b0",
+        "6c67b43ce414424b2360341b7224a32b",
+        "5991bd343875c4b5af8ec6ed2148050c",
+        "dc3af8c8915be6a4da9acc906b31296b",
+        "92f22a8ff9d819845e5ee4028bac4abb",
+        "202fc14dbd07c767853324899f7c0c04",
+        "69b827754c5b71dafecb5b1a6e3d28d3",
+        "debccf09609f6b3733d4a1abd643a356",
+        "78de5ff8e4a2500f50b131d83b08f245",
+        "327ad8739da3a84707a19a7aba681924",
+        "6ae8f4fb38e1050d30b3e5cb51dcaebe",
+        "61c7e7a41470b9ff3c8c7780073fed4b",
+        "36b35d8564919d607f4deb659c2da794",
+        "65a1d9c092f067ed92216f1abedc385c",
+        "b04ea128112d59f8e302489dcc65f1df",
+        "f50f8ec7515d80b49ef30cd82d3e18b5",
+        "4ef9220cbc5465050cda3797d680f7f8",
+        "c2663e036fba76a66b7e123dca4d2df4",
+        "a298964d41fb8e68e1e0f099932cdecb",
+        "77fb214006516e6ee0d83a8ad0e720a3",
+        "3b6062f33eb029b622807467fac4da78",
+        "16b14844b1f157287ff76df1e22804f1",
+        "d2411c98105b5435d4858c1954cbb720",
+        "5364a5ca572b8cc244e4dd3209a4da65",
+        "a594268787d2b93094de767ac997dcbe",
+        "b631b39be4020bd6a9039b318c8be84f",
+        "74f2a34907bf4f1659943024877474a6",
+        "8cc45c446c57d344bdf4f9ef1a2cc517",
+        "4d5fdc05b7c925cbabe1494c68705a1c",
+        "83996928b015eee630e0e118549d25fe",
+        "71c2434f404352792cf623b075b4140d",
+        "a728955264767de6c32624bb7bda44f9"
+      ]
+    },
+    {
+      "id": "10_45026",
+      "seed": 1,
+      "largest_patch": 14,
+      "witness_hash": "025c7d17f7b58e97",
+      "checks_attempted": 69,
+      "checks_completed": 69,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "04d27cde271f4526c4f99faf05aad3621a2503a43f045e5257a80a31ac9bea78",
+      "fingerprints": [
+        "d26aff6867c89e6ddd93bd49651d2f0b",
+        "d05de4de11b63b7c37365b79a6c66a55",
+        "8efdd50223921496fa4d09e91d03a9f9",
+        "98394bea3a4f85e6af9209e2365d04d3",
+        "cb31b75813a30dfa3e4b77723d3dd45d",
+        "612915a1d56f072b30745a542df8fc9f",
+        "d82791e25e05c4954ae96db9c61c0da7",
+        "19055e1701fbc5d5f3d8a150621ce7ff",
+        "66ef250a015de4162a46092e4a6aae97",
+        "7ae2e23cadf4b9e5bd18cc55b3473683",
+        "5a26db697d47774f1ecca2d17bbb8f85",
+        "42c51e6b5fdebdb23c8d5f819675422b",
+        "51b9ed2195ca8a4ef0d3c7c868a731bf",
+        "cb31bbbbb7a30dfa3e4b77723f02ce33",
+        "cefdfe3b6932ee5779ee53ec7e3a75c3",
+        "312ad98f2da677a2e82000dfc43f407a",
+        "9a32c392ce87468da104f44d7bbbd0f2",
+        "5e9bafd9f59023d88b57f365953568ea",
+        "00d23e6d9987690e1d5eaa2000e08922",
+        "3d9b9c0ce845957b400249d6b59a2a01",
+        "a3b8ed09fe65dbb25a4318bebded8f1b",
+        "6b9c78253a0b4442e923112edd0ed4c3",
+        "4c353dba5b5a280fdc597c9d7119c881",
+        "34f31191057150e2b6d20f39bf5d932d",
+        "770f9dc703bdad012f1f3f5d91e63dfe",
+        "e62c64b2017b5d9087dfca0e8fb7a289",
+        "b4cc5d60b5c68267491ff91d46d1781a",
+        "aab4ffd8a639829ec100852c125382f8",
+        "f15c110699d4fd9efa5887cdf5dc8f62",
+        "e62c6013e97b5d9087dfca0e8dcf124f",
+        "b4cc6112c9c68267491ff91d4828f8c8",
+        "d06e6dd8680ea59acc8e6a5213dcd0fd",
+        "38e826391709c0afca649d1a82fd63b1",
+        "115ed69ba359280cc2a1c3ea303f901d",
+        "13d445f13074cbdec88f79e797d8b659",
+        "508f93a1a50675c5df0b82ee92b6d345",
+        "654927535a31d2def038b4ecba21f479",
+        "78c2913dc498b688f27ee6bce8f4bd35",
+        "05e7546f3cbe0f11b00f308de7d94cd1",
+        "31cb5edfc1b2e9c9f130f1d2e4b0894d",
+        "e8bf5266ac3ed48cd566c08cb4e44736",
+        "be1ac8f70f52da5fc4e8fcb14852d732",
+        "f5cd1037130a449fb02bb4ec4082afd8",
+        "46c16815dc9af8c4fec2de358ba43120",
+        "312cc96240a72152fc48c48796475c7a",
+        "fd45d1aef87bda038293c3c2e8365240",
+        "beaa94b7806e2fb979a2292699b36119",
+        "02dd172892d6a96abb1a0e6d1b69ae45",
+        "85a004f1aeb0ab26785f9435c1cd6e1b",
+        "0055e95d2ed264f885c90963e2ed417f",
+        "f5109cbfbf5b5ebad502ee898d30cf3f",
+        "0889fdaf32b85d3e558aabae7ef310f6",
+        "348b959b0ec4bc8474baeaa0e0da0ab1",
+        "b42665c1a596cb489af660b4ee348240",
+        "65e13bbfce8288eac4cd9ddf200c07ed",
+        "b1116ad491711f4d3a93434774cf1647",
+        "9ed0e67924be1b89b3d1bbdd898cf13a",
+        "8d64a8d66b9976a5e735128e50a638c3",
+        "30b368786bb17f8fa187c8965a370cdf",
+        "2051d449740463169e7ac4b8f12542b1",
+        "4c9e75bc77a2dafcc2633a354bbd57d3",
+        "a7ba26c485cdc9e2411ed4972b19c8f5",
+        "0073b0dec4ff41b53563964ba73da094",
+        "678107f5aaaff5fe597a5571d40dbc5b",
+        "8ad6ad2142c4ea3c27238d50df633fe2",
+        "5ceb50cb9bdc9d5be64302b4ada4c794",
+        "710fca0712966bbd9b383160d916412e",
+        "62f2d90759ecfe01f0ef51e8967ef5c8",
+        "852bd8b88880ef3b7f6124556f0c1b78"
+      ]
+    },
+    {
+      "id": "10_45026",
+      "seed": 2,
+      "largest_patch": 20,
+      "witness_hash": "65de691d33e8dbf6",
+      "checks_attempted": 81,
+      "checks_completed": 81,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "345e6fa2034aaeac37455e8e057e283c276f659c80d117a5c5c4b1ea033d6270",
+      "fingerprints": [
+        "2226cb3a0e074988c8d4b54830b2ce23",
+        "42c519ccc7debdb23c8d5f81948c1471",
+        "16ba252b70fa131fb0c3b40f5f57c8af",
+        "f089faed620d5c241f171aa8795eb2f7",
+        "8423a94d134506db6f003368c703e394",
+        "19d7a1f5b5a75c21865ab662d369f9e3",
+        "436623aa9cad2eb40ab76231cc950c16",
+        "bc98e0f87395a11814f8d3a3269d97ad",
+        "c5b5e98b1aa6751d326e2122a5427a34",
+        "7abf2eb7993467cad3bb8857127b13b4",
+        "ffb6157cdd021d14af71ffd85cdd146c",
+        "0a5fd2fc17cd93d2161200e2793c754b",
+        "304ac794145e4e6448bd0e9cd38c038d",
+        "04c050429baf6b1fd72f91935678e97a",
+        "1507b047183240b7be345145fe5cd644",
+        "158f52cdd846ffdd0c1d707ff48b3b5c",
+        "4aa215a21b509e7b13b28b5209d06b73",
+        "894aa8c18b83a9db071addb672469544",
+        "8e347ae8853cb6439b00db6190d9f17b",
+        "bae14604fded594657f4f30e731ee420",
+        "6bc73d1e7f36450acedcd2eaed251928",
+        "b8ac4f26fd59868bee381cf12556fc9e",
+        "5dc1980d7bc4b397eef5c9830d1bdb52",
+        "0f1910c719c1a45fdf00b4eb7a4f28d8",
+        "67e6347aa755aab27bea7a2065d1e78e",
+        "0759989208a60016be2c1c0eacf76f99",
+        "108124535ea473163d475b460ffbfec1",
+        "dca7a3130624907e81faaaea08ed9064",
+        "e90e21870c7a4d6f7398d9db2bc39826",
+        "a65506f7ec10a9b789a97271a04922f8",
+        "74d4c359cb7b521679aee4974fa569cc",
+        "38d6e53db93984e96accdd7d12fe34d1",
+        "b7ced47dc680404fc520a5e1933c7c8f",
+        "1a3a86418a40fa55c681c450fd3b7fbb",
+        "f597ac7128cfc1ad725399cf542bd6d9",
+        "6260518a8849345be8e3046262a78e3d",
+        "2cbc710d4cb0731b8687f96b40d8de79",
+        "c864e13d2728a5f60fc3d620263dbb1d",
+        "f7512d870040c107851b4a19670df1f9",
+        "83811b8ffe45154a5396c30bece56aeb",
+        "497239f8f38dccd513d8793c1aed3fd9",
+        "a4baa69bdf2c6f140e52121d994fefe0",
+        "71d18530a34fc768cbde4e2be7d6f393",
+        "cb468e890222eb65c9be6c5cfc5a75c8",
+        "d4a34ad506010593c052ac0dcb49e46c",
+        "eb114e81ff0f745891c40b2b7897beb5",
+        "da67038abe12bc582186a0daa1408744",
+        "a9d30aeea8ca66daf824a1077689457f",
+        "f11a01f1b1156a50658ffc7b87641365",
+        "ba846f957d2d8791149a6d742710c2fe",
+        "01331fb471702ca19b301016a1960054",
+        "16b1e76d53a9aa2cd33b5e1dd07011e2",
+        "78b2f04b0fbafc52c576f65c01129276",
+        "9bf3d49798fbddb5eadb8105596aa43a",
+        "2fbb242e72848565a9e06a391c85464d",
+        "c95349a1372884700a9bc27df5a47d1a",
+        "04262e48afd4b8520a7d3dfd241a004c",
+        "c439b6f1fa4538caaf13072c99a7e3dc",
+        "41ee811e5f5818063e7896ad71187e2c",
+        "3e466558d19002f2f63e2bb85fdce747",
+        "050c396da364ecf465a17c2e2bbde6a7",
+        "03113786fb577cbeec86f88a25e4d895",
+        "62306af5983a9f85993077e3bb43d375",
+        "50a26cea39c4c8f30e686bdb6e315b98",
+        "d71918c031bd9065bb2582345a7073a0",
+        "6987bdfecb9cc7068d4d686387a75432",
+        "e055354dfc90a61e78e9b1c5e9ede66a",
+        "37b657590a33c14f2c12ff120d8392c2",
+        "fd22822ad41573302c85fa50d4a2e85a",
+        "40d9360a6c4c9b54bf88703aa8ade032",
+        "9cc5c70ceb6edfd91c2c6c44c5eba4fa",
+        "f4890b7533f2a88466c667ef358f430b",
+        "1787f0f7e1efb755b8870a62d8cd3322",
+        "d94cd8a1039beb5ce7808b1c9fe3959d",
+        "6f28de9d08ee289450f42c1750096ec4",
+        "8ebf0c4d8884914ed2b92ce9297f55b9",
+        "4423f2092fc556eae0442b1bf9ce86f9",
+        "2d1e8bfe342fb23cea3b2fb66fd044f9",
+        "deb8deceb7f9b9b5ca8cd173b2bce521",
+        "e15abfba38c61f75ec9a4c711ecbc7d7",
+        "41e93dbc93e85a25a98953b2df6d56f9"
+      ]
+    },
+    {
+      "id": "10_45026",
+      "seed": 3,
+      "largest_patch": 17,
+      "witness_hash": "31ccbf4e9ae9f03a",
+      "checks_attempted": 85,
+      "checks_completed": 85,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "899496306e4af18281ba35b142bef3e8e7c811e563184c915aff855d74575a1e",
+      "fingerprints": [
+        "d26aff6867c89e6ddd93bd49651d2f0b",
+        "d05de4de11b63b7c37365b79a6c66a55",
+        "8efdd50223921496fa4d09e91d03a9f9",
+        "98394bea3a4f85e6af9209e2365d04d3",
+        "cb31b75813a30dfa3e4b77723d3dd45d",
+        "612915a1d56f072b30745a542df8fc9f",
+        "d82791e25e05c4954ae96db9c61c0da7",
+        "19055e1701fbc5d5f3d8a150621ce7ff",
+        "66ef250a015de4162a46092e4a6aae97",
+        "7ae2e23cadf4b9e5bd18cc55b3473683",
+        "5a26db697d47774f1ecca2d17bbb8f85",
+        "42c51e6b5fdebdb23c8d5f819675422b",
+        "51b9ed2195ca8a4ef0d3c7c868a731bf",
+        "cb31bbbbb7a30dfa3e4b77723f02ce33",
+        "cefdfe3b6932ee5779ee53ec7e3a75c3",
+        "312ad98f2da677a2e82000dfc43f407a",
+        "9a32c392ce87468da104f44d7bbbd0f2",
+        "5e9bafd9f59023d88b57f365953568ea",
+        "00d23e6d9987690e1d5eaa2000e08922",
+        "3d9b9c0ce845957b400249d6b59a2a01",
+        "a3b8ed09fe65dbb25a4318bebded8f1b",
+        "2226cb3a0e074988c8d4b54830b2ce23",
+        "42c519ccc7debdb23c8d5f81948c1471",
+        "ed4684103a95887cace2434ebf948429",
+        "5e6ea8b194371c56515ff41eead3c352",
+        "e6408c1b4ea8d4334bda61280574ea6b",
+        "e3455aef135794d3cbc58f856310b6d0",
+        "d4a0ab55bd98951b7da9b22c18871897",
+        "c221385b42fed8526839d57d9dce9c55",
+        "da48a837d457d57cf00ebfbcc7f09a4f",
+        "cec550a200a8e4c5f0e563a1b6d73fa5",
+        "ccd0cc8bec3c457d0c2fb89a4a00d2b7",
+        "baeaf5d9be09e53373e0fde99f03580b",
+        "757e50151b6c6f900ca7e81ceb261998",
+        "6d92d23ac602e1d28b3ee38b6fe33ae7",
+        "95ea0b847aa9cbdba3c52e0f0a381715",
+        "6d634b914d7036d2f7250f9ea4e97c01",
+        "17a7c08896e3fe68bee730aa5da55c41",
+        "bda5ee23b8b1a994667c926d9409359f",
+        "1d77f474a3e96e50adaf7722f384bb0d",
+        "0505bf803245e95ca44ca1a027544ed9",
+        "bc8d4eee0f3f8f8006a1a97fa42dcbcd",
+        "c8ffc091a1d7b69352aaa1a51090e430",
+        "147739b4534dc3fda5df82dca38fe97b",
+        "5815f46eed037730651b6a352856c19e",
+        "ac6c34346f3e06911dea35f4dc504d67",
+        "9c481ca9efe5c14e64a082b6d75adbb3",
+        "67b0585b872e19368870011fd9bf0cff",
+        "2b7c62ad573affcb26adb3d2a5223d6d",
+        "34284b316fc67c6f58c018442d4ea52f",
+        "bf197b360d9b4a443e6fdf8340c8c1ad",
+        "8ff047a1e27b0d42977ce5a49916f0aa",
+        "752f9ac310cb7e79f8cf5aee784bb302",
+        "31167804e88fb1b58e6d803cb0860385",
+        "389afec6738cd1b3c2a2474e14894371",
+        "fb20ee233ce833147ba61d1b85e5cbb1",
+        "db8b62dc0962acb1e573c3f9c0dc4895",
+        "90ac5fc80d21b8140085a3ffc0fd9d0f",
+        "9f1892187385e080ec1ea01b9dc9c6c9",
+        "eb58974a86018b27b4757256852c9b57",
+        "3e1966ceb354abf31b79c53ced5c705e",
+        "92094c14c5699d4569177e99a37397df",
+        "b57f3a67e72a13c66b95236a10c859e6",
+        "99a2d82fbf507475ebf84ef5851f3ff7",
+        "781f5b3aa88b13eadbd13d8ba2c7bb4b",
+        "b4721c027938c565a3821d78cab5301f",
+        "81ade81da14ab01cb3302879002f8d9d",
+        "634e119442a1b7ac4bcda3b60df2104a",
+        "dbe44c793bb962af06a1a1d6f3cd001c",
+        "8b12185199c51485152497aa4d1ab57a",
+        "77b427e0b5145ff2c8e933eb2a8522bf",
+        "4a3e9cf0c287fe2b84730183995cce3d",
+        "760d16302587029a914f7cd16ce6dace",
+        "461da7557b1fde35e7f748c499b3edf5",
+        "91bc4a331f44ce0450c69d9bf5544aa1",
+        "935aa3d258e5144e1d36ce072c737a34",
+        "65928f7d94e89efe16eb04b83e822f04",
+        "9d807f07c13dd4584c1f6a2f82956f86",
+        "73f617136ad0aa502cb509a680b940ce",
+        "4ce3580dc81dce80b5107daa6b5187e2",
+        "1d59d3c51f1ba9cd2d045f0b620f70ec",
+        "54bca0febd3874f9db6642110027d57d",
+        "496a5777507144e4ddf69bc5c7ff1b15",
+        "00d4fdb7ff6ae132042ace2f9b1622a5",
+        "74333e92c99784684d098a8e94389d27"
+      ]
+    },
+    {
+      "id": "10_45033",
+      "seed": 1,
+      "largest_patch": 40,
+      "witness_hash": "2017c904dab99f1e",
+      "checks_attempted": 122,
+      "checks_completed": 122,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": true,
+      "target_check_completed": true,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "5539f528b4f4bd8976f48b92ca6bd18d1a0cd1988ee419df589d2347e0fc4553",
+      "fingerprints": [
+        "a802cac8cb260b2b45e349e0c9a75f8b",
+        "e5bd1e160fdbb81c65d150c16b55bc27",
+        "21c5f274f80a8de91a70e767ed5e0af7",
+        "13f1332d2e1378483adf68e98007f12a",
+        "ae8301cc8fcc085cb3385d9c88086e8f",
+        "e0198b9ce8156f37c369cf9c72f77a46",
+        "f00f37dde020dc55bfd67a3b50175c3b",
+        "bb8cea3ae36438cb37a4363842cd2f25",
+        "a575e09bb4e4cb3490a953d0793a84b5",
+        "bb3919ef33e4c5a5ad3d768a66acad77",
+        "b40d56f88bc0f5123cb46c8d5a13432f",
+        "abb3e2e05541d65ee68abe43e329d99d",
+        "c3943cbeffb8a816b6fa132dbe4f6aad",
+        "90950a05b1a9ca3f3ce24ce2a18142bf",
+        "6ddb325f788421ee07b27d38d5a9b989",
+        "29a877586e843553761992de7a5c9ed9",
+        "1fd5525552cabe432ee701ba8bcc54bf",
+        "b243145d5467ac22cb26327837351d79",
+        "e7ee3b2c4d4453fbd61c0ded07e81db1",
+        "ced4b6fa64e98719641a6618c08f2729",
+        "523fdceb35a2bb4356b1d2323abcdc8b",
+        "51d8407f1db9268c2822c0bc73eb1845",
+        "e11a1aeae43a0d35b4f0aa7c87687bb9",
+        "70b7dc99036f367f7fb17cb09ad8d106",
+        "84db6e48e93980ffa6e5ccc06d6163f0",
+        "22075ba337f24a6163b7ce37fe271e07",
+        "26c051a612ec0cfbd2978d9124f494ee",
+        "dec273e1883e2c807e3c82118b6fa3f9",
+        "7f600b0fccff015ece20a1fc1e36e664",
+        "a95f20971db94a8ab41d9cb65404aa4a",
+        "7527b83c89fce9d836318877cb72e284",
+        "48c184bdd855a9c7b36d2036fbf9f1ca",
+        "6dde2865ce89a7031efe7c585b91f1f5",
+        "66cac0e2795470dc0588b8456298c22b",
+        "4b5121d4d3feca590a2001b487fd9885",
+        "cd9ed71650aa145e5b169e3518987e7b",
+        "848f6d215ff779141c446315ac2ea64f",
+        "1b6f8b312173f8943bdc85db5934af5d",
+        "00dd9dce5c481c3a12a894a769133891",
+        "7d4a4687d84fa822f9a2e284281f5fd1",
+        "b231016b9117ba1313fa5e1c5871d773",
+        "fa4fad85a00827d2b30e7e7085751c45",
+        "3e66cc85f32ca2ef78580e9ebf542385",
+        "13026061c08d6f81e11f73511fee8737",
+        "9c7517b33042f9d63a4bf7cb0e91aecf",
+        "7696c710c6246fae4b304eb2839b48e7",
+        "f14e37076b9811beebfd1fe80aad20e1",
+        "162fe2e343f0bacd77d0e47cc82febef",
+        "bff5faa49858da99b15f5d407f26301f",
+        "0022379f455854d8ae61aecce3849e1d",
+        "41d800830c2a28e02332c4fd64980cc9",
+        "e019d5f70bcdd646350baa50ec559809",
+        "7fbed4387b46c9c408fcef405079b3cb",
+        "9cbf5d54fc9dfcdddd2c3ab93eba4ba9",
+        "788b8d02b5daa3f30d6b1dbb51bf1279",
+        "2eecf1959b59017cf11f2c9f09976cfd",
+        "2c577e25e5fd9cb7bd900e2e9f437765",
+        "1b14548d5cd0979fe4f411feeeb6b8cf",
+        "9bd77b6235d97d531218b5bea25c0293",
+        "25fe267a1b24a5f4fc3a7bd954afe4a3",
+        "1e28d97a41a9c8c21534109e0d949689",
+        "cf08c3f2b04a83bbd1835eb9b0a6b4ab",
+        "9e878bfada9fe5b5a1724d4808415911",
+        "ddf2e3d20dd0dfec1c2f40295057e211",
+        "9e8c8a831681a41973b271536a38f19f",
+        "1f19cbf8d22630317015237620fa6ad1",
+        "14e24e88acb11bd14cc276428f85883d",
+        "c9b394f119b5be789e22de14d93742dd",
+        "8986393fc2ae2ff9b0fbf027019a9cdb",
+        "0ebb000066442ea7ecd11b360a6ff8df",
+        "d91de10a89762ba34d49e7e2ad4f7b4f",
+        "10497140913edc6a3a220d7074f123ef",
+        "dace764af41334595cf05508791bb8ef",
+        "acf6fb0eefcb9f0813e4ed0187e1de33",
+        "17b68fa89e051cacbfea9bc0f99691bf",
+        "bd6af5495f8f11f0ccf097e15b1bbaa5",
+        "0f42e2688ced02676fd873be087ed6e3",
+        "cdd039e7f066727086a3e2b36724701f",
+        "e57d7b0b9a0fbdfe0fae591e0de4cce1",
+        "4a4271ca21919cf1e605eed04f304b65",
+        "a845089e8aec2f9b6947b04512e27c73",
+        "e2daa5a4af1aa34512f413587b7a0ee3",
+        "2eecf57f14b684ab28d51247af763d8b",
+        "24ebce00ba7bfe6b25cbccc380dbbe3f",
+        "697773e4c848310017a559885bdc5e49",
+        "66bdda7b4eecd8d81433bf2307add52b",
+        "b419eab4fdfe34e6a99345596c3ef126",
+        "c45859e511e6c09f8fac144d5f0678d3",
+        "293a224ffde34986c75f5fad9375e516",
+        "ec09aba965e6ccd9da9f50067cf1fa63",
+        "9a38eb204ab261e37dc18ed2e848cc9e",
+        "c5fa3a890c3e0d904b9425c3e33c3d5b",
+        "b8e7d8e037598ecf2817da2b533efd41",
+        "634ba75695e1ff61d4328ef4ca2c4c33",
+        "37b62ba28c1643dbfba3e68bb0ba0fc9",
+        "fd823330af00b051444ed673e3ba2c99",
+        "7929c3ccdee122e269472a826b7fca21",
+        "b9ace49d4bfea9934b5e451ead6f8fa5",
+        "026ec7ef50182e48b91e6c0b596140bd",
+        "f9d9df71e39d2c551b00aac8e38f7783",
+        "c97e74a9093cafd6277f16c07a96f11b",
+        "2f1609b08e8ea4ea1b2cce2edbd82e42",
+        "f1b4000c99adc66d44ddbffbc84796b2",
+        "df47eb6724c364fd8a2eed0ec9f3f808",
+        "c6829567b22695a677cb6125bae91f78",
+        "0289892600d1fa76c21cf1ca811a7aa7",
+        "d1e0d15355dc93523da7046eec2e8ee7",
+        "d319dd5c209b9d0d65df3a2e5c4f12a3",
+        "8a8e7aced533c588aea5c86a47e76ea7",
+        "d5dbc8ec5c2ed87bcf22fa212c764dcb",
+        "3bad7ad0b8717a23643f84ced8feac89",
+        "351f898272d1c749bdbd7da5264f1471",
+        "af8987a759ef893460f7b80cadc55ec1",
+        "311e902548c442df9d9ded1ffe0aee03",
+        "c90a12f0fcb179f63af6478c77079fbf",
+        "f1af9bce8d0e53d0c62358df281a73a5",
+        "2e46ef5f1fb21de66725f2ceca68c759",
+        "53751e226fb2fc60077802d345b813d3",
+        "cc5e16e60f78b308c730386121ba0a70",
+        "fee2ac2aa70a680c0c1fb8477201c8b5",
+        "90b0b83da4e0dfe77673d137481483b1",
+        "79eb12c4c52c95fe55117f5b2f3922dd"
+      ]
+    },
+    {
+      "id": "10_45033",
+      "seed": 2,
+      "largest_patch": 40,
+      "witness_hash": "de7fb84739a496c7",
+      "checks_attempted": 102,
+      "checks_completed": 102,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": true,
+      "target_check_completed": true,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "de25605c3fc9a656799e7b42a361c116499b7366acf798bbca7078207aa1dd42",
+      "fingerprints": [
+        "a802cac8cb260b2b45e349e0c9a75f8b",
+        "e5bd1e160fdbb81c65d150c16b55bc27",
+        "21c5f274f80a8de91a70e767ed5e0af7",
+        "45332341a286c4c8fceeb05a1a93829f",
+        "b59ef58a12cdd7fb223c6360b9278837",
+        "67336a4212d7deeea5ff4bc7e4f265ee",
+        "1741c09fa46716f497901a99c99b96f7",
+        "8544bd9f5ea4612ea71bf4a412e13292",
+        "4345d00f77ab58471ad2a2f0a9888edf",
+        "7efcc674f2b5ff48f05dcf32f91da22b",
+        "040b8f3fe86b3da9f624718a9546e93b",
+        "4b22f4ce36e251518392cbd3189db22e",
+        "aede5e97433e44d50f339f34f6b9d9cf",
+        "e3f3b9c96ff374393b9c0101067a5a56",
+        "54ac42e479e0e933b8b518894ccb4a36",
+        "200fe87cc30cba22bd81e47d852047f2",
+        "d73295485f1fbca1adf175d23ba0fdad",
+        "8804784d569bee1a135ed33649f02253",
+        "ed5cd8a14975d721fbacd3ef2089c3c7",
+        "216593211b034ace6a8e99bde8d21a47",
+        "b1bd8ac0ec0bb93653effcac34b57d3a",
+        "7564694f4c547f2008d6de3d755472b1",
+        "19fb2b2f5ef71ad179d6f5e081d757f0",
+        "a482d0f599d28cd31f92bf00478f3b37",
+        "1f55912b71540f0c997750bd15f3a032",
+        "50ff6639ff96c1da7a8b1cb49edd50df",
+        "dd73230b769bd8cc9a043db59fd07fa1",
+        "52b5369303c66440cad46bd6db7a5b7b",
+        "6ae395c7c51fb71e77d56bfe8983c326",
+        "880e90e6b1701b4f156816d6233c843a",
+        "d264ace95846375554d374f7f794a942",
+        "a058c96bbe13c0d2eae2a98bf5f8cf11",
+        "c48d9bf576762e0e8b73a952858db0e7",
+        "f054c4ff71b79f291e3e3926aada0455",
+        "681749224a3709cf5a810aefc5e62f26",
+        "21480365428181f9cb99edb66c0c3b61",
+        "0c5c104f2d30452935439580bd27a0a2",
+        "e3d08831daffcf348972fafb42a4353f",
+        "95ad6eb4033e7e03a5c52784f30f7a19",
+        "197812520d44a59c47557fc97678db27",
+        "c4b829ca9232fdd04d9ab8e9d213aeb3",
+        "8d2b64b7edbe68a041f47213a140a48a",
+        "945757ba86433c3538ee694efdba8411",
+        "09d04efcf4faba19a222ee731789612a",
+        "d4cee7c325d4515a9f7a0fa90804db99",
+        "68e4c4fcb731ea6b212721c7471f38d2",
+        "60e12a19df90275e342717013e2c303d",
+        "361d0cbb6005088fdd1d1d42e46476d9",
+        "4ba09300f167699bc268e018eb595b46",
+        "4b78ba166c3d666b1d4cfea9d5ed9d5e",
+        "76fd41fcd6c87da7c2df2337c1127381",
+        "59b0233f294676c1ac7f4f5f46b5f786",
+        "746cca7e86d32175c1f6d481393c7d0b",
+        "6306a6d5089a82d8e084d5dfc89d7013",
+        "f58877ab498a26cdca8f704da0eb73c3",
+        "0d01af6c2589b0f5e59bd385b4f3dfc3",
+        "54b765dd97eaaa6135b02a5b795177b9",
+        "a5c50b301c5d7422da9a50150ff14679",
+        "0bc6d664249797a1b2aef5d407589d25",
+        "f30c94f740d228d9197ea38392d8dd43",
+        "4caa0ba36b9ae05981e72ced3c7aec13",
+        "cb48e4fa7b9fba203257bfe12029ee73",
+        "0d1716fc178b35ce9ed396d3d5ec6193",
+        "c8cd024672e7bc2b8146f317121757f3",
+        "669f37878c529f1046495913b5677955",
+        "373a6235818f7120eb0270060fa636c3",
+        "4949c45acfeb76c0358892923465aa31",
+        "0acb98fd18927c2127938f357108018d",
+        "b52143f7c588dfe2b17157bc65c9e63b",
+        "2d7c3ef44cb7adefbf24388aa2cca80b",
+        "a0d03c2d7af609f299bfc454b2899239",
+        "f91876a052024411d2fbc0ca1b84c94b",
+        "029d286bd09939005c11675b9a40961f",
+        "acda1638838430e0f3ca4afba4af2b5d",
+        "3c123549c74b2f93a79475f206ff7ddf",
+        "3de2e3e92f21343b825787c44ae8465d",
+        "ed0e555b260e8527e18f8b371c70c89f",
+        "83dd213ca35c6a11be68e11ddd4153f7",
+        "3fb14649f445e23eff69cb432644c89b",
+        "b758e00e2ae4fd1150df036b9c8e8257",
+        "2748fbf43be03a6971a8ed1a7041e005",
+        "597919c201cd9d73f74ed3b26a012c71",
+        "2031204819bdcdb505b0cb30604995d7",
+        "edd0d5ccfdf5f4dbc2f80579cf6ada84",
+        "9455ddd89bb734f7fd1402e2a714dbc3",
+        "0babd8f0d0f58751113c5a03e926769c",
+        "79ea050eef76063df68ec61910ab17a3",
+        "e591b07491c829db508a09cbb3b5c3f8",
+        "ab59dd218e3fe700517da35ef3b787ef",
+        "c3fc7e3c5248d1af4f8dc39d683dfc16",
+        "734d638834d756f9e46764996ec358e3",
+        "64dd6d3038653523d3e74fc62dfc27b2",
+        "ea68f464c5ee2146b3fa2670d2556970",
+        "be70c5bf9e63ad23639c67b445c75f18",
+        "d142c2e2ea2cac082b46d6221e1b4ef7",
+        "126c202d61d5a9c356fbac94d3582176",
+        "cd1d2abf15666652947d0896fe4a23b7",
+        "c308f3e9e461ab34a9b28d367a2cb1c7",
+        "2736b3c3f94ed954513241b10740fc63",
+        "70d891c5243472fc4d49c1d91d2d5283",
+        "0646d424c768a29907d0a7ab299d181a",
+        "d630bdb27a79f95d91f455f97a0a09d5"
+      ]
+    },
+    {
+      "id": "10_45033",
+      "seed": 3,
+      "largest_patch": 21,
+      "witness_hash": "8bec25b0181a05ea",
+      "checks_attempted": 67,
+      "checks_completed": 67,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "f59f9aef29e7598ed6a6569c77409d4289bf6420872beb6d07b5c4f753fb3d3c",
+      "fingerprints": [
+        "a802cac8cb260b2b45e349e0c9a75f8b",
+        "e5bd1e160fdbb81c65d150c16b55bc27",
+        "88021a867c94a65fbf32e163cb60fd6f",
+        "45332341a286c4c8fceeb05a1a93829f",
+        "314a676f9ee9f41ec61e3e8ac2feccf7",
+        "677f0c64f9e33c4b4d6b4603d107af26",
+        "96da9d89015be6fc74245ec173f4cc73",
+        "6a9155e5f187204feb9137032732804a",
+        "f89cfb51155541d0e9fd46e3fe98fdff",
+        "cdf140c8b59e109d0fada05e332f236f",
+        "c1ad63af1a26dae603e3e7693d3ec593",
+        "00245536649e8578a3412d5922cb2bc8",
+        "13f89b03444c6084d49f27f69e6c0525",
+        "5e55eb98df1c192c1d86723395561e71",
+        "06fcd212f368db8dfa1fd0b05e2a1cad",
+        "654cafbc98616d8856d4d60040055709",
+        "61395f25506e5103a0ea4978ea2f6ccc",
+        "954460285f3ed0fa7a5b27c83f2fec29",
+        "e4e2c6b57ad9a552a97aad73c51b0daf",
+        "0d39e514c51e844e597659391aff0634",
+        "f33d1ab35168a413860168c8169cbdc4",
+        "2d9685fc06fc70d9d64bb7d6e0c93c42",
+        "29c334d94ce33183ad852afa7c1c0a5b",
+        "c2b4596f698500c4816049cbb349d403",
+        "2ca7408fe013cb7682dda9c19fbf15a7",
+        "9696fd5b8d41efe9a26a87754a56afb3",
+        "479d81caec21b53eb01e74c8372a781f",
+        "7863708599a275989f79600b24dfb9dd",
+        "9d23986d7509976bb35f0157ff9b671b",
+        "d740c921b9e78a91a61bd64018e7b7d1",
+        "7333c5ed62b1e5bb1f74424efcfe4237",
+        "a76849107258d4dda5fd47d5f0509ff7",
+        "a5127cd73e1aa9036913dae0946f432f",
+        "b8318f6e8ade83d6423380ccb68e2595",
+        "22def1a5916c377876038f5c21790b3b",
+        "f230eb10e275df2a54798d9a1645c2a3",
+        "c5a9c97119efbe9a2e19729bc96c3b2c",
+        "283befb17ebc0cdfc4f899bcc300f1f5",
+        "4f65eb667022f43c21b6d28eaaa2a971",
+        "53187433437a85231a5636c3dff09fb6",
+        "3a306c444358be69544094ebdbd44632",
+        "4a493de526d98bdf25be3a02d858e6b9",
+        "6f2c7d183776694d53f41fd465a89e95",
+        "605a8d4cd259ab4e030d5d110c5434a7",
+        "d038fd4db30d472eb6d704edf95a6d8b",
+        "630e7516fe6084ba1fe303f768191ebf",
+        "af6e656932ee5316a420094a0b5f3ffd",
+        "897fd759ebe5a39f4239f17b9d8d8a63",
+        "b288471df8bb2ff2d93cf766eb9537d9",
+        "dc6b25b8aaad667cebf9a45f923cbf41",
+        "5ad2d82437b3cb08900e73b779f0c793",
+        "dc61d49f4b20b490ef4acef32944ddf3",
+        "034b9e2c065503a487e90257daec3cdf",
+        "5ecad142807556b89a43e59364329ebf",
+        "2cd9cf696b68bea56f8396795380d5bf",
+        "48e8478169b23171322641f45c2a35f1",
+        "091ec339300825e1dc6c6857ae273fd3",
+        "1bc31ea18342bd1a6762f723eb193672",
+        "a33722b90bdb767b914b4f4552eab2f2",
+        "319679ac685fea069622413556a2ce5d",
+        "7d0f576b238c4b4b99748ff0e619df5f",
+        "dd7ace624ad55feefe19e7bb0cdebceb",
+        "afad60677be236df0cdca09240d6836f",
+        "5a2c889e27aed34d4c8790985228e01b",
+        "ca2bfeac4bafdcde9d84692f37752636",
+        "18fc80a96c540cfd4c48ed47fe4f2173",
+        "1421e09fe0491a71b2a15e9c5897843f"
+      ]
+    },
+    {
+      "id": "9_11683",
+      "seed": 1,
+      "largest_patch": 19,
+      "witness_hash": "30d05b7b6ce65637",
+      "checks_attempted": 86,
+      "checks_completed": 86,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "351c4cbc0217279b40a92f4c09f8d5b1df41ab1cc4f44879c3e38ec7270a29c5",
+      "fingerprints": [
+        "80bcc3cbc8953825539a0241f9057307",
+        "2087dc99dd70270e791cd1506e5c1fce",
+        "7e939f30dfaf3e57dd751d077efc163f",
+        "e292e2acfc83c08a8331e10f73cb4278",
+        "5cf98479574089648b0daa428e05d029",
+        "0dcbbabf39408964912b53b02c3b6fb7",
+        "008e691c484c381654273d094ff236d7",
+        "53c385849bba3c0e00bd6bc45916a00e",
+        "5b3cee86448f023dca2ba67473f50979",
+        "295394e72358ca017a4919a251601d1a",
+        "72334abe1c4f782ba8183d451d0be1bf",
+        "96b2cec5345c8907d76b89e5698bf6a9",
+        "5d7540154ba4ed9e6de2a0b2b5b78919",
+        "bd9c341f63ce0ab4263eeacd1a6e7e74",
+        "c1ba4eca4a4a40460fe66ff8d901e7e5",
+        "45ad770009be91d43f4796a9bb0c5c40",
+        "05b2e2f184edbfe6e0e4f3d35dd9dbac",
+        "30a29486b0a21be572bd6028517342c1",
+        "bdb448f68e0d9eab3c06c8919f3c340e",
+        "da958929c6e90a61915ff476255df218",
+        "b5739b83df0675bd93c49f84e8360d60",
+        "3a457a3d5bd22ef7d511aa34fd69b3e1",
+        "e276aac05b8a7ab180a8e13bbb0f288f",
+        "7f78495436d4232fe704b9389e175aef",
+        "d7f3c25a9827bee60720ef69abff2695",
+        "7946aa0d86d113e913cb2c4b0912cbc2",
+        "e58787c8eb187129e6a90007f14499ee",
+        "7ff7195dd976710a778fb7165b512102",
+        "696b7884a06098d084cb1075b2ab2aec",
+        "a594d455d4fbcea9e5c0d63bc344d539",
+        "047aee26497e9c4eae7fbd78b160ffd3",
+        "bc0ec037c823982ff35555eaaa6cc7bf",
+        "7bffba1f537a57c06251375a01c623e7",
+        "5b9610d95cb14bc0091d6428898d0541",
+        "cf076d53ee6a897f662d896a1e5eff2c",
+        "4c3d469f616c9c6cf58a8f5cdc5cfde8",
+        "bf928da85fec5dbd683c2837f67d5984",
+        "a2fdce9676f2f7a740f58991203bbe46",
+        "b83b62786fda6b7ce534f02df6b59093",
+        "1c6ee1a04f3ed49acda7eff7f7528ebb",
+        "601f020b1a7a22ac2733578534793003",
+        "ecedc3d7f98fb4ff50dd71fabcddfe91",
+        "801d1fd4b3356ec5f9556ce283cc6262",
+        "89d963a8e2210515ba0ac28182be12e8",
+        "ce5c456b591df1a23307e5f33b26202c",
+        "b6f5c0d1eb00546552edc265eef080aa",
+        "4e532a3d8197df8052265d0f4778f842",
+        "de7f440fd05a4cdb4ddc6a5a0ba1834d",
+        "dd110d7f5bf7fce532f47687f1d8132f",
+        "ed2feda136c25cc9594791d5d8cd44c7",
+        "4cec5bdc132fa518b33a9064b96e55dd",
+        "3e8427e15043bcad7c3571887e51b13b",
+        "31a5279fc90eab1704c3d1a978290e8f",
+        "91bcc22a4909283e7a5ab18f370a1594",
+        "4cf3320ad747ca09852971637020808c",
+        "9499f11775b21a159d312e95ae358e9c",
+        "74aad4345c466a130a01ec059c8687ac",
+        "f5091639ea8801ce2f049ccff34de18e",
+        "c10f897e1b022469a3c0db20c6658864",
+        "1169d90a31967cb11c3f96c2487392b3",
+        "f929073485e5c36e71bbb9512ac92541",
+        "321b16bbe9add89e16eb7f73bfb95af3",
+        "7a0b2acd66735f59f269ca70b5479599",
+        "98aa83247b00c23ab061e5966f35b643",
+        "84bb3abd338f29e32689c102d100f05f",
+        "082533efb7d22d60bd91d915caed6b3c",
+        "e24c85b9f9b74a2c189b60b2c6424249",
+        "94dfdcc297e8088c89b9c11900823490",
+        "9cfaa36fe4659d496d2ae47ec569ff1a",
+        "717c1801887400c88e1a55c6e0177a50",
+        "9b97dbabd3078dd061ccd13d781ced0c",
+        "44fea0c9c475c752fb46489a6a576463",
+        "dc48658640f5bc844bc5b3c6b65c4192",
+        "a7aa64baa5b98fa8f0bc951d927541da",
+        "403d2b13d8a18e9f5e05e49a702036ae",
+        "797b67dccad0de69b3cb8fbd19c31af3",
+        "10dd9479b28d95f8ba0b8121f2763e52",
+        "81dd39acc674af03517139da134f8a62",
+        "58e8bacd534e8753ced4b1c6488a20d8",
+        "aadf5cf8d39a5dcc12f009792b59ccb1",
+        "6836ce127950f78e8764f9c4ec8dae48",
+        "64cad9a01faa538ca7682b5cd5448731",
+        "0f242dcb31f0d0a532b04343faa00c4b",
+        "9b4518af56f28fdda8134afcc496f4e2",
+        "54bbc3e6ac2e367f9c116d06395b354a",
+        "c205cd6dbedfbf7286bcee9cc8d157a3"
+      ]
+    },
+    {
+      "id": "9_11683",
+      "seed": 2,
+      "largest_patch": 15,
+      "witness_hash": "5523148e17e0ba37",
+      "checks_attempted": 59,
+      "checks_completed": 59,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "f1888242dad4d1bd13d37c3dc8d71bb7b6015c5e84f904c1bdc930df618bf52c",
+      "fingerprints": [
+        "0e9235b62d32423ae5b76c9e6c9bdf19",
+        "6a07ea1ef7ca0dc3f9a82a2460460442",
+        "206f0a3e9c721de29e64cc5fa3d9127b",
+        "3e3b0703048c042c294b516decbf0878",
+        "94705ebb41c97e0ceba80e494a816bfb",
+        "f00e11d02269653350c4a1dbcaf33076",
+        "18415988b2b2a3580b4460c84c85f1b7",
+        "7f97507771a82aeb30ea73fe836d25d9",
+        "7fb342e204b2a3580de81dfd0a7db52d",
+        "cf4965c9ab18abfc0e07eba444b2ed1e",
+        "b18c20341776fceb2a49cd999563379c",
+        "c7c95a2f2b048d5a3e0a92ddf407eb91",
+        "ed79a776e18cc74140e46a7ab84eb8dc",
+        "5634f4a07c015a2b6b3eb4cd2f938930",
+        "83485bc14a1b903b603b009d5e84010c",
+        "427240028fdb03ac2bdcd42c5ccd83f8",
+        "40ca43933cd0de4b100dbd63fc9d589e",
+        "119aadb06310b66ffa17321c9bb99d8b",
+        "210c294a767af9119fbb5a59043ea38f",
+        "21f8feb582fecfaefc916f8024ea4207",
+        "05a12c01c54b708207269cb215b6080f",
+        "986729f84916df1245e3f525af5037cb",
+        "d2a06b02c8936fadd5548ce92c9c7f0b",
+        "81af2bb85231b64dd6fdf8543c8617a2",
+        "5089a1e5de4c7058afb242481acec362",
+        "7d73aa6da65f36fd4b3a156aa388187a",
+        "ef00246f6ce3726fdb5a4e0e9115b374",
+        "2f72ff7f4e4b1431f2f76b5930757f7e",
+        "368533e1fa34c1494da81a852cc6aa8d",
+        "5e97f2f1bf7459adb5e72a7310a9d2fd",
+        "60f2791267b6c14c669b985c63cd1b01",
+        "20219aa8b56c86e22755d318662b2717",
+        "8e50d25576bf07a111d3d7cf5d404649",
+        "80407ec1324d10441c287787d8f826ea",
+        "bb9f90847d9a38891cc99722a5422105",
+        "af46d8b779e35c319317d90ab4cf9e42",
+        "b213013303d9f8f04872ab22a4f0882c",
+        "b8cb89d5e5e2cb7123fc044702882d74",
+        "4b667598ea246ee068a4db7f34284afa",
+        "b8de86d8d4961a848f58ed14bfd48b65",
+        "aa90aafdefde643f6f751d7d606ebe80",
+        "3890eb61ef33ff11fabc30bbdea99ec2",
+        "1d4fe395f6062604863e4a1d19128f36",
+        "02394990373306ef504c96f27ad3458f",
+        "18cab3c67a33a0a0160975484199e5b5",
+        "d30a324035964f921202725cea797608",
+        "e95f510e7f707c965dcd9f250cda6724",
+        "7481dde802cdfc6ddf3ab435a43e4c08",
+        "8ca249f68630e86a976eb0c9d825aac1",
+        "2ec4e756b55d51207a719705c938c9df",
+        "3d8d56f1c1468bbfc6dc1714dc27ce0f",
+        "ff3bb35ff7df0e0a622ca162dfe1523f",
+        "b07b2887c293a4d635354608c917d687",
+        "bb5ba6eb6b394c8f74936d3d37b44982",
+        "688f66d82e9dac83ccb8edb4135111ca",
+        "db09e6a896c82db84d604298ef3382a6",
+        "6f42d9306fcb17ecb23dc54bbe6224d8",
+        "1b259e5859c9be1c44895b8a4c5ec691",
+        "8837a2aa16039e81d705668b54adf47e"
+      ]
+    },
+    {
+      "id": "9_11683",
+      "seed": 3,
+      "largest_patch": 16,
+      "witness_hash": "9ddac44b1d7179bd",
+      "checks_attempted": 71,
+      "checks_completed": 71,
+      "checks_timed_out": 0,
+      "certificate_found": false,
+      "target_check_attempted": false,
+      "target_check_completed": false,
+      "target_certificate_found": false,
+      "fingerprint_digest_sha256": "05652f1572701c144ea142cf8abfb0d3a0b1c298b1524b184880b264e01b2edf",
+      "fingerprints": [
+        "0e9235b62d32423ae5b76c9e6c9bdf19",
+        "6a07ea1ef7ca0dc3f9a82a2460460442",
+        "3c52f17858312cb1e0268fc54afc7e29",
+        "d54a7918544707b499841b1e6b4b6d4c",
+        "ec974f1bf758f7c0c8d84e57f5e0145b",
+        "4effd82fb6f0a4c9693fcce4c9e25dc8",
+        "6be98f4216d97cdef1795e690ad928e0",
+        "6cf7ceb48c99f1c3aff482f8742f71ec",
+        "087b670c60d4e2c74c28b3fec6eccdff",
+        "02bc676a0e7713239b87aee1bc842656",
+        "f7fc4719f893609f63bc37f566afba79",
+        "f56d4c82d0a6f8532b8190bd6d0f4dcf",
+        "34e6231101f44c684311ab779b781895",
+        "31192aac26eb1bcf8b80c5e8b4276517",
+        "4baeda1cad6a86437f5bb92a6764f3ab",
+        "459e87df63d9bae1f515d6991b113adf",
+        "a4984f76d3109ce5d7d59f8e38d10675",
+        "19825934fd42d28ee6f6f69c65403d6a",
+        "e89eb3906699f1c3bb77881ea5d9c67a",
+        "7bd36f3c6157c7bcaf4ec169a9d85c36",
+        "060594e6465fda6d61c126cf8afc9ad7",
+        "0b449ab196be41c59d36aefdb6fe79b2",
+        "651625e8264a1ee129a80025470bd3d6",
+        "74fb5569d10373b2bee5a7b5917014b7",
+        "206f0a3e9c721de29e64cc5fa3d9127b",
+        "4c337dde85d104bb56dde37e916caca6",
+        "2c8d68c3e9729334b5a35d0bda2e48d6",
+        "7a4322a399825dc2f8a69e500dda5d46",
+        "17136e5c9a6f548657596b32aaa73fa7",
+        "22eb9245094bf3ac68644ee67a56fca0",
+        "e0893d40af03be33f4cb4f64660b9146",
+        "c1f4f3d76ce3e7f19da88d4b6b823be2",
+        "f2dc06d494c82704fd995e18f16eaad1",
+        "6099ccc94e743cfa91e454e8422c3de7",
+        "329e160eed85bfc6cfe1bfe00a84fa59",
+        "290320c21f9cd6c163e06a019d86c9fb",
+        "10e2224713a2ce90fe24b4a3d6dd779e",
+        "f80d801f720cddb08e565e1b36626ee6",
+        "37bfd317572c742d7e155a1b9043db4e",
+        "e5fe431c7ebeabb764127b1f118d24b6",
+        "b0a8bfdaf17971d41a64555043d44799",
+        "33cb57ba2f22accd69968f7d9a6693bf",
+        "9b0190341926b8678845b5c0c9fdcb81",
+        "1e17ead1f5d96a7d591a7ed679df83e9",
+        "6777ad4281b1612385dab0aae1739d42",
+        "f4f5b66477f420d8010682c9c98771cf",
+        "efc8ff3f319a24c4105a5034c0e62a82",
+        "073046f52b605d80b202da8f7e42e96e",
+        "b977e63b3b1210772f4e965c78f43e6c",
+        "566eb0f30b2aafe836cc78474bae338a",
+        "9aaaa35384f8dedca596688a73ec12eb",
+        "920314c8c6fc9f04bcb5fa6cd74b5529",
+        "b63bcf0c6901042ff1f9e33b35f41609",
+        "5a92e4da2cb6810df436c19c9b635753",
+        "6c3ea7c6def94f94084b82be694b1183",
+        "0cad3bfae6c3c117cf28cbee6dacdffe",
+        "3d16459699d4c914c32b9787b7d6fdfc",
+        "334b85ed7a59736b82fb1d518f5ec38f",
+        "4f8cd0756a57ccbb126d6d0f2f57c4b1",
+        "dfb86cf04057cee6975eab41aee05cd9",
+        "338048b40e0dc2aadf2fcc4a93f88fbd",
+        "b8fb4e24fb3555a6fc4fc2072bc03416",
+        "1d5521a212cd9dbc74705cec52a1efe0",
+        "643d19b1162862c9b396d09a1fdfe820",
+        "dd429cbc0b3699186a386e5fe7b1b000",
+        "70616760603e71cd04a63e5fb8ec1d00",
+        "9afce8ba1dd3e4a4c63e7ff38784026a",
+        "9a6c2c61febada25b1b0f680c5b8b653",
+        "5668de788edee1da7978d3bdd2c2e6ef",
+        "f7599547579d15daf82cfc057de4d061",
+        "157fa1a40ad6c8895a5e6b518e820511"
+      ]
+    }
+  ],
+  "candidate_summary": [
+    {
+      "id": "10_16113",
+      "delayed_25_robust_largest_patch": 26,
+      "delayed_25_median_largest_patch": 28,
+      "delayed_25_best_largest_patch": 31,
+      "delayed_25_target_hits": 0,
+      "baseline_delayed_portfolio_robust_largest_patch": 27,
+      "baseline_delayed_portfolio_median_largest_patch": 28,
+      "baseline_delayed_portfolio_best_largest_patch": 31,
+      "baseline_delayed_portfolio_target_hits": 0
+    },
+    {
+      "id": "10_45026",
+      "delayed_25_robust_largest_patch": 14,
+      "delayed_25_median_largest_patch": 17,
+      "delayed_25_best_largest_patch": 20,
+      "delayed_25_target_hits": 0,
+      "baseline_delayed_portfolio_robust_largest_patch": 14,
+      "baseline_delayed_portfolio_median_largest_patch": 17,
+      "baseline_delayed_portfolio_best_largest_patch": 20,
+      "baseline_delayed_portfolio_target_hits": 0
+    },
+    {
+      "id": "10_45033",
+      "delayed_25_robust_largest_patch": 21,
+      "delayed_25_median_largest_patch": 40,
+      "delayed_25_best_largest_patch": 40,
+      "delayed_25_target_hits": 2,
+      "baseline_delayed_portfolio_robust_largest_patch": 27,
+      "baseline_delayed_portfolio_median_largest_patch": 40,
+      "baseline_delayed_portfolio_best_largest_patch": 40,
+      "baseline_delayed_portfolio_target_hits": 2
+    },
+    {
+      "id": "9_11683",
+      "delayed_25_robust_largest_patch": 15,
+      "delayed_25_median_largest_patch": 16,
+      "delayed_25_best_largest_patch": 19,
+      "delayed_25_target_hits": 0,
+      "baseline_delayed_portfolio_robust_largest_patch": 19,
+      "baseline_delayed_portfolio_median_largest_patch": 25,
+      "baseline_delayed_portfolio_best_largest_patch": 32,
+      "baseline_delayed_portfolio_target_hits": 0
+    }
+  ],
+  "candidate_coverage": [
+    {
+      "id": "10_16113",
+      "delayed_state_path_checks": 374,
+      "baseline_distinct_fingerprints": 295,
+      "immediate_distinct_fingerprints": 361,
+      "delayed_distinct_fingerprints": 358,
+      "prior_two_policy_fingerprints": 605,
+      "new_delayed_fingerprints": 71,
+      "three_policy_fingerprints": 676,
+      "three_policy_digest_sha256": "3faad4e84c6b1f3e47907baa08b8936dfe237a56105ed0f16c7d401ce9f8798c"
+    },
+    {
+      "id": "10_45026",
+      "delayed_state_path_checks": 235,
+      "baseline_distinct_fingerprints": 192,
+      "immediate_distinct_fingerprints": 207,
+      "delayed_distinct_fingerprints": 212,
+      "prior_two_policy_fingerprints": 363,
+      "new_delayed_fingerprints": 48,
+      "three_policy_fingerprints": 411,
+      "three_policy_digest_sha256": "8348dc792f70c3c33dc54f71e2872ccc0dbd46a6de2913c4d16991541a433bfe"
+    },
+    {
+      "id": "10_45033",
+      "delayed_state_path_checks": 291,
+      "baseline_distinct_fingerprints": 256,
+      "immediate_distinct_fingerprints": 262,
+      "delayed_distinct_fingerprints": 285,
+      "prior_two_policy_fingerprints": 463,
+      "new_delayed_fingerprints": 72,
+      "three_policy_fingerprints": 535,
+      "three_policy_digest_sha256": "ec4118881ddd5b0969936e3dbbadb7e3115dd9b202de8273f3b736574bfa6bd9"
+    },
+    {
+      "id": "9_11683",
+      "delayed_state_path_checks": 216,
+      "baseline_distinct_fingerprints": 308,
+      "immediate_distinct_fingerprints": 215,
+      "delayed_distinct_fingerprints": 213,
+      "prior_two_policy_fingerprints": 443,
+      "new_delayed_fingerprints": 8,
+      "three_policy_fingerprints": 451,
+      "three_policy_digest_sha256": "d1ac49d72b297f3179860a6a775984e4e93497f8399f508f560cfd4175d8c677"
+    }
+  ],
+  "summary": {
+    "candidates": 4,
+    "paths_per_policy": 12,
+    "delayed_25_better_than_immediate": 2,
+    "delayed_25_equal_to_immediate": 10,
+    "delayed_25_worse_than_immediate": 0,
+    "delayed_25_target_hits": 2,
+    "delayed_25_nogood_clauses": 66585,
+    "delayed_25_nogood_prunes": 34908,
+    "delayed_checkpoint_checks_completed": 1116,
+    "delayed_checkpoint_checks_timed_out": 0,
+    "delayed_periodic_certificates_found": 0,
+    "delayed_distinct_fingerprints": 1068,
+    "prior_two_policy_fingerprints": 1874,
+    "new_delayed_fingerprints": 199,
+    "three_policy_fingerprints": 2073,
+    "three_policy_vs_baseline_multiplier": 1.972407231208373,
+    "policy_decision": "replace_immediate_nogood_lane_with_delayed_25"
+  },
+  "interpretation": [
+    "A fixed 250+250 baseline/nogood restart split did not beat the 500-node baseline on any sampled path, so fixed-budget restarts are not adopted.",
+    "Learning nogoods from the start but delaying their application until 25 failed states weakly dominates immediate application on all 12 paths: two deepen and ten tie.",
+    "The delayed policy reaches two independently hashed 40-tile 10_45033 witnesses; both target-patch quotient checks completed without a certificate.",
+    "The delayed exact screen adds 199 rigid-motion patch geometries beyond the published baseline-plus-immediate union, bringing the three-policy checked union to 2,073.",
+    "All results remain bounded finite-patch evidence; they prove neither non-tiling nor aperiodicity."
+  ]
+}
