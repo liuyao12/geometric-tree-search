@@ -2,7 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
-import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260818-candidate-audit-v35";
+import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260818-isohedral-horizon-v36";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const createTilingStream = (() => {
@@ -543,11 +543,17 @@ export const createTilingStream = (() => {
       failed_leaves: 0,
       backtracks: 0,
       max_depth: 0,
+      max_live_tiles: 1,
       isohedral_transforms_discovered: 0,
       isohedral_patch_copies_applied: 0,
       isohedral_tiles_propagated: 0,
       isohedral_patch_conflicts: 0,
       isohedral_newer_layer_deferrals: 0,
+      isohedral_certificate_attempts: 0,
+      isohedral_certificate_patch_size: 0,
+      isohedral_certificate_patch_sizes_tried: [],
+      isohedral_certificate_duplicate_states_skipped: 0,
+      isohedral_search_horizon_tiles: null,
       // Kept as zero-valued compatibility counters for existing headless
       // consumers. This standalone engine does not install a GCTS runtime.
       marking_observed_failures: 0,
@@ -650,6 +656,8 @@ export const createTilingStream = (() => {
       const growth = growthStats();
       return {
         ...searchStats,
+        isohedral_certificate_patch_sizes_tried:
+          searchStats.isohedral_certificate_patch_sizes_tried.slice(),
         growth_axis_rank: growth.axis_rank,
         growth_spans: growth.spans,
         growth_isotropy: growth.isotropy,
@@ -1234,6 +1242,7 @@ export const createTilingStream = (() => {
       const moveLayer = Number.isFinite(move.layer) ? move.layer : candidateMoveLayer(move);
       move.layer = moveLayer;
       state.placements.push(move);
+      searchStats.max_live_tiles = Math.max(searchStats.max_live_tiles, state.placements.length);
       state.placed_volume += tileVolumes[move.prototile_idx] ?? 0;
       stateVersion += 1;
       const changedOccupancyPositions = move.occupancy_data.map(o => o.pos);
@@ -3886,6 +3895,32 @@ export const createTilingStream = (() => {
       }
       return null;
     };
+    let isohedralLargestCertificatePatchTried = 0;
+    const isohedralCertificateStatesTried = new Set();
+    const tryMineIsohedralCertificate = ({ force = false } = {}) => {
+      if (state.placements.length < 2) return null;
+      if (growthStats().axis_rank < Math.min(3, tilingDimension)) return null;
+      const configuredCertificateStride = Number(config.isohedral_certificate_stride);
+      const certificateStride = Number.isFinite(configuredCertificateStride) && configuredCertificateStride > 0
+        ? Math.floor(configuredCertificateStride)
+        : 8;
+      if (!force && state.placements.length < isohedralLargestCertificatePatchTried + certificateStride) {
+        return null;
+      }
+      const stateKey = periodicPatchStateKey();
+      if (isohedralCertificateStatesTried.has(stateKey)) {
+        searchStats.isohedral_certificate_duplicate_states_skipped += 1;
+        return null;
+      }
+      isohedralCertificateStatesTried.add(stateKey);
+      isohedralLargestCertificatePatchTried = Math.max(
+        isohedralLargestCertificatePatchTried,
+        state.placements.length
+      );
+      searchStats.isohedral_certificate_attempts += 1;
+      searchStats.isohedral_certificate_patch_sizes_tried.push(state.placements.length);
+      return mineIsohedralPeriodicTemplate();
+    };
     const rollbackIsohedralMoves = applied => {
       while (applied.length) {
         const entry = applied.pop();
@@ -3960,7 +3995,13 @@ export const createTilingStream = (() => {
       return applied;
     };
     const isohedralGoalMet = () => {
-      if (!goalMet() || criterion !== "count") return goalMet();
+      if (criterion !== "count") return goalMet();
+      const configuredHorizon = Number(config.isohedral_search_horizon_tiles);
+      const proofHorizon = Number.isFinite(configuredHorizon) && configuredHorizon > 0
+        ? Math.floor(configuredHorizon)
+        : targetVal;
+      searchStats.isohedral_search_horizon_tiles = proofHorizon;
+      if (state.placements.length < proofHorizon) return false;
       const growth = growthStats();
       const configuredMinimum = Number(config.growth_isotropy_min);
       const minimumIsotropy = Number.isFinite(configuredMinimum)
@@ -3975,7 +4016,7 @@ export const createTilingStream = (() => {
       applied.inconsistent = false;
       let madeProgress = true;
       let firstPass = true;
-      while (madeProgress && (firstPass || !goalMet())) {
+      while (madeProgress && (firstPass || !isohedralGoalMet())) {
         firstPass = false;
         madeProgress = false;
         const sourcePatch = state.placements.slice();
@@ -4070,21 +4111,26 @@ export const createTilingStream = (() => {
         yield* rollbackPropagated();
         return false;
       }
+      // Quotient certification is a proof obligation, not a visualization
+      // milestone. Mine at bounded live-patch checkpoints and at the separate
+      // proof horizon; otherwise raising the requested preview count can hide
+      // a certificate that was already present in a smaller patch.
+      const template = tryMineIsohedralCertificate({ force: isohedralGoalMet() });
+      if (template) {
+        searchStats.isohedral_certificate_patch_size = state.placements.length;
+        tilingEvidence = {
+          kind: "isohedral_certificate",
+          certified: true,
+          strategy: "isohedral",
+          patch_size: template.motif.length,
+          certificate_kind: template.kind,
+          period_vectors: template.period_vectors.map(vector => vector.slice()),
+          periodic_template: template
+        };
+        yield nodeStatus(parentId, "success", "certified tile-transitive quotient", preflightStatusPayload(template));
+        return true;
+      }
       if (isohedralGoalMet()) {
-        const template = mineIsohedralPeriodicTemplate();
-        if (template) {
-          tilingEvidence = {
-            kind: "isohedral_certificate",
-            certified: true,
-            strategy: "isohedral",
-            patch_size: template.motif.length,
-            certificate_kind: template.kind,
-            period_vectors: template.period_vectors.map(vector => vector.slice()),
-            periodic_template: template
-          };
-          yield nodeStatus(parentId, "success", "certified tile-transitive quotient", preflightStatusPayload(template));
-          return true;
-        }
         yield nodeStatus(parentId, "fail", "finite isohedral-looking patch has no exact quotient certificate");
         yield* rollbackPropagated();
         return false;

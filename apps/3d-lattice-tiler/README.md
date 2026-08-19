@@ -207,6 +207,14 @@ To repeat the resource-bounded screen of the original 16 census candidates:
 node scripts/rescreen-lattice-polyhedra.mjs --time-ms=20000 --periodic-max=8 --isohedral-target=60
 ```
 
+`--isohedral-target` is the proof-search horizon. `--display-target` may be set
+independently to stress the preview path; changing it must not change whether
+an exact isohedral quotient is discovered. Runtime statistics report the proof
+horizon, certificate-attempt patch sizes, successful certificate patch size,
+and the maximum number of simultaneously live tiles. Failed quotient checks
+are memoized by the exact live placement set, so different move orders do not
+repeat the same expensive certificate calculation.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

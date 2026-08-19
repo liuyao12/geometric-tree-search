@@ -23,6 +23,7 @@ const pool = only.size
 const timeMs = numberArg("time-ms", 10000);
 const periodicMax = numberArg("periodic-max", 6);
 const isohedralTarget = numberArg("isohedral-target", 24);
+const displayTarget = numberArg("display-target", isohedralTarget);
 const translationalMoveOrder = args.get("translational-move-order") ?? "balanced";
 const skipIsohedral = args.get("skip-isohedral") === "true";
 const skipTranslational = args.get("skip-translational") === "true";
@@ -56,10 +57,11 @@ async function run(candidate, strategy) {
   const config = {
     ...baseConfig(candidate),
     criterion: "count",
-    target_val: strategy === "translational" ? isohedralTarget : isohedralTarget,
+    target_val: displayTarget,
     tiling_strategy: strategy,
     move_order: strategy === "isohedral" ? "isohedral" : translationalMoveOrder,
-    periodic_patch_max_tiles: periodicMax
+    periodic_patch_max_tiles: periodicMax,
+    isohedral_search_horizon_tiles: isohedralTarget
   };
   const checks = [];
   let finished = null;
@@ -77,6 +79,7 @@ async function run(candidate, strategy) {
     }
     if (message.type === "finished") finished = message;
   }
+  largestPatch = Math.max(largestPatch, finished?.search_stats?.max_live_tiles ?? 0);
   return {
     strategy,
     outcome: finished?.result_kind ?? "missing_result",

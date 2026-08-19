@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-candidate-audit-v35";
+import { tileSpecs } from "./engine.js?v=20260818-isohedral-horizon-v36";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1599,6 +1599,8 @@ function configKey() {
   const isFreeRange = tilingStrategy === "free_range";
   const isLearningFreeRange = tilingStrategy === "learning_free_range";
   const isStructural = tilingStrategy === "translational" || tilingStrategy === "isohedral";
+  const candidateIsohedralHorizon = root?.census_candidate?.last_screening
+    ?.isohedral?.growth_horizon_tiles ?? null;
   return JSON.stringify({
     mode_key: root?.mode_key ?? "cube",
     custom_system: customSystem,
@@ -1627,6 +1629,8 @@ function configKey() {
       ? null
       : Math.max(1, Number(periodicTileCountSelect.value) || 4),
     periodic_template_max_volume: 512,
+    isohedral_search_horizon_tiles:
+      positiveSearchParam("isohedral_search_horizon_tiles") ?? candidateIsohedralHorizon,
     forced_move_layer_lag_cap: forcedLayerLagCap,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
@@ -2640,7 +2644,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-candidate-audit-v35", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-isohedral-horizon-v36", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3081,7 +3085,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-candidate-audit-v35", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-isohedral-horizon-v36", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

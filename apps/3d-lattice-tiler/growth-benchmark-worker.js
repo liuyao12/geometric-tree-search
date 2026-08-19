@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-candidate-audit-v35";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-isohedral-horizon-v36";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
