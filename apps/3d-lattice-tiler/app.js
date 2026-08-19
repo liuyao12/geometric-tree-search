@@ -3019,6 +3019,16 @@ function formatGrowthResult(result, target) {
     const patchSize = result.certificateTargetTiles ?? target;
     return `${result.label} certified no connected ${patchSize}-tile patch ${formatElapsed(result.milliseconds)}`;
   }
+  if (result?.mode === "proof" && targetPoint && result?.stats?.generic_periodic_certificate_attempted) {
+    const patchSize = result.stats.generic_periodic_certificate_patch_size ?? target;
+    if (result.stats.generic_periodic_certificate_found) {
+      return `${result.label} certified the ${patchSize}-tile target patch as a translational quotient ${formatElapsed(result.milliseconds)}`;
+    }
+    if (result.stats.generic_periodic_certificate_completed) {
+      return `${result.label} reached ${patchSize} tiles; that target patch is not a translational quotient ${formatElapsed(result.milliseconds)}`;
+    }
+    return `${result.label} reached ${patchSize} tiles; target-patch quotient check timed out ${formatElapsed(result.milliseconds)}`;
+  }
   if (result?.mode === "isohedral" && result?.resultKind === "certified_tiling") {
     return `${result.label} certified ${result.certificatePatchSize ?? "finite"}-tile unit cell ${formatElapsed(result.milliseconds)}`;
   }

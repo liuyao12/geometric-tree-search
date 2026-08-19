@@ -38,6 +38,11 @@ assert.match(
   /this excludes those patches as translational fundamental domains, not other possible motifs/,
   "the catalog must state the narrow scope of a negative target-patch quotient check"
 );
+assert.match(
+  growthAppSource,
+  /that target patch is not a translational quotient/,
+  "the completed proof-lane summary must retain the target-patch quotient result"
+);
 
 assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
 assert.equal(
