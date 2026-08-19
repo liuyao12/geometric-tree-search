@@ -1843,6 +1843,21 @@ Thus the generic grammar supplies a valid continuation after self-feed, but it
 does not autonomously choose six exact actions. Stationarity and exponential
 IQC growth remain unclaimed.
 
+A post-self-feed value is now trained only on second complete blocks from the
+ten already-consumed development nuclei. Each of 1,278 terminal states keeps
+the existing local-section features, the complete canonical order-three port
+incidence graph, and sixteen target-free successor-frontier summaries. Nine
+nuclei contain an exact terminal. Fully nested whole-nucleus selection chooses
+an exact top-one terminal in `7 / 9` supplied groups and `26 / 30` colored
+sites, below the frozen `8 / 9` and 27-site gate, so no new nucleus is opened.
+The two supplied failures have first-exact ranks 14 and 10; consequently a
+development-selected width-16 tree beam retains exact states in all `9 / 9`.
+On the already-consumed second-block confirmation, the frozen value still
+misranks top one (`2 / 3` sites), but rank 10 is exact and six of the first 16
+states are exact. This is evidence for bounded rollback supply, not a fresh
+confirmation or a branch-commit rule. The next gate must learn to choose among
+those retained configurations from downstream consequences.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

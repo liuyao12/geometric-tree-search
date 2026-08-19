@@ -137,6 +137,25 @@ def _scores(scalar_model, graph_model, graph_rank_weight, rows):
     return scalar, graph, fused
 
 
+def _graph_cache_key(rows, graph_spec):
+    corpus = tuple(sorted((
+        repr(row.group), row.graph.canonical_digest, bool(row.successful))
+        for row in rows))
+    return graph_spec, corpus
+
+
+def _fit_graph(rows, graph_spec, cache):
+    key = _graph_cache_key(rows, graph_spec)
+    if cache is not None and key in cache:
+        return cache[key]
+    model = fit_learned_equivariant_port_value(tuple(
+        LearnedEquivariantPortExample(
+            row.group, row.graph, row.successful) for row in rows), graph_spec)
+    if cache is not None:
+        cache[key] = model
+    return model
+
+
 def _capacity_result(rows, scores):
     successful_scores = tuple(score for score, row in zip(scores, rows)
                               if row.successful)
@@ -155,6 +174,7 @@ def fit_grouped_equivariant_port_fusion(
         feature_names: Sequence[str], color_keys: Sequence[str],
         representations: Sequence[TerminalRepresentation],
         spec: EquivariantPortFusionSpec = EquivariantPortFusionSpec(),
+        graph_model_cache: dict | None = None,
         ) -> tuple[FrozenEquivariantPortFusionValue,
                    EquivariantPortFusionAudit]:
     rows = tuple(sorted(examples, key=lambda row: (
@@ -181,10 +201,7 @@ def fit_grouped_equivariant_port_fusion(
         held = tuple(row for row in rows if row.group == heldout)
         if not any(row.successful for row in held):
             continue
-        graph_model = fit_learned_equivariant_port_value(tuple(
-            LearnedEquivariantPortExample(
-                row.group, row.graph, row.successful) for row in training),
-            spec.graph)
+        graph_model = _fit_graph(training, spec.graph, graph_model_cache)
         graph_scores = percentile_ranks(tuple(
             score_learned_equivariant_port_value(graph_model, row.graph)
             for row in held))
@@ -217,9 +234,7 @@ def fit_grouped_equivariant_port_fusion(
     scalar_model = _fit_scalar(
         rows, representation, chosen.neighbors, names, colors,
         spec.beta_prior)
-    graph_model = fit_learned_equivariant_port_value(tuple(
-        LearnedEquivariantPortExample(
-            row.group, row.graph, row.successful) for row in rows), spec.graph)
+    graph_model = _fit_graph(rows, spec.graph, graph_model_cache)
     digest = hashlib.sha256(repr((
         portfolio_terminal_value_digest(scalar_model), graph_model.model_digest,
         chosen.graph_rank_weight, names, colors, len(groups))).encode()).hexdigest()

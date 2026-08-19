@@ -3833,6 +3833,52 @@ do not. The next implementation target is a generic post-self-feed terminal
 value trained on consumed blocks, followed by a new sealed confirmation. This
 result is not stationary or exponential evidence.
 
+That generic post-self-feed value is now measured. For each of the ten
+already-consumed development nuclei, one exact first-block terminal is chosen
+from development truth, self-fed as a complete colored configuration, and used
+to enumerate a second complete block. Candidate state and features freeze
+before its already-consumed outer target attaches labels. The resulting corpus
+contains 1,278 terminals, 142 exact, with exact second-block supply in nine of
+ten nuclei. Every row carries 236 target-free invariant fields: the existing
+scalar section, a complete canonical order-three port-incidence graph, and 16
+successor-frontier summaries.
+
+The whole-nucleus nested result is:
+
+| post-self-feed development gate | result |
+|---|---:|
+| nuclei with exact terminal supply | `9 / 10` |
+| exact top-one selections among supplied nuclei | `7 / 9` |
+| correct sites selected | `26 / 30` |
+| all-exact top bands | `7 / 9` |
+| two failed supplied first-exact ranks | `14`, `10` |
+| frozen top-one gate | `>=8 / 9` and `>=27 / 30` |
+| gate | red |
+
+The final train-only capacity is the incidence representation with one scalar
+neighbor and graph-percentile weight 0.25. The two supplied failures motivate
+a bounded tree interpretation rather than an unbounded rescue: width 16 is
+the smallest power-of-two ceiling above the maximum development first-exact
+rank, and it retains an exact terminal in all nine supplied groups.
+
+The already-consumed second-block confirmation is then reused diagnostically
+with the model and width frozen. All 128 exact candidate geometries reproduce
+the published receipt before the target is regenerated. Top one remains false
+at `2 / 3` sites, the first exact terminal is rank 10, and six of the first 16
+are exact. Thus bounded rollback supply transfers, but the commit value does
+not. Because the preregistered top-one development gate failed, no fresh
+nucleus is opened and this is not a new confirmation, stationarity result, or
+exponential-growth certificate.
+
+The initial pairwise graph implementation also exposed an accidental
+computational bottleneck: it rebuilt a sparse feature-difference dictionary
+for every positive-negative pair at every gradient step. The replacement
+computes the identical logistic pair coefficient per pair, accumulates one
+coefficient per endpoint, and makes one sparse pass over the examples. It
+matches the reference weights to `1e-12`; a full 1,278-row graph fit falls to
+about 26 seconds, and the complete 56-fit nested graph cache plus scalar sweep
+finishes in about 13 minutes rather than running for hours.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

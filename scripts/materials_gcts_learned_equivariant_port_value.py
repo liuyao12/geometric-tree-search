@@ -168,6 +168,38 @@ def _sigmoid(value):
     return exponent / (1 + exponent)
 
 
+def _aggregated_pairwise_gradient(weights, vectors, paired_groups):
+    """Exact pairwise-logistic gradient without pairwise sparse differences.
+
+    For every positive/negative pair, ``d = x_pos - x_neg`` and the gradient
+    contribution is ``(sigmoid(w·d) - 1) d``. The scalar coefficient can be
+    accumulated once on each endpoint, after which one sparse pass over the
+    examples produces the same gradient. This changes only floating-point
+    summation order; it retains every pair and does not sample or approximate.
+    """
+    scores = tuple(sum(weights[index] * value for index, value in vector)
+                   for vector in vectors)
+    coefficients = [0.] * len(vectors)
+    group_scale = 1 / len(paired_groups)
+    for positive_indices, negative_indices in paired_groups:
+        pair_scale = group_scale / (
+            len(positive_indices) * len(negative_indices))
+        for positive_index in positive_indices:
+            positive_score = scores[positive_index]
+            for negative_index in negative_indices:
+                error = pair_scale * (
+                    _sigmoid(positive_score - scores[negative_index]) - 1.)
+                coefficients[positive_index] += error
+                coefficients[negative_index] -= error
+    gradient = [0.] * len(weights)
+    for coefficient, vector in zip(coefficients, vectors):
+        if not coefficient:
+            continue
+        for index, value in vector:
+            gradient[index] += coefficient * value
+    return gradient
+
+
 def fit_learned_equivariant_port_value(
         examples: Sequence[LearnedEquivariantPortExample],
         spec: LearnedEquivariantPortSpec = LearnedEquivariantPortSpec(),
@@ -179,7 +211,8 @@ def fit_learned_equivariant_port_value(
     if (not rows or len(groups) < 2 or positive in (0, len(rows))
             or spec.ridge <= 0 or spec.minimum_feature_groups < 1
             or spec.steps < 1 or spec.learning_rate <= 0
-            or spec.objective not in ("classification", "pairwise")
+            or spec.objective not in (
+                "classification", "pairwise", "pairwise-aggregated")
             or any(row.graph.target_used for row in rows)):
         raise ValueError("invalid learned equivariant-port corpus")
     embeddings = tuple(dict(equivariant_port_interaction_embedding(
@@ -216,7 +249,7 @@ def fit_learned_equivariant_port_value(
                           for positive_indices, negative_indices in
                           by_group.values()
                           if positive_indices and negative_indices)
-    if spec.objective == "pairwise" and len(paired_groups) < 2:
+    if spec.objective.startswith("pairwise") and len(paired_groups) < 2:
         raise ValueError("pairwise objective needs two contrasted groups")
     for step in range(spec.steps):
         gradient = [0.] * len(keys)
@@ -233,7 +266,7 @@ def fit_learned_equivariant_port_value(
                     gradient[index] += error * value
             gradient_scale = inverse
             intercept_scale = inverse
-        else:
+        elif spec.objective == "pairwise":
             group_scale = 1 / len(paired_groups)
             for positive_indices, negative_indices in paired_groups:
                 pair_scale = group_scale / (
@@ -250,6 +283,11 @@ def fit_learned_equivariant_port_value(
                         error = pair_scale * (_sigmoid(margin) - 1.)
                         for index, value in difference.items():
                             gradient[index] += error * value
+            gradient_scale = 1.
+            intercept_scale = 0.
+        else:
+            gradient = _aggregated_pairwise_gradient(
+                weights, vectors, paired_groups)
             gradient_scale = 1.
             intercept_scale = 0.
         rate = spec.learning_rate / math.sqrt(1 + step / 40)

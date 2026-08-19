@@ -70,7 +70,31 @@ def test_target_taint_fails_closed():
         raise AssertionError("target-tainted graph entered rank fusion")
 
 
+def test_content_addressed_graph_cache_preserves_model():
+    rows = tuple(EquivariantPortFusionExample(
+        group, (0.,), ("X",), _graph(label), label)
+        for group in range(4) for label in (False, True))
+    spec = EquivariantPortFusionSpec(
+        graph=LearnedEquivariantPortSpec(
+            interaction_order=2, ridge=1., minimum_feature_groups=2,
+            steps=20, objective="pairwise"),
+        neighbors=(1,), graph_rank_weights=(1.,))
+    cache = {}
+    first, _ = fit_grouped_equivariant_port_fusion(
+        rows, feature_names=("scalar",), color_keys=("X",),
+        representations=(TerminalRepresentation("all", (0,)),), spec=spec,
+        graph_model_cache=cache)
+    size = len(cache)
+    second, _ = fit_grouped_equivariant_port_fusion(
+        tuple(reversed(rows)), feature_names=("scalar",), color_keys=("X",),
+        representations=(TerminalRepresentation("all", (0,)),), spec=spec,
+        graph_model_cache=cache)
+    assert len(cache) == size
+    assert first.model_digest == second.model_digest
+
+
 if __name__ == "__main__":
     test_rank_fusion_is_group_sealed_and_candidate_preserving()
     test_target_taint_fails_closed()
+    test_content_addressed_graph_cache_preserves_model()
     print("equivariant port-fusion tests passed")

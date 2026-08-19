@@ -48,8 +48,15 @@ def test_equivariant_interactions_fit_recurrent_port_conjunctions():
     assert not first.target_used
     ranked = fit_learned_equivariant_port_value(
         rows, replace(spec, objective="pairwise"))
+    aggregated = fit_learned_equivariant_port_value(
+        rows, replace(spec, objective="pairwise-aggregated"))
     assert score_learned_equivariant_port_value(ranked, positive) > \
         score_learned_equivariant_port_value(ranked, negative)
+    assert ranked.feature_keys == aggregated.feature_keys
+    assert ranked.scales == aggregated.scales
+    assert max(abs(first - second) for first, second in zip(
+        ranked.weights, aggregated.weights)) < 1e-12
+    assert abs(ranked.intercept - aggregated.intercept) < 1e-15
 
 
 def test_equivariant_embedding_is_node_permutation_invariant():
