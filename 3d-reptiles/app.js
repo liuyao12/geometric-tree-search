@@ -552,12 +552,12 @@ function makeVisual(transforms, turnGenerations) {
     for (const index of FACE_INDICES) {
       const point = transformed[index];
       facePositions.push(point.x, point.y, point.z);
-      faceColors.push(color.r, color.g, color.b);
+      faceColors.push(color.r, color.g, color.b, 1);
     }
     for (const index of EDGE_INDICES) {
       const point = transformed[index];
       edgePositions.push(point.x, point.y, point.z);
-      edgeColors.push(color.r, color.g, color.b);
+      edgeColors.push(color.r, color.g, color.b, 1);
     }
   });
 
@@ -565,7 +565,7 @@ function makeVisual(transforms, turnGenerations) {
   const edgeOpacity = Math.max(0.01, 0.16 / Math.pow(transforms.length, 0.25));
   const faceGeometry = new THREE.BufferGeometry();
   faceGeometry.setAttribute("position", new THREE.Float32BufferAttribute(facePositions, 3));
-  faceGeometry.setAttribute("color", new THREE.Float32BufferAttribute(faceColors, 3));
+  faceGeometry.setAttribute("color", new THREE.Float32BufferAttribute(faceColors, 4));
   faceGeometry.computeVertexNormals();
   const faceMaterial = makeTransparentMaterial({ opacity: faceOpacity });
   const mesh = new THREE.Mesh(faceGeometry, faceMaterial);
@@ -573,7 +573,7 @@ function makeVisual(transforms, turnGenerations) {
 
   const edgeGeometry = new THREE.BufferGeometry();
   edgeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(edgePositions, 3));
-  edgeGeometry.setAttribute("color", new THREE.Float32BufferAttribute(edgeColors, 3));
+  edgeGeometry.setAttribute("color", new THREE.Float32BufferAttribute(edgeColors, 4));
   const edgeMaterial = makeTransparentMaterial({ line: true, opacity: edgeOpacity });
   const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
   edges.renderOrder = 2;
@@ -591,11 +591,19 @@ function refreshVisualColors(visual) {
   let edgeOffset = 0;
   visual.transforms.forEach((matrix, transformIndex) => {
     const color = displayedTileColor(matrix, visual.turnGenerations[transformIndex]);
+    const matches = selectedOrientationKey !== null
+      && orientationKey(canonicalQuaternion(matrix)) === selectedOrientationKey;
+    const faceAlpha = selectedOrientationKey === null
+      ? 1
+      : matches ? 1 : Math.max(0.004, visual.materials[0].userData.baseOpacity * 0.35);
+    const edgeAlpha = selectedOrientationKey === null
+      ? 1
+      : matches ? 1 : Math.max(0.008, visual.materials[1].userData.baseOpacity * 0.28);
     for (let index = 0; index < FACE_INDICES.length; index += 1) {
-      faceColors.setXYZ(faceOffset++, color.r, color.g, color.b);
+      faceColors.setXYZW(faceOffset++, color.r, color.g, color.b, faceAlpha);
     }
     for (let index = 0; index < EDGE_INDICES.length; index += 1) {
-      edgeColors.setXYZ(edgeOffset++, color.r, color.g, color.b);
+      edgeColors.setXYZW(edgeOffset++, color.r, color.g, color.b, edgeAlpha);
     }
   });
   faceColors.needsUpdate = true;
@@ -606,11 +614,8 @@ function refreshVisualColors(visual) {
 function refreshVisualEmphasis(visual) {
   if (!visual) return;
   for (const material of visual.materials) {
-    const boost = selectedOrientationKey === null ? 1 : material.isLineBasicMaterial ? 3 : 2.4;
-    material.opacity = Math.min(
-      0.82,
-      material.userData.baseOpacity * (material.userData.transitionAmount ?? 1) * boost
-    );
+    const targetOpacity = selectedOrientationKey === null ? material.userData.baseOpacity : 1;
+    material.opacity = targetOpacity * (material.userData.transitionAmount ?? 1);
   }
 }
 
