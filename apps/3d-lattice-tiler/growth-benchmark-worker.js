@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-global-overlap-v74";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-rigid-overlap-v76";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot

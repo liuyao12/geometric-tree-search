@@ -76,7 +76,7 @@ assert.match(
 );
 assert.match(
   growthAppSource,
-  /candidate-specific patch fingerprints/,
+  /proper-rigid-motion patch fingerprints/,
   "the catalog must distinguish state-path check counts from globally distinct geometry"
 );
 assert.match(
@@ -112,8 +112,12 @@ const archivedDistinctScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-hybrid-checkpoint-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
-const archivedGlobalOverlap = JSON.parse(await readFile(
+const archivedFixedFrameOverlap = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-global-checkpoint-overlap-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedGlobalOverlap = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-rigid-checkpoint-overlap-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -197,12 +201,14 @@ assert.deepEqual(
     sampling_skips: archivedDistinctScreening.summary.sampling_skips,
     duplicate_states_skipped: archivedDistinctScreening.summary.duplicate_states_skipped,
     per_size_cap_skips: archivedDistinctScreening.summary.per_size_cap_skips,
+    fingerprint_equivalence: "orientation_preserving_cubic_rigid_motion",
     globally_distinct_candidate_states:
       archivedGlobalOverlap.summary.globally_distinct_candidate_states,
     repeated_state_path_pairs: archivedGlobalOverlap.summary.repeated_state_path_pairs,
     global_uniqueness_rate: archivedGlobalOverlap.summary.global_uniqueness_rate,
     report: "data/lattice-polyhedron-hybrid-checkpoint-screen-2026-08-19.json",
-    overlap_report: "data/lattice-polyhedron-global-checkpoint-overlap-2026-08-19.json",
+    overlap_report: "data/lattice-polyhedron-rigid-checkpoint-overlap-2026-08-19.json",
+    prior_fixed_frame_overlap_report: "data/lattice-polyhedron-global-checkpoint-overlap-2026-08-19.json",
     prior_prefix_report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
   },
   "runtime distinct-patch evidence must match the archived executed screen"
@@ -233,8 +239,13 @@ assert.equal(
   archivedDistinctScreening.summary.checkpoint_checks_completed,
   "the hybrid evidence must be the exact union of prefix and later-branch samples"
 );
-assert.equal(archivedGlobalOverlap.source_benchmark_schema_version, 12);
+assert.equal(archivedGlobalOverlap.source_benchmark_schema_version, 13);
 assert.equal(archivedGlobalOverlap.prior_outcome_report, LATTICE_POLYHEDRON_SCREENING.gcts_proof.distinct_patch_checkpoint_screen.report);
+assert.equal(
+  archivedGlobalOverlap.prior_fingerprint_report,
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.distinct_patch_checkpoint_screen.prior_fixed_frame_overlap_report
+);
+assert.equal(archivedGlobalOverlap.fingerprint.equivalence, "orientation-preserving cubic rigid motion");
 assert.equal(archivedGlobalOverlap.summary.paths, archivedDistinctScreening.summary.paths_screened);
 assert.equal(archivedGlobalOverlap.summary.state_path_pairs, archivedDistinctScreening.summary.checkpoint_checks_completed);
 assert.equal(archivedGlobalOverlap.summary.exact_checks_completed, archivedGlobalOverlap.summary.state_path_pairs);
@@ -305,6 +316,19 @@ assert.equal(
 assert.equal(
   archivedGlobalOverlap.summary.globally_distinct_digest_sha256,
   fingerprintDigest(globalCandidateFingerprints)
+);
+assert.equal(
+  archivedFixedFrameOverlap.summary.globally_distinct_candidate_states
+    - archivedGlobalOverlap.summary.globally_distinct_candidate_states,
+  2,
+  "proper rigid-motion canonicalization must identify the two rotated fixed-frame duplicates"
+);
+assert.ok(
+  archivedGlobalOverlap.candidates.every(candidate => {
+    const fixedFrame = archivedFixedFrameOverlap.candidates.find(item => item.id === candidate.id);
+    return candidate.globally_distinct_fingerprints <= fixedFrame.globally_distinct_fingerprints;
+  }),
+  "a stronger equivalence relation must never increase a candidate's distinct-state count"
 );
 assert.ok(
   archivedProofScreening.paths
