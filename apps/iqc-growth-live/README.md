@@ -1825,6 +1825,21 @@ branches. This confirms finite candidate supply and portfolio retention on a
 new atom-domain-disjoint nucleus. One finite three-action confirmation is not
 sustained continuation, stationarity, or exponential IQC growth.
 
+The confirmed fusion top-one branch was then used exactly as selected—without
+consulting its target—to seed a second complete block at the same nucleus. A
+published manifest fixed the enlarged public radius to
+`14.5623 + 9 = 23.5623`; a second zero-target receipt reconstructed the unique
+three-action branch, froze its 476-atom colored configuration, and serialized
+another `8 -> 37 -> 128` tree plus an eleven-state dual portfolio. Only then
+was the 8,684-atom outer target opened once at lift bounds 72 and 73. The crops
+agree. Candidate geometry is not the limitation: `62 / 128` second-block
+terminals are exactly color-correct. Transfer of terminal value is red:
+scalar and fusion first-exact ranks are 13 and 16, neither top-one terminal is
+exact (`2 / 3` sites each), and the frozen portfolio misses every exact state.
+Thus the generic grammar supplies a valid continuation after self-feed, but it
+does not autonomously choose six exact actions. Stationarity and exponential
+IQC growth remain unclaimed.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

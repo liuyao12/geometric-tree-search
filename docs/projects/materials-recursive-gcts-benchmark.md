@@ -3807,6 +3807,32 @@ finite candidate supply and rollback-portfolio retention. It is not evidence
 of self-fed sustained growth, a common three-scale production, or exponential
 IQC growth.
 
+The next gate self-feeds that *already frozen* fusion top-one state instead of
+choosing a posthoc exact alternative. Commit `5f7b409` fixes the same centre,
+the inherited action digest, and a larger public radius
+`R2 = 14.5623 + 9 = 23.5623`. Receipt `c0a67515…4a1f8`, published before the
+outer target, reconstructs the first branch uniquely, records its 476-atom
+state, and freezes a second `8 -> 37 -> 128` tree with eleven dual-portfolio
+states.
+
+The radius-23.5623 target was opened once at lift bounds 72 and 73; both crops
+contain the same 8,684 colored sites. The result separates supply from value:
+
+| second self-fed block | result |
+|---|---:|
+| exact terminals / complete terminals | `62 / 128` |
+| scalar first exact rank | `13` |
+| fusion first exact rank | `16` |
+| exact terminal in 11-state portfolio | no |
+| scalar / fusion top-one correct sites | `2 / 3`, `2 / 3` |
+| autonomous six-action gate | red |
+
+The learned cluster/port geometry therefore remains capable of continuation
+after self-feed; the transferred terminal value and fixed rollback allocation
+do not. The next implementation target is a generic post-self-feed terminal
+value trained on consumed blocks, followed by a new sealed confirmation. This
+result is not stationary or exponential evidence.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict
