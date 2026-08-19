@@ -700,6 +700,8 @@ export const createTilingStream = (() => {
       generic_geometric_nogood_clauses: 0,
       generic_geometric_nogood_prunes: 0,
       generic_geometric_nogood_failure_states: 0,
+      generic_geometric_nogood_activation_failure_states: 0,
+      generic_geometric_nogood_activated: false,
       generic_geometric_nogood_capacity: 0,
       generic_geometric_nogood_capacity_reached: false,
       generic_geometric_nogood_pivot_index: false,
@@ -1735,6 +1737,12 @@ export const createTilingStream = (() => {
       && !targetRegion
       && genericGeometricNogoodCapacity > 0;
     const genericGeometricNogoodPivotIndex = config.generic_geometric_nogood_index !== false;
+    const configuredGeometricNogoodActivationFailures = Number(
+      config.generic_geometric_nogood_activation_failure_states
+    );
+    const genericGeometricNogoodActivationFailures = Number.isFinite(configuredGeometricNogoodActivationFailures)
+      ? Math.max(0, Math.floor(configuredGeometricNogoodActivationFailures))
+      : 0;
     const genericGeometricNogood = new GeometricFailureMemo({
       contextMatch: "subset",
       usePivotIndex: genericGeometricNogoodPivotIndex,
@@ -1761,6 +1769,11 @@ export const createTilingStream = (() => {
               : "disabled";
     searchStats.generic_geometric_nogood_pivot_index = genericGeometricNogoodEnabled
       && genericGeometricNogoodPivotIndex;
+    searchStats.generic_geometric_nogood_activation_failure_states = genericGeometricNogoodEnabled
+      ? genericGeometricNogoodActivationFailures
+      : 0;
+    searchStats.generic_geometric_nogood_activated = genericGeometricNogoodEnabled
+      && genericGeometricNogoodActivationFailures === 0;
     searchStats.generic_geometric_nogood_capacity = genericGeometricNogoodEnabled
       ? genericGeometricNogoodCapacity
       : 0;
@@ -1802,6 +1815,10 @@ export const createTilingStream = (() => {
     };
     const candidatePassesGeometricNogoods = candidate => {
       if (!genericGeometricNogoodEnabled) return true;
+      if (searchStats.generic_geometric_nogood_failure_states < genericGeometricNogoodActivationFailures) {
+        return true;
+      }
+      searchStats.generic_geometric_nogood_activated = true;
       const compatible = genericGeometricNogood.compatible(candidate, state.placements);
       updateGeometricNogoodStats();
       return compatible;

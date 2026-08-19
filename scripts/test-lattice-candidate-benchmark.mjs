@@ -78,9 +78,24 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 14);
+assert.equal(survivor.schemaVersion, 15);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 assert.equal(survivor.configuration.failureMemoSymmetry, "fixed");
+for (const row of survivor.rows.filter(candidateRow => candidateRow.lane.startsWith("free_range"))) {
+  assert.ok(row.growthMilestones.length >= 1, `${row.case}/${row.lane} must report growth milestones`);
+  assert.equal(row.growthMilestones.at(-1).patchSize, row.largestPatch);
+  assert.deepEqual(
+    row.growthMilestones.map(milestone => milestone.patchSize),
+    Array.from({ length: row.largestPatch }, (_, index) => index + 1),
+    `${row.case}/${row.lane} milestones must record every newly reached patch size`
+  );
+  for (let index = 1; index < row.growthMilestones.length; index++) {
+    assert.ok(row.growthMilestones[index].visitedNodes >= row.growthMilestones[index - 1].visitedNodes);
+    assert.ok(row.growthMilestones[index].backtracks >= row.growthMilestones[index - 1].backtracks);
+    assert.ok(row.growthMilestones[index].elapsedMs >= row.growthMilestones[index - 1].elapsedMs);
+  }
+  assert.ok(row.growthMilestones.every(milestone => milestone.witnessHash));
+}
 const portfolioLanes = new Set(["free_range", "free_range_no_brainer"]);
 const freeRangeRows = survivor.rows.filter(row => portfolioLanes.has(row.lane));
 assert.equal(freeRangeRows.length, 6);
@@ -210,6 +225,8 @@ const nogoodProbe = run([
 const nogoodRow = nogoodProbe.unresolved[0].freeRangeUnbanded;
 assert.equal(nogoodRow.geometricNogoodEnabled, true);
 assert.equal(nogoodRow.geometricNogoodDisableReason, null);
+assert.equal(nogoodRow.geometricNogoodActivationFailureStates, 0);
+assert.equal(nogoodRow.geometricNogoodActivated, true);
 assert.ok(nogoodRow.geometricNogoodClauses >= 1000);
 assert.ok(nogoodRow.geometricNogoodPrunes >= 400);
 assert.ok(nogoodRow.largestPatch >= 10, "the bounded nogood proof search must retain a nontrivial legal patch");
@@ -220,6 +237,45 @@ assert.ok(nogoodRow.geometricNogoodAvoidedClauseChecks >= 3_000_000);
 assert.ok(
   nogoodRow.geometricNogoodClauseChecks * 20 < nogoodRow.geometricNogoodLinearClauseChecks,
   "pivot indexing must avoid at least 95% of the reference linear clause checks"
+);
+const delayedNogoodProbe = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=24",
+  "--time-ms=5000",
+  "--exact-time-ms=5000",
+  "--node-limit=200",
+  "--seeds=1",
+  "--geometric-nogood=true",
+  "--geometric-nogood-activation-failures=1000"
+]);
+const delayedNogoodRow = delayedNogoodProbe.unresolved[0].freeRangeUnbanded;
+assert.equal(delayedNogoodProbe.configuration.geometricNogoodActivationFailures, 1000);
+assert.equal(delayedNogoodRow.geometricNogoodEnabled, true);
+assert.equal(delayedNogoodRow.geometricNogoodActivationFailureStates, 1000);
+assert.equal(delayedNogoodRow.geometricNogoodActivated, false);
+assert.ok(delayedNogoodRow.geometricNogoodClauses >= 100, "delayed nogoods must learn before activation");
+assert.equal(delayedNogoodRow.geometricNogoodPrunes, 0);
+assert.equal(delayedNogoodRow.geometricNogoodCompatibilityChecks, 0);
+assert.deepEqual(
+  [
+    delayedNogoodRow.resultKind,
+    delayedNogoodRow.terminationReason,
+    delayedNogoodRow.largestPatch,
+    delayedNogoodRow.visitedNodes,
+    delayedNogoodRow.backtracks,
+    delayedNogoodRow.witnessHash
+  ],
+  [
+    memoRow.resultKind,
+    memoRow.terminationReason,
+    memoRow.largestPatch,
+    memoRow.visitedNodes,
+    memoRow.backtracks,
+    memoRow.witnessHash
+  ],
+  "learning dormant nogoods must preserve the baseline path until activation"
 );
 const linearNogoodProbe = run([
   "--ids=10_45026",

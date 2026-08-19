@@ -33,6 +33,10 @@ const failureMemoMaxStates = Math.max(0, Math.floor(numberArg("failure-memo-max-
 const geometricNogood = args.get("geometric-nogood") === "true";
 const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
 const geometricNogoodIndex = args.get("geometric-nogood-index") !== "false";
+const geometricNogoodActivationFailures = Math.max(
+  0,
+  Math.floor(numberArg("geometric-nogood-activation-failures", 0))
+);
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
 const genericPeriodicCheckpoints = args.get("generic-periodic-checkpoints") === "true";
 const genericPeriodicDistinctPatches = args.get("generic-periodic-distinct-patches") === "true";
@@ -139,6 +143,7 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_geometric_nogood: geometricNogood,
   generic_geometric_nogood_max_clauses: geometricNogoodMaxClauses,
   generic_geometric_nogood_index: geometricNogoodIndex,
+  generic_geometric_nogood_activation_failure_states: geometricNogoodActivationFailures,
   generic_periodic_certificate: genericPeriodicCertificate && lane === "free_range_unbanded",
   generic_periodic_certificate_check_new_maximum:
     genericPeriodicCheckpoints && lane === "free_range_unbanded",
@@ -176,6 +181,7 @@ async function runLane(benchmarkCase, lane, seed) {
   let maxCandidateCount = 0;
   let checkedPatchSize = 0;
   let witnessHash = null;
+  const growthMilestones = [];
   const checkpointFingerprints = [];
   const hashPlacements = placements => createHash("sha256")
     .update(placements.map(placement => [
@@ -189,9 +195,21 @@ async function runLane(benchmarkCase, lane, seed) {
     .slice(0, 16);
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
-    largestPatch = Math.max(largestPatch, snapshot?.tile_count ?? snapshot?.placements?.length ?? 0);
+    const patchSize = snapshot?.tile_count ?? snapshot?.placements?.length ?? 0;
+    if (patchSize > largestPatch) {
+      largestPatch = patchSize;
+      growthMilestones.push({
+        patchSize,
+        visitedNodes: snapshot?.search_stats?.visited_nodes ?? 0,
+        backtracks: snapshot?.search_stats?.backtracks ?? 0,
+        elapsedMs: Math.round(performance.now() - started),
+        witnessHash: null
+      });
+    }
     if (Array.isArray(snapshot?.placements) && snapshot.placements.length >= largestPatch) {
       witnessHash = hashPlacements(snapshot.placements);
+      const milestone = growthMilestones.at(-1);
+      if (milestone?.patchSize === snapshot.placements.length) milestone.witnessHash = witnessHash;
     }
     maxFrontierPoints = Math.max(maxFrontierPoints, snapshot?.frontier_stats?.point_count ?? 0);
     maxCandidateCount = Math.max(maxCandidateCount, snapshot?.frontier_stats?.candidate_count ?? 0);
@@ -233,6 +251,7 @@ async function runLane(benchmarkCase, lane, seed) {
     effectiveSeed: stats.random_seed ?? null,
     seededTieBreaks: !!stats.seeded_tie_breaks,
     witnessHash,
+    growthMilestones,
     generationLagCap: stats.generation_lag_cap ?? null,
     generationBandDeferrals: stats.generation_band_deferrals ?? 0,
     failureMemoEnabled: !!stats.generic_failure_memo_enabled,
@@ -245,6 +264,9 @@ async function runLane(benchmarkCase, lane, seed) {
     geometricNogoodClauses: stats.generic_geometric_nogood_clauses ?? 0,
     geometricNogoodPrunes: stats.generic_geometric_nogood_prunes ?? 0,
     geometricNogoodFailureStates: stats.generic_geometric_nogood_failure_states ?? 0,
+    geometricNogoodActivationFailureStates:
+      stats.generic_geometric_nogood_activation_failure_states ?? 0,
+    geometricNogoodActivated: !!stats.generic_geometric_nogood_activated,
     geometricNogoodCapacityReached: !!stats.generic_geometric_nogood_capacity_reached,
     geometricNogoodPivotIndex: !!stats.generic_geometric_nogood_pivot_index,
     geometricNogoodCompatibilityChecks: stats.generic_geometric_nogood_compatibility_checks ?? 0,
@@ -470,7 +492,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 14,
+  schemaVersion: 15,
   configuration: {
     target,
     timeMs,
@@ -485,6 +507,7 @@ const summary = {
     geometricNogood,
     geometricNogoodMaxClauses,
     geometricNogoodIndex,
+    geometricNogoodActivationFailures,
     genericPeriodicCertificate,
     genericPeriodicCheckpoints,
     genericPeriodicDistinctPatches,
