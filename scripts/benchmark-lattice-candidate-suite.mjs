@@ -182,6 +182,7 @@ async function runLane(benchmarkCase, lane, seed) {
   const started = performance.now();
   let final = null;
   let largestPatch = 0;
+  let maxLiveTiles = 0;
   let maxFrontierPoints = 0;
   let maxCandidateCount = 0;
   let checkedPatchSize = 0;
@@ -201,17 +202,18 @@ async function runLane(benchmarkCase, lane, seed) {
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     const patchSize = snapshot?.tile_count ?? snapshot?.placements?.length ?? 0;
-    if (patchSize > largestPatch) {
-      largestPatch = patchSize;
+    maxLiveTiles = Math.max(maxLiveTiles, patchSize, snapshot?.search_stats?.max_live_tiles ?? 0);
+    if (Array.isArray(snapshot?.placements) && snapshot.placements.length > largestPatch) {
+      largestPatch = snapshot.placements.length;
       growthMilestones.push({
-        patchSize,
+        patchSize: largestPatch,
         visitedNodes: snapshot?.search_stats?.visited_nodes ?? 0,
         backtracks: snapshot?.search_stats?.backtracks ?? 0,
         elapsedMs: Math.round(performance.now() - started),
-        witnessHash: null
+        witnessHash: hashPlacements(snapshot.placements)
       });
     }
-    if (Array.isArray(snapshot?.placements) && snapshot.placements.length >= largestPatch) {
+    if (Array.isArray(snapshot?.placements) && snapshot.placements.length === largestPatch) {
       witnessHash = hashPlacements(snapshot.placements);
       const milestone = growthMilestones.at(-1);
       if (milestone?.patchSize === snapshot.placements.length) milestone.witnessHash = witnessHash;
@@ -225,7 +227,7 @@ async function runLane(benchmarkCase, lane, seed) {
     if (message.type === "finished") final = message;
   }
   const stats = final?.search_stats ?? {};
-  largestPatch = Math.max(largestPatch, stats.max_live_tiles ?? 0);
+  maxLiveTiles = Math.max(maxLiveTiles, stats.max_live_tiles ?? 0);
   return {
     case: benchmarkCase.id,
     family: benchmarkCase.family,
@@ -246,6 +248,8 @@ async function runLane(benchmarkCase, lane, seed) {
     searchIncomplete: !!final?.search_incomplete,
     elapsedMs: Math.round(performance.now() - started),
     largestPatch,
+    maxLiveTiles,
+    uncapturedMaxLiveTiles: Math.max(0, maxLiveTiles - largestPatch),
     maxFrontierPoints,
     maxCandidateCount,
     checkedPatchSize,

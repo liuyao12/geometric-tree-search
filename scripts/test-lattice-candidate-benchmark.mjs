@@ -85,6 +85,9 @@ assert.equal(survivor.configuration.geometricNogoodStagnationFailures, 0);
 for (const row of survivor.rows.filter(candidateRow => candidateRow.lane.startsWith("free_range"))) {
   assert.ok(row.growthMilestones.length >= 1, `${row.case}/${row.lane} must report growth milestones`);
   assert.equal(row.growthMilestones.at(-1).patchSize, row.largestPatch);
+  assert.ok(row.maxLiveTiles >= row.largestPatch);
+  assert.equal(row.uncapturedMaxLiveTiles, row.maxLiveTiles - row.largestPatch);
+  assert.equal(row.witnessHash, row.growthMilestones.at(-1).witnessHash);
   assert.deepEqual(
     row.growthMilestones.map(milestone => milestone.patchSize),
     Array.from({ length: row.largestPatch }, (_, index) => index + 1),
