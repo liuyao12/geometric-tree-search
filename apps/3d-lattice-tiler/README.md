@@ -211,6 +211,16 @@ The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.
 
+The rescreener and the public catalog consume the same 16-entry runtime pool in
+`assets/lattice-polyhedron-survivors.js`; regression tests compare that pool to
+the archived report so a removed tile cannot silently reappear. Each run also
+reports `largestPatch`, maximum frontier size, and maximum candidate count.
+These effort fields preserve how long an unresolved search stayed alive even
+though isohedral failure correctly rolls the displayed terminal state back to
+the seed. A certified local obstruction is classified as
+`reject_certified_non_tiler`; a timeout or finite motif cap remains
+`inconclusive`.
+
 The strict audit covers every registered system and every deduplicated catalog
 figure. It distinguishes exact certificates, certified local obstructions,
 completed layer patches, balanced finite patches, and unresolved bounded

@@ -2,7 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
-import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260817-exact-rescreen-v34";
+import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260818-candidate-audit-v35";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const createTilingStream = (() => {

@@ -1,5 +1,52 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
+import {
+  classifyLatticeCandidateScreen,
+  LATTICE_POLYHEDRON_CENSUS_POOL,
+  LATTICE_POLYHEDRON_SCREENING
+} from "../assets/lattice-polyhedron-survivors.js";
+
+assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
+assert.equal(
+  LATTICE_POLYHEDRON_CENSUS_POOL.filter(candidate => candidate.screening.status === "exact_rejection").length,
+  11,
+  "all removed candidates must retain their exact rejection certificates"
+);
+assert.equal(LATTICE_POLYHEDRON_SCREENING.source_pool_size, LATTICE_POLYHEDRON_CENSUS_POOL.length);
+const archivedScreening = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-rescreen-2026-08-17.json", import.meta.url),
+  "utf8"
+));
+assert.deepEqual(
+  LATTICE_POLYHEDRON_CENSUS_POOL
+    .filter(candidate => candidate.screening.status === "exact_rejection")
+    .map(candidate => ({
+      id: candidate.id,
+      certificate: candidate.screening.certificate,
+      motif_tiles: candidate.screening.motif_tiles,
+      period_vectors: candidate.screening.period_vectors
+    })),
+  archivedScreening.exact_rejections,
+  "runtime rejection certificates must match the archived exact rescreen"
+);
+assert.deepEqual(
+  LATTICE_POLYHEDRON_CENSUS_POOL
+    .filter(candidate => candidate.screening.status === "inconclusive")
+    .map(candidate => candidate.id),
+  archivedScreening.inconclusive_survivors,
+  "the public survivors must match the archived bounded-screen result"
+);
+assert.equal(
+  classifyLatticeCandidateScreen({ translational: { provenImpossible: true }, isohedral: null }),
+  "reject_certified_non_tiler",
+  "a local impossibility certificate must never survive periodic screening"
+);
+assert.equal(
+  classifyLatticeCandidateScreen({ translational: { certified: false, incomplete: true }, isohedral: null }),
+  "inconclusive",
+  "a bounded search limit must remain inconclusive"
+);
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
 assert.equal(candidates.length, 5, "certified periodic and isohedral tiles must not remain in the catalog");

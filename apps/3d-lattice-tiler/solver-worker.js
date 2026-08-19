@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260817-exact-rescreen-v34";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-candidate-audit-v35";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

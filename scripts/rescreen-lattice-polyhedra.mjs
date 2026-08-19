@@ -1,25 +1,10 @@
 #!/usr/bin/env node
 
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
-
-const POOL = [
-  { id: "8_2480", vertices: [[0,0,2],[0,1,0],[1,0,0],[1,1,2],[1,2,0],[2,1,0]] },
-  { id: "9_9043", vertices: [[0,0,1],[0,1,0],[1,1,2],[1,2,1],[2,0,1],[2,1,0]] },
-  { id: "9_11679", vertices: [[-1,-1,0],[-1,0,1],[0,-1,0],[0,0,-1],[0,0,1],[0,1,0],[1,0,0],[1,1,-1]] },
-  { id: "10_27010", vertices: [[0,0,0],[0,1,1],[1,0,1],[1,1,2],[1,2,0],[2,0,0],[2,1,1]] },
-  { id: "10_24235", vertices: [[-1,0,0],[-1,0,2],[0,-1,0],[0,1,0],[0,1,2],[1,0,0]] },
-  { id: "9_3239", vertices: [[-1,-1,0],[-1,0,-2],[0,-1,-2],[0,0,2],[0,1,0],[1,0,0]] },
-  { id: "10_16113", vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]] },
-  { id: "10_44867", vertices: [[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,2],[1,2,0],[2,1,0],[2,2,1]] },
-  { id: "10_45035", vertices: [[0,0,1],[0,1,0],[0,1,2],[0,2,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1],[2,0,0]] },
-  { id: "8_2431", vertices: [[-1,0,-1],[0,-1,-1],[0,0,2],[0,1,0],[1,0,0],[1,1,3]] },
-  { id: "10_24775", vertices: [[-1,-1,0],[-1,1,1],[0,0,2],[0,1,-1],[1,0,0],[1,2,1]] },
-  { id: "10_26470", vertices: [[-1,0,0],[-1,0,1],[0,-1,0],[0,1,0],[0,1,2],[1,0,0],[1,0,1]] },
-  { id: "10_44266", vertices: [[0,0,2],[0,1,0],[1,0,0],[1,1,2],[1,2,-1],[1,2,0],[2,1,-1],[2,1,0]] },
-  { id: "10_45026", vertices: [[0,0,2],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,0],[1,2,1],[2,1,0],[2,1,1]] },
-  { id: "10_45033", vertices: [[0,0,0],[0,0,1],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,1,1],[2,2,2]] },
-  { id: "9_11683", vertices: [[0,1,0],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,0,2],[2,1,1]] }
-];
+import {
+  classifyLatticeCandidateScreen,
+  LATTICE_POLYHEDRON_CENSUS_POOL
+} from "../assets/lattice-polyhedron-survivors.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
   const separator = argument.indexOf("=");
@@ -32,7 +17,9 @@ const numberArg = (name, fallback) => {
   return Number.isFinite(value) ? value : fallback;
 };
 const only = new Set((args.get("ids") ?? "").split(",").filter(Boolean));
-const pool = only.size ? POOL.filter(candidate => only.has(candidate.id)) : POOL;
+const pool = only.size
+  ? LATTICE_POLYHEDRON_CENSUS_POOL.filter(candidate => only.has(candidate.id))
+  : LATTICE_POLYHEDRON_CENSUS_POOL;
 const timeMs = numberArg("time-ms", 10000);
 const periodicMax = numberArg("periodic-max", 6);
 const isohedralTarget = numberArg("isohedral-target", 24);
@@ -76,8 +63,15 @@ async function run(candidate, strategy) {
   };
   const checks = [];
   let finished = null;
+  let largestPatch = 0;
+  let maxFrontierPoints = 0;
+  let maxCandidateCount = 0;
   const started = performance.now();
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
+    const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
+    largestPatch = Math.max(largestPatch, snapshot?.tile_count ?? snapshot?.placements?.length ?? 0);
+    maxFrontierPoints = Math.max(maxFrontierPoints, snapshot?.frontier_stats?.point_count ?? 0);
+    maxCandidateCount = Math.max(maxCandidateCount, snapshot?.frontier_stats?.candidate_count ?? 0);
     if (message.type === "translational_check") {
       checks.push({ size: message.patch_size, certified: message.certified });
     }
@@ -88,9 +82,14 @@ async function run(candidate, strategy) {
     outcome: finished?.result_kind ?? "missing_result",
     success: !!finished?.success,
     certified: !!finished?.tiling_evidence?.certified && finished?.can_tile === true,
+    provenImpossible: !!finished?.tiling_evidence?.certified && finished?.can_tile === false,
+    canTile: finished?.can_tile ?? null,
     certificate: finished?.tiling_evidence ?? null,
     incomplete: !!finished?.search_incomplete,
     tiles: finished?.tile_count ?? 0,
+    largestPatch,
+    maxFrontierPoints,
+    maxCandidateCount,
     checks,
     milliseconds: Math.round(performance.now() - started),
     stats: finished?.search_stats ?? null
@@ -99,14 +98,10 @@ async function run(candidate, strategy) {
 
 for (const candidate of pool) {
   const translational = skipTranslational ? null : await run(candidate, "translational");
-  const isohedral = translational?.certified || skipIsohedral ? null : await run(candidate, "isohedral");
-  const classification = translational?.certified
-    ? "reject_certified_periodic"
-    : isohedral?.certified
-      ? "reject_certified_isohedral"
-      : translational?.incomplete || isohedral?.incomplete
-        ? "inconclusive"
-        : "survives_completed_bounded_screens";
+  const isohedral = translational?.certified || translational?.provenImpossible || skipIsohedral
+    ? null
+    : await run(candidate, "isohedral");
+  const classification = classifyLatticeCandidateScreen({ translational, isohedral });
   process.stdout.write(`${JSON.stringify({
     id: candidate.id,
     vertices: candidate.vertices,
