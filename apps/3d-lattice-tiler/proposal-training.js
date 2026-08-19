@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-face-key-v57";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-deadline-poll-v59";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

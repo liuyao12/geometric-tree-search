@@ -1083,9 +1083,15 @@ export const createTilingStream = (() => {
       // Cartesian product can contain millions of keys and block deadline
       // checks. Clearing the comparatively small cache is cheaper and exact.
       if (offsets.length * positions.length > 50000) return null;
+      if (overBudget()) {
+        noteIncompleteSearch();
+        return null;
+      }
+      let generated = 0;
       for (const pos of positions) {
         for (const offset of offsets) {
-          if (overBudget()) {
+          generated += 1;
+          if ((generated & 255) === 0 && overBudget()) {
             noteIncompleteSearch();
             return null;
           }
@@ -1117,7 +1123,7 @@ export const createTilingStream = (() => {
         return { ok: false, reason: "region-volume" };
       }
       for (let occupancyIndex = 0; occupancyIndex < orient.occupancy.length; occupancyIndex++) {
-        if ((occupancyIndex & 31) === 0 && overBudget()) {
+        if (occupancyIndex > 0 && (occupancyIndex & 31) === 0 && overBudget()) {
           noteIncompleteSearch();
           return { ok: false, budget: true, reason: "budget" };
         }
@@ -1128,7 +1134,7 @@ export const createTilingStream = (() => {
         }
       }
       for (let f_idx = 0; f_idx < orient.faces.length; f_idx++) {
-        if ((f_idx & 31) === 0 && overBudget()) {
+        if (f_idx > 0 && (f_idx & 31) === 0 && overBudget()) {
           noteIncompleteSearch();
           return { ok: false, budget: true, reason: "budget" };
         }
@@ -1223,6 +1229,7 @@ export const createTilingStream = (() => {
     const faceCandidatesByFrontierPoint = () => {
       if (faceCandidateIndexVersion === stateVersion) return faceCandidateIndex;
       const candidateByGeometry = new Map();
+      let faceMatchAttempts = 0;
       candidateScan:
       for (const frontierEntry of state.frontier.values()) {
         if (overBudget()) {
@@ -1232,12 +1239,9 @@ export const createTilingStream = (() => {
         const frontierVertices = frontierEntry.ordered_verts;
         const signature = faceSignatureUndirected(frontierVertices);
         for (const entry of orientedFacesBySignature.get(signature) ?? []) {
-          if (overBudget()) {
-            noteIncompleteSearch();
-            break candidateScan;
-          }
           for (const anchor of entry.vertices) {
-            if (overBudget()) {
+            faceMatchAttempts += 1;
+            if ((faceMatchAttempts & 31) === 0 && overBudget()) {
               noteIncompleteSearch();
               break candidateScan;
             }

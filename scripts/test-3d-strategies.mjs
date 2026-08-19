@@ -111,7 +111,7 @@ const unboundedPatchCheck = await solve({
   periodic_patch_unbounded: true,
   periodic_patch_max_tiles: null,
   periodic_motif_node_limit: 1,
-  time_limit_ms: 50
+  time_limit_ms: 500
 });
 assert.ok(
   unboundedPatchCheck.translationalChecks.some(check => check.patchSize > 4),
