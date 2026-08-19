@@ -143,13 +143,32 @@ const orientationBoundary = makeOrientationCircle(0x17201e, 0.52);
 orientationBoundary.renderOrder = 3;
 
 const orientationPointGeometry = new THREE.BufferGeometry();
-const orientationPointMaterial = new THREE.PointsMaterial({
-  vertexColors: true,
-  size: 0.07,
-  sizeAttenuation: true,
+const orientationPointMaterial = new THREE.ShaderMaterial({
   transparent: true,
-  opacity: 1,
-  depthWrite: false
+  depthWrite: false,
+  depthTest: true,
+  uniforms: {
+    pixelRatio: { value: Math.min(window.devicePixelRatio, 2) }
+  },
+  vertexShader: `
+    attribute vec3 color;
+    attribute float pointSize;
+    varying vec3 pointColor;
+    uniform float pixelRatio;
+    void main() {
+      pointColor = color;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = pointSize * pixelRatio;
+    }
+  `,
+  fragmentShader: `
+    varying vec3 pointColor;
+    void main() {
+      vec2 centered = gl_PointCoord - vec2(0.5);
+      if (dot(centered, centered) > 0.25) discard;
+      gl_FragColor = vec4(pointColor, 1.0);
+    }
+  `
 });
 const orientationPoints = new THREE.Points(orientationPointGeometry, orientationPointMaterial);
 orientationPoints.renderOrder = 3;
@@ -414,7 +433,14 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
   );
   const positions = [];
   const colors = [];
+  const pointSizes = [];
   const orientationTurnGenerations = firstTurnGenerationByOrientation(transforms, turnGenerations);
+  const orientationCounts = new Map();
+  for (const matrix of transforms) {
+    const key = orientationKey(canonicalQuaternion(matrix));
+    orientationCounts.set(key, (orientationCounts.get(key) ?? 0) + 1);
+  }
+  const basePointSize = orientations.length > 1500 ? 3.5 : orientations.length > 250 ? 5 : orientations.length > 40 ? 7 : 10;
   orientationPointKeys = [];
   orientationPointBaseColors = [];
   for (const quaternion of orientations) {
@@ -429,11 +455,12 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
     orientationPointBaseColors.push(color);
     positions.push(point.x, point.y, point.z);
     colors.push(color.r, color.g, color.b);
+    pointSizes.push(Math.min(24, basePointSize * Math.sqrt(orientationCounts.get(key))));
   }
   orientationPointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  orientationPointGeometry.setAttribute("pointSize", new THREE.Float32BufferAttribute(pointSizes, 1));
   orientationPointGeometry.computeBoundingSphere();
-  orientationPointMaterial.size = orientations.length > 1500 ? 0.032 : orientations.length > 250 ? 0.046 : orientations.length > 40 ? 0.064 : 0.105;
   const selectedIndex = orientationPointKeys.indexOf(selectedOrientationKey);
   orientationSelectionMarker.visible = selectedIndex >= 0;
   if (selectedIndex >= 0) {
