@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-internal-period-v92";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-global-extension-v95";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -26,9 +26,9 @@ const MODES = {
   },
   proof: {
     id: "proof",
-    label: "Proof search · unbanded",
+    label: "Proof search · complete rank",
     strategy: "free_range",
-    moveOrder: "balanced",
+    moveOrder: "global",
     templates: false,
     agentExhaustive: true,
     proof: true
@@ -104,6 +104,7 @@ async function runMode(sequence, baseConfig, mode) {
     branch_cap: null,
     candidate_cap: null,
     forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
+    generic_connected_patch_enumeration: !!mode.proof,
     generic_failure_memo: mode.proof,
     generic_failure_memo_symmetry: "fixed",
     generic_geometric_nogood: !!mode.nogood,

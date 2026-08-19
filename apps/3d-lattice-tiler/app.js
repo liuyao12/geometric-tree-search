@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-internal-period-v92";
+import { tileSpecs } from "./engine.js?v=20260819-global-extension-v95";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1327,6 +1327,11 @@ function updateCandidateResearchPanel() {
       : "";
     const proofProtocol = screening?.gcts_proof;
     const proofEvidence = proof && proofProtocol ? (() => {
+      const globalExtension = proofProtocol.global_extension_screen;
+      if (globalExtension && proof.global_extension_trials) {
+        const witnessLabel = proof.global_extension_distinct_witnesses === 1 ? "witness" : "witnesses";
+        return ` Corrected branch-complete GCTS now enumerates every legal exposed-face extension and charges the node budget only for placements actually applied. All ${proof.global_extension_trials} runs reached ${globalExtension.target_tiles} tiles without backtracking, producing ${proof.global_extension_distinct_witnesses} distinct ${witnessLabel}; every witness had geometric and repeated-translation rank 3, with minimum span isotropy ${proof.global_extension_minimum_isotropy.toFixed(3)}. All ${proof.global_extension_exact_target_checks} exact target-patch checks completed, testing ${proof.global_extension_internal_period_bases_tested.toLocaleString()} candidate period bases without finding a whole-patch or embedded translational quotient. Across the four candidates this is ${globalExtension.target_hits}/${globalExtension.trials} target hits, ${globalExtension.distinct_witnesses} distinct witnesses, and ${globalExtension.internal_period_bases_tested.toLocaleString()} rejected bases with no timeout. These are strong finite-patch witnesses, not space-tiling or aperiodicity certificates. Earlier vertex-MRV depth and policy comparisons are retained as historical diagnostics but are superseded: they incorrectly treated a temporarily stranded vertex as a dead end and charged unvisited UI alternatives to the node budget.`;
+      }
       const baselineRange = proof.robust_largest_patch === proof.best_largest_patch
         ? `${proof.best_largest_patch}`
         : `${proof.robust_largest_patch}–${proof.best_largest_patch}`;
@@ -1640,9 +1645,15 @@ function configKey() {
     return null;
   };
   const seconds = positiveOrNull(timeCapInput);
-  const forcedLayerLagCap = positiveSearchParam("generation_lag_cap", "forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 2;
   const selectedCriterion = criterion();
   const tilingStrategy = checkedRadioValue(strategyRadios, "free_range");
+  const completeGlobalSearch = tilingStrategy === "free_range"
+    && moveOrderSelect.value === "global"
+    && selectedCriterion === "count"
+    && exhaustiveCheckbox.checked;
+  const forcedLayerLagCap = completeGlobalSearch
+    ? 0
+    : positiveSearchParam("generation_lag_cap", "forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 2;
   const isLearningFreeRange = tilingStrategy === "learning_free_range";
   const isStructural = tilingStrategy === "translational" || tilingStrategy === "isohedral";
   const candidateIsohedralHorizon = root?.census_candidate?.last_screening
@@ -1678,6 +1689,7 @@ function configKey() {
     isohedral_search_horizon_tiles:
       positiveSearchParam("isohedral_search_horizon_tiles") ?? candidateIsohedralHorizon,
     forced_move_layer_lag_cap: forcedLayerLagCap,
+    generic_connected_patch_enumeration: completeGlobalSearch,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -2690,7 +2702,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-internal-period-v92", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-global-extension-v95", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2821,7 +2833,7 @@ function pauseRun() {
 const GROWTH_MODES = [
   { id: "free_range", strategy: "free_range", label: "Free-range · balanced", color: "#6f7c77", symbol: "square-open", dash: "dash" },
   { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
-  { id: "proof", strategy: "free_range", label: "Proof search · unbanded", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
+  { id: "proof", strategy: "free_range", label: "Proof search · complete rank", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
   { id: "proof_nogood", strategy: "free_range", label: "Proof search · delayed nogoods", color: "#a33f5b", symbol: "triangle-left-open", dash: "dashdot" },
   { id: "proof_crystal", strategy: "free_range", label: "Proof search · crystal rank", color: "#d38b13", symbol: "star-open", dash: "longdashdot" },
   { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
@@ -2832,6 +2844,7 @@ const GROWTH_MODES = [
 function selectedGrowthMode() {
   const strategy = checkedRadioValue(strategyRadios, "free_range");
   if (strategy === "free_range") {
+    if (moveOrderSelect.value === "global") return "proof";
     if (moveOrderSelect.value === "no_brainer") return "no_brainer";
     if (moveOrderSelect.value === "crystal") return "proof_crystal";
     return "free_range";
@@ -2846,7 +2859,8 @@ function activateGrowthMode(modeId) {
   strategySelect.value = mode.strategy;
   if (mode.id === "free_range") moveOrderSelect.value = "balanced";
   if (mode.id === "no_brainer") moveOrderSelect.value = "no_brainer";
-  if (mode.id === "proof" || mode.id === "proof_nogood") moveOrderSelect.value = "balanced";
+  if (mode.id === "proof") moveOrderSelect.value = "global";
+  if (mode.id === "proof_nogood") moveOrderSelect.value = "balanced";
   if (mode.id === "proof_crystal") moveOrderSelect.value = "crystal";
   updateStrategyUI();
 }
@@ -3195,7 +3209,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-internal-period-v92", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-global-extension-v95", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

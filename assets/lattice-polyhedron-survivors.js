@@ -174,6 +174,23 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       positive_control_motif_tiles: 3,
       policy_decision: "replace_affine_rank_gate_with_repeated_translation_rank",
       report: "data/lattice-polyhedron-internal-period-screen-2026-08-19.json"
+    }),
+    global_extension_screen: Object.freeze({
+      target_tiles: 60,
+      seeds: Object.freeze([1, 2, 3]),
+      configured_node_limit: 1000,
+      trials: 12,
+      target_hits: 12,
+      distinct_witnesses: 9,
+      geometric_rank_3_witnesses: 12,
+      repeated_translation_rank_3_witnesses: 12,
+      exact_target_checks_completed: 12,
+      exact_target_checks_timed_out: 0,
+      internal_period_bases_tested: 148471,
+      periodic_certificates_found: 0,
+      search_correction: "global_face_extensions_and_applied_placement_node_accounting",
+      supersedes_vertex_mrv_depth_comparisons: true,
+      report: "data/lattice-polyhedron-global-extension-screen-2026-08-19.json"
     })
   })
 });
@@ -190,6 +207,13 @@ const INTERNAL_PERIOD_SCREENING_RESULTS = Object.freeze({
   "10_45026": Object.freeze({ internal_period_trials: 8, internal_period_robust_largest_patch: 14, internal_period_median_largest_patch: 18, internal_period_best_largest_patch: 22, internal_period_geometric_rank_3_paths: 8, internal_period_repeated_translation_rank_3_paths: 8, internal_period_target_hits: 0 }),
   "10_45033": Object.freeze({ internal_period_trials: 8, internal_period_robust_largest_patch: 21, internal_period_median_largest_patch: 32, internal_period_best_largest_patch: 37, internal_period_geometric_rank_3_paths: 8, internal_period_repeated_translation_rank_3_paths: 8, internal_period_target_hits: 0 }),
   "9_11683": Object.freeze({ internal_period_trials: 8, internal_period_robust_largest_patch: 18, internal_period_median_largest_patch: 35, internal_period_best_largest_patch: 43, internal_period_geometric_rank_3_paths: 8, internal_period_repeated_translation_rank_3_paths: 4, internal_period_target_hits: 0 })
+});
+
+const GLOBAL_EXTENSION_SCREENING_RESULTS = Object.freeze({
+  "10_16113": Object.freeze({ global_extension_trials: 3, global_extension_target_hits: 3, global_extension_distinct_witnesses: 1, global_extension_minimum_isotropy: 0.9374999999999999, global_extension_max_candidates: 111, global_extension_exact_target_checks: 3, global_extension_internal_period_bases_tested: 12180, global_extension_periodic_certificates: 0 }),
+  "10_45026": Object.freeze({ global_extension_trials: 3, global_extension_target_hits: 3, global_extension_distinct_witnesses: 2, global_extension_minimum_isotropy: 1, global_extension_max_candidates: 210, global_extension_exact_target_checks: 3, global_extension_internal_period_bases_tested: 51888, global_extension_periodic_certificates: 0 }),
+  "10_45033": Object.freeze({ global_extension_trials: 3, global_extension_target_hits: 3, global_extension_distinct_witnesses: 3, global_extension_minimum_isotropy: 1, global_extension_max_candidates: 448, global_extension_exact_target_checks: 3, global_extension_internal_period_bases_tested: 51888, global_extension_periodic_certificates: 0 }),
+  "9_11683": Object.freeze({ global_extension_trials: 3, global_extension_target_hits: 3, global_extension_distinct_witnesses: 3, global_extension_minimum_isotropy: 1, global_extension_max_candidates: 229, global_extension_exact_target_checks: 3, global_extension_internal_period_bases_tested: 32515, global_extension_periodic_certificates: 0 })
 });
 
 const rejected = (certificate, motifTiles, periodVectors) => ({
@@ -239,7 +263,8 @@ export const LATTICE_POLYHEDRON_SURVIVORS = LATTICE_POLYHEDRON_CENSUS_POOL
     last_screening: LATTICE_POLYHEDRON_SCREENING,
     gcts_proof_screening: Object.freeze({
       ...GCTS_PROOF_SCREENING_RESULTS[candidate.id],
-      ...INTERNAL_PERIOD_SCREENING_RESULTS[candidate.id]
+      ...INTERNAL_PERIOD_SCREENING_RESULTS[candidate.id],
+      ...GLOBAL_EXTENSION_SCREENING_RESULTS[candidate.id]
     }),
-    description: `Unresolved Blanco–Santos census candidate ${candidate.id}; survivor ${candidate.priority} of 4 after GCTS checkpoint quotient screening of the original 16-tile pool.`
+    description: `Unresolved Blanco–Santos census candidate ${candidate.id}; survivor ${candidate.priority} of 4 after corrected global-extension GCTS and exact quotient screening of the original 16-tile pool.`
   }));

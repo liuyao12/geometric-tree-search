@@ -45,9 +45,11 @@ const requestedFaceOrder = args.get("face-order");
 const faceOrder = ["mrv", "pocket", "constrained", "coverage"].includes(requestedFaceOrder)
   ? requestedFaceOrder
   : "mrv";
+const connectedPatchEnumeration = args.get("connected-patch-enumeration") !== "false";
 const requestedUnbandedMoveOrder = args.get("unbanded-move-order");
 const unbandedMoveOrder = [
   "balanced",
+  "global",
   "no_brainer",
   "symmetric",
   "crystal",
@@ -55,7 +57,9 @@ const unbandedMoveOrder = [
   "periodic",
   "repeat",
   "layer"
-].includes(requestedUnbandedMoveOrder) ? requestedUnbandedMoveOrder : "balanced";
+].includes(requestedUnbandedMoveOrder)
+  ? requestedUnbandedMoveOrder
+  : connectedPatchEnumeration ? "global" : "balanced";
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
 const genericPeriodicCheckpoints = args.get("generic-periodic-checkpoints") === "true";
 const genericPeriodicDistinctPatches = args.get("generic-periodic-distinct-patches") === "true";
@@ -158,6 +162,7 @@ const configFor = (benchmarkCase, lane, seed) => ({
   exhaustive: true,
   agent_exhaustive: true,
   forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
+  generic_connected_patch_enumeration: connectedPatchEnumeration && lane === "free_range_unbanded",
   generic_failure_memo: failureMemo,
   generic_failure_memo_symmetry: failureMemoSymmetry,
   generic_failure_memo_max_states: failureMemoMaxStates,
@@ -298,6 +303,9 @@ async function runLane(benchmarkCase, lane, seed) {
     failureMemoHits: stats.generic_failure_memo_hits ?? 0,
     failureMemoCapacityReached: !!stats.generic_failure_memo_capacity_reached,
     failureMemoKeyEquivalence: stats.generic_failure_memo_key_equivalence ?? "disabled",
+    connectedPatchEnumeration: !!stats.generic_connected_patch_enumeration,
+    connectedPatchCandidateStates: stats.generic_connected_patch_candidate_states ?? 0,
+    connectedPatchMaxCandidates: stats.generic_connected_patch_max_candidates ?? 0,
     geometricNogoodEnabled: !!stats.generic_geometric_nogood_enabled,
     geometricNogoodDisableReason: stats.generic_geometric_nogood_disable_reason ?? null,
     geometricNogoodClauses: stats.generic_geometric_nogood_clauses ?? 0,
@@ -545,7 +553,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 18,
+  schemaVersion: 19,
   configuration: {
     target,
     timeMs,
@@ -575,6 +583,7 @@ const summary = {
     genericPeriodicCheckpointTotalTimeMs,
     genericPeriodicCertificateTimeMs,
     seededTies,
+    connectedPatchEnumeration,
     lanes: requestedLanes.size ? [...requestedLanes] : null
   },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),

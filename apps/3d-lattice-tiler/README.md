@@ -24,7 +24,7 @@ engine in `solver-worker.js`.
 
 ## Solver modes
 
-The UI exposes four solver families and runs six comparison lanes concurrently
+The UI exposes four solver families and runs eight comparison lanes concurrently
 in independent
 workers:
 
@@ -34,12 +34,17 @@ workers:
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
-   A separate **Proof search · unbanded** lane runs the balanced order without
-   the generational frontier band or heuristic branch caps. It memoizes exact
-   failed placement sets. Reaching the requested tile count is still only a
-   finite-patch witness; exhausting the full search before that count certifies
-   that no connected patch of that size exists in the configured face-to-face
-   lattice model. A time or node limit remains inconclusive.
+   A separate **Proof search · complete rank** lane removes the generational
+   frontier band and heuristic branch caps. It branches over every legal tile
+   that can be attached through any exposed face and memoizes exact failed
+   placement sets. A temporarily stranded frontier vertex is diagnostic only:
+   growth elsewhere can expose a later continuation, so it is neither a dead
+   end nor evidence that its current sole candidate is forced. Reaching the
+   requested tile count is still only a finite-patch witness; only exhausting
+   this global face-extension search before that count certifies that no
+   connected patch of that size exists in the configured face-to-face lattice
+   model. A time or node limit remains inconclusive. Node limits count applied
+   placements, never unvisited alternatives allocated for the tree UI.
 2. **Learning Free-range** runs the same search while updating geometric
    proposal priorities from successful and failed branches. Its best legal
    patch is stored per tile in the browser and revalidated on later runs, so
@@ -258,6 +263,11 @@ ablation or `--failure-memo-max-states=N` to control memory without pruning the
 search.
 Use `--lanes=free_range_unbanded` to isolate that proof lane for longer runs
 or memoization ablations.
+The compatibility lane name remains `free_range_unbanded`; its current default
+move order is `global`, and it sets `generic_connected_patch_enumeration`.
+Use `--connected-patch-enumeration=false` only to replay the superseded
+instantaneous vertex-MRV heuristic for historical ablations; such a run cannot
+produce a finite-patch obstruction certificate.
 
 As an opt-in work-budget experiment, the proof lane can also record each fully
 failed patch as translation-
@@ -280,7 +290,10 @@ variant that activates learned clauses only after `N` encoded failures without
 increasing the captured maximum patch size. This is an experimental control,
 not the web proof-lane default.
 
-The four-candidate, three-seed A/B does not support replacing the baseline
+The following vertex-MRV and nogood comparisons are retained as historical
+heuristic diagnostics. They were run before the global-extension and node-
+accounting correction described below and must not be read as proof-search
+depth comparisons. The four-candidate, three-seed A/B did not support replacing the baseline
 proof order with nogoods: five paths deepen, one ties, and six become
 shallower. It does support a complementary proof lane. The second policy finds
 a new checked 40-tile witness for `10_45033`, and its 1,109 completed quotient
@@ -368,6 +381,26 @@ breadth screen, focused receipt, old-witness diagnostics, and positive control
 are archived in
 `data/lattice-polyhedron-internal-period-screen-2026-08-19.json`; regenerate
 the archive with `scripts/analyze-lattice-internal-period-screen.mjs`.
+
+A correctness audit then found two independent causes of artificially shallow
+proof paths. The solver had treated any incomplete frontier vertex with no
+immediate candidate as a dead end and its current sole candidate as forced,
+even though a tile attached through another exposed face can create a later
+continuation there. It also charged the node budget when it allocated IDs for
+every displayed alternative, before those alternatives were visited. The
+complete proof lane now enumerates the union of all legal exposed-face
+extensions and counts only placements actually applied.
+
+Under that corrected search, all four unresolved candidates reached 60 tiles
+in all three seeds: 12/12 target hits, nine distinct witnesses, no backtracking,
+and rank 3 in both geometric spans and repeated same-orientation translations.
+All 12 exact target checks completed without timeout or periodic certificate;
+the embedded-motif miner rejected 148,471 candidate period bases. This sharply
+strengthens the evidence that the candidates support large genuinely 3D local
+patches, while remaining only finite evidence rather than a proof of tiling or
+aperiodicity. The full receipts are in
+`data/lattice-polyhedron-global-extension-screen-2026-08-19.json`; validate
+them with `scripts/analyze-lattice-global-extension-screen.mjs`.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in

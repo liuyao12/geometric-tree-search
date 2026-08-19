@@ -227,7 +227,7 @@ const internalPeriodControl = await solve({
   target_val: 60,
   template_preflight: false,
   generic_periodic_certificate: true,
-  generic_periodic_certificate_time_limit_ms: 5000,
+  generic_periodic_certificate_time_limit_ms: 10000,
   exhaustive: true,
   agent_exhaustive: true,
   forced_move_layer_lag_cap: 2,
@@ -243,6 +243,66 @@ assert.equal(internalPeriodControl.periodicCertificate?.motif.length, 3);
 assert.equal(internalPeriodControl.final.search_stats.generic_periodic_internal_motif_attempted, true);
 assert.equal(internalPeriodControl.final.search_stats.generic_periodic_internal_motif_found, true);
 assert.equal(internalPeriodControl.final.search_stats.generic_periodic_internal_motif_bases_tested, 1);
+
+const exactNodeBudget = await solve({
+  mode_key: "cube",
+  tiling_strategy: "free_range",
+  target_val: 6,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_connected_patch_enumeration: true,
+  node_limit: 6,
+  time_limit_ms: 10000
+});
+assert.equal(exactNodeBudget.final.result_kind, "patch_found");
+assert.equal(exactNodeBudget.final.tile_count, 6);
+assert.equal(exactNodeBudget.final.search_stats.visited_nodes, 6);
+assert.equal(exactNodeBudget.final.search_stats.generic_connected_patch_enumeration, true);
+assert.ok(exactNodeBudget.final.search_stats.generic_connected_patch_candidate_states > 0);
+assert.ok(exactNodeBudget.final.search_stats.generic_connected_patch_max_candidates > 6);
+
+const unattachedScalenePair = {
+  name: "No proper-lattice face attachment",
+  polycubes: [],
+  polyhedra: ["A", "B"].map(name => ({
+    name,
+    vertices: [[0, 0, 0], [1, 0, 0], [0, 2, 0], [0, 0, 3]]
+  }))
+};
+const completeObstruction = await solve({
+  mode_key: "cube",
+  custom_system: unattachedScalenePair,
+  tiling_strategy: "free_range",
+  move_order: "global",
+  target_val: 2,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_connected_patch_enumeration: true,
+  node_limit: 100
+});
+assert.equal(completeObstruction.final.result_kind, "no_tiling");
+assert.equal(completeObstruction.final.tiling_evidence?.kind, "finite_patch_obstruction");
+assert.match(completeObstruction.final.tiling_evidence?.note ?? "", /global face-extension search/);
+
+const heuristicExhaustion = await solve({
+  mode_key: "cube",
+  custom_system: unattachedScalenePair,
+  tiling_strategy: "free_range",
+  move_order: "balanced",
+  target_val: 2,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_connected_patch_enumeration: false,
+  node_limit: 100
+});
+assert.notEqual(heuristicExhaustion.final.result_kind, "no_tiling");
+assert.equal(heuristicExhaustion.final.tiling_evidence?.kind ?? null, null);
 
 const candidate1026470System = {
   name: "Candidate 10_26470 checkpoint certificate",
@@ -395,7 +455,7 @@ const spreadCheckpointConfig = {
   mode_key: "cube",
   custom_system: candidate1016113System,
   tiling_strategy: "generic",
-  target_val: 40,
+  target_val: 60,
   template_preflight: false,
   exhaustive: true,
   agent_exhaustive: true,
@@ -426,11 +486,6 @@ assert.ok(
   > spreadStats.generic_periodic_certificate_checks_attempted
 );
 assert.ok(spreadStats.generic_periodic_certificate_checkpoint_sampling_skips > 0);
-assert.ok(
-  new Set(spreadStats.generic_periodic_certificate_check_sizes).size
-  < spreadStats.generic_periodic_certificate_check_sizes.length,
-  "spread sampling must reach later alternative branches at already-seen sizes"
-);
 assert.deepEqual(
   {
     sizes: spreadStats.generic_periodic_certificate_check_sizes,

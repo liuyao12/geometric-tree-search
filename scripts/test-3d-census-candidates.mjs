@@ -49,6 +49,11 @@ assert.match(
 assert.match(growthWorkerSource, /generic_failure_memo: mode\.proof/, "the proof lane must memoize exact failures");
 assert.match(
   growthWorkerSource,
+  /generic_connected_patch_enumeration: !!mode\.proof/,
+  "the proof lane must enumerate every legal exposed-face extension"
+);
+assert.match(
+  growthWorkerSource,
   /generic_failure_memo_symmetry: "fixed"/,
   "the proof lane must retain the benchmarked fixed-root failure memo"
 );
@@ -86,7 +91,7 @@ assert.match(
 );
 assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof comparison lane may claim exhaustive search");
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
-assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
+assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · complete rank"/, "the complete proof trace must be visible in the chart");
 assert.match(growthAppSource, /id: "proof_nogood"[\s\S]*?label: "Proof search · delayed nogoods"/, "the complementary proof trace must be visible in the chart");
 assert.match(growthAppSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal rank"/, "the repeated-translation-rank proof trace must be visible in the chart");
 assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?moveOrder: "crystal"[\s\S]*?proof: true/, "the crystal lane must retain exact proof-search semantics");
@@ -205,6 +210,10 @@ const archivedBudgetOrder = JSON.parse(await readFile(
 ));
 const archivedInternalPeriod = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-internal-period-screen-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedGlobalExtension = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-global-extension-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -628,6 +637,53 @@ assert.equal(archivedInternalPeriod.exact_target_check.maximum_translation_suppo
 assert.equal(archivedInternalPeriod.exact_target_check.whole_patch_or_internal_certificate_found, false);
 assert.equal(archivedInternalPeriod.positive_control.certificate_patch_size, 3);
 assert.equal(archivedInternalPeriod.positive_control.whole_patch_or_internal_certificate_found, true);
+assert.equal(archivedGlobalExtension.schemaVersion, 19);
+assert.equal(archivedGlobalExtension.configuration.connectedPatchEnumeration, true);
+assert.equal(archivedGlobalExtension.configuration.unbandedMoveOrder, "global");
+assert.equal(archivedGlobalExtension.rows.length, 12);
+assert.ok(archivedGlobalExtension.rows.every(row =>
+  row.connectedPatchEnumeration
+  && row.largestPatch === 60
+  && row.visitedNodes === 60
+  && row.backtracks === 0
+  && row.witnessGrowthAxisRank === 3
+  && row.witnessPeriodicTranslationRank === 3
+  && row.genericPeriodicCertificateChecksCompleted === 1
+  && row.genericPeriodicCertificateChecksTimedOut === 0
+  && !row.genericPeriodicCertificateFound
+));
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.global_extension_screen,
+  {
+    target_tiles: archivedGlobalExtension.configuration.target,
+    seeds: archivedGlobalExtension.configuration.seeds,
+    configured_node_limit: archivedGlobalExtension.configuration.nodeLimit,
+    trials: archivedGlobalExtension.rows.length,
+    target_hits: archivedGlobalExtension.rows.filter(row => row.largestPatch === 60).length,
+    distinct_witnesses: new Set(archivedGlobalExtension.rows.map(row => row.witnessHash)).size,
+    geometric_rank_3_witnesses:
+      archivedGlobalExtension.rows.filter(row => row.witnessGrowthAxisRank === 3).length,
+    repeated_translation_rank_3_witnesses:
+      archivedGlobalExtension.rows.filter(row => row.witnessPeriodicTranslationRank === 3).length,
+    exact_target_checks_completed: archivedGlobalExtension.rows.reduce(
+      (sum, row) => sum + row.genericPeriodicCertificateChecksCompleted,
+      0
+    ),
+    exact_target_checks_timed_out: archivedGlobalExtension.rows.reduce(
+      (sum, row) => sum + row.genericPeriodicCertificateChecksTimedOut,
+      0
+    ),
+    internal_period_bases_tested: archivedGlobalExtension.rows.reduce(
+      (sum, row) => sum + row.genericPeriodicInternalMotifBasesTested,
+      0
+    ),
+    periodic_certificates_found:
+      archivedGlobalExtension.rows.filter(row => row.genericPeriodicCertificateFound).length,
+    search_correction: "global_face_extensions_and_applied_placement_node_accounting",
+    supersedes_vertex_mrv_depth_comparisons: true,
+    report: "data/lattice-polyhedron-global-extension-screen-2026-08-19.json"
+  }
+);
 assert.ok(archivedBudgetOrder.budget_scaling.summary.all_paths_non_decreasing);
 assert.equal(archivedBudgetOrder.frontier_order_screen.policy_decision, "retain_mrv");
 assert.equal(archivedBudgetOrder.move_order_screen.exact_target_checks_completed, 8);
@@ -912,6 +968,33 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
     internalSummary.repeated_translation_rank_3_paths
   );
   assert.equal(candidate.gcts_proof_screening.internal_period_target_hits, internalSummary.target_hits);
+  const globalRows = archivedGlobalExtension.rows.filter(row => row.case === candidate.id);
+  assert.equal(candidate.gcts_proof_screening.global_extension_trials, globalRows.length);
+  assert.equal(
+    candidate.gcts_proof_screening.global_extension_target_hits,
+    globalRows.filter(row => row.largestPatch === 60).length
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.global_extension_distinct_witnesses,
+    new Set(globalRows.map(row => row.witnessHash)).size
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.global_extension_minimum_isotropy,
+    Math.min(...globalRows.map(row => row.witnessGrowthIsotropy))
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.global_extension_max_candidates,
+    Math.max(...globalRows.map(row => row.connectedPatchMaxCandidates))
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.global_extension_exact_target_checks,
+    globalRows.reduce((sum, row) => sum + row.genericPeriodicCertificateChecksCompleted, 0)
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.global_extension_internal_period_bases_tested,
+    globalRows.reduce((sum, row) => sum + row.genericPeriodicInternalMotifBasesTested, 0)
+  );
+  assert.equal(candidate.gcts_proof_screening.global_extension_periodic_certificates, 0);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL

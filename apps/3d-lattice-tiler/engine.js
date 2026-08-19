@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-internal-period-v92";
+import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-global-extension-v95";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -649,6 +649,7 @@ export const createTilingStream = (() => {
 
     let faceCounter = 0;
     let nodeCounter = 0;
+    let searchWorkCounter = 1;
     let stateVersion = 0;
     let latestFrontierGraph = null;
     let latestFrontierGraphVersion = -1;
@@ -695,6 +696,9 @@ export const createTilingStream = (() => {
       generic_failure_memo_capacity: 0,
       generic_failure_memo_capacity_reached: false,
       generic_failure_memo_key_equivalence: "disabled",
+      generic_connected_patch_enumeration: false,
+      generic_connected_patch_candidate_states: 0,
+      generic_connected_patch_max_candidates: 0,
       generic_geometric_nogood_enabled: false,
       generic_geometric_nogood_disable_reason: null,
       generic_geometric_nogood_clauses: 0,
@@ -891,7 +895,7 @@ export const createTilingStream = (() => {
         branch_next_indices: branchProgress.next_indices,
         // Actual work performed. The path estimate can saturate at 1e12 after
         // only a modest number of genuinely visited search nodes.
-        visited_nodes: 1 + searchStats.forced_total + searchStats.branch_choices_visited,
+        visited_nodes: searchWorkCounter,
         estimated_nodes_at_depth: branchProgress.total,
         visited_percent: branchProgress.percent
       };
@@ -1460,7 +1464,8 @@ export const createTilingStream = (() => {
       return completedPoints * 1e6 + touchedPoints * 1e3 + addedWeight;
     };
 
-    const applyMove = (move) => {
+    const applyMove = (move, { countWork = true } = {}) => {
+      if (countWork) searchWorkCounter += 1;
       const moveLayer = Number.isFinite(move.layer) ? move.layer : candidateMoveLayer(move);
       move.layer = moveLayer;
       state.placements.push(move);
@@ -1707,6 +1712,23 @@ export const createTilingStream = (() => {
       ? configuredForcedLagCap > 0 ? configuredForcedLagCap : Infinity
       : 2;
     searchStats.generation_lag_cap = forcedMoveLayerLagCap;
+    // A proof that no connected count-target patch exists must branch over
+    // every legal tile that can be attached through any exposed face. An
+    // incomplete frontier vertex with no immediate candidate is not a dead
+    // end: growth elsewhere can expose a face that supplies a candidate later.
+    // Likewise, a vertex's sole current candidate is not logically forced.
+    // The heuristic vertex-MRV search remains useful for witness finding, but
+    // only this global extension enumeration is branch-complete.
+    const genericConnectedPatchEnumeration = config.generic_connected_patch_enumeration === true
+      && tilingStrategy === "generic"
+      && criterion === "count"
+      && exhaustive
+      && !Number.isFinite(forcedMoveLayerLagCap)
+      && !Number.isFinite(candidateCap)
+      && !greedyNoBacktrack
+      && (!usePolicyAgent || agentExhaustive)
+      && !proposalProgram;
+    searchStats.generic_connected_patch_enumeration = genericConnectedPatchEnumeration;
     const configuredFailureMemoCapacity = Number(config.generic_failure_memo_max_states);
     const genericFailureMemoCapacity = Number.isFinite(configuredFailureMemoCapacity)
       ? Math.max(0, Math.floor(configuredFailureMemoCapacity))
@@ -1882,7 +1904,7 @@ export const createTilingStream = (() => {
       ? Math.max(criterion === "count" ? Math.ceil(targetVal) : 1, Math.floor(configuredSafetyMax))
       : defaultSafetyMax;
     const overNodeLimit = () => {
-      const reached = Number.isFinite(nodeLimit) && nodeCounter >= nodeLimit;
+      const reached = Number.isFinite(nodeLimit) && searchWorkCounter >= nodeLimit;
       if (reached && !searchStats.termination_reason) searchStats.termination_reason = "node_limit";
       return reached;
     };
@@ -2861,14 +2883,14 @@ export const createTilingStream = (() => {
       };
     };
     const previewMoveStats = (move) => {
-      const rb = applyMove(move);
+      const rb = applyMove(move, { countWork: false });
       const stats = calculateFrontierStats();
       undoMove(move, rb, { captureBest: false });
       return stats;
     };
     const previewMoveSymmetry = (move) => {
       if (move._symmetry_info) return move._symmetry_info;
-      const rb = applyMove(move);
+      const rb = applyMove(move, { countWork: false });
       const info = frontierSymmetryInfo();
       undoMove(move, rb, { captureBest: false });
       move._symmetry_info = info;
@@ -3019,6 +3041,7 @@ export const createTilingStream = (() => {
         ];
       }
       if (moveOrder === "proposal") return [proposalScore(move)];
+      if (moveOrder === "global") return rlAgent.score(move);
       if (moveOrder === "symmetric") {
         const symmetry = previewMoveSymmetry(move);
         return [
@@ -4877,6 +4900,10 @@ export const createTilingStream = (() => {
 
     async function* search(parentId, depth = 0) {
       if (stopToken.stop) { noteIncompleteSearch(); return false; }
+      if (goalMet()) {
+        yield nodeStatus(parentId, "success");
+        return true;
+      }
       if (overBudget()) {
         noteIncompleteSearch();
         yield nodeStatus(parentId, "fail", budgetText());
@@ -4909,10 +4936,6 @@ export const createTilingStream = (() => {
         if (!searchIncomplete) rememberGenericFailure(entryFailureKey, entryFailurePlacements);
         return retval;
       };
-      if (goalMet()) {
-        yield nodeStatus(parentId, "success");
-        return yield* doReturn(true);
-      }
       if (entryFailureKey && genericFailureMemo.has(entryFailureKey)) {
         searchStats.generic_failure_memo_hits += 1;
         yield nodeStatus(parentId, "fail", "Known dead state");
@@ -5003,9 +5026,25 @@ export const createTilingStream = (() => {
         };
         return classifyFrontierCandidateGraph(regionGraph, frontierOptionOrder);
       };
+      const allLegalFaceExtensions = () => {
+        const dedup = new Map();
+        for (const candidates of faceCandidatesByFrontierPoint().values()) {
+          for (const candidate of candidates) {
+            const key = candidate.dedup_key ?? placementGeometryKey(candidate);
+            if (!dedup.has(key)) dedup.set(key, candidate);
+          }
+        }
+        const candidates = [...dedup.values()];
+        searchStats.generic_connected_patch_candidate_states += 1;
+        searchStats.generic_connected_patch_max_candidates = Math.max(
+          searchStats.generic_connected_patch_max_candidates,
+          candidates.length
+        );
+        return candidates;
+      };
       let forcedCount = 0;
       let branchAnalysis = null;
-      while (true) {
+      while (!genericConnectedPatchEnumeration) {
         await yieldToBrowser();
         if (stopToken.stop) { noteIncompleteSearch(); return yield* doReturn(false); }
         if (overBudget()) {
@@ -5086,6 +5125,24 @@ export const createTilingStream = (() => {
         break;
       }
 
+      if (genericConnectedPatchEnumeration) {
+        const analysis = await analyzeFrontierGraph();
+        const frontierDual = frontierGraphPayload(analysis);
+        const analysisStats = rememberFrontierGraph(analysis);
+        if (overBudget()) {
+          noteIncompleteSearch();
+          yield nodeStatus(parentId, "fail", budgetText());
+          return yield* doReturn(false);
+        }
+        // Retain the frontier dual for diagnosis and visualization, but do not
+        // infer dead ends or forced moves from this instantaneous vertex view.
+        yield nodeStatus(parentId, "working", "", {
+          frontier_stats: analysisStats,
+          frontier_dual: frontierDual
+        });
+        branchAnalysis = analysis;
+      }
+
       if (forcedCount > 0) {
         const postForcedStats = frontierStatsWithCandidateCount();
         const forcedNodeId = nowId();
@@ -5100,7 +5157,9 @@ export const createTilingStream = (() => {
       }
 
       const branchOptions = branchAnalysis?.branches ?? [];
-      let bestMoves = policyAgentProposals(branchAnalysis);
+      let bestMoves = genericConnectedPatchEnumeration
+        ? allLegalFaceExtensions()
+        : policyAgentProposals(branchAnalysis);
       let bestOption = null;
       let bestOptionMoves = [];
       if (!bestMoves.length && branchOptions.length) {
@@ -5144,6 +5203,7 @@ export const createTilingStream = (() => {
       }
 
       if (!bestMoves.length) bestMoves = bestOptionMoves.sort(compareMoves);
+      else if (!usePolicyAgent) bestMoves = bestMoves.sort(compareMoves);
       else bestMoves = bestMoves.sort((left, right) =>
         compareScoreVectors(
           left._agent_proposal_score ?? rlAgent.score(left),
@@ -5368,6 +5428,7 @@ export const createTilingStream = (() => {
       && criterion === "count"
       && tilingStrategy === "generic"
       && exhaustive
+      && genericConnectedPatchEnumeration
       && !searchIncomplete
       && !Number.isFinite(candidateCap)
       && !greedyNoBacktrack
@@ -5382,7 +5443,7 @@ export const createTilingStream = (() => {
         strategy: tilingStrategy,
         target_tiles: targetVal,
         model: "connected face-to-face tiling by the configured proper lattice orientations",
-        note: `Exhaustive unpruned search found no connected ${targetVal}-tile patch containing the normalized root tile.`
+        note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
       };
     }
     yield nodeStatus(rootId, success ? "success" : "fail");
