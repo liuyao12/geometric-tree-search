@@ -2774,6 +2774,7 @@ function pauseRun() {
 const GROWTH_MODES = [
   { id: "free_range", strategy: "free_range", label: "Free-range · balanced", color: "#6f7c77", symbol: "square-open", dash: "dash" },
   { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
+  { id: "proof", strategy: "free_range", label: "Proof search · unbanded", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
   { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
@@ -2792,6 +2793,7 @@ function activateGrowthMode(modeId) {
   strategySelect.value = mode.strategy;
   if (mode.id === "free_range") moveOrderSelect.value = "balanced";
   if (mode.id === "no_brainer") moveOrderSelect.value = "no_brainer";
+  if (mode.id === "proof") moveOrderSelect.value = "balanced";
   updateStrategyUI();
 }
 
@@ -3001,6 +3003,15 @@ function formatGrowthResult(result, target) {
   if (result?.resultKind === "known_aperiodic_construction") {
     return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
+  if (
+    result?.mode === "proof"
+    && result?.certified
+    && result?.canTile === false
+    && result?.certificateKind === "finite_patch_obstruction"
+  ) {
+    const patchSize = result.certificateTargetTiles ?? target;
+    return `${result.label} certified no connected ${patchSize}-tile patch ${formatElapsed(result.milliseconds)}`;
+  }
   if (result?.mode === "isohedral" && result?.resultKind === "certified_tiling") {
     return `${result.label} certified ${result.certificatePatchSize ?? "finite"}-tile unit cell ${formatElapsed(result.milliseconds)}`;
   }
@@ -3033,7 +3044,7 @@ function finishGrowthBenchmark(results) {
   setRunButton();
   const target = Number(maxTilesInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
-  setStatus("All five modes finished.");
+  setStatus("All six modes finished.");
   renderGrowthChart();
 }
 
@@ -3080,8 +3091,8 @@ function startGrowthBenchmark() {
   const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
-  setStatus("Running all five modes…");
-  growthBenchmarkStatus.textContent = `Running five searches simultaneously to ${config.target_val} tiles…`;
+  setStatus("Running all six modes…");
+  growthBenchmarkStatus.textContent = `Running six searches simultaneously to ${config.target_val} tiles…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3105,7 +3116,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-nogood-pivot-v49", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-proof-lane-v51", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3227,7 +3238,7 @@ function bindControls() {
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
-    setStatus("Long-growth preset ready: five modes race to 120 tiles for up to 30 seconds.");
+    setStatus("Long-growth preset ready: six modes race to 120 tiles for up to 30 seconds.");
     setRunButton();
   });
 

@@ -7,6 +7,26 @@ import {
   LATTICE_POLYHEDRON_SCREENING
 } from "../assets/lattice-polyhedron-survivors.js";
 
+const growthWorkerSource = await readFile(
+  new URL("../apps/3d-lattice-tiler/growth-benchmark-worker.js", import.meta.url),
+  "utf8"
+);
+const growthAppSource = await readFile(
+  new URL("../apps/3d-lattice-tiler/app.js", import.meta.url),
+  "utf8"
+);
+assert.match(growthWorkerSource, /id: "proof"[\s\S]*?proof: true/, "the comparison worker must expose a proof lane");
+assert.match(
+  growthWorkerSource,
+  /forced_move_layer_lag_cap: mode\.proof \? 0 : baseConfig\.forced_move_layer_lag_cap/,
+  "the proof lane must disable the generational band"
+);
+assert.match(growthWorkerSource, /generic_failure_memo: mode\.proof/, "the proof lane must memoize exact failures");
+assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof comparison lane may claim exhaustive search");
+assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
+assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
+assert.match(growthAppSource, /All six modes finished\./, "the comparison status must include all six lanes");
+
 assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
 assert.equal(
   LATTICE_POLYHEDRON_CENSUS_POOL.filter(candidate => candidate.screening.status === "exact_rejection").length,

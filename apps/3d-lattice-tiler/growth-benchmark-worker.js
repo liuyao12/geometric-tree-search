@@ -24,6 +24,15 @@ const MODES = {
     templates: false,
     agentExhaustive: true
   },
+  proof: {
+    id: "proof",
+    label: "Proof search · unbanded",
+    strategy: "free_range",
+    moveOrder: "balanced",
+    templates: false,
+    agentExhaustive: true,
+    proof: true
+  },
   learning: {
     id: "learning",
     label: "Learning Free-range",
@@ -75,7 +84,10 @@ async function runMode(sequence, baseConfig, mode) {
     placement_details: mode.id === "learning",
     branch_cap: null,
     candidate_cap: null,
-    exhaustive: false
+    forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
+    generic_failure_memo: mode.proof,
+    generic_geometric_nogood: false,
+    exhaustive: !!mode.proof
   };
   const started = performance.now();
   let best = 0;
@@ -137,7 +149,11 @@ async function runMode(sequence, baseConfig, mode) {
     resultKind: final?.result_kind ?? null,
     certificatePatchSize: final?.tiling_evidence?.patch_size ?? null,
     checkedPatchSize,
-    searchIncomplete: !!final?.search_incomplete
+    searchIncomplete: !!final?.search_incomplete,
+    canTile: final?.can_tile ?? null,
+    certified: !!final?.tiling_evidence?.certified,
+    certificateKind: final?.tiling_evidence?.kind ?? null,
+    certificateTargetTiles: final?.tiling_evidence?.target_tiles ?? null
   };
   post(sequence, { type: "series-finished", result });
   return result;

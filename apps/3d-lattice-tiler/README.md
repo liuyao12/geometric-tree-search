@@ -24,7 +24,7 @@ engine in `solver-worker.js`.
 
 ## Solver modes
 
-The UI exposes four solver families and runs five comparison lanes concurrently
+The UI exposes four solver families and runs six comparison lanes concurrently
 in independent
 workers:
 
@@ -34,6 +34,12 @@ workers:
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
+   A separate **Proof search · unbanded** lane runs the balanced order without
+   the generational frontier band or heuristic branch caps. It memoizes exact
+   failed placement sets. Reaching the requested tile count is still only a
+   finite-patch witness; exhausting the full search before that count certifies
+   that no connected patch of that size exists in the configured face-to-face
+   lattice model. A time or node limit remains inconclusive.
 2. **Learning Free-range** runs the same search while updating geometric
    proposal priorities from successful and failed branches. Its best legal
    patch is stored per tile in the browser and revalidated on later runs, so
@@ -67,7 +73,7 @@ workers:
    tile class. Without that certificate the result is exhausted or
    inconclusive and the displayed patch rolls back to the root.
 
-The interactive Plotly growth chart uses one wall clock for all five workers.
+The interactive Plotly growth chart uses one wall clock for all six workers.
 Every plotted sample retains its exact 3D snapshot: clicking a marker replays
 that historical patch, while clicking empty chart space restores the latest
 patch for that marker's mode. Selecting a mode also switches the viewport to
