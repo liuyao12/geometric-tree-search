@@ -440,7 +440,8 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
     const key = orientationKey(canonicalQuaternion(matrix));
     orientationCounts.set(key, (orientationCounts.get(key) ?? 0) + 1);
   }
-  const basePointSize = orientations.length > 1500 ? 3.5 : orientations.length > 250 ? 5 : orientations.length > 40 ? 7 : 10;
+  const maximumOrientationCount = Math.max(...orientationCounts.values());
+  const maximumPointSize = 16;
   orientationPointKeys = [];
   orientationPointBaseColors = [];
   for (const quaternion of orientations) {
@@ -455,7 +456,10 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
     orientationPointBaseColors.push(color);
     positions.push(point.x, point.y, point.z);
     colors.push(color.r, color.g, color.b);
-    pointSizes.push(Math.min(24, basePointSize * Math.sqrt(orientationCounts.get(key))));
+    pointSizes.push(Math.max(
+      2.5,
+      maximumPointSize * Math.sqrt(orientationCounts.get(key) / maximumOrientationCount)
+    ));
   }
   orientationPointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
@@ -476,11 +480,8 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
 function refreshOrientationPointColors() {
   const colors = orientationPointGeometry.getAttribute("color");
   if (!colors) return;
-  const muted = new THREE.Color(0xc6cbc9);
   for (let index = 0; index < orientationPointKeys.length; index += 1) {
-    const color = selectedOrientationKey === null || orientationPointKeys[index] === selectedOrientationKey
-      ? orientationPointBaseColors[index]
-      : muted;
+    const color = orientationPointBaseColors[index];
     colors.setXYZ(index, color.r, color.g, color.b);
   }
   colors.needsUpdate = true;
