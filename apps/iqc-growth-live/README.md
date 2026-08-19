@@ -1858,6 +1858,22 @@ states are exact. This is evidence for bounded rollback supply, not a fresh
 confirmation or a branch-commit rule. The next gate must learn to choose among
 those retained configurations from downstream consequences.
 
+That downstream-consequence gate is now measured explicitly. Every one of the
+1,278 complete terminals is advanced through at most eight child actions with
+the unchanged frozen GCTS transition. Before any copied development label is
+read, the builder records 685 proper-motion-invariant fields: child count and
+color balance, the highest-ranked child section, and mean/maximum summaries of
+the child local sections and successor frontiers. The deterministic compressed
+fixture is 1.1 MB and is linked to the source terminal digest.
+
+The fully nested whole-nucleus value selects only `3 / 9` exact terminals and
+`18 / 30` correct colored sites, versus `7 / 9` and `26 / 30` for the prior
+scalar/port-graph fusion. Its frozen `8 / 9` and 27-site gate is therefore
+decisively red; no fresh nucleus is opened. This rejects pooled immediate-child
+statistics as the missing commit value. The next implementation should retain
+the typed child-frontier incidence graph and explicit failure/rollback edges,
+rather than compressing downstream geometry into scalar moments.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

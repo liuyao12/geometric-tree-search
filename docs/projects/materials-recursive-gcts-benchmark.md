@@ -3870,6 +3870,30 @@ not. Because the preregistered top-one development gate failed, no fresh
 nucleus is opened and this is not a new confirmation, stationarity result, or
 exponential-growth certificate.
 
+The proposed downstream-value step is also now tested rather than assumed.
+Each of the 1,278 complete terminals is advanced through at most eight
+target-free child actions under the identical frozen GCTS transition. A
+deterministic 1.1 MB compressed fixture stores 685 proper-motion-invariant
+measurements per terminal: child count/color balance, the highest-ranked child
+local section, and mean/maximum summaries of every child local section and
+successor frontier. Source candidate counts, action colors, inherited-action
+hashes, and invariant feature slices must replay before the existing consumed
+labels may be copied.
+
+| downstream-consequence development gate | prior fusion | consequence value |
+|---|---:|---:|
+| exact top-one / 9 supplied nuclei | `7 / 9` | `3 / 9` |
+| correct colored sites / 30 | `26 / 30` | `18 / 30` |
+| required | `>=8 / 9`, `>=27 / 30` | red |
+
+The consequence model is selected inside each outer whole-nucleus fold; no
+candidate-random split or fresh target is used. Immediate child-frontier
+moments therefore do not resolve the ranks 14 and 10 failure and are rejected
+as a commit value. The next value representation must preserve the typed
+child-frontier incidence graph, explicit incompatibility edges, and rollback
+obligations rather than pooling the downstream state into scalar summaries.
+This negative result changes neither the stationary nor exponential IQC gate.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
