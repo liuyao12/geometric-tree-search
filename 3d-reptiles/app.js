@@ -9,6 +9,8 @@ const tileValue = document.getElementById("tile-value");
 const orientationPlot = document.getElementById("orientation-plot");
 const orientationValue = document.getElementById("orientation-value");
 const orientationCurrent = document.getElementById("orientation-current");
+const visualEffectSelect = document.getElementById("visual-effect-select");
+const effectDescription = document.getElementById("effect-description");
 const tileSelect = document.getElementById("tile-select");
 
 tileSelect.addEventListener("change", () => {
@@ -19,6 +21,15 @@ const SQRT3 = Math.sqrt(3);
 const INITIAL_GENERATION = 0;
 const MAX_GENERATION = 5;
 const FIXED_CHILD_SEQUENCE = [5, 5, 3, 5, 5];
+const TURNING_CHILD_INDICES = new Set([1, 2, 6, 7]);
+const TURN_GENERATION_COLORS = [
+  0xc6cbc9,
+  0xf2553d,
+  0xf2a51f,
+  0x18a98b,
+  0x3478df,
+  0xa94fd1
+];
 const FACE_CENTER = new THREE.Vector3(SQRT3 / 2, 0.5, 0.5);
 const FACE_INDICES = [
   0, 2, 1,
@@ -185,17 +196,20 @@ content.add(parentOutline);
 
 const daughterTransforms = makeDaughterTransforms();
 let mutedOrientationKeys = new Set();
+let visualEffect = visualEffectSelect.value;
 let generation = INITIAL_GENERATION;
 let subdivisionWords = [new THREE.Matrix4()];
+let currentTurnGenerations = [null];
 let fixedPath = new THREE.Matrix4();
 for (let depth = 0; depth < INITIAL_GENERATION; depth += 1) {
   subdivisionWords = substitute(subdivisionWords);
+  currentTurnGenerations = substituteTurnGenerations(currentTurnGenerations, depth + 1);
   fixedPath.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]]);
 }
 const initialNormalization = fixedPath.clone().invert();
 let currentExpandedTransforms = subdivisionWords.map((word) => initialNormalization.clone().multiply(word));
 updateMutedOrientationKeys(currentExpandedTransforms);
-let currentVisual = makeVisual(currentExpandedTransforms);
+let currentVisual = makeVisual(currentExpandedTransforms, currentTurnGenerations);
 content.add(currentVisual.group);
 tileValue.textContent = subdivisionWords.length.toLocaleString();
 
@@ -282,6 +296,18 @@ function substitute(transforms) {
   return next;
 }
 
+function substituteTurnGenerations(parentGenerations, nextGeneration) {
+  const children = [];
+  for (const parentGeneration of parentGenerations) {
+    for (let childIndex = 0; childIndex < daughterTransforms.length; childIndex += 1) {
+      children.push(
+        parentGeneration ?? (TURNING_CHILD_INDICES.has(childIndex) ? nextGeneration : null)
+      );
+    }
+  }
+  return children;
+}
+
 function canonicalQuaternion(matrix) {
   const position = new THREE.Vector3();
   const quaternion = new THREE.Quaternion();
@@ -322,6 +348,24 @@ function updateMutedOrientationKeys(transforms) {
   );
 }
 
+function firstTurnGenerationByOrientation(transforms, turnGenerations) {
+  const generations = new Map();
+  transforms.forEach((matrix, index) => {
+    const key = orientationKey(canonicalQuaternion(matrix));
+    const generationIntroduced = turnGenerations[index];
+    if (!generations.has(key)) generations.set(key, generationIntroduced);
+    else if (generationIntroduced !== null) {
+      const existing = generations.get(key);
+      if (existing === null || generationIntroduced < existing) generations.set(key, generationIntroduced);
+    }
+  });
+  return generations;
+}
+
+function turnGenerationColor(generationIntroduced) {
+  return new THREE.Color(TURN_GENERATION_COLORS[generationIntroduced] ?? 0xd943a4);
+}
+
 function orientationKey(quaternion) {
   return [quaternion.x, quaternion.y, quaternion.z, quaternion.w]
     .map((value) => value.toFixed(5))
@@ -359,7 +403,7 @@ function axisAnglePoint(quaternion) {
     .multiplyScalar(angle / Math.PI);
 }
 
-function drawOrientationBall(transforms) {
+function drawOrientationBall(transforms, turnGenerations = currentTurnGenerations) {
   if (!orientationPlot) return;
   const orientations = distinctOrientations(transforms);
   orientationValue.textContent = orientations.length.toLocaleString();
@@ -370,14 +414,17 @@ function drawOrientationBall(transforms) {
   );
   const positions = [];
   const colors = [];
+  const orientationTurnGenerations = firstTurnGenerationByOrientation(transforms, turnGenerations);
   orientationPointKeys = [];
   orientationPointBaseColors = [];
   for (const quaternion of orientations) {
     const point = axisAnglePoint(quaternion);
     const key = orientationKey(quaternion);
-    const color = mutedOrientationKeys.has(key)
-      ? new THREE.Color(0xb8bfbc)
-      : orientationColorFromQuaternion(quaternion);
+    const color = visualEffect === "turn-generation"
+      ? turnGenerationColor(orientationTurnGenerations.get(key))
+      : mutedOrientationKeys.has(key)
+        ? new THREE.Color(0xb8bfbc)
+        : orientationColorFromQuaternion(quaternion);
     orientationPointKeys.push(key);
     orientationPointBaseColors.push(color);
     positions.push(point.x, point.y, point.z);
@@ -412,9 +459,17 @@ function refreshOrientationPointColors() {
   colors.needsUpdate = true;
 }
 
-function displayedOrientationColor(matrix) {
+function displayedTileColor(matrix, turnGeneration) {
   const color = orientationColor(matrix);
   const key = orientationKey(canonicalQuaternion(matrix));
+  if (visualEffect === "turn-generation") {
+    if (selectedOrientationKey !== null && key !== selectedOrientationKey) return new THREE.Color(0xc6cbc9);
+    if (turnGeneration === null) {
+      return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xc6cbc9);
+    }
+    const generationColor = turnGenerationColor(turnGeneration);
+    return selectedOrientationKey === key ? generationColor.offsetHSL(0, 0.08, 0.08) : generationColor;
+  }
   if (mutedOrientationKeys.has(key)) {
     return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xc6cbc9);
   }
@@ -455,15 +510,15 @@ function makeTransparentMaterial({ line = false, opacity } = {}) {
   return material;
 }
 
-function makeVisual(transforms) {
+function makeVisual(transforms, turnGenerations) {
   const facePositions = [];
   const faceColors = [];
   const edgePositions = [];
   const edgeColors = [];
   const transformed = CANONICAL_VERTICES.map(() => new THREE.Vector3());
 
-  for (const matrix of transforms) {
-    const color = displayedOrientationColor(matrix);
+  transforms.forEach((matrix, transformIndex) => {
+    const color = displayedTileColor(matrix, turnGenerations[transformIndex]);
     for (let i = 0; i < CANONICAL_VERTICES.length; i += 1) {
       transformed[i].copy(CANONICAL_VERTICES[i]).applyMatrix4(matrix);
     }
@@ -477,7 +532,7 @@ function makeVisual(transforms) {
       edgePositions.push(point.x, point.y, point.z);
       edgeColors.push(color.r, color.g, color.b);
     }
-  }
+  });
 
   const faceOpacity = Math.max(0.006, 0.09 / Math.pow(transforms.length, 0.28));
   const edgeOpacity = Math.max(0.01, 0.16 / Math.pow(transforms.length, 0.25));
@@ -498,7 +553,7 @@ function makeVisual(transforms) {
 
   const group = new THREE.Group();
   group.add(mesh, edges);
-  return { group, transforms, materials: [faceMaterial, edgeMaterial], geometries: [faceGeometry, edgeGeometry] };
+  return { group, transforms, turnGenerations, materials: [faceMaterial, edgeMaterial], geometries: [faceGeometry, edgeGeometry] };
 }
 
 function refreshVisualColors(visual) {
@@ -507,15 +562,15 @@ function refreshVisualColors(visual) {
   const edgeColors = visual.geometries[1].getAttribute("color");
   let faceOffset = 0;
   let edgeOffset = 0;
-  for (const matrix of visual.transforms) {
-    const color = displayedOrientationColor(matrix);
+  visual.transforms.forEach((matrix, transformIndex) => {
+    const color = displayedTileColor(matrix, visual.turnGenerations[transformIndex]);
     for (let index = 0; index < FACE_INDICES.length; index += 1) {
       faceColors.setXYZ(faceOffset++, color.r, color.g, color.b);
     }
     for (let index = 0; index < EDGE_INDICES.length; index += 1) {
       edgeColors.setXYZ(edgeOffset++, color.r, color.g, color.b);
     }
-  }
+  });
   faceColors.needsUpdate = true;
   edgeColors.needsUpdate = true;
   refreshVisualEmphasis(visual);
@@ -601,17 +656,20 @@ function setVisualOpacity(visual, amount) {
 
 function stateAtGeneration(targetGeneration) {
   let words = [new THREE.Matrix4()];
+  let turnGenerations = [null];
   const path = new THREE.Matrix4();
   const depthLimit = targetGeneration;
   for (let depth = 0; depth < depthLimit; depth += 1) {
     words = substitute(words);
+    turnGenerations = substituteTurnGenerations(turnGenerations, depth + 1);
     path.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]]);
   }
   const normalization = path.clone().invert();
   return {
     words,
     path,
-    transforms: words.map((word) => normalization.clone().multiply(word))
+    transforms: words.map((word) => normalization.clone().multiply(word)),
+    turnGenerations
   };
 }
 
@@ -630,8 +688,9 @@ function showGeneration(targetGeneration) {
   const nextState = stateAtGeneration(targetGeneration);
   const expandedTransforms = nextState.transforms;
   currentExpandedTransforms = expandedTransforms;
+  currentTurnGenerations = nextState.turnGenerations;
   updateMutedOrientationKeys(expandedTransforms);
-  const nextVisual = makeVisual(expandedTransforms);
+  const nextVisual = makeVisual(expandedTransforms, currentTurnGenerations);
   setVisualOpacity(nextVisual, 0);
   content.add(nextVisual.group);
 
@@ -640,7 +699,7 @@ function showGeneration(targetGeneration) {
   fixedPath = nextState.path;
   generationValue.textContent = String(generation);
   tileValue.textContent = subdivisionWords.length.toLocaleString();
-  drawOrientationBall(expandedTransforms);
+  drawOrientationBall(expandedTransforms, currentTurnGenerations);
   refreshVisualColors(nextVisual);
 
   const cameraOffset = camera.position.clone().sub(controls.target);
@@ -668,6 +727,18 @@ function showGeneration(targetGeneration) {
 
 substituteButton.addEventListener("click", () => showGeneration(generation + 1));
 backButton.addEventListener("click", () => showGeneration(generation - 1));
+visualEffectSelect.addEventListener("change", () => {
+  visualEffect = visualEffectSelect.value;
+  effectDescription.textContent = visualEffect === "turn-generation"
+    ? "Grey means not yet turned; color records the first turning expansion."
+    : "Dominant classes are grey; the proliferating orbit is colored.";
+  refreshVisualColors(currentVisual);
+  if (transition) {
+    refreshVisualColors(transition.from);
+    refreshVisualColors(transition.to);
+  }
+  drawOrientationBall(currentExpandedTransforms, currentTurnGenerations);
+});
 updateActionButtons();
 
 function resize() {
@@ -691,7 +762,7 @@ const orientationResizeObserver = new ResizeObserver(resizeOrientationBall);
 orientationResizeObserver.observe(orientationPlot);
 resize();
 resizeOrientationBall();
-drawOrientationBall(currentExpandedTransforms);
+drawOrientationBall(currentExpandedTransforms, currentTurnGenerations);
 
 function animate(time) {
   controls.update();

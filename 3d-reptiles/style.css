@@ -282,6 +282,31 @@ h1 {
   text-transform: uppercase;
 }
 
+.effect-control {
+  display: grid;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.effect-control > span {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.effect-control select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: rgba(255, 255, 255, .5);
+  padding: 6px 7px;
+  color: var(--ink);
+  font: 600 10px/1.2 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+}
+
 .orientation-panel > p {
   margin: 13px 0 0;
   color: var(--muted);

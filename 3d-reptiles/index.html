@@ -70,7 +70,14 @@
             <span>identity</span>
             <span>π boundary</span>
           </div>
-          <p><span id="orientation-current">1 occurs in the current patch.</span> The most populated orientation class stays grey; color reveals the proliferating orbit. Click a dot to highlight its prisms. Drag the ball to rotate it.</p>
+          <label class="effect-control" for="visual-effect-select">
+            <span>Color by</span>
+            <select id="visual-effect-select">
+              <option value="orientation">Absolute orientation</option>
+              <option value="turn-generation">First turning generation</option>
+            </select>
+          </label>
+          <p><span id="orientation-current">1 occurs in the current patch.</span> <span id="effect-description">Dominant classes are grey; the proliferating orbit is colored.</span></p>
         </aside>
 
         <p class="scene-instruction">Drag to orbit the fixed tile · scroll through every face</p>
