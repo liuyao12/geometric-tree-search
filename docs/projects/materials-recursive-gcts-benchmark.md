@@ -3788,6 +3788,25 @@ fresh spatial confirmation nor stationary/exponential evidence. The frozen
 result receipt is `9031bc59…514a5`; the compact result fixture is checked by
 SHA-256 in ordinary regression tests.
 
+The widened search and dual portfolio were then frozen for a true spatial
+confirmation. Commit `e2ff810` preregistered the first geometry-only expanded-
+grid centre `(-110, -10, -10)`, its 40-unit minimum separation from every prior
+centre, lift bound 60 with a bound+1 check, exact source hashes, schedule
+`8 -> 8 -> 8`, dual budget nine, and a single target-open rule. Before target
+access, receipt `b4e7d872…f1ae` froze a 473-atom seed, candidate counts
+`8 -> 37 -> 128`, every losslessly compressed terminal action, scalar/fusion
+orders, and eighteen rollback states; its target-open count is zero.
+
+The radius-14.5623 target was then opened once at lift bounds 60 and 61. The
+crops agree exactly and contain 2,048 atoms, 1,575 outside the seed. Posthoc,
+`90 / 128` terminals are fully color-correct. Scalar first exact rank is one,
+fusion first exact rank is one, both selected branches place `3 / 3` correct
+sites, and the dual portfolio contains exact alternatives. Candidate bytes and
+orders remain unchanged after scoring. This is a fresh spatial confirmation of
+finite candidate supply and rollback-portfolio retention. It is not evidence
+of self-fed sustained growth, a common three-scale production, or exponential
+IQC growth.
+
 ### Finite-state substitution cycles
 
 Stationarity is not broadened informally to rescue the IQC result. A strict

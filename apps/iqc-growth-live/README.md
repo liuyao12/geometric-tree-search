@@ -1811,6 +1811,20 @@ sites). This consumed-development result fixes the candidate-supply diagnosis;
 it does not constitute a new confirmation, transferable value win,
 stationarity, or exponential growth.
 
+That widened policy has now passed a fresh spatial confirmation. Before any new
+atom was generated, a geometry-only manifest fixed centre
+`(-110, -10, -10)`, lift bound 60, the complete `8 -> 8 -> 8` search, source
+hashes, dual budget nine, and one target-open rule. A separately committed
+zero-target receipt then froze a 473-atom seed, candidate counts
+`8 -> 37 -> 128`, every terminal action and both rank orders, and eighteen
+rollback states. The radius-14.5623 target was opened once afterward and is
+identical at lift bounds 60 and 61. It contains 2,048 atoms, 1,575 outside the
+seed. Posthoc, `90 / 128` terminal branches are exact; scalar rank one and
+fusion rank one are both exact `3 / 3`, and the dual portfolio contains exact
+branches. This confirms finite candidate supply and portfolio retention on a
+new atom-domain-disjoint nucleus. One finite three-action confirmation is not
+sustained continuation, stationarity, or exponential IQC growth.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the
