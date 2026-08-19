@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-rigid-overlap-v76";
+import { tileSpecs } from "./engine.js?v=20260819-memo-ab-v78";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1342,7 +1342,10 @@ function updateCandidateResearchPanel() {
       const distinctBranches = proof.distinct_checkpoint_checks
         ? ` A separate ${proof.distinct_checkpoint_paths}-path hybrid branch screen saw ${proof.distinct_checkpoint_eligible_states} path-local distinct states through size ${proof.distinct_checkpoint_max_size} and completed exact checks on ${proof.distinct_checkpoint_checks}: the first four at each size plus later states 17, 33, and 49 when reached. Across seeds, those checks represent ${proof.global_checkpoint_states} proper-rigid-motion patch fingerprints; ${proof.repeated_checkpoint_path_pairs} checks repeated geometry reached by another seed. It found no certificate or timeout; ${proof.distinct_checkpoint_sampling_skips + proof.distinct_checkpoint_cap_skips} eligible states were not selected by that bounded schedule.`
         : "";
-      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}`;
+      const memoAb = proofProtocol.failure_memo_ab
+        ? ` A controlled fixed-versus-rigid failure-memo replay produced identical search outcomes and no additional rigid memo hit on all ${proofProtocol.failure_memo_ab.paths_screened} paths, so the faster fixed-root key remains the proof lane default.`
+        : "";
+      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}`;
     })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
     candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
@@ -2663,7 +2666,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-rigid-overlap-v76", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-memo-ab-v78", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3156,7 +3159,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-rigid-overlap-v76", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-memo-ab-v78", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

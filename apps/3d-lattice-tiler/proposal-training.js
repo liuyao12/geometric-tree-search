@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-rigid-overlap-v76";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-memo-ab-v78";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

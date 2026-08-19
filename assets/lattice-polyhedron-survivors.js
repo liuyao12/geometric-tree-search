@@ -52,6 +52,16 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       overlap_report: "data/lattice-polyhedron-rigid-checkpoint-overlap-2026-08-19.json",
       prior_fixed_frame_overlap_report: "data/lattice-polyhedron-global-checkpoint-overlap-2026-08-19.json",
       prior_prefix_report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
+    }),
+    failure_memo_ab: Object.freeze({
+      paths_screened: 12,
+      fixed_and_rigid_outcomes_identical: 12,
+      additional_rigid_memo_hits: 0,
+      observed_fixed_elapsed_ms: 52371,
+      observed_rigid_elapsed_ms: 57996,
+      observed_elapsed_ratio: 1.107406770922839,
+      production_default: "fixed",
+      report: "data/lattice-polyhedron-failure-memo-ab-2026-08-19.json"
     })
   })
 });

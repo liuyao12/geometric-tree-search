@@ -86,6 +86,11 @@ assert.match(
 );
 assert.match(
   growthAppSource,
+  /fixed-versus-rigid failure-memo replay produced identical search outcomes/,
+  "the catalog must expose the measured reason for retaining fixed-root memo keys"
+);
+assert.match(
+  growthAppSource,
   /that target patch is not a translational quotient/,
   "the completed proof-lane summary must retain the target-patch quotient result"
 );
@@ -123,6 +128,10 @@ const archivedFixedFrameOverlap = JSON.parse(await readFile(
 ));
 const archivedGlobalOverlap = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-rigid-checkpoint-overlap-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedFailureMemoAb = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-failure-memo-ab-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -218,6 +227,28 @@ assert.deepEqual(
   },
   "runtime distinct-patch evidence must match the archived executed screen"
 );
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.failure_memo_ab,
+  {
+    paths_screened: archivedFailureMemoAb.summary.paths,
+    fixed_and_rigid_outcomes_identical:
+      archivedFailureMemoAb.summary.identical_bounded_search_outcomes,
+    additional_rigid_memo_hits: archivedFailureMemoAb.summary.additional_rigid_memo_hits,
+    observed_fixed_elapsed_ms: archivedFailureMemoAb.summary.fixed_elapsed_ms,
+    observed_rigid_elapsed_ms: archivedFailureMemoAb.summary.rigid_elapsed_ms,
+    observed_elapsed_ratio: archivedFailureMemoAb.summary.observed_elapsed_ratio,
+    production_default: archivedFailureMemoAb.summary.production_default,
+    report: "data/lattice-polyhedron-failure-memo-ab-2026-08-19.json"
+  },
+  "runtime failure-memo policy must match the controlled archived A/B"
+);
+assert.equal(archivedFailureMemoAb.benchmark_schema_version, 14);
+assert.equal(archivedFailureMemoAb.paths.length, 12);
+assert.ok(archivedFailureMemoAb.paths.every(path =>
+  path.additional_rigid_hits === 0
+  && path.fixed_memo_hits === path.rigid_memo_hits
+  && path.observed_elapsed_ratio > 1
+));
 assert.equal(archivedDistinctScreening.paths.length, 12);
 assert.ok(
   archivedDistinctScreening.paths.every(path =>
