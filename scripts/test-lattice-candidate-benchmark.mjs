@@ -45,6 +45,33 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
+assert.equal(survivor.schemaVersion, 2);
+const freeRangeRows = survivor.rows.filter(row => row.lane.startsWith("free_range"));
+const expectedPoliciesAtTarget = freeRangeRows
+  .filter(row => row.largestPatch >= survivor.configuration.target)
+  .map(row => row.lane === "free_range" ? "balanced" : "no_brainer")
+  .sort();
+assert.deepEqual(
+  survivor.unresolved[0].freeRangePortfolio.policiesReachingTarget.sort(),
+  expectedPoliciesAtTarget
+);
+assert.equal(
+  survivor.unresolved[0].freeRangePortfolio.outcome,
+  expectedPoliciesAtTarget.length === 2
+    ? "robust_target_reached"
+    : expectedPoliciesAtTarget.length === 1
+      ? "policy_sensitive_target_reached"
+      : "bounded_below_target"
+);
+assert.equal(
+  survivor.unresolved[0].freeRangePortfolio.robustLargestPatch,
+  Math.min(...freeRangeRows.map(row => row.largestPatch))
+);
+assert.equal(
+  survivor.unresolved[0].freeRangePortfolio.bestLargestPatch,
+  Math.max(...freeRangeRows.map(row => row.largestPatch))
+);
+assert.ok(survivor.unresolved[0].freeRangePortfolio.combinedVisitedNodes >= 2);
 
 console.log("Lattice candidate benchmark regressions passed", {
   controls: controls.rows.length,

@@ -10,7 +10,15 @@ let stopToken = { stop: false };
 const MODES = {
   free_range: {
     id: "free_range",
-    label: "Free-range",
+    label: "Free-range · balanced",
+    strategy: "free_range",
+    moveOrder: "balanced",
+    templates: false,
+    agentExhaustive: true
+  },
+  no_brainer: {
+    id: "no_brainer",
+    label: "Free-range · no-brainer",
     strategy: "free_range",
     moveOrder: "no_brainer",
     templates: false,
@@ -55,9 +63,7 @@ async function runMode(sequence, baseConfig, mode) {
     tiling_strategy: mode.strategy,
     move_order: priorProgram
       ? "proposal"
-      : mode.id === "free_range"
-        ? baseConfig.move_order ?? mode.moveOrder
-        : mode.moveOrder,
+      : mode.moveOrder,
     proposal_program: priorProgram,
     agent_exhaustive: mode.agentExhaustive,
     greedy_no_backtrack: false,

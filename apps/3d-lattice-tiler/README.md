@@ -24,10 +24,13 @@ engine in `solver-worker.js`.
 
 ## Solver modes
 
-The UI exposes four modes and can run all four concurrently in independent
+The UI exposes four solver families and runs five comparison lanes concurrently
+in independent
 workers:
 
-1. **Free-range** is the baseline tree search. It applies forced moves first,
+1. **Free-range** is the baseline tree search. Its balanced and no-brainer move
+   orders run as separate comparison lanes, so long growth cannot be mistaken
+   for a heuristic-independent result. It applies forced moves first,
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
@@ -64,7 +67,7 @@ workers:
    tile class. Without that certificate the result is exhausted or
    inconclusive and the displayed patch rolls back to the root.
 
-The interactive Plotly growth chart uses one wall clock for all four workers.
+The interactive Plotly growth chart uses one wall clock for all five workers.
 Every plotted sample retains its exact 3D snapshot: clicking a marker replays
 that historical patch, while clicking empty chart space restores the latest
 patch for that marker's mode. Selecting a mode also switches the viewport to
@@ -226,7 +229,10 @@ The suite gates a two-tile translational control, the 24-tile isohedral
 construction before reporting all five unresolved candidates. Each survivor
 runs translational, isohedral, balanced free-range, and no-brainer free-range
 lanes, with live-patch depth, frontier size, tree effort, certificate work, and
-duplicate quotient reuse in the JSON result.
+duplicate quotient reuse in the JSON result. The portfolio summary separates
+robust target growth (both free-range policies), heuristic-sensitive growth
+(only one policy), and bounded runs where neither policy reaches the target;
+none of these bounded growth labels is treated as a tiling proof.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in

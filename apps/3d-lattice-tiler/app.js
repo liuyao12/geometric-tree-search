@@ -2772,7 +2772,8 @@ function pauseRun() {
 }
 
 const GROWTH_MODES = [
-  { id: "free_range", strategy: "free_range", label: "Free-range", color: "#6f7c77", symbol: "square-open", dash: "dash" },
+  { id: "free_range", strategy: "free_range", label: "Free-range · balanced", color: "#6f7c77", symbol: "square-open", dash: "dash" },
+  { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
   { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
@@ -2780,6 +2781,7 @@ const GROWTH_MODES = [
 
 function selectedGrowthMode() {
   const strategy = checkedRadioValue(strategyRadios, "free_range");
+  if (strategy === "free_range") return moveOrderSelect.value === "no_brainer" ? "no_brainer" : "free_range";
   return GROWTH_MODES.find(mode => mode.strategy === strategy)?.id ?? "free_range";
 }
 
@@ -2788,6 +2790,8 @@ function activateGrowthMode(modeId) {
   if (!mode) return;
   setRadioValue(strategyRadios, mode.strategy, "free_range");
   strategySelect.value = mode.strategy;
+  if (mode.id === "free_range") moveOrderSelect.value = "balanced";
+  if (mode.id === "no_brainer") moveOrderSelect.value = "no_brainer";
   updateStrategyUI();
 }
 
@@ -2979,9 +2983,6 @@ async function renderGrowthChart() {
 }
 
 function formatGrowthResult(result, target) {
-  const freeRangePolicy = result?.mode === "free_range"
-    ? ` · ${result.stats?.move_order === "no_brainer" ? "no-brainer" : result.stats?.move_order ?? "default"}`
-    : "";
   const learningSuffix = result?.mode === "learning"
     ? result.reusedLearnedPatch
       ? ` (replayed ${result.stats?.proposal_patch_tiles_replayed ?? 0})`
@@ -2991,7 +2992,7 @@ function formatGrowthResult(result, target) {
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
   if (result?.resultKind === "known_aperiodic_construction") {
-    return `${result.label}${freeRangePolicy} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
+    return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
   if (result?.mode === "isohedral" && result?.resultKind === "certified_tiling") {
     return `${result.label} certified ${result.certificatePatchSize ?? "finite"}-tile unit cell ${formatElapsed(result.milliseconds)}`;
@@ -3015,9 +3016,9 @@ function formatGrowthResult(result, target) {
     const witness = result?.mode === "translational" && result?.resultKind === "certified_tiling"
         ? ` certified ${result.certificatePatchSize ?? "finite"}-tile unit cell`
         : "";
-    return `${result.label}${freeRangePolicy}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
+    return `${result.label}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
   }
-  return `${result?.label ?? "run"}${freeRangePolicy} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
+  return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
 }
 
 function finishGrowthBenchmark(results) {
@@ -3025,7 +3026,7 @@ function finishGrowthBenchmark(results) {
   setRunButton();
   const target = Number(maxTilesInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
-  setStatus("All four modes finished.");
+  setStatus("All five modes finished.");
   renderGrowthChart();
 }
 
@@ -3072,8 +3073,8 @@ function startGrowthBenchmark() {
   const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
-  setStatus("Running all four modes…");
-  growthBenchmarkStatus.textContent = `Running four searches simultaneously to ${config.target_val} tiles…`;
+  setStatus("Running all five modes…");
+  growthBenchmarkStatus.textContent = `Running five searches simultaneously to ${config.target_val} tiles…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3097,7 +3098,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-candidate-suite-v37", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-policy-portfolio-v38", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3219,7 +3220,7 @@ function bindControls() {
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
-    setStatus("Long-growth preset ready: four modes race to 120 tiles for up to 30 seconds.");
+    setStatus("Long-growth preset ready: five modes race to 120 tiles for up to 30 seconds.");
     setRunButton();
   });
 

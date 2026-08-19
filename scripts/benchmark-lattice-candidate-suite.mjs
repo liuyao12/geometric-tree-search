@@ -161,6 +161,32 @@ const preferredFreeRangePolicy = id => {
   }
   return balanced.backtracks <= noBrainer.backtracks ? "balanced" : "no_brainer";
 };
+const freeRangePortfolio = id => {
+  const balanced = rowFor(id, "free_range");
+  const noBrainer = rowFor(id, "free_range_no_brainer");
+  if (!balanced || !noBrainer) return null;
+  const policies = [
+    { policy: "balanced", row: balanced },
+    { policy: "no_brainer", row: noBrainer }
+  ];
+  const policiesReachingTarget = policies
+    .filter(({ row }) => row.largestPatch >= target)
+    .map(({ policy }) => policy);
+  return {
+    target,
+    outcome: policiesReachingTarget.length === policies.length
+      ? "robust_target_reached"
+      : policiesReachingTarget.length
+        ? "policy_sensitive_target_reached"
+        : "bounded_below_target",
+    policiesReachingTarget,
+    robustLargestPatch: Math.min(...policies.map(({ row }) => row.largestPatch)),
+    bestLargestPatch: Math.max(...policies.map(({ row }) => row.largestPatch)),
+    preferredPolicy: preferredFreeRangePolicy(id),
+    combinedVisitedNodes: policies.reduce((sum, { row }) => sum + row.visitedNodes, 0),
+    combinedBacktracks: policies.reduce((sum, { row }) => sum + row.backtracks, 0)
+  };
+};
 const controlGates = {
   translationalControl: cases.some(item => item.id === "8_2480")
     ? rowFor("8_2480", "translational")?.resultKind === "certified_tiling"
@@ -184,10 +210,11 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     isohedral: rowFor(id, "isohedral") ?? null,
     freeRange: rowFor(id, "free_range") ?? null,
     freeRangeNoBrainer: rowFor(id, "free_range_no_brainer") ?? null,
-    preferredFreeRangePolicy: preferredFreeRangePolicy(id)
+    preferredFreeRangePolicy: preferredFreeRangePolicy(id),
+    freeRangePortfolio: freeRangePortfolio(id)
   }));
 const summary = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   configuration: { target, timeMs, exactTimeMs, isohedralHorizon, periodicMax },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),
   rows,
