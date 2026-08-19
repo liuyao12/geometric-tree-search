@@ -532,6 +532,7 @@ export const createTilingStream = (() => {
       tiling_strategy: ["translational", "isohedral", "generic"].includes(normalizedStrategy)
         ? normalizedStrategy
         : "auto",
+      move_order: null,
       forced_total: 0,
       forced_throttles: 0,
       generation_band_deferrals: 0,
@@ -1471,6 +1472,7 @@ export const createTilingStream = (() => {
       : "auto";
     const requestedMoveOrder = config.move_order ?? "balanced";
     const moveOrder = tilingStrategy === "isohedral" ? "isohedral" : requestedMoveOrder;
+    searchStats.move_order = moveOrder;
     const greedyNoBacktrack = !!config.greedy_no_backtrack;
     searchStats.backtracking_enabled = !greedyNoBacktrack;
     const proposalProgram = moveOrder === "proposal"

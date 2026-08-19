@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-isohedral-horizon-v36";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-candidate-suite-v37";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

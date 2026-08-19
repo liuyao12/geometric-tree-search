@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-isohedral-horizon-v36";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-candidate-suite-v37";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

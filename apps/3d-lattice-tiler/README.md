@@ -215,6 +215,19 @@ and the maximum number of simultaneously live tiles. Failed quotient checks
 are memoized by the exact live placement set, so different move orders do not
 repeat the same expensive certificate calculation.
 
+For a repeatable control-plus-survivor matrix:
+
+```bash
+node scripts/benchmark-lattice-candidate-suite.mjs --target=24 --time-ms=1000 --exact-time-ms=3000
+```
+
+The suite gates a two-tile translational control, the 24-tile isohedral
+`10_27010` control, a certified local non-tiler, and the known Conway
+construction before reporting all five unresolved candidates. Each survivor
+runs translational, isohedral, balanced free-range, and no-brainer free-range
+lanes, with live-patch depth, frontier size, tree effort, certificate work, and
+duplicate quotient reuse in the JSON result.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

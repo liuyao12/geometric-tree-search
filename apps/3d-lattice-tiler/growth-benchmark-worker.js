@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-isohedral-horizon-v36";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-candidate-suite-v37";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -53,7 +53,11 @@ async function runMode(sequence, baseConfig, mode) {
   const config = {
     ...baseConfig,
     tiling_strategy: mode.strategy,
-    move_order: priorProgram ? "proposal" : mode.moveOrder,
+    move_order: priorProgram
+      ? "proposal"
+      : mode.id === "free_range"
+        ? baseConfig.move_order ?? mode.moveOrder
+        : mode.moveOrder,
     proposal_program: priorProgram,
     agent_exhaustive: mode.agentExhaustive,
     greedy_no_backtrack: false,
@@ -73,12 +77,14 @@ async function runMode(sequence, baseConfig, mode) {
   let latestStats = null;
   let bestSnapshot = null;
   let terminalSnapshot = null;
+  let checkedPatchSize = 0;
   const points = [];
   post(sequence, { type: "series-start", mode });
   for await (const message of createTilingStream(config, tileSpecs, stopToken)) {
     if (stopToken.stop || sequence !== activeSequence) return null;
     if (message.type === "prototile_info") post(sequence, { type: "prototile-info", mode: mode.id, info: message });
     if (message.type === "translational_check") {
+      checkedPatchSize = Math.max(checkedPatchSize, message.patch_size ?? 0);
       post(sequence, {
         type: "mode-status",
         mode: mode.id,
@@ -124,6 +130,7 @@ async function runMode(sequence, baseConfig, mode) {
     reusedLearnedPatch: !!priorProgram,
     resultKind: final?.result_kind ?? null,
     certificatePatchSize: final?.tiling_evidence?.patch_size ?? null,
+    checkedPatchSize,
     searchIncomplete: !!final?.search_incomplete
   };
   post(sequence, { type: "series-finished", result });

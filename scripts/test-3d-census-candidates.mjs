@@ -93,6 +93,7 @@ const candidateRun = await solve({
 });
 assert.equal(candidateRun.final.success, true, "the first survivor must grow beyond its seed tile");
 assert.equal(candidateRun.largestPatch, 8);
+assert.equal(candidateRun.final.search_stats.move_order, "balanced", "candidate benchmarks must honor their selected move order");
 assert.ok(candidateRun.final.search_stats.visited_nodes < 1000, "visited nodes must report actual work, not the mixed-radix estimate");
 
 const exhaustiveWitness = await solve({

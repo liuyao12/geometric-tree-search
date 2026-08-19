@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-isohedral-horizon-v36";
+import { tileSpecs } from "./engine.js?v=20260818-candidate-suite-v37";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1596,7 +1596,6 @@ function configKey() {
   const forcedLayerLagCap = positiveSearchParam("generation_lag_cap", "forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 2;
   const selectedCriterion = criterion();
   const tilingStrategy = checkedRadioValue(strategyRadios, "free_range");
-  const isFreeRange = tilingStrategy === "free_range";
   const isLearningFreeRange = tilingStrategy === "learning_free_range";
   const isStructural = tilingStrategy === "translational" || tilingStrategy === "isohedral";
   const candidateIsohedralHorizon = root?.census_candidate?.last_screening
@@ -1620,7 +1619,7 @@ function configKey() {
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
-    move_order: isLearningFreeRange ? "agent" : isFreeRange ? "no_brainer" : "balanced",
+    move_order: isLearningFreeRange ? "agent" : moveOrderSelect.value,
     greedy_no_backtrack: false,
     agent_exhaustive: true,
     template_preflight: isStructural,
@@ -2644,7 +2643,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-isohedral-horizon-v36", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-candidate-suite-v37", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2980,6 +2979,9 @@ async function renderGrowthChart() {
 }
 
 function formatGrowthResult(result, target) {
+  const freeRangePolicy = result?.mode === "free_range"
+    ? ` · ${result.stats?.move_order === "no_brainer" ? "no-brainer" : result.stats?.move_order ?? "default"}`
+    : "";
   const learningSuffix = result?.mode === "learning"
     ? result.reusedLearnedPatch
       ? ` (replayed ${result.stats?.proposal_patch_tiles_replayed ?? 0})`
@@ -2989,23 +2991,33 @@ function formatGrowthResult(result, target) {
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
   if (result?.resultKind === "known_aperiodic_construction") {
-    return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
+    return `${result.label}${freeRangePolicy} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
   if (result?.mode === "isohedral" && result?.resultKind === "certified_tiling") {
     return `${result.label} certified ${result.certificatePatchSize ?? "finite"}-tile unit cell ${formatElapsed(result.milliseconds)}`;
   }
   if (result?.mode === "isohedral" && !result?.success) {
+    const maxLive = result.stats?.max_live_tiles ?? result.tileCount ?? 0;
+    const attempts = result.stats?.isohedral_certificate_attempts ?? 0;
+    const reused = result.stats?.isohedral_certificate_duplicate_states_skipped ?? 0;
+    const effort = `max ${maxLive} live · ${attempts} quotient check${attempts === 1 ? "" : "s"}${reused ? ` · ${reused} reused` : ""}`;
     return result.searchIncomplete
-      ? `${result.label} inconclusive at search limit`
-      : `${result.label} exhausted without a certificate`;
+      ? `${result.label} inconclusive · ${effort}`
+      : `${result.label} exhausted without a certificate · ${effort}`;
+  }
+  if (result?.mode === "translational" && !result?.success) {
+    const checked = result.checkedPatchSize ?? 0;
+    return result.searchIncomplete
+      ? `${result.label} inconclusive · checked through ${checked}-tile patches`
+      : `${result.label} exhausted through ${checked}-tile patches`;
   }
   if (targetPoint) {
     const witness = result?.mode === "translational" && result?.resultKind === "certified_tiling"
         ? ` certified ${result.certificatePatchSize ?? "finite"}-tile unit cell`
         : "";
-    return `${result.label}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
+    return `${result.label}${freeRangePolicy}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
   }
-  return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
+  return `${result?.label ?? "run"}${freeRangePolicy} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
 }
 
 function finishGrowthBenchmark(results) {
@@ -3085,7 +3097,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-isohedral-horizon-v36", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-candidate-suite-v37", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
