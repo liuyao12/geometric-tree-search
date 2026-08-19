@@ -24,6 +24,10 @@ from materials_gcts_iqc_self_fed_frontier_preregistration import (
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_FIXTURE = ROOT / "fixtures/iqc_self_fed_frontier_candidates_v1.json"
+EXPECTED_FIXTURE_SHA256 = \
+    "e4f911cb57afdf59771aa63b2d33acadd170c6ee44f6e5a9290ac6817d8e637b"
+EXPECTED_RECEIPT_DIGEST = \
+    "c0a67515e3b404429687a1b14b9a378c9161b8b6b5a81bdddf940cb90c44a1f8"
 
 
 def _digest(payload):
