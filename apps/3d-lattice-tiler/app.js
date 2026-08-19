@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-candidate-suite-v37";
+import { tileSpecs } from "./engine.js?v=20260818-multiseed-benchmark-v42";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -2643,7 +2643,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-candidate-suite-v37", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-multiseed-benchmark-v42", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2983,6 +2983,13 @@ async function renderGrowthChart() {
 }
 
 function formatGrowthResult(result, target) {
+  const stopReason = {
+    node_limit: "node limit",
+    time_limit: "time limit",
+    generation_band_pruning: "generation-band pruning",
+    configured_branch_pruning: "configured branch pruning"
+  }[result?.stats?.termination_reason] ?? null;
+  const stopSuffix = result?.searchIncomplete && stopReason ? ` · ${stopReason}` : "";
   const learningSuffix = result?.mode === "learning"
     ? result.reusedLearnedPatch
       ? ` (replayed ${result.stats?.proposal_patch_tiles_replayed ?? 0})`
@@ -3018,7 +3025,7 @@ function formatGrowthResult(result, target) {
         : "";
     return `${result.label}${witness} ${formatElapsed(targetPoint.milliseconds)}${learningSuffix}`;
   }
-  return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}`;
+  return `${result?.label ?? "run"} ${result?.tileCount ?? 0} tiles in ${formatElapsed(result?.milliseconds ?? 0)}${learningSuffix}${stopSuffix}`;
 }
 
 function finishGrowthBenchmark(results) {
@@ -3098,7 +3105,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-policy-portfolio-v38", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-multiseed-benchmark-v42", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

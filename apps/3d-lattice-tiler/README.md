@@ -221,7 +221,7 @@ repeat the same expensive certificate calculation.
 For a repeatable control-plus-survivor matrix:
 
 ```bash
-node scripts/benchmark-lattice-candidate-suite.mjs --target=24 --time-ms=1000 --exact-time-ms=3000
+node scripts/benchmark-lattice-candidate-suite.mjs --target=24 --time-ms=1000 --exact-time-ms=3000 --seeds=1,2,3
 ```
 
 The suite gates a two-tile translational control, the 24-tile isohedral
@@ -230,9 +230,18 @@ construction before reporting all five unresolved candidates. Each survivor
 runs translational, isohedral, balanced free-range, and no-brainer free-range
 lanes, with live-patch depth, frontier size, tree effort, certificate work, and
 duplicate quotient reuse in the JSON result. The portfolio summary separates
-robust target growth (both free-range policies), heuristic-sensitive growth
-(only one policy), and bounded runs where neither policy reaches the target;
-none of these bounded growth labels is treated as a tiling proof.
+robust target growth (every policy/seed trial), policy- or seed-sensitive
+growth (only some trials), and bounded runs where no trial reaches the target;
+none of these bounded growth labels is treated as a tiling proof. Unresolved
+candidates run under three deterministic seeds by default, and every row
+records its effective seed plus whether it stopped at the node limit, time
+limit, natural exhaustion, or the requested target. Use `--node-limit=N` to
+hold the tree-work cap fixed across machines and `--seeds=...` to expand or
+reduce the stability sample. A separate unbanded lane disables the generation
+lag heuristic: only that branch-complete lane may turn exhaustive failure to
+reach the requested patch size into a certified finite-patch obstruction.
+Banded failure is explicitly inconclusive because deferred legal moves were
+not searched.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in

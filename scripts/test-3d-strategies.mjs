@@ -173,6 +173,25 @@ assert.equal(
   "Free-range must retain branch recovery even when the first branch happens to succeed"
 );
 
+const honestBestEffortLimit = await solve({
+  mode_key: "census_10_45026",
+  tiling_strategy: "free_range",
+  move_order: "balanced",
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  template_preflight: false,
+  target_val: 50,
+  time_limit_ms: 50
+});
+assert.equal(honestBestEffortLimit.final.success, false);
+assert.equal(honestBestEffortLimit.final.search_incomplete, true);
+assert.equal(
+  honestBestEffortLimit.final.search_stats.termination_reason,
+  "time_limit",
+  "retaining the best patch must not roll terminal stop diagnostics back to an earlier snapshot"
+);
+
 for (const [mode_key, polycube_lattice] of [
   ["letter_o", "fcc"],
   ["letter_o", "half"],

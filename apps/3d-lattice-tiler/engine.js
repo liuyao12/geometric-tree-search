@@ -516,7 +516,8 @@ export const createTilingStream = (() => {
     let stateVersion = 0;
     let latestFrontierGraph = null;
     let latestFrontierGraphVersion = -1;
-    let randomState = (Math.floor(Number(config.random_seed) || 1) >>> 0) || 1;
+    const randomSeed = (Math.floor(Number(config.random_seed) || 1) >>> 0) || 1;
+    let randomState = randomSeed;
     const nextRandom = () => {
       randomState = (randomState + 0x6d2b79f5) >>> 0;
       let value = randomState;
@@ -532,6 +533,8 @@ export const createTilingStream = (() => {
       tiling_strategy: ["translational", "isohedral", "generic"].includes(normalizedStrategy)
         ? normalizedStrategy
         : "auto",
+      random_seed: randomSeed,
+      termination_reason: null,
       move_order: null,
       forced_total: 0,
       forced_throttles: 0,
@@ -1505,8 +1508,16 @@ export const createTilingStream = (() => {
     const safetyMax = Number.isFinite(configuredSafetyMax) && configuredSafetyMax > 0
       ? Math.max(criterion === "count" ? Math.ceil(targetVal) : 1, Math.floor(configuredSafetyMax))
       : defaultSafetyMax;
-    const overNodeLimit = () => Number.isFinite(nodeLimit) && nodeCounter >= nodeLimit;
-    const overTimeLimit = () => Number.isFinite(timeLimitMs) && performance.now() - startedAt >= timeLimitMs;
+    const overNodeLimit = () => {
+      const reached = Number.isFinite(nodeLimit) && nodeCounter >= nodeLimit;
+      if (reached && !searchStats.termination_reason) searchStats.termination_reason = "node_limit";
+      return reached;
+    };
+    const overTimeLimit = () => {
+      const reached = Number.isFinite(timeLimitMs) && performance.now() - startedAt >= timeLimitMs;
+      if (reached && !searchStats.termination_reason) searchStats.termination_reason = "time_limit";
+      return reached;
+    };
     const overBudget = () => overNodeLimit() || overTimeLimit();
     const budgetText = () => overNodeLimit() ? "Node limit" : "Time limit";
     let searchIncomplete = false;
@@ -4642,13 +4653,59 @@ export const createTilingStream = (() => {
     // A periodic exact-cover certificate proves an infinite tiling even when the
     // bounded visualization patch did not reach the requested display count.
     success = success || !!(tilingEvidence?.certified && tilingEvidence?.can_tile !== false);
+    if (
+      !success
+      && exhaustive
+      && !searchIncomplete
+      && (
+        Number.isFinite(candidateCap)
+        || greedyNoBacktrack
+        || (usePolicyAgent && !agentExhaustive)
+        || (proposalProgram && searchStats.proposal_patch_tiles_replayed > 0)
+      )
+    ) {
+      noteIncompleteSearch();
+      searchStats.termination_reason = "configured_branch_pruning";
+    }
+    if (!success && !searchIncomplete && searchStats.generation_band_deferrals > 0) {
+      noteIncompleteSearch();
+      searchStats.termination_reason = "generation_band_pruning";
+    }
+    if (
+      !success
+      && criterion === "count"
+      && tilingStrategy === "generic"
+      && exhaustive
+      && !searchIncomplete
+      && !Number.isFinite(candidateCap)
+      && !greedyNoBacktrack
+      && (!usePolicyAgent || agentExhaustive)
+      && !(proposalProgram && searchStats.proposal_patch_tiles_replayed > 0)
+      && !tilingEvidence
+    ) {
+      tilingEvidence = {
+        kind: "finite_patch_obstruction",
+        certified: true,
+        can_tile: false,
+        strategy: tilingStrategy,
+        target_tiles: targetVal,
+        model: "connected face-to-face tiling by the configured proper lattice orientations",
+        note: `Exhaustive unpruned search found no connected ${targetVal}-tile patch containing the normalized root tile.`
+      };
+    }
     yield nodeStatus(rootId, success ? "success" : "fail");
     const terminalSnapshot = snapshot(null);
     const retainBestEffortSnapshot = tilingStrategy !== "isohedral";
     const finalSnapshot = retainBestEffortSnapshot
       && bestSnapshot
       && isBetterSnapshot(bestSnapshot, terminalSnapshot)
-      ? { ...cloneSnapshot(bestSnapshot), node_id: null }
+      ? {
+          ...cloneSnapshot(bestSnapshot),
+          node_id: null,
+          // Keep the best geometry for inspection, but never roll terminal
+          // counters and stop reasons back to the moment that patch appeared.
+          search_stats: terminalSnapshot.search_stats
+        }
       : terminalSnapshot;
     yield finalSnapshot;
     await tick();

@@ -23,6 +23,12 @@ const timeMs = Math.max(50, Math.floor(numberArg("time-ms", 1000)));
 const exactTimeMs = Math.max(timeMs, Math.floor(numberArg("exact-time-ms", 3000)));
 const isohedralHorizon = Math.max(2, Math.floor(numberArg("isohedral-horizon", 24)));
 const periodicMax = Math.max(1, Math.floor(numberArg("periodic-max", 4)));
+const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 500000)));
+const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
+  .split(",")
+  .map(value => Math.floor(Number(value)))
+  .filter(value => Number.isFinite(value) && value > 0))];
+if (!seeds.length) seeds.push(1);
 const requestedIds = new Set((args.get("ids") ?? "").split(",").filter(Boolean));
 const includeSpecial = args.get("special-controls") !== "false";
 
@@ -46,7 +52,7 @@ const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
       ? ["translational", "free_range"]
       : candidate.screening.certificate === "isohedral_periodic_quotient"
         ? ["isohedral", "free_range"]
-        : ["translational", "isohedral", "free_range", "free_range_no_brainer"]
+        : ["translational", "isohedral", "free_range", "free_range_no_brainer", "free_range_unbanded"]
   }));
 const specialCases = includeSpecial ? [
   { id: "corner_tetra", family: "control", expected: "certified_non_tiler", lanes: ["free_range"] },
@@ -62,7 +68,7 @@ const customSystem = benchmarkCase => benchmarkCase.family === "census" ? {
   polycube_lattice: "z3"
 } : null;
 
-const configFor = (benchmarkCase, lane) => ({
+const configFor = (benchmarkCase, lane, seed) => ({
   mode_key: benchmarkCase.family === "control" ? benchmarkCase.id : "cube",
   custom_system: customSystem(benchmarkCase),
   polycube_lattice: "z3",
@@ -77,6 +83,7 @@ const configFor = (benchmarkCase, lane) => ({
   face_order: "mrv",
   exhaustive: true,
   agent_exhaustive: true,
+  forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
   include_mirrors: false,
   template_preflight: !lane.startsWith("free_range"),
   periodic_patch_max_tiles: periodicMax,
@@ -86,13 +93,14 @@ const configFor = (benchmarkCase, lane) => ({
   placement_details: false,
   branch_cap: null,
   candidate_cap: null,
-  node_limit: 500000,
+  node_limit: nodeLimit,
+  random_seed: seed,
   time_limit_ms: lane.startsWith("free_range") ? timeMs : exactTimeMs,
   ui_yield_interval_ms: 1000000
 });
 
-async function runLane(benchmarkCase, lane) {
-  const config = configFor(benchmarkCase, lane);
+async function runLane(benchmarkCase, lane, seed) {
+  const config = configFor(benchmarkCase, lane, seed);
   const started = performance.now();
   let final = null;
   let largestPatch = 0;
@@ -114,6 +122,7 @@ async function runLane(benchmarkCase, lane) {
     family: benchmarkCase.family,
     expected: benchmarkCase.expected,
     lane,
+    seed,
     resultKind: final?.result_kind ?? "missing_result",
     success: !!final?.success,
     canTile: final?.can_tile ?? null,
@@ -132,6 +141,17 @@ async function runLane(benchmarkCase, lane) {
     backtracks: stats.backtracks ?? 0,
     maxDepth: stats.max_depth ?? 0,
     moveOrder: stats.move_order ?? null,
+    effectiveSeed: stats.random_seed ?? null,
+    generationLagCap: stats.generation_lag_cap ?? null,
+    generationBandDeferrals: stats.generation_band_deferrals ?? 0,
+    terminationReason: stats.termination_reason
+      ?? (final?.tiling_evidence?.certified
+        ? "certificate_found"
+        : final?.success
+          ? "target_reached"
+          : final?.search_incomplete
+            ? "bounded_incomplete"
+            : "exhausted"),
     quotientAttempts: stats.isohedral_certificate_attempts ?? 0,
     duplicateQuotientStatesSkipped: stats.isohedral_certificate_duplicate_states_skipped ?? 0,
     periodicMotifNodes: stats.periodic_motif_nodes ?? 0
@@ -141,50 +161,89 @@ async function runLane(benchmarkCase, lane) {
 const rows = [];
 for (const benchmarkCase of cases) {
   for (const lane of benchmarkCase.lanes) {
-    const row = await runLane(benchmarkCase, lane);
-    rows.push(row);
-    if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "result", ...row })}\n`);
+    const laneSeeds = benchmarkCase.expected === "unresolved"
+      && (lane === "free_range" || lane === "free_range_no_brainer")
+      ? seeds
+      : [seeds[0]];
+    for (const seed of laneSeeds) {
+      const row = await runLane(benchmarkCase, lane, seed);
+      rows.push(row);
+      if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "result", ...row })}\n`);
+    }
   }
 }
 
-const rowFor = (id, lane) => rows.find(row => row.case === id && row.lane === lane);
+const rowsFor = (id, lane) => rows.filter(row => row.case === id && row.lane === lane);
+const rowFor = (id, lane, seed = seeds[0]) => rows.find(row => row.case === id && row.lane === lane && row.seed === seed);
+const median = values => {
+  const sorted = values.slice().sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+};
+const freeRangePolicySummary = (id, lane, policy) => {
+  const trials = rowsFor(id, lane);
+  if (!trials.length) return null;
+  const depths = trials.map(row => row.largestPatch);
+  const targetHits = trials.filter(row => row.largestPatch >= target).length;
+  return {
+    policy,
+    trials: trials.length,
+    seeds: trials.map(row => row.seed),
+    targetHits,
+    targetHitRate: targetHits / trials.length,
+    minimumLargestPatch: Math.min(...depths),
+    medianLargestPatch: median(depths),
+    maximumLargestPatch: Math.max(...depths),
+    totalVisitedNodes: trials.reduce((sum, row) => sum + row.visitedNodes, 0),
+    totalBacktracks: trials.reduce((sum, row) => sum + row.backtracks, 0),
+    terminationReasons: Object.fromEntries([...new Set(trials.map(row => row.terminationReason ?? "completed"))]
+      .map(reason => [reason, trials.filter(row => (row.terminationReason ?? "completed") === reason).length]))
+  };
+};
 const preferredFreeRangePolicy = id => {
-  const balanced = rowFor(id, "free_range");
-  const noBrainer = rowFor(id, "free_range_no_brainer");
+  const balanced = freeRangePolicySummary(id, "free_range", "balanced");
+  const noBrainer = freeRangePolicySummary(id, "free_range_no_brainer", "no_brainer");
   if (!balanced || !noBrainer) return null;
-  if (balanced.largestPatch !== noBrainer.largestPatch) {
-    return balanced.largestPatch > noBrainer.largestPatch ? "balanced" : "no_brainer";
+  if (balanced.targetHits !== noBrainer.targetHits) {
+    return balanced.targetHits > noBrainer.targetHits ? "balanced" : "no_brainer";
   }
-  if (balanced.success !== noBrainer.success) return balanced.success ? "balanced" : "no_brainer";
-  if (balanced.visitedNodes !== noBrainer.visitedNodes) {
-    return balanced.visitedNodes < noBrainer.visitedNodes ? "balanced" : "no_brainer";
+  for (const metric of ["medianLargestPatch", "minimumLargestPatch", "maximumLargestPatch"]) {
+    if (balanced[metric] !== noBrainer[metric]) return balanced[metric] > noBrainer[metric] ? "balanced" : "no_brainer";
   }
-  return balanced.backtracks <= noBrainer.backtracks ? "balanced" : "no_brainer";
+  return balanced.totalVisitedNodes <= noBrainer.totalVisitedNodes ? "balanced" : "no_brainer";
 };
 const freeRangePortfolio = id => {
-  const balanced = rowFor(id, "free_range");
-  const noBrainer = rowFor(id, "free_range_no_brainer");
+  const balanced = freeRangePolicySummary(id, "free_range", "balanced");
+  const noBrainer = freeRangePolicySummary(id, "free_range_no_brainer", "no_brainer");
   if (!balanced || !noBrainer) return null;
-  const policies = [
-    { policy: "balanced", row: balanced },
-    { policy: "no_brainer", row: noBrainer }
-  ];
-  const policiesReachingTarget = policies
-    .filter(({ row }) => row.largestPatch >= target)
-    .map(({ policy }) => policy);
+  const policies = [balanced, noBrainer];
+  const trials = [...rowsFor(id, "free_range"), ...rowsFor(id, "free_range_no_brainer")];
+  const depths = trials.map(row => row.largestPatch);
+  const targetHitCount = trials.filter(row => row.largestPatch >= target).length;
+  const policiesReachingTarget = policies.filter(policy => policy.targetHits > 0).map(policy => policy.policy);
+  const policiesReachingTargetEverySeed = policies
+    .filter(policy => policy.targetHits === policy.trials)
+    .map(policy => policy.policy);
   return {
     target,
-    outcome: policiesReachingTarget.length === policies.length
+    seeds,
+    trialCount: trials.length,
+    targetHitCount,
+    targetHitRate: targetHitCount / trials.length,
+    outcome: targetHitCount === trials.length
       ? "robust_target_reached"
-      : policiesReachingTarget.length
-        ? "policy_sensitive_target_reached"
+      : targetHitCount
+        ? "policy_or_seed_sensitive_target_reached"
         : "bounded_below_target",
     policiesReachingTarget,
-    robustLargestPatch: Math.min(...policies.map(({ row }) => row.largestPatch)),
-    bestLargestPatch: Math.max(...policies.map(({ row }) => row.largestPatch)),
+    policiesReachingTargetEverySeed,
+    robustLargestPatch: Math.min(...depths),
+    medianLargestPatch: median(depths),
+    bestLargestPatch: Math.max(...depths),
     preferredPolicy: preferredFreeRangePolicy(id),
-    combinedVisitedNodes: policies.reduce((sum, { row }) => sum + row.visitedNodes, 0),
-    combinedBacktracks: policies.reduce((sum, { row }) => sum + row.backtracks, 0)
+    policySummaries: { balanced, noBrainer },
+    combinedVisitedNodes: trials.reduce((sum, row) => sum + row.visitedNodes, 0),
+    combinedBacktracks: trials.reduce((sum, row) => sum + row.backtracks, 0)
   };
 };
 const controlGates = {
@@ -204,18 +263,27 @@ const controlGates = {
 const unresolved = LATTICE_POLYHEDRON_SURVIVORS
   .map(candidate => candidate.id)
   .filter(id => !requestedIds.size || requestedIds.has(id))
-  .map(id => ({
-    id,
-    translational: rowFor(id, "translational") ?? null,
-    isohedral: rowFor(id, "isohedral") ?? null,
-    freeRange: rowFor(id, "free_range") ?? null,
-    freeRangeNoBrainer: rowFor(id, "free_range_no_brainer") ?? null,
-    preferredFreeRangePolicy: preferredFreeRangePolicy(id),
-    freeRangePortfolio: freeRangePortfolio(id)
-  }));
+  .map(id => {
+    const freeRangeUnbanded = rowFor(id, "free_range_unbanded") ?? null;
+    return {
+      id,
+      translational: rowFor(id, "translational") ?? null,
+      isohedral: rowFor(id, "isohedral") ?? null,
+      freeRange: rowFor(id, "free_range") ?? null,
+      freeRangeNoBrainer: rowFor(id, "free_range_no_brainer") ?? null,
+      freeRangeUnbanded,
+      freeRangeTrials: rowsFor(id, "free_range"),
+      freeRangeNoBrainerTrials: rowsFor(id, "free_range_no_brainer"),
+      preferredFreeRangePolicy: preferredFreeRangePolicy(id),
+      freeRangePortfolio: freeRangePortfolio(id),
+      screeningConclusion: freeRangeUnbanded?.certified && freeRangeUnbanded?.canTile === false
+        ? "reject_certified_non_tiler"
+        : "inconclusive"
+    };
+  });
 const summary = {
-  schemaVersion: 2,
-  configuration: { target, timeMs, exactTimeMs, isohedralHorizon, periodicMax },
+  schemaVersion: 3,
+  configuration: { target, timeMs, exactTimeMs, isohedralHorizon, periodicMax, nodeLimit, seeds },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),
   rows,
   controls: controlGates,
