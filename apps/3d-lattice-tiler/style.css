@@ -360,44 +360,21 @@ input[type="text"]:focus {
   display: grid;
   grid-template-columns: minmax(154px, 178px) minmax(88px, 1fr) auto;
   gap: 8px;
-  align-items: stretch;
+  align-items: end;
 }
 
 .frontier-select-field {
   min-width: 0;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 0;
+  gap: 5px;
   align-items: stretch;
-  padding: 3px 7px 2px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--surface);
   color: var(--muted);
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.frontier-select-field:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(23, 130, 115, 0.14);
+  font-size: 11px;
 }
 
 .frontier-select-field select {
   width: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.frontier-select-field select:focus {
-  border: 0;
-  box-shadow: none;
+  padding: 8px 9px;
 }
 
 .learning-status {
