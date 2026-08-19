@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-diverse-witness-v66";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-checkpoint-screen-v68";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

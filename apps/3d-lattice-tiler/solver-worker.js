@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-diverse-witness-v66";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-checkpoint-screen-v68";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

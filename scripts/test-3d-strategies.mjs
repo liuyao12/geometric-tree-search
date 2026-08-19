@@ -169,8 +169,19 @@ assert.deepEqual(
   "a smaller exact quotient must be detected before an arbitrary larger display target"
 );
 
+const candidate1026470System = {
+  name: "Candidate 10_26470 checkpoint certificate",
+  figure_refs: [],
+  polycubes: [],
+  polyhedra: [{
+    name: "Candidate 10_26470",
+    vertices: [[-1,0,0],[-1,0,1],[0,-1,0],[0,1,0],[0,1,2],[1,0,0],[1,0,1]]
+  }]
+};
+
 const checkpointTimeout = await solve({
-  mode_key: "census_10_26470",
+  mode_key: "cube",
+  custom_system: candidate1026470System,
   tiling_strategy: "generic",
   target_val: 40,
   template_preflight: false,
@@ -195,15 +206,7 @@ assert.equal(checkpointTimeout.final.search_stats.generic_periodic_certificate_t
 
 const checkpointCandidateCertificate = await solve({
   mode_key: "cube",
-  custom_system: {
-    name: "Candidate 10_26470 checkpoint certificate",
-    figure_refs: [],
-    polycubes: [],
-    polyhedra: [{
-      name: "Candidate 10_26470",
-      vertices: [[-1,0,0],[-1,0,1],[0,-1,0],[0,1,0],[0,1,2],[1,0,0],[1,0,1]]
-    }]
-  },
+  custom_system: candidate1026470System,
   tiling_strategy: "generic",
   target_val: 40,
   template_preflight: false,

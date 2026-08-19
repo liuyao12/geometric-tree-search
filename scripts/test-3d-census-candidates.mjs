@@ -40,9 +40,10 @@ assert.match(growthAppSource, /All six modes finished\./, "the comparison status
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
 assert.match(
   growthAppSource,
-  /this excludes those patches as translational fundamental domains, not other possible motifs/,
+  /this excludes those particular patches as translational fundamental domains, not other possible motifs/,
   "the catalog must state the narrow scope of a negative target-patch quotient check"
 );
+assert.match(growthAppSource, /4 unresolved lattice candidates/, "the periodic checkpoint rejection must leave four catalog candidates");
 assert.match(
   growthAppSource,
   /that target patch is not a translational quotient/,
@@ -52,7 +53,7 @@ assert.match(
 assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
 assert.equal(
   LATTICE_POLYHEDRON_CENSUS_POOL.filter(candidate => candidate.screening.status === "exact_rejection").length,
-  11,
+  12,
   "all removed candidates must retain their exact rejection certificates"
 );
 assert.equal(LATTICE_POLYHEDRON_SCREENING.source_pool_size, LATTICE_POLYHEDRON_CENSUS_POOL.length);
@@ -60,8 +61,12 @@ const archivedScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-rescreen-2026-08-17.json", import.meta.url),
   "utf8"
 ));
-const archivedProofScreening = JSON.parse(await readFile(
+const archivedDiversifiedScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-diversified-gcts-screen-2026-08-18.json", import.meta.url),
+  "utf8"
+));
+const archivedProofScreening = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-gcts-checkpoint-screen-2026-08-18.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -79,17 +84,17 @@ assert.deepEqual(
     mirrors: LATTICE_POLYHEDRON_SCREENING.gcts_proof.mirrors
   },
   {
-    screen_date: archivedProofScreening.screen_date,
-    lane: archivedProofScreening.baseline_protocol.lane,
-    target_tiles: archivedProofScreening.baseline_protocol.target_tiles,
-    configured_node_limit: archivedProofScreening.baseline_protocol.configured_node_limit,
-    time_limit_ms: archivedProofScreening.baseline_protocol.time_limit_ms,
-    seeds: archivedProofScreening.baseline_protocol.seeds,
-    seeded_tie_breaks: archivedProofScreening.baseline_protocol.seeded_tie_breaks,
-    generation_band: archivedProofScreening.baseline_protocol.generation_band,
-    exact_failure_memo: archivedProofScreening.baseline_protocol.exact_failure_memo,
-    translation_equivariant_nogoods: archivedProofScreening.baseline_protocol.translation_equivariant_nogoods,
-    mirrors: archivedProofScreening.baseline_protocol.mirrors
+    screen_date: archivedDiversifiedScreening.screen_date,
+    lane: archivedDiversifiedScreening.baseline_protocol.lane,
+    target_tiles: archivedDiversifiedScreening.baseline_protocol.target_tiles,
+    configured_node_limit: archivedDiversifiedScreening.baseline_protocol.configured_node_limit,
+    time_limit_ms: archivedDiversifiedScreening.baseline_protocol.time_limit_ms,
+    seeds: archivedDiversifiedScreening.baseline_protocol.seeds,
+    seeded_tie_breaks: archivedDiversifiedScreening.baseline_protocol.seeded_tie_breaks,
+    generation_band: archivedDiversifiedScreening.baseline_protocol.generation_band,
+    exact_failure_memo: archivedDiversifiedScreening.baseline_protocol.exact_failure_memo,
+    translation_equivariant_nogoods: archivedDiversifiedScreening.baseline_protocol.translation_equivariant_nogoods,
+    mirrors: archivedDiversifiedScreening.baseline_protocol.mirrors
   },
   "runtime proof-search limits must match the archived executed protocol"
 );
@@ -102,7 +107,9 @@ assert.deepEqual(
     target_hits: candidate.gcts_proof_screening.target_hits,
     trials: candidate.gcts_proof_screening.trials
   })),
-  archivedProofScreening.baseline_candidates.map(candidate => ({
+  archivedDiversifiedScreening.baseline_candidates
+    .filter(candidate => LATTICE_POLYHEDRON_SURVIVORS.some(survivor => survivor.id === candidate.id))
+    .map(candidate => ({
     id: candidate.id,
     robust_largest_patch: candidate.robust_largest_patch,
     median_largest_patch: candidate.median_largest_patch,
@@ -113,34 +120,44 @@ assert.deepEqual(
   "catalog GCTS evidence must match the archived fixed-node runs"
 );
 assert.deepEqual(
-  LATTICE_POLYHEDRON_SCREENING.gcts_proof.target_patch_quotient_check,
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.checkpoint_quotient_check,
   {
-    patch_tiles: archivedProofScreening.baseline_protocol.target_tiles,
-    candidates_with_witness: archivedProofScreening.screening_summary.candidates_with_40_tile_witness,
-    distinct_patches_checked: archivedProofScreening.screening_summary.distinct_40_tile_witnesses_checked,
-    completed_checks: archivedProofScreening.screening_summary.completed_target_patch_quotient_checks,
-    certificates_found: archivedProofScreening.screening_summary.target_patch_quotient_certificates_found,
-    certificate_method: archivedProofScreening.baseline_protocol.certificate_method,
-    report: "data/lattice-polyhedron-diversified-gcts-screen-2026-08-18.json"
+    minimum_patch_tiles: archivedProofScreening.protocol.minimum_checkpoint_tiles,
+    maximum_patch_tiles: archivedProofScreening.protocol.maximum_checkpoint_tiles,
+    candidates_screened: archivedProofScreening.summary.candidates_screened,
+    completed_checks: archivedProofScreening.summary.checkpoint_checks_completed,
+    certificates_found: archivedProofScreening.summary.exact_periodic_rejections,
+    rejected_candidate: archivedProofScreening.exact_periodic_rejection.id,
+    certificate_method: archivedProofScreening.protocol.certificate_method,
+    report: "data/lattice-polyhedron-gcts-checkpoint-screen-2026-08-18.json"
   },
   "runtime target-patch quotient evidence must match the archived exact checks"
 );
-assert.equal(archivedProofScreening.screening_summary.screening_conclusion, "all_five_remain_inconclusive");
+assert.deepEqual(archivedProofScreening.summary.rejected_candidates, ["10_26470"]);
 assert.ok(
-  archivedProofScreening.focused_target_witnesses.every(
-    witness => witness.quotient_check_completed && !witness.quotient_certificate_found
+  archivedProofScreening.paths
+    .filter(path => path.id !== "10_26470")
+    .every(path => path.checks_completed === 39 && !path.certificate_found)
+  ,
+  "all surviving focused paths must complete every size checkpoint without a certificate"
+);
+assert.ok(
+  archivedProofScreening.paths.every(
+    path => path.checks_timed_out === 0
   ),
-  "all recorded target-patch quotient checks must have completed without a certificate"
+  "the checkpoint screen must not hide an incomplete certificate check"
 );
 for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
-  const witness = archivedProofScreening.focused_target_witnesses.find(item => item.id === candidate.id);
+  const witness = archivedProofScreening.paths.find(item => item.id === candidate.id);
   assert.ok(witness, `${candidate.id} must retain its focused 40-tile witness`);
   assert.equal(candidate.gcts_proof_screening.focused_witness_hash, witness.witness_hash);
-  assert.equal(candidate.gcts_proof_screening.target_patch_quotient_certificates, 0);
+  assert.equal(candidate.gcts_proof_screening.checkpoint_quotient_checks, 39);
+  assert.equal(candidate.gcts_proof_screening.checkpoint_quotient_certificates, 0);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
     .filter(candidate => candidate.screening.status === "exact_rejection")
+    .filter(candidate => candidate.id !== archivedProofScreening.exact_periodic_rejection.id)
     .map(candidate => ({
       id: candidate.id,
       certificate: candidate.screening.certificate,
@@ -148,14 +165,35 @@ assert.deepEqual(
       period_vectors: candidate.screening.period_vectors
     })),
   archivedScreening.exact_rejections,
-  "runtime rejection certificates must match the archived exact rescreen"
+  "the original runtime rejection certificates must match the archived exact rescreen"
 );
+const checkpointRejection = LATTICE_POLYHEDRON_CENSUS_POOL.find(
+  candidate => candidate.id === archivedProofScreening.exact_periodic_rejection.id
+);
+assert.deepEqual(
+  {
+    certificate: checkpointRejection?.screening.certificate,
+    motif_tiles: checkpointRejection?.screening.motif_tiles,
+    period_vectors: checkpointRejection?.screening.period_vectors
+  },
+  {
+    certificate: "translational",
+    motif_tiles: archivedProofScreening.exact_periodic_rejection.patch_tiles,
+    period_vectors: archivedProofScreening.exact_periodic_rejection.period_vectors
+  },
+  "the newly rejected candidate must retain its exact checkpoint certificate"
+);
+assert.equal(archivedProofScreening.exact_periodic_rejection.motif.length, 8);
+assert.equal(archivedProofScreening.exact_periodic_rejection.proof.boundary_face_count, 30);
+assert.equal(archivedProofScreening.exact_periodic_rejection.proof.boundary_pairing.length, 15);
+assert.equal(archivedProofScreening.exact_periodic_rejection.proof.motif_volume, 16);
+assert.equal(archivedProofScreening.exact_periodic_rejection.proof.lattice_determinant, 16);
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
     .filter(candidate => candidate.screening.status === "inconclusive")
     .map(candidate => candidate.id),
-  archivedScreening.inconclusive_survivors,
-  "the public survivors must match the archived bounded-screen result"
+  archivedProofScreening.summary.inconclusive_survivors,
+  "the public survivors must match the checkpoint-screen result"
 );
 assert.equal(
   classifyLatticeCandidateScreen({ translational: { provenImpossible: true }, isohedral: null }),
@@ -169,11 +207,12 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 5, "certified periodic and isohedral tiles must not remain in the catalog");
+assert.equal(candidates.length, 4, "certified periodic and isohedral tiles must not remain in the catalog");
+assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates;
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.survivor_priority),
-  Array.from({ length: 5 }, (_, index) => index + 1),
+  Array.from({ length: 4 }, (_, index) => index + 1),
   "survivor priority metadata must be complete"
 );
 

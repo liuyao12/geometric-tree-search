@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-diverse-witness-v66";
+import { tileSpecs } from "./engine.js?v=20260818-checkpoint-screen-v68";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -786,7 +786,7 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
-  { id: "unresolved", title: "5 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "unresolved", title: "4 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -1336,13 +1336,13 @@ function updateCandidateResearchPanel() {
       const focused = proof.focused_target_witness && proof.target_hits !== proof.trials
         ? ` A focused run (seed ${proof.focused_seed}) reached ${proofProtocol.target_tiles} tiles after ${proof.focused_visited_nodes} visited nodes.`
         : "";
-      const quotient = proof.target_patch_quotient_checks
-        ? ` Exact boundary-quotient checks completed on ${proof.target_patch_quotient_checks} reached ${proofProtocol.target_tiles}-tile ${proof.target_patch_quotient_checks === 1 ? "patch" : "patches"} and certified none; this excludes those patches as translational fundamental domains, not other possible motifs.`
+      const quotient = proof.checkpoint_quotient_checks
+        ? ` Exact boundary-quotient checks completed at all ${proof.checkpoint_quotient_checks} newly reached patch sizes from 2 through ${proofProtocol.target_tiles} and certified none; this excludes those particular patches as translational fundamental domains, not other possible motifs.`
         : "";
       return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}`;
     })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 5} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
+    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
   } else if (knownAperiodic) {
     candidateResearchTitle.textContent = "Known weakly aperiodic monotile";
     candidateResearchDetail.textContent = "Integral 3–4–5 Schmitt–Conway–Danzer biprism. Free-range shows the published rotated-layer construction; mirror copies must remain disabled.";
@@ -1398,7 +1398,7 @@ function renderSystemTileList() {
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
-        angles.textContent = `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 5} · ${figure.census_candidate.lattice_points} points`;
+        angles.textContent = `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 4} · ${figure.census_candidate.lattice_points} points`;
         angles.classList.add("is-census-label");
       } else {
         angles.innerHTML = solidAngleListHtml(figure.solid_angles);
@@ -2660,7 +2660,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-diverse-witness-v66", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-checkpoint-screen-v68", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3029,13 +3029,23 @@ function formatGrowthResult(result, target) {
     const patchSize = result.certificateTargetTiles ?? target;
     return `${result.label} certified no connected ${patchSize}-tile patch ${formatElapsed(result.milliseconds)}`;
   }
+  if (
+    result?.mode === "proof"
+    && result?.certified
+    && result?.canTile === true
+    && result?.certificateSource === "gcts_growth_checkpoint"
+  ) {
+    return `${result.label} certified a ${result.certificatePatchSize}-tile checkpoint as a translational quotient ${formatElapsed(result.milliseconds)}`;
+  }
   if (result?.mode === "proof" && targetPoint && result?.stats?.generic_periodic_certificate_attempted) {
-    const patchSize = result.stats.generic_periodic_certificate_patch_size ?? target;
-    if (result.stats.generic_periodic_certificate_found) {
+    const patchSize = target;
+    const completedChecks = result.stats.generic_periodic_certificate_checks_completed ?? 0;
+    const checkpointSuffix = completedChecks > 1 ? ` · ${completedChecks} exact size checkpoints` : "";
+    if (result.stats.generic_periodic_certificate_target_found) {
       return `${result.label} certified the ${patchSize}-tile target patch as a translational quotient ${formatElapsed(result.milliseconds)}`;
     }
-    if (result.stats.generic_periodic_certificate_completed) {
-      return `${result.label} reached ${patchSize} tiles; that target patch is not a translational quotient ${formatElapsed(result.milliseconds)}`;
+    if (result.stats.generic_periodic_certificate_target_completed) {
+      return `${result.label} reached ${patchSize} tiles; that target patch is not a translational quotient${checkpointSuffix} ${formatElapsed(result.milliseconds)}`;
     }
     return `${result.label} reached ${patchSize} tiles; target-patch quotient check timed out ${formatElapsed(result.milliseconds)}`;
   }
@@ -3143,7 +3153,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-diverse-witness-v66", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-checkpoint-screen-v68", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

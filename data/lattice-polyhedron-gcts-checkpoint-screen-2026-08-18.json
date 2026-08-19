@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "screen_date": "2026-08-18",
+  "engine_commit": "9de2c84be2cbc4f32c8d1fa4f6f3fb01bc162830",
+  "model": "connected face-to-face patches of one congruent lattice polyhedron using proper cubic lattice orientations",
+  "protocol": {
+    "lane": "free_range_unbanded",
+    "minimum_checkpoint_tiles": 2,
+    "maximum_checkpoint_tiles": 40,
+    "check_each_new_maximum_size": true,
+    "certificate_method": "face_paired_boundary_equal_covolume",
+    "certificate_time_limit_ms_per_checkpoint": 5000,
+    "generation_band": false,
+    "exact_failure_memo": true,
+    "translation_equivariant_nogoods": false,
+    "mirrors": false
+  },
+  "interpretation": [
+    "Each path is checked at every newly reached patch size, preventing a smaller periodic quotient from being hidden by a later arbitrary display target.",
+    "A positive boundary-paired equal-covolume quotient is an exact certificate of an infinite translational tiling.",
+    "A completed negative checkpoint excludes only that particular patch as a fundamental domain.",
+    "The four candidates without a certificate remain inconclusive."
+  ],
+  "paths": [
+    { "id": "10_16113", "seed": 3, "seeded_tie_breaks": true, "node_limit": 5000, "time_limit_ms": 120000, "largest_patch": 40, "visited_nodes": 2312, "witness_hash": "b4c8e0c893b1eb7c", "checks_attempted": 39, "checks_completed": 39, "checks_timed_out": 0, "certificate_found": false, "checkpoint_elapsed_ms": 37 },
+    { "id": "10_26470", "seed": 2, "seeded_tie_breaks": true, "node_limit": 500, "time_limit_ms": 30000, "largest_patch": 8, "visited_nodes": 8, "witness_hash": "a26421be63ba5752", "checks_attempted": 7, "checks_completed": 7, "checks_timed_out": 0, "certificate_found": true, "certificate_patch_tiles": 8, "checkpoint_elapsed_ms": 14 },
+    { "id": "10_45026", "seed": 1, "seeded_tie_breaks": false, "node_limit": 5000, "time_limit_ms": 120000, "largest_patch": 40, "visited_nodes": 4278, "witness_hash": "e16dbe38a0165b93", "checks_attempted": 39, "checks_completed": 39, "checks_timed_out": 0, "certificate_found": false, "checkpoint_elapsed_ms": 54 },
+    { "id": "10_45033", "seed": 2, "seeded_tie_breaks": true, "node_limit": 5000, "time_limit_ms": 120000, "largest_patch": 40, "visited_nodes": 1162, "witness_hash": "deb51611a30f25b5", "checks_attempted": 39, "checks_completed": 39, "checks_timed_out": 0, "certificate_found": false, "checkpoint_elapsed_ms": 79 },
+    { "id": "9_11683", "seed": 3, "seeded_tie_breaks": true, "node_limit": 5000, "time_limit_ms": 120000, "largest_patch": 40, "visited_nodes": 591, "witness_hash": "5ab75954f9e80239", "checks_attempted": 39, "checks_completed": 39, "checks_timed_out": 0, "certificate_found": false, "checkpoint_elapsed_ms": 60 }
+  ],
+  "exact_periodic_rejection": {
+    "id": "10_26470",
+    "certificate_kind": "8_tile_boundary_quotient",
+    "patch_tiles": 8,
+    "tile_volume": 2,
+    "cell_volume": 16,
+    "period_vectors": [[-2,-2,0],[-2,0,2],[-2,2,0]],
+    "motif": [
+      { "prototile_idx": 0, "orientation_index": 0, "translation": [0,0,0] },
+      { "prototile_idx": 0, "orientation_index": 1, "translation": [0,0,0] },
+      { "prototile_idx": 0, "orientation_index": 9, "translation": [-1,-1,0] },
+      { "prototile_idx": 0, "orientation_index": 8, "translation": [-1,-1,0] },
+      { "prototile_idx": 0, "orientation_index": 2, "translation": [0,0,-2] },
+      { "prototile_idx": 0, "orientation_index": 3, "translation": [0,0,-2] },
+      { "prototile_idx": 0, "orientation_index": 10, "translation": [-1,1,0] },
+      { "prototile_idx": 0, "orientation_index": 11, "translation": [-1,1,0] }
+    ],
+    "proof": {
+      "method": "face_paired_boundary_equal_covolume",
+      "boundary_face_count": 30,
+      "boundary_pairing": [
+        { "source_face": 0, "target_face": 6, "translation": [-2,-2,0], "lattice_coordinates": [1,0,0] },
+        { "source_face": 1, "target_face": 25, "translation": [-2,2,0], "lattice_coordinates": [0,0,1] },
+        { "source_face": 2, "target_face": 28, "translation": [-2,2,0], "lattice_coordinates": [0,0,1] },
+        { "source_face": 3, "target_face": 10, "translation": [-2,-2,0], "lattice_coordinates": [1,0,0] },
+        { "source_face": 4, "target_face": 17, "translation": [0,0,-4], "lattice_coordinates": [1,-2,1] },
+        { "source_face": 5, "target_face": 27, "translation": [0,2,2], "lattice_coordinates": [-1,1,0] },
+        { "source_face": 7, "target_face": 16, "translation": [0,2,-2], "lattice_coordinates": [0,-1,1] },
+        { "source_face": 8, "target_face": 23, "translation": [0,2,-2], "lattice_coordinates": [0,-1,1] },
+        { "source_face": 9, "target_face": 11, "translation": [0,2,-2], "lattice_coordinates": [0,-1,1] },
+        { "source_face": 12, "target_face": 29, "translation": [0,2,2], "lattice_coordinates": [-1,1,0] },
+        { "source_face": 13, "target_face": 26, "translation": [-2,0,2], "lattice_coordinates": [0,1,0] },
+        { "source_face": 14, "target_face": 21, "translation": [-2,0,2], "lattice_coordinates": [0,1,0] },
+        { "source_face": 15, "target_face": 24, "translation": [0,2,2], "lattice_coordinates": [-1,1,0] },
+        { "source_face": 18, "target_face": 20, "translation": [-2,0,2], "lattice_coordinates": [0,1,0] },
+        { "source_face": 19, "target_face": 22, "translation": [-2,0,2], "lattice_coordinates": [0,1,0] }
+      ],
+      "motif_volume": 16,
+      "lattice_determinant": 16
+    }
+  },
+  "summary": {
+    "candidates_screened": 5,
+    "checkpoint_checks_completed": 163,
+    "checkpoint_checks_timed_out": 0,
+    "exact_periodic_rejections": 1,
+    "rejected_candidates": ["10_26470"],
+    "inconclusive_survivors": ["10_16113", "10_45026", "10_45033", "9_11683"]
+  }
+}
