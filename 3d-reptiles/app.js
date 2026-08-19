@@ -383,7 +383,7 @@ function drawOrientationBall(transforms) {
 function refreshOrientationPointColors() {
   const colors = orientationPointGeometry.getAttribute("color");
   if (!colors) return;
-  const muted = new THREE.Color(0xa8afac);
+  const muted = new THREE.Color(0xc6cbc9);
   for (let index = 0; index < orientationPointKeys.length; index += 1) {
     const color = selectedOrientationKey === null || orientationPointKeys[index] === selectedOrientationKey
       ? orientationPointBaseColors[index]
@@ -398,7 +398,7 @@ function displayedOrientationColor(matrix) {
   if (selectedOrientationKey === null) return color;
   const key = orientationKey(canonicalQuaternion(matrix));
   if (key === selectedOrientationKey) return color.offsetHSL(0, 0.1, 0.08);
-  return new THREE.Color(0xa8afac);
+  return new THREE.Color(0xc6cbc9);
 }
 
 function makeTransparentMaterial({ line = false, opacity } = {}) {
