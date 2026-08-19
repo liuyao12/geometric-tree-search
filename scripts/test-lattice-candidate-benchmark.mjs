@@ -1,5 +1,38 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { GeometricFailureMemo } from "../assets/geometric-failure-memo.js";
+
+const translatedClauseProbe = new GeometricFailureMemo({
+  contextMatch: "subset",
+  describePlacement: placement => placement
+});
+translatedClauseProbe.encode(
+  [
+    { kind: "tile", orientation: "o0", translation: [0, 0, 0] },
+    { kind: "tile", orientation: "o1", translation: [0, 1, 0] }
+  ],
+  { kind: "tile", orientation: "o2", translation: [1, 0, 0] }
+);
+assert.equal(
+  translatedClauseProbe.compatible(
+    { kind: "tile", orientation: "o2", translation: [11, -4, 3] },
+    [
+      { kind: "tile", orientation: "o0", translation: [10, -4, 3] },
+      { kind: "tile", orientation: "o1", translation: [10, -3, 3] },
+      { kind: "extra", orientation: "e0", translation: [8, -4, 3] }
+    ]
+  ),
+  false,
+  "a complete translated failed context must be rejected inside a larger patch"
+);
+assert.equal(
+  translatedClauseProbe.compatible(
+    { kind: "tile", orientation: "o2", translation: [11, -4, 3] },
+    [{ kind: "tile", orientation: "o0", translation: [10, -4, 3] }]
+  ),
+  true,
+  "a partial context must not trigger the full-context nogood"
+);
 
 const benchmark = new URL("./benchmark-lattice-candidate-suite.mjs", import.meta.url);
 const run = argumentsList => {
@@ -45,7 +78,7 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 4);
+assert.equal(survivor.schemaVersion, 5);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 const portfolioLanes = new Set(["free_range", "free_range_no_brainer"]);
 const freeRangeRows = survivor.rows.filter(row => portfolioLanes.has(row.lane));
@@ -85,6 +118,8 @@ assert.equal(
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.lane, "free_range_unbanded");
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.generationLagCap, null);
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.failureMemoEnabled, true);
+assert.equal(survivor.configuration.geometricNogood, false);
+assert.equal(survivor.unresolved[0].freeRangeUnbanded.geometricNogoodEnabled, false);
 assert.ok(freeRangeRows.every(row => row.failureMemoEnabled === false));
 assert.ok(["inconclusive", "reject_certified_non_tiler"].includes(survivor.unresolved[0].screeningConclusion));
 
@@ -117,7 +152,8 @@ const memoProbe = run([
   "--time-ms=5000",
   "--exact-time-ms=5000",
   "--node-limit=200",
-  "--seeds=1"
+  "--seeds=1",
+  "--geometric-nogood=false"
 ]);
 const memoRow = memoProbe.unresolved[0].freeRangeUnbanded;
 assert.equal(memoRow.terminationReason, "node_limit");
@@ -134,7 +170,8 @@ const memoAblation = run([
   "--exact-time-ms=5000",
   "--node-limit=200",
   "--seeds=1",
-  "--failure-memo=false"
+  "--failure-memo=false",
+  "--geometric-nogood=false"
 ]);
 const ablationRow = memoAblation.unresolved[0].freeRangeUnbanded;
 assert.equal(ablationRow.failureMemoEnabled, false);
@@ -144,6 +181,28 @@ assert.deepEqual(
   [ablationRow.resultKind, ablationRow.terminationReason, ablationRow.largestPatch, ablationRow.visitedNodes, ablationRow.backtracks],
   "exact failure memoization must preserve the bounded search result"
 );
+
+const nogoodProbe = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=24",
+  "--time-ms=5000",
+  "--exact-time-ms=5000",
+  "--node-limit=200",
+  "--seeds=1",
+  "--geometric-nogood=true"
+]);
+const nogoodRow = nogoodProbe.unresolved[0].freeRangeUnbanded;
+assert.equal(nogoodRow.geometricNogoodEnabled, true);
+assert.ok(nogoodRow.geometricNogoodClauses >= 1000);
+assert.ok(nogoodRow.geometricNogoodPrunes >= 400);
+assert.ok(
+  nogoodRow.largestPatch >= ablationRow.largestPatch + 4,
+  "translation-equivariant full-context nogoods must deepen the fixed-node 10_45026 proof search"
+);
+assert.equal(nogoodRow.terminationReason, "node_limit");
+assert.equal(nogoodRow.geometricNogoodCapacityReached, false);
 
 console.log("Lattice candidate benchmark regressions passed", {
   controls: controls.rows.length,

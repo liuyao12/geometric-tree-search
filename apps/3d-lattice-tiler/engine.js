@@ -2,6 +2,7 @@
 // This module removes Observable runtime wrappers; app-level rendering lives in app.js.
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
+import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js";
 import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260818-isohedral-horizon-v36";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
@@ -544,6 +545,12 @@ export const createTilingStream = (() => {
       generic_failure_memo_hits: 0,
       generic_failure_memo_capacity: 0,
       generic_failure_memo_capacity_reached: false,
+      generic_geometric_nogood_enabled: false,
+      generic_geometric_nogood_clauses: 0,
+      generic_geometric_nogood_prunes: 0,
+      generic_geometric_nogood_failure_states: 0,
+      generic_geometric_nogood_capacity: 0,
+      generic_geometric_nogood_capacity_reached: false,
       periodic_repeat_throttles: 0,
       periodic_motif_nodes: 0,
       periodic_motif_states: 0,
@@ -1514,14 +1521,64 @@ export const createTilingStream = (() => {
       .map(placementGeometryKey)
       .sort()
       .join("||");
-    const rememberGenericFailure = key => {
-      if (!genericFailureMemoEnabled || !key || genericFailureMemo.has(key)) return;
-      if (genericFailureMemo.size >= genericFailureMemoCapacity) {
-        searchStats.generic_failure_memo_capacity_reached = true;
-        return;
+    const configuredGeometricNogoodCapacity = Number(config.generic_geometric_nogood_max_clauses);
+    const genericGeometricNogoodCapacity = Number.isFinite(configuredGeometricNogoodCapacity)
+      ? Math.max(0, Math.floor(configuredGeometricNogoodCapacity))
+      : 20000;
+    const genericGeometricNogoodEnabled = config.generic_geometric_nogood === true
+      && genericFailureMemoEnabled
+      && genericGeometricNogoodCapacity > 0;
+    const genericGeometricNogood = new GeometricFailureMemo({
+      contextMatch: "subset",
+      describePlacement: placement => placement?.orient && Array.isArray(placement.translation)
+        ? {
+            kind: String(placement.prototile_idx),
+            orientation: placement.orient.__orientation_id
+              ?? placement.orient.verts.map(vecKey).sort().join("/"),
+            translation: placement.translation
+          }
+        : null
+    });
+    searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
+    searchStats.generic_geometric_nogood_capacity = genericGeometricNogoodEnabled
+      ? genericGeometricNogoodCapacity
+      : 0;
+    const updateGeometricNogoodStats = () => {
+      const stats = genericGeometricNogood.stats();
+      searchStats.generic_geometric_nogood_clauses = stats.clauses;
+      searchStats.generic_geometric_nogood_prunes = stats.prunes;
+    };
+    const rememberGenericFailure = (key, placements) => {
+      if (genericFailureMemoEnabled && key && !genericFailureMemo.has(key)) {
+        if (genericFailureMemo.size >= genericFailureMemoCapacity) {
+          searchStats.generic_failure_memo_capacity_reached = true;
+        } else {
+          genericFailureMemo.add(key);
+          searchStats.generic_failure_memo_states = genericFailureMemo.size;
+        }
       }
-      genericFailureMemo.add(key);
-      searchStats.generic_failure_memo_states = genericFailureMemo.size;
+      if (!genericGeometricNogoodEnabled || !placements?.length) return;
+      let encoded = 0;
+      for (let anchorIndex = 0; anchorIndex < placements.length; anchorIndex++) {
+        if (genericGeometricNogood.clauses.length >= genericGeometricNogoodCapacity) {
+          searchStats.generic_geometric_nogood_capacity_reached = true;
+          break;
+        }
+        const result = genericGeometricNogood.encode(
+          placements.filter((_, index) => index !== anchorIndex),
+          placements[anchorIndex],
+          { target_tiles: targetVal, failed_patch_tiles: placements.length }
+        );
+        if (result.encoded && !result.duplicate) encoded += 1;
+      }
+      if (encoded) searchStats.generic_geometric_nogood_failure_states += 1;
+      updateGeometricNogoodStats();
+    };
+    const candidatePassesGeometricNogoods = candidate => {
+      if (!genericGeometricNogoodEnabled) return true;
+      const compatible = genericGeometricNogood.compatible(candidate, state.placements);
+      updateGeometricNogoodStats();
+      return compatible;
     };
     const moveWithinGenerationBand = (move) => {
       const layerLag = moveLayerLagInfo(move);
@@ -4283,6 +4340,7 @@ export const createTilingStream = (() => {
         return false;
       }
       const entryFailureKey = genericFailureMemoEnabled ? genericFailureStateKey() : null;
+      const entryFailurePlacements = genericFailureMemoEnabled ? state.placements.slice() : null;
       const forcedBatch = [];
       const doReturn = async function* (retval) {
         // Exhaustive controls whether failure is a certificate; it must not
@@ -4293,7 +4351,7 @@ export const createTilingStream = (() => {
           undoMove(mv, rb);
           yield placementDelta("remove", mv, rb);
         }
-        if (!searchIncomplete) rememberGenericFailure(entryFailureKey);
+        if (!searchIncomplete) rememberGenericFailure(entryFailureKey, entryFailurePlacements);
         return retval;
       };
       if (goalMet()) {
@@ -4311,6 +4369,7 @@ export const createTilingStream = (() => {
         const localCandidateCap = Math.min(maxCandidates, candidateCap);
         for (const candidate of candidates ?? []) {
           if (!candidateTouchesPoint(candidate, option.pointKey)) continue;
+          if (!candidatePassesGeometricNogoods(candidate)) continue;
           const validity = checkMoveViability(candidate);
           if (!validity) continue;
           const key = candidate.dedup_key ?? placementGeometryKey(candidate);
@@ -4348,8 +4407,11 @@ export const createTilingStream = (() => {
           }
         }
         const candidates = await candidatesForVertexOption(option, maxCandidates);
-        node_candidate_cache.set(cacheKey, candidates);
-        return candidates;
+        const screened = genericGeometricNogoodEnabled
+          ? screenCachedVertexCandidates(option, candidates, maxCandidates)
+          : candidates;
+        node_candidate_cache.set(cacheKey, screened);
+        return screened;
       };
       const analyzeFrontierGraph = async () => {
         if (latestFrontierGraph && latestFrontierGraphVersion === stateVersion) return latestFrontierGraph;
@@ -4540,6 +4602,11 @@ export const createTilingStream = (() => {
           return yield* doReturn(false);
         }
         const mv = bestMoves[i];
+        if (!candidatePassesGeometricNogoods(mv)) {
+          yield nodeStatus(mv.node_id, "fail", "Geometric nogood");
+          setBranchCursor(depth, bestMoves.length, i + 1);
+          continue;
+        }
         const refreshedValidity = checkMoveViability(mv);
         if (!refreshedValidity) {
           yield nodeStatus(mv.node_id, "fail", "Marked mismatch");

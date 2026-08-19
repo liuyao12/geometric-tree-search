@@ -248,6 +248,14 @@ states, hits, and capacity; use `--failure-memo=false` for an ablation or
 Use `--lanes=free_range_unbanded` to isolate that proof lane for longer runs
 or memoization ablations.
 
+As an opt-in work-budget experiment, the proof lane can also record each fully
+failed patch as translation-
+equivariant geometric nogoods anchored at every tile. A clause retains the
+entire failed context and therefore prunes only exact translated subpatches,
+not radius-truncated or statistically generalized neighborhoods. Enable it
+with `--geometric-nogood=true`, compare against the default off arm, and use
+`--geometric-nogood-max-clauses=N` for its independent memory cap.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

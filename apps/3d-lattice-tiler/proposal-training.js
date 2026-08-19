@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-failure-memo-v45";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-geometric-nogood-v47";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
