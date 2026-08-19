@@ -1904,6 +1904,19 @@ target-free search still lacks a certified detector that tells it when to
 discard the first locally valid state and try the second. The consumed labels
 are consulted only after the two orders freeze; no fresh target is opened.
 
+The first explicit rollback detector audit advances all 19 retained states for
+the same 16 target-free child placements inside one additional public shell.
+The rollout never constructs a target crop, and every per-step frontier count,
+vote mass, selected port probability, and chosen color is frozen before labels
+are joined. None of the 19 traces reaches a fixed point, so hard exhaustion is
+unavailable. A train grid over five aggregate discharge statistics and seven
+horizons finds a 12-step frontier-vote rule with `9 / 9` exact supplied groups
+and `28 / 30` sites when fitted on all consumed development data. Whole-nucleus
+holdout falls to `8 / 9` and `26 / 30`, while 31 within-nucleus label shuffles
+give `p = .3125`. The endpoint advantage is development overfit, not a causal
+rollback certificate; aggregate frontier volume is rejected in favor of a
+future typed-obligation/discharge representation.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

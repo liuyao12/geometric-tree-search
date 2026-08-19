@@ -3937,6 +3937,22 @@ the UI may offer this as a marking-library tree-search option, while the
 automatic commit, stationary-production, and exponential IQC gates remain
 red.
 
+The retained portfolio is also executed beyond its terminal boundary rather
+than judged only by its immediate child graph. Every one of the 19 states gets
+the same 16 greedy pose/port-marked child placements inside a public radius one
+seed shell beyond the second block. The generator never constructs an oracle
+crop at that rollout radius, and freezes each complete trace before copying the
+already-consumed label. No trace exhausts its frontier. A deliberately small
+grid of five aggregate statistics and horizons `0 / 1 / 2 / 4 / 8 / 12 / 16`
+selects final frontier vote mass at horizon 12 on the complete development
+corpus, where it obtains `9 / 9` exact supplied nuclei and `28 / 30` correct
+sites. Proper whole-nucleus holdout selects only `8 / 9` and `26 / 30`; a
+31-shuffle within-nucleus control gives an exact-count upper-tail
+`p = .3125`. Therefore neither hard exhaustion nor aggregate surviving port
+mass is a validated target-free rollback detector. The negative audit narrows
+the next representation to typed obligation identity and discharge history,
+not another scalar measure of frontier size.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
