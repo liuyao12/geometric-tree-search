@@ -24,12 +24,15 @@ const exactTimeMs = Math.max(timeMs, Math.floor(numberArg("exact-time-ms", 3000)
 const isohedralHorizon = Math.max(2, Math.floor(numberArg("isohedral-horizon", 24)));
 const periodicMax = Math.max(1, Math.floor(numberArg("periodic-max", 4)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 500000)));
+const failureMemo = args.get("failure-memo") !== "false";
+const failureMemoMaxStates = Math.max(0, Math.floor(numberArg("failure-memo-max-states", 200000)));
 const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
   .split(",")
   .map(value => Math.floor(Number(value)))
   .filter(value => Number.isFinite(value) && value > 0))];
 if (!seeds.length) seeds.push(1);
 const requestedIds = new Set((args.get("ids") ?? "").split(",").filter(Boolean));
+const requestedLanes = new Set((args.get("lanes") ?? "").split(",").filter(Boolean));
 const includeSpecial = args.get("special-controls") !== "false";
 
 const censusById = new Map(LATTICE_POLYHEDRON_CENSUS_POOL.map(candidate => [candidate.id, candidate]));
@@ -58,7 +61,14 @@ const specialCases = includeSpecial ? [
   { id: "corner_tetra", family: "control", expected: "certified_non_tiler", lanes: ["free_range"] },
   { id: "scd_conway", family: "control", expected: "known_aperiodic_construction", lanes: ["free_range"] }
 ] : [];
-const cases = [...censusCases, ...specialCases];
+const cases = [...censusCases, ...specialCases]
+  .map(benchmarkCase => ({
+    ...benchmarkCase,
+    lanes: requestedLanes.size
+      ? benchmarkCase.lanes.filter(lane => requestedLanes.has(lane))
+      : benchmarkCase.lanes
+  }))
+  .filter(benchmarkCase => benchmarkCase.lanes.length);
 
 const customSystem = benchmarkCase => benchmarkCase.family === "census" ? {
   name: `Candidate benchmark ${benchmarkCase.id}`,
@@ -84,6 +94,8 @@ const configFor = (benchmarkCase, lane, seed) => ({
   exhaustive: true,
   agent_exhaustive: true,
   forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
+  generic_failure_memo: failureMemo,
+  generic_failure_memo_max_states: failureMemoMaxStates,
   include_mirrors: false,
   template_preflight: !lane.startsWith("free_range"),
   periodic_patch_max_tiles: periodicMax,
@@ -144,6 +156,10 @@ async function runLane(benchmarkCase, lane, seed) {
     effectiveSeed: stats.random_seed ?? null,
     generationLagCap: stats.generation_lag_cap ?? null,
     generationBandDeferrals: stats.generation_band_deferrals ?? 0,
+    failureMemoEnabled: !!stats.generic_failure_memo_enabled,
+    failureMemoStates: stats.generic_failure_memo_states ?? 0,
+    failureMemoHits: stats.generic_failure_memo_hits ?? 0,
+    failureMemoCapacityReached: !!stats.generic_failure_memo_capacity_reached,
     terminationReason: stats.termination_reason
       ?? (final?.tiling_evidence?.certified
         ? "certificate_found"
@@ -282,8 +298,19 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 3,
-  configuration: { target, timeMs, exactTimeMs, isohedralHorizon, periodicMax, nodeLimit, seeds },
+  schemaVersion: 4,
+  configuration: {
+    target,
+    timeMs,
+    exactTimeMs,
+    isohedralHorizon,
+    periodicMax,
+    nodeLimit,
+    seeds,
+    failureMemo,
+    failureMemoMaxStates,
+    lanes: requestedLanes.size ? [...requestedLanes] : null
+  },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),
   rows,
   controls: controlGates,

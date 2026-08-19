@@ -539,6 +539,11 @@ export const createTilingStream = (() => {
       forced_total: 0,
       forced_throttles: 0,
       generation_band_deferrals: 0,
+      generic_failure_memo_enabled: false,
+      generic_failure_memo_states: 0,
+      generic_failure_memo_hits: 0,
+      generic_failure_memo_capacity: 0,
+      generic_failure_memo_capacity_reached: false,
       periodic_repeat_throttles: 0,
       periodic_motif_nodes: 0,
       periodic_motif_states: 0,
@@ -1489,6 +1494,35 @@ export const createTilingStream = (() => {
       ? configuredForcedLagCap > 0 ? configuredForcedLagCap : Infinity
       : 2;
     searchStats.generation_lag_cap = forcedMoveLayerLagCap;
+    const configuredFailureMemoCapacity = Number(config.generic_failure_memo_max_states);
+    const genericFailureMemoCapacity = Number.isFinite(configuredFailureMemoCapacity)
+      ? Math.max(0, Math.floor(configuredFailureMemoCapacity))
+      : 200000;
+    const genericFailureMemoEnabled = config.generic_failure_memo !== false
+      && tilingStrategy === "generic"
+      && exhaustive
+      && !Number.isFinite(forcedMoveLayerLagCap)
+      && !Number.isFinite(candidateCap)
+      && !greedyNoBacktrack
+      && (!usePolicyAgent || agentExhaustive)
+      && !proposalProgram
+      && genericFailureMemoCapacity > 0;
+    const genericFailureMemo = new Set();
+    searchStats.generic_failure_memo_enabled = genericFailureMemoEnabled;
+    searchStats.generic_failure_memo_capacity = genericFailureMemoEnabled ? genericFailureMemoCapacity : 0;
+    const genericFailureStateKey = () => state.placements
+      .map(placementGeometryKey)
+      .sort()
+      .join("||");
+    const rememberGenericFailure = key => {
+      if (!genericFailureMemoEnabled || !key || genericFailureMemo.has(key)) return;
+      if (genericFailureMemo.size >= genericFailureMemoCapacity) {
+        searchStats.generic_failure_memo_capacity_reached = true;
+        return;
+      }
+      genericFailureMemo.add(key);
+      searchStats.generic_failure_memo_states = genericFailureMemo.size;
+    };
     const moveWithinGenerationBand = (move) => {
       const layerLag = moveLayerLagInfo(move);
       move.generation_lag = layerLag.layer_lag;
@@ -4248,6 +4282,7 @@ export const createTilingStream = (() => {
         yield nodeStatus(parentId, "fail", budgetText());
         return false;
       }
+      const entryFailureKey = genericFailureMemoEnabled ? genericFailureStateKey() : null;
       const forcedBatch = [];
       const doReturn = async function* (retval) {
         // Exhaustive controls whether failure is a certificate; it must not
@@ -4258,11 +4293,17 @@ export const createTilingStream = (() => {
           undoMove(mv, rb);
           yield placementDelta("remove", mv, rb);
         }
+        if (!searchIncomplete) rememberGenericFailure(entryFailureKey);
         return retval;
       };
       if (goalMet()) {
         yield nodeStatus(parentId, "success");
         return yield* doReturn(true);
+      }
+      if (entryFailureKey && genericFailureMemo.has(entryFailureKey)) {
+        searchStats.generic_failure_memo_hits += 1;
+        yield nodeStatus(parentId, "fail", "Known dead state");
+        return yield* doReturn(false);
       }
       const node_candidate_cache = new Map();
       const screenCachedVertexCandidates = (option, candidates, maxCandidates) => {

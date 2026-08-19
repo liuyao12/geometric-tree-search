@@ -45,7 +45,7 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 3);
+assert.equal(survivor.schemaVersion, 4);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 const portfolioLanes = new Set(["free_range", "free_range_no_brainer"]);
 const freeRangeRows = survivor.rows.filter(row => portfolioLanes.has(row.lane));
@@ -84,6 +84,8 @@ assert.equal(
 );
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.lane, "free_range_unbanded");
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.generationLagCap, null);
+assert.equal(survivor.unresolved[0].freeRangeUnbanded.failureMemoEnabled, true);
+assert.ok(freeRangeRows.every(row => row.failureMemoEnabled === false));
 assert.ok(["inconclusive", "reject_certified_non_tiler"].includes(survivor.unresolved[0].screeningConclusion));
 
 const nodeLimited = run([
@@ -93,15 +95,54 @@ const nodeLimited = run([
   "--time-ms=1000",
   "--exact-time-ms=1000",
   "--node-limit=1",
-  "--seeds=7"
+  "--seeds=7",
+  "--failure-memo=false"
 ]);
 const limitedFreeRangeRows = nodeLimited.rows.filter(row => portfolioLanes.has(row.lane));
 assert.equal(limitedFreeRangeRows.length, 2);
 assert.ok(limitedFreeRangeRows.every(row => row.seed === 7 && row.effectiveSeed === 7));
 assert.ok(limitedFreeRangeRows.every(row => row.terminationReason === "node_limit"));
+assert.equal(nodeLimited.configuration.failureMemo, false);
+assert.equal(nodeLimited.unresolved[0].freeRangeUnbanded.failureMemoEnabled, false);
 assert.deepEqual(
   nodeLimited.unresolved[0].freeRangePortfolio.policySummaries.balanced.terminationReasons,
   { node_limit: 1 }
+);
+
+const memoProbe = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=24",
+  "--time-ms=5000",
+  "--exact-time-ms=5000",
+  "--node-limit=200",
+  "--seeds=1"
+]);
+const memoRow = memoProbe.unresolved[0].freeRangeUnbanded;
+assert.equal(memoRow.terminationReason, "node_limit");
+assert.equal(memoRow.failureMemoEnabled, true);
+assert.ok(memoRow.failureMemoStates >= 100, "candidate 10_45026 must populate the exact failure memo");
+assert.ok(memoRow.failureMemoHits >= 20, "candidate 10_45026 must exercise duplicate-state reuse");
+assert.equal(memoRow.failureMemoCapacityReached, false);
+const memoAblation = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=24",
+  "--time-ms=5000",
+  "--exact-time-ms=5000",
+  "--node-limit=200",
+  "--seeds=1",
+  "--failure-memo=false"
+]);
+const ablationRow = memoAblation.unresolved[0].freeRangeUnbanded;
+assert.equal(ablationRow.failureMemoEnabled, false);
+assert.equal(ablationRow.failureMemoHits, 0);
+assert.deepEqual(
+  [memoRow.resultKind, memoRow.terminationReason, memoRow.largestPatch, memoRow.visitedNodes, memoRow.backtracks],
+  [ablationRow.resultKind, ablationRow.terminationReason, ablationRow.largestPatch, ablationRow.visitedNodes, ablationRow.backtracks],
+  "exact failure memoization must preserve the bounded search result"
 );
 
 console.log("Lattice candidate benchmark regressions passed", {

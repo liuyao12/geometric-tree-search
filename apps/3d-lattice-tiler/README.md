@@ -241,7 +241,12 @@ reduce the stability sample. A separate unbanded lane disables the generation
 lag heuristic: only that branch-complete lane may turn exhaustive failure to
 reach the requested patch size into a certified finite-patch obstruction.
 Banded failure is explicitly inconclusive because deferred legal moves were
-not searched.
+not searched. The unbanded lane memoizes canonical failed placement sets, so
+commuting placement orders share one exact dead-state proof. Rows report memo
+states, hits, and capacity; use `--failure-memo=false` for an ablation or
+`--failure-memo-max-states=N` to control memory without pruning the search.
+Use `--lanes=free_range_unbanded` to isolate that proof lane for longer runs
+or memoization ablations.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
