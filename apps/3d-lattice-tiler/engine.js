@@ -3171,6 +3171,16 @@ export const createTilingStream = (() => {
       .map(placement => placementGeometryKey(placement))
       .sort()
       .join(";;");
+    const periodicPatchFingerprint = stateKey => {
+      let hash = 0x6c62272e07bb014262b821756295c58dn;
+      const prime = 0x0000000001000000000000000000013bn;
+      const text = String(stateKey ?? "");
+      for (let index = 0; index < text.length; index++) {
+        hash ^= BigInt(text.charCodeAt(index));
+        hash = BigInt.asUintN(128, hash * prime);
+      }
+      return hash.toString(16).padStart(32, "0");
+    };
     const periodicMotifCandidates = () => {
       const candidates = new Map();
       for (const moves of faceCandidatesByFrontierPoint().values()) {
@@ -3393,6 +3403,7 @@ export const createTilingStream = (() => {
     async function* tryGenericPeriodicCertificate(source) {
       if (!genericPeriodicCertificateEnabled || tilingEvidence) return null;
       const patchSize = state.placements.length;
+      let checkpointStateKey = null;
       if (source === "generic_growth_checkpoint") {
         if (
           !genericPeriodicCheckpointEnabled
@@ -3406,6 +3417,7 @@ export const createTilingStream = (() => {
       }
       if (genericPeriodicDistinctPatchMode) {
         const stateKey = periodicPatchStateKey();
+        checkpointStateKey = stateKey;
         if (source === "generic_growth_checkpoint" && genericPeriodicStatesSeen.has(stateKey)) {
           searchStats.generic_periodic_certificate_duplicate_states_skipped += 1;
           return null;
@@ -3450,6 +3462,7 @@ export const createTilingStream = (() => {
       searchStats.generic_periodic_certificate_checks_attempted += 1;
       searchStats.generic_periodic_certificate_check_sizes.push(patchSize);
       searchStats.generic_periodic_certificate_check_sources.push(source);
+      const patchFingerprint = periodicPatchFingerprint(checkpointStateKey ?? periodicPatchStateKey());
       const certificateStartedAt = performance.now();
       const configuredCertificateTimeLimit = Number(config.generic_periodic_certificate_time_limit_ms);
       const certificateTimeLimitMs = Number.isFinite(configuredCertificateTimeLimit)
@@ -3483,6 +3496,7 @@ export const createTilingStream = (() => {
         type: "translational_check",
         source,
         patch_size: patchSize,
+        patch_fingerprint: patchFingerprint,
         certified: !!template,
         check_completed: !certificateTimedOut,
         periodic_template: template,

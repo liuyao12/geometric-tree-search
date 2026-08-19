@@ -19,16 +19,18 @@ async function solve(overrides) {
   let latestSnapshot = null;
   let periodicCertificate = null;
   const translationalChecks = [];
+  const checkpointFingerprints = [];
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
     if (message.periodic_template) periodicCertificate = message.periodic_template;
     if (message.type === "translational_check") {
       translationalChecks.push({ patchSize: message.patch_size, certified: message.certified });
+      if (message.patch_fingerprint) checkpointFingerprints.push(message.patch_fingerprint);
     }
     if (message.type === "full_update") latestSnapshot = message;
     if (message.type === "finished") final = message;
   }
   assert.ok(final, "strategy run must emit a terminal result");
-  return { final, latestSnapshot, periodicCertificate, translationalChecks };
+  return { final, latestSnapshot, periodicCertificate, translationalChecks, checkpointFingerprints };
 }
 
 const translational = await solve({ tiling_strategy: "translational", placement_details: true });
@@ -357,6 +359,17 @@ assert.deepEqual(
     samplingSkips: spreadReplayStats.generic_periodic_certificate_checkpoint_sampling_skips
   },
   "spread sampling must be exactly replayable"
+);
+assert.ok(spreadCheckpoint.checkpointFingerprints.every(value => /^[0-9a-f]{32}$/.test(value)));
+assert.equal(
+  new Set(spreadCheckpoint.checkpointFingerprints).size,
+  spreadCheckpoint.checkpointFingerprints.length,
+  "one path must never check the same patch fingerprint twice"
+);
+assert.deepEqual(
+  spreadCheckpoint.checkpointFingerprints,
+  spreadCheckpointReplay.checkpointFingerprints,
+  "checkpoint fingerprints must be stable across exact replay"
 );
 
 const hybridCheckpoint = await solve({

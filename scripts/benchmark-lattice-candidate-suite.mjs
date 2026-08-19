@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { createHash } from "node:crypto";
+import { writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 import {
@@ -19,6 +20,7 @@ const numberArg = (name, fallback) => {
   return Number.isFinite(value) ? value : fallback;
 };
 const output = args.get("output") ?? "json";
+const outputFile = args.get("output-file") ?? null;
 const target = Math.max(2, Math.floor(numberArg("target", 24)));
 const timeMs = Math.max(50, Math.floor(numberArg("time-ms", 1000)));
 const exactTimeMs = Math.max(timeMs, Math.floor(numberArg("exact-time-ms", 3000)));
@@ -172,6 +174,7 @@ async function runLane(benchmarkCase, lane, seed) {
   let maxCandidateCount = 0;
   let checkedPatchSize = 0;
   let witnessHash = null;
+  const checkpointFingerprints = [];
   const hashPlacements = placements => createHash("sha256")
     .update(placements.map(placement => [
       placement.prototile_idx,
@@ -190,7 +193,10 @@ async function runLane(benchmarkCase, lane, seed) {
     }
     maxFrontierPoints = Math.max(maxFrontierPoints, snapshot?.frontier_stats?.point_count ?? 0);
     maxCandidateCount = Math.max(maxCandidateCount, snapshot?.frontier_stats?.candidate_count ?? 0);
-    if (message.type === "translational_check") checkedPatchSize = message.patch_size;
+    if (message.type === "translational_check") {
+      checkedPatchSize = message.patch_size;
+      if (message.patch_fingerprint) checkpointFingerprints.push(message.patch_fingerprint);
+    }
     if (message.type === "finished") final = message;
   }
   const stats = final?.search_stats ?? {};
@@ -251,6 +257,7 @@ async function runLane(benchmarkCase, lane, seed) {
     genericPeriodicCertificateChecksCompleted: stats.generic_periodic_certificate_checks_completed ?? 0,
     genericPeriodicCertificateChecksTimedOut: stats.generic_periodic_certificate_checks_timed_out ?? 0,
     genericPeriodicCertificateCheckSizes: stats.generic_periodic_certificate_check_sizes ?? [],
+    genericPeriodicCertificateCheckFingerprints: checkpointFingerprints,
     genericPeriodicCertificateTotalElapsedMs: stats.generic_periodic_certificate_total_elapsed_ms ?? 0,
     genericPeriodicCertificateDistinctPatchMode: !!stats.generic_periodic_certificate_distinct_patch_mode,
     genericPeriodicCertificateCheckpointSamplingPolicy:
@@ -459,7 +466,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 11,
+  schemaVersion: 12,
   configuration: {
     target,
     timeMs,
@@ -493,5 +500,9 @@ const summary = {
   unresolved
 };
 if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "summary", ...summary })}\n`);
-else process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);
+else {
+  const serializedSummary = `${JSON.stringify(summary, null, 2)}\n`;
+  if (outputFile) await writeFile(outputFile, serializedSummary);
+  else process.stdout.write(serializedSummary);
+}
 if (!summary.controlGatesPassed) process.exitCode = 2;
