@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-hybrid-checkpoint-v72";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-global-overlap-v74";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

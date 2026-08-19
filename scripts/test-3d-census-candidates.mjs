@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 import {
@@ -61,6 +62,11 @@ assert.match(
 );
 assert.match(
   growthAppSource,
+  /candidate-specific patch fingerprints/,
+  "the catalog must distinguish state-path check counts from globally distinct geometry"
+);
+assert.match(
+  growthAppSource,
   /that target patch is not a translational quotient/,
   "the completed proof-lane summary must retain the target-patch quotient result"
 );
@@ -90,6 +96,10 @@ const archivedPrefixScreening = JSON.parse(await readFile(
 ));
 const archivedDistinctScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-hybrid-checkpoint-screen-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedGlobalOverlap = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-global-checkpoint-overlap-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -173,7 +183,12 @@ assert.deepEqual(
     sampling_skips: archivedDistinctScreening.summary.sampling_skips,
     duplicate_states_skipped: archivedDistinctScreening.summary.duplicate_states_skipped,
     per_size_cap_skips: archivedDistinctScreening.summary.per_size_cap_skips,
+    globally_distinct_candidate_states:
+      archivedGlobalOverlap.summary.globally_distinct_candidate_states,
+    repeated_state_path_pairs: archivedGlobalOverlap.summary.repeated_state_path_pairs,
+    global_uniqueness_rate: archivedGlobalOverlap.summary.global_uniqueness_rate,
     report: "data/lattice-polyhedron-hybrid-checkpoint-screen-2026-08-19.json",
+    overlap_report: "data/lattice-polyhedron-global-checkpoint-overlap-2026-08-19.json",
     prior_prefix_report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
   },
   "runtime distinct-patch evidence must match the archived executed screen"
@@ -203,6 +218,79 @@ assert.equal(
     - archivedDistinctScreening.policy_comparison.shared_first_patch_checks,
   archivedDistinctScreening.summary.checkpoint_checks_completed,
   "the hybrid evidence must be the exact union of prefix and later-branch samples"
+);
+assert.equal(archivedGlobalOverlap.source_benchmark_schema_version, 12);
+assert.equal(archivedGlobalOverlap.prior_outcome_report, LATTICE_POLYHEDRON_SCREENING.gcts_proof.distinct_patch_checkpoint_screen.report);
+assert.equal(archivedGlobalOverlap.summary.paths, archivedDistinctScreening.summary.paths_screened);
+assert.equal(archivedGlobalOverlap.summary.state_path_pairs, archivedDistinctScreening.summary.checkpoint_checks_completed);
+assert.equal(archivedGlobalOverlap.summary.exact_checks_completed, archivedGlobalOverlap.summary.state_path_pairs);
+assert.equal(archivedGlobalOverlap.summary.exact_checks_timed_out, 0);
+assert.equal(archivedGlobalOverlap.summary.exact_periodic_certificates_found, 0);
+assert.deepEqual(
+  archivedGlobalOverlap.candidates.flatMap(candidate => candidate.paths.map(path => ({
+    id: candidate.id,
+    seed: path.seed,
+    witness_hash: path.witness_hash
+  }))),
+  archivedDistinctScreening.paths.map(path => ({ id: path.id, seed: path.seed, witness_hash: path.witness_hash })),
+  "global fingerprint accounting must replay the same archived GCTS paths"
+);
+const fingerprintDigest = values => createHash("sha256")
+  .update(values.slice().sort().join("\n"))
+  .digest("hex");
+const globalCandidateFingerprints = [];
+for (const overlapCandidate of archivedGlobalOverlap.candidates) {
+  const union = new Set();
+  const pathSets = new Map();
+  const membership = new Map();
+  let statePathPairs = 0;
+  for (const path of overlapCandidate.paths) {
+    assert.equal(path.fingerprints.length, path.checks_attempted);
+    assert.equal(path.checks_completed + path.checks_timed_out, path.checks_attempted);
+    assert.ok(path.fingerprints.every(value => /^[0-9a-f]{32}$/.test(value)));
+    assert.equal(new Set(path.fingerprints).size, path.fingerprints.length);
+    assert.equal(path.fingerprint_digest_sha256, fingerprintDigest(path.fingerprints));
+    pathSets.set(path.seed, new Set(path.fingerprints));
+    statePathPairs += path.fingerprints.length;
+    path.fingerprints.forEach(fingerprint => {
+      union.add(fingerprint);
+      if (!membership.has(fingerprint)) membership.set(fingerprint, new Set());
+      membership.get(fingerprint).add(path.seed);
+    });
+  }
+  assert.equal(overlapCandidate.state_path_pairs, statePathPairs);
+  assert.equal(overlapCandidate.globally_distinct_fingerprints, union.size);
+  assert.equal(overlapCandidate.repeated_state_path_pairs, statePathPairs - union.size);
+  assert.equal(overlapCandidate.union_digest_sha256, fingerprintDigest([...union]));
+  const membershipHistogram = {};
+  for (const seeds of membership.values()) {
+    membershipHistogram[seeds.size] = (membershipHistogram[seeds.size] ?? 0) + 1;
+  }
+  assert.deepEqual(overlapCandidate.path_membership_histogram, membershipHistogram);
+  for (const pair of overlapCandidate.pairwise_intersections) {
+    const [leftSeed, rightSeed] = pair.seeds;
+    const left = pathSets.get(leftSeed);
+    const right = pathSets.get(rightSeed);
+    const shared = [...left].filter(fingerprint => right.has(fingerprint)).length;
+    const pairUnion = left.size + right.size - shared;
+    assert.equal(pair.shared_fingerprints, shared);
+    assert.equal(pair.union_fingerprints, pairUnion);
+    assert.equal(pair.jaccard, pairUnion ? shared / pairUnion : 0);
+  }
+  for (const fingerprint of union) globalCandidateFingerprints.push(`${overlapCandidate.id}:${fingerprint}`);
+}
+assert.equal(
+  archivedGlobalOverlap.summary.globally_distinct_candidate_states,
+  archivedGlobalOverlap.candidates.reduce((sum, candidate) => sum + candidate.globally_distinct_fingerprints, 0)
+);
+assert.equal(
+  archivedGlobalOverlap.summary.repeated_state_path_pairs,
+  archivedGlobalOverlap.summary.state_path_pairs
+    - archivedGlobalOverlap.summary.globally_distinct_candidate_states
+);
+assert.equal(
+  archivedGlobalOverlap.summary.globally_distinct_digest_sha256,
+  fingerprintDigest(globalCandidateFingerprints)
 );
 assert.ok(
   archivedProofScreening.paths
@@ -234,6 +322,10 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_sampling_skips, distinctSummary.sampling_skips);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_duplicate_skips, distinctSummary.duplicate_states_skipped);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_cap_skips, distinctSummary.per_size_cap_skips);
+  const overlapSummary = archivedGlobalOverlap.candidates.find(item => item.id === candidate.id);
+  assert.ok(overlapSummary, `${candidate.id} must retain its global checkpoint coverage summary`);
+  assert.equal(candidate.gcts_proof_screening.global_checkpoint_states, overlapSummary.globally_distinct_fingerprints);
+  assert.equal(candidate.gcts_proof_screening.repeated_checkpoint_path_pairs, overlapSummary.repeated_state_path_pairs);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL

@@ -92,6 +92,7 @@ const candidates = candidateIds.map(id => {
     state_path_pairs: statePathPairs,
     globally_distinct_fingerprints: unionFingerprints.length,
     repeated_state_path_pairs: statePathPairs - unionFingerprints.length,
+    global_uniqueness_rate: statePathPairs ? unionFingerprints.length / statePathPairs : 0,
     union_digest_sha256: digest(unionFingerprints),
     path_membership_histogram: Object.fromEntries(
       Object.entries(membershipHistogram).sort(([left], [right]) => Number(left) - Number(right))
@@ -112,6 +113,7 @@ const result = {
     encoding: "32 lowercase hexadecimal characters",
     interpretation: "collision-resistant accounting key, not a formal injective identifier"
   },
+  prior_outcome_report: args.get("prior-outcome-report") ?? null,
   protocol: report.configuration,
   candidates,
   summary: {
@@ -126,11 +128,31 @@ const result = {
       (sum, candidate) => sum + candidate.repeated_state_path_pairs,
       0
     ),
+    exact_checks_completed: rows.reduce(
+      (sum, row) => sum + row.genericPeriodicCertificateChecksCompleted,
+      0
+    ),
+    exact_checks_timed_out: rows.reduce(
+      (sum, row) => sum + row.genericPeriodicCertificateChecksTimedOut,
+      0
+    ),
+    exact_periodic_certificates_found: rows.filter(
+      row => row.genericPeriodicCertificateFound
+    ).length,
     globally_distinct_digest_sha256: digest(candidates.flatMap(candidate => [...new Set(
       candidate.paths.flatMap(path => path.fingerprints)
     )].map(fingerprint => `${candidate.id}:${fingerprint}`)))
   }
 };
+result.summary.global_uniqueness_rate = result.summary.state_path_pairs
+  ? result.summary.globally_distinct_candidate_states / result.summary.state_path_pairs
+  : 0;
+result.interpretation = [
+  "Fingerprint equality is compared only among seeded paths for the same candidate; states from different tile geometries are not pooled.",
+  `${result.summary.state_path_pairs} exact state-path checks represent ${result.summary.globally_distinct_candidate_states} candidate-specific patch fingerprints; ${result.summary.repeated_state_path_pairs} state-path checks repeat geometry reached by another seed.`,
+  "The fingerprints make cross-seed coverage auditable with negligible collision risk, but they are accounting keys rather than formal injective geometric identifiers.",
+  "A completed check without a certificate excludes only that finite patch as a boundary-paired equal-covolume translational quotient; it does not prove non-tiling or aperiodicity."
+];
 
 const serialized = `${JSON.stringify(result, null, 2)}\n`;
 if (outputFile) await writeFile(outputFile, serialized);
