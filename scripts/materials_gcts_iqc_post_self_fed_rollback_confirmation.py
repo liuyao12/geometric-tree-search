@@ -66,7 +66,7 @@ DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_post_self_fed_rollback_confirmation_v1.json.gz"
 EXPECTED_FIXTURE_SHA256 = ""
 EXPECTED_RESULT_DIGEST = ""
-HARNESS_LOGIC_COMMIT = ""
+HARNESS_LOGIC_COMMIT = "31a086c0010ef2ee8df486217dc0219104b2d58b"
 
 
 def _key(point):
