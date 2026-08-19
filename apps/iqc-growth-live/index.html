@@ -261,7 +261,7 @@
             <div class="pose-atlas-heading"><span>symmetry-quotiented pose × connection atlas</span><b id="poseAtlasTotal">—</b></div>
             <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
             <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
-            <p class="rank-note"><b>Clustering fixes the geometry before marking learning.</b> It reports the finite pose orbits needed to cover the sample after quotienting each cluster's proper rotational symmetry. When the observed poses do not close to a stable finite atlas, the type is labelled free SO(3) and the displayed count is the number sampled—not a claim of finitely many allowed rotations. Auto does not allocate one channel per rotation: it adds compatibility / failure fields to the rank of the observed pose-orbit × connection-port incidence table (capped at 12). The shared tensor uses the largest per-cluster rank and masks unused channels.</p>
+            <p class="rank-note"><b>Clustering fixes the geometry before marking learning.</b> It reports a finite required pose orbit only when every symmetry-quotiented pose recurs in the sample. A high-diversity recurrent atlas is labelled free SO(3); sparse one-off poses remain unresolved rather than being promoted to allowed rotations. Auto does not allocate one channel per rotation: it adds compatibility / failure fields to the rank of the observed pose-orbit × connection-port incidence table (capped at 12). The shared tensor uses the largest per-cluster rank and masks unused channels.</p>
           </div>
 
           <div id="markingTrainingOptions">
@@ -599,7 +599,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260818-4"></script>
+  <script type="module" src="./app.js?v=20260819-1"></script>
   <script type="module" src="./evidence-atlas.js?v=20260818-1"></script>
 </body>
 </html>

@@ -64,7 +64,10 @@ may write many equivalent local frames for an octahedron. Removing periodic
 wrapping exposes boundary environment types and their larger pose atlas. If
 the sampled orientations do not close into a stable finite atlas, the UI marks
 that cluster type as free `SO(3)` and reports the number sampled rather than
-pretending those samples are a finite set of allowed rotations.
+pretending those samples are a finite set of allowed rotations. A finite pose
+orbit is called *required* only when every symmetry-quotiented pose has at
+least two observed occurrences; sparse one-off poses are shown as unresolved
+and reserve model capacity without becoming a geometric law.
 
 The pose atlas is learned before the GCTS marking. Each cluster card reports
 its observed symmetry-inequivalent pose count, outgoing connection-port rank,

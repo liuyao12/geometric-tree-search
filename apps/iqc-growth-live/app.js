@@ -1538,7 +1538,11 @@ function learnOrientationAtlas() {
 
 function poseAtlasEntryStatus(entry) {
   const sampledFraction = entry.orientations / Math.max(1, entry.occurrences);
-  return entry.occurrences >= 12 && sampledFraction >= .8 ? "sampled continuum" : "finite required set";
+  const everyPoseRepeated = entry.populations.length > 0
+    && entry.populations.every((population) => population >= 2);
+  if (entry.occurrences >= 12 && sampledFraction >= .8) return "sampled continuum";
+  if (everyPoseRepeated) return "finite required set";
+  return "unresolved support";
 }
 
 function resolvedGeometryMode() {
@@ -2983,7 +2987,11 @@ function renderPoseAtlas() {
   poseAtlas.replaceChildren();
   const total = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
   const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
-  poseAtlasTotal.textContent = `${total} sampled poses${freeTypes ? ` · ${freeTypes} free-SO(3) type${freeTypes === 1 ? "" : "s"}` : ""} · auto ${automaticMarkingChannels()}ch`;
+  const unresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
+  const supportSummary = freeTypes || unresolvedTypes
+    ? `${total} observed poses${freeTypes ? ` · ${freeTypes} free-SO(3)` : ""}${unresolvedTypes ? ` · ${unresolvedTypes} unresolved` : ""}`
+    : `${total} required poses`;
+  poseAtlasTotal.textContent = `${supportSummary} · auto ${automaticMarkingChannels()}ch`;
   orientationAtlas.slice(0, 10).forEach((entry) => {
     const row = document.createElement("div");
     row.className = "pose-atlas-row";
@@ -2995,10 +3003,12 @@ function renderPoseAtlas() {
     const channels = recommendedChannelsForCluster(entry.cluster);
     detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · ${portRank} port role${portRank === 1 ? "" : "s"} · coupled rank ${coupledRank}`;
     const count = document.createElement("b");
-    const finite = poseAtlasEntryStatus(entry) === "finite required set";
-    count.textContent = finite
+    const support = poseAtlasEntryStatus(entry);
+    count.textContent = support === "finite required set"
       ? `${entry.orientations} required pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`
-      : `${entry.orientations} sampled · free SO(3) → ${channels}ch`;
+      : support === "sampled continuum"
+        ? `${entry.orientations} sampled · free SO(3) → ${channels}ch`
+        : `${entry.orientations} observed · unresolved → ${channels}ch reserve`;
     row.append(code, detail, count);
     poseAtlas.appendChild(row);
   });
@@ -3036,8 +3046,9 @@ function syncStageOptions() {
       : resolvedMode === "module" ? "finite-rank module" : "general point set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
     const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
-    rotationSupport.textContent = freeTypes
-      ? `${totalPoses} sampled · ${freeTypes} free-SO(3) type${freeTypes === 1 ? "" : "s"}`
+    const unresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
+    rotationSupport.textContent = freeTypes || unresolvedTypes
+      ? `${totalPoses} observed · ${freeTypes} free-SO(3) · ${unresolvedTypes} unresolved`
       : `${totalPoses} finite pose orbit${totalPoses === 1 ? "" : "s"}`;
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
     renderPoseAtlas();
@@ -3049,9 +3060,10 @@ function syncStageOptions() {
   const inheritedDomain = resolvedGeometryLabel();
   const inheritedPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
   const inheritedFreeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
+  const inheritedUnresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
   inheritedGeometryMode.textContent = inheritedDomain;
-  inheritedPoseCount.textContent = inheritedFreeTypes
-    ? `${inheritedPoses} sampled poses · ${inheritedFreeTypes} free-SO(3) type${inheritedFreeTypes === 1 ? "" : "s"}`
+  inheritedPoseCount.textContent = inheritedFreeTypes || inheritedUnresolvedTypes
+    ? `${inheritedPoses} observed · ${inheritedFreeTypes} free-SO(3) · ${inheritedUnresolvedTypes} unresolved`
     : `${inheritedPoses} finite pose orbit${inheritedPoses === 1 ? "" : "s"}`;
   inheritedChannelCount.textContent = `auto ${automaticMarkingChannels()}ch`;
   markingChannelsHint.textContent = markingDraft.channels
