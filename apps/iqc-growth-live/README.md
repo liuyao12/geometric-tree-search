@@ -1890,6 +1890,20 @@ correct colored sites, down from `26 / 30`, so the unchanged joint gate of
 the present exactness objective undervalues how much correct material a branch
 grows. No fresh target, stationarity, or exponential claim follows.
 
+The two complementary values are therefore kept as a bounded marking
+portfolio rather than averaged. One head ranks typed child topology; the other
+combines the established local section with a group-balanced ordinal graph
+value trained on 0/1/2/3 correct-site levels. Each outer model excludes its
+held-out nucleus and both heads rank the identical candidates. Retaining one
+candidate per head—at most two—contains an exact terminal in all `9 / 9`
+supplied nuclei and a posthoc best `28 / 30` sites. Only 19 states are retained
+across ten nuclei, reducing the previous rollback width from 16 to 2.
+
+This is a green bounded-supply result and a red autonomous-commit result. The
+target-free search still lacks a certified detector that tells it when to
+discard the first locally valid state and try the second. The consumed labels
+are consulted only after the two orders freeze; no fresh target is opened.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

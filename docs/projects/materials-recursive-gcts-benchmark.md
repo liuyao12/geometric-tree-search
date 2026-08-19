@@ -3917,6 +3917,26 @@ port discharge or rollback cost without discarding the number of correct sites
 grown. No fresh target is opened and no stationary or exponential claim is
 made.
 
+The complementary views are now exposed as a bounded marking library instead
+of being averaged into one score. Head one is the typed child-topology value.
+Head two combines the established local-section/port value with a new
+group-balanced ordinal graph value trained on `0 / 1 / 2 / 3` correct-site
+levels. Every outer model excludes its held-out nucleus, both heads rank the
+identical frozen candidates, and the portfolio retains only the top candidate
+from each head. Across the nine nuclei with exact supply, this at-most-two-state
+portfolio contains an exact terminal in `9 / 9`; the posthoc best retained
+choices total `28 / 30` correct sites. Nineteen candidates are retained across
+all ten nuclei, versus the previous width-16 rollback ceiling.
+
+This passes a **bounded rollback-supply** gate, not autonomous commitment. The
+only complementary failure needs the topology state first and the ordinal
+state second, so posthoc exact rank is at most two. No target-free detector has
+yet proved when the first state is contradictory, and the consumed labels are
+used only after both immutable orders and the portfolio are frozen. Therefore
+the UI may offer this as a marking-library tree-search option, while the
+automatic commit, stationary-production, and exponential IQC gates remain
+red.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement

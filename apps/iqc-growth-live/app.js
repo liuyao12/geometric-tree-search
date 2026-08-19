@@ -53,6 +53,7 @@ const saveMarkingButton = $("saveMarkingButton");
 const markingConfigNote = $("markingConfigNote");
 const markingLibrarySelect = $("markingLibrarySelect");
 const markingLibraryCount = $("markingLibraryCount");
+const markingSearchModeSelect = $("markingSearchModeSelect");
 const trainVariantButton = $("trainVariantButton");
 const primitiveGrowthButton = $("primitiveGrowthButton");
 const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
@@ -367,6 +368,7 @@ let selectedDatabaseElements = ["Na", "Cl"];
 let markingDraft = { channels: 0, reach: 2, representation: "sites" };
 let markingLibrary = [];
 let activeMarkingId = null;
+let markingSearchMode = "single";
 let hierarchyEnabled = true;
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -2155,6 +2157,7 @@ function restoreMarkingLibrary() {
         ...marking.config, geometryMode: marking.config.geometryMode || "auto",
       } }));
     activeMarkingId = stored.activeMarkingId || null;
+    markingSearchMode = stored.searchMode === "portfolio" ? "portfolio" : "single";
     nextMarkingId = Math.max(1, ...markingLibrary.map((marking) => Number(marking.id.split("-").at(-1)) + 1 || 1));
   } catch (_) {
     markingLibrary = [];
@@ -2164,7 +2167,9 @@ function restoreMarkingLibrary() {
 
 function persistMarkingLibrary() {
   try {
-    localStorage.setItem(MARKING_LIBRARY_STORAGE, JSON.stringify({ markings: markingLibrary, activeMarkingId }));
+    localStorage.setItem(MARKING_LIBRARY_STORAGE, JSON.stringify({
+      markings: markingLibrary, activeMarkingId, searchMode: markingSearchMode,
+    }));
   } catch (_) {
     // The live lab remains fully functional when storage is unavailable.
   }
@@ -2346,12 +2351,31 @@ function searchSectionCoefficients() {
     ? marking.coefficients : sectionModel.curve.at(-1).coefficients;
 }
 
-function markingAcceptanceThreshold() {
-  const marking = selectedMarking();
+function markingAcceptanceThreshold(marking = selectedMarking()) {
   const representation = marking?.config.representation || sectionModel?.representation || "sites";
   const base = { sites: -.24, ports: -.14, whole: -.30 }[representation] ?? -.24;
   const channels = marking?.config.channels || sectionModel?.channels || 1;
   return base - Math.min(.06, Math.log2(Math.max(1, channels)) * .012);
+}
+
+function ruleMarkingDecision(rule) {
+  const active = selectedMarking();
+  const library = markingSearchMode === "portfolio" ? compatibleMarkings() : active ? [active] : [];
+  const rows = library.map((marking) => ({
+    id: marking.id,
+    name: marking.name,
+    score: ruleMarkingScore(rule, marking.coefficients),
+    threshold: markingAcceptanceThreshold(marking),
+  }));
+  if (!rows.length) {
+    const score = ruleMarkingScore(rule, searchSectionCoefficients());
+    rows.push({ id: "current", name: "current marking", score,
+      threshold: markingAcceptanceThreshold() });
+  }
+  const strongest = rows.slice().sort((first, second) => second.score - first.score
+    || first.id.localeCompare(second.id))[0];
+  return { rows, score: strongest.score, source: strongest.id,
+    accepted: rows.some((row) => row.score > row.threshold) };
 }
 
 function sectionLossForCluster(cluster) {
@@ -2382,9 +2406,8 @@ function currentTrainingPoint() {
 
 function seedTrainedMarking() {
   const finalPoint = sectionModel.curve.at(-1);
-  const coefficients = searchSectionCoefficients();
   markingCache = new Map(overlapGrammar.rules.map((rule) => {
-    const score = ruleMarkingScore(rule, coefficients);
+    const score = ruleMarkingDecision(rule).score;
     return [`r${rule.id}:C${rule.from + 1}>C${rule.to + 1}`, {
       count: rule.count, min: score - finalPoint.validationLoss, max: score + finalPoint.validationLoss, sum: score * rule.count,
     }];
@@ -2558,10 +2581,12 @@ function enqueueRulesFromPlacement(placement) {
       && candidate.position.distanceTo(position) < .2
       && quaternionDistance(candidate.rotation, rotation) < .24
       && (!rule.reconstructionOnly || candidate.occurrenceIndex === rule.occurrenceTo))) return;
-    const markingScore = ruleMarkingScore(rule);
+    const marking = ruleMarkingDecision(rule);
     frontierCandidates.push({ key, parentId: placement.id, rule, type: rule.to, position, rotation,
-      occurrenceIndex: rule.reconstructionOnly ? rule.occurrenceTo : null, markingScore,
-      priority: (policySelect.value === "marked" ? markingScore : 0) + Math.log1p(rule.count) * .09 + rule.meanShared * .035 + random() * .025 });
+      occurrenceIndex: rule.reconstructionOnly ? rule.occurrenceTo : null,
+      markingScore: marking.score, markingAccepted: marking.accepted,
+      markingSource: marking.source, markingScores: marking.rows,
+      priority: (policySelect.value === "marked" ? marking.score : 0) + Math.log1p(rule.count) * .09 + rule.meanShared * .035 + random() * .025 });
     frontierCandidateKeys.add(key);
   });
 }
@@ -2604,7 +2629,7 @@ function batchRetainsNovelSites(entries) {
 }
 
 function rejectionIsOrderInvariant(candidate, evaluation) {
-  const markingRejected = policySelect.value === "marked" && candidate.markingScore <= markingAcceptanceThreshold();
+  const markingRejected = policySelect.value === "marked" && !candidate.markingAccepted;
   return evaluation.conflicts > 0 || evaluation.boundaryFailures > 0
     || evaluation.fresh.length === 0 || markingRejected;
 }
@@ -2687,7 +2712,7 @@ function evaluateCandidate(candidate) {
     else if (!insideGrowthDomain(site.p)) boundaryFailures++;
     else fresh.push(site);
   });
-  const markingAccepted = policySelect.value !== "marked" || candidate.markingScore > markingAcceptanceThreshold();
+  const markingAccepted = policySelect.value !== "marked" || candidate.markingAccepted;
   const knownFailures = reconstructing ? canonical.failures : 0;
   const markingFallback = reconstructing && knownFailures === 0 && !markingAccepted;
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
@@ -2695,7 +2720,7 @@ function evaluateCandidate(candidate) {
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
-    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : candidate.markingScore <= markingAcceptanceThreshold() ? "marking mismatch" : "compatible overlap" };
+    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
 }
 
 function referenceCoverageCount() {
@@ -3086,15 +3111,19 @@ function syncStageOptions() {
     markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels.`;
   } else {
     renderMarkingLibrary();
+    markingSearchModeSelect.value = markingSearchMode;
     const active = selectedMarking();
     stageOptionsState.textContent = policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline";
     primitiveGrowthButton.classList.toggle("active", !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(!hierarchyEnabled));
     hierarchicalGrowthButton.classList.toggle("active", hierarchyEnabled);
     hierarchicalGrowthButton.setAttribute("aria-pressed", String(hierarchyEnabled));
+    const markingUse = markingSearchMode === "portfolio"
+      ? `The ${compatibleMarkings().length || 1}-mark library scores each unchanged action; any trained mark may admit it.`
+      : "The selected marking ranks and prunes the unchanged candidate placements.";
     growthModeNote.textContent = hierarchyEnabled
-      ? "Accepted clusters expose frozen ports and may promote into clusters². The selected marking ranks and prunes those exact candidate placements."
-      : "Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier.";
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${markingUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${markingUse}`;
   }
 }
 
@@ -3900,11 +3929,17 @@ markingLibrarySelect.addEventListener("change", () => {
     const marking = markingLibrary.find((candidate) => candidate.id === value);
     if (!marking) return;
     activeMarkingId = marking.id;
+    markingSearchMode = "single";
     markingDraft = { ...marking.config,
       channels: marking.config.channelMode === "auto" ? 0 : marking.config.channels };
     policySelect.value = "marked";
     persistMarkingLibrary();
   }
+  if (pipelineStage === 4) enterPipelineStage(4);
+});
+markingSearchModeSelect.addEventListener("change", () => {
+  markingSearchMode = markingSearchModeSelect.value === "portfolio" ? "portfolio" : "single";
+  persistMarkingLibrary();
   if (pipelineStage === 4) enterPipelineStage(4);
 });
 trainVariantButton.addEventListener("click", () => {
