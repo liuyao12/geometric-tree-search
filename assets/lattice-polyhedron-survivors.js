@@ -18,13 +18,22 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
     exact_failure_memo: true,
     translation_equivariant_nogoods: false,
     mirrors: false,
-    report: "data/lattice-polyhedron-proof-screen-2026-08-18.json"
+    report: "data/lattice-polyhedron-proof-screen-2026-08-18.json",
+    target_patch_quotient_check: Object.freeze({
+      candidate_id: "10_26470",
+      patch_tiles: 40,
+      patches_checked: 3,
+      completed_checks: 3,
+      certificates_found: 0,
+      certificate_method: "face_paired_boundary_equal_covolume",
+      report: "data/lattice-polyhedron-target-patch-quotient-check-2026-08-18.json"
+    })
   })
 });
 
 const GCTS_PROOF_SCREENING_RESULTS = Object.freeze({
   "10_16113": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 }),
-  "10_26470": Object.freeze({ outcome: "robust_target_patch", robust_largest_patch: 40, median_largest_patch: 40, best_largest_patch: 40, target_hits: 3, trials: 3 }),
+  "10_26470": Object.freeze({ outcome: "robust_target_patch", robust_largest_patch: 40, median_largest_patch: 40, best_largest_patch: 40, target_hits: 3, trials: 3, target_patch_quotient_checks: 3, target_patch_quotient_certificates: 0 }),
   "10_45026": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 }),
   "10_45033": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 25, median_largest_patch: 25, best_largest_patch: 25, target_hits: 0, trials: 3 }),
   "9_11683": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 })

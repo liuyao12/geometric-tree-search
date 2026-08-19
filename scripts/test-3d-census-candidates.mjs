@@ -33,6 +33,11 @@ assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.k
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
 assert.match(growthAppSource, /All six modes finished\./, "the comparison status must include all six lanes");
 assert.match(growthAppSource, /finite-patch evidence, not a space-tiling certificate/, "the catalog must not overstate a large GCTS patch");
+assert.match(
+  growthAppSource,
+  /this excludes those patches as translational fundamental domains, not other possible motifs/,
+  "the catalog must state the narrow scope of a negative target-patch quotient check"
+);
 
 assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
 assert.equal(
@@ -47,6 +52,10 @@ const archivedScreening = JSON.parse(await readFile(
 ));
 const archivedProofScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-proof-screen-2026-08-18.json", import.meta.url),
+  "utf8"
+));
+const archivedTargetPatchCheck = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-target-patch-quotient-check-2026-08-18.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -71,7 +80,12 @@ assert.deepEqual(
 assert.deepEqual(
   LATTICE_POLYHEDRON_SURVIVORS.map(candidate => ({
     id: candidate.id,
-    ...candidate.gcts_proof_screening
+    outcome: candidate.gcts_proof_screening.outcome,
+    robust_largest_patch: candidate.gcts_proof_screening.robust_largest_patch,
+    median_largest_patch: candidate.gcts_proof_screening.median_largest_patch,
+    best_largest_patch: candidate.gcts_proof_screening.best_largest_patch,
+    target_hits: candidate.gcts_proof_screening.target_hits,
+    trials: candidate.gcts_proof_screening.trials
   })),
   archivedProofScreening.candidates.map(candidate => ({
     id: candidate.id,
@@ -84,6 +98,27 @@ assert.deepEqual(
   })),
   "catalog GCTS evidence must match the archived fixed-node runs"
 );
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.target_patch_quotient_check,
+  {
+    candidate_id: archivedTargetPatchCheck.protocol.candidate_id,
+    patch_tiles: archivedTargetPatchCheck.protocol.target_tiles,
+    patches_checked: archivedTargetPatchCheck.result.patches_checked,
+    completed_checks: archivedTargetPatchCheck.result.completed_checks,
+    certificates_found: archivedTargetPatchCheck.result.certificates_found,
+    certificate_method: archivedTargetPatchCheck.protocol.certificate_method,
+    report: "data/lattice-polyhedron-target-patch-quotient-check-2026-08-18.json"
+  },
+  "runtime target-patch quotient evidence must match the archived exact checks"
+);
+assert.equal(archivedTargetPatchCheck.result.screening_conclusion, "inconclusive");
+assert.ok(
+  archivedTargetPatchCheck.result.trials.every(trial => trial.check_completed && !trial.certificate_found),
+  "all recorded target-patch quotient checks must have completed without a certificate"
+);
+const robustTargetCandidate = LATTICE_POLYHEDRON_SURVIVORS.find(candidate => candidate.id === "10_26470");
+assert.equal(robustTargetCandidate?.gcts_proof_screening.target_patch_quotient_checks, 3);
+assert.equal(robustTargetCandidate?.gcts_proof_screening.target_patch_quotient_certificates, 0);
 assert.ok(
   archivedProofScreening.candidates.every(candidate => candidate.screening_conclusion === "inconclusive"),
   "finite patches and node-limited runs must remain inconclusive"

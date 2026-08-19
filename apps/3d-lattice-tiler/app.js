@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-proof-screen-v61";
+import { tileSpecs } from "./engine.js?v=20260818-target-quotient-v63";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1328,7 +1328,7 @@ function updateCandidateResearchPanel() {
     const proofProtocol = screening?.gcts_proof;
     const proofEvidence = proof && proofProtocol
       ? proof.target_hits === proof.trials
-        ? ` Unbanded GCTS reached a connected ${proofProtocol.target_tiles}-tile patch in all ${proof.trials} seeds; this is finite-patch evidence, not a space-tiling certificate.`
+        ? ` Unbanded GCTS reached a connected ${proofProtocol.target_tiles}-tile patch in all ${proof.trials} seeds; this is finite-patch evidence, not a space-tiling certificate.${proof.target_patch_quotient_checks ? ` Exact boundary-quotient checks completed on all ${proof.target_patch_quotient_checks} reached patches and certified none; this excludes those patches as translational fundamental domains, not other possible motifs.` : ""}`
         : ` Unbanded GCTS largest patch: ${proof.robust_largest_patch === proof.best_largest_patch ? proof.best_largest_patch : `${proof.robust_largest_patch}–${proof.best_largest_patch}`} tiles across ${proof.trials} seeds before the configured ${proofProtocol.configured_node_limit}-node limit; no non-tiler certificate.`
       : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
@@ -2650,7 +2650,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-proof-screen-v61", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-target-quotient-v63", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3123,7 +3123,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-proof-screen-v61", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-target-quotient-v63", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

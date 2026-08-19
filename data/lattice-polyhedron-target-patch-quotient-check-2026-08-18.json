@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "screen_date": "2026-08-18",
+  "engine_commit": "6e75509176b527164578d91d85bb1764e28c0ff7",
+  "model": "connected face-to-face patches of one congruent lattice polyhedron using proper cubic lattice orientations",
+  "protocol": {
+    "candidate_id": "10_26470",
+    "source_lane": "free_range_unbanded",
+    "target_tiles": 40,
+    "configured_node_limit": 500,
+    "search_time_limit_ms": 30000,
+    "quotient_check_time_limit_ms": 30000,
+    "seeds": [1, 2, 3],
+    "certificate_method": "face_paired_boundary_equal_covolume",
+    "generation_band": false,
+    "exact_failure_memo": true,
+    "mirrors": false
+  },
+  "interpretation": [
+    "Each check asks whether the particular 40-tile patch reached by GCTS is itself a translational fundamental domain.",
+    "A found boundary-paired equal-covolume quotient would certify an infinite periodic tiling.",
+    "A completed negative check excludes only that particular finite patch as a fundamental domain; it does not exclude other patches, larger motifs, or nonperiodic tilings."
+  ],
+  "result": {
+    "candidate_id": "10_26470",
+    "patches_checked": 3,
+    "completed_checks": 3,
+    "timed_out_checks": 0,
+    "certificates_found": 0,
+    "screening_conclusion": "inconclusive",
+    "trials": [
+      { "seed": 1, "patch_tiles": 40, "visited_nodes": 44, "backtracks": 4, "max_depth": 33, "check_completed": true, "certificate_found": false, "certificate_elapsed_ms": 313, "total_elapsed_ms": 657 },
+      { "seed": 2, "patch_tiles": 40, "visited_nodes": 44, "backtracks": 4, "max_depth": 33, "check_completed": true, "certificate_found": false, "certificate_elapsed_ms": 345, "total_elapsed_ms": 683 },
+      { "seed": 3, "patch_tiles": 40, "visited_nodes": 44, "backtracks": 4, "max_depth": 33, "check_completed": true, "certificate_found": false, "certificate_elapsed_ms": 292, "total_elapsed_ms": 572 }
+    ]
+  }
+}
