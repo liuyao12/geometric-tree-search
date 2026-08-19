@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-target-quotient-v63";
+import { tileSpecs } from "./engine.js?v=20260818-diverse-witness-v66";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1326,11 +1326,21 @@ function updateCandidateResearchPanel() {
       ? ` Translational motifs through ${screening.translational.maximum_requested_motif_tiles} tiles (${screening.translational.seconds_per_tile}s); isohedral growth horizon ${screening.isohedral.growth_horizon_tiles} tiles (${screening.isohedral.seconds_per_tile}s).`
       : "";
     const proofProtocol = screening?.gcts_proof;
-    const proofEvidence = proof && proofProtocol
-      ? proof.target_hits === proof.trials
-        ? ` Unbanded GCTS reached a connected ${proofProtocol.target_tiles}-tile patch in all ${proof.trials} seeds; this is finite-patch evidence, not a space-tiling certificate.${proof.target_patch_quotient_checks ? ` Exact boundary-quotient checks completed on all ${proof.target_patch_quotient_checks} reached patches and certified none; this excludes those patches as translational fundamental domains, not other possible motifs.` : ""}`
-        : ` Unbanded GCTS largest patch: ${proof.robust_largest_patch === proof.best_largest_patch ? proof.best_largest_patch : `${proof.robust_largest_patch}–${proof.best_largest_patch}`} tiles across ${proof.trials} seeds before the configured ${proofProtocol.configured_node_limit}-node limit; no non-tiler certificate.`
-      : "";
+    const proofEvidence = proof && proofProtocol ? (() => {
+      const baselineRange = proof.robust_largest_patch === proof.best_largest_patch
+        ? `${proof.best_largest_patch}`
+        : `${proof.robust_largest_patch}–${proof.best_largest_patch}`;
+      const baseline = proof.target_hits === proof.trials
+        ? ` Diversified unbanded GCTS reached a connected ${proofProtocol.target_tiles}-tile patch in all ${proof.trials} seeds${proof.distinct_target_witnesses ? ` as ${proof.distinct_target_witnesses} distinct witnesses` : ""}.`
+        : ` Diversified unbanded GCTS ranged from ${baselineRange} tiles across ${proof.trials} seeds at the configured ${proofProtocol.configured_node_limit}-node baseline.`;
+      const focused = proof.focused_target_witness && proof.target_hits !== proof.trials
+        ? ` A focused run (seed ${proof.focused_seed}) reached ${proofProtocol.target_tiles} tiles after ${proof.focused_visited_nodes} visited nodes.`
+        : "";
+      const quotient = proof.target_patch_quotient_checks
+        ? ` Exact boundary-quotient checks completed on ${proof.target_patch_quotient_checks} reached ${proofProtocol.target_tiles}-tile ${proof.target_patch_quotient_checks === 1 ? "patch" : "patches"} and certified none; this excludes those patches as translational fundamental domains, not other possible motifs.`
+        : "";
+      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}`;
+    })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
     candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 5} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
   } else if (knownAperiodic) {
@@ -2650,7 +2660,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-target-quotient-v63", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-diverse-witness-v66", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3133,7 +3143,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-target-quotient-v63", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-diverse-witness-v66", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

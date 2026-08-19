@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "screen_date": "2026-08-18",
+  "engine_commit": "cec01bc73745984c475f34bc617138d27048a0e9",
+  "model": "connected face-to-face patches of one congruent lattice polyhedron using proper cubic lattice orientations",
+  "baseline_protocol": {
+    "lane": "free_range_unbanded",
+    "target_tiles": 40,
+    "configured_node_limit": 500,
+    "time_limit_ms": 30000,
+    "seeds": [1, 2, 3],
+    "seeded_tie_breaks": true,
+    "generation_band": false,
+    "exact_failure_memo": true,
+    "translation_equivariant_nogoods": false,
+    "mirrors": false,
+    "target_patch_quotient_check": true,
+    "quotient_check_time_limit_ms": 30000,
+    "certificate_method": "face_paired_boundary_equal_covolume"
+  },
+  "interpretation": [
+    "Seeded tie-breaking changes only the order of exactly equal-scoring branches; it does not prune a branch or weaken exhaustive-search semantics.",
+    "Witness hashes identify exact placement sets and make same-seed replay and cross-seed diversity auditable.",
+    "A 40-tile witness is finite connected-patch evidence, not a certificate that the tile covers all of 3-space.",
+    "A completed negative quotient check excludes only that particular witness as a translational fundamental domain; it does not exclude other motifs or nonperiodic tilings.",
+    "Node- and time-limited failures remain inconclusive."
+  ],
+  "baseline_candidates": [
+    {
+      "id": "10_16113",
+      "robust_largest_patch": 21,
+      "median_largest_patch": 22,
+      "best_largest_patch": 27,
+      "target_hits": 0,
+      "trials": [
+        { "seed": 1, "largest_patch": 21, "visited_nodes": 627, "backtracks": 435, "witness_hash": "bf1ecec2fd68388c", "termination_reason": "node_limit" },
+        { "seed": 2, "largest_patch": 22, "visited_nodes": 623, "backtracks": 429, "witness_hash": "1e8d08e2cd54d840", "termination_reason": "node_limit" },
+        { "seed": 3, "largest_patch": 27, "visited_nodes": 641, "backtracks": 427, "witness_hash": "913017bbeb925415", "termination_reason": "node_limit" }
+      ]
+    },
+    {
+      "id": "10_26470",
+      "robust_largest_patch": 40,
+      "median_largest_patch": 40,
+      "best_largest_patch": 40,
+      "target_hits": 3,
+      "distinct_target_witnesses": 3,
+      "trials": [
+        { "seed": 1, "largest_patch": 40, "visited_nodes": 108, "backtracks": 43, "witness_hash": "52d943ea5c8432bb", "termination_reason": "target_reached", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 1312 },
+        { "seed": 2, "largest_patch": 40, "visited_nodes": 115, "backtracks": 55, "witness_hash": "3d86c9214a1cff21", "termination_reason": "target_reached", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 2 },
+        { "seed": 3, "largest_patch": 40, "visited_nodes": 91, "backtracks": 32, "witness_hash": "2b21466a00d2a64f", "termination_reason": "target_reached", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 549 }
+      ]
+    },
+    {
+      "id": "10_45026",
+      "robust_largest_patch": 14,
+      "median_largest_patch": 16,
+      "best_largest_patch": 17,
+      "target_hits": 0,
+      "trials": [
+        { "seed": 1, "largest_patch": 14, "visited_nodes": 486, "backtracks": 454, "witness_hash": "ca267abb58ed4c66", "termination_reason": "node_limit" },
+        { "seed": 2, "largest_patch": 17, "visited_nodes": 487, "backtracks": 440, "witness_hash": "b4ad5cba53b90111", "termination_reason": "node_limit" },
+        { "seed": 3, "largest_patch": 16, "visited_nodes": 477, "backtracks": 445, "witness_hash": "ef3f57db2e5ea8bf", "termination_reason": "node_limit" }
+      ]
+    },
+    {
+      "id": "10_45033",
+      "robust_largest_patch": 23,
+      "median_largest_patch": 27,
+      "best_largest_patch": 36,
+      "target_hits": 0,
+      "trials": [
+        { "seed": 1, "largest_patch": 23, "visited_nodes": 425, "backtracks": 417, "witness_hash": "4ff72ef6b74d881c", "termination_reason": "node_limit" },
+        { "seed": 2, "largest_patch": 36, "visited_nodes": 427, "backtracks": 376, "witness_hash": "dc01dcccbba7abbf", "termination_reason": "node_limit" },
+        { "seed": 3, "largest_patch": 27, "visited_nodes": 416, "backtracks": 381, "witness_hash": "35eae034b7d30321", "termination_reason": "node_limit" }
+      ]
+    },
+    {
+      "id": "9_11683",
+      "robust_largest_patch": 19,
+      "median_largest_patch": 25,
+      "best_largest_patch": 32,
+      "target_hits": 0,
+      "trials": [
+        { "seed": 1, "largest_patch": 25, "visited_nodes": 480, "backtracks": 443, "witness_hash": "410171399ec8c634", "termination_reason": "node_limit" },
+        { "seed": 2, "largest_patch": 19, "visited_nodes": 483, "backtracks": 461, "witness_hash": "7b6e67b95c9369bf", "termination_reason": "node_limit" },
+        { "seed": 3, "largest_patch": 32, "visited_nodes": 461, "backtracks": 460, "witness_hash": "e9d1724d88ab43c2", "termination_reason": "node_limit" }
+      ]
+    }
+  ],
+  "focused_target_witnesses": [
+    { "id": "10_16113", "seed": 3, "seeded_tie_breaks": true, "node_limit": 5000, "time_limit_ms": 120000, "patch_tiles": 40, "visited_nodes": 2312, "backtracks": 1471, "witness_hash": "b4c8e0c893b1eb7c", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 6, "elapsed_ms": 16594 },
+    { "id": "10_26470", "seed": 1, "seeded_tie_breaks": true, "node_limit": 500, "time_limit_ms": 30000, "patch_tiles": 40, "visited_nodes": 108, "backtracks": 43, "witness_hash": "52d943ea5c8432bb", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 1312, "elapsed_ms": 2361 },
+    { "id": "10_45026", "seed": 1, "seeded_tie_breaks": false, "node_limit": 5000, "time_limit_ms": 120000, "patch_tiles": 40, "visited_nodes": 4278, "backtracks": 3626, "witness_hash": "e16dbe38a0165b93", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 7, "elapsed_ms": 56720 },
+    { "id": "10_45033", "seed": 2, "seeded_tie_breaks": true, "node_limit": 5000, "time_limit_ms": 120000, "patch_tiles": 40, "visited_nodes": 1162, "backtracks": 919, "witness_hash": "deb51611a30f25b5", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 15, "elapsed_ms": 32735 },
+    { "id": "9_11683", "seed": 3, "seeded_tie_breaks": true, "node_limit": 5000, "time_limit_ms": 120000, "patch_tiles": 40, "visited_nodes": 591, "backtracks": 551, "witness_hash": "5ab75954f9e80239", "quotient_check_completed": true, "quotient_certificate_found": false, "quotient_check_elapsed_ms": 20, "elapsed_ms": 9370 }
+  ],
+  "screening_summary": {
+    "candidates_with_40_tile_witness": 5,
+    "distinct_40_tile_witnesses_checked": 7,
+    "completed_target_patch_quotient_checks": 7,
+    "target_patch_quotient_certificates_found": 0,
+    "candidate_rejections": 0,
+    "screening_conclusion": "all_five_remain_inconclusive"
+  }
+}

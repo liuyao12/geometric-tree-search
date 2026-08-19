@@ -37,7 +37,7 @@ assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof co
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
 assert.match(growthAppSource, /All six modes finished\./, "the comparison status must include all six lanes");
-assert.match(growthAppSource, /finite-patch evidence, not a space-tiling certificate/, "the catalog must not overstate a large GCTS patch");
+assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
 assert.match(
   growthAppSource,
   /this excludes those patches as translational fundamental domains, not other possible motifs/,
@@ -61,11 +61,7 @@ const archivedScreening = JSON.parse(await readFile(
   "utf8"
 ));
 const archivedProofScreening = JSON.parse(await readFile(
-  new URL("../data/lattice-polyhedron-proof-screen-2026-08-18.json", import.meta.url),
-  "utf8"
-));
-const archivedTargetPatchCheck = JSON.parse(await readFile(
-  new URL("../data/lattice-polyhedron-target-patch-quotient-check-2026-08-18.json", import.meta.url),
+  new URL("../data/lattice-polyhedron-diversified-gcts-screen-2026-08-18.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -76,6 +72,7 @@ assert.deepEqual(
     configured_node_limit: LATTICE_POLYHEDRON_SCREENING.gcts_proof.configured_node_limit,
     time_limit_ms: LATTICE_POLYHEDRON_SCREENING.gcts_proof.time_limit_seconds * 1000,
     seeds: LATTICE_POLYHEDRON_SCREENING.gcts_proof.seeds,
+    seeded_tie_breaks: LATTICE_POLYHEDRON_SCREENING.gcts_proof.seeded_tie_breaks,
     generation_band: LATTICE_POLYHEDRON_SCREENING.gcts_proof.generation_band,
     exact_failure_memo: LATTICE_POLYHEDRON_SCREENING.gcts_proof.exact_failure_memo,
     translation_equivariant_nogoods: LATTICE_POLYHEDRON_SCREENING.gcts_proof.translation_equivariant_nogoods,
@@ -83,23 +80,30 @@ assert.deepEqual(
   },
   {
     screen_date: archivedProofScreening.screen_date,
-    ...archivedProofScreening.protocol
+    lane: archivedProofScreening.baseline_protocol.lane,
+    target_tiles: archivedProofScreening.baseline_protocol.target_tiles,
+    configured_node_limit: archivedProofScreening.baseline_protocol.configured_node_limit,
+    time_limit_ms: archivedProofScreening.baseline_protocol.time_limit_ms,
+    seeds: archivedProofScreening.baseline_protocol.seeds,
+    seeded_tie_breaks: archivedProofScreening.baseline_protocol.seeded_tie_breaks,
+    generation_band: archivedProofScreening.baseline_protocol.generation_band,
+    exact_failure_memo: archivedProofScreening.baseline_protocol.exact_failure_memo,
+    translation_equivariant_nogoods: archivedProofScreening.baseline_protocol.translation_equivariant_nogoods,
+    mirrors: archivedProofScreening.baseline_protocol.mirrors
   },
   "runtime proof-search limits must match the archived executed protocol"
 );
 assert.deepEqual(
   LATTICE_POLYHEDRON_SURVIVORS.map(candidate => ({
     id: candidate.id,
-    outcome: candidate.gcts_proof_screening.outcome,
     robust_largest_patch: candidate.gcts_proof_screening.robust_largest_patch,
     median_largest_patch: candidate.gcts_proof_screening.median_largest_patch,
     best_largest_patch: candidate.gcts_proof_screening.best_largest_patch,
     target_hits: candidate.gcts_proof_screening.target_hits,
     trials: candidate.gcts_proof_screening.trials
   })),
-  archivedProofScreening.candidates.map(candidate => ({
+  archivedProofScreening.baseline_candidates.map(candidate => ({
     id: candidate.id,
-    outcome: candidate.outcome,
     robust_largest_patch: candidate.robust_largest_patch,
     median_largest_patch: candidate.median_largest_patch,
     best_largest_patch: candidate.best_largest_patch,
@@ -111,28 +115,29 @@ assert.deepEqual(
 assert.deepEqual(
   LATTICE_POLYHEDRON_SCREENING.gcts_proof.target_patch_quotient_check,
   {
-    candidate_id: archivedTargetPatchCheck.protocol.candidate_id,
-    patch_tiles: archivedTargetPatchCheck.protocol.target_tiles,
-    patches_checked: archivedTargetPatchCheck.result.patches_checked,
-    completed_checks: archivedTargetPatchCheck.result.completed_checks,
-    certificates_found: archivedTargetPatchCheck.result.certificates_found,
-    certificate_method: archivedTargetPatchCheck.protocol.certificate_method,
-    report: "data/lattice-polyhedron-target-patch-quotient-check-2026-08-18.json"
+    patch_tiles: archivedProofScreening.baseline_protocol.target_tiles,
+    candidates_with_witness: archivedProofScreening.screening_summary.candidates_with_40_tile_witness,
+    distinct_patches_checked: archivedProofScreening.screening_summary.distinct_40_tile_witnesses_checked,
+    completed_checks: archivedProofScreening.screening_summary.completed_target_patch_quotient_checks,
+    certificates_found: archivedProofScreening.screening_summary.target_patch_quotient_certificates_found,
+    certificate_method: archivedProofScreening.baseline_protocol.certificate_method,
+    report: "data/lattice-polyhedron-diversified-gcts-screen-2026-08-18.json"
   },
   "runtime target-patch quotient evidence must match the archived exact checks"
 );
-assert.equal(archivedTargetPatchCheck.result.screening_conclusion, "inconclusive");
+assert.equal(archivedProofScreening.screening_summary.screening_conclusion, "all_five_remain_inconclusive");
 assert.ok(
-  archivedTargetPatchCheck.result.trials.every(trial => trial.check_completed && !trial.certificate_found),
+  archivedProofScreening.focused_target_witnesses.every(
+    witness => witness.quotient_check_completed && !witness.quotient_certificate_found
+  ),
   "all recorded target-patch quotient checks must have completed without a certificate"
 );
-const robustTargetCandidate = LATTICE_POLYHEDRON_SURVIVORS.find(candidate => candidate.id === "10_26470");
-assert.equal(robustTargetCandidate?.gcts_proof_screening.target_patch_quotient_checks, 3);
-assert.equal(robustTargetCandidate?.gcts_proof_screening.target_patch_quotient_certificates, 0);
-assert.ok(
-  archivedProofScreening.candidates.every(candidate => candidate.screening_conclusion === "inconclusive"),
-  "finite patches and node-limited runs must remain inconclusive"
-);
+for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
+  const witness = archivedProofScreening.focused_target_witnesses.find(item => item.id === candidate.id);
+  assert.ok(witness, `${candidate.id} must retain its focused 40-tile witness`);
+  assert.equal(candidate.gcts_proof_screening.focused_witness_hash, witness.witness_hash);
+  assert.equal(candidate.gcts_proof_screening.target_patch_quotient_certificates, 0);
+}
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
     .filter(candidate => candidate.screening.status === "exact_rejection")

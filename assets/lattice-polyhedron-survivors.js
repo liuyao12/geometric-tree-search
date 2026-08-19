@@ -14,29 +14,31 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
     configured_node_limit: 500,
     time_limit_seconds: 30,
     seeds: Object.freeze([1, 2, 3]),
+    seeded_tie_breaks: true,
     generation_band: false,
     exact_failure_memo: true,
     translation_equivariant_nogoods: false,
     mirrors: false,
-    report: "data/lattice-polyhedron-proof-screen-2026-08-18.json",
+    report: "data/lattice-polyhedron-diversified-gcts-screen-2026-08-18.json",
+    prior_report: "data/lattice-polyhedron-proof-screen-2026-08-18.json",
     target_patch_quotient_check: Object.freeze({
-      candidate_id: "10_26470",
       patch_tiles: 40,
-      patches_checked: 3,
-      completed_checks: 3,
+      candidates_with_witness: 5,
+      distinct_patches_checked: 7,
+      completed_checks: 7,
       certificates_found: 0,
       certificate_method: "face_paired_boundary_equal_covolume",
-      report: "data/lattice-polyhedron-target-patch-quotient-check-2026-08-18.json"
+      report: "data/lattice-polyhedron-diversified-gcts-screen-2026-08-18.json"
     })
   })
 });
 
 const GCTS_PROOF_SCREENING_RESULTS = Object.freeze({
-  "10_16113": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 }),
-  "10_26470": Object.freeze({ outcome: "robust_target_patch", robust_largest_patch: 40, median_largest_patch: 40, best_largest_patch: 40, target_hits: 3, trials: 3, target_patch_quotient_checks: 3, target_patch_quotient_certificates: 0 }),
-  "10_45026": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 }),
-  "10_45033": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 25, median_largest_patch: 25, best_largest_patch: 25, target_hits: 0, trials: 3 }),
-  "9_11683": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 })
+  "10_16113": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 21, median_largest_patch: 22, best_largest_patch: 27, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 2312, focused_witness_hash: "b4c8e0c893b1eb7c", target_patch_quotient_checks: 1, target_patch_quotient_certificates: 0 }),
+  "10_26470": Object.freeze({ outcome: "robust_target_patch", robust_largest_patch: 40, median_largest_patch: 40, best_largest_patch: 40, target_hits: 3, trials: 3, focused_target_witness: true, distinct_target_witnesses: 3, focused_seed: 1, focused_visited_nodes: 108, focused_witness_hash: "52d943ea5c8432bb", target_patch_quotient_checks: 3, target_patch_quotient_certificates: 0 }),
+  "10_45026": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 14, median_largest_patch: 16, best_largest_patch: 17, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 1, focused_seeded_tie_breaks: false, focused_visited_nodes: 4278, focused_witness_hash: "e16dbe38a0165b93", target_patch_quotient_checks: 1, target_patch_quotient_certificates: 0 }),
+  "10_45033": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 23, median_largest_patch: 27, best_largest_patch: 36, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 2, focused_visited_nodes: 1162, focused_witness_hash: "deb51611a30f25b5", target_patch_quotient_checks: 1, target_patch_quotient_certificates: 0 }),
+  "9_11683": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 19, median_largest_patch: 25, best_largest_patch: 32, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 591, focused_witness_hash: "5ab75954f9e80239", target_patch_quotient_checks: 1, target_patch_quotient_certificates: 0 })
 });
 
 const rejected = (certificate, motifTiles, periodVectors) => ({

@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-target-quotient-v63";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-diverse-witness-v66";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
