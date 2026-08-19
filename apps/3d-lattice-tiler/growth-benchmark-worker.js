@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-holdout-v84";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-captured-witness-v86";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot

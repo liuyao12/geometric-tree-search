@@ -188,6 +188,10 @@ const archivedHoldout = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-holdout-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
+const archivedStagnationNogoodAb = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-stagnation-nogood-ab-2026-08-19.json", import.meta.url),
+  "utf8"
+));
 assert.deepEqual(
   {
     screen_date: LATTICE_POLYHEDRON_SCREENING.gcts_proof.screen_date,
@@ -486,8 +490,8 @@ assert.deepEqual(
   archivedHoldout.generalization.holdout_seeds_4_through_8,
   {
     delayed_better_than_immediate: 5,
-    delayed_equal_to_immediate: 13,
-    delayed_worse_than_immediate: 2,
+    delayed_equal_to_immediate: 14,
+    delayed_worse_than_immediate: 1,
     delayed_better_than_baseline: 6,
     delayed_equal_to_baseline: 3,
     delayed_worse_than_baseline: 11,
@@ -496,6 +500,57 @@ assert.deepEqual(
     delayed_target_hits: 2
   }
 );
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.stagnation_nogood_ab,
+  {
+    training_thresholds: archivedStagnationNogoodAb.protocol.training_stagnation_failure_thresholds,
+    selected_holdout_threshold: archivedStagnationNogoodAb.protocol.selected_holdout_threshold,
+    training_paths_per_policy: archivedStagnationNogoodAb.summary.training_paths_per_policy,
+    holdout_paths: archivedStagnationNogoodAb.summary.holdout_paths,
+    training_10_better_than_fixed_delayed_25:
+      archivedStagnationNogoodAb.training_summary[0].better_than_fixed_delayed_25,
+    training_10_equal_to_fixed_delayed_25:
+      archivedStagnationNogoodAb.training_summary[0].equal_to_fixed_delayed_25,
+    training_10_worse_than_fixed_delayed_25:
+      archivedStagnationNogoodAb.training_summary[0].worse_than_fixed_delayed_25,
+    training_10_target_hits: archivedStagnationNogoodAb.training_summary[0].target_hits,
+    holdout_10_better_than_fixed_delayed_25:
+      archivedStagnationNogoodAb.holdout_summary.better_than_fixed_delayed_25,
+    holdout_10_equal_to_fixed_delayed_25:
+      archivedStagnationNogoodAb.holdout_summary.equal_to_fixed_delayed_25,
+    holdout_10_worse_than_fixed_delayed_25:
+      archivedStagnationNogoodAb.holdout_summary.worse_than_fixed_delayed_25,
+    holdout_10_target_hits: archivedStagnationNogoodAb.holdout_summary.target_hits,
+    fixed_delayed_25_holdout_target_hits:
+      archivedStagnationNogoodAb.holdout_summary.fixed_delayed_25_target_hits,
+    policy_decision: archivedStagnationNogoodAb.summary.policy_decision,
+    report: "data/lattice-polyhedron-stagnation-nogood-ab-2026-08-19.json"
+  },
+  "the runtime policy decision must include the archived stagnation-gate rejection"
+);
+assert.equal(archivedStagnationNogoodAb.benchmark_schema_version, 16);
+assert.equal(archivedStagnationNogoodAb.summary.policy_decision, "reject_stagnation_gate_retain_fixed_delayed_25");
+assert.deepEqual(archivedStagnationNogoodAb.summary.combined_stagnation_10, {
+  better_than_fixed_delayed_25: 0,
+  equal_to_fixed_delayed_25: 27,
+  worse_than_fixed_delayed_25: 5,
+  target_hits: 3,
+  fixed_delayed_25_target_hits: 4
+});
+for (const path of archivedDelayedNogood.paths) {
+  for (const outcome of [path.baseline, path.immediate, ...Object.values(path.delayed)]) {
+    assert.ok(outcome.max_live_tiles >= outcome.largest_patch);
+    assert.equal(outcome.uncaptured_max_live_tiles, outcome.max_live_tiles - outcome.largest_patch);
+  }
+}
+for (const path of archivedHoldout.search_paths) {
+  for (const outcome of [path.baseline, path.immediate, path.delayed_25]) {
+    assert.ok(outcome.max_live_tiles >= outcome.largest_patch);
+    assert.equal(outcome.uncaptured_max_live_tiles, outcome.max_live_tiles - outcome.largest_patch);
+    assert.equal(outcome.growth_milestones.at(-1).patch_size, outcome.largest_patch);
+    assert.equal(outcome.growth_milestones.at(-1).witness_hash, outcome.witness_hash);
+  }
+}
 assert.ok(archivedHoldout.proof_paths.every(path =>
   path.checks_attempted === path.fingerprints.length
   && path.checks_completed === path.checks_attempted

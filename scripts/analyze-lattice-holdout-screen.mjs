@@ -20,8 +20,34 @@ const required = [
 for (const name of required) assert.ok(args.get(name), `--${name}=<report.json> is required`);
 const readJson = async name => JSON.parse(await readFile(args.get(name), "utf8"));
 const loaded = Object.fromEntries(await Promise.all(required.map(async name => [name, await readJson(name)])));
-const searchReports = Object.fromEntries(policyNames.map(policy => [policy, loaded[`${policy}-search`]]));
-const proofReports = Object.fromEntries(policyNames.map(policy => [policy, loaded[`${policy}-proof`]]));
+const normalizeCapturedWitnesses = report => ({
+  ...report,
+  rows: report.rows.map(row => {
+    const milestone = row.growthMilestones?.at(-1);
+    const maxLiveTiles = row.maxLiveTiles ?? row.largestPatch;
+    if (!milestone) return {
+      ...row,
+      maxLiveTiles,
+      uncapturedMaxLiveTiles: Math.max(0, maxLiveTiles - row.largestPatch)
+    };
+    assert.ok(maxLiveTiles >= milestone.patchSize);
+    return {
+      ...row,
+      largestPatch: milestone.patchSize,
+      witnessHash: milestone.witnessHash,
+      maxLiveTiles,
+      uncapturedMaxLiveTiles: maxLiveTiles - milestone.patchSize
+    };
+  })
+});
+const searchReports = Object.fromEntries(policyNames.map(policy => [
+  policy,
+  normalizeCapturedWitnesses(loaded[`${policy}-search`])
+]));
+const proofReports = Object.fromEntries(policyNames.map(policy => [
+  policy,
+  normalizeCapturedWitnesses(loaded[`${policy}-proof`])
+]));
 const priorBaseline = loaded["prior-baseline-report"];
 const priorImmediate = loaded["prior-immediate-report"];
 const priorDelayed = loaded["prior-delayed-report"];
@@ -111,6 +137,8 @@ const compactMilestones = row => row.growthMilestones.map(milestone => ({
 }));
 const compactOutcome = row => ({
   largest_patch: row.largestPatch,
+  max_live_tiles: row.maxLiveTiles,
+  uncaptured_max_live_tiles: row.uncapturedMaxLiveTiles,
   witness_hash: row.witnessHash,
   visited_nodes: row.visitedNodes,
   backtracks: row.backtracks,
@@ -148,6 +176,8 @@ for (const policy of policyNames) {
       id: row.case,
       seed: row.seed,
       largest_patch: row.largestPatch,
+      max_live_tiles: row.maxLiveTiles,
+      uncaptured_max_live_tiles: row.uncapturedMaxLiveTiles,
       witness_hash: row.witnessHash,
       checks_attempted: row.genericPeriodicCertificateChecksAttempted,
       checks_completed: row.genericPeriodicCertificateChecksCompleted,
@@ -240,8 +270,8 @@ const combinedComparison = Object.fromEntries(
 );
 assert.deepEqual(holdoutComparison, {
   delayed_better_than_immediate: 5,
-  delayed_equal_to_immediate: 13,
-  delayed_worse_than_immediate: 2,
+  delayed_equal_to_immediate: 14,
+  delayed_worse_than_immediate: 1,
   delayed_better_than_baseline: 6,
   delayed_equal_to_baseline: 3,
   delayed_worse_than_baseline: 11,
@@ -260,6 +290,7 @@ const result = {
   benchmark_schema_version: 15,
   prior_three_policy_report: args.get("prior-delayed-report"),
   protocol: {
+    witness_accounting: "largest_patch and witness_hash identify the last captured placement snapshot; max_live_tiles retains any transient uncaptured engine peak",
     baseline: searchReports.baseline.configuration,
     immediate: searchReports.immediate.configuration,
     delayed_25: searchReports.delayed.configuration,
@@ -293,7 +324,7 @@ const result = {
     policy_decision: "retain_delayed_25_as_complementary_holdout_supported_lane"
   },
   interpretation: [
-    "On five unseen seeds, delayed-25 improves five immediate-nogood paths, ties thirteen, and worsens two; the three-seed dominance claim does not generalize literally.",
+    "On five unseen seeds, delayed-25 improves five immediate-nogood paths, ties fourteen, and worsens one; the three-seed dominance claim does not generalize literally.",
     "Delayed-25 nevertheless reaches two 40-tile targets on holdout seeds versus one for immediate nogoods and one for baseline, so it remains a useful complementary lane.",
     "All 5,540 holdout quotient checks completed without timeout or periodic certificate, including both distinct 40-tile witness hashes.",
     "The holdout adds 2,758 rigid-motion patch geometries beyond the prior 2,073, expanding eight-seed three-policy coverage to 4,831.",

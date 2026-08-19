@@ -5,6 +5,7 @@
   "benchmark_schema_version": 15,
   "prior_two_policy_report": "data/lattice-polyhedron-nogood-proof-portfolio-2026-08-19.json",
   "protocol": {
+    "witness_accounting": "largest_patch and witness_hash identify the last captured placement snapshot; max_live_tiles retains any transient uncaptured engine peak",
     "baseline": {
       "target": 40,
       "timeMs": 30000,
@@ -118,6 +119,8 @@
       "seed": 1,
       "baseline": {
         "largest_patch": 21,
+        "max_live_tiles": 21,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "bf1ecec2fd68388c",
         "visited_nodes": 627,
         "backtracks": 435,
@@ -130,6 +133,8 @@
       },
       "immediate": {
         "largest_patch": 31,
+        "max_live_tiles": 31,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "0d277d30a620b275",
         "visited_nodes": 740,
         "backtracks": 418,
@@ -143,6 +148,8 @@
       "delayed": {
         "25": {
           "largest_patch": 31,
+          "max_live_tiles": 31,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "0d277d30a620b275",
           "visited_nodes": 729,
           "backtracks": 418,
@@ -155,6 +162,8 @@
         },
         "50": {
           "largest_patch": 31,
+          "max_live_tiles": 31,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "0d277d30a620b275",
           "visited_nodes": 727,
           "backtracks": 419,
@@ -167,6 +176,8 @@
         },
         "100": {
           "largest_patch": 31,
+          "max_live_tiles": 31,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "0d277d30a620b275",
           "visited_nodes": 698,
           "backtracks": 420,
@@ -554,6 +565,8 @@
       "seed": 2,
       "baseline": {
         "largest_patch": 22,
+        "max_live_tiles": 22,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "1e8d08e2cd54d840",
         "visited_nodes": 623,
         "backtracks": 429,
@@ -566,6 +579,8 @@
       },
       "immediate": {
         "largest_patch": 28,
+        "max_live_tiles": 28,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "cfcbdd6e0d1abfe6",
         "visited_nodes": 700,
         "backtracks": 425,
@@ -579,6 +594,8 @@
       "delayed": {
         "25": {
           "largest_patch": 28,
+          "max_live_tiles": 28,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "cfcbdd6e0d1abfe6",
           "visited_nodes": 694,
           "backtracks": 424,
@@ -591,6 +608,8 @@
         },
         "50": {
           "largest_patch": 28,
+          "max_live_tiles": 28,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "cfcbdd6e0d1abfe6",
           "visited_nodes": 695,
           "backtracks": 428,
@@ -603,6 +622,8 @@
         },
         "100": {
           "largest_patch": 28,
+          "max_live_tiles": 28,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "cfcbdd6e0d1abfe6",
           "visited_nodes": 700,
           "backtracks": 432,
@@ -976,6 +997,8 @@
       "seed": 3,
       "baseline": {
         "largest_patch": 27,
+        "max_live_tiles": 27,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "913017bbeb925415",
         "visited_nodes": 641,
         "backtracks": 427,
@@ -988,6 +1011,8 @@
       },
       "immediate": {
         "largest_patch": 26,
+        "max_live_tiles": 26,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "ccf253260ac3d2a7",
         "visited_nodes": 684,
         "backtracks": 418,
@@ -1001,6 +1026,8 @@
       "delayed": {
         "25": {
           "largest_patch": 26,
+          "max_live_tiles": 26,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "ccf253260ac3d2a7",
           "visited_nodes": 665,
           "backtracks": 414,
@@ -1013,6 +1040,8 @@
         },
         "50": {
           "largest_patch": 26,
+          "max_live_tiles": 26,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "ccf253260ac3d2a7",
           "visited_nodes": 665,
           "backtracks": 413,
@@ -1025,6 +1054,8 @@
         },
         "100": {
           "largest_patch": 21,
+          "max_live_tiles": 21,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "be3e0f61b8506ab7",
           "visited_nodes": 638,
           "backtracks": 416,
@@ -1419,6 +1450,8 @@
       "seed": 1,
       "baseline": {
         "largest_patch": 14,
+        "max_live_tiles": 14,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "ca267abb58ed4c66",
         "visited_nodes": 486,
         "backtracks": 454,
@@ -1431,6 +1464,8 @@
       },
       "immediate": {
         "largest_patch": 14,
+        "max_live_tiles": 14,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "025c7d17f7b58e97",
         "visited_nodes": 539,
         "backtracks": 442,
@@ -1444,6 +1479,8 @@
       "delayed": {
         "25": {
           "largest_patch": 14,
+          "max_live_tiles": 14,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "025c7d17f7b58e97",
           "visited_nodes": 538,
           "backtracks": 442,
@@ -1456,6 +1493,8 @@
         },
         "50": {
           "largest_patch": 14,
+          "max_live_tiles": 14,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "025c7d17f7b58e97",
           "visited_nodes": 535,
           "backtracks": 443,
@@ -1468,6 +1507,8 @@
         },
         "100": {
           "largest_patch": 14,
+          "max_live_tiles": 14,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "849ed53fe7f6d390",
           "visited_nodes": 516,
           "backtracks": 451,
@@ -1687,6 +1728,8 @@
       "seed": 2,
       "baseline": {
         "largest_patch": 17,
+        "max_live_tiles": 17,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "b4ad5cba53b90111",
         "visited_nodes": 487,
         "backtracks": 440,
@@ -1699,6 +1742,8 @@
       },
       "immediate": {
         "largest_patch": 19,
+        "max_live_tiles": 19,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "d4ece99f39e9b09b",
         "visited_nodes": 541,
         "backtracks": 417,
@@ -1712,6 +1757,8 @@
       "delayed": {
         "25": {
           "largest_patch": 20,
+          "max_live_tiles": 20,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "65de691d33e8dbf6",
           "visited_nodes": 511,
           "backtracks": 440,
@@ -1724,6 +1771,8 @@
         },
         "50": {
           "largest_patch": 20,
+          "max_live_tiles": 20,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "65de691d33e8dbf6",
           "visited_nodes": 511,
           "backtracks": 441,
@@ -1736,6 +1785,8 @@
         },
         "100": {
           "largest_patch": 17,
+          "max_live_tiles": 17,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "7bdf692237ea8ef8",
           "visited_nodes": 504,
           "backtracks": 437,
@@ -2018,6 +2069,8 @@
       "seed": 3,
       "baseline": {
         "largest_patch": 16,
+        "max_live_tiles": 16,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "ef3f57db2e5ea8bf",
         "visited_nodes": 477,
         "backtracks": 445,
@@ -2030,6 +2083,8 @@
       },
       "immediate": {
         "largest_patch": 17,
+        "max_live_tiles": 17,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "31ccbf4e9ae9f03a",
         "visited_nodes": 543,
         "backtracks": 439,
@@ -2043,6 +2098,8 @@
       "delayed": {
         "25": {
           "largest_patch": 17,
+          "max_live_tiles": 17,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "31ccbf4e9ae9f03a",
           "visited_nodes": 543,
           "backtracks": 439,
@@ -2055,6 +2112,8 @@
         },
         "50": {
           "largest_patch": 17,
+          "max_live_tiles": 17,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "31ccbf4e9ae9f03a",
           "visited_nodes": 540,
           "backtracks": 439,
@@ -2067,6 +2126,8 @@
         },
         "100": {
           "largest_patch": 15,
+          "max_live_tiles": 15,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "1dd266b12a0ad0e6",
           "visited_nodes": 528,
           "backtracks": 441,
@@ -2321,6 +2382,8 @@
       "seed": 1,
       "baseline": {
         "largest_patch": 23,
+        "max_live_tiles": 23,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "4ff72ef6b74d881c",
         "visited_nodes": 425,
         "backtracks": 417,
@@ -2333,6 +2396,8 @@
       },
       "immediate": {
         "largest_patch": 40,
+        "max_live_tiles": 40,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "2017c904dab99f1e",
         "visited_nodes": 351,
         "backtracks": 288,
@@ -2346,6 +2411,8 @@
       "delayed": {
         "25": {
           "largest_patch": 40,
+          "max_live_tiles": 40,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "2017c904dab99f1e",
           "visited_nodes": 369,
           "backtracks": 306,
@@ -2357,7 +2424,9 @@
           "nogood_activated": true
         },
         "50": {
-          "largest_patch": 40,
+          "largest_patch": 39,
+          "max_live_tiles": 40,
+          "uncaptured_max_live_tiles": 1,
           "witness_hash": "869191428ea118fd",
           "visited_nodes": 385,
           "backtracks": 358,
@@ -2370,6 +2439,8 @@
         },
         "100": {
           "largest_patch": 38,
+          "max_live_tiles": 38,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "f9deaec87960971f",
           "visited_nodes": 394,
           "backtracks": 367,
@@ -2834,6 +2905,8 @@
       "seed": 2,
       "baseline": {
         "largest_patch": 36,
+        "max_live_tiles": 36,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "dc01dcccbba7abbf",
         "visited_nodes": 427,
         "backtracks": 376,
@@ -2846,6 +2919,8 @@
       },
       "immediate": {
         "largest_patch": 27,
+        "max_live_tiles": 27,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "b400963821a4aacf",
         "visited_nodes": 424,
         "backtracks": 367,
@@ -2859,6 +2934,8 @@
       "delayed": {
         "25": {
           "largest_patch": 40,
+          "max_live_tiles": 40,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "de7fb84739a496c7",
           "visited_nodes": 329,
           "backtracks": 257,
@@ -2871,6 +2948,8 @@
         },
         "50": {
           "largest_patch": 28,
+          "max_live_tiles": 28,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "88a4de9aa494f340",
           "visited_nodes": 453,
           "backtracks": 384,
@@ -2883,6 +2962,8 @@
         },
         "100": {
           "largest_patch": 35,
+          "max_live_tiles": 35,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "2ee08d2dfe094921",
           "visited_nodes": 423,
           "backtracks": 365,
@@ -3438,6 +3519,8 @@
       "seed": 3,
       "baseline": {
         "largest_patch": 27,
+        "max_live_tiles": 27,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "35eae034b7d30321",
         "visited_nodes": 416,
         "backtracks": 381,
@@ -3450,6 +3533,8 @@
       },
       "immediate": {
         "largest_patch": 21,
+        "max_live_tiles": 21,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "8bec25b0181a05ea",
         "visited_nodes": 455,
         "backtracks": 398,
@@ -3463,6 +3548,8 @@
       "delayed": {
         "25": {
           "largest_patch": 21,
+          "max_live_tiles": 21,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "8bec25b0181a05ea",
           "visited_nodes": 448,
           "backtracks": 392,
@@ -3475,6 +3562,8 @@
         },
         "50": {
           "largest_patch": 21,
+          "max_live_tiles": 21,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "8bec25b0181a05ea",
           "visited_nodes": 450,
           "backtracks": 396,
@@ -3487,6 +3576,8 @@
         },
         "100": {
           "largest_patch": 21,
+          "max_live_tiles": 21,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "8bec25b0181a05ea",
           "visited_nodes": 450,
           "backtracks": 399,
@@ -3846,6 +3937,8 @@
       "seed": 1,
       "baseline": {
         "largest_patch": 25,
+        "max_live_tiles": 25,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "410171399ec8c634",
         "visited_nodes": 480,
         "backtracks": 443,
@@ -3858,6 +3951,8 @@
       },
       "immediate": {
         "largest_patch": 19,
+        "max_live_tiles": 19,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "30d05b7b6ce65637",
         "visited_nodes": 468,
         "backtracks": 455,
@@ -3871,6 +3966,8 @@
       "delayed": {
         "25": {
           "largest_patch": 19,
+          "max_live_tiles": 19,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "30d05b7b6ce65637",
           "visited_nodes": 468,
           "backtracks": 455,
@@ -3883,6 +3980,8 @@
         },
         "50": {
           "largest_patch": 19,
+          "max_live_tiles": 19,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "30d05b7b6ce65637",
           "visited_nodes": 468,
           "backtracks": 455,
@@ -3895,6 +3994,8 @@
         },
         "100": {
           "largest_patch": 19,
+          "max_live_tiles": 19,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "30d05b7b6ce65637",
           "visited_nodes": 468,
           "backtracks": 455,
@@ -4226,6 +4327,8 @@
       "seed": 2,
       "baseline": {
         "largest_patch": 19,
+        "max_live_tiles": 19,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "7b6e67b95c9369bf",
         "visited_nodes": 483,
         "backtracks": 461,
@@ -4238,6 +4341,8 @@
       },
       "immediate": {
         "largest_patch": 15,
+        "max_live_tiles": 15,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "5523148e17e0ba37",
         "visited_nodes": 479,
         "backtracks": 473,
@@ -4251,6 +4356,8 @@
       "delayed": {
         "25": {
           "largest_patch": 15,
+          "max_live_tiles": 15,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "5523148e17e0ba37",
           "visited_nodes": 475,
           "backtracks": 469,
@@ -4263,6 +4370,8 @@
         },
         "50": {
           "largest_patch": 15,
+          "max_live_tiles": 15,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "5523148e17e0ba37",
           "visited_nodes": 477,
           "backtracks": 471,
@@ -4275,6 +4384,8 @@
         },
         "100": {
           "largest_patch": 22,
+          "max_live_tiles": 22,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "d76e1d2df1d89fb2",
           "visited_nodes": 460,
           "backtracks": 454,
@@ -4536,6 +4647,8 @@
       "seed": 3,
       "baseline": {
         "largest_patch": 32,
+        "max_live_tiles": 32,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "e9d1724d88ab43c2",
         "visited_nodes": 461,
         "backtracks": 460,
@@ -4548,6 +4661,8 @@
       },
       "immediate": {
         "largest_patch": 16,
+        "max_live_tiles": 16,
+        "uncaptured_max_live_tiles": 0,
         "witness_hash": "9ddac44b1d7179bd",
         "visited_nodes": 479,
         "backtracks": 470,
@@ -4561,6 +4676,8 @@
       "delayed": {
         "25": {
           "largest_patch": 16,
+          "max_live_tiles": 16,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "9ddac44b1d7179bd",
           "visited_nodes": 474,
           "backtracks": 467,
@@ -4573,6 +4690,8 @@
         },
         "50": {
           "largest_patch": 14,
+          "max_live_tiles": 14,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "75927297d9868a74",
           "visited_nodes": 475,
           "backtracks": 468,
@@ -4585,6 +4704,8 @@
         },
         "100": {
           "largest_patch": 14,
+          "max_live_tiles": 14,
+          "uncaptured_max_live_tiles": 0,
           "witness_hash": "75927297d9868a74",
           "visited_nodes": 478,
           "backtracks": 470,
@@ -4954,12 +5075,12 @@
     {
       "activation_failure_states": 50,
       "better_than_immediate": 2,
-      "equal_to_immediate": 9,
-      "worse_than_immediate": 1,
+      "equal_to_immediate": 8,
+      "worse_than_immediate": 2,
       "better_than_baseline": 5,
       "equal_to_baseline": 1,
       "worse_than_baseline": 6,
-      "target_hits": 1
+      "target_hits": 0
     },
     {
       "activation_failure_states": 100,
@@ -4977,6 +5098,8 @@
       "id": "10_16113",
       "seed": 1,
       "largest_patch": 31,
+      "max_live_tiles": 31,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "0d277d30a620b275",
       "checks_attempted": 139,
       "checks_completed": 139,
@@ -5132,6 +5255,8 @@
       "id": "10_16113",
       "seed": 2,
       "largest_patch": 28,
+      "max_live_tiles": 28,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "cfcbdd6e0d1abfe6",
       "checks_attempted": 118,
       "checks_completed": 118,
@@ -5266,6 +5391,8 @@
       "id": "10_16113",
       "seed": 3,
       "largest_patch": 26,
+      "max_live_tiles": 26,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "ccf253260ac3d2a7",
       "checks_attempted": 117,
       "checks_completed": 117,
@@ -5399,6 +5526,8 @@
       "id": "10_45026",
       "seed": 1,
       "largest_patch": 14,
+      "max_live_tiles": 14,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "025c7d17f7b58e97",
       "checks_attempted": 69,
       "checks_completed": 69,
@@ -5484,6 +5613,8 @@
       "id": "10_45026",
       "seed": 2,
       "largest_patch": 20,
+      "max_live_tiles": 20,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "65de691d33e8dbf6",
       "checks_attempted": 81,
       "checks_completed": 81,
@@ -5581,6 +5712,8 @@
       "id": "10_45026",
       "seed": 3,
       "largest_patch": 17,
+      "max_live_tiles": 17,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "31ccbf4e9ae9f03a",
       "checks_attempted": 85,
       "checks_completed": 85,
@@ -5682,6 +5815,8 @@
       "id": "10_45033",
       "seed": 1,
       "largest_patch": 40,
+      "max_live_tiles": 40,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "2017c904dab99f1e",
       "checks_attempted": 122,
       "checks_completed": 122,
@@ -5820,6 +5955,8 @@
       "id": "10_45033",
       "seed": 2,
       "largest_patch": 40,
+      "max_live_tiles": 40,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "de7fb84739a496c7",
       "checks_attempted": 102,
       "checks_completed": 102,
@@ -5938,6 +6075,8 @@
       "id": "10_45033",
       "seed": 3,
       "largest_patch": 21,
+      "max_live_tiles": 21,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "8bec25b0181a05ea",
       "checks_attempted": 67,
       "checks_completed": 67,
@@ -6021,6 +6160,8 @@
       "id": "9_11683",
       "seed": 1,
       "largest_patch": 19,
+      "max_live_tiles": 19,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "30d05b7b6ce65637",
       "checks_attempted": 86,
       "checks_completed": 86,
@@ -6123,6 +6264,8 @@
       "id": "9_11683",
       "seed": 2,
       "largest_patch": 15,
+      "max_live_tiles": 15,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "5523148e17e0ba37",
       "checks_attempted": 59,
       "checks_completed": 59,
@@ -6198,6 +6341,8 @@
       "id": "9_11683",
       "seed": 3,
       "largest_patch": 16,
+      "max_live_tiles": 16,
+      "uncaptured_max_live_tiles": 0,
       "witness_hash": "9ddac44b1d7179bd",
       "checks_attempted": 71,
       "checks_completed": 71,

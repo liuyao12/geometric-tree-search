@@ -22,16 +22,42 @@ const required = [
 ];
 for (const name of required) assert.ok(args.get(name), `--${name}=<report.json> is required`);
 const readJson = async name => JSON.parse(await readFile(args.get(name), "utf8"));
+const normalizeCapturedWitnesses = report => ({
+  ...report,
+  rows: report.rows.map(row => {
+    const milestone = row.growthMilestones?.at(-1);
+    const maxLiveTiles = row.maxLiveTiles ?? row.largestPatch;
+    if (!milestone) return {
+      ...row,
+      maxLiveTiles,
+      uncapturedMaxLiveTiles: Math.max(0, maxLiveTiles - row.largestPatch)
+    };
+    assert.ok(maxLiveTiles >= milestone.patchSize);
+    return {
+      ...row,
+      largestPatch: milestone.patchSize,
+      witnessHash: milestone.witnessHash,
+      maxLiveTiles,
+      uncapturedMaxLiveTiles: maxLiveTiles - milestone.patchSize
+    };
+  })
+});
 const [
-  baseline,
-  immediate,
-  delayed25,
-  delayed50,
-  delayed100,
-  delayedProof,
+  baselineRaw,
+  immediateRaw,
+  delayed25Raw,
+  delayed50Raw,
+  delayed100Raw,
+  delayedProofRaw,
   baselineFingerprintReport,
   immediateProofReport
 ] = await Promise.all(required.map(readJson));
+const baseline = normalizeCapturedWitnesses(baselineRaw);
+const immediate = normalizeCapturedWitnesses(immediateRaw);
+const delayed25 = normalizeCapturedWitnesses(delayed25Raw);
+const delayed50 = normalizeCapturedWitnesses(delayed50Raw);
+const delayed100 = normalizeCapturedWitnesses(delayed100Raw);
+const delayedProof = normalizeCapturedWitnesses(delayedProofRaw);
 
 const thresholds = new Map([
   [25, delayed25],
@@ -117,6 +143,8 @@ const compactMilestones = row => row.growthMilestones.map(milestone => ({
 }));
 const compactOutcome = row => ({
   largest_patch: row.largestPatch,
+  max_live_tiles: row.maxLiveTiles,
+  uncaptured_max_live_tiles: row.uncapturedMaxLiveTiles,
   witness_hash: row.witnessHash,
   visited_nodes: row.visitedNodes,
   backtracks: row.backtracks,
@@ -159,6 +187,8 @@ const proofPaths = pathKeys.map(key => {
     id: row.case,
     seed: row.seed,
     largest_patch: row.largestPatch,
+    max_live_tiles: row.maxLiveTiles,
+    uncaptured_max_live_tiles: row.uncapturedMaxLiveTiles,
     witness_hash: row.witnessHash,
     checks_attempted: row.genericPeriodicCertificateChecksAttempted,
     checks_completed: row.genericPeriodicCertificateChecksCompleted,
@@ -269,6 +299,7 @@ const result = {
   benchmark_schema_version: baseline.schemaVersion,
   prior_two_policy_report: args.get("immediate-proof-report"),
   protocol: {
+    witness_accounting: "largest_patch and witness_hash identify the last captured placement snapshot; max_live_tiles retains any transient uncaptured engine peak",
     baseline: baseline.configuration,
     immediate_nogood: {
       ...immediate.configuration,

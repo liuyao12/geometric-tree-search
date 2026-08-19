@@ -275,6 +275,10 @@ its relationship to the boundary. Use
 delay applying them until `N` failed states have accumulated; a threshold
 larger than the run preserves the baseline path while still auditing the
 learned clause set.
+Use `--geometric-nogood-stagnation-failures=N` to test a one-way adaptive
+variant that activates learned clauses only after `N` encoded failures without
+increasing the captured maximum patch size. This is an experimental control,
+not the web proof-lane default.
 
 The four-candidate, three-seed A/B does not support replacing the baseline
 proof order with nogoods: five paths deepen, one ties, and six become
@@ -298,14 +302,28 @@ now uses this delayed policy. Milestone curves and exact fingerprints are in
 `data/lattice-polyhedron-delayed-nogood-screen-2026-08-19.json`.
 
 Five unseen seeds (4 through 8) then tested whether that three-seed result
-generalizes. Delayed-25 beat immediate nogoods on 5 of 20 paths, tied 13, and
-worsened 2, so it is not a universal dominance result. It nevertheless found
+generalizes. Delayed-25 beat immediate nogoods on 5 of 20 paths, tied 14, and
+worsened 1, so it is not a universal dominance result. It nevertheless found
 two 40-tile witnesses versus one for immediate nogoods and one for baseline.
 Exact hybrid checking replayed all 60 policy paths without changing them:
 5,540 checks completed with no timeout or certificate. The holdout contributed
 2,758 new rigid-motion geometries and raised the eight-seed, three-policy union
 from 2,073 to 4,831. Full milestones and fingerprints are archived in
 `data/lattice-polyhedron-holdout-screen-2026-08-19.json`.
+
+An adaptive stagnation gate was then tested as a possible replacement for the
+fixed 25-failure delay. Thresholds 10, 25, and 50 improved no training policy
+overall; stagnation-10 was least harmful but improved 0 of 12 training paths
+and worsened 1. On the five-seed holdout it improved 0 of 20 paths, tied 16,
+worsened 4, and reached one 40-tile target versus two for fixed delayed-25.
+The option remains available for controlled experiments, but the live proof
+lane retains fixed delayed-25. The complete negative ablation is archived in
+`data/lattice-polyhedron-stagnation-nogood-ab-2026-08-19.json`.
+
+All regenerated summaries distinguish a captured witness from a transient
+engine peak at a work-budget boundary. `largest_patch` and `witness_hash`
+always refer to the last emitted placement snapshot; `max_live_tiles` retains
+the uncaptured peak for diagnostics.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in

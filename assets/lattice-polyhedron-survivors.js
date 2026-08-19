@@ -101,8 +101,8 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       paths_per_policy: 20,
       total_policy_paths: 60,
       delayed_better_than_immediate: 5,
-      delayed_equal_to_immediate: 13,
-      delayed_worse_than_immediate: 2,
+      delayed_equal_to_immediate: 14,
+      delayed_worse_than_immediate: 1,
       baseline_target_hits: 1,
       immediate_target_hits: 1,
       delayed_target_hits: 2,
@@ -113,6 +113,23 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       expanded_rigid_motion_fingerprints: 4831,
       policy_decision: "retain_delayed_25_as_complementary_holdout_supported_lane",
       report: "data/lattice-polyhedron-holdout-screen-2026-08-19.json"
+    }),
+    stagnation_nogood_ab: Object.freeze({
+      training_thresholds: Object.freeze([10, 25, 50]),
+      selected_holdout_threshold: 10,
+      training_paths_per_policy: 12,
+      holdout_paths: 20,
+      training_10_better_than_fixed_delayed_25: 0,
+      training_10_equal_to_fixed_delayed_25: 11,
+      training_10_worse_than_fixed_delayed_25: 1,
+      training_10_target_hits: 2,
+      holdout_10_better_than_fixed_delayed_25: 0,
+      holdout_10_equal_to_fixed_delayed_25: 16,
+      holdout_10_worse_than_fixed_delayed_25: 4,
+      holdout_10_target_hits: 1,
+      fixed_delayed_25_holdout_target_hits: 2,
+      policy_decision: "reject_stagnation_gate_retain_fixed_delayed_25",
+      report: "data/lattice-polyhedron-stagnation-nogood-ab-2026-08-19.json"
     })
   })
 });
@@ -121,7 +138,7 @@ const GCTS_PROOF_SCREENING_RESULTS = Object.freeze({
   "10_16113": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 21, median_largest_patch: 22, best_largest_patch: 27, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 2312, focused_witness_hash: "b4c8e0c893b1eb7c", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1837, distinct_checkpoint_checks: 306, distinct_checkpoint_max_size: 27, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 1302, distinct_checkpoint_duplicate_skips: 51, distinct_checkpoint_cap_skips: 229, global_checkpoint_states: 295, repeated_checkpoint_path_pairs: 11, nogood_robust_largest_patch: 26, nogood_median_largest_patch: 28, nogood_best_largest_patch: 31, nogood_target_hits: 0, portfolio_robust_largest_patch: 27, portfolio_median_largest_patch: 28, portfolio_best_largest_patch: 31, portfolio_target_hits: 0, nogood_checkpoint_checks: 374, nogood_checkpoint_distinct: 358, nogood_new_checkpoint_states: 71, combined_checkpoint_states: 676, holdout_trials: 5, holdout_nogood_robust_largest_patch: 26, holdout_nogood_median_largest_patch: 30, holdout_nogood_best_largest_patch: 40, holdout_nogood_target_hits: 1, holdout_checkpoint_checks: 1838, holdout_new_checkpoint_states: 892, expanded_checkpoint_states: 1568 }),
   "10_45026": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 14, median_largest_patch: 16, best_largest_patch: 17, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 1, focused_seeded_tie_breaks: false, focused_visited_nodes: 4278, focused_witness_hash: "e16dbe38a0165b93", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1287, distinct_checkpoint_checks: 215, distinct_checkpoint_max_size: 17, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 916, distinct_checkpoint_duplicate_skips: 160, distinct_checkpoint_cap_skips: 156, global_checkpoint_states: 192, repeated_checkpoint_path_pairs: 23, nogood_robust_largest_patch: 14, nogood_median_largest_patch: 17, nogood_best_largest_patch: 20, nogood_target_hits: 0, portfolio_robust_largest_patch: 14, portfolio_median_largest_patch: 17, portfolio_best_largest_patch: 20, portfolio_target_hits: 0, nogood_checkpoint_checks: 235, nogood_checkpoint_distinct: 212, nogood_new_checkpoint_states: 48, combined_checkpoint_states: 411, holdout_trials: 5, holdout_nogood_robust_largest_patch: 14, holdout_nogood_median_largest_patch: 16, holdout_nogood_best_largest_patch: 21, holdout_nogood_target_hits: 0, holdout_checkpoint_checks: 1129, holdout_new_checkpoint_states: 648, expanded_checkpoint_states: 1059 }),
   "10_45033": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 23, median_largest_patch: 27, best_largest_patch: 36, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 2, focused_visited_nodes: 1162, focused_witness_hash: "deb51611a30f25b5", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1221, distinct_checkpoint_checks: 262, distinct_checkpoint_max_size: 36, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 762, distinct_checkpoint_duplicate_skips: 44, distinct_checkpoint_cap_skips: 197, global_checkpoint_states: 256, repeated_checkpoint_path_pairs: 6, nogood_robust_largest_patch: 21, nogood_median_largest_patch: 40, nogood_best_largest_patch: 40, nogood_target_hits: 2, portfolio_robust_largest_patch: 27, portfolio_median_largest_patch: 40, portfolio_best_largest_patch: 40, portfolio_target_hits: 2, nogood_checkpoint_checks: 291, nogood_checkpoint_distinct: 285, nogood_new_checkpoint_states: 72, combined_checkpoint_states: 535, holdout_trials: 5, holdout_nogood_robust_largest_patch: 21, holdout_nogood_median_largest_patch: 32, holdout_nogood_best_largest_patch: 40, holdout_nogood_target_hits: 1, holdout_checkpoint_checks: 1361, holdout_new_checkpoint_states: 635, expanded_checkpoint_states: 1170 }),
-  "9_11683": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 19, median_largest_patch: 25, best_largest_patch: 32, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 591, focused_witness_hash: "5ab75954f9e80239", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1399, distinct_checkpoint_checks: 310, distinct_checkpoint_max_size: 32, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 970, distinct_checkpoint_duplicate_skips: 22, distinct_checkpoint_cap_skips: 119, global_checkpoint_states: 308, repeated_checkpoint_path_pairs: 2, nogood_robust_largest_patch: 15, nogood_median_largest_patch: 16, nogood_best_largest_patch: 19, nogood_target_hits: 0, portfolio_robust_largest_patch: 19, portfolio_median_largest_patch: 25, portfolio_best_largest_patch: 32, portfolio_target_hits: 0, nogood_checkpoint_checks: 216, nogood_checkpoint_distinct: 213, nogood_new_checkpoint_states: 8, combined_checkpoint_states: 451, holdout_trials: 5, holdout_nogood_robust_largest_patch: 13, holdout_nogood_median_largest_patch: 16, holdout_nogood_best_largest_patch: 26, holdout_nogood_target_hits: 0, holdout_checkpoint_checks: 1212, holdout_new_checkpoint_states: 583, expanded_checkpoint_states: 1034 })
+  "9_11683": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 19, median_largest_patch: 25, best_largest_patch: 32, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 591, focused_witness_hash: "5ab75954f9e80239", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1399, distinct_checkpoint_checks: 310, distinct_checkpoint_max_size: 32, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 970, distinct_checkpoint_duplicate_skips: 22, distinct_checkpoint_cap_skips: 119, global_checkpoint_states: 308, repeated_checkpoint_path_pairs: 2, nogood_robust_largest_patch: 15, nogood_median_largest_patch: 16, nogood_best_largest_patch: 19, nogood_target_hits: 0, portfolio_robust_largest_patch: 19, portfolio_median_largest_patch: 25, portfolio_best_largest_patch: 32, portfolio_target_hits: 0, nogood_checkpoint_checks: 216, nogood_checkpoint_distinct: 213, nogood_new_checkpoint_states: 8, combined_checkpoint_states: 451, holdout_trials: 5, holdout_nogood_robust_largest_patch: 13, holdout_nogood_median_largest_patch: 16, holdout_nogood_best_largest_patch: 25, holdout_nogood_target_hits: 0, holdout_checkpoint_checks: 1212, holdout_new_checkpoint_states: 583, expanded_checkpoint_states: 1034 })
 });
 
 const rejected = (certificate, motifTiles, periodVectors) => ({
