@@ -1,5 +1,44 @@
 import assert from "node:assert/strict";
-import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
+import {
+  canonicalLatticePatchStateKey,
+  createTilingStream,
+  latticePatchFingerprint,
+  PROPER_CUBIC_ROTATIONS,
+  tileSpecs
+} from "../apps/3d-lattice-tiler/engine.js";
+
+assert.equal(PROPER_CUBIC_ROTATIONS.length, 24);
+assert.equal(new Set(PROPER_CUBIC_ROTATIONS.map(matrix => matrix.flat().join(","))).size, 24);
+const labeledPointPatch = [
+  { prototile_idx: 0, vertices: [[0, 0, 0]] },
+  { prototile_idx: 1, vertices: [[1, 0, 0]] },
+  { prototile_idx: 2, vertices: [[0, 2, 0]] },
+  { prototile_idx: 3, vertices: [[0, 0, 3]] }
+];
+const rotateAndTranslatePatch = (placements, matrix, translation) => placements.map(placement => ({
+  prototile_idx: placement.prototile_idx,
+  vertices: placement.vertices.map(vertex => [0, 1, 2].map(row =>
+    matrix[row][0] * vertex[0]
+      + matrix[row][1] * vertex[1]
+      + matrix[row][2] * vertex[2]
+      + translation[row]
+  ))
+}));
+const quarterTurn = [[0, -1, 0], [1, 0, 0], [0, 0, 1]];
+const rigidCopy = rotateAndTranslatePatch(labeledPointPatch, quarterTurn, [7, -5, 11]).reverse();
+const reflectedCopy = rotateAndTranslatePatch(
+  labeledPointPatch,
+  [[-1, 0, 0], [0, 1, 0], [0, 0, 1]],
+  [7, -5, 11]
+);
+const canonicalPatchKey = canonicalLatticePatchStateKey(labeledPointPatch);
+assert.equal(canonicalPatchKey, canonicalLatticePatchStateKey(rigidCopy));
+assert.equal(latticePatchFingerprint(canonicalPatchKey), latticePatchFingerprint(canonicalLatticePatchStateKey(rigidCopy)));
+assert.notEqual(
+  canonicalPatchKey,
+  canonicalLatticePatchStateKey(reflectedCopy),
+  "proper-rotation canonicalization must not identify a reflected labeled patch"
+);
 
 async function solve(overrides) {
   const config = {

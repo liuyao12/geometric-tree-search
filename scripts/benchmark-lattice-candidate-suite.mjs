@@ -466,7 +466,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 12,
+  schemaVersion: 13,
   configuration: {
     target,
     timeMs,

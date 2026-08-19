@@ -6,6 +6,79 @@ import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=2
 import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-global-overlap-v74";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
+const permutations = values => {
+  if (values.length <= 1) return [values.slice()];
+  const out = [];
+  for (let index = 0; index < values.length; index++) {
+    const rest = values.slice(0, index).concat(values.slice(index + 1));
+    for (const suffix of permutations(rest)) out.push([values[index], ...suffix]);
+  }
+  return out;
+};
+const matrixDeterminant = matrix =>
+  matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
+  - matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0])
+  + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0]);
+export const PROPER_CUBIC_ROTATIONS = Object.freeze((() => {
+  const rotations = [];
+  for (const permutation of permutations([0, 1, 2])) {
+    for (const sx of [-1, 1]) for (const sy of [-1, 1]) for (const sz of [-1, 1]) {
+      const signs = [sx, sy, sz];
+      const matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+      for (let row = 0; row < 3; row++) matrix[row][permutation[row]] = signs[permutation[row]];
+      if (matrixDeterminant(matrix) === 1) {
+        rotations.push(Object.freeze(matrix.map(row => Object.freeze(row))));
+      }
+    }
+  }
+  return rotations;
+})());
+const patchMatrixVector = (matrix, vector) => [
+  matrix[0][0] * vector[0] + matrix[0][1] * vector[1] + matrix[0][2] * vector[2],
+  matrix[1][0] * vector[0] + matrix[1][1] * vector[1] + matrix[1][2] * vector[2],
+  matrix[2][0] * vector[0] + matrix[2][1] * vector[1] + matrix[2][2] * vector[2]
+];
+const canonicalPatchCoordinate = value => value === 0 ? 0 : value;
+export const canonicalLatticePatchStateKey = placements => {
+  if (!placements?.length) return "";
+  let canonical = null;
+  for (const rotation of PROPER_CUBIC_ROTATIONS) {
+    const rotatedPlacements = placements.map(placement => {
+      const translation = placement.translation ?? [0, 0, 0];
+      return {
+        prototile_idx: placement.prototile_idx ?? 0,
+        vertices: (placement.orient?.verts ?? placement.vertices ?? []).map(vertex =>
+          patchMatrixVector(rotation, [
+            vertex[0] + translation[0],
+            vertex[1] + translation[1],
+            vertex[2] + translation[2]
+          ])
+        )
+      };
+    });
+    const allVertices = rotatedPlacements.flatMap(placement => placement.vertices);
+    const minima = [0, 1, 2].map(axis => Math.min(...allVertices.map(vertex => vertex[axis])));
+    const key = rotatedPlacements.map(placement => {
+      const vertices = placement.vertices.map(vertex => vertex.map((coordinate, axis) =>
+        canonicalPatchCoordinate(coordinate - minima[axis])
+      ).join(",")).sort().join("|");
+      return `${placement.prototile_idx}::${vertices}`;
+    }).sort().join(";;");
+    if (canonical === null || key < canonical) canonical = key;
+  }
+  return canonical ?? "";
+};
+export const latticePatchFingerprint = stateKey => {
+  let hash = 0x6c62272e07bb014262b821756295c58dn;
+  const prime = 0x0000000001000000000000000000013bn;
+  const text = String(stateKey ?? "");
+  for (let index = 0; index < text.length; index++) {
+    hash ^= BigInt(text.charCodeAt(index));
+    hash = BigInt.asUintN(128, hash * prime);
+  }
+  return hash.toString(16).padStart(32, "0");
+};
+
 export const createTilingStream = (() => {
   return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }) {
     const SCALE = tileSpecs.SCALE;
@@ -3167,20 +3240,7 @@ export const createTilingStream = (() => {
       }
       return null;
     };
-    const periodicPatchStateKey = () => state.placements
-      .map(placement => placementGeometryKey(placement))
-      .sort()
-      .join(";;");
-    const periodicPatchFingerprint = stateKey => {
-      let hash = 0x6c62272e07bb014262b821756295c58dn;
-      const prime = 0x0000000001000000000000000000013bn;
-      const text = String(stateKey ?? "");
-      for (let index = 0; index < text.length; index++) {
-        hash ^= BigInt(text.charCodeAt(index));
-        hash = BigInt.asUintN(128, hash * prime);
-      }
-      return hash.toString(16).padStart(32, "0");
-    };
+    const periodicPatchStateKey = () => canonicalLatticePatchStateKey(state.placements);
     const periodicMotifCandidates = () => {
       const candidates = new Map();
       for (const moves of faceCandidatesByFrontierPoint().values()) {
@@ -3462,7 +3522,7 @@ export const createTilingStream = (() => {
       searchStats.generic_periodic_certificate_checks_attempted += 1;
       searchStats.generic_periodic_certificate_check_sizes.push(patchSize);
       searchStats.generic_periodic_certificate_check_sources.push(source);
-      const patchFingerprint = periodicPatchFingerprint(checkpointStateKey ?? periodicPatchStateKey());
+      const patchFingerprint = latticePatchFingerprint(checkpointStateKey ?? periodicPatchStateKey());
       const certificateStartedAt = performance.now();
       const configuredCertificateTimeLimit = Number(config.generic_periodic_certificate_time_limit_ms);
       const certificateTimeLimitMs = Number.isFinite(configuredCertificateTimeLimit)

@@ -108,12 +108,14 @@ const result = {
   engine_commit: args.get("engine-commit") ?? null,
   source_benchmark_schema_version: report.schemaVersion,
   fingerprint: {
-    canonical_state: "sorted placed-tile geometry in the fixed seeded-run root frame",
+    canonical_state: "sorted labeled placement vertex clouds minimized over translation and the 24 proper cubic lattice rotations",
+    equivalence: "orientation-preserving cubic rigid motion",
     algorithm: "FNV-1a-128",
     encoding: "32 lowercase hexadecimal characters",
     interpretation: "collision-resistant accounting key, not a formal injective identifier"
   },
   prior_outcome_report: args.get("prior-outcome-report") ?? null,
+  prior_fingerprint_report: args.get("prior-fingerprint-report") ?? null,
   protocol: report.configuration,
   candidates,
   summary: {
