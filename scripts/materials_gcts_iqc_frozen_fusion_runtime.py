@@ -125,6 +125,8 @@ class FrozenFusionNucleus:
     candidate_digest: str
     scalar_stable_index: int
     fusion_stable_index: int
+    scalar_order: tuple[int, ...]
+    fusion_order: tuple[int, ...]
     terminals: tuple[FrozenFusionTerminal, ...]
     target_used: bool = False
 
@@ -313,13 +315,17 @@ def freeze_nucleus(runtime, *, center, seed_positions, seed_species,
     scalar_model = _scalar_only_model(
         runtime["fusion_model"])
     scalar = select_equivariant_port_fusion(scalar_model, candidates)
+    scalar_order = tuple(sorted(range(len(terminals)), key=lambda index: (
+        -scalar.fused_scores[index], repr(terminals[index].tie_key))))
+    fusion_order = tuple(sorted(range(len(terminals)), key=lambda index: (
+        -fusion.fused_scores[index], repr(terminals[index].tie_key))))
     digest = hashlib.sha256(repr(tuple(
         (row.actions, row.scalar_features, row.action_colors,
          row.graph.canonical_digest) for row in terminals)).encode()).hexdigest()
     return FrozenFusionNucleus(
         tuple(map(float, center)), len(source.seed_positions), counts, retained,
         len(terminals), digest, scalar.stable_index, fusion.stable_index,
-        terminals)
+        scalar_order, fusion_order, terminals)
 
 
 def _scalar_only_model(model):

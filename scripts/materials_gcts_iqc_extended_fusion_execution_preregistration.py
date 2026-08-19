@@ -18,7 +18,7 @@ from materials_gcts_iqc_extended_development_preregistration import (
     audit as geometry_audit)
 
 
-SOURCE_COMMIT = "02b6d312f28c134529a87ff414b6c3900fa24dbe"
+SOURCE_COMMIT = "b893d6a879a5b5c2c9769f74cfc61f881e29b0ee"
 GEOMETRY_MANIFEST_DIGEST = \
     "790a04a8375da21f0f344bddf86304b981d720b457f52df7a485e41eb0753676"
 FUSION_ARTIFACT_DIGEST = \
@@ -32,7 +32,7 @@ ACTION_COUNT = 3
 
 SOURCE_HASHES = (
     ("materials_gcts_iqc_frozen_fusion_runtime.py",
-     "5454e7b3b3e13a8b6e9308213df4d026b04b5914232a888374b6513acce86586"),
+     "2d990643594255484f5e44138bd47509229115a4e62ee133bd8c8f9a049287c9"),
     ("materials_gcts_iqc_frozen_fusion_artifact.py",
      "2026a624e03f599573501b27daa373302cd264f96afa6369313354063669fde9"),
     ("materials_gcts_equivariant_port_fusion_value.py",
@@ -47,6 +47,8 @@ SOURCE_HASHES = (
      "ebf58df28e96d9bb25319514382e12d85bd355f8100b7cc480580c9b551cd9b2"),
     ("fixtures/iqc_frozen_terminal_fusion_v1.json.bz2",
      "6ab3b23317207577a2805a27f3fa399d312e9c2eefa7d9c858731bd9a456f6d5"),
+    ("materials_gcts_iqc_extended_fusion_development_benchmark.py",
+     "71201c733eeefc8a6732dd92fdb16ef8562116f59db29470338c4d87e6f45b80"),
 )
 
 TARGET_ORDER = (

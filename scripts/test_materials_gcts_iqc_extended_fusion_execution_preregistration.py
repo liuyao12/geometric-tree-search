@@ -4,7 +4,7 @@ from materials_gcts_iqc_extended_fusion_execution_preregistration import (
     FUSION_ARTIFACT_DIGEST, FUSION_MODEL_DIGEST, audit)
 
 EXPECTED_MANIFEST_DIGEST = \
-    "88bc9442f043d581ea544f865e7bb4d2f57cf81339407c23eb745a7edc2fd3ba"
+    "640853ab54df31b425c37c0df3bc09a6370ea046c419212b39215b48f6207579"
 
 
 def test_execution_is_frozen_before_any_new_atom_or_candidate():
