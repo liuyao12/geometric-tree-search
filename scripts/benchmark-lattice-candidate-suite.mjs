@@ -32,6 +32,19 @@ const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-no
 const geometricNogoodIndex = args.get("geometric-nogood-index") !== "false";
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
 const genericPeriodicCheckpoints = args.get("generic-periodic-checkpoints") === "true";
+const genericPeriodicDistinctPatches = args.get("generic-periodic-distinct-patches") === "true";
+const genericPeriodicMaxChecksPerSize = Math.max(
+  1,
+  Math.floor(numberArg("generic-periodic-max-checks-per-size", 4))
+);
+const genericPeriodicMaxTotalChecks = Math.max(
+  1,
+  Math.floor(numberArg("generic-periodic-max-total-checks", 160))
+);
+const genericPeriodicCheckpointTotalTimeMs = Math.max(
+  1,
+  Math.floor(numberArg("generic-periodic-checkpoint-total-time-ms", 10000))
+);
 const seededTies = args.get("seeded-ties") !== "false";
 const genericPeriodicCertificateTimeMs = Math.max(
   1,
@@ -113,6 +126,11 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_periodic_certificate: genericPeriodicCertificate && lane === "free_range_unbanded",
   generic_periodic_certificate_check_new_maximum:
     genericPeriodicCheckpoints && lane === "free_range_unbanded",
+  generic_periodic_certificate_check_distinct_patches:
+    genericPeriodicDistinctPatches && lane === "free_range_unbanded",
+  generic_periodic_certificate_checkpoint_max_checks_per_size: genericPeriodicMaxChecksPerSize,
+  generic_periodic_certificate_checkpoint_max_total_checks: genericPeriodicMaxTotalChecks,
+  generic_periodic_certificate_checkpoint_total_time_limit_ms: genericPeriodicCheckpointTotalTimeMs,
   generic_periodic_certificate_time_limit_ms: genericPeriodicCertificateTimeMs,
   include_mirrors: false,
   template_preflight: !lane.startsWith("free_range"),
@@ -219,6 +237,17 @@ async function runLane(benchmarkCase, lane, seed) {
     genericPeriodicCertificateChecksTimedOut: stats.generic_periodic_certificate_checks_timed_out ?? 0,
     genericPeriodicCertificateCheckSizes: stats.generic_periodic_certificate_check_sizes ?? [],
     genericPeriodicCertificateTotalElapsedMs: stats.generic_periodic_certificate_total_elapsed_ms ?? 0,
+    genericPeriodicCertificateDistinctPatchMode: !!stats.generic_periodic_certificate_distinct_patch_mode,
+    genericPeriodicCertificateDuplicateStatesSkipped:
+      stats.generic_periodic_certificate_duplicate_states_skipped ?? 0,
+    genericPeriodicCertificatePerSizeCapSkips:
+      stats.generic_periodic_certificate_per_size_cap_skips ?? 0,
+    genericPeriodicCertificateTotalCapSkips:
+      stats.generic_periodic_certificate_total_cap_skips ?? 0,
+    genericPeriodicCertificateCheckpointTimeBudgetSkips:
+      stats.generic_periodic_certificate_checkpoint_time_budget_skips ?? 0,
+    genericPeriodicCertificateCheckpointTimeBudgetExhausted:
+      !!stats.generic_periodic_certificate_checkpoint_time_budget_exhausted,
     genericPeriodicCertificateTargetAttempted: !!stats.generic_periodic_certificate_target_attempted,
     genericPeriodicCertificateTargetCompleted: !!stats.generic_periodic_certificate_target_completed,
     genericPeriodicCertificateTargetTimedOut: !!stats.generic_periodic_certificate_target_timed_out,
@@ -405,7 +434,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 9,
+  schemaVersion: 10,
   configuration: {
     target,
     timeMs,
@@ -421,6 +450,10 @@ const summary = {
     geometricNogoodIndex,
     genericPeriodicCertificate,
     genericPeriodicCheckpoints,
+    genericPeriodicDistinctPatches,
+    genericPeriodicMaxChecksPerSize,
+    genericPeriodicMaxTotalChecks,
+    genericPeriodicCheckpointTotalTimeMs,
     genericPeriodicCertificateTimeMs,
     seededTies,
     lanes: requestedLanes.size ? [...requestedLanes] : null

@@ -30,6 +30,11 @@ assert.match(
 );
 assert.match(
   growthWorkerSource,
+  /generic_periodic_certificate_check_distinct_patches: !!mode\.proof/,
+  "the proof comparison lane must check distinct branch patches at the same size"
+);
+assert.match(
+  growthWorkerSource,
   /generic_periodic_certificate: !!mode\.proof/,
   "the proof lane must test a reached target patch for an exact translational quotient"
 );

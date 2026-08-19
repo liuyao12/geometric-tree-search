@@ -234,6 +234,108 @@ assert.equal(
   16
 );
 
+const candidate1016113System = {
+  name: "Candidate 10_16113 distinct checkpoint regression",
+  figure_refs: [],
+  polycubes: [],
+  polyhedra: [{
+    name: "Candidate 10_16113",
+    vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]]
+  }]
+};
+const distinctCheckpointCap = await solve({
+  mode_key: "cube",
+  custom_system: candidate1016113System,
+  tiling_strategy: "generic",
+  target_val: 40,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_failure_memo: true,
+  seeded_tie_breaks: true,
+  random_seed: 1,
+  node_limit: 100,
+  time_limit_ms: 5000,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_check_new_maximum: true,
+  generic_periodic_certificate_check_distinct_patches: true,
+  generic_periodic_certificate_checkpoint_max_checks_per_size: 3,
+  generic_periodic_certificate_checkpoint_max_total_checks: 10,
+  generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
+  generic_periodic_certificate_time_limit_ms: 500
+});
+const distinctCheckSizes = distinctCheckpointCap.final.search_stats.generic_periodic_certificate_check_sizes;
+assert.equal(distinctCheckpointCap.final.search_stats.generic_periodic_certificate_distinct_patch_mode, true);
+assert.equal(distinctCheckpointCap.final.search_stats.generic_periodic_certificate_checks_attempted, 10);
+assert.ok(
+  new Set(distinctCheckSizes).size < distinctCheckSizes.length,
+  "distinct branch patches at the same size must receive separate exact checks"
+);
+assert.ok(distinctCheckpointCap.final.search_stats.generic_periodic_certificate_total_cap_skips > 0);
+assert.equal(distinctCheckpointCap.final.search_incomplete, true);
+
+const distinctCheckpointPerSizeCap = await solve({
+  mode_key: "cube",
+  custom_system: candidate1016113System,
+  tiling_strategy: "generic",
+  target_val: 40,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_failure_memo: true,
+  seeded_tie_breaks: true,
+  random_seed: 1,
+  node_limit: 100,
+  time_limit_ms: 5000,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_check_new_maximum: true,
+  generic_periodic_certificate_check_distinct_patches: true,
+  generic_periodic_certificate_checkpoint_max_checks_per_size: 1,
+  generic_periodic_certificate_checkpoint_max_total_checks: 100,
+  generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
+  generic_periodic_certificate_time_limit_ms: 500
+});
+const perSizeCheckSizes = distinctCheckpointPerSizeCap.final.search_stats.generic_periodic_certificate_check_sizes;
+assert.equal(new Set(perSizeCheckSizes).size, perSizeCheckSizes.length);
+assert.ok(distinctCheckpointPerSizeCap.final.search_stats.generic_periodic_certificate_per_size_cap_skips > 0);
+
+const distinctCheckpointTimeBudget = await solve({
+  mode_key: "cube",
+  custom_system: candidate1016113System,
+  tiling_strategy: "generic",
+  target_val: 40,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_failure_memo: true,
+  seeded_tie_breaks: true,
+  random_seed: 1,
+  node_limit: 100,
+  time_limit_ms: 5000,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_check_new_maximum: true,
+  generic_periodic_certificate_check_distinct_patches: true,
+  generic_periodic_certificate_checkpoint_max_checks_per_size: 10,
+  generic_periodic_certificate_checkpoint_max_total_checks: 100,
+  generic_periodic_certificate_checkpoint_total_time_limit_ms: 1,
+  generic_periodic_certificate_time_limit_ms: 500
+});
+assert.equal(
+  distinctCheckpointTimeBudget.final.search_stats.generic_periodic_certificate_checkpoint_time_budget_exhausted,
+  true
+);
+assert.ok(
+  distinctCheckpointTimeBudget.final.search_stats.generic_periodic_certificate_checkpoint_time_budget_skips > 0
+);
+assert.equal(
+  distinctCheckpointTimeBudget.final.result_kind,
+  "search_incomplete",
+  "exhausting an optional checkpoint budget must not create a false tiling conclusion"
+);
+
 const seededPatch = async seed => solve({
   tiling_strategy: "generic",
   target_val: 20,

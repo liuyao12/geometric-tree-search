@@ -647,6 +647,12 @@ export const createTilingStream = (() => {
       generic_periodic_certificate_check_sizes: [],
       generic_periodic_certificate_check_sources: [],
       generic_periodic_certificate_total_elapsed_ms: 0,
+      generic_periodic_certificate_distinct_patch_mode: false,
+      generic_periodic_certificate_duplicate_states_skipped: 0,
+      generic_periodic_certificate_per_size_cap_skips: 0,
+      generic_periodic_certificate_total_cap_skips: 0,
+      generic_periodic_certificate_checkpoint_time_budget_skips: 0,
+      generic_periodic_certificate_checkpoint_time_budget_exhausted: false,
       generic_periodic_certificate_target_attempted: false,
       generic_periodic_certificate_target_completed: false,
       generic_periodic_certificate_target_timed_out: false,
@@ -3314,6 +3320,9 @@ export const createTilingStream = (() => {
       && tilingStrategy === "generic";
     const genericPeriodicCheckpointEnabled = genericPeriodicCertificateEnabled
       && config.generic_periodic_certificate_check_new_maximum === true;
+    const genericPeriodicDistinctPatchMode = genericPeriodicCheckpointEnabled
+      && config.generic_periodic_certificate_check_distinct_patches === true;
+    searchStats.generic_periodic_certificate_distinct_patch_mode = genericPeriodicDistinctPatchMode;
     const configuredGenericPeriodicMin = Number(config.generic_periodic_certificate_checkpoint_min_tiles);
     const genericPeriodicCheckpointMin = Number.isFinite(configuredGenericPeriodicMin)
       ? Math.max(1, Math.floor(configuredGenericPeriodicMin))
@@ -3322,7 +3331,29 @@ export const createTilingStream = (() => {
     const genericPeriodicCheckpointMax = Number.isFinite(configuredGenericPeriodicMax)
       ? Math.max(genericPeriodicCheckpointMin, Math.floor(configuredGenericPeriodicMax))
       : targetVal;
+    const configuredGenericPeriodicPerSizeCap = Number(
+      config.generic_periodic_certificate_checkpoint_max_checks_per_size
+    );
+    const genericPeriodicPerSizeCap = Number.isFinite(configuredGenericPeriodicPerSizeCap)
+      ? Math.max(1, Math.floor(configuredGenericPeriodicPerSizeCap))
+      : 4;
+    const configuredGenericPeriodicTotalCap = Number(
+      config.generic_periodic_certificate_checkpoint_max_total_checks
+    );
+    const genericPeriodicTotalCap = Number.isFinite(configuredGenericPeriodicTotalCap)
+      ? Math.max(1, Math.floor(configuredGenericPeriodicTotalCap))
+      : 160;
+    const configuredGenericPeriodicCheckpointTimeBudget = Number(
+      config.generic_periodic_certificate_checkpoint_total_time_limit_ms
+    );
+    const genericPeriodicCheckpointTimeBudgetMs = Number.isFinite(configuredGenericPeriodicCheckpointTimeBudget)
+      ? Math.max(1, configuredGenericPeriodicCheckpointTimeBudget)
+      : 10000;
     const genericPeriodicSizesAttempted = new Set();
+    const genericPeriodicStatesAttempted = new Set();
+    const genericPeriodicAttemptsBySize = new Map();
+    let genericPeriodicCheckpointChecksAttempted = 0;
+    let genericPeriodicCheckpointElapsedMs = 0;
     let genericPeriodicLargestSizeSeen = 0;
     async function* tryGenericPeriodicCertificate(source) {
       if (!genericPeriodicCertificateEnabled || tilingEvidence) return null;
@@ -3332,12 +3363,41 @@ export const createTilingStream = (() => {
           !genericPeriodicCheckpointEnabled
           || patchSize < genericPeriodicCheckpointMin
           || patchSize > genericPeriodicCheckpointMax
-          || patchSize <= genericPeriodicLargestSizeSeen
         ) return null;
-        genericPeriodicLargestSizeSeen = patchSize;
+        if (!genericPeriodicDistinctPatchMode) {
+          if (patchSize <= genericPeriodicLargestSizeSeen) return null;
+          genericPeriodicLargestSizeSeen = patchSize;
+        }
       }
-      if (genericPeriodicSizesAttempted.has(patchSize)) return null;
-      genericPeriodicSizesAttempted.add(patchSize);
+      if (genericPeriodicDistinctPatchMode) {
+        const stateKey = periodicPatchStateKey();
+        if (genericPeriodicStatesAttempted.has(stateKey)) {
+          searchStats.generic_periodic_certificate_duplicate_states_skipped += 1;
+          return null;
+        }
+        if (source === "generic_growth_checkpoint") {
+          const attemptsAtSize = genericPeriodicAttemptsBySize.get(patchSize) ?? 0;
+          if (attemptsAtSize >= genericPeriodicPerSizeCap) {
+            searchStats.generic_periodic_certificate_per_size_cap_skips += 1;
+            return null;
+          }
+          if (genericPeriodicCheckpointChecksAttempted >= genericPeriodicTotalCap) {
+            searchStats.generic_periodic_certificate_total_cap_skips += 1;
+            return null;
+          }
+          if (genericPeriodicCheckpointElapsedMs >= genericPeriodicCheckpointTimeBudgetMs) {
+            searchStats.generic_periodic_certificate_checkpoint_time_budget_skips += 1;
+            searchStats.generic_periodic_certificate_checkpoint_time_budget_exhausted = true;
+            return null;
+          }
+          genericPeriodicAttemptsBySize.set(patchSize, attemptsAtSize + 1);
+          genericPeriodicCheckpointChecksAttempted += 1;
+        }
+        genericPeriodicStatesAttempted.add(stateKey);
+      } else {
+        if (genericPeriodicSizesAttempted.has(patchSize)) return null;
+        genericPeriodicSizesAttempted.add(patchSize);
+      }
 
       searchStats.generic_periodic_certificate_attempted = true;
       searchStats.generic_periodic_certificate_patch_size = patchSize;
@@ -3354,7 +3414,9 @@ export const createTilingStream = (() => {
         budget_exceeded: () => performance.now() - certificateStartedAt >= certificateTimeLimitMs,
         on_budget_exceeded: () => { certificateTimedOut = true; }
       });
-      const elapsed = Math.round(performance.now() - certificateStartedAt);
+      const preciseElapsed = performance.now() - certificateStartedAt;
+      const elapsed = Math.round(preciseElapsed);
+      if (source === "generic_growth_checkpoint") genericPeriodicCheckpointElapsedMs += preciseElapsed;
       searchStats.generic_periodic_certificate_elapsed_ms = elapsed;
       searchStats.generic_periodic_certificate_total_elapsed_ms += elapsed;
       if (certificateTimedOut) searchStats.generic_periodic_certificate_checks_timed_out += 1;

@@ -3040,7 +3040,7 @@ function formatGrowthResult(result, target) {
   if (result?.mode === "proof" && targetPoint && result?.stats?.generic_periodic_certificate_attempted) {
     const patchSize = target;
     const completedChecks = result.stats.generic_periodic_certificate_checks_completed ?? 0;
-    const checkpointSuffix = completedChecks > 1 ? ` · ${completedChecks} exact size checkpoints` : "";
+    const checkpointSuffix = completedChecks > 1 ? ` · ${completedChecks} exact patch checkpoints` : "";
     if (result.stats.generic_periodic_certificate_target_found) {
       return `${result.label} certified the ${patchSize}-tile target patch as a translational quotient ${formatElapsed(result.milliseconds)}`;
     }

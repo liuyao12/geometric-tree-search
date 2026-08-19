@@ -90,7 +90,11 @@ async function runMode(sequence, baseConfig, mode) {
     seeded_tie_breaks: !!mode.proof,
     generic_periodic_certificate: !!mode.proof,
     generic_periodic_certificate_check_new_maximum: !!mode.proof,
-    generic_periodic_certificate_time_limit_ms: 5000,
+    generic_periodic_certificate_check_distinct_patches: !!mode.proof,
+    generic_periodic_certificate_checkpoint_max_checks_per_size: 4,
+    generic_periodic_certificate_checkpoint_max_total_checks: 160,
+    generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
+    generic_periodic_certificate_time_limit_ms: 1000,
     exhaustive: !!mode.proof
   };
   const started = performance.now();
