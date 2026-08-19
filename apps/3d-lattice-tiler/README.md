@@ -274,6 +274,14 @@ The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.
 
+The follow-up unbanded GCTS proof portfolio is archived in
+`data/lattice-polyhedron-proof-screen-2026-08-18.json`. It fixes the target at
+40 tiles, the configured node limit at 500, and seeds at 1, 2, and 3.
+Candidate `10_26470` reaches the 40-tile target in every trial; the other four
+retain robust largest patches between 21 and 25 tiles before the node limit.
+All five conclusions remain inconclusive: a finite patch is not a space-tiling
+certificate, and a node-limited run is not a non-tiler certificate.
+
 The rescreener and the public catalog consume the same 16-entry runtime pool in
 `assets/lattice-polyhedron-survivors.js`; regression tests compare that pool to
 the archived report so a removed tile cannot silently reappear. Each run also

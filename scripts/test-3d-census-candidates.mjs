@@ -4,7 +4,8 @@ import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.j
 import {
   classifyLatticeCandidateScreen,
   LATTICE_POLYHEDRON_CENSUS_POOL,
-  LATTICE_POLYHEDRON_SCREENING
+  LATTICE_POLYHEDRON_SCREENING,
+  LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
 
 const growthWorkerSource = await readFile(
@@ -26,6 +27,7 @@ assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof co
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
 assert.match(growthAppSource, /All six modes finished\./, "the comparison status must include all six lanes");
+assert.match(growthAppSource, /finite-patch evidence, not a space-tiling certificate/, "the catalog must not overstate a large GCTS patch");
 
 assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
 assert.equal(
@@ -38,6 +40,49 @@ const archivedScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-rescreen-2026-08-17.json", import.meta.url),
   "utf8"
 ));
+const archivedProofScreening = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-proof-screen-2026-08-18.json", import.meta.url),
+  "utf8"
+));
+assert.deepEqual(
+  {
+    screen_date: LATTICE_POLYHEDRON_SCREENING.gcts_proof.screen_date,
+    lane: LATTICE_POLYHEDRON_SCREENING.gcts_proof.lane,
+    target_tiles: LATTICE_POLYHEDRON_SCREENING.gcts_proof.target_tiles,
+    configured_node_limit: LATTICE_POLYHEDRON_SCREENING.gcts_proof.configured_node_limit,
+    time_limit_ms: LATTICE_POLYHEDRON_SCREENING.gcts_proof.time_limit_seconds * 1000,
+    seeds: LATTICE_POLYHEDRON_SCREENING.gcts_proof.seeds,
+    generation_band: LATTICE_POLYHEDRON_SCREENING.gcts_proof.generation_band,
+    exact_failure_memo: LATTICE_POLYHEDRON_SCREENING.gcts_proof.exact_failure_memo,
+    translation_equivariant_nogoods: LATTICE_POLYHEDRON_SCREENING.gcts_proof.translation_equivariant_nogoods,
+    mirrors: LATTICE_POLYHEDRON_SCREENING.gcts_proof.mirrors
+  },
+  {
+    screen_date: archivedProofScreening.screen_date,
+    ...archivedProofScreening.protocol
+  },
+  "runtime proof-search limits must match the archived executed protocol"
+);
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SURVIVORS.map(candidate => ({
+    id: candidate.id,
+    ...candidate.gcts_proof_screening
+  })),
+  archivedProofScreening.candidates.map(candidate => ({
+    id: candidate.id,
+    outcome: candidate.outcome,
+    robust_largest_patch: candidate.robust_largest_patch,
+    median_largest_patch: candidate.median_largest_patch,
+    best_largest_patch: candidate.best_largest_patch,
+    target_hits: candidate.trials.filter(trial => trial.termination_reason === "target_reached").length,
+    trials: candidate.trials.length
+  })),
+  "catalog GCTS evidence must match the archived fixed-node runs"
+);
+assert.ok(
+  archivedProofScreening.candidates.every(candidate => candidate.screening_conclusion === "inconclusive"),
+  "finite patches and node-limited runs must remain inconclusive"
+);
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
     .filter(candidate => candidate.screening.status === "exact_rejection")

@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-deadline-poll-v59";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-proof-screen-v61";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

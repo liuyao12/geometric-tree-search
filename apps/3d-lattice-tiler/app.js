@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260818-deadline-poll-v59";
+import { tileSpecs } from "./engine.js?v=20260818-proof-screen-v61";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1321,11 +1321,18 @@ function updateCandidateResearchPanel() {
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
   if (candidate) {
     const screening = candidate.last_screening;
+    const proof = candidate.gcts_proof_screening;
     const limits = screening
       ? ` Translational motifs through ${screening.translational.maximum_requested_motif_tiles} tiles (${screening.translational.seconds_per_tile}s); isohedral growth horizon ${screening.isohedral.growth_horizon_tiles} tiles (${screening.isohedral.seconds_per_tile}s).`
       : "";
+    const proofProtocol = screening?.gcts_proof;
+    const proofEvidence = proof && proofProtocol
+      ? proof.target_hits === proof.trials
+        ? ` Unbanded GCTS reached a connected ${proofProtocol.target_tiles}-tile patch in all ${proof.trials} seeds; this is finite-patch evidence, not a space-tiling certificate.`
+        : ` Unbanded GCTS largest patch: ${proof.robust_largest_patch === proof.best_largest_patch ? proof.best_largest_patch : `${proof.robust_largest_patch}–${proof.best_largest_patch}`} tiles across ${proof.trials} seeds before the configured ${proofProtocol.configured_node_limit}-node limit; no non-tiler certificate.`
+      : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 5} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}`;
+    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 5} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
   } else if (knownAperiodic) {
     candidateResearchTitle.textContent = "Known weakly aperiodic monotile";
     candidateResearchDetail.textContent = "Integral 3–4–5 Schmitt–Conway–Danzer biprism. Free-range shows the published rotated-layer construction; mirror copies must remain disabled.";
@@ -2643,7 +2650,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-deadline-poll-v59", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260818-proof-screen-v61", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3116,7 +3123,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-deadline-poll-v59", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260818-proof-screen-v61", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

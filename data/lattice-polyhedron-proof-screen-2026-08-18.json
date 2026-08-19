@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "screen_date": "2026-08-18",
+  "engine_commit": "bd0b7669736a1826b23d2b2bddeb823da50ab303",
+  "model": "connected face-to-face patches of one congruent lattice polyhedron using proper cubic lattice orientations",
+  "protocol": {
+    "lane": "free_range_unbanded",
+    "target_tiles": 40,
+    "configured_node_limit": 500,
+    "time_limit_ms": 30000,
+    "seeds": [1, 2, 3],
+    "generation_band": false,
+    "exact_failure_memo": true,
+    "translation_equivariant_nogoods": false,
+    "mirrors": false
+  },
+  "interpretation": [
+    "A target patch is a finite connected-patch witness, not a certificate that the tile covers all of 3-space.",
+    "A node-limit result is inconclusive, regardless of the largest patch retained.",
+    "Only natural exhaustive failure before the target would be a finite-patch obstruction certificate."
+  ],
+  "candidates": [
+    {
+      "id": "10_16113",
+      "outcome": "bounded_below_target",
+      "screening_conclusion": "inconclusive",
+      "robust_largest_patch": 21,
+      "median_largest_patch": 21,
+      "best_largest_patch": 21,
+      "trials": [
+        { "seed": 1, "largest_patch": 21, "visited_nodes": 631, "backtracks": 432, "max_depth": 17, "failure_memo_states": 420, "failure_memo_hits": 2, "termination_reason": "node_limit", "elapsed_ms": 2260 },
+        { "seed": 2, "largest_patch": 21, "visited_nodes": 631, "backtracks": 432, "max_depth": 17, "failure_memo_states": 420, "failure_memo_hits": 2, "termination_reason": "node_limit", "elapsed_ms": 2417 },
+        { "seed": 3, "largest_patch": 21, "visited_nodes": 631, "backtracks": 432, "max_depth": 17, "failure_memo_states": 420, "failure_memo_hits": 2, "termination_reason": "node_limit", "elapsed_ms": 2346 }
+      ]
+    },
+    {
+      "id": "10_26470",
+      "outcome": "robust_target_patch",
+      "screening_conclusion": "inconclusive",
+      "robust_largest_patch": 40,
+      "median_largest_patch": 40,
+      "best_largest_patch": 40,
+      "trials": [
+        { "seed": 1, "largest_patch": 40, "visited_nodes": 44, "backtracks": 4, "max_depth": 33, "failure_memo_states": 4, "failure_memo_hits": 0, "termination_reason": "target_reached", "elapsed_ms": 261 },
+        { "seed": 2, "largest_patch": 40, "visited_nodes": 44, "backtracks": 4, "max_depth": 33, "failure_memo_states": 4, "failure_memo_hits": 0, "termination_reason": "target_reached", "elapsed_ms": 257 },
+        { "seed": 3, "largest_patch": 40, "visited_nodes": 44, "backtracks": 4, "max_depth": 33, "failure_memo_states": 4, "failure_memo_hits": 0, "termination_reason": "target_reached", "elapsed_ms": 247 }
+      ]
+    },
+    {
+      "id": "10_45026",
+      "outcome": "bounded_below_target",
+      "screening_conclusion": "inconclusive",
+      "robust_largest_patch": 21,
+      "median_largest_patch": 21,
+      "best_largest_patch": 21,
+      "trials": [
+        { "seed": 1, "largest_patch": 21, "visited_nodes": 454, "backtracks": 442, "max_depth": 18, "failure_memo_states": 335, "failure_memo_hits": 92, "termination_reason": "node_limit", "elapsed_ms": 2467 },
+        { "seed": 2, "largest_patch": 21, "visited_nodes": 454, "backtracks": 442, "max_depth": 18, "failure_memo_states": 335, "failure_memo_hits": 92, "termination_reason": "node_limit", "elapsed_ms": 2563 },
+        { "seed": 3, "largest_patch": 21, "visited_nodes": 454, "backtracks": 442, "max_depth": 18, "failure_memo_states": 335, "failure_memo_hits": 92, "termination_reason": "node_limit", "elapsed_ms": 2569 }
+      ]
+    },
+    {
+      "id": "10_45033",
+      "outcome": "bounded_below_target",
+      "screening_conclusion": "inconclusive",
+      "robust_largest_patch": 25,
+      "median_largest_patch": 25,
+      "best_largest_patch": 25,
+      "trials": [
+        { "seed": 1, "largest_patch": 25, "visited_nodes": 418, "backtracks": 413, "max_depth": 23, "failure_memo_states": 376, "failure_memo_hits": 15, "termination_reason": "node_limit", "elapsed_ms": 3172 },
+        { "seed": 2, "largest_patch": 25, "visited_nodes": 418, "backtracks": 413, "max_depth": 23, "failure_memo_states": 376, "failure_memo_hits": 15, "termination_reason": "node_limit", "elapsed_ms": 3247 },
+        { "seed": 3, "largest_patch": 25, "visited_nodes": 418, "backtracks": 413, "max_depth": 23, "failure_memo_states": 376, "failure_memo_hits": 15, "termination_reason": "node_limit", "elapsed_ms": 3270 }
+      ]
+    },
+    {
+      "id": "9_11683",
+      "outcome": "bounded_below_target",
+      "screening_conclusion": "inconclusive",
+      "robust_largest_patch": 21,
+      "median_largest_patch": 21,
+      "best_largest_patch": 21,
+      "trials": [
+        { "seed": 1, "largest_patch": 21, "visited_nodes": 475, "backtracks": 470, "max_depth": 20, "failure_memo_states": 452, "failure_memo_hits": 0, "termination_reason": "node_limit", "elapsed_ms": 2169 },
+        { "seed": 2, "largest_patch": 21, "visited_nodes": 475, "backtracks": 470, "max_depth": 20, "failure_memo_states": 452, "failure_memo_hits": 0, "termination_reason": "node_limit", "elapsed_ms": 2278 },
+        { "seed": 3, "largest_patch": 21, "visited_nodes": 475, "backtracks": 470, "max_depth": 20, "failure_memo_states": 452, "failure_memo_hits": 0, "termination_reason": "node_limit", "elapsed_ms": 2266 }
+      ]
+    }
+  ]
+}

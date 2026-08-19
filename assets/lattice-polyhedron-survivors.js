@@ -6,7 +6,28 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
   source_pool_size: 16,
   model: "face-to-face congruent lattice-polyhedron tilings using proper cubic lattice orientations",
   translational: Object.freeze({ seconds_per_tile: 20, maximum_requested_motif_tiles: 8 }),
-  isohedral: Object.freeze({ seconds_per_tile: 60, growth_horizon_tiles: 60 })
+  isohedral: Object.freeze({ seconds_per_tile: 60, growth_horizon_tiles: 60 }),
+  gcts_proof: Object.freeze({
+    screen_date: "2026-08-18",
+    lane: "free_range_unbanded",
+    target_tiles: 40,
+    configured_node_limit: 500,
+    time_limit_seconds: 30,
+    seeds: Object.freeze([1, 2, 3]),
+    generation_band: false,
+    exact_failure_memo: true,
+    translation_equivariant_nogoods: false,
+    mirrors: false,
+    report: "data/lattice-polyhedron-proof-screen-2026-08-18.json"
+  })
+});
+
+const GCTS_PROOF_SCREENING_RESULTS = Object.freeze({
+  "10_16113": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 }),
+  "10_26470": Object.freeze({ outcome: "robust_target_patch", robust_largest_patch: 40, median_largest_patch: 40, best_largest_patch: 40, target_hits: 3, trials: 3 }),
+  "10_45026": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 }),
+  "10_45033": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 25, median_largest_patch: 25, best_largest_patch: 25, target_hits: 0, trials: 3 }),
+  "9_11683": Object.freeze({ outcome: "bounded_below_target", robust_largest_patch: 21, median_largest_patch: 21, best_largest_patch: 21, target_hits: 0, trials: 3 })
 });
 
 const rejected = (certificate, motifTiles, periodVectors) => ({
@@ -54,5 +75,6 @@ export const LATTICE_POLYHEDRON_SURVIVORS = LATTICE_POLYHEDRON_CENSUS_POOL
     survivor_priority: candidate.priority,
     survivor_count: 5,
     last_screening: LATTICE_POLYHEDRON_SCREENING,
+    gcts_proof_screening: GCTS_PROOF_SCREENING_RESULTS[candidate.id],
     description: `Unresolved Blanco–Santos census candidate ${candidate.id}; survivor ${candidate.priority} of 5 after exact quotient rescreening of the original 16-tile pool.`
   }));
