@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260818-lattice-label-v35">
+  <link rel="stylesheet" href="./style.css?v=20260819-complete-shell-v96">
 </head>
 <body>
   <div class="app-shell">
@@ -34,6 +34,11 @@
             <input type="radio" name="criterion" value="layer">
             <span>Layer</span>
             <input id="layerInput" type="number" value="2" min="1" max="50">
+          </label>
+          <label class="inline-field" id="shellField" title="Complete face-adjacency shells around the root tile">
+            <input type="radio" name="criterion" value="shell">
+            <span>Shell</span>
+            <input id="shellInput" type="number" value="3" min="1" max="20">
           </label>
           <label class="inline-field" id="regionField">
             <input type="radio" name="criterion" value="region">
@@ -81,6 +86,7 @@
           <select id="moveOrderSelect">
             <option value="balanced" selected>Balanced</option>
             <option value="global">Complete global</option>
+            <option value="shell">Complete shell</option>
             <option value="no_brainer">No-brainer</option>
             <option value="crystal">Crystal</option>
           </select>
@@ -144,7 +150,7 @@
             <b id="candidateResearchTitle">Unresolved census candidate</b>
             <small id="candidateResearchDetail"></small>
           </div>
-          <button id="candidateSearchButton" type="button">Apply long-growth preset</button>
+          <button id="candidateSearchButton" type="button">Apply exact shell preset</button>
         </div>
       </section>
 
@@ -236,6 +242,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260819-global-extension-v95"></script>
+  <script type="module" src="./app.js?v=20260819-complete-shell-v96"></script>
 </body>
 </html>

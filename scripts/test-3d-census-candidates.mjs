@@ -5,7 +5,9 @@ import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.j
 import {
   classifyLatticeCandidateScreen,
   LATTICE_POLYHEDRON_CENSUS_POOL,
+  LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES,
   LATTICE_POLYHEDRON_SCREENING,
+  LATTICE_POLYHEDRON_SHELL_REJECTS,
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
 
@@ -49,17 +51,17 @@ assert.match(
 assert.match(growthWorkerSource, /generic_failure_memo: mode\.proof/, "the proof lane must memoize exact failures");
 assert.match(
   growthWorkerSource,
-  /generic_connected_patch_enumeration: !!mode\.proof/,
+  /generic_connected_patch_enumeration: !!mode\.proof && !shellSearch/,
   "the proof lane must enumerate every legal exposed-face extension"
 );
 assert.match(
   growthWorkerSource,
-  /generic_failure_memo_symmetry: "fixed"/,
-  "the proof lane must retain the benchmarked fixed-root failure memo"
+  /generic_failure_memo_symmetry: shellSearch \? "rigid" : "fixed"/,
+  "count proofs must retain fixed-frame memoization while shell proofs use rooted rigid keys"
 );
 assert.match(
   growthWorkerSource,
-  /generic_geometric_nogood: !!mode\.nogood/,
+  /generic_geometric_nogood: !!mode\.nogood && !shellSearch/,
   "only the complementary proof lane may enable translated nogoods"
 );
 assert.match(growthWorkerSource, /generic_geometric_nogood_max_clauses: 20000/);
@@ -76,7 +78,7 @@ assert.match(
 );
 assert.match(
   growthWorkerSource,
-  /generic_periodic_certificate_check_distinct_patches: !!mode\.proof/,
+  /generic_periodic_certificate_check_distinct_patches: !!mode\.proof && !shellSearch/,
   "the proof comparison lane must check distinct branch patches at the same size"
 );
 assert.match(
@@ -86,7 +88,7 @@ assert.match(
 );
 assert.match(
   growthWorkerSource,
-  /generic_periodic_certificate: !!mode\.proof/,
+  /generic_periodic_certificate: !!mode\.proof && !shellSearch/,
   "the proof lane must test a reached target patch for an exact translational quotient"
 );
 assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof comparison lane may claim exhaustive search");
@@ -107,7 +109,8 @@ assert.match(
   /this excludes those particular patches as translational fundamental domains, not other possible motifs/,
   "the catalog must state the narrow scope of a negative target-patch quotient check"
 );
-assert.match(growthAppSource, /4 unresolved lattice candidates/, "the periodic checkpoint rejection must leave four catalog candidates");
+assert.match(growthAppSource, /1 unresolved lattice candidate/, "the complete-shell screen must leave one unresolved catalog candidate");
+assert.match(growthAppSource, /GCTS shell-obstruction controls/, "the three exact shell rejections must remain available as controls");
 assert.match(
   growthAppSource,
   /hybrid branch screen saw/,
@@ -152,7 +155,7 @@ assert.match(
 assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
 assert.equal(
   LATTICE_POLYHEDRON_CENSUS_POOL.filter(candidate => candidate.screening.status === "exact_rejection").length,
-  12,
+  15,
   "all removed candidates must retain their exact rejection certificates"
 );
 assert.equal(LATTICE_POLYHEDRON_SCREENING.source_pool_size, LATTICE_POLYHEDRON_CENSUS_POOL.length);
@@ -216,6 +219,30 @@ const archivedGlobalExtension = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-global-extension-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
+const archivedCompleteShell = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-complete-shell-screen-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.complete_shell_screen,
+  {
+    maximum_target_shell: archivedCompleteShell.configuration.targetShellDepth,
+    seeds: archivedCompleteShell.configuration.seeds,
+    time_limit_ms: archivedCompleteShell.configuration.timeMs,
+    configured_node_limit: archivedCompleteShell.configuration.nodeLimit,
+    cascade: archivedCompleteShell.configuration.cascade,
+    shell_definition: archivedCompleteShell.configuration.shellDefinition,
+    rejected_candidates: ["10_16113", "10_45026", "9_11683"],
+    surviving_candidate: "10_45033",
+    robust_completed_shell: 4,
+    maximum_completed_shell: 5,
+    shell_five_hits: 2,
+    shell_five_trials: 3,
+    shell_five_witness_tiles: 464,
+    report: "data/lattice-polyhedron-complete-shell-screen-2026-08-19.json"
+  },
+  "catalog complete-shell evidence must match the archived exact screen"
+);
 assert.deepEqual(
   {
     screen_date: LATTICE_POLYHEDRON_SCREENING.gcts_proof.screen_date,
@@ -246,7 +273,7 @@ assert.deepEqual(
   "runtime proof-search limits must match the archived executed protocol"
 );
 assert.deepEqual(
-  LATTICE_POLYHEDRON_SURVIVORS.map(candidate => ({
+  LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES.map(candidate => ({
     id: candidate.id,
     robust_largest_patch: candidate.gcts_proof_screening.robust_largest_patch,
     median_largest_patch: candidate.gcts_proof_screening.median_largest_patch,
@@ -255,7 +282,7 @@ assert.deepEqual(
     trials: candidate.gcts_proof_screening.trials
   })),
   archivedDiversifiedScreening.baseline_candidates
-    .filter(candidate => LATTICE_POLYHEDRON_SURVIVORS.some(survivor => survivor.id === candidate.id))
+    .filter(candidate => LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES.some(survivor => survivor.id === candidate.id))
     .map(candidate => ({
     id: candidate.id,
     robust_largest_patch: candidate.robust_largest_patch,
@@ -870,7 +897,7 @@ assert.ok(
   ),
   "the checkpoint screen must not hide an incomplete certificate check"
 );
-for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
+for (const candidate of LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES) {
   const witness = archivedProofScreening.paths.find(item => item.id === candidate.id);
   assert.ok(witness, `${candidate.id} must retain its focused 40-tile witness`);
   assert.equal(candidate.gcts_proof_screening.focused_witness_hash, witness.witness_hash);
@@ -999,6 +1026,7 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
     .filter(candidate => candidate.screening.status === "exact_rejection")
+    .filter(candidate => candidate.screening.certificate !== "finite_shell_obstruction")
     .filter(candidate => candidate.id !== archivedProofScreening.exact_periodic_rejection.id)
     .map(candidate => ({
       id: candidate.id,
@@ -1032,7 +1060,7 @@ assert.equal(archivedProofScreening.exact_periodic_rejection.proof.motif_volume,
 assert.equal(archivedProofScreening.exact_periodic_rejection.proof.lattice_determinant, 16);
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
-    .filter(candidate => candidate.screening.status === "inconclusive")
+    .filter(candidate => ["10_16113", "10_45026", "10_45033", "9_11683"].includes(candidate.id))
     .map(candidate => candidate.id),
   archivedProofScreening.summary.inconclusive_survivors,
   "the public survivors must match the checkpoint-screen result"
@@ -1043,18 +1071,27 @@ assert.equal(
   "a local impossibility certificate must never survive periodic screening"
 );
 assert.equal(
+  classifyLatticeCandidateScreen({ translational: null, isohedral: null, shell: { provenImpossible: true } }),
+  "reject_certified_non_tiler",
+  "an exhaustive complete-shell obstruction must reject a candidate"
+);
+assert.equal(
   classifyLatticeCandidateScreen({ translational: { certified: false, incomplete: true }, isohedral: null }),
   "inconclusive",
   "a bounded search limit must remain inconclusive"
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 4, "certified periodic and isohedral tiles must not remain in the catalog");
+assert.equal(candidates.length, 4, "the survivor and three shell-obstruction controls must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
-const survivors = candidates;
+const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
+const shellControls = candidates.filter(figure => figure.census_candidate.screening.certificate === "finite_shell_obstruction");
+assert.equal(survivors.length, 1);
+assert.equal(shellControls.length, 3);
+assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.survivor_priority),
-  Array.from({ length: 4 }, (_, index) => index + 1),
+  [1],
   "survivor priority metadata must be complete"
 );
 

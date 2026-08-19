@@ -6,6 +6,7 @@ import { performance } from "node:perf_hooks";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 import {
   LATTICE_POLYHEDRON_CENSUS_POOL,
+  LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES,
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
 
@@ -105,7 +106,7 @@ const censusById = new Map(LATTICE_POLYHEDRON_CENSUS_POOL.map(candidate => [cand
 const defaultIds = [
   "8_2480",
   "10_27010",
-  ...LATTICE_POLYHEDRON_SURVIVORS.map(candidate => candidate.id)
+  ...LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES.map(candidate => candidate.id)
 ];
 const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
   .map(id => censusById.get(id))

@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-global-extension-v95";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-complete-shell-v96";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

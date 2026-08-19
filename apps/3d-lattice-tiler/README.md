@@ -402,6 +402,27 @@ aperiodicity. The full receipts are in
 `data/lattice-polyhedron-global-extension-screen-2026-08-19.json`; validate
 them with `scripts/analyze-lattice-global-extension-screen.mjs`.
 
+Connected-patch size was still the wrong discriminator: a patch can extend
+through easy faces while permanently ignoring an unfillable face near the
+root. The exact **complete-shell** lane instead recomputes shortest
+face-adjacency distance from the root for every current patch. To complete
+shell `r`, every exposed face owned by a tile at distance less than `r` must be
+covered. It applies MRV across all of those pending face obligations. This is
+branch-complete for the configured face-to-face proper-lattice model because a
+future placement elsewhere cannot create a new mate for an already exposed
+face; it can only invalidate current mates.
+
+That screen rejects three of the four former survivors. `10_45026` and
+`9_11683` cannot complete even shell 1. `10_16113` completes shell 1 with nine
+tiles but exhaustive search proves shell 2 impossible. `10_45033` is the sole
+remaining candidate: all three seeds complete shells 1 through 4, and two of
+three complete shell 5 with 464 tiles; the remaining shell-5 trial times out
+and is inconclusive. These finite shells are necessary local evidence, not a
+space-tiling or aperiodicity proof. The exact receipts are in
+`data/lattice-polyhedron-complete-shell-screen-2026-08-19.json`; regenerate
+them with `scripts/screen-lattice-complete-shells.mjs --target=5 --cascade=true`
+and validate them with `scripts/analyze-lattice-complete-shell-screen.mjs`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

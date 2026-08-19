@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-global-extension-v95";
+import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-complete-shell-v96";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -39,14 +39,16 @@ const patchMatrixVector = (matrix, vector) => [
   matrix[2][0] * vector[0] + matrix[2][1] * vector[1] + matrix[2][2] * vector[2]
 ];
 const canonicalPatchCoordinate = value => value === 0 ? 0 : value;
-export const canonicalLatticePatchStateKey = placements => {
+export const canonicalLatticePatchStateKey = (placements, { rooted = false } = {}) => {
   if (!placements?.length) return "";
+  const rootPlacement = placements[0];
   let canonical = null;
   for (const rotation of PROPER_CUBIC_ROTATIONS) {
     const rotatedPlacements = placements.map(placement => {
       const translation = placement.translation ?? [0, 0, 0];
       return {
         prototile_idx: placement.prototile_idx ?? 0,
+        is_root: rooted && placement === rootPlacement,
         vertices: (placement.orient?.verts ?? placement.vertices ?? []).map(vertex =>
           patchMatrixVector(rotation, [
             vertex[0] + translation[0],
@@ -62,7 +64,8 @@ export const canonicalLatticePatchStateKey = placements => {
       const vertices = placement.vertices.map(vertex => vertex.map((coordinate, axis) =>
         canonicalPatchCoordinate(coordinate - minima[axis])
       ).join(",")).sort().join("|");
-      return `${placement.prototile_idx}::${vertices}`;
+      const rootLabel = placement.is_root ? "@root" : "";
+      return `${placement.prototile_idx}${rootLabel}::${vertices}`;
     }).sort().join(";;");
     if (canonical === null || key < canonical) canonical = key;
   }
@@ -699,6 +702,10 @@ export const createTilingStream = (() => {
       generic_connected_patch_enumeration: false,
       generic_connected_patch_candidate_states: 0,
       generic_connected_patch_max_candidates: 0,
+      generic_complete_shell_enumeration: false,
+      generic_global_extension_candidate_states: 0,
+      generic_global_extension_max_candidates: 0,
+      max_complete_shell_depth: 0,
       generic_geometric_nogood_enabled: false,
       generic_geometric_nogood_disable_reason: null,
       generic_geometric_nogood_clauses: 0,
@@ -938,11 +945,14 @@ export const createTilingStream = (() => {
       if (!current) return true;
       const candidateLayer = candidate.frontier_stats?.min_gen ?? 0;
       const currentLayer = current.frontier_stats?.min_gen ?? 0;
+      const candidateShell = candidate.frontier_stats?.complete_shell_depth ?? 0;
+      const currentShell = current.frontier_stats?.complete_shell_depth ?? 0;
       const candidateTiles = candidate.tile_count ?? 0;
       const currentTiles = current.tile_count ?? 0;
       if (criterion === "layer" && candidateLayer !== currentLayer) return candidateLayer > currentLayer;
+      if (criterion === "shell" && candidateShell !== currentShell) return candidateShell > currentShell;
       if (candidateTiles !== currentTiles) return candidateTiles > currentTiles;
-      return candidateLayer > currentLayer;
+      return criterion === "shell" ? candidateShell > currentShell : candidateLayer > currentLayer;
     };
 
     const recordBestSnapshot = (snap) => {
@@ -1192,6 +1202,70 @@ export const createTilingStream = (() => {
       }
       return points;
     };
+    let shellDepthCache = null;
+    let shellDepthCacheVersion = -1;
+    const completeShellDepthStats = () => {
+      if (shellDepthCache && shellDepthCacheVersion === stateVersion) return shellDepthCache;
+      const placementIndex = new Map(state.placements.map((placement, index) => [placement, index]));
+      const adjacency = state.placements.map(() => []);
+      const firstOwnerByFace = new Map();
+      for (let placementIdx = 0; placementIdx < state.placements.length; placementIdx += 1) {
+        const placement = state.placements[placementIdx];
+        for (let faceIdx = 0; faceIdx < placement.orient.faces.length; faceIdx += 1) {
+          const faceKey = translatedOrientedFaceKey(placement.orient, faceIdx, placement.translation);
+          const previousOwner = firstOwnerByFace.get(faceKey);
+          if (previousOwner == null) firstOwnerByFace.set(faceKey, placementIdx);
+          else if (previousOwner !== placementIdx) {
+            adjacency[previousOwner].push(placementIdx);
+            adjacency[placementIdx].push(previousOwner);
+          }
+        }
+      }
+      const distances = Array(state.placements.length).fill(Infinity);
+      if (distances.length) distances[0] = 0;
+      const queue = distances.length ? [0] : [];
+      for (let cursor = 0; cursor < queue.length; cursor += 1) {
+        const current = queue[cursor];
+        for (const neighbor of adjacency[current]) {
+          if (distances[neighbor] <= distances[current] + 1) continue;
+          distances[neighbor] = distances[current] + 1;
+          queue.push(neighbor);
+        }
+      }
+      let minDepth = Infinity;
+      let minDepthFaceCount = 0;
+      let rootExposedFaceCount = 0;
+      let unreachableExposedFaceCount = 0;
+      for (const entry of state.frontier.values()) {
+        const depth = distances[placementIndex.get(entry.owner_placement)] ?? Infinity;
+        if (depth === 0) rootExposedFaceCount += 1;
+        if (!Number.isFinite(depth)) unreachableExposedFaceCount += 1;
+        if (depth < minDepth) {
+          minDepth = depth;
+          minDepthFaceCount = 1;
+        } else if (depth === minDepth) {
+          minDepthFaceCount += 1;
+        }
+      }
+      const maxTileDepth = distances.reduce((maximum, depth) =>
+        Number.isFinite(depth) ? Math.max(maximum, depth) : maximum, 0);
+      if (minDepth === Infinity) minDepth = maxTileDepth + 1;
+      shellDepthCache = {
+        complete_shell_depth: minDepth,
+        min_shell_face_count: minDepthFaceCount,
+        max_tile_shell_depth: maxTileDepth,
+        root_exposed_face_count: rootExposedFaceCount,
+        unreachable_exposed_face_count: unreachableExposedFaceCount,
+        shell_reachable_tiles: distances.filter(Number.isFinite).length,
+        owner_depth_by_placement: new Map(state.placements.map((placement, index) => [placement, distances[index]]))
+      };
+      shellDepthCacheVersion = stateVersion;
+      searchStats.max_complete_shell_depth = Math.max(
+        searchStats.max_complete_shell_depth,
+        minDepth
+      );
+      return shellDepthCache;
+    };
     let candidateInfluenceOffsets = null;
     const candidateInfluenceOffsetKeys = () => {
       if (candidateInfluenceOffsets) return candidateInfluenceOffsets;
@@ -1363,12 +1437,13 @@ export const createTilingStream = (() => {
     }
     let faceCandidateIndexVersion = -1;
     let faceCandidateIndex = new Map();
+    let frontierFaceCandidateIndex = new Map();
     const faceCandidatesByFrontierPoint = () => {
       if (faceCandidateIndexVersion === stateVersion) return faceCandidateIndex;
       const candidateByGeometry = new Map();
       let faceMatchAttempts = 0;
       candidateScan:
-      for (const frontierEntry of state.frontier.values()) {
+      for (const [frontierFaceKey, frontierEntry] of state.frontier.entries()) {
         if (overBudget()) {
           noteIncompleteSearch();
           break;
@@ -1398,13 +1473,17 @@ export const createTilingStream = (() => {
               orient: entry.orient
             };
             const geometryKey = placementGeometryKey(move);
-            if (candidateByGeometry.has(geometryKey)) continue;
+            if (candidateByGeometry.has(geometryKey)) {
+              candidateByGeometry.get(geometryKey)._matched_frontier_face_keys.add(frontierFaceKey);
+              continue;
+            }
             const validity = checkMoveViability(move);
             if (!validity) continue;
             candidateByGeometry.set(geometryKey, {
               ...move,
               occupancy_data: validity.occData,
-              dedup_key: geometryKey
+              dedup_key: geometryKey,
+              _matched_frontier_face_keys: new Set([frontierFaceKey])
             });
           }
         }
@@ -1420,7 +1499,18 @@ export const createTilingStream = (() => {
       for (const candidates of byPoint.values()) {
         candidates.sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
       }
+      const byFace = new Map();
+      for (const candidate of candidateByGeometry.values()) {
+        for (const faceKey of candidate._matched_frontier_face_keys) {
+          if (!byFace.has(faceKey)) byFace.set(faceKey, []);
+          byFace.get(faceKey).push(candidate);
+        }
+      }
+      for (const candidates of byFace.values()) {
+        candidates.sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
+      }
       faceCandidateIndex = byPoint;
+      frontierFaceCandidateIndex = byFace;
       faceCandidateIndexVersion = stateVersion;
       return faceCandidateIndex;
     };
@@ -1462,6 +1552,20 @@ export const createTilingStream = (() => {
         if (currentWeight + occupancy.weight >= MAX_SOLID_ANGLE) completedPoints += 1;
       }
       return completedPoints * 1e6 + touchedPoints * 1e3 + addedWeight;
+    };
+    const minimumShellCompletionScore = (move) => {
+      const shell = completeShellDepthStats();
+      let oldestFacesCovered = 0;
+      let totalFacesCovered = 0;
+      for (let faceIdx = 0; faceIdx < move.orient.faces.length; faceIdx += 1) {
+        const faceKey = translatedOrientedFaceKey(move.orient, faceIdx, move.translation);
+        const entry = state.frontier.get(faceKey);
+        if (!entry) continue;
+        totalFacesCovered += 1;
+        const ownerDepth = shell.owner_depth_by_placement.get(entry.owner_placement);
+        if (ownerDepth === shell.complete_shell_depth) oldestFacesCovered += 1;
+      }
+      return oldestFacesCovered * 1e6 + totalFacesCovered;
     };
 
     const applyMove = (move, { countWork = true } = {}) => {
@@ -1625,13 +1729,20 @@ export const createTilingStream = (() => {
     };
     const calculateFrontierStats = () => {
       const pointLayerStats = frontierPointLayerStats();
+      const shellStats = completeShellDepthStats();
       return {
         min_gen: pointLayerStats.min_layer,
         min_layer: pointLayerStats.min_layer,
         count: pointLayerStats.min_layer_point_count,
         total_faces: state.frontier.size,
         ...frontierPointStats(),
-        layered_point_count: pointLayerStats.point_count
+        layered_point_count: pointLayerStats.point_count,
+        complete_shell_depth: shellStats.complete_shell_depth,
+        min_shell_face_count: shellStats.min_shell_face_count,
+        max_tile_shell_depth: shellStats.max_tile_shell_depth,
+        root_exposed_face_count: shellStats.root_exposed_face_count,
+        unreachable_exposed_face_count: shellStats.unreachable_exposed_face_count,
+        shell_reachable_tiles: shellStats.shell_reachable_tiles
       };
     };
     const frontierGraphPayload = (graph) => ({
@@ -1729,6 +1840,23 @@ export const createTilingStream = (() => {
       && (!usePolicyAgent || agentExhaustive)
       && !proposalProgram;
     searchStats.generic_connected_patch_enumeration = genericConnectedPatchEnumeration;
+    // A complete shell of depth r has no exposed face owned by a tile whose
+    // face-adjacency distance from the root is less than r. Every infinite
+    // face-to-face tiling contains such a shell for every finite r. Unlike the
+    // insertion-time point layer, this depth is recomputed from the current
+    // patch, so it is independent of the order used to reach the state.
+    const genericCompleteShellEnumeration = config.generic_complete_shell_enumeration === true
+      && tilingStrategy === "generic"
+      && criterion === "shell"
+      && exhaustive
+      && !Number.isFinite(forcedMoveLayerLagCap)
+      && !Number.isFinite(candidateCap)
+      && !greedyNoBacktrack
+      && (!usePolicyAgent || agentExhaustive)
+      && !proposalProgram;
+    const genericGlobalExtensionEnumeration = genericConnectedPatchEnumeration
+      || genericCompleteShellEnumeration;
+    searchStats.generic_complete_shell_enumeration = genericCompleteShellEnumeration;
     const configuredFailureMemoCapacity = Number(config.generic_failure_memo_max_states);
     const genericFailureMemoCapacity = Number.isFinite(configuredFailureMemoCapacity)
       ? Math.max(0, Math.floor(configuredFailureMemoCapacity))
@@ -1753,13 +1881,15 @@ export const createTilingStream = (() => {
       && !targetRegion;
     searchStats.generic_failure_memo_key_equivalence = genericFailureMemoEnabled
       ? genericFailureMemoRigidMotion
-        ? "orientation_preserving_cubic_rigid_motion"
+        ? criterion === "shell"
+          ? "rooted_orientation_preserving_cubic_rigid_motion"
+          : "orientation_preserving_cubic_rigid_motion"
         : requestedFailureMemoSymmetry === "rigid" && targetRegion
           ? "fixed_frame_region_guard"
           : "fixed_frame"
       : "disabled";
     const genericFailureStateKey = genericFailureMemoRigidMotion
-      ? () => canonicalLatticePatchStateKey(state.placements)
+      ? () => canonicalLatticePatchStateKey(state.placements, { rooted: criterion === "shell" })
       : () => state.placements.map(placementGeometryKey).sort().join("||");
     const configuredGeometricNogoodCapacity = Number(config.generic_geometric_nogood_max_clauses);
     const genericGeometricNogoodCapacity = Number.isFinite(configuredGeometricNogoodCapacity)
@@ -1920,6 +2050,7 @@ export const createTilingStream = (() => {
     const goalMet = () => {
       if (criterion === "count") return state.placements.length >= targetVal;
       if (criterion === "layer") return calculateFrontierStats().min_gen >= targetVal;
+      if (criterion === "shell") return completeShellDepthStats().complete_shell_depth >= targetVal;
       if (criterion === "region") return !!targetRegion && Math.abs(state.placed_volume - targetRegion.volume) <= 1e-8;
       return false;
     };
@@ -3042,6 +3173,17 @@ export const createTilingStream = (() => {
       }
       if (moveOrder === "proposal") return [proposalScore(move)];
       if (moveOrder === "global") return rlAgent.score(move);
+      if (moveOrder === "shell") {
+        const growth = prospectiveGrowthShape(move);
+        return [
+          minimumShellCompletionScore(move),
+          growth.axis_rank,
+          growth.axis_isotropy,
+          growth.axis_planarity,
+          -growth.max_span,
+          coverage
+        ];
+      }
       if (moveOrder === "symmetric") {
         const symmetry = previewMoveSymmetry(move);
         return [
@@ -5035,16 +5177,63 @@ export const createTilingStream = (() => {
           }
         }
         const candidates = [...dedup.values()];
-        searchStats.generic_connected_patch_candidate_states += 1;
-        searchStats.generic_connected_patch_max_candidates = Math.max(
-          searchStats.generic_connected_patch_max_candidates,
+        if (genericConnectedPatchEnumeration) {
+          searchStats.generic_connected_patch_candidate_states += 1;
+          searchStats.generic_connected_patch_max_candidates = Math.max(
+            searchStats.generic_connected_patch_max_candidates,
+            candidates.length
+          );
+        }
+        searchStats.generic_global_extension_candidate_states += 1;
+        searchStats.generic_global_extension_max_candidates = Math.max(
+          searchStats.generic_global_extension_max_candidates,
+          candidates.length
+        );
+        return candidates;
+      };
+      const pendingShellFaceExtensions = () => {
+        // Select a required obligation, not a heuristic growth direction.
+        // Every exposed face owned below the requested shell depth must be
+        // covered in any successful shell. Candidate choice at that face is
+        // still exhaustively branched. Unlike a frontier vertex, growth
+        // elsewhere cannot create a new legal mate for this face; additional
+        // tiles can only remove candidates. MRV over every pending interior
+        // face therefore exposes zero-candidate contradictions immediately.
+        faceCandidatesByFrontierPoint();
+        const shell = completeShellDepthStats();
+        let selectedFaceKey = null;
+        let selectedFaceDepth = Infinity;
+        let selectedCandidates = null;
+        for (const [faceKey, entry] of state.frontier.entries()) {
+          const ownerDepth = shell.owner_depth_by_placement.get(entry.owner_placement);
+          if (!Number.isFinite(ownerDepth) || ownerDepth >= targetVal) continue;
+          const candidates = frontierFaceCandidateIndex.get(faceKey) ?? [];
+          if (
+            selectedCandidates === null
+            || candidates.length < selectedCandidates.length
+            || (candidates.length === selectedCandidates.length && ownerDepth < selectedFaceDepth)
+            || (
+              candidates.length === selectedCandidates.length
+              && ownerDepth === selectedFaceDepth
+              && faceKey < selectedFaceKey
+            )
+          ) {
+            selectedFaceKey = faceKey;
+            selectedFaceDepth = ownerDepth;
+            selectedCandidates = candidates;
+          }
+        }
+        const candidates = selectedCandidates ?? [];
+        searchStats.generic_global_extension_candidate_states += 1;
+        searchStats.generic_global_extension_max_candidates = Math.max(
+          searchStats.generic_global_extension_max_candidates,
           candidates.length
         );
         return candidates;
       };
       let forcedCount = 0;
       let branchAnalysis = null;
-      while (!genericConnectedPatchEnumeration) {
+      while (!genericGlobalExtensionEnumeration) {
         await yieldToBrowser();
         if (stopToken.stop) { noteIncompleteSearch(); return yield* doReturn(false); }
         if (overBudget()) {
@@ -5125,7 +5314,7 @@ export const createTilingStream = (() => {
         break;
       }
 
-      if (genericConnectedPatchEnumeration) {
+      if (genericGlobalExtensionEnumeration) {
         const analysis = await analyzeFrontierGraph();
         const frontierDual = frontierGraphPayload(analysis);
         const analysisStats = rememberFrontierGraph(analysis);
@@ -5157,12 +5346,14 @@ export const createTilingStream = (() => {
       }
 
       const branchOptions = branchAnalysis?.branches ?? [];
-      let bestMoves = genericConnectedPatchEnumeration
-        ? allLegalFaceExtensions()
+      let bestMoves = genericGlobalExtensionEnumeration
+        ? genericCompleteShellEnumeration
+          ? pendingShellFaceExtensions()
+          : allLegalFaceExtensions()
         : policyAgentProposals(branchAnalysis);
       let bestOption = null;
       let bestOptionMoves = [];
-      if (!bestMoves.length && branchOptions.length) {
+      if (!genericGlobalExtensionEnumeration && !bestMoves.length && branchOptions.length) {
         let bestPointScore = null;
         for (const option of branchOptions) {
           await yieldToBrowser();
@@ -5425,10 +5616,9 @@ export const createTilingStream = (() => {
     }
     if (
       !success
-      && criterion === "count"
       && tilingStrategy === "generic"
       && exhaustive
-      && genericConnectedPatchEnumeration
+      && genericGlobalExtensionEnumeration
       && !searchIncomplete
       && !Number.isFinite(candidateCap)
       && !greedyNoBacktrack
@@ -5436,15 +5626,25 @@ export const createTilingStream = (() => {
       && !(proposalProgram && searchStats.proposal_patch_tiles_replayed > 0)
       && !tilingEvidence
     ) {
-      tilingEvidence = {
-        kind: "finite_patch_obstruction",
-        certified: true,
-        can_tile: false,
-        strategy: tilingStrategy,
-        target_tiles: targetVal,
-        model: "connected face-to-face tiling by the configured proper lattice orientations",
-        note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
-      };
+      tilingEvidence = criterion === "shell"
+        ? {
+            kind: "finite_shell_obstruction",
+            certified: true,
+            can_tile: false,
+            strategy: tilingStrategy,
+            target_shell_depth: targetVal,
+            model: "face-to-face tiling by the configured proper lattice orientations",
+            note: `Exhaustive global face-extension search found no patch completing combinatorial shell ${targetVal} around the normalized root tile.`
+          }
+        : {
+            kind: "finite_patch_obstruction",
+            certified: true,
+            can_tile: false,
+            strategy: tilingStrategy,
+            target_tiles: targetVal,
+            model: "connected face-to-face tiling by the configured proper lattice orientations",
+            note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
+          };
     }
     yield nodeStatus(rootId, success ? "success" : "fail");
     const terminalSnapshot = snapshot(null);
@@ -5473,10 +5673,13 @@ export const createTilingStream = (() => {
       };
     } else if (success && !tilingEvidence) {
       tilingEvidence = {
-        kind: "finite_patch",
+        kind: criterion === "shell" ? "finite_complete_shell" : "finite_patch",
         certified: false,
         strategy: tilingStrategy,
-        note: "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        ...(criterion === "shell" ? { completed_shell_depth: targetVal } : {}),
+        note: criterion === "shell"
+          ? "A complete finite combinatorial shell is necessary for a face-to-face space tiling, but is not sufficient to prove one."
+          : "A locally legal finite patch is not a proof that all of 3-space can be tiled."
       };
     }
     const provenImpossible = tilingEvidence?.can_tile === false || (
@@ -6601,9 +6804,11 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
-    ...Object.fromEntries(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => [candidate.registry_id, {
+    ...Object.fromEntries(LATTICE_POLYHEDRON_GCTS_EXAMPLES.map(candidate => [candidate.registry_id, {
       name: candidate.name,
-      category: ["Unresolved Lattice Candidates"],
+      category: [candidate.screening.status === "inconclusive"
+        ? "Unresolved Lattice Candidates"
+        : "GCTS Shell-Obstruction Controls"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),

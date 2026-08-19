@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-global-extension-v95";
+import { tileSpecs } from "./engine.js?v=20260819-complete-shell-v96";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -16,6 +16,7 @@ const candidateSearchButton = $("candidateSearchButton");
 const statusEl = $("status");
 const maxTilesInput = $("maxTilesInput");
 const layerInput = $("layerInput");
+const shellInput = $("shellInput");
 const regionField = $("regionField");
 const regionSizeFields = $("regionSizeFields");
 const regionWidthInput = $("regionWidthInput");
@@ -42,6 +43,7 @@ const runButton = $("runButton");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
 const layerField = $("layerField");
+const shellField = $("shellField");
 const tileList = $("tileList");
 const systemTileList = $("systemTileList");
 const customPolycubeCheckbox = $("customPolycubeCheckbox");
@@ -541,6 +543,7 @@ function updateCriterionUI() {
   const byCount = selected === "count";
   maxTileField.classList.toggle("is-active", byCount);
   layerField.classList.toggle("is-active", selected === "layer");
+  shellField.classList.toggle("is-active", selected === "shell");
   regionField.classList.toggle("is-active", selected === "region");
   regionSizeFields.classList.toggle("is-hidden", selected !== "region");
 }
@@ -593,12 +596,13 @@ function applySearchParams() {
     if (Number.isFinite(value) && value > 0) control.value = String(value);
   };
   const criterionParam = params.get("criterion");
-  if (criterionParam === "count" || criterionParam === "layer" || criterionParam === "region") {
+  if (["count", "layer", "shell", "region"].includes(criterionParam)) {
     document.querySelector(`input[name="criterion"][value="${criterionParam}"]`).checked = true;
   }
   setPositiveNumberParam(maxTilesInput, "target");
   setPositiveNumberParam(maxTilesInput, "target_val");
   setPositiveNumberParam(layerInput, "layer");
+  setPositiveNumberParam(shellInput, "shell");
   setSelectParam(faceOrderSelect, "face_order");
   setSelectParam(strategySelect, "tiling_strategy");
   setSelectParam(moveOrderSelect, "move_order");
@@ -786,7 +790,8 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
-  { id: "unresolved", title: "4 unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "unresolved", title: "1 unresolved lattice candidate", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "shell-controls", title: "GCTS shell-obstruction controls", test: figure => figureHasCategory(figure, "GCTS Shell-Obstruction Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -1073,6 +1078,7 @@ function checkpointUiState() {
       criterion: criterion(),
       maxTiles: maxTilesInput.value,
       layer: layerInput.value,
+      shell: shellInput.value,
       regionWidth: regionWidthInput.value,
       regionDepth: regionDepthInput.value,
       regionHeight: regionHeightInput.value,
@@ -1196,11 +1202,12 @@ function applyCheckpointUiState(ui = {}) {
   }
   if (!builderVoxels.size) builderVoxels = new Set(["0,0,0"]);
 
-  const savedCriterion = ["count", "layer", "region"].includes(controls.criterion) ? controls.criterion : "count";
+  const savedCriterion = ["count", "layer", "shell", "region"].includes(controls.criterion) ? controls.criterion : "count";
   const criterionRadio = document.querySelector(`input[name="criterion"][value="${savedCriterion}"]`);
   if (criterionRadio) criterionRadio.checked = true;
   if (controls.maxTiles != null) maxTilesInput.value = controls.maxTiles;
   if (controls.layer != null) layerInput.value = controls.layer;
+  if (controls.shell != null) shellInput.value = controls.shell;
   if (controls.regionWidth != null) regionWidthInput.value = controls.regionWidth;
   if (controls.regionDepth != null) regionDepthInput.value = controls.regionDepth;
   if (controls.regionHeight != null) regionHeightInput.value = controls.regionHeight;
@@ -1296,15 +1303,19 @@ function selectedCensusCandidate() {
 
 function applyCandidateSearchPreset({ invalidate = true } = {}) {
   const knownAperiodic = rootFigure()?.aperiodic_tile ?? null;
-  if (!selectedCensusCandidate() && !knownAperiodic) return;
-  document.querySelector('input[name="criterion"][value="count"]').checked = true;
+  const candidate = selectedCensusCandidate();
+  if (!candidate && !knownAperiodic) return;
+  document.querySelector(`input[name="criterion"][value="${candidate ? "shell" : "count"}"]`).checked = true;
   maxTilesInput.value = knownAperiodic ? "80" : "120";
+  if (candidate) shellInput.value = String(
+    candidate.screening?.shell_depth ?? candidate.shell_screening?.deepest_completed_shell ?? 5
+  );
   strategySelect.value = setRadioValue(strategyRadios, "free_range", "free_range");
   faceOrderSelect.value = "mrv";
-  moveOrderSelect.value = "balanced";
+  moveOrderSelect.value = candidate ? "shell" : "balanced";
   snapshotSelect.value = "0";
-  timeCapInput.value = knownAperiodic ? "10" : "30";
-  nodeCapInput.value = "0";
+  timeCapInput.value = knownAperiodic ? "10" : "60";
+  nodeCapInput.value = candidate ? "100000" : "0";
   candidateCapInput.value = "0";
   branchCapInput.value = "0";
   exhaustiveCheckbox.checked = true;
@@ -1322,6 +1333,7 @@ function updateCandidateResearchPanel() {
   if (candidate) {
     const screening = candidate.last_screening;
     const proof = candidate.gcts_proof_screening;
+    const shell = candidate.shell_screening;
     const limits = screening
       ? ` Translational motifs through ${screening.translational.maximum_requested_motif_tiles} tiles (${screening.translational.seconds_per_tile}s); isohedral growth horizon ${screening.isohedral.growth_horizon_tiles} tiles (${screening.isohedral.seconds_per_tile}s).`
       : "";
@@ -1376,8 +1388,13 @@ function updateCandidateResearchPanel() {
         : "";
       return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}${crystal}${internalPeriod}`;
     })() : "";
-    candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-    candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
+    if (candidate.screening?.certificate === "finite_shell_obstruction") {
+      candidateResearchTitle.textContent = `Certified non-tiler control ${candidate.id}`;
+      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that combinatorial shell ${candidate.screening.shell_depth} cannot be completed around the root in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but the next shell is not.` : " One root face has no legal lattice face-mate."} Earlier connected-patch growth could still reach 60 tiles by extending elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
+    } else {
+      candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
+      candidateResearchDetail.textContent = `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
+    }
   } else if (knownAperiodic) {
     candidateResearchTitle.textContent = "Known weakly aperiodic monotile";
     candidateResearchDetail.textContent = "Integral 3–4–5 Schmitt–Conway–Danzer biprism. Free-range shows the published rotated-layer construction; mirror copies must remain disabled.";
@@ -1433,7 +1450,9 @@ function renderSystemTileList() {
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
-        angles.textContent = `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 4} · ${figure.census_candidate.lattice_points} points`;
+        angles.textContent = figure.census_candidate.screening?.certificate === "finite_shell_obstruction"
+          ? `shell ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
+          : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;
         angles.classList.add("is-census-label");
       } else {
         angles.innerHTML = solidAngleListHtml(figure.solid_angles);
@@ -1651,7 +1670,10 @@ function configKey() {
     && moveOrderSelect.value === "global"
     && selectedCriterion === "count"
     && exhaustiveCheckbox.checked;
-  const forcedLayerLagCap = completeGlobalSearch
+  const completeShellSearch = tilingStrategy === "free_range"
+    && selectedCriterion === "shell"
+    && exhaustiveCheckbox.checked;
+  const forcedLayerLagCap = completeGlobalSearch || completeShellSearch
     ? 0
     : positiveSearchParam("generation_lag_cap", "forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 2;
   const isLearningFreeRange = tilingStrategy === "learning_free_range";
@@ -1663,7 +1685,11 @@ function configKey() {
     custom_system: customSystem,
     polycube_lattice: selectedPolycubeLattice(),
     criterion: selectedCriterion,
-    target_val: selectedCriterion === "count" ? +maxTilesInput.value : +layerInput.value,
+    target_val: selectedCriterion === "count"
+      ? +maxTilesInput.value
+      : selectedCriterion === "shell"
+        ? +shellInput.value
+        : +layerInput.value,
     target_region: selectedCriterion === "region" ? (() => {
       const size = [
         Math.max(1, Number(regionWidthInput.value) || 1),
@@ -1677,7 +1703,7 @@ function configKey() {
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
-    move_order: isLearningFreeRange ? "agent" : moveOrderSelect.value,
+    move_order: isLearningFreeRange ? "agent" : completeShellSearch ? "shell" : moveOrderSelect.value,
     greedy_no_backtrack: false,
     agent_exhaustive: true,
     template_preflight: isStructural,
@@ -1690,6 +1716,7 @@ function configKey() {
       positiveSearchParam("isohedral_search_horizon_tiles") ?? candidateIsohedralHorizon,
     forced_move_layer_lag_cap: forcedLayerLagCap,
     generic_connected_patch_enumeration: completeGlobalSearch,
+    generic_complete_shell_enumeration: completeShellSearch,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -1836,10 +1863,13 @@ function updateFrontierMetrics(stats = null) {
   const frontierPoints = stats?.point_count ?? stats?.frontier_points ?? stats?.count ?? 0;
   const candidateCount = Number.isFinite(stats?.candidate_count) ? stats.candidate_count : 0;
   const minLayer = Number.isFinite(stats?.min_layer) ? stats.min_layer : 0;
+  const shellDepth = Number.isFinite(stats?.complete_shell_depth) ? stats.complete_shell_depth : 0;
   const layerPointCount = Number.isFinite(stats?.min_layer_point_count) ? stats.min_layer_point_count : frontierPoints;
   metricFrontier.textContent = frontierPoints;
-  metricLayer.textContent = minLayer;
-  metricLayerDetail.textContent = `active layer · ${layerPointCount} point${layerPointCount === 1 ? "" : "s"} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"}`;
+  metricLayer.textContent = criterion() === "shell" ? shellDepth : minLayer;
+  metricLayerDetail.textContent = criterion() === "shell"
+    ? `complete shell · ${stats?.min_shell_face_count ?? 0} nearest exposed face${stats?.min_shell_face_count === 1 ? "" : "s"}`
+    : `active layer · ${layerPointCount} point${layerPointCount === 1 ? "" : "s"} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"}`;
 }
 
 function updateSearchMetrics(stats = null) {
@@ -2702,7 +2732,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-global-extension-v95", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-complete-shell-v96", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3076,6 +3106,20 @@ function formatGrowthResult(result, target) {
     proofMode
     && result?.certified
     && result?.canTile === false
+    && result?.certificateKind === "finite_shell_obstruction"
+  ) {
+    return `${result.label} certified shell ${result.certificateTargetShell ?? target} impossible ${formatElapsed(result.milliseconds)}`;
+  }
+  if (proofMode && result?.criterion === "shell" && result?.success) {
+    return `${result.label} completed shell ${result.targetValue ?? target} with ${result.tileCount} tiles ${formatElapsed(result.milliseconds)}`;
+  }
+  if (proofMode && result?.criterion === "shell") {
+    return `${result.label} inconclusive · max complete shell ${result.stats?.max_complete_shell_depth ?? 0} · max ${result.stats?.max_live_tiles ?? result.tileCount ?? 0} live${stopSuffix}`;
+  }
+  if (
+    proofMode
+    && result?.certified
+    && result?.canTile === false
     && result?.certificateKind === "finite_patch_obstruction"
   ) {
     const patchSize = result.certificateTargetTiles ?? target;
@@ -3135,7 +3179,11 @@ function formatGrowthResult(result, target) {
 function finishGrowthBenchmark(results) {
   growthRunning = false;
   setRunButton();
-  const target = Number(maxTilesInput.value) || 1;
+  const target = criterion() === "shell"
+    ? Number(shellInput.value) || 1
+    : criterion() === "count"
+      ? Number(maxTilesInput.value) || 1
+      : Number(layerInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
   setStatus("All eight modes finished.");
   renderGrowthChart();
@@ -3178,14 +3226,17 @@ function startGrowthBenchmark() {
   growthSequence += 1;
   const sequence = growthSequence;
   const config = JSON.parse(configKey());
-  config.criterion = "count";
-  config.target_val = Math.max(2, Number(maxTilesInput.value) || 2);
   config.ui_yield_interval_ms = 250;
   const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
   setStatus("Running all eight modes…");
-  growthBenchmarkStatus.textContent = `Running eight searches simultaneously to ${config.target_val} tiles…`;
+  const targetLabel = config.criterion === "shell"
+    ? `shell ${config.target_val}`
+    : config.criterion === "count"
+      ? `${config.target_val} tiles`
+      : `${config.criterion} ${config.target_val}`;
+  growthBenchmarkStatus.textContent = `Running eight searches simultaneously to ${targetLabel}…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3209,7 +3260,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-global-extension-v95", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-complete-shell-v96", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3282,7 +3333,7 @@ function bindControls() {
     });
   });
 
-  [maxTilesInput, layerInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, strategySelect, ...strategyRadios, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
+  [maxTilesInput, layerInput, shellInput, regionWidthInput, regionDepthInput, regionHeightInput, snapshotSelect, strategySelect, ...strategyRadios, faceOrderSelect, moveOrderSelect, polycubeLatticeSelect, periodicTileCountSelect, branchCapInput, nodeCapInput, candidateCapInput, timeCapInput, exhaustiveCheckbox, mirrorCheckbox, customPolycubeCheckbox, customNameInput, customPolyhedronCheckbox, customPolyhedronInput].forEach((control) => {
     if (!control) return;
     control.addEventListener("input", invalidatePausedRunIfNeeded);
     control.addEventListener("change", invalidatePausedRunIfNeeded);

@@ -26,6 +26,7 @@ const rotateAndTranslatePatch = (placements, matrix, translation) => placements.
 }));
 const quarterTurn = [[0, -1, 0], [1, 0, 0], [0, 0, 1]];
 const rigidCopy = rotateAndTranslatePatch(labeledPointPatch, quarterTurn, [7, -5, 11]).reverse();
+const rootedRigidCopy = rotateAndTranslatePatch(labeledPointPatch, quarterTurn, [7, -5, 11]);
 const reflectedCopy = rotateAndTranslatePatch(
   labeledPointPatch,
   [[-1, 0, 0], [0, 1, 0], [0, 0, 1]],
@@ -38,6 +39,16 @@ assert.notEqual(
   canonicalPatchKey,
   canonicalLatticePatchStateKey(reflectedCopy),
   "proper-rotation canonicalization must not identify a reflected labeled patch"
+);
+assert.equal(
+  canonicalLatticePatchStateKey(labeledPointPatch, { rooted: true }),
+  canonicalLatticePatchStateKey(rootedRigidCopy, { rooted: true }),
+  "root-preserving rigid copies must share a rooted shell-state key"
+);
+assert.notEqual(
+  canonicalLatticePatchStateKey(labeledPointPatch, { rooted: true }),
+  canonicalLatticePatchStateKey(rigidCopy, { rooted: true }),
+  "rooted shell-state keys must not forget which placement defines the shell"
 );
 
 async function solve(overrides) {
@@ -263,6 +274,31 @@ assert.equal(exactNodeBudget.final.search_stats.generic_connected_patch_enumerat
 assert.ok(exactNodeBudget.final.search_stats.generic_connected_patch_candidate_states > 0);
 assert.ok(exactNodeBudget.final.search_stats.generic_connected_patch_max_candidates > 6);
 
+const exactCubeShell = await solve({
+  mode_key: "cube",
+  criterion: "shell",
+  target_val: 1,
+  tiling_strategy: "free_range",
+  move_order: "shell",
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_complete_shell_enumeration: true,
+  generic_failure_memo_symmetry: "rigid",
+  node_limit: 100,
+  time_limit_ms: 10000
+});
+assert.equal(exactCubeShell.final.result_kind, "patch_found");
+assert.equal(exactCubeShell.final.tile_count, 7, "the first cube shell is the six face-neighbors of the root");
+assert.equal(exactCubeShell.final.tiling_evidence?.kind, "finite_complete_shell");
+assert.equal(exactCubeShell.final.search_stats.generic_complete_shell_enumeration, true);
+assert.equal(
+  exactCubeShell.final.search_stats.generic_failure_memo_key_equivalence,
+  "rooted_orientation_preserving_cubic_rigid_motion"
+);
+assert.ok(exactCubeShell.final.search_stats.max_complete_shell_depth >= 1);
+
 const unattachedScalenePair = {
   name: "No proper-lattice face attachment",
   polycubes: [],
@@ -287,6 +323,25 @@ const completeObstruction = await solve({
 assert.equal(completeObstruction.final.result_kind, "no_tiling");
 assert.equal(completeObstruction.final.tiling_evidence?.kind, "finite_patch_obstruction");
 assert.match(completeObstruction.final.tiling_evidence?.note ?? "", /global face-extension search/);
+
+const completeShellObstruction = await solve({
+  mode_key: "cube",
+  custom_system: unattachedScalenePair,
+  criterion: "shell",
+  target_val: 1,
+  tiling_strategy: "free_range",
+  move_order: "shell",
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_complete_shell_enumeration: true,
+  node_limit: 100
+});
+assert.equal(completeShellObstruction.final.result_kind, "no_tiling");
+assert.equal(completeShellObstruction.final.can_tile, false);
+assert.equal(completeShellObstruction.final.tiling_evidence?.kind, "finite_shell_obstruction");
+assert.equal(completeShellObstruction.final.tiling_evidence?.target_shell_depth, 1);
 
 const heuristicExhaustion = await solve({
   mode_key: "cube",

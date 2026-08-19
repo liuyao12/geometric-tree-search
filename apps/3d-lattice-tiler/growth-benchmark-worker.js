@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-global-extension-v95";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-complete-shell-v96";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -83,6 +83,10 @@ const post = (sequence, payload) => {
 };
 
 async function runMode(sequence, baseConfig, mode) {
+  const shellSearch = baseConfig.criterion === "shell";
+  const effectiveMode = shellSearch && mode.proof
+    ? { ...mode, label: `${mode.label.replace(/ · .*$/u, "")} · complete shell` }
+    : mode;
   const priorProgram = mode.id === "learning" && baseConfig.proposal_program
     ? normalizeProposalProgram(baseConfig.proposal_program)
     : null;
@@ -91,7 +95,7 @@ async function runMode(sequence, baseConfig, mode) {
     tiling_strategy: mode.strategy,
     move_order: priorProgram
       ? "proposal"
-      : mode.moveOrder,
+      : shellSearch && mode.proof ? "shell" : mode.moveOrder,
     proposal_program: priorProgram,
     agent_exhaustive: mode.agentExhaustive,
     greedy_no_backtrack: false,
@@ -104,17 +108,18 @@ async function runMode(sequence, baseConfig, mode) {
     branch_cap: null,
     candidate_cap: null,
     forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
-    generic_connected_patch_enumeration: !!mode.proof,
+    generic_connected_patch_enumeration: !!mode.proof && !shellSearch,
+    generic_complete_shell_enumeration: !!mode.proof && shellSearch,
     generic_failure_memo: mode.proof,
-    generic_failure_memo_symmetry: "fixed",
-    generic_geometric_nogood: !!mode.nogood,
+    generic_failure_memo_symmetry: shellSearch ? "rigid" : "fixed",
+    generic_geometric_nogood: !!mode.nogood && !shellSearch,
     generic_geometric_nogood_max_clauses: 20000,
     generic_geometric_nogood_index: true,
     generic_geometric_nogood_activation_failure_states: mode.nogood ? 25 : 0,
     seeded_tie_breaks: !!mode.proof,
-    generic_periodic_certificate: !!mode.proof,
-    generic_periodic_certificate_check_new_maximum: !!mode.proof,
-    generic_periodic_certificate_check_distinct_patches: !!mode.proof,
+    generic_periodic_certificate: !!mode.proof && !shellSearch,
+    generic_periodic_certificate_check_new_maximum: !!mode.proof && !shellSearch,
+    generic_periodic_certificate_check_distinct_patches: !!mode.proof && !shellSearch,
     generic_periodic_certificate_checkpoint_sampling_policy: mode.proof ? "hybrid" : "prefix",
     generic_periodic_certificate_checkpoint_sampling_prefix: 4,
     generic_periodic_certificate_checkpoint_sampling_stride: 16,
@@ -132,7 +137,7 @@ async function runMode(sequence, baseConfig, mode) {
   let terminalSnapshot = null;
   let checkedPatchSize = 0;
   const points = [];
-  post(sequence, { type: "series-start", mode });
+  post(sequence, { type: "series-start", mode: effectiveMode });
   for await (const message of createTilingStream(config, tileSpecs, stopToken)) {
     if (stopToken.stop || sequence !== activeSequence) return null;
     if (message.type === "prototile_info") post(sequence, { type: "prototile-info", mode: mode.id, info: message });
@@ -185,7 +190,9 @@ async function runMode(sequence, baseConfig, mode) {
   }
   const result = {
     mode: mode.id,
-    label: mode.label,
+    label: effectiveMode.label,
+    criterion: baseConfig.criterion,
+    targetValue: baseConfig.target_val,
     success: final?.success ?? false,
     tileCount: mode.id === "isohedral" && final?.success === false
       ? 0
@@ -203,7 +210,8 @@ async function runMode(sequence, baseConfig, mode) {
     certified: !!final?.tiling_evidence?.certified,
     certificateKind: final?.tiling_evidence?.kind ?? null,
     certificateSource: final?.tiling_evidence?.source ?? null,
-    certificateTargetTiles: final?.tiling_evidence?.target_tiles ?? null
+    certificateTargetTiles: final?.tiling_evidence?.target_tiles ?? null,
+    certificateTargetShell: final?.tiling_evidence?.target_shell_depth ?? null
   };
   post(sequence, { type: "series-finished", result });
   return result;

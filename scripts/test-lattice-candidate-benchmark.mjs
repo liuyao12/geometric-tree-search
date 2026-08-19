@@ -64,7 +64,7 @@ assert.equal(
 );
 
 const survivor = run([
-  "--ids=10_45026",
+  "--ids=10_45033",
   "--special-controls=false",
   "--target=8",
   "--time-ms=150",
@@ -92,7 +92,7 @@ assert.ok(
   "the production proof lane must use branch-complete global face extensions"
 );
 const pocketOrder = run([
-  "--ids=10_45026",
+  "--ids=10_45033",
   "--lanes=free_range_unbanded",
   "--connected-patch-enumeration=false",
   "--special-controls=false",
@@ -105,7 +105,7 @@ const pocketOrder = run([
 assert.equal(pocketOrder.configuration.faceOrder, "pocket");
 assert.ok(pocketOrder.rows.every(row => row.faceOrder === "pocket"));
 const crystalOrder = run([
-  "--ids=10_45026",
+  "--ids=10_45033",
   "--lanes=free_range_unbanded",
   "--connected-patch-enumeration=false",
   "--special-controls=false",
@@ -191,7 +191,7 @@ assert.ok(freeRangeRows.every(row => row.failureMemoEnabled === false));
 assert.ok(["inconclusive", "reject_certified_non_tiler"].includes(survivor.unresolved[0].screeningConclusion));
 
 const nodeLimited = run([
-  "--ids=10_45026",
+  "--ids=10_45033",
   "--special-controls=false",
   "--target=24",
   "--time-ms=1000",
@@ -223,7 +223,8 @@ const memoProbe = run([
   "--seeds=1",
   "--geometric-nogood=false"
 ]);
-const memoRow = memoProbe.unresolved[0].freeRangeUnbanded;
+const unbandedRow = report => report.rows.find(row => row.lane === "free_range_unbanded");
+const memoRow = unbandedRow(memoProbe);
 assert.equal(memoRow.terminationReason, "node_limit");
 assert.equal(memoRow.geometricNogoodDisableReason, "not_requested");
 assert.equal(memoRow.failureMemoEnabled, true);
@@ -243,7 +244,7 @@ const memoAblation = run([
   "--failure-memo=false",
   "--geometric-nogood=false"
 ]);
-const ablationRow = memoAblation.unresolved[0].freeRangeUnbanded;
+const ablationRow = unbandedRow(memoAblation);
 assert.equal(ablationRow.failureMemoEnabled, false);
 assert.equal(ablationRow.failureMemoHits, 0);
 assert.deepEqual(
@@ -264,7 +265,7 @@ const nogoodProbe = run([
   "--seeds=1",
   "--geometric-nogood=true"
 ]);
-const nogoodRow = nogoodProbe.unresolved[0].freeRangeUnbanded;
+const nogoodRow = unbandedRow(nogoodProbe);
 assert.equal(nogoodRow.geometricNogoodEnabled, true);
 assert.equal(nogoodRow.geometricNogoodDisableReason, null);
 assert.equal(nogoodRow.geometricNogoodActivationFailureStates, 0);
@@ -294,7 +295,7 @@ const delayedNogoodProbe = run([
   "--geometric-nogood=true",
   "--geometric-nogood-activation-failures=1000"
 ]);
-const delayedNogoodRow = delayedNogoodProbe.unresolved[0].freeRangeUnbanded;
+const delayedNogoodRow = unbandedRow(delayedNogoodProbe);
 assert.equal(delayedNogoodProbe.configuration.geometricNogoodActivationFailures, 1000);
 assert.equal(delayedNogoodRow.geometricNogoodEnabled, true);
 assert.equal(delayedNogoodRow.geometricNogoodActivationFailureStates, 1000);
@@ -335,7 +336,7 @@ const stagnationNogoodProbe = run([
   "--geometric-nogood=true",
   "--geometric-nogood-stagnation-failures=1000"
 ]);
-const stagnationNogoodRow = stagnationNogoodProbe.unresolved[0].freeRangeUnbanded;
+const stagnationNogoodRow = unbandedRow(stagnationNogoodProbe);
 assert.equal(stagnationNogoodProbe.configuration.geometricNogoodStagnationFailures, 1000);
 assert.equal(stagnationNogoodRow.geometricNogoodActivationFailureStates, 0);
 assert.equal(stagnationNogoodRow.geometricNogoodActivationStagnationFailureStates, 1000);
@@ -377,7 +378,7 @@ const activeStagnationNogoodProbe = run([
   "--geometric-nogood=true",
   "--geometric-nogood-stagnation-failures=10"
 ]);
-const activeStagnationNogoodRow = activeStagnationNogoodProbe.unresolved[0].freeRangeUnbanded;
+const activeStagnationNogoodRow = unbandedRow(activeStagnationNogoodProbe);
 assert.equal(activeStagnationNogoodRow.geometricNogoodActivationStagnationFailureStates, 10);
 assert.equal(activeStagnationNogoodRow.geometricNogoodActivated, true);
 assert.ok(activeStagnationNogoodRow.geometricNogoodFailuresSinceGrowth >= 10);
@@ -396,7 +397,7 @@ const linearNogoodProbe = run([
   "--geometric-nogood=true",
   "--geometric-nogood-index=false"
 ]);
-const linearNogoodRow = linearNogoodProbe.unresolved[0].freeRangeUnbanded;
+const linearNogoodRow = unbandedRow(linearNogoodProbe);
 assert.equal(linearNogoodRow.geometricNogoodPivotIndex, false);
 assert.deepEqual(
   [

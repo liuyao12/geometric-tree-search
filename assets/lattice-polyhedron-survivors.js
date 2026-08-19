@@ -191,6 +191,22 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       search_correction: "global_face_extensions_and_applied_placement_node_accounting",
       supersedes_vertex_mrv_depth_comparisons: true,
       report: "data/lattice-polyhedron-global-extension-screen-2026-08-19.json"
+    }),
+    complete_shell_screen: Object.freeze({
+      maximum_target_shell: 5,
+      seeds: Object.freeze([1, 2, 3]),
+      time_limit_ms: 60000,
+      configured_node_limit: 2000000,
+      cascade: true,
+      shell_definition: "minimum face-adjacency distance from the root among owners of exposed faces",
+      rejected_candidates: Object.freeze(["10_16113", "10_45026", "9_11683"]),
+      surviving_candidate: "10_45033",
+      robust_completed_shell: 4,
+      maximum_completed_shell: 5,
+      shell_five_hits: 2,
+      shell_five_trials: 3,
+      shell_five_witness_tiles: 464,
+      report: "data/lattice-polyhedron-complete-shell-screen-2026-08-19.json"
     })
   })
 });
@@ -222,6 +238,12 @@ const rejected = (certificate, motifTiles, periodVectors) => ({
   motif_tiles: motifTiles,
   period_vectors: periodVectors
 });
+const shellRejected = shellDepth => ({
+  status: "exact_rejection",
+  certificate: "finite_shell_obstruction",
+  shell_depth: shellDepth,
+  report: "data/lattice-polyhedron-complete-shell-screen-2026-08-19.json"
+});
 
 export const LATTICE_POLYHEDRON_CENSUS_POOL = [
   { id: "8_2480", vertices: [[0,0,2],[0,1,0],[1,0,0],[1,1,2],[1,2,0],[2,1,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,0,-2],[0,-1,-2]]) },
@@ -230,41 +252,69 @@ export const LATTICE_POLYHEDRON_CENSUS_POOL = [
   { id: "10_27010", vertices: [[0,0,0],[0,1,1],[1,0,1],[1,1,2],[1,2,0],[2,0,0],[2,1,1]], screening: rejected("isohedral_periodic_quotient", 24, [[0,0,-4],[-4,0,0],[0,-4,0]]) },
   { id: "10_24235", vertices: [[-1,0,0],[-1,0,2],[0,-1,0],[0,1,0],[0,1,2],[1,0,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,1,0],[0,0,-2]]) },
   { id: "9_3239", vertices: [[-1,-1,0],[-1,0,-2],[0,-1,-2],[0,0,2],[0,1,0],[1,0,0]], screening: rejected("translational", 2, [[-1,0,-2],[0,-1,-2],[-1,-1,2]]) },
-  { id: "10_16113", priority: 1, vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]], screening: { status: "inconclusive" } },
+  { id: "10_16113", priority: 1, vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]], screening: shellRejected(2) },
   { id: "10_44867", vertices: [[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,2],[1,2,0],[2,1,0],[2,2,1]], screening: rejected("translational", 2, [[-1,1,0],[-1,-1,-1],[-1,0,2]]) },
   { id: "10_45035", vertices: [[0,0,1],[0,1,0],[0,1,2],[0,2,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1],[2,0,0]], screening: rejected("translational", 2, [[0,-1,-1],[0,-1,1],[-2,0,-1]]) },
   { id: "8_2431", vertices: [[-1,0,-1],[0,-1,-1],[0,0,2],[0,1,0],[1,0,0],[1,1,3]], screening: rejected("translational", 2, [[-1,-1,1],[-1,0,3],[0,-1,3]]) },
   { id: "10_24775", vertices: [[-1,-1,0],[-1,1,1],[0,0,2],[0,1,-1],[1,0,0],[1,2,1]], screening: rejected("translational", 3, [[-1,-1,2],[-1,-2,-1],[-2,1,-1]]) },
   { id: "10_26470", vertices: [[-1,0,0],[-1,0,1],[0,-1,0],[0,1,0],[0,1,2],[1,0,0],[1,0,1]], screening: rejected("translational", 8, [[-2,-2,0],[-2,0,2],[-2,2,0]]) },
   { id: "10_44266", vertices: [[0,0,2],[0,1,0],[1,0,0],[1,1,2],[1,2,-1],[1,2,0],[2,1,-1],[2,1,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,1,0],[-1,-2,-3]]) },
-  { id: "10_45026", priority: 2, vertices: [[0,0,2],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,0],[1,2,1],[2,1,0],[2,1,1]], screening: { status: "inconclusive" } },
+  { id: "10_45026", priority: 2, vertices: [[0,0,2],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,0],[1,2,1],[2,1,0],[2,1,1]], screening: shellRejected(1) },
   { id: "10_45033", priority: 3, vertices: [[0,0,0],[0,0,1],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,1,1],[2,2,2]], screening: { status: "inconclusive" } },
-  { id: "9_11683", priority: 4, vertices: [[0,1,0],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,0,2],[2,1,1]], screening: { status: "inconclusive" } }
+  { id: "9_11683", priority: 4, vertices: [[0,1,0],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,0,2],[2,1,1]], screening: shellRejected(1) }
 ];
 
-export const classifyLatticeCandidateScreen = ({ translational, isohedral }) => {
-  if (translational?.provenImpossible || isohedral?.provenImpossible) return "reject_certified_non_tiler";
+export const classifyLatticeCandidateScreen = ({ translational, isohedral, shell }) => {
+  if (translational?.provenImpossible || isohedral?.provenImpossible || shell?.provenImpossible) return "reject_certified_non_tiler";
   if (translational?.certified) return "reject_certified_periodic";
   if (isohedral?.certified) return "reject_certified_isohedral";
   if (translational?.incomplete || isohedral?.incomplete) return "inconclusive";
   return "survives_completed_bounded_screens";
 };
 
-export const LATTICE_POLYHEDRON_SURVIVORS = LATTICE_POLYHEDRON_CENSUS_POOL
-  .filter(candidate => candidate.screening.status === "inconclusive")
+const PRE_SHELL_IDS = Object.freeze(["10_16113", "10_45026", "10_45033", "9_11683"]);
+const SHELL_RESULTS = Object.freeze({
+  "10_16113": Object.freeze({ deepest_completed_shell: 1, obstruction_shell: 2, robust: true }),
+  "10_45026": Object.freeze({ deepest_completed_shell: 0, obstruction_shell: 1, robust: true }),
+  "10_45033": Object.freeze({ deepest_completed_shell: 5, robust_completed_shell: 4, shell_five_hits: 2, shell_five_trials: 3, shell_five_witness_tiles: 464 }),
+  "9_11683": Object.freeze({ deepest_completed_shell: 0, obstruction_shell: 1, robust: true })
+});
+const enrichCandidate = candidate => ({
+  ...candidate,
+  lattice_points: Number(candidate.id.split("_")[0]),
+  registry_id: `census_${candidate.id}`,
+  name: `Candidate ${candidate.id}`,
+  last_screening: LATTICE_POLYHEDRON_SCREENING,
+  shell_screening: SHELL_RESULTS[candidate.id],
+  gcts_proof_screening: Object.freeze({
+    ...GCTS_PROOF_SCREENING_RESULTS[candidate.id],
+    ...INTERNAL_PERIOD_SCREENING_RESULTS[candidate.id],
+    ...GLOBAL_EXTENSION_SCREENING_RESULTS[candidate.id]
+  })
+});
+
+export const LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES = LATTICE_POLYHEDRON_CENSUS_POOL
+  .filter(candidate => PRE_SHELL_IDS.includes(candidate.id))
   .sort((left, right) => left.priority - right.priority)
+  .map(enrichCandidate);
+
+export const LATTICE_POLYHEDRON_SHELL_REJECTS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
+  .filter(candidate => candidate.screening.certificate === "finite_shell_obstruction")
   .map(candidate => ({
     ...candidate,
-    lattice_points: Number(candidate.id.split("_")[0]),
-    registry_id: `census_${candidate.id}`,
-    name: `Candidate ${candidate.id}`,
-    survivor_priority: candidate.priority,
-    survivor_count: 4,
-    last_screening: LATTICE_POLYHEDRON_SCREENING,
-    gcts_proof_screening: Object.freeze({
-      ...GCTS_PROOF_SCREENING_RESULTS[candidate.id],
-      ...INTERNAL_PERIOD_SCREENING_RESULTS[candidate.id],
-      ...GLOBAL_EXTENSION_SCREENING_RESULTS[candidate.id]
-    }),
-    description: `Unresolved Blanco–Santos census candidate ${candidate.id}; survivor ${candidate.priority} of 4 after corrected global-extension GCTS and exact quotient screening of the original 16-tile pool.`
+    description: `GCTS non-tiler control ${candidate.id}; exhaustive face-obligation search proves that shell ${candidate.screening.shell_depth} cannot be completed in the configured face-to-face proper-lattice model.`
   }));
+
+export const LATTICE_POLYHEDRON_SURVIVORS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
+  .filter(candidate => candidate.screening.status === "inconclusive")
+  .map((candidate, index, survivors) => ({
+    ...candidate,
+    survivor_priority: index + 1,
+    survivor_count: survivors.length,
+    description: `Unresolved Blanco–Santos census candidate ${candidate.id}; the sole survivor after exact quotient screening and complete-shell GCTS screening of the original 16-tile pool.`
+  }));
+
+export const LATTICE_POLYHEDRON_GCTS_EXAMPLES = Object.freeze([
+  ...LATTICE_POLYHEDRON_SURVIVORS,
+  ...LATTICE_POLYHEDRON_SHELL_REJECTS
+]);
