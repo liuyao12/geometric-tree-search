@@ -9,6 +9,10 @@ import {
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
 
+const fingerprintDigest = values => createHash("sha256")
+  .update(values.slice().sort().join("\n"))
+  .digest("hex");
+
 const growthWorkerSource = await readFile(
   new URL("../apps/3d-lattice-tiler/growth-benchmark-worker.js", import.meta.url),
   "utf8"
@@ -34,6 +38,11 @@ assert.equal(
 assert.match(growthWorkerSource, /id: "proof"[\s\S]*?proof: true/, "the comparison worker must expose a proof lane");
 assert.match(
   growthWorkerSource,
+  /id: "proof_nogood"[\s\S]*?proof: true,[\s\S]*?nogood: true/,
+  "the comparison worker must expose the complementary exact-nogood proof lane"
+);
+assert.match(
+  growthWorkerSource,
   /forced_move_layer_lag_cap: mode\.proof \? 0 : baseConfig\.forced_move_layer_lag_cap/,
   "the proof lane must disable the generational band"
 );
@@ -43,6 +52,13 @@ assert.match(
   /generic_failure_memo_symmetry: "fixed"/,
   "the proof lane must retain the benchmarked fixed-root failure memo"
 );
+assert.match(
+  growthWorkerSource,
+  /generic_geometric_nogood: !!mode\.nogood/,
+  "only the complementary proof lane may enable translated nogoods"
+);
+assert.match(growthWorkerSource, /generic_geometric_nogood_max_clauses: 20000/);
+assert.match(growthWorkerSource, /generic_geometric_nogood_index: true/);
 assert.match(
   growthWorkerSource,
   /seeded_tie_breaks: !!mode\.proof/,
@@ -66,7 +82,8 @@ assert.match(
 assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof comparison lane may claim exhaustive search");
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
-assert.match(growthAppSource, /All six modes finished\./, "the comparison status must include all six lanes");
+assert.match(growthAppSource, /id: "proof_nogood"[\s\S]*?label: "Proof search · nogoods"/, "the complementary proof trace must be visible in the chart");
+assert.match(growthAppSource, /All seven modes finished\./, "the comparison status must include all seven lanes");
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
 assert.match(
   growthAppSource,
@@ -88,6 +105,11 @@ assert.match(
   growthAppSource,
   /fixed-versus-rigid failure-memo replay produced identical search outcomes/,
   "the catalog must expose the measured reason for retaining fixed-root memo keys"
+);
+assert.match(
+  growthAppSource,
+  /complementary translation-equivariant nogood policy/,
+  "the catalog must expose the complementary nogood screen"
 );
 assert.match(
   growthAppSource,
@@ -132,6 +154,10 @@ const archivedGlobalOverlap = JSON.parse(await readFile(
 ));
 const archivedFailureMemoAb = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-failure-memo-ab-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedNogoodPortfolio = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-nogood-proof-portfolio-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -249,6 +275,63 @@ assert.ok(archivedFailureMemoAb.paths.every(path =>
   && path.fixed_memo_hits === path.rigid_memo_hits
   && path.observed_elapsed_ratio > 1
 ));
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.complementary_nogood_screen,
+  {
+    paths_screened: archivedNogoodPortfolio.summary.paths_per_policy,
+    improved_paths: archivedNogoodPortfolio.summary.improved_nogood_paths,
+    equal_paths: archivedNogoodPortfolio.summary.equal_nogood_paths,
+    worsened_paths: archivedNogoodPortfolio.summary.worsened_nogood_paths,
+    target_hits: archivedNogoodPortfolio.summary.nogood_target_hits,
+    learned_clauses: archivedNogoodPortfolio.summary.total_nogood_clauses,
+    exact_prunes: archivedNogoodPortfolio.summary.total_nogood_prunes,
+    checkpoint_checks_completed: archivedNogoodPortfolio.summary.nogood_checkpoint_checks_completed,
+    checkpoint_checks_timed_out: archivedNogoodPortfolio.summary.nogood_checkpoint_checks_timed_out,
+    periodic_certificates_found: archivedNogoodPortfolio.summary.nogood_periodic_certificates_found,
+    new_rigid_motion_fingerprints: archivedNogoodPortfolio.summary.new_nogood_fingerprints,
+    combined_rigid_motion_fingerprints: archivedNogoodPortfolio.summary.combined_distinct_fingerprints,
+    policy_decision: archivedNogoodPortfolio.summary.policy_decision,
+    report: "data/lattice-polyhedron-nogood-proof-portfolio-2026-08-19.json"
+  },
+  "the runtime complementary proof policy must match its archived A/B and exact screen"
+);
+assert.equal(archivedNogoodPortfolio.benchmark_schema_version, 14);
+assert.equal(archivedNogoodPortfolio.proof_paths.length, 12);
+assert.equal(archivedNogoodPortfolio.summary.nogood_checkpoint_state_path_checks, 1109);
+assert.equal(archivedNogoodPortfolio.summary.nogood_checkpoint_checks_completed, 1109);
+assert.equal(archivedNogoodPortfolio.summary.nogood_checkpoint_checks_timed_out, 0);
+assert.equal(archivedNogoodPortfolio.summary.nogood_periodic_certificates_found, 0);
+assert.equal(archivedNogoodPortfolio.summary.new_nogood_fingerprints, 823);
+assert.equal(archivedNogoodPortfolio.summary.combined_distinct_fingerprints, 1874);
+assert.equal(archivedNogoodPortfolio.summary.policy_decision, "complementary_proof_lane");
+assert.ok(archivedNogoodPortfolio.proof_paths.every(path =>
+  path.checks_attempted === path.fingerprints.length
+  && path.checks_completed === path.checks_attempted
+  && path.checks_timed_out === 0
+  && !path.certificate_found
+  && new Set(path.fingerprints).size === path.fingerprints.length
+  && path.fingerprint_digest_sha256 === fingerprintDigest(path.fingerprints)
+));
+assert.deepEqual(
+  archivedNogoodPortfolio.proof_paths
+    .filter(path => path.target_check_completed)
+    .map(path => ({ id: path.id, seed: path.seed, largest_patch: path.largest_patch })),
+  [{ id: "10_45033", seed: 1, largest_patch: 40 }],
+  "the complementary policy must retain its checked 40-tile 10_45033 witness"
+);
+for (const coverage of archivedNogoodPortfolio.candidate_coverage) {
+  const priorCandidate = archivedGlobalOverlap.candidates.find(candidate => candidate.id === coverage.id);
+  const prior = new Set(priorCandidate.paths.flatMap(path => path.fingerprints));
+  const currentPaths = archivedNogoodPortfolio.proof_paths.filter(path => path.id === coverage.id);
+  const current = new Set(currentPaths.flatMap(path => path.fingerprints));
+  const combined = new Set([...prior, ...current]);
+  assert.equal(coverage.prior_distinct_fingerprints, prior.size);
+  assert.equal(coverage.nogood_distinct_fingerprints, current.size);
+  assert.equal(coverage.shared_fingerprints, [...current].filter(value => prior.has(value)).length);
+  assert.equal(coverage.new_fingerprints, [...current].filter(value => !prior.has(value)).length);
+  assert.equal(coverage.combined_distinct_fingerprints, combined.size);
+  assert.equal(coverage.combined_digest_sha256, fingerprintDigest([...combined]));
+}
 assert.equal(archivedDistinctScreening.paths.length, 12);
 assert.ok(
   archivedDistinctScreening.paths.every(path =>
@@ -296,9 +379,6 @@ assert.deepEqual(
   archivedDistinctScreening.paths.map(path => ({ id: path.id, seed: path.seed, witness_hash: path.witness_hash })),
   "global fingerprint accounting must replay the same archived GCTS paths"
 );
-const fingerprintDigest = values => createHash("sha256")
-  .update(values.slice().sort().join("\n"))
-  .digest("hex");
 const globalCandidateFingerprints = [];
 for (const overlapCandidate of archivedGlobalOverlap.candidates) {
   const union = new Set();
@@ -400,6 +480,21 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
   assert.ok(overlapSummary, `${candidate.id} must retain its global checkpoint coverage summary`);
   assert.equal(candidate.gcts_proof_screening.global_checkpoint_states, overlapSummary.globally_distinct_fingerprints);
   assert.equal(candidate.gcts_proof_screening.repeated_checkpoint_path_pairs, overlapSummary.repeated_state_path_pairs);
+  const nogoodSummary = archivedNogoodPortfolio.candidate_search_summary.find(item => item.id === candidate.id);
+  const nogoodCoverage = archivedNogoodPortfolio.candidate_coverage.find(item => item.id === candidate.id);
+  assert.ok(nogoodSummary && nogoodCoverage, `${candidate.id} must retain its complementary nogood evidence`);
+  assert.equal(candidate.gcts_proof_screening.nogood_robust_largest_patch, nogoodSummary.nogood.robust_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.nogood_median_largest_patch, nogoodSummary.nogood.median_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.nogood_best_largest_patch, nogoodSummary.nogood.best_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.nogood_target_hits, nogoodSummary.nogood.target_hits);
+  assert.equal(candidate.gcts_proof_screening.portfolio_robust_largest_patch, nogoodSummary.two_policy_portfolio.robust_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.portfolio_median_largest_patch, nogoodSummary.two_policy_portfolio.median_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.portfolio_best_largest_patch, nogoodSummary.two_policy_portfolio.best_largest_patch);
+  assert.equal(candidate.gcts_proof_screening.portfolio_target_hits, nogoodSummary.two_policy_portfolio.target_hits);
+  assert.equal(candidate.gcts_proof_screening.nogood_checkpoint_checks, nogoodCoverage.nogood_state_path_checks);
+  assert.equal(candidate.gcts_proof_screening.nogood_checkpoint_distinct, nogoodCoverage.nogood_distinct_fingerprints);
+  assert.equal(candidate.gcts_proof_screening.nogood_new_checkpoint_states, nogoodCoverage.new_fingerprints);
+  assert.equal(candidate.gcts_proof_screening.combined_checkpoint_states, nogoodCoverage.combined_distinct_fingerprints);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL

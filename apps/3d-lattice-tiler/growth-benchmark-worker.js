@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-memo-ab-v78";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-nogood-portfolio-v80";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -32,6 +32,16 @@ const MODES = {
     templates: false,
     agentExhaustive: true,
     proof: true
+  },
+  proof_nogood: {
+    id: "proof_nogood",
+    label: "Proof search · nogoods",
+    strategy: "free_range",
+    moveOrder: "balanced",
+    templates: false,
+    agentExhaustive: true,
+    proof: true,
+    nogood: true
   },
   learning: {
     id: "learning",
@@ -87,7 +97,9 @@ async function runMode(sequence, baseConfig, mode) {
     forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
     generic_failure_memo: mode.proof,
     generic_failure_memo_symmetry: "fixed",
-    generic_geometric_nogood: false,
+    generic_geometric_nogood: !!mode.nogood,
+    generic_geometric_nogood_max_clauses: 20000,
+    generic_geometric_nogood_index: true,
     seeded_tie_breaks: !!mode.proof,
     generic_periodic_certificate: !!mode.proof,
     generic_periodic_certificate_check_new_maximum: !!mode.proof,

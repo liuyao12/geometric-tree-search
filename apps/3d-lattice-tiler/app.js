@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-memo-ab-v78";
+import { tileSpecs } from "./engine.js?v=20260819-nogood-portfolio-v80";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1345,7 +1345,13 @@ function updateCandidateResearchPanel() {
       const memoAb = proofProtocol.failure_memo_ab
         ? ` A controlled fixed-versus-rigid failure-memo replay produced identical search outcomes and no additional rigid memo hit on all ${proofProtocol.failure_memo_ab.paths_screened} paths, so the faster fixed-root key remains the proof lane default.`
         : "";
-      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}`;
+      const nogoodRange = proof.nogood_robust_largest_patch === proof.nogood_best_largest_patch
+        ? `${proof.nogood_best_largest_patch}`
+        : `${proof.nogood_robust_largest_patch}–${proof.nogood_best_largest_patch}`;
+      const nogood = proof.nogood_checkpoint_checks
+        ? ` A complementary translation-equivariant nogood policy ranged from ${nogoodRange} tiles across ${proof.trials} seeds${proof.nogood_target_hits ? ` and reached the ${proofProtocol.target_tiles}-tile target in ${proof.nogood_target_hits} seed${proof.nogood_target_hits === 1 ? "" : "s"}` : ""}. Its ${proof.nogood_checkpoint_checks} completed quotient checks add ${proof.nogood_new_checkpoint_states} new rigid-motion patch geometries, raising this candidate's two-policy checked union to ${proof.combined_checkpoint_states}; none certified periodicity.`
+        : "";
+      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}`;
     })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
     candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
@@ -2666,7 +2672,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-memo-ab-v78", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-nogood-portfolio-v80", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2798,6 +2804,7 @@ const GROWTH_MODES = [
   { id: "free_range", strategy: "free_range", label: "Free-range · balanced", color: "#6f7c77", symbol: "square-open", dash: "dash" },
   { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
   { id: "proof", strategy: "free_range", label: "Proof search · unbanded", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
+  { id: "proof_nogood", strategy: "free_range", label: "Proof search · nogoods", color: "#a33f5b", symbol: "triangle-left-open", dash: "dashdot" },
   { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
@@ -2816,7 +2823,7 @@ function activateGrowthMode(modeId) {
   strategySelect.value = mode.strategy;
   if (mode.id === "free_range") moveOrderSelect.value = "balanced";
   if (mode.id === "no_brainer") moveOrderSelect.value = "no_brainer";
-  if (mode.id === "proof") moveOrderSelect.value = "balanced";
+  if (mode.id === "proof" || mode.id === "proof_nogood") moveOrderSelect.value = "balanced";
   updateStrategyUI();
 }
 
@@ -3008,6 +3015,7 @@ async function renderGrowthChart() {
 }
 
 function formatGrowthResult(result, target) {
+  const proofMode = result?.mode === "proof" || result?.mode === "proof_nogood";
   const stopReason = {
     node_limit: "node limit",
     time_limit: "time limit",
@@ -3027,7 +3035,7 @@ function formatGrowthResult(result, target) {
     return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
   if (
-    result?.mode === "proof"
+    proofMode
     && result?.certified
     && result?.canTile === false
     && result?.certificateKind === "finite_patch_obstruction"
@@ -3036,14 +3044,14 @@ function formatGrowthResult(result, target) {
     return `${result.label} certified no connected ${patchSize}-tile patch ${formatElapsed(result.milliseconds)}`;
   }
   if (
-    result?.mode === "proof"
+    proofMode
     && result?.certified
     && result?.canTile === true
     && result?.certificateSource === "gcts_growth_checkpoint"
   ) {
     return `${result.label} certified a ${result.certificatePatchSize}-tile checkpoint as a translational quotient ${formatElapsed(result.milliseconds)}`;
   }
-  if (result?.mode === "proof" && targetPoint && result?.stats?.generic_periodic_certificate_attempted) {
+  if (proofMode && targetPoint && result?.stats?.generic_periodic_certificate_attempted) {
     const patchSize = target;
     const completedChecks = result.stats.generic_periodic_certificate_checks_completed ?? 0;
     const checkpointSuffix = completedChecks > 1 ? ` · ${completedChecks} exact patch checkpoints` : "";
@@ -3087,7 +3095,7 @@ function finishGrowthBenchmark(results) {
   setRunButton();
   const target = Number(maxTilesInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
-  setStatus("All six modes finished.");
+  setStatus("All seven modes finished.");
   renderGrowthChart();
 }
 
@@ -3134,8 +3142,8 @@ function startGrowthBenchmark() {
   const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
-  setStatus("Running all six modes…");
-  growthBenchmarkStatus.textContent = `Running six searches simultaneously to ${config.target_val} tiles…`;
+  setStatus("Running all seven modes…");
+  growthBenchmarkStatus.textContent = `Running seven searches simultaneously to ${config.target_val} tiles…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3159,7 +3167,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-memo-ab-v78", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-nogood-portfolio-v80", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3281,7 +3289,7 @@ function bindControls() {
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
-    setStatus("Long-growth preset ready: six modes race to 120 tiles for up to 30 seconds.");
+    setStatus("Long-growth preset ready: seven modes race to 120 tiles for up to 30 seconds.");
     setRunButton();
   });
 

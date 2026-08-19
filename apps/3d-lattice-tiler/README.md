@@ -268,7 +268,20 @@ with `--geometric-nogood=true`, compare against the default off arm, and use
 `--geometric-nogood-max-clauses=N` for its independent memory cap. Clause
 matching uses an exact rare-token pivot index; `--geometric-nogood-index=false`
 runs the same clauses through the reference linear scan for a semantic and
-performance ablation.
+performance ablation. Translation-equivariant clauses are automatically
+disabled for finite target regions, where moving a failed context can change
+its relationship to the boundary.
+
+The four-candidate, three-seed A/B does not support replacing the baseline
+proof order with nogoods: five paths deepen, one ties, and six become
+shallower. It does support a complementary proof lane. The second policy finds
+a new checked 40-tile witness for `10_45033`, and its 1,109 completed quotient
+checks add 823 proper-rigid-motion patch geometries to the baseline union. The
+combined two-policy screen covers 1,874 distinct checked patches with no
+timeout or periodic certificate. The full paths, fingerprints, and policy
+decision are archived in
+`data/lattice-polyhedron-nogood-proof-portfolio-2026-08-19.json`; the web
+comparison exposes the two proof policies as separate traces.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
