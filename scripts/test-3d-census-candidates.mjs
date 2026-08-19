@@ -40,6 +40,11 @@ assert.match(
 assert.match(growthWorkerSource, /generic_failure_memo: mode\.proof/, "the proof lane must memoize exact failures");
 assert.match(
   growthWorkerSource,
+  /generic_failure_memo_symmetry: "fixed"/,
+  "the proof lane must retain the benchmarked fixed-root failure memo"
+);
+assert.match(
+  growthWorkerSource,
   /seeded_tie_breaks: !!mode\.proof/,
   "the proof comparison lane must use replayable seeded tie diversification"
 );

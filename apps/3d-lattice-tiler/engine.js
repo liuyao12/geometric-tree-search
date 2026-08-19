@@ -694,6 +694,7 @@ export const createTilingStream = (() => {
       generic_failure_memo_hits: 0,
       generic_failure_memo_capacity: 0,
       generic_failure_memo_capacity_reached: false,
+      generic_failure_memo_key_equivalence: "disabled",
       generic_geometric_nogood_enabled: false,
       generic_geometric_nogood_clauses: 0,
       generic_geometric_nogood_prunes: 0,
@@ -1707,10 +1708,22 @@ export const createTilingStream = (() => {
     const genericFailureMemo = new Set();
     searchStats.generic_failure_memo_enabled = genericFailureMemoEnabled;
     searchStats.generic_failure_memo_capacity = genericFailureMemoEnabled ? genericFailureMemoCapacity : 0;
-    const genericFailureStateKey = () => state.placements
-      .map(placementGeometryKey)
-      .sort()
-      .join("||");
+    const requestedFailureMemoSymmetry = config.generic_failure_memo_symmetry === "rigid"
+      ? "rigid"
+      : "fixed";
+    const genericFailureMemoRigidMotion = genericFailureMemoEnabled
+      && requestedFailureMemoSymmetry === "rigid"
+      && !targetRegion;
+    searchStats.generic_failure_memo_key_equivalence = genericFailureMemoEnabled
+      ? genericFailureMemoRigidMotion
+        ? "orientation_preserving_cubic_rigid_motion"
+        : requestedFailureMemoSymmetry === "rigid" && targetRegion
+          ? "fixed_frame_region_guard"
+          : "fixed_frame"
+      : "disabled";
+    const genericFailureStateKey = genericFailureMemoRigidMotion
+      ? () => canonicalLatticePatchStateKey(state.placements)
+      : () => state.placements.map(placementGeometryKey).sort().join("||");
     const configuredGeometricNogoodCapacity = Number(config.generic_geometric_nogood_max_clauses);
     const genericGeometricNogoodCapacity = Number.isFinite(configuredGeometricNogoodCapacity)
       ? Math.max(0, Math.floor(configuredGeometricNogoodCapacity))

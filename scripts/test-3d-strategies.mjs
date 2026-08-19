@@ -230,6 +230,7 @@ const checkpointTimeout = await solve({
   agent_exhaustive: true,
   forced_move_layer_lag_cap: 0,
   generic_failure_memo: true,
+  generic_failure_memo_symmetry: "fixed",
   seeded_tie_breaks: true,
   random_seed: 1,
   node_limit: 5000,
@@ -244,6 +245,7 @@ assert.equal(checkpointTimeout.final.result_kind, "patch_found");
 assert.equal(checkpointTimeout.final.search_incomplete, false);
 assert.equal(checkpointTimeout.final.search_stats.generic_periodic_certificate_target_timed_out, true);
 assert.equal(checkpointTimeout.final.search_stats.generic_periodic_certificate_target_found, false);
+assert.equal(checkpointTimeout.final.search_stats.generic_failure_memo_key_equivalence, "fixed_frame");
 
 const checkpointCandidateCertificate = await solve({
   mode_key: "cube",
@@ -255,6 +257,7 @@ const checkpointCandidateCertificate = await solve({
   agent_exhaustive: true,
   forced_move_layer_lag_cap: 0,
   generic_failure_memo: true,
+  generic_failure_memo_symmetry: "rigid",
   seeded_tie_breaks: true,
   random_seed: 2,
   node_limit: 500,
@@ -277,6 +280,10 @@ assert.deepEqual(checkpointCandidateCertificate.final.tiling_evidence?.period_ve
 assert.equal(
   checkpointCandidateCertificate.final.tiling_evidence?.periodic_template?.proof?.lattice_determinant,
   16
+);
+assert.equal(
+  checkpointCandidateCertificate.final.search_stats.generic_failure_memo_key_equivalence,
+  "orientation_preserving_cubic_rigid_motion"
 );
 
 const candidate1016113System = {
@@ -312,6 +319,10 @@ const distinctCheckpointCap = await solve({
 });
 const distinctCheckSizes = distinctCheckpointCap.final.search_stats.generic_periodic_certificate_check_sizes;
 assert.equal(distinctCheckpointCap.final.search_stats.generic_periodic_certificate_distinct_patch_mode, true);
+assert.equal(
+  distinctCheckpointCap.final.search_stats.generic_failure_memo_key_equivalence,
+  "fixed_frame"
+);
 assert.equal(distinctCheckpointCap.final.search_stats.generic_periodic_certificate_checks_attempted, 10);
 assert.ok(
   new Set(distinctCheckSizes).size < distinctCheckSizes.length,

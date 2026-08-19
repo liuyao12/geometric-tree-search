@@ -28,6 +28,7 @@ const isohedralHorizon = Math.max(2, Math.floor(numberArg("isohedral-horizon", 2
 const periodicMax = Math.max(1, Math.floor(numberArg("periodic-max", 4)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 500000)));
 const failureMemo = args.get("failure-memo") !== "false";
+const failureMemoSymmetry = args.get("failure-memo-symmetry") === "rigid" ? "rigid" : "fixed";
 const failureMemoMaxStates = Math.max(0, Math.floor(numberArg("failure-memo-max-states", 200000)));
 const geometricNogood = args.get("geometric-nogood") === "true";
 const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
@@ -133,6 +134,7 @@ const configFor = (benchmarkCase, lane, seed) => ({
   agent_exhaustive: true,
   forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
   generic_failure_memo: failureMemo,
+  generic_failure_memo_symmetry: failureMemoSymmetry,
   generic_failure_memo_max_states: failureMemoMaxStates,
   generic_geometric_nogood: geometricNogood,
   generic_geometric_nogood_max_clauses: geometricNogoodMaxClauses,
@@ -237,6 +239,7 @@ async function runLane(benchmarkCase, lane, seed) {
     failureMemoStates: stats.generic_failure_memo_states ?? 0,
     failureMemoHits: stats.generic_failure_memo_hits ?? 0,
     failureMemoCapacityReached: !!stats.generic_failure_memo_capacity_reached,
+    failureMemoKeyEquivalence: stats.generic_failure_memo_key_equivalence ?? "disabled",
     geometricNogoodEnabled: !!stats.generic_geometric_nogood_enabled,
     geometricNogoodClauses: stats.generic_geometric_nogood_clauses ?? 0,
     geometricNogoodPrunes: stats.generic_geometric_nogood_prunes ?? 0,
@@ -466,7 +469,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 13,
+  schemaVersion: 14,
   configuration: {
     target,
     timeMs,
@@ -476,6 +479,7 @@ const summary = {
     nodeLimit,
     seeds,
     failureMemo,
+    failureMemoSymmetry,
     failureMemoMaxStates,
     geometricNogood,
     geometricNogoodMaxClauses,

@@ -12,12 +12,16 @@ const config = {
   },
   polycube_lattice: "z3",
   criterion: "region",
+  tiling_strategy: "free_range",
   target_region: {
     type: "box",
     center: [2, 1.5, 1],
     size: [4, 3, 2]
   },
-  exhaustive: false,
+  exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_failure_memo: true,
+  generic_failure_memo_symmetry: "rigid",
   include_mirrors: false,
   snapshot_every: 100,
   placement_details: true,
@@ -43,6 +47,12 @@ assert.equal(snapshot?.tile_count, 24);
 assert.equal(finished.search_stats.placed_volume, 24);
 assert.equal(finished.search_stats.target_volume, 24);
 assert.equal(finished.search_stats.region_type, "box");
+assert.equal(finished.search_stats.generic_failure_memo_enabled, true);
+assert.equal(
+  finished.search_stats.generic_failure_memo_key_equivalence,
+  "fixed_frame_region_guard",
+  "an asymmetric finite region must disable rigid-motion memo equivalence"
+);
 for (const placement of snapshot.placements) {
   assert.ok(placement.center[0] >= 0 && placement.center[0] <= 4);
   assert.ok(placement.center[1] >= 0 && placement.center[1] <= 3);

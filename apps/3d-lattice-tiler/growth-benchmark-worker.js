@@ -86,6 +86,7 @@ async function runMode(sequence, baseConfig, mode) {
     candidate_cap: null,
     forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
     generic_failure_memo: mode.proof,
+    generic_failure_memo_symmetry: "fixed",
     generic_geometric_nogood: false,
     seeded_tie_breaks: !!mode.proof,
     generic_periodic_certificate: !!mode.proof,
