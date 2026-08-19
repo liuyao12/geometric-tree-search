@@ -22,6 +22,7 @@ const config = {
   forced_move_layer_lag_cap: 0,
   generic_failure_memo: true,
   generic_failure_memo_symmetry: "rigid",
+  generic_geometric_nogood: true,
   include_mirrors: false,
   snapshot_every: 100,
   placement_details: true,
@@ -52,6 +53,12 @@ assert.equal(
   finished.search_stats.generic_failure_memo_key_equivalence,
   "fixed_frame_region_guard",
   "an asymmetric finite region must disable rigid-motion memo equivalence"
+);
+assert.equal(finished.search_stats.generic_geometric_nogood_enabled, false);
+assert.equal(
+  finished.search_stats.generic_geometric_nogood_disable_reason,
+  "finite_target_region",
+  "translation-equivariant nogoods must be disabled inside a fixed finite region"
 );
 for (const placement of snapshot.placements) {
   assert.ok(placement.center[0] >= 0 && placement.center[0] <= 4);

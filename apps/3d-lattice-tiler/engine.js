@@ -696,6 +696,7 @@ export const createTilingStream = (() => {
       generic_failure_memo_capacity_reached: false,
       generic_failure_memo_key_equivalence: "disabled",
       generic_geometric_nogood_enabled: false,
+      generic_geometric_nogood_disable_reason: null,
       generic_geometric_nogood_clauses: 0,
       generic_geometric_nogood_prunes: 0,
       generic_geometric_nogood_failure_states: 0,
@@ -1728,8 +1729,10 @@ export const createTilingStream = (() => {
     const genericGeometricNogoodCapacity = Number.isFinite(configuredGeometricNogoodCapacity)
       ? Math.max(0, Math.floor(configuredGeometricNogoodCapacity))
       : 20000;
-    const genericGeometricNogoodEnabled = config.generic_geometric_nogood === true
+    const genericGeometricNogoodRequested = config.generic_geometric_nogood === true;
+    const genericGeometricNogoodEnabled = genericGeometricNogoodRequested
       && genericFailureMemoEnabled
+      && !targetRegion
       && genericGeometricNogoodCapacity > 0;
     const genericGeometricNogoodPivotIndex = config.generic_geometric_nogood_index !== false;
     const genericGeometricNogood = new GeometricFailureMemo({
@@ -1745,6 +1748,17 @@ export const createTilingStream = (() => {
         : null
     });
     searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
+    searchStats.generic_geometric_nogood_disable_reason = genericGeometricNogoodEnabled
+      ? null
+      : !genericGeometricNogoodRequested
+        ? "not_requested"
+        : targetRegion
+          ? "finite_target_region"
+          : !genericFailureMemoEnabled
+            ? "exact_failure_memo_disabled"
+            : genericGeometricNogoodCapacity <= 0
+              ? "zero_capacity"
+              : "disabled";
     searchStats.generic_geometric_nogood_pivot_index = genericGeometricNogoodEnabled
       && genericGeometricNogoodPivotIndex;
     searchStats.generic_geometric_nogood_capacity = genericGeometricNogoodEnabled

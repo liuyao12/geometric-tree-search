@@ -241,6 +241,7 @@ async function runLane(benchmarkCase, lane, seed) {
     failureMemoCapacityReached: !!stats.generic_failure_memo_capacity_reached,
     failureMemoKeyEquivalence: stats.generic_failure_memo_key_equivalence ?? "disabled",
     geometricNogoodEnabled: !!stats.generic_geometric_nogood_enabled,
+    geometricNogoodDisableReason: stats.generic_geometric_nogood_disable_reason ?? null,
     geometricNogoodClauses: stats.generic_geometric_nogood_clauses ?? 0,
     geometricNogoodPrunes: stats.generic_geometric_nogood_prunes ?? 0,
     geometricNogoodFailureStates: stats.generic_geometric_nogood_failure_states ?? 0,
