@@ -78,7 +78,7 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 17);
+assert.equal(survivor.schemaVersion, 18);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 assert.equal(survivor.configuration.faceOrder, "mrv");
 assert.ok(survivor.rows.every(row => row.faceOrder === "mrv"));

@@ -151,6 +151,29 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       distinct_candidate_target_witnesses: 6,
       policy_decision: "add_crystal_as_complementary_proof_lane_retain_balanced",
       report: "data/lattice-polyhedron-budget-order-screen-2026-08-19.json"
+    }),
+    internal_period_screen: Object.freeze({
+      target_tiles: 60,
+      seeds: Object.freeze([1, 2, 3, 4, 5, 6, 7, 8]),
+      breadth_time_limit_ms: 5000,
+      configured_node_limit: 1000,
+      internal_period_vector_limit: 48,
+      breadth_paths: 32,
+      geometric_rank_3_paths: 32,
+      repeated_translation_rank_3_paths: 28,
+      breadth_target_hits: 0,
+      focused_candidate: "10_16113",
+      focused_seed: 6,
+      focused_search_time_limit_ms: 30000,
+      focused_target_checks_completed: 1,
+      focused_candidate_bases_tested: 9139,
+      focused_periodic_certificates_found: 0,
+      legacy_target_witnesses_checked: 7,
+      highly_collinear_10_45026_witnesses: 4,
+      positive_control: "10_24775",
+      positive_control_motif_tiles: 3,
+      policy_decision: "replace_affine_rank_gate_with_repeated_translation_rank",
+      report: "data/lattice-polyhedron-internal-period-screen-2026-08-19.json"
     })
   })
 });
@@ -160,6 +183,13 @@ const GCTS_PROOF_SCREENING_RESULTS = Object.freeze({
   "10_45026": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 14, median_largest_patch: 16, best_largest_patch: 17, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 1, focused_seeded_tie_breaks: false, focused_visited_nodes: 4278, focused_witness_hash: "e16dbe38a0165b93", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1287, distinct_checkpoint_checks: 215, distinct_checkpoint_max_size: 17, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 916, distinct_checkpoint_duplicate_skips: 160, distinct_checkpoint_cap_skips: 156, global_checkpoint_states: 192, repeated_checkpoint_path_pairs: 23, nogood_robust_largest_patch: 14, nogood_median_largest_patch: 17, nogood_best_largest_patch: 20, nogood_target_hits: 0, portfolio_robust_largest_patch: 14, portfolio_median_largest_patch: 17, portfolio_best_largest_patch: 20, portfolio_target_hits: 0, nogood_checkpoint_checks: 235, nogood_checkpoint_distinct: 212, nogood_new_checkpoint_states: 48, combined_checkpoint_states: 411, holdout_trials: 5, holdout_nogood_robust_largest_patch: 14, holdout_nogood_median_largest_patch: 16, holdout_nogood_best_largest_patch: 21, holdout_nogood_target_hits: 0, holdout_checkpoint_checks: 1129, holdout_new_checkpoint_states: 648, expanded_checkpoint_states: 1059, crystal_trials: 8, crystal_better_than_balanced: 7, crystal_equal_to_balanced: 0, crystal_worse_than_balanced: 1, crystal_robust_largest_patch: 20, crystal_median_largest_patch: 60, crystal_best_largest_patch: 60, crystal_target_hits: 4, crystal_distinct_target_witnesses: 2 }),
   "10_45033": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 23, median_largest_patch: 27, best_largest_patch: 36, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 2, focused_visited_nodes: 1162, focused_witness_hash: "deb51611a30f25b5", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1221, distinct_checkpoint_checks: 262, distinct_checkpoint_max_size: 36, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 762, distinct_checkpoint_duplicate_skips: 44, distinct_checkpoint_cap_skips: 197, global_checkpoint_states: 256, repeated_checkpoint_path_pairs: 6, nogood_robust_largest_patch: 21, nogood_median_largest_patch: 40, nogood_best_largest_patch: 40, nogood_target_hits: 2, portfolio_robust_largest_patch: 27, portfolio_median_largest_patch: 40, portfolio_best_largest_patch: 40, portfolio_target_hits: 2, nogood_checkpoint_checks: 291, nogood_checkpoint_distinct: 285, nogood_new_checkpoint_states: 72, combined_checkpoint_states: 535, holdout_trials: 5, holdout_nogood_robust_largest_patch: 21, holdout_nogood_median_largest_patch: 32, holdout_nogood_best_largest_patch: 40, holdout_nogood_target_hits: 1, holdout_checkpoint_checks: 1361, holdout_new_checkpoint_states: 635, expanded_checkpoint_states: 1170, crystal_trials: 8, crystal_better_than_balanced: 7, crystal_equal_to_balanced: 0, crystal_worse_than_balanced: 1, crystal_robust_largest_patch: 32, crystal_median_largest_patch: 41, crystal_best_largest_patch: 60, crystal_target_hits: 1, crystal_distinct_target_witnesses: 1 }),
   "9_11683": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 19, median_largest_patch: 25, best_largest_patch: 32, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 591, focused_witness_hash: "5ab75954f9e80239", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1399, distinct_checkpoint_checks: 310, distinct_checkpoint_max_size: 32, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 970, distinct_checkpoint_duplicate_skips: 22, distinct_checkpoint_cap_skips: 119, global_checkpoint_states: 308, repeated_checkpoint_path_pairs: 2, nogood_robust_largest_patch: 15, nogood_median_largest_patch: 16, nogood_best_largest_patch: 19, nogood_target_hits: 0, portfolio_robust_largest_patch: 19, portfolio_median_largest_patch: 25, portfolio_best_largest_patch: 32, portfolio_target_hits: 0, nogood_checkpoint_checks: 216, nogood_checkpoint_distinct: 213, nogood_new_checkpoint_states: 8, combined_checkpoint_states: 451, holdout_trials: 5, holdout_nogood_robust_largest_patch: 13, holdout_nogood_median_largest_patch: 16, holdout_nogood_best_largest_patch: 25, holdout_nogood_target_hits: 0, holdout_checkpoint_checks: 1212, holdout_new_checkpoint_states: 583, expanded_checkpoint_states: 1034, crystal_trials: 8, crystal_better_than_balanced: 2, crystal_equal_to_balanced: 0, crystal_worse_than_balanced: 6, crystal_robust_largest_patch: 18, crystal_median_largest_patch: 29, crystal_best_largest_patch: 60, crystal_target_hits: 2, crystal_distinct_target_witnesses: 2 })
+});
+
+const INTERNAL_PERIOD_SCREENING_RESULTS = Object.freeze({
+  "10_16113": Object.freeze({ internal_period_trials: 8, internal_period_robust_largest_patch: 27, internal_period_median_largest_patch: 32, internal_period_best_largest_patch: 41, internal_period_geometric_rank_3_paths: 8, internal_period_repeated_translation_rank_3_paths: 8, internal_period_target_hits: 0, internal_period_focused_target: true, internal_period_focused_seed: 6, internal_period_focused_witness_hash: "c978bfa88e0dfc9e", internal_period_candidate_bases_tested: 9139, internal_period_max_translation_support: 5, internal_period_certificate_found: false }),
+  "10_45026": Object.freeze({ internal_period_trials: 8, internal_period_robust_largest_patch: 14, internal_period_median_largest_patch: 18, internal_period_best_largest_patch: 22, internal_period_geometric_rank_3_paths: 8, internal_period_repeated_translation_rank_3_paths: 8, internal_period_target_hits: 0 }),
+  "10_45033": Object.freeze({ internal_period_trials: 8, internal_period_robust_largest_patch: 21, internal_period_median_largest_patch: 32, internal_period_best_largest_patch: 37, internal_period_geometric_rank_3_paths: 8, internal_period_repeated_translation_rank_3_paths: 8, internal_period_target_hits: 0 }),
+  "9_11683": Object.freeze({ internal_period_trials: 8, internal_period_robust_largest_patch: 18, internal_period_median_largest_patch: 35, internal_period_best_largest_patch: 43, internal_period_geometric_rank_3_paths: 8, internal_period_repeated_translation_rank_3_paths: 4, internal_period_target_hits: 0 })
 });
 
 const rejected = (certificate, motifTiles, periodVectors) => ({
@@ -207,6 +237,9 @@ export const LATTICE_POLYHEDRON_SURVIVORS = LATTICE_POLYHEDRON_CENSUS_POOL
     survivor_priority: candidate.priority,
     survivor_count: 4,
     last_screening: LATTICE_POLYHEDRON_SCREENING,
-    gcts_proof_screening: GCTS_PROOF_SCREENING_RESULTS[candidate.id],
+    gcts_proof_screening: Object.freeze({
+      ...GCTS_PROOF_SCREENING_RESULTS[candidate.id],
+      ...INTERNAL_PERIOD_SCREENING_RESULTS[candidate.id]
+    }),
     description: `Unresolved Blanco–Santos census candidate ${candidate.id}; survivor ${candidate.priority} of 4 after GCTS checkpoint quotient screening of the original 16-tile pool.`
   }));

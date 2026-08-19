@@ -210,6 +210,40 @@ assert.deepEqual(
   "a smaller exact quotient must be detected before an arbitrary larger display target"
 );
 
+const internalPeriodControl = await solve({
+  mode_key: "cube",
+  custom_system: {
+    name: "Internal-period positive control 10_24775",
+    figure_refs: [],
+    polycubes: [],
+    polyhedra: [{
+      name: "Candidate 10_24775",
+      vertices: [[-1,-1,0],[-1,1,1],[0,0,2],[0,1,-1],[1,0,0],[1,2,1]]
+    }],
+    polycube_lattice: "z3"
+  },
+  tiling_strategy: "free_range",
+  move_order: "balanced",
+  target_val: 60,
+  template_preflight: false,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_time_limit_ms: 5000,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 2,
+  generic_failure_memo: true,
+  include_mirrors: false,
+  snapshot_every: 1,
+  placement_details: true,
+  time_limit_ms: 10000,
+  node_limit: 1000
+});
+assert.equal(internalPeriodControl.final.result_kind, "certified_tiling");
+assert.equal(internalPeriodControl.periodicCertificate?.motif.length, 3);
+assert.equal(internalPeriodControl.final.search_stats.generic_periodic_internal_motif_attempted, true);
+assert.equal(internalPeriodControl.final.search_stats.generic_periodic_internal_motif_found, true);
+assert.equal(internalPeriodControl.final.search_stats.generic_periodic_internal_motif_bases_tested, 1);
+
 const candidate1026470System = {
   name: "Candidate 10_26470 checkpoint certificate",
   figure_refs: [],

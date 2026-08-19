@@ -166,11 +166,11 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_geometric_nogood_index: geometricNogoodIndex,
   generic_geometric_nogood_activation_failure_states: geometricNogoodActivationFailures,
   generic_geometric_nogood_activation_stagnation_failure_states: geometricNogoodStagnationFailures,
-  generic_periodic_certificate: genericPeriodicCertificate && lane === "free_range_unbanded",
+  generic_periodic_certificate: genericPeriodicCertificate && lane.startsWith("free_range"),
   generic_periodic_certificate_check_new_maximum:
-    genericPeriodicCheckpoints && lane === "free_range_unbanded",
+    genericPeriodicCheckpoints && lane.startsWith("free_range"),
   generic_periodic_certificate_check_distinct_patches:
-    genericPeriodicDistinctPatches && lane === "free_range_unbanded",
+    genericPeriodicDistinctPatches && lane.startsWith("free_range"),
   generic_periodic_certificate_checkpoint_sampling_policy: genericPeriodicSamplingPolicy,
   generic_periodic_certificate_checkpoint_sampling_stride: genericPeriodicSamplingStride,
   generic_periodic_certificate_checkpoint_sampling_prefix: genericPeriodicSamplingPrefix,
@@ -204,6 +204,10 @@ async function runLane(benchmarkCase, lane, seed) {
   let maxCandidateCount = 0;
   let checkedPatchSize = 0;
   let witnessHash = null;
+  let witnessGrowthAxisRank = 0;
+  let witnessGrowthSpans = [];
+  let witnessGrowthIsotropy = 0;
+  let witnessPeriodicTranslationRank = 0;
   const growthMilestones = [];
   const checkpointFingerprints = [];
   const hashPlacements = placements => createHash("sha256")
@@ -222,6 +226,10 @@ async function runLane(benchmarkCase, lane, seed) {
     maxLiveTiles = Math.max(maxLiveTiles, patchSize, snapshot?.search_stats?.max_live_tiles ?? 0);
     if (Array.isArray(snapshot?.placements) && snapshot.placements.length > largestPatch) {
       largestPatch = snapshot.placements.length;
+      witnessGrowthAxisRank = snapshot?.search_stats?.growth_axis_rank ?? 0;
+      witnessGrowthSpans = snapshot?.search_stats?.growth_spans ?? [];
+      witnessGrowthIsotropy = snapshot?.search_stats?.growth_isotropy ?? 0;
+      witnessPeriodicTranslationRank = snapshot?.search_stats?.periodic_translation_rank ?? 0;
       growthMilestones.push({
         patchSize: largestPatch,
         visitedNodes: snapshot?.search_stats?.visited_nodes ?? 0,
@@ -278,6 +286,10 @@ async function runLane(benchmarkCase, lane, seed) {
     effectiveSeed: stats.random_seed ?? null,
     seededTieBreaks: !!stats.seeded_tie_breaks,
     witnessHash,
+    witnessGrowthAxisRank,
+    witnessGrowthSpans,
+    witnessGrowthIsotropy,
+    witnessPeriodicTranslationRank,
     growthMilestones,
     generationLagCap: stats.generation_lag_cap ?? null,
     generationBandDeferrals: stats.generation_band_deferrals ?? 0,
@@ -341,6 +353,16 @@ async function runLane(benchmarkCase, lane, seed) {
     genericPeriodicCertificateTargetCompleted: !!stats.generic_periodic_certificate_target_completed,
     genericPeriodicCertificateTargetTimedOut: !!stats.generic_periodic_certificate_target_timed_out,
     genericPeriodicCertificateTargetFound: !!stats.generic_periodic_certificate_target_found,
+    genericPeriodicInternalMotifAttempted: !!stats.generic_periodic_internal_motif_attempted,
+    genericPeriodicInternalMotifFound: !!stats.generic_periodic_internal_motif_found,
+    genericPeriodicInternalMotifVectorCount:
+      stats.generic_periodic_internal_motif_vector_count ?? 0,
+    genericPeriodicInternalMotifBasesTested:
+      stats.generic_periodic_internal_motif_bases_tested ?? 0,
+    genericPeriodicInternalMotifMaxTranslationSupport:
+      stats.generic_periodic_internal_motif_max_translation_support ?? 0,
+    genericPeriodicInternalMotifTopTranslations:
+      stats.generic_periodic_internal_motif_top_translations ?? [],
     terminationReason: stats.termination_reason
       ?? (final?.tiling_evidence?.certified
         ? "certificate_found"
@@ -523,7 +545,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 17,
+  schemaVersion: 18,
   configuration: {
     target,
     timeMs,

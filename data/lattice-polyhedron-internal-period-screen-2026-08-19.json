@@ -1,0 +1,1713 @@
+{
+  "schema_version": 1,
+  "screen_date": "2026-08-19",
+  "benchmark_schema_versions": [
+    17,
+    18
+  ],
+  "protocol": {
+    "candidates": [
+      "10_16113",
+      "10_45026",
+      "10_45033",
+      "9_11683"
+    ],
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "target_tiles": 60,
+    "node_limit": 1000,
+    "time_limit_ms": 5000,
+    "move_order": "crystal",
+    "face_order": "mrv",
+    "generation_band": false,
+    "exact_failure_memo": true,
+    "internal_period_vector_limit": 48,
+    "exact_check_time_limit_ms": 15000
+  },
+  "focused_target_protocol": {
+    "id": "10_16113",
+    "seed": 6,
+    "target_tiles": 60,
+    "node_limit": 1000,
+    "search_time_limit_ms": 30000,
+    "exact_check_time_limit_ms": 15000
+  },
+  "method": {
+    "search_change": "prioritize gains in the rank of repeated same-orientation translation vectors before ordinary crystal continuation scores",
+    "translation_diagnostic": "rank candidate vectors by the number of same-frame placement pairs realizing each translation",
+    "exact_internal_motif_check": "enumerate independent candidate-vector bases, reduce the observed patch to placement cosets, and require an exact face pairing with motif volume equal to lattice covolume",
+    "negative_result_scope": "excludes exact quotients exhibited by the checked finite witness within the 48-vector candidate cap; it is not a proof that the tile has no periodic tiling"
+  },
+  "legacy_crystal_target_checks": {
+    "checked_witnesses": 7,
+    "certificates_found": 0,
+    "highly_collinear_10_45026_witnesses": 4,
+    "observation": "all four 10_45026 target paths repeated 57 of 60 placements along one translation direction",
+    "checks": [
+      {
+        "id": "10_45026",
+        "seed": 2,
+        "patch_size": 60,
+        "witness_hash": "29caa39ca057837a",
+        "candidate_translation_vectors": 19,
+        "candidate_bases_tested": 969,
+        "maximum_translation_support": 57,
+        "top_translations": [
+          {
+            "vector": [
+              -1,
+              -2,
+              -2
+            ],
+            "support": 57
+          },
+          {
+            "vector": [
+              -2,
+              -4,
+              -4
+            ],
+            "support": 54
+          },
+          {
+            "vector": [
+              -3,
+              -6,
+              -6
+            ],
+            "support": 51
+          },
+          {
+            "vector": [
+              -4,
+              -8,
+              -8
+            ],
+            "support": 48
+          },
+          {
+            "vector": [
+              -5,
+              -10,
+              -10
+            ],
+            "support": 45
+          },
+          {
+            "vector": [
+              -6,
+              -12,
+              -12
+            ],
+            "support": 42
+          },
+          {
+            "vector": [
+              -7,
+              -14,
+              -14
+            ],
+            "support": 39
+          },
+          {
+            "vector": [
+              -8,
+              -16,
+              -16
+            ],
+            "support": 36
+          },
+          {
+            "vector": [
+              -9,
+              -18,
+              -18
+            ],
+            "support": 33
+          },
+          {
+            "vector": [
+              -10,
+              -20,
+              -20
+            ],
+            "support": 30
+          },
+          {
+            "vector": [
+              -11,
+              -22,
+              -22
+            ],
+            "support": 27
+          },
+          {
+            "vector": [
+              -12,
+              -24,
+              -24
+            ],
+            "support": 24
+          }
+        ],
+        "whole_patch_or_internal_certificate_found": false,
+        "check_completed": true,
+        "check_timed_out": false
+      },
+      {
+        "id": "10_45026",
+        "seed": 3,
+        "patch_size": 60,
+        "witness_hash": "29caa39ca057837a",
+        "candidate_translation_vectors": 19,
+        "candidate_bases_tested": 969,
+        "maximum_translation_support": 57,
+        "top_translations": [
+          {
+            "vector": [
+              -1,
+              -2,
+              -2
+            ],
+            "support": 57
+          },
+          {
+            "vector": [
+              -2,
+              -4,
+              -4
+            ],
+            "support": 54
+          },
+          {
+            "vector": [
+              -3,
+              -6,
+              -6
+            ],
+            "support": 51
+          },
+          {
+            "vector": [
+              -4,
+              -8,
+              -8
+            ],
+            "support": 48
+          },
+          {
+            "vector": [
+              -5,
+              -10,
+              -10
+            ],
+            "support": 45
+          },
+          {
+            "vector": [
+              -6,
+              -12,
+              -12
+            ],
+            "support": 42
+          },
+          {
+            "vector": [
+              -7,
+              -14,
+              -14
+            ],
+            "support": 39
+          },
+          {
+            "vector": [
+              -8,
+              -16,
+              -16
+            ],
+            "support": 36
+          },
+          {
+            "vector": [
+              -9,
+              -18,
+              -18
+            ],
+            "support": 33
+          },
+          {
+            "vector": [
+              -10,
+              -20,
+              -20
+            ],
+            "support": 30
+          },
+          {
+            "vector": [
+              -11,
+              -22,
+              -22
+            ],
+            "support": 27
+          },
+          {
+            "vector": [
+              -12,
+              -24,
+              -24
+            ],
+            "support": 24
+          }
+        ],
+        "whole_patch_or_internal_certificate_found": false,
+        "check_completed": true,
+        "check_timed_out": false
+      },
+      {
+        "id": "10_45026",
+        "seed": 4,
+        "patch_size": 60,
+        "witness_hash": "3af990483ff7fbd4",
+        "candidate_translation_vectors": 19,
+        "candidate_bases_tested": 969,
+        "maximum_translation_support": 57,
+        "top_translations": [
+          {
+            "vector": [
+              -2,
+              -1,
+              -2
+            ],
+            "support": 57
+          },
+          {
+            "vector": [
+              -4,
+              -2,
+              -4
+            ],
+            "support": 54
+          },
+          {
+            "vector": [
+              -6,
+              -3,
+              -6
+            ],
+            "support": 51
+          },
+          {
+            "vector": [
+              -8,
+              -4,
+              -8
+            ],
+            "support": 48
+          },
+          {
+            "vector": [
+              -10,
+              -5,
+              -10
+            ],
+            "support": 45
+          },
+          {
+            "vector": [
+              -12,
+              -6,
+              -12
+            ],
+            "support": 42
+          },
+          {
+            "vector": [
+              -14,
+              -7,
+              -14
+            ],
+            "support": 39
+          },
+          {
+            "vector": [
+              -16,
+              -8,
+              -16
+            ],
+            "support": 36
+          },
+          {
+            "vector": [
+              -18,
+              -9,
+              -18
+            ],
+            "support": 33
+          },
+          {
+            "vector": [
+              -20,
+              -10,
+              -20
+            ],
+            "support": 30
+          },
+          {
+            "vector": [
+              -22,
+              -11,
+              -22
+            ],
+            "support": 27
+          },
+          {
+            "vector": [
+              -24,
+              -12,
+              -24
+            ],
+            "support": 24
+          }
+        ],
+        "whole_patch_or_internal_certificate_found": false,
+        "check_completed": true,
+        "check_timed_out": false
+      },
+      {
+        "id": "10_45026",
+        "seed": 5,
+        "patch_size": 60,
+        "witness_hash": "29caa39ca057837a",
+        "candidate_translation_vectors": 19,
+        "candidate_bases_tested": 969,
+        "maximum_translation_support": 57,
+        "top_translations": [
+          {
+            "vector": [
+              -1,
+              -2,
+              -2
+            ],
+            "support": 57
+          },
+          {
+            "vector": [
+              -2,
+              -4,
+              -4
+            ],
+            "support": 54
+          },
+          {
+            "vector": [
+              -3,
+              -6,
+              -6
+            ],
+            "support": 51
+          },
+          {
+            "vector": [
+              -4,
+              -8,
+              -8
+            ],
+            "support": 48
+          },
+          {
+            "vector": [
+              -5,
+              -10,
+              -10
+            ],
+            "support": 45
+          },
+          {
+            "vector": [
+              -6,
+              -12,
+              -12
+            ],
+            "support": 42
+          },
+          {
+            "vector": [
+              -7,
+              -14,
+              -14
+            ],
+            "support": 39
+          },
+          {
+            "vector": [
+              -8,
+              -16,
+              -16
+            ],
+            "support": 36
+          },
+          {
+            "vector": [
+              -9,
+              -18,
+              -18
+            ],
+            "support": 33
+          },
+          {
+            "vector": [
+              -10,
+              -20,
+              -20
+            ],
+            "support": 30
+          },
+          {
+            "vector": [
+              -11,
+              -22,
+              -22
+            ],
+            "support": 27
+          },
+          {
+            "vector": [
+              -12,
+              -24,
+              -24
+            ],
+            "support": 24
+          }
+        ],
+        "whole_patch_or_internal_certificate_found": false,
+        "check_completed": true,
+        "check_timed_out": false
+      },
+      {
+        "id": "10_45033",
+        "seed": 5,
+        "patch_size": 60,
+        "witness_hash": "19e82429007e2fb1",
+        "candidate_translation_vectors": 48,
+        "candidate_bases_tested": 17296,
+        "maximum_translation_support": 5,
+        "top_translations": [
+          {
+            "vector": [
+              -1,
+              2,
+              1
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              3
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -1,
+              -6,
+              5
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              -1
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              -1,
+              -4,
+              7
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 3
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              -1
+            ],
+            "support": 3
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              -2
+            ],
+            "support": 3
+          },
+          {
+            "vector": [
+              -2,
+              -3,
+              1
+            ],
+            "support": 3
+          },
+          {
+            "vector": [
+              -1,
+              1,
+              -4
+            ],
+            "support": 3
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              -5
+            ],
+            "support": 3
+          },
+          {
+            "vector": [
+              -1,
+              -5,
+              2
+            ],
+            "support": 3
+          }
+        ],
+        "whole_patch_or_internal_certificate_found": false,
+        "check_completed": true,
+        "check_timed_out": false
+      },
+      {
+        "id": "9_11683",
+        "seed": 1,
+        "patch_size": 60,
+        "witness_hash": "e0be31bc302cddf9",
+        "candidate_translation_vectors": 48,
+        "candidate_bases_tested": 17296,
+        "maximum_translation_support": 13,
+        "top_translations": [
+          {
+            "vector": [
+              -4,
+              -2,
+              -2
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -6,
+              -3,
+              -3
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              -1
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -7,
+              -4,
+              -3
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -9,
+              -4,
+              -5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -13,
+              -7,
+              -6
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              -1
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              -2
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -3,
+              -2,
+              -1
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -5,
+              -3,
+              -2
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -10,
+              -5,
+              -5
+            ],
+            "support": 7
+          }
+        ],
+        "whole_patch_or_internal_certificate_found": false,
+        "check_completed": true,
+        "check_timed_out": false
+      },
+      {
+        "id": "9_11683",
+        "seed": 6,
+        "patch_size": 60,
+        "witness_hash": "ca78e26e4eea0e66",
+        "candidate_translation_vectors": 48,
+        "candidate_bases_tested": 17296,
+        "maximum_translation_support": 14,
+        "top_translations": [
+          {
+            "vector": [
+              -1,
+              -1,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -3,
+              -3,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -4,
+              -4,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -5,
+              -5,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -6,
+              -6,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -7,
+              -7,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -8,
+              -8,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -9,
+              -9,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -7,
+              -12,
+              5
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -8,
+              -13,
+              5
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -9,
+              -14,
+              5
+            ],
+            "support": 5
+          }
+        ],
+        "whole_patch_or_internal_certificate_found": false,
+        "check_completed": true,
+        "check_timed_out": false
+      }
+    ]
+  },
+  "repeated_translation_rank_screen": {
+    "paths": 32,
+    "geometric_rank_3_paths": 32,
+    "repeated_translation_rank_3_paths": 28,
+    "target_hits": 0,
+    "candidate_summary": [
+      {
+        "id": "10_16113",
+        "paths": 8,
+        "robust_largest_patch": 27,
+        "median_largest_patch": 32,
+        "best_largest_patch": 41,
+        "target_hits": 0,
+        "geometric_rank_3_paths": 8,
+        "repeated_translation_rank_3_paths": 8,
+        "time_limited_paths": 8
+      },
+      {
+        "id": "10_45026",
+        "paths": 8,
+        "robust_largest_patch": 14,
+        "median_largest_patch": 18,
+        "best_largest_patch": 22,
+        "target_hits": 0,
+        "geometric_rank_3_paths": 8,
+        "repeated_translation_rank_3_paths": 8,
+        "time_limited_paths": 8
+      },
+      {
+        "id": "10_45033",
+        "paths": 8,
+        "robust_largest_patch": 21,
+        "median_largest_patch": 32,
+        "best_largest_patch": 37,
+        "target_hits": 0,
+        "geometric_rank_3_paths": 8,
+        "repeated_translation_rank_3_paths": 8,
+        "time_limited_paths": 8
+      },
+      {
+        "id": "9_11683",
+        "paths": 8,
+        "robust_largest_patch": 18,
+        "median_largest_patch": 35,
+        "best_largest_patch": 43,
+        "target_hits": 0,
+        "geometric_rank_3_paths": 8,
+        "repeated_translation_rank_3_paths": 4,
+        "time_limited_paths": 8
+      }
+    ],
+    "paths_detail": [
+      {
+        "id": "10_16113",
+        "seed": 1,
+        "largest_patch": 27,
+        "witness_hash": "a4154f5a7bad214c",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          7.666666666666666,
+          4,
+          6.666666666666666
+        ],
+        "growth_isotropy": 0.5217391304347826,
+        "visited_nodes": 597,
+        "backtracks": 385,
+        "elapsed_ms": 5030,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_16113",
+        "seed": 2,
+        "largest_patch": 30,
+        "witness_hash": "c3d4808b9d1ffe1e",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          6,
+          4.666666666666666,
+          6.666666666666666
+        ],
+        "growth_isotropy": 0.7,
+        "visited_nodes": 505,
+        "backtracks": 308,
+        "elapsed_ms": 5023,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_16113",
+        "seed": 3,
+        "largest_patch": 27,
+        "witness_hash": "a4154f5a7bad214c",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          7.666666666666666,
+          4,
+          6.666666666666666
+        ],
+        "growth_isotropy": 0.5217391304347826,
+        "visited_nodes": 605,
+        "backtracks": 392,
+        "elapsed_ms": 5016,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_16113",
+        "seed": 4,
+        "largest_patch": 41,
+        "witness_hash": "e79c3e30d5dc1458",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          10.333333333333334,
+          8.333333333333334,
+          5.333333333333334
+        ],
+        "growth_isotropy": 0.5161290322580645,
+        "visited_nodes": 382,
+        "backtracks": 248,
+        "elapsed_ms": 5017,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_16113",
+        "seed": 5,
+        "largest_patch": 27,
+        "witness_hash": "1c7d8568a36490b4",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4,
+          5,
+          5.666666666666667
+        ],
+        "growth_isotropy": 0.7058823529411764,
+        "visited_nodes": 748,
+        "backtracks": 455,
+        "elapsed_ms": 5013,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_16113",
+        "seed": 6,
+        "largest_patch": 41,
+        "witness_hash": "5ddfc305c54910ff",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          8,
+          4.333333333333334,
+          7.333333333333334
+        ],
+        "growth_isotropy": 0.5416666666666667,
+        "visited_nodes": 576,
+        "backtracks": 345,
+        "elapsed_ms": 5017,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_16113",
+        "seed": 7,
+        "largest_patch": 33,
+        "witness_hash": "1f2065bd782742d8",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          7,
+          5,
+          5.666666666666666
+        ],
+        "growth_isotropy": 0.7142857142857143,
+        "visited_nodes": 758,
+        "backtracks": 474,
+        "elapsed_ms": 5007,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_16113",
+        "seed": 8,
+        "largest_patch": 32,
+        "witness_hash": "e0d826a107247fb8",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          5.333333333333334,
+          8,
+          5.333333333333334
+        ],
+        "growth_isotropy": 0.6666666666666667,
+        "visited_nodes": 843,
+        "backtracks": 520,
+        "elapsed_ms": 5010,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 1,
+        "largest_patch": 19,
+        "witness_hash": "03c03efd80b6536e",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          5,
+          5,
+          4.777777777777778
+        ],
+        "growth_isotropy": 0.9555555555555555,
+        "visited_nodes": 629,
+        "backtracks": 621,
+        "elapsed_ms": 5020,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 2,
+        "largest_patch": 18,
+        "witness_hash": "902fb0062f153a60",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4.888888888888889,
+          4,
+          4.111111111111111
+        ],
+        "growth_isotropy": 0.8181818181818181,
+        "visited_nodes": 593,
+        "backtracks": 541,
+        "elapsed_ms": 5010,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 3,
+        "largest_patch": 18,
+        "witness_hash": "9b2d5160be604ab6",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          6,
+          4,
+          4.888888888888889
+        ],
+        "growth_isotropy": 0.6666666666666666,
+        "visited_nodes": 584,
+        "backtracks": 576,
+        "elapsed_ms": 5008,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 4,
+        "largest_patch": 21,
+        "witness_hash": "3f6899c01ecdc02a",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4,
+          5.888888888888889,
+          5.111111111111111
+        ],
+        "growth_isotropy": 0.6792452830188679,
+        "visited_nodes": 555,
+        "backtracks": 535,
+        "elapsed_ms": 5032,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 5,
+        "largest_patch": 17,
+        "witness_hash": "2272bff5ce182062",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          5,
+          5.888888888888889,
+          4
+        ],
+        "growth_isotropy": 0.6792452830188679,
+        "visited_nodes": 638,
+        "backtracks": 620,
+        "elapsed_ms": 5017,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 6,
+        "largest_patch": 14,
+        "witness_hash": "ed5ed261f246c2b1",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          2,
+          5,
+          2.888888888888889
+        ],
+        "growth_isotropy": 0.4,
+        "visited_nodes": 625,
+        "backtracks": 598,
+        "elapsed_ms": 5008,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 7,
+        "largest_patch": 18,
+        "witness_hash": "c8df52176c5405fe",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4,
+          6,
+          4.888888888888889
+        ],
+        "growth_isotropy": 0.6666666666666666,
+        "visited_nodes": 602,
+        "backtracks": 594,
+        "elapsed_ms": 5008,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45026",
+        "seed": 8,
+        "largest_patch": 22,
+        "witness_hash": "e4bf865cc4459de3",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          6,
+          6.888888888888889,
+          10.11111111111111
+        ],
+        "growth_isotropy": 0.5934065934065934,
+        "visited_nodes": 461,
+        "backtracks": 442,
+        "elapsed_ms": 5011,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 1,
+        "largest_patch": 26,
+        "witness_hash": "5c34d34032627174",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          3.888888888888889,
+          5.888888888888889,
+          6
+        ],
+        "growth_isotropy": 0.6481481481481481,
+        "visited_nodes": 297,
+        "backtracks": 262,
+        "elapsed_ms": 5014,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 2,
+        "largest_patch": 37,
+        "witness_hash": "a6b418a00c0ae0da",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4.111111111111111,
+          7,
+          4.888888888888889
+        ],
+        "growth_isotropy": 0.5873015873015872,
+        "visited_nodes": 276,
+        "backtracks": 238,
+        "elapsed_ms": 5017,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 3,
+        "largest_patch": 33,
+        "witness_hash": "851e1a9a3984c42f",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          6.777777777777778,
+          4.888888888888889,
+          6.111111111111111
+        ],
+        "growth_isotropy": 0.7213114754098361,
+        "visited_nodes": 267,
+        "backtracks": 236,
+        "elapsed_ms": 5017,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 4,
+        "largest_patch": 32,
+        "witness_hash": "f8a514d259d14c70",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4.888888888888889,
+          5,
+          5.888888888888889
+        ],
+        "growth_isotropy": 0.8301886792452831,
+        "visited_nodes": 289,
+        "backtracks": 252,
+        "elapsed_ms": 5013,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 5,
+        "largest_patch": 21,
+        "witness_hash": "7dbe631bb777269e",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          3.2222222222222223,
+          4,
+          2.888888888888889
+        ],
+        "growth_isotropy": 0.7222222222222222,
+        "visited_nodes": 319,
+        "backtracks": 296,
+        "elapsed_ms": 5011,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 6,
+        "largest_patch": 26,
+        "witness_hash": "cf6841bf6312692b",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          3.888888888888889,
+          4.888888888888889,
+          3
+        ],
+        "growth_isotropy": 0.6136363636363635,
+        "visited_nodes": 339,
+        "backtracks": 286,
+        "elapsed_ms": 5022,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 7,
+        "largest_patch": 30,
+        "witness_hash": "4f08cd6896ac5213",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4,
+          4.777777777777778,
+          5.777777777777778
+        ],
+        "growth_isotropy": 0.6923076923076923,
+        "visited_nodes": 248,
+        "backtracks": 213,
+        "elapsed_ms": 5024,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "10_45033",
+        "seed": 8,
+        "largest_patch": 32,
+        "witness_hash": "cdb46d7e601c607d",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4.888888888888889,
+          5.888888888888889,
+          5
+        ],
+        "growth_isotropy": 0.8301886792452831,
+        "visited_nodes": 280,
+        "backtracks": 242,
+        "elapsed_ms": 5013,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 1,
+        "largest_patch": 43,
+        "witness_hash": "877ebdde1e3cfe49",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 2,
+        "growth_spans": [
+          16,
+          7.75,
+          12
+        ],
+        "growth_isotropy": 0.484375,
+        "visited_nodes": 401,
+        "backtracks": 400,
+        "elapsed_ms": 5020,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 2,
+        "largest_patch": 18,
+        "witness_hash": "561232392adbf8b5",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          3,
+          5,
+          2.875
+        ],
+        "growth_isotropy": 0.575,
+        "visited_nodes": 604,
+        "backtracks": 585,
+        "elapsed_ms": 5009,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 3,
+        "largest_patch": 35,
+        "witness_hash": "faaa4ffb784702bb",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 2,
+        "growth_spans": [
+          14.125,
+          14,
+          2.125
+        ],
+        "growth_isotropy": 0.1504424778761062,
+        "visited_nodes": 452,
+        "backtracks": 450,
+        "elapsed_ms": 5015,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 4,
+        "largest_patch": 37,
+        "witness_hash": "1b14cda4ca145449",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          4.125,
+          12,
+          14.875
+        ],
+        "growth_isotropy": 0.2773109243697479,
+        "visited_nodes": 543,
+        "backtracks": 536,
+        "elapsed_ms": 5021,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 5,
+        "largest_patch": 35,
+        "witness_hash": "1ac15d1463472cf5",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          8,
+          8.875,
+          15.125
+        ],
+        "growth_isotropy": 0.5289256198347108,
+        "visited_nodes": 447,
+        "backtracks": 446,
+        "elapsed_ms": 5027,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 6,
+        "largest_patch": 43,
+        "witness_hash": "42c343989c4af91f",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 2,
+        "growth_spans": [
+          14.125,
+          15,
+          6
+        ],
+        "growth_isotropy": 0.4,
+        "visited_nodes": 414,
+        "backtracks": 413,
+        "elapsed_ms": 5020,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 7,
+        "largest_patch": 31,
+        "witness_hash": "7cac5cc96d977c34",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 2,
+        "growth_spans": [
+          4.75,
+          9.125,
+          11.125
+        ],
+        "growth_isotropy": 0.42696629213483145,
+        "visited_nodes": 594,
+        "backtracks": 564,
+        "elapsed_ms": 5019,
+        "termination_reason": "time_limit"
+      },
+      {
+        "id": "9_11683",
+        "seed": 8,
+        "largest_patch": 26,
+        "witness_hash": "22b85633b06212c4",
+        "geometric_axis_rank": 3,
+        "repeated_translation_rank": 3,
+        "growth_spans": [
+          6.75,
+          6,
+          9
+        ],
+        "growth_isotropy": 0.6666666666666666,
+        "visited_nodes": 600,
+        "backtracks": 575,
+        "elapsed_ms": 5010,
+        "termination_reason": "time_limit"
+      }
+    ]
+  },
+  "exact_target_check": {
+    "id": "10_16113",
+    "seed": 6,
+    "patch_size": 60,
+    "witness_hash": "c978bfa88e0dfc9e",
+    "geometric_axis_rank": 3,
+    "repeated_translation_rank": 3,
+    "growth_spans": [
+      14,
+      6.333333333333334,
+      9.333333333333334
+    ],
+    "growth_isotropy": 0.45238095238095244,
+    "candidate_translation_vectors": 39,
+    "candidate_bases_tested": 9139,
+    "maximum_translation_support": 5,
+    "top_translations": [
+      {
+        "vector": [
+          -2,
+          2,
+          2
+        ],
+        "support": 5
+      },
+      {
+        "vector": [
+          -5,
+          -1,
+          -2
+        ],
+        "support": 3
+      },
+      {
+        "vector": [
+          -6,
+          -2,
+          -2
+        ],
+        "support": 3
+      },
+      {
+        "vector": [
+          -6,
+          -1,
+          -3
+        ],
+        "support": 3
+      },
+      {
+        "vector": [
+          -8,
+          1,
+          -1
+        ],
+        "support": 3
+      },
+      {
+        "vector": [
+          -1,
+          -2,
+          -1
+        ],
+        "support": 2
+      },
+      {
+        "vector": [
+          -3,
+          0,
+          -3
+        ],
+        "support": 2
+      },
+      {
+        "vector": [
+          -4,
+          1,
+          -1
+        ],
+        "support": 2
+      },
+      {
+        "vector": [
+          -5,
+          1,
+          -2
+        ],
+        "support": 2
+      },
+      {
+        "vector": [
+          -7,
+          3,
+          0
+        ],
+        "support": 2
+      },
+      {
+        "vector": [
+          -8,
+          -1,
+          -5
+        ],
+        "support": 2
+      },
+      {
+        "vector": [
+          -8,
+          1,
+          -5
+        ],
+        "support": 2
+      }
+    ],
+    "whole_patch_or_internal_certificate_found": false,
+    "check_completed": true,
+    "check_timed_out": false
+  },
+  "positive_control": {
+    "id": "10_24775",
+    "seed": 1,
+    "patch_size": 60,
+    "witness_hash": "7e5dab4e24b28f3b",
+    "geometric_axis_rank": 3,
+    "repeated_translation_rank": 3,
+    "growth_spans": [
+      7.5,
+      8,
+      7.5
+    ],
+    "growth_isotropy": 0.9375,
+    "candidate_translation_vectors": 48,
+    "candidate_bases_tested": 1,
+    "maximum_translation_support": 35,
+    "top_translations": [
+      {
+        "vector": [
+          -1,
+          -2,
+          -1
+        ],
+        "support": 35
+      },
+      {
+        "vector": [
+          -1,
+          -1,
+          2
+        ],
+        "support": 34
+      },
+      {
+        "vector": [
+          -2,
+          1,
+          -1
+        ],
+        "support": 32
+      },
+      {
+        "vector": [
+          -1,
+          3,
+          0
+        ],
+        "support": 26
+      },
+      {
+        "vector": [
+          -3,
+          0,
+          1
+        ],
+        "support": 25
+      },
+      {
+        "vector": [
+          -2,
+          -3,
+          1
+        ],
+        "support": 25
+      },
+      {
+        "vector": [
+          0,
+          -1,
+          -3
+        ],
+        "support": 23
+      },
+      {
+        "vector": [
+          -2,
+          2,
+          2
+        ],
+        "support": 20
+      },
+      {
+        "vector": [
+          -1,
+          2,
+          -3
+        ],
+        "support": 19
+      },
+      {
+        "vector": [
+          -3,
+          -1,
+          -2
+        ],
+        "support": 18
+      },
+      {
+        "vector": [
+          0,
+          -4,
+          2
+        ],
+        "support": 16
+      },
+      {
+        "vector": [
+          -4,
+          -2,
+          0
+        ],
+        "support": 15
+      }
+    ],
+    "whole_patch_or_internal_certificate_found": true,
+    "check_completed": true,
+    "check_timed_out": false,
+    "certificate_kind": "3_tile_periodic_symmetry_quotient",
+    "certificate_patch_size": 3,
+    "period_vectors": [
+      [
+        -1,
+        -2,
+        -1
+      ],
+      [
+        -1,
+        -1,
+        2
+      ],
+      [
+        -2,
+        1,
+        -1
+      ]
+    ]
+  },
+  "decision": "replace the crystal lane's affine-position rank gate with repeated-translation rank; retain it as a complementary bounded search and report dimensional evidence separately from tile count"
+}

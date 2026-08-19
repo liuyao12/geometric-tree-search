@@ -88,10 +88,15 @@ assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof co
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
 assert.match(growthAppSource, /id: "proof_nogood"[\s\S]*?label: "Proof search · delayed nogoods"/, "the complementary proof trace must be visible in the chart");
-assert.match(growthAppSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal order"/, "the crystal-ordered proof trace must be visible in the chart");
+assert.match(growthAppSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal rank"/, "the repeated-translation-rank proof trace must be visible in the chart");
 assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?moveOrder: "crystal"[\s\S]*?proof: true/, "the crystal lane must retain exact proof-search semantics");
+assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal rank"/, "the worker and chart must agree on the rank-aware crystal label");
 assert.match(growthAppSource, /All eight modes finished\./, "the comparison status must include all eight lanes");
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
+assert.match(growthAppSource, /prioritizes independent repeated same-orientation translations/, "the catalog must explain the current crystal-rank policy");
+assert.match(growthAppSource, /all four old 10_45026 witnesses repeated 57 of 60 placements along one direction/, "the catalog must disclose the misleading collinear target witnesses");
+assert.match(growthAppSource, /recovered the known three-tile quotient of control 10_24775/, "the internal-period screen must expose its positive control");
+assert.match(growthAppSource, /certified an embedded \$\{motifSize\}-tile translational quotient/, "the UI must distinguish an embedded motif from the entire target patch");
 assert.match(
   growthAppSource,
   /this excludes those particular patches as translational fundamental domains, not other possible motifs/,
@@ -196,6 +201,10 @@ const archivedStagnationNogoodAb = JSON.parse(await readFile(
 ));
 const archivedBudgetOrder = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-budget-order-screen-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedInternalPeriod = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-internal-period-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -583,6 +592,42 @@ assert.deepEqual(archivedBudgetOrder.move_order_screen.holdout_comparison, {
   baseline_target_hits: 0,
   challenger_target_hits: 4
 });
+assert.deepEqual(
+  LATTICE_POLYHEDRON_SCREENING.gcts_proof.internal_period_screen,
+  {
+    target_tiles: archivedInternalPeriod.protocol.target_tiles,
+    seeds: archivedInternalPeriod.protocol.seeds,
+    breadth_time_limit_ms: archivedInternalPeriod.protocol.time_limit_ms,
+    configured_node_limit: archivedInternalPeriod.protocol.node_limit,
+    internal_period_vector_limit: archivedInternalPeriod.protocol.internal_period_vector_limit,
+    breadth_paths: archivedInternalPeriod.repeated_translation_rank_screen.paths,
+    geometric_rank_3_paths:
+      archivedInternalPeriod.repeated_translation_rank_screen.geometric_rank_3_paths,
+    repeated_translation_rank_3_paths:
+      archivedInternalPeriod.repeated_translation_rank_screen.repeated_translation_rank_3_paths,
+    breadth_target_hits: archivedInternalPeriod.repeated_translation_rank_screen.target_hits,
+    focused_candidate: archivedInternalPeriod.focused_target_protocol.id,
+    focused_seed: archivedInternalPeriod.focused_target_protocol.seed,
+    focused_search_time_limit_ms: archivedInternalPeriod.focused_target_protocol.search_time_limit_ms,
+    focused_target_checks_completed: archivedInternalPeriod.exact_target_check.check_completed ? 1 : 0,
+    focused_candidate_bases_tested: archivedInternalPeriod.exact_target_check.candidate_bases_tested,
+    focused_periodic_certificates_found:
+      archivedInternalPeriod.exact_target_check.whole_patch_or_internal_certificate_found ? 1 : 0,
+    legacy_target_witnesses_checked:
+      archivedInternalPeriod.legacy_crystal_target_checks.checked_witnesses,
+    highly_collinear_10_45026_witnesses:
+      archivedInternalPeriod.legacy_crystal_target_checks.highly_collinear_10_45026_witnesses,
+    positive_control: archivedInternalPeriod.positive_control.id,
+    positive_control_motif_tiles: archivedInternalPeriod.positive_control.certificate_patch_size,
+    policy_decision: "replace_affine_rank_gate_with_repeated_translation_rank",
+    report: "data/lattice-polyhedron-internal-period-screen-2026-08-19.json"
+  }
+);
+assert.equal(archivedInternalPeriod.exact_target_check.candidate_bases_tested, 9139);
+assert.equal(archivedInternalPeriod.exact_target_check.maximum_translation_support, 5);
+assert.equal(archivedInternalPeriod.exact_target_check.whole_patch_or_internal_certificate_found, false);
+assert.equal(archivedInternalPeriod.positive_control.certificate_patch_size, 3);
+assert.equal(archivedInternalPeriod.positive_control.whole_patch_or_internal_certificate_found, true);
 assert.ok(archivedBudgetOrder.budget_scaling.summary.all_paths_non_decreasing);
 assert.equal(archivedBudgetOrder.frontier_order_screen.policy_decision, "retain_mrv");
 assert.equal(archivedBudgetOrder.move_order_screen.exact_target_checks_completed, 8);
@@ -842,6 +887,31 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
     candidate.gcts_proof_screening.crystal_distinct_target_witnesses,
     crystalSummary.crystal_distinct_target_witnesses
   );
+  const internalSummary = archivedInternalPeriod.repeated_translation_rank_screen.candidate_summary
+    .find(item => item.id === candidate.id);
+  assert.ok(internalSummary, `${candidate.id} must retain its internal-period evidence`);
+  assert.equal(candidate.gcts_proof_screening.internal_period_trials, internalSummary.paths);
+  assert.equal(
+    candidate.gcts_proof_screening.internal_period_robust_largest_patch,
+    internalSummary.robust_largest_patch
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.internal_period_median_largest_patch,
+    internalSummary.median_largest_patch
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.internal_period_best_largest_patch,
+    internalSummary.best_largest_patch
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.internal_period_geometric_rank_3_paths,
+    internalSummary.geometric_rank_3_paths
+  );
+  assert.equal(
+    candidate.gcts_proof_screening.internal_period_repeated_translation_rank_3_paths,
+    internalSummary.repeated_translation_rank_3_paths
+  );
+  assert.equal(candidate.gcts_proof_screening.internal_period_target_hits, internalSummary.target_hits);
 }
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL

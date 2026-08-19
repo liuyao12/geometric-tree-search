@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-crystal-order-v88";
+import { tileSpecs } from "./engine.js?v=20260819-internal-period-v92";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1361,9 +1361,15 @@ function updateCandidateResearchPanel() {
         ? `${proof.crystal_best_largest_patch}`
         : `${proof.crystal_robust_largest_patch}–${proof.crystal_best_largest_patch}`;
       const crystal = proof.crystal_trials && proofProtocol.budget_order_screen
-        ? ` In the eight-seed 1,000-node order screen, crystal ordering ranged from ${crystalRange} tiles, beat balanced on ${proof.crystal_better_than_balanced} paths, tied ${proof.crystal_equal_to_balanced}, and lost ${proof.crystal_worse_than_balanced}.${proof.crystal_target_hits ? ` It reached ${proofProtocol.budget_order_screen.target_tiles} tiles ${proof.crystal_target_hits} time${proof.crystal_target_hits === 1 ? "" : "s"} as ${proof.crystal_distinct_target_witnesses} distinct checked witness${proof.crystal_distinct_target_witnesses === 1 ? "" : "es"}.` : ""} Across all candidates, crystal beat balanced on ${proofProtocol.budget_order_screen.crystal_better_than_balanced} of 32 paths and raised 60-tile hits from ${proofProtocol.budget_order_screen.balanced_target_hits} to ${proofProtocol.budget_order_screen.crystal_target_hits}; it is an additional proof lane, not a replacement.`
+        ? ` In the original eight-seed 1,000-node order screen, crystal ordering ranged from ${crystalRange} tiles, beat balanced on ${proof.crystal_better_than_balanced} paths, tied ${proof.crystal_equal_to_balanced}, and lost ${proof.crystal_worse_than_balanced}.${proof.crystal_target_hits ? ` It reached ${proofProtocol.budget_order_screen.target_tiles} tiles ${proof.crystal_target_hits} time${proof.crystal_target_hits === 1 ? "" : "s"} as ${proof.crystal_distinct_target_witnesses} distinct checked witness${proof.crystal_distinct_target_witnesses === 1 ? "" : "es"}.` : ""} Across all candidates, the original policy beat balanced on ${proofProtocol.budget_order_screen.crystal_better_than_balanced} of 32 paths and raised 60-tile hits from ${proofProtocol.budget_order_screen.balanced_target_hits} to ${proofProtocol.budget_order_screen.crystal_target_hits}.`
         : "";
-      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}${crystal}`;
+      const internalRange = proof.internal_period_robust_largest_patch === proof.internal_period_best_largest_patch
+        ? `${proof.internal_period_best_largest_patch}`
+        : `${proof.internal_period_robust_largest_patch}–${proof.internal_period_best_largest_patch}`;
+      const internalPeriod = proof.internal_period_trials && proofProtocol.internal_period_screen
+        ? ` The current crystal lane instead prioritizes independent repeated same-orientation translations: in a five-second breadth screen it ranged from ${internalRange} tiles and reached repeated-translation rank 3 on ${proof.internal_period_repeated_translation_rank_3_paths}/${proof.internal_period_trials} paths.${proof.internal_period_focused_target ? ` A focused 30-second run reached 60 tiles; its exact internal-motif check rejected all ${proof.internal_period_candidate_bases_tested} candidate period bases, with maximum observed translation support ${proof.internal_period_max_translation_support}.` : ""} Retrospective checks found no exact quotient inside any of the original seven 60-tile witnesses; all four old 10_45026 witnesses repeated 57 of 60 placements along one direction, so tile count alone had overstated their 3D evidence. The same internal checker recovered the known three-tile quotient of control 10_24775.`
+        : "";
+      return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}${crystal}${internalPeriod}`;
     })() : "";
     candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
     candidateResearchDetail.textContent = `Survivor ${candidate.survivor_priority}/${candidate.survivor_count ?? 4} · ${candidate.lattice_points} lattice points · no exact translational or tile-transitive quotient certificate found within the recorded search limits.${limits}${proofEvidence}`;
@@ -2684,7 +2690,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-crystal-order-v88", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-internal-period-v92", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2817,7 +2823,7 @@ const GROWTH_MODES = [
   { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
   { id: "proof", strategy: "free_range", label: "Proof search · unbanded", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
   { id: "proof_nogood", strategy: "free_range", label: "Proof search · delayed nogoods", color: "#a33f5b", symbol: "triangle-left-open", dash: "dashdot" },
-  { id: "proof_crystal", strategy: "free_range", label: "Proof search · crystal order", color: "#d38b13", symbol: "star-open", dash: "longdashdot" },
+  { id: "proof_crystal", strategy: "free_range", label: "Proof search · crystal rank", color: "#d38b13", symbol: "star-open", dash: "longdashdot" },
   { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
@@ -3074,6 +3080,10 @@ function formatGrowthResult(result, target) {
     const completedChecks = result.stats.generic_periodic_certificate_checks_completed ?? 0;
     const checkpointSuffix = completedChecks > 1 ? ` · ${completedChecks} exact patch checkpoints` : "";
     if (result.stats.generic_periodic_certificate_target_found) {
+      const motifSize = result.certificatePatchSize ?? patchSize;
+      if (motifSize < patchSize) {
+        return `${result.label} reached ${patchSize} tiles; certified an embedded ${motifSize}-tile translational quotient ${formatElapsed(result.milliseconds)}`;
+      }
       return `${result.label} certified the ${patchSize}-tile target patch as a translational quotient ${formatElapsed(result.milliseconds)}`;
     }
     if (result.stats.generic_periodic_certificate_target_completed) {
@@ -3185,7 +3195,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-crystal-order-v88", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-internal-period-v92", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

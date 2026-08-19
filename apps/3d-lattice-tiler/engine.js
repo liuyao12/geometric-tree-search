@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-crystal-order-v88";
+import { LATTICE_POLYHEDRON_SURVIVORS } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-internal-period-v92";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -742,6 +742,12 @@ export const createTilingStream = (() => {
       generic_periodic_certificate_target_completed: false,
       generic_periodic_certificate_target_timed_out: false,
       generic_periodic_certificate_target_found: false,
+      generic_periodic_internal_motif_attempted: false,
+      generic_periodic_internal_motif_found: false,
+      generic_periodic_internal_motif_vector_count: 0,
+      generic_periodic_internal_motif_bases_tested: 0,
+      generic_periodic_internal_motif_max_translation_support: 0,
+      generic_periodic_internal_motif_top_translations: [],
       reflection_continuations_seen: 0,
       branch_choices_visited: 0,
       failed_leaves: 0,
@@ -854,6 +860,7 @@ export const createTilingStream = (() => {
         next_indices: active.map(item => item.next_index)
       };
     };
+    let periodicTranslationRank = () => 0;
     const searchStatsSnapshot = () => {
       const forcedOnPath = state.placements.reduce((sum, placement) => sum + (placement.is_forced ? 1 : 0), 0);
       const branchProgress = estimateBranchProgress();
@@ -869,6 +876,7 @@ export const createTilingStream = (() => {
         growth_axis_rank: growth.axis_rank,
         growth_spans: growth.spans,
         growth_isotropy: growth.isotropy,
+        periodic_translation_rank: periodicTranslationRank(),
         placed_volume: state.placed_volume,
         target_volume: targetRegion?.volume ?? null,
         region_type: targetRegion?.type ?? null,
@@ -2019,8 +2027,8 @@ export const createTilingStream = (() => {
     let pairTranslationCache = new Map();
     let vectorCountCacheVersion = -1;
     let vectorCountCache = new Map();
-    let translationRankCacheVersion = -1;
-    let translationRankCache = 0;
+    let periodicTranslationRankCacheVersion = -1;
+    let periodicTranslationRankCache = 0;
     let positionSetCacheVersion = -1;
     let positionSetCache = new Set();
     let vertexSetCacheVersion = -1;
@@ -2063,16 +2071,29 @@ export const createTilingStream = (() => {
       positionSetCacheVersion = stateVersion;
       return positionSetCache;
     };
-    const placementTranslationRank = () => {
-      if (translationRankCacheVersion === stateVersion) return translationRankCache;
-      translationRankCache = affineRank(state.placements.map(placement => placement.translation));
-      translationRankCacheVersion = stateVersion;
-      return translationRankCache;
+    periodicTranslationRank = () => {
+      if (periodicTranslationRankCacheVersion === stateVersion) return periodicTranslationRankCache;
+      const vectors = [];
+      for (const frameVectors of observedTranslations().values()) {
+        for (const key of frameVectors) vectors.push(key.split(",").map(Number));
+      }
+      periodicTranslationRankCache = affineRank([[0, 0, 0], ...vectors]);
+      periodicTranslationRankCacheVersion = stateVersion;
+      return periodicTranslationRankCache;
     };
     const periodicRankGain = (move) => {
-      const currentRank = placementTranslationRank();
+      const currentRank = periodicTranslationRank();
       if (currentRank >= 3) return 0;
-      const nextRank = affineRank([...state.placements.map(placement => placement.translation), move.translation]);
+      const vectors = [[0, 0, 0]];
+      for (const frameVectors of observedTranslations().values()) {
+        for (const key of frameVectors) vectors.push(key.split(",").map(Number));
+      }
+      const frame = placementFrame(move);
+      for (const placement of state.placements) {
+        if (placementFrame(placement) !== frame) continue;
+        vectors.push(vecSub(move.translation, placement.translation));
+      }
+      const nextRank = affineRank(vectors);
       return Math.max(0, nextRank - currentRank);
     };
     const placementVertexSet = () => {
@@ -2866,7 +2887,7 @@ export const createTilingStream = (() => {
         periodic_continuation: periodicContinuation(move),
         parallelogram_completion: parallelogramCompletionScore(move),
         periodic_rank_gain: periodicRankGain(move),
-        periodic_rank: placementTranslationRank(),
+        periodic_rank: periodicTranslationRank(),
         growth_axis_rank: growthShape.axis_rank,
         growth_isotropy: growthShape.axis_isotropy,
         growth_planarity: growthShape.axis_planarity,
@@ -3009,14 +3030,17 @@ export const createTilingStream = (() => {
           coverage
         ];
       }
-      if (moveOrder === "crystal") return [
-        parallelogram(),
-        vectorRepeat(),
-        pairPeriodic(),
-        periodic(),
-        repeat(),
-        coverage
-      ];
+      if (moveOrder === "crystal") {
+        return [
+          periodicRankGain(move),
+          parallelogram(),
+          vectorRepeat(),
+          pairPeriodic(),
+          periodic(),
+          repeat(),
+          coverage
+        ];
+      }
       if (moveOrder === "isohedral") {
         const growth = prospectiveGrowthShape(move);
         return [
@@ -3604,10 +3628,35 @@ export const createTilingStream = (() => {
         ? Math.max(1, configuredCertificateTimeLimit)
         : 2000;
       let certificateTimedOut = false;
-      const template = findBoundaryPeriodicTemplate(patchSize, {
-        budget_exceeded: () => performance.now() - certificateStartedAt >= certificateTimeLimitMs,
-        on_budget_exceeded: () => { certificateTimedOut = true; }
+      const certificateBudgetExceeded = () =>
+        performance.now() - certificateStartedAt >= certificateTimeLimitMs;
+      const noteCertificateTimeout = () => { certificateTimedOut = true; };
+      let template = findBoundaryPeriodicTemplate(patchSize, {
+        budget_exceeded: certificateBudgetExceeded,
+        on_budget_exceeded: noteCertificateTimeout
       });
+      if (!template && !certificateBudgetExceeded()) {
+        searchStats.generic_periodic_internal_motif_attempted = true;
+        template = minePeriodicTemplateFromCurrentPatch({
+          budget_exceeded: certificateBudgetExceeded,
+          on_budget_exceeded: noteCertificateTimeout,
+          on_vectors: (count, translations) => {
+            searchStats.generic_periodic_internal_motif_vector_count = Math.max(
+              searchStats.generic_periodic_internal_motif_vector_count,
+              count
+            );
+            searchStats.generic_periodic_internal_motif_max_translation_support = Math.max(
+              searchStats.generic_periodic_internal_motif_max_translation_support,
+              translations[0]?.support ?? 0
+            );
+            searchStats.generic_periodic_internal_motif_top_translations = translations;
+          },
+          on_basis: () => { searchStats.generic_periodic_internal_motif_bases_tested += 1; }
+        });
+        searchStats.generic_periodic_internal_motif_found = !!template;
+      } else if (!template && certificateBudgetExceeded()) {
+        noteCertificateTimeout();
+      }
       const preciseElapsed = performance.now() - certificateStartedAt;
       const elapsed = Math.round(preciseElapsed);
       if (source === "generic_growth_checkpoint") genericPeriodicCheckpointElapsedMs += preciseElapsed;
@@ -4413,8 +4462,15 @@ export const createTilingStream = (() => {
         }
       };
     };
-    const mineIsohedralPeriodicTemplate = () => {
+    const minePeriodicTemplateFromCurrentPatch = (options = {}) => {
       if (prototiles.length !== 1 || state.placements.length < 2) return null;
+      const certificateBudgetExceeded = options.budget_exceeded ?? overBudget;
+      const recordCertificateBudgetExceeded = options.on_budget_exceeded ?? noteIncompleteSearch;
+      const stopForCertificateBudget = () => {
+        if (!certificateBudgetExceeded()) return false;
+        recordCertificateBudgetExceeded();
+        return true;
+      };
       const rootTranslation = state.placements[0].translation;
       const vectorsByKey = new Map();
       for (let left = 0; left < state.placements.length; left++) {
@@ -4426,25 +4482,38 @@ export const createTilingStream = (() => {
           if (!vector.some(Boolean) || !vector.every(Number.isInteger)) continue;
           const reverse = vector.map(value => -value);
           const canonical = vecKey(vector) < vecKey(reverse) ? vector : reverse;
-          vectorsByKey.set(vecKey(canonical), canonical);
+          const key = vecKey(canonical);
+          const existing = vectorsByKey.get(key);
+          if (existing) existing.support += 1;
+          else vectorsByKey.set(key, { vector: canonical, support: 1 });
         }
       }
-      const configuredVectorLimit = Number(config.isohedral_period_vector_limit);
+      const configuredVectorLimit = Number(
+        options.vector_limit ?? config.generic_periodic_vector_limit ?? config.isohedral_period_vector_limit
+      );
       const vectorLimit = Number.isFinite(configuredVectorLimit) && configuredVectorLimit > 0
         ? Math.floor(configuredVectorLimit)
         : 48;
-      const vectors = [...vectorsByKey.values()].sort((left, right) =>
-        left.reduce((sum, value) => sum + value * value, 0)
-        - right.reduce((sum, value) => sum + value * value, 0)
+      const rankedTranslations = [...vectorsByKey.values()].sort((left, right) =>
+        right.support - left.support
+        || left.vector.reduce((sum, value) => sum + value * value, 0)
+          - right.vector.reduce((sum, value) => sum + value * value, 0)
+        || vecKey(left.vector).localeCompare(vecKey(right.vector))
       ).slice(0, vectorLimit);
+      const vectors = rankedTranslations.map(entry => entry.vector);
+      options.on_vectors?.(
+        vectors.length,
+        rankedTranslations.slice(0, 12).map(entry => ({
+          vector: entry.vector.slice(),
+          support: entry.support
+        }))
+      );
       const tileVolume = tileVolumes[0];
       for (let first = 0; first < vectors.length; first++) {
         for (let second = first + 1; second < vectors.length; second++) {
           for (let third = second + 1; third < vectors.length; third++) {
-            if (overBudget()) {
-              noteIncompleteSearch();
-              return null;
-            }
+            if (stopForCertificateBudget()) return null;
+            options.on_basis?.();
             const basis = [vectors[first], vectors[second], vectors[third]];
             const determinant = Math.abs(determinant3(basis));
             const motifSize = Math.round(determinant / tileVolume);
@@ -4460,13 +4529,19 @@ export const createTilingStream = (() => {
             const placements = [...representatives.values()];
             const periodic = certifyPeriodicPlacementMotif(placements, basis);
             if (!periodic) continue;
-            const isohedral = isohedralSymmetryCertificate(periodic, placements);
-            if (isohedral) return isohedral;
+            const accepted = options.accept_periodic
+              ? options.accept_periodic(periodic, placements)
+              : periodic;
+            if (accepted) return accepted;
           }
         }
       }
       return null;
     };
+    const mineIsohedralPeriodicTemplate = () => minePeriodicTemplateFromCurrentPatch({
+      accept_periodic: (periodic, placements) =>
+        isohedralSymmetryCertificate(periodic, placements)
+    });
     let isohedralLargestCertificatePatchTried = 0;
     const isohedralCertificateStatesTried = new Set();
     const tryMineIsohedralCertificate = ({ force = false } = {}) => {

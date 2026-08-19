@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-crystal-order-v88";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-internal-period-v92";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -45,7 +45,7 @@ const MODES = {
   },
   proof_crystal: {
     id: "proof_crystal",
-    label: "Proof search · crystal order",
+    label: "Proof search · crystal rank",
     strategy: "free_range",
     moveOrder: "crystal",
     templates: false,

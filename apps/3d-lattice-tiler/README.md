@@ -346,6 +346,29 @@ from the benchmark with `--unbanded-move-order=crystal`; full milestones and
 proof receipts are archived in
 `data/lattice-polyhedron-budget-order-screen-2026-08-19.json`.
 
+That tile-count result exposed a dimensional blind spot. Retrospective
+translation-overlap analysis showed that all four 60-tile `10_45026`
+witnesses repeated 57 placements along one vector: a few off-axis starter
+tiles made the patch formally three-dimensional while most growth was still a
+single limb. The current crystal policy therefore prioritizes gains in the
+linear rank of repeated, same-orientation translation vectors, rather than the
+affine rank of tile centers.
+
+The generic GCTS proof hook now also looks inside a reached patch for a smaller
+periodic motif. It ranks observed translations by support, enumerates up to 48
+candidate vectors, reduces placements to cosets for each independent basis,
+and accepts only an exact face pairing whose motif volume equals the lattice
+covolume. This recovered the known three-tile quotient of control `10_24775`
+on the first tested basis. A focused rank-aware run produced a 60-tile
+`10_16113` witness with repeated-translation rank 3; all 9,139 candidate bases
+were rejected without timeout, and its strongest translation occurred only
+five times. This excludes periodic motifs exhibited by that finite witness,
+not every possible periodic tiling of the tile. The eight-seed five-second
+breadth screen, focused receipt, old-witness diagnostics, and positive control
+are archived in
+`data/lattice-polyhedron-internal-period-screen-2026-08-19.json`; regenerate
+the archive with `scripts/analyze-lattice-internal-period-screen.mjs`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

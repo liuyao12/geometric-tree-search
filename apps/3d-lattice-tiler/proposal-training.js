@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-crystal-order-v88";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-internal-period-v92";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
