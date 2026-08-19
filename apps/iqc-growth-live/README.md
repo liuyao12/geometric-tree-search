@@ -1874,6 +1874,22 @@ statistics as the missing commit value. The next implementation should retain
 the typed child-frontier incidence graph and explicit failure/rollback edges,
 rather than compressing downstream geometry into scalar moments.
 
+That typed graph is now executable evidence, not a design placeholder. The
+eight strongest target-free child attachments become colored nodes carrying
+their symmetry-quotiented pose/port channels, incoming connection roles, and
+outgoing obligations. Pair edges carry invariant distance, shared ports and
+future sites, witnessed connections, and color conflicts. The corpus contains
+1,016 canonical graphs, 995 witnessed child-child relations, and 638 dead-end
+child nodes. All 35,784 pairs are locally compatible, showing that the hard
+decision is future port survival rather than immediate collision pruning.
+
+A fixed pairwise graph value, nested by whole nucleus, improves exact top-one
+selection from `7 / 9` to `8 / 9` supplied nuclei. It reaches only `25 / 30`
+correct colored sites, down from `26 / 30`, so the unchanged joint gate of
+`>=8 / 9` and `>=27 / 30` remains red. Typed pose/port topology is useful, but
+the present exactness objective undervalues how much correct material a branch
+grows. No fresh target, stationarity, or exponential claim follows.
+
 Candidate supply is no longer the uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
 each proposed root once, and records only child actions connected through the

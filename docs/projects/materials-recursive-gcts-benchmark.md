@@ -3894,6 +3894,29 @@ child-frontier incidence graph, explicit incompatibility edges, and rollback
 obligations rather than pooling the downstream state into scalar summaries.
 This negative result changes neither the stationary nor exponential IQC gate.
 
+The typed representation has now been implemented and tested as well. Each
+terminal keeps its eight strongest target-free child attachments as nodes
+colored by cluster species, symmetry-quotiented pose/port channel response,
+incoming connection roles, and outgoing obligations. Pair edges retain
+proper-motion-invariant separation, shared incoming ports, shared future
+sites, witnessed connections, and color conflicts. Across the 1,278
+terminals this produces 1,016 distinct canonical graphs, 995 witnessed
+child-child relations, and 638 dead-end child nodes. All 35,784 pair edges are
+locally compatible, so local collision pruning cannot explain the remaining
+ranking error; the signal is whether a legal child preserves a useful future
+frontier.
+
+With one fixed pairwise graph capacity and whole-nucleus nesting, the graph
+value selects an exact terminal in `8 / 9` supplied nuclei, improving the
+prior fusion's `7 / 9`. It selects `25 / 30` correct colored sites, however,
+versus the prior `26 / 30`, and therefore still misses the unchanged joint
+gate of `>=8 / 9` and `>=27 / 30`. This is evidence that typed pose/port
+incidence carries transferable information, but exact/non-exact ranking alone
+underweights productive branches. The next value must represent multi-step
+port discharge or rollback cost without discarding the number of correct sites
+grown. No fresh target is opened and no stationary or exponential claim is
+made.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
