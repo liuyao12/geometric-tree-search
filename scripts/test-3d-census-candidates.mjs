@@ -17,6 +17,20 @@ const growthAppSource = await readFile(
   new URL("../apps/3d-lattice-tiler/app.js", import.meta.url),
   "utf8"
 );
+const canonicalTilerHtml = await readFile(
+  new URL("../3d-lattice-tiler/index.html", import.meta.url),
+  "utf8"
+);
+const sourceTilerHtml = await readFile(
+  new URL("../apps/3d-lattice-tiler/index.html", import.meta.url),
+  "utf8"
+);
+const appModuleVersion = html => html.match(/<script type="module" src="\.\/app\.js\?v=([^"]+)"/)?.[1];
+assert.equal(
+  appModuleVersion(canonicalTilerHtml),
+  appModuleVersion(sourceTilerHtml),
+  "the root GitHub Pages wrapper must load the same cache-busted app module as the source page"
+);
 assert.match(growthWorkerSource, /id: "proof"[\s\S]*?proof: true/, "the comparison worker must expose a proof lane");
 assert.match(
   growthWorkerSource,
