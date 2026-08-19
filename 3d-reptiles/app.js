@@ -184,6 +184,7 @@ const parentOutline = makeParentOutline();
 content.add(parentOutline);
 
 const daughterTransforms = makeDaughterTransforms();
+let mutedOrientationKeys = new Set();
 let generation = INITIAL_GENERATION;
 let subdivisionWords = [new THREE.Matrix4()];
 let fixedPath = new THREE.Matrix4();
@@ -193,6 +194,7 @@ for (let depth = 0; depth < INITIAL_GENERATION; depth += 1) {
 }
 const initialNormalization = fixedPath.clone().invert();
 let currentExpandedTransforms = subdivisionWords.map((word) => initialNormalization.clone().multiply(word));
+updateMutedOrientationKeys(currentExpandedTransforms);
 let currentVisual = makeVisual(currentExpandedTransforms);
 content.add(currentVisual.group);
 tileValue.textContent = subdivisionWords.length.toLocaleString();
@@ -306,6 +308,20 @@ function distinctOrientations(transforms) {
   return [...orientations.values()];
 }
 
+function updateMutedOrientationKeys(transforms) {
+  const counts = new Map();
+  for (const matrix of transforms) {
+    const key = orientationKey(canonicalQuaternion(matrix));
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  const maximum = Math.max(...counts.values());
+  mutedOrientationKeys = new Set(
+    [...counts]
+      .filter(([, count]) => count === maximum && (maximum > 1 || transforms.length === 1))
+      .map(([key]) => key)
+  );
+}
+
 function orientationKey(quaternion) {
   return [quaternion.x, quaternion.y, quaternion.z, quaternion.w]
     .map((value) => value.toFixed(5))
@@ -358,8 +374,11 @@ function drawOrientationBall(transforms) {
   orientationPointBaseColors = [];
   for (const quaternion of orientations) {
     const point = axisAnglePoint(quaternion);
-    const color = orientationColorFromQuaternion(quaternion);
-    orientationPointKeys.push(orientationKey(quaternion));
+    const key = orientationKey(quaternion);
+    const color = mutedOrientationKeys.has(key)
+      ? new THREE.Color(0xb8bfbc)
+      : orientationColorFromQuaternion(quaternion);
+    orientationPointKeys.push(key);
     orientationPointBaseColors.push(color);
     positions.push(point.x, point.y, point.z);
     colors.push(color.r, color.g, color.b);
@@ -395,8 +414,11 @@ function refreshOrientationPointColors() {
 
 function displayedOrientationColor(matrix) {
   const color = orientationColor(matrix);
-  if (selectedOrientationKey === null) return color;
   const key = orientationKey(canonicalQuaternion(matrix));
+  if (mutedOrientationKeys.has(key)) {
+    return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xc6cbc9);
+  }
+  if (selectedOrientationKey === null) return color;
   if (key === selectedOrientationKey) return color.offsetHSL(0, 0.1, 0.08);
   return new THREE.Color(0xc6cbc9);
 }
@@ -608,6 +630,7 @@ function showGeneration(targetGeneration) {
   const nextState = stateAtGeneration(targetGeneration);
   const expandedTransforms = nextState.transforms;
   currentExpandedTransforms = expandedTransforms;
+  updateMutedOrientationKeys(expandedTransforms);
   const nextVisual = makeVisual(expandedTransforms);
   setVisualOpacity(nextVisual, 0);
   content.add(nextVisual.group);
