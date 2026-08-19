@@ -27,7 +27,7 @@ encodings, not electron densities or physical potentials.
 
 ## Environment discovery
 
-The cluster stage exposes the geometry domain explicitly. **Auto** tests
+The cluster stage exposes the **translation geometry** explicitly. **Auto** tests
 translation closure from the positions, **periodic lattice** applies periodic
 translations, **aperiodic module** assumes a discrete but non-periodic
 pose/translation atlas (the natural model-set or quasicrystal hypothesis), and
