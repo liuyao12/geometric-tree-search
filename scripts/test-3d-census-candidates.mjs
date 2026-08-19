@@ -88,7 +88,9 @@ assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof co
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
 assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · unbanded"/, "the proof trace must be visible in the chart");
 assert.match(growthAppSource, /id: "proof_nogood"[\s\S]*?label: "Proof search · delayed nogoods"/, "the complementary proof trace must be visible in the chart");
-assert.match(growthAppSource, /All seven modes finished\./, "the comparison status must include all seven lanes");
+assert.match(growthAppSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal order"/, "the crystal-ordered proof trace must be visible in the chart");
+assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?moveOrder: "crystal"[\s\S]*?proof: true/, "the crystal lane must retain exact proof-search semantics");
+assert.match(growthAppSource, /All eight modes finished\./, "the comparison status must include all eight lanes");
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
 assert.match(
   growthAppSource,

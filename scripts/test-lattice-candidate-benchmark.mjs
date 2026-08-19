@@ -78,10 +78,36 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 16);
+assert.equal(survivor.schemaVersion, 17);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
+assert.equal(survivor.configuration.faceOrder, "mrv");
+assert.ok(survivor.rows.every(row => row.faceOrder === "mrv"));
 assert.equal(survivor.configuration.failureMemoSymmetry, "fixed");
 assert.equal(survivor.configuration.geometricNogoodStagnationFailures, 0);
+const pocketOrder = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=4",
+  "--node-limit=20",
+  "--time-ms=500",
+  "--seeds=1",
+  "--face-order=pocket"
+]);
+assert.equal(pocketOrder.configuration.faceOrder, "pocket");
+assert.ok(pocketOrder.rows.every(row => row.faceOrder === "pocket"));
+const crystalOrder = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=4",
+  "--node-limit=20",
+  "--time-ms=500",
+  "--seeds=1",
+  "--unbanded-move-order=crystal"
+]);
+assert.equal(crystalOrder.configuration.unbandedMoveOrder, "crystal");
+assert.ok(crystalOrder.rows.every(row => row.moveOrder === "crystal"));
 for (const row of survivor.rows.filter(candidateRow => candidateRow.lane.startsWith("free_range"))) {
   assert.ok(row.growthMilestones.length >= 1, `${row.case}/${row.lane} must report growth milestones`);
   assert.equal(row.growthMilestones.at(-1).patchSize, row.largestPatch);

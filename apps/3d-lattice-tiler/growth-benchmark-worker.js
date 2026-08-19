@@ -43,6 +43,15 @@ const MODES = {
     proof: true,
     nogood: true
   },
+  proof_crystal: {
+    id: "proof_crystal",
+    label: "Proof search · crystal order",
+    strategy: "free_range",
+    moveOrder: "crystal",
+    templates: false,
+    agentExhaustive: true,
+    proof: true
+  },
   learning: {
     id: "learning",
     label: "Learning Free-range",

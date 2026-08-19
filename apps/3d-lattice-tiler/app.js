@@ -2811,6 +2811,7 @@ const GROWTH_MODES = [
   { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
   { id: "proof", strategy: "free_range", label: "Proof search · unbanded", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
   { id: "proof_nogood", strategy: "free_range", label: "Proof search · delayed nogoods", color: "#a33f5b", symbol: "triangle-left-open", dash: "dashdot" },
+  { id: "proof_crystal", strategy: "free_range", label: "Proof search · crystal order", color: "#d38b13", symbol: "star-open", dash: "longdashdot" },
   { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
@@ -2818,7 +2819,11 @@ const GROWTH_MODES = [
 
 function selectedGrowthMode() {
   const strategy = checkedRadioValue(strategyRadios, "free_range");
-  if (strategy === "free_range") return moveOrderSelect.value === "no_brainer" ? "no_brainer" : "free_range";
+  if (strategy === "free_range") {
+    if (moveOrderSelect.value === "no_brainer") return "no_brainer";
+    if (moveOrderSelect.value === "crystal") return "proof_crystal";
+    return "free_range";
+  }
   return GROWTH_MODES.find(mode => mode.strategy === strategy)?.id ?? "free_range";
 }
 
@@ -2830,6 +2835,7 @@ function activateGrowthMode(modeId) {
   if (mode.id === "free_range") moveOrderSelect.value = "balanced";
   if (mode.id === "no_brainer") moveOrderSelect.value = "no_brainer";
   if (mode.id === "proof" || mode.id === "proof_nogood") moveOrderSelect.value = "balanced";
+  if (mode.id === "proof_crystal") moveOrderSelect.value = "crystal";
   updateStrategyUI();
 }
 
@@ -3021,7 +3027,7 @@ async function renderGrowthChart() {
 }
 
 function formatGrowthResult(result, target) {
-  const proofMode = result?.mode === "proof" || result?.mode === "proof_nogood";
+  const proofMode = result?.mode?.startsWith("proof");
   const stopReason = {
     node_limit: "node limit",
     time_limit: "time limit",
@@ -3101,7 +3107,7 @@ function finishGrowthBenchmark(results) {
   setRunButton();
   const target = Number(maxTilesInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
-  setStatus("All seven modes finished.");
+  setStatus("All eight modes finished.");
   renderGrowthChart();
 }
 
@@ -3148,8 +3154,8 @@ function startGrowthBenchmark() {
   const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
-  setStatus("Running all seven modes…");
-  growthBenchmarkStatus.textContent = `Running seven searches simultaneously to ${config.target_val} tiles…`;
+  setStatus("Running all eight modes…");
+  growthBenchmarkStatus.textContent = `Running eight searches simultaneously to ${config.target_val} tiles…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3295,7 +3301,7 @@ function bindControls() {
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
-    setStatus("Long-growth preset ready: seven modes race to 120 tiles for up to 30 seconds.");
+    setStatus("Long-growth preset ready: eight modes race to 120 tiles for up to 30 seconds.");
     setRunButton();
   });
 

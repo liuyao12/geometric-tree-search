@@ -1693,6 +1693,7 @@ export const createTilingStream = (() => {
     if (proposalProgram) searchStats.proposal_patch_size = proposalProgram.patch_size;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
     const faceOrder = config.face_order ?? "coverage";
+    searchStats.face_order = faceOrder;
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
     const forcedMoveLayerLagCap = Number.isFinite(configuredForcedLagCap)
       ? configuredForcedLagCap > 0 ? configuredForcedLagCap : Infinity

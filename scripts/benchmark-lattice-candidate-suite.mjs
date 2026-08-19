@@ -41,6 +41,21 @@ const geometricNogoodStagnationFailures = Math.max(
   0,
   Math.floor(numberArg("geometric-nogood-stagnation-failures", 0))
 );
+const requestedFaceOrder = args.get("face-order");
+const faceOrder = ["mrv", "pocket", "constrained", "coverage"].includes(requestedFaceOrder)
+  ? requestedFaceOrder
+  : "mrv";
+const requestedUnbandedMoveOrder = args.get("unbanded-move-order");
+const unbandedMoveOrder = [
+  "balanced",
+  "no_brainer",
+  "symmetric",
+  "crystal",
+  "isohedral",
+  "periodic",
+  "repeat",
+  "layer"
+].includes(requestedUnbandedMoveOrder) ? requestedUnbandedMoveOrder : "balanced";
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
 const genericPeriodicCheckpoints = args.get("generic-periodic-checkpoints") === "true";
 const genericPeriodicDistinctPatches = args.get("generic-periodic-distinct-patches") === "true";
@@ -136,8 +151,10 @@ const configFor = (benchmarkCase, lane, seed) => ({
     ? "isohedral"
     : lane === "free_range_no_brainer"
       ? "no_brainer"
-      : "balanced",
-  face_order: "mrv",
+      : lane === "free_range_unbanded"
+        ? unbandedMoveOrder
+        : "balanced",
+  face_order: faceOrder,
   exhaustive: true,
   agent_exhaustive: true,
   forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
@@ -257,6 +274,7 @@ async function runLane(benchmarkCase, lane, seed) {
     backtracks: stats.backtracks ?? 0,
     maxDepth: stats.max_depth ?? 0,
     moveOrder: stats.move_order ?? null,
+    faceOrder: stats.face_order ?? faceOrder,
     effectiveSeed: stats.random_seed ?? null,
     seededTieBreaks: !!stats.seeded_tie_breaks,
     witnessHash,
@@ -505,7 +523,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 16,
+  schemaVersion: 17,
   configuration: {
     target,
     timeMs,
@@ -522,6 +540,8 @@ const summary = {
     geometricNogoodIndex,
     geometricNogoodActivationFailures,
     geometricNogoodStagnationFailures,
+    faceOrder,
+    unbandedMoveOrder,
     genericPeriodicCertificate,
     genericPeriodicCheckpoints,
     genericPeriodicDistinctPatches,
