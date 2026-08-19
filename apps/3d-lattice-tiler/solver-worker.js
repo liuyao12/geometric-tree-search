@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-face-match-v55";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-face-key-v57";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

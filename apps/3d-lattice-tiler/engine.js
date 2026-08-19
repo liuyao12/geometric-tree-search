@@ -30,9 +30,33 @@ export const createTilingStream = (() => {
 
     const treeTileName = (rawName) => tileSpecs.displayTileName?.(rawName) ?? String(rawName ?? "Tile");
 
-    const keyFace = (verts) => {
-      const s = [...verts].map(v => v.join(",")).sort();
-      return s.join("|");
+    const compareFaceVertices = (left, right) =>
+      left[0] - right[0] || left[1] - right[1] || left[2] - right[2];
+    const faceKeyFromSortedVertices = (verts, translation = null) => {
+      const tx = translation?.[0] ?? 0;
+      const ty = translation?.[1] ?? 0;
+      const tz = translation?.[2] ?? 0;
+      let key = "";
+      for (let index = 0; index < verts.length; index++) {
+        const vertex = verts[index];
+        if (index) key += "|";
+        key += `${vertex[0] + tx},${vertex[1] + ty},${vertex[2] + tz}`;
+      }
+      return key;
+    };
+    const keyFace = (verts) => faceKeyFromSortedVertices(
+      [...verts].sort(compareFaceVertices)
+    );
+    const orientedFaceKeyVertexCache = new WeakMap();
+    const translatedOrientedFaceKey = (orient, faceIndex, translation) => {
+      let faces = orientedFaceKeyVertexCache.get(orient);
+      if (!faces) {
+        faces = orient.faces.map(face => face
+          .map(vertexIndex => orient.verts[vertexIndex])
+          .sort(compareFaceVertices));
+        orientedFaceKeyVertexCache.set(orient, faces);
+      }
+      return faceKeyFromSortedVertices(faces[faceIndex], translation);
     };
 
     const faceSignature = (verts) => {
@@ -1103,17 +1127,16 @@ export const createTilingStream = (() => {
           return { ok: false, reason: "occupancy", position: g };
         }
       }
-      const gVerts = orient.verts.map(v => add3(v, translation));
       for (let f_idx = 0; f_idx < orient.faces.length; f_idx++) {
         if ((f_idx & 31) === 0 && overBudget()) {
           noteIncompleteSearch();
           return { ok: false, budget: true, reason: "budget" };
         }
         const fIdx = orient.faces[f_idx];
-        const poly = fIdx.map(i => gVerts[i]);
-        const k = keyFace(poly);
-          const existing = state.frontier.get(k);
+        const k = translatedOrientedFaceKey(orient, f_idx, translation);
+        const existing = state.frontier.get(k);
         if (existing) {
+          const poly = fIdx.map(i => add3(orient.verts[i], translation));
           const rev = [...existing.ordered_verts].slice().reverse();
           if (!isCyclicPermutation(poly, rev)) return { ok: false, reason: "face-orientation" };
         }
@@ -1313,9 +1336,8 @@ export const createTilingStream = (() => {
       const gVerts = move.orient.verts.map(v => add3(v, move.translation));
       const neighborColors = new Set();
       const coveredGens = [];
-      for (const fIdx of move.orient.faces) {
-        const poly = fIdx.map(i => gVerts[i]);
-        const k = keyFace(poly);
+      for (let f_idx = 0; f_idx < move.orient.faces.length; f_idx++) {
+        const k = translatedOrientedFaceKey(move.orient, f_idx, move.translation);
         if (state.frontier.has(k)) {
           neighborColors.add(state.frontier.get(k).color_id);
           coveredGens.push(state.frontier.get(k).gen);
@@ -1340,7 +1362,7 @@ export const createTilingStream = (() => {
       for (let f_idx = 0; f_idx < move.orient.faces.length; f_idx++) {
         const fIdx = move.orient.faces[f_idx];
         const poly = fIdx.map(i => gVerts[i]);
-        const k = keyFace(poly);
+        const k = translatedOrientedFaceKey(move.orient, f_idx, move.translation);
         if (state.frontier.has(k)) {
           removed.push([k, state.frontier.get(k)]);
           state.frontier.delete(k);
