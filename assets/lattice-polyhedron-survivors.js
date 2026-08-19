@@ -33,22 +33,28 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
     }),
     distinct_patch_checkpoint_screen: Object.freeze({
       paths_screened: 12,
-      maximum_checks_per_size_per_path: 4,
-      completed_checks: 871,
+      sampling_policy: "hybrid",
+      sampling_prefix: 4,
+      sampling_stride: 16,
+      maximum_checks_per_size_per_path: 7,
+      eligible_distinct_path_states: 5744,
+      completed_checks: 1093,
       checks_timed_out: 0,
       certificates_found: 0,
-      duplicate_states_skipped: 48,
-      per_size_cap_skips: 5102,
-      report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
+      sampling_skips: 3950,
+      duplicate_states_skipped: 277,
+      per_size_cap_skips: 701,
+      report: "data/lattice-polyhedron-hybrid-checkpoint-screen-2026-08-19.json",
+      prior_prefix_report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
     })
   })
 });
 
 const GCTS_PROOF_SCREENING_RESULTS = Object.freeze({
-  "10_16113": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 21, median_largest_patch: 22, best_largest_patch: 27, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 2312, focused_witness_hash: "b4c8e0c893b1eb7c", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_checks: 229, distinct_checkpoint_max_size: 27, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_cap_skips: 1656 }),
-  "10_45026": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 14, median_largest_patch: 16, best_largest_patch: 17, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 1, focused_seeded_tie_breaks: false, focused_visited_nodes: 4278, focused_witness_hash: "e16dbe38a0165b93", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_checks: 159, distinct_checkpoint_max_size: 17, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_cap_skips: 1263 }),
-  "10_45033": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 23, median_largest_patch: 27, best_largest_patch: 36, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 2, focused_visited_nodes: 1162, focused_witness_hash: "deb51611a30f25b5", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_checks: 222, distinct_checkpoint_max_size: 36, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_cap_skips: 1029 }),
-  "9_11683": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 19, median_largest_patch: 25, best_largest_patch: 32, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 591, focused_witness_hash: "5ab75954f9e80239", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_checks: 261, distinct_checkpoint_max_size: 32, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_cap_skips: 1154 })
+  "10_16113": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 21, median_largest_patch: 22, best_largest_patch: 27, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 2312, focused_witness_hash: "b4c8e0c893b1eb7c", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1837, distinct_checkpoint_checks: 306, distinct_checkpoint_max_size: 27, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 1302, distinct_checkpoint_duplicate_skips: 51, distinct_checkpoint_cap_skips: 229 }),
+  "10_45026": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 14, median_largest_patch: 16, best_largest_patch: 17, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 1, focused_seeded_tie_breaks: false, focused_visited_nodes: 4278, focused_witness_hash: "e16dbe38a0165b93", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1287, distinct_checkpoint_checks: 215, distinct_checkpoint_max_size: 17, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 916, distinct_checkpoint_duplicate_skips: 160, distinct_checkpoint_cap_skips: 156 }),
+  "10_45033": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 23, median_largest_patch: 27, best_largest_patch: 36, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 2, focused_visited_nodes: 1162, focused_witness_hash: "deb51611a30f25b5", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1221, distinct_checkpoint_checks: 262, distinct_checkpoint_max_size: 36, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 762, distinct_checkpoint_duplicate_skips: 44, distinct_checkpoint_cap_skips: 197 }),
+  "9_11683": Object.freeze({ outcome: "focused_target_patch", robust_largest_patch: 19, median_largest_patch: 25, best_largest_patch: 32, target_hits: 0, trials: 3, focused_target_witness: true, focused_seed: 3, focused_visited_nodes: 591, focused_witness_hash: "5ab75954f9e80239", checkpoint_quotient_checks: 39, checkpoint_quotient_certificates: 0, distinct_checkpoint_paths: 3, distinct_checkpoint_eligible_states: 1399, distinct_checkpoint_checks: 310, distinct_checkpoint_max_size: 32, distinct_checkpoint_certificates: 0, distinct_checkpoint_timeouts: 0, distinct_checkpoint_sampling_skips: 970, distinct_checkpoint_duplicate_skips: 22, distinct_checkpoint_cap_skips: 119 })
 });
 
 const rejected = (certificate, motifTiles, periodVectors) => ({

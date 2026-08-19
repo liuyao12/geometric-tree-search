@@ -56,7 +56,7 @@ assert.match(
 assert.match(growthAppSource, /4 unresolved lattice candidates/, "the periodic checkpoint rejection must leave four catalog candidates");
 assert.match(
   growthAppSource,
-  /bounded branch screen completed exact checks on/,
+  /hybrid branch screen saw/,
   "the catalog must expose the stronger distinct-branch checkpoint evidence"
 );
 assert.match(
@@ -84,8 +84,12 @@ const archivedProofScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-gcts-checkpoint-screen-2026-08-18.json", import.meta.url),
   "utf8"
 ));
-const archivedDistinctScreening = JSON.parse(await readFile(
+const archivedPrefixScreening = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json", import.meta.url),
+  "utf8"
+));
+const archivedDistinctScreening = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-hybrid-checkpoint-screen-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -157,14 +161,20 @@ assert.deepEqual(
   LATTICE_POLYHEDRON_SCREENING.gcts_proof.distinct_patch_checkpoint_screen,
   {
     paths_screened: archivedDistinctScreening.summary.paths_screened,
+    sampling_policy: archivedDistinctScreening.protocol.sampling_policy,
+    sampling_prefix: archivedDistinctScreening.protocol.sampling_prefix,
+    sampling_stride: archivedDistinctScreening.protocol.sampling_stride,
     maximum_checks_per_size_per_path:
       archivedDistinctScreening.protocol.maximum_checks_per_size_per_path,
+    eligible_distinct_path_states: archivedDistinctScreening.summary.eligible_distinct_path_states,
     completed_checks: archivedDistinctScreening.summary.checkpoint_checks_completed,
     checks_timed_out: archivedDistinctScreening.summary.checkpoint_checks_timed_out,
     certificates_found: archivedDistinctScreening.summary.exact_periodic_certificates_found,
+    sampling_skips: archivedDistinctScreening.summary.sampling_skips,
     duplicate_states_skipped: archivedDistinctScreening.summary.duplicate_states_skipped,
     per_size_cap_skips: archivedDistinctScreening.summary.per_size_cap_skips,
-    report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
+    report: "data/lattice-polyhedron-hybrid-checkpoint-screen-2026-08-19.json",
+    prior_prefix_report: "data/lattice-polyhedron-distinct-checkpoint-screen-2026-08-18.json"
   },
   "runtime distinct-patch evidence must match the archived executed screen"
 );
@@ -174,12 +184,25 @@ assert.ok(
     path.checks_attempted === path.checks_completed
     && path.checks_timed_out === 0
     && !path.certificate_found
-    && path.check_count_ranges.reduce(
-      (sum, range) => sum + (range.to - range.from + 1) * range.count,
-      0
-    ) === path.checks_attempted
+    && path.eligible_states === path.checks_attempted
+      + path.sampling_skips
+      + path.per_size_cap_skips
+      + path.total_cap_skips
+      + path.time_budget_skips
   ),
   "every archived distinct-patch check must be complete and internally accounted"
+);
+assert.deepEqual(
+  archivedDistinctScreening.paths.map(path => ({ id: path.id, seed: path.seed, witness_hash: path.witness_hash })),
+  archivedPrefixScreening.paths.map(path => ({ id: path.id, seed: path.seed, witness_hash: path.witness_hash })),
+  "the prefix and hybrid policies must replay exactly the same GCTS paths"
+);
+assert.equal(
+  archivedDistinctScreening.policy_comparison.prefix_checks_completed
+    + archivedDistinctScreening.policy_comparison.spread_diagnostic_checks_completed
+    - archivedDistinctScreening.policy_comparison.shared_first_patch_checks,
+  archivedDistinctScreening.summary.checkpoint_checks_completed,
+  "the hybrid evidence must be the exact union of prefix and later-branch samples"
 );
 assert.ok(
   archivedProofScreening.paths
@@ -203,10 +226,13 @@ for (const candidate of LATTICE_POLYHEDRON_SURVIVORS) {
   const distinctSummary = archivedDistinctScreening.candidate_summary.find(item => item.id === candidate.id);
   assert.ok(distinctSummary, `${candidate.id} must retain its distinct-branch screen summary`);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_paths, distinctSummary.paths);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_eligible_states, distinctSummary.eligible_states);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_checks, distinctSummary.checks_completed);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_max_size, distinctSummary.maximum_patch);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_certificates, distinctSummary.certificates_found);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_timeouts, distinctSummary.checks_timed_out);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_sampling_skips, distinctSummary.sampling_skips);
+  assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_duplicate_skips, distinctSummary.duplicate_states_skipped);
   assert.equal(candidate.gcts_proof_screening.distinct_checkpoint_cap_skips, distinctSummary.per_size_cap_skips);
 }
 assert.deepEqual(

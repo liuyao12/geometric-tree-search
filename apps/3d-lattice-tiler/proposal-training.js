@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260818-distinct-checkpoint-v70";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-hybrid-checkpoint-v72";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
