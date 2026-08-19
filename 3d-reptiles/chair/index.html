@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f2f3ee">
-  <title>3D Chair Inflation — A Hierarchy Laboratory</title>
+  <title>3D Chair — Inflation and Local Forcing</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M5 7h18v9h-9v9H5z%27 fill=%27%231d6b62%27/%3E%3Cpath d=%27M14 7v9H5m9 0h9%27 fill=%27none%27 stroke=%27white%27 stroke-width=%271.5%27/%3E%3C/svg%3E">
   <script type="importmap">
     {
@@ -26,8 +26,8 @@
         </div>
         <div class="title-block">
           <p class="kicker">Example 02 · chair heptacube</p>
-          <h1 id="page-title">Chair inflation</h1>
-          <p class="lede">One missing corner organizes an exact hierarchy of eight children.</p>
+          <h1 id="page-title">Chair growth</h1>
+          <p class="lede">Compare a prescribed inflation with a patch assembled one locally matched chair at a time.</p>
         </div>
         <div class="tile-picker">
           <label for="tile-select">Choose tile</label>
@@ -43,46 +43,61 @@
       </header>
 
       <div class="scene-shell">
-        <div id="viewport" class="viewport" role="img" aria-label="Interactive scale-two inflation of the three-dimensional chair heptacube. Drag to rotate and scroll through its transparent cubes."></div>
+        <div id="viewport" class="viewport" role="img" aria-label="Interactive local-matching growth and scale-two inflation of the three-dimensional chair heptacube. Drag to rotate and scroll through its transparent faces."></div>
         <div class="scene-vignette" aria-hidden="true"></div>
 
         <div class="scene-readout" aria-live="polite">
-          <span>inflations</span>
+          <span id="generation-label">inflations</span>
           <strong id="generation-value">0</strong>
           <span class="readout-divider" aria-hidden="true"></span>
-          <span>chairs</span>
+          <span id="tile-label">chairs</span>
           <strong id="tile-value">1</strong>
         </div>
 
         <aside class="orientation-panel hierarchy-panel" aria-labelledby="hierarchy-title">
+          <label class="mode-control" for="chair-mode-select">
+            <span>Construction</span>
+            <select id="chair-mode-select">
+              <option value="search" selected>Local matching search</option>
+              <option value="inflation">Prescribed inflation</option>
+            </select>
+          </label>
           <div class="orientation-heading">
             <div>
-              <span>inflation rule</span>
-              <strong id="hierarchy-title">× 2</strong>
+              <span id="panel-kicker">GCTS marking</span>
+              <strong id="hierarchy-title">depth 2</strong>
             </div>
             <div class="orientation-count">
-              <b>8</b>
-              <span>children</span>
+              <b id="panel-count">64</b>
+              <span id="panel-count-label">tile states</span>
             </div>
           </div>
-          <canvas id="hierarchy-plot" width="440" height="440" role="img" aria-label="Axonometric diagram of the eight child chairs and their missing-corner orientations"></canvas>
+          <canvas id="hierarchy-plot" width="440" height="440" role="img" aria-label="Diagram of the active chair construction"></canvas>
           <div class="orientation-scale" aria-hidden="true">
-            <span>parent</span>
-            <span>child addresses</span>
+            <span id="scale-left">seed</span>
+            <span id="scale-right">matched frontier</span>
           </div>
           <div id="chair-color-filter" class="chair-color-filter" aria-label="Highlight chairs by missing-corner color"></div>
-          <p>Choose one of the seven colors to highlight every chair with that missing-corner orientation. The central child is what prevents the rule from being merely seven octants.</p>
+          <p id="panel-description">The search aligns complementary face sockets, checks every new contact, and rejects overlaps. No enclosing superchair is given to it.</p>
+          <dl id="search-stats" class="search-stats" aria-live="polite">
+            <div><dt>frontier</dt><dd id="frontier-value">0</dd></div>
+            <div><dt>backtracks</dt><dd id="backtrack-value">0</dd></div>
+          </dl>
         </aside>
 
-        <p class="scene-instruction">Drag to orbit · scroll through transparent walls</p>
+        <p id="scene-instruction" class="scene-instruction">Drag to orbit · colored tabs are exposed local sockets</p>
         <div class="scene-actions">
           <button id="back-button" class="scene-button back-button" type="button" disabled>
             <b aria-hidden="true">↙</b>
-            <span>Go back</span>
+            <span>Remove last</span>
           </button>
           <button id="inflate-button" class="scene-button substitute-button" type="button">
-            <span>Apply one more inflation</span>
+            <span>Place next chair</span>
             <b aria-hidden="true">↗</b>
+          </button>
+          <button id="run-button" class="scene-button run-button" type="button">
+            <span>Run</span>
+            <b aria-hidden="true">▶</b>
           </button>
         </div>
       </div>
@@ -122,7 +137,7 @@
         <p class="kicker">Hierarchy versus shape</p>
         <h2 id="forcing-title">The inflation is nonperiodic.<br>The bare tile is not.</h2>
         <p class="body-large">
-          The unmarked heptacube can also assemble periodically, so its geometry alone does not force this hierarchy. A GCTS version must carry finite local state—face markings, child addresses, or collared neighborhoods—that makes every legal patch compose uniquely into larger chairs.
+          The unmarked heptacube can also assemble periodically, so its geometry alone does not force this hierarchy. The search above replaces it by a finite set of two-level collared chairs. Each exposed unit face carries a socket; a move is legal only when all touching sockets are complementary and the new chair does not overlap the patch.
         </p>
         <div class="search-flow" aria-label="How a marked chair hierarchy can be recognized">
           <div>
@@ -139,19 +154,19 @@
           <i aria-hidden="true">→</i>
           <div>
             <span>3</span>
-            <strong>Compose forever</strong>
-            <small>The same finite rule forces superchairs at every scale.</small>
+            <strong>Audit composition</strong>
+            <small>Verify that completed patches recover parents uniquely before claiming infinite forcing.</small>
           </div>
         </div>
         <aside class="key-idea">
-          <p class="kicker">Why it belongs beside quaquaversal</p>
-          <p>The chair isolates hierarchical forcing on a lattice; quaquaversal adds dense orientations in continuous three-dimensional space.</p>
+          <p class="kicker">What is proved here—and what is not</p>
+          <p>The executable catalogue reconstructs a 64-chair, depth-two supertile without being handed its boundary. It demonstrates the GCTS encoding, but it is not yet a proof that this compact catalogue forces the infinite hierarchy. Goodman–Strauss guarantees that a finite forcing decoration can be constructed under the theorem’s hypotheses; establishing that our decoration is one requires a unique-composition audit at every scale. The well-known explicit chair rules are for the planar L-chair; these generated collars belong to its 3D heptacube analogue.</p>
         </aside>
       </div>
     </section>
 
     <footer>
-      <p>Exact child placements follow the scale-two chair generator used by this project’s decorated-hierarchy experiments.</p>
+      <p>Local-forcing context: <a href="https://annals.math.princeton.edu/articles/12903">Goodman–Strauss, Matching rules and substitution tilings</a>.</p>
       <a href="../">Compare quaquaversal tiling</a>
     </footer>
   </main>

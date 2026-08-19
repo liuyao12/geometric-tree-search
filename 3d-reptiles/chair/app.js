@@ -1,30 +1,43 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import {
+  CANONICAL_CHILDREN,
+  FACE_DIRECTIONS,
+  createGrowthState,
+  exposedMarks,
+  growOne,
+  shrinkOne
+} from "./chair-gcts.js";
 
 const viewport = document.getElementById("viewport");
+const sceneShell = document.querySelector(".scene-shell");
 const inflateButton = document.getElementById("inflate-button");
 const backButton = document.getElementById("back-button");
+const runButton = document.getElementById("run-button");
 const generationValue = document.getElementById("generation-value");
 const tileValue = document.getElementById("tile-value");
+const generationLabel = document.getElementById("generation-label");
+const tileLabel = document.getElementById("tile-label");
 const hierarchyPlot = document.getElementById("hierarchy-plot");
 const chairColorFilter = document.getElementById("chair-color-filter");
 const tileSelect = document.getElementById("tile-select");
+const chairModeSelect = document.getElementById("chair-mode-select");
+const panelKicker = document.getElementById("panel-kicker");
+const hierarchyTitle = document.getElementById("hierarchy-title");
+const panelCount = document.getElementById("panel-count");
+const panelCountLabel = document.getElementById("panel-count-label");
+const panelDescription = document.getElementById("panel-description");
+const scaleLeft = document.getElementById("scale-left");
+const scaleRight = document.getElementById("scale-right");
+const frontierValue = document.getElementById("frontier-value");
+const backtrackValue = document.getElementById("backtrack-value");
+const sceneInstruction = document.getElementById("scene-instruction");
 
 tileSelect.addEventListener("change", () => {
   window.location.href = tileSelect.value;
 });
 
 const MAX_GENERATION = 4;
-const CANONICAL_CHILDREN = [
-  [[0, 0, 0], [1, 1, 1]],
-  [[0, 0, 2], [1, 1, 0]],
-  [[0, 2, 0], [1, 0, 1]],
-  [[0, 2, 2], [1, 0, 0]],
-  [[1, 1, 1], [1, 1, 1]],
-  [[2, 0, 0], [0, 1, 1]],
-  [[2, 0, 2], [0, 1, 0]],
-  [[2, 2, 0], [0, 0, 1]]
-];
 const ORIENTATION_COLORS = [
   0x4776a8, 0x7a68a6, 0x3d8e84, 0x5aa36f,
   0xd66f57, 0xca6f94, 0xdfb65b, 0xb9944e
@@ -34,11 +47,7 @@ const CUBE_FACES = [
   [0, 1, 5, 4], [2, 6, 7, 3],
   [0, 4, 6, 2], [1, 3, 7, 5]
 ];
-const FACE_NEIGHBORS = [
-  [0, 0, -1], [0, 0, 1],
-  [0, -1, 0], [0, 1, 0],
-  [-1, 0, 0], [1, 0, 0]
-];
+const FACE_NEIGHBORS = FACE_DIRECTIONS;
 const CUBE_CORNERS = [
   [0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 1, 0],
   [0, 0, 1], [1, 0, 1], [0, 1, 1], [1, 1, 1]
@@ -281,6 +290,98 @@ function makeVisual(level) {
   };
 }
 
+const SOCKET_COLORS = [0xe25543, 0xf0a51f, 0x18a98b, 0x477dcc, 0x9a66c7, 0xd66f94];
+
+function channelColor(channel) {
+  let hash = 2166136261;
+  for (let index = 0; index < channel.length; index += 1) {
+    hash ^= channel.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return SOCKET_COLORS[Math.abs(hash) % SOCKET_COLORS.length];
+}
+
+function makeSearchVisual(state) {
+  const group = new THREE.Group();
+  const materials = [];
+  const geometries = [];
+  const chairs = [];
+  const allCells = [];
+
+  for (const placement of state.placements) {
+    const variant = state.catalog.variants[placement.variantId];
+    const leaf = { origin: placement.origin, missingCorner: variant.missingCorner };
+    const orientation = orientationIndex(variant.missingCorner);
+    const color = new THREE.Color(ORIENTATION_COLORS[orientation]);
+    const geometry = makeChairGeometry(leaf);
+    const faceMaterial = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0.15,
+      depthWrite: false,
+      depthTest: true,
+      side: THREE.DoubleSide
+    });
+    faceMaterial.userData.baseOpacity = 0.15;
+    const mesh = new THREE.Mesh(geometry, faceMaterial);
+    mesh.renderOrder = 1;
+    group.add(mesh);
+
+    const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
+    const edgeMaterial = new THREE.LineBasicMaterial({
+      color: color.clone().multiplyScalar(0.72),
+      transparent: true,
+      opacity: 0.62,
+      depthWrite: false,
+      depthTest: true
+    });
+    edgeMaterial.userData.baseOpacity = 0.62;
+    const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+    edges.renderOrder = 2;
+    group.add(edges);
+    materials.push(faceMaterial, edgeMaterial);
+    geometries.push(geometry, edgeGeometry);
+    chairs.push({ orientation, faceMaterial, edgeMaterial });
+    variant.cells.forEach(cell => allCells.push(add(placement.origin, cell)));
+  }
+
+  const outward = new THREE.Vector3(0, 0, 1);
+  for (const mark of exposedMarks(state)) {
+    const direction = new THREE.Vector3(...mark.direction);
+    const geometry = mark.polarity > 0
+      ? new THREE.CircleGeometry(0.145, 16)
+      : new THREE.RingGeometry(0.075, 0.155, 16);
+    const material = new THREE.MeshBasicMaterial({
+      color: channelColor(mark.channel),
+      transparent: true,
+      opacity: 0.9,
+      depthWrite: false,
+      depthTest: false,
+      side: THREE.DoubleSide
+    });
+    material.userData.baseOpacity = 0.9;
+    const socket = new THREE.Mesh(geometry, material);
+    socket.position.set(
+      mark.cell[0] + 0.5 + mark.direction[0] * 0.506,
+      mark.cell[1] + 0.5 + mark.direction[1] * 0.506,
+      mark.cell[2] + 0.5 + mark.direction[2] * 0.506
+    );
+    socket.quaternion.setFromUnitVectors(outward, direction);
+    socket.renderOrder = 5;
+    group.add(socket);
+    geometries.push(geometry);
+    materials.push(material);
+  }
+
+  const minima = [0, 1, 2].map(axis => Math.min(...allCells.map(cell => cell[axis])));
+  const maxima = [0, 1, 2].map(axis => Math.max(...allCells.map(cell => cell[axis])) + 1);
+  const center = minima.map((minimum, axis) => (minimum + maxima[axis]) / 2);
+  const size = Math.max(...maxima.map((maximum, axis) => maximum - minima[axis]));
+  group.position.set(-center[0], -center[1], -center[2]);
+
+  return { group, level: 0, leaves: state.placements, chairs, materials, geometries, size };
+}
+
 function setVisualOpacity(visual, amount) {
   for (const material of visual.materials) {
     material.userData.transitionAmount = amount;
@@ -311,60 +412,166 @@ function disposeVisual(visual) {
 }
 
 function updateReadout() {
-  const chairs = 8 ** generation;
-  generationValue.textContent = String(generation);
-  tileValue.textContent = chairs.toLocaleString();
+  if (mode === "search") {
+    generationLabel.textContent = "placed";
+    generationValue.textContent = String(growthState.placements.length);
+    tileLabel.textContent = "catalogue";
+    tileValue.textContent = String(growthState.catalog.variants.length);
+    frontierValue.textContent = String(exposedMarks(growthState).length);
+    backtrackValue.textContent = String(growthState.solverBacktracks);
+  } else {
+    generationLabel.textContent = "inflations";
+    generationValue.textContent = String(generation);
+    tileLabel.textContent = "chairs";
+    tileValue.textContent = (8 ** generation).toLocaleString();
+  }
 }
 
 function updateActionButtons() {
   const busy = Boolean(transition);
-  backButton.disabled = busy || generation === 0;
-  inflateButton.disabled = busy || generation === MAX_GENERATION;
-  inflateButton.querySelector("span").textContent = generation === MAX_GENERATION
-    ? "Maximum inflation reached"
-    : "Apply one more inflation";
+  if (mode === "search") {
+    const complete = growthState.placements.length >= growthState.catalog.targetCount;
+    backButton.disabled = busy || growthState.placements.length === 1;
+    inflateButton.disabled = busy || complete;
+    inflateButton.querySelector("span").textContent = complete ? "Patch complete" : "Place next chair";
+    backButton.querySelector("span").textContent = "Remove last";
+    runButton.disabled = complete && !autoRun;
+    runButton.querySelector("span").textContent = autoRun ? "Pause" : "Run";
+    runButton.querySelector("b").textContent = autoRun ? "Ⅱ" : "▶";
+  } else {
+    backButton.disabled = busy || generation === 0;
+    inflateButton.disabled = busy || generation === MAX_GENERATION;
+    inflateButton.querySelector("span").textContent = generation === MAX_GENERATION
+      ? "Maximum inflation reached"
+      : "Apply one more inflation";
+    backButton.querySelector("span").textContent = "Go back";
+  }
 }
 
 let generation = 0;
-let currentVisual = makeVisual(generation);
+let mode = "search";
+let growthState = createGrowthState(2);
+let autoRun = false;
+let currentVisual = makeSearchVisual(growthState);
 root.add(currentVisual.group);
 let transition = null;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+sceneShell.classList.add("is-search");
 
-function showGeneration(targetGeneration) {
-  if (transition || targetGeneration < 0 || targetGeneration > MAX_GENERATION || targetGeneration === generation) return;
-  const direction = targetGeneration > generation ? 1 : -1;
-  const nextVisual = makeVisual(targetGeneration);
-  refreshChairHighlight(nextVisual);
+function updateModePanel() {
+  const searching = mode === "search";
+  sceneShell.classList.toggle("is-search", searching);
+  if (searching) {
+    panelKicker.textContent = "GCTS marking";
+    hierarchyTitle.textContent = "depth 2";
+    panelCount.textContent = String(growthState.catalog.variants.length);
+    panelCountLabel.textContent = "tile states";
+    scaleLeft.textContent = "seed";
+    scaleRight.textContent = "matched frontier";
+    panelDescription.textContent = "The search aligns complementary face sockets, checks every new contact, and rejects overlaps. No enclosing superchair is given to it.";
+    sceneInstruction.textContent = "Drag to orbit · colored tabs are exposed local sockets";
+    hierarchyPlot.setAttribute("aria-label", "Live diagram of exposed local matching sockets in the chair search");
+  } else {
+    panelKicker.textContent = "inflation rule";
+    hierarchyTitle.textContent = "× 2";
+    panelCount.textContent = "8";
+    panelCountLabel.textContent = "children";
+    scaleLeft.textContent = "parent";
+    scaleRight.textContent = "child addresses";
+    panelDescription.textContent = "Choose one of the seven colors to highlight every chair with that missing-corner orientation. The central child prevents the rule from being merely seven octants.";
+    sceneInstruction.textContent = "Drag to orbit · scroll through transparent walls";
+    hierarchyPlot.setAttribute("aria-label", "Axonometric diagram of the eight child chairs and their missing-corner orientations");
+  }
+  updateReadout();
+  updateActionButtons();
+  drawHierarchyPlot();
+}
+
+function cameraDestinationForSize(size) {
+  const offset = camera.position.clone().sub(controls.target).normalize();
+  return controls.target.clone().add(offset.multiplyScalar(8 + size * 2.05));
+}
+
+function swapVisual(nextVisual, duration, cameraDestination) {
   setVisualOpacity(nextVisual, 0);
   root.add(nextVisual.group);
-  generation = targetGeneration;
-  updateReadout();
-
-  const cameraOffset = camera.position.clone().sub(controls.target);
-  const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(direction > 0 ? 2 : 0.5));
   if (prefersReducedMotion) {
     disposeVisual(currentVisual);
     currentVisual = nextVisual;
     setVisualOpacity(nextVisual, 1);
     camera.position.copy(cameraDestination);
     updateActionButtons();
+    if (autoRun) window.setTimeout(runNextSearchStep, 60);
     return;
   }
-
   transition = {
     from: currentVisual,
     to: nextVisual,
     start: performance.now(),
-    duration: 720,
+    duration,
     cameraStart: camera.position.clone(),
     cameraDestination
   };
   updateActionButtons();
 }
 
-inflateButton.addEventListener("click", () => showGeneration(generation + 1));
-backButton.addEventListener("click", () => showGeneration(generation - 1));
+function showGeneration(targetGeneration) {
+  if (transition || targetGeneration < 0 || targetGeneration > MAX_GENERATION || targetGeneration === generation) return;
+  const direction = targetGeneration > generation ? 1 : -1;
+  const nextVisual = makeVisual(targetGeneration);
+  refreshChairHighlight(nextVisual);
+  generation = targetGeneration;
+  updateReadout();
+
+  const cameraOffset = camera.position.clone().sub(controls.target);
+  const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(direction > 0 ? 2 : 0.5));
+  swapVisual(nextVisual, 720, cameraDestination);
+}
+
+function showGrowthStep(direction) {
+  if (transition || mode !== "search") return;
+  const nextState = direction > 0 ? growOne(growthState) : shrinkOne(growthState);
+  if (nextState.placements.length === growthState.placements.length) return;
+  growthState = nextState;
+  const nextVisual = makeSearchVisual(growthState);
+  updateReadout();
+  drawHierarchyPlot();
+  swapVisual(nextVisual, autoRun ? 190 : 420, cameraDestinationForSize(nextVisual.size));
+}
+
+function runNextSearchStep() {
+  if (!autoRun || transition || mode !== "search") return;
+  if (growthState.placements.length >= growthState.catalog.targetCount) {
+    autoRun = false;
+    updateActionButtons();
+    return;
+  }
+  showGrowthStep(1);
+}
+
+inflateButton.addEventListener("click", () => {
+  if (mode === "search") showGrowthStep(1);
+  else showGeneration(generation + 1);
+});
+backButton.addEventListener("click", () => {
+  autoRun = false;
+  if (mode === "search") showGrowthStep(-1);
+  else showGeneration(generation - 1);
+});
+runButton.addEventListener("click", () => {
+  autoRun = !autoRun;
+  updateActionButtons();
+  if (autoRun) runNextSearchStep();
+});
+chairModeSelect.addEventListener("change", () => {
+  autoRun = false;
+  mode = chairModeSelect.value;
+  disposeVisual(currentVisual);
+  currentVisual = mode === "search" ? makeSearchVisual(growthState) : makeVisual(generation);
+  root.add(currentVisual.group);
+  camera.position.copy(cameraDestinationForSize(mode === "search" ? currentVisual.size : 2 ** (generation + 1)));
+  updateModePanel();
+});
 
 function drawHierarchyPlot() {
   const rect = hierarchyPlot.getBoundingClientRect();
@@ -381,6 +588,61 @@ function drawHierarchyPlot() {
   context.scale(ratio, ratio);
   const cssWidth = width / ratio;
   const cssHeight = height / ratio;
+  if (mode === "search") {
+    const marks = exposedMarks(growthState);
+    const centerX = cssWidth / 2;
+    const centerY = cssHeight / 2;
+    const radius = Math.min(cssWidth, cssHeight) * 0.34;
+    context.strokeStyle = "rgba(23, 32, 30, .22)";
+    context.lineWidth = 1;
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    context.stroke();
+
+    context.fillStyle = "rgba(29, 107, 98, .13)";
+    context.strokeStyle = "rgba(29, 107, 98, .72)";
+    context.beginPath();
+    context.moveTo(centerX - radius * 0.33, centerY - radius * 0.33);
+    context.lineTo(centerX + radius * 0.33, centerY - radius * 0.33);
+    context.lineTo(centerX + radius * 0.33, centerY + radius * 0.05);
+    context.lineTo(centerX + radius * 0.04, centerY + radius * 0.05);
+    context.lineTo(centerX + radius * 0.04, centerY + radius * 0.34);
+    context.lineTo(centerX - radius * 0.33, centerY + radius * 0.34);
+    context.closePath();
+    context.fill();
+    context.stroke();
+
+    const sampleCount = Math.min(28, marks.length);
+    for (let index = 0; index < sampleCount; index += 1) {
+      const mark = marks[Math.floor(index * marks.length / sampleCount)];
+      const angle = (index / sampleCount) * Math.PI * 2 - Math.PI / 2;
+      const x = centerX + Math.cos(angle) * radius;
+      const y = centerY + Math.sin(angle) * radius;
+      context.strokeStyle = "rgba(23, 32, 30, .12)";
+      context.beginPath();
+      context.moveTo(centerX + Math.cos(angle) * radius * 0.48, centerY + Math.sin(angle) * radius * 0.48);
+      context.lineTo(x, y);
+      context.stroke();
+      context.beginPath();
+      context.arc(x, y, mark.polarity > 0 ? 4.5 : 5.5, 0, Math.PI * 2);
+      const color = new THREE.Color(channelColor(mark.channel));
+      context.fillStyle = `rgb(${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)})`;
+      if (mark.polarity > 0) context.fill();
+      else {
+        context.lineWidth = 2;
+        context.strokeStyle = context.fillStyle;
+        context.stroke();
+        context.lineWidth = 1;
+      }
+    }
+    context.fillStyle = "#17201e";
+    context.font = `400 ${Math.max(16, cssWidth * 0.12)}px Georgia, serif`;
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillText(String(growthState.placements.length), centerX, centerY + radius * 0.75);
+    context.restore();
+    return;
+  }
   const project = ([x, y, z]) => [
     cssWidth * 0.5 + (x - y) * cssWidth * 0.105,
     cssHeight * 0.61 + (x + y) * cssHeight * 0.052 - z * cssHeight * 0.105
@@ -431,8 +693,7 @@ new ResizeObserver(resize).observe(viewport);
 new ResizeObserver(drawHierarchyPlot).observe(hierarchyPlot);
 resize();
 drawHierarchyPlot();
-updateReadout();
-updateActionButtons();
+updateModePanel();
 
 function animate(time) {
   controls.update();
@@ -447,6 +708,7 @@ function animate(time) {
       currentVisual = transition.to;
       transition = null;
       updateActionButtons();
+      if (autoRun) window.setTimeout(runNextSearchStep, 70);
     }
   }
   renderer.render(scene, camera);
