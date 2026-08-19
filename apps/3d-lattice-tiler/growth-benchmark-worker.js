@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-complete-shell-v96";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-size11-controls-v98";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -118,6 +118,7 @@ async function runMode(sequence, baseConfig, mode) {
     generic_geometric_nogood_activation_failure_states: mode.nogood ? 25 : 0,
     seeded_tie_breaks: !!mode.proof,
     generic_periodic_certificate: !!mode.proof && !shellSearch,
+    generic_periodic_certificate_method: mode.proof ? "internal_first" : "boundary_first",
     generic_periodic_certificate_check_new_maximum: !!mode.proof && !shellSearch,
     generic_periodic_certificate_check_distinct_patches: !!mode.proof && !shellSearch,
     generic_periodic_certificate_checkpoint_sampling_policy: mode.proof ? "hybrid" : "prefix",

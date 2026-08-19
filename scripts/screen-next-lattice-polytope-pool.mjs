@@ -1,0 +1,170 @@
+#!/usr/bin/env node
+
+import { createHash } from "node:crypto";
+import { writeFile } from "node:fs/promises";
+import { performance } from "node:perf_hooks";
+import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
+import { BLANCO_SANTOS_CENSUS_URLS, parseBlancoSantosLatticePoints } from "../assets/lattice-polytope-census.js";
+
+const args = new Map(process.argv.slice(2).map(argument => {
+  const separator = argument.indexOf("=");
+  return separator < 0
+    ? [argument.replace(/^--/, ""), "true"]
+    : [argument.slice(2, separator), argument.slice(separator + 1)];
+}));
+const numberArg = (name, fallback) => {
+  const value = Number(args.get(name));
+  return Number.isFinite(value) ? value : fallback;
+};
+const size = Math.max(5, Math.min(11, Math.floor(numberArg("size", 11))));
+const allUrls = BLANCO_SANTOS_CENSUS_URLS(size);
+const requestedParts = new Set(String(args.get("parts") ?? "")
+  .split(",")
+  .map(value => Math.floor(Number(value)))
+  .filter(value => value >= 1 && value <= allUrls.length));
+const urls = allUrls.filter((_, index) => !requestedParts.size || requestedParts.has(index + 1));
+const offset = Math.max(0, Math.floor(numberArg("offset", 0)));
+const maxCandidates = Math.max(1, Math.floor(numberArg("max-candidates", Infinity)));
+const timeMs = Math.max(10, Math.floor(numberArg("time-ms", 250)));
+const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 200000)));
+const outputFile = args.get("output-file") ?? null;
+const progressEvery = Math.max(1, Math.floor(numberArg("progress-every", 1000)));
+
+const sourceRecords = [];
+let candidates = [];
+for (const url of urls) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.status}`);
+  const text = await response.text();
+  const parsed = parseBlancoSantosLatticePoints(text);
+  sourceRecords.push({
+    url,
+    bytes: Buffer.byteLength(text),
+    sha256: createHash("sha256").update(text).digest("hex"),
+    candidates: parsed.length
+  });
+  candidates.push(...parsed);
+}
+candidates = candidates.slice(offset, offset + maxCandidates);
+
+const solveFirstExtendableShell = async candidate => {
+  let final = null;
+  for await (const message of createTilingStream({
+    mode_key: "cube",
+    custom_system: {
+      name: `Size-${size} screen ${candidate.id}`,
+      figure_refs: [],
+      polycubes: [],
+      polyhedra: [{ name: `Candidate ${candidate.id}`, vertices: candidate.vertices }],
+      polycube_lattice: "z3"
+    },
+    criterion: "shell",
+    target_val: 1,
+    tiling_strategy: "free_range",
+    move_order: "shell",
+    face_order: "mrv",
+    exhaustive: true,
+    agent_exhaustive: true,
+    forced_move_layer_lag_cap: 0,
+    generic_complete_shell_enumeration: true,
+    generic_global_zero_face_pruning: true,
+    generic_failure_memo: false,
+    generic_geometric_nogood: false,
+    include_mirrors: false,
+    template_preflight: false,
+    snapshot_every: 0,
+    placement_details: false,
+    branch_cap: null,
+    candidate_cap: null,
+    node_limit: nodeLimit,
+    time_limit_ms: timeMs,
+    ui_yield_interval_ms: 1000000
+  }, tileSpecs, { stop: false })) {
+    if (message.type === "finished") final = message;
+  }
+  return final;
+};
+
+const started = performance.now();
+const counts = {
+  localEdgeObstruction: 0,
+  extendableShellObstruction: 0,
+  shellOneWitness: 0,
+  incomplete: 0,
+  other: 0
+};
+const survivors = [];
+const unresolved = [];
+for (let index = 0; index < candidates.length; index += 1) {
+  const candidate = candidates[index];
+  const final = await solveFirstExtendableShell(candidate);
+  const kind = final?.tiling_evidence?.kind ?? null;
+  if (kind === "local_edge_obstruction" && final?.can_tile === false) {
+    counts.localEdgeObstruction += 1;
+  } else if (kind === "finite_extendable_shell_obstruction" && final?.can_tile === false) {
+    counts.extendableShellObstruction += 1;
+  } else if (final?.success) {
+    counts.shellOneWitness += 1;
+    survivors.push({
+      id: candidate.id,
+      latticePoints: candidate.lattice_points.length,
+      vertices: candidate.vertices,
+      shellTiles: final.tile_count,
+      visitedNodes: final.search_stats?.visited_nodes ?? 0,
+      maximumCandidates: final.search_stats?.generic_global_extension_max_candidates ?? 0
+    });
+  } else if (final?.search_incomplete) {
+    counts.incomplete += 1;
+    unresolved.push({
+      id: candidate.id,
+      latticePoints: candidate.lattice_points.length,
+      vertices: candidate.vertices,
+      bestShellDepth: final?.search_stats?.max_complete_shell_depth ?? 0,
+      maximumLiveTiles: final?.search_stats?.max_live_tiles ?? 1,
+      visitedNodes: final?.search_stats?.visited_nodes ?? 0,
+      terminationReason: final?.search_stats?.termination_reason ?? "bounded_incomplete"
+    });
+  } else {
+    counts.other += 1;
+    unresolved.push({
+      id: candidate.id,
+      latticePoints: candidate.lattice_points.length,
+      vertices: candidate.vertices,
+      resultKind: final?.result_kind ?? "missing_result",
+      evidenceKind: kind
+    });
+  }
+  if ((index + 1) % progressEvery === 0 || index + 1 === candidates.length) {
+    process.stderr.write(
+      `${index + 1}/${candidates.length}: edge ${counts.localEdgeObstruction}, shell ${counts.extendableShellObstruction}, survivors ${counts.shellOneWitness}, incomplete ${counts.incomplete}\n`
+    );
+  }
+}
+
+const report = {
+  schemaVersion: 1,
+  kind: "blanco_santos_extendable_shell_one_screen",
+  generatedAt: new Date().toISOString(),
+  configuration: {
+    size,
+    parts: urls.map(url => allUrls.indexOf(url) + 1),
+    offset,
+    maxCandidates: Number.isFinite(maxCandidates) ? maxCandidates : null,
+    timeMs,
+    nodeLimit,
+    orientationGroup: "proper cubic rotations",
+    translations: "integer",
+    mirrors: false,
+    globalZeroFacePruning: true
+  },
+  sources: sourceRecords,
+  screenedCandidates: candidates.length,
+  counts,
+  survivors,
+  unresolved,
+  elapsedMs: Math.round(performance.now() - started),
+  interpretation: "Local edge and exhausted extendable-shell failures are exact only in the configured face-to-face proper-cubic-lattice model. A shell-one witness or bounded timeout is not evidence of aperiodicity."
+};
+const serialized = `${JSON.stringify(report, null, 2)}\n`;
+if (outputFile) await writeFile(outputFile, serialized);
+else process.stdout.write(serialized);

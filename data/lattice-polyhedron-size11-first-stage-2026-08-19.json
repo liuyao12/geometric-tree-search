@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 1,
+  "kind": "blanco_santos_extendable_shell_one_screen_merged",
+  "generatedAt": "2026-08-19T13:19:13.073Z",
+  "configuration": {
+    "size": 11,
+    "parts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "timeMs": 100,
+    "nodeLimit": 100000,
+    "orientationGroup": "proper cubic rotations",
+    "translations": "integer",
+    "mirrors": false,
+    "globalZeroFacePruning": true
+  },
+  "sources": [
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_1.txt",
+      "bytes": 1958894,
+      "sha256": "cd62685c8f8bebc6ccd3683f6f58712afdd9f29bd0ccb18315a1aabf9e6b4c8a",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_2.txt",
+      "bytes": 1970000,
+      "sha256": "a0e48649135c49d1c12892554ecb06a44027effc31d0cb7de4537aaed7e171cf",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_3.txt",
+      "bytes": 1970000,
+      "sha256": "789406114b65e675f2fca1a0ba8524918e8db1b1331a8ad3f3470a8bb034d2c3",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_4.txt",
+      "bytes": 1970000,
+      "sha256": "d7d4681da0df5e791ef53d501822f4ef7975598b42cf91dc33859aad8b3a2f65",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_5.txt",
+      "bytes": 1970000,
+      "sha256": "c8c5faca3e3455e0b8173d2f707e82899f36f6246ecf032577d95ff1d67001c0",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_6.txt",
+      "bytes": 1970000,
+      "sha256": "2752a682e37e07f354abaa95d40a9f174cc01addfb0d1035781de05ed49736fb",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_7.txt",
+      "bytes": 1970000,
+      "sha256": "ac0073a3c33744aa52b0dc27d7df6c4191a134dd41b51bbdb0e71bfa5bef8ad5",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_8.txt",
+      "bytes": 1970000,
+      "sha256": "a60368ae75600f5635bd81271d7e08ec4ca0a2a57fd35ad4a8a2cbde6347d755",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_9.txt",
+      "bytes": 1970000,
+      "sha256": "0a6576a6da5d4235dedc0ad4a1ddec3ddccfdd0ee10f64de7e4b73f92a73c031",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_10.txt",
+      "bytes": 1970001,
+      "sha256": "74bdb06ef975920a33021fda9f96f4fc17b2057802775d04aa074f3ae1cc1c9f",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_11.txt",
+      "bytes": 1980000,
+      "sha256": "84207b2536232b55c8f7a0d1562a917beca7ce237a597b9d5b2f5b1b8f578538",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_12.txt",
+      "bytes": 1980000,
+      "sha256": "33e873ea7995f29d2eb3c76656a50ac3d9f6797ff6b3d05438132fc8e909791a",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_13.txt",
+      "bytes": 1980000,
+      "sha256": "6e62fc1ff4b52c5bf69ee3baf03c6a139e24f8317e71801151a7dca2114f9fbf",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_14.txt",
+      "bytes": 1980000,
+      "sha256": "0844f0f1d3c8925d5313f9cba6660ffb82dbac9453c6e98b8e2071343833e018",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_15.txt",
+      "bytes": 1980000,
+      "sha256": "45941590b435c6c4d341d5090dec4c5f9d8bcdfdd79844118266ba3358dfe631",
+      "candidates": 10000
+    },
+    {
+      "url": "https://personales.unican.es/santosf/3polytopes/Size_11_latticepoints_16.txt",
+      "bytes": 1279872,
+      "sha256": "3aa3ae588933b9658c495fba14a0eb748358205b32178e1c6aec61aee7d7d154",
+      "candidates": 6464
+    }
+  ],
+  "sourceReports": [
+    "size11-group1.json",
+    "size11-group2.json",
+    "size11-group3.json",
+    "size11-group4.json"
+  ],
+  "screenedCandidates": 156464,
+  "counts": {
+    "localEdgeObstruction": 156400,
+    "extendableShellObstruction": 56,
+    "shellOneWitness": 8,
+    "incomplete": 0,
+    "other": 0
+  },
+  "survivors": [
+    {
+      "id": "11_34718",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          6
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 1
+    },
+    {
+      "id": "11_34757",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          -1,
+          5
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "11_38606",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 1
+    },
+    {
+      "id": "11_57333",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          -1,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          4
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "11_60154",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 1
+    },
+    {
+      "id": "11_146131",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          3
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 1
+    },
+    {
+      "id": "11_151715",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          -2
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          -1
+        ],
+        [
+          2,
+          0,
+          -1
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "shellTiles": 7,
+      "visitedNodes": 7,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "11_155503",
+      "latticePoints": 11,
+      "vertices": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    }
+  ],
+  "unresolved": [],
+  "elapsedMs": 483812,
+  "interpretation": "This exhaustive first-stage screen leaves only candidates with an exact extendable shell-one witness. Local-edge and exhausted shell failures are non-tiling certificates in the configured face-to-face proper-cubic-lattice model; survivors still require deeper shell and periodic screening."
+}

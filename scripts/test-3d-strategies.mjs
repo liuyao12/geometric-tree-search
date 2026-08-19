@@ -6,6 +6,7 @@ import {
   PROPER_CUBIC_ROTATIONS,
   tileSpecs
 } from "../apps/3d-lattice-tiler/engine.js";
+import { LATTICE_POLYHEDRON_PERIODIC_REJECTS } from "../assets/lattice-polyhedron-survivors.js";
 
 assert.equal(PROPER_CUBIC_ROTATIONS.length, 24);
 assert.equal(new Set(PROPER_CUBIC_ROTATIONS.map(matrix => matrix.flat().join(","))).size, 24);
@@ -170,6 +171,27 @@ assert.ok(
   "uncertified translational search must continue beyond four-tile patches"
 );
 
+const candidate1045033 = LATTICE_POLYHEDRON_PERIODIC_REJECTS.find(candidate => candidate.id === "10_45033");
+assert.ok(candidate1045033?.screening?.periodic_template);
+const configuredPeriodicCandidate = await solve({
+  mode_key: candidate1045033.registry_id,
+  target_val: 36,
+  tiling_strategy: "translational",
+  known_periodic_template: candidate1045033.screening.periodic_template,
+  periodic_patch_unbounded: false,
+  periodic_patch_max_tiles: 1,
+  time_limit_ms: 10000
+});
+assert.equal(configuredPeriodicCandidate.final.result_kind, "certified_tiling");
+assert.equal(configuredPeriodicCandidate.final.can_tile, true);
+assert.equal(configuredPeriodicCandidate.final.tiling_evidence?.patch_size, 6);
+assert.deepEqual(configuredPeriodicCandidate.final.tiling_evidence?.period_vectors, [
+  [-2, -2, 2],
+  [0, -1, 3],
+  [-3, 0, 1]
+]);
+assert.equal(configuredPeriodicCandidate.periodicCertificate?.proof?.lattice_determinant, 14);
+
 const isohedral = await solve({
   tiling_strategy: "isohedral",
   target_val: 12
@@ -238,6 +260,7 @@ const internalPeriodControl = await solve({
   target_val: 60,
   template_preflight: false,
   generic_periodic_certificate: true,
+  generic_periodic_certificate_method: "internal_first",
   generic_periodic_certificate_time_limit_ms: 10000,
   exhaustive: true,
   agent_exhaustive: true,
@@ -246,7 +269,7 @@ const internalPeriodControl = await solve({
   include_mirrors: false,
   snapshot_every: 1,
   placement_details: true,
-  time_limit_ms: 10000,
+  time_limit_ms: 30000,
   node_limit: 1000
 });
 assert.equal(internalPeriodControl.final.result_kind, "certified_tiling");
@@ -286,6 +309,7 @@ const exactCubeShell = await solve({
   forced_move_layer_lag_cap: 0,
   generic_complete_shell_enumeration: true,
   generic_failure_memo_symmetry: "rigid",
+  placement_details: true,
   node_limit: 100,
   time_limit_ms: 10000
 });
@@ -298,6 +322,57 @@ assert.equal(
   "rooted_orientation_preserving_cubic_rigid_motion"
 );
 assert.ok(exactCubeShell.final.search_stats.max_complete_shell_depth >= 1);
+const initialPatchFromSnapshot = snapshot => {
+  const rootTranslation = snapshot.placements[0].translation;
+  return snapshot.placements.map(placement => ({
+    prototile_idx: placement.prototile_idx,
+    orientation_index: placement.orientation_index,
+    orientation_id: placement.orientation_id,
+    translation: placement.translation.map((value, axis) => value - rootTranslation[axis])
+  }));
+};
+const resumedCubeShell = await solve({
+  mode_key: "cube",
+  criterion: "shell",
+  target_val: 2,
+  tiling_strategy: "free_range",
+  move_order: "shell",
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_complete_shell_enumeration: true,
+  generic_failure_memo: false,
+  initial_patch: { placements: initialPatchFromSnapshot(exactCubeShell.latestSnapshot) },
+  placement_details: true,
+  node_limit: 100,
+  time_limit_ms: 10000
+});
+assert.equal(resumedCubeShell.final.result_kind, "patch_found");
+assert.equal(resumedCubeShell.final.tile_count, 25, "resuming the first cube shell must reach the 25-tile second shell");
+assert.equal(resumedCubeShell.final.search_stats.initial_patch_requested_tiles, 7);
+assert.equal(resumedCubeShell.final.search_stats.initial_patch_applied_tiles, 7);
+assert.equal(resumedCubeShell.final.search_stats.initial_patch_base_shell_depth, 1);
+await assert.rejects(
+  solve({
+    mode_key: "cube",
+    criterion: "shell",
+    target_val: 2,
+    tiling_strategy: "free_range",
+    move_order: "shell",
+    template_preflight: false,
+    exhaustive: true,
+    agent_exhaustive: true,
+    forced_move_layer_lag_cap: 0,
+    generic_complete_shell_enumeration: true,
+    initial_patch: { placements: [
+      { prototile_idx: 0, orientation_index: 0, translation: [0, 0, 0] },
+      { prototile_idx: 0, orientation_index: 0, translation: [5, 0, 0] }
+    ] }
+  }),
+  /not face-connected/,
+  "a resumed patch must be validated rather than trusted"
+);
 
 const unattachedScalenePair = {
   name: "No proper-lattice face attachment",
@@ -340,8 +415,9 @@ const completeShellObstruction = await solve({
 });
 assert.equal(completeShellObstruction.final.result_kind, "no_tiling");
 assert.equal(completeShellObstruction.final.can_tile, false);
-assert.equal(completeShellObstruction.final.tiling_evidence?.kind, "finite_shell_obstruction");
+assert.equal(completeShellObstruction.final.tiling_evidence?.kind, "finite_extendable_shell_obstruction");
 assert.equal(completeShellObstruction.final.tiling_evidence?.target_shell_depth, 1);
+assert.ok(completeShellObstruction.final.search_stats.generic_global_zero_face_dead_ends > 0);
 
 const heuristicExhaustion = await solve({
   mode_key: "cube",
@@ -444,6 +520,50 @@ const candidate1016113System = {
     vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]]
   }]
 };
+const candidate1016113ShellOne = await solve({
+  mode_key: "cube",
+  custom_system: candidate1016113System,
+  criterion: "shell",
+  target_val: 1,
+  tiling_strategy: "free_range",
+  move_order: "shell",
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_complete_shell_enumeration: true,
+  generic_global_zero_face_pruning: false,
+  generic_failure_memo: false,
+  placement_details: true,
+  node_limit: 1000,
+  time_limit_ms: 10000
+});
+assert.equal(candidate1016113ShellOne.final.result_kind, "patch_found");
+assert.equal(candidate1016113ShellOne.final.tile_count, 9);
+const candidate1016113Extension = await solve({
+  mode_key: "cube",
+  custom_system: candidate1016113System,
+  criterion: "shell",
+  target_val: 2,
+  tiling_strategy: "free_range",
+  move_order: "shell",
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_complete_shell_enumeration: true,
+  generic_failure_memo: false,
+  initial_patch: { placements: initialPatchFromSnapshot(candidate1016113ShellOne.latestSnapshot) },
+  node_limit: 1000,
+  time_limit_ms: 10000
+});
+assert.equal(candidate1016113Extension.final.result_kind, "patch_extension_impossible");
+assert.equal(candidate1016113Extension.final.can_tile, null);
+assert.equal(candidate1016113Extension.final.success, false);
+assert.equal(candidate1016113Extension.final.search_incomplete, false);
+assert.equal(candidate1016113Extension.final.tiling_evidence?.certified, true);
+assert.equal(candidate1016113Extension.final.tiling_evidence?.kind, "finite_shell_extension_obstruction");
+assert.match(candidate1016113Extension.final.tiling_evidence?.note ?? "", /does not exclude other/);
 const distinctCheckpointCap = await solve({
   mode_key: "cube",
   custom_system: candidate1016113System,

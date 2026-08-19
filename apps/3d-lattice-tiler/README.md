@@ -407,21 +407,45 @@ through easy faces while permanently ignoring an unfillable face near the
 root. The exact **complete-shell** lane instead recomputes shortest
 face-adjacency distance from the root for every current patch. To complete
 shell `r`, every exposed face owned by a tile at distance less than `r` must be
-covered. It applies MRV across all of those pending face obligations. This is
-branch-complete for the configured face-to-face proper-lattice model because a
-future placement elsewhere cannot create a new mate for an already exposed
-face; it can only invalidate current mates.
+covered. It applies MRV across those pending face obligations and now prunes a
+state immediately when *any* exposed face has no legal mate. This is sound in
+the configured face-to-face proper-lattice model: a future placement elsewhere
+cannot create a new mate for an already fixed face; it can only invalidate a
+current mate. Exact search uses raw geometric validity for these face-mates,
+not the finite-growth heuristics used by the preview lanes.
 
-That screen rejects three of the four former survivors. `10_45026` and
-`9_11683` cannot complete even shell 1. `10_16113` completes shell 1 with nine
-tiles but exhaustive search proves shell 2 impossible. `10_45033` is the sole
-remaining candidate: all three seeds complete shells 1 through 4, and two of
-three complete shell 5 with 464 tiles; the remaining shell-5 trial times out
-and is inconclusive. These finite shells are necessary local evidence, not a
-space-tiling or aperiodicity proof. The exact receipts are in
-`data/lattice-polyhedron-complete-shell-screen-2026-08-19.json`; regenerate
-them with `scripts/screen-lattice-complete-shells.mjs --target=5 --cascade=true`
-and validate them with `scripts/analyze-lattice-complete-shell-screen.mjs`.
+The strengthened screen rejects `10_16113`, `10_45026`, and `9_11683` before
+an indefinitely extendable first shell. `10_45033` reaches shells 1–4 in all
+three direct runs, shell 5 in one of three, then reaches shells 6 and 7 by
+validated checkpoint continuation (764 and 1,174 tiles). Mining the shell-7
+witness reveals an exact six-tile translational quotient with period vectors
+`(-2,-2,2)`, `(0,-1,3)`, and `(-3,0,1)` and determinant 14. The quotient
+replay pairs all 54 motif faces modulo that lattice and matches motif volume
+to covolume, so `10_45033` is periodic and the former four-tile candidate pool
+is now exhausted. The receipts are in
+`data/lattice-polyhedron-extendable-shell-screen-2026-08-19.json`,
+`data/lattice-polyhedron-10_45033-shell-continuation-2026-08-19.json`, and
+`data/lattice-polyhedron-10_45033-periodic-certificate-2026-08-19.json`.
+Regenerate the direct screen with
+`scripts/screen-lattice-complete-shells.mjs --target=5 --cascade=true`, and
+validate it with `scripts/analyze-lattice-complete-shell-screen.mjs`.
+
+The next census pass enumerates all 156,464 size-11 Blanco–Santos lattice
+polytopes from the 16 published source parts. An exact local-edge filter rejects
+156,400, and exhaustive extendable-shell-one search rejects another 56, leaving
+only eight first-shell witnesses and no bounded-search timeouts. Exact shell-3
+search then proves `11_34718` and `11_34757` are non-tilers in this model. The
+other six reach shell 4 in every seed (two reach shell 5 as an additional
+check), but each has a replayable translational quotient of only 2–5 tiles.
+Thus this entire size-11 pass is resolved—two non-tilers, six periodic tilers,
+and zero aperiodic candidates—while supplying eight useful GCTS regression
+controls in the web catalog. The first-stage, shell, and quotient receipts are
+`data/lattice-polyhedron-size11-first-stage-2026-08-19.json`,
+`data/lattice-polyhedron-size11-shell3-2026-08-19.json`, and
+`data/lattice-polyhedron-size11-periodic-summary-2026-08-19.json`.
+Regenerate the census shards with `scripts/screen-next-lattice-polytope-pool.mjs`,
+merge them with `scripts/merge-next-lattice-polytope-screens.mjs`, and pass the
+merged report to `scripts/screen-lattice-complete-shells.mjs --candidates-file=…`.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in

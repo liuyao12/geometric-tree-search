@@ -193,20 +193,31 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       report: "data/lattice-polyhedron-global-extension-screen-2026-08-19.json"
     }),
     complete_shell_screen: Object.freeze({
-      maximum_target_shell: 5,
+      maximum_target_shell: 7,
       seeds: Object.freeze([1, 2, 3]),
       time_limit_ms: 60000,
       configured_node_limit: 2000000,
       cascade: true,
       shell_definition: "minimum face-adjacency distance from the root among owners of exposed faces",
+      global_zero_face_pruning: true,
+      zero_face_rule: "a fixed exposed face with no legal face-mate is permanently unfillable",
       rejected_candidates: Object.freeze(["10_16113", "10_45026", "9_11683"]),
-      surviving_candidate: "10_45033",
+      surviving_candidate: null,
+      periodic_candidate: "10_45033",
       robust_completed_shell: 4,
-      maximum_completed_shell: 5,
-      shell_five_hits: 2,
+      maximum_completed_shell: 7,
+      shell_five_hits: 1,
       shell_five_trials: 3,
       shell_five_witness_tiles: 464,
-      report: "data/lattice-polyhedron-complete-shell-screen-2026-08-19.json"
+      shell_six_hits: 2,
+      shell_six_trials: 3,
+      shell_six_witness_tiles: 764,
+      shell_seven_hits: 1,
+      shell_seven_trials: 3,
+      shell_seven_witness_tiles: 1174,
+      report: "data/lattice-polyhedron-extendable-shell-screen-2026-08-19.json",
+      continuation_report: "data/lattice-polyhedron-10_45033-shell-continuation-2026-08-19.json",
+      periodic_certificate_report: "data/lattice-polyhedron-10_45033-periodic-certificate-2026-08-19.json"
     })
   })
 });
@@ -232,17 +243,108 @@ const GLOBAL_EXTENSION_SCREENING_RESULTS = Object.freeze({
   "9_11683": Object.freeze({ global_extension_trials: 3, global_extension_target_hits: 3, global_extension_distinct_witnesses: 3, global_extension_minimum_isotropy: 1, global_extension_max_candidates: 229, global_extension_exact_target_checks: 3, global_extension_internal_period_bases_tested: 32515, global_extension_periodic_certificates: 0 })
 });
 
-const rejected = (certificate, motifTiles, periodVectors) => ({
+const rejected = (certificate, motifTiles, periodVectors, periodicTemplate = null) => ({
   status: "exact_rejection",
   certificate,
   motif_tiles: motifTiles,
-  period_vectors: periodVectors
+  period_vectors: periodVectors,
+  ...(periodicTemplate ? { periodic_template: periodicTemplate } : {})
 });
 const shellRejected = shellDepth => ({
   status: "exact_rejection",
-  certificate: "finite_shell_obstruction",
+  certificate: "finite_extendable_shell_obstruction",
   shell_depth: shellDepth,
-  report: "data/lattice-polyhedron-complete-shell-screen-2026-08-19.json"
+  report: "data/lattice-polyhedron-extendable-shell-screen-2026-08-19.json"
+});
+
+const PERIODIC_TEMPLATE_10_45033 = Object.freeze({
+  kind: "6_tile_periodic_symmetry_quotient",
+  period_vectors: Object.freeze([[-2,-2,2],[0,-1,3],[-3,0,1]].map(Object.freeze)),
+  motif: Object.freeze([
+    { prototile_idx: 0, orientation_index: 0, orientation_id: "0:0", translation: [0,0,0] },
+    { prototile_idx: 0, orientation_index: 14, orientation_id: "0:14", translation: [0,1,1] },
+    { prototile_idx: 0, orientation_index: 17, orientation_id: "0:17", translation: [1,0,1] },
+    { prototile_idx: 0, orientation_index: 21, orientation_id: "0:21", translation: [1,2,-1] },
+    { prototile_idx: 0, orientation_index: 6, orientation_id: "0:6", translation: [2,1,-1] },
+    { prototile_idx: 0, orientation_index: 11, orientation_id: "0:11", translation: [2,2,0] }
+  ].map(entry => Object.freeze({ ...entry, translation: Object.freeze(entry.translation) })))
+});
+
+const frozenPeriodicTemplate = (periodVectors, motif) => Object.freeze({
+  kind: `${motif.length}_tile_periodic_symmetry_quotient`,
+  period_vectors: Object.freeze(periodVectors.map(vector => Object.freeze(vector))),
+  motif: Object.freeze(motif.map(([orientation_index, translation]) => Object.freeze({
+    prototile_idx: 0,
+    orientation_index,
+    orientation_id: `0:${orientation_index}`,
+    translation: Object.freeze(translation)
+  })))
+});
+
+const SIZE11_PERIODIC_TEMPLATES = Object.freeze({
+  "11_38606": frozenPeriodicTemplate([[-1,1,1],[-2,-1,0],[0,-1,2]], [[0,[0,0,0]],[21,[0,-1,0]]]),
+  "11_57333": frozenPeriodicTemplate([[0,-1,0],[-1,-1,-4],[-1,1,4]], [[0,[0,0,0]],[1,[0,-1,-4]]]),
+  "11_60154": frozenPeriodicTemplate([[-2,0,0],[0,-2,0],[0,0,-2]], [[0,[0,0,0]],[2,[-1,-1,0]],[1,[0,-1,-1]]]),
+  "11_146131": frozenPeriodicTemplate([[-1,-1,0],[-1,1,0],[-1,0,4]], [[0,[0,0,0]],[11,[-1,0,1]]]),
+  "11_151715": frozenPeriodicTemplate([[0,-1,1],[-1,1,1],[-6,-3,-5]], [[0,[0,0,0]],[7,[-1,-2,0]],[7,[1,0,2]],[0,[-2,-2,-2]],[0,[2,2,2]]]),
+  "11_155503": frozenPeriodicTemplate([[-1,-1,0],[-1,1,0],[-1,0,-3]], [[0,[0,0,0]],[11,[0,0,-3]]])
+});
+
+export const LATTICE_POLYHEDRON_SIZE11_SCREENING = Object.freeze({
+  screen_date: "2026-08-19",
+  source_pool_size: 156464,
+  source_parts: 16,
+  local_edge_obstructions: 156400,
+  extendable_shell_one_obstructions: 56,
+  shell_one_survivors: 8,
+  shell_three_non_tilers: 2,
+  certified_periodic_tilers: 6,
+  unresolved: 0,
+  model: "face-to-face congruent lattice-polyhedron tilings using integer translations and proper cubic rotations",
+  first_stage_report: "data/lattice-polyhedron-size11-first-stage-2026-08-19.json",
+  shell_report: "data/lattice-polyhedron-size11-shell3-2026-08-19.json",
+  periodic_report: "data/lattice-polyhedron-size11-periodic-summary-2026-08-19.json"
+});
+
+const SIZE11_CANDIDATE_GEOMETRY = Object.freeze([
+  { id: "11_34718", vertices: [[-1,0,-1],[0,-1,-1],[0,0,5],[0,1,0],[1,0,0],[1,1,6]], obstruction_shell: 3 },
+  { id: "11_34757", vertices: [[-1,0,0],[0,-1,0],[0,0,5],[0,1,0],[1,-1,5],[1,0,0]], obstruction_shell: 3 },
+  { id: "11_38606", vertices: [[-1,0,-1],[-1,1,1],[0,-1,0],[0,0,2],[1,1,-1],[2,0,0]] },
+  { id: "11_57333", vertices: [[-1,0,0],[-1,1,0],[0,-1,4],[0,0,4],[1,0,0],[1,1,0]] },
+  { id: "11_60154", vertices: [[0,1,0],[0,1,2],[1,0,1],[1,2,1],[2,1,0],[2,1,2]] },
+  { id: "11_146131", vertices: [[-1,0,-1],[-1,0,0],[0,-1,-1],[0,-1,0],[0,0,3],[0,1,0],[1,0,0],[1,1,3]] },
+  { id: "11_151715", vertices: [[0,1,0],[0,2,1],[1,0,1],[1,1,-2],[1,1,2],[1,2,-1],[2,0,-1],[2,1,0]] },
+  { id: "11_155503", vertices: [[0,0,2],[0,0,3],[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,2],[1,2,0],[2,1,0]] }
+]);
+
+export const LATTICE_POLYHEDRON_SIZE11_CONTROLS = SIZE11_CANDIDATE_GEOMETRY.map(candidate => {
+  const template = SIZE11_PERIODIC_TEMPLATES[candidate.id];
+  const screening = template
+    ? {
+        ...rejected("translational", template.motif.length, template.period_vectors, template),
+        periodic_source: "exact quotient found after the complete-shell screen",
+        report: LATTICE_POLYHEDRON_SIZE11_SCREENING.periodic_report
+      }
+    : {
+        ...shellRejected(candidate.obstruction_shell),
+        report: LATTICE_POLYHEDRON_SIZE11_SCREENING.shell_report
+      };
+  return Object.freeze({
+    id: candidate.id,
+    vertices: candidate.vertices,
+    lattice_points: 11,
+    registry_id: `census_${candidate.id}`,
+    name: `Candidate ${candidate.id}`,
+    screening: Object.freeze(screening),
+    last_screening: LATTICE_POLYHEDRON_SIZE11_SCREENING,
+    shell_screening: Object.freeze(template
+      ? { deepest_completed_shell: candidate.id === "11_57333" || candidate.id === "11_155503" ? 5 : 4, periodic_motif_tiles: template.motif.length }
+      : { deepest_completed_shell: 2, obstruction_shell: 3, robust: true, obstruction_kind: "permanently_unfillable_face" }),
+    gcts_proof_screening: Object.freeze({}),
+    description: template
+      ? `Size-11 periodic control ${candidate.id}; exact GCTS screening found a ${template.motif.length}-tile translational quotient.`
+      : `Size-11 non-tiler control ${candidate.id}; exhaustive GCTS reaches shell 2 but proves shell 3 impossible.`
+  });
 });
 
 export const LATTICE_POLYHEDRON_CENSUS_POOL = [
@@ -252,7 +354,7 @@ export const LATTICE_POLYHEDRON_CENSUS_POOL = [
   { id: "10_27010", vertices: [[0,0,0],[0,1,1],[1,0,1],[1,1,2],[1,2,0],[2,0,0],[2,1,1]], screening: rejected("isohedral_periodic_quotient", 24, [[0,0,-4],[-4,0,0],[0,-4,0]]) },
   { id: "10_24235", vertices: [[-1,0,0],[-1,0,2],[0,-1,0],[0,1,0],[0,1,2],[1,0,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,1,0],[0,0,-2]]) },
   { id: "9_3239", vertices: [[-1,-1,0],[-1,0,-2],[0,-1,-2],[0,0,2],[0,1,0],[1,0,0]], screening: rejected("translational", 2, [[-1,0,-2],[0,-1,-2],[-1,-1,2]]) },
-  { id: "10_16113", priority: 1, vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]], screening: shellRejected(2) },
+  { id: "10_16113", priority: 1, vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]], screening: shellRejected(1) },
   { id: "10_44867", vertices: [[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,2],[1,2,0],[2,1,0],[2,2,1]], screening: rejected("translational", 2, [[-1,1,0],[-1,-1,-1],[-1,0,2]]) },
   { id: "10_45035", vertices: [[0,0,1],[0,1,0],[0,1,2],[0,2,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1],[2,0,0]], screening: rejected("translational", 2, [[0,-1,-1],[0,-1,1],[-2,0,-1]]) },
   { id: "8_2431", vertices: [[-1,0,-1],[0,-1,-1],[0,0,2],[0,1,0],[1,0,0],[1,1,3]], screening: rejected("translational", 2, [[-1,-1,1],[-1,0,3],[0,-1,3]]) },
@@ -260,7 +362,7 @@ export const LATTICE_POLYHEDRON_CENSUS_POOL = [
   { id: "10_26470", vertices: [[-1,0,0],[-1,0,1],[0,-1,0],[0,1,0],[0,1,2],[1,0,0],[1,0,1]], screening: rejected("translational", 8, [[-2,-2,0],[-2,0,2],[-2,2,0]]) },
   { id: "10_44266", vertices: [[0,0,2],[0,1,0],[1,0,0],[1,1,2],[1,2,-1],[1,2,0],[2,1,-1],[2,1,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,1,0],[-1,-2,-3]]) },
   { id: "10_45026", priority: 2, vertices: [[0,0,2],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,0],[1,2,1],[2,1,0],[2,1,1]], screening: shellRejected(1) },
-  { id: "10_45033", priority: 3, vertices: [[0,0,0],[0,0,1],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,1,1],[2,2,2]], screening: { status: "inconclusive" } },
+  { id: "10_45033", priority: 3, vertices: [[0,0,0],[0,0,1],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,1,1],[2,2,2]], screening: rejected("translational", 6, [[-2,-2,2],[0,-1,3],[-3,0,1]], PERIODIC_TEMPLATE_10_45033) },
   { id: "9_11683", priority: 4, vertices: [[0,1,0],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,1],[2,0,2],[2,1,1]], screening: shellRejected(1) }
 ];
 
@@ -274,9 +376,9 @@ export const classifyLatticeCandidateScreen = ({ translational, isohedral, shell
 
 const PRE_SHELL_IDS = Object.freeze(["10_16113", "10_45026", "10_45033", "9_11683"]);
 const SHELL_RESULTS = Object.freeze({
-  "10_16113": Object.freeze({ deepest_completed_shell: 1, obstruction_shell: 2, robust: true }),
+  "10_16113": Object.freeze({ deepest_completed_shell: 0, obstruction_shell: 1, robust: true, obstruction_kind: "permanently_unfillable_face" }),
   "10_45026": Object.freeze({ deepest_completed_shell: 0, obstruction_shell: 1, robust: true }),
-  "10_45033": Object.freeze({ deepest_completed_shell: 5, robust_completed_shell: 4, shell_five_hits: 2, shell_five_trials: 3, shell_five_witness_tiles: 464 }),
+  "10_45033": Object.freeze({ deepest_completed_shell: 7, robust_completed_shell: 4, shell_five_hits: 1, shell_five_trials: 3, shell_five_witness_tiles: 464, shell_six_hits: 2, shell_six_trials: 3, shell_six_witness_tiles: 764, shell_seven_hits: 1, shell_seven_trials: 3, shell_seven_witness_tiles: 1174, periodic_motif_tiles: 6 }),
   "9_11683": Object.freeze({ deepest_completed_shell: 0, obstruction_shell: 1, robust: true })
 });
 const enrichCandidate = candidate => ({
@@ -299,10 +401,17 @@ export const LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES = LATTICE_POLYHEDRON_CENSUS
   .map(enrichCandidate);
 
 export const LATTICE_POLYHEDRON_SHELL_REJECTS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
-  .filter(candidate => candidate.screening.certificate === "finite_shell_obstruction")
+  .filter(candidate => candidate.screening.certificate === "finite_extendable_shell_obstruction")
   .map(candidate => ({
     ...candidate,
-    description: `GCTS non-tiler control ${candidate.id}; exhaustive face-obligation search proves that shell ${candidate.screening.shell_depth} cannot be completed in the configured face-to-face proper-lattice model.`
+    description: `GCTS non-tiler control ${candidate.id}; exhaustive face-obligation search proves that every route toward shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.`
+  }));
+
+export const LATTICE_POLYHEDRON_PERIODIC_REJECTS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
+  .filter(candidate => candidate.screening.certificate === "translational")
+  .map(candidate => ({
+    ...candidate,
+    description: `Periodic control ${candidate.id}; a ${candidate.screening.motif_tiles}-tile exact translational quotient was mined from the shell-7 witness and independently replayed.`
   }));
 
 export const LATTICE_POLYHEDRON_SURVIVORS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
@@ -316,5 +425,7 @@ export const LATTICE_POLYHEDRON_SURVIVORS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDA
 
 export const LATTICE_POLYHEDRON_GCTS_EXAMPLES = Object.freeze([
   ...LATTICE_POLYHEDRON_SURVIVORS,
-  ...LATTICE_POLYHEDRON_SHELL_REJECTS
+  ...LATTICE_POLYHEDRON_PERIODIC_REJECTS,
+  ...LATTICE_POLYHEDRON_SHELL_REJECTS,
+  ...LATTICE_POLYHEDRON_SIZE11_CONTROLS
 ]);

@@ -78,7 +78,8 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 19);
+assert.equal(survivor.schemaVersion, 20);
+assert.deepEqual(survivor.activeUnresolved, []);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 assert.equal(survivor.configuration.faceOrder, "mrv");
 assert.ok(survivor.rows.every(row => row.faceOrder === "mrv"));
@@ -188,7 +189,7 @@ assert.equal(
 assert.equal(survivor.configuration.geometricNogood, false);
 assert.equal(survivor.unresolved[0].freeRangeUnbanded.geometricNogoodEnabled, false);
 assert.ok(freeRangeRows.every(row => row.failureMemoEnabled === false));
-assert.ok(["inconclusive", "reject_certified_non_tiler"].includes(survivor.unresolved[0].screeningConclusion));
+assert.equal(survivor.unresolved[0].screeningConclusion, "reject_certified_periodic");
 
 const nodeLimited = run([
   "--ids=10_45033",

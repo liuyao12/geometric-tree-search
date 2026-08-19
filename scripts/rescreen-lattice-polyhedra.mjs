@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { readFile, writeFile } from "node:fs/promises";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 import {
   classifyLatticeCandidateScreen,
@@ -17,9 +18,18 @@ const numberArg = (name, fallback) => {
   return Number.isFinite(value) ? value : fallback;
 };
 const only = new Set((args.get("ids") ?? "").split(",").filter(Boolean));
-const pool = only.size
-  ? LATTICE_POLYHEDRON_CENSUS_POOL.filter(candidate => only.has(candidate.id))
+const candidatesFile = args.get("candidates-file") ?? null;
+const outputFile = args.get("output-file") ?? null;
+const candidatesDocument = candidatesFile
+  ? JSON.parse(await readFile(candidatesFile, "utf8"))
+  : null;
+const candidatePool = candidatesDocument
+  ? (candidatesDocument.survivors ?? candidatesDocument.candidates ?? candidatesDocument)
   : LATTICE_POLYHEDRON_CENSUS_POOL;
+if (!Array.isArray(candidatePool)) throw new Error("Candidate input must be an array or contain a survivors/candidates array");
+const pool = only.size
+  ? candidatePool.filter(candidate => only.has(candidate.id))
+  : candidatePool;
 const timeMs = numberArg("time-ms", 10000);
 const periodicMax = numberArg("periodic-max", 6);
 const isohedralTarget = numberArg("isohedral-target", 24);
@@ -99,17 +109,28 @@ async function run(candidate, strategy) {
   };
 }
 
+const rows = [];
 for (const candidate of pool) {
   const translational = skipTranslational ? null : await run(candidate, "translational");
   const isohedral = translational?.certified || translational?.provenImpossible || skipIsohedral
     ? null
     : await run(candidate, "isohedral");
   const classification = classifyLatticeCandidateScreen({ translational, isohedral });
-  process.stdout.write(`${JSON.stringify({
+  const row = {
     id: candidate.id,
     vertices: candidate.vertices,
     classification,
     translational,
     isohedral
-  })}\n`);
+  };
+  rows.push(row);
+  if (!outputFile) process.stdout.write(`${JSON.stringify(row)}\n`);
+  else process.stderr.write(`${candidate.id}: ${classification}\n`);
 }
+if (outputFile) await writeFile(outputFile, `${JSON.stringify({
+  schemaVersion: 1,
+  kind: "lattice_polyhedron_easy_lane_screen",
+  generatedAt: new Date().toISOString(),
+  configuration: { candidatesFile, timeMs, periodicMax, isohedralTarget, displayTarget },
+  rows
+}, null, 2)}\n`);

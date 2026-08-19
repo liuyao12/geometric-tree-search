@@ -54,7 +54,7 @@ Pages site. The main way to use it is to open the page in a browser:
 - [3D Lattice Tiler](https://liuyao12.github.io/geometric-tree-search/3d-lattice-tiler/)
   A browser playground for lattice polyhedra and polycubes on the integer
   lattice. It supports mixed tile systems, custom polycube construction, search
-  by exact rooted face-adjacency shells, and reproducible non-tiler controls.
+  by exact rooted face-adjacency shells, and reproducible non-tiler and periodic controls—including the eight survivors of an exhaustive 156,464-tile size-11 census screen.
   tree inspection, and intermediate tiling snapshots.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)

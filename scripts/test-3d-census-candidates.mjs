@@ -6,8 +6,11 @@ import {
   classifyLatticeCandidateScreen,
   LATTICE_POLYHEDRON_CENSUS_POOL,
   LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES,
+  LATTICE_POLYHEDRON_PERIODIC_REJECTS,
   LATTICE_POLYHEDRON_SCREENING,
   LATTICE_POLYHEDRON_SHELL_REJECTS,
+  LATTICE_POLYHEDRON_SIZE11_CONTROLS,
+  LATTICE_POLYHEDRON_SIZE11_SCREENING,
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
 
@@ -109,7 +112,8 @@ assert.match(
   /this excludes those particular patches as translational fundamental domains, not other possible motifs/,
   "the catalog must state the narrow scope of a negative target-patch quotient check"
 );
-assert.match(growthAppSource, /1 unresolved lattice candidate/, "the complete-shell screen must leave one unresolved catalog candidate");
+assert.doesNotMatch(growthAppSource, /1 unresolved lattice candidate/, "the certified periodic quotient must remove the last unresolved catalog candidate");
+assert.match(growthAppSource, /Certified periodic control/, "the mined six-tile quotient must be visible as a periodic control");
 assert.match(growthAppSource, /GCTS shell-obstruction controls/, "the three exact shell rejections must remain available as controls");
 assert.match(
   growthAppSource,
@@ -155,7 +159,7 @@ assert.match(
 assert.equal(LATTICE_POLYHEDRON_CENSUS_POOL.length, 16, "the rescreener and catalog must share the full source pool");
 assert.equal(
   LATTICE_POLYHEDRON_CENSUS_POOL.filter(candidate => candidate.screening.status === "exact_rejection").length,
-  15,
+  16,
   "all removed candidates must retain their exact rejection certificates"
 );
 assert.equal(LATTICE_POLYHEDRON_SCREENING.source_pool_size, LATTICE_POLYHEDRON_CENSUS_POOL.length);
@@ -220,26 +224,57 @@ const archivedGlobalExtension = JSON.parse(await readFile(
   "utf8"
 ));
 const archivedCompleteShell = JSON.parse(await readFile(
-  new URL("../data/lattice-polyhedron-complete-shell-screen-2026-08-19.json", import.meta.url),
+  new URL("../data/lattice-polyhedron-extendable-shell-screen-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedShellContinuation = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-10_45033-shell-continuation-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedCandidatePeriodic = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-10_45033-periodic-certificate-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedSize11FirstStage = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size11-first-stage-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedSize11ShellThree = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size11-shell3-2026-08-19.json", import.meta.url),
+  "utf8"
+));
+const archivedSize11Periodic = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size11-periodic-summary-2026-08-19.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
   LATTICE_POLYHEDRON_SCREENING.gcts_proof.complete_shell_screen,
   {
-    maximum_target_shell: archivedCompleteShell.configuration.targetShellDepth,
+    maximum_target_shell: 7,
     seeds: archivedCompleteShell.configuration.seeds,
     time_limit_ms: archivedCompleteShell.configuration.timeMs,
     configured_node_limit: archivedCompleteShell.configuration.nodeLimit,
     cascade: archivedCompleteShell.configuration.cascade,
     shell_definition: archivedCompleteShell.configuration.shellDefinition,
+    global_zero_face_pruning: archivedCompleteShell.configuration.globalZeroFacePruning,
+    zero_face_rule: "a fixed exposed face with no legal face-mate is permanently unfillable",
     rejected_candidates: ["10_16113", "10_45026", "9_11683"],
-    surviving_candidate: "10_45033",
+    surviving_candidate: null,
+    periodic_candidate: "10_45033",
     robust_completed_shell: 4,
-    maximum_completed_shell: 5,
-    shell_five_hits: 2,
+    maximum_completed_shell: 7,
+    shell_five_hits: 1,
     shell_five_trials: 3,
     shell_five_witness_tiles: 464,
-    report: "data/lattice-polyhedron-complete-shell-screen-2026-08-19.json"
+    shell_six_hits: 2,
+    shell_six_trials: 3,
+    shell_six_witness_tiles: 764,
+    shell_seven_hits: 1,
+    shell_seven_trials: 3,
+    shell_seven_witness_tiles: 1174,
+    report: "data/lattice-polyhedron-extendable-shell-screen-2026-08-19.json",
+    continuation_report: "data/lattice-polyhedron-10_45033-shell-continuation-2026-08-19.json",
+    periodic_certificate_report: "data/lattice-polyhedron-10_45033-periodic-certificate-2026-08-19.json"
   },
   "catalog complete-shell evidence must match the archived exact screen"
 );
@@ -1026,7 +1061,8 @@ for (const candidate of LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES) {
 assert.deepEqual(
   LATTICE_POLYHEDRON_CENSUS_POOL
     .filter(candidate => candidate.screening.status === "exact_rejection")
-    .filter(candidate => candidate.screening.certificate !== "finite_shell_obstruction")
+    .filter(candidate => candidate.screening.certificate !== "finite_extendable_shell_obstruction")
+    .filter(candidate => candidate.id !== "10_45033")
     .filter(candidate => candidate.id !== archivedProofScreening.exact_periodic_rejection.id)
     .map(candidate => ({
       id: candidate.id,
@@ -1082,18 +1118,31 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 4, "the survivor and three shell-obstruction controls must remain in the catalog");
+assert.equal(candidates.length, 12, "the original four and eight size-11 GCTS controls must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
-const shellControls = candidates.filter(figure => figure.census_candidate.screening.certificate === "finite_shell_obstruction");
-assert.equal(survivors.length, 1);
-assert.equal(shellControls.length, 3);
+const shellControls = candidates.filter(figure => figure.census_candidate.screening.certificate === "finite_extendable_shell_obstruction");
+const periodicControls = candidates.filter(figure => figure.census_candidate.screening.certificate === "translational");
+assert.equal(survivors.length, 0);
+assert.equal(shellControls.length, 5);
+assert.equal(periodicControls.length, 7);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
-assert.deepEqual(
-  survivors.map(figure => figure.census_candidate.survivor_priority),
-  [1],
-  "survivor priority metadata must be complete"
-);
+assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
+assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);
+assert.equal(LATTICE_POLYHEDRON_SIZE11_CONTROLS.length, 8);
+assert.equal(LATTICE_POLYHEDRON_SIZE11_SCREENING.source_pool_size, 156464);
+assert.deepEqual(archivedSize11FirstStage.counts, {
+  localEdgeObstruction: 156400,
+  extendableShellObstruction: 56,
+  shellOneWitness: 8,
+  incomplete: 0,
+  other: 0
+});
+assert.equal(archivedSize11ShellThree.totals.certifiedNonTilerTrials, 6);
+assert.equal(archivedSize11Periodic.rows.length, 6);
+assert.ok(archivedSize11Periodic.rows.every(row => row.translational?.certified));
+assert.equal(archivedShellContinuation.checkpoints.at(-1).shellDepth, 7);
+assert.equal(archivedCandidatePeriodic.certificate.motif.length, 6);
 
 async function solve(config) {
   let final = null;
@@ -1106,33 +1155,36 @@ async function solve(config) {
   return { final, largestPatch };
 }
 
-const first = survivors[0];
-const candidateRun = await solve({
-  mode_key: first.mode_key,
-  custom_system: {
-    name: "Candidate catalog smoke test",
-    figure_refs: [first.id],
-    polycubes: [],
-    polycube_lattice: "z3"
-  },
-  polycube_lattice: "z3",
-  criterion: "count",
-  target_val: 8,
-  tiling_strategy: "free_range",
-  exhaustive: true,
-  include_mirrors: false,
-  snapshot_every: 0,
-  placement_details: true,
-  face_order: "mrv",
-  move_order: "balanced",
-  time_limit_ms: 2000,
-  ui_yield_interval_ms: 100,
-  template_preflight: true
-});
-assert.equal(candidateRun.final.success, true, "the first survivor must grow beyond its seed tile");
-assert.equal(candidateRun.largestPatch, 8);
-assert.equal(candidateRun.final.search_stats.move_order, "balanced", "candidate benchmarks must honor their selected move order");
-assert.ok(candidateRun.final.search_stats.visited_nodes < 1000, "visited nodes must report actual work, not the mixed-radix estimate");
+let candidateRun = null;
+for (const periodicControl of periodicControls) {
+  candidateRun = await solve({
+    mode_key: periodicControl.mode_key,
+    custom_system: {
+      name: "Candidate catalog smoke test",
+      figure_refs: [periodicControl.id],
+      polycubes: [],
+      polycube_lattice: "z3"
+    },
+    polycube_lattice: "z3",
+    criterion: "count",
+    target_val: periodicControl.census_candidate.screening.motif_tiles,
+    tiling_strategy: "translational",
+    exhaustive: true,
+    include_mirrors: false,
+    snapshot_every: 0,
+    placement_details: true,
+    face_order: "mrv",
+    move_order: "balanced",
+    known_periodic_template: periodicControl.census_candidate.screening.periodic_template,
+    time_limit_ms: 2000,
+    ui_yield_interval_ms: 100,
+    template_preflight: true
+  });
+  assert.equal(candidateRun.final.success, true, `${periodicControl.census_candidate.id} must replay its verified quotient`);
+  assert.equal(candidateRun.final.result_kind, "certified_tiling");
+  assert.equal(candidateRun.final.tiling_evidence?.patch_size, periodicControl.census_candidate.screening.motif_tiles);
+  assert.equal(candidateRun.final.can_tile, true);
+}
 
 const exhaustiveWitness = await solve({
   mode_key: "cube",
@@ -1172,7 +1224,7 @@ assert.equal(conwayRun.largestPatch, 24);
 
 console.log("3D census candidate regressions passed", {
   candidates: candidates.length,
-  firstCandidate: first.census_candidate.id,
+  periodicControls: periodicControls.length,
   firstPatch: candidateRun.largestPatch,
   visitedNodes: candidateRun.final.search_stats.visited_nodes,
   conwayPatch: conwayRun.largestPatch

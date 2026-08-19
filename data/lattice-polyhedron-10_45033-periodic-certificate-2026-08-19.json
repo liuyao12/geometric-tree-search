@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_translational_certificate",
+  "generatedAt": "2026-08-19T12:42:19.189Z",
+  "candidate": "10_45033",
+  "sourceWitness": {
+    "completedShellDepth": 7,
+    "tiles": 1174,
+    "witnessHash": "3b66ae6a92496ffe"
+  },
+  "certificate": {
+    "kind": "6_tile_periodic_symmetry_quotient",
+    "certified": true,
+    "canTile": true,
+    "tileVolume": 2.3333333333333335,
+    "motifVolume": 14.000000000000002,
+    "latticeDeterminant": 14,
+    "periodVectors": [
+      [-2, -2, 2],
+      [0, -1, 3],
+      [-3, 0, 1]
+    ],
+    "motif": [
+      { "prototileIndex": 0, "orientationIndex": 0, "orientationId": "0:0", "translation": [0, 0, 0] },
+      { "prototileIndex": 0, "orientationIndex": 14, "orientationId": "0:14", "translation": [0, 1, 1] },
+      { "prototileIndex": 0, "orientationIndex": 17, "orientationId": "0:17", "translation": [1, 0, 1] },
+      { "prototileIndex": 0, "orientationIndex": 21, "orientationId": "0:21", "translation": [1, 2, -1] },
+      { "prototileIndex": 0, "orientationIndex": 6, "orientationId": "0:6", "translation": [2, 1, -1] },
+      { "prototileIndex": 0, "orientationIndex": 11, "orientationId": "0:11", "translation": [2, 2, 0] }
+    ],
+    "proof": {
+      "method": "quotient_face_pairing_equal_covolume",
+      "motifFaces": 54,
+      "pairedFaceOrbits": 27,
+      "allBoundaryFacesPairedModuloPeriodLattice": true,
+      "equalCovolume": true
+    }
+  },
+  "discovery": {
+    "method": "internal_motif_mining_from_validated_complete_shell_witness",
+    "translationVectorPool": 128,
+    "candidateBasesTested": 1,
+    "elapsedMs": 1200
+  },
+  "interpretation": "This exact quotient proves that candidate 10_45033 tiles periodically. It is therefore not an aperiodic monotile candidate."
+}

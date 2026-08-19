@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-complete-shell-v96";
+import { tileSpecs } from "./engine.js?v=20260819-size11-controls-v98";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -790,7 +790,8 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
-  { id: "unresolved", title: "1 unresolved lattice candidate", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "unresolved", title: "Unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
+  { id: "periodic-controls", title: "GCTS periodic controls", test: figure => figureHasCategory(figure, "GCTS Periodic Controls") },
   { id: "shell-controls", title: "GCTS shell-obstruction controls", test: figure => figureHasCategory(figure, "GCTS Shell-Obstruction Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
@@ -1305,17 +1306,23 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
   const knownAperiodic = rootFigure()?.aperiodic_tile ?? null;
   const candidate = selectedCensusCandidate();
   if (!candidate && !knownAperiodic) return;
-  document.querySelector(`input[name="criterion"][value="${candidate ? "shell" : "count"}"]`).checked = true;
+  const periodicCandidate = candidate?.screening?.certificate === "translational";
+  document.querySelector(`input[name="criterion"][value="${candidate && !periodicCandidate ? "shell" : "count"}"]`).checked = true;
   maxTilesInput.value = knownAperiodic ? "80" : "120";
-  if (candidate) shellInput.value = String(
+  if (candidate && !periodicCandidate) shellInput.value = String(
     candidate.screening?.shell_depth ?? candidate.shell_screening?.deepest_completed_shell ?? 5
   );
-  strategySelect.value = setRadioValue(strategyRadios, "free_range", "free_range");
+  strategySelect.value = setRadioValue(
+    strategyRadios,
+    periodicCandidate ? "translational" : "free_range",
+    periodicCandidate ? "translational" : "free_range"
+  );
+  if (periodicCandidate) periodicTileCountSelect.value = String(candidate.screening.motif_tiles ?? 6);
   faceOrderSelect.value = "mrv";
-  moveOrderSelect.value = candidate ? "shell" : "balanced";
+  moveOrderSelect.value = candidate && !periodicCandidate ? "shell" : "balanced";
   snapshotSelect.value = "0";
   timeCapInput.value = knownAperiodic ? "10" : "60";
-  nodeCapInput.value = candidate ? "100000" : "0";
+  nodeCapInput.value = candidate && !periodicCandidate ? "100000" : "0";
   candidateCapInput.value = "0";
   branchCapInput.value = "0";
   exhaustiveCheckbox.checked = true;
@@ -1331,10 +1338,13 @@ function updateCandidateResearchPanel() {
   candidateResearchPanel.classList.toggle("is-hidden", !candidate && !knownAperiodic);
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
   if (candidate) {
+    candidateSearchButton.textContent = candidate.screening?.certificate === "translational"
+      ? "Replay periodic certificate"
+      : "Apply exact shell preset";
     const screening = candidate.last_screening;
     const proof = candidate.gcts_proof_screening;
     const shell = candidate.shell_screening;
-    const limits = screening
+    const limits = screening?.translational && screening?.isohedral
       ? ` Translational motifs through ${screening.translational.maximum_requested_motif_tiles} tiles (${screening.translational.seconds_per_tile}s); isohedral growth horizon ${screening.isohedral.growth_horizon_tiles} tiles (${screening.isohedral.seconds_per_tile}s).`
       : "";
     const proofProtocol = screening?.gcts_proof;
@@ -1388,9 +1398,14 @@ function updateCandidateResearchPanel() {
         : "";
       return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}${crystal}${internalPeriod}`;
     })() : "";
-    if (candidate.screening?.certificate === "finite_shell_obstruction") {
+    if (candidate.screening?.certificate === "translational") {
+      candidateResearchTitle.textContent = `Certified periodic control ${candidate.id}`;
+      const source = candidate.screening.periodic_source
+        ?? "an exact quotient was mined from the validated 1,174-tile shell-7 witness";
+      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. Use the preset to replay the certificate in the Translational lane.`;
+    } else if (candidate.screening?.certificate === "finite_extendable_shell_obstruction") {
       candidateResearchTitle.textContent = `Certified non-tiler control ${candidate.id}`;
-      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that combinatorial shell ${candidate.screening.shell_depth} cannot be completed around the root in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but the next shell is not.` : " One root face has no legal lattice face-mate."} Earlier connected-patch growth could still reach 60 tiles by extending elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
+      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that every route toward combinatorial shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but no indefinitely extendable next shell exists.` : " The contradiction appears before the first complete shell."} Earlier connected-patch growth could still extend elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
       candidateResearchDetail.textContent = `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
@@ -1450,9 +1465,12 @@ function renderSystemTileList() {
       const angles = document.createElement("div");
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
-        angles.textContent = figure.census_candidate.screening?.certificate === "finite_shell_obstruction"
-          ? `shell ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
-          : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;
+        const certificate = figure.census_candidate.screening?.certificate;
+        angles.textContent = certificate === "translational"
+          ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.lattice_points} points`
+          : certificate === "finite_extendable_shell_obstruction"
+            ? `dead-face shell ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
+            : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;
         angles.classList.add("is-census-label");
       } else {
         angles.innerHTML = solidAngleListHtml(figure.solid_angles);
@@ -1717,6 +1735,7 @@ function configKey() {
     forced_move_layer_lag_cap: forcedLayerLagCap,
     generic_connected_patch_enumeration: completeGlobalSearch,
     generic_complete_shell_enumeration: completeShellSearch,
+    known_periodic_template: root?.census_candidate?.screening?.periodic_template ?? null,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -2732,7 +2751,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-complete-shell-v96", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-size11-controls-v98", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2943,6 +2962,17 @@ function handleGrowthPlotClick(event) {
   renderGrowthChart();
 }
 
+function growthEventIsNearPoint(event) {
+  if (event.target?.closest?.(".point")) return true;
+  const threshold = 13;
+  return [...growthChart.querySelectorAll(".point")].some(point => {
+    const bounds = point.getBoundingClientRect();
+    const centerX = bounds.left + bounds.width / 2;
+    const centerY = bounds.top + bounds.height / 2;
+    return Math.hypot(event.clientX - centerX, event.clientY - centerY) <= threshold;
+  });
+}
+
 async function renderGrowthChart() {
   const plotly = window.Plotly;
   const revision = ++growthPlotRevision;
@@ -3061,6 +3091,7 @@ async function renderGrowthChart() {
   }
   if (!growthPlotBackgroundBound) {
     growthChart.addEventListener("click", event => {
+      growthPointerWasNearPoint = growthEventIsNearPoint(event);
       if (growthPointerWasNearPoint) return;
       queueMicrotask(() => {
         const modeId = growthInspection.modeId ?? selectedGrowthMode();
@@ -3070,13 +3101,7 @@ async function renderGrowthChart() {
       });
     }, true);
     growthChart.addEventListener("pointerdown", event => {
-      const threshold = 13;
-      growthPointerWasNearPoint = [...growthChart.querySelectorAll(".point")].some(point => {
-        const bounds = point.getBoundingClientRect();
-        const centerX = bounds.left + bounds.width / 2;
-        const centerY = bounds.top + bounds.height / 2;
-        return Math.hypot(event.clientX - centerX, event.clientY - centerY) <= threshold;
-      });
+      growthPointerWasNearPoint = growthEventIsNearPoint(event);
     }, true);
     growthPlotBackgroundBound = true;
   }
@@ -3260,7 +3285,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-complete-shell-v96", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-size11-controls-v98", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

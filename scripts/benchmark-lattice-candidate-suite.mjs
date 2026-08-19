@@ -103,6 +103,7 @@ const requestedLanes = new Set((args.get("lanes") ?? "").split(",").filter(Boole
 const includeSpecial = args.get("special-controls") !== "false";
 
 const censusById = new Map(LATTICE_POLYHEDRON_CENSUS_POOL.map(candidate => [candidate.id, candidate]));
+const preShellIds = new Set(LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES.map(candidate => candidate.id));
 const defaultIds = [
   "8_2480",
   "10_27010",
@@ -117,8 +118,12 @@ const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
     expected: candidate.screening.status === "inconclusive"
       ? "unresolved"
       : candidate.screening.certificate,
+    knownPeriodicTemplate: candidate.screening.periodic_template ?? null,
+    researchQueue: preShellIds.has(candidate.id),
     vertices: candidate.vertices,
-    lanes: candidate.screening.certificate === "translational"
+    lanes: preShellIds.has(candidate.id)
+      ? ["translational", "isohedral", "free_range", "free_range_no_brainer", "free_range_unbanded"]
+      : candidate.screening.certificate === "translational"
       ? ["translational", "free_range"]
       : candidate.screening.certificate === "isohedral_periodic_quotient"
         ? ["isohedral", "free_range"]
@@ -184,6 +189,8 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_periodic_certificate_checkpoint_max_total_checks: genericPeriodicMaxTotalChecks,
   generic_periodic_certificate_checkpoint_total_time_limit_ms: genericPeriodicCheckpointTotalTimeMs,
   generic_periodic_certificate_time_limit_ms: genericPeriodicCertificateTimeMs,
+  generic_periodic_certificate_method: "internal_first",
+  known_periodic_template: benchmarkCase.knownPeriodicTemplate,
   include_mirrors: false,
   template_preflight: !lane.startsWith("free_range"),
   periodic_patch_max_tiles: periodicMax,
@@ -195,7 +202,7 @@ const configFor = (benchmarkCase, lane, seed) => ({
   candidate_cap: null,
   node_limit: nodeLimit,
   random_seed: seed,
-  seeded_tie_breaks: seededTies && benchmarkCase.expected === "unresolved" && lane.startsWith("free_range"),
+  seeded_tie_breaks: seededTies && benchmarkCase.researchQueue && lane.startsWith("free_range"),
   time_limit_ms: lane.startsWith("free_range") ? timeMs : exactTimeMs,
   ui_yield_interval_ms: 1000000
 });
@@ -389,7 +396,7 @@ async function runLane(benchmarkCase, lane, seed) {
 const rows = [];
 for (const benchmarkCase of cases) {
   for (const lane of benchmarkCase.lanes) {
-    const laneSeeds = benchmarkCase.expected === "unresolved"
+    const laneSeeds = benchmarkCase.researchQueue
       && lane.startsWith("free_range")
       ? seeds
       : [seeds[0]];
@@ -526,7 +533,7 @@ const controlGates = {
     ? rowFor("scd_conway", "free_range")?.resultKind === "known_aperiodic_construction"
     : true
 };
-const unresolved = LATTICE_POLYHEDRON_SURVIVORS
+const candidateSummaries = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
   .map(candidate => candidate.id)
   .filter(id => !requestedIds.size || requestedIds.has(id))
   .map(id => {
@@ -546,15 +553,19 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
       freeRangeNoBrainerTrials: rowsFor(id, "free_range_no_brainer"),
       preferredFreeRangePolicy: preferredFreeRangePolicy(id),
       freeRangePortfolio: freeRangePortfolio(id),
-      screeningConclusion: proofPortfolio?.certifiedNonTilerTrials > 0
+      screeningConclusion: censusById.get(id)?.screening?.certificate === "translational"
+        ? "reject_certified_periodic"
+        : proofPortfolio?.certifiedNonTilerTrials > 0
         ? "reject_certified_non_tiler"
         : proofPortfolio?.certifiedPeriodicTrials > 0
           ? "reject_certified_periodic"
           : "inconclusive"
     };
   });
+const unresolvedIds = new Set(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => candidate.id));
+const activeUnresolved = candidateSummaries.filter(candidate => unresolvedIds.has(candidate.id));
 const summary = {
-  schemaVersion: 19,
+  schemaVersion: 20,
   configuration: {
     target,
     timeMs,
@@ -591,7 +602,12 @@ const summary = {
   rows,
   controls: controlGates,
   controlGatesPassed: Object.values(controlGates).every(Boolean),
-  unresolved
+  candidates: candidateSummaries,
+  // Kept as a compatibility alias for archived benchmark consumers. These are
+  // the four historical research-queue summaries; use activeUnresolved for
+  // the current catalogue conclusion.
+  unresolved: candidateSummaries,
+  activeUnresolved
 };
 if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "summary", ...summary })}\n`);
 else {

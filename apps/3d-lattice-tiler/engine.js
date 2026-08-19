@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-complete-shell-v96";
+import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-size11-controls-v98";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -705,7 +705,12 @@ export const createTilingStream = (() => {
       generic_complete_shell_enumeration: false,
       generic_global_extension_candidate_states: 0,
       generic_global_extension_max_candidates: 0,
+      generic_global_zero_face_pruning: false,
+      generic_global_zero_face_dead_ends: 0,
       max_complete_shell_depth: 0,
+      initial_patch_requested_tiles: 0,
+      initial_patch_applied_tiles: 0,
+      initial_patch_base_shell_depth: 0,
       generic_geometric_nogood_enabled: false,
       generic_geometric_nogood_disable_reason: null,
       generic_geometric_nogood_clauses: 0,
@@ -753,6 +758,7 @@ export const createTilingStream = (() => {
       generic_periodic_certificate_target_completed: false,
       generic_periodic_certificate_target_timed_out: false,
       generic_periodic_certificate_target_found: false,
+      generic_periodic_certificate_method: "boundary_first",
       generic_periodic_internal_motif_attempted: false,
       generic_periodic_internal_motif_found: false,
       generic_periodic_internal_motif_vector_count: 0,
@@ -1477,8 +1483,10 @@ export const createTilingStream = (() => {
               candidateByGeometry.get(geometryKey)._matched_frontier_face_keys.add(frontierFaceKey);
               continue;
             }
-            const validity = checkMoveViability(move);
-            if (!validity) continue;
+            const validity = genericGlobalExtensionEnumeration
+              ? isMoveValid(move)
+              : checkMoveViability(move);
+            if (!validity || validity.ok === false) continue;
             candidateByGeometry.set(geometryKey, {
               ...move,
               occupancy_data: validity.occData,
@@ -1856,7 +1864,10 @@ export const createTilingStream = (() => {
       && !proposalProgram;
     const genericGlobalExtensionEnumeration = genericConnectedPatchEnumeration
       || genericCompleteShellEnumeration;
+    const genericGlobalZeroFacePruning = genericGlobalExtensionEnumeration
+      && config.generic_global_zero_face_pruning !== false;
     searchStats.generic_complete_shell_enumeration = genericCompleteShellEnumeration;
+    searchStats.generic_global_zero_face_pruning = genericGlobalZeroFacePruning;
     const configuredFailureMemoCapacity = Number(config.generic_failure_memo_max_states);
     const genericFailureMemoCapacity = Number.isFinite(configuredFailureMemoCapacity)
       ? Math.max(0, Math.floor(configuredFailureMemoCapacity))
@@ -3796,13 +3807,14 @@ export const createTilingStream = (() => {
       const certificateBudgetExceeded = () =>
         performance.now() - certificateStartedAt >= certificateTimeLimitMs;
       const noteCertificateTimeout = () => { certificateTimedOut = true; };
-      let template = findBoundaryPeriodicTemplate(patchSize, {
-        budget_exceeded: certificateBudgetExceeded,
-        on_budget_exceeded: noteCertificateTimeout
-      });
-      if (!template && !certificateBudgetExceeded()) {
+      const requestedCertificateMethod = config.generic_periodic_certificate_method;
+      const certificateMethod = ["internal_first", "internal_only"].includes(requestedCertificateMethod)
+        ? requestedCertificateMethod
+        : "boundary_first";
+      searchStats.generic_periodic_certificate_method = certificateMethod;
+      const mineInternalTemplate = () => {
         searchStats.generic_periodic_internal_motif_attempted = true;
-        template = minePeriodicTemplateFromCurrentPatch({
+        const internalTemplate = minePeriodicTemplateFromCurrentPatch({
           budget_exceeded: certificateBudgetExceeded,
           on_budget_exceeded: noteCertificateTimeout,
           on_vectors: (count, translations) => {
@@ -3818,8 +3830,21 @@ export const createTilingStream = (() => {
           },
           on_basis: () => { searchStats.generic_periodic_internal_motif_bases_tested += 1; }
         });
-        searchStats.generic_periodic_internal_motif_found = !!template;
-      } else if (!template && certificateBudgetExceeded()) {
+        searchStats.generic_periodic_internal_motif_found = !!internalTemplate;
+        return internalTemplate;
+      };
+      const findBoundaryTemplate = () => findBoundaryPeriodicTemplate(patchSize, {
+        budget_exceeded: certificateBudgetExceeded,
+        on_budget_exceeded: noteCertificateTimeout
+      });
+      let template = certificateMethod === "boundary_first"
+        ? findBoundaryTemplate()
+        : mineInternalTemplate();
+      if (!template && !certificateBudgetExceeded()) {
+        if (certificateMethod === "boundary_first") template = mineInternalTemplate();
+        else if (certificateMethod === "internal_first") template = findBoundaryTemplate();
+      }
+      if (!template && certificateBudgetExceeded()) {
         noteCertificateTimeout();
       }
       const preciseElapsed = performance.now() - certificateStartedAt;
@@ -3882,9 +3907,43 @@ export const createTilingStream = (() => {
       const sharesFrontierFace = faceKeys.some(faceKey => state.frontier.has(faceKey));
       return sharesFrontierFace ? { ok: true } : null;
     };
+    const certifyConfiguredPeriodicTemplate = rawTemplate => {
+      if (!rawTemplate?.motif?.length || !Array.isArray(rawTemplate.period_vectors)) return null;
+      const placements = [];
+      for (const descriptor of rawTemplate.motif) {
+        const prototileIdx = descriptor.prototile_idx ?? 0;
+        const tile = prototiles[prototileIdx];
+        const orient = descriptor.orientation_id
+          ? tile?.unique_orientations?.find(item => item.__orientation_id === descriptor.orientation_id)
+          : tile?.unique_orientations?.[descriptor.orientation_index ?? 0];
+        if (!tile || !orient || !Array.isArray(descriptor.translation)) return null;
+        placements.push({
+          prototile_idx: prototileIdx,
+          orient,
+          translation: vecAdd(startMove.translation, descriptor.translation)
+        });
+      }
+      if (
+        placements[0].prototile_idx !== startMove.prototile_idx
+        || placements[0].orient !== startMove.orient
+        || !vecEq(placements[0].translation, startMove.translation)
+      ) return null;
+      return certifyPeriodicPlacementMotif(placements, rawTemplate.period_vectors);
+    };
     async function* tryPeriodicTemplatePatch(parentId) {
       if (!periodicPreflightEnabled || goalMet()) return false;
-      let template = null;
+      let template = certifyConfiguredPeriodicTemplate(config.known_periodic_template);
+      if (config.known_periodic_template) {
+        yield {
+          type: "translational_check",
+          source: "configured_verified_template",
+          patch_size: config.known_periodic_template.motif?.length ?? 0,
+          certified: !!template,
+          periodic_template: template,
+          frontier_stats: frontierStatsWithCandidateCount(),
+          search_stats: searchStatsSnapshot()
+        };
+      }
       const progressiveMax = Number(config.periodic_patch_max_tiles);
       const unbounded = !!config.periodic_patch_unbounded;
       const maximumPatchSize = unbounded
@@ -3892,7 +3951,7 @@ export const createTilingStream = (() => {
         : Number.isFinite(progressiveMax)
           ? Math.max(1, Math.floor(progressiveMax))
           : Math.max(1, Math.floor(+config.periodic_tile_count || 2));
-      for (let patchSize = 1; patchSize <= maximumPatchSize && !overBudget(); patchSize++) {
+      for (let patchSize = 1; !template && patchSize <= maximumPatchSize && !overBudget(); patchSize++) {
         yield nodeStatus(
           parentId,
           "working",
@@ -3945,10 +4004,12 @@ export const createTilingStream = (() => {
       tilingEvidence = {
         kind: "translational_certificate",
         certified: true,
+        can_tile: true,
         strategy: "translational",
         patch_size: template.motif?.length ?? 1,
         certificate_kind: template.kind,
-        period_vectors: template.period_vectors?.map(vector => vector.slice()) ?? []
+        period_vectors: template.period_vectors?.map(vector => vector.slice()) ?? [],
+        periodic_template: template
       };
       const cells = periodicTemplateCells(template);
       const existing = new Set(state.placements.map(placement => placementGeometryKey(placement)));
@@ -5201,6 +5262,20 @@ export const createTilingStream = (() => {
         // face therefore exposes zero-candidate contradictions immediately.
         faceCandidatesByFrontierPoint();
         const shell = completeShellDepthStats();
+        // A mate for a fixed exposed face has fixed geometry. Adding tiles
+        // elsewhere can invalidate such a mate through overlap, but can never
+        // create a new one. Therefore a zero-candidate face anywhere on the
+        // current boundary is a permanent contradiction, even when its owner
+        // lies outside the shell currently being completed. Positive outer
+        // faces remain deferred so growth still prioritizes the oldest shell.
+        if (genericGlobalZeroFacePruning) {
+          for (const faceKey of state.frontier.keys()) {
+            if ((frontierFaceCandidateIndex.get(faceKey) ?? []).length) continue;
+            searchStats.generic_global_zero_face_dead_ends += 1;
+            searchStats.generic_global_extension_candidate_states += 1;
+            return [];
+          }
+        }
         let selectedFaceKey = null;
         let selectedFaceDepth = Infinity;
         let selectedCandidates = null;
@@ -5554,6 +5629,73 @@ export const createTilingStream = (() => {
       return replayed;
     }
 
+    const initialPatchDescriptors = Array.isArray(config.initial_patch?.placements)
+      ? config.initial_patch.placements
+      : Array.isArray(config.initial_patch)
+        ? config.initial_patch
+        : [];
+    const resolvePatchOrientation = descriptor => {
+      const tile = prototiles[descriptor?.prototile_idx ?? 0];
+      if (!tile) return null;
+      if (descriptor.orientation_id) {
+        return tile.unique_orientations.find(item => item.__orientation_id === descriptor.orientation_id) ?? null;
+      }
+      if (Number.isInteger(descriptor.orientation_index)) {
+        return tile.unique_orientations[descriptor.orientation_index] ?? null;
+      }
+      return tile.unique_orientations[0] ?? null;
+    };
+    const applyInitialPatch = () => {
+      if (!initialPatchDescriptors.length) return;
+      searchStats.initial_patch_requested_tiles = initialPatchDescriptors.length;
+      const root = initialPatchDescriptors[0];
+      const rootOrient = resolvePatchOrientation(root);
+      if ((root.prototile_idx ?? 0) !== startMove.prototile_idx || rootOrient !== startMove.orient) {
+        throw new Error("The initial patch root does not match the normalized root tile");
+      }
+      for (let index = 1; index < initialPatchDescriptors.length; index += 1) {
+        const descriptor = initialPatchDescriptors[index];
+        const prototileIdx = descriptor.prototile_idx ?? 0;
+        const tile = prototiles[prototileIdx];
+        const orient = resolvePatchOrientation(descriptor);
+        if (!tile || !orient || !Array.isArray(descriptor.translation) || descriptor.translation.length !== 3) {
+          throw new Error(`Invalid initial patch placement ${index}`);
+        }
+        const translation = config.initial_patch_relative_to_root === false
+          ? descriptor.translation.slice()
+          : vecAdd(startMove.translation, descriptor.translation);
+        if (tile.is_polycube ? !isPolycubeMoveTranslation(tile, translation) : !translation.every(Number.isInteger)) {
+          throw new Error(`Initial patch placement ${index} is off the configured lattice`);
+        }
+        const move = { prototile_idx: prototileIdx, orient, translation, is_forced: false };
+        const sharesFrontierFace = orient.faces.some((_, faceIdx) =>
+          state.frontier.has(translatedOrientedFaceKey(orient, faceIdx, translation))
+        );
+        if (!sharesFrontierFace) {
+          throw new Error(`Initial patch placement ${index} is not face-connected to its prefix`);
+        }
+        const validity = isMoveValid(move);
+        if (!validity.ok) {
+          throw new Error(`Initial patch placement ${index} is invalid: ${validity.reason ?? "geometry"}`);
+        }
+        move.occupancy_data = validity.occData;
+        applyMove(move, { countWork: false });
+      }
+      searchStats.initial_patch_applied_tiles = state.placements.length;
+      searchStats.initial_patch_base_shell_depth = completeShellDepthStats().complete_shell_depth;
+      searchStats.max_live_tiles = Math.max(searchStats.max_live_tiles, state.placements.length);
+    };
+
+    applyInitialPatch();
+    if (initialPatchDescriptors.length) {
+      yield nodeStatus(rootId, "working", `resumed ${state.placements.length}-tile patch`, {
+        frontier_stats: frontierStatsWithCandidateCount(),
+        search_stats: searchStatsSnapshot()
+      });
+      yield snapshot(rootId);
+      await tick();
+    }
+
     let success = false;
     if (convexEdgeAngleObstruction) {
       tilingEvidence = {
@@ -5595,7 +5737,7 @@ export const createTilingStream = (() => {
     }
     // A periodic exact-cover certificate proves an infinite tiling even when the
     // bounded visualization patch did not reach the requested display count.
-    success = success || !!(tilingEvidence?.certified && tilingEvidence?.can_tile !== false);
+    success = success || !!(tilingEvidence?.certified && tilingEvidence?.can_tile === true);
     if (
       !success
       && exhaustive
@@ -5626,15 +5768,31 @@ export const createTilingStream = (() => {
       && !(proposalProgram && searchStats.proposal_patch_tiles_replayed > 0)
       && !tilingEvidence
     ) {
+      const restrictedToInitialPatch = searchStats.initial_patch_applied_tiles > 1;
+      const usedDeadFacePruning = searchStats.generic_global_zero_face_dead_ends > 0;
       tilingEvidence = criterion === "shell"
         ? {
-            kind: "finite_shell_obstruction",
+            kind: restrictedToInitialPatch
+              ? "finite_shell_extension_obstruction"
+              : usedDeadFacePruning
+                ? "finite_extendable_shell_obstruction"
+                : "finite_shell_obstruction",
             certified: true,
-            can_tile: false,
+            can_tile: restrictedToInitialPatch ? null : false,
             strategy: tilingStrategy,
             target_shell_depth: targetVal,
+            ...(restrictedToInitialPatch
+              ? {
+                  initial_patch_tiles: searchStats.initial_patch_applied_tiles,
+                  initial_patch_shell_depth: searchStats.initial_patch_base_shell_depth
+                }
+              : {}),
             model: "face-to-face tiling by the configured proper lattice orientations",
-            note: `Exhaustive global face-extension search found no patch completing combinatorial shell ${targetVal} around the normalized root tile.`
+            note: restrictedToInitialPatch
+              ? `Exhaustive global face-extension search found no extension of the supplied ${searchStats.initial_patch_applied_tiles}-tile patch completing combinatorial shell ${targetVal}; this does not exclude other shell-${targetVal} patches.`
+              : usedDeadFacePruning
+                ? `Exhaustive global face-extension search proved that every route toward combinatorial shell ${targetVal} encounters a permanently unfillable exposed face; such a face can never occur in an infinite tiling.`
+                : `Exhaustive global face-extension search found no patch completing combinatorial shell ${targetVal} around the normalized root tile.`
           }
         : {
             kind: "finite_patch_obstruction",
@@ -5688,8 +5846,11 @@ export const createTilingStream = (() => {
       && exhaustive
       && !searchIncomplete
     );
+    const extensionImpossible = tilingEvidence?.kind === "finite_shell_extension_obstruction";
     const resultKind = provenImpossible
       ? "no_tiling"
+      : extensionImpossible
+        ? "patch_extension_impossible"
       : tilingEvidence?.certified
         ? "certified_tiling"
       : success
@@ -5707,7 +5868,9 @@ export const createTilingStream = (() => {
       best_effort: !success && (finalSnapshot.tile_count ?? 0) > state.placements.length,
       result_kind: resultKind,
       tiling_evidence: tilingEvidence,
-      can_tile: typeof tilingEvidence?.can_tile === "boolean"
+      can_tile: tilingEvidence?.can_tile === null
+        ? null
+        : typeof tilingEvidence?.can_tile === "boolean"
         ? tilingEvidence.can_tile
         : tilingEvidence?.certified
           ? true
@@ -6808,7 +6971,9 @@ export const tileSpecs = (() => {
       name: candidate.name,
       category: [candidate.screening.status === "inconclusive"
         ? "Unresolved Lattice Candidates"
-        : "GCTS Shell-Obstruction Controls"],
+        : candidate.screening.certificate === "translational"
+          ? "GCTS Periodic Controls"
+          : "GCTS Shell-Obstruction Controls"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),

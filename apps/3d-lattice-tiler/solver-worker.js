@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-complete-shell-v96";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-size11-controls-v98";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_shell_checkpoint_continuation",
+  "generatedAt": "2026-08-19T12:39:15.000Z",
+  "candidate": "10_45033",
+  "model": "face-to-face lattice tiling using proper cubic rotations and integer translations",
+  "globalZeroFacePruning": true,
+  "checkpoints": [
+    {
+      "shellDepth": 5,
+      "tiles": 464,
+      "witnessHash": "79c786d14d2762fd",
+      "directSeeds": [3],
+      "directHits": 1,
+      "directTrials": 3
+    },
+    {
+      "shellDepth": 6,
+      "tiles": 764,
+      "witnessHash": "83f9d6838465220d",
+      "continuedFrom": "79c786d14d2762fd",
+      "hits": 2,
+      "trials": 3,
+      "successfulSeeds": [1, 3]
+    },
+    {
+      "shellDepth": 7,
+      "tiles": 1174,
+      "witnessHash": "3b66ae6a92496ffe",
+      "continuedFrom": "83f9d6838465220d",
+      "hits": 1,
+      "trials": 3,
+      "successfulSeeds": [1]
+    }
+  ],
+  "deadWitnessControls": [
+    {
+      "shellDepth": 5,
+      "tiles": 464,
+      "witnessHash": "06d525836618037a",
+      "extensionTarget": 6,
+      "result": "finite_shell_extension_obstruction"
+    },
+    {
+      "shellDepth": 5,
+      "tiles": 464,
+      "witnessHash": "4f38c62f40737491",
+      "extensionTarget": 6,
+      "result": "finite_shell_extension_obstruction"
+    }
+  ],
+  "interpretation": "Checkpoint continuation strengthens finite-growth evidence without changing proof scope. A failed continuation excludes only that supplied patch; a successful shell remains necessary but insufficient for an infinite tiling. The subsequent exact six-tile quotient certificate independently proves this candidate periodic."
+}
