@@ -78,9 +78,10 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 15);
+assert.equal(survivor.schemaVersion, 16);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 assert.equal(survivor.configuration.failureMemoSymmetry, "fixed");
+assert.equal(survivor.configuration.geometricNogoodStagnationFailures, 0);
 for (const row of survivor.rows.filter(candidateRow => candidateRow.lane.startsWith("free_range"))) {
   assert.ok(row.growthMilestones.length >= 1, `${row.case}/${row.lane} must report growth milestones`);
   assert.equal(row.growthMilestones.at(-1).patchSize, row.largestPatch);
@@ -226,6 +227,7 @@ const nogoodRow = nogoodProbe.unresolved[0].freeRangeUnbanded;
 assert.equal(nogoodRow.geometricNogoodEnabled, true);
 assert.equal(nogoodRow.geometricNogoodDisableReason, null);
 assert.equal(nogoodRow.geometricNogoodActivationFailureStates, 0);
+assert.equal(nogoodRow.geometricNogoodActivationStagnationFailureStates, 0);
 assert.equal(nogoodRow.geometricNogoodActivated, true);
 assert.ok(nogoodRow.geometricNogoodClauses >= 1000);
 assert.ok(nogoodRow.geometricNogoodPrunes >= 400);
@@ -254,6 +256,7 @@ const delayedNogoodRow = delayedNogoodProbe.unresolved[0].freeRangeUnbanded;
 assert.equal(delayedNogoodProbe.configuration.geometricNogoodActivationFailures, 1000);
 assert.equal(delayedNogoodRow.geometricNogoodEnabled, true);
 assert.equal(delayedNogoodRow.geometricNogoodActivationFailureStates, 1000);
+assert.equal(delayedNogoodRow.geometricNogoodActivationStagnationFailureStates, 0);
 assert.equal(delayedNogoodRow.geometricNogoodActivated, false);
 assert.ok(delayedNogoodRow.geometricNogoodClauses >= 100, "delayed nogoods must learn before activation");
 assert.equal(delayedNogoodRow.geometricNogoodPrunes, 0);
@@ -277,6 +280,65 @@ assert.deepEqual(
   ],
   "learning dormant nogoods must preserve the baseline path until activation"
 );
+const stagnationNogoodProbe = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=24",
+  "--time-ms=5000",
+  "--exact-time-ms=5000",
+  "--node-limit=200",
+  "--seeds=1",
+  "--geometric-nogood=true",
+  "--geometric-nogood-stagnation-failures=1000"
+]);
+const stagnationNogoodRow = stagnationNogoodProbe.unresolved[0].freeRangeUnbanded;
+assert.equal(stagnationNogoodProbe.configuration.geometricNogoodStagnationFailures, 1000);
+assert.equal(stagnationNogoodRow.geometricNogoodActivationFailureStates, 0);
+assert.equal(stagnationNogoodRow.geometricNogoodActivationStagnationFailureStates, 1000);
+assert.equal(stagnationNogoodRow.geometricNogoodActivated, false);
+assert.ok(stagnationNogoodRow.geometricNogoodClauses >= 100, "stagnation-gated nogoods must learn while dormant");
+assert.equal(stagnationNogoodRow.geometricNogoodPrunes, 0);
+assert.equal(stagnationNogoodRow.geometricNogoodCompatibilityChecks, 0);
+assert.ok(stagnationNogoodRow.geometricNogoodFailuresSinceGrowth < 1000);
+assert.ok(stagnationNogoodRow.geometricNogoodGrowthMarkTiles <= stagnationNogoodRow.largestPatch);
+assert.deepEqual(
+  [
+    stagnationNogoodRow.resultKind,
+    stagnationNogoodRow.terminationReason,
+    stagnationNogoodRow.largestPatch,
+    stagnationNogoodRow.visitedNodes,
+    stagnationNogoodRow.backtracks,
+    stagnationNogoodRow.witnessHash
+  ],
+  [
+    memoRow.resultKind,
+    memoRow.terminationReason,
+    memoRow.largestPatch,
+    memoRow.visitedNodes,
+    memoRow.backtracks,
+    memoRow.witnessHash
+  ],
+  "dormant stagnation-gated nogoods must preserve the baseline path"
+);
+const activeStagnationNogoodProbe = run([
+  "--ids=10_45026",
+  "--lanes=free_range_unbanded",
+  "--special-controls=false",
+  "--target=24",
+  "--time-ms=5000",
+  "--exact-time-ms=5000",
+  "--node-limit=200",
+  "--seeds=1",
+  "--geometric-nogood=true",
+  "--geometric-nogood-stagnation-failures=10"
+]);
+const activeStagnationNogoodRow = activeStagnationNogoodProbe.unresolved[0].freeRangeUnbanded;
+assert.equal(activeStagnationNogoodRow.geometricNogoodActivationStagnationFailureStates, 10);
+assert.equal(activeStagnationNogoodRow.geometricNogoodActivated, true);
+assert.ok(activeStagnationNogoodRow.geometricNogoodFailuresSinceGrowth >= 10);
+assert.ok(activeStagnationNogoodRow.geometricNogoodPrunes > 0);
+assert.ok(activeStagnationNogoodRow.geometricNogoodCompatibilityChecks > 0);
 const linearNogoodProbe = run([
   "--ids=10_45026",
   "--lanes=free_range_unbanded",

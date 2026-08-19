@@ -37,6 +37,10 @@ const geometricNogoodActivationFailures = Math.max(
   0,
   Math.floor(numberArg("geometric-nogood-activation-failures", 0))
 );
+const geometricNogoodStagnationFailures = Math.max(
+  0,
+  Math.floor(numberArg("geometric-nogood-stagnation-failures", 0))
+);
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
 const genericPeriodicCheckpoints = args.get("generic-periodic-checkpoints") === "true";
 const genericPeriodicDistinctPatches = args.get("generic-periodic-distinct-patches") === "true";
@@ -144,6 +148,7 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_geometric_nogood_max_clauses: geometricNogoodMaxClauses,
   generic_geometric_nogood_index: geometricNogoodIndex,
   generic_geometric_nogood_activation_failure_states: geometricNogoodActivationFailures,
+  generic_geometric_nogood_activation_stagnation_failure_states: geometricNogoodStagnationFailures,
   generic_periodic_certificate: genericPeriodicCertificate && lane === "free_range_unbanded",
   generic_periodic_certificate_check_new_maximum:
     genericPeriodicCheckpoints && lane === "free_range_unbanded",
@@ -266,6 +271,10 @@ async function runLane(benchmarkCase, lane, seed) {
     geometricNogoodFailureStates: stats.generic_geometric_nogood_failure_states ?? 0,
     geometricNogoodActivationFailureStates:
       stats.generic_geometric_nogood_activation_failure_states ?? 0,
+    geometricNogoodActivationStagnationFailureStates:
+      stats.generic_geometric_nogood_activation_stagnation_failure_states ?? 0,
+    geometricNogoodFailuresSinceGrowth: stats.generic_geometric_nogood_failures_since_growth ?? 0,
+    geometricNogoodGrowthMarkTiles: stats.generic_geometric_nogood_growth_mark_tiles ?? 1,
     geometricNogoodActivated: !!stats.generic_geometric_nogood_activated,
     geometricNogoodCapacityReached: !!stats.generic_geometric_nogood_capacity_reached,
     geometricNogoodPivotIndex: !!stats.generic_geometric_nogood_pivot_index,
@@ -492,7 +501,7 @@ const unresolved = LATTICE_POLYHEDRON_SURVIVORS
     };
   });
 const summary = {
-  schemaVersion: 15,
+  schemaVersion: 16,
   configuration: {
     target,
     timeMs,
@@ -508,6 +517,7 @@ const summary = {
     geometricNogoodMaxClauses,
     geometricNogoodIndex,
     geometricNogoodActivationFailures,
+    geometricNogoodStagnationFailures,
     genericPeriodicCertificate,
     genericPeriodicCheckpoints,
     genericPeriodicDistinctPatches,

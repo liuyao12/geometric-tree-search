@@ -701,6 +701,9 @@ export const createTilingStream = (() => {
       generic_geometric_nogood_prunes: 0,
       generic_geometric_nogood_failure_states: 0,
       generic_geometric_nogood_activation_failure_states: 0,
+      generic_geometric_nogood_activation_stagnation_failure_states: 0,
+      generic_geometric_nogood_failures_since_growth: 0,
+      generic_geometric_nogood_growth_mark_tiles: 1,
       generic_geometric_nogood_activated: false,
       generic_geometric_nogood_capacity: 0,
       generic_geometric_nogood_capacity_reached: false,
@@ -1743,6 +1746,14 @@ export const createTilingStream = (() => {
     const genericGeometricNogoodActivationFailures = Number.isFinite(configuredGeometricNogoodActivationFailures)
       ? Math.max(0, Math.floor(configuredGeometricNogoodActivationFailures))
       : 0;
+    const configuredGeometricNogoodStagnationFailures = Number(
+      config.generic_geometric_nogood_activation_stagnation_failure_states
+    );
+    const genericGeometricNogoodStagnationFailures = Number.isFinite(configuredGeometricNogoodStagnationFailures)
+      ? Math.max(0, Math.floor(configuredGeometricNogoodStagnationFailures))
+      : 0;
+    let genericGeometricNogoodGrowthMarkTiles = searchStats.max_live_tiles;
+    let genericGeometricNogoodFailuresAtLastGrowth = 0;
     const genericGeometricNogood = new GeometricFailureMemo({
       contextMatch: "subset",
       usePivotIndex: genericGeometricNogoodPivotIndex,
@@ -1772,8 +1783,13 @@ export const createTilingStream = (() => {
     searchStats.generic_geometric_nogood_activation_failure_states = genericGeometricNogoodEnabled
       ? genericGeometricNogoodActivationFailures
       : 0;
+    searchStats.generic_geometric_nogood_activation_stagnation_failure_states = genericGeometricNogoodEnabled
+      ? genericGeometricNogoodStagnationFailures
+      : 0;
+    searchStats.generic_geometric_nogood_growth_mark_tiles = genericGeometricNogoodGrowthMarkTiles;
     searchStats.generic_geometric_nogood_activated = genericGeometricNogoodEnabled
-      && genericGeometricNogoodActivationFailures === 0;
+      && genericGeometricNogoodActivationFailures === 0
+      && genericGeometricNogoodStagnationFailures === 0;
     searchStats.generic_geometric_nogood_capacity = genericGeometricNogoodEnabled
       ? genericGeometricNogoodCapacity
       : 0;
@@ -1815,10 +1831,24 @@ export const createTilingStream = (() => {
     };
     const candidatePassesGeometricNogoods = candidate => {
       if (!genericGeometricNogoodEnabled) return true;
-      if (searchStats.generic_geometric_nogood_failure_states < genericGeometricNogoodActivationFailures) {
-        return true;
+      if (!searchStats.generic_geometric_nogood_activated) {
+        if (searchStats.max_live_tiles > genericGeometricNogoodGrowthMarkTiles) {
+          genericGeometricNogoodGrowthMarkTiles = searchStats.max_live_tiles;
+          genericGeometricNogoodFailuresAtLastGrowth = searchStats.generic_geometric_nogood_failure_states;
+          searchStats.generic_geometric_nogood_growth_mark_tiles = genericGeometricNogoodGrowthMarkTiles;
+        }
+        searchStats.generic_geometric_nogood_failures_since_growth = Math.max(
+          0,
+          searchStats.generic_geometric_nogood_failure_states - genericGeometricNogoodFailuresAtLastGrowth
+        );
+        if (
+          searchStats.generic_geometric_nogood_failure_states < genericGeometricNogoodActivationFailures
+          || searchStats.generic_geometric_nogood_failures_since_growth < genericGeometricNogoodStagnationFailures
+        ) {
+          return true;
+        }
+        searchStats.generic_geometric_nogood_activated = true;
       }
-      searchStats.generic_geometric_nogood_activated = true;
       const compatible = genericGeometricNogood.compatible(candidate, state.placements);
       updateGeometricNogoodStats();
       return compatible;
