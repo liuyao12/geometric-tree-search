@@ -89,6 +89,7 @@ async function runMode(sequence, baseConfig, mode) {
     generic_geometric_nogood: false,
     seeded_tie_breaks: !!mode.proof,
     generic_periodic_certificate: !!mode.proof,
+    generic_periodic_certificate_check_new_maximum: !!mode.proof,
     generic_periodic_certificate_time_limit_ms: 5000,
     exhaustive: !!mode.proof
   };
@@ -107,6 +108,7 @@ async function runMode(sequence, baseConfig, mode) {
     if (message.type === "translational_check") {
       checkedPatchSize = Math.max(checkedPatchSize, message.patch_size ?? 0);
       const targetPatchCheck = message.source === "generic_target_patch";
+      const growthCheckpoint = message.source === "generic_growth_checkpoint";
       post(sequence, {
         type: "mode-status",
         mode: mode.id,
@@ -116,9 +118,15 @@ async function runMode(sequence, baseConfig, mode) {
             : message.check_completed
               ? `${message.patch_size}-tile target patch is not a translational quotient`
               : `${message.patch_size}-tile target-patch quotient check timed out`
-          : message.certified
-            ? `certified ${message.patch_size}-tile patch`
-            : `no ${message.patch_size}-tile patch; expanding`
+          : growthCheckpoint
+            ? message.certified
+              ? `${message.patch_size}-tile checkpoint certifies a translational quotient`
+              : message.check_completed
+                ? `${message.patch_size}-tile checkpoint is not a translational quotient`
+                : `${message.patch_size}-tile checkpoint quotient check timed out`
+            : message.certified
+              ? `certified ${message.patch_size}-tile patch`
+              : `no ${message.patch_size}-tile patch; expanding`
       });
     }
     if (message.search_stats) latestStats = message.search_stats;
@@ -163,6 +171,7 @@ async function runMode(sequence, baseConfig, mode) {
     canTile: final?.can_tile ?? null,
     certified: !!final?.tiling_evidence?.certified,
     certificateKind: final?.tiling_evidence?.kind ?? null,
+    certificateSource: final?.tiling_evidence?.source ?? null,
     certificateTargetTiles: final?.tiling_evidence?.target_tiles ?? null
   };
   post(sequence, { type: "series-finished", result });

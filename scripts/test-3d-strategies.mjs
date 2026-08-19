@@ -152,6 +152,85 @@ assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certifi
 assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certificate_completed, true);
 assert.equal(genericPatchCertificate.final.search_stats.generic_periodic_certificate_found, true);
 
+const genericCheckpointCertificate = await solve({
+  tiling_strategy: "generic",
+  target_val: 20,
+  template_preflight: false,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_check_new_maximum: true
+});
+assert.equal(genericCheckpointCertificate.final.result_kind, "certified_tiling");
+assert.equal(genericCheckpointCertificate.final.can_tile, true);
+assert.equal(genericCheckpointCertificate.final.tile_count, 2);
+assert.equal(genericCheckpointCertificate.final.tiling_evidence?.source, "gcts_growth_checkpoint");
+assert.deepEqual(
+  genericCheckpointCertificate.final.search_stats.generic_periodic_certificate_check_sizes,
+  [2],
+  "a smaller exact quotient must be detected before an arbitrary larger display target"
+);
+
+const checkpointTimeout = await solve({
+  mode_key: "census_10_26470",
+  tiling_strategy: "generic",
+  target_val: 40,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_failure_memo: true,
+  seeded_tie_breaks: true,
+  random_seed: 1,
+  node_limit: 5000,
+  time_limit_ms: 10000,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_check_new_maximum: true,
+  generic_periodic_certificate_checkpoint_min_tiles: 40,
+  generic_periodic_certificate_time_limit_ms: 1
+});
+assert.equal(checkpointTimeout.final.success, true, "an optional certificate timeout must not erase a finite witness");
+assert.equal(checkpointTimeout.final.result_kind, "patch_found");
+assert.equal(checkpointTimeout.final.search_incomplete, false);
+assert.equal(checkpointTimeout.final.search_stats.generic_periodic_certificate_target_timed_out, true);
+assert.equal(checkpointTimeout.final.search_stats.generic_periodic_certificate_target_found, false);
+
+const checkpointCandidateCertificate = await solve({
+  mode_key: "cube",
+  custom_system: {
+    name: "Candidate 10_26470 checkpoint certificate",
+    figure_refs: [],
+    polycubes: [],
+    polyhedra: [{
+      name: "Candidate 10_26470",
+      vertices: [[-1,0,0],[-1,0,1],[0,-1,0],[0,1,0],[0,1,2],[1,0,0],[1,0,1]]
+    }]
+  },
+  tiling_strategy: "generic",
+  target_val: 40,
+  template_preflight: false,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_failure_memo: true,
+  seeded_tie_breaks: true,
+  random_seed: 2,
+  node_limit: 500,
+  generic_periodic_certificate: true,
+  generic_periodic_certificate_check_new_maximum: true,
+  generic_periodic_certificate_time_limit_ms: 5000
+});
+assert.equal(checkpointCandidateCertificate.final.result_kind, "certified_tiling");
+assert.equal(checkpointCandidateCertificate.final.tile_count, 8);
+assert.equal(checkpointCandidateCertificate.final.tiling_evidence?.certificate_kind, "8_tile_boundary_quotient");
+assert.deepEqual(checkpointCandidateCertificate.final.tiling_evidence?.period_vectors, [
+  [-2, -2, 0],
+  [-2, 0, 2],
+  [-2, 2, 0]
+]);
+assert.equal(
+  checkpointCandidateCertificate.final.tiling_evidence?.periodic_template?.proof?.lattice_determinant,
+  16
+);
+
 const seededPatch = async seed => solve({
   tiling_strategy: "generic",
   target_val: 20,

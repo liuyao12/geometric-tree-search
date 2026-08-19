@@ -641,6 +641,16 @@ export const createTilingStream = (() => {
       generic_periodic_certificate_found: false,
       generic_periodic_certificate_patch_size: 0,
       generic_periodic_certificate_elapsed_ms: 0,
+      generic_periodic_certificate_checks_attempted: 0,
+      generic_periodic_certificate_checks_completed: 0,
+      generic_periodic_certificate_checks_timed_out: 0,
+      generic_periodic_certificate_check_sizes: [],
+      generic_periodic_certificate_check_sources: [],
+      generic_periodic_certificate_total_elapsed_ms: 0,
+      generic_periodic_certificate_target_attempted: false,
+      generic_periodic_certificate_target_completed: false,
+      generic_periodic_certificate_target_timed_out: false,
+      generic_periodic_certificate_target_found: false,
       reflection_continuations_seen: 0,
       branch_choices_visited: 0,
       failed_leaves: 0,
@@ -761,6 +771,10 @@ export const createTilingStream = (() => {
         ...searchStats,
         isohedral_certificate_patch_sizes_tried:
           searchStats.isohedral_certificate_patch_sizes_tried.slice(),
+        generic_periodic_certificate_check_sizes:
+          searchStats.generic_periodic_certificate_check_sizes.slice(),
+        generic_periodic_certificate_check_sources:
+          searchStats.generic_periodic_certificate_check_sources.slice(),
         growth_axis_rank: growth.axis_rank,
         growth_spans: growth.spans,
         growth_isotropy: growth.isotropy,
@@ -3295,6 +3309,94 @@ export const createTilingStream = (() => {
       search_stats: searchStatsSnapshot(),
       periodic_template: template
     });
+    const genericPeriodicCertificateEnabled = config.generic_periodic_certificate === true
+      && criterion === "count"
+      && tilingStrategy === "generic";
+    const genericPeriodicCheckpointEnabled = genericPeriodicCertificateEnabled
+      && config.generic_periodic_certificate_check_new_maximum === true;
+    const configuredGenericPeriodicMin = Number(config.generic_periodic_certificate_checkpoint_min_tiles);
+    const genericPeriodicCheckpointMin = Number.isFinite(configuredGenericPeriodicMin)
+      ? Math.max(1, Math.floor(configuredGenericPeriodicMin))
+      : 2;
+    const configuredGenericPeriodicMax = Number(config.generic_periodic_certificate_checkpoint_max_tiles);
+    const genericPeriodicCheckpointMax = Number.isFinite(configuredGenericPeriodicMax)
+      ? Math.max(genericPeriodicCheckpointMin, Math.floor(configuredGenericPeriodicMax))
+      : targetVal;
+    const genericPeriodicSizesAttempted = new Set();
+    let genericPeriodicLargestSizeSeen = 0;
+    async function* tryGenericPeriodicCertificate(source) {
+      if (!genericPeriodicCertificateEnabled || tilingEvidence) return null;
+      const patchSize = state.placements.length;
+      if (source === "generic_growth_checkpoint") {
+        if (
+          !genericPeriodicCheckpointEnabled
+          || patchSize < genericPeriodicCheckpointMin
+          || patchSize > genericPeriodicCheckpointMax
+          || patchSize <= genericPeriodicLargestSizeSeen
+        ) return null;
+        genericPeriodicLargestSizeSeen = patchSize;
+      }
+      if (genericPeriodicSizesAttempted.has(patchSize)) return null;
+      genericPeriodicSizesAttempted.add(patchSize);
+
+      searchStats.generic_periodic_certificate_attempted = true;
+      searchStats.generic_periodic_certificate_patch_size = patchSize;
+      searchStats.generic_periodic_certificate_checks_attempted += 1;
+      searchStats.generic_periodic_certificate_check_sizes.push(patchSize);
+      searchStats.generic_periodic_certificate_check_sources.push(source);
+      const certificateStartedAt = performance.now();
+      const configuredCertificateTimeLimit = Number(config.generic_periodic_certificate_time_limit_ms);
+      const certificateTimeLimitMs = Number.isFinite(configuredCertificateTimeLimit)
+        ? Math.max(1, configuredCertificateTimeLimit)
+        : 2000;
+      let certificateTimedOut = false;
+      const template = findBoundaryPeriodicTemplate(patchSize, {
+        budget_exceeded: () => performance.now() - certificateStartedAt >= certificateTimeLimitMs,
+        on_budget_exceeded: () => { certificateTimedOut = true; }
+      });
+      const elapsed = Math.round(performance.now() - certificateStartedAt);
+      searchStats.generic_periodic_certificate_elapsed_ms = elapsed;
+      searchStats.generic_periodic_certificate_total_elapsed_ms += elapsed;
+      if (certificateTimedOut) searchStats.generic_periodic_certificate_checks_timed_out += 1;
+      else searchStats.generic_periodic_certificate_checks_completed += 1;
+      searchStats.generic_periodic_certificate_timed_out =
+        searchStats.generic_periodic_certificate_checks_timed_out > 0;
+      searchStats.generic_periodic_certificate_completed =
+        searchStats.generic_periodic_certificate_checks_completed
+        === searchStats.generic_periodic_certificate_checks_attempted;
+      searchStats.generic_periodic_certificate_found = !!template;
+      if (patchSize >= targetVal) {
+        searchStats.generic_periodic_certificate_target_attempted = true;
+        searchStats.generic_periodic_certificate_target_completed = !certificateTimedOut;
+        searchStats.generic_periodic_certificate_target_timed_out = certificateTimedOut;
+        searchStats.generic_periodic_certificate_target_found = !!template;
+      }
+      yield {
+        type: "translational_check",
+        source,
+        patch_size: patchSize,
+        certified: !!template,
+        check_completed: !certificateTimedOut,
+        periodic_template: template,
+        frontier_stats: frontierStatsWithCandidateCount(),
+        search_stats: searchStatsSnapshot()
+      };
+      if (!template) return null;
+      tilingEvidence = {
+        kind: "translational_certificate",
+        certified: true,
+        can_tile: true,
+        strategy: "generic",
+        source: source === "generic_growth_checkpoint"
+          ? "gcts_growth_checkpoint"
+          : "gcts_target_patch",
+        patch_size: template.motif.length,
+        certificate_kind: template.kind,
+        period_vectors: template.period_vectors.map(vector => vector.slice()),
+        periodic_template: template
+      };
+      return template;
+    }
     const certifiedPeriodicMoveViability = (candidate) => {
       // The quotient proof already establishes global non-overlap and exact
       // coverage for every translated motif placement. For finite growth we
@@ -4448,6 +4550,18 @@ export const createTilingStream = (() => {
         yield nodeStatus(parentId, "fail", budgetText());
         return false;
       }
+      if (genericPeriodicCheckpointEnabled) {
+        const checkpointTemplate = yield* tryGenericPeriodicCertificate("generic_growth_checkpoint");
+        if (checkpointTemplate) {
+          yield nodeStatus(
+            parentId,
+            "success",
+            `GCTS ${state.placements.length}-tile checkpoint is an exact translational quotient`,
+            preflightStatusPayload(checkpointTemplate)
+          );
+          return true;
+        }
+      }
       const entryFailureKey = genericFailureMemoEnabled ? genericFailureStateKey() : null;
       const entryFailurePlacements = genericFailureMemoEnabled ? state.placements.slice() : null;
       const forcedBatch = [];
@@ -4610,6 +4724,18 @@ export const createTilingStream = (() => {
           node_candidate_cache.clear();
           forcedBatch.push([mv, rb]);
           forcedCount += 1;
+          if (genericPeriodicCheckpointEnabled) {
+            const checkpointTemplate = yield* tryGenericPeriodicCertificate("generic_growth_checkpoint");
+            if (checkpointTemplate) {
+              yield nodeStatus(
+                parentId,
+                "success",
+                `GCTS ${state.placements.length}-tile checkpoint is an exact translational quotient`,
+                preflightStatusPayload(checkpointTemplate)
+              );
+              return yield* doReturn(true);
+            }
+          }
           const forcedAnalysis = await analyzeFrontierGraph();
           const forcedStats = rememberFrontierGraph(forcedAnalysis);
           const forcedDual = frontierGraphPayload(forcedAnalysis);
@@ -4874,44 +5000,8 @@ export const createTilingStream = (() => {
       && config.generic_periodic_certificate === true
       && !tilingEvidence
     ) {
-      searchStats.generic_periodic_certificate_attempted = true;
-      searchStats.generic_periodic_certificate_patch_size = state.placements.length;
-      const certificateStartedAt = performance.now();
-      const configuredCertificateTimeLimit = Number(config.generic_periodic_certificate_time_limit_ms);
-      const certificateTimeLimitMs = Number.isFinite(configuredCertificateTimeLimit)
-        ? Math.max(1, configuredCertificateTimeLimit)
-        : 2000;
-      let certificateTimedOut = false;
-      const template = findBoundaryPeriodicTemplate(state.placements.length, {
-        budget_exceeded: () => performance.now() - certificateStartedAt >= certificateTimeLimitMs,
-        on_budget_exceeded: () => { certificateTimedOut = true; }
-      });
-      searchStats.generic_periodic_certificate_elapsed_ms = Math.round(performance.now() - certificateStartedAt);
-      searchStats.generic_periodic_certificate_timed_out = certificateTimedOut;
-      searchStats.generic_periodic_certificate_completed = !certificateTimedOut;
-      searchStats.generic_periodic_certificate_found = !!template;
-      yield {
-        type: "translational_check",
-        source: "generic_target_patch",
-        patch_size: state.placements.length,
-        certified: !!template,
-        check_completed: !certificateTimedOut,
-        periodic_template: template,
-        frontier_stats: frontierStatsWithCandidateCount(),
-        search_stats: searchStatsSnapshot()
-      };
+      const template = yield* tryGenericPeriodicCertificate("generic_target_patch");
       if (template) {
-        tilingEvidence = {
-          kind: "translational_certificate",
-          certified: true,
-          can_tile: true,
-          strategy: "generic",
-          source: "gcts_target_patch",
-          patch_size: template.motif.length,
-          certificate_kind: template.kind,
-          period_vectors: template.period_vectors.map(vector => vector.slice()),
-          periodic_template: template
-        };
         yield nodeStatus(
           rootId,
           "success",

@@ -31,6 +31,7 @@ const geometricNogood = args.get("geometric-nogood") === "true";
 const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
 const geometricNogoodIndex = args.get("geometric-nogood-index") !== "false";
 const genericPeriodicCertificate = args.get("generic-periodic-certificate") === "true";
+const genericPeriodicCheckpoints = args.get("generic-periodic-checkpoints") === "true";
 const seededTies = args.get("seeded-ties") !== "false";
 const genericPeriodicCertificateTimeMs = Math.max(
   1,
@@ -110,6 +111,8 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_geometric_nogood_max_clauses: geometricNogoodMaxClauses,
   generic_geometric_nogood_index: geometricNogoodIndex,
   generic_periodic_certificate: genericPeriodicCertificate && lane === "free_range_unbanded",
+  generic_periodic_certificate_check_new_maximum:
+    genericPeriodicCheckpoints && lane === "free_range_unbanded",
   generic_periodic_certificate_time_limit_ms: genericPeriodicCertificateTimeMs,
   include_mirrors: false,
   template_preflight: !lane.startsWith("free_range"),
@@ -173,6 +176,9 @@ async function runLane(benchmarkCase, lane, seed) {
       ?? final?.tiling_evidence?.kind
       ?? null,
     certificatePatchSize: final?.tiling_evidence?.patch_size ?? null,
+    periodVectors: final?.tiling_evidence?.period_vectors ?? null,
+    certificateMotif: final?.tiling_evidence?.periodic_template?.motif ?? null,
+    certificateProof: final?.tiling_evidence?.periodic_template?.proof ?? null,
     searchIncomplete: !!final?.search_incomplete,
     elapsedMs: Math.round(performance.now() - started),
     largestPatch,
@@ -208,6 +214,15 @@ async function runLane(benchmarkCase, lane, seed) {
     genericPeriodicCertificateFound: !!stats.generic_periodic_certificate_found,
     genericPeriodicCertificatePatchSize: stats.generic_periodic_certificate_patch_size ?? 0,
     genericPeriodicCertificateElapsedMs: stats.generic_periodic_certificate_elapsed_ms ?? 0,
+    genericPeriodicCertificateChecksAttempted: stats.generic_periodic_certificate_checks_attempted ?? 0,
+    genericPeriodicCertificateChecksCompleted: stats.generic_periodic_certificate_checks_completed ?? 0,
+    genericPeriodicCertificateChecksTimedOut: stats.generic_periodic_certificate_checks_timed_out ?? 0,
+    genericPeriodicCertificateCheckSizes: stats.generic_periodic_certificate_check_sizes ?? [],
+    genericPeriodicCertificateTotalElapsedMs: stats.generic_periodic_certificate_total_elapsed_ms ?? 0,
+    genericPeriodicCertificateTargetAttempted: !!stats.generic_periodic_certificate_target_attempted,
+    genericPeriodicCertificateTargetCompleted: !!stats.generic_periodic_certificate_target_completed,
+    genericPeriodicCertificateTargetTimedOut: !!stats.generic_periodic_certificate_target_timed_out,
+    genericPeriodicCertificateTargetFound: !!stats.generic_periodic_certificate_target_found,
     terminationReason: stats.termination_reason
       ?? (final?.tiling_evidence?.certified
         ? "certificate_found"
@@ -405,6 +420,7 @@ const summary = {
     geometricNogoodMaxClauses,
     geometricNogoodIndex,
     genericPeriodicCertificate,
+    genericPeriodicCheckpoints,
     genericPeriodicCertificateTimeMs,
     seededTies,
     lanes: requestedLanes.size ? [...requestedLanes] : null
