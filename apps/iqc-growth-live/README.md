@@ -1931,10 +1931,29 @@ exactly once.
 The fresh result is red. The first block places `2 / 3` correct actions; the
 two second-block alternatives place `2 / 3` and `1 / 3`, so neither supplies
 an exact state, and the stable tie selects the latter. End-to-end correctness
-is `3 / 6`. This is not a rollback-value failure that a wider scalar can fix:
-exact portfolio supply is already absent and the upstream first block is
-inexact. The autonomous finite-commit, stationary, and exponential IQC gates
-remain red.
+is `3 / 6`. Reranking only those two retained states cannot fix the path:
+exact width-two portfolio supply is absent and the selected upstream first
+block is inexact. The autonomous finite-commit, stationary, and exponential
+IQC gates remain red.
+
+A complete-tree follow-up now separates missing geometry from destructive
+pruning. Delaying the first prune gives `8 → 37 → 128` terminals, including 16
+exact states; the frozen fusion value places its first exact state at rank 8.
+Self-feeding that exact state gives `8 → 36 → 127` second terminals with four
+exact continuations (stable IDs 86, 87, 89, and 123). Thus an exact two-block
+path exists in the unchanged candidate geometry. The current topology and
+ordinal-yield heads still bury their best exact action at ranks 62 and 98, so
+top-one-per-head retention loses the path. The preregistered step-12 frontier
+vote mass improves the best exact rank only to 19.
+
+Integrated frontier vote mass at horizon 12 ranks exact second action 89 first,
+but it is not a universal greedy rule: applied to the complete first tree it
+selects inexact state 115, with its best exact first state again only rank 8.
+This is consumed-development evidence chosen after scoring, not a fresh
+confirmation. It justifies an explicit bounded tree beam across blocks, not a
+new top-one commit claim. Candidate supply is now green in the complete tree;
+bounded transferable selection, runtime, autonomous commitment, stationarity,
+and exponential IQC growth remain red.
 
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps

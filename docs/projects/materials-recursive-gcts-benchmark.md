@@ -3977,6 +3977,37 @@ Thus the missing capability precedes rollback: the fresh first-block value and
 width-two portfolio lose exact supply. No autonomous finite-commit,
 stationary-production, or exponential IQC claim is made.
 
+The follow-up exhausts the same consumed branch before pruning. The complete
+first tree grows `8 → 37 → 128`; 16 terminals are exact, while the frozen
+fusion order reaches its first exact state only at rank 8. Feeding precisely
+that state into the unchanged second block gives `8 → 36 → 127` terminals and
+four exact continuations, stable IDs `86 / 87 / 89 / 123`. Therefore unchanged
+candidate geometry contains an exact two-block path. The original typed-
+topology and local-section-plus-ordinal-yield values place their best exact
+second action at ranks 62 and 98. Retaining 124 actions merely to recover one
+is not a useful GCTS remedy.
+
+Every one of those 127 states is then rolled forward for the same 16
+target-free steps before the consumed target is reconstructed. The frozen
+step-12 frontier-vote rule improves the best exact rank to 19 but remains
+outside top 16. A statistic already present in the predeclared grid—integrated
+frontier vote mass at horizon 12—ranks exact stable state 89 first. On the
+original retained development corpus it has the same `9 / 9` exact supplied
+groups as the selected frontier endpoint, with `27 / 30` rather than `28 / 30`
+correct sites. Yet repeating that rule on the complete first tree selects
+inexact state 115; its best exact first state is rank 8. The statistic is a
+useful conditional value, not a stage-independent greedy marking.
+
+All candidate orders and traces are hashed before either consumed target is
+opened, but the integrated rule was identified after those labels were scored.
+Accordingly this is a development diagnostic only. It moves the immediate red
+gate from geometric supply to bounded cross-block beam retention: an exact
+path survives in a width-eight first beam and a top-one integrated continuation
+of its exact node, but no target-free rule yet chooses that node globally.
+Runtime is also material—complete enumeration and 127×16 rollout work take
+minutes per nucleus. Autonomous commitment, fresh transfer, stationary
+production, and exponential IQC growth remain red.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
