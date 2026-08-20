@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 20,
+  "configuration": {
+    "target": 500,
+    "timeMs": 30000,
+    "exactTimeMs": 30000,
+    "isohedralHorizon": 500,
+    "periodicMax": 4,
+    "nodeLimit": 2000000,
+    "seeds": [
+      1
+    ],
+    "failureMemo": true,
+    "failureMemoSymmetry": "fixed",
+    "failureMemoMaxStates": 200000,
+    "geometricNogood": false,
+    "geometricNogoodMaxClauses": 20000,
+    "geometricNogoodIndex": true,
+    "geometricNogoodActivationFailures": 0,
+    "geometricNogoodStagnationFailures": 0,
+    "faceOrder": "mrv",
+    "unbandedMoveOrder": "global",
+    "genericPeriodicCertificate": false,
+    "genericPeriodicCheckpoints": false,
+    "genericPeriodicDistinctPatches": false,
+    "genericPeriodicSamplingPolicy": "prefix",
+    "genericPeriodicSamplingStride": 16,
+    "genericPeriodicSamplingPrefix": 4,
+    "genericPeriodicMaxChecksPerSize": 4,
+    "genericPeriodicMaxTotalChecks": 160,
+    "genericPeriodicCheckpointTotalTimeMs": 10000,
+    "genericPeriodicCertificateTimeMs": 5000,
+    "seededTies": true,
+    "connectedPatchEnumeration": true,
+    "lanes": [
+      "isohedral"
+    ]
+  },
+  "cases": [
+    {
+      "id": "10_16113",
+      "family": "census",
+      "expected": "finite_extendable_shell_obstruction"
+    }
+  ],
+  "rows": [
+    {
+      "case": "10_16113",
+      "family": "census",
+      "expected": "finite_extendable_shell_obstruction",
+      "lane": "isohedral",
+      "seed": 1,
+      "resultKind": "search_incomplete",
+      "success": false,
+      "canTile": null,
+      "certified": false,
+      "certificateKind": null,
+      "certificatePatchSize": null,
+      "periodVectors": null,
+      "certificateMotif": null,
+      "certificateProof": null,
+      "searchIncomplete": true,
+      "elapsedMs": 30050,
+      "largestPatch": 72,
+      "maxLiveTiles": 81,
+      "uncapturedMaxLiveTiles": 9,
+      "maxFrontierPoints": 262,
+      "maxCandidateCount": 0,
+      "checkedPatchSize": 0,
+      "visitedNodes": 17580,
+      "backtracks": 231,
+      "maxDepth": 8,
+      "moveOrder": "isohedral",
+      "faceOrder": "mrv",
+      "effectiveSeed": 1,
+      "seededTieBreaks": false,
+      "witnessHash": "f363f712c2b34fb3",
+      "witnessGrowthAxisRank": 3,
+      "witnessGrowthSpans": [
+        7.666666666666666,
+        7,
+        7
+      ],
+      "witnessGrowthIsotropy": 0.9130434782608696,
+      "witnessPeriodicTranslationRank": 3,
+      "growthMilestones": [
+        {
+          "patchSize": 1,
+          "visitedNodes": 1,
+          "backtracks": 0,
+          "elapsedMs": 5,
+          "witnessHash": "fad5fcae702b6b11"
+        },
+        {
+          "patchSize": 2,
+          "visitedNodes": 2,
+          "backtracks": 0,
+          "elapsedMs": 14,
+          "witnessHash": "5df9b75a7d1e49a1"
+        },
+        {
+          "patchSize": 3,
+          "visitedNodes": 3,
+          "backtracks": 0,
+          "elapsedMs": 19,
+          "witnessHash": "bd16b60721ae29e6"
+        },
+        {
+          "patchSize": 5,
+          "visitedNodes": 5,
+          "backtracks": 0,
+          "elapsedMs": 21,
+          "witnessHash": "9c52a02e884babb2"
+        },
+        {
+          "patchSize": 8,
+          "visitedNodes": 8,
+          "backtracks": 0,
+          "elapsedMs": 23,
+          "witnessHash": "21b5e3ed27c761b0"
+        },
+        {
+          "patchSize": 14,
+          "visitedNodes": 14,
+          "backtracks": 0,
+          "elapsedMs": 27,
+          "witnessHash": "8335cdd495bdf8c5"
+        },
+        {
+          "patchSize": 20,
+          "visitedNodes": 20,
+          "backtracks": 0,
+          "elapsedMs": 32,
+          "witnessHash": "721d42001c213dc8"
+        },
+        {
+          "patchSize": 24,
+          "visitedNodes": 24,
+          "backtracks": 0,
+          "elapsedMs": 38,
+          "witnessHash": "5fcdb0c76c0e0adb"
+        },
+        {
+          "patchSize": 25,
+          "visitedNodes": 25,
+          "backtracks": 0,
+          "elapsedMs": 72,
+          "witnessHash": "43b17c4a17858a6a"
+        },
+        {
+          "patchSize": 26,
+          "visitedNodes": 31,
+          "backtracks": 0,
+          "elapsedMs": 79,
+          "witnessHash": "2f95d5c34d5f28b9"
+        },
+        {
+          "patchSize": 28,
+          "visitedNodes": 41,
+          "backtracks": 0,
+          "elapsedMs": 88,
+          "witnessHash": "36ee25ce4af28348"
+        },
+        {
+          "patchSize": 32,
+          "visitedNodes": 57,
+          "backtracks": 0,
+          "elapsedMs": 101,
+          "witnessHash": "75da240b46a359af"
+        },
+        {
+          "patchSize": 33,
+          "visitedNodes": 79,
+          "backtracks": 0,
+          "elapsedMs": 161,
+          "witnessHash": "324c113ea667c6d4"
+        },
+        {
+          "patchSize": 38,
+          "visitedNodes": 102,
+          "backtracks": 0,
+          "elapsedMs": 177,
+          "witnessHash": "9e6fa9f25bb72ba2"
+        },
+        {
+          "patchSize": 48,
+          "visitedNodes": 133,
+          "backtracks": 0,
+          "elapsedMs": 201,
+          "witnessHash": "35e1edd90d61d9f3"
+        },
+        {
+          "patchSize": 49,
+          "visitedNodes": 691,
+          "backtracks": 4,
+          "elapsedMs": 954,
+          "witnessHash": "46f816a209de72b7"
+        },
+        {
+          "patchSize": 50,
+          "visitedNodes": 808,
+          "backtracks": 4,
+          "elapsedMs": 1095,
+          "witnessHash": "536f7326cda66c1e"
+        },
+        {
+          "patchSize": 56,
+          "visitedNodes": 4954,
+          "backtracks": 74,
+          "elapsedMs": 7771,
+          "witnessHash": "41e95feb7cfa060c"
+        },
+        {
+          "patchSize": 58,
+          "visitedNodes": 8182,
+          "backtracks": 109,
+          "elapsedMs": 11829,
+          "witnessHash": "f0205c540b826b17"
+        },
+        {
+          "patchSize": 59,
+          "visitedNodes": 8227,
+          "backtracks": 109,
+          "elapsedMs": 11949,
+          "witnessHash": "901989ef64ff72b1"
+        },
+        {
+          "patchSize": 60,
+          "visitedNodes": 8434,
+          "backtracks": 112,
+          "elapsedMs": 12393,
+          "witnessHash": "820378d4722069da"
+        },
+        {
+          "patchSize": 61,
+          "visitedNodes": 8486,
+          "backtracks": 112,
+          "elapsedMs": 12521,
+          "witnessHash": "5c883cb1955b4243"
+        },
+        {
+          "patchSize": 62,
+          "visitedNodes": 8775,
+          "backtracks": 116,
+          "elapsedMs": 13101,
+          "witnessHash": "9b22b590f8b0ef1b"
+        },
+        {
+          "patchSize": 64,
+          "visitedNodes": 8982,
+          "backtracks": 120,
+          "elapsedMs": 13466,
+          "witnessHash": "d3a9d1db287c143c"
+        },
+        {
+          "patchSize": 65,
+          "visitedNodes": 9014,
+          "backtracks": 120,
+          "elapsedMs": 13598,
+          "witnessHash": "cec79633ce1d75bd"
+        },
+        {
+          "patchSize": 72,
+          "visitedNodes": 9044,
+          "backtracks": 120,
+          "elapsedMs": 13634,
+          "witnessHash": "f363f712c2b34fb3"
+        }
+      ],
+      "generationLagCap": 2,
+      "generationBandDeferrals": 17256,
+      "failureMemoEnabled": false,
+      "failureMemoStates": 0,
+      "failureMemoHits": 0,
+      "failureMemoCapacityReached": false,
+      "failureMemoKeyEquivalence": "disabled",
+      "connectedPatchEnumeration": false,
+      "connectedPatchCandidateStates": 0,
+      "connectedPatchMaxCandidates": 0,
+      "geometricNogoodEnabled": false,
+      "geometricNogoodDisableReason": "not_requested",
+      "geometricNogoodClauses": 0,
+      "geometricNogoodPrunes": 0,
+      "geometricNogoodFailureStates": 0,
+      "geometricNogoodActivationFailureStates": 0,
+      "geometricNogoodActivationStagnationFailureStates": 0,
+      "geometricNogoodFailuresSinceGrowth": 0,
+      "geometricNogoodGrowthMarkTiles": 1,
+      "geometricNogoodActivated": false,
+      "geometricNogoodCapacityReached": false,
+      "geometricNogoodPivotIndex": false,
+      "geometricNogoodCompatibilityChecks": 0,
+      "geometricNogoodClauseChecks": 0,
+      "geometricNogoodLinearClauseChecks": 0,
+      "geometricNogoodAvoidedClauseChecks": 0,
+      "genericPeriodicCertificateAttempted": false,
+      "genericPeriodicCertificateCompleted": false,
+      "genericPeriodicCertificateTimedOut": false,
+      "genericPeriodicCertificateFound": false,
+      "genericPeriodicCertificatePatchSize": 0,
+      "genericPeriodicCertificateElapsedMs": 0,
+      "genericPeriodicCertificateChecksAttempted": 0,
+      "genericPeriodicCertificateChecksCompleted": 0,
+      "genericPeriodicCertificateChecksTimedOut": 0,
+      "genericPeriodicCertificateCheckSizes": [],
+      "genericPeriodicCertificateCheckFingerprints": [],
+      "genericPeriodicCertificateTotalElapsedMs": 0,
+      "genericPeriodicCertificateDistinctPatchMode": false,
+      "genericPeriodicCertificateCheckpointSamplingPolicy": "prefix",
+      "genericPeriodicCertificateCheckpointSamplingStride": 1,
+      "genericPeriodicCertificateCheckpointSamplingPrefix": 4,
+      "genericPeriodicCertificateCheckpointEligibleStates": 0,
+      "genericPeriodicCertificateCheckpointSamplingSkips": 0,
+      "genericPeriodicCertificateDuplicateStatesSkipped": 0,
+      "genericPeriodicCertificatePerSizeCapSkips": 0,
+      "genericPeriodicCertificateTotalCapSkips": 0,
+      "genericPeriodicCertificateCheckpointTimeBudgetSkips": 0,
+      "genericPeriodicCertificateCheckpointTimeBudgetExhausted": false,
+      "genericPeriodicCertificateTargetAttempted": false,
+      "genericPeriodicCertificateTargetCompleted": false,
+      "genericPeriodicCertificateTargetTimedOut": false,
+      "genericPeriodicCertificateTargetFound": false,
+      "genericPeriodicInternalMotifAttempted": false,
+      "genericPeriodicInternalMotifFound": false,
+      "genericPeriodicInternalMotifVectorCount": 0,
+      "genericPeriodicInternalMotifBasesTested": 0,
+      "genericPeriodicInternalMotifMaxTranslationSupport": 0,
+      "genericPeriodicInternalMotifTopTranslations": [],
+      "terminationReason": "time_limit",
+      "quotientAttempts": 6,
+      "duplicateQuotientStatesSkipped": 0,
+      "periodicMotifNodes": 0
+    }
+  ],
+  "controls": {
+    "translationalControl": true,
+    "isohedralControl": true,
+    "nonTilerControl": false,
+    "aperiodicControl": false
+  },
+  "controlGatesPassed": false,
+  "candidates": [
+    {
+      "id": "10_16113",
+      "translational": null,
+      "isohedral": {
+        "case": "10_16113",
+        "family": "census",
+        "expected": "finite_extendable_shell_obstruction",
+        "lane": "isohedral",
+        "seed": 1,
+        "resultKind": "search_incomplete",
+        "success": false,
+        "canTile": null,
+        "certified": false,
+        "certificateKind": null,
+        "certificatePatchSize": null,
+        "periodVectors": null,
+        "certificateMotif": null,
+        "certificateProof": null,
+        "searchIncomplete": true,
+        "elapsedMs": 30050,
+        "largestPatch": 72,
+        "maxLiveTiles": 81,
+        "uncapturedMaxLiveTiles": 9,
+        "maxFrontierPoints": 262,
+        "maxCandidateCount": 0,
+        "checkedPatchSize": 0,
+        "visitedNodes": 17580,
+        "backtracks": 231,
+        "maxDepth": 8,
+        "moveOrder": "isohedral",
+        "faceOrder": "mrv",
+        "effectiveSeed": 1,
+        "seededTieBreaks": false,
+        "witnessHash": "f363f712c2b34fb3",
+        "witnessGrowthAxisRank": 3,
+        "witnessGrowthSpans": [
+          7.666666666666666,
+          7,
+          7
+        ],
+        "witnessGrowthIsotropy": 0.9130434782608696,
+        "witnessPeriodicTranslationRank": 3,
+        "growthMilestones": [
+          {
+            "patchSize": 1,
+            "visitedNodes": 1,
+            "backtracks": 0,
+            "elapsedMs": 5,
+            "witnessHash": "fad5fcae702b6b11"
+          },
+          {
+            "patchSize": 2,
+            "visitedNodes": 2,
+            "backtracks": 0,
+            "elapsedMs": 14,
+            "witnessHash": "5df9b75a7d1e49a1"
+          },
+          {
+            "patchSize": 3,
+            "visitedNodes": 3,
+            "backtracks": 0,
+            "elapsedMs": 19,
+            "witnessHash": "bd16b60721ae29e6"
+          },
+          {
+            "patchSize": 5,
+            "visitedNodes": 5,
+            "backtracks": 0,
+            "elapsedMs": 21,
+            "witnessHash": "9c52a02e884babb2"
+          },
+          {
+            "patchSize": 8,
+            "visitedNodes": 8,
+            "backtracks": 0,
+            "elapsedMs": 23,
+            "witnessHash": "21b5e3ed27c761b0"
+          },
+          {
+            "patchSize": 14,
+            "visitedNodes": 14,
+            "backtracks": 0,
+            "elapsedMs": 27,
+            "witnessHash": "8335cdd495bdf8c5"
+          },
+          {
+            "patchSize": 20,
+            "visitedNodes": 20,
+            "backtracks": 0,
+            "elapsedMs": 32,
+            "witnessHash": "721d42001c213dc8"
+          },
+          {
+            "patchSize": 24,
+            "visitedNodes": 24,
+            "backtracks": 0,
+            "elapsedMs": 38,
+            "witnessHash": "5fcdb0c76c0e0adb"
+          },
+          {
+            "patchSize": 25,
+            "visitedNodes": 25,
+            "backtracks": 0,
+            "elapsedMs": 72,
+            "witnessHash": "43b17c4a17858a6a"
+          },
+          {
+            "patchSize": 26,
+            "visitedNodes": 31,
+            "backtracks": 0,
+            "elapsedMs": 79,
+            "witnessHash": "2f95d5c34d5f28b9"
+          },
+          {
+            "patchSize": 28,
+            "visitedNodes": 41,
+            "backtracks": 0,
+            "elapsedMs": 88,
+            "witnessHash": "36ee25ce4af28348"
+          },
+          {
+            "patchSize": 32,
+            "visitedNodes": 57,
+            "backtracks": 0,
+            "elapsedMs": 101,
+            "witnessHash": "75da240b46a359af"
+          },
+          {
+            "patchSize": 33,
+            "visitedNodes": 79,
+            "backtracks": 0,
+            "elapsedMs": 161,
+            "witnessHash": "324c113ea667c6d4"
+          },
+          {
+            "patchSize": 38,
+            "visitedNodes": 102,
+            "backtracks": 0,
+            "elapsedMs": 177,
+            "witnessHash": "9e6fa9f25bb72ba2"
+          },
+          {
+            "patchSize": 48,
+            "visitedNodes": 133,
+            "backtracks": 0,
+            "elapsedMs": 201,
+            "witnessHash": "35e1edd90d61d9f3"
+          },
+          {
+            "patchSize": 49,
+            "visitedNodes": 691,
+            "backtracks": 4,
+            "elapsedMs": 954,
+            "witnessHash": "46f816a209de72b7"
+          },
+          {
+            "patchSize": 50,
+            "visitedNodes": 808,
+            "backtracks": 4,
+            "elapsedMs": 1095,
+            "witnessHash": "536f7326cda66c1e"
+          },
+          {
+            "patchSize": 56,
+            "visitedNodes": 4954,
+            "backtracks": 74,
+            "elapsedMs": 7771,
+            "witnessHash": "41e95feb7cfa060c"
+          },
+          {
+            "patchSize": 58,
+            "visitedNodes": 8182,
+            "backtracks": 109,
+            "elapsedMs": 11829,
+            "witnessHash": "f0205c540b826b17"
+          },
+          {
+            "patchSize": 59,
+            "visitedNodes": 8227,
+            "backtracks": 109,
+            "elapsedMs": 11949,
+            "witnessHash": "901989ef64ff72b1"
+          },
+          {
+            "patchSize": 60,
+            "visitedNodes": 8434,
+            "backtracks": 112,
+            "elapsedMs": 12393,
+            "witnessHash": "820378d4722069da"
+          },
+          {
+            "patchSize": 61,
+            "visitedNodes": 8486,
+            "backtracks": 112,
+            "elapsedMs": 12521,
+            "witnessHash": "5c883cb1955b4243"
+          },
+          {
+            "patchSize": 62,
+            "visitedNodes": 8775,
+            "backtracks": 116,
+            "elapsedMs": 13101,
+            "witnessHash": "9b22b590f8b0ef1b"
+          },
+          {
+            "patchSize": 64,
+            "visitedNodes": 8982,
+            "backtracks": 120,
+            "elapsedMs": 13466,
+            "witnessHash": "d3a9d1db287c143c"
+          },
+          {
+            "patchSize": 65,
+            "visitedNodes": 9014,
+            "backtracks": 120,
+            "elapsedMs": 13598,
+            "witnessHash": "cec79633ce1d75bd"
+          },
+          {
+            "patchSize": 72,
+            "visitedNodes": 9044,
+            "backtracks": 120,
+            "elapsedMs": 13634,
+            "witnessHash": "f363f712c2b34fb3"
+          }
+        ],
+        "generationLagCap": 2,
+        "generationBandDeferrals": 17256,
+        "failureMemoEnabled": false,
+        "failureMemoStates": 0,
+        "failureMemoHits": 0,
+        "failureMemoCapacityReached": false,
+        "failureMemoKeyEquivalence": "disabled",
+        "connectedPatchEnumeration": false,
+        "connectedPatchCandidateStates": 0,
+        "connectedPatchMaxCandidates": 0,
+        "geometricNogoodEnabled": false,
+        "geometricNogoodDisableReason": "not_requested",
+        "geometricNogoodClauses": 0,
+        "geometricNogoodPrunes": 0,
+        "geometricNogoodFailureStates": 0,
+        "geometricNogoodActivationFailureStates": 0,
+        "geometricNogoodActivationStagnationFailureStates": 0,
+        "geometricNogoodFailuresSinceGrowth": 0,
+        "geometricNogoodGrowthMarkTiles": 1,
+        "geometricNogoodActivated": false,
+        "geometricNogoodCapacityReached": false,
+        "geometricNogoodPivotIndex": false,
+        "geometricNogoodCompatibilityChecks": 0,
+        "geometricNogoodClauseChecks": 0,
+        "geometricNogoodLinearClauseChecks": 0,
+        "geometricNogoodAvoidedClauseChecks": 0,
+        "genericPeriodicCertificateAttempted": false,
+        "genericPeriodicCertificateCompleted": false,
+        "genericPeriodicCertificateTimedOut": false,
+        "genericPeriodicCertificateFound": false,
+        "genericPeriodicCertificatePatchSize": 0,
+        "genericPeriodicCertificateElapsedMs": 0,
+        "genericPeriodicCertificateChecksAttempted": 0,
+        "genericPeriodicCertificateChecksCompleted": 0,
+        "genericPeriodicCertificateChecksTimedOut": 0,
+        "genericPeriodicCertificateCheckSizes": [],
+        "genericPeriodicCertificateCheckFingerprints": [],
+        "genericPeriodicCertificateTotalElapsedMs": 0,
+        "genericPeriodicCertificateDistinctPatchMode": false,
+        "genericPeriodicCertificateCheckpointSamplingPolicy": "prefix",
+        "genericPeriodicCertificateCheckpointSamplingStride": 1,
+        "genericPeriodicCertificateCheckpointSamplingPrefix": 4,
+        "genericPeriodicCertificateCheckpointEligibleStates": 0,
+        "genericPeriodicCertificateCheckpointSamplingSkips": 0,
+        "genericPeriodicCertificateDuplicateStatesSkipped": 0,
+        "genericPeriodicCertificatePerSizeCapSkips": 0,
+        "genericPeriodicCertificateTotalCapSkips": 0,
+        "genericPeriodicCertificateCheckpointTimeBudgetSkips": 0,
+        "genericPeriodicCertificateCheckpointTimeBudgetExhausted": false,
+        "genericPeriodicCertificateTargetAttempted": false,
+        "genericPeriodicCertificateTargetCompleted": false,
+        "genericPeriodicCertificateTargetTimedOut": false,
+        "genericPeriodicCertificateTargetFound": false,
+        "genericPeriodicInternalMotifAttempted": false,
+        "genericPeriodicInternalMotifFound": false,
+        "genericPeriodicInternalMotifVectorCount": 0,
+        "genericPeriodicInternalMotifBasesTested": 0,
+        "genericPeriodicInternalMotifMaxTranslationSupport": 0,
+        "genericPeriodicInternalMotifTopTranslations": [],
+        "terminationReason": "time_limit",
+        "quotientAttempts": 6,
+        "duplicateQuotientStatesSkipped": 0,
+        "periodicMotifNodes": 0
+      },
+      "freeRange": null,
+      "freeRangeNoBrainer": null,
+      "freeRangeUnbanded": null,
+      "freeRangeUnbandedTrials": [],
+      "proofSearchPortfolio": null,
+      "freeRangeTrials": [],
+      "freeRangeNoBrainerTrials": [],
+      "preferredFreeRangePolicy": null,
+      "freeRangePortfolio": null,
+      "screeningConclusion": "inconclusive"
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "10_16113",
+      "translational": null,
+      "isohedral": {
+        "case": "10_16113",
+        "family": "census",
+        "expected": "finite_extendable_shell_obstruction",
+        "lane": "isohedral",
+        "seed": 1,
+        "resultKind": "search_incomplete",
+        "success": false,
+        "canTile": null,
+        "certified": false,
+        "certificateKind": null,
+        "certificatePatchSize": null,
+        "periodVectors": null,
+        "certificateMotif": null,
+        "certificateProof": null,
+        "searchIncomplete": true,
+        "elapsedMs": 30050,
+        "largestPatch": 72,
+        "maxLiveTiles": 81,
+        "uncapturedMaxLiveTiles": 9,
+        "maxFrontierPoints": 262,
+        "maxCandidateCount": 0,
+        "checkedPatchSize": 0,
+        "visitedNodes": 17580,
+        "backtracks": 231,
+        "maxDepth": 8,
+        "moveOrder": "isohedral",
+        "faceOrder": "mrv",
+        "effectiveSeed": 1,
+        "seededTieBreaks": false,
+        "witnessHash": "f363f712c2b34fb3",
+        "witnessGrowthAxisRank": 3,
+        "witnessGrowthSpans": [
+          7.666666666666666,
+          7,
+          7
+        ],
+        "witnessGrowthIsotropy": 0.9130434782608696,
+        "witnessPeriodicTranslationRank": 3,
+        "growthMilestones": [
+          {
+            "patchSize": 1,
+            "visitedNodes": 1,
+            "backtracks": 0,
+            "elapsedMs": 5,
+            "witnessHash": "fad5fcae702b6b11"
+          },
+          {
+            "patchSize": 2,
+            "visitedNodes": 2,
+            "backtracks": 0,
+            "elapsedMs": 14,
+            "witnessHash": "5df9b75a7d1e49a1"
+          },
+          {
+            "patchSize": 3,
+            "visitedNodes": 3,
+            "backtracks": 0,
+            "elapsedMs": 19,
+            "witnessHash": "bd16b60721ae29e6"
+          },
+          {
+            "patchSize": 5,
+            "visitedNodes": 5,
+            "backtracks": 0,
+            "elapsedMs": 21,
+            "witnessHash": "9c52a02e884babb2"
+          },
+          {
+            "patchSize": 8,
+            "visitedNodes": 8,
+            "backtracks": 0,
+            "elapsedMs": 23,
+            "witnessHash": "21b5e3ed27c761b0"
+          },
+          {
+            "patchSize": 14,
+            "visitedNodes": 14,
+            "backtracks": 0,
+            "elapsedMs": 27,
+            "witnessHash": "8335cdd495bdf8c5"
+          },
+          {
+            "patchSize": 20,
+            "visitedNodes": 20,
+            "backtracks": 0,
+            "elapsedMs": 32,
+            "witnessHash": "721d42001c213dc8"
+          },
+          {
+            "patchSize": 24,
+            "visitedNodes": 24,
+            "backtracks": 0,
+            "elapsedMs": 38,
+            "witnessHash": "5fcdb0c76c0e0adb"
+          },
+          {
+            "patchSize": 25,
+            "visitedNodes": 25,
+            "backtracks": 0,
+            "elapsedMs": 72,
+            "witnessHash": "43b17c4a17858a6a"
+          },
+          {
+            "patchSize": 26,
+            "visitedNodes": 31,
+            "backtracks": 0,
+            "elapsedMs": 79,
+            "witnessHash": "2f95d5c34d5f28b9"
+          },
+          {
+            "patchSize": 28,
+            "visitedNodes": 41,
+            "backtracks": 0,
+            "elapsedMs": 88,
+            "witnessHash": "36ee25ce4af28348"
+          },
+          {
+            "patchSize": 32,
+            "visitedNodes": 57,
+            "backtracks": 0,
+            "elapsedMs": 101,
+            "witnessHash": "75da240b46a359af"
+          },
+          {
+            "patchSize": 33,
+            "visitedNodes": 79,
+            "backtracks": 0,
+            "elapsedMs": 161,
+            "witnessHash": "324c113ea667c6d4"
+          },
+          {
+            "patchSize": 38,
+            "visitedNodes": 102,
+            "backtracks": 0,
+            "elapsedMs": 177,
+            "witnessHash": "9e6fa9f25bb72ba2"
+          },
+          {
+            "patchSize": 48,
+            "visitedNodes": 133,
+            "backtracks": 0,
+            "elapsedMs": 201,
+            "witnessHash": "35e1edd90d61d9f3"
+          },
+          {
+            "patchSize": 49,
+            "visitedNodes": 691,
+            "backtracks": 4,
+            "elapsedMs": 954,
+            "witnessHash": "46f816a209de72b7"
+          },
+          {
+            "patchSize": 50,
+            "visitedNodes": 808,
+            "backtracks": 4,
+            "elapsedMs": 1095,
+            "witnessHash": "536f7326cda66c1e"
+          },
+          {
+            "patchSize": 56,
+            "visitedNodes": 4954,
+            "backtracks": 74,
+            "elapsedMs": 7771,
+            "witnessHash": "41e95feb7cfa060c"
+          },
+          {
+            "patchSize": 58,
+            "visitedNodes": 8182,
+            "backtracks": 109,
+            "elapsedMs": 11829,
+            "witnessHash": "f0205c540b826b17"
+          },
+          {
+            "patchSize": 59,
+            "visitedNodes": 8227,
+            "backtracks": 109,
+            "elapsedMs": 11949,
+            "witnessHash": "901989ef64ff72b1"
+          },
+          {
+            "patchSize": 60,
+            "visitedNodes": 8434,
+            "backtracks": 112,
+            "elapsedMs": 12393,
+            "witnessHash": "820378d4722069da"
+          },
+          {
+            "patchSize": 61,
+            "visitedNodes": 8486,
+            "backtracks": 112,
+            "elapsedMs": 12521,
+            "witnessHash": "5c883cb1955b4243"
+          },
+          {
+            "patchSize": 62,
+            "visitedNodes": 8775,
+            "backtracks": 116,
+            "elapsedMs": 13101,
+            "witnessHash": "9b22b590f8b0ef1b"
+          },
+          {
+            "patchSize": 64,
+            "visitedNodes": 8982,
+            "backtracks": 120,
+            "elapsedMs": 13466,
+            "witnessHash": "d3a9d1db287c143c"
+          },
+          {
+            "patchSize": 65,
+            "visitedNodes": 9014,
+            "backtracks": 120,
+            "elapsedMs": 13598,
+            "witnessHash": "cec79633ce1d75bd"
+          },
+          {
+            "patchSize": 72,
+            "visitedNodes": 9044,
+            "backtracks": 120,
+            "elapsedMs": 13634,
+            "witnessHash": "f363f712c2b34fb3"
+          }
+        ],
+        "generationLagCap": 2,
+        "generationBandDeferrals": 17256,
+        "failureMemoEnabled": false,
+        "failureMemoStates": 0,
+        "failureMemoHits": 0,
+        "failureMemoCapacityReached": false,
+        "failureMemoKeyEquivalence": "disabled",
+        "connectedPatchEnumeration": false,
+        "connectedPatchCandidateStates": 0,
+        "connectedPatchMaxCandidates": 0,
+        "geometricNogoodEnabled": false,
+        "geometricNogoodDisableReason": "not_requested",
+        "geometricNogoodClauses": 0,
+        "geometricNogoodPrunes": 0,
+        "geometricNogoodFailureStates": 0,
+        "geometricNogoodActivationFailureStates": 0,
+        "geometricNogoodActivationStagnationFailureStates": 0,
+        "geometricNogoodFailuresSinceGrowth": 0,
+        "geometricNogoodGrowthMarkTiles": 1,
+        "geometricNogoodActivated": false,
+        "geometricNogoodCapacityReached": false,
+        "geometricNogoodPivotIndex": false,
+        "geometricNogoodCompatibilityChecks": 0,
+        "geometricNogoodClauseChecks": 0,
+        "geometricNogoodLinearClauseChecks": 0,
+        "geometricNogoodAvoidedClauseChecks": 0,
+        "genericPeriodicCertificateAttempted": false,
+        "genericPeriodicCertificateCompleted": false,
+        "genericPeriodicCertificateTimedOut": false,
+        "genericPeriodicCertificateFound": false,
+        "genericPeriodicCertificatePatchSize": 0,
+        "genericPeriodicCertificateElapsedMs": 0,
+        "genericPeriodicCertificateChecksAttempted": 0,
+        "genericPeriodicCertificateChecksCompleted": 0,
+        "genericPeriodicCertificateChecksTimedOut": 0,
+        "genericPeriodicCertificateCheckSizes": [],
+        "genericPeriodicCertificateCheckFingerprints": [],
+        "genericPeriodicCertificateTotalElapsedMs": 0,
+        "genericPeriodicCertificateDistinctPatchMode": false,
+        "genericPeriodicCertificateCheckpointSamplingPolicy": "prefix",
+        "genericPeriodicCertificateCheckpointSamplingStride": 1,
+        "genericPeriodicCertificateCheckpointSamplingPrefix": 4,
+        "genericPeriodicCertificateCheckpointEligibleStates": 0,
+        "genericPeriodicCertificateCheckpointSamplingSkips": 0,
+        "genericPeriodicCertificateDuplicateStatesSkipped": 0,
+        "genericPeriodicCertificatePerSizeCapSkips": 0,
+        "genericPeriodicCertificateTotalCapSkips": 0,
+        "genericPeriodicCertificateCheckpointTimeBudgetSkips": 0,
+        "genericPeriodicCertificateCheckpointTimeBudgetExhausted": false,
+        "genericPeriodicCertificateTargetAttempted": false,
+        "genericPeriodicCertificateTargetCompleted": false,
+        "genericPeriodicCertificateTargetTimedOut": false,
+        "genericPeriodicCertificateTargetFound": false,
+        "genericPeriodicInternalMotifAttempted": false,
+        "genericPeriodicInternalMotifFound": false,
+        "genericPeriodicInternalMotifVectorCount": 0,
+        "genericPeriodicInternalMotifBasesTested": 0,
+        "genericPeriodicInternalMotifMaxTranslationSupport": 0,
+        "genericPeriodicInternalMotifTopTranslations": [],
+        "terminationReason": "time_limit",
+        "quotientAttempts": 6,
+        "duplicateQuotientStatesSkipped": 0,
+        "periodicMotifNodes": 0
+      },
+      "freeRange": null,
+      "freeRangeNoBrainer": null,
+      "freeRangeUnbanded": null,
+      "freeRangeUnbandedTrials": [],
+      "proofSearchPortfolio": null,
+      "freeRangeTrials": [],
+      "freeRangeNoBrainerTrials": [],
+      "preferredFreeRangePolicy": null,
+      "freeRangePortfolio": null,
+      "screeningConclusion": "inconclusive"
+    }
+  ],
+  "activeUnresolved": []
+}

@@ -407,25 +407,32 @@ through easy faces while permanently ignoring an unfillable face near the
 root. The exact **complete-shell** lane instead recomputes shortest
 face-adjacency distance from the root for every current patch. To complete
 shell `r`, every exposed face owned by a tile at distance less than `r` must be
-covered. It applies MRV across those pending face obligations and now prunes a
+covered. It prioritizes the oldest face-adjacency generation, applies MRV
+within that generation, and prunes a
 state immediately when *any* exposed face has no legal mate. This is sound in
 the configured face-to-face proper-lattice model: a future placement elsewhere
 cannot create a new mate for an already fixed face; it can only invalidate a
 current mate. Exact search uses raw geometric validity for these face-mates,
 not the finite-growth heuristics used by the preview lanes.
 
-The strengthened screen rejects `10_16113`, `10_45026`, and `9_11683` before
-an indefinitely extendable first shell. `10_45033` reaches shells 1–4 in all
+The original sampled-solid-angle screen rejected `10_16113`, `10_45026`, and
+`9_11683` before an indefinitely extendable first shell. Exact convex overlap
+confirms the latter two obstructions, but `10_16113` now completes shell 1 with
+nine tiles. Its 60-second translational run completed motif sizes 1–5 without a
+certificate, while a 30-second isohedral run reached 72 tiles and remained
+inconclusive, making it the corrected live candidate. `10_45033` reaches shells 1–4 in all
 three direct runs, shell 5 in one of three, then reaches shells 6 and 7 by
 validated checkpoint continuation (764 and 1,174 tiles). Mining the shell-7
 witness reveals an exact six-tile translational quotient with period vectors
 `(-2,-2,2)`, `(0,-1,3)`, and `(-3,0,1)` and determinant 14. The quotient
 replay pairs all 54 motif faces modulo that lattice and matches motif volume
 to covolume, so `10_45033` is periodic and the former four-tile candidate pool
-is now exhausted. The receipts are in
+has one corrected survivor. The receipts are in
 `data/lattice-polyhedron-extendable-shell-screen-2026-08-19.json`,
 `data/lattice-polyhedron-10_45033-shell-continuation-2026-08-19.json`, and
 `data/lattice-polyhedron-10_45033-periodic-certificate-2026-08-19.json`.
+The corrected `10_16113` receipts are the `corrected-shell1`,
+`corrected-periodic-screen`, and `corrected-isohedral` reports.
 Regenerate the direct screen with
 `scripts/screen-lattice-complete-shells.mjs --target=5 --cascade=true`, and
 validate it with `scripts/analyze-lattice-complete-shell-screen.mjs`.
@@ -433,13 +440,13 @@ validate it with `scripts/analyze-lattice-complete-shell-screen.mjs`.
 The next census pass enumerates all 156,464 size-11 Blanco–Santos lattice
 polytopes from the 16 published source parts. An exact local-edge filter rejects
 156,400, and exhaustive extendable-shell-one search rejects another 56, leaving
-only eight first-shell witnesses and no bounded-search timeouts. Exact shell-3
-search then proves `11_34718` and `11_34757` are non-tilers in this model. The
-other six reach shell 4 in every seed (two reach shell 5 as an additional
-check), but each has a replayable translational quotient of only 2–5 tiles.
-Thus this entire size-11 pass is resolved—two non-tilers, six periodic tilers,
-and zero aperiodic candidates—while supplying eight useful GCTS regression
-controls in the web catalog. The first-stage, shell, and quotient receipts are
+only eight first-shell witnesses and no bounded-search timeouts. The old
+sampled-solid-angle search incorrectly rejected `11_34718` and `11_34757` at
+shell 3. Under exact convex overlap both reach shell 3 immediately and have
+two-tile translational quotients; the other six have replayable quotients of
+2–5 tiles. Thus the entire size-11 survivor pass is resolved as eight periodic
+tilers and zero aperiodic candidates. The first-stage, historical shell, and
+quotient receipts are
 `data/lattice-polyhedron-size11-first-stage-2026-08-19.json`,
 `data/lattice-polyhedron-size11-shell3-2026-08-19.json`, and
 `data/lattice-polyhedron-size11-periodic-summary-2026-08-19.json`.
@@ -451,31 +458,35 @@ The size-12 pass uses the complete 503,443-record polyDB collection
 `Polytopes.Lattice.FewLatticePoints3D`. Exact local-edge checks reject 503,353
 representatives. The corrected full-isometry, unpruned shell-one search rejects
 25 more and leaves 65 witnesses with no timeouts. Quotient certificates now
-undergo a complete neighboring-cell occupancy replay; this rejects several old
-face-pairing/volume false positives, including the former mixed-chirality claim
-for `12_235174`. Of the 65 witnesses, the corrected easy lanes initially
-certify 54 periodic quotients. Unpruned shell-two GCTS proves three of the
-remaining eleven to be non-tilers. Deeper exact search rejects three more at
-shell 3 and two at shell 4. Shell-6 GCTS patches then expose overlap-validated
+undergo a complete neighboring-cell audit. Polycubes use exact discrete
+occupancy; convex lattice polyhedra use a separating-axis interior-overlap
+test, avoiding false rejections from numerically approximated solid angles.
+Of the 65 witnesses, the corrected easy lanes initially
+certify 54 periodic quotients. The historical sampled-angle shell pass rejected
+eight of the remaining eleven; the corrected convex rescreen retains only two
+of those obstructions. Shell-6 GCTS patches then expose overlap-validated
 translational quotients for `12_204255` (8 tiles) and `12_405129` (24 tiles).
-The size-12 result is therefore 56 periodic tilers, eight finite-shell
-non-tilers, and one still-unresolved candidate, `12_235174`. The catalogue
-retains all 27 selected controls: 18 periodic, eight non-tilers, and the one
-live candidate. Receipts are in
+The last survivor, `12_235174`, is a triangular prism. The earlier solid-angle
+audit overestimated one vertex total as 48.097 against an exact value of 48;
+the convex audit instead certifies its two-tile parallelepiped cell with period
+vectors `(-1,0,0)`, `(-2,-1,5)`, and `(-2,1,5)`. The same correction recovers
+two-tile quotients for six shapes previously misclassified by shell search.
+The corrected size-12 result is therefore 63 periodic tilers, two exact
+finite-shell non-tilers, and no unresolved candidate. The catalogue retains all
+27 selected controls: 25 periodic and two non-tilers. Receipts are in
 `data/lattice-polyhedron-size12-full-isometry-first-stage-2026-08-20.json`,
 `data/lattice-polyhedron-size12-full-isometry-shell2-2026-08-20.json`, and
 `data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json`, with
 the deeper shell receipts in the corresponding `shell3`, `shell4`, and `shell6`
-reports and the two extracted quotient receipts in the
-`12_204255-shell6-periodicity` and `12_405129-shell6-periodicity` reports.
-For the remaining `12_235174`, seeds 1–20 produce 20 distinct 49-tile shell-3
-witnesses. Exact resumed search proves that none of those particular witnesses
-extends to shell 4, and the overlap-audited internal-period checker completes
-303,583 basis tests across them without a certificate. This does not prove that
-no other shell-3 witness extends, so the complete root-level shell-4 timeout is
-still reported honestly as inconclusive. The three portfolio receipts use the
-`12_235174-shell3-portfolio`, `shell4-extension-portfolio`, and
-`shell3-periodicity-portfolio` filenames.
+reports and the three extracted quotient receipts in the
+`12_204255-shell6-periodicity`, `12_405129-shell6-periodicity`, and
+`12_235174-periodic` reports, plus the combined `corrected-convex-periodic-rescreen`
+and `corrected-convex-shell2-nontilers` receipts. Before the final prism certificate, seeds 1–20
+had produced 20 distinct 49-tile shell-3 witnesses; each tested witness had an
+exact shell-4 extension obstruction and the internal-period checker tried
+303,583 bases without recognizing the smaller cell. Those historical receipts
+remain useful GCTS stress tests under the `12_235174-shell3-portfolio`,
+`shell4-extension-portfolio`, and `shell3-periodicity-portfolio` filenames.
 For sizes 12–15, `scripts/screen-next-lattice-polytope-pool.mjs` downloads
 bounded aggregate pages from polyDB and records contiguous source ranges and
 SHA-256 receipts; the merge script refuses gaps and overlaps.
@@ -492,10 +503,12 @@ retain robust largest patches between 21 and 25 tiles before the node limit.
 All five conclusions remain inconclusive: a finite patch is not a space-tiling
 certificate, and a node-limited run is not a non-tiler certificate.
 
-The rescreener and the public catalog consume the same 16-entry runtime pool in
-`assets/lattice-polyhedron-survivors.js`; regression tests compare that pool to
-the archived report so a removed tile cannot silently reappear. Each run also
-reports `largestPatch`, maximum frontier size, and maximum candidate count.
+The original rescreener and its regression archive still share the same
+16-entry runtime pool in `assets/lattice-polyhedron-survivors.js`; the public
+catalog now combines that pass with the fully screened size-11 and selected
+size-12 controls. Regression tests verify all three groups so a removed tile
+cannot silently reappear. Each run also reports `largestPatch`, maximum
+frontier size, and maximum candidate count.
 These effort fields preserve how long an unresolved search stayed alive even
 though isohedral failure correctly rolls the displayed terminal state back to
 the seed. A certified local obstruction is classified as

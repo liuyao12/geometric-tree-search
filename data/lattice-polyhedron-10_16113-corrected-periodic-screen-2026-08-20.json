@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_periodic_certificate_screen",
+  "generatedAt": "2026-08-20T15:09:24.417Z",
+  "source": "assets/lattice-polyhedron-survivors.js",
+  "candidate": {
+    "id": "10_16113",
+    "vertices": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        -1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        -1
+      ],
+      [
+        2,
+        1,
+        0
+      ]
+    ]
+  },
+  "configuration": {
+    "orientationGroup": "full cubic isometries",
+    "maximumMotifTiles": 12,
+    "timeLimitMs": 60000,
+    "nodeLimit": 500000,
+    "overlapValidation": "complete neighboring-cell convex separating-axis audit"
+  },
+  "checks": [
+    {
+      "patchSize": 1,
+      "certified": false,
+      "periodicTemplate": null,
+      "rejection": null,
+      "neighborhoodRejection": null
+    },
+    {
+      "patchSize": 2,
+      "certified": false,
+      "periodicTemplate": null,
+      "rejection": null,
+      "neighborhoodRejection": null
+    },
+    {
+      "patchSize": 3,
+      "certified": false,
+      "periodicTemplate": null,
+      "rejection": null,
+      "neighborhoodRejection": null
+    },
+    {
+      "patchSize": 4,
+      "certified": false,
+      "periodicTemplate": null,
+      "rejection": null,
+      "neighborhoodRejection": null
+    },
+    {
+      "patchSize": 5,
+      "certified": false,
+      "periodicTemplate": null,
+      "rejection": null,
+      "neighborhoodRejection": null
+    }
+  ],
+  "result": {
+    "resultKind": "search_incomplete",
+    "success": false,
+    "canTile": null,
+    "searchIncomplete": true,
+    "evidence": null,
+    "elapsedMs": 60013,
+    "visitedNodes": 54128,
+    "periodicMotifNodes": 54132,
+    "periodicMotifStates": 27524
+  }
+}

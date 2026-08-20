@@ -76,6 +76,16 @@ assert.ok(
   "equivalent live patches reached by different move orders must reuse failed quotient work"
 );
 
+const prism = await solve({
+  ...polyhedron("12_235174-prism", [[0,0,0],[1,0,0],[0,2,0],[2,1,5],[1,2,0],[3,1,5]]),
+  target_val: 500,
+  isohedral_search_horizon_tiles: 24,
+  time_limit_ms: 5000
+});
+assert.equal(prism.finished?.result_kind, "certified_tiling");
+assert.equal(prism.finished?.tiling_evidence?.kind, "isohedral_certificate");
+assert.equal(prism.finished?.tiling_evidence?.patch_size, 2);
+
 const limited = await solve({
   ...polyhedron("10_45026", [[0,0,2],[0,1,1],[1,0,1],[1,1,0],[1,1,2],[1,2,0],[1,2,1],[2,1,0],[2,1,1]]),
   time_limit_ms: 100
@@ -92,6 +102,7 @@ console.log("3D exact isohedral certificate regressions passed", {
   largePreviewMotif: displayIndependent.finished.tiling_evidence.patch_size,
   proofHorizon: displayIndependent.finished.search_stats.isohedral_search_horizon_tiles,
   duplicateCertificateStatesSkipped: cachedSurvivor.finished.search_stats.isohedral_certificate_duplicate_states_skipped,
+  prismMotif: prism.finished.tiling_evidence.patch_size,
   limitedResult: limited.finished.result_kind,
   restoredTiles: limited.finalSnapshot.tile_count
 });

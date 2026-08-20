@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_periodic_certificate_screen",
+  "generatedAt": "2026-08-20T14:58:12.002Z",
+  "source": "data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json",
+  "candidate": {
+    "id": "12_235174",
+    "vertices": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        2,
+        1,
+        5
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        3,
+        1,
+        5
+      ]
+    ]
+  },
+  "configuration": {
+    "orientationGroup": "proper cubic lattice orientations",
+    "maximumMotifTiles": 2,
+    "timeLimitMs": 30000,
+    "nodeLimit": 500000,
+    "overlapValidation": "complete neighboring-cell convex separating-axis audit"
+  },
+  "checks": [
+    {
+      "patchSize": 1,
+      "certified": false,
+      "periodicTemplate": null,
+      "rejection": null,
+      "neighborhoodRejection": null
+    },
+    {
+      "patchSize": 2,
+      "certified": true,
+      "periodicTemplate": {
+        "kind": "2_tile_boundary_quotient",
+        "tile_volume": 5,
+        "tile_volumes": [
+          5
+        ],
+        "cell_volume": 10,
+        "period_vectors": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            -2,
+            -1,
+            5
+          ],
+          [
+            -2,
+            1,
+            5
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "orientation_id": "0:0",
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "orientation_id": "0:2",
+            "translation": [
+              2,
+              0,
+              -5
+            ]
+          }
+        ],
+        "mixed_prototile": false,
+        "prototile_counts": [
+          {
+            "prototile_idx": 0,
+            "count": 2
+          }
+        ],
+        "proof": {
+          "method": "face_paired_boundary_equal_covolume",
+          "overlap_validation": "complete_lattice_translation_neighborhood",
+          "boundary_face_count": 8,
+          "boundary_pairing": [
+            {
+              "source_face": 0,
+              "target_face": 4,
+              "translation": [
+                2,
+                1,
+                -5
+              ],
+              "lattice_coordinates": [
+                0,
+                -1,
+                0
+              ]
+            },
+            {
+              "source_face": 1,
+              "target_face": 3,
+              "translation": [
+                -1,
+                0,
+                0
+              ],
+              "lattice_coordinates": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "source_face": 2,
+              "target_face": 7,
+              "translation": [
+                2,
+                -1,
+                -5
+              ],
+              "lattice_coordinates": [
+                0,
+                0,
+                -1
+              ]
+            },
+            {
+              "source_face": 5,
+              "target_face": 6,
+              "translation": [
+                1,
+                0,
+                0
+              ],
+              "lattice_coordinates": [
+                -1,
+                0,
+                0
+              ]
+            }
+          ],
+          "motif_volume": 10,
+          "lattice_determinant": 10
+        }
+      },
+      "rejection": null,
+      "neighborhoodRejection": null
+    }
+  ],
+  "result": {
+    "resultKind": "certified_tiling",
+    "success": true,
+    "canTile": true,
+    "searchIncomplete": false,
+    "evidence": {
+      "kind": "translational_certificate",
+      "certified": true,
+      "can_tile": true,
+      "strategy": "translational",
+      "patch_size": 2,
+      "certificate_kind": "2_tile_boundary_quotient",
+      "period_vectors": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          -2,
+          -1,
+          5
+        ],
+        [
+          -2,
+          1,
+          5
+        ]
+      ],
+      "periodic_template": {
+        "kind": "2_tile_boundary_quotient",
+        "tile_volume": 5,
+        "tile_volumes": [
+          5
+        ],
+        "cell_volume": 10,
+        "period_vectors": [
+          [
+            -1,
+            0,
+            0
+          ],
+          [
+            -2,
+            -1,
+            5
+          ],
+          [
+            -2,
+            1,
+            5
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "orientation_id": "0:0",
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "orientation_id": "0:2",
+            "translation": [
+              2,
+              0,
+              -5
+            ]
+          }
+        ],
+        "mixed_prototile": false,
+        "prototile_counts": [
+          {
+            "prototile_idx": 0,
+            "count": 2
+          }
+        ],
+        "proof": {
+          "method": "face_paired_boundary_equal_covolume",
+          "overlap_validation": "complete_lattice_translation_neighborhood",
+          "boundary_face_count": 8,
+          "boundary_pairing": [
+            {
+              "source_face": 0,
+              "target_face": 4,
+              "translation": [
+                2,
+                1,
+                -5
+              ],
+              "lattice_coordinates": [
+                0,
+                -1,
+                0
+              ]
+            },
+            {
+              "source_face": 1,
+              "target_face": 3,
+              "translation": [
+                -1,
+                0,
+                0
+              ],
+              "lattice_coordinates": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "source_face": 2,
+              "target_face": 7,
+              "translation": [
+                2,
+                -1,
+                -5
+              ],
+              "lattice_coordinates": [
+                0,
+                0,
+                -1
+              ]
+            },
+            {
+              "source_face": 5,
+              "target_face": 6,
+              "translation": [
+                1,
+                0,
+                0
+              ],
+              "lattice_coordinates": [
+                -1,
+                0,
+                0
+              ]
+            }
+          ],
+          "motif_volume": 10,
+          "lattice_determinant": 10
+        }
+      }
+    },
+    "elapsedMs": 326,
+    "visitedNodes": 25,
+    "periodicMotifNodes": 3,
+    "periodicMotifStates": 3
+  }
+}

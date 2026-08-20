@@ -953,7 +953,7 @@ assert.equal(reflectedPeriodicShellControl.final.success, true);
 assert.equal(reflectedPeriodicShellControl.final.tiling_evidence?.kind, "finite_complete_shell");
 assert.ok(reflectedPeriodicShellControl.final.search_stats.max_complete_shell_depth >= 2);
 
-const overlappingQuotientRegression = await solve({
+const correctedConvexQuotientRegression = await solve({
   mode_key: "cube",
   custom_system: {
     name: "Periodic quotient overlap regression",
@@ -972,10 +972,11 @@ const overlappingQuotientRegression = await solve({
   template_preflight: true,
   time_limit_ms: 3000
 });
-assert.notEqual(overlappingQuotientRegression.final.result_kind, "certified_tiling");
-assert.notEqual(overlappingQuotientRegression.final.can_tile, true);
+assert.equal(correctedConvexQuotientRegression.final.result_kind, "certified_tiling");
+assert.equal(correctedConvexQuotientRegression.final.can_tile, true);
+assert.equal(correctedConvexQuotientRegression.final.tiling_evidence?.patch_size, 2);
 
-const configuredOverlappingQuotientRegression = await solve({
+const configuredPrismQuotientRegression = await solve({
   mode_key: "cube",
   custom_system: {
     name: "Configured periodic quotient overlap regression",
@@ -989,11 +990,11 @@ const configuredOverlappingQuotientRegression = await solve({
   },
   target_val: 20,
   tiling_strategy: "translational",
-  include_mirrors: true,
+  include_mirrors: false,
   known_periodic_template: {
     motif: [
       { prototile_idx: 0, orientation_id: "0:0", translation: [0, 0, 0] },
-      { prototile_idx: 1, orientation_id: "1:1", translation: [2, 0, -5] }
+      { prototile_idx: 0, orientation_id: "0:2", translation: [2, 0, -5] }
     ],
     period_vectors: [[-1, 0, 0], [-2, -1, 5], [-2, 1, 5]]
   },
@@ -1001,8 +1002,13 @@ const configuredOverlappingQuotientRegression = await solve({
   template_preflight: true,
   time_limit_ms: 3000
 });
-assert.notEqual(configuredOverlappingQuotientRegression.final.result_kind, "certified_tiling");
-assert.notEqual(configuredOverlappingQuotientRegression.final.can_tile, true);
+assert.equal(configuredPrismQuotientRegression.final.result_kind, "certified_tiling");
+assert.equal(configuredPrismQuotientRegression.final.can_tile, true);
+assert.equal(configuredPrismQuotientRegression.final.tiling_evidence?.patch_size, 2);
+assert.equal(
+  configuredPrismQuotientRegression.final.tiling_evidence?.periodic_template?.proof?.overlap_validation,
+  "complete_lattice_translation_neighborhood"
+);
 
 console.log("3D strategy regressions passed", {
   translational_tiles: translational.final.tile_count,

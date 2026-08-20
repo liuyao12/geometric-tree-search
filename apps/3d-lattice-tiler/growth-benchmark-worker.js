@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-deep-shell-v102";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-prism-proof-v103";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot

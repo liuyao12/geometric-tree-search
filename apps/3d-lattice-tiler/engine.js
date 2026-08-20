@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-deep-shell-v102";
+import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-prism-proof-v103";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -1332,6 +1332,86 @@ export const createTilingStream = (() => {
       }
     };
 
+    const allSystemTilesAreConvexPolyhedra = prototiles.every(tile => !tile.is_polycube);
+    const convexPlacementGeometryCache = new WeakMap();
+    const convexPlacementGeometry = placement => {
+      const cached = convexPlacementGeometryCache.get(placement);
+      if (cached) return cached;
+      const subtract = (left, right) => [
+        left[0] - right[0], left[1] - right[1], left[2] - right[2]
+      ];
+      const cross = (left, right) => [
+        left[1] * right[2] - left[2] * right[1],
+        left[2] * right[0] - left[0] * right[2],
+        left[0] * right[1] - left[1] * right[0]
+      ];
+      const vertices = placement.orient.verts.map(vertex => add3(vertex, placement.translation));
+      const edges = new Map();
+      const normals = [];
+      for (const face of placement.orient.faces) {
+        for (let index = 0; index < face.length; index++) {
+          const vector = subtract(vertices[face[(index + 1) % face.length]], vertices[face[index]]);
+          const reverse = vector.map(value => -value);
+          const vectorKey = vector.join(",");
+          const reverseKey = reverse.join(",");
+          const canonical = vectorKey < reverseKey ? vector : reverse;
+          if (canonical.some(Boolean)) edges.set(canonical.join(","), canonical);
+        }
+        const origin = vertices[face[0]];
+        for (let index = 1; index + 1 < face.length; index++) {
+          const normal = cross(
+            subtract(vertices[face[index]], origin),
+            subtract(vertices[face[index + 1]], origin)
+          );
+          if (!normal.some(Boolean)) continue;
+          normals.push(normal);
+          break;
+        }
+      }
+      const geometry = {
+        vertices,
+        edges: [...edges.values()],
+        normals,
+        minima: [0, 1, 2].map(axis => Math.min(...vertices.map(vertex => vertex[axis]))),
+        maxima: [0, 1, 2].map(axis => Math.max(...vertices.map(vertex => vertex[axis])))
+      };
+      convexPlacementGeometryCache.set(placement, geometry);
+      return geometry;
+    };
+    const convexPlacementInteriorsOverlap = (leftPlacement, rightPlacement) => {
+      const left = convexPlacementGeometry(leftPlacement);
+      const right = convexPlacementGeometry(rightPlacement);
+      for (let coordinate = 0; coordinate < 3; coordinate++) {
+        if (
+          left.maxima[coordinate] <= right.minima[coordinate] + 1e-9
+          || right.maxima[coordinate] <= left.minima[coordinate] + 1e-9
+        ) return false;
+      }
+      const dot = (vertex, axis) =>
+        vertex[0] * axis[0] + vertex[1] * axis[1] + vertex[2] * axis[2];
+      const cross = (leftVector, rightVector) => [
+        leftVector[1] * rightVector[2] - leftVector[2] * rightVector[1],
+        leftVector[2] * rightVector[0] - leftVector[0] * rightVector[2],
+        leftVector[0] * rightVector[1] - leftVector[1] * rightVector[0]
+      ];
+      const axes = [...left.normals, ...right.normals];
+      for (const leftEdge of left.edges) {
+        for (const rightEdge of right.edges) {
+          const axis = cross(leftEdge, rightEdge);
+          if (axis.some(Boolean)) axes.push(axis);
+        }
+      }
+      for (const axis of axes) {
+        const leftValues = left.vertices.map(vertex => dot(vertex, axis));
+        const rightValues = right.vertices.map(vertex => dot(vertex, axis));
+        if (
+          Math.max(...leftValues) <= Math.min(...rightValues) + 1e-9
+          || Math.max(...rightValues) <= Math.min(...leftValues) + 1e-9
+        ) return false;
+      }
+      return true;
+    };
+
     const isMoveValid = (move) => {
       const { orient, translation } = move;
       if (overBudget()) {
@@ -1343,15 +1423,23 @@ export const createTilingStream = (() => {
       if (targetRegion && state.placed_volume + moveVolume > targetRegion.volume + 1e-8) {
         return { ok: false, reason: "region-volume" };
       }
-      for (let occupancyIndex = 0; occupancyIndex < orient.occupancy.length; occupancyIndex++) {
-        if (occupancyIndex > 0 && (occupancyIndex & 31) === 0 && overBudget()) {
-          noteIncompleteSearch();
-          return { ok: false, budget: true, reason: "budget" };
+      if (allSystemTilesAreConvexPolyhedra) {
+        for (const placement of state.placements) {
+          if (convexPlacementInteriorsOverlap(placement, move)) {
+            return { ok: false, reason: "convex-interior-overlap" };
+          }
         }
-        const pt = orient.occupancy[occupancyIndex];
-        const g = add3(pt.pos, translation);
-        if (latticeGet(g) + pt.weight > MAX_SOLID_ANGLE + SOLID_ANGLE_EPSILON) {
-          return { ok: false, reason: "occupancy", position: g };
+      } else {
+        for (let occupancyIndex = 0; occupancyIndex < orient.occupancy.length; occupancyIndex++) {
+          if (occupancyIndex > 0 && (occupancyIndex & 31) === 0 && overBudget()) {
+            noteIncompleteSearch();
+            return { ok: false, budget: true, reason: "budget" };
+          }
+          const pt = orient.occupancy[occupancyIndex];
+          const g = add3(pt.pos, translation);
+          if (latticeGet(g) + pt.weight > MAX_SOLID_ANGLE + SOLID_ANGLE_EPSILON) {
+            return { ok: false, reason: "occupancy", position: g };
+          }
         }
       }
       for (let f_idx = 0; f_idx < orient.faces.length; f_idx++) {
@@ -1448,6 +1536,57 @@ export const createTilingStream = (() => {
     let faceCandidateIndexVersion = -1;
     let faceCandidateIndex = new Map();
     let frontierFaceCandidateIndex = new Map();
+    let shellFaceCandidateIndexVersion = -1;
+    let shellFaceCandidateIndex = new Map();
+    const candidatesForRequiredShellFace = (frontierFaceKey, frontierEntry) => {
+      if (shellFaceCandidateIndexVersion !== stateVersion) {
+        shellFaceCandidateIndexVersion = stateVersion;
+        shellFaceCandidateIndex = new Map();
+      }
+      if (shellFaceCandidateIndex.has(frontierFaceKey)) {
+        return shellFaceCandidateIndex.get(frontierFaceKey);
+      }
+      searchStats.generic_shell_required_faces_scanned =
+        (searchStats.generic_shell_required_faces_scanned ?? 0) + 1;
+      const frontierVertices = frontierEntry.ordered_verts;
+      const signature = faceSignatureUndirected(frontierVertices);
+      const candidates = new Map();
+      candidateScan:
+      for (const entry of orientedFacesBySignature.get(signature) ?? []) {
+        for (const anchor of entry.vertices) {
+          searchStats.generic_shell_face_match_attempts =
+            (searchStats.generic_shell_face_match_attempts ?? 0) + 1;
+          if (overBudget()) {
+            noteIncompleteSearch();
+            break candidateScan;
+          }
+          const translation = vecSub(frontierVertices[0], anchor);
+          if (entry.tile.is_polycube
+            ? !isPolycubeMoveTranslation(entry.tile, translation)
+            : !translation.every(Number.isInteger)) continue;
+          if (!translatedReverseFaceMatches(entry.vertices, frontierVertices, translation)) continue;
+          const move = {
+            prototile_idx: entry.prototile_idx,
+            translation,
+            orient: entry.orient
+          };
+          const geometryKey = placementGeometryKey(move);
+          if (candidates.has(geometryKey)) continue;
+          const validity = isMoveValid(move);
+          if (!validity.ok) continue;
+          candidates.set(geometryKey, {
+            ...move,
+            occupancy_data: validity.occData,
+            dedup_key: geometryKey,
+            _matched_frontier_face_keys: new Set([frontierFaceKey])
+          });
+        }
+      }
+      const result = [...candidates.values()]
+        .sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
+      shellFaceCandidateIndex.set(frontierFaceKey, result);
+      return result;
+    };
     const faceCandidatesByFrontierPoint = () => {
       if (faceCandidateIndexVersion === stateVersion) return faceCandidateIndex;
       const candidateByGeometry = new Map();
@@ -1868,9 +2007,16 @@ export const createTilingStream = (() => {
       && !proposalProgram;
     const genericGlobalExtensionEnumeration = genericConnectedPatchEnumeration
       || genericCompleteShellEnumeration;
+    // The complete global enumerators branch from the exact face-extension
+    // index below; the much larger frontier point/candidate graph is only a
+    // diagnostic visualization.  Headless proof runs may disable that graph
+    // without changing the explored tree or the resulting certificate.
+    const genericGlobalFrontierGraph = genericGlobalExtensionEnumeration
+      && config.generic_global_frontier_graph !== false;
     const genericGlobalZeroFacePruning = genericGlobalExtensionEnumeration
       && config.generic_global_zero_face_pruning === true;
     searchStats.generic_complete_shell_enumeration = genericCompleteShellEnumeration;
+    searchStats.generic_global_frontier_graph = genericGlobalFrontierGraph;
     searchStats.generic_global_zero_face_pruning = genericGlobalZeroFacePruning;
     const configuredFailureMemoCapacity = Number(config.generic_failure_memo_max_states);
     const genericFailureMemoCapacity = Number.isFinite(configuredFailureMemoCapacity)
@@ -3416,17 +3562,35 @@ export const createTilingStream = (() => {
       const localLattice = new Map();
       const localFrontier = new Map();
       const localPlacementKeys = new Set();
+      const localConvexPlacements = [];
       const addPlacement = (placement, shift) => {
         const translation = vecAdd(placement.translation, shift);
         const placementKey = `${placement.prototile_idx}::${placement.orient.__orientation_id ?? ""}::${vecKey(translation)}`;
-        if (localPlacementKeys.has(placementKey)) return false;
+        if (localPlacementKeys.has(placementKey)) {
+          searchStats.periodic_neighborhood_last_rejection = "duplicate_periodic_placement";
+          return false;
+        }
         localPlacementKeys.add(placementKey);
-        for (const point of placement.orient.occupancy) {
-          const position = add3(point.pos, translation);
-          const key = vecKey(position);
-          const weight = (localLattice.get(key) ?? 0) + point.weight;
-          if (weight > MAX_SOLID_ANGLE + SOLID_ANGLE_EPSILON) return false;
-          localLattice.set(key, weight);
+        const translatedPlacement = { ...placement, translation };
+        if (!allSystemTilesAreConvexPolyhedra) {
+          for (const point of placement.orient.occupancy) {
+            const position = add3(point.pos, translation);
+            const key = vecKey(position);
+            const weight = (localLattice.get(key) ?? 0) + point.weight;
+            if (weight > MAX_SOLID_ANGLE + SOLID_ANGLE_EPSILON) {
+              searchStats.periodic_neighborhood_last_rejection = "discrete_occupancy_overlap";
+              return false;
+            }
+            localLattice.set(key, weight);
+          }
+        } else {
+          for (const existing of localConvexPlacements) {
+            if (convexPlacementInteriorsOverlap(existing, translatedPlacement)) {
+              searchStats.periodic_neighborhood_last_rejection = "convex_interior_overlap";
+              return false;
+            }
+          }
+          localConvexPlacements.push(translatedPlacement);
         }
         for (let faceIndex = 0; faceIndex < placement.orient.faces.length; faceIndex += 1) {
           const face = placement.orient.faces[faceIndex];
@@ -3437,7 +3601,10 @@ export const createTilingStream = (() => {
             localFrontier.set(key, orderedVertices);
             continue;
           }
-          if (!isCyclicPermutation(orderedVertices, [...existing].reverse())) return false;
+          if (!isCyclicPermutation(orderedVertices, [...existing].reverse())) {
+            searchStats.periodic_neighborhood_last_rejection = "face_orientation_overlap";
+            return false;
+          }
           localFrontier.delete(key);
         }
         return true;
@@ -3458,6 +3625,8 @@ export const createTilingStream = (() => {
       for (const placement of motifPlacements) {
         if (!addPlacement(placement, [0, 0, 0])) return false;
       }
+      searchStats.periodic_neighborhood_last_rejection = null;
+      searchStats.periodic_neighborhood_last_rejection_detail = null;
       return true;
     };
     const findBoundaryPeriodicTemplate = (requestedPeriod, options = {}) => {
@@ -4568,7 +4737,7 @@ export const createTilingStream = (() => {
     });
     const isohedralRootTransformsTo = placement => {
       const root = state.placements[0];
-      if (!root || placement.prototile_idx !== root.prototile_idx) return [];
+      if (!root) return [];
       const sourceVertices = globalPlacementVertices(root);
       const targetVertices = globalPlacementVertices(placement);
       const sourceCenter = [0, 1, 2].map(axis =>
@@ -4598,8 +4767,6 @@ export const createTilingStream = (() => {
       return [...transforms.values()];
     };
     const isohedralTransformPlacement = (placement, transform) => {
-      const tile = prototiles[placement.prototile_idx];
-      if (!tile) return null;
       const transformedVertices = globalPlacementVertices(placement)
         .map(vertex => isohedralTransformPoint(transform, vertex));
       const mins = [0, 1, 2].map(axis =>
@@ -4608,15 +4775,30 @@ export const createTilingStream = (() => {
       const normalized = transformedVertices.map(vertex =>
         vertex.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis]))
       );
-      const orient = isohedralOrientationMaps[placement.prototile_idx]
-        .get(isohedralVertexCloudKey(normalized));
-      if (!orient) return null;
+      const normalizedKey = isohedralVertexCloudKey(normalized);
+      const targetPrototileIndices = isohedralOrientationMaps
+        .map((orientations, prototileIdx) => orientations.has(normalizedKey) ? prototileIdx : -1)
+        .filter(prototileIdx => prototileIdx >= 0);
+      if (!targetPrototileIndices.length) return null;
+      // Proper motions normally stay in the same internal prototile. A
+      // reflection of a chiral lattice tile lands in the mirrored internal
+      // copy instead. Prefer the original index when both descriptions are
+      // geometrically identical so existing placements keep stable keys.
+      const prototileIdx = targetPrototileIndices.includes(placement.prototile_idx)
+        ? placement.prototile_idx
+        : targetPrototileIndices[0];
+      if (prototileIdx !== placement.prototile_idx) {
+        searchStats.isohedral_cross_prototile_images =
+          (searchStats.isohedral_cross_prototile_images ?? 0) + 1;
+      }
+      const tile = prototiles[prototileIdx];
+      const orient = isohedralOrientationMaps[prototileIdx].get(normalizedKey);
       const translation = mins.map(isohedralCoordinate);
       if (tile.is_polycube
         ? !isPolycubeMoveTranslation(tile, translation)
         : !translation.every(Number.isInteger)) return null;
       return {
-        prototile_idx: placement.prototile_idx,
+        prototile_idx: prototileIdx,
         orient,
         translation,
         _isohedral_transform: transform
@@ -4645,17 +4827,23 @@ export const createTilingStream = (() => {
       return null;
     };
     const certifyPeriodicPlacementMotif = (placements, basis) => {
+      const reject = reason => {
+        searchStats.periodic_certificate_last_rejection = reason;
+        return null;
+      };
       const determinant = determinant3(basis);
       const cellVolume = Math.abs(determinant);
-      if (cellVolume <= ISOHEDRAL_EPSILON) return null;
+      if (cellVolume <= ISOHEDRAL_EPSILON) return reject("singular_period_basis");
       const motifVolume = placements.reduce(
         (sum, placement) => sum + (tileVolumes[placement.prototile_idx] ?? 0),
         0
       );
-      if (Math.abs(cellVolume - motifVolume) > 1e-8 * Math.max(1, motifVolume)) return null;
+      if (Math.abs(cellVolume - motifVolume) > 1e-8 * Math.max(1, motifVolume)) {
+        return reject("motif_volume_does_not_equal_cell_volume");
+      }
       if (basis.some(vector => prototiles.some(tile =>
         tile.is_polycube && !isPolycubeTranslationVector(tile, vector)
-      ))) return null;
+      ))) return reject("period_vector_off_lattice");
 
       const faces = [];
       for (const placement of placements) {
@@ -4674,7 +4862,7 @@ export const createTilingStream = (() => {
           allowed[right].push({ face: left, vector: translation.map(value => -value) });
         }
       }
-      if (allowed.some(options => options.length === 0)) return null;
+      if (allowed.some(options => options.length === 0)) return reject("unpaired_quotient_face");
       const matchFaces = (remaining, chosen) => {
         if (!remaining.size) return chosen;
         let pivot = null;
@@ -4701,14 +4889,16 @@ export const createTilingStream = (() => {
         return null;
       };
       const facePairing = matchFaces(new Set(faces.map((_, index) => index)), []);
-      if (!facePairing) return null;
-      if (!periodicTranslationNeighborhoodIsValid(basis, placements)) return null;
+      if (!facePairing) return reject("no_complete_quotient_face_pairing");
+      if (!periodicTranslationNeighborhoodIsValid(basis, placements)) {
+        return reject("translated_motif_neighborhood_overlap");
+      }
 
       const rootTranslation = placements[0].translation;
       const motif = [];
       for (const placement of placements) {
         const orientationIndex = prototiles[placement.prototile_idx].unique_orientations.indexOf(placement.orient);
-        if (orientationIndex < 0) return null;
+        if (orientationIndex < 0) return reject("unknown_motif_orientation");
         motif.push({
           prototile_idx: placement.prototile_idx,
           orientation_index: orientationIndex,
@@ -4720,6 +4910,7 @@ export const createTilingStream = (() => {
       for (const item of motif) {
         prototileCounts.set(item.prototile_idx, (prototileCounts.get(item.prototile_idx) ?? 0) + 1);
       }
+      searchStats.periodic_certificate_last_rejection = null;
       return {
         kind: `${motif.length}_tile_periodic_symmetry_quotient`,
         tile_volume: motifVolume / motif.length,
@@ -4740,7 +4931,7 @@ export const createTilingStream = (() => {
       };
     };
     const isohedralSymmetryCertificate = (template, placements) => {
-      if (prototiles.length !== 1 || !placements.length) return null;
+      if (!placements.length) return null;
       const basis = template.period_vectors;
       const rootTranslation = placements[0].translation;
       const motifKeys = new Set(placements.map(placement =>
@@ -5120,7 +5311,11 @@ export const createTilingStream = (() => {
             searchStats.generation_band_deferrals += 1;
             continue;
           }
-          if (move.prototile_idx !== state.placements[0].prototile_idx) continue;
+          // Mirrored copies of a chiral tile are separate internal prototiles,
+          // but they belong to the same tile orbit under full isometries.
+          // Test actual root congruence instead of comparing implementation
+          // indices, which also keeps genuinely different species excluded.
+          if (!isohedralRootTransformsTo(move).length) continue;
           if (moveOldestFrontierTouches(move) === 0) continue;
           candidateMap.set(move.dedup_key ?? placementGeometryKey(move), move);
         }
@@ -5357,7 +5552,6 @@ export const createTilingStream = (() => {
         // elsewhere cannot create a new legal mate for this face; additional
         // tiles can only remove candidates. MRV over every pending interior
         // face therefore exposes zero-candidate contradictions immediately.
-        faceCandidatesByFrontierPoint();
         const shell = completeShellDepthStats();
         // A mate for a fixed exposed face has fixed geometry. Adding tiles
         // elsewhere can invalidate such a mate through overlap, but can never
@@ -5365,30 +5559,25 @@ export const createTilingStream = (() => {
         // obligation of the shell currently being completed. An unfillable
         // outer face may belong to a branch which can still witness the finite
         // inner shell, so pruning it here would make shell exhaustion unsound.
-        if (genericGlobalZeroFacePruning) {
-          for (const [faceKey, entry] of state.frontier.entries()) {
-            const ownerDepth = shell.owner_depth_by_placement.get(entry.owner_placement);
-            if (!Number.isFinite(ownerDepth) || ownerDepth >= targetVal) continue;
-            if ((frontierFaceCandidateIndex.get(faceKey) ?? []).length) continue;
-            searchStats.generic_global_zero_face_dead_ends += 1;
-            searchStats.generic_global_extension_candidate_states += 1;
-            return [];
-          }
-        }
         let selectedFaceKey = null;
         let selectedFaceDepth = Infinity;
         let selectedCandidates = null;
         for (const [faceKey, entry] of state.frontier.entries()) {
           const ownerDepth = shell.owner_depth_by_placement.get(entry.owner_placement);
           if (!Number.isFinite(ownerDepth) || ownerDepth >= targetVal) continue;
-          const candidates = frontierFaceCandidateIndex.get(faceKey) ?? [];
+          const candidates = candidatesForRequiredShellFace(faceKey, entry);
+          if (!candidates.length && genericGlobalZeroFacePruning) {
+            searchStats.generic_global_zero_face_dead_ends += 1;
+            searchStats.generic_global_extension_candidate_states += 1;
+            return [];
+          }
           if (
             selectedCandidates === null
-            || candidates.length < selectedCandidates.length
-            || (candidates.length === selectedCandidates.length && ownerDepth < selectedFaceDepth)
+            || ownerDepth < selectedFaceDepth
+            || (ownerDepth === selectedFaceDepth && candidates.length < selectedCandidates.length)
             || (
-              candidates.length === selectedCandidates.length
-              && ownerDepth === selectedFaceDepth
+              ownerDepth === selectedFaceDepth
+              && candidates.length === selectedCandidates.length
               && faceKey < selectedFaceKey
             )
           ) {
@@ -5489,9 +5678,13 @@ export const createTilingStream = (() => {
       }
 
       if (genericGlobalExtensionEnumeration) {
-        const analysis = await analyzeFrontierGraph();
-        const frontierDual = frontierGraphPayload(analysis);
-        const analysisStats = rememberFrontierGraph(analysis);
+        const analysis = genericGlobalFrontierGraph
+          ? await analyzeFrontierGraph()
+          : null;
+        const frontierDual = analysis ? frontierGraphPayload(analysis) : null;
+        const analysisStats = analysis
+          ? rememberFrontierGraph(analysis)
+          : calculateFrontierStats();
         if (overBudget()) {
           noteIncompleteSearch();
           yield nodeStatus(parentId, "fail", budgetText());
@@ -5501,7 +5694,7 @@ export const createTilingStream = (() => {
         // infer dead ends or forced moves from this instantaneous vertex view.
         yield nodeStatus(parentId, "working", "", {
           frontier_stats: analysisStats,
-          frontier_dual: frontierDual
+          ...(frontierDual ? { frontier_dual: frontierDual } : {})
         });
         branchAnalysis = analysis;
       }
@@ -5612,11 +5805,19 @@ export const createTilingStream = (() => {
         searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
         const rb = applyMove(mv);
         yield placementDelta("add", mv, rb, mv.node_id);
-        const postMoveAnalysis = await analyzeFrontierGraph();
-        const postMoveStats = rememberFrontierGraph(postMoveAnalysis);
-        const postMoveDual = frontierGraphPayload(postMoveAnalysis);
+        const postMoveAnalysis = genericGlobalExtensionEnumeration && !genericGlobalFrontierGraph
+          ? null
+          : await analyzeFrontierGraph();
+        const postMoveStats = postMoveAnalysis
+          ? rememberFrontierGraph(postMoveAnalysis)
+          : calculateFrontierStats();
+        const postMoveDual = postMoveAnalysis ? frontierGraphPayload(postMoveAnalysis) : null;
         
-        yield nodeStatus(mv.node_id, "working", `[${state.placements.length}] ${treeTileName(prototiles[mv.prototile_idx].name)} (${i+1}/${bestMoves.length})`, { color_id: mv.color_id, frontier_stats: postMoveStats, frontier_dual: postMoveDual });
+        yield nodeStatus(mv.node_id, "working", `[${state.placements.length}] ${treeTileName(prototiles[mv.prototile_idx].name)} (${i+1}/${bestMoves.length})`, {
+          color_id: mv.color_id,
+          frontier_stats: postMoveStats,
+          ...(postMoveDual ? { frontier_dual: postMoveDual } : {})
+        });
         if (shouldSnapshot()) {
           yield snapshot(mv.node_id);
           await tick();

@@ -24,6 +24,8 @@ const outputFile = args.get("output-file") ?? null;
 const includeWitness = args.get("include-witness") === "true";
 const initialPatchFile = args.get("initial-patch-file") ?? null;
 const failureMemo = args.get("failure-memo") !== "false";
+const geometricNogood = args.get("geometric-nogood") === "true";
+const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
 const includeMirrors = args.get("include-mirrors") === "true";
 const globalZeroFacePruning = args.get("global-zero-face-pruning") === "true";
 const failureMemoSymmetry = args.get("memo-symmetry") === "fixed" ? "fixed" : "rigid";
@@ -119,11 +121,16 @@ const configFor = (candidate, seed, targetDepth, initialPatchSelection) => ({
   agent_exhaustive: true,
   forced_move_layer_lag_cap: 0,
   generic_complete_shell_enumeration: true,
+  // The exact shell proof branches on the face-extension index. The complete
+  // point/candidate dual is useful in the interactive UI but is pure overhead
+  // in a headless census run.
+  generic_global_frontier_graph: false,
   generic_global_zero_face_pruning: globalZeroFacePruning,
   generic_failure_memo: failureMemo,
   generic_failure_memo_symmetry: failureMemoSymmetry,
   generic_failure_memo_max_states: 200000,
-  generic_geometric_nogood: false,
+  generic_geometric_nogood: geometricNogood,
+  generic_geometric_nogood_max_clauses: geometricNogoodMaxClauses,
   include_mirrors: includeMirrors,
   template_preflight: false,
   snapshot_every: 1,
@@ -322,6 +329,8 @@ const report = {
     nodeLimit,
     seeds,
     failureMemo,
+    geometricNogood,
+    geometricNogoodMaxClauses,
     failureMemoSymmetry,
     seededTieBreaks,
     globalZeroFacePruning,
