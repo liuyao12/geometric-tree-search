@@ -1547,6 +1547,19 @@ function poseAtlasEntryStatus(entry) {
   return "unresolved support";
 }
 
+function rotationGroupLabel() {
+  return currentMaterial().intrinsicDimension === 2 ? "SO(2)" : "SO(3)";
+}
+
+function poseSupportLabel(total, freeTypes, unresolvedTypes) {
+  if (!freeTypes && !unresolvedTypes) return `${total} finite pose orbit${total === 1 ? "" : "s"}`;
+  return [
+    `${total} observed`,
+    freeTypes ? `${freeTypes} equivariant ${rotationGroupLabel()}` : "",
+    unresolvedTypes ? `${unresolvedTypes} unresolved` : "",
+  ].filter(Boolean).join(" · ");
+}
+
 function resolvedGeometryMode() {
   if (geometryMode !== "auto") return geometryMode;
   if (detectedUnitCell) return "lattice";
@@ -1558,7 +1571,7 @@ function resolvedGeometryMode() {
 }
 
 function resolvedGeometryLabel() {
-  return { lattice: "lattice", module: "finite-rank module", offlattice: "general point set" }[resolvedGeometryMode()];
+  return { lattice: "lattice", module: "finite-rank module", offlattice: "metric point set" }[resolvedGeometryMode()];
 }
 
 function automaticMarkingChannels() {
@@ -3014,7 +3027,7 @@ function renderPoseAtlas() {
   const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
   const unresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
   const supportSummary = freeTypes || unresolvedTypes
-    ? `${total} observed poses${freeTypes ? ` · ${freeTypes} free-SO(3)` : ""}${unresolvedTypes ? ` · ${unresolvedTypes} unresolved` : ""}`
+    ? `${total} observed poses${freeTypes ? ` · ${freeTypes} equivariant ${rotationGroupLabel()}` : ""}${unresolvedTypes ? ` · ${unresolvedTypes} unresolved` : ""}`
     : `${total} required poses`;
   poseAtlasTotal.textContent = `${supportSummary} · auto ${automaticMarkingChannels()}ch`;
   orientationAtlas.slice(0, 10).forEach((entry) => {
@@ -3032,7 +3045,7 @@ function renderPoseAtlas() {
     count.textContent = support === "finite required set"
       ? `${entry.orientations} required pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`
       : support === "sampled continuum"
-        ? `${entry.orientations} sampled · free SO(3) → ${channels}ch`
+        ? `${entry.orientations} sampled · equivariant ${rotationGroupLabel()} → ${channels}ch`
         : `${entry.orientations} observed · unresolved → ${channels}ch reserve`;
     row.append(code, detail, count);
     poseAtlas.appendChild(row);
@@ -3058,27 +3071,25 @@ function syncStageOptions() {
       ? resolvedMode === "lattice" ? latticeDetected ? "translation closure found" : "intrinsic planar lattice"
         : resolvedMode === "module" ? "multiple incommensurate generators" : "no lattice closure"
       : geometryMode === "lattice" ? "periodic translation group"
-        : geometryMode === "module" ? "finite-rank aperiodic support" : "observed / generated support";
+      : geometryMode === "module" ? "finite-rank aperiodic support" : "unrestricted metric support";
     geometryModeNote.textContent = geometryMode === "auto"
       ? `${resolvedMode === "lattice" ? latticeDetected ? "A translation basis was inferred" : "A two-dimensional translation support was inferred" : resolvedMode === "module" ? "A finite-rank non-periodic support is the active hypothesis" : "No stable translation basis was inferred; the observed point set is retained without periodic wrapping"}; the pose classes still come only from the supplied positions.`
       : geometryMode === "lattice"
         ? "Periodic wrapping is applied before clustering; orientations are still quotiented by each cluster's proper symmetry."
         : geometryMode === "module"
           ? "No unit cell or periodic wrapping is assumed. Connections are learned from a discrete, finitely generated aperiodic pose/translation atlas—the natural hypothesis for model sets and quasicrystals."
-          : "No discrete translation group is assumed. Candidate sites may come from an observed point set or a generator; every proper-SE(3) pose and connection is still learned from local geometry.";
+          : `No discrete translation group is assumed. Candidate sites may come from an observed point set or a generator; ${rotationGroupLabel()} poses and connections are learned from local geometry.`;
     translationSupport.textContent = resolvedMode === "lattice"
       ? currentMaterial().intrinsicDimension === 2 ? "2 periodic generators" : "3 periodic generators"
-      : resolvedMode === "module" ? "finite-rank module" : "general point set";
+      : resolvedMode === "module" ? "finite-rank module" : "metric point set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
     const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
     const unresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
-    rotationSupport.textContent = freeTypes || unresolvedTypes
-      ? `${totalPoses} observed · ${freeTypes} free-SO(3) · ${unresolvedTypes} unresolved`
-      : `${totalPoses} finite pose orbit${totalPoses === 1 ? "" : "s"}`;
+    rotationSupport.textContent = poseSupportLabel(totalPoses, freeTypes, unresolvedTypes);
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
     renderPoseAtlas();
     stageOptionsState.textContent = resolvedMode === "module" ? "aperiodic module"
-      : resolvedMode === "offlattice" ? "observed-set SE(3)" : "lattice candidate";
+      : resolvedMode === "offlattice" ? `metric-set ${rotationGroupLabel()}` : "lattice candidate";
     return;
   }
   const resolvedChannels = sectionModel?.channels || currentMarkingConfig().channels;
@@ -3087,9 +3098,7 @@ function syncStageOptions() {
   const inheritedFreeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
   const inheritedUnresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
   inheritedGeometryMode.textContent = inheritedDomain;
-  inheritedPoseCount.textContent = inheritedFreeTypes || inheritedUnresolvedTypes
-    ? `${inheritedPoses} observed · ${inheritedFreeTypes} free-SO(3) · ${inheritedUnresolvedTypes} unresolved`
-    : `${inheritedPoses} finite pose orbit${inheritedPoses === 1 ? "" : "s"}`;
+  inheritedPoseCount.textContent = poseSupportLabel(inheritedPoses, inheritedFreeTypes, inheritedUnresolvedTypes);
   inheritedChannelCount.textContent = `auto ${automaticMarkingChannels()}ch`;
   markingChannelsHint.textContent = markingDraft.channels
     ? `${markingDraft.channels} coupled field${markingDraft.channels === 1 ? "" : "s"}`

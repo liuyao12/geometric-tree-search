@@ -243,25 +243,25 @@
 
           <div id="clusterGeometryOptions" hidden>
             <label class="field" for="geometryModeSelect">
-              <span>Translation geometry <b id="geometryModeHint">infer from atomic positions</b></span>
+              <span>Placement support <b id="geometryModeHint">infer from atomic positions</b></span>
               <select id="geometryModeSelect">
-                <option value="auto" selected>Auto · infer lattice, module, or general point set</option>
+                <option value="auto" selected>Auto · infer lattice, module, or metric point set</option>
                 <option value="lattice">Lattice · periodic translation group</option>
                 <option value="module">Aperiodic module · finite-rank non-periodic support</option>
-                <option value="offlattice">General positions · unrestricted point set</option>
+                <option value="offlattice">Metric point set · unrestricted positions</option>
               </select>
             </label>
             <div class="geometry-audit" aria-label="Inferred geometric degrees of freedom">
-              <div><small>translation support</small><strong id="translationSupport">—</strong></div>
+              <div><small>placement support</small><strong id="translationSupport">—</strong></div>
               <i>×</i>
-              <div><small>required orientations</small><strong id="rotationSupport">—</strong></div>
+              <div><small>cluster pose support</small><strong id="rotationSupport">—</strong></div>
               <i>→</i>
               <div><small>auto channel rank</small><strong id="channelRankSupport">—</strong></div>
             </div>
-            <div class="pose-atlas-heading"><span>symmetry-quotiented pose × connection atlas</span><b id="poseAtlasTotal">—</b></div>
+            <div class="pose-atlas-heading"><span>symmetry-reduced pose × connection atlas</span><b id="poseAtlasTotal">—</b></div>
             <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
             <p id="geometryModeNote" class="control-note">Auto mode tests translation closure; it does not use a supplied phase label.</p>
-            <p class="rank-note"><b>Clustering fixes the geometry before marking learning.</b> It reports a finite required pose orbit only when every symmetry-quotiented pose recurs in the sample. A high-diversity recurrent atlas is labelled free SO(3); sparse one-off poses remain unresolved rather than being promoted to allowed rotations. Auto does not allocate one channel per rotation: it adds compatibility / failure fields to the rank of the observed pose-orbit × connection-port incidence table (capped at 12). The shared tensor uses the largest per-cluster rank and masks unused channels.</p>
+            <p class="rank-note"><b>Clustering fixes the geometric support before marking learning.</b> It reports a finite required pose orbit only when every symmetry-reduced pose recurs in the sample. A high-diversity recurrent atlas is treated equivariantly (SO(2) for intrinsic 2D, SO(3) for 3D); sparse one-off poses remain unresolved rather than becoming allowed rotations. Auto does not allocate one channel per angle: it adds compatibility / failure fields to the rank of the observed pose-orbit × connection-port incidence table (capped at 12). The shared tensor uses the largest per-cluster rank and masks unused channels.</p>
           </div>
 
           <div id="markingTrainingOptions">
@@ -616,7 +616,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260819-1"></script>
+  <script type="module" src="./app.js?v=20260820-1"></script>
   <script type="module" src="./evidence-atlas.js?v=20260818-1"></script>
 </body>
 </html>
