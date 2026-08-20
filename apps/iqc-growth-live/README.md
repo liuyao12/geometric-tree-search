@@ -1955,6 +1955,19 @@ new top-one commit claim. Candidate supply is now green in the complete tree;
 bounded transferable selection, runtime, autonomous commitment, stationarity,
 and exponential IQC growth remain red.
 
+The branch-local executor is now run end to end. It retains the eight
+complete-tree fusion parents, independently builds each full second tree
+(`126–141` terminals), rolls every terminal for twelve target-free steps, and
+keeps one integrated-vote child per parent. All eight branch receipts and the
+global score order freeze before the consumed target opens. Exactly one beam
+path is exact: first-parent rank 8 and its selected second child, stable state
+89. Thus the branch-local `8 × 1` beam preserves the exact six-action path.
+However, comparing the eight integrated scores globally selects parent rank 3,
+whose first and second blocks are both inexact. The exhaustive audit takes
+about forty minutes on four workers. Parent context must remain in the value
+state, and this explicit beam is a correctness ceiling rather than a practical
+growth engine.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

@@ -4008,6 +4008,25 @@ Runtime is also material—complete enumeration and 127×16 rollout work take
 minutes per nucleus. Autonomous commitment, fresh transfer, stationary
 production, and exponential IQC growth remain red.
 
+The branch-local policy is also executed rather than inferred from the one
+exact source. Each of the eight fusion-ranked first parents independently
+enumerates its full second tree (`126–141` terminals), rolls every terminal for
+twelve target-free steps, and retains one integrated-vote child. All branch
+candidate digests, trace digests, chosen children, and the global parent order
+are frozen before the consumed radius-23.56 target is reconstructed. The beam
+contains exactly one exact end-to-end path: first-parent rank 8 followed by
+stable child 89. This makes bounded branch-local supply green at width `8 × 1`.
+
+Global scalar comparison is still red. The eight winning child scores order
+the parents `3 / 7 / 1 / 4 / 5 / 6 / 8 / 2`; parent 3 is selected and both of
+its blocks are inexact. The exact parent is only seventh by the cross-parent
+score. This proves the integrated statistic is meaningful only conditional on
+its parent context and should not be normalized into a universal state value.
+The complete audit takes roughly forty minutes with four workers, so it is an
+explicit correctness ceiling, not a computational win. The next marking must
+encode parent→child obligation change or promote shared branch subtrees into
+clusters-of-clusters before any fresh autonomous confirmation is justified.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
