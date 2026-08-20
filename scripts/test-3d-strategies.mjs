@@ -68,10 +68,12 @@ async function solve(overrides) {
   };
   let final = null;
   let latestSnapshot = null;
+  let prototileInfo = null;
   let periodicCertificate = null;
   const translationalChecks = [];
   const checkpointFingerprints = [];
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
+    if (message.type === "prototile_info") prototileInfo = message;
     if (message.periodic_template) periodicCertificate = message.periodic_template;
     if (message.type === "translational_check") {
       translationalChecks.push({ patchSize: message.patch_size, certified: message.certified });
@@ -81,7 +83,7 @@ async function solve(overrides) {
     if (message.type === "finished") final = message;
   }
   assert.ok(final, "strategy run must emit a terminal result");
-  return { final, latestSnapshot, periodicCertificate, translationalChecks, checkpointFingerprints };
+  return { final, latestSnapshot, prototileInfo, periodicCertificate, translationalChecks, checkpointFingerprints };
 }
 
 const translational = await solve({ tiling_strategy: "translational", placement_details: true });
@@ -411,6 +413,7 @@ const completeShellObstruction = await solve({
   agent_exhaustive: true,
   forced_move_layer_lag_cap: 0,
   generic_complete_shell_enumeration: true,
+  generic_global_zero_face_pruning: true,
   node_limit: 100
 });
 assert.equal(completeShellObstruction.final.result_kind, "no_tiling");
@@ -895,6 +898,82 @@ for (const mode_key of ["corner_tetra", "big_corner_tetra"]) {
   assert.equal(obstruction.final.can_tile, false);
   assert.equal(obstruction.final.tiling_evidence?.kind, "local_edge_obstruction");
 }
+
+const reflectedChiralLocalObstruction = await solve({
+  mode_key: "cube",
+  custom_system: {
+    name: "Reflected chiral local-obstruction regression",
+    figure_refs: [],
+    polycubes: [],
+    polyhedra: [{
+      name: "PolyDB 12_235173",
+      vertices: [[0, 0, 0], [1, 0, 0], [1, 2, 0], [1, 1, 2], [0, -5, 6], [2, 0, 2]]
+    }],
+    polycube_lattice: "z3"
+  },
+  criterion: "shell",
+  target_val: 1,
+  tiling_strategy: "free_range",
+  include_mirrors: true,
+  template_preflight: false
+});
+assert.equal(reflectedChiralLocalObstruction.prototileInfo?.tiles?.length, 2);
+assert.ok(reflectedChiralLocalObstruction.prototileInfo.tiles.some(tile => tile.is_mirror));
+assert.equal(reflectedChiralLocalObstruction.final.can_tile, false);
+assert.equal(reflectedChiralLocalObstruction.final.tiling_evidence?.kind, "local_edge_obstruction");
+assert.equal(reflectedChiralLocalObstruction.final.tiling_evidence?.model, "face_to_face_congruent_copies");
+
+const reflectedPeriodicShellControl = await solve({
+  mode_key: "cube",
+  custom_system: {
+    name: "Reflected periodic shell-obligation regression",
+    figure_refs: [],
+    polycubes: [],
+    polyhedra: [{
+      name: "PolyDB 12_034169",
+      vertices: [[0, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1], [6, 1, -1], [1, 0, 1], [7, 1, -1], [0, 1, 1], [6, 2, -1]]
+    }],
+    polycube_lattice: "z3"
+  },
+  criterion: "shell",
+  target_val: 2,
+  tiling_strategy: "free_range",
+  include_mirrors: true,
+  exhaustive: true,
+  agent_exhaustive: true,
+  forced_move_layer_lag_cap: 0,
+  generic_complete_shell_enumeration: true,
+  generic_global_zero_face_pruning: true,
+  generic_failure_memo: false,
+  template_preflight: false,
+  node_limit: 500000,
+  time_limit_ms: 30000
+});
+assert.equal(reflectedPeriodicShellControl.final.success, true);
+assert.equal(reflectedPeriodicShellControl.final.tiling_evidence?.kind, "finite_complete_shell");
+assert.ok(reflectedPeriodicShellControl.final.search_stats.max_complete_shell_depth >= 2);
+
+const overlappingQuotientRegression = await solve({
+  mode_key: "cube",
+  custom_system: {
+    name: "Periodic quotient overlap regression",
+    figure_refs: [],
+    polycubes: [],
+    polyhedra: [{
+      name: "PolyDB 12_149299",
+      vertices: [[0, 0, 0], [1, 0, 0], [0, 1, 0], [5, 4, 6], [1, 2, 1], [6, 5, 7], [1, 1, 0], [6, 4, 6]]
+    }],
+    polycube_lattice: "z3"
+  },
+  target_val: 20,
+  tiling_strategy: "translational",
+  include_mirrors: true,
+  periodic_patch_max_tiles: 2,
+  template_preflight: true,
+  time_limit_ms: 3000
+});
+assert.notEqual(overlappingQuotientRegression.final.result_kind, "certified_tiling");
+assert.notEqual(overlappingQuotientRegression.final.can_tile, true);
 
 console.log("3D strategy regressions passed", {
   translational_tiles: translational.final.tile_count,

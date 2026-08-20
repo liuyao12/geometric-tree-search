@@ -25,6 +25,7 @@ const includeWitness = args.get("include-witness") === "true";
 const initialPatchFile = args.get("initial-patch-file") ?? null;
 const failureMemo = args.get("failure-memo") !== "false";
 const includeMirrors = args.get("include-mirrors") === "true";
+const globalZeroFacePruning = args.get("global-zero-face-pruning") === "true";
 const failureMemoSymmetry = args.get("memo-symmetry") === "fixed" ? "fixed" : "rigid";
 const seededTieBreaks = args.get("seeded-tie-breaks") !== "false";
 const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
@@ -33,16 +34,18 @@ const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
   .filter(value => Number.isFinite(value) && value > 0))];
 if (!seeds.length) seeds.push(1);
 const requestedIds = new Set((args.get("ids") ?? "").split(",").filter(Boolean));
+const excludeCertifiedPeriodic = args.get("exclude-certified-periodic") === "true";
 const candidatesFile = args.get("candidates-file") ?? null;
 const candidatesDocument = candidatesFile
   ? JSON.parse(await readFile(candidatesFile, "utf8"))
   : null;
 const candidatePool = candidatesDocument
-  ? (candidatesDocument.survivors ?? candidatesDocument.candidates ?? candidatesDocument)
+  ? (candidatesDocument.survivors ?? candidatesDocument.candidates ?? candidatesDocument.rows ?? candidatesDocument)
   : LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES;
 if (!Array.isArray(candidatePool)) throw new Error("Candidate input must be an array or contain a survivors/candidates array");
 const candidates = candidatePool.filter(candidate =>
-  !requestedIds.size || requestedIds.has(candidate.id)
+  (!requestedIds.size || requestedIds.has(candidate.id))
+  && (!excludeCertifiedPeriodic || candidate.classification !== "reject_certified_periodic")
 );
 const initialPatchDocument = initialPatchFile
   ? JSON.parse(await readFile(initialPatchFile, "utf8"))
@@ -89,6 +92,7 @@ const configFor = (candidate, seed, targetDepth) => ({
   agent_exhaustive: true,
   forced_move_layer_lag_cap: 0,
   generic_complete_shell_enumeration: true,
+  generic_global_zero_face_pruning: globalZeroFacePruning,
   generic_failure_memo: failureMemo,
   generic_failure_memo_symmetry: failureMemoSymmetry,
   generic_failure_memo_max_states: 200000,
@@ -282,7 +286,7 @@ const report = {
     failureMemo,
     failureMemoSymmetry,
     seededTieBreaks,
-    globalZeroFacePruning: true,
+    globalZeroFacePruning,
     includeWitness,
     initialPatch: initialPatch
       ? {
@@ -293,10 +297,11 @@ const report = {
         }
       : null,
     candidatesFile,
+    excludeCertifiedPeriodic,
     orientationGroup: includeMirrors ? "full cubic isometries" : "proper cubic rotations",
     model: "face-to-face lattice tiling",
     shellDefinition: "minimum face-adjacency distance from the root among owners of exposed faces",
-    deadFaceRule: "an exposed face with no currently legal face-mate is permanently unfillable and is pruned at every exact state"
+    deadFaceRule: "an exposed face below the requested shell depth with no currently legal face-mate is a failed shell obligation and is pruned"
   },
   rows,
   candidates: byCandidate,

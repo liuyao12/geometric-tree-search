@@ -38,6 +38,7 @@ const translationalMoveOrder = args.get("translational-move-order") ?? "balanced
 const skipIsohedral = args.get("skip-isohedral") === "true";
 const skipTranslational = args.get("skip-translational") === "true";
 const includeMirrors = args.get("include-mirrors") === "true";
+const includePlacements = args.get("include-placements") === "true";
 
 const baseConfig = candidate => ({
   mode_key: "cube",
@@ -53,7 +54,7 @@ const baseConfig = candidate => ({
   exhaustive: true,
   include_mirrors: includeMirrors,
   snapshot_every: 0,
-  placement_details: false,
+  placement_details: includePlacements,
   face_order: "mrv",
   agent_exhaustive: true,
   branch_cap: null,
@@ -71,6 +72,7 @@ async function run(candidate, strategy) {
     target_val: displayTarget,
     tiling_strategy: strategy,
     move_order: strategy === "isohedral" ? "isohedral" : translationalMoveOrder,
+    ...(strategy === "isohedral" ? { forced_move_layer_lag_cap: 0 } : {}),
     periodic_patch_max_tiles: periodicMax,
     isohedral_search_horizon_tiles: isohedralTarget
   };
@@ -79,12 +81,14 @@ async function run(candidate, strategy) {
   let largestPatch = 0;
   let maxFrontierPoints = 0;
   let maxCandidateCount = 0;
+  let latestPlacements = null;
   const started = performance.now();
   for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     largestPatch = Math.max(largestPatch, snapshot?.tile_count ?? snapshot?.placements?.length ?? 0);
     maxFrontierPoints = Math.max(maxFrontierPoints, snapshot?.frontier_stats?.point_count ?? 0);
     maxCandidateCount = Math.max(maxCandidateCount, snapshot?.frontier_stats?.candidate_count ?? 0);
+    if (includePlacements && Array.isArray(snapshot?.placements)) latestPlacements = snapshot.placements;
     if (message.type === "translational_check") {
       checks.push({ size: message.patch_size, certified: message.certified });
     }
@@ -106,7 +110,8 @@ async function run(candidate, strategy) {
     maxCandidateCount,
     checks,
     milliseconds: Math.round(performance.now() - started),
-    stats: finished?.search_stats ?? null
+    stats: finished?.search_stats ?? null,
+    ...(includePlacements ? { placements: latestPlacements } : {})
   };
 }
 
@@ -132,6 +137,6 @@ if (outputFile) await writeFile(outputFile, `${JSON.stringify({
   schemaVersion: 1,
   kind: "lattice_polyhedron_easy_lane_screen",
   generatedAt: new Date().toISOString(),
-  configuration: { candidatesFile, timeMs, periodicMax, isohedralTarget, displayTarget, includeMirrors },
+  configuration: { candidatesFile, timeMs, periodicMax, isohedralTarget, displayTarget, includeMirrors, includePlacements },
   rows
 }, null, 2)}\n`);

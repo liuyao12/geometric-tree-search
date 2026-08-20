@@ -104,7 +104,7 @@ const report = {
   survivors,
   unresolved,
   elapsedMs: reports.reduce((total, { report }) => total + (report.elapsedMs ?? 0), 0),
-  interpretation: "This exhaustive first-stage screen leaves only candidates with an exact extendable shell-one witness. Local-edge and exhausted shell failures are non-tiling certificates in the configured face-to-face proper-cubic-lattice model; survivors still require deeper shell and periodic screening."
+  interpretation: `This exhaustive first-stage screen leaves only candidates with an exact extendable shell-one witness. Local-edge and exhausted shell failures are non-tiling certificates in the configured face-to-face ${expectedConfiguration.mirrors ? "full-cubic-isometry" : "proper-cubic-rotation"} lattice model; survivors still require deeper shell and periodic screening.`
 };
 const serialized = `${JSON.stringify(report, null, 2)}\n`;
 if (outputFile) await writeFile(outputFile, serialized);

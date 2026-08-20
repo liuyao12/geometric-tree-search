@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260819-size12-controls-v100";
+import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-quotient-overlap-v101";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -366,7 +366,11 @@ export const createTilingStream = (() => {
     };
     const tilingDimension = Math.max(1, ...prototiles.map(tile => affineRank(tile.verts)));
     const convexEdgeAngleObstruction = (() => {
-      if (prototiles.length !== 1 || prototiles[0].is_polycube) return null;
+      // A reflected copy of a sole prototile has exactly the same edge lengths
+      // and interior dihedral angles.  Enabling mirrors therefore does not
+      // invalidate this local certificate; only genuinely multiple base tiles
+      // can introduce a different edge-angle spectrum.
+      if (baseTiles.length !== 1 || prototiles[0].is_polycube) return null;
       const tile = prototiles[0];
       if (!tile.faces?.length || tile.faces.some(face => face.length < 3)) return null;
       const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
@@ -1865,7 +1869,7 @@ export const createTilingStream = (() => {
     const genericGlobalExtensionEnumeration = genericConnectedPatchEnumeration
       || genericCompleteShellEnumeration;
     const genericGlobalZeroFacePruning = genericGlobalExtensionEnumeration
-      && config.generic_global_zero_face_pruning !== false;
+      && config.generic_global_zero_face_pruning === true;
     searchStats.generic_complete_shell_enumeration = genericCompleteShellEnumeration;
     searchStats.generic_global_zero_face_pruning = genericGlobalZeroFacePruning;
     const configuredFailureMemoCapacity = Number(config.generic_failure_memo_max_states);
@@ -3385,6 +3389,68 @@ export const createTilingStream = (() => {
         };
       });
     };
+    const periodicTranslationNeighborhoodIsValid = (basis, budgetExceeded = () => false) => {
+      const vertices = state.placements.flatMap(globalPlacementVertices);
+      if (!vertices.length) return false;
+      const minima = [0, 1, 2].map(axis => Math.min(...vertices.map(vertex => vertex[axis])));
+      const maxima = [0, 1, 2].map(axis => Math.max(...vertices.map(vertex => vertex[axis])));
+      const spans = maxima.map((value, axis) => value - minima[axis]);
+      const determinant = determinant3(basis);
+      if (Math.abs(determinant) < 1e-12) return false;
+      const reciprocalNumerators = [
+        vecCross(basis[1], basis[2]),
+        vecCross(basis[2], basis[0]),
+        vecCross(basis[0], basis[1])
+      ];
+      // If two motif cells overlap, their relative translation lies inside the
+      // motif bounding-box difference. Cramer's rule therefore gives a finite,
+      // complete coefficient box for every lattice shift which can overlap.
+      const radii = reciprocalNumerators.map(vector => Math.ceil(
+        vector.reduce((sum, value, axis) => sum + Math.abs(value) * spans[axis], 0)
+        / Math.abs(determinant)
+      ));
+      const basePlacements = state.placements.slice();
+      const applied = [];
+      const priorMaxLiveTiles = searchStats.max_live_tiles;
+      const rollbackValidation = () => {
+        while (applied.length) {
+          const { move, rollback } = applied.pop();
+          undoMove(move, rollback, { captureBest: false });
+        }
+        searchStats.max_live_tiles = priorMaxLiveTiles;
+      };
+      for (let a = -radii[0]; a <= radii[0]; a++) {
+        for (let b = -radii[1]; b <= radii[1]; b++) {
+          for (let c = -radii[2]; c <= radii[2]; c++) {
+            if (a === 0 && b === 0 && c === 0) continue;
+            if (budgetExceeded()) {
+              rollbackValidation();
+              return false;
+            }
+            const shift = [0, 1, 2].map(axis =>
+              a * basis[0][axis] + b * basis[1][axis] + c * basis[2][axis]
+            );
+            if (shift.some((value, axis) => Math.abs(value) > spans[axis] + 1e-9)) continue;
+            for (const placement of basePlacements) {
+              const move = {
+                prototile_idx: placement.prototile_idx,
+                orient: placement.orient,
+                translation: vecAdd(placement.translation, shift)
+              };
+              const validity = isMoveValid(move);
+              if (!validity.ok) {
+                rollbackValidation();
+                return false;
+              }
+              move.occupancy_data = validity.occData;
+              applied.push({ move, rollback: applyMove(move, { countWork: false }) });
+            }
+          }
+        }
+      }
+      rollbackValidation();
+      return true;
+    };
     const findBoundaryPeriodicTemplate = (requestedPeriod, options = {}) => {
       if (state.placements.length !== requestedPeriod || !state.frontier.size) return null;
       const certificateBudgetExceeded = options.budget_exceeded ?? overBudget;
@@ -3482,6 +3548,7 @@ export const createTilingStream = (() => {
               []
             );
             if (!boundaryPairing) continue;
+            if (!periodicTranslationNeighborhoodIsValid(basis, stopForCertificateBudget)) continue;
 
             const motif = motifFromCurrentPatch();
             if (motif.some(item => item.orientation_index < 0)) return null;
@@ -4918,10 +4985,10 @@ export const createTilingStream = (() => {
         for (const [transformKey, transform] of transforms) {
           const attemptKey = `${transformKey}@${sourcePatch.length}`;
           if (attempted.has(attemptKey)) continue;
-          attempted.add(attemptKey);
           const pending = buildIsohedralPatchImage(transform, sourcePatch);
           if (pending === null || !pending.length) continue;
           imageCandidates.push({
+            attemptKey,
             transform,
             pending,
             priority: isohedralPatchImagePriority(pending)
@@ -4941,6 +5008,7 @@ export const createTilingStream = (() => {
         );
         searchStats.isohedral_newer_layer_deferrals += imageCandidates.length - eligible.length;
         for (const candidate of eligible) {
+          attempted.add(candidate.attemptKey);
           const additions = applyIsohedralPatchImage(candidate.pending);
           if (additions === null) {
             searchStats.isohedral_patch_conflicts += 1;
@@ -5273,12 +5341,14 @@ export const createTilingStream = (() => {
         const shell = completeShellDepthStats();
         // A mate for a fixed exposed face has fixed geometry. Adding tiles
         // elsewhere can invalidate such a mate through overlap, but can never
-        // create a new one. Therefore a zero-candidate face anywhere on the
-        // current boundary is a permanent contradiction, even when its owner
-        // lies outside the shell currently being completed. Positive outer
-        // faces remain deferred so growth still prioritizes the oldest shell.
+        // create a new one. This is a contradiction only when the face is an
+        // obligation of the shell currently being completed. An unfillable
+        // outer face may belong to a branch which can still witness the finite
+        // inner shell, so pruning it here would make shell exhaustion unsound.
         if (genericGlobalZeroFacePruning) {
-          for (const faceKey of state.frontier.keys()) {
+          for (const [faceKey, entry] of state.frontier.entries()) {
+            const ownerDepth = shell.owner_depth_by_placement.get(entry.owner_placement);
+            if (!Number.isFinite(ownerDepth) || ownerDepth >= targetVal) continue;
             if ((frontierFaceCandidateIndex.get(faceKey) ?? []).length) continue;
             searchStats.generic_global_zero_face_dead_ends += 1;
             searchStats.generic_global_extension_candidate_states += 1;
@@ -5796,7 +5866,7 @@ export const createTilingStream = (() => {
                   initial_patch_shell_depth: searchStats.initial_patch_base_shell_depth
                 }
               : {}),
-            model: "face-to-face tiling by the configured proper lattice orientations",
+            model: `face-to-face tiling by the configured ${includeMirrors ? "full lattice isometries" : "proper lattice orientations"}`,
             note: restrictedToInitialPatch
               ? `Exhaustive global face-extension search found no extension of the supplied ${searchStats.initial_patch_applied_tiles}-tile patch completing combinatorial shell ${targetVal}; this does not exclude other shell-${targetVal} patches.`
               : usedDeadFacePruning
@@ -5809,7 +5879,7 @@ export const createTilingStream = (() => {
             can_tile: false,
             strategy: tilingStrategy,
             target_tiles: targetVal,
-            model: "connected face-to-face tiling by the configured proper lattice orientations",
+            model: `connected face-to-face tiling by the configured ${includeMirrors ? "full lattice isometries" : "proper lattice orientations"}`,
             note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
           };
     }

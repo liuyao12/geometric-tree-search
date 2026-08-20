@@ -449,19 +449,18 @@ merged report to `scripts/screen-lattice-complete-shells.mjs --candidates-file=â
 
 The size-12 pass uses the complete 503,443-record polyDB collection
 `Polytopes.Lattice.FewLatticePoints3D`. Exact local-edge checks reject 503,353
-representatives and exact shell-one search rejects 73 more, leaving 17 and no
-timeouts. All 17 reach shell 2. Proper-rotation shell-3 search rejects
-`12_235174` and the other 16 reach shell 3, but direct quotient search certifies
-all 16 as periodic with one- or two-tile motifs. Allowing reflected copies also
-certifies `12_235174` with a two-tile mixed-chirality quotient. Thus the complete
-size-12 class-representative pass has zero unresolved candidates under ordinary
-congruence. It adds 17 compact controls to the web catalogue, including the
-reflection-sensitive `12_235174` for checking that chirality settings propagate
-through every lane. Receipts are in
-`data/lattice-polyhedron-size12-first-stage-2026-08-19.json`,
-`data/lattice-polyhedron-size12-shell3-2026-08-19.json`,
-`data/lattice-polyhedron-size12-easy-lanes-2026-08-19.json`, and
-`data/lattice-polyhedron-size12-12_235174-mirrored-easy-lanes-2026-08-19.json`.
+representatives. The corrected full-isometry, unpruned shell-one search rejects
+25 more and leaves 65 witnesses with no timeouts. Quotient certificates now
+undergo a complete neighboring-cell occupancy replay; this rejects several old
+face-pairing/volume false positives, including the former mixed-chirality claim
+for `12_235174`. Of the 65 witnesses, 54 have overlap-validated periodic
+quotients. Unpruned shell-two GCTS proves three of the remaining eleven to be
+non-tilers and leaves eight unresolved candidates. The catalogue includes the
+16 compact periodic controls retained from the earlier set, the three corrected
+non-tiler controls, and all eight live candidates. Receipts are in
+`data/lattice-polyhedron-size12-full-isometry-first-stage-2026-08-20.json`,
+`data/lattice-polyhedron-size12-full-isometry-shell2-2026-08-20.json`, and
+`data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json`.
 For sizes 12â€“15, `scripts/screen-next-lattice-polytope-pool.mjs` downloads
 bounded aggregate pages from polyDB and records contiguous source ranges and
 SHA-256 receipts; the merge script refuses gaps and overlaps.

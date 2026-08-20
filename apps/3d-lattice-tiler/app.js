@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260819-size12-controls-v100";
+import { tileSpecs } from "./engine.js?v=20260820-quotient-overlap-v101";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1405,12 +1405,16 @@ function updateCandidateResearchPanel() {
       const source = candidate.screening.periodic_source
         ?? "an exact quotient was mined from the validated 1,174-tile shell-7 witness";
       candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. Use the preset to replay the certificate in the Translational lane.`;
-    } else if (candidate.screening?.certificate === "finite_extendable_shell_obstruction") {
+    } else if (["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(candidate.screening?.certificate)) {
       candidateResearchTitle.textContent = `Certified non-tiler control ${candidate.id}`;
-      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that every route toward combinatorial shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but no indefinitely extendable next shell exists.` : " The contradiction appears before the first complete shell."} Earlier connected-patch growth could still extend elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
+      candidateResearchDetail.textContent = candidate.screening.certificate === "finite_shell_obstruction"
+        ? `${candidate.lattice_points} lattice points · exhaustive unpruned face-to-face GCTS proves that no combinatorial shell ${candidate.screening.shell_depth} can surround the normalized root under full cubic isometries and integer translations. Shell ${shell?.deepest_completed_shell ?? 1} is attainable, making this a compact non-tiler regression control.`
+        : `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that every route toward combinatorial shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but no indefinitely extendable next shell exists.` : " The contradiction appears before the first complete shell."} Earlier connected-patch growth could still extend elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-      candidateResearchDetail.textContent = `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
+      candidateResearchDetail.textContent = candidate.lattice_points === 12
+        ? `${candidate.description} Complete shell ${shell?.deepest_completed_shell ?? 2} is recorded.${limits}`
+        : `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
     }
   } else if (knownAperiodic) {
     candidateResearchTitle.textContent = "Known weakly aperiodic monotile";
@@ -1470,8 +1474,8 @@ function renderSystemTileList() {
         const certificate = figure.census_candidate.screening?.certificate;
         angles.textContent = certificate === "translational"
           ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.lattice_points} points`
-          : certificate === "finite_extendable_shell_obstruction"
-            ? `dead-face shell ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
+          : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
+            ? `${certificate === "finite_shell_obstruction" ? "complete-shell" : "dead-face shell"} ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
             : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;
         angles.classList.add("is-census-label");
       } else {
@@ -2753,7 +2757,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260819-size12-controls-v100", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260820-quotient-overlap-v101", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3287,7 +3291,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260819-size12-controls-v100", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-quotient-overlap-v101", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

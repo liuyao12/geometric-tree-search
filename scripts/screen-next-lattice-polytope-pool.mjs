@@ -48,6 +48,7 @@ const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 200000)));
 const outputFile = args.get("output-file") ?? null;
 const progressEvery = Math.max(1, Math.floor(numberArg("progress-every", 1000)));
 const includeMirrors = args.get("include-mirrors") === "true";
+const globalZeroFacePruning = args.get("global-zero-face-pruning") === "true";
 
 const sourceRecords = [];
 let candidates = [];
@@ -113,7 +114,7 @@ const solveFirstExtendableShell = async candidate => {
     agent_exhaustive: true,
     forced_move_layer_lag_cap: 0,
     generic_complete_shell_enumeration: true,
-    generic_global_zero_face_pruning: true,
+    generic_global_zero_face_pruning: globalZeroFacePruning,
     generic_failure_memo: false,
     generic_geometric_nogood: false,
     include_mirrors: includeMirrors,
@@ -147,7 +148,10 @@ for (let index = 0; index < candidates.length; index += 1) {
   const kind = final?.tiling_evidence?.kind ?? null;
   if (kind === "local_edge_obstruction" && final?.can_tile === false) {
     counts.localEdgeObstruction += 1;
-  } else if (kind === "finite_extendable_shell_obstruction" && final?.can_tile === false) {
+  } else if (
+    ["finite_shell_obstruction", "finite_extendable_shell_obstruction"].includes(kind)
+    && final?.can_tile === false
+  ) {
     counts.extendableShellObstruction += 1;
   } else if (final?.success) {
     counts.shellOneWitness += 1;
@@ -203,7 +207,7 @@ const report = {
     orientationGroup: includeMirrors ? "full cubic isometries" : "proper cubic rotations",
     translations: "integer",
     mirrors: includeMirrors,
-    globalZeroFacePruning: true
+    globalZeroFacePruning
   },
   sources: sourceRecords,
   screenedCandidates: candidates.length,
@@ -211,7 +215,7 @@ const report = {
   survivors,
   unresolved,
   elapsedMs: Math.round(performance.now() - started),
-  interpretation: "Local edge and exhausted extendable-shell failures are exact only in the configured face-to-face proper-cubic-lattice model. A shell-one witness or bounded timeout is not evidence of aperiodicity."
+  interpretation: `Local edge and exhausted extendable-shell failures are exact only in the configured face-to-face ${includeMirrors ? "full-cubic-isometry" : "proper-cubic-rotation"} lattice model. A shell-one witness or bounded timeout is not evidence of aperiodicity.`
 };
 const serialized = `${JSON.stringify(report, null, 2)}\n`;
 if (outputFile) await writeFile(outputFile, serialized);

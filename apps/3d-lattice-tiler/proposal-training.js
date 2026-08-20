@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260819-size12-controls-v100";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-quotient-overlap-v101";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

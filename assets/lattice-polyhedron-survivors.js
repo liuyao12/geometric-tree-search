@@ -368,7 +368,6 @@ const SIZE12_CONTROL_DATA = Object.freeze([
   { id: "12_186004", vertices: [[0,0,0],[2,0,0],[0,1,0],[0,2,3],[2,1,0],[2,2,3]], periods: [[0,-1,0],[-2,0,0],[0,-1,3]], motif: [[0,[0,0,0]],[1,[0,0,0]]] },
   { id: "12_196957", vertices: [[0,0,0],[1,0,0],[0,1,0],[2,2,3],[3,2,2],[2,3,2],[3,2,3],[2,3,3]], periods: [[-1,0,-1],[-1,1,0],[-2,-2,3]], motif: [[0,[0,0,0]],[11,[0,0,-1]]] },
   { id: "12_218797", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,13],[2,1,13],[1,2,13]], periods: [[0,-1,0],[-1,1,0],[-1,-1,13]], motif: [[0,[0,0,0]],[11,[0,1,0]]] },
-  { id: "12_235174", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,1,5],[1,2,0],[3,1,5]], periods: [[-1,0,0],[-2,-1,5],[-2,1,5]], mixed_motif: [[0,0,[0,0,0]],[1,1,[2,0,-5]]], proper_obstruction_shell: 3 },
   { id: "12_249673", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,0],[1,1,5],[2,1,5],[1,2,5],[2,2,5]], periods: [[-1,-1,5],[0,-1,0],[-1,0,0]], motif: [[0,[0,0,0]]] },
   { id: "12_257228", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[-1,1,1],[-1,2,1],[-1,1,2],[0,2,1],[0,1,2]], periods: [[0,-1,-1],[-2,0,1],[0,-1,2]], motif: [[0,[0,0,0]],[6,[1,0,-1]]] },
   { id: "12_300447", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,0],[1,2,5],[2,2,5],[1,3,5],[2,3,5]], periods: [[-1,-2,5],[0,-1,0],[-1,0,0]], motif: [[0,[0,0,0]]] },
@@ -378,25 +377,43 @@ const SIZE12_CONTROL_DATA = Object.freeze([
   { id: "12_490743", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,2],[2,1,1],[1,2,1],[1,0,2],[0,1,2]], periods: [[-1,1,0],[0,0,-2],[-1,-2,-1]], motif: [[0,[0,0,0]],[3,[1,2,0]]] }
 ]);
 
+const SIZE12_UNRESOLVED_DATA = Object.freeze([
+  { id: "12_034169", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[6,1,-1],[1,0,1],[7,1,-1],[0,1,1],[6,2,-1]], deepest_shell: 2, isohedral: "time_limit" },
+  { id: "12_121693", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[2,0,1],[0,2,1],[0,1,2],[2,1,2]], deepest_shell: 1, isohedral: "time_limit", shell_obstruction: true },
+  { id: "12_124794", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,3,4],[1,2,0],[3,3,4]], deepest_shell: 2, isohedral: "exhausted" },
+  { id: "12_149299", vertices: [[0,0,0],[1,0,0],[0,1,0],[5,4,6],[1,2,1],[6,5,7],[1,1,0],[6,4,6]], deepest_shell: 1, isohedral: "time_limit", shell_obstruction: true },
+  { id: "12_158688", vertices: [[0,0,0],[2,0,0],[0,1,0],[1,1,0],[0,0,1],[1,0,1],[0,2,1],[0,1,2],[1,1,2]], deepest_shell: 1, isohedral: "time_limit", shell_obstruction: true },
+  { id: "12_204255", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,2],[2,1,2],[1,2,0],[3,1,0],[2,2,2]], deepest_shell: 2, isohedral: "exhausted" },
+  { id: "12_235174", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,1,5],[1,2,0],[3,1,5]], deepest_shell: 2, isohedral: "time_limit" },
+  { id: "12_339175", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[5,2,-1],[1,0,1],[6,2,-1],[0,1,1],[5,3,-1]], deepest_shell: 2, isohedral: "time_limit" },
+  { id: "12_387800", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[2,-4,2],[1,0,1],[3,-4,2],[0,1,1],[2,-3,2]], deepest_shell: 2, isohedral: "time_limit" },
+  { id: "12_405129", vertices: [[0,0,0],[1,0,0],[0,2,0],[0,0,2],[0,2,1],[2,2,0]], deepest_shell: 2, isohedral: "exhausted" },
+  { id: "12_424326", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,3,5],[1,2,0],[3,3,5]], deepest_shell: 2, isohedral: "exhausted" }
+]);
+
 export const LATTICE_POLYHEDRON_SIZE12_SCREENING = Object.freeze({
-  screen_date: "2026-08-19",
+  screen_date: "2026-08-20",
   source: "polyDB Polytopes.Lattice.FewLatticePoints3D",
   source_pool_size: 503443,
   local_edge_obstructions: 503353,
-  extendable_shell_one_obstructions: 73,
-  shell_one_survivors: 17,
-  proper_rotation_shell_three_non_tilers: 1,
-  certified_periodic_tilers: 17,
-  reflection_required_periodic_tilers: 1,
-  unresolved: 0,
+  shell_one_obstructions: 25,
+  shell_one_survivors: 65,
+  full_isometry_only_shell_one_survivors: 48,
+  certified_periodic_tilers: 54,
+  reflection_required_periodic_tilers: 38,
+  shell_two_non_tilers: 3,
+  unresolved_after_shell_two: 8,
+  easy_lane_inconclusive: 11,
+  zero_face_pruning: false,
   model: "face-to-face congruent lattice-polyhedron tilings using integer translations and cubic lattice isometries",
-  first_stage_report: "data/lattice-polyhedron-size12-first-stage-2026-08-19.json",
-  shell_report: "data/lattice-polyhedron-size12-shell3-2026-08-19.json",
-  periodic_report: "data/lattice-polyhedron-size12-easy-lanes-2026-08-19.json",
-  mirrored_periodic_report: "data/lattice-polyhedron-size12-12_235174-mirrored-easy-lanes-2026-08-19.json"
+  first_stage_report: "data/lattice-polyhedron-size12-full-isometry-first-stage-2026-08-20.json",
+  shell_report: "data/lattice-polyhedron-size12-full-isometry-shell2-2026-08-20.json",
+  periodic_report: "data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json",
+  quotient_overlap_validation: "complete lattice-neighborhood occupancy replay"
 });
 
-export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = SIZE12_CONTROL_DATA.map(candidate => {
+export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = [
+  ...SIZE12_CONTROL_DATA.map(candidate => {
   const requiresMirrors = !!candidate.mixed_motif;
   const template = requiresMirrors
     ? frozenMixedPeriodicTemplate(candidate.periods, candidate.mixed_motif)
@@ -429,7 +446,42 @@ export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = SIZE12_CONTROL_DATA.map(candid
       ? `Size-12 reflection-sensitive periodic control ${candidate.id}; proper rotations fail exactly at shell 3, while one tile and one reflected copy form a certified two-tile translational quotient.`
       : `Size-12 periodic control ${candidate.id}; exact GCTS screening found a ${template.motif.length}-tile translational quotient.`
   });
-});
+  }),
+  ...SIZE12_UNRESOLVED_DATA.map((candidate, index) => Object.freeze({
+    id: candidate.id,
+    vertices: candidate.vertices,
+    lattice_points: 12,
+    registry_id: `census_${candidate.id}`,
+    name: `Candidate ${candidate.id}`,
+    ...(!candidate.shell_obstruction ? {
+      survivor_priority: SIZE12_UNRESOLVED_DATA.slice(0, index + 1).filter(item => !item.shell_obstruction).length,
+      survivor_count: SIZE12_UNRESOLVED_DATA.filter(item => !item.shell_obstruction).length
+    } : {}),
+    screening: Object.freeze(candidate.shell_obstruction ? {
+      status: "exact_rejection",
+      certificate: "finite_shell_obstruction",
+      shell_depth: 2,
+      requires_mirrors: true,
+      report: LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_report
+    } : {
+      status: "inconclusive",
+      requires_mirrors: true,
+      translational: Object.freeze({ outcome: "time_limit", seconds: 30, maximum_motif_tiles: 12 }),
+      isohedral: Object.freeze({ outcome: candidate.isohedral, seconds: candidate.isohedral === "time_limit" ? 30 : null }),
+      report: LATTICE_POLYHEDRON_SIZE12_SCREENING.periodic_report
+    }),
+    last_screening: LATTICE_POLYHEDRON_SIZE12_SCREENING,
+    shell_screening: Object.freeze({
+      deepest_completed_shell: candidate.deepest_shell,
+      zero_face_pruning: false,
+      face_graph_exhaustion_is_not_used_as_a_non_tiling_certificate: true
+    }),
+    gcts_proof_screening: Object.freeze({}),
+    description: candidate.shell_obstruction
+      ? `Size-12 full-isometry non-tiler control ${candidate.id}; overlap-audited easy lanes found no periodic certificate and exhaustive unpruned GCTS proves shell 2 impossible.`
+      : `Unresolved size-12 full-isometry control ${candidate.id}; overlap-audited quotient search through 12 tiles found no translational certificate, and the corrected isohedral lane found no certificate within its configured run.`
+  }))
+];
 
 export const LATTICE_POLYHEDRON_CENSUS_POOL = [
   { id: "8_2480", vertices: [[0,0,2],[0,1,0],[1,0,0],[1,1,2],[1,2,0],[2,1,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,0,-2],[0,-1,-2]]) },
