@@ -1968,6 +1968,19 @@ about forty minutes on four workers. Parent context must remain in the value
 state, and this explicit beam is a correctness ceiling rather than a practical
 growth engine.
 
+A literal clusters-of-clusters geometry is tested next. For each consumed
+development nucleus, the exact inherited three-action parent and every
+three-action child become a six-action colored macro. Its 62-component
+descriptor contains within-parent, within-child, and cross-block distances,
+colored connection counts, centroid/radius statistics, and a proper-SE(3)-
+invariant mirror-sensitive triple product. The frozen corpus has 1,278 macros,
+142 exact, across ten nuclei. A group-balanced linear value reaches 6 / 9 exact
+supplied groups in-sample and beats all 31 within-group label shuffles
+(`p = .03125`), but whole-nucleus holdout collapses to 1 / 9 and 14 / 30 sites.
+On the consumed confirmation beam it ranks the sole exact macro fourth and
+selects parent 2. Raw macro shape overfits; reusable clusters-of-clusters need
+typed boundary obligations and carried GCTS ports, not geometry alone.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

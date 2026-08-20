@@ -4027,6 +4027,25 @@ explicit correctness ceiling, not a computational win. The next marking must
 encode parent→child obligation change or promote shared branch subtrees into
 clusters-of-clusters before any fresh autonomous confirmation is justified.
 
+The first explicit clusters-of-clusters value uses the six accepted actions as
+one colored macro: three parent actions plus three child actions. A
+62-component descriptor records colored populations, sorted within-block and
+cross-block distances, centroid/radius and nearest-parent statistics,
+connection fractions, colored cross-distance summaries, and a proper-SE(3)-
+invariant pseudoscalar that preserves chirality. It is translation invariant
+and permutation invariant within each block. Geometry for all 1,278 examples
+freezes before the 142 consumed exact labels are copied from the prior corpus.
+
+This geometric macro value is not transferable. The final cross-geometry head
+selects 6 / 9 supplied nuclei and 25 / 30 sites in-sample, exceeding all 31
+within-nucleus label shuffles (`p = .03125`), but nested whole-nucleus selection
+falls to only 1 / 9 and 14 / 30. Applied target-free to the eight confirmation
+beam paths, it orders parents `2 / 4 / 3 / 8 / 7 / 5 / 1 / 6`; the sole exact
+path is rank 4 and the selected path is wrong. The gap between apparent
+in-sample significance and failed spatial transfer is precisely why raw macro
+geometry is rejected. The next recursive marking must preserve typed incoming,
+discharged, and remaining boundary ports across the parent→child transition.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
