@@ -114,7 +114,6 @@ assert.match(
   /this excludes those particular patches as translational fundamental domains, not other possible motifs/,
   "the catalog must state the narrow scope of a negative target-patch quotient check"
 );
-assert.doesNotMatch(growthAppSource, /1 unresolved lattice candidate/, "the certified periodic quotient must remove the last unresolved catalog candidate");
 assert.match(growthAppSource, /Certified periodic control/, "the mined six-tile quotient must be visible as a periodic control");
 assert.match(growthAppSource, /GCTS shell-obstruction controls/, "the three exact shell rejections must remain available as controls");
 assert.match(
@@ -259,6 +258,38 @@ const archivedSize12ShellTwo = JSON.parse(await readFile(
 ));
 const archivedSize12Periodic = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12ShellThree = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-full-isometry-shell3-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12ShellFour = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-full-isometry-shell4-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12ShellSix = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-full-isometry-shell6-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12Periodic204255 = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-12_204255-shell6-periodicity-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12Periodic405129 = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-12_405129-shell6-periodicity-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12CandidateShellThreePortfolio = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12CandidateShellFourExtensions = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-12_235174-shell4-extension-portfolio-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+const archivedSize12CandidatePeriodicityPortfolio = JSON.parse(await readFile(
+  new URL("../data/lattice-polyhedron-size12-12_235174-shell3-periodicity-portfolio-2026-08-20.json", import.meta.url),
   "utf8"
 ));
 assert.deepEqual(
@@ -1139,9 +1170,9 @@ const shellControls = candidates.filter(figure =>
   ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(figure.census_candidate.screening.certificate)
 );
 const periodicControls = candidates.filter(figure => figure.census_candidate.screening.certificate === "translational");
-assert.equal(survivors.length, 8);
-assert.equal(shellControls.length, 8);
-assert.equal(periodicControls.length, 23);
+assert.equal(survivors.length, 1);
+assert.equal(shellControls.length, 13);
+assert.equal(periodicControls.length, 25);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);
@@ -1159,9 +1190,12 @@ assert.equal(archivedSize11Periodic.rows.length, 6);
 assert.ok(archivedSize11Periodic.rows.every(row => row.translational?.certified));
 assert.equal(LATTICE_POLYHEDRON_SIZE12_CONTROLS.length, 27);
 assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.source_pool_size, 503443);
-assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.certified_periodic_tilers, 54);
+assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.certified_periodic_tilers, 56);
 assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_two_non_tilers, 3);
-assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.unresolved_after_shell_two, 8);
+assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_three_non_tilers, 3);
+assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_four_non_tilers, 2);
+assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.unresolved_after_shell_four, 1);
+assert.equal(LATTICE_POLYHEDRON_SIZE12_SCREENING.unresolved_candidate, "12_235174");
 assert.deepEqual(archivedSize12FirstStage.counts, {
   localEdgeObstruction: 503353,
   extendableShellObstruction: 25,
@@ -1171,6 +1205,40 @@ assert.deepEqual(archivedSize12FirstStage.counts, {
 });
 assert.equal(archivedSize12ShellTwo.totals.certifiedNonTilerTrials, 3);
 assert.equal(archivedSize12ShellTwo.totals.targetHits, 8);
+assert.equal(archivedSize12ShellThree.totals.certifiedNonTilerTrials, 3);
+assert.equal(archivedSize12ShellThree.totals.targetHits, 5);
+assert.equal(archivedSize12ShellFour.totals.certifiedNonTilerTrials, 2);
+assert.equal(archivedSize12ShellFour.totals.targetHits, 2);
+assert.equal(archivedSize12ShellFour.totals.incompleteTrials, 1);
+assert.deepEqual(
+  archivedSize12ShellFour.rows.filter(row => row.certified && row.canTile === false).map(row => row.candidate).sort(),
+  ["12_124794", "12_424326"]
+);
+assert.equal(archivedSize12ShellSix.totals.targetHits, 2);
+for (const periodicReport of [archivedSize12Periodic204255, archivedSize12Periodic405129]) {
+  assert.equal(periodicReport.result.certifiedPeriodic, true);
+  assert.equal(periodicReport.result.certificateCompleted, true);
+  assert.equal(periodicReport.result.evidence?.can_tile, true);
+}
+assert.equal(archivedSize12Periodic204255.result.evidence.patch_size, 8);
+assert.equal(archivedSize12Periodic405129.result.evidence.patch_size, 24);
+assert.equal(archivedSize12CandidateShellThreePortfolio.totals.targetHits, 20);
+assert.equal(archivedSize12CandidateShellThreePortfolio.candidates[0].distinctBestWitnesses, 20);
+assert.equal(archivedSize12CandidateShellFourExtensions.rows.length, 20);
+assert.ok(archivedSize12CandidateShellFourExtensions.rows.every(row =>
+  row.resultKind === "patch_extension_impossible"
+  && row.canTile === null
+  && row.initialPatchSourceSeed === row.seed
+  && row.initialPatchSelection === "candidate_and_seed"
+));
+assert.deepEqual(archivedSize12CandidatePeriodicityPortfolio.totals, {
+  witnesses: 20,
+  completed: 20,
+  timedOut: 0,
+  certifiedPeriodic: 0,
+  distinctWitnesses: 20,
+  basesTested: 303583
+});
 assert.equal(archivedSize12Periodic.rows.length, 65);
 assert.equal(archivedSize12Periodic.rows.filter(row => row.translational?.certified).length, 54);
 assert.equal(archivedSize12Periodic.rows.filter(row => row.classification === "inconclusive").length, 11);

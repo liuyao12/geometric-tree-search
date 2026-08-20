@@ -56,7 +56,7 @@ Pages site. The main way to use it is to open the page in a browser:
   lattice. It supports mixed tile systems, custom polycube construction, search
   by exact rooted face-adjacency shells, tree inspection, intermediate tiling
   snapshots, and reproducible non-tiler and periodic controls—including the
-  eight live candidates from the corrected full-isometry size-12 screen.
+  sole remaining candidate from the corrected full-isometry size-12 screen.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

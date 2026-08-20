@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-quotient-overlap-v101";
+import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-deep-shell-v102";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -3389,8 +3389,12 @@ export const createTilingStream = (() => {
         };
       });
     };
-    const periodicTranslationNeighborhoodIsValid = (basis, budgetExceeded = () => false) => {
-      const vertices = state.placements.flatMap(globalPlacementVertices);
+    const periodicTranslationNeighborhoodIsValid = (
+      basis,
+      motifPlacements = state.placements,
+      budgetExceeded = () => false
+    ) => {
+      const vertices = motifPlacements.flatMap(globalPlacementVertices);
       if (!vertices.length) return false;
       const minima = [0, 1, 2].map(axis => Math.min(...vertices.map(vertex => vertex[axis])));
       const maxima = [0, 1, 2].map(axis => Math.max(...vertices.map(vertex => vertex[axis])));
@@ -3409,46 +3413,51 @@ export const createTilingStream = (() => {
         vector.reduce((sum, value, axis) => sum + Math.abs(value) * spans[axis], 0)
         / Math.abs(determinant)
       ));
-      const basePlacements = state.placements.slice();
-      const applied = [];
-      const priorMaxLiveTiles = searchStats.max_live_tiles;
-      const rollbackValidation = () => {
-        while (applied.length) {
-          const { move, rollback } = applied.pop();
-          undoMove(move, rollback, { captureBest: false });
+      const localLattice = new Map();
+      const localFrontier = new Map();
+      const localPlacementKeys = new Set();
+      const addPlacement = (placement, shift) => {
+        const translation = vecAdd(placement.translation, shift);
+        const placementKey = `${placement.prototile_idx}::${placement.orient.__orientation_id ?? ""}::${vecKey(translation)}`;
+        if (localPlacementKeys.has(placementKey)) return false;
+        localPlacementKeys.add(placementKey);
+        for (const point of placement.orient.occupancy) {
+          const position = add3(point.pos, translation);
+          const key = vecKey(position);
+          const weight = (localLattice.get(key) ?? 0) + point.weight;
+          if (weight > MAX_SOLID_ANGLE + SOLID_ANGLE_EPSILON) return false;
+          localLattice.set(key, weight);
         }
-        searchStats.max_live_tiles = priorMaxLiveTiles;
+        for (let faceIndex = 0; faceIndex < placement.orient.faces.length; faceIndex += 1) {
+          const face = placement.orient.faces[faceIndex];
+          const key = translatedOrientedFaceKey(placement.orient, faceIndex, translation);
+          const orderedVertices = face.map(index => add3(placement.orient.verts[index], translation));
+          const existing = localFrontier.get(key);
+          if (!existing) {
+            localFrontier.set(key, orderedVertices);
+            continue;
+          }
+          if (!isCyclicPermutation(orderedVertices, [...existing].reverse())) return false;
+          localFrontier.delete(key);
+        }
+        return true;
       };
       for (let a = -radii[0]; a <= radii[0]; a++) {
         for (let b = -radii[1]; b <= radii[1]; b++) {
           for (let c = -radii[2]; c <= radii[2]; c++) {
             if (a === 0 && b === 0 && c === 0) continue;
-            if (budgetExceeded()) {
-              rollbackValidation();
-              return false;
-            }
+            if (budgetExceeded()) return false;
             const shift = [0, 1, 2].map(axis =>
               a * basis[0][axis] + b * basis[1][axis] + c * basis[2][axis]
             );
             if (shift.some((value, axis) => Math.abs(value) > spans[axis] + 1e-9)) continue;
-            for (const placement of basePlacements) {
-              const move = {
-                prototile_idx: placement.prototile_idx,
-                orient: placement.orient,
-                translation: vecAdd(placement.translation, shift)
-              };
-              const validity = isMoveValid(move);
-              if (!validity.ok) {
-                rollbackValidation();
-                return false;
-              }
-              move.occupancy_data = validity.occData;
-              applied.push({ move, rollback: applyMove(move, { countWork: false }) });
-            }
+            for (const placement of motifPlacements) if (!addPlacement(placement, shift)) return false;
           }
         }
       }
-      rollbackValidation();
+      for (const placement of motifPlacements) {
+        if (!addPlacement(placement, [0, 0, 0])) return false;
+      }
       return true;
     };
     const findBoundaryPeriodicTemplate = (requestedPeriod, options = {}) => {
@@ -3548,7 +3557,11 @@ export const createTilingStream = (() => {
               []
             );
             if (!boundaryPairing) continue;
-            if (!periodicTranslationNeighborhoodIsValid(basis, stopForCertificateBudget)) continue;
+            if (!periodicTranslationNeighborhoodIsValid(
+              basis,
+              state.placements,
+              stopForCertificateBudget
+            )) continue;
 
             const motif = motifFromCurrentPatch();
             if (motif.some(item => item.orientation_index < 0)) return null;
@@ -3571,6 +3584,7 @@ export const createTilingStream = (() => {
                 .map(([prototile_idx, count]) => ({ prototile_idx, count })),
               proof: {
                 method: "face_paired_boundary_equal_covolume",
+                overlap_validation: "complete_lattice_translation_neighborhood",
                 boundary_face_count: boundaryFaces.length,
                 boundary_pairing: boundaryPairing,
                 motif_volume: motifVolume,
@@ -4688,6 +4702,7 @@ export const createTilingStream = (() => {
       };
       const facePairing = matchFaces(new Set(faces.map((_, index) => index)), []);
       if (!facePairing) return null;
+      if (!periodicTranslationNeighborhoodIsValid(basis, placements)) return null;
 
       const rootTranslation = placements[0].translation;
       const motif = [];
@@ -4717,6 +4732,7 @@ export const createTilingStream = (() => {
           .map(([prototile_idx, count]) => ({ prototile_idx, count })),
         proof: {
           method: "quotient_face_pairing_equal_covolume",
+          overlap_validation: "complete_lattice_translation_neighborhood",
           face_pairing: facePairing,
           motif_volume: motifVolume,
           lattice_determinant: cellVolume
@@ -4765,7 +4781,12 @@ export const createTilingStream = (() => {
       };
     };
     const minePeriodicTemplateFromCurrentPatch = (options = {}) => {
-      if (prototiles.length !== 1 || state.placements.length < 2) return null;
+      if (state.placements.length < 2) return null;
+      const tileVolume = tileVolumes[0];
+      if (!Number.isFinite(tileVolume) || tileVolume <= 0) return null;
+      if (tileVolumes.some(volume => Math.abs(volume - tileVolume) > 1e-8 * Math.max(1, tileVolume))) {
+        return null;
+      }
       const certificateBudgetExceeded = options.budget_exceeded ?? overBudget;
       const recordCertificateBudgetExceeded = options.on_budget_exceeded ?? noteIncompleteSearch;
       const stopForCertificateBudget = () => {
@@ -4810,7 +4831,6 @@ export const createTilingStream = (() => {
           support: entry.support
         }))
       );
-      const tileVolume = tileVolumes[0];
       for (let first = 0; first < vectors.length; first++) {
         for (let second = first + 1; second < vectors.length; second++) {
           for (let third = second + 1; third < vectors.length; third++) {

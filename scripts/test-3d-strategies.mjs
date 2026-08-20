@@ -975,6 +975,35 @@ const overlappingQuotientRegression = await solve({
 assert.notEqual(overlappingQuotientRegression.final.result_kind, "certified_tiling");
 assert.notEqual(overlappingQuotientRegression.final.can_tile, true);
 
+const configuredOverlappingQuotientRegression = await solve({
+  mode_key: "cube",
+  custom_system: {
+    name: "Configured periodic quotient overlap regression",
+    figure_refs: [],
+    polycubes: [],
+    polyhedra: [{
+      name: "PolyDB 12_235174",
+      vertices: [[0, 0, 0], [1, 0, 0], [0, 2, 0], [2, 1, 5], [1, 2, 0], [3, 1, 5]]
+    }],
+    polycube_lattice: "z3"
+  },
+  target_val: 20,
+  tiling_strategy: "translational",
+  include_mirrors: true,
+  known_periodic_template: {
+    motif: [
+      { prototile_idx: 0, orientation_id: "0:0", translation: [0, 0, 0] },
+      { prototile_idx: 1, orientation_id: "1:1", translation: [2, 0, -5] }
+    ],
+    period_vectors: [[-1, 0, 0], [-2, -1, 5], [-2, 1, 5]]
+  },
+  periodic_patch_max_tiles: 1,
+  template_preflight: true,
+  time_limit_ms: 3000
+});
+assert.notEqual(configuredOverlappingQuotientRegression.final.result_kind, "certified_tiling");
+assert.notEqual(configuredOverlappingQuotientRegression.final.can_tile, true);
+
 console.log("3D strategy regressions passed", {
   translational_tiles: translational.final.tile_count,
   isohedral_tiles: isohedral.final.tile_count,

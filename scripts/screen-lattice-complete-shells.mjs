@@ -50,18 +50,45 @@ const candidates = candidatePool.filter(candidate =>
 const initialPatchDocument = initialPatchFile
   ? JSON.parse(await readFile(initialPatchFile, "utf8"))
   : null;
-const initialPatchRow = (initialPatchDocument?.rows ?? [])
-  .filter(row => Array.isArray(row.bestShellWitness)
-    && (!requestedIds.size || requestedIds.has(row.candidate)))
-  .sort((left, right) =>
-    (right.bestShellDepth ?? 0) - (left.bestShellDepth ?? 0)
-    || (right.bestShellWitness?.length ?? 0) - (left.bestShellWitness?.length ?? 0)
-  )[0] ?? null;
-const initialPatch = Array.isArray(initialPatchDocument)
+const initialPatchRows = (initialPatchDocument?.rows ?? [])
+  .filter(row => Array.isArray(row.bestShellWitness) && row.bestShellWitness.length);
+const globalInitialPatch = Array.isArray(initialPatchDocument)
   ? initialPatchDocument
   : Array.isArray(initialPatchDocument?.placements)
     ? initialPatchDocument.placements
-    : initialPatchRow?.bestShellWitness ?? null;
+    : null;
+const compareInitialPatchRows = (left, right) =>
+  (right.bestShellDepth ?? 0) - (left.bestShellDepth ?? 0)
+  || (right.bestShellWitness?.length ?? 0) - (left.bestShellWitness?.length ?? 0)
+  || (left.seed ?? 0) - (right.seed ?? 0);
+const initialPatchSelectionFor = (candidate, seed) => {
+  if (globalInitialPatch) {
+    return {
+      placements: globalInitialPatch,
+      candidate: null,
+      seed: null,
+      completedShellDepth: null,
+      witnessHash: null,
+      selection: "global_patch"
+    };
+  }
+  const candidateRows = initialPatchRows
+    .filter(row => row.candidate === candidate.id)
+    .sort(compareInitialPatchRows);
+  const row = candidateRows.find(candidateRow => candidateRow.seed === seed)
+    ?? candidateRows[0]
+    ?? null;
+  return row
+    ? {
+        placements: row.bestShellWitness,
+        candidate: row.candidate,
+        seed: row.seed ?? null,
+        completedShellDepth: row.bestShellDepth ?? null,
+        witnessHash: row.bestShellWitnessHash ?? null,
+        selection: row.seed === seed ? "candidate_and_seed" : "candidate_best_fallback"
+      }
+    : null;
+};
 
 const patchHash = placements => createHash("sha256")
   .update((placements ?? []).map(placement => [
@@ -74,7 +101,7 @@ const patchHash = placements => createHash("sha256")
   .digest("hex")
   .slice(0, 16);
 
-const configFor = (candidate, seed, targetDepth) => ({
+const configFor = (candidate, seed, targetDepth, initialPatchSelection) => ({
   mode_key: "cube",
   custom_system: {
     name: `Complete-shell screen ${candidate.id}`,
@@ -107,7 +134,9 @@ const configFor = (candidate, seed, targetDepth) => ({
   time_limit_ms: timeMs,
   random_seed: seed,
   seeded_tie_breaks: seededTieBreaks,
-  ...(initialPatch ? { initial_patch: { placements: initialPatch } } : {}),
+  ...(initialPatchSelection?.placements
+    ? { initial_patch: { placements: initialPatchSelection.placements } }
+    : {}),
   ui_yield_interval_ms: 1000000
 });
 
@@ -126,6 +155,7 @@ const witnessDescriptor = placements => {
 
 async function runCandidate(candidate, seed, targetDepth) {
   const started = performance.now();
+  const initialPatchSelection = initialPatchSelectionFor(candidate, seed);
   let final = null;
   let bestShellDepth = 0;
   let bestShellPatchTiles = 1;
@@ -138,7 +168,11 @@ async function runCandidate(candidate, seed, targetDepth) {
   let maxShellReachableTiles = 0;
   let maxUnreachableExposedFaces = 0;
   const shellMilestones = [];
-  for await (const message of createTilingStream(configFor(candidate, seed, targetDepth), tileSpecs, { stop: false })) {
+  for await (const message of createTilingStream(
+    configFor(candidate, seed, targetDepth, initialPatchSelection),
+    tileSpecs,
+    { stop: false }
+  )) {
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     const shellDepth = snapshot?.frontier_stats?.complete_shell_depth ?? 0;
     const tileCount = snapshot?.tile_count ?? snapshot?.placements?.length ?? 0;
@@ -229,6 +263,10 @@ async function runCandidate(candidate, seed, targetDepth) {
     globalZeroFaceDeadEnds: stats.generic_global_zero_face_dead_ends ?? 0,
     initialPatchAppliedTiles: stats.initial_patch_applied_tiles ?? 0,
     initialPatchBaseShellDepth: stats.initial_patch_base_shell_depth ?? 0,
+    initialPatchSourceCandidate: initialPatchSelection?.candidate ?? null,
+    initialPatchSourceSeed: initialPatchSelection?.seed ?? null,
+    initialPatchSourceWitnessHash: initialPatchSelection?.witnessHash ?? null,
+    initialPatchSelection: initialPatchSelection?.selection ?? null,
     shellMilestones
   };
 }
@@ -288,12 +326,14 @@ const report = {
     seededTieBreaks,
     globalZeroFacePruning,
     includeWitness,
-    initialPatch: initialPatch
+    initialPatch: initialPatchDocument
       ? {
-          tiles: initialPatch.length,
-          candidate: initialPatchRow?.candidate ?? null,
-          completedShellDepth: initialPatchRow?.bestShellDepth ?? null,
-          witnessHash: initialPatchRow?.bestShellWitnessHash ?? null
+          sourceFile: initialPatchFile,
+          globalPatchTiles: globalInitialPatch?.length ?? null,
+          candidateWitnessRows: initialPatchRows.length,
+          selectionPolicy: globalInitialPatch
+            ? "same global patch for every trial"
+            : "match candidate and seed, then fall back to the candidate's deepest witness"
         }
       : null,
     candidatesFile,

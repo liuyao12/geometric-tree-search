@@ -1,0 +1,2737 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_shell_witness_periodicity_portfolio",
+  "generatedAt": "2026-08-20T14:25:39.526Z",
+  "sourceWitnessFile": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+  "rows": [
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 1,
+        "tiles": 49,
+        "hash": "38ad456854d55cfd"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              -5
+            ],
+            "support": 8
+          }
+        ],
+        "elapsedMs": 642,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "847cb7c6a07c0c3b3a7834176a16cb19"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 2,
+        "tiles": 49,
+        "hash": "981aa8a5b2b2bb43"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 14190,
+        "vectorsConsidered": 45,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 21
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -1,
+              1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              -5
+            ],
+            "support": 6
+          }
+        ],
+        "elapsedMs": 204,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "f2a2e8dfb1432251c0455442df8feef2"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 3,
+        "tiles": 49,
+        "hash": "598543a748b25a3a"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 16
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -1,
+              1,
+              5
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 9
+          }
+        ],
+        "elapsedMs": 394,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "6f1dae7c8c17fd2d623245f3a973a20b"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 4,
+        "tiles": 49,
+        "hash": "fec9e962b8c7de82"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 8436,
+        "vectorsConsidered": 38,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 18
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              0,
+              -4,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              0,
+              0,
+              -10
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -3,
+              -2,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              10
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 4
+          }
+        ],
+        "elapsedMs": 1168,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "38edfb3921c8e0d45d409c33b1d5bdba"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 5,
+        "tiles": 49,
+        "hash": "0b113429125d556e"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 16215,
+        "vectorsConsidered": 47,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 20
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -3,
+              -2,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              -4,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              -5
+            ],
+            "support": 5
+          }
+        ],
+        "elapsedMs": 1187,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "3b3f86a51cf7fd57a3fc9ad556d8e9fe"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 6,
+        "tiles": 49,
+        "hash": "62c28e96c9e94fce"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 18
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 16
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 8
+          }
+        ],
+        "elapsedMs": 361,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "c6493b1f6dbf1f403517a11d7d9f423c"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 7,
+        "tiles": 49,
+        "hash": "798703550490becc"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 11480,
+        "vectorsConsidered": 42,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 15
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 15
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -3,
+              2,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 5
+          }
+        ],
+        "elapsedMs": 925,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "c1c014eb4111b3996e50f9f4279dc752"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 8,
+        "tiles": 49,
+        "hash": "beececc162e2825a"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 15180,
+        "vectorsConsidered": 46,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 17
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -4,
+              0,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              -4,
+              0
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 4
+          }
+        ],
+        "elapsedMs": 1296,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "323c58f0add6f1bcc6539cae09ebe3b2"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 9,
+        "tiles": 49,
+        "hash": "b1c868bf952190f7"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 6545,
+        "vectorsConsidered": 35,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 16
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 16
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -4,
+              0,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              -10
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              -4,
+              0
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              0,
+              0,
+              -10
+            ],
+            "support": 4
+          }
+        ],
+        "elapsedMs": 508,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "96f50a19b125ee6dd162688d8ffd834e"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 10,
+        "tiles": 49,
+        "hash": "b74feb6cb574bf7d"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 15
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 7
+          }
+        ],
+        "elapsedMs": 407,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "801c772c95ceb8e9798507a9a0e4c90c"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 11,
+        "tiles": 49,
+        "hash": "65c792e9023cfd41"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 19
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 15
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              -3,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -4,
+              1,
+              5
+            ],
+            "support": 7
+          }
+        ],
+        "elapsedMs": 590,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "7e60526d78ca85145f326ed46985c89f"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 12,
+        "tiles": 49,
+        "hash": "4889f23994a0664e"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 16215,
+        "vectorsConsidered": 47,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 24
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -3,
+              2,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -3,
+              -2,
+              0
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              -4,
+              0,
+              0
+            ],
+            "support": 4
+          }
+        ],
+        "elapsedMs": 1064,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "af6aadc3a8c0fc654c97ceacf455c43b"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 13,
+        "tiles": 49,
+        "hash": "808d499b5420aea2"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 18
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -3,
+              2,
+              0
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              -3,
+              -2,
+              0
+            ],
+            "support": 4
+          }
+        ],
+        "elapsedMs": 577,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "40c7da382598ee1e6c4862748f0aa354"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 14,
+        "tiles": 49,
+        "hash": "e3ef9b08830e4ebe"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 16
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -4,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -4,
+              1,
+              5
+            ],
+            "support": 9
+          }
+        ],
+        "elapsedMs": 377,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "bbeb220935d176915bde5dd0fdfde1ba"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 15,
+        "tiles": 49,
+        "hash": "32b5e6fecdf184b7"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 16
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 15
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -4,
+              -1,
+              5
+            ],
+            "support": 6
+          }
+        ],
+        "elapsedMs": 225,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "2178060059f44cfe94ed4b54633e53e5"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 16,
+        "tiles": 49,
+        "hash": "3f3a0cda4cd534be"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 6
+          }
+        ],
+        "elapsedMs": 271,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "e034baa1c9314c39be28fe5745c764c9"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 17,
+        "tiles": 49,
+        "hash": "0f188514dec33de5"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -1,
+              1,
+              5
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 7
+          }
+        ],
+        "elapsedMs": 272,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "3ee2166da3290ae37ebd168210b35745"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 18,
+        "tiles": 49,
+        "hash": "9736d42cdbc90b1b"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 17
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 13
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -4,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 7
+          }
+        ],
+        "elapsedMs": 885,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "3ff70587bf56bc0fdccb6ec1441651dd"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 19,
+        "tiles": 49,
+        "hash": "4a7c9c29585d9210"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 17296,
+        "vectorsConsidered": 48,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 18
+          },
+          {
+            "vector": [
+              -2,
+              -1,
+              5
+            ],
+            "support": 14
+          },
+          {
+            "vector": [
+              -1,
+              -1,
+              5
+            ],
+            "support": 11
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              -3,
+              -1,
+              5
+            ],
+            "support": 10
+          },
+          {
+            "vector": [
+              0,
+              -1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -4,
+              1,
+              5
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -3,
+              1,
+              5
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -2,
+              3,
+              5
+            ],
+            "support": 8
+          }
+        ],
+        "elapsedMs": 805,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "51ce33dd69533b67f0c50c8871788b98"
+        }
+      }
+    },
+    {
+      "candidate": "12_235174",
+      "sourceWitness": {
+        "file": "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+        "shellDepth": 3,
+        "seed": 20,
+        "tiles": 49,
+        "hash": "808319c2dd215930"
+      },
+      "configuration": {
+        "timeMs": 15000,
+        "certificateTimeMs": 10000,
+        "vectorLimit": 48,
+        "includeMirrors": true,
+        "method": "internal_only"
+      },
+      "result": {
+        "resultKind": "patch_found",
+        "certifiedPeriodic": false,
+        "certificateCompleted": true,
+        "certificateTimedOut": false,
+        "basesTested": 7770,
+        "vectorsConsidered": 37,
+        "topTranslations": [
+          {
+            "vector": [
+              -1,
+              0,
+              0
+            ],
+            "support": 16
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              0
+            ],
+            "support": 12
+          },
+          {
+            "vector": [
+              0,
+              -2,
+              0
+            ],
+            "support": 9
+          },
+          {
+            "vector": [
+              -3,
+              0,
+              0
+            ],
+            "support": 8
+          },
+          {
+            "vector": [
+              -1,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -2,
+              -2,
+              0
+            ],
+            "support": 7
+          },
+          {
+            "vector": [
+              -1,
+              2,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -2,
+              2,
+              0
+            ],
+            "support": 6
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              -10
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              -1,
+              0,
+              10
+            ],
+            "support": 5
+          },
+          {
+            "vector": [
+              0,
+              0,
+              -10
+            ],
+            "support": 4
+          },
+          {
+            "vector": [
+              -2,
+              0,
+              10
+            ],
+            "support": 4
+          }
+        ],
+        "elapsedMs": 2173,
+        "evidence": {
+          "kind": "finite_patch",
+          "certified": false,
+          "strategy": "generic",
+          "note": "A locally legal finite patch is not a proof that all of 3-space can be tiled."
+        },
+        "check": {
+          "certified": false,
+          "checkCompleted": true,
+          "patchSize": 49,
+          "patchFingerprint": "d065809ab22ff7e3f52e11147845c7ef"
+        }
+      }
+    }
+  ],
+  "totals": {
+    "witnesses": 20,
+    "completed": 20,
+    "timedOut": 0,
+    "certifiedPeriodic": 0,
+    "distinctWitnesses": 20,
+    "basesTested": 303583
+  },
+  "interpretation": "A certificate proves a periodic tiling. A completed negative check excludes this supplied finite patch as the tested quotient source, not every possible periodic motif for the tile."
+}

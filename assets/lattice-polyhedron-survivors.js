@@ -374,21 +374,21 @@ const SIZE12_CONTROL_DATA = Object.freeze([
   { id: "12_357723", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,0],[2,1,4],[3,1,4],[2,2,4],[3,2,4]], periods: [[-2,-1,4],[0,-1,0],[-1,0,0]], motif: [[0,[0,0,0]]] },
   { id: "12_452558", vertices: [[0,0,0],[1,0,0],[0,1,0],[3,3,13],[4,3,13],[3,4,13]], periods: [[-1,0,0],[-1,1,0],[-3,-3,13]], motif: [[0,[0,0,0]],[11,[1,0,0]]] },
   { id: "12_464758", vertices: [[0,0,0],[1,0,0],[0,2,0],[1,1,5],[1,2,0],[2,1,5]], periods: [[-1,0,0],[-1,-1,5],[-1,1,5]], motif: [[0,[0,0,0]],[2,[1,0,-5]]] },
-  { id: "12_490743", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,2],[2,1,1],[1,2,1],[1,0,2],[0,1,2]], periods: [[-1,1,0],[0,0,-2],[-1,-2,-1]], motif: [[0,[0,0,0]],[3,[1,2,0]]] }
+  { id: "12_490743", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,2],[2,1,1],[1,2,1],[1,0,2],[0,1,2]], periods: [[-1,1,0],[0,0,-2],[-1,-2,-1]], motif: [[0,[0,0,0]],[3,[1,2,0]]] },
+  { id: "12_204255", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,2],[2,1,2],[1,2,0],[3,1,0],[2,2,2]], periods: [[0,-2,0],[-4,0,0],[0,0,-4]], mixed_motif: [[0,0,[0,0,0]],[1,1,[1,-1,0]],[0,1,[-2,0,0]],[1,0,[-1,-1,0]],[1,2,[0,0,-2]],[0,3,[1,-1,-2]],[1,3,[-2,0,-2]],[0,2,[-1,-1,-2]]], deepest_shell: 6, periodic_report: "data/lattice-polyhedron-size12-12_204255-shell6-periodicity-2026-08-20.json" },
+  { id: "12_405129", vertices: [[0,0,0],[1,0,0],[0,2,0],[0,0,2],[0,2,1],[2,2,0]], periods: [[0,-4,0],[-4,0,0],[0,0,-4]], mixed_motif: [[0,0,[0,0,0]],[1,2,[0,0,-2]],[0,7,[0,0,0]],[1,3,[0,-2,0]],[0,11,[0,0,0]],[1,0,[2,0,0]],[1,8,[-2,0,0]],[1,11,[0,-2,0]],[1,7,[-2,0,0]],[1,4,[0,0,-2]],[0,1,[0,-2,-2]],[1,5,[0,-2,0]],[1,9,[0,0,-2]],[0,2,[2,0,-2]],[0,3,[2,-2,0]],[0,10,[-2,0,-2]],[0,9,[0,-2,-2]],[0,4,[-2,0,-2]],[0,6,[0,-2,-2]],[0,8,[-2,-2,0]],[0,5,[-2,-2,0]],[1,1,[2,-2,-2]],[1,10,[-2,-2,-2]],[1,6,[-2,-2,-2]]], deepest_shell: 6, periodic_report: "data/lattice-polyhedron-size12-12_405129-shell6-periodicity-2026-08-20.json" }
 ]);
 
-const SIZE12_UNRESOLVED_DATA = Object.freeze([
-  { id: "12_034169", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[6,1,-1],[1,0,1],[7,1,-1],[0,1,1],[6,2,-1]], deepest_shell: 2, isohedral: "time_limit" },
-  { id: "12_121693", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[2,0,1],[0,2,1],[0,1,2],[2,1,2]], deepest_shell: 1, isohedral: "time_limit", shell_obstruction: true },
-  { id: "12_124794", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,3,4],[1,2,0],[3,3,4]], deepest_shell: 2, isohedral: "exhausted" },
-  { id: "12_149299", vertices: [[0,0,0],[1,0,0],[0,1,0],[5,4,6],[1,2,1],[6,5,7],[1,1,0],[6,4,6]], deepest_shell: 1, isohedral: "time_limit", shell_obstruction: true },
-  { id: "12_158688", vertices: [[0,0,0],[2,0,0],[0,1,0],[1,1,0],[0,0,1],[1,0,1],[0,2,1],[0,1,2],[1,1,2]], deepest_shell: 1, isohedral: "time_limit", shell_obstruction: true },
-  { id: "12_204255", vertices: [[0,0,0],[1,0,0],[0,1,0],[1,1,2],[2,1,2],[1,2,0],[3,1,0],[2,2,2]], deepest_shell: 2, isohedral: "exhausted" },
-  { id: "12_235174", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,1,5],[1,2,0],[3,1,5]], deepest_shell: 2, isohedral: "time_limit" },
-  { id: "12_339175", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[5,2,-1],[1,0,1],[6,2,-1],[0,1,1],[5,3,-1]], deepest_shell: 2, isohedral: "time_limit" },
-  { id: "12_387800", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[2,-4,2],[1,0,1],[3,-4,2],[0,1,1],[2,-3,2]], deepest_shell: 2, isohedral: "time_limit" },
-  { id: "12_405129", vertices: [[0,0,0],[1,0,0],[0,2,0],[0,0,2],[0,2,1],[2,2,0]], deepest_shell: 2, isohedral: "exhausted" },
-  { id: "12_424326", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,3,5],[1,2,0],[3,3,5]], deepest_shell: 2, isohedral: "exhausted" }
+const SIZE12_REMAINDER_DATA = Object.freeze([
+  { id: "12_034169", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[6,1,-1],[1,0,1],[7,1,-1],[0,1,1],[6,2,-1]], deepest_shell: 2, obstruction_shell: 3, isohedral: "time_limit" },
+  { id: "12_121693", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[2,0,1],[0,2,1],[0,1,2],[2,1,2]], deepest_shell: 1, obstruction_shell: 2, isohedral: "time_limit" },
+  { id: "12_124794", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,3,4],[1,2,0],[3,3,4]], deepest_shell: 3, obstruction_shell: 4, isohedral: "exhausted" },
+  { id: "12_149299", vertices: [[0,0,0],[1,0,0],[0,1,0],[5,4,6],[1,2,1],[6,5,7],[1,1,0],[6,4,6]], deepest_shell: 1, obstruction_shell: 2, isohedral: "time_limit" },
+  { id: "12_158688", vertices: [[0,0,0],[2,0,0],[0,1,0],[1,1,0],[0,0,1],[1,0,1],[0,2,1],[0,1,2],[1,1,2]], deepest_shell: 1, obstruction_shell: 2, isohedral: "time_limit" },
+  { id: "12_235174", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,1,5],[1,2,0],[3,1,5]], deepest_shell: 3, isohedral: "time_limit" },
+  { id: "12_339175", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[5,2,-1],[1,0,1],[6,2,-1],[0,1,1],[5,3,-1]], deepest_shell: 2, obstruction_shell: 3, isohedral: "time_limit" },
+  { id: "12_387800", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[2,-4,2],[1,0,1],[3,-4,2],[0,1,1],[2,-3,2]], deepest_shell: 2, obstruction_shell: 3, isohedral: "time_limit" },
+  { id: "12_424326", vertices: [[0,0,0],[1,0,0],[0,2,0],[2,3,5],[1,2,0],[3,3,5]], deepest_shell: 3, obstruction_shell: 4, isohedral: "exhausted" }
 ]);
 
 export const LATTICE_POLYHEDRON_SIZE12_SCREENING = Object.freeze({
@@ -399,15 +399,29 @@ export const LATTICE_POLYHEDRON_SIZE12_SCREENING = Object.freeze({
   shell_one_obstructions: 25,
   shell_one_survivors: 65,
   full_isometry_only_shell_one_survivors: 48,
-  certified_periodic_tilers: 54,
-  reflection_required_periodic_tilers: 38,
+  certified_periodic_tilers: 56,
+  reflection_required_periodic_tilers: 40,
   shell_two_non_tilers: 3,
-  unresolved_after_shell_two: 8,
+  shell_three_non_tilers: 3,
+  shell_four_non_tilers: 2,
+  unresolved_after_shell_four: 1,
+  unresolved_candidate: "12_235174",
+  unresolved_shell_three_witnesses: 20,
+  unresolved_distinct_shell_three_witnesses: 20,
+  unresolved_dead_shell_four_extensions: 20,
+  unresolved_periodicity_checks_completed: 20,
+  unresolved_periodicity_certificates: 0,
   easy_lane_inconclusive: 11,
   zero_face_pruning: false,
   model: "face-to-face congruent lattice-polyhedron tilings using integer translations and cubic lattice isometries",
   first_stage_report: "data/lattice-polyhedron-size12-full-isometry-first-stage-2026-08-20.json",
   shell_report: "data/lattice-polyhedron-size12-full-isometry-shell2-2026-08-20.json",
+  shell_three_report: "data/lattice-polyhedron-size12-full-isometry-shell3-2026-08-20.json",
+  shell_four_report: "data/lattice-polyhedron-size12-full-isometry-shell4-2026-08-20.json",
+  shell_six_report: "data/lattice-polyhedron-size12-full-isometry-shell6-2026-08-20.json",
+  unresolved_shell_three_portfolio_report: "data/lattice-polyhedron-size12-12_235174-shell3-portfolio-2026-08-20.json",
+  unresolved_shell_four_extension_report: "data/lattice-polyhedron-size12-12_235174-shell4-extension-portfolio-2026-08-20.json",
+  unresolved_periodicity_portfolio_report: "data/lattice-polyhedron-size12-12_235174-shell3-periodicity-portfolio-2026-08-20.json",
   periodic_report: "data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json",
   quotient_overlap_validation: "complete lattice-neighborhood occupancy replay"
 });
@@ -429,9 +443,13 @@ export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = [
       ...screening,
       ...(requiresMirrors ? {
         requires_mirrors: true,
-        proper_rotation_obstruction_shell: candidate.proper_obstruction_shell,
-        periodic_source: "exact mirrored two-tile quotient after a proper-rotation shell-3 obstruction",
-        report: LATTICE_POLYHEDRON_SIZE12_SCREENING.mirrored_periodic_report
+        ...(candidate.proper_obstruction_shell
+          ? { proper_rotation_obstruction_shell: candidate.proper_obstruction_shell }
+          : {}),
+        periodic_source: candidate.periodic_report
+          ? "exact quotient mined from a complete shell-6 GCTS witness"
+          : "exact mirrored two-tile quotient after a proper-rotation shell-3 obstruction",
+        report: candidate.periodic_report ?? LATTICE_POLYHEDRON_SIZE12_SCREENING.periodic_report
       } : {
         periodic_source: "exact quotient found after the complete-shell screen",
         report: LATTICE_POLYHEDRON_SIZE12_SCREENING.periodic_report
@@ -439,36 +457,55 @@ export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = [
     }),
     last_screening: LATTICE_POLYHEDRON_SIZE12_SCREENING,
     shell_screening: Object.freeze(requiresMirrors
-      ? { deepest_completed_shell: 2, obstruction_shell: 3, proper_rotations_only: true, periodic_motif_tiles: 2 }
+      ? candidate.periodic_report
+        ? { deepest_completed_shell: candidate.deepest_shell, periodic_motif_tiles: template.motif.length, full_isometries: true }
+        : { deepest_completed_shell: 2, obstruction_shell: 3, proper_rotations_only: true, periodic_motif_tiles: 2 }
       : { deepest_completed_shell: 3, periodic_motif_tiles: template.motif.length }),
     gcts_proof_screening: Object.freeze({}),
     description: requiresMirrors
-      ? `Size-12 reflection-sensitive periodic control ${candidate.id}; proper rotations fail exactly at shell 3, while one tile and one reflected copy form a certified two-tile translational quotient.`
+      ? candidate.periodic_report
+        ? `Size-12 reflection-sensitive periodic control ${candidate.id}; GCTS reached shell ${candidate.deepest_shell}, then its overlap-audited patch miner extracted a certified ${template.motif.length}-tile translational quotient.`
+        : `Size-12 reflection-sensitive periodic control ${candidate.id}; proper rotations fail exactly at shell 3, while one tile and one reflected copy form a certified two-tile translational quotient.`
       : `Size-12 periodic control ${candidate.id}; exact GCTS screening found a ${template.motif.length}-tile translational quotient.`
   });
   }),
-  ...SIZE12_UNRESOLVED_DATA.map((candidate, index) => Object.freeze({
+  ...SIZE12_REMAINDER_DATA.map((candidate, index) => Object.freeze({
     id: candidate.id,
     vertices: candidate.vertices,
     lattice_points: 12,
     registry_id: `census_${candidate.id}`,
     name: `Candidate ${candidate.id}`,
-    ...(!candidate.shell_obstruction ? {
-      survivor_priority: SIZE12_UNRESOLVED_DATA.slice(0, index + 1).filter(item => !item.shell_obstruction).length,
-      survivor_count: SIZE12_UNRESOLVED_DATA.filter(item => !item.shell_obstruction).length
+    ...(!candidate.obstruction_shell ? {
+      survivor_priority: SIZE12_REMAINDER_DATA.slice(0, index + 1).filter(item => !item.obstruction_shell).length,
+      survivor_count: SIZE12_REMAINDER_DATA.filter(item => !item.obstruction_shell).length
     } : {}),
-    screening: Object.freeze(candidate.shell_obstruction ? {
+    screening: Object.freeze(candidate.obstruction_shell ? {
       status: "exact_rejection",
       certificate: "finite_shell_obstruction",
-      shell_depth: 2,
+      shell_depth: candidate.obstruction_shell,
       requires_mirrors: true,
-      report: LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_report
+      report: candidate.obstruction_shell === 2
+        ? LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_report
+        : candidate.obstruction_shell === 3
+          ? LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_three_report
+          : LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_four_report
     } : {
       status: "inconclusive",
       requires_mirrors: true,
       translational: Object.freeze({ outcome: "time_limit", seconds: 30, maximum_motif_tiles: 12 }),
       isohedral: Object.freeze({ outcome: candidate.isohedral, seconds: candidate.isohedral === "time_limit" ? 30 : null }),
-      report: LATTICE_POLYHEDRON_SIZE12_SCREENING.periodic_report
+      shell_witness_portfolio: Object.freeze({
+        shell_depth: 3,
+        witnesses: 20,
+        distinct_witnesses: 20,
+        individually_dead_shell_four_extensions: 20,
+        periodicity_checks_completed: 20,
+        periodicity_certificates: 0,
+        witness_report: LATTICE_POLYHEDRON_SIZE12_SCREENING.unresolved_shell_three_portfolio_report,
+        extension_report: LATTICE_POLYHEDRON_SIZE12_SCREENING.unresolved_shell_four_extension_report,
+        periodicity_report: LATTICE_POLYHEDRON_SIZE12_SCREENING.unresolved_periodicity_portfolio_report
+      }),
+      report: LATTICE_POLYHEDRON_SIZE12_SCREENING.shell_four_report
     }),
     last_screening: LATTICE_POLYHEDRON_SIZE12_SCREENING,
     shell_screening: Object.freeze({
@@ -477,9 +514,9 @@ export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = [
       face_graph_exhaustion_is_not_used_as_a_non_tiling_certificate: true
     }),
     gcts_proof_screening: Object.freeze({}),
-    description: candidate.shell_obstruction
-      ? `Size-12 full-isometry non-tiler control ${candidate.id}; overlap-audited easy lanes found no periodic certificate and exhaustive unpruned GCTS proves shell 2 impossible.`
-      : `Unresolved size-12 full-isometry control ${candidate.id}; overlap-audited quotient search through 12 tiles found no translational certificate, and the corrected isohedral lane found no certificate within its configured run.`
+    description: candidate.obstruction_shell
+      ? `Size-12 full-isometry non-tiler control ${candidate.id}; overlap-audited easy lanes found no periodic certificate and exhaustive unpruned GCTS proves shell ${candidate.obstruction_shell} impossible.`
+      : `Unresolved size-12 full-isometry control ${candidate.id}; 20 distinct shell-3 witnesses survive, although each tested witness has an exact shell-4 extension obstruction and none contains a periodic quotient. The complete root-level shell-4 search remains bounded-inconclusive.`
   }))
 ];
 

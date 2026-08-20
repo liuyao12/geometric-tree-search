@@ -453,14 +453,29 @@ representatives. The corrected full-isometry, unpruned shell-one search rejects
 25 more and leaves 65 witnesses with no timeouts. Quotient certificates now
 undergo a complete neighboring-cell occupancy replay; this rejects several old
 face-pairing/volume false positives, including the former mixed-chirality claim
-for `12_235174`. Of the 65 witnesses, 54 have overlap-validated periodic
-quotients. Unpruned shell-two GCTS proves three of the remaining eleven to be
-non-tilers and leaves eight unresolved candidates. The catalogue includes the
-16 compact periodic controls retained from the earlier set, the three corrected
-non-tiler controls, and all eight live candidates. Receipts are in
+for `12_235174`. Of the 65 witnesses, the corrected easy lanes initially
+certify 54 periodic quotients. Unpruned shell-two GCTS proves three of the
+remaining eleven to be non-tilers. Deeper exact search rejects three more at
+shell 3 and two at shell 4. Shell-6 GCTS patches then expose overlap-validated
+translational quotients for `12_204255` (8 tiles) and `12_405129` (24 tiles).
+The size-12 result is therefore 56 periodic tilers, eight finite-shell
+non-tilers, and one still-unresolved candidate, `12_235174`. The catalogue
+retains all 27 selected controls: 18 periodic, eight non-tilers, and the one
+live candidate. Receipts are in
 `data/lattice-polyhedron-size12-full-isometry-first-stage-2026-08-20.json`,
 `data/lattice-polyhedron-size12-full-isometry-shell2-2026-08-20.json`, and
-`data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json`.
+`data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json`, with
+the deeper shell receipts in the corresponding `shell3`, `shell4`, and `shell6`
+reports and the two extracted quotient receipts in the
+`12_204255-shell6-periodicity` and `12_405129-shell6-periodicity` reports.
+For the remaining `12_235174`, seeds 1–20 produce 20 distinct 49-tile shell-3
+witnesses. Exact resumed search proves that none of those particular witnesses
+extends to shell 4, and the overlap-audited internal-period checker completes
+303,583 basis tests across them without a certificate. This does not prove that
+no other shell-3 witness extends, so the complete root-level shell-4 timeout is
+still reported honestly as inconclusive. The three portfolio receipts use the
+`12_235174-shell3-portfolio`, `shell4-extension-portfolio`, and
+`shell3-periodicity-portfolio` filenames.
 For sizes 12–15, `scripts/screen-next-lattice-polytope-pool.mjs` downloads
 bounded aggregate pages from polyDB and records contiguous source ranges and
 SHA-256 receipts; the merge script refuses gaps and overlaps.
