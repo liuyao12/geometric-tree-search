@@ -4046,6 +4046,25 @@ in-sample significance and failed spatial transfer is precisely why raw macro
 geometry is rejected. The next recursive marking must preserve typed incoming,
 discharged, and remaining boundary ports across the parent→child transition.
 
+That boundary-obligation hypothesis is tested without changing the candidate
+geometry. For every one of the same 1,278 terminals, a frozen 69-component
+port-transition descriptor concatenates 23 ID-free statistics of the parent
+graph, 23 of the child graph, and their signed difference. The statistics
+cover typed incoming/outgoing obligations, witnessed edges, connected
+components, degree moments, and boundary load; raw prototype/support IDs are
+excluded. Nested whole-nucleus model selection over the port-only and
+geometry-plus-port views reaches 3 / 9 supplied exact terminals and 20 / 30
+correct sites. That is better than raw macro geometry's 1 / 9 and 14 / 30,
+but the within-nucleus shuffle result is not significant (`p = .1875`).
+
+The consumed branch-local receipt supplies an independent diagnostic of the
+same failure mode. The target-free model orders the eight parents
+`4 / 2 / 3 / 7 / 8 / 1 / 6 / 5`; the sole exact six-action path is rank five
+and the selected parent is false. Thus scalar summaries of port-graph change
+do not transfer as a cluster-of-clusters value. Subsequent work must preserve
+the typed incidence matching—exactly which obligation is discharged and which
+is carried—rather than compressing that graph to counts.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement

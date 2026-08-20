@@ -1981,6 +1981,21 @@ On the consumed confirmation beam it ranks the sole exact macro fourth and
 selects parent 2. Raw macro shape overfits; reusable clusters-of-clusters need
 typed boundary obligations and carried GCTS ports, not geometry alone.
 
+That proposed correction has now been tested explicitly. A second frozen
+dataset augments every six-action macro with 23 ID-free parent-port graph
+statistics, the same 23 child-port statistics, and their 23 signed changes.
+The fields count typed incoming and outgoing obligations, witnessed edges,
+components, degrees, and boundary load; candidate coordinates and colors are
+unchanged and no raw support-type ID enters the value. Coupling these 69 fields
+to the 62 macro fields raises nested whole-nucleus selection from 1 / 9 to
+3 / 9 supplied nuclei and from 14 / 30 to 20 / 30 sites, but it does not beat
+the 31 within-nucleus label shuffles (`p = .1875`). On the consumed eight-parent
+beam the only exact six-action path falls from rank four to rank five and the
+selected parent is still false. Aggregate port-transition summaries are
+therefore rejected as the default marking. The next value must retain the
+identity and incidence of obligations that are discharged or carried, not
+merely their graph totals.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
