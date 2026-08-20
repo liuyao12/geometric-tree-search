@@ -25,10 +25,19 @@ def _graph(outgoing, group):
 def test_graph_value_prefers_recurrent_outgoing_obligations():
     rows = tuple(ChildFrontierGraphExample(group, _graph(label, label), label)
                  for group in range(3) for label in (False, True))
-    model = fit_child_frontier_graph_value(rows, ChildFrontierGraphValueSpec(
-        interaction_order=2, minimum_feature_groups=2, steps=40))
+    spec = ChildFrontierGraphValueSpec(
+        interaction_order=2, minimum_feature_groups=2, steps=40)
+    model = fit_child_frontier_graph_value(rows, spec)
+    cache = {}
+    cached = fit_child_frontier_graph_value(
+        rows, spec, embedding_cache=cache)
+    assert cached.model_digest == model.model_digest
+    assert len(cache) == 2
     assert score_child_frontier_graph_value(model, _graph(True, True)) > \
         score_child_frontier_graph_value(model, _graph(False, False))
+    assert score_child_frontier_graph_value(
+        cached, _graph(True, True), embedding_cache=cache) == \
+        score_child_frontier_graph_value(model, _graph(True, True))
     tainted = replace(_graph(True, True), target_used=True)
     try:
         score_child_frontier_graph_value(model, tainted)

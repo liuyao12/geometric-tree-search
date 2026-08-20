@@ -39,9 +39,17 @@ def test_equivariant_interactions_fit_recurrent_port_conjunctions():
         interaction_order=3, ridge=.1, steps=180)
     first = fit_learned_equivariant_port_value(rows, spec)
     second = fit_learned_equivariant_port_value(tuple(reversed(rows)), spec)
+    cache = {}
+    cached = fit_learned_equivariant_port_value(
+        rows, spec, embedding_cache=cache)
     assert first.model_digest == second.model_digest
+    assert cached.model_digest == first.model_digest
+    assert len(cache) == 2
     assert score_learned_equivariant_port_value(first, positive) > \
         score_learned_equivariant_port_value(first, negative)
+    assert score_learned_equivariant_port_value(
+        cached, positive, embedding_cache=cache) == \
+        score_learned_equivariant_port_value(first, positive)
     assert any(key[0:2] == ("message", "mean") and
                "source-port-neighbor" in key
                for key in first.feature_keys)

@@ -160,6 +160,15 @@ def equivariant_port_interaction_embedding(
     return tuple(sorted(pooled.items(), key=lambda row: repr(row[0])))
 
 
+def _cached_embedding(graph, spec, cache):
+    if cache is None:
+        return equivariant_port_interaction_embedding(graph, spec)
+    key = spec, graph.canonical_digest
+    if key not in cache:
+        cache[key] = equivariant_port_interaction_embedding(graph, spec)
+    return cache[key]
+
+
 def _sigmoid(value):
     if value >= 0:
         inverse = math.exp(-min(value, 60.))
@@ -203,6 +212,7 @@ def _aggregated_pairwise_gradient(weights, vectors, paired_groups):
 def fit_learned_equivariant_port_value(
         examples: Sequence[LearnedEquivariantPortExample],
         spec: LearnedEquivariantPortSpec = LearnedEquivariantPortSpec(),
+        *, embedding_cache: dict | None = None,
         ) -> FrozenLearnedEquivariantPortValue:
     rows = tuple(sorted(examples, key=lambda row: (
         repr(row.group), row.graph.canonical_digest, row.successful)))
@@ -215,8 +225,8 @@ def fit_learned_equivariant_port_value(
                 "classification", "pairwise", "pairwise-aggregated")
             or any(row.graph.target_used for row in rows)):
         raise ValueError("invalid learned equivariant-port corpus")
-    embeddings = tuple(dict(equivariant_port_interaction_embedding(
-        row.graph, spec)) for row in rows)
+    embeddings = tuple(dict(_cached_embedding(
+        row.graph, spec, embedding_cache)) for row in rows)
     feature_groups = defaultdict(set)
     for row, embedding in zip(rows, embeddings):
         for key, value in embedding.items():
@@ -305,9 +315,10 @@ def fit_learned_equivariant_port_value(
 
 def score_learned_equivariant_port_value(
         model: FrozenLearnedEquivariantPortValue,
-        graph: PartialIrregularPortGraph) -> float:
-    embedding = dict(equivariant_port_interaction_embedding(
-        graph, model.spec))
+        graph: PartialIrregularPortGraph, *,
+        embedding_cache: dict | None = None) -> float:
+    embedding = dict(_cached_embedding(
+        graph, model.spec, embedding_cache))
     score = model.intercept + sum(
         weight * embedding.get(key, 0.) / scale
         for key, scale, weight in zip(

@@ -1996,6 +1996,28 @@ therefore rejected as the default marking. The next value must retain the
 identity and incidence of obligations that are discharged or carried, not
 merely their graph totals.
 
+The identity-preserving version is now operational. It constructs one
+canonical six-node transition graph from the three parent actions and three
+child actions. All 15 within/cross edges retain normalized separation, shared
+colored support, support-geometry equality, proper chirality, and whether a
+parent action participates in a child's matched support. Parent/child roles
+are node colors; canonicalization enumerates only the `3! × 3!` block-local
+permutations. Translation, global proper rotation, action order, and raw
+support-type IDs are absent. The 1,278 terminals form 1,120 unique graphs.
+
+A fixed order-three source × port × neighbor value reaches 7 / 9 exact
+supplied nuclei and 26 / 30 sites under whole-nucleus holdout. All 31
+within-nucleus label shuffles do worse (`p = .03125`). On the consumed
+eight-parent beam, the only exact six-action path rises to rank two, although
+the top-ranked path remains false. Equal percentile fusion with the existing
+successor child-frontier graph reaches 8 / 9 exact supplied nuclei but remains
+at 26 / 30 sites; weights from .5 through 2 share the same accuracy plateau.
+The unchanged development gate requires both 8 / 9 and 27 sites, so the
+incidence value enters the marking library as an experimental option rather
+than becoming the autonomous default. Exact graph-embedding caching reduces a
+full 42-fit audit from about an hour to a few minutes without changing model
+digests or scores.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

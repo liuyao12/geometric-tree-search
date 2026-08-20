@@ -4065,6 +4065,34 @@ do not transfer as a cluster-of-clusters value. Subsequent work must preserve
 the typed incidence matching—exactly which obligation is discharged and which
 is carried—rather than compressing that graph to counts.
 
+The identity-preserving alternative is implemented as a canonical six-node
+transition graph. Three nodes are parent obligations and three are child
+obligations. Every one of the 15 within/cross edges retains normalized
+separation, shared colored support and distance profiles, support-geometry
+equality, proper chirality, and explicit parent-action participation in a
+child's matched support. Parent/child role is part of node color; the graph is
+quotiented over only `3! × 3!` block-local permutations. Raw support IDs,
+action order, translation, global proper rotation, lattice coordinates, and
+targets are excluded. The 1,278 examples yield 1,120 unique canonical graphs.
+
+With one fixed order-three source × port × neighbor model—no hyperparameter
+search—the identity-preserving graph reaches 7 / 9 exact supplied nuclei and
+26 / 30 correct sites under whole-nucleus holdout. All 31 within-nucleus label
+shuffles do worse (`p = .03125`). On the consumed eight-parent receipt it
+orders the sole exact six-action path second, compared with ranks four and
+five for raw macro geometry and aggregate port transition, but still selects
+a false path. An explicitly exploratory equal-rank fusion with the established
+successor child graph reaches 8 / 9 exact supplied nuclei and 26 / 30 sites;
+weights `.5 / 1 / 2` share that plateau. The frozen joint gate remains
+`8 / 9` and 27 sites, so autonomous commit is still red.
+
+The exact geometry colors initially made the 42-fit nested/null audit take
+about one hour because every fit rebuilt identical sparse graph embeddings.
+A graph-digest/specification cache is numerically exact: cached and uncached
+model digests, weights, and scores agree, while the same audit completes in a
+few minutes. This changes training cost only; online scoring was already one
+pass over six nodes and 15 edges.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement

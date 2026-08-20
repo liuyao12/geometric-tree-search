@@ -73,9 +73,21 @@ def _sigmoid(value):
     return exponent / (1 + exponent)
 
 
+def _cached_embedding(graph, interaction_order, cache):
+    if cache is None:
+        return child_frontier_graph_embedding(
+            graph, interaction_order=interaction_order)
+    key = interaction_order, graph.canonical_digest
+    if key not in cache:
+        cache[key] = child_frontier_graph_embedding(
+            graph, interaction_order=interaction_order)
+    return cache[key]
+
+
 def fit_child_frontier_graph_value(
         examples: Sequence[ChildFrontierGraphExample],
         spec: ChildFrontierGraphValueSpec = ChildFrontierGraphValueSpec(),
+        *, embedding_cache: dict | None = None,
         ) -> FrozenChildFrontierGraphValue:
     rows = tuple(sorted(examples, key=lambda row: (
         repr(row.group), row.graph.canonical_digest, row.successful)))
@@ -87,8 +99,8 @@ def fit_child_frontier_graph_value(
             or spec.steps < 1 or spec.learning_rate <= 0
             or any(row.graph.target_used for row in rows)):
         raise ValueError("invalid child-frontier graph corpus")
-    embeddings = tuple(dict(child_frontier_graph_embedding(
-        row.graph, interaction_order=spec.interaction_order)) for row in rows)
+    embeddings = tuple(dict(_cached_embedding(
+        row.graph, spec.interaction_order, embedding_cache)) for row in rows)
     support = defaultdict(set)
     for row, embedding in zip(rows, embeddings):
         for key, value in embedding.items():
@@ -132,11 +144,11 @@ def fit_child_frontier_graph_value(
 
 def score_child_frontier_graph_value(
         model: FrozenChildFrontierGraphValue,
-        graph: ChildFrontierGraph) -> float:
+        graph: ChildFrontierGraph, *, embedding_cache: dict | None = None) -> float:
     if graph.target_used:
         raise ValueError("target-tainted child-frontier graph is forbidden")
-    embedding = dict(child_frontier_graph_embedding(
-        graph, interaction_order=model.spec.interaction_order))
+    embedding = dict(_cached_embedding(
+        graph, model.spec.interaction_order, embedding_cache))
     score = sum(weight * embedding.get(key, 0.) / scale
                 for key, scale, weight in
                 zip(model.feature_keys, model.scales, model.weights))
