@@ -2054,6 +2054,30 @@ the marking library as an interpretable experimental channel, while autonomous
 rollback remains red. The next decisive audit needs more independently
 ambiguous nuclei or a wider target-free retained portfolio.
 
+That wider stress test is now complete. The same two target-free orderings keep
+their first eight candidates, restoring the historical maximum rollback width
+of 16 after deduplication. The result contains 120 states, preserves exact
+supply in all `9 / 9` supplied nuclei, and gives seven independently mixed
+exact/inexact nuclei. Its conditional random-selector exact probability is
+`.0006686`, so the earlier resolution problem is genuinely removed.
+
+Every state is replayed for the unchanged 16-step horizon. The frozen corpus
+contains 1,920 transitions, 2,581 selected-role events, and 135 semantic role
+identities; the original 19 trajectories are byte-for-byte equal after JSON
+decoding. On this harder supply, scalar frontier evidence selects `7 / 9` exact
+nuclei and `24 / 30` sites, while aggregate typed persistence falls to `5 / 9`
+and `24 / 30` (`p = .71875`). A nested identity-specific model then chooses
+among 120 exact/coarse/chemistry role-channel specifications with independent-
+nucleus support. Its final 50-weight coarse role-status table reaches only
+`5 / 9` and `23 / 30`; all hyperparameters and every null are refitted inside
+their outer folds, again giving `p = .71875`.
+
+The wide portfolio is retained as the statistically meaningful rollback
+benchmark, but independent obligation weights are rejected. The next GCTS
+marking must represent relations among simultaneous discharged, surviving,
+and newly exposed ports—or an explicit contradiction certificate—rather than
+assigning value to each port identity separately.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

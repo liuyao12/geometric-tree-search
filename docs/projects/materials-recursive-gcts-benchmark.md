@@ -4148,6 +4148,43 @@ stationary recurrence, and exponential IQC growth remain red. The next
 statistically meaningful benchmark must increase the number of independently
 ambiguous nuclei or retain a broader target-free portfolio.
 
+### Wide typed-discharge stress test
+
+The broader portfolio is fixed at eight candidates from each of the same two
+outer-fold marking orders. Deduplication yields 120 states total and 10–16 per
+nucleus, never exceeding the earlier width-16 rollback ceiling. Exact supply
+remains `9 / 9`; seven nuclei now contain both exact and inexact alternatives.
+The conditional probability that independent uniform selection happens to pick
+an exact retained state in every mixed nucleus is `.0006685714`, versus `.25`
+for the narrow portfolio. Thus the wide corpus removes the randomization-
+resolution objection without changing any exact terminal geometry.
+
+Every retained state receives the same 16-step target-free rollout. The sealed
+artifact contains 1,920 transitions, 2,581 selected-role transitions, and 135
+semantic role identities. A regression check proves that all 19 trajectories
+from the narrow corpus—including scalar traces, typed transitions, and copied
+labels—are identical inside the wide artifact. No fixed point occurs.
+
+The harder evaluation overturns the narrow-corpus persistence result. Nested
+scalar rollout rules select `7 / 9` exact supplied nuclei and `24 / 30` sites.
+Nested aggregate typed rules select `5 / 9` and `24 / 30`; 31 fully refitted
+within-nucleus shuffles give `p = .71875`. An identity-specific model then tests
+120 train-selected specifications: 4/8/16-step horizons; exact, coarse, and
+chemistry role quotients; independent-group support 2/3; two shrinkages; and
+mean or square-root-normalized aggregation. All hyperparameters are selected
+inside every outer fold, and the entire process is repeated inside every null.
+The final 50-weight coarse role-status model reaches only `5 / 9` and `23 / 30`,
+again with `p = .71875`.
+
+This is a useful negative benchmark. Widening solved candidate ambiguity and
+statistical resolution; coarsening solved much of the channel-coverage shift;
+neither solved branch value. Independent role weights are rejected as the
+autonomous default. The next representation must retain relational
+contradictions among simultaneous discharged, persistent, and newly exposed
+ports, or prove a branch-local unsatisfied-obligation certificate. Fresh
+confirmation, autonomous commitment, stationary IQC recurrence, and
+exponential IQC growth remain red.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
