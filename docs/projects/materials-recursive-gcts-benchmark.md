@@ -4786,3 +4786,50 @@ not installed. The next implementation step is a site-resolved cluster action
 that can preserve this significant local signal while still requiring full
 colored support and port certificates before promoting a child or a
 cluster-of-clusters parent. No fresh confirmation is eligible yet.
+
+### Site-resolved obligation action
+
+The fixed branch geometries are preserved while each of their three emitted
+colored sites receives its own bounded section. The section combines temporal
+obligation discharge, target-free frontier evolution, and proper-SE(3)
+invariants of the colored three-site terminal. It may rank a frozen action but
+cannot splice branches, move sites, or promote a partial child. Whole-action
+value is a predeclared aggregation of the three site scores.
+
+| site-resolved development | result |
+| --- | ---: |
+| emitted-site rows | 909 |
+| correct / incorrect site labels | 462 / 447 |
+| selected model | k=7 weighted · mean aggregation |
+| exact supplied nuclei selected | 8 / 8 |
+| correct selected sites | 45 |
+| 31-shuffle maxima exact / sites | 7 / 39 |
+| exact / site plus-one p | `.03125 / .03125` |
+| development gate | **green** |
+
+This is a meaningful improvement over the temporal whole-action model's
+`7/8` exact and 41-site result. It is still development evidence, so the model,
+source hashes, geometry-only maximin centre, three-wave protocol, and strict
+`9/9` exact-site gate are published before the next atom is generated.
+
+### Preregistered site-resolved confirmation
+
+The fresh centre `(0,-120,-160)` is 118.322 units from every consumed rollout
+domain. A 480-atom R9 seed drives three target-free self-fed waves. Candidate
+trees and scalar/fusion portfolios freeze before a single target opening:
+
+| confirmation wave | complete tree | frozen portfolio | exact supplied | selected correct |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | `8→40→157` | 14 | 0 | 0 / 3 |
+| 2 | `8→39→144` | 15 | 1 | 2 / 3 |
+| 3 | `8→38→136` | 15 | 1 | 0 / 3 |
+
+The posthoc target contains 2,031 atoms, and lift bounds 108 and 109 reproduce
+it exactly. Every candidate digest, portfolio digest, rollout, site score, and
+selected successor cloud was fixed before that one target factory call. The
+strict confirmation is therefore **red** at `0/3` exact actions and `2/9`
+correct selected sites. Wave one diagnoses missing exact supply in the frozen
+portfolio; waves two and three diagnose value transfer because exact actions
+exist but are not selected. The target is consumed with no retry. This result
+does not authorize autonomous growth, clusters-of-clusters promotion,
+stationarity, or an exponential IQC claim.

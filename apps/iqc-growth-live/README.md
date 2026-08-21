@@ -2470,4 +2470,34 @@ signal but rejects exact action commitment. It is consumed development data,
 not a confirmation; default marking, autonomous growth, recursive promotion,
 stationarity, and exponential claims remain disabled.
 
+### Site-resolved obligation actions and consumed confirmation
+
+The 303 fixed branch geometries are next expanded into 909 emitted-site rows:
+462 supported sites and 447 unsupported sites. The action is not split or
+repaired. Each site receives a bounded temporal obligation section, frontier
+trace measurements, and proper-motion-invariant colored triangle geometry;
+the three site scores are then aggregated back onto the original certified
+three-site terminal. Grouped outer folds select a weighted seven-neighbor
+model with mean aggregation. It chooses an exact action in all eight nuclei
+that supply one and yields 45 correct selected sites. Thirty-one complete
+within-nucleus label shuffles reach at most seven exact actions and 39 sites,
+so both plus-one p-values are `.03125`. This is the first exact-action green
+development gate for this obligation corpus.
+
+The model and a new maximin centre `(0,-120,-160)` were then published before
+any confirmation atom was generated. Its complete rollout domain is 118.322
+units from the nearest consumed domain. Three self-fed waves freeze candidate
+counts `8→40→157`, `8→39→144`, and `8→38→136`, retaining portfolios of 14,
+15, and 15 actions. Only after all site scores and selected successor clouds
+are immutable does one target factory construct the 2,031-atom R14.5623 crop;
+lift bounds 108 and 109 agree exactly.
+
+The one-shot result is red. The first frozen portfolio contains no exact
+three-site action. The second and third each contain one, but the learned mark
+selects neither: selected correctness is `0/3`, `2/3`, and `0/3`, or `2/9`
+sites total. This separates an upstream portfolio-supply failure at wave one
+from a marking-transfer failure at waves two and three. The target is consumed
+and is not retried. Default commitment, autonomous finite growth, recursive
+promotion, stationary recurrence, and exponential IQC claims remain disabled.
+
 Serve the repository root and open `/iqc-growth-live/`.
