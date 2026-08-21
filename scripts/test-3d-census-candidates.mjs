@@ -30,6 +30,10 @@ const growthAppSource = await readFile(
   new URL("../apps/3d-lattice-tiler/app.js", import.meta.url),
   "utf8"
 );
+const tilerStyleSource = await readFile(
+  new URL("../apps/3d-lattice-tiler/style.css", import.meta.url),
+  "utf8"
+);
 const canonicalTilerHtml = await readFile(
   new URL("../3d-lattice-tiler/index.html", import.meta.url),
   "utf8"
@@ -39,10 +43,21 @@ const sourceTilerHtml = await readFile(
   "utf8"
 );
 const appModuleVersion = html => html.match(/<script type="module" src="\.\/app\.js\?v=([^"]+)"/)?.[1];
+const styleVersion = html => html.match(/<link rel="stylesheet" href="\.\/style\.css\?v=([^"]+)"/)?.[1];
 assert.equal(
   appModuleVersion(canonicalTilerHtml),
   appModuleVersion(sourceTilerHtml),
   "the root GitHub Pages wrapper must load the same cache-busted app module as the source page"
+);
+assert.equal(
+  styleVersion(canonicalTilerHtml),
+  styleVersion(sourceTilerHtml),
+  "the root GitHub Pages wrapper must load the same cache-busted stylesheet as the source page"
+);
+assert.match(
+  tilerStyleSource,
+  /grid-template-rows: auto auto auto auto minmax\(190px, 1fr\);[\s\S]*?overflow-y: auto;/,
+  "short desktop viewports must be able to scroll to a nonzero-height tile catalogue"
 );
 assert.match(growthWorkerSource, /id: "proof"[\s\S]*?proof: true/, "the comparison worker must expose a proof lane");
 assert.match(

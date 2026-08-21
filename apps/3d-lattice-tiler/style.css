@@ -39,8 +39,9 @@ select { font: inherit; }
   height: 100vh;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto auto auto auto minmax(0, 1fr);
-  overflow: hidden;
+  grid-template-rows: auto auto auto auto minmax(190px, 1fr);
+  overflow-x: hidden;
+  overflow-y: auto;
   border-right: 1px solid var(--line);
   background: #fbfcfb;
 }
@@ -560,7 +561,7 @@ button:disabled {
 }
 
 .tile-panel {
-  min-height: 0;
+  min-height: 190px;
   display: grid;
   grid-template-rows: minmax(140px, 1fr) auto;
   overflow: hidden;
