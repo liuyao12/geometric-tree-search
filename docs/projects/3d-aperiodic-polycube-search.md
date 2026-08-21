@@ -102,6 +102,10 @@ Once an input receipt has already exhausted a stage, `--periodic-screen=false`
 and `--isohedral-screen=false` skip those lanes entirely. This is preferable to
 assigning a tiny artificial time limit: a skipped stage is explicit in every
 row and does not distort the next stage's budget or timing.
+Parallel exact-HNF shards should use `--periodic-budget-clock=cpu`. The default
+remains `wall` for interactive and single-process runs, but a wall clock makes
+concurrent shards charge one another for scheduler contention and creates
+spurious timeout rows. Node and HNF limits remain independent safeguards.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately

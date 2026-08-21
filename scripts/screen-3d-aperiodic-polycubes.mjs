@@ -60,6 +60,10 @@ const boxTimeMs = Math.max(1, numberArg("box-time-ms", 100));
 const boxScreen = booleanArg("box-screen", true);
 const periodicTimeMs = Math.max(1, numberArg("periodic-time-ms", 1000));
 const periodicScreenEnabled = booleanArg("periodic-screen", true);
+const periodicBudgetClock = String(args.get("periodic-budget-clock") ?? "wall").toLowerCase();
+if (!["wall", "cpu"].includes(periodicBudgetClock)) {
+  throw new Error("--periodic-budget-clock must be wall or cpu");
+}
 const generalPeriodic = booleanArg("general-periodic", true);
 const isohedralTarget = Math.max(2, Math.floor(numberArg("isohedral-target", 12)));
 const isohedralTimeMs = Math.max(1, numberArg("isohedral-time-ms", 500));
@@ -168,6 +172,7 @@ process.stdout.write(`${JSON.stringify({
   periodic_max_tiles: periodicMaxTiles,
   periodic_min_tiles: periodicMinTiles,
   periodic_screen: periodicScreenEnabled,
+  periodic_budget_clock: periodicBudgetClock,
   box_screen: boxScreen,
   isohedral_screen: isohedralScreenEnabled,
   obstruction_layer: obstructionLayer,
@@ -183,7 +188,8 @@ for (let index = 0; index < candidates.length; index++) {
         minCopies: periodicMinTiles,
         maxCopies: periodicMaxTiles,
         nodeLimit,
-        timeLimitMs: periodicTimeMs
+        timeLimitMs: periodicTimeMs,
+        timeBudgetMode: periodicBudgetClock
       })
     : {
         kind: "periodic_screen_skipped",

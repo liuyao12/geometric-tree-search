@@ -155,13 +155,22 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
   const timeLimitMs = Math.max(1, Number(options.timeLimitMs) || 1000);
   const nodeLimit = Math.max(1, Math.floor(Number(options.nodeLimit) || 100000));
   const startedAt = performance.now();
+  const cpuBudgetEnabled = options.timeBudgetMode === "cpu"
+    && typeof process !== "undefined"
+    && typeof process.cpuUsage === "function";
+  const cpuStartedAt = cpuBudgetEnabled ? process.cpuUsage() : null;
+  const budgetMilliseconds = () => {
+    if (!cpuBudgetEnabled) return performance.now() - startedAt;
+    const usage = process.cpuUsage(cpuStartedAt);
+    return (usage.user + usage.system) / 1000;
+  };
   const rootOrientationIndex = Math.max(0, orientations.findIndex(orientation =>
     orientation.key === polycubeKey(voxels)
   ));
   let nodes = 0;
   let hnfVisited = 0;
   const hnfExhaustedByCopies = {};
-  const overBudget = () => nodes >= nodeLimit || performance.now() - startedAt >= timeLimitMs;
+  const overBudget = () => nodes >= nodeLimit || budgetMilliseconds() >= timeLimitMs;
 
   for (let copies = minCopies; copies <= maxCopies; copies++) {
     const volume = voxels.length * copies;

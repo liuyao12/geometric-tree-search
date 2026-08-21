@@ -240,6 +240,19 @@ assert.equal(
   true,
   "the independent quotient verifier must replay a three-copy complement certificate"
 );
+const cpuBudgetCertificate = findPolycubePeriodicTiling(exactlyThreeCopyPolycube, {
+  minCopies: 3,
+  maxCopies: 3,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000,
+  timeBudgetMode: "cpu"
+});
+assert.equal(cpuBudgetCertificate.certified, true);
+assert.equal(
+  verifyPolycubePeriodicCertificate(exactlyThreeCopyPolycube, cpuBudgetCertificate).verified,
+  true,
+  "the CPU-budgeted batch path must produce the same independently valid certificate"
+);
 const resumedPeriodicRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 3,
   maxCopies: 3,
