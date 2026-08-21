@@ -168,6 +168,30 @@ def _colored_metric_signature(species: Sequence[str], positions: Sequence[Vector
     return _formula(species, members), tuple(sorted(pairs))
 
 
+def unwrapped_cluster_sites(
+    species: Sequence[str], positions: Sequence[Sequence[float]],
+    members: Sequence[int], *, cell: Optional[Sequence[Sequence[float]]] = None,
+) -> tuple[tuple[str, Vector], ...]:
+    """Return one finite cluster in a continuous Cartesian image.
+
+    This is the geometry passed to the proper-SE(3) port compiler.  The first
+    member is only a temporary unwrapping anchor; centring and canonical pose
+    fitting remain centre-free downstream.
+    """
+    if not members:
+        raise ValueError("a cluster needs at least one member")
+    points = tuple(tuple(float(value) for value in point) for point in positions)
+    periodic_cell = None if cell is None else tuple(tuple(float(value) for value in row) for row in cell)
+    inverse = None if periodic_cell is None else _inverse3(periodic_cell)
+    anchor = points[members[0]]
+    result = []
+    for index in members:
+        point = anchor if index == members[0] else _add(
+            anchor, _displacement(anchor, points[index], periodic_cell, inverse))
+        result.append((species[index], point))
+    return tuple(result)
+
+
 def _components(atom_count: int, edges: Iterable[tuple[int, int]]) -> tuple[tuple[int, ...], ...]:
     adjacency = [set() for _ in range(atom_count)]
     for first, second in edges:

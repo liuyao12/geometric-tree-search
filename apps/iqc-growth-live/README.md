@@ -334,7 +334,20 @@ waves with zero backtracking. The narrower directional hydrogen-bond cover is
 retained as a visualization/control ablation. The executable regressions are
 `scripts/test_materials_gcts_generic_ice_benchmark.py` and
 `scripts/test_materials_gcts_ice_cover.py`. These certify reconstruction of
-the known windows; larger blind ice continuation remains open.
+the known windows.
+
+The next sealed gate now separates molecular placement from proton decoration.
+A 29-port proper-SE(3) grammar is learned on one finite Ih window. Before the
+outer target is opened, a disjoint nine-molecule seed emits one factored oxygen
+frontier: all 16 anchors are exact. Applying the same frozen grammar to cubic
+ice gives 12/12 exact anchors without refitting. Whole-H2O execution commits an
+orientation too early (53.7% atom precision on Ih), while keeping orientations
+as mutually exclusive alternatives preserves the exact first scaffold. At the
+second self-fed wave those alternatives are still unresolved: Ih is 52/77 and
+Ic is 36/64 correct oxygen anchors. Therefore the app reports exact blind
+first-frontier transfer but keeps sustained, stationary, cluster-of-clusters,
+and exponential ice growth red. The remaining object is a bounded local
+proton-orientation connection marking obeying the already learned ports.
 
 A common recursive-program gate now prevents the crystal and quasicrystal
 cards from using incomparable meanings of "action." NaCl, the icosahedral

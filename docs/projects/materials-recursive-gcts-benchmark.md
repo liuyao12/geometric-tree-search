@@ -2485,6 +2485,38 @@ Both results certify reconstruction of known periodic windows, not yet blind
 continuation into a larger ice crystal, prediction of proton disorder, or an
 exponential ice production.
 
+### Sealed molecular-port continuation
+
+`scripts/materials_gcts_molecular_port_growth.py` turns the learned H2O point
+set into a proper-SE(3) prototype, quotients witnessed molecule-to-molecule
+poses by its proper symmetry group, and freezes 29 recurrent ports. The
+executor has no target argument. Every wave freezes its candidate digest,
+checks the public boundary and exact colored exclusion geometry, and commits a
+pairwise-compatible antichain while retaining the underlying tree-action IDs.
+
+The first whole-molecule experiment exposed a useful factorization. Candidate
+oxygen anchors are much less ambiguous than their attached proton decoration.
+The alternative-preserving executor therefore emits the shared oxygen site
+once while keeping full H2O poses mutually exclusive; an unresolved pose is
+not silently materialized as several hydrogens.
+
+| frozen grammar → sealed seed | train / seed / target atoms | whole-H2O result | factored blind wave 1 | factored wave 2 | claim |
+|---|---:|---:|---:|---:|---|
+| Ih → disjoint Ih | 201 / 27 / 204 | 108/201 atoms; O: 83.6% P, 94.9% outer R | 16/16 O anchors | 52/77 O anchors | exact first frontier; sustained red |
+| Ih → disjoint Ic | 201 / 15 / 213 | 137/270 atoms; O: 73.3% P, 100% outer R | 12/12 O anchors | 36/64 O anchors | exact cross-polytype frontier; sustained red |
+
+In both rows the seed and all candidate traces are immutable before the outer
+target is constructed and opened once. No cell, family label, target atom,
+potential, expected coordination, or expected frontier count enters fitting or
+branch generation. The exact first wave proves that the molecular connection
+geometry transfers. The contaminated second wave proves that it is not yet a
+stationary or exponential growth program. Since only one unseen level is exact,
+cluster-of-clusters promotion is refused rather than manufacturing a symbolic
+amplification factor. Executable gates:
+
+- `scripts/test_materials_gcts_ice_blind_molecular_growth_benchmark.py`
+- `scripts/test_materials_gcts_ice_cross_polytype_blind_growth_benchmark.py`
+
 The live sample selector now exposes three complementary paths: saved curated
 families (including ice and intrinsic-2D controls), composition-first random
 search over NOMAD, and the existing advanced local import. Database search
