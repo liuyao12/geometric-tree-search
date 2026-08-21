@@ -147,6 +147,9 @@ yzGreatCircle.rotation.y = Math.PI / 2;
 const orientationBoundary = makeOrientationCircle(0x17201e, 0.52);
 orientationBoundary.renderOrder = 3;
 
+const orientationGraphGroup = new THREE.Group();
+orientationScene.add(orientationGraphGroup);
+
 const orientationPointGeometry = new THREE.BufferGeometry();
 const orientationPointMaterial = new THREE.ShaderMaterial({
   transparent: true,
@@ -195,6 +198,7 @@ let orientationPointKeys = [];
 let orientationPointBaseColors = [];
 let selectedOrientationKey = null;
 let orientationRepresentatives = new Map();
+let orientationGenerationEdges = [];
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -428,6 +432,111 @@ function axisAnglePoint(quaternion) {
     .multiplyScalar(angle / Math.PI);
 }
 
+function generationEdgeCategory(childIndex) {
+  if (childIndex === 1 || childIndex === 2) return "quarter";
+  if (childIndex === 6 || childIndex === 7) return "third";
+  return "frame";
+}
+
+function buildOrientationGenerationEdges(targetGeneration) {
+  if (targetGeneration === 0) return [];
+  const normalization = fixedPath.clone().invert();
+  const leafKeys = new Set(orientationPointKeys);
+  let parents = [new THREE.Matrix4()];
+  const rootQuaternion = canonicalQuaternion(normalization);
+  const seen = new Set([orientationKey(rootQuaternion)]);
+  const edges = [];
+
+  for (let depth = 0; depth < targetGeneration; depth += 1) {
+    const nextByOrientation = new Map();
+    for (const parent of parents) {
+      const parentDisplay = normalization.clone().multiply(parent);
+      const parentQuaternion = canonicalQuaternion(parentDisplay);
+      const parentKey = orientationKey(parentQuaternion);
+      for (let childIndex = 0; childIndex < daughterTransforms.length; childIndex += 1) {
+        const child = parent.clone().multiply(daughterTransforms[childIndex]);
+        const childDisplay = normalization.clone().multiply(child);
+        const childQuaternion = canonicalQuaternion(childDisplay);
+        const childKey = orientationKey(childQuaternion);
+        if (!nextByOrientation.has(childKey)) nextByOrientation.set(childKey, child);
+        if (childKey === parentKey || seen.has(childKey) || !leafKeys.has(parentKey) || !leafKeys.has(childKey)) continue;
+        seen.add(childKey);
+        edges.push({
+          sourceKey: parentKey,
+          targetKey: childKey,
+          sourceQuaternion: parentQuaternion,
+          targetQuaternion: childQuaternion,
+          category: generationEdgeCategory(childIndex),
+          generation: depth + 1
+        });
+      }
+    }
+    parents = [...nextByOrientation.values()];
+  }
+  return edges;
+}
+
+function appendQuaternionArc(target, sourceQuaternion, targetQuaternion) {
+  let previous = axisAnglePoint(canonicalizeQuaternion(sourceQuaternion.clone()));
+  const samples = 12;
+  for (let index = 1; index <= samples; index += 1) {
+    const quaternion = sourceQuaternion.clone().slerp(targetQuaternion, index / samples).normalize();
+    const point = axisAnglePoint(canonicalizeQuaternion(quaternion));
+    if (previous.distanceTo(point) < 0.42) {
+      target.push(previous.x, previous.y, previous.z, point.x, point.y, point.z);
+    }
+    previous = point;
+  }
+}
+
+function clearOrientationGraph() {
+  while (orientationGraphGroup.children.length) {
+    const child = orientationGraphGroup.children[0];
+    orientationGraphGroup.remove(child);
+    child.geometry.dispose();
+    child.material.dispose();
+  }
+}
+
+function drawOrientationGenerationGraph() {
+  clearOrientationGraph();
+  orientationGenerationEdges = buildOrientationGenerationEdges(generation);
+  orientationPlot.dataset.generationEdges = String(orientationGenerationEdges.length);
+  let segmentCount = 0;
+  const categoryColors = {
+    quarter: 0x3478df,
+    third: 0xf2553d,
+    frame: 0x7d8985
+  };
+  for (const category of ["frame", "quarter", "third"]) {
+    for (const highlighted of [false, true]) {
+      const positions = [];
+      for (const edge of orientationGenerationEdges) {
+        if (edge.category !== category) continue;
+        const incident = selectedOrientationKey !== null
+          && (edge.sourceKey === selectedOrientationKey || edge.targetKey === selectedOrientationKey);
+        if (incident !== highlighted) continue;
+        appendQuaternionArc(positions, edge.sourceQuaternion, edge.targetQuaternion);
+      }
+      if (!positions.length) continue;
+      segmentCount += positions.length / 6;
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      const material = new THREE.LineBasicMaterial({
+        color: categoryColors[category],
+        transparent: true,
+        opacity: highlighted ? 1 : selectedOrientationKey === null ? (category === "frame" ? 0.46 : 0.78) : 0.1,
+        depthWrite: false,
+        depthTest: false
+      });
+      const lines = new THREE.LineSegments(geometry, material);
+      lines.renderOrder = highlighted ? 3 : 2;
+      orientationGraphGroup.add(lines);
+    }
+  }
+  orientationPlot.dataset.generationSegments = String(segmentCount);
+}
+
 function drawOrientationBall(transforms, turnGenerations = currentTurnGenerations) {
   if (!orientationPlot) return;
   orientationRepresentatives = new Map();
@@ -487,6 +596,7 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
   }
   refreshOrientationPointColors();
   updateSelectedOrientationMatrix();
+  drawOrientationGenerationGraph();
 }
 
 function physicalRotationRows(matrix) {
@@ -684,8 +794,9 @@ function selectOrientation(key) {
   }
   orientationCurrent.textContent = selectedOrientationKey === null
     ? `${orientationPointKeys.length.toLocaleString()} ${orientationPointKeys.length === 1 ? "occurs" : "occur"} in the current patch.`
-    : "One orientation is highlighted in the tiling. Click it again to clear.";
+    : "One orientation is highlighted in the tiling; its generation edges are emphasized. Click it again to clear.";
   updateSelectedOrientationMatrix();
+  drawOrientationGenerationGraph();
 }
 
 const orientationRaycaster = new THREE.Raycaster();

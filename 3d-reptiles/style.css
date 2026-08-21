@@ -282,6 +282,40 @@ h1 {
   text-transform: uppercase;
 }
 
+.orientation-graph-key {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 8px;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 7px;
+  font-weight: 750;
+  letter-spacing: .045em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.orientation-graph-key span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.orientation-graph-key span:last-child { grid-column: 1 / -1; }
+
+.orientation-graph-key i {
+  display: inline-block;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 2px;
+  background: #7d8985;
+}
+
+.orientation-graph-key .graph-quarter { background: #3478df; }
+.orientation-graph-key .graph-third { background: #f2553d; }
+.orientation-graph-key .graph-frame { background: #7d8985; }
+
 .orientation-matrix {
   margin-top: 11px;
   border-top: 1px solid var(--line);
@@ -608,6 +642,7 @@ footer p { margin: 0; }
     width: 92px;
     margin: 2px auto;
   }
+  .orientation-panel.has-selection .orientation-graph-key { display: none; }
   .orientation-panel.has-selection .effect-control { display: none; }
   .orientation-panel.has-selection .orientation-matrix { margin-top: 5px; padding-block: 5px; }
   .orientation-panel.has-selection .matrix-heading span { display: none; }
