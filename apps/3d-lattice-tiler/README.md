@@ -593,12 +593,13 @@ ends, while the tiles themselves remain unresolved. See
 `data/polycube-volume10-gcts-continuation-radius4-2026-08-21.json`.
 
 For `p10-055695`, a pseudo-Boolean CEGAR supplier now broadens that continuation
-sample without conflating it with the earlier portfolio. Forty clause-distinct
+sample without conflating it with the earlier portfolio. Forty-nine clause-distinct
 radius-three proposals, using 41–47 surrounding copies, are all exactly rejected
-at radius four in 51 aggregate continuation nodes. The second 20-state portfolio
-starts with all cuts from the first, so those two CEGAR portfolios are mutually
-distinct. Each state exposes an immediate dead target and a two-placement
-conflict; symmetry closure retains 80 sound clauses. In contrast, two eager
+at radius four in 62 aggregate continuation nodes. Every staged portfolio starts
+with all preceding cuts, so the CEGAR states are mutually distinct. The final
+≤41-copy run contributes nine dead states and one timeout; it does not exhaust
+that bounded stratum. Each state exposes an immediate dead target and a
+two-placement conflict; symmetry closure retains 98 sound clauses. In contrast, two eager
 one-step-coverability proposal solves time out
 without returning a state, including a staged 43-copy solve seeded with all 40
 clauses. This favors cheap proposals plus lazy exact cuts for this candidate.

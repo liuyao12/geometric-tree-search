@@ -61,6 +61,28 @@
     "z3_milliseconds": 343370,
     "source_sha256": "61d543406f525dfd62b213af91cd8c7263c534c96e16be38e9ee787731f4c371"
   },
+  "staged_max_41_cegar": {
+    "maximum_outer_placements": 41,
+    "initial_symmetry_closed_clauses": 80,
+    "random_seeds": [114, 115, 116, 117, 118, 119, 120, 121, 122, 123],
+    "z3_trials": 10,
+    "z3_sat_outer_states": 9,
+    "z3_unknown_trials": 1,
+    "z3_timeout_trials": 1,
+    "outer_placement_distribution": {
+      "41": 9
+    },
+    "exact_dead_outer_states": 9,
+    "verified_radius_4_witnesses": 0,
+    "immediate_dead_target_obstructions": 9,
+    "resolved_subtree_obstructions": 0,
+    "continuation_nodes": 11,
+    "continuation_milliseconds": 159,
+    "learned_clause_size": 2,
+    "final_symmetry_closed_clauses": 98,
+    "z3_milliseconds": 507896,
+    "source_sha256": "455cc9adef3d9a04ece286c55e0ca0492d08bb7378e4e5b10a31b6da655e20eb"
+  },
   "eager_one_step_coverability_ablation": {
     "next_ring_cells": 138,
     "raw_lookahead_placements": 7394,
@@ -84,13 +106,13 @@
     },
     "conclusion": "The eager necessary-condition encoding did not supply a proposal at either tested copy bound. The lightweight proposal model plus exact lazy obstruction learning supplied twenty states in less aggregate solver time than either single eager run."
   },
-  "combined_clause_distinct_outer_states": 40,
-  "combined_exact_dead_outer_states": 40,
-  "combined_continuation_nodes": 51,
+  "combined_clause_distinct_outer_states": 49,
+  "combined_exact_dead_outer_states": 49,
+  "combined_continuation_nodes": 62,
   "minimum_outer_placements_witnessed": 41,
-  "final_symmetry_closed_clauses": 80,
+  "final_symmetry_closed_clauses": 98,
   "radius_3_space_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
-  "interpretation": "Forty clause-distinct radius-three proposals all fail exact radius-four continuation. The second portfolio begins with all forty symmetry-closed cuts from the first, so its twenty states are distinct from the first twenty; it lowers the minimum witnessed patch from 43 to 41 surrounding copies and grows the cut set to eighty. Every failure is already exposed by an immediate dead target and yields a two-placement obstruction, so this experiment strengthens the negative finite-corona evidence but does not yet reach the deeper resolved-subtree regime seen for p9-42947. Because the radius-three proposal space is not exhausted, the result proves neither non-tiling nor aperiodicity."
+  "interpretation": "Forty-nine clause-distinct radius-three proposals all fail exact radius-four continuation. Each staged portfolio begins with every sound cut from the preceding portfolio, so its states are distinct from all earlier CEGAR states. The second portfolio lowers the minimum witnessed patch from 43 to 41 surrounding copies; the final bounded run finds nine more 41-copy states, reaches ninety-eight cuts, and records one timeout rather than claiming exhaustion. Every failure is already exposed by an immediate dead target and yields a two-placement obstruction, so this experiment strengthens the negative finite-corona evidence but does not yet reach the deeper resolved-subtree regime seen for p9-42947. Because the radius-three proposal space is not exhausted, the result proves neither non-tiling nor aperiodicity."
 }
