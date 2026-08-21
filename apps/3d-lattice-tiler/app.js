@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v147";
+} from "./engine.js?v=20260821-polycube10-v148";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1494,6 +1494,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_quadruple_coverability_report) {
         const quadruple = candidate.screening;
         candidateResearchDetail.textContent += ` The exact proposal solver now encodes that quadruple's ${quadruple.corona_quadruple_constraints}-member symmetry orbit directly. It supplies ${quadruple.corona_quadruple_states_checked} further ${quadruple.corona_quadruple_minimum_placements}–${quadruple.corona_quadruple_maximum_placements}-copy states, all rejected by radius-five GCTS in ${quadruple.corona_quadruple_continuation_nodes} aggregate nodes; the deepest survives ${quadruple.corona_quadruple_maximum_continuation_nodes} nodes. These new states expose ${quadruple.corona_quadruple_pair_defect_states} still-missing pair cases and ${quadruple.corona_quadruple_triple_defect_states} pairwise-complete but triple-defective cases, growing the formula to ${quadruple.corona_quadruple_pair_constraints} pair and ${quadruple.corona_quadruple_triple_constraints} triple obligations. Thus excluding one order-four defect improves the benchmark but does not complete the lower-order screen or prove aperiodicity.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_batched_triple_report) {
+        const batch = candidate.screening;
+        candidateResearchDetail.textContent += ` Complete per-state triple batching then checks ${batch.corona_batched_triple_states_checked} more exact dead states. Its ${batch.corona_batched_triple_triple_defect_states} pairwise-complete proposals contribute ${batch.corona_batched_triple_orbits_added} triple orbits in six audits, growing the carried formula to ${batch.corona_batched_triple_final_pair_constraints} pair, ${batch.corona_batched_triple_final_triple_constraints} triple, and ${batch.corona_batched_triple_final_quadruple_constraints} quadruple obligations. At that strength ${batch.corona_batched_triple_final_four_timeouts} of the final four outer solves time out, shifting the bottleneck from repeated tuple discovery to the monolithic proposal formula; this remains inconclusive.`;
       }
     }
   } else if (knownAperiodic) {

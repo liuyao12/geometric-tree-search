@@ -1,0 +1,71 @@
+{
+  "kind": "polycube_p9_42947_batched_triple_coverability_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commit": "648c495",
+  "prior_portfolio": "data/polycube-p9-42947-quadruple-coverability-2026-08-21.json",
+  "batch_policy": {
+    "triple_max_cell_distance": 20,
+    "triple_audit_limit": 1000,
+    "triple_orbit_limit": 0,
+    "audit_limit_reached": false,
+    "meaning": "For each pairwise-complete proposal, enumerate the complete incompatible-triple set through the full next-ring diameter and add every root-symmetry orbit."
+  },
+  "portfolio": {
+    "random_seed_range": [263, 278],
+    "proposal_trials": 16,
+    "z3_sat_outer_states": 12,
+    "z3_timeout_trials": 4,
+    "exact_dead_outer_states": 12,
+    "outer_placement_distribution": {
+      "64": 1,
+      "65": 1,
+      "66": 4,
+      "67": 1,
+      "68": 2,
+      "69": 2,
+      "71": 1
+    },
+    "continuation_nodes": 78,
+    "maximum_single_continuation_nodes": 11,
+    "states_with_remaining_pair_defects": 6,
+    "states_pairwise_complete_with_remaining_triple_defects": 6,
+    "states_reaching_quadruple_audit": 0,
+    "triple_orbits_added": 30,
+    "triple_constraints_added": 90,
+    "initial_symmetry_closed_clauses": 303,
+    "final_symmetry_closed_clauses": 339,
+    "initial_pair_constraints": 699,
+    "final_pair_constraints": 720,
+    "initial_triple_constraints": 18,
+    "final_triple_constraints": 108,
+    "initial_quadruple_constraints": 3,
+    "final_quadruple_constraints": 3,
+    "final_four_trial_sat_states": 1,
+    "final_four_trial_timeouts": 3,
+    "radius_five_witness_found": false
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-batch-triple-seed263-summary.json",
+      "sha256": "7c62a92e0ea4b11645eb09b9f7e1724393aaa4940ce1c7e0d54d9d3db5a28279"
+    },
+    {
+      "path": "runs/p9-radius4-to5-batch-triple-seed267-summary.json",
+      "sha256": "d50eab87f42ecbf9000885a0ac0a4c53ded397bf203cccb4c1bbc524ba0266a5"
+    },
+    {
+      "path": "runs/p9-radius4-to5-batch-triple-seed271-summary.json",
+      "sha256": "52ef847e91f1389e764afcaed0a2b375434fa1ec4f71d2720af53a91ea6669de"
+    },
+    {
+      "path": "runs/p9-radius4-to5-batch-triple-seed275-summary.json",
+      "sha256": "51d2f724fbadd35387aa3ce01b26f096b43f3fa7668bfdcb7089ab1e5e30d13e"
+    }
+  ],
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Complete per-state triple batching learns 30 obstruction orbits in six pairwise-complete proposals, avoiding roughly two dozen additional outer solves under the prior one-orbit policy. The 108-triple formula makes the monolithic Z3 proposal step substantially harder: three of the last four seeds time out. The next optimization target is incremental or decomposed outer solving, not weaker tuple screening."
+}

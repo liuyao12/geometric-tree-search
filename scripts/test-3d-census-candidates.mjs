@@ -458,6 +458,10 @@ const archivedP9QuadrupleCoverability = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-quadruple-coverability-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9BatchedTripleCoverability = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-batched-triple-coverability-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1653,6 +1657,14 @@ assert.equal(archivedP9QuadrupleCoverability.cegar_portfolio.final_quadruple_con
 assert.equal(archivedP9QuadrupleCoverability.deepest_new_state.pairwise_coverable, true);
 assert.equal(archivedP9QuadrupleCoverability.deepest_new_state.first_incompatible_triple.candidate_triples_blocked, 28);
 assert.equal(archivedP9QuadrupleCoverability.outer_search_exhausted, false);
+assert.equal(archivedP9BatchedTripleCoverability.implementation_commit, "648c495");
+assert.equal(archivedP9BatchedTripleCoverability.portfolio.z3_sat_outer_states, 12);
+assert.equal(archivedP9BatchedTripleCoverability.portfolio.z3_timeout_trials, 4);
+assert.equal(archivedP9BatchedTripleCoverability.portfolio.triple_orbits_added, 30);
+assert.equal(archivedP9BatchedTripleCoverability.portfolio.final_pair_constraints, 720);
+assert.equal(archivedP9BatchedTripleCoverability.portfolio.final_triple_constraints, 108);
+assert.equal(archivedP9BatchedTripleCoverability.portfolio.final_four_trial_timeouts, 3);
+assert.equal(archivedP9BatchedTripleCoverability.outer_search_exhausted, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,
@@ -1688,12 +1700,18 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_quadruple_stat
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_quadruple_maximum_continuation_nodes, 28);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_quadruple_pair_constraints, 699);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_quadruple_triple_constraints, 18);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple_states_checked, 12);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple_orbits_added, 30);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple_final_triple_constraints, 108);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple_final_four_timeouts, 3);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
 assert.match(growthAppSource, /observed obstruction order to four/);
 assert.match(growthAppSource, /exact proposal solver now encodes that quadruple/);
 assert.match(growthAppSource, /deepest survives/);
+assert.match(growthAppSource, /Complete per-state triple batching/);
+assert.match(growthAppSource, /monolithic proposal formula/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

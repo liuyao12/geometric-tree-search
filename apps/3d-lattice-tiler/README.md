@@ -698,6 +698,16 @@ pair. This is a stronger benchmark portfolio, not an exhausted hierarchy or an
 aperiodicity result. See
 `data/polycube-p9-42947-quadruple-coverability-2026-08-21.json`.
 
+Complete per-state triple batching removes another avoidable outer-solver
+loop. Across 16 trials, 12 exact outer states are found and all fail radius-five
+GCTS. Six pairwise-complete states contribute 30 complete-audit triple orbits,
+or 90 symmetry-expanded constraints, in six passes rather than one orbit per
+proposal. The carried formula reaches 720 pair, 108 triple, and three
+quadruple obligations. At that point three of the final four 360-second process
+budgets expire; the next bottleneck is the monolithic outer proposal encoding,
+not tuple-audit throughput. See
+`data/polycube-p9-42947-batched-triple-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal
