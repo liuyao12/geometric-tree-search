@@ -100,7 +100,7 @@
             <b aria-hidden="true">↙</b>
             <span>Go back</span>
           </button>
-          <button id="substitute-button" class="scene-button substitute-button" type="button">
+          <button id="substitute-button" class="scene-button substitute-button" type="button" title="Choose a random retained copy and expand">
             <span>Apply one more expansion</span>
             <b aria-hidden="true">↗</b>
           </button>
@@ -119,8 +119,9 @@
           half-scale copies. In one, a central pair turns by 90°; in the other, an
           equilateral pair turns by 120°. Repeating those noncommuting rotations sends
           tile orientations throughout <span class="math">SO(3)</span>. The scene follows
-          one distinguished descendant and applies the inverse similarity, so that tile
-          stays fixed while the supertile grows around its slanted-face center.
+          a randomly chosen one of the eight child supertiles as the retained copy, so the
+          entire existing patch stays fixed while seven congruent copies grow around it.
+          Going back discards the latest choice; expanding again draws a new one.
         </p>
         <div class="turn-diagram" aria-label="The two rotations used by the substitution">
           <div class="turn-card">

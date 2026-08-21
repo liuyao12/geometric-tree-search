@@ -25,8 +25,6 @@ tileSelect.addEventListener("change", () => {
 const SQRT3 = Math.sqrt(3);
 const INITIAL_GENERATION = 1;
 const MAX_GENERATION = 5;
-const FIXED_CHILD_SEQUENCE = [5, 5, 3, 5, 5];
-const TURNING_CHILD_INDICES = new Set([1, 2, 6, 7]);
 const TURN_GENERATION_COLORS = [
   0xb8bfbc,
   0xf2553d,
@@ -269,21 +267,22 @@ let mutedOrientationKeys = new Set();
 const orientationColorRegistry = new Map();
 let visualEffect = visualEffectSelect.value;
 let generation = INITIAL_GENERATION;
-let subdivisionWords = [new THREE.Matrix4()];
-let currentTurnGenerations = [null];
-let fixedPath = new THREE.Matrix4();
-for (let depth = 0; depth < INITIAL_GENERATION; depth += 1) {
-  subdivisionWords = substitute(subdivisionWords);
-  currentTurnGenerations = substituteTurnGenerations(currentTurnGenerations, depth + 1);
-  fixedPath.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]]);
-}
-const initialNormalization = fixedPath.clone().invert();
-let currentExpandedTransforms = subdivisionWords.map((word) => initialNormalization.clone().multiply(word));
+const retainedChildChoices = Array.from(
+  { length: INITIAL_GENERATION },
+  () => randomRetainedChildIndex()
+);
+const initialState = stateAtGeneration(INITIAL_GENERATION);
+let currentExpandedTransforms = initialState.transforms;
+let currentTurnGenerations = initialState.turnGenerations;
+let currentExpansionEdgeCandidates = initialState.edgeCandidates;
+viewport.dataset.retainedChildren = retainedChildChoices
+  .map((choice) => String(choice + 1))
+  .join(",");
 updateMutedOrientationKeys(currentExpandedTransforms);
 let currentVisual = makeVisual(currentExpandedTransforms, currentTurnGenerations);
 content.add(currentVisual.group);
 generationValue.textContent = String(generation);
-tileValue.textContent = subdivisionWords.length.toLocaleString();
+tileValue.textContent = currentExpandedTransforms.length.toLocaleString();
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let transition = null;
@@ -358,26 +357,17 @@ function makeDaughterTransforms() {
   return [...slabA, ...slabB];
 }
 
-function substitute(transforms) {
-  const next = [];
-  for (const parent of transforms) {
-    for (const child of daughterTransforms) {
-      next.push(parent.clone().multiply(child));
-    }
-  }
-  return next;
+function randomRetainedChildIndex() {
+  return Math.floor(Math.random() * daughterTransforms.length);
 }
 
-function substituteTurnGenerations(parentGenerations, nextGeneration) {
-  const children = [];
-  for (const parentGeneration of parentGenerations) {
-    for (let childIndex = 0; childIndex < daughterTransforms.length; childIndex += 1) {
-      children.push(
-        parentGeneration ?? (TURNING_CHILD_INDICES.has(childIndex) ? nextGeneration : null)
-      );
-    }
-  }
-  return children;
+function copyPlacements(retainedChildIndex) {
+  const retainedInverse = daughterTransforms[retainedChildIndex].clone().invert();
+  return daughterTransforms.map((child, childIndex) => (
+    childIndex === retainedChildIndex
+      ? new THREE.Matrix4()
+      : retainedInverse.clone().multiply(child)
+  ));
 }
 
 function canonicalQuaternion(matrix) {
@@ -491,40 +481,8 @@ function axisAnglePoint(quaternion) {
 
 function buildOrientationGenerationEdges(targetGeneration) {
   if (targetGeneration === 0) return [];
-  const normalization = fixedPath.clone().invert();
   const leafKeys = new Set(orientationPointKeys);
-  const resolvedLeafKeys = new Map();
-  const leafOrientations = [...orientationRepresentatives].map(([key, matrix]) => [
-    key,
-    canonicalQuaternion(matrix)
-  ]);
-  const resolveLeafKey = (quaternion) => {
-    const roundedKey = orientationKey(quaternion);
-    if (leafKeys.has(roundedKey)) return roundedKey;
-    if (resolvedLeafKeys.has(roundedKey)) return resolvedLeafKeys.get(roundedKey);
-    let bestKey = null;
-    let bestDot = -1;
-    for (const [key, candidate] of leafOrientations) {
-      const dot = Math.abs(quaternion.dot(candidate));
-      if (dot > bestDot) {
-        bestDot = dot;
-        bestKey = key;
-      }
-    }
-    const resolved = bestDot > 1 - 1e-9 ? bestKey : null;
-    resolvedLeafKeys.set(roundedKey, resolved);
-    return resolved;
-  };
-  const fixedPrefixes = [new THREE.Matrix4()];
-  for (let depth = 0; depth < targetGeneration; depth += 1) {
-    fixedPrefixes.push(
-      fixedPrefixes[depth].clone().multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]])
-    );
-  }
-  const identityQuaternion = canonicalQuaternion(
-    normalization.clone().multiply(fixedPrefixes[targetGeneration])
-  );
-  const identityKey = resolveLeafKey(identityQuaternion);
+  const identityKey = orientationKey(canonicalQuaternion(new THREE.Matrix4()));
   const componentParents = new Map([...leafKeys].map((key) => [key, key]));
   const findComponent = (key) => {
     let root = key;
@@ -544,36 +502,26 @@ function buildOrientationGenerationEdges(targetGeneration) {
     return true;
   };
   const edges = [];
-  let suffixWords = [new THREE.Matrix4()];
-
-  // Work from the innermost retained tile outward. At each expansion the
-  // distinguished child is already present; seven congruent copies of the
-  // entire suffix cluster are placed around it.
-  for (let depth = targetGeneration - 1; depth >= 0; depth -= 1) {
-    const prefix = fixedPrefixes[depth];
-    const retainedChild = daughterTransforms[FIXED_CHILD_SEQUENCE[depth]];
-    for (const suffix of suffixWords) {
-      const sourceWord = prefix.clone().multiply(retainedChild).multiply(suffix);
-      const sourceQuaternion = canonicalQuaternion(normalization.clone().multiply(sourceWord));
-      const sourceKey = resolveLeafKey(sourceQuaternion);
-      for (let childIndex = 0; childIndex < daughterTransforms.length; childIndex += 1) {
-        if (childIndex === FIXED_CHILD_SEQUENCE[depth]) continue;
-        const targetWord = prefix.clone().multiply(daughterTransforms[childIndex]).multiply(suffix);
-        const targetQuaternion = canonicalQuaternion(normalization.clone().multiply(targetWord));
-        const targetKey = resolveLeafKey(targetQuaternion);
-        if (targetKey === null || sourceKey === null || targetKey === sourceKey || !joinComponents(sourceKey, targetKey)) continue;
-        edges.push({
-          sourceKey,
-          targetKey,
-          sourceQuaternion,
-          targetQuaternion,
-          generation: targetGeneration - depth
-        });
-      }
-    }
-    suffixWords = substitute(suffixWords);
+  for (const candidate of currentExpansionEdgeCandidates) {
+    const sourceQuaternion = canonicalQuaternion(candidate.source);
+    const targetQuaternion = canonicalQuaternion(candidate.target);
+    const sourceKey = orientationKey(sourceQuaternion);
+    const targetKey = orientationKey(targetQuaternion);
+    if (
+      !leafKeys.has(sourceKey)
+      || !leafKeys.has(targetKey)
+      || sourceKey === targetKey
+      || !joinComponents(sourceKey, targetKey)
+    ) continue;
+    edges.push({
+      sourceKey,
+      targetKey,
+      sourceQuaternion,
+      targetQuaternion,
+      generation: candidate.generation
+    });
   }
-  const identityComponent = findComponent(identityKey);
+  const identityComponent = componentParents.has(identityKey) ? findComponent(identityKey) : null;
   const unlinkedKeys = [...leafKeys].filter((key) => findComponent(key) !== identityComponent);
   orientationPlot.dataset.unlinkedOrientations = String(unlinkedKeys.length);
   return edges;
@@ -937,6 +885,19 @@ function makeParentOutline() {
   return line;
 }
 
+const patchRadiusPoint = new THREE.Vector3();
+
+function patchRadius(transforms) {
+  let maximumRadiusSquared = 0;
+  for (const matrix of transforms) {
+    for (const vertex of CANONICAL_VERTICES) {
+      patchRadiusPoint.copy(vertex).applyMatrix4(matrix).add(content.position);
+      maximumRadiusSquared = Math.max(maximumRadiusSquared, patchRadiusPoint.lengthSq());
+    }
+  }
+  return Math.sqrt(maximumRadiusSquared);
+}
+
 function disposeVisual(visual) {
   content.remove(visual.group);
   for (const geometry of visual.geometries) geometry.dispose();
@@ -951,21 +912,50 @@ function setVisualOpacity(visual, amount) {
 }
 
 function stateAtGeneration(targetGeneration) {
-  let words = [new THREE.Matrix4()];
+  let transforms = [new THREE.Matrix4()];
   let turnGenerations = [null];
-  const path = new THREE.Matrix4();
-  const depthLimit = targetGeneration;
-  for (let depth = 0; depth < depthLimit; depth += 1) {
-    words = substitute(words);
-    turnGenerations = substituteTurnGenerations(turnGenerations, depth + 1);
-    path.multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]]);
+  const supertileFrame = new THREE.Matrix4();
+  const edgeCandidates = [];
+  for (let depth = 0; depth < targetGeneration; depth += 1) {
+    const retainedChildIndex = retainedChildChoices[depth];
+    if (!Number.isInteger(retainedChildIndex)) {
+      throw new Error(`Missing retained child choice for expansion ${depth + 1}.`);
+    }
+    const frameInverse = supertileFrame.clone().invert();
+    const placements = copyPlacements(retainedChildIndex).map((placement, placementIndex) => (
+      placementIndex === retainedChildIndex
+        ? new THREE.Matrix4()
+        : supertileFrame.clone().multiply(placement).multiply(frameInverse)
+    ));
+    const nextTransforms = [];
+    const nextTurnGenerations = [];
+    placements.forEach((placement, placementIndex) => {
+      const placementQuaternion = canonicalQuaternion(placement);
+      const introducesTurn = Math.abs(placementQuaternion.w) < 1 - 1e-9;
+      transforms.forEach((source, sourceIndex) => {
+        const target = placement.clone().multiply(source);
+        nextTransforms.push(target);
+        nextTurnGenerations.push(
+          turnGenerations[sourceIndex] ?? (introducesTurn ? depth + 1 : null)
+        );
+        if (placementIndex !== retainedChildIndex) {
+          edgeCandidates.push({
+            source: source.clone(),
+            target: target.clone(),
+            generation: depth + 1
+          });
+        }
+      });
+    });
+    transforms = nextTransforms;
+    turnGenerations = nextTurnGenerations;
+    supertileFrame.multiply(daughterTransforms[retainedChildIndex].clone().invert());
   }
-  const normalization = path.clone().invert();
   return {
-    words,
-    path,
-    transforms: words.map((word) => normalization.clone().multiply(word)),
-    turnGenerations
+    transforms,
+    turnGenerations,
+    edgeCandidates,
+    supertileFrame
   };
 }
 
@@ -981,25 +971,36 @@ function updateActionButtons() {
 function showGeneration(targetGeneration) {
   if (transition || targetGeneration < 0 || targetGeneration > MAX_GENERATION || targetGeneration === generation) return;
   const direction = targetGeneration > generation ? 1 : -1;
+  const previousPatchRadius = patchRadius(currentExpandedTransforms);
+  if (direction > 0) {
+    while (retainedChildChoices.length < targetGeneration) {
+      retainedChildChoices.push(randomRetainedChildIndex());
+    }
+  } else {
+    retainedChildChoices.length = targetGeneration;
+  }
   const nextState = stateAtGeneration(targetGeneration);
   const expandedTransforms = nextState.transforms;
   currentExpandedTransforms = expandedTransforms;
   currentTurnGenerations = nextState.turnGenerations;
+  currentExpansionEdgeCandidates = nextState.edgeCandidates;
   updateMutedOrientationKeys(expandedTransforms);
   const nextVisual = makeVisual(expandedTransforms, currentTurnGenerations);
   setVisualOpacity(nextVisual, 0);
   content.add(nextVisual.group);
 
   generation = targetGeneration;
-  subdivisionWords = nextState.words;
-  fixedPath = nextState.path;
   generationValue.textContent = String(generation);
-  tileValue.textContent = subdivisionWords.length.toLocaleString();
+  tileValue.textContent = expandedTransforms.length.toLocaleString();
+  viewport.dataset.retainedChildren = retainedChildChoices
+    .map((choice) => String(choice + 1))
+    .join(",");
   drawOrientationBall(expandedTransforms, currentTurnGenerations);
   refreshVisualColors(nextVisual);
 
   const cameraOffset = camera.position.clone().sub(controls.target);
-  const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(direction > 0 ? 2 : 0.5));
+  const radiusRatio = patchRadius(expandedTransforms) / previousPatchRadius;
+  const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(radiusRatio));
 
   if (prefersReducedMotion) {
     disposeVisual(currentVisual);
