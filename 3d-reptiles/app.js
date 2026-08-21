@@ -223,13 +223,12 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.minDistance = 0.025;
 controls.maxDistance = 420;
-const orbitDriftAxis = new THREE.Vector3();
 const orbitDriftQuaternion = new THREE.Quaternion();
 const orbitPreviousOffset = new THREE.Vector3();
-const orbitCurrentOffset = new THREE.Vector3();
 const ORBIT_DRIFT_SPEED = 0.085;
 let orbitDrag = null;
 let orbitDriftActive = false;
+let orbitDriftDirection = 1;
 
 renderer.domElement.addEventListener("pointerdown", (event) => {
   if (event.pointerType === "mouse" && event.button !== 0) return;
@@ -238,38 +237,25 @@ renderer.domElement.addEventListener("pointerdown", (event) => {
     lastX: event.clientX,
     lastY: event.clientY,
     distance: 0,
-    axis: null,
-    lastOffset: camera.position.clone().sub(controls.target).normalize()
+    panDirection: 0
   };
 });
 
 renderer.domElement.addEventListener("pointermove", (event) => {
   if (!orbitDrag || event.pointerId !== orbitDrag.pointerId) return;
-  orbitDrag.distance += Math.hypot(event.clientX - orbitDrag.lastX, event.clientY - orbitDrag.lastY);
+  const deltaX = event.clientX - orbitDrag.lastX;
+  const deltaY = event.clientY - orbitDrag.lastY;
+  orbitDrag.distance += Math.hypot(deltaX, deltaY);
+  if (Math.abs(deltaX) > 0.1) orbitDrag.panDirection = -Math.sign(deltaX);
   orbitDrag.lastX = event.clientX;
   orbitDrag.lastY = event.clientY;
-  orbitCurrentOffset.copy(camera.position).sub(controls.target).normalize();
-  orbitDriftQuaternion.setFromUnitVectors(orbitDrag.lastOffset, orbitCurrentOffset);
-  const sineHalfAngle = Math.hypot(
-    orbitDriftQuaternion.x,
-    orbitDriftQuaternion.y,
-    orbitDriftQuaternion.z
-  );
-  if (sineHalfAngle > 1e-5) {
-    orbitDrag.axis = new THREE.Vector3(
-      orbitDriftQuaternion.x,
-      orbitDriftQuaternion.y,
-      orbitDriftQuaternion.z
-    ).divideScalar(sineHalfAngle);
-  }
-  orbitDrag.lastOffset.copy(orbitCurrentOffset);
 });
 
 renderer.domElement.addEventListener("pointerup", (event) => {
   if (!orbitDrag || event.pointerId !== orbitDrag.pointerId) return;
-  if (orbitDrag.distance > 4 && orbitDrag.axis) {
-    orbitDriftAxis.copy(orbitDrag.axis);
-    orbitDriftActive = true;
+  if (orbitDrag.distance > 4) {
+    orbitDriftActive = orbitDrag.panDirection !== 0;
+    if (orbitDriftActive) orbitDriftDirection = orbitDrag.panDirection;
   }
   orbitDrag = null;
 });
@@ -1085,7 +1071,10 @@ function animate(time) {
   controls.update();
   if (orbitDriftActive && orbitDrag === null && transition === null && elapsedSeconds > 0) {
     orbitPreviousOffset.copy(camera.position).sub(controls.target);
-    orbitDriftQuaternion.setFromAxisAngle(orbitDriftAxis, ORBIT_DRIFT_SPEED * elapsedSeconds);
+    orbitDriftQuaternion.setFromAxisAngle(
+      camera.up,
+      orbitDriftDirection * ORBIT_DRIFT_SPEED * elapsedSeconds
+    );
     orbitPreviousOffset.applyQuaternion(orbitDriftQuaternion);
     camera.position.copy(controls.target).add(orbitPreviousOffset);
     camera.lookAt(controls.target);
