@@ -32,6 +32,8 @@ class IQCStageLocalMarkingPortfolio:
     seed_atoms: int
     blocks: int
     beam_width: int
+    beam_schedule: tuple[int, ...]
+    allocation: str
     expansion_candidate_counts: tuple[int, ...]
     expansion_candidate_digests: tuple[str, ...]
     tree: MarkingPortfolioResult
@@ -48,10 +50,15 @@ def _state_key(state: StageLocalPortfolioState):
 def execute_iqc_stage_local_marking_portfolio(
         runtime, prefix_model, rollout_model, *, center, seed_positions,
         seed_species, public_radius, blocks=3, beam_width=2,
+        beam_schedule=None,
+        allocation="global-marking-round-robin",
         block_executor: Callable = execute_stage_local_rollout_search,
         ) -> IQCStageLocalMarkingPortfolio:
     """Keep connection- and rollout-ranked branches in one physical beam."""
-    if blocks < 1 or beam_width < 2:
+    schedule = (tuple(map(int, beam_schedule)) if beam_schedule is not None
+                else (int(beam_width),) * blocks)
+    if (blocks < 1 or beam_width < 2 or len(schedule) != blocks or
+            any(width < 2 for width in schedule)):
         raise ValueError("invalid IQC marking portfolio dimensions")
     seed = StageLocalPortfolioState(
         tuple(tuple(map(float, point)) for point in seed_positions),
@@ -79,8 +86,9 @@ def execute_iqc_stage_local_marking_portfolio(
     tree = search_marking_portfolio(
         seed, expand=expand, state_key=_state_key,
         marking_names=("connection", "rollout"),
-        depth=blocks, beam_width=beam_width)
+        depth=blocks, beam_width=beam_width, beam_schedule=schedule,
+        allocation=allocation)
     return IQCStageLocalMarkingPortfolio(
         tuple(map(float, center)), len(seed.positions), blocks, beam_width,
+        schedule, allocation,
         tuple(counts), tuple(digests), tree)
-

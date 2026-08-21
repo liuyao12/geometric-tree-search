@@ -4977,3 +4977,30 @@ shared width-two tree retains both. Across three self-fed blocks it expands
 a genuine repair of candidate retention and rollback supply, but it does not
 resolve value transfer or justify autonomous, stationary, or exponential IQC
 growth.
+
+### Prefix channel portfolio and bounded-reach failure boundary
+
+The shared portfolio API now supports a depth-dependent beam schedule,
+parent-balanced or global allocation, additive or stage-local replacement
+scores, and finite marking channels. Each ranking covers distinct channel
+cells before taking a second state from one cell. The IQC adapter uses frozen
+standardized local-section cells and proper pose/port channel codes; neither
+contains target coordinates or labels.
+
+On the consumed rollout nucleus, outer lineage retention `2→4→8` expands
+`8→16→32` candidates and preserves eight terminal paths, but exact supply is
+zero and the best path is `7/9`. A posthoc oracle prefix trace then removes
+learned pruning while keeping finite proposal reach. At `12→8→16`, exact
+prefix counts are `7→21→56`, `5→10→25`, and `3→3→5` across the three blocks;
+an exact three-block path therefore exists in the frozen geometry. The first
+correct final port after an exact two-site prefix is ranked 14 among 740
+exposed ports, outside the former final reach of eight.
+
+The autonomous channel portfolio remains red. With reach `12→8→16` and beam
+`8→16→32`, it retains two exact first blocks, expands 64 second-block terminal
+states, and retains zero exact second blocks. A complete bounded block-two
+audit finds 25 exact terminals among 600; the best frozen local-section rank is
+19 and the pose/port rank is 135. Thus bounded geometry is available, but the
+current marking does not preserve the correct lineage. These are consumed
+diagnostics only; no fresh confirmation, autonomous continuation, stationary
+production, or exponential IQC claim follows.

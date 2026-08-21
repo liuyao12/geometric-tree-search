@@ -2602,4 +2602,28 @@ candidate-supply invariant—same actions, both marking heads retained, no targe
 input—but does not select a winner or establish autonomous, stationary, or
 exponential IQC growth.
 
+### Prefix channel portfolio and bounded reach
+
+The generic portfolio now supports depth-dependent beam schedules, global or
+parent-balanced allocation, additive or stage-local replacement scores, and a
+finite state channel for every marking. Channel allocation covers distinct
+local-section and pose/port cells before using another slot in the same cell.
+Crystal-equivalent actions still deduplicate to one physical state, and an
+empty amorphous frontier still terminates without a growth rule.
+
+The consumed IQC diagnosis separates reach from value. A lineage-balanced
+`2→4→8` outer beam keeps eight terminal paths but none is exact; the best has
+`7/9` colored sites. With learned prefix pruning removed, the bounded
+`12→8→16` exposed-port reach contains a target-guided exact block at all three
+self-fed stages. After one exact two-site prefix, the first correct final port
+is rank 14 among 740 exposed ports, explaining why reach eight fails.
+
+That geometric availability does not transfer into an autonomous decision.
+The frozen channel-diverse `8→16→32` prefix portfolio retains two exact first
+blocks, then zero exact second blocks among 64 retained terminals. The target
+is used only in this already-consumed diagnostic to identify exact prefixes;
+candidate generation itself remains target-free. The next gate is a
+transferable clusters²/port-incidence value that retains the bounded exact
+lineage, not another wider brute-force tree.
+
 Serve the repository root and open `/iqc-growth-live/`.

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "center": [120.0, -40.0, -220.0],
+  "seed_atoms": 476,
+  "target_atoms": 2069,
+  "consumed_target_diagnostic_only": true,
+  "target_used_during_candidate_generation": false,
+  "lineage_portfolio": {
+    "candidate_reach": [12, 4, 8],
+    "beam_schedule": [2, 4, 8],
+    "allocation": "parent-marking-round-robin",
+    "level_candidate_counts": [8, 16, 32],
+    "level_retained_counts": [2, 4, 8],
+    "terminal_correct_sites": [6, 5, 6, 6, 7, 7, 6, 6],
+    "exact_terminal_supply": 0,
+    "pretarget_execution_digest": "b74a28b0ae028eb48ca3edca726881db6d30a267a3acc3b723690c83fba02b8a"
+  },
+  "raw_prefix_reach": {
+    "candidate_reach": [12, 8, 16],
+    "target_guided_exact_prefix_counts": [
+      [7, 21, 56],
+      [5, 10, 25],
+      [3, 3, 5]
+    ],
+    "target_guided_exact_three_block_path_supplied": true,
+    "target_used_to_prune_prefixes": true,
+    "first_correct_exposed_port_rank_after_exact_two_site_prefix": 14,
+    "exposed_ports_at_that_prefix": 740
+  },
+  "complete_bounded_block2_rank_audit": {
+    "candidate_reach": [12, 8, 16],
+    "candidate_counts_by_depth": [12, 62, 600],
+    "exact_counts_by_depth": [5, 10, 25],
+    "best_learned_section_exact_rank_by_depth": [1, 1, 19],
+    "best_pose_port_exact_terminal_rank": 135
+  },
+  "channel_diverse_prefix_portfolio": {
+    "candidate_reach": [12, 8, 16],
+    "retained_budget": [8, 16, 32],
+    "allocation": "global-marking-round-robin",
+    "channel_diversity": true,
+    "block1_exact_candidates": 2,
+    "block2_input_exact_parents": 2,
+    "block2_terminal_candidates": 64,
+    "block2_exact_candidates": 0,
+    "exact_three_block_path_supplied": false
+  },
+  "candidate_geometry_repaired": true,
+  "transferable_value_repaired": false,
+  "autonomous_growth_claimed": false,
+  "stationary_or_exponential_claimed": false,
+  "honest_status": "bounded raw reach contains an exact path, but the frozen marking portfolio cannot retain it autonomously"
+}
