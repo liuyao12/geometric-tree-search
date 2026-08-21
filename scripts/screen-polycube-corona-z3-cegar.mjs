@@ -9,7 +9,7 @@ import { polycubeKey } from "../assets/polycube-enumerator.js";
 import {
   polycubeCellOrbitKeys,
   polycubeCellPairOrbitKeys,
-  polycubeCoronaIncompatibleTargetPairs,
+  polycubeCoronaIncompatibleTargetPairDetails,
   polycubePlacementClauseOrbitKeys,
   searchPolycubeCorona,
   verifyPolycubeCoronaPatch
@@ -67,6 +67,10 @@ const pairOrbitLimit = integerArg("pair-orbit-limit", 0, 0);
 const pairEncoding = args.get("pair-encoding") ?? "dnf";
 if (!["dnf", "choice-cnf", "witness-cnf"].includes(pairEncoding)) {
   throw new Error("--pair-encoding must be dnf, choice-cnf, or witness-cnf");
+}
+const pairSelection = args.get("pair-selection") ?? "lexicographic";
+if (!["lexicographic", "max-blocked-combinations", "min-blocked-combinations"].includes(pairSelection)) {
+  throw new Error("--pair-selection must be lexicographic, max-blocked-combinations, or min-blocked-combinations");
 }
 const lookaheadConflictEncoding = args.get("lookahead-conflict-encoding") ?? "edge-cnf";
 if (!["edge-cnf", "grouped-pb"].includes(lookaheadConflictEncoding)) {
@@ -207,6 +211,7 @@ process.stdout.write(`${JSON.stringify({
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   pair_encoding: pairEncoding,
+  pair_selection: pairSelection,
   lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   initial_clause_count: initialClauseCount,
@@ -361,15 +366,29 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
       if (cellsAdded) cellOrbitsAdded += 1;
     }
   }
-  const incompatiblePairs = learnPairCoverability
-    ? polycubeCoronaIncompatibleTargetPairs(candidate.voxels, proposal.corona, outerLayer)
+  const incompatiblePairDetails = learnPairCoverability
+    ? polycubeCoronaIncompatibleTargetPairDetails(candidate.voxels, proposal.corona, outerLayer)
     : [];
+  const pairKey = detail => detail.target_cells.join(";");
+  incompatiblePairDetails.sort((left, right) => {
+    const blockedDifference = pairSelection === "max-blocked-combinations"
+      ? right.candidate_pairs_blocked - left.candidate_pairs_blocked
+      : pairSelection === "min-blocked-combinations"
+        ? left.candidate_pairs_blocked - right.candidate_pairs_blocked
+        : 0;
+    return blockedDifference || pairKey(left).localeCompare(pairKey(right));
+  });
+  const incompatiblePairs = incompatiblePairDetails.map(detail => detail.target_cells);
   let pairsAdded = 0;
   let pairOrbitsAdded = 0;
-  for (const pair of incompatiblePairs) {
+  let selectedPairCandidateCombinationsBlocked = null;
+  for (const detail of incompatiblePairDetails) {
     if (pairOrbitLimit && pairOrbitsAdded >= pairOrbitLimit) break;
-    const added = addPairOrbit(pair);
-    if (added) pairOrbitsAdded += 1;
+    const added = addPairOrbit(detail.target_cells);
+    if (added) {
+      pairOrbitsAdded += 1;
+      selectedPairCandidateCombinationsBlocked ??= detail.candidate_pairs_blocked;
+    }
     pairsAdded += added;
   }
   const trial = {
@@ -393,6 +412,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     cell_orbits_added: cellOrbitsAdded,
     cell_coverability_constraints: cellConstraints.length,
     incompatible_target_pairs: incompatiblePairs.length,
+    selected_pair_candidate_combinations_blocked: selectedPairCandidateCombinationsBlocked,
     pair_constraints_added: pairsAdded,
     pair_orbits_added: pairOrbitsAdded,
     pair_coverability_constraints: pairConstraints.length
@@ -433,6 +453,7 @@ const summary = {
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   pair_encoding: pairEncoding,
+  pair_selection: pairSelection,
   lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   z3_unknown_trials: z3UnknownTrials,

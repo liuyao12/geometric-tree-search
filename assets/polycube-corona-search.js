@@ -242,7 +242,7 @@ export function verifyPolycubeCoronaPatch(voxels, placements, layers, options = 
   };
 }
 
-export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerLayers, options = {}) {
+export function polycubeCoronaIncompatibleTargetPairDetails(voxels, placements, outerLayers, options = {}) {
   if (!Array.isArray(placements)) return [];
   const normalizedOuterLayers = Math.max(1, Math.floor(Number(outerLayers) || 1));
   const rootSet = new Set(voxels.map(keyOf));
@@ -284,10 +284,20 @@ export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerL
           break pairSearch;
         }
       }
-      if (!compatible) incompatible.push([leftKey, rightKey]);
+      if (!compatible) incompatible.push({
+        target_cells: [leftKey, rightKey],
+        left_choices: leftChoices.length,
+        right_choices: rightChoices.length,
+        candidate_pairs_blocked: leftChoices.length * rightChoices.length
+      });
     }
   }
   return incompatible;
+}
+
+export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerLayers, options = {}) {
+  return polycubeCoronaIncompatibleTargetPairDetails(voxels, placements, outerLayers, options)
+    .map(detail => detail.target_cells);
 }
 
 export function createPolycubeCoronaPairObstructionOracle(voxels, outerLayers, options = {}) {

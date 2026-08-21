@@ -14,6 +14,7 @@ import {
   createPolycubeCoronaPairObstructionOracle,
   enumeratePolycubeCoronaPlacements,
   polycubeCellPairOrbitKeys,
+  polycubeCoronaIncompatibleTargetPairDetails,
   polycubeCoronaIncompatibleTargetPairs,
   polycubeCoronaPairObstruction,
   polycubePlacementClauseOrbitKeys,
@@ -738,7 +739,20 @@ const trappedIncompatiblePairs = polycubeCoronaIncompatibleTargetPairs(
   unresolvedRadiusFour.corona,
   4
 );
+const trappedIncompatiblePairDetails = polycubeCoronaIncompatibleTargetPairDetails(
+  unresolvedP9.voxels,
+  unresolvedRadiusFour.corona,
+  4
+);
 assert.ok(trappedIncompatiblePairs.length > 0);
+assert.deepEqual(
+  trappedIncompatiblePairDetails.map(detail => detail.target_cells),
+  trappedIncompatiblePairs
+);
+assert.ok(trappedIncompatiblePairDetails.every(detail =>
+  detail.candidate_pairs_blocked === detail.left_choices * detail.right_choices
+));
+assert.ok(trappedIncompatiblePairDetails.some(detail => detail.candidate_pairs_blocked > 0));
 assert.ok(polycubeCellPairOrbitKeys(unresolvedP9.voxels, trappedIncompatiblePairs[0]).length > 0);
 const pairObstructionOracle = createPolycubeCoronaPairObstructionOracle(unresolvedP9.voxels, 4);
 const trappedPairObstruction = pairObstructionOracle(unresolvedRadiusFour.corona);

@@ -781,6 +781,7 @@ node scripts/screen-polycube-corona-z3-cegar.mjs \
   --learn-cell-coverability=true \
   --lookahead-conflict-encoding=grouped-pb \
   --learn-pair-coverability=true --pair-orbit-limit=2 \
+  --pair-selection=max-blocked-combinations \
   --pair-encoding=witness-cnf
 ```
 
@@ -796,7 +797,9 @@ exact outer-solver obligation. This is stronger than its blocker clause but
 much smaller than eagerly constraining the whole next ring. The `grouped-pb`
 conflict encoding replaces one implication per conflicting outer/lookahead
 placement pair with one equivalent pseudo-Boolean implication per outer
-placement; `edge-cnf` remains available as the baseline.
+placement; `edge-cnf` remains available as the baseline. Pair learning can
+retain the historical lexicographic order or prioritize the obstruction that
+blocks the most or fewest currently available placement combinations.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all
