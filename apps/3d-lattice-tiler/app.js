@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260820-size13-v104";
+import { tileSpecs } from "./engine.js?v=20260820-polycube9-v105";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -792,6 +792,7 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
+  { id: "unresolved-polycubes", title: "Unresolved polycube candidates", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
   { id: "unresolved", title: "Unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
   { id: "periodic-controls", title: "GCTS periodic controls", test: figure => figureHasCategory(figure, "GCTS Periodic Controls") },
   { id: "shell-controls", title: "GCTS shell-obstruction controls", test: figure => figureHasCategory(figure, "GCTS Shell-Obstruction Controls") },
@@ -1425,7 +1426,9 @@ function updateCandidateResearchPanel() {
         : `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that every route toward combinatorial shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but no indefinitely extendable next shell exists.` : " The contradiction appears before the first complete shell."} Earlier connected-patch growth could still extend elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-      candidateResearchDetail.textContent = candidate.lattice_points === 12
+      candidateResearchDetail.textContent = candidate.kind === "polycube_census"
+        ? `${candidate.volume}-cube nonplanar polycube. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotients through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. An exact radius-${candidate.screening.corona_completed_radius} corona exists; radius ${candidate.screening.corona_next_radius} remained incomplete after ${candidate.screening.corona_next_nodes.toLocaleString()} nodes and ${candidate.screening.corona_next_time_limit_ms / 1000}s. This is a bounded GCTS stress candidate, not evidence of aperiodicity.`
+        : candidate.lattice_points === 12
         ? `${candidate.description} Complete shell ${shell?.deepest_completed_shell ?? 2} is recorded.${limits}`
         : `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
     }
@@ -1485,7 +1488,9 @@ function renderSystemTileList() {
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
         const certificate = figure.census_candidate.screening?.certificate;
-        angles.textContent = ["translational", "isohedral_periodic_quotient"].includes(certificate)
+        angles.textContent = figure.census_candidate.kind === "polycube_census"
+          ? `period > 6 · corona radius 3 · ${figure.census_candidate.volume} cubes`
+          : ["translational", "isohedral_periodic_quotient"].includes(certificate)
           ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.lattice_points} points`
           : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
             ? `${certificate === "finite_shell_obstruction" ? "complete-shell" : "dead-face shell"} ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
@@ -2770,7 +2775,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260820-size13-v104", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260820-polycube9-v105", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;

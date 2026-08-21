@@ -513,6 +513,15 @@ The receipts are
 `data/lattice-polyhedron-size13-full-isometry-easy-lanes-2026-08-20.json`, and
 `data/lattice-polyhedron-size13-full-isometry-shell2-2026-08-20.json`.
 
+The one-sided polycube census now extends through volume nine. A dedicated
+bit-mask HNF solver certifies 48,260 of 48,311 noncongruent shapes as periodic,
+including skew cells with up to six copies. The catalogue adds four nonplanar
+stress candidates that exhaust all 19,170 HNF quotients through six copies,
+have exact radius-three coronas, and leave radius four bounded-inconclusive.
+They appear under “Unresolved polycube candidates”; the research panel states
+the exact bounds and explicitly does not call them aperiodic. See
+`data/polycube-volume9-screen-summary-2026-08-20.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

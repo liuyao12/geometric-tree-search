@@ -1195,7 +1195,7 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 42, "the original controls and selected size-11 through size-13 regressions must remain in the catalog");
+assert.equal(candidates.length, 46, "the lattice-polyhedron controls and four volume-9 polycube candidates must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
 const shellControls = candidates.filter(figure =>
@@ -1204,7 +1204,17 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-assert.equal(survivors.length, 0);
+assert.equal(survivors.length, 4);
+assert.deepEqual(
+  survivors.map(figure => figure.census_candidate.id).sort(),
+  ["p9-42947", "p9-42969", "p9-43172", "p9-43188"]
+);
+assert.ok(survivors.every(figure =>
+  figure.census_candidate.kind === "polycube_census"
+  && figure.census_candidate.volume === 9
+  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 6
+  && figure.census_candidate.screening.corona_completed_radius === 3
+));
 assert.equal(shellControls.length, 7);
 assert.equal(periodicControls.length, 35);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);

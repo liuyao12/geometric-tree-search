@@ -1,0 +1,38 @@
+{
+  "kind": "polycube_volume9_screen_summary",
+  "date": "2026-08-20",
+  "equivalence": "proper_cubic_rotations_and_integer_translations",
+  "reflections_allowed": false,
+  "candidate_count": 48311,
+  "certified_periodic": 48260,
+  "certified_non_tiler": 0,
+  "bounded_inconclusive": 51,
+  "periodic_motif_counts": {
+    "1": 20238,
+    "2": 26922,
+    "3": 309,
+    "4": 731,
+    "6": 60
+  },
+  "deep_screen": {
+    "input_candidates": 88,
+    "periodic_hnf_max_motif_tiles": 6,
+    "periodic_hnf_candidates_for_exhausted_shapes": 19170,
+    "new_six_tile_periodic_certificates": 60,
+    "remaining": 28,
+    "periodic_search_exhausted": 8,
+    "periodic_search_timed_out": 20,
+    "corona_radius": 4,
+    "corona_patch_found": 16,
+    "corona_search_timed_out": 12
+  },
+  "shallower_periodic_timeouts_not_in_deep_screen": 23,
+  "catalog_candidates": [
+    "p9-42947",
+    "p9-42969",
+    "p9-43172",
+    "p9-43188"
+  ],
+  "catalog_rationale": "Nonplanar shapes that exhaust every HNF quotient through six copies, survive an exact radius-3 corona, and leave radius 4 incomplete at the two-second bound.",
+  "warning": "Bounded-inconclusive candidates are neither proven tilers nor evidence of aperiodicity. A true aperiodic monotile requires both an infinite tiling construction and a proof excluding every periodic tiling."
+}
