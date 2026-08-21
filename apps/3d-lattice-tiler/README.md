@@ -530,6 +530,21 @@ full radius-five continuation checks. The portfolio remains incomplete. See
 `data/polycube-volume9-periodic-through13-2026-08-20.json`, and
 `data/polycube-volume9-continuation-nogoods-2026-08-20.json`.
 
+The volume-ten funnel retains five free-isometry representatives. Exact HNF
+quotient cover now excludes every translational fundamental domain through
+twelve copies for all five: 208,971 bases per representative cumulatively,
+including all 62,465 twelve-copy bases. The hardest achiral candidate,
+`p10-290795`, required 148,263,325 exact-cover nodes at copy twelve. Its final
+55,013 bases were divided into sixteen explicit half-open HNF intervals; a
+fail-closed auditor checked that every interval exhausted, that visit counts
+matched interval lengths, and that their union had neither gaps nor overlaps.
+No interval found a periodic certificate. This is still only a finite-period
+exclusion, not evidence that any representative tiles or is aperiodic. The
+receipt is `data/polycube-volume10-periodic-copy12-2026-08-21.json`; reusable
+interval and audit entry points are
+`scripts/screen-3d-aperiodic-polycubes.mjs --periodic-hnf-start-index=... --periodic-hnf-end-index=...`
+and `scripts/audit-polycube-periodic-shards.mjs`.
+
 Continuation conflicts can now be resolved through nontrivial exact-cover
 subtrees, not only extracted from an immediately dead target cell. Each child
 conflict is resolved against its temporary placement; after every branch at a

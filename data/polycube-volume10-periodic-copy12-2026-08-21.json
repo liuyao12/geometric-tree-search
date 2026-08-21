@@ -1,0 +1,123 @@
+{
+  "schema": "gcts.polycube_periodic_candidate_layer.v1",
+  "date": "2026-08-21",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "input": {
+    "source": "data/polycube-volume10-periodic-copy11-2026-08-21.json",
+    "free_class_candidates": 5,
+    "candidate_ids_sha256": "cdc4aeac3214dcad7feb69d15de5d146a4d5b16327979f6921a100853fa80ba6",
+    "candidate_keys_sha256": "798b9399dc22d89ca29cc8e1704208c2b9cb63dfcef841d0b77387c196148513"
+  },
+  "protocol": {
+    "solver": "exact HNF quotient cover with allocation-free MRV counting",
+    "motif_tiles": 12,
+    "quotient_cells": 120,
+    "hnf_bases": 62465,
+    "reflections_allowed_within_tiling": false,
+    "time_budget_clock": "cpu",
+    "resume_cursor": "absolute active_hnf_index; the active index itself is unprocessed",
+    "interval_semantics": "half-open [hnf_start_index, hnf_end_index_exclusive)",
+    "shard_implementation_commit": "415c4ee9fc63ed2b5ae0b93fcb221d00ec1200b8",
+    "gap_auditor_commit": "bf3c751b79fce25999fc92f54131a11d2bd60de1",
+    "gap_audit": "Every terminal shard must have stopped_by=null, hnf_range_exhausted=true, and hnf_visited equal to its interval length; sorted intervals must cover the requested range with no gap or overlap.",
+    "independent_positive_verifier": "Cramer's-rule quotient partition replay",
+    "interpretation": "Exhaustion excludes twelve-tile translational fundamental domains only. It does not exclude larger periodic motifs or prove aperiodicity."
+  },
+  "candidates": [
+    {
+      "id": "p10-052588",
+      "hnf_bases_exhausted": 62465,
+      "runs": [
+        {"hnf_start_index": 0, "hnf_end_index_exclusive": 59241, "reported_hnf_visited": 59242, "active_hnf_index": 59241, "nodes": 839605, "milliseconds": 613655, "stopped_by": "time_limit"},
+        {"hnf_start_index": 59241, "hnf_end_index_exclusive": 62465, "reported_hnf_visited": 3224, "nodes": 44805, "milliseconds": 25617, "stopped_by": null}
+      ],
+      "exact_cover_nodes_across_proof_runs": 884410,
+      "milliseconds_across_proof_runs": 639272,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-054782",
+      "hnf_bases_exhausted": 62465,
+      "runs": [
+        {"hnf_start_index": 0, "hnf_end_index_exclusive": 46506, "reported_hnf_visited": 46507, "active_hnf_index": 46506, "nodes": 2682596, "milliseconds": 617382, "stopped_by": "time_limit"},
+        {"hnf_start_index": 46506, "hnf_end_index_exclusive": 62465, "reported_hnf_visited": 15959, "nodes": 861715, "milliseconds": 177950, "stopped_by": null}
+      ],
+      "exact_cover_nodes_across_proof_runs": 3544311,
+      "milliseconds_across_proof_runs": 795332,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-055695",
+      "hnf_bases_exhausted": 62465,
+      "runs": [
+        {"hnf_start_index": 0, "hnf_end_index_exclusive": 62465, "reported_hnf_visited": 62465, "nodes": 4115344, "milliseconds": 497651, "stopped_by": null}
+      ],
+      "exact_cover_nodes_across_proof_runs": 4115344,
+      "milliseconds_across_proof_runs": 497651,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-290795",
+      "hnf_bases_exhausted": 62465,
+      "prefix_runs": [
+        {"hnf_start_index": 0, "hnf_end_index_exclusive": 3276, "reported_hnf_visited": 3277, "active_hnf_index": 3276, "nodes": 8758779, "milliseconds": 625590, "stopped_by": "time_limit"},
+        {"hnf_start_index": 3276, "hnf_end_index_exclusive": 7452, "reported_hnf_visited": 4177, "active_hnf_index": 7452, "nodes": 10239959, "milliseconds": 602744, "stopped_by": "time_limit"}
+      ],
+      "shard_audit": {
+        "expected_range": [7452, 62465],
+        "coverage_gap_free": true,
+        "periodic_certificate": false,
+        "shards": [
+          {"hnf_start_index": 7452, "hnf_end_index_exclusive": 10891, "hnf_bases_exhausted": 3439, "nodes": 6801565, "milliseconds": 1035347},
+          {"hnf_start_index": 10891, "hnf_end_index_exclusive": 14330, "hnf_bases_exhausted": 3439, "nodes": 7888724, "milliseconds": 1101940},
+          {"hnf_start_index": 14330, "hnf_end_index_exclusive": 17769, "hnf_bases_exhausted": 3439, "nodes": 8982194, "milliseconds": 1180163},
+          {"hnf_start_index": 17769, "hnf_end_index_exclusive": 21208, "hnf_bases_exhausted": 3439, "nodes": 9197429, "milliseconds": 1184426},
+          {"hnf_start_index": 21208, "hnf_end_index_exclusive": 24647, "hnf_bases_exhausted": 3439, "nodes": 8713570, "milliseconds": 1187201},
+          {"hnf_start_index": 24647, "hnf_end_index_exclusive": 28086, "hnf_bases_exhausted": 3439, "nodes": 6250304, "milliseconds": 931021},
+          {"hnf_start_index": 28086, "hnf_end_index_exclusive": 31525, "hnf_bases_exhausted": 3439, "nodes": 7210386, "milliseconds": 1030408},
+          {"hnf_start_index": 31525, "hnf_end_index_exclusive": 34964, "hnf_bases_exhausted": 3439, "nodes": 9193650, "milliseconds": 1166930},
+          {"hnf_start_index": 34964, "hnf_end_index_exclusive": 38403, "hnf_bases_exhausted": 3439, "nodes": 7193134, "milliseconds": 1036510},
+          {"hnf_start_index": 38403, "hnf_end_index_exclusive": 41842, "hnf_bases_exhausted": 3439, "nodes": 8482766, "milliseconds": 1180307},
+          {"hnf_start_index": 41842, "hnf_end_index_exclusive": 45281, "hnf_bases_exhausted": 3439, "nodes": 7804830, "milliseconds": 1131986},
+          {"hnf_start_index": 45281, "hnf_end_index_exclusive": 48720, "hnf_bases_exhausted": 3439, "nodes": 7362979, "milliseconds": 1100114},
+          {"hnf_start_index": 48720, "hnf_end_index_exclusive": 52159, "hnf_bases_exhausted": 3439, "nodes": 8355788, "milliseconds": 1112424},
+          {"hnf_start_index": 52159, "hnf_end_index_exclusive": 55598, "hnf_bases_exhausted": 3439, "nodes": 7877346, "milliseconds": 1078583},
+          {"hnf_start_index": 55598, "hnf_end_index_exclusive": 59037, "hnf_bases_exhausted": 3439, "nodes": 9304587, "milliseconds": 1174139},
+          {"hnf_start_index": 59037, "hnf_end_index_exclusive": 62465, "hnf_bases_exhausted": 3428, "nodes": 8645335, "milliseconds": 1113921}
+        ],
+        "hnf_bases_exhausted": 55013,
+        "exact_cover_nodes": 129264587,
+        "milliseconds": 17745420
+      },
+      "exact_cover_nodes_across_proof_runs": 148263325,
+      "milliseconds_across_proof_runs": 18973754,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-346304",
+      "hnf_bases_exhausted": 62465,
+      "runs": [
+        {"hnf_start_index": 0, "hnf_end_index_exclusive": 62465, "reported_hnf_visited": 62465, "nodes": 10736361, "milliseconds": 584885, "stopped_by": null}
+      ],
+      "exact_cover_nodes_across_proof_runs": 10736361,
+      "milliseconds_across_proof_runs": 584885,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    }
+  ],
+  "final": {
+    "candidates": 5,
+    "new_periodic_certificates": 0,
+    "final_timeouts": 0,
+    "unique_copy_12_hnf_bases_exhausted": 312325,
+    "exact_cover_nodes_across_proof_runs": 167543751,
+    "milliseconds_across_proof_runs": 21490894,
+    "hnf_bases_per_surviving_class_through_12": 208971,
+    "surviving_free_class_candidates": 5
+  }
+}

@@ -382,6 +382,10 @@ const archivedVolume10PeriodicCopy11 = JSON.parse(await readFile(
   new URL("../data/polycube-volume10-periodic-copy11-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedVolume10PeriodicCopy12 = JSON.parse(await readFile(
+  new URL("../data/polycube-volume10-periodic-copy12-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1303,8 +1307,10 @@ assert.ok(volumeNineSurvivor
 );
 assert.ok(survivors.filter(figure => figure.census_candidate.volume === 10).every(figure =>
   figure.census_candidate.kind === "polycube_census"
-  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 11
-  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 146506
+  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 12
+  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 208971
+  && figure.census_candidate.screening.periodic_hnf_report
+    === "data/polycube-volume10-periodic-copy12-2026-08-21.json"
   && figure.census_candidate.screening.corona_completed_radius === 2
   && figure.census_candidate.screening.corona_completed_verified === true
   && figure.census_candidate.screening.corona_next_radius === 3
@@ -1356,6 +1362,30 @@ assert.equal(archivedVolume10PeriodicCopy11.final.new_periodic_certificates, 0);
 assert.equal(archivedVolume10PeriodicCopy11.final.final_timeouts, 0);
 assert.equal(archivedVolume10PeriodicCopy11.final.unique_copy_11_hnf_bases_exhausted, 144305);
 assert.equal(archivedVolume10PeriodicCopy11.final.hnf_bases_per_surviving_class_through_11, 146506);
+assert.equal(archivedVolume10PeriodicCopy12.final.new_periodic_certificates, 0);
+assert.equal(archivedVolume10PeriodicCopy12.final.final_timeouts, 0);
+assert.equal(archivedVolume10PeriodicCopy12.final.unique_copy_12_hnf_bases_exhausted, 312325);
+assert.equal(archivedVolume10PeriodicCopy12.final.hnf_bases_per_surviving_class_through_12, 208971);
+assert.equal(archivedVolume10PeriodicCopy12.final.exact_cover_nodes_across_proof_runs, 167543751);
+assert.ok(archivedVolume10PeriodicCopy12.candidates.every(candidate =>
+  candidate.hnf_bases_exhausted === 62465
+  && candidate.periodic_certificate === false
+  && candidate.final_stopped_by === null
+));
+const archivedCopy12ShardedCandidate = archivedVolume10PeriodicCopy12.candidates
+  .find(candidate => candidate.id === "p10-290795");
+assert.ok(archivedCopy12ShardedCandidate?.shard_audit.coverage_gap_free);
+assert.deepEqual(archivedCopy12ShardedCandidate.shard_audit.expected_range, [7452, 62465]);
+assert.equal(archivedCopy12ShardedCandidate.shard_audit.hnf_bases_exhausted, 55013);
+assert.equal(archivedCopy12ShardedCandidate.shard_audit.shards.length, 16);
+assert.equal(
+  archivedCopy12ShardedCandidate.shard_audit.shards.reduce((cursor, shard) => {
+    assert.equal(shard.hnf_start_index, cursor, "copy-12 HNF shards must be gap- and overlap-free");
+    assert.equal(shard.hnf_bases_exhausted, shard.hnf_end_index_exclusive - shard.hnf_start_index);
+    return shard.hnf_end_index_exclusive;
+  }, 7452),
+  62465
+);
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),
   ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304"]
