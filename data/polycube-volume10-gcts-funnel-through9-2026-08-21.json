@@ -1,0 +1,162 @@
+{
+  "schema": "gcts.polycube_candidate_funnel.v1",
+  "date": "2026-08-21",
+  "volume": 10,
+  "placement_equivalence": "proper_rotations_and_integer_translations",
+  "free_class_reduction": "A reflection of all space preserves tiling existence, so chiral mirror pairs are represented once after one-sided screening.",
+  "input": {
+    "source": "data/polycube-volume10-periodic-through5-2026-08-21.json",
+    "one_sided_periodic_survivors": 6044
+  },
+  "solver_revision": {
+    "exact_corona_engine": "generalized dancing-links exact cover",
+    "conflict_backjumping": true,
+    "nogood_prune_lookup": "incremental violated-clause set",
+    "positive_patch_verifier": "independent voxel partition, root containment, and target-corona coverage replay",
+    "soundness_regressions": {
+      "chronological_vs_backjumped_one_sided_polycubes_through_volume": 5,
+      "hard_positive_controls": ["p10-075714", "p10-324131"],
+      "finite_obstruction_control": "p10-052670"
+    }
+  },
+  "corrected_radius_2_census": {
+    "candidates": 6044,
+    "complete_patches": 6040,
+    "certified_non_tilers": 4,
+    "timeouts": 0,
+    "non_tiler_ids": ["p10-052481", "p10-052665", "p10-052666", "p10-052670"],
+    "candidates_using_backjumps": 301,
+    "conflict_backjumps": 1505,
+    "maximum_nodes": 4984,
+    "maximum_nodes_id": "p10-053068",
+    "supersedes": "data/polycube-volume10-corona-through2-2026-08-21.json",
+    "formerly_unresolved_replays": [
+      {
+        "id": "p10-075714",
+        "nodes": 143,
+        "conflict_backjumps": 15,
+        "patch_independently_verified": true
+      },
+      {
+        "id": "p10-324131",
+        "nodes": 197,
+        "conflict_backjumps": 21,
+        "patch_independently_verified": true
+      }
+    ]
+  },
+  "radius_3_funnel": {
+    "initial_cpu_limit_ms_per_candidate": 1000,
+    "initial_candidates": 6040,
+    "initial_verified_patches": 5834,
+    "initial_timeouts": 206,
+    "seed_0_retry_cpu_limit_ms": 5000,
+    "seed_0_retry_verified_patches": 90,
+    "seed_0_retry_timeouts": 116,
+    "seed_1_cpu_limit_ms": 5000,
+    "seed_1_verified_patches": 84,
+    "seed_1_timeouts": 32,
+    "seed_2_cpu_limit_ms": 5000,
+    "seed_2_verified_patches": 11,
+    "seed_2_timeouts": 21,
+    "free_class_hard_pool": 8,
+    "later_verified_patches": [
+      {
+        "id": "p10-062236",
+        "seed": 3,
+        "nodes": 695,
+        "target_cells": 182,
+        "patch_independently_verified": true
+      },
+      {
+        "id": "p10-053068",
+        "seed": 4,
+        "nodes": 137478,
+        "target_cells": 207,
+        "symmetry_nogood_clauses": 10414,
+        "patch_independently_verified": true
+      }
+    ],
+    "finite_obstructions_found": 0,
+    "interpretation": "A complete finite corona is necessary evidence for tiling but is not a space-tiling or aperiodicity certificate. A timeout is inconclusive."
+  },
+  "exact_periodic_funnel": {
+    "solver": "exact HNF quotient cover",
+    "reflections_allowed_within_tiling": false,
+    "independent_positive_verifier": "Cramer's-rule quotient partition replay",
+    "hnf_bases_per_surviving_class": {
+      "copies_1_through_5": 14570,
+      "copies_6": 14105,
+      "copies_7": 12369,
+      "copies_8": 20181,
+      "copies_9": 28210,
+      "cumulative_1_through_9": 89435
+    },
+    "periodic_removals": [
+      {
+        "id": "p10-150071",
+        "motif_tiles": 6,
+        "period_vectors": [[15, 0, 0], [2, 2, 0], [2, 0, 2]],
+        "certificate_independently_verified": true
+      },
+      {
+        "id": "p10-345871",
+        "motif_tiles": 8,
+        "period_vectors": [[40, 0, 0], [11, 1, 0], [4, 0, 2]],
+        "certificate_independently_verified": true
+      }
+    ],
+    "copy_9_final_pool": {
+      "candidates": 5,
+      "hnf_bases_exhausted": 141050,
+      "exact_cover_nodes": 7015079,
+      "new_periodic_certificates": 0,
+      "timeouts": 0
+    }
+  },
+  "final_free_class_candidates": [
+    {
+      "id": "p10-052588",
+      "mirror_equivalent_id": "p10-052641",
+      "proper_stabilizer_size": 1,
+      "radius_2": {"nodes": 1141, "target_cells": 87, "placements_considered": 4709, "patch_independently_verified": true},
+      "radius_3": {"target_cells": 179, "placements_considered": 8767, "portfolio_runs": 7, "portfolio_cpu_limit_ms": 106000, "portfolio_nodes": 227328, "complete_patch_found": false, "search_exhausted": false}
+    },
+    {
+      "id": "p10-054782",
+      "mirror_equivalent_id": "p10-053037",
+      "proper_stabilizer_size": 1,
+      "radius_2": {"nodes": 1296, "target_cells": 93, "placements_considered": 5232, "patch_independently_verified": true},
+      "radius_3": {"target_cells": 191, "placements_considered": 9694, "portfolio_runs": 7, "portfolio_cpu_limit_ms": 106000, "portfolio_nodes": 292864, "complete_patch_found": false, "search_exhausted": false}
+    },
+    {
+      "id": "p10-055695",
+      "mirror_equivalent_id": "p10-055822",
+      "proper_stabilizer_size": 2,
+      "radius_2": {"nodes": 35, "target_cells": 88, "placements_considered": 2496, "patch_independently_verified": true},
+      "radius_3": {"target_cells": 182, "placements_considered": 4632, "portfolio_runs": 7, "portfolio_cpu_limit_ms": 106000, "portfolio_nodes": 677888, "complete_patch_found": false, "search_exhausted": false}
+    },
+    {
+      "id": "p10-290795",
+      "mirror_equivalent_id": null,
+      "proper_stabilizer_size": 1,
+      "radius_2": {"nodes": 40, "target_cells": 101, "placements_considered": 6521, "patch_independently_verified": true},
+      "radius_3": {"target_cells": 206, "placements_considered": 11637, "portfolio_runs": 7, "portfolio_cpu_limit_ms": 106000, "portfolio_nodes": 313344, "complete_patch_found": false, "search_exhausted": false}
+    },
+    {
+      "id": "p10-346304",
+      "mirror_equivalent_id": null,
+      "proper_stabilizer_size": 3,
+      "radius_2": {"nodes": 270, "target_cells": 89, "placements_considered": 1742, "patch_independently_verified": true},
+      "radius_3": {"target_cells": 182, "placements_considered": 3145, "portfolio_runs": 7, "portfolio_cpu_limit_ms": 106000, "portfolio_nodes": 1100800, "complete_patch_found": false, "search_exhausted": false}
+    }
+  ],
+  "final": {
+    "free_class_candidates": 5,
+    "represented_one_sided_classes": 8,
+    "candidate_ids_sha256": "cdc4aeac3214dcad7feb69d15de5d146a4d5b16327979f6921a100853fa80ba6",
+    "candidate_keys_sha256": "798b9399dc22d89ca29cc8e1704208c2b9cb63dfcef841d0b77387c196148513",
+    "hash_protocol": "lexicographically sorted values joined by LF without a trailing LF",
+    "warning": "These five classes have neither a bounded periodic certificate nor a finite non-tiling obstruction. They are GCTS stress candidates, not claimed aperiodic monotiles."
+  }
+}

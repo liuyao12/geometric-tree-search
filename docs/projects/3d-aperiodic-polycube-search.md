@@ -222,16 +222,37 @@ from motif sizes one through five. This remains a bounded periodic exclusion,
 not evidence of tiling or aperiodicity. The gap-free receipt is
 `data/polycube-volume10-periodic-through5-2026-08-21.json`.
 
-An exact radius-two corona census then separates four finite-obstruction
+An initial exact radius-two corona census separated four finite-obstruction
 non-tilers: `p10-052481` and `p10-052665` already fail at radius one, while the
 enantiomeric pair `p10-052666`/`p10-052670` has independently verified
-radius-one patches but exhausts every radius-two extension. Of the other 6,040
-shapes, 6,038 have verified radius-two patches. `p10-075714` and `p10-324131`
-remain bounded-inconclusive after separate 60-CPU-second nogood runs with 1.67
-million and 2.98 million exact prunes respectively. They are the first focused
-GCTS stress candidates from this census, not claims of tiling or aperiodicity.
-The gap-free receipt is
-`data/polycube-volume10-corona-through2-2026-08-21.json`.
+radius-one patches but exhausts every radius-two extension. That first pass
+mistook two expensive chronological searches for durable stress candidates.
+Root-level conflict-directed backjumping resolves `p10-075714` in 143 nodes and
+`p10-324131` in 197, and independent replay verifies both radius-two patches.
+Replaying the entire 6,044-candidate input gives 6,040 complete patches, the
+same four non-tilers, and zero timeouts; 301 candidates use 1,505 backjumps and
+the hardest finishes in 4,984 nodes. Thus the earlier receipt
+`data/polycube-volume10-corona-through2-2026-08-21.json` is historical input,
+not the current classification.
+
+The corrected radius-three funnel starts from those 6,040 positive patches.
+A one-second CPU pass verifies 5,834 radius-three patches. Successive five-
+second orderings reduce the 206 timeouts to 116, then 32, then 21. Quotienting
+the remaining chiral pairs by reflection of all space leaves eight free
+classes. Exact HNF searches then find a six-copy period for `p10-150071` and an
+eight-copy period for `p10-345871`; both certificates pass the independent
+Cramer's-rule quotient replay. Longer GCTS runs find independently verified
+radius-three patches for `p10-062236` and `p10-053068`.
+
+Five free-isometry classes remain: `p10-052588`, `p10-054782`, `p10-055695`,
+`p10-290795`, and `p10-346304`. Every one has an independently verified
+radius-two patch and exhausts 89,435 exact HNF quotient bases through nine
+copies. Across a seven-run radius-three portfolio, each remains a timeout—not
+an exhausted non-tiler search. They replace the two obsolete radius-two entries
+in the web catalogue because they exercise the improved GCTS solver much more
+strongly. The replayable summary is
+`data/polycube-volume10-gcts-funnel-through9-2026-08-21.json`. None of these
+bounded results proves tiling or aperiodicity.
 
 The continuation solver now extracts a proof-relevant reason from a trapped
 patch instead of memoizing the entire boundary. For a radius-five target cell,
@@ -353,3 +374,6 @@ controlled comparisons but is disabled by default.
    on the incoming non-active reciprocal states and test whether their required
    outgoing six-state choices form only finite cycles or support unbounded
    state paths.
+6. Extend the five volume-ten free classes beyond nine-copy HNF quotients and
+   make their radius-three portfolio resumable across learned conflict clauses;
+   a timeout must never be promoted to a finite obstruction.

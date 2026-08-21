@@ -370,6 +370,10 @@ const archivedVolume10CoronaThrough2 = JSON.parse(await readFile(
   new URL("../data/polycube-volume10-corona-through2-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedVolume10GctsFunnelThrough9 = JSON.parse(await readFile(
+  new URL("../data/polycube-volume10-gcts-funnel-through9-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1267,7 +1271,7 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 47, "the lattice controls and focused free-polycube representatives must remain in the catalog");
+assert.equal(candidates.length, 50, "the lattice controls and focused free-polycube representatives must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
 const shellControls = candidates.filter(figure =>
@@ -1276,10 +1280,10 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-assert.equal(survivors.length, 3);
+assert.equal(survivors.length, 6);
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.id).sort(),
-  ["p10-075714", "p10-324131", "p9-42947"]
+  ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304", "p9-42947"]
 );
 const volumeNineSurvivor = survivors.find(figure => figure.census_candidate.id === "p9-42947");
 assert.ok(volumeNineSurvivor
@@ -1291,9 +1295,12 @@ assert.ok(volumeNineSurvivor
 );
 assert.ok(survivors.filter(figure => figure.census_candidate.volume === 10).every(figure =>
   figure.census_candidate.kind === "polycube_census"
-  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 5
-  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 14570
-  && figure.census_candidate.screening.corona_next_radius === 2
+  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 9
+  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 89435
+  && figure.census_candidate.screening.corona_completed_radius === 2
+  && figure.census_candidate.screening.corona_completed_verified === true
+  && figure.census_candidate.screening.corona_next_radius === 3
+  && figure.census_candidate.screening.corona_next_search_exhausted === false
 ));
 assert.equal(shellControls.length, 8);
 assert.equal(periodicControls.length, 36);
@@ -1322,6 +1329,26 @@ assert.equal(archivedPolycubeDeepScreen.periodic_control.independent_verificatio
 assert.equal(archivedVolume10CoronaThrough2.final.complete_radius_2_patches, 6038);
 assert.equal(archivedVolume10CoronaThrough2.final.certified_non_tilers, 4);
 assert.deepEqual(archivedVolume10CoronaThrough2.final.bounded_unresolved_ids, ["p10-075714", "p10-324131"]);
+assert.equal(archivedVolume10GctsFunnelThrough9.corrected_radius_2_census.complete_patches, 6040);
+assert.equal(archivedVolume10GctsFunnelThrough9.corrected_radius_2_census.timeouts, 0);
+assert.ok(archivedVolume10GctsFunnelThrough9.corrected_radius_2_census.formerly_unresolved_replays.every(
+  replay => replay.patch_independently_verified
+));
+assert.equal(
+  archivedVolume10GctsFunnelThrough9.exact_periodic_funnel.hnf_bases_per_surviving_class.cumulative_1_through_9,
+  89435
+);
+assert.equal(archivedVolume10GctsFunnelThrough9.exact_periodic_funnel.copy_9_final_pool.timeouts, 0);
+assert.equal(archivedVolume10GctsFunnelThrough9.final.free_class_candidates, 5);
+assert.deepEqual(
+  archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),
+  ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304"]
+);
+assert.ok(archivedVolume10GctsFunnelThrough9.final_free_class_candidates.every(candidate =>
+  candidate.radius_2.patch_independently_verified
+  && candidate.radius_3.complete_patch_found === false
+  && candidate.radius_3.search_exhausted === false
+));
 assert.equal(archivedPolycubeContinuationNogoods.summary.carried_nogood_clauses, 6573);
 assert.equal(archivedPolycubeContinuationNogoods.summary.total_explained_obstructions, 54);
 assert.equal(archivedPolycubeContinuationNogoods.summary.radius_5_witness_found, false);
