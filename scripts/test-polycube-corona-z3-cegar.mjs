@@ -177,6 +177,10 @@ try {
   assert.ok(secondRing.length > 1);
   const pairPath = join(directory, "pair-coverability.json");
   writeFileSync(pairPath, `${JSON.stringify({ pairs: [[secondRing[0], secondRing.at(-1)]] })}\n`);
+  const triplePath = join(directory, "triple-coverability.json");
+  writeFileSync(triplePath, `${JSON.stringify({
+    triples: [[secondRing[0], secondRing[1], secondRing.at(-1)]]
+  })}\n`);
   const cellPath = join(directory, "cell-coverability.json");
   writeFileSync(cellPath, `${JSON.stringify({ cells: [secondRing[0]] })}\n`);
 
@@ -219,6 +223,59 @@ try {
   assert.ok(groupedCellReport.lookahead_conflict_groups > 0);
   assert.ok(groupedCellReport.constraints < cellReport.constraints);
 
+  const tripleOutput = join(directory, "triple-encoded.json");
+  const tripleEncoded = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--lookahead-conflict-encoding=grouped-pb",
+    `--triple-coverability-report=${triplePath}`,
+    `--output=${tripleOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(tripleEncoded.status, 0, tripleEncoded.stderr);
+  const tripleReport = JSON.parse(readFileSync(tripleOutput, "utf8"));
+  assert.equal(tripleReport.z3_status, "sat");
+  assert.equal(tripleReport.triple_coverability_constraints, 1);
+  assert.equal(tripleReport.triple_coverability_encoding, "choice-cnf");
+  assert.equal(tripleReport.triple_coverability_terms, 0);
+  assert.ok(tripleReport.triple_coverability_choice_variables > 0);
+  assert.ok(tripleReport.triple_coverability_incompatibilities >= 0);
+
+  const initialTripleOutput = join(directory, "initial-triple-summary.json");
+  const initialTripleCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-triple-report=${triplePath}`,
+    `--output-dir=${join(directory, "initial-triple")}`,
+    `--report-output=${initialTripleOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(initialTripleCegar.status, 0, initialTripleCegar.stderr);
+  const initialTripleReport = JSON.parse(readFileSync(initialTripleOutput, "utf8"));
+  assert.ok(initialTripleReport.initial_triple_coverability_constraints >= 1);
+  assert.equal(
+    initialTripleReport.triple_coverability_constraint_count,
+    initialTripleReport.initial_triple_coverability_constraints
+  );
+  const initialTripleProposal = JSON.parse(readFileSync(join(directory, "initial-triple", "outer-witness-0000.json"), "utf8"));
+  assert.equal(
+    initialTripleProposal.triple_coverability_constraints,
+    initialTripleReport.initial_triple_coverability_constraints
+  );
+
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [
     cegar,
@@ -248,6 +305,39 @@ try {
   assert.equal(
     initialCellProposal.lookahead_target_cells,
     initialCellReport.initial_cell_coverability_constraints
+  );
+
+  const bootstrapPairOutput = join(directory, "bootstrap-pair-summary.json");
+  const bootstrapPairCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--bootstrap-pair-distance=1",
+    "--pair-encoding=witness-cnf",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--output-dir=${join(directory, "bootstrap-pair")}`,
+    `--report-output=${bootstrapPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(bootstrapPairCegar.status, 0, bootstrapPairCegar.stderr);
+  const bootstrapPairReport = JSON.parse(readFileSync(bootstrapPairOutput, "utf8"));
+  assert.equal(bootstrapPairReport.bootstrap_pair_distance, 1);
+  assert.equal(bootstrapPairReport.initial_pair_coverability_constraints, 0);
+  assert.ok(bootstrapPairReport.bootstrap_pair_coverability_constraints > 0);
+  assert.equal(
+    bootstrapPairReport.pair_coverability_constraint_count,
+    bootstrapPairReport.bootstrap_pair_coverability_constraints
+  );
+  const bootstrapPairProposal = JSON.parse(readFileSync(join(directory, "bootstrap-pair", "outer-witness-0000.json"), "utf8"));
+  assert.equal(
+    bootstrapPairProposal.pair_coverability_constraints,
+    bootstrapPairReport.bootstrap_pair_coverability_constraints
   );
 
   const positiveOutput = join(directory, "positive-summary.json");

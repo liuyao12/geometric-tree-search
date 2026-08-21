@@ -14,9 +14,14 @@ import {
   createPolycubeCoronaPairObstructionOracle,
   enumeratePolycubeCoronaPlacements,
   polycubeCellPairOrbitKeys,
+  polycubeCellQuadrupleOrbitKeys,
+  polycubeCellTripleOrbitKeys,
   polycubeCoronaIncompatibleTargetPairDetails,
   polycubeCoronaIncompatibleTargetPairs,
+  polycubeCoronaIncompatibleTargetQuadrupleDetails,
+  polycubeCoronaIncompatibleTargetTripleDetails,
   polycubeCoronaPairObstruction,
+  polycubeCoronaRingCellKeys,
   polycubePlacementClauseOrbitKeys,
   polycubePlacementOrbitKeys,
   polycubeCoronaBoundaryKey,
@@ -739,6 +744,7 @@ const trappedIncompatiblePairs = polycubeCoronaIncompatibleTargetPairs(
   unresolvedRadiusFour.corona,
   4
 );
+assert.equal(polycubeCoronaRingCellKeys(unresolvedP9.voxels, 5).length, 180);
 const trappedIncompatiblePairDetails = polycubeCoronaIncompatibleTargetPairDetails(
   unresolvedP9.voxels,
   unresolvedRadiusFour.corona,
@@ -753,6 +759,32 @@ assert.ok(trappedIncompatiblePairDetails.every(detail =>
   detail.candidate_pairs_blocked === detail.left_choices * detail.right_choices
 ));
 assert.ok(trappedIncompatiblePairDetails.some(detail => detail.candidate_pairs_blocked > 0));
+const trappedIncompatibleTripleDetails = polycubeCoronaIncompatibleTargetTripleDetails(
+  unresolvedP9.voxels,
+  unresolvedRadiusFour.corona,
+  4,
+  { maximumCellDistance: 3, limit: 2 }
+);
+assert.ok(trappedIncompatibleTripleDetails.length > 0);
+assert.ok(trappedIncompatibleTripleDetails.every(detail =>
+  detail.target_cells.length === 3
+  && detail.candidate_triples_blocked === detail.choice_counts.reduce((product, count) => product * count, 1)
+));
+assert.ok(polycubeCellTripleOrbitKeys(
+  unresolvedP9.voxels,
+  trappedIncompatibleTripleDetails[0].target_cells
+).length > 0);
+const trappedIncompatibleQuadrupleDetails = polycubeCoronaIncompatibleTargetQuadrupleDetails(
+  unresolvedP9.voxels,
+  unresolvedRadiusFour.corona,
+  4,
+  { maximumCellDistance: 6, limit: 1 }
+);
+assert.ok(trappedIncompatibleQuadrupleDetails.length > 0);
+assert.ok(polycubeCellQuadrupleOrbitKeys(
+  unresolvedP9.voxels,
+  trappedIncompatibleQuadrupleDetails[0].target_cells
+).length > 0);
 assert.ok(polycubeCellPairOrbitKeys(unresolvedP9.voxels, trappedIncompatiblePairs[0]).length > 0);
 const pairObstructionOracle = createPolycubeCoronaPairObstructionOracle(unresolvedP9.voxels, 4);
 const trappedPairObstruction = pairObstructionOracle(unresolvedRadiusFour.corona);

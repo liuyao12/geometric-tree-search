@@ -129,6 +129,8 @@ def main():
     parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
+    parser.add_argument("--triple-coverability-report")
+    parser.add_argument("--triple-encoding", choices=("dnf", "choice-cnf"), default="choice-cnf")
     parser.add_argument("--pair-encoding", choices=("dnf", "choice-cnf", "witness-cnf"), default="dnf")
     parser.add_argument("--lookahead-conflict-encoding", choices=("edge-cnf", "grouped-pb"), default="edge-cnf")
     parser.add_argument("--root-symmetry-breaking", action="store_true")
@@ -216,12 +218,22 @@ def main():
         pair_coverability = pair_report.get("pairs", pair_report) if isinstance(pair_report, dict) else pair_report
         if not isinstance(pair_coverability, list):
             raise ValueError("Pair coverability report must contain a pairs list")
+    triple_coverability = []
+    if args.triple_coverability_report:
+        triple_report = json.loads(Path(args.triple_coverability_report).read_text(encoding="utf-8"))
+        triple_coverability = triple_report.get("triples", triple_report) if isinstance(triple_report, dict) else triple_report
+        if not isinstance(triple_coverability, list):
+            raise ValueError("Triple coverability report must contain a triples list")
     pair_coverability_count = 0
     pair_coverability_terms = 0
     pair_coverability_choice_variables = 0
     pair_coverability_incompatibilities = 0
+    triple_coverability_count = 0
+    triple_coverability_terms = 0
+    triple_coverability_choice_variables = 0
+    triple_coverability_incompatibilities = 0
     cell_coverability_count = 0
-    if args.require_next_layer_coverability or cell_coverability or pair_coverability:
+    if args.require_next_layer_coverability or cell_coverability or pair_coverability or triple_coverability:
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
         normalized_cells = set()
@@ -238,9 +250,19 @@ def main():
             if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
                 raise ValueError(f"Pair coverability entry {pair_number} is not a distinct next-ring cell pair")
             normalized_pairs.add(cells)
+        normalized_triples = set()
+        for triple_number, triple in enumerate(triple_coverability):
+            if not isinstance(triple, list) or len(triple) != 3:
+                raise ValueError(f"Triple coverability entry {triple_number} must contain three cell keys")
+            cells = tuple(sorted(parse_cell_key(cell) for cell in triple))
+            if len(set(cells)) != 3 or any(cell not in next_ring for cell in cells):
+                raise ValueError(f"Triple coverability entry {triple_number} is not a distinct next-ring cell triple")
+            normalized_triples.add(cells)
         constrained_cells = set(next_ring) if args.require_next_layer_coverability else set(normalized_cells)
         for pair in normalized_pairs:
             constrained_cells.update(pair)
+        for triple in normalized_triples:
+            constrained_cells.update(triple)
         next_by_cell = {}
         for index, placement in enumerate(next_placements):
             for cell in placement:
@@ -261,7 +283,7 @@ def main():
         retained_by_cell = {}
         retained_indices = set()
         for cell in sorted(constrained_cells):
-            if pair_coverability:
+            if pair_coverability or triple_coverability:
                 retained = list(next_by_cell.get(cell, ()))
             else:
                 representative_by_conflicts = {}
@@ -362,7 +384,53 @@ def main():
                     ))
             solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
             pair_coverability_terms += len(compatible_terms)
+        for triple_index, (left_cell, middle_cell, right_cell) in enumerate(sorted(normalized_triples)):
+            if args.triple_encoding == "choice-cnf":
+                choice_groups = []
+                for side, cell in enumerate((left_cell, middle_cell, right_cell)):
+                    choices = {
+                        index: z3.Bool(f"t_{triple_index}_{side}_{index}")
+                        for index in retained_by_cell.get(cell, ())
+                    }
+                    solver.add(z3.Or(list(choices.values())) if choices else z3.BoolVal(False))
+                    for index, choice in choices.items():
+                        solver.add(z3.Or(z3.Not(choice), availability[index]))
+                    choice_groups.append(choices)
+                    triple_coverability_choice_variables += len(choices)
+                for left_group_index in range(3):
+                    for right_group_index in range(left_group_index + 1, 3):
+                        for left_index, left_choice in choice_groups[left_group_index].items():
+                            for right_index, right_choice in choice_groups[right_group_index].items():
+                                if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
+                                    placement_cell_sets[right_index]
+                                ):
+                                    continue
+                                solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
+                                triple_coverability_incompatibilities += 1
+                continue
+            compatible_terms = {}
+            for left_index in retained_by_cell.get(left_cell, ()):
+                for middle_index in retained_by_cell.get(middle_cell, ()):
+                    if left_index != middle_index and not placement_cell_sets[left_index].isdisjoint(
+                        placement_cell_sets[middle_index]
+                    ):
+                        continue
+                    for right_index in retained_by_cell.get(right_cell, ()):
+                        if ((left_index != right_index and not placement_cell_sets[left_index].isdisjoint(
+                                placement_cell_sets[right_index]
+                            ))
+                                or (middle_index != right_index and not placement_cell_sets[middle_index].isdisjoint(
+                                    placement_cell_sets[right_index]
+                                ))):
+                            continue
+                        indices = tuple(sorted(set((left_index, middle_index, right_index))))
+                        compatible_terms.setdefault(indices, z3.And([
+                            availability[index] for index in indices
+                        ]))
+            solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
+            triple_coverability_terms += len(compatible_terms)
         pair_coverability_count = len(normalized_pairs)
+        triple_coverability_count = len(normalized_triples)
         cell_coverability_count = len(coverability_cells)
         lookahead_target_count = len(constrained_cells)
         lookahead_raw_placement_count = len(relevant_indices)
@@ -409,6 +477,11 @@ def main():
         "pair_coverability_encoding": args.pair_encoding,
         "pair_coverability_choice_variables": pair_coverability_choice_variables,
         "pair_coverability_incompatibilities": pair_coverability_incompatibilities,
+        "triple_coverability_constraints": triple_coverability_count,
+        "triple_coverability_terms": triple_coverability_terms,
+        "triple_coverability_encoding": args.triple_encoding,
+        "triple_coverability_choice_variables": triple_coverability_choice_variables,
+        "triple_coverability_incompatibilities": triple_coverability_incompatibilities,
         "root_symmetry_breaking": args.root_symmetry_breaking,
         "root_stabilizer_size": root_stabilizer_size,
         "symmetry_breaking_constraints": symmetry_breaking_constraints,

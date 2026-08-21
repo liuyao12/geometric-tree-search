@@ -784,6 +784,9 @@ node scripts/screen-polycube-corona-z3-cegar.mjs \
   --lookahead-conflict-encoding=grouped-pb \
   --learn-pair-coverability=true --pair-orbit-limit=2 \
   --pair-selection=max-blocked-combinations \
+  --bootstrap-pair-distance=2 \
+  --learn-triple-coverability=true --triple-max-cell-distance=3 \
+  --triple-encoding=choice-cnf \
   --pair-encoding=witness-cnf
 ```
 
@@ -801,7 +804,14 @@ conflict encoding replaces one implication per conflicting outer/lookahead
 placement pair with one equivalent pseudo-Boolean implication per outer
 placement; `edge-cnf` remains available as the baseline. Pair learning can
 retain the historical lexicographic order or prioritize the obstruction that
-blocks the most or fewest currently available placement combinations.
+blocks the most or fewest currently available placement combinations. A
+positive `--bootstrap-pair-distance` adds every next-ring cell-pair obligation
+within that Manhattan distance, closed under the root stabilizer, before the
+first proposal solve. Once a proposal has no incompatible pair,
+`--learn-triple-coverability` can learn a nearby incompatible cell triple.
+The default triple choice-CNF selects one available placement per cell and
+forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
+DNF while expressing the same exact condition.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all
