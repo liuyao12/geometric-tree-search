@@ -42,6 +42,7 @@ tileSelect.addEventListener("change", () => {
 });
 
 const MAX_GENERATION = 4;
+const RETAINED_CHILD_INDICES = [0, 1, 2, 3, 5, 6, 7];
 const ORIENTATION_COLORS = [
   0x4776a8, 0x7a68a6, 0x3d8e84, 0x5aa36f,
   0xd66f57, 0xca6f94, 0xdfb65b, 0xb9944e
@@ -418,7 +419,9 @@ function chairLeaves(level, origin = [0, 0, 0], missingCorner = [1, 1, 1], path 
 }
 
 function randomRetainedChildIndex() {
-  return Math.floor(Math.random() * CANONICAL_CHILDREN.length);
+  return RETAINED_CHILD_INDICES[
+    Math.floor(Math.random() * RETAINED_CHILD_INDICES.length)
+  ];
 }
 
 function childSupertile(parent, childIndex) {
