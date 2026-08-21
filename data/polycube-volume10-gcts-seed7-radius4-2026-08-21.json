@@ -1,0 +1,141 @@
+{
+  "schema": "gcts.polycube_corona_portfolio_layer.v1",
+  "date": "2026-08-21",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "input": {
+    "periodic_screen": "data/polycube-volume10-periodic-copy12-2026-08-21.json",
+    "previous_corona_screen": "data/polycube-volume10-gcts-funnel-through9-2026-08-21.json",
+    "free_class_candidates": 5
+  },
+  "protocol": {
+    "solver": "generalized dancing links with exact placement nogoods and conflict-directed backjumping",
+    "seed": 7,
+    "seed_status": "not used by the preceding radius-three funnel",
+    "time_budget_clock": "cpu",
+    "time_limit_ms_per_long_run": 600000,
+    "node_limit_per_run": 2000000000,
+    "reflections_allowed_within_tiling": false,
+    "independent_patch_verifier": "congruence, non-overlap, and complete target-cell occupancy replay",
+    "interpretation": "A verified finite corona is necessary evidence for tiling but is not a space-tiling certificate. A timeout is not a non-tiling certificate."
+  },
+  "candidates": [
+    {
+      "id": "p10-052588",
+      "radius_3": {
+        "success": false,
+        "verified": null,
+        "stopped_by": "time_limit",
+        "nodes": 1780736,
+        "milliseconds": 612320,
+        "target_cells": 179,
+        "placements_considered": 8767,
+        "nogood_clauses": 8101,
+        "nogood_prunes": 3321365,
+        "conflict_backjumps": 262699
+      }
+    },
+    {
+      "id": "p10-054782",
+      "radius_3": {
+        "success": true,
+        "verified": true,
+        "stopped_by": null,
+        "nodes": 2037,
+        "milliseconds": 767,
+        "target_cells": 191,
+        "placements_considered": 9694,
+        "witness_placements": 45,
+        "verified_occupied_cells": 460,
+        "verification_method": "independent_corona_patch_occupancy",
+        "nogood_clauses": 384,
+        "nogood_prunes": 2212,
+        "conflict_backjumps": 200
+      },
+      "radius_4": {
+        "success": false,
+        "verified": null,
+        "stopped_by": "time_limit",
+        "nodes": 1912832,
+        "milliseconds": 608860,
+        "target_cells": 334,
+        "placements_considered": 15644,
+        "nogood_clauses": 2430,
+        "nogood_prunes": 3010949,
+        "conflict_backjumps": 163969
+      }
+    },
+    {
+      "id": "p10-055695",
+      "radius_3": {
+        "success": true,
+        "verified": true,
+        "stopped_by": null,
+        "nodes": 32178,
+        "milliseconds": 4062,
+        "target_cells": 182,
+        "placements_considered": 4632,
+        "witness_placements": 47,
+        "verified_occupied_cells": 480,
+        "verification_method": "independent_corona_patch_occupancy",
+        "nogood_clauses": 1094,
+        "nogood_prunes": 26382,
+        "conflict_backjumps": 6182
+      },
+      "radius_4": {
+        "success": false,
+        "verified": null,
+        "stopped_by": "time_limit",
+        "nodes": 3885056,
+        "milliseconds": 609311,
+        "target_cells": 320,
+        "placements_considered": 7488,
+        "nogood_clauses": 15866,
+        "nogood_prunes": 3772342,
+        "conflict_backjumps": 513069
+      }
+    },
+    {
+      "id": "p10-290795",
+      "radius_3": {
+        "success": false,
+        "verified": null,
+        "stopped_by": "time_limit",
+        "nodes": 4618240,
+        "milliseconds": 608890,
+        "target_cells": 206,
+        "placements_considered": 11637,
+        "nogood_clauses": 1363,
+        "nogood_prunes": 10093413,
+        "conflict_backjumps": 2088104
+      }
+    },
+    {
+      "id": "p10-346304",
+      "radius_3": {
+        "success": false,
+        "verified": null,
+        "stopped_by": "time_limit",
+        "nodes": 8250368,
+        "milliseconds": 611997,
+        "target_cells": 182,
+        "placements_considered": 3145,
+        "nogood_clauses": 6636,
+        "nogood_prunes": 12518916,
+        "conflict_backjumps": 849563
+      }
+    }
+  ],
+  "final": {
+    "radius_3_candidates": 5,
+    "new_verified_radius_3_patches": 2,
+    "radius_3_timeouts": 3,
+    "radius_3_certified_non_tilers": 0,
+    "radius_4_candidates": 2,
+    "verified_radius_4_patches": 0,
+    "radius_4_timeouts": 2,
+    "radius_4_certified_non_tilers": 0,
+    "remaining_inconclusive_candidates": 5
+  },
+  "warning": "None of these finite results proves that a candidate tiles space or is aperiodic."
+}

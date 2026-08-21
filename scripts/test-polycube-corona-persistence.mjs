@@ -17,6 +17,7 @@ const common = [
   "--obstruction-nogoods=true",
   "--obstruction-conflict-backjumping=true",
   "--obstruction-return-nogoods=true",
+  "--obstruction-return-corona=true",
   "--nodes=500",
   "--report-chirality=false"
 ];
@@ -37,6 +38,8 @@ try {
   const trainingOutput = run([`--key=${candidateKey}`, "--obstruction-seed=0", ...common]);
   const training = candidateRecord(trainingOutput);
   assert.equal(training.obstruction.patch_verified, true);
+  assert.ok(training.obstruction.corona.length > 0);
+  assert.equal(training.obstruction.corona_verification.verified, true);
   assert.ok(training.obstruction.nogood_clause_keys.length > 0);
 
   const report = join(temporaryDirectory, "training.ndjson");

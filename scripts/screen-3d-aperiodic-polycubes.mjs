@@ -144,6 +144,7 @@ const obstructionNogoods = booleanArg("obstruction-nogoods", true);
 const obstructionConflictBackjumping = booleanArg("obstruction-conflict-backjumping", true);
 const obstructionSymmetryNogoods = booleanArg("obstruction-symmetry-nogoods", false);
 const obstructionReturnNogoods = booleanArg("obstruction-return-nogoods", false);
+const obstructionReturnCorona = booleanArg("obstruction-return-corona", false);
 const obstructionNogoodLimit = Math.max(1, Math.floor(numberArg("obstruction-nogood-limit", 50_000)));
 const obstructionSeed = Math.floor(numberArg("obstruction-seed", 0));
 const nodeLimit = Math.max(1, Math.floor(numberArg("nodes", 20000)));
@@ -273,6 +274,7 @@ process.stdout.write(`${JSON.stringify({
   obstruction_symmetry_nogoods: obstructionSymmetryNogoods,
   obstruction_initial_nogood_reports: obstructionInitialNogoodReports,
   obstruction_return_nogoods: obstructionReturnNogoods,
+  obstruction_return_corona: obstructionReturnCorona,
   obstruction_seed: obstructionSeed,
   stop_after: stopAfter
 })}\n`);
@@ -429,6 +431,10 @@ for (let index = 0; index < candidates.length; index++) {
       nogood_average_size: obstruction.nogood_average_size ?? null,
       initial_nogood_clauses: obstruction.initial_nogood_clauses ?? null,
       nogood_clause_keys: obstructionReturnNogoods ? obstruction.nogood_clause_keys : null,
+      corona: obstructionReturnCorona && obstruction.success ? obstruction.corona : null,
+      corona_verification: obstructionReturnCorona && obstruction.success
+        ? obstruction.verification
+        : null,
       conflict_backjumps: obstruction.conflict_backjumps ?? null,
       symmetry_nogood_clauses: obstruction.symmetry_nogood_clauses ?? null,
       resolved_fixed_conflict_size: obstruction.resolved_fixed_conflict

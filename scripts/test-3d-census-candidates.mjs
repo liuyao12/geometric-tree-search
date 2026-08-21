@@ -386,6 +386,10 @@ const archivedVolume10PeriodicCopy12 = JSON.parse(await readFile(
   new URL("../data/polycube-volume10-periodic-copy12-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedVolume10Seed7Coronas = JSON.parse(await readFile(
+  new URL("../data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1311,11 +1315,27 @@ assert.ok(survivors.filter(figure => figure.census_candidate.volume === 10).ever
   && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 208971
   && figure.census_candidate.screening.periodic_hnf_report
     === "data/polycube-volume10-periodic-copy12-2026-08-21.json"
-  && figure.census_candidate.screening.corona_completed_radius === 2
   && figure.census_candidate.screening.corona_completed_verified === true
-  && figure.census_candidate.screening.corona_next_radius === 3
+  && figure.census_candidate.screening.corona_report
+    === "data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json"
   && figure.census_candidate.screening.corona_next_search_exhausted === false
 ));
+assert.deepEqual(
+  Object.fromEntries(survivors.filter(figure => figure.census_candidate.volume === 10).map(figure => [
+    figure.census_candidate.id,
+    [
+      figure.census_candidate.screening.corona_completed_radius,
+      figure.census_candidate.screening.corona_next_radius
+    ]
+  ])),
+  {
+    "p10-052588": [2, 3],
+    "p10-054782": [3, 4],
+    "p10-055695": [3, 4],
+    "p10-290795": [2, 3],
+    "p10-346304": [2, 3]
+  }
+);
 assert.equal(shellControls.length, 8);
 assert.equal(periodicControls.length, 36);
 const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
@@ -1386,6 +1406,19 @@ assert.equal(
   }, 7452),
   62465
 );
+assert.equal(archivedVolume10Seed7Coronas.final.new_verified_radius_3_patches, 2);
+assert.equal(archivedVolume10Seed7Coronas.final.radius_3_timeouts, 3);
+assert.equal(archivedVolume10Seed7Coronas.final.radius_3_certified_non_tilers, 0);
+assert.equal(archivedVolume10Seed7Coronas.final.radius_4_timeouts, 2);
+assert.deepEqual(
+  archivedVolume10Seed7Coronas.candidates
+    .filter(candidate => candidate.radius_3.success)
+    .map(candidate => [candidate.id, candidate.radius_3.witness_placements]),
+  [["p10-054782", 45], ["p10-055695", 47]]
+);
+assert.ok(archivedVolume10Seed7Coronas.candidates
+  .filter(candidate => candidate.radius_3.success)
+  .every(candidate => candidate.radius_3.verified));
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),
   ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304"]

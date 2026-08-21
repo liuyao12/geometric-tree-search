@@ -545,6 +545,19 @@ interval and audit entry points are
 `scripts/screen-3d-aperiodic-polycubes.mjs --periodic-hnf-start-index=... --periodic-hnf-end-index=...`
 and `scripts/audit-polycube-periodic-shards.mjs`.
 
+The same five candidates expose a useful proposal-ordering failure in GCTS.
+Their original seven-order radius-three portfolio left all five unresolved. A
+previously unused deterministic ordering, seed 7, finds and independently
+verifies radius-three patches for `p10-054782` and `p10-055695` in 2,037 and
+32,178 nodes, respectively. The witnesses use 45 and 47 surrounding tiles.
+The other three seed-7 searches run for 600 CPU-seconds each without a witness
+or exhaustion, so they remain inconclusive. Direct radius-four searches on the
+two new survivors likewise time out after 600 CPU-seconds, at 1,912,832 and
+3,885,056 nodes. This confirms that diverse proposal order is part of the
+screen, while preserving the distinction between a finite witness, a finite
+obstruction, and a timeout. See
+`data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json`.
+
 Continuation conflicts can now be resolved through nontrivial exact-cover
 subtrees, not only extracted from an immediately dead target cell. Each child
 conflict is resolved against its temporary placement; after every branch at a
