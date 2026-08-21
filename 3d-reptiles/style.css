@@ -253,6 +253,18 @@ h1 {
   font: 400 23px/1.15 Georgia, "Times New Roman", serif;
 }
 
+.orientation-heading strong sub,
+.matrix-heading strong sub {
+  font-size: .58em;
+  vertical-align: -.22em;
+}
+
+.mathbb {
+  font-family: "STIX Two Math", "Cambria Math", "Times New Roman", serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
 .orientation-count { justify-items: end; }
 .orientation-count b { color: var(--ink); font: 400 17px/1.1 Georgia, "Times New Roman", serif; }
 
