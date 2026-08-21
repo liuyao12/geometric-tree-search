@@ -140,6 +140,21 @@ assert.match(growthWorkerSource, /type: "sample-batch"/);
 assert.doesNotMatch(growthWorkerSource, /tiles > best/);
 assert.match(sourceTilerHtml, /id="growthHistoryBack"[\s\S]*?id="growthHistoryForward"/);
 assert.match(growthAppSource, /function stepGrowthHistory\(direction\)/);
+assert.doesNotMatch(
+  growthAppSource,
+  /function activateGrowthMode\(/,
+  "the growth panel must not own a lane-switching helper"
+);
+assert.match(
+  growthAppSource,
+  /function handleGrowthPlotClick\(event\) \{[\s\S]*?const modeId = selectedGrowthMode\(\);[\s\S]*?clickedModeId !== modeId[\s\S]*?showGrowthSnapshot\(modeId, pointIndex\);/,
+  "growth markers must only inspect history for the lane selected in the controls"
+);
+assert.match(
+  growthAppSource,
+  /legend: \{[\s\S]*?itemclick: false,[\s\S]*?itemdoubleclick: false/,
+  "the Plotly legend must not switch or hide growth lanes"
+);
 assert.doesNotMatch(sourceTilerHtml, /Learning Free-range/);
 assert.match(sourceTilerHtml, /<b>GCTS<\/b>/);
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
