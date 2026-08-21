@@ -2645,4 +2645,16 @@ hashed. A group-heldout parent-option corpus and a third self-fed block are
 still required before autonomous, stationary, or exponential IQC growth can
 turn green.
 
+That group-heldout audit now exists. It contains 1,278 six-action parents
+across ten consumed development nuclei, 142 exact parents, and a frozen graph
+of at most eight target-free child actions below every parent. Order-one and
+order-two typed-port values are fitted leave-one-nucleus-out; local port-mass
+and live-continuation channels are fixed. A width-four option beam retains an
+exact parent in `8 / 9` supplied held-out nuclei with mean first-exact rank sum
+`30`. Thirty-one marginal-preserving controls give `p=.03125` for retention
+and rank. The strongest order-two graph value is itself `8 / 9`, however, so
+the option portfolio has not yet improved causal retention. Individual child
+nodes have no correctness labels; this is parent supply, not a third-block or
+autonomous-growth result.
+
 Serve the repository root and open `/iqc-growth-live/`.

@@ -5037,3 +5037,27 @@ greedy child is exact. The next gate is a group-heldout parent-option corpus
 followed by a third-block self-fed execution from the retained six-action
 states. Autonomous commitment, stationary recurrence, and exponential IQC
 growth remain red.
+
+The group-heldout parent-option corpus is now frozen and audited. It contains
+`1,278` six-action parents from ten consumed development nuclei, `142` exact
+parent labels, and a proper-SE(3)-invariant child-frontier graph of at most
+eight target-free actions under every parent. In each fold, order-one and
+order-two typed-port graph values fit only the other nine nuclei; fixed local
+port-mass and live-continuation channels score the identical child IDs.
+
+| leave-one-nucleus-out option audit | result |
+| --- | ---: |
+| supplied held-out nuclei | `9 / 10` |
+| exact parent retained by width-four option beam | `8 / 9` |
+| exact parent selected by order-two top-one | `8 / 9` |
+| mean first-exact rank sum | `30` |
+| marginal-preserving retention / rank p | `.03125 / .03125` |
+| individually labelled child actions | no |
+
+Thus the option values are transferable and sharply non-random, but the
+portfolio ties rather than beats the strongest existing graph head. This
+closes the proposed group-heldout *parent-supply* gate while leaving the
+incremental causal-superiority gate red. The next admissible experiment must
+reconstruct the retained parent states, freeze executable child actions, and
+open a later annulus only afterward; parent correctness cannot be recycled as
+a child label.
