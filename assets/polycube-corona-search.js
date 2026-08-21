@@ -452,7 +452,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
   let nogoodMaxSize = 0;
   let maximumDepth = fixedPlacements.length;
   let nogoodSaturated = false;
-  let violatedNogoods = 0;
+  const violatedNogoods = new Set();
   const selectedPlacementIds = new Set();
   const selectedOwnerByCell = new Map();
   const nogoods = [];
@@ -534,12 +534,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
     for (const key of placement.cellKeys) selectedOwnerByCell.set(key, placement.id);
     for (const nogood of nogoodsByPlacement.get(placement.id) ?? []) {
       nogood.selected += 1;
-      if (nogood.selected === nogood.ids.length) violatedNogoods += 1;
+      if (nogood.selected === nogood.ids.length) violatedNogoods.add(nogood);
     }
   };
   const removeSelectedPlacement = placement => {
     for (const nogood of nogoodsByPlacement.get(placement.id) ?? []) {
-      if (nogood.selected === nogood.ids.length) violatedNogoods -= 1;
+      if (nogood.selected === nogood.ids.length) violatedNogoods.delete(nogood);
       nogood.selected -= 1;
     }
     for (const key of placement.cellKeys) selectedOwnerByCell.delete(key);
@@ -578,7 +578,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
       if (!nogoodsByPlacement.has(id)) nogoodsByPlacement.set(id, []);
       nogoodsByPlacement.get(id).push(nogood);
     }
-    if (nogood.selected === nogood.ids.length) violatedNogoods += 1;
+    if (nogood.selected === nogood.ids.length) violatedNogoods.add(nogood);
     return nogood;
   };
   const learnNogood = ids => {
@@ -688,10 +688,10 @@ export function searchPolycubeCorona(voxels, options = {}) {
   };
 
   const search = () => {
-    if (violatedNogoods) {
+    if (violatedNogoods.size) {
       nogoodPrunes += 1;
       if (conflictExplanationsEnabled) {
-        const violated = nogoods.find(nogood => nogood.selected === nogood.ids.length);
+        const violated = violatedNogoods.values().next().value;
         lastConflict = violated
           ? fixedConditionedConflict(violated.ids)
           : null;
@@ -772,7 +772,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
           branchResiduals.set(row.placement.id, residual);
         }
       }
-      if (stoppedBy || violatedNogoods) break;
+      if (stoppedBy || violatedNogoods.size) break;
     }
     uncover(pivot);
     if (conflictExplanationsEnabled && !stoppedBy) {
