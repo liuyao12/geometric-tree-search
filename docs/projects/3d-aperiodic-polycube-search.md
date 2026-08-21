@@ -98,6 +98,10 @@ fully checked. This prevents a timed-out two-copy search from being silently
 skipped when the next shard starts at three copies. Comma-separate multiple
 paths in `--input-report` to consume a sharded census without first rewriting
 its receipts.
+Once an input receipt has already exhausted a stage, `--periodic-screen=false`
+and `--isohedral-screen=false` skip those lanes entirely. This is preferable to
+assigning a tiny artificial time limit: a skipped stage is explicit in every
+row and does not distort the next stage's budget or timing.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately

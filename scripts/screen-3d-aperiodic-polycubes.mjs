@@ -59,9 +59,11 @@ const boxMaxTiles = Math.max(1, Math.floor(numberArg("box-max-tiles", 4)));
 const boxTimeMs = Math.max(1, numberArg("box-time-ms", 100));
 const boxScreen = booleanArg("box-screen", true);
 const periodicTimeMs = Math.max(1, numberArg("periodic-time-ms", 1000));
+const periodicScreenEnabled = booleanArg("periodic-screen", true);
 const generalPeriodic = booleanArg("general-periodic", true);
 const isohedralTarget = Math.max(2, Math.floor(numberArg("isohedral-target", 12)));
 const isohedralTimeMs = Math.max(1, numberArg("isohedral-time-ms", 500));
+const isohedralScreenEnabled = booleanArg("isohedral-screen", true);
 const obstructionLayer = Math.max(1, Math.floor(numberArg("obstruction-layer", 1)));
 const obstructionTimeMs = Math.max(1, numberArg("obstruction-time-ms", 1000));
 const obstructionNogoods = booleanArg("obstruction-nogoods", true);
@@ -165,7 +167,9 @@ process.stdout.write(`${JSON.stringify({
   input_stopped_by: inputStoppedBy ?? null,
   periodic_max_tiles: periodicMaxTiles,
   periodic_min_tiles: periodicMinTiles,
+  periodic_screen: periodicScreenEnabled,
   box_screen: boxScreen,
+  isohedral_screen: isohedralScreenEnabled,
   obstruction_layer: obstructionLayer,
   stop_after: stopAfter
 })}\n`);
@@ -173,13 +177,23 @@ process.stdout.write(`${JSON.stringify({
 for (let index = 0; index < candidates.length; index++) {
   const candidate = candidates[index];
   const candidateStartedAt = performance.now();
-  const torus = findPolycubePeriodicTiling(candidate.voxels, {
-    includeReflections,
-    minCopies: periodicMinTiles,
-    maxCopies: periodicMaxTiles,
-    nodeLimit,
-    timeLimitMs: periodicTimeMs
-  });
+  const torus = periodicScreenEnabled
+    ? findPolycubePeriodicTiling(candidate.voxels, {
+        includeReflections,
+        minCopies: periodicMinTiles,
+        maxCopies: periodicMaxTiles,
+        nodeLimit,
+        timeLimitMs: periodicTimeMs
+      })
+    : {
+        kind: "periodic_screen_skipped",
+        certified: false,
+        can_tile: null,
+        stopped_by: null,
+        nodes: 0,
+        hnf_visited: 0,
+        milliseconds: 0
+      };
   const box = torus.certified || !boxScreen ? null : findPolycubeBoxTiling(candidate.voxels, {
     includeReflections,
     maxCopies: boxMaxTiles,
@@ -202,7 +216,7 @@ for (let index = 0; index < candidates.length; index++) {
   if (easyCertified || (periodic?.tiling_evidence?.certified && periodic?.can_tile === true)) {
     classification = "periodic";
   } else if (stopAfter !== "periodic") {
-    isohedral = await isohedralLeadScreen(candidate);
+    if (isohedralScreenEnabled) isohedral = await isohedralLeadScreen(candidate);
     if (isohedral?.tiling_evidence?.certified && isohedral?.can_tile === true) {
       classification = "periodic";
     } else {
