@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   canonicalPolycubeKey,
   enumeratePolycubes,
@@ -27,6 +28,21 @@ import {
   verifyPolycubePeriodicCertificate
 } from "../assets/polycube-periodic-tiler.js";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
+
+const volume10Through2 = JSON.parse(readFileSync(
+  new URL("../data/polycube-volume10-periodic-through2-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+assert.equal(volume10Through2.enumeration.candidates, 346543);
+assert.equal(volume10Through2.final.periodic, 322644);
+assert.deepEqual(volume10Through2.final.periodic_by_motif_tiles, { "1": 112531, "2": 210113 });
+assert.equal(volume10Through2.final.exactly_exhausted_survivors, 23899);
+assert.equal(volume10Through2.timeout_retry.remaining_time_or_node_limits, 0);
+assert.deepEqual(volume10Through2.protocol.hnf_candidates_exhausted_per_final_survivor, {
+  "1_copy": 217,
+  "2_copies": 1085,
+  total: 1302
+});
 
 assert.equal(POLYCUBE_ROTATION_COUNT, 24);
 assert.equal(POLYCUBE_ISOMETRY_COUNT, 48);

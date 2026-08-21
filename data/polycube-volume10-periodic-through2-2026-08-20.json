@@ -1,0 +1,72 @@
+{
+  "schema": "gcts.polycube_periodic_census.v1",
+  "date": "2026-08-20",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "enumeration": {
+    "candidates": 346543,
+    "canonical_key_sha256": "1754dfeef617ae117826f2565fe61217b2b01c344f106fd4ed51e9483c77e1ad",
+    "milliseconds": 80456,
+    "peak_rss_bytes": 671989760
+  },
+  "protocol": {
+    "solver": "exact HNF quotient cover",
+    "copy_sizes": [1, 2],
+    "reflections_allowed_within_tiling": false,
+    "box_fallback": false,
+    "general_periodic_fallback": false,
+    "chirality_deferred": true,
+    "initial_time_limit_ms_per_candidate": 250,
+    "initial_node_limit_per_candidate": 50000,
+    "timeout_retry_time_limit_ms_per_candidate": 2000,
+    "timeout_retry_node_limit_per_candidate": 500000,
+    "hnf_candidates_exhausted_per_final_survivor": {
+      "1_copy": 217,
+      "2_copies": 1085,
+      "total": 1302
+    }
+  },
+  "initial_pass": {
+    "periodic": 321820,
+    "bounded_unresolved": 24723,
+    "completed_misses": 22885,
+    "time_limits": 1838,
+    "periodic_by_motif_tiles": {
+      "1": 112531,
+      "2": 209289
+    },
+    "shard_candidate_counts": [43318, 43318, 43318, 43318, 43318, 43318, 43318, 43317],
+    "shard_milliseconds": [1017681, 1105675, 1039101, 1018405, 949979, 963235, 1050456, 1000108]
+  },
+  "timeout_retry": {
+    "candidates": 1838,
+    "new_periodic_certificates": 824,
+    "completed_misses": 1014,
+    "remaining_time_or_node_limits": 0,
+    "periodic_by_motif_tiles": {
+      "2": 824
+    },
+    "shard_candidate_counts": [230, 230, 230, 230, 230, 230, 230, 228],
+    "shard_milliseconds": [22589, 21132, 21269, 19088, 19933, 18482, 20602, 19469]
+  },
+  "final": {
+    "periodic": 322644,
+    "periodic_by_motif_tiles": {
+      "1": 112531,
+      "2": 210113
+    },
+    "exactly_exhausted_survivors": 23899,
+    "periodic_key_sha256": "e4f6071a9dad77e64354fff928e82e48edd26e5c3106c219fa2b42c19af618ab",
+    "survivor_key_sha256": "911db29e879ef20ca67517deea8a78bb3001da1e24fc2edb72196e070f0e058a",
+    "periodic_id_sha256": "1bbc5ed3da0b84299164386926c61bb20eae970578b27b72a9e6a73d7e6d8bd5",
+    "survivor_id_sha256": "47d8630129fbd4c35e0911149f3941a4e4b42ddc07d7888d6df49fbcd3705638",
+    "id_coverage": {
+      "unique": 346543,
+      "first": "p10-000001",
+      "last": "p10-346543",
+      "gaps": 0,
+      "duplicates": 0
+    }
+  },
+  "interpretation": "Every final survivor has exhausted all 1,302 HNF quotient bases at motif sizes one and two. Survival does not imply tiling or aperiodicity; copy size three must be screened independently before copy size four."
+}

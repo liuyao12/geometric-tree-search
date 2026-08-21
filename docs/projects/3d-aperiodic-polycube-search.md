@@ -162,6 +162,15 @@ of aperiodicity. The deeper machine-readable receipt is
 `data/polycube-volume9-deep-screen-2026-08-20.json`; the earlier six-copy
 summary is retained as historical input.
 
+The volume-ten census contains 346,543 proper-rotation classes, with canonical
+key digest `1754dfee…c77e1ad`. A gap-checked eight-shard HNF pass plus a separate
+retry of every initial budget stop certifies 112,531 one-tile and 210,113
+two-tile quotients. The other 23,899 shapes each exhaust all 217 one-copy and
+1,085 two-copy HNF bases with no remaining timeout. They are only the input to
+the next independently budgeted copy-size screen, not aperiodic candidates.
+The machine-readable receipt is
+`data/polycube-volume10-periodic-through2-2026-08-20.json`.
+
 The continuation solver now extracts a proof-relevant reason from a trapped
 patch instead of memoizing the entire boundary. For a radius-five target cell,
 it enumerates every root-compatible tile placement through that cell and finds
