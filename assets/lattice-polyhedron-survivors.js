@@ -201,8 +201,8 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       shell_definition: "minimum face-adjacency distance from the root among owners of exposed faces",
       global_zero_face_pruning: false,
       zero_face_rule: "a fixed exposed face with no legal face-mate is permanently unfillable",
-      rejected_candidates: Object.freeze(["10_45026", "9_11683"]),
-      surviving_candidate: "10_16113",
+      rejected_candidates: Object.freeze(["10_16113", "10_45026", "9_11683"]),
+      surviving_candidate: null,
       periodic_candidate: "10_45033",
       robust_completed_shell: 4,
       maximum_completed_shell: 7,
@@ -218,7 +218,8 @@ export const LATTICE_POLYHEDRON_SCREENING = Object.freeze({
       report: "data/lattice-polyhedron-extendable-shell-screen-2026-08-19.json",
       continuation_report: "data/lattice-polyhedron-10_45033-shell-continuation-2026-08-19.json",
       periodic_certificate_report: "data/lattice-polyhedron-10_45033-periodic-certificate-2026-08-19.json",
-      corrected_convex_shell_report: "data/lattice-polyhedron-10_16113-corrected-shell1-2026-08-20.json"
+      corrected_convex_shell_report: "data/lattice-polyhedron-10_16113-corrected-shell1-2026-08-20.json",
+      corrected_convex_shell_two_report: "data/lattice-polyhedron-10_16113-corrected-shell2-nontiler-2026-08-20.json"
     })
   })
 });
@@ -540,6 +541,71 @@ export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = [
   }))
 ];
 
+const SIZE13_ISOHEDRAL_TEMPLATE_0635270 = frozenMixedPeriodicTemplate(
+  [[0,-2,0],[0,0,-4],[-4,0,0]],
+  [[0,0,[0,0,0]],[1,2,[0,0,-2]],[1,1,[1,2,0]],[0,3,[1,2,-2]],[0,1,[2,1,0]],[1,0,[-1,1,0]],[0,2,[-1,1,-2]],[1,3,[-2,3,-2]]]
+);
+
+export const LATTICE_POLYHEDRON_SIZE13_SCREENING = Object.freeze({
+  screen_date: "2026-08-20",
+  source: "polyDB Polytopes.Lattice.FewLatticePoints3D",
+  source_pool_size: 1502640,
+  local_edge_obstructions: 1502508,
+  shell_one_obstructions: 39,
+  shell_one_survivors: 93,
+  certified_translational_tilers: 88,
+  certified_isohedral_tilers: 2,
+  shell_two_non_tilers: 3,
+  unresolved: 0,
+  zero_face_pruning: false,
+  model: "face-to-face congruent lattice-polyhedron tilings using integer translations and cubic lattice isometries",
+  first_stage_report: "data/lattice-polyhedron-size13-full-isometry-first-stage-2026-08-20.json",
+  periodic_report: "data/lattice-polyhedron-size13-full-isometry-easy-lanes-2026-08-20.json",
+  shell_report: "data/lattice-polyhedron-size13-full-isometry-shell2-2026-08-20.json",
+  quotient_overlap_validation: "complete lattice-neighborhood replay with separating-axis overlap for convex polyhedra"
+});
+
+export const LATTICE_POLYHEDRON_SIZE13_CONTROLS = Object.freeze([
+  Object.freeze({
+    id: "13_0635270",
+    vertices: [[0,0,0],[1,0,0],[0,1,0],[1,0,2],[2,0,2],[1,2,0],[3,1,0],[2,1,2]],
+    lattice_points: 13,
+    registry_id: "census_13_0635270",
+    name: "Candidate 13_0635270",
+    screening: Object.freeze({
+      ...rejected("isohedral_periodic_quotient", 8, SIZE13_ISOHEDRAL_TEMPLATE_0635270.period_vectors, SIZE13_ISOHEDRAL_TEMPLATE_0635270),
+      requires_mirrors: true,
+      periodic_source: "the translational lane exhausted motif sizes 1–5, while the isohedral lane found an exact eight-tile quotient",
+      report: LATTICE_POLYHEDRON_SIZE13_SCREENING.periodic_report
+    }),
+    last_screening: LATTICE_POLYHEDRON_SIZE13_SCREENING,
+    shell_screening: Object.freeze({ deepest_completed_shell: 1, periodic_motif_tiles: 8, full_isometries: true }),
+    gcts_proof_screening: Object.freeze({}),
+    description: "Size-13 isohedral-lane regression control 13_0635270; a bounded translational search is inconclusive, but the isohedral lane certifies an eight-tile periodic quotient."
+  }),
+  ...Object.freeze([
+    Object.freeze({ id: "13_0492735", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[-1,1,1],[2,2,1],[1,3,1],[0,1,2],[-1,2,2]], shell_tiles: 10, proof_nodes: 113 }),
+    Object.freeze({ id: "13_1072824", vertices: [[0,0,0],[1,0,0],[0,1,0],[0,0,1],[-1,1,1],[2,2,1],[1,3,1],[1,2,2],[0,3,2]], shell_tiles: 10, proof_nodes: 105 })
+  ]).map(candidate => Object.freeze({
+    id: candidate.id,
+    vertices: candidate.vertices,
+    lattice_points: 13,
+    registry_id: `census_${candidate.id}`,
+    name: `Candidate ${candidate.id}`,
+    screening: Object.freeze({
+      status: "exact_rejection",
+      certificate: "finite_shell_obstruction",
+      shell_depth: 2,
+      requires_mirrors: true,
+      report: LATTICE_POLYHEDRON_SIZE13_SCREENING.shell_report
+    }),
+    last_screening: LATTICE_POLYHEDRON_SIZE13_SCREENING,
+    shell_screening: Object.freeze({ deepest_completed_shell: 1, obstruction_shell: 2, witness_tiles: candidate.shell_tiles, full_isometries: true, robust: true }),
+    gcts_proof_screening: Object.freeze({ exact_root_nodes: candidate.proof_nodes }),
+    description: `Size-13 hard non-tiler control ${candidate.id}; both bounded easy lanes are inconclusive, then three independent exhaustive GCTS orders prove shell 2 impossible after the same ${candidate.proof_nodes}-node root search.`
+  }))
+]);
+
 export const LATTICE_POLYHEDRON_CENSUS_POOL = [
   { id: "8_2480", vertices: [[0,0,2],[0,1,0],[1,0,0],[1,1,2],[1,2,0],[2,1,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,0,-2],[0,-1,-2]]) },
   { id: "9_9043", vertices: [[0,0,1],[0,1,0],[1,1,2],[1,2,1],[2,0,1],[2,1,0]], screening: rejected("translational", 2, [[0,-1,-1],[-1,-1,1],[-1,1,-1]]) },
@@ -548,11 +614,11 @@ export const LATTICE_POLYHEDRON_CENSUS_POOL = [
   { id: "10_24235", vertices: [[-1,0,0],[-1,0,2],[0,-1,0],[0,1,0],[0,1,2],[1,0,0]], screening: rejected("translational", 2, [[-1,-1,0],[-1,1,0],[0,0,-2]]) },
   { id: "9_3239", vertices: [[-1,-1,0],[-1,0,-2],[0,-1,-2],[0,0,2],[0,1,0],[1,0,0]], screening: rejected("translational", 2, [[-1,0,-2],[0,-1,-2],[-1,-1,2]]) },
   { id: "10_16113", priority: 1, vertices: [[0,1,0],[0,2,1],[1,0,-1],[1,0,2],[1,1,-1],[2,1,0]], screening: Object.freeze({
-    status: "inconclusive",
-    translational: Object.freeze({ outcome: "time_limit", seconds: 60, maximum_motif_tiles_completed: 5, maximum_requested_motif_tiles: 12 }),
-    isohedral: Object.freeze({ outcome: "time_limit", seconds: 30, largest_patch_tiles: 72 }),
-    corrected_shell: Object.freeze({ completed_shell_depth: 1, witness_tiles: 9 }),
-    report: "data/lattice-polyhedron-10_16113-corrected-shell1-2026-08-20.json"
+    status: "exact_rejection",
+    certificate: "finite_shell_obstruction",
+    shell_depth: 2,
+    requires_mirrors: true,
+    report: "data/lattice-polyhedron-10_16113-corrected-shell2-nontiler-2026-08-20.json"
   }) },
   { id: "10_44867", vertices: [[0,1,0],[0,1,1],[1,0,0],[1,0,1],[1,1,2],[1,2,0],[2,1,0],[2,2,1]], screening: rejected("translational", 2, [[-1,1,0],[-1,-1,-1],[-1,0,2]]) },
   { id: "10_45035", vertices: [[0,0,1],[0,1,0],[0,1,2],[0,2,1],[1,0,0],[1,0,1],[1,1,0],[1,1,1],[2,0,0]], screening: rejected("translational", 2, [[0,-1,-1],[0,-1,1],[-2,0,-1]]) },
@@ -575,7 +641,7 @@ export const classifyLatticeCandidateScreen = ({ translational, isohedral, shell
 
 const PRE_SHELL_IDS = Object.freeze(["10_16113", "10_45026", "10_45033", "9_11683"]);
 const SHELL_RESULTS = Object.freeze({
-  "10_16113": Object.freeze({ deepest_completed_shell: 1, corrected_convex_overlap: true, witness_tiles: 9 }),
+  "10_16113": Object.freeze({ deepest_completed_shell: 1, obstruction_shell: 2, corrected_convex_overlap: true, witness_tiles: 9, full_isometries: true, robust: true }),
   "10_45026": Object.freeze({ deepest_completed_shell: 0, obstruction_shell: 1, robust: true }),
   "10_45033": Object.freeze({ deepest_completed_shell: 7, robust_completed_shell: 4, shell_five_hits: 1, shell_five_trials: 3, shell_five_witness_tiles: 464, shell_six_hits: 2, shell_six_trials: 3, shell_six_witness_tiles: 764, shell_seven_hits: 1, shell_seven_trials: 3, shell_seven_witness_tiles: 1174, periodic_motif_tiles: 6 }),
   "9_11683": Object.freeze({ deepest_completed_shell: 0, obstruction_shell: 1, robust: true })
@@ -600,10 +666,12 @@ export const LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES = LATTICE_POLYHEDRON_CENSUS
   .map(enrichCandidate);
 
 export const LATTICE_POLYHEDRON_SHELL_REJECTS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
-  .filter(candidate => candidate.screening.certificate === "finite_extendable_shell_obstruction")
+  .filter(candidate => ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(candidate.screening.certificate))
   .map(candidate => ({
     ...candidate,
-    description: `GCTS non-tiler control ${candidate.id}; exhaustive face-obligation search proves that every route toward shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.`
+    description: candidate.screening.certificate === "finite_shell_obstruction"
+      ? `GCTS non-tiler control ${candidate.id}; exhaustive unpruned face-to-face search proves shell ${candidate.screening.shell_depth} impossible under full cubic isometries and integer translations.`
+      : `GCTS non-tiler control ${candidate.id}; exhaustive face-obligation search proves that every route toward shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.`
   }));
 
 export const LATTICE_POLYHEDRON_PERIODIC_REJECTS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
@@ -627,5 +695,6 @@ export const LATTICE_POLYHEDRON_GCTS_EXAMPLES = Object.freeze([
   ...LATTICE_POLYHEDRON_PERIODIC_REJECTS,
   ...LATTICE_POLYHEDRON_SHELL_REJECTS,
   ...LATTICE_POLYHEDRON_SIZE11_CONTROLS,
-  ...LATTICE_POLYHEDRON_SIZE12_CONTROLS
+  ...LATTICE_POLYHEDRON_SIZE12_CONTROLS,
+  ...LATTICE_POLYHEDRON_SIZE13_CONTROLS
 ]);

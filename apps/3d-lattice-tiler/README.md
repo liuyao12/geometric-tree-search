@@ -417,10 +417,13 @@ not the finite-growth heuristics used by the preview lanes.
 
 The original sampled-solid-angle screen rejected `10_16113`, `10_45026`, and
 `9_11683` before an indefinitely extendable first shell. Exact convex overlap
-confirms the latter two obstructions, but `10_16113` now completes shell 1 with
-nine tiles. Its 60-second translational run completed motif sizes 1–5 without a
-certificate, while a 30-second isohedral run reached 72 tiles and remained
-inconclusive, making it the corrected live candidate. `10_45033` reaches shells 1–4 in all
+confirms the latter two obstructions, while `10_16113` completes shell 1 with
+nine tiles. A follow-up exact shell-2 run exhausts the full 50-node tree under
+full cubic isometries, with failure memoization and zero-face pruning disabled;
+three seeded traversal orders produce the same obstruction. Thus `10_16113` is
+a compact non-tiler control, despite a 60-second translational run completing
+motif sizes 1–5 and a 30-second isohedral preview reaching 72 tiles before
+their respective limits. `10_45033` reaches shells 1–4 in all
 three direct runs, shell 5 in one of three, then reaches shells 6 and 7 by
 validated checkpoint continuation (764 and 1,174 tiles). Mining the shell-7
 witness reveals an exact six-tile translational quotient with period vectors
@@ -432,7 +435,8 @@ has one corrected survivor. The receipts are in
 `data/lattice-polyhedron-10_45033-shell-continuation-2026-08-19.json`, and
 `data/lattice-polyhedron-10_45033-periodic-certificate-2026-08-19.json`.
 The corrected `10_16113` receipts are the `corrected-shell1`,
-`corrected-periodic-screen`, and `corrected-isohedral` reports.
+`corrected-periodic-screen`, `corrected-isohedral`, and final
+`corrected-shell2-nontiler` reports.
 Regenerate the direct screen with
 `scripts/screen-lattice-complete-shells.mjs --target=5 --cascade=true`, and
 validate it with `scripts/analyze-lattice-complete-shell-screen.mjs`.
@@ -490,6 +494,24 @@ remain useful GCTS stress tests under the `12_235174-shell3-portfolio`,
 For sizes 12–15, `scripts/screen-next-lattice-polytope-pool.mjs` downloads
 bounded aggregate pages from polyDB and records contiguous source ranges and
 SHA-256 receipts; the merge script refuses gaps and overlaps.
+
+The complete size-13 pass covers all 1,502,640 polyDB representatives without
+a source gap or search timeout. A geometry-only exact edge-angle preflight
+rejects 1,502,508; exhaustive shell-one search rejects 39 more and leaves 93
+witnesses. The easy lanes certify 88 translational quotients and two additional
+eight-tile quotients found only by the isohedral lane. The remaining three
+(`13_0492735`, `13_1072824`, and `13_1429971`) make useful GCTS stress tests:
+both bounded easy lanes are inconclusive, but three independent unpruned
+full-isometry searches exhaust identical root trees and prove shell 2
+impossible. Thus this census also closes with no unresolved aperiodic
+candidate. The catalogue keeps `13_0635270` as the isohedral-lane regression
+and the first two hard non-tilers as compact tree-search controls. A
+translation-normalized oriented-face index preserves those exact trees while
+reducing `13_0492735` face-match attempts from 1,851,648 to 27,844 per trial.
+The receipts are
+`data/lattice-polyhedron-size13-full-isometry-first-stage-2026-08-20.json`,
+`data/lattice-polyhedron-size13-full-isometry-easy-lanes-2026-08-20.json`, and
+`data/lattice-polyhedron-size13-full-isometry-shell2-2026-08-20.json`.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in

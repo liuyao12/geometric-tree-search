@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-prism-proof-v103";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-size13-v104";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot

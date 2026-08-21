@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "kind": "lattice_polyhedron_complete_shell_screen",
+  "generatedAt": "2026-08-20T23:51:20.756Z",
+  "configuration": {
+    "targetShellDepth": 2,
+    "includeMirrors": true,
+    "cascade": false,
+    "timeMs": 60000,
+    "nodeLimit": 2000000,
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "failureMemo": false,
+    "geometricNogood": false,
+    "geometricNogoodMaxClauses": 20000,
+    "failureMemoSymmetry": "rigid",
+    "seededTieBreaks": true,
+    "globalZeroFacePruning": false,
+    "globalFrontierGraph": true,
+    "includeWitness": true,
+    "initialPatch": null,
+    "candidatesFile": null,
+    "excludeCertifiedPeriodic": false,
+    "orientationGroup": "full cubic isometries",
+    "model": "face-to-face lattice tiling",
+    "shellDefinition": "minimum face-adjacency distance from the root among owners of exposed faces",
+    "deadFaceRule": "an exposed face below the requested shell depth with no currently legal face-mate is a failed shell obligation and is pruned"
+  },
+  "rows": [
+    {
+      "candidate": "10_16113",
+      "seed": 1,
+      "targetShellDepth": 2,
+      "resultKind": "no_tiling",
+      "success": false,
+      "canTile": false,
+      "certified": true,
+      "certificateKind": "finite_shell_obstruction",
+      "searchIncomplete": false,
+      "terminationReason": "exhausted",
+      "elapsedMs": 402,
+      "bestShellDepth": 1,
+      "bestShellPatchTiles": 9,
+      "bestShellWitnessHash": "7450d94cfe1141a1",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 8,
+          "orientation_id": "0:8",
+          "translation": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 16,
+          "orientation_id": "0:16",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 22,
+          "orientation_id": "0:22",
+          "translation": [
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 20,
+          "orientation_id": "0:20",
+          "translation": [
+            -2,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 10,
+          "orientation_id": "1:10",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 21,
+          "orientation_id": "0:21",
+          "translation": [
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 9,
+          "orientation_id": "0:9",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 12,
+          "orientation_id": "0:12",
+          "translation": [
+            1,
+            0,
+            1
+          ]
+        }
+      ],
+      "maxLiveTiles": 9,
+      "maxFrontierFaces": 54,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 9,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 50,
+      "backtracks": 49,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "globalFrontierGraph": true,
+      "shellRequiredFacesScanned": 2100,
+      "shellFaceMatchAttempts": 8496,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "initialPatchSourceCandidate": null,
+      "initialPatchSourceSeed": null,
+      "initialPatchSourceWitnessHash": null,
+      "initialPatchSelection": null,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 9,
+          "witnessHash": "7450d94cfe1141a1",
+          "visitedNodes": 9,
+          "elapsedMs": 54
+        }
+      ]
+    },
+    {
+      "candidate": "10_16113",
+      "seed": 2,
+      "targetShellDepth": 2,
+      "resultKind": "no_tiling",
+      "success": false,
+      "canTile": false,
+      "certified": true,
+      "certificateKind": "finite_shell_obstruction",
+      "searchIncomplete": false,
+      "terminationReason": "exhausted",
+      "elapsedMs": 363,
+      "bestShellDepth": 1,
+      "bestShellPatchTiles": 9,
+      "bestShellWitnessHash": "7450d94cfe1141a1",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 8,
+          "orientation_id": "0:8",
+          "translation": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 16,
+          "orientation_id": "0:16",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 22,
+          "orientation_id": "0:22",
+          "translation": [
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 20,
+          "orientation_id": "0:20",
+          "translation": [
+            -2,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 10,
+          "orientation_id": "1:10",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 21,
+          "orientation_id": "0:21",
+          "translation": [
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 9,
+          "orientation_id": "0:9",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 12,
+          "orientation_id": "0:12",
+          "translation": [
+            1,
+            0,
+            1
+          ]
+        }
+      ],
+      "maxLiveTiles": 9,
+      "maxFrontierFaces": 54,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 9,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 50,
+      "backtracks": 49,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "globalFrontierGraph": true,
+      "shellRequiredFacesScanned": 2100,
+      "shellFaceMatchAttempts": 8496,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "initialPatchSourceCandidate": null,
+      "initialPatchSourceSeed": null,
+      "initialPatchSourceWitnessHash": null,
+      "initialPatchSelection": null,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 9,
+          "witnessHash": "7450d94cfe1141a1",
+          "visitedNodes": 9,
+          "elapsedMs": 52
+        }
+      ]
+    },
+    {
+      "candidate": "10_16113",
+      "seed": 3,
+      "targetShellDepth": 2,
+      "resultKind": "no_tiling",
+      "success": false,
+      "canTile": false,
+      "certified": true,
+      "certificateKind": "finite_shell_obstruction",
+      "searchIncomplete": false,
+      "terminationReason": "exhausted",
+      "elapsedMs": 347,
+      "bestShellDepth": 1,
+      "bestShellPatchTiles": 9,
+      "bestShellWitnessHash": "7450d94cfe1141a1",
+      "bestShellWitness": [
+        {
+          "prototile_idx": 0,
+          "orientation_index": 0,
+          "orientation_id": "0:0",
+          "translation": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 8,
+          "orientation_id": "0:8",
+          "translation": [
+            1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 16,
+          "orientation_id": "0:16",
+          "translation": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 22,
+          "orientation_id": "0:22",
+          "translation": [
+            1,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 20,
+          "orientation_id": "0:20",
+          "translation": [
+            -2,
+            0,
+            -1
+          ]
+        },
+        {
+          "prototile_idx": 1,
+          "orientation_index": 10,
+          "orientation_id": "1:10",
+          "translation": [
+            -1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 21,
+          "orientation_id": "0:21",
+          "translation": [
+            -1,
+            0,
+            1
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 9,
+          "orientation_id": "0:9",
+          "translation": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "prototile_idx": 0,
+          "orientation_index": 12,
+          "orientation_id": "0:12",
+          "translation": [
+            1,
+            0,
+            1
+          ]
+        }
+      ],
+      "maxLiveTiles": 9,
+      "maxFrontierFaces": 54,
+      "maxGlobalCandidates": 2,
+      "minimumRootExposedFaces": 0,
+      "maxShellReachableTiles": 9,
+      "maxUnreachableExposedFaces": 0,
+      "visitedNodes": 50,
+      "backtracks": 49,
+      "failedStates": 0,
+      "failureMemoHits": 0,
+      "globalZeroFaceDeadEnds": 0,
+      "globalFrontierGraph": true,
+      "shellRequiredFacesScanned": 2100,
+      "shellFaceMatchAttempts": 8496,
+      "initialPatchAppliedTiles": 0,
+      "initialPatchBaseShellDepth": 0,
+      "initialPatchSourceCandidate": null,
+      "initialPatchSourceSeed": null,
+      "initialPatchSourceWitnessHash": null,
+      "initialPatchSelection": null,
+      "shellMilestones": [
+        {
+          "shellDepth": 1,
+          "tileCount": 9,
+          "witnessHash": "7450d94cfe1141a1",
+          "visitedNodes": 10,
+          "elapsedMs": 43
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate": "10_16113",
+      "trials": 3,
+      "targetHits": 0,
+      "deepestCompletedShell": 0,
+      "firstCertifiedObstructionDepth": 2,
+      "certifiedNonTilerTrials": 3,
+      "minimumBestShellDepth": 1,
+      "maximumBestShellDepth": 1,
+      "minimumShellWitnessTiles": 9,
+      "maximumShellWitnessTiles": 9,
+      "distinctBestWitnesses": 1,
+      "totalVisitedNodes": 150,
+      "totalBacktracks": 147
+    }
+  ],
+  "totals": {
+    "trials": 3,
+    "targetHits": 0,
+    "certifiedNonTilerTrials": 3,
+    "incompleteTrials": 0
+  },
+  "interpretation": "Completing a finite shell while avoiding permanently unfillable exposed faces is necessary but not sufficient for an infinite face-to-face tiling. Exhaustion under these exact obligations is a non-tiling certificate; a time or node limit is inconclusive."
+}

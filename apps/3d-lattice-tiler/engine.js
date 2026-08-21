@@ -3,7 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
-import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-prism-proof-v103";
+import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -372,6 +372,9 @@ export const createTilingStream = (() => {
       // can introduce a different edge-angle spectrum.
       if (baseTiles.length !== 1 || prototiles[0].is_polycube) return null;
       const tile = prototiles[0];
+      if (typeof tileSpecs.convexEdgeAngleObstruction === "function") {
+        return tileSpecs.convexEdgeAngleObstruction(tile.verts, tile.faces);
+      }
       if (!tile.faces?.length || tile.faces.some(face => face.length < 3)) return null;
       const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
       const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
@@ -1533,6 +1536,34 @@ export const createTilingStream = (() => {
         }
       }
     }
+    const relativeFaceVertexSetKey = (vertices, anchor) => vertices
+      .map(vertex => [
+        vertex[0] - anchor[0],
+        vertex[1] - anchor[1],
+        vertex[2] - anchor[2]
+      ].join(","))
+      .sort()
+      .join("|");
+    // Once an oriented face is fixed, attachment can only translate it. Index
+    // every possible anchor by its translation-normalized vertex set so an
+    // exact shell obligation does not rescan every congruent face and anchor.
+    let orientedFaceAnchorsByRelativeVertexSet = null;
+    const ensureOrientedFaceAnchorIndex = () => {
+      if (orientedFaceAnchorsByRelativeVertexSet) return orientedFaceAnchorsByRelativeVertexSet;
+      orientedFaceAnchorsByRelativeVertexSet = new Map();
+      for (const entries of orientedFacesBySignature.values()) {
+        for (const entry of entries) {
+          for (const anchor of entry.vertices) {
+            const key = relativeFaceVertexSetKey(entry.vertices, anchor);
+            if (!orientedFaceAnchorsByRelativeVertexSet.has(key)) {
+              orientedFaceAnchorsByRelativeVertexSet.set(key, []);
+            }
+            orientedFaceAnchorsByRelativeVertexSet.get(key).push({ entry, anchor });
+          }
+        }
+      }
+      return orientedFaceAnchorsByRelativeVertexSet;
+    };
     let faceCandidateIndexVersion = -1;
     let faceCandidateIndex = new Map();
     let frontierFaceCandidateIndex = new Map();
@@ -1549,38 +1580,37 @@ export const createTilingStream = (() => {
       searchStats.generic_shell_required_faces_scanned =
         (searchStats.generic_shell_required_faces_scanned ?? 0) + 1;
       const frontierVertices = frontierEntry.ordered_verts;
-      const signature = faceSignatureUndirected(frontierVertices);
+      const relativeVertexSetKey = relativeFaceVertexSetKey(frontierVertices, frontierVertices[0]);
+      const faceAnchorIndex = ensureOrientedFaceAnchorIndex();
       const candidates = new Map();
       candidateScan:
-      for (const entry of orientedFacesBySignature.get(signature) ?? []) {
-        for (const anchor of entry.vertices) {
-          searchStats.generic_shell_face_match_attempts =
-            (searchStats.generic_shell_face_match_attempts ?? 0) + 1;
-          if (overBudget()) {
-            noteIncompleteSearch();
-            break candidateScan;
-          }
-          const translation = vecSub(frontierVertices[0], anchor);
-          if (entry.tile.is_polycube
-            ? !isPolycubeMoveTranslation(entry.tile, translation)
-            : !translation.every(Number.isInteger)) continue;
-          if (!translatedReverseFaceMatches(entry.vertices, frontierVertices, translation)) continue;
-          const move = {
-            prototile_idx: entry.prototile_idx,
-            translation,
-            orient: entry.orient
-          };
-          const geometryKey = placementGeometryKey(move);
-          if (candidates.has(geometryKey)) continue;
-          const validity = isMoveValid(move);
-          if (!validity.ok) continue;
-          candidates.set(geometryKey, {
-            ...move,
-            occupancy_data: validity.occData,
-            dedup_key: geometryKey,
-            _matched_frontier_face_keys: new Set([frontierFaceKey])
-          });
+      for (const { entry, anchor } of faceAnchorIndex.get(relativeVertexSetKey) ?? []) {
+        searchStats.generic_shell_face_match_attempts =
+          (searchStats.generic_shell_face_match_attempts ?? 0) + 1;
+        if (overBudget()) {
+          noteIncompleteSearch();
+          break candidateScan;
         }
+        const translation = vecSub(frontierVertices[0], anchor);
+        if (entry.tile.is_polycube
+          ? !isPolycubeMoveTranslation(entry.tile, translation)
+          : !translation.every(Number.isInteger)) continue;
+        if (!translatedReverseFaceMatches(entry.vertices, frontierVertices, translation)) continue;
+        const move = {
+          prototile_idx: entry.prototile_idx,
+          translation,
+          orient: entry.orient
+        };
+        const geometryKey = placementGeometryKey(move);
+        if (candidates.has(geometryKey)) continue;
+        const validity = isMoveValid(move);
+        if (!validity.ok) continue;
+        candidates.set(geometryKey, {
+          ...move,
+          occupancy_data: validity.occData,
+          dedup_key: geometryKey,
+          _matched_frontier_face_keys: new Set([frontierFaceKey])
+        });
       }
       const result = [...candidates.values()]
         .sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
@@ -7271,7 +7301,7 @@ export const tileSpecs = (() => {
       name: candidate.name,
       category: [candidate.screening.status === "inconclusive"
         ? "Unresolved Lattice Candidates"
-        : candidate.screening.certificate === "translational"
+        : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
           ? "GCTS Periodic Controls"
           : "GCTS Shell-Obstruction Controls"],
       census_candidate: candidate,
@@ -7573,6 +7603,91 @@ export const tileSpecs = (() => {
   const buildPolycubeTile = (name, voxels, options = {}) =>
     make_tile(name || "CustomPolycube", generatePolycubeData(normalizeVoxels(voxels), options));
 
+  const convexEdgeAngleObstruction = (vertices, suppliedFaces = null) => {
+    const verts = (vertices ?? []).map(vertex => vertex.slice(0, 3).map(Number));
+    if (verts.length < 4 || verts.some(vertex => vertex.some(value => !Number.isFinite(value)))) return null;
+    const rawFaces = suppliedFaces?.length
+      ? suppliedFaces.map(face => (Array.isArray(face) ? face : face?.v).map(Number))
+      : computeHullFaces(verts);
+    if (!rawFaces.length || rawFaces.some(face => face.length < 3)) return null;
+    const faces = orientConvexFaces(verts, rawFaces);
+    const normals = faces.map(face => normalize3(cross3(
+      sub3(verts[face[1]], verts[face[0]]),
+      sub3(verts[face[2]], verts[face[0]])
+    )));
+    if (normals.some(normal => norm3(normal) < 1e-12)) return null;
+    for (let faceIndex = 0; faceIndex < faces.length; faceIndex++) {
+      const face = faces[faceIndex];
+      const normal = normals[faceIndex];
+      const origin = verts[face[0]];
+      if (verts.some(vertex => dot3(normal, sub3(vertex, origin)) > 1e-8)) return null;
+    }
+    const incidentFaces = new Map();
+    for (let faceIndex = 0; faceIndex < faces.length; faceIndex++) {
+      const face = faces[faceIndex];
+      for (let index = 0; index < face.length; index++) {
+        const a = face[index];
+        const b = face[(index + 1) % face.length];
+        const edgeKey = a < b ? `${a},${b}` : `${b},${a}`;
+        if (!incidentFaces.has(edgeKey)) incidentFaces.set(edgeKey, []);
+        incidentFaces.get(edgeKey).push(faceIndex);
+      }
+    }
+    if ([...incidentFaces.values()].some(faceIndices => faceIndices.length !== 2)) return null;
+    const edgeGroups = new Map();
+    for (const [edgeKey, faceIndices] of incidentFaces) {
+      const [aIndex, bIndex] = edgeKey.split(",").map(Number);
+      const edgeVector = sub3(verts[bIndex], verts[aIndex]);
+      const lengthSquared = dot3(edgeVector, edgeVector);
+      const cosine = Math.max(-1, Math.min(1, dot3(normals[faceIndices[0]], normals[faceIndices[1]])));
+      const interiorAngle = Math.PI - Math.acos(cosine);
+      if (Math.abs(interiorAngle - Math.PI) < 1e-8) continue;
+      const lengthKey = String(Math.round(lengthSquared * 1e9) / 1e9);
+      if (!edgeGroups.has(lengthKey)) edgeGroups.set(lengthKey, []);
+      edgeGroups.get(lengthKey).push({ edge: [aIndex, bIndex], angle: interiorAngle });
+    }
+    const angleCanClose = (targetAngle, availableAngles) => {
+      const tolerance = 1e-7;
+      const uniqueAngles = [];
+      for (const angle of availableAngles) {
+        if (!uniqueAngles.some(existing => Math.abs(existing - angle) < tolerance)) uniqueAngles.push(angle);
+      }
+      uniqueAngles.sort((left, right) => right - left);
+      const minimumAngle = Math.min(...uniqueAngles);
+      const maxDepth = Math.ceil((2 * Math.PI) / minimumAngle) + 1;
+      const memo = new Set();
+      const fill = (remaining, startIndex, depth) => {
+        if (Math.abs(remaining) < tolerance) return true;
+        if (remaining < -tolerance || depth >= maxDepth) return false;
+        const memoKey = `${Math.round(remaining / tolerance)}:${startIndex}:${depth}`;
+        if (memo.has(memoKey)) return false;
+        memo.add(memoKey);
+        for (let index = startIndex; index < uniqueAngles.length; index++) {
+          if (fill(remaining - uniqueAngles[index], index, depth + 1)) return true;
+        }
+        return false;
+      };
+      return fill(2 * Math.PI - targetAngle, 0, 1);
+    };
+    for (const [lengthSquared, edges] of edgeGroups) {
+      const angles = edges.map(edge => edge.angle);
+      for (const edge of edges) {
+        if (angleCanClose(edge.angle, angles)) continue;
+        return {
+          kind: "local_edge_obstruction",
+          certified: true,
+          can_tile: false,
+          model: "face_to_face_congruent_copies",
+          edge: edge.edge,
+          edge_length_squared: Number(lengthSquared),
+          interior_dihedral_radians: edge.angle,
+          note: "No multiset of matching tile-edge dihedral angles sums to 2π around this edge."
+        };
+      }
+    }
+    return null;
+  };
+
   const buildLatticePolyhedronTile = (name, vertices, faces = null) => {
     const normalizedVertices = (vertices ?? []).map((vertex, index) => {
       if (!Array.isArray(vertex) || vertex.length < 3) {
@@ -7737,6 +7852,7 @@ export const tileSpecs = (() => {
     withPolycubeLattice,
     buildPolycubeTile,
     buildLatticePolyhedronTile,
+    convexEdgeAngleObstruction,
     buildCustomSystem
   };
 })();

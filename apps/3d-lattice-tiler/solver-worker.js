@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-prism-proof-v103";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-size13-v104";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

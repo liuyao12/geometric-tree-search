@@ -57,8 +57,10 @@ Pages site. The main way to use it is to open the page in a browser:
   by exact rooted face-adjacency shells, tree inspection, intermediate tiling
   snapshots, and reproducible non-tiler and periodic controls—including the
   difficult prism that survived deep GCTS screening before an exact two-tile
-  translational quotient resolved the full size-12 pass, plus the remaining
-  live candidate `10_16113` from the earlier pool.
+  translational quotient resolved the full size-12 pass, and `10_16113`, whose
+  corrected shell-1 witness leads to an exact shell-2 non-tiler certificate.
+  The complete 1,502,640-entry size-13 pass contributes an isohedral-only
+  periodic regression and two harder exact shell-2 non-tiler controls.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

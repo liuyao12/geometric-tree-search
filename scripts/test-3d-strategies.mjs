@@ -887,6 +887,12 @@ assert.ok(
 );
 
 for (const mode_key of ["corner_tetra", "big_corner_tetra"]) {
+  const localTile = tileSpecs.TILING_REGISTRY[mode_key].build()[0];
+  assert.equal(
+    tileSpecs.convexEdgeAngleObstruction(localTile.verts, localTile.faces)?.kind,
+    "local_edge_obstruction",
+    "the geometry-only census preflight must reproduce the solver's local certificate"
+  );
   const obstruction = await solve({
     mode_key,
     criterion: "layer",
@@ -898,7 +904,18 @@ for (const mode_key of ["corner_tetra", "big_corner_tetra"]) {
   assert.equal(obstruction.final.can_tile, false);
   assert.equal(obstruction.final.tiling_evidence?.kind, "local_edge_obstruction");
 }
+const cubeTileForEdgePreflight = tileSpecs.TILING_REGISTRY.cube.build()[0];
+assert.equal(
+  tileSpecs.convexEdgeAngleObstruction(cubeTileForEdgePreflight.verts, cubeTileForEdgePreflight.faces),
+  null,
+  "the geometry-only census preflight must retain a known tiler"
+);
 
+const reflectedChiralVertices = [[0, 0, 0], [1, 0, 0], [1, 2, 0], [1, 1, 2], [0, -5, 6], [2, 0, 2]];
+assert.equal(
+  tileSpecs.convexEdgeAngleObstruction(reflectedChiralVertices)?.kind,
+  "local_edge_obstruction"
+);
 const reflectedChiralLocalObstruction = await solve({
   mode_key: "cube",
   custom_system: {
@@ -907,7 +924,7 @@ const reflectedChiralLocalObstruction = await solve({
     polycubes: [],
     polyhedra: [{
       name: "PolyDB 12_235173",
-      vertices: [[0, 0, 0], [1, 0, 0], [1, 2, 0], [1, 1, 2], [0, -5, 6], [2, 0, 2]]
+      vertices: reflectedChiralVertices
     }],
     polycube_lattice: "z3"
   },

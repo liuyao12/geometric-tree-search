@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260820-prism-proof-v103";
+import { tileSpecs } from "./engine.js?v=20260820-size13-v104";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1304,20 +1304,32 @@ function selectedCensusCandidate() {
   return rootFigure()?.census_candidate ?? null;
 }
 
+function censusCandidatePeriodicLane(candidate) {
+  const certificate = candidate?.screening?.certificate;
+  if (certificate === "translational") return "translational";
+  if (certificate === "isohedral_periodic_quotient") return "isohedral";
+  return null;
+}
+
 function applyCandidateSearchPreset({ invalidate = true } = {}) {
   const knownAperiodic = rootFigure()?.aperiodic_tile ?? null;
   const candidate = selectedCensusCandidate();
   if (!candidate && !knownAperiodic) return;
-  const periodicCandidate = candidate?.screening?.certificate === "translational";
+  const periodicLane = censusCandidatePeriodicLane(candidate);
+  const periodicCandidate = !!periodicLane;
   document.querySelector(`input[name="criterion"][value="${candidate && !periodicCandidate ? "shell" : "count"}"]`).checked = true;
-  maxTilesInput.value = knownAperiodic ? "80" : "120";
+  maxTilesInput.value = knownAperiodic
+    ? "80"
+    : periodicCandidate
+      ? String(Math.max(24, candidate.screening?.motif_tiles ?? 1))
+      : "120";
   if (candidate && !periodicCandidate) shellInput.value = String(
     candidate.screening?.shell_depth ?? candidate.shell_screening?.deepest_completed_shell ?? 5
   );
   strategySelect.value = setRadioValue(
     strategyRadios,
-    periodicCandidate ? "translational" : "free_range",
-    periodicCandidate ? "translational" : "free_range"
+    periodicLane ?? "free_range",
+    periodicLane ?? "free_range"
   );
   if (periodicCandidate) periodicTileCountSelect.value = String(candidate.screening.motif_tiles ?? 6);
   faceOrderSelect.value = "mrv";
@@ -1340,8 +1352,9 @@ function updateCandidateResearchPanel() {
   candidateResearchPanel.classList.toggle("is-hidden", !candidate && !knownAperiodic);
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
   if (candidate) {
-    candidateSearchButton.textContent = candidate.screening?.certificate === "translational"
-      ? "Replay periodic certificate"
+    const periodicLane = censusCandidatePeriodicLane(candidate);
+    candidateSearchButton.textContent = periodicLane
+      ? `Replay ${periodicLane} certificate`
       : "Apply exact shell preset";
     const screening = candidate.last_screening;
     const proof = candidate.gcts_proof_screening;
@@ -1400,11 +1413,11 @@ function updateCandidateResearchPanel() {
         : "";
       return `${baseline}${focused} These are finite-patch witnesses, not space-tiling certificates.${quotient}${distinctBranches}${memoAb}${nogood}${holdout}${crystal}${internalPeriod}`;
     })() : "";
-    if (candidate.screening?.certificate === "translational") {
+    if (periodicLane) {
       candidateResearchTitle.textContent = `Certified periodic control ${candidate.id}`;
       const source = candidate.screening.periodic_source
         ?? "an exact quotient was mined from the validated 1,174-tile shell-7 witness";
-      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. Use the preset to replay the certificate in the Translational lane.`;
+      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. Use the preset to replay the certificate in the ${periodicLane === "isohedral" ? "Isohedral" : "Translational"} lane.`;
     } else if (["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(candidate.screening?.certificate)) {
       candidateResearchTitle.textContent = `Certified non-tiler control ${candidate.id}`;
       candidateResearchDetail.textContent = candidate.screening.certificate === "finite_shell_obstruction"
@@ -1472,7 +1485,7 @@ function renderSystemTileList() {
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
         const certificate = figure.census_candidate.screening?.certificate;
-        angles.textContent = certificate === "translational"
+        angles.textContent = ["translational", "isohedral_periodic_quotient"].includes(certificate)
           ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.lattice_points} points`
           : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
             ? `${certificate === "finite_shell_obstruction" ? "complete-shell" : "dead-face shell"} ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
@@ -2757,7 +2770,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260820-prism-proof-v103", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260820-size13-v104", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3291,7 +3304,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-prism-proof-v103", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-size13-v104", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

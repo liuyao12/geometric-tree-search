@@ -1,0 +1,8081 @@
+{
+  "schemaVersion": 1,
+  "kind": "blanco_santos_extendable_shell_one_screen_merged",
+  "generatedAt": "2026-08-21T00:01:17.199Z",
+  "configuration": {
+    "size": 13,
+    "source": "polydb",
+    "parts": [],
+    "ranges": [
+      {
+        "start": 0,
+        "end": 5000
+      },
+      {
+        "start": 5000,
+        "end": 10000
+      },
+      {
+        "start": 10000,
+        "end": 15000
+      },
+      {
+        "start": 15000,
+        "end": 20000
+      },
+      {
+        "start": 20000,
+        "end": 25000
+      },
+      {
+        "start": 25000,
+        "end": 30000
+      },
+      {
+        "start": 30000,
+        "end": 35000
+      },
+      {
+        "start": 35000,
+        "end": 40000
+      },
+      {
+        "start": 40000,
+        "end": 45000
+      },
+      {
+        "start": 45000,
+        "end": 50000
+      },
+      {
+        "start": 50000,
+        "end": 55000
+      },
+      {
+        "start": 55000,
+        "end": 65000
+      },
+      {
+        "start": 65000,
+        "end": 70000
+      },
+      {
+        "start": 70000,
+        "end": 75000
+      },
+      {
+        "start": 75000,
+        "end": 80000
+      },
+      {
+        "start": 80000,
+        "end": 85000
+      },
+      {
+        "start": 85000,
+        "end": 90000
+      },
+      {
+        "start": 90000,
+        "end": 95000
+      },
+      {
+        "start": 95000,
+        "end": 100000
+      },
+      {
+        "start": 100000,
+        "end": 105000
+      },
+      {
+        "start": 105000,
+        "end": 110000
+      },
+      {
+        "start": 110000,
+        "end": 115000
+      },
+      {
+        "start": 115000,
+        "end": 120000
+      },
+      {
+        "start": 120000,
+        "end": 125000
+      },
+      {
+        "start": 125000,
+        "end": 130000
+      },
+      {
+        "start": 130000,
+        "end": 135000
+      },
+      {
+        "start": 135000,
+        "end": 140000
+      },
+      {
+        "start": 140000,
+        "end": 145000
+      },
+      {
+        "start": 145000,
+        "end": 150000
+      },
+      {
+        "start": 150000,
+        "end": 155000
+      },
+      {
+        "start": 155000,
+        "end": 160000
+      },
+      {
+        "start": 160000,
+        "end": 165000
+      },
+      {
+        "start": 165000,
+        "end": 170000
+      },
+      {
+        "start": 170000,
+        "end": 175000
+      },
+      {
+        "start": 175000,
+        "end": 180000
+      },
+      {
+        "start": 180000,
+        "end": 185000
+      },
+      {
+        "start": 185000,
+        "end": 190000
+      },
+      {
+        "start": 190000,
+        "end": 195000
+      },
+      {
+        "start": 195000,
+        "end": 200000
+      },
+      {
+        "start": 200000,
+        "end": 205000
+      },
+      {
+        "start": 205000,
+        "end": 210000
+      },
+      {
+        "start": 210000,
+        "end": 215000
+      },
+      {
+        "start": 215000,
+        "end": 220000
+      },
+      {
+        "start": 220000,
+        "end": 225000
+      },
+      {
+        "start": 225000,
+        "end": 230000
+      },
+      {
+        "start": 230000,
+        "end": 235000
+      },
+      {
+        "start": 235000,
+        "end": 240000
+      },
+      {
+        "start": 240000,
+        "end": 245000
+      },
+      {
+        "start": 245000,
+        "end": 250000
+      },
+      {
+        "start": 250000,
+        "end": 255000
+      },
+      {
+        "start": 255000,
+        "end": 260000
+      },
+      {
+        "start": 260000,
+        "end": 265000
+      },
+      {
+        "start": 265000,
+        "end": 270000
+      },
+      {
+        "start": 270000,
+        "end": 275000
+      },
+      {
+        "start": 275000,
+        "end": 280000
+      },
+      {
+        "start": 280000,
+        "end": 285000
+      },
+      {
+        "start": 285000,
+        "end": 290000
+      },
+      {
+        "start": 290000,
+        "end": 295000
+      },
+      {
+        "start": 295000,
+        "end": 300000
+      },
+      {
+        "start": 300000,
+        "end": 305000
+      },
+      {
+        "start": 305000,
+        "end": 310000
+      },
+      {
+        "start": 310000,
+        "end": 315000
+      },
+      {
+        "start": 315000,
+        "end": 320000
+      },
+      {
+        "start": 320000,
+        "end": 325000
+      },
+      {
+        "start": 325000,
+        "end": 330000
+      },
+      {
+        "start": 330000,
+        "end": 335000
+      },
+      {
+        "start": 335000,
+        "end": 340000
+      },
+      {
+        "start": 340000,
+        "end": 345000
+      },
+      {
+        "start": 345000,
+        "end": 350000
+      },
+      {
+        "start": 350000,
+        "end": 355000
+      },
+      {
+        "start": 355000,
+        "end": 360000
+      },
+      {
+        "start": 360000,
+        "end": 365000
+      },
+      {
+        "start": 365000,
+        "end": 370000
+      },
+      {
+        "start": 370000,
+        "end": 375000
+      },
+      {
+        "start": 375000,
+        "end": 380000
+      },
+      {
+        "start": 380000,
+        "end": 385000
+      },
+      {
+        "start": 385000,
+        "end": 390000
+      },
+      {
+        "start": 390000,
+        "end": 395000
+      },
+      {
+        "start": 395000,
+        "end": 400000
+      },
+      {
+        "start": 400000,
+        "end": 405000
+      },
+      {
+        "start": 405000,
+        "end": 410000
+      },
+      {
+        "start": 410000,
+        "end": 415000
+      },
+      {
+        "start": 415000,
+        "end": 420000
+      },
+      {
+        "start": 420000,
+        "end": 425000
+      },
+      {
+        "start": 425000,
+        "end": 430000
+      },
+      {
+        "start": 430000,
+        "end": 435000
+      },
+      {
+        "start": 435000,
+        "end": 440000
+      },
+      {
+        "start": 440000,
+        "end": 445000
+      },
+      {
+        "start": 445000,
+        "end": 450000
+      },
+      {
+        "start": 450000,
+        "end": 455000
+      },
+      {
+        "start": 455000,
+        "end": 460000
+      },
+      {
+        "start": 460000,
+        "end": 465000
+      },
+      {
+        "start": 465000,
+        "end": 470000
+      },
+      {
+        "start": 470000,
+        "end": 475000
+      },
+      {
+        "start": 475000,
+        "end": 480000
+      },
+      {
+        "start": 480000,
+        "end": 485000
+      },
+      {
+        "start": 485000,
+        "end": 490000
+      },
+      {
+        "start": 490000,
+        "end": 495000
+      },
+      {
+        "start": 495000,
+        "end": 500000
+      },
+      {
+        "start": 500000,
+        "end": 505000
+      },
+      {
+        "start": 505000,
+        "end": 510000
+      },
+      {
+        "start": 510000,
+        "end": 515000
+      },
+      {
+        "start": 515000,
+        "end": 520000
+      },
+      {
+        "start": 520000,
+        "end": 525000
+      },
+      {
+        "start": 525000,
+        "end": 530000
+      },
+      {
+        "start": 530000,
+        "end": 535000
+      },
+      {
+        "start": 535000,
+        "end": 540000
+      },
+      {
+        "start": 540000,
+        "end": 545000
+      },
+      {
+        "start": 545000,
+        "end": 550000
+      },
+      {
+        "start": 550000,
+        "end": 555000
+      },
+      {
+        "start": 555000,
+        "end": 560000
+      },
+      {
+        "start": 560000,
+        "end": 565000
+      },
+      {
+        "start": 565000,
+        "end": 570000
+      },
+      {
+        "start": 570000,
+        "end": 575000
+      },
+      {
+        "start": 575000,
+        "end": 580000
+      },
+      {
+        "start": 580000,
+        "end": 585000
+      },
+      {
+        "start": 585000,
+        "end": 590000
+      },
+      {
+        "start": 590000,
+        "end": 595000
+      },
+      {
+        "start": 595000,
+        "end": 600000
+      },
+      {
+        "start": 600000,
+        "end": 605000
+      },
+      {
+        "start": 605000,
+        "end": 610000
+      },
+      {
+        "start": 610000,
+        "end": 615000
+      },
+      {
+        "start": 615000,
+        "end": 620000
+      },
+      {
+        "start": 620000,
+        "end": 625000
+      },
+      {
+        "start": 625000,
+        "end": 630000
+      },
+      {
+        "start": 630000,
+        "end": 635000
+      },
+      {
+        "start": 635000,
+        "end": 640000
+      },
+      {
+        "start": 640000,
+        "end": 645000
+      },
+      {
+        "start": 645000,
+        "end": 650000
+      },
+      {
+        "start": 650000,
+        "end": 655000
+      },
+      {
+        "start": 655000,
+        "end": 660000
+      },
+      {
+        "start": 660000,
+        "end": 665000
+      },
+      {
+        "start": 665000,
+        "end": 670000
+      },
+      {
+        "start": 670000,
+        "end": 675000
+      },
+      {
+        "start": 675000,
+        "end": 680000
+      },
+      {
+        "start": 680000,
+        "end": 685000
+      },
+      {
+        "start": 685000,
+        "end": 690000
+      },
+      {
+        "start": 690000,
+        "end": 695000
+      },
+      {
+        "start": 695000,
+        "end": 700000
+      },
+      {
+        "start": 700000,
+        "end": 705000
+      },
+      {
+        "start": 705000,
+        "end": 710000
+      },
+      {
+        "start": 710000,
+        "end": 715000
+      },
+      {
+        "start": 715000,
+        "end": 720000
+      },
+      {
+        "start": 720000,
+        "end": 725000
+      },
+      {
+        "start": 725000,
+        "end": 730000
+      },
+      {
+        "start": 730000,
+        "end": 735000
+      },
+      {
+        "start": 735000,
+        "end": 740000
+      },
+      {
+        "start": 740000,
+        "end": 745000
+      },
+      {
+        "start": 745000,
+        "end": 750000
+      },
+      {
+        "start": 750000,
+        "end": 755000
+      },
+      {
+        "start": 755000,
+        "end": 760000
+      },
+      {
+        "start": 760000,
+        "end": 765000
+      },
+      {
+        "start": 765000,
+        "end": 770000
+      },
+      {
+        "start": 770000,
+        "end": 775000
+      },
+      {
+        "start": 775000,
+        "end": 780000
+      },
+      {
+        "start": 780000,
+        "end": 785000
+      },
+      {
+        "start": 785000,
+        "end": 790000
+      },
+      {
+        "start": 790000,
+        "end": 795000
+      },
+      {
+        "start": 795000,
+        "end": 800000
+      },
+      {
+        "start": 800000,
+        "end": 805000
+      },
+      {
+        "start": 805000,
+        "end": 810000
+      },
+      {
+        "start": 810000,
+        "end": 815000
+      },
+      {
+        "start": 815000,
+        "end": 820000
+      },
+      {
+        "start": 820000,
+        "end": 825000
+      },
+      {
+        "start": 825000,
+        "end": 830000
+      },
+      {
+        "start": 830000,
+        "end": 835000
+      },
+      {
+        "start": 835000,
+        "end": 840000
+      },
+      {
+        "start": 840000,
+        "end": 845000
+      },
+      {
+        "start": 845000,
+        "end": 850000
+      },
+      {
+        "start": 850000,
+        "end": 855000
+      },
+      {
+        "start": 855000,
+        "end": 860000
+      },
+      {
+        "start": 860000,
+        "end": 865000
+      },
+      {
+        "start": 865000,
+        "end": 870000
+      },
+      {
+        "start": 870000,
+        "end": 875000
+      },
+      {
+        "start": 875000,
+        "end": 880000
+      },
+      {
+        "start": 880000,
+        "end": 885000
+      },
+      {
+        "start": 885000,
+        "end": 890000
+      },
+      {
+        "start": 890000,
+        "end": 895000
+      },
+      {
+        "start": 895000,
+        "end": 900000
+      },
+      {
+        "start": 900000,
+        "end": 905000
+      },
+      {
+        "start": 905000,
+        "end": 910000
+      },
+      {
+        "start": 910000,
+        "end": 915000
+      },
+      {
+        "start": 915000,
+        "end": 920000
+      },
+      {
+        "start": 920000,
+        "end": 925000
+      },
+      {
+        "start": 925000,
+        "end": 930000
+      },
+      {
+        "start": 930000,
+        "end": 935000
+      },
+      {
+        "start": 935000,
+        "end": 940000
+      },
+      {
+        "start": 940000,
+        "end": 945000
+      },
+      {
+        "start": 945000,
+        "end": 950000
+      },
+      {
+        "start": 950000,
+        "end": 955000
+      },
+      {
+        "start": 955000,
+        "end": 960000
+      },
+      {
+        "start": 960000,
+        "end": 965000
+      },
+      {
+        "start": 965000,
+        "end": 970000
+      },
+      {
+        "start": 970000,
+        "end": 975000
+      },
+      {
+        "start": 975000,
+        "end": 980000
+      },
+      {
+        "start": 980000,
+        "end": 985000
+      },
+      {
+        "start": 985000,
+        "end": 990000
+      },
+      {
+        "start": 990000,
+        "end": 995000
+      },
+      {
+        "start": 995000,
+        "end": 1000000
+      },
+      {
+        "start": 1000000,
+        "end": 1005000
+      },
+      {
+        "start": 1005000,
+        "end": 1010000
+      },
+      {
+        "start": 1010000,
+        "end": 1015000
+      },
+      {
+        "start": 1015000,
+        "end": 1020000
+      },
+      {
+        "start": 1020000,
+        "end": 1025000
+      },
+      {
+        "start": 1025000,
+        "end": 1030000
+      },
+      {
+        "start": 1030000,
+        "end": 1035000
+      },
+      {
+        "start": 1035000,
+        "end": 1040000
+      },
+      {
+        "start": 1040000,
+        "end": 1045000
+      },
+      {
+        "start": 1045000,
+        "end": 1050000
+      },
+      {
+        "start": 1050000,
+        "end": 1055000
+      },
+      {
+        "start": 1055000,
+        "end": 1060000
+      },
+      {
+        "start": 1060000,
+        "end": 1065000
+      },
+      {
+        "start": 1065000,
+        "end": 1070000
+      },
+      {
+        "start": 1070000,
+        "end": 1075000
+      },
+      {
+        "start": 1075000,
+        "end": 1080000
+      },
+      {
+        "start": 1080000,
+        "end": 1085000
+      },
+      {
+        "start": 1085000,
+        "end": 1090000
+      },
+      {
+        "start": 1090000,
+        "end": 1095000
+      },
+      {
+        "start": 1095000,
+        "end": 1100000
+      },
+      {
+        "start": 1100000,
+        "end": 1105000
+      },
+      {
+        "start": 1105000,
+        "end": 1110000
+      },
+      {
+        "start": 1110000,
+        "end": 1115000
+      },
+      {
+        "start": 1115000,
+        "end": 1120000
+      },
+      {
+        "start": 1120000,
+        "end": 1125000
+      },
+      {
+        "start": 1125000,
+        "end": 1130000
+      },
+      {
+        "start": 1130000,
+        "end": 1135000
+      },
+      {
+        "start": 1135000,
+        "end": 1140000
+      },
+      {
+        "start": 1140000,
+        "end": 1145000
+      },
+      {
+        "start": 1145000,
+        "end": 1150000
+      },
+      {
+        "start": 1150000,
+        "end": 1155000
+      },
+      {
+        "start": 1155000,
+        "end": 1160000
+      },
+      {
+        "start": 1160000,
+        "end": 1165000
+      },
+      {
+        "start": 1165000,
+        "end": 1170000
+      },
+      {
+        "start": 1170000,
+        "end": 1175000
+      },
+      {
+        "start": 1175000,
+        "end": 1180000
+      },
+      {
+        "start": 1180000,
+        "end": 1185000
+      },
+      {
+        "start": 1185000,
+        "end": 1190000
+      },
+      {
+        "start": 1190000,
+        "end": 1195000
+      },
+      {
+        "start": 1195000,
+        "end": 1200000
+      },
+      {
+        "start": 1200000,
+        "end": 1205000
+      },
+      {
+        "start": 1205000,
+        "end": 1210000
+      },
+      {
+        "start": 1210000,
+        "end": 1215000
+      },
+      {
+        "start": 1215000,
+        "end": 1220000
+      },
+      {
+        "start": 1220000,
+        "end": 1225000
+      },
+      {
+        "start": 1225000,
+        "end": 1230000
+      },
+      {
+        "start": 1230000,
+        "end": 1235000
+      },
+      {
+        "start": 1235000,
+        "end": 1240000
+      },
+      {
+        "start": 1240000,
+        "end": 1245000
+      },
+      {
+        "start": 1245000,
+        "end": 1250000
+      },
+      {
+        "start": 1250000,
+        "end": 1255000
+      },
+      {
+        "start": 1255000,
+        "end": 1260000
+      },
+      {
+        "start": 1260000,
+        "end": 1265000
+      },
+      {
+        "start": 1265000,
+        "end": 1270000
+      },
+      {
+        "start": 1270000,
+        "end": 1275000
+      },
+      {
+        "start": 1275000,
+        "end": 1280000
+      },
+      {
+        "start": 1280000,
+        "end": 1285000
+      },
+      {
+        "start": 1285000,
+        "end": 1290000
+      },
+      {
+        "start": 1290000,
+        "end": 1295000
+      },
+      {
+        "start": 1295000,
+        "end": 1300000
+      },
+      {
+        "start": 1300000,
+        "end": 1305000
+      },
+      {
+        "start": 1305000,
+        "end": 1310000
+      },
+      {
+        "start": 1310000,
+        "end": 1315000
+      },
+      {
+        "start": 1315000,
+        "end": 1320000
+      },
+      {
+        "start": 1320000,
+        "end": 1325000
+      },
+      {
+        "start": 1325000,
+        "end": 1330000
+      },
+      {
+        "start": 1330000,
+        "end": 1335000
+      },
+      {
+        "start": 1335000,
+        "end": 1340000
+      },
+      {
+        "start": 1340000,
+        "end": 1345000
+      },
+      {
+        "start": 1345000,
+        "end": 1350000
+      },
+      {
+        "start": 1350000,
+        "end": 1355000
+      },
+      {
+        "start": 1355000,
+        "end": 1360000
+      },
+      {
+        "start": 1360000,
+        "end": 1365000
+      },
+      {
+        "start": 1365000,
+        "end": 1370000
+      },
+      {
+        "start": 1370000,
+        "end": 1375000
+      },
+      {
+        "start": 1375000,
+        "end": 1380000
+      },
+      {
+        "start": 1380000,
+        "end": 1385000
+      },
+      {
+        "start": 1385000,
+        "end": 1390000
+      },
+      {
+        "start": 1390000,
+        "end": 1395000
+      },
+      {
+        "start": 1395000,
+        "end": 1400000
+      },
+      {
+        "start": 1400000,
+        "end": 1405000
+      },
+      {
+        "start": 1405000,
+        "end": 1410000
+      },
+      {
+        "start": 1410000,
+        "end": 1415000
+      },
+      {
+        "start": 1415000,
+        "end": 1420000
+      },
+      {
+        "start": 1420000,
+        "end": 1425000
+      },
+      {
+        "start": 1425000,
+        "end": 1430000
+      },
+      {
+        "start": 1430000,
+        "end": 1435000
+      },
+      {
+        "start": 1435000,
+        "end": 1440000
+      },
+      {
+        "start": 1440000,
+        "end": 1445000
+      },
+      {
+        "start": 1445000,
+        "end": 1450000
+      },
+      {
+        "start": 1450000,
+        "end": 1455000
+      },
+      {
+        "start": 1455000,
+        "end": 1460000
+      },
+      {
+        "start": 1460000,
+        "end": 1465000
+      },
+      {
+        "start": 1465000,
+        "end": 1470000
+      },
+      {
+        "start": 1470000,
+        "end": 1475000
+      },
+      {
+        "start": 1475000,
+        "end": 1480000
+      },
+      {
+        "start": 1480000,
+        "end": 1485000
+      },
+      {
+        "start": 1485000,
+        "end": 1490000
+      },
+      {
+        "start": 1490000,
+        "end": 1495000
+      },
+      {
+        "start": 1495000,
+        "end": 1500000
+      },
+      {
+        "start": 1500000,
+        "end": 1502640
+      }
+    ],
+    "start": 0,
+    "end": 1502640,
+    "completeConfiguredSize": true,
+    "timeMs": 250,
+    "nodeLimit": 200000,
+    "orientationGroup": "full cubic isometries",
+    "translations": "integer",
+    "mirrors": true,
+    "globalZeroFacePruning": false,
+    "fastLocalEdgePreflight": true
+  },
+  "sources": [
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 0,
+      "end": 5000,
+      "bytes": 966933,
+      "sha256": "2a17ccd6a0a379b52981856f9555cb6c6709ebdfff6bc8e9b6cfa5c2ad394b8a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 5000,
+      "end": 10000,
+      "bytes": 968248,
+      "sha256": "c1c2c114f6af4f30c31b66acab7808110352eda54502e3acda8a7bfa5997b5cb",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 10000,
+      "end": 15000,
+      "bytes": 968313,
+      "sha256": "866b854e5f006c70738629eeee85baec1261074265dd2bb868364cf218f9a404",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 15000,
+      "end": 20000,
+      "bytes": 967118,
+      "sha256": "f1df44dffb0672af184950c6386eeea3aa8fa08aa01fc42efce8d97b9779d873",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 20000,
+      "end": 25000,
+      "bytes": 966228,
+      "sha256": "02be3910116e4c9fd8041fe7405eb66f0b58a2d101e104a1ceb70bcfa003d9c7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 25000,
+      "end": 30000,
+      "bytes": 968093,
+      "sha256": "debb0b2985a92c0d6a785358d6f0c0e8381215a9dc0cab62527f09a5e6b93c79",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 30000,
+      "end": 35000,
+      "bytes": 967417,
+      "sha256": "d4008463337c641312824f0394415312c71d087ed9d56f9c8bcf0e7169f2eaa7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 35000,
+      "end": 40000,
+      "bytes": 966742,
+      "sha256": "0be360fa2273653b6fafa82e4bf590a96aa945d8c5f73bd5d2b65a99df031c3a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 40000,
+      "end": 45000,
+      "bytes": 966855,
+      "sha256": "1e18c6884557f7a732e27ea1c7ce2441fd09463d7c547c063738f58e45a51d7d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 45000,
+      "end": 50000,
+      "bytes": 967870,
+      "sha256": "5ac60f9a422347807f83a79c618a3185eecf49b4f599bd073438b808935fdfd0",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 50000,
+      "end": 55000,
+      "bytes": 967105,
+      "sha256": "4955a944bb9b48d45cffb85568095f83aacb9499554de4b8d8805ee61d158bdd",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 55000,
+      "end": 65000,
+      "bytes": 1935167,
+      "sha256": "bc7ecec7066c09a3e030623b89405933a3a6432bb84866fd94e865029d0efbee",
+      "candidates": 10000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 65000,
+      "end": 70000,
+      "bytes": 968167,
+      "sha256": "9a146c9807050bfb77ee2f0df97a4440b0b2ea6036efcf663082984b9f0a596e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 70000,
+      "end": 75000,
+      "bytes": 967761,
+      "sha256": "a93a6d0a56bd598f6093b183bf215a76ed34fb6def1f5112f839ebf4e29f090e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 75000,
+      "end": 80000,
+      "bytes": 966747,
+      "sha256": "228744c646b8f5e57fef3913a124ddf41c1decc482dc3f42c28c44c3cabe6b85",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 80000,
+      "end": 85000,
+      "bytes": 966466,
+      "sha256": "3a692c4512bafdce6e9eb964c528f871787a12a5a41190761307e13e11f2ee8f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 85000,
+      "end": 90000,
+      "bytes": 968577,
+      "sha256": "bb8784ce4edcc077331a5e7400694a1d3eef647fac3062094818d739cffe9084",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 90000,
+      "end": 95000,
+      "bytes": 968378,
+      "sha256": "abd64e9d677bfe63644fbe9377f9e699a77f115599030da6425450613fc6f637",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 95000,
+      "end": 100000,
+      "bytes": 967654,
+      "sha256": "b6111de99c9315fda514cecedd7aec705a206cecb3de9e5b95233a82ddbb3ecf",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 100000,
+      "end": 105000,
+      "bytes": 966018,
+      "sha256": "85ed2b43d47ccd2c53205b35c61d068066193b490f66bc6d526b3504b82fa484",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 105000,
+      "end": 110000,
+      "bytes": 966568,
+      "sha256": "6ce69269b741e1b2543529437f27a90c7f0fb01d3e590f9c93f3497e0a81a215",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 110000,
+      "end": 115000,
+      "bytes": 968150,
+      "sha256": "f352988708c8b7f930f6d973d8e17f1c84934e686ead1b9ef0088e457b4c8d55",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 115000,
+      "end": 120000,
+      "bytes": 965341,
+      "sha256": "2d7a6591206bebc545f98f3a6e0bc1ea8e07bd5f5560863c49818de3ffac92fb",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 120000,
+      "end": 125000,
+      "bytes": 965293,
+      "sha256": "35659142267fabac3fbf80be2db5f9e18c8ea146493f0ed8fd770b68911a4848",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 125000,
+      "end": 130000,
+      "bytes": 967210,
+      "sha256": "321e69fe251095aa6533b801ddc345798ce707566c383cc67531d73435d0e07a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 130000,
+      "end": 135000,
+      "bytes": 966420,
+      "sha256": "3142a120acfb671fce83e7a5a99985d1bc0e52fa64ee651a67d9e212254f711d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 135000,
+      "end": 140000,
+      "bytes": 966274,
+      "sha256": "df761e7947d758f9c0bf15e0a6b0105163f10833c737dd4d247a10185e198e3c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 140000,
+      "end": 145000,
+      "bytes": 966163,
+      "sha256": "c882220c2b26a662d749d9f365b0deda22c9a187b14cb4d9699a9a583af8da56",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 145000,
+      "end": 150000,
+      "bytes": 968089,
+      "sha256": "bf6cee6e71b496a2b0bf169b4c43e97ec0d08cdc3dfc289cf2304e61465fe7be",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 150000,
+      "end": 155000,
+      "bytes": 965919,
+      "sha256": "df8f0c0159f4da3472ee8be7b8413a9130d4734d4050dc0157504903cd781e6f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 155000,
+      "end": 160000,
+      "bytes": 967246,
+      "sha256": "66b9de29a73c13ac250c5ece38d9a7b3b967247a4bdade5146fe3e7a3a8077a9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 160000,
+      "end": 165000,
+      "bytes": 967291,
+      "sha256": "d21a77e8c2dd763b7b3b7d67b7958f5e096e5d99ae595c8cb5297d04e3473e9f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 165000,
+      "end": 170000,
+      "bytes": 967718,
+      "sha256": "eea21738ebd99a22f51fcbfa10b7c4be2a57e3c86f93ed044d871415512c5b08",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 170000,
+      "end": 175000,
+      "bytes": 968195,
+      "sha256": "3315796c9fbfd07b904a2047e93c1d294ae472a7733a3e10e8216ff731b5d2c3",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 175000,
+      "end": 180000,
+      "bytes": 967858,
+      "sha256": "6c013fae783d0fbd7c8387e86bf06789c95ba5be0827e39b475fa904c10dfa96",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 180000,
+      "end": 185000,
+      "bytes": 966048,
+      "sha256": "cfbbbf2aabe1886094771a62d1f1dde5a60cc50a176ef258d86f927509b73e7c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 185000,
+      "end": 190000,
+      "bytes": 967459,
+      "sha256": "a9b81a3f751968d9fe447adc2167138083d44b1770468323158e3a4613d93ec7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 190000,
+      "end": 195000,
+      "bytes": 965751,
+      "sha256": "dc4545d61796dd75d48b11f9f57668dd79817789622b0051f0f26d7aad233f3e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 195000,
+      "end": 200000,
+      "bytes": 966812,
+      "sha256": "5dbaff79cd3ca832c8e8885eb98b55021dcacca5faaebedf0c5585de5d51e1a1",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 200000,
+      "end": 205000,
+      "bytes": 967506,
+      "sha256": "cc3d7b4ac535040269be6d54eb9053044716fed7f97c3c8e56f454ee542bdd83",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 205000,
+      "end": 210000,
+      "bytes": 966331,
+      "sha256": "5d3fe8d597b5e8428331d6de86860699877913691743c7a631d67b986b1508aa",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 210000,
+      "end": 215000,
+      "bytes": 967485,
+      "sha256": "de3c3759aff9cb35a8aa55392ab9a29274373d08f07d8735a937a5cee2ce7b3e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 215000,
+      "end": 220000,
+      "bytes": 967191,
+      "sha256": "3bd9360dcde4cb01f04649b0ada8e72329c18d639a2a279865231dbb4069dc98",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 220000,
+      "end": 225000,
+      "bytes": 970599,
+      "sha256": "1cd18e3e4e842f46569f5de15837ce6604c76038cdafea82c9463c53a19cb8d6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 225000,
+      "end": 230000,
+      "bytes": 968380,
+      "sha256": "2465a3a9ad94d957e34c9bd225fbdd954b71f941bc1ff4f986fd282a2d947596",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 230000,
+      "end": 235000,
+      "bytes": 968116,
+      "sha256": "8dabaaec00af48240ed2b1ffca12f4e1d372e63336b1f27ec3e7d8f0be66eb96",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 235000,
+      "end": 240000,
+      "bytes": 967945,
+      "sha256": "109d8c600a56b61ff2c17d4f1b70f3424de6abb415591387aafbc405ac52f29f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 240000,
+      "end": 245000,
+      "bytes": 965359,
+      "sha256": "4b43eac5248754c95f42dbab10be180013e1246089828391305b2a4de3776bdc",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 245000,
+      "end": 250000,
+      "bytes": 968021,
+      "sha256": "14545f5c8371dc87e236d0a9c3db5a7420ff61afa3e257efb6249b7257b5b11e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 250000,
+      "end": 255000,
+      "bytes": 965479,
+      "sha256": "5bf38f5ab49980677ad4609efb977540e8edb9756668bc6e0ed736ed45e04ce6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 255000,
+      "end": 260000,
+      "bytes": 965722,
+      "sha256": "d99c345738a8fc29a4d201428765d73f5580d6f8aa40437cfb593eb6c3c25a1b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 260000,
+      "end": 265000,
+      "bytes": 967819,
+      "sha256": "46c0389284b53a7a69d3f23a5c707249b6c6be3af06c595923b6a91142d6b46d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 265000,
+      "end": 270000,
+      "bytes": 966923,
+      "sha256": "1ddff7d9c4f303e99a619a95ceb886627f65dbbea1e53d817763b4c112f17327",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 270000,
+      "end": 275000,
+      "bytes": 966217,
+      "sha256": "beeadd256e2394764c8002720509da427b96acff95bad5ec27f745719c4c58bd",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 275000,
+      "end": 280000,
+      "bytes": 967501,
+      "sha256": "19d6ac184171a60aafc554d66848c018d0fbfda62410bd4a83052a51b14de2b5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 280000,
+      "end": 285000,
+      "bytes": 965373,
+      "sha256": "fa46e6848c6730e929383156b80acb1567f50f01624ee81229e9abefafbbf30c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 285000,
+      "end": 290000,
+      "bytes": 966295,
+      "sha256": "a4ee5603c0bf704a080e028cf33939415bccd2b9ab2df860dc4628c38f6e545f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 290000,
+      "end": 295000,
+      "bytes": 966663,
+      "sha256": "e3f05c3d48819f4838756656762df737112957dac0b685787470a3dea86101a5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 295000,
+      "end": 300000,
+      "bytes": 966511,
+      "sha256": "80c4983f116a260a63deefe4b27fe8fc0d1f9713d57a975fc22217e59ac62f7d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 300000,
+      "end": 305000,
+      "bytes": 965623,
+      "sha256": "dd2ebfe2f52018de9ca70904534ed4b7bb7df055e32a451d1817f5d2c303324b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 305000,
+      "end": 310000,
+      "bytes": 967101,
+      "sha256": "0cfe544eebffe105fb5e4e0d3e641a01fe4b19cc66490442e9fdc3e8590c37e0",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 310000,
+      "end": 315000,
+      "bytes": 966444,
+      "sha256": "0f4f9ec3b8e3789e0e62cc222af3dff2bae3e606af519a19a5bd44289028a466",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 315000,
+      "end": 320000,
+      "bytes": 964971,
+      "sha256": "7bbee67a02c830b172004fbf1cb804cbd17fef5b50155be4c0cbbbeefb241de7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 320000,
+      "end": 325000,
+      "bytes": 965917,
+      "sha256": "97ecb1283aa77a591373a5276a59b9415df2ed40ffaeb36577894578c04ac215",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 325000,
+      "end": 330000,
+      "bytes": 966790,
+      "sha256": "7a0274595c8c8329c462a2e0cb5e4f3a41752ee8f13a737d6cb279efdc6e6ff2",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 330000,
+      "end": 335000,
+      "bytes": 966317,
+      "sha256": "849ac8db81bae4009bb86ccde864b82dd78e0bc2ad7403c59558e2aecd4f8018",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 335000,
+      "end": 340000,
+      "bytes": 966067,
+      "sha256": "d6c763b2841026fa56ed1c6cb1621a54c5bb76ad3098c2eb1f13b03a3a539e74",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 340000,
+      "end": 345000,
+      "bytes": 966768,
+      "sha256": "2a9b79eee4c708a4dc2ee3e4e13576d000bce709763df145f152afc249e3fe64",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 345000,
+      "end": 350000,
+      "bytes": 965784,
+      "sha256": "8ea0bbd2fca4328aba6797628af786255d59b5047fdcb04167d49fc02fa2ba56",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 350000,
+      "end": 355000,
+      "bytes": 966557,
+      "sha256": "c712c1c38cb0acfe652c6ad5c6012937467fdc90550b5c3126eb89cce381e4db",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 355000,
+      "end": 360000,
+      "bytes": 965330,
+      "sha256": "eaa83c82a735a7852c77b5ced4563a59acbffde4d762564831f9e48746e88610",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 360000,
+      "end": 365000,
+      "bytes": 967195,
+      "sha256": "23e3234c5cf270897a417a970217d81bf6262494318bcacbf84c6027ed5333ee",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 365000,
+      "end": 370000,
+      "bytes": 965257,
+      "sha256": "d1421a8e32d42e46c2f9cf5facb052c8f6115e6f20abd3a757091ea9ac62e18e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 370000,
+      "end": 375000,
+      "bytes": 966549,
+      "sha256": "fdcde981e033af7d56d020f5d0e25f7f44e44dcccac14c21676471a55bfa5333",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 375000,
+      "end": 380000,
+      "bytes": 968771,
+      "sha256": "353946caf39b6d5c7828b90b962794de8f9916e920a8a2fe0c2b61ff6fd8ebd3",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 380000,
+      "end": 385000,
+      "bytes": 965832,
+      "sha256": "3bbf04a6b28267651ec70db3748e23ab8303a7eb4247c6121963ad5f116262cb",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 385000,
+      "end": 390000,
+      "bytes": 965581,
+      "sha256": "306707ec5504dac7b668cf40422cdf3b1e254801b42bf184eccd6a88b70afdd6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 390000,
+      "end": 395000,
+      "bytes": 966514,
+      "sha256": "0255b1d4a5f47dd8319c152c376b27bc483fdffce11f3b5cbd208e91d19c4686",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 395000,
+      "end": 400000,
+      "bytes": 966890,
+      "sha256": "32e3096b308e754e7c928e9b3aa8bc280ec678ad2d7d3202342c117bb779245e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 405000,
+      "end": 410000,
+      "bytes": 965449,
+      "sha256": "a946fe5aea05c287e54a327020e84a2d4e587e60e945c5f8af3e765043ad743c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 410000,
+      "end": 415000,
+      "bytes": 966925,
+      "sha256": "2b93050d9313a6e3db8a742d6bc70764d37360c1ff52112cabcdeea9fd42dda9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 415000,
+      "end": 420000,
+      "bytes": 968384,
+      "sha256": "4d9af13e2ebafc5f98da0b2227b6e1c6cb920715628bbd20c44f05d19ca9e69d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 420000,
+      "end": 425000,
+      "bytes": 970287,
+      "sha256": "8333558a0c638000f5bf4e4489a99497fd901a091d580986d14c24339ebbff7d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 425000,
+      "end": 430000,
+      "bytes": 968367,
+      "sha256": "b6c6203a835e6486345f3c22ffb21ce959329b80f852ba74d01eb8c6bc9feeda",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 430000,
+      "end": 435000,
+      "bytes": 968692,
+      "sha256": "f5c6d8bbeb9a5930df20fe8f599b6bf99c0f1e7a6094fb670d2a79c444d7be23",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 435000,
+      "end": 440000,
+      "bytes": 966304,
+      "sha256": "25acb87ebbbf50ab7cfaa9f9a29c238d753e12b461f3f73519087fcc543b04c5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 440000,
+      "end": 445000,
+      "bytes": 967322,
+      "sha256": "863fed4b0338ade1925052c9875475819a23889c0bba318dd3c7893ec87ad077",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 445000,
+      "end": 450000,
+      "bytes": 967256,
+      "sha256": "e1a442593dd55072a3d6f86c184c9f27c464b7c51bbd7eac5e6d2f44dba18d6c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 450000,
+      "end": 455000,
+      "bytes": 965440,
+      "sha256": "f5ad800675d6e4208b4a19e9a280c9a86c066e6e20243db160ea79e73fab5867",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 455000,
+      "end": 460000,
+      "bytes": 967119,
+      "sha256": "794a269caa3bf888efea63f6a24da56c9a2cbc4d7e9480f28a453f0dbea37b69",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 460000,
+      "end": 465000,
+      "bytes": 969352,
+      "sha256": "eea4d79a6bc8c457bcc8552f4da849ef32220d225258ec30ea7dc13302de0643",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 465000,
+      "end": 470000,
+      "bytes": 966558,
+      "sha256": "e55a54ee9165a398f135e9a5089b7c517c82bc37f0774c5dd6320091567fe2f1",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 470000,
+      "end": 475000,
+      "bytes": 967498,
+      "sha256": "4dec15951e9e8e0a6d18e82b11ffafed13bb7e056b402fe2b86e6763bfcf865d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 475000,
+      "end": 480000,
+      "bytes": 968128,
+      "sha256": "a8d591a1f7895ca93c2951864f958c925ccb1bd00d7738bd0fc743c23649f1a3",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 480000,
+      "end": 485000,
+      "bytes": 968236,
+      "sha256": "91a62a453ba0dffd5f92cd125fa8ae0355e4c716f55f2fc8a0e629d3f53c2dd1",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 485000,
+      "end": 490000,
+      "bytes": 967288,
+      "sha256": "fd06e75220c49fe6ab6f1f30bf5bd8e2d851b93c84fd828ec868962e1c61e69b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 490000,
+      "end": 495000,
+      "bytes": 968175,
+      "sha256": "a8a36feb203c71fe05581ac0237128c00a90e3974a69eff0558e27a25207822a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 495000,
+      "end": 500000,
+      "bytes": 965869,
+      "sha256": "35231e32710913886cc1f022aa4dc8b357b551d398124d1068e1349b5f9c5093",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 500000,
+      "end": 505000,
+      "bytes": 966396,
+      "sha256": "59bf1cbb1c63d1e72dc7a187e8854e09a761bc3a02bf4676f6c31b8648bde068",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 505000,
+      "end": 510000,
+      "bytes": 966524,
+      "sha256": "296c284cc0ea5157b0692d82226bafd361da51c7e5ee5ddb1a03eaf1711a85d5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 510000,
+      "end": 515000,
+      "bytes": 967557,
+      "sha256": "835246998ea23121e14c1d5eb0338227e9b3ada02c678cdd86bc48384e9a068e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 515000,
+      "end": 520000,
+      "bytes": 967569,
+      "sha256": "2649d25b3ba6dfe9932b64a959d341eb8225169c0958f8d5c19ba5d73a726965",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 520000,
+      "end": 525000,
+      "bytes": 966754,
+      "sha256": "5d4dbfea7220c885e0ee24c8654a37f6ffb8a3873c77a618ef55680c2f8df798",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 525000,
+      "end": 530000,
+      "bytes": 967855,
+      "sha256": "0d59143dc47b189fccf2cb653dcc0a2231287e73c2e0aca2733e927164feafde",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 530000,
+      "end": 535000,
+      "bytes": 966283,
+      "sha256": "e08104427a153f9965fd556ab0236d730779f8f496aeb4bce8a52feff1824dd1",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 535000,
+      "end": 540000,
+      "bytes": 968874,
+      "sha256": "34536e99d37702071151d0697392e4c34048227bc68abf9bf558388b290f4399",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 540000,
+      "end": 545000,
+      "bytes": 968147,
+      "sha256": "712f493a58fdeaceffcfb8e96740e75531680019537a8d9f680e43465307cd52",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 545000,
+      "end": 550000,
+      "bytes": 968409,
+      "sha256": "e042e9835731ce35d714cbce3f0fd0484f721575a968e70ed5b97a28da482510",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 550000,
+      "end": 555000,
+      "bytes": 966870,
+      "sha256": "360c5736b3e51309718364d1129039720f333419a53b3e27c119fb6306c08607",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 555000,
+      "end": 560000,
+      "bytes": 966614,
+      "sha256": "c0d39c05c9fa45c70cae8fec40646caea03602756677ad3600c36ec665836b28",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 560000,
+      "end": 565000,
+      "bytes": 965587,
+      "sha256": "68771d6c5ec2e71208ac9dc67a96432a48c5d59532386406bda569463d525e85",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 565000,
+      "end": 570000,
+      "bytes": 963415,
+      "sha256": "9ec456881620af6b6e7f4f277920a206809ae982cdd852c813232ce38abcf8dc",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 570000,
+      "end": 575000,
+      "bytes": 968403,
+      "sha256": "66f66a0399a3cdf21eb961d97e0505dd4cbcde854d6eed2376f26ae18659f051",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 575000,
+      "end": 580000,
+      "bytes": 966163,
+      "sha256": "c58325e5e740509ff5e13c6a9faee26ac91876bbddca5c45df5e19a3dc930656",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 580000,
+      "end": 585000,
+      "bytes": 965067,
+      "sha256": "d61a6ab16b4473d72bcfb15c64efdd6a161cead14bef4b9e12d88ccd310cf782",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 585000,
+      "end": 590000,
+      "bytes": 968517,
+      "sha256": "8d1a81f4d9d463d485d13536ff8c7c734b4bdab990938c9de5447fd47f645409",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 590000,
+      "end": 595000,
+      "bytes": 966775,
+      "sha256": "09823caf7b4db65b207968d556e0e04a6986004a5e911da27416395c4941c9b3",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 595000,
+      "end": 600000,
+      "bytes": 964929,
+      "sha256": "f8be00b7e95eff0a423c86cbf75d82056d18ee90b8bb5ce1d44638666df06d42",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 600000,
+      "end": 605000,
+      "bytes": 968568,
+      "sha256": "7802c5858eccdf763299484a963ca0550e78f9858a995a3384a0a2b11462c9a7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 605000,
+      "end": 610000,
+      "bytes": 967331,
+      "sha256": "4584a9b56c6451b2389f52325a16274f4b4591820908c66577e78c6223c7ddf1",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 610000,
+      "end": 615000,
+      "bytes": 966304,
+      "sha256": "136868a14d4a284f12e9dff22f20c687038bad4dac099f68a2b9ad9d10248314",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 615000,
+      "end": 620000,
+      "bytes": 966042,
+      "sha256": "0e52b3585db380cf5d4ad565b0f4db3d6d4c8a8145a2e3a86a3ece294c66384b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 620000,
+      "end": 625000,
+      "bytes": 966032,
+      "sha256": "a1feee309fc9d989dd85f0218e79ea0597a83ecf8243ebf8b4e3ffb3fce26e8b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 625000,
+      "end": 630000,
+      "bytes": 966616,
+      "sha256": "ac7297f2f948f56c93a989b3fe09a461ce3c41618f7789e8d0935e5cc47549f6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 630000,
+      "end": 635000,
+      "bytes": 965341,
+      "sha256": "14fc29fa1c7640aede954bfe3fabb278af9d0b23b8205872e17bcdded37c3060",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 635000,
+      "end": 640000,
+      "bytes": 967529,
+      "sha256": "92059ddaf4f4a76809b0a407059e7c21cebab6d59f048ab8e5cebb51b4cdf4e9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 640000,
+      "end": 645000,
+      "bytes": 965745,
+      "sha256": "dc6c85204e3131bb0b11e76b42865895c92ec4e05dcecd8073871636c90f7ba5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 645000,
+      "end": 650000,
+      "bytes": 966437,
+      "sha256": "cc8accd4066d4649cd21d12bed73f49cef3f9381da0af21d59816e5f51334e66",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 650000,
+      "end": 655000,
+      "bytes": 967870,
+      "sha256": "30a77afc682462bc97d587f4ecf784bd8e5d20749b9ee77cf5c74b725a5a894f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 655000,
+      "end": 660000,
+      "bytes": 966563,
+      "sha256": "4ba0f900bbdf6eaa5c217c66366e2423d15551e5500187af9032989b33392555",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 660000,
+      "end": 665000,
+      "bytes": 966205,
+      "sha256": "521d94e9ea75310634202b251c376d41797ffba37ae7fee5573bc65e6d0b7814",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 665000,
+      "end": 670000,
+      "bytes": 966155,
+      "sha256": "55c0747457c03697743e3b0d65f3b5233f7e76568aa7b2ee3d758c7a9ada0927",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 670000,
+      "end": 675000,
+      "bytes": 966169,
+      "sha256": "65805695863a0fb21e07e8e85696eb87ef67906907e639375aefa21223078ba2",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 675000,
+      "end": 680000,
+      "bytes": 965394,
+      "sha256": "fce8ba9cb9158d6b8811668ab9c9356ba35568d905e6f09e98eab6242f25c3b4",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 680000,
+      "end": 685000,
+      "bytes": 966099,
+      "sha256": "6777f5fcc9555068d35f6acbd1495aeaaee8920919c1b90bc22a338813ed2d28",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 685000,
+      "end": 690000,
+      "bytes": 966897,
+      "sha256": "1c104e35a41adb7787de1129d426bb8daa1f92849c91e52710cd85b8f959284c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 690000,
+      "end": 695000,
+      "bytes": 964938,
+      "sha256": "fb68e3622c40d4e09802014ff03fc28dbfe7517e9b2dbde2e8221da3a250a5b9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 695000,
+      "end": 700000,
+      "bytes": 966055,
+      "sha256": "de22342e768a0fc1c3af8470d97b4fd8bce3f5653fd675b1ea02aa3275a6e0ff",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 700000,
+      "end": 705000,
+      "bytes": 968409,
+      "sha256": "65f391221530457024f891538fabc582eead1c0ef91b688e96d35de719a88bc6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 705000,
+      "end": 710000,
+      "bytes": 965848,
+      "sha256": "6171bd8778134f9489135e2105ba7172c95649eff4f0f7493e8d213421112165",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 710000,
+      "end": 715000,
+      "bytes": 967711,
+      "sha256": "49c03ae3cfe9af58601cf0ea01a07bfde96e4964ccdff6cdc86d42499357b19a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 715000,
+      "end": 720000,
+      "bytes": 967437,
+      "sha256": "bba6f784638c87158ad04a306a219de8cafdee71be8d4efba09d6c5a2ef322b9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 720000,
+      "end": 725000,
+      "bytes": 967153,
+      "sha256": "0eaabcd444562552eafb73677bef60df6c959d955e23808efba74671d0175fcf",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 725000,
+      "end": 730000,
+      "bytes": 968385,
+      "sha256": "f513ef535429eada641f6f90cb6ed992ba6743d110e7cd1447ff26c69311ded4",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 735000,
+      "end": 740000,
+      "bytes": 966417,
+      "sha256": "60aade7febb1c5de21e2324da0b6555bf10ffc5e5998d4c07257fe1e8134a6dc",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 740000,
+      "end": 745000,
+      "bytes": 963901,
+      "sha256": "e8277358e245cd794bad61cb81017cebb56dd149d027296b6c6cc5a986f555d0",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 745000,
+      "end": 750000,
+      "bytes": 967784,
+      "sha256": "0d67526e84d89597fa18d28f61024075da3e04bee0c3ddbf8bfd3d93a9e05b77",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 750000,
+      "end": 755000,
+      "bytes": 967269,
+      "sha256": "9310eb3a939aa22af7d5a59cd0cf45d83f3ea3f022782863efa40df0f36dfe39",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 755000,
+      "end": 760000,
+      "bytes": 966788,
+      "sha256": "73805a81b822d77d76e9f5df521fd8c5d2b7c718001b7450fd04bf4f906aa804",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 760000,
+      "end": 765000,
+      "bytes": 966267,
+      "sha256": "5c3efb3b580e7a3611f1850bb0c6fb637e75b41a634eb7e6cbac79b6418e366c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 765000,
+      "end": 770000,
+      "bytes": 967925,
+      "sha256": "83a0032ea93b0daffaf0e01a16727aad3f4de903606be043c05ee299790f71da",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 770000,
+      "end": 775000,
+      "bytes": 967575,
+      "sha256": "6e728df2f6c75346eb7fd437d823a2b73bf8d2b798436f9c944f2a0473b7858b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 775000,
+      "end": 780000,
+      "bytes": 967730,
+      "sha256": "00c970109ea46fb33abdef7ed08ae6486a0a537ed0e68d3d22f8482af00cb36f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 780000,
+      "end": 785000,
+      "bytes": 966959,
+      "sha256": "61f335b578d2947b779cde26f4e2ce6a6f2e8114dd8af32d8482efb6ab3690d4",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 785000,
+      "end": 790000,
+      "bytes": 967363,
+      "sha256": "49a41193dec09ebf0b2a07e3578a1c7345911e2e48913e104d9ed0abd8aaad3d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 790000,
+      "end": 795000,
+      "bytes": 967516,
+      "sha256": "6eedceec89b9caadf66d29a5cec8fd941228a0d943d0f214f3d2ee6a34e404ff",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 795000,
+      "end": 800000,
+      "bytes": 968505,
+      "sha256": "ff4ad7a1a1de68ffcab565ed430cc5ef4beaae7b7d110987e37ae9d88b23d8b4",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 800000,
+      "end": 805000,
+      "bytes": 966871,
+      "sha256": "8e86bcc1b449f7a7c60e80f3e732f82aeb66382640627259b7e6562a4e64d2f6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 805000,
+      "end": 810000,
+      "bytes": 966657,
+      "sha256": "037b167f6050c68d8e46b23b040055a430e8e0c603bfe49dc5caad2e56c3c9d9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 810000,
+      "end": 815000,
+      "bytes": 966485,
+      "sha256": "0978006bdc781e43520af0e5547c421c529fa9da1b8b1162d052974deb0bd649",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 815000,
+      "end": 820000,
+      "bytes": 965186,
+      "sha256": "346bc0c1133a0e7f3cd21a6e6f127bc80f0e0b81a93a0330f656051c6ae0e20d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 820000,
+      "end": 825000,
+      "bytes": 967048,
+      "sha256": "d170bcfc1011ce3825002d72cd968261f5bd183b93861e1449b837c3a39fc69d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 825000,
+      "end": 830000,
+      "bytes": 968003,
+      "sha256": "17ba5e9e647f0f30b2fd59a3ab59512fa7aa412fd6f2244111327a4da7c0f054",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 830000,
+      "end": 835000,
+      "bytes": 965467,
+      "sha256": "49132badff306b5de250e3fc15fe0a9dae449f7240f824f2d7034f71a70685a8",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 835000,
+      "end": 840000,
+      "bytes": 969464,
+      "sha256": "9f4532cceab4d8d3611b96118a979aafa8fdbd4e0141ffd55fa50b2f67e3d7f6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 840000,
+      "end": 845000,
+      "bytes": 967000,
+      "sha256": "b236af4976d8316a5993cb42019787a7521728b197e7ece7334dcd9619904b19",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 845000,
+      "end": 850000,
+      "bytes": 967975,
+      "sha256": "bb3d954e35ce3814863234632bd08244aa90517301a307c6b521f6318ebec2b4",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 850000,
+      "end": 855000,
+      "bytes": 966453,
+      "sha256": "327fd7e1f8241cdca5452e9cf75e91b5e8552a81a0c0685f51f76011dc25e2b5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 855000,
+      "end": 860000,
+      "bytes": 966992,
+      "sha256": "5599a85036f431d77de100b4ce0cd3fea860cf25b0ceffbad154a340460f441c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 860000,
+      "end": 865000,
+      "bytes": 966735,
+      "sha256": "9af6d7a59bf763ce30c44dba1f08a1269402fb52aedd8a6b0b5327df10ce1f99",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 865000,
+      "end": 870000,
+      "bytes": 967068,
+      "sha256": "70136a16d43a07ac708d1ee476ad56699df38dbe1af8749e99978d1582317c68",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 870000,
+      "end": 875000,
+      "bytes": 968511,
+      "sha256": "0608a12d335d5738160e3281a2d7b0aae4e0c1c63db550673ca4ecbcd1baf3e3",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 875000,
+      "end": 880000,
+      "bytes": 966947,
+      "sha256": "aa14d4a2901680979c68558fd50d23734a5e1221639240039bf14f0320822681",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 880000,
+      "end": 885000,
+      "bytes": 967520,
+      "sha256": "0b912f2ed577e14b2c7f38c00d938a858aa8c20402aa6e858d004c9100e93a6c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 885000,
+      "end": 890000,
+      "bytes": 967362,
+      "sha256": "59188bff93b11d664ffd5789959c840a65c1b2a5af11c8ff6ef3824fa42997c6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 890000,
+      "end": 895000,
+      "bytes": 968438,
+      "sha256": "3789267beb31f8033804d08b1cd05892d91fec7f9573a2ce3dbf3bbb1de77d43",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 895000,
+      "end": 900000,
+      "bytes": 965671,
+      "sha256": "70757791803cca0a4ab17681c0b8c46fdb79a73c12fd1974705fb1f459878284",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 900000,
+      "end": 905000,
+      "bytes": 968872,
+      "sha256": "ca1b545a597871f503c377f610ad441459fa1d1a123ab331aac9608d2b348709",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 905000,
+      "end": 910000,
+      "bytes": 969739,
+      "sha256": "f932fe5cbea6eb3481137eeddd859a8fa7cd754e47e7a9e3d13ec25847775166",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 910000,
+      "end": 915000,
+      "bytes": 967355,
+      "sha256": "61624f3cdbe4150b467c77a38af569d84e767b3e7fb67778d3b41dbc6714f622",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 915000,
+      "end": 920000,
+      "bytes": 964691,
+      "sha256": "8a0cf6a67ef75acc3b3e6605eca143312f4385574b3cc6ba74dc447e364cffe7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 920000,
+      "end": 925000,
+      "bytes": 965599,
+      "sha256": "46f29fc14dc326b18f05cae3d1c1c280e88f0ef8522751adb98f2f2920e5f53d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 925000,
+      "end": 930000,
+      "bytes": 967145,
+      "sha256": "e85b4a0ef6cb54b07a324755972043ec5f7727e1c59eaa395bc4368832e92ba6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 930000,
+      "end": 935000,
+      "bytes": 968017,
+      "sha256": "f5b114dd3ce43e9c39dbe279b80864be4791e7067527ff4bbdd745b77aa0c399",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 935000,
+      "end": 940000,
+      "bytes": 967427,
+      "sha256": "86474df9aa114d54fe7ace0a7aa16000ab0a8e6ec11af0f87b612d7049de0b10",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 940000,
+      "end": 945000,
+      "bytes": 965570,
+      "sha256": "ff4bb0637c3c006519a03bbb36e783b629f82e44e0c8ccb8029e1802d29458b6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 945000,
+      "end": 950000,
+      "bytes": 965198,
+      "sha256": "b8075b970d4352461b46b706fd42aceb6b7ac6d76f17436d0e7efa05323c7ecc",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 950000,
+      "end": 955000,
+      "bytes": 965819,
+      "sha256": "f032af1a5d9a2af48891aa803814379f8448cf62a0d06126c7af401afbed01e1",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 955000,
+      "end": 960000,
+      "bytes": 964101,
+      "sha256": "ed172929613dcbd1e133801656199f547743bc3de9b1bdf35d2db7e34b16c04a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 960000,
+      "end": 965000,
+      "bytes": 967217,
+      "sha256": "312eb4c12eb7ecde0fcc0a8143b06cd486ae087c2c9dd36cce75cd8945f335d6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 965000,
+      "end": 970000,
+      "bytes": 968033,
+      "sha256": "609ac31b7c57e025fd8054ab82bace897b44ab08a743aeaac9a560ac6d3f1bfb",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 970000,
+      "end": 975000,
+      "bytes": 967348,
+      "sha256": "e990ffe55b87b9b64d85276de7ac30f46f31c189874a7987cf91de0845e45f1d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 975000,
+      "end": 980000,
+      "bytes": 967702,
+      "sha256": "56a2e839b42b17e16519806a4a14d794a54d556a0fb8914cbda03aff7b4e3a30",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 980000,
+      "end": 985000,
+      "bytes": 968358,
+      "sha256": "5e70f94dcfc156ddaa3a7a8e7d522f4840d04dca6ae2db80c8294fb56e0e5fce",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 985000,
+      "end": 990000,
+      "bytes": 968974,
+      "sha256": "34f146bec1f7424ffe9f0407d132a42ec399b5328540013b1200ed29ea1167b5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 990000,
+      "end": 995000,
+      "bytes": 966925,
+      "sha256": "d492a6e5441c3af865141c58b296fdd6f4c1dee46a22c5afcb583d32342be667",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 995000,
+      "end": 1000000,
+      "bytes": 967005,
+      "sha256": "ceabe6f3135b3128ae4c242edbc23560d4b53c777c87c724cfdb3cc7c8472859",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1000000,
+      "end": 1005000,
+      "bytes": 966305,
+      "sha256": "ae06a41ae0a6b15d823ea1055ade0d1a69309d22d43516061cc6e8af1f37a270",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1005000,
+      "end": 1010000,
+      "bytes": 968242,
+      "sha256": "bdc857b1c5422e93a913f2972710218654b9c4d7932aab5ddc29f43d82e554d3",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1010000,
+      "end": 1015000,
+      "bytes": 967760,
+      "sha256": "99dbc12c70d3eafe04dcc7f9d90ac86e68931e03063782990b97242f78886c06",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1015000,
+      "end": 1020000,
+      "bytes": 967837,
+      "sha256": "c1d491d4fa46a66f64bfb1cda82599819aeecef1063a06b45ec227bfd45e88f4",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1020000,
+      "end": 1025000,
+      "bytes": 965972,
+      "sha256": "00ee39de00d90486c4a6ff3a69de34b0fe9798f9f314bf9f7aaa81b5f89c0b5d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1025000,
+      "end": 1030000,
+      "bytes": 967582,
+      "sha256": "357df2167defed79893247fdddc4e7291a61f393a9ac2a08bb1abefa21f8ccfd",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1030000,
+      "end": 1035000,
+      "bytes": 968171,
+      "sha256": "05861c1433236d88d4f63593c0a7f1f8825fbd4f5d8df14e6544981db082493d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1035000,
+      "end": 1040000,
+      "bytes": 968417,
+      "sha256": "21a75281a68f52bc910de0a4bb1255a23a30a9f9962105102bb596d414484b40",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1040000,
+      "end": 1045000,
+      "bytes": 971677,
+      "sha256": "6631c1048274246a628c3c64caef96c8e77c7b079db82e01e40a7b3947001efc",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1045000,
+      "end": 1050000,
+      "bytes": 966775,
+      "sha256": "6bdb1f8fe16acaa5dd04d55b5f1e365ee71ec39ace9a14c315c90cc1c9400877",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1050000,
+      "end": 1055000,
+      "bytes": 968139,
+      "sha256": "144292452469f9715f45bd86c246578f8b77e59807d40077beef69c997c52ca2",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1055000,
+      "end": 1060000,
+      "bytes": 966124,
+      "sha256": "78ffd77a61e625016dfc423d68b5d92b407e805383714ba5ea49bc03b635a4ac",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1060000,
+      "end": 1065000,
+      "bytes": 964876,
+      "sha256": "481eece0021b29c71bd86b6e300070083efdf48500bd206d2e21c9141ddc9b9c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1065000,
+      "end": 1070000,
+      "bytes": 968157,
+      "sha256": "41253c0a8aa187f650373745535336cee5ce385c499759cd0b4e3e3434d1eb34",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1070000,
+      "end": 1075000,
+      "bytes": 964725,
+      "sha256": "7506f1692d1a070809700157c2b672c59757cec849e422271c7d396c4ed8a317",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1075000,
+      "end": 1080000,
+      "bytes": 967247,
+      "sha256": "d7a26ef927d774ea9fb85ba197f5cafb7c5517a0d2606145288dd3747774ad91",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1080000,
+      "end": 1085000,
+      "bytes": 967005,
+      "sha256": "3f2f55bebbef8e38a970b9502a1393db63904b6e0a76321e954710d4186c98e5",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1085000,
+      "end": 1090000,
+      "bytes": 967949,
+      "sha256": "af24c1d945422332f7d6da91d7e2061aad4553626cd9b9e33bac90136f116ec7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1090000,
+      "end": 1095000,
+      "bytes": 964871,
+      "sha256": "8fd1802acd729e0c3d475cb9c8ec5c408db0b71e787cbc175de153408a279740",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1095000,
+      "end": 1100000,
+      "bytes": 968171,
+      "sha256": "752c75eb85a4138ed4f492215c768ee7a29e2049c65cc7aea9e18e7602de4d70",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1100000,
+      "end": 1105000,
+      "bytes": 965685,
+      "sha256": "247bd44129836bfd900a452e3fcaa090769bb2083eabe5f84a19532d9e4e8a94",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1105000,
+      "end": 1110000,
+      "bytes": 966694,
+      "sha256": "cac0900d018d0d94f6891e8e190b11995687dd2283b4b802602be8136f469151",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1110000,
+      "end": 1115000,
+      "bytes": 967200,
+      "sha256": "dc4166c28966a15b240bda131c7e5a06d391430c9378338bff4715e4a924cc14",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1115000,
+      "end": 1120000,
+      "bytes": 967689,
+      "sha256": "f3e493dae89939acb6e4c9c665c3d264e2df655d807880296aba7e72d0fda404",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1120000,
+      "end": 1125000,
+      "bytes": 966178,
+      "sha256": "ae219a43a304aae96eae8fd0d3f4bf1464d0225ade1ab587a54318cb6ca72f42",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1125000,
+      "end": 1130000,
+      "bytes": 966594,
+      "sha256": "ce4eb221ed0e87860ffc58a96f0596746a0bcd47d3deba57d3d8e878ecac3756",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1130000,
+      "end": 1135000,
+      "bytes": 965684,
+      "sha256": "868479bc24eca19b493b220fa078262a14b437a870398543413fb319831f8a73",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1135000,
+      "end": 1140000,
+      "bytes": 966226,
+      "sha256": "3e176245b3f6e573103473a71572b5fd7938fd2fe6c65567b8d8a7ef5be0233e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1140000,
+      "end": 1145000,
+      "bytes": 966942,
+      "sha256": "93701119355d19196450819b93ee5d6d3b935dfe9a573fa0af069b0fc38b235d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1145000,
+      "end": 1150000,
+      "bytes": 968767,
+      "sha256": "90a5e3cbb83122627b9aaf4ac3416a99bea1e171e47b5380d55eb27fdf650014",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1150000,
+      "end": 1155000,
+      "bytes": 966907,
+      "sha256": "d49cb6480f0be8da695e79d9ccf477e7d121d1b8c7724b5c5e82a6248d9f3855",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1155000,
+      "end": 1160000,
+      "bytes": 965831,
+      "sha256": "ea371cf90d5abff552a2ef135c68ba71a421fafd3ea6cc48bddcf4f497e654bf",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1160000,
+      "end": 1165000,
+      "bytes": 968617,
+      "sha256": "31d7a766d383209df3555f44801e59e2a8fa0f0e44d54edd92748ca6d72c1246",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1165000,
+      "end": 1170000,
+      "bytes": 967852,
+      "sha256": "49cd6648317989dbdb406406b7b6e3124927efda749a8e7d034964cac6f87cf0",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1170000,
+      "end": 1175000,
+      "bytes": 967442,
+      "sha256": "c0b36adc57317289a4a758c38482dd791ec1f124eca517ac6a16a2240059ff06",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1175000,
+      "end": 1180000,
+      "bytes": 966984,
+      "sha256": "1ed44bf9258f91a6309d99fd873605f51e8a6eab64a3fb9c1b1a20165e848eb7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1180000,
+      "end": 1185000,
+      "bytes": 968623,
+      "sha256": "f246a5d34f8ed99ad23374364087b39b8ba83d693a2ed94d5e32b866e8d4fa73",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1185000,
+      "end": 1190000,
+      "bytes": 968280,
+      "sha256": "064e678773f73d30be589d498d79e469da3926df60efadcb52c1c64f7f3c851e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1190000,
+      "end": 1195000,
+      "bytes": 968718,
+      "sha256": "ec464250dfc58991ef43dd28d9250a08e5dee15972ff24428621f26ab22758e7",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1195000,
+      "end": 1200000,
+      "bytes": 965149,
+      "sha256": "65dda27481e30bb5bf221a8a9f98c62193a33e5806a33a1985012f52df633aa8",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1200000,
+      "end": 1205000,
+      "bytes": 965931,
+      "sha256": "291e2923771e3f53781f9a8eb2376fd1c4042de8cf1e34a4f3d159179a7d8024",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1205000,
+      "end": 1210000,
+      "bytes": 967101,
+      "sha256": "acfa8a618751dcf032646c19003ef4158de2299da8da048c078365278fc489b8",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1210000,
+      "end": 1215000,
+      "bytes": 965936,
+      "sha256": "151bde82629e65c11e64f408309c12157a534bebd4ebb3acaaae3ae2388d81f0",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1215000,
+      "end": 1220000,
+      "bytes": 969075,
+      "sha256": "3f855f35b8de38768c723c966767c5de6981b05016956420db978b35f6cb67d0",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1220000,
+      "end": 1225000,
+      "bytes": 966878,
+      "sha256": "4bffdf31fe1d6c36a89b3c806f751cf037ebb1725ac6814e78e0bf77315ab20e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1225000,
+      "end": 1230000,
+      "bytes": 966651,
+      "sha256": "2b6316eb2256957e59a4883d79990da21948313d91df946c518baaff8ffd1a88",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1230000,
+      "end": 1235000,
+      "bytes": 968344,
+      "sha256": "46abf65c8bedda23ed384b27eb595d77438e7ccd35114c5b9c5e094b0f7258bf",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1235000,
+      "end": 1240000,
+      "bytes": 966533,
+      "sha256": "42f2c881f21f624428cc72333c6dcf1ce73dfba66bf6b43ba6f67c6a6f2b152c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1240000,
+      "end": 1245000,
+      "bytes": 965223,
+      "sha256": "ff035738e15d1bea37ab45f628bacffec883f53af00922720f9eea9832886e6b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1245000,
+      "end": 1250000,
+      "bytes": 969848,
+      "sha256": "ccbbc87808a65090a31b56fb032333d29156d529c37c0c434d7cf8dde9c893e9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1250000,
+      "end": 1255000,
+      "bytes": 968988,
+      "sha256": "e25b857043d2660c8ff55c5083c327b604a1b3ed12a909c875400dcbb42ccc66",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1255000,
+      "end": 1260000,
+      "bytes": 967281,
+      "sha256": "aeb704448ccba7ffc7e55d8b5da29dfccb36a94344256ec54a9e2581c550309c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1260000,
+      "end": 1265000,
+      "bytes": 967638,
+      "sha256": "86f5a1118a8a9703a3b66537571541ac05c077e3175cf969a6b40005491e339c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1265000,
+      "end": 1270000,
+      "bytes": 964426,
+      "sha256": "d65f89ba3812c446aa4f807b22f10666f91c7b904915ff06f40423180dc91e02",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1270000,
+      "end": 1275000,
+      "bytes": 967257,
+      "sha256": "c3aec8c7021de7312b22edd7abb630495301506075fd92c5d8f7a5f8094d03c2",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1275000,
+      "end": 1280000,
+      "bytes": 966078,
+      "sha256": "2d94b36e7273f9d34fc0a79feb4ded6d4a5d45f5ad48feadf84e6011db5fe433",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1280000,
+      "end": 1285000,
+      "bytes": 965706,
+      "sha256": "2e37e9a581ff55cf74aaf1afffb968f43d624da882e061bc54dcbe40f3b07616",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1285000,
+      "end": 1290000,
+      "bytes": 967760,
+      "sha256": "1ecc58353df3856fb662eb992ab81a24a41de2978e89ba2069b6010098fa6ca1",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1290000,
+      "end": 1295000,
+      "bytes": 969459,
+      "sha256": "5bf3376d5aaab5463282b3648ceb4efcc4a0c0bf3817340fda8593f8e1403b1e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1295000,
+      "end": 1300000,
+      "bytes": 964870,
+      "sha256": "902209dffa1e302a13de2d1f9da0f891cac904fe78ba88cc24ff9de75aad97dc",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1300000,
+      "end": 1305000,
+      "bytes": 966978,
+      "sha256": "8294ac91bef9fa71f67565e08f91c6b4d48cc35670c11cd464d1e53fedd8593d",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1305000,
+      "end": 1310000,
+      "bytes": 967060,
+      "sha256": "8c32f67c831a6bf1b16c080364fb63368db6779a2687ae0039fc2f53758e6204",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1310000,
+      "end": 1315000,
+      "bytes": 968301,
+      "sha256": "f26ec45bcc8342daa2a4febb5c2d46fa999081a734055b69d2b3831d5100c821",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1315000,
+      "end": 1320000,
+      "bytes": 967452,
+      "sha256": "29222011025ce128500a2c1210eece08aab631b647e7224fb8bfc07e4cf6bac6",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1320000,
+      "end": 1325000,
+      "bytes": 970186,
+      "sha256": "37b8760efbcf41976dee240acf37654b84bcd6dc4fd783a51469ce8add652091",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1325000,
+      "end": 1330000,
+      "bytes": 967288,
+      "sha256": "a21e9468da49193cfbed85bc5aa23978760bf4f306ff6f6e9c86514c27e92a20",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1330000,
+      "end": 1335000,
+      "bytes": 966561,
+      "sha256": "6066c671e46b939f92e144640a98c1b0db2f44f4053e8dab27df3d0a6ddb78ce",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1335000,
+      "end": 1340000,
+      "bytes": 967381,
+      "sha256": "80adf0df21622df8896455dba22c9fe12562eeb0e09efc0ae03e9f930c9da03e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1340000,
+      "end": 1345000,
+      "bytes": 966822,
+      "sha256": "75432e68d38d12287f2689850c0518764864565b04966f7e6c1590d51866f719",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1345000,
+      "end": 1350000,
+      "bytes": 966342,
+      "sha256": "878e8e31701211398a21b27e8e76292834ef87cb81c327741c5a4827e0b23513",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1350000,
+      "end": 1355000,
+      "bytes": 968339,
+      "sha256": "afe643d69cc864859e500d4e118c344ab517828c3fb057c06e250f1ad2c8a616",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1355000,
+      "end": 1360000,
+      "bytes": 967032,
+      "sha256": "d8ec2ffb5acd39f9b5f155f20bf6ae3ca57e2b02bd6b971774fd902c28f7918f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1360000,
+      "end": 1365000,
+      "bytes": 968526,
+      "sha256": "6c762058907cfbb425414490d8182596daed88edef0110fa00c1bf595030a505",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1365000,
+      "end": 1370000,
+      "bytes": 964810,
+      "sha256": "424056bf9ed3dc6d257692e8f6caeb54df9c268ef54dee4d4889730263edfd79",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1370000,
+      "end": 1375000,
+      "bytes": 967269,
+      "sha256": "6dede7b4c6cbe0d850d62b8d40c73aacd2886f33d05b9d1538d80c779ca2aad2",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1375000,
+      "end": 1380000,
+      "bytes": 965538,
+      "sha256": "d97273c5a2b61091c07d2f7fd5a965c64b1b6098a2ed9a7443cfb0a141f4c435",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1380000,
+      "end": 1385000,
+      "bytes": 970264,
+      "sha256": "592609dd8189ae9b799eb89ffeaa7f918ec2389fe6d6e33b5a8cff1739d607e4",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1385000,
+      "end": 1390000,
+      "bytes": 966337,
+      "sha256": "76d1d70334d9cdbd623b94b3a39652754724280337694e42a72e172a3ccc33c8",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1390000,
+      "end": 1395000,
+      "bytes": 967095,
+      "sha256": "7fc90fc565d3f8f5eb361076d3a69df8b04144fea98bc89da02f2a59e07f0d0e",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1395000,
+      "end": 1400000,
+      "bytes": 965967,
+      "sha256": "8da2acc17e9b1fe8859ec23536a9dd27d1ba6aff15b9f92c9e1a741b5c26d733",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1400000,
+      "end": 1405000,
+      "bytes": 966481,
+      "sha256": "b3a75d17f1470f1a62833225699a89817805c502e2fa3a0ee107572c9bd2bbae",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1405000,
+      "end": 1410000,
+      "bytes": 965536,
+      "sha256": "cdf96ca36481aa24f092d782124f5147dd87fd165ab8604f9429c2c7be487e0f",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1410000,
+      "end": 1415000,
+      "bytes": 966544,
+      "sha256": "bb90cadbd7ab36fac706b7cbbde8353b7218fe069e561b076bd02264156a3a9b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1415000,
+      "end": 1420000,
+      "bytes": 965221,
+      "sha256": "d68b936e1dd4d9f0883e53095a88148864e8920ac960f36916815c50c49cc4bb",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1420000,
+      "end": 1425000,
+      "bytes": 967557,
+      "sha256": "782b18b3f8d90b38f80fd46938fc017841163d1435400d3e0327639788255ff9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1425000,
+      "end": 1430000,
+      "bytes": 966478,
+      "sha256": "7642e2f8078fc29907bbacfa2308ae15c9aa5e5d2fa874e368867bfe51f658b3",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1430000,
+      "end": 1435000,
+      "bytes": 966191,
+      "sha256": "4f7ffef1c51dbbb045961ae0655a2ab8a8e0bd91aa7f5ab9beb9260ac1682ea0",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1435000,
+      "end": 1440000,
+      "bytes": 967419,
+      "sha256": "79fd0bf5bc1775b9ebe561085b8237420428d2f32ab58d742321055dd4ef0f18",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1440000,
+      "end": 1445000,
+      "bytes": 966691,
+      "sha256": "379ce888c0e05da830abf399df8cf349847b656d414865c1c7d69b8c8ad108d2",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1445000,
+      "end": 1450000,
+      "bytes": 965743,
+      "sha256": "c50a4da27960eba786030142ac82ce8f0868cf8fe396b838ad8fa398ed3b64e9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1450000,
+      "end": 1455000,
+      "bytes": 968825,
+      "sha256": "ecebdf3480de266f23061b9b0f9afe28ad7a15a286a9e7903e0eb10c492237df",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1455000,
+      "end": 1460000,
+      "bytes": 965751,
+      "sha256": "3f898281410d3bb15b309d4f3e4c329d146edd0527a8d2beee3c46615abafb59",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1460000,
+      "end": 1465000,
+      "bytes": 967418,
+      "sha256": "cc6b3f330791f83fa6e234a44edef3ee9389655dbc7695e2e559d4b652119c40",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1465000,
+      "end": 1470000,
+      "bytes": 967748,
+      "sha256": "14c6c7df22b1c20cba6d4f0c61ce8141386e067dcb4191e511c52ae251f3c384",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1470000,
+      "end": 1475000,
+      "bytes": 966440,
+      "sha256": "df06631cdbb724e25ac36ed7815902c54d1c8fa48816bdaa18034a4805a47df8",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1475000,
+      "end": 1480000,
+      "bytes": 967676,
+      "sha256": "c3d19a5bb68410c255e804a23a540765b980a3f4c081fa1d2455f1a43b4d80c9",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1480000,
+      "end": 1485000,
+      "bytes": 968171,
+      "sha256": "192fd5f03af534011de80208efadd73fc026fd361b07e7bf8e50b7055374b37b",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1485000,
+      "end": 1490000,
+      "bytes": 968742,
+      "sha256": "b2813010875d7e6ddf048a8e19b8aa7d7182756583a45dd1e2dd6791cb4f8506",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1490000,
+      "end": 1495000,
+      "bytes": 966288,
+      "sha256": "59e99bb552474993623e0c0ce784c2a5b67990a3b762a64b557d47b38b39731a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1495000,
+      "end": 1500000,
+      "bytes": 965899,
+      "sha256": "6d6d55087a6314975adb3c99b5f6a533348bc7364de0f52790fe42ebf655020a",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 1500000,
+      "end": 1502640,
+      "bytes": 508389,
+      "sha256": "9124cc325f664b05dd8213333c8c380e5c3930881b5a1b20f5b41c4e2d120f4e",
+      "candidates": 2640
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 400000,
+      "end": 405000,
+      "bytes": 968238,
+      "sha256": "5a725f827ff534ec96bddb8c059609f1f7252c8538f891ebcec08cf0f971d84c",
+      "candidates": 5000
+    },
+    {
+      "url": "https://polydb.org/rest/query.php",
+      "start": 730000,
+      "end": 735000,
+      "bytes": 965069,
+      "sha256": "a9b33407c7162362fa49f70e57cce1540e4afb4c30b35f8c6c483839c69b79c4",
+      "candidates": 5000
+    }
+  ],
+  "sourceReports": [
+    "size13-shard-000000-050000.json",
+    "size13-resume-test.json",
+    "size13-page10k-test.json",
+    "size13-concurrency-65000-70000.json",
+    "size13-concurrency-70000-75000.json",
+    "size13-chunk-0075000-0175000.json",
+    "size13-chunk-0175000-0275000.json",
+    "size13-chunk-0275000-0300000.json",
+    "size13-chunk-0300000-0325000.json",
+    "size13-chunk-0325000-0350000.json",
+    "size13-chunk-0350000-0375000.json",
+    "size13-chunk-0375000-0400000.json",
+    "size13-chunk-0405000-0430000.json",
+    "size13-chunk-0430000-0455000.json",
+    "size13-chunk-0455000-0480000.json",
+    "size13-chunk-0480000-0505000.json",
+    "size13-chunk-0505000-0530000.json",
+    "size13-chunk-0530000-0555000.json",
+    "size13-chunk-0555000-0580000.json",
+    "size13-chunk-0580000-0605000.json",
+    "size13-chunk-0605000-0630000.json",
+    "size13-chunk-0630000-0655000.json",
+    "size13-chunk-0655000-0680000.json",
+    "size13-chunk-0680000-0705000.json",
+    "size13-chunk-0705000-0730000.json",
+    "size13-chunk-0735000-0760000.json",
+    "size13-chunk-0760000-0785000.json",
+    "size13-chunk-0785000-0810000.json",
+    "size13-chunk-0810000-0835000.json",
+    "size13-chunk-0835000-0860000.json",
+    "size13-chunk-0860000-0885000.json",
+    "size13-chunk-0885000-0910000.json",
+    "size13-chunk-0910000-0935000.json",
+    "size13-chunk-0935000-0960000.json",
+    "size13-chunk-0960000-0985000.json",
+    "size13-chunk-0985000-1010000.json",
+    "size13-chunk-1010000-1035000.json",
+    "size13-chunk-1035000-1060000.json",
+    "size13-chunk-1060000-1085000.json",
+    "size13-chunk-1085000-1110000.json",
+    "size13-chunk-1110000-1135000.json",
+    "size13-chunk-1135000-1160000.json",
+    "size13-chunk-1160000-1185000.json",
+    "size13-chunk-1185000-1210000.json",
+    "size13-chunk-1210000-1235000.json",
+    "size13-chunk-1235000-1260000.json",
+    "size13-chunk-1260000-1285000.json",
+    "size13-chunk-1285000-1310000.json",
+    "size13-chunk-1310000-1335000.json",
+    "size13-chunk-1335000-1360000.json",
+    "size13-chunk-1360000-1385000.json",
+    "size13-chunk-1385000-1410000.json",
+    "size13-chunk-1410000-1435000.json",
+    "size13-chunk-1435000-1460000.json",
+    "size13-chunk-1460000-1485000.json",
+    "size13-chunk-1485000-1502640.json",
+    "size13-recovery-400000-405000.json",
+    "size13-recovery-730000-735000.json"
+  ],
+  "screenedCandidates": 1502640,
+  "counts": {
+    "localEdgeObstruction": 1502508,
+    "extendableShellObstruction": 39,
+    "shellOneWitness": 93,
+    "incomplete": 0,
+    "other": 0
+  },
+  "survivors": [
+    {
+      "id": "13_0009109",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          3,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          3
+        ]
+      ],
+      "shellTiles": 8,
+      "visitedNodes": 8,
+      "maximumCandidates": 1
+    },
+    {
+      "id": "13_0042983",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          1,
+          6
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          6
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_0053261",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          5,
+          3,
+          6
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          6,
+          4,
+          7
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          6,
+          3,
+          6
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0059416",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          7,
+          6,
+          8
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          8,
+          7,
+          9
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          8,
+          6,
+          8
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0060164",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          6,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          5,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0073957",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          7,
+          2,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          8,
+          2,
+          -1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          7,
+          3,
+          -1
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0100817",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          4,
+          12
+        ],
+        [
+          2,
+          4,
+          12
+        ],
+        [
+          1,
+          5,
+          12
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0104485",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          5,
+          6
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          5,
+          6
+        ],
+        [
+          1,
+          6,
+          6
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0140406",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          4
+        ],
+        [
+          2,
+          0,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_0140452",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          14
+        ],
+        [
+          4,
+          2,
+          14
+        ],
+        [
+          3,
+          3,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0153282",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          -1,
+          2,
+          1
+        ],
+        [
+          -1,
+          3,
+          1
+        ],
+        [
+          -1,
+          2,
+          2
+        ],
+        [
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 11,
+      "visitedNodes": 11,
+      "maximumCandidates": 10
+    },
+    {
+      "id": "13_0216826",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0233300",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          3,
+          -6,
+          2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          4,
+          -6,
+          2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          3,
+          -5,
+          2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0251447",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          8,
+          14
+        ],
+        [
+          2,
+          8,
+          14
+        ],
+        [
+          1,
+          9,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0253273",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          -2
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          2,
+          0,
+          -2
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          -2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0285841",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          7,
+          1,
+          -2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          8,
+          1,
+          -2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          7,
+          2,
+          -2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0292914",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          4
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          2,
+          4
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          3,
+          3,
+          4
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0305449",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          2,
+          -2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          3,
+          2,
+          -2
+        ],
+        [
+          2,
+          3,
+          -2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0351711",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          3,
+          2,
+          2
+        ],
+        [
+          2,
+          3,
+          2
+        ],
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          1,
+          3,
+          3
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0363768",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          6,
+          14
+        ],
+        [
+          4,
+          6,
+          14
+        ],
+        [
+          3,
+          7,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0374810",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -6,
+          2,
+          2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          -5,
+          2,
+          2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          -6,
+          3,
+          2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 3
+    },
+    {
+      "id": "13_0442034",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          14
+        ],
+        [
+          2,
+          2,
+          14
+        ],
+        [
+          1,
+          3,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0450561",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          -1,
+          -3
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          2,
+          -1,
+          -3
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          0,
+          -3
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0487435",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          3,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          1,
+          3,
+          3
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0492735",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          -1,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 11,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_0510707",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          4
+        ],
+        [
+          3,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          4
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0511232",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          3,
+          2,
+          -3
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          4,
+          2,
+          -3
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          3,
+          3,
+          -3
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0567603",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          8,
+          14
+        ],
+        [
+          4,
+          8,
+          14
+        ],
+        [
+          3,
+          9,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0573973",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          4,
+          6
+        ],
+        [
+          3,
+          4,
+          6
+        ],
+        [
+          1,
+          3,
+          3
+        ],
+        [
+          2,
+          3,
+          3
+        ]
+      ],
+      "shellTiles": 7,
+      "visitedNodes": 7,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0577217",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          15
+        ],
+        [
+          2,
+          1,
+          15
+        ],
+        [
+          1,
+          2,
+          15
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0582567",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          6
+        ],
+        [
+          2,
+          1,
+          6
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          2,
+          2,
+          6
+        ]
+      ],
+      "shellTiles": 7,
+      "visitedNodes": 7,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0591556",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          4,
+          10
+        ],
+        [
+          3,
+          4,
+          10
+        ],
+        [
+          2,
+          5,
+          10
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0591870",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          5,
+          3,
+          -2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          6,
+          3,
+          -2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          5,
+          4,
+          -2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0594661",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          5,
+          10
+        ],
+        [
+          3,
+          5,
+          10
+        ],
+        [
+          2,
+          6,
+          10
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0595876",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          -2,
+          1,
+          8
+        ],
+        [
+          -1,
+          1,
+          8
+        ],
+        [
+          -2,
+          2,
+          8
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 3
+    },
+    {
+      "id": "13_0603768",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          5
+        ],
+        [
+          1,
+          3,
+          5
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0617402",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          10,
+          14
+        ],
+        [
+          2,
+          10,
+          14
+        ],
+        [
+          1,
+          11,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0618711",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          3
+        ]
+      ],
+      "shellTiles": 8,
+      "visitedNodes": 8,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_0626927",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          5,
+          1,
+          -4
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          6,
+          1,
+          -4
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          5,
+          2,
+          -4
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0635270",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_0657439",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          5,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          4,
+          3,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0676119",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          15
+        ],
+        [
+          3,
+          2,
+          15
+        ],
+        [
+          2,
+          3,
+          15
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_0679849",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          6
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          3,
+          1,
+          6
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_0690611",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          5,
+          6
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          3,
+          2
+        ],
+        [
+          2,
+          5,
+          6
+        ],
+        [
+          1,
+          6,
+          6
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0761600",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          4
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          3,
+          2,
+          4
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0769063",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          12
+        ],
+        [
+          3,
+          3,
+          12
+        ],
+        [
+          2,
+          4,
+          12
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0784443",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          9,
+          12
+        ],
+        [
+          3,
+          9,
+          12
+        ],
+        [
+          2,
+          10,
+          12
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0788197",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          2,
+          1,
+          3
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0795682",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -4,
+          3,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          -3,
+          3,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          -5,
+          4,
+          -1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          -4,
+          4,
+          -1
+        ]
+      ],
+      "shellTiles": 11,
+      "visitedNodes": 11,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0801302",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          7
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          4,
+          3,
+          9
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          4,
+          2,
+          7
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0805849",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          4,
+          4,
+          5
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          4,
+          5,
+          5
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0843197",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          7,
+          15
+        ],
+        [
+          2,
+          7,
+          15
+        ],
+        [
+          1,
+          8,
+          15
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0855504",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          4,
+          2,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0860801",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          12,
+          14
+        ],
+        [
+          2,
+          12,
+          14
+        ],
+        [
+          1,
+          13,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0864330",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          5,
+          4,
+          14
+        ],
+        [
+          6,
+          4,
+          14
+        ],
+        [
+          5,
+          5,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0871062",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          4,
+          14
+        ],
+        [
+          2,
+          4,
+          14
+        ],
+        [
+          1,
+          5,
+          14
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0871749",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          4,
+          4
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0907317",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          5
+        ],
+        [
+          3,
+          1,
+          2
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          4,
+          1,
+          5
+        ],
+        [
+          3,
+          2,
+          5
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0952969",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          5,
+          6
+        ],
+        [
+          2,
+          3,
+          3
+        ],
+        [
+          1,
+          4,
+          3
+        ],
+        [
+          2,
+          5,
+          6
+        ],
+        [
+          1,
+          6,
+          6
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0986893",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          3,
+          4
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          4,
+          4
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0997990",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          3,
+          3,
+          1
+        ]
+      ],
+      "shellTiles": 7,
+      "visitedNodes": 7,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1025751",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1034667",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          4,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          3
+        ],
+        [
+          3,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          3
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1042494",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          5,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          4,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1053981",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          10
+        ],
+        [
+          5,
+          5,
+          10
+        ],
+        [
+          4,
+          6,
+          10
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1072824",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          0,
+          3,
+          2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 11,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1143354",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          5,
+          2,
+          -3
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          6,
+          2,
+          -3
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          5,
+          3,
+          -3
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1148885",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          8,
+          1,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          9,
+          1,
+          -1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          8,
+          2,
+          -1
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1176594",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          1
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1177570",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          4,
+          8
+        ],
+        [
+          3,
+          4,
+          8
+        ],
+        [
+          2,
+          5,
+          8
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1247989",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          3,
+          1,
+          5
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          4,
+          1,
+          5
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1258452",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          3
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1269475",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          3
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          3,
+          0,
+          3
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          3
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1283372",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          10
+        ],
+        [
+          3,
+          2,
+          10
+        ],
+        [
+          2,
+          3,
+          10
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1286831",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "shellTiles": 11,
+      "visitedNodes": 11,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1290325",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          4,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          2
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1307818",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          5,
+          2,
+          -2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          6,
+          2,
+          -2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          5,
+          3,
+          -2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1313289",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          6,
+          1,
+          -2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          7,
+          1,
+          -2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          6,
+          2,
+          -2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1320999",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          3
+        ],
+        [
+          3,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          3
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1340735",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          1,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          3,
+          1,
+          -1
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          3,
+          2,
+          -1
+        ],
+        [
+          3,
+          1,
+          0
+        ]
+      ],
+      "shellTiles": 13,
+      "visitedNodes": 13,
+      "maximumCandidates": 3
+    },
+    {
+      "id": "13_1362007",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "shellTiles": 8,
+      "visitedNodes": 8,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1384363",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          8
+        ],
+        [
+          3,
+          3,
+          8
+        ],
+        [
+          2,
+          4,
+          8
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1386801",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          2,
+          4,
+          5
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          3,
+          4,
+          5
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1394671",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          4,
+          3,
+          -2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          5,
+          3,
+          -2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          4,
+          4,
+          -2
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1411085",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -6,
+          1,
+          4
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          -5,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          -6,
+          2,
+          4
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 3
+    },
+    {
+      "id": "13_1429971",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "shellTiles": 8,
+      "visitedNodes": 8,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1446217",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "shellTiles": 13,
+      "visitedNodes": 13,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1452074",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          4,
+          4,
+          15
+        ],
+        [
+          5,
+          4,
+          15
+        ],
+        [
+          4,
+          5,
+          15
+        ]
+      ],
+      "shellTiles": 6,
+      "visitedNodes": 6,
+      "maximumCandidates": 2
+    },
+    {
+      "id": "13_1454590",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          5,
+          1,
+          1
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          4,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1466842",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          3,
+          3,
+          4
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          4,
+          4
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_1498057",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -6,
+          1,
+          3
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          -5,
+          1,
+          3
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          -6,
+          2,
+          3
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 3
+    },
+    {
+      "id": "13_1498173",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          4
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          1,
+          4
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          3,
+          2,
+          4
+        ]
+      ],
+      "shellTiles": 9,
+      "visitedNodes": 9,
+      "maximumCandidates": 4
+    },
+    {
+      "id": "13_0403823",
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          5,
+          4,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          6,
+          4,
+          -1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          5,
+          5,
+          -1
+        ]
+      ],
+      "shellTiles": 10,
+      "visitedNodes": 10,
+      "maximumCandidates": 4
+    }
+  ],
+  "unresolved": [],
+  "elapsedMs": 50879,
+  "interpretation": "This exhaustive first-stage screen leaves only candidates with an exact extendable shell-one witness. Local-edge and exhausted shell failures are non-tiling certificates in the configured face-to-face full-cubic-isometry lattice model; survivors still require deeper shell and periodic screening."
+}

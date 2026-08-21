@@ -28,6 +28,7 @@ const geometricNogood = args.get("geometric-nogood") === "true";
 const geometricNogoodMaxClauses = Math.max(0, Math.floor(numberArg("geometric-nogood-max-clauses", 20000)));
 const includeMirrors = args.get("include-mirrors") === "true";
 const globalZeroFacePruning = args.get("global-zero-face-pruning") === "true";
+const globalFrontierGraph = args.get("global-frontier-graph") === "true";
 const failureMemoSymmetry = args.get("memo-symmetry") === "fixed" ? "fixed" : "rigid";
 const seededTieBreaks = args.get("seeded-tie-breaks") !== "false";
 const seeds = [...new Set((args.get("seeds") ?? "1,2,3")
@@ -124,7 +125,7 @@ const configFor = (candidate, seed, targetDepth, initialPatchSelection) => ({
   // The exact shell proof branches on the face-extension index. The complete
   // point/candidate dual is useful in the interactive UI but is pure overhead
   // in a headless census run.
-  generic_global_frontier_graph: false,
+  generic_global_frontier_graph: globalFrontierGraph,
   generic_global_zero_face_pruning: globalZeroFacePruning,
   generic_failure_memo: failureMemo,
   generic_failure_memo_symmetry: failureMemoSymmetry,
@@ -268,6 +269,9 @@ async function runCandidate(candidate, seed, targetDepth) {
     failedStates: stats.generic_failure_memo_states ?? 0,
     failureMemoHits: stats.generic_failure_memo_hits ?? 0,
     globalZeroFaceDeadEnds: stats.generic_global_zero_face_dead_ends ?? 0,
+    globalFrontierGraph: stats.generic_global_frontier_graph ?? false,
+    shellRequiredFacesScanned: stats.generic_shell_required_faces_scanned ?? 0,
+    shellFaceMatchAttempts: stats.generic_shell_face_match_attempts ?? 0,
     initialPatchAppliedTiles: stats.initial_patch_applied_tiles ?? 0,
     initialPatchBaseShellDepth: stats.initial_patch_base_shell_depth ?? 0,
     initialPatchSourceCandidate: initialPatchSelection?.candidate ?? null,
@@ -334,6 +338,7 @@ const report = {
     failureMemoSymmetry,
     seededTieBreaks,
     globalZeroFacePruning,
+    globalFrontierGraph,
     includeWitness,
     initialPatch: initialPatchDocument
       ? {

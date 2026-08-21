@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { readFile, writeFile } from "node:fs/promises";
+import { POLYDB_FEW_LATTICE_POINTS_COUNTS } from "../assets/lattice-polytope-census.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
   const separator = argument.indexOf("=");
@@ -30,7 +31,7 @@ for (const { file, report } of reports) {
   }
   if (report.configuration?.size !== size) throw new Error(`${file} has a different census size`);
   if ((report.configuration?.source ?? "blanco_santos") !== source) throw new Error(`${file} has a different census source`);
-  for (const key of ["timeMs", "nodeLimit", "orientationGroup", "translations", "mirrors", "globalZeroFacePruning"]) {
+  for (const key of ["timeMs", "nodeLimit", "orientationGroup", "translations", "mirrors", "globalZeroFacePruning", "fastLocalEdgePreflight"]) {
     if (report.configuration?.[key] !== expectedConfiguration?.[key]) {
       throw new Error(`${file} has a different ${key} configuration`);
     }
@@ -88,14 +89,16 @@ const report = {
       start: ranges[0]?.start ?? null,
       end: ranges.at(-1)?.end ?? null,
       completeConfiguredSize: ranges[0]?.start === 0
-        && ranges.at(-1)?.end === screenedCandidates
+        && ranges.at(-1)?.end === POLYDB_FEW_LATTICE_POINTS_COUNTS[size]
+        && screenedCandidates === POLYDB_FEW_LATTICE_POINTS_COUNTS[size]
     } : {}),
     timeMs: expectedConfiguration.timeMs,
     nodeLimit: expectedConfiguration.nodeLimit,
     orientationGroup: expectedConfiguration.orientationGroup,
     translations: expectedConfiguration.translations,
     mirrors: expectedConfiguration.mirrors,
-    globalZeroFacePruning: expectedConfiguration.globalZeroFacePruning
+    globalZeroFacePruning: expectedConfiguration.globalZeroFacePruning,
+    fastLocalEdgePreflight: expectedConfiguration.fastLocalEdgePreflight
   },
   sources: reports.flatMap(({ report }) => report.sources ?? []),
   sourceReports: inputFiles.map(file => file.split("/").at(-1)),

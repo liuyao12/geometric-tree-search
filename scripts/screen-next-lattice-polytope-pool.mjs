@@ -41,14 +41,17 @@ const polyDbEnd = Math.max(polyDbStart, Math.floor(numberArg(
     ? polyDbStart + maxCandidates
     : POLYDB_FEW_LATTICE_POINTS_COUNTS[size] ?? polyDbStart
 )));
-const polyDbPageSize = Math.max(10, Math.min(5000, Math.floor(numberArg("polydb-page-size", 1000))));
+const polyDbPageSize = Math.max(10, Math.min(10000, Math.floor(numberArg("polydb-page-size", 1000))));
 const fetchRetries = Math.max(0, Math.min(10, Math.floor(numberArg("fetch-retries", 5))));
+const fetchTimeoutMs = Math.max(1000, Math.floor(numberArg("fetch-timeout-ms", 20000)));
+const fetchDelayMs = Math.max(0, Math.floor(numberArg("fetch-delay-ms", 0)));
 const timeMs = Math.max(10, Math.floor(numberArg("time-ms", 250)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 200000)));
 const outputFile = args.get("output-file") ?? null;
 const progressEvery = Math.max(1, Math.floor(numberArg("progress-every", 1000)));
 const includeMirrors = args.get("include-mirrors") === "true";
 const globalZeroFacePruning = args.get("global-zero-face-pruning") === "true";
+const fastLocalEdgePreflight = args.get("fast-local-edge-preflight") !== "false";
 
 const sourceRecords = [];
 let candidates = [];
@@ -66,8 +69,8 @@ const fetchText = async request => {
   let lastError = null;
   for (let attempt = 0; attempt <= fetchRetries; attempt += 1) {
     try {
-      const response = await fetch(request.url);
-      if (response.ok) return response.text();
+      const response = await fetch(request.url, { signal: AbortSignal.timeout(fetchTimeoutMs) });
+      if (response.ok) return await response.text();
       lastError = new Error(`Failed to fetch ${request.url}: ${response.status}`);
       if (response.status < 500 || attempt === fetchRetries) throw lastError;
     } catch (error) {
@@ -78,7 +81,11 @@ const fetchText = async request => {
   }
   throw lastError;
 };
-for (const request of sourceRequests) {
+for (let requestIndex = 0; requestIndex < sourceRequests.length; requestIndex += 1) {
+  const request = sourceRequests[requestIndex];
+  if (requestIndex > 0 && fetchDelayMs > 0) {
+    await new Promise(resolve => setTimeout(resolve, fetchDelayMs));
+  }
   const text = await fetchText(request);
   const parsed = source === "polydb"
     ? parsePolyDbLatticePolytopes(JSON.parse(text))
@@ -114,6 +121,7 @@ const solveFirstExtendableShell = async candidate => {
     agent_exhaustive: true,
     forced_move_layer_lag_cap: 0,
     generic_complete_shell_enumeration: true,
+    generic_global_frontier_graph: false,
     generic_global_zero_face_pruning: globalZeroFacePruning,
     generic_failure_memo: false,
     generic_geometric_nogood: false,
@@ -144,6 +152,18 @@ const survivors = [];
 const unresolved = [];
 for (let index = 0; index < candidates.length; index += 1) {
   const candidate = candidates[index];
+  const localEdgeObstruction = fastLocalEdgePreflight
+    ? tileSpecs.convexEdgeAngleObstruction(candidate.vertices)
+    : null;
+  if (localEdgeObstruction?.can_tile === false) {
+    counts.localEdgeObstruction += 1;
+    if ((index + 1) % progressEvery === 0 || index + 1 === candidates.length) {
+      process.stderr.write(
+        `${index + 1}/${candidates.length}: edge ${counts.localEdgeObstruction}, shell ${counts.extendableShellObstruction}, survivors ${counts.shellOneWitness}, incomplete ${counts.incomplete}\n`
+      );
+    }
+    continue;
+  }
   const final = await solveFirstExtendableShell(candidate);
   const kind = final?.tiling_evidence?.kind ?? null;
   if (kind === "local_edge_obstruction" && final?.can_tile === false) {
@@ -198,7 +218,7 @@ const report = {
   configuration: {
     size,
     source,
-    ...(source === "polydb" ? { polyDbStart, polyDbEnd, polyDbPageSize, fetchRetries } : {}),
+    ...(source === "polydb" ? { polyDbStart, polyDbEnd, polyDbPageSize, fetchRetries, fetchTimeoutMs, fetchDelayMs } : {}),
     parts: urls.map(url => allUrls.indexOf(url) + 1),
     offset,
     maxCandidates: Number.isFinite(maxCandidates) ? maxCandidates : null,
@@ -207,7 +227,8 @@ const report = {
     orientationGroup: includeMirrors ? "full cubic isometries" : "proper cubic rotations",
     translations: "integer",
     mirrors: includeMirrors,
-    globalZeroFacePruning
+    globalZeroFacePruning,
+    fastLocalEdgePreflight
   },
   sources: sourceRecords,
   screenedCandidates: candidates.length,
