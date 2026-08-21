@@ -2097,6 +2097,26 @@ closure is useful but not causally sufficient. The remaining implementation
 target is a branch-level consistency graph or explicit certificate that some
 carried port obligation can no longer be satisfied.
 
+That branch-level solver is now implemented with a strict three-valued result.
+It returns `satisfied` only with an explicit conflict-free action cover,
+`unsatisfied` only after complete candidate enumeration and exhaustive search,
+and `unknown` whenever either side is truncated. Only `unsatisfied` is a legal
+rollback certificate. A synthetic adversarial control proves the difference
+from the former marginal check: actions exist for every role separately, yet
+their pair conflict makes the joint branch exhaustively impossible.
+
+The real width-16 audit rebuilds the complete successor frontier for all 120
+retained IQC branches, freezes exact pair-collision constraints, hashes each
+candidate set and certificate, and joins consumed development labels only
+after each group's geometry is frozen. All 120 searches complete. The result
+is deliberately red: all 59 exact and all 61 false branches are `satisfied`.
+Forty-one branches have no persisting selected role; the remaining 79 reduce
+to at most one distinct semantic role, 137 relevant child actions in total,
+and zero pair conflicts. The simultaneous solver is no longer the weakness.
+The role quotient erased the finite port-instance incidence needed to expose a
+contradiction. The next graph must carry exact symmetry-quotiented port
+instances while keeping candidate geometry and target ordering unchanged.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

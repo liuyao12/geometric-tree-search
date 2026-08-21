@@ -4220,6 +4220,41 @@ alternatives in the two difficult boundary environments. Fresh confirmation,
 autonomous commitment, stationary IQC recurrence, and exponential IQC growth
 remain red.
 
+### Simultaneous semantic port-cover certificate
+
+The replacement search no longer equates marginal availability with joint
+consistency. Given a finite carried multiset and frozen exact actions, it
+enumerates mutually compatible action sets and reports one of three states:
+
+- `satisfied`: an explicit compatible set covers every carried duty;
+- `unsatisfied`: complete candidate enumeration and exhaustive search prove no
+  cover exists;
+- `unknown`: either the candidate enumeration or bounded search was truncated.
+
+Only `unsatisfied` authorizes rollback. An adversarial regression has two
+carried roles and one action for each; both roles are marginally available, but
+the actions conflict. The old stranded-role check accepts it, while the new
+solver returns an exhaustive inconsistency certificate. The same problem with
+an incomplete candidate list returns `unknown`, never a fabricated rejection.
+
+The real audit reconstructs the complete successor frontier for each of the
+120 branches in the frozen width-16 IQC portfolio. Candidate geometry is
+unchanged, exact inter-candidate minimum-distance conflicts are frozen, and
+labels from the consumed development set are joined only after each group's
+candidate sets and certificates are hashed. All successor enumerations and all
+searches complete: 257 search nodes over 137 role-relevant actions.
+
+The stronger result is nevertheless red. Every branch is satisfiable: all 59
+exact and all 61 false branches pass. Forty-one branches carry no persistent
+selected role. The other 79 contain at most one distinct semantic role, at
+most three relevant successor actions per branch, and zero pair conflicts.
+Thus simultaneous search is implemented and verified, but the semantic role
+quotient has erased the joint structure it was meant to constrain. The next
+certificate must preserve exact finite symmetry-quotiented port instances and
+their incidence; increasing scalar capacity or reweighting the same role
+classes cannot repair this loss. No physical valence, mandatory port occupancy,
+autonomous growth, stationary IQC rule, or exponential claim follows.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
