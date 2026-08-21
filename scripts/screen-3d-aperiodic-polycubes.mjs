@@ -10,7 +10,10 @@ import {
 } from "../assets/polycube-enumerator.js";
 import { searchPolycubeCorona } from "../assets/polycube-corona-search.js";
 import { findPolycubeBoxTiling } from "../assets/polycube-box-tiler.js";
-import { findPolycubePeriodicTiling } from "../assets/polycube-periodic-tiler.js";
+import {
+  findPolycubePeriodicTiling,
+  verifyPolycubePeriodicCertificate
+} from "../assets/polycube-periodic-tiler.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
   const separator = argument.indexOf("=");
@@ -184,12 +187,19 @@ for (let index = 0; index < candidates.length; index++) {
     timeLimitMs: boxTimeMs
   });
   const easy = torus.certified ? torus : box ?? torus;
-  const periodic = easy.certified || !generalPeriodic ? null : await periodicScreen(candidate);
+  const easyVerification = easy.certified
+    ? verifyPolycubePeriodicCertificate(candidate.voxels, easy, { includeReflections })
+    : null;
+  if (easy.certified && !easyVerification?.verified) {
+    throw new Error(`Independent periodic-certificate verification failed for ${candidate.id}: ${easyVerification?.reason ?? "unknown"}`);
+  }
+  const easyCertified = !!easyVerification?.verified;
+  const periodic = easyCertified || !generalPeriodic ? null : await periodicScreen(candidate);
   let classification = "unresolved";
   let isohedral = null;
   let obstruction = null;
 
-  if (easy.certified || (periodic?.tiling_evidence?.certified && periodic?.can_tile === true)) {
+  if (easyCertified || (periodic?.tiling_evidence?.certified && periodic?.can_tile === true)) {
     classification = "periodic";
   } else if (stopAfter !== "periodic") {
     isohedral = await isohedralLeadScreen(candidate);
@@ -204,9 +214,9 @@ for (let index = 0; index < candidates.length; index++) {
       }
     }
   }
-  if (torus.certified) witnessCounts.torus += 1;
-  if (box?.certified) witnessCounts.box += 1;
-  if (easy.isohedral?.certified) witnessCounts.isohedral_easy += 1;
+  if (torus.certified && easyCertified) witnessCounts.torus += 1;
+  if (box?.certified && easyCertified) witnessCounts.box += 1;
+  if (easy.isohedral?.certified && easyCertified) witnessCounts.isohedral_easy += 1;
   if (periodic?.tiling_evidence?.certified && periodic?.can_tile === true) witnessCounts.general_periodic += 1;
   if (isohedral?.tiling_evidence?.certified && isohedral?.can_tile === true) witnessCounts.isohedral_lane += 1;
   counts[classification] += 1;
@@ -222,6 +232,7 @@ for (let index = 0; index < candidates.length; index++) {
     classification,
     easy_witness: easy.certified ? {
       kind: easy.kind,
+      verified: easyCertified,
       copies: easy.copies,
       box: easy.box ?? null,
       period_vectors: easy.period_vectors,
@@ -246,6 +257,7 @@ for (let index = 0; index < candidates.length; index++) {
     periodic_fast: {
       kind: torus.kind,
       certified: torus.certified,
+      certificate_verified: torus.certified ? easyCertified : null,
       stopped_by: torus.stopped_by ?? null,
       copies: torus.copies ?? null,
       nodes: torus.nodes ?? null,
