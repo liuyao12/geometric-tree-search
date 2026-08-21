@@ -49,6 +49,7 @@ const maxPlacements = args.has("max-placements")
 const progressEvery = integerArg("progress-every", 1, 1);
 const symmetryClauses = booleanArg("symmetry-clauses", true);
 const continueOnZ3Unknown = booleanArg("continue-on-z3-unknown", true);
+const requireNextLayerCoverability = booleanArg("require-next-layer-coverability", false);
 const python = args.get("python") ?? "python3";
 const outputDirectory = resolve(args.get("output-dir") ?? `runs/${id}-radius${outerLayer}-to-${innerLayer}-z3-cegar`);
 const reportOutput = resolve(args.get("report-output") ?? `${outputDirectory}/summary.json`);
@@ -109,6 +110,7 @@ process.stdout.write(`${JSON.stringify({
   max_placements: maxPlacements,
   symmetry_clauses: symmetryClauses,
   continue_on_z3_unknown: continueOnZ3Unknown,
+  require_next_layer_coverability: requireNextLayerCoverability,
   initial_clause_count: initialClauseCount,
   output_directory: outputDirectory
 })}\n`);
@@ -128,6 +130,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     `--output=${witnessPath}`
   ];
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
+  if (requireNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
   const solved = spawnSync(python, solverArguments, {
     encoding: "utf8",
     timeout: z3TimeoutMs + 60_000,
@@ -259,6 +262,7 @@ const summary = {
   max_placements: maxPlacements,
   symmetry_clauses: symmetryClauses,
   continue_on_z3_unknown: continueOnZ3Unknown,
+  require_next_layer_coverability: requireNextLayerCoverability,
   z3_unknown_trials: z3UnknownTrials,
   z3_timeout_ms: z3TimeoutMs,
   continuation_time_ms: continuationTimeMs,

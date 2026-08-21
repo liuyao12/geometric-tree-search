@@ -98,8 +98,9 @@ try {
     "--id=p9-42947",
     "--outer-layer=1",
     "--inner-layer=2",
-    "--iterations=1",
+    "--iterations=2",
     "--max-placements=11",
+    "--require-next-layer-coverability=true",
     "--z3-timeout-ms=10000",
     "--continuation-time-ms=10000",
     "--continuation-nodes=100000",
@@ -112,8 +113,13 @@ try {
   const positiveReport = JSON.parse(readFileSync(positiveOutput, "utf8"));
   assert.equal(positiveReport.classification, "verified_inner_radius_witness");
   assert.equal(positiveReport.max_placements, 11);
+  assert.equal(positiveReport.require_next_layer_coverability, true);
   assert.ok(positiveReport.radius_witness.placements > 0);
   assert.equal(positiveReport.warning, null);
+  const positiveProposal = JSON.parse(readFileSync(join(directory, "positive", "outer-witness-0000.json"), "utf8"));
+  assert.ok(positiveProposal.lookahead_target_cells > 0);
+  assert.ok(positiveProposal.lookahead_raw_placements >= positiveProposal.lookahead_placements);
+  assert.ok(positiveProposal.lookahead_conflicts > 0);
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }

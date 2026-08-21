@@ -96,6 +96,7 @@ def main():
     parser.add_argument("--backend", choices=("smt", "qffpbv", "pb2bv-sat"), default="smt")
     parser.add_argument("--random-seed", type=int, default=0)
     parser.add_argument("--max-placements", type=int)
+    parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--output")
     args = parser.parse_args()
@@ -134,6 +135,55 @@ def main():
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], 1))
     if args.max_placements is not None:
         solver.add(z3.PbLe([(variable, 1) for variable in variables], args.max_placements))
+    lookahead_target_count = 0
+    lookahead_raw_placement_count = 0
+    lookahead_placement_count = 0
+    lookahead_conflict_count = 0
+    if args.require_next_layer_coverability:
+        next_target, next_placements = enumerate_placements(root, args.layer + 1)
+        next_ring = next_target - target
+        next_by_cell = {}
+        for index, placement in enumerate(next_placements):
+            for cell in placement:
+                if cell in next_ring:
+                    next_by_cell.setdefault(cell, []).append(index)
+        relevant_indices = sorted(set(itertools.chain.from_iterable(next_by_cell.values())))
+        outer_index_by_placement = {placement: index for index, placement in enumerate(placements)}
+        conflict_sets = {}
+        for index in relevant_indices:
+            placement = next_placements[index]
+            same_outer_index = outer_index_by_placement.get(placement)
+            conflicts = set()
+            for cell in placement:
+                conflicts.update(by_cell.get(cell, ()))
+            if same_outer_index is not None:
+                conflicts.discard(same_outer_index)
+            conflict_sets[index] = frozenset(conflicts)
+        minimal_by_cell = {}
+        retained_indices = set()
+        for cell in sorted(next_ring):
+            representative_by_conflicts = {}
+            for index in next_by_cell.get(cell, ()):
+                representative_by_conflicts.setdefault(conflict_sets[index], index)
+            unique = list(representative_by_conflicts.items())
+            minimal = [
+                index for conflicts, index in unique
+                if not any(other < conflicts for other, _ in unique)
+            ]
+            minimal_by_cell[cell] = minimal
+            retained_indices.update(minimal)
+        availability = {index: z3.Bool(f"a_{index}") for index in sorted(retained_indices)}
+        for index in sorted(retained_indices):
+            conflicts = conflict_sets[index]
+            for conflict in sorted(conflicts):
+                solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+                lookahead_conflict_count += 1
+        for cell in sorted(next_ring):
+            candidates = [availability[index] for index in minimal_by_cell.get(cell, ())]
+            solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
+        lookahead_target_count = len(next_ring)
+        lookahead_raw_placement_count = len(relevant_indices)
+        lookahead_placement_count = len(retained_indices)
     forbidden_clauses = []
     if args.forbidden_clause_report:
         clause_report = json.loads(Path(args.forbidden_clause_report).read_text(encoding="utf-8"))
@@ -162,6 +212,11 @@ def main():
         "backend": args.backend,
         "random_seed": args.random_seed,
         "max_placements": args.max_placements,
+        "require_next_layer_coverability": args.require_next_layer_coverability,
+        "lookahead_target_cells": lookahead_target_count,
+        "lookahead_raw_placements": lookahead_raw_placement_count,
+        "lookahead_placements": lookahead_placement_count,
+        "lookahead_conflicts": lookahead_conflict_count,
         "target_cells": len(target),
         "placements_considered": len(placements),
         "variables": len(variables),

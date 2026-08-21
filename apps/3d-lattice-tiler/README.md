@@ -709,8 +709,10 @@ timeout. Imported clauses make a final UNSAT result conditional until their
 continuation proofs are independently replayed, and a copy-count bound can
 only certify exhaustion of that bounded stratum. A low-copy radius-two to
 three positive control recovers a verified witness after 17 dead proposals.
-For `p9-42947`, 275 radius-four proposals are now exactly rejected at radius
-five, including seven 63-copy states; radius four remains unexhausted. See
+For `p9-42947`, 279 radius-four proposals are now exactly rejected at radius
+five, including eleven 63-copy states. An exact one-step coverability filter
+removes immediate dead cells before proposal; its four satisfiable patches all
+require resolved-subtree conflicts. Radius four remains unexhausted. See
 `data/polycube-volume9-z3-cegar-2026-08-21.json`.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate

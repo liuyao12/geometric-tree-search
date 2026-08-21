@@ -398,15 +398,19 @@ used 29–32 outer copies, whereas a known survivor uses 23. Adding an exact
 verified radius-three witness on trial 18. Bounded UNSAT is deliberately
 reported only as exhaustion of that copy-count stratum.
 
-At radius four to five the loop has exactly rejected 275 distinct outer
-states and retained 780 sound symmetry-closed clauses. The last 25 proposals
-are copy-economical: 18 states under a 64-copy cap and seven 63-copy states.
-Every continuation fails by an independently checked two- or three-placement
-local obstruction. Eight attempts under a 62-copy cap time out, so 63 is only
-the thinnest witnessed stratum, not a proven minimum. No radius-five witness
-has appeared and the radius-four state space is not exhausted. The positive
-control makes this a useful proposal-policy benchmark; the production result
-still proves neither non-tiling nor aperiodicity. See
+At radius four to five the loop has exactly rejected 279 distinct outer
+states and retained 792 sound symmetry-closed clauses. Twenty-nine proposals
+are copy-economical, including eleven 63-copy states. A new exact necessary-
+condition encoding requires every radius-five ring cell to retain at least one
+placement compatible with the selected radius-four patch. It reduces candidate
+placements by conflict-set dominance and eliminates immediate dead targets
+before proposal. All four satisfiable filtered proposals therefore require a
+genuine resolved-subtree conflict, producing clauses of size five or six; a
+fifth filtered solve times out. Eight attempts under a 62-copy cap also time
+out, so 63 is only the thinnest witnessed stratum, not a proven minimum. No
+radius-five witness has appeared and the radius-four state space is not
+exhausted. The positive control makes this a useful proposal-policy benchmark;
+the production result still proves neither non-tiling nor aperiodicity. See
 `data/polycube-volume9-z3-cegar-2026-08-21.json`.
 
 ## Next engineering milestones

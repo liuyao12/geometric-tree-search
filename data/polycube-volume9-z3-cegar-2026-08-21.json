@@ -8,6 +8,7 @@
     "continuation_solver": "exact conflict-backjumping GCTS with fixed outer placements",
     "cut": "a fixed-placement obstruction clause extracted only after exact continuation exhaustion",
     "symmetry_closure": "every sound cut closed under the root polycube stabilizer",
+    "one_step_coverability": "optional exact necessary-condition encoding requires every next-ring cell to retain at least one placement compatible with the selected outer patch; conflict-set dominance removes locally redundant candidate placements",
     "bounded_copy_semantics": "UNSAT with max_placements set exhausts only that copy-count stratum and is never classified as non-tiling"
   },
   "positive_control": {
@@ -56,11 +57,30 @@
         "8eda0fc7c75c53b2ec223c9429d4e4ef73ad3ada64953459c6cdbecda3641b16"
       ]
     },
-    "combined_exact_dead_outer_states": 275,
-    "combined_symmetry_closed_clauses": 780,
+    "one_step_coverability": {
+      "max_outer_placements": 63,
+      "next_ring_cells": 180,
+      "raw_lookahead_placements": 6274,
+      "undominated_lookahead_placements": 6109,
+      "compatibility_conflicts": 1187699,
+      "trials": 5,
+      "sat_outer_states": 4,
+      "timeouts": 1,
+      "exact_dead_outer_states": 4,
+      "immediate_dead_target_obstructions": 0,
+      "resolved_subtree_obstructions": 4,
+      "continuation_nodes": 12,
+      "learned_clause_sizes": [5, 6, 5, 6],
+      "source_sha256": [
+        "520814adcda3a17437095e56c902b5a70ccd5b5ea22a1c212badcd89dfc78e8b",
+        "23afa02b2bfb021167eb119c9d3ff02beac4acead7263f1e9aa213fa7ad62719"
+      ]
+    },
+    "combined_exact_dead_outer_states": 279,
+    "combined_symmetry_closed_clauses": 792,
     "verified_radius_5_witness_found": false,
     "radius_4_space_exhausted": false,
     "certified_non_tiler": false
   },
-  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 275 proposed radius-four patches is exactly obstructed at radius five, including 25 economical patches and seven 63-copy patches. The radius-four state space remains unexhausted; eight max-62 attempts timed out. These results prove neither non-tiling nor aperiodicity."
+  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 279 proposed radius-four patches is exactly obstructed at radius five, including 29 economical patches and eleven 63-copy patches. The one-step coverability filter removes immediate dead targets from its four satisfiable proposals, forcing GCTS to learn deeper resolved-subtree clauses. The radius-four state space remains unexhausted; eight max-62 attempts and one coverability-filtered max-63 attempt timed out. These results prove neither non-tiling nor aperiodicity."
 }
