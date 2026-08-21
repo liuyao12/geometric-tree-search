@@ -247,7 +247,9 @@ for (let index = 0; index < candidates.length; index++) {
       memo_hits: obstruction.memo_hits ?? null,
       nogood_clauses: obstruction.nogood_clauses ?? null,
       nogood_prunes: obstruction.nogood_prunes ?? null,
-      nogood_average_size: obstruction.nogood_average_size ?? null
+      nogood_average_size: obstruction.nogood_average_size ?? null,
+      resolved_fixed_conflict_size: obstruction.resolved_fixed_conflict
+        ?.fixed_placement_indices?.length ?? null
     } : null,
     milliseconds: Math.round(performance.now() - candidateStartedAt)
   })}\n`);

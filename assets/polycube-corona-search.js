@@ -103,6 +103,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
       targetCoverage: []
     };
   });
+  const fixedConflictExplanations = fixedPlacements.length > 0
+    && options.explainFixedObstruction !== false;
   const blockedSet = new Set(rootSet);
   const fixedOwnerByCell = new Map();
   for (const [placementIndex, placement] of fixedPlacements.entries()) {
@@ -272,7 +274,72 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const nogoodKeys = new Set();
   const nogoodsByPlacement = new Map();
   let initialNogoodClauses = 0;
+  let lastConflict = null;
   let stoppedBy = null;
+
+  const fixedToken = index => `f:${index}`;
+  const placementToken = id => `p:${id}`;
+  const fixedConditionedConflict = ids => new Set([
+    ...fixedPlacements.map((_, index) => fixedToken(index)),
+    ...ids.map(placementToken)
+  ]);
+  const greedyHittingSet = blockerSets => {
+    const uncovered = new Set(blockerSets.map((_, index) => index));
+    const selected = [];
+    while (uncovered.size) {
+      const frequencies = new Map();
+      for (const index of uncovered) for (const token of blockerSets[index]) {
+        frequencies.set(token, (frequencies.get(token) ?? 0) + 1);
+      }
+      let bestToken = null;
+      let bestCount = -1;
+      for (const [token, count] of frequencies) {
+        if (count > bestCount || (count === bestCount && String(token) < String(bestToken))) {
+          bestToken = token;
+          bestCount = count;
+        }
+      }
+      if (bestToken === null) return null;
+      selected.push(bestToken);
+      for (const index of [...uncovered]) {
+        if (blockerSets[index].has(bestToken)) uncovered.delete(index);
+      }
+    }
+    for (let index = selected.length - 1; index >= 0; index--) {
+      const without = selected.filter((_, candidateIndex) => candidateIndex !== index);
+      if (blockerSets.every(blockers => without.some(token => blockers.has(token)))) {
+        selected.splice(index, 1);
+      }
+    }
+    return selected;
+  };
+
+  const explainPivotFailure = (pivot, branchResiduals = new Map()) => {
+    if (!fixedConflictExplanations) return null;
+    const conflict = new Set();
+    const blockerSets = [];
+    for (const blockers of fixedBlockedRowsByTarget.get(pivot.key)?.values() ?? []) {
+      blockerSets.push(new Set([...blockers].map(fixedToken)));
+    }
+    for (const placement of placementsByTarget.get(pivot.key) ?? []) {
+      const blockers = new Set();
+      for (const key of placement.cellKeys) {
+        const owner = selectedOwnerByCell.get(key);
+        if (owner !== undefined) blockers.add(placementToken(owner));
+      }
+      if (blockers.size) {
+        blockerSets.push(blockers);
+        continue;
+      }
+      const residual = branchResiduals.get(placement.id);
+      if (!residual) return null;
+      for (const token of residual) conflict.add(token);
+    }
+    const blockers = greedyHittingSet(blockerSets);
+    if (blockers === null) return null;
+    for (const token of blockers) conflict.add(token);
+    return conflict;
+  };
 
   const addSelectedPlacement = placement => {
     selectedPlacementIds.add(placement.id);
@@ -421,6 +488,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const search = () => {
     if (violatedNogoods) {
       nogoodPrunes += 1;
+      if (fixedConflictExplanations) {
+        const violated = nogoods.find(nogood => nogood.selected === nogood.ids.length);
+        lastConflict = violated
+          ? fixedConditionedConflict(violated.ids)
+          : null;
+      }
       return null;
     }
     if (header.right === header) {
@@ -428,22 +501,32 @@ export function searchPolycubeCorona(voxels, options = {}) {
       if (!acceptSolution) return solution;
       const decision = acceptSolution(solution);
       if (decision === true || decision?.accept === true) return solution;
+      lastConflict = null;
       if (decision?.nogood_placement_indices?.length) {
         const ids = decision.nogood_placement_indices
           .map(index => solution[index]?.id)
           .filter(id => Number.isInteger(id));
-        if (ids.length === decision.nogood_placement_indices.length) learnNogood(ids);
+        if (ids.length === decision.nogood_placement_indices.length) {
+          learnNogood(ids);
+          if (fixedConflictExplanations) lastConflict = fixedConditionedConflict(ids);
+        }
       } else if (decision?.nogood_placement_keys?.length) {
         const idsByKey = new Map(solution.map(placement => [placement.key, placement.id]));
         const ids = decision.nogood_placement_keys
           .map(key => idsByKey.get(key))
           .filter(id => Number.isInteger(id));
-        if (ids.length === decision.nogood_placement_keys.length) learnNogood(ids);
+        if (ids.length === decision.nogood_placement_keys.length) {
+          learnNogood(ids);
+          if (fixedConflictExplanations) lastConflict = fixedConditionedConflict(ids);
+        }
       }
       solutionsRejected += 1;
       return null;
     }
-    if (overBudget()) return null;
+    if (overBudget()) {
+      lastConflict = null;
+      return null;
+    }
     nodes += 1;
     let pivot = header.right;
     for (let column = pivot.right; column !== header; column = column.right) {
@@ -455,8 +538,10 @@ export function searchPolycubeCorona(voxels, options = {}) {
     if (!pivot.size) {
       deadEnds += 1;
       learnDeadColumnNogood(pivot);
+      lastConflict = explainPivotFailure(pivot);
       return null;
     }
+    const branchResiduals = fixedConflictExplanations ? new Map() : null;
     cover(pivot);
     for (let row = pivot.down; row !== pivot; row = row.down) {
       chosen.push(row.placement);
@@ -465,18 +550,54 @@ export function searchPolycubeCorona(voxels, options = {}) {
       for (let node = row.right; node !== row; node = node.right) cover(node.column);
       const solution = search();
       if (solution) return solution;
+      const childConflict = lastConflict;
       for (let node = row.left; node !== row; node = node.left) uncover(node.column);
       removeSelectedPlacement(row.placement);
       chosen.pop();
+      if (fixedConflictExplanations) {
+        if (!childConflict) {
+          lastConflict = null;
+        } else {
+          const rowToken = placementToken(row.placement.id);
+          if (!childConflict.has(rowToken)) {
+            uncover(pivot);
+            lastConflict = childConflict;
+            return null;
+          }
+          const residual = new Set(childConflict);
+          residual.delete(rowToken);
+          branchResiduals.set(row.placement.id, residual);
+        }
+      }
       if (stoppedBy || violatedNogoods) break;
     }
     uncover(pivot);
+    if (fixedConflictExplanations && !stoppedBy) {
+      lastConflict = explainPivotFailure(pivot, branchResiduals);
+    }
     if (!stoppedBy) deadEnds += 1;
     return null;
   };
 
   const solution = search();
   const exhausted = !solution && !stoppedBy;
+  const resolvedFixedIndices = exhausted && lastConflict
+    && [...lastConflict].every(token => token.startsWith("f:"))
+    ? [...lastConflict]
+        .map(token => Number(token.slice(2)))
+        .sort((left, right) => left - right)
+    : null;
+  const resolvedFixedConflict = resolvedFixedIndices
+    ? {
+        kind: "resolved_subtree_conflict",
+        target_cell: null,
+        fixed_placement_indices: resolvedFixedIndices,
+        candidate_rows_blocked: null,
+        fixed_placement_keys: resolvedFixedIndices
+          .map(index => fixedPlacements[index]?.key)
+          .filter(Boolean)
+      }
+    : null;
   return {
     success: !!solution,
     exhausted,
@@ -500,7 +621,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
     nogood_average_size: nogoods.length ? nogoodCells / nogoods.length : 0,
     nogood_max_size: nogoodMaxSize,
     maximum_depth: maximumDepth,
-    fixed_obstruction_nogood: minimumFixedObstruction,
+    fixed_obstruction_nogood: minimumFixedObstruction ?? resolvedFixedConflict,
+    resolved_fixed_conflict: resolvedFixedConflict,
     nogood_clause_keys: options.returnNogoods
       ? nogoods.map(nogood => nogood.ids.map(id => orderedPlacements[id].key))
       : null,

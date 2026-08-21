@@ -532,6 +532,15 @@ full radius-five continuation checks. The portfolio remains incomplete. See
 `data/polycube-volume9-periodic-through13-2026-08-20.json`, and
 `data/polycube-volume9-continuation-nogoods-2026-08-20.json`.
 
+Continuation conflicts can now be resolved through nontrivial exact-cover
+subtrees, not only extracted from an immediately dead target cell. Each child
+conflict is resolved against its temporary placement; after every branch at a
+pivot fails, the remaining conditions involve only ancestor or fixed outer
+placements. A hexacube regression has no initially dead radius-two cell, yet a
+two-node subtree reduces to three outer placements. Replaying only those three
+placements independently exhausts the same radius-two cover. Budget-limited
+runs never emit this certificate.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

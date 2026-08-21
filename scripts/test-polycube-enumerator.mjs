@@ -136,6 +136,7 @@ const extendedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
 });
 assert.equal(extendedCubeCorona.success, true, "a fixed first cube corona must extend to radius two");
 assert.equal(extendedCubeCorona.fixed_placements, 6);
+assert.equal(extendedCubeCorona.resolved_fixed_conflict, null);
 const rejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
   layers: 1,
   nodeLimit: 1000,
@@ -211,6 +212,50 @@ const trappedRadiusFour = searchPolycubeCorona(unresolvedP9.voxels, {
 assert.equal(trappedRadiusFour.exhausted, true);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.candidate_rows_blocked, 72);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.fixed_placement_indices.length, 2);
+
+const resolvedConflictHexacube = [
+  [0, 0, 0], [0, 0, 1], [0, 1, 0],
+  [1, 0, 1], [1, 1, 0], [1, 1, 1]
+];
+const resolvedConflictFirstCorona = searchPolycubeCorona(resolvedConflictHexacube, {
+  layers: 1,
+  nodeLimit: 50_000,
+  timeLimitMs: 5_000
+});
+assert.equal(resolvedConflictFirstCorona.success, true);
+const resolvedConflictSecondCorona = searchPolycubeCorona(resolvedConflictHexacube, {
+  layers: 2,
+  fixedPlacements: resolvedConflictFirstCorona.corona,
+  nodeLimit: 500_000,
+  timeLimitMs: 5_000,
+  nogoods: true
+});
+assert.equal(resolvedConflictSecondCorona.exhausted, true);
+assert.equal(resolvedConflictSecondCorona.fixed_obstruction_nogood.kind, "resolved_subtree_conflict");
+assert.equal(resolvedConflictSecondCorona.fixed_obstruction_nogood.target_cell, null);
+assert.deepEqual(resolvedConflictSecondCorona.fixed_obstruction_nogood.fixed_placement_indices, [2, 3, 6]);
+const resolvedConflictReplay = searchPolycubeCorona(resolvedConflictHexacube, {
+  layers: 2,
+  fixedPlacements: resolvedConflictSecondCorona.fixed_obstruction_nogood.fixed_placement_indices
+    .map(index => resolvedConflictFirstCorona.corona[index]),
+  nodeLimit: 500_000,
+  timeLimitMs: 5_000,
+  nogoods: true
+});
+assert.equal(
+  resolvedConflictReplay.exhausted,
+  true,
+  "the resolved outer-only conflict must independently reproduce the obstruction"
+);
+const incompleteResolvedConflict = searchPolycubeCorona(resolvedConflictHexacube, {
+  layers: 2,
+  fixedPlacements: resolvedConflictFirstCorona.corona,
+  nodeLimit: 1,
+  timeLimitMs: 5_000,
+  nogoods: true
+});
+assert.equal(incompleteResolvedConflict.exhausted, false);
+assert.equal(incompleteResolvedConflict.resolved_fixed_conflict, null);
 
 const cappedRingDecacube = [...ringOctacube, [1, 0, 1], [1, 1, 1]];
 const cappedRingCorona = searchFirstPolycubeCorona(cappedRingDecacube, {

@@ -156,14 +156,23 @@ checks. No radius-five witness appeared, but the outer search did not exhaust;
 the result therefore remains inconclusive. See
 `data/polycube-volume9-continuation-nogoods-2026-08-20.json`.
 
+The same proof mechanism now resolves conflicts through a nontrivial
+continuation subtree. A child failure clause contains its trial placement;
+removing that placement after every branch has failed and unioning the residual
+conditions proves the parent pivot impossible. Repeating this process at the
+fixed-patch root yields an outer-only clause. A six-cube regression requires
+two exact-cover nodes before producing a three-placement outer conflict, and a
+fresh search with only those three fixed placements exhausts independently.
+No conflict is returned after a node or time limit. The currently sampled
+`p9-42947` radius-four failures are still immediate conflicts, so this improves
+the general GCTS proof engine without changing that candidate's classification.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their
    checked-in summary, in a compact replayable format.
-2. Extend the new dead-cell placement nogoods with conflict resolution across
-   nontrivial continuation subtrees. Whole-boundary memoization found no reuse,
-   while the first conflict-directed portfolio already transferred 6,573 small
-   exact clauses across seeded orderings.
+2. Minimize resolved subtree clauses and add proof traces that replay each
+   resolution step, not only the final independently checked outer conflict.
 3. Continue the dedicated HNF exact-cover search beyond thirteen-copy motifs;
    the range-resume option now avoids repeating exhaustively checked sizes and
    the one-copy range now covers non-cyclic quotient groups too.

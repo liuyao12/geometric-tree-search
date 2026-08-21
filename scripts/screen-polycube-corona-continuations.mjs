@@ -32,6 +32,8 @@ const seeds = String(args.get("seeds") ?? "3,4,1,2")
 let carriedNogoods = [];
 let totalContinuationChecks = 0;
 let totalExplainedObstructions = 0;
+let totalImmediateObstructions = 0;
+let totalResolvedSubtreeConflicts = 0;
 let radiusWitness = null;
 let incompleteContinuation = null;
 const trials = [];
@@ -51,6 +53,8 @@ process.stdout.write(`${JSON.stringify({
 for (const seed of seeds) {
   let continuationChecks = 0;
   let explainedObstructions = 0;
+  let immediateObstructions = 0;
+  let resolvedSubtreeConflicts = 0;
   let unexplainedObstructions = 0;
   const result = searchPolycubeCorona(candidate.voxels, {
     layers: outerLayer,
@@ -83,6 +87,8 @@ for (const seed of seeds) {
       const obstruction = continuation.fixed_obstruction_nogood;
       if (obstruction?.fixed_placement_keys?.length) {
         explainedObstructions += 1;
+        if (obstruction.kind === "resolved_subtree_conflict") resolvedSubtreeConflicts += 1;
+        else immediateObstructions += 1;
         return { accept: false, nogood_placement_keys: obstruction.fixed_placement_keys };
       }
       unexplainedObstructions += 1;
@@ -92,6 +98,8 @@ for (const seed of seeds) {
   carriedNogoods = result.nogood_clause_keys ?? carriedNogoods;
   totalContinuationChecks += continuationChecks;
   totalExplainedObstructions += explainedObstructions;
+  totalImmediateObstructions += immediateObstructions;
+  totalResolvedSubtreeConflicts += resolvedSubtreeConflicts;
   const trial = {
     seed,
     success: result.success,
@@ -101,6 +109,8 @@ for (const seed of seeds) {
     milliseconds: result.milliseconds,
     continuation_checks: continuationChecks,
     explained_obstructions: explainedObstructions,
+    immediate_obstructions: immediateObstructions,
+    resolved_subtree_conflicts: resolvedSubtreeConflicts,
     unexplained_obstructions: unexplainedObstructions,
     initial_nogood_clauses: result.initial_nogood_clauses,
     final_nogood_clauses: result.nogood_clauses,
@@ -130,6 +140,8 @@ process.stdout.write(`${JSON.stringify({
   trials,
   total_continuation_checks: totalContinuationChecks,
   total_explained_obstructions: totalExplainedObstructions,
+  total_immediate_obstructions: totalImmediateObstructions,
+  total_resolved_subtree_conflicts: totalResolvedSubtreeConflicts,
   carried_nogood_clauses: carriedNogoods.length,
   radius_witness: radiusWitness ? {
     placements: radiusWitness.corona?.length ?? null,
