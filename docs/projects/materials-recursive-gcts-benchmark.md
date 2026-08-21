@@ -4379,6 +4379,44 @@ higher-capacity classifier over 119 nearly unique development graphs would not
 be evidence of generic GCTS. No fresh confirmation, autonomous growth,
 stationary recurrence, or exponential IQC claim follows.
 
+### External recurrent branch-value transfer
+
+The independent 30-nucleus recurrent branch corpus tests whether repeated
+scalar frontier state can supply that quotient without fitting a larger graph
+classifier. The audit first certifies spatial independence. Training domains
+have radius `14.5623059`, wide benchmark domains have radius `23.5623059`, and
+their required center separation is therefore `38.1246118`. Training nucleus 9
+is excluded because its nearest wide center lies at `37.4165739`. Every other
+training nucleus is at least `40.0` away, leaving 29 closed-ball-disjoint
+nuclei, 338 branches, 195 exact branches, and 20 groups with exact supply.
+
+The existing grouped recurrent-value learner selects `k = 9` using only these
+training groups. It selects exact branches in `19 / 20` supplied groups. The
+wide branch candidates retain their frozen geometry and use the matching nine
+target-free scalar fields from the independent terminal fixture. Candidate
+and order digests are frozen before the exact wide labels are joined.
+
+| external recurrent-value transfer | result |
+| --- | ---: |
+| admitted training nuclei / examples | 29 / 338 |
+| training exact examples | 195 |
+| training supplied nuclei selected exact | 19 / 20 |
+| wide forward-UNSAT candidates | 28 |
+| recoverable exact wide nuclei selected | 1 / 2 |
+| exact ranks in affected nuclei | 1 / none / 10 |
+| false wide alternatives rejected | 24 / 26 |
+| exact supply after transfer | 8 / 9 nuclei |
+| 31 grouped-shuffle median / maximum | 1 / 1 exact nucleus |
+| plus-one upper-tail value | `p = 1` |
+
+This is a useful negative transfer result. The larger corpus improves the two
+bounded graph arms from `0 / 2` to `1 / 2`, but does not preserve exact supply
+and is indistinguishable from grouped shuffled labels. It is not integrated as
+the GCTS marking. The missing operation remains a recurrent oriented
+cluster-of-clusters quotient whose states transport finite port semantics;
+aggregate branch probability, vote, color, and separation fields are not a
+substitute. No new autonomous, stationary, or exponential claim follows.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement

@@ -2175,6 +2175,33 @@ cluster-of-clusters quotient across a larger independent nucleus corpus before
 fitting branch value; increasing capacity over 119 nearly unique graphs would
 only memorize development geometry.
 
+The pre-existing 30-nucleus recurrent branch corpus supplies the next
+independent transfer audit without generating or tuning on another wide target.
+Its complete local domains have radius `14.5623`; the wide benchmark domains
+have radius `23.5623`. One training nucleus is excluded because its nearest
+wide-center separation is `37.4166`, below the required sum `38.1246`. The
+remaining 29 nuclei have minimum separation `40.0`, so their closed atom
+domains are disjoint from every wide case. They contain 338 branches, 195
+exact, and 20 nuclei with exact supply.
+
+The existing grouped capacity search selects a nine-neighbor value and chooses
+the exact branch in `19 / 20` supplied training nuclei. Frozen features for the
+28 wide forward-UNSAT candidates are then joined from the independent terminal
+fixture; candidate geometry and order are fixed before wide labels are scored.
+On the two recoverable exact wide nuclei, the exact ranks are `1` and `10`; the
+third affected nucleus has no exact branch. Top-one selection rejects `24 / 26`
+false alternatives but recovers only `1 / 2` exact fallbacks, leaving complete
+supply at `8 / 9` nuclei. Thirty-one within-training-nucleus label shuffles
+repeat capacity selection and model fitting against the byte-identical wide
+candidates. Every null also selects one exact fallback (`p = 1`).
+
+The external recurrent value is therefore not integrated. Its larger corpus
+improves the earlier graph sections from `0 / 2` to `1 / 2`, but the result is
+neither causally distinct from shuffled labels nor supply preserving. The
+missing representation is still a recurrent oriented cluster-of-clusters
+quotient with transported port semantics, not a higher-capacity value over the
+nine aggregate scalar branch features.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
