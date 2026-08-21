@@ -4753,3 +4753,36 @@ the consumed target is not reconstructed or reopened, and neither score is
 deployed. More independent ambiguous nuclei—not posthoc retuning on the same
 ten groups—are required before another confirmation or clusters-of-clusters
 growth claim is eligible.
+
+### Preregistered twenty-nucleus obligation transfer corpus
+
+The next development batch is fixed before atom access. Twenty maximin grid
+centres have complete radius-32.5623 rollout domains separated by more than
+71.1246 units from each other and every consumed nucleus. Workers receive only
+colored R9 seeds. They freeze complete `8 × 8 × 8` three-action trees, a union
+of the first eight scalar and first eight fusion branches, and sixteen-step
+relational obligation trajectories. Only after all twenty geometry digests
+exist are R14.5623 labels constructed. Oracle lift bounds 84 and 85 reproduce
+all crops exactly.
+
+| expanded obligation development | result |
+| --- | ---: |
+| disjoint nuclei / retained branches | 20 / 303 |
+| nuclei supplying an exact branch | 8 |
+| bounded model specs / geometry representations | 162 / 22 |
+| selected representation | 8-step, 2-bin temporal · 9 unweighted groups |
+| selected exact nuclei | 7 / 8 |
+| selected correct sites | 41 |
+| shuffle maximum exact / sites | 8 / 40 |
+| exact-action / site-yield p | `.125 / .03125` |
+| exact-action / site-yield gate | **red / green** |
+
+All 31 null trials shuffle the paired `(exact, correct-sites)` label inside
+each nucleus and repeat the full 162-spec selection. The site result therefore
+is not a fixed-model comparison against an underfit null: 41 correct selected
+sites exceeds every refitted shuffle. But exact whole-branch choice does not
+beat the null. The corpus is consumed development evidence and the model is
+not installed. The next implementation step is a site-resolved cluster action
+that can preserve this significant local signal while still requiring full
+colored support and port certificates before promoting a child or a
+cluster-of-clusters parent. No fresh confirmation is eligible yet.

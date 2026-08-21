@@ -43,6 +43,7 @@ const SYSTEMS = {
       ["Finite relational quotient", "362 states · wide ranks 3 / 1", "Canonical node/edge messages improve ordering but select no wide action; grouped-shuffle p=.96875."],
       ["Obligation automaton", "8 / 9 nuclei · 27 / 28 sites", "Weakest-link sequence scoring beats 31 grouped shuffles (p=.03125), but 47/102 states have one-group support and one nucleus fails."],
       ["Fresh automaton confirmation", "exact rank 5 · top 2 / 3", "A disjoint one-shot nucleus falsifies deployment; only 6.25–18.75% of transition states are recognized."],
+      ["Disjoint obligation corpus", "20 nuclei · 303 branches", "Site yield beats all 31 shuffled controls (41 > 40; p=.03125), but exact top-action choice is 7 / 8 and fails its null (p=.125)."],
       ["Clusters²", "6 positive quotient levels", "History-free re-clustering improves proof depth."],
       ["Frontier states", "336 / 368 sites", "Four heterogeneous multi-child rules are real, but no closed state matrix repeats across transitions."],
       ["Strict audit", "0 common three-level keys", "Topology, chemistry, chirality, ports, pose, and populations stay exact."],
@@ -133,6 +134,7 @@ const TIMELINE = [
   ["17l", "Obligation confirmation falsification", "A maximin nucleus at (-110,-70,-70) is 87.18 units from every consumed rollout domain. Thirteen candidates and all sixteen-step trajectories freeze before one target open. Two exact branches exist, but the first ranks fifth; top-one is 2 / 3 correct. State coverage is only 6.25–18.75%, so the automaton is rejected for deployment and the nucleus becomes consumed development evidence.", "open"],
   ["17m", "Obligation backoff falsification", "A target-free receipt companion reproduces the consumed 13-branch trajectory set. Exact→role-shape→aggregate backoff raises known-exact state coverage from 12.5% to 75%, but p=.1875 and its rank worsens from 5 to 8. Coverage is not value.", "open"],
   ["17n", "Soft role/temporal obligation value", "Identity-free role ownership and ordered time bins both beat shuffled controls in group-heldout AUC and log-loss (p=.03125), yet top-action selection remains p=.50. On the consumed target-free trajectories the known exact branch ranks 13 and 8. The features remain diagnostic, not deployed.", "open"],
+  ["17o", "Disjoint obligation transfer corpus", "Twenty preregistered, mutually disjoint rollout domains freeze 303 target-free branches before any target exists. Full grouped refit selects 41 correct sites, above every shuffle (p=.03125), but only 7 / 8 exact-bearing nuclei; a shuffle reaches eight (p=.125). Site-section signal is green, whole-action GCTS remains red.", "progress"],
   ["18", "Open frontier", "Learn a transferable connection section that selects the existing exact paths, then promote the resulting antichain into a recurring oriented production.", "open"],
 ];
 
@@ -177,6 +179,7 @@ const CLAIMS = [
   ["open", "Fresh obligation transfer", "The frozen automaton receives a one-shot disjoint test with 152 complete terminals and a 13-branch portfolio. Two exact branches are supplied, but first-exact rank is 5 and top-one is 2 / 3 correct. Low state coverage, not candidate supply, blocks deployment."],
   ["open", "Obligation backoff transfer", "Hierarchical exact/role-shape/aggregate matching raises consumed known-exact state coverage sixfold but worsens its rank and fails grouped shuffles; it is not a marking policy."],
   ["progress", "Soft obligation coordinates", "Role-conditioned and time-binned metrics carry significant group-heldout ranking information, but neither beats the top-action shuffle null or transfers useful ordering to the consumed disjoint nucleus."],
+  ["progress", "Disjoint obligation site signal", "A 20-nucleus, 303-branch preregistered corpus validates correct-site yield against 31 grouped shuffles (41 versus maximum 40; p=.03125). Exact whole-branch selection remains red at 7 / 8 with p=.125, so the score is not deployed."],
   ["progress", "Nearest recurrent branch value", "A geometry-only 30-nucleus corpus freezes 354 depth-three terminal branches. Group-heldout k=9 nearest-recurrent value improves exact selection from 17 / 21 to 20 / 21 supplied nuclei and moves the consumed diagnostic exact branch from rank 10 to rank 1. A fresh autonomous confirmation remains unopened."],
   ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC sites; four rules are heterogeneous, but no closed state matrix recurs across transitions."],
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],

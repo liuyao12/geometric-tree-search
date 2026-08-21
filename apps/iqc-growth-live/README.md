@@ -2449,4 +2449,25 @@ reopened, and no fresh confirmation, autonomous, stationary, or exponential
 claim is made. The next dataset must add independently ambiguous nuclei rather
 than tune more capacity on this consumed ten-group corpus.
 
+### Twenty-nucleus disjoint obligation corpus
+
+A published maximin grid fixes twenty new nuclei whose complete
+32.5623-radius rollout domains are mutually disjoint and disjoint from every
+consumed nucleus. Each colored R9 seed enumerates its complete three-action
+tree, retains the union of two target-free ranker heads, and rolls every
+retained branch for sixteen relational steps. All 303 trajectory records and
+their hashes freeze before any R14.5623 target is constructed. Bounds 84 and
+85 reproduce every seed and target crop exactly.
+
+The full 162-spec role/temporal grid, including two bounded frontier-dynamics
+channels, is reselected by whole-nucleus holdout. Every one of 31 null trials
+shuffles `(exact, correct-sites)` together inside each nucleus and repeats the
+full selection. The selected temporal model yields 41 correct sites, exceeding
+the shuffle maximum of 40 (`p=.03125`). It nevertheless selects exact whole
+branches in only 7 of the 8 nuclei that supply one; a shuffle reaches eight
+(`p=.125`). Thus the enlarged corpus validates a transferable site-section
+signal but rejects exact action commitment. It is consumed development data,
+not a confirmation; default marking, autonomous growth, recursive promotion,
+stationarity, and exponential claims remain disabled.
+
 Serve the repository root and open `/iqc-growth-live/`.
