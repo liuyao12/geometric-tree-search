@@ -1,0 +1,52 @@
+{
+  "schema": "gcts.polycube_periodic_candidate_layer.v1",
+  "date": "2026-08-21",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "input": {
+    "source": "data/polycube-volume10-periodic-copy10-2026-08-21.json",
+    "free_class_candidates": 5,
+    "candidate_ids_sha256": "cdc4aeac3214dcad7feb69d15de5d146a4d5b16327979f6921a100853fa80ba6",
+    "candidate_keys_sha256": "798b9399dc22d89ca29cc8e1704208c2b9cb63dfcef841d0b77387c196148513"
+  },
+  "protocol": {
+    "solver": "exact HNF quotient cover with allocation-free MRV counting",
+    "motif_tiles": 11,
+    "quotient_cells": 110,
+    "hnf_bases": 28861,
+    "reflections_allowed_within_tiling": false,
+    "time_budget_clock": "cpu",
+    "node_limit_per_run": 100000000,
+    "time_limit_ms_per_run": 600000,
+    "resume_cursor": "absolute active_hnf_index",
+    "independent_positive_verifier": "Cramer's-rule quotient partition replay",
+    "interpretation": "Exhaustion excludes eleven-tile translational fundamental domains only. It does not exclude larger periodic motifs or prove aperiodicity."
+  },
+  "candidates": [
+    {"id": "p10-052588", "hnf_bases_exhausted": 28861, "exact_cover_nodes": 277763, "milliseconds": 195859, "periodic_certificate": false},
+    {"id": "p10-054782", "hnf_bases_exhausted": 28861, "exact_cover_nodes": 895836, "milliseconds": 236148, "periodic_certificate": false},
+    {"id": "p10-055695", "hnf_bases_exhausted": 28861, "exact_cover_nodes": 834673, "milliseconds": 150297, "periodic_certificate": false},
+    {
+      "id": "p10-290795",
+      "hnf_bases_exhausted": 28861,
+      "runs": [
+        {"hnf_start_index": 0, "hnf_visited": 9512, "active_hnf_index": 9511, "nodes": 9442074, "stopped_by": "time_limit"},
+        {"hnf_start_index": 9511, "hnf_visited": 9799, "active_hnf_index": 19309, "nodes": 9395163, "stopped_by": "time_limit"},
+        {"hnf_start_index": 19309, "hnf_visited": 9552, "nodes": 11435986, "stopped_by": null}
+      ],
+      "exact_cover_nodes_across_proof_runs": 30273223,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {"id": "p10-346304", "hnf_bases_exhausted": 28861, "exact_cover_nodes": 2774369, "milliseconds": 166614, "periodic_certificate": false}
+  ],
+  "final": {
+    "candidates": 5,
+    "new_periodic_certificates": 0,
+    "final_timeouts": 0,
+    "unique_copy_11_hnf_bases_exhausted": 144305,
+    "exact_cover_nodes_across_proof_runs": 35055864,
+    "hnf_bases_per_surviving_class_through_11": 146506,
+    "surviving_free_class_candidates": 5
+  }
+}
