@@ -4584,3 +4584,46 @@ message quotient over the common representation, selected entirely on grouped
 development folds and then transferred unchanged. Exact action terminals,
 ports, and collision certificates remain immutable, and no recurrence audit is
 eligible until that transfer gate passes.
+
+### Continuous common-graph metric
+
+The exact-vocabulary failure is followed by a bounded metric, without changing
+the candidate set. Ninety-two fixed invariant measurements are partitioned
+into five independently selectable channels:
+
+- colored action geometry and chirality;
+- incoming port-role chemistry and multiplicity;
+- normalized action/parent/source pose geometry;
+- radial environment summaries; and
+- directed endpoint-incidence counts and cross distances.
+
+Nearest training branches are reduced to one nearest representative per
+nucleus before voting. This prevents repeated symmetry-related candidates from
+acting as independent evidence. The capacity grid contains eleven fixed feature
+families, neighbor counts `3 / 5 / 9 / 13`, weighted and unweighted votes, and
+admission thresholds `.5 / .6 / .7 / .8 / .9`. All are selected by complete
+whole-nucleus development refits with a 95% precision floor. Geometry receipts
+are cached across label shuffles; only label-dependent votes and capacity
+selection are refit.
+
+| continuous port-graph metric | result |
+| --- | ---: |
+| selected channels | pose + endpoint incidence |
+| group neighbors / weighted | 13 / yes |
+| admission threshold | 0.7 |
+| development exact selections | 6 / 6 |
+| supplied development nuclei reached | 6 / 9 |
+| shuffle median / maximum | 5 / 7 |
+| development plus-one p-value | `.46875` |
+| wide exact ranks | 5 / 2 |
+| wide selected exact / false | 0 / 0 |
+| external exact / false p-values | `1 / .53125` |
+| autonomous / stationary / exponential | false / false / false |
+
+The metric improves strict development coverage from 4 / 9 to 6 / 9 and
+correctly rejects absolute action shape and radial-environment channels. The
+gain is reproducible under shuffled labels and does not produce a wide commit,
+so it is not deployed. Exact branches appearing at ranks five and two show that
+continuous incidence geometry contains ordering signal, but not a validated
+decision boundary. The next gate is a learned finite relational message
+quotient on the same graph, with unchanged grouped shuffles and wide transfer.

@@ -2324,4 +2324,32 @@ bounded graph metric/message quotient on this shared representation; it may
 rank existing exact alternatives but cannot authorize new geometry. No
 autonomous, stationary, or exponential IQC claim follows.
 
+### Continuous port-graph metric
+
+Exact recurrent type identity is then relaxed only at the marking layer. Each
+common graph produces 92 fixed proper-motion-invariant measurements, separated
+into action geometry, port-role chemistry, port pose, radial environment, and
+directed endpoint incidence. Nearest examples are reduced to one vote per
+training nucleus before weighting, so a large symmetry orbit or a nucleus with
+many similar branches cannot dominate. Candidate geometry, exact production
+alternatives, ports, and collision certificates remain unchanged.
+
+Whole-nucleus development selection searches eleven predeclared feature
+families, 3/5/9/13 group-neighbor counts, weighted/unweighted votes, and five
+admission thresholds. A 95% precision floor applies before coverage. The
+minimum-description winner uses only pose+incidence, thirteen weighted group
+neighbors, and threshold 0.7. It selects 6 / 9 supplied nuclei with 6 / 6
+exact branches, improving the exact vocabulary's 4 / 9. However, 31 complete
+within-nucleus label shuffles have median five and maximum seven exact nuclei,
+giving `p = .46875`.
+
+Frozen on the unchanged wide set, no branch reaches 0.7. The two exact branches
+rank fifth and second in their groups; no false branch is admitted. The
+external exact p-value is 1. The metric therefore supplies a useful continuous
+ordering and safer fail-closed behavior, but neither causal evidence nor an
+action-commit rule. It remains an experimental marking-library option. The next
+step is a finite relational message quotient whose learned node/edge updates
+must beat the same grouped nulls and unchanged-wide transfer before recursive
+growth is attempted.
+
 Serve the repository root and open `/iqc-growth-live/`.
