@@ -341,6 +341,10 @@ const archivedPolycubeConditionalContactTransitions = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-conditional-contact-transitions-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeCoronaBoundaryStates = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-corona-boundary-states-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1344,6 +1348,47 @@ assert.equal(
 assert.equal(survivors[0].census_candidate.screening.corona_contact_reciprocal_incoming_orbits, 12);
 assert.equal(survivors[0].census_candidate.screening.corona_contact_conditional_transition_edges, 134);
 assert.equal(survivors[0].census_candidate.screening.corona_contact_radius_one_forces_unbounded_chain, false);
+assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.canonical_boundary_states, 2522);
+assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.obstructed_boundary_states, 1922);
+assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.extendable_boundary_states, 600);
+assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.incomplete_boundary_states, 0);
+assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.repeated_state_outcomes_agree, true);
+assert.ok(archivedPolycubeCoronaBoundaryStates.portfolio.trials.every(trial =>
+  trial.extendable + trial.obstructed === trial.sampled
+));
+assert.equal(archivedPolycubeCoronaBoundaryStates.learned_portfolio.explained_obstructions, 2070);
+assert.equal(archivedPolycubeCoronaBoundaryStates.learned_portfolio.final_nogood_clauses, 2089);
+assert.equal(archivedPolycubeCoronaBoundaryStates.learned_portfolio.nogood_prunes, 41824);
+assert.deepEqual(
+  archivedPolycubeCoronaBoundaryStates.deeper_boundary_samples.radius2_to_radius3_unlearned,
+  {
+    seeds: [0, 1, 2, 3],
+    sampled_states_per_seed: 100,
+    sampled_states: 400,
+    extendable_states: 0,
+    obstructed_states: 400,
+    incomplete_states: 0,
+    maximum_continuation_nodes: 6,
+    warning: "The traversal prefixes are strongly order-biased; a known radius-three witness proves that extendable radius-two states exist."
+  }
+);
+assert.equal(
+  archivedPolycubeCoronaBoundaryStates.deeper_boundary_samples.radius2_to_radius3_learned.extendable_states,
+  462
+);
+assert.equal(
+  archivedPolycubeCoronaBoundaryStates.deeper_boundary_samples.radius3_to_radius4_learned.nogood_prunes,
+  10100253
+);
+assert.equal(
+  survivors[0].census_candidate.screening.corona_boundary_state_report,
+  "data/polycube-volume9-corona-boundary-states-2026-08-20.json"
+);
+assert.equal(survivors[0].census_candidate.screening.corona_boundary_sampled_states, 2522);
+assert.equal(survivors[0].census_candidate.screening.corona_boundary_obstructed_states, 1922);
+assert.equal(survivors[0].census_candidate.screening.corona_boundary_extendable_states, 600);
+assert.equal(survivors[0].census_candidate.screening.corona_boundary_radius2_learned_survivors, 462);
+assert.equal(survivors[0].census_candidate.screening.corona_boundary_radius3_stress_prunes, 10100253);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);

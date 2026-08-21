@@ -1,0 +1,93 @@
+{
+  "kind": "polycube_volume9_corona_boundary_states",
+  "date": "2026-08-20",
+  "candidate": "p9-42947",
+  "mirror_equivalent": "p9-42969",
+  "model": "root-stabilizer canonical exterior occupancy of complete radius-one coronas, followed by exact fixed-boundary radius-two continuation",
+  "portfolio": {
+    "seeds": [0, 1, 2, 3],
+    "sampled_coronas_per_seed": 1000,
+    "sampled_corona_occurrences": 4000,
+    "canonical_boundary_states": 2522,
+    "repeated_state_occurrences": 1478,
+    "repeated_state_outcomes_agree": true,
+    "extendable_boundary_states": 600,
+    "obstructed_boundary_states": 1922,
+    "incomplete_boundary_states": 0,
+    "obstructed_fraction": 0.7620935765265662,
+    "maximum_continuation_nodes": 41,
+    "trials": [
+      { "seed": 0, "sampled": 1000, "extendable": 252, "obstructed": 748, "incomplete": 0, "immediate_obstructions": 642, "resolved_subtree_obstructions": 106, "maximum_continuation_nodes": 41 },
+      { "seed": 1, "sampled": 1000, "extendable": 231, "obstructed": 769, "incomplete": 0, "immediate_obstructions": 625, "resolved_subtree_obstructions": 144, "maximum_continuation_nodes": 24 },
+      { "seed": 2, "sampled": 1000, "extendable": 207, "obstructed": 793, "incomplete": 0, "immediate_obstructions": 655, "resolved_subtree_obstructions": 138, "maximum_continuation_nodes": 32 },
+      { "seed": 3, "sampled": 1000, "extendable": 262, "obstructed": 738, "incomplete": 0, "immediate_obstructions": 611, "resolved_subtree_obstructions": 127, "maximum_continuation_nodes": 28 }
+    ]
+  },
+  "learned_portfolio": {
+    "seed": 0,
+    "configured_outer_time_ms": 30000,
+    "canonical_boundary_states": 9854,
+    "extendable_states": 7784,
+    "obstructed_states": 2070,
+    "incomplete_states": 0,
+    "explained_obstructions": 2070,
+    "immediate_obstructions": 248,
+    "resolved_subtree_obstructions": 1822,
+    "final_nogood_clauses": 2089,
+    "nogood_prunes": 41824,
+    "average_clause_size": 8.786500718046913,
+    "maximum_clause_size": 13,
+    "maximum_continuation_nodes": 224,
+    "outer_nodes": 6144,
+    "classification": "time_limit"
+  },
+  "deeper_boundary_samples": {
+    "radius2_to_radius3_unlearned": {
+      "seeds": [0, 1, 2, 3],
+      "sampled_states_per_seed": 100,
+      "sampled_states": 400,
+      "extendable_states": 0,
+      "obstructed_states": 400,
+      "incomplete_states": 0,
+      "maximum_continuation_nodes": 6,
+      "warning": "The traversal prefixes are strongly order-biased; a known radius-three witness proves that extendable radius-two states exist."
+    },
+    "radius2_to_radius3_learned": {
+      "seed": 3,
+      "sampled_states": 1000,
+      "extendable_states": 462,
+      "obstructed_states": 538,
+      "incomplete_states": 0,
+      "final_nogood_clauses": 539,
+      "nogood_prunes": 9365,
+      "maximum_continuation_nodes": 270
+    },
+    "radius3_to_radius4_learned": {
+      "seed": 3,
+      "configured_outer_time_ms": 30000,
+      "sampled_states": 41,
+      "extendable_states": 0,
+      "obstructed_states": 41,
+      "incomplete_states": 0,
+      "outer_nodes": 7066624,
+      "final_nogood_clauses": 208,
+      "nogood_prunes": 10100253,
+      "maximum_continuation_nodes": 8,
+      "classification": "time_limit",
+      "warning": "A separately verified radius-four corona exists, so this is a search-order stress result rather than an obstruction."
+    }
+  },
+  "transfer_ablation": {
+    "training_time_ms": 5000,
+    "learned_shallow_clauses": 492,
+    "target_layer": 4,
+    "baseline_nodes": 4786,
+    "transferred_nodes": 4786,
+    "baseline_milliseconds": 112,
+    "transferred_milliseconds": 239,
+    "conclusion": "Blindly preloading shallow clauses did not change the radius-four search path and added overhead, so it is not enabled by default. On-demand boundary continuation and conflict extraction remain the useful mechanism."
+  },
+  "algorithm_change": "The continuation portfolio now canonicalizes completed outer-corona exterior occupancy under the root stabilizer and memoizes obstructed boundary states across solutions and seeds. Exact placement clauses are still learned whenever an obstruction explanation is available.",
+  "conclusion": "Whole-corona boundary states are much more discriminating than the six individual contact types: 1922 of 2522 distinct sampled radius-one states are exact radius-two obstructions. At deeper levels, on-demand clauses redirect radius-two search toward survivors, while radius-three search still remains trapped in a large dead basin despite a known radius-four witness. The surviving states and sampled censuses leave the tiling classification unresolved.",
+  "warning": "A sampled boundary-state survival rate is neither a non-tiling certificate nor evidence of aperiodicity."
+}

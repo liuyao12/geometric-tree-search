@@ -74,7 +74,19 @@ const records = [
       corona_contact_conditional_transition_edges: 134,
       corona_contact_inactive_incoming_orbits: 9,
       corona_contact_terminating_active_incoming_orbits: 3,
-      corona_contact_radius_one_forces_unbounded_chain: false
+      corona_contact_radius_one_forces_unbounded_chain: false,
+      corona_boundary_state_report: "data/polycube-volume9-corona-boundary-states-2026-08-20.json",
+      corona_boundary_sampled_states: 2522,
+      corona_boundary_obstructed_states: 1922,
+      corona_boundary_extendable_states: 600,
+      corona_boundary_obstructed_fraction: 0.7620935765265662,
+      corona_boundary_learned_clauses: 2089,
+      corona_boundary_nogood_prunes: 41824,
+      corona_boundary_radius2_learned_survivors: 462,
+      corona_boundary_radius2_learned_trials: 1000,
+      corona_boundary_radius3_stress_prunes: 10100253,
+      corona_boundary_radius3_stress_survivors: 0,
+      corona_boundary_radius3_stress_time_ms: 30000
     },
     shell_screening: {
       robust_completed_shell: 4,

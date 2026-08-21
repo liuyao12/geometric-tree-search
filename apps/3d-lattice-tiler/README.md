@@ -581,6 +581,28 @@ the six-contact rule cannot force an unbounded chain or hierarchy. Seeded
 replays 0 and 7 agree exactly. See
 `data/polycube-volume9-conditional-contact-transitions-2026-08-20.json`.
 
+The next quotient keeps the complete exterior occupancy of a first corona
+instead of reducing it to individual contact types. Four 1,000-state seeded
+samples contained 2,522 distinct canonical boundary states; repeated states
+always had the same exact continuation outcome. Of those distinct states,
+1,922 cannot extend to radius two and 600 do extend. Every decision completed
+within 41 continuation nodes. A separate on-demand learning run explained
+2,070 boundary failures, accumulated 2,089 placement clauses, and used them to
+prune 41,824 outer branches. The continuation portfolio now also memoizes
+obstructed canonical boundary states across exact-cover leaves and seeds.
+Blindly preloading shallow clauses into a radius-four run did not reduce its
+node count and added overhead, so transfer is not enabled by default. See
+`data/polycube-volume9-corona-boundary-states-2026-08-20.json`.
+
+The same benchmark exposes a search-order phase transition. The first 100
+radius-two states in each of four unlearned seeded traversals all fail before
+radius three, although a radius-three witness is known. With on-demand
+conflict learning, a 1,000-state run instead reaches 462 radius-three
+survivors and records 9,365 prunes. At radius three to four, a 30-second learned
+run still inspects 41 dead states and makes 10,100,253 prunes without reaching
+the independently known radius-four witness. This is now an explicit proposal-
+selection stress benchmark for GCTS, not evidence that radius four is absent.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

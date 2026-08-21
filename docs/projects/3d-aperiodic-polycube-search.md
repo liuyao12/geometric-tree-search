@@ -203,6 +203,30 @@ searches: `3↔44` reaches 74 placements after 283,688 nodes and `29↔29` reach
 and does not itself force a hierarchy. See
 `data/polycube-volume9-contact-propagation-2026-08-20.json`.
 
+Conditioning on complete first-corona exteriors is considerably more selective
+than conditioning on one contact. Canonicalizing exterior occupancy under the
+root stabilizer gave 2,522 distinct states across four 1,000-corona seeded
+samples. Exact fixed-boundary searches proved that 1,922 cannot reach radius
+two; 600 have independently verified radius-two extensions, and repeated
+states agreed across seeds. No continuation needed more than 41 exact-cover
+nodes. In a separate learned traversal, 2,070 explained failures produced
+2,089 clauses and 41,824 prunes. The portfolio now memoizes these canonical
+obstructed boundary states as well as learning exact placement clauses. A
+shallow-clause transfer ablation did not improve the radius-four path, so the
+solver retains on-demand lookahead rather than paying that preload cost. The
+census is still sampled and therefore does not resolve tiling or aperiodicity.
+See `data/polycube-volume9-corona-boundary-states-2026-08-20.json`.
+
+Deeper boundary sampling makes the proposal-selection problem explicit. The
+first 400 radius-two states across four unlearned traversals all fail before
+radius three, despite the known radius-three witness. On-demand clauses shift
+a later 1,000-state traversal to 462 survivors. The analogous radius-three to
+four run remains trapped: 41 sampled states all fail and the outer search makes
+10,100,253 nogood prunes in 30 seconds without reaching a survivor, even
+though an independent direct search has a verified radius-four corona. This
+separates geometric nonexistence from a reproducible, measurable ordering
+failure that future GCTS proposal policies must beat.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their

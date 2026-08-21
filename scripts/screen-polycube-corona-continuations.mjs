@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
-import { searchPolycubeCorona } from "../assets/polycube-corona-search.js";
+import {
+  polycubeCoronaBoundaryKey,
+  searchPolycubeCorona
+} from "../assets/polycube-corona-search.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
   const separator = argument.indexOf("=");
@@ -36,6 +39,8 @@ let totalImmediateObstructions = 0;
 let totalResolvedSubtreeConflicts = 0;
 let radiusWitness = null;
 let incompleteContinuation = null;
+const obstructedBoundaryStates = new Set();
+let boundaryCacheHits = 0;
 const trials = [];
 
 process.stdout.write(`${JSON.stringify({
@@ -66,6 +71,11 @@ for (const seed of seeds) {
     initialNogoodPlacementKeys: carriedNogoods,
     returnNogoods: true,
     acceptSolution(solution) {
+      const boundaryKey = polycubeCoronaBoundaryKey(candidate.voxels, solution, outerLayer);
+      if (obstructedBoundaryStates.has(boundaryKey)) {
+        boundaryCacheHits += 1;
+        return false;
+      }
       continuationChecks += 1;
       const continuation = searchPolycubeCorona(candidate.voxels, {
         layers: innerLayer,
@@ -85,6 +95,7 @@ for (const seed of seeds) {
         return true;
       }
       const obstruction = continuation.fixed_obstruction_nogood;
+      obstructedBoundaryStates.add(boundaryKey);
       if (obstruction?.fixed_placement_keys?.length) {
         explainedObstructions += 1;
         if (obstruction.kind === "resolved_subtree_conflict") resolvedSubtreeConflicts += 1;
@@ -111,6 +122,8 @@ for (const seed of seeds) {
     explained_obstructions: explainedObstructions,
     immediate_obstructions: immediateObstructions,
     resolved_subtree_conflicts: resolvedSubtreeConflicts,
+    obstructed_boundary_states: obstructedBoundaryStates.size,
+    boundary_cache_hits: boundaryCacheHits,
     unexplained_obstructions: unexplainedObstructions,
     initial_nogood_clauses: result.initial_nogood_clauses,
     final_nogood_clauses: result.nogood_clauses,
@@ -142,6 +155,8 @@ process.stdout.write(`${JSON.stringify({
   total_explained_obstructions: totalExplainedObstructions,
   total_immediate_obstructions: totalImmediateObstructions,
   total_resolved_subtree_conflicts: totalResolvedSubtreeConflicts,
+  obstructed_boundary_states: obstructedBoundaryStates.size,
+  boundary_cache_hits: boundaryCacheHits,
   carried_nogood_clauses: carriedNogoods.length,
   radius_witness: radiusWitness ? {
     placements: radiusWitness.corona?.length ?? null,

@@ -94,6 +94,38 @@ const unresolvedFirstCorona = searchPolycubeCorona(unresolvedP9.voxels, {
   timeLimitMs: 5_000
 });
 assert.equal(unresolvedFirstCorona.success, true);
+const firstCoronaBoundaryKey = polycubeCoronaBoundaryKey(
+  unresolvedP9.voxels,
+  unresolvedFirstCorona.corona,
+  1
+);
+const rootSymmetry = polycubeSymmetries(unresolvedP9.voxels)[1];
+const symmetricFirstCorona = unresolvedFirstCorona.corona.map(placement => ({
+  cells: placement.cells.map(cell => [0, 1, 2].map(axis =>
+    rootSymmetry.matrix[axis][0] * cell[0]
+    + rootSymmetry.matrix[axis][1] * cell[1]
+    + rootSymmetry.matrix[axis][2] * cell[2]
+    + rootSymmetry.translation[axis]
+  ))
+}));
+assert.equal(
+  polycubeCoronaBoundaryKey(unresolvedP9.voxels, symmetricFirstCorona, 1),
+  firstCoronaBoundaryKey
+);
+const firstCoronaContinuation = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 2,
+  fixedPlacements: unresolvedFirstCorona.corona,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+const symmetricCoronaContinuation = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 2,
+  fixedPlacements: symmetricFirstCorona,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(symmetricCoronaContinuation.success, firstCoronaContinuation.success);
+assert.equal(symmetricCoronaContinuation.exhausted, firstCoronaContinuation.exhausted);
 const firstPlacementOrbit = polycubePlacementOrbitKeys(
   unresolvedP9.voxels,
   unresolvedFirstCorona.corona[0]
