@@ -15,6 +15,7 @@ import argparse
 from dataclasses import asdict
 import gzip
 import hashlib
+import itertools
 import json
 import math
 import os
@@ -55,9 +56,9 @@ ROOT = Path(__file__).resolve().parent
 DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_exact_port_instance_dataset_v1.json.gz"
 EXPECTED_FIXTURE_SHA256 = \
-    "6078563db697459e2d9c7aea2820fe1f6e6914c1954ca7f27e4e0a1279abfd4c"
+    "731114570d211d5df8dbe96d7acf5f1913386a1152344442dfb5288ce938326a"
 EXPECTED_DATASET_DIGEST = \
-    "16c0067d58082e60beaaee584a06dfe8c13358b565060729323b9056bb9544ce"
+    "3b94f8047b1acb18a61cb8f05dc913cadccdccbe79ec44bc0e61fda555688b45"
 
 
 def _relation_flags(selected: ProposalPairAction,
@@ -119,6 +120,90 @@ def _boundary_context(center, target, parent, source, radius,
     }
 
 
+def _selected_endpoint_geometry(center, target, parent, source,
+                                minimum_distance, target_color):
+    """Canonical proper-motion invariants of one selected port attachment.
+
+    The four roles are ordered and therefore need no raw occurrence identity.
+    Pair distances capture the complete metric graph up to O(3); the signed
+    normalized volume retains the remaining proper-vs-improper distinction.
+    """
+    anchors = (center, target, parent, source)
+    names = ("center_target", "center_parent", "center_source",
+             "target_parent", "target_source", "parent_source")
+    distances = {}
+    name_index = 0
+    for left in range(len(anchors)):
+        for right in range(left + 1, len(anchors)):
+            distances[names[name_index]] = round(
+                math.dist(anchors[left], anchors[right]) /
+                minimum_distance, 6)
+            name_index += 1
+
+    radial = tuple(target[axis] - center[axis] for axis in range(3))
+    parent_vector = tuple(parent[axis] - center[axis] for axis in range(3))
+    source_vector = tuple(source[axis] - center[axis] for axis in range(3))
+    cross = (parent_vector[1] * source_vector[2] -
+             parent_vector[2] * source_vector[1],
+             parent_vector[2] * source_vector[0] -
+             parent_vector[0] * source_vector[2],
+             parent_vector[0] * source_vector[1] -
+             parent_vector[1] * source_vector[0])
+    signed_volume = sum(left * right for left, right in zip(radial, cross))
+    return {
+        "target_color": str(target_color),
+        "normalized_pair_distances": distances,
+        "proper_signed_volume": round(
+            signed_volume / minimum_distance ** 3, 6),
+    }
+
+
+def _canonical_branch_action_graph(center, actions, minimum_distance):
+    """Canonical colored proper-metric graph of the simultaneous branch.
+
+    Branch actions commute geometrically, so their historical insertion order
+    is removed.  Exhaustive same-size permutation is deliberately finite here:
+    the frozen portfolio contains exactly three actions per terminal branch.
+    """
+    actions = tuple((tuple(point), str(color)) for point, color in actions)
+    if len(actions) != 3:
+        raise AssertionError("wide terminal branch must contain three actions")
+
+    def signed_volume(first, second, third):
+        vectors = tuple(tuple(point[axis] - center[axis]
+                              for axis in range(3))
+                        for point in (first, second, third))
+        cross = (vectors[1][1] * vectors[2][2] -
+                 vectors[1][2] * vectors[2][1],
+                 vectors[1][2] * vectors[2][0] -
+                 vectors[1][0] * vectors[2][2],
+                 vectors[1][0] * vectors[2][1] -
+                 vectors[1][1] * vectors[2][0])
+        return round(sum(left * right
+                         for left, right in zip(vectors[0], cross)) /
+                     minimum_distance ** 3, 6)
+
+    codes = []
+    for order in itertools.permutations(actions):
+        points = tuple(row[0] for row in order)
+        colors = tuple(row[1] for row in order)
+        radial = tuple(round(math.dist(point, center) / minimum_distance, 6)
+                       for point in points)
+        pairs = tuple(round(math.dist(points[left], points[right]) /
+                            minimum_distance, 6)
+                      for left in range(len(points))
+                      for right in range(left + 1, len(points)))
+        codes.append((colors, radial, pairs,
+                      (signed_volume(*points),)))
+    colors, radial, pairs, volumes = min(codes)
+    return {
+        "node_colors": colors,
+        "center_distances_nn": radial,
+        "pair_distances_nn": pairs,
+        "proper_signed_volumes": volumes,
+    }
+
+
 def _successor_relations(source, state, runtime, minimum_distance):
     if state.proposals.pair_actions is None:
         raise AssertionError("exact proposal pair provenance is unavailable")
@@ -138,6 +223,9 @@ def _successor_relations(source, state, runtime, minimum_distance):
     boundary_context = _boundary_context(
         source.group, point, parent, selected_source, SECOND_BLOCK_RADIUS,
         minimum_distance, len(state.proposals.votes))
+    endpoint_geometry = _selected_endpoint_geometry(
+        source.group, point, parent, selected_source, minimum_distance,
+        _dominant_source_color(state.proposals, point))
     successor = _child(
         source, runtime["connection"], runtime["state_model"], state,
         point, descriptors[point], SECOND_BLOCK_RADIUS)
@@ -170,6 +258,7 @@ def _successor_relations(source, state, runtime, minimum_distance):
         "selected_pair_witnesses": len(selected_rows),
         "complete_successor_frontier_actions": len(successor.proposals.votes),
         "boundary_context": boundary_context,
+        "selected_endpoint_geometry": endpoint_geometry,
         "raw_matching_pair_actions": raw_counts,
         "invariant_candidate_classes": {
             relation: len(classes[relation]) for relation in RELATIONS},
@@ -210,6 +299,8 @@ def _evaluate_group(payload):
             "stable_index": int(stable_index),
             "source_action_digest": hashlib.sha256(
                 repr(action_key(state.actions)).encode()).hexdigest(),
+            "complete_branch_action_graph": _canonical_branch_action_graph(
+                source.group, state.actions, minimum_distance),
             **_successor_relations(source, state, runtime, minimum_distance),
         })
     geometry_digest = hashlib.sha256(json.dumps(
@@ -229,6 +320,8 @@ def _evaluate_group(payload):
         "raw_occurrence_indices_serialized": False,
         "proper_motion_invariant_candidate_identity": True,
         "public_boundary_context_serialized": True,
+        "selected_endpoint_metric_graph_serialized": True,
+        "complete_branch_metric_graph_serialized": True,
         "target_used_for_candidates_or_certificates": False,
         "labels_joined_after_group_geometry_freeze": True,
     }
@@ -281,6 +374,8 @@ def build_dataset(*, workers=1):
         "raw_occurrence_indices_serialized": False,
         "proper_motion_invariant_candidate_identity": True,
         "public_boundary_context_serialized": True,
+        "selected_endpoint_metric_graph_serialized": True,
+        "complete_branch_metric_graph_serialized": True,
         "candidate_geometry_unchanged": True,
         "target_used_for_candidates_or_certificates": False,
         "labels_joined_after_geometry_freeze": True,
@@ -311,6 +406,8 @@ def load_default_dataset(path=DEFAULT_FIXTURE):
             or body["raw_occurrence_indices_serialized"]
             or not body["proper_motion_invariant_candidate_identity"]
             or not body["public_boundary_context_serialized"]
+            or not body["selected_endpoint_metric_graph_serialized"]
+            or not body["complete_branch_metric_graph_serialized"]
             or body["target_used_for_candidates_or_certificates"]
             or not body["labels_joined_after_geometry_freeze"]
             or body["mandatory_physical_port_occupancy_claimed"]

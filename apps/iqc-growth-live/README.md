@@ -2154,6 +2154,27 @@ separates boundary regimes but cannot distinguish exact from false actions
 inside either exact-bearing regime, so the next representation must retain the
 joint endpoint metric graph rather than add scalar boundary capacity.
 
+The endpoint graph itself is also now falsified as sufficient. The selected
+target, parent, source, and public center give only three graph classes among
+the 28 forward-UNSAT rows; in both exact-bearing classes the exact row collides
+with false rows. The fixture therefore adds the full three-action branch as an
+unordered colored proper-metric graph: three center distances, three internal
+edge lengths, node colors, and a signed normalized volume. Raw occurrence IDs
+and action insertion order are absent. This makes every one of the 28 difficult
+branches locally distinct with zero exact/false graph collisions.
+
+Local identity does not transfer. The 120 branches contain 119 exact graph
+classes; only one class repeats across nuclei, covering two exact rows. A
+nested grouped nearest-recurrent section over 30 invariant graph aggregates
+selects `0 / 2` recoverable exact forward-UNSAT nuclei. A separate train-only
+colored-edge vocabulary, with edge-width selected inside each outer fold, also
+selects `0 / 2`. Thirty-one within-nucleus shuffled-label refits have median
+zero and maximum one exact selection for both arms (`p = 1`). Neither section
+is deployed. The next justified step is to learn a recurrent
+cluster-of-clusters quotient across a larger independent nucleus corpus before
+fitting branch value; increasing capacity over 119 nearly unique graphs would
+only memorize development geometry.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

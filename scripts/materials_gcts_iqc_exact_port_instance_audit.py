@@ -76,6 +76,10 @@ def evaluate():
             for row in rows for relation in RELATIONS),
         "raw_occurrence_indices_serialized": False,
         "proper_motion_invariant_candidate_identity": True,
+        "selected_endpoint_metric_graph_serialized": bool(
+            dataset["selected_endpoint_metric_graph_serialized"]),
+        "complete_branch_metric_graph_serialized": bool(
+            dataset["complete_branch_metric_graph_serialized"]),
         "exact_instance_improves_over_semantic_role_cover": bool(
             forward["unsatisfied_false"] > 0 and
             forward["satisfied_exact"] > forward["unsatisfied_exact"]),
@@ -92,7 +96,8 @@ def evaluate():
         "honest_status": (
             "exact occurrence incidence rejects 26 of 61 false branches and "
             "retains 57 of 59 exact branches under forward continuation, but "
-            "one supplied nucleus loses its only exact branch; the gate is red"),
+            "one supplied nucleus loses its only exact branch; complete "
+            "branch graphs are serialized for the separate transfer audit"),
     }
     return {**body, "audit_digest": hashlib.sha256(json.dumps(
         body, sort_keys=True, separators=(",", ":")).encode()).hexdigest()}

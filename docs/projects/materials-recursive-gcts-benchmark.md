@@ -4329,6 +4329,56 @@ metric graph or simultaneous incidence, not add another scalar boundary
 channel. No physical valence, mandatory port occupancy, autonomous growth,
 stationary IQC recurrence, or exponential growth follows.
 
+### Complete simultaneous branch-action graph
+
+The scalar result leaves two possible explanations: either the selected port
+attachment lacks sufficient geometry, or the rest of the simultaneous branch
+contains the missing relation. The dataset now freezes both representations
+before labels are joined.
+
+The selected endpoint descriptor is the ordered colored proper-metric graph of
+public center, proposed target, parent occurrence, and source occurrence: six
+normalized distances plus signed normalized volume. It has only three classes
+among the 28 forward-UNSAT branches. Both classes containing an exact row also
+contain false rows, so selected-port geometry cannot distinguish the action.
+
+The complete branch descriptor instead uses all three colored placements in
+the terminal state. It enumerates their six action orders, takes the canonical
+colored distance code, and retains a signed volume so improper mirrors do not
+collapse unless the colored metric set has the corresponding proper symmetry.
+The resulting code is invariant to insertion order, atom permutation,
+translation, and proper rotation. Candidate geometry and all seven finite-port
+certificates are unchanged.
+
+This solves local identifiability but not transfer:
+
+| branch-graph audit | result |
+| --- | ---: |
+| branches / exact / false | 120 / 59 / 61 |
+| canonical complete graph classes | 119 |
+| exact graph rows recognized outside their nucleus | 2 / 59 |
+| forward-UNSAT graph classes within nuclei | 28 / 28 |
+| within-nucleus exact/false graph collisions | 0 |
+| nested nearest-recurrent graph recovery | 0 / 2 exact nuclei |
+| nested colored-edge token recovery | 0 / 2 exact nuclei |
+
+The nearest-recurrent arm uses 30 fixed ID-free aggregates and selects
+`k ∈ {1,3,5,9,15}` only inside each outer nucleus fold. The edge arm retains
+the three colored internal edges and selects a normalized distance width from
+`{0.25,0.5,1,2,4}` in the same nested manner. Each arm ranks exactly one of
+the unchanged forward-UNSAT alternatives in each affected nucleus. Both select
+zero of the two recoverable exact nuclei. Across 31 within-nucleus label
+shuffles, each null family has median zero and maximum one exact selection, so
+both observed plus-one upper-tail values are `p = 1`.
+
+Neither graph section is integrated. The exact graph is almost an occurrence
+identifier, while its bounded recurrent quotients have no transported value.
+The next representation step must learn a recurrent cluster-of-clusters
+quotient from more independent nuclei before fitting the branch marking. A
+higher-capacity classifier over 119 nearly unique development graphs would not
+be evidence of generic GCTS. No fresh confirmation, autonomous growth,
+stationary recurrence, or exponential IQC claim follows.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
