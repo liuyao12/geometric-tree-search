@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260820-polycube9-v117";
+} from "./engine.js?v=20260820-polycube10-v118";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -2924,24 +2924,14 @@ function pauseRun() {
 }
 
 const GROWTH_MODES = [
-  { id: "free_range", strategy: "free_range", label: "Free-range · balanced", color: "#6f7c77", symbol: "square-open", dash: "dash" },
-  { id: "no_brainer", strategy: "free_range", label: "Free-range · no-brainer", color: "#b86442", symbol: "cross-open", dash: "dot" },
-  { id: "proof", strategy: "free_range", label: "Proof search · complete rank", color: "#252b29", symbol: "triangle-down-open", dash: "longdash" },
-  { id: "proof_nogood", strategy: "free_range", label: "Proof search · delayed nogoods", color: "#a33f5b", symbol: "triangle-left-open", dash: "dashdot" },
-  { id: "proof_crystal", strategy: "free_range", label: "Proof search · crystal rank", color: "#d38b13", symbol: "star-open", dash: "longdashdot" },
-  { id: "learning", strategy: "learning_free_range", label: "Learning Free-range", color: "#178273", symbol: "diamond", dash: "solid" },
+  { id: "free_range", strategy: "free_range", label: "Free-range", color: "#6f7c77", symbol: "square-open", dash: "dash" },
+  { id: "gcts", strategy: "learning_free_range", label: "GCTS", color: "#178273", symbol: "diamond", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
 ];
 
 function selectedGrowthMode() {
   const strategy = checkedRadioValue(strategyRadios, "free_range");
-  if (strategy === "free_range") {
-    if (moveOrderSelect.value === "global") return "proof";
-    if (moveOrderSelect.value === "no_brainer") return "no_brainer";
-    if (moveOrderSelect.value === "crystal") return "proof_crystal";
-    return "free_range";
-  }
   return GROWTH_MODES.find(mode => mode.strategy === strategy)?.id ?? "free_range";
 }
 
@@ -2951,10 +2941,6 @@ function activateGrowthMode(modeId) {
   setRadioValue(strategyRadios, mode.strategy, "free_range");
   strategySelect.value = mode.strategy;
   if (mode.id === "free_range") moveOrderSelect.value = "balanced";
-  if (mode.id === "no_brainer") moveOrderSelect.value = "no_brainer";
-  if (mode.id === "proof") moveOrderSelect.value = "global";
-  if (mode.id === "proof_nogood") moveOrderSelect.value = "balanced";
-  if (mode.id === "proof_crystal") moveOrderSelect.value = "crystal";
   updateStrategyUI();
 }
 
@@ -3160,7 +3146,7 @@ function formatGrowthResult(result, target) {
     configured_branch_pruning: "configured branch pruning"
   }[result?.stats?.termination_reason] ?? null;
   const stopSuffix = result?.searchIncomplete && stopReason ? ` · ${stopReason}` : "";
-  const learningSuffix = result?.mode === "learning"
+  const learningSuffix = result?.mode === "gcts"
     ? result.reusedLearnedPatch
       ? ` (replayed ${result.stats?.proposal_patch_tiles_replayed ?? 0})`
       : result.learnedProgram?.patch?.length
@@ -3254,7 +3240,7 @@ function finishGrowthBenchmark(results) {
       ? Number(maxTilesInput.value) || 1
       : Number(layerInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
-  setStatus("All eight modes finished.");
+  setStatus("All four modes finished.");
   renderGrowthChart();
 }
 
@@ -3299,13 +3285,13 @@ function startGrowthBenchmark() {
   const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
-  setStatus("Running all eight modes…");
+  setStatus("Running all four modes…");
   const targetLabel = config.criterion === "shell"
     ? `shell ${config.target_val}`
     : config.criterion === "count"
       ? `${config.target_val} tiles`
       : `${config.criterion} ${config.target_val}`;
-  growthBenchmarkStatus.textContent = `Running eight searches simultaneously to ${targetLabel}…`;
+  growthBenchmarkStatus.textContent = `Running four searches simultaneously to ${targetLabel}…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3329,7 +3315,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-size13-v104", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-polycube10-v118", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3355,7 +3341,7 @@ function startGrowthBenchmark() {
         ) showSelectedGrowthSnapshot();
       } else if (message.type === "series-finished") {
         series.result = message.result;
-        if (mode.id === "learning" && message.result.learnedProgram) {
+        if (mode.id === "gcts" && message.result.learnedProgram) {
           const stored = rememberLearnedProposal(config, message.result.learnedProgram);
           if (stored) {
             series.learnedProgram = stored;
@@ -3386,7 +3372,7 @@ function startGrowthBenchmark() {
     worker.postMessage({
       type: "start",
       sequence,
-      config: mode.id === "learning"
+      config: mode.id === "gcts"
         ? { ...config, proposal_program: cachedLearningProgram }
         : config,
       mode: mode.id
@@ -3451,7 +3437,7 @@ function bindControls() {
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
-    setStatus("Long-growth preset ready: eight modes race to 120 tiles for up to 30 seconds.");
+    setStatus("Long-growth preset ready: four modes race to 120 tiles for up to 30 seconds.");
     setRunButton();
   });
 

@@ -64,11 +64,11 @@ assert.match(
   /grid-template-rows: auto auto auto auto minmax\(190px, 1fr\);[\s\S]*?overflow-y: auto;/,
   "short desktop viewports must be able to scroll to a nonzero-height tile catalogue"
 );
-assert.match(growthWorkerSource, /id: "proof"[\s\S]*?proof: true/, "the comparison worker must expose a proof lane");
+assert.match(growthWorkerSource, /id: "proof"[\s\S]*?proof: true/, "the research worker must retain the headless proof policy");
 assert.match(
   growthWorkerSource,
   /id: "proof_nogood"[\s\S]*?proof: true,[\s\S]*?nogood: true/,
-  "the comparison worker must expose the complementary exact-nogood proof lane"
+  "the research worker must retain the complementary exact-nogood proof policy"
 );
 assert.match(
   growthWorkerSource,
@@ -120,12 +120,23 @@ assert.match(
 );
 assert.match(growthWorkerSource, /exhaustive: !!mode\.proof/, "only the proof comparison lane may claim exhaustive search");
 assert.match(growthWorkerSource, /certificateKind: final\?\.tiling_evidence\?\.kind/, "proof certificates must reach the UI");
-assert.match(growthAppSource, /id: "proof"[\s\S]*?label: "Proof search · complete rank"/, "the complete proof trace must be visible in the chart");
-assert.match(growthAppSource, /id: "proof_nogood"[\s\S]*?label: "Proof search · delayed nogoods"/, "the complementary proof trace must be visible in the chart");
-assert.match(growthAppSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal rank"/, "the repeated-translation-rank proof trace must be visible in the chart");
 assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?moveOrder: "crystal"[\s\S]*?proof: true/, "the crystal lane must retain exact proof-search semantics");
-assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal rank"/, "the worker and chart must agree on the rank-aware crystal label");
-assert.match(growthAppSource, /All eight modes finished\./, "the comparison status must include all eight lanes");
+assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?label: "Proof search · crystal rank"/, "the hidden research policy must retain its diagnostic label");
+const publicGrowthModesSource = growthAppSource.match(/const GROWTH_MODES = \[([\s\S]*?)\n\];/)?.[1] ?? "";
+assert.deepEqual(
+  [...publicGrowthModesSource.matchAll(/id: "([^"]+)"/g)].map(match => match[1]),
+  ["free_range", "gcts", "translational", "isohedral"],
+  "the public chart must compare exactly the four solver lanes"
+);
+assert.deepEqual(
+  [...publicGrowthModesSource.matchAll(/label: "([^"]+)"/g)].map(match => match[1]),
+  ["Free-range", "GCTS", "Translational", "Isohedral"]
+);
+assert.match(growthWorkerSource, /id: "free_range"[\s\S]*?label: "Free-range"/);
+assert.match(growthWorkerSource, /id: "gcts"[\s\S]*?label: "GCTS"[\s\S]*?strategy: "learning_free_range"/);
+assert.match(growthAppSource, /All four modes finished\./);
+assert.doesNotMatch(sourceTilerHtml, /Learning Free-range/);
+assert.match(sourceTilerHtml, /<b>GCTS<\/b>/);
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
 assert.match(growthAppSource, /prioritizes independent repeated same-orientation translations/, "the catalog must explain the current crystal-rank policy");
 assert.match(growthAppSource, /all four old 10_45026 witnesses repeated 57 of 60 placements along one direction/, "the catalog must disclose the misleading collinear target witnesses");

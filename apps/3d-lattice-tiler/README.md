@@ -17,35 +17,21 @@ Then open:
 http://127.0.0.1:5174/3d-lattice-tiler/
 ```
 
-There is no GCTS runtime in this app. `engine.js` owns tile geometry, candidate
-generation, exact placement legality, periodic certificates, isohedral reuse,
-balanced growth, and ordinary backtracking. The browser executes that same
-engine in `solver-worker.js`.
+`engine.js` owns tile geometry, candidate generation, exact placement legality,
+periodic certificates, GCTS proposal learning, isohedral reuse, balanced growth,
+and ordinary backtracking. The browser executes that same engine in
+`solver-worker.js`.
 
 ## Solver modes
 
-The UI exposes four solver families and runs eight comparison lanes concurrently
-in independent
-workers:
+The UI exposes and compares exactly four solver lanes concurrently in
+independent workers:
 
-1. **Free-range** is the baseline tree search. Its balanced and no-brainer move
-   orders run as separate comparison lanes, so long growth cannot be mistaken
-   for a heuristic-independent result. It applies forced moves first,
+1. **Free-range** is the baseline tree search. It applies forced moves first,
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
-   A separate **Proof search · complete rank** lane removes the generational
-   frontier band and heuristic branch caps. It branches over every legal tile
-   that can be attached through any exposed face and memoizes exact failed
-   placement sets. A temporarily stranded frontier vertex is diagnostic only:
-   growth elsewhere can expose a later continuation, so it is neither a dead
-   end nor evidence that its current sole candidate is forced. Reaching the
-   requested tile count is still only a finite-patch witness; only exhausting
-   this global face-extension search before that count certifies that no
-   connected patch of that size exists in the configured face-to-face lattice
-   model. A time or node limit remains inconclusive. Node limits count applied
-   placements, never unvisited alternatives allocated for the tree UI.
-2. **Learning Free-range** runs the same search while updating geometric
+2. **GCTS** runs the same search while updating geometric
    proposal priorities from successful and failed branches. Its best legal
    patch is stored per tile in the browser and revalidated on later runs, so
    repeated comparisons improve without hard-coding a translational or
@@ -78,7 +64,7 @@ workers:
    tile class. Without that certificate the result is exhausted or
    inconclusive and the displayed patch rolls back to the root.
 
-The interactive Plotly growth chart uses one wall clock for all six workers.
+The interactive Plotly growth chart uses one wall clock for all four workers.
 Every plotted sample retains its exact 3D snapshot: clicking a marker replays
 that historical patch, while clicking empty chart space restores the latest
 patch for that marker's mode. Selecting a mode also switches the viewport to
@@ -100,9 +86,13 @@ spans. Periodic motifs are consumed in centered cell shells, avoiding long
 one-dimensional tendrils. The viewport renders the active frontier lattice
 points for the selected Z³, FCC, or ½Z³ tier.
 
-## Learned proposals
+The exhaustive complete-rank, delayed-nogood, and crystal-rank policies remain
+available to the headless research and regression harnesses. They are not extra
+public comparison lanes.
 
-The concurrent Learning Free-range mode updates proposal priorities during the
+## GCTS learned proposals
+
+The concurrent GCTS mode updates proposal priorities during the
 active search. The reusable headless trainer additionally evolves tile-specific
 proposal programs. A program may contain an ordered cycle of move-scoring
 stages plus the complete locally legal patch discovered by its best episode.

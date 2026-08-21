@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-polycube9-v105";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260820-polycube10-v118";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
@@ -10,7 +10,7 @@ let stopToken = { stop: false };
 const MODES = {
   free_range: {
     id: "free_range",
-    label: "Free-range · balanced",
+    label: "Free-range",
     strategy: "free_range",
     moveOrder: "balanced",
     templates: false,
@@ -52,9 +52,9 @@ const MODES = {
     agentExhaustive: true,
     proof: true
   },
-  learning: {
-    id: "learning",
-    label: "Learning Free-range",
+  gcts: {
+    id: "gcts",
+    label: "GCTS",
     strategy: "learning_free_range",
     moveOrder: "agent",
     templates: false,
@@ -87,7 +87,7 @@ async function runMode(sequence, baseConfig, mode) {
   const effectiveMode = shellSearch && mode.proof
     ? { ...mode, label: `${mode.label.replace(/ · .*$/u, "")} · complete shell` }
     : mode;
-  const priorProgram = mode.id === "learning" && baseConfig.proposal_program
+  const priorProgram = mode.id === "gcts" && baseConfig.proposal_program
     ? normalizeProposalProgram(baseConfig.proposal_program)
     : null;
   const config = {
@@ -104,7 +104,7 @@ async function runMode(sequence, baseConfig, mode) {
     periodic_patch_unbounded: mode.id === "translational",
     periodic_patch_max_tiles: mode.id === "translational" ? null : baseConfig.periodic_patch_max_tiles,
     snapshot_every: 1,
-    placement_details: mode.id === "learning",
+    placement_details: mode.id === "gcts",
     branch_cap: null,
     candidate_cap: null,
     forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
@@ -173,7 +173,7 @@ async function runMode(sequence, baseConfig, mode) {
       best = tiles;
       const point = { milliseconds: Math.round(performance.now() - started), tiles };
       points.push(point);
-      if (mode.id === "learning" && Array.isArray(snapshot?.placements)) bestSnapshot = snapshot;
+      if (mode.id === "gcts" && Array.isArray(snapshot?.placements)) bestSnapshot = snapshot;
       post(sequence, { type: "sample", mode: mode.id, point, snapshot });
     }
     if (message.type === "full_update") terminalSnapshot = message;
@@ -181,7 +181,7 @@ async function runMode(sequence, baseConfig, mode) {
   }
 
   const elapsed = Math.round(performance.now() - started);
-  const learnedProgram = mode.id === "learning" && bestSnapshot?.placements?.length > 1
+  const learnedProgram = mode.id === "gcts" && bestSnapshot?.placements?.length > 1
     ? proposalProgramFromPatchSnapshot(baseConfig, bestSnapshot, priorProgram)
     : priorProgram;
   if (mode.id === "isohedral" && final?.success === false) {
