@@ -4696,3 +4696,29 @@ disjoint-confirmation candidate,
 not installed as the default GCTS marking. A new target-blind confirmation must
 reproduce the gain before this score may commit branches or feed recursive
 promotion.
+
+### Fresh disjoint obligation confirmation
+
+The exploratory automaton was frozen into a geometry-only preregistration
+before any confirmation atom was generated. The maximin grid rule selects
+`(-110,-70,-70)`. Its complete 32.5623-radius rollout domain is 87.178 units
+from every consumed domain, exceeding the frozen 71.125-unit requirement.
+
+| one-shot obligation confirmation | result |
+| --- | ---: |
+| seed / target atoms | 480 / 2,066 |
+| complete terminal counts | 8 → 40 → 152 |
+| frozen dual-ranker portfolio | 13 |
+| exact candidates supplied | 2 |
+| first exact automaton rank | 5 |
+| selected correct / false sites | 2 / 1 |
+| recognized state fraction | 6.25–18.75% |
+| selected target-free rollout | 16 steps |
+| target opens / bound stability | 1 / bounds 72=73 |
+| confirmation gate | **red** |
+
+Every candidate, trajectory, automaton score, and receipt hash froze before
+the single target call. The target was used only for final scoring. Candidate
+supply is therefore not the blocker: the finite state vocabulary shifts too
+strongly to the disjoint nucleus. The target is consumed, no retry or posthoc
+threshold is allowed, and the automaton is rejected as a default GCTS policy.

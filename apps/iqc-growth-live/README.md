@@ -2401,4 +2401,23 @@ therefore frozen only as a future disjoint-confirmation candidate. Default
 tree-search commitment, clusters-of-clusters promotion, autonomous growth,
 stationarity, and exponential growth remain disabled.
 
+### Fresh obligation-automaton confirmation
+
+The automaton was then frozen and preregistered before touching a new nucleus.
+A geometry-only maximin rule selected `(-110, -70, -70)`, with 87.18 units of
+separation from every consumed 32.56-radius rollout domain. The colored R9
+seed contains 480 atoms. Complete `8 × 8 × 8` frontier enumeration supplies
+152 three-action terminals; the unchanged scalar/fusion portfolio retains 13.
+All sixteen-step trajectories, automaton scores, action IDs, and receipt hashes
+freeze before one target-factory call. Bounds 72 and 73 reproduce the same
+2,066-atom R14.56 target exactly.
+
+The portfolio contains two exact branches, so candidate supply passes. The
+automaton ranks the first exact branch fifth and selects a branch with two
+correct sites and one false site. Recognized transition-state coverage is only
+6.25–18.75%. The one-shot gate is therefore red. This is a transfer failure of
+the obligation vocabulary, not a missing-candidate failure; the target is now
+consumed and will not be retried. Default search commitment, autonomous growth,
+recursive promotion, stationarity, and exponential claims remain disabled.
+
 Serve the repository root and open `/iqc-growth-live/`.
