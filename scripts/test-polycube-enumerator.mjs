@@ -253,6 +253,23 @@ assert.equal(
   true,
   "the CPU-budgeted batch path must produce the same independently valid certificate"
 );
+const fourCopyLimbPolycube = [
+  [0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 0, 3], [0, 0, 4],
+  [0, 0, 5], [0, 0, 6], [0, 1, 0], [0, 1, 3], [0, 2, 0]
+];
+const fourCopyLimbCertificate = findPolycubePeriodicTiling(fourCopyLimbPolycube, {
+  minCopies: 4,
+  maxCopies: 4,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(fourCopyLimbCertificate.certified, true);
+assert.equal(fourCopyLimbCertificate.copies, 4);
+assert.equal(
+  verifyPolycubePeriodicCertificate(fourCopyLimbPolycube, fourCopyLimbCertificate).verified,
+  true,
+  "the two-limb quotient mask path must produce an independently valid certificate"
+);
 const resumedPeriodicRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 3,
   maxCopies: 3,
