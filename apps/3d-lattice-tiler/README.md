@@ -720,9 +720,10 @@ cell-pair obligations; the full 114-pair formula remains timeout-inconclusive.
 A factored witness-CNF encoding replaces the 322,977 compatible-pair DNF terms
 with 8,208 local witness choices. Under an equal 60-second solver budget it
 finds a new 63-copy proposal where both the DNF and two-sided choice-CNF
-encodings time out. Across four witness-CNF seeds, two proposals are found and
-then exactly rejected at radius five in two and four GCTS nodes; two seeds time
-out. The exact clause set consequently grows from 798 to 804.
+encodings time out. Across five witness-CNF seeds, two proposals are found and
+then exactly rejected at radius five in two and four GCTS nodes; three seeds
+time out, including a fifth diversified seed resumed from all 804 clauses. The
+exact clause set remains 804.
 The same obligations now run lazily inside continuation-guided GCTS. Two fixed
 production states independently replay their extracted pair clauses; the
 smaller clause uses four placements instead of the exact continuation proof's
