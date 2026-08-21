@@ -12,7 +12,7 @@ def test_generic_learner_discovers_water_and_gap_classes_in_both_ices() -> None:
     assert result.benchmark_passed
     assert result.molecule_signature_transfers_across_polytypes
     assert result.void_signature_transfers_across_polytypes
-    assert result.shared_connection_isometry_classes == 6
+    assert result.shared_connection_isometry_classes == 2
     assert result.finite_point_set_without_lattice_passed
     for case in result.cases:
         assert case.learned_formula == (("H", 2), ("O", 1))

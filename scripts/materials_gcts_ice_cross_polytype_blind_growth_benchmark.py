@@ -43,10 +43,15 @@ class CrossPolytypeBlindGrowthResult:
     factored_two_wave_anchors: int
     factored_two_wave_correct: int
     factored_two_wave_wrong: int
+    unanimous_wave_anchors: tuple[int, ...]
+    unanimous_correct_anchors: int
+    unanimous_wrong_anchors: int
+    unanimous_reached_fixed_point: bool
     target_open_count: int
     target_used_before_scoring: bool
     first_wave_cross_polytype_gate_passed: bool
     sustained_cross_polytype_gate_passed: bool
+    conservative_cross_polytype_gate_passed: bool
     trace_digest: str
 
 
@@ -90,10 +95,16 @@ def evaluate() -> CrossPolytypeBlindGrowthResult:
         grammar, seed_occurrences, boundary_center=seed[4],
         boundary_radius=8.0, maximum_waves=2,
         maximum_hypotheses_per_anchor=8)
+    unanimous = execute_molecular_anchor_growth(
+        grammar, seed_occurrences, boundary_center=seed[4],
+        boundary_radius=8.0, maximum_waves=3,
+        maximum_hypotheses_per_anchor=8,
+        require_parent_domain_unanimity=True)
     frozen = {
         "whole": [wave.candidate_digest for wave in whole.waves],
         "first": [wave.candidate_digest for wave in first.waves],
         "second": [wave.candidate_digest for wave in second.waves],
+        "unanimous": [wave.candidate_digest for wave in unanimous.waves],
     }
     trace_digest = hashlib.sha256(json.dumps(
         frozen, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
@@ -114,6 +125,8 @@ def evaluate() -> CrossPolytypeBlindGrowthResult:
     oxygen_correct, oxygen_wrong, _ = score_sites(predicted_oxygen, target_oxygen)
     first_correct, first_wrong, _ = score_sites(first.emitted_anchors, target_oxygen)
     second_correct, second_wrong, _ = score_sites(second.emitted_anchors, target_oxygen)
+    unanimous_correct, unanimous_wrong, _ = score_sites(
+        unanimous.emitted_anchors, target_oxygen)
     outer_oxygen = len(target_oxygen) - len(seed_occurrences)
     return CrossPolytypeBlindGrowthResult(
         trained_polytype="ice-Ih", evaluated_polytype="ice-Ic",
@@ -130,11 +143,20 @@ def evaluate() -> CrossPolytypeBlindGrowthResult:
         factored_two_wave_anchors=len(second.emitted_anchors),
         factored_two_wave_correct=second_correct,
         factored_two_wave_wrong=second_wrong,
+        unanimous_wave_anchors=tuple(wave.accepted_anchors for wave in unanimous.waves),
+        unanimous_correct_anchors=unanimous_correct,
+        unanimous_wrong_anchors=unanimous_wrong,
+        unanimous_reached_fixed_point=bool(unanimous.waves and
+                                            unanimous.waves[-1].accepted_anchors == 0),
         target_open_count=target_open_count,
         target_used_before_scoring=(grammar.target_used or whole.target_used
-                                    or first.target_used or second.target_used),
+                                    or first.target_used or second.target_used
+                                    or unanimous.target_used),
         first_wave_cross_polytype_gate_passed=(first_correct > 0 and first_wrong == 0),
         sustained_cross_polytype_gate_passed=(second_correct > 0 and second_wrong == 0),
+        conservative_cross_polytype_gate_passed=(
+            unanimous_correct > 0 and unanimous_wrong == 0
+            and bool(unanimous.waves) and unanimous.waves[-1].accepted_anchors == 0),
         trace_digest=trace_digest,
     )
 

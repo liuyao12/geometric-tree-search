@@ -68,10 +68,18 @@ class BlindIceGrowthResult:
     factored_two_wave_precision: float
     factored_two_wave_outer_recall: float
     unresolved_orientation_hypotheses: int
+    unanimous_wave_anchors: tuple[int, ...]
+    unanimous_emitted_anchors: int
+    unanimous_correct_anchors: int
+    unanimous_wrong_anchors: int
+    unanimous_precision: float
+    exact_unseen_anchor_levels: int
+    unanimous_reached_fixed_point: bool
     traces_frozen_before_target: bool
     target_used_by_grammar_or_execution: bool
     exact_port_geometry_certificates: bool
     one_wave_anchor_gate_passed: bool
+    two_level_anchor_gate_passed: bool
     sustained_blind_molecular_growth_passed: bool
     stationary_or_exponential_claim: bool
     trace_digest: str
@@ -127,16 +135,24 @@ def evaluate() -> BlindIceGrowthResult:
         grammar, seed_occurrences, boundary_center=eval_center,
         boundary_radius=TARGET_RADIUS, maximum_waves=2,
         maximum_hypotheses_per_anchor=8)
+    unanimous = execute_molecular_anchor_growth(
+        grammar, seed_occurrences, boundary_center=eval_center,
+        boundary_radius=TARGET_RADIUS, maximum_waves=3,
+        maximum_hypotheses_per_anchor=8,
+        require_parent_domain_unanimity=True)
     frozen_payload = {
         "whole": [wave.candidate_digest for wave in whole.waves],
         "one": [wave.candidate_digest for wave in factored_one.waves],
         "two": [wave.candidate_digest for wave in factored_two.waves],
+        "unanimous": [wave.candidate_digest for wave in unanimous.waves],
         "whole_sites": sorted((species, *(round(value / .04) for value in point))
                               for species, point in whole.emitted_sites),
         "one_sites": sorted((species, *(round(value / .04) for value in point))
                             for species, point in factored_one.emitted_anchors),
         "two_sites": sorted((species, *(round(value / .04) for value in point))
                             for species, point in factored_two.emitted_anchors),
+        "unanimous_sites": sorted((species, *(round(value / .04) for value in point))
+                                  for species, point in unanimous.emitted_anchors),
     }
     trace_digest = hashlib.sha256(json.dumps(
         frozen_payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
@@ -160,12 +176,21 @@ def evaluate() -> BlindIceGrowthResult:
         factored_one.emitted_anchors, target_oxygen)
     two_correct, two_wrong, _ = score_sites(
         factored_two.emitted_anchors, target_oxygen)
+    unanimous_correct, unanimous_wrong, _ = score_sites(
+        unanimous.emitted_anchors, target_oxygen)
     target_outer_atoms = len(target_sites) - len(seed_sites)
     target_outer_oxygen = len(target_oxygen) - len(seed_occurrences)
     one_gate = (one_wrong == 0 and one_correct > 0
                 and not whole.target_used and not factored_one.target_used)
     sustained = (two_wrong == 0 and len(factored_two.waves) >= 2
                  and all(wave.accepted_anchors > 0 for wave in factored_two.waves))
+    exact_levels = 0
+    if unanimous_wrong == 0:
+        for wave in unanimous.waves:
+            if not wave.accepted_anchors:
+                break
+            exact_levels += 1
+    two_level_gate = unanimous_correct > 0 and unanimous_wrong == 0 and exact_levels >= 2
     return BlindIceGrowthResult(
         training_atoms=len(train_species), training_molecules=len(train_ids),
         frozen_ports=len(grammar.ports), seed_atoms=len(seed_sites),
@@ -195,16 +220,27 @@ def evaluate() -> BlindIceGrowthResult:
         factored_two_wave_precision=two_correct / max(1, two_correct + two_wrong),
         factored_two_wave_outer_recall=two_correct / target_outer_oxygen,
         unresolved_orientation_hypotheses=factored_two.unresolved_new_molecules,
+        unanimous_wave_anchors=tuple(wave.accepted_anchors for wave in unanimous.waves),
+        unanimous_emitted_anchors=len(unanimous.emitted_anchors),
+        unanimous_correct_anchors=unanimous_correct,
+        unanimous_wrong_anchors=unanimous_wrong,
+        unanimous_precision=unanimous_correct / max(1, unanimous_correct + unanimous_wrong),
+        exact_unseen_anchor_levels=exact_levels,
+        unanimous_reached_fixed_point=bool(unanimous.waves and
+                                            unanimous.waves[-1].accepted_anchors == 0),
         traces_frozen_before_target=True,
         target_used_by_grammar_or_execution=(
             grammar.target_used or whole.target_used or factored_one.target_used
-            or factored_two.target_used),
+            or factored_two.target_used or unanimous.target_used),
         exact_port_geometry_certificates=(
             whole.exact_geometry_certificates
             and factored_one.exact_port_geometry_certificates
-            and factored_two.exact_port_geometry_certificates),
+            and factored_two.exact_port_geometry_certificates
+            and unanimous.exact_port_geometry_certificates),
         one_wave_anchor_gate_passed=one_gate,
-        sustained_blind_molecular_growth_passed=sustained,
+        two_level_anchor_gate_passed=two_level_gate,
+        sustained_blind_molecular_growth_passed=(sustained and
+                                                 unanimous.unresolved_new_molecules == 0),
         stationary_or_exponential_claim=False,
         trace_digest=trace_digest,
     )

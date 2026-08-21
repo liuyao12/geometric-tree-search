@@ -215,8 +215,8 @@ const MATERIALS = {
   bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", periodicWindow: true, order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
 };
 const RECURSIVE_BENCHMARKS = {
-  iceIh: { hierarchy: [1, 29, "H-pose open"], curve: [27, 43], mark: "molecular ports + pose alternatives", action: "1 exact blind O frontier", speed: "16 / 16 anchors · depth 2 red", gate: "progress · blind molecular growth", status: "limit", note: "Known-window cover remains exact: one H₂O class, 9 decorated bridge classes, one O₆ void class, and 216/216 atoms. The stronger sealed gate trains 29 proper-SE(3) ports on a disjoint 201-atom window, then opens no target until a 9-molecule seed has executed. Factoring mutually exclusive H₂O poses emits 16/16 correct unseen oxygen anchors. A second wave is 52/77 because proton orientations remain unresolved, so sustained and exponential ice growth stay red." },
-  iceIc: { hierarchy: [1, 29, "H-pose open"], curve: [15, 27], mark: "Ih ports → Ic alternatives", action: "1 exact cross-polytype frontier", speed: "12 / 12 anchors · depth 2 red", gate: "progress · cross-polytype blind transfer", status: "limit", note: "The Ih-fitted 29-port grammar transfers to a disjoint cubic-ice seed without refitting or target access. Its first unseen oxygen frontier is 12/12 exact and the whole-molecule path reaches 100% oxygen recall, but premature proton choices lower precision; the second factored wave is 36/64. This isolates the remaining task as a bounded proton-orientation connection marking, not a new lattice backend." },
+  iceIh: { hierarchy: [1, 8, "pose domains"], curve: [27, 43, 51], mark: "unanimous orientation domains", action: "2 exact blind O frontiers", speed: "16 → 8 exact · then fixed", gate: "pass anchor · molecular growth open", status: "limit", note: "The physically corrected fixture obeys the Bernal–Fowler ice rules: every H₂O donates twice and every O–O connection carries exactly one proton. Known-window cover is exact with one H₂O class, 3 decorated bridge classes, one O₆ void class, and 216/216 atoms. The sealed gate learns 8 proper-SE(3) ports on a disjoint 201-atom window. Factoring mutually exclusive H₂O poses emits 16/16 and then 8/8 correct unseen oxygen anchors before a safe fixed point. Proton orientations remain unresolved, so full-molecule, stationary, and exponential ice growth stay red." },
+  iceIc: { hierarchy: [1, 8, "pose domains"], curve: [15, 27], mark: "Ih ports → Ic alternatives", action: "1 exact cross-polytype frontier", speed: "12 exact · then safe fixed point", gate: "progress · cross-polytype blind transfer", status: "limit", note: "The Ih-fitted 8-port grammar transfers to a disjoint cubic-ice seed without refitting or target access. Its first unseen oxygen frontier is 12/12 exact and the whole-molecule path reaches 100% oxygen recall, but premature proton choices lower precision. Domain unanimity rejects unsupported depth-2 anchors rather than emitting false sites. This isolates the remaining task as a bounded proton-orientation connection marking, not a new lattice backend." },
   graphene: { hierarchy: [1, 4, 16], curve: [373, 1495, 5983, 23935, 95743, 382975, 1531903], mark: "one C₂ sheet pose", action: "6 area rewrites → 1.53m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The generic planar atlas learns one C₂ motif pose and exactly predicts an unseen 1,495-atom disk." },
   hbn: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "finite registry + pose fallback", action: "6 area rewrites → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The registry vocabulary remains bounded for the aligned bilayer and the generic planar atlas preserves both learned sheet poses." },
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
@@ -1136,11 +1136,49 @@ function makeIceReferenceConfiguration(polytype) {
   const neighbors = oxygen.map((atom, index) => oxygen.map((candidate, other) => other === index ? null : {
     other, vector: minimumImage(atom, candidate),
   }).filter(Boolean).sort((first, second) => first.vector.lengthSq() - second.vector.lengthSq()).slice(0, 4));
+  // The tetrahedral oxygen graph is 4-regular. Orient deterministic Euler
+  // circuits so every oxygen has two incoming and two outgoing edges, then put
+  // one proton on each outgoing edge. This enforces the Bernal--Fowler rule
+  // exactly; choosing two neighbors independently can create zero or two
+  // protons on one O--O connection and is not a valid ice configuration.
+  const edgeMap = new Map();
+  neighbors.forEach((shell, index) => shell.forEach(({ other }) => {
+    const pair = index < other ? [index, other] : [other, index];
+    edgeMap.set(`${pair[0]}:${pair[1]}`, pair);
+  }));
+  const graphEdges = [...edgeMap.values()].sort((first, second) => first[0] - second[0] || first[1] - second[1]);
+  const adjacency = Array.from({ length: oxygen.length }, () => []);
+  graphEdges.forEach(([first, second], edge) => {
+    adjacency[first].push({ other: second, edge });
+    adjacency[second].push({ other: first, edge });
+  });
+  if (adjacency.some((shell) => shell.length !== 4)) throw new Error("ice oxygen graph is not tetrahedral");
+  const unused = new Set(graphEdges.map((_, edge) => edge));
+  const oriented = [];
+  while (unused.size) {
+    const startEdge = Math.min(...unused);
+    const stack = [graphEdges[startEdge][0]];
+    const circuit = [];
+    while (stack.length) {
+      const current = stack[stack.length - 1];
+      const options = adjacency[current].filter(({ edge }) => unused.has(edge))
+        .sort((first, second) => first.other - second.other || first.edge - second.edge);
+      if (options.length) {
+        unused.delete(options[0].edge);
+        stack.push(options[0].other);
+      } else circuit.push(stack.pop());
+    }
+    const path = circuit.reverse();
+    for (let index = 0; index + 1 < path.length; index++) oriented.push([path[index], path[index + 1]]);
+  }
+  const outgoing = Array.from({ length: oxygen.length }, () => []);
+  oriented.forEach(([donor, acceptor]) => outgoing[donor].push(acceptor));
+  if (outgoing.some((shell) => shell.length !== 2)) throw new Error("balanced ice orientation must donate twice per oxygen");
   const records = oxygen.map((atom, index) => ({ pA: atom.pA.clone(), species: "O", family: `ice-${polytype}`, molecule: index, q: atom.address.slice(0, 3) }));
   oxygen.forEach((atom, index) => {
-    const ordered = neighbors[index].slice().sort((first, second) => first.vector.z - second.vector.z || first.vector.y - second.vector.y || first.vector.x - second.vector.x);
-    const offset = (atom.address[0] + 2 * atom.address[1] + atom.address[2] + atom.address[3]) % 4;
-    [ordered[offset], ordered[(offset + 1) % 4]].forEach((neighbor) => {
+    const byNeighbor = new Map(neighbors[index].map((neighbor) => [neighbor.other, neighbor]));
+    outgoing[index].slice().sort((first, second) => first - second).forEach((other) => {
+      const neighbor = byNeighbor.get(other);
       records.push({ pA: atom.pA.clone().add(neighbor.vector.clone().setLength(.9572)), species: "H", family: `ice-${polytype}`, molecule: index, q: atom.address.slice(0, 3) });
     });
   });

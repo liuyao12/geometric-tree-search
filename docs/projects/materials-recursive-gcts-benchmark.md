@@ -2468,7 +2468,7 @@ topologies.
 | proton-ordered ice Ic | 192 / 64 H2O | 1 | 128 / 6 | 128 O6 / 1 | 63 / 6 | 192/192, 0 backtracks |
 
 The H2O colored-metric signature and the O6 void signature transfer exactly
-between the two polytypes; all six cubic bridge classes occur in the nine-class
+between the two polytypes; both cubic bridge classes occur in the three-class
 hexagonal atlas. Atom permutation and arbitrary proper rigid motion preserve
 the scientific fingerprint. With the cell withheld, both finite point sets
 still produce one H2O class, one locally inferred six-member void class, exact
@@ -2479,8 +2479,8 @@ point-set support learner. These checks run in
 `scripts/test_materials_gcts_generic_ice_benchmark.py`.
 
 The older directional hydrogen-bond audit remains in
-`scripts/materials_gcts_ice_cover.py`: it selects 115/98 directional bridges
-and 38/23 ring boundaries and is the smaller subset shown by the live gallery.
+`scripts/materials_gcts_ice_cover.py`: it records 144/128 molecular bridges
+and 180/128 ring boundaries and is the smaller subset shown by the live gallery.
 Both results certify reconstruction of known periodic windows, not yet blind
 continuation into a larger ice crystal, prediction of proton disorder, or an
 exponential ice production.
@@ -2489,7 +2489,8 @@ exponential ice production.
 
 `scripts/materials_gcts_molecular_port_growth.py` turns the learned H2O point
 set into a proper-SE(3) prototype, quotients witnessed molecule-to-molecule
-poses by its proper symmetry group, and freezes 29 recurrent ports. The
+poses by its proper symmetry group, and freezes 8 recurrent ports after
+verifying the Bernal–Fowler one-proton-per-O–O-link rule. The
 executor has no target argument. Every wave freezes its candidate digest,
 checks the public boundary and exact colored exclusion geometry, and commits a
 pairwise-compatible antichain while retaining the underlying tree-action IDs.
@@ -2502,17 +2503,23 @@ not silently materialized as several hydrogens.
 
 | frozen grammar → sealed seed | train / seed / target atoms | whole-H2O result | factored blind wave 1 | factored wave 2 | claim |
 |---|---:|---:|---:|---:|---|
-| Ih → disjoint Ih | 201 / 27 / 204 | 108/201 atoms; O: 83.6% P, 94.9% outer R | 16/16 O anchors | 52/77 O anchors | exact first frontier; sustained red |
-| Ih → disjoint Ic | 201 / 15 / 213 | 137/270 atoms; O: 73.3% P, 100% outer R | 12/12 O anchors | 36/64 O anchors | exact cross-polytype frontier; sustained red |
+| Ih → disjoint Ih | 201 / 27 / 204 | 144/219 atoms; O: 76.7% P, 94.9% outer R | 16/16 O anchors | naive 52/77; unanimous 8/8 | two exact anchor levels; then fixed |
+| Ih → disjoint Ic | 201 / 15 / 213 | 143/240 atoms; O: 82.5% P, 100% outer R | 12/12 O anchors | naive 36/64; unanimous 0 emitted | exact transfer; safe fixed point |
 
 In both rows the seed and all candidate traces are immutable before the outer
 target is constructed and opened once. No cell, family label, target atom,
 potential, expected coordination, or expected frontier count enters fitting or
 branch generation. The exact first wave proves that the molecular connection
-geometry transfers. The contaminated second wave proves that it is not yet a
-stationary or exponential growth program. Since only one unseen level is exact,
-cluster-of-clusters promotion is refused rather than manufacturing a symbolic
-amplification factor. Executable gates:
+geometry transfers. Treating each anchor's H2O orientations as a branch domain
+adds one causal rule: an exterior anchor is admissible only if every surviving
+orientation of at least one parent proposes it. The same frozen candidate
+geometry then gives two exact unseen Ih levels (16 followed by 8) and rejects
+all speculative third-level sites. Ic conservatively stops after its exact
+12-anchor transfer wave. This is finite exact anchor continuation, not yet a
+stationary or exponential molecular production: the Ih wave factor contracts,
+the frontier reaches a fixed point, and no proton domain is resolved. Therefore
+cluster-of-clusters promotion is still refused rather than manufacturing a
+symbolic amplification factor. Executable gates:
 
 - `scripts/test_materials_gcts_ice_blind_molecular_growth_benchmark.py`
 - `scripts/test_materials_gcts_ice_cross_polytype_blind_growth_benchmark.py`

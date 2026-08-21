@@ -18,9 +18,16 @@ def test_blind_ice_growth_separates_anchor_success_from_orientation_failure() ->
     assert not result.sustained_blind_molecular_growth_passed
     assert result.factored_two_wave_wrong > 0
     assert result.unresolved_orientation_hypotheses > 0
+    assert result.two_level_anchor_gate_passed
+    assert result.unanimous_wave_anchors == (16, 8, 0)
+    assert result.unanimous_correct_anchors == 24
+    assert result.unanimous_wrong_anchors == 0
+    assert result.unanimous_precision == 1
+    assert result.exact_unseen_anchor_levels == 2
+    assert result.unanimous_reached_fixed_point
     assert not result.stationary_or_exponential_claim
 
 
 if __name__ == "__main__":
     test_blind_ice_growth_separates_anchor_success_from_orientation_failure()
-    print("sealed blind molecular ice growth: passed with honest depth-2 red gate")
+    print("sealed blind ice anchors: two exact levels; molecular orientation remains red")

@@ -15,6 +15,11 @@ def test_cross_polytype_first_wave_is_exact_but_sustained_gate_is_red() -> None:
     assert result.factored_first_wave_precision == 1
     assert not result.sustained_cross_polytype_gate_passed
     assert result.factored_two_wave_wrong > 0
+    assert result.unanimous_wave_anchors == (12, 0)
+    assert result.unanimous_correct_anchors == 12
+    assert result.unanimous_wrong_anchors == 0
+    assert result.unanimous_reached_fixed_point
+    assert result.conservative_cross_polytype_gate_passed
 
 
 if __name__ == "__main__":

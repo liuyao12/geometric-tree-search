@@ -112,14 +112,12 @@ def _build_ice(name: str, primitive_cell: Sequence[Vector],
     cell = tuple(_scale(primitive_cell[axis], repeats[axis])
                  for axis in range(3))
     oxygen_positions: list[Vector] = []
-    oxygen_cells: list[tuple[int, int, int, int]] = []
     for i, j, k in product(*(range(value) for value in repeats)):
-        for basis_index, basis in enumerate(oxygen_basis):
+        for basis in oxygen_basis:
             frac = ((i + basis[0]) / repeats[0],
                     (j + basis[1]) / repeats[1],
                     (k + basis[2]) / repeats[2])
             oxygen_positions.append(_matvec(frac, cell))
-            oxygen_cells.append((i, j, k, basis_index))
 
     # Learn the tetrahedral O network directly from geometry, then place two
     # covalent protons along two deterministic network edges per oxygen.
@@ -134,16 +132,54 @@ def _build_ice(name: str, primitive_cell: Sequence[Vector],
         distances.sort(key=lambda item: (item[0], item[1]))
         neighbors.append(distances[:4])
 
+    # A tetrahedral oxygen graph is 4-regular, hence Eulerian.  Orient each
+    # deterministic Euler circuit: every oxygen then has exactly two outgoing
+    # and two incoming O--O edges.  Placing one proton on every outgoing edge
+    # enforces both Bernal--Fowler rules (H2O locally and exactly one proton per
+    # O--O connection) instead of choosing two edges independently at each O.
+    graph_edges = sorted({tuple(sorted((index, other)))
+                          for index, shell in enumerate(neighbors)
+                          for _, other, _ in shell})
+    adjacency: list[list[tuple[int, int]]] = [[] for _ in oxygen_positions]
+    for edge_id, (first, second) in enumerate(graph_edges):
+        adjacency[first].append((second, edge_id))
+        adjacency[second].append((first, edge_id))
+    if any(len(shell) != 4 for shell in adjacency):
+        raise AssertionError("ice oxygen graph is not tetrahedral")
+    unused = set(range(len(graph_edges)))
+    oriented_edges: list[tuple[int, int]] = []
+    while unused:
+        start_edge = min(unused)
+        start = graph_edges[start_edge][0]
+        stack = [start]
+        circuit = []
+        while stack:
+            current = stack[-1]
+            options = sorted((neighbor, edge_id)
+                             for neighbor, edge_id in adjacency[current]
+                             if edge_id in unused)
+            if options:
+                neighbor, edge_id = options[0]
+                unused.remove(edge_id)
+                stack.append(neighbor)
+            else:
+                circuit.append(stack.pop())
+        path = tuple(reversed(circuit))
+        oriented_edges.extend(zip(path, path[1:]))
+    outgoing: list[list[int]] = [[] for _ in oxygen_positions]
+    for donor, acceptor in oriented_edges:
+        outgoing[donor].append(acceptor)
+    if any(len(shell) != 2 for shell in outgoing):
+        raise AssertionError("balanced ice orientation must donate twice per oxygen")
+
     positions = list(oxygen_positions)
     species = ["O"] * len(oxygen_positions)
     bond = .9572
     for index, point in enumerate(oxygen_positions):
-        i, j, k, basis_index = oxygen_cells[index]
-        order = sorted(neighbors[index], key=lambda item: (
-            round(item[2][2], 6), round(item[2][1], 6), round(item[2][0], 6)))
-        offset = (i + 2 * j + k + basis_index) % 4
-        chosen = (order[offset], order[(offset + 1) % 4])
-        for distance, _, vector in chosen:
+        by_neighbor = {other: (distance, vector)
+                       for distance, other, vector in neighbors[index]}
+        for other in sorted(outgoing[index]):
+            distance, vector = by_neighbor[other]
             positions.append(_add(point, _scale(vector, bond / distance)))
             species.append("H")
     return IceConfiguration(name, tuple(positions), tuple(species), cell)  # type: ignore[arg-type]

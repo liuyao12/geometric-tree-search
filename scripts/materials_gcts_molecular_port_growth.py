@@ -56,6 +56,9 @@ class FrozenMolecularPortGrammar:
     training_connections: int
     pose_tolerance: float
     exclusion_distance: float
+    anchor_connection_distance: float
+    anchor_connection_tolerance: float
+    allowed_directional_occupancies: tuple[int, ...]
     material_label_used: bool = False
     target_used: bool = False
 
@@ -106,6 +109,8 @@ class MolecularAnchorWave:
     candidate_anchors: int
     accepted_anchors: int
     retained_orientation_hypotheses: int
+    rejected_nonunanimous_anchors: int
+    pruned_incompatible_orientations: int
     candidate_digest: str
 
 
@@ -157,6 +162,85 @@ def _anchor_site(prototype: ClusterPrototype, rotation: Matrix,
     return species, _add(matvec(rotation, point), translation)
 
 
+def _directed_connection_occupancy(
+    prototype: ClusterPrototype, occurrence: ClusterOccurrence,
+    neighbor_anchor: Vector,
+) -> int:
+    """Count short satellite sites directed along one anchor connection."""
+    sites = _render(prototype, occurrence.rotation, occurrence.translation)
+    anchor_index = _prototype_anchor(prototype)
+    anchor = sites[anchor_index][1]
+    axis = _sub(neighbor_anchor, anchor)
+    axis_length = math.dist(anchor, neighbor_anchor)
+    if axis_length <= 1e-10:
+        return 0
+    occupied = 0
+    for index, (_, point) in enumerate(sites):
+        if index == anchor_index:
+            continue
+        vector = _sub(point, anchor)
+        length = math.dist(point, anchor)
+        if length <= 1e-10 or length >= .55 * axis_length:
+            continue
+        cosine = sum(vector[axis_index] * axis[axis_index]
+                     for axis_index in range(3)) / (length * axis_length)
+        if cosine >= .94:
+            occupied += 1
+    return occupied
+
+
+def _propagate_connection_domains(
+    grammar: FrozenMolecularPortGrammar,
+    hypotheses: dict[str, dict[str, ClusterOccurrence]],
+    anchor_sites: dict[str, Site],
+) -> tuple[int, tuple[tuple[str, str], ...]]:
+    if not grammar.allowed_directional_occupancies:
+        return 0, ()
+    keys = sorted(hypotheses)
+    edges = []
+    for offset, left in enumerate(keys):
+        for right in keys[offset + 1:]:
+            distance = math.dist(anchor_sites[left][1], anchor_sites[right][1])
+            if abs(distance - grammar.anchor_connection_distance) <= grammar.anchor_connection_tolerance:
+                edges.append((left, right))
+    pruned = 0
+    inconsistent: set[tuple[str, str]] = set()
+    changed = True
+    while changed:
+        changed = False
+        for left, right in edges:
+            left_domain, right_domain = hypotheses[left], hypotheses[right]
+            if not left_domain or not right_domain:
+                continue
+            compatible_left = set()
+            compatible_right = set()
+            for left_key, left_occurrence in left_domain.items():
+                left_occupancy = _directed_connection_occupancy(
+                    grammar.prototype, left_occurrence, anchor_sites[right][1])
+                for right_key, right_occurrence in right_domain.items():
+                    right_occupancy = _directed_connection_occupancy(
+                        grammar.prototype, right_occurrence, anchor_sites[left][1])
+                    if left_occupancy + right_occupancy in grammar.allowed_directional_occupancies:
+                        compatible_left.add(left_key)
+                        compatible_right.add(right_key)
+            if not compatible_left or not compatible_right:
+                inconsistent.add((left, right))
+                continue
+            remove_left = set(left_domain) - compatible_left
+            remove_right = set(right_domain) - compatible_right
+            if remove_left:
+                for key in remove_left:
+                    del left_domain[key]
+                pruned += len(remove_left)
+                changed = True
+            if remove_right:
+                for key in remove_right:
+                    del right_domain[key]
+                pruned += len(remove_right)
+                changed = True
+    return pruned, tuple(sorted(inconsistent))
+
+
 def _port_orbit(prototype: ClusterPrototype, port: MolecularPort) -> tuple[tuple[Matrix, Vector], ...]:
     poses = {}
     for parent_symmetry in prototype.proper_symmetries:
@@ -192,7 +276,19 @@ def fit_molecular_port_grammar(
             molecule.occurrence_id, prototype, sites, tolerance=pose_tolerance))
 
     grouped: dict[tuple[int, ...], list[tuple[Matrix, Vector]]] = {}
+    anchor_distances = []
+    directional_occupancies = []
     for connection in cover.connections:
+        first_occurrence = occurrences[connection.components[0]]
+        second_occurrence = occurrences[connection.components[1]]
+        first_anchor = _anchor_site(
+            prototype, first_occurrence.rotation, first_occurrence.translation)[1]
+        second_anchor = _anchor_site(
+            prototype, second_occurrence.rotation, second_occurrence.translation)[1]
+        anchor_distances.append(math.dist(first_anchor, second_anchor))
+        directional_occupancies.append(
+            _directed_connection_occupancy(prototype, first_occurrence, second_anchor)
+            + _directed_connection_occupancy(prototype, second_occurrence, first_anchor))
         for parent_index, child_index in (connection.components,
                                           tuple(reversed(connection.components))):
             parent, child = occurrences[parent_index], occurrences[child_index]
@@ -211,11 +307,17 @@ def fit_molecular_port_grammar(
                   for index, (key, poses) in enumerate(retained))
     if not ports:
         raise ValueError("no recurrent molecular connection port was learned")
+    anchor_distance = sorted(anchor_distances)[len(anchor_distances) // 2]
+    anchor_tolerance = max(.08, max(abs(value - anchor_distance)
+                                    for value in anchor_distances) + pose_tolerance)
     return FrozenMolecularPortGrammar(
         prototype=prototype, molecular_signature=representative.signature,
         ports=ports, training_molecules=len(occurrences),
         training_connections=len(cover.connections), pose_tolerance=pose_tolerance,
-        exclusion_distance=exclusion_distance)
+        exclusion_distance=exclusion_distance,
+        anchor_connection_distance=anchor_distance,
+        anchor_connection_tolerance=anchor_tolerance,
+        allowed_directional_occupancies=tuple(sorted(set(directional_occupancies))))
 
 
 def recognize_seed_molecules(
@@ -386,6 +488,8 @@ def execute_molecular_anchor_growth(
     maximum_hypotheses_per_anchor: int = 32,
     anchor_tolerance: float = .06,
     anchor_exclusion_distance: float = 1.5,
+    require_parent_domain_unanimity: bool = False,
+    enforce_learned_connection_occupancy: bool = False,
 ) -> MolecularAnchorGrowthTrace:
     """Grow shared molecular anchors while retaining decoration alternatives.
 
@@ -411,8 +515,9 @@ def execute_molecular_anchor_growth(
     next_occurrence_id = len(seed_occurrences)
     for wave_index in range(maximum_waves):
         proposals: dict[str, dict[str, tuple[ClusterOccurrence, int]]] = {}
-        for alternatives in hypotheses.values():
-            for parent in alternatives.values():
+        proposal_parents: dict[str, dict[str, set[str]]] = {}
+        for parent_anchor_key, alternatives in hypotheses.items():
+            for parent_pose_key, parent in alternatives.items():
                 for port in grammar.ports:
                     for relative_rotation, relative_translation in _port_orbit(grammar.prototype, port):
                         rotation = matmul(parent.rotation, relative_rotation)
@@ -435,6 +540,21 @@ def execute_molecular_anchor_growth(
                         prior = proposals.setdefault(anchor_key, {}).get(pose_key)
                         support = port.observations + (prior[1] if prior else 0)
                         proposals[anchor_key][pose_key] = (occurrence, support)
+                        proposal_parents.setdefault(anchor_key, {}).setdefault(
+                            parent_anchor_key, set()).add(parent_pose_key)
+        rejected_nonunanimous = 0
+        if require_parent_domain_unanimity:
+            admitted = {}
+            for anchor_key, alternatives in proposals.items():
+                unanimous = any(
+                    len(parent_poses) == len(hypotheses[parent_anchor_key])
+                    for parent_anchor_key, parent_poses in
+                    proposal_parents.get(anchor_key, {}).items())
+                if unanimous:
+                    admitted[anchor_key] = alternatives
+                else:
+                    rejected_nonunanimous += 1
+            proposals = admitted
         ordered_anchors = sorted(proposals)
         candidate_digest = hashlib.sha256(json.dumps(
             [(key, sorted(proposals[key])) for key in ordered_anchors],
@@ -452,7 +572,8 @@ def execute_molecular_anchor_growth(
             accepted_points.append(anchor[1])
         if not accepted:
             waves.append(MolecularAnchorWave(
-                wave_index + 1, len(proposals), 0, 0, candidate_digest))
+                wave_index + 1, len(proposals), 0, 0,
+                rejected_nonunanimous, 0, candidate_digest))
             break
         retained = 0
         for anchor_key in accepted:
@@ -470,9 +591,17 @@ def execute_molecular_anchor_growth(
             exemplar = next(iter(alternatives.values()))
             anchor_sites[anchor_key] = _anchor_site(
                 grammar.prototype, exemplar.rotation, exemplar.translation)
+        if enforce_learned_connection_occupancy:
+            pruned_orientations, inconsistent_edges = _propagate_connection_domains(
+                grammar, hypotheses, anchor_sites)
+            if inconsistent_edges:
+                raise ValueError(
+                    "learned molecular connection occupancy emptied an orientation domain")
+        else:
+            pruned_orientations = 0
         waves.append(MolecularAnchorWave(
             wave_index + 1, len(proposals), len(accepted), retained,
-            candidate_digest))
+            rejected_nonunanimous, pruned_orientations, candidate_digest))
     new_keys = sorted(set(hypotheses) - seed_keys)
     counts = tuple(len(hypotheses[key]) for key in new_keys)
     return MolecularAnchorGrowthTrace(
