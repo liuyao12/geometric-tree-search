@@ -649,11 +649,11 @@ staged and focused `p9-42947` runs produce twenty-two 79-copy, nine 80-copy,
 and five 81-copy radius-four states. All 36 patches independently verify;
 exact radius-five GCTS rejects them in 44 aggregate nodes and grows the
 symmetry-closed cut set to 108 clauses. Nine lightweight solves time out.
-Adding
-eager one-step coverability removes the immediate-dead-cell proposals but all
-five 60-second solver attempts time out without SAT or UNSAT. Thus the minimum
-bound materially broadens proposal supply, while eager coverability remains too
-expensive and the 79-plus-copy space remains unexhausted. See
+Adding eager one-step coverability removes the immediate-dead-cell proposals,
+but the original edge-CNF encoding's five 60-second solver attempts time out
+without SAT or UNSAT. Thus the minimum bound materially broadens proposal
+supply, while that eager encoding remains too expensive and the 79-plus-copy
+space remains unexhausted. See
 `data/polycube-p9-42947-high-copy-cegar-2026-08-21.json`.
 
 Verified smaller coronas can also be supplied as an optional proposal-ordering
@@ -765,6 +765,8 @@ counterexample-guided pair:
 node scripts/screen-polycube-corona-z3-cegar.mjs \
   --id=p9-42947 --outer-layer=4 --inner-layer=5 \
   --iterations=50 --max-placements=64 --symmetry-clauses=true \
+  --learn-cell-coverability=true \
+  --lookahead-conflict-encoding=grouped-pb \
   --learn-pair-coverability=true --pair-orbit-limit=2 \
   --pair-encoding=witness-cnf
 ```
@@ -775,6 +777,13 @@ timeout. Imported clauses make a final UNSAT result conditional until their
 continuation proofs are independently replayed, and a copy-count bound can
 only certify exhaustion of that bounded stratum. A low-copy radius-two to
 three positive control recovers a verified witness after 17 dead proposals.
+When continuation identifies an immediately unfillable next-ring cell,
+`--learn-cell-coverability` adds that cell's full root-symmetry orbit as an
+exact outer-solver obligation. This is stronger than its blocker clause but
+much smaller than eagerly constraining the whole next ring. The `grouped-pb`
+conflict encoding replaces one implication per conflicting outer/lookahead
+placement pair with one equivalent pseudo-Boolean implication per outer
+placement; `edge-cnf` remains available as the baseline.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

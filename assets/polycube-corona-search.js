@@ -44,6 +44,21 @@ export function polycubePlacementClauseOrbitKeys(voxels, placementKeys, options 
   );
 }
 
+export function polycubeCellOrbitKeys(voxels, cellKey, options = {}) {
+  const cell = cellOf(String(cellKey));
+  if (cell.length !== 3 || cell.some(value => !Number.isInteger(value))) return [];
+  const cells = new Set();
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    cells.add([0, 1, 2].map(axis =>
+      symmetry.matrix[axis][0] * cell[0]
+      + symmetry.matrix[axis][1] * cell[1]
+      + symmetry.matrix[axis][2] * cell[2]
+      + symmetry.translation[axis]
+    ).join(","));
+  }
+  return [...cells].sort();
+}
+
 export function polycubeCellPairOrbitKeys(voxels, pairKeys, options = {}) {
   if (!Array.isArray(pairKeys) || pairKeys.length !== 2) return [];
   const cells = pairKeys.map(key => cellOf(String(key)));

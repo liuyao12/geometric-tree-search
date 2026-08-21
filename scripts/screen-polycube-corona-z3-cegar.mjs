@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import { polycubeKey } from "../assets/polycube-enumerator.js";
 import {
+  polycubeCellOrbitKeys,
   polycubeCellPairOrbitKeys,
   polycubeCoronaIncompatibleTargetPairs,
   polycubePlacementClauseOrbitKeys,
@@ -59,11 +60,17 @@ const progressEvery = integerArg("progress-every", 1, 1);
 const symmetryClauses = booleanArg("symmetry-clauses", true);
 const continueOnZ3Unknown = booleanArg("continue-on-z3-unknown", true);
 const requireNextLayerCoverability = booleanArg("require-next-layer-coverability", false);
+const learnCellCoverability = booleanArg("learn-cell-coverability", false);
 const learnPairCoverability = booleanArg("learn-pair-coverability", false);
+const cellOrbitLimit = integerArg("cell-orbit-limit", 0, 0);
 const pairOrbitLimit = integerArg("pair-orbit-limit", 0, 0);
 const pairEncoding = args.get("pair-encoding") ?? "dnf";
 if (!["dnf", "choice-cnf", "witness-cnf"].includes(pairEncoding)) {
   throw new Error("--pair-encoding must be dnf, choice-cnf, or witness-cnf");
+}
+const lookaheadConflictEncoding = args.get("lookahead-conflict-encoding") ?? "edge-cnf";
+if (!["edge-cnf", "grouped-pb"].includes(lookaheadConflictEncoding)) {
+  throw new Error("--lookahead-conflict-encoding must be edge-cnf or grouped-pb");
 }
 const rootSymmetryBreaking = booleanArg("root-symmetry-breaking", false);
 const python = args.get("python") ?? "python3";
@@ -75,8 +82,12 @@ const initialClauseReport = args.get("initial-clause-report")
 const initialPairReport = args.get("initial-pair-report")
   ? resolve(args.get("initial-pair-report"))
   : null;
+const initialCellReport = args.get("initial-cell-report")
+  ? resolve(args.get("initial-cell-report"))
+  : null;
 const pythonSolver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const clausePath = resolve(outputDirectory, "forbidden-clauses.json");
+const cellPath = resolve(outputDirectory, "cell-coverability.json");
 const pairPath = resolve(outputDirectory, "pair-coverability.json");
 mkdirSync(outputDirectory, { recursive: true });
 
@@ -85,6 +96,8 @@ const clauseKeys = new Set();
 const trials = [];
 const pairConstraints = [];
 const pairConstraintKeys = new Set();
+const cellConstraints = [];
+const cellConstraintKeys = new Set();
 let classification = "iteration_limit";
 let radiusWitness = null;
 let z3UnknownTrials = 0;
@@ -123,6 +136,20 @@ const addPairOrbit = rawPair => {
   }
   return added;
 };
+const addCell = rawCell => {
+  const key = String(rawCell);
+  if (cellConstraintKeys.has(key)) return false;
+  cellConstraintKeys.add(key);
+  cellConstraints.push(key);
+  return true;
+};
+const addCellOrbit = rawCell => {
+  let added = 0;
+  for (const cell of polycubeCellOrbitKeys(candidate.voxels, rawCell)) {
+    added += Number(addCell(cell));
+  }
+  return added;
+};
 if (initialClauseReport) {
   const initial = JSON.parse(readFileSync(initialClauseReport, "utf8"));
   const initialClauses = initial.learned_clauses ?? initial.clauses ?? initial;
@@ -132,6 +159,15 @@ if (initialClauseReport) {
   for (const clause of initialClauses) addClauseOrbit(clause);
 }
 const initialClauseCount = clauses.length;
+if (initialCellReport) {
+  const initial = JSON.parse(readFileSync(initialCellReport, "utf8"));
+  const initialCells = initial.cell_coverability_cells ?? initial.cells ?? initial;
+  if (!Array.isArray(initialCells)) {
+    throw new Error("--initial-cell-report must contain cell_coverability_cells or cells");
+  }
+  for (const cell of initialCells) addCellOrbit(cell);
+}
+const initialCellCount = cellConstraints.length;
 if (initialPairReport) {
   const initial = JSON.parse(readFileSync(initialPairReport, "utf8"));
   const initialPairs = initial.pair_coverability_pairs ?? initial.pairs ?? initial;
@@ -142,6 +178,8 @@ if (initialPairReport) {
 }
 const initialPairCount = pairConstraints.length;
 const effectiveNextLayerCoverability = requireNextLayerCoverability
+  || learnCellCoverability
+  || cellConstraints.length > 0
   || learnPairCoverability
   || pairConstraints.length > 0;
 
@@ -164,17 +202,22 @@ process.stdout.write(`${JSON.stringify({
   continue_on_z3_unknown: continueOnZ3Unknown,
   require_next_layer_coverability: requireNextLayerCoverability,
   effective_next_layer_coverability: effectiveNextLayerCoverability,
+  learn_cell_coverability: learnCellCoverability,
+  cell_orbit_limit: cellOrbitLimit,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   pair_encoding: pairEncoding,
+  lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   initial_clause_count: initialClauseCount,
+  initial_cell_coverability_constraints: initialCellCount,
   initial_pair_coverability_constraints: initialPairCount,
   output_directory: outputDirectory
 })}\n`);
 
 for (let iteration = 0; iteration < iterations; iteration += 1) {
   writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
+  writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
   writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
   const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
   const iterationSeed = randomSeed + iteration * seedStride;
@@ -185,12 +228,14 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     `--timeout-ms=${z3TimeoutMs}`,
     `--backend=${backend}`,
     `--random-seed=${iterationSeed}`,
+    `--lookahead-conflict-encoding=${lookaheadConflictEncoding}`,
     `--forbidden-clause-report=${clausePath}`,
     `--output=${witnessPath}`
   ];
   if (minPlacements !== null) solverArguments.push(`--min-placements=${minPlacements}`);
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
-  if (effectiveNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
+  if (requireNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
+  if (cellConstraints.length) solverArguments.push(`--cell-coverability-report=${cellPath}`);
   if (rootSymmetryBreaking) solverArguments.push("--root-symmetry-breaking");
   if (pairConstraints.length) {
     solverArguments.push(`--pair-coverability-report=${pairPath}`);
@@ -211,6 +256,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
         z3_milliseconds: z3TimeoutMs + z3ProcessGraceMs,
         reason_unknown: solved.error?.code ?? solved.signal ?? "process_timeout",
         clauses: clauses.length,
+        cell_coverability_constraints: cellConstraints.length,
         pair_coverability_constraints: pairConstraints.length
       };
       trials.push(trial);
@@ -307,6 +353,14 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     ? obstruction.fixed_placement_keys
     : proposal.corona.map(placementKey);
   const clausesAdded = addClauseOrbit(learnedClause);
+  let cellOrbitsAdded = 0;
+  let cellsAdded = 0;
+  if (learnCellCoverability && obstruction?.target_cell) {
+    if (!cellOrbitLimit || cellOrbitsAdded < cellOrbitLimit) {
+      cellsAdded = addCellOrbit(obstruction.target_cell.join(","));
+      if (cellsAdded) cellOrbitsAdded += 1;
+    }
+  }
   const incompatiblePairs = learnPairCoverability
     ? polycubeCoronaIncompatibleTargetPairs(candidate.voxels, proposal.corona, outerLayer)
     : [];
@@ -334,6 +388,10 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     learned_clause_size: learnedClause.length,
     clauses_added: clausesAdded,
     clauses: clauses.length,
+    dead_target_cell: obstruction?.target_cell?.join(",") ?? null,
+    cell_constraints_added: cellsAdded,
+    cell_orbits_added: cellOrbitsAdded,
+    cell_coverability_constraints: cellConstraints.length,
     incompatible_target_pairs: incompatiblePairs.length,
     pair_constraints_added: pairsAdded,
     pair_orbits_added: pairOrbitsAdded,
@@ -343,7 +401,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   if (iteration % progressEvery === 0 || iteration + 1 === iterations) {
     process.stdout.write(`${JSON.stringify({ type: "z3_cegar_trial", ...trial })}\n`);
   }
-  if (!clausesAdded && !pairsAdded) {
+  if (!clausesAdded && !cellsAdded && !pairsAdded) {
     classification = "duplicate_obstruction";
     break;
   }
@@ -352,6 +410,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
 // Keep resumable artifacts synchronized even when the final iteration learns
 // new obligations and exits before the next proposal write.
 writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
+writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
 writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
 
 const summary = {
@@ -369,9 +428,12 @@ const summary = {
   continue_on_z3_unknown: continueOnZ3Unknown,
   require_next_layer_coverability: requireNextLayerCoverability,
   effective_next_layer_coverability: effectiveNextLayerCoverability,
+  learn_cell_coverability: learnCellCoverability,
+  cell_orbit_limit: cellOrbitLimit,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   pair_encoding: pairEncoding,
+  lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   z3_unknown_trials: z3UnknownTrials,
   z3_timeout_ms: z3TimeoutMs,
@@ -382,6 +444,9 @@ const summary = {
   learned_clauses: clauses,
   learned_clause_count: clauses.length,
   initial_clause_count: initialClauseCount,
+  cell_coverability_cells: cellConstraints,
+  cell_coverability_constraint_count: cellConstraints.length,
+  initial_cell_coverability_constraints: initialCellCount,
   pair_coverability_pairs: pairConstraints,
   pair_coverability_constraint_count: pairConstraints.length,
   initial_pair_coverability_constraints: initialPairCount,

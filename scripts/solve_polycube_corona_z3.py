@@ -127,8 +127,10 @@ def main():
     parser.add_argument("--min-placements", type=int)
     parser.add_argument("--max-placements", type=int)
     parser.add_argument("--require-next-layer-coverability", action="store_true")
+    parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
     parser.add_argument("--pair-encoding", choices=("dnf", "choice-cnf", "witness-cnf"), default="dnf")
+    parser.add_argument("--lookahead-conflict-encoding", choices=("edge-cnf", "grouped-pb"), default="edge-cnf")
     parser.add_argument("--root-symmetry-breaking", action="store_true")
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--output")
@@ -201,6 +203,13 @@ def main():
     lookahead_raw_placement_count = 0
     lookahead_placement_count = 0
     lookahead_conflict_count = 0
+    lookahead_conflict_group_count = 0
+    cell_coverability = []
+    if args.cell_coverability_report:
+        cell_report = json.loads(Path(args.cell_coverability_report).read_text(encoding="utf-8"))
+        cell_coverability = cell_report.get("cells", cell_report) if isinstance(cell_report, dict) else cell_report
+        if not isinstance(cell_coverability, list):
+            raise ValueError("Cell coverability report must contain a cells list")
     pair_coverability = []
     if args.pair_coverability_report:
         pair_report = json.loads(Path(args.pair_coverability_report).read_text(encoding="utf-8"))
@@ -211,13 +220,31 @@ def main():
     pair_coverability_terms = 0
     pair_coverability_choice_variables = 0
     pair_coverability_incompatibilities = 0
-    if args.require_next_layer_coverability or pair_coverability:
+    cell_coverability_count = 0
+    if args.require_next_layer_coverability or cell_coverability or pair_coverability:
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
+        normalized_cells = set()
+        for cell_number, cell_key in enumerate(cell_coverability):
+            cell = parse_cell_key(cell_key)
+            if cell not in next_ring:
+                raise ValueError(f"Cell coverability entry {cell_number} is not a next-ring cell")
+            normalized_cells.add(cell)
+        normalized_pairs = set()
+        for pair_number, pair in enumerate(pair_coverability):
+            if not isinstance(pair, list) or len(pair) != 2:
+                raise ValueError(f"Pair coverability entry {pair_number} must contain two cell keys")
+            cells = tuple(sorted((parse_cell_key(pair[0]), parse_cell_key(pair[1]))))
+            if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
+                raise ValueError(f"Pair coverability entry {pair_number} is not a distinct next-ring cell pair")
+            normalized_pairs.add(cells)
+        constrained_cells = set(next_ring) if args.require_next_layer_coverability else set(normalized_cells)
+        for pair in normalized_pairs:
+            constrained_cells.update(pair)
         next_by_cell = {}
         for index, placement in enumerate(next_placements):
             for cell in placement:
-                if cell in next_ring:
+                if cell in constrained_cells:
                     next_by_cell.setdefault(cell, []).append(index)
         relevant_indices = sorted(set(itertools.chain.from_iterable(next_by_cell.values())))
         outer_index_by_placement = {placement: index for index, placement in enumerate(placements)}
@@ -233,7 +260,7 @@ def main():
             conflict_sets[index] = frozenset(conflicts)
         retained_by_cell = {}
         retained_indices = set()
-        for cell in sorted(next_ring):
+        for cell in sorted(constrained_cells):
             if pair_coverability:
                 retained = list(next_by_cell.get(cell, ()))
             else:
@@ -248,22 +275,27 @@ def main():
             retained_by_cell[cell] = retained
             retained_indices.update(retained)
         availability = {index: z3.Bool(f"a_{index}") for index in sorted(retained_indices)}
+        conflicts_by_outer = {}
         for index in sorted(retained_indices):
-            conflicts = conflict_sets[index]
-            for conflict in sorted(conflicts):
-                solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+            for conflict in sorted(conflict_sets[index]):
+                conflicts_by_outer.setdefault(conflict, []).append(index)
                 lookahead_conflict_count += 1
-        for cell in sorted(next_ring):
+        if args.lookahead_conflict_encoding == "grouped-pb":
+            for conflict, indices in sorted(conflicts_by_outer.items()):
+                solver.add(z3.PbLe(
+                    [(variables[conflict], len(indices))]
+                    + [(availability[index], 1) for index in indices],
+                    len(indices)
+                ))
+                lookahead_conflict_group_count += 1
+        else:
+            for conflict, indices in sorted(conflicts_by_outer.items()):
+                for index in indices:
+                    solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+        coverability_cells = set(next_ring) if args.require_next_layer_coverability else normalized_cells
+        for cell in sorted(coverability_cells):
             candidates = [availability[index] for index in retained_by_cell.get(cell, ())]
             solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
-        normalized_pairs = set()
-        for pair_number, pair in enumerate(pair_coverability):
-            if not isinstance(pair, list) or len(pair) != 2:
-                raise ValueError(f"Pair coverability entry {pair_number} must contain two cell keys")
-            cells = tuple(sorted((parse_cell_key(pair[0]), parse_cell_key(pair[1]))))
-            if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
-                raise ValueError(f"Pair coverability entry {pair_number} is not a distinct next-ring cell pair")
-            normalized_pairs.add(cells)
         placement_cell_sets = {
             index: frozenset(next_placements[index]) for index in relevant_indices
         }
@@ -331,7 +363,8 @@ def main():
             solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
             pair_coverability_terms += len(compatible_terms)
         pair_coverability_count = len(normalized_pairs)
-        lookahead_target_count = len(next_ring)
+        cell_coverability_count = len(coverability_cells)
+        lookahead_target_count = len(constrained_cells)
         lookahead_raw_placement_count = len(relevant_indices)
         lookahead_placement_count = len(retained_indices)
     forbidden_clauses = []
@@ -364,10 +397,13 @@ def main():
         "min_placements": args.min_placements,
         "max_placements": args.max_placements,
         "require_next_layer_coverability": args.require_next_layer_coverability,
+        "cell_coverability_constraints": cell_coverability_count,
         "lookahead_target_cells": lookahead_target_count,
         "lookahead_raw_placements": lookahead_raw_placement_count,
         "lookahead_placements": lookahead_placement_count,
         "lookahead_conflicts": lookahead_conflict_count,
+        "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
+        "lookahead_conflict_groups": lookahead_conflict_group_count,
         "pair_coverability_constraints": pair_coverability_count,
         "pair_coverability_terms": pair_coverability_terms,
         "pair_coverability_encoding": args.pair_encoding,
