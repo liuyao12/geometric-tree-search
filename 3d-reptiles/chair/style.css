@@ -221,7 +221,7 @@ h1 {
 .orientation-panel {
   position: absolute;
   z-index: 3;
-  top: 145px;
+  top: 125px;
   right: 20px;
   width: 190px;
   color: var(--muted);
@@ -230,7 +230,7 @@ h1 {
 .mode-control {
   display: grid;
   gap: 5px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .mode-control > span {
@@ -289,13 +289,26 @@ h1 {
   margin: 10px 0 3px;
 }
 
+#orientation-plot {
+  border-radius: 50%;
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+
+#orientation-plot:active { cursor: grabbing; }
+#orientation-plot:focus-visible { box-shadow: 0 0 0 2px rgba(29, 107, 98, .35); }
+#orientation-plot canvas { display: block; width: 100%; height: 100%; }
+#orientation-plot[hidden],
+#hierarchy-plot[hidden] { display: none; }
+
 .hierarchy-panel > p {
   margin-top: 13px;
 }
 
 .chair-color-filter {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 6px;
   margin: 13px 2px 4px;
 }
@@ -322,7 +335,78 @@ h1 {
   outline-offset: 3px;
 }
 
+.orientation-heading strong sub,
+.matrix-heading strong sub {
+  font-size: .58em;
+  vertical-align: -.22em;
+}
+
+.orientation-heading strong .number-field,
+.matrix-heading strong .number-field {
+  font-family: inherit;
+  font-style: normal;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.orientation-matrix {
+  margin-top: 10px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0 7px;
+}
+
+.matrix-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.matrix-heading span {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.matrix-heading strong {
+  color: var(--ink);
+  font: 400 12px/1.2 Georgia, "Times New Roman", serif;
+}
+
+.matrix-values {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(18px, auto));
+  gap: 2px 7px;
+  width: max-content;
+  margin: 8px auto 1px;
+  padding: 2px 9px;
+  color: var(--ink);
+  text-align: right;
+  font: 400 13px/1.15 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix-values::before,
+.matrix-values::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.matrix-values::before { left: 0; border-left: 1px solid var(--ink); }
+.matrix-values::after { right: 0; border-right: 1px solid var(--ink); }
+
 .scene-shell.is-search .chair-color-filter { display: none; }
+.scene-shell.is-search .orientation-matrix { display: none; }
 .scene-shell.is-search #hierarchy-plot {
   width: 150px;
   margin-right: auto;
@@ -334,6 +418,7 @@ h1 {
   line-height: 1.35;
 }
 .scene-shell.is-search .scene-instruction { display: none; }
+.scene-shell:not(.is-search) .scene-instruction { display: none; }
 
 .search-stats {
   display: grid;

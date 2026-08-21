@@ -19,6 +19,10 @@ const tileValue = document.getElementById("tile-value");
 const generationLabel = document.getElementById("generation-label");
 const tileLabel = document.getElementById("tile-label");
 const hierarchyPlot = document.getElementById("hierarchy-plot");
+const orientationPlot = document.getElementById("orientation-plot");
+const orientationPanel = document.querySelector(".orientation-panel");
+const orientationMatrix = document.getElementById("orientation-matrix");
+const matrixValues = document.getElementById("matrix-values");
 const chairColorFilter = document.getElementById("chair-color-filter");
 const tileSelect = document.getElementById("tile-select");
 const chairModeSelect = document.getElementById("chair-mode-select");
@@ -71,6 +75,268 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 viewport.appendChild(renderer.domElement);
 
+const orientationScene = new THREE.Scene();
+const orientationCamera = new THREE.PerspectiveCamera(34, 1, 0.1, 20);
+orientationCamera.up.set(0, 0, 1);
+orientationCamera.position.set(2.25, 1.65, 2.15);
+const orientationRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+orientationRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+orientationRenderer.setClearColor(0x000000, 0);
+orientationRenderer.outputColorSpace = THREE.SRGBColorSpace;
+orientationPlot.appendChild(orientationRenderer.domElement);
+
+const orientationControls = new OrbitControls(orientationCamera, orientationRenderer.domElement);
+orientationControls.enableDamping = true;
+orientationControls.dampingFactor = 0.065;
+orientationControls.enablePan = false;
+orientationControls.minDistance = 2.2;
+orientationControls.maxDistance = 5;
+
+function makeOrientationCircle() {
+  const points = Array.from({ length: 128 }, (_, index) => {
+    const angle = (index / 128) * Math.PI * 2;
+    return new THREE.Vector3(Math.cos(angle), Math.sin(angle), 0);
+  });
+  const circle = new THREE.LineLoop(
+    new THREE.BufferGeometry().setFromPoints(points),
+    new THREE.LineBasicMaterial({
+      color: 0x17201e,
+      transparent: true,
+      opacity: 0.52,
+      depthWrite: false,
+      depthTest: false
+    })
+  );
+  circle.renderOrder = 3;
+  orientationScene.add(circle);
+  return circle;
+}
+
+const orientationBoundary = makeOrientationCircle();
+const orientationBoundaryView = new THREE.Vector3();
+
+function updateOrientationBoundary() {
+  orientationBoundaryView.copy(orientationCamera.position).sub(orientationControls.target);
+  const cameraDistance = orientationBoundaryView.length();
+  const planeOffset = 1 / cameraDistance;
+  orientationBoundary.position.copy(orientationControls.target).addScaledVector(
+    orientationBoundaryView,
+    1 / (cameraDistance * cameraDistance)
+  );
+  orientationBoundary.quaternion.copy(orientationCamera.quaternion);
+  orientationBoundary.scale.setScalar(Math.sqrt(1 - planeOffset * planeOffset));
+}
+
+function determinant3(rows) {
+  return rows[0][0] * (rows[1][1] * rows[2][2] - rows[1][2] * rows[2][1])
+    - rows[0][1] * (rows[1][0] * rows[2][2] - rows[1][2] * rows[2][0])
+    + rows[0][2] * (rows[1][0] * rows[2][1] - rows[1][1] * rows[2][0]);
+}
+
+function chairRotationRepresentatives() {
+  const permutations = [
+    [0, 1, 2], [0, 2, 1], [1, 0, 2],
+    [1, 2, 0], [2, 0, 1], [2, 1, 0]
+  ];
+  const candidates = [];
+  for (const permutation of permutations) {
+    for (let mask = 0; mask < 8; mask += 1) {
+      const rows = Array.from({ length: 3 }, (_, row) => {
+        const values = [0, 0, 0];
+        values[permutation[row]] = (mask >> row) & 1 ? -1 : 1;
+        return values;
+      });
+      if (determinant3(rows) !== 1) continue;
+      const key = rows.reduce((value, row, axis) => (
+        value + (row.reduce((sum, entry) => sum + entry, 0) > 0 ? 1 << axis : 0)
+      ), 0);
+      const matrix = new THREE.Matrix4().set(
+        rows[0][0], rows[0][1], rows[0][2], 0,
+        rows[1][0], rows[1][1], rows[1][2], 0,
+        rows[2][0], rows[2][1], rows[2][2], 0,
+        0, 0, 0, 1
+      );
+      const quaternion = new THREE.Quaternion().setFromRotationMatrix(matrix).normalize();
+      if (quaternion.w < 0) quaternion.set(
+        -quaternion.x,
+        -quaternion.y,
+        -quaternion.z,
+        -quaternion.w
+      );
+      candidates.push({ key, rows, quaternion, angle: 2 * Math.acos(THREE.MathUtils.clamp(quaternion.w, -1, 1)) });
+    }
+  }
+  const representatives = new Map();
+  for (const candidate of candidates) {
+    const previous = representatives.get(candidate.key);
+    const signature = candidate.rows.flat().join(",");
+    const previousSignature = previous?.rows.flat().join(",") ?? "";
+    if (!previous || candidate.angle < previous.angle - 1e-9
+      || (Math.abs(candidate.angle - previous.angle) < 1e-9 && signature < previousSignature)) {
+      representatives.set(candidate.key, candidate);
+    }
+  }
+  return representatives;
+}
+
+const CHAIR_ROTATIONS = chairRotationRepresentatives();
+
+function rotationBallPoint(rotation) {
+  const { quaternion, angle } = rotation;
+  if (angle < 1e-9) return new THREE.Vector3(0, 0, 0);
+  const sine = Math.sin(angle / 2);
+  return new THREE.Vector3(quaternion.x, quaternion.y, quaternion.z)
+    .divideScalar(sine)
+    .multiplyScalar(angle / Math.PI);
+}
+
+const orientationPointGeometry = new THREE.BufferGeometry();
+const orientationPointMaterial = new THREE.ShaderMaterial({
+  transparent: true,
+  depthWrite: false,
+  depthTest: true,
+  uniforms: { pixelRatio: { value: Math.min(window.devicePixelRatio, 2) } },
+  vertexShader: `
+    attribute vec3 color;
+    attribute float pointSize;
+    varying vec3 pointColor;
+    uniform float pixelRatio;
+    void main() {
+      pointColor = color;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = pointSize * pixelRatio;
+    }
+  `,
+  fragmentShader: `
+    varying vec3 pointColor;
+    void main() {
+      vec2 centered = gl_PointCoord - vec2(0.5);
+      if (dot(centered, centered) > 0.25) discard;
+      gl_FragColor = vec4(pointColor, 1.0);
+    }
+  `
+});
+const orientationPoints = new THREE.Points(orientationPointGeometry, orientationPointMaterial);
+orientationPoints.renderOrder = 3;
+orientationScene.add(orientationPoints);
+
+const orientationSelectionMarker = new THREE.Points(
+  new THREE.BufferGeometry().setFromPoints([new THREE.Vector3()]),
+  new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    depthTest: false,
+    uniforms: { pixelRatio: { value: Math.min(window.devicePixelRatio, 2) } },
+    vertexShader: `
+      uniform float pixelRatio;
+      void main() {
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        gl_PointSize = 28.0 * pixelRatio;
+      }
+    `,
+    fragmentShader: `
+      void main() {
+        float radius = length(gl_PointCoord - vec2(0.5));
+        float outer = 1.0 - smoothstep(0.44, 0.5, radius);
+        float inner = smoothstep(0.33, 0.38, radius);
+        float alpha = outer * inner * 0.82;
+        if (alpha < 0.01) discard;
+        gl_FragColor = vec4(0.09, 0.125, 0.118, alpha);
+      }
+    `
+  })
+);
+orientationSelectionMarker.visible = false;
+orientationSelectionMarker.renderOrder = 4;
+orientationScene.add(orientationSelectionMarker);
+let orientationPointKeys = [];
+
+function orientationCounts(leaves) {
+  const counts = new Map();
+  for (const leaf of leaves) {
+    const key = orientationIndex(leaf.missingCorner);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return counts;
+}
+
+function updateSelectedOrientation(key) {
+  selectedChairOrientation = selectedChairOrientation === key ? null : key;
+  updateChairColorButtons();
+  refreshChairHighlight(currentVisual);
+  if (transition) {
+    refreshChairHighlight(transition.from);
+    refreshChairHighlight(transition.to);
+  }
+  const rotation = selectedChairOrientation === null ? null : CHAIR_ROTATIONS.get(selectedChairOrientation);
+  orientationSelectionMarker.visible = Boolean(rotation);
+  orientationMatrix.hidden = !rotation;
+  orientationPanel.classList.toggle("has-selection", Boolean(rotation));
+  if (rotation) {
+    orientationSelectionMarker.geometry.setFromPoints([rotationBallPoint(rotation)]);
+    matrixValues.replaceChildren(...rotation.rows.flat().map((value) => {
+      const cell = document.createElement("span");
+      cell.textContent = String(value).replace("-", "−");
+      return cell;
+    }));
+  }
+}
+
+function updateOrientationBall() {
+  if (!currentInflationState) return;
+  const counts = orientationCounts(currentInflationState.leaves);
+  const largest = Math.max(...counts.values());
+  orientationPointKeys = [...counts.keys()].sort((left, right) => left - right);
+  const positions = [];
+  const colors = [];
+  const sizes = [];
+  for (const key of orientationPointKeys) {
+    const point = rotationBallPoint(CHAIR_ROTATIONS.get(key));
+    positions.push(point.x, point.y, point.z);
+    const color = new THREE.Color(ORIENTATION_COLORS[key]);
+    colors.push(color.r, color.g, color.b);
+    sizes.push(8 + 10 * Math.sqrt(counts.get(key) / largest));
+  }
+  orientationPointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  orientationPointGeometry.setAttribute("pointSize", new THREE.Float32BufferAttribute(sizes, 1));
+  orientationPointGeometry.computeBoundingSphere();
+  if (mode === "inflation") panelCount.textContent = String(counts.size);
+  if (selectedChairOrientation !== null && !counts.has(selectedChairOrientation)) updateSelectedOrientation(selectedChairOrientation);
+}
+
+const orientationRaycaster = new THREE.Raycaster();
+orientationRaycaster.params.Points.threshold = 0.12;
+const orientationPointer = new THREE.Vector2();
+
+orientationPlot.addEventListener("click", (event) => {
+  if (mode !== "inflation") return;
+  const rect = orientationPlot.getBoundingClientRect();
+  orientationPointer.set(
+    ((event.clientX - rect.left) / rect.width) * 2 - 1,
+    -((event.clientY - rect.top) / rect.height) * 2 + 1
+  );
+  orientationRaycaster.setFromCamera(orientationPointer, orientationCamera);
+  const hit = orientationRaycaster.intersectObject(orientationPoints, false)[0];
+  if (hit) updateSelectedOrientation(orientationPointKeys[hit.index]);
+});
+
+orientationPlot.addEventListener("keydown", (event) => {
+  if (mode !== "inflation" || !["ArrowLeft", "ArrowRight", "Escape"].includes(event.key)) return;
+  event.preventDefault();
+  if (event.key === "Escape") {
+    if (selectedChairOrientation !== null) updateSelectedOrientation(selectedChairOrientation);
+    return;
+  }
+  const currentIndex = orientationPointKeys.indexOf(selectedChairOrientation);
+  const direction = event.key === "ArrowRight" ? 1 : -1;
+  const nextIndex = currentIndex < 0
+    ? (direction > 0 ? 0 : orientationPointKeys.length - 1)
+    : (currentIndex + direction + orientationPointKeys.length) % orientationPointKeys.length;
+  if (selectedChairOrientation !== null) updateSelectedOrientation(selectedChairOrientation);
+  updateSelectedOrientation(orientationPointKeys[nextIndex]);
+});
+
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
@@ -122,13 +388,87 @@ function chairLeaves(level, origin = [0, 0, 0], missingCorner = [1, 1, 1], path 
   return leaves;
 }
 
+function randomRetainedChildIndex() {
+  return Math.floor(Math.random() * CANONICAL_CHILDREN.length);
+}
+
+function childSupertile(parent, childIndex) {
+  const [canonicalOrigin, canonicalMissing] = CANONICAL_CHILDREN[childIndex];
+  const childSize = parent.size / 2;
+  const [relativeOrigin, missingCorner] = transformedChild(
+    canonicalOrigin,
+    canonicalMissing,
+    parent.missingCorner,
+    childSize,
+    parent.size
+  );
+  return {
+    origin: add(parent.origin, relativeOrigin),
+    missingCorner,
+    size: childSize
+  };
+}
+
+function parentContainingChild(current, retainedChildIndex) {
+  const [canonicalOrigin, canonicalMissing] = CANONICAL_CHILDREN[retainedChildIndex];
+  const parentMissing = canonicalMissing.map((value, axis) => (
+    value === current.missingCorner[axis] ? 1 : 0
+  ));
+  const parentSize = current.size * 2;
+  const [relativeOrigin] = transformedChild(
+    canonicalOrigin,
+    canonicalMissing,
+    parentMissing,
+    current.size,
+    parentSize
+  );
+  return {
+    origin: current.origin.map((value, axis) => value - relativeOrigin[axis]),
+    missingCorner: parentMissing,
+    size: parentSize
+  };
+}
+
+function initialInflationState() {
+  return {
+    generation: 0,
+    origin: [0, 0, 0],
+    missingCorner: [1, 1, 1],
+    size: 2,
+    leaves: [{ origin: [0, 0, 0], missingCorner: [1, 1, 1], path: [] }],
+    retainedChildIndex: null
+  };
+}
+
+function expandInflationState(current, retainedChildIndex) {
+  const parent = parentContainingChild(current, retainedChildIndex);
+  const leaves = [];
+  for (let childIndex = 0; childIndex < CANONICAL_CHILDREN.length; childIndex += 1) {
+    if (childIndex === retainedChildIndex) {
+      leaves.push(...current.leaves.map((leaf) => ({ ...leaf, path: [...leaf.path, childIndex] })));
+      continue;
+    }
+    const child = childSupertile(parent, childIndex);
+    leaves.push(...chairLeaves(
+      current.generation,
+      child.origin,
+      child.missingCorner,
+      [childIndex]
+    ));
+  }
+  return {
+    ...parent,
+    generation: current.generation + 1,
+    leaves,
+    retainedChildIndex
+  };
+}
+
 function orientationIndex(missingCorner) {
   return missingCorner[0] + 2 * missingCorner[1] + 4 * missingCorner[2];
 }
 
-const chairOrientationKeys = [...new Set(
-  CANONICAL_CHILDREN.map(([, missingCorner]) => orientationIndex(missingCorner))
-)];
+const chairOrientationKeys = Array.from({ length: 8 }, (_, index) => index);
 let selectedChairOrientation = null;
 
 function updateChairColorButtons() {
@@ -150,13 +490,7 @@ for (const key of chairOrientationKeys) {
   button.setAttribute("aria-pressed", "false");
   button.title = `Missing corner ${bits}`;
   button.addEventListener("click", () => {
-    selectedChairOrientation = selectedChairOrientation === key ? null : key;
-    updateChairColorButtons();
-    refreshChairHighlight(currentVisual);
-    if (transition) {
-      refreshChairHighlight(transition.from);
-      refreshChairHighlight(transition.to);
-    }
+    updateSelectedOrientation(key);
   });
   chairColorFilter.appendChild(button);
 }
@@ -194,9 +528,9 @@ function makeChairGeometry(leaf) {
   return geometry;
 }
 
-function makeParentOutline(size) {
+function makeParentOutline(size, missingCorner, origin) {
   const half = size / 2;
-  const surface = makeChairGeometry({ origin: [0, 0, 0], missingCorner: [1, 1, 1] });
+  const surface = makeChairGeometry({ origin: [0, 0, 0], missingCorner });
   surface.scale(half, half, half);
   const geometry = new THREE.EdgesGeometry(surface, 1);
   surface.dispose();
@@ -209,14 +543,15 @@ function makeParentOutline(size) {
     gapSize: size * 0.012
   });
   const outline = new THREE.LineSegments(geometry, material);
+  outline.position.set(...origin);
   outline.computeLineDistances();
   outline.renderOrder = 3;
   return { outline, geometry, material };
 }
 
-function makeVisual(level) {
-  const leaves = chairLeaves(level);
-  const size = 2 ** (level + 1);
+function makeVisual(state) {
+  const { leaves, size } = state;
+  const level = state.generation;
   const group = new THREE.Group();
   const materials = [];
   const geometries = [];
@@ -274,8 +609,9 @@ function makeVisual(level) {
     materials.push(faceMaterial, edgeMaterial);
     chairs.push({ orientation, faceMaterial, edgeMaterial });
   }
-  const parent = makeParentOutline(size);
-  group.position.set(-size / 2, -size / 2, -size / 2);
+  const parent = makeParentOutline(size, state.missingCorner, state.origin);
+  // Keep the original chair fixed in world space; new copies grow around it.
+  group.position.set(-1, -1, -1);
   group.add(parent.outline);
   materials.push(parent.material);
   geometries.push(parent.geometry);
@@ -283,6 +619,8 @@ function makeVisual(level) {
   return {
     group,
     level,
+    state,
+    size,
     leaves,
     chairs,
     materials,
@@ -423,7 +761,7 @@ function updateReadout() {
     generationLabel.textContent = "inflations";
     generationValue.textContent = String(generation);
     tileLabel.textContent = "chairs";
-    tileValue.textContent = (8 ** generation).toLocaleString();
+    tileValue.textContent = currentInflationState.leaves.length.toLocaleString();
   }
 }
 
@@ -448,19 +786,27 @@ function updateActionButtons() {
   }
 }
 
-let generation = 0;
-let mode = "search";
+const inflationStates = [initialInflationState()];
+inflationStates.push(expandInflationState(inflationStates[0], randomRetainedChildIndex()));
+let generation = 1;
+let currentInflationState = inflationStates[generation];
+let mode = "inflation";
 let growthState = createGrowthState(2);
 let autoRun = false;
-let currentVisual = makeSearchVisual(growthState);
+let currentVisual = makeVisual(currentInflationState);
 root.add(currentVisual.group);
+camera.position.copy(cameraDestinationForSize(currentVisual.size));
 let transition = null;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-sceneShell.classList.add("is-search");
+viewport.dataset.retainedChildren = String(currentInflationState.retainedChildIndex + 1);
 
 function updateModePanel() {
   const searching = mode === "search";
   sceneShell.classList.toggle("is-search", searching);
+  orientationPlot.hidden = searching;
+  hierarchyPlot.hidden = !searching;
+  if (searching) orientationMatrix.hidden = true;
+  else if (selectedChairOrientation !== null) orientationMatrix.hidden = false;
   if (searching) {
     panelKicker.textContent = "GCTS marking";
     hierarchyTitle.textContent = "depth 2";
@@ -472,19 +818,20 @@ function updateModePanel() {
     sceneInstruction.textContent = "Drag to orbit · colored tabs are exposed local sockets";
     hierarchyPlot.setAttribute("aria-label", "Live diagram of exposed local matching sockets in the chair search");
   } else {
-    panelKicker.textContent = "inflation rule";
-    hierarchyTitle.textContent = "× 2";
-    panelCount.textContent = "8";
-    panelCountLabel.textContent = "children";
-    scaleLeft.textContent = "parent";
-    scaleRight.textContent = "child addresses";
-    panelDescription.textContent = "Choose one of the seven colors to highlight every chair with that missing-corner orientation. The central child prevents the rule from being merely seven octants.";
+    panelKicker.textContent = "orientation ball";
+    hierarchyTitle.innerHTML = 'SO<sub>3</sub>(<span class="number-field">R</span>)';
+    panelCount.textContent = String(orientationCounts(currentInflationState.leaves).size);
+    panelCountLabel.textContent = "present";
+    scaleLeft.textContent = "identity";
+    scaleRight.textContent = "π boundary";
+    panelDescription.textContent = "Rotate the ball or select a dot to highlight that orientation in the nested patch. Dot area records the number of chairs present.";
     sceneInstruction.textContent = "Drag to orbit · scroll through transparent walls";
-    hierarchyPlot.setAttribute("aria-label", "Axonometric diagram of the eight child chairs and their missing-corner orientations");
+    orientationPlot.setAttribute("aria-label", "Rotatable solid axis-angle ball containing the chair orientations");
   }
   updateReadout();
   updateActionButtons();
   drawHierarchyPlot();
+  updateOrientationBall();
 }
 
 function cameraDestinationForSize(size) {
@@ -518,10 +865,26 @@ function swapVisual(nextVisual, duration, cameraDestination) {
 function showGeneration(targetGeneration) {
   if (transition || targetGeneration < 0 || targetGeneration > MAX_GENERATION || targetGeneration === generation) return;
   const direction = targetGeneration > generation ? 1 : -1;
-  const nextVisual = makeVisual(targetGeneration);
+  if (direction > 0) {
+    while (inflationStates.length <= targetGeneration) {
+      inflationStates.push(expandInflationState(
+        inflationStates[inflationStates.length - 1],
+        randomRetainedChildIndex()
+      ));
+    }
+  } else {
+    inflationStates.length = targetGeneration + 1;
+  }
+  currentInflationState = inflationStates[targetGeneration];
+  const nextVisual = makeVisual(currentInflationState);
   refreshChairHighlight(nextVisual);
   generation = targetGeneration;
+  viewport.dataset.retainedChildren = inflationStates
+    .slice(1)
+    .map((state) => String(state.retainedChildIndex + 1))
+    .join(",");
   updateReadout();
+  updateOrientationBall();
 
   const cameraOffset = camera.position.clone().sub(controls.target);
   const cameraDestination = controls.target.clone().add(cameraOffset.multiplyScalar(direction > 0 ? 2 : 0.5));
@@ -567,9 +930,9 @@ chairModeSelect.addEventListener("change", () => {
   autoRun = false;
   mode = chairModeSelect.value;
   disposeVisual(currentVisual);
-  currentVisual = mode === "search" ? makeSearchVisual(growthState) : makeVisual(generation);
+  currentVisual = mode === "search" ? makeSearchVisual(growthState) : makeVisual(currentInflationState);
   root.add(currentVisual.group);
-  camera.position.copy(cameraDestinationForSize(mode === "search" ? currentVisual.size : 2 ** (generation + 1)));
+  camera.position.copy(cameraDestinationForSize(currentVisual.size));
   updateModePanel();
 });
 
@@ -689,14 +1052,26 @@ function resize() {
   camera.updateProjectionMatrix();
 }
 
+function resizeOrientationBall() {
+  const width = Math.max(1, orientationPlot.clientWidth);
+  const height = Math.max(1, orientationPlot.clientHeight);
+  orientationRenderer.setSize(width, height, false);
+  orientationCamera.aspect = width / height;
+  orientationCamera.updateProjectionMatrix();
+}
+
 new ResizeObserver(resize).observe(viewport);
 new ResizeObserver(drawHierarchyPlot).observe(hierarchyPlot);
+new ResizeObserver(resizeOrientationBall).observe(orientationPlot);
 resize();
+resizeOrientationBall();
 drawHierarchyPlot();
 updateModePanel();
 
 function animate(time) {
   controls.update();
+  orientationControls.update();
+  updateOrientationBoundary();
   if (transition) {
     const raw = Math.min(1, (time - transition.start) / transition.duration);
     const eased = raw * raw * (3 - 2 * raw);
@@ -712,6 +1087,7 @@ function animate(time) {
     }
   }
   renderer.render(scene, camera);
+  if (mode === "inflation") orientationRenderer.render(orientationScene, orientationCamera);
   requestAnimationFrame(animate);
 }
 

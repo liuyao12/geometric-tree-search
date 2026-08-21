@@ -27,7 +27,7 @@
         <div class="title-block">
           <p class="kicker">Example 02 · chair heptacube</p>
           <h1 id="page-title">Chair growth</h1>
-          <p class="lede">Compare a prescribed inflation with a patch assembled one locally matched chair at a time.</p>
+          <p class="lede">Grow a randomly nested superchair, or assemble the marked tiling one legal local match at a time.</p>
         </div>
         <div class="tile-picker">
           <label for="tile-select">Choose tile</label>
@@ -58,27 +58,35 @@
           <label class="mode-control" for="chair-mode-select">
             <span>Construction</span>
             <select id="chair-mode-select">
-              <option value="search" selected>Local matching search</option>
-              <option value="inflation">Prescribed inflation</option>
+              <option value="inflation" selected>Nested inflation</option>
+              <option value="search">Tiling with markings</option>
             </select>
           </label>
           <div class="orientation-heading">
             <div>
-              <span id="panel-kicker">GCTS marking</span>
-              <strong id="hierarchy-title">depth 2</strong>
+              <span id="panel-kicker">orientation ball</span>
+              <strong id="hierarchy-title" aria-label="SO 3 over the real numbers">SO<sub>3</sub>(<span class="number-field">R</span>)</strong>
             </div>
             <div class="orientation-count">
-              <b id="panel-count">64</b>
-              <span id="panel-count-label">tile states</span>
+              <b id="panel-count">7</b>
+              <span id="panel-count-label">present</span>
             </div>
           </div>
-          <canvas id="hierarchy-plot" width="440" height="440" role="img" aria-label="Diagram of the active chair construction"></canvas>
+          <div id="orientation-plot" role="application" tabindex="0" aria-label="Rotatable solid axis-angle ball containing the chair orientations"></div>
+          <canvas id="hierarchy-plot" width="440" height="440" role="img" aria-label="Diagram of the active chair construction" hidden></canvas>
           <div class="orientation-scale" aria-hidden="true">
-            <span id="scale-left">seed</span>
-            <span id="scale-right">matched frontier</span>
+            <span id="scale-left">identity</span>
+            <span id="scale-right">π boundary</span>
           </div>
           <div id="chair-color-filter" class="chair-color-filter" aria-label="Highlight chairs by missing-corner color"></div>
-          <p id="panel-description">The search aligns complementary face sockets, checks every new contact, and rejects overlaps. No enclosing superchair is given to it.</p>
+          <section id="orientation-matrix" class="orientation-matrix" aria-labelledby="matrix-title" hidden>
+            <div class="matrix-heading">
+              <span>selected element</span>
+              <strong id="matrix-title"><i>SO</i><sub>3</sub>(<span class="number-field">R</span>)</strong>
+            </div>
+            <div id="matrix-values" class="matrix-values" aria-label="Three by three rotation matrix"></div>
+          </section>
+          <p id="panel-description">Rotate the ball or select a dot to highlight that orientation in the nested patch. Dot area records the number of chairs present.</p>
           <dl id="search-stats" class="search-stats" aria-live="polite">
             <div><dt>frontier</dt><dd id="frontier-value">0</dd></div>
             <div><dt>backtracks</dt><dd id="backtrack-value">0</dd></div>
@@ -87,12 +95,12 @@
 
         <p id="scene-instruction" class="scene-instruction">Drag to orbit · colored tabs are exposed local sockets</p>
         <div class="scene-actions">
-          <button id="back-button" class="scene-button back-button" type="button" disabled>
+          <button id="back-button" class="scene-button back-button" type="button">
             <b aria-hidden="true">↙</b>
-            <span>Remove last</span>
+            <span>Go back</span>
           </button>
           <button id="inflate-button" class="scene-button substitute-button" type="button">
-            <span>Place next chair</span>
+            <span>Apply one more inflation</span>
             <b aria-hidden="true">↗</b>
           </button>
           <button id="run-button" class="scene-button run-button" type="button">
@@ -109,7 +117,7 @@
         <p class="kicker">The rule</p>
         <h2 id="rule-title">One concave solid.<br>Eight smaller chairs.</h2>
         <p class="body-large">
-          Remove one corner from a <span class="math">2 × 2 × 2</span> cube and regard the boundary of the remaining volume as one concave polyhedron. Inflate that chair by two. The enlarged solid admits an exact cover by eight congruent chairs, including one translated central child. Repeating the rule builds a nested three-dimensional hierarchy.
+          Remove one corner from a <span class="math">2 × 2 × 2</span> cube and regard the boundary of the remaining volume as one concave polyhedron. Inflate that chair by two. The enlarged solid admits an exact cover by eight congruent chairs. At every step, any one of those eight child addresses can be chosen for the existing superchair; seven congruent copies then grow around it. Going back and inflating again can therefore choose a different continuation.
         </p>
         <div class="turn-diagram chair-facts" aria-label="Chair inflation facts">
           <div class="turn-card">
