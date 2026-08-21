@@ -359,7 +359,22 @@ h1 {
   color: var(--ink);
 }
 
-.matrix-factor { font: 400 15px/1 Georgia, "Times New Roman", serif; }
+.matrix-factor {
+  display: inline-grid;
+  min-width: 21px;
+  align-items: center;
+  text-align: center;
+  font: 400 14px/1 Georgia, "Times New Roman", serif;
+}
+
+.matrix-factor:empty { display: none; }
+
+.dyadic-numerator {
+  padding: 0 4px 2px;
+  border-bottom: 1px solid currentColor;
+}
+
+.dyadic-denominator { padding: 2px 4px 0; }
 
 .matrix-values {
   position: relative;

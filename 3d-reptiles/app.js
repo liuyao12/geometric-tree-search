@@ -713,7 +713,16 @@ function updateSelectedOrientationMatrix() {
   orientationPanel.classList.toggle("has-selection", visible);
   if (!visible) return;
 
-  matrixFactor.textContent = exact.denominator === 1 ? "" : `1/${exact.denominator}`;
+  matrixFactor.replaceChildren();
+  if (exact.exponent > 0) {
+    const numerator = document.createElement("span");
+    numerator.className = "dyadic-numerator";
+    numerator.textContent = "1";
+    const denominator = document.createElement("span");
+    denominator.className = "dyadic-denominator";
+    denominator.textContent = String(exact.denominator);
+    matrixFactor.append(numerator, denominator);
+  }
   matrixValues.replaceChildren(...exact.numerators.flatMap(row => row.map(value => {
     const cell = document.createElement("span");
     cell.textContent = String(value);
