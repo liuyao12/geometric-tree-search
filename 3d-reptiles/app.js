@@ -724,7 +724,7 @@ function updateSelectedOrientationMatrix() {
   const factorLabel = exact.denominator === 1 ? "" : `one over ${exact.denominator} times `;
   orientationMatrix.setAttribute(
     "aria-label",
-    `Selected element of SO q over the dyadic integers: ${factorLabel}${exact.numerators.map(row => row.join(", ")).join("; ")}`
+    `Selected element of SO 3 over the dyadic integers with quadratic form q: ${factorLabel}${exact.numerators.map(row => row.join(", ")).join("; ")}`
   );
 }
 
