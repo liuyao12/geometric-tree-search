@@ -25,6 +25,7 @@ import { findPolycubeBoxTiling } from "../assets/polycube-box-tiler.js";
 import {
   findPolycubeCyclicTiling,
   findPolycubePeriodicTiling,
+  polycubePeriodicResumeHnfIndex,
   verifyPolycubePeriodicCertificate
 } from "../assets/polycube-periodic-tiler.js";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
@@ -86,6 +87,9 @@ assert.deepEqual(volume10Through4.protocol.hnf_candidates_exhausted_per_final_su
 assert.equal(POLYCUBE_ROTATION_COUNT, 24);
 assert.equal(POLYCUBE_ISOMETRY_COUNT, 48);
 assert.equal(polycubeSymmetries([[0, 0, 0]]).length, 24);
+assert.equal(polycubePeriodicResumeHnfIndex({ active_hnf_index: 19309, hnf_visited: 9799, hnf_skipped: 9511 }), 19309);
+assert.equal(polycubePeriodicResumeHnfIndex({ hnf_visited: 9799, hnf_skipped: 9511 }), 19309);
+assert.equal(polycubePeriodicResumeHnfIndex({ hnf_visited: 26356 }), 26355);
 
 const expectedOneSidedCounts = [1, 1, 2, 8, 29];
 const expectedFreeCounts = [1, 1, 2, 7, 23];

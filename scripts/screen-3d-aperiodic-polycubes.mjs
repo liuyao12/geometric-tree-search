@@ -15,6 +15,7 @@ import {
 import { findPolycubeBoxTiling } from "../assets/polycube-box-tiler.js";
 import {
   findPolycubePeriodicTiling,
+  polycubePeriodicResumeHnfIndex,
   verifyPolycubePeriodicCertificate
 } from "../assets/polycube-periodic-tiler.js";
 
@@ -225,7 +226,7 @@ for (let index = 0; index < candidates.length; index++) {
         timeLimitMs: periodicTimeMs,
         timeBudgetMode: periodicBudgetClock,
         hnfStartIndex: resumeActiveHnf
-          ? Math.max(0, Number(candidate.input_periodic_fast?.hnf_visited ?? 1) - 1)
+          ? polycubePeriodicResumeHnfIndex(candidate.input_periodic_fast)
           : 0
       })
     : {

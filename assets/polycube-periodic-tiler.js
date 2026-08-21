@@ -8,6 +8,11 @@ const cross = (left, right) => [
 ];
 const dot = (left, right) => left.reduce((sum, value, index) => sum + value * right[index], 0);
 
+export const polycubePeriodicResumeHnfIndex = periodicFast => Math.max(0, Number(
+  periodicFast?.active_hnf_index
+  ?? ((periodicFast?.hnf_skipped ?? 0) + (periodicFast?.hnf_visited ?? 1) - 1)
+));
+
 /**
  * Find a one-copy periodic quotient. A bijection from the oriented tile cells
  * to Z/nZ proves that translates by the kernel of the homomorphism partition
@@ -272,17 +277,24 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
           if (chosen.length >= copies - 1 || overBudget()) return null;
           nodes += 1;
           if (failed.has(remaining)) return null;
-          let pivot = null;
+          let pivotCell = -1;
+          let pivotSize = Infinity;
           for (let index = 0; index < volume; index++) {
             const bit = bitAt(index);
             if (!(remaining & bit)) continue;
-            const optionsForCell = byCell[index].filter(placement =>
-              (placement.mask & remaining) === placement.mask
-            );
-            if (!optionsForCell.length) { failed.add(remaining); return null; }
-            if (!pivot || optionsForCell.length < pivot.length) pivot = optionsForCell;
+            let optionsForCell = 0;
+            for (const placement of byCell[index]) {
+              if ((placement.mask & remaining) === placement.mask) optionsForCell += 1;
+            }
+            if (!optionsForCell) { failed.add(remaining); return null; }
+            if (optionsForCell < pivotSize) {
+              pivotCell = index;
+              pivotSize = optionsForCell;
+              if (pivotSize === 1) break;
+            }
           }
-          for (const placement of pivot ?? []) {
+          for (const placement of pivotCell < 0 ? [] : byCell[pivotCell]) {
+            if ((placement.mask & remaining) !== placement.mask) continue;
             chosen.push(placement);
             const found = search(remaining ^ placement.mask);
             if (found) return found;
