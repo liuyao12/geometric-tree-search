@@ -5061,3 +5061,27 @@ incremental causal-superiority gate red. The next admissible experiment must
 reconstruct the retained parent states, freeze executable child actions, and
 open a later annulus only afterward; parent correctness cannot be recycled as
 a child label.
+
+The executable later-annulus audit is also complete. Each of the forty
+retained parents becomes a new colored seed at
+`R3 = R2 + Rseed = 32.562305898749054`; the unchanged `8×8×8` bounded search
+enumerates `5,091` third-block terminals. All actions and four frozen marking
+scores are serialized before the larger consumed targets open once. The
+library keeps four terminals per parent (`160` total).
+
+| executable third-block audit | complete tree | retained library |
+| --- | ---: | ---: |
+| exact-parent nuclei | `8` | `8` |
+| nuclei with an exact third-block path | `6` | `3` |
+| exact end-to-end third-block paths | `90` | `6` |
+| terminal states | `5,091` | `160` |
+
+The feedback loop now identifies two independent blockers. In two nuclei an
+exact parent has no exact third-block terminal under the bounded candidate
+reach, so proposal geometry/reach must improve. In three other nuclei exact
+terminals exist but the marking drops them; first-exact channel ranks range as
+high as `109`. This is a stronger and more useful red result than aggregate
+failure: candidate generation and GCTS value can now be improved and tested
+against separate frozen denominators. The executor still retains alternatives
+and chooses no winner, so autonomous, stationary, and exponential IQC claims
+remain ineligible.

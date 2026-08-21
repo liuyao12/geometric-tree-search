@@ -2657,4 +2657,15 @@ the option portfolio has not yet improved causal retention. Individual child
 nodes have no correctness labels; this is parent supply, not a third-block or
 autonomous-growth result.
 
+The retained parents have now been executed at a genuinely larger radius.
+Forty parent configurations produce 5,091 immutable three-action terminals;
+the four marking channels retain 160 before one consumed target open. Exact
+parents survive in eight nuclei. The complete terminal trees contain 90 exact
+end-to-end paths across six nuclei, but the retained portfolios contain only
+six paths across three. This separates the remaining failures: two nuclei
+lack an exact path under the current bounded candidate reach, while three have
+exact geometry that is pruned by the marking (first-exact ranks up to 109).
+The result is self-fed third-block supply, not autonomous commitment or a
+stationary/exponential IQC rule.
+
 Serve the repository root and open `/iqc-growth-live/`.
