@@ -4486,3 +4486,52 @@ strong stationary signature recurs at scale 2.
 This does not erase the discovery boundary: the positions-only grid learner
 still proposes radix and offsets before the port graph validates them. Pure-
 port closure learning remains open, and the IQC stationary result remains red.
+
+### Geometry-complete recurrent IQC macro quotient
+
+The scalar external-value failure motivates a geometry-complete intermediate
+benchmark. Seventeen development nuclei are closed-ball disjoint from the
+unchanged ten wide audit domains. Their target-blind branch generator freezes
+168 three-action cluster-of-clusters occurrences before labels are joined: 72
+are exact, and 158 symmetry-quotiented port derivations retain alternative
+search histories. The 47 KB normalized fixture stores colored nodes in an
+intrinsic right-handed frame, exact parent/source endpoint metric geometry,
+chirality, and witnessed connections. It stores neither raw occurrence IDs nor
+global poses as semantic features. The upstream primitive pose/port learner is
+fit on development atoms; candidate generation does not reread target atoms
+after that fit. The wide audit remains completely excluded.
+
+| geometry-complete quotient | result |
+| --- | ---: |
+| development nuclei / macro occurrences | 17 / 168 |
+| exact macro occurrences | 72 |
+| exact port-derivation types | 158 |
+| selected distance width / minimum groups | 4.0 / 2 |
+| semantic geometry types | 33 |
+| exact action / derivation alternatives | 54 / 86 |
+| held-out supplied nuclei selected exact | 7 / 9 |
+| selected branch precision | 7 / 11 = 63.6% |
+| exact candidate coverage | 47.2% |
+| grouped-shuffle median / maximum | 6 / 7 exact nuclei |
+| plus-one upper-tail value | `p = .4375` |
+| unchanged wide recoverable exact selected | 0 / 2 |
+| unchanged wide false selected | 2 |
+| autonomous / stationary / exponential | false / false / false |
+
+The unbinned exact geometry class is precise but covers only 4 / 9 supplied
+nuclei. Coarsening raises transfer coverage by merging exact alternatives whose
+connection consequences differ. On the unchanged wide set the selected
+geometry quotient is worse than the prior scalar fallback (`0 / 2` rather than
+`1 / 2` exact, with two false selections in both cases). It is therefore not
+integrated as a marking-library default.
+
+This failure is narrower and more useful than another classifier result. The
+training fixture already retains the exact parent/source port witnesses, while
+the wide branch fixture retains selected port state, endpoint geometry,
+boundary context, and successor candidate classes. They are not yet expressed
+in one canonical incidence schema, so a cross-corpus join would be artificial.
+The next benchmark will first align both sides on the same bounded directed
+port graph—canonical colored node geometry, ordered connection state, endpoint
+witnesses, and successor incidence—then learn the quotient and repeat grouped
+shuffles plus unchanged-wide transfer. Only a transferred rule may enter a
+self-fed recurrence or stationarity audit.

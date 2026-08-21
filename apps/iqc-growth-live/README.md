@@ -2259,4 +2259,34 @@ stationary grid learner and is subsequently validated against the frozen port
 relations. Learning the closure vocabulary from ports alone remains future
 work. None of these stronger NaCl results changes the red stationary IQC gate.
 
+### Geometry-complete recurrent macro quotient
+
+The next IQC audit makes the clusters-of-clusters candidate itself explicit
+rather than reducing it to scalar branch statistics. Seventeen development
+nuclei are closed-ball disjoint from the unchanged ten-nucleus wide audit. They
+freeze 168 three-action macro occurrences, including 72 exact occurrences and
+158 exact port-derivation alternatives. Each occurrence stores colored nodes,
+a right-handed intrinsic frame, symmetry-quotiented endpoint geometry, and the
+parent/source connection witnesses. Raw occurrence indices, action order, and
+a global coordinate frame are not semantic fields. Different search histories
+that realize one geometry remain exact derivation alternatives rather than
+being silently collapsed.
+
+The train-only quotient searches fixed distance widths and independent-nucleus
+support thresholds. Its selected width is 4.0, producing 33 semantic geometry
+types and 54 exact action alternatives. Leave-one-nucleus-out evaluation finds
+7 of 9 supplied exact nuclei, but selects 11 branches at only 63.6% precision;
+31 within-nucleus label shuffles give `p = .4375`. The exact unbinned quotient
+is perfectly precise but reaches only 4 of 9 supplied nuclei.
+
+Frozen on the unchanged wide forward-UNSAT set, the quotient selects two false
+branches and none of the two recoverable exact branches. The earlier scalar
+fallback selects one exact and two false branches. This is an informative red
+result: cluster shape is not a transferable GCTS marking by itself. The next
+implementation step is one common canonical port-incidence graph schema for
+both development and wide branches—node geometry, ordered connection state,
+endpoint witnesses, and bounded successor incidence—followed by the same
+grouped-shuffle and external-transfer gates. No autonomous, stationary, or
+exponential IQC claim follows from this audit.
+
 Serve the repository root and open `/iqc-growth-live/`.
