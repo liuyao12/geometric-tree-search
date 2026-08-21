@@ -496,6 +496,10 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const forbiddenPlacementKeys = new Set(options.forbiddenPlacementKeys ?? []);
   const forbiddenOrientationKeys = new Set(options.forbiddenOrientationKeys ?? []);
   const preferredPlacementKeys = new Set(options.preferredPlacementKeys ?? []);
+  const placementOrdering = String(options.placementOrdering ?? "compact");
+  if (!["compact", "expansive", "seeded"].includes(placementOrdering)) {
+    throw new Error("placementOrdering must be compact, expansive, or seeded");
+  }
   const seededHash = value => {
     let hash = (2166136261 ^ seed) >>> 0;
     for (let index = 0; index < value.length; index++) {
@@ -630,13 +634,27 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
     columns.set(key, column);
   }
-  const orderedPlacements = [...placementByKey.values()].sort((left, right) =>
-    Number(preferredPlacementKeys.has(right.key)) - Number(preferredPlacementKeys.has(left.key))
-    || right.targetCoverage.length - left.targetCoverage.length
-    || (left.cellKeys.length - left.targetCoverage.length)
-      - (right.cellKeys.length - right.targetCoverage.length)
-    || (seed ? seededHash(left.key) - seededHash(right.key) : left.key.localeCompare(right.key))
-  );
+  const geometricPlacementOrder = (left, right, expansive = false) => {
+    const targetDifference = expansive
+      ? left.targetCoverage.length - right.targetCoverage.length
+      : right.targetCoverage.length - left.targetCoverage.length;
+    if (targetDifference) return targetDifference;
+    const leftExterior = left.cellKeys.length - left.targetCoverage.length;
+    const rightExterior = right.cellKeys.length - right.targetCoverage.length;
+    return expansive ? rightExterior - leftExterior : leftExterior - rightExterior;
+  };
+  const orderedPlacements = [...placementByKey.values()].sort((left, right) => {
+    const preferredDifference = Number(preferredPlacementKeys.has(right.key))
+      - Number(preferredPlacementKeys.has(left.key));
+    if (preferredDifference) return preferredDifference;
+    if (placementOrdering === "seeded") {
+      return seededHash(left.key) - seededHash(right.key)
+        || geometricPlacementOrder(left, right)
+        || left.key.localeCompare(right.key);
+    }
+    return geometricPlacementOrder(left, right, placementOrdering === "expansive")
+      || (seed ? seededHash(left.key) - seededHash(right.key) : left.key.localeCompare(right.key));
+  });
   const placementsByTarget = new Map(targetKeys.map(key => [key, []]));
   for (let placementId = 0; placementId < orderedPlacements.length; placementId++) {
     const placement = orderedPlacements[placementId];
@@ -1230,6 +1248,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     preferred_placements_requested: preferredPlacementKeys.size,
     preferred_placements_matched: orderedPlacements.reduce((count, placement) =>
       count + Number(preferredPlacementKeys.has(placement.key)), 0),
+    placement_ordering: placementOrdering,
     orientations: orientations.length,
     placements_considered: placementByKey.size,
     nodes,

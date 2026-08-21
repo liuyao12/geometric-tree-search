@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, resolve } from "node:path";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import {
@@ -53,6 +54,10 @@ const partialNextLayerMinPlacements = Math.max(0, Math.floor(numberArg(
   "partial-next-layer-min-placements",
   0
 )));
+const placementOrdering = String(args.get("placement-order") ?? "compact").toLowerCase();
+if (!["compact", "expansive", "seeded"].includes(placementOrdering)) {
+  throw new Error("--placement-order must be compact, expansive, or seeded");
+}
 const seeds = String(args.get("seeds") ?? "3,4,1,2")
   .split(",")
   .map(Number)
@@ -65,6 +70,13 @@ const fixedWitnessReports = String(args.get("fixed-witness-report") ?? "")
 const reportOutput = args.get("report-output")
   ? resolve(String(args.get("report-output")))
   : null;
+const proposalSampleOutput = args.get("proposal-sample-output")
+  ? resolve(String(args.get("proposal-sample-output")))
+  : null;
+const proposalSampleLimit = Math.max(0, Math.floor(numberArg(
+  "proposal-sample-limit",
+  proposalSampleOutput ? 1 : 0
+)));
 
 let carriedNogoods = [];
 let totalContinuationChecks = 0;
@@ -78,6 +90,10 @@ let totalNextLayerCoverabilityNogoodClauses = 0;
 let radiusWitness = null;
 let incompleteContinuation = null;
 const obstructedBoundaryStates = new Set();
+const portfolioProposalBoundaryDigests = new Set();
+const portfolioProposalPlacementCounts = new Map();
+const proposalSamples = [];
+const proposalSampleByDigest = new Map();
 let boundaryCacheHits = 0;
 const trials = [];
 let directProposal = null;
@@ -227,6 +243,8 @@ process.stdout.write(`${JSON.stringify({
   pair_lookahead: pairLookahead,
   partial_next_layer_coverability: partialNextLayerCoverability,
   partial_next_layer_min_placements: partialNextLayerMinPlacements,
+  placement_ordering: placementOrdering,
+  proposal_sample_limit: proposalSampleLimit,
   budget_clock: budgetClock
 })}\n`);
 
@@ -238,6 +256,8 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
   let unexplainedObstructions = 0;
   let pairObstructionChecks = 0;
   let pairObstructions = 0;
+  const proposalPlacementCounts = new Map();
+  const proposalBoundaryDigests = new Set();
   const result = searchPolycubeCorona(candidate.voxels, {
     layers: outerLayer,
     seed,
@@ -251,10 +271,43 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
     returnNogoods: true,
     nextLayerCoverability: partialNextLayerCoverability,
     nextLayerCoverabilityMinPlacements: partialNextLayerMinPlacements,
+    placementOrdering,
     acceptSolution(solution) {
       const boundaryKey = polycubeCoronaBoundaryKey(candidate.voxels, solution, outerLayer);
+      proposalPlacementCounts.set(
+        solution.length,
+        (proposalPlacementCounts.get(solution.length) ?? 0) + 1
+      );
+      portfolioProposalPlacementCounts.set(
+        solution.length,
+        (portfolioProposalPlacementCounts.get(solution.length) ?? 0) + 1
+      );
+      const boundaryDigest = createHash("sha256").update(boundaryKey).digest("hex");
+      proposalBoundaryDigests.add(boundaryDigest);
+      portfolioProposalBoundaryDigests.add(boundaryDigest);
+      let proposalSample = proposalSampleByDigest.get(boundaryDigest) ?? null;
+      if (!proposalSample && proposalSamples.length < proposalSampleLimit) {
+        proposalSample = {
+          seed,
+          placement_ordering: placementOrdering,
+          placements: solution.length,
+          boundary_sha256: boundaryDigest,
+          corona: solution.map(placement => ({
+            orientation_index: placement.orientationIndex,
+            orientation_key: placement.orientationKey,
+            translation: placement.translation,
+            cells: placement.cells
+          })),
+          continuation: null
+        };
+        proposalSamples.push(proposalSample);
+        proposalSampleByDigest.set(boundaryDigest, proposalSample);
+      }
       if (obstructedBoundaryStates.has(boundaryKey)) {
         boundaryCacheHits += 1;
+        if (proposalSample && !proposalSample.continuation) {
+          proposalSample.continuation = { status: "cached_exact_obstruction" };
+        }
         return false;
       }
       continuationChecks += 1;
@@ -278,14 +331,40 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
         if (!verification.verified) {
           throw new Error(`Continuation witness failed verification: ${verification.reason}`);
         }
+        if (proposalSample) {
+          proposalSample.continuation = {
+            status: "verified_inner_radius_witness",
+            nodes: continuation.nodes,
+            milliseconds: continuation.milliseconds,
+            placements: continuation.corona.length
+          };
+        }
         radiusWitness = continuation;
         return true;
       }
       if (!continuation.exhausted) {
+        if (proposalSample) {
+          proposalSample.continuation = {
+            status: "incomplete",
+            stopped_by: continuation.stopped_by,
+            nodes: continuation.nodes,
+            milliseconds: continuation.milliseconds
+          };
+        }
         incompleteContinuation = continuation;
         return true;
       }
       const obstruction = continuation.fixed_obstruction_nogood;
+      if (proposalSample) {
+        proposalSample.continuation = {
+          status: "exact_obstruction",
+          nodes: continuation.nodes,
+          milliseconds: continuation.milliseconds,
+          obstruction_kind: obstruction?.kind ?? null,
+          obstruction_fixed_placement_indices: obstruction?.fixed_placement_indices ?? [],
+          obstruction_fixed_placement_keys: obstruction?.fixed_placement_keys ?? []
+        };
+      }
       obstructedBoundaryStates.add(boundaryKey);
       if (obstruction?.fixed_placement_keys?.length) {
         explainedObstructions += 1;
@@ -320,6 +399,7 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
   totalNextLayerCoverabilityNogoodClauses += result.next_layer_coverability_nogood_clauses;
   const trial = {
     seed,
+    placement_ordering: result.placement_ordering,
     success: result.success,
     exhausted: result.exhausted,
     stopped_by: result.stopped_by,
@@ -331,6 +411,11 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
     resolved_subtree_conflicts: resolvedSubtreeConflicts,
     pair_obstruction_checks: pairObstructionChecks,
     pair_obstructions: pairObstructions,
+    proposal_placement_distribution: Object.fromEntries(
+      [...proposalPlacementCounts].sort(([left], [right]) => left - right)
+    ),
+    unique_proposal_boundary_states: proposalBoundaryDigests.size,
+    proposal_boundary_sha256: [...proposalBoundaryDigests].sort(),
     next_layer_coverability_prunes: result.next_layer_coverability_prunes,
     next_layer_coverability_nogood_clauses: result.next_layer_coverability_nogood_clauses,
     obstructed_boundary_states: obstructedBoundaryStates.size,
@@ -360,6 +445,7 @@ const summary = {
   pair_lookahead: pairLookahead,
   partial_next_layer_coverability: partialNextLayerCoverability,
   partial_next_layer_min_placements: partialNextLayerMinPlacements,
+  placement_ordering: placementOrdering,
   classification: radiusWitness
     ? "inner_radius_witness"
     : directProposal?.exhausted
@@ -378,6 +464,13 @@ const summary = {
   total_pair_obstructions: totalPairObstructions,
   total_next_layer_coverability_prunes: totalNextLayerCoverabilityPrunes,
   total_next_layer_coverability_nogood_clauses: totalNextLayerCoverabilityNogoodClauses,
+  proposal_placement_distribution: Object.fromEntries(
+    [...portfolioProposalPlacementCounts].sort(([left], [right]) => left - right)
+  ),
+  unique_proposal_boundary_states: portfolioProposalBoundaryDigests.size,
+  proposal_boundary_sha256: [...portfolioProposalBoundaryDigests].sort(),
+  proposal_samples_saved: proposalSamples.length,
+  proposal_sample_output: proposalSampleOutput,
   obstructed_boundary_states: obstructedBoundaryStates.size,
   boundary_cache_hits: boundaryCacheHits,
   carried_nogood_clauses: carriedNogoods.length,
@@ -398,6 +491,19 @@ if (reportOutput) {
   writeFileSync(reportOutput, `${JSON.stringify({
     kind: "polycube_corona_continuation_portfolio",
     ...summary
+  }, null, 2)}\n`);
+}
+if (proposalSampleOutput && proposalSamples.length) {
+  mkdirSync(dirname(proposalSampleOutput), { recursive: true });
+  writeFileSync(proposalSampleOutput, `${JSON.stringify({
+    kind: "polycube_corona_proposal_samples",
+    candidate: id,
+    outer_layer: outerLayer,
+    inner_layer: innerLayer,
+    placement_ordering: placementOrdering,
+    samples: proposalSamples,
+    corona: proposalSamples.length === 1 ? proposalSamples[0].corona : null,
+    warning: "Each sample is a verified finite outer patch; an exact failed continuation is not an infinite-tiling or aperiodicity result."
   }, null, 2)}\n`);
 }
 process.stdout.write(`${JSON.stringify({ ...summary, report_output: reportOutput })}\n`);

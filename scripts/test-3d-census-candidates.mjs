@@ -22,6 +22,11 @@ import {
   LATTICE_POLYHEDRON_SIZE13_SCREENING,
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
+import {
+  polycubeCoronaBoundaryKey,
+  searchPolycubeCorona,
+  verifyPolycubeCoronaPatch
+} from "../assets/polycube-corona-search.js";
 
 const fingerprintDigest = values => createHash("sha256")
   .update(values.slice().sort().join("\n"))
@@ -431,6 +436,10 @@ const archivedP10055695Z3Cegar = JSON.parse(await readFile(
 ));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
+  "utf8"
+));
+const archivedPlacementOrderDiversity = JSON.parse(await readFile(
+  new URL("../data/polycube-corona-placement-order-diversity-2026-08-21.json", import.meta.url),
   "utf8"
 ));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
@@ -1545,6 +1554,46 @@ assert.equal(
 );
 assert.equal(archivedPartialNextLayerLookahead.result.outer_search_exhausted, false);
 assert.equal(archivedPartialNextLayerLookahead.result.certified_non_tiler, false);
+assert.equal(archivedPlacementOrderDiversity.algorithm.default_profile, "compact");
+assert.equal(archivedPlacementOrderDiversity.p9_seeded_profile.seed_3_sampled_run.complete_proposals, 1);
+assert.equal(archivedPlacementOrderDiversity.p9_seeded_profile.seed_11_run.complete_proposals, 0);
+assert.equal(archivedPlacementOrderDiversity.p9_seeded_profile.seed_12_run.complete_proposals, 0);
+const seededP9Boundary = archivedPlacementOrderDiversity.independently_replayed_p9_boundary_state;
+assert.equal(seededP9Boundary.placements, 79);
+assert.equal(seededP9Boundary.corona.length, 79);
+assert.equal(
+  verifyPolycubeCoronaPatch(
+    volumeNineSurvivor.census_candidate.voxels,
+    seededP9Boundary.corona,
+    4
+  ).verified,
+  true
+);
+assert.equal(
+  createHash("sha256")
+    .update(polycubeCoronaBoundaryKey(
+      volumeNineSurvivor.census_candidate.voxels,
+      seededP9Boundary.corona,
+      4
+    ))
+    .digest("hex"),
+  seededP9Boundary.boundary_sha256
+);
+const seededP9ContinuationReplay = searchPolycubeCorona(
+  volumeNineSurvivor.census_candidate.voxels,
+  {
+    layers: 5,
+    fixedPlacements: seededP9Boundary.corona,
+    nodeLimit: 100_000,
+    timeLimitMs: 1000,
+    nogoods: true
+  }
+);
+assert.equal(seededP9ContinuationReplay.exhausted, true);
+assert.equal(seededP9ContinuationReplay.nodes, 1);
+assert.equal(seededP9ContinuationReplay.fixed_obstruction_nogood.fixed_placement_indices.length, 2);
+assert.equal(archivedPlacementOrderDiversity.result.new_verified_radius_5_witness, false);
+assert.equal(archivedPlacementOrderDiversity.result.outer_search_exhausted, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,
@@ -1558,12 +1607,21 @@ assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_radius3_e
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_min_placements, 40);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_prunes, 28);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_validation_nodes, 4985856);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_placement_order_compact_complete_proposals, 14);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_placement_order_alternative_improved, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_min_placements, 60);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_prunes, 282);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_seeded_order_proposal_placements, 79);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_seeded_order_continuation_nodes, 1);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,
   "the catalogue must explain the exact partial next-layer filter without implying exhaustion"
+);
+assert.match(
+  growthAppSource,
+  /seeded-first exact row ordering reaches a distinct[\s\S]*?diversity lane rather than the default/,
+  "the catalogue must describe the distinct seeded boundary without promoting it to a witness"
 );
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),

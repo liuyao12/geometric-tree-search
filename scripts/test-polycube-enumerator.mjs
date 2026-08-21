@@ -580,8 +580,41 @@ for (let size = 1; size <= 5; size++) for (const candidate of enumeratePolycubes
         true
       );
     }
+    for (const placementOrdering of ["expansive", "seeded"]) {
+      const diversified = searchPolycubeCorona(candidate.voxels, {
+        layers: 2,
+        seed: 17,
+        placementOrdering,
+        nodeLimit: 10_000,
+        timeLimitMs: 5000,
+        nogoods: true
+      });
+      assert.equal(
+        diversified.stopped_by,
+        null,
+        `${candidate.id} ${placementOrdering} ordering audit must finish`
+      );
+      assert.equal(diversified.placement_ordering, placementOrdering);
+      assert.equal(
+        diversified.success,
+        chronological.success,
+        `${candidate.id} ${placementOrdering} ordering must preserve satisfiability`
+      );
+      assert.equal(
+        diversified.certified_non_tiler,
+        chronological.certified_non_tiler,
+        `${candidate.id} ${placementOrdering} ordering must preserve finite-obstruction results`
+      );
+      if (diversified.success) {
+        assert.equal(verifyPolycubeCoronaPatch(candidate.voxels, diversified.corona, 2).verified, true);
+      }
+    }
   }
 }
+assert.throws(
+  () => searchPolycubeCorona([[0, 0, 0]], { placementOrdering: "unknown" }),
+  /placementOrdering must be compact, expansive, or seeded/
+);
 assert.equal(extendedCubeCorona.fixed_placements, 6);
 assert.equal(extendedCubeCorona.resolved_fixed_conflict, null);
 const rejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {

@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v140";
+} from "./engine.js?v=20260821-polycube10-v141";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1472,6 +1472,12 @@ function updateCandidateResearchPanel() {
           / (partial.corona_partial_coverability_baseline_nodes
             / partial.corona_partial_coverability_baseline_milliseconds)).toFixed(1);
         candidateResearchDetail.textContent += ` An optional exact partial-patch rule now waits until ${partial.corona_partial_coverability_min_placements} surrounding copies, then rejects a branch as soon as any next-ring cell has no compatible placement. In the matched run it replaced ${partial.corona_partial_coverability_baseline_continuation_checks} doomed complete-patch continuation checks with ${partial.corona_partial_coverability_prunes} earlier prunes and performed ${partial.corona_partial_coverability_nodes.toLocaleString()} outer nodes (${throughput}% of baseline throughput).${candidate.id === "p9-42947" ? ` A longer run still reached only depth ${partial.corona_partial_coverability_long_maximum_depth}, so the maintenance cost does not yet buy a deeper state for this candidate.` : ` Two fresh orderings add ${partial.corona_partial_coverability_validation_nodes.toLocaleString()} nodes and ${partial.corona_partial_coverability_validation_prunes} exact early prunes without reaching a complete proposal; proposal supply is now the bottleneck.`} The finite outer search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_placement_order_report) {
+        const ordering = candidate.screening;
+        candidateResearchDetail.textContent += candidate.id === "p9-42947"
+          ? ` A seeded-first exact row ordering reaches a distinct ${ordering.corona_seeded_order_proposal_placements}-copy radius-four boundary state after ${ordering.corona_seeded_order_validation_nodes.toLocaleString()} nodes across three restarts. Exact radius-five continuation rejects it in ${ordering.corona_seeded_order_continuation_nodes} node with a ${ordering.corona_seeded_order_obstruction_clause_size}-placement clause; the other two seeded restarts produce no complete proposal, so this remains a diversity lane rather than the default.`
+          : ` A matched three-profile ordering ablation leaves compact-first search as the best observed supplier: it reaches ${ordering.corona_placement_order_compact_complete_proposals} complete proposals while expansive-first and seeded-first reach ${ordering.corona_placement_order_alternative_complete_proposals}. Alternative ordering remains an exact optional restart, not a claimed improvement.`;
       }
     }
   } else if (knownAperiodic) {

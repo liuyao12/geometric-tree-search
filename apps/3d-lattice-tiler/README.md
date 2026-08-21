@@ -626,6 +626,22 @@ qualitatively different outer patch rather than rejecting the same local trap.
 See
 `data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json`.
 
+Exact-cover row ordering now has three explicit profiles. `compact` preserves
+the historical preference for covering more current-ring cells with less
+exterior protrusion; `expansive` reverses those geometric preferences; and
+`seeded` places the deterministic seed hash before them. The profiles preserve
+the same search space and agree on every volume-at-most-four radius-two audit.
+For `p10-055695`, neither alternative supplies a complete patch in matched
+seed-7 and seed-10 windows where compact supplies fourteen, so compact remains
+the default. For `p9-42947`, seeded profile seed 3 does reach a reproducible
+79-copy radius-four boundary state distinct from the archived 75- and 78-copy
+Z3 states. Its patch independently verifies, but exact radius-five continuation
+rejects it in one node with a two-placement obstruction. Seeded restarts 11 and
+12 add 8,602,624 nodes without another complete proposal. This is genuine
+boundary-state diversification, but it finds another finite dead end rather
+than an aperiodic tiling witness. The full patch and audit are in
+`data/polycube-corona-placement-order-diversity-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal
