@@ -42,7 +42,15 @@ const records = [
       corona_next_time_limit_ms: 30000,
       corona_next_nodes: 2574336,
       corona_continuation_states_checked: 7387,
-      corona_continuation_states_extended: 0
+      corona_continuation_states_extended: 0,
+      corona_nogood_portfolio_report: "data/polycube-volume9-continuation-nogoods-2026-08-20.json",
+      corona_nogood_portfolio_trials: 4,
+      corona_nogood_continuation_checks: 54,
+      corona_nogood_explained_obstructions: 54,
+      corona_nogood_clauses: 6573,
+      corona_nogood_prunes: 4949332,
+      corona_nogood_radius5_witness: false,
+      corona_nogood_outer_exhausted: false
     },
     shell_screening: {
       robust_completed_shell: 4,

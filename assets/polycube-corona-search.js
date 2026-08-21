@@ -68,6 +68,10 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const acceptSolution = typeof options.acceptSolution === "function"
     ? options.acceptSolution
     : null;
+  const nogoodLimit = Number.isFinite(Number(options.nogoodLimit))
+    ? Math.max(0, Math.floor(Number(options.nogoodLimit)))
+    : 50_000;
+  const nogoodsEnabled = options.nogoods === true && nogoodLimit > 0;
   const seededHash = value => {
     let hash = (2166136261 ^ seed) >>> 0;
     for (let index = 0; index < value.length; index++) {
@@ -100,16 +104,19 @@ export function searchPolycubeCorona(voxels, options = {}) {
     };
   });
   const blockedSet = new Set(rootSet);
+  const fixedOwnerByCell = new Map();
   for (const [placementIndex, placement] of fixedPlacements.entries()) {
     for (const key of placement.cellKeys) {
       if (blockedSet.has(key)) throw new Error(`Fixed corona placement ${placementIndex} overlaps an earlier tile`);
       blockedSet.add(key);
+      fixedOwnerByCell.set(key, placementIndex);
     }
   }
   const allTargetKeys = buildTarget(rootSet, layers);
   const targetKeys = allTargetKeys.filter(key => !blockedSet.has(key));
   const targetSet = new Set(targetKeys);
   const placementByKey = new Map();
+  const fixedBlockedRowsByTarget = new Map(targetKeys.map(key => [key, new Map()]));
 
   for (const targetKey of targetKeys) {
     const pivot = cellOf(targetKey);
@@ -121,8 +128,17 @@ export function searchPolycubeCorona(voxels, options = {}) {
           cell.map((value, axis) => value + translation[axis])
         );
         const cellKeys = cells.map(keyOf);
-        if (cellKeys.some(key => blockedSet.has(key))) continue;
+        if (cellKeys.some(key => rootSet.has(key))) continue;
         const placementKey = cellKeys.slice().sort().join(";");
+        const fixedBlockers = new Set(cellKeys
+          .map(key => fixedOwnerByCell.get(key))
+          .filter(index => index !== undefined));
+        if (fixedBlockers.size) {
+          if (!fixedBlockedRowsByTarget.get(targetKey).has(placementKey)) {
+            fixedBlockedRowsByTarget.get(targetKey).set(placementKey, fixedBlockers);
+          }
+          continue;
+        }
         if (!placementByKey.has(placementKey)) {
           placementByKey.set(placementKey, {
             key: placementKey,
@@ -167,7 +183,11 @@ export function searchPolycubeCorona(voxels, options = {}) {
       - (right.cellKeys.length - right.targetCoverage.length)
     || (seed ? seededHash(left.key) - seededHash(right.key) : left.key.localeCompare(right.key))
   );
-  for (const placement of orderedPlacements) {
+  const placementsByTarget = new Map(targetKeys.map(key => [key, []]));
+  for (let placementId = 0; placementId < orderedPlacements.length; placementId++) {
+    const placement = orderedPlacements[placementId];
+    placement.id = placementId;
+    for (const key of placement.targetCoverage) placementsByTarget.get(key).push(placement);
     let first = null;
     for (const key of placement.cellKeys) {
       const column = columns.get(key);
@@ -188,11 +208,179 @@ export function searchPolycubeCorona(voxels, options = {}) {
       }
     }
   }
+  const minimumFixedObstruction = (() => {
+    if (!fixedPlacements.length) return null;
+    let best = null;
+    for (const targetKey of targetKeys) {
+      if (placementsByTarget.get(targetKey).length) continue;
+      const blockerSets = [...fixedBlockedRowsByTarget.get(targetKey).values()];
+      const uncovered = new Set(blockerSets.map((_, index) => index));
+      const selected = [];
+      while (uncovered.size) {
+        const frequencies = new Map();
+        for (const index of uncovered) for (const fixedIndex of blockerSets[index]) {
+          frequencies.set(fixedIndex, (frequencies.get(fixedIndex) ?? 0) + 1);
+        }
+        let bestIndex = null;
+        let bestCount = -1;
+        for (const [fixedIndex, count] of frequencies) {
+          if (count > bestCount || (count === bestCount && fixedIndex < bestIndex)) {
+            bestIndex = fixedIndex;
+            bestCount = count;
+          }
+        }
+        if (bestIndex === null) break;
+        selected.push(bestIndex);
+        for (const index of [...uncovered]) {
+          if (blockerSets[index].has(bestIndex)) uncovered.delete(index);
+        }
+      }
+      if (uncovered.size) continue;
+      for (let index = selected.length - 1; index >= 0; index--) {
+        const without = selected.filter((_, candidateIndex) => candidateIndex !== index);
+        if (blockerSets.every(blockers => without.some(fixedIndex => blockers.has(fixedIndex)))) {
+          selected.splice(index, 1);
+        }
+      }
+      const obstruction = {
+        target_cell: cellOf(targetKey),
+        fixed_placement_indices: selected.slice().sort((left, right) => left - right),
+        candidate_rows_blocked: blockerSets.length
+      };
+      if (!best
+        || obstruction.fixed_placement_indices.length < best.fixed_placement_indices.length
+        || (obstruction.fixed_placement_indices.length === best.fixed_placement_indices.length
+          && targetKey < keyOf(best.target_cell))) best = obstruction;
+    }
+    if (!best) return null;
+    best.fixed_placement_keys = best.fixed_placement_indices.map(index => fixedPlacements[index].key);
+    return best;
+  })();
   const chosen = fixedPlacements.slice();
   let nodes = 0;
   let deadEnds = 0;
   let solutionsRejected = 0;
+  let nogoodPrunes = 0;
+  let nogoodCells = 0;
+  let nogoodMaxSize = 0;
+  let maximumDepth = fixedPlacements.length;
+  let nogoodSaturated = false;
+  let violatedNogoods = 0;
+  const selectedPlacementIds = new Set();
+  const selectedOwnerByCell = new Map();
+  const nogoods = [];
+  const nogoodKeys = new Set();
+  const nogoodsByPlacement = new Map();
+  let initialNogoodClauses = 0;
   let stoppedBy = null;
+
+  const addSelectedPlacement = placement => {
+    selectedPlacementIds.add(placement.id);
+    for (const key of placement.cellKeys) selectedOwnerByCell.set(key, placement.id);
+    for (const nogood of nogoodsByPlacement.get(placement.id) ?? []) {
+      nogood.selected += 1;
+      if (nogood.selected === nogood.ids.length) violatedNogoods += 1;
+    }
+  };
+  const removeSelectedPlacement = placement => {
+    for (const nogood of nogoodsByPlacement.get(placement.id) ?? []) {
+      if (nogood.selected === nogood.ids.length) violatedNogoods -= 1;
+      nogood.selected -= 1;
+    }
+    for (const key of placement.cellKeys) selectedOwnerByCell.delete(key);
+    selectedPlacementIds.delete(placement.id);
+  };
+  const learnNogood = ids => {
+    if (!nogoodsEnabled || nogoods.length >= nogoodLimit) {
+      if (nogoodsEnabled && nogoods.length >= nogoodLimit) nogoodSaturated = true;
+      return null;
+    }
+    const sortedIds = [...new Set(ids)].sort((left, right) => left - right);
+    // If an already learned clause is a subset, it prunes every state this
+    // clause could prune. Clauses are tiny here, so exact subset enumeration
+    // is cheaper than carrying redundant memberships through every decision.
+    if (sortedIds.length < 20) {
+      const subsetCount = 1 << sortedIds.length;
+      for (let mask = 0; mask < subsetCount - 1; mask++) {
+        const subset = [];
+        for (let index = 0; index < sortedIds.length; index++) {
+          if (mask & (1 << index)) subset.push(sortedIds[index]);
+        }
+        if (nogoodKeys.has(subset.join(","))) return null;
+      }
+    }
+    const key = sortedIds.join(",");
+    if (nogoodKeys.has(key)) return null;
+    const nogood = {
+      ids: sortedIds,
+      selected: sortedIds.reduce((sum, id) => sum + Number(selectedPlacementIds.has(id)), 0)
+    };
+    nogoodKeys.add(key);
+    nogoods.push(nogood);
+    nogoodCells += sortedIds.length;
+    nogoodMaxSize = Math.max(nogoodMaxSize, sortedIds.length);
+    for (const id of sortedIds) {
+      if (!nogoodsByPlacement.has(id)) nogoodsByPlacement.set(id, []);
+      nogoodsByPlacement.get(id).push(nogood);
+    }
+    if (nogood.selected === nogood.ids.length) violatedNogoods += 1;
+    return nogood;
+  };
+  const learnDeadColumnNogood = pivot => {
+    if (!nogoodsEnabled) return null;
+    const blockerSets = [];
+    for (const placement of placementsByTarget.get(pivot.key) ?? []) {
+      const blockers = new Set();
+      for (const key of placement.cellKeys) {
+        const owner = selectedOwnerByCell.get(key);
+        if (owner !== undefined) blockers.add(owner);
+      }
+      // A row with no selected blocker should still be active. Refuse to learn
+      // rather than turn an internal inconsistency into an unsound clause.
+      if (!blockers.size) return null;
+      blockerSets.push(blockers);
+    }
+    if (!blockerSets.length) return learnNogood([]);
+    const uncovered = new Set(blockerSets.map((_, index) => index));
+    const selected = [];
+    while (uncovered.size) {
+      const frequencies = new Map();
+      for (const index of uncovered) for (const id of blockerSets[index]) {
+        frequencies.set(id, (frequencies.get(id) ?? 0) + 1);
+      }
+      let bestId = null;
+      let bestCount = -1;
+      for (const [id, count] of frequencies) {
+        if (count > bestCount || (count === bestCount && id < bestId)) {
+          bestId = id;
+          bestCount = count;
+        }
+      }
+      if (bestId === null) return null;
+      selected.push(bestId);
+      for (const index of [...uncovered]) {
+        if (blockerSets[index].has(bestId)) uncovered.delete(index);
+      }
+    }
+    // Greedy hitting sets can contain a choice made redundant by a later,
+    // broader blocker. Remove every such choice before storing the clause.
+    for (let index = selected.length - 1; index >= 0; index--) {
+      const without = selected.filter((_, candidateIndex) => candidateIndex !== index);
+      if (blockerSets.every(blockers => without.some(id => blockers.has(id)))) {
+        selected.splice(index, 1);
+      }
+    }
+    return learnNogood(selected);
+  };
+  if (nogoodsEnabled) {
+    const placementIdByKey = new Map(orderedPlacements.map(placement => [placement.key, placement.id]));
+    for (const clauseKeys of options.initialNogoodPlacementKeys ?? []) {
+      if (!Array.isArray(clauseKeys)) continue;
+      const ids = clauseKeys.map(key => placementIdByKey.get(key));
+      if (ids.some(id => !Number.isInteger(id))) continue;
+      if (learnNogood(ids)) initialNogoodClauses += 1;
+    }
+  }
 
   const overBudget = () => {
     if (nodes >= nodeLimit) { stoppedBy = "node_limit"; return true; }
@@ -231,9 +419,27 @@ export function searchPolycubeCorona(voxels, options = {}) {
   };
 
   const search = () => {
+    if (violatedNogoods) {
+      nogoodPrunes += 1;
+      return null;
+    }
     if (header.right === header) {
       const solution = chosen.slice();
-      if (!acceptSolution || acceptSolution(solution)) return solution;
+      if (!acceptSolution) return solution;
+      const decision = acceptSolution(solution);
+      if (decision === true || decision?.accept === true) return solution;
+      if (decision?.nogood_placement_indices?.length) {
+        const ids = decision.nogood_placement_indices
+          .map(index => solution[index]?.id)
+          .filter(id => Number.isInteger(id));
+        if (ids.length === decision.nogood_placement_indices.length) learnNogood(ids);
+      } else if (decision?.nogood_placement_keys?.length) {
+        const idsByKey = new Map(solution.map(placement => [placement.key, placement.id]));
+        const ids = decision.nogood_placement_keys
+          .map(key => idsByKey.get(key))
+          .filter(id => Number.isInteger(id));
+        if (ids.length === decision.nogood_placement_keys.length) learnNogood(ids);
+      }
       solutionsRejected += 1;
       return null;
     }
@@ -246,16 +452,23 @@ export function searchPolycubeCorona(voxels, options = {}) {
           && seededHash(column.key) < seededHash(pivot.key))) pivot = column;
       if (pivot.size <= 1) break;
     }
-    if (!pivot.size) { deadEnds += 1; return null; }
+    if (!pivot.size) {
+      deadEnds += 1;
+      learnDeadColumnNogood(pivot);
+      return null;
+    }
     cover(pivot);
     for (let row = pivot.down; row !== pivot; row = row.down) {
       chosen.push(row.placement);
+      addSelectedPlacement(row.placement);
+      maximumDepth = Math.max(maximumDepth, chosen.length);
       for (let node = row.right; node !== row; node = node.right) cover(node.column);
       const solution = search();
       if (solution) return solution;
       for (let node = row.left; node !== row; node = node.left) uncover(node.column);
+      removeSelectedPlacement(row.placement);
       chosen.pop();
-      if (stoppedBy) break;
+      if (stoppedBy || violatedNogoods) break;
     }
     uncover(pivot);
     if (!stoppedBy) deadEnds += 1;
@@ -278,6 +491,19 @@ export function searchPolycubeCorona(voxels, options = {}) {
     nodes,
     memo_hits: 0,
     failed_states: deadEnds,
+    nogoods_enabled: nogoodsEnabled,
+    nogood_limit: nogoodLimit,
+    nogood_saturated: nogoodSaturated,
+    initial_nogood_clauses: initialNogoodClauses,
+    nogood_clauses: nogoods.length,
+    nogood_prunes: nogoodPrunes,
+    nogood_average_size: nogoods.length ? nogoodCells / nogoods.length : 0,
+    nogood_max_size: nogoodMaxSize,
+    maximum_depth: maximumDepth,
+    fixed_obstruction_nogood: minimumFixedObstruction,
+    nogood_clause_keys: options.returnNogoods
+      ? nogoods.map(nogood => nogood.ids.map(id => orderedPlacements[id].key))
+      : null,
     solutions_rejected: solutionsRejected,
     algorithm: "generalized_dancing_links",
     seed,

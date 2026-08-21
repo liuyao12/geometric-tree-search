@@ -1,0 +1,92 @@
+{
+  "kind": "polycube_volume9_corona_continuation_nogood_portfolio",
+  "date": "2026-08-20",
+  "candidate": "p9-42947",
+  "mirror_equivalent": "p9-42969",
+  "model": "proper cubic rotations and integer translations; fixed normalized root",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "algorithm": {
+    "outer": "generalized dancing links with exact dead-cell conflict clauses",
+    "continuation": "exact fixed-patch radius-5 cover",
+    "learned_clause": "a set of radius-4 placements that jointly blocks every legal tile placement through a specific radius-5 target cell",
+    "cross_seed_transfer": "placement-key clauses remapped exactly into each seeded DLX ordering",
+    "soundness": "clauses are hitting sets over every root-compatible placement covering the obstructed cell"
+  },
+  "configuration": {
+    "seeds": [3, 4, 1, 2],
+    "time_per_seed_ms": 20000,
+    "inner_time_limit_ms": 250,
+    "inner_node_limit": 100000,
+    "nogood_limit": 500000
+  },
+  "trials": [
+    {
+      "seed": 3,
+      "nodes": 3366912,
+      "milliseconds": 20002,
+      "continuation_checks": 46,
+      "explained_obstructions": 46,
+      "initial_nogood_clauses": 0,
+      "final_nogood_clauses": 942,
+      "nogood_prunes": 2832742,
+      "maximum_depth": 77,
+      "stopped_by": "time_limit"
+    },
+    {
+      "seed": 4,
+      "nodes": 948224,
+      "milliseconds": 20021,
+      "continuation_checks": 1,
+      "explained_obstructions": 1,
+      "initial_nogood_clauses": 942,
+      "final_nogood_clauses": 3328,
+      "nogood_prunes": 709735,
+      "maximum_depth": 70,
+      "stopped_by": "time_limit"
+    },
+    {
+      "seed": 1,
+      "nodes": 958464,
+      "milliseconds": 20009,
+      "continuation_checks": 7,
+      "explained_obstructions": 7,
+      "initial_nogood_clauses": 3328,
+      "final_nogood_clauses": 3969,
+      "nogood_prunes": 750489,
+      "maximum_depth": 73,
+      "stopped_by": "time_limit"
+    },
+    {
+      "seed": 2,
+      "nodes": 829440,
+      "milliseconds": 20004,
+      "continuation_checks": 0,
+      "explained_obstructions": 0,
+      "initial_nogood_clauses": 3969,
+      "final_nogood_clauses": 6573,
+      "nogood_prunes": 656366,
+      "maximum_depth": 62,
+      "stopped_by": "time_limit"
+    }
+  ],
+  "summary": {
+    "classification": "outer_portfolio_incomplete",
+    "total_nodes": 6103040,
+    "total_continuation_checks": 54,
+    "total_explained_obstructions": 54,
+    "unexplained_obstructions": 0,
+    "carried_nogood_clauses": 6573,
+    "total_nogood_prunes": 4949332,
+    "average_final_clause_size": 3.9403620873269434,
+    "maximum_clause_size": 7,
+    "radius_5_witness_found": false,
+    "outer_search_exhausted": false
+  },
+  "comparison": {
+    "prior_unlearned_complete_radius4_patches_checked": 7387,
+    "prior_reusable_conflicts": 0,
+    "observation": "The learned portfolio replaces repeated full-shell rejection with small reusable placement conflicts; later seeds required only 1, 7, and 0 new continuation checks."
+  },
+  "warning": "This remains bounded-inconclusive: neither a radius-5 witness nor exhaustive radius-4 rejection has been obtained."
+}

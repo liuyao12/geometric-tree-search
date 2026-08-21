@@ -317,6 +317,10 @@ const archivedPolycubeDeepScreen = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-deep-screen-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeContinuationNogoods = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-continuation-nogoods-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1249,6 +1253,14 @@ assert.deepEqual(archivedPolycubeDeepScreen.mirror_equivalence_classes, [
   ["p9-43172", "p9-43188"]
 ]);
 assert.equal(archivedPolycubeDeepScreen.periodic_control.independent_verification.verified, true);
+assert.equal(archivedPolycubeContinuationNogoods.summary.carried_nogood_clauses, 6573);
+assert.equal(archivedPolycubeContinuationNogoods.summary.total_explained_obstructions, 54);
+assert.equal(archivedPolycubeContinuationNogoods.summary.radius_5_witness_found, false);
+assert.equal(archivedPolycubeContinuationNogoods.summary.outer_search_exhausted, false);
+assert.equal(
+  survivors[0].census_candidate.screening.corona_nogood_portfolio_report,
+  "data/polycube-volume9-continuation-nogoods-2026-08-20.json"
+);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);

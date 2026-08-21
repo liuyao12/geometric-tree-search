@@ -51,6 +51,8 @@ const isohedralTarget = Math.max(2, Math.floor(numberArg("isohedral-target", 12)
 const isohedralTimeMs = Math.max(1, numberArg("isohedral-time-ms", 500));
 const obstructionLayer = Math.max(1, Math.floor(numberArg("obstruction-layer", 1)));
 const obstructionTimeMs = Math.max(1, numberArg("obstruction-time-ms", 1000));
+const obstructionNogoods = booleanArg("obstruction-nogoods", true);
+const obstructionNogoodLimit = Math.max(1, Math.floor(numberArg("obstruction-nogood-limit", 50_000)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("nodes", 20000)));
 
 const baseConfig = (candidate, suffix) => ({
@@ -118,7 +120,9 @@ async function obstructionScreen(candidate) {
     includeReflections,
     layers: obstructionLayer,
     nodeLimit,
-    timeLimitMs: obstructionTimeMs
+    timeLimitMs: obstructionTimeMs,
+    nogoods: obstructionNogoods,
+    nogoodLimit: obstructionNogoodLimit
   });
 }
 
@@ -235,7 +239,10 @@ for (let index = 0; index < candidates.length; index++) {
       nodes: obstruction.nodes,
       target_cells: obstruction.target_cells ?? null,
       placements_considered: obstruction.placements_considered ?? null,
-      memo_hits: obstruction.memo_hits ?? null
+      memo_hits: obstruction.memo_hits ?? null,
+      nogood_clauses: obstruction.nogood_clauses ?? null,
+      nogood_prunes: obstruction.nogood_prunes ?? null,
+      nogood_average_size: obstruction.nogood_average_size ?? null
     } : null,
     milliseconds: Math.round(performance.now() - candidateStartedAt)
   })}\n`);

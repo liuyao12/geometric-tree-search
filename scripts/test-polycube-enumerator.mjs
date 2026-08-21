@@ -94,10 +94,12 @@ const rejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
   layers: 1,
   nodeLimit: 1000,
   timeLimitMs: 1000,
-  acceptSolution: () => false
+  nogoods: true,
+  acceptSolution: () => ({ accept: false, nogood_placement_indices: [0] })
 });
 assert.equal(rejectedCubeCorona.exhausted, true, "rejecting the cube's unique corona must exhaust the search");
 assert.equal(rejectedCubeCorona.solutions_rejected, 1);
+assert.equal(rejectedCubeCorona.nogood_clauses, 1);
 assert.throws(
   () => searchPolycubeCorona(lTricube, {
     layers: 1,
@@ -122,6 +124,47 @@ const ringThirdCorona = searchPolycubeCorona(ringOctacube, {
   timeLimitMs: 15_000
 });
 assert.equal(ringThirdCorona.success, true, "the ring octacube survives three exact corona layers");
+const ringThirdCoronaWithNogoods = searchPolycubeCorona(ringOctacube, {
+  layers: 3,
+  nodeLimit: 500_000,
+  timeLimitMs: 15_000,
+  nogoods: true,
+  returnNogoods: true
+});
+assert.equal(ringThirdCoronaWithNogoods.success, true);
+assert.ok(ringThirdCoronaWithNogoods.nogood_clauses > 0);
+assert.ok(ringThirdCoronaWithNogoods.nogood_prunes > 0);
+assert.ok(ringThirdCoronaWithNogoods.nodes < ringThirdCorona.nodes);
+const ringThirdCoronaWithCarriedNogoods = searchPolycubeCorona(ringOctacube, {
+  layers: 3,
+  seed: 1,
+  nodeLimit: 500_000,
+  timeLimitMs: 15_000,
+  nogoods: true,
+  initialNogoodPlacementKeys: ringThirdCoronaWithNogoods.nogood_clause_keys
+});
+assert.equal(ringThirdCoronaWithCarriedNogoods.success, true);
+assert.ok(ringThirdCoronaWithCarriedNogoods.initial_nogood_clauses > 0);
+
+const unresolvedRadiusFour = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 4,
+  seed: 3,
+  nodeLimit: 2_000_000,
+  timeLimitMs: 15_000,
+  nogoods: true
+});
+assert.equal(unresolvedRadiusFour.success, true);
+const trappedRadiusFour = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 5,
+  seed: 3,
+  fixedPlacements: unresolvedRadiusFour.corona,
+  nodeLimit: 100_000,
+  timeLimitMs: 1000,
+  nogoods: true
+});
+assert.equal(trappedRadiusFour.exhausted, true);
+assert.equal(trappedRadiusFour.fixed_obstruction_nogood.candidate_rows_blocked, 72);
+assert.equal(trappedRadiusFour.fixed_obstruction_nogood.fixed_placement_indices.length, 2);
 
 const cappedRingDecacube = [...ringOctacube, [1, 0, 1], [1, 1, 1]];
 const cappedRingCorona = searchFirstPolycubeCorona(cappedRingDecacube, {

@@ -138,14 +138,27 @@ of aperiodicity. The deeper machine-readable receipt is
 `data/polycube-volume9-deep-screen-2026-08-20.json`; the earlier six-copy
 summary is retained as historical input.
 
+The continuation solver now extracts a proof-relevant reason from a trapped
+patch instead of memoizing the entire boundary. For a radius-five target cell,
+it enumerates every root-compatible tile placement through that cell and finds
+a small hitting set of already fixed radius-four placements that blocks all of
+them. That hitting set is a sound nogood for every outer patch containing the
+same placements. In the first witness only two fixed tiles block all 72 ways to
+cover `(0,-3,-1)`. Four seeded outer searches transferred these clauses by
+exact placement keys, accumulated 6,573 clauses (average final size 3.94,
+maximum 7), and pruned 4,949,332 branches after only 54 full continuation
+checks. No radius-five witness appeared, but the outer search did not exhaust;
+the result therefore remains inconclusive. See
+`data/polycube-volume9-continuation-nogoods-2026-08-20.json`.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their
    checked-in summary, in a compact replayable format.
-2. Canonicalize rooted boundary states under cubic stabilizers and memoize
-   exhausted continuation states; the first 7,387 radius-four states were all
-   distinct even after this canonicalization, so stronger partial-state
-   nogoods are needed.
+2. Extend the new dead-cell placement nogoods with conflict resolution across
+   nontrivial continuation subtrees. Whole-boundary memoization found no reuse,
+   while the first conflict-directed portfolio already transferred 6,573 small
+   exact clauses across seeded orderings.
 3. Extend the dedicated HNF exact-cover search beyond eight-copy motifs with
    DLX or SAT and independently verify every stored quotient.
 4. Use successful isohedral coronas to propose, rather than assume, larger
