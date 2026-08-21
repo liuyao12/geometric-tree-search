@@ -8,6 +8,77 @@ const DIRECTIONS = [
 const keyOf = cell => cell.join(",");
 const cellOf = key => key.split(",").map(Number);
 
+export function polycubePlacementOrbitKeys(voxels, placement, options = {}) {
+  if (!Array.isArray(placement?.cells)) return [];
+  const keys = new Set();
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    keys.add(placement.cells.map(cell => [0, 1, 2].map(axis =>
+      symmetry.matrix[axis][0] * cell[0]
+      + symmetry.matrix[axis][1] * cell[1]
+      + symmetry.matrix[axis][2] * cell[2]
+      + symmetry.translation[axis]
+    ).join(",")).sort().join(";"));
+  }
+  return [...keys].sort();
+}
+
+export function polycubeRootContactKey(voxels, placement, options = {}) {
+  if (!Array.isArray(placement?.cells)) return "";
+  const placementSet = new Set(placement.cells.map(keyOf));
+  const contacts = [];
+  for (const rootCell of voxels) for (const direction of DIRECTIONS) {
+    const neighbor = rootCell.map((value, axis) => value + direction[axis]);
+    if (placementSet.has(keyOf(neighbor))) contacts.push({ rootCell, direction });
+  }
+  let best = null;
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    const transformed = contacts.map(({ rootCell, direction }) => {
+      const cell = [0, 1, 2].map(axis =>
+        symmetry.matrix[axis][0] * rootCell[0]
+        + symmetry.matrix[axis][1] * rootCell[1]
+        + symmetry.matrix[axis][2] * rootCell[2]
+        + symmetry.translation[axis]
+      );
+      const vector = [0, 1, 2].map(axis =>
+        symmetry.matrix[axis][0] * direction[0]
+        + symmetry.matrix[axis][1] * direction[1]
+        + symmetry.matrix[axis][2] * direction[2]
+      );
+      return `${keyOf(cell)}:${keyOf(vector)}`;
+    }).sort().join(";");
+    if (best === null || transformed < best) best = transformed;
+  }
+  return best ?? "";
+}
+
+export function enumeratePolycubeCoronaPlacements(voxels, layers = 1, options = {}) {
+  const normalizedLayers = Math.max(1, Math.floor(Number(layers) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const orientations = polycubeOrientations(voxels, {
+    includeReflections: !!options.includeReflections
+  });
+  const placements = new Map();
+  for (const targetKey of buildTarget(rootSet, normalizedLayers)) {
+    const pivot = cellOf(targetKey);
+    for (const orientation of orientations) for (const anchor of orientation.voxels) {
+      const translation = pivot.map((value, axis) => value - anchor[axis]);
+      const cells = orientation.voxels.map(cell =>
+        cell.map((value, axis) => value + translation[axis])
+      );
+      const cellKeys = cells.map(keyOf);
+      if (cellKeys.some(key => rootSet.has(key))) continue;
+      const key = cellKeys.slice().sort().join(";");
+      if (!placements.has(key)) placements.set(key, {
+        key,
+        cells,
+        orientation_key: orientation.key,
+        translation
+      });
+    }
+  }
+  return [...placements.values()].sort((left, right) => left.key.localeCompare(right.key));
+}
+
 const buildTarget = (rootSet, layers) => {
   const target = new Set();
   let frontier = new Set(rootSet);
@@ -60,12 +131,17 @@ export function verifyPolycubeCoronaPatch(voxels, placements, layers, options = 
     includeReflections: !!options.includeReflections
   }).map(orientation => orientation.key));
   const forbidden = new Set(options.forbiddenPlacementKeys ?? []);
+  const forbiddenOrientations = new Set(options.forbiddenOrientationKeys ?? []);
   for (const [index, placement] of placements.entries()) {
     if (!Array.isArray(placement?.cells) || placement.cells.length !== voxels.length) {
       return fail(`placement_${index}_wrong_cell_count`);
     }
-    if (!orientationKeys.has(polycubeKey(placement.cells))) {
+    const normalizedOrientationKey = polycubeKey(placement.cells);
+    if (!orientationKeys.has(normalizedOrientationKey)) {
       return fail(`placement_${index}_not_congruent`);
+    }
+    if (forbiddenOrientations.has(normalizedOrientationKey)) {
+      return fail(`placement_${index}_forbidden_orientation`);
     }
     const placementKey = placement.cells.map(keyOf).sort().join(";");
     if (forbidden.has(placementKey)) return fail(`placement_${index}_forbidden`);
@@ -109,6 +185,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     : 50_000;
   const nogoodsEnabled = options.nogoods === true && nogoodLimit > 0;
   const forbiddenPlacementKeys = new Set(options.forbiddenPlacementKeys ?? []);
+  const forbiddenOrientationKeys = new Set(options.forbiddenOrientationKeys ?? []);
   const seededHash = value => {
     let hash = (2166136261 ^ seed) >>> 0;
     for (let index = 0; index < value.length; index++) {
@@ -127,8 +204,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
       throw new Error(`Fixed corona placement ${index} has the wrong cell count`);
     }
     const cells = placement.cells.map(cell => cell.slice());
-    if (!orientationKeys.has(polycubeKey(cells))) {
+    const normalizedOrientationKey = polycubeKey(cells);
+    if (!orientationKeys.has(normalizedOrientationKey)) {
       throw new Error(`Fixed corona placement ${index} is not a congruent tile copy`);
+    }
+    if (forbiddenOrientationKeys.has(normalizedOrientationKey)) {
+      throw new Error(`Fixed corona placement ${index} has an explicitly forbidden orientation`);
     }
     const key = cells.map(keyOf).sort().join(";");
     if (forbiddenPlacementKeys.has(key)) {
@@ -165,6 +246,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     const pivot = cellOf(targetKey);
     for (let orientationIndex = 0; orientationIndex < orientations.length; orientationIndex++) {
       const orientation = orientations[orientationIndex];
+      if (forbiddenOrientationKeys.has(orientation.key)) continue;
       for (const anchor of orientation.voxels) {
         const translation = pivot.map((value, axis) => value - anchor[axis]);
         const cells = orientation.voxels.map(cell =>
@@ -650,6 +732,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     remaining_target_cells: targetKeys.length,
     fixed_placements: fixedPlacements.length,
     forbidden_placements: forbiddenPlacementKeys.size,
+    forbidden_orientations: forbiddenOrientationKeys.size,
     orientations: orientations.length,
     placements_considered: placementByKey.size,
     nodes,

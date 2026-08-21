@@ -58,7 +58,13 @@ const records = [
       corona_forcing_placements_tested: 9,
       corona_forcing_individually_forced: 0,
       corona_forcing_replaceable: 9,
-      corona_forcing_incomplete: 0
+      corona_forcing_incomplete: 0,
+      corona_contact_disjunction_report: "data/polycube-volume9-contact-disjunction-2026-08-20.json",
+      corona_contact_types: 69,
+      corona_contact_counterexamples: 92,
+      corona_contact_minimum_nontrivial_disjunction: 6,
+      corona_contact_disjunction_forbidden_placements: 36,
+      corona_contact_disjunction_replay_seeds: 8
     },
     shell_screening: {
       robust_completed_shell: 4,

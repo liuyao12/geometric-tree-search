@@ -551,6 +551,16 @@ coverage. Thus no individual absolute placement is forced in the first corona;
 forced disjunctions or larger clusters remain open. See
 `data/polycube-volume9-corona-forcing-2026-08-20.json`.
 
+At the coarser contact-type level, the candidate does have a nontrivial local
+rule. Its 605 root-compatible placements form 69 face-contact types under the
+root stabilizer. A counterexample-guided minimum-hitting-set loop accumulated
+92 legal coronas. After excluding all 11 trivial single-cell coverage clauses,
+it proved that six contact types are necessary and sufficient as a minimum
+forced disjunction: every first corona uses at least one of them. Forbidding
+their 36 placements exhausts in four nodes in each of eight seed replays. This
+is a local compatibility constraint, not yet a substitution hierarchy. See
+`data/polycube-volume9-contact-disjunction-2026-08-20.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

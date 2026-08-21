@@ -179,6 +179,20 @@ frame. This does not exclude forced choices among placement sets, adjacency
 types, or larger supertiles. See
 `data/polycube-volume9-corona-forcing-2026-08-20.json`.
 
+The contact-type quotient reveals the first positive structural constraint.
+There are 605 root-compatible placements and 69 contact types after quotienting
+by the root stabilizer. A cutting-plane loop alternated exact minimum hitting
+sets with independently verified GCTS counterexample coronas. The first
+four-type obstruction was merely the complete list of ways to cover one target
+cell, so all 11 such single-cell clauses were excluded. After 92 corona
+constraints, the minimum admissible hitting-set size reached six; forbidding
+those six types (36 placements) exhausts the exact first-corona search in four
+nodes across eight tie-order seeds. Thus every first corona realizes at least
+one of six contact states, and no smaller non-single-cell contact disjunction is
+possible. This is a genuine local relation, but it has not yet been propagated
+between neighboring roots or organized into a substitution hierarchy. See
+`data/polycube-volume9-contact-disjunction-2026-08-20.json`.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their
@@ -191,6 +205,6 @@ types, or larger supertiles. See
 4. Use successful isohedral coronas to propose, rather than assume, larger
    finite quotients.
 5. For durable survivors, search for recurring supertiles and verify a forced
-   substitution grammar on every legal corona type. For `p9-42947`, begin with
-   forced disjunctions or adjacency classes because no individual first-corona
-   placement is forced.
+   substitution grammar on every legal corona type. For `p9-42947`, propagate
+   the six-state minimum contact disjunction between neighboring roots and test
+   whether its compatibility graph forces a hierarchy.

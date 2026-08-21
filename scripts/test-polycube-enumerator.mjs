@@ -3,12 +3,16 @@ import {
   canonicalPolycubeKey,
   enumeratePolycubes,
   isChiralPolycube,
+  polycubeOrientations,
   polycubeSymmetries,
   POLYCUBE_ISOMETRY_COUNT,
   POLYCUBE_ROTATION_COUNT
 } from "../assets/polycube-enumerator.js";
 import {
+  enumeratePolycubeCoronaPlacements,
+  polycubePlacementOrbitKeys,
   polycubeCoronaBoundaryKey,
+  polycubeRootContactKey,
   searchFirstPolycubeCorona,
   searchPolycubeCorona,
   verifyPolycubeCoronaPatch
@@ -48,6 +52,44 @@ assert.equal(unresolvedP9.mirror_equivalent_id, "p9-42969");
 assert.equal(periodicP9.mirror_equivalent_id, "p9-43188");
 assert.equal(unresolvedP9.screening.periodic_hnf_max_motif_tiles, 13);
 assert.equal(periodicP9.screening.quotient_determinant, 72);
+assert.equal(polycubeOrientations(unresolvedP9.voxels).length, 8);
+const unresolvedFirstCoronaCatalog = enumeratePolycubeCoronaPlacements(unresolvedP9.voxels, 1);
+assert.equal(unresolvedFirstCoronaCatalog.length, 605);
+assert.equal(
+  new Set(unresolvedFirstCoronaCatalog.map(placement =>
+    polycubeRootContactKey(unresolvedP9.voxels, placement)
+  )).size,
+  69
+);
+const unresolvedFirstCorona = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 1,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(unresolvedFirstCorona.success, true);
+const firstPlacementOrbit = polycubePlacementOrbitKeys(
+  unresolvedP9.voxels,
+  unresolvedFirstCorona.corona[0]
+);
+assert.equal(firstPlacementOrbit.length, 3);
+assert.equal(new Set(firstPlacementOrbit.map(key => polycubeRootContactKey(
+  unresolvedP9.voxels,
+  { cells: key.split(";").map(cell => cell.split(",").map(Number)) }
+))).size, 1);
+const forbiddenOrientationKey = polycubeOrientations(unresolvedP9.voxels)[0].key;
+const orientationAlternative = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 1,
+  forbiddenOrientationKeys: [forbiddenOrientationKey],
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(orientationAlternative.success, true);
+assert.equal(verifyPolycubeCoronaPatch(
+  unresolvedP9.voxels,
+  orientationAlternative.corona,
+  1,
+  { forbiddenOrientationKeys: [forbiddenOrientationKey] }
+).verified, true);
 
 const chair = [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0]];
 const rotatedChair = chair.map(([x, y, z]) => [z, x, y]);

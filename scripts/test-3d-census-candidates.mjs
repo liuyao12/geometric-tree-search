@@ -329,6 +329,10 @@ const archivedPolycubeCoronaForcing = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-corona-forcing-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeContactDisjunction = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-contact-disjunction-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1289,6 +1293,16 @@ assert.equal(survivors[0].census_candidate.screening.corona_forcing_replaceable,
 assert.equal(
   survivors[0].census_candidate.screening.corona_forcing_report,
   "data/polycube-volume9-corona-forcing-2026-08-20.json"
+);
+assert.equal(archivedPolycubeContactDisjunction.catalog.contact_types, 69);
+assert.equal(archivedPolycubeContactDisjunction.algorithm.corona_constraints_at_proof, 92);
+assert.equal(archivedPolycubeContactDisjunction.forced_disjunction.minimum_nontrivial_size, 6);
+assert.equal(archivedPolycubeContactDisjunction.forced_disjunction.forbidden_placements, 36);
+assert.equal(archivedPolycubeContactDisjunction.replay.all_exhausted, true);
+assert.equal(survivors[0].census_candidate.screening.corona_contact_minimum_nontrivial_disjunction, 6);
+assert.equal(
+  survivors[0].census_candidate.screening.corona_contact_disjunction_report,
+  "data/polycube-volume9-contact-disjunction-2026-08-20.json"
 );
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);

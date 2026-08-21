@@ -1,0 +1,42 @@
+{
+  "kind": "polycube_volume9_minimum_nontrivial_contact_disjunction",
+  "date": "2026-08-20",
+  "candidate": "p9-42947",
+  "mirror_equivalent": "p9-42969",
+  "model": "radius-one root-contact types canonicalized under the root tile's proper rotational stabilizer",
+  "catalog": {
+    "placements": 605,
+    "contact_types": 69,
+    "single_cell_coverage_clauses": 11
+  },
+  "algorithm": {
+    "kind": "exact minimum hitting set with GCTS counterexample oracle",
+    "iterations": 92,
+    "verified_counterexample_coronas": 91,
+    "corona_constraints_at_proof": 92,
+    "excluded_trivial_clauses": "every candidate containing a complete single-target-cell coverage clause",
+    "minimality": "the 92 accumulated legal coronas have no admissible hitting set of size below six; a six-type set then exhausts the exact corona search"
+  },
+  "forced_disjunction": {
+    "minimum_nontrivial_size": 6,
+    "type_indices": [3, 25, 29, 43, 44, 53],
+    "forbidden_placements": 36,
+    "contact_types": [
+      { "index": 3, "placements": 3, "key": "0,0,1:-1,0,0;0,0,1:0,-1,0;0,0,1:0,0,1;0,1,1:-1,0,0;0,1,2:0,-1,0;1,0,1:0,0,1" },
+      { "index": 25, "placements": 3, "key": "0,0,1:0,-1,0;1,0,1:0,-1,0;1,0,1:0,0,1" },
+      { "index": 29, "placements": 3, "key": "0,0,1:0,0,1;0,1,1:1,0,0;0,1,2:0,-1,0;0,1,2:0,0,1;0,1,2:1,0,0;1,0,1:0,0,1;1,0,1:0,1,0;1,1,0:0,0,1" },
+      { "index": 43, "placements": 21, "key": "0,1,1:0,1,0" },
+      { "index": 44, "placements": 3, "key": "0,1,1:0,1,0;0,1,1:1,0,0;0,1,2:1,0,0;1,0,1:0,1,0;1,1,0:0,0,1;1,2,0:0,0,1" },
+      { "index": 53, "placements": 3, "key": "0,1,1:1,0,0;0,1,2:1,0,0;1,0,1:0,1,0;1,1,0:0,0,1" }
+    ],
+    "interpretation": "Every legal first corona contains at least one placement from these six symmetry-canonical contact types. No smaller such disjunction survives after excluding single-cell coverage clauses."
+  },
+  "replay": {
+    "seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+    "all_exhausted": true,
+    "nodes_each": 4,
+    "failed_states_each": 4,
+    "stopped_by": null
+  },
+  "warning": "This is a nontrivial local compatibility rule, not a space-tiling certificate, substitution hierarchy, or aperiodicity proof."
+}
