@@ -5,6 +5,7 @@
   "inner_layer": 5,
   "tiling_model": "proper cubic rotations; one fixed root; exact finite face-adjacency coronas",
   "implementation_commit": "8aa70ff972fceab40e6c05852346b71b81b0448b",
+  "pair_selection_commit": "a6da6ee",
   "matched_15_cell_encoding_ab": {
     "random_seed": 198,
     "minimum_outer_placements": 79,
@@ -68,23 +69,24 @@
     }
   },
   "full_coverability_cegar_portfolio": {
-    "z3_sat_outer_states": 15,
+    "z3_sat_outer_states": 19,
     "z3_timeout_trials": 0,
     "outer_placement_distribution": {
       "66": 3,
-      "67": 2,
+      "67": 3,
       "68": 3,
-      "69": 2,
+      "69": 4,
       "70": 4,
+      "71": 1,
       "72": 1
     },
-    "exact_dead_outer_states": 15,
+    "exact_dead_outer_states": 19,
     "immediate_dead_target_obstructions": 0,
-    "resolved_subtree_obstructions": 15,
-    "continuation_nodes": 51,
-    "maximum_single_continuation_nodes": 7,
-    "final_symmetry_closed_clauses": 186,
-    "final_symmetry_expanded_pair_constraints": 30,
+    "resolved_subtree_obstructions": 19,
+    "continuation_nodes": 74,
+    "maximum_single_continuation_nodes": 9,
+    "final_symmetry_closed_clauses": 198,
+    "final_symmetry_expanded_pair_constraints": 42,
     "sources": [
       {
         "path": "runs/p9-radius4-to5-full-coverability-grouped-seed209-summary.json",
@@ -101,6 +103,12 @@
       {
         "path": "runs/p9-radius4-to5-full-pair-grouped-seed218-summary.json",
         "sha256": "a010d46b35d8d6b807701914a81e97a663248cf529c568ab3b4d3b64b6212cd1"
+      },
+      {
+        "path": "runs/p9-radius4-to5-full-pair-maxblocked-seed224-summary.json",
+        "sha256": "051c4b76e241bd0f712bfaefb5a6cb9e187a09677a6bd049974ab0eed93fa270",
+        "pair_selection": "max-blocked-combinations",
+        "selected_pair_candidate_combinations_blocked": [5, 3, 2, 9]
       }
     ]
   },
@@ -108,5 +116,5 @@
   "outer_search_exhausted": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Grouped pseudo-Boolean conflict implications make exact full next-ring single-cell coverability practical enough to propose and independently verify radius-four states. The 15 full-coverability proposals eliminate the previous immediate-dead-cell failure mode and require resolved-subtree GCTS proofs, but all still fail at radius five. Lazy pair constraints raise the best continuation proof to seven nodes. This is stronger finite negative evidence and a better GCTS stress test, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Grouped pseudo-Boolean conflict implications make exact full next-ring single-cell coverability practical enough to propose and independently verify radius-four states. The 19 full-coverability proposals eliminate the previous immediate-dead-cell failure mode and require resolved-subtree GCTS proofs, but all still fail at radius five. Lazy pair constraints and maximum-blocked-combination selection raise the best continuation proof to nine nodes. This is stronger finite negative evidence and a better GCTS stress test, not a non-tiling or aperiodicity certificate."
 }
