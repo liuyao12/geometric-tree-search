@@ -259,10 +259,11 @@ h1 {
   vertical-align: -.22em;
 }
 
-.mathbb {
-  font-family: "STIX Two Math", "Cambria Math", "Times New Roman", serif;
+.number-field {
+  font-family: inherit;
   font-style: normal;
-  font-weight: 600;
+  font-size: 1em;
+  font-weight: 700;
 }
 
 .orientation-count { justify-items: end; }
