@@ -17,6 +17,10 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "customVectors: unwrappedRingSupport(source, waters" in source
     assert 'cluster.visualKind === "ring"' in source
     assert "[index, (index + 1) % sites.length, \"ring\"]" in source
+    assert "function waterBridgePolyhedron(sites)" in source
+    assert "if (bridge) return bridge" in source
+    assert "A generic hull is the wrong representation here" in source
+    assert "[0, 1, 2], [3, paired[1], paired[0]]" in source
 
 
 if __name__ == "__main__":

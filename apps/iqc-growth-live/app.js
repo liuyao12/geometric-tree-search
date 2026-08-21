@@ -1859,11 +1859,49 @@ function convexHullTriangles(sites) {
   return faces;
 }
 
+function waterBridgePolyhedron(sites) {
+  // buildWaterClusterCover stores each bridge as O,H,H,O,H,H.  Preserve the
+  // two molecular faces and connect their corresponding vertices as a
+  // triangular prism.  A generic hull is the wrong representation here:
+  // water dimers are close to coplanar, so every coplanar triple can look like
+  // a hull face and produces the misleading spoke/fan drawing.
+  if (sites.length !== 6 || sites[0].atom.species !== "O" || sites[3].atom.species !== "O") return null;
+  const firstHydrogens = [1, 2];
+  const secondHydrogens = [4, 5];
+  if (![...firstHydrogens, ...secondHydrogens].every((index) => sites[index].atom.species === "H")) return null;
+  const direct = sites[1].vector.distanceTo(sites[4].vector) + sites[2].vector.distanceTo(sites[5].vector);
+  const crossed = sites[1].vector.distanceTo(sites[5].vector) + sites[2].vector.distanceTo(sites[4].vector);
+  const paired = direct <= crossed ? secondHydrogens : secondHydrogens.slice().reverse();
+  const faces = [
+    [0, 1, 2], [3, paired[1], paired[0]],
+    [0, 3, paired[0], 1], [0, 2, paired[1], 3], [1, paired[0], paired[1], 2],
+  ];
+  const edges = new Map();
+  faces.forEach((face) => face.forEach((first, index) => {
+    const second = face[(index + 1) % face.length];
+    const key = first < second ? `${first}:${second}` : `${second}:${first}`;
+    if (!edges.has(key)) edges.set(key, [first, second, "outline"]);
+  }));
+  [[0, 1], [0, 2], [3, 4], [3, 5]].forEach(([first, second]) => {
+    edges.set(`bond:${first}:${second}`, [first, second, "bond"]);
+  });
+  const hydrogenBond = [
+    [1, 3], [2, 3], [4, 0], [5, 0],
+  ].map(([first, second]) => ({ first, second, distance: sites[first].vector.distanceTo(sites[second].vector) }))
+    .sort((first, second) => first.distance - second.distance)[0];
+  if (hydrogenBond) edges.set("hydrogen-bond", [hydrogenBond.first, hydrogenBond.second, "hydrogen"]);
+  return { faces, edges: [...edges.values()] };
+}
+
 function clusterDisplayTopology(cluster, sites) {
   if (cluster.visualKind === "molecule") return { faces: [[0, 1, 2]], edges: [[0, 1, "bond"], [0, 2, "bond"], [1, 2, "outline"]] };
   if (cluster.visualKind === "ring") {
     const edges = sites.map((_, index) => [index, (index + 1) % sites.length, "ring"]);
     return { faces: [sites.map((_, index) => index)], edges };
+  }
+  if (cluster.visualKind === "bridge") {
+    const bridge = waterBridgePolyhedron(sites);
+    if (bridge) return bridge;
   }
   const faces = convexHullTriangles(sites);
   const edges = new Map();
@@ -1872,16 +1910,6 @@ function clusterDisplayTopology(cluster, sites) {
     const key = first < second ? `${first}:${second}` : `${second}:${first}`;
     if (!edges.has(key)) edges.set(key, [first, second, "outline"]);
   }));
-  if (cluster.visualKind === "bridge") {
-    const oxygens = sites.map((site, index) => site.atom.species === "O" ? index : -1).filter((index) => index >= 0);
-    const hydrogens = sites.map((site, index) => site.atom.species === "H" ? index : -1).filter((index) => index >= 0);
-    hydrogens.forEach((hydrogen) => {
-      const ranked = oxygens.map((oxygen) => ({ oxygen, distance: sites[hydrogen].vector.distanceTo(sites[oxygen].vector) }))
-        .sort((first, second) => first.distance - second.distance);
-      if (ranked[0]) edges.set(`bond:${hydrogen}`, [hydrogen, ranked[0].oxygen, "bond"]);
-      if (ranked[1]) edges.set(`hydrogen:${hydrogen}`, [hydrogen, ranked[1].oxygen, "hydrogen"]);
-    });
-  }
   return { faces, edges: [...edges.values()] };
 }
 
