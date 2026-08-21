@@ -283,9 +283,7 @@ h1 {
 }
 
 .orientation-graph-key {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px 8px;
+  display: block;
   margin-top: 7px;
   color: var(--muted);
   font-size: 7px;
@@ -302,19 +300,13 @@ h1 {
   white-space: nowrap;
 }
 
-.orientation-graph-key span:last-child { grid-column: 1 / -1; }
-
 .orientation-graph-key i {
   display: inline-block;
   flex: 0 0 12px;
   width: 12px;
   height: 2px;
-  background: #7d8985;
+  background: var(--ink);
 }
-
-.orientation-graph-key .graph-quarter { background: #3478df; }
-.orientation-graph-key .graph-third { background: #f2553d; }
-.orientation-graph-key .graph-frame { background: #7d8985; }
 
 .orientation-matrix {
   margin-top: 11px;

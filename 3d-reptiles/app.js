@@ -435,12 +435,6 @@ function axisAnglePoint(quaternion) {
     .multiplyScalar(angle / Math.PI);
 }
 
-function generationEdgeCategory(childIndex) {
-  if (childIndex === 1 || childIndex === 2) return "quarter";
-  if (childIndex === 6 || childIndex === 7) return "third";
-  return "frame";
-}
-
 function buildOrientationGenerationEdges(targetGeneration) {
   if (targetGeneration === 0) return [];
   const normalization = fixedPath.clone().invert();
@@ -519,7 +513,6 @@ function buildOrientationGenerationEdges(targetGeneration) {
           targetKey,
           sourceQuaternion,
           targetQuaternion,
-          category: generationEdgeCategory(childIndex),
           generation: targetGeneration - depth
         });
       }
@@ -552,36 +545,28 @@ function drawOrientationGenerationGraph() {
   orientationGenerationEdges = buildOrientationGenerationEdges(generation);
   orientationPlot.dataset.generationEdges = String(orientationGenerationEdges.length);
   let segmentCount = 0;
-  const categoryColors = {
-    quarter: 0x3478df,
-    third: 0xf2553d,
-    frame: 0x7d8985
-  };
-  for (const category of ["frame", "quarter", "third"]) {
-    for (const highlighted of [false, true]) {
-      const positions = [];
-      for (const edge of orientationGenerationEdges) {
-        if (edge.category !== category) continue;
-        const incident = selectedOrientationKey !== null
-          && (edge.sourceKey === selectedOrientationKey || edge.targetKey === selectedOrientationKey);
-        if (incident !== highlighted) continue;
-        appendOrientationSegment(positions, edge.sourceQuaternion, edge.targetQuaternion);
-      }
-      if (!positions.length) continue;
-      segmentCount += positions.length / 6;
-      const geometry = new THREE.BufferGeometry();
-      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-      const material = new THREE.LineBasicMaterial({
-        color: categoryColors[category],
-        transparent: true,
-        opacity: highlighted ? 1 : selectedOrientationKey === null ? (category === "frame" ? 0.46 : 0.78) : 0.1,
-        depthWrite: false,
-        depthTest: false
-      });
-      const lines = new THREE.LineSegments(geometry, material);
-      lines.renderOrder = highlighted ? 3 : 2;
-      orientationGraphGroup.add(lines);
+  for (const highlighted of [false, true]) {
+    const positions = [];
+    for (const edge of orientationGenerationEdges) {
+      const incident = selectedOrientationKey !== null
+        && (edge.sourceKey === selectedOrientationKey || edge.targetKey === selectedOrientationKey);
+      if (incident !== highlighted) continue;
+      appendOrientationSegment(positions, edge.sourceQuaternion, edge.targetQuaternion);
     }
+    if (!positions.length) continue;
+    segmentCount += positions.length / 6;
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+    const material = new THREE.LineBasicMaterial({
+      color: 0x17201e,
+      transparent: true,
+      opacity: highlighted ? 1 : selectedOrientationKey === null ? 0.58 : 0.1,
+      depthWrite: false,
+      depthTest: false
+    });
+    const lines = new THREE.LineSegments(geometry, material);
+    lines.renderOrder = highlighted ? 3 : 2;
+    orientationGraphGroup.add(lines);
   }
   orientationPlot.dataset.generationSegments = String(segmentCount);
 }
