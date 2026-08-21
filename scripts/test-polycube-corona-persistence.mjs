@@ -41,6 +41,14 @@ try {
 
   const report = join(temporaryDirectory, "training.ndjson");
   writeFileSync(report, trainingOutput);
+  const emptyResume = spawnSync(process.execPath, [
+    script.pathname,
+    `--input-report=${report}`,
+    "--input-classification=unresolved",
+    "--input-stopped-by=time_limit"
+  ], { encoding: "utf8" });
+  assert.notEqual(emptyResume.status, 0);
+  assert.match(emptyResume.stderr, /No candidates matched/);
   const replayOutput = run([
     `--input-report=${report}`,
     `--obstruction-initial-nogood-report=${report}`,

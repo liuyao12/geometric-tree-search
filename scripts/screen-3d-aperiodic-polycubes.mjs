@@ -84,6 +84,9 @@ const reportCandidates = inputReports.length
         input_periodic_fast: periodic_fast ?? null
       })))
   : null;
+if (inputReports.length && !reportCandidates.length && !booleanArg("allow-empty-input", false)) {
+  throw new Error(`No candidates matched the requested input reports and filters (${inputReports.join(", ")})`);
+}
 const size = requestedVoxels?.length ?? reportCandidates?.[0]?.voxels?.length
   ?? Math.max(1, Math.floor(numberArg("size", 5)));
 const includeReflections = booleanArg("include-reflections", false);

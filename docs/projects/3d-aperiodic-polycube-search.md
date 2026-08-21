@@ -97,7 +97,9 @@ If a periodic shard mixes completed misses with budget stops,
 fully checked. This prevents a timed-out two-copy search from being silently
 skipped when the next shard starts at three copies. Comma-separate multiple
 paths in `--input-report` to consume a sharded census without first rewriting
-its receipts.
+its receipts. A report-driven run now fails if its classification and stop
+filters match no candidates; use `--allow-empty-input=true` only when an empty
+shard is an expected orchestration result.
 Once an input receipt has already exhausted a stage, `--periodic-screen=false`
 and `--isohedral-screen=false` skip those lanes entirely. This is preferable to
 assigning a tiny artificial time limit: a skipped stage is explicit in every
