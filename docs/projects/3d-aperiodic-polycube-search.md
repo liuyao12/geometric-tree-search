@@ -89,6 +89,8 @@ run on shapes already eliminated by a smaller exact quotient. When the HNF
 torus pass is intended to be exhaustive at the current copy bound,
 `--box-screen=false --general-periodic=false` avoids redundant constructive
 fallbacks and produces a clean input pool for the next motif-size shard.
+`--report-chirality=false` skips mirror classification on intermediate rows;
+chirality can be computed only for the much smaller final survivor pool.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately

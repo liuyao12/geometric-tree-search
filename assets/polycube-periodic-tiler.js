@@ -15,7 +15,8 @@ const dot = (left, right) => left.reduce((sum, value, index) => sum + value * ri
  */
 export function findPolycubeCyclicTiling(voxels, options = {}) {
   const includeReflections = !!options.includeReflections;
-  const orientations = polycubeOrientations(voxels, { includeReflections });
+  const orientations = options.orientations
+    ?? polycubeOrientations(voxels, { includeReflections });
   const modulus = voxels.length;
   let tests = 0;
   const startedAt = performance.now();
@@ -53,7 +54,10 @@ export function findPolycubeCyclicTiling(voxels, options = {}) {
   };
 }
 
+const hnfCandidateCache = new Map();
+
 const hnfCandidates = volume => {
+  if (hnfCandidateCache.has(volume)) return hnfCandidateCache.get(volume);
   const out = [];
   for (let a = 1; a <= volume; a++) {
     if (volume % a) continue;
@@ -70,9 +74,11 @@ const hnfCandidates = volume => {
       }
     }
   }
-  return out.sort((left, right) => left.span - right.span || left.skew - right.skew
+  const sorted = out.sort((left, right) => left.span - right.span || left.skew - right.skew
     || left.a - right.a || left.d - right.d || left.f - right.f
     || left.b - right.b || left.c - right.c || left.e - right.e);
+  hnfCandidateCache.set(volume, sorted);
+  return sorted;
 };
 
 const reduceHnf = ([inputX, inputY, inputZ], hnf) => {
@@ -112,13 +118,15 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
   const maxCopies = Math.max(1, Math.floor(Number(options.maxCopies) || 4));
   const minCopies = Math.max(1, Math.min(maxCopies,
     Math.floor(Number(options.minCopies) || 1)));
-  const cyclic = minCopies <= 1 ? findPolycubeCyclicTiling(voxels, options) : null;
-  if (cyclic?.certified) return cyclic;
   const includeReflections = !!options.includeReflections;
+  const orientations = polycubeOrientations(voxels, { includeReflections });
+  const cyclic = minCopies <= 1
+    ? findPolycubeCyclicTiling(voxels, { ...options, orientations })
+    : null;
+  if (cyclic?.certified) return cyclic;
   const timeLimitMs = Math.max(1, Number(options.timeLimitMs) || 1000);
   const nodeLimit = Math.max(1, Math.floor(Number(options.nodeLimit) || 100000));
   const startedAt = performance.now();
-  const orientations = polycubeOrientations(voxels, { includeReflections });
   const rootOrientationIndex = Math.max(0, orientations.findIndex(orientation =>
     orientation.key === polycubeKey(voxels)
   ));

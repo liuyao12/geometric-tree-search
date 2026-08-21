@@ -40,6 +40,7 @@ const reportCandidates = inputReport
 const size = requestedVoxels?.length ?? reportCandidates?.[0]?.voxels?.length
   ?? Math.max(1, Math.floor(numberArg("size", 5)));
 const includeReflections = booleanArg("include-reflections", false);
+const reportChirality = booleanArg("report-chirality", true);
 const maxCandidates = Math.max(1, Math.floor(numberArg("max-candidates", Infinity)));
 const startIndex = Math.max(0, Math.floor(numberArg("start-index", 0)));
 const periodicMaxTiles = Math.max(1, Math.min(16, Math.floor(numberArg("periodic-max-tiles", 4))));
@@ -150,6 +151,7 @@ process.stdout.write(`${JSON.stringify({
   size,
   candidates: candidates.length,
   equivalence: includeReflections ? "rotations_and_reflections" : "proper_rotations",
+  report_chirality: reportChirality,
   periodic_max_tiles: periodicMaxTiles,
   periodic_min_tiles: periodicMinTiles,
   box_screen: boxScreen,
@@ -208,7 +210,7 @@ for (let index = 0; index < candidates.length; index++) {
     id: candidate.id,
     key: candidate.key,
     voxels: candidate.voxels,
-    chiral: isChiralPolycube(candidate.voxels),
+    chiral: reportChirality ? isChiralPolycube(candidate.voxels) : null,
     classification,
     easy_witness: easy.certified ? {
       kind: easy.kind,
