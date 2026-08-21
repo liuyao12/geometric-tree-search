@@ -5004,3 +5004,36 @@ audit finds 25 exact terminals among 600; the best frozen local-section rank is
 current marking does not preserve the correct lineage. These are consumed
 diagnostics only; no fresh confirmation, autonomous continuation, stationary
 production, or exponential IQC claim follows.
+
+### Clusters² future-option portfolio
+
+The tree now assigns a parent an explicit downstream option value instead of
+ranking it only by the three placements it has already made. Every one of the
+eight frozen first-block parents receives its complete second-block tree
+(`126–141` terminals). Four train-frozen recurrent heads—base, colored
+geometry, ports, and coupled pose/port—score exactly those same child IDs. For
+each channel the parent value is the mean of its best eight children; the
+four-parent beam first admits one parent per channel and then deduplicates
+physical states. No target, material family, lattice coordinate, or candidate
+ID enters a marking score.
+
+| consumed two-block audit | result |
+| --- | ---: |
+| exact parent in the eight-parent source beam | rank `8` |
+| exact parent by base / colored / ports / coupled option | `5 / 5 / 1 / 2` |
+| exact parent by mean option | `3` |
+| selected parent IDs | `7 / 1 / 8 / 5` |
+| selected child portfolio under exact parent | `20` distinct terminals |
+| retained exact parent→child path | `8 → 123` |
+| any channel's greedy best child exact | no |
+| marginal-preserving shuffle retention | `15 / 31` |
+| retention / mean-rank plus-one p | `.50 / .40625` |
+
+This closes the specific pruning failure found by the prefix audit: the exact
+first parent and one exact child are now simultaneously present in a bounded,
+target-free clusters-of-clusters portfolio. It does **not** prove that the
+learned value identifies the path—half the weak nulls also retain it, and no
+greedy child is exact. The next gate is a group-heldout parent-option corpus
+followed by a third-block self-fed execution from the retained six-action
+states. Autonomous commitment, stationary recurrence, and exponential IQC
+growth remain red.

@@ -2626,4 +2626,23 @@ candidate generation itself remains target-free. The next gate is a
 transferable clusters²/port-incidence value that retains the bounded exact
 lineage, not another wider brute-force tree.
 
+### Clusters² future-option portfolio
+
+Parent selection now looks one complete cluster block ahead. The base,
+colored, port, and coupled frozen markings all score the same `126–141` child
+terminals under each of eight parents, and each channel contributes a parent
+to a shared width-four beam. The only exact parent moves from source rank eight
+to port-option rank one and mean-option rank three. Its union-of-top-eight
+child portfolio contains one exact continuation, yielding the retained
+six-action path `parent 8 → child 123`; none of the four greedy top children is
+exact.
+
+This is a supply result, not a selection claim. Fifteen of 31
+marginal-preserving score shuffles also retain the exact parent (`p=.50`), and
+the exact mean rank is not significant (`p=.40625`). The consumed target is
+opened only after the tree, scores, channel orders, and selected IDs are
+hashed. A group-heldout parent-option corpus and a third self-fed block are
+still required before autonomous, stationary, or exponential IQC growth can
+turn green.
+
 Serve the repository root and open `/iqc-growth-live/`.
