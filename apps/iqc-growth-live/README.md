@@ -2538,4 +2538,52 @@ still ranks only 107th by fusion and 114th by the scalar head. The next target
 is therefore an earlier, cheaper connection section—not a 107-candidate
 portfolio. This is consumed diagnostic evidence, not a replayed confirmation.
 
+### Stage-local rollout value
+
+The repaired `12→4→8` tree is next scored before terminal fusion rather than
+asking a late scalar head to recover a rank-107 action. Twenty disjoint
+development nuclei contribute 320 target-free training candidates; the
+execution portfolio remains eight candidates per nucleus, or 160 total. A
+bounded 16-step, four-time-bin section records connection discharge,
+contradiction, and separation channels and changes only the ordering of those
+same exact actions.
+
+| stage-local development | result |
+| --- | ---: |
+| development nuclei / exact-supply nuclei | 20 / 19 |
+| training / execution candidates | 320 / 160 |
+| selected section | temporal-61 · horizon 16 · 4 bins · k=7 weighted |
+| selected exact / colored sites | 19 / 19 · 59 |
+| connection-only exact / colored sites | 19 / 19 · 57 |
+| 31-shuffle maxima exact / sites | 18 / 58 |
+| plus-one exact / site p | `.03125 / .03125` |
+
+Every null trial shuffles the complete sixteen-candidate label vector inside
+each nucleus and repeats the 162-model selection. The result validates a local
+connection-value signal on consumed development data; it does not validate a
+search policy, autonomous growth, recursive stationarity, or exponential IQC
+growth.
+
+### Preregistered rollout-ranked confirmation
+
+The temporal-61 model, the complete `12→4→8` geometry, the `(4→8→8)` retained
+portfolio, a three-block self-fed protocol, and the geometry-only maximin
+centre `(120,-40,-220)` were frozen before the new nucleus was generated. The
+476-atom seed drives three target-free blocks. All candidate IDs, rollout
+features, rankings, and selected successor clouds freeze before one target
+factory call creates the 2,069-atom reference.
+
+| confirmation block | marked | stable-prefix baseline |
+| ---: | ---: | ---: |
+| 1 | 2 / 3 | **3 / 3 exact** |
+| 2 | 2 / 3 | 2 / 3 |
+| 3 | 2 / 3 | 1 / 3 |
+| total | 6 / 9 · 0 exact blocks | 6 / 9 · 1 exact block |
+
+The significant development model therefore fails spatial transfer: it
+displaces a correct first baseline action and does not produce one exact
+three-site block. The one-shot target is consumed and is not retuned. The
+first-block, sustained-continuation, autonomous, stationary, and exponential
+gates all remain red.
+
 Serve the repository root and open `/iqc-growth-live/`.

@@ -4913,3 +4913,49 @@ portfolio still loses it. This rules out both “just widen the portfolio” and
 “just widen every level.” The next implementation must apply a transferable
 connection/site section earlier in the tree, before expensive complete-terminal
 fusion. The target is consumed; no confirmation or growth claim is revised.
+
+### Stage-local rollout value
+
+The repaired `12→4→8` tree is next scored before terminal fusion rather than
+asking a late scalar head to recover a rank-107 action. Twenty disjoint
+development nuclei contribute 320 target-free training candidates; the
+execution portfolio remains eight candidates per nucleus, or 160 total. A
+bounded 16-step, four-time-bin section records connection discharge,
+contradiction, and separation channels and changes only the ordering of those
+same exact actions.
+
+| stage-local development | result |
+| --- | ---: |
+| development nuclei / exact-supply nuclei | 20 / 19 |
+| training / execution candidates | 320 / 160 |
+| selected section | temporal-61 · horizon 16 · 4 bins · k=7 weighted |
+| selected exact / colored sites | 19 / 19 · 59 |
+| connection-only exact / colored sites | 19 / 19 · 57 |
+| 31-shuffle maxima exact / sites | 18 / 58 |
+| plus-one exact / site p | `.03125 / .03125` |
+
+All 31 null trials shuffle the complete sixteen-candidate label vector inside
+each nucleus and repeat the full 162-model selection. This is strong evidence
+for a bounded local connection-value representation on consumed development
+data. It is not evidence for autonomous continuation or recurrence.
+
+### Preregistered rollout-ranked confirmation
+
+The temporal-61 model, source/fixture hashes, complete `12→4→8` geometry, the
+`(4→8→8)` retained portfolio, three-block self-fed protocol, and maximin centre
+`(120,-40,-220)` are committed before atom access. The 476-atom seed produces
+all three target-free candidate trees, rollouts, scores, and successor clouds
+before one target factory call creates the 2,069-atom reference.
+
+| confirmation block | marked | stable-prefix baseline |
+| ---: | ---: | ---: |
+| 1 | 2 / 3 | **3 / 3 exact** |
+| 2 | 2 / 3 | 2 / 3 |
+| 3 | 2 / 3 | 1 / 3 |
+| total | 6 / 9 · 0 exact blocks | 6 / 9 · 1 exact block |
+
+The marked and baseline arms tie in aggregate site count, but the mark replaces
+an exact first baseline block with an inexact one. The receipt was frozen after
+one target opening and is not retried. First-block transfer, three-block
+sustained continuation, autonomous finite growth, stationary recurrence, and
+exponential IQC growth are all red.
