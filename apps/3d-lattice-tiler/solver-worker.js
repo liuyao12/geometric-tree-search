@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260821-polycube10-v123";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260821-polycube10-v124";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

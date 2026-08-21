@@ -246,13 +246,15 @@ radius-three patches for `p10-062236` and `p10-053068`.
 
 Five free-isometry classes remain: `p10-052588`, `p10-054782`, `p10-055695`,
 `p10-290795`, and `p10-346304`. Every one has an independently verified
-radius-two patch and exhausts 89,435 exact HNF quotient bases through nine
+radius-two patch and exhausts 117,645 exact HNF quotient bases through ten
 copies. Across a seven-run radius-three portfolio, each remains a timeout—not
 an exhausted non-tiler search. They replace the two obsolete radius-two entries
 in the web catalogue because they exercise the improved GCTS solver much more
 strongly. The replayable summary is
-`data/polycube-volume10-gcts-funnel-through9-2026-08-21.json`. None of these
-bounded results proves tiling or aperiodicity.
+`data/polycube-volume10-gcts-funnel-through9-2026-08-21.json`; the independently
+budgeted ten-copy extension is
+`data/polycube-volume10-periodic-copy10-2026-08-21.json`. None of these bounded
+results proves tiling or aperiodicity.
 
 The continuation solver now extracts a proof-relevant reason from a trapped
 patch instead of memoizing the entire boundary. For a radius-five target cell,
@@ -374,6 +376,6 @@ controlled comparisons but is disabled by default.
    on the incoming non-active reciprocal states and test whether their required
    outgoing six-state choices form only finite cycles or support unbounded
    state paths.
-6. Extend the five volume-ten free classes beyond nine-copy HNF quotients and
+6. Extend the five volume-ten free classes beyond ten-copy HNF quotients and
    make their radius-three portfolio resumable across learned conflict clauses;
    a timeout must never be promoted to a finite obstruction.

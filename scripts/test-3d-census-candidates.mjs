@@ -374,6 +374,10 @@ const archivedVolume10GctsFunnelThrough9 = JSON.parse(await readFile(
   new URL("../data/polycube-volume10-gcts-funnel-through9-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedVolume10PeriodicCopy10 = JSON.parse(await readFile(
+  new URL("../data/polycube-volume10-periodic-copy10-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1295,8 +1299,8 @@ assert.ok(volumeNineSurvivor
 );
 assert.ok(survivors.filter(figure => figure.census_candidate.volume === 10).every(figure =>
   figure.census_candidate.kind === "polycube_census"
-  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 9
-  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 89435
+  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 10
+  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 117645
   && figure.census_candidate.screening.corona_completed_radius === 2
   && figure.census_candidate.screening.corona_completed_verified === true
   && figure.census_candidate.screening.corona_next_radius === 3
@@ -1340,6 +1344,10 @@ assert.equal(
 );
 assert.equal(archivedVolume10GctsFunnelThrough9.exact_periodic_funnel.copy_9_final_pool.timeouts, 0);
 assert.equal(archivedVolume10GctsFunnelThrough9.final.free_class_candidates, 5);
+assert.equal(archivedVolume10PeriodicCopy10.final.new_periodic_certificates, 0);
+assert.equal(archivedVolume10PeriodicCopy10.final.final_timeouts, 0);
+assert.equal(archivedVolume10PeriodicCopy10.final.unique_copy_10_hnf_bases_exhausted, 141050);
+assert.equal(archivedVolume10PeriodicCopy10.final.hnf_bases_per_surviving_class_through_10, 117645);
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),
   ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304"]
