@@ -203,6 +203,16 @@ through four. They now enter the exact-corona/GCTS funnel; larger periodic
 fundamental domains are still possible. The cumulative receipt is
 `data/polycube-volume10-periodic-through4-2026-08-20.json`.
 
+The independently budgeted five-copy pass finds two further periodic tiles,
+`p10-085206` and `p10-102882`. Both five-tile quotient certificates pass the
+independent Cramer's-rule replay. A CPU-clock initial pass completed 4,035
+misses and left 2,009 late-HNF timeouts; resuming each timeout at its
+interrupted HNF resolves every one as a miss. The remaining 6,044 shapes have
+therefore exhausted all 5,642 five-copy HNF bases, or 14,570 bases cumulatively
+from motif sizes one through five. This remains a bounded periodic exclusion,
+not evidence of tiling or aperiodicity. The gap-free receipt is
+`data/polycube-volume10-periodic-through5-2026-08-21.json`.
+
 The continuation solver now extracts a proof-relevant reason from a trapped
 patch instead of memoizing the entire boundary. For a radius-five target cell,
 it enumerates every root-compatible tile placement through that cell and finds
