@@ -397,7 +397,10 @@ function turnGenerationColor(generationIntroduced) {
 
 function orientationKey(quaternion) {
   return [quaternion.x, quaternion.y, quaternion.z, quaternion.w]
-    .map((value) => value.toFixed(5))
+    .map((value) => {
+      const rounded = Number(value.toFixed(5));
+      return (Object.is(rounded, -0) ? 0 : rounded).toFixed(5);
+    })
     .join(",");
 }
 
@@ -442,51 +445,97 @@ function buildOrientationGenerationEdges(targetGeneration) {
   if (targetGeneration === 0) return [];
   const normalization = fixedPath.clone().invert();
   const leafKeys = new Set(orientationPointKeys);
-  let parents = [new THREE.Matrix4()];
-  const rootQuaternion = canonicalQuaternion(normalization);
-  const seen = new Set([orientationKey(rootQuaternion)]);
-  const edges = [];
-
+  const resolvedLeafKeys = new Map();
+  const leafOrientations = [...orientationRepresentatives].map(([key, matrix]) => [
+    key,
+    canonicalQuaternion(matrix)
+  ]);
+  const resolveLeafKey = (quaternion) => {
+    const roundedKey = orientationKey(quaternion);
+    if (leafKeys.has(roundedKey)) return roundedKey;
+    if (resolvedLeafKeys.has(roundedKey)) return resolvedLeafKeys.get(roundedKey);
+    let bestKey = null;
+    let bestDot = -1;
+    for (const [key, candidate] of leafOrientations) {
+      const dot = Math.abs(quaternion.dot(candidate));
+      if (dot > bestDot) {
+        bestDot = dot;
+        bestKey = key;
+      }
+    }
+    const resolved = bestDot > 1 - 1e-9 ? bestKey : null;
+    resolvedLeafKeys.set(roundedKey, resolved);
+    return resolved;
+  };
+  const fixedPrefixes = [new THREE.Matrix4()];
   for (let depth = 0; depth < targetGeneration; depth += 1) {
-    const nextByOrientation = new Map();
-    for (const parent of parents) {
-      const parentDisplay = normalization.clone().multiply(parent);
-      const parentQuaternion = canonicalQuaternion(parentDisplay);
-      const parentKey = orientationKey(parentQuaternion);
+    fixedPrefixes.push(
+      fixedPrefixes[depth].clone().multiply(daughterTransforms[FIXED_CHILD_SEQUENCE[depth]])
+    );
+  }
+  const identityQuaternion = canonicalQuaternion(
+    normalization.clone().multiply(fixedPrefixes[targetGeneration])
+  );
+  const identityKey = resolveLeafKey(identityQuaternion);
+  const componentParents = new Map([...leafKeys].map((key) => [key, key]));
+  const findComponent = (key) => {
+    let root = key;
+    while (componentParents.get(root) !== root) root = componentParents.get(root);
+    while (componentParents.get(key) !== key) {
+      const parent = componentParents.get(key);
+      componentParents.set(key, root);
+      key = parent;
+    }
+    return root;
+  };
+  const joinComponents = (first, second) => {
+    const firstRoot = findComponent(first);
+    const secondRoot = findComponent(second);
+    if (firstRoot === secondRoot) return false;
+    componentParents.set(secondRoot, firstRoot);
+    return true;
+  };
+  const edges = [];
+  let suffixWords = [new THREE.Matrix4()];
+
+  // Work from the innermost retained tile outward. At each expansion the
+  // distinguished child is already present; seven congruent copies of the
+  // entire suffix cluster are placed around it.
+  for (let depth = targetGeneration - 1; depth >= 0; depth -= 1) {
+    const prefix = fixedPrefixes[depth];
+    const retainedChild = daughterTransforms[FIXED_CHILD_SEQUENCE[depth]];
+    for (const suffix of suffixWords) {
+      const sourceWord = prefix.clone().multiply(retainedChild).multiply(suffix);
+      const sourceQuaternion = canonicalQuaternion(normalization.clone().multiply(sourceWord));
+      const sourceKey = resolveLeafKey(sourceQuaternion);
       for (let childIndex = 0; childIndex < daughterTransforms.length; childIndex += 1) {
-        const child = parent.clone().multiply(daughterTransforms[childIndex]);
-        const childDisplay = normalization.clone().multiply(child);
-        const childQuaternion = canonicalQuaternion(childDisplay);
-        const childKey = orientationKey(childQuaternion);
-        if (!nextByOrientation.has(childKey)) nextByOrientation.set(childKey, child);
-        if (childKey === parentKey || seen.has(childKey) || !leafKeys.has(parentKey) || !leafKeys.has(childKey)) continue;
-        seen.add(childKey);
+        if (childIndex === FIXED_CHILD_SEQUENCE[depth]) continue;
+        const targetWord = prefix.clone().multiply(daughterTransforms[childIndex]).multiply(suffix);
+        const targetQuaternion = canonicalQuaternion(normalization.clone().multiply(targetWord));
+        const targetKey = resolveLeafKey(targetQuaternion);
+        if (targetKey === null || sourceKey === null || targetKey === sourceKey || !joinComponents(sourceKey, targetKey)) continue;
         edges.push({
-          sourceKey: parentKey,
-          targetKey: childKey,
-          sourceQuaternion: parentQuaternion,
-          targetQuaternion: childQuaternion,
+          sourceKey,
+          targetKey,
+          sourceQuaternion,
+          targetQuaternion,
           category: generationEdgeCategory(childIndex),
-          generation: depth + 1
+          generation: targetGeneration - depth
         });
       }
     }
-    parents = [...nextByOrientation.values()];
+    suffixWords = substitute(suffixWords);
   }
+  const identityComponent = findComponent(identityKey);
+  const unlinkedKeys = [...leafKeys].filter((key) => findComponent(key) !== identityComponent);
+  orientationPlot.dataset.unlinkedOrientations = String(unlinkedKeys.length);
   return edges;
 }
 
-function appendQuaternionArc(target, sourceQuaternion, targetQuaternion) {
-  let previous = axisAnglePoint(canonicalizeQuaternion(sourceQuaternion.clone()));
-  const samples = 12;
-  for (let index = 1; index <= samples; index += 1) {
-    const quaternion = sourceQuaternion.clone().slerp(targetQuaternion, index / samples).normalize();
-    const point = axisAnglePoint(canonicalizeQuaternion(quaternion));
-    if (previous.distanceTo(point) < 0.42) {
-      target.push(previous.x, previous.y, previous.z, point.x, point.y, point.z);
-    }
-    previous = point;
-  }
+function appendOrientationSegment(target, sourceQuaternion, targetQuaternion) {
+  const source = axisAnglePoint(canonicalizeQuaternion(sourceQuaternion.clone()));
+  const destination = axisAnglePoint(canonicalizeQuaternion(targetQuaternion.clone()));
+  target.push(source.x, source.y, source.z, destination.x, destination.y, destination.z);
 }
 
 function clearOrientationGraph() {
@@ -516,7 +565,7 @@ function drawOrientationGenerationGraph() {
         const incident = selectedOrientationKey !== null
           && (edge.sourceKey === selectedOrientationKey || edge.targetKey === selectedOrientationKey);
         if (incident !== highlighted) continue;
-        appendQuaternionArc(positions, edge.sourceQuaternion, edge.targetQuaternion);
+        appendOrientationSegment(positions, edge.sourceQuaternion, edge.targetQuaternion);
       }
       if (!positions.length) continue;
       segmentCount += positions.length / 6;
