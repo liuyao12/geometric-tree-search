@@ -59,6 +59,7 @@ const pairEncoding = args.get("pair-encoding") ?? "dnf";
 if (!["dnf", "choice-cnf", "witness-cnf"].includes(pairEncoding)) {
   throw new Error("--pair-encoding must be dnf, choice-cnf, or witness-cnf");
 }
+const rootSymmetryBreaking = booleanArg("root-symmetry-breaking", false);
 const python = args.get("python") ?? "python3";
 const outputDirectory = resolve(args.get("output-dir") ?? `runs/${id}-radius${outerLayer}-to-${innerLayer}-z3-cegar`);
 const reportOutput = resolve(args.get("report-output") ?? `${outputDirectory}/summary.json`);
@@ -159,6 +160,7 @@ process.stdout.write(`${JSON.stringify({
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   pair_encoding: pairEncoding,
+  root_symmetry_breaking: rootSymmetryBreaking,
   initial_clause_count: initialClauseCount,
   initial_pair_coverability_constraints: initialPairCount,
   output_directory: outputDirectory
@@ -181,6 +183,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   ];
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
   if (effectiveNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
+  if (rootSymmetryBreaking) solverArguments.push("--root-symmetry-breaking");
   if (pairConstraints.length) {
     solverArguments.push(`--pair-coverability-report=${pairPath}`);
     solverArguments.push(`--pair-encoding=${pairEncoding}`);
@@ -360,6 +363,7 @@ const summary = {
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   pair_encoding: pairEncoding,
+  root_symmetry_breaking: rootSymmetryBreaking,
   z3_unknown_trials: z3UnknownTrials,
   z3_timeout_ms: z3TimeoutMs,
   z3_process_grace_ms: z3ProcessGraceMs,

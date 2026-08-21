@@ -711,8 +711,8 @@ timeout. Imported clauses make a final UNSAT result conditional until their
 continuation proofs are independently replayed, and a copy-count bound can
 only certify exhaustion of that bounded stratum. A low-copy radius-two to
 three positive control recovers a verified witness after 17 dead proposals.
-For `p9-42947`, 283 radius-four proposals are now exactly rejected at radius
-five, including fifteen 63-copy states. An exact one-step coverability filter
+For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
+five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all
 require resolved-subtree conflicts. Pairwise coverability then promotes two
 more proposals to five-node continuation proofs and learns 114 symmetry-closed
@@ -720,10 +720,13 @@ cell-pair obligations; the full 114-pair formula remains timeout-inconclusive.
 A factored witness-CNF encoding replaces the 322,977 compatible-pair DNF terms
 with 8,208 local witness choices. Under an equal 60-second solver budget it
 finds a new 63-copy proposal where both the DNF and two-sided choice-CNF
-encodings time out. Across five witness-CNF seeds, two proposals are found and
-then exactly rejected at radius five in two and four GCTS nodes; three seeds
-time out, including a fifth diversified seed resumed from all 804 clauses. The
-exact clause set remains 804.
+encodings time out. Across the extended witness-CNF portfolio, two 63-copy
+proposals are exactly rejected at radius five in two and four GCTS nodes. After
+eight earlier 62-copy attempts timed out, the same encoding finds a 62-copy
+proposal; exact GCTS rejects it in eleven nodes. The exact clause set grows to
+807. Two 61-copy runs remain timeout-inconclusive. An exact lex leader under
+the three-element proper-rotation stabilizer removes equivalent proposal
+orbits but does not improve the 61-copy result, so it remains optional.
 The same obligations now run lazily inside continuation-guided GCTS. Two fixed
 production states independently replay their extracted pair clauses; the
 smaller clause uses four placements instead of the exact continuation proof's

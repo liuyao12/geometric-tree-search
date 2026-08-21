@@ -46,11 +46,15 @@
       "max_63_trials": 12,
       "max_63_sat_states": 7,
       "max_63_timeouts": 5,
-      "minimum_outer_placements_witnessed": 63,
-      "max_62_trials": 8,
-      "max_62_sat_states": 0,
+      "minimum_outer_placements_witnessed": 62,
+      "max_62_trials": 9,
+      "max_62_sat_states": 1,
       "max_62_timeouts": 8,
       "max_62_exhausted": false,
+      "max_61_trials": 2,
+      "max_61_sat_states": 0,
+      "max_61_timeouts": 2,
+      "max_61_exhausted": false,
       "source_sha256": [
         "65f201cd5e0a7306486312d616f9685e503c760b7b686b12b548457253a50096",
         "6b317690bd3e2ffcf1c394b8f4a99bfd2c6073c2e0301641549cb8fddbf66c01",
@@ -87,13 +91,13 @@
       "new_incompatible_pairs": 14,
       "new_symmetry_closed_pair_constraints": 42,
       "final_symmetry_closed_pair_constraints": 114,
-      "final_learned_symmetry_closed_clauses": 804,
-      "witness_cnf_trials": 5,
-      "witness_cnf_sat_outer_states": 2,
-      "witness_cnf_timeouts": 3,
-      "witness_cnf_exact_dead_outer_states": 2,
-      "witness_cnf_continuation_nodes": 6,
-      "witness_cnf_learned_clause_sizes": [5, 7],
+      "final_learned_symmetry_closed_clauses": 807,
+      "witness_cnf_trials": 9,
+      "witness_cnf_sat_outer_states": 3,
+      "witness_cnf_timeouts": 6,
+      "witness_cnf_exact_dead_outer_states": 3,
+      "witness_cnf_continuation_nodes": 17,
+      "witness_cnf_learned_clause_sizes": [5, 7, 6],
       "witness_cnf_choice_variables": 8208,
       "witness_cnf_compatibility_terms": 322977,
       "witness_cnf_first_sat_milliseconds": 118924,
@@ -103,8 +107,16 @@
         "abdb5560b0335abd62d6bebeab94be515b7de586c24f86c6836b228f9aee8606",
         "288c8c7dc70c5f43efe65ea380e3f397e425997fcdab7668b6db170be6afae1d",
         "28268e46d53abbbd727b9637e202d8a0d3ac48e695de2c083f8c6c60060872a8",
-        "3295140c2f24f379b45545e0d9c7220256c5aa1c3e6c7ceeb0326096dd10bde3"
+        "3295140c2f24f379b45545e0d9c7220256c5aa1c3e6c7ceeb0326096dd10bde3",
+        "89c254f14aceb917b5890b053bc6d04887a677bab260cafc70ee2c4a04a1c28c",
+        "62acb30baa2682a43fbd500c7b6764f26e039d05d5b8170862cf97e381f716a5",
+        "fb95d3a9bb45049578fb29364ba53932ec796aaeb5936ab377442396795dc235",
+        "b8c50b487aeb60eb3a9a6a7ee7bfe96cc1eba1e6acfde9d940b2c667607a4f99",
+        "481f85bd1101f47da6ed459530b2fd1297e0e4817f001aef382c9853a502f472"
       ],
+      "root_stabilizer_size": 3,
+      "root_lex_leader_constraints": 18130,
+      "root_lex_leader_max_61_status": "timeout",
       "equal_budget_dnf_status": "timeout",
       "equal_budget_choice_cnf_status": "timeout",
       "encoding_ablation_source_sha256": [
@@ -123,7 +135,7 @@
         "c3633ef5e02117bdfd3e443010f99e8361eb23beceb085fb7ef88c318e066d9e",
         "a9d96e4a6d77a807b88012ea93c4717a2150f2560e838badc4754f7e0e2b64cf"
       ],
-      "max_63_pair_114_timeouts": 7,
+      "max_63_pair_114_timeouts": 8,
       "max_64_pair_114_timeouts": 2,
       "pair_114_exhausted": false,
       "source_sha256": [
@@ -133,11 +145,11 @@
         "ce3d943b6edbadf5d97e1bf01aa6b8c7d1c7bec0b89c73dfd19fbd5b4a8ff9c9"
       ]
     },
-    "combined_exact_dead_outer_states": 283,
-    "combined_symmetry_closed_clauses": 804,
+    "combined_exact_dead_outer_states": 284,
+    "combined_symmetry_closed_clauses": 807,
     "verified_radius_5_witness_found": false,
     "radius_4_space_exhausted": false,
     "certified_non_tiler": false
   },
-  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 283 proposed radius-four patches is exactly obstructed at radius five, including 33 economical patches and fifteen 63-copy patches. The one-step filter removes immediate dead targets; the pairwise filter then removes the next 2–4-node failure class and makes two new proposals require five-node continuation proofs. Those states expose 14 new incompatible cell pairs, growing the exact symmetry-closed pair set from 72 to 114. A factored witness-CNF encoding exposes two additional 63-copy states under the same 114 obligations where equal-budget DNF and two-sided choice-CNF runs time out; exact GCTS rejects them in two and four nodes and grows the clause set from 798 to 804. Lazy GCTS pair analysis independently replays both pair obstructions and shrinks one exact conflict clause from seven placements to four; a seeded 5,000,000-node A/B run is neutral because every newly encountered continuation has a simpler immediate obstruction. Nine 114-pair solves time out across the recorded encodings and copy bounds, so the radius-four state space remains unexhausted. These results prove neither non-tiling nor aperiodicity."
+  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 284 proposed radius-four patches is exactly obstructed at radius five, including 34 economical patches: fifteen use 63 copies and one uses 62. The one-step filter removes immediate dead targets; the pairwise filter then removes the next 2–4-node failure class and makes two new proposals require five-node continuation proofs. Those states expose 14 new incompatible cell pairs, growing the exact symmetry-closed pair set from 72 to 114. A factored witness-CNF encoding exposes two additional 63-copy states and the first 62-copy state under the same 114 obligations where earlier runs time out; exact GCTS rejects them in two, four, and eleven nodes and grows the clause set from 798 to 807. Two max-61 witness-CNF runs, including an exact three-element root-stabilizer lex leader, time out, so 62 is only the minimum witnessed and not a proved minimum. Lazy GCTS pair analysis independently replays both pair obstructions and shrinks one exact conflict clause from seven placements to four; a seeded 5,000,000-node A/B run is neutral because every newly encountered continuation has a simpler immediate obstruction. Twelve 114-pair solves time out across the recorded encodings and copy bounds, so the radius-four state space remains unexhausted. These results prove neither non-tiling nor aperiodicity."
 }

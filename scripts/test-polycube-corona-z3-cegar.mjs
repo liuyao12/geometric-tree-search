@@ -28,6 +28,7 @@ try {
     "--timeout-ms=10000",
     "--backend=pb2bv-sat",
     "--max-placements=1",
+    "--root-symmetry-breaking",
     `--output=${boundedOutput}`
   ], { encoding: "utf8", timeout: 30_000 });
   assert.equal(bounded.status, 0, bounded.stderr);
@@ -35,6 +36,9 @@ try {
   assert.equal(boundedReport.z3_status, "unsat");
   assert.equal(boundedReport.classification, "placement_bound_exhausted");
   assert.equal(boundedReport.max_placements, 1);
+  assert.equal(boundedReport.root_symmetry_breaking, true);
+  assert.equal(boundedReport.root_stabilizer_size, 3);
+  assert.ok(boundedReport.symmetry_breaking_constraints > 0);
   assert.match(boundedReport.warning, /not a non-tiling or aperiodicity certificate/);
 
   const allForbiddenPath = join(directory, "all-forbidden.json");

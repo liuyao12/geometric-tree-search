@@ -53,6 +53,28 @@ def orientations(voxels):
     return tuple(unique.values())
 
 
+def root_stabilizer_permutations(root, placements):
+    root_set = set(normalize(root))
+    placement_index = {placement: index for index, placement in enumerate(placements)}
+    permutations = []
+    seen = set()
+    for matrix in proper_rotations():
+        transformed_root = tuple(transform(cell, matrix) for cell in root)
+        minimum = tuple(min(cell[axis] for cell in transformed_root) for axis in range(3))
+        normalized_root = tuple(sorted(tuple(
+            cell[axis] - minimum[axis] for axis in range(3)
+        ) for cell in transformed_root))
+        if set(normalized_root) != root_set:
+            continue
+        permutation = tuple(placement_index[tuple(sorted(tuple(
+            transform(cell, matrix)[axis] - minimum[axis] for axis in range(3)
+        ) for cell in placement))] for placement in placements)
+        if permutation not in seen:
+            seen.add(permutation)
+            permutations.append(permutation)
+    return tuple(permutations)
+
+
 def target_cells(root, layers):
     root_set = set(root)
     target = set()
@@ -106,6 +128,7 @@ def main():
     parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--pair-coverability-report")
     parser.add_argument("--pair-encoding", choices=("dnf", "choice-cnf", "witness-cnf"), default="dnf")
+    parser.add_argument("--root-symmetry-breaking", action="store_true")
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--output")
     args = parser.parse_args()
@@ -144,6 +167,28 @@ def main():
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], 1))
     if args.max_placements is not None:
         solver.add(z3.PbLe([(variable, 1) for variable in variables], args.max_placements))
+    root_stabilizer_size = 1
+    symmetry_breaking_constraints = 0
+    if args.root_symmetry_breaking:
+        stabilizer_permutations = root_stabilizer_permutations(root, placements)
+        root_stabilizer_size = len(stabilizer_permutations)
+        identity = tuple(range(len(placements)))
+        for symmetry_index, permutation in enumerate(stabilizer_permutations):
+            if permutation == identity:
+                continue
+            prefix_equal = z3.BoolVal(True)
+            for index, image_index in enumerate(permutation):
+                image = variables[image_index]
+                solver.add(z3.Implies(prefix_equal, z3.Or(z3.Not(variables[index]), image)))
+                symmetry_breaking_constraints += 1
+                if index + 1 < len(permutation):
+                    next_prefix = z3.Bool(f"lex_{symmetry_index}_{index + 1}")
+                    solver.add(next_prefix == z3.And(
+                        prefix_equal,
+                        variables[index] == image
+                    ))
+                    symmetry_breaking_constraints += 1
+                    prefix_equal = next_prefix
     lookahead_target_count = 0
     lookahead_raw_placement_count = 0
     lookahead_placement_count = 0
@@ -319,6 +364,9 @@ def main():
         "pair_coverability_encoding": args.pair_encoding,
         "pair_coverability_choice_variables": pair_coverability_choice_variables,
         "pair_coverability_incompatibilities": pair_coverability_incompatibilities,
+        "root_symmetry_breaking": args.root_symmetry_breaking,
+        "root_stabilizer_size": root_stabilizer_size,
+        "symmetry_breaking_constraints": symmetry_breaking_constraints,
         "target_cells": len(target),
         "placements_considered": len(placements),
         "variables": len(variables),
