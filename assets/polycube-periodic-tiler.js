@@ -264,6 +264,30 @@ const exactCoverWithDancingLinks = ({
   return search(remainingAfterRoot);
 };
 
+const gf2SpanContains = (placements, target, volume) => {
+  const basis = Array.from({ length: volume }, () => 0n);
+  for (const placement of placements) {
+    let vector = BigInt(placement.mask);
+    for (let pivot = volume - 1; pivot >= 0 && vector; pivot--) {
+      const bit = 1n << BigInt(pivot);
+      if (!(vector & bit)) continue;
+      if (basis[pivot]) vector ^= basis[pivot];
+      else {
+        basis[pivot] = vector;
+        break;
+      }
+    }
+  }
+  let residual = BigInt(target);
+  for (let pivot = volume - 1; pivot >= 0 && residual; pivot--) {
+    const bit = 1n << BigInt(pivot);
+    if (!(residual & bit)) continue;
+    if (!basis[pivot]) return false;
+    residual ^= basis[pivot];
+  }
+  return residual === 0n;
+};
+
 /** Find a periodic torus certificate in the requested inclusive copy range. */
 export function findPolycubePeriodicTiling(voxels, options = {}) {
   const maxCopies = Math.max(1, Math.floor(Number(options.maxCopies) || 4));
@@ -276,6 +300,7 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
     : Math.max(hnfStartIndex, Math.floor(Number(options.hnfEndIndex) || 0));
   const assumeHnfPrefixExhausted = !!options.assumeHnfPrefixExhausted;
   const exactCoverBackend = options.exactCoverBackend === "dlx" ? "dlx" : "scan";
+  const linearAlgebraPrefilter = options.linearAlgebraPrefilter === true;
   const orientations = polycubeOrientations(voxels, { includeReflections });
   const cyclic = minCopies <= 1
     ? findPolycubeCyclicTiling(voxels, { ...options, orientations })
@@ -299,6 +324,7 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
   let nodes = 0;
   let hnfVisited = 0;
   let hnfSkipped = 0;
+  let linearPrefilterRejections = 0;
   const hnfExhaustedByCopies = {};
   const overBudget = () => nodes >= nodeLimit || budgetMilliseconds() >= timeLimitMs;
 
@@ -375,6 +401,12 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
       }
       const placements = [...placementByMask.values()];
       const remainingAfterRoot = allMask ^ rootMask;
+      if (linearAlgebraPrefilter
+        && copies > 3
+        && !gf2SpanContains(placements, remainingAfterRoot, volume)) {
+        linearPrefilterRejections += 1;
+        continue;
+      }
       let solution = null;
       if (copies === 1) {
         solution = !remainingAfterRoot ? [] : null;
@@ -474,6 +506,7 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
         min_copies: minCopies,
         max_copies: maxCopies,
         hnf_exhausted_by_copies: hnfExhaustedByCopies,
+        linear_prefilter_rejections: linearPrefilterRejections,
         milliseconds: Math.round(performance.now() - startedAt)
       };
     }
@@ -491,6 +524,7 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
         hnf_range_exhausted: rangeExhausted,
         min_copies: minCopies, max_copies: maxCopies,
         hnf_exhausted_by_copies: hnfExhaustedByCopies,
+        linear_prefilter_rejections: linearPrefilterRejections,
         milliseconds: Math.round(performance.now() - startedAt)
       };
     }

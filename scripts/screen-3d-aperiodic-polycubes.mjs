@@ -137,6 +137,7 @@ const periodicExactCoverBackend = String(args.get("periodic-exact-cover-backend"
 if (!["scan", "dlx"].includes(periodicExactCoverBackend)) {
   throw new Error("--periodic-exact-cover-backend must be scan or dlx");
 }
+const periodicLinearPrefilter = booleanArg("periodic-linear-prefilter", false);
 const periodicBudgetClock = String(args.get("periodic-budget-clock") ?? "wall").toLowerCase();
 if (!["wall", "cpu"].includes(periodicBudgetClock)) {
   throw new Error("--periodic-budget-clock must be wall or cpu");
@@ -295,6 +296,7 @@ process.stdout.write(`${JSON.stringify({
   periodic_screen: periodicScreenEnabled,
   periodic_budget_clock: periodicBudgetClock,
   periodic_exact_cover_backend: periodicExactCoverBackend,
+  periodic_linear_prefilter: periodicLinearPrefilter,
   periodic_time_ms: periodicTimeMs,
   node_limit: nodeLimit,
   resume_active_hnf: resumeActiveHnf,
@@ -331,6 +333,7 @@ for (let index = 0; index < candidates.length; index++) {
         timeLimitMs: periodicTimeMs,
         timeBudgetMode: periodicBudgetClock,
         exactCoverBackend: periodicExactCoverBackend,
+        linearAlgebraPrefilter: periodicLinearPrefilter,
         hnfStartIndex: resumeActiveHnf
           ? polycubePeriodicResumeHnfIndex(candidate.input_periodic_fast)
           : periodicHnfStartIndex,
@@ -446,6 +449,7 @@ for (let index = 0; index < candidates.length; index++) {
       hnf_range_total: torus.hnf_range_total ?? null,
       hnf_range_exhausted: torus.hnf_range_exhausted ?? null,
       hnf_exhausted_by_copies: torus.hnf_exhausted_by_copies ?? null,
+      linear_prefilter_rejections: torus.linear_prefilter_rejections ?? 0,
       milliseconds: torus.milliseconds
     },
     isohedral: isohedral ? {

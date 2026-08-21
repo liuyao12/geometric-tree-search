@@ -278,6 +278,7 @@ const fourCopyLimbDlxCertificate = findPolycubePeriodicTiling(fourCopyLimbPolycu
   minCopies: 4,
   maxCopies: 4,
   exactCoverBackend: "dlx",
+  linearAlgebraPrefilter: true,
   nodeLimit: 100_000,
   timeLimitMs: 5_000
 });
@@ -313,6 +314,7 @@ const unresolvedP9CopyFourDlx = findPolycubePeriodicTiling(unresolvedP9.voxels, 
   minCopies: 4,
   maxCopies: 4,
   exactCoverBackend: "dlx",
+  linearAlgebraPrefilter: true,
   nodeLimit: 100_000,
   timeLimitMs: 5_000
 });

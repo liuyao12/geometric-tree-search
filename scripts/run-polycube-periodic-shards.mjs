@@ -54,6 +54,7 @@ const exactCoverBackend = String(args.get("exact-cover-backend") ?? "scan").toLo
 if (!["scan", "dlx"].includes(exactCoverBackend)) {
   throw new Error("--exact-cover-backend must be scan or dlx");
 }
+const linearPrefilter = booleanArg("linear-prefilter", false);
 const resume = booleanArg("resume", true);
 const pipeline = fileURLToPath(new URL("./screen-3d-aperiodic-polycubes.mjs", import.meta.url));
 const auditor = fileURLToPath(new URL("./audit-polycube-periodic-shards.mjs", import.meta.url));
@@ -99,6 +100,7 @@ process.stdout.write(`${JSON.stringify({
   concurrency,
   progress_ms: progressMs,
   exact_cover_backend: exactCoverBackend,
+  linear_prefilter: linearPrefilter,
   reused,
   pending: pending.length,
   output_directory: outputDirectory
@@ -140,6 +142,7 @@ const runShard = interval => new Promise(resolveShard => {
     `--periodic-time-ms=${periodicTimeMs}`,
     "--periodic-budget-clock=cpu",
     `--periodic-exact-cover-backend=${exactCoverBackend}`,
+    `--periodic-linear-prefilter=${linearPrefilter}`,
     `--nodes=${nodeLimit}`,
     "--box-screen=false",
     "--general-periodic=false",
