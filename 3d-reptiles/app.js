@@ -98,32 +98,6 @@ orientationControls.enablePan = false;
 orientationControls.minDistance = 2.2;
 orientationControls.maxDistance = 5;
 
-const orientationShellGeometry = new THREE.SphereGeometry(1, 28, 18);
-const orientationShell = new THREE.Mesh(
-  orientationShellGeometry,
-  new THREE.MeshBasicMaterial({ color: 0xf8fbf9, transparent: true, opacity: 0.11, depthWrite: false, side: THREE.DoubleSide })
-);
-orientationScene.add(orientationShell);
-
-function makeOrientationDiameter(axis, color) {
-  const geometry = new THREE.BufferGeometry().setFromPoints([
-    axis.clone().multiplyScalar(-1),
-    axis.clone()
-  ]);
-  const line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.34, depthWrite: false }));
-  orientationScene.add(line);
-  const endpointGeometry = new THREE.BufferGeometry().setFromPoints([
-    axis.clone().multiplyScalar(-1),
-    axis.clone()
-  ]);
-  const endpoints = new THREE.Points(endpointGeometry, new THREE.PointsMaterial({ color, size: 0.055, sizeAttenuation: true, depthWrite: false }));
-  orientationScene.add(endpoints);
-}
-
-makeOrientationDiameter(new THREE.Vector3(1, 0, 0), 0xd16f59);
-makeOrientationDiameter(new THREE.Vector3(0, 1, 0), 0x4f81ad);
-makeOrientationDiameter(new THREE.Vector3(0, 0, 1), 0x4f9179);
-
 function makeOrientationCircle(color, opacity) {
   const points = [];
   for (let index = 0; index < 128; index += 1) {
@@ -139,11 +113,6 @@ function makeOrientationCircle(color, opacity) {
   return circle;
 }
 
-const xyGreatCircle = makeOrientationCircle(0x4f9179, 0.28);
-const xzGreatCircle = makeOrientationCircle(0x4f81ad, 0.28);
-xzGreatCircle.rotation.x = Math.PI / 2;
-const yzGreatCircle = makeOrientationCircle(0xd16f59, 0.28);
-yzGreatCircle.rotation.y = Math.PI / 2;
 const orientationBoundary = makeOrientationCircle(0x17201e, 0.52);
 orientationBoundary.renderOrder = 3;
 
