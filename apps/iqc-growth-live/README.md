@@ -2586,4 +2586,20 @@ three-site block. The one-shot target is consumed and is not retuned. The
 first-block, sustained-continuation, autonomous, stationary, and exponential
 gates all remain red.
 
+### Shared marking-library tree
+
+The tree executor now separates candidate geometry from marking value. The
+connection and rollout markings rank the same immutable eight-action frontier,
+and a round-robin shared beam retains states proposed by both without expanding
+the geometry twice. On the consumed confirmation this preserves the exact
+connection head at index 0 alongside the rollout head at index 7; the learned
+rollout score can no longer delete the known-stronger baseline action.
+
+The three-block width-two receipt expands `8 → 16 → 16` physical candidates
+and retains two states at every block. Both final paths recover `6 / 9` colored
+sites and neither is exact. The generic portfolio therefore passes its limited
+candidate-supply invariant—same actions, both marking heads retained, no target
+input—but does not select a winner or establish autonomous, stationary, or
+exponential IQC growth.
+
 Serve the repository root and open `/iqc-growth-live/`.

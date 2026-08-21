@@ -49,6 +49,7 @@ const SYSTEMS = {
       ["Consumed supply diagnosis", "0 / 157 → 1 / 166", "No portfolio width can repair the old tree. Changing reach from 8→8→8 to 12→4→8 restores one exact terminal with fewer checks (356 vs 392), but old fusion/scalar ranks are 107/114."],
       ["Stage-local rollout development", "19 / 19 exact · 59 sites", "A bounded temporal connection section beats the connection-only order and every one of 31 grouped-label refits (max 18 exact / 58 sites; p=.03125 each)."],
       ["Rollout confirmation falsification", "marked 6 / 9 · baseline 6 / 9", "On a preregistered disjoint nucleus the mark replaces a 3/3 exact first baseline block with a 2/3 block. Zero marked blocks are exact, so transfer and sustained growth remain red."],
+      ["Marking-library tree", "exact baseline head preserved", "Connection and rollout markings rank one immutable eight-action frontier. The portfolio retains both heads instead of letting the unconfirmed rollout value erase the exact connection action; a consumed three-block beam still has zero exact terminals."],
       ["Clusters²", "6 positive quotient levels", "History-free re-clustering improves proof depth."],
       ["Frontier states", "336 / 368 sites", "Four heterogeneous multi-child rules are real, but no closed state matrix repeats across transitions."],
       ["Strict audit", "0 common three-level keys", "Topology, chemistry, chirality, ports, pose, and populations stay exact."],

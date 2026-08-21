@@ -4959,3 +4959,21 @@ an exact first baseline block with an inexact one. The receipt was frozen after
 one target opening and is not retried. First-block transfer, three-block
 sustained continuation, autonomous finite growth, stationary recurrence, and
 exponential IQC growth are all red.
+
+### Shared marking-library tree
+
+The search layer now expands each physical frontier once and lets multiple
+frozen markings order that identical action set. A bounded round-robin beam
+retains the connection head and rollout head as distinct physical states, while
+deduplicating states reached by both markings. Candidate digests are invariant
+to marking order, and neither the generic tree nor the IQC adapter accepts a
+target API.
+
+On the already-consumed rollout confirmation, the first immutable frontier has
+eight actions: connection selects index 0, rollout selects index 7, and the
+shared width-two tree retains both. Across three self-fed blocks it expands
+`8 → 16 → 16` candidates and retains `2 → 2 → 2` states. Posthoc scoring gives
+`6 / 9` colored sites and zero exact terminal paths for both survivors. This is
+a genuine repair of candidate retention and rollback supply, but it does not
+resolve value transfer or justify autonomous, stationary, or exponential IQC
+growth.
