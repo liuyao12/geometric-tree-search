@@ -2375,4 +2375,30 @@ improves ordering without validating commitment. It is retained only as a
 diagnostic marking-library option; tree-search deployment, recursive
 promotion, autonomous growth, stationarity, and exponential growth stay red.
 
+### Sequential port-obligation automaton
+
+The static relational quotient is now followed by an explicitly temporal
+marking. Every exact frozen branch is replayed for sixteen target-free steps.
+At each step, concrete port identities are removed and replaced by a bounded
+canonical state containing selected-role discharge and production, relation
+gain/loss/retention, contradiction flags, and simultaneous selected-pair
+incidence. Counts saturate at four. A training nucleus contributes at most one
+mean label to a state, and the branch score is the mean posterior of its four
+weakest recognized states. The resulting automaton contains 102 states and
+cannot alter or authorize candidate geometry.
+
+Under leave-one-nucleus-out replay, the automaton selects exact branches for
+8 / 9 supplied nuclei and retains 27 / 28 available correct colored sites. The prior
+single relational contradiction rule reached 7 / 9. Thirty-one within-nucleus
+label shuffles reach a median of five and a maximum of seven, giving the fixed
+automaton `p = .03125`.
+
+This is a meaningful branch-consistency signal, not yet a deployment result.
+The automaton specification was developed on this consumed corpus rather than
+preregistered, 47 / 102 states have support in only one training nucleus, and
+one supplied nucleus still chooses a false branch. It is
+therefore frozen only as a future disjoint-confirmation candidate. Default
+tree-search commitment, clusters-of-clusters promotion, autonomous growth,
+stationarity, and exponential growth remain disabled.
+
 Serve the repository root and open `/iqc-growth-live/`.

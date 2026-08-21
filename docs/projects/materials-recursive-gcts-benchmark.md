@@ -4663,3 +4663,36 @@ capture useful ordering structure. The selected development rule is not better
 than shuffled labels and its frozen threshold admits neither wide branch.
 Accordingly it remains a diagnostic library entry, not a tree-search policy.
 No promoted hierarchy or recursive growth run is licensed by this result.
+
+### Sequential port-obligation automaton
+
+The next representation uses branch dynamics rather than a larger static
+message vocabulary. Each existing exact candidate is replayed for sixteen
+target-free steps. Every step becomes one canonical finite state containing
+only bounded role discharge/production, relation loss/gain/retention,
+contradiction flags, and simultaneous selected-pair incidence. Counts saturate
+at four; raw role identities, atom coordinates, targets, and material labels
+are absent. One training nucleus supplies one balanced mean per state.
+
+| finite obligation automaton | result |
+| --- | ---: |
+| trajectory candidates / groups | 120 / 10 |
+| supplied groups | 9 |
+| frozen finite states | 102 |
+| state support histogram (groups → states) | 1→47 · 2→38 · 3→9 · 4→3 · 5→1 · 7→4 |
+| branch value | mean of four weakest recognized states |
+| heldout exact supplied groups | 8 / 9 |
+| heldout correct colored sites | 27 / 28 available |
+| prior relational rule | 7 / 9 |
+| shuffle median / maximum | 5 / 7 |
+| plus-one grouped-shuffle p-value | `.03125` |
+| autonomous / stationary / exponential | false / false / false |
+
+The result demonstrates that persistent weak obligations carry information
+which the static quotient discards. It is nevertheless exploratory: the fixed
+state form was developed on this consumed corpus, 47 states have only one-group
+support, and one supplied nucleus still fails. The model is frozen as a future
+disjoint-confirmation candidate,
+not installed as the default GCTS marking. A new target-blind confirmation must
+reproduce the gain before this score may commit branches or feed recursive
+promotion.
