@@ -50,6 +50,10 @@ const concurrency = integerArg(
 const progressMs = integerArg("progress-ms", 30_000, 1000);
 const periodicTimeMs = integerArg("periodic-time-ms", 3_600_000, 1);
 const nodeLimit = integerArg("nodes", 1_000_000_000, 1);
+const exactCoverBackend = String(args.get("exact-cover-backend") ?? "scan").toLowerCase();
+if (!["scan", "dlx"].includes(exactCoverBackend)) {
+  throw new Error("--exact-cover-backend must be scan or dlx");
+}
 const resume = booleanArg("resume", true);
 const pipeline = fileURLToPath(new URL("./screen-3d-aperiodic-polycubes.mjs", import.meta.url));
 const auditor = fileURLToPath(new URL("./audit-polycube-periodic-shards.mjs", import.meta.url));
@@ -94,6 +98,7 @@ process.stdout.write(`${JSON.stringify({
   shard_size: shardSize,
   concurrency,
   progress_ms: progressMs,
+  exact_cover_backend: exactCoverBackend,
   reused,
   pending: pending.length,
   output_directory: outputDirectory
@@ -127,12 +132,14 @@ const runShard = interval => new Promise(resolveShard => {
   const child = spawn(process.execPath, [
     pipeline,
     `--key=${key}`,
+    `--candidate-id=${id}`,
     `--periodic-min-tiles=${copies}`,
     `--periodic-max-tiles=${copies}`,
     `--periodic-hnf-start-index=${start}`,
     `--periodic-hnf-end-index=${end}`,
     `--periodic-time-ms=${periodicTimeMs}`,
     "--periodic-budget-clock=cpu",
+    `--periodic-exact-cover-backend=${exactCoverBackend}`,
     `--nodes=${nodeLimit}`,
     "--box-screen=false",
     "--general-periodic=false",

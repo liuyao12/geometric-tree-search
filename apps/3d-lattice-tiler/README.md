@@ -548,6 +548,9 @@ and `scripts/audit-polycube-periodic-shards.mjs`. The higher-level
 divides a requested range into deterministic half-open intervals, runs them
 with bounded concurrency, reuses only shards that pass the single-interval
 audit, and writes a final gap-free `audit.json` receipt.
+`scripts/audit-polycube-periodic-campaign.mjs` then checks the expected
+candidate set and aggregates those receipts without weakening their individual
+range audits.
 
 The same five candidates expose a useful proposal-ordering failure in GCTS.
 Their original seven-order radius-three portfolio left all five unresolved. A

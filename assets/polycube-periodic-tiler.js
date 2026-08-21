@@ -161,6 +161,109 @@ const quotientIndex = (cell, translation, hnf) => {
   return x + hnf.a * (y + hnf.d * z);
 };
 
+const exactCoverWithDancingLinks = ({
+  placements,
+  remainingAfterRoot,
+  volume,
+  copies,
+  bitAt,
+  overBudget,
+  visitNode
+}) => {
+  const header = { index: -1, size: 0 };
+  header.left = header.right = header;
+  const columns = Array.from({ length: volume }, (_, index) => {
+    const column = { index, size: 0 };
+    column.up = column.down = column;
+    column.left = column.right = column;
+    if (remainingAfterRoot & bitAt(index)) {
+      column.left = header.left;
+      column.right = header;
+      header.left.right = column;
+      header.left = column;
+    }
+    return column;
+  });
+  for (const placement of placements) {
+    let first = null;
+    for (let index = 0; index < volume; index++) {
+      if (!(placement.mask & bitAt(index))) continue;
+      const column = columns[index];
+      const node = { column, placement };
+      node.up = column.up;
+      node.down = column;
+      column.up.down = node;
+      column.up = node;
+      column.size += 1;
+      if (!first) {
+        first = node;
+        node.left = node.right = node;
+      } else {
+        node.left = first.left;
+        node.right = first;
+        first.left.right = node;
+        first.left = node;
+      }
+    }
+  }
+  const cover = column => {
+    column.right.left = column.left;
+    column.left.right = column.right;
+    for (let row = column.down; row !== column; row = row.down) {
+      for (let node = row.right; node !== row; node = node.right) {
+        node.down.up = node.up;
+        node.up.down = node.down;
+        node.column.size -= 1;
+      }
+    }
+  };
+  const uncover = column => {
+    for (let row = column.up; row !== column; row = row.up) {
+      for (let node = row.left; node !== row; node = node.left) {
+        node.column.size += 1;
+        node.down.up = node;
+        node.up.down = node;
+      }
+    }
+    column.right.left = column;
+    column.left.right = column;
+  };
+  const failed = new Set();
+  const chosen = [];
+  const search = remaining => {
+    if (header.right === header) return chosen.length === copies - 1 ? chosen.slice() : null;
+    if (chosen.length >= copies - 1 || overBudget()) return null;
+    visitNode();
+    if (failed.has(remaining)) return null;
+    let pivot = header.right;
+    for (let column = pivot.right; column !== header; column = column.right) {
+      if (column.size < pivot.size) pivot = column;
+      if (pivot.size <= 1) break;
+    }
+    if (!pivot.size) {
+      failed.add(remaining);
+      return null;
+    }
+    cover(pivot);
+    for (let row = pivot.down; row !== pivot; row = row.down) {
+      chosen.push(row.placement);
+      for (let node = row.right; node !== row; node = node.right) cover(node.column);
+      const found = search(remaining ^ row.placement.mask);
+      for (let node = row.left; node !== row; node = node.left) uncover(node.column);
+      chosen.pop();
+      if (found) {
+        uncover(pivot);
+        return found;
+      }
+      if (overBudget()) break;
+    }
+    uncover(pivot);
+    if (!overBudget()) failed.add(remaining);
+    return null;
+  };
+  return search(remainingAfterRoot);
+};
+
 /** Find a periodic torus certificate in the requested inclusive copy range. */
 export function findPolycubePeriodicTiling(voxels, options = {}) {
   const maxCopies = Math.max(1, Math.floor(Number(options.maxCopies) || 4));
@@ -172,6 +275,7 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
     ? Infinity
     : Math.max(hnfStartIndex, Math.floor(Number(options.hnfEndIndex) || 0));
   const assumeHnfPrefixExhausted = !!options.assumeHnfPrefixExhausted;
+  const exactCoverBackend = options.exactCoverBackend === "dlx" ? "dlx" : "scan";
   const orientations = polycubeOrientations(voxels, { includeReflections });
   const cyclic = minCopies <= 1
     ? findPolycubeCyclicTiling(voxels, { ...options, orientations })
@@ -293,44 +397,56 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
           break;
         }
       } else {
-        const byCell = Array.from({ length: volume }, () => []);
-        for (const placement of placements) for (let index = 0; index < volume; index++) {
-          if (placement.mask & bitAt(index)) byCell[index].push(placement);
+        if (exactCoverBackend === "dlx") {
+          solution = exactCoverWithDancingLinks({
+            placements,
+            remainingAfterRoot,
+            volume,
+            copies,
+            bitAt,
+            overBudget,
+            visitNode: () => { nodes += 1; }
+          });
+        } else {
+          const byCell = Array.from({ length: volume }, () => []);
+          for (const placement of placements) for (let index = 0; index < volume; index++) {
+            if (placement.mask & bitAt(index)) byCell[index].push(placement);
+          }
+          const failed = new Set();
+          const chosen = [];
+          const search = remaining => {
+            if (!remaining) return chosen.length === copies - 1 ? chosen.slice() : null;
+            if (chosen.length >= copies - 1 || overBudget()) return null;
+            nodes += 1;
+            if (failed.has(remaining)) return null;
+            let pivotCell = -1;
+            let pivotSize = Infinity;
+            for (let index = 0; index < volume; index++) {
+              const bit = bitAt(index);
+              if (!(remaining & bit)) continue;
+              let optionsForCell = 0;
+              for (const placement of byCell[index]) {
+                if ((placement.mask & remaining) === placement.mask) optionsForCell += 1;
+              }
+              if (!optionsForCell) { failed.add(remaining); return null; }
+              if (optionsForCell < pivotSize) {
+                pivotCell = index;
+                pivotSize = optionsForCell;
+                if (pivotSize === 1) break;
+              }
+            }
+            for (const placement of pivotCell < 0 ? [] : byCell[pivotCell]) {
+              if ((placement.mask & remaining) !== placement.mask) continue;
+              chosen.push(placement);
+              const found = search(remaining ^ placement.mask);
+              if (found) return found;
+              chosen.pop();
+            }
+            failed.add(remaining);
+            return null;
+          };
+          solution = search(remainingAfterRoot);
         }
-        const failed = new Set();
-        const chosen = [];
-        const search = remaining => {
-          if (!remaining) return chosen.length === copies - 1 ? chosen.slice() : null;
-          if (chosen.length >= copies - 1 || overBudget()) return null;
-          nodes += 1;
-          if (failed.has(remaining)) return null;
-          let pivotCell = -1;
-          let pivotSize = Infinity;
-          for (let index = 0; index < volume; index++) {
-            const bit = bitAt(index);
-            if (!(remaining & bit)) continue;
-            let optionsForCell = 0;
-            for (const placement of byCell[index]) {
-              if ((placement.mask & remaining) === placement.mask) optionsForCell += 1;
-            }
-            if (!optionsForCell) { failed.add(remaining); return null; }
-            if (optionsForCell < pivotSize) {
-              pivotCell = index;
-              pivotSize = optionsForCell;
-              if (pivotSize === 1) break;
-            }
-          }
-          for (const placement of pivotCell < 0 ? [] : byCell[pivotCell]) {
-            if ((placement.mask & remaining) !== placement.mask) continue;
-            chosen.push(placement);
-            const found = search(remaining ^ placement.mask);
-            if (found) return found;
-            chosen.pop();
-          }
-          failed.add(remaining);
-          return null;
-        };
-        solution = search(remainingAfterRoot);
       }
       if (!solution) continue;
       return {

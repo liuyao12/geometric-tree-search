@@ -35,6 +35,7 @@ const booleanArg = (name, fallback) => {
 };
 
 const requestedKey = args.get("key");
+const requestedCandidateId = args.get("candidate-id");
 const requestedVoxels = requestedKey ? voxelsFromPolycubeKey(requestedKey) : null;
 const inputReports = String(args.get("input-report") ?? "")
   .split(",")
@@ -132,6 +133,10 @@ const boxTimeMs = Math.max(1, numberArg("box-time-ms", 100));
 const boxScreen = booleanArg("box-screen", true);
 const periodicTimeMs = Math.max(1, numberArg("periodic-time-ms", 1000));
 const periodicScreenEnabled = booleanArg("periodic-screen", true);
+const periodicExactCoverBackend = String(args.get("periodic-exact-cover-backend") ?? "scan").toLowerCase();
+if (!["scan", "dlx"].includes(periodicExactCoverBackend)) {
+  throw new Error("--periodic-exact-cover-backend must be scan or dlx");
+}
 const periodicBudgetClock = String(args.get("periodic-budget-clock") ?? "wall").toLowerCase();
 if (!["wall", "cpu"].includes(periodicBudgetClock)) {
   throw new Error("--periodic-budget-clock must be wall or cpu");
@@ -267,7 +272,7 @@ async function obstructionScreen(candidate) {
 
 const candidates = requestedVoxels
   ? [{
-      id: `custom-${size}`,
+      id: requestedCandidateId ?? `custom-${size}`,
       key: canonicalPolycubeKey(requestedVoxels, { includeReflections }),
       voxels: requestedVoxels
     }]
@@ -289,6 +294,7 @@ process.stdout.write(`${JSON.stringify({
   periodic_min_tiles: periodicMinTiles,
   periodic_screen: periodicScreenEnabled,
   periodic_budget_clock: periodicBudgetClock,
+  periodic_exact_cover_backend: periodicExactCoverBackend,
   periodic_time_ms: periodicTimeMs,
   node_limit: nodeLimit,
   resume_active_hnf: resumeActiveHnf,
@@ -324,6 +330,7 @@ for (let index = 0; index < candidates.length; index++) {
         nodeLimit,
         timeLimitMs: periodicTimeMs,
         timeBudgetMode: periodicBudgetClock,
+        exactCoverBackend: periodicExactCoverBackend,
         hnfStartIndex: resumeActiveHnf
           ? polycubePeriodicResumeHnfIndex(candidate.input_periodic_fast)
           : periodicHnfStartIndex,

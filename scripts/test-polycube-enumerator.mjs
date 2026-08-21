@@ -274,6 +274,19 @@ assert.equal(
   true,
   "the two-limb quotient mask path must produce an independently valid certificate"
 );
+const fourCopyLimbDlxCertificate = findPolycubePeriodicTiling(fourCopyLimbPolycube, {
+  minCopies: 4,
+  maxCopies: 4,
+  exactCoverBackend: "dlx",
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(fourCopyLimbDlxCertificate.certified, true);
+assert.equal(
+  verifyPolycubePeriodicCertificate(fourCopyLimbPolycube, fourCopyLimbDlxCertificate).verified,
+  true,
+  "the dancing-links exact-cover backend must produce an independently valid certificate"
+);
 const resumedPeriodicRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 3,
   maxCopies: 3,
@@ -289,6 +302,25 @@ assert.equal(resumedPeriodicRange.hnf_range_end_exclusive, 1210);
 assert.equal(resumedPeriodicRange.hnf_range_total, 1210);
 assert.equal(resumedPeriodicRange.hnf_range_exhausted, true);
 assert.deepEqual(resumedPeriodicRange.hnf_exhausted_by_copies, { 3: 1210 });
+const unresolvedP9CopyFourScan = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 4,
+  maxCopies: 4,
+  exactCoverBackend: "scan",
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+const unresolvedP9CopyFourDlx = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 4,
+  maxCopies: 4,
+  exactCoverBackend: "dlx",
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(unresolvedP9CopyFourScan.certified, false);
+assert.equal(unresolvedP9CopyFourDlx.certified, false);
+assert.equal(unresolvedP9CopyFourScan.stopped_by, null);
+assert.equal(unresolvedP9CopyFourDlx.stopped_by, null);
+assert.equal(unresolvedP9CopyFourDlx.hnf_visited, unresolvedP9CopyFourScan.hnf_visited);
 const resumedPeriodicHnfTail = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 3,
   maxCopies: 3,

@@ -16,6 +16,7 @@ assert.equal(polycubePeriodicHnfBasisCount(130), 39711);
 const pipeline = new URL("./screen-3d-aperiodic-polycubes.mjs", import.meta.url);
 const auditor = new URL("./audit-polycube-periodic-shards.mjs", import.meta.url);
 const shardRunner = new URL("./run-polycube-periodic-shards.mjs", import.meta.url);
+const campaignAuditor = new URL("./audit-polycube-periodic-campaign.mjs", import.meta.url);
 const common = [
   pipeline.pathname,
   `--key=${candidateKey}`,
@@ -136,6 +137,30 @@ assert.equal(orchestratedRecords.at(-1).totals.hnf_bases_exhausted, 5);
 const orchestratedAudit = JSON.parse(readFileSync(join(orchestratedDirectory, "audit.json"), "utf8"));
 assert.deepEqual(orchestratedAudit.expected_range, [1200, 1205]);
 assert.equal(orchestratedAudit.totals.shards, 2);
+assert.equal(orchestratedAudit.candidate_id, "p9-42947-test");
+const campaignAudit = spawnSync(process.execPath, [
+  campaignAuditor.pathname,
+  "--expected-copies=3",
+  "--expected-start=1200",
+  "--expected-end=1205",
+  "--expected-candidates=p9-42947-test",
+  join(orchestratedDirectory, "audit.json")
+], { encoding: "utf8" });
+assert.equal(campaignAudit.status, 0, campaignAudit.stderr);
+const campaign = JSON.parse(campaignAudit.stdout);
+assert.equal(campaign.coverage_gap_free, true);
+assert.equal(campaign.totals.candidates, 1);
+assert.equal(campaign.totals.hnf_bases_exhausted, 5);
+const rejectedCandidateSet = spawnSync(process.execPath, [
+  campaignAuditor.pathname,
+  "--expected-copies=3",
+  "--expected-start=1200",
+  "--expected-end=1205",
+  "--expected-candidates=wrong-candidate",
+  join(orchestratedDirectory, "audit.json")
+], { encoding: "utf8" });
+assert.notEqual(rejectedCandidateSet.status, 0);
+assert.match(rejectedCandidateSet.stderr, /do not match expected/);
 const resumed = spawnSync(process.execPath, [
   shardRunner.pathname,
   `--key=${candidateKey}`,
@@ -149,6 +174,14 @@ const resumed = spawnSync(process.execPath, [
 ], { encoding: "utf8" });
 assert.equal(resumed.status, 0, resumed.stderr);
 assert.equal(JSON.parse(resumed.stdout.split(/\r?\n/)[0]).reused, 2);
+const invalidBackend = spawnSync(process.execPath, [
+  shardRunner.pathname,
+  `--key=${candidateKey}`,
+  "--copies=3",
+  "--exact-cover-backend=guess"
+], { encoding: "utf8" });
+assert.notEqual(invalidBackend.status, 0);
+assert.match(invalidBackend.stderr, /exact-cover-backend must be scan or dlx/);
 rmSync(temporaryDirectory, { recursive: true, force: true });
 
 console.log("Polycube periodic-sharding regression passed", {
