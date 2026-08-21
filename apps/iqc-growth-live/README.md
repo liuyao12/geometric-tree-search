@@ -2355,4 +2355,24 @@ step is a finite relational message quotient whose learned node/edge updates
 must beat the same grouped nulls and unchanged-wide transfer before recursive
 growth is attempted.
 
+### Finite relational port-message quotient
+
+The shared three-action graph now supports one bounded, train-fitted message
+quotient. Its 216 proper-motion-invariant measurements are attached to the
+three canonical action nodes and three pairwise incidence edges; raw IDs,
+global coordinates, targets, lattice data, and family labels are excluded.
+Training-nucleus balancing prevents a repeated orbit from supplying extra
+votes. Exact action terminals and collision certificates remain unchanged.
+
+The selected rule uses node messages, three bins, support in four independent
+training nuclei, eight retained tokens, and threshold 0.55. It compresses the
+training graph measurements into 362 finite recurrent states and selects 4 / 9
+supplied development nuclei with 4 / 4 exact branches. This is weaker than the
+continuous metric's 6 / 9, and 31 full grouped-label refits give `p = .96875`.
+On the unchanged wide audit, exact branches move from ranks 5 and 2 to ranks 3
+and 1, but neither clears the frozen threshold. The representation therefore
+improves ordering without validating commitment. It is retained only as a
+diagnostic marking-library option; tree-search deployment, recursive
+promotion, autonomous growth, stationarity, and exponential growth stay red.
+
 Serve the repository root and open `/iqc-growth-live/`.

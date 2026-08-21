@@ -4634,3 +4634,32 @@ so it is not deployed. Exact branches appearing at ranks five and two show that
 continuous incidence geometry contains ordering signal, but not a validated
 decision boundary. The next gate is a learned finite relational message
 quotient on the same graph, with unchanged grouped shuffles and wide transfer.
+
+### Finite relational port-message quotient
+
+The next gate is now implemented. A generic quotient assigns bounded messages
+to the three canonical action nodes and three pairwise incidence edges of the
+shared port graph. It exposes 216 fixed proper-SE(3)-invariant measurements
+(159 node and 57 edge), admits states only after recurrence in independent
+training nuclei, and computes group-balanced positive rates. It cannot add,
+remove, or alter an exact candidate.
+
+| finite relational quotient | result |
+| --- | ---: |
+| selected domain / bins | nodes / 3 |
+| independent-group support / retained tokens | 4 / 8 |
+| frozen admission threshold | 0.55 |
+| finite recurrent states | 362 |
+| development exact selections | 4 / 4 |
+| supplied development nuclei reached | 4 / 9 |
+| grouped-shuffle median / maximum | 4 / 5 |
+| development plus-one p-value | `.96875` |
+| wide exact ranks | 3 / 1 |
+| wide selected exact / false | 0 / 0 |
+| autonomous / stationary / exponential | false / false / false |
+
+The exact wide branches move closer to the front, so relational messages do
+capture useful ordering structure. The selected development rule is not better
+than shuffled labels and its frozen threshold admits neither wide branch.
+Accordingly it remains a diagnostic library entry, not a tree-search policy.
+No promoted hierarchy or recursive growth run is licensed by this result.
