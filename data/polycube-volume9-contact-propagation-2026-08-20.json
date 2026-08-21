@@ -1,0 +1,36 @@
+{
+  "kind": "polycube_volume9_contact_state_propagation",
+  "date": "2026-08-20",
+  "candidate": "p9-42947",
+  "mirror_equivalent": "p9-42969",
+  "model": "directed root-contact types with the neighboring tile renormalized as the canonical root",
+  "active_type_indices": [3, 25, 29, 43, 44, 53],
+  "active_placements": 36,
+  "reciprocal_edges": [
+    { "from": 3, "to": 44, "to_active": true, "placements": 3 },
+    { "from": 25, "to": 36, "to_active": false, "placements": 3 },
+    { "from": 29, "to": 29, "to_active": true, "placements": 3 },
+    { "from": 43, "to": 0, "to_active": false, "placements": 3 },
+    { "from": 43, "to": 17, "to_active": false, "placements": 3 },
+    { "from": 43, "to": 54, "to_active": false, "placements": 3 },
+    { "from": 43, "to": 58, "to_active": false, "placements": 9 },
+    { "from": 43, "to": 63, "to_active": false, "placements": 3 },
+    { "from": 44, "to": 3, "to_active": true, "placements": 3 },
+    { "from": 53, "to": 42, "to_active": false, "placements": 3 }
+  ],
+  "active_to_active_placements": 9,
+  "reciprocal_cycles": [
+    { "types": [3, 44], "kind": "two_state_reciprocal" },
+    { "types": [29], "kind": "self_reciprocal" }
+  ],
+  "cycle_extension_trials": [
+    { "type_index": 3, "layers": 2, "success": true, "nodes": 20, "placements": 20 },
+    { "type_index": 3, "layers": 3, "success": true, "nodes": 537, "placements": 45 },
+    { "type_index": 3, "layers": 4, "success": true, "nodes": 283688, "placements": 74 },
+    { "type_index": 29, "layers": 2, "success": true, "nodes": 27, "placements": 24 },
+    { "type_index": 29, "layers": 3, "success": true, "nodes": 506, "placements": 44 },
+    { "type_index": 29, "layers": 4, "success": true, "nodes": 77074, "placements": 66 }
+  ],
+  "conclusion": "Both reciprocal active cycles survive through radius four, so the minimum six-state contact disjunction alone does not force a hierarchy.",
+  "warning": "Surviving finite coronas do not certify an infinite or periodic tiling."
+}

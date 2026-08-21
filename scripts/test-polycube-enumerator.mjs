@@ -3,6 +3,7 @@ import {
   canonicalPolycubeKey,
   enumeratePolycubes,
   isChiralPolycube,
+  polycubeKey,
   polycubeOrientations,
   polycubeSymmetries,
   POLYCUBE_ISOMETRY_COUNT,
@@ -12,6 +13,7 @@ import {
   enumeratePolycubeCoronaPlacements,
   polycubePlacementOrbitKeys,
   polycubeCoronaBoundaryKey,
+  polycubeReciprocalPlacement,
   polycubeRootContactKey,
   searchFirstPolycubeCorona,
   searchPolycubeCorona,
@@ -55,12 +57,29 @@ assert.equal(periodicP9.screening.quotient_determinant, 72);
 assert.equal(polycubeOrientations(unresolvedP9.voxels).length, 8);
 const unresolvedFirstCoronaCatalog = enumeratePolycubeCoronaPlacements(unresolvedP9.voxels, 1);
 assert.equal(unresolvedFirstCoronaCatalog.length, 605);
-assert.equal(
-  new Set(unresolvedFirstCoronaCatalog.map(placement =>
-    polycubeRootContactKey(unresolvedP9.voxels, placement)
-  )).size,
-  69
-);
+const unresolvedContactTypeKeys = [...new Set(unresolvedFirstCoronaCatalog.map(placement =>
+  polycubeRootContactKey(unresolvedP9.voxels, placement)
+))].sort();
+assert.equal(unresolvedContactTypeKeys.length, 69);
+const unresolvedContactTypeId = new Map(unresolvedContactTypeKeys.map((key, index) => [key, index]));
+const activeContactTypes = new Set([3, 25, 29, 43, 44, 53]);
+const activeReciprocalEdges = new Map();
+for (const placement of unresolvedFirstCoronaCatalog) {
+  const from = unresolvedContactTypeId.get(polycubeRootContactKey(unresolvedP9.voxels, placement));
+  if (!activeContactTypes.has(from)) continue;
+  const reciprocal = polycubeReciprocalPlacement(unresolvedP9.voxels, placement);
+  assert.ok(reciprocal);
+  assert.ok(polycubeOrientations(unresolvedP9.voxels).some(orientation =>
+    orientation.key === polycubeKey(reciprocal.cells)
+  ));
+  const to = unresolvedContactTypeId.get(polycubeRootContactKey(unresolvedP9.voxels, reciprocal));
+  const key = `${from}->${to}`;
+  activeReciprocalEdges.set(key, (activeReciprocalEdges.get(key) ?? 0) + 1);
+}
+assert.deepEqual([...activeReciprocalEdges].sort(), [
+  ["25->36", 3], ["29->29", 3], ["3->44", 3], ["43->0", 3], ["43->17", 3],
+  ["43->54", 3], ["43->58", 9], ["43->63", 3], ["44->3", 3], ["53->42", 3]
+].sort());
 const unresolvedFirstCorona = searchPolycubeCorona(unresolvedP9.voxels, {
   layers: 1,
   nodeLimit: 100_000,

@@ -71,9 +71,18 @@ export function polycubeOrientations(voxels, { includeReflections = false } = {}
   const transforms = includeReflections ? signedPermutationMatrices : properCubeRotations;
   const orientations = new Map();
   for (const { matrix, determinant } of transforms) {
-    const transformed = normalizeVoxels(voxels.map(voxel => transformVoxel(voxel, matrix)));
+    const rawTransformed = voxels.map(voxel => transformVoxel(voxel, matrix));
+    const mins = [0, 1, 2].map(axis => Math.min(...rawTransformed.map(voxel => voxel[axis])));
+    const normalizationTranslation = mins.map(value => -value);
+    const transformed = normalizeVoxels(rawTransformed);
     const key = polycubeKey(transformed);
-    if (!orientations.has(key)) orientations.set(key, { key, voxels: transformed, determinant });
+    if (!orientations.has(key)) orientations.set(key, {
+      key,
+      voxels: transformed,
+      determinant,
+      matrix: matrix.map(row => row.slice()),
+      normalization_translation: normalizationTranslation
+    });
   }
   return [...orientations.values()].sort((left, right) => left.key.localeCompare(right.key));
 }

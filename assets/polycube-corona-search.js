@@ -51,6 +51,30 @@ export function polycubeRootContactKey(voxels, placement, options = {}) {
   return best ?? "";
 }
 
+export function polycubeReciprocalPlacement(voxels, placement, options = {}) {
+  if (!Array.isArray(placement?.cells)) return null;
+  const orientation = placement.orientation_matrix
+    ? {
+        matrix: placement.orientation_matrix,
+        normalization_translation: placement.orientation_normalization_translation ?? [0, 0, 0]
+      }
+    : polycubeOrientations(voxels, {
+        includeReflections: !!options.includeReflections
+      }).find(candidate => candidate.key === (placement.orientation_key ?? placement.orientationKey));
+  if (!orientation || !Array.isArray(placement.translation)) return null;
+  const totalTranslation = orientation.normalization_translation
+    .map((value, axis) => value + placement.translation[axis]);
+  const inverse = [0, 1, 2].map(row =>
+    [0, 1, 2].map(column => orientation.matrix[column][row])
+  );
+  const cells = voxels.map(cell => [0, 1, 2].map(axis =>
+    inverse[axis][0] * (cell[0] - totalTranslation[0])
+    + inverse[axis][1] * (cell[1] - totalTranslation[1])
+    + inverse[axis][2] * (cell[2] - totalTranslation[2])
+  ));
+  return { cells };
+}
+
 export function enumeratePolycubeCoronaPlacements(voxels, layers = 1, options = {}) {
   const normalizedLayers = Math.max(1, Math.floor(Number(layers) || 1));
   const rootSet = new Set(voxels.map(keyOf));
@@ -72,6 +96,8 @@ export function enumeratePolycubeCoronaPlacements(voxels, layers = 1, options = 
         key,
         cells,
         orientation_key: orientation.key,
+        orientation_matrix: orientation.matrix.map(row => row.slice()),
+        orientation_normalization_translation: orientation.normalization_translation.slice(),
         translation
       });
     }

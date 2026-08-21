@@ -64,7 +64,11 @@ const records = [
       corona_contact_counterexamples: 92,
       corona_contact_minimum_nontrivial_disjunction: 6,
       corona_contact_disjunction_forbidden_placements: 36,
-      corona_contact_disjunction_replay_seeds: 8
+      corona_contact_disjunction_replay_seeds: 8,
+      corona_contact_propagation_report: "data/polycube-volume9-contact-propagation-2026-08-20.json",
+      corona_contact_active_to_active_placements: 9,
+      corona_contact_reciprocal_cycles: 2,
+      corona_contact_cycle_completed_radius: 4
     },
     shell_screening: {
       robust_completed_shell: 4,

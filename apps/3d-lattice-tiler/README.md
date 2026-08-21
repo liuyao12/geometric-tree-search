@@ -561,6 +561,14 @@ their 36 placements exhausts in four nodes in each of eight seed replays. This
 is a local compatibility constraint, not yet a substitution hierarchy. See
 `data/polycube-volume9-contact-disjunction-2026-08-20.json`.
 
+Reciprocal normalization shows why the six-state rule is insufficient by
+itself. Of its 36 placements, nine remain active when viewed from the neighboring
+tile: type 3 pairs with 44, and type 29 pairs with itself. Fixing representative
+`3↔44` and `29↔29` contacts still permits exact radius-four coronas with 74 and
+66 placements, respectively. These stable local cycles do not prove an infinite
+tiling, but they rule out claiming that the six-state disjunction alone forces a
+hierarchy. See `data/polycube-volume9-contact-propagation-2026-08-20.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

@@ -193,6 +193,16 @@ possible. This is a genuine local relation, but it has not yet been propagated
 between neighboring roots or organized into a substitution hierarchy. See
 `data/polycube-volume9-contact-disjunction-2026-08-20.json`.
 
+Renormalizing the neighboring tile as root gives the directed reciprocal graph
+for those six states. Nine of the 36 active placements remain active at both
+ends: type 3 reverses to 44, type 44 reverses to 3, and type 29 reverses to
+itself. The remaining active contacts reverse to types outside the six-state
+set. Fixed representatives of both reciprocal cycles survive exact radius-four
+searches: `3↔44` reaches 74 placements after 283,688 nodes and `29↔29` reaches
+66 after 77,074 nodes. Thus the local disjunction admits stable finite dimers
+and does not itself force a hierarchy. See
+`data/polycube-volume9-contact-propagation-2026-08-20.json`.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their
@@ -205,6 +215,7 @@ between neighboring roots or organized into a substitution hierarchy. See
 4. Use successful isohedral coronas to propose, rather than assume, larger
    finite quotients.
 5. For durable survivors, search for recurring supertiles and verify a forced
-   substitution grammar on every legal corona type. For `p9-42947`, propagate
-   the six-state minimum contact disjunction between neighboring roots and test
-   whether its compatibility graph forces a hierarchy.
+   substitution grammar on every legal corona type. For `p9-42947`, condition
+   on the incoming non-active reciprocal states and test whether their required
+   outgoing six-state choices form only finite cycles or support unbounded
+   state paths.

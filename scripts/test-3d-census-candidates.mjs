@@ -333,6 +333,10 @@ const archivedPolycubeContactDisjunction = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-contact-disjunction-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeContactPropagation = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-contact-propagation-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1303,6 +1307,18 @@ assert.equal(survivors[0].census_candidate.screening.corona_contact_minimum_nont
 assert.equal(
   survivors[0].census_candidate.screening.corona_contact_disjunction_report,
   "data/polycube-volume9-contact-disjunction-2026-08-20.json"
+);
+assert.equal(archivedPolycubeContactPropagation.active_to_active_placements, 9);
+assert.deepEqual(archivedPolycubeContactPropagation.reciprocal_cycles.map(cycle => cycle.types), [
+  [3, 44],
+  [29]
+]);
+assert.ok(archivedPolycubeContactPropagation.cycle_extension_trials.every(trial => trial.success));
+assert.equal(survivors[0].census_candidate.screening.corona_contact_reciprocal_cycles, 2);
+assert.equal(survivors[0].census_candidate.screening.corona_contact_cycle_completed_radius, 4);
+assert.equal(
+  survivors[0].census_candidate.screening.corona_contact_propagation_report,
+  "data/polycube-volume9-contact-propagation-2026-08-20.json"
 );
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
