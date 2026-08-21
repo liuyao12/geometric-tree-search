@@ -61,6 +61,24 @@
     "source": "runs/p9-radius4-to5-z3-cegar-min81-seed150-summary.json",
     "source_sha256": "eed85b5e7e6ef4b24b941e0a0fe410d45bde2412d87d20be556427d87ce8c11f"
   },
+  "focused_79_to_81_lazy_cegar": {
+    "minimum_outer_placements": 79,
+    "maximum_outer_placements": 81,
+    "initial_symmetry_closed_clauses": 72,
+    "random_seeds": [170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184],
+    "z3_sat_outer_states": 12,
+    "z3_unknown_trials": 3,
+    "z3_timeout_trials": 3,
+    "outer_placement_distribution": { "79": 12 },
+    "exact_dead_outer_states": 12,
+    "immediate_dead_target_obstructions": 12,
+    "resolved_subtree_obstructions": 0,
+    "continuation_nodes": 14,
+    "final_symmetry_closed_clauses": 108,
+    "z3_milliseconds": 257241,
+    "source": "runs/p9-radius4-to5-z3-cegar-range79-81-seed170-summary.json",
+    "source_sha256": "a61d45ebfdec8aca5163008d5af124643ec7b1aaad84d925034be9d4c9ff8eb7"
+  },
   "eager_one_step_coverability_ablation": {
     "minimum_outer_placements": 79,
     "initial_symmetry_closed_clauses": 72,
@@ -74,13 +92,13 @@
     "source": "runs/p9-radius4-to5-z3-cegar-min79-lookahead-seed160-summary.json",
     "source_sha256": "b3c68835feb3aacd0f7763d9d88787143d31a6f28936e10e34b22a292f6a62ba"
   },
-  "combined_clause_distinct_outer_states": 24,
-  "combined_exact_dead_outer_states": 24,
-  "combined_continuation_nodes": 30,
-  "outer_placement_distribution": { "79": 10, "80": 9, "81": 5 },
-  "final_symmetry_closed_clauses": 72,
+  "combined_clause_distinct_outer_states": 36,
+  "combined_exact_dead_outer_states": 36,
+  "combined_continuation_nodes": 44,
+  "outer_placement_distribution": { "79": 22, "80": 9, "81": 5 },
+  "final_symmetry_closed_clauses": 108,
   "high_copy_space_exhausted": false,
   "verified_radius_5_witness_found": false,
   "certified_non_tiler": false,
-  "interpretation": "Minimum-copy constraints successfully move proposal supply into three new high-copy strata. Twenty-four clause-distinct radius-four states are independently verified and exactly rejected at radius five, but every failure is still an immediate dead target. Six lightweight proposal solves time out across the staged portfolios, and all five eager one-step-coverability solves time out without SAT or UNSAT. The result broadens finite-corona evidence and validates the new supplier control, but proves neither non-tiling nor aperiodicity."
+  "interpretation": "Minimum-copy constraints successfully move proposal supply into three new high-copy strata. Thirty-six clause-distinct radius-four states are independently verified and exactly rejected at radius five, but every failure is still an immediate dead target. Nine lightweight proposal solves time out across the staged and focused portfolios, and all five eager one-step-coverability solves time out without SAT or UNSAT. Lazy CEGAR grows the exact symmetry-closed cut set to 108 and remains the better supplier, but the result proves neither non-tiling nor aperiodicity."
 }

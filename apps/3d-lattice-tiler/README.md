@@ -645,10 +645,11 @@ than an aperiodic tiling witness. The full patch and audit are in
 The pseudo-Boolean supplier can now impose both minimum and maximum selected-
 copy bounds. This makes high-copy strata explicit instead of relying on solver
 luck, while UNSAT remains correctly scoped to the configured count range. A
-staged `p9-42947` run produces ten 79-copy, nine 80-copy, and five 81-copy
-radius-four states. All 24 patches independently verify; exact radius-five
-GCTS rejects them in 30 aggregate nodes and grows the symmetry-closed cut set
-to 72 clauses. Six lightweight solves time out across the later stages. Adding
+staged and focused `p9-42947` runs produce twenty-two 79-copy, nine 80-copy,
+and five 81-copy radius-four states. All 36 patches independently verify;
+exact radius-five GCTS rejects them in 44 aggregate nodes and grows the
+symmetry-closed cut set to 108 clauses. Nine lightweight solves time out.
+Adding
 eager one-step coverability removes the immediate-dead-cell proposals but all
 five 60-second solver attempts time out without SAT or UNSAT. Thus the minimum
 bound materially broadens proposal supply, while eager coverability remains too

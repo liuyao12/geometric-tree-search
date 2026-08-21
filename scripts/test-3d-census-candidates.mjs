@@ -1601,10 +1601,12 @@ assert.equal(archivedPlacementOrderDiversity.result.outer_search_exhausted, fals
 assert.equal(archivedP9HighCopyCegar.minimum_79_portfolio.z3_sat_outer_states, 10);
 assert.equal(archivedP9HighCopyCegar.minimum_80_staged_portfolio.z3_sat_outer_states, 9);
 assert.equal(archivedP9HighCopyCegar.minimum_81_staged_portfolio.z3_sat_outer_states, 5);
-assert.equal(archivedP9HighCopyCegar.combined_clause_distinct_outer_states, 24);
-assert.equal(archivedP9HighCopyCegar.combined_exact_dead_outer_states, 24);
-assert.equal(archivedP9HighCopyCegar.combined_continuation_nodes, 30);
-assert.equal(archivedP9HighCopyCegar.final_symmetry_closed_clauses, 72);
+assert.equal(archivedP9HighCopyCegar.focused_79_to_81_lazy_cegar.z3_sat_outer_states, 12);
+assert.equal(archivedP9HighCopyCegar.focused_79_to_81_lazy_cegar.z3_timeout_trials, 3);
+assert.equal(archivedP9HighCopyCegar.combined_clause_distinct_outer_states, 36);
+assert.equal(archivedP9HighCopyCegar.combined_exact_dead_outer_states, 36);
+assert.equal(archivedP9HighCopyCegar.combined_continuation_nodes, 44);
+assert.equal(archivedP9HighCopyCegar.final_symmetry_closed_clauses, 108);
 assert.equal(archivedP9HighCopyCegar.eager_one_step_coverability_ablation.z3_timeout_trials, 5);
 assert.equal(archivedP9HighCopyCegar.high_copy_space_exhausted, false);
 assert.equal(archivedP9HighCopyCegar.certified_non_tiler, false);
@@ -1627,8 +1629,8 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_covera
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_prunes, 282);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_seeded_order_proposal_placements, 79);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_seeded_order_continuation_nodes, 1);
-assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_states_checked, 24);
-assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_continuation_nodes, 30);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_states_checked, 36);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_continuation_nodes, 44);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_space_exhausted, false);
 assert.match(
   growthAppSource,
