@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 
-import { readFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import {
+  createPolycubeCoronaPairObstructionOracle,
   polycubeCoronaBoundaryKey,
   searchPolycubeCorona,
+  verifyPolycubeCoronaPairObstruction,
   verifyPolycubeCoronaPatch
 } from "../assets/polycube-corona-search.js";
 
@@ -44,6 +47,7 @@ const proposalTimeMs = Math.max(0, numberArg(
 ));
 const proposalNodeLimit = Math.max(1, Math.floor(numberArg("proposal-nodes", innerNodeLimit)));
 const symmetryNogoods = booleanArg("symmetry-nogoods", false);
+const pairLookahead = booleanArg("pair-lookahead", false);
 const seeds = String(args.get("seeds") ?? "3,4,1,2")
   .split(",")
   .map(Number)
@@ -53,12 +57,17 @@ const fixedWitnessReports = String(args.get("fixed-witness-report") ?? "")
   .split(",")
   .map(value => value.trim())
   .filter(Boolean);
+const reportOutput = args.get("report-output")
+  ? resolve(String(args.get("report-output")))
+  : null;
 
 let carriedNogoods = [];
 let totalContinuationChecks = 0;
 let totalExplainedObstructions = 0;
 let totalImmediateObstructions = 0;
 let totalResolvedSubtreeConflicts = 0;
+let totalPairObstructions = 0;
+let totalPairObstructionChecks = 0;
 let radiusWitness = null;
 let incompleteContinuation = null;
 const obstructedBoundaryStates = new Set();
@@ -66,6 +75,9 @@ let boundaryCacheHits = 0;
 const trials = [];
 let directProposal = null;
 const fixedWitnessContinuations = [];
+const pairObstructionOracle = pairLookahead
+  ? createPolycubeCoronaPairObstructionOracle(candidate.voxels, outerLayer)
+  : null;
 
 const mergeNogoodClauses = (...collections) => {
   const merged = new Map();
@@ -95,6 +107,24 @@ for (const reportPath of fixedWitnessReports) {
     symmetryNogoods,
     nogoodLimit
   });
+  const fixedPairObstruction = pairLookahead
+    && continuation.exhausted
+    && continuation.fixed_obstruction_nogood?.kind === "resolved_subtree_conflict"
+    ? pairObstructionOracle(placements)
+    : null;
+  let fixedPairReplayVerified = false;
+  if (fixedPairObstruction?.fixed_placement_indices?.length) {
+    const replay = verifyPolycubeCoronaPairObstruction(
+      candidate.voxels,
+      placements,
+      outerLayer,
+      fixedPairObstruction
+    );
+    fixedPairReplayVerified = replay.verified;
+    if (!fixedPairReplayVerified) {
+      throw new Error(`Fixed witness pair obstruction ${reportPath} failed independent replay: ${replay.reason}`);
+    }
+  }
   const record = {
     report: reportPath,
     fixed_placements: placements.length,
@@ -104,7 +134,11 @@ for (const reportPath of fixedWitnessReports) {
     nodes: continuation.nodes,
     milliseconds: continuation.milliseconds,
     obstruction_kind: continuation.fixed_obstruction_nogood?.kind ?? null,
-    obstruction_clause_size: continuation.fixed_obstruction_nogood?.fixed_placement_keys?.length ?? null
+    obstruction_clause_size: continuation.fixed_obstruction_nogood?.fixed_placement_keys?.length ?? null,
+    pair_obstruction_target_cells: fixedPairObstruction?.target_cells ?? null,
+    pair_obstruction_clause_size: fixedPairObstruction?.fixed_placement_keys?.length ?? null,
+    pair_obstruction_candidate_pairs_blocked: fixedPairObstruction?.candidate_pairs_blocked ?? null,
+    pair_obstruction_replay_verified: fixedPairReplayVerified
   };
   fixedWitnessContinuations.push(record);
   process.stdout.write(`${JSON.stringify({ type: "fixed_witness_continuation", ...record })}\n`);
@@ -120,7 +154,8 @@ for (const reportPath of fixedWitnessReports) {
     incompleteContinuation = continuation;
     break;
   }
-  const obstructionClause = continuation.fixed_obstruction_nogood?.fixed_placement_keys;
+  const obstructionClause = fixedPairObstruction?.fixed_placement_keys
+    ?? continuation.fixed_obstruction_nogood?.fixed_placement_keys;
   if (obstructionClause?.length) {
     carriedNogoods = mergeNogoodClauses(carriedNogoods, [obstructionClause]);
   }
@@ -182,6 +217,7 @@ process.stdout.write(`${JSON.stringify({
   direct_proposal: directProposal,
   fixed_witness_continuations: fixedWitnessContinuations,
   symmetry_nogoods: symmetryNogoods,
+  pair_lookahead: pairLookahead,
   budget_clock: budgetClock
 })}\n`);
 
@@ -191,6 +227,8 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
   let immediateObstructions = 0;
   let resolvedSubtreeConflicts = 0;
   let unexplainedObstructions = 0;
+  let pairObstructionChecks = 0;
+  let pairObstructions = 0;
   const result = searchPolycubeCorona(candidate.voxels, {
     layers: outerLayer,
     seed,
@@ -240,8 +278,20 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
       obstructedBoundaryStates.add(boundaryKey);
       if (obstruction?.fixed_placement_keys?.length) {
         explainedObstructions += 1;
-        if (obstruction.kind === "resolved_subtree_conflict") resolvedSubtreeConflicts += 1;
-        else immediateObstructions += 1;
+        if (obstruction.kind === "resolved_subtree_conflict") {
+          resolvedSubtreeConflicts += 1;
+          if (pairLookahead) {
+            pairObstructionChecks += 1;
+            const pairObstruction = pairObstructionOracle(solution);
+            if (pairObstruction?.fixed_placement_keys?.length) {
+              pairObstructions += 1;
+              return {
+                accept: false,
+                nogood_placement_keys: pairObstruction.fixed_placement_keys
+              };
+            }
+          }
+        } else immediateObstructions += 1;
         return { accept: false, nogood_placement_keys: obstruction.fixed_placement_keys };
       }
       unexplainedObstructions += 1;
@@ -253,6 +303,8 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
   totalExplainedObstructions += explainedObstructions;
   totalImmediateObstructions += immediateObstructions;
   totalResolvedSubtreeConflicts += resolvedSubtreeConflicts;
+  totalPairObstructionChecks += pairObstructionChecks;
+  totalPairObstructions += pairObstructions;
   const trial = {
     seed,
     success: result.success,
@@ -264,6 +316,8 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
     explained_obstructions: explainedObstructions,
     immediate_obstructions: immediateObstructions,
     resolved_subtree_conflicts: resolvedSubtreeConflicts,
+    pair_obstruction_checks: pairObstructionChecks,
+    pair_obstructions: pairObstructions,
     obstructed_boundary_states: obstructedBoundaryStates.size,
     boundary_cache_hits: boundaryCacheHits,
     unexplained_obstructions: unexplainedObstructions,
@@ -281,13 +335,14 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
   if (radiusWitness || incompleteContinuation || result.exhausted) break;
 }
 
-process.stdout.write(`${JSON.stringify({
+const summary = {
   type: "continuation_portfolio_summary",
   id,
   outer_layer: outerLayer,
   inner_layer: innerLayer,
   direct_proposal: directProposal,
   fixed_witness_continuations: fixedWitnessContinuations,
+  pair_lookahead: pairLookahead,
   classification: radiusWitness
     ? "inner_radius_witness"
     : directProposal?.exhausted
@@ -302,6 +357,8 @@ process.stdout.write(`${JSON.stringify({
   total_explained_obstructions: totalExplainedObstructions,
   total_immediate_obstructions: totalImmediateObstructions,
   total_resolved_subtree_conflicts: totalResolvedSubtreeConflicts,
+  total_pair_obstruction_checks: totalPairObstructionChecks,
+  total_pair_obstructions: totalPairObstructions,
   obstructed_boundary_states: obstructedBoundaryStates.size,
   boundary_cache_hits: boundaryCacheHits,
   carried_nogood_clauses: carriedNogoods.length,
@@ -316,4 +373,12 @@ process.stdout.write(`${JSON.stringify({
     milliseconds: incompleteContinuation.milliseconds
   } : null,
   warning: "A bounded incomplete portfolio is not a non-tiling or aperiodicity certificate."
-})}\n`);
+};
+if (reportOutput) {
+  mkdirSync(dirname(reportOutput), { recursive: true });
+  writeFileSync(reportOutput, `${JSON.stringify({
+    kind: "polycube_corona_continuation_portfolio",
+    ...summary
+  }, null, 2)}\n`);
+}
+process.stdout.write(`${JSON.stringify({ ...summary, report_output: reportOutput })}\n`);

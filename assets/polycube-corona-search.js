@@ -275,6 +275,200 @@ export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerL
   return incompatible;
 }
 
+export function createPolycubeCoronaPairObstructionOracle(voxels, outerLayers, options = {}) {
+  const normalizedOuterLayers = Math.max(1, Math.floor(Number(outerLayers) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const outerTarget = new Set(buildTarget(rootSet, normalizedOuterLayers));
+  const nextRing = buildTarget(rootSet, normalizedOuterLayers + 1)
+    .filter(key => !outerTarget.has(key));
+  const choices = new Map(nextRing.map(key => [key, []]));
+  for (const placement of enumeratePolycubeCoronaPlacements(
+    voxels,
+    normalizedOuterLayers + 1,
+    options
+  )) {
+    const placementKey = placement.cells.map(keyOf).sort().join(";");
+    const cellKeys = new Set(placement.cells.map(keyOf));
+    const choice = { key: placementKey, cellKeys };
+    for (const cellKey of cellKeys) if (choices.has(cellKey)) choices.get(cellKey).push(choice);
+  }
+  const greedyHittingSet = blockerSets => {
+    if (!blockerSets.length) return [];
+    if (blockerSets.some(blockers => !blockers.size)) return null;
+    const uncovered = new Set(blockerSets.map((_, index) => index));
+    const selected = [];
+    while (uncovered.size) {
+      const frequencies = new Map();
+      for (const index of uncovered) for (const blocker of blockerSets[index]) {
+        frequencies.set(blocker, (frequencies.get(blocker) ?? 0) + 1);
+      }
+      let best = null;
+      let bestCount = -1;
+      for (const [blocker, count] of frequencies) {
+        if (count > bestCount || (count === bestCount && blocker < best)) {
+          best = blocker;
+          bestCount = count;
+        }
+      }
+      if (best === null) return null;
+      selected.push(best);
+      for (const index of [...uncovered]) {
+        if (blockerSets[index].has(best)) uncovered.delete(index);
+      }
+    }
+    for (let index = selected.length - 1; index >= 0; index -= 1) {
+      const without = selected.filter((_, candidateIndex) => candidateIndex !== index);
+      if (blockerSets.every(blockers => without.some(blocker => blockers.has(blocker)))) {
+        selected.splice(index, 1);
+      }
+    }
+    return selected.sort((left, right) => left - right);
+  };
+  return placements => {
+    if (!Array.isArray(placements)) return null;
+    const fixedByKey = new Map();
+    const occupiedOwner = new Map([...rootSet].map(key => [key, -1]));
+    placements.forEach((placement, index) => {
+      const placementKey = placement.cells.map(keyOf).sort().join(";");
+      fixedByKey.set(placementKey, index);
+      for (const cell of placement.cells ?? []) occupiedOwner.set(keyOf(cell), index);
+    });
+    const blockerCache = new Map();
+    const blockersFor = choice => {
+      if (blockerCache.has(choice)) return blockerCache.get(choice);
+      const blockers = new Set();
+      if (!fixedByKey.has(choice.key)) {
+        for (const cellKey of choice.cellKeys) {
+          const owner = occupiedOwner.get(cellKey);
+          if (owner >= 0) blockers.add(owner);
+        }
+      }
+      blockerCache.set(choice, blockers);
+      return blockers;
+    };
+    const choicesAreCompatible = (left, right) => left.key === right.key
+      || [...left.cellKeys].every(cellKey => !right.cellKeys.has(cellKey));
+    for (let leftIndex = 0; leftIndex < nextRing.length; leftIndex += 1) {
+      const leftKey = nextRing[leftIndex];
+      for (let rightIndex = leftIndex + 1; rightIndex < nextRing.length; rightIndex += 1) {
+        const rightKey = nextRing[rightIndex];
+        let available = false;
+        for (const left of choices.get(leftKey)) for (const right of choices.get(rightKey)) {
+          if (choicesAreCompatible(left, right)
+            && !blockersFor(left).size
+            && !blockersFor(right).size) {
+            available = true;
+            break;
+          }
+        }
+        if (available) continue;
+        const blockerSets = [];
+        for (const left of choices.get(leftKey)) for (const right of choices.get(rightKey)) {
+          if (!choicesAreCompatible(left, right)) continue;
+          blockerSets.push(new Set([...blockersFor(left), ...blockersFor(right)]));
+        }
+        const fixedIndices = greedyHittingSet(blockerSets);
+        if (fixedIndices === null) continue;
+        return {
+          kind: "incompatible_target_pair",
+          target_cells: [leftKey, rightKey],
+          candidate_pairs_blocked: blockerSets.length,
+          fixed_placement_indices: fixedIndices,
+          fixed_placement_keys: fixedIndices.map(index =>
+            placements[index].cells.map(keyOf).sort().join(";")
+          )
+        };
+      }
+    }
+    return null;
+  };
+}
+
+export function polycubeCoronaPairObstruction(voxels, placements, outerLayers, options = {}) {
+  return createPolycubeCoronaPairObstructionOracle(voxels, outerLayers, options)(placements);
+}
+
+export function verifyPolycubeCoronaPairObstruction(
+  voxels,
+  placements,
+  outerLayers,
+  obstruction,
+  options = {}
+) {
+  const fail = reason => ({ verified: false, reason });
+  if (!Array.isArray(placements) || !Array.isArray(obstruction?.target_cells)) {
+    return fail("invalid_obstruction");
+  }
+  const fixedIndices = obstruction.fixed_placement_indices ?? [];
+  if (!fixedIndices.length || fixedIndices.some(index => !Number.isInteger(index) || !placements[index])) {
+    return fail("invalid_fixed_indices");
+  }
+  const normalizedOuterLayers = Math.max(1, Math.floor(Number(outerLayers) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const outerTarget = new Set(buildTarget(rootSet, normalizedOuterLayers));
+  const nextRing = new Set(buildTarget(rootSet, normalizedOuterLayers + 1)
+    .filter(key => !outerTarget.has(key)));
+  const [leftTarget, rightTarget] = obstruction.target_cells.map(String);
+  if (leftTarget === rightTarget || !nextRing.has(leftTarget) || !nextRing.has(rightTarget)) {
+    return fail("invalid_target_pair");
+  }
+  const fixedKeys = new Set();
+  const occupiedOwner = new Map();
+  for (const index of fixedIndices) {
+    const placement = placements[index];
+    const placementKey = placement.cells.map(keyOf).sort().join(";");
+    fixedKeys.add(placementKey);
+    for (const cell of placement.cells ?? []) {
+      const cellKey = keyOf(cell);
+      if (occupiedOwner.has(cellKey)) return fail("fixed_clause_overlap");
+      occupiedOwner.set(cellKey, index);
+    }
+  }
+  if (Array.isArray(obstruction.fixed_placement_keys)) {
+    const reportedKeys = [...new Set(obstruction.fixed_placement_keys.map(String))].sort();
+    if (reportedKeys.join("|") !== [...fixedKeys].sort().join("|")) {
+      return fail("fixed_key_mismatch");
+    }
+  }
+  const choices = new Map([[leftTarget, []], [rightTarget, []]]);
+  for (const placement of enumeratePolycubeCoronaPlacements(
+    voxels,
+    normalizedOuterLayers + 1,
+    options
+  )) {
+    const key = placement.cells.map(keyOf).sort().join(";");
+    const cellKeys = new Set(placement.cells.map(keyOf));
+    const blockers = new Set();
+    if (!fixedKeys.has(key)) {
+      for (const cellKey of cellKeys) {
+        const owner = occupiedOwner.get(cellKey);
+        if (owner !== undefined) blockers.add(owner);
+      }
+    }
+    const choice = { key, cellKeys, blockers };
+    for (const target of choices.keys()) if (cellKeys.has(target)) choices.get(target).push(choice);
+  }
+  let candidatePairs = 0;
+  for (const left of choices.get(leftTarget)) for (const right of choices.get(rightTarget)) {
+    if (left.key !== right.key
+      && [...left.cellKeys].some(cellKey => right.cellKeys.has(cellKey))) continue;
+    candidatePairs += 1;
+    if (!left.blockers.size && !right.blockers.size) return fail("unblocked_candidate_pair");
+  }
+  if (!candidatePairs) return fail("no_candidate_pairs");
+  if (Number.isFinite(Number(obstruction.candidate_pairs_blocked))
+    && candidatePairs !== Number(obstruction.candidate_pairs_blocked)) {
+    return fail("candidate_pair_count_mismatch");
+  }
+  return {
+    verified: true,
+    method: "independent_pair_clause_enumeration",
+    target_cells: [leftTarget, rightTarget],
+    fixed_placements: fixedIndices.length,
+    candidate_pairs_blocked: candidatePairs
+  };
+}
+
 /**
  * Decide whether a fixed root copy can be extended to cover every lattice cell
  * at face-distance at most `layers` from it. Exhaustion is a rigorous finite

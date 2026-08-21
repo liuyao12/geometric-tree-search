@@ -88,6 +88,18 @@
       "new_symmetry_closed_pair_constraints": 42,
       "final_symmetry_closed_pair_constraints": 114,
       "final_learned_symmetry_closed_clauses": 798,
+      "lazy_gcts_fixed_states_checked": 2,
+      "lazy_gcts_resolved_clause_sizes": [7, 6],
+      "lazy_gcts_pair_clause_sizes": [4, 6],
+      "lazy_gcts_candidate_pairs_blocked": [2288, 2288],
+      "lazy_gcts_subset_replays_verified": 2,
+      "lazy_gcts_independent_replay_source_sha256": "fa3e700195cab33a1121ba7ce43e2454d9743520a574464ec8e756ad04e9038a",
+      "lazy_gcts_outer_ab_runtime_pair_checks": 0,
+      "lazy_gcts_outer_ab_conclusion": "neutral: both seeded 5,000,000-node searches remained incomplete and all 46 newly encountered continuations had simpler immediate obstructions",
+      "lazy_gcts_outer_ab_source_sha256": [
+        "c3633ef5e02117bdfd3e443010f99e8361eb23beceb085fb7ef88c318e066d9e",
+        "a9d96e4a6d77a807b88012ea93c4717a2150f2560e838badc4754f7e0e2b64cf"
+      ],
       "max_63_pair_114_timeouts": 2,
       "max_64_pair_114_timeouts": 2,
       "pair_114_exhausted": false,
@@ -104,5 +116,5 @@
     "radius_4_space_exhausted": false,
     "certified_non_tiler": false
   },
-  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 281 proposed radius-four patches is exactly obstructed at radius five, including 31 economical patches and thirteen 63-copy patches. The one-step filter removes immediate dead targets; the pairwise filter then removes the next 2–4-node failure class and makes two new proposals require five-node continuation proofs. Those states expose 14 new incompatible cell pairs, growing the exact symmetry-closed pair set from 72 to 114. Four 114-pair solves time out, so the radius-four state space remains unexhausted. These results prove neither non-tiling nor aperiodicity."
+  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 281 proposed radius-four patches is exactly obstructed at radius five, including 31 economical patches and thirteen 63-copy patches. The one-step filter removes immediate dead targets; the pairwise filter then removes the next 2–4-node failure class and makes two new proposals require five-node continuation proofs. Those states expose 14 new incompatible cell pairs, growing the exact symmetry-closed pair set from 72 to 114. Lazy GCTS pair analysis independently replays both pair obstructions and shrinks one exact conflict clause from seven placements to four; a seeded 5,000,000-node A/B run is neutral because every newly encountered continuation has a simpler immediate obstruction. Four 114-pair solves time out, so the radius-four state space remains unexhausted. These results prove neither non-tiling nor aperiodicity."
 }

@@ -716,6 +716,13 @@ removes immediate dead cells before proposal; its four satisfiable patches all
 require resolved-subtree conflicts. Pairwise coverability then promotes two
 more proposals to five-node continuation proofs and learns 114 symmetry-closed
 cell-pair obligations; the full 114-pair formula remains timeout-inconclusive.
+The same obligations now run lazily inside continuation-guided GCTS. Two fixed
+production states independently replay their extracted pair clauses; the
+smaller clause uses four placements instead of the exact continuation proof's
+seven and blocks 2,288 mutually compatible next-ring placement pairs. A
+5,000,000-node seeded A/B run is neutral: both searches remain incomplete and
+all 46 newly encountered continuation failures have simpler immediate-cell
+obstructions, so pair lookahead is never invoked on the live branch.
 Radius four remains unexhausted. See
 `data/polycube-volume9-z3-cegar-2026-08-21.json`.
 

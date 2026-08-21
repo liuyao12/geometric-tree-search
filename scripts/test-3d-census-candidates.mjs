@@ -138,6 +138,7 @@ assert.match(growthAppSource, /All four modes finished\./);
 assert.match(growthAppSource, /positive-control low-copy CEGAR run rejects/);
 assert.match(growthAppSource, /Radius four is still unexhausted/);
 assert.match(growthAppSource, /Pairwise next-ring coverability promotes/);
+assert.match(growthAppSource, /Lazy GCTS independently replays/);
 assert.match(growthWorkerSource, /message\.type === "placement_delta" && tiles !== lastHistoryTileCount/);
 assert.match(growthWorkerSource, /type: "sample-batch"/);
 assert.doesNotMatch(growthWorkerSource, /tiles > best/);
@@ -1543,6 +1544,8 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_symmetry
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_minimum_radius4_placements, 63);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_lookahead_resolved_subtree_obstructions, 4);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_pair_final_constraints, 114);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_pair_lazy_subset_replays_verified, 2);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_pair_lazy_minimum_clause_size, 4);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_radius4_exhausted, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_certified_non_tiler, false);
 assert.equal(

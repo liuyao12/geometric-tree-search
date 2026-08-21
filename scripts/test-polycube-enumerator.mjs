@@ -11,9 +11,11 @@ import {
   POLYCUBE_ROTATION_COUNT
 } from "../assets/polycube-enumerator.js";
 import {
+  createPolycubeCoronaPairObstructionOracle,
   enumeratePolycubeCoronaPlacements,
   polycubeCellPairOrbitKeys,
   polycubeCoronaIncompatibleTargetPairs,
+  polycubeCoronaPairObstruction,
   polycubePlacementClauseOrbitKeys,
   polycubePlacementOrbitKeys,
   polycubeCoronaBoundaryKey,
@@ -21,6 +23,7 @@ import {
   polycubeRootContactKey,
   searchFirstPolycubeCorona,
   searchPolycubeCorona,
+  verifyPolycubeCoronaPairObstruction,
   verifyPolycubeCoronaPatch
 } from "../assets/polycube-corona-search.js";
 import { findPolycubeBoxTiling } from "../assets/polycube-box-tiler.js";
@@ -645,6 +648,34 @@ const trappedIncompatiblePairs = polycubeCoronaIncompatibleTargetPairs(
 );
 assert.ok(trappedIncompatiblePairs.length > 0);
 assert.ok(polycubeCellPairOrbitKeys(unresolvedP9.voxels, trappedIncompatiblePairs[0]).length > 0);
+const pairObstructionOracle = createPolycubeCoronaPairObstructionOracle(unresolvedP9.voxels, 4);
+const trappedPairObstruction = pairObstructionOracle(unresolvedRadiusFour.corona);
+assert.equal(trappedPairObstruction.kind, "incompatible_target_pair");
+assert.ok(trappedPairObstruction.fixed_placement_indices.length > 0);
+assert.ok(trappedPairObstruction.candidate_pairs_blocked > 0);
+const trappedPairSubset = trappedPairObstruction.fixed_placement_indices
+  .map(index => unresolvedRadiusFour.corona[index]);
+const trappedPairReplay = pairObstructionOracle(trappedPairSubset);
+assert.deepEqual(trappedPairReplay.target_cells, trappedPairObstruction.target_cells);
+assert.deepEqual(
+  verifyPolycubeCoronaPairObstruction(
+    unresolvedP9.voxels,
+    unresolvedRadiusFour.corona,
+    4,
+    trappedPairObstruction
+  ),
+  {
+    verified: true,
+    method: "independent_pair_clause_enumeration",
+    target_cells: trappedPairObstruction.target_cells,
+    fixed_placements: trappedPairObstruction.fixed_placement_indices.length,
+    candidate_pairs_blocked: trappedPairObstruction.candidate_pairs_blocked
+  }
+);
+assert.deepEqual(
+  polycubeCoronaPairObstruction(unresolvedP9.voxels, trappedPairSubset, 4).target_cells,
+  trappedPairObstruction.target_cells
+);
 
 const resolvedConflictHexacube = [
   [0, 0, 0], [0, 0, 1], [0, 1, 0],
