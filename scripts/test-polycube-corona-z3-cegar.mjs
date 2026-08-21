@@ -13,6 +13,8 @@ import { enumeratePolycubeCoronaPlacements } from "../assets/polycube-corona-sea
 const python = process.env.PYTHON ?? "python3";
 const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const cegar = fileURLToPath(new URL("./screen-polycube-corona-z3-cegar.mjs", import.meta.url));
+const cegarSource = readFileSync(cegar, "utf8");
+assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFileSync\(clausePath[\s\S]*?writeFileSync\(pairPath/);
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
 assert.ok(candidate);
 
@@ -148,6 +150,48 @@ try {
   assert.equal(pairReport.z3_status, "sat");
   assert.ok(pairReport.pair_coverability_constraints > 0);
   assert.ok(pairReport.pair_coverability_terms > 0);
+
+  const choicePairOutput = join(directory, "pair-choice-encoded.json");
+  const choicePairEncoded = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--pair-encoding=choice-cnf",
+    `--pair-coverability-report=${pairPath}`,
+    `--output=${choicePairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(choicePairEncoded.status, 0, choicePairEncoded.stderr);
+  const choicePairReport = JSON.parse(readFileSync(choicePairOutput, "utf8"));
+  assert.equal(choicePairReport.z3_status, pairReport.z3_status);
+  assert.equal(choicePairReport.pair_coverability_encoding, "choice-cnf");
+  assert.equal(choicePairReport.pair_coverability_terms, 0);
+  assert.ok(choicePairReport.pair_coverability_choice_variables > 0);
+  assert.ok(choicePairReport.pair_coverability_incompatibilities >= 0);
+
+  const witnessPairOutput = join(directory, "pair-witness-encoded.json");
+  const witnessPairEncoded = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--pair-encoding=witness-cnf",
+    `--pair-coverability-report=${pairPath}`,
+    `--output=${witnessPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(witnessPairEncoded.status, 0, witnessPairEncoded.stderr);
+  const witnessPairReport = JSON.parse(readFileSync(witnessPairOutput, "utf8"));
+  assert.equal(witnessPairReport.z3_status, pairReport.z3_status);
+  assert.equal(witnessPairReport.pair_coverability_encoding, "witness-cnf");
+  assert.ok(witnessPairReport.pair_coverability_terms > 0);
+  assert.ok(witnessPairReport.pair_coverability_choice_variables > 0);
+  assert.equal(witnessPairReport.pair_coverability_incompatibilities, 0);
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }

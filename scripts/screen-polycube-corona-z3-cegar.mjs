@@ -55,6 +55,10 @@ const continueOnZ3Unknown = booleanArg("continue-on-z3-unknown", true);
 const requireNextLayerCoverability = booleanArg("require-next-layer-coverability", false);
 const learnPairCoverability = booleanArg("learn-pair-coverability", false);
 const pairOrbitLimit = integerArg("pair-orbit-limit", 0, 0);
+const pairEncoding = args.get("pair-encoding") ?? "dnf";
+if (!["dnf", "choice-cnf", "witness-cnf"].includes(pairEncoding)) {
+  throw new Error("--pair-encoding must be dnf, choice-cnf, or witness-cnf");
+}
 const python = args.get("python") ?? "python3";
 const outputDirectory = resolve(args.get("output-dir") ?? `runs/${id}-radius${outerLayer}-to-${innerLayer}-z3-cegar`);
 const reportOutput = resolve(args.get("report-output") ?? `${outputDirectory}/summary.json`);
@@ -154,6 +158,7 @@ process.stdout.write(`${JSON.stringify({
   effective_next_layer_coverability: effectiveNextLayerCoverability,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
+  pair_encoding: pairEncoding,
   initial_clause_count: initialClauseCount,
   initial_pair_coverability_constraints: initialPairCount,
   output_directory: outputDirectory
@@ -176,7 +181,10 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   ];
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
   if (effectiveNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
-  if (pairConstraints.length) solverArguments.push(`--pair-coverability-report=${pairPath}`);
+  if (pairConstraints.length) {
+    solverArguments.push(`--pair-coverability-report=${pairPath}`);
+    solverArguments.push(`--pair-encoding=${pairEncoding}`);
+  }
   const solved = spawnSync(python, solverArguments, {
     encoding: "utf8",
     timeout: z3TimeoutMs + z3ProcessGraceMs,
@@ -330,6 +338,11 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   }
 }
 
+// Keep resumable artifacts synchronized even when the final iteration learns
+// new obligations and exits before the next proposal write.
+writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
+writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
+
 const summary = {
   kind: "polycube_corona_z3_cegar",
   candidate: id,
@@ -346,6 +359,7 @@ const summary = {
   effective_next_layer_coverability: effectiveNextLayerCoverability,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
+  pair_encoding: pairEncoding,
   z3_unknown_trials: z3UnknownTrials,
   z3_timeout_ms: z3TimeoutMs,
   z3_process_grace_ms: z3ProcessGraceMs,

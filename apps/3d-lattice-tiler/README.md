@@ -701,7 +701,8 @@ counterexample-guided pair:
 node scripts/screen-polycube-corona-z3-cegar.mjs \
   --id=p9-42947 --outer-layer=4 --inner-layer=5 \
   --iterations=50 --max-placements=64 --symmetry-clauses=true \
-  --learn-pair-coverability=true --pair-orbit-limit=2
+  --learn-pair-coverability=true --pair-orbit-limit=2 \
+  --pair-encoding=witness-cnf
 ```
 
 Z3 proposes a complete outer corona; exact fixed-placement GCTS either extends
@@ -710,12 +711,18 @@ timeout. Imported clauses make a final UNSAT result conditional until their
 continuation proofs are independently replayed, and a copy-count bound can
 only certify exhaustion of that bounded stratum. A low-copy radius-two to
 three positive control recovers a verified witness after 17 dead proposals.
-For `p9-42947`, 281 radius-four proposals are now exactly rejected at radius
-five, including thirteen 63-copy states. An exact one-step coverability filter
+For `p9-42947`, 283 radius-four proposals are now exactly rejected at radius
+five, including fifteen 63-copy states. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all
 require resolved-subtree conflicts. Pairwise coverability then promotes two
 more proposals to five-node continuation proofs and learns 114 symmetry-closed
 cell-pair obligations; the full 114-pair formula remains timeout-inconclusive.
+A factored witness-CNF encoding replaces the 322,977 compatible-pair DNF terms
+with 8,208 local witness choices. Under an equal 60-second solver budget it
+finds a new 63-copy proposal where both the DNF and two-sided choice-CNF
+encodings time out. Across four witness-CNF seeds, two proposals are found and
+then exactly rejected at radius five in two and four GCTS nodes; two seeds time
+out. The exact clause set consequently grows from 798 to 804.
 The same obligations now run lazily inside continuation-guided GCTS. Two fixed
 production states independently replay their extracted pair clauses; the
 smaller clause uses four placements instead of the exact continuation proof's

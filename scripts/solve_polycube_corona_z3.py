@@ -105,6 +105,7 @@ def main():
     parser.add_argument("--max-placements", type=int)
     parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--pair-coverability-report")
+    parser.add_argument("--pair-encoding", choices=("dnf", "choice-cnf", "witness-cnf"), default="dnf")
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--output")
     args = parser.parse_args()
@@ -155,6 +156,8 @@ def main():
             raise ValueError("Pair coverability report must contain a pairs list")
     pair_coverability_count = 0
     pair_coverability_terms = 0
+    pair_coverability_choice_variables = 0
+    pair_coverability_incompatibilities = 0
     if args.require_next_layer_coverability or pair_coverability:
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
@@ -211,7 +214,54 @@ def main():
         placement_cell_sets = {
             index: frozenset(next_placements[index]) for index in relevant_indices
         }
-        for left_cell, right_cell in sorted(normalized_pairs):
+        for pair_index, (left_cell, right_cell) in enumerate(sorted(normalized_pairs)):
+            if args.pair_encoding == "witness-cnf":
+                left_indices = retained_by_cell.get(left_cell, ())
+                right_indices = retained_by_cell.get(right_cell, ())
+                if len(right_indices) < len(left_indices):
+                    left_indices, right_indices = right_indices, left_indices
+                witness_choices = []
+                for left_index in left_indices:
+                    compatible = [
+                        availability[right_index]
+                        for right_index in right_indices
+                        if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
+                            placement_cell_sets[right_index]
+                        )
+                    ]
+                    if not compatible:
+                        continue
+                    witness = z3.Bool(f"w_{pair_index}_{left_index}")
+                    witness_choices.append(witness)
+                    solver.add(z3.Or(z3.Not(witness), availability[left_index]))
+                    solver.add(z3.Or(z3.Not(witness), z3.Or(compatible)))
+                    pair_coverability_terms += len(compatible)
+                solver.add(z3.Or(witness_choices) if witness_choices else z3.BoolVal(False))
+                pair_coverability_choice_variables += len(witness_choices)
+                continue
+            if args.pair_encoding == "choice-cnf":
+                left_choices = {
+                    index: z3.Bool(f"q_{pair_index}_l_{index}")
+                    for index in retained_by_cell.get(left_cell, ())
+                }
+                right_choices = {
+                    index: z3.Bool(f"q_{pair_index}_r_{index}")
+                    for index in retained_by_cell.get(right_cell, ())
+                }
+                solver.add(z3.Or(list(left_choices.values())) if left_choices else z3.BoolVal(False))
+                solver.add(z3.Or(list(right_choices.values())) if right_choices else z3.BoolVal(False))
+                for index, choice in itertools.chain(left_choices.items(), right_choices.items()):
+                    solver.add(z3.Or(z3.Not(choice), availability[index]))
+                for left_index, left_choice in left_choices.items():
+                    for right_index, right_choice in right_choices.items():
+                        if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
+                            placement_cell_sets[right_index]
+                        ):
+                            continue
+                        solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
+                        pair_coverability_incompatibilities += 1
+                pair_coverability_choice_variables += len(left_choices) + len(right_choices)
+                continue
             compatible_terms = {}
             for left_index in retained_by_cell.get(left_cell, ()):
                 for right_index in retained_by_cell.get(right_cell, ()):
@@ -266,6 +316,9 @@ def main():
         "lookahead_conflicts": lookahead_conflict_count,
         "pair_coverability_constraints": pair_coverability_count,
         "pair_coverability_terms": pair_coverability_terms,
+        "pair_coverability_encoding": args.pair_encoding,
+        "pair_coverability_choice_variables": pair_coverability_choice_variables,
+        "pair_coverability_incompatibilities": pair_coverability_incompatibilities,
         "target_cells": len(target),
         "placements_considered": len(placements),
         "variables": len(variables),

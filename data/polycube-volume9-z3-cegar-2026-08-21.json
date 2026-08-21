@@ -87,7 +87,29 @@
       "new_incompatible_pairs": 14,
       "new_symmetry_closed_pair_constraints": 42,
       "final_symmetry_closed_pair_constraints": 114,
-      "final_learned_symmetry_closed_clauses": 798,
+      "final_learned_symmetry_closed_clauses": 804,
+      "witness_cnf_trials": 4,
+      "witness_cnf_sat_outer_states": 2,
+      "witness_cnf_timeouts": 2,
+      "witness_cnf_exact_dead_outer_states": 2,
+      "witness_cnf_continuation_nodes": 6,
+      "witness_cnf_learned_clause_sizes": [5, 7],
+      "witness_cnf_choice_variables": 8208,
+      "witness_cnf_compatibility_terms": 322977,
+      "witness_cnf_first_sat_milliseconds": 118924,
+      "witness_cnf_second_sat_milliseconds": 84320,
+      "witness_cnf_source_sha256": [
+        "c5b8bb7077db59d8bdbc6029299e045f14bfc1b97e50e9f5c1b4db1832bdda07",
+        "abdb5560b0335abd62d6bebeab94be515b7de586c24f86c6836b228f9aee8606",
+        "288c8c7dc70c5f43efe65ea380e3f397e425997fcdab7668b6db170be6afae1d",
+        "28268e46d53abbbd727b9637e202d8a0d3ac48e695de2c083f8c6c60060872a8"
+      ],
+      "equal_budget_dnf_status": "timeout",
+      "equal_budget_choice_cnf_status": "timeout",
+      "encoding_ablation_source_sha256": [
+        "e43494db65f0722385b1ad1bce4d7f4fdfdb933b8c68ddbfd8376b1d43f7d784",
+        "d78975e932a92d84d3c78ee28acc83c67f878ec3a649873c9ece6841fee2d2dc"
+      ],
       "lazy_gcts_fixed_states_checked": 2,
       "lazy_gcts_resolved_clause_sizes": [7, 6],
       "lazy_gcts_pair_clause_sizes": [4, 6],
@@ -100,7 +122,7 @@
         "c3633ef5e02117bdfd3e443010f99e8361eb23beceb085fb7ef88c318e066d9e",
         "a9d96e4a6d77a807b88012ea93c4717a2150f2560e838badc4754f7e0e2b64cf"
       ],
-      "max_63_pair_114_timeouts": 2,
+      "max_63_pair_114_timeouts": 6,
       "max_64_pair_114_timeouts": 2,
       "pair_114_exhausted": false,
       "source_sha256": [
@@ -110,11 +132,11 @@
         "ce3d943b6edbadf5d97e1bf01aa6b8c7d1c7bec0b89c73dfd19fbd5b4a8ff9c9"
       ]
     },
-    "combined_exact_dead_outer_states": 281,
-    "combined_symmetry_closed_clauses": 798,
+    "combined_exact_dead_outer_states": 283,
+    "combined_symmetry_closed_clauses": 804,
     "verified_radius_5_witness_found": false,
     "radius_4_space_exhausted": false,
     "certified_non_tiler": false
   },
-  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 281 proposed radius-four patches is exactly obstructed at radius five, including 31 economical patches and thirteen 63-copy patches. The one-step filter removes immediate dead targets; the pairwise filter then removes the next 2–4-node failure class and makes two new proposals require five-node continuation proofs. Those states expose 14 new incompatible cell pairs, growing the exact symmetry-closed pair set from 72 to 114. Lazy GCTS pair analysis independently replays both pair obstructions and shrinks one exact conflict clause from seven placements to four; a seeded 5,000,000-node A/B run is neutral because every newly encountered continuation has a simpler immediate obstruction. Four 114-pair solves time out, so the radius-four state space remains unexhausted. These results prove neither non-tiling nor aperiodicity."
+  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 283 proposed radius-four patches is exactly obstructed at radius five, including 33 economical patches and fifteen 63-copy patches. The one-step filter removes immediate dead targets; the pairwise filter then removes the next 2–4-node failure class and makes two new proposals require five-node continuation proofs. Those states expose 14 new incompatible cell pairs, growing the exact symmetry-closed pair set from 72 to 114. A factored witness-CNF encoding exposes two additional 63-copy states under the same 114 obligations where equal-budget DNF and two-sided choice-CNF runs time out; exact GCTS rejects them in two and four nodes and grows the clause set from 798 to 804. Lazy GCTS pair analysis independently replays both pair obstructions and shrinks one exact conflict clause from seven placements to four; a seeded 5,000,000-node A/B run is neutral because every newly encountered continuation has a simpler immediate obstruction. Eight 114-pair solves time out across the recorded encodings and copy bounds, so the radius-four state space remains unexhausted. These results prove neither non-tiling nor aperiodicity."
 }
