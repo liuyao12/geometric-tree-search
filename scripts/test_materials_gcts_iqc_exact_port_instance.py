@@ -4,7 +4,8 @@ import math
 
 from materials_gcts_iqc_exact_port_instance_audit import evaluate
 from materials_gcts_iqc_exact_port_instance_dataset import (
-    EXPECTED_DATASET_DIGEST, _distance_signature, _relation_flags,
+    EXPECTED_DATASET_DIGEST, _boundary_context, _distance_signature,
+    _relation_flags,
     load_default_dataset)
 from materials_gcts_recursive_connections import (
     LocalClusterType, ProposalPairAction, RecursiveConnectionState)
@@ -82,6 +83,15 @@ def test_instance_relations_and_metric_signature_are_invariant():
         selected, forward, transform(selected_target),
         transform(candidate_target), tuple(map(transform, positions)), 1.)
     assert original == moved
+
+    center = (0., 0., 0.)
+    context = _boundary_context(
+        center, selected_target, positions[0], positions[1], 9., 1., 512)
+    moved_context = _boundary_context(
+        transform(center), transform(selected_target), transform(positions[0]),
+        transform(positions[1]), 9., 1., 512)
+    assert context == moved_context
+    assert context["current_frontier_fraction"] == .5
 
 
 if __name__ == "__main__":

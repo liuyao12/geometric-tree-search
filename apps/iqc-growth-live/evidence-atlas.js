@@ -119,6 +119,7 @@ const TIMELINE = [
   ["17", "Third-frontier control", "A fixed 512-path shortlist contains exact alternatives in every nucleus, but outgoing-frontier valuation falls to 4 / 9 and is rejected.", "progress"],
   ["17b", "Simultaneous port cover", "Exhaustive SAT/UNSAT/UNKNOWN search catches conflicting marginal controls, but all 120 real IQC branches satisfy the coarse role cover. Exact finite port-instance incidence is now the open representation.", "progress"],
   ["17c", "Exact port instances", "Preserving ordered parent→source incidence makes forward continuation reject 26 / 61 false branches while retaining 57 / 59 exact. One supplied nucleus loses exact supply, so boundary-conditioned backoff remains open.", "progress"],
+  ["17d", "Boundary backoff falsification", "A six-feature, group-heldout scalar backoff restores 59 / 59 exact branches and all 9 nuclei while still rejecting 8 false branches. Every one of 31 within-nucleus label shuffles ties it (p = 1), so it remains a descriptive defer rule—not a learned marking.", "open"],
   ["18", "Open frontier", "Learn a transferable connection section that selects the existing exact paths, then promote the resulting antichain into a recurring oriented production.", "open"],
 ];
 
@@ -152,6 +153,7 @@ const CLAIMS = [
   ["progress", "Third-frontier negative control", "Executing 512 target-free paths per nucleus and marking their outgoing port sections selects only 4 / 9. A larger immediate frontier is again rejected as the search value."],
   ["progress", "Simultaneous consistency search", "Complete successor enumeration and exhaustive compatible-set search are now distinct from scalar ranking. All 59 exact and 61 false wide-IQC branches satisfy the semantic-role cover, proving that exact port instances—not more role weights—are required."],
   ["progress", "Finite port-instance contradiction", "Occurrence-level forward continuation raises retained branch precision from 49.2% to 62.0% and rejects 26 false branches. Two exact branches also fail, so the certificate is diagnostic rather than an autonomous rollback rule."],
+  ["open", "Boundary backoff causality", "Port-length conditioning restores exact supply and retains 8 false rejections, but shuffled labels reproduce the entire grouped selection result. The next mark must distinguish joint endpoint geometry within one boundary regime."],
   ["progress", "Nearest recurrent branch value", "A geometry-only 30-nucleus corpus freezes 354 depth-three terminal branches. Group-heldout k=9 nearest-recurrent value improves exact selection from 17 / 21 to 20 / 21 supplied nuclei and moves the consumed diagnostic exact branch from rank 10 to rank 1. A fresh autonomous confirmation remains unopened."],
   ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC sites; four rules are heterogeneous, but no closed state matrix recurs across transitions."],
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],

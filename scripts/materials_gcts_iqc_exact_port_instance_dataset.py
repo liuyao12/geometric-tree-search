@@ -50,13 +50,14 @@ RELATIONS = (
     "reverse", "forward", "backward", "same_parent", "same_source",
     "touch_parent", "touch_source",
 )
+FRONTIER_NORMALIZATION = 1024.
 ROOT = Path(__file__).resolve().parent
 DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_exact_port_instance_dataset_v1.json.gz"
 EXPECTED_FIXTURE_SHA256 = \
-    "5df717f70404c9f7adfb186b54abbc0d891dbf38b16ea8ec12110d7b556e301a"
+    "6078563db697459e2d9c7aea2820fe1f6e6914c1954ca7f27e4e0a1279abfd4c"
 EXPECTED_DATASET_DIGEST = \
-    "d331c5bef2d040ac74960dfd57b1e6262dbf0af3d0bf96451cfe7e937d0c30d0"
+    "16c0067d58082e60beaaee584a06dfe8c13358b565060729323b9056bb9544ce"
 
 
 def _relation_flags(selected: ProposalPairAction,
@@ -95,6 +96,29 @@ def _distance_signature(selected, other, selected_target, candidate_target,
     return _state_code(other.state), distances
 
 
+def _boundary_context(center, target, parent, source, radius,
+                      minimum_distance, frontier_actions):
+    radial = tuple(target[axis] - center[axis] for axis in range(3))
+    port = tuple(source[axis] - parent[axis] for axis in range(3))
+    radial_norm = math.sqrt(sum(value * value for value in radial))
+    port_norm = math.sqrt(sum(value * value for value in port))
+    outward_cosine = (sum(left * right for left, right in zip(radial, port)) /
+                       (radial_norm * port_norm)
+                       if radial_norm > 1e-12 and port_norm > 1e-12 else 0.)
+    return {
+        "target_margin_nn": round(
+            (radius - math.dist(target, center)) / minimum_distance, 6),
+        "parent_margin_nn": round(
+            (radius - math.dist(parent, center)) / minimum_distance, 6),
+        "source_margin_nn": round(
+            (radius - math.dist(source, center)) / minimum_distance, 6),
+        "ordered_port_length_nn": round(port_norm / minimum_distance, 6),
+        "outward_cosine": round(outward_cosine, 6),
+        "current_frontier_fraction": round(
+            frontier_actions / FRONTIER_NORMALIZATION, 6),
+    }
+
+
 def _successor_relations(source, state, runtime, minimum_distance):
     if state.proposals.pair_actions is None:
         raise AssertionError("exact proposal pair provenance is unavailable")
@@ -109,6 +133,11 @@ def _successor_relations(source, state, runtime, minimum_distance):
     if len(selected_rows) != 1:
         raise AssertionError("wide selected action must have one pair witness")
     selected = selected_rows[0]
+    parent = state.positions[selected.parent_index]
+    selected_source = state.positions[selected.source_index]
+    boundary_context = _boundary_context(
+        source.group, point, parent, selected_source, SECOND_BLOCK_RADIUS,
+        minimum_distance, len(state.proposals.votes))
     successor = _child(
         source, runtime["connection"], runtime["state_model"], state,
         point, descriptors[point], SECOND_BLOCK_RADIUS)
@@ -140,6 +169,7 @@ def _successor_relations(source, state, runtime, minimum_distance):
         "selected_state": _state_code(selected.state),
         "selected_pair_witnesses": len(selected_rows),
         "complete_successor_frontier_actions": len(successor.proposals.votes),
+        "boundary_context": boundary_context,
         "raw_matching_pair_actions": raw_counts,
         "invariant_candidate_classes": {
             relation: len(classes[relation]) for relation in RELATIONS},
@@ -198,6 +228,7 @@ def _evaluate_group(payload):
         "rows": rows, "successor_enumeration_complete": True,
         "raw_occurrence_indices_serialized": False,
         "proper_motion_invariant_candidate_identity": True,
+        "public_boundary_context_serialized": True,
         "target_used_for_candidates_or_certificates": False,
         "labels_joined_after_group_geometry_freeze": True,
     }
@@ -249,6 +280,7 @@ def build_dataset(*, workers=1):
         "ordered_pair_provenance_preserved": True,
         "raw_occurrence_indices_serialized": False,
         "proper_motion_invariant_candidate_identity": True,
+        "public_boundary_context_serialized": True,
         "candidate_geometry_unchanged": True,
         "target_used_for_candidates_or_certificates": False,
         "labels_joined_after_geometry_freeze": True,
@@ -278,6 +310,7 @@ def load_default_dataset(path=DEFAULT_FIXTURE):
             or not body["ordered_pair_provenance_preserved"]
             or body["raw_occurrence_indices_serialized"]
             or not body["proper_motion_invariant_candidate_identity"]
+            or not body["public_boundary_context_serialized"]
             or body["target_used_for_candidates_or_certificates"]
             or not body["labels_joined_after_geometry_freeze"]
             or body["mandatory_physical_port_occupancy_claimed"]

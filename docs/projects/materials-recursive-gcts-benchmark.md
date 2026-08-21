@@ -4295,11 +4295,39 @@ The deployment gate remains red. The two rejected exact branches include the
 only exact branch in one supplied nucleus, reducing exact supply from nine to
 eight nuclei. The permissive backward relation restores all exact branches but
 rejects only one false branch; an unconditional union would erase nearly all
-the gain. The next experiment must freeze a train-only, local boundary/context
-backoff that predicts when missing forward continuation is legitimate. This
-development audit does not select a relation on a fresh confirmation and does
-not claim physical valence, mandatory port occupancy, autonomous growth,
-stationary IQC recurrence, or exponential growth.
+the gain.
+
+The bounded local backoff experiment is now complete. Each selected action
+serializes six target-free scalars before consumed labels are joined: target,
+parent, and source margins to the public boundary; ordered port length in
+nearest-neighbor units; port/outward cosine; and current frontier fraction.
+Candidate geometry and exact finite-port certificates are unchanged. A
+leave-one-nucleus-out selection over one feature, one direction, and one
+threshold chooses `ordered_port_length_nn >= 9.3709435`. The threshold itself
+is refit without each held-out nucleus.
+
+| boundary-backoff result | exact | false |
+| --- | ---: | ---: |
+| forward SAT | 57 | 35 |
+| forward UNSAT deferred | 2 | 18 |
+| forward UNSAT rejected | 0 | 8 |
+
+The backoff therefore restores `59 / 59` exact branches, all nine supplied
+nuclei, and retains eight false rejections. Its final precision is `59 / 112 =
+52.68%`. Deferred is a separate state—not SAT—and cannot accept an action by
+itself.
+
+The causal gate is red. Thirty-one deterministic within-nucleus label shuffles
+preserve each nucleus's class marginal and repeat the complete feature-family
+selection plus threshold fit. Every shuffle also defers both exact-labelled
+rows and rejects eight false-labelled rows, giving `p = 1` for exact recovery
+and false rejection. The scalar recognizes three boundary/port-length regimes,
+but exact and false actions inside the two exact-bearing regimes remain
+indistinguishable. It is not integrated as the learned marking and no fresh
+confirmation is claimed. The next experiment must retain their joint endpoint
+metric graph or simultaneous incidence, not add another scalar boundary
+channel. No physical valence, mandatory port occupancy, autonomous growth,
+stationary IQC recurrence, or exponential growth follows.
 
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary

@@ -2138,6 +2138,22 @@ only one false branch, so simply unioning relations destroys the gain. The
 next marking must learn a train-only local boundary condition for when absent
 forward continuation is acceptable.
 
+That bounded follow-up is now measured rather than assumed. Before labels are
+joined, every selected exact port records six invariant scalars: public-boundary
+margins for the target and both endpoints, ordered port length, outward cosine,
+and current frontier fraction. A leave-one-nucleus-out sweep over one scalar and
+one threshold direction selects normalized ordered port length. Treating the
+selected forward-UNSAT branches as **deferred**, never as port-satisfied,
+restores `59 / 59` exact branches and exact supply in all `9 / 9` nuclei while
+still rejecting `8 / 61` false branches; retained precision is `59 / 112 =
+52.68%`. This recovery is not causal marking evidence. Thirty-one
+within-nucleus label shuffles repeat feature selection and threshold fitting,
+and every null ties the observed two exact recoveries and eight false
+rejections (`p = 1` for both). The rule remains out of the active marking. It
+separates boundary regimes but cannot distinguish exact from false actions
+inside either exact-bearing regime, so the next representation must retain the
+joint endpoint metric graph rather than add scalar boundary capacity.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
