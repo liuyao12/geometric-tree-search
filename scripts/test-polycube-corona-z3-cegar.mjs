@@ -14,7 +14,7 @@ const python = process.env.PYTHON ?? "python3";
 const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const cegar = fileURLToPath(new URL("./screen-polycube-corona-z3-cegar.mjs", import.meta.url));
 const cegarSource = readFileSync(cegar, "utf8");
-assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFileSync\(clausePath[\s\S]*?writeFileSync\(cellPath[\s\S]*?writeFileSync\(pairPath/);
+assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFileSync\(clausePath[\s\S]*?writeFileSync\(cellPath[\s\S]*?writeFileSync\(pairPath[\s\S]*?writeFileSync\(triplePath[\s\S]*?writeFileSync\(quadruplePath/);
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
 assert.ok(candidate);
 const nonTiler = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p10-052670");
@@ -181,6 +181,10 @@ try {
   writeFileSync(triplePath, `${JSON.stringify({
     triples: [[secondRing[0], secondRing[1], secondRing.at(-1)]]
   })}\n`);
+  const quadruplePath = join(directory, "quadruple-coverability.json");
+  writeFileSync(quadruplePath, `${JSON.stringify({
+    quadruples: [[secondRing[0], secondRing[1], secondRing[2], secondRing.at(-1)]]
+  })}\n`);
   const cellPath = join(directory, "cell-coverability.json");
   writeFileSync(cellPath, `${JSON.stringify({ cells: [secondRing[0]] })}\n`);
 
@@ -245,6 +249,27 @@ try {
   assert.ok(tripleReport.triple_coverability_choice_variables > 0);
   assert.ok(tripleReport.triple_coverability_incompatibilities >= 0);
 
+  const quadrupleOutput = join(directory, "quadruple-encoded.json");
+  const quadrupleEncoded = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--lookahead-conflict-encoding=grouped-pb",
+    `--quadruple-coverability-report=${quadruplePath}`,
+    `--output=${quadrupleOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(quadrupleEncoded.status, 0, quadrupleEncoded.stderr);
+  const quadrupleReport = JSON.parse(readFileSync(quadrupleOutput, "utf8"));
+  assert.equal(quadrupleReport.z3_status, "sat");
+  assert.equal(quadrupleReport.quadruple_coverability_constraints, 1);
+  assert.equal(quadrupleReport.quadruple_coverability_encoding, "choice-cnf");
+  assert.ok(quadrupleReport.quadruple_coverability_choice_variables > 0);
+  assert.ok(quadrupleReport.quadruple_coverability_incompatibilities >= 0);
+
   const initialTripleOutput = join(directory, "initial-triple-summary.json");
   const initialTripleCegar = spawnSync(process.execPath, [
     cegar,
@@ -274,6 +299,37 @@ try {
   assert.equal(
     initialTripleProposal.triple_coverability_constraints,
     initialTripleReport.initial_triple_coverability_constraints
+  );
+
+  const initialQuadrupleOutput = join(directory, "initial-quadruple-summary.json");
+  const initialQuadrupleCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-quadruple-report=${quadruplePath}`,
+    `--output-dir=${join(directory, "initial-quadruple")}`,
+    `--report-output=${initialQuadrupleOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(initialQuadrupleCegar.status, 0, initialQuadrupleCegar.stderr);
+  const initialQuadrupleReport = JSON.parse(readFileSync(initialQuadrupleOutput, "utf8"));
+  assert.ok(initialQuadrupleReport.initial_quadruple_coverability_constraints >= 1);
+  assert.equal(
+    initialQuadrupleReport.quadruple_coverability_constraint_count,
+    initialQuadrupleReport.initial_quadruple_coverability_constraints
+  );
+  const initialQuadrupleProposal = JSON.parse(readFileSync(join(directory, "initial-quadruple", "outer-witness-0000.json"), "utf8"));
+  assert.equal(
+    initialQuadrupleProposal.quadruple_coverability_constraints,
+    initialQuadrupleReport.initial_quadruple_coverability_constraints
   );
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");

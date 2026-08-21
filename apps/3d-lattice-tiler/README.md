@@ -801,6 +801,7 @@ node scripts/screen-polycube-corona-z3-cegar.mjs \
   --bootstrap-pair-distance=2 \
   --learn-triple-coverability=true --triple-max-cell-distance=3 \
   --triple-encoding=choice-cnf \
+  --learn-quadruple-coverability=true --quadruple-max-cell-distance=6 \
   --pair-encoding=witness-cnf
 ```
 
@@ -825,7 +826,10 @@ first proposal solve. Once a proposal has no incompatible pair,
 `--learn-triple-coverability` can learn a nearby incompatible cell triple.
 The default triple choice-CNF selects one available placement per cell and
 forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
-DNF while expressing the same exact condition.
+DNF while expressing the same exact condition. Quadruple learning uses the
+same exact choice-CNF construction across four cell groups after pair and
+triple audits pass; `--initial-quadruple-report` can preload an independently
+audited obstruction orbit.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

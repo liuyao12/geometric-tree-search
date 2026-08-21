@@ -130,6 +130,7 @@ def main():
     parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
     parser.add_argument("--triple-coverability-report")
+    parser.add_argument("--quadruple-coverability-report")
     parser.add_argument("--triple-encoding", choices=("dnf", "choice-cnf"), default="choice-cnf")
     parser.add_argument("--pair-encoding", choices=("dnf", "choice-cnf", "witness-cnf"), default="dnf")
     parser.add_argument("--lookahead-conflict-encoding", choices=("edge-cnf", "grouped-pb"), default="edge-cnf")
@@ -224,6 +225,12 @@ def main():
         triple_coverability = triple_report.get("triples", triple_report) if isinstance(triple_report, dict) else triple_report
         if not isinstance(triple_coverability, list):
             raise ValueError("Triple coverability report must contain a triples list")
+    quadruple_coverability = []
+    if args.quadruple_coverability_report:
+        quadruple_report = json.loads(Path(args.quadruple_coverability_report).read_text(encoding="utf-8"))
+        quadruple_coverability = quadruple_report.get("quadruples", quadruple_report) if isinstance(quadruple_report, dict) else quadruple_report
+        if not isinstance(quadruple_coverability, list):
+            raise ValueError("Quadruple coverability report must contain a quadruples list")
     pair_coverability_count = 0
     pair_coverability_terms = 0
     pair_coverability_choice_variables = 0
@@ -232,8 +239,12 @@ def main():
     triple_coverability_terms = 0
     triple_coverability_choice_variables = 0
     triple_coverability_incompatibilities = 0
+    quadruple_coverability_count = 0
+    quadruple_coverability_choice_variables = 0
+    quadruple_coverability_incompatibilities = 0
     cell_coverability_count = 0
-    if args.require_next_layer_coverability or cell_coverability or pair_coverability or triple_coverability:
+    if (args.require_next_layer_coverability or cell_coverability or pair_coverability
+            or triple_coverability or quadruple_coverability):
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
         normalized_cells = set()
@@ -258,11 +269,21 @@ def main():
             if len(set(cells)) != 3 or any(cell not in next_ring for cell in cells):
                 raise ValueError(f"Triple coverability entry {triple_number} is not a distinct next-ring cell triple")
             normalized_triples.add(cells)
+        normalized_quadruples = set()
+        for quadruple_number, quadruple in enumerate(quadruple_coverability):
+            if not isinstance(quadruple, list) or len(quadruple) != 4:
+                raise ValueError(f"Quadruple coverability entry {quadruple_number} must contain four cell keys")
+            cells = tuple(sorted(parse_cell_key(cell) for cell in quadruple))
+            if len(set(cells)) != 4 or any(cell not in next_ring for cell in cells):
+                raise ValueError(f"Quadruple coverability entry {quadruple_number} is not a distinct next-ring cell quadruple")
+            normalized_quadruples.add(cells)
         constrained_cells = set(next_ring) if args.require_next_layer_coverability else set(normalized_cells)
         for pair in normalized_pairs:
             constrained_cells.update(pair)
         for triple in normalized_triples:
             constrained_cells.update(triple)
+        for quadruple in normalized_quadruples:
+            constrained_cells.update(quadruple)
         next_by_cell = {}
         for index, placement in enumerate(next_placements):
             for cell in placement:
@@ -283,7 +304,7 @@ def main():
         retained_by_cell = {}
         retained_indices = set()
         for cell in sorted(constrained_cells):
-            if pair_coverability or triple_coverability:
+            if pair_coverability or triple_coverability or quadruple_coverability:
                 retained = list(next_by_cell.get(cell, ()))
             else:
                 representative_by_conflicts = {}
@@ -429,8 +450,31 @@ def main():
                         ]))
             solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
             triple_coverability_terms += len(compatible_terms)
+        for quadruple_index, quadruple in enumerate(sorted(normalized_quadruples)):
+            choice_groups = []
+            for side, cell in enumerate(quadruple):
+                choices = {
+                    index: z3.Bool(f"u_{quadruple_index}_{side}_{index}")
+                    for index in retained_by_cell.get(cell, ())
+                }
+                solver.add(z3.Or(list(choices.values())) if choices else z3.BoolVal(False))
+                for index, choice in choices.items():
+                    solver.add(z3.Or(z3.Not(choice), availability[index]))
+                choice_groups.append(choices)
+                quadruple_coverability_choice_variables += len(choices)
+            for left_group_index in range(4):
+                for right_group_index in range(left_group_index + 1, 4):
+                    for left_index, left_choice in choice_groups[left_group_index].items():
+                        for right_index, right_choice in choice_groups[right_group_index].items():
+                            if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
+                                placement_cell_sets[right_index]
+                            ):
+                                continue
+                            solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
+                            quadruple_coverability_incompatibilities += 1
         pair_coverability_count = len(normalized_pairs)
         triple_coverability_count = len(normalized_triples)
+        quadruple_coverability_count = len(normalized_quadruples)
         cell_coverability_count = len(coverability_cells)
         lookahead_target_count = len(constrained_cells)
         lookahead_raw_placement_count = len(relevant_indices)
@@ -482,6 +526,10 @@ def main():
         "triple_coverability_encoding": args.triple_encoding,
         "triple_coverability_choice_variables": triple_coverability_choice_variables,
         "triple_coverability_incompatibilities": triple_coverability_incompatibilities,
+        "quadruple_coverability_constraints": quadruple_coverability_count,
+        "quadruple_coverability_encoding": "choice-cnf",
+        "quadruple_coverability_choice_variables": quadruple_coverability_choice_variables,
+        "quadruple_coverability_incompatibilities": quadruple_coverability_incompatibilities,
         "root_symmetry_breaking": args.root_symmetry_breaking,
         "root_stabilizer_size": root_stabilizer_size,
         "symmetry_breaking_constraints": symmetry_breaking_constraints,

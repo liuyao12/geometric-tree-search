@@ -9,8 +9,10 @@ import { polycubeKey } from "../assets/polycube-enumerator.js";
 import {
   polycubeCellOrbitKeys,
   polycubeCellPairOrbitKeys,
+  polycubeCellQuadrupleOrbitKeys,
   polycubeCellTripleOrbitKeys,
   polycubeCoronaIncompatibleTargetPairDetails,
+  polycubeCoronaIncompatibleTargetQuadrupleDetails,
   polycubeCoronaIncompatibleTargetTripleDetails,
   polycubeCoronaRingCellKeys,
   polycubePlacementClauseOrbitKeys,
@@ -66,10 +68,13 @@ const requireNextLayerCoverability = booleanArg("require-next-layer-coverability
 const learnCellCoverability = booleanArg("learn-cell-coverability", false);
 const learnPairCoverability = booleanArg("learn-pair-coverability", false);
 const learnTripleCoverability = booleanArg("learn-triple-coverability", false);
+const learnQuadrupleCoverability = booleanArg("learn-quadruple-coverability", false);
 const cellOrbitLimit = integerArg("cell-orbit-limit", 0, 0);
 const pairOrbitLimit = integerArg("pair-orbit-limit", 0, 0);
 const tripleOrbitLimit = integerArg("triple-orbit-limit", 1, 0);
 const tripleMaximumCellDistance = integerArg("triple-max-cell-distance", 3, 1);
+const quadrupleOrbitLimit = integerArg("quadruple-orbit-limit", 1, 0);
+const quadrupleMaximumCellDistance = integerArg("quadruple-max-cell-distance", 6, 1);
 const bootstrapPairDistance = integerArg("bootstrap-pair-distance", 0, 0);
 const pairEncoding = args.get("pair-encoding") ?? "dnf";
 if (!["dnf", "choice-cnf", "witness-cnf"].includes(pairEncoding)) {
@@ -103,11 +108,15 @@ const initialCellReport = args.get("initial-cell-report")
 const initialTripleReport = args.get("initial-triple-report")
   ? resolve(args.get("initial-triple-report"))
   : null;
+const initialQuadrupleReport = args.get("initial-quadruple-report")
+  ? resolve(args.get("initial-quadruple-report"))
+  : null;
 const pythonSolver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const clausePath = resolve(outputDirectory, "forbidden-clauses.json");
 const cellPath = resolve(outputDirectory, "cell-coverability.json");
 const pairPath = resolve(outputDirectory, "pair-coverability.json");
 const triplePath = resolve(outputDirectory, "triple-coverability.json");
+const quadruplePath = resolve(outputDirectory, "quadruple-coverability.json");
 mkdirSync(outputDirectory, { recursive: true });
 
 const clauses = [];
@@ -119,6 +128,8 @@ const cellConstraints = [];
 const cellConstraintKeys = new Set();
 const tripleConstraints = [];
 const tripleConstraintKeys = new Set();
+const quadrupleConstraints = [];
+const quadrupleConstraintKeys = new Set();
 let classification = "iteration_limit";
 let radiusWitness = null;
 let z3UnknownTrials = 0;
@@ -187,6 +198,22 @@ const addTripleOrbit = rawTriple => {
   }
   return added;
 };
+const addQuadruple = rawQuadruple => {
+  const normalized = [...new Set(rawQuadruple.map(String))].sort();
+  if (normalized.length !== 4) throw new Error("A quadruple-coverability constraint must contain four distinct cells");
+  const key = normalized.join(";");
+  if (quadrupleConstraintKeys.has(key)) return false;
+  quadrupleConstraintKeys.add(key);
+  quadrupleConstraints.push(normalized);
+  return true;
+};
+const addQuadrupleOrbit = rawQuadruple => {
+  let added = 0;
+  for (const quadruple of polycubeCellQuadrupleOrbitKeys(candidate.voxels, rawQuadruple)) {
+    added += Number(addQuadruple(quadruple));
+  }
+  return added;
+};
 if (initialClauseReport) {
   const initial = JSON.parse(readFileSync(initialClauseReport, "utf8"));
   const initialClauses = initial.learned_clauses ?? initial.clauses ?? initial;
@@ -236,13 +263,24 @@ if (initialTripleReport) {
   for (const triple of initialTriples) addTripleOrbit(triple);
 }
 const initialTripleCount = tripleConstraints.length;
+if (initialQuadrupleReport) {
+  const initial = JSON.parse(readFileSync(initialQuadrupleReport, "utf8"));
+  const initialQuadruples = initial.quadruple_coverability_quadruples ?? initial.quadruples ?? initial;
+  if (!Array.isArray(initialQuadruples)) {
+    throw new Error("--initial-quadruple-report must contain quadruple_coverability_quadruples or quadruples");
+  }
+  for (const quadruple of initialQuadruples) addQuadrupleOrbit(quadruple);
+}
+const initialQuadrupleCount = quadrupleConstraints.length;
 const effectiveNextLayerCoverability = requireNextLayerCoverability
   || learnCellCoverability
   || cellConstraints.length > 0
   || learnPairCoverability
   || pairConstraints.length > 0
   || learnTripleCoverability
-  || tripleConstraints.length > 0;
+  || tripleConstraints.length > 0
+  || learnQuadrupleCoverability
+  || quadrupleConstraints.length > 0;
 
 process.stdout.write(`${JSON.stringify({
   type: "z3_cegar_start",
@@ -281,6 +319,11 @@ process.stdout.write(`${JSON.stringify({
   triple_max_cell_distance: tripleMaximumCellDistance,
   triple_encoding: tripleEncoding,
   initial_triple_coverability_constraints: initialTripleCount,
+  learn_quadruple_coverability: learnQuadrupleCoverability,
+  quadruple_orbit_limit: quadrupleOrbitLimit,
+  quadruple_max_cell_distance: quadrupleMaximumCellDistance,
+  quadruple_encoding: "choice-cnf",
+  initial_quadruple_coverability_constraints: initialQuadrupleCount,
   output_directory: outputDirectory
 })}\n`);
 
@@ -289,6 +332,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
   writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
   writeFileSync(triplePath, `${JSON.stringify({ triples: tripleConstraints }, null, 2)}\n`);
+  writeFileSync(quadruplePath, `${JSON.stringify({ quadruples: quadrupleConstraints }, null, 2)}\n`);
   const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
   const iterationSeed = randomSeed + iteration * seedStride;
   const solverArguments = [
@@ -315,6 +359,9 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     solverArguments.push(`--triple-coverability-report=${triplePath}`);
     solverArguments.push(`--triple-encoding=${tripleEncoding}`);
   }
+  if (quadrupleConstraints.length) {
+    solverArguments.push(`--quadruple-coverability-report=${quadruplePath}`);
+  }
   const solved = spawnSync(python, solverArguments, {
     encoding: "utf8",
     timeout: z3TimeoutMs + z3ProcessGraceMs,
@@ -332,7 +379,8 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
         clauses: clauses.length,
         cell_coverability_constraints: cellConstraints.length,
         pair_coverability_constraints: pairConstraints.length,
-        triple_coverability_constraints: tripleConstraints.length
+        triple_coverability_constraints: tripleConstraints.length,
+        quadruple_coverability_constraints: quadrupleConstraints.length
       };
       trials.push(trial);
       if (iteration % progressEvery === 0 || iteration + 1 === iterations) {
@@ -436,7 +484,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
       if (cellsAdded) cellOrbitsAdded += 1;
     }
   }
-  const incompatiblePairDetails = learnPairCoverability || learnTripleCoverability
+  const incompatiblePairDetails = learnPairCoverability || learnTripleCoverability || learnQuadrupleCoverability
     ? polycubeCoronaIncompatibleTargetPairDetails(candidate.voxels, proposal.corona, outerLayer)
     : [];
   const pairKey = detail => detail.target_cells.join(";");
@@ -461,7 +509,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     }
     pairsAdded += added;
   }
-  const incompatibleTripleDetails = learnTripleCoverability && incompatiblePairs.length === 0
+  const incompatibleTripleDetails = (learnTripleCoverability || learnQuadrupleCoverability) && incompatiblePairs.length === 0
     ? polycubeCoronaIncompatibleTargetTripleDetails(candidate.voxels, proposal.corona, outerLayer, {
         maximumCellDistance: tripleMaximumCellDistance,
         limit: tripleOrbitLimit || 1
@@ -474,6 +522,22 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     const added = addTripleOrbit(detail.target_cells);
     if (added) tripleOrbitsAdded += 1;
     triplesAdded += added;
+  }
+  const incompatibleQuadrupleDetails = learnQuadrupleCoverability
+    && incompatiblePairs.length === 0
+    && incompatibleTripleDetails.length === 0
+    ? polycubeCoronaIncompatibleTargetQuadrupleDetails(candidate.voxels, proposal.corona, outerLayer, {
+        maximumCellDistance: quadrupleMaximumCellDistance,
+        limit: quadrupleOrbitLimit || 1
+      })
+    : [];
+  let quadruplesAdded = 0;
+  let quadrupleOrbitsAdded = 0;
+  for (const detail of incompatibleQuadrupleDetails) {
+    if (quadrupleOrbitLimit && quadrupleOrbitsAdded >= quadrupleOrbitLimit) break;
+    const added = addQuadrupleOrbit(detail.target_cells);
+    if (added) quadrupleOrbitsAdded += 1;
+    quadruplesAdded += added;
   }
   const trial = {
     iteration,
@@ -504,13 +568,18 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     selected_triple_candidate_combinations_blocked: incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
     triple_constraints_added: triplesAdded,
     triple_orbits_added: tripleOrbitsAdded,
-    triple_coverability_constraints: tripleConstraints.length
+    triple_coverability_constraints: tripleConstraints.length,
+    incompatible_target_quadruples: incompatibleQuadrupleDetails.length,
+    selected_quadruple_candidate_combinations_blocked: incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
+    quadruple_constraints_added: quadruplesAdded,
+    quadruple_orbits_added: quadrupleOrbitsAdded,
+    quadruple_coverability_constraints: quadrupleConstraints.length
   };
   trials.push(trial);
   if (iteration % progressEvery === 0 || iteration + 1 === iterations) {
     process.stdout.write(`${JSON.stringify({ type: "z3_cegar_trial", ...trial })}\n`);
   }
-  if (!clausesAdded && !cellsAdded && !pairsAdded && !triplesAdded) {
+  if (!clausesAdded && !cellsAdded && !pairsAdded && !triplesAdded && !quadruplesAdded) {
     classification = "duplicate_obstruction";
     break;
   }
@@ -522,6 +591,7 @@ writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
 writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
 writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
 writeFileSync(triplePath, `${JSON.stringify({ triples: tripleConstraints }, null, 2)}\n`);
+writeFileSync(quadruplePath, `${JSON.stringify({ quadruples: quadrupleConstraints }, null, 2)}\n`);
 
 const summary = {
   kind: "polycube_corona_z3_cegar",
@@ -570,6 +640,13 @@ const summary = {
   triple_coverability_triples: tripleConstraints,
   triple_coverability_constraint_count: tripleConstraints.length,
   initial_triple_coverability_constraints: initialTripleCount,
+  learn_quadruple_coverability: learnQuadrupleCoverability,
+  quadruple_orbit_limit: quadrupleOrbitLimit,
+  quadruple_max_cell_distance: quadrupleMaximumCellDistance,
+  quadruple_encoding: "choice-cnf",
+  quadruple_coverability_quadruples: quadrupleConstraints,
+  quadruple_coverability_constraint_count: quadrupleConstraints.length,
+  initial_quadruple_coverability_constraints: initialQuadrupleCount,
   radius_witness: radiusWitness ? {
     placements: radiusWitness.corona.length,
     corona: radiusWitness.corona
