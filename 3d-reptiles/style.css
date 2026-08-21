@@ -282,6 +282,78 @@ h1 {
   text-transform: uppercase;
 }
 
+.orientation-matrix {
+  margin-top: 11px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0 7px;
+}
+
+.matrix-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.matrix-heading span {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.matrix-heading strong {
+  color: var(--ink);
+  font: 400 12px/1.2 Georgia, "Times New Roman", serif;
+}
+
+.matrix-expression {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 7px;
+  color: var(--ink);
+}
+
+.matrix-factor { font: 400 15px/1 Georgia, "Times New Roman", serif; }
+
+.matrix-values {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(18px, auto));
+  gap: 2px 7px;
+  padding: 2px 8px;
+  text-align: right;
+  font: 400 13px/1.15 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix-values::before,
+.matrix-values::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.matrix-values::before { left: 0; border-left: 1px solid var(--ink); }
+.matrix-values::after { right: 0; border-right: 1px solid var(--ink); }
+
+.orientation-matrix p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font: 400 8px/1.35 Georgia, "Times New Roman", serif;
+  text-align: center;
+}
+
+.orientation-panel.has-selection > p { display: none; }
+.orientation-panel.has-selection ~ .scene-instruction { display: none; }
+
 .effect-control {
   display: grid;
   gap: 4px;
@@ -532,6 +604,14 @@ footer p { margin: 0; }
   .orientation-heading strong { font-size: 18px; }
   .orientation-count b { font-size: 14px; }
   .orientation-panel > p { display: none; }
+  .orientation-panel.has-selection #orientation-plot {
+    width: 92px;
+    margin: 2px auto;
+  }
+  .orientation-panel.has-selection .effect-control { display: none; }
+  .orientation-panel.has-selection .orientation-matrix { margin-top: 5px; padding-block: 5px; }
+  .orientation-panel.has-selection .matrix-heading span { display: none; }
+  .orientation-panel.has-selection .matrix-values { gap: 1px 4px; font-size: 11px; }
   .scene-instruction { right: 18px; bottom: 24px; left: auto; width: 150px; }
   .scene-actions {
     bottom: 270px;

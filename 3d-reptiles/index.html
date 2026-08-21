@@ -70,6 +70,17 @@
             <span>identity</span>
             <span>π boundary</span>
           </div>
+          <section id="orientation-matrix" class="orientation-matrix" aria-labelledby="matrix-title" hidden>
+            <div class="matrix-heading">
+              <span>selected element</span>
+              <strong id="matrix-title">SO₃,q(ℤ[1/2])</strong>
+            </div>
+            <div class="matrix-expression">
+              <span id="matrix-factor" class="matrix-factor"></span>
+              <div id="matrix-values" class="matrix-values" aria-label="Exact three by three matrix"></div>
+            </div>
+            <p><i>q</i> = x² + 3y² + 3z² · MᵀqM = q · det M = 1</p>
+          </section>
           <label class="effect-control" for="visual-effect-select">
             <span>Color by</span>
             <select id="visual-effect-select">
@@ -224,7 +235,9 @@
     <footer>
       <p>
         Sources:
-        <a href="https://doi.org/10.1007/s002220050138">Conway &amp; Radin, <em>Quaquaversal tilings and rotations</em></a>
+        <a href="https://math.utexas.edu/users/radin/papers/quaquaversal.pdf">Conway &amp; Radin, <em>Quaquaversal tilings and rotations</em></a>
+        ·
+        <a href="https://www.college-de-france.fr/media/jean-pierre-serre/UPL6510026928295213550_11___Le_groupe_quaquaversal.pdf">Serre, <em>Le groupe quaquaversal, vu comme groupe S-arithmétique</em></a>
         ·
         <a href="https://annals.math.princeton.edu/1998/147-1/p04">Goodman–Strauss, <em>Matching rules and substitution tilings</em></a>
       </p>

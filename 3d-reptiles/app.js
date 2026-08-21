@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { exactDyadicSO3 } from "./dyadic-so3.js";
 
 const viewport = document.getElementById("viewport");
 const substituteButton = document.getElementById("substitute-button");
@@ -12,6 +13,10 @@ const orientationCurrent = document.getElementById("orientation-current");
 const visualEffectSelect = document.getElementById("visual-effect-select");
 const effectDescription = document.getElementById("effect-description");
 const tileSelect = document.getElementById("tile-select");
+const orientationPanel = document.querySelector(".orientation-panel");
+const orientationMatrix = document.getElementById("orientation-matrix");
+const matrixFactor = document.getElementById("matrix-factor");
+const matrixValues = document.getElementById("matrix-values");
 
 tileSelect.addEventListener("change", () => {
   window.location.href = tileSelect.value;
@@ -189,6 +194,7 @@ orientationScene.add(orientationSelectionMarker);
 let orientationPointKeys = [];
 let orientationPointBaseColors = [];
 let selectedOrientationKey = null;
+let orientationRepresentatives = new Map();
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -424,12 +430,17 @@ function axisAnglePoint(quaternion) {
 
 function drawOrientationBall(transforms, turnGenerations = currentTurnGenerations) {
   if (!orientationPlot) return;
+  orientationRepresentatives = new Map();
+  for (const matrix of transforms) {
+    const key = orientationKey(canonicalQuaternion(matrix));
+    if (!orientationRepresentatives.has(key)) orientationRepresentatives.set(key, matrix);
+  }
   const orientations = distinctOrientations(transforms);
   orientationValue.textContent = orientations.length.toLocaleString();
   orientationCurrent.textContent = `${orientations.length.toLocaleString()} ${orientations.length === 1 ? "occurs" : "occur"} in the current patch.`;
   orientationPlot.setAttribute(
     "aria-label",
-    `Rotatable solid axis-angle ball containing ${orientations.length.toLocaleString()} current tile ${orientations.length === 1 ? "orientation" : "orientations"}`
+    `Rotatable solid axis-angle ball containing ${orientations.length.toLocaleString()} current tile ${orientations.length === 1 ? "orientation" : "orientations"}. Click a dot or use the left and right arrow keys to inspect its exact matrix.`
   );
   const positions = [];
   const colors = [];
@@ -475,6 +486,41 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
     refreshVisualColors(currentVisual);
   }
   refreshOrientationPointColors();
+  updateSelectedOrientationMatrix();
+}
+
+function physicalRotationRows(matrix) {
+  const position = new THREE.Vector3();
+  const quaternion = new THREE.Quaternion();
+  const scale = new THREE.Vector3();
+  matrix.decompose(position, quaternion, scale);
+  const elements = new THREE.Matrix4().makeRotationFromQuaternion(quaternion.normalize()).elements;
+  return [
+    [elements[0], elements[4], elements[8]],
+    [elements[1], elements[5], elements[9]],
+    [elements[2], elements[6], elements[10]]
+  ];
+}
+
+function updateSelectedOrientationMatrix() {
+  const representative = orientationRepresentatives.get(selectedOrientationKey);
+  const exact = representative ? exactDyadicSO3(physicalRotationRows(representative)) : null;
+  const visible = Boolean(exact);
+  orientationMatrix.hidden = !visible;
+  orientationPanel.classList.toggle("has-selection", visible);
+  if (!visible) return;
+
+  matrixFactor.textContent = exact.denominator === 1 ? "" : `1/${exact.denominator}`;
+  matrixValues.replaceChildren(...exact.numerators.flatMap(row => row.map(value => {
+    const cell = document.createElement("span");
+    cell.textContent = String(value);
+    return cell;
+  })));
+  const factorLabel = exact.denominator === 1 ? "" : `one over ${exact.denominator} times `;
+  orientationMatrix.setAttribute(
+    "aria-label",
+    `Selected element of SO q over the dyadic integers: ${factorLabel}${exact.numerators.map(row => row.join(", ")).join("; ")}`
+  );
 }
 
 function refreshOrientationPointColors() {
@@ -639,6 +685,7 @@ function selectOrientation(key) {
   orientationCurrent.textContent = selectedOrientationKey === null
     ? `${orientationPointKeys.length.toLocaleString()} ${orientationPointKeys.length === 1 ? "occurs" : "occur"} in the current patch.`
     : "One orientation is highlighted in the tiling. Click it again to clear.";
+  updateSelectedOrientationMatrix();
 }
 
 const orientationRaycaster = new THREE.Raycaster();
@@ -661,6 +708,19 @@ orientationRenderer.domElement.addEventListener("pointerup", (event) => {
   const hit = orientationRaycaster.intersectObject(orientationPoints, false)[0];
   if (hit && Number.isInteger(hit.index)) selectOrientation(orientationPointKeys[hit.index]);
   else if (selectedOrientationKey !== null) selectOrientation(null);
+});
+orientationPlot.addEventListener("keydown", (event) => {
+  if (!["ArrowRight", "ArrowLeft", "Home", "Escape"].includes(event.key)) return;
+  event.preventDefault();
+  if (event.key === "Escape") {
+    if (selectedOrientationKey !== null) selectOrientation(null);
+    return;
+  }
+  let selectedIndex = orientationPointKeys.indexOf(selectedOrientationKey);
+  if (event.key === "Home") selectedIndex = 0;
+  else if (event.key === "ArrowRight") selectedIndex = (selectedIndex + 1 + orientationPointKeys.length) % orientationPointKeys.length;
+  else selectedIndex = (selectedIndex - 1 + orientationPointKeys.length) % orientationPointKeys.length;
+  selectOrientation(orientationPointKeys[selectedIndex]);
 });
 
 function makeParentOutline() {
