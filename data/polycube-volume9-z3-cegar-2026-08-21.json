@@ -9,6 +9,7 @@
     "cut": "a fixed-placement obstruction clause extracted only after exact continuation exhaustion",
     "symmetry_closure": "every sound cut closed under the root polycube stabilizer",
     "one_step_coverability": "optional exact necessary-condition encoding requires every next-ring cell to retain at least one placement compatible with the selected outer patch; conflict-set dominance removes locally redundant candidate placements",
+    "pair_coverability": "optional exact necessary-condition encoding requires selected next-ring cell pairs to retain mutually compatible placement choices; new incompatible pairs can be symmetry-closed and staged between CEGAR trials",
     "bounded_copy_semantics": "UNSAT with max_placements set exhausts only that copy-count stratum and is never classified as non-tiling"
   },
   "positive_control": {
@@ -76,11 +77,32 @@
         "23afa02b2bfb021167eb119c9d3ff02beac4acead7263f1e9aa213fa7ad62719"
       ]
     },
-    "combined_exact_dead_outer_states": 279,
-    "combined_symmetry_closed_clauses": 792,
+    "pair_coverability": {
+      "initial_source_states": 4,
+      "initial_incompatible_pairs": 24,
+      "initial_symmetry_closed_pair_constraints": 72,
+      "pair_filtered_sat_outer_states": 2,
+      "pair_filtered_exact_dead_outer_states": 2,
+      "pair_filtered_continuation_nodes": 10,
+      "new_incompatible_pairs": 14,
+      "new_symmetry_closed_pair_constraints": 42,
+      "final_symmetry_closed_pair_constraints": 114,
+      "final_learned_symmetry_closed_clauses": 798,
+      "max_63_pair_114_timeouts": 2,
+      "max_64_pair_114_timeouts": 2,
+      "pair_114_exhausted": false,
+      "source_sha256": [
+        "6e3cd9472c79e326a0719677820deef2a5435b0e12a4f709ab5f6e2c496c244c",
+        "64455aae0169a3b7acba4a3ed7f84ca3cc8d6a5fa53e6c91eef71e895c2a363a",
+        "31f587883f9a08e6b7527442799356cebd32d0232f13044747e744fded05867d",
+        "ce3d943b6edbadf5d97e1bf01aa6b8c7d1c7bec0b89c73dfd19fbd5b4a8ff9c9"
+      ]
+    },
+    "combined_exact_dead_outer_states": 281,
+    "combined_symmetry_closed_clauses": 798,
     "verified_radius_5_witness_found": false,
     "radius_4_space_exhausted": false,
     "certified_non_tiler": false
   },
-  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 279 proposed radius-four patches is exactly obstructed at radius five, including 29 economical patches and eleven 63-copy patches. The one-step coverability filter removes immediate dead targets from its four satisfiable proposals, forcing GCTS to learn deeper resolved-subtree clauses. The radius-four state space remains unexhausted; eight max-62 attempts and one coverability-filtered max-63 attempt timed out. These results prove neither non-tiling nor aperiodicity."
+  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 281 proposed radius-four patches is exactly obstructed at radius five, including 31 economical patches and thirteen 63-copy patches. The one-step filter removes immediate dead targets; the pairwise filter then removes the next 2–4-node failure class and makes two new proposals require five-node continuation proofs. Those states expose 14 new incompatible cell pairs, growing the exact symmetry-closed pair set from 72 to 114. Four 114-pair solves time out, so the radius-four state space remains unexhausted. These results prove neither non-tiling nor aperiodicity."
 }

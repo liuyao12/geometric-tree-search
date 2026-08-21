@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v130";
+} from "./engine.js?v=20260821-polycube10-v131";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1459,6 +1459,9 @@ function updateCandidateResearchPanel() {
         : candidate.lattice_points === 12
         ? `${candidate.description} Complete shell ${shell?.deepest_completed_shell ?? 2} is recorded.${limits}`
         : `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_cegar_pair_final_constraints) {
+        candidateResearchDetail.textContent += ` Pairwise next-ring coverability promotes ${candidate.screening.corona_cegar_pair_filtered_states_checked} further proposals to ${candidate.screening.corona_cegar_pair_filtered_continuation_nodes}-node aggregate continuation proofs and learns ${candidate.screening.corona_cegar_pair_final_constraints} symmetry-closed cell-pair obligations; ${candidate.screening.corona_cegar_pair_final_timeout_runs} solves with the full pair set remain timeout-inconclusive.`;
+      }
     }
   } else if (knownAperiodic) {
     candidateResearchTitle.textContent = "Known weakly aperiodic monotile";

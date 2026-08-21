@@ -44,6 +44,23 @@ export function polycubePlacementClauseOrbitKeys(voxels, placementKeys, options 
   );
 }
 
+export function polycubeCellPairOrbitKeys(voxels, pairKeys, options = {}) {
+  if (!Array.isArray(pairKeys) || pairKeys.length !== 2) return [];
+  const cells = pairKeys.map(key => cellOf(String(key)));
+  if (cells.some(cell => cell.length !== 3 || cell.some(value => !Number.isInteger(value)))) return [];
+  const pairs = new Set();
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    const transformed = cells.map(cell => [0, 1, 2].map(axis =>
+      symmetry.matrix[axis][0] * cell[0]
+      + symmetry.matrix[axis][1] * cell[1]
+      + symmetry.matrix[axis][2] * cell[2]
+      + symmetry.translation[axis]
+    ).join(",")).sort();
+    pairs.add(transformed.join(";"));
+  }
+  return [...pairs].sort().map(pair => pair.split(";"));
+}
+
 export function polycubeRootContactKey(voxels, placement, options = {}) {
   if (!Array.isArray(placement?.cells)) return "";
   const placementSet = new Set(placement.cells.map(keyOf));
@@ -208,6 +225,54 @@ export function verifyPolycubeCoronaPatch(voxels, placements, layers, options = 
     target_cells: rootSet.size + buildTarget(rootSet, normalizedLayers).length,
     method: "independent_corona_patch_occupancy"
   };
+}
+
+export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerLayers, options = {}) {
+  if (!Array.isArray(placements)) return [];
+  const normalizedOuterLayers = Math.max(1, Math.floor(Number(outerLayers) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const outerTarget = new Set(buildTarget(rootSet, normalizedOuterLayers));
+  const nextRing = buildTarget(rootSet, normalizedOuterLayers + 1)
+    .filter(key => !outerTarget.has(key));
+  const fixedKeys = new Set(placements.map(placement =>
+    placement.cells.map(keyOf).sort().join(";")
+  ));
+  const occupied = new Set(rootSet);
+  for (const placement of placements) for (const cell of placement.cells ?? []) {
+    occupied.add(keyOf(cell));
+  }
+  const choices = new Map(nextRing.map(key => [key, []]));
+  for (const placement of enumeratePolycubeCoronaPlacements(
+    voxels,
+    normalizedOuterLayers + 1,
+    options
+  )) {
+    const placementKey = placement.cells.map(keyOf).sort().join(";");
+    const fixed = fixedKeys.has(placementKey);
+    if (!fixed && placement.cells.some(cell => occupied.has(keyOf(cell)))) continue;
+    const cellKeys = new Set(placement.cells.map(keyOf));
+    const choice = { key: placementKey, cellKeys };
+    for (const cellKey of cellKeys) if (choices.has(cellKey)) choices.get(cellKey).push(choice);
+  }
+  const incompatible = [];
+  for (let leftIndex = 0; leftIndex < nextRing.length; leftIndex += 1) {
+    const leftKey = nextRing[leftIndex];
+    const leftChoices = choices.get(leftKey);
+    for (let rightIndex = leftIndex + 1; rightIndex < nextRing.length; rightIndex += 1) {
+      const rightKey = nextRing[rightIndex];
+      const rightChoices = choices.get(rightKey);
+      let compatible = false;
+      pairSearch: for (const left of leftChoices) for (const right of rightChoices) {
+        if (left.key === right.key
+          || [...left.cellKeys].every(cellKey => !right.cellKeys.has(cellKey))) {
+          compatible = true;
+          break pairSearch;
+        }
+      }
+      if (!compatible) incompatible.push([leftKey, rightKey]);
+    }
+  }
+  return incompatible;
 }
 
 /**

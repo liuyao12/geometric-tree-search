@@ -92,6 +92,16 @@ try {
   assert.equal(conditionalCegarReport.classification, "conditional_unsat");
   assert.match(conditionalCegarReport.warning, /independently replay/);
 
+  const distanceFromRoot = cell => Math.min(...candidate.voxels.map(root =>
+    Math.abs(cell[0] - root[0]) + Math.abs(cell[1] - root[1]) + Math.abs(cell[2] - root[2])
+  ));
+  const secondRing = [...new Set(enumeratePolycubeCoronaPlacements(candidate.voxels, 2)
+    .flatMap(placement => placement.cells)
+    .filter(cell => distanceFromRoot(cell) === 2)
+    .map(cell => cell.join(",")))].sort();
+  assert.ok(secondRing.length > 1);
+  const pairPath = join(directory, "pair-coverability.json");
+  writeFileSync(pairPath, `${JSON.stringify({ pairs: [[secondRing[0], secondRing.at(-1)]] })}\n`);
   const positiveOutput = join(directory, "positive-summary.json");
   const positiveCegar = spawnSync(process.execPath, [
     cegar,
@@ -120,6 +130,24 @@ try {
   assert.ok(positiveProposal.lookahead_target_cells > 0);
   assert.ok(positiveProposal.lookahead_raw_placements >= positiveProposal.lookahead_placements);
   assert.ok(positiveProposal.lookahead_conflicts > 0);
+
+  const pairOutput = join(directory, "pair-encoded.json");
+  const pairEncoded = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    `--pair-coverability-report=${pairPath}`,
+    `--output=${pairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(pairEncoded.status, 0, pairEncoded.stderr);
+  const pairReport = JSON.parse(readFileSync(pairOutput, "utf8"));
+  assert.equal(pairReport.z3_status, "sat");
+  assert.ok(pairReport.pair_coverability_constraints > 0);
+  assert.ok(pairReport.pair_coverability_terms > 0);
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }

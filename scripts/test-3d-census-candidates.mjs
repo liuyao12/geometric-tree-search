@@ -137,6 +137,7 @@ assert.match(growthWorkerSource, /id: "gcts"[\s\S]*?label: "GCTS"[\s\S]*?strateg
 assert.match(growthAppSource, /All four modes finished\./);
 assert.match(growthAppSource, /positive-control low-copy CEGAR run rejects/);
 assert.match(growthAppSource, /Radius four is still unexhausted/);
+assert.match(growthAppSource, /Pairwise next-ring coverability promotes/);
 assert.match(growthWorkerSource, /message\.type === "placement_delta" && tiles !== lastHistoryTileCount/);
 assert.match(growthWorkerSource, /type: "sample-batch"/);
 assert.doesNotMatch(growthWorkerSource, /tiles > best/);
@@ -1515,11 +1516,15 @@ assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.z3_portfolio.unsa
 assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.javascript_restart_portfolio.search_exhausted, false);
 assert.equal(archivedPolycubeZ3Cegar.positive_control.exact_dead_outer_states, 17);
 assert.equal(archivedPolycubeZ3Cegar.positive_control.verified_inner_witness_found, true);
-assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.combined_exact_dead_outer_states, 279);
-assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.combined_symmetry_closed_clauses, 792);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.combined_exact_dead_outer_states, 281);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.combined_symmetry_closed_clauses, 798);
 assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.one_step_coverability.exact_dead_outer_states, 4);
 assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.one_step_coverability.immediate_dead_target_obstructions, 0);
 assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.one_step_coverability.resolved_subtree_obstructions, 4);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.pair_coverability.initial_symmetry_closed_pair_constraints, 72);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.pair_coverability.pair_filtered_exact_dead_outer_states, 2);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.pair_coverability.final_symmetry_closed_pair_constraints, 114);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.pair_coverability.pair_114_exhausted, false);
 assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.economical_outer_patches.minimum_outer_placements_witnessed, 63);
 assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.economical_outer_patches.max_62_exhausted, false);
 assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.radius_4_space_exhausted, false);
@@ -1533,10 +1538,11 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius4_fas
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_runs, 6);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_witness, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_unsat, false);
-assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_radius4_states_checked, 279);
-assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_symmetry_closed_clauses, 792);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_radius4_states_checked, 281);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_symmetry_closed_clauses, 798);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_minimum_radius4_placements, 63);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_lookahead_resolved_subtree_obstructions, 4);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_pair_final_constraints, 114);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_radius4_exhausted, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_certified_non_tiler, false);
 assert.equal(

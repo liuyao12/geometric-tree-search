@@ -700,7 +700,8 @@ counterexample-guided pair:
 ```bash
 node scripts/screen-polycube-corona-z3-cegar.mjs \
   --id=p9-42947 --outer-layer=4 --inner-layer=5 \
-  --iterations=50 --max-placements=64 --symmetry-clauses=true
+  --iterations=50 --max-placements=64 --symmetry-clauses=true \
+  --learn-pair-coverability=true --pair-orbit-limit=2
 ```
 
 Z3 proposes a complete outer corona; exact fixed-placement GCTS either extends
@@ -709,10 +710,13 @@ timeout. Imported clauses make a final UNSAT result conditional until their
 continuation proofs are independently replayed, and a copy-count bound can
 only certify exhaustion of that bounded stratum. A low-copy radius-two to
 three positive control recovers a verified witness after 17 dead proposals.
-For `p9-42947`, 279 radius-four proposals are now exactly rejected at radius
-five, including eleven 63-copy states. An exact one-step coverability filter
+For `p9-42947`, 281 radius-four proposals are now exactly rejected at radius
+five, including thirteen 63-copy states. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all
-require resolved-subtree conflicts. Radius four remains unexhausted. See
+require resolved-subtree conflicts. Pairwise coverability then promotes two
+more proposals to five-node continuation proofs and learns 114 symmetry-closed
+cell-pair obligations; the full 114-pair formula remains timeout-inconclusive.
+Radius four remains unexhausted. See
 `data/polycube-volume9-z3-cegar-2026-08-21.json`.
 
 The checked-in 2026-08-17 result, including every exact rejection certificate

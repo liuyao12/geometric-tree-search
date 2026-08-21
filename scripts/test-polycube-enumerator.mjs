@@ -12,6 +12,8 @@ import {
 } from "../assets/polycube-enumerator.js";
 import {
   enumeratePolycubeCoronaPlacements,
+  polycubeCellPairOrbitKeys,
+  polycubeCoronaIncompatibleTargetPairs,
   polycubePlacementClauseOrbitKeys,
   polycubePlacementOrbitKeys,
   polycubeCoronaBoundaryKey,
@@ -636,6 +638,13 @@ const trappedRadiusFour = searchPolycubeCorona(unresolvedP9.voxels, {
 assert.equal(trappedRadiusFour.exhausted, true);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.candidate_rows_blocked, 72);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.fixed_placement_indices.length, 2);
+const trappedIncompatiblePairs = polycubeCoronaIncompatibleTargetPairs(
+  unresolvedP9.voxels,
+  unresolvedRadiusFour.corona,
+  4
+);
+assert.ok(trappedIncompatiblePairs.length > 0);
+assert.ok(polycubeCellPairOrbitKeys(unresolvedP9.voxels, trappedIncompatiblePairs[0]).length > 0);
 
 const resolvedConflictHexacube = [
   [0, 0, 0], [0, 0, 1], [0, 1, 0],

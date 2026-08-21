@@ -398,19 +398,30 @@ used 29–32 outer copies, whereas a known survivor uses 23. Adding an exact
 verified radius-three witness on trial 18. Bounded UNSAT is deliberately
 reported only as exhaustion of that copy-count stratum.
 
-At radius four to five the loop has exactly rejected 279 distinct outer
-states and retained 792 sound symmetry-closed clauses. Twenty-nine proposals
-are copy-economical, including eleven 63-copy states. A new exact necessary-
+At radius four to five the loop has exactly rejected 281 distinct outer
+states and retained 798 sound symmetry-closed clauses. Thirty-one proposals
+are copy-economical, including thirteen 63-copy states. A new exact necessary-
 condition encoding requires every radius-five ring cell to retain at least one
 placement compatible with the selected radius-four patch. It reduces candidate
 placements by conflict-set dominance and eliminates immediate dead targets
 before proposal. All four satisfiable filtered proposals therefore require a
 genuine resolved-subtree conflict, producing clauses of size five or six; a
-fifth filtered solve times out. Eight attempts under a 62-copy cap also time
-out, so 63 is only the thinnest witnessed stratum, not a proven minimum. No
-radius-five witness has appeared and the radius-four state space is not
-exhausted. The positive control makes this a useful proposal-policy benchmark;
-the production result still proves neither non-tiling nor aperiodicity. See
+fifth filtered solve times out.
+
+Those four deeper failures still contain 24 pairs of ring cells that are
+individually coverable but have no mutually compatible placement choices.
+Closing them under the root stabilizer gives 72 exact pair obligations. Two
+pair-filtered proposals both require five-node continuation proofs and expose
+14 new incompatible pairs, bringing the symmetry-closed set to 114. Four
+solves with all 114 obligations time out at copy caps 63 and 64. The direct DNF
+encoding works through 78 obligations; larger jumps are now staged by a
+configurable orbit cap, because an attempted blocker-set minimization cost more
+to construct than it saved and was discarded. Eight attempts under a 62-copy
+cap also time out, so 63 is only the thinnest witnessed stratum, not a proven
+minimum. No radius-five witness has appeared and the radius-four state space
+is not exhausted. The positive control makes this a useful proposal-policy
+benchmark; the production result still proves neither non-tiling nor
+aperiodicity. See
 `data/polycube-volume9-z3-cegar-2026-08-21.json`.
 
 ## Next engineering milestones
