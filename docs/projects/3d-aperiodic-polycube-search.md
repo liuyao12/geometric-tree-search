@@ -171,6 +171,14 @@ the next independently budgeted copy-size screen, not aperiodic candidates.
 The machine-readable receipt is
 `data/polycube-volume10-periodic-through2-2026-08-20.json`.
 
+An independently budgeted three-copy pass then certifies 905 more periodic
+tiles. Every positive certificate is replayed by the separate Cramer's-rule
+quotient verifier. After retrying every wall-clock stop, the remaining 22,994
+shapes each exhaust all 2,821 three-copy HNF bases, in addition to the 1,302
+smaller bases already exhausted. These are the exact inputs to the four-copy
+screen—not claims of aperiodicity. The gap-free cumulative receipt is
+`data/polycube-volume10-periodic-through3-2026-08-20.json`.
+
 The continuation solver now extracts a proof-relevant reason from a trapped
 patch instead of memoizing the entire boundary. For a radius-five target cell,
 it enumerates every root-compatible tile placement through that cell and finds

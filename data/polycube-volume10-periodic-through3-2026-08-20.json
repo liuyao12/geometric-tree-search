@@ -1,0 +1,79 @@
+{
+  "schema": "gcts.polycube_periodic_census.v1",
+  "date": "2026-08-20",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "input": {
+    "source": "data/polycube-volume10-periodic-through2-2026-08-20.json",
+    "exactly_exhausted_survivors": 23899,
+    "survivor_key_sha256": "911db29e879ef20ca67517deea8a78bb3001da1e24fc2edb72196e070f0e058a",
+    "survivor_id_sha256": "47d8630129fbd4c35e0911149f3941a4e4b42ddc07d7888d6df49fbcd3705638"
+  },
+  "protocol": {
+    "solver": "exact HNF quotient cover with precomputed quotient translations and exact two-mask complement lookup",
+    "copy_sizes": [3],
+    "reflections_allowed_within_tiling": false,
+    "box_fallback": false,
+    "general_periodic_fallback": false,
+    "chirality_deferred": true,
+    "independent_certificate_verifier": "Cramer's-rule quotient replay",
+    "hnf_candidates_exhausted_per_final_survivor": {
+      "3_copies": 2821,
+      "cumulative_1_through_3": 4123
+    }
+  },
+  "initial_pass": {
+    "time_limit_ms_per_candidate": 250,
+    "node_limit_per_candidate": 100000,
+    "new_periodic_certificates": 893,
+    "completed_misses": 12447,
+    "time_limits": 10559,
+    "shard_candidate_counts": [2988, 2988, 2988, 2988, 2988, 2988, 2988, 2983],
+    "shard_milliseconds": [656790, 685477, 686619, 691822, 682206, 684247, 682413, 664571]
+  },
+  "timeout_retry": {
+    "time_limit_ms_per_candidate": 1000,
+    "node_limit_per_candidate": 500000,
+    "candidates": 10559,
+    "new_periodic_certificates": 12,
+    "completed_misses": 9867,
+    "time_limits": 680,
+    "shard_candidate_counts": [1320, 1320, 1320, 1320, 1320, 1320, 1320, 1319],
+    "shard_milliseconds": [544090, 556468, 545471, 546342, 527205, 485921, 525007, 480570]
+  },
+  "final_timeout_retry": {
+    "time_limit_ms_per_candidate": 5000,
+    "node_limit_per_candidate": 1000000,
+    "candidates": 680,
+    "new_periodic_certificates": 0,
+    "completed_misses": 680,
+    "remaining_time_or_node_limits": 0,
+    "milliseconds": 133553
+  },
+  "certificate_audit": {
+    "copy_3_certificates": 905,
+    "independently_verified": 905,
+    "verification_failures": 0
+  },
+  "final": {
+    "periodic": 323549,
+    "periodic_by_motif_tiles": {
+      "1": 112531,
+      "2": 210113,
+      "3": 905
+    },
+    "exactly_exhausted_survivors": 22994,
+    "periodic_key_sha256": "aaa8ebf809b9fa6a5758c1bc413f041ba1fe9fc9a47f4f406c4745f2bfc48ca3",
+    "survivor_key_sha256": "c3999b32b1cd6cca59b47e3251786520e71df230462941e27c613b6c6f6fad72",
+    "periodic_id_sha256": "7040dce603ed293666073d37b415f6c6b61110a85704a5877d5e6deafb17769e",
+    "survivor_id_sha256": "f0d9df4376e4234a1c85b25f20a7d600feb1d68d2e5ec9fc2cac7245f56e71a2",
+    "id_coverage": {
+      "unique": 346543,
+      "first": "p10-000001",
+      "last": "p10-346543",
+      "gaps": 0,
+      "duplicates": 0
+    }
+  },
+  "interpretation": "Every final survivor has exhausted all 4,123 HNF quotient bases at motif sizes one, two, and three. Survival does not imply tiling or aperiodicity; copy size four must be screened independently before isohedral and GCTS/corona screening."
+}
