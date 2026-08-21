@@ -401,6 +401,10 @@ const archivedVolume10PeriodicCopy12 = JSON.parse(await readFile(
   new URL("../data/polycube-volume10-periodic-copy12-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedVolume10PeriodicCopy13 = JSON.parse(await readFile(
+  new URL("../data/polycube-volume10-periodic-copy13-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const archivedVolume10Seed7Coronas = JSON.parse(await readFile(
   new URL("../data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1330,15 +1334,16 @@ assert.ok(volumeNineSurvivor
 );
 assert.ok(survivors.filter(figure => figure.census_candidate.volume === 10).every(figure =>
   figure.census_candidate.kind === "polycube_census"
-  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 12
-  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 208971
+  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 13
+  && figure.census_candidate.screening.periodic_hnf_candidates_exhausted === 248682
   && figure.census_candidate.screening.periodic_hnf_report
-    === "data/polycube-volume10-periodic-copy12-2026-08-21.json"
+    === "data/polycube-volume10-periodic-copy13-2026-08-21.json"
   && figure.census_candidate.screening.corona_completed_verified === true
-  && figure.census_candidate.screening.corona_report
-    === "data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json"
   && figure.census_candidate.screening.corona_next_search_exhausted === false
 ));
+assert.ok(survivors.filter(figure => ["p10-054782", "p10-055695"].includes(figure.census_candidate.id))
+  .every(figure => figure.census_candidate.screening.corona_report
+    === "data/polycube-volume10-gcts-continuation-radius4-2026-08-21.json"));
 assert.deepEqual(
   Object.fromEntries(survivors.filter(figure => figure.census_candidate.volume === 10).map(figure => [
     figure.census_candidate.id,
@@ -1425,6 +1430,22 @@ assert.equal(
   }, 7452),
   62465
 );
+assert.equal(archivedVolume10PeriodicCopy13.final.new_periodic_certificates, 0);
+assert.equal(archivedVolume10PeriodicCopy13.final.final_timeouts, 0);
+assert.equal(archivedVolume10PeriodicCopy13.final.unique_copy_13_hnf_bases_exhausted, 198555);
+assert.equal(archivedVolume10PeriodicCopy13.final.hnf_bases_per_surviving_class_through_13, 248682);
+assert.equal(archivedVolume10PeriodicCopy13.final.exact_cover_nodes_across_proof_runs, 128053880);
+assert.equal(archivedVolume10PeriodicCopy13.campaign_audit.shards, 60);
+assert.ok(archivedVolume10PeriodicCopy13.campaign_audit.coverage_gap_free);
+assert.ok(archivedVolume10PeriodicCopy13.candidates.every(candidate =>
+  candidate.hnf_bases_exhausted === 39711
+  && candidate.periodic_certificate === false
+  && candidate.final_stopped_by === null
+));
+const archivedCopy13AlgebraicCandidate = archivedVolume10PeriodicCopy13.candidates
+  .find(candidate => candidate.id === "p10-290795");
+assert.equal(archivedCopy13AlgebraicCandidate.algebraic_suffix.gf2_span_rejections, 15862);
+assert.equal(archivedCopy13AlgebraicCandidate.algebraic_suffix.exact_cover_nodes, 0);
 assert.equal(archivedVolume10Seed7Coronas.final.new_verified_radius_3_patches, 2);
 assert.equal(archivedVolume10Seed7Coronas.final.radius_3_timeouts, 3);
 assert.equal(archivedVolume10Seed7Coronas.final.radius_3_certified_non_tilers, 0);
@@ -1444,7 +1465,7 @@ assert.equal(
 );
 assert.equal(
   archivedVolume10Radius4Continuations.final.outer_radius_3_states_checked_for_radius_4_continuation,
-  15
+  25
 );
 assert.equal(archivedVolume10Radius4Continuations.final.outer_radius_3_states_extended_to_radius_4, 0);
 assert.equal(archivedVolume10Radius4Continuations.final.certified_non_tilers, 0);

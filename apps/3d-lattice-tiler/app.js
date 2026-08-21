@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v127";
+} from "./engine.js?v=20260821-polycube10-v128";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1453,8 +1453,8 @@ function updateCandidateResearchPanel() {
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
       candidateResearchDetail.textContent = candidate.kind === "polycube_census"
-        ? candidate.screening.census_stage === "volume10_through12_radius3"
-          ? `${candidate.volume}-cube ${candidate.mirror_equivalent_id ? `chiral polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is the same tiling-existence problem under reflection of all space` : "achiral polycube"}. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotient bases through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. Its radius-${candidate.screening.corona_completed_radius} patch is independently verified. Radius ${candidate.screening.corona_next_radius} remains unresolved across ${candidate.screening.corona_next_portfolio_runs} conflict-backjumping ${candidate.screening.corona_next_portfolio_runs === 1 ? "run" : "runs"} with ${candidate.screening.corona_next_time_limit_ms / 1000} aggregate CPU-seconds of configured budget and ${candidate.screening.corona_next_nodes.toLocaleString()} search nodes; that search was not exhausted. This is a focused GCTS stress candidate, not a tiling or aperiodicity claim.`
+        ? candidate.screening.census_stage?.startsWith("volume10_through")
+          ? `${candidate.volume}-cube ${candidate.mirror_equivalent_id ? `chiral polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is the same tiling-existence problem under reflection of all space` : "achiral polycube"}. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotient bases through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. Its radius-${candidate.screening.corona_completed_radius} patch is independently verified. Radius ${candidate.screening.corona_next_radius} remains unresolved across ${candidate.screening.corona_next_portfolio_runs} conflict-backjumping ${candidate.screening.corona_next_portfolio_runs === 1 ? "run" : "runs"} with ${candidate.screening.corona_next_time_limit_ms / 1000} aggregate CPU-seconds of configured budget and ${candidate.screening.corona_next_nodes.toLocaleString()} search nodes; that search was not exhausted.${candidate.screening.corona_continuation_states_checked ? ` Continuation-guided GCTS tested ${candidate.screening.corona_continuation_states_checked} complete radius-${candidate.screening.corona_completed_radius} ${candidate.screening.corona_continuation_states_checked === 1 ? "state" : "states"}; exact radius-${candidate.screening.corona_next_radius} continuation rejected ${candidate.screening.corona_continuation_states_rejected} as dead ends, then the outer search remained incomplete.` : ""} This is a focused GCTS stress candidate, not a tiling or aperiodicity claim.`
           : `${candidate.volume}-cube nonplanar polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is the same tiling-existence problem under reflection of all space. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotients through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. An exact radius-${candidate.screening.corona_completed_radius} corona exists; radius ${candidate.screening.corona_next_radius} remained incomplete after ${candidate.screening.corona_next_nodes.toLocaleString()} nodes and ${candidate.screening.corona_next_time_limit_ms / 1000}s. Conflict-directed continuation GCTS learned ${candidate.screening.corona_nogood_clauses.toLocaleString()} exact placement nogoods across ${candidate.screening.corona_nogood_portfolio_trials} seeded orderings and pruned ${candidate.screening.corona_nogood_prunes.toLocaleString()} branches using only ${candidate.screening.corona_nogood_continuation_checks} full continuation checks. It found no radius-${candidate.screening.corona_next_radius} extension but did not exhaust the outer search. An exact first-corona forcing audit found all ${candidate.screening.corona_forcing_placements_tested} baseline neighbor placements replaceable, so no individual absolute placement is forced. At the coarser contact-type level, a counterexample-guided exact search found a minimum non-single-cell disjunction of ${candidate.screening.corona_contact_minimum_nontrivial_disjunction} types. Its reciprocal two-state and self-state cycles both survive through radius ${candidate.screening.corona_contact_cycle_completed_radius}. Conditioning on the reciprocal contacts gives ${candidate.screening.corona_contact_reciprocal_incoming_orbits} incoming placement orbits and a dense ${candidate.screening.corona_contact_conditional_transition_edges}-edge local graph: all ${candidate.screening.corona_contact_inactive_incoming_orbits} inactive orbits require another active contact, but the ${candidate.screening.corona_contact_terminating_active_incoming_orbits} active orbits can terminate without one. Whole-corona boundary states are sharper: ${candidate.screening.corona_boundary_obstructed_states.toLocaleString()} of ${candidate.screening.corona_boundary_sampled_states.toLocaleString()} distinct sampled radius-one exteriors (${(100 * candidate.screening.corona_boundary_obstructed_fraction).toFixed(1)}%) cannot extend to radius two, while ${candidate.screening.corona_boundary_extendable_states} survive. An on-demand learned run accumulated ${candidate.screening.corona_boundary_learned_clauses.toLocaleString()} clauses and ${candidate.screening.corona_boundary_nogood_prunes.toLocaleString()} prunes. At the next level it redirected a 1,000-state run to ${candidate.screening.corona_boundary_radius2_learned_survivors} radius-three survivors; at radius three it still made ${candidate.screening.corona_boundary_radius3_stress_prunes.toLocaleString()} prunes in ${candidate.screening.corona_boundary_radius3_stress_time_ms / 1000}s without reaching a survivor. A bounded direct-depth proposal beats that held-out ordering failure with a verified radius-four witness in ${candidate.screening.corona_deep_proposal_radius4_nodes.toLocaleString()} nodes and ${candidate.screening.corona_deep_proposal_radius4_milliseconds}ms. A ${candidate.screening.corona_adaptive_proposal_milliseconds}ms pilot retains that escape while preserving ${(100 * candidate.screening.corona_adaptive_proposal_radius5_coverage_ratio).toFixed(1)}% of equal-budget radius-five coverage; neither it nor exact symmetry closure improves the radius-five result, so both remain optional. This is a concrete GCTS proposal-selection stress test, while tiling and aperiodicity remain unresolved.`
         : candidate.lattice_points === 12
         ? `${candidate.description} Complete shell ${shell?.deepest_completed_shell ?? 2} is recorded.${limits}`
@@ -3131,11 +3131,7 @@ function scheduleGrowthUiRefresh({ showCurrent = false } = {}) {
 function handleGrowthPlotClick(event) {
   const modeId = selectedGrowthMode();
   const selectedPoint = event?.points?.[0];
-  if (!selectedPoint || !growthPointerWasNearPoint) {
-    showGrowthSnapshot(modeId, null);
-    renderGrowthChart();
-    return;
-  }
+  if (!selectedPoint) return;
   const [clickedModeId, pointIndex] = selectedPoint.customdata ?? [];
   if (clickedModeId !== modeId || !Number.isInteger(pointIndex)) return;
   showGrowthSnapshot(modeId, pointIndex);
@@ -3171,6 +3167,7 @@ async function renderGrowthChart() {
   const traces = GROWTH_MODES.map(mode => {
     const series = growthSeries.get(mode.id);
     const points = series?.points ?? [];
+    const inspectable = mode.id === activeMode;
     const selectedIndex = mode.id === activeMode ? growthInspection.pointIndex : null;
     return {
       type: "scatter",
@@ -3178,7 +3175,7 @@ async function renderGrowthChart() {
       name: mode.label,
       x: points.map(point => point.milliseconds / 1000),
       y: points.map(point => point.tiles),
-      customdata: points.map((_, index) => [mode.id, index]),
+      customdata: points.map((_, index) => inspectable ? [mode.id, index] : null),
       line: {
         color: mode.color,
         width: mode.id === activeMode ? 3.5 : 2.2,
@@ -3195,7 +3192,10 @@ async function renderGrowthChart() {
         }
       },
       opacity: mode.id === activeMode ? 1 : 0.28,
-      hovertemplate: `<b>${mode.label}</b><br>%{y} tiles<br>%{x:.2f} seconds<extra></extra>`
+      hoverinfo: inspectable ? "all" : "skip",
+      hovertemplate: inspectable
+        ? `<b>${mode.label}</b><br>%{y} tiles<br>%{x:.2f} seconds<extra></extra>`
+        : undefined
     };
   });
 
@@ -3212,7 +3212,7 @@ async function renderGrowthChart() {
     },
     hovermode: "closest",
     clickmode: "event",
-    clickanywhere: true,
+    clickanywhere: false,
     dragmode: false,
     showlegend: hasPoints,
     legend: {

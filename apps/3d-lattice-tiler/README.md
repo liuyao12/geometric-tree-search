@@ -532,15 +532,18 @@ full radius-five continuation checks. The portfolio remains incomplete. See
 
 The volume-ten funnel retains five free-isometry representatives. Exact HNF
 quotient cover now excludes every translational fundamental domain through
-twelve copies for all five: 208,971 bases per representative cumulatively,
-including all 62,465 twelve-copy bases. The hardest achiral candidate,
-`p10-290795`, required 148,263,325 exact-cover nodes at copy twelve. Its final
-55,013 bases were divided into sixteen explicit half-open HNF intervals; a
-fail-closed auditor checked that every interval exhausted, that visit counts
-matched interval lengths, and that their union had neither gaps nor overlaps.
-No interval found a periodic certificate. This is still only a finite-period
-exclusion, not evidence that any representative tiles or is aperiodic. The
-receipt is `data/polycube-volume10-periodic-copy12-2026-08-21.json`; reusable
+thirteen copies for all five: 248,682 bases per representative cumulatively,
+including all 39,711 thirteen-copy bases. Copy thirteen uses 60 explicit
+half-open shards and exhausts 198,555 bases without a certificate or timeout.
+The hardest achiral candidate, `p10-290795`, consumes 109,633,714 tree nodes
+on the first half alone. On its second half, an exact GF(2) span prefilter
+rejects 15,862 quotients algebraically; every remaining HNF fails before a
+tree node is needed. A fail-closed campaign auditor checks the five expected
+candidate keys, every visit count, and the gap-free range `[0,39711)` for each.
+This is still only a finite-period exclusion, not evidence that any
+representative tiles or is aperiodic. Receipts are
+`data/polycube-volume10-periodic-copy12-2026-08-21.json` and
+`data/polycube-volume10-periodic-copy13-2026-08-21.json`; reusable
 interval and audit entry points are
 `scripts/screen-3d-aperiodic-polycubes.mjs --periodic-hnf-start-index=... --periodic-hnf-end-index=...`
 and `scripts/audit-polycube-periodic-shards.mjs`. The higher-level
@@ -564,6 +567,15 @@ two new survivors likewise time out after 600 CPU-seconds, at 1,912,832 and
 screen, while preserving the distinction between a finite witness, a finite
 obstruction, and a timeout. See
 `data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json`.
+
+Exact continuation changes the interpretation of those two saved patches. The
+45-tile and 47-tile radius-three witnesses each have an immediate radius-four
+obstruction. Continuation-guided outer searches then check eleven radius-three
+states for `p10-054782` and fourteen for `p10-055695`; all twenty-five are rejected
+with sound exact clauses, after which both outer searches time out. Thus the
+displayed radius-three patches are verified finite survivors but known dead
+ends, while the tiles themselves remain unresolved. See
+`data/polycube-volume10-gcts-continuation-radius4-2026-08-21.json`.
 
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are

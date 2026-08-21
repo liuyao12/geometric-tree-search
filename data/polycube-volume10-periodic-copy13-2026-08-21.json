@@ -1,0 +1,115 @@
+{
+  "schema": "gcts.polycube_periodic_candidate_layer.v1",
+  "date": "2026-08-21",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "input": {
+    "source": "data/polycube-volume10-periodic-copy12-2026-08-21.json",
+    "free_class_candidates": 5,
+    "candidate_ids_sha256": "cdc4aeac3214dcad7feb69d15de5d146a4d5b16327979f6921a100853fa80ba6",
+    "candidate_keys_sha256": "798b9399dc22d89ca29cc8e1704208c2b9cb63dfcef841d0b77387c196148513"
+  },
+  "protocol": {
+    "solver": "exact HNF quotient cover",
+    "motif_tiles": 13,
+    "quotient_cells": 130,
+    "hnf_bases_per_candidate": 39711,
+    "shards_per_candidate": 12,
+    "interval_semantics": "half-open [hnf_start_index, hnf_end_index_exclusive)",
+    "reflections_allowed_within_tiling": false,
+    "time_budget_clock": "cpu",
+    "scan_backend": "allocation-free MRV counting with exact remaining-state memo",
+    "dlx_backend": "Algorithm X dancing links with the same exact remaining-state memo",
+    "gf2_prefilter": "If the uncovered quotient vector is outside the GF(2) span of all legal placement vectors, exact cover is impossible for that HNF. Passing the test does not prune anything.",
+    "shard_runner_commit": "d6c7062",
+    "campaign_auditor_commit": "ad21a62",
+    "gf2_prefilter_commit": "3485d4b",
+    "gap_audit": "Every terminal shard exhausted its requested range with visit count equal to interval length; the campaign auditor checked the five expected candidate keys and full range [0,39711) for each.",
+    "interpretation": "Exhaustion excludes thirteen-tile translational fundamental domains only. It does not exclude larger periodic motifs or prove aperiodicity."
+  },
+  "candidates": [
+    {
+      "id": "p10-052588",
+      "hnf_bases_exhausted": 39711,
+      "shards": 12,
+      "backend": "scan",
+      "exact_cover_nodes": 713970,
+      "milliseconds": 1258577,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-054782",
+      "hnf_bases_exhausted": 39711,
+      "shards": 12,
+      "backend": "scan",
+      "exact_cover_nodes": 2915300,
+      "milliseconds": 1188485,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-055695",
+      "hnf_bases_exhausted": 39711,
+      "shards": 12,
+      "backend": "scan",
+      "exact_cover_nodes": 3400136,
+      "milliseconds": 831927,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-290795",
+      "hnf_bases_exhausted": 39711,
+      "shards": 12,
+      "backend": "scan for [0,19860), DLX plus GF(2) prefilter for [19860,39711)",
+      "scan_prefix": {
+        "range": [0, 19860],
+        "hnf_bases_exhausted": 19860,
+        "exact_cover_nodes": 109633714,
+        "milliseconds": 10917276
+      },
+      "algebraic_suffix": {
+        "range": [19860, 39711],
+        "hnf_bases_exhausted": 19851,
+        "gf2_span_rejections": 15862,
+        "exact_cover_nodes": 0,
+        "milliseconds": 197201
+      },
+      "exact_cover_nodes": 109633714,
+      "milliseconds": 11114477,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    },
+    {
+      "id": "p10-346304",
+      "hnf_bases_exhausted": 39711,
+      "shards": 12,
+      "backend": "scan",
+      "exact_cover_nodes": 11390760,
+      "milliseconds": 1467204,
+      "periodic_certificate": false,
+      "final_stopped_by": null
+    }
+  ],
+  "campaign_audit": {
+    "coverage_gap_free": true,
+    "periodic_certificates": 0,
+    "expected_range_per_candidate": [0, 39711],
+    "candidates": 5,
+    "shards": 60,
+    "hnf_bases_exhausted": 198555,
+    "exact_cover_nodes": 128053880,
+    "milliseconds": 15860670
+  },
+  "final": {
+    "candidates": 5,
+    "new_periodic_certificates": 0,
+    "final_timeouts": 0,
+    "unique_copy_13_hnf_bases_exhausted": 198555,
+    "exact_cover_nodes_across_proof_runs": 128053880,
+    "milliseconds_across_proof_runs": 15860670,
+    "hnf_bases_per_surviving_class_through_13": 248682,
+    "surviving_free_class_candidates": 5
+  }
+}
