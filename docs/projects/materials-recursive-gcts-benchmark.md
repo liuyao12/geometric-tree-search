@@ -2470,7 +2470,10 @@ topologies.
 The H2O colored-metric signature and the O6 void signature transfer exactly
 between the two polytypes; all six cubic bridge classes occur in the nine-class
 hexagonal atlas. Atom permutation and arbitrary proper rigid motion preserve
-the scientific fingerprint. An extended covalent carbon network is rejected
+the scientific fingerprint. With the cell withheld, both finite point sets
+still produce one H2O class, one locally inferred six-member void class, exact
+atom cover, and complete graph traversal; boundary occurrence counts change,
+as they should, but no lattice assumption is needed. An extended covalent carbon network is rejected
 instead of being relabelled as one giant molecule, leaving it to the irregular
 point-set support learner. These checks run in
 `scripts/test_materials_gcts_generic_ice_benchmark.py`.

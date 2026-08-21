@@ -41,12 +41,14 @@ class IceGenericCase:
 @dataclass(frozen=True)
 class GenericIceBenchmark:
     cases: tuple[IceGenericCase, ...]
+    finite_point_set_cases: tuple[IceGenericCase, ...]
     molecule_signature_transfers_across_polytypes: bool
     void_signature_transfers_across_polytypes: bool
     shared_connection_isometry_classes: int
     ih_connection_isometry_classes: int
     ic_connection_isometry_classes: int
     same_generic_learner_both_polytypes: bool
+    finite_point_set_without_lattice_passed: bool
     complete_molecule_connection_void_cover: bool
     benchmark_passed: bool
 
@@ -75,9 +77,10 @@ def _grow(cover: MolecularGapCover) -> tuple[int, tuple[int, ...], int]:
     return actions, tuple(waves), len(covered)
 
 
-def _evaluate(configuration: IceConfiguration) -> tuple[IceGenericCase, MolecularGapCover]:
+def _evaluate(configuration: IceConfiguration, *, use_periodic_cell: bool = True) -> tuple[IceGenericCase, MolecularGapCover]:
     cover = learn_molecular_gap_cover(
-        configuration.species, configuration.positions, cell=configuration.cell)
+        configuration.species, configuration.positions,
+        cell=configuration.cell if use_periodic_cell else None)
     if not cover.molecules:
         raise AssertionError("molecular learner rejected an ice molecular crystal")
     formulas = {occurrence.formula for occurrence in cover.molecules}
@@ -87,7 +90,7 @@ def _evaluate(configuration: IceConfiguration) -> tuple[IceGenericCase, Molecula
         degrees[sum(component in occurrence.components for occurrence in cover.connections)] += 1
     actions, waves, grown_atoms = _grow(cover)
     case = IceGenericCase(
-        system=configuration.name,
+        system=configuration.name if use_periodic_cell else f"{configuration.name}-finite-point-set",
         atoms=len(configuration.positions),
         learned_formula=learned_formula,
         molecular_occurrences=len(cover.molecules),
@@ -115,8 +118,11 @@ def _evaluate(configuration: IceConfiguration) -> tuple[IceGenericCase, Molecula
 
 
 def evaluate() -> GenericIceBenchmark:
-    ih_case, ih_cover = _evaluate(ice_ih())
-    ic_case, ic_cover = _evaluate(ice_ic())
+    ih_configuration, ic_configuration = ice_ih(), ice_ic()
+    ih_case, ih_cover = _evaluate(ih_configuration)
+    ic_case, ic_cover = _evaluate(ic_configuration)
+    finite_ih, _ = _evaluate(ih_configuration, use_periodic_cell=False)
+    finite_ic, _ = _evaluate(ic_configuration, use_periodic_cell=False)
     ih_molecules = {occurrence.signature for occurrence in ih_cover.molecules}
     ic_molecules = {occurrence.signature for occurrence in ic_cover.molecules}
     ih_voids = {occurrence.signature for occurrence in ih_cover.void_boundaries}
@@ -124,23 +130,31 @@ def evaluate() -> GenericIceBenchmark:
     ih_connections = {occurrence.signature for occurrence in ih_cover.connections}
     ic_connections = {occurrence.signature for occurrence in ic_cover.connections}
     cases = (ih_case, ic_case)
+    finite_cases = (finite_ih, finite_ic)
+    finite_passed = all(case.exact_cover and case.tree_search_recall == 1
+                        and case.molecular_isometry_classes == 1
+                        and case.void_boundary_isometry_classes == 1
+                        for case in finite_cases)
     complete = all(case.exact_cover and case.tree_search_recall == 1
                    and case.molecular_isometry_classes == 1
                    and case.void_boundary_isometry_classes == 1
                    for case in cases)
-    passed = (complete and ih_molecules == ic_molecules and ih_voids == ic_voids
+    passed = (complete and finite_passed
+              and ih_molecules == ic_molecules and ih_voids == ic_voids
               and len(ih_connections & ic_connections) > 0
               and all(not case.material_label_used and not case.expected_formula_used
                       and not case.expected_ring_size_used and not case.physical_potential_used
                       for case in cases))
     return GenericIceBenchmark(
         cases=cases,
+        finite_point_set_cases=finite_cases,
         molecule_signature_transfers_across_polytypes=ih_molecules == ic_molecules,
         void_signature_transfers_across_polytypes=ih_voids == ic_voids,
         shared_connection_isometry_classes=len(ih_connections & ic_connections),
         ih_connection_isometry_classes=len(ih_connections),
         ic_connection_isometry_classes=len(ic_connections),
         same_generic_learner_both_polytypes=True,
+        finite_point_set_without_lattice_passed=finite_passed,
         complete_molecule_connection_void_cover=complete,
         benchmark_passed=passed,
     )

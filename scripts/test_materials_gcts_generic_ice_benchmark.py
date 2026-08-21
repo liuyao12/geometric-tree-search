@@ -13,6 +13,7 @@ def test_generic_learner_discovers_water_and_gap_classes_in_both_ices() -> None:
     assert result.molecule_signature_transfers_across_polytypes
     assert result.void_signature_transfers_across_polytypes
     assert result.shared_connection_isometry_classes == 6
+    assert result.finite_point_set_without_lattice_passed
     for case in result.cases:
         assert case.learned_formula == (("H", 2), ("O", 1))
         assert case.molecular_isometry_classes == 1
@@ -27,6 +28,12 @@ def test_generic_learner_discovers_water_and_gap_classes_in_both_ices() -> None:
         assert not case.expected_formula_used
         assert not case.expected_ring_size_used
         assert not case.physical_potential_used
+    for case in result.finite_point_set_cases:
+        assert case.exact_cover
+        assert case.molecular_isometry_classes == 1
+        assert case.void_boundary_isometry_classes == 1
+        assert case.inferred_void_size_histogram[0][0] == 6
+        assert case.tree_search_recall == 1
 
 
 def test_extended_covalent_network_fails_over_instead_of_becoming_a_molecule() -> None:
