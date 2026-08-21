@@ -259,11 +259,14 @@ h1 {
   vertical-align: -.22em;
 }
 
-.number-field {
+.orientation-heading strong .number-field,
+.matrix-heading strong .number-field {
   font-family: inherit;
   font-style: normal;
   font-size: 1em;
   font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .orientation-count { justify-items: end; }
