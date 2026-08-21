@@ -405,6 +405,10 @@ const archivedVolume10Seed7Coronas = JSON.parse(await readFile(
   new URL("../data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedVolume10Radius4Continuations = JSON.parse(await readFile(
+  new URL("../data/polycube-volume10-gcts-continuation-radius4-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1434,6 +1438,21 @@ assert.deepEqual(
 assert.ok(archivedVolume10Seed7Coronas.candidates
   .filter(candidate => candidate.radius_3.success)
   .every(candidate => candidate.radius_3.verified));
+assert.equal(
+  archivedVolume10Radius4Continuations.final.saved_radius_3_witnesses_rejected_by_exact_radius_4_continuation,
+  2
+);
+assert.equal(
+  archivedVolume10Radius4Continuations.final.outer_radius_3_states_checked_for_radius_4_continuation,
+  15
+);
+assert.equal(archivedVolume10Radius4Continuations.final.outer_radius_3_states_extended_to_radius_4, 0);
+assert.equal(archivedVolume10Radius4Continuations.final.certified_non_tilers, 0);
+assert.ok(archivedVolume10Radius4Continuations.candidates.every(candidate =>
+  candidate.saved_witness_fixed_continuation.exhausted
+  && candidate.saved_witness_fixed_continuation.nodes === 1
+  && candidate.combined_radius_4_portfolio.search_exhausted === false
+));
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),
   ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304"]

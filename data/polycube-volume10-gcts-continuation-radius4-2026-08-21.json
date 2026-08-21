@@ -1,0 +1,112 @@
+{
+  "schema": "gcts.polycube_corona_continuation_layer.v1",
+  "date": "2026-08-21",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "input": {
+    "corona_screen": "data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json",
+    "candidates": ["p10-054782", "p10-055695"],
+    "saved_radius_3_witnesses_independently_verified": true
+  },
+  "protocol": {
+    "solver": "generalized dancing links with exact placement nogoods and conflict-directed backjumping",
+    "outer_layer": 3,
+    "inner_continuation_layer": 4,
+    "seed": 7,
+    "time_budget_clock": "cpu",
+    "outer_time_limit_ms": 120000,
+    "outer_node_limit": 2000000000,
+    "inner_time_limit_ms": 5000,
+    "inner_node_limit": 5000000,
+    "nogood_limit": 500000,
+    "interpretation": "An exhausted continuation rejects only the particular radius-three patch. The outer search learns a sound clause from that obstruction and continues. An outer timeout is inconclusive and is not a non-tiling or aperiodicity certificate."
+  },
+  "candidates": [
+    {
+      "id": "p10-054782",
+      "saved_witness_fixed_continuation": {
+        "radius_3_placements": 45,
+        "radius_4_success": false,
+        "exhausted": true,
+        "nodes": 1,
+        "milliseconds": 88
+      },
+      "preferred_direct_radius_4": {
+        "preferred_placements_requested": 45,
+        "preferred_placements_matched": 45,
+        "success": false,
+        "stopped_by": "time_limit",
+        "nodes": 288768,
+        "configured_cpu_ms": 120000
+      },
+      "continuation_portfolio": {
+        "success": false,
+        "exhausted": false,
+        "stopped_by": "time_limit",
+        "outer_nodes": 1122304,
+        "continuation_checks": 1,
+        "explained_obstructions": 1,
+        "immediate_obstructions": 1,
+        "resolved_subtree_conflicts": 0,
+        "learned_clauses": 751,
+        "nogood_prunes": 2297414,
+        "maximum_outer_depth": 45
+      },
+      "combined_radius_4_portfolio": {
+        "runs": 3,
+        "configured_cpu_ms": 840000,
+        "nodes": 3323904,
+        "verified_radius_4_patches": 0,
+        "search_exhausted": false
+      }
+    },
+    {
+      "id": "p10-055695",
+      "saved_witness_fixed_continuation": {
+        "radius_3_placements": 47,
+        "radius_4_success": false,
+        "exhausted": true,
+        "nodes": 1,
+        "milliseconds": 43
+      },
+      "preferred_direct_radius_4": {
+        "preferred_placements_requested": 47,
+        "preferred_placements_matched": 47,
+        "success": false,
+        "stopped_by": "time_limit",
+        "nodes": 751616,
+        "configured_cpu_ms": 120000
+      },
+      "continuation_portfolio": {
+        "success": false,
+        "exhausted": false,
+        "stopped_by": "time_limit",
+        "outer_nodes": 1453056,
+        "continuation_checks": 14,
+        "explained_obstructions": 14,
+        "immediate_obstructions": 14,
+        "resolved_subtree_conflicts": 0,
+        "learned_clauses": 2526,
+        "nogood_prunes": 1738164,
+        "maximum_outer_depth": 50
+      },
+      "combined_radius_4_portfolio": {
+        "runs": 3,
+        "configured_cpu_ms": 840000,
+        "nodes": 6089728,
+        "verified_radius_4_patches": 0,
+        "search_exhausted": false
+      }
+    }
+  ],
+  "final": {
+    "candidates": 2,
+    "saved_radius_3_witnesses_rejected_by_exact_radius_4_continuation": 2,
+    "outer_radius_3_states_checked_for_radius_4_continuation": 15,
+    "outer_radius_3_states_extended_to_radius_4": 0,
+    "verified_radius_4_patches": 0,
+    "certified_non_tilers": 0,
+    "remaining_inconclusive_candidates": 2
+  },
+  "warning": "Every finite radius-three witness checked here is a dead end at radius four, but the outer radius-three spaces were not exhausted. Both tiles remain unresolved."
+}
