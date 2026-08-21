@@ -181,14 +181,32 @@ const orientationPointMaterial = new THREE.ShaderMaterial({
 const orientationPoints = new THREE.Points(orientationPointGeometry, orientationPointMaterial);
 orientationPoints.renderOrder = 3;
 orientationScene.add(orientationPoints);
-const orientationSelectionMarker = new THREE.Mesh(
-  new THREE.SphereGeometry(0.135, 16, 12),
-  new THREE.MeshBasicMaterial({
-    color: 0x17201e,
+const orientationSelectionMarker = new THREE.Points(
+  new THREE.BufferGeometry().setFromPoints([new THREE.Vector3()]),
+  new THREE.ShaderMaterial({
     transparent: true,
-    opacity: 0.9,
-    wireframe: true,
-    depthTest: false
+    depthWrite: false,
+    depthTest: false,
+    uniforms: {
+      pixelRatio: { value: Math.min(window.devicePixelRatio, 2) }
+    },
+    vertexShader: `
+      uniform float pixelRatio;
+      void main() {
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        gl_PointSize = 28.0 * pixelRatio;
+      }
+    `,
+    fragmentShader: `
+      void main() {
+        float radius = length(gl_PointCoord - vec2(0.5));
+        float outer = 1.0 - smoothstep(0.44, 0.5, radius);
+        float inner = smoothstep(0.33, 0.38, radius);
+        float alpha = outer * inner * 0.82;
+        if (alpha < 0.01) discard;
+        gl_FragColor = vec4(0.09, 0.125, 0.118, alpha);
+      }
+    `
   })
 );
 orientationSelectionMarker.visible = false;
