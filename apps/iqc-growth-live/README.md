@@ -2078,6 +2078,25 @@ marking must represent relations among simultaneous discharged, surviving,
 and newly exposed ports—or an explicit contradiction certificate—rather than
 assigning value to each port identity separately.
 
+The next audit adds those relations without serializing the hundreds of
+background role identities. At every accepted attachment it transiently scans
+the complete before/after semantic-role multiset and records seven bounded,
+proper-motion-invariant counters for each selected port: reciprocal connection,
+forward and backward continuation, equal parent/source endpoint, and parent or
+source touch. Five explicit contradiction flags record missing or depleted
+continuations. A parity test proves all 120 scalar and typed trajectories are
+unchanged.
+
+A deliberately low-capacity grid of 120 metric/horizon/direction rules selects
+“minimize the number of forward continuations after two steps.” Whole-nucleus
+holdout reaches `7 / 9` exact supplied nuclei and `26 / 30` colored sites—two
+more sites than scalar discharge and three more than independent role weights,
+but still below the `9 / 9`, `27`-site gate. Six of 31 fully refitted label
+shuffles match or exceed seven exact nuclei, giving `p = .1875`. Relational
+closure is useful but not causally sufficient. The remaining implementation
+target is a branch-level consistency graph or explicit certificate that some
+carried port obligation can no longer be satisfied.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

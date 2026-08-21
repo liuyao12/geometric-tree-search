@@ -4185,6 +4185,41 @@ ports, or prove a branch-local unsatisfied-obligation certificate. Fresh
 confirmation, autonomous commitment, stationary IQC recurrence, and
 exponential IQC growth remain red.
 
+### Relational discharge contradiction
+
+The selected-role cohort alone cannot reconstruct its causal context from the
+stored top-16 background roles: only 116 of 2,581 selected-role events occur in
+that truncated set. A new sealed replay therefore scans the complete semantic
+role multiset transiently at every step while serializing only seven fixed
+proper-motion-invariant relation families: exact reciprocal connection,
+forward/backward continuation, common parent/source endpoint, and parent/source
+touch. For each selected role it records before, after, lost, retained, and
+gained multiplicity plus five missing/depletion flags. Raw background role IDs,
+coordinates, and candidate identities are not features.
+
+The relational artifact is parity-checked against all 120 published wide
+trajectories after stripping the new fields. Across 2,581 selected-role events
+it observes 51 reciprocal losses, 64 forward-continuation losses, 2,581 source-
+touch losses, 13 forward gains, and 151 new parent-touch relations. This is real
+connection structure that the independent-role model did not contain.
+
+A low-capacity nested rule grid tests 12 relation metrics, five horizons, and
+both directions. Outer fitting chooses “minimize forward continuations after
+two steps” in nine folds except for one one-step reciprocal control. The result
+is `7 / 9` exact supplied nuclei and `26 / 30` colored sites. It improves site
+yield over scalar discharge (`24 / 30`) and independent-role value (`23 / 30`),
+but does not improve the exact-nucleus count. Six of 31 within-nucleus label
+shuffles, with the complete rule fit repeated in every outer fold, reach at
+least seven exact nuclei, giving `p = .1875`.
+
+Relational discharge is therefore retained as a useful experimental channel,
+not an autonomous rollback policy. The next representation must enforce
+branch-level simultaneous consistency or produce an explicit unsatisfied-port
+certificate; independent relation totals still conflate locally identical
+alternatives in the two difficult boundary environments. Fresh confirmation,
+autonomous commitment, stationary IQC recurrence, and exponential IQC growth
+remain red.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement

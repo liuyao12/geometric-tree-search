@@ -73,7 +73,7 @@ def _annotate_reappearance(transitions):
             item["steps_until_selected_again"] = wait or 0
 
 
-def _rollout(source, state, runtime):
+def _rollout(source, state, runtime, *, relational=False):
     steps, transitions = [], []
     for _depth in range(ROLLOUT_HORIZON):
         before_summary = _frontier_summary(state.proposals)
@@ -106,7 +106,13 @@ def _rollout(source, state, runtime):
             "frontier_vote_mass_after": after_summary[1],
             "frontier_max_vote_after": after_summary[2],
         })
-        transitions.append(typed_transition(before, point, state.proposals))
+        if relational:
+            from materials_gcts_iqc_relational_port_discharge_dataset import (
+                relational_transition)
+            transitions.append(relational_transition(
+                before, point, state.proposals))
+        else:
+            transitions.append(typed_transition(before, point, state.proposals))
     _annotate_reappearance(transitions)
     final = _frontier_summary(state.proposals)
     return ({
@@ -125,8 +131,9 @@ def _rollout(source, state, runtime):
 
 
 def _evaluate_group(payload):
+    relational = bool(payload[8]) if len(payload) == 9 else False
     (group_index, center, seed_positions, seed_species, first_truth, expected,
-     retained_stable_indices, candidate_universe_digest) = payload
+     retained_stable_indices, candidate_universe_digest) = payload[:8]
     runtime = load_default_runtime()
     first_source = SimpleNamespace(
         group=tuple(center), seed_positions=tuple(seed_positions),
@@ -158,7 +165,8 @@ def _evaluate_group(payload):
                 or tuple(expected_row["action_colors"]) != tuple(
                     color for _point, color in state.actions)):
             raise AssertionError(f"group {group_index} terminal drift")
-        trace, transitions = _rollout(source, state, runtime)
+        trace, transitions = _rollout(
+            source, state, runtime, relational=relational)
         geometry_rows.append({
             "stable_index": int(stable_index),
             "source_action_digest": hashlib.sha256(
