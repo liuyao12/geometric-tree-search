@@ -1525,6 +1525,16 @@ assert.equal(
   0
 );
 assert.equal(
+  archivedPartialNextLayerLookahead["p10-055695_radius3_to_4"]
+    .fresh_ordering_validation.aggregate_nodes,
+  4985856
+);
+assert.equal(
+  archivedPartialNextLayerLookahead["p10-055695_radius3_to_4"]
+    .fresh_ordering_validation.aggregate_next_layer_prunes,
+  127
+);
+assert.equal(
   archivedPartialNextLayerLookahead["p9-42947_radius4_to_5"].baseline.continuation_checks,
   46
 );
@@ -1547,6 +1557,7 @@ assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_max41_tim
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_radius3_exhausted, false);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_min_placements, 40);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_prunes, 28);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_validation_nodes, 4985856);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_min_placements, 60);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_prunes, 282);
 assert.match(

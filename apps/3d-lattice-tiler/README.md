@@ -619,7 +619,11 @@ and preserves 92.6% of baseline node throughput. On `p9-42947`, activation at
 60 copies likewise eliminates all 46 complete continuation calls but preserves
 only 36.8% of baseline throughput; a 100-second run reaches depth 66 without a
 radius-five witness. The filter therefore remains opt-in and thresholded. It
-improves proposal rejection but exhausts neither finite outer search. See
+improves proposal rejection but exhausts neither finite outer search. Two fresh
+`p10-055695` orderings add 4,985,856 outer nodes, 127 exact early prunes, and no
+complete proposal or radius-four witness; the next bottleneck is supplying a
+qualitatively different outer patch rather than rejecting the same local trap.
+See
 `data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json`.
 
 Verified smaller coronas can also be supplied as an optional proposal-ordering

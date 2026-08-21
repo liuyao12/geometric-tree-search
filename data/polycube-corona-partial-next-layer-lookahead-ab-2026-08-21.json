@@ -59,6 +59,47 @@
       "source": "runs/p10-055695-partial-lookahead-ab-min40.json",
       "source_sha256": "9d82c95b76c2022aaf2728900d88d9ae384f751c1e3f24d1e45c413c57029eb0"
     },
+    "fresh_ordering_validation": {
+      "configured_cpu_time_ms_per_seed": 120000,
+      "minimum_placements": 40,
+      "seeds": [8, 9],
+      "runs": [
+        {
+          "seed": 8,
+          "nodes": 2027520,
+          "milliseconds": 119047,
+          "continuation_checks": 0,
+          "next_layer_prunes": 67,
+          "next_layer_nogood_clauses": 67,
+          "nogood_prunes": 2506312,
+          "maximum_depth": 40,
+          "stopped_by": "time_limit",
+          "source": "runs/p10-055695-partial-lookahead-seed8-120s.json",
+          "source_sha256": "6ed156331046842284964754e330fbaed7b87a5d2ab778c027030c1c89db7ecf"
+        },
+        {
+          "seed": 9,
+          "nodes": 2958336,
+          "milliseconds": 119259,
+          "continuation_checks": 0,
+          "next_layer_prunes": 60,
+          "next_layer_nogood_clauses": 60,
+          "nogood_prunes": 3269882,
+          "maximum_depth": 42,
+          "stopped_by": "time_limit",
+          "source": "runs/p10-055695-partial-lookahead-seed9-120s.json",
+          "source_sha256": "b5f2821810a0dd19fb1f64cf76c20f37dac9a99e8688f39af1b2b73b35cedef9"
+        }
+      ],
+      "aggregate_nodes": 4985856,
+      "aggregate_next_layer_prunes": 127,
+      "aggregate_next_layer_nogood_clauses": 127,
+      "aggregate_nogood_prunes": 5776194,
+      "aggregate_continuation_checks": 0,
+      "maximum_depth": 42,
+      "verified_radius_4_witnesses": 0,
+      "exhausted_runs": 0
+    },
     "interpretation": "The 40-placement gate eliminates all fourteen doomed complete proposals while preserving 92.5% of baseline node throughput. No radius-four witness is found and the radius-three search is not exhausted."
   },
   "p9-42947_radius4_to_5": {

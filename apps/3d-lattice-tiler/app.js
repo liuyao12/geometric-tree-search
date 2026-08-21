@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v139";
+} from "./engine.js?v=20260821-polycube10-v140";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1471,7 +1471,7 @@ function updateCandidateResearchPanel() {
           / partial.corona_partial_coverability_milliseconds
           / (partial.corona_partial_coverability_baseline_nodes
             / partial.corona_partial_coverability_baseline_milliseconds)).toFixed(1);
-        candidateResearchDetail.textContent += ` An optional exact partial-patch rule now waits until ${partial.corona_partial_coverability_min_placements} surrounding copies, then rejects a branch as soon as any next-ring cell has no compatible placement. In the matched run it replaced ${partial.corona_partial_coverability_baseline_continuation_checks} doomed complete-patch continuation checks with ${partial.corona_partial_coverability_prunes} earlier prunes and performed ${partial.corona_partial_coverability_nodes.toLocaleString()} outer nodes (${throughput}% of baseline throughput).${candidate.id === "p9-42947" ? ` A longer run still reached only depth ${partial.corona_partial_coverability_long_maximum_depth}, so the maintenance cost does not yet buy a deeper state for this candidate.` : " This is an effective late-tree filter for this candidate."} The finite outer search remains unexhausted.`;
+        candidateResearchDetail.textContent += ` An optional exact partial-patch rule now waits until ${partial.corona_partial_coverability_min_placements} surrounding copies, then rejects a branch as soon as any next-ring cell has no compatible placement. In the matched run it replaced ${partial.corona_partial_coverability_baseline_continuation_checks} doomed complete-patch continuation checks with ${partial.corona_partial_coverability_prunes} earlier prunes and performed ${partial.corona_partial_coverability_nodes.toLocaleString()} outer nodes (${throughput}% of baseline throughput).${candidate.id === "p9-42947" ? ` A longer run still reached only depth ${partial.corona_partial_coverability_long_maximum_depth}, so the maintenance cost does not yet buy a deeper state for this candidate.` : ` Two fresh orderings add ${partial.corona_partial_coverability_validation_nodes.toLocaleString()} nodes and ${partial.corona_partial_coverability_validation_prunes} exact early prunes without reaching a complete proposal; proposal supply is now the bottleneck.`} The finite outer search remains unexhausted.`;
       }
     }
   } else if (knownAperiodic) {

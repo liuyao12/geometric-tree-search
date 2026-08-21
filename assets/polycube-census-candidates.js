@@ -275,6 +275,10 @@ const records = [
       corona_partial_coverability_milliseconds: 30004,
       corona_partial_coverability_prunes: 28,
       corona_partial_coverability_continuation_checks: 0,
+      corona_partial_coverability_validation_runs: 2,
+      corona_partial_coverability_validation_nodes: 4985856,
+      corona_partial_coverability_validation_prunes: 127,
+      corona_partial_coverability_validation_maximum_depth: 42,
       corona_partial_coverability_outer_exhausted: false,
       corona_cegar_radius4_witness: false,
       corona_cegar_radius3_exhausted: false
