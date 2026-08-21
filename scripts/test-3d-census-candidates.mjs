@@ -442,6 +442,10 @@ const archivedPlacementOrderDiversity = JSON.parse(await readFile(
   new URL("../data/polycube-corona-placement-order-diversity-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9HighCopyCegar = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-high-copy-cegar-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1594,6 +1598,16 @@ assert.equal(seededP9ContinuationReplay.nodes, 1);
 assert.equal(seededP9ContinuationReplay.fixed_obstruction_nogood.fixed_placement_indices.length, 2);
 assert.equal(archivedPlacementOrderDiversity.result.new_verified_radius_5_witness, false);
 assert.equal(archivedPlacementOrderDiversity.result.outer_search_exhausted, false);
+assert.equal(archivedP9HighCopyCegar.minimum_79_portfolio.z3_sat_outer_states, 10);
+assert.equal(archivedP9HighCopyCegar.minimum_80_staged_portfolio.z3_sat_outer_states, 9);
+assert.equal(archivedP9HighCopyCegar.minimum_81_staged_portfolio.z3_sat_outer_states, 5);
+assert.equal(archivedP9HighCopyCegar.combined_clause_distinct_outer_states, 24);
+assert.equal(archivedP9HighCopyCegar.combined_exact_dead_outer_states, 24);
+assert.equal(archivedP9HighCopyCegar.combined_continuation_nodes, 30);
+assert.equal(archivedP9HighCopyCegar.final_symmetry_closed_clauses, 72);
+assert.equal(archivedP9HighCopyCegar.eager_one_step_coverability_ablation.z3_timeout_trials, 5);
+assert.equal(archivedP9HighCopyCegar.high_copy_space_exhausted, false);
+assert.equal(archivedP9HighCopyCegar.certified_non_tiler, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,
@@ -1613,6 +1627,9 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_covera
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_prunes, 282);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_seeded_order_proposal_placements, 79);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_seeded_order_continuation_nodes, 1);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_states_checked, 24);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_continuation_nodes, 30);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_space_exhausted, false);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,
@@ -1622,6 +1639,11 @@ assert.match(
   growthAppSource,
   /seeded-first exact row ordering reaches a distinct[\s\S]*?diversity lane rather than the default/,
   "the catalogue must describe the distinct seeded boundary without promoting it to a witness"
+);
+assert.match(
+  growthAppSource,
+  /Minimum-copy CEGAR supplies[\s\S]*?high-copy space remains unexhausted/,
+  "the catalogue must scope the high-copy CEGAR portfolio as incomplete"
 );
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),

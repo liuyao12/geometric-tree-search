@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v141";
+} from "./engine.js?v=20260821-polycube10-v142";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1478,6 +1478,10 @@ function updateCandidateResearchPanel() {
         candidateResearchDetail.textContent += candidate.id === "p9-42947"
           ? ` A seeded-first exact row ordering reaches a distinct ${ordering.corona_seeded_order_proposal_placements}-copy radius-four boundary state after ${ordering.corona_seeded_order_validation_nodes.toLocaleString()} nodes across three restarts. Exact radius-five continuation rejects it in ${ordering.corona_seeded_order_continuation_nodes} node with a ${ordering.corona_seeded_order_obstruction_clause_size}-placement clause; the other two seeded restarts produce no complete proposal, so this remains a diversity lane rather than the default.`
           : ` A matched three-profile ordering ablation leaves compact-first search as the best observed supplier: it reaches ${ordering.corona_placement_order_compact_complete_proposals} complete proposals while expansive-first and seeded-first reach ${ordering.corona_placement_order_alternative_complete_proposals}. Alternative ordering remains an exact optional restart, not a claimed improvement.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_high_copy_cegar_report) {
+        const highCopy = candidate.screening;
+        candidateResearchDetail.textContent += ` Minimum-copy CEGAR supplies ${highCopy.corona_high_copy_cegar_states_checked} further clause-distinct radius-four states using ${highCopy.corona_high_copy_cegar_minimum_placements}–${highCopy.corona_high_copy_cegar_maximum_placements} surrounding copies. Exact radius-five continuation rejects all of them in ${highCopy.corona_high_copy_cegar_continuation_nodes} aggregate nodes and retains ${highCopy.corona_high_copy_cegar_symmetry_closed_clauses} symmetry-closed clauses. ${highCopy.corona_high_copy_cegar_lightweight_timeout_runs} lightweight and ${highCopy.corona_high_copy_cegar_eager_timeout_runs} one-step-coverable proposal runs time out, so the high-copy space remains unexhausted.`;
       }
     }
   } else if (knownAperiodic) {

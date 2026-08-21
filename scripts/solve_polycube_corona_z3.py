@@ -124,6 +124,7 @@ def main():
     parser.add_argument("--timeout-ms", type=int, default=300_000)
     parser.add_argument("--backend", choices=("smt", "qffpbv", "pb2bv-sat"), default="smt")
     parser.add_argument("--random-seed", type=int, default=0)
+    parser.add_argument("--min-placements", type=int)
     parser.add_argument("--max-placements", type=int)
     parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--pair-coverability-report")
@@ -132,8 +133,13 @@ def main():
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--output")
     args = parser.parse_args()
-    if args.layer < 1 or args.timeout_ms < 1 or (args.max_placements is not None and args.max_placements < 1):
-        parser.error("layer, timeout, and max-placements (when supplied) must be positive")
+    if (args.layer < 1 or args.timeout_ms < 1
+            or (args.min_placements is not None and args.min_placements < 1)
+            or (args.max_placements is not None and args.max_placements < 1)):
+        parser.error("layer, timeout, and placement bounds (when supplied) must be positive")
+    if (args.min_placements is not None and args.max_placements is not None
+            and args.min_placements > args.max_placements):
+        parser.error("min-placements cannot exceed max-placements")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -165,6 +171,8 @@ def main():
     for cell, indices in sorted(by_cell.items()):
         if cell not in target and len(indices) > 1:
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], 1))
+    if args.min_placements is not None:
+        solver.add(z3.PbGe([(variable, 1) for variable in variables], args.min_placements))
     if args.max_placements is not None:
         solver.add(z3.PbLe([(variable, 1) for variable in variables], args.max_placements))
     root_stabilizer_size = 1
@@ -353,6 +361,7 @@ def main():
         "model": "proper cubic rotations; root fixed; primary target cells exactly once; secondary cells at most once",
         "backend": args.backend,
         "random_seed": args.random_seed,
+        "min_placements": args.min_placements,
         "max_placements": args.max_placements,
         "require_next_layer_coverability": args.require_next_layer_coverability,
         "lookahead_target_cells": lookahead_target_count,
@@ -376,8 +385,8 @@ def main():
         "milliseconds": elapsed_ms,
         "classification": (
             "verified_pending" if status == z3.sat
-            else "certified_non_tiler" if status == z3.unsat and args.max_placements is None and not forbidden_clauses
-            else "unsat_under_forbidden_clauses" if status == z3.unsat and args.max_placements is None
+            else "certified_non_tiler" if status == z3.unsat and args.min_placements is None and args.max_placements is None and not forbidden_clauses
+            else "unsat_under_forbidden_clauses" if status == z3.unsat and args.min_placements is None and args.max_placements is None
             else "placement_bound_exhausted" if status == z3.unsat
             else "incomplete"
         ),
@@ -386,9 +395,14 @@ def main():
         "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected] if selected else None,
         "warning": (
             "UNSAT depends on externally supplied forbidden clauses; validate their continuation proofs before treating this as a non-tiling certificate."
-            if status == z3.unsat and args.max_placements is None and forbidden_clauses
-            else f"Only patches with at most {args.max_placements} placements were exhausted; this is not a non-tiling or aperiodicity certificate."
-            if status == z3.unsat and args.max_placements is not None
+            if status == z3.unsat and args.min_placements is None and args.max_placements is None and forbidden_clauses
+            else (
+                f"Only patches in the configured placement-count range "
+                f"[{args.min_placements if args.min_placements is not None else 0}, "
+                f"{args.max_placements if args.max_placements is not None else 'unbounded'}] were exhausted; "
+                "this is not a non-tiling or aperiodicity certificate."
+            )
+            if status == z3.unsat and (args.min_placements is not None or args.max_placements is not None)
             else "A solver timeout is not a non-tiling or aperiodicity certificate."
             if status == z3.unknown
             else None

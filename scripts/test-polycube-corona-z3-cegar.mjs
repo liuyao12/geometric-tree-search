@@ -41,6 +41,24 @@ try {
   assert.ok(boundedReport.symmetry_breaking_constraints > 0);
   assert.match(boundedReport.warning, /not a non-tiling or aperiodicity certificate/);
 
+  const minimumBoundedOutput = join(directory, "minimum-bounded.json");
+  const minimumBounded = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--min-placements=1000",
+    `--output=${minimumBoundedOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(minimumBounded.status, 0, minimumBounded.stderr);
+  const minimumBoundedReport = JSON.parse(readFileSync(minimumBoundedOutput, "utf8"));
+  assert.equal(minimumBoundedReport.z3_status, "unsat");
+  assert.equal(minimumBoundedReport.classification, "placement_bound_exhausted");
+  assert.equal(minimumBoundedReport.min_placements, 1000);
+  assert.equal(minimumBoundedReport.max_placements, null);
+  assert.match(minimumBoundedReport.warning, /\[1000, unbounded\]/);
+
   const allForbiddenPath = join(directory, "all-forbidden.json");
   const allForbiddenClauses = enumeratePolycubeCoronaPlacements(candidate.voxels, 1)
     .map(placement => [placement.cells.map(cell => cell.join(",")).sort().join(";")]);
@@ -79,6 +97,26 @@ try {
   assert.equal(cegarReport.classification, "placement_bound_exhausted");
   assert.equal(cegarReport.max_placements, 1);
   assert.match(cegarReport.warning, /not a non-tiling or aperiodicity certificate/);
+
+  const minimumBoundedCegarOutput = join(directory, "minimum-bounded-cegar-summary.json");
+  const minimumBoundedCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--min-placements=1000",
+    "--z3-timeout-ms=10000",
+    `--python=${python}`,
+    `--output-dir=${join(directory, "minimum-bounded-cegar")}`,
+    `--report-output=${minimumBoundedCegarOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(minimumBoundedCegar.status, 0, minimumBoundedCegar.stderr);
+  const minimumBoundedCegarReport = JSON.parse(readFileSync(minimumBoundedCegarOutput, "utf8"));
+  assert.equal(minimumBoundedCegarReport.classification, "placement_bound_exhausted");
+  assert.equal(minimumBoundedCegarReport.min_placements, 1000);
+  assert.equal(minimumBoundedCegarReport.max_placements, null);
+  assert.match(minimumBoundedCegarReport.warning, /\[1000, unbounded\]/);
 
   const conditionalCegarOutput = join(directory, "conditional-cegar-summary.json");
   const conditionalCegar = spawnSync(process.execPath, [

@@ -46,9 +46,15 @@ const nogoodLimit = integerArg("nogood-limit", 500_000, 1);
 const backend = args.get("backend") ?? "pb2bv-sat";
 const randomSeed = integerArg("random-seed", 0, 0);
 const seedStride = integerArg("seed-stride", 0, 0);
+const minPlacements = args.has("min-placements")
+  ? integerArg("min-placements", 1, 1)
+  : null;
 const maxPlacements = args.has("max-placements")
   ? integerArg("max-placements", 1, 1)
   : null;
+if (minPlacements !== null && maxPlacements !== null && minPlacements > maxPlacements) {
+  throw new Error("--min-placements cannot exceed --max-placements");
+}
 const progressEvery = integerArg("progress-every", 1, 1);
 const symmetryClauses = booleanArg("symmetry-clauses", true);
 const continueOnZ3Unknown = booleanArg("continue-on-z3-unknown", true);
@@ -152,6 +158,7 @@ process.stdout.write(`${JSON.stringify({
   backend,
   random_seed: randomSeed,
   seed_stride: seedStride,
+  min_placements: minPlacements,
   max_placements: maxPlacements,
   symmetry_clauses: symmetryClauses,
   continue_on_z3_unknown: continueOnZ3Unknown,
@@ -181,6 +188,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     `--forbidden-clause-report=${clausePath}`,
     `--output=${witnessPath}`
   ];
+  if (minPlacements !== null) solverArguments.push(`--min-placements=${minPlacements}`);
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
   if (effectiveNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
   if (rootSymmetryBreaking) solverArguments.push("--root-symmetry-breaking");
@@ -217,7 +225,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   }
   const proposal = JSON.parse(readFileSync(witnessPath, "utf8"));
   if (proposal.z3_status === "unsat") {
-    classification = maxPlacements !== null
+    classification = minPlacements !== null || maxPlacements !== null
       ? "placement_bound_exhausted"
       : initialClauseCount > 0
         ? "conditional_unsat"
@@ -355,6 +363,7 @@ const summary = {
   backend,
   random_seed: randomSeed,
   seed_stride: seedStride,
+  min_placements: minPlacements,
   max_placements: maxPlacements,
   symmetry_clauses: symmetryClauses,
   continue_on_z3_unknown: continueOnZ3Unknown,
@@ -383,7 +392,7 @@ const summary = {
   warning: ["certified_non_tiler", "verified_inner_radius_witness"].includes(classification)
     ? null
     : classification === "placement_bound_exhausted"
-      ? `The exact CEGAR loop exhausted only outer patches with at most ${maxPlacements} placements; this is not a non-tiling or aperiodicity certificate.`
+      ? `The exact CEGAR loop exhausted only outer patches in the configured placement-count range [${minPlacements ?? 0}, ${maxPlacements ?? "unbounded"}]; this is not a non-tiling or aperiodicity certificate.`
       : classification === "conditional_unsat"
         ? "UNSAT depends on imported clauses; independently replay their continuation proofs before classifying the candidate as a non-tiler."
       : "An incomplete CEGAR portfolio proves neither non-tiling nor aperiodicity."
