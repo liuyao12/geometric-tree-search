@@ -685,6 +685,19 @@ first audited inconsistency is instead a diameter-six quadruple whose
 finite obstruction order to four without proving non-tiling or aperiodicity.
 See `data/polycube-p9-42947-higher-order-coverability-2026-08-21.json`.
 
+The outer solver now expresses that audited quadruple exactly with four groups
+of continuation-choice variables and pairwise non-overlap clauses. Preloading
+its three-member root-symmetry orbit produces thirteen further verified
+radius-four states with 60–72 copies. Every state again fails exact radius-five
+GCTS, using 122 aggregate nodes and a new maximum of 28 nodes. The new patches
+also correct an important completeness assumption: eight expose pair defects
+not present in the previous 666-obligation formula, while five are pairwise
+complete but expose new triples. The carried formula reaches 699 pair, 18
+triple, and three quadruple obligations, but the last state still has a missing
+pair. This is a stronger benchmark portfolio, not an exhausted hierarchy or an
+aperiodicity result. See
+`data/polycube-p9-42947-quadruple-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal

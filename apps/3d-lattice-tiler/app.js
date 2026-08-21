@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v146";
+} from "./engine.js?v=20260821-polycube10-v147";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1490,6 +1490,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_higher_order_coverability_report) {
         const higher = candidate.screening;
         candidateResearchDetail.textContent += ` Higher-order CEGAR extends this to ${higher.corona_higher_order_states_checked} exact full-single-coverability states with ${higher.corona_higher_order_minimum_placements}–${higher.corona_higher_order_maximum_placements} copies, rejected in ${higher.corona_higher_order_continuation_nodes} aggregate radius-five nodes (maximum ${higher.corona_higher_order_maximum_continuation_nodes}). Systematic and lazy learning reaches ${higher.corona_higher_order_pair_constraints} pair and ${higher.corona_higher_order_triple_constraints} triple obligations. A ${higher.corona_higher_order_pairwise_triplewise_state_placements}-copy state independently passes every pair and every triple on the full 180-cell next ring, yet GCTS rejects it in ${higher.corona_higher_order_pairwise_triplewise_state_continuation_nodes} nodes; its first audited local inconsistency is a diameter-${higher.corona_higher_order_first_quadruple_diameter} quadruple blocking ${higher.corona_higher_order_first_quadruple_candidate_combinations} placement combinations. This raises the observed obstruction order to four, but still proves neither non-tiling nor aperiodicity.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_quadruple_coverability_report) {
+        const quadruple = candidate.screening;
+        candidateResearchDetail.textContent += ` The exact proposal solver now encodes that quadruple's ${quadruple.corona_quadruple_constraints}-member symmetry orbit directly. It supplies ${quadruple.corona_quadruple_states_checked} further ${quadruple.corona_quadruple_minimum_placements}–${quadruple.corona_quadruple_maximum_placements}-copy states, all rejected by radius-five GCTS in ${quadruple.corona_quadruple_continuation_nodes} aggregate nodes; the deepest survives ${quadruple.corona_quadruple_maximum_continuation_nodes} nodes. These new states expose ${quadruple.corona_quadruple_pair_defect_states} still-missing pair cases and ${quadruple.corona_quadruple_triple_defect_states} pairwise-complete but triple-defective cases, growing the formula to ${quadruple.corona_quadruple_pair_constraints} pair and ${quadruple.corona_quadruple_triple_constraints} triple obligations. Thus excluding one order-four defect improves the benchmark but does not complete the lower-order screen or prove aperiodicity.`;
       }
     }
   } else if (knownAperiodic) {
