@@ -113,6 +113,34 @@ const quotientMask = (cells, translation, hnf) => {
   return mask;
 };
 
+// JavaScript's integer bitwise operators are substantially faster than
+// BigInt for the small quotients that dominate the census. Keep bit 31 out of
+// the representation so every mask remains a non-negative signed integer.
+const quotientNumberMask = (cells, translation, hnf) => {
+  let mask = 0;
+  for (const cell of cells) {
+    const [x, y, z] = reduceHnf([
+      cell[0] + translation[0],
+      cell[1] + translation[1],
+      cell[2] + translation[2]
+    ], hnf);
+    const index = x + hnf.a * (y + hnf.d * z);
+    const bit = 2 ** index;
+    if (mask & bit) return null;
+    mask |= bit;
+  }
+  return mask;
+};
+
+const quotientIndex = (cell, translation, hnf) => {
+  const [x, y, z] = reduceHnf([
+    cell[0] + translation[0],
+    cell[1] + translation[1],
+    cell[2] + translation[2]
+  ], hnf);
+  return x + hnf.a * (y + hnf.d * z);
+};
+
 /** Find a periodic torus certificate in the requested inclusive copy range. */
 export function findPolycubePeriodicTiling(voxels, options = {}) {
   const maxCopies = Math.max(1, Math.floor(Number(options.maxCopies) || 4));
@@ -137,7 +165,12 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
 
   for (let copies = minCopies; copies <= maxCopies; copies++) {
     const volume = voxels.length * copies;
-    const allMask = (1n << BigInt(volume)) - 1n;
+    const useNumberMasks = volume <= 30;
+    const allMask = useNumberMasks ? 2 ** volume - 1 : (1n << BigInt(volume)) - 1n;
+    const makeMask = useNumberMasks ? quotientNumberMask : quotientMask;
+    const bitAt = useNumberMasks
+      ? index => 2 ** index
+      : index => 1n << BigInt(index);
     let hnfAtCopies = 0;
     for (const hnf of hnfCandidates(volume)) {
       hnfVisited += 1;
@@ -150,53 +183,97 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
         active_copies: copies, active_hnf_visited: hnfAtCopies,
         milliseconds: Math.round(performance.now() - startedAt)
       };
-      const rootMask = quotientMask(voxels, [0, 0, 0], hnf);
+      const rootMask = makeMask(voxels, [0, 0, 0], hnf);
       if (rootMask === null) continue;
+      const translations = [];
+      for (let x = 0; x < hnf.a; x++) for (let y = 0; y < hnf.d; y++) {
+        for (let z = 0; z < hnf.f; z++) translations.push([x, y, z]);
+      }
+      // Reduction modulo a skew HNF lattice is the expensive part of mask
+      // construction. Compute its translation action once per quotient, then
+      // assemble every oriented placement by table lookup.
+      const translatedBits = translations.map(translation =>
+        Array.from({ length: volume }, (_, index) => {
+          const cell = [index % hnf.a,
+            Math.floor(index / hnf.a) % hnf.d,
+            Math.floor(index / (hnf.a * hnf.d))];
+          return bitAt(quotientIndex(cell, translation, hnf));
+        })
+      );
       const placementByMask = new Map();
       for (let orientationIndex = 0; orientationIndex < orientations.length; orientationIndex++) {
         const orientation = orientations[orientationIndex];
-        for (let x = 0; x < hnf.a; x++) for (let y = 0; y < hnf.d; y++) for (let z = 0; z < hnf.f; z++) {
-          const translation = [x, y, z];
-          const mask = quotientMask(orientation.voxels, translation, hnf);
-          if (mask === null || (mask & rootMask)) continue;
+        const baseIndices = orientation.voxels.map(cell =>
+          quotientIndex(cell, [0, 0, 0], hnf)
+        );
+        if (new Set(baseIndices).size !== baseIndices.length) continue;
+        for (let translationIndex = 0; translationIndex < translations.length; translationIndex++) {
+          let mask = useNumberMasks ? 0 : 0n;
+          for (const index of baseIndices) mask |= translatedBits[translationIndex][index];
+          if (mask & rootMask) continue;
           if (!placementByMask.has(mask)) placementByMask.set(mask, {
             mask, orientation_index: orientationIndex,
-            orientation_key: orientation.key, translation
+            orientation_key: orientation.key,
+            translation: translations[translationIndex]
           });
         }
       }
       const placements = [...placementByMask.values()];
-      const byCell = Array.from({ length: volume }, () => []);
-      for (const placement of placements) for (let index = 0; index < volume; index++) {
-        if (placement.mask & (1n << BigInt(index))) byCell[index].push(placement);
-      }
-      const failed = new Set();
-      const chosen = [];
-      const search = remaining => {
-        if (!remaining) return chosen.length === copies - 1 ? chosen.slice() : null;
-        if (chosen.length >= copies - 1 || overBudget()) return null;
+      const remainingAfterRoot = allMask ^ rootMask;
+      let solution = null;
+      if (copies === 1) {
+        solution = !remainingAfterRoot ? [] : null;
+      } else if (copies === 2) {
+        // With the root fixed, the only other tile must equal the complement.
+        // This is the complete exact-cover test; no tree search is needed.
         nodes += 1;
-        if (failed.has(remaining)) return null;
-        let pivot = null;
-        for (let index = 0; index < volume; index++) {
-          const bit = 1n << BigInt(index);
-          if (!(remaining & bit)) continue;
-          const optionsForCell = byCell[index].filter(placement =>
-            (placement.mask & remaining) === placement.mask
-          );
-          if (!optionsForCell.length) { failed.add(remaining); return null; }
-          if (!pivot || optionsForCell.length < pivot.length) pivot = optionsForCell;
+        const complement = placementByMask.get(remainingAfterRoot);
+        solution = complement ? [complement] : null;
+      } else if (copies === 3) {
+        // With only two placements left, exact cover is a two-sum lookup on
+        // bitmasks. This replaces thousands of repeated MRV/filter scans.
+        for (const placement of placements) {
+          if (overBudget()) break;
+          nodes += 1;
+          if ((placement.mask & remainingAfterRoot) !== placement.mask) continue;
+          const complement = placementByMask.get(remainingAfterRoot ^ placement.mask);
+          if (!complement) continue;
+          solution = [placement, complement];
+          break;
         }
-        for (const placement of pivot ?? []) {
-          chosen.push(placement);
-          const solution = search(remaining ^ placement.mask);
-          if (solution) return solution;
-          chosen.pop();
+      } else {
+        const byCell = Array.from({ length: volume }, () => []);
+        for (const placement of placements) for (let index = 0; index < volume; index++) {
+          if (placement.mask & bitAt(index)) byCell[index].push(placement);
         }
-        failed.add(remaining);
-        return null;
-      };
-      const solution = search(allMask ^ rootMask);
+        const failed = new Set();
+        const chosen = [];
+        const search = remaining => {
+          if (!remaining) return chosen.length === copies - 1 ? chosen.slice() : null;
+          if (chosen.length >= copies - 1 || overBudget()) return null;
+          nodes += 1;
+          if (failed.has(remaining)) return null;
+          let pivot = null;
+          for (let index = 0; index < volume; index++) {
+            const bit = bitAt(index);
+            if (!(remaining & bit)) continue;
+            const optionsForCell = byCell[index].filter(placement =>
+              (placement.mask & remaining) === placement.mask
+            );
+            if (!optionsForCell.length) { failed.add(remaining); return null; }
+            if (!pivot || optionsForCell.length < pivot.length) pivot = optionsForCell;
+          }
+          for (const placement of pivot ?? []) {
+            chosen.push(placement);
+            const found = search(remaining ^ placement.mask);
+            if (found) return found;
+            chosen.pop();
+          }
+          failed.add(remaining);
+          return null;
+        };
+        solution = search(remainingAfterRoot);
+      }
       if (!solution) continue;
       return {
         kind: copies === 2 ? "two_tile_periodic_torus" : `${copies}_tile_periodic_torus`,

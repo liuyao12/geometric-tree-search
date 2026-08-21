@@ -184,6 +184,23 @@ assert.equal(canonicalPolycubeKey(chair), canonicalPolycubeKey(rotatedChair));
 const lTricube = [[0, 0, 0], [1, 0, 0], [0, 1, 0]];
 assert.equal(findPolycubeCyclicTiling([[0, 0, 0]]).certified, true);
 assert.equal(findPolycubePeriodicTiling(lTricube, { maxCopies: 2 }).certified, true);
+const exactlyThreeCopyPolycube = [
+  [0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 0, 3], [0, 0, 4],
+  [0, 0, 5], [0, 0, 6], [0, 1, 0], [0, 1, 3], [1, 0, 3]
+];
+const exactlyThreeCopyCertificate = findPolycubePeriodicTiling(exactlyThreeCopyPolycube, {
+  minCopies: 3,
+  maxCopies: 3,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(exactlyThreeCopyCertificate.certified, true);
+assert.equal(exactlyThreeCopyCertificate.copies, 3);
+assert.equal(
+  verifyPolycubePeriodicCertificate(exactlyThreeCopyPolycube, exactlyThreeCopyCertificate).verified,
+  true,
+  "the independent quotient verifier must replay a three-copy complement certificate"
+);
 const resumedPeriodicRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 3,
   maxCopies: 3,
