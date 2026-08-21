@@ -1,0 +1,93 @@
+{
+  "kind": "polycube_volume9_copy14_and_radius5_multisolver",
+  "date": "2026-08-21",
+  "candidate": "p9-42947",
+  "mirror_equivalent": "p9-42969",
+  "periodic_copy_14": {
+    "model": "proper cubic rotations and integer translations; normalized root tile; every index-126 sublattice in Hermite normal form",
+    "backend": "exact dancing links with exact GF(2) placement-span prefilter",
+    "hnf_index_range": [0, 51870],
+    "shards": 52,
+    "coverage_gap_free": true,
+    "hnf_bases_exhausted": 51870,
+    "exact_cover_nodes": 21267747,
+    "milliseconds": 951693,
+    "periodic_certificate": false
+  },
+  "periodic_cumulative": {
+    "copies": [1, 14],
+    "hnf_bases_exhausted": 221381,
+    "exact_cover_nodes": 34389260,
+    "milliseconds": 1566130,
+    "periodic_certificate": false,
+    "conclusion": "No translational fundamental cell containing at most fourteen tile copies exists in the searched proper-rotation model."
+  },
+  "corona_backend_cross_check": {
+    "model": "proper cubic rotations; root fixed; target cells exactly once; non-target occupied cells at most once",
+    "javascript_dlx_radius_5": {
+      "target_cells": 481,
+      "placements_considered": 6781
+    },
+    "python_z3_radius_5": {
+      "target_cells": 481,
+      "placements_considered": 6781,
+      "incidence_counts_agree": true
+    },
+    "radius_4_positive_controls": [
+      {"backend": "smt", "milliseconds": 13218, "witness_placements": 78, "independently_verified": true},
+      {"backend": "qffpbv", "milliseconds": 10892, "witness_placements": 78, "independently_verified": true},
+      {"backend": "pb2bv-sat", "milliseconds": 1514, "witness_placements": 75, "independently_verified": true}
+    ],
+    "radius_4_backend_speedup": {
+      "baseline": "smt",
+      "winner": "pb2bv-sat",
+      "factor": 8.730515191545575
+    }
+  },
+  "radius_5_search": {
+    "javascript_restart_portfolio": {
+      "independent_seeds": [0, 1, 2, 3],
+      "independent_nodes": 3182592,
+      "independent_milliseconds": 120835,
+      "carried_clause_seeds": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      "carried_clause_nodes": 3786752,
+      "carried_clause_milliseconds": 119291,
+      "carried_exact_nogood_clauses": 16666,
+      "maximum_depth": 84,
+      "deep_seed_12_nodes": 2000000,
+      "deep_seed_12_milliseconds": 62073,
+      "deep_seed_12_maximum_depth": 84,
+      "witness_found": false,
+      "search_exhausted": false
+    },
+    "clause_transfer_ablation": {
+      "seeds": [24, 25, 26, 27, 28, 29, 30, 31],
+      "nodes_per_seed": 100000,
+      "control_total_nodes": 800000,
+      "carried_total_nodes": 800000,
+      "control_maximum_depth": 78,
+      "carried_maximum_depth": 78,
+      "carried_exact_nogood_clauses": 10910,
+      "conclusion": "At equal node budgets, imported clauses leave each seeded path's maximum depth and pruning counts effectively unchanged; cross-restart transfer remains optional and disabled by default."
+    },
+    "z3_portfolio": {
+      "generic_smt": {"runs": 1, "configured_timeout_ms": 300000, "status": "timeout"},
+      "pb2bv_sat": {
+        "runs": 5,
+        "random_seeds": [0, 1, 2, 3],
+        "configured_timeout_ms": 540000,
+        "status": "timeout"
+      },
+      "aggregate_milliseconds": 847198,
+      "witness_found": false,
+      "unsat_proved": false
+    }
+  },
+  "tooling": {
+    "restart_portfolio": "scripts/screen-polycube-corona-restarts.mjs",
+    "z3_exact_cover": "scripts/solve_polycube_corona_z3.py",
+    "periodic_shards": "scripts/run-polycube-periodic-shards.mjs"
+  },
+  "conclusion": "p9-42947 remains the strongest finite-patch polycube candidate: it has a verified radius-four patch and no translational quotient through fourteen copies. Independent DLX and Z3 searches both leave radius five unresolved.",
+  "warning": "Finite-period exclusion and bounded radius-five timeouts prove neither tiling nor aperiodicity."
+}

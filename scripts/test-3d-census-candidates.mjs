@@ -361,6 +361,10 @@ const archivedPolycubePeriodicThrough13 = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-periodic-through13-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeCopy14Multisolver = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-copy14-multisolver-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const archivedPolycubeCoronaForcing = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-corona-forcing-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1328,7 +1332,7 @@ const volumeNineSurvivor = survivors.find(figure => figure.census_candidate.id =
 assert.ok(volumeNineSurvivor
   && volumeNineSurvivor.census_candidate.kind === "polycube_census"
   && volumeNineSurvivor.census_candidate.volume === 9
-  && volumeNineSurvivor.census_candidate.screening.periodic_hnf_max_motif_tiles === 13
+  && volumeNineSurvivor.census_candidate.screening.periodic_hnf_max_motif_tiles === 14
   && volumeNineSurvivor.census_candidate.screening.corona_completed_radius === 4
   && volumeNineSurvivor.census_candidate.mirror_equivalent_id === "p9-42969"
 );
@@ -1490,11 +1494,28 @@ assert.equal(archivedPolycubeContinuationNogoods.summary.outer_search_exhausted,
 assert.equal(archivedPolycubePeriodicThrough13.cumulative.hnf_quotients_for_copies_1_through_13, 169511);
 assert.equal(archivedPolycubePeriodicThrough13.cumulative.exact_cover_nodes, 13121513);
 assert.equal(archivedPolycubePeriodicThrough13.cumulative.certificate_found, false);
-assert.equal(volumeNineSurvivor.census_candidate.screening.periodic_hnf_candidates_exhausted, 169511);
+assert.equal(archivedPolycubeCopy14Multisolver.periodic_copy_14.hnf_bases_exhausted, 51870);
+assert.equal(archivedPolycubeCopy14Multisolver.periodic_copy_14.exact_cover_nodes, 21267747);
+assert.equal(archivedPolycubeCopy14Multisolver.periodic_copy_14.coverage_gap_free, true);
+assert.equal(archivedPolycubeCopy14Multisolver.periodic_copy_14.periodic_certificate, false);
+assert.equal(archivedPolycubeCopy14Multisolver.periodic_cumulative.hnf_bases_exhausted, 221381);
+assert.equal(archivedPolycubeCopy14Multisolver.periodic_cumulative.exact_cover_nodes, 34389260);
+assert.equal(archivedPolycubeCopy14Multisolver.corona_backend_cross_check.python_z3_radius_5.incidence_counts_agree, true);
+assert.ok(archivedPolycubeCopy14Multisolver.corona_backend_cross_check.radius_4_positive_controls.every(
+  control => control.independently_verified
+));
+assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.z3_portfolio.witness_found, false);
+assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.z3_portfolio.unsat_proved, false);
+assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.javascript_restart_portfolio.search_exhausted, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.periodic_hnf_candidates_exhausted, 221381);
 assert.equal(
   volumeNineSurvivor.census_candidate.screening.periodic_hnf_report,
-  "data/polycube-volume9-periodic-through13-2026-08-20.json"
+  "data/polycube-volume9-copy14-multisolver-2026-08-21.json"
 );
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius4_fast_verified, true);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_runs, 6);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_witness, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_unsat, false);
 assert.equal(
   volumeNineSurvivor.census_candidate.screening.corona_nogood_portfolio_report,
   "data/polycube-volume9-continuation-nogoods-2026-08-20.json"

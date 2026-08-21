@@ -520,15 +520,30 @@ Translational lane to reject valid nonconvex polycube certificates. The four
 original catalogue entries are two mirror pairs, so the catalogue now keeps
 one exact periodic regression (`p9-43172`) and one genuinely distinct bounded-
 inconclusive representative (`p9-42947`, mirror-equivalent to `p9-42969`). The
-latter exhausts all 169,511 HNF quotients for every motif size from one through
-thirteen copies, has an exact
+latter exhausts all 221,381 HNF quotients for every motif size from one through
+fourteen copies, has an exact
 radius-four corona, and leaves radius five incomplete. Its continuation solver
 now learns sound dead-cell clauses: four seeded orderings accumulated 6,573
 small placement nogoods and pruned 4,949,332 branches while requiring only 54
 full radius-five continuation checks. The portfolio remains incomplete. See
 `data/polycube-volume9-deep-screen-2026-08-20.json`,
 `data/polycube-volume9-periodic-through13-2026-08-20.json`, and
-`data/polycube-volume9-continuation-nogoods-2026-08-20.json`.
+`data/polycube-volume9-continuation-nogoods-2026-08-20.json`. The copy-fourteen
+extension uses 52 audited HNF shards, exact dancing links, and the GF(2)
+placement-span prefilter; it exhausts 51,870 new bases and 21,267,747 exact-cover
+nodes without a certificate.
+
+Radius five now also has an independent pseudo-Boolean formulation. Its Python
+enumerator agrees exactly with the JavaScript solver on 481 target cells and
+6,781 legal placements. On the positive radius-four control, generic Z3 needs
+13.2 seconds while PB-to-bit-vector preprocessing plus the SAT tactic needs 1.5
+seconds and returns a distinct independently verified 75-tile patch. At radius
+five, generic SMT, the faster SAT encoding, and four randomized SAT restarts all
+time out; a two-million-node GCTS restart likewise remains at depth 84. These
+are independent bounded failures, not a non-tiling result. The combined receipt
+is `data/polycube-volume9-copy14-multisolver-2026-08-21.json`; reusable entry
+points are `scripts/screen-polycube-corona-restarts.mjs` and
+`scripts/solve_polycube_corona_z3.py`.
 
 The volume-ten funnel retains five free-isometry representatives. Exact HNF
 quotient cover now excludes every translational fundamental domain through

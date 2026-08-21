@@ -112,7 +112,7 @@ const periodicP9 = POLYCUBE_GCTS_CANDIDATES.find(candidate => candidate.id === "
 assert.ok(unresolvedP9 && periodicP9);
 assert.equal(unresolvedP9.mirror_equivalent_id, "p9-42969");
 assert.equal(periodicP9.mirror_equivalent_id, "p9-43188");
-assert.equal(unresolvedP9.screening.periodic_hnf_max_motif_tiles, 13);
+assert.equal(unresolvedP9.screening.periodic_hnf_max_motif_tiles, 14);
 assert.equal(periodicP9.screening.quotient_determinant, 72);
 assert.equal(polycubeOrientations(unresolvedP9.voxels).length, 8);
 const unresolvedFirstCoronaCatalog = enumeratePolycubeCoronaPlacements(unresolvedP9.voxels, 1);
