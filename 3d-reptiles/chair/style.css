@@ -325,6 +325,8 @@ h1 {
 }
 
 .chair-color-filter button:hover { transform: scale(1.08); }
+.chair-color-filter button:disabled { cursor: default; opacity: .18; }
+.chair-color-filter button:disabled:hover { transform: none; }
 .chair-color-filter button.is-muted { opacity: .28; }
 .chair-color-filter button[aria-pressed="true"] {
   box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink);

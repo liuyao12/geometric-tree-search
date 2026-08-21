@@ -226,19 +226,28 @@ const orientationSelectionMarker = new THREE.Points(
     transparent: true,
     depthWrite: false,
     depthTest: false,
-    uniforms: { pixelRatio: { value: Math.min(window.devicePixelRatio, 2) } },
+    uniforms: {
+      pixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+      dotSize: { value: 18 },
+      haloSize: { value: 26 }
+    },
     vertexShader: `
       uniform float pixelRatio;
+      uniform float haloSize;
       void main() {
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        gl_PointSize = 28.0 * pixelRatio;
+        gl_PointSize = haloSize * pixelRatio;
       }
     `,
     fragmentShader: `
+      uniform float dotSize;
+      uniform float haloSize;
       void main() {
         float radius = length(gl_PointCoord - vec2(0.5));
-        float outer = 1.0 - smoothstep(0.44, 0.5, radius);
-        float inner = smoothstep(0.33, 0.38, radius);
+        float innerRadius = dotSize / (2.0 * haloSize);
+        float feather = 1.25 / haloSize;
+        float outer = 1.0 - smoothstep(0.5 - feather, 0.5, radius);
+        float inner = smoothstep(innerRadius, innerRadius + feather, radius);
         float alpha = outer * inner * 0.82;
         if (alpha < 0.01) discard;
         gl_FragColor = vec4(0.09, 0.125, 0.118, alpha);
@@ -250,6 +259,7 @@ orientationSelectionMarker.visible = false;
 orientationSelectionMarker.renderOrder = 4;
 orientationScene.add(orientationSelectionMarker);
 let orientationPointKeys = [];
+const orientationPointSizes = new Map();
 
 function orientationCounts(leaves) {
   const counts = new Map();
@@ -261,6 +271,11 @@ function orientationCounts(leaves) {
 }
 
 function updateSelectedOrientation(key) {
+  if (
+    mode === "inflation"
+    && selectedChairOrientation !== key
+    && !orientationPointSizes.has(key)
+  ) return;
   selectedChairOrientation = selectedChairOrientation === key ? null : key;
   updateChairColorButtons();
   refreshChairHighlight(currentVisual);
@@ -273,6 +288,9 @@ function updateSelectedOrientation(key) {
   orientationMatrix.hidden = !rotation;
   orientationPanel.classList.toggle("has-selection", Boolean(rotation));
   if (rotation) {
+    const dotSize = orientationPointSizes.get(selectedChairOrientation) ?? 18;
+    orientationSelectionMarker.material.uniforms.dotSize.value = dotSize;
+    orientationSelectionMarker.material.uniforms.haloSize.value = dotSize + 8;
     orientationSelectionMarker.geometry.setFromPoints([rotationBallPoint(rotation)]);
     matrixValues.replaceChildren(...rotation.rows.flat().map((value) => {
       const cell = document.createElement("span");
@@ -290,19 +308,30 @@ function updateOrientationBall() {
   const positions = [];
   const colors = [];
   const sizes = [];
+  orientationPointSizes.clear();
   for (const key of orientationPointKeys) {
     const point = rotationBallPoint(CHAIR_ROTATIONS.get(key));
     positions.push(point.x, point.y, point.z);
     const color = new THREE.Color(ORIENTATION_COLORS[key]);
     colors.push(color.r, color.g, color.b);
-    sizes.push(8 + 10 * Math.sqrt(counts.get(key) / largest));
+    const pointSize = 8 + 10 * Math.sqrt(counts.get(key) / largest);
+    sizes.push(pointSize);
+    orientationPointSizes.set(key, pointSize);
   }
   orientationPointGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   orientationPointGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
   orientationPointGeometry.setAttribute("pointSize", new THREE.Float32BufferAttribute(sizes, 1));
   orientationPointGeometry.computeBoundingSphere();
+  chairColorFilter.querySelectorAll("button").forEach((button) => {
+    button.disabled = !counts.has(Number(button.dataset.orientation));
+  });
   if (mode === "inflation") panelCount.textContent = String(counts.size);
   if (selectedChairOrientation !== null && !counts.has(selectedChairOrientation)) updateSelectedOrientation(selectedChairOrientation);
+  else if (selectedChairOrientation !== null) {
+    const dotSize = orientationPointSizes.get(selectedChairOrientation) ?? 18;
+    orientationSelectionMarker.material.uniforms.dotSize.value = dotSize;
+    orientationSelectionMarker.material.uniforms.haloSize.value = dotSize + 8;
+  }
 }
 
 const orientationRaycaster = new THREE.Raycaster();
