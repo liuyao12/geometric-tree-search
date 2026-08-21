@@ -4535,3 +4535,52 @@ port graph—canonical colored node geometry, ordered connection state, endpoint
 witnesses, and successor incidence—then learn the quotient and repeat grouped
 shuffles plus unchanged-wide transfer. Only a transferred rule may enter a
 self-fed recurrence or stationarity audit.
+
+### Shared proper-SE(3) port-incidence representation
+
+The schema mismatch identified above is now removed. The generic serializer
+represents a three-action macro as three colored action nodes plus three
+pairwise edges. Every node carries all exact incoming parent→source witnesses:
+finite parent/source cluster-state colors, ordered endpoint species, and local
+endpoint geometry. Every edge carries directed endpoint-equality/touch roles
+and the normalized four-distance endpoint cross metric. Exhaustive node
+permutation removes historical insertion order. An intrinsic right-handed
+frame removes global translation and proper rotation while retaining
+chirality. Raw occurrence IDs, lattice coordinates, material labels, targets,
+and global poses are absent.
+
+The development fixture adapts directly to this contract. The unchanged wide
+fixture required authentic internal witnesses, so each frozen terminal branch
+was replayed from its colored seed. A receipt-constrained executor preserves
+the original top-`8 -> 37 -> 128` proposal order but advances only prefixes
+whose colors, center radii, and pair distances can still match one of the
+already-frozen target-blind branch graphs. Every final source-action digest is
+checked. The companion fixture is 57,220 compressed bytes and contains all 10
+wide groups, all 120 branches, and all 59 existing exact labels. Graph workers
+receive no second-block target sites or exact/false labels; labels join only
+after every group graph digest freezes.
+
+| shared port-incidence quotient | result |
+| --- | ---: |
+| development / wide branch graphs | 168 / 120 |
+| unchanged wide forward-UNSAT candidates | 28 |
+| selected development precision | 4 / 4 = 100% |
+| supplied development nuclei reached | 4 / 9 |
+| recognized development exact candidates | 20 / 72 |
+| frozen recurrent semantic types | 26 |
+| recognized wide candidates | 1 / 28 |
+| recoverable exact wide candidates recognized | 0 / 2 |
+| selected wide exact / false | 0 / 0 |
+| external exact / false shuffle p-values | 1 / 1 |
+| autonomous / stationary / exponential | false / false / false |
+
+The strict selector enforces a 95% development precision floor. A coarser
+role-only code reaches 6 of 9 supplied nuclei but is only 60% precise and is
+therefore rejected: a growth marking cannot purchase recall with false atoms.
+The strict recurrent vocabulary fails closed on the wide set because exact
+port types shift across nuclei. This is no longer a data-contract ambiguity.
+The next justified algorithm is a bounded graph metric or learned finite
+message quotient over the common representation, selected entirely on grouped
+development folds and then transferred unchanged. Exact action terminals,
+ports, and collision certificates remain immutable, and no recurrence audit is
+eligible until that transfer gate passes.

@@ -2289,4 +2289,39 @@ endpoint witnesses, and bounded successor incidence—followed by the same
 grouped-shuffle and external-transfer gates. No autonomous, stationary, or
 exponential IQC claim follows from this audit.
 
+### Shared port-incidence graph and exact-vocabulary transfer
+
+That common schema is now executable rather than aspirational. A generic
+serializer accepts three colored placements and all incoming parent→source
+port witnesses. It emits three canonical nodes and three action-pair edges.
+Nodes retain the finite cluster-state colors and endpoint geometry; edges
+retain directed endpoint equality/touch relations and normalized endpoint
+distances. Exhaustive node permutation removes action insertion order. Only
+right-handed intrinsic frames are admitted, so translation and proper rotation
+are quotiented while reflections remain distinguishable. Synthetic controls
+cover permutation, arbitrary proper motion, chirality, missing ports, and
+continuous-frame degeneracy.
+
+The unchanged wide branches are replayed from their colored seeds to obtain
+authentic internal witnesses. Receipt-constrained replay advances only prefixes
+that can still match one of the pre-existing target-blind action graphs; every
+final action digest must reproduce exactly. The resulting 57 KB companion
+fixture contains all ten groups and all 120 branches (59 exact). Second-block
+targets and row labels are absent from graph workers and join only after all
+ten graph digests freeze. Development and wide records now have byte-for-byte
+the same public graph fields.
+
+A bounded quotient independently ablates action metric, port metric, state
+separation, endpoint metric, and repeated-witness multiplicity while preserving
+directed incidence and chirality. Under leave-one-nucleus-out selection with a
+95% precision floor, the selected recurrent type reaches 4 / 9 supplied
+development nuclei with 4 / 4 selections correct. Frozen on the unchanged 28
+forward-UNSAT candidates, it recognizes only one candidate, recognizes neither
+recoverable exact branch, and selects nothing. Both exact and false external
+shuffle p-values are 1. The fail-closed behavior is correct, but exact semantic
+identity is too sparse to be the GCTS marking. The next benchmark learns a
+bounded graph metric/message quotient on this shared representation; it may
+rank existing exact alternatives but cannot authorize new geometry. No
+autonomous, stationary, or exponential IQC claim follows.
+
 Serve the repository root and open `/iqc-growth-live/`.
