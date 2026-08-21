@@ -298,6 +298,10 @@ const archivedSize12CandidatePeriodicityPortfolio = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-size12-12_235174-shell3-periodicity-portfolio-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeDeepScreen = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-deep-screen-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1195,7 +1199,7 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 46, "the lattice-polyhedron controls and four volume-9 polycube candidates must remain in the catalog");
+assert.equal(candidates.length, 44, "the lattice-polyhedron controls and two free-polycube representatives must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
 const shellControls = candidates.filter(figure =>
@@ -1204,19 +1208,32 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-assert.equal(survivors.length, 4);
+assert.equal(survivors.length, 1);
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.id).sort(),
-  ["p9-42947", "p9-42969", "p9-43172", "p9-43188"]
+  ["p9-42947"]
 );
 assert.ok(survivors.every(figure =>
   figure.census_candidate.kind === "polycube_census"
   && figure.census_candidate.volume === 9
-  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 6
-  && figure.census_candidate.screening.corona_completed_radius === 3
+  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 8
+  && figure.census_candidate.screening.corona_completed_radius === 4
+  && figure.census_candidate.mirror_equivalent_id === "p9-42969"
 ));
 assert.equal(shellControls.length, 7);
-assert.equal(periodicControls.length, 35);
+assert.equal(periodicControls.length, 36);
+const periodicPolycube = periodicControls.find(figure => figure.census_candidate.id === "p9-43172");
+assert.ok(periodicPolycube, "the resolved free-polycube class must remain as a periodic regression control");
+assert.equal(periodicPolycube.census_candidate.mirror_equivalent_id, "p9-43188");
+assert.equal(periodicPolycube.census_candidate.screening.motif_tiles, 8);
+assert.equal(periodicPolycube.census_candidate.screening.quotient_determinant, 72);
+assert.equal(archivedPolycubeDeepScreen.updated_census_counts.certified_periodic, 48262);
+assert.equal(archivedPolycubeDeepScreen.updated_census_counts.bounded_inconclusive, 49);
+assert.deepEqual(archivedPolycubeDeepScreen.mirror_equivalence_classes, [
+  ["p9-42947", "p9-42969"],
+  ["p9-43172", "p9-43188"]
+]);
+assert.equal(archivedPolycubeDeepScreen.periodic_control.independent_verification.verified, true);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);

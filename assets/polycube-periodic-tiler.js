@@ -1,6 +1,12 @@
 import { polycubeKey, polycubeOrientations } from "./polycube-enumerator.js";
 
 const mod = (value, modulus) => ((value % modulus) + modulus) % modulus;
+const cross = (left, right) => [
+  left[1] * right[2] - left[2] * right[1],
+  left[2] * right[0] - left[0] * right[2],
+  left[0] * right[1] - left[1] * right[0]
+];
+const dot = (left, right) => left.reduce((sum, value, index) => sum + value * right[index], 0);
 
 /**
  * Find a one-copy periodic quotient. A bijection from the oriented tile cells
@@ -202,5 +208,64 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
     kind: "periodic_torus_search", certified: false, can_tile: null,
     stopped_by: null, nodes, hnf_visited: hnfVisited,
     milliseconds: Math.round(performance.now() - startedAt)
+  };
+}
+
+/**
+ * Replay a periodic certificate without using the HNF search implementation.
+ * Quotient classes are computed from Cramer's rule for the three supplied
+ * period vectors, so this also verifies skew and cyclic quotient bases.
+ */
+export function verifyPolycubePeriodicCertificate(voxels, certificate, options = {}) {
+  const fail = reason => ({ verified: false, reason });
+  if (!certificate?.certified || certificate.can_tile !== true) return fail("not_a_certificate");
+  const basis = certificate.period_vectors;
+  if (!Array.isArray(basis) || basis.length !== 3
+    || basis.some(vector => !Array.isArray(vector) || vector.length !== 3
+      || vector.some(value => !Number.isInteger(value)))) {
+    return fail("invalid_period_basis");
+  }
+  const signedDeterminant = dot(basis[0], cross(basis[1], basis[2]));
+  const determinant = Math.abs(signedDeterminant);
+  if (!determinant) return fail("singular_period_basis");
+  const copies = Math.max(1, Math.floor(Number(certificate.copies) || 1));
+  if (determinant !== voxels.length * copies) return fail("covolume_mismatch");
+  const orientations = polycubeOrientations(voxels, {
+    includeReflections: !!options.includeReflections
+  });
+  const placements = certificate.placements ?? [{
+    orientation_index: certificate.orientation_index,
+    orientation_key: certificate.orientation_key,
+    translation: [0, 0, 0]
+  }];
+  if (placements.length !== copies) return fail("copy_count_mismatch");
+  const quotientClasses = new Set();
+  const numerators = [
+    cross(basis[1], basis[2]),
+    cross(basis[2], basis[0]),
+    cross(basis[0], basis[1])
+  ];
+  for (const placement of placements) {
+    const orientation = orientations.find(item => item.key === placement.orientation_key)
+      ?? orientations[placement.orientation_index];
+    if (!orientation) return fail("unknown_orientation");
+    if (!Array.isArray(placement.translation) || placement.translation.length !== 3
+      || placement.translation.some(value => !Number.isInteger(value))) {
+      return fail("invalid_translation");
+    }
+    for (const cell of orientation.voxels) {
+      const point = cell.map((value, axis) => value + placement.translation[axis]);
+      const signature = numerators.map(vector => mod(dot(point, vector), determinant)).join(",");
+      if (quotientClasses.has(signature)) return fail("quotient_overlap");
+      quotientClasses.add(signature);
+    }
+  }
+  if (quotientClasses.size !== determinant) return fail("quotient_not_full");
+  return {
+    verified: true,
+    determinant,
+    copies,
+    quotient_classes: quotientClasses.size,
+    method: "cramers_rule_quotient_partition"
   };
 }

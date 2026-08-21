@@ -4,7 +4,7 @@
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
-import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260820-volume9-v1";
+import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260820-volume9-v2";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 const permutations = values => {
@@ -275,23 +275,23 @@ export const createTilingStream = (() => {
         - a[1] * (b[0] * c[2] - b[2] * c[0])
         + a[2] * (b[0] * c[1] - b[1] * c[0]);
     };
-    const convexVolume = (orient) => {
+    // Sum oriented boundary tetrahedra, taking the absolute value only after
+    // the complete surface integral.  Taking an absolute value per triangle
+    // works only when the chosen center sees every face from the inside; it
+    // overcounts concave polycubes and makes valid periodic quotients fail the
+    // covolume check (volume-9 p9-43172 was previously reported as 10.754...).
+    const closedPolyhedronVolume = (orient) => {
       if (!orient?.verts?.length || !orient?.faces?.length) return 0;
-      const center = [0, 1, 2].map(axis =>
-        orient.verts.reduce((sum, vertex) => sum + vertex[axis], 0) / orient.verts.length
-      );
-      let volume = 0;
+      let signedSixVolume = 0;
       for (const face of orient.faces) {
-        const a = orient.verts[face[0]].map((value, axis) => value - center[axis]);
+        const a = orient.verts[face[0]];
         for (let i = 1; i < face.length - 1; i++) {
-          const b = orient.verts[face[i]].map((value, axis) => value - center[axis]);
-          const c = orient.verts[face[i + 1]].map((value, axis) => value - center[axis]);
-          volume += Math.abs(determinant3([a, b, c])) / 6;
+          signedSixVolume += determinant3([a, orient.verts[face[i]], orient.verts[face[i + 1]]]);
         }
       }
-      return volume;
+      return Math.abs(signedSixVolume) / 6;
     };
-    const tileVolumes = prototiles.map(tile => convexVolume(tile.unique_orientations?.[0] ?? tile));
+    const tileVolumes = prototiles.map(tile => closedPolyhedronVolume(tile.unique_orientations?.[0] ?? tile));
     const rawRegion = config.target_region;
     const targetRegion = (() => {
       if (!rawRegion || rawRegion.type === "none") return null;
@@ -7300,7 +7300,11 @@ export const tileSpecs = (() => {
   const TILING_REGISTRY = {
     ...Object.fromEntries(POLYCUBE_GCTS_CANDIDATES.map(candidate => [candidate.registry_id, {
       name: candidate.name,
-      category: ["Unresolved Polycube Candidates", "Polycubes"],
+      category: [candidate.screening.status === "inconclusive"
+        ? "Unresolved Polycube Candidates"
+        : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
+          ? "GCTS Periodic Controls"
+          : "GCTS Shell-Obstruction Controls", "Polycubes"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, generatePolycubeData(candidate.voxels))]
     }])),

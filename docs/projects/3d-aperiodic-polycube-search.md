@@ -115,26 +115,39 @@ three (12, 28, and 46 neighboring copies in the first witnesses). Radius four
 remains bounded-inconclusive. This makes the ring a useful negative-search
 stress case, but does not establish whether it tiles space.
 
-The complete one-sided volume-nine census contains 48,311 polycubes. Exact HNF
-quotient searches certify 48,260 as periodic: 20,238 with one-copy motifs,
-26,922 with two, 309 with three, 731 with four, and 60 with six. No finite
-non-tiling certificate was found; 51 remain bounded-inconclusive, including 23
-that timed out in the shallower four-copy pass. Of the 28 deep-pass survivors,
-eight exhaust every HNF through six copies. The catalogue retains four
-nonplanar members (`p9-42947`, `p9-42969`, `p9-43172`, and `p9-43188`) that
-also have exact radius-three coronas and leave radius four incomplete at the
-two-second bound. They are GCTS stress candidates, not aperiodic candidates in
-the evidentiary sense. The machine-readable summary is
-`data/polycube-volume9-screen-summary-2026-08-20.json`.
+The complete one-sided volume-nine census contains 48,311 polycubes. The first
+pass certified 48,260 as periodic: 20,238 with one-copy motifs, 26,922 with
+two, 309 with three, 731 with four, and 60 with six. A complete HNF pass through
+eight copies then certifies `p9-43172` and `p9-43188`, bringing the periodic
+count to 48,262 and the bounded-inconclusive count to 49. Their 8-copy quotient
+has period vectors `(3,0,0)`, `(0,8,0)`, `(0,0,3)` and partitions all 72 quotient
+cells under an independent Cramer's-rule verifier.
+
+The original four catalogue entries are two enantiomeric pairs:
+`p9-42947`/`p9-42969` and `p9-43172`/`p9-43188`. Because reflection of all of
+space preserves tiling existence, one representative per pair is sufficient
+even though reflected copies remain forbidden within a tiling. The catalogue
+therefore moves `p9-43172` to periodic controls and keeps only `p9-42947` as an
+unresolved free-polycube representative. It exhausts all 46,730 HNF quotients
+through eight copies and has an exact radius-four corona. A 30-second exact
+radius-five run visited 2,574,336 nodes without completing, while a separate
+continuation portfolio rejected 7,387 complete radius-four patches because
+each immediately trapped before radius five. That portfolio did not exhaust
+all radius-four patches, so this remains a GCTS stress candidate, not evidence
+of aperiodicity. The deeper machine-readable receipt is
+`data/polycube-volume9-deep-screen-2026-08-20.json`; the earlier six-copy
+summary is retained as historical input.
 
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their
    checked-in summary, in a compact replayable format.
-2. Canonicalize rooted boundary states under translations and cubic rotations,
-   then memoize exhausted subtrees.
-3. Extend the dedicated HNF exact-cover search beyond six-copy motifs with DLX
-   or SAT and independently verify every stored quotient.
+2. Canonicalize rooted boundary states under cubic stabilizers and memoize
+   exhausted continuation states; the first 7,387 radius-four states were all
+   distinct even after this canonicalization, so stronger partial-state
+   nogoods are needed.
+3. Extend the dedicated HNF exact-cover search beyond eight-copy motifs with
+   DLX or SAT and independently verify every stored quotient.
 4. Use successful isohedral coronas to propose, rather than assume, larger
    finite quotients.
 5. For durable survivors, search for recurring supertiles and verify a forced

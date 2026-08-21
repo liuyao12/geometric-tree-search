@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260820-polycube9-v105";
+import { tileSpecs } from "./engine.js?v=20260820-polycube9-v106";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1418,7 +1418,10 @@ function updateCandidateResearchPanel() {
       candidateResearchTitle.textContent = `Certified periodic control ${candidate.id}`;
       const source = candidate.screening.periodic_source
         ?? "an exact quotient was mined from the validated 1,174-tile shell-7 witness";
-      candidateResearchDetail.textContent = `${candidate.lattice_points} lattice points · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. Use the preset to replay the certificate in the ${periodicLane === "isohedral" ? "Isohedral" : "Translational"} lane.`;
+      const sizeLabel = candidate.kind === "polycube_census"
+        ? `${candidate.volume} cubes`
+        : `${candidate.lattice_points} lattice points`;
+      candidateResearchDetail.textContent = `${sizeLabel} · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}.${candidate.mirror_equivalent_id ? ` Its omitted enantiomer ${candidate.mirror_equivalent_id} is tiling-equivalent by reflection of all space.` : ""} Use the preset to replay the certificate in the ${periodicLane === "isohedral" ? "Isohedral" : "Translational"} lane.`;
     } else if (["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(candidate.screening?.certificate)) {
       candidateResearchTitle.textContent = `Certified non-tiler control ${candidate.id}`;
       candidateResearchDetail.textContent = candidate.screening.certificate === "finite_shell_obstruction"
@@ -1427,7 +1430,7 @@ function updateCandidateResearchPanel() {
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
       candidateResearchDetail.textContent = candidate.kind === "polycube_census"
-        ? `${candidate.volume}-cube nonplanar polycube. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotients through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. An exact radius-${candidate.screening.corona_completed_radius} corona exists; radius ${candidate.screening.corona_next_radius} remained incomplete after ${candidate.screening.corona_next_nodes.toLocaleString()} nodes and ${candidate.screening.corona_next_time_limit_ms / 1000}s. This is a bounded GCTS stress candidate, not evidence of aperiodicity.`
+        ? `${candidate.volume}-cube nonplanar polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is the same tiling-existence problem under reflection of all space. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotients through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. An exact radius-${candidate.screening.corona_completed_radius} corona exists; radius ${candidate.screening.corona_next_radius} remained incomplete after ${candidate.screening.corona_next_nodes.toLocaleString()} nodes and ${candidate.screening.corona_next_time_limit_ms / 1000}s. A continuation portfolio rejected ${candidate.screening.corona_continuation_states_checked.toLocaleString()} complete radius-${candidate.screening.corona_completed_radius} patches because none extended one more layer, but it did not exhaust all such patches. This is a bounded GCTS stress candidate, not evidence of aperiodicity.`
         : candidate.lattice_points === 12
         ? `${candidate.description} Complete shell ${shell?.deepest_completed_shell ?? 2} is recorded.${limits}`
         : `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
@@ -1488,10 +1491,10 @@ function renderSystemTileList() {
       angles.className = "figure-card-angles";
       if (figure.census_candidate) {
         const certificate = figure.census_candidate.screening?.certificate;
-        angles.textContent = figure.census_candidate.kind === "polycube_census"
-          ? `period > 6 · corona radius 3 · ${figure.census_candidate.volume} cubes`
-          : ["translational", "isohedral_periodic_quotient"].includes(certificate)
-          ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.lattice_points} points`
+        angles.textContent = ["translational", "isohedral_periodic_quotient"].includes(certificate)
+          ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.kind === "polycube_census" ? `${figure.census_candidate.volume} cubes` : `${figure.census_candidate.lattice_points} points`}`
+          : figure.census_candidate.kind === "polycube_census"
+          ? `period > ${figure.census_candidate.screening.periodic_hnf_max_motif_tiles} · corona radius ${figure.census_candidate.screening.corona_completed_radius} · ${figure.census_candidate.volume} cubes`
           : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
             ? `${certificate === "finite_shell_obstruction" ? "complete-shell" : "dead-face shell"} ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
             : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;

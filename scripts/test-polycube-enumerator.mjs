@@ -3,15 +3,26 @@ import {
   canonicalPolycubeKey,
   enumeratePolycubes,
   isChiralPolycube,
+  polycubeSymmetries,
   POLYCUBE_ISOMETRY_COUNT,
   POLYCUBE_ROTATION_COUNT
 } from "../assets/polycube-enumerator.js";
-import { searchFirstPolycubeCorona, searchPolycubeCorona } from "../assets/polycube-corona-search.js";
+import {
+  polycubeCoronaBoundaryKey,
+  searchFirstPolycubeCorona,
+  searchPolycubeCorona
+} from "../assets/polycube-corona-search.js";
 import { findPolycubeBoxTiling } from "../assets/polycube-box-tiler.js";
-import { findPolycubeCyclicTiling, findPolycubePeriodicTiling } from "../assets/polycube-periodic-tiler.js";
+import {
+  findPolycubeCyclicTiling,
+  findPolycubePeriodicTiling,
+  verifyPolycubePeriodicCertificate
+} from "../assets/polycube-periodic-tiler.js";
+import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 
 assert.equal(POLYCUBE_ROTATION_COUNT, 24);
 assert.equal(POLYCUBE_ISOMETRY_COUNT, 48);
+assert.equal(polycubeSymmetries([[0, 0, 0]]).length, 24);
 
 const expectedOneSidedCounts = [1, 1, 2, 8, 29];
 const expectedFreeCounts = [1, 1, 2, 7, 23];
@@ -29,6 +40,14 @@ for (let size = 1; size <= expectedOneSidedCounts.length; size++) {
 }
 assert.equal(enumeratePolycubes(5).filter(candidate => isChiralPolycube(candidate.voxels)).length, 12);
 
+const unresolvedP9 = POLYCUBE_GCTS_CANDIDATES.find(candidate => candidate.id === "p9-42947");
+const periodicP9 = POLYCUBE_GCTS_CANDIDATES.find(candidate => candidate.id === "p9-43172");
+assert.ok(unresolvedP9 && periodicP9);
+assert.equal(unresolvedP9.mirror_equivalent_id, "p9-42969");
+assert.equal(periodicP9.mirror_equivalent_id, "p9-43188");
+assert.equal(unresolvedP9.screening.periodic_hnf_max_motif_tiles, 8);
+assert.equal(periodicP9.screening.quotient_determinant, 72);
+
 const chair = [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0]];
 const rotatedChair = chair.map(([x, y, z]) => [z, x, y]);
 assert.equal(canonicalPolycubeKey(chair), canonicalPolycubeKey(rotatedChair));
@@ -39,10 +58,54 @@ const lTricubeBox = findPolycubeBoxTiling(lTricube, { maxCopies: 2, timeLimitMs:
 assert.equal(lTricubeBox.certified, true, "two L tricubes must tile a finite box");
 assert.equal(lTricubeBox.copies, 2);
 assert.equal(lTricubeBox.isohedral.certified, true, "the repeated box tiling must be tile-transitive");
+assert.equal(
+  verifyPolycubePeriodicCertificate(lTricube, lTricubeBox).verified,
+  true,
+  "the independent quotient verifier must replay a two-copy box certificate"
+);
+const cyclicCube = findPolycubeCyclicTiling([[0, 0, 0]]);
+assert.equal(verifyPolycubePeriodicCertificate([[0, 0, 0]], cyclicCube).verified, true);
+assert.equal(
+  verifyPolycubePeriodicCertificate([[0, 0, 0]], {
+    ...cyclicCube,
+    period_vectors: [[2, 0, 0], [0, 1, 0], [0, 0, 1]]
+  }).verified,
+  false,
+  "a certificate with the wrong covolume must be rejected"
+);
 
 const cubeCorona = searchFirstPolycubeCorona([[0, 0, 0]], { nodeLimit: 1000, timeLimitMs: 1000 });
 assert.equal(cubeCorona.success, true, "a cube must have a six-cube first corona");
 assert.equal(cubeCorona.corona.length, 6);
+assert.equal(
+  polycubeCoronaBoundaryKey([[0, 0, 0]], cubeCorona.corona, 1),
+  "",
+  "the unit-cube first corona has no protruding boundary occupancy"
+);
+const extendedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
+  layers: 2,
+  fixedPlacements: cubeCorona.corona,
+  nodeLimit: 1000,
+  timeLimitMs: 1000
+});
+assert.equal(extendedCubeCorona.success, true, "a fixed first cube corona must extend to radius two");
+assert.equal(extendedCubeCorona.fixed_placements, 6);
+const rejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
+  layers: 1,
+  nodeLimit: 1000,
+  timeLimitMs: 1000,
+  acceptSolution: () => false
+});
+assert.equal(rejectedCubeCorona.exhausted, true, "rejecting the cube's unique corona must exhaust the search");
+assert.equal(rejectedCubeCorona.solutions_rejected, 1);
+assert.throws(
+  () => searchPolycubeCorona(lTricube, {
+    layers: 1,
+    fixedPlacements: [{ cells: [[10, 0, 0], [11, 0, 0], [12, 0, 0]] }]
+  }),
+  /not a congruent tile copy/,
+  "conditional corona proofs must reject malformed fixed placements"
+);
 
 const ringOctacube = [];
 for (let x = 0; x < 3; x++) for (let y = 0; y < 3; y++) {

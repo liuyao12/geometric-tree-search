@@ -1,0 +1,91 @@
+{
+  "kind": "polycube_volume9_deep_screen",
+  "date": "2026-08-20",
+  "equivalence_for_moves": "proper_cubic_rotations_and_integer_translations",
+  "catalog_equivalence": "free_polycube_representatives; enantiomers have equivalent tiling existence by reflecting all of space",
+  "supersedes_catalog_selection_in": "data/polycube-volume9-screen-summary-2026-08-20.json",
+  "updated_census_counts": {
+    "candidate_count": 48311,
+    "certified_periodic": 48262,
+    "certified_non_tiler": 0,
+    "bounded_inconclusive": 49,
+    "periodic_motif_counts": {
+      "1": 20238,
+      "2": 26922,
+      "3": 309,
+      "4": 731,
+      "6": 60,
+      "8": 2
+    }
+  },
+  "mirror_equivalence_classes": [
+    ["p9-42947", "p9-42969"],
+    ["p9-43172", "p9-43188"]
+  ],
+  "periodic_control": {
+    "representative": "p9-43172",
+    "mirror_equivalent": "p9-43188",
+    "certificate": "8_tile_periodic_torus",
+    "copies": 8,
+    "period_vectors": [[3, 0, 0], [0, 8, 0], [0, 0, 3]],
+    "determinant": 72,
+    "hnf_visited": 27380,
+    "search_nodes": 174273,
+    "search_milliseconds": 10558,
+    "independent_verification": {
+      "verified": true,
+      "method": "cramers_rule_quotient_partition",
+      "quotient_classes": 72
+    },
+    "webapp_replay": {
+      "verified": true,
+      "method": "quotient_face_pairing_equal_covolume_and_complete_lattice_translation_neighborhood",
+      "patch_tiles": 8
+    }
+  },
+  "unresolved_representative": {
+    "representative": "p9-42947",
+    "mirror_equivalent": "p9-42969",
+    "periodic_hnf_screen": {
+      "maximum_copies": 8,
+      "exhausted": true,
+      "hnf_visited": 46730,
+      "nodes": 564800,
+      "milliseconds": 23666,
+      "certificate_found": false
+    },
+    "corona_radius_4": {
+      "success": true,
+      "seed": 3,
+      "target_cells": 301,
+      "placements": 64,
+      "nodes": 8042,
+      "milliseconds": 157
+    },
+    "corona_radius_5": {
+      "success": false,
+      "exhausted": false,
+      "stopped_by": "time_limit",
+      "time_limit_ms": 30000,
+      "nodes": 2574336,
+      "target_cells": 481,
+      "placements_considered": 6781
+    },
+    "radius_4_to_5_continuation_portfolio": {
+      "seed": 3,
+      "outer_time_limit_ms": 30000,
+      "complete_radius_4_patches_rejected": 7387,
+      "unique_boundary_states_checked": 7387,
+      "symmetry_duplicate_states": 0,
+      "radius_5_extensions_found": 0,
+      "outer_search_exhausted": false
+    }
+  },
+  "engine_correction": {
+    "issue": "per-face absolute tetrahedron volumes overcounted concave polycubes",
+    "old_reported_volume_p9_43172": 10.75438596491228,
+    "correct_volume_p9_43172": 9,
+    "fix": "oriented closed-surface volume with one final absolute value"
+  },
+  "warning": "The remaining representative is only bounded-inconclusive. A true aperiodic monotile still requires an infinite tiling construction and a proof excluding every periodic tiling."
+}

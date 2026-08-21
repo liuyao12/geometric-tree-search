@@ -78,6 +78,33 @@ export function polycubeOrientations(voxels, { includeReflections = false } = {}
   return [...orientations.values()].sort((left, right) => left.key.localeCompare(right.key));
 }
 
+export function polycubeSymmetries(voxels, { includeReflections = false } = {}) {
+  const transforms = includeReflections ? signedPermutationMatrices : properCubeRotations;
+  const targetSet = new Set(voxels.map(voxel => voxel.join(",")));
+  const symmetries = [];
+  const seen = new Set();
+  for (const { matrix, determinant } of transforms) {
+    const transformed = voxels.map(voxel => transformVoxel(voxel, matrix));
+    for (const targetAnchor of voxels) {
+      const translation = targetAnchor.map((value, axis) => value - transformed[0][axis]);
+      if (!transformed.every(cell => targetSet.has(
+        cell.map((value, axis) => value + translation[axis]).join(",")
+      ))) continue;
+      const key = `${matrix.flat().join(",")}|${translation.join(",")}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        symmetries.push({
+          matrix: matrix.map(row => row.slice()),
+          translation,
+          determinant
+        });
+      }
+      break;
+    }
+  }
+  return symmetries;
+}
+
 export function enumeratePolycubes(size, { includeReflections = false } = {}) {
   const targetSize = Math.floor(Number(size));
   if (!Number.isFinite(targetSize) || targetSize < 1) throw new Error("Polycube size must be a positive integer");
