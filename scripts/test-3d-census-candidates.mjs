@@ -1495,6 +1495,14 @@ assert.equal(archivedP10055695Z3Cegar.lazy_obstruction_cegar.exact_dead_outer_st
 assert.equal(archivedP10055695Z3Cegar.lazy_obstruction_cegar.minimum_outer_placements_witnessed, 43);
 assert.equal(archivedP10055695Z3Cegar.lazy_obstruction_cegar.continuation_nodes, 25);
 assert.equal(archivedP10055695Z3Cegar.lazy_obstruction_cegar.learned_symmetry_closed_clauses, 40);
+assert.equal(archivedP10055695Z3Cegar.staged_low_copy_cegar.initial_symmetry_closed_clauses, 40);
+assert.equal(archivedP10055695Z3Cegar.staged_low_copy_cegar.z3_sat_outer_states, 20);
+assert.equal(archivedP10055695Z3Cegar.staged_low_copy_cegar.exact_dead_outer_states, 20);
+assert.equal(archivedP10055695Z3Cegar.staged_low_copy_cegar.minimum_outer_placements_witnessed, 41);
+assert.equal(archivedP10055695Z3Cegar.combined_clause_distinct_outer_states, 40);
+assert.equal(archivedP10055695Z3Cegar.combined_exact_dead_outer_states, 40);
+assert.equal(archivedP10055695Z3Cegar.combined_continuation_nodes, 51);
+assert.equal(archivedP10055695Z3Cegar.final_symmetry_closed_clauses, 80);
 assert.equal(archivedP10055695Z3Cegar.eager_one_step_coverability_ablation.max_47.status, "timeout");
 assert.equal(archivedP10055695Z3Cegar.eager_one_step_coverability_ablation.max_43_staged.status, "timeout");
 assert.equal(archivedP10055695Z3Cegar.radius_3_space_exhausted, false);
@@ -1504,8 +1512,9 @@ assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,
   "data/polycube-p10-055695-z3-cegar-radius4-2026-08-21.json"
 );
-assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_radius3_states_checked, 20);
-assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_continuation_nodes, 25);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_radius3_states_checked, 40);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_minimum_radius3_placements, 41);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_continuation_nodes, 51);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_radius3_exhausted, false);
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),

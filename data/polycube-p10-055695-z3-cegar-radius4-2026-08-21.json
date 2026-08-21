@@ -37,6 +37,30 @@
     "z3_milliseconds": 116104,
     "source_sha256": "6254aa2c3f116208df945853cee1dbf048922d146e5c6ba7a93267b320f4deed"
   },
+  "staged_low_copy_cegar": {
+    "maximum_outer_placements": 43,
+    "initial_symmetry_closed_clauses": 40,
+    "random_seeds": [94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113],
+    "z3_trials": 20,
+    "z3_sat_outer_states": 20,
+    "z3_unknown_trials": 0,
+    "outer_placement_distribution": {
+      "41": 1,
+      "42": 1,
+      "43": 18
+    },
+    "minimum_outer_placements_witnessed": 41,
+    "exact_dead_outer_states": 20,
+    "verified_radius_4_witnesses": 0,
+    "immediate_dead_target_obstructions": 20,
+    "resolved_subtree_obstructions": 0,
+    "continuation_nodes": 26,
+    "continuation_milliseconds": 308,
+    "learned_clause_size": 2,
+    "final_symmetry_closed_clauses": 80,
+    "z3_milliseconds": 343370,
+    "source_sha256": "61d543406f525dfd62b213af91cd8c7263c534c96e16be38e9ee787731f4c371"
+  },
   "eager_one_step_coverability_ablation": {
     "next_ring_cells": 138,
     "raw_lookahead_placements": 7394,
@@ -60,8 +84,13 @@
     },
     "conclusion": "The eager necessary-condition encoding did not supply a proposal at either tested copy bound. The lightweight proposal model plus exact lazy obstruction learning supplied twenty states in less aggregate solver time than either single eager run."
   },
+  "combined_clause_distinct_outer_states": 40,
+  "combined_exact_dead_outer_states": 40,
+  "combined_continuation_nodes": 51,
+  "minimum_outer_placements_witnessed": 41,
+  "final_symmetry_closed_clauses": 80,
   "radius_3_space_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
-  "interpretation": "Twenty clause-distinct radius-three proposals, including one with 43 surrounding copies, all fail exact radius-four continuation. Every failure is already exposed by an immediate dead target and yields a two-placement obstruction, so this experiment strengthens the negative finite-corona evidence but does not yet reach the deeper resolved-subtree regime seen for p9-42947. Because the radius-three proposal space is not exhausted, the result proves neither non-tiling nor aperiodicity."
+  "interpretation": "Forty clause-distinct radius-three proposals all fail exact radius-four continuation. The second portfolio begins with all forty symmetry-closed cuts from the first, so its twenty states are distinct from the first twenty; it lowers the minimum witnessed patch from 43 to 41 surrounding copies and grows the cut set to eighty. Every failure is already exposed by an immediate dead target and yields a two-placement obstruction, so this experiment strengthens the negative finite-corona evidence but does not yet reach the deeper resolved-subtree regime seen for p9-42947. Because the radius-three proposal space is not exhausted, the result proves neither non-tiling nor aperiodicity."
 }
