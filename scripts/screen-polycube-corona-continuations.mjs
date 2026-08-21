@@ -3,7 +3,8 @@
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import {
   polycubeCoronaBoundaryKey,
-  searchPolycubeCorona
+  searchPolycubeCorona,
+  verifyPolycubeCoronaPatch
 } from "../assets/polycube-corona-search.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
@@ -26,6 +27,8 @@ const timePerSeedMs = Math.max(1, numberArg("time-ms", 30_000));
 const innerTimeMs = Math.max(1, numberArg("inner-time-ms", 250));
 const innerNodeLimit = Math.max(1, Math.floor(numberArg("inner-nodes", 100_000)));
 const nogoodLimit = Math.max(1, Math.floor(numberArg("nogood-limit", 500_000)));
+const proposalTimeMs = Math.max(0, numberArg("proposal-time-ms", 0));
+const proposalNodeLimit = Math.max(1, Math.floor(numberArg("proposal-nodes", innerNodeLimit)));
 const seeds = String(args.get("seeds") ?? "3,4,1,2")
   .split(",")
   .map(Number)
@@ -42,6 +45,42 @@ let incompleteContinuation = null;
 const obstructedBoundaryStates = new Set();
 let boundaryCacheHits = 0;
 const trials = [];
+let directProposal = null;
+
+if (proposalTimeMs > 0) {
+  const proposal = searchPolycubeCorona(candidate.voxels, {
+    layers: innerLayer,
+    seed: seeds[0] ?? 0,
+    nodeLimit: proposalNodeLimit,
+    timeLimitMs: proposalTimeMs,
+    nogoods: true,
+    nogoodLimit,
+    returnNogoods: true
+  });
+  carriedNogoods = proposal.nogood_clause_keys ?? [];
+  directProposal = {
+    success: proposal.success,
+    exhausted: proposal.exhausted,
+    stopped_by: proposal.stopped_by,
+    nodes: proposal.nodes,
+    milliseconds: proposal.milliseconds,
+    placements: proposal.corona?.length ?? null,
+    learned_clauses: carriedNogoods.length,
+    nogood_prunes: proposal.nogood_prunes,
+    maximum_depth: proposal.maximum_depth
+  };
+  if (proposal.success) {
+    const verification = verifyPolycubeCoronaPatch(
+      candidate.voxels,
+      proposal.corona,
+      innerLayer
+    );
+    if (!verification.verified) {
+      throw new Error(`Direct proposal failed verification: ${verification.reason}`);
+    }
+    radiusWitness = proposal;
+  }
+}
 
 process.stdout.write(`${JSON.stringify({
   type: "continuation_portfolio_start",
@@ -52,10 +91,13 @@ process.stdout.write(`${JSON.stringify({
   time_per_seed_ms: timePerSeedMs,
   inner_time_ms: innerTimeMs,
   inner_node_limit: innerNodeLimit,
-  nogood_limit: nogoodLimit
+  nogood_limit: nogoodLimit,
+  proposal_time_ms: proposalTimeMs,
+  proposal_node_limit: proposalNodeLimit,
+  direct_proposal: directProposal
 })}\n`);
 
-for (const seed of seeds) {
+for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
   let continuationChecks = 0;
   let explainedObstructions = 0;
   let immediateObstructions = 0;
@@ -87,6 +129,14 @@ for (const seed of seeds) {
         nogoodLimit
       });
       if (continuation.success) {
+        const verification = verifyPolycubeCoronaPatch(
+          candidate.voxels,
+          continuation.corona,
+          innerLayer
+        );
+        if (!verification.verified) {
+          throw new Error(`Continuation witness failed verification: ${verification.reason}`);
+        }
         radiusWitness = continuation;
         return true;
       }
@@ -143,8 +193,11 @@ process.stdout.write(`${JSON.stringify({
   id,
   outer_layer: outerLayer,
   inner_layer: innerLayer,
+  direct_proposal: directProposal,
   classification: radiusWitness
     ? "inner_radius_witness"
+    : directProposal?.exhausted
+      ? "certified_non_tiler"
     : incompleteContinuation
       ? "continuation_incomplete"
       : trials.at(-1)?.exhausted

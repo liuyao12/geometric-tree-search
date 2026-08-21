@@ -86,7 +86,11 @@ const records = [
       corona_boundary_radius2_learned_trials: 1000,
       corona_boundary_radius3_stress_prunes: 10100253,
       corona_boundary_radius3_stress_survivors: 0,
-      corona_boundary_radius3_stress_time_ms: 30000
+      corona_boundary_radius3_stress_time_ms: 30000,
+      corona_deep_proposal_radius4_nodes: 4786,
+      corona_deep_proposal_radius4_milliseconds: 139,
+      corona_deep_proposal_radius4_verified: true,
+      corona_deep_proposal_radius5_improved_equal_budget: false
     },
     shell_screening: {
       robust_completed_shell: 4,

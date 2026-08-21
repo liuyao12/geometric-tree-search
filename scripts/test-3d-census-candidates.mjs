@@ -1380,6 +1380,13 @@ assert.equal(
   archivedPolycubeCoronaBoundaryStates.deeper_boundary_samples.radius3_to_radius4_learned.nogood_prunes,
   10100253
 );
+assert.equal(archivedPolycubeCoronaBoundaryStates.deep_proposal_ablation.radius3_to_radius4.direct_proposal.success, true);
+assert.equal(archivedPolycubeCoronaBoundaryStates.deep_proposal_ablation.radius3_to_radius4.direct_proposal.verified, true);
+assert.equal(archivedPolycubeCoronaBoundaryStates.deep_proposal_ablation.radius3_to_radius4.direct_proposal.nodes, 4786);
+assert.equal(
+  archivedPolycubeCoronaBoundaryStates.deep_proposal_ablation.radius4_to_radius5_equal_wall_budget.direct_proposal_then_outer.success,
+  false
+);
 assert.equal(
   survivors[0].census_candidate.screening.corona_boundary_state_report,
   "data/polycube-volume9-corona-boundary-states-2026-08-20.json"
@@ -1389,6 +1396,9 @@ assert.equal(survivors[0].census_candidate.screening.corona_boundary_obstructed_
 assert.equal(survivors[0].census_candidate.screening.corona_boundary_extendable_states, 600);
 assert.equal(survivors[0].census_candidate.screening.corona_boundary_radius2_learned_survivors, 462);
 assert.equal(survivors[0].census_candidate.screening.corona_boundary_radius3_stress_prunes, 10100253);
+assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius4_nodes, 4786);
+assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius4_verified, true);
+assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius5_improved_equal_budget, false);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);

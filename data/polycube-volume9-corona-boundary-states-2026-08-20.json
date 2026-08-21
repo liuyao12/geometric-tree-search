@@ -87,6 +87,49 @@
     "transferred_milliseconds": 239,
     "conclusion": "Blindly preloading shallow clauses did not change the radius-four search path and added overhead, so it is not enabled by default. On-demand boundary continuation and conflict extraction remain the useful mechanism."
   },
+  "deep_proposal_ablation": {
+    "policy": "bounded direct search at the next radius; a witness jumps forward, while an incomplete run may transfer only sound learned clauses before ordinary outer-state continuation",
+    "radius3_to_radius4": {
+      "dead_basin_baseline": {
+        "configured_time_ms": 30000,
+        "success": false,
+        "nodes": 7066624,
+        "nogood_prunes": 10100253
+      },
+      "direct_proposal": {
+        "configured_time_ms": 1000,
+        "success": true,
+        "verified": true,
+        "nodes": 4786,
+        "milliseconds": 139,
+        "placements": 64
+      }
+    },
+    "radius4_to_radius5_equal_wall_budget": {
+      "baseline": {
+        "outer_time_ms": 12000,
+        "success": false,
+        "outer_nodes": 1445888,
+        "nogood_prunes": 1215666,
+        "continuation_checks": 46
+      },
+      "direct_proposal_then_outer": {
+        "proposal_time_ms": 2000,
+        "outer_time_ms": 10000,
+        "success": false,
+        "proposal_nodes": 76800,
+        "outer_nodes": 1122304,
+        "total_nodes": 1199104,
+        "proposal_nogood_prunes": 49729,
+        "outer_nogood_prunes": 976222,
+        "total_nogood_prunes": 1025951,
+        "continuation_checks": 46,
+        "proposal_clauses": 1734,
+        "outer_imported_clauses": 1078
+      },
+      "conclusion": "The deep proposal solves the held-out radius-four ordering failure but does not improve the equal-budget radius-five screen, so it remains optional rather than becoming the default policy."
+    }
+  },
   "algorithm_change": "The continuation portfolio now canonicalizes completed outer-corona exterior occupancy under the root stabilizer and memoizes obstructed boundary states across solutions and seeds. Exact placement clauses are still learned whenever an obstruction explanation is available.",
   "conclusion": "Whole-corona boundary states are much more discriminating than the six individual contact types: 1922 of 2522 distinct sampled radius-one states are exact radius-two obstructions. At deeper levels, on-demand clauses redirect radius-two search toward survivors, while radius-three search still remains trapped in a large dead basin despite a known radius-four witness. The surviving states and sampled censuses leave the tiling classification unresolved.",
   "warning": "A sampled boundary-state survival rate is neither a non-tiling certificate nor evidence of aperiodicity."

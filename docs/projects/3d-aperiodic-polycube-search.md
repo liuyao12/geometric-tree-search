@@ -227,6 +227,17 @@ though an independent direct search has a verified radius-four corona. This
 separates geometric nonexistence from a reproducible, measurable ordering
 failure that future GCTS proposal policies must beat.
 
+The first replacement policy is a bounded direct-depth proposal. Before
+enumerating lower-radius leaves, it asks the next-radius exact solver directly;
+a witness jumps forward, while an incomplete run contributes only sound exact
+nogoods to the fallback continuation portfolio. This solves the held-out
+radius-three-to-four benchmark in 4,786 nodes and 139 ms under a one-second
+cap, with an independent witness check. It does not solve radius five: at an
+equal twelve-second total budget, a two-second direct proposal plus ten seconds
+of outer search covers less of the tree than the twelve-second baseline and
+finds no witness. The phase is therefore available as an explicit option but
+is not enabled by default.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their

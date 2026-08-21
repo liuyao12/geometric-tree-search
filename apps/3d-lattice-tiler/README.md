@@ -603,6 +603,18 @@ run still inspects 41 dead states and makes 10,100,253 prunes without reaching
 the independently known radius-four witness. This is now an explicit proposal-
 selection stress benchmark for GCTS, not evidence that radius four is absent.
 
+A bounded direct-depth proposal now provides a sound escape hatch for that
+ordering failure. It searches the next radius directly before enumerating
+complete lower-radius leaves; success advances immediately, while an
+incomplete attempt may transfer only exact learned clauses into the ordinary
+continuation search. With a one-second cap it finds and independently verifies
+the radius-four witness in 4,786 nodes and 139 ms, versus the nested benchmark's
+30-second timeout. An equal-total-time radius-five ablation was negative: a
+two-second proposal followed by ten seconds of outer search covered less work
+than twelve seconds of outer search alone and found no radius-five witness.
+The proposal phase therefore remains opt-in rather than silently consuming the
+default search budget.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.
