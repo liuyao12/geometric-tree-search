@@ -23,7 +23,7 @@ tileSelect.addEventListener("change", () => {
 });
 
 const SQRT3 = Math.sqrt(3);
-const INITIAL_GENERATION = 0;
+const INITIAL_GENERATION = 1;
 const MAX_GENERATION = 5;
 const FIXED_CHILD_SEQUENCE = [5, 5, 3, 5, 5];
 const TURNING_CHILD_INDICES = new Set([1, 2, 6, 7]);
@@ -258,6 +258,7 @@ let currentExpandedTransforms = subdivisionWords.map((word) => initialNormalizat
 updateMutedOrientationKeys(currentExpandedTransforms);
 let currentVisual = makeVisual(currentExpandedTransforms, currentTurnGenerations);
 content.add(currentVisual.group);
+generationValue.textContent = String(generation);
 tileValue.textContent = subdivisionWords.length.toLocaleString();
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
