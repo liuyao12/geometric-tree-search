@@ -281,8 +281,9 @@ export function searchPolycubeCorona(voxels, options = {}) {
       targetCoverage: []
     };
   });
-  const fixedConflictExplanations = fixedPlacements.length > 0
-    && options.explainFixedObstruction !== false;
+  const conflictExplanationsEnabled = (fixedPlacements.length > 0
+    && options.explainFixedObstruction !== false)
+    || options.conflictBackjumping === true;
   const symmetryNogoodsEnabled = options.symmetryNogoods === true
     && fixedPlacements.length === 0
     && forbiddenPlacementKeys.size === 0
@@ -461,6 +462,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
   let lastConflict = null;
   let stoppedBy = null;
   let symmetryNogoodClauses = 0;
+  let conflictBackjumps = 0;
   const placementIdByKey = new Map(orderedPlacements.map(placement => [placement.key, placement.id]));
 
   const fixedToken = index => `f:${index}`;
@@ -501,7 +503,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
   };
 
   const explainPivotFailure = (pivot, branchResiduals = new Map()) => {
-    if (!fixedConflictExplanations) return null;
+    if (!conflictExplanationsEnabled) return null;
     const conflict = new Set();
     const blockerSets = [];
     for (const blockers of fixedBlockedRowsByTarget.get(pivot.key)?.values() ?? []) {
@@ -688,7 +690,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const search = () => {
     if (violatedNogoods) {
       nogoodPrunes += 1;
-      if (fixedConflictExplanations) {
+      if (conflictExplanationsEnabled) {
         const violated = nogoods.find(nogood => nogood.selected === nogood.ids.length);
         lastConflict = violated
           ? fixedConditionedConflict(violated.ids)
@@ -708,7 +710,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
           .filter(id => Number.isInteger(id));
         if (ids.length === decision.nogood_placement_indices.length) {
           learnNogood(ids);
-          if (fixedConflictExplanations) lastConflict = fixedConditionedConflict(ids);
+          if (conflictExplanationsEnabled) lastConflict = fixedConditionedConflict(ids);
         }
       } else if (decision?.nogood_placement_keys?.length) {
         const idsByKey = new Map(solution.map(placement => [placement.key, placement.id]));
@@ -717,7 +719,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
           .filter(id => Number.isInteger(id));
         if (ids.length === decision.nogood_placement_keys.length) {
           learnNogood(ids);
-          if (fixedConflictExplanations) lastConflict = fixedConditionedConflict(ids);
+          if (conflictExplanationsEnabled) lastConflict = fixedConditionedConflict(ids);
         }
       }
       solutionsRejected += 1;
@@ -741,7 +743,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
       lastConflict = explainPivotFailure(pivot);
       return null;
     }
-    const branchResiduals = fixedConflictExplanations ? new Map() : null;
+    const branchResiduals = conflictExplanationsEnabled ? new Map() : null;
     cover(pivot);
     for (let row = pivot.down; row !== pivot; row = row.down) {
       chosen.push(row.placement);
@@ -754,12 +756,13 @@ export function searchPolycubeCorona(voxels, options = {}) {
       for (let node = row.left; node !== row; node = node.left) uncover(node.column);
       removeSelectedPlacement(row.placement);
       chosen.pop();
-      if (fixedConflictExplanations) {
+      if (conflictExplanationsEnabled) {
         if (!childConflict) {
           lastConflict = null;
         } else {
           const rowToken = placementToken(row.placement.id);
           if (!childConflict.has(rowToken)) {
+            conflictBackjumps += 1;
             uncover(pivot);
             lastConflict = childConflict;
             return null;
@@ -772,7 +775,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
       if (stoppedBy || violatedNogoods) break;
     }
     uncover(pivot);
-    if (fixedConflictExplanations && !stoppedBy) {
+    if (conflictExplanationsEnabled && !stoppedBy) {
       lastConflict = explainPivotFailure(pivot, branchResiduals);
     }
     if (!stoppedBy) deadEnds += 1;
@@ -819,6 +822,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
     nogood_saturated: nogoodSaturated,
     symmetry_nogoods_enabled: symmetryNogoodsEnabled,
     symmetry_nogood_clauses: symmetryNogoodClauses,
+    conflict_backjumping_enabled: options.conflictBackjumping === true,
+    conflict_backjumps: conflictBackjumps,
     initial_nogood_clauses: initialNogoodClauses,
     nogood_clauses: nogoods.length,
     nogood_prunes: nogoodPrunes,

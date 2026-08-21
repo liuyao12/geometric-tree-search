@@ -385,6 +385,82 @@ const extendedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
 });
 assert.equal(extendedCubeCorona.success, true, "a fixed first cube corona must extend to radius two");
 assert.equal(extendedCubeCorona.time_budget_clock, "cpu");
+const backjumpedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
+  layers: 2,
+  nodeLimit: 1000,
+  timeLimitMs: 1000,
+  conflictBackjumping: true
+});
+assert.equal(backjumpedCubeCorona.success, true);
+assert.equal(backjumpedCubeCorona.conflict_backjumping_enabled, true);
+for (const candidate of [
+  {
+    id: "p10-075714",
+    voxels: [[0,0,0],[0,0,1],[0,0,2],[0,1,1],[0,2,0],[1,0,0],[1,1,0],[1,2,0],[1,3,0],[2,2,0]]
+  },
+  {
+    id: "p10-324131",
+    voxels: [[0,0,1],[0,1,1],[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,3,1],[0,4,1],[1,2,0],[1,3,1]]
+  }
+]) {
+  const candidateId = candidate.id;
+  const chronological = searchPolycubeCorona(candidate.voxels, {
+    layers: 2,
+    nodeLimit: 500,
+    timeLimitMs: 5000,
+    nogoods: true,
+    conflictBackjumping: false
+  });
+  assert.equal(chronological.success, false);
+  assert.equal(chronological.stopped_by, "node_limit");
+  const backjumped = searchPolycubeCorona(candidate.voxels, {
+    layers: 2,
+    nodeLimit: 500,
+    timeLimitMs: 5000,
+    nogoods: true,
+    conflictBackjumping: true
+  });
+  assert.equal(backjumped.success, true, `${candidateId} must reach radius two with backjumping`);
+  assert.ok(backjumped.conflict_backjumps > 0);
+  assert.equal(verifyPolycubeCoronaPatch(candidate.voxels, backjumped.corona, 2).verified, true);
+}
+const radiusTwoNonTilerVoxels = [[0,0,0],[0,0,1],[0,0,2],[0,1,0],[0,1,2],[0,2,0],[0,2,1],[1,1,1],[1,2,1],[1,2,2]];
+const backjumpedNonTiler = searchPolycubeCorona(radiusTwoNonTilerVoxels, {
+  layers: 2,
+  nodeLimit: 500,
+  timeLimitMs: 5000,
+  nogoods: true,
+  conflictBackjumping: true
+});
+assert.equal(backjumpedNonTiler.certified_non_tiler, true);
+assert.equal(backjumpedNonTiler.stopped_by, null);
+for (let size = 1; size <= 5; size++) for (const candidate of enumeratePolycubes(size)) {
+  const chronological = searchPolycubeCorona(candidate.voxels, {
+    layers: 2,
+    nodeLimit: 10_000,
+    timeLimitMs: 5000,
+    nogoods: true,
+    conflictBackjumping: false
+  });
+  const backjumped = searchPolycubeCorona(candidate.voxels, {
+    layers: 2,
+    nodeLimit: 10_000,
+    timeLimitMs: 5000,
+    nogoods: true,
+    conflictBackjumping: true
+  });
+  assert.equal(chronological.stopped_by, null, `${candidate.id} chronological radius-two audit must finish`);
+  assert.equal(backjumped.stopped_by, null, `${candidate.id} backjumped radius-two audit must finish`);
+  assert.equal(backjumped.success, chronological.success, `${candidate.id} backjumping must preserve satisfiability`);
+  assert.equal(
+    backjumped.certified_non_tiler,
+    chronological.certified_non_tiler,
+    `${candidate.id} backjumping must preserve finite-obstruction results`
+  );
+  if (backjumped.success) {
+    assert.equal(verifyPolycubeCoronaPatch(candidate.voxels, backjumped.corona, 2).verified, true);
+  }
+}
 assert.equal(extendedCubeCorona.fixed_placements, 6);
 assert.equal(extendedCubeCorona.resolved_fixed_conflict, null);
 const rejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {

@@ -116,6 +116,13 @@ runs retain wall-clock limits, so pausing or an overloaded browser cannot make
 a nominally bounded UI run consume unbounded elapsed time.
 The exact-corona stage likewise accepts `--obstruction-budget-clock=cpu`, and
 the standalone complete-shell GCTS screener accepts `--budget-clock=cpu`.
+Root-level exact-corona searches use conflict-directed backjumping by default;
+`--obstruction-conflict-backjumping=false` retains chronological Algorithm X
+for A/B replay. Backjump clauses are derived from complete blocker sets and do
+not discard a geometrically feasible extension.
+`--obstruction-symmetry-nogoods=true` additionally closes every learned clause
+under the root tile's proper rotational stabilizer. It is useful for symmetric
+tiles and is a no-op when that stabilizer is trivial.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately

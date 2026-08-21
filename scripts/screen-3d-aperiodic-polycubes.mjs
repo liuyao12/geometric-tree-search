@@ -8,7 +8,10 @@ import {
   isChiralPolycube,
   voxelsFromPolycubeKey
 } from "../assets/polycube-enumerator.js";
-import { searchPolycubeCorona } from "../assets/polycube-corona-search.js";
+import {
+  searchPolycubeCorona,
+  verifyPolycubeCoronaPatch
+} from "../assets/polycube-corona-search.js";
 import { findPolycubeBoxTiling } from "../assets/polycube-box-tiler.js";
 import {
   findPolycubePeriodicTiling,
@@ -88,7 +91,10 @@ if (!["wall", "cpu"].includes(obstructionBudgetClock)) {
   throw new Error("--obstruction-budget-clock must be wall or cpu");
 }
 const obstructionNogoods = booleanArg("obstruction-nogoods", true);
+const obstructionConflictBackjumping = booleanArg("obstruction-conflict-backjumping", true);
+const obstructionSymmetryNogoods = booleanArg("obstruction-symmetry-nogoods", false);
 const obstructionNogoodLimit = Math.max(1, Math.floor(numberArg("obstruction-nogood-limit", 50_000)));
+const obstructionSeed = Math.floor(numberArg("obstruction-seed", 0));
 const nodeLimit = Math.max(1, Math.floor(numberArg("nodes", 20000)));
 const stopAfter = String(args.get("stop-after") ?? "all").toLowerCase();
 if (!["periodic", "isohedral", "all"].includes(stopAfter)) {
@@ -164,7 +170,10 @@ async function obstructionScreen(candidate) {
     timeLimitMs: obstructionTimeMs,
     timeBudgetMode: obstructionBudgetClock,
     nogoods: obstructionNogoods,
-    nogoodLimit: obstructionNogoodLimit
+    conflictBackjumping: obstructionConflictBackjumping,
+    symmetryNogoods: obstructionSymmetryNogoods,
+    nogoodLimit: obstructionNogoodLimit,
+    seed: obstructionSeed
   });
 }
 
@@ -198,6 +207,9 @@ process.stdout.write(`${JSON.stringify({
   engine_budget_clock: engineBudgetClock,
   obstruction_layer: obstructionLayer,
   obstruction_budget_clock: obstructionBudgetClock,
+  obstruction_conflict_backjumping: obstructionConflictBackjumping,
+  obstruction_symmetry_nogoods: obstructionSymmetryNogoods,
+  obstruction_seed: obstructionSeed,
   stop_after: stopAfter
 })}\n`);
 
@@ -252,6 +264,17 @@ for (let index = 0; index < candidates.length; index++) {
       classification = "periodic";
     } else {
       if (stopAfter === "all") obstruction = await obstructionScreen(candidate);
+      if (obstruction?.success) {
+        obstruction.verification = verifyPolycubeCoronaPatch(
+          candidate.voxels,
+          obstruction.corona,
+          obstructionLayer,
+          { includeReflections }
+        );
+        if (!obstruction.verification.verified) {
+          throw new Error(`Independent corona verification failed for ${candidate.id}`);
+        }
+      }
       if (obstruction?.certified_non_tiler) {
         classification = "non_tiler";
       } else if (isohedral?.success) {
@@ -322,7 +345,9 @@ for (let index = 0; index < candidates.length; index++) {
     } : null,
     obstruction: obstruction ? {
       certified: obstruction.certified_non_tiler,
+      patch_verified: obstruction.success ? !!obstruction.verification?.verified : null,
       layer: obstructionLayer,
+      seed: obstruction.seed ?? obstructionSeed,
       incomplete: !!obstruction.stopped_by,
       stopped_by: obstruction.stopped_by,
       nodes: obstruction.nodes,
@@ -332,6 +357,8 @@ for (let index = 0; index < candidates.length; index++) {
       nogood_clauses: obstruction.nogood_clauses ?? null,
       nogood_prunes: obstruction.nogood_prunes ?? null,
       nogood_average_size: obstruction.nogood_average_size ?? null,
+      conflict_backjumps: obstruction.conflict_backjumps ?? null,
+      symmetry_nogood_clauses: obstruction.symmetry_nogood_clauses ?? null,
       resolved_fixed_conflict_size: obstruction.resolved_fixed_conflict
         ?.fixed_placement_indices?.length ?? null
     } : null,
