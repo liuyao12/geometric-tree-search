@@ -1,0 +1,151 @@
+{
+  "kind": "polycube_corona_partial_next_layer_coverability_ablation",
+  "date": "2026-08-21",
+  "algorithm": {
+    "outer_solver": "generalized dancing links with exact placement nogoods",
+    "lookahead": "while constructing a radius-L corona, reject a partial patch as soon as a radius-(L+1) target cell has no congruent placement compatible with every selected tile",
+    "soundness": "this is a necessary condition only; every pruned branch has an uncovered next-ring cell and therefore cannot extend to a radius-(L+1) patch",
+    "learned_clause": "a greedy inclusion-minimal hitting set of the selected placements blocking every placement at the dead next-ring cell",
+    "activation_gate": "the incremental availability index may be delayed until the total number of fixed and selected surrounding placements reaches a configured threshold",
+    "default_enabled": false,
+    "reason_not_default": "the exact index is effective late in the tree but its maintenance cost is candidate-dependent"
+  },
+  "regression_audit": {
+    "satisfiability_preservation": "all polycubes through volume four agree with the ordinary radius-two exact search, including independently verified positive patches",
+    "known_trapped_patch": "a verified p9-42947 radius-four patch is rejected at the radius-four root with zero search nodes because its radius-five ring already contains an uncovered cell with no compatible placement",
+    "activation_gate": "placing the threshold above the fixed patch size leaves the lookahead inactive and returns the same verified radius-four patch"
+  },
+  "p10-055695_radius3_to_4": {
+    "seed": 7,
+    "configured_outer_time_ms": 30000,
+    "baseline": {
+      "nodes": 693248,
+      "milliseconds": 30043,
+      "continuation_checks": 14,
+      "immediate_obstructions": 14,
+      "next_layer_prunes": 0,
+      "final_nogood_clauses": 2136,
+      "nogood_prunes": 829069,
+      "maximum_depth": 50,
+      "stopped_by": "time_limit",
+      "source": "runs/p10-055695-partial-lookahead-ab-baseline.json",
+      "source_sha256": "12b80546baa233319002f43c33d1efe44eabf454d3ada4f984cd42b0f9bc0c86"
+    },
+    "lookahead_from_root": {
+      "minimum_placements": 0,
+      "nodes": 171008,
+      "milliseconds": 30071,
+      "continuation_checks": 0,
+      "next_layer_prunes": 2860,
+      "next_layer_nogood_clauses": 2860,
+      "final_nogood_clauses": 5691,
+      "nogood_prunes": 226654,
+      "maximum_depth": 44,
+      "stopped_by": "time_limit",
+      "source": "runs/p10-055695-partial-lookahead-ab-enabled.json",
+      "source_sha256": "7cba6ed73ba45bb5e2184ae4fb841dc542fd5e46d5610ae2e23393c8e11c162e"
+    },
+    "lookahead_from_40_placements": {
+      "minimum_placements": 40,
+      "nodes": 641024,
+      "milliseconds": 30004,
+      "continuation_checks": 0,
+      "next_layer_prunes": 28,
+      "next_layer_nogood_clauses": 28,
+      "final_nogood_clauses": 2087,
+      "nogood_prunes": 770922,
+      "maximum_depth": 44,
+      "stopped_by": "time_limit",
+      "source": "runs/p10-055695-partial-lookahead-ab-min40.json",
+      "source_sha256": "9d82c95b76c2022aaf2728900d88d9ae384f751c1e3f24d1e45c413c57029eb0"
+    },
+    "interpretation": "The 40-placement gate eliminates all fourteen doomed complete proposals while preserving 92.5% of baseline node throughput. No radius-four witness is found and the radius-three search is not exhausted."
+  },
+  "p9-42947_radius4_to_5": {
+    "seed": 3,
+    "baseline": {
+      "configured_outer_node_limit": 5000000,
+      "nodes": 5000000,
+      "milliseconds": 28100,
+      "continuation_checks": 46,
+      "immediate_obstructions": 46,
+      "next_layer_prunes": 0,
+      "final_nogood_clauses": 942,
+      "nogood_prunes": 4279810,
+      "maximum_depth": 77,
+      "stopped_by": "node_limit",
+      "source": "runs/p9-42947-partial-lookahead-ab-baseline.json",
+      "source_sha256": "b63b894ece6701be9ec11c1cd86f33817d70882a0d2e05d0dc21583898879f1b"
+    },
+    "lookahead_from_root": {
+      "configured_outer_time_ms": 30000,
+      "minimum_placements": 0,
+      "nodes": 416768,
+      "milliseconds": 30064,
+      "continuation_checks": 0,
+      "next_layer_prunes": 1376,
+      "next_layer_nogood_clauses": 1376,
+      "final_nogood_clauses": 2123,
+      "nogood_prunes": 423306,
+      "maximum_depth": 62,
+      "stopped_by": "time_limit",
+      "source": "runs/p9-42947-partial-lookahead-ab-enabled.json",
+      "source_sha256": "9a59c456ca0298afa03f1f097e162909532948fb5a0e0e7cff828ce778d51fea"
+    },
+    "lookahead_from_60_placements": {
+      "configured_outer_time_ms": 30000,
+      "minimum_placements": 60,
+      "nodes": 1969152,
+      "milliseconds": 30048,
+      "continuation_checks": 0,
+      "next_layer_prunes": 282,
+      "next_layer_nogood_clauses": 282,
+      "final_nogood_clauses": 2201,
+      "nogood_prunes": 1597730,
+      "maximum_depth": 60,
+      "stopped_by": "time_limit",
+      "source": "runs/p9-42947-partial-lookahead-ab-min60.json",
+      "source_sha256": "86eb94680e7b85f7b37bc70911f6be1b5fb827a3202d9e30427fa9dd2966590e"
+    },
+    "lookahead_from_70_placements": {
+      "configured_outer_time_ms": 30000,
+      "minimum_placements": 70,
+      "nodes": 4007936,
+      "milliseconds": 30008,
+      "continuation_checks": 14,
+      "immediate_obstructions": 14,
+      "next_layer_prunes": 22,
+      "next_layer_nogood_clauses": 22,
+      "final_nogood_clauses": 621,
+      "nogood_prunes": 3067144,
+      "maximum_depth": 70,
+      "stopped_by": "time_limit",
+      "source": "runs/p9-42947-partial-lookahead-ab-min70.json",
+      "source_sha256": "39a42f122642099a418d9a51114e7a86e7e59cf3aa90b34d92b32d8d97d711a4"
+    },
+    "lookahead_from_60_placements_long": {
+      "configured_outer_time_ms": 100000,
+      "minimum_placements": 60,
+      "nodes": 2686976,
+      "milliseconds": 100104,
+      "continuation_checks": 0,
+      "next_layer_prunes": 420,
+      "next_layer_nogood_clauses": 420,
+      "final_nogood_clauses": 2649,
+      "nogood_prunes": 2219804,
+      "maximum_depth": 66,
+      "stopped_by": "time_limit",
+      "source": "runs/p9-42947-partial-lookahead-min60-node5m.json",
+      "source_sha256": "3d665df783bf0111af534e89fdafb33bf1e1c70612edb7ff0f5e5f8098c1e806"
+    },
+    "interpretation": "The 60-placement gate suppresses every complete doomed proposal in both runs but is substantially slower than baseline and does not reach a deeper state. A 70-placement gate restores most throughput but activates too late for fourteen complete patches."
+  },
+  "result": {
+    "recommended_use": "optional late-tree pruning, with a candidate- and radius-specific activation threshold",
+    "new_radius_witness": false,
+    "outer_search_exhausted": false,
+    "certified_non_tiler": false,
+    "aperiodicity_claim": false,
+    "warning": "Eliminating sampled complete proposals is not exhaustion of the finite corona search and says nothing by itself about infinite tiling existence."
+  }
+}

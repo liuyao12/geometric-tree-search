@@ -48,6 +48,11 @@ const proposalTimeMs = Math.max(0, numberArg(
 const proposalNodeLimit = Math.max(1, Math.floor(numberArg("proposal-nodes", innerNodeLimit)));
 const symmetryNogoods = booleanArg("symmetry-nogoods", false);
 const pairLookahead = booleanArg("pair-lookahead", false);
+const partialNextLayerCoverability = booleanArg("partial-next-layer-coverability", false);
+const partialNextLayerMinPlacements = Math.max(0, Math.floor(numberArg(
+  "partial-next-layer-min-placements",
+  0
+)));
 const seeds = String(args.get("seeds") ?? "3,4,1,2")
   .split(",")
   .map(Number)
@@ -68,6 +73,8 @@ let totalImmediateObstructions = 0;
 let totalResolvedSubtreeConflicts = 0;
 let totalPairObstructions = 0;
 let totalPairObstructionChecks = 0;
+let totalNextLayerCoverabilityPrunes = 0;
+let totalNextLayerCoverabilityNogoodClauses = 0;
 let radiusWitness = null;
 let incompleteContinuation = null;
 const obstructedBoundaryStates = new Set();
@@ -218,6 +225,8 @@ process.stdout.write(`${JSON.stringify({
   fixed_witness_continuations: fixedWitnessContinuations,
   symmetry_nogoods: symmetryNogoods,
   pair_lookahead: pairLookahead,
+  partial_next_layer_coverability: partialNextLayerCoverability,
+  partial_next_layer_min_placements: partialNextLayerMinPlacements,
   budget_clock: budgetClock
 })}\n`);
 
@@ -240,6 +249,8 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
     nogoodLimit,
     initialNogoodPlacementKeys: carriedNogoods,
     returnNogoods: true,
+    nextLayerCoverability: partialNextLayerCoverability,
+    nextLayerCoverabilityMinPlacements: partialNextLayerMinPlacements,
     acceptSolution(solution) {
       const boundaryKey = polycubeCoronaBoundaryKey(candidate.voxels, solution, outerLayer);
       if (obstructedBoundaryStates.has(boundaryKey)) {
@@ -305,6 +316,8 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
   totalResolvedSubtreeConflicts += resolvedSubtreeConflicts;
   totalPairObstructionChecks += pairObstructionChecks;
   totalPairObstructions += pairObstructions;
+  totalNextLayerCoverabilityPrunes += result.next_layer_coverability_prunes;
+  totalNextLayerCoverabilityNogoodClauses += result.next_layer_coverability_nogood_clauses;
   const trial = {
     seed,
     success: result.success,
@@ -318,6 +331,8 @@ for (const seed of radiusWitness || incompleteContinuation || directProposal?.ex
     resolved_subtree_conflicts: resolvedSubtreeConflicts,
     pair_obstruction_checks: pairObstructionChecks,
     pair_obstructions: pairObstructions,
+    next_layer_coverability_prunes: result.next_layer_coverability_prunes,
+    next_layer_coverability_nogood_clauses: result.next_layer_coverability_nogood_clauses,
     obstructed_boundary_states: obstructedBoundaryStates.size,
     boundary_cache_hits: boundaryCacheHits,
     unexplained_obstructions: unexplainedObstructions,
@@ -343,6 +358,8 @@ const summary = {
   direct_proposal: directProposal,
   fixed_witness_continuations: fixedWitnessContinuations,
   pair_lookahead: pairLookahead,
+  partial_next_layer_coverability: partialNextLayerCoverability,
+  partial_next_layer_min_placements: partialNextLayerMinPlacements,
   classification: radiusWitness
     ? "inner_radius_witness"
     : directProposal?.exhausted
@@ -359,6 +376,8 @@ const summary = {
   total_resolved_subtree_conflicts: totalResolvedSubtreeConflicts,
   total_pair_obstruction_checks: totalPairObstructionChecks,
   total_pair_obstructions: totalPairObstructions,
+  total_next_layer_coverability_prunes: totalNextLayerCoverabilityPrunes,
+  total_next_layer_coverability_nogood_clauses: totalNextLayerCoverabilityNogoodClauses,
   obstructed_boundary_states: obstructedBoundaryStates.size,
   boundary_cache_hits: boundaryCacheHits,
   carried_nogood_clauses: carriedNogoods.length,

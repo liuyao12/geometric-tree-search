@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v138";
+} from "./engine.js?v=20260821-polycube10-v139";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1464,6 +1464,14 @@ function updateCandidateResearchPanel() {
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_cegar_radius3_states_checked) {
         candidateResearchDetail.textContent += ` A separate pseudo-Boolean CEGAR portfolio proposes ${candidate.screening.corona_cegar_radius3_states_checked} clause-distinct radius-three patches, down to ${candidate.screening.corona_cegar_minimum_radius3_placements} surrounding copies; exact continuation rejects every one at radius four in ${candidate.screening.corona_cegar_continuation_nodes} aggregate nodes and retains ${candidate.screening.corona_cegar_symmetry_closed_clauses} sound symmetry-closed obstruction clauses. Two eager one-step-coverability solves time out, so the lighter proposal model with lazy exact cuts is currently the better supplier. The radius-three state space remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
+        const partial = candidate.screening;
+        const throughput = (100 * partial.corona_partial_coverability_nodes
+          / partial.corona_partial_coverability_milliseconds
+          / (partial.corona_partial_coverability_baseline_nodes
+            / partial.corona_partial_coverability_baseline_milliseconds)).toFixed(1);
+        candidateResearchDetail.textContent += ` An optional exact partial-patch rule now waits until ${partial.corona_partial_coverability_min_placements} surrounding copies, then rejects a branch as soon as any next-ring cell has no compatible placement. In the matched run it replaced ${partial.corona_partial_coverability_baseline_continuation_checks} doomed complete-patch continuation checks with ${partial.corona_partial_coverability_prunes} earlier prunes and performed ${partial.corona_partial_coverability_nodes.toLocaleString()} outer nodes (${throughput}% of baseline throughput).${candidate.id === "p9-42947" ? ` A longer run still reached only depth ${partial.corona_partial_coverability_long_maximum_depth}, so the maintenance cost does not yet buy a deeper state for this candidate.` : " This is an effective late-tree filter for this candidate."} The finite outer search remains unexhausted.`;
       }
     }
   } else if (knownAperiodic) {

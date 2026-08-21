@@ -551,6 +551,36 @@ for (let size = 1; size <= 5; size++) for (const candidate of enumeratePolycubes
   if (backjumped.success) {
     assert.equal(verifyPolycubeCoronaPatch(candidate.voxels, backjumped.corona, 2).verified, true);
   }
+  if (size <= 4) {
+    const nextLayerLookahead = searchPolycubeCorona(candidate.voxels, {
+      layers: 2,
+      nodeLimit: 10_000,
+      timeLimitMs: 5000,
+      nogoods: true,
+      nextLayerCoverability: true
+    });
+    assert.equal(
+      nextLayerLookahead.stopped_by,
+      null,
+      `${candidate.id} next-layer coverability audit must finish`
+    );
+    assert.equal(
+      nextLayerLookahead.success,
+      chronological.success,
+      `${candidate.id} next-layer coverability must preserve satisfiability`
+    );
+    assert.equal(
+      nextLayerLookahead.certified_non_tiler,
+      chronological.certified_non_tiler,
+      `${candidate.id} next-layer coverability must preserve finite-obstruction results`
+    );
+    if (nextLayerLookahead.success) {
+      assert.equal(
+        verifyPolycubeCoronaPatch(candidate.voxels, nextLayerLookahead.corona, 2).verified,
+        true
+      );
+    }
+  }
 }
 assert.equal(extendedCubeCorona.fixed_placements, 6);
 assert.equal(extendedCubeCorona.resolved_fixed_conflict, null);
@@ -641,6 +671,35 @@ const trappedRadiusFour = searchPolycubeCorona(unresolvedP9.voxels, {
 assert.equal(trappedRadiusFour.exhausted, true);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.candidate_rows_blocked, 72);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.fixed_placement_indices.length, 2);
+const trappedRadiusFourWithPartialLookahead = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 4,
+  fixedPlacements: unresolvedRadiusFour.corona,
+  nodeLimit: 100_000,
+  timeLimitMs: 1000,
+  nogoods: true,
+  nextLayerCoverability: true
+});
+assert.equal(trappedRadiusFourWithPartialLookahead.exhausted, true);
+assert.equal(trappedRadiusFourWithPartialLookahead.nodes, 0);
+assert.equal(trappedRadiusFourWithPartialLookahead.next_layer_coverability_enabled, true);
+assert.equal(trappedRadiusFourWithPartialLookahead.next_layer_coverability_prunes, 1);
+assert.ok(trappedRadiusFourWithPartialLookahead.next_layer_target_cells > 0);
+assert.ok(trappedRadiusFourWithPartialLookahead.fixed_obstruction_nogood.fixed_placement_indices.length > 0);
+const gatedTrappedRadiusFour = searchPolycubeCorona(unresolvedP9.voxels, {
+  layers: 4,
+  fixedPlacements: unresolvedRadiusFour.corona,
+  nodeLimit: 100_000,
+  timeLimitMs: 1000,
+  nogoods: true,
+  nextLayerCoverability: true,
+  nextLayerCoverabilityMinPlacements: unresolvedRadiusFour.corona.length + 1
+});
+assert.equal(gatedTrappedRadiusFour.success, true);
+assert.equal(gatedTrappedRadiusFour.next_layer_coverability_prunes, 0);
+assert.equal(
+  gatedTrappedRadiusFour.next_layer_coverability_min_placements,
+  unresolvedRadiusFour.corona.length + 1
+);
 const trappedIncompatiblePairs = polycubeCoronaIncompatibleTargetPairs(
   unresolvedP9.voxels,
   unresolvedRadiusFour.corona,

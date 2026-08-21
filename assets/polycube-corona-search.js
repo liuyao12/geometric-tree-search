@@ -548,6 +548,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
     && fixedPlacements.length === 0
     && forbiddenPlacementKeys.size === 0
     && forbiddenOrientationKeys.size === 0;
+  const nextLayerCoverabilityEnabled = options.nextLayerCoverability === true;
+  const nextLayerCoverabilityMinPlacements = Number.isFinite(Number(
+    options.nextLayerCoverabilityMinPlacements
+  ))
+    ? Math.max(0, Math.floor(Number(options.nextLayerCoverabilityMinPlacements)))
+    : 0;
   const blockedSet = new Set(rootSet);
   const fixedOwnerByCell = new Map();
   for (const [placementIndex, placement] of fixedPlacements.entries()) {
@@ -726,6 +732,113 @@ export function searchPolycubeCorona(voxels, options = {}) {
   let conflictBackjumps = 0;
   const placementIdByKey = new Map(orderedPlacements.map(placement => [placement.key, placement.id]));
 
+  // Exact necessary-condition lookahead.  A partial radius-L patch can only
+  // extend to radius L+1 if every cell in the next ring still has at least one
+  // congruent placement compatible with the already selected rows.  Maintain
+  // those availability counts incrementally so doomed outer branches are cut
+  // before a complete corona is proposed.
+  const allTargetKeySet = new Set(allTargetKeys);
+  const nextLayerTargetKeys = nextLayerCoverabilityEnabled
+    ? buildTarget(rootSet, layers + 1).filter(key => !allTargetKeySet.has(key))
+    : [];
+  const nextLayerTargetSet = new Set(nextLayerTargetKeys);
+  const fixedPlacementKeys = new Set(fixedPlacements.map(placement => placement.key));
+  const selectedLookaheadKeys = new Set(fixedPlacementKeys);
+  const lookaheadChoicesByTarget = new Map(nextLayerTargetKeys.map(key => [key, []]));
+  const lookaheadChoicesByCell = new Map();
+  const nextLayerAvailableCounts = new Map(nextLayerTargetKeys.map(key => [key, 0]));
+  const deadNextLayerTargets = new Set();
+  const lookaheadChoices = [];
+  if (nextLayerCoverabilityEnabled) {
+    for (const placement of enumeratePolycubeCoronaPlacements(root, layers + 1, {
+      includeReflections
+    })) {
+      if (forbiddenPlacementKeys.has(placement.key)
+        || forbiddenOrientationKeys.has(placement.orientation_key)) continue;
+      const cellKeys = placement.cells.map(keyOf);
+      const targetCoverage = cellKeys.filter(key => nextLayerTargetSet.has(key));
+      if (!targetCoverage.length) continue;
+      const fixedSelected = fixedPlacementKeys.has(placement.key);
+      const permanentlyBlocked = !fixedSelected
+        && cellKeys.some(key => fixedOwnerByCell.has(key));
+      const choice = {
+        key: placement.key,
+        cellKeys,
+        targetCoverage,
+        fixedSelected,
+        permanentlyBlocked,
+        dynamicBlockers: 0
+      };
+      lookaheadChoices.push(choice);
+      for (const key of targetCoverage) lookaheadChoicesByTarget.get(key).push(choice);
+      for (const key of cellKeys) {
+        if (!lookaheadChoicesByCell.has(key)) lookaheadChoicesByCell.set(key, []);
+        lookaheadChoicesByCell.get(key).push(choice);
+      }
+      if (fixedSelected || !permanentlyBlocked) {
+        for (const key of targetCoverage) {
+          nextLayerAvailableCounts.set(key, nextLayerAvailableCounts.get(key) + 1);
+        }
+      }
+    }
+  }
+  const lookaheadChoiceAvailable = choice => choice.fixedSelected
+    || selectedLookaheadKeys.has(choice.key)
+    || (!choice.permanentlyBlocked && choice.dynamicBlockers === 0);
+  const updateLookaheadForPlacementNow = (placement, adding) => {
+    if (!placement.lookaheadAffectedChoices) {
+      const affected = new Set();
+      for (const key of placement.cellKeys) {
+        for (const choice of lookaheadChoicesByCell.get(key) ?? []) affected.add(choice);
+      }
+      placement.lookaheadAffectedChoices = [...affected];
+    }
+    const priorAvailability = placement.lookaheadAffectedChoices.map(choice =>
+      lookaheadChoiceAvailable(choice)
+    );
+    if (adding) selectedLookaheadKeys.add(placement.key);
+    else selectedLookaheadKeys.delete(placement.key);
+    for (let choiceIndex = 0; choiceIndex < placement.lookaheadAffectedChoices.length; choiceIndex += 1) {
+      const choice = placement.lookaheadAffectedChoices[choiceIndex];
+      choice.dynamicBlockers += adding ? 1 : -1;
+      if (choice.dynamicBlockers < 0) {
+        throw new Error("Next-layer coverability blocker count became negative");
+      }
+      const wasAvailable = priorAvailability[choiceIndex];
+      const isAvailable = lookaheadChoiceAvailable(choice);
+      if (wasAvailable === isAvailable) continue;
+      const delta = isAvailable ? 1 : -1;
+      for (const key of choice.targetCoverage) {
+        const previous = nextLayerAvailableCounts.get(key);
+        const current = previous + delta;
+        nextLayerAvailableCounts.set(key, current);
+        if (previous === 0 && current > 0) deadNextLayerTargets.delete(key);
+        else if (previous > 0 && current === 0) deadNextLayerTargets.add(key);
+      }
+    }
+  };
+  for (const [key, count] of nextLayerAvailableCounts) {
+    if (count === 0) deadNextLayerTargets.add(key);
+  }
+  let nextLayerLookaheadActive = nextLayerCoverabilityEnabled
+    && fixedPlacements.length >= nextLayerCoverabilityMinPlacements;
+  const activateNextLayerLookahead = () => {
+    if (nextLayerLookaheadActive || !nextLayerCoverabilityEnabled) return;
+    nextLayerLookaheadActive = true;
+    for (const placement of chosen.slice(fixedPlacements.length)) {
+      updateLookaheadForPlacementNow(placement, true);
+    }
+  };
+  const deactivateNextLayerLookahead = () => {
+    if (!nextLayerLookaheadActive || !nextLayerCoverabilityEnabled) return;
+    for (const placement of chosen.slice(fixedPlacements.length).reverse()) {
+      updateLookaheadForPlacementNow(placement, false);
+    }
+    nextLayerLookaheadActive = false;
+  };
+  let nextLayerPrunes = 0;
+  let nextLayerNogoodClauses = 0;
+
   const fixedToken = index => `f:${index}`;
   const placementToken = id => `p:${id}`;
   const fixedConditionedConflict = ids => new Set([
@@ -793,6 +906,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const addSelectedPlacement = placement => {
     selectedPlacementIds.add(placement.id);
     for (const key of placement.cellKeys) selectedOwnerByCell.set(key, placement.id);
+    if (nextLayerLookaheadActive) updateLookaheadForPlacementNow(placement, true);
+    else if (chosen.length >= nextLayerCoverabilityMinPlacements) activateNextLayerLookahead();
     for (const nogood of nogoodsByPlacement.get(placement.id) ?? []) {
       nogood.selected += 1;
       if (nogood.selected === nogood.ids.length) violatedNogoods.add(nogood);
@@ -802,6 +917,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
     for (const nogood of nogoodsByPlacement.get(placement.id) ?? []) {
       if (nogood.selected === nogood.ids.length) violatedNogoods.delete(nogood);
       nogood.selected -= 1;
+    }
+    if (nextLayerLookaheadActive
+      && chosen.length - 1 < nextLayerCoverabilityMinPlacements) {
+      deactivateNextLayerLookahead();
+    } else if (nextLayerLookaheadActive) {
+      updateLookaheadForPlacementNow(placement, false);
     }
     for (const key of placement.cellKeys) selectedOwnerByCell.delete(key);
     selectedPlacementIds.delete(placement.id);
@@ -912,6 +1033,38 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
   }
 
+  const nextLayerDeadTargetConflict = targetKey => {
+    const blockerSets = [];
+    for (const choice of lookaheadChoicesByTarget.get(targetKey) ?? []) {
+      if (lookaheadChoiceAvailable(choice)) return null;
+      const blockers = new Set();
+      if (!fixedPlacementKeys.has(choice.key)) {
+        for (const key of choice.cellKeys) {
+          const fixedOwner = fixedOwnerByCell.get(key);
+          if (fixedOwner !== undefined) blockers.add(fixedToken(fixedOwner));
+          const selectedOwner = selectedOwnerByCell.get(key);
+          if (selectedOwner !== undefined) blockers.add(placementToken(selectedOwner));
+        }
+      }
+      if (!blockers.size) return null;
+      blockerSets.push(blockers);
+    }
+    return greedyHittingSet(blockerSets);
+  };
+  const pruneDeadNextLayerTarget = () => {
+    if (!nextLayerLookaheadActive) return false;
+    const targetKey = deadNextLayerTargets.values().next().value;
+    if (!targetKey) return false;
+    nextLayerPrunes += 1;
+    const conflict = nextLayerDeadTargetConflict(targetKey);
+    lastConflict = conflictExplanationsEnabled ? conflict : null;
+    if (conflict && [...conflict].every(token => token.startsWith("p:"))) {
+      const ids = [...conflict].map(token => Number(token.slice(2)));
+      if (learnNogood(ids)) nextLayerNogoodClauses += 1;
+    }
+    return true;
+  };
+
   const overBudget = () => {
     if (nodes >= nodeLimit) { stoppedBy = "node_limit"; return true; }
     if ((nodes === 0 || (nodes & 1023) === 0)
@@ -959,6 +1112,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
       }
       return null;
     }
+    if (pruneDeadNextLayerTarget()) return null;
     if (header.right === header) {
       const solution = chosen.slice();
       if (!acceptSolution) return solution;
@@ -1086,6 +1240,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
     nogood_saturated: nogoodSaturated,
     symmetry_nogoods_enabled: symmetryNogoodsEnabled,
     symmetry_nogood_clauses: symmetryNogoodClauses,
+    next_layer_coverability_enabled: nextLayerCoverabilityEnabled,
+    next_layer_coverability_min_placements: nextLayerCoverabilityMinPlacements,
+    next_layer_target_cells: nextLayerTargetKeys.length,
+    next_layer_lookahead_placements: lookaheadChoices.length,
+    next_layer_coverability_prunes: nextLayerPrunes,
+    next_layer_coverability_nogood_clauses: nextLayerNogoodClauses,
     conflict_backjumping_enabled: options.conflictBackjumping === true,
     conflict_backjumps: conflictBackjumps,
     initial_nogood_clauses: initialNogoodClauses,

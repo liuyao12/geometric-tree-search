@@ -429,6 +429,10 @@ const archivedP10055695Z3Cegar = JSON.parse(await readFile(
   new URL("../data/polycube-p10-055695-z3-cegar-radius4-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
+  new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1510,6 +1514,27 @@ assert.equal(archivedP10055695Z3Cegar.eager_one_step_coverability_ablation.max_4
 assert.equal(archivedP10055695Z3Cegar.eager_one_step_coverability_ablation.max_43_staged.status, "timeout");
 assert.equal(archivedP10055695Z3Cegar.radius_3_space_exhausted, false);
 assert.equal(archivedP10055695Z3Cegar.certified_non_tiler, false);
+assert.equal(archivedPartialNextLayerLookahead.algorithm.default_enabled, false);
+assert.equal(
+  archivedPartialNextLayerLookahead["p10-055695_radius3_to_4"].baseline.continuation_checks,
+  14
+);
+assert.equal(
+  archivedPartialNextLayerLookahead["p10-055695_radius3_to_4"]
+    .lookahead_from_40_placements.continuation_checks,
+  0
+);
+assert.equal(
+  archivedPartialNextLayerLookahead["p9-42947_radius4_to_5"].baseline.continuation_checks,
+  46
+);
+assert.equal(
+  archivedPartialNextLayerLookahead["p9-42947_radius4_to_5"]
+    .lookahead_from_60_placements.next_layer_prunes,
+  282
+);
+assert.equal(archivedPartialNextLayerLookahead.result.outer_search_exhausted, false);
+assert.equal(archivedPartialNextLayerLookahead.result.certified_non_tiler, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,
@@ -1520,6 +1545,15 @@ assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_minimum_r
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_continuation_nodes, 62);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_max41_timeout_runs, 1);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_radius3_exhausted, false);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_min_placements, 40);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_prunes, 28);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_min_placements, 60);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_partial_coverability_prunes, 282);
+assert.match(
+  growthAppSource,
+  /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,
+  "the catalogue must explain the exact partial next-layer filter without implying exhaustion"
+);
 assert.deepEqual(
   archivedVolume10GctsFunnelThrough9.final_free_class_candidates.map(candidate => candidate.id).sort(),
   ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304"]

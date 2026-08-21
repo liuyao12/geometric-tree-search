@@ -606,6 +606,22 @@ clauses. This favors cheap proposals plus lazy exact cuts for this candidate.
 The radius-three space is still unexhausted, so the tile remains unresolved. See
 `data/polycube-p10-055695-z3-cegar-radius4-2026-08-21.json`.
 
+Continuation-guided GCTS now has an optional exact partial-patch filter. While
+building a radius-L corona it maintains, for every radius-(L+1) ring cell, the
+number of congruent placements still compatible with the selected tiles. A
+zero count is a sound branch contradiction; a hitting set of the placements
+that block every choice becomes an ordinary exact nogood. The index can be
+activated only after a configured number of surrounding copies, because its
+incremental maintenance is much more useful near complete patches than near
+the root. On `p10-055695`, activation at 40 copies eliminates all fourteen
+doomed complete proposals in the matched seed-7 run, makes 28 earlier prunes,
+and preserves 92.6% of baseline node throughput. On `p9-42947`, activation at
+60 copies likewise eliminates all 46 complete continuation calls but preserves
+only 36.8% of baseline throughput; a 100-second run reaches depth 66 without a
+radius-five witness. The filter therefore remains opt-in and thresholded. It
+improves proposal rejection but exhausts neither finite outer search. See
+`data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal
