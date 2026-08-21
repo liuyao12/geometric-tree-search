@@ -238,6 +238,15 @@ of outer search covers less of the tree than the twelve-second baseline and
 finds no witness. The phase is therefore available as an explicit option but
 is not enabled by default.
 
+The adaptive proposal profile uses a 250 ms pilot. It retains the 129 ms
+radius-four escape and, when radius five remains incomplete, falls back while
+preserving 98.2% of equal-budget node coverage. This is a bounded compromise,
+not a radius-five improvement. Coherent symmetry closure of whole nogood
+clauses was also exact but ineffective: at one million outer nodes it added
+1,820 root-stabilizer images without changing depth or continuation checks and
+with essentially unchanged time and pruning. The option remains available for
+controlled comparisons but is disabled by default.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their

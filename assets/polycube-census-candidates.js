@@ -90,7 +90,10 @@ const records = [
       corona_deep_proposal_radius4_nodes: 4786,
       corona_deep_proposal_radius4_milliseconds: 139,
       corona_deep_proposal_radius4_verified: true,
-      corona_deep_proposal_radius5_improved_equal_budget: false
+      corona_deep_proposal_radius5_improved_equal_budget: false,
+      corona_adaptive_proposal_milliseconds: 250,
+      corona_adaptive_proposal_radius5_coverage_ratio: 0.9822946182556321,
+      corona_symmetry_nogood_closure_improved: false
     },
     shell_screening: {
       robust_completed_shell: 4,

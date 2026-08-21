@@ -11,6 +11,7 @@ import {
 } from "../assets/polycube-enumerator.js";
 import {
   enumeratePolycubeCoronaPlacements,
+  polycubePlacementClauseOrbitKeys,
   polycubePlacementOrbitKeys,
   polycubeCoronaBoundaryKey,
   polycubeReciprocalPlacement,
@@ -83,6 +84,17 @@ assert.deepEqual([...activeReciprocalEdges].sort(), [
   ["25->36", 3], ["29->29", 3], ["3->44", 3], ["43->0", 3], ["43->17", 3],
   ["43->54", 3], ["43->58", 9], ["43->63", 3], ["44->3", 3], ["53->42", 3]
 ].sort());
+const firstActivePlacement = unresolvedFirstCoronaCatalog.find(placement =>
+  activeContactTypes.has(unresolvedContactTypeId.get(
+    polycubeRootContactKey(unresolvedP9.voxels, placement)
+  ))
+);
+const firstActivePlacementOrbit = polycubePlacementOrbitKeys(unresolvedP9.voxels, firstActivePlacement);
+const firstActiveClauseOrbit = polycubePlacementClauseOrbitKeys(
+  unresolvedP9.voxels,
+  [firstActivePlacement.key]
+);
+assert.deepEqual(firstActiveClauseOrbit.map(clause => clause[0]), firstActivePlacementOrbit);
 assert.equal(activeReciprocalPlacementOrbits.size, 12);
 assert.equal([...activeReciprocalPlacementOrbits.values()].filter(type => activeContactTypes.has(type)).length, 3);
 assert.deepEqual([...new Set(activeReciprocalPlacementOrbits.values())].sort((left, right) => left - right), [
@@ -270,6 +282,18 @@ const rejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
 assert.equal(rejectedCubeCorona.exhausted, true, "rejecting the cube's unique corona must exhaust the search");
 assert.equal(rejectedCubeCorona.solutions_rejected, 1);
 assert.equal(rejectedCubeCorona.nogood_clauses, 1);
+const symmetryRejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
+  layers: 1,
+  nodeLimit: 1000,
+  timeLimitMs: 1000,
+  nogoods: true,
+  symmetryNogoods: true,
+  acceptSolution: () => ({ accept: false, nogood_placement_indices: [0] })
+});
+assert.equal(symmetryRejectedCubeCorona.exhausted, true);
+assert.equal(symmetryRejectedCubeCorona.symmetry_nogoods_enabled, true);
+assert.equal(symmetryRejectedCubeCorona.nogood_clauses, 6);
+assert.equal(symmetryRejectedCubeCorona.symmetry_nogood_clauses, 5);
 assert.throws(
   () => searchPolycubeCorona(lTricube, {
     layers: 1,

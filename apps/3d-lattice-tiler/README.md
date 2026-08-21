@@ -615,6 +615,16 @@ than twelve seconds of outer search alone and found no radius-five witness.
 The proposal phase therefore remains opt-in rather than silently consuming the
 default search budget.
 
+An adaptive profile caps that pilot at 250 ms. It still catches the radius-four
+witness in 129 ms; on radius five it falls back after 270 ms and preserves
+98.2% of the equal-total-time baseline's node coverage. This bounds the cost
+but still does not improve the radius-five conclusion. A second exact
+ablation closes every learned placement clause coherently under the root
+stabilizer. At one million nodes it adds 1,820 symmetry clauses yet produces
+essentially the same runtime, prunes, depth, and continuation checks. Symmetry
+closure is therefore exposed only as an experimental switch and remains off
+by default.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

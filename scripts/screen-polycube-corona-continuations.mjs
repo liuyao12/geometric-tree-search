@@ -17,6 +17,10 @@ const numberArg = (name, fallback) => {
   const value = Number(args.get(name));
   return Number.isFinite(value) ? value : fallback;
 };
+const booleanArg = (name, fallback) => {
+  if (!args.has(name)) return fallback;
+  return !["0", "false", "no"].includes(String(args.get(name)).toLowerCase());
+};
 
 const id = args.get("id") ?? "p9-42947";
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === id);
@@ -24,11 +28,17 @@ if (!candidate) throw new Error(`Unknown polycube catalogue candidate: ${id}`);
 const outerLayer = Math.max(1, Math.floor(numberArg("outer-layer", 4)));
 const innerLayer = Math.max(outerLayer + 1, Math.floor(numberArg("inner-layer", outerLayer + 1)));
 const timePerSeedMs = Math.max(1, numberArg("time-ms", 30_000));
+const outerNodeLimit = Math.max(1, Math.floor(numberArg("outer-nodes", Number.MAX_SAFE_INTEGER)));
 const innerTimeMs = Math.max(1, numberArg("inner-time-ms", 250));
 const innerNodeLimit = Math.max(1, Math.floor(numberArg("inner-nodes", 100_000)));
 const nogoodLimit = Math.max(1, Math.floor(numberArg("nogood-limit", 500_000)));
-const proposalTimeMs = Math.max(0, numberArg("proposal-time-ms", 0));
+const adaptiveProposal = booleanArg("adaptive-proposal", false);
+const proposalTimeMs = Math.max(0, numberArg(
+  "proposal-time-ms",
+  adaptiveProposal ? 250 : 0
+));
 const proposalNodeLimit = Math.max(1, Math.floor(numberArg("proposal-nodes", innerNodeLimit)));
+const symmetryNogoods = booleanArg("symmetry-nogoods", false);
 const seeds = String(args.get("seeds") ?? "3,4,1,2")
   .split(",")
   .map(Number)
@@ -54,6 +64,7 @@ if (proposalTimeMs > 0) {
     nodeLimit: proposalNodeLimit,
     timeLimitMs: proposalTimeMs,
     nogoods: true,
+    symmetryNogoods,
     nogoodLimit,
     returnNogoods: true
   });
@@ -67,6 +78,7 @@ if (proposalTimeMs > 0) {
     placements: proposal.corona?.length ?? null,
     learned_clauses: carriedNogoods.length,
     nogood_prunes: proposal.nogood_prunes,
+    symmetry_nogood_clauses: proposal.symmetry_nogood_clauses,
     maximum_depth: proposal.maximum_depth
   };
   if (proposal.success) {
@@ -89,12 +101,15 @@ process.stdout.write(`${JSON.stringify({
   inner_layer: innerLayer,
   seeds,
   time_per_seed_ms: timePerSeedMs,
+  outer_node_limit: outerNodeLimit,
   inner_time_ms: innerTimeMs,
   inner_node_limit: innerNodeLimit,
   nogood_limit: nogoodLimit,
   proposal_time_ms: proposalTimeMs,
   proposal_node_limit: proposalNodeLimit,
-  direct_proposal: directProposal
+  adaptive_proposal: adaptiveProposal,
+  direct_proposal: directProposal,
+  symmetry_nogoods: symmetryNogoods
 })}\n`);
 
 for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
@@ -106,9 +121,10 @@ for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
   const result = searchPolycubeCorona(candidate.voxels, {
     layers: outerLayer,
     seed,
-    nodeLimit: Infinity,
+    nodeLimit: outerNodeLimit,
     timeLimitMs: timePerSeedMs,
     nogoods: true,
+    symmetryNogoods,
     nogoodLimit,
     initialNogoodPlacementKeys: carriedNogoods,
     returnNogoods: true,
@@ -126,6 +142,7 @@ for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
         nodeLimit: innerNodeLimit,
         timeLimitMs: innerTimeMs,
         nogoods: true,
+        symmetryNogoods,
         nogoodLimit
       });
       if (continuation.success) {
@@ -178,6 +195,7 @@ for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
     initial_nogood_clauses: result.initial_nogood_clauses,
     final_nogood_clauses: result.nogood_clauses,
     nogood_prunes: result.nogood_prunes,
+    symmetry_nogood_clauses: result.symmetry_nogood_clauses,
     nogood_average_size: result.nogood_average_size,
     nogood_max_size: result.nogood_max_size,
     nogood_saturated: result.nogood_saturated,

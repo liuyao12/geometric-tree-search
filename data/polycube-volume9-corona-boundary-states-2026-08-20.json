@@ -128,7 +128,39 @@
         "outer_imported_clauses": 1078
       },
       "conclusion": "The deep proposal solves the held-out radius-four ordering failure but does not improve the equal-budget radius-five screen, so it remains optional rather than becoming the default policy."
+    },
+    "adaptive_250ms_profile": {
+      "policy": "try the deeper radius for at most 250 ms; jump on success, otherwise fall back with sound clauses",
+      "radius3_to_radius4": {
+        "success": true,
+        "verified": true,
+        "nodes": 4786,
+        "milliseconds": 129
+      },
+      "radius4_to_radius5_equal_wall_budget": {
+        "proposal_milliseconds": 270,
+        "proposal_nodes": 6144,
+        "proposal_clauses": 339,
+        "outer_milliseconds": 11753,
+        "outer_nodes": 1414144,
+        "total_nodes": 1420288,
+        "total_nogood_prunes": 1196309,
+        "baseline_nodes": 1445888,
+        "baseline_nogood_prunes": 1215666,
+        "node_coverage_ratio": 0.9822946182556321,
+        "success": false
+      },
+      "conclusion": "The adaptive cap retains the radius-four escape while bounding lost radius-five coverage to 1.8 percent; it remains an explicit profile because it still does not improve radius-five search."
     }
+  },
+  "symmetry_nogood_ablation": {
+    "model": "coherently transform whole placement clauses under the proper root stabilizer",
+    "outer_layer": 4,
+    "inner_layer": 5,
+    "node_limit": 1000000,
+    "plain": { "milliseconds": 12756, "clauses": 860, "prunes": 881905, "continuation_checks": 46 },
+    "symmetry_closed": { "milliseconds": 12675, "clauses": 2730, "symmetry_clauses": 1820, "prunes": 881364, "continuation_checks": 46 },
+    "conclusion": "Symmetry closure is exact but redundant on this search path, so it is available for controlled experiments and disabled by default."
   },
   "algorithm_change": "The continuation portfolio now canonicalizes completed outer-corona exterior occupancy under the root stabilizer and memoizes obstructed boundary states across solutions and seeds. Exact placement clauses are still learned whenever an obstruction explanation is available.",
   "conclusion": "Whole-corona boundary states are much more discriminating than the six individual contact types: 1922 of 2522 distinct sampled radius-one states are exact radius-two obstructions. At deeper levels, on-demand clauses redirect radius-two search toward survivors, while radius-three search still remains trapped in a large dead basin despite a known radius-four witness. The surviving states and sampled censuses leave the tiling classification unresolved.",

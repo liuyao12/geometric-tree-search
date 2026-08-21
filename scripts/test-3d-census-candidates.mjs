@@ -1388,6 +1388,15 @@ assert.equal(
   false
 );
 assert.equal(
+  archivedPolycubeCoronaBoundaryStates.deep_proposal_ablation.adaptive_250ms_profile.radius3_to_radius4.verified,
+  true
+);
+assert.ok(
+  archivedPolycubeCoronaBoundaryStates.deep_proposal_ablation.adaptive_250ms_profile.radius4_to_radius5_equal_wall_budget.node_coverage_ratio
+  > 0.98
+);
+assert.equal(archivedPolycubeCoronaBoundaryStates.symmetry_nogood_ablation.symmetry_closed.symmetry_clauses, 1820);
+assert.equal(
   survivors[0].census_candidate.screening.corona_boundary_state_report,
   "data/polycube-volume9-corona-boundary-states-2026-08-20.json"
 );
@@ -1399,6 +1408,9 @@ assert.equal(survivors[0].census_candidate.screening.corona_boundary_radius3_str
 assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius4_nodes, 4786);
 assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius4_verified, true);
 assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius5_improved_equal_budget, false);
+assert.equal(survivors[0].census_candidate.screening.corona_adaptive_proposal_milliseconds, 250);
+assert.ok(survivors[0].census_candidate.screening.corona_adaptive_proposal_radius5_coverage_ratio > 0.98);
+assert.equal(survivors[0].census_candidate.screening.corona_symmetry_nogood_closure_improved, false);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);

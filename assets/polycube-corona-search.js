@@ -22,6 +22,28 @@ export function polycubePlacementOrbitKeys(voxels, placement, options = {}) {
   return [...keys].sort();
 }
 
+export function polycubePlacementClauseOrbitKeys(voxels, placementKeys, options = {}) {
+  if (!Array.isArray(placementKeys)) return [];
+  const placements = placementKeys.map(key => String(key)
+    .split(";")
+    .filter(Boolean)
+    .map(cellOf));
+  if (placements.some(cells => cells.length !== voxels.length)) return [];
+  const clauses = new Map();
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    const transformed = placements.map(cells => cells.map(cell => [0, 1, 2].map(axis =>
+      symmetry.matrix[axis][0] * cell[0]
+      + symmetry.matrix[axis][1] * cell[1]
+      + symmetry.matrix[axis][2] * cell[2]
+      + symmetry.translation[axis]
+    ).join(",")).sort().join(";")).sort();
+    clauses.set(transformed.join("|"), transformed);
+  }
+  return [...clauses.values()].sort((left, right) =>
+    left.join("|").localeCompare(right.join("|"))
+  );
+}
+
 export function polycubeRootContactKey(voxels, placement, options = {}) {
   if (!Array.isArray(placement?.cells)) return "";
   const placementSet = new Set(placement.cells.map(keyOf));
@@ -253,6 +275,10 @@ export function searchPolycubeCorona(voxels, options = {}) {
   });
   const fixedConflictExplanations = fixedPlacements.length > 0
     && options.explainFixedObstruction !== false;
+  const symmetryNogoodsEnabled = options.symmetryNogoods === true
+    && fixedPlacements.length === 0
+    && forbiddenPlacementKeys.size === 0
+    && forbiddenOrientationKeys.size === 0;
   const blockedSet = new Set(rootSet);
   const fixedOwnerByCell = new Map();
   for (const [placementIndex, placement] of fixedPlacements.entries()) {
@@ -426,6 +452,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
   let initialNogoodClauses = 0;
   let lastConflict = null;
   let stoppedBy = null;
+  let symmetryNogoodClauses = 0;
+  const placementIdByKey = new Map(orderedPlacements.map(placement => [placement.key, placement.id]));
 
   const fixedToken = index => `f:${index}`;
   const placementToken = id => `p:${id}`;
@@ -507,7 +535,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     for (const key of placement.cellKeys) selectedOwnerByCell.delete(key);
     selectedPlacementIds.delete(placement.id);
   };
-  const learnNogood = ids => {
+  const learnNogoodExact = ids => {
     if (!nogoodsEnabled || nogoods.length >= nogoodLimit) {
       if (nogoodsEnabled && nogoods.length >= nogoodLimit) nogoodSaturated = true;
       return null;
@@ -542,6 +570,21 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
     if (nogood.selected === nogood.ids.length) violatedNogoods += 1;
     return nogood;
+  };
+  const learnNogood = ids => {
+    const learned = learnNogoodExact(ids);
+    if (!symmetryNogoodsEnabled) return learned;
+    const keys = [...new Set(ids)].map(id => orderedPlacements[id]?.key);
+    if (keys.some(key => !key)) return learned;
+    let firstLearned = learned;
+    for (const clauseKeys of polycubePlacementClauseOrbitKeys(root, keys, { includeReflections })) {
+      const transformedIds = clauseKeys.map(key => placementIdByKey.get(key));
+      if (transformedIds.some(id => !Number.isInteger(id))) continue;
+      const transformed = learnNogoodExact(transformedIds);
+      if (transformed && transformed !== learned) symmetryNogoodClauses += 1;
+      if (!firstLearned && transformed) firstLearned = transformed;
+    }
+    return firstLearned;
   };
   const learnDeadColumnNogood = pivot => {
     if (!nogoodsEnabled) return null;
@@ -590,7 +633,6 @@ export function searchPolycubeCorona(voxels, options = {}) {
     return learnNogood(selected);
   };
   if (nogoodsEnabled) {
-    const placementIdByKey = new Map(orderedPlacements.map(placement => [placement.key, placement.id]));
     for (const clauseKeys of options.initialNogoodPlacementKeys ?? []) {
       if (!Array.isArray(clauseKeys)) continue;
       const ids = clauseKeys.map(key => placementIdByKey.get(key));
@@ -767,6 +809,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
     nogoods_enabled: nogoodsEnabled,
     nogood_limit: nogoodLimit,
     nogood_saturated: nogoodSaturated,
+    symmetry_nogoods_enabled: symmetryNogoodsEnabled,
+    symmetry_nogood_clauses: symmetryNogoodClauses,
     initial_nogood_clauses: initialNogoodClauses,
     nogood_clauses: nogoods.length,
     nogood_prunes: nogoodPrunes,
