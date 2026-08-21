@@ -115,6 +115,20 @@ function makeOrientationCircle(color, opacity) {
 
 const orientationBoundary = makeOrientationCircle(0x17201e, 0.52);
 orientationBoundary.renderOrder = 3;
+const orientationBoundaryView = new THREE.Vector3();
+
+function updateOrientationBoundary() {
+  orientationBoundaryView.copy(orientationCamera.position).sub(orientationControls.target);
+  const cameraDistance = orientationBoundaryView.length();
+  const planeOffset = 1 / cameraDistance;
+  const silhouetteRadius = Math.sqrt(1 - planeOffset * planeOffset);
+  orientationBoundary.position.copy(orientationControls.target).addScaledVector(
+    orientationBoundaryView,
+    1 / (cameraDistance * cameraDistance)
+  );
+  orientationBoundary.quaternion.copy(orientationCamera.quaternion);
+  orientationBoundary.scale.setScalar(silhouetteRadius);
+}
 
 const orientationGraphGroup = new THREE.Group();
 orientationScene.add(orientationGraphGroup);
@@ -1065,7 +1079,7 @@ function animate(time) {
     camera.lookAt(controls.target);
   }
   orientationControls.update();
-  orientationBoundary.quaternion.copy(orientationCamera.quaternion);
+  updateOrientationBoundary();
   if (transition) {
     const raw = Math.min(1, (time - transition.start) / transition.duration);
     const eased = raw * raw * (3 - 2 * raw);
