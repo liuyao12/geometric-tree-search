@@ -80,6 +80,16 @@ both enumeration and placement semantics. Every output row includes the
 canonical voxel key, coordinates, chirality, budgets, and proof-strength
 classification so a survivor can be replayed exactly.
 
+For a large census, `--stop-after=periodic` writes the cheap exact periodic
+classification without launching an isohedral or corona search on every miss.
+Feed only its unresolved rows into the next stage with `--input-report`;
+`--stop-after=isohedral` similarly stops before the corona search. This makes
+the certificate-cost funnel resumable and prevents expensive lanes from being
+run on shapes already eliminated by a smaller exact quotient. When the HNF
+torus pass is intended to be exhaustive at the current copy bound,
+`--box-screen=false --general-periodic=false` avoids redundant constructive
+fallbacks and produces a clean input pool for the next motif-size shard.
+
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately
 only a search lead: it reports a reusable finite corona and cannot eliminate a

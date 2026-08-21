@@ -47,6 +47,7 @@ const periodicMinTiles = Math.max(1, Math.min(periodicMaxTiles,
   Math.floor(numberArg("periodic-min-tiles", 1))));
 const boxMaxTiles = Math.max(1, Math.floor(numberArg("box-max-tiles", 4)));
 const boxTimeMs = Math.max(1, numberArg("box-time-ms", 100));
+const boxScreen = booleanArg("box-screen", true);
 const periodicTimeMs = Math.max(1, numberArg("periodic-time-ms", 1000));
 const generalPeriodic = booleanArg("general-periodic", true);
 const isohedralTarget = Math.max(2, Math.floor(numberArg("isohedral-target", 12)));
@@ -56,6 +57,10 @@ const obstructionTimeMs = Math.max(1, numberArg("obstruction-time-ms", 1000));
 const obstructionNogoods = booleanArg("obstruction-nogoods", true);
 const obstructionNogoodLimit = Math.max(1, Math.floor(numberArg("obstruction-nogood-limit", 50_000)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("nodes", 20000)));
+const stopAfter = String(args.get("stop-after") ?? "all").toLowerCase();
+if (!["periodic", "isohedral", "all"].includes(stopAfter)) {
+  throw new Error("--stop-after must be periodic, isohedral, or all");
+}
 
 const baseConfig = (candidate, suffix) => ({
   mode_key: "custom",
@@ -137,7 +142,7 @@ const candidates = requestedVoxels
   : (reportCandidates ?? enumeratePolycubes(size, { includeReflections }))
       .slice(startIndex, startIndex + maxCandidates);
 const counts = { periodic: 0, non_tiler: 0, isohedral_lead: 0, unresolved: 0 };
-const witnessCounts = { torus: 0, box: 0, isohedral_easy: 0, general_periodic: 0 };
+const witnessCounts = { torus: 0, box: 0, isohedral_easy: 0, general_periodic: 0, isohedral_lane: 0 };
 const startedAt = performance.now();
 
 process.stdout.write(`${JSON.stringify({
@@ -147,7 +152,9 @@ process.stdout.write(`${JSON.stringify({
   equivalence: includeReflections ? "rotations_and_reflections" : "proper_rotations",
   periodic_max_tiles: periodicMaxTiles,
   periodic_min_tiles: periodicMinTiles,
-  obstruction_layer: obstructionLayer
+  box_screen: boxScreen,
+  obstruction_layer: obstructionLayer,
+  stop_after: stopAfter
 })}\n`);
 
 for (let index = 0; index < candidates.length; index++) {
@@ -160,13 +167,13 @@ for (let index = 0; index < candidates.length; index++) {
     nodeLimit,
     timeLimitMs: periodicTimeMs
   });
-  const box = torus.certified ? null : findPolycubeBoxTiling(candidate.voxels, {
+  const box = torus.certified || !boxScreen ? null : findPolycubeBoxTiling(candidate.voxels, {
     includeReflections,
     maxCopies: boxMaxTiles,
     nodeLimit,
     timeLimitMs: boxTimeMs
   });
-  const easy = torus.certified ? torus : box;
+  const easy = torus.certified ? torus : box ?? torus;
   const periodic = easy.certified || !generalPeriodic ? null : await periodicScreen(candidate);
   let classification = "unresolved";
   let isohedral = null;
@@ -174,19 +181,24 @@ for (let index = 0; index < candidates.length; index++) {
 
   if (easy.certified || (periodic?.tiling_evidence?.certified && periodic?.can_tile === true)) {
     classification = "periodic";
-  } else {
+  } else if (stopAfter !== "periodic") {
     isohedral = await isohedralLeadScreen(candidate);
-    obstruction = await obstructionScreen(candidate);
-    if (obstruction?.certified_non_tiler) {
-      classification = "non_tiler";
-    } else if (isohedral?.success) {
-      classification = "isohedral_lead";
+    if (isohedral?.tiling_evidence?.certified && isohedral?.can_tile === true) {
+      classification = "periodic";
+    } else {
+      if (stopAfter === "all") obstruction = await obstructionScreen(candidate);
+      if (obstruction?.certified_non_tiler) {
+        classification = "non_tiler";
+      } else if (isohedral?.success) {
+        classification = "isohedral_lead";
+      }
     }
   }
   if (torus.certified) witnessCounts.torus += 1;
   if (box?.certified) witnessCounts.box += 1;
   if (easy.isohedral?.certified) witnessCounts.isohedral_easy += 1;
   if (periodic?.tiling_evidence?.certified && periodic?.can_tile === true) witnessCounts.general_periodic += 1;
+  if (isohedral?.tiling_evidence?.certified && isohedral?.can_tile === true) witnessCounts.isohedral_lane += 1;
   counts[classification] += 1;
 
   process.stdout.write(`${JSON.stringify({
@@ -234,7 +246,10 @@ for (let index = 0; index < candidates.length; index++) {
     isohedral: isohedral ? {
       patch_found: !!isohedral.success,
       tiles: isohedral.tile_count,
-      incomplete: isohedral.search_incomplete
+      incomplete: isohedral.search_incomplete,
+      certified: !!isohedral.tiling_evidence?.certified,
+      certificate: isohedral.tiling_evidence?.kind ?? null,
+      motif_tiles: isohedral.tiling_evidence?.patch_size ?? null
     } : null,
     obstruction: obstruction ? {
       certified: obstruction.certified_non_tiler,
@@ -261,6 +276,7 @@ process.stdout.write(`${JSON.stringify({
   candidates: candidates.length,
   counts,
   witness_counts: witnessCounts,
+  stop_after: stopAfter,
   milliseconds: Math.round(performance.now() - startedAt),
   warning: "Unresolved means only that these bounded screens found neither a proof of periodic tiling nor a finite non-tiling obstruction; it is not evidence of aperiodicity."
 })}\n`);
