@@ -568,6 +568,8 @@ tried before other exact-cover rows, but are not fixed or assumed; every legal
 row remains in the search, so a failed or stale hint cannot become a tiling or
 non-tiling claim. The report records how many requested placements matched the
 larger corona instance.
+The continuation portfolio accepts `--budget-clock=cpu`, so per-seed and
+per-continuation budgets remain comparable when exact screens run concurrently.
 
 Continuation conflicts can now be resolved through nontrivial exact-cover
 subtrees, not only extracted from an immediately dead target cell. Each child

@@ -21,6 +21,10 @@ const booleanArg = (name, fallback) => {
   if (!args.has(name)) return fallback;
   return !["0", "false", "no"].includes(String(args.get(name)).toLowerCase());
 };
+const budgetClock = String(args.get("budget-clock") ?? "wall").toLowerCase();
+if (!["wall", "cpu"].includes(budgetClock)) {
+  throw new Error("--budget-clock must be wall or cpu");
+}
 
 const id = args.get("id") ?? "p9-42947";
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === id);
@@ -63,6 +67,7 @@ if (proposalTimeMs > 0) {
     seed: seeds[0] ?? 0,
     nodeLimit: proposalNodeLimit,
     timeLimitMs: proposalTimeMs,
+    timeBudgetMode: budgetClock,
     nogoods: true,
     symmetryNogoods,
     nogoodLimit,
@@ -109,7 +114,8 @@ process.stdout.write(`${JSON.stringify({
   proposal_node_limit: proposalNodeLimit,
   adaptive_proposal: adaptiveProposal,
   direct_proposal: directProposal,
-  symmetry_nogoods: symmetryNogoods
+  symmetry_nogoods: symmetryNogoods,
+  budget_clock: budgetClock
 })}\n`);
 
 for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
@@ -123,6 +129,7 @@ for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
     seed,
     nodeLimit: outerNodeLimit,
     timeLimitMs: timePerSeedMs,
+    timeBudgetMode: budgetClock,
     nogoods: true,
     symmetryNogoods,
     nogoodLimit,
@@ -141,6 +148,7 @@ for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
         fixedPlacements: solution,
         nodeLimit: innerNodeLimit,
         timeLimitMs: innerTimeMs,
+        timeBudgetMode: budgetClock,
         nogoods: true,
         symmetryNogoods,
         nogoodLimit
