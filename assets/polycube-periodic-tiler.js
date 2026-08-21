@@ -86,6 +86,21 @@ const hnfCandidates = volume => {
   return sorted;
 };
 
+export const polycubePeriodicHnfBasisCount = volume => {
+  const determinant = Math.max(0, Math.floor(Number(volume) || 0));
+  if (!determinant) return 0;
+  let count = 0;
+  for (let a = 1; a <= determinant; a++) {
+    if (determinant % a) continue;
+    for (let d = 1; d <= determinant / a; d++) {
+      if (determinant % (a * d)) continue;
+      const f = determinant / (a * d);
+      count += a * a * d;
+    }
+  }
+  return count;
+};
+
 const reduceHnf = ([inputX, inputY, inputZ], hnf) => {
   let x = inputX;
   let y = inputY;

@@ -44,7 +44,12 @@ const obstructionInitialNogoodReports = String(args.get("obstruction-initial-nog
   .split(",")
   .map(value => value.trim())
   .filter(Boolean);
+const obstructionPreferredCoronaReports = String(args.get("obstruction-preferred-corona-report") ?? "")
+  .split(",")
+  .map(value => value.trim())
+  .filter(Boolean);
 const obstructionNogoodsByIdentity = new Map();
+const obstructionPreferredPlacementsByIdentity = new Map();
 for (const report of obstructionInitialNogoodReports) {
   for (const line of readFileSync(report, "utf8").split(/\r?\n/).filter(Boolean)) {
     const record = JSON.parse(line);
@@ -60,6 +65,23 @@ for (const report of obstructionInitialNogoodReports) {
     }
   }
 }
+for (const report of obstructionPreferredCoronaReports) {
+  for (const line of readFileSync(report, "utf8").split(/\r?\n/).filter(Boolean)) {
+    const record = JSON.parse(line);
+    if (record.type !== "candidate" || !Array.isArray(record.obstruction?.corona)) continue;
+    const placementKeys = record.obstruction.corona
+      .filter(placement => Array.isArray(placement?.cells))
+      .map(placement => placement.cells.map(cell => cell.join(",")).sort().join(";"));
+    for (const identity of [record.id ? `id:${record.id}` : null, record.key ? `key:${record.key}` : null].filter(Boolean)) {
+      if (!obstructionPreferredPlacementsByIdentity.has(identity)) {
+        obstructionPreferredPlacementsByIdentity.set(identity, new Set());
+      }
+      for (const placementKey of placementKeys) {
+        obstructionPreferredPlacementsByIdentity.get(identity).add(placementKey);
+      }
+    }
+  }
+}
 const obstructionInitialNogoodsFor = candidate => {
   const clauses = new Map();
   for (const identity of [`id:${candidate.id}`, `key:${candidate.key}`]) {
@@ -68,6 +90,15 @@ const obstructionInitialNogoodsFor = candidate => {
     }
   }
   return [...clauses.values()];
+};
+const obstructionPreferredPlacementsFor = candidate => {
+  const placements = new Set();
+  for (const identity of [`id:${candidate.id}`, `key:${candidate.key}`]) {
+    for (const placementKey of obstructionPreferredPlacementsByIdentity.get(identity) ?? []) {
+      placements.add(placementKey);
+    }
+  }
+  return [...placements];
 };
 const inputClassification = args.get("input-classification") ?? "unresolved";
 const inputStoppedBy = args.get("input-stopped-by");
@@ -216,6 +247,7 @@ async function isohedralLeadScreen(candidate) {
 
 async function obstructionScreen(candidate) {
   const initialNogoodPlacementKeys = obstructionInitialNogoodsFor(candidate);
+  const preferredPlacementKeys = obstructionPreferredPlacementsFor(candidate);
   return searchPolycubeCorona(candidate.voxels, {
     includeReflections,
     layers: obstructionLayer,
@@ -226,6 +258,7 @@ async function obstructionScreen(candidate) {
     conflictBackjumping: obstructionConflictBackjumping,
     symmetryNogoods: obstructionSymmetryNogoods,
     initialNogoodPlacementKeys,
+    preferredPlacementKeys,
     returnNogoods: obstructionReturnNogoods,
     nogoodLimit: obstructionNogoodLimit,
     seed: obstructionSeed
@@ -273,6 +306,7 @@ process.stdout.write(`${JSON.stringify({
   obstruction_conflict_backjumping: obstructionConflictBackjumping,
   obstruction_symmetry_nogoods: obstructionSymmetryNogoods,
   obstruction_initial_nogood_reports: obstructionInitialNogoodReports,
+  obstruction_preferred_corona_reports: obstructionPreferredCoronaReports,
   obstruction_return_nogoods: obstructionReturnNogoods,
   obstruction_return_corona: obstructionReturnCorona,
   obstruction_seed: obstructionSeed,
@@ -430,6 +464,8 @@ for (let index = 0; index < candidates.length; index++) {
       nogood_prunes: obstruction.nogood_prunes ?? null,
       nogood_average_size: obstruction.nogood_average_size ?? null,
       initial_nogood_clauses: obstruction.initial_nogood_clauses ?? null,
+      preferred_placements_requested: obstruction.preferred_placements_requested ?? null,
+      preferred_placements_matched: obstruction.preferred_placements_matched ?? null,
       nogood_clause_keys: obstructionReturnNogoods ? obstruction.nogood_clause_keys : null,
       corona: obstructionReturnCorona && obstruction.success ? obstruction.corona : null,
       corona_verification: obstructionReturnCorona && obstruction.success

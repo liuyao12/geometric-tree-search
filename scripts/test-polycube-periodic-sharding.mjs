@@ -1,17 +1,21 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import { canonicalPolycubeKey } from "../assets/polycube-enumerator.js";
+import { polycubePeriodicHnfBasisCount } from "../assets/polycube-periodic-tiler.js";
 
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
 assert.ok(candidate, "the periodic-sharding smoke test needs the unresolved p9 control");
 const candidateKey = canonicalPolycubeKey(candidate.voxels);
+assert.equal(polycubePeriodicHnfBasisCount(27), 1210);
+assert.equal(polycubePeriodicHnfBasisCount(130), 39711);
 
 const pipeline = new URL("./screen-3d-aperiodic-polycubes.mjs", import.meta.url);
 const auditor = new URL("./audit-polycube-periodic-shards.mjs", import.meta.url);
+const shardRunner = new URL("./run-polycube-periodic-shards.mjs", import.meta.url);
 const common = [
   pipeline.pathname,
   `--key=${candidateKey}`,
@@ -111,9 +115,44 @@ const rejectedGap = spawnSync(process.execPath, [
 ], { encoding: "utf8" });
 assert.notEqual(rejectedGap.status, 0);
 assert.match(rejectedGap.stderr, /coverage ends at 9, expected 10/);
+
+const orchestratedDirectory = join(temporaryDirectory, "orchestrated");
+const orchestrated = spawnSync(process.execPath, [
+  shardRunner.pathname,
+  `--key=${candidateKey}`,
+  "--id=p9-42947-test",
+  "--copies=3",
+  "--hnf-start-index=1200",
+  "--hnf-end-index=1205",
+  "--shards=2",
+  "--concurrency=2",
+  "--periodic-time-ms=10000",
+  `--output-dir=${orchestratedDirectory}`
+], { encoding: "utf8" });
+assert.equal(orchestrated.status, 0, orchestrated.stderr);
+const orchestratedRecords = orchestrated.stdout.trim().split(/\r?\n/).map(line => JSON.parse(line));
+assert.equal(orchestratedRecords.at(-1).type, "shard_run_complete");
+assert.equal(orchestratedRecords.at(-1).totals.hnf_bases_exhausted, 5);
+const orchestratedAudit = JSON.parse(readFileSync(join(orchestratedDirectory, "audit.json"), "utf8"));
+assert.deepEqual(orchestratedAudit.expected_range, [1200, 1205]);
+assert.equal(orchestratedAudit.totals.shards, 2);
+const resumed = spawnSync(process.execPath, [
+  shardRunner.pathname,
+  `--key=${candidateKey}`,
+  "--id=p9-42947-test",
+  "--copies=3",
+  "--hnf-start-index=1200",
+  "--hnf-end-index=1205",
+  "--shards=2",
+  "--concurrency=2",
+  `--output-dir=${orchestratedDirectory}`
+], { encoding: "utf8" });
+assert.equal(resumed.status, 0, resumed.stderr);
+assert.equal(JSON.parse(resumed.stdout.split(/\r?\n/)[0]).reused, 2);
 rmSync(temporaryDirectory, { recursive: true, force: true });
 
 console.log("Polycube periodic-sharding regression passed", {
   start: result.hnf_range_start,
-  end: result.hnf_range_end_exclusive
+  end: result.hnf_range_end_exclusive,
+  copy13Bases: polycubePeriodicHnfBasisCount(130)
 });

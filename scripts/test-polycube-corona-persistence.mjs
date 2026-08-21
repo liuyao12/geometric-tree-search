@@ -55,6 +55,7 @@ try {
   const replayOutput = run([
     `--input-report=${report}`,
     `--obstruction-initial-nogood-report=${report}`,
+    `--obstruction-preferred-corona-report=${report}`,
     "--input-classification=unresolved",
     "--obstruction-seed=1",
     ...common
@@ -62,6 +63,8 @@ try {
   const replay = candidateRecord(replayOutput);
   assert.equal(replay.obstruction.patch_verified, true);
   assert.ok(replay.obstruction.initial_nogood_clauses > 0);
+  assert.ok(replay.obstruction.preferred_placements_requested > 0);
+  assert.ok(replay.obstruction.preferred_placements_matched > 0);
   assert.ok(replay.obstruction.nogood_clause_keys.length >= replay.obstruction.initial_nogood_clauses);
   console.log("Polycube corona persistence regression passed", {
     exported: training.obstruction.nogood_clause_keys.length,

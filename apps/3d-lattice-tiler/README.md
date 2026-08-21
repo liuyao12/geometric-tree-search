@@ -543,7 +543,11 @@ exclusion, not evidence that any representative tiles or is aperiodic. The
 receipt is `data/polycube-volume10-periodic-copy12-2026-08-21.json`; reusable
 interval and audit entry points are
 `scripts/screen-3d-aperiodic-polycubes.mjs --periodic-hnf-start-index=... --periodic-hnf-end-index=...`
-and `scripts/audit-polycube-periodic-shards.mjs`.
+and `scripts/audit-polycube-periodic-shards.mjs`. The higher-level
+`scripts/run-polycube-periodic-shards.mjs` computes the complete HNF count,
+divides a requested range into deterministic half-open intervals, runs them
+with bounded concurrency, reuses only shards that pass the single-interval
+audit, and writes a final gap-free `audit.json` receipt.
 
 The same five candidates expose a useful proposal-ordering failure in GCTS.
 Their original seven-order radius-three portfolio left all five unresolved. A
@@ -557,6 +561,13 @@ two new survivors likewise time out after 600 CPU-seconds, at 1,912,832 and
 screen, while preserving the distinction between a finite witness, a finite
 obstruction, and a timeout. See
 `data/polycube-volume10-gcts-seed7-radius4-2026-08-21.json`.
+
+Verified smaller coronas can also be supplied as an optional proposal-ordering
+hint with `--obstruction-preferred-corona-report=...`. Matching placements are
+tried before other exact-cover rows, but are not fixed or assumed; every legal
+row remains in the search, so a failed or stale hint cannot become a tiling or
+non-tiling claim. The report records how many requested placements matched the
+larger corona instance.
 
 Continuation conflicts can now be resolved through nontrivial exact-cover
 subtrees, not only extracted from an immediately dead target cell. Each child
