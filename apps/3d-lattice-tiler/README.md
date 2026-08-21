@@ -592,6 +592,17 @@ displayed radius-three patches are verified finite survivors but known dead
 ends, while the tiles themselves remain unresolved. See
 `data/polycube-volume10-gcts-continuation-radius4-2026-08-21.json`.
 
+For `p10-055695`, a pseudo-Boolean CEGAR supplier now broadens that continuation
+sample without conflating it with the earlier portfolio. Twenty clause-distinct
+radius-three proposals, using 43–47 surrounding copies, are all exactly rejected
+at radius four in 25 aggregate continuation nodes. Each exposes an immediate
+dead target and a two-placement conflict; symmetry closure retains 40 sound
+clauses. In contrast, two eager one-step-coverability proposal solves time out
+without returning a state, including a staged 43-copy solve seeded with all 40
+clauses. This favors cheap proposals plus lazy exact cuts for this candidate.
+The radius-three space is still unexhausted, so the tile remains unresolved. See
+`data/polycube-p10-055695-z3-cegar-radius4-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal

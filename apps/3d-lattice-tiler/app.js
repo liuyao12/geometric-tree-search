@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v135";
+} from "./engine.js?v=20260821-polycube10-v136";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1461,6 +1461,9 @@ function updateCandidateResearchPanel() {
         : `Sole shell-screen survivor · ${candidate.lattice_points} lattice points · complete shells 1–${shell?.robust_completed_shell ?? 4} were found in every seed; shell ${shell?.deepest_completed_shell ?? 5} was reached in ${shell?.shell_five_hits ?? 2}/${shell?.shell_five_trials ?? 3} trials with ${shell?.shell_five_witness_tiles ?? 464} tiles. No exact translational or tile-transitive quotient certificate has been found within the recorded limits.${limits}${proofEvidence}`;
       if (candidate.kind === "polycube_census" && candidate.screening.corona_cegar_pair_final_constraints) {
         candidateResearchDetail.textContent += ` Pairwise next-ring coverability promotes ${candidate.screening.corona_cegar_pair_filtered_states_checked} further proposals to ${candidate.screening.corona_cegar_pair_filtered_continuation_nodes}-node aggregate continuation proofs and learns ${candidate.screening.corona_cegar_pair_final_constraints} symmetry-closed cell-pair obligations; ${candidate.screening.corona_cegar_pair_final_timeout_runs} solves with the full pair set remain timeout-inconclusive. A factored witness-CNF encoding uses ${candidate.screening.corona_cegar_pair_witness_cnf_choice_variables.toLocaleString()} local choices and exposes ${candidate.screening.corona_cegar_pair_witness_cnf_states_checked} additional 63-copy proposals plus ${candidate.screening.corona_cegar_pair_witness_cnf_max62_states_checked} at 62 copies; exact GCTS rejects them in ${candidate.screening.corona_cegar_pair_witness_cnf_continuation_nodes + candidate.screening.corona_cegar_pair_witness_cnf_max62_continuation_nodes} aggregate nodes. A three-element root-stabilizer lex leader is exact but does not improve the unresolved 61-copy run. Lazy GCTS independently replays ${candidate.screening.corona_cegar_pair_lazy_subset_replays_verified}/${candidate.screening.corona_cegar_pair_lazy_states_checked} pair clauses, with a minimum ${candidate.screening.corona_cegar_pair_lazy_minimum_clause_size}-placement explanation blocking ${candidate.screening.corona_cegar_pair_lazy_candidate_pairs_blocked.toLocaleString()} compatible next-ring placement pairs in aggregate; the equal-node outer A/B run is neutral because it encounters only simpler immediate obstructions.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_cegar_radius3_states_checked) {
+        candidateResearchDetail.textContent += ` A separate pseudo-Boolean CEGAR portfolio proposes ${candidate.screening.corona_cegar_radius3_states_checked} clause-distinct radius-three patches, down to ${candidate.screening.corona_cegar_minimum_radius3_placements} surrounding copies; exact continuation rejects every one at radius four in ${candidate.screening.corona_cegar_continuation_nodes} aggregate nodes and retains ${candidate.screening.corona_cegar_symmetry_closed_clauses} sound symmetry-closed obstruction clauses. Two eager one-step-coverability solves time out, so the lighter proposal model with lazy exact cuts is currently the better supplier. The radius-three state space remains unexhausted.`;
       }
     }
   } else if (knownAperiodic) {

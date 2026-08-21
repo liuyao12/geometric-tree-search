@@ -1,0 +1,67 @@
+{
+  "kind": "polycube_corona_z3_cegar_audit",
+  "date": "2026-08-21",
+  "candidate": "p10-055695",
+  "model": "proper cubic rotations; one fixed root; finite face-distance corona exact cover",
+  "protocol": {
+    "outer_radius": 3,
+    "inner_radius": 4,
+    "proposal_solver": "Z3 pseudo-Boolean exact cover (pb2bv-sat)",
+    "continuation_solver": "exact conflict-backjumping GCTS with the proposed radius-three patch fixed",
+    "cut": "a fixed-placement obstruction clause extracted only after exact radius-four continuation exhaustion",
+    "symmetry_closure": "each sound cut is closed under the root polycube symmetries",
+    "bounded_copy_semantics": "the copy bound restricts proposal supply only; failure or timeout does not prove non-tiling"
+  },
+  "lazy_obstruction_cegar": {
+    "maximum_outer_placements": 47,
+    "random_seeds": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91],
+    "z3_trials": 20,
+    "z3_sat_outer_states": 20,
+    "z3_unknown_trials": 0,
+    "outer_placement_distribution": {
+      "43": 1,
+      "44": 2,
+      "45": 2,
+      "46": 4,
+      "47": 11
+    },
+    "minimum_outer_placements_witnessed": 43,
+    "exact_dead_outer_states": 20,
+    "verified_radius_4_witnesses": 0,
+    "immediate_dead_target_obstructions": 20,
+    "resolved_subtree_obstructions": 0,
+    "continuation_nodes": 25,
+    "continuation_milliseconds": 272,
+    "learned_clause_size": 2,
+    "learned_symmetry_closed_clauses": 40,
+    "z3_milliseconds": 116104,
+    "source_sha256": "6254aa2c3f116208df945853cee1dbf048922d146e5c6ba7a93267b320f4deed"
+  },
+  "eager_one_step_coverability_ablation": {
+    "next_ring_cells": 138,
+    "raw_lookahead_placements": 7394,
+    "undominated_lookahead_placements": 6868,
+    "compatibility_conflicts": 2092352,
+    "max_47": {
+      "initial_obstruction_clauses": 0,
+      "random_seed": 71,
+      "configured_z3_timeout_ms": 60000,
+      "observed_process_milliseconds": 167552,
+      "status": "timeout",
+      "source_sha256": "ec4c993977d980b01a552a4db20ecca73df6dda8a0f9e5e7a397691d2634bce5"
+    },
+    "max_43_staged": {
+      "initial_obstruction_clauses": 40,
+      "random_seed": 92,
+      "configured_z3_timeout_ms": 90000,
+      "observed_process_milliseconds": 195279,
+      "status": "timeout",
+      "source_sha256": "deef9b1f98a9d0d3b1915a3b1754ff87dc8fe0a48f7ed82fd9831773b1d35ae7"
+    },
+    "conclusion": "The eager necessary-condition encoding did not supply a proposal at either tested copy bound. The lightweight proposal model plus exact lazy obstruction learning supplied twenty states in less aggregate solver time than either single eager run."
+  },
+  "radius_3_space_exhausted": false,
+  "verified_radius_4_witness_found": false,
+  "certified_non_tiler": false,
+  "interpretation": "Twenty clause-distinct radius-three proposals, including one with 43 surrounding copies, all fail exact radius-four continuation. Every failure is already exposed by an immediate dead target and yields a two-placement obstruction, so this experiment strengthens the negative finite-corona evidence but does not yet reach the deeper resolved-subtree regime seen for p9-42947. Because the radius-three proposal space is not exhausted, the result proves neither non-tiling nor aperiodicity."
+}
