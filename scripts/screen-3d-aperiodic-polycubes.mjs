@@ -29,13 +29,19 @@ const booleanArg = (name, fallback) => {
 
 const requestedKey = args.get("key");
 const requestedVoxels = requestedKey ? voxelsFromPolycubeKey(requestedKey) : null;
-const inputReport = args.get("input-report");
+const inputReports = String(args.get("input-report") ?? "")
+  .split(",")
+  .map(value => value.trim())
+  .filter(Boolean);
 const inputClassification = args.get("input-classification") ?? "unresolved";
-const reportCandidates = inputReport
-  ? readFileSync(inputReport, "utf8").split(/\r?\n/).filter(Boolean)
+const inputStoppedBy = args.get("input-stopped-by");
+const reportCandidates = inputReports.length
+  ? inputReports.flatMap(inputReport => readFileSync(inputReport, "utf8").split(/\r?\n/).filter(Boolean)
       .map(line => JSON.parse(line))
       .filter(record => record.type === "candidate" && record.classification === inputClassification)
-      .map(({ id, key, voxels }) => ({ id, key, voxels }))
+      .filter(record => !inputStoppedBy
+        || (record.periodic_fast?.stopped_by ?? "exhausted") === inputStoppedBy)
+      .map(({ id, key, voxels }) => ({ id, key, voxels })))
   : null;
 const size = requestedVoxels?.length ?? reportCandidates?.[0]?.voxels?.length
   ?? Math.max(1, Math.floor(numberArg("size", 5)));
@@ -152,6 +158,8 @@ process.stdout.write(`${JSON.stringify({
   candidates: candidates.length,
   equivalence: includeReflections ? "rotations_and_reflections" : "proper_rotations",
   report_chirality: reportChirality,
+  input_reports: inputReports,
+  input_stopped_by: inputStoppedBy ?? null,
   periodic_max_tiles: periodicMaxTiles,
   periodic_min_tiles: periodicMinTiles,
   box_screen: boxScreen,

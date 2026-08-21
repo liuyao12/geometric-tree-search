@@ -91,6 +91,13 @@ torus pass is intended to be exhaustive at the current copy bound,
 fallbacks and produces a clean input pool for the next motif-size shard.
 `--report-chirality=false` skips mirror classification on intermediate rows;
 chirality can be computed only for the much smaller final survivor pool.
+If a periodic shard mixes completed misses with budget stops,
+`--input-stopped-by=time_limit` replays only the latter, while
+`--input-stopped-by=exhausted` advances only shapes whose current copy range was
+fully checked. This prevents a timed-out two-copy search from being silently
+skipped when the next shard starts at three copies. Comma-separate multiple
+paths in `--input-report` to consume a sharded census without first rewriting
+its receipts.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately
