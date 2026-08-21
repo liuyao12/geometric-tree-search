@@ -62,6 +62,26 @@ assert.deepEqual(volume10Through3.protocol.hnf_candidates_exhausted_per_final_su
   "3_copies": 2821,
   "cumulative_1_through_3": 4123
 });
+const volume10Through4 = JSON.parse(readFileSync(
+  new URL("../data/polycube-volume10-periodic-through4-2026-08-20.json", import.meta.url),
+  "utf8"
+));
+assert.equal(volume10Through4.final.periodic, 340497);
+assert.deepEqual(volume10Through4.final.periodic_by_motif_tiles, {
+  "1": 112531,
+  "2": 210113,
+  "3": 905,
+  "4": 16948
+});
+assert.equal(volume10Through4.final.exactly_exhausted_survivors, 6046);
+assert.equal(volume10Through4.timeout_retry.remaining_time_or_node_limits, 0);
+assert.equal(volume10Through4.certificate_audit.independently_verified, 16948);
+assert.equal(volume10Through4.final.id_coverage.gaps, 0);
+assert.equal(volume10Through4.final.id_coverage.duplicates, 0);
+assert.deepEqual(volume10Through4.protocol.hnf_candidates_exhausted_per_final_survivor, {
+  "4_copies": 4805,
+  "cumulative_1_through_4": 8928
+});
 
 assert.equal(POLYCUBE_ROTATION_COUNT, 24);
 assert.equal(POLYCUBE_ISOMETRY_COUNT, 48);

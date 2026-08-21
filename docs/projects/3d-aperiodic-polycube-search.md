@@ -179,6 +179,14 @@ smaller bases already exhausted. These are the exact inputs to the four-copy
 screen—not claims of aperiodicity. The gap-free cumulative receipt is
 `data/polycube-volume10-periodic-through3-2026-08-20.json`.
 
+The four-copy stage is much more selective: it certifies another 16,948
+periodic tiles, with every certificate independently replayed. Only five
+wall-clock stops required a sequential retry. The final 6,046 shapes exhaust
+all 4,805 four-copy HNF bases, or 8,928 bases cumulatively from motif sizes one
+through four. They now enter the exact-corona/GCTS funnel; larger periodic
+fundamental domains are still possible. The cumulative receipt is
+`data/polycube-volume10-periodic-through4-2026-08-20.json`.
+
 The continuation solver now extracts a proof-relevant reason from a trapped
 patch instead of memoizing the entire boundary. For a radius-five target cell,
 it enumerates every root-compatible tile placement through that cell and finds
