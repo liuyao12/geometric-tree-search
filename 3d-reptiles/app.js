@@ -283,6 +283,7 @@ content.add(parentOutline);
 
 const daughterTransforms = makeDaughterTransforms();
 let mutedOrientationKeys = new Set();
+const orientationColorRegistry = new Map();
 let visualEffect = visualEffectSelect.value;
 let generation = INITIAL_GENERATION;
 let subdivisionWords = [new THREE.Matrix4()];
@@ -470,8 +471,19 @@ function orientationColorFromQuaternion(quaternion) {
   return new THREE.Color().setHSL(hue, 0.84, 0.55);
 }
 
+function registeredOrientationColor(quaternion) {
+  const key = orientationKey(quaternion);
+  if (!orientationColorRegistry.has(key)) {
+    const color = mutedOrientationKeys.has(key)
+      ? new THREE.Color(0xb8bfbc)
+      : orientationColorFromQuaternion(quaternion);
+    orientationColorRegistry.set(key, color.getHex());
+  }
+  return new THREE.Color(orientationColorRegistry.get(key));
+}
+
 function orientationColor(matrix) {
-  return orientationColorFromQuaternion(canonicalQuaternion(matrix));
+  return registeredOrientationColor(canonicalQuaternion(matrix));
 }
 
 function canonicalizeQuaternion(quaternion) {
@@ -662,9 +674,7 @@ function drawOrientationBall(transforms, turnGenerations = currentTurnGeneration
     const key = orientationKey(quaternion);
     const color = visualEffect === "turn-generation"
       ? turnGenerationColor(orientationTurnGenerations.get(key))
-      : mutedOrientationKeys.has(key)
-        ? new THREE.Color(0xb8bfbc)
-        : orientationColorFromQuaternion(quaternion);
+      : registeredOrientationColor(quaternion);
     orientationPointKeys.push(key);
     orientationPointBaseColors.push(color);
     positions.push(point.x, point.y, point.z);
@@ -755,9 +765,6 @@ function displayedTileColor(matrix, turnGeneration) {
     }
     const generationColor = turnGenerationColor(turnGeneration);
     return selectedOrientationKey === key ? generationColor.offsetHSL(0, 0.08, 0.08) : generationColor;
-  }
-  if (mutedOrientationKeys.has(key)) {
-    return new THREE.Color(selectedOrientationKey === key ? 0x8f9895 : 0xb8bfbc);
   }
   if (selectedOrientationKey === null) return color;
   if (key === selectedOrientationKey) return color.offsetHSL(0, 0.1, 0.08);
