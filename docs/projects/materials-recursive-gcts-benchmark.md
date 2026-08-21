@@ -4093,6 +4093,31 @@ model digests, weights, and scores agree, while the same audit completes in a
 few minutes. This changes training cost only; online scoring was already one
 pass over six nodes and 15 edges.
 
+### Fully nested incidence-ranked rollback control
+
+The identity-preserving graph is also evaluated as a bounded rollback value,
+not as a new candidate generator. The input is the existing two-marking
+portfolio: 19 immutable retained states across ten nuclei, with at most two
+states in any nucleus. For each outer fold, the incidence model is fitted on
+the other nine nuclei and is allowed only to reorder those retained states.
+It selects an exact state in all `9 / 9` nuclei with exact supply and totals
+`28 / 30` correct colored sites.
+
+That apparent perfect supplied-nucleus selection is not causally significant
+under the rigorous null. For each of 31 within-nucleus label shuffles, ten new
+models are fitted, and every shuffled model excludes the nucleus it ranks.
+Eleven shuffles also select `9 / 9`, giving the plus-one upper-tail result
+`p = .375`. The previous pooled shuffle was therefore optimistic for this
+specific two-state decision. Candidate geometry, portfolio membership, and
+the retained-state limit are identical in every arm.
+
+The already-consumed six-action confirmation provides a boundary diagnostic:
+the exact continuation is inside the incidence-ranked top two, but the first
+state is false. The result preserves a green bounded rollback-*supply* claim
+and rejects the incidence value as an autonomous rollback trigger. A fresh
+confirmation is not opened, and autonomous commitment, stationary recurrence,
+and exponential IQC growth remain red.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement

@@ -2018,6 +2018,22 @@ than becoming the autonomous default. Exact graph-embedding caching reduces a
 full 42-fit audit from about an hour to a few minutes without changing model
 digests or scores.
 
+The same identity-preserving value is then tested in the narrower role it was
+designed for: ordering only the already-frozen two-marking rollback portfolio.
+That portfolio contains 19 states across ten nuclei and never more than two in
+one nucleus. Whole-nucleus outer models choose an exact retained state in all
+`9 / 9` supplied nuclei and total `28 / 30` correct colored sites. This passes
+the deterministic development threshold, but not the causal control.
+
+The corrected null repeats the complete model fit separately for each held-out
+nucleus after every one of 31 within-nucleus label shuffles. Eleven shuffled
+fits also reach `9 / 9`, giving the plus-one upper-tail result `p = .375`.
+Thus the earlier pooled-null advantage cannot justify autonomous rollback. On
+the consumed six-action receipt the exact state is present at incidence rank
+two, while the first-ranked state is false. The benchmark therefore keeps the
+two-state supply result green and the failure-detector, fresh-confirmation,
+stationary, and exponential gates red.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
