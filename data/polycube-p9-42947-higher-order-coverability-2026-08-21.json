@@ -1,0 +1,143 @@
+{
+  "kind": "polycube_p9_42947_higher_order_coverability_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "tiling_model": "proper cubic rotations; one fixed root; exact finite face-adjacency coronas",
+  "implementation_commit": "653520e",
+  "prior_portfolio": "data/polycube-p9-42947-staged-coverability-2026-08-21.json",
+  "systematic_distance_two_pairs": {
+    "next_ring_cells": 180,
+    "imported_pair_constraints": 189,
+    "new_distance_two_pair_constraints": 453,
+    "total_pair_constraints": 642,
+    "z3_status": "sat",
+    "z3_milliseconds": 98063,
+    "outer_placements": 67,
+    "continuation_nodes": 13,
+    "continuation_obstruction": "resolved_subtree_conflict",
+    "independent_global_tuple_audit": {
+      "incompatible_pair_count": 1,
+      "pairwise_coverable": false,
+      "note": "The distance-two bootstrap leaves one longer-range incompatible pair; the original trial's zero count was not a global pair audit.",
+      "source": "runs/p9-seed242-tuple-coverability-audit.json",
+      "source_sha256": "8b11481b63658bb2d4f8f17ae0ca7f8e21f493829255363c6a7548a3a493fe92"
+    },
+    "source": "runs/p9-radius4-to5-pair-distance2-seed242-summary.json",
+    "source_sha256": "2f2342a124f9cc56f6b3ea19c10199ac3a5ca0cc8991c4fbf33076a2b0c0d54c"
+  },
+  "triple_encoding_ablation": {
+    "initial_symmetry_closed_clauses": 252,
+    "initial_pair_constraints": 651,
+    "initial_triple_constraints": 3,
+    "triple_orbit": [
+      ["-1,0,5", "0,-1,5", "1,0,6"],
+      ["-1,5,0", "0,5,-1", "0,6,1"],
+      ["5,-1,0", "5,0,-1", "6,1,0"]
+    ],
+    "cubic_dnf": {
+      "process_timeout_trials": 2,
+      "process_timeout_milliseconds_each": 330000,
+      "z3_sat_outer_states": 0,
+      "source": "runs/p9-radius4-to5-triple-seed246-summary.json",
+      "source_sha256": "e931e113cf7b409d3c96fe779c89178aa3661e4dec5c0a640096be998b50504d"
+    },
+    "choice_cnf": {
+      "random_seed": 246,
+      "z3_status": "sat",
+      "z3_milliseconds": 76022,
+      "outer_placements": 62,
+      "continuation_nodes": 3,
+      "remaining_incompatible_pairs": 2,
+      "source": "runs/p9-radius4-to5-triple-choice-seed246-summary.json",
+      "source_sha256": "67f3645e8e92e6e9df60c92eeb0f22418cc21cb9fe6728606d042e023383327e"
+    }
+  },
+  "first_globally_pairwise_and_triplewise_coverable_state": {
+    "random_seed": 248,
+    "outer_placements": 72,
+    "z3_milliseconds": 42408,
+    "pair_constraints": 660,
+    "triple_constraints": 3,
+    "continuation_success": false,
+    "continuation_exhausted": true,
+    "continuation_nodes": 9,
+    "continuation_obstruction": "resolved_subtree_conflict",
+    "incompatible_pair_count": 0,
+    "pairwise_coverable": true,
+    "triple_max_cell_distance_exhausted": 20,
+    "first_incompatible_triple": null,
+    "triplewise_coverable": true,
+    "first_incompatible_quadruple": {
+      "target_cells": ["-2,4,0", "-3,0,-1", "-3,3,0", "-4,1,-1"],
+      "diameter": 6,
+      "choice_counts": [1, 1, 3, 11],
+      "candidate_quadruples_blocked": 33
+    },
+    "quadruplewise_coverable_through_distance_six": false,
+    "witness_source": "runs/p9-radius4-to5-triple-choice-seed247/outer-witness-0001.json",
+    "witness_source_sha256": "0d6429fe284ac8b1236579092c8a6379871ec50f14eaa35ac50ac29bc3ed17fe",
+    "cegar_source": "runs/p9-radius4-to5-triple-choice-seed247-summary.json",
+    "cegar_source_sha256": "b8af403ea0f8ca8122c94fe899a394a7adfb8d3d63cd5b7f3f4a8f8df789043e",
+    "tuple_audit_source": "runs/p9-seed248-tuple-coverability-audit.json",
+    "tuple_audit_source_sha256": "ea81b1a0c1206594e43539817aa778c0b72d0ce76dede7fa64168714523e43f5"
+  },
+  "combined_full_single_coverability_portfolio": {
+    "z3_sat_outer_states": 41,
+    "exact_dead_outer_states": 41,
+    "outer_placement_distribution": {
+      "62": 2,
+      "63": 1,
+      "64": 1,
+      "65": 1,
+      "66": 4,
+      "67": 7,
+      "68": 5,
+      "69": 7,
+      "70": 5,
+      "71": 4,
+      "72": 2,
+      "73": 2
+    },
+    "continuation_nodes": 208,
+    "maximum_single_continuation_nodes": 13,
+    "final_symmetry_closed_clauses": 264,
+    "final_pair_constraints": 666,
+    "final_triple_constraints": 3,
+    "additional_sources": [
+      {
+        "path": "runs/p9-radius4-to5-full-pair-maxblocked-seed228-summary.json",
+        "sha256": "9b4b3e581e36c915dec806ab0d2c1461b49bab063c8bdef8c3add28ab8d4087e"
+      },
+      {
+        "path": "runs/p9-radius4-to5-full-pair-all-seed236-summary.json",
+        "sha256": "26ff94690c2f52c4f70b4fda1564a20d753984ab4781a8f5f92de7247cebb167"
+      },
+      {
+        "path": "runs/p9-radius4-to5-full-pair-all-seed239-summary.json",
+        "sha256": "47af5ba2b12940c721c27453601d445882590a42684fb40fc49078b9c8acc4ff"
+      },
+      {
+        "path": "runs/p9-radius4-to5-pair-distance2-seed242-summary.json",
+        "sha256": "2f2342a124f9cc56f6b3ea19c10199ac3a5ca0cc8991c4fbf33076a2b0c0d54c"
+      },
+      {
+        "path": "runs/p9-radius4-to5-triple-lazy-seed243-summary.json",
+        "sha256": "6c3c5c28129a23ba52a282fe418791f2497addf58802409b4fa4b64cb827a123"
+      },
+      {
+        "path": "runs/p9-radius4-to5-triple-choice-seed246-summary.json",
+        "sha256": "67f3645e8e92e6e9df60c92eeb0f22418cc21cb9fe6728606d042e023383327e"
+      },
+      {
+        "path": "runs/p9-radius4-to5-triple-choice-seed247-summary.json",
+        "sha256": "b8af403ea0f8ca8122c94fe899a394a7adfb8d3d63cd5b7f3f4a8f8df789043e"
+      }
+    ]
+  },
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "The exact proposal hierarchy now reaches a radius-four state for which every next-ring cell, every cell pair, and every cell triple is jointly coverable, yet exact GCTS still rejects radius five. A diameter-six four-cell set is the first audited local inconsistency. This advances the finite obstruction order from one to four and provides a stronger GCTS benchmark, but it is not a non-tiling or aperiodicity certificate."
+}

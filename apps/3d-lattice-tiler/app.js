@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v145";
+} from "./engine.js?v=20260821-polycube10-v146";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1486,6 +1486,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_staged_coverability_report) {
         const staged = candidate.screening;
         candidateResearchDetail.textContent += ` A grouped pseudo-Boolean encoding compresses ${staged.corona_staged_coverability_logical_conflict_edges.toLocaleString()} exact outer/lookahead conflict implications into ${staged.corona_staged_coverability_grouped_conflicts.toLocaleString()} groups and ${staged.corona_staged_coverability_asserted_constraints.toLocaleString()} total asserted constraints. It supplies ${staged.corona_staged_coverability_states_checked} radius-four states with ${staged.corona_staged_coverability_minimum_placements}–${staged.corona_staged_coverability_maximum_placements} copies in which every next-ring cell is individually coverable. Radius-five GCTS rejects all ${staged.corona_staged_coverability_resolved_subtree_states} through genuine resolved-subtree conflicts in ${staged.corona_staged_coverability_continuation_nodes} aggregate nodes (maximum ${staged.corona_staged_coverability_maximum_continuation_nodes}), while lazy learning grows to ${staged.corona_staged_coverability_pair_constraints} symmetry-expanded pair obligations. No radius-five witness is found and the outer search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_higher_order_coverability_report) {
+        const higher = candidate.screening;
+        candidateResearchDetail.textContent += ` Higher-order CEGAR extends this to ${higher.corona_higher_order_states_checked} exact full-single-coverability states with ${higher.corona_higher_order_minimum_placements}–${higher.corona_higher_order_maximum_placements} copies, rejected in ${higher.corona_higher_order_continuation_nodes} aggregate radius-five nodes (maximum ${higher.corona_higher_order_maximum_continuation_nodes}). Systematic and lazy learning reaches ${higher.corona_higher_order_pair_constraints} pair and ${higher.corona_higher_order_triple_constraints} triple obligations. A ${higher.corona_higher_order_pairwise_triplewise_state_placements}-copy state independently passes every pair and every triple on the full 180-cell next ring, yet GCTS rejects it in ${higher.corona_higher_order_pairwise_triplewise_state_continuation_nodes} nodes; its first audited local inconsistency is a diameter-${higher.corona_higher_order_first_quadruple_diameter} quadruple blocking ${higher.corona_higher_order_first_quadruple_candidate_combinations} placement combinations. This raises the observed obstruction order to four, but still proves neither non-tiling nor aperiodicity.`;
       }
     }
   } else if (knownAperiodic) {

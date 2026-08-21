@@ -450,6 +450,10 @@ const archivedP9StagedCoverability = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-staged-coverability-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9HigherOrderCoverability = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-higher-order-coverability-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1625,6 +1629,15 @@ assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.maxi
 assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.final_symmetry_expanded_pair_constraints, 42);
 assert.equal(archivedP9StagedCoverability.radius_five_witness_found, false);
 assert.equal(archivedP9StagedCoverability.outer_search_exhausted, false);
+assert.equal(archivedP9HigherOrderCoverability.combined_full_single_coverability_portfolio.z3_sat_outer_states, 41);
+assert.equal(archivedP9HigherOrderCoverability.combined_full_single_coverability_portfolio.continuation_nodes, 208);
+assert.equal(archivedP9HigherOrderCoverability.combined_full_single_coverability_portfolio.maximum_single_continuation_nodes, 13);
+assert.equal(archivedP9HigherOrderCoverability.first_globally_pairwise_and_triplewise_coverable_state.pairwise_coverable, true);
+assert.equal(archivedP9HigherOrderCoverability.first_globally_pairwise_and_triplewise_coverable_state.triplewise_coverable, true);
+assert.equal(archivedP9HigherOrderCoverability.first_globally_pairwise_and_triplewise_coverable_state.first_incompatible_quadruple.diameter, 6);
+assert.equal(archivedP9HigherOrderCoverability.first_globally_pairwise_and_triplewise_coverable_state.first_incompatible_quadruple.candidate_quadruples_blocked, 33);
+assert.equal(archivedP9HigherOrderCoverability.radius_five_witness_found, false);
+assert.equal(archivedP9HigherOrderCoverability.outer_search_exhausted, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,
@@ -1651,8 +1664,15 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverab
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverability_continuation_nodes, 74);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverability_maximum_continuation_nodes, 9);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverability_pair_constraints, 42);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_higher_order_states_checked, 41);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_higher_order_continuation_nodes, 208);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_higher_order_maximum_continuation_nodes, 13);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_higher_order_pair_constraints, 666);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_higher_order_first_quadruple_diameter, 6);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
+assert.match(growthAppSource, /passes every pair and every triple/);
+assert.match(growthAppSource, /observed obstruction order to four/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

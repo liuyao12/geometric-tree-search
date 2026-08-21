@@ -671,6 +671,20 @@ No radius-five witness is found and neither the outer space nor aperiodicity is
 settled. The reproducible receipt is
 `data/polycube-p9-42947-staged-coverability-2026-08-21.json`.
 
+The next hierarchy now bootstraps all local distance-two pair obligations,
+then learns the remaining global pairs and higher-order counterexamples. The
+combined full-single-coverability portfolio contains 41 exact radius-four
+states with 62–73 copies; radius-five rejection uses 208 aggregate GCTS nodes
+and reaches 13 nodes in the deepest state. A cubic triple DNF exceeds two
+330-second process limits, while the equivalent choice-CNF returns a 62-copy
+proposal in 76.0s. Most importantly, an independently audited 72-copy state
+has no incompatible pair and no incompatible triple anywhere on the 180-cell
+next ring. It still fails exact radius-five continuation in nine nodes; the
+first audited inconsistency is instead a diameter-six quadruple whose
+1×1×3×11 choices give 33 blocked combinations. This raises the observed
+finite obstruction order to four without proving non-tiling or aperiodicity.
+See `data/polycube-p9-42947-higher-order-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal
