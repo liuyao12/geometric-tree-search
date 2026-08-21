@@ -69,9 +69,10 @@ It records every tile-count transition, including downward backtracking steps,
 instead of plotting only record highs. Geometry deltas are transferred in
 200-ms batches and UI refreshes are coalesced to at most one every 300 ms, so
 retaining the history does not force Plotly to redraw inside the solver's hot
-loop. Clicking a marker replays that historical patch, the
-left and right arrows walk the displayed lane's history, and clicking empty
-chart space restores that lane's current patch. Selecting a mode also switches
+loop. Clicking a marker on the lane selected by the strategy controls replays
+that historical patch, the left and right arrows walk that selected lane's
+history, and clicking empty chart space restores its current patch. The chart
+and its legend cannot switch lanes; selecting a mode in the controls switches
 the viewport to its latest patch without stopping the other searches.
 An exhausted isohedral search drops to zero and restores the root view. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an

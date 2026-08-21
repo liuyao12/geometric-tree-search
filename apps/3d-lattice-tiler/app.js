@@ -2939,15 +2939,6 @@ function selectedGrowthMode() {
   return GROWTH_MODES.find(mode => mode.strategy === strategy)?.id ?? "free_range";
 }
 
-function activateGrowthMode(modeId) {
-  const mode = GROWTH_MODES.find(candidate => candidate.id === modeId);
-  if (!mode) return;
-  setRadioValue(strategyRadios, mode.strategy, "free_range");
-  strategySelect.value = mode.strategy;
-  if (mode.id === "free_range") moveOrderSelect.value = "balanced";
-  updateStrategyUI();
-}
-
 function growthHistorySnapshotIndices(series) {
   return (series?.points ?? [])
     .map((point, index) => point?.historySnapshot || point?.historyDelta || point?.snapshot ? index : null)
@@ -3059,27 +3050,29 @@ function appendGrowthHistorySamples(series, samples) {
 }
 
 function updateGrowthHistoryButtons() {
-  const modeId = growthInspection.modeId ?? selectedGrowthMode();
+  const modeId = selectedGrowthMode();
   const indices = growthHistorySnapshotIndices(growthSeries.get(modeId));
-  const position = growthInspection.pointIndex == null
+  const pointIndex = growthInspection.modeId === modeId ? growthInspection.pointIndex : null;
+  const position = pointIndex == null
     ? indices.length
-    : indices.indexOf(growthInspection.pointIndex);
+    : indices.indexOf(pointIndex);
   growthHistoryBack.disabled = !indices.length || position <= 0;
-  growthHistoryForward.disabled = growthInspection.pointIndex == null;
+  growthHistoryForward.disabled = pointIndex == null;
 }
 
 function stepGrowthHistory(direction) {
-  const modeId = growthInspection.modeId ?? selectedGrowthMode();
+  const modeId = selectedGrowthMode();
   const indices = growthHistorySnapshotIndices(growthSeries.get(modeId));
   if (!indices.length) return;
-  const position = growthInspection.pointIndex == null
+  const pointIndex = growthInspection.modeId === modeId ? growthInspection.pointIndex : null;
+  const position = pointIndex == null
     ? indices.length
-    : indices.indexOf(growthInspection.pointIndex);
+    : indices.indexOf(pointIndex);
   if (direction < 0) {
     if (position <= 0) return;
     showGrowthSnapshot(modeId, indices[position - 1]);
   } else {
-    if (growthInspection.pointIndex == null) return;
+    if (pointIndex == null) return;
     const nextPosition = position + 1;
     showGrowthSnapshot(modeId, nextPosition < indices.length ? indices[nextPosition] : null);
   }
@@ -3132,17 +3125,15 @@ function scheduleGrowthUiRefresh({ showCurrent = false } = {}) {
 }
 
 function handleGrowthPlotClick(event) {
+  const modeId = selectedGrowthMode();
   const selectedPoint = event?.points?.[0];
   if (!selectedPoint || !growthPointerWasNearPoint) {
-    const modeId = growthInspection.modeId ?? selectedGrowthMode();
-    activateGrowthMode(modeId);
     showGrowthSnapshot(modeId, null);
     renderGrowthChart();
     return;
   }
-  const [modeId, pointIndex] = selectedPoint.customdata ?? [];
-  if (!modeId || !Number.isInteger(pointIndex)) return;
-  activateGrowthMode(modeId);
+  const [clickedModeId, pointIndex] = selectedPoint.customdata ?? [];
+  if (clickedModeId !== modeId || !Number.isInteger(pointIndex)) return;
   showGrowthSnapshot(modeId, pointIndex);
   renderGrowthChart();
 }
@@ -3172,7 +3163,7 @@ async function renderGrowthChart() {
     return;
   }
 
-  const activeMode = growthInspection.modeId ?? selectedGrowthMode();
+  const activeMode = selectedGrowthMode();
   const traces = GROWTH_MODES.map(mode => {
     const series = growthSeries.get(mode.id);
     const points = series?.points ?? [];
@@ -3227,7 +3218,9 @@ async function renderGrowthChart() {
       y: 1.16,
       yanchor: "top",
       bgcolor: "rgba(255,255,255,0)",
-      font: { size: 10 }
+      font: { size: 10 },
+      itemclick: false,
+      itemdoubleclick: false
     },
     xaxis: {
       visible: hasPoints,
@@ -3280,8 +3273,7 @@ async function renderGrowthChart() {
       growthPointerWasNearPoint = growthEventIsNearPoint(event);
       if (growthPointerWasNearPoint) return;
       queueMicrotask(() => {
-        const modeId = growthInspection.modeId ?? selectedGrowthMode();
-        activateGrowthMode(modeId);
+        const modeId = selectedGrowthMode();
         showGrowthSnapshot(modeId, null);
         renderGrowthChart();
       });
