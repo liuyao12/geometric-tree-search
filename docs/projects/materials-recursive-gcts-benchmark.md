@@ -4833,3 +4833,29 @@ portfolio; waves two and three diagnose value transfer because exact actions
 exist but are not selected. The target is consumed with no retry. This result
 does not authorize autonomous growth, clusters-of-clusters promotion,
 stationarity, or an exponential IQC claim.
+
+### Consumed confirmation: proposal reach versus value
+
+The first red wave is exhaustively separated into proposal and ranking
+failures. All 157 terminals in the frozen `8→8→8` tree are rolled out and
+site-scored before the already-consumed target is reconstructed. Their exact
+count is zero: widening the two-head portfolio cannot repair this tree.
+
+Six target-free reach schedules are then frozen and scored posthoc:
+
+| reach schedule | terminal counts | checks | exact terminals |
+| --- | ---: | ---: | ---: |
+| `8→8→8` | `8→40→157` | 392 | 0 |
+| `12→4→8` | `12→37→166` | 356 | 1 |
+| `12→8→8` | `12→62→216` | 604 | 1 |
+| `16→4→8` | `16→53→262` | 504 | 2 |
+| `16→8→8` | `16→92→360` | 880 | 2 |
+| `24→4→8` | `24→85→470` | 800 | 4 |
+
+The minimal `12→4→8` repair is strictly better on this nucleus: it restores
+exact supply and uses 36 fewer proposal checks. But the sole exact terminal is
+ranked 107 by fusion and 114 by the scalar head, so keeping a practical top-8
+portfolio still loses it. This rules out both “just widen the portfolio” and
+“just widen every level.” The next implementation must apply a transferable
+connection/site section earlier in the tree, before expensive complete-terminal
+fusion. The target is consumed; no confirmation or growth claim is revised.

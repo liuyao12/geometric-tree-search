@@ -163,6 +163,122 @@ def oracle_patch_fast(
     return configuration, lifts
 
 
+def _inverse_square_matrix(matrix: Sequence[Sequence[float]]) -> Tuple[Tuple[float, ...], ...]:
+    """Invert one small dense matrix with deterministic Gauss-Jordan steps."""
+    size = len(matrix)
+    if not size or any(len(row) != size for row in matrix):
+        raise ValueError("matrix must be nonempty and square")
+    work = [list(map(float, row)) + [float(index == column)
+            for column in range(size)]
+            for index, row in enumerate(matrix)]
+    for column in range(size):
+        pivot = max(range(column, size), key=lambda row: abs(work[row][column]))
+        if abs(work[pivot][column]) <= 1e-14:
+            raise ValueError("singular matrix")
+        work[column], work[pivot] = work[pivot], work[column]
+        scale = work[column][column]
+        work[column] = [value / scale for value in work[column]]
+        for row in range(size):
+            if row == column:
+                continue
+            factor = work[row][column]
+            if factor:
+                work[row] = [value - factor * pivot_value
+                             for value, pivot_value in zip(
+                                 work[row], work[column])]
+    return tuple(tuple(row[size:]) for row in work)
+
+
+def oracle_crop_fast(
+    center: Vector,
+    physical_radius: float,
+) -> Tuple[AtomicConfiguration, Dict[Lift, str]]:
+    """Enumerate one exact local model-set crop without a global lift cube.
+
+    The combined physical/internal projection is an invertible six-dimensional
+    linear map.  A physical ball times the compact acceptance window therefore
+    has a compact preimage in lift space.  Bounding that preimage coordinate by
+    coordinate gives finite integer ranges which contain every admissible lift,
+    even when ``center`` lies far from the global origin.  A meet-in-the-middle
+    internal-space join then applies the exact spherical physical/window tests.
+    """
+    center = tuple(map(float, center))  # type: ignore[assignment]
+    if len(center) != 3 or any(not math.isfinite(value) for value in center):
+        raise ValueError("center must contain three finite coordinates")
+    physical_radius = float(physical_radius)
+    if not math.isfinite(physical_radius) or physical_radius <= 0.:
+        raise ValueError("physical_radius must be finite and positive")
+
+    physical_vectors = star_vectors(HIDDEN_UNIT)
+    internal_vectors = star_vectors(HIDDEN_CONJUGATE)
+    combined = tuple(
+        tuple(vectors[column][axis] for column in range(6))
+        for vectors in (physical_vectors, internal_vectors)
+        for axis in range(3))
+    inverse = _inverse_square_matrix(combined)
+    six_center = center + (0., 0., 0.)
+    coefficient_center = tuple(sum(row[column] * six_center[column]
+                                   for column in range(6))
+                               for row in inverse)
+    half_width = tuple(
+        physical_radius * sum(abs(row[column]) for column in range(3)) +
+        HIDDEN_WINDOW * sum(abs(row[column]) for column in range(3, 6))
+        for row in inverse)
+    epsilon = 1e-9
+    coefficient_ranges = tuple(range(
+        math.floor(midpoint - width - epsilon),
+        math.ceil(midpoint + width + epsilon) + 1)
+        for midpoint, width in zip(coefficient_center, half_width))
+
+    def partials(offset):
+        result = []
+        ranges = coefficient_ranges[offset:offset + 3]
+        for coefficients in itertools.product(*ranges):
+            physical = tuple(sum(
+                coefficients[index] * physical_vectors[offset + index][axis]
+                for index in range(3)) for axis in range(3))
+            internal = tuple(sum(
+                coefficients[index] * internal_vectors[offset + index][axis]
+                for index in range(3)) for axis in range(3))
+            result.append((coefficients, physical, internal))
+        return tuple(result)
+
+    left, right = partials(0), partials(3)
+    cell = HIDDEN_WINDOW
+    grid = {}
+    for item in right:
+        key = tuple(math.floor(value / cell) for value in item[2])
+        grid.setdefault(key, []).append(item)
+    positions, species, lifts = [], [], {}
+    for left_coefficients, left_physical, left_internal in left:
+        target = tuple(-value for value in left_internal)
+        key = tuple(math.floor(value / cell) for value in target)
+        for dx, dy, dz in itertools.product((-1, 0, 1), repeat=3):
+            for right_coefficients, right_physical, right_internal in grid.get(
+                    (key[0] + dx, key[1] + dy, key[2] + dz), ()):
+                internal = tuple(left_internal[axis] + right_internal[axis]
+                                 for axis in range(3))
+                internal_radius = vector_norm(internal)
+                if internal_radius > HIDDEN_WINDOW + 1e-10:
+                    continue
+                physical = tuple(left_physical[axis] + right_physical[axis]
+                                 for axis in range(3))
+                if vector_norm(tuple(physical[axis] - center[axis]
+                                     for axis in range(3))) > \
+                        physical_radius + 1e-10:
+                    continue
+                lift = left_coefficients + right_coefficients
+                chemical = hidden_species(internal_radius)
+                positions.append(physical)
+                species.append(chemical)
+                lifts[lift] = chemical
+    configuration = AtomicConfiguration(
+        "Icosahedral-6D-model-set-local", tuple(positions), tuple(species),
+        None, False, "Exact local six-dimensional cut-and-project crop from "
+        "the compact inverse image of a physical ball and internal window.")
+    return configuration, lifts
+
+
 def algebraic_pair(
     value: float,
     unit: float,

@@ -2500,4 +2500,15 @@ from a marking-transfer failure at waves two and three. The target is consumed
 and is not retried. Default commitment, autonomous finite growth, recursive
 promotion, stationary recurrence, and exponential IQC claims remain disabled.
 
+The consumed first wave has now been exhaustively diagnosed. All 157 terminals
+of the original `8→8→8` tree were rolled out and scored before reconstructing
+the already-consumed target; none is exact, so no portfolio width or marking
+can rescue that tree. A fixed reach audit then freezes six alternative trees
+before posthoc scoring. The smallest repair is `12→4→8`: it contains one exact
+terminal while reducing proposal checks from 392 to 356. `16→4→8` supplies two
+and `24→4→8` supplies four, at 504 and 800 checks. The repaired exact terminal
+still ranks only 107th by fusion and 114th by the scalar head. The next target
+is therefore an earlier, cheaper connection section—not a 107-candidate
+portfolio. This is consumed diagnostic evidence, not a replayed confirmation.
+
 Serve the repository root and open `/iqc-growth-live/`.
