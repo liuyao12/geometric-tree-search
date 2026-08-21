@@ -2453,6 +2453,13 @@ one H2O isometry class, overlapping water-dimer bridges, and six-water
 oxygen-ring boundaries. The ring interiors contain no atoms, but their
 boundaries are retained as gap/connection clusters.
 
+The live cluster gallery uses the same supports: H2O is a bent three-site
+molecular face, the bridge is a two-water connection polyhedron with covalent
+and hydrogen-bond edges, and the gap is the ordered six-oxygen ring boundary.
+The previous centre-to-every-member spoke drawing was only a neighbor-shell
+illustration and has been removed because it misrepresented all three cluster
+topologies.
+
 | fixture | atoms / H2O | H2O classes | bridge occurrences / classes | ring gaps / classes | water-only recall | full cover search |
 |---|---:|---:|---:|---:|---:|---:|
 | proton-ordered ice Ih | 216 / 72 | 1 | 115 / 6 | 38 / 17 | 1.39% | 100%, 37 placements, 0 backtracks |

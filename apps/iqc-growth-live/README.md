@@ -321,8 +321,11 @@ composition-first NOMAD search. Saved families include graphene, aligned and
 its element-labelled coordinates to the learner. The ice path uses a
 molecular overlap cover rather than atom-centred shells: one H2O type,
 water-dimer connection clusters, and oxygen-ring gap boundaries. The live
-strict replay search recovers 216/216 Ih sites in 35 decisions and 192/192 Ic
-sites in 30 decisions. The independent Python headless gate records the
+gallery renders the H2O bent molecular face, the complete water-dimer
+connection polyhedron, and the ordered six-oxygen void-boundary polyhedron;
+it never substitutes radial centre-to-neighbor spokes for cluster topology.
+The strict replay search recovers 216/216 Ih sites in 37 placements and
+192/192 Ic sites in 32 placements. The independent Python headless gate records the
 water-only ablation and full-cover result in
 `scripts/test_materials_gcts_ice_cover.py`. This certifies reconstruction of
 the known windows; larger blind ice continuation remains open.

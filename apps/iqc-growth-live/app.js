@@ -1563,6 +1563,7 @@ function poseSupportLabel(total, freeTypes, unresolvedTypes) {
 function resolvedGeometryMode() {
   if (geometryMode !== "auto") return geometryMode;
   if (detectedUnitCell) return "lattice";
+  if (currentMaterial().periodicWindow && currentPbc().some(Boolean)) return "lattice";
   if (currentMaterial().intrinsicDimension === 2) {
     const angles = new Set((currentMaterial().planarLayers || []).map((layer) => Math.round((layer.angle || 0) * 1e6)));
     return angles.size > 1 ? "module" : "lattice";
@@ -1669,13 +1670,16 @@ function buildWaterClusterCover(source) {
 
   const adjacency = Array.from({ length: waters.length }, () => new Set());
   bridges.forEach(({ waterPair: [first, second] }) => { adjacency[first].add(second); adjacency[second].add(first); });
-  const ringKeys = new Set();
+  const ringPaths = new Map();
   adjacency.forEach((_, start) => {
     const stack = [[start, [start]]];
     while (stack.length) {
       const [current, path] = stack.pop();
       if (path.length === 6) {
-        if (adjacency[current].has(start)) ringKeys.add(path.slice().sort((a, b) => a - b).join(":"));
+        if (adjacency[current].has(start)) {
+          const key = path.slice().sort((a, b) => a - b).join(":");
+          if (!ringPaths.has(key)) ringPaths.set(key, path.slice());
+        }
         continue;
       }
       adjacency[current].forEach((neighbor) => {
@@ -1684,17 +1688,22 @@ function buildWaterClusterCover(source) {
       });
     }
   });
-  const gaps = [...ringKeys].map((key) => key.split(":").map(Number)).map((ring) => ({
+  const gaps = [...ringPaths.values()].map((ring) => ({
     center: waters[ring[0]].center,
     support: [...new Set(ring.flatMap((waterIndex) => waters[waterIndex].support))],
     type: 2, residual: false, gap: true, kind: "oxygen-ring gap boundary",
+    ring: ring.slice(),
   }));
   const placements = [...waters, ...bridges, ...gaps];
   const coveredAtoms = new Set(waters.flatMap((placement) => placement.support));
   const types = [
-    { type: 0, medoid: waters[0]?.center || 0, element: "H₂O", label: "molecule", customSupport: waters[0]?.support || [] },
-    { type: 1, medoid: bridges[0]?.center || 0, element: "O–H···O", label: "connection", customSupport: bridges[0]?.support || [] },
-    { type: 2, medoid: gaps[0]?.center || 0, element: "O₆ void", label: "gap boundary", gap: true, customSupport: gaps[0]?.support || [] },
+    { type: 0, medoid: waters[0]?.center || 0, element: "H₂O", label: "H₂O molecule", geometry: "bent molecular face",
+      count: waters.length, visualKind: "molecule", customSupport: waters[0]?.support || [] },
+    { type: 1, medoid: bridges[0]?.center || 0, element: "2 H₂O", label: "hydrogen-bond bridge", geometry: "connection polyhedron",
+      count: bridges.length, visualKind: "bridge", customSupport: bridges[0]?.support || [] },
+    { type: 2, medoid: gaps[0]?.center || 0, element: "O₆ void", label: "six-water ring void", geometry: "void-boundary polyhedron",
+      count: gaps.length, visualKind: "ring", gap: true,
+      customSupport: gaps[0]?.ring?.map((waterIndex) => waters[waterIndex].center) || [] },
   ].filter((type) => type.customSupport.length);
   const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
   return { placements, residualTypes: [], types, incidence, covered: coveredAtoms.size,
@@ -1768,7 +1777,7 @@ function rebuildClusterGallery() {
   clusterGallery.replaceChildren();
   clusterGalleryTypes().forEach((cluster, galleryIndex) => {
     const card = document.createElement("article");
-    card.className = `cluster-card${cluster.residual ? " residual" : ""}`;
+    card.className = `cluster-card${cluster.residual ? " residual" : ""}${cluster.gap ? " gap" : ""}`;
     const canvas = document.createElement("canvas");
     canvas.width = 280;
     canvas.height = 224;
@@ -1784,10 +1793,68 @@ function rebuildClusterGallery() {
     const learnedDegrees = cluster.residual
       ? "explicit residual"
       : `${poses || "—"} required pose orbit${poses === 1 ? "" : "s"} × ${ports} port role${ports === 1 ? "" : "s"} · rank ${coupledRank} → ${channels}ch`;
-    label.innerHTML = `<b>${name}</b><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span>`;
+    label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span>`;
     card.append(canvas, label);
     clusterGallery.append(card);
   });
+}
+
+function convexHullTriangles(sites) {
+  if (sites.length === 3) return [[0, 1, 2]];
+  if (sites.length < 4) return [];
+  const faces = [];
+  const seen = new Set();
+  const tolerance = 1e-7;
+  for (let first = 0; first < sites.length - 2; first++) {
+    for (let second = first + 1; second < sites.length - 1; second++) {
+      for (let third = second + 1; third < sites.length; third++) {
+        const normal = new THREE.Vector3().crossVectors(
+          sites[second].vector.clone().sub(sites[first].vector),
+          sites[third].vector.clone().sub(sites[first].vector),
+        );
+        if (normal.lengthSq() <= tolerance) continue;
+        let positive = false;
+        let negative = false;
+        sites.forEach((site, index) => {
+          if (index === first || index === second || index === third) return;
+          const side = normal.dot(site.vector.clone().sub(sites[first].vector));
+          if (side > tolerance) positive = true;
+          if (side < -tolerance) negative = true;
+        });
+        if (positive && negative) continue;
+        const face = positive ? [first, third, second] : [first, second, third];
+        const key = face.slice().sort((a, b) => a - b).join(":");
+        if (!seen.has(key)) { seen.add(key); faces.push(face); }
+      }
+    }
+  }
+  return faces;
+}
+
+function clusterDisplayTopology(cluster, sites) {
+  if (cluster.visualKind === "molecule") return { faces: [[0, 1, 2]], edges: [[0, 1, "bond"], [0, 2, "bond"], [1, 2, "outline"]] };
+  if (cluster.visualKind === "ring") {
+    const edges = sites.map((_, index) => [index, (index + 1) % sites.length, "ring"]);
+    return { faces: [sites.map((_, index) => index)], edges };
+  }
+  const faces = convexHullTriangles(sites);
+  const edges = new Map();
+  faces.forEach((face) => face.forEach((first, index) => {
+    const second = face[(index + 1) % face.length];
+    const key = first < second ? `${first}:${second}` : `${second}:${first}`;
+    if (!edges.has(key)) edges.set(key, [first, second, "outline"]);
+  }));
+  if (cluster.visualKind === "bridge") {
+    const oxygens = sites.map((site, index) => site.atom.species === "O" ? index : -1).filter((index) => index >= 0);
+    const hydrogens = sites.map((site, index) => site.atom.species === "H" ? index : -1).filter((index) => index >= 0);
+    hydrogens.forEach((hydrogen) => {
+      const ranked = oxygens.map((oxygen) => ({ oxygen, distance: sites[hydrogen].vector.distanceTo(sites[oxygen].vector) }))
+        .sort((first, second) => first.distance - second.distance);
+      if (ranked[0]) edges.set(`bond:${hydrogen}`, [hydrogen, ranked[0].oxygen, "bond"]);
+      if (ranked[1]) edges.set(`hydrogen:${hydrogen}`, [hydrogen, ranked[1].oxygen, "hydrogen"]);
+    });
+  }
+  return { faces, edges: [...edges.values()] };
 }
 
 function drawClusterGallery(now) {
@@ -1813,14 +1880,32 @@ function drawClusterGallery(now) {
       const point = site.vector.clone().multiplyScalar(scaleToScene).applyQuaternion(quaternion);
       const perspective = 1 / (1 + Math.max(-.7, point.z) * .11);
       return { index, atom: site.atom, x: canvas.width / 2 + point.x * 48 * perspective, y: canvas.height / 2 + point.y * 48 * perspective, z: point.z, perspective };
-    }).sort((first, second) => first.z - second.z);
-    const projectedCenter = projected.find((point) => point.index === 0);
-    context.lineWidth = 1.5;
-    projected.filter((point) => point.index !== 0).forEach((point) => {
-      context.beginPath(); context.moveTo(projectedCenter.x, projectedCenter.y); context.lineTo(point.x, point.y);
-      context.strokeStyle = cluster.residual || cluster.gap ? "rgba(255,193,105,.42)" : "rgba(101,225,188,.32)"; context.stroke();
     });
-    projected.forEach((point) => {
+    const projectedByIndex = new Map(projected.map((point) => [point.index, point]));
+    const topology = clusterDisplayTopology(cluster, sites);
+    const surface = cluster.residual || cluster.gap ? [255, 193, 105] : [101, 225, 188];
+    topology.faces.map((face) => ({ face, depth: face.reduce((sum, index) => sum + projectedByIndex.get(index).z, 0) / face.length }))
+      .sort((first, second) => first.depth - second.depth).forEach(({ face }, faceIndex) => {
+        const points = face.map((index) => projectedByIndex.get(index));
+        if (points.some((point) => !point)) return;
+        context.beginPath(); context.moveTo(points[0].x, points[0].y);
+        points.slice(1).forEach((point) => context.lineTo(point.x, point.y));
+        context.closePath();
+        context.fillStyle = `rgba(${surface.join(",")},${cluster.gap ? .13 : .075 + (faceIndex % 3) * .018})`;
+        context.fill();
+      });
+    topology.edges.forEach(([first, second, kind]) => {
+      const start = projectedByIndex.get(first), finish = projectedByIndex.get(second);
+      if (!start || !finish) return;
+      context.save();
+      context.beginPath(); context.moveTo(start.x, start.y); context.lineTo(finish.x, finish.y);
+      context.lineWidth = kind === "bond" ? 2.4 : kind === "hydrogen" ? 1.2 : 1.5;
+      context.strokeStyle = kind === "hydrogen" ? "rgba(147,190,255,.7)" : kind === "outline"
+        ? `rgba(${surface.join(",")},.25)` : `rgba(${surface.join(",")},.62)`;
+      if (kind === "hydrogen") context.setLineDash([3, 4]);
+      context.stroke(); context.restore();
+    });
+    projected.sort((first, second) => first.z - second.z).forEach((point) => {
       const record = elementRecord(point.atom.species);
       const radius = (point.index ? 6.5 : 8.5) * point.perspective * Math.min(1.12, record.radius / 1.3);
       context.beginPath(); context.arc(point.x, point.y, radius, 0, TAU);
@@ -3066,14 +3151,15 @@ function syncStageOptions() {
   if (clustering) {
     geometryModeSelect.value = geometryMode;
     const latticeDetected = Boolean(detectedUnitCell);
+    const periodicFixture = Boolean(currentMaterial().periodicWindow && currentCell() && currentPbc().some(Boolean));
     const resolvedMode = resolvedGeometryMode();
     geometryModeHint.textContent = geometryMode === "auto"
-      ? resolvedMode === "lattice" ? latticeDetected ? "translation closure found" : "intrinsic planar lattice"
+      ? resolvedMode === "lattice" ? latticeDetected ? "translation closure found" : periodicFixture ? "periodic cell supplied" : "intrinsic planar lattice"
         : resolvedMode === "module" ? "multiple incommensurate generators" : "no lattice closure"
       : geometryMode === "lattice" ? "periodic translation group"
       : geometryMode === "module" ? "finite-rank aperiodic support" : "unrestricted metric support";
     geometryModeNote.textContent = geometryMode === "auto"
-      ? `${resolvedMode === "lattice" ? latticeDetected ? "A translation basis was inferred" : "A two-dimensional translation support was inferred" : resolvedMode === "module" ? "A finite-rank non-periodic support is the active hypothesis" : "No stable translation basis was inferred; the observed point set is retained without periodic wrapping"}; the pose classes still come only from the supplied positions.`
+      ? `${resolvedMode === "lattice" ? latticeDetected ? "A translation basis was inferred" : periodicFixture ? "The supplied periodic cell defines the translation quotient" : "A two-dimensional translation support was inferred" : resolvedMode === "module" ? "A finite-rank non-periodic support is the active hypothesis" : "No stable translation basis was inferred; the observed point set is retained without periodic wrapping"}; the pose classes still come only from the supplied positions.`
       : geometryMode === "lattice"
         ? "Periodic wrapping is applied before clustering; orientations are still quotiented by each cluster's proper symmetry."
         : geometryMode === "module"
@@ -3283,6 +3369,7 @@ function updateStageNarrative() {
     narratives[1].eyebrow = "learning · molecular and gap cover";
     narratives[1].decision = "Molecular overlap cover computed";
     narratives[1].copy = "Species-resolved bond geometry discovers one H₂O motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom.";
+    narratives[1].caption = `${learnedCover.molecular.waters} H₂O molecular placements cover every observed atom; ${learnedCover.molecular.bridges} hydrogen-bond connection polyhedra and ${learnedCover.molecular.gaps} six-water void-boundary polyhedra fill the connection grammar. Cards show faces and physical/connection edges—not radial coordination spokes.`;
     narratives[2].title = "Register molecular bridges and gap-boundary ports";
     narratives[2].phase = `${overlapGrammar.reconstructionEdges} replay ports`;
     narratives[2].caption = `${overlapGrammar.reconstructionEdges} dependency-ordered molecular overlap ports connect a strict replay tree reaching ${overlapGrammar.replayReachable}/${referenceCount()} known sites.`;
@@ -3688,7 +3775,8 @@ function renderLegend() {
       const swatch = document.createElement("i");
       swatch.className = "cluster-swatch";
       swatch.style.setProperty("--swatch", cluster.residual ? "#ff6d71" : `#${CLUSTER_COLORS[index % CLUSTER_COLORS.length].toString(16).padStart(6, "0")}`);
-      row.append(swatch, document.createTextNode(`${cluster.residual ? "gap" : "C"}${index + 1} · ${cluster.element || cluster.species} · ${cluster.count}`));
+      const count = learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
+      row.append(swatch, document.createTextNode(`${cluster.residual ? "gap" : "C"}${index + 1} · ${cluster.element || cluster.species} · ${count} placements`));
       speciesLegend.appendChild(row);
     });
   } else {
