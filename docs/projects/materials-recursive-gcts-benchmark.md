@@ -2446,12 +2446,14 @@ remains linear and is reported separately.
 
 ## Molecular cover gate: ice Ih and ice Ic
 
-`scripts/materials_gcts_ice_cover.py` tests a qualitatively different failure
-mode. An ice configuration is not usefully connected by treating each atom as
-the center of a fixed-radius cluster. The geometry-first learner instead finds
-one H2O isometry class, overlapping water-dimer bridges, and six-water
-oxygen-ring boundaries. The ring interiors contain no atoms, but their
-boundaries are retained as gap/connection clusters.
+`scripts/materials_gcts_molecular_gap_clusters.py` tests a qualitatively
+different failure mode. An ice configuration is not usefully connected by
+treating each atom as the center of a fixed-radius cluster. The learner accepts
+only element-labelled Cartesian positions and an optional periodic metric. A
+valence-bounded covalent graph finds finite connected motifs; a nearest-shell
+graph between those motifs supplies connection clusters; and locally shortest
+chordless cycles become centre-free void boundaries. It receives no ice label,
+H2O formula, expected coordination, or expected ring size.
 
 The live cluster gallery uses the same supports: H2O is a bent three-site
 molecular face, the bridge is a two-water connection polyhedron with covalent
@@ -2460,15 +2462,25 @@ The previous centre-to-every-member spoke drawing was only a neighbor-shell
 illustration and has been removed because it misrepresented all three cluster
 topologies.
 
-| fixture | atoms / H2O | H2O classes | bridge occurrences / classes | ring gaps / classes | water-only recall | full cover search |
+| fixture | atoms / learned molecules | molecular classes | nearest-shell connections / classes | local-girth voids / classes | tree / visible waves | exact atom cover |
 |---|---:|---:|---:|---:|---:|---:|
-| proton-ordered ice Ih | 216 / 72 | 1 | 115 / 6 | 38 / 17 | 1.39% | 100%, 37 placements, 0 backtracks |
-| proton-ordered ice Ic | 192 / 64 | 1 | 98 / 4 | 23 / 12 | 1.56% | 100%, 32 placements, 0 backtracks |
+| proton-ordered ice Ih | 216 / 72 H2O | 1 | 144 / 9 | 180 O6 / 1 | 71 / 6 | 216/216, 0 backtracks |
+| proton-ordered ice Ic | 192 / 64 H2O | 1 | 128 / 6 | 128 O6 / 1 | 63 / 6 | 192/192, 0 backtracks |
 
-This is a causal cluster-representation result: the atom dictionary and target
-are fixed, and only the overlapping connection/gap clusters are ablated. It
-certifies reconstruction of each known periodic window, not yet blind
-continuation into a larger ice crystal or prediction of proton disorder.
+The H2O colored-metric signature and the O6 void signature transfer exactly
+between the two polytypes; all six cubic bridge classes occur in the nine-class
+hexagonal atlas. Atom permutation and arbitrary proper rigid motion preserve
+the scientific fingerprint. An extended covalent carbon network is rejected
+instead of being relabelled as one giant molecule, leaving it to the irregular
+point-set support learner. These checks run in
+`scripts/test_materials_gcts_generic_ice_benchmark.py`.
+
+The older directional hydrogen-bond audit remains in
+`scripts/materials_gcts_ice_cover.py`: it selects 115/98 directional bridges
+and 38/23 ring boundaries and is the smaller subset shown by the live gallery.
+Both results certify reconstruction of known periodic windows, not yet blind
+continuation into a larger ice crystal, prediction of proton disorder, or an
+exponential ice production.
 
 The live sample selector now exposes three complementary paths: saved curated
 families (including ice and intrinsic-2D controls), composition-first random

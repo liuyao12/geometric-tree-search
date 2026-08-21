@@ -318,16 +318,22 @@ residual consensus correction.
 The sample selector now separates saved benchmark families from
 composition-first NOMAD search. Saved families include graphene, aligned and
 30-degree hBN, and proton-ordered ice Ih/Ic; choosing a fixture supplies only
-its element-labelled coordinates to the learner. The ice path uses a
-molecular overlap cover rather than atom-centred shells: one H2O type,
-water-dimer connection clusters, and oxygen-ring gap boundaries. The live
+its element-labelled coordinates to the learner. A new generic ice audit uses
+standard covalent radii and bounded ordinary valences to infer finite connected
+components, without receiving an ice label, H2O formula, coordination number,
+or ring size. It discovers one H2O type in both polytypes, constructs the
+nearest-shell component graph, and promotes its locally shortest chordless
+cycles to oxygen-ring gap boundaries. The live
 gallery renders the H2O bent molecular face, the complete water-dimer
 connection polyhedron, and the ordered six-oxygen void-boundary polyhedron;
 it never substitutes radial centre-to-neighbor spokes for cluster topology.
-The strict replay search recovers 216/216 Ih sites in 37 placements and
-192/192 Ic sites in 32 placements. The independent Python headless gate records the
-water-only ablation and full-cover result in
-`scripts/test_materials_gcts_ice_cover.py`. This certifies reconstruction of
+The generic headless gate finds one molecule class, 9/6 decorated bridge
+classes, and one transferable six-member void class in Ih/Ic. Its underlying
+tree actions reconstruct 216/216 and 192/192 sites in six visible commuting
+waves with zero backtracking. The narrower directional hydrogen-bond cover is
+retained as a visualization/control ablation. The executable regressions are
+`scripts/test_materials_gcts_generic_ice_benchmark.py` and
+`scripts/test_materials_gcts_ice_cover.py`. These certify reconstruction of
 the known windows; larger blind ice continuation remains open.
 
 A common recursive-program gate now prevents the crystal and quasicrystal
