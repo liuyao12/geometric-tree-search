@@ -85,6 +85,10 @@ const tripleEncoding = args.get("triple-encoding") ?? "choice-cnf";
 if (!["dnf", "choice-cnf"].includes(tripleEncoding)) {
   throw new Error("--triple-encoding must be dnf or choice-cnf");
 }
+const tupleEnforcement = args.get("tuple-enforcement") ?? "encoded";
+if (!["encoded", "lazy-higher", "lazy-all"].includes(tupleEnforcement)) {
+  throw new Error("--tuple-enforcement must be encoded, lazy-higher, or lazy-all");
+}
 const pairSelection = args.get("pair-selection") ?? "lexicographic";
 if (!["lexicographic", "max-blocked-combinations", "min-blocked-combinations"].includes(pairSelection)) {
   throw new Error("--pair-selection must be lexicographic, max-blocked-combinations, or min-blocked-combinations");
@@ -282,6 +286,85 @@ const effectiveNextLayerCoverability = requireNextLayerCoverability
   || tripleConstraints.length > 0
   || learnQuadrupleCoverability
   || quadrupleConstraints.length > 0;
+const encodePairCoverability = tupleEnforcement !== "lazy-all";
+const encodeHigherCoverability = tupleEnforcement === "encoded";
+
+const learnTupleObstructions = proposal => {
+  const incompatiblePairDetails = learnPairCoverability || learnTripleCoverability || learnQuadrupleCoverability
+    ? polycubeCoronaIncompatibleTargetPairDetails(candidate.voxels, proposal.corona, outerLayer)
+    : [];
+  const pairKey = detail => detail.target_cells.join(";");
+  incompatiblePairDetails.sort((left, right) => {
+    const blockedDifference = pairSelection === "max-blocked-combinations"
+      ? right.candidate_pairs_blocked - left.candidate_pairs_blocked
+      : pairSelection === "min-blocked-combinations"
+        ? left.candidate_pairs_blocked - right.candidate_pairs_blocked
+        : 0;
+    return blockedDifference || pairKey(left).localeCompare(pairKey(right));
+  });
+  const incompatiblePairs = incompatiblePairDetails.map(detail => detail.target_cells);
+  let pairsAdded = 0;
+  let pairOrbitsAdded = 0;
+  let selectedPairCandidateCombinationsBlocked = null;
+  for (const detail of incompatiblePairDetails) {
+    if (pairOrbitLimit && pairOrbitsAdded >= pairOrbitLimit) break;
+    const added = addPairOrbit(detail.target_cells);
+    if (added) {
+      pairOrbitsAdded += 1;
+      selectedPairCandidateCombinationsBlocked ??= detail.candidate_pairs_blocked;
+    }
+    pairsAdded += added;
+  }
+  const incompatibleTripleAudit = (learnTripleCoverability || learnQuadrupleCoverability) && incompatiblePairs.length === 0
+    ? polycubeCoronaIncompatibleTargetTripleDetails(candidate.voxels, proposal.corona, outerLayer, {
+        maximumCellDistance: tripleMaximumCellDistance,
+        limit: tripleAuditLimit + 1
+      })
+    : [];
+  const tripleAuditTruncated = incompatibleTripleAudit.length > tripleAuditLimit;
+  const incompatibleTripleDetails = incompatibleTripleAudit.slice(0, tripleAuditLimit);
+  let triplesAdded = 0;
+  let tripleOrbitsAdded = 0;
+  for (const detail of incompatibleTripleDetails) {
+    if (tripleOrbitLimit && tripleOrbitsAdded >= tripleOrbitLimit) break;
+    const added = addTripleOrbit(detail.target_cells);
+    if (added) tripleOrbitsAdded += 1;
+    triplesAdded += added;
+  }
+  const incompatibleQuadrupleDetails = learnQuadrupleCoverability
+    && incompatiblePairs.length === 0
+    && incompatibleTripleDetails.length === 0
+    ? polycubeCoronaIncompatibleTargetQuadrupleDetails(candidate.voxels, proposal.corona, outerLayer, {
+        maximumCellDistance: quadrupleMaximumCellDistance,
+        limit: quadrupleOrbitLimit || 1
+      })
+    : [];
+  let quadruplesAdded = 0;
+  let quadrupleOrbitsAdded = 0;
+  for (const detail of incompatibleQuadrupleDetails) {
+    if (quadrupleOrbitLimit && quadrupleOrbitsAdded >= quadrupleOrbitLimit) break;
+    const added = addQuadrupleOrbit(detail.target_cells);
+    if (added) quadrupleOrbitsAdded += 1;
+    quadruplesAdded += added;
+  }
+  return {
+    incompatiblePairDetails,
+    incompatiblePairs,
+    pairsAdded,
+    pairOrbitsAdded,
+    selectedPairCandidateCombinationsBlocked,
+    incompatibleTripleDetails,
+    tripleAuditTruncated,
+    triplesAdded,
+    tripleOrbitsAdded,
+    incompatibleQuadrupleDetails,
+    quadruplesAdded,
+    quadrupleOrbitsAdded,
+    rejected: incompatiblePairs.length > 0
+      || incompatibleTripleDetails.length > 0
+      || incompatibleQuadrupleDetails.length > 0
+  };
+};
 
 process.stdout.write(`${JSON.stringify({
   type: "z3_cegar_start",
@@ -320,6 +403,7 @@ process.stdout.write(`${JSON.stringify({
   triple_audit_limit: tripleAuditLimit,
   triple_max_cell_distance: tripleMaximumCellDistance,
   triple_encoding: tripleEncoding,
+  tuple_enforcement: tupleEnforcement,
   initial_triple_coverability_constraints: initialTripleCount,
   learn_quadruple_coverability: learnQuadrupleCoverability,
   quadruple_orbit_limit: quadrupleOrbitLimit,
@@ -353,15 +437,15 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   if (requireNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
   if (cellConstraints.length) solverArguments.push(`--cell-coverability-report=${cellPath}`);
   if (rootSymmetryBreaking) solverArguments.push("--root-symmetry-breaking");
-  if (pairConstraints.length) {
+  if (pairConstraints.length && encodePairCoverability) {
     solverArguments.push(`--pair-coverability-report=${pairPath}`);
     solverArguments.push(`--pair-encoding=${pairEncoding}`);
   }
-  if (tripleConstraints.length) {
+  if (tripleConstraints.length && encodeHigherCoverability) {
     solverArguments.push(`--triple-coverability-report=${triplePath}`);
     solverArguments.push(`--triple-encoding=${tripleEncoding}`);
   }
-  if (quadrupleConstraints.length) {
+  if (quadrupleConstraints.length && encodeHigherCoverability) {
     solverArguments.push(`--quadruple-coverability-report=${quadruplePath}`);
   }
   const solved = spawnSync(python, solverArguments, {
@@ -426,6 +510,63 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   if (!outerVerification.verified) {
     throw new Error(`Z3 outer witness ${iteration} failed verification: ${outerVerification.reason}`);
   }
+  let tupleResult = null;
+  if (tupleEnforcement !== "encoded") {
+    tupleResult = learnTupleObstructions(proposal);
+    if (tupleResult.rejected) {
+      const learnedClause = proposal.corona.map(placementKey);
+      const clausesAdded = addClauseOrbit(learnedClause);
+      const tupleKind = tupleResult.incompatiblePairs.length
+        ? "pair"
+        : tupleResult.incompatibleTripleDetails.length
+          ? "triple"
+          : "quadruple";
+      const trial = {
+        iteration,
+        random_seed: iterationSeed,
+        z3_status: "sat",
+        z3_milliseconds: proposal.milliseconds,
+        outer_placements: proposal.corona.length,
+        continuation_skipped: true,
+        continuation_success: false,
+        continuation_exhausted: null,
+        continuation_nodes: 0,
+        continuation_milliseconds: 0,
+        obstruction_kind: `lazy_${tupleKind}_coverability`,
+        learned_clause_size: learnedClause.length,
+        clauses_added: clausesAdded,
+        clauses: clauses.length,
+        cell_constraints_added: 0,
+        cell_orbits_added: 0,
+        cell_coverability_constraints: cellConstraints.length,
+        incompatible_target_pairs: tupleResult.incompatiblePairs.length,
+        selected_pair_candidate_combinations_blocked: tupleResult.selectedPairCandidateCombinationsBlocked,
+        pair_constraints_added: tupleResult.pairsAdded,
+        pair_orbits_added: tupleResult.pairOrbitsAdded,
+        pair_coverability_constraints: pairConstraints.length,
+        incompatible_target_triples: tupleResult.incompatibleTripleDetails.length,
+        triple_audit_truncated: tupleResult.tripleAuditTruncated,
+        selected_triple_candidate_combinations_blocked: tupleResult.incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
+        triple_constraints_added: tupleResult.triplesAdded,
+        triple_orbits_added: tupleResult.tripleOrbitsAdded,
+        triple_coverability_constraints: tripleConstraints.length,
+        incompatible_target_quadruples: tupleResult.incompatibleQuadrupleDetails.length,
+        selected_quadruple_candidate_combinations_blocked: tupleResult.incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
+        quadruple_constraints_added: tupleResult.quadruplesAdded,
+        quadruple_orbits_added: tupleResult.quadrupleOrbitsAdded,
+        quadruple_coverability_constraints: quadrupleConstraints.length
+      };
+      trials.push(trial);
+      if (iteration % progressEvery === 0 || iteration + 1 === iterations) {
+        process.stdout.write(`${JSON.stringify({ type: "z3_cegar_trial", ...trial })}\n`);
+      }
+      if (!clausesAdded && !tupleResult.pairsAdded && !tupleResult.triplesAdded && !tupleResult.quadruplesAdded) {
+        classification = "duplicate_obstruction";
+        break;
+      }
+      continue;
+    }
+  }
   const continuation = searchPolycubeCorona(candidate.voxels, {
     layers: innerLayer,
     seed: iterationSeed,
@@ -486,63 +627,19 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
       if (cellsAdded) cellOrbitsAdded += 1;
     }
   }
-  const incompatiblePairDetails = learnPairCoverability || learnTripleCoverability || learnQuadrupleCoverability
-    ? polycubeCoronaIncompatibleTargetPairDetails(candidate.voxels, proposal.corona, outerLayer)
-    : [];
-  const pairKey = detail => detail.target_cells.join(";");
-  incompatiblePairDetails.sort((left, right) => {
-    const blockedDifference = pairSelection === "max-blocked-combinations"
-      ? right.candidate_pairs_blocked - left.candidate_pairs_blocked
-      : pairSelection === "min-blocked-combinations"
-        ? left.candidate_pairs_blocked - right.candidate_pairs_blocked
-        : 0;
-    return blockedDifference || pairKey(left).localeCompare(pairKey(right));
-  });
-  const incompatiblePairs = incompatiblePairDetails.map(detail => detail.target_cells);
-  let pairsAdded = 0;
-  let pairOrbitsAdded = 0;
-  let selectedPairCandidateCombinationsBlocked = null;
-  for (const detail of incompatiblePairDetails) {
-    if (pairOrbitLimit && pairOrbitsAdded >= pairOrbitLimit) break;
-    const added = addPairOrbit(detail.target_cells);
-    if (added) {
-      pairOrbitsAdded += 1;
-      selectedPairCandidateCombinationsBlocked ??= detail.candidate_pairs_blocked;
-    }
-    pairsAdded += added;
-  }
-  const incompatibleTripleAudit = (learnTripleCoverability || learnQuadrupleCoverability) && incompatiblePairs.length === 0
-    ? polycubeCoronaIncompatibleTargetTripleDetails(candidate.voxels, proposal.corona, outerLayer, {
-        maximumCellDistance: tripleMaximumCellDistance,
-        limit: tripleAuditLimit + 1
-      })
-    : [];
-  const tripleAuditTruncated = incompatibleTripleAudit.length > tripleAuditLimit;
-  const incompatibleTripleDetails = incompatibleTripleAudit.slice(0, tripleAuditLimit);
-  let triplesAdded = 0;
-  let tripleOrbitsAdded = 0;
-  for (const detail of incompatibleTripleDetails) {
-    if (tripleOrbitLimit && tripleOrbitsAdded >= tripleOrbitLimit) break;
-    const added = addTripleOrbit(detail.target_cells);
-    if (added) tripleOrbitsAdded += 1;
-    triplesAdded += added;
-  }
-  const incompatibleQuadrupleDetails = learnQuadrupleCoverability
-    && incompatiblePairs.length === 0
-    && incompatibleTripleDetails.length === 0
-    ? polycubeCoronaIncompatibleTargetQuadrupleDetails(candidate.voxels, proposal.corona, outerLayer, {
-        maximumCellDistance: quadrupleMaximumCellDistance,
-        limit: quadrupleOrbitLimit || 1
-      })
-    : [];
-  let quadruplesAdded = 0;
-  let quadrupleOrbitsAdded = 0;
-  for (const detail of incompatibleQuadrupleDetails) {
-    if (quadrupleOrbitLimit && quadrupleOrbitsAdded >= quadrupleOrbitLimit) break;
-    const added = addQuadrupleOrbit(detail.target_cells);
-    if (added) quadrupleOrbitsAdded += 1;
-    quadruplesAdded += added;
-  }
+  const {
+    incompatiblePairs,
+    pairsAdded,
+    pairOrbitsAdded,
+    selectedPairCandidateCombinationsBlocked,
+    incompatibleTripleDetails,
+    tripleAuditTruncated,
+    triplesAdded,
+    tripleOrbitsAdded,
+    incompatibleQuadrupleDetails,
+    quadruplesAdded,
+    quadrupleOrbitsAdded
+  } = tupleResult ?? learnTupleObstructions(proposal);
   const trial = {
     iteration,
     random_seed: iterationSeed,
@@ -643,6 +740,7 @@ const summary = {
   triple_audit_limit: tripleAuditLimit,
   triple_max_cell_distance: tripleMaximumCellDistance,
   triple_encoding: tripleEncoding,
+  tuple_enforcement: tupleEnforcement,
   triple_coverability_triples: tripleConstraints,
   triple_coverability_constraint_count: tripleConstraints.length,
   initial_triple_coverability_constraints: initialTripleCount,

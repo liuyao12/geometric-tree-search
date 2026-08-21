@@ -857,6 +857,13 @@ DNF while expressing the same exact condition. Quadruple learning uses the
 same exact choice-CNF construction across four cell groups after pair and
 triple audits pass; `--initial-quadruple-report` can preload an independently
 audited obstruction orbit.
+When the higher-order formula itself becomes the bottleneck,
+`--tuple-enforcement=lazy-higher` keeps pair obligations in Z3 but audits
+triples and quadruples on each proposed state before GCTS. A failed audit adds
+the symmetry orbit of the entire fixed outer state as a monotone separation
+cut: adding more outer placements cannot restore a blocked continuation, so
+the cut is sound. `lazy-all` also removes pair formulas; `encoded` remains the
+default baseline.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

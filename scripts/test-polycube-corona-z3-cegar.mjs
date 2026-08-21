@@ -18,6 +18,10 @@ assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFil
 assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-limit", tripleOrbitLimit \|\| 1, 1\)/);
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
+assert.match(cegarSource, /--tuple-enforcement must be encoded, lazy-higher, or lazy-all/);
+assert.match(cegarSource, /if \(pairConstraints\.length && encodePairCoverability\)/);
+assert.match(cegarSource, /if \(tripleConstraints\.length && encodeHigherCoverability\)/);
+assert.match(cegarSource, /if \(tupleEnforcement !== "encoded"\)[\s\S]*?continuation_skipped: true[\s\S]*?const continuation = searchPolycubeCorona/);
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
 assert.ok(candidate);
 const nonTiler = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p10-052670");
@@ -334,6 +338,41 @@ try {
     initialQuadrupleProposal.quadruple_coverability_constraints,
     initialQuadrupleReport.initial_quadruple_coverability_constraints
   );
+
+  const lazyHigherOutput = join(directory, "lazy-higher-summary.json");
+  const lazyHigherCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=lazy-higher",
+    "--pair-encoding=witness-cnf",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--learn-triple-coverability=true",
+    "--triple-max-cell-distance=6",
+    "--triple-audit-limit=32",
+    "--triple-orbit-limit=0",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${pairPath}`,
+    `--initial-triple-report=${triplePath}`,
+    `--initial-quadruple-report=${quadruplePath}`,
+    `--output-dir=${join(directory, "lazy-higher")}`,
+    `--report-output=${lazyHigherOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(lazyHigherCegar.status, 0, lazyHigherCegar.stderr);
+  const lazyHigherReport = JSON.parse(readFileSync(lazyHigherOutput, "utf8"));
+  assert.equal(lazyHigherReport.tuple_enforcement, "lazy-higher");
+  const lazyHigherProposal = JSON.parse(readFileSync(join(directory, "lazy-higher", "outer-witness-0000.json"), "utf8"));
+  assert.ok(lazyHigherProposal.pair_coverability_constraints > 0);
+  assert.equal(lazyHigherProposal.triple_coverability_constraints, 0);
+  assert.equal(lazyHigherProposal.quadruple_coverability_constraints, 0);
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [
