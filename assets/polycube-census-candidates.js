@@ -126,15 +126,110 @@ const records = [
       robust_completed_shell: 4,
       deepest_completed_shell: 4
     }
+  },
+  {
+    id: "p10-075714",
+    survivor_priority: 2,
+    voxels: [[0,0,0],[0,0,1],[0,0,2],[0,1,1],[0,2,0],[1,0,0],[1,1,0],[1,2,0],[1,3,0],[2,2,0]],
+    mirror_equivalent_id: "p10-062508",
+    description: "A volume-10 through-five periodic survivor whose radius-two exact-cover search remains unresolved after a long nogood run.",
+    screening: {
+      status: "inconclusive",
+      certificate: null,
+      census_stage: "volume10_through5_radius2",
+      requires_mirrors: false,
+      periodic_hnf_max_motif_tiles: 5,
+      periodic_hnf_candidates_exhausted: 14570,
+      periodic_hnf_report: "data/polycube-volume10-periodic-through5-2026-08-21.json",
+      corona_report: "data/polycube-volume10-corona-through2-2026-08-21.json",
+      corona_completed_radius: 1,
+      corona_completed_nodes: 9,
+      corona_completed_placements: 10,
+      corona_completed_verified: true,
+      corona_next_radius: 2,
+      corona_next_status: "time_limit",
+      corona_next_time_limit_ms: 60000,
+      corona_next_nodes: 515072,
+      corona_next_target_cells: 93,
+      corona_next_placements_considered: 5498,
+      corona_nogood_clauses: 101,
+      corona_nogood_prunes: 1665864
+    },
+    shell_screening: {
+      robust_completed_shell: 1,
+      deepest_completed_shell: 1
+    }
+  },
+  {
+    id: "p10-324131",
+    survivor_priority: 3,
+    voxels: [[0,0,1],[0,1,1],[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,3,1],[0,4,1],[1,2,0],[1,3,1]],
+    mirror_equivalent_id: "p10-324120",
+    description: "A volume-10 through-five periodic survivor whose radius-two exact-cover search remains unresolved after a long nogood run.",
+    screening: {
+      status: "inconclusive",
+      certificate: null,
+      census_stage: "volume10_through5_radius2",
+      requires_mirrors: false,
+      periodic_hnf_max_motif_tiles: 5,
+      periodic_hnf_candidates_exhausted: 14570,
+      periodic_hnf_report: "data/polycube-volume10-periodic-through5-2026-08-21.json",
+      corona_report: "data/polycube-volume10-corona-through2-2026-08-21.json",
+      corona_completed_radius: 1,
+      corona_completed_nodes: 13,
+      corona_completed_placements: 14,
+      corona_completed_verified: true,
+      corona_next_radius: 2,
+      corona_next_status: "time_limit",
+      corona_next_time_limit_ms: 60000,
+      corona_next_nodes: 1177600,
+      corona_next_target_cells: 97,
+      corona_next_placements_considered: 5826,
+      corona_nogood_clauses: 136,
+      corona_nogood_prunes: 2984067
+    },
+    shell_screening: {
+      robust_completed_shell: 1,
+      deepest_completed_shell: 1
+    }
+  },
+  {
+    id: "p10-052670",
+    survivor_priority: null,
+    voxels: [[0,0,0],[0,0,1],[0,0,2],[0,1,0],[0,1,2],[0,2,0],[0,2,1],[1,1,1],[1,2,1],[1,2,2]],
+    mirror_equivalent_id: "p10-052666",
+    description: "A volume-10 regression control with a verified first corona and an exact radius-two obstruction.",
+    screening: {
+      status: "exact_rejection",
+      certificate: "finite_corona_obstruction",
+      requires_mirrors: false,
+      periodic_hnf_max_motif_tiles: 5,
+      periodic_hnf_candidates_exhausted: 14570,
+      periodic_hnf_report: "data/polycube-volume10-periodic-through5-2026-08-21.json",
+      corona_report: "data/polycube-volume10-corona-through2-2026-08-21.json",
+      corona_completed_radius: 1,
+      corona_completed_nodes: 12,
+      corona_completed_verified: true,
+      corona_obstruction_radius: 2,
+      corona_obstruction_nodes: 2,
+      corona_obstruction_target_cells: 90,
+      corona_obstruction_placements_considered: 4990
+    },
+    shell_screening: {
+      robust_completed_shell: 1,
+      deepest_completed_shell: 1
+    }
   }
 ];
 
 export const POLYCUBE_GCTS_CANDIDATES = Object.freeze(records.map(candidate => Object.freeze({
   ...candidate,
   registry_id: `polycube_${candidate.id.replaceAll("-", "_")}`,
-  name: candidate.screening.certificate
+  name: ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
     ? `Polycube periodic control ${candidate.id}`
-    : `Polycube candidate ${candidate.id}`,
+    : candidate.screening.certificate
+      ? `Polycube non-tiler control ${candidate.id}`
+      : `Polycube candidate ${candidate.id}`,
   kind: "polycube_census",
   volume: candidate.voxels.length,
   free_equivalence_class_size: 2,

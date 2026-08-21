@@ -1,0 +1,108 @@
+{
+  "schema": "gcts.polycube_corona_census.v1",
+  "date": "2026-08-21",
+  "volume": 10,
+  "equivalence": "proper_rotations",
+  "input": {
+    "source": "data/polycube-volume10-periodic-through5-2026-08-21.json",
+    "exact_periodic_survivors": 6044,
+    "survivor_key_sha256": "12aa2a34896f2968eecea9ae124822b633bcd5ce617048daa9106f053119bc50",
+    "survivor_id_sha256": "69daf802e33436f456403b037d63f646765e9fa8121c57dd4ca5ea0064359274"
+  },
+  "protocol": {
+    "solver": "exact generalized dancing-links cover of the root lattice corona",
+    "target_radius": 2,
+    "reflections_allowed_within_tiling": false,
+    "time_budget_clock": "cpu",
+    "initial_time_limit_ms_per_candidate": 1000,
+    "initial_node_limit_per_candidate": 1000000,
+    "nogoods_in_initial_pass": false,
+    "interpretation": "Exhaustion is a finite non-tiling certificate. A complete corona is a necessary finite extension witness only."
+  },
+  "initial_pass": {
+    "candidates": 6044,
+    "complete_radius_2_patches": 6034,
+    "certified_non_tilers": 4,
+    "time_limits": 6,
+    "candidate_id_coverage": {
+      "unique": 6044,
+      "missing": 0,
+      "duplicates": 0
+    }
+  },
+  "timeout_retry": {
+    "time_limit_ms_per_candidate": 20000,
+    "node_limit_per_candidate": 10000000,
+    "candidates": 6,
+    "complete_radius_2_patches": 4,
+    "certified_non_tilers": 0,
+    "remaining_time_limits": 2
+  },
+  "hard_candidate_retry": {
+    "time_limit_ms_per_candidate": 60000,
+    "node_limit_per_candidate": 20000000,
+    "nogoods": true,
+    "candidates": [
+      {
+        "id": "p10-075714",
+        "nodes": 515072,
+        "nogood_clauses": 101,
+        "nogood_prunes": 1665864,
+        "stopped_by": "time_limit"
+      },
+      {
+        "id": "p10-324131",
+        "nodes": 1177600,
+        "nogood_clauses": 136,
+        "nogood_prunes": 2984067,
+        "stopped_by": "time_limit"
+      }
+    ]
+  },
+  "non_tiling_certificates": [
+    {
+      "id": "p10-052481",
+      "first_obstructed_radius": 1,
+      "nodes": 1,
+      "placements_considered": 1916,
+      "target_cells": 31
+    },
+    {
+      "id": "p10-052665",
+      "first_obstructed_radius": 1,
+      "nodes": 1,
+      "placements_considered": 1850,
+      "target_cells": 30
+    },
+    {
+      "id": "p10-052666",
+      "mirror_equivalent_id": "p10-052670",
+      "first_obstructed_radius": 2,
+      "radius_1_patch_independently_verified": true,
+      "nodes": 2,
+      "placements_considered": 4990,
+      "target_cells": 90
+    },
+    {
+      "id": "p10-052670",
+      "mirror_equivalent_id": "p10-052666",
+      "first_obstructed_radius": 2,
+      "radius_1_patch_independently_verified": true,
+      "nodes": 2,
+      "placements_considered": 4990,
+      "target_cells": 90
+    }
+  ],
+  "final": {
+    "complete_radius_2_patches": 6038,
+    "certified_non_tilers": 4,
+    "bounded_unresolved": 2,
+    "radius_2_patch_id_sha256": "183cb1e73c976988484a6547b9c055a7b34828b0bcdda461373919eb9a91f27d",
+    "radius_2_patch_key_sha256": "a88688628f2d5fbf6c7cfbb6c68132e3e659573898f1bdfd84957ef4a3fca9a0",
+    "non_tiler_id_sha256": "3da1ab95eec26869b8caf134aec8af19613e60e7c72c855e847ed50a870655ea",
+    "non_tiler_key_sha256": "637f1ee8082dd1fa53a2d86167db829d01be55880fe5822ed722226863025ccc",
+    "bounded_unresolved_ids": ["p10-075714", "p10-324131"],
+    "bounded_unresolved_id_sha256": "2f487ac6375261b390876aad4a4f5f48adf8df76a1658ba0f5e1e8c2b9708823",
+    "bounded_unresolved_key_sha256": "841378c5eb196a1712d20ce446fc90b3500d5992161942a4f6c0eb2550fec804"
+  }
+}

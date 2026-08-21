@@ -215,6 +215,17 @@ from motif sizes one through five. This remains a bounded periodic exclusion,
 not evidence of tiling or aperiodicity. The gap-free receipt is
 `data/polycube-volume10-periodic-through5-2026-08-21.json`.
 
+An exact radius-two corona census then separates four finite-obstruction
+non-tilers: `p10-052481` and `p10-052665` already fail at radius one, while the
+enantiomeric pair `p10-052666`/`p10-052670` has independently verified
+radius-one patches but exhausts every radius-two extension. Of the other 6,040
+shapes, 6,038 have verified radius-two patches. `p10-075714` and `p10-324131`
+remain bounded-inconclusive after separate 60-CPU-second nogood runs with 1.67
+million and 2.98 million exact prunes respectively. They are the first focused
+GCTS stress candidates from this census, not claims of tiling or aperiodicity.
+The gap-free receipt is
+`data/polycube-volume10-corona-through2-2026-08-21.json`.
+
 The continuation solver now extracts a proof-relevant reason from a trapped
 patch instead of memoizing the entire boundary. For a radius-five target cell,
 it enumerates every root-compatible tile placement through that cell and finds
