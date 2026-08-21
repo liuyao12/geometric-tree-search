@@ -20,11 +20,11 @@ from materials_gcts_iqc_extended_development_preregistration import (
     DEVELOPMENT_CENTERS, PRIOR_CENTERS)
 
 
-SOURCE_COMMIT = "ef499a4"
-GRID_MINIMUM = -240
-GRID_MAXIMUM = 240
-GRID_STEP = 30
-MAXIMUM_CENTER_NORM = 240.
+SOURCE_COMMIT = "326da4d"
+GRID_MINIMUM = -160
+GRID_MAXIMUM = 160
+GRID_STEP = 20
+MAXIMUM_CENTER_NORM = 160.
 BATCH_SIZE = 20
 SEED_RADIUS = 9.
 TARGET_RADIUS = 14.562305898749054
@@ -32,14 +32,14 @@ ROLLOUT_RADIUS = 32.56230589874905
 ROLLOUT_HORIZON = 16
 SAFETY_MARGIN = 6.
 REQUIRED_CENTER_SEPARATION = 2. * ROLLOUT_RADIUS + SAFETY_MARGIN
-ORACLE_LIFT_BOUND = 120
+ORACLE_LIFT_BOUND = 84
 ACTION_REACH_SCHEDULE = (8, 8, 8)
 CANDIDATES_PER_BASE_RANKER = 8
 MAXIMUM_FROZEN_CANDIDATES = 16
 SHUFFLES = 31
 SHUFFLE_SEED = 781337
 EXPECTED_MANIFEST_DIGEST = \
-    "c13c73a3215b1ad3e3ff4a3a1e56bf8f25616cfa14698030b63538208523156e"
+    "ac3d38e5d2516dc786926acc3b42a7c3278142d03845423fc1679cf10374e2e0"
 
 ADDITIONAL_CONSUMED_CENTERS = (
     (-110., -70., -70.),  # consumed obligation confirmation
@@ -51,17 +51,17 @@ CONSUMED_CENTERS = tuple(sorted(set(
     ADDITIONAL_CONSUMED_CENTERS)))
 
 DEVELOPMENT_CENTERS = (
-    (210., 60., -90.), (210., 60., 90.), (60., 210., 90.),
-    (-150., 180., 30.), (60., -210., 90.), (-240., 0., 0.),
-    (60., 90., 210.), (60., 90., -210.), (60., -90., 210.),
-    (-120., -90., 180.), (-30., 210., -90.), (-90., 60., -210.),
-    (210., -90., 60.), (90., -210., -60.), (-90., 120., 180.),
-    (0., -150., -180.), (120., 180., -90.), (180., -90., -120.),
-    (-60., -210., -60.), (-180., 120., -90.),
+    (140., 40., -60.), (140., 40., 60.), (-60., 140., -40.),
+    (40., -140., 60.), (-140., 60., 0.), (40., 140., 60.),
+    (20., 60., 140.), (-60., -140., -40.), (-60., 40., -140.),
+    (-80., -60., 120.), (-80., 120., 60.), (120., -60., 80.),
+    (40., -60., 140.), (-140., -20., 40.), (60., -140., -20.),
+    (60., 140., -20.), (40., 60., -140.), (-140., 0., -60.),
+    (-60., 40., 140.), (140., -40., -60.),
 )
 
 CENTER_SELECTION_RULE = (
-    "form the 30-unit grid in [-240,240]^3 with norm <=240; discard points "
+    "form the 20-unit grid in [-160,160]^3 with norm <=160; discard points "
     "within 2*32.56230589874905+6 of a consumed centre; repeatedly select "
     "the point maximizing its minimum distance from consumed and already "
     "selected centres, then minimize radial norm and break ties reverse "
