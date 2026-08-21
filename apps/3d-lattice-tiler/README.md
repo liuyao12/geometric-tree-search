@@ -541,6 +541,16 @@ two-node subtree reduces to three outer placements. Replaying only those three
 placements independently exhausts the same radius-two cover. Budget-limited
 runs never emit this certificate.
 
+The first structural-forcing audit for `p9-42947` also guards against search-
+order bias. A depth-first sample of 959,539 first coronas appeared to share four
+placements, but exact forbidden-placement probes found alternatives for all
+four. Extending the probe to every placement in a valid nine-tile baseline
+corona found all nine replaceable, with each alternative independently checked
+for congruence, non-overlap, forbidden-placement absence, and complete target
+coverage. Thus no individual absolute placement is forced in the first corona;
+forced disjunctions or larger clusters remain open. See
+`data/polycube-volume9-corona-forcing-2026-08-20.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

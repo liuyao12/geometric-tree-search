@@ -167,6 +167,18 @@ No conflict is returned after a node or time limit. The currently sampled
 `p9-42947` radius-four failures are still immediate conflicts, so this improves
 the general GCTS proof engine without changing that candidate's classification.
 
+A first-corona forcing audit then tested whether the candidate exhibits a local
+seed for hierarchical structure. Naive depth-first enumeration was misleading:
+four placements occurred in all 959,539 sampled coronas. Exact probes forbidding
+each placement immediately found valid alternatives. Testing every placement in
+a legal nine-tile baseline corona likewise found nine of nine replaceable; an
+independent checker verified every alternative's congruence, non-overlap,
+forbidden-placement absence, and target coverage. Since any individually forced
+placement would occur in the baseline, none exists at radius one in this fixed
+frame. This does not exclude forced choices among placement sets, adjacency
+types, or larger supertiles. See
+`data/polycube-volume9-corona-forcing-2026-08-20.json`.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their
@@ -179,4 +191,6 @@ the general GCTS proof engine without changing that candidate's classification.
 4. Use successful isohedral coronas to propose, rather than assume, larger
    finite quotients.
 5. For durable survivors, search for recurring supertiles and verify a forced
-   substitution grammar on every legal corona type.
+   substitution grammar on every legal corona type. For `p9-42947`, begin with
+   forced disjunctions or adjacency classes because no individual first-corona
+   placement is forced.

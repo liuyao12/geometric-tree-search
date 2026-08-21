@@ -325,6 +325,10 @@ const archivedPolycubePeriodicThrough13 = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-periodic-through13-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeCoronaForcing = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-corona-forcing-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1272,6 +1276,19 @@ assert.equal(
 assert.equal(
   survivors[0].census_candidate.screening.corona_nogood_portfolio_report,
   "data/polycube-volume9-continuation-nogoods-2026-08-20.json"
+);
+assert.deepEqual(archivedPolycubeCoronaForcing.totals, {
+  tested: 9,
+  forced: 0,
+  replaceable: 9,
+  incomplete: 0
+});
+assert.ok(archivedPolycubeCoronaForcing.probes.every(probe => probe.alternative_verified));
+assert.equal(survivors[0].census_candidate.screening.corona_forcing_individually_forced, 0);
+assert.equal(survivors[0].census_candidate.screening.corona_forcing_replaceable, 9);
+assert.equal(
+  survivors[0].census_candidate.screening.corona_forcing_report,
+  "data/polycube-volume9-corona-forcing-2026-08-20.json"
 );
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);

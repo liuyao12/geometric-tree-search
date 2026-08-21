@@ -50,6 +50,42 @@ export function polycubeCoronaBoundaryKey(voxels, placements, layers, options = 
   return best ?? "";
 }
 
+export function verifyPolycubeCoronaPatch(voxels, placements, layers, options = {}) {
+  const fail = reason => ({ verified: false, reason });
+  if (!Array.isArray(placements)) return fail("invalid_placements");
+  const normalizedLayers = Math.max(1, Math.floor(Number(layers) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const occupied = new Set(rootSet);
+  const orientationKeys = new Set(polycubeOrientations(voxels, {
+    includeReflections: !!options.includeReflections
+  }).map(orientation => orientation.key));
+  const forbidden = new Set(options.forbiddenPlacementKeys ?? []);
+  for (const [index, placement] of placements.entries()) {
+    if (!Array.isArray(placement?.cells) || placement.cells.length !== voxels.length) {
+      return fail(`placement_${index}_wrong_cell_count`);
+    }
+    if (!orientationKeys.has(polycubeKey(placement.cells))) {
+      return fail(`placement_${index}_not_congruent`);
+    }
+    const placementKey = placement.cells.map(keyOf).sort().join(";");
+    if (forbidden.has(placementKey)) return fail(`placement_${index}_forbidden`);
+    for (const cell of placement.cells) {
+      const key = keyOf(cell);
+      if (occupied.has(key)) return fail(`placement_${index}_overlap`);
+      occupied.add(key);
+    }
+  }
+  const missing = buildTarget(rootSet, normalizedLayers).filter(key => !occupied.has(key));
+  if (missing.length) return fail("target_not_covered");
+  return {
+    verified: true,
+    placements: placements.length,
+    occupied_cells: occupied.size,
+    target_cells: rootSet.size + buildTarget(rootSet, normalizedLayers).length,
+    method: "independent_corona_patch_occupancy"
+  };
+}
+
 /**
  * Decide whether a fixed root copy can be extended to cover every lattice cell
  * at face-distance at most `layers` from it. Exhaustion is a rigorous finite
@@ -72,6 +108,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     ? Math.max(0, Math.floor(Number(options.nogoodLimit)))
     : 50_000;
   const nogoodsEnabled = options.nogoods === true && nogoodLimit > 0;
+  const forbiddenPlacementKeys = new Set(options.forbiddenPlacementKeys ?? []);
   const seededHash = value => {
     let hash = (2166136261 ^ seed) >>> 0;
     for (let index = 0; index < value.length; index++) {
@@ -93,8 +130,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
     if (!orientationKeys.has(polycubeKey(cells))) {
       throw new Error(`Fixed corona placement ${index} is not a congruent tile copy`);
     }
+    const key = cells.map(keyOf).sort().join(";");
+    if (forbiddenPlacementKeys.has(key)) {
+      throw new Error(`Fixed corona placement ${index} is explicitly forbidden`);
+    }
     return {
-      key: cells.map(keyOf).sort().join(";"),
+      key,
       cells,
       cellKeys: cells.map(keyOf),
       orientationIndex: placement.orientation_index ?? placement.orientationIndex ?? null,
@@ -132,6 +173,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
         const cellKeys = cells.map(keyOf);
         if (cellKeys.some(key => rootSet.has(key))) continue;
         const placementKey = cellKeys.slice().sort().join(";");
+        if (forbiddenPlacementKeys.has(placementKey)) continue;
         const fixedBlockers = new Set(cellKeys
           .map(key => fixedOwnerByCell.get(key))
           .filter(index => index !== undefined));
@@ -607,6 +649,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     target_cells: allTargetKeys.length,
     remaining_target_cells: targetKeys.length,
     fixed_placements: fixedPlacements.length,
+    forbidden_placements: forbiddenPlacementKeys.size,
     orientations: orientations.length,
     placements_considered: placementByKey.size,
     nodes,

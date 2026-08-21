@@ -10,7 +10,8 @@ import {
 import {
   polycubeCoronaBoundaryKey,
   searchFirstPolycubeCorona,
-  searchPolycubeCorona
+  searchPolycubeCorona,
+  verifyPolycubeCoronaPatch
 } from "../assets/polycube-corona-search.js";
 import { findPolycubeBoxTiling } from "../assets/polycube-box-tiler.js";
 import {
@@ -123,6 +124,27 @@ assert.equal(
 const cubeCorona = searchFirstPolycubeCorona([[0, 0, 0]], { nodeLimit: 1000, timeLimitMs: 1000 });
 assert.equal(cubeCorona.success, true, "a cube must have a six-cube first corona");
 assert.equal(cubeCorona.corona.length, 6);
+assert.equal(verifyPolycubeCoronaPatch([[0, 0, 0]], cubeCorona.corona, 1).verified, true);
+assert.equal(
+  verifyPolycubeCoronaPatch([[0, 0, 0]], [...cubeCorona.corona, cubeCorona.corona[0]], 1).verified,
+  false,
+  "the independent corona verifier must reject overlap"
+);
+const forbiddenCubeNeighbor = cubeCorona.corona[0].cells.map(cell => cell.join(",")).sort().join(";");
+assert.equal(
+  verifyPolycubeCoronaPatch([[0, 0, 0]], cubeCorona.corona, 1, {
+    forbiddenPlacementKeys: [forbiddenCubeNeighbor]
+  }).verified,
+  false,
+  "the independent corona verifier must reject a forbidden placement"
+);
+const cubeCoronaWithoutNeighbor = searchFirstPolycubeCorona([[0, 0, 0]], {
+  forbiddenPlacementKeys: [forbiddenCubeNeighbor],
+  nodeLimit: 1000,
+  timeLimitMs: 1000
+});
+assert.equal(cubeCoronaWithoutNeighbor.exhausted, true, "forbidding a required cube neighbor must obstruct its first corona");
+assert.equal(cubeCoronaWithoutNeighbor.forbidden_placements, 1);
 assert.equal(
   polycubeCoronaBoundaryKey([[0, 0, 0]], cubeCorona.corona, 1),
   "",

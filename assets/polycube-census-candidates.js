@@ -51,7 +51,14 @@ const records = [
       corona_nogood_clauses: 6573,
       corona_nogood_prunes: 4949332,
       corona_nogood_radius5_witness: false,
-      corona_nogood_outer_exhausted: false
+      corona_nogood_outer_exhausted: false,
+      corona_forcing_report: "data/polycube-volume9-corona-forcing-2026-08-20.json",
+      corona_forcing_layer: 1,
+      corona_forcing_baseline_tiles: 9,
+      corona_forcing_placements_tested: 9,
+      corona_forcing_individually_forced: 0,
+      corona_forcing_replaceable: 9,
+      corona_forcing_incomplete: 0
     },
     shell_screening: {
       robust_completed_shell: 4,
