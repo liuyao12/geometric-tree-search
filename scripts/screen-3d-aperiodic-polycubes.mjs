@@ -43,6 +43,8 @@ const includeReflections = booleanArg("include-reflections", false);
 const maxCandidates = Math.max(1, Math.floor(numberArg("max-candidates", Infinity)));
 const startIndex = Math.max(0, Math.floor(numberArg("start-index", 0)));
 const periodicMaxTiles = Math.max(1, Math.min(16, Math.floor(numberArg("periodic-max-tiles", 4))));
+const periodicMinTiles = Math.max(1, Math.min(periodicMaxTiles,
+  Math.floor(numberArg("periodic-min-tiles", 1))));
 const boxMaxTiles = Math.max(1, Math.floor(numberArg("box-max-tiles", 4)));
 const boxTimeMs = Math.max(1, numberArg("box-time-ms", 100));
 const periodicTimeMs = Math.max(1, numberArg("periodic-time-ms", 1000));
@@ -144,6 +146,7 @@ process.stdout.write(`${JSON.stringify({
   candidates: candidates.length,
   equivalence: includeReflections ? "rotations_and_reflections" : "proper_rotations",
   periodic_max_tiles: periodicMaxTiles,
+  periodic_min_tiles: periodicMinTiles,
   obstruction_layer: obstructionLayer
 })}\n`);
 
@@ -152,6 +155,7 @@ for (let index = 0; index < candidates.length; index++) {
   const candidateStartedAt = performance.now();
   const torus = findPolycubePeriodicTiling(candidate.voxels, {
     includeReflections,
+    minCopies: periodicMinTiles,
     maxCopies: periodicMaxTiles,
     nodeLimit,
     timeLimitMs: periodicTimeMs
@@ -224,6 +228,7 @@ for (let index = 0; index < candidates.length; index++) {
       copies: torus.copies ?? null,
       nodes: torus.nodes ?? null,
       hnf_visited: torus.hnf_visited ?? null,
+      hnf_exhausted_by_copies: torus.hnf_exhausted_by_copies ?? null,
       milliseconds: torus.milliseconds
     },
     isohedral: isohedral ? {

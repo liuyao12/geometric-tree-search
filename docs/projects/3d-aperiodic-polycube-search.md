@@ -128,8 +128,13 @@ The original four catalogue entries are two enantiomeric pairs:
 space preserves tiling existence, one representative per pair is sufficient
 even though reflected copies remain forbidden within a tiling. The catalogue
 therefore moves `p9-43172` to periodic controls and keeps only `p9-42947` as an
-unresolved free-polycube representative. It exhausts all 46,730 HNF quotients
-through eight copies and has an exact radius-four corona. A 30-second exact
+unresolved free-polycube representative. It exhausts all 169,511 HNF quotients
+for every motif size from one through thirteen copies and has an exact
+radius-four corona. This includes all 130 one-copy HNFs; the earlier cyclic
+one-copy preflight alone was only sufficient, not exhaustive. The resumed exact
+search eliminated copy counts 9–12 independently, without replaying the
+already exhausted smaller motifs; its receipt is
+`data/polycube-volume9-periodic-through13-2026-08-20.json`. A 30-second exact
 radius-five run visited 2,574,336 nodes without completing, while a separate
 continuation portfolio rejected 7,387 complete radius-four patches because
 each immediately trapped before radius five. That portfolio did not exhaust
@@ -159,8 +164,9 @@ the result therefore remains inconclusive. See
    nontrivial continuation subtrees. Whole-boundary memoization found no reuse,
    while the first conflict-directed portfolio already transferred 6,573 small
    exact clauses across seeded orderings.
-3. Extend the dedicated HNF exact-cover search beyond eight-copy motifs with
-   DLX or SAT and independently verify every stored quotient.
+3. Continue the dedicated HNF exact-cover search beyond thirteen-copy motifs;
+   the range-resume option now avoids repeating exhaustively checked sizes and
+   the one-copy range now covers non-cyclic quotient groups too.
 4. Use successful isohedral coronas to propose, rather than assume, larger
    finite quotients.
 5. For durable survivors, search for recurring supertiles and verify a forced

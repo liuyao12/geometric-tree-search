@@ -1,0 +1,76 @@
+{
+  "kind": "polycube_volume9_exact_periodic_hnf_extension_through_13",
+  "date": "2026-08-20",
+  "candidate": "p9-42947",
+  "mirror_equivalent": "p9-42969",
+  "model": "proper cubic rotations and integer translations; normalized root tile; all index-n sublattices represented in Hermite normal form",
+  "algorithm": "exact quotient cover with BigInt occupancy masks and failed-remaining-set memoization",
+  "prior_exhaustive_range": {
+    "copies": [2, 8],
+    "hnf_quotients": 46730,
+    "exact_cover_nodes": 564800,
+    "milliseconds": 23666,
+    "source": "data/polycube-volume9-deep-screen-2026-08-20.json"
+  },
+  "new_exhaustive_ranges": [
+    {
+      "copies": 1,
+      "quotient_volume": 9,
+      "hnf_quotients": 130,
+      "exact_cover_nodes": 0,
+      "milliseconds": 1,
+      "certificate_found": false,
+      "note": "This closes the non-cyclic one-copy gap left by the sufficient cyclic preflight."
+    },
+    {
+      "copies": 9,
+      "quotient_volume": 81,
+      "hnf_quotients": 11011,
+      "exact_cover_nodes": 335384,
+      "milliseconds": 14079,
+      "certificate_found": false
+    },
+    {
+      "copies": 10,
+      "quotient_volume": 90,
+      "hnf_quotients": 28210,
+      "exact_cover_nodes": 1463919,
+      "milliseconds": 68699,
+      "certificate_found": false
+    },
+    {
+      "copies": 11,
+      "quotient_volume": 99,
+      "hnf_quotients": 17290,
+      "exact_cover_nodes": 1292483,
+      "milliseconds": 62862,
+      "certificate_found": false
+    },
+    {
+      "copies": 12,
+      "quotient_volume": 108,
+      "hnf_quotients": 42350,
+      "exact_cover_nodes": 5337328,
+      "milliseconds": 260257,
+      "certificate_found": false
+    },
+    {
+      "copies": 13,
+      "quotient_volume": 117,
+      "hnf_quotients": 23790,
+      "exact_cover_nodes": 4127599,
+      "milliseconds": 184873,
+      "certificate_found": false
+    }
+  ],
+  "cumulative": {
+    "copies": [1, 13],
+    "one_copy_cyclic_screen_certified": false,
+    "hnf_quotients_for_copies_1_through_13": 169511,
+    "exact_cover_nodes": 13121513,
+    "milliseconds": 614437,
+    "certificate_found": false,
+    "conclusion": "No translational fundamental cell containing at most 13 tile copies exists in the searched proper-rotation model."
+  },
+  "warning": "This excludes only translational quotients through 13 copies; it neither proves non-tiling nor aperiodicity."
+}

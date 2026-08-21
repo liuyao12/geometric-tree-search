@@ -45,7 +45,7 @@ const periodicP9 = POLYCUBE_GCTS_CANDIDATES.find(candidate => candidate.id === "
 assert.ok(unresolvedP9 && periodicP9);
 assert.equal(unresolvedP9.mirror_equivalent_id, "p9-42969");
 assert.equal(periodicP9.mirror_equivalent_id, "p9-43188");
-assert.equal(unresolvedP9.screening.periodic_hnf_max_motif_tiles, 8);
+assert.equal(unresolvedP9.screening.periodic_hnf_max_motif_tiles, 13);
 assert.equal(periodicP9.screening.quotient_determinant, 72);
 
 const chair = [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0]];
@@ -54,6 +54,52 @@ assert.equal(canonicalPolycubeKey(chair), canonicalPolycubeKey(rotatedChair));
 const lTricube = [[0, 0, 0], [1, 0, 0], [0, 1, 0]];
 assert.equal(findPolycubeCyclicTiling([[0, 0, 0]]).certified, true);
 assert.equal(findPolycubePeriodicTiling(lTricube, { maxCopies: 2 }).certified, true);
+const resumedPeriodicRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 3,
+  maxCopies: 3,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(resumedPeriodicRange.stopped_by, null);
+assert.equal(resumedPeriodicRange.min_copies, 3);
+assert.equal(resumedPeriodicRange.max_copies, 3);
+assert.equal(resumedPeriodicRange.hnf_visited, 1210);
+assert.deepEqual(resumedPeriodicRange.hnf_exhausted_by_copies, { 3: 1210 });
+const exactOneCopyRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 1,
+  maxCopies: 1,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(exactOneCopyRange.min_copies, 1);
+assert.equal(exactOneCopyRange.certified, false);
+assert.equal(exactOneCopyRange.stopped_by, null);
+assert.equal(exactOneCopyRange.hnf_visited, 130);
+assert.deepEqual(exactOneCopyRange.hnf_exhausted_by_copies, { 1: 130 });
+const noncyclicOneTilePolycube = [
+  [0, 0, 0], [0, 0, 1], [0, 0, 2],
+  [0, 1, 0], [0, 1, 1], [0, 1, 2],
+  [0, 2, 1], [0, 3, 1]
+];
+assert.equal(
+  findPolycubeCyclicTiling(noncyclicOneTilePolycube).certified,
+  false,
+  "the fast cyclic preflight intentionally misses this non-cyclic quotient"
+);
+const noncyclicOneTileCertificate = findPolycubePeriodicTiling(noncyclicOneTilePolycube, {
+  minCopies: 1,
+  maxCopies: 1,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(noncyclicOneTileCertificate.certified, true);
+assert.equal(noncyclicOneTileCertificate.copies, 1);
+assert.deepEqual(noncyclicOneTileCertificate.period_vectors, [[2, 0, 0], [1, 2, 0], [1, 0, 2]]);
+assert.equal(
+  verifyPolycubePeriodicCertificate(noncyclicOneTilePolycube, noncyclicOneTileCertificate).verified,
+  true,
+  "the independent quotient verifier must replay the non-cyclic one-tile certificate"
+);
 const lTricubeBox = findPolycubeBoxTiling(lTricube, { maxCopies: 2, timeLimitMs: 1000 });
 assert.equal(lTricubeBox.certified, true, "two L tricubes must tile a finite box");
 assert.equal(lTricubeBox.copies, 2);

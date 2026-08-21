@@ -321,6 +321,10 @@ const archivedPolycubeContinuationNogoods = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-continuation-nogoods-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubePeriodicThrough13 = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-periodic-through13-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1235,7 +1239,7 @@ assert.deepEqual(
 assert.ok(survivors.every(figure =>
   figure.census_candidate.kind === "polycube_census"
   && figure.census_candidate.volume === 9
-  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 8
+  && figure.census_candidate.screening.periodic_hnf_max_motif_tiles === 13
   && figure.census_candidate.screening.corona_completed_radius === 4
   && figure.census_candidate.mirror_equivalent_id === "p9-42969"
 ));
@@ -1257,6 +1261,14 @@ assert.equal(archivedPolycubeContinuationNogoods.summary.carried_nogood_clauses,
 assert.equal(archivedPolycubeContinuationNogoods.summary.total_explained_obstructions, 54);
 assert.equal(archivedPolycubeContinuationNogoods.summary.radius_5_witness_found, false);
 assert.equal(archivedPolycubeContinuationNogoods.summary.outer_search_exhausted, false);
+assert.equal(archivedPolycubePeriodicThrough13.cumulative.hnf_quotients_for_copies_1_through_13, 169511);
+assert.equal(archivedPolycubePeriodicThrough13.cumulative.exact_cover_nodes, 13121513);
+assert.equal(archivedPolycubePeriodicThrough13.cumulative.certificate_found, false);
+assert.equal(survivors[0].census_candidate.screening.periodic_hnf_candidates_exhausted, 169511);
+assert.equal(
+  survivors[0].census_candidate.screening.periodic_hnf_report,
+  "data/polycube-volume9-periodic-through13-2026-08-20.json"
+);
 assert.equal(
   survivors[0].census_candidate.screening.corona_nogood_portfolio_report,
   "data/polycube-volume9-continuation-nogoods-2026-08-20.json"
