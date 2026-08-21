@@ -223,6 +223,60 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.minDistance = 0.025;
 controls.maxDistance = 420;
+const orbitDriftAxis = new THREE.Vector3();
+const orbitDriftQuaternion = new THREE.Quaternion();
+const orbitPreviousOffset = new THREE.Vector3();
+const orbitCurrentOffset = new THREE.Vector3();
+const ORBIT_DRIFT_SPEED = 0.085;
+let orbitDrag = null;
+let orbitDriftActive = false;
+
+renderer.domElement.addEventListener("pointerdown", (event) => {
+  if (event.pointerType === "mouse" && event.button !== 0) return;
+  orbitDrag = {
+    pointerId: event.pointerId,
+    lastX: event.clientX,
+    lastY: event.clientY,
+    distance: 0,
+    axis: null,
+    lastOffset: camera.position.clone().sub(controls.target).normalize()
+  };
+});
+
+renderer.domElement.addEventListener("pointermove", (event) => {
+  if (!orbitDrag || event.pointerId !== orbitDrag.pointerId) return;
+  orbitDrag.distance += Math.hypot(event.clientX - orbitDrag.lastX, event.clientY - orbitDrag.lastY);
+  orbitDrag.lastX = event.clientX;
+  orbitDrag.lastY = event.clientY;
+  orbitCurrentOffset.copy(camera.position).sub(controls.target).normalize();
+  orbitDriftQuaternion.setFromUnitVectors(orbitDrag.lastOffset, orbitCurrentOffset);
+  const sineHalfAngle = Math.hypot(
+    orbitDriftQuaternion.x,
+    orbitDriftQuaternion.y,
+    orbitDriftQuaternion.z
+  );
+  if (sineHalfAngle > 1e-5) {
+    orbitDrag.axis = new THREE.Vector3(
+      orbitDriftQuaternion.x,
+      orbitDriftQuaternion.y,
+      orbitDriftQuaternion.z
+    ).divideScalar(sineHalfAngle);
+  }
+  orbitDrag.lastOffset.copy(orbitCurrentOffset);
+});
+
+renderer.domElement.addEventListener("pointerup", (event) => {
+  if (!orbitDrag || event.pointerId !== orbitDrag.pointerId) return;
+  if (orbitDrag.distance > 4 && orbitDrag.axis) {
+    orbitDriftAxis.copy(orbitDrag.axis);
+    orbitDriftActive = true;
+  }
+  orbitDrag = null;
+});
+
+renderer.domElement.addEventListener("pointercancel", (event) => {
+  if (orbitDrag?.pointerId === event.pointerId) orbitDrag = null;
+});
 
 const root = new THREE.Group();
 root.position.set(0.38, -0.08, 0);
@@ -1021,8 +1075,21 @@ resize();
 resizeOrientationBall();
 drawOrientationBall(currentExpandedTransforms, currentTurnGenerations);
 
+let previousAnimationTime = null;
+
 function animate(time) {
+  const elapsedSeconds = previousAnimationTime === null
+    ? 0
+    : Math.min(0.05, (time - previousAnimationTime) / 1000);
+  previousAnimationTime = time;
   controls.update();
+  if (orbitDriftActive && orbitDrag === null && transition === null && elapsedSeconds > 0) {
+    orbitPreviousOffset.copy(camera.position).sub(controls.target);
+    orbitDriftQuaternion.setFromAxisAngle(orbitDriftAxis, ORBIT_DRIFT_SPEED * elapsedSeconds);
+    orbitPreviousOffset.applyQuaternion(orbitDriftQuaternion);
+    camera.position.copy(controls.target).add(orbitPreviousOffset);
+    camera.lookAt(controls.target);
+  }
   orientationControls.update();
   orientationBoundary.quaternion.copy(orientationCamera.quaternion);
   if (transition) {
