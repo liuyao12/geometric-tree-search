@@ -446,6 +446,10 @@ const archivedP9HighCopyCegar = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-high-copy-cegar-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9StagedCoverability = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-staged-coverability-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1610,6 +1614,17 @@ assert.equal(archivedP9HighCopyCegar.final_symmetry_closed_clauses, 108);
 assert.equal(archivedP9HighCopyCegar.eager_one_step_coverability_ablation.z3_timeout_trials, 5);
 assert.equal(archivedP9HighCopyCegar.high_copy_space_exhausted, false);
 assert.equal(archivedP9HighCopyCegar.certified_non_tiler, false);
+assert.equal(archivedP9StagedCoverability.matched_15_cell_encoding_ab.edge_cnf.asserted_constraints, 200044);
+assert.equal(archivedP9StagedCoverability.matched_15_cell_encoding_ab.grouped_pseudo_boolean.asserted_constraints, 5342);
+assert.equal(archivedP9StagedCoverability.full_single_cell_coverability.next_ring_cells_constrained, 180);
+assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.z3_sat_outer_states, 15);
+assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.immediate_dead_target_obstructions, 0);
+assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.resolved_subtree_obstructions, 15);
+assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.continuation_nodes, 51);
+assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.maximum_single_continuation_nodes, 7);
+assert.equal(archivedP9StagedCoverability.full_coverability_cegar_portfolio.final_symmetry_expanded_pair_constraints, 30);
+assert.equal(archivedP9StagedCoverability.radius_five_witness_found, false);
+assert.equal(archivedP9StagedCoverability.outer_search_exhausted, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,
@@ -1632,6 +1647,12 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_seeded_order_c
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_states_checked, 36);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_continuation_nodes, 44);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_high_copy_cegar_space_exhausted, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverability_states_checked, 15);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverability_continuation_nodes, 51);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverability_maximum_continuation_nodes, 7);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_staged_coverability_pair_constraints, 30);
+assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
+assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

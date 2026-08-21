@@ -656,6 +656,19 @@ supply, while that eager encoding remains too expensive and the 79-plus-copy
 space remains unexhausted. See
 `data/polycube-p9-42947-high-copy-cegar-2026-08-21.json`.
 
+Lazy single-cell obligations and grouped pseudo-Boolean conflict implications
+now make that lookahead usable. On a matched 15-cell instance, grouping the
+same 198,683 logical conflicts reduces asserted constraints from 200,044 to
+5,342 and solve time from 23.4s to 14.3s. The grouped full model constrains all
+180 next-ring cells with 4,533 conflict groups rather than 1,187,699 edge-CNF
+implications. It finds 15 verified radius-four states with 66–72 copies; every
+one avoids immediate dead cells and instead needs an exact resolved-subtree
+radius-five proof. Those proofs total 51 GCTS nodes and reach seven nodes in
+the best case. Lazy pair learning reaches 30 symmetry-expanded obligations.
+No radius-five witness is found and neither the outer space nor aperiodicity is
+settled. The reproducible receipt is
+`data/polycube-p9-42947-staged-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal

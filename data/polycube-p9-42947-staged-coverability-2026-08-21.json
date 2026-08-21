@@ -1,0 +1,112 @@
+{
+  "kind": "polycube_p9_42947_staged_coverability_cegar_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "tiling_model": "proper cubic rotations; one fixed root; exact finite face-adjacency coronas",
+  "implementation_commit": "8aa70ff972fceab40e6c05852346b71b81b0448b",
+  "matched_15_cell_encoding_ab": {
+    "random_seed": 198,
+    "minimum_outer_placements": 79,
+    "maximum_outer_placements": 81,
+    "learned_obstruction_clauses": 123,
+    "cell_coverability_constraints": 15,
+    "logical_conflict_edges": 198683,
+    "edge_cnf": {
+      "z3_status": "sat",
+      "outer_placements": 79,
+      "asserted_constraints": 200044,
+      "milliseconds": 23390,
+      "source": "runs/p9-cell-backend-edge-cnf-seed198.json",
+      "source_sha256": "640953beff7532d3d9a2a806e92547c12f779bd32885546547fbcdbf738fe293"
+    },
+    "grouped_pseudo_boolean": {
+      "z3_status": "sat",
+      "outer_placements": 79,
+      "conflict_groups": 3981,
+      "asserted_constraints": 5342,
+      "milliseconds": 14268,
+      "source": "runs/p9-cell-backend-grouped-pb-seed198.json",
+      "source_sha256": "cab7db7d073605f77d05f7863d275553a1815932011b434f2cf247c537fec4a5"
+    },
+    "constraint_reduction_factor": 37.45,
+    "elapsed_time_reduction_fraction": 0.39
+  },
+  "lazy_single_cell_portfolio": {
+    "initial_symmetry_closed_clauses": 108,
+    "final_symmetry_closed_clauses": 141,
+    "final_symmetry_expanded_cell_constraints": 33,
+    "z3_sat_outer_states": 11,
+    "z3_timeout_trials": 5,
+    "exact_dead_outer_states": 11,
+    "immediate_dead_target_obstructions": 11,
+    "resolved_subtree_obstructions": 0,
+    "continuation_nodes": 11,
+    "sources": [
+      {
+        "path": "runs/p9-radius4-to5-z3-cegar-cell79-81-seed190-summary.json",
+        "sha256": "d9a3bbdc7443aacf4957a02736058f46ef9733437072cdae550bc81d72f60362"
+      },
+      {
+        "path": "runs/p9-radius4-to5-z3-cegar-cell-grouped79-81-seed198-summary.json",
+        "sha256": "2896a666eb70169096a8c575746fc8c60fca9ab464f45d6d280b8cfc6e22418f"
+      }
+    ]
+  },
+  "full_single_cell_coverability": {
+    "next_ring_cells_constrained": 180,
+    "lookahead_placements": 6109,
+    "logical_conflict_edges": 1187699,
+    "grouped_conflict_constraints": 4533,
+    "first_sat_proposal": {
+      "random_seed": 209,
+      "outer_placements": 69,
+      "z3_milliseconds": 44845,
+      "asserted_constraints": 6075,
+      "source": "runs/p9-full-coverability-grouped-unbounded-seed209.json",
+      "source_sha256": "969d95e8a21df8153816ff005c19d68697759e02de874d5cd209994df1cac143"
+    }
+  },
+  "full_coverability_cegar_portfolio": {
+    "z3_sat_outer_states": 15,
+    "z3_timeout_trials": 0,
+    "outer_placement_distribution": {
+      "66": 3,
+      "67": 2,
+      "68": 3,
+      "69": 2,
+      "70": 4,
+      "72": 1
+    },
+    "exact_dead_outer_states": 15,
+    "immediate_dead_target_obstructions": 0,
+    "resolved_subtree_obstructions": 15,
+    "continuation_nodes": 51,
+    "maximum_single_continuation_nodes": 7,
+    "final_symmetry_closed_clauses": 186,
+    "final_symmetry_expanded_pair_constraints": 30,
+    "sources": [
+      {
+        "path": "runs/p9-radius4-to5-full-coverability-grouped-seed209-summary.json",
+        "sha256": "d3baed0d9287081d4d60fa4bd1f267b6547766e179321940326a8db290270d77"
+      },
+      {
+        "path": "runs/p9-radius4-to5-full-coverability-grouped-seed210-summary.json",
+        "sha256": "1f0babda8d7516651cad797cbcfc58c6f11bd2b6b4ddcdb35945e8aeb3dbe66c"
+      },
+      {
+        "path": "runs/p9-radius4-to5-full-pair-grouped-seed214-summary.json",
+        "sha256": "533f676cdc2c6ca39636d9cf3f3c66372896598357cfbcb1062623bb5fb3e3ba"
+      },
+      {
+        "path": "runs/p9-radius4-to5-full-pair-grouped-seed218-summary.json",
+        "sha256": "a010d46b35d8d6b807701914a81e97a663248cf529c568ab3b4d3b64b6212cd1"
+      }
+    ]
+  },
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Grouped pseudo-Boolean conflict implications make exact full next-ring single-cell coverability practical enough to propose and independently verify radius-four states. The 15 full-coverability proposals eliminate the previous immediate-dead-cell failure mode and require resolved-subtree GCTS proofs, but all still fail at radius five. Lazy pair constraints raise the best continuation proof to seven nodes. This is stronger finite negative evidence and a better GCTS stress test, not a non-tiling or aperiodicity certificate."
+}

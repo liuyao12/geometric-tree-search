@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v143";
+} from "./engine.js?v=20260821-polycube10-v144";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1482,6 +1482,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_high_copy_cegar_report) {
         const highCopy = candidate.screening;
         candidateResearchDetail.textContent += ` Minimum-copy CEGAR supplies ${highCopy.corona_high_copy_cegar_states_checked} further clause-distinct radius-four states using ${highCopy.corona_high_copy_cegar_minimum_placements}–${highCopy.corona_high_copy_cegar_maximum_placements} surrounding copies. Exact radius-five continuation rejects all of them in ${highCopy.corona_high_copy_cegar_continuation_nodes} aggregate nodes and retains ${highCopy.corona_high_copy_cegar_symmetry_closed_clauses} symmetry-closed clauses. ${highCopy.corona_high_copy_cegar_lightweight_timeout_runs} lightweight and ${highCopy.corona_high_copy_cegar_eager_timeout_runs} one-step-coverable proposal runs time out, so the high-copy space remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_staged_coverability_report) {
+        const staged = candidate.screening;
+        candidateResearchDetail.textContent += ` A grouped pseudo-Boolean encoding compresses ${staged.corona_staged_coverability_logical_conflict_edges.toLocaleString()} exact outer/lookahead conflict implications into ${staged.corona_staged_coverability_grouped_conflicts.toLocaleString()} groups and ${staged.corona_staged_coverability_asserted_constraints.toLocaleString()} total asserted constraints. It supplies ${staged.corona_staged_coverability_states_checked} radius-four states with ${staged.corona_staged_coverability_minimum_placements}–${staged.corona_staged_coverability_maximum_placements} copies in which every next-ring cell is individually coverable. Radius-five GCTS rejects all ${staged.corona_staged_coverability_resolved_subtree_states} through genuine resolved-subtree conflicts in ${staged.corona_staged_coverability_continuation_nodes} aggregate nodes (maximum ${staged.corona_staged_coverability_maximum_continuation_nodes}), while lazy learning grows to ${staged.corona_staged_coverability_pair_constraints} symmetry-expanded pair obligations. No radius-five witness is found and the outer search remains unexhausted.`;
       }
     }
   } else if (knownAperiodic) {
