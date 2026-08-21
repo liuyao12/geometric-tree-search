@@ -73,6 +73,7 @@ const cellOrbitLimit = integerArg("cell-orbit-limit", 0, 0);
 const pairOrbitLimit = integerArg("pair-orbit-limit", 0, 0);
 const tripleOrbitLimit = integerArg("triple-orbit-limit", 1, 0);
 const tripleMaximumCellDistance = integerArg("triple-max-cell-distance", 3, 1);
+const tripleAuditLimit = integerArg("triple-audit-limit", tripleOrbitLimit || 1, 1);
 const quadrupleOrbitLimit = integerArg("quadruple-orbit-limit", 1, 0);
 const quadrupleMaximumCellDistance = integerArg("quadruple-max-cell-distance", 6, 1);
 const bootstrapPairDistance = integerArg("bootstrap-pair-distance", 0, 0);
@@ -316,6 +317,7 @@ process.stdout.write(`${JSON.stringify({
   bootstrap_pair_coverability_constraints: bootstrapPairCount,
   learn_triple_coverability: learnTripleCoverability,
   triple_orbit_limit: tripleOrbitLimit,
+  triple_audit_limit: tripleAuditLimit,
   triple_max_cell_distance: tripleMaximumCellDistance,
   triple_encoding: tripleEncoding,
   initial_triple_coverability_constraints: initialTripleCount,
@@ -509,12 +511,14 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     }
     pairsAdded += added;
   }
-  const incompatibleTripleDetails = (learnTripleCoverability || learnQuadrupleCoverability) && incompatiblePairs.length === 0
+  const incompatibleTripleAudit = (learnTripleCoverability || learnQuadrupleCoverability) && incompatiblePairs.length === 0
     ? polycubeCoronaIncompatibleTargetTripleDetails(candidate.voxels, proposal.corona, outerLayer, {
         maximumCellDistance: tripleMaximumCellDistance,
-        limit: tripleOrbitLimit || 1
+        limit: tripleAuditLimit + 1
       })
     : [];
+  const tripleAuditTruncated = incompatibleTripleAudit.length > tripleAuditLimit;
+  const incompatibleTripleDetails = incompatibleTripleAudit.slice(0, tripleAuditLimit);
   let triplesAdded = 0;
   let tripleOrbitsAdded = 0;
   for (const detail of incompatibleTripleDetails) {
@@ -565,6 +569,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     pair_orbits_added: pairOrbitsAdded,
     pair_coverability_constraints: pairConstraints.length,
     incompatible_target_triples: incompatibleTripleDetails.length,
+    triple_audit_truncated: tripleAuditTruncated,
     selected_triple_candidate_combinations_blocked: incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
     triple_constraints_added: triplesAdded,
     triple_orbits_added: tripleOrbitsAdded,
@@ -635,6 +640,7 @@ const summary = {
   bootstrap_pair_coverability_constraints: bootstrapPairCount,
   learn_triple_coverability: learnTripleCoverability,
   triple_orbit_limit: tripleOrbitLimit,
+  triple_audit_limit: tripleAuditLimit,
   triple_max_cell_distance: tripleMaximumCellDistance,
   triple_encoding: tripleEncoding,
   triple_coverability_triples: tripleConstraints,

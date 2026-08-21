@@ -813,6 +813,7 @@ node scripts/screen-polycube-corona-z3-cegar.mjs \
   --pair-selection=max-blocked-combinations \
   --bootstrap-pair-distance=2 \
   --learn-triple-coverability=true --triple-max-cell-distance=3 \
+  --triple-audit-limit=32 --triple-orbit-limit=0 \
   --triple-encoding=choice-cnf \
   --learn-quadruple-coverability=true --quadruple-max-cell-distance=6 \
   --pair-encoding=witness-cnf
@@ -837,6 +838,9 @@ positive `--bootstrap-pair-distance` adds every next-ring cell-pair obligation
 within that Manhattan distance, closed under the root stabilizer, before the
 first proposal solve. Once a proposal has no incompatible pair,
 `--learn-triple-coverability` can learn a nearby incompatible cell triple.
+`--triple-audit-limit` bounds how many counterexamples are collected from one
+state, while `--triple-orbit-limit=0` admits every collected symmetry orbit;
+each trial records whether the audit hit its bound.
 The default triple choice-CNF selects one available placement per cell and
 forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
 DNF while expressing the same exact condition. Quadruple learning uses the
