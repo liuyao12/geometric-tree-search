@@ -89,6 +89,7 @@ def _cross_fitted_training_votes(
     state_votes = {}
     parent_votes = {}
     endpoint_votes = {}
+    pair_actions = {}
     for heldout_fold in range(5):
         training_parents = tuple(index for index, fold in enumerate(folds)
                                  if fold != heldout_fold)
@@ -117,9 +118,14 @@ def _cross_fitted_training_votes(
                       else result.parent_votes)
         for point, counts in dependency.items():
             endpoint_votes.setdefault(point, Counter()).update(counts)
+        if result.pair_actions is not None:
+            for point, actions in result.pair_actions.items():
+                pair_actions.setdefault(point, []).extend(actions)
     result = MarkedProposalResult(votes, sum(votes.values()), None,
                                   color_votes, target_color_votes,
-                                  state_votes, parent_votes, endpoint_votes)
+                                  state_votes, parent_votes, endpoint_votes,
+                                  {point: tuple(sorted(actions)) for point,
+                                   actions in pair_actions.items()})
     return _without_known_sites(result, first.positions)
 
 
@@ -134,7 +140,9 @@ def _without_known_sites(result, known_positions):
         {point: result.state_votes[point] for point in kept},
         {point: result.parent_votes[point] for point in kept},
         None if result.causal_endpoint_votes is None else
-        {point: result.causal_endpoint_votes[point] for point in kept})
+        {point: result.causal_endpoint_votes[point] for point in kept},
+        None if result.pair_actions is None else
+        {point: result.pair_actions[point] for point in kept})
 
 
 def _calibrated_threshold(scores, targets, precision_floor):

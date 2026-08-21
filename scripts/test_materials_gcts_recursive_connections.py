@@ -28,6 +28,17 @@ class RecursiveConnectionMarkingTest(unittest.TestCase):
                          transformed.accepted_pair_actions)
         self.assertEqual(sorted(original.votes.values()),
                          sorted(transformed.votes.values()))
+        self.assertIsNotNone(original.pair_actions)
+        self.assertIsNotNone(transformed.pair_actions)
+        self.assertEqual(sum(map(len, original.pair_actions.values())),
+                         original.accepted_pair_actions)
+        self.assertEqual(
+            sorted((action.parent_index, action.source_index, action.state)
+                   for actions in original.pair_actions.values()
+                   for action in actions),
+            sorted((action.parent_index, action.source_index, action.state)
+                   for actions in transformed.pair_actions.values()
+                   for action in actions))
 
     def test_frozen_ideal_iqc_marking_recovers_most_next_level(self):
         result = evaluate()

@@ -38,6 +38,19 @@ class RecursiveConnectionState:
     normalized_separation_bin: int
 
 
+@dataclass(frozen=True, order=True)
+class ProposalPairAction:
+    """One exact occurrence-level witness for an aggregated proposal.
+
+    Indices are execution identities only.  Invariant markings must convert a
+    set of these witnesses into colored metric/incidence relations before
+    fitting; raw indices are never semantic vocabulary keys.
+    """
+    parent_index: int
+    source_index: int
+    state: RecursiveConnectionState
+
+
 @dataclass(frozen=True)
 class StateEvidence:
     positive: int
@@ -69,6 +82,9 @@ class MarkedProposalResult:
     # This stays separate from the geometric ``parent_votes`` role because a
     # newly placed source can expose a continuation just as a new parent can.
     causal_endpoint_votes: Mapping[Point, Counter[int]] | None = None
+    # Exact ordered endpoint pairs are retained for incidence certificates.
+    # This is optional to keep synthetic/legacy fixtures backward compatible.
+    pair_actions: Mapping[Point, Tuple[ProposalPairAction, ...]] | None = None
 
 
 @dataclass(frozen=True)
@@ -400,6 +416,7 @@ def propose_with_recursive_marking(
         Counter)
     parent_votes: Dict[Point, Counter[int]] = defaultdict(Counter)
     endpoint_votes: Dict[Point, Counter[int]] = defaultdict(Counter)
+    pair_actions: Dict[Point, list[ProposalPairAction]] = defaultdict(list)
     accepted_pairs = 0
     true_pairs = 0
     parents = tuple(range(len(positions)) if parent_indices is None
@@ -438,12 +455,15 @@ def propose_with_recursive_marking(
             parent_votes[target][parent_index] += 1
             endpoint_votes[target][parent_index] += 1
             endpoint_votes[target][source_index] += 1
+            pair_actions[target].append(ProposalPairAction(
+                parent_index, source_index, state))
             if targets is not None:
                 true_pairs += target in targets
     return MarkedProposalResult(
         votes, accepted_pairs, None if targets is None else true_pairs,
         dict(color_votes), dict(target_color_votes), dict(state_votes),
-        dict(parent_votes), dict(endpoint_votes))
+        dict(parent_votes), dict(endpoint_votes),
+        {point: tuple(sorted(rows)) for point, rows in pair_actions.items()})
 
 
 def consensus_sites(votes: Counter[Point], minimum_votes: int) -> frozenset[Point]:
@@ -462,9 +482,11 @@ def merge_marked_proposal_results(
     states: Dict[Point, Counter[RecursiveConnectionState]] = defaultdict(Counter)
     parents: Dict[Point, Counter[int]] = defaultdict(Counter)
     endpoints: Dict[Point, Counter[int]] = defaultdict(Counter)
+    pairs: Dict[Point, list[ProposalPairAction]] = defaultdict(list)
     accepted_pairs = 0
     true_pairs = 0
     labels_available = True
+    pairs_available = True
     for result in results:
         votes.update(result.votes)
         accepted_pairs += result.accepted_pair_actions
@@ -485,7 +507,14 @@ def merge_marked_proposal_results(
                       else result.parent_votes)
         for point, evidence in dependency.items():
             endpoints[point].update(evidence)
+        if result.pair_actions is None:
+            pairs_available = False
+        else:
+            for point, actions in result.pair_actions.items():
+                pairs[point].extend(actions)
     return MarkedProposalResult(
         votes, accepted_pairs, true_pairs if labels_available else None,
         dict(colors), dict(target_colors), dict(states), dict(parents),
-        dict(endpoints))
+        dict(endpoints), ({point: tuple(sorted(actions))
+                           for point, actions in pairs.items()}
+                          if pairs_available else None))

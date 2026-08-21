@@ -2117,6 +2117,27 @@ The role quotient erased the finite port-instance incidence needed to expose a
 contradiction. The next graph must carry exact symmetry-quotiented port
 instances while keeping candidate geometry and target ordering unchanged.
 
+That finite-instance path is now live. `MarkedProposalResult` preserves the
+exact ordered parent→source occurrence witness for each aggregated proposal
+through filtering and merged frontiers. These indices are execution provenance
+only. The benchmark converts them into endpoint-equality relations and a
+colored normalized distance matrix before serialization; raw indices, global
+coordinates, and lattice axes never become marking keys. Rigid-motion and
+atom-permutation controls preserve the resulting scientific relation.
+
+Every one of the 120 selected wide actions has exactly one ordered pair
+witness. The complete successor frontier is tested under seven fixed instance
+relations matching the earlier semantic vocabulary. The forward-continuation
+certificate retains `57 / 59` exact branches and rejects `26 / 61` false
+branches. Its retained precision is `57 / 92 = 61.96%`, versus `59 / 120 =
+49.17%` before filtering. This is a real contradiction signal created solely
+by restoring finite incidence. It is not yet safe to deploy: two exact
+branches are rejected, and one of nine nuclei with exact supply loses its only
+exact branch. Backward continuation recovers all exact branches but rejects
+only one false branch, so simply unioning relations destroys the gain. The
+next marking must learn a train-only local boundary condition for when absent
+forward continuation is acceptable.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands

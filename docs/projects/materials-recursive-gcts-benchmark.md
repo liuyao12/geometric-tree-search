@@ -4255,6 +4255,52 @@ their incidence; increasing scalar capacity or reweighting the same role
 classes cannot repair this loss. No physical valence, mandatory port occupancy,
 autonomous growth, stationary IQC rule, or exponential claim follows.
 
+### Exact finite port-instance incidence
+
+The proposal engine previously discarded the ordered occurrence pair after it
+incremented an aggregate vote. It now carries an exact `parent_index →
+source_index` witness alongside each proposal through frontier subsetting and
+merging. The indices are never learned features. They are used transiently to
+ask whether a successor action shares the same parent/source occurrence; the
+serialized action class contains only the fixed relation name, colored local
+types, and the complete normalized pair-distance signature of selected and
+successor endpoints. This is invariant to atom permutation, translation, and
+proper rotation, while exact candidate geometry remains independently frozen.
+
+All 120 selected actions in the width-16 portfolio have exactly one ordered
+pair witness. For each action the complete successor frontier is scanned under
+the seven fixed relations used by the earlier semantic audit: reverse,
+forward/backward continuation, same parent/source, and parent/source touch.
+Every certificate search and every successor enumeration completes before
+consumed labels are joined.
+
+The fixed forward relation is the strongest low-loss discriminator:
+
+| finite-instance relation | exact SAT | false SAT | exact UNSAT | false UNSAT |
+| --- | ---: | ---: | ---: | ---: |
+| reverse | 43 | 22 | 16 | 39 |
+| forward | 57 | 35 | 2 | 26 |
+| backward | 59 | 60 | 0 | 1 |
+| same parent | 59 | 61 | 0 | 0 |
+| same source | 56 | 41 | 3 | 20 |
+| touch parent | 59 | 61 | 0 | 0 |
+| touch source | 57 | 43 | 2 | 18 |
+
+Forward continuation therefore retains `96.61%` of exact branches, rejects
+`42.62%` of false branches, and raises retained precision from `49.17%` to
+`61.96%`. The semantic-role cover rejected zero false branches, so restoring
+finite incidence is a material improvement rather than a wider scalar model.
+
+The deployment gate remains red. The two rejected exact branches include the
+only exact branch in one supplied nucleus, reducing exact supply from nine to
+eight nuclei. The permissive backward relation restores all exact branches but
+rejects only one false branch; an unconditional union would erase nearly all
+the gain. The next experiment must freeze a train-only, local boundary/context
+backoff that predicts when missing forward continuation is legitimate. This
+development audit does not select a relation on a fresh confirmation and does
+not claim physical valence, mandatory port occupancy, autonomous growth,
+stationary IQC recurrence, or exponential growth.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement
