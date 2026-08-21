@@ -83,6 +83,10 @@ if (!["wall", "cpu"].includes(engineBudgetClock)) {
 }
 const obstructionLayer = Math.max(1, Math.floor(numberArg("obstruction-layer", 1)));
 const obstructionTimeMs = Math.max(1, numberArg("obstruction-time-ms", 1000));
+const obstructionBudgetClock = String(args.get("obstruction-budget-clock") ?? "wall").toLowerCase();
+if (!["wall", "cpu"].includes(obstructionBudgetClock)) {
+  throw new Error("--obstruction-budget-clock must be wall or cpu");
+}
 const obstructionNogoods = booleanArg("obstruction-nogoods", true);
 const obstructionNogoodLimit = Math.max(1, Math.floor(numberArg("obstruction-nogood-limit", 50_000)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("nodes", 20000)));
@@ -158,6 +162,7 @@ async function obstructionScreen(candidate) {
     layers: obstructionLayer,
     nodeLimit,
     timeLimitMs: obstructionTimeMs,
+    timeBudgetMode: obstructionBudgetClock,
     nogoods: obstructionNogoods,
     nogoodLimit: obstructionNogoodLimit
   });
@@ -192,6 +197,7 @@ process.stdout.write(`${JSON.stringify({
   isohedral_screen: isohedralScreenEnabled,
   engine_budget_clock: engineBudgetClock,
   obstruction_layer: obstructionLayer,
+  obstruction_budget_clock: obstructionBudgetClock,
   stop_after: stopAfter
 })}\n`);
 

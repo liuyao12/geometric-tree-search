@@ -224,6 +224,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const timeLimitMs = Number.isFinite(Number(options.timeLimitMs))
     ? Math.max(1, Number(options.timeLimitMs))
     : Infinity;
+  const timeBudgetMode = options.timeBudgetMode === "cpu" && typeof process !== "undefined"
+    && typeof process.cpuUsage === "function" ? "cpu" : "wall";
   const seed = Math.floor(Number(options.seed) || 0);
   const acceptSolution = typeof options.acceptSolution === "function"
     ? options.acceptSolution
@@ -243,6 +245,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
     return hash;
   };
   const startedAt = performance.now();
+  const cpuStartedAt = timeBudgetMode === "cpu" ? process.cpuUsage() : null;
+  const budgetElapsedMilliseconds = () => {
+    if (timeBudgetMode !== "cpu") return performance.now() - startedAt;
+    const elapsed = process.cpuUsage(cpuStartedAt);
+    return (elapsed.user + elapsed.system) / 1000;
+  };
   const root = voxels.map(cell => cell.slice());
   const rootSet = new Set(root.map(keyOf));
   const orientations = polycubeOrientations(root, { includeReflections });
@@ -644,7 +652,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const overBudget = () => {
     if (nodes >= nodeLimit) { stoppedBy = "node_limit"; return true; }
     if ((nodes === 0 || (nodes & 1023) === 0)
-      && performance.now() - startedAt >= timeLimitMs) {
+      && budgetElapsedMilliseconds() >= timeLimitMs) {
       stoppedBy = "time_limit";
       return true;
     }
@@ -825,6 +833,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     solutions_rejected: solutionsRejected,
     algorithm: "generalized_dancing_links",
     seed,
+    time_budget_clock: timeBudgetMode,
     milliseconds: Math.round(performance.now() - startedAt),
     corona: solution?.map(placement => ({
       orientation_index: placement.orientationIndex,

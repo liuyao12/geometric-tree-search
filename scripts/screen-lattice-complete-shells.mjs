@@ -19,6 +19,8 @@ const numberArg = (name, fallback) => {
 const targetShellDepth = Math.max(1, Math.floor(numberArg("target", 2)));
 const cascade = args.get("cascade") === "true";
 const timeMs = Math.max(50, Math.floor(numberArg("time-ms", 20000)));
+const budgetClock = String(args.get("budget-clock") ?? "wall").toLowerCase();
+if (!["wall", "cpu"].includes(budgetClock)) throw new Error("--budget-clock must be wall or cpu");
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 10000)));
 const outputFile = args.get("output-file") ?? null;
 const includeWitness = args.get("include-witness") === "true";
@@ -39,8 +41,19 @@ if (!seeds.length) seeds.push(1);
 const requestedIds = new Set((args.get("ids") ?? "").split(",").filter(Boolean));
 const excludeCertifiedPeriodic = args.get("exclude-certified-periodic") === "true";
 const candidatesFile = args.get("candidates-file") ?? null;
-const candidatesDocument = candidatesFile
-  ? JSON.parse(await readFile(candidatesFile, "utf8"))
+const candidatesText = candidatesFile ? await readFile(candidatesFile, "utf8") : null;
+const candidatesDocument = candidatesText
+  ? (() => {
+      const trimmed = candidatesText.trim();
+      try {
+        return JSON.parse(trimmed);
+      } catch {
+        // A screening report is newline-delimited JSON rather than one JSON
+        // document. Keep only its candidate rows below.
+      }
+      return trimmed.split(/\r?\n/).filter(Boolean).map(line => JSON.parse(line))
+        .filter(record => record.type === "candidate");
+    })()
   : null;
 const candidatePool = candidatesDocument
   ? (candidatesDocument.survivors ?? candidatesDocument.candidates ?? candidatesDocument.rows ?? candidatesDocument)
@@ -105,12 +118,16 @@ const patchHash = placements => createHash("sha256")
   .slice(0, 16);
 
 const configFor = (candidate, seed, targetDepth, initialPatchSelection) => ({
-  mode_key: "cube",
+  mode_key: "custom",
   custom_system: {
     name: `Complete-shell screen ${candidate.id}`,
     figure_refs: [],
-    polycubes: [],
-    polyhedra: [{ name: `Candidate ${candidate.id}`, vertices: candidate.vertices }],
+    polycubes: Array.isArray(candidate.voxels)
+      ? [{ name: `Candidate ${candidate.id}`, voxels: candidate.voxels }]
+      : [],
+    polyhedra: Array.isArray(candidate.vertices)
+      ? [{ name: `Candidate ${candidate.id}`, vertices: candidate.vertices }]
+      : [],
     polycube_lattice: "z3"
   },
   criterion: "shell",
@@ -140,6 +157,7 @@ const configFor = (candidate, seed, targetDepth, initialPatchSelection) => ({
   candidate_cap: null,
   node_limit: nodeLimit,
   time_limit_ms: timeMs,
+  time_budget_clock: budgetClock,
   random_seed: seed,
   seeded_tie_breaks: seededTieBreaks,
   ...(initialPatchSelection?.placements
@@ -323,13 +341,16 @@ const byCandidate = candidates.map(candidate => {
 });
 const report = {
   schemaVersion: 1,
-  kind: "lattice_polyhedron_complete_shell_screen",
+  kind: candidates.some(candidate => Array.isArray(candidate.voxels))
+    ? "lattice_tile_complete_shell_screen"
+    : "lattice_polyhedron_complete_shell_screen",
   generatedAt: new Date().toISOString(),
   configuration: {
     targetShellDepth,
     includeMirrors,
     cascade,
     timeMs,
+    budgetClock,
     nodeLimit,
     seeds,
     failureMemo,

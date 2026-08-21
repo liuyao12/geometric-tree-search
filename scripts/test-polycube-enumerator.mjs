@@ -380,9 +380,11 @@ const extendedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {
   layers: 2,
   fixedPlacements: cubeCorona.corona,
   nodeLimit: 1000,
-  timeLimitMs: 1000
+  timeLimitMs: 1000,
+  timeBudgetMode: "cpu"
 });
 assert.equal(extendedCubeCorona.success, true, "a fixed first cube corona must extend to radius two");
+assert.equal(extendedCubeCorona.time_budget_clock, "cpu");
 assert.equal(extendedCubeCorona.fixed_placements, 6);
 assert.equal(extendedCubeCorona.resolved_fixed_conflict, null);
 const rejectedCubeCorona = searchPolycubeCorona([[0, 0, 0]], {

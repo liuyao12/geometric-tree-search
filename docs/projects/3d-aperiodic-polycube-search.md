@@ -114,6 +114,8 @@ The engine-backed translational and isohedral lanes have the analogous
 `--engine-budget-clock=cpu` option for parallel headless shards. Interactive
 runs retain wall-clock limits, so pausing or an overloaded browser cannot make
 a nominally bounded UI run consume unbounded elapsed time.
+The exact-corona stage likewise accepts `--obstruction-budget-clock=cpu`, and
+the standalone complete-shell GCTS screener accepts `--budget-clock=cpu`.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately
