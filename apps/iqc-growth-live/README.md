@@ -2420,4 +2420,33 @@ the obligation vocabulary, not a missing-candidate failure; the target is now
 consumed and will not be retried. Default search commitment, autonomous growth,
 recursive promotion, stationarity, and exponential claims remain disabled.
 
+### Obligation backoff and soft temporal metrics
+
+A target-free companion fixture reconstructs the consumed confirmation's
+`8 → 40 → 152` candidate tree, 13 retained sixteen-step trajectories, and
+published candidate/portfolio/receipt hashes without importing or constructing
+the target. New marking representations rank this fixture first; only then is
+the already-published partial ordering joined.
+
+An exact→role-shape→aggregate backoff improves recognized-state coverage on
+the published-known exact branch from `12.5%` to `75%`, but grouped selection
+has `p = .1875` and the branch moves from rank 5 to rank 8. A 270-coordinate
+colored role metric and a 1,620-coordinate order-sensitive metric then replace
+state equality with bounded proper-motion-invariant discharge, contradiction,
+relation, and timing channels:
+
+| obligation representation | heldout AUC | exact top actions | top-action p | consumed known-exact rank |
+| --- | ---: | ---: | ---: | ---: |
+| pooled role channels | `.8637` | 8 / 10 | `.50` | 13 |
+| ordered temporal bins | `.7498` | 8 / 10 | `.50` | 8 |
+
+For both models the AUC and log-loss plus-one p-values are `.03125`, showing
+that the coordinates contain a real ranking signal. They nevertheless fail
+the discrete decision the executor needs: top-action selection is reproduced
+by shuffled labels, and known false actions outrank the known exact action in
+the consumed spatial transfer. Neither model is installed, no target is
+reopened, and no fresh confirmation, autonomous, stationary, or exponential
+claim is made. The next dataset must add independently ambiguous nuclei rather
+than tune more capacity on this consumed ten-group corpus.
+
 Serve the repository root and open `/iqc-growth-live/`.

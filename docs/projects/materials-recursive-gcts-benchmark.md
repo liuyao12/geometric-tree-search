@@ -4722,3 +4722,34 @@ the single target call. The target was used only for final scoring. Candidate
 supply is therefore not the blocker: the finite state vocabulary shifts too
 strongly to the disjoint nucleus. The target is consumed, no retry or posthoc
 threshold is allowed, and the automaton is rejected as a default GCTS policy.
+
+### Obligation backoff and order-sensitive value audit
+
+The consumed confirmation now has a separate target-free trajectory receipt.
+It reproduces candidate counts `8 → 40 → 152`, all 13 retained trajectories,
+and the original candidate, portfolio, and execution hashes without rebuilding
+the target. New models freeze their complete ordering against this receipt;
+only then is the published partial label ordering joined.
+
+The first train-only repair is a finite exact→role-shape→aggregate backoff. It
+raises recognized-state coverage for the published-known exact branch from
+`.125` to `.75`, but fails the causal selection control (`p=.1875`) and moves
+the branch from rank 5 to rank 8. Two softer ID-free metrics were then audited:
+
+| grouped obligation audit | pooled role | ordered temporal |
+| --- | ---: | ---: |
+| selected feature count | 270 | 1,620 |
+| heldout AUC | `.863712` | `.749792` |
+| heldout log-loss | `.501003` | `.551357` |
+| AUC / log-loss shuffle p | `.03125 / .03125` | `.03125 / .03125` |
+| exact top actions | 8 / 10 | 8 / 10 |
+| top-action shuffle median / p | `7 / .50` | `7 / .50` |
+| consumed known-exact rank | 13 | 8 |
+
+The distinction matters: both coordinate systems contain statistically real
+group-heldout discrimination, but neither validates the discrete branch choice
+that growth requires. Candidate geometry and exact certificates remain fixed,
+the consumed target is not reconstructed or reopened, and neither score is
+deployed. More independent ambiguous nuclei—not posthoc retuning on the same
+ten groups—are required before another confirmation or clusters-of-clusters
+growth claim is eligible.
