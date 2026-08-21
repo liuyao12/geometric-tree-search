@@ -337,6 +337,10 @@ const archivedPolycubeContactPropagation = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-contact-propagation-2026-08-20.json", import.meta.url),
   "utf8"
 ));
+const archivedPolycubeConditionalContactTransitions = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-conditional-contact-transitions-2026-08-20.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1320,6 +1324,26 @@ assert.equal(
   survivors[0].census_candidate.screening.corona_contact_propagation_report,
   "data/polycube-volume9-contact-propagation-2026-08-20.json"
 );
+assert.equal(archivedPolycubeConditionalContactTransitions.reciprocal_incoming_orbits, 12);
+assert.equal(archivedPolycubeConditionalContactTransitions.inactive_incoming_orbits, 9);
+assert.equal(archivedPolycubeConditionalContactTransitions.active_incoming_orbits, 3);
+assert.equal(archivedPolycubeConditionalContactTransitions.possible_transition_edges, 134);
+assert.equal(archivedPolycubeConditionalContactTransitions.seed_replays_agree, true);
+assert.equal(archivedPolycubeConditionalContactTransitions.all_incoming_orbits_extendable, true);
+assert.equal(
+  archivedPolycubeConditionalContactTransitions.all_inactive_incoming_orbits_require_an_outgoing_active_contact,
+  true
+);
+assert.equal(archivedPolycubeConditionalContactTransitions.inactive_rules_only_require_any_possible_state, true);
+assert.equal(archivedPolycubeConditionalContactTransitions.all_active_incoming_orbits_can_terminate, true);
+assert.deepEqual(archivedPolycubeConditionalContactTransitions.terminating_active_incoming_orbits, [1, 6, 11]);
+assert.equal(
+  survivors[0].census_candidate.screening.corona_contact_conditional_report,
+  "data/polycube-volume9-conditional-contact-transitions-2026-08-20.json"
+);
+assert.equal(survivors[0].census_candidate.screening.corona_contact_reciprocal_incoming_orbits, 12);
+assert.equal(survivors[0].census_candidate.screening.corona_contact_conditional_transition_edges, 134);
+assert.equal(survivors[0].census_candidate.screening.corona_contact_radius_one_forces_unbounded_chain, false);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);

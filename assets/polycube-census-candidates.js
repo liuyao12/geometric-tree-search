@@ -68,7 +68,13 @@ const records = [
       corona_contact_propagation_report: "data/polycube-volume9-contact-propagation-2026-08-20.json",
       corona_contact_active_to_active_placements: 9,
       corona_contact_reciprocal_cycles: 2,
-      corona_contact_cycle_completed_radius: 4
+      corona_contact_cycle_completed_radius: 4,
+      corona_contact_conditional_report: "data/polycube-volume9-conditional-contact-transitions-2026-08-20.json",
+      corona_contact_reciprocal_incoming_orbits: 12,
+      corona_contact_conditional_transition_edges: 134,
+      corona_contact_inactive_incoming_orbits: 9,
+      corona_contact_terminating_active_incoming_orbits: 3,
+      corona_contact_radius_one_forces_unbounded_chain: false
     },
     shell_screening: {
       robust_completed_shell: 4,

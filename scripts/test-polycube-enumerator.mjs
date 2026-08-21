@@ -64,6 +64,7 @@ assert.equal(unresolvedContactTypeKeys.length, 69);
 const unresolvedContactTypeId = new Map(unresolvedContactTypeKeys.map((key, index) => [key, index]));
 const activeContactTypes = new Set([3, 25, 29, 43, 44, 53]);
 const activeReciprocalEdges = new Map();
+const activeReciprocalPlacementOrbits = new Map();
 for (const placement of unresolvedFirstCoronaCatalog) {
   const from = unresolvedContactTypeId.get(polycubeRootContactKey(unresolvedP9.voxels, placement));
   if (!activeContactTypes.has(from)) continue;
@@ -73,6 +74,8 @@ for (const placement of unresolvedFirstCoronaCatalog) {
     orientation.key === polycubeKey(reciprocal.cells)
   ));
   const to = unresolvedContactTypeId.get(polycubeRootContactKey(unresolvedP9.voxels, reciprocal));
+  const reciprocalOrbit = polycubePlacementOrbitKeys(unresolvedP9.voxels, reciprocal)[0];
+  activeReciprocalPlacementOrbits.set(reciprocalOrbit, to);
   const key = `${from}->${to}`;
   activeReciprocalEdges.set(key, (activeReciprocalEdges.get(key) ?? 0) + 1);
 }
@@ -80,6 +83,11 @@ assert.deepEqual([...activeReciprocalEdges].sort(), [
   ["25->36", 3], ["29->29", 3], ["3->44", 3], ["43->0", 3], ["43->17", 3],
   ["43->54", 3], ["43->58", 9], ["43->63", 3], ["44->3", 3], ["53->42", 3]
 ].sort());
+assert.equal(activeReciprocalPlacementOrbits.size, 12);
+assert.equal([...activeReciprocalPlacementOrbits.values()].filter(type => activeContactTypes.has(type)).length, 3);
+assert.deepEqual([...new Set(activeReciprocalPlacementOrbits.values())].sort((left, right) => left - right), [
+  0, 3, 17, 29, 36, 42, 44, 54, 58, 63
+]);
 const unresolvedFirstCorona = searchPolycubeCorona(unresolvedP9.voxels, {
   layers: 1,
   nodeLimit: 100_000,

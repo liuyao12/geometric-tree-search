@@ -569,6 +569,18 @@ tile: type 3 pairs with 44, and type 29 pairs with itself. Fixing representative
 tiling, but they rule out claiming that the six-state disjunction alone forces a
 hierarchy. See `data/polycube-volume9-contact-propagation-2026-08-20.json`.
 
+Conditioning the same rule on the contact seen by the neighboring tile produces
+12 reciprocal incoming placement orbits. Exact radius-one searches and 753
+subset-exhaustion trials give a dense graph with 134 possible orbit-to-orbit
+edges. All nine inactive incoming orbits require another active contact, but
+their minimum forced type set is only the full set of geometrically possible
+outgoing types. More decisively, each of the three active incoming orbits has
+an independently verified corona with no further active contact. The local
+transition graph contains cycles, but it also has these terminating states, so
+the six-contact rule cannot force an unbounded chain or hierarchy. Seeded
+replays 0 and 7 agree exactly. See
+`data/polycube-volume9-conditional-contact-transitions-2026-08-20.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.
