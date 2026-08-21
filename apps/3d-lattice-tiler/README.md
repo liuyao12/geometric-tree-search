@@ -65,10 +65,14 @@ independent workers:
    inconclusive and the displayed patch rolls back to the root.
 
 The interactive Plotly growth chart uses one wall clock for all four workers.
-Every plotted sample retains its exact 3D snapshot: clicking a marker replays
-that historical patch, while clicking empty chart space restores the latest
-patch for that marker's mode. Selecting a mode also switches the viewport to
-its latest patch without stopping the other searches.
+It records every tile-count transition, including downward backtracking steps,
+instead of plotting only record highs. Geometry deltas are transferred in
+200-ms batches and UI refreshes are coalesced to at most one every 300 ms, so
+retaining the history does not force Plotly to redraw inside the solver's hot
+loop. Clicking a marker replays that historical patch, the
+left and right arrows walk the displayed lane's history, and clicking empty
+chart space restores that lane's current patch. Selecting a mode also switches
+the viewport to its latest patch without stopping the other searches.
 An exhausted isohedral search drops to zero and restores the root view. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an
 explicit search cap.

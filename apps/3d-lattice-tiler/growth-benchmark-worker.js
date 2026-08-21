@@ -6,6 +6,8 @@ import {
 
 let activeSequence = 0;
 let stopToken = { stop: false };
+const HISTORY_BATCH_LIMIT = 256;
+const HISTORY_BATCH_INTERVAL_MS = 200;
 
 const MODES = {
   free_range: {
@@ -138,6 +140,23 @@ async function runMode(sequence, baseConfig, mode) {
   let terminalSnapshot = null;
   let checkedPatchSize = 0;
   const points = [];
+  let lastHistoryTileCount = null;
+  let lastHistoryFlushAt = performance.now();
+  let pendingHistorySamples = [];
+  const flushHistory = () => {
+    if (!pendingHistorySamples.length) return;
+    post(sequence, { type: "sample-batch", samples: pendingHistorySamples });
+    pendingHistorySamples = [];
+    lastHistoryFlushAt = performance.now();
+  };
+  const queueHistory = sample => {
+    points.push(sample.point);
+    pendingHistorySamples.push(sample);
+    if (
+      pendingHistorySamples.length >= HISTORY_BATCH_LIMIT
+      || performance.now() - lastHistoryFlushAt >= HISTORY_BATCH_INTERVAL_MS
+    ) flushHistory();
+  };
   post(sequence, { type: "series-start", mode: effectiveMode });
   for await (const message of createTilingStream(config, tileSpecs, stopToken)) {
     if (stopToken.stop || sequence !== activeSequence) return null;
@@ -169,12 +188,23 @@ async function runMode(sequence, baseConfig, mode) {
     if (message.search_stats) latestStats = message.search_stats;
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     const tiles = snapshot?.tile_count ?? 0;
-    if ((message.type === "full_update" || message.type === "node_snapshot") && tiles > best) {
-      best = tiles;
+    if (message.type === "placement_delta" && tiles !== lastHistoryTileCount) {
       const point = { milliseconds: Math.round(performance.now() - started), tiles };
-      points.push(point);
-      if (mode.id === "gcts" && Array.isArray(snapshot?.placements)) bestSnapshot = snapshot;
-      post(sequence, { type: "sample", mode: mode.id, point, snapshot });
+      queueHistory({ point, delta: message });
+      lastHistoryTileCount = tiles;
+      best = Math.max(best, tiles);
+    } else if (message.type === "full_update") {
+      if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount) {
+        const point = { milliseconds: Math.round(performance.now() - started), tiles };
+        queueHistory({ point, snapshot });
+        lastHistoryTileCount = tiles;
+        best = Math.max(best, tiles);
+      }
+      if (
+        mode.id === "gcts"
+        && Array.isArray(snapshot?.placements)
+        && (!bestSnapshot || tiles >= (bestSnapshot.tile_count ?? 0))
+      ) bestSnapshot = snapshot;
     }
     if (message.type === "full_update") terminalSnapshot = message;
     if (message.type === "finished") final = message;
@@ -186,9 +216,9 @@ async function runMode(sequence, baseConfig, mode) {
     : priorProgram;
   if (mode.id === "isohedral" && final?.success === false) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
-    points.push(point);
-    post(sequence, { type: "sample", mode: mode.id, point, snapshot: terminalSnapshot });
+    queueHistory({ point, snapshot: terminalSnapshot });
   }
+  flushHistory();
   const result = {
     mode: mode.id,
     label: effectiveMode.label,

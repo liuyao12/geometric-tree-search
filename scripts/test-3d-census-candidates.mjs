@@ -135,6 +135,11 @@ assert.deepEqual(
 assert.match(growthWorkerSource, /id: "free_range"[\s\S]*?label: "Free-range"/);
 assert.match(growthWorkerSource, /id: "gcts"[\s\S]*?label: "GCTS"[\s\S]*?strategy: "learning_free_range"/);
 assert.match(growthAppSource, /All four modes finished\./);
+assert.match(growthWorkerSource, /message\.type === "placement_delta" && tiles !== lastHistoryTileCount/);
+assert.match(growthWorkerSource, /type: "sample-batch"/);
+assert.doesNotMatch(growthWorkerSource, /tiles > best/);
+assert.match(sourceTilerHtml, /id="growthHistoryBack"[\s\S]*?id="growthHistoryForward"/);
+assert.match(growthAppSource, /function stepGrowthHistory\(direction\)/);
 assert.doesNotMatch(sourceTilerHtml, /Learning Free-range/);
 assert.match(sourceTilerHtml, /<b>GCTS<\/b>/);
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");

@@ -66,6 +66,8 @@ const viewport = $("viewport");
 const elapsedTime = $("elapsedTime");
 const growthChart = $("growthChart");
 const growthViewState = $("growthViewState");
+const growthHistoryBack = $("growthHistoryBack");
+const growthHistoryForward = $("growthHistoryForward");
 const growthBenchmarkStatus = $("growthBenchmarkStatus");
 
 const metricTiles = $("metricTiles");
@@ -223,6 +225,8 @@ let growthPlotClickBound = false;
 let growthPlotBackgroundBound = false;
 let growthPointerWasNearPoint = false;
 let growthPlotRevision = 0;
+let growthUiRefreshTimer = null;
+let growthUiRefreshShowCurrent = false;
 const PROPOSAL_CACHE_STORAGE_KEY = "gcts-3d-learned-proposals-v2";
 const readProposalCache = () => {
   try {
@@ -2944,13 +2948,151 @@ function activateGrowthMode(modeId) {
   updateStrategyUI();
 }
 
+function growthHistorySnapshotIndices(series) {
+  return (series?.points ?? [])
+    .map((point, index) => point?.historySnapshot || point?.historyDelta || point?.snapshot ? index : null)
+    .filter(index => index !== null);
+}
+
+function createGrowthHistoryModel(snapshot) {
+  const faceStacks = new Map();
+  for (let index = 0; index < (snapshot?.faces ?? []).length; index += 1) {
+    const face = snapshot.faces[index];
+    const key = displayFaceKey(face, index);
+    if (!faceStacks.has(key)) faceStacks.set(key, []);
+    faceStacks.get(key).push({ ...face, key, v: (face.v ?? []).map(vertex => vertex.slice()) });
+  }
+  const frontierPoints = new Map((snapshot?.frontier_points ?? []).map(point => [
+    frontierPointKey(point),
+    { ...point, pos: point.pos?.slice() }
+  ]));
+  return {
+    faceStacks,
+    frontierPoints,
+    tile_count: snapshot?.tile_count ?? 0,
+    tile_counts: snapshot?.tile_counts ?? [],
+    frontier_stats: snapshot?.frontier_stats ?? null,
+    search_stats: snapshot?.search_stats ?? null
+  };
+}
+
+function applyGrowthHistoryDelta(model, delta) {
+  if (!model || !delta) return model;
+  const frontierKeys = delta.frontier_face_keys ?? [];
+  const coveredKeys = delta.covered_face_keys ?? [];
+  if (delta.action === "add") {
+    for (const key of coveredKeys) {
+      for (const face of model.faceStacks.get(key) ?? []) face.internal = true;
+    }
+    for (const face of delta.faces ?? []) {
+      const key = displayFaceKey(face);
+      if (!model.faceStacks.has(key)) model.faceStacks.set(key, []);
+      model.faceStacks.get(key).push({ ...face, key, v: (face.v ?? []).map(vertex => vertex.slice()) });
+    }
+  } else if (delta.action === "remove") {
+    for (const key of [...frontierKeys, ...coveredKeys]) {
+      const stack = model.faceStacks.get(key);
+      if (!stack) continue;
+      stack.pop();
+      if (!stack.length) model.faceStacks.delete(key);
+    }
+    for (const key of coveredKeys) {
+      const stack = model.faceStacks.get(key);
+      if (stack?.length === 1) stack[0].internal = false;
+    }
+  }
+  for (const point of delta.lattice_updates ?? []) {
+    const key = frontierPointKey(point);
+    if (point.frontier) model.frontierPoints.set(key, { ...point, pos: point.pos?.slice() });
+    else model.frontierPoints.delete(key);
+  }
+  model.tile_count = delta.tile_count ?? model.tile_count;
+  model.tile_counts = delta.tile_counts ?? model.tile_counts;
+  model.frontier_stats = delta.frontier_stats ?? model.frontier_stats;
+  model.search_stats = delta.search_stats ?? model.search_stats;
+  return model;
+}
+
+function growthSnapshotFromModel(model) {
+  if (!model) return null;
+  return {
+    type: "full_update",
+    tile_count: model.tile_count,
+    tile_counts: model.tile_counts,
+    faces: [...model.faceStacks.values()].flat().map(face => ({
+      ...face,
+      v: (face.v ?? []).map(vertex => vertex.slice())
+    })),
+    frontier_points: [...model.frontierPoints.values()].map(point => ({
+      ...point,
+      pos: point.pos?.slice()
+    })),
+    frontier_stats: model.frontier_stats,
+    search_stats: model.search_stats
+  };
+}
+
+function growthSnapshotAt(series, pointIndex) {
+  if (!Number.isInteger(pointIndex)) return series?.snapshot ?? null;
+  let model = null;
+  for (let index = 0; index <= pointIndex; index += 1) {
+    const point = series?.points?.[index];
+    if (point?.historySnapshot) model = createGrowthHistoryModel(point.historySnapshot);
+    else if (point?.historyDelta) model = applyGrowthHistoryDelta(model, point.historyDelta);
+    else if (point?.snapshot) model = createGrowthHistoryModel(point.snapshot);
+  }
+  return growthSnapshotFromModel(model);
+}
+
+function appendGrowthHistorySamples(series, samples) {
+  for (const sample of samples ?? []) {
+    const point = {
+      ...sample.point,
+      historySnapshot: sample.snapshot ?? null,
+      historyDelta: sample.delta ?? null
+    };
+    series.points.push(point);
+    if (sample.snapshot) series.historyModel = createGrowthHistoryModel(sample.snapshot);
+    else if (sample.delta) series.historyModel = applyGrowthHistoryDelta(series.historyModel, sample.delta);
+  }
+  series.snapshot = growthSnapshotFromModel(series.historyModel) ?? series.snapshot;
+}
+
+function updateGrowthHistoryButtons() {
+  const modeId = growthInspection.modeId ?? selectedGrowthMode();
+  const indices = growthHistorySnapshotIndices(growthSeries.get(modeId));
+  const position = growthInspection.pointIndex == null
+    ? indices.length
+    : indices.indexOf(growthInspection.pointIndex);
+  growthHistoryBack.disabled = !indices.length || position <= 0;
+  growthHistoryForward.disabled = growthInspection.pointIndex == null;
+}
+
+function stepGrowthHistory(direction) {
+  const modeId = growthInspection.modeId ?? selectedGrowthMode();
+  const indices = growthHistorySnapshotIndices(growthSeries.get(modeId));
+  if (!indices.length) return;
+  const position = growthInspection.pointIndex == null
+    ? indices.length
+    : indices.indexOf(growthInspection.pointIndex);
+  if (direction < 0) {
+    if (position <= 0) return;
+    showGrowthSnapshot(modeId, indices[position - 1]);
+  } else {
+    if (growthInspection.pointIndex == null) return;
+    const nextPosition = position + 1;
+    showGrowthSnapshot(modeId, nextPosition < indices.length ? indices[nextPosition] : null);
+  }
+  renderGrowthChart();
+}
+
 function showGrowthSnapshot(modeId, pointIndex = null) {
   const series = growthSeries.get(modeId);
   const inspectedPoint = Number.isInteger(pointIndex) ? series?.points?.[pointIndex] : null;
-  const snapshot = inspectedPoint?.snapshot ?? (pointIndex == null ? series?.snapshot : null);
+  const snapshot = growthSnapshotAt(series, Number.isInteger(pointIndex) ? pointIndex : null);
   growthInspection = {
     modeId,
-    pointIndex: inspectedPoint?.snapshot ? pointIndex : null
+    pointIndex: inspectedPoint && snapshot ? pointIndex : null
   };
   const modeLabel = series?.mode?.label
     ?? GROWTH_MODES.find(mode => mode.id === modeId)?.label
@@ -2960,6 +3102,7 @@ function showGrowthSnapshot(modeId, pointIndex = null) {
   } else {
     growthViewState.textContent = `Sample · ${modeLabel} · ${inspectedPoint.tiles} tiles at ${(inspectedPoint.milliseconds / 1000).toFixed(2)}s`;
   }
+  updateGrowthHistoryButtons();
   if (!snapshot) return;
   if (series.prototileInfo) initTileControls(series.prototileInfo);
   lastSnapshot = snapshot;
@@ -2974,6 +3117,18 @@ function showGrowthSnapshot(modeId, pointIndex = null) {
 function showSelectedGrowthSnapshot() {
   const modeId = selectedGrowthMode();
   showGrowthSnapshot(modeId, null);
+}
+
+function scheduleGrowthUiRefresh({ showCurrent = false } = {}) {
+  growthUiRefreshShowCurrent ||= showCurrent;
+  if (growthUiRefreshTimer) return;
+  growthUiRefreshTimer = setTimeout(() => {
+    growthUiRefreshTimer = null;
+    const shouldShowCurrent = growthUiRefreshShowCurrent;
+    growthUiRefreshShowCurrent = false;
+    if (shouldShowCurrent) showSelectedGrowthSnapshot();
+    renderGrowthChart();
+  }, 300);
 }
 
 function handleGrowthPlotClick(event) {
@@ -3007,6 +3162,7 @@ async function renderGrowthChart() {
   const plotly = window.Plotly;
   const revision = ++growthPlotRevision;
   const allPoints = [...growthSeries.values()].flatMap(series => series.points ?? []);
+  updateGrowthHistoryButtons();
   if (!plotly?.react) {
     growthChart.replaceChildren();
     const fallback = document.createElement("div");
@@ -3315,7 +3471,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-polycube10-v118", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-polycube10-v120", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3329,6 +3485,14 @@ function startGrowthBenchmark() {
         series.prototileInfo = message.info;
       } else if (message.type === "mode-status") {
         series.status = message.text;
+      } else if (message.type === "sample-batch") {
+        appendGrowthHistorySamples(series, message.samples);
+        scheduleGrowthUiRefresh({ showCurrent:
+          selectedGrowthMode() === mode.id
+          && growthInspection.modeId === mode.id
+          && growthInspection.pointIndex == null
+          && series.snapshot
+        });
       } else if (message.type === "sample") {
         series.points.push({ ...message.point, snapshot: message.snapshot ?? null });
         if (message.snapshot) series.snapshot = message.snapshot;
@@ -3434,6 +3598,8 @@ function bindControls() {
     if (growthRunning) stopGrowthBenchmark();
     else startGrowthBenchmark();
   });
+  growthHistoryBack.addEventListener("click", () => stepGrowthHistory(-1));
+  growthHistoryForward.addEventListener("click", () => stepGrowthHistory(1));
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
