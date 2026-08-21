@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260820-polycube9-v106";
+import { tileSpecs } from "./engine.js?v=20260820-polycube9-v107";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -812,6 +812,11 @@ function sortCatalogFigures(groupId, figures) {
   return figures.slice().sort((a, b) => {
     if (groupId === "unresolved") {
       return (a.census_candidate?.survivor_priority ?? Infinity) - (b.census_candidate?.survivor_priority ?? Infinity);
+    }
+    if (groupId === "periodic-controls") {
+      const polycubeDelta = Number(b.census_candidate?.kind === "polycube_census")
+        - Number(a.census_candidate?.kind === "polycube_census");
+      if (polycubeDelta !== 0) return polycubeDelta;
     }
     if (groupId === "polycubes") {
       const cubeDelta = polycubeCubeCount(a) - polycubeCubeCount(b);
