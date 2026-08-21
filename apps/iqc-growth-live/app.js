@@ -1637,6 +1637,28 @@ function recommendedChannelsForCluster(cluster) {
   return Math.min(12, Math.max(3, 2 + clusterPosePortRank(cluster)));
 }
 
+function centeredPeriodicSupport(source, support) {
+  if (!support.length) return [];
+  const anchor = source[support[0]];
+  const vectors = support.map((atomIndex) => periodicDisplacement(anchor, source[atomIndex]));
+  const centroid = vectors.reduce((sum, vector) => sum.add(vector), new THREE.Vector3())
+    .multiplyScalar(1 / vectors.length);
+  return vectors.map((vector) => vector.clone().sub(centroid));
+}
+
+function unwrappedRingSupport(source, waters, ring) {
+  if (!ring.length) return [];
+  const vectors = [new THREE.Vector3()];
+  for (let index = 1; index < ring.length; index++) {
+    const previous = source[waters[ring[index - 1]].center];
+    const current = source[waters[ring[index]].center];
+    vectors.push(vectors[index - 1].clone().add(periodicDisplacement(previous, current)));
+  }
+  const centroid = vectors.reduce((sum, vector) => sum.add(vector), new THREE.Vector3())
+    .multiplyScalar(1 / vectors.length);
+  return vectors.map((vector) => vector.clone().sub(centroid));
+}
+
 function buildWaterClusterCover(source) {
   const oxygen = source.map((atom, index) => atom.species === "O" ? index : -1).filter((index) => index >= 0);
   const hydrogen = source.map((atom, index) => atom.species === "H" ? index : -1).filter((index) => index >= 0);
@@ -1696,14 +1718,20 @@ function buildWaterClusterCover(source) {
   }));
   const placements = [...waters, ...bridges, ...gaps];
   const coveredAtoms = new Set(waters.flatMap((placement) => placement.support));
+  const waterSupport = waters[0]?.support || [];
+  const bridgeSupport = bridges[0]?.support || [];
+  const ringSupport = gaps[0]?.ring?.map((waterIndex) => waters[waterIndex].center) || [];
   const types = [
     { type: 0, medoid: waters[0]?.center || 0, element: "H₂O", label: "H₂O molecule", geometry: "bent molecular face",
-      count: waters.length, visualKind: "molecule", customSupport: waters[0]?.support || [] },
+      count: waters.length, visualKind: "molecule", customSupport: waterSupport,
+      customVectors: centeredPeriodicSupport(source, waterSupport) },
     { type: 1, medoid: bridges[0]?.center || 0, element: "2 H₂O", label: "hydrogen-bond bridge", geometry: "connection polyhedron",
-      count: bridges.length, visualKind: "bridge", customSupport: bridges[0]?.support || [] },
+      count: bridges.length, visualKind: "bridge", customSupport: bridgeSupport,
+      customVectors: centeredPeriodicSupport(source, bridgeSupport) },
     { type: 2, medoid: gaps[0]?.center || 0, element: "O₆ void", label: "six-water ring void", geometry: "void-boundary polyhedron",
       count: gaps.length, visualKind: "ring", gap: true,
-      customSupport: gaps[0]?.ring?.map((waterIndex) => waters[waterIndex].center) || [] },
+      customSupport: ringSupport,
+      customVectors: unwrappedRingSupport(source, waters, gaps[0]?.ring || []) },
   ].filter((type) => type.customSupport.length);
   const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
   return { placements, residualTypes: [], types, incidence, covered: coveredAtoms.size,
@@ -1867,9 +1895,17 @@ function drawClusterGallery(now) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     const center = referenceAtoms[cluster.medoid];
     let sites = [{ vector: new THREE.Vector3(), atom: center }];
-    if (cluster.customSupport) sites = cluster.customSupport.map((atomIndex) => ({
-      vector: periodicDisplacement(center, referenceAtoms[atomIndex]), atom: referenceAtoms[atomIndex],
-    }));
+    if (cluster.customSupport) {
+      sites = cluster.customSupport.map((atomIndex, index) => ({
+        vector: cluster.customVectors?.[index]?.clone() || periodicDisplacement(center, referenceAtoms[atomIndex]),
+        atom: referenceAtoms[atomIndex],
+      }));
+      if (!cluster.customVectors?.length) {
+        const centroid = sites.reduce((sum, site) => sum.add(site.vector), new THREE.Vector3())
+          .multiplyScalar(1 / sites.length);
+        sites.forEach((site) => site.vector.sub(centroid));
+      }
+    }
     else if (!cluster.residual) learnedClusters.environments[cluster.medoid].shell
       .filter((neighbor) => neighbor.r <= motifShellCutoff())
       .forEach((neighbor) => sites.push(neighbor));
@@ -1907,10 +1943,10 @@ function drawClusterGallery(now) {
     });
     projected.sort((first, second) => first.z - second.z).forEach((point) => {
       const record = elementRecord(point.atom.species);
-      const radius = (point.index ? 6.5 : 8.5) * point.perspective * Math.min(1.12, record.radius / 1.3);
+      const radius = 7.4 * point.perspective * Math.min(1.12, record.radius / 1.3);
       context.beginPath(); context.arc(point.x, point.y, radius, 0, TAU);
-      context.fillStyle = record.css; context.shadowColor = record.css; context.shadowBlur = point.index ? 5 : 10; context.fill(); context.shadowBlur = 0;
-      context.strokeStyle = point.index ? "rgba(255,255,255,.24)" : "rgba(255,255,255,.72)"; context.stroke();
+      context.fillStyle = record.css; context.shadowColor = record.css; context.shadowBlur = 6; context.fill(); context.shadowBlur = 0;
+      context.strokeStyle = "rgba(255,255,255,.42)"; context.stroke();
     });
   });
 }
