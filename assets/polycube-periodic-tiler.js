@@ -153,6 +153,10 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
     Math.floor(Number(options.minCopies) || 1)));
   const includeReflections = !!options.includeReflections;
   const hnfStartIndex = Math.max(0, Math.floor(Number(options.hnfStartIndex) || 0));
+  const hnfEndIndex = options.hnfEndIndex == null
+    ? Infinity
+    : Math.max(hnfStartIndex, Math.floor(Number(options.hnfEndIndex) || 0));
+  const assumeHnfPrefixExhausted = !!options.assumeHnfPrefixExhausted;
   const orientations = polycubeOrientations(voxels, { includeReflections });
   const cyclic = minCopies <= 1
     ? findPolycubeCyclicTiling(voxels, { ...options, orientations })
@@ -189,11 +193,15 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
       : index => 1n << BigInt(index);
     let hnfAtCopies = 0;
     const candidatesAtCopies = hnfCandidates(volume);
-    const skippedAtCopies = copies === minCopies
+    const rangeStartAtCopies = copies === minCopies
       ? Math.min(hnfStartIndex, candidatesAtCopies.length)
       : 0;
-    hnfSkipped += skippedAtCopies;
-    for (let hnfIndex = skippedAtCopies; hnfIndex < candidatesAtCopies.length; hnfIndex++) {
+    const rangeEndAtCopies = copies === minCopies
+      ? Math.max(rangeStartAtCopies, Math.min(hnfEndIndex, candidatesAtCopies.length))
+      : candidatesAtCopies.length;
+    const fullPrefixKnownAtCopies = rangeStartAtCopies === 0 || assumeHnfPrefixExhausted;
+    hnfSkipped += rangeStartAtCopies;
+    for (let hnfIndex = rangeStartAtCopies; hnfIndex < rangeEndAtCopies; hnfIndex++) {
       const hnf = candidatesAtCopies[hnfIndex];
       hnfVisited += 1;
       hnfAtCopies += 1;
@@ -202,9 +210,13 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
         stopped_by: nodes >= nodeLimit ? "node_limit" : "time_limit",
         nodes, hnf_visited: hnfVisited, hnf_skipped: hnfSkipped,
         active_hnf_index: hnfIndex,
+        hnf_range_start: rangeStartAtCopies,
+        hnf_range_end_exclusive: rangeEndAtCopies,
+        hnf_range_total: rangeEndAtCopies - rangeStartAtCopies,
+        hnf_range_exhausted: false,
         min_copies: minCopies,
         max_copies: maxCopies, hnf_exhausted_by_copies: hnfExhaustedByCopies,
-        active_copies: copies, active_hnf_visited: skippedAtCopies + hnfAtCopies,
+        active_copies: copies, active_hnf_visited: rangeStartAtCopies + hnfAtCopies,
         milliseconds: Math.round(performance.now() - startedAt)
       };
       const rootMask = makeMask(voxels, [0, 0, 0], hnf);
@@ -324,21 +336,35 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
         nodes,
         hnf_visited: hnfVisited,
         hnf_skipped: hnfSkipped,
+        hnf_range_start: rangeStartAtCopies,
+        hnf_range_end_exclusive: rangeEndAtCopies,
+        hnf_range_total: rangeEndAtCopies - rangeStartAtCopies,
+        hnf_range_exhausted: false,
         min_copies: minCopies,
         max_copies: maxCopies,
         hnf_exhausted_by_copies: hnfExhaustedByCopies,
         milliseconds: Math.round(performance.now() - startedAt)
       };
     }
-    hnfExhaustedByCopies[copies] = skippedAtCopies + hnfAtCopies;
+    const rangeExhausted = hnfAtCopies === rangeEndAtCopies - rangeStartAtCopies;
+    if (rangeExhausted && fullPrefixKnownAtCopies && rangeEndAtCopies === candidatesAtCopies.length) {
+      hnfExhaustedByCopies[copies] = candidatesAtCopies.length;
+    }
+    if (copies === maxCopies) {
+      return {
+        kind: "periodic_torus_search", certified: false, can_tile: null,
+        stopped_by: null, nodes, hnf_visited: hnfVisited, hnf_skipped: hnfSkipped,
+        hnf_range_start: rangeStartAtCopies,
+        hnf_range_end_exclusive: rangeEndAtCopies,
+        hnf_range_total: rangeEndAtCopies - rangeStartAtCopies,
+        hnf_range_exhausted: rangeExhausted,
+        min_copies: minCopies, max_copies: maxCopies,
+        hnf_exhausted_by_copies: hnfExhaustedByCopies,
+        milliseconds: Math.round(performance.now() - startedAt)
+      };
+    }
   }
-  return {
-    kind: "periodic_torus_search", certified: false, can_tile: null,
-    stopped_by: null, nodes, hnf_visited: hnfVisited, hnf_skipped: hnfSkipped,
-    min_copies: minCopies, max_copies: maxCopies,
-    hnf_exhausted_by_copies: hnfExhaustedByCopies,
-    milliseconds: Math.round(performance.now() - startedAt)
-  };
+  throw new Error("unreachable periodic HNF range completion");
 }
 
 /**

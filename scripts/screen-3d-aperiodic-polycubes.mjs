@@ -109,6 +109,23 @@ const resumeActiveHnf = booleanArg("resume-active-hnf", false);
 if (resumeActiveHnf && periodicMinTiles !== periodicMaxTiles) {
   throw new Error("--resume-active-hnf requires equal periodic minimum and maximum tile counts");
 }
+const explicitPeriodicHnfStart = args.has("periodic-hnf-start-index");
+const explicitPeriodicHnfEnd = args.has("periodic-hnf-end-index");
+const periodicHnfStartIndex = Math.max(0,
+  Math.floor(numberArg("periodic-hnf-start-index", 0)));
+const periodicHnfEndIndex = explicitPeriodicHnfEnd
+  ? Math.max(0, Math.floor(numberArg("periodic-hnf-end-index", 0)))
+  : null;
+if ((explicitPeriodicHnfStart || explicitPeriodicHnfEnd)
+  && periodicMinTiles !== periodicMaxTiles) {
+  throw new Error("explicit periodic HNF ranges require equal periodic minimum and maximum tile counts");
+}
+if (resumeActiveHnf && (explicitPeriodicHnfStart || explicitPeriodicHnfEnd)) {
+  throw new Error("--resume-active-hnf cannot be combined with an explicit periodic HNF range");
+}
+if (periodicHnfEndIndex != null && periodicHnfEndIndex < periodicHnfStartIndex) {
+  throw new Error("--periodic-hnf-end-index must be at least --periodic-hnf-start-index");
+}
 const generalPeriodic = booleanArg("general-periodic", true);
 const isohedralTarget = Math.max(2, Math.floor(numberArg("isohedral-target", 12)));
 const isohedralTimeMs = Math.max(1, numberArg("isohedral-time-ms", 500));
@@ -239,6 +256,8 @@ process.stdout.write(`${JSON.stringify({
   periodic_screen: periodicScreenEnabled,
   periodic_budget_clock: periodicBudgetClock,
   resume_active_hnf: resumeActiveHnf,
+  periodic_hnf_start_index: explicitPeriodicHnfStart ? periodicHnfStartIndex : null,
+  periodic_hnf_end_index: periodicHnfEndIndex,
   box_screen: boxScreen,
   isohedral_screen: isohedralScreenEnabled,
   engine_budget_clock: engineBudgetClock,
@@ -265,7 +284,9 @@ for (let index = 0; index < candidates.length; index++) {
         timeBudgetMode: periodicBudgetClock,
         hnfStartIndex: resumeActiveHnf
           ? polycubePeriodicResumeHnfIndex(candidate.input_periodic_fast)
-          : 0
+          : periodicHnfStartIndex,
+        hnfEndIndex: periodicHnfEndIndex,
+        assumeHnfPrefixExhausted: resumeActiveHnf
       })
     : {
         kind: "periodic_screen_skipped",
@@ -371,6 +392,10 @@ for (let index = 0; index < candidates.length; index++) {
       hnf_visited: torus.hnf_visited ?? null,
       hnf_skipped: torus.hnf_skipped ?? null,
       active_hnf_index: torus.active_hnf_index ?? null,
+      hnf_range_start: torus.hnf_range_start ?? null,
+      hnf_range_end_exclusive: torus.hnf_range_end_exclusive ?? null,
+      hnf_range_total: torus.hnf_range_total ?? null,
+      hnf_range_exhausted: torus.hnf_range_exhausted ?? null,
       hnf_exhausted_by_copies: torus.hnf_exhausted_by_copies ?? null,
       milliseconds: torus.milliseconds
     },

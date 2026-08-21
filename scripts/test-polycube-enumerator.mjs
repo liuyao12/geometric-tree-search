@@ -284,6 +284,10 @@ assert.equal(resumedPeriodicRange.stopped_by, null);
 assert.equal(resumedPeriodicRange.min_copies, 3);
 assert.equal(resumedPeriodicRange.max_copies, 3);
 assert.equal(resumedPeriodicRange.hnf_visited, 1210);
+assert.equal(resumedPeriodicRange.hnf_range_start, 0);
+assert.equal(resumedPeriodicRange.hnf_range_end_exclusive, 1210);
+assert.equal(resumedPeriodicRange.hnf_range_total, 1210);
+assert.equal(resumedPeriodicRange.hnf_range_exhausted, true);
 assert.deepEqual(resumedPeriodicRange.hnf_exhausted_by_copies, { 3: 1210 });
 const resumedPeriodicHnfTail = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 3,
@@ -295,7 +299,50 @@ const resumedPeriodicHnfTail = findPolycubePeriodicTiling(unresolvedP9.voxels, {
 assert.equal(resumedPeriodicHnfTail.stopped_by, null);
 assert.equal(resumedPeriodicHnfTail.hnf_skipped, 1200);
 assert.equal(resumedPeriodicHnfTail.hnf_visited, 10);
-assert.deepEqual(resumedPeriodicHnfTail.hnf_exhausted_by_copies, { 3: 1210 });
+assert.equal(resumedPeriodicHnfTail.hnf_range_start, 1200);
+assert.equal(resumedPeriodicHnfTail.hnf_range_end_exclusive, 1210);
+assert.equal(resumedPeriodicHnfTail.hnf_range_exhausted, true);
+assert.deepEqual(
+  resumedPeriodicHnfTail.hnf_exhausted_by_copies,
+  {},
+  "an arbitrary suffix must not claim that the omitted prefix was exhausted"
+);
+const resumedPeriodicKnownPrefixTail = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 3,
+  maxCopies: 3,
+  hnfStartIndex: 1200,
+  assumeHnfPrefixExhausted: true,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(resumedPeriodicKnownPrefixTail.hnf_range_exhausted, true);
+assert.deepEqual(resumedPeriodicKnownPrefixTail.hnf_exhausted_by_copies, { 3: 1210 });
+const boundedPeriodicHnfSlice = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 3,
+  maxCopies: 3,
+  hnfStartIndex: 1200,
+  hnfEndIndex: 1205,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(boundedPeriodicHnfSlice.hnf_visited, 5);
+assert.equal(boundedPeriodicHnfSlice.hnf_range_start, 1200);
+assert.equal(boundedPeriodicHnfSlice.hnf_range_end_exclusive, 1205);
+assert.equal(boundedPeriodicHnfSlice.hnf_range_total, 5);
+assert.equal(boundedPeriodicHnfSlice.hnf_range_exhausted, true);
+assert.deepEqual(boundedPeriodicHnfSlice.hnf_exhausted_by_copies, {});
+const emptyPeriodicHnfSlice = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 3,
+  maxCopies: 3,
+  hnfStartIndex: 3,
+  hnfEndIndex: 3,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(emptyPeriodicHnfSlice.hnf_visited, 0);
+assert.equal(emptyPeriodicHnfSlice.hnf_range_total, 0);
+assert.equal(emptyPeriodicHnfSlice.hnf_range_exhausted, true);
+assert.deepEqual(emptyPeriodicHnfSlice.hnf_exhausted_by_copies, {});
 const exactOneCopyRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 1,
   maxCopies: 1,
@@ -306,6 +353,7 @@ assert.equal(exactOneCopyRange.min_copies, 1);
 assert.equal(exactOneCopyRange.certified, false);
 assert.equal(exactOneCopyRange.stopped_by, null);
 assert.equal(exactOneCopyRange.hnf_visited, 130);
+assert.equal(exactOneCopyRange.hnf_range_exhausted, true);
 assert.deepEqual(exactOneCopyRange.hnf_exhausted_by_copies, { 1: 130 });
 const noncyclicOneTilePolycube = [
   [0, 0, 0], [0, 0, 1], [0, 0, 2],
