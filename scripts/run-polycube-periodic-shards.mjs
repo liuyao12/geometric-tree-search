@@ -47,6 +47,7 @@ const concurrency = integerArg(
   Math.min(requestedShards, Math.max(1, availableParallelism?.() ?? 4)),
   1
 );
+const progressMs = integerArg("progress-ms", 30_000, 1000);
 const periodicTimeMs = integerArg("periodic-time-ms", 3_600_000, 1);
 const nodeLimit = integerArg("nodes", 1_000_000_000, 1);
 const resume = booleanArg("resume", true);
@@ -92,6 +93,7 @@ process.stdout.write(`${JSON.stringify({
   shards: intervals.length,
   shard_size: shardSize,
   concurrency,
+  progress_ms: progressMs,
   reused,
   pending: pending.length,
   output_directory: outputDirectory
@@ -101,6 +103,18 @@ let nextPending = 0;
 let active = 0;
 let completed = reused;
 let failure = null;
+const activeChildren = new Set();
+const activeRanges = new Map();
+const progressTimer = setInterval(() => {
+  if (!activeRanges.size) return;
+  process.stdout.write(`${JSON.stringify({
+    type: "shard_run_progress",
+    completed,
+    shards: intervals.length,
+    pending: pending.length - nextPending,
+    active_ranges: [...activeRanges.values()]
+  })}\n`);
+}, progressMs);
 
 const runShard = interval => new Promise(resolveShard => {
   const [start, end] = interval;
@@ -126,10 +140,14 @@ const runShard = interval => new Promise(resolveShard => {
     "--stop-after=periodic",
     "--report-chirality=false"
   ], { stdio: ["ignore", "pipe", "pipe"] });
+  activeChildren.add(child);
+  activeRanges.set(child.pid, interval);
   child.stdout.pipe(stdout);
   child.stderr.pipe(stderr);
   child.on("error", error => resolveShard({ interval, error }));
   child.on("close", code => {
+    activeChildren.delete(child);
+    activeRanges.delete(child.pid);
     stdout.end();
     stderr.end();
     if (code !== 0) {
@@ -148,8 +166,12 @@ const runShard = interval => new Promise(resolveShard => {
 
 await new Promise(resolveAll => {
   const launch = () => {
-    if (failure || (nextPending >= pending.length && active === 0)) {
+    if ((failure && active === 0) || (nextPending >= pending.length && active === 0)) {
       resolveAll();
+      return;
+    }
+    if (failure) {
+      for (const child of activeChildren) child.kill("SIGTERM");
       return;
     }
     while (!failure && active < concurrency && nextPending < pending.length) {
@@ -177,6 +199,7 @@ await new Promise(resolveAll => {
   launch();
 });
 
+clearInterval(progressTimer);
 if (failure) throw failure;
 const reports = intervals.map(shardPath);
 const finalAudit = spawnSync(process.execPath, [
