@@ -40,6 +40,35 @@ const inputReports = String(args.get("input-report") ?? "")
   .split(",")
   .map(value => value.trim())
   .filter(Boolean);
+const obstructionInitialNogoodReports = String(args.get("obstruction-initial-nogood-report") ?? "")
+  .split(",")
+  .map(value => value.trim())
+  .filter(Boolean);
+const obstructionNogoodsByIdentity = new Map();
+for (const report of obstructionInitialNogoodReports) {
+  for (const line of readFileSync(report, "utf8").split(/\r?\n/).filter(Boolean)) {
+    const record = JSON.parse(line);
+    if (record.type !== "candidate" || !Array.isArray(record.obstruction?.nogood_clause_keys)) continue;
+    for (const identity of [record.id ? `id:${record.id}` : null, record.key ? `key:${record.key}` : null].filter(Boolean)) {
+      if (!obstructionNogoodsByIdentity.has(identity)) obstructionNogoodsByIdentity.set(identity, new Map());
+      const clauses = obstructionNogoodsByIdentity.get(identity);
+      for (const clause of record.obstruction.nogood_clause_keys) {
+        if (!Array.isArray(clause)) continue;
+        const normalized = [...new Set(clause.map(String))].sort();
+        clauses.set(normalized.join("|"), normalized);
+      }
+    }
+  }
+}
+const obstructionInitialNogoodsFor = candidate => {
+  const clauses = new Map();
+  for (const identity of [`id:${candidate.id}`, `key:${candidate.key}`]) {
+    for (const [clauseKey, clause] of obstructionNogoodsByIdentity.get(identity) ?? []) {
+      clauses.set(clauseKey, clause);
+    }
+  }
+  return [...clauses.values()];
+};
 const inputClassification = args.get("input-classification") ?? "unresolved";
 const inputStoppedBy = args.get("input-stopped-by");
 const reportCandidates = inputReports.length
@@ -94,6 +123,7 @@ if (!["wall", "cpu"].includes(obstructionBudgetClock)) {
 const obstructionNogoods = booleanArg("obstruction-nogoods", true);
 const obstructionConflictBackjumping = booleanArg("obstruction-conflict-backjumping", true);
 const obstructionSymmetryNogoods = booleanArg("obstruction-symmetry-nogoods", false);
+const obstructionReturnNogoods = booleanArg("obstruction-return-nogoods", false);
 const obstructionNogoodLimit = Math.max(1, Math.floor(numberArg("obstruction-nogood-limit", 50_000)));
 const obstructionSeed = Math.floor(numberArg("obstruction-seed", 0));
 const nodeLimit = Math.max(1, Math.floor(numberArg("nodes", 20000)));
@@ -164,6 +194,7 @@ async function isohedralLeadScreen(candidate) {
 }
 
 async function obstructionScreen(candidate) {
+  const initialNogoodPlacementKeys = obstructionInitialNogoodsFor(candidate);
   return searchPolycubeCorona(candidate.voxels, {
     includeReflections,
     layers: obstructionLayer,
@@ -173,6 +204,8 @@ async function obstructionScreen(candidate) {
     nogoods: obstructionNogoods,
     conflictBackjumping: obstructionConflictBackjumping,
     symmetryNogoods: obstructionSymmetryNogoods,
+    initialNogoodPlacementKeys,
+    returnNogoods: obstructionReturnNogoods,
     nogoodLimit: obstructionNogoodLimit,
     seed: obstructionSeed
   });
@@ -210,6 +243,8 @@ process.stdout.write(`${JSON.stringify({
   obstruction_budget_clock: obstructionBudgetClock,
   obstruction_conflict_backjumping: obstructionConflictBackjumping,
   obstruction_symmetry_nogoods: obstructionSymmetryNogoods,
+  obstruction_initial_nogood_reports: obstructionInitialNogoodReports,
+  obstruction_return_nogoods: obstructionReturnNogoods,
   obstruction_seed: obstructionSeed,
   stop_after: stopAfter
 })}\n`);
@@ -358,6 +393,8 @@ for (let index = 0; index < candidates.length; index++) {
       nogood_clauses: obstruction.nogood_clauses ?? null,
       nogood_prunes: obstruction.nogood_prunes ?? null,
       nogood_average_size: obstruction.nogood_average_size ?? null,
+      initial_nogood_clauses: obstruction.initial_nogood_clauses ?? null,
+      nogood_clause_keys: obstructionReturnNogoods ? obstruction.nogood_clause_keys : null,
       conflict_backjumps: obstruction.conflict_backjumps ?? null,
       symmetry_nogood_clauses: obstruction.symmetry_nogood_clauses ?? null,
       resolved_fixed_conflict_size: obstruction.resolved_fixed_conflict

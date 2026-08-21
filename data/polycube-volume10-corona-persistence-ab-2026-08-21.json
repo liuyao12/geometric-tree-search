@@ -1,0 +1,46 @@
+{
+  "schema": "gcts.polycube_corona_persistence_ab.v1",
+  "date": "2026-08-21",
+  "candidates": ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304"],
+  "protocol": {
+    "target_radius": 3,
+    "training_seed": 0,
+    "training_cpu_limit_ms": 1000,
+    "replay_cpu_limit_ms": 5000,
+    "conflict_backjumping": true,
+    "symmetry_nogoods": false,
+    "comparison": "Fresh and clause-preloaded processes were run concurrently with identical node and CPU limits.",
+    "soundness": "Imported clauses are exact sets of placement keys. A clause is ignored unless every placement exists in the reconstructed exact-cover instance."
+  },
+  "training": [
+    {"id": "p10-052588", "nodes": 2048, "exported_clauses": 489},
+    {"id": "p10-054782", "nodes": 2048, "exported_clauses": 533},
+    {"id": "p10-055695", "nodes": 4096, "exported_clauses": 287},
+    {"id": "p10-290795", "nodes": 2048, "exported_clauses": 168},
+    {"id": "p10-346304", "nodes": 8192, "exported_clauses": 437}
+  ],
+  "cross_seed_replay": [
+    {"id": "p10-052588", "control_nodes": 10240, "preloaded_nodes": 10240, "imported_clauses": 489},
+    {"id": "p10-054782", "control_nodes": 14336, "preloaded_nodes": 14336, "imported_clauses": 533},
+    {"id": "p10-055695", "control_nodes": 29696, "preloaded_nodes": 29696, "imported_clauses": 287},
+    {"id": "p10-290795", "control_nodes": 8192, "preloaded_nodes": 8192, "imported_clauses": 168},
+    {"id": "p10-346304", "control_nodes": 50176, "preloaded_nodes": 50176, "imported_clauses": 437}
+  ],
+  "same_seed_resume": [
+    {"id": "p10-052588", "control_nodes": 11264, "preloaded_nodes": 12288, "imported_clauses": 489},
+    {"id": "p10-054782", "control_nodes": 14336, "preloaded_nodes": 13312, "imported_clauses": 533},
+    {"id": "p10-055695", "control_nodes": 32768, "preloaded_nodes": 31744, "imported_clauses": 287},
+    {"id": "p10-290795", "control_nodes": 14336, "preloaded_nodes": 14336, "imported_clauses": 168},
+    {"id": "p10-346304", "control_nodes": 46080, "preloaded_nodes": 47104, "imported_clauses": 437}
+  ],
+  "outcome": {
+    "radius_3_witnesses": 0,
+    "finite_obstructions": 0,
+    "cross_seed_node_count_changes": 0,
+    "same_seed_preload_better": 2,
+    "same_seed_preload_equal": 1,
+    "same_seed_preload_worse": 2,
+    "default_policy": "disabled",
+    "interpretation": "Clause persistence is exact and operational, but these short clauses are path-specific and did not robustly improve equal-budget search. Durable continuation needs a frontier checkpoint or more transferable geometric state abstraction."
+  }
+}

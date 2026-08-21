@@ -123,6 +123,19 @@ not discard a geometrically feasible extension.
 `--obstruction-symmetry-nogoods=true` additionally closes every learned clause
 under the root tile's proper rotational stabilizer. It is useful for symmetric
 tiles and is a no-op when that stabilizer is trivial.
+`--obstruction-return-nogoods=true` writes the learned clauses as exact sets of
+placement keys. A later run can pass one or more of those NDJSON files through
+`--obstruction-initial-nogood-report=...`; clauses are matched by candidate id
+or canonical voxel key, deduplicated, and ignored if any placement is absent
+from the reconstructed exact-cover instance. This makes long radius-three
+searches resumable without turning an incomplete run into a proof.
+On the five current volume-ten candidates, a one-second seed-0 training pass
+exported 168–533 clauses. Preloading them into a five-second seed-1 run changed
+no node count; same-seed replay improved two candidates, tied one, and worsened
+two at the coarse 1,024-node budget-check granularity. Persistence is therefore
+operational but remains disabled by default. The result points toward exact
+frontier checkpoints or a more transferable geometric clause abstraction; see
+`data/polycube-volume10-corona-persistence-ab-2026-08-21.json`.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately
