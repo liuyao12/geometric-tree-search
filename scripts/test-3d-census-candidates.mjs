@@ -135,6 +135,8 @@ assert.deepEqual(
 assert.match(growthWorkerSource, /id: "free_range"[\s\S]*?label: "Free-range"/);
 assert.match(growthWorkerSource, /id: "gcts"[\s\S]*?label: "GCTS"[\s\S]*?strategy: "learning_free_range"/);
 assert.match(growthAppSource, /All four modes finished\./);
+assert.match(growthAppSource, /positive-control low-copy CEGAR run rejects/);
+assert.match(growthAppSource, /Radius four is still unexhausted/);
 assert.match(growthWorkerSource, /message\.type === "placement_delta" && tiles !== lastHistoryTileCount/);
 assert.match(growthWorkerSource, /type: "sample-batch"/);
 assert.doesNotMatch(growthWorkerSource, /tiles > best/);
@@ -363,6 +365,10 @@ const archivedPolycubePeriodicThrough13 = JSON.parse(await readFile(
 ));
 const archivedPolycubeCopy14Multisolver = JSON.parse(await readFile(
   new URL("../data/polycube-volume9-copy14-multisolver-2026-08-21.json", import.meta.url),
+  "utf8"
+));
+const archivedPolycubeZ3Cegar = JSON.parse(await readFile(
+  new URL("../data/polycube-volume9-z3-cegar-2026-08-21.json", import.meta.url),
   "utf8"
 ));
 const archivedPolycubeCoronaForcing = JSON.parse(await readFile(
@@ -1507,6 +1513,14 @@ assert.ok(archivedPolycubeCopy14Multisolver.corona_backend_cross_check.radius_4_
 assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.z3_portfolio.witness_found, false);
 assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.z3_portfolio.unsat_proved, false);
 assert.equal(archivedPolycubeCopy14Multisolver.radius_5_search.javascript_restart_portfolio.search_exhausted, false);
+assert.equal(archivedPolycubeZ3Cegar.positive_control.exact_dead_outer_states, 17);
+assert.equal(archivedPolycubeZ3Cegar.positive_control.verified_inner_witness_found, true);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.combined_exact_dead_outer_states, 275);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.combined_symmetry_closed_clauses, 780);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.economical_outer_patches.minimum_outer_placements_witnessed, 63);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.economical_outer_patches.max_62_exhausted, false);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.radius_4_space_exhausted, false);
+assert.equal(archivedPolycubeZ3Cegar.radius_4_to_5.certified_non_tiler, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.periodic_hnf_candidates_exhausted, 221381);
 assert.equal(
   volumeNineSurvivor.census_candidate.screening.periodic_hnf_report,
@@ -1516,6 +1530,11 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius4_fas
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_runs, 6);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_witness, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_z3_radius5_unsat, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_radius4_states_checked, 275);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_symmetry_closed_clauses, 780);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_minimum_radius4_placements, 63);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_radius4_exhausted, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cegar_certified_non_tiler, false);
 assert.equal(
   volumeNineSurvivor.census_candidate.screening.corona_nogood_portfolio_report,
   "data/polycube-volume9-continuation-nogoods-2026-08-20.json"

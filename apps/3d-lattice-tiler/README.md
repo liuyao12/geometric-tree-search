@@ -694,6 +694,25 @@ essentially the same runtime, prunes, depth, and continuation checks. Symmetry
 closure is therefore exposed only as an experimental switch and remains off
 by default.
 
+The independent pseudo-Boolean backend and GCTS can now run as a sound
+counterexample-guided pair:
+
+```bash
+node scripts/screen-polycube-corona-z3-cegar.mjs \
+  --id=p9-42947 --outer-layer=4 --inner-layer=5 \
+  --iterations=50 --max-placements=64 --symmetry-clauses=true
+```
+
+Z3 proposes a complete outer corona; exact fixed-placement GCTS either extends
+it or returns a proved obstruction clause. The loop never learns from a
+timeout. Imported clauses make a final UNSAT result conditional until their
+continuation proofs are independently replayed, and a copy-count bound can
+only certify exhaustion of that bounded stratum. A low-copy radius-two to
+three positive control recovers a verified witness after 17 dead proposals.
+For `p9-42947`, 275 radius-four proposals are now exactly rejected at radius
+five, including seven 63-copy states; radius four remains unexhausted. See
+`data/polycube-volume9-z3-cegar-2026-08-21.json`.
+
 The checked-in 2026-08-17 result, including every exact rejection certificate
 and the five unresolved survivors, is in
 `data/lattice-polyhedron-rescreen-2026-08-17.json`.

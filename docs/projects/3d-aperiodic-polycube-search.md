@@ -376,13 +376,46 @@ clauses was also exact but ineffective: at one million outer nodes it added
 with essentially unchanged time and pruning. The option remains available for
 controlled comparisons but is disabled by default.
 
+The periodic screen for `p9-42947` now exhausts every HNF quotient through
+fourteen copies. The gap-free 52-shard copy-fourteen campaign tests 51,870 new
+quotients and visits 21,267,747 exact-cover nodes; cumulatively the candidate
+has no certificate among 221,381 quotients through fourteen copies. This is an
+exact bounded period exclusion, not a proof that no larger periodic
+fundamental domain exists. The independent corona backend encodes the same
+finite target as a pseudo-Boolean exact cover in Z3. It matches the JavaScript
+radius-five incidence count (481 target cells and 6,781 placements), quickly
+finds independently verified radius-four patches, and remains undecided at
+radius five. See
+`data/polycube-volume9-copy14-multisolver-2026-08-21.json`.
+
+A counterexample-guided bridge now alternates those two solvers. Z3 proposes a
+complete outer corona; exact fixed-placement GCTS either extends it or exhausts
+the continuation. Only an exhausted continuation may contribute a placement
+clause, and each clause is closed under the root stabilizer. A radius-two to
+three positive control exposed a strong density bias: unconstrained Z3 models
+used 29–32 outer copies, whereas a known survivor uses 23. Adding an exact
+`max-placements` bound rejects 17 dead 23-copy states and then recovers a
+verified radius-three witness on trial 18. Bounded UNSAT is deliberately
+reported only as exhaustion of that copy-count stratum.
+
+At radius four to five the loop has exactly rejected 275 distinct outer
+states and retained 780 sound symmetry-closed clauses. The last 25 proposals
+are copy-economical: 18 states under a 64-copy cap and seven 63-copy states.
+Every continuation fails by an independently checked two- or three-placement
+local obstruction. Eight attempts under a 62-copy cap time out, so 63 is only
+the thinnest witnessed stratum, not a proven minimum. No radius-five witness
+has appeared and the radius-four state space is not exhausted. The positive
+control makes this a useful proposal-policy benchmark; the production result
+still proves neither non-tiling nor aperiodicity. See
+`data/polycube-volume9-z3-cegar-2026-08-21.json`.
+
 ## Next engineering milestones
 
 1. Persist the full volume-nine NDJSON certificate receipts, not only their
    checked-in summary, in a compact replayable format.
 2. Minimize resolved subtree clauses and add proof traces that replay each
    resolution step, not only the final independently checked outer conflict.
-3. Continue the dedicated HNF exact-cover search beyond thirteen-copy motifs;
+3. Continue the dedicated HNF exact-cover search beyond fourteen-copy motifs;
    the range-resume option now avoids repeating exhaustively checked sizes and
    the one-copy range now covers non-cyclic quotient groups too.
 4. Use successful isohedral coronas to propose, rather than assume, larger

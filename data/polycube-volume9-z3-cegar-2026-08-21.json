@@ -1,0 +1,66 @@
+{
+  "kind": "polycube_corona_z3_cegar_audit",
+  "date": "2026-08-21",
+  "candidate": "p9-42947",
+  "model": "proper cubic rotations; one fixed root; finite face-distance corona exact cover",
+  "method": {
+    "proposal_solver": "Z3 exact pseudo-Boolean cover",
+    "continuation_solver": "exact conflict-backjumping GCTS with fixed outer placements",
+    "cut": "a fixed-placement obstruction clause extracted only after exact continuation exhaustion",
+    "symmetry_closure": "every sound cut closed under the root polycube stabilizer",
+    "bounded_copy_semantics": "UNSAT with max_placements set exhausts only that copy-count stratum and is never classified as non-tiling"
+  },
+  "positive_control": {
+    "outer_radius": 2,
+    "inner_radius": 3,
+    "max_outer_placements": 23,
+    "z3_trials": 18,
+    "exact_dead_outer_states": 17,
+    "verified_inner_witness_found": true,
+    "verified_inner_witness_placements": 43,
+    "learned_symmetry_closed_clauses": 51,
+    "z3_milliseconds": 21843,
+    "continuation_nodes": 53,
+    "source_sha256": "8568a3ef1bb4c0b3286df5364066cd91f5a26087470ca4a2126a6d5de6cb0d92"
+  },
+  "radius_4_to_5": {
+    "outer_radius": 4,
+    "inner_radius": 5,
+    "unrestricted": {
+      "exact_dead_outer_states": 250,
+      "learned_symmetry_closed_clauses": 705,
+      "verified_inner_witness_found": false,
+      "source_sha256": [
+        "cb1967431ad7941005b7930a7d4c54e02a8978eeeee8ef38e031e1476c75a365",
+        "6bbecc1873cd3477977c37d7d17b3b3add75e93ca946b5fb3b27409995f59767",
+        "b7573a1f8fc9c42fbaa884dcc813fdb949774a490d53b929a8a9be831f59f75b"
+      ]
+    },
+    "economical_outer_patches": {
+      "exact_dead_outer_states": 25,
+      "max_64_trials": 19,
+      "max_64_sat_states": 18,
+      "max_64_timeouts": 1,
+      "max_63_trials": 12,
+      "max_63_sat_states": 7,
+      "max_63_timeouts": 5,
+      "minimum_outer_placements_witnessed": 63,
+      "max_62_trials": 8,
+      "max_62_sat_states": 0,
+      "max_62_timeouts": 8,
+      "max_62_exhausted": false,
+      "source_sha256": [
+        "65f201cd5e0a7306486312d616f9685e503c760b7b686b12b548457253a50096",
+        "6b317690bd3e2ffcf1c394b8f4a99bfd2c6073c2e0301641549cb8fddbf66c01",
+        "16aa8908d1264d1cdba44feef60e0ac8dcf737842ccb766af1276613533d2273",
+        "8eda0fc7c75c53b2ec223c9429d4e4ef73ad3ada64953459c6cdbecda3641b16"
+      ]
+    },
+    "combined_exact_dead_outer_states": 275,
+    "combined_symmetry_closed_clauses": 780,
+    "verified_radius_5_witness_found": false,
+    "radius_4_space_exhausted": false,
+    "certified_non_tiler": false
+  },
+  "interpretation": "The positive control shows that low-copy CEGAR can leave the dense dead-state basin and recover a known extendable stratum. For p9-42947, every one of 275 proposed radius-four patches is exactly obstructed at radius five, including 25 economical patches and seven 63-copy patches. The radius-four state space remains unexhausted; eight max-62 attempts timed out. These results prove neither non-tiling nor aperiodicity."
+}

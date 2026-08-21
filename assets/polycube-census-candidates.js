@@ -103,7 +103,20 @@ const records = [
       corona_z3_radius5_witness: false,
       corona_z3_radius5_unsat: false,
       corona_restart_radius5_nodes: 8969344,
-      corona_restart_radius5_maximum_depth: 84
+      corona_restart_radius5_maximum_depth: 84,
+      corona_cegar_report: "data/polycube-volume9-z3-cegar-2026-08-21.json",
+      corona_cegar_positive_control_dead_states: 17,
+      corona_cegar_positive_control_radius3_witness: true,
+      corona_cegar_positive_control_radius3_placements: 43,
+      corona_cegar_radius4_states_checked: 275,
+      corona_cegar_radius4_obstructed_states: 275,
+      corona_cegar_economical_radius4_states_checked: 25,
+      corona_cegar_minimum_radius4_placements: 63,
+      corona_cegar_symmetry_closed_clauses: 780,
+      corona_cegar_max62_timeouts: 8,
+      corona_cegar_radius5_witness: false,
+      corona_cegar_radius4_exhausted: false,
+      corona_cegar_certified_non_tiler: false
     },
     shell_screening: {
       robust_completed_shell: 4,

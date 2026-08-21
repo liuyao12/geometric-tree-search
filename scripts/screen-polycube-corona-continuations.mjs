@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { readFileSync } from "node:fs";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import {
   polycubeCoronaBoundaryKey,
@@ -48,6 +49,10 @@ const seeds = String(args.get("seeds") ?? "3,4,1,2")
   .map(Number)
   .filter(Number.isFinite)
   .map(Math.floor);
+const fixedWitnessReports = String(args.get("fixed-witness-report") ?? "")
+  .split(",")
+  .map(value => value.trim())
+  .filter(Boolean);
 
 let carriedNogoods = [];
 let totalContinuationChecks = 0;
@@ -60,8 +65,69 @@ const obstructedBoundaryStates = new Set();
 let boundaryCacheHits = 0;
 const trials = [];
 let directProposal = null;
+const fixedWitnessContinuations = [];
 
-if (proposalTimeMs > 0) {
+const mergeNogoodClauses = (...collections) => {
+  const merged = new Map();
+  for (const collection of collections) for (const clause of collection ?? []) {
+    if (!Array.isArray(clause)) continue;
+    const normalized = [...new Set(clause.map(String))].sort();
+    merged.set(normalized.join("|"), normalized);
+  }
+  return [...merged.values()];
+};
+
+for (const reportPath of fixedWitnessReports) {
+  const report = JSON.parse(readFileSync(reportPath, "utf8"));
+  const placements = report.corona;
+  const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, placements, outerLayer);
+  if (!outerVerification.verified) {
+    throw new Error(`Fixed witness ${reportPath} failed radius-${outerLayer} verification: ${outerVerification.reason}`);
+  }
+  const continuation = searchPolycubeCorona(candidate.voxels, {
+    layers: innerLayer,
+    seed: seeds[0] ?? 0,
+    fixedPlacements: placements,
+    nodeLimit: innerNodeLimit,
+    timeLimitMs: innerTimeMs,
+    timeBudgetMode: budgetClock,
+    nogoods: true,
+    symmetryNogoods,
+    nogoodLimit
+  });
+  const record = {
+    report: reportPath,
+    fixed_placements: placements.length,
+    success: continuation.success,
+    exhausted: continuation.exhausted,
+    stopped_by: continuation.stopped_by,
+    nodes: continuation.nodes,
+    milliseconds: continuation.milliseconds,
+    obstruction_kind: continuation.fixed_obstruction_nogood?.kind ?? null,
+    obstruction_clause_size: continuation.fixed_obstruction_nogood?.fixed_placement_keys?.length ?? null
+  };
+  fixedWitnessContinuations.push(record);
+  process.stdout.write(`${JSON.stringify({ type: "fixed_witness_continuation", ...record })}\n`);
+  if (continuation.success) {
+    const verification = verifyPolycubeCoronaPatch(candidate.voxels, continuation.corona, innerLayer);
+    if (!verification.verified) {
+      throw new Error(`Fixed witness continuation ${reportPath} failed verification: ${verification.reason}`);
+    }
+    radiusWitness = continuation;
+    break;
+  }
+  if (!continuation.exhausted) {
+    incompleteContinuation = continuation;
+    break;
+  }
+  const obstructionClause = continuation.fixed_obstruction_nogood?.fixed_placement_keys;
+  if (obstructionClause?.length) {
+    carriedNogoods = mergeNogoodClauses(carriedNogoods, [obstructionClause]);
+  }
+  obstructedBoundaryStates.add(polycubeCoronaBoundaryKey(candidate.voxels, placements, outerLayer));
+}
+
+if (!radiusWitness && !incompleteContinuation && proposalTimeMs > 0) {
   const proposal = searchPolycubeCorona(candidate.voxels, {
     layers: innerLayer,
     seed: seeds[0] ?? 0,
@@ -73,7 +139,7 @@ if (proposalTimeMs > 0) {
     nogoodLimit,
     returnNogoods: true
   });
-  carriedNogoods = proposal.nogood_clause_keys ?? [];
+  carriedNogoods = mergeNogoodClauses(carriedNogoods, proposal.nogood_clause_keys);
   directProposal = {
     success: proposal.success,
     exhausted: proposal.exhausted,
@@ -114,11 +180,12 @@ process.stdout.write(`${JSON.stringify({
   proposal_node_limit: proposalNodeLimit,
   adaptive_proposal: adaptiveProposal,
   direct_proposal: directProposal,
+  fixed_witness_continuations: fixedWitnessContinuations,
   symmetry_nogoods: symmetryNogoods,
   budget_clock: budgetClock
 })}\n`);
 
-for (const seed of radiusWitness || directProposal?.exhausted ? [] : seeds) {
+for (const seed of radiusWitness || incompleteContinuation || directProposal?.exhausted ? [] : seeds) {
   let continuationChecks = 0;
   let explainedObstructions = 0;
   let immediateObstructions = 0;
@@ -220,6 +287,7 @@ process.stdout.write(`${JSON.stringify({
   outer_layer: outerLayer,
   inner_layer: innerLayer,
   direct_proposal: directProposal,
+  fixed_witness_continuations: fixedWitnessContinuations,
   classification: radiusWitness
     ? "inner_radius_witness"
     : directProposal?.exhausted

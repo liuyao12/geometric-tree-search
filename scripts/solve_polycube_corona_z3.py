@@ -95,10 +95,12 @@ def main():
     parser.add_argument("--timeout-ms", type=int, default=300_000)
     parser.add_argument("--backend", choices=("smt", "qffpbv", "pb2bv-sat"), default="smt")
     parser.add_argument("--random-seed", type=int, default=0)
+    parser.add_argument("--max-placements", type=int)
+    parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--output")
     args = parser.parse_args()
-    if args.layer < 1 or args.timeout_ms < 1:
-        parser.error("layer and timeout must be positive")
+    if args.layer < 1 or args.timeout_ms < 1 or (args.max_placements is not None and args.max_placements < 1):
+        parser.error("layer, timeout, and max-placements (when supplied) must be positive")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -109,6 +111,10 @@ def main():
             by_cell.setdefault(cell, []).append(index)
 
     variables = [z3.Bool(f"p_{index}") for index in range(len(placements))]
+    placement_index_by_key = {
+        ";".join(sorted(",".join(str(value) for value in cell) for cell in placement)): index
+        for index, placement in enumerate(placements)
+    }
     if args.backend == "qffpbv":
         solver = z3.Tactic("qffpbv").solver()
     elif args.backend == "pb2bv-sat":
@@ -126,6 +132,20 @@ def main():
     for cell, indices in sorted(by_cell.items()):
         if cell not in target and len(indices) > 1:
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], 1))
+    if args.max_placements is not None:
+        solver.add(z3.PbLe([(variable, 1) for variable in variables], args.max_placements))
+    forbidden_clauses = []
+    if args.forbidden_clause_report:
+        clause_report = json.loads(Path(args.forbidden_clause_report).read_text(encoding="utf-8"))
+        forbidden_clauses = clause_report.get("clauses", clause_report) if isinstance(clause_report, dict) else clause_report
+        for clause_number, clause in enumerate(forbidden_clauses):
+            if not isinstance(clause, list) or not clause:
+                raise ValueError(f"Forbidden clause {clause_number} must be a nonempty placement-key list")
+            try:
+                indices = sorted(set(placement_index_by_key[str(key)] for key in clause))
+            except KeyError as error:
+                raise ValueError(f"Forbidden clause {clause_number} contains an unknown placement: {error.args[0]}") from error
+            solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
 
     constraint_count = len(solver.assertions())
     status = solver.check()
@@ -141,17 +161,33 @@ def main():
         "model": "proper cubic rotations; root fixed; primary target cells exactly once; secondary cells at most once",
         "backend": args.backend,
         "random_seed": args.random_seed,
+        "max_placements": args.max_placements,
         "target_cells": len(target),
         "placements_considered": len(placements),
         "variables": len(variables),
         "constraints": constraint_count,
+        "forbidden_clauses": len(forbidden_clauses),
         "timeout_ms": args.timeout_ms,
         "milliseconds": elapsed_ms,
-        "classification": "verified_pending" if status == z3.sat else "certified_non_tiler" if status == z3.unsat else "incomplete",
+        "classification": (
+            "verified_pending" if status == z3.sat
+            else "certified_non_tiler" if status == z3.unsat and args.max_placements is None and not forbidden_clauses
+            else "unsat_under_forbidden_clauses" if status == z3.unsat and args.max_placements is None
+            else "placement_bound_exhausted" if status == z3.unsat
+            else "incomplete"
+        ),
         "z3_status": str(status),
         "reason_unknown": solver.reason_unknown() if status == z3.unknown else None,
         "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected] if selected else None,
-        "warning": None if status != z3.unknown else "A solver timeout is not a non-tiling or aperiodicity certificate.",
+        "warning": (
+            "UNSAT depends on externally supplied forbidden clauses; validate their continuation proofs before treating this as a non-tiling certificate."
+            if status == z3.unsat and args.max_placements is None and forbidden_clauses
+            else f"Only patches with at most {args.max_placements} placements were exhausted; this is not a non-tiling or aperiodicity certificate."
+            if status == z3.unsat and args.max_placements is not None
+            else "A solver timeout is not a non-tiling or aperiodicity certificate."
+            if status == z3.unknown
+            else None
+        ),
     }
     encoded = json.dumps(report, indent=2) + "\n"
     if args.output:
