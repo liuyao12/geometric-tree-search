@@ -44,7 +44,12 @@ const reportCandidates = inputReports.length
       .filter(record => record.type === "candidate" && record.classification === inputClassification)
       .filter(record => !inputStoppedBy
         || (record.periodic_fast?.stopped_by ?? "exhausted") === inputStoppedBy)
-      .map(({ id, key, voxels }) => ({ id, key, voxels })))
+      .map(({ id, key, voxels, periodic_fast }) => ({
+        id,
+        key,
+        voxels,
+        input_periodic_fast: periodic_fast ?? null
+      })))
   : null;
 const size = requestedVoxels?.length ?? reportCandidates?.[0]?.voxels?.length
   ?? Math.max(1, Math.floor(numberArg("size", 5)));
@@ -63,6 +68,10 @@ const periodicScreenEnabled = booleanArg("periodic-screen", true);
 const periodicBudgetClock = String(args.get("periodic-budget-clock") ?? "wall").toLowerCase();
 if (!["wall", "cpu"].includes(periodicBudgetClock)) {
   throw new Error("--periodic-budget-clock must be wall or cpu");
+}
+const resumeActiveHnf = booleanArg("resume-active-hnf", false);
+if (resumeActiveHnf && periodicMinTiles !== periodicMaxTiles) {
+  throw new Error("--resume-active-hnf requires equal periodic minimum and maximum tile counts");
 }
 const generalPeriodic = booleanArg("general-periodic", true);
 const isohedralTarget = Math.max(2, Math.floor(numberArg("isohedral-target", 12)));
@@ -173,6 +182,7 @@ process.stdout.write(`${JSON.stringify({
   periodic_min_tiles: periodicMinTiles,
   periodic_screen: periodicScreenEnabled,
   periodic_budget_clock: periodicBudgetClock,
+  resume_active_hnf: resumeActiveHnf,
   box_screen: boxScreen,
   isohedral_screen: isohedralScreenEnabled,
   obstruction_layer: obstructionLayer,
@@ -189,7 +199,10 @@ for (let index = 0; index < candidates.length; index++) {
         maxCopies: periodicMaxTiles,
         nodeLimit,
         timeLimitMs: periodicTimeMs,
-        timeBudgetMode: periodicBudgetClock
+        timeBudgetMode: periodicBudgetClock,
+        hnfStartIndex: resumeActiveHnf
+          ? Math.max(0, Number(candidate.input_periodic_fast?.hnf_visited ?? 1) - 1)
+          : 0
       })
     : {
         kind: "periodic_screen_skipped",
@@ -282,6 +295,8 @@ for (let index = 0; index < candidates.length; index++) {
       copies: torus.copies ?? null,
       nodes: torus.nodes ?? null,
       hnf_visited: torus.hnf_visited ?? null,
+      hnf_skipped: torus.hnf_skipped ?? null,
+      active_hnf_index: torus.active_hnf_index ?? null,
       hnf_exhausted_by_copies: torus.hnf_exhausted_by_copies ?? null,
       milliseconds: torus.milliseconds
     },

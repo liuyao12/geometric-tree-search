@@ -147,6 +147,7 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
   const minCopies = Math.max(1, Math.min(maxCopies,
     Math.floor(Number(options.minCopies) || 1)));
   const includeReflections = !!options.includeReflections;
+  const hnfStartIndex = Math.max(0, Math.floor(Number(options.hnfStartIndex) || 0));
   const orientations = polycubeOrientations(voxels, { includeReflections });
   const cyclic = minCopies <= 1
     ? findPolycubeCyclicTiling(voxels, { ...options, orientations })
@@ -169,6 +170,7 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
   ));
   let nodes = 0;
   let hnfVisited = 0;
+  let hnfSkipped = 0;
   const hnfExhaustedByCopies = {};
   const overBudget = () => nodes >= nodeLimit || budgetMilliseconds() >= timeLimitMs;
 
@@ -181,15 +183,23 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
       ? index => 2 ** index
       : index => 1n << BigInt(index);
     let hnfAtCopies = 0;
-    for (const hnf of hnfCandidates(volume)) {
+    const candidatesAtCopies = hnfCandidates(volume);
+    const skippedAtCopies = copies === minCopies
+      ? Math.min(hnfStartIndex, candidatesAtCopies.length)
+      : 0;
+    hnfSkipped += skippedAtCopies;
+    for (let hnfIndex = skippedAtCopies; hnfIndex < candidatesAtCopies.length; hnfIndex++) {
+      const hnf = candidatesAtCopies[hnfIndex];
       hnfVisited += 1;
       hnfAtCopies += 1;
       if (overBudget()) return {
         kind: "periodic_torus_search", certified: false, can_tile: null,
         stopped_by: nodes >= nodeLimit ? "node_limit" : "time_limit",
-        nodes, hnf_visited: hnfVisited, min_copies: minCopies,
+        nodes, hnf_visited: hnfVisited, hnf_skipped: hnfSkipped,
+        active_hnf_index: hnfIndex,
+        min_copies: minCopies,
         max_copies: maxCopies, hnf_exhausted_by_copies: hnfExhaustedByCopies,
-        active_copies: copies, active_hnf_visited: hnfAtCopies,
+        active_copies: copies, active_hnf_visited: skippedAtCopies + hnfAtCopies,
         milliseconds: Math.round(performance.now() - startedAt)
       };
       const rootMask = makeMask(voxels, [0, 0, 0], hnf);
@@ -301,17 +311,18 @@ export function findPolycubePeriodicTiling(voxels, options = {}) {
         isohedral: { certified: copies === 1, tile_orbits: null },
         nodes,
         hnf_visited: hnfVisited,
+        hnf_skipped: hnfSkipped,
         min_copies: minCopies,
         max_copies: maxCopies,
         hnf_exhausted_by_copies: hnfExhaustedByCopies,
         milliseconds: Math.round(performance.now() - startedAt)
       };
     }
-    hnfExhaustedByCopies[copies] = hnfAtCopies;
+    hnfExhaustedByCopies[copies] = skippedAtCopies + hnfAtCopies;
   }
   return {
     kind: "periodic_torus_search", certified: false, can_tile: null,
-    stopped_by: null, nodes, hnf_visited: hnfVisited,
+    stopped_by: null, nodes, hnf_visited: hnfVisited, hnf_skipped: hnfSkipped,
     min_copies: minCopies, max_copies: maxCopies,
     hnf_exhausted_by_copies: hnfExhaustedByCopies,
     milliseconds: Math.round(performance.now() - startedAt)

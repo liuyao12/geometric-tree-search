@@ -106,6 +106,10 @@ Parallel exact-HNF shards should use `--periodic-budget-clock=cpu`. The default
 remains `wall` for interactive and single-process runs, but a wall clock makes
 concurrent shards charge one another for scheduler contention and creates
 spurious timeout rows. Node and HNF limits remain independent safeguards.
+For a single-copy-size timeout retry, `--resume-active-hnf=true` starts by
+replaying the interrupted HNF lattice and then continues with the unvisited
+tail. It requires equal periodic minimum and maximum tile counts; completed
+HNF prefixes are never silently skipped across a mixed copy-size range.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately

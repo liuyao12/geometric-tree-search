@@ -264,6 +264,17 @@ assert.equal(resumedPeriodicRange.min_copies, 3);
 assert.equal(resumedPeriodicRange.max_copies, 3);
 assert.equal(resumedPeriodicRange.hnf_visited, 1210);
 assert.deepEqual(resumedPeriodicRange.hnf_exhausted_by_copies, { 3: 1210 });
+const resumedPeriodicHnfTail = findPolycubePeriodicTiling(unresolvedP9.voxels, {
+  minCopies: 3,
+  maxCopies: 3,
+  hnfStartIndex: 1200,
+  nodeLimit: 100_000,
+  timeLimitMs: 5_000
+});
+assert.equal(resumedPeriodicHnfTail.stopped_by, null);
+assert.equal(resumedPeriodicHnfTail.hnf_skipped, 1200);
+assert.equal(resumedPeriodicHnfTail.hnf_visited, 10);
+assert.deepEqual(resumedPeriodicHnfTail.hnf_exhausted_by_copies, { 3: 1210 });
 const exactOneCopyRange = findPolycubePeriodicTiling(unresolvedP9.voxels, {
   minCopies: 1,
   maxCopies: 1,
