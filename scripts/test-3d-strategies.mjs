@@ -91,6 +91,12 @@ assert.equal(translational.final.success, true);
 assert.ok(translational.periodicCertificate, "translational mode requires an exact patch certificate");
 assert.equal(translational.final.search_stats.branch_choices_visited, 0);
 assert.equal(translational.final.search_stats.growth_axis_rank, 3);
+const cpuBudgetedTranslational = await solve({
+  tiling_strategy: "translational",
+  time_budget_clock: "cpu"
+});
+assert.equal(cpuBudgetedTranslational.final.success, true);
+assert.equal(cpuBudgetedTranslational.final.search_stats.time_budget_clock, "cpu");
 const translationalColorOffset = tileSpecs.TRANSLATIONAL_CELL_COLOR_OFFSET;
 const translationalCellColorId = (baseColorId, cell) =>
   translationalColorOffset + baseColorId * 8 + cell.reduce((index, coordinate, axis) =>

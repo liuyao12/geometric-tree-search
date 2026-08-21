@@ -110,6 +110,10 @@ For a single-copy-size timeout retry, `--resume-active-hnf=true` starts by
 replaying the interrupted HNF lattice and then continues with the unvisited
 tail. It requires equal periodic minimum and maximum tile counts; completed
 HNF prefixes are never silently skipped across a mixed copy-size range.
+The engine-backed translational and isohedral lanes have the analogous
+`--engine-budget-clock=cpu` option for parallel headless shards. Interactive
+runs retain wall-clock limits, so pausing or an overloaded browser cannot make
+a nominally bounded UI run consume unbounded elapsed time.
 
 The `easy_witness.isohedral_certificate` field is a proof about the infinitely
 repeated box motif. The later `isohedral.patch_found` field is deliberately

@@ -1995,6 +1995,9 @@ export const createTilingStream = (() => {
     const nodeLimit = Math.max(1, +config.node_limit || Infinity);
     const candidateCap = Math.max(1, +config.candidate_cap || Infinity);
     const timeLimitMs = Math.max(1, +config.time_limit_ms || Infinity);
+    const cpuTimeBudget = config.time_budget_clock === "cpu"
+      && typeof process !== "undefined"
+      && typeof process.cpuUsage === "function";
     const tilingStrategy = ["translational", "isohedral", "generic"].includes(normalizedStrategy)
       ? normalizedStrategy
       : "auto";
@@ -2224,6 +2227,13 @@ export const createTilingStream = (() => {
     };
     const branchDetails = !!config.branch_details;
     const startedAt = performance.now();
+    const cpuStartedAt = cpuTimeBudget ? process.cpuUsage() : null;
+    const budgetElapsedMilliseconds = () => {
+      if (!cpuTimeBudget) return performance.now() - startedAt;
+      const usage = process.cpuUsage(cpuStartedAt);
+      return (usage.user + usage.system) / 1000;
+    };
+    searchStats.time_budget_clock = cpuTimeBudget ? "cpu" : "wall";
     const configuredSafetyMax = Number(config.safety_max_tiles);
     const minimumTileVolume = Math.min(...tileVolumes.filter(volume => volume > 0));
     const regionTileUpperBound = targetRegion && Number.isFinite(minimumTileVolume)
@@ -2241,7 +2251,7 @@ export const createTilingStream = (() => {
       return reached;
     };
     const overTimeLimit = () => {
-      const reached = Number.isFinite(timeLimitMs) && performance.now() - startedAt >= timeLimitMs;
+      const reached = Number.isFinite(timeLimitMs) && budgetElapsedMilliseconds() >= timeLimitMs;
       if (reached && !searchStats.termination_reason) searchStats.termination_reason = "time_limit";
       return reached;
     };

@@ -77,6 +77,10 @@ const generalPeriodic = booleanArg("general-periodic", true);
 const isohedralTarget = Math.max(2, Math.floor(numberArg("isohedral-target", 12)));
 const isohedralTimeMs = Math.max(1, numberArg("isohedral-time-ms", 500));
 const isohedralScreenEnabled = booleanArg("isohedral-screen", true);
+const engineBudgetClock = String(args.get("engine-budget-clock") ?? "wall").toLowerCase();
+if (!["wall", "cpu"].includes(engineBudgetClock)) {
+  throw new Error("--engine-budget-clock must be wall or cpu");
+}
 const obstructionLayer = Math.max(1, Math.floor(numberArg("obstruction-layer", 1)));
 const obstructionTimeMs = Math.max(1, numberArg("obstruction-time-ms", 1000));
 const obstructionNogoods = booleanArg("obstruction-nogoods", true);
@@ -104,6 +108,7 @@ const baseConfig = (candidate, suffix) => ({
   node_limit: nodeLimit,
   safety_max_tiles: 200,
   ui_yield_interval_ms: 1000000,
+  time_budget_clock: engineBudgetClock,
   online_failure_marking: false
 });
 
@@ -185,6 +190,7 @@ process.stdout.write(`${JSON.stringify({
   resume_active_hnf: resumeActiveHnf,
   box_screen: boxScreen,
   isohedral_screen: isohedralScreenEnabled,
+  engine_budget_clock: engineBudgetClock,
   obstruction_layer: obstructionLayer,
   stop_after: stopAfter
 })}\n`);
