@@ -1,7 +1,12 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
-import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
+import {
+  createTilingStream,
+  GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
+  isGctsFigureVisibleInCatalog,
+  tileSpecs
+} from "../apps/3d-lattice-tiler/engine.js";
 import {
   classifyLatticeCandidateScreen,
   LATTICE_POLYHEDRON_CENSUS_POOL,
@@ -1265,6 +1270,16 @@ assert.ok(survivors.every(figure =>
 ));
 assert.equal(shellControls.length, 7);
 assert.equal(periodicControls.length, 36);
+const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
+assert.equal(GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES, 5);
+assert.deepEqual(
+  visiblePeriodicControls.map(figure => figure.census_candidate.id).sort(),
+  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "p9-43172"],
+  "the public catalogue should retain only periodic controls with a large certified motif"
+);
+assert.ok(periodicControls
+  .filter(figure => !isGctsFigureVisibleInCatalog(figure))
+  .every(figure => figure.census_candidate.screening.motif_tiles < GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES));
 const periodicPolycube = periodicControls.find(figure => figure.census_candidate.id === "p9-43172");
 assert.ok(periodicPolycube, "the resolved free-polycube class must remain as a periodic regression control");
 assert.equal(periodicPolycube.census_candidate.mirror_equivalent_id, "p9-43188");

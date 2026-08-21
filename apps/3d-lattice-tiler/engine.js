@@ -7,6 +7,16 @@ import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedro
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260820-volume9-v11";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
+export const GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES = 5;
+
+export function isGctsFigureVisibleInCatalog(figure) {
+  const candidate = figure?.census_candidate;
+  if (!candidate) return true;
+  const certificate = candidate.screening?.certificate;
+  if (!["translational", "isohedral_periodic_quotient"].includes(certificate)) return true;
+  return candidate.screening?.motif_tiles >= GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES;
+}
+
 const permutations = values => {
   if (values.length <= 1) return [values.slice()];
   const out = [];

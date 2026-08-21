@@ -1,6 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { tileSpecs } from "./engine.js?v=20260820-polycube9-v116";
+import {
+  GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
+  isGctsFigureVisibleInCatalog,
+  tileSpecs
+} from "./engine.js?v=20260820-polycube9-v117";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -794,7 +798,11 @@ const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
   { id: "unresolved-polycubes", title: "Unresolved polycube candidates", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
   { id: "unresolved", title: "Unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
-  { id: "periodic-controls", title: "GCTS periodic controls", test: figure => figureHasCategory(figure, "GCTS Periodic Controls") },
+  {
+    id: "periodic-controls",
+    title: `Large-domain periodic controls (≥${GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES} tiles)`,
+    test: figure => figureHasCategory(figure, "GCTS Periodic Controls")
+  },
   { id: "shell-controls", title: "GCTS shell-obstruction controls", test: figure => figureHasCategory(figure, "GCTS Shell-Obstruction Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
@@ -814,6 +822,9 @@ function sortCatalogFigures(groupId, figures) {
       return (a.census_candidate?.survivor_priority ?? Infinity) - (b.census_candidate?.survivor_priority ?? Infinity);
     }
     if (groupId === "periodic-controls") {
+      const motifDelta = (b.census_candidate?.screening?.motif_tiles ?? 0)
+        - (a.census_candidate?.screening?.motif_tiles ?? 0);
+      if (motifDelta !== 0) return motifDelta;
       const polycubeDelta = Number(b.census_candidate?.kind === "polycube_census")
         - Number(a.census_candidate?.kind === "polycube_census");
       if (polycubeDelta !== 0) return polycubeDelta;
@@ -829,6 +840,7 @@ function sortCatalogFigures(groupId, figures) {
 function groupedCatalogFigures() {
   const groups = new Map(catalogGroupDefinitions.map(group => [group.id, []]));
   for (const figure of figureCatalog) {
+    if (!isGctsFigureVisibleInCatalog(figure)) continue;
     groups.get(catalogGroupForFigure(figure).id).push(figure);
   }
   return catalogGroupDefinitions

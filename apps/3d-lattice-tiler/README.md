@@ -476,8 +476,11 @@ the convex audit instead certifies its two-tile parallelepiped cell with period
 vectors `(-1,0,0)`, `(-2,-1,5)`, and `(-2,1,5)`. The same correction recovers
 two-tile quotients for six shapes previously misclassified by shell search.
 The corrected size-12 result is therefore 63 periodic tilers, two exact
-finite-shell non-tilers, and no unresolved candidate. The catalogue retains all
-27 selected controls: 25 periodic and two non-tilers. Receipts are in
+finite-shell non-tilers, and no unresolved candidate. The research archive
+retains all 27 selected controls: 25 periodic and two non-tilers. To keep the
+interactive catalogue focused, it displays periodic controls only when their
+certified quotient contains at least five tiles; smaller certificates remain
+available to regression tests and command-line runs. Receipts are in
 `data/lattice-polyhedron-size12-full-isometry-first-stage-2026-08-20.json`,
 `data/lattice-polyhedron-size12-full-isometry-shell2-2026-08-20.json`, and
 `data/lattice-polyhedron-size12-full-isometry-easy-lanes-2026-08-20.json`, with
