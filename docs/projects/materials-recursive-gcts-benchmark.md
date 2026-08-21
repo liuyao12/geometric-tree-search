@@ -4118,6 +4118,36 @@ and rejects the incidence value as an autonomous rollback trigger. A fresh
 confirmation is not opened, and autonomous commitment, stationary recurrence,
 and exponential IQC growth remain red.
 
+### Identity-preserving obligation-discharge history
+
+The next audit retains the semantic identity of obligations through time rather
+than summarizing the successor frontier into total vote mass. It replays the
+same 19 immutable retained states for the same 16 target-free child placements.
+For each accepted attachment it records every selected semantic port role—its
+colored parent and source cluster signatures plus normalized separation—and
+whether that role is discharged, persists, or is selected again. The causal
+cohort is untruncated: the 304 transitions contain 406 selected-role transitions
+over 131 proper-motion-quotiented identities. Background frontier mass is kept
+only for audit accounting and is not used for ranking.
+
+Whole-nucleus outer fitting selects an eight-step persistence rule. It chooses
+an exact state in all `9 / 9` nuclei with exact supply and totals `27 / 30`
+correct colored sites; the model fitted on all consumed development nuclei gives
+`28 / 30`. Candidate geometry, the two-state bound, and every rollout remain
+unchanged.
+
+This corpus cannot establish a 5% causal result. Only groups 0, 3, and 5 have
+nonidentical `(exact, correct-sites)` tuples, and only groups 0 and 5 can change
+exact/non-exact selection. The audit therefore enumerates all eight distinct
+within-nucleus label assignments and refits all ten outer folds for every one.
+Two assignments reach the observed `9 / 9`, giving an exact upper-tail
+`p = .25`; four unique exact-label assignments make `.25` the minimum attainable
+exact-test resolution. Typed discharge is retained as an interpretable marking
+channel, but failure detection, autonomous commitment, fresh confirmation,
+stationary recurrence, and exponential IQC growth remain red. The next
+statistically meaningful benchmark must increase the number of independently
+ambiguous nuclei or retain a broader target-free portfolio.
+
 The initial pairwise graph implementation also exposed an accidental
 computational bottleneck: it rebuilt a sparse feature-difference dictionary
 for every positive-negative pair at every gradient step. The replacement

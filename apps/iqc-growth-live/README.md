@@ -2034,6 +2034,26 @@ two, while the first-ranked state is false. The benchmark therefore keeps the
 two-state supply result green and the failure-detector, fresh-confirmation,
 stationary, and exponential gates red.
 
+The follow-up now preserves discharge *identity* through the rollout rather
+than reducing the frontier to total vote mass. The same 19 immutable retained
+states are each advanced for 16 target-free placements. Across 304 transitions,
+406 selected-role transitions retain 131 symmetry-quotiented semantic port
+identities and record whether each selected obligation disappears, persists,
+or is selected again. No candidate, atom ID, absolute coordinate, lattice axis,
+or target atom enters this representation.
+
+An eight-step selected-role-persistence rule fitted outside each nucleus picks
+an exact state in all `9 / 9` supplied nuclei and totals `27 / 30` correct
+colored sites; fitting all consumed development nuclei yields `28 / 30`.
+That apparent result is statistically underpowered. Only three nuclei have
+nonidentical `(exact, correct-sites)` label tuples, and only two can change the
+exact-selection result. Exhaustively refitting every outer fold for all eight
+distinct within-nucleus assignments gives `p = .25`, which is also the minimum
+attainable exact-test resolution of this 19-state corpus. Typed discharge enters
+the marking library as an interpretable experimental channel, while autonomous
+rollback remains red. The next decisive audit needs more independently
+ambiguous nuclei or a wider target-free retained portfolio.
+
 On the consumed development set, candidate supply is no longer the immediate
 uncertainty. A second train-only audit keeps
 the first 128 canonical local descriptor classes in every nucleus, expands
