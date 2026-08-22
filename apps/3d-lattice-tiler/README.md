@@ -863,7 +863,7 @@ node scripts/screen-polycube-corona-z3-cegar.mjs \
   --triple-audit-limit=32 --triple-orbit-limit=0 \
   --triple-encoding=choice-cnf \
   --learn-quadruple-coverability=true --quadruple-max-cell-distance=6 \
-  --pair-encoding=witness-cnf
+  --pair-encoding=witness-cnf --z3-formula-cache=true
 ```
 
 Z3 proposes a complete outer corona; exact fixed-placement GCTS either extends
@@ -881,6 +881,16 @@ placement pair with one equivalent pseudo-Boolean implication per outer
 placement; `edge-cnf` remains available as the baseline. Pair learning can
 retain the historical lexicographic order or prioritize the obstruction that
 blocks the most or fewest currently available placement combinations. A
+formula cache is available when the entire next layer is constrained. It
+serializes the validated static exact-cover, grouped-lookahead, and accumulated
+pair formula, then reloads it under each new solver seed; selected triple and
+quadruple steering constraints and all forbidden-state clauses are still added
+fresh. Cache metadata includes the complete pair-key set and every structural
+encoding option, so a missing pair or changed configuration forces a rebuild.
+On the 771-pair `p9-42947` benchmark this reduces measured construction from
+57.0 seconds on a cache miss (including a 4.1-second write) to 3.7 seconds on a
+no-change hit, before the same one-second timed check. This is formula reuse,
+not a tiling inference or a persistent Z3 learned-clause state. A
 positive `--bootstrap-pair-distance` adds every next-ring cell-pair obligation
 within that Manhattan distance, closed under the root stabilizer, before the
 first proposal solve. Once a proposal has no incompatible pair,

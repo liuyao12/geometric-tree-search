@@ -24,6 +24,7 @@ assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, lazy-higher, or lazy-all/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
+assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
 assert.match(cegarSource, /if \(pairConstraints\.length && encodePairCoverability\)/);
 assert.match(cegarSource, /const encodedTriples = selectEncodedTriples\(\)/);
 assert.match(cegarSource, /--triple-coverability-report=\$\{encodedTriplePath\}/);
@@ -404,6 +405,7 @@ try {
     "--tuple-enforcement=hybrid-higher",
     "--encoded-triple-orbit-limit=1",
     "--encoded-triple-selection=max-blocked-combinations",
+    "--z3-formula-cache=true",
     "--lookahead-conflict-encoding=grouped-pb",
     "--learn-triple-coverability=true",
     "--triple-max-cell-distance=6",
@@ -423,6 +425,7 @@ try {
   assert.equal(hybridHigherReport.tuple_enforcement, "hybrid-higher");
   assert.equal(hybridHigherReport.encoded_triple_orbit_limit, 1);
   assert.equal(hybridHigherReport.encoded_triple_selection, "max-blocked-combinations");
+  assert.equal(hybridHigherReport.z3_formula_cache, true);
   assert.equal(hybridHigherReport.encoded_triple_coverability_orbits, 1);
   assert.ok(hybridHigherReport.encoded_triple_coverability_constraints > 0);
   assert.deepEqual(hybridHigherReport.trials[0].encoded_triple_orbit_scores, [17]);
@@ -431,6 +434,7 @@ try {
       <= hybridHigherReport.triple_coverability_constraint_count
   );
   const hybridHigherProposal = JSON.parse(readFileSync(join(directory, "hybrid-higher", "outer-witness-0000.json"), "utf8"));
+  assert.equal(hybridHigherProposal.formula_cache_hit, false);
   assert.equal(
     hybridHigherProposal.triple_coverability_constraints,
     hybridHigherReport.encoded_triple_coverability_constraints
@@ -594,6 +598,70 @@ try {
   assert.ok(witnessPairReport.pair_coverability_terms > 0);
   assert.ok(witnessPairReport.pair_coverability_choice_variables > 0);
   assert.equal(witnessPairReport.pair_coverability_incompatibilities, 0);
+
+  const formulaCache = join(directory, "pair-formula-cache.smt2");
+  const cachedPairArguments = [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--pair-encoding=witness-cnf",
+    `--pair-coverability-report=${pairPath}`,
+    `--formula-cache=${formulaCache}`
+  ];
+  const cacheMissOutput = join(directory, "pair-cache-miss.json");
+  const cacheMiss = spawnSync(python, [
+    ...cachedPairArguments,
+    `--output=${cacheMissOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(cacheMiss.status, 0, cacheMiss.stderr);
+  const cacheMissReport = JSON.parse(readFileSync(cacheMissOutput, "utf8"));
+  assert.equal(cacheMissReport.formula_cache_hit, false);
+  const cacheHitOutput = join(directory, "pair-cache-hit.json");
+  const cacheHit = spawnSync(python, [
+    ...cachedPairArguments,
+    "--random-seed=2",
+    `--output=${cacheHitOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(cacheHit.status, 0, cacheHit.stderr);
+  const cacheHitReport = JSON.parse(readFileSync(cacheHitOutput, "utf8"));
+  assert.equal(cacheHitReport.z3_status, cacheMissReport.z3_status);
+  assert.equal(cacheHitReport.formula_cache_hit, true);
+  assert.equal(cacheHitReport.formula_cache_pairs_reused, pairReport.pair_coverability_constraints);
+  assert.equal(cacheHitReport.pair_coverability_terms, cacheMissReport.pair_coverability_terms);
+  assert.equal(cacheHitReport.pair_coverability_choice_variables, cacheMissReport.pair_coverability_choice_variables);
+  const augmentedPairPath = join(directory, "pair-coverability-augmented.json");
+  writeFileSync(augmentedPairPath, `${JSON.stringify({
+    pairs: [
+      [secondRing[0], secondRing.at(-1)],
+      [secondRing[1], secondRing.at(-1)]
+    ]
+  })}\n`);
+  const augmentedCacheOutput = join(directory, "pair-cache-augmented.json");
+  const augmentedCache = spawnSync(python, [
+    ...cachedPairArguments.filter(argument => !argument.startsWith("--pair-coverability-report=")),
+    `--pair-coverability-report=${augmentedPairPath}`,
+    `--output=${augmentedCacheOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(augmentedCache.status, 0, augmentedCache.stderr);
+  const augmentedCacheReport = JSON.parse(readFileSync(augmentedCacheOutput, "utf8"));
+  assert.equal(augmentedCacheReport.formula_cache_hit, true);
+  assert.equal(augmentedCacheReport.formula_cache_pairs_reused, 1);
+  assert.equal(augmentedCacheReport.formula_cache_pairs_added, 1);
+  const augmentedCacheReplayOutput = join(directory, "pair-cache-augmented-replay.json");
+  const augmentedCacheReplay = spawnSync(python, [
+    ...cachedPairArguments.filter(argument => !argument.startsWith("--pair-coverability-report=")),
+    `--pair-coverability-report=${augmentedPairPath}`,
+    `--output=${augmentedCacheReplayOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(augmentedCacheReplay.status, 0, augmentedCacheReplay.stderr);
+  const augmentedCacheReplayReport = JSON.parse(readFileSync(augmentedCacheReplayOutput, "utf8"));
+  assert.equal(augmentedCacheReplayReport.formula_cache_hit, true);
+  assert.equal(augmentedCacheReplayReport.formula_cache_pairs_reused, 2);
+  assert.equal(augmentedCacheReplayReport.formula_cache_pairs_added, 0);
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }

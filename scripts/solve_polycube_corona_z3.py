@@ -117,6 +117,18 @@ def parse_cell_key(key):
     return cell
 
 
+def cell_key(cell):
+    return ",".join(str(value) for value in cell)
+
+
+def canonical_pair_key(pair):
+    return ";".join(cell_key(cell) for cell in sorted(pair))
+
+
+def cell_token(cell):
+    return "_".join(f"m{-value}" if value < 0 else f"p{value}" for value in cell)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Solve a finite polycube corona as an exact pseudo-Boolean cover in Z3.")
     parser.add_argument("--key", required=True)
@@ -136,6 +148,7 @@ def main():
     parser.add_argument("--lookahead-conflict-encoding", choices=("edge-cnf", "grouped-pb"), default="edge-cnf")
     parser.add_argument("--root-symmetry-breaking", action="store_true")
     parser.add_argument("--forbidden-clause-report")
+    parser.add_argument("--formula-cache")
     parser.add_argument("--output")
     args = parser.parse_args()
     if (args.layer < 1 or args.timeout_ms < 1
@@ -145,6 +158,8 @@ def main():
     if (args.min_placements is not None and args.max_placements is not None
             and args.min_placements > args.max_placements):
         parser.error("min-placements cannot exceed max-placements")
+    if args.formula_cache and not args.require_next_layer_coverability:
+        parser.error("formula caching currently requires --require-next-layer-coverability")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -159,6 +174,37 @@ def main():
         ";".join(sorted(",".join(str(value) for value in cell) for cell in placement)): index
         for index, placement in enumerate(placements)
     }
+    pair_coverability = []
+    if args.pair_coverability_report:
+        pair_report = json.loads(Path(args.pair_coverability_report).read_text(encoding="utf-8"))
+        pair_coverability = pair_report.get("pairs", pair_report) if isinstance(pair_report, dict) else pair_report
+        if not isinstance(pair_coverability, list):
+            raise ValueError("Pair coverability report must contain a pairs list")
+    pair_report_keys = set()
+    for pair_number, pair in enumerate(pair_coverability):
+        if not isinstance(pair, list) or len(pair) != 2:
+            raise ValueError(f"Pair coverability entry {pair_number} must contain two cell keys")
+        pair_report_keys.add(canonical_pair_key(tuple(parse_cell_key(cell) for cell in pair)))
+    cache_path = Path(args.formula_cache) if args.formula_cache else None
+    cache_metadata_path = Path(f"{args.formula_cache}.json") if args.formula_cache else None
+    cache_signature = json.dumps({
+        "version": 1,
+        "key": args.key,
+        "layer": args.layer,
+        "min_placements": args.min_placements,
+        "max_placements": args.max_placements,
+        "require_next_layer_coverability": args.require_next_layer_coverability,
+        "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
+        "root_symmetry_breaking": args.root_symmetry_breaking,
+        "pair_encoding": args.pair_encoding,
+    }, sort_keys=True)
+    cache_metadata = None
+    if cache_path and cache_path.is_file() and cache_metadata_path.is_file():
+        candidate_metadata = json.loads(cache_metadata_path.read_text(encoding="utf-8"))
+        cached_pair_keys = set(candidate_metadata.get("pair_keys", ()))
+        if (candidate_metadata.get("signature") == cache_signature
+                and cached_pair_keys.issubset(pair_report_keys)):
+            cache_metadata = candidate_metadata
     if args.backend == "qffpbv":
         solver = z3.Tactic("qffpbv").solver()
     elif args.backend == "pb2bv-sat":
@@ -167,18 +213,27 @@ def main():
     else:
         solver = z3.Solver()
     solver.set(timeout=args.timeout_ms)
+    formula_cache_hit = cache_metadata is not None
+    cached_pair_keys = set(cache_metadata.get("pair_keys", ())) if cache_metadata else set()
+    formula_cache_load_ms = 0
+    if formula_cache_hit:
+        cache_load_started = time.perf_counter()
+        solver.from_file(str(cache_path))
+        formula_cache_load_ms = round((time.perf_counter() - cache_load_started) * 1000)
     for cell in sorted(target):
         indices = by_cell.get(cell, [])
+        if formula_cache_hit:
+            continue
         if not indices:
             solver.add(z3.BoolVal(False))
         else:
             solver.add(z3.PbEq([(variables[index], 1) for index in indices], 1))
     for cell, indices in sorted(by_cell.items()):
-        if cell not in target and len(indices) > 1:
+        if not formula_cache_hit and cell not in target and len(indices) > 1:
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], 1))
-    if args.min_placements is not None:
+    if not formula_cache_hit and args.min_placements is not None:
         solver.add(z3.PbGe([(variable, 1) for variable in variables], args.min_placements))
-    if args.max_placements is not None:
+    if not formula_cache_hit and args.max_placements is not None:
         solver.add(z3.PbLe([(variable, 1) for variable in variables], args.max_placements))
     root_stabilizer_size = 1
     symmetry_breaking_constraints = 0
@@ -192,14 +247,16 @@ def main():
             prefix_equal = z3.BoolVal(True)
             for index, image_index in enumerate(permutation):
                 image = variables[image_index]
-                solver.add(z3.Implies(prefix_equal, z3.Or(z3.Not(variables[index]), image)))
+                if not formula_cache_hit:
+                    solver.add(z3.Implies(prefix_equal, z3.Or(z3.Not(variables[index]), image)))
                 symmetry_breaking_constraints += 1
                 if index + 1 < len(permutation):
                     next_prefix = z3.Bool(f"lex_{symmetry_index}_{index + 1}")
-                    solver.add(next_prefix == z3.And(
-                        prefix_equal,
-                        variables[index] == image
-                    ))
+                    if not formula_cache_hit:
+                        solver.add(next_prefix == z3.And(
+                            prefix_equal,
+                            variables[index] == image
+                        ))
                     symmetry_breaking_constraints += 1
                     prefix_equal = next_prefix
     lookahead_target_count = 0
@@ -213,12 +270,6 @@ def main():
         cell_coverability = cell_report.get("cells", cell_report) if isinstance(cell_report, dict) else cell_report
         if not isinstance(cell_coverability, list):
             raise ValueError("Cell coverability report must contain a cells list")
-    pair_coverability = []
-    if args.pair_coverability_report:
-        pair_report = json.loads(Path(args.pair_coverability_report).read_text(encoding="utf-8"))
-        pair_coverability = pair_report.get("pairs", pair_report) if isinstance(pair_report, dict) else pair_report
-        if not isinstance(pair_coverability, list):
-            raise ValueError("Pair coverability report must contain a pairs list")
     triple_coverability = []
     if args.triple_coverability_report:
         triple_report = json.loads(Path(args.triple_coverability_report).read_text(encoding="utf-8"))
@@ -232,9 +283,10 @@ def main():
         if not isinstance(quadruple_coverability, list):
             raise ValueError("Quadruple coverability report must contain a quadruples list")
     pair_coverability_count = 0
-    pair_coverability_terms = 0
-    pair_coverability_choice_variables = 0
-    pair_coverability_incompatibilities = 0
+    cached_pair_stats = cache_metadata.get("pair_stats", {}) if cache_metadata else {}
+    pair_coverability_terms = int(cached_pair_stats.get("terms", 0))
+    pair_coverability_choice_variables = int(cached_pair_stats.get("choice_variables", 0))
+    pair_coverability_incompatibilities = int(cached_pair_stats.get("incompatibilities", 0))
     triple_coverability_count = 0
     triple_coverability_terms = 0
     triple_coverability_choice_variables = 0
@@ -243,6 +295,8 @@ def main():
     quadruple_coverability_choice_variables = 0
     quadruple_coverability_incompatibilities = 0
     cell_coverability_count = 0
+    formula_cache_write_ms = 0
+    formula_cache_pairs_added = 0
     if (args.require_next_layer_coverability or cell_coverability or pair_coverability
             or triple_coverability or quadruple_coverability):
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
@@ -304,7 +358,7 @@ def main():
         retained_by_cell = {}
         retained_indices = set()
         for cell in sorted(constrained_cells):
-            if pair_coverability or triple_coverability or quadruple_coverability:
+            if pair_coverability or triple_coverability or quadruple_coverability or args.formula_cache:
                 retained = list(next_by_cell.get(cell, ()))
             else:
                 representative_by_conflicts = {}
@@ -325,24 +379,32 @@ def main():
                 lookahead_conflict_count += 1
         if args.lookahead_conflict_encoding == "grouped-pb":
             for conflict, indices in sorted(conflicts_by_outer.items()):
-                solver.add(z3.PbLe(
-                    [(variables[conflict], len(indices))]
-                    + [(availability[index], 1) for index in indices],
-                    len(indices)
-                ))
+                if not formula_cache_hit:
+                    solver.add(z3.PbLe(
+                        [(variables[conflict], len(indices))]
+                        + [(availability[index], 1) for index in indices],
+                        len(indices)
+                    ))
                 lookahead_conflict_group_count += 1
         else:
             for conflict, indices in sorted(conflicts_by_outer.items()):
                 for index in indices:
-                    solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+                    if not formula_cache_hit:
+                        solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
         coverability_cells = set(next_ring) if args.require_next_layer_coverability else normalized_cells
         for cell in sorted(coverability_cells):
             candidates = [availability[index] for index in retained_by_cell.get(cell, ())]
-            solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
+            if not formula_cache_hit:
+                solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
         placement_cell_sets = {
             index: frozenset(next_placements[index]) for index in relevant_indices
         }
         for pair_index, (left_cell, right_cell) in enumerate(sorted(normalized_pairs)):
+            normalized_pair_key = canonical_pair_key((left_cell, right_cell))
+            if normalized_pair_key in cached_pair_keys:
+                continue
+            formula_cache_pairs_added += 1
+            pair_name = f"{cell_token(left_cell)}__{cell_token(right_cell)}"
             if args.pair_encoding == "witness-cnf":
                 left_indices = retained_by_cell.get(left_cell, ())
                 right_indices = retained_by_cell.get(right_cell, ())
@@ -359,7 +421,7 @@ def main():
                     ]
                     if not compatible:
                         continue
-                    witness = z3.Bool(f"w_{pair_index}_{left_index}")
+                    witness = z3.Bool(f"w_{pair_name}_{left_index}")
                     witness_choices.append(witness)
                     solver.add(z3.Or(z3.Not(witness), availability[left_index]))
                     solver.add(z3.Or(z3.Not(witness), z3.Or(compatible)))
@@ -369,11 +431,11 @@ def main():
                 continue
             if args.pair_encoding == "choice-cnf":
                 left_choices = {
-                    index: z3.Bool(f"q_{pair_index}_l_{index}")
+                    index: z3.Bool(f"q_{pair_name}_l_{index}")
                     for index in retained_by_cell.get(left_cell, ())
                 }
                 right_choices = {
-                    index: z3.Bool(f"q_{pair_index}_r_{index}")
+                    index: z3.Bool(f"q_{pair_name}_r_{index}")
                     for index in retained_by_cell.get(right_cell, ())
                 }
                 solver.add(z3.Or(list(left_choices.values())) if left_choices else z3.BoolVal(False))
@@ -405,6 +467,24 @@ def main():
                     ))
             solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
             pair_coverability_terms += len(compatible_terms)
+        if cache_path and (not formula_cache_hit or formula_cache_pairs_added):
+            cache_write_started = time.perf_counter()
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_temporary = Path(f"{cache_path}.tmp")
+            metadata_temporary = Path(f"{cache_metadata_path}.tmp")
+            cache_temporary.write_text(solver.sexpr(), encoding="utf-8")
+            cache_temporary.replace(cache_path)
+            metadata_temporary.write_text(json.dumps({
+                "signature": cache_signature,
+                "pair_keys": sorted(canonical_pair_key(pair) for pair in normalized_pairs),
+                "pair_stats": {
+                    "terms": pair_coverability_terms,
+                    "choice_variables": pair_coverability_choice_variables,
+                    "incompatibilities": pair_coverability_incompatibilities,
+                },
+            }, indent=2) + "\n", encoding="utf-8")
+            metadata_temporary.replace(cache_metadata_path)
+            formula_cache_write_ms = round((time.perf_counter() - cache_write_started) * 1000)
         for triple_index, (left_cell, middle_cell, right_cell) in enumerate(sorted(normalized_triples)):
             if args.triple_encoding == "choice-cnf":
                 choice_groups = []
@@ -542,6 +622,12 @@ def main():
         "constraints": constraint_count,
         "forbidden_clauses": len(forbidden_clauses),
         "timeout_ms": args.timeout_ms,
+        "formula_cache": str(cache_path) if cache_path else None,
+        "formula_cache_hit": formula_cache_hit,
+        "formula_cache_pairs_reused": len(cached_pair_keys),
+        "formula_cache_pairs_added": formula_cache_pairs_added,
+        "formula_cache_load_milliseconds": formula_cache_load_ms,
+        "formula_cache_write_milliseconds": formula_cache_write_ms,
         "construction_milliseconds": construction_ms,
         "check_milliseconds": check_ms,
         "milliseconds": elapsed_ms,
