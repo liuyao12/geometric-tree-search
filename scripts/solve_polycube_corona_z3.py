@@ -693,6 +693,67 @@ def main():
                 tuple(parse_cell_key(cell) for cell in key.split(";"))
             )
         active_pair_keys = set(normalized_pair_keys)
+        pending_transaction = None
+
+        def transaction_snapshot():
+            return {
+                "availability_keys": set(availability),
+                "forbidden_clause_keys": set(forbidden_clause_keys),
+                "active_cells": set(active_cells),
+                "encoded_pair_keys": set(encoded_pair_keys),
+                "pair_cells_by_key": dict(pair_cells_by_key),
+                "active_pair_keys": set(active_pair_keys),
+                "lookahead_conflict_count": lookahead_conflict_count,
+                "lookahead_conflict_group_count": lookahead_conflict_group_count,
+                "pair_coverability_terms": pair_coverability_terms,
+                "pair_coverability_choice_variables": pair_coverability_choice_variables,
+                "pair_coverability_incompatibilities": pair_coverability_incompatibilities,
+            }
+
+        def interactive_check(command_timeout_ms):
+            if command_timeout_ms < 1:
+                raise ValueError("Interactive timeout must be positive")
+            solver.set(timeout=command_timeout_ms)
+            check_started = time.perf_counter()
+            pair_assumptions = []
+            if args.interactive_replace_pairs:
+                pair_assumptions = [
+                    pair_activation(*pair_cells_by_key[key])
+                    if key in active_pair_keys
+                    else z3.Not(pair_activation(*pair_cells_by_key[key]))
+                    for key in sorted(encoded_pair_keys)
+                ]
+            status = solver.check(*pair_assumptions)
+            check_ms = round((time.perf_counter() - check_started) * 1000)
+            selected = []
+            if status == z3.sat:
+                model = solver.model()
+                selected = [
+                    placements[index] for index, variable in enumerate(variables)
+                    if z3.is_true(model.eval(variable, model_completion=True))
+                ]
+            return status, check_ms, selected
+
+        def interactive_result(status, check_ms, selected, clauses_added=0, cells_added=0, pairs_added=0):
+            return {
+                "type": "result",
+                "z3_status": str(status),
+                "reason_unknown": solver.reason_unknown() if status == z3.unknown else None,
+                "check_milliseconds": check_ms,
+                "clauses_added": clauses_added,
+                "cells_added": cells_added,
+                "pairs_added": pairs_added,
+                "forbidden_clauses": len(forbidden_clause_keys),
+                "cell_coverability_constraints": len(active_cells),
+                "pair_coverability_constraints": len(active_pair_keys),
+                "pair_coverability_formulas": len(encoded_pair_keys),
+                "interactive_replace_pairs": args.interactive_replace_pairs,
+                "transaction_pending": pending_transaction is not None,
+                "constraints": len(solver.assertions()),
+                "corona": [
+                    {"cells": [list(cell) for cell in placement]} for placement in selected
+                ] if selected else None,
+            }
         print(json.dumps({
             "type": "ready",
             "construction_milliseconds": construction_ms,
@@ -712,8 +773,51 @@ def main():
             command = json.loads(line)
             if command.get("type") == "stop":
                 break
-            if command.get("type") != "next":
-                raise ValueError("Interactive command type must be next or stop")
+            command_type = command.get("type")
+            if command_type == "retry":
+                if pending_transaction is None:
+                    raise ValueError("Interactive retry requires a pending transaction")
+                status, check_ms, selected = interactive_check(
+                    int(command.get("timeout_ms", args.timeout_ms))
+                )
+                if status != z3.unknown:
+                    pending_transaction = None
+                print(json.dumps(interactive_result(status, check_ms, selected)), flush=True)
+                continue
+            if command_type == "rollback":
+                if pending_transaction is None:
+                    raise ValueError("Interactive rollback requires a pending transaction")
+                solver.pop()
+                snapshot = pending_transaction
+                for index in set(availability) - snapshot["availability_keys"]:
+                    del availability[index]
+                forbidden_clause_keys = set(snapshot["forbidden_clause_keys"])
+                active_cells = set(snapshot["active_cells"])
+                encoded_pair_keys = set(snapshot["encoded_pair_keys"])
+                pair_cells_by_key = dict(snapshot["pair_cells_by_key"])
+                active_pair_keys = set(snapshot["active_pair_keys"])
+                lookahead_conflict_count = snapshot["lookahead_conflict_count"]
+                lookahead_conflict_group_count = snapshot["lookahead_conflict_group_count"]
+                pair_coverability_terms = snapshot["pair_coverability_terms"]
+                pair_coverability_choice_variables = snapshot["pair_coverability_choice_variables"]
+                pair_coverability_incompatibilities = snapshot["pair_coverability_incompatibilities"]
+                pending_transaction = None
+                print(json.dumps({
+                    "type": "rolled_back",
+                    "forbidden_clauses": len(forbidden_clause_keys),
+                    "cell_coverability_constraints": len(active_cells),
+                    "pair_coverability_constraints": len(active_pair_keys),
+                    "pair_coverability_formulas": len(encoded_pair_keys),
+                    "constraints": len(solver.assertions()),
+                }), flush=True)
+                continue
+            if command_type != "next":
+                raise ValueError("Interactive command type must be next, retry, rollback, or stop")
+            if pending_transaction is not None:
+                raise ValueError("Interactive next cannot replace a pending transaction")
+            if command.get("transactional"):
+                pending_transaction = transaction_snapshot()
+                solver.push()
             clauses_added = 0
             for clause_number, clause in enumerate(command.get("clauses", ())):
                 if not isinstance(clause, list) or not clause:
@@ -770,46 +874,19 @@ def main():
                 active_pair_keys = supplied_pair_keys
             else:
                 active_pair_keys.update(supplied_pair_keys)
-            command_timeout_ms = int(command.get("timeout_ms", args.timeout_ms))
-            if command_timeout_ms < 1:
-                raise ValueError("Interactive timeout must be positive")
-            solver.set(timeout=command_timeout_ms)
-            check_started = time.perf_counter()
-            pair_assumptions = []
-            if args.interactive_replace_pairs:
-                pair_assumptions = [
-                    pair_activation(*pair_cells_by_key[key])
-                    if key in active_pair_keys
-                    else z3.Not(pair_activation(*pair_cells_by_key[key]))
-                    for key in sorted(encoded_pair_keys)
-                ]
-            interactive_status = solver.check(*pair_assumptions)
-            interactive_check_ms = round((time.perf_counter() - check_started) * 1000)
-            selected = []
-            if interactive_status == z3.sat:
-                model = solver.model()
-                selected = [
-                    placements[index] for index, variable in enumerate(variables)
-                    if z3.is_true(model.eval(variable, model_completion=True))
-                ]
-            print(json.dumps({
-                "type": "result",
-                "z3_status": str(interactive_status),
-                "reason_unknown": solver.reason_unknown() if interactive_status == z3.unknown else None,
-                "check_milliseconds": interactive_check_ms,
-                "clauses_added": clauses_added,
-                "cells_added": cells_added,
-                "pairs_added": pairs_added,
-                "forbidden_clauses": len(forbidden_clause_keys),
-                "cell_coverability_constraints": len(active_cells),
-                "pair_coverability_constraints": len(active_pair_keys),
-                "pair_coverability_formulas": len(encoded_pair_keys),
-                "interactive_replace_pairs": args.interactive_replace_pairs,
-                "constraints": len(solver.assertions()),
-                "corona": [
-                    {"cells": [list(cell) for cell in placement]} for placement in selected
-                ] if selected else None,
-            }), flush=True)
+            interactive_status, interactive_check_ms, selected = interactive_check(
+                int(command.get("timeout_ms", args.timeout_ms))
+            )
+            if interactive_status != z3.unknown:
+                pending_transaction = None
+            print(json.dumps(interactive_result(
+                interactive_status,
+                interactive_check_ms,
+                selected,
+                clauses_added,
+                cells_added,
+                pairs_added,
+            )), flush=True)
         return
 
     witnesses = []

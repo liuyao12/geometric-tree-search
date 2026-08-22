@@ -38,6 +38,8 @@ assert.match(cegarSource, /solverArguments\.push\("--interactive-jsonl"\)/);
 assert.match(cegarSource, /solverArguments\.push\("--interactive-replace-pairs"\)/);
 assert.match(cegarSource, /--z3-timeout-retry-ms requires --z3-interactive=true/);
 assert.match(cegarSource, /firstResult\.z3_status === "unknown"[\s\S]*?timeoutMs: z3TimeoutRetryMs[\s\S]*?clauses: \[\][\s\S]*?cells: \[\]/);
+assert.match(cegarSource, /--feedback-timeout-backoff requires --z3-interactive=true/);
+assert.match(cegarSource, /type: "rollback"[\s\S]*?Math\.ceil\(clausesToApply\.length \/ 2\)[\s\S]*?Math\.ceil\(cellsToApply\.length \/ 2\)/);
 assert.match(cegarSource, /replace_pairs: encodedPairs\.constraints/);
 assert.match(cegarSource, /interactive_clauses_applied/);
 assert.match(cegarSource, /if \(encodedPairs\.constraints\.length\)/);
@@ -459,6 +461,62 @@ try {
   assert.deepEqual(
     resumedAppliedClauseFeedback.clauses,
     batchedClauseFeedbackReport.learned_clauses.slice(0, 4)
+  );
+
+  const rolledBackFeedbackOutput = join(directory, "rolled-back-feedback-summary.json");
+  const rolledBackFeedbackDirectory = join(directory, "rolled-back-feedback");
+  const rolledBackFeedback = spawnSync(process.execPath, [
+    cegar,
+    "--id=p10-052670",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--learn-cell-coverability=true",
+    "--clause-feedback-batch=4",
+    "--cell-feedback-batch=4",
+    "--feedback-timeout-backoff=true",
+    "--feedback-min-clause-batch=1",
+    "--feedback-min-cell-batch=1",
+    "--tuple-enforcement=lazy-all",
+    "--z3-interactive=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=1",
+    "--z3-timeout-retry-ms=2",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--initial-clause-report=${join(batchedClauseFeedbackDirectory, "applied-forbidden-clauses.json")}`,
+    `--initial-deferred-clause-report=${join(batchedClauseFeedbackDirectory, "forbidden-clauses.json")}`,
+    `--initial-cell-report=${join(batchedCellFeedbackDirectory, "applied-cell-coverability.json")}`,
+    `--initial-deferred-cell-report=${join(batchedCellFeedbackDirectory, "cell-coverability.json")}`,
+    `--python=${python}`,
+    `--output-dir=${rolledBackFeedbackDirectory}`,
+    `--report-output=${rolledBackFeedbackOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(rolledBackFeedback.status, 0, rolledBackFeedback.stderr);
+  const rolledBackFeedbackReport = JSON.parse(readFileSync(rolledBackFeedbackOutput, "utf8"));
+  assert.equal(rolledBackFeedbackReport.classification, "z3_incomplete");
+  assert.equal(rolledBackFeedbackReport.feedback_timeout_backoff, true);
+  assert.equal(rolledBackFeedbackReport.trials[0].z3_feedback_backoff_count, 2);
+  assert.equal(rolledBackFeedbackReport.trials[0].z3_feedback_rolled_back, true);
+  assert.deepEqual(
+    rolledBackFeedbackReport.trials[0].z3_feedback_attempts.map(attempt => [
+      attempt.clauses,
+      attempt.cells,
+      attempt.z3_status
+    ]),
+    [[4, 4, "unknown"], [2, 2, "unknown"], [1, 1, "unknown"]]
+  );
+  assert.equal(rolledBackFeedbackReport.trials[0].z3_interactive_clauses_applied, 0);
+  assert.equal(rolledBackFeedbackReport.trials[0].z3_interactive_cells_applied, 0);
+  assert.equal(rolledBackFeedbackReport.z3_interactive_clauses_applied, 2);
+  assert.equal(rolledBackFeedbackReport.z3_interactive_cell_constraints_applied, 2);
+  assert.equal(
+    JSON.parse(readFileSync(join(rolledBackFeedbackDirectory, "applied-forbidden-clauses.json"), "utf8")).clauses.length,
+    2
+  );
+  assert.equal(
+    JSON.parse(readFileSync(join(rolledBackFeedbackDirectory, "applied-cell-coverability.json"), "utf8")).cells.length,
+    2
   );
 
   const distanceFromRoot = cell => Math.min(...candidate.voxels.map(root =>

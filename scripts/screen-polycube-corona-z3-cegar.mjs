@@ -90,6 +90,12 @@ const cellFeedbackBatch = integerArg("cell-feedback-batch", 0, 0);
 if (cellFeedbackBatch && !z3Interactive) {
   throw new Error("--cell-feedback-batch requires --z3-interactive=true");
 }
+const feedbackTimeoutBackoff = booleanArg("feedback-timeout-backoff", false);
+const feedbackMinimumClauseBatch = integerArg("feedback-min-clause-batch", 1, 1);
+const feedbackMinimumCellBatch = integerArg("feedback-min-cell-batch", 1, 1);
+if (feedbackTimeoutBackoff && !z3Interactive) {
+  throw new Error("--feedback-timeout-backoff requires --z3-interactive=true");
+}
 const pairOrbitLimit = integerArg("pair-orbit-limit", 0, 0);
 const tripleOrbitLimit = integerArg("triple-orbit-limit", 1, 0);
 const tripleMaximumCellDistance = integerArg("triple-max-cell-distance", 3, 1);
@@ -796,6 +802,9 @@ process.stdout.write(`${JSON.stringify({
   cell_orbit_limit: cellOrbitLimit,
   clause_feedback_batch: clauseFeedbackBatch,
   cell_feedback_batch: cellFeedbackBatch,
+  feedback_timeout_backoff: feedbackTimeoutBackoff,
+  feedback_min_clause_batch: feedbackMinimumClauseBatch,
+  feedback_min_cell_batch: feedbackMinimumCellBatch,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   bootstrap_pair_distance: bootstrapPairDistance,
@@ -852,6 +861,9 @@ const proposalTiming = (proposal, witness = null, proposalIndex = 0) => ({
     ?? proposal.check_milliseconds
     ?? null,
   z3_retry_check_milliseconds: proposal.retry_check_milliseconds ?? 0,
+  z3_feedback_backoff_count: proposal.feedback_backoff_count ?? 0,
+  z3_feedback_attempts: proposal.feedback_attempts ?? [],
+  z3_feedback_rolled_back: proposal.feedback_rolled_back ?? false,
   z3_formula_cache_hit: proposal.formula_cache_hit ?? false,
   z3_formula_cache_pairs_reused: proposalIndex === 0 ? proposal.formula_cache_pairs_reused ?? 0 : 0,
   z3_formula_cache_pairs_added: proposalIndex === 0 ? proposal.formula_cache_pairs_added ?? 0 : 0,
@@ -1226,53 +1238,129 @@ const runInteractiveCegar = async () => {
     z3InteractiveCellConstraintsApplied = cellKeysSent.size;
     for (let iteration = 0; iteration < iterations; iteration += 1) {
       const iterationSeed = randomSeed + iteration * seedStride;
-      const clausesToApply = clauseFeedbackBatch
+      let clausesToApply = clauseFeedbackBatch
         ? pendingClauses.slice(0, clauseFeedbackBatch)
         : pendingClauses.slice();
-      const cellsToApply = cellFeedbackBatch
+      let cellsToApply = cellFeedbackBatch
         ? pendingCells.slice(0, cellFeedbackBatch)
         : pendingCells.slice();
-      const sendNext = async ({ timeoutMs, clauses: nextClauses, cells: nextCells }) => {
-        worker.stdin.write(`${JSON.stringify({
+      const sendCommand = async command => {
+        worker.stdin.write(`${JSON.stringify(command)}\n`);
+        return readEvent((command.timeout_ms ?? z3TimeoutMs) + z3ProcessGraceMs);
+      };
+      const sendNext = async ({ timeoutMs, clauses: nextClauses, cells: nextCells, transactional }) =>
+        sendCommand({
           type: "next",
           timeout_ms: timeoutMs,
           clauses: nextClauses,
           cells: nextCells,
+          transactional,
           ...(z3InteractiveReplacePairs
             ? { replace_pairs: encodedPairs.constraints }
             : { pairs: pendingPairs })
-        })}\n`);
-        return readEvent(timeoutMs + z3ProcessGraceMs);
-      };
-      const firstResult = await sendNext({
-        timeoutMs: z3TimeoutMs,
-        clauses: clausesToApply,
-        cells: cellsToApply
-      });
-      let result = firstResult;
-      let timeoutRetryCount = 0;
-      let retryCheckMilliseconds = 0;
-      if (
-        z3TimeoutRetryMs
-        && firstResult.z3_status === "unknown"
-        && String(firstResult.reason_unknown ?? "").toLowerCase().includes("timeout")
-      ) {
-        const retryResult = await sendNext({
-          timeoutMs: z3TimeoutRetryMs,
-          clauses: [],
-          cells: []
         });
-        timeoutRetryCount = 1;
-        retryCheckMilliseconds = retryResult.check_milliseconds ?? 0;
-        result = {
-          ...retryResult,
-          check_milliseconds: (firstResult.check_milliseconds ?? 0) + retryCheckMilliseconds,
-          clauses_added: (firstResult.clauses_added ?? 0) + (retryResult.clauses_added ?? 0),
-          cells_added: (firstResult.cells_added ?? 0) + (retryResult.cells_added ?? 0),
-          pairs_added: (firstResult.pairs_added ?? 0) + (retryResult.pairs_added ?? 0)
-        };
+      const feedbackAttempts = [];
+      let result = null;
+      let timeoutRetryCount = 0;
+      let initialCheckMilliseconds = 0;
+      let retryCheckMilliseconds = 0;
+      let feedbackBackoffCount = 0;
+      let feedbackRolledBack = false;
+      while (!result) {
+        const transactional = feedbackTimeoutBackoff
+          && (clausesToApply.length > 0 || cellsToApply.length > 0);
+        const firstResult = await sendNext({
+          timeoutMs: z3TimeoutMs,
+          clauses: clausesToApply,
+          cells: cellsToApply,
+          transactional
+        });
+        if (firstResult.type !== "result") {
+          throw new Error(`Expected interactive result event, received ${firstResult.type}`);
+        }
+        let attemptResult = firstResult;
+        let attemptRetryCount = 0;
+        let attemptRetryCheckMilliseconds = 0;
+        if (
+          z3TimeoutRetryMs
+          && firstResult.z3_status === "unknown"
+          && String(firstResult.reason_unknown ?? "").toLowerCase().includes("timeout")
+        ) {
+          const retryResult = firstResult.transaction_pending
+            ? await sendCommand({ type: "retry", timeout_ms: z3TimeoutRetryMs })
+            : await sendNext({
+              timeoutMs: z3TimeoutRetryMs,
+              clauses: [],
+              cells: [],
+              transactional: false
+            });
+          if (retryResult.type !== "result") {
+            throw new Error(`Expected interactive retry result event, received ${retryResult.type}`);
+          }
+          attemptRetryCount = 1;
+          attemptRetryCheckMilliseconds = retryResult.check_milliseconds ?? 0;
+          attemptResult = {
+            ...retryResult,
+            check_milliseconds:
+              (firstResult.check_milliseconds ?? 0) + attemptRetryCheckMilliseconds,
+            clauses_added: (firstResult.clauses_added ?? 0) + (retryResult.clauses_added ?? 0),
+            cells_added: (firstResult.cells_added ?? 0) + (retryResult.cells_added ?? 0),
+            pairs_added: (firstResult.pairs_added ?? 0) + (retryResult.pairs_added ?? 0)
+          };
+        }
+        const attemptCheckMilliseconds = attemptResult.check_milliseconds ?? 0;
+        initialCheckMilliseconds += firstResult.check_milliseconds ?? 0;
+        retryCheckMilliseconds += attemptRetryCheckMilliseconds;
+        timeoutRetryCount += attemptRetryCount;
+        feedbackAttempts.push({
+          clauses: clausesToApply.length,
+          cells: cellsToApply.length,
+          z3_status: attemptResult.z3_status,
+          timeout_retry_count: attemptRetryCount,
+          check_milliseconds: attemptCheckMilliseconds
+        });
+        if (attemptResult.z3_status !== "unknown" || !transactional) {
+          result = attemptResult;
+          break;
+        }
+        const rollback = await sendCommand({ type: "rollback" });
+        if (rollback.type !== "rolled_back") {
+          throw new Error(`Expected interactive rollback event, received ${rollback.type}`);
+        }
+        feedbackRolledBack = true;
+        const nextClauseCount = clausesToApply.length > feedbackMinimumClauseBatch
+          ? Math.max(feedbackMinimumClauseBatch, Math.ceil(clausesToApply.length / 2))
+          : clausesToApply.length;
+        const nextCellCount = cellsToApply.length > feedbackMinimumCellBatch
+          ? Math.max(feedbackMinimumCellBatch, Math.ceil(cellsToApply.length / 2))
+          : cellsToApply.length;
+        if (
+          nextClauseCount === clausesToApply.length
+          && nextCellCount === cellsToApply.length
+        ) {
+          clausesToApply = [];
+          cellsToApply = [];
+          result = {
+            ...attemptResult,
+            clauses_added: 0,
+            cells_added: 0,
+            pairs_added: 0,
+            forbidden_clauses: rollback.forbidden_clauses,
+            cell_coverability_constraints: rollback.cell_coverability_constraints,
+            pair_coverability_constraints: rollback.pair_coverability_constraints,
+            pair_coverability_formulas: rollback.pair_coverability_formulas,
+            transaction_pending: false
+          };
+          break;
+        }
+        feedbackBackoffCount += 1;
+        clausesToApply = clausesToApply.slice(0, nextClauseCount);
+        cellsToApply = cellsToApply.slice(0, nextCellCount);
       }
-      if (result.type !== "result") throw new Error(`Expected interactive result event, received ${result.type}`);
+      result.check_milliseconds = feedbackAttempts.reduce(
+        (sum, attempt) => sum + attempt.check_milliseconds,
+        0
+      );
       for (const clause of clausesToApply) clauseKeysSent.add(clause.join("|"));
       pendingClauses = pendingClauses.slice(clausesToApply.length);
       z3InteractiveClausesApplied = clauseKeysSent.size;
@@ -1291,11 +1379,14 @@ const runInteractiveCegar = async () => {
         construction_milliseconds: iteration === 0 ? ready.construction_milliseconds : 0,
         check_milliseconds: result.check_milliseconds,
         timeout_retry_count: timeoutRetryCount,
-        timeout_schedule_ms: timeoutRetryCount
-          ? [z3TimeoutMs, z3TimeoutRetryMs]
-          : [z3TimeoutMs],
-        initial_check_milliseconds: firstResult.check_milliseconds,
+        timeout_schedule_ms: feedbackAttempts.flatMap(attempt =>
+          attempt.timeout_retry_count ? [z3TimeoutMs, z3TimeoutRetryMs] : [z3TimeoutMs]
+        ),
+        initial_check_milliseconds: initialCheckMilliseconds,
         retry_check_milliseconds: retryCheckMilliseconds,
+        feedback_backoff_count: feedbackBackoffCount,
+        feedback_attempts: feedbackAttempts,
+        feedback_rolled_back: feedbackRolledBack,
         formula_cache_hit: ready.formula_cache_hit,
         formula_cache_pairs_reused: iteration === 0 ? ready.formula_cache_pairs_reused : 0,
         formula_cache_pairs_added: iteration === 0 ? ready.formula_cache_pairs_added : 0,
@@ -1632,6 +1723,9 @@ const summary = {
     : null,
   applied_clause_report: z3Interactive ? appliedClausePath : clausePath,
   cell_feedback_batch: cellFeedbackBatch,
+  feedback_timeout_backoff: feedbackTimeoutBackoff,
+  feedback_min_clause_batch: feedbackMinimumClauseBatch,
+  feedback_min_cell_batch: feedbackMinimumCellBatch,
   z3_interactive_cell_constraints_applied: z3Interactive
     ? z3InteractiveCellConstraintsApplied
     : null,
