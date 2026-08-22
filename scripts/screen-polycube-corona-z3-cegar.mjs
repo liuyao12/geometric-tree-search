@@ -960,6 +960,10 @@ const runInteractiveCegar = async () => {
           z3_interactive: true,
           z3_interactive_clauses_applied: result.clauses_added,
           z3_interactive_pairs_applied: result.pairs_added,
+          z3_interactive_pair_coverability_constraints: result.pair_coverability_constraints,
+          z3_interactive_pair_coverability_formulas: result.pair_coverability_formulas,
+          encoded_pair_coverability_constraints: encodedPairs.constraints.length,
+          encoded_pair_coverability_orbits: encodedPairs.orbitCount,
           ...proposalTiming(proposal),
           clauses: clauses.length
         });
@@ -979,6 +983,10 @@ const runInteractiveCegar = async () => {
           z3_interactive: true,
           z3_interactive_clauses_applied: result.clauses_added,
           z3_interactive_pairs_applied: result.pairs_added,
+          z3_interactive_pair_coverability_constraints: result.pair_coverability_constraints,
+          z3_interactive_pair_coverability_formulas: result.pair_coverability_formulas,
+          encoded_pair_coverability_constraints: encodedPairs.constraints.length,
+          encoded_pair_coverability_orbits: encodedPairs.orbitCount,
           ...proposalTiming(proposal),
           reason_unknown: proposal.reason_unknown,
           clauses: clauses.length

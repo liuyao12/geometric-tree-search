@@ -212,7 +212,7 @@ def main():
         candidate_metadata = json.loads(cache_metadata_path.read_text(encoding="utf-8"))
         cached_pair_keys = set(candidate_metadata.get("pair_keys", ()))
         if (candidate_metadata.get("signature") == cache_signature
-                and cached_pair_keys.issubset(pair_report_keys)):
+                and (args.interactive_replace_pairs or cached_pair_keys.issubset(pair_report_keys))):
             cache_metadata = candidate_metadata
     if args.backend == "qffpbv":
         solver = z3.Tactic("qffpbv").solver()
@@ -497,7 +497,10 @@ def main():
             cache_temporary.replace(cache_path)
             metadata_temporary.write_text(json.dumps({
                 "signature": cache_signature,
-                "pair_keys": sorted(canonical_pair_key(pair) for pair in normalized_pairs),
+                "pair_keys": sorted(
+                    cached_pair_keys
+                    | {canonical_pair_key(pair) for pair in normalized_pairs}
+                ),
                 "pair_stats": {
                     "terms": pair_coverability_terms,
                     "choice_variables": pair_coverability_choice_variables,
@@ -598,11 +601,17 @@ def main():
     constraint_count = len(solver.assertions())
     construction_ms = round((time.perf_counter() - started) * 1000)
     if args.interactive_jsonl:
-        encoded_pair_keys = {canonical_pair_key(pair) for pair in normalized_pairs}
+        normalized_pair_keys = {canonical_pair_key(pair) for pair in normalized_pairs}
+        encoded_pair_keys = set(cached_pair_keys) | normalized_pair_keys
         pair_cells_by_key = {
             canonical_pair_key(pair): pair for pair in normalized_pairs
         }
-        active_pair_keys = set(encoded_pair_keys)
+        for key in cached_pair_keys:
+            pair_cells_by_key.setdefault(
+                key,
+                tuple(parse_cell_key(cell) for cell in key.split(";"))
+            )
+        active_pair_keys = set(normalized_pair_keys)
         print(json.dumps({
             "type": "ready",
             "construction_milliseconds": construction_ms,
@@ -611,7 +620,7 @@ def main():
             "formula_cache_pairs_added": formula_cache_pairs_added,
             "formula_cache_load_milliseconds": formula_cache_load_ms,
             "formula_cache_write_milliseconds": formula_cache_write_ms,
-            "pair_coverability_constraints": len(encoded_pair_keys),
+            "pair_coverability_constraints": len(active_pair_keys),
             "pair_coverability_formulas": len(encoded_pair_keys),
             "interactive_replace_pairs": args.interactive_replace_pairs,
             "forbidden_clauses": len(forbidden_clause_keys),

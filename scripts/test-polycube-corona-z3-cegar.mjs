@@ -253,6 +253,42 @@ try {
   assert.equal(replacePairEvents[1].pair_coverability_formulas, 2);
   assert.equal(replacePairEvents[2].pair_coverability_constraints, 1);
   assert.equal(replacePairEvents[2].pair_coverability_formulas, 2);
+  const replacePairCachePath = join(directory, "replace-pair-formula-cache.smt2");
+  const replacePairLowPath = join(directory, "replace-pair-low.json");
+  const replacePairHighPath = join(directory, "replace-pair-high.json");
+  writeFileSync(replacePairLowPath, `${JSON.stringify({ pairs: [scoredPairLow] })}\n`);
+  writeFileSync(replacePairHighPath, `${JSON.stringify({ pairs: [scoredPairHigh] })}\n`);
+  const replacePairCacheArguments = pairReport => [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--interactive-jsonl",
+    "--interactive-replace-pairs",
+    `--pair-coverability-report=${pairReport}`,
+    `--formula-cache=${replacePairCachePath}`
+  ];
+  const replacePairCacheMiss = spawnSync(python, replacePairCacheArguments(replacePairLowPath), {
+    encoding: "utf8",
+    timeout: 30_000,
+    input: `${JSON.stringify({ type: "stop" })}\n`
+  });
+  assert.equal(replacePairCacheMiss.status, 0, replacePairCacheMiss.stderr);
+  const replacePairCacheHit = spawnSync(python, replacePairCacheArguments(replacePairHighPath), {
+    encoding: "utf8",
+    timeout: 30_000,
+    input: `${JSON.stringify({ type: "stop" })}\n`
+  });
+  assert.equal(replacePairCacheHit.status, 0, replacePairCacheHit.stderr);
+  const replacePairCacheReady = JSON.parse(replacePairCacheHit.stdout.trim());
+  assert.equal(replacePairCacheReady.formula_cache_hit, true);
+  assert.equal(replacePairCacheReady.formula_cache_pairs_reused, 1);
+  assert.equal(replacePairCacheReady.formula_cache_pairs_added, 1);
+  assert.equal(replacePairCacheReady.pair_coverability_constraints, 1);
+  assert.equal(replacePairCacheReady.pair_coverability_formulas, 2);
   const triplePath = join(directory, "triple-coverability.json");
   writeFileSync(triplePath, `${JSON.stringify({
     triples: [[secondRing[0], secondRing[1], secondRing.at(-1)]]
