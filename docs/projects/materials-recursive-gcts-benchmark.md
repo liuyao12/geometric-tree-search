@@ -5133,3 +5133,42 @@ allocation was proposed after those two failures were inspected. The scalar
 production default is therefore not silently replaced, causal-superiority is
 not claimed, and the next gate is a preregistered disjoint nucleus followed by
 winner selection and exact cluster-of-clusters promotion.
+
+### Fresh bounded joint-action supply confirmation
+
+The successor keeps each three-site child action intact. Its 502
+proper-SE(3)-invariant features contain no candidate ID, global frame, lattice
+address, family label, or target value. Grouped consumed-nucleus selection
+freezes a fair schedule of one joint-ranked child plus five base-channel
+fallbacks under each of all eight parents. That schedule supplies all `6 / 6`
+known exact parent groups and their exact third blocks while reducing
+development prefix expansions from `635` to `191`.
+
+The implementation memoizes only the geometry of equivalent unordered action
+sets. Path-dependent marking probabilities and cumulative scores remain
+separate. A consumed-prefix parity audit produces identical 132 terminal
+states with and without the memo, reduces unique geometry advances from `368`
+to `177`, and measures a `1.70×` speedup.
+
+The rule, source hashes, a 48-prefix ceiling, a 1,200-second wall-time gate,
+and the geometry-only maximin centre `(160,-180,-140)` were committed before
+the fresh nucleus was generated. The radius-32.56 domain is 161.25 units from
+all 89 prior centres. The target is opened once only after the candidate queue,
+selected prefixes, 6,099 lineages, memo telemetry, and receipt digest freeze.
+
+| one-shot fresh receipt | measured |
+| --- | ---: |
+| seed / target atoms | `474 / 22,867` |
+| scheduled / eager prefixes | `47 / 168` |
+| naive / unique geometry advances | `17,240 / 8,207` |
+| saved geometry advances | `9,033` |
+| wall time / fixed limit | `1,119.19 s / 1,200 s` |
+| exact first / second prefixes | `8 / 34` |
+| exact nine-action lineages | `410 / 6,099` |
+| parents with exact supply | `8 / 8` |
+
+This passes the preregistered fresh candidate-supply and bounded-compute gates.
+It is stronger than a target-guided existence diagnostic because every branch
+and score is frozen first, but it remains a *supply* result. No winner is
+selected or committed, so autonomous continuation, recurring cluster-of-
+clusters stationarity, and exponential IQC growth remain explicitly red.

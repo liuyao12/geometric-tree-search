@@ -2708,4 +2708,32 @@ therefore keeps its prior default until a disjoint preregistered nucleus passes
 the same frozen policy. Autonomous, stationary, and exponential IQC gates
 remain red.
 
+### Fresh bounded joint-action confirmation
+
+The complete second frontier, the whole-child proper-SE(3)-invariant marking,
+the per-parent `joint top-1 + base top-5` schedule, exact unordered-action
+geometry memoization, source hashes, and maximin centre `(160,-180,-140)` were
+committed before the fourth fresh nucleus was generated. Its full radius-32.56
+domain is 161.25 units from every one of 89 prior centres. The R9 seed contains
+474 atoms. Candidate generation, ranking, memo telemetry, and the complete
+receipt freeze before the target is opened exactly once.
+
+| fresh bounded clusters² receipt | result |
+| --- | ---: |
+| scheduled / eager child prefixes | `47 / 168` |
+| naive / unique geometry advances | `17,240 / 8,207` |
+| memoized duplicate advances | `9,033` |
+| immutable nine-action lineages | `6,099` |
+| exact parent→child prefixes after scoring | `34` |
+| exact nine-action lineages after scoring | `410` |
+| parents with exact supply | `8 / 8` |
+| measured execution / preregistered limit | `1,119.19 s / 1,200 s` |
+
+Both the exact-supply and bounded-compute gates are green. This confirms that
+the generic clusters² tree can preserve exact three-block alternatives on a
+new disjoint IQC nucleus without target access and without eagerly expanding
+the entire marking library. It does **not** choose one of those alternatives,
+commit an autonomous antichain, identify a stationary production, or establish
+exponential IQC growth. Those remain the next gates.
+
 Serve the repository root and open `/iqc-growth-live/`.
