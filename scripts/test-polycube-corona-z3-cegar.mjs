@@ -18,9 +18,10 @@ assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFil
 assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-limit", tripleOrbitLimit \|\| 1, 1\)/);
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
-assert.match(cegarSource, /--tuple-enforcement must be encoded, lazy-higher, or lazy-all/);
+assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, lazy-higher, or lazy-all/);
 assert.match(cegarSource, /if \(pairConstraints\.length && encodePairCoverability\)/);
-assert.match(cegarSource, /if \(tripleConstraints\.length && encodeHigherCoverability\)/);
+assert.match(cegarSource, /const encodedTripleSelection = selectEncodedTriples\(\)/);
+assert.match(cegarSource, /--triple-coverability-report=\$\{encodedTriplePath\}/);
 assert.match(cegarSource, /if \(tupleEnforcement !== "encoded"\)[\s\S]*?continuation_skipped: true[\s\S]*?const continuation = searchPolycubeCorona/);
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
 assert.ok(candidate);
@@ -373,6 +374,48 @@ try {
   assert.ok(lazyHigherProposal.pair_coverability_constraints > 0);
   assert.equal(lazyHigherProposal.triple_coverability_constraints, 0);
   assert.equal(lazyHigherProposal.quadruple_coverability_constraints, 0);
+
+  const hybridHigherOutput = join(directory, "hybrid-higher-summary.json");
+  const hybridHigherCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-higher",
+    "--encoded-triple-orbit-limit=1",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-triple-coverability=true",
+    "--triple-max-cell-distance=6",
+    "--triple-audit-limit=32",
+    "--triple-orbit-limit=0",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-triple-report=${triplePath}`,
+    `--initial-quadruple-report=${quadruplePath}`,
+    `--output-dir=${join(directory, "hybrid-higher")}`,
+    `--report-output=${hybridHigherOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(hybridHigherCegar.status, 0, hybridHigherCegar.stderr);
+  const hybridHigherReport = JSON.parse(readFileSync(hybridHigherOutput, "utf8"));
+  assert.equal(hybridHigherReport.tuple_enforcement, "hybrid-higher");
+  assert.equal(hybridHigherReport.encoded_triple_orbit_limit, 1);
+  assert.equal(hybridHigherReport.encoded_triple_coverability_orbits, 1);
+  assert.ok(hybridHigherReport.encoded_triple_coverability_constraints > 0);
+  assert.ok(
+    hybridHigherReport.encoded_triple_coverability_constraints
+      <= hybridHigherReport.triple_coverability_constraint_count
+  );
+  const hybridHigherProposal = JSON.parse(readFileSync(join(directory, "hybrid-higher", "outer-witness-0000.json"), "utf8"));
+  assert.equal(
+    hybridHigherProposal.triple_coverability_constraints,
+    hybridHigherReport.encoded_triple_coverability_constraints
+  );
+  assert.equal(hybridHigherProposal.quadruple_coverability_constraints, 0);
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [

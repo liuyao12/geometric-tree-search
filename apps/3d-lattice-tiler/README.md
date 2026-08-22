@@ -708,6 +708,19 @@ budgets expire; the next bottleneck is the monolithic outer proposal encoding,
 not tuple-audit throughput. See
 `data/polycube-p9-42947-batched-triple-coverability-2026-08-21.json`.
 
+The higher-order obligations can instead be enforced lazily. In a matched
+ablation starting from the same 336 clauses, 717 pair constraints, 108 triple
+constraints, three quadruple constraints, and seeds 275–278, the monolithic
+formula returns one proposal and times out three times. Encoding pairs while
+auditing triples and quadruples after each proposal returns all four proposals
+without a timeout. All four have exact tuple obstructions before GCTS. Eight
+additional chained seeds likewise return eight exact tuple-defective states,
+ending at 744 pair, 141 triple, and three quadruple constraints. This restores
+proposal throughput but does not find a tuple-complete radius-four state; the
+next useful experiment is a hybrid informative-triple encoding rather than
+more undirected lazy restarts. See
+`data/polycube-p9-42947-lazy-higher-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal
@@ -863,7 +876,11 @@ triples and quadruples on each proposed state before GCTS. A failed audit adds
 the symmetry orbit of the entire fixed outer state as a monotone separation
 cut: adding more outer placements cannot restore a blocked continuation, so
 the cut is sound. `lazy-all` also removes pair formulas; `encoded` remains the
-default baseline.
+default baseline. `hybrid-higher` plus a positive
+`--encoded-triple-orbit-limit` encodes only that many complete root-symmetry
+orbits from the accumulated triple set and audits every remaining triple and
+quadruple lazily. The generated `encoded-triple-coverability.json` makes the
+actual steering subset explicit and resumable.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v148";
+} from "./engine.js?v=20260821-polycube10-v149";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1498,6 +1498,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_batched_triple_report) {
         const batch = candidate.screening;
         candidateResearchDetail.textContent += ` Complete per-state triple batching then checks ${batch.corona_batched_triple_states_checked} more exact dead states. Its ${batch.corona_batched_triple_triple_defect_states} pairwise-complete proposals contribute ${batch.corona_batched_triple_orbits_added} triple orbits in six audits, growing the carried formula to ${batch.corona_batched_triple_final_pair_constraints} pair, ${batch.corona_batched_triple_final_triple_constraints} triple, and ${batch.corona_batched_triple_final_quadruple_constraints} quadruple obligations. At that strength ${batch.corona_batched_triple_final_four_timeouts} of the final four outer solves time out, shifting the bottleneck from repeated tuple discovery to the monolithic proposal formula; this remains inconclusive.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_lazy_higher_report) {
+        const lazy = candidate.screening;
+        candidateResearchDetail.textContent += ` A matched lazy-higher ablation keeps pair obligations in Z3 but audits triples and quadruples exactly after each proposal. From the identical saved formula and four seeds, proposal yield rises from ${lazy.corona_lazy_higher_encoded_sat_states}/${lazy.corona_lazy_higher_matched_trials} with ${lazy.corona_lazy_higher_encoded_timeouts} timeouts to ${lazy.corona_lazy_higher_sat_states}/${lazy.corona_lazy_higher_matched_trials} with none; every returned state has a sound tuple obstruction before GCTS. Eight chained restarts add ${lazy.corona_lazy_higher_extension_pair_defect_states} pair-defective and ${lazy.corona_lazy_higher_extension_triple_defect_states} pairwise-complete but triple-defective states, reaching ${lazy.corona_lazy_higher_final_pair_constraints} pair, ${lazy.corona_lazy_higher_final_triple_constraints} triple, and ${lazy.corona_lazy_higher_final_quadruple_constraints} quadruple obligations. No tuple-complete radius-four state or radius-five witness appears, so the next target is hybrid proposal steering, not an aperiodicity claim.`;
       }
     }
   } else if (knownAperiodic) {

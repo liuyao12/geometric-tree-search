@@ -1,0 +1,110 @@
+{
+  "kind": "polycube_p9_42947_lazy_higher_coverability_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commit": "999c1a4",
+  "prior_portfolio": "data/polycube-p9-42947-batched-triple-coverability-2026-08-21.json",
+  "policy": {
+    "name": "lazy-higher",
+    "encoded_in_outer_z3": ["single-cell coverability", "pair coverability"],
+    "audited_after_each_proposal": ["pair coverability", "triple coverability", "quadruple coverability"],
+    "continuation_order": "A tuple-defective proposal is rejected before radius-five GCTS; only a proposal passing every enabled tuple audit may continue.",
+    "separation_cut": "The full fixed outer state and its root-symmetry orbit are forbidden. This is sound because adding placements cannot restore a next-ring candidate removed by overlap, and the outer model still enforces the exact target cover.",
+    "claim_boundary": "A lazy rejection is an exact finite-patch obstruction, not a proof that every radius-four state is obstructed."
+  },
+  "matched_ablation": {
+    "random_seeds": [275, 276, 277, 278],
+    "initial_constraints": {
+      "symmetry_closed_clauses": 336,
+      "pair": 717,
+      "triple": 108,
+      "quadruple": 3
+    },
+    "common_limits": {
+      "z3_timeout_ms": 300000,
+      "z3_process_grace_ms": 60000,
+      "continuation_time_ms": 30000,
+      "continuation_nodes": 10000000
+    },
+    "encoded": {
+      "sat_outer_states": 1,
+      "process_timeouts": 3,
+      "z3_milliseconds_total": 1270729,
+      "per_seed": [
+        {"seed": 275, "status": "process_timeout", "z3_milliseconds": 360000},
+        {"seed": 276, "status": "process_timeout", "z3_milliseconds": 360000},
+        {"seed": 277, "status": "sat", "z3_milliseconds": 190729, "outer_placements": 71},
+        {"seed": 278, "status": "process_timeout", "z3_milliseconds": 360000}
+      ]
+    },
+    "lazy_higher": {
+      "sat_outer_states": 4,
+      "process_timeouts": 0,
+      "z3_milliseconds_total": 877441,
+      "continuations_started": 0,
+      "exact_tuple_rejections": 4,
+      "pair_defect_states": 3,
+      "triple_defect_states": 1,
+      "quadruple_defect_states": 0,
+      "per_seed": [
+        {"seed": 275, "status": "sat", "z3_milliseconds": 111709, "outer_placements": 68, "obstruction": "pair"},
+        {"seed": 276, "status": "sat", "z3_milliseconds": 213265, "outer_placements": 71, "obstruction": "pair"},
+        {"seed": 277, "status": "sat", "z3_milliseconds": 304588, "outer_placements": 69, "obstruction": "triple"},
+        {"seed": 278, "status": "sat", "z3_milliseconds": 247879, "outer_placements": 68, "obstruction": "pair"}
+      ],
+      "final_constraints": {
+        "symmetry_closed_clauses": 348,
+        "pair": 726,
+        "triple": 120,
+        "quadruple": 3
+      }
+    },
+    "result": "Moving triples and quadruples out of the outer formula raises matched proposal yield from 1/4 to 4/4 and removes all three process timeouts. It does not produce a tuple-complete state."
+  },
+  "chained_extension": {
+    "random_seeds": [279, 280, 281, 282, 283, 284, 285, 286],
+    "sat_outer_states": 8,
+    "process_timeouts": 0,
+    "exact_tuple_rejections": 8,
+    "pair_defect_states": 6,
+    "triple_defect_states": 2,
+    "quadruple_defect_states": 0,
+    "continuations_started": 0,
+    "initial_constraints": {
+      "symmetry_closed_clauses": 339,
+      "pair": 720,
+      "triple": 108,
+      "quadruple": 3
+    },
+    "final_constraints": {
+      "symmetry_closed_clauses": 363,
+      "pair": 744,
+      "triple": 141,
+      "quadruple": 3
+    }
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-batch-triple-seed275-summary.json",
+      "sha256": "51d2f724fbadd35387aa3ce01b26f096b43f3fa7668bfdcb7089ab1e5e30d13e"
+    },
+    {
+      "path": "runs/p9-radius4-to5-lazy-higher-matched-seed275-summary.json",
+      "sha256": "e84a6b4aa9279d09110d371a204784d09baf6470c1f4e654d460cb9ad1b9e9ea"
+    },
+    {
+      "path": "runs/p9-radius4-to5-lazy-higher-seed279-summary.json",
+      "sha256": "39fc263560ffa82240cd821bd6d57e9ac5e259a8589cfb6ef72acc0af14fa53a"
+    },
+    {
+      "path": "runs/p9-radius4-to5-lazy-higher-seed283-summary.json",
+      "sha256": "5c629d2a92bf2427268b665463f0aff950f38ad0758942428306a67056ee9771"
+    }
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Lazy higher-order tuple enforcement restores proposal throughput under the accumulated 108-triple formula without weakening exact rejection. Twelve tested lazy proposals all have lower-order defects, so the immediate bottleneck is now steering the outer solver toward pair-and-triple-complete states rather than running more undirected restarts. A hybrid encoding should retain a selected informative triple subset and audit the remainder lazily."
+}

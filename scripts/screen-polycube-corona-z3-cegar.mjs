@@ -86,8 +86,15 @@ if (!["dnf", "choice-cnf"].includes(tripleEncoding)) {
   throw new Error("--triple-encoding must be dnf or choice-cnf");
 }
 const tupleEnforcement = args.get("tuple-enforcement") ?? "encoded";
-if (!["encoded", "lazy-higher", "lazy-all"].includes(tupleEnforcement)) {
-  throw new Error("--tuple-enforcement must be encoded, lazy-higher, or lazy-all");
+if (!["encoded", "hybrid-higher", "lazy-higher", "lazy-all"].includes(tupleEnforcement)) {
+  throw new Error("--tuple-enforcement must be encoded, hybrid-higher, lazy-higher, or lazy-all");
+}
+const encodedTripleOrbitLimit = integerArg("encoded-triple-orbit-limit", 0, 0);
+if (tupleEnforcement === "hybrid-higher" && encodedTripleOrbitLimit === 0) {
+  throw new Error("--tuple-enforcement=hybrid-higher requires --encoded-triple-orbit-limit greater than zero");
+}
+if (tupleEnforcement !== "hybrid-higher" && encodedTripleOrbitLimit > 0) {
+  throw new Error("--encoded-triple-orbit-limit is only valid with --tuple-enforcement=hybrid-higher");
 }
 const pairSelection = args.get("pair-selection") ?? "lexicographic";
 if (!["lexicographic", "max-blocked-combinations", "min-blocked-combinations"].includes(pairSelection)) {
@@ -121,6 +128,7 @@ const clausePath = resolve(outputDirectory, "forbidden-clauses.json");
 const cellPath = resolve(outputDirectory, "cell-coverability.json");
 const pairPath = resolve(outputDirectory, "pair-coverability.json");
 const triplePath = resolve(outputDirectory, "triple-coverability.json");
+const encodedTriplePath = resolve(outputDirectory, "encoded-triple-coverability.json");
 const quadruplePath = resolve(outputDirectory, "quadruple-coverability.json");
 mkdirSync(outputDirectory, { recursive: true });
 
@@ -277,6 +285,28 @@ if (initialQuadrupleReport) {
   for (const quadruple of initialQuadruples) addQuadrupleOrbit(quadruple);
 }
 const initialQuadrupleCount = quadrupleConstraints.length;
+const tripleOrbitRepresentativeKey = rawTriple => polycubeCellTripleOrbitKeys(candidate.voxels, rawTriple)
+  .map(triple => [...triple].sort().join(";"))
+  .sort()[0];
+const selectEncodedTriples = () => {
+  if (tupleEnforcement === "encoded") {
+    return { constraints: tripleConstraints, orbitCount: null };
+  }
+  if (tupleEnforcement !== "hybrid-higher") {
+    return { constraints: [], orbitCount: 0 };
+  }
+  const selectedOrbitKeys = new Set();
+  const constraints = [];
+  for (const triple of tripleConstraints) {
+    const orbitKey = tripleOrbitRepresentativeKey(triple);
+    if (!selectedOrbitKeys.has(orbitKey)) {
+      if (selectedOrbitKeys.size >= encodedTripleOrbitLimit) continue;
+      selectedOrbitKeys.add(orbitKey);
+    }
+    constraints.push(triple);
+  }
+  return { constraints, orbitCount: selectedOrbitKeys.size };
+};
 const effectiveNextLayerCoverability = requireNextLayerCoverability
   || learnCellCoverability
   || cellConstraints.length > 0
@@ -287,7 +317,7 @@ const effectiveNextLayerCoverability = requireNextLayerCoverability
   || learnQuadrupleCoverability
   || quadrupleConstraints.length > 0;
 const encodePairCoverability = tupleEnforcement !== "lazy-all";
-const encodeHigherCoverability = tupleEnforcement === "encoded";
+const encodeQuadrupleCoverability = tupleEnforcement === "encoded";
 
 const learnTupleObstructions = proposal => {
   const incompatiblePairDetails = learnPairCoverability || learnTripleCoverability || learnQuadrupleCoverability
@@ -404,6 +434,7 @@ process.stdout.write(`${JSON.stringify({
   triple_max_cell_distance: tripleMaximumCellDistance,
   triple_encoding: tripleEncoding,
   tuple_enforcement: tupleEnforcement,
+  encoded_triple_orbit_limit: encodedTripleOrbitLimit,
   initial_triple_coverability_constraints: initialTripleCount,
   learn_quadruple_coverability: learnQuadrupleCoverability,
   quadruple_orbit_limit: quadrupleOrbitLimit,
@@ -418,6 +449,8 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
   writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
   writeFileSync(triplePath, `${JSON.stringify({ triples: tripleConstraints }, null, 2)}\n`);
+  const encodedTripleSelection = selectEncodedTriples();
+  writeFileSync(encodedTriplePath, `${JSON.stringify({ triples: encodedTripleSelection.constraints }, null, 2)}\n`);
   writeFileSync(quadruplePath, `${JSON.stringify({ quadruples: quadrupleConstraints }, null, 2)}\n`);
   const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
   const iterationSeed = randomSeed + iteration * seedStride;
@@ -441,11 +474,11 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     solverArguments.push(`--pair-coverability-report=${pairPath}`);
     solverArguments.push(`--pair-encoding=${pairEncoding}`);
   }
-  if (tripleConstraints.length && encodeHigherCoverability) {
-    solverArguments.push(`--triple-coverability-report=${triplePath}`);
+  if (encodedTripleSelection.constraints.length) {
+    solverArguments.push(`--triple-coverability-report=${encodedTriplePath}`);
     solverArguments.push(`--triple-encoding=${tripleEncoding}`);
   }
-  if (quadrupleConstraints.length && encodeHigherCoverability) {
+  if (quadrupleConstraints.length && encodeQuadrupleCoverability) {
     solverArguments.push(`--quadruple-coverability-report=${quadruplePath}`);
   }
   const solved = spawnSync(python, solverArguments, {
@@ -466,6 +499,8 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
         cell_coverability_constraints: cellConstraints.length,
         pair_coverability_constraints: pairConstraints.length,
         triple_coverability_constraints: tripleConstraints.length,
+        encoded_triple_coverability_constraints: encodedTripleSelection.constraints.length,
+        encoded_triple_coverability_orbits: encodedTripleSelection.orbitCount,
         quadruple_coverability_constraints: quadrupleConstraints.length
       };
       trials.push(trial);
@@ -550,6 +585,8 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
         triple_constraints_added: tupleResult.triplesAdded,
         triple_orbits_added: tupleResult.tripleOrbitsAdded,
         triple_coverability_constraints: tripleConstraints.length,
+        encoded_triple_coverability_constraints: encodedTripleSelection.constraints.length,
+        encoded_triple_coverability_orbits: encodedTripleSelection.orbitCount,
         incompatible_target_quadruples: tupleResult.incompatibleQuadrupleDetails.length,
         selected_quadruple_candidate_combinations_blocked: tupleResult.incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
         quadruple_constraints_added: tupleResult.quadruplesAdded,
@@ -671,6 +708,8 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     triple_constraints_added: triplesAdded,
     triple_orbits_added: tripleOrbitsAdded,
     triple_coverability_constraints: tripleConstraints.length,
+    encoded_triple_coverability_constraints: encodedTripleSelection.constraints.length,
+    encoded_triple_coverability_orbits: encodedTripleSelection.orbitCount,
     incompatible_target_quadruples: incompatibleQuadrupleDetails.length,
     selected_quadruple_candidate_combinations_blocked: incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
     quadruple_constraints_added: quadruplesAdded,
@@ -693,6 +732,8 @@ writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
 writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
 writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
 writeFileSync(triplePath, `${JSON.stringify({ triples: tripleConstraints }, null, 2)}\n`);
+const finalEncodedTripleSelection = selectEncodedTriples();
+writeFileSync(encodedTriplePath, `${JSON.stringify({ triples: finalEncodedTripleSelection.constraints }, null, 2)}\n`);
 writeFileSync(quadruplePath, `${JSON.stringify({ quadruples: quadrupleConstraints }, null, 2)}\n`);
 
 const summary = {
@@ -741,6 +782,9 @@ const summary = {
   triple_max_cell_distance: tripleMaximumCellDistance,
   triple_encoding: tripleEncoding,
   tuple_enforcement: tupleEnforcement,
+  encoded_triple_orbit_limit: encodedTripleOrbitLimit,
+  encoded_triple_coverability_orbits: finalEncodedTripleSelection.orbitCount,
+  encoded_triple_coverability_constraints: finalEncodedTripleSelection.constraints.length,
   triple_coverability_triples: tripleConstraints,
   triple_coverability_constraint_count: tripleConstraints.length,
   initial_triple_coverability_constraints: initialTripleCount,

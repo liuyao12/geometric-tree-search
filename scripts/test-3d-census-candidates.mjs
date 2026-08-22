@@ -467,6 +467,10 @@ const archivedP9BatchedTripleCoverability = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-batched-triple-coverability-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9LazyHigherCoverability = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-lazy-higher-coverability-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1709,6 +1713,16 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple_orbits_added, 30);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple_final_triple_constraints, 108);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_triple_final_four_timeouts, 3);
+assert.equal(archivedP9LazyHigherCoverability.matched_ablation.encoded.sat_outer_states, 1);
+assert.equal(archivedP9LazyHigherCoverability.matched_ablation.encoded.process_timeouts, 3);
+assert.equal(archivedP9LazyHigherCoverability.matched_ablation.lazy_higher.sat_outer_states, 4);
+assert.equal(archivedP9LazyHigherCoverability.matched_ablation.lazy_higher.process_timeouts, 0);
+assert.equal(archivedP9LazyHigherCoverability.chained_extension.exact_tuple_rejections, 8);
+assert.equal(archivedP9LazyHigherCoverability.chained_extension.final_constraints.triple, 141);
+assert.equal(archivedP9LazyHigherCoverability.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_lazy_higher_extension_states, 8);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_lazy_higher_final_pair_constraints, 744);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_lazy_higher_final_triple_constraints, 141);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1717,6 +1731,8 @@ assert.match(growthAppSource, /exact proposal solver now encodes that quadruple/
 assert.match(growthAppSource, /deepest survives/);
 assert.match(growthAppSource, /Complete per-state triple batching/);
 assert.match(growthAppSource, /monolithic proposal formula/);
+assert.match(growthAppSource, /matched lazy-higher ablation/);
+assert.match(growthAppSource, /next target is hybrid proposal steering/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,
