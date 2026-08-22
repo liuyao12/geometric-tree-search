@@ -560,58 +560,6 @@ function makeChairGeometry(leaf) {
   return geometry;
 }
 
-// A connected path on the boundary of the canonical chair (missing corner 111).
-// Every other chair receives the proper cube rotation representing its orientation.
-const CANONICAL_HOOK_PATH = [
-  [0, 2, 2],
-  [1, 2, 2],
-  [1, 1, 2],
-  [2, 1, 2]
-];
-
-function orientedChairPoint(point, leaf) {
-  const rows = CHAIR_ROTATIONS.get(orientationIndex(leaf.missingCorner)).rows;
-  const centered = point.map((coordinate) => coordinate - 1);
-  return rows.map((row, axis) => (
-    leaf.origin[axis] + 1 + row.reduce((sum, value, sourceAxis) => (
-      sum + value * centered[sourceAxis]
-    ), 0)
-  ));
-}
-
-function appendThickSegment(positions, start, end, thickness) {
-  const half = thickness / 2;
-  const minima = start.map((value, axis) => Math.min(value, end[axis]));
-  const maxima = start.map((value, axis) => Math.max(value, end[axis]));
-  for (let axis = 0; axis < 3; axis += 1) {
-    if (Math.abs(maxima[axis] - minima[axis]) < 1e-9) {
-      minima[axis] -= half;
-      maxima[axis] += half;
-    }
-  }
-  const corners = CUBE_CORNERS.map(([x, y, z]) => [
-    x ? maxima[0] : minima[0],
-    y ? maxima[1] : minima[1],
-    z ? maxima[2] : minima[2]
-  ]);
-  for (const face of CUBE_FACES) {
-    for (const index of [face[0], face[1], face[2], face[0], face[2], face[3]]) {
-      positions.push(...corners[index]);
-    }
-  }
-}
-
-function makeHookGeometry(leaf, thickness = 0.065) {
-  const positions = [];
-  const points = CANONICAL_HOOK_PATH.map((point) => orientedChairPoint(point, leaf));
-  for (let index = 1; index < points.length; index += 1) {
-    appendThickSegment(positions, points[index - 1], points[index], thickness);
-  }
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
-  return geometry;
-}
-
 function makeParentOutline(size, missingCorner, origin) {
   const half = size / 2;
   const surface = makeChairGeometry({ origin: [0, 0, 0], missingCorner });
@@ -643,23 +591,19 @@ function makeVisual(state) {
   const orientationBuckets = new Map();
   const faceOpacity = Math.max(0.035, 0.2 / (2 ** level));
   const edgeOpacity = Math.max(0.11, 0.58 / (2 ** level));
-  const hookOpacity = Math.max(0.2, 0.9 / (2 ** level));
 
   for (const leaf of leaves) {
     const orientation = orientationIndex(leaf.missingCorner);
     const geometry = makeChairGeometry(leaf);
     const edgeGeometry = new THREE.EdgesGeometry(geometry, 1);
-    const hookGeometry = makeHookGeometry(leaf);
     if (!orientationBuckets.has(orientation)) {
-      orientationBuckets.set(orientation, { facePositions: [], edgePositions: [], hookPositions: [] });
+      orientationBuckets.set(orientation, { facePositions: [], edgePositions: [] });
     }
     const bucket = orientationBuckets.get(orientation);
     bucket.facePositions.push(...geometry.getAttribute("position").array);
     bucket.edgePositions.push(...edgeGeometry.getAttribute("position").array);
-    bucket.hookPositions.push(...hookGeometry.getAttribute("position").array);
     geometry.dispose();
     edgeGeometry.dispose();
-    hookGeometry.dispose();
   }
 
   for (const [orientation, bucket] of orientationBuckets) {
@@ -693,23 +637,9 @@ function makeVisual(state) {
     const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
     edges.renderOrder = 2;
     group.add(edges);
-
-    const hookGeometry = new THREE.BufferGeometry();
-    hookGeometry.setAttribute("position", new THREE.Float32BufferAttribute(bucket.hookPositions, 3));
-    const hookMaterial = new THREE.MeshBasicMaterial({
-      color: color.clone().multiplyScalar(0.42),
-      transparent: true,
-      opacity: hookOpacity,
-      depthWrite: false,
-      depthTest: true
-    });
-    hookMaterial.userData.baseOpacity = hookOpacity;
-    const hooks = new THREE.Mesh(hookGeometry, hookMaterial);
-    hooks.renderOrder = 2.5;
-    group.add(hooks);
-    geometries.push(geometry, edgeGeometry, hookGeometry);
-    materials.push(faceMaterial, edgeMaterial, hookMaterial);
-    chairs.push({ orientation, faceMaterial, edgeMaterial, hookMaterial });
+    geometries.push(geometry, edgeGeometry);
+    materials.push(faceMaterial, edgeMaterial);
+    chairs.push({ orientation, faceMaterial, edgeMaterial });
   }
   const parent = makeParentOutline(size, state.missingCorner, state.origin);
   // Keep the original chair fixed in world space; new copies grow around it.
@@ -779,21 +709,9 @@ function makeSearchVisual(state) {
     const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
     edges.renderOrder = 2;
     group.add(edges);
-    const hookGeometry = makeHookGeometry(leaf, 0.07);
-    const hookMaterial = new THREE.MeshBasicMaterial({
-      color: color.clone().multiplyScalar(0.42),
-      transparent: true,
-      opacity: 0.92,
-      depthWrite: false,
-      depthTest: true
-    });
-    hookMaterial.userData.baseOpacity = 0.92;
-    const hook = new THREE.Mesh(hookGeometry, hookMaterial);
-    hook.renderOrder = 2.5;
-    group.add(hook);
-    materials.push(faceMaterial, edgeMaterial, hookMaterial);
-    geometries.push(geometry, edgeGeometry, hookGeometry);
-    chairs.push({ orientation, faceMaterial, edgeMaterial, hookMaterial });
+    materials.push(faceMaterial, edgeMaterial);
+    geometries.push(geometry, edgeGeometry);
+    chairs.push({ orientation, faceMaterial, edgeMaterial });
     variant.cells.forEach(cell => allCells.push(add(placement.origin, cell)));
   }
 
@@ -849,7 +767,6 @@ function refreshChairHighlight(visual) {
     const highlighted = selectedChairOrientation === null || chair.orientation === selectedChairOrientation;
     chair.faceMaterial.userData.highlightFactor = highlighted ? 1 : 0.08;
     chair.edgeMaterial.userData.highlightFactor = highlighted ? 1 : 0.12;
-    chair.hookMaterial.userData.highlightFactor = highlighted ? 1 : 0.08;
   }
   for (const material of visual.materials) {
     material.opacity = (material.userData.baseOpacity ?? 0.52)

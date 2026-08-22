@@ -54,6 +54,13 @@ const CANONICAL_VERTICES = [
   new THREE.Vector3(SQRT3, 0, 1),
   new THREE.Vector3(0, 1, 1)
 ];
+const HOOK_VERTEX_INDICES = [2, 0, 1, 4];
+const TUBE_FACES = [
+  [0, 3, 2, 1], [4, 5, 6, 7],
+  [0, 1, 5, 4], [1, 2, 6, 5],
+  [2, 3, 7, 6], [3, 0, 4, 7]
+];
+const HOOK_VERTICES_PER_TILE = (HOOK_VERTEX_INDICES.length - 1) * 8;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xedf1ef);
@@ -734,11 +741,44 @@ function makeTransparentMaterial({ line = false, opacity } = {}) {
   return material;
 }
 
+function appendThickHookSegment(positions, colors, indices, start, end, color, thickness) {
+  const direction = end.clone().sub(start).normalize();
+  const reference = Math.abs(direction.z) < 0.9
+    ? new THREE.Vector3(0, 0, 1)
+    : new THREE.Vector3(0, 1, 0);
+  const side = new THREE.Vector3().crossVectors(direction, reference).normalize().multiplyScalar(thickness / 2);
+  const upward = new THREE.Vector3().crossVectors(direction, side).normalize().multiplyScalar(thickness / 2);
+  const baseIndex = positions.length / 3;
+  const corners = [
+    start.clone().sub(side).sub(upward),
+    start.clone().add(side).sub(upward),
+    start.clone().add(side).add(upward),
+    start.clone().sub(side).add(upward),
+    end.clone().sub(side).sub(upward),
+    end.clone().add(side).sub(upward),
+    end.clone().add(side).add(upward),
+    end.clone().sub(side).add(upward)
+  ];
+  for (const corner of corners) {
+    positions.push(corner.x, corner.y, corner.z);
+    colors.push(color.r, color.g, color.b, 1);
+  }
+  for (const face of TUBE_FACES) {
+    indices.push(
+      baseIndex + face[0], baseIndex + face[1], baseIndex + face[2],
+      baseIndex + face[0], baseIndex + face[2], baseIndex + face[3]
+    );
+  }
+}
+
 function makeVisual(transforms, turnGenerations) {
   const facePositions = [];
   const faceColors = [];
   const edgePositions = [];
   const edgeColors = [];
+  const hookPositions = [];
+  const hookColors = [];
+  const hookIndices = [];
   const transformed = CANONICAL_VERTICES.map(() => new THREE.Vector3());
 
   transforms.forEach((matrix, transformIndex) => {
@@ -755,6 +795,18 @@ function makeVisual(transforms, turnGenerations) {
       const point = transformed[index];
       edgePositions.push(point.x, point.y, point.z);
       edgeColors.push(color.r, color.g, color.b, 1);
+    }
+    const hookColor = color.clone().multiplyScalar(0.44);
+    for (let index = 1; index < HOOK_VERTEX_INDICES.length; index += 1) {
+      appendThickHookSegment(
+        hookPositions,
+        hookColors,
+        hookIndices,
+        transformed[HOOK_VERTEX_INDICES[index - 1]],
+        transformed[HOOK_VERTEX_INDICES[index]],
+        hookColor,
+        0.04
+      );
     }
   });
 
@@ -775,17 +827,42 @@ function makeVisual(transforms, turnGenerations) {
   const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
   edges.renderOrder = 2;
 
+  const hookOpacity = Math.max(0.08, 0.72 / Math.pow(transforms.length, 0.22));
+  const hookGeometry = new THREE.BufferGeometry();
+  hookGeometry.setAttribute("position", new THREE.Float32BufferAttribute(hookPositions, 3));
+  hookGeometry.setAttribute("color", new THREE.Float32BufferAttribute(hookColors, 4));
+  hookGeometry.setIndex(hookIndices);
+  const hookMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    vertexColors: true,
+    transparent: true,
+    depthWrite: false,
+    depthTest: true,
+    opacity: hookOpacity
+  });
+  hookMaterial.userData.baseOpacity = hookOpacity;
+  const hooks = new THREE.Mesh(hookGeometry, hookMaterial);
+  hooks.renderOrder = 2.5;
+
   const group = new THREE.Group();
-  group.add(mesh, edges);
-  return { group, transforms, turnGenerations, materials: [faceMaterial, edgeMaterial], geometries: [faceGeometry, edgeGeometry] };
+  group.add(mesh, edges, hooks);
+  return {
+    group,
+    transforms,
+    turnGenerations,
+    materials: [faceMaterial, edgeMaterial, hookMaterial],
+    geometries: [faceGeometry, edgeGeometry, hookGeometry]
+  };
 }
 
 function refreshVisualColors(visual) {
   if (!visual) return;
   const faceColors = visual.geometries[0].getAttribute("color");
   const edgeColors = visual.geometries[1].getAttribute("color");
+  const hookColors = visual.geometries[2].getAttribute("color");
   let faceOffset = 0;
   let edgeOffset = 0;
+  let hookOffset = 0;
   visual.transforms.forEach((matrix, transformIndex) => {
     const color = displayedTileColor(matrix, visual.turnGenerations[transformIndex]);
     const matches = selectedOrientationKey !== null
@@ -796,15 +873,21 @@ function refreshVisualColors(visual) {
     const edgeAlpha = selectedOrientationKey === null
       ? 1
       : matches ? 1 : Math.max(0.008, visual.materials[1].userData.baseOpacity * 0.28);
+    const hookAlpha = selectedOrientationKey === null ? 1 : matches ? 1 : 0.035;
     for (let index = 0; index < FACE_INDICES.length; index += 1) {
       faceColors.setXYZW(faceOffset++, color.r, color.g, color.b, faceAlpha);
     }
     for (let index = 0; index < EDGE_INDICES.length; index += 1) {
       edgeColors.setXYZW(edgeOffset++, color.r, color.g, color.b, edgeAlpha);
     }
+    const hookColor = color.clone().multiplyScalar(0.44);
+    for (let index = 0; index < HOOK_VERTICES_PER_TILE; index += 1) {
+      hookColors.setXYZW(hookOffset++, hookColor.r, hookColor.g, hookColor.b, hookAlpha);
+    }
   });
   faceColors.needsUpdate = true;
   edgeColors.needsUpdate = true;
+  hookColors.needsUpdate = true;
   refreshVisualEmphasis(visual);
 }
 
