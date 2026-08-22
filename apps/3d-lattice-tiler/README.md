@@ -880,7 +880,9 @@ default baseline. `hybrid-higher` plus a positive
 `--encoded-triple-orbit-limit` encodes only that many complete root-symmetry
 orbits from the accumulated triple set and audits every remaining triple and
 quadruple lazily. The generated `encoded-triple-coverability.json` makes the
-actual steering subset explicit and resumable.
+actual steering subset explicit and resumable. The optional
+`--encoded-triple-selection=recent` window follows newly learned obstruction
+orbits instead of permanently retaining the earliest ones.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

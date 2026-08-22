@@ -90,11 +90,18 @@ if (!["encoded", "hybrid-higher", "lazy-higher", "lazy-all"].includes(tupleEnfor
   throw new Error("--tuple-enforcement must be encoded, hybrid-higher, lazy-higher, or lazy-all");
 }
 const encodedTripleOrbitLimit = integerArg("encoded-triple-orbit-limit", 0, 0);
+const encodedTripleSelection = args.get("encoded-triple-selection") ?? "first";
+if (!["first", "recent"].includes(encodedTripleSelection)) {
+  throw new Error("--encoded-triple-selection must be first or recent");
+}
 if (tupleEnforcement === "hybrid-higher" && encodedTripleOrbitLimit === 0) {
   throw new Error("--tuple-enforcement=hybrid-higher requires --encoded-triple-orbit-limit greater than zero");
 }
 if (tupleEnforcement !== "hybrid-higher" && encodedTripleOrbitLimit > 0) {
   throw new Error("--encoded-triple-orbit-limit is only valid with --tuple-enforcement=hybrid-higher");
+}
+if (tupleEnforcement !== "hybrid-higher" && encodedTripleSelection !== "first") {
+  throw new Error("--encoded-triple-selection is only valid with --tuple-enforcement=hybrid-higher");
 }
 const pairSelection = args.get("pair-selection") ?? "lexicographic";
 if (!["lexicographic", "max-blocked-combinations", "min-blocked-combinations"].includes(pairSelection)) {
@@ -295,16 +302,20 @@ const selectEncodedTriples = () => {
   if (tupleEnforcement !== "hybrid-higher") {
     return { constraints: [], orbitCount: 0 };
   }
-  const selectedOrbitKeys = new Set();
-  const constraints = [];
+  const orderedOrbitKeys = [];
+  const seenOrbitKeys = new Set();
   for (const triple of tripleConstraints) {
     const orbitKey = tripleOrbitRepresentativeKey(triple);
-    if (!selectedOrbitKeys.has(orbitKey)) {
-      if (selectedOrbitKeys.size >= encodedTripleOrbitLimit) continue;
-      selectedOrbitKeys.add(orbitKey);
-    }
-    constraints.push(triple);
+    if (seenOrbitKeys.has(orbitKey)) continue;
+    seenOrbitKeys.add(orbitKey);
+    orderedOrbitKeys.push(orbitKey);
   }
+  const selectedOrbitKeys = new Set((encodedTripleSelection === "recent"
+    ? orderedOrbitKeys.slice(-encodedTripleOrbitLimit)
+    : orderedOrbitKeys.slice(0, encodedTripleOrbitLimit)));
+  const constraints = tripleConstraints.filter(triple =>
+    selectedOrbitKeys.has(tripleOrbitRepresentativeKey(triple))
+  );
   return { constraints, orbitCount: selectedOrbitKeys.size };
 };
 const effectiveNextLayerCoverability = requireNextLayerCoverability
@@ -435,6 +446,7 @@ process.stdout.write(`${JSON.stringify({
   triple_encoding: tripleEncoding,
   tuple_enforcement: tupleEnforcement,
   encoded_triple_orbit_limit: encodedTripleOrbitLimit,
+  encoded_triple_selection: encodedTripleSelection,
   initial_triple_coverability_constraints: initialTripleCount,
   learn_quadruple_coverability: learnQuadrupleCoverability,
   quadruple_orbit_limit: quadrupleOrbitLimit,
@@ -783,6 +795,7 @@ const summary = {
   triple_encoding: tripleEncoding,
   tuple_enforcement: tupleEnforcement,
   encoded_triple_orbit_limit: encodedTripleOrbitLimit,
+  encoded_triple_selection: encodedTripleSelection,
   encoded_triple_coverability_orbits: finalEncodedTripleSelection.orbitCount,
   encoded_triple_coverability_constraints: finalEncodedTripleSelection.constraints.length,
   triple_coverability_triples: tripleConstraints,

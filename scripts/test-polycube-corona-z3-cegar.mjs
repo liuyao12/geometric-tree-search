@@ -386,6 +386,7 @@ try {
     "--require-next-layer-coverability=true",
     "--tuple-enforcement=hybrid-higher",
     "--encoded-triple-orbit-limit=1",
+    "--encoded-triple-selection=recent",
     "--lookahead-conflict-encoding=grouped-pb",
     "--learn-triple-coverability=true",
     "--triple-max-cell-distance=6",
@@ -404,6 +405,7 @@ try {
   const hybridHigherReport = JSON.parse(readFileSync(hybridHigherOutput, "utf8"));
   assert.equal(hybridHigherReport.tuple_enforcement, "hybrid-higher");
   assert.equal(hybridHigherReport.encoded_triple_orbit_limit, 1);
+  assert.equal(hybridHigherReport.encoded_triple_selection, "recent");
   assert.equal(hybridHigherReport.encoded_triple_coverability_orbits, 1);
   assert.ok(hybridHigherReport.encoded_triple_coverability_constraints > 0);
   assert.ok(
