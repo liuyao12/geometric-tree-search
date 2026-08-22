@@ -50,6 +50,7 @@ const z3ProcessGraceMs = integerArg("z3-process-grace-ms", 120_000, 1);
 const z3FormulaCache = booleanArg("z3-formula-cache", false);
 const z3WitnessBatchSize = integerArg("z3-witness-batch-size", 1, 1);
 const z3Interactive = booleanArg("z3-interactive", false);
+const z3InteractiveReplacePairs = booleanArg("z3-interactive-replace-pairs", z3Interactive);
 const continuationTimeMs = integerArg("continuation-time-ms", 10_000, 1);
 const continuationNodes = integerArg("continuation-nodes", 10_000_000, 1);
 const nogoodLimit = integerArg("nogood-limit", 500_000, 1);
@@ -129,6 +130,9 @@ if (z3Interactive && learnCellCoverability) {
 }
 if (z3Interactive && tupleEnforcement === "encoded") {
   throw new Error("--z3-interactive requires a lazy or hybrid tuple-enforcement mode");
+}
+if (z3InteractiveReplacePairs && !z3Interactive) {
+  throw new Error("--z3-interactive-replace-pairs requires --z3-interactive");
 }
 const pairSelection = args.get("pair-selection") ?? "lexicographic";
 if (!["lexicographic", "max-blocked-combinations", "min-blocked-combinations"].includes(pairSelection)) {
@@ -539,6 +543,7 @@ process.stdout.write(`${JSON.stringify({
   z3_formula_cache: z3FormulaCache,
   z3_witness_batch_size: z3WitnessBatchSize,
   z3_interactive: z3Interactive,
+  z3_interactive_replace_pairs: z3InteractiveReplacePairs,
   continuation_time_ms: continuationTimeMs,
   continuation_nodes: continuationNodes,
   backend,
@@ -633,6 +638,8 @@ const processSatProposal = ({
     z3_interactive_pairs_applied: proposal.interactive_pairs_applied ?? 0,
     z3_interactive_pair_coverability_constraints:
       proposal.interactive_pair_coverability_constraints ?? null,
+    z3_interactive_pair_coverability_formulas:
+      proposal.interactive_pair_coverability_formulas ?? null,
     encoded_pair_coverability_constraints: encodedPairs.constraints.length,
     encoded_pair_coverability_orbits: encodedPairs.orbitCount,
     encoded_pair_orbit_keys: encodedPairs.orbitKeys,
@@ -871,6 +878,7 @@ const runInteractiveCegar = async () => {
   let { encodedPairs, encodedTriples } = writeCurrentReports();
   const solverArguments = solverArgumentsFor(randomSeed, encodedPairs, encodedTriples);
   solverArguments.push("--interactive-jsonl");
+  if (z3InteractiveReplacePairs) solverArguments.push("--interactive-replace-pairs");
   const worker = spawn(python, solverArguments, { stdio: ["pipe", "pipe", "pipe"] });
   const lines = createInterface({ input: worker.stdout });
   const iterator = lines[Symbol.asyncIterator]();
@@ -906,7 +914,9 @@ const runInteractiveCegar = async () => {
         type: "next",
         timeout_ms: z3TimeoutMs,
         clauses: pendingClauses,
-        pairs: pendingPairs
+        ...(z3InteractiveReplacePairs
+          ? { replace_pairs: encodedPairs.constraints }
+          : { pairs: pendingPairs })
       })}\n`);
       const result = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
       if (result.type !== "result") throw new Error(`Expected interactive result event, received ${result.type}`);
@@ -928,7 +938,8 @@ const runInteractiveCegar = async () => {
         interactive_clauses_applied: result.clauses_added,
         interactive_pairs_applied: result.pairs_added,
         interactive_forbidden_clauses: result.forbidden_clauses,
-        interactive_pair_coverability_constraints: result.pair_coverability_constraints
+        interactive_pair_coverability_constraints: result.pair_coverability_constraints,
+        interactive_pair_coverability_formulas: result.pair_coverability_formulas
       };
       const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
       writeFileSync(witnessPath, `${JSON.stringify(proposal, null, 2)}\n`);
@@ -992,15 +1003,20 @@ const runInteractiveCegar = async () => {
       }
       pendingClauses = clauses.slice(clauseCountBefore);
       const nextEncodedPairs = selectEncodedPairs();
-      pendingPairs = nextEncodedPairs.constraints.filter(pair => {
-        const key = pair.join(";");
-        if (encodedPairKeysSent.has(key)) return false;
-        encodedPairKeysSent.add(key);
-        return true;
-      });
-      encodedPairs = describeEncodedPairs(pairConstraints.filter(pair =>
-        encodedPairKeysSent.has(pair.join(";"))
-      ));
+      if (z3InteractiveReplacePairs) {
+        pendingPairs = [];
+        encodedPairs = nextEncodedPairs;
+      } else {
+        pendingPairs = nextEncodedPairs.constraints.filter(pair => {
+          const key = pair.join(";");
+          if (encodedPairKeysSent.has(key)) return false;
+          encodedPairKeysSent.add(key);
+          return true;
+        });
+        encodedPairs = describeEncodedPairs(pairConstraints.filter(pair =>
+          encodedPairKeysSent.has(pair.join(";"))
+        ));
+      }
     }
   } finally {
     if (!worker.killed) {
@@ -1209,6 +1225,7 @@ const summary = {
   z3_formula_cache: z3FormulaCache,
   z3_witness_batch_size: z3WitnessBatchSize,
   z3_interactive: z3Interactive,
+  z3_interactive_replace_pairs: z3InteractiveReplacePairs,
   continuation_time_ms: continuationTimeMs,
   continuation_nodes: continuationNodes,
   trials,

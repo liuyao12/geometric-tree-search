@@ -152,6 +152,7 @@ def main():
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--formula-cache")
     parser.add_argument("--interactive-jsonl", action="store_true")
+    parser.add_argument("--interactive-replace-pairs", action="store_true")
     parser.add_argument("--output")
     args = parser.parse_args()
     if (args.layer < 1 or args.timeout_ms < 1 or args.max_witnesses < 1
@@ -165,6 +166,8 @@ def main():
         parser.error("formula caching currently requires --require-next-layer-coverability")
     if args.interactive_jsonl and (not args.require_next_layer_coverability or args.max_witnesses != 1):
         parser.error("interactive mode requires next-layer coverability and max-witnesses=1")
+    if args.interactive_replace_pairs and not args.interactive_jsonl:
+        parser.error("--interactive-replace-pairs requires --interactive-jsonl")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -193,7 +196,7 @@ def main():
     cache_path = Path(args.formula_cache) if args.formula_cache else None
     cache_metadata_path = Path(f"{args.formula_cache}.json") if args.formula_cache else None
     cache_signature = json.dumps({
-        "version": 1,
+        "version": 2,
         "key": args.key,
         "layer": args.layer,
         "min_placements": args.min_placements,
@@ -202,6 +205,7 @@ def main():
         "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
         "root_symmetry_breaking": args.root_symmetry_breaking,
         "pair_encoding": args.pair_encoding,
+        "interactive_replace_pairs": args.interactive_replace_pairs,
     }, sort_keys=True)
     cache_metadata = None
     if cache_path and cache_path.is_file() and cache_metadata_path.is_file():
@@ -404,11 +408,19 @@ def main():
         placement_cell_sets = {
             index: frozenset(next_placements[index]) for index in relevant_indices
         }
+        def pair_activation(left_cell, right_cell):
+            return z3.Bool(f"pair_active_{cell_token(left_cell)}__{cell_token(right_cell)}")
+
         def encode_pair_constraint(left_cell, right_cell):
             nonlocal pair_coverability_terms
             nonlocal pair_coverability_choice_variables
             nonlocal pair_coverability_incompatibilities
             pair_name = f"{cell_token(left_cell)}__{cell_token(right_cell)}"
+            activation = pair_activation(left_cell, right_cell) if args.interactive_replace_pairs else None
+
+            def add_pair_formula(formula):
+                solver.add(z3.Implies(activation, formula) if activation is not None else formula)
+
             if args.pair_encoding == "witness-cnf":
                 left_indices = retained_by_cell.get(left_cell, ())
                 right_indices = retained_by_cell.get(right_cell, ())
@@ -427,10 +439,10 @@ def main():
                         continue
                     witness_variable = z3.Bool(f"w_{pair_name}_{left_index}")
                     witness_choices.append(witness_variable)
-                    solver.add(z3.Or(z3.Not(witness_variable), availability[left_index]))
-                    solver.add(z3.Or(z3.Not(witness_variable), z3.Or(compatible)))
+                    add_pair_formula(z3.Or(z3.Not(witness_variable), availability[left_index]))
+                    add_pair_formula(z3.Or(z3.Not(witness_variable), z3.Or(compatible)))
                     pair_coverability_terms += len(compatible)
-                solver.add(z3.Or(witness_choices) if witness_choices else z3.BoolVal(False))
+                add_pair_formula(z3.Or(witness_choices) if witness_choices else z3.BoolVal(False))
                 pair_coverability_choice_variables += len(witness_choices)
                 return
             if args.pair_encoding == "choice-cnf":
@@ -442,16 +454,16 @@ def main():
                     index: z3.Bool(f"q_{pair_name}_r_{index}")
                     for index in retained_by_cell.get(right_cell, ())
                 }
-                solver.add(z3.Or(list(left_choices.values())) if left_choices else z3.BoolVal(False))
-                solver.add(z3.Or(list(right_choices.values())) if right_choices else z3.BoolVal(False))
+                add_pair_formula(z3.Or(list(left_choices.values())) if left_choices else z3.BoolVal(False))
+                add_pair_formula(z3.Or(list(right_choices.values())) if right_choices else z3.BoolVal(False))
                 for index, choice in itertools.chain(left_choices.items(), right_choices.items()):
-                    solver.add(z3.Or(z3.Not(choice), availability[index]))
+                    add_pair_formula(z3.Or(z3.Not(choice), availability[index]))
                 for left_index, left_choice in left_choices.items():
                     for right_index, right_choice in right_choices.items():
                         if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
                                 placement_cell_sets[right_index]):
                             continue
-                        solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
+                        add_pair_formula(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
                         pair_coverability_incompatibilities += 1
                 pair_coverability_choice_variables += len(left_choices) + len(right_choices)
                 return
@@ -467,7 +479,7 @@ def main():
                         if left_index == right_index
                         else z3.And(availability[left_index], availability[right_index])
                     ))
-            solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
+            add_pair_formula(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
             pair_coverability_terms += len(compatible_terms)
 
         for left_cell, right_cell in sorted(normalized_pairs):
@@ -587,6 +599,10 @@ def main():
     construction_ms = round((time.perf_counter() - started) * 1000)
     if args.interactive_jsonl:
         encoded_pair_keys = {canonical_pair_key(pair) for pair in normalized_pairs}
+        pair_cells_by_key = {
+            canonical_pair_key(pair): pair for pair in normalized_pairs
+        }
+        active_pair_keys = set(encoded_pair_keys)
         print(json.dumps({
             "type": "ready",
             "construction_milliseconds": construction_ms,
@@ -596,6 +612,8 @@ def main():
             "formula_cache_load_milliseconds": formula_cache_load_ms,
             "formula_cache_write_milliseconds": formula_cache_write_ms,
             "pair_coverability_constraints": len(encoded_pair_keys),
+            "pair_coverability_formulas": len(encoded_pair_keys),
+            "interactive_replace_pairs": args.interactive_replace_pairs,
             "forbidden_clauses": len(forbidden_clause_keys),
             "constraints": constraint_count,
         }), flush=True)
@@ -622,24 +640,42 @@ def main():
                 forbidden_clause_keys.add(clause_key)
                 clauses_added += 1
             pairs_added = 0
-            for pair_number, pair in enumerate(command.get("pairs", ())):
+            replacement_pairs = command.get("replace_pairs")
+            if replacement_pairs is not None and not args.interactive_replace_pairs:
+                raise ValueError("replace_pairs requires --interactive-replace-pairs")
+            supplied_pairs = replacement_pairs if replacement_pairs is not None else command.get("pairs", ())
+            supplied_pair_keys = set()
+            for pair_number, pair in enumerate(supplied_pairs):
                 if not isinstance(pair, list) or len(pair) != 2:
                     raise ValueError(f"Interactive pair {pair_number} must contain two cell keys")
                 cells = tuple(sorted(parse_cell_key(cell) for cell in pair))
                 if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
                     raise ValueError(f"Interactive pair {pair_number} is not a distinct next-ring cell pair")
                 normalized_key = canonical_pair_key(cells)
-                if normalized_key in encoded_pair_keys:
-                    continue
-                encode_pair_constraint(*cells)
-                encoded_pair_keys.add(normalized_key)
-                pairs_added += 1
+                supplied_pair_keys.add(normalized_key)
+                pair_cells_by_key[normalized_key] = cells
+                if normalized_key not in encoded_pair_keys:
+                    encode_pair_constraint(*cells)
+                    encoded_pair_keys.add(normalized_key)
+                    pairs_added += 1
+            if replacement_pairs is not None:
+                active_pair_keys = supplied_pair_keys
+            else:
+                active_pair_keys.update(supplied_pair_keys)
             command_timeout_ms = int(command.get("timeout_ms", args.timeout_ms))
             if command_timeout_ms < 1:
                 raise ValueError("Interactive timeout must be positive")
             solver.set(timeout=command_timeout_ms)
             check_started = time.perf_counter()
-            interactive_status = solver.check()
+            pair_assumptions = []
+            if args.interactive_replace_pairs:
+                pair_assumptions = [
+                    pair_activation(*pair_cells_by_key[key])
+                    if key in active_pair_keys
+                    else z3.Not(pair_activation(*pair_cells_by_key[key]))
+                    for key in sorted(encoded_pair_keys)
+                ]
+            interactive_status = solver.check(*pair_assumptions)
             interactive_check_ms = round((time.perf_counter() - check_started) * 1000)
             selected = []
             if interactive_status == z3.sat:
@@ -656,7 +692,9 @@ def main():
                 "clauses_added": clauses_added,
                 "pairs_added": pairs_added,
                 "forbidden_clauses": len(forbidden_clause_keys),
-                "pair_coverability_constraints": len(encoded_pair_keys),
+                "pair_coverability_constraints": len(active_pair_keys),
+                "pair_coverability_formulas": len(encoded_pair_keys),
+                "interactive_replace_pairs": args.interactive_replace_pairs,
                 "constraints": len(solver.assertions()),
                 "corona": [
                     {"cells": [list(cell) for cell in placement]} for placement in selected

@@ -30,6 +30,8 @@ assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
 assert.match(cegarSource, /--max-witnesses=\$\{z3WitnessBatchSize\}/);
 assert.match(cegarSource, /const processSatProposal =/);
 assert.match(cegarSource, /solverArguments\.push\("--interactive-jsonl"\)/);
+assert.match(cegarSource, /solverArguments\.push\("--interactive-replace-pairs"\)/);
+assert.match(cegarSource, /replace_pairs: encodedPairs\.constraints/);
 assert.match(cegarSource, /interactive_clauses_applied/);
 assert.match(cegarSource, /if \(encodedPairs\.constraints\.length\)/);
 assert.match(cegarSource, /--pair-coverability-report=\$\{encodedPairPath\}/);
@@ -222,6 +224,35 @@ try {
       [scoredPairHighKey]: 23
     }
   })}\n`);
+  const replacePairWorker = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--interactive-jsonl",
+    "--interactive-replace-pairs",
+    `--pair-coverability-report=${scoredPairPath}`
+  ], {
+    encoding: "utf8",
+    timeout: 30_000,
+    input: [
+      JSON.stringify({ type: "next", timeout_ms: 10_000, replace_pairs: [scoredPairLow] }),
+      JSON.stringify({ type: "next", timeout_ms: 10_000, replace_pairs: [scoredPairHigh] }),
+      JSON.stringify({ type: "stop" })
+    ].join("\n") + "\n"
+  });
+  assert.equal(replacePairWorker.status, 0, replacePairWorker.stderr);
+  const replacePairEvents = replacePairWorker.stdout.trim().split("\n").map(line => JSON.parse(line));
+  assert.equal(replacePairEvents[0].type, "ready");
+  assert.equal(replacePairEvents[0].pair_coverability_formulas, 2);
+  assert.equal(replacePairEvents[0].interactive_replace_pairs, true);
+  assert.equal(replacePairEvents[1].pair_coverability_constraints, 1);
+  assert.equal(replacePairEvents[1].pair_coverability_formulas, 2);
+  assert.equal(replacePairEvents[2].pair_coverability_constraints, 1);
+  assert.equal(replacePairEvents[2].pair_coverability_formulas, 2);
   const triplePath = join(directory, "triple-coverability.json");
   writeFileSync(triplePath, `${JSON.stringify({
     triples: [[secondRing[0], secondRing[1], secondRing.at(-1)]]
