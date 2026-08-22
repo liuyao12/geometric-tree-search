@@ -944,6 +944,19 @@ update the worker. A bounded regression keeps one solver alive across three
 models, applies three learned GCTS clauses before model two, and injects six
 new pair constraints before model three, whose reported construction time is
 zero.
+
+The first production interactive chain keeps three retained solvers through
+nine exact proposals at seeds 303–305. All nine checks return SAT without a
+timeout: three states have pair defects and six clear every pair obligation
+before exposing triple defects. One session learns three pair constraints from
+its first model, applies them inside the worker, and the next model clears the
+enlarged pair audit. Across the chain, 18 state clauses and three pair
+constraints are visibly applied between in-process checks. The portfolio grows
+from 411 to 438 symmetry-closed state clauses, 777 to 792 pair constraints, and
+264 to 336 triple constraints; the three quadruple constraints remain. No
+state clears the full triple audit, so no radius-five GCTS continuation starts
+and the outer space remains unexhausted. See
+`data/polycube-p9-42947-interactive-z3-cegar-2026-08-21.json`.
 The default triple choice-CNF selects one available placement per cell and
 forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
 DNF while expressing the same exact condition. Quadruple learning uses the

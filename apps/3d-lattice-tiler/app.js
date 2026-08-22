@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v154";
+} from "./engine.js?v=20260821-polycube10-v155";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1522,6 +1522,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_batched_solver_state_report) {
         const batch = candidate.screening;
         candidateResearchDetail.textContent += ` Exact retained-state batching can request ${batch.corona_batched_solver_requested_witnesses} distinct Boolean models without rebuilding Z3. On the positive control it learns from one model and verifies the next through GCTS. On this candidate, seed 302 returns one proposal after ${(batch.corona_batched_solver_first_check_ms / 1000).toFixed(1)}s, exposes a new pair orbit, then spends ${(batch.corona_batched_solver_second_check_ms / 1000).toFixed(1)}s without a second model. The carried screen reaches ${batch.corona_batched_solver_final_pair_constraints} pair and ${batch.corona_batched_solver_final_triple_constraints} triple obligations. Blind batching is therefore not the answer here; the next solver should accept each audited obstruction interactively before continuing its retained search.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_interactive_z3_report) {
+        const interactive = candidate.screening;
+        candidateResearchDetail.textContent += ` Bidirectional retained CEGAR now does that: it asserts every audited state clause and new pair obligation inside the same Z3 process before requesting another model. Three sessions return ${interactive.corona_interactive_z3_sat_states}/${interactive.corona_interactive_z3_sat_states} exact proposals with no timeout—${interactive.corona_interactive_z3_pair_defect_states} pair-defective and ${interactive.corona_interactive_z3_triple_defect_states} pairwise-complete but triple-defective. In production, ${interactive.corona_interactive_z3_pair_feedback_applied} newly learned pair constraints are applied before the next check, whose model clears the enlarged pair audit and reaches the triple audit. The portfolio advances to ${interactive.corona_interactive_z3_final_pair_constraints} pair, ${interactive.corona_interactive_z3_final_triple_constraints} triple, and ${interactive.corona_interactive_z3_final_quadruple_constraints} quadruple obligations. No proposal clears the full triple audit, so the candidate remains unresolved.`;
       }
     }
   } else if (knownAperiodic) {

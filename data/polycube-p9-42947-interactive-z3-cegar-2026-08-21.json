@@ -1,0 +1,84 @@
+{
+  "kind": "polycube_p9_42947_interactive_z3_cegar_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commit": "5e6b7df",
+  "prior_portfolio": "data/polycube-p9-42947-batched-solver-state-2026-08-21.json",
+  "interactive_contract": {
+    "transport": "one JSON-lines Python/Z3 worker per CEGAR session",
+    "feedback": "after every exact audit, all new symmetry-closed state clauses and pair-coverability obligations are asserted before the next check",
+    "higher_order_policy": "the selected hybrid triple orbit remains encoded while every accumulated triple and quadruple obligation is audited lazily",
+    "continuation_gate": "GCTS starts only after a proposal clears the complete pair, triple, and quadruple audits",
+    "unsupported_modes": "dynamic cell-coverability learning and fully encoded higher-order mode are rejected rather than left stale",
+    "soundness": "only independently verified obstruction clauses and exact pair obligations persist in the retained solver"
+  },
+  "positive_control": {
+    "outer_layer": 1,
+    "inner_layer": 2,
+    "models_checked": 3,
+    "clauses_applied_before_second_model": 3,
+    "pair_constraints_learned_on_second_model": 6,
+    "pair_constraints_applied_before_third_model": 6,
+    "third_model_construction_milliseconds": 0,
+    "result": "The worker accepts both GCTS clauses and pair obligations between checks without rebuilding."
+  },
+  "production_chain": {
+    "session_seeds": [303, 304, 305],
+    "proposal_trials": 9,
+    "sat_outer_states": 9,
+    "unknown_timeout_trials": 0,
+    "exact_tuple_rejections": 9,
+    "continuations_started": 0,
+    "pair_defect_states": 3,
+    "triple_defect_states": 6,
+    "quadruple_defect_states": 0,
+    "full_triple_audit_passes": 0,
+    "outer_placements_minimum": 63,
+    "outer_placements_maximum": 76,
+    "z3_check_milliseconds_total": 1251694,
+    "z3_construction_milliseconds_total": 21722,
+    "z3_allocated_milliseconds_total": 1273416,
+    "state_clauses_applied_inside_sessions": 18,
+    "pair_constraints_applied_inside_sessions": 3,
+    "initial_constraints": {
+      "symmetry_closed_clauses": 411,
+      "pair": 777,
+      "triple": 264,
+      "quadruple": 3
+    },
+    "final_constraints": {
+      "symmetry_closed_clauses": 438,
+      "pair": 792,
+      "triple": 336,
+      "quadruple": 3
+    },
+    "production_pair_feedback": {
+      "session_seed": 305,
+      "first_model_pair_constraints_added": 3,
+      "second_model_pair_constraints_applied": 3,
+      "second_model_passed_pair_audit": true,
+      "second_model_triple_defects": 4,
+      "result": "The newly proved pair orbit is asserted before the next in-process check, whose model clears every pair obligation and reaches the triple audit."
+    }
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-interactive-seed303-summary.json",
+      "sha256": "e771eb1f4ffa6101f5e5c7017f974cd0662ad511f5ac329f4d35133dc14d9e24"
+    },
+    {
+      "path": "runs/p9-radius4-to5-interactive-seed304-summary.json",
+      "sha256": "e05bee524d5f28b3b48f90d50f3df9b44ce9d2927c2445e2345a6470bcaa0797"
+    },
+    {
+      "path": "runs/p9-radius4-to5-interactive-seed305-summary.json",
+      "sha256": "e6b10c8a5173b66af2af3dd2490beb8e280faf74b9b13d21477d4f727292528e"
+    }
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Bidirectional feedback fixes the architectural failure exposed by blind batching: all nine production checks return exact models, and a newly learned pair orbit steers the very next retained check to a pairwise-complete state. The screen advances by 15 pair and 72 triple constraints. Every model is nevertheless pair- or triple-defective, the finite outer search is unexhausted, and the run proves neither non-tiling nor aperiodicity."
+}

@@ -491,6 +491,10 @@ const archivedP9BatchedSolverState = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-batched-solver-state-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9InteractiveZ3Cegar = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-interactive-z3-cegar-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1780,6 +1784,14 @@ assert.equal(archivedP9BatchedSolverState.production_probe.second_model_attempt.
 assert.equal(archivedP9BatchedSolverState.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_solver_returned_witnesses, 1);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_batched_solver_final_pair_constraints, 777);
+assert.equal(archivedP9InteractiveZ3Cegar.production_chain.sat_outer_states, 9);
+assert.equal(archivedP9InteractiveZ3Cegar.production_chain.unknown_timeout_trials, 0);
+assert.equal(archivedP9InteractiveZ3Cegar.production_chain.production_pair_feedback.second_model_passed_pair_audit, true);
+assert.equal(archivedP9InteractiveZ3Cegar.production_chain.final_constraints.triple, 336);
+assert.equal(archivedP9InteractiveZ3Cegar.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_interactive_z3_sat_states, 9);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_interactive_z3_final_pair_constraints, 792);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_interactive_z3_final_triple_constraints, 336);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1799,6 +1811,8 @@ assert.match(growthAppSource, /cached one-orbit ranked extension returns/);
 assert.match(growthAppSource, /no radius-five GCTS continuation starts/);
 assert.match(growthAppSource, /Exact retained-state batching can request/);
 assert.match(growthAppSource, /accept each audited obstruction interactively/);
+assert.match(growthAppSource, /Bidirectional retained CEGAR now does that/);
+assert.match(growthAppSource, /applied before the next check/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,
