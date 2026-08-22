@@ -721,6 +721,18 @@ next useful experiment is a hybrid informative-triple encoding rather than
 more undirected lazy restarts. See
 `data/polycube-p9-42947-lazy-higher-coverability-2026-08-21.json`.
 
+Hybrid enforcement identifies a narrow useful load point. Encoding one complete
+triple orbit returns all four matched seeds with no timeout and reduces their
+aggregate Z3 time by 15.7% relative to fully lazy enforcement. Encoding twelve
+of the 36 available orbits times out on the first matched seed. Continuing the
+one-orbit lane through seed 286 and a two-seed recent-orbit branch yields
+thirteen exact proposals, six with pair defects and seven pairwise-complete
+states with triple defects. The accumulated formula reaches 759 pair, 174
+triple, and three quadruple obligations, but no state clears the full triple
+audit. This makes a ranked adaptive orbit window or an incremental outer solver
+the next optimization target. See
+`data/polycube-p9-42947-hybrid-higher-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal

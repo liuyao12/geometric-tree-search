@@ -1,0 +1,136 @@
+{
+  "kind": "polycube_p9_42947_hybrid_higher_coverability_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commits": ["8a615cd", "09107cc"],
+  "prior_portfolio": "data/polycube-p9-42947-lazy-higher-coverability-2026-08-21.json",
+  "hybrid_contract": {
+    "pair_obligations": "all accumulated pair constraints remain encoded",
+    "triple_obligations": "a configurable number of complete root-symmetry orbits are encoded; the full accumulated set is audited after every proposal",
+    "quadruple_obligations": "audited after all pair and triple checks pass",
+    "selection_policies": ["first", "recent"],
+    "soundness": "Every omitted higher-order obligation is checked before GCTS. A failed audit yields the same exact tuple obstruction and a monotone full-state separation cut as lazy-higher."
+  },
+  "matched_seed_275_load_probe": {
+    "common_initial_constraints": {
+      "symmetry_closed_clauses": 336,
+      "pair": 717,
+      "triple": 108,
+      "triple_orbits": 36,
+      "quadruple": 3
+    },
+    "one_encoded_orbit": {
+      "encoded_triple_constraints": 3,
+      "z3_status": "sat",
+      "z3_milliseconds": 60849,
+      "outer_placements": 69,
+      "obstruction": "pair",
+      "new_pair_orbits": 3
+    },
+    "twelve_encoded_orbits": {
+      "encoded_triple_constraints": 36,
+      "z3_status": "unknown",
+      "z3_milliseconds": 355509,
+      "reason_unknown": "timeout"
+    },
+    "result": "One third of the triple orbits is already too expensive on this seed; a single orbit returns a proposal faster than both the fully lazy and fully encoded matched lanes."
+  },
+  "fixed_first_orbit_chain": {
+    "random_seeds": [275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286],
+    "proposal_trials": 12,
+    "sat_outer_states": 11,
+    "unknown_timeout_trials": 1,
+    "exact_tuple_rejections": 11,
+    "continuations_started": 0,
+    "pair_defect_states": 5,
+    "triple_defect_states": 6,
+    "quadruple_defect_states": 0,
+    "initial_constraints": {
+      "symmetry_closed_clauses": 336,
+      "pair": 717,
+      "triple": 108,
+      "quadruple": 3
+    },
+    "final_constraints": {
+      "symmetry_closed_clauses": 369,
+      "pair": 750,
+      "triple": 171,
+      "quadruple": 3
+    },
+    "matched_first_four": {
+      "sat_outer_states": 4,
+      "unknown_timeout_trials": 0,
+      "z3_milliseconds_total": 740082,
+      "fully_lazy_z3_milliseconds_total": 877441,
+      "runtime_reduction_fraction": 0.15654498889394865,
+      "pair_defect_states": 4,
+      "triple_defect_states": 0
+    },
+    "seeds_279_through_282": {
+      "sat_outer_states": 4,
+      "unknown_timeout_trials": 0,
+      "pair_defect_states": 1,
+      "triple_defect_states": 3,
+      "triple_orbits_added": 14
+    },
+    "seeds_283_through_286": {
+      "sat_outer_states": 3,
+      "unknown_timeout_trials": 1,
+      "pair_defect_states": 0,
+      "triple_defect_states": 3,
+      "triple_orbits_added": 7
+    }
+  },
+  "recent_orbit_extension": {
+    "random_seeds": [287, 288],
+    "initial_constraints": {
+      "symmetry_closed_clauses": 369,
+      "pair": 750,
+      "triple": 171,
+      "quadruple": 3
+    },
+    "sat_outer_states": 2,
+    "unknown_timeout_trials": 0,
+    "pair_defect_states": 1,
+    "triple_defect_states": 1,
+    "final_constraints": {
+      "symmetry_closed_clauses": 375,
+      "pair": 759,
+      "triple": 174,
+      "quadruple": 3
+    },
+    "result": "Following the newest triple orbit changes the proposal basin but does not dominate the fixed-first policy; retain it as a diversification option."
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-hybrid12-matched-seed275/outer-witness-0000.json",
+      "sha256": "4ff8be3b641921dd32506dacbe2debbf9a6964775e9157759bc08b662e77eb4c"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid1-seed275-summary.json",
+      "sha256": "3755217fbbdd9e3212f75682b693e66f7b8d2f3c104e51702cb784925e719ccd"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid1-seed276-summary.json",
+      "sha256": "38cf4048066f372f33f9b03e8c3c96e7e437a47e2296f02c959dc2193aa48b45"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid1-seed279-summary.json",
+      "sha256": "4cb018d4a742f1584c47663e71ea92fbbece4f4266b392035334d903a8eab7d2"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid1-seed283-summary.json",
+      "sha256": "c56dd3501a554dcee33183315eb2fb4feba3b15c89cf3b239b12fb7224a454f9"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid-recent1-seed287-summary.json",
+      "sha256": "33cdfa7abe0606329da06c2603f5284c9e634196c47fcb8e55f197a7c0777bcb"
+    }
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "A single encoded triple orbit is the best tested load point: it restores all four matched proposals, reduces their aggregate Z3 time by about 15.7% versus fully lazy enforcement, and—after pair learning—reliably reaches pairwise-complete states. Thirteen satisfiable hybrid proposals are nevertheless all pair- or triple-defective. The next bottleneck is selecting a small changing set of high-impact triple orbits or retaining Z3 state incrementally; adding many unranked triple orbits recreates the timeout wall."
+}

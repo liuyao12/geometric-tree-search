@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v149";
+} from "./engine.js?v=20260821-polycube10-v150";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1502,6 +1502,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_lazy_higher_report) {
         const lazy = candidate.screening;
         candidateResearchDetail.textContent += ` A matched lazy-higher ablation keeps pair obligations in Z3 but audits triples and quadruples exactly after each proposal. From the identical saved formula and four seeds, proposal yield rises from ${lazy.corona_lazy_higher_encoded_sat_states}/${lazy.corona_lazy_higher_matched_trials} with ${lazy.corona_lazy_higher_encoded_timeouts} timeouts to ${lazy.corona_lazy_higher_sat_states}/${lazy.corona_lazy_higher_matched_trials} with none; every returned state has a sound tuple obstruction before GCTS. Eight chained restarts add ${lazy.corona_lazy_higher_extension_pair_defect_states} pair-defective and ${lazy.corona_lazy_higher_extension_triple_defect_states} pairwise-complete but triple-defective states, reaching ${lazy.corona_lazy_higher_final_pair_constraints} pair, ${lazy.corona_lazy_higher_final_triple_constraints} triple, and ${lazy.corona_lazy_higher_final_quadruple_constraints} quadruple obligations. No tuple-complete radius-four state or radius-five witness appears, so the next target is hybrid proposal steering, not an aperiodicity claim.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_hybrid_higher_report) {
+        const hybrid = candidate.screening;
+        candidateResearchDetail.textContent += ` Hybrid-higher screening encodes just ${hybrid.corona_hybrid_higher_encoded_triple_orbits} complete triple orbit and audits the rest lazily. It returns all four matched proposals without timeout and cuts their aggregate Z3 time by ${(100 * hybrid.corona_hybrid_higher_matched_runtime_reduction_fraction).toFixed(1)}% versus fully lazy screening; encoding ${hybrid.corona_hybrid_higher_large_subset_timeout_orbits} unranked orbits already times out. Across the chained fixed and recent-orbit lanes, ${hybrid.corona_hybrid_higher_chain_sat_states} exact proposals expose ${hybrid.corona_hybrid_higher_pair_defect_states} pair and ${hybrid.corona_hybrid_higher_triple_defect_states} triple defects, growing the formula to ${hybrid.corona_hybrid_higher_final_pair_constraints} pair, ${hybrid.corona_hybrid_higher_final_triple_constraints} triple, and ${hybrid.corona_hybrid_higher_final_quadruple_constraints} quadruple obligations. No proposal clears the full triple audit, so a ranked adaptive orbit set or incremental outer solver is still needed.`;
       }
     }
   } else if (knownAperiodic) {

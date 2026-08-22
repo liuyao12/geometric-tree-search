@@ -471,6 +471,10 @@ const archivedP9LazyHigherCoverability = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-lazy-higher-coverability-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9HybridHigherCoverability = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-hybrid-higher-coverability-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1723,6 +1727,17 @@ assert.equal(archivedP9LazyHigherCoverability.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_lazy_higher_extension_states, 8);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_lazy_higher_final_pair_constraints, 744);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_lazy_higher_final_triple_constraints, 141);
+assert.equal(archivedP9HybridHigherCoverability.matched_seed_275_load_probe.one_encoded_orbit.z3_status, "sat");
+assert.equal(archivedP9HybridHigherCoverability.matched_seed_275_load_probe.twelve_encoded_orbits.z3_status, "unknown");
+assert.equal(archivedP9HybridHigherCoverability.fixed_first_orbit_chain.sat_outer_states, 11);
+assert.equal(archivedP9HybridHigherCoverability.fixed_first_orbit_chain.triple_defect_states, 6);
+assert.equal(archivedP9HybridHigherCoverability.recent_orbit_extension.sat_outer_states, 2);
+assert.equal(archivedP9HybridHigherCoverability.recent_orbit_extension.final_constraints.triple, 174);
+assert.equal(archivedP9HybridHigherCoverability.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_chain_sat_states, 13);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_pair_defect_states, 6);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_triple_defect_states, 7);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_final_triple_constraints, 174);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1733,6 +1748,8 @@ assert.match(growthAppSource, /Complete per-state triple batching/);
 assert.match(growthAppSource, /monolithic proposal formula/);
 assert.match(growthAppSource, /matched lazy-higher ablation/);
 assert.match(growthAppSource, /next target is hybrid proposal steering/);
+assert.match(growthAppSource, /Hybrid-higher screening encodes just/);
+assert.match(growthAppSource, /ranked adaptive orbit set or incremental outer solver/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,
