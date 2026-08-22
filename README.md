@@ -106,8 +106,12 @@ Pages site. The main way to use it is to open the page in a browser:
   one-cell/two-clause steps solve and reach 34 applied cells. This supports
   adaptive feedback batching. The 33-state corpus still consists entirely of
   immediate radius-four failures, all 97 accumulated clauses replay exactly,
-  and the ≤42-copy space remains unexhausted. This is not evidence of
-  non-tiling or aperiodicity.
+  and transactional feedback now automates the recovery. On the matched hard
+  seed it rolls back timed-out 6/4 and 3/2 clause/cell increments before a 2/1
+  increment succeeds; on another seed the four-cell increment solves directly
+  and reaches 36 applied cells. These add two more states, taking the exact
+  corpus to 35. The ≤42-copy space remains unexhausted, and this is not evidence
+  of non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

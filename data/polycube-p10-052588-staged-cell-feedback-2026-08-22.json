@@ -280,10 +280,77 @@
     "copy_bound_exhausted": false,
     "interpretation": "At the same thirty-two-cell frontier, a six-clause/four-cell step times out after both checks, whereas two successive two-clause/one-cell steps solve and advance to thirty-four applied cells. Feedback batch size must therefore shrink near the strengthened frontier instead of remaining fixed."
   },
+  "transactional_feedback_backoff": {
+    "implementation_commit": "0a590e6",
+    "protocol": "Each feedback increment pushes a Z3 transaction and snapshots availability, forbidden-clause, active-cell, encoded-pair, activation, and counter caches. Unknown checks retain the transaction for timeout escalation; a second unknown pops and restores every snapshot before halving the clause and cell batches.",
+    "regression_control": {
+      "attempted_batches": [
+        {"clauses": 4, "cells": 4, "status": "unknown"},
+        {"clauses": 2, "cells": 2, "status": "unknown"},
+        {"clauses": 1, "cells": 1, "status": "unknown"}
+      ],
+      "initial_applied_clauses": 2,
+      "final_applied_clauses": 2,
+      "initial_applied_cells": 2,
+      "final_applied_cells": 2,
+      "rollback_exact": true
+    },
+    "p10_052588_frontier": {
+      "initial_applied_clauses": 72,
+      "initial_deferred_clauses": 18,
+      "initial_applied_cells": 32,
+      "initial_deferred_cells": 40,
+      "base_z3_timeout_ms": 60000,
+      "retry_z3_timeout_ms": 120000,
+      "direct_large_step_seed_197": {
+        "attempted_clauses": 4,
+        "attempted_cells": 4,
+        "base_check_milliseconds": 60075,
+        "retry_check_milliseconds": 108598,
+        "z3_status": "sat",
+        "outer_placements": 42,
+        "final_applied_clauses": 76,
+        "final_applied_cells": 36,
+        "exact_radius_4_rejections": 1,
+        "radius_4_continuation_nodes": 1,
+        "exact_clauses_learned": 99,
+        "independently_replayed_clauses": 99,
+        "clause_replay_failures": 0,
+        "clause_replay_nodes": 194
+      },
+      "automatic_backoff_seed_194": {
+        "attempts": [
+          {"clauses": 6, "cells": 4, "status": "unknown", "check_milliseconds": 180142},
+          {"clauses": 3, "cells": 2, "status": "unknown", "check_milliseconds": 180369},
+          {"clauses": 2, "cells": 1, "status": "sat", "check_milliseconds": 147512}
+        ],
+        "transactions_rolled_back": 2,
+        "construction_milliseconds": 39923,
+        "total_check_milliseconds": 508023,
+        "outer_placements": 40,
+        "final_applied_clauses": 74,
+        "final_deferred_clauses": 23,
+        "final_applied_cells": 33,
+        "final_deferred_cells": 41,
+        "exact_radius_4_rejections": 1,
+        "radius_4_continuation_nodes": 1,
+        "exact_clauses_learned": 97,
+        "independently_replayed_clauses": 97,
+        "clause_replay_failures": 0,
+        "clause_replay_nodes": 200
+      },
+      "new_distinct_radius_3_states": 2,
+      "combined_distinct_radius_3_states": 35,
+      "maximum_verified_applied_cells": 36,
+      "copy_bound_exhausted": false
+    },
+    "automatic_backoff_validated": true,
+    "interpretation": "Transactional feedback makes adaptive batching operational rather than manual. Solver variability remains material: seed 197 solves a four-cell transaction, while seed 194 times out on four and two cells before the one-cell transaction succeeds. Both recovered states are new and both still fail immediate radius-four continuation."
+  },
   "radius_3_space_exhausted": false,
   "radius_3_copy_bound_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains thirty-three distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts reach thirty-four applied next-ring cell obligations, while a matched frontier probe shows that smaller feedback batches cross a tractability wall that defeats a four-cell step. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains thirty-five distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts and transactional feedback reach thirty-six applied next-ring cell obligations, while automatic rollback and batch halving recover a state on a seed where larger increments time out. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
 }
