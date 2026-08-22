@@ -33,8 +33,10 @@ DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_three_block_portfolio_confirmation_v1.json.gz"
 ATTEMPT_MARKER = ROOT / \
     "fixtures/iqc_three_block_portfolio_confirmation_attempt_v1.json"
-EXPECTED_FIXTURE_SHA256 = ""
-EXPECTED_RESULT_DIGEST = ""
+EXPECTED_FIXTURE_SHA256 = \
+    "40667fe8363e977c194d9a5ab276b975b7db3ae0713260528b504374ff09454e"
+EXPECTED_RESULT_DIGEST = \
+    "a11358dc96349d7ad8b40645b5eb4fb1783fc482f6113f2b4bc14b7a52bdc6d6"
 
 
 def _point_key(point):
