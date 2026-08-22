@@ -154,9 +154,6 @@ if (tupleEnforcement !== "hybrid-higher" && encodedTripleSelectionPolicy !== "fi
 if (z3Interactive && z3WitnessBatchSize !== 1) {
   throw new Error("--z3-interactive requires --z3-witness-batch-size=1");
 }
-if (z3Interactive && learnCellCoverability) {
-  throw new Error("--z3-interactive does not yet support dynamic cell-coverability learning");
-}
 if (z3Interactive && tupleEnforcement === "encoded") {
   throw new Error("--z3-interactive requires a lazy or hybrid tuple-enforcement mode");
 }
@@ -819,6 +816,9 @@ const processSatProposal = ({
     z3_status: "sat",
     z3_interactive: proposal.interactive ?? false,
     z3_interactive_clauses_applied: proposal.interactive_clauses_applied ?? 0,
+    z3_interactive_cells_applied: proposal.interactive_cells_applied ?? 0,
+    z3_interactive_cell_coverability_constraints:
+      proposal.interactive_cell_coverability_constraints ?? null,
     z3_interactive_pairs_applied: proposal.interactive_pairs_applied ?? 0,
     z3_interactive_pair_coverability_constraints:
       proposal.interactive_pair_coverability_constraints ?? null,
@@ -1107,7 +1107,9 @@ const runInteractiveCegar = async () => {
     }
   };
   let pendingClauses = [];
+  let pendingCells = [];
   let pendingPairs = [];
+  const cellKeysSent = new Set(cellConstraints);
   const encodedPairKeysSent = new Set(encodedPairs.constraints.map(pair => pair.join(";")));
   try {
     const ready = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
@@ -1118,6 +1120,7 @@ const runInteractiveCegar = async () => {
         type: "next",
         timeout_ms: z3TimeoutMs,
         clauses: pendingClauses,
+        cells: pendingCells,
         ...(z3InteractiveReplacePairs
           ? { replace_pairs: encodedPairs.constraints }
           : { pairs: pendingPairs })
@@ -1140,6 +1143,8 @@ const runInteractiveCegar = async () => {
         formula_cache_write_milliseconds: iteration === 0 ? ready.formula_cache_write_milliseconds : 0,
         interactive: true,
         interactive_clauses_applied: result.clauses_added,
+        interactive_cells_applied: result.cells_added,
+        interactive_cell_coverability_constraints: result.cell_coverability_constraints,
         interactive_pairs_applied: result.pairs_added,
         interactive_forbidden_clauses: result.forbidden_clauses,
         interactive_pair_coverability_constraints: result.pair_coverability_constraints,
@@ -1163,6 +1168,8 @@ const runInteractiveCegar = async () => {
           z3_status: "unsat",
           z3_interactive: true,
           z3_interactive_clauses_applied: result.clauses_added,
+          z3_interactive_cells_applied: result.cells_added,
+          z3_interactive_cell_coverability_constraints: result.cell_coverability_constraints,
           z3_interactive_pairs_applied: result.pairs_added,
           z3_interactive_pair_coverability_constraints: result.pair_coverability_constraints,
           z3_interactive_pair_coverability_formulas: result.pair_coverability_formulas,
@@ -1186,6 +1193,8 @@ const runInteractiveCegar = async () => {
           z3_status: proposal.z3_status,
           z3_interactive: true,
           z3_interactive_clauses_applied: result.clauses_added,
+          z3_interactive_cells_applied: result.cells_added,
+          z3_interactive_cell_coverability_constraints: result.cell_coverability_constraints,
           z3_interactive_pairs_applied: result.pairs_added,
           z3_interactive_pair_coverability_constraints: result.pair_coverability_constraints,
           z3_interactive_pair_coverability_formulas: result.pair_coverability_formulas,
@@ -1198,6 +1207,7 @@ const runInteractiveCegar = async () => {
         break;
       }
       const clauseCountBefore = clauses.length;
+      const cellCountBefore = cellConstraints.length;
       const outcome = processSatProposal({
         proposal,
         witness: { corona: proposal.corona, check_milliseconds: proposal.check_milliseconds },
@@ -1214,6 +1224,11 @@ const runInteractiveCegar = async () => {
         break;
       }
       pendingClauses = clauses.slice(clauseCountBefore);
+      pendingCells = cellConstraints.slice(cellCountBefore).filter(cell => {
+        if (cellKeysSent.has(cell)) return false;
+        cellKeysSent.add(cell);
+        return true;
+      });
       const nextEncodedPairs = selectEncodedPairs();
       if (z3InteractiveReplacePairs) {
         pendingPairs = [];

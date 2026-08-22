@@ -168,8 +168,8 @@ def main():
         parser.error("min-placements cannot exceed max-placements")
     if args.formula_cache and not args.require_next_layer_coverability:
         parser.error("formula caching currently requires --require-next-layer-coverability")
-    if args.interactive_jsonl and (not args.require_next_layer_coverability or args.max_witnesses != 1):
-        parser.error("interactive mode requires next-layer coverability and max-witnesses=1")
+    if args.interactive_jsonl and args.max_witnesses != 1:
+        parser.error("interactive mode requires max-witnesses=1")
     if args.interactive_replace_pairs and not args.interactive_jsonl:
         parser.error("--interactive-replace-pairs requires --interactive-jsonl")
     if args.pair_soft_minimum is not None and args.interactive_jsonl:
@@ -328,7 +328,7 @@ def main():
     cell_coverability_count = 0
     formula_cache_write_ms = 0
     formula_cache_pairs_added = 0
-    if (args.require_next_layer_coverability or cell_coverability or pair_coverability
+    if (args.interactive_jsonl or args.require_next_layer_coverability or cell_coverability or pair_coverability
             or triple_coverability or quadruple_coverability):
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
@@ -389,12 +389,15 @@ def main():
         next_by_cell = {}
         for index, placement in enumerate(next_placements):
             for cell in placement:
-                if cell in constrained_cells:
+                if cell in constrained_cells or (args.interactive_jsonl and cell in next_ring):
                     next_by_cell.setdefault(cell, []).append(index)
-        relevant_indices = sorted(set(itertools.chain.from_iterable(next_by_cell.values())))
+        relevant_indices = sorted(set(itertools.chain.from_iterable(
+            next_by_cell.get(cell, ()) for cell in constrained_cells
+        )))
+        potential_indices = sorted(set(itertools.chain.from_iterable(next_by_cell.values())))
         outer_index_by_placement = {placement: index for index, placement in enumerate(placements)}
         conflict_sets = {}
-        for index in relevant_indices:
+        for index in potential_indices:
             placement = next_placements[index]
             same_outer_index = outer_index_by_placement.get(placement)
             conflicts = set()
@@ -405,7 +408,8 @@ def main():
             conflict_sets[index] = frozenset(conflicts)
         retained_by_cell = {}
         retained_indices = set()
-        for cell in sorted(constrained_cells):
+        retained_cells = next_ring if args.interactive_jsonl else constrained_cells
+        for cell in sorted(retained_cells):
             if pair_coverability or triple_coverability or quadruple_coverability or args.formula_cache:
                 retained = list(next_by_cell.get(cell, ()))
             else:
@@ -418,34 +422,45 @@ def main():
                     if not any(other < conflicts for other, _ in unique)
                 ]
             retained_by_cell[cell] = retained
-            retained_indices.update(retained)
-        availability = {index: z3.Bool(f"a_{index}") for index in sorted(retained_indices)}
-        conflicts_by_outer = {}
-        for index in sorted(retained_indices):
-            for conflict in sorted(conflict_sets[index]):
-                conflicts_by_outer.setdefault(conflict, []).append(index)
-                lookahead_conflict_count += 1
-        if args.lookahead_conflict_encoding == "grouped-pb":
-            for conflict, indices in sorted(conflicts_by_outer.items()):
-                if not formula_cache_hit:
-                    solver.add(z3.PbLe(
-                        [(variables[conflict], len(indices))]
-                        + [(availability[index], 1) for index in indices],
-                        len(indices)
-                    ))
-                lookahead_conflict_group_count += 1
-        else:
-            for conflict, indices in sorted(conflicts_by_outer.items()):
-                for index in indices:
+            if cell in constrained_cells:
+                retained_indices.update(retained)
+        availability = {}
+
+        def ensure_availability(indices):
+            nonlocal lookahead_conflict_count
+            nonlocal lookahead_conflict_group_count
+            new_indices = sorted(set(indices) - set(availability))
+            for index in new_indices:
+                availability[index] = z3.Bool(f"a_{index}")
+            conflicts_by_outer = {}
+            for index in new_indices:
+                for conflict in sorted(conflict_sets[index]):
+                    conflicts_by_outer.setdefault(conflict, []).append(index)
+                    lookahead_conflict_count += 1
+            if args.lookahead_conflict_encoding == "grouped-pb":
+                for conflict, grouped_indices in sorted(conflicts_by_outer.items()):
                     if not formula_cache_hit:
-                        solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+                        solver.add(z3.PbLe(
+                            [(variables[conflict], len(grouped_indices))]
+                            + [(availability[index], 1) for index in grouped_indices],
+                            len(grouped_indices)
+                        ))
+                    lookahead_conflict_group_count += 1
+            else:
+                for conflict, grouped_indices in sorted(conflicts_by_outer.items()):
+                    for index in grouped_indices:
+                        if not formula_cache_hit:
+                            solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+            return new_indices
+
+        ensure_availability(retained_indices)
         coverability_cells = set(next_ring) if args.require_next_layer_coverability else normalized_cells
         for cell in sorted(coverability_cells):
             candidates = [availability[index] for index in retained_by_cell.get(cell, ())]
             if not formula_cache_hit:
                 solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
         placement_cell_sets = {
-            index: frozenset(next_placements[index]) for index in relevant_indices
+            index: frozenset(next_placements[index]) for index in potential_indices
         }
         def pair_activation(left_cell, right_cell):
             return z3.Bool(f"pair_active_{cell_token(left_cell)}__{cell_token(right_cell)}")
@@ -666,6 +681,7 @@ def main():
     constraint_count = len(solver.assertions())
     construction_ms = round((time.perf_counter() - started) * 1000)
     if args.interactive_jsonl:
+        active_cells = set(coverability_cells)
         normalized_pair_keys = {canonical_pair_key(pair) for pair in normalized_pairs}
         encoded_pair_keys = set(cached_pair_keys) | normalized_pair_keys
         pair_cells_by_key = {
@@ -687,6 +703,7 @@ def main():
             "formula_cache_write_milliseconds": formula_cache_write_ms,
             "pair_coverability_constraints": len(active_pair_keys),
             "pair_coverability_formulas": len(encoded_pair_keys),
+            "cell_coverability_constraints": len(active_cells),
             "interactive_replace_pairs": args.interactive_replace_pairs,
             "forbidden_clauses": len(forbidden_clause_keys),
             "constraints": constraint_count,
@@ -713,6 +730,20 @@ def main():
                 solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
                 forbidden_clause_keys.add(clause_key)
                 clauses_added += 1
+            cells_added = 0
+            for cell_number, raw_cell in enumerate(command.get("cells", ())):
+                cell = parse_cell_key(raw_cell)
+                if cell not in next_ring:
+                    raise ValueError(
+                        f"Interactive cell {cell_number} is not a next-ring cell"
+                    )
+                if cell in active_cells:
+                    continue
+                ensure_availability(retained_by_cell.get(cell, ()))
+                candidates = [availability[index] for index in retained_by_cell.get(cell, ())]
+                solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
+                active_cells.add(cell)
+                cells_added += 1
             pairs_added = 0
             replacement_pairs = command.get("replace_pairs")
             if replacement_pairs is not None and not args.interactive_replace_pairs:
@@ -729,6 +760,9 @@ def main():
                 supplied_pair_keys.add(normalized_key)
                 pair_cells_by_key[normalized_key] = cells
                 if normalized_key not in encoded_pair_keys:
+                    ensure_availability(itertools.chain.from_iterable(
+                        retained_by_cell.get(cell, ()) for cell in cells
+                    ))
                     encode_pair_constraint(*cells)
                     encoded_pair_keys.add(normalized_key)
                     pairs_added += 1
@@ -764,8 +798,10 @@ def main():
                 "reason_unknown": solver.reason_unknown() if interactive_status == z3.unknown else None,
                 "check_milliseconds": interactive_check_ms,
                 "clauses_added": clauses_added,
+                "cells_added": cells_added,
                 "pairs_added": pairs_added,
                 "forbidden_clauses": len(forbidden_clause_keys),
+                "cell_coverability_constraints": len(active_cells),
                 "pair_coverability_constraints": len(active_pair_keys),
                 "pair_coverability_formulas": len(encoded_pair_keys),
                 "interactive_replace_pairs": args.interactive_replace_pairs,

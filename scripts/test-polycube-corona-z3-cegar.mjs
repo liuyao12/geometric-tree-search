@@ -197,6 +197,33 @@ try {
   assert.equal(learnedCellProposal.cell_coverability_constraints, 1);
   assert.equal(learnedCellProposal.lookahead_target_cells, 1);
 
+  const interactiveLearnedCellOutput = join(directory, "interactive-learned-cell-summary.json");
+  const interactiveLearnedCellCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p10-052670",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=2",
+    "--learn-cell-coverability=true",
+    "--tuple-enforcement=lazy-all",
+    "--z3-interactive=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--output-dir=${join(directory, "interactive-learned-cell")}`,
+    `--report-output=${interactiveLearnedCellOutput}`
+  ], { encoding: "utf8", timeout: 90_000 });
+  assert.equal(interactiveLearnedCellCegar.status, 0, interactiveLearnedCellCegar.stderr);
+  const interactiveLearnedCellReport = JSON.parse(readFileSync(interactiveLearnedCellOutput, "utf8"));
+  assert.equal(interactiveLearnedCellReport.classification, "certified_non_tiler");
+  assert.equal(interactiveLearnedCellReport.z3_interactive, true);
+  assert.equal(interactiveLearnedCellReport.trials[0].cell_constraints_added, 1);
+  assert.equal(interactiveLearnedCellReport.trials[1].z3_interactive_cells_applied, 1);
+  assert.equal(interactiveLearnedCellReport.trials[1].z3_interactive_cell_coverability_constraints, 1);
+  assert.equal(interactiveLearnedCellReport.trials[1].z3_construction_milliseconds, 0);
+
   const distanceFromRoot = cell => Math.min(...candidate.voxels.map(root =>
     Math.abs(cell[0] - root[0]) + Math.abs(cell[1] - root[1]) + Math.abs(cell[2] - root[2])
   ));
