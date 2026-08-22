@@ -479,6 +479,10 @@ const archivedP9RankedHybridCoverability = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-ranked-hybrid-coverability-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9FormulaCacheProfile = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-formula-cache-profile-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1749,6 +1753,11 @@ assert.equal(archivedP9RankedHybridCoverability.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_hybrid_states_checked, 6);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_hybrid_selected_score, 110);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_hybrid_final_triple_constraints, 207);
+assert.equal(archivedP9FormulaCacheProfile.two_iteration_cegar_profile.cache_hit.pair_constraints_reused, 771);
+assert.ok(archivedP9FormulaCacheProfile.two_iteration_cegar_profile.construction_runtime_reduction_fraction > 0.93);
+assert.equal(archivedP9FormulaCacheProfile.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_formula_cache_pair_constraints, 771);
+assert.ok(volumeNineSurvivor.census_candidate.screening.corona_formula_cache_total_reduction_fraction > 0.92);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1762,6 +1771,8 @@ assert.match(growthAppSource, /next target is hybrid proposal steering/);
 assert.match(growthAppSource, /Hybrid-higher screening encodes just/);
 assert.match(growthAppSource, /Persistent impact ranking then follows/);
 assert.match(growthAppSource, /not evidence of non-tiling or aperiodicity/);
+assert.match(growthAppSource, /Validated formula caching now reuses/);
+assert.match(growthAppSource, /search-throughput improvement only/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

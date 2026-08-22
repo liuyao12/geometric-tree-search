@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v151";
+} from "./engine.js?v=20260821-polycube10-v152";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1510,6 +1510,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_ranked_hybrid_report) {
         const ranked = candidate.screening;
         candidateResearchDetail.textContent += ` Persistent impact ranking then follows the triple orbit observed to block ${ranked.corona_ranked_hybrid_selected_score} candidate combinations. Six more exact proposals expose ${ranked.corona_ranked_hybrid_pair_defect_states} pair and ${ranked.corona_ranked_hybrid_triple_defect_states} triple defects, reaching ${ranked.corona_ranked_hybrid_final_pair_constraints} pair, ${ranked.corona_ranked_hybrid_final_triple_constraints} triple, and ${ranked.corona_ranked_hybrid_final_quadruple_constraints} quadruple obligations. The ranked orbit changes as intended, but no proposal clears the full triple audit and each solve still takes minutes. This remains an unresolved benchmark, not evidence of non-tiling or aperiodicity; retaining outer-solver state is now the main performance target.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_formula_cache_report) {
+        const cache = candidate.screening;
+        candidateResearchDetail.textContent += ` Validated formula caching now reuses the static exact-cover/lookahead formula and all ${cache.corona_formula_cache_pair_constraints} accumulated pair constraints across solver seeds while rebuilding higher-order steering and forbidden-state clauses. In a matched two-iteration driver profile, construction falls from ${(cache.corona_formula_cache_miss_construction_ms / 1000).toFixed(1)}s to ${(cache.corona_formula_cache_hit_construction_ms / 1000).toFixed(1)}s (${(100 * cache.corona_formula_cache_construction_reduction_fraction).toFixed(1)}%), reducing total one-second-probe wall time by ${(100 * cache.corona_formula_cache_total_reduction_fraction).toFixed(1)}%. This is a search-throughput improvement only; both timed checks are inconclusive.`;
       }
     }
   } else if (knownAperiodic) {

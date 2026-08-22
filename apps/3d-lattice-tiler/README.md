@@ -888,9 +888,10 @@ quadruple steering constraints and all forbidden-state clauses are still added
 fresh. Cache metadata includes the complete pair-key set and every structural
 encoding option, so a missing pair or changed configuration forces a rebuild.
 On the 771-pair `p9-42947` benchmark this reduces measured construction from
-57.0 seconds on a cache miss (including a 4.1-second write) to 3.7 seconds on a
+57.0 seconds on a cache miss (including a 4.0-second write) to 3.6 seconds on a
 no-change hit, before the same one-second timed check. This is formula reuse,
-not a tiling inference or a persistent Z3 learned-clause state. A
+not a tiling inference or a persistent Z3 learned-clause state. See
+`data/polycube-p9-42947-formula-cache-profile-2026-08-21.json`. A
 positive `--bootstrap-pair-distance` adds every next-ring cell-pair obligation
 within that Manhattan distance, closed under the root stabilizer, before the
 first proposal solve. Once a proposal has no incompatible pair,
