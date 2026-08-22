@@ -1,0 +1,81 @@
+{
+  "kind": "polycube_p9_42947_soft_pair_quota_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commits": ["8e382cd", "4fb008c"],
+  "mechanism": {
+    "constraint_quota": "Guard every compiled pair constraint and require a pseudo-Boolean minimum, allowing Z3 to choose the satisfied subset globally.",
+    "orbit_quota": "Group constraints by exact root-symmetry orbit; selecting an orbit implies every rotated member, and a pseudo-Boolean minimum applies to complete groups.",
+    "backend": "The existing pb2bv-sat solver is retained; no Optimize or MaxSAT result is trusted as a certificate.",
+    "exact_gate": "Every accumulated pair, triple, and quadruple obligation is independently audited after each proposal before GCTS can start."
+  },
+  "matched_seeds_330_to_332": {
+    "soft_72_of_96_constraints": {
+      "z3_statuses": ["sat", "sat", "sat"],
+      "check_milliseconds": [10225, 25367, 47571],
+      "total_check_milliseconds": 83163,
+      "soft_constraints_satisfied": [73, 73, 72],
+      "incompatible_target_pairs": [2, 6, 11],
+      "total_incompatible_target_pairs": 19,
+      "new_pair_orbits": 1
+    },
+    "hard_96_constraint_control": {
+      "z3_statuses": ["sat", "sat", "sat"],
+      "check_milliseconds": [29525, 10954, 6374],
+      "total_check_milliseconds": 46853,
+      "incompatible_target_pairs": [2, 10, 7],
+      "total_incompatible_target_pairs": 19,
+      "new_pair_orbits": 1
+    },
+    "result": "The 72-constraint quota is 77.5% slower in aggregate and exposes exactly the same total number of full-audit pair defects. Its seed-330 speedup is not robust across seeds."
+  },
+  "constraint_quota_ablation": {
+    "soft_minimum": 84,
+    "random_seed": 330,
+    "z3_status": "sat",
+    "check_milliseconds": 30665,
+    "soft_constraints_satisfied": 84,
+    "incompatible_target_pairs": 12,
+    "new_pair_orbits": 3,
+    "result": "A higher quota is neither faster nor better correlated with the complete pair audit."
+  },
+  "symmetry_orbit_quota_ablation": {
+    "window_orbits": 32,
+    "quota_24": {
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "check_milliseconds": 60085
+    },
+    "quota_16": {
+      "z3_status": "sat",
+      "check_milliseconds": 45162,
+      "soft_orbits_satisfied": 16,
+      "incompatible_target_pairs": 3
+    },
+    "matched_hard_32_control": {
+      "z3_status": "sat",
+      "check_milliseconds": 29525,
+      "incompatible_target_pairs": 2
+    },
+    "result": "Symmetry-closed choice is structurally correct but too expensive at quota 24 and inferior to the hard control at quota 16."
+  },
+  "sources": [
+    {"path": "runs/p9-radius4-to5-hard-cover32-seed330-summary.json", "sha256": "21e61bd9462b15503408f52732e90ef42e8de4228d2f7b9056dfd73817edb3b9"},
+    {"path": "runs/p9-radius4-to5-hard-cover32-seed331-summary.json", "sha256": "5b8ab4224547b745874f1c323a72d31f2e4511d11c3a92fe23797c090a7c7e7c"},
+    {"path": "runs/p9-radius4-to5-hard-cover32-seed332-summary.json", "sha256": "314ba6cb33c04d81f47dd48fba27f30a6024e26cdf06c2d51b0646a622285fec"},
+    {"path": "runs/p9-radius4-to5-soft72of96-cover32-seed330-summary.json", "sha256": "19096e850107cd3ed60222c998f6aeb380d9731fdfa3d7617a34662513403c8d"},
+    {"path": "runs/p9-radius4-to5-soft72of96-cover32-seed331-summary.json", "sha256": "49d472ea54c14787906522c11809d2c65282c719a922f3990039639ffa584923"},
+    {"path": "runs/p9-radius4-to5-soft72of96-cover32-seed332-summary.json", "sha256": "b0ed4ff656371772307340b6690ea036c00cdfb778d14d13335ab37643f46972"},
+    {"path": "runs/p9-radius4-to5-soft84of96-cover32-seed330-summary.json", "sha256": "c94069b5428639bf3622953621b33a72b1a524c09a5610d61e68f587bf05b865"},
+    {"path": "runs/p9-radius4-to5-soft24of32orbits-cover32-seed330-summary.json", "sha256": "9be05ad355a089b137d7420cc4791cd16f7cda33381cfde482befc722b3e51e6"},
+    {"path": "runs/p9-radius4-to5-soft16of32orbits-cover32-seed330-summary.json", "sha256": "762e6f3f8648936ce53d678e264834fdff507c9b5baaaac8e7313cedb5d2d590"}
+  ],
+  "selected_production_policy": "hard historical-cover",
+  "pair_complete_state_found": false,
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "warning": "Soft quotas are finite-state proposal steering, not tiling, non-tiling, or aperiodicity certificates."
+}

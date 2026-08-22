@@ -519,6 +519,10 @@ const archivedP9AdaptivePairWindow = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-adaptive-pair-window-2026-08-22.json", import.meta.url),
   "utf8"
 ));
+const archivedP9SoftPairQuota = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-soft-pair-quota-2026-08-22.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1855,6 +1859,13 @@ assert.equal(archivedP9AdaptivePairWindow.pair_complete_state_found, false);
 assert.equal(archivedP9AdaptivePairWindow.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_adaptive_pair_total_defects, 20);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_adaptive_pair_complete_states, 0);
+assert.equal(archivedP9SoftPairQuota.matched_seeds_330_to_332.soft_72_of_96_constraints.total_check_milliseconds, 83163);
+assert.equal(archivedP9SoftPairQuota.matched_seeds_330_to_332.hard_96_constraint_control.total_incompatible_target_pairs, 19);
+assert.equal(archivedP9SoftPairQuota.symmetry_orbit_quota_ablation.quota_24.z3_status, "unknown");
+assert.equal(archivedP9SoftPairQuota.selected_production_policy, "hard historical-cover");
+assert.equal(archivedP9SoftPairQuota.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_soft_pair_quota_total_defects, 19);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_soft_pair_complete_states, 0);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1888,6 +1899,8 @@ assert.match(growthAppSource, /A stricter historical-core lane identifies/);
 assert.match(growthAppSource, /retained only as a proposal-diversity lane/);
 assert.match(growthAppSource, /Retained CEGAR can now reserve a bounded prefix/);
 assert.match(growthAppSource, /Ordinary historical-cover remains the production lane/);
+assert.match(growthAppSource, /Soft global pair steering now supports/);
+assert.match(growthAppSource, /Hard historical-cover remains production/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

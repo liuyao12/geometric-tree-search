@@ -1012,6 +1012,18 @@ out. These ablations reject forced recent response and simple historical set
 coverage as production replacements; they do not reject the tile. See
 `data/polycube-p9-42947-adaptive-pair-window-2026-08-22.json`.
 
+Soft global steering is available through `--pair-soft-minimum` for individual
+pair constraints and `--pair-soft-orbit-minimum` for complete root-symmetry
+orbits. Both use guarded witness-CNF formulas plus a pseudo-Boolean quota in the
+existing SAT backend; neither changes the exact lazy audit. On matched seeds
+330–332, a 72-of-96 constraint quota takes 83.2 seconds and returns 19 total
+pair defects, versus 46.9 seconds and the same 19 defects when all 96 are hard.
+An 84-constraint quota is also inferior. Requiring 24 of 32 complete symmetry
+orbits times out; 16 of 32 returns in 45.2 seconds with three defects, versus
+29.5 seconds and two defects for the matched hard control. Soft quotas remain
+an experimental diversity mechanism rather than production steering. See
+`data/polycube-p9-42947-soft-pair-quota-2026-08-22.json`.
+
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

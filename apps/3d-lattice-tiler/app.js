@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v161";
+} from "./engine.js?v=20260822-polycube10-v162";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1550,6 +1550,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_adaptive_pair_report) {
         const adaptive = candidate.screening;
         candidateResearchDetail.textContent += ` Retained CEGAR can now reserve a bounded prefix of the live pair window for the exact defect set from its preceding proposal, with each trial reporting whether that response is complete. A complete 32-orbit response initially reduces nine defects to four, but across three matched models it needs ${(adaptive.corona_adaptive_pair_total_check_ms / 1000).toFixed(1)}s and ${adaptive.corona_adaptive_pair_replacement_constraints} replacement constraints for ${adaptive.corona_adaptive_pair_total_defects} defects; ordinary historical-cover needs ${(adaptive.corona_adaptive_pair_control_check_ms / 1000).toFixed(1)}s and ${adaptive.corona_adaptive_pair_control_replacement_constraints} replacements for ${adaptive.corona_adaptive_pair_control_defects}. Both discover ${adaptive.corona_adaptive_pair_new_orbits} new pair orbits. Bounding the response to four orbits still times out on its next check. Even a 64-orbit window that intersects all ${adaptive.corona_historical_cover64_sets_covered} historical defect sets returns a fresh state with ${adaptive.corona_historical_cover64_pair_defects} pair defects, and its cache-identical replay times out. Ordinary historical-cover remains the production lane; no pair-complete state or radius-five GCTS start is obtained.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_soft_pair_quota_report) {
+        const soft = candidate.screening;
+        candidateResearchDetail.textContent += ` Soft global pair steering now supports both constraint quotas and complete root-symmetry-orbit quotas while retaining the exact lazy audit. Across matched seeds 330–332, asking Z3 to satisfy at least 72 of 96 ranked constraints takes ${(soft.corona_soft_pair_quota_total_check_ms / 1000).toFixed(1)}s and exposes ${soft.corona_soft_pair_quota_total_defects} full-audit defects; making all 96 hard takes ${(soft.corona_soft_pair_hard_total_check_ms / 1000).toFixed(1)}s with the same ${soft.corona_soft_pair_hard_total_defects} defects. A quota of 84 is also slower and exposes ${soft.corona_soft_pair_quota84_defects} defects. At the symmetry-correct orbit level, 24 of 32 times out, while 16 of 32 takes ${(soft.corona_soft_pair_orbit16_check_ms / 1000).toFixed(1)}s with ${soft.corona_soft_pair_orbit16_defects} defects, versus ${(soft.corona_soft_pair_hard_seed330_check_ms / 1000).toFixed(1)}s/${soft.corona_soft_pair_hard_seed330_defects} for the hard control. Hard historical-cover remains production; no quota state clears the pair gate or starts radius-five GCTS.`;
       }
     }
   } else if (knownAperiodic) {
