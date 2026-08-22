@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v159";
+} from "./engine.js?v=20260821-polycube10-v160";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1542,6 +1542,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_historical_cover_report) {
         const cover = candidate.screening;
         candidateResearchDetail.textContent += ` Joint historical coverage preserves all ${cover.corona_historical_cover_defect_sets} per-state defect sets instead of flattening them into marginal counts. Its greedy 16-orbit window intersects ${cover.corona_historical_cover_sets_covered} replayed failures, versus ${cover.corona_historical_impact_sets_covered} for impact-only. Across three matched seeds both lanes return three exact states; historical-cover uses ${(cover.corona_historical_cover_total_check_ms / 1000).toFixed(1)}s total and exposes ${cover.corona_historical_cover_total_pair_defects} pair defects, versus ${(cover.corona_historical_impact_total_check_ms / 1000).toFixed(1)}s and ${cover.corona_historical_impact_total_pair_defects}. This modest aggregate improvement earns it a complementary diversity lane, not a replacement for impact-only: neither produces a pair-complete state, so no new GCTS continuation begins.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_historical_core_report) {
+        const core = candidate.screening;
+        candidateResearchDetail.textContent += ` A stricter historical-core lane identifies ${core.corona_historical_core_singleton_states} failed states whose sole pair defect belongs to ${core.corona_historical_core_singleton_orbits} distinct orbits, and protects all of those orbits in a 32-orbit window before greedily covering the rest. It intersects ${core.corona_historical_core_sets_covered} historical failures, versus ${core.corona_historical_core_control_sets_covered} for ordinary historical-cover. Across matched seeds 325–327, however, the protected core needs ${(core.corona_historical_core_total_check_ms / 1000).toFixed(1)}s and leaves ${core.corona_historical_core_total_pair_defects} defects, versus ${(core.corona_historical_core_control_check_ms / 1000).toFixed(1)}s and ${core.corona_historical_core_control_pair_defects}; it finds ${core.corona_historical_core_new_pair_orbits} new pair orbit but no pair-complete state. Historical-core is therefore retained only as a proposal-diversity lane, not promoted to production, and supplies no radius-five or aperiodicity evidence.`;
       }
     }
   } else if (knownAperiodic) {

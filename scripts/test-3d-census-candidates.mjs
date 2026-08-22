@@ -511,6 +511,10 @@ const archivedP9HistoricalCover = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-historical-cover-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9HistoricalCore = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-historical-core-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1832,6 +1836,14 @@ assert.equal(archivedP9HistoricalCover.pair_complete_state_found, false);
 assert.equal(archivedP9HistoricalCover.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_historical_cover_sets_covered, 51);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_historical_cover_pair_complete_states, 0);
+assert.equal(archivedP9HistoricalCore.historical_state_model.distinct_singleton_orbits, 25);
+assert.equal(archivedP9HistoricalCore.selection_rule.singleton_orbits_retained, 25);
+assert.equal(archivedP9HistoricalCore.matched_seeds_325_to_327.historical_core.total_check_milliseconds, 106280);
+assert.equal(archivedP9HistoricalCore.matched_seeds_325_to_327.historical_cover.total_incompatible_target_pairs, 11);
+assert.equal(archivedP9HistoricalCore.pair_complete_state_found, false);
+assert.equal(archivedP9HistoricalCore.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_historical_core_singleton_orbits, 25);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_historical_core_pair_complete_states, 0);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1861,6 +1873,8 @@ assert.match(growthAppSource, /deduplicated replay independently verifies/);
 assert.match(growthAppSource, /Impact-only remains the production lane/);
 assert.match(growthAppSource, /Joint historical coverage preserves all/);
 assert.match(growthAppSource, /complementary diversity lane/);
+assert.match(growthAppSource, /A stricter historical-core lane identifies/);
+assert.match(growthAppSource, /retained only as a proposal-diversity lane/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

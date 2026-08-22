@@ -980,6 +980,23 @@ orbits instead of permanently retaining the earliest ones. The
 currently available placement triples eliminated by each obstruction orbit,
 persists those scores beside `triple-coverability.json`, and encodes the
 highest-scoring complete orbits. Ties prefer newer observations.
+
+Pair reports also preserve the complete set of violated pair orbits for every
+verified defective proposal. `--encoded-pair-selection=historical-cover`
+greedily intersects as many of those historical defect sets as its active
+window permits. `historical-core` first protects every orbit that is the sole
+recorded defect of some historical state, then spends the remaining window on
+greedy coverage. For `p9-42947`, 26 singleton-defect states require 25 distinct
+orbits. A 32-orbit core window retains all 25 and intersects 65 of 91 historical
+failures; ordinary historical coverage intersects 67. Across matched seeds
+325–327 the core takes 106.3 seconds of aggregate Z3 check time and leaves 15
+pair defects, versus 81.0 seconds and 11 defects for ordinary coverage. It does
+find one new pair orbit where the control finds none, so it remains an optional
+diversity lane rather than the production default. Every omitted pair and
+higher-order obligation is still checked lazily before GCTS, and neither lane
+finds a pair-complete state. See
+`data/polycube-p9-42947-historical-core-2026-08-21.json`.
+
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all
