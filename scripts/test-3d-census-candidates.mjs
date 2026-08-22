@@ -495,6 +495,10 @@ const archivedP9InteractiveZ3Cegar = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-interactive-z3-cegar-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9RankedPairWindow = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-ranked-pair-window-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1792,6 +1796,12 @@ assert.equal(archivedP9InteractiveZ3Cegar.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_interactive_z3_sat_states, 9);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_interactive_z3_final_pair_constraints, 792);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_interactive_z3_final_triple_constraints, 336);
+assert.equal(archivedP9RankedPairWindow.matched_seed_306.selected_window, 16);
+assert.equal(archivedP9RankedPairWindow.matched_seed_306.rows[1].z3_status, "sat");
+assert.equal(archivedP9RankedPairWindow.matched_seed_306.rows[3].z3_status, "unknown");
+assert.equal(archivedP9RankedPairWindow.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_pair_window_orbits, 16);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_pair_window_constraints, 48);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1813,6 +1823,8 @@ assert.match(growthAppSource, /Exact retained-state batching can request/);
 assert.match(growthAppSource, /accept each audited obstruction interactively/);
 assert.match(growthAppSource, /Bidirectional retained CEGAR now does that/);
 assert.match(growthAppSource, /applied before the next check/);
+assert.match(growthAppSource, /Pair-level impact ranking now keeps the full/);
+assert.match(growthAppSource, /without relaxing the exact gate/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

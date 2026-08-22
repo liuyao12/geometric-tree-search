@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v155";
+} from "./engine.js?v=20260821-polycube10-v156";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1526,6 +1526,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_interactive_z3_report) {
         const interactive = candidate.screening;
         candidateResearchDetail.textContent += ` Bidirectional retained CEGAR now does that: it asserts every audited state clause and new pair obligation inside the same Z3 process before requesting another model. Three sessions return ${interactive.corona_interactive_z3_sat_states}/${interactive.corona_interactive_z3_sat_states} exact proposals with no timeout—${interactive.corona_interactive_z3_pair_defect_states} pair-defective and ${interactive.corona_interactive_z3_triple_defect_states} pairwise-complete but triple-defective. In production, ${interactive.corona_interactive_z3_pair_feedback_applied} newly learned pair constraints are applied before the next check, whose model clears the enlarged pair audit and reaches the triple audit. The portfolio advances to ${interactive.corona_interactive_z3_final_pair_constraints} pair, ${interactive.corona_interactive_z3_final_triple_constraints} triple, and ${interactive.corona_interactive_z3_final_quadruple_constraints} quadruple obligations. No proposal clears the full triple audit, so the candidate remains unresolved.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_ranked_pair_window_report) {
+        const rankedPairs = candidate.screening;
+        candidateResearchDetail.textContent += ` Pair-level impact ranking now keeps the full ${rankedPairs.corona_interactive_z3_final_pair_constraints}-constraint audit but initially steers Z3 with only the strongest ${rankedPairs.corona_ranked_pair_window_orbits} symmetry orbits (${rankedPairs.corona_ranked_pair_window_constraints} constraints). In the matched seed, that window constructs in ${(rankedPairs.corona_ranked_pair_window_construction_ms / 1000).toFixed(1)}s and returns an exact proposal after ${(rankedPairs.corona_ranked_pair_window_check_ms / 1000).toFixed(1)}s; loading every pair takes ${(rankedPairs.corona_ranked_pair_full_construction_ms / 1000).toFixed(1)}s and then times out after ${(rankedPairs.corona_ranked_pair_full_check_ms / 1000).toFixed(1)}s. A retained follow-up returns ${rankedPairs.corona_ranked_pair_retained_sat_states} more pair-defective states while asserting ${rankedPairs.corona_ranked_pair_feedback_constraints} promoted constraints, then times out. This improves proposal throughput without relaxing the exact gate; it still supplies no radius-five witness or aperiodicity evidence.`;
       }
     }
   } else if (knownAperiodic) {

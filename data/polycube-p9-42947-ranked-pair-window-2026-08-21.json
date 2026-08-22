@@ -1,0 +1,96 @@
+{
+  "kind": "polycube_p9_42947_ranked_pair_window_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commit": "5721c1a",
+  "starting_state": {
+    "symmetry_closed_clauses": 438,
+    "pair_constraints": 792,
+    "triple_constraints": 336,
+    "quadruple_constraints": 3
+  },
+  "method": {
+    "policy": "Persist the maximum observed incompatible choice-pair count for every root-symmetry pair orbit, encode only the highest-ranked window, and audit every accumulated pair, triple, and quadruple obligation exactly after each proposal.",
+    "retained_feedback": "Newly promoted exact pair constraints are added to the retained Z3 worker. Because Z3 cannot retract old constraints, trial records report the actual retained union separately from the current ranked window.",
+    "soundness": "Omitted pair constraints affect proposal steering only. A proposal cannot reach GCTS until it passes the complete exact tuple audit."
+  },
+  "matched_seed_306": {
+    "timeout_milliseconds": 60000,
+    "pair_encoding": "witness-cnf",
+    "triple_orbits_encoded": 1,
+    "rows": [
+      {
+        "encoded_pair_orbits": 8,
+        "encoded_pair_constraints": 24,
+        "construction_milliseconds": 21553,
+        "check_milliseconds": 51999,
+        "z3_status": "sat",
+        "audit_result": "known_pair_defect"
+      },
+      {
+        "encoded_pair_orbits": 16,
+        "encoded_pair_constraints": 48,
+        "construction_milliseconds": 23587,
+        "check_milliseconds": 46674,
+        "z3_status": "sat",
+        "audit_result": "pair_defect",
+        "incompatible_target_pairs": 6,
+        "new_pair_constraints": 6
+      },
+      {
+        "encoded_pair_orbits": 32,
+        "encoded_pair_constraints": 96,
+        "construction_milliseconds": 25976,
+        "check_milliseconds": 60067,
+        "z3_status": "unknown",
+        "reason_unknown": "timeout"
+      },
+      {
+        "encoded_pair_orbits": "all",
+        "encoded_pair_constraints": 792,
+        "construction_milliseconds": 53397,
+        "check_milliseconds": 60076,
+        "z3_status": "unknown",
+        "reason_unknown": "timeout"
+      }
+    ],
+    "selected_window": 16,
+    "selection_basis": "The 16-orbit window is the only tested setting that both returned an exact model fastest and learned a new obstruction orbit under the matched seed. This is a throughput choice, not a completeness result."
+  },
+  "retained_window_probe": {
+    "initial_pair_orbits": 16,
+    "proposal_check_milliseconds": [44149, 42461, 60062],
+    "proposal_statuses": ["sat", "sat", "unknown"],
+    "exact_pair_defect_states": 2,
+    "additional_pair_constraints_asserted_inside_worker": 51,
+    "third_check_reason_unknown": "timeout"
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-hybrid-pair8-seed306-summary.json",
+      "sha256": "744c1c77a9695a0cdf9ace4318d588e607816aceb928a9bd3189d77e3809abe4"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid-pair16-seed306-summary.json",
+      "sha256": "5b42588ad43dc0f76d93650f62045c9fca0bff39b8cdbf48d83e4776a7a10db2"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid-pair32-seed306-summary.json",
+      "sha256": "60919e0c898a469c2392869480486fa9afb058a50a28430fa1c8619fa4a799e2"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid-pair-all-seed306-summary.json",
+      "sha256": "5ecb44eda1a73f94f25fbb71993c9838e16ce8ea71d0ef3f8faab286e1f9ec76"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid-pair16-seed307-summary.json",
+      "sha256": "242612cf83f72af899d080374219340780c0eb29152ef559bbceedd97c9bf1de"
+    }
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Ranked pair windows substantially reduce formula construction and can return exact outer states inside a budget where 32-orbit and full-pair encodings time out. The returned states still fail the complete pair audit, and the retained window eventually times out as promoted constraints accumulate. The candidate remains unresolved."
+}
