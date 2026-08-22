@@ -2684,4 +2684,28 @@ geometry, and four-per-parent budget are frozen, but this terminal geometry is
 not a transferable GCTS marking. These results are self-fed third-block
 diagnosis, not autonomous commitment or a stationary/exponential IQC rule.
 
+The first compute-matched reach repair is now positive on the consumed
+development corpus. The generic pose/port marking exposes its five continuous
+train-frozen channel responses. At every state, a new selector spends the
+unchanged budget of eight child constructions on three scalar leaders plus
+one previously unseen leader from each channel. It does not increase the
+frontier, use coordinates as features, refit the marking, or inspect a target.
+On the four parents hidden by scalar top-8, it restores `11`, `10`, `11`, and
+`10` exact terminal paths. On all fifteen exact parents, it preserves every
+previously supplied nucleus and improves:
+
+| consumed third-block supply | scalar top-8 | 3 scalar + 5 channels |
+| --- | ---: | ---: |
+| exact parents supplied | `11 / 15` | `15 / 15` |
+| eligible nuclei supplied | `6 / 8` | `8 / 8` |
+| exact terminal paths | `90` | `472` |
+| child-expansion budget per state | `8` | `8` |
+
+This selector was proposed after the two reach failures were consumed. The
+six other nuclei are a preservation/transfer screen, not a genuinely fresh
+confirmation, and no path winner is committed. The production executor
+therefore keeps its prior default until a disjoint preregistered nucleus passes
+the same frozen policy. Autonomous, stationary, and exponential IQC gates
+remain red.
+
 Serve the repository root and open `/iqc-growth-live/`.

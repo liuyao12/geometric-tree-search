@@ -5103,3 +5103,33 @@ rank-sum `p=.21875`. Terminal triangle/radius/cross-distance geometry is
 therefore not promoted as a marking. Candidate geometry stays immutable and
 targets never enter generation, but autonomous, stationary, and exponential
 IQC claims remain ineligible.
+
+The next repair changes *which* eight children are represented, not how many
+are rendered. `pose_port_channel_responses` exposes the five continuous
+train-frozen connection responses already quantized by the recurrent state
+model. The generic `select_pose_port_channel_diverse` policy retains three
+leaders under the scalar state probability, one previously unseen leader per
+connection channel, then fills any duplicate slots from the scalar order. The
+exact candidate geometry, child budget, collision rules, and target boundary
+are unchanged.
+
+On the four consumed parents that required bottleneck rank twelve, this fixed
+`3 + 5` allocation recovers `11`, `10`, `11`, and `10` exact three-action
+paths. The all-development audit then reuses those immutable receipts and
+generates eleven other exact-parent trees before one target open:
+
+| consumed exact-parent supply | scalar top-8 | channel-diverse top-8 |
+| --- | ---: | ---: |
+| parents with an exact path | `11 / 15` | `15 / 15` |
+| eligible nuclei with an exact path | `6 / 8` | `8 / 8` |
+| exact paths | `90` | `472` |
+| child constructions per state | `8` | `8` |
+
+All six previously supplied transfer nuclei remain supplied, while design
+nuclei one and two are recovered. This passes the consumed-development
+preservation gate and turns the rank-twelve diagnosis into a generic GCTS
+implementation improvement. It is not fresh confirmation: the `3 + 5`
+allocation was proposed after those two failures were inspected. The scalar
+production default is therefore not silently replaced, causal-superiority is
+not claimed, and the next gate is a preregistered disjoint nucleus followed by
+winner selection and exact cluster-of-clusters promotion.

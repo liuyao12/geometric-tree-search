@@ -3,8 +3,10 @@
 from materials_gcts_incidence_token_marking import (
     CandidateIncidenceDescriptor, IncidenceTokenExample)
 from materials_gcts_pose_port_state_marking import (
-    fit_pose_port_state_marking, pose_port_state_code,
-    pose_port_state_marking_digest, score_pose_port_state)
+    fit_pose_port_state_marking, pose_port_channel_responses,
+    pose_port_state_code,
+    pose_port_state_marking_digest, score_pose_port_state,
+    select_pose_port_channel_diverse)
 
 
 def descriptor(role, orientation, noise):
@@ -34,9 +36,36 @@ def test_finite_state_quotient_is_id_free_and_recurrent():
         model.token_marking, good,
         state_bin_width=model.state_bin_width,
         channel_families=model.channel_families)) == 5
+    responses = pose_port_channel_responses(
+        model.token_marking, good,
+        channel_families=model.channel_families)
+    assert len(responses) == 5
+    assert pose_port_state_code(
+        model.token_marking, good,
+        state_bin_width=model.state_bin_width,
+        channel_families=model.channel_families) == tuple(
+            round(value / model.state_bin_width) for value in responses)
     assert pose_port_state_marking_digest(model) == \
         pose_port_state_marking_digest(model)
     assert all(len(state) == 5 for state in model.state_probabilities)
+    candidates = {
+        "good": good,
+        "bad": bad,
+        "open-noisy": descriptor("open", -1, 100),
+        "closed-oriented": descriptor("closed", 1, 101),
+    }
+    selected = select_pose_port_channel_diverse(
+        model, candidates, budget=3, baseline_slots=1,
+        votes={key: index for index, key in enumerate(candidates)},
+        tie_keys={key: key for key in candidates})
+    reversed_selected = select_pose_port_channel_diverse(
+        model, dict(reversed(tuple(candidates.items()))),
+        budget=3, baseline_slots=1,
+        votes={key: index for index, key in enumerate(candidates)},
+        tie_keys={key: key for key in candidates})
+    assert len(selected) == len(set(selected)) == 3
+    assert selected == reversed_selected
+    assert selected[0] == "good"
 
 
 if __name__ == "__main__":

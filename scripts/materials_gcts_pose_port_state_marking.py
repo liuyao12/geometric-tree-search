@@ -67,6 +67,26 @@ def pose_port_state_code(
     if state_bin_width <= 0 or not channel_families or any(
             not channel for channel in channel_families):
         raise ValueError("invalid pose-port state schema")
+    responses = pose_port_channel_responses(
+        token_marking, descriptor, channel_families=channel_families)
+    return tuple(round(response / state_bin_width)
+                 for response in responses)
+
+
+def pose_port_channel_responses(
+        token_marking: FrozenIncidenceTokenMarking,
+        descriptor: CandidateIncidenceDescriptor, *,
+        channel_families: Sequence[Sequence[str]] =
+        DEFAULT_POSE_PORT_CHANNELS) -> tuple[float, ...]:
+    """Return the continuous, train-frozen response of every port channel.
+
+    These values are an ID-free view of the same evidence used by
+    :func:`pose_port_state_code`.  Exposing them lets a search allocate a
+    fixed candidate budget across distinct connection channels without
+    refitting the marking or changing exact candidate geometry.
+    """
+    if not channel_families or any(not channel for channel in channel_families):
+        raise ValueError("invalid pose-port channel schema")
     result = []
     for channel in channel_families:
         admitted = frozenset(channel)
@@ -75,7 +95,7 @@ def pose_port_state_code(
                        if token in token_marking.token_weights and
                        _family(token) in admitted)
         response = sum(values) / math.sqrt(len(values)) if values else 0.
-        result.append(round(response / state_bin_width))
+        result.append(response)
     return tuple(result)
 
 
@@ -153,6 +173,59 @@ def score_pose_port_state(
         state_bin_width=marking.state_bin_width,
         channel_families=marking.channel_families)
     return marking.state_probabilities.get(state, marking.prior_probability)
+
+
+def select_pose_port_channel_diverse(
+        marking: FrozenPosePortStateMarking,
+        descriptors: Mapping[Hashable, CandidateIncidenceDescriptor], *,
+        budget: int, baseline_slots: int,
+        votes: Mapping[Hashable, int] | None = None,
+        tie_keys: Mapping[Hashable, object] | None = None,
+        ) -> tuple[Hashable, ...]:
+    """Allocate one fixed action budget across learned connection channels.
+
+    The exact candidate keys and geometry remain outside the marking.  The
+    selector first keeps ``baseline_slots`` leaders under the frozen recurrent
+    state probability, then one previously unseen leader from every continuous
+    port-channel response, and finally fills any unspent slots from the same
+    baseline order.  It therefore changes representation of a fixed budget,
+    not the number or geometry of candidates rendered by the caller.
+    """
+    rows = tuple(descriptors)
+    if (not rows or budget < 1 or baseline_slots < 0 or
+            baseline_slots > budget or budget > len(rows)):
+        raise ValueError("invalid channel-diverse candidate budget")
+    votes = {} if votes is None else votes
+    if tie_keys is not None and any(key not in tie_keys for key in rows):
+        raise ValueError("tie-key mapping must cover every candidate")
+    tie = ((lambda key: repr(key)) if tie_keys is None else
+           (lambda key: tie_keys[key]))
+    scores = {key: score_pose_port_state(marking, descriptors[key])
+              for key in rows}
+    baseline = tuple(sorted(rows, key=lambda key: (
+        -scores[key], -int(votes.get(key, 0)), tie(key))))
+    responses = {key: pose_port_channel_responses(
+        marking.token_marking, descriptors[key],
+        channel_families=marking.channel_families) for key in rows}
+    selected = list(baseline[:baseline_slots])
+    seen = set(selected)
+    for channel in range(len(marking.channel_families)):
+        order = sorted(rows, key=lambda key: (
+            -responses[key][channel], -scores[key],
+            -int(votes.get(key, 0)), tie(key)))
+        winner = next((key for key in order if key not in seen), None)
+        if winner is not None and len(selected) < budget:
+            selected.append(winner)
+            seen.add(winner)
+    for key in baseline:
+        if len(selected) >= budget:
+            break
+        if key not in seen:
+            selected.append(key)
+            seen.add(key)
+    if len(selected) != budget:
+        raise AssertionError("channel-diverse selector underfilled its budget")
+    return tuple(selected)
 
 
 def pose_port_state_marking_digest(
