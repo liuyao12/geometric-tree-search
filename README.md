@@ -100,7 +100,13 @@ Pages site. The main way to use it is to open the page in a browser:
   rebuild; the recovered state and its next ordinary check add two 41-copy
   coronas. Both fail immediately at radius four, and all 60 clauses from the
   escalated run replay exactly. The corpus now contains 28 distinct states,
-  but the ≤42-copy space remains unexhausted and this is not evidence of
+  and exact partition restarts add five more, including four 42-copy coronas.
+  The restart advances from 20 to 32 applied cell obligations; at that frontier
+  a four-cell/six-clause step times out after 60s plus a 120s retry, while two
+  one-cell/two-clause steps solve and reach 34 applied cells. This supports
+  adaptive feedback batching. The 33-state corpus still consists entirely of
+  immediate radius-four failures, all 97 accumulated clauses replay exactly,
+  and the ≤42-copy space remains unexhausted. This is not evidence of
   non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)

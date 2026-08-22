@@ -1682,6 +1682,16 @@ assert.equal(archivedP10052588StagedCellFeedback.same_process_timeout_escalation
 assert.equal(archivedP10052588StagedCellFeedback.same_process_timeout_escalation_seed_188.independently_replayed_clauses, 60);
 assert.equal(archivedP10052588StagedCellFeedback.same_process_timeout_escalation_seed_188.clause_replay_failures, 0);
 assert.equal(archivedP10052588StagedCellFeedback.same_process_timeout_escalation_seed_188.copy_bound_exhausted, false);
+assert.equal(archivedP10052588StagedCellFeedback.exact_partition_restart_seed_191.initial_applied_cells, 20);
+assert.equal(archivedP10052588StagedCellFeedback.exact_partition_restart_seed_191.final_applied_cells, 32);
+assert.equal(archivedP10052588StagedCellFeedback.exact_partition_restart_seed_191.combined_distinct_radius_3_states, 31);
+assert.equal(archivedP10052588StagedCellFeedback.exact_partition_restart_seed_191.independently_replayed_clauses, 90);
+assert.equal(archivedP10052588StagedCellFeedback.frontier_batch_backoff_seed_197.large_step_control.z3_status, "unknown");
+assert.equal(archivedP10052588StagedCellFeedback.frontier_batch_backoff_seed_197.large_step_control.attempted_applied_cells, 36);
+assert.equal(archivedP10052588StagedCellFeedback.frontier_batch_backoff_seed_197.small_step_run.final_applied_cells, 34);
+assert.equal(archivedP10052588StagedCellFeedback.frontier_batch_backoff_seed_197.small_step_run.combined_distinct_radius_3_states, 33);
+assert.equal(archivedP10052588StagedCellFeedback.frontier_batch_backoff_seed_197.small_step_run.independently_replayed_clauses, 97);
+assert.equal(archivedP10052588StagedCellFeedback.frontier_batch_backoff_seed_197.adaptive_batching_supported, true);
 assert.equal(archivedP10052588StagedCellFeedback.radius_3_copy_bound_exhausted, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_non_tiler, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_aperiodic, false);
@@ -1848,6 +1858,11 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_timeout_retry_4
 assert.equal(p10052588Survivor.census_candidate.screening.corona_timeout_retry_combined_distinct_states, 28);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_timeout_retry_replayed_clauses, 60);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_timeout_retry_copy_bound_exhausted, false);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_partition_restart_applied_cells, 32);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_frontier_large_batch_status, "timeout");
+assert.equal(p10052588Survivor.census_candidate.screening.corona_frontier_small_batch_cells, 34);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_frontier_combined_distinct_states, 33);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_frontier_adaptive_batching_supported, true);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, false);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(
@@ -2049,7 +2064,7 @@ assert.match(growthAppSource, /not a non-tiling or aperiodicity certificate/);
 assert.match(growthAppSource, /deduplicated replay independently verifies/);
 assert.match(
   growthAppSource,
-  /Staging exact dead-cell feedback[\s\S]*?complementary diversity lane[\s\S]*?Relaxing the cap to[\s\S]*?Same-process timeout escalation[\s\S]*?proves neither non-tiling nor aperiodicity/,
+  /Staging exact dead-cell feedback[\s\S]*?complementary diversity lane[\s\S]*?Relaxing the cap to[\s\S]*?Same-process timeout escalation[\s\S]*?adaptive feedback batching[\s\S]*?proves neither non-tiling nor aperiodicity/,
   "the catalogue must expose staged cell feedback without overstating the bounded screen"
 );
 assert.match(growthAppSource, /Impact-only remains the production lane/);
