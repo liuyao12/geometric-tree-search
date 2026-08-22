@@ -169,6 +169,11 @@ assert.match(
   /legend: \{[\s\S]*?itemclick: false,[\s\S]*?itemdoubleclick: false/,
   "the Plotly legend must not switch or hide growth lanes"
 );
+assert.match(
+  growthAppSource,
+  /plotly_legendclick[\s\S]*?plotly_legenddoubleclick[\s\S]*?growthPlotLegendBound = true/,
+  "the chart must explicitly cancel both Plotly legend interaction events"
+);
 assert.doesNotMatch(sourceTilerHtml, /Learning Free-range/);
 assert.match(sourceTilerHtml, /<b>GCTS<\/b>/);
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");

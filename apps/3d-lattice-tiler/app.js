@@ -222,6 +222,7 @@ let growthRunning = false;
 const growthSeries = new Map();
 let growthInspection = { modeId: "free_range", pointIndex: null };
 let growthPlotClickBound = false;
+let growthPlotLegendBound = false;
 let growthPlotBackgroundBound = false;
 let growthPointerWasNearPoint = false;
 let growthPlotRevision = 0;
@@ -3378,6 +3379,12 @@ async function renderGrowthChart() {
   if (!growthPlotClickBound && typeof growthChart.on === "function") {
     growthChart.on("plotly_click", handleGrowthPlotClick);
     growthPlotClickBound = true;
+  }
+  if (!growthPlotLegendBound && typeof growthChart.on === "function") {
+    const keepGrowthLegendReadOnly = () => false;
+    growthChart.on("plotly_legendclick", keepGrowthLegendReadOnly);
+    growthChart.on("plotly_legenddoubleclick", keepGrowthLegendReadOnly);
+    growthPlotLegendBound = true;
   }
   if (!growthPlotBackgroundBound) {
     growthChart.addEventListener("click", event => {
