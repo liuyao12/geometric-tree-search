@@ -507,6 +507,10 @@ const archivedP9PairRecurrence = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-pair-recurrence-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9HistoricalCover = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-historical-cover-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1822,6 +1826,12 @@ assert.equal(archivedP9PairRecurrence.matched_seed_321_window_16.selected_produc
 assert.equal(archivedP9PairRecurrence.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_pair_recurrence_pair_complete_states, 26);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_pair_recurrence_tuple_survivors, 0);
+assert.equal(archivedP9HistoricalCover.selection_rule.historical_defect_sets_covered, 51);
+assert.equal(archivedP9HistoricalCover.matched_seeds_322_to_324.historical_cover.total_incompatible_target_pairs, 22);
+assert.equal(archivedP9HistoricalCover.pair_complete_state_found, false);
+assert.equal(archivedP9HistoricalCover.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_historical_cover_sets_covered, 51);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_historical_cover_pair_complete_states, 0);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1849,6 +1859,8 @@ assert.match(growthAppSource, /Ranked pair steering is now genuinely replaceable
 assert.match(growthAppSource, /not a non-tiling or aperiodicity certificate/);
 assert.match(growthAppSource, /deduplicated replay independently verifies/);
 assert.match(growthAppSource, /Impact-only remains the production lane/);
+assert.match(growthAppSource, /Joint historical coverage preserves all/);
+assert.match(growthAppSource, /complementary diversity lane/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

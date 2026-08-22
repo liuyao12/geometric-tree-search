@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v158";
+} from "./engine.js?v=20260821-polycube10-v159";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1538,6 +1538,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_pair_recurrence_report) {
         const recurrence = candidate.screening;
         candidateResearchDetail.textContent += ` A deduplicated replay independently verifies ${recurrence.corona_pair_recurrence_verified_states} historical radius-four states; ${recurrence.corona_pair_recurrence_eligible_states} satisfy the current individual-coverability contract and expose ${recurrence.corona_pair_recurrence_orbits} recurrent pair orbits. Of these states, ${recurrence.corona_pair_recurrence_pair_defect_states} fail pair coverability and ${recurrence.corona_pair_recurrence_pair_complete_states} clear it; ${recurrence.corona_pair_recurrence_triple_defect_states} of the latter fail the bounded triple gate, and the final one fails a quadruple obstruction, leaving ${recurrence.corona_pair_recurrence_tuple_survivors} GCTS continuation targets. Recurrence is therefore recorded but not promoted blindly: in a matched 16-orbit probe, impact-only solves in ${(recurrence.corona_pair_recurrence_impact_check_ms / 1000).toFixed(1)}s with ${recurrence.corona_pair_recurrence_impact_defects} pair defects, versus ${(recurrence.corona_pair_recurrence_frequency_check_ms / 1000).toFixed(1)}s/${recurrence.corona_pair_recurrence_frequency_defects} for frequency-first and ${(recurrence.corona_pair_recurrence_weighted_check_ms / 1000).toFixed(1)}s/${recurrence.corona_pair_recurrence_weighted_defects} for frequency-weighted impact. Impact-only remains the production lane. These are bounded finite-patch screens, not a non-tiling or aperiodicity certificate.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_historical_cover_report) {
+        const cover = candidate.screening;
+        candidateResearchDetail.textContent += ` Joint historical coverage preserves all ${cover.corona_historical_cover_defect_sets} per-state defect sets instead of flattening them into marginal counts. Its greedy 16-orbit window intersects ${cover.corona_historical_cover_sets_covered} replayed failures, versus ${cover.corona_historical_impact_sets_covered} for impact-only. Across three matched seeds both lanes return three exact states; historical-cover uses ${(cover.corona_historical_cover_total_check_ms / 1000).toFixed(1)}s total and exposes ${cover.corona_historical_cover_total_pair_defects} pair defects, versus ${(cover.corona_historical_impact_total_check_ms / 1000).toFixed(1)}s and ${cover.corona_historical_impact_total_pair_defects}. This modest aggregate improvement earns it a complementary diversity lane, not a replacement for impact-only: neither produces a pair-complete state, so no new GCTS continuation begins.`;
       }
     }
   } else if (knownAperiodic) {
