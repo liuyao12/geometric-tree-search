@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v165";
+} from "./engine.js?v=20260822-polycube10-v166";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1471,6 +1471,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_radius3_cegar_proposals) {
         const radius3 = candidate.screening;
         candidateResearchDetail.textContent += ` An unbounded-copy radius-two-to-three CEGAR chain proposed ${radius3.corona_radius3_cegar_proposals} exact outer states. GCTS rejected ${radius3.corona_radius3_cegar_rejected_states} of them—${radius3.corona_radius3_cegar_immediate_obstructions} by an immediate dead cell and ${radius3.corona_radius3_cegar_subtree_obstructions} by a resolved subtree conflict—before extending the last proposal to an independently verified ${radius3.corona_completed_witness_placements}-copy radius-three corona. A separate replay exhausts all ${radius3.corona_radius3_cegar_replayed_clauses}/${radius3.corona_radius3_cegar_final_clauses} retained obstruction clauses. That recorded survivor itself has ${radius3.corona_radius3_witness_radius4_dead_cells} immediate radius-four dead cells, with a smallest ${radius3.corona_radius3_witness_radius4_minimum_clause}-copy conflict, so it does not reach radius four; other radius-three coronas remain unexhausted. This upgrades the candidate's finite survival evidence, not its tiling or aperiodicity status.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_staged_cell_feedback_report) {
+        const stagedCells = candidate.screening;
+        candidateResearchDetail.textContent += ` Staging exact dead-cell feedback ${stagedCells.corona_staged_cell_feedback_batch} constraints at a time improves the matched radius-three proposal funnel from ${stagedCells.corona_staged_cell_feedback_matched_all_at_once_states} state to ${stagedCells.corona_staged_cell_feedback_matched_staged_states} under the same seed and 30-second check cap. Across ${stagedCells.corona_staged_cell_feedback_portfolio_runs} staged seeds it supplies ${stagedCells.corona_staged_cell_feedback_distinct_states} distinct ${stagedCells.corona_staged_cell_feedback_minimum_placements}–${stagedCells.corona_staged_cell_feedback_maximum_placements}-copy states. Exact radius-four GCTS rejects all ${stagedCells.corona_staged_cell_feedback_radius4_rejections} immediately in ${stagedCells.corona_staged_cell_feedback_continuation_nodes} aggregate nodes, and independent replay verifies all ${stagedCells.corona_staged_cell_feedback_replayed_clause_instances} learned clause instances with ${stagedCells.corona_staged_cell_feedback_replay_failures} failures. The ≤${stagedCells.corona_staged_cell_feedback_maximum_placements}-copy proposal space is still unexhausted, so this proves neither non-tiling nor aperiodicity.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;

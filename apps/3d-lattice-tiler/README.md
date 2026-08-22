@@ -938,12 +938,29 @@ with `--z3-witness-batch-size=1`. After each independently verified proposal,
 CEGAR sends every newly proved symmetry-closed state clause and pair obligation
 back to the same process before requesting another model. Higher-order
 obstructions remain under the full lazy audit, so changing the in-process
-proposal formula cannot bypass the GCTS gate. Dynamic cell learning and fully
-encoded higher-order mode are rejected for now rather than silently failing to
-update the worker. A bounded regression keeps one solver alive across three
-models, applies three learned GCTS clauses before model two, and injects six
-new pair constraints before model three, whose reported construction time is
-zero.
+proposal formula cannot bypass the GCTS gate. Fully encoded higher-order mode
+is rejected rather than silently failing to update the worker. Dynamic cell
+learning is supported directly: `--cell-feedback-batch=N` learns and archives
+every exact dead-cell obligation but sends only the next N queued constraints
+before each retained check. `applied-cell-coverability.json` records the exact
+applied prefix; a restart can pair it with the full learned report through
+`--initial-cell-report` and `--initial-deferred-cell-report` without expanding
+or reordering a partially applied symmetry orbit. A bounded regression keeps
+one solver alive across three models, applies three learned GCTS clauses before
+model two, and injects six new pair constraints before model three, whose
+reported construction time is zero.
+
+On `p10-052588`, staging four cell constraints at a time gives a matched
+seed-175 improvement from one exact radius-three proposal to five under the
+same ≤39-copy bound and 30-second check cap. Across seeds 175, 182, and 185 it
+finds nineteen mutually distinct 37–39-copy states. Exact radius-four GCTS
+rejects all nineteen immediately in 21 aggregate nodes; independent replay
+verifies all 216 clause instances, representing 199 distinct clauses, with no
+failure or incomplete replay. The strongest restarted formula still times out,
+and the bounded outer state space is not exhausted. The result validates staged
+feedback as a proposal-supply optimization but proves neither non-tiling nor
+aperiodicity. See
+`data/polycube-p10-052588-staged-cell-feedback-2026-08-22.json`.
 
 The first production interactive chain keeps three retained solvers through
 nine exact proposals at seeds 303–305. All nine checks return SAT without a

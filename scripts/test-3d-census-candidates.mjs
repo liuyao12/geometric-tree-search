@@ -455,6 +455,10 @@ const archivedP10052588Radius3WitnessRaw = JSON.parse(await readFile(
   new URL("../data/polycube-p10-052588-radius3-witness-cegar-raw-2026-08-22.json", import.meta.url),
   "utf8"
 ));
+const archivedP10052588StagedCellFeedback = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-staged-cell-feedback-2026-08-22.json", import.meta.url),
+  "utf8"
+));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1649,6 +1653,15 @@ assert.equal(archivedP10052588Radius3Witness.fixed_witness_radius_4_continuation
 assert.equal(archivedP10052588Radius3Witness.radius_3_space_exhausted, false);
 assert.equal(archivedP10052588Radius3Witness.certified_non_tiler, false);
 assert.equal(archivedP10052588Radius3Witness.certified_aperiodic, false);
+assert.equal(archivedP10052588StagedCellFeedback.implementation_commit, "7df66cc");
+assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.all_at_once.sat_radius_3_states, 1);
+assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.staged_four_at_a_time.sat_radius_3_states, 5);
+assert.equal(archivedP10052588StagedCellFeedback.three_seed_staged_portfolio.distinct_radius_3_states, 19);
+assert.equal(archivedP10052588StagedCellFeedback.three_seed_staged_portfolio.independently_replayed_clause_instances, 216);
+assert.equal(archivedP10052588StagedCellFeedback.three_seed_staged_portfolio.clause_replay_failures, 0);
+assert.equal(archivedP10052588StagedCellFeedback.radius_3_copy_bound_exhausted, false);
+assert.equal(archivedP10052588StagedCellFeedback.certified_non_tiler, false);
+assert.equal(archivedP10052588StagedCellFeedback.certified_aperiodic, false);
 for (const source of archivedP10052588Radius3Witness.raw_reports) {
   const bytes = await readFile(new URL(`../${source.path}`, import.meta.url));
   assert.equal(
@@ -1791,6 +1804,13 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_completed_witne
 assert.equal(p10052588Survivor.census_candidate.screening.corona_radius3_cegar_proposals, 120);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_radius3_cegar_replayed_clauses, 114);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_radius3_witness_radius4_dead_cells, 12);
+assert.equal(
+  p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_report,
+  "data/polycube-p10-052588-staged-cell-feedback-2026-08-22.json"
+);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_distinct_states, 19);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_replayed_clause_instances, 216);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, false);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(
     p10052588Survivor.census_candidate.voxels,
@@ -1989,6 +2009,11 @@ assert.match(growthAppSource, /without relaxing the exact gate/);
 assert.match(growthAppSource, /Ranked pair steering is now genuinely replaceable/);
 assert.match(growthAppSource, /not a non-tiling or aperiodicity certificate/);
 assert.match(growthAppSource, /deduplicated replay independently verifies/);
+assert.match(
+  growthAppSource,
+  /Staging exact dead-cell feedback[\s\S]*?proves neither non-tiling nor aperiodicity/,
+  "the catalogue must expose staged cell feedback without overstating the bounded screen"
+);
 assert.match(growthAppSource, /Impact-only remains the production lane/);
 assert.match(growthAppSource, /Joint historical coverage preserves all/);
 assert.match(growthAppSource, /complementary diversity lane/);

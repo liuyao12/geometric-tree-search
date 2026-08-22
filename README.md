@@ -80,6 +80,14 @@ Pages site. The main way to use it is to open the page in a browser:
   now returns every immediate dead cell in one pass; this promotes seven cells
   at once on the non-tiler control and twelve on the recorded `p10-052588`
   witness instead of rediscovering them through separate solver round trips.
+  Interactive CEGAR can now stage those exact cell obligations four at a time
+  while retaining the full learned queue across restarts. In a matched
+  seed-175, 30-second A/B screen this raises the number of exact radius-three
+  proposals from one to five. Three staged seeds supply nineteen distinct
+  37–39-copy states; exact radius-four GCTS rejects every one, and an
+  independent replay verifies all 216 learned clause instances. The ≤39-copy
+  proposal space remains unexhausted, so this is a better GCTS funnel rather
+  than a non-tiling or aperiodicity certificate.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

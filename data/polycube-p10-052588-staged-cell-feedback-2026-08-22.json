@@ -1,0 +1,97 @@
+{
+  "kind": "polycube_corona_staged_cell_feedback_audit",
+  "date": "2026-08-22",
+  "candidate": "p10-052588",
+  "implementation_commit": "7df66cc",
+  "model": "proper cubic rotations; one fixed root; radius-three exact-cover proposals; exact radius-four GCTS continuation",
+  "protocol": {
+    "outer_radius": 3,
+    "inner_radius": 4,
+    "maximum_surrounding_placements": 39,
+    "proposal_backend": "Z3 pb2bv-sat with grouped pseudo-Boolean lookahead conflicts",
+    "continuation_backend": "exact conflict-backjumping GCTS",
+    "cell_feedback_batch": 4,
+    "cell_feedback_policy": "learn every exact dead-cell obligation, but assert at most four queued cells before each retained solver check",
+    "restart_policy": "persist an exact applied prefix separately from the full FIFO learned-cell queue",
+    "bounded_copy_semantics": true
+  },
+  "matched_seed_175_ablation": {
+    "shared_random_seed": 175,
+    "shared_z3_timeout_ms": 30000,
+    "shared_maximum_surrounding_placements": 39,
+    "all_at_once": {
+      "sat_radius_3_states": 1,
+      "z3_timeout_checks": 1,
+      "construction_milliseconds": 3553,
+      "successful_check_milliseconds": 13379,
+      "timeout_check_milliseconds": 30673,
+      "cells_asserted_before_timeout": 16,
+      "exact_clauses_learned": 14
+    },
+    "staged_four_at_a_time": {
+      "sat_radius_3_states": 5,
+      "z3_timeout_checks": 1,
+      "construction_milliseconds": 3365,
+      "successful_check_milliseconds": 77942,
+      "timeout_check_milliseconds": 30788,
+      "cells_learned": 51,
+      "cells_asserted_before_timeout": 20,
+      "cells_deferred": 31,
+      "exact_clauses_learned": 60,
+      "independently_replayed_clauses": 60,
+      "clause_replay_failures": 0,
+      "clause_replay_incomplete": 0,
+      "clause_replay_nodes": 130
+    },
+    "proposal_multiplier": 5,
+    "interpretation": "With the same seed, copy bound, and 30-second check limit, staging exact cell feedback yields five clause-distinct proposals before timeout instead of one."
+  },
+  "three_seed_staged_portfolio": {
+    "random_seeds": [175, 182, 185],
+    "sat_radius_3_states": 19,
+    "distinct_radius_3_states": 19,
+    "duplicate_radius_3_states": 0,
+    "surrounding_placement_distribution": {
+      "37": 2,
+      "38": 3,
+      "39": 14
+    },
+    "exact_radius_4_rejections": 19,
+    "immediate_dead_target_rejections": 19,
+    "radius_4_continuation_nodes": 21,
+    "cell_constraint_instances_learned": 178,
+    "unique_cell_constraints_learned": 97,
+    "clause_instances_learned": 216,
+    "unique_clauses_learned": 199,
+    "independently_replayed_clause_instances": 216,
+    "clause_replay_failures": 0,
+    "clause_replay_incomplete": 0,
+    "clause_replay_nodes": 458,
+    "final_applied_cell_counts": [20, 24, 32],
+    "final_deferred_cell_counts": [31, 37, 34],
+    "z3_timeout_checks": 3
+  },
+  "restart_validation": {
+    "source_applied_cells": 24,
+    "source_deferred_cells": 37,
+    "batch_four_restart": {
+      "applied_after_first_check": 28,
+      "deferred_after_first_check": 33,
+      "z3_status": "unknown",
+      "z3_timeout_ms": 60000
+    },
+    "batch_one_restart": {
+      "applied_after_first_check": 25,
+      "deferred_after_first_check": 36,
+      "z3_status": "unknown",
+      "z3_timeout_ms": 90000
+    },
+    "interpretation": "The exact FIFO partition survives restart, but rebuilding the heavily strengthened formula remains harder than exploring a fresh staged seed."
+  },
+  "radius_3_space_exhausted": false,
+  "radius_3_copy_bound_exhausted": false,
+  "verified_radius_4_witness_found": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. All nineteen bounded proposals fail immediately and every learned clause instance replays exactly, but neither the <=39-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+}
