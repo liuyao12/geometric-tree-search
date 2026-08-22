@@ -1659,6 +1659,21 @@ assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.stage
 assert.equal(archivedP10052588StagedCellFeedback.three_seed_staged_portfolio.distinct_radius_3_states, 19);
 assert.equal(archivedP10052588StagedCellFeedback.three_seed_staged_portfolio.independently_replayed_clause_instances, 216);
 assert.equal(archivedP10052588StagedCellFeedback.three_seed_staged_portfolio.clause_replay_failures, 0);
+assert.equal(archivedP10052588StagedCellFeedback.joint_clause_and_cell_feedback_ablation.implementation_commit, "b4bbc33");
+assert.equal(archivedP10052588StagedCellFeedback.joint_clause_and_cell_feedback_ablation.sat_radius_3_states, 4);
+assert.equal(archivedP10052588StagedCellFeedback.joint_clause_and_cell_feedback_ablation.states_new_beyond_three_seed_cell_only_portfolio, 3);
+assert.equal(archivedP10052588StagedCellFeedback.joint_clause_and_cell_feedback_ablation.combined_distinct_radius_3_states, 22);
+assert.equal(archivedP10052588StagedCellFeedback.joint_clause_and_cell_feedback_ablation.independently_replayed_clauses, 57);
+assert.equal(archivedP10052588StagedCellFeedback.joint_clause_and_cell_feedback_ablation.clause_replay_failures, 0);
+assert.equal(archivedP10052588StagedCellFeedback.joint_clause_and_cell_feedback_ablation.production_policy_promoted, false);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.maximum_surrounding_placements, 42);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.sat_radius_3_states, 4);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.surrounding_placement_distribution["40"], 3);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.states_new_beyond_prior_twenty_two_state_portfolio, 4);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.combined_distinct_radius_3_states, 26);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.independently_replayed_clauses, 40);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.clause_replay_failures, 0);
+assert.equal(archivedP10052588StagedCellFeedback.relaxed_copy_bound_seed_188.copy_bound_exhausted, false);
 assert.equal(archivedP10052588StagedCellFeedback.radius_3_copy_bound_exhausted, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_non_tiler, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_aperiodic, false);
@@ -1810,6 +1825,15 @@ assert.equal(
 );
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_distinct_states, 19);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_replayed_clause_instances, 216);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_joint_feedback_new_states, 3);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_joint_feedback_combined_distinct_states, 22);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_joint_feedback_replayed_clauses, 57);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_joint_feedback_promoted, false);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_relaxed_copy_bound, 42);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_relaxed_copy_bound_40_copy_states, 3);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_relaxed_copy_bound_combined_distinct_states, 26);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_relaxed_copy_bound_replayed_clauses, 40);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_relaxed_copy_bound_exhausted, false);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, false);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(
@@ -2011,7 +2035,7 @@ assert.match(growthAppSource, /not a non-tiling or aperiodicity certificate/);
 assert.match(growthAppSource, /deduplicated replay independently verifies/);
 assert.match(
   growthAppSource,
-  /Staging exact dead-cell feedback[\s\S]*?proves neither non-tiling nor aperiodicity/,
+  /Staging exact dead-cell feedback[\s\S]*?complementary diversity lane[\s\S]*?Relaxing the cap to[\s\S]*?proves neither non-tiling nor aperiodicity/,
   "the catalogue must expose staged cell feedback without overstating the bounded screen"
 );
 assert.match(growthAppSource, /Impact-only remains the production lane/);

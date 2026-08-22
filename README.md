@@ -86,8 +86,17 @@ Pages site. The main way to use it is to open the page in a browser:
   proposals from one to five. Three staged seeds supply nineteen distinct
   37–39-copy states; exact radius-four GCTS rejects every one, and an
   independent replay verifies all 216 learned clause instances. The ≤39-copy
-  proposal space remains unexhausted, so this is a better GCTS funnel rather
-  than a non-tiling or aperiodicity certificate.
+  proposal space remains unexhausted. A matched joint clause-and-cell schedule
+  reaches four states rather than the cell-only lane's five, so it is not the
+  production policy; nevertheless, three are absent from the entire prior
+  portfolio, bringing the exact corpus to 22 distinct states. All four fail
+  immediately at radius four, and independent replay verifies all 57 new
+  clauses. Joint staging is retained as a diversity lane. A fresh cell-only
+  run with the proposal cap relaxed to 42 adds four more unique states,
+  including three 40-copy coronas; all four still fail immediately at radius
+  four, and all 40 new clauses replay exactly. The corpus therefore contains
+  26 distinct exact states, but the ≤42-copy space remains unexhausted and this
+  is not evidence of non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate
