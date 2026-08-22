@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v168";
+} from "./engine.js?v=20260822-polycube10-v169";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1485,6 +1485,11 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_deep_cached_prefix_combined_distinct_states) {
         const deepPrefix = candidate.screening;
         candidateResearchDetail.textContent += ` Retained one-cell restarts then add new ${deepPrefix.corona_deep_cached_prefix_seed211_placements}- and ${deepPrefix.corona_deep_cached_prefix_seed212_placements}-copy states, advance the exact prefix to ${deepPrefix.corona_deep_cached_prefix_maximum_applied_cells} applied cells, and raise the bounded corpus to ${deepPrefix.corona_deep_cached_prefix_combined_distinct_states} states. Exact GCTS rejects both at radius four in ${deepPrefix.corona_deep_cached_prefix_continuation_nodes} aggregate nodes, while independent replay verifies all ${deepPrefix.corona_deep_cached_prefix_seed211_replayed_clauses} and ${deepPrefix.corona_deep_cached_prefix_seed212_replayed_clauses} accumulated clauses with ${deepPrefix.corona_deep_cached_prefix_replay_failures} failures. The proposal space is still unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_prefix45_diversification_combined_distinct_states) {
+        const diversified = candidate.screening;
+        const constructionReduction = (100 * diversified.corona_prefix45_diversification_construction_reduction_fraction).toFixed(1);
+        candidateResearchDetail.textContent += ` Matched diversification at the 45-cell prefix adds distinct 41- and ${diversified.corona_prefix45_diversification_minimum_placements}-copy states and converges to byte-identical ${diversified.corona_prefix45_diversification_maximum_applied_cells}-cell applied reports. The cache hit cuts construction by ${constructionReduction}% and the bounded corpus reaches ${diversified.corona_prefix45_diversification_combined_distinct_states} states. GCTS rejects both new states immediately in ${diversified.corona_prefix45_diversification_continuation_nodes} aggregate nodes; independent replay verifies ${diversified.corona_prefix45_diversification_seed213_replayed_clauses} and ${diversified.corona_prefix45_diversification_seed214_replayed_clauses} clauses with ${diversified.corona_prefix45_diversification_replay_failures} failures. No radius-four survivor has been found and the search remains unexhausted.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;

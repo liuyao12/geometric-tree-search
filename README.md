@@ -122,8 +122,12 @@ Pages site. The main way to use it is to open the page in a browser:
   with zero failures. Retained one-cell restarts then add new 42- and 41-copy
   states and advance the prefix through 45 applied cells; their 132- and
   138-clause reports also replay with zero failures. The verified bounded corpus
-  now has 41 states, but every new state still fails immediately at radius four.
-  This remains inconclusive, not evidence of non-tiling or aperiodicity.
+  reaches 41 states. Matched seeds at the 45-cell prefix then add distinct 41-
+  and 40-copy states and converge to byte-identical 46-cell applied reports;
+  the cache hit cuts formula construction by 95.1%. Their 146- and 148-clause
+  reports replay with zero failures, taking the corpus to 43 states. Every new
+  state still fails immediately at radius four. This remains inconclusive, not
+  evidence of non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

@@ -503,10 +503,55 @@
     "copy_bound_exhausted": false,
     "interpretation": "Exact one-cell retained-prefix restarts continue through 45 applied next-ring obligations and add new 42- and 41-copy radius-three states. Independent GCTS replay verifies all 132 and 138 accumulated obstruction clauses. Both states still fail immediate radius-four continuation, so the bounded proposal space remains unexhausted."
   },
+  "prefix_45_seed_diversification": {
+    "implementation_commit": "d8677e4",
+    "seed_213_cache_miss": {
+      "construction_milliseconds": 54156,
+      "cache_write_milliseconds": 4053,
+      "check_milliseconds": 228801,
+      "outer_placements": 41,
+      "boundary_sha256": "7c7a7469a1300c813eb6aab3a148ed07cdc39d70e7d99cc2d1fb759db50b6468",
+      "novel_against_prior_saved_witnesses": true,
+      "prior_saved_witnesses_checked": 160,
+      "final_applied_clauses": 92,
+      "final_applied_cells": 46,
+      "exact_radius_4_rejections": 1,
+      "radius_4_continuation_nodes": 2,
+      "independently_replayed_clauses": 146,
+      "clause_replay_failures": 0,
+      "clause_replay_nodes": 285
+    },
+    "seed_214_cache_hit": {
+      "construction_milliseconds": 2652,
+      "cache_load_milliseconds": 898,
+      "check_milliseconds": 192489,
+      "outer_placements": 40,
+      "boundary_sha256": "7b4252445174220899f05645f0a36fa91bd570f5ff3274287c089b57c2291c56",
+      "novel_against_prior_saved_witnesses": true,
+      "prior_saved_witnesses_checked": 161,
+      "final_applied_clauses": 92,
+      "final_applied_cells": 46,
+      "exact_radius_4_rejections": 1,
+      "radius_4_continuation_nodes": 2,
+      "independently_replayed_clauses": 148,
+      "clause_replay_failures": 0,
+      "clause_replay_nodes": 289
+    },
+    "matched_construction_reduction_fraction": 0.951030356747,
+    "applied_clause_reports_byte_identical": true,
+    "applied_cell_reports_byte_identical": true,
+    "new_distinct_radius_3_states": 2,
+    "combined_distinct_radius_3_states": 43,
+    "minimum_new_state_placements": 40,
+    "maximum_verified_applied_cells": 46,
+    "verified_radius_4_witness_found": false,
+    "copy_bound_exhausted": false,
+    "interpretation": "Matched cache-miss and cache-hit seeds at the same exact 45-cell prefix add distinct 41- and 40-copy states and converge to byte-identical 92-clause/46-cell applied reports. Caching cuts construction by 95.1%. Both states still fail immediate radius-four continuation, and independent replay verifies all 146 and 148 accumulated clauses."
+  },
   "radius_3_space_exhausted": false,
   "radius_3_copy_bound_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains forty-one distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, and partial-formula caching reach forty-five applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains forty-three distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, and partial-formula caching reach forty-six applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
 }
