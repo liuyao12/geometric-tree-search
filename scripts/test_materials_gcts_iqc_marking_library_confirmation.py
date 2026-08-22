@@ -31,6 +31,14 @@ def test_fresh_result_is_honestly_classified() -> None:
     assert not row["target_used_for_candidate_or_ranking"]
     assert len(row["receipt"]["selected_parent_ids"]) == 8
     assert row["target_order_audit"]["target_open_count"] == 1
+    assert row["seed_atoms"] == 487
+    assert row["target_atoms"] == 22801
+    assert row["candidate_lineages"] == 16968
+    assert row["exact_first_prefixes"] == 2
+    assert row["exact_second_prefixes"] == 0
+    assert row["best_correct_actions"] == 8
+    assert row["exact_lineages"] == 0
+    assert not row["fresh_marking_library_three_block_supply_confirmed"]
     assert not row["winner_selected_or_validated"]
     assert not row["autonomous_growth_claimed"]
     assert not row["stationary_or_exponential_claimed"]

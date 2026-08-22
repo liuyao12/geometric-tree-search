@@ -30,8 +30,10 @@ DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_marking_library_confirmation_v1.json.gz"
 ATTEMPT_MARKER = ROOT / \
     "fixtures/iqc_marking_library_confirmation_attempt_v1.json"
-EXPECTED_FIXTURE_SHA256 = ""
-EXPECTED_RESULT_DIGEST = ""
+EXPECTED_FIXTURE_SHA256 = (
+    "b061c69a32b4f9016389d5f428b88c7c58bf3d1dd0cd1a9a8ac12910aaf32656")
+EXPECTED_RESULT_DIGEST = (
+    "7120c4b369f52d4ba3cdc741a37729495ac8333bf1055af3a73d4e036519eb3d")
 
 
 def _action_key(action):
