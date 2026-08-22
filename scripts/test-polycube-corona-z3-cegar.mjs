@@ -24,7 +24,7 @@ assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-li
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all/);
-assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, or frequency-weighted-impact/);
+assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, or historical-cover/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -228,7 +228,11 @@ try {
     pair_orbit_hits: {
       [scoredPairLowKey]: 7,
       [scoredPairHighKey]: 2
-    }
+    },
+    pair_defect_orbit_sets: [
+      [scoredPairLowKey],
+      [scoredPairLowKey, scoredPairHighKey]
+    ]
   })}\n`);
   const replacePairWorker = spawnSync(python, [
     solver,
@@ -672,6 +676,35 @@ try {
   assert.equal(weightedPairReport.encoded_pair_selection, "frequency-weighted-impact");
   assert.deepEqual(weightedPairReport.encoded_pair_orbit_keys, [scoredPairHighKey]);
   assert.ok(weightedPairReport.encoded_pair_orbit_scores[0] >= 23);
+
+  const coverPairOutput = join(directory, "cover-pair-summary.json");
+  const coverPairCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=1",
+    "--encoded-pair-selection=historical-cover",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${scoredPairPath}`,
+    `--output-dir=${join(directory, "cover-pair")}`,
+    `--report-output=${coverPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(coverPairCegar.status, 0, coverPairCegar.stderr);
+  const coverPairReport = JSON.parse(readFileSync(coverPairOutput, "utf8"));
+  assert.equal(coverPairReport.encoded_pair_selection, "historical-cover");
+  assert.deepEqual(coverPairReport.encoded_pair_orbit_keys, [scoredPairLowKey]);
+  assert.ok(coverPairReport.encoded_pair_historical_sets_covered >= 2);
+  assert.ok(coverPairReport.pair_defect_orbit_set_count >= 2);
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [

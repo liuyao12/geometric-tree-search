@@ -79,6 +79,7 @@ const tripleDefectWitnesses = [];
 const boundedTripleCompleteWitnesses = [];
 const quadrupleDefectWitnesses = [];
 const tupleGateSurvivorWitnesses = [];
+const pairDefectOrbitSets = [];
 let filesRead = 0;
 let extractedStates = 0;
 let verifiedStates = 0;
@@ -168,6 +169,7 @@ outer: for (const path of witnessPaths) {
     for (const orbitKey of observedOrbits) {
       pairOrbitHits.set(orbitKey, (pairOrbitHits.get(orbitKey) ?? 0) + 1);
     }
+    if (observedOrbits.size) pairDefectOrbitSets.push([...observedOrbits].sort());
     if (limit && verifiedStates >= limit) break outer;
   }
 }
@@ -208,6 +210,7 @@ const output = {
   tuple_gate_survivor_witnesses: tupleGateSurvivorWitnesses,
   pair_orbit_scores: sortedObject(pairOrbitScores),
   pair_orbit_hits: sortedObject(pairOrbitHits),
+  pair_defect_orbit_sets: pairDefectOrbitSets,
   pairs: pairConstraints,
   warning: "Finite patch recurrence statistics are a proposal-ranking heuristic, not a tiling, non-tiling, or aperiodicity certificate."
 };
