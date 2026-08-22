@@ -166,8 +166,6 @@ def main():
     if (args.min_placements is not None and args.max_placements is not None
             and args.min_placements > args.max_placements):
         parser.error("min-placements cannot exceed max-placements")
-    if args.formula_cache and not args.require_next_layer_coverability:
-        parser.error("formula caching currently requires --require-next-layer-coverability")
     if args.interactive_jsonl and args.max_witnesses != 1:
         parser.error("interactive mode requires max-witnesses=1")
     if args.interactive_replace_pairs and not args.interactive_jsonl:
@@ -195,6 +193,13 @@ def main():
         ";".join(sorted(",".join(str(value) for value in cell) for cell in placement)): index
         for index, placement in enumerate(placements)
     }
+    cell_coverability = []
+    if args.cell_coverability_report:
+        cell_report = json.loads(Path(args.cell_coverability_report).read_text(encoding="utf-8"))
+        cell_coverability = cell_report.get("cells", cell_report) if isinstance(cell_report, dict) else cell_report
+        if not isinstance(cell_coverability, list):
+            raise ValueError("Cell coverability report must contain a cells list")
+    cell_report_keys = sorted({cell_key(parse_cell_key(cell)) for cell in cell_coverability})
     pair_coverability = []
     pair_soft_orbit_groups = []
     if args.pair_coverability_report:
@@ -214,12 +219,13 @@ def main():
     cache_path = Path(args.formula_cache) if args.formula_cache else None
     cache_metadata_path = Path(f"{args.formula_cache}.json") if args.formula_cache else None
     cache_signature = json.dumps({
-        "version": 2,
+        "version": 3,
         "key": args.key,
         "layer": args.layer,
         "min_placements": args.min_placements,
         "max_placements": args.max_placements,
         "require_next_layer_coverability": args.require_next_layer_coverability,
+        "cell_coverability": cell_report_keys,
         "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
         "root_symmetry_breaking": args.root_symmetry_breaking,
         "pair_encoding": args.pair_encoding,
@@ -294,12 +300,6 @@ def main():
     lookahead_placement_count = 0
     lookahead_conflict_count = 0
     lookahead_conflict_group_count = 0
-    cell_coverability = []
-    if args.cell_coverability_report:
-        cell_report = json.loads(Path(args.cell_coverability_report).read_text(encoding="utf-8"))
-        cell_coverability = cell_report.get("cells", cell_report) if isinstance(cell_report, dict) else cell_report
-        if not isinstance(cell_coverability, list):
-            raise ValueError("Cell coverability report must contain a cells list")
     triple_coverability = []
     if args.triple_coverability_report:
         triple_report = json.loads(Path(args.triple_coverability_report).read_text(encoding="utf-8"))
@@ -333,8 +333,8 @@ def main():
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
         normalized_cells = set()
-        for cell_number, cell_key in enumerate(cell_coverability):
-            cell = parse_cell_key(cell_key)
+        for cell_number, raw_cell_key in enumerate(cell_coverability):
+            cell = parse_cell_key(raw_cell_key)
             if cell not in next_ring:
                 raise ValueError(f"Cell coverability entry {cell_number} is not a next-ring cell")
             normalized_cells.add(cell)

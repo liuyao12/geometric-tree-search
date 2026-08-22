@@ -53,6 +53,10 @@ const z3TimeoutMs = integerArg("z3-timeout-ms", 30_000, 1);
 const z3TimeoutRetryMs = integerArg("z3-timeout-retry-ms", 0, 0);
 const z3ProcessGraceMs = integerArg("z3-process-grace-ms", 120_000, 1);
 const z3FormulaCache = booleanArg("z3-formula-cache", false);
+const z3FormulaCachePathArgument = args.get("z3-formula-cache-path") ?? null;
+if (z3FormulaCachePathArgument && !z3FormulaCache) {
+  throw new Error("--z3-formula-cache-path requires --z3-formula-cache=true");
+}
 const z3WitnessBatchSize = integerArg("z3-witness-batch-size", 1, 1);
 const z3Interactive = booleanArg("z3-interactive", false);
 const z3InteractiveReplacePairs = booleanArg("z3-interactive-replace-pairs", z3Interactive);
@@ -234,7 +238,9 @@ const encodedPairPath = resolve(outputDirectory, "encoded-pair-coverability.json
 const triplePath = resolve(outputDirectory, "triple-coverability.json");
 const encodedTriplePath = resolve(outputDirectory, "encoded-triple-coverability.json");
 const quadruplePath = resolve(outputDirectory, "quadruple-coverability.json");
-const formulaCachePath = resolve(outputDirectory, "outer-formula-cache.smt2");
+const formulaCachePath = z3FormulaCachePathArgument
+  ? resolve(z3FormulaCachePathArgument)
+  : resolve(outputDirectory, "outer-formula-cache.smt2");
 mkdirSync(outputDirectory, { recursive: true });
 
 const clauses = [];
@@ -791,6 +797,7 @@ process.stdout.write(`${JSON.stringify({
   z3_timeout_retry_ms: z3TimeoutRetryMs || null,
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
+  z3_formula_cache_path: z3FormulaCache ? formulaCachePath : null,
   z3_witness_batch_size: z3WitnessBatchSize,
   z3_interactive: z3Interactive,
   z3_interactive_replace_pairs: z3InteractiveReplacePairs,
@@ -1813,6 +1820,7 @@ const summary = {
   z3_timeout_retry_ms: z3TimeoutRetryMs || null,
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
+  z3_formula_cache_path: z3FormulaCache ? formulaCachePath : null,
   z3_witness_batch_size: z3WitnessBatchSize,
   z3_interactive: z3Interactive,
   z3_interactive_replace_pairs: z3InteractiveReplacePairs,

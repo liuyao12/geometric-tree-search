@@ -78,6 +78,8 @@ assert.match(cegarSource, /solverArguments\.push\("--interactive-replace-pairs"\
 assert.match(cegarSource, /--z3-timeout-retry-ms requires --z3-interactive=true/);
 assert.match(cegarSource, /firstResult\.z3_status === "unknown"[\s\S]*?timeoutMs: z3TimeoutRetryMs[\s\S]*?clauses: \[\][\s\S]*?cells: \[\]/);
 assert.match(cegarSource, /--feedback-timeout-backoff requires --z3-interactive=true/);
+assert.match(cegarSource, /--z3-formula-cache-path requires --z3-formula-cache=true/);
+assert.match(cegarSource, /z3FormulaCachePathArgument[\s\S]*?formulaCachePath/);
 assert.match(cegarSource, /type: "rollback"[\s\S]*?Math\.ceil\(clausesToApply\.length \/ 2\)[\s\S]*?Math\.ceil\(cellsToApply\.length \/ 2\)/);
 assert.match(cegarSource, /replace_pairs: encodedPairs\.constraints/);
 assert.match(cegarSource, /interactive_clauses_applied/);
@@ -1609,6 +1611,52 @@ try {
   assert.equal(augmentedCacheReplayReport.formula_cache_hit, true);
   assert.equal(augmentedCacheReplayReport.formula_cache_pairs_reused, 2);
   assert.equal(augmentedCacheReplayReport.formula_cache_pairs_added, 0);
+
+  const partialCellCache = join(directory, "partial-cell-formula-cache.smt2");
+  const partialCellPath = join(directory, "partial-cell-coverability.json");
+  writeFileSync(partialCellPath, `${JSON.stringify({ cells: [secondRing[0]] })}\n`);
+  const partialCellArguments = [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    `--cell-coverability-report=${partialCellPath}`,
+    `--formula-cache=${partialCellCache}`
+  ];
+  const partialCellMissOutput = join(directory, "partial-cell-cache-miss.json");
+  const partialCellMiss = spawnSync(python, [
+    ...partialCellArguments,
+    `--output=${partialCellMissOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(partialCellMiss.status, 0, partialCellMiss.stderr);
+  const partialCellMissReport = JSON.parse(readFileSync(partialCellMissOutput, "utf8"));
+  assert.equal(partialCellMissReport.formula_cache_hit, false);
+  assert.equal(partialCellMissReport.cell_coverability_constraints, 1);
+  const partialCellHitOutput = join(directory, "partial-cell-cache-hit.json");
+  const partialCellHit = spawnSync(python, [
+    ...partialCellArguments,
+    "--random-seed=2",
+    `--output=${partialCellHitOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(partialCellHit.status, 0, partialCellHit.stderr);
+  const partialCellHitReport = JSON.parse(readFileSync(partialCellHitOutput, "utf8"));
+  assert.equal(partialCellHitReport.formula_cache_hit, true);
+  assert.equal(partialCellHitReport.z3_status, partialCellMissReport.z3_status);
+  assert.equal(partialCellHitReport.cell_coverability_constraints, 1);
+  writeFileSync(partialCellPath, `${JSON.stringify({ cells: [secondRing[1]] })}\n`);
+  const changedPartialCellOutput = join(directory, "partial-cell-cache-changed.json");
+  const changedPartialCell = spawnSync(python, [
+    ...partialCellArguments,
+    `--output=${changedPartialCellOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(changedPartialCell.status, 0, changedPartialCell.stderr);
+  assert.equal(
+    JSON.parse(readFileSync(changedPartialCellOutput, "utf8")).formula_cache_hit,
+    false,
+    "changing the exact partial cell set must invalidate the formula cache"
+  );
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }
