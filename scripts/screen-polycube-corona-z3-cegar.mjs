@@ -719,7 +719,9 @@ process.stdout.write(`${JSON.stringify({
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
-  recent_defect_orbit_limit: recentDefectOrbitLimit,
+  recent_defect_orbit_limit: encodedPairSelectionPolicy === "recent-defect-cover"
+    ? recentDefectOrbitLimit
+    : null,
   scored_pair_orbits: pairOrbitScores.size,
   recurrent_pair_orbits: pairOrbitHits.size,
   historical_pair_defect_sets: pairDefectOrbitSets.length,
@@ -1392,7 +1394,9 @@ const summary = {
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
-  recent_defect_orbit_limit: recentDefectOrbitLimit,
+  recent_defect_orbit_limit: encodedPairSelectionPolicy === "recent-defect-cover"
+    ? recentDefectOrbitLimit
+    : null,
   encoded_pair_coverability_orbits: finalEncodedPairSelection.orbitCount,
   encoded_pair_coverability_constraints: finalEncodedPairSelection.constraints.length,
   encoded_pair_orbit_keys: finalEncodedPairSelection.orbitKeys,

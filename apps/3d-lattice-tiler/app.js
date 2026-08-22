@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v160";
+} from "./engine.js?v=20260822-polycube10-v161";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1546,6 +1546,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_historical_core_report) {
         const core = candidate.screening;
         candidateResearchDetail.textContent += ` A stricter historical-core lane identifies ${core.corona_historical_core_singleton_states} failed states whose sole pair defect belongs to ${core.corona_historical_core_singleton_orbits} distinct orbits, and protects all of those orbits in a 32-orbit window before greedily covering the rest. It intersects ${core.corona_historical_core_sets_covered} historical failures, versus ${core.corona_historical_core_control_sets_covered} for ordinary historical-cover. Across matched seeds 325–327, however, the protected core needs ${(core.corona_historical_core_total_check_ms / 1000).toFixed(1)}s and leaves ${core.corona_historical_core_total_pair_defects} defects, versus ${(core.corona_historical_core_control_check_ms / 1000).toFixed(1)}s and ${core.corona_historical_core_control_pair_defects}; it finds ${core.corona_historical_core_new_pair_orbits} new pair orbit but no pair-complete state. Historical-core is therefore retained only as a proposal-diversity lane, not promoted to production, and supplies no radius-five or aperiodicity evidence.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_adaptive_pair_report) {
+        const adaptive = candidate.screening;
+        candidateResearchDetail.textContent += ` Retained CEGAR can now reserve a bounded prefix of the live pair window for the exact defect set from its preceding proposal, with each trial reporting whether that response is complete. A complete 32-orbit response initially reduces nine defects to four, but across three matched models it needs ${(adaptive.corona_adaptive_pair_total_check_ms / 1000).toFixed(1)}s and ${adaptive.corona_adaptive_pair_replacement_constraints} replacement constraints for ${adaptive.corona_adaptive_pair_total_defects} defects; ordinary historical-cover needs ${(adaptive.corona_adaptive_pair_control_check_ms / 1000).toFixed(1)}s and ${adaptive.corona_adaptive_pair_control_replacement_constraints} replacements for ${adaptive.corona_adaptive_pair_control_defects}. Both discover ${adaptive.corona_adaptive_pair_new_orbits} new pair orbits. Bounding the response to four orbits still times out on its next check. Even a 64-orbit window that intersects all ${adaptive.corona_historical_cover64_sets_covered} historical defect sets returns a fresh state with ${adaptive.corona_historical_cover64_pair_defects} pair defects, and its cache-identical replay times out. Ordinary historical-cover remains the production lane; no pair-complete state or radius-five GCTS start is obtained.`;
       }
     }
   } else if (knownAperiodic) {

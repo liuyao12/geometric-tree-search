@@ -997,6 +997,21 @@ higher-order obligation is still checked lazily before GCTS, and neither lane
 finds a pair-complete state. See
 `data/polycube-p9-42947-historical-core-2026-08-21.json`.
 
+`--encoded-pair-selection=recent-defect-cover` makes retained CEGAR reserve a
+configurable `--recent-defect-orbit-limit` prefix for the exact pair-defect set
+from its preceding proposal before greedily covering older failures. The trial
+report records the recent set size, selected count, and whether the response is
+complete. On a matched three-model `p9-42947` chain, complete response lowers
+the immediately following defect count from nine to four but takes 114.1
+seconds and 69 replacement constraints overall, versus 86.5 seconds and six
+replacements for ordinary historical coverage; totals are 20 and 21 defects.
+A four-orbit response times out on check two. A separate 64-orbit historical
+window covers all 91 replayed failure sets and returns SAT in 32.0 seconds, yet
+the fresh state still has six pair defects and a cache-identical replay times
+out. These ablations reject forced recent response and simple historical set
+coverage as production replacements; they do not reject the tile. See
+`data/polycube-p9-42947-adaptive-pair-window-2026-08-22.json`.
+
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

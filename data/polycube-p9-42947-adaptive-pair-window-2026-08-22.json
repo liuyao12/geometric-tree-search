@@ -1,0 +1,94 @@
+{
+  "kind": "polycube_p9_42947_adaptive_pair_window_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commits": ["269505a", "df22177"],
+  "mechanism": {
+    "policy": "recent-defect-cover",
+    "replacement": "After each independently verified pair-defective proposal, reserve a configurable prefix of the next active window for the highest-impact orbits in that exact defect set, then greedily cover the remaining historical defect sets.",
+    "audit_fields": [
+      "encoded_pair_recent_defect_size",
+      "encoded_pair_recent_defect_orbits_selected",
+      "encoded_pair_recent_defect_complete"
+    ],
+    "exact_gate": "Every omitted pair, triple, and quadruple obligation remains under the complete lazy audit before GCTS can start."
+  },
+  "matched_seed_328_three_model_chain": {
+    "complete_recent_defect_response": {
+      "active_window_orbits": 32,
+      "recent_defect_orbit_limit": 32,
+      "z3_statuses": ["sat", "sat", "sat"],
+      "check_milliseconds": [41758, 29078, 43214],
+      "total_check_milliseconds": 114050,
+      "incompatible_target_pairs": [9, 4, 7],
+      "total_incompatible_target_pairs": 20,
+      "recent_defect_sizes": [12, 9, 4],
+      "recent_defect_orbits_selected": [12, 9, 4],
+      "replacement_constraints_applied": [0, 51, 18],
+      "new_pair_orbits": 2
+    },
+    "ordinary_historical_cover_control": {
+      "active_window_orbits": 32,
+      "z3_statuses": ["sat", "sat", "sat"],
+      "check_milliseconds": [18444, 51045, 16973],
+      "total_check_milliseconds": 86462,
+      "incompatible_target_pairs": [4, 15, 2],
+      "total_incompatible_target_pairs": 21,
+      "recent_defect_sizes": [12, 4, 15],
+      "recent_defect_orbits_selected": [1, 1, 1],
+      "replacement_constraints_applied": [0, 3, 3],
+      "new_pair_orbits": 2
+    },
+    "result": "Complete recent-defect response reduces the immediately following defect count from nine to four, but is 31.9% slower in aggregate and leaves 20 rather than 21 total defects. Ordinary historical cover already adapts economically when each new defect set is appended."
+  },
+  "bounded_response_ablation": {
+    "recent_defect_orbit_limit": 4,
+    "first_check": {
+      "z3_status": "sat",
+      "check_milliseconds": 37665,
+      "incompatible_target_pairs": 9,
+      "new_pair_orbits": 2
+    },
+    "second_check": {
+      "replacement_constraints_applied": 21,
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "check_milliseconds": 60037
+    },
+    "result": "A four-orbit reactive prefix still causes enough formula churn to hit the next-check timeout."
+  },
+  "historical_cover_64_orbit_probe": {
+    "active_pair_constraints": 192,
+    "historical_defect_sets_covered": 91,
+    "historical_defect_sets_total": 91,
+    "first_check": {
+      "random_seed": 329,
+      "z3_status": "sat",
+      "check_milliseconds": 32017,
+      "outer_placements": 67,
+      "incompatible_target_pairs": 6
+    },
+    "cached_replay": {
+      "formula_cache_hit": true,
+      "pair_formulas_reused": 192,
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "check_milliseconds": 60118
+    },
+    "result": "A 64-orbit window can cover every historical defect set and remain satisfiable, but a fresh state still violates six accumulated pair orbits. A cache-identical replay times out, so the larger window is not a stable route through the pair gate."
+  },
+  "sources": [
+    {"path": "runs/p9-radius4-to5-recent-defect32-seed328-summary.json", "sha256": "d2be455b7b42eab8bb99d6928780ae92a4d8ba6e6537670c0ca5417085f7cd9d"},
+    {"path": "runs/p9-radius4-to5-historical-cover32-seed328-chain-summary.json", "sha256": "0a8e983b9e6a0a9017e1f2371edb1e1c37fd5c75db74c92d74b10a0879aabe90"},
+    {"path": "runs/p9-radius4-to5-recent-defect4-cover32-seed328-summary.json", "sha256": "a8fee8453048f49be5bfb686b538487900b958a0633b394a923edaa8b60bb2b2"},
+    {"path": "runs/p9-radius4-to5-historical-cover64-seed329-summary.json", "sha256": "7a48f27db213a9e3c686be681682b19adcd5e6832c64926241dcf504e5b1a919"},
+    {"path": "runs/p9-radius4-to5-historical-cover64-seed329-chain-summary.json", "sha256": "0c7a586edc9ff855d926c668ea20a4453e7ddc76898a886b59f2ba5070dde653"}
+  ],
+  "pair_complete_state_found": false,
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "warning": "Adaptive pair-window experiments are finite-state proposal steering, not tiling, non-tiling, or aperiodicity certificates."
+}
