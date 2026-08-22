@@ -161,6 +161,11 @@ assert.match(
 );
 assert.match(
   growthAppSource,
+  /mode: inspectable \? "lines\+markers" : "lines"/,
+  "only the lane selected outside the growth panel may expose clickable markers"
+);
+assert.match(
+  growthAppSource,
   /legend: \{[\s\S]*?itemclick: false,[\s\S]*?itemdoubleclick: false/,
   "the Plotly legend must not switch or hide growth lanes"
 );

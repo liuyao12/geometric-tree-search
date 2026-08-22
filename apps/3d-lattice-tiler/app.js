@@ -3211,7 +3211,7 @@ async function renderGrowthChart() {
     const selectedIndex = mode.id === activeMode ? growthInspection.pointIndex : null;
     return {
       type: "scatter",
-      mode: "lines+markers",
+      mode: inspectable ? "lines+markers" : "lines",
       name: mode.label,
       x: points.map(point => point.milliseconds / 1000),
       y: points.map(point => point.tiles),
