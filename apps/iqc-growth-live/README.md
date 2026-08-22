@@ -2660,12 +2660,28 @@ autonomous-growth result.
 The retained parents have now been executed at a genuinely larger radius.
 Forty parent configurations produce 5,091 immutable three-action terminals;
 the four marking channels retain 160 before one consumed target open. Exact
-parents survive in eight nuclei. The complete terminal trees contain 90 exact
-end-to-end paths across six nuclei, but the retained portfolios contain only
-six paths across three. This separates the remaining failures: two nuclei
-lack an exact path under the current bounded candidate reach, while three have
-exact geometry that is pruned by the marking (first-exact ranks up to 109).
-The result is self-fed third-block supply, not autonomous commitment or a
-stationary/exponential IQC rule.
+parents survive in eight nuclei. The bounded top-8 terminal trees contain 90
+exact end-to-end paths across six nuclei, but the retained portfolios contain
+only six paths across three. Three failures are portfolio pruning failures
+(first-exact ranks reach 109), while two occur at the hard per-step reach
+cutoff.
+
+A consumed-target reach diagnostic resolves the latter ambiguity without
+changing the grammar or deployable policy. For all four exact parents in those
+two nuclei, a lexicographic uniform-cost search over the full frozen frontier
+finds an exact three-action path. Every minimum bottleneck rank is `12` (rank
+sums `21` or `23`), whereas reach `8` supplies none. Thus connection geometry
+is present; a train-only adaptive or channel-diverse reach policy is missing.
+Because the diagnostic follows correct prefixes using an already-consumed
+target, it does **not** authorize setting reach to twelve.
+
+A separate nested group-heldout value test rejects the simplest proposed
+fix. Proper-SE(3)-invariant terminal scores, triangle geometry, radii, and
+parent/terminal cross-distances retain exact paths in only `2 / 6` supplied
+nuclei, versus `3 / 6` for the incumbent. Thirty-one within-parent label
+shuffles give retention `p=.4375` and rank `p=.21875`. The model, candidate
+geometry, and four-per-parent budget are frozen, but this terminal geometry is
+not a transferable GCTS marking. These results are self-fed third-block
+diagnosis, not autonomous commitment or a stationary/exponential IQC rule.
 
 Serve the repository root and open `/iqc-growth-live/`.

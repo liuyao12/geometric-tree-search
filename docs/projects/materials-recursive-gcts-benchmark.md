@@ -5076,12 +5076,30 @@ library keeps four terminals per parent (`160` total).
 | exact end-to-end third-block paths | `90` | `6` |
 | terminal states | `5,091` | `160` |
 
-The feedback loop now identifies two independent blockers. In two nuclei an
-exact parent has no exact third-block terminal under the bounded candidate
-reach, so proposal geometry/reach must improve. In three other nuclei exact
-terminals exist but the marking drops them; first-exact channel ranks range as
-high as `109`. This is a stronger and more useful red result than aggregate
-failure: candidate generation and GCTS value can now be improved and tested
-against separate frozen denominators. The executor still retains alternatives
-and chooses no winner, so autonomous, stationary, and exponential IQC claims
-remain ineligible.
+The feedback loop initially identifies two apparent blockers. In two nuclei
+an exact parent has no exact third-block terminal under the bounded top-8
+candidate reach. In three other nuclei exact terminals exist but the marking
+drops them; first-exact channel ranks range as high as `109`.
+
+The two reach failures are now resolved diagnostically. For their four exact
+parents, a lexicographic uniform-cost search follows only target-correct
+prefixes through the unchanged, untruncated frozen frontier. It quotients
+commuting action orders by the resulting colored cloud and minimizes
+`(maximum local rank, rank sum)`. All four parents have an exact three-action
+path. Their minimum bottleneck rank is uniformly `12`, with minimum rank sums
+`21` or `23`; the deployed reach `8` supplies zero of four. The grammar does
+not lack these poses. This is an already-consumed-target diagnostic, however,
+so it cannot tune or deploy a top-12 rule. It specifies the next causal gate:
+learn reach or channel diversity on training nuclei, freeze it, and test it on
+a disjoint target.
+
+The first terminal-value attempt is also frozen and rejected. A nested
+group-heldout ridge selects among score-only, geometry-only, and combined
+proper-SE(3)-invariant representations of all `5,091` terminals. With the same
+four-per-parent budget it retains exact paths in `2 / 6` supplied groups and
+four paths total, versus `3 / 6` and six paths for the incumbent portfolio.
+Thirty-one within-parent label shuffles yield retention `p=.4375` and first
+rank-sum `p=.21875`. Terminal triangle/radius/cross-distance geometry is
+therefore not promoted as a marking. Candidate geometry stays immutable and
+targets never enter generation, but autonomous, stationary, and exponential
+IQC claims remain ineligible.
