@@ -26,6 +26,7 @@ assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all/);
 assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, historical-core, or recent-defect-cover/);
 assert.match(cegarSource, /--recent-defect-orbit-limit is only valid with --encoded-pair-selection=recent-defect-cover/);
+assert.match(cegarSource, /--pair-soft-minimum is not yet supported with --z3-interactive=true/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -265,6 +266,25 @@ try {
   assert.equal(replacePairEvents[1].pair_coverability_formulas, 2);
   assert.equal(replacePairEvents[2].pair_coverability_constraints, 1);
   assert.equal(replacePairEvents[2].pair_coverability_formulas, 2);
+  const softPairOutput = join(directory, "soft-pair-worker.json");
+  const softPairWorker = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    `--pair-coverability-report=${scoredPairPath}`,
+    "--pair-encoding=witness-cnf",
+    "--pair-soft-minimum=1",
+    `--output=${softPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(softPairWorker.status, 0, softPairWorker.stderr);
+  const softPairWorkerReport = JSON.parse(readFileSync(softPairOutput, "utf8"));
+  assert.equal(softPairWorkerReport.z3_status, "sat");
+  assert.equal(softPairWorkerReport.pair_soft_minimum, 1);
+  assert.ok(softPairWorkerReport.pair_soft_satisfied >= 1);
   const replacePairCachePath = join(directory, "replace-pair-formula-cache.smt2");
   const replacePairLowPath = join(directory, "replace-pair-low.json");
   const replacePairHighPath = join(directory, "replace-pair-high.json");
@@ -621,6 +641,36 @@ try {
     "utf8"
   ));
   assert.equal(persistedHybridPairs.pair_orbit_scores[scoredPairHighKey], 23);
+
+  const softHybridOutput = join(directory, "soft-hybrid-summary.json");
+  const softHybridCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=2",
+    "--pair-soft-minimum=1",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--pair-encoding=witness-cnf",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${scoredPairPath}`,
+    `--output-dir=${join(directory, "soft-hybrid")}`,
+    `--report-output=${softHybridOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(softHybridCegar.status, 0, softHybridCegar.stderr);
+  const softHybridReport = JSON.parse(readFileSync(softHybridOutput, "utf8"));
+  assert.equal(softHybridReport.pair_soft_minimum, 1);
+  assert.equal(softHybridReport.trials[0].z3_status, "sat");
+  assert.ok(softHybridReport.trials[0].z3_pair_soft_satisfied >= 1);
+  assert.notEqual(softHybridReport.classification, "certified_non_tiler");
 
   const frequencyPairOutput = join(directory, "frequency-pair-summary.json");
   const frequencyPairCegar = spawnSync(process.execPath, [

@@ -143,6 +143,7 @@ def main():
     parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
+    parser.add_argument("--pair-soft-minimum", type=int)
     parser.add_argument("--triple-coverability-report")
     parser.add_argument("--quadruple-coverability-report")
     parser.add_argument("--triple-encoding", choices=("dnf", "choice-cnf"), default="choice-cnf")
@@ -157,7 +158,8 @@ def main():
     args = parser.parse_args()
     if (args.layer < 1 or args.timeout_ms < 1 or args.max_witnesses < 1
             or (args.min_placements is not None and args.min_placements < 1)
-            or (args.max_placements is not None and args.max_placements < 1)):
+            or (args.max_placements is not None and args.max_placements < 1)
+            or (args.pair_soft_minimum is not None and args.pair_soft_minimum < 1)):
         parser.error("layer, timeout, witness count, and placement bounds (when supplied) must be positive")
     if (args.min_placements is not None and args.max_placements is not None
             and args.min_placements > args.max_placements):
@@ -168,6 +170,8 @@ def main():
         parser.error("interactive mode requires next-layer coverability and max-witnesses=1")
     if args.interactive_replace_pairs and not args.interactive_jsonl:
         parser.error("--interactive-replace-pairs requires --interactive-jsonl")
+    if args.pair_soft_minimum is not None and args.interactive_jsonl:
+        parser.error("--pair-soft-minimum is not yet supported with --interactive-jsonl")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -205,6 +209,7 @@ def main():
         "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
         "root_symmetry_breaking": args.root_symmetry_breaking,
         "pair_encoding": args.pair_encoding,
+        "pair_soft_minimum": args.pair_soft_minimum,
         "interactive_replace_pairs": args.interactive_replace_pairs,
     }, sort_keys=True)
     cache_metadata = None
@@ -416,7 +421,9 @@ def main():
             nonlocal pair_coverability_choice_variables
             nonlocal pair_coverability_incompatibilities
             pair_name = f"{cell_token(left_cell)}__{cell_token(right_cell)}"
-            activation = pair_activation(left_cell, right_cell) if args.interactive_replace_pairs else None
+            activation = pair_activation(left_cell, right_cell) if (
+                args.interactive_replace_pairs or args.pair_soft_minimum is not None
+            ) else None
 
             def add_pair_formula(formula):
                 solver.add(z3.Implies(activation, formula) if activation is not None else formula)
@@ -488,6 +495,15 @@ def main():
                 continue
             formula_cache_pairs_added += 1
             encode_pair_constraint(left_cell, right_cell)
+        if args.pair_soft_minimum is not None:
+            if args.pair_soft_minimum > len(normalized_pairs):
+                raise ValueError(
+                    "pair soft minimum cannot exceed the pair-coverability constraint count"
+                )
+            solver.add(z3.PbGe([
+                (pair_activation(left_cell, right_cell), 1)
+                for left_cell, right_cell in sorted(normalized_pairs)
+            ], args.pair_soft_minimum))
         if cache_path and (not formula_cache_hit or formula_cache_pairs_added):
             cache_write_started = time.perf_counter()
             cache_path.parent.mkdir(parents=True, exist_ok=True)
@@ -737,6 +753,11 @@ def main():
         witnesses.append({
             "check_milliseconds": witness_check_ms,
             "placements": len(selected),
+            "pair_soft_satisfied": sum(
+                1 for pair in normalized_pairs
+                if args.pair_soft_minimum is not None
+                and z3.is_true(model.eval(pair_activation(*pair), model_completion=True))
+            ) if args.pair_soft_minimum is not None else None,
             "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected],
         })
         if len(witnesses) >= args.max_witnesses:
@@ -768,6 +789,8 @@ def main():
         "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
         "lookahead_conflict_groups": lookahead_conflict_group_count,
         "pair_coverability_constraints": pair_coverability_count,
+        "pair_soft_minimum": args.pair_soft_minimum,
+        "pair_soft_satisfied": witnesses[0]["pair_soft_satisfied"] if witnesses else None,
         "pair_coverability_terms": pair_coverability_terms,
         "pair_coverability_encoding": args.pair_encoding,
         "pair_coverability_choice_variables": pair_coverability_choice_variables,

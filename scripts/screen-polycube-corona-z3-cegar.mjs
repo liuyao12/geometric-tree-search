@@ -94,6 +94,15 @@ const tupleEnforcement = args.get("tuple-enforcement") ?? "encoded";
 if (!["encoded", "hybrid-higher", "hybrid-all", "lazy-higher", "lazy-all"].includes(tupleEnforcement)) {
   throw new Error("--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all");
 }
+const pairSoftMinimum = args.has("pair-soft-minimum")
+  ? integerArg("pair-soft-minimum", 1, 1)
+  : null;
+if (pairSoftMinimum !== null && z3Interactive) {
+  throw new Error("--pair-soft-minimum is not yet supported with --z3-interactive=true");
+}
+if (pairSoftMinimum !== null && !["hybrid-all", "hybrid-higher"].includes(tupleEnforcement)) {
+  throw new Error("--pair-soft-minimum requires a hybrid tuple-enforcement mode");
+}
 const encodedPairOrbitLimit = integerArg("encoded-pair-orbit-limit", 0, 0);
 const encodedPairSelectionPolicy = args.get("encoded-pair-selection") ?? "first";
 if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact", "historical-cover", "historical-core", "recent-defect-cover"].includes(encodedPairSelectionPolicy)) {
@@ -716,6 +725,7 @@ process.stdout.write(`${JSON.stringify({
   pair_orbit_limit: pairOrbitLimit,
   bootstrap_pair_distance: bootstrapPairDistance,
   pair_encoding: pairEncoding,
+  pair_soft_minimum: pairSoftMinimum,
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
@@ -809,6 +819,7 @@ const processSatProposal = ({
     encoded_pair_recent_defect_size: encodedPairs.recentDefectSize,
     encoded_pair_recent_defect_orbits_selected: encodedPairs.recentDefectOrbitsSelected,
     encoded_pair_recent_defect_complete: encodedPairs.recentDefectComplete,
+    z3_pair_soft_satisfied: witness?.pair_soft_satisfied ?? proposal.pair_soft_satisfied ?? null,
     ...proposalTiming(proposal, witness, proposalIndex)
   };
   const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, state.corona, outerLayer);
@@ -1032,6 +1043,7 @@ const solverArgumentsFor = (iterationSeed, encodedPairs, encodedTriples, witness
   if (encodedPairs.constraints.length) {
     solverArguments.push(`--pair-coverability-report=${encodedPairPath}`);
     solverArguments.push(`--pair-encoding=${pairEncoding}`);
+    if (pairSoftMinimum !== null) solverArguments.push(`--pair-soft-minimum=${pairSoftMinimum}`);
   }
   if (encodedTriples.constraints.length) {
     solverArguments.push(`--triple-coverability-report=${encodedTriplePath}`);
@@ -1391,6 +1403,7 @@ const summary = {
   pair_orbit_limit: pairOrbitLimit,
   bootstrap_pair_distance: bootstrapPairDistance,
   pair_encoding: pairEncoding,
+  pair_soft_minimum: pairSoftMinimum,
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
