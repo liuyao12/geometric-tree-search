@@ -36,6 +36,8 @@ assert.match(cegarSource, /--max-witnesses=\$\{z3WitnessBatchSize\}/);
 assert.match(cegarSource, /const processSatProposal =/);
 assert.match(cegarSource, /solverArguments\.push\("--interactive-jsonl"\)/);
 assert.match(cegarSource, /solverArguments\.push\("--interactive-replace-pairs"\)/);
+assert.match(cegarSource, /--z3-timeout-retry-ms requires --z3-interactive=true/);
+assert.match(cegarSource, /firstResult\.z3_status === "unknown"[\s\S]*?timeoutMs: z3TimeoutRetryMs[\s\S]*?clauses: \[\][\s\S]*?cells: \[\]/);
 assert.match(cegarSource, /replace_pairs: encodedPairs\.constraints/);
 assert.match(cegarSource, /interactive_clauses_applied/);
 assert.match(cegarSource, /if \(encodedPairs\.constraints\.length\)/);
@@ -265,6 +267,39 @@ try {
     interactiveLearnedCellReport.trials[0].cell_constraints_added
   );
   assert.equal(interactiveLearnedCellReport.trials[1].z3_construction_milliseconds, 0);
+
+  const interactiveTimeoutRetryOutput = join(directory, "interactive-timeout-retry-summary.json");
+  const interactiveTimeoutRetry = spawnSync(process.execPath, [
+    cegar,
+    "--id=p10-052670",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--tuple-enforcement=lazy-all",
+    "--z3-interactive=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=1",
+    "--z3-timeout-retry-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--output-dir=${join(directory, "interactive-timeout-retry")}`,
+    `--report-output=${interactiveTimeoutRetryOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(interactiveTimeoutRetry.status, 0, interactiveTimeoutRetry.stderr);
+  const interactiveTimeoutRetryReport = JSON.parse(readFileSync(interactiveTimeoutRetryOutput, "utf8"));
+  assert.equal(interactiveTimeoutRetryReport.z3_timeout_ms, 1);
+  assert.equal(interactiveTimeoutRetryReport.z3_timeout_retry_ms, 10000);
+  assert.equal(interactiveTimeoutRetryReport.trials[0].z3_status, "sat");
+  assert.equal(interactiveTimeoutRetryReport.trials[0].z3_timeout_retry_count, 1);
+  assert.deepEqual(interactiveTimeoutRetryReport.trials[0].z3_timeout_schedule_ms, [1, 10000]);
+  assert.ok(interactiveTimeoutRetryReport.trials[0].z3_initial_check_milliseconds >= 1);
+  assert.ok(interactiveTimeoutRetryReport.trials[0].z3_retry_check_milliseconds >= 1);
+  assert.equal(
+    interactiveTimeoutRetryReport.trials[0].z3_check_milliseconds,
+    interactiveTimeoutRetryReport.trials[0].z3_initial_check_milliseconds
+      + interactiveTimeoutRetryReport.trials[0].z3_retry_check_milliseconds
+  );
 
   const batchedCellFeedbackOutput = join(directory, "batched-cell-feedback-summary.json");
   const batchedCellFeedbackDirectory = join(directory, "batched-cell-feedback");

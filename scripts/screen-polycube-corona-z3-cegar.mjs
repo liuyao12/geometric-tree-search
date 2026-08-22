@@ -46,11 +46,18 @@ const outerLayer = integerArg("outer-layer", 4, 1);
 const innerLayer = integerArg("inner-layer", outerLayer + 1, outerLayer + 1);
 const iterations = integerArg("iterations", 50, 1);
 const z3TimeoutMs = integerArg("z3-timeout-ms", 30_000, 1);
+const z3TimeoutRetryMs = integerArg("z3-timeout-retry-ms", 0, 0);
 const z3ProcessGraceMs = integerArg("z3-process-grace-ms", 120_000, 1);
 const z3FormulaCache = booleanArg("z3-formula-cache", false);
 const z3WitnessBatchSize = integerArg("z3-witness-batch-size", 1, 1);
 const z3Interactive = booleanArg("z3-interactive", false);
 const z3InteractiveReplacePairs = booleanArg("z3-interactive-replace-pairs", z3Interactive);
+if (z3TimeoutRetryMs && !z3Interactive) {
+  throw new Error("--z3-timeout-retry-ms requires --z3-interactive=true");
+}
+if (z3TimeoutRetryMs && z3TimeoutRetryMs <= z3TimeoutMs) {
+  throw new Error("--z3-timeout-retry-ms must exceed --z3-timeout-ms");
+}
 const continuationTimeMs = integerArg("continuation-time-ms", 10_000, 1);
 const continuationNodes = integerArg("continuation-nodes", 10_000_000, 1);
 const nogoodLimit = integerArg("nogood-limit", 500_000, 1);
@@ -768,6 +775,7 @@ process.stdout.write(`${JSON.stringify({
   inner_layer: innerLayer,
   iterations,
   z3_timeout_ms: z3TimeoutMs,
+  z3_timeout_retry_ms: z3TimeoutRetryMs || null,
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
   z3_witness_batch_size: z3WitnessBatchSize,
@@ -837,6 +845,13 @@ const proposalTiming = (proposal, witness = null, proposalIndex = 0) => ({
     ? proposal.construction_milliseconds ?? null
     : 0,
   z3_check_milliseconds: witness?.check_milliseconds ?? proposal.check_milliseconds ?? null,
+  z3_timeout_retry_count: proposal.timeout_retry_count ?? 0,
+  z3_timeout_schedule_ms: proposal.timeout_schedule_ms ?? [z3TimeoutMs],
+  z3_initial_check_milliseconds: proposal.initial_check_milliseconds
+    ?? witness?.check_milliseconds
+    ?? proposal.check_milliseconds
+    ?? null,
+  z3_retry_check_milliseconds: proposal.retry_check_milliseconds ?? 0,
   z3_formula_cache_hit: proposal.formula_cache_hit ?? false,
   z3_formula_cache_pairs_reused: proposalIndex === 0 ? proposal.formula_cache_pairs_reused ?? 0 : 0,
   z3_formula_cache_pairs_added: proposalIndex === 0 ? proposal.formula_cache_pairs_added ?? 0 : 0,
@@ -1217,16 +1232,46 @@ const runInteractiveCegar = async () => {
       const cellsToApply = cellFeedbackBatch
         ? pendingCells.slice(0, cellFeedbackBatch)
         : pendingCells.slice();
-      worker.stdin.write(`${JSON.stringify({
-        type: "next",
-        timeout_ms: z3TimeoutMs,
+      const sendNext = async ({ timeoutMs, clauses: nextClauses, cells: nextCells }) => {
+        worker.stdin.write(`${JSON.stringify({
+          type: "next",
+          timeout_ms: timeoutMs,
+          clauses: nextClauses,
+          cells: nextCells,
+          ...(z3InteractiveReplacePairs
+            ? { replace_pairs: encodedPairs.constraints }
+            : { pairs: pendingPairs })
+        })}\n`);
+        return readEvent(timeoutMs + z3ProcessGraceMs);
+      };
+      const firstResult = await sendNext({
+        timeoutMs: z3TimeoutMs,
         clauses: clausesToApply,
-        cells: cellsToApply,
-        ...(z3InteractiveReplacePairs
-          ? { replace_pairs: encodedPairs.constraints }
-          : { pairs: pendingPairs })
-      })}\n`);
-      const result = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
+        cells: cellsToApply
+      });
+      let result = firstResult;
+      let timeoutRetryCount = 0;
+      let retryCheckMilliseconds = 0;
+      if (
+        z3TimeoutRetryMs
+        && firstResult.z3_status === "unknown"
+        && String(firstResult.reason_unknown ?? "").toLowerCase().includes("timeout")
+      ) {
+        const retryResult = await sendNext({
+          timeoutMs: z3TimeoutRetryMs,
+          clauses: [],
+          cells: []
+        });
+        timeoutRetryCount = 1;
+        retryCheckMilliseconds = retryResult.check_milliseconds ?? 0;
+        result = {
+          ...retryResult,
+          check_milliseconds: (firstResult.check_milliseconds ?? 0) + retryCheckMilliseconds,
+          clauses_added: (firstResult.clauses_added ?? 0) + (retryResult.clauses_added ?? 0),
+          cells_added: (firstResult.cells_added ?? 0) + (retryResult.cells_added ?? 0),
+          pairs_added: (firstResult.pairs_added ?? 0) + (retryResult.pairs_added ?? 0)
+        };
+      }
       if (result.type !== "result") throw new Error(`Expected interactive result event, received ${result.type}`);
       for (const clause of clausesToApply) clauseKeysSent.add(clause.join("|"));
       pendingClauses = pendingClauses.slice(clausesToApply.length);
@@ -1245,6 +1290,12 @@ const runInteractiveCegar = async () => {
         batch_terminal_status: "interactive",
         construction_milliseconds: iteration === 0 ? ready.construction_milliseconds : 0,
         check_milliseconds: result.check_milliseconds,
+        timeout_retry_count: timeoutRetryCount,
+        timeout_schedule_ms: timeoutRetryCount
+          ? [z3TimeoutMs, z3TimeoutRetryMs]
+          : [z3TimeoutMs],
+        initial_check_milliseconds: firstResult.check_milliseconds,
+        retry_check_milliseconds: retryCheckMilliseconds,
         formula_cache_hit: ready.formula_cache_hit,
         formula_cache_pairs_reused: iteration === 0 ? ready.formula_cache_pairs_reused : 0,
         formula_cache_pairs_added: iteration === 0 ? ready.formula_cache_pairs_added : 0,
@@ -1617,6 +1668,7 @@ const summary = {
   root_symmetry_breaking: rootSymmetryBreaking,
   z3_unknown_trials: z3UnknownTrials,
   z3_timeout_ms: z3TimeoutMs,
+  z3_timeout_retry_ms: z3TimeoutRetryMs || null,
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
   z3_witness_batch_size: z3WitnessBatchSize,
