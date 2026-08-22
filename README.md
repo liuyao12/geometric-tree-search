@@ -95,8 +95,13 @@ Pages site. The main way to use it is to open the page in a browser:
   run with the proposal cap relaxed to 42 adds four more unique states,
   including three 40-copy coronas; all four still fail immediately at radius
   four, and all 40 new clauses replay exactly. The corpus therefore contains
-  26 distinct exact states, but the ≤42-copy space remains unexhausted and this
-  is not evidence of non-tiling or aperiodicity.
+  26 distinct exact states. Retrying a timed-out check in the same strengthened
+  solver process extends the matched run from four to six states without a
+  rebuild; the recovered state and its next ordinary check add two 41-copy
+  coronas. Both fail immediately at radius four, and all 60 clauses from the
+  escalated run replay exactly. The corpus now contains 28 distinct states,
+  but the ≤42-copy space remains unexhausted and this is not evidence of
+  non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate
