@@ -3,6 +3,7 @@
 import argparse
 import itertools
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -150,6 +151,7 @@ def main():
     parser.add_argument("--root-symmetry-breaking", action="store_true")
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--formula-cache")
+    parser.add_argument("--interactive-jsonl", action="store_true")
     parser.add_argument("--output")
     args = parser.parse_args()
     if (args.layer < 1 or args.timeout_ms < 1 or args.max_witnesses < 1
@@ -161,6 +163,8 @@ def main():
         parser.error("min-placements cannot exceed max-placements")
     if args.formula_cache and not args.require_next_layer_coverability:
         parser.error("formula caching currently requires --require-next-layer-coverability")
+    if args.interactive_jsonl and (not args.require_next_layer_coverability or args.max_witnesses != 1):
+        parser.error("interactive mode requires next-layer coverability and max-witnesses=1")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -400,11 +404,10 @@ def main():
         placement_cell_sets = {
             index: frozenset(next_placements[index]) for index in relevant_indices
         }
-        for pair_index, (left_cell, right_cell) in enumerate(sorted(normalized_pairs)):
-            normalized_pair_key = canonical_pair_key((left_cell, right_cell))
-            if normalized_pair_key in cached_pair_keys:
-                continue
-            formula_cache_pairs_added += 1
+        def encode_pair_constraint(left_cell, right_cell):
+            nonlocal pair_coverability_terms
+            nonlocal pair_coverability_choice_variables
+            nonlocal pair_coverability_incompatibilities
             pair_name = f"{cell_token(left_cell)}__{cell_token(right_cell)}"
             if args.pair_encoding == "witness-cnf":
                 left_indices = retained_by_cell.get(left_cell, ())
@@ -422,14 +425,14 @@ def main():
                     ]
                     if not compatible:
                         continue
-                    witness = z3.Bool(f"w_{pair_name}_{left_index}")
-                    witness_choices.append(witness)
-                    solver.add(z3.Or(z3.Not(witness), availability[left_index]))
-                    solver.add(z3.Or(z3.Not(witness), z3.Or(compatible)))
+                    witness_variable = z3.Bool(f"w_{pair_name}_{left_index}")
+                    witness_choices.append(witness_variable)
+                    solver.add(z3.Or(z3.Not(witness_variable), availability[left_index]))
+                    solver.add(z3.Or(z3.Not(witness_variable), z3.Or(compatible)))
                     pair_coverability_terms += len(compatible)
                 solver.add(z3.Or(witness_choices) if witness_choices else z3.BoolVal(False))
                 pair_coverability_choice_variables += len(witness_choices)
-                continue
+                return
             if args.pair_encoding == "choice-cnf":
                 left_choices = {
                     index: z3.Bool(f"q_{pair_name}_l_{index}")
@@ -446,28 +449,33 @@ def main():
                 for left_index, left_choice in left_choices.items():
                     for right_index, right_choice in right_choices.items():
                         if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
-                            placement_cell_sets[right_index]
-                        ):
+                                placement_cell_sets[right_index]):
                             continue
                         solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
                         pair_coverability_incompatibilities += 1
                 pair_coverability_choice_variables += len(left_choices) + len(right_choices)
-                continue
+                return
             compatible_terms = {}
             for left_index in retained_by_cell.get(left_cell, ()):
                 for right_index in retained_by_cell.get(right_cell, ()):
                     if left_index != right_index and not placement_cell_sets[left_index].isdisjoint(
-                        placement_cell_sets[right_index]
-                    ):
+                            placement_cell_sets[right_index]):
                         continue
-                    pair_key = tuple(sorted((left_index, right_index)))
-                    compatible_terms.setdefault(pair_key, (
+                    placement_pair = tuple(sorted((left_index, right_index)))
+                    compatible_terms.setdefault(placement_pair, (
                         availability[left_index]
                         if left_index == right_index
                         else z3.And(availability[left_index], availability[right_index])
                     ))
             solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
             pair_coverability_terms += len(compatible_terms)
+
+        for left_cell, right_cell in sorted(normalized_pairs):
+            normalized_pair_key = canonical_pair_key((left_cell, right_cell))
+            if normalized_pair_key in cached_pair_keys:
+                continue
+            formula_cache_pairs_added += 1
+            encode_pair_constraint(left_cell, right_cell)
         if cache_path and (not formula_cache_hit or formula_cache_pairs_added):
             cache_write_started = time.perf_counter()
             cache_path.parent.mkdir(parents=True, exist_ok=True)
@@ -561,6 +569,7 @@ def main():
         lookahead_raw_placement_count = len(relevant_indices)
         lookahead_placement_count = len(retained_indices)
     forbidden_clauses = []
+    forbidden_clause_keys = set()
     if args.forbidden_clause_report:
         clause_report = json.loads(Path(args.forbidden_clause_report).read_text(encoding="utf-8"))
         forbidden_clauses = clause_report.get("clauses", clause_report) if isinstance(clause_report, dict) else clause_report
@@ -571,10 +580,90 @@ def main():
                 indices = sorted(set(placement_index_by_key[str(key)] for key in clause))
             except KeyError as error:
                 raise ValueError(f"Forbidden clause {clause_number} contains an unknown placement: {error.args[0]}") from error
+            forbidden_clause_keys.add(tuple(sorted(str(key) for key in clause)))
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
 
     constraint_count = len(solver.assertions())
     construction_ms = round((time.perf_counter() - started) * 1000)
+    if args.interactive_jsonl:
+        encoded_pair_keys = {canonical_pair_key(pair) for pair in normalized_pairs}
+        print(json.dumps({
+            "type": "ready",
+            "construction_milliseconds": construction_ms,
+            "formula_cache_hit": formula_cache_hit,
+            "formula_cache_pairs_reused": len(cached_pair_keys),
+            "formula_cache_pairs_added": formula_cache_pairs_added,
+            "formula_cache_load_milliseconds": formula_cache_load_ms,
+            "formula_cache_write_milliseconds": formula_cache_write_ms,
+            "pair_coverability_constraints": len(encoded_pair_keys),
+            "forbidden_clauses": len(forbidden_clause_keys),
+            "constraints": constraint_count,
+        }), flush=True)
+        for line in sys.stdin:
+            command = json.loads(line)
+            if command.get("type") == "stop":
+                break
+            if command.get("type") != "next":
+                raise ValueError("Interactive command type must be next or stop")
+            clauses_added = 0
+            for clause_number, clause in enumerate(command.get("clauses", ())):
+                if not isinstance(clause, list) or not clause:
+                    raise ValueError(f"Interactive clause {clause_number} must be nonempty")
+                clause_key = tuple(sorted(str(key) for key in clause))
+                if clause_key in forbidden_clause_keys:
+                    continue
+                try:
+                    indices = sorted(set(placement_index_by_key[key] for key in clause_key))
+                except KeyError as error:
+                    raise ValueError(
+                        f"Interactive clause {clause_number} contains an unknown placement: {error.args[0]}"
+                    ) from error
+                solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
+                forbidden_clause_keys.add(clause_key)
+                clauses_added += 1
+            pairs_added = 0
+            for pair_number, pair in enumerate(command.get("pairs", ())):
+                if not isinstance(pair, list) or len(pair) != 2:
+                    raise ValueError(f"Interactive pair {pair_number} must contain two cell keys")
+                cells = tuple(sorted(parse_cell_key(cell) for cell in pair))
+                if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
+                    raise ValueError(f"Interactive pair {pair_number} is not a distinct next-ring cell pair")
+                normalized_key = canonical_pair_key(cells)
+                if normalized_key in encoded_pair_keys:
+                    continue
+                encode_pair_constraint(*cells)
+                encoded_pair_keys.add(normalized_key)
+                pairs_added += 1
+            command_timeout_ms = int(command.get("timeout_ms", args.timeout_ms))
+            if command_timeout_ms < 1:
+                raise ValueError("Interactive timeout must be positive")
+            solver.set(timeout=command_timeout_ms)
+            check_started = time.perf_counter()
+            interactive_status = solver.check()
+            interactive_check_ms = round((time.perf_counter() - check_started) * 1000)
+            selected = []
+            if interactive_status == z3.sat:
+                model = solver.model()
+                selected = [
+                    placements[index] for index, variable in enumerate(variables)
+                    if z3.is_true(model.eval(variable, model_completion=True))
+                ]
+            print(json.dumps({
+                "type": "result",
+                "z3_status": str(interactive_status),
+                "reason_unknown": solver.reason_unknown() if interactive_status == z3.unknown else None,
+                "check_milliseconds": interactive_check_ms,
+                "clauses_added": clauses_added,
+                "pairs_added": pairs_added,
+                "forbidden_clauses": len(forbidden_clause_keys),
+                "pair_coverability_constraints": len(encoded_pair_keys),
+                "constraints": len(solver.assertions()),
+                "corona": [
+                    {"cells": [list(cell) for cell in placement]} for placement in selected
+                ] if selected else None,
+            }), flush=True)
+        return
+
     witnesses = []
     check_ms = 0
     batch_blocking_clauses = 0

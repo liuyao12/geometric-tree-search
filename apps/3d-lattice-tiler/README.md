@@ -929,9 +929,21 @@ proposal after 88.6 seconds of checking and then spends the remaining 242.8
 seconds without a second model. The first proposal has one exact pair defect,
 raising the carried formula to 411 state clauses, 777 pair constraints, 264
 triple constraints, and three quadruple constraints. Because blind batching
-cannot inject that newly audited pair before requesting model two, a
-bidirectional retained solver is the next useful design. See
+cannot inject that newly audited pair before requesting model two, this result
+motivates the bidirectional retained solver. See
 `data/polycube-p9-42947-batched-solver-state-2026-08-21.json`.
+
+`--z3-interactive=true` starts that retained solver in a JSON-lines session
+with `--z3-witness-batch-size=1`. After each independently verified proposal,
+CEGAR sends every newly proved symmetry-closed state clause and pair obligation
+back to the same process before requesting another model. Higher-order
+obstructions remain under the full lazy audit, so changing the in-process
+proposal formula cannot bypass the GCTS gate. Dynamic cell learning and fully
+encoded higher-order mode are rejected for now rather than silently failing to
+update the worker. A bounded regression keeps one solver alive across three
+models, applies three learned GCTS clauses before model two, and injects six
+new pair constraints before model three, whose reported construction time is
+zero.
 The default triple choice-CNF selects one available placement per cell and
 forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
 DNF while expressing the same exact condition. Quadruple learning uses the

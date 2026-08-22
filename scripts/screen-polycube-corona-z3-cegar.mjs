@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { createInterface } from "node:readline";
 import { fileURLToPath } from "node:url";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import { polycubeKey } from "../assets/polycube-enumerator.js";
@@ -48,6 +49,7 @@ const z3TimeoutMs = integerArg("z3-timeout-ms", 30_000, 1);
 const z3ProcessGraceMs = integerArg("z3-process-grace-ms", 120_000, 1);
 const z3FormulaCache = booleanArg("z3-formula-cache", false);
 const z3WitnessBatchSize = integerArg("z3-witness-batch-size", 1, 1);
+const z3Interactive = booleanArg("z3-interactive", false);
 const continuationTimeMs = integerArg("continuation-time-ms", 10_000, 1);
 const continuationNodes = integerArg("continuation-nodes", 10_000_000, 1);
 const nogoodLimit = integerArg("nogood-limit", 500_000, 1);
@@ -104,6 +106,15 @@ if (tupleEnforcement !== "hybrid-higher" && encodedTripleOrbitLimit > 0) {
 }
 if (tupleEnforcement !== "hybrid-higher" && encodedTripleSelectionPolicy !== "first") {
   throw new Error("--encoded-triple-selection is only valid with --tuple-enforcement=hybrid-higher");
+}
+if (z3Interactive && z3WitnessBatchSize !== 1) {
+  throw new Error("--z3-interactive requires --z3-witness-batch-size=1");
+}
+if (z3Interactive && learnCellCoverability) {
+  throw new Error("--z3-interactive does not yet support dynamic cell-coverability learning");
+}
+if (z3Interactive && tupleEnforcement === "encoded") {
+  throw new Error("--z3-interactive requires a lazy or hybrid tuple-enforcement mode");
 }
 const pairSelection = args.get("pair-selection") ?? "lexicographic";
 if (!["lexicographic", "max-blocked-combinations", "min-blocked-combinations"].includes(pairSelection)) {
@@ -448,6 +459,7 @@ process.stdout.write(`${JSON.stringify({
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
   z3_witness_batch_size: z3WitnessBatchSize,
+  z3_interactive: z3Interactive,
   continuation_time_ms: continuationTimeMs,
   continuation_nodes: continuationNodes,
   backend,
@@ -533,6 +545,9 @@ const processSatProposal = ({
     proposal_batch_terminal_status: proposal.batch_terminal_status ?? "limit",
     random_seed: iterationSeed,
     z3_status: "sat",
+    z3_interactive: proposal.interactive ?? false,
+    z3_interactive_clauses_applied: proposal.interactive_clauses_applied ?? 0,
+    z3_interactive_pairs_applied: proposal.interactive_pairs_applied ?? 0,
     ...proposalTiming(proposal, witness, proposalIndex)
   };
   const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, state.corona, outerLayer);
@@ -703,7 +718,7 @@ const processSatProposal = ({
   };
 };
 
-for (let iteration = 0; iteration < iterations; iteration += 1) {
+const writeCurrentReports = () => {
   writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
   writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
   writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
@@ -714,8 +729,10 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
   const encodedTriples = selectEncodedTriples();
   writeFileSync(encodedTriplePath, `${JSON.stringify({ triples: encodedTriples.constraints }, null, 2)}\n`);
   writeFileSync(quadruplePath, `${JSON.stringify({ quadruples: quadrupleConstraints }, null, 2)}\n`);
-  const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
-  const iterationSeed = randomSeed + iteration * seedStride;
+  return encodedTriples;
+};
+
+const solverArgumentsFor = (iterationSeed, encodedTriples, witnessPath = null) => {
   const solverArguments = [
     pythonSolver,
     `--key=${polycubeKey(candidate.voxels)}`,
@@ -725,9 +742,9 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     `--backend=${backend}`,
     `--random-seed=${iterationSeed}`,
     `--lookahead-conflict-encoding=${lookaheadConflictEncoding}`,
-    `--forbidden-clause-report=${clausePath}`,
-    `--output=${witnessPath}`
+    `--forbidden-clause-report=${clausePath}`
   ];
+  if (witnessPath) solverArguments.push(`--output=${witnessPath}`);
   if (minPlacements !== null) solverArguments.push(`--min-placements=${minPlacements}`);
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
   if (requireNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
@@ -745,6 +762,150 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     solverArguments.push(`--quadruple-coverability-report=${quadruplePath}`);
   }
   if (z3FormulaCache) solverArguments.push(`--formula-cache=${formulaCachePath}`);
+  return solverArguments;
+};
+
+const runInteractiveCegar = async () => {
+  const encodedTriples = writeCurrentReports();
+  const solverArguments = solverArgumentsFor(randomSeed, encodedTriples);
+  solverArguments.push("--interactive-jsonl");
+  const worker = spawn(python, solverArguments, { stdio: ["pipe", "pipe", "pipe"] });
+  const lines = createInterface({ input: worker.stdout });
+  const iterator = lines[Symbol.asyncIterator]();
+  let stderr = "";
+  worker.stderr.setEncoding("utf8");
+  worker.stderr.on("data", chunk => { stderr += chunk; });
+  const readEvent = async timeoutMs => {
+    let timeoutId;
+    try {
+      const result = await Promise.race([
+        iterator.next(),
+        new Promise((_, reject) => {
+          timeoutId = setTimeout(() => reject(new Error("Interactive Z3 worker timed out")), timeoutMs);
+        })
+      ]);
+      if (result.done) {
+        throw new Error(stderr.trim() || "Interactive Z3 worker exited without a response");
+      }
+      return JSON.parse(result.value);
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  };
+  let pendingClauses = [];
+  let pendingPairs = [];
+  try {
+    const ready = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
+    if (ready.type !== "ready") throw new Error(`Expected interactive ready event, received ${ready.type}`);
+    for (let iteration = 0; iteration < iterations; iteration += 1) {
+      const iterationSeed = randomSeed + iteration * seedStride;
+      worker.stdin.write(`${JSON.stringify({
+        type: "next",
+        timeout_ms: z3TimeoutMs,
+        clauses: pendingClauses,
+        pairs: encodePairCoverability ? pendingPairs : []
+      })}\n`);
+      const result = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
+      if (result.type !== "result") throw new Error(`Expected interactive result event, received ${result.type}`);
+      const proposal = {
+        kind: "polycube_corona_z3_interactive",
+        z3_status: result.z3_status,
+        reason_unknown: result.reason_unknown,
+        corona: result.corona,
+        max_witnesses: 1,
+        batch_terminal_status: "interactive",
+        construction_milliseconds: iteration === 0 ? ready.construction_milliseconds : 0,
+        check_milliseconds: result.check_milliseconds,
+        formula_cache_hit: ready.formula_cache_hit,
+        formula_cache_pairs_reused: iteration === 0 ? ready.formula_cache_pairs_reused : 0,
+        formula_cache_pairs_added: iteration === 0 ? ready.formula_cache_pairs_added : 0,
+        formula_cache_load_milliseconds: iteration === 0 ? ready.formula_cache_load_milliseconds : 0,
+        formula_cache_write_milliseconds: iteration === 0 ? ready.formula_cache_write_milliseconds : 0,
+        interactive: true,
+        interactive_clauses_applied: result.clauses_added,
+        interactive_pairs_applied: result.pairs_added,
+        interactive_forbidden_clauses: result.forbidden_clauses,
+        interactive_pair_coverability_constraints: result.pair_coverability_constraints
+      };
+      const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
+      writeFileSync(witnessPath, `${JSON.stringify(proposal, null, 2)}\n`);
+      if (proposal.z3_status === "unsat") {
+        classification = minPlacements !== null || maxPlacements !== null
+          ? "placement_bound_exhausted"
+          : initialClauseCount > 0
+            ? "conditional_unsat"
+            : "certified_non_tiler";
+        recordTrial(iteration, {
+          iteration,
+          proposal_index: 0,
+          proposal_batch_size: 0,
+          proposal_batch_requested: 1,
+          proposal_batch_terminal_status: "interactive",
+          random_seed: iterationSeed,
+          z3_status: "unsat",
+          z3_interactive: true,
+          z3_interactive_clauses_applied: result.clauses_added,
+          z3_interactive_pairs_applied: result.pairs_added,
+          ...proposalTiming(proposal),
+          clauses: clauses.length
+        });
+        break;
+      }
+      if (proposal.z3_status !== "sat") {
+        z3UnknownTrials += 1;
+        classification = "z3_incomplete";
+        recordTrial(iteration, {
+          iteration,
+          proposal_index: 0,
+          proposal_batch_size: 0,
+          proposal_batch_requested: 1,
+          proposal_batch_terminal_status: "interactive",
+          random_seed: iterationSeed,
+          z3_status: proposal.z3_status,
+          z3_interactive: true,
+          z3_interactive_clauses_applied: result.clauses_added,
+          z3_interactive_pairs_applied: result.pairs_added,
+          ...proposalTiming(proposal),
+          reason_unknown: proposal.reason_unknown,
+          clauses: clauses.length
+        });
+        break;
+      }
+      const clauseCountBefore = clauses.length;
+      const pairCountBefore = pairConstraints.length;
+      const outcome = processSatProposal({
+        proposal,
+        witness: { corona: proposal.corona, check_milliseconds: proposal.check_milliseconds },
+        iteration,
+        iterationSeed,
+        proposalIndex: 0,
+        proposalBatchSize: 1,
+        encodedTriples
+      });
+      if (outcome.terminal) break;
+      if (!outcome.progress) {
+        classification = "duplicate_obstruction";
+        break;
+      }
+      pendingClauses = clauses.slice(clauseCountBefore);
+      pendingPairs = pairConstraints.slice(pairCountBefore);
+    }
+  } finally {
+    if (!worker.killed) {
+      worker.stdin.write(`${JSON.stringify({ type: "stop" })}\n`);
+      worker.stdin.end();
+    }
+    lines.close();
+  }
+};
+
+if (z3Interactive) {
+  await runInteractiveCegar();
+} else for (let iteration = 0; iteration < iterations; iteration += 1) {
+  const encodedTriples = writeCurrentReports();
+  const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
+  const iterationSeed = randomSeed + iteration * seedStride;
+  const solverArguments = solverArgumentsFor(iterationSeed, encodedTriples, witnessPath);
   const solved = spawnSync(python, solverArguments, {
     encoding: "utf8",
     timeout: z3TimeoutMs + z3ProcessGraceMs,
@@ -918,6 +1079,7 @@ const summary = {
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
   z3_witness_batch_size: z3WitnessBatchSize,
+  z3_interactive: z3Interactive,
   continuation_time_ms: continuationTimeMs,
   continuation_nodes: continuationNodes,
   trials,

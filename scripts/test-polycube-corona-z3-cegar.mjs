@@ -27,6 +27,8 @@ assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
 assert.match(cegarSource, /--max-witnesses=\$\{z3WitnessBatchSize\}/);
 assert.match(cegarSource, /const processSatProposal =/);
+assert.match(cegarSource, /solverArguments\.push\("--interactive-jsonl"\)/);
+assert.match(cegarSource, /interactive_clauses_applied/);
 assert.match(cegarSource, /if \(pairConstraints\.length && encodePairCoverability\)/);
 assert.match(cegarSource, /const encodedTriples = selectEncodedTriples\(\)/);
 assert.match(cegarSource, /--triple-coverability-report=\$\{encodedTriplePath\}/);
@@ -595,6 +597,41 @@ try {
   assert.ok(batchCegarReport.trials[0].pair_constraints_added > 0);
   assert.equal(batchCegarReport.trials[1].proposal_index, 1);
   assert.equal(batchCegarReport.trials[1].continuation_success, true);
+
+  const interactiveCegarOutput = join(directory, "interactive-cegar-summary.json");
+  const interactiveCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=3",
+    "--min-placements=10",
+    "--max-placements=10",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=lazy-higher",
+    "--learn-pair-coverability=true",
+    "--pair-orbit-limit=0",
+    "--pair-selection=max-blocked-combinations",
+    "--z3-interactive=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    "--lookahead-conflict-encoding=grouped-pb",
+    `--python=${python}`,
+    `--output-dir=${join(directory, "interactive-cegar")}`,
+    `--report-output=${interactiveCegarOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(interactiveCegar.status, 0, interactiveCegar.stderr);
+  const interactiveCegarReport = JSON.parse(readFileSync(interactiveCegarOutput, "utf8"));
+  assert.equal(interactiveCegarReport.z3_interactive, true);
+  assert.equal(interactiveCegarReport.trials.length, 3);
+  assert.equal(interactiveCegarReport.trials[1].z3_interactive_clauses_applied, 3);
+  assert.ok(interactiveCegarReport.trials[1].pair_constraints_added > 0);
+  assert.equal(
+    interactiveCegarReport.trials[2].z3_interactive_pairs_applied,
+    interactiveCegarReport.trials[1].pair_constraints_added
+  );
+  assert.equal(interactiveCegarReport.trials[2].z3_construction_milliseconds, 0);
 
   const pairOutput = join(directory, "pair-encoded.json");
   const pairEncoded = spawnSync(python, [
