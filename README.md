@@ -115,7 +115,12 @@ Pages site. The main way to use it is to open the page in a browser:
   fail immediately at radius four; all 107- and 114-clause reports replay with
   zero failures. Two fresh attempts at the 41-cell prefix time out cleanly on
   the minimum 2-clause/1-cell increment. The 37-state ≤42-copy corpus remains
-  unexhausted, and this is not evidence of non-tiling or aperiodicity.
+  unexhausted. Exact partial-formula caching then cuts matched construction
+  from 52.7s to 2.65s. Cache-backed seeds 208 and 210 each advance one more
+  applied cell and add a distinct 42-copy state, taking the verified corpus to
+  39 and the applied-cell prefix to 43. Their 118- and 127-clause reports replay
+  with zero failures, but both states still fail immediately at radius four.
+  This remains inconclusive, not evidence of non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

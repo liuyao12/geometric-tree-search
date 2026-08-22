@@ -402,10 +402,68 @@
     "copy_bound_exhausted": false,
     "interpretation": "Exact restarts advance from 36 to 41 applied next-ring cell obligations and contribute distinct 40- and 42-copy states. Both expose immediate radius-four obstructions, while two seeds time out cleanly on the next 2-clause/1-cell transaction at the 41-cell prefix. This is a deeper verified proposal frontier, not an exhaustion result."
   },
+  "partial_formula_cache_frontier": {
+    "implementation_commit": "d8677e4",
+    "protocol": "Formula-cache signatures include the exact applied next-ring cell set. Separate seed runs may share an explicit cache path; any changed cell prefix invalidates the cache, while forbidden clauses and deferred cells remain restart-local.",
+    "matched_prefix_41_probe": {
+      "applied_clauses": 82,
+      "applied_cells": 41,
+      "cache_miss_construction_milliseconds": 52672,
+      "cache_miss_write_milliseconds": 3726,
+      "cache_hit_construction_milliseconds": 2648,
+      "cache_hit_load_milliseconds": 862,
+      "construction_reduction_fraction": 0.94972659743,
+      "applied_reports_byte_identical": true,
+      "rollback_exact": true
+    },
+    "seed_208_from_41_cells": {
+      "cache_hit": true,
+      "construction_milliseconds": 2607,
+      "check_milliseconds": 225346,
+      "outer_placements": 42,
+      "final_applied_clauses": 84,
+      "final_applied_cells": 42,
+      "exact_radius_4_rejections": 1,
+      "radius_4_continuation_nodes": 2,
+      "exact_clauses_learned": 118,
+      "independently_replayed_clauses": 118,
+      "clause_replay_failures": 0,
+      "clause_replay_nodes": 232
+    },
+    "seed_209_from_42_cells": {
+      "cache_hit": false,
+      "construction_milliseconds": 71947,
+      "cache_write_milliseconds": 4448,
+      "check_milliseconds": 300520,
+      "status": "unknown",
+      "rollback_exact": true
+    },
+    "seed_210_from_42_cells": {
+      "cache_hit": true,
+      "construction_milliseconds": 3474,
+      "cache_load_milliseconds": 1080,
+      "check_milliseconds": 180676,
+      "outer_placements": 42,
+      "final_applied_clauses": 86,
+      "final_applied_cells": 43,
+      "exact_radius_4_rejections": 1,
+      "radius_4_continuation_nodes": 1,
+      "exact_clauses_learned": 127,
+      "independently_replayed_clauses": 127,
+      "clause_replay_failures": 0,
+      "clause_replay_nodes": 248
+    },
+    "new_distinct_radius_3_states": 2,
+    "combined_distinct_radius_3_states": 39,
+    "maximum_verified_applied_cells": 43,
+    "verified_radius_4_witness_found": false,
+    "copy_bound_exhausted": false,
+    "interpretation": "Exact partial-formula caching cuts matched construction by 95.0% and enables cheap seed diversification without changing the applied cell set. Seeds 208 and 210 each advance one cell and add a distinct 42-copy state; both still fail immediate radius-four continuation. Seed 209 is the cache-miss timeout control."
+  },
   "radius_3_space_exhausted": false,
   "radius_3_copy_bound_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains thirty-seven distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts and transactional feedback reach forty-one applied next-ring cell obligations, while automatic rollback and batch halving preserve exact prefixes across solver timeouts. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains thirty-nine distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, and partial-formula caching reach forty-three applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
 }
