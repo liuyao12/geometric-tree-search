@@ -28,8 +28,10 @@ DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_complete_parent_confirmation_v1.json.gz"
 ATTEMPT_MARKER = ROOT / \
     "fixtures/iqc_complete_parent_confirmation_attempt_v1.json"
-EXPECTED_FIXTURE_SHA256 = ""
-EXPECTED_RESULT_DIGEST = ""
+EXPECTED_FIXTURE_SHA256 = \
+    "e2945f206103078e32a3c384f25961091a66636c79e8a2690cd4bdd82adb9ef2"
+EXPECTED_RESULT_DIGEST = \
+    "9cb6fb19af9948f902b3305640dd5e1117ec3785666f411d7541d6736ffb0153"
 
 
 def _action_key(action):
