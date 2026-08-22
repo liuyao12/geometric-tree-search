@@ -266,6 +266,87 @@ try {
   );
   assert.equal(interactiveLearnedCellReport.trials[1].z3_construction_milliseconds, 0);
 
+  const batchedCellFeedbackOutput = join(directory, "batched-cell-feedback-summary.json");
+  const batchedCellFeedbackDirectory = join(directory, "batched-cell-feedback");
+  const batchedCellFeedback = spawnSync(process.execPath, [
+    cegar,
+    "--id=p10-052670",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=2",
+    "--learn-cell-coverability=true",
+    "--cell-feedback-batch=2",
+    "--tuple-enforcement=lazy-all",
+    "--z3-interactive=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--output-dir=${batchedCellFeedbackDirectory}`,
+    `--report-output=${batchedCellFeedbackOutput}`
+  ], { encoding: "utf8", timeout: 90_000 });
+  assert.equal(batchedCellFeedback.status, 0, batchedCellFeedback.stderr);
+  const batchedCellFeedbackReport = JSON.parse(readFileSync(batchedCellFeedbackOutput, "utf8"));
+  assert.equal(batchedCellFeedbackReport.classification, "certified_non_tiler");
+  assert.equal(batchedCellFeedbackReport.cell_feedback_batch, 2);
+  assert.ok(batchedCellFeedbackReport.cell_coverability_constraint_count > 2);
+  assert.equal(batchedCellFeedbackReport.trials[1].z3_interactive_cells_applied, 2);
+  assert.equal(batchedCellFeedbackReport.z3_interactive_cell_constraints_applied, 2);
+  assert.equal(
+    batchedCellFeedbackReport.z3_interactive_cell_constraints_deferred,
+    batchedCellFeedbackReport.cell_coverability_constraint_count - 2
+  );
+  const appliedCellFeedback = JSON.parse(readFileSync(
+    join(batchedCellFeedbackDirectory, "applied-cell-coverability.json"),
+    "utf8"
+  ));
+  assert.equal(appliedCellFeedback.cells.length, 2);
+
+  const resumedCellFeedbackOutput = join(directory, "resumed-cell-feedback-summary.json");
+  const resumedCellFeedbackDirectory = join(directory, "resumed-cell-feedback");
+  const resumedCellFeedback = spawnSync(process.execPath, [
+    cegar,
+    "--id=p10-052670",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--learn-cell-coverability=true",
+    "--cell-feedback-batch=2",
+    "--tuple-enforcement=lazy-all",
+    "--z3-interactive=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--initial-cell-report=${join(batchedCellFeedbackDirectory, "applied-cell-coverability.json")}`,
+    `--initial-deferred-cell-report=${join(batchedCellFeedbackDirectory, "cell-coverability.json")}`,
+    `--python=${python}`,
+    `--output-dir=${resumedCellFeedbackDirectory}`,
+    `--report-output=${resumedCellFeedbackOutput}`
+  ], { encoding: "utf8", timeout: 90_000 });
+  assert.equal(resumedCellFeedback.status, 0, resumedCellFeedback.stderr);
+  const resumedCellFeedbackReport = JSON.parse(readFileSync(resumedCellFeedbackOutput, "utf8"));
+  assert.equal(resumedCellFeedbackReport.initial_cell_coverability_constraints, 2);
+  assert.equal(
+    resumedCellFeedbackReport.initial_deferred_cell_coverability_constraints,
+    batchedCellFeedbackReport.cell_coverability_constraint_count - 2
+  );
+  assert.equal(resumedCellFeedbackReport.trials[0].z3_interactive_cells_applied, 2);
+  assert.equal(resumedCellFeedbackReport.z3_interactive_cell_constraints_applied, 4);
+  assert.equal(
+    resumedCellFeedbackReport.z3_interactive_cell_constraints_deferred,
+    batchedCellFeedbackReport.cell_coverability_constraint_count - 4
+  );
+  const resumedAppliedCellFeedback = JSON.parse(readFileSync(
+    join(resumedCellFeedbackDirectory, "applied-cell-coverability.json"),
+    "utf8"
+  ));
+  assert.deepEqual(
+    resumedAppliedCellFeedback.cells,
+    batchedCellFeedbackReport.cell_coverability_cells.slice(0, 4)
+  );
+
   const distanceFromRoot = cell => Math.min(...candidate.voxels.map(root =>
     Math.abs(cell[0] - root[0]) + Math.abs(cell[1] - root[1]) + Math.abs(cell[2] - root[2])
   ));

@@ -75,6 +75,10 @@ const learnPairCoverability = booleanArg("learn-pair-coverability", false);
 const learnTripleCoverability = booleanArg("learn-triple-coverability", false);
 const learnQuadrupleCoverability = booleanArg("learn-quadruple-coverability", false);
 const cellOrbitLimit = integerArg("cell-orbit-limit", 0, 0);
+const cellFeedbackBatch = integerArg("cell-feedback-batch", 0, 0);
+if (cellFeedbackBatch && !z3Interactive) {
+  throw new Error("--cell-feedback-batch requires --z3-interactive=true");
+}
 const pairOrbitLimit = integerArg("pair-orbit-limit", 0, 0);
 const tripleOrbitLimit = integerArg("triple-orbit-limit", 1, 0);
 const tripleMaximumCellDistance = integerArg("triple-max-cell-distance", 3, 1);
@@ -181,6 +185,12 @@ const initialPairReport = args.get("initial-pair-report")
 const initialCellReport = args.get("initial-cell-report")
   ? resolve(args.get("initial-cell-report"))
   : null;
+const initialDeferredCellReport = args.get("initial-deferred-cell-report")
+  ? resolve(args.get("initial-deferred-cell-report"))
+  : null;
+if (initialDeferredCellReport && !z3Interactive) {
+  throw new Error("--initial-deferred-cell-report requires --z3-interactive=true");
+}
 const initialTripleReport = args.get("initial-triple-report")
   ? resolve(args.get("initial-triple-report"))
   : null;
@@ -190,6 +200,7 @@ const initialQuadrupleReport = args.get("initial-quadruple-report")
 const pythonSolver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const clausePath = resolve(outputDirectory, "forbidden-clauses.json");
 const cellPath = resolve(outputDirectory, "cell-coverability.json");
+const appliedCellPath = resolve(outputDirectory, "applied-cell-coverability.json");
 const pairPath = resolve(outputDirectory, "pair-coverability.json");
 const encodedPairPath = resolve(outputDirectory, "encoded-pair-coverability.json");
 const triplePath = resolve(outputDirectory, "triple-coverability.json");
@@ -216,6 +227,8 @@ const quadrupleConstraintKeys = new Set();
 let classification = "iteration_limit";
 let radiusWitness = null;
 let z3UnknownTrials = 0;
+let z3InteractiveCellConstraintsApplied = 0;
+let z3InteractiveCellConstraintsDeferred = 0;
 
 const placementKey = placement => placement.cells.map(cell => cell.join(",")).sort().join(";");
 const addClause = rawClause => {
@@ -331,9 +344,24 @@ if (initialCellReport) {
   if (!Array.isArray(initialCells)) {
     throw new Error("--initial-cell-report must contain cell_coverability_cells or cells");
   }
-  for (const cell of initialCells) addCellOrbit(cell);
+  // Reports contain the exact, already symmetry-expanded constraint set.  In
+  // particular, an applied report may intentionally end partway through an
+  // orbit when feedback is batched, so expanding it again would destroy the
+  // applied/deferred prefix needed for an exact restart.
+  for (const cell of initialCells) addCell(cell);
 }
 const initialCellCount = cellConstraints.length;
+if (initialDeferredCellReport) {
+  const initial = JSON.parse(readFileSync(initialDeferredCellReport, "utf8"));
+  const deferredCells = initial.cell_coverability_cells ?? initial.cells ?? initial;
+  if (!Array.isArray(deferredCells)) {
+    throw new Error("--initial-deferred-cell-report must contain cell_coverability_cells or cells");
+  }
+  for (const cell of deferredCells) addCell(cell);
+}
+const initialDeferredCellCount = cellConstraints.length - initialCellCount;
+z3InteractiveCellConstraintsApplied = initialCellCount;
+z3InteractiveCellConstraintsDeferred = initialDeferredCellCount;
 if (initialPairReport) {
   const initial = JSON.parse(readFileSync(initialPairReport, "utf8"));
   const initialPairs = initial.pair_coverability_pairs ?? initial.pairs ?? initial;
@@ -731,6 +759,7 @@ process.stdout.write(`${JSON.stringify({
   effective_next_layer_coverability: effectiveNextLayerCoverability,
   learn_cell_coverability: learnCellCoverability,
   cell_orbit_limit: cellOrbitLimit,
+  cell_feedback_batch: cellFeedbackBatch,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   bootstrap_pair_distance: bootstrapPairDistance,
@@ -750,6 +779,7 @@ process.stdout.write(`${JSON.stringify({
   root_symmetry_breaking: rootSymmetryBreaking,
   initial_clause_count: initialClauseCount,
   initial_cell_coverability_constraints: initialCellCount,
+  initial_deferred_cell_coverability_constraints: initialDeferredCellCount,
   initial_pair_coverability_constraints: initialPairCount,
   bootstrap_pair_coverability_constraints: bootstrapPairCount,
   learn_triple_coverability: learnTripleCoverability,
@@ -1039,6 +1069,11 @@ const processSatProposal = ({
 const writeCurrentReports = () => {
   writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
   writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
+  writeFileSync(appliedCellPath, `${JSON.stringify({
+    cells: cellConstraints.slice(0, z3Interactive
+      ? z3InteractiveCellConstraintsApplied
+      : cellConstraints.length)
+  }, null, 2)}\n`);
   writeFileSync(pairPath, `${JSON.stringify({
     pairs: pairConstraints,
     pair_orbit_scores: serializedPairOrbitScores(),
@@ -1076,7 +1111,9 @@ const solverArgumentsFor = (iterationSeed, encodedPairs, encodedTriples, witness
   if (minPlacements !== null) solverArguments.push(`--min-placements=${minPlacements}`);
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
   if (requireNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
-  if (cellConstraints.length) solverArguments.push(`--cell-coverability-report=${cellPath}`);
+  if (cellConstraints.length) {
+    solverArguments.push(`--cell-coverability-report=${z3Interactive ? appliedCellPath : cellPath}`);
+  }
   if (rootSymmetryBreaking) solverArguments.push("--root-symmetry-breaking");
   if (encodedPairs.constraints.length) {
     solverArguments.push(`--pair-coverability-report=${encodedPairPath}`);
@@ -1126,26 +1163,34 @@ const runInteractiveCegar = async () => {
     }
   };
   let pendingClauses = [];
-  let pendingCells = [];
+  let pendingCells = cellConstraints.slice(initialCellCount);
   let pendingPairs = [];
-  const cellKeysSent = new Set(cellConstraints);
+  const cellKeysSent = new Set(cellConstraints.slice(0, initialCellCount));
   const encodedPairKeysSent = new Set(encodedPairs.constraints.map(pair => pair.join(";")));
   try {
     const ready = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
     if (ready.type !== "ready") throw new Error(`Expected interactive ready event, received ${ready.type}`);
+    z3InteractiveCellConstraintsApplied = cellKeysSent.size;
     for (let iteration = 0; iteration < iterations; iteration += 1) {
       const iterationSeed = randomSeed + iteration * seedStride;
+      const cellsToApply = cellFeedbackBatch
+        ? pendingCells.slice(0, cellFeedbackBatch)
+        : pendingCells.slice();
       worker.stdin.write(`${JSON.stringify({
         type: "next",
         timeout_ms: z3TimeoutMs,
         clauses: pendingClauses,
-        cells: pendingCells,
+        cells: cellsToApply,
         ...(z3InteractiveReplacePairs
           ? { replace_pairs: encodedPairs.constraints }
           : { pairs: pendingPairs })
       })}\n`);
       const result = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
       if (result.type !== "result") throw new Error(`Expected interactive result event, received ${result.type}`);
+      for (const cell of cellsToApply) cellKeysSent.add(cell);
+      pendingCells = pendingCells.slice(cellsToApply.length);
+      z3InteractiveCellConstraintsApplied = cellKeysSent.size;
+      z3InteractiveCellConstraintsDeferred = pendingCells.length;
       const proposal = {
         kind: "polycube_corona_z3_interactive",
         z3_status: result.z3_status,
@@ -1243,11 +1288,13 @@ const runInteractiveCegar = async () => {
         break;
       }
       pendingClauses = clauses.slice(clauseCountBefore);
-      pendingCells = cellConstraints.slice(cellCountBefore).filter(cell => {
-        if (cellKeysSent.has(cell)) return false;
-        cellKeysSent.add(cell);
-        return true;
-      });
+      const queuedCellKeys = new Set(pendingCells);
+      for (const cell of cellConstraints.slice(cellCountBefore)) {
+        if (cellKeysSent.has(cell) || queuedCellKeys.has(cell)) continue;
+        pendingCells.push(cell);
+        queuedCellKeys.add(cell);
+      }
+      z3InteractiveCellConstraintsDeferred = pendingCells.length;
       const nextEncodedPairs = selectEncodedPairs();
       if (z3InteractiveReplacePairs) {
         pendingPairs = [];
@@ -1422,6 +1469,11 @@ if (z3Interactive) {
 // new obligations and exits before the next proposal write.
 writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
 writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
+writeFileSync(appliedCellPath, `${JSON.stringify({
+  cells: cellConstraints.slice(0, z3Interactive
+    ? z3InteractiveCellConstraintsApplied
+    : cellConstraints.length)
+}, null, 2)}\n`);
 writeFileSync(pairPath, `${JSON.stringify({
   pairs: pairConstraints,
   pair_orbit_scores: serializedPairOrbitScores(),
@@ -1455,6 +1507,14 @@ const summary = {
   effective_next_layer_coverability: effectiveNextLayerCoverability,
   learn_cell_coverability: learnCellCoverability,
   cell_orbit_limit: cellOrbitLimit,
+  cell_feedback_batch: cellFeedbackBatch,
+  z3_interactive_cell_constraints_applied: z3Interactive
+    ? z3InteractiveCellConstraintsApplied
+    : null,
+  z3_interactive_cell_constraints_deferred: z3Interactive
+    ? z3InteractiveCellConstraintsDeferred
+    : null,
+  applied_cell_coverability_report: z3Interactive ? appliedCellPath : cellPath,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
   bootstrap_pair_distance: bootstrapPairDistance,
@@ -1498,6 +1558,7 @@ const summary = {
   cell_coverability_cells: cellConstraints,
   cell_coverability_constraint_count: cellConstraints.length,
   initial_cell_coverability_constraints: initialCellCount,
+  initial_deferred_cell_coverability_constraints: initialDeferredCellCount,
   pair_coverability_pairs: pairConstraints,
   pair_coverability_constraint_count: pairConstraints.length,
   initial_pair_coverability_constraints: initialPairCount,
