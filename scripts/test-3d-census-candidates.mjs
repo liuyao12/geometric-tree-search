@@ -483,6 +483,10 @@ const archivedP9FormulaCacheProfile = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-formula-cache-profile-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9CachedRankedExtension = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-cached-ranked-extension-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1758,6 +1762,14 @@ assert.ok(archivedP9FormulaCacheProfile.two_iteration_cegar_profile.construction
 assert.equal(archivedP9FormulaCacheProfile.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_formula_cache_pair_constraints, 771);
 assert.ok(volumeNineSurvivor.census_candidate.screening.corona_formula_cache_total_reduction_fraction > 0.92);
+assert.equal(archivedP9CachedRankedExtension.one_ranked_orbit_extension.sat_outer_states, 5);
+assert.equal(archivedP9CachedRankedExtension.one_ranked_orbit_extension.triple_defect_states, 4);
+assert.equal(archivedP9CachedRankedExtension.one_ranked_orbit_extension.final_constraints.triple, 264);
+assert.equal(archivedP9CachedRankedExtension.two_ranked_orbit_probe.z3_status, "unknown");
+assert.equal(archivedP9CachedRankedExtension.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cached_ranked_sat_states, 5);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cached_ranked_final_pair_constraints, 774);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_cached_ranked_final_triple_constraints, 264);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1773,6 +1785,8 @@ assert.match(growthAppSource, /Persistent impact ranking then follows/);
 assert.match(growthAppSource, /not evidence of non-tiling or aperiodicity/);
 assert.match(growthAppSource, /Validated formula caching now reuses/);
 assert.match(growthAppSource, /search-throughput improvement only/);
+assert.match(growthAppSource, /cached one-orbit ranked extension returns/);
+assert.match(growthAppSource, /no radius-five GCTS continuation starts/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

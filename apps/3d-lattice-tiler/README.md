@@ -899,6 +899,18 @@ first proposal solve. Once a proposal has no incompatible pair,
 `--triple-audit-limit` bounds how many counterexamples are collected from one
 state, while `--triple-orbit-limit=0` admits every collected symmetry orbit;
 each trial records whether the audit hit its bound.
+
+Using that cache, the one-ranked-orbit lane returns five proposals from seeds
+295–300 with one additional timeout. Four consecutive proposals pass all 771
+carried pair obligations and fail only the exact full triple audit; the fifth
+exposes one new pair orbit. The portfolio grows from 393 to 408 symmetry-closed
+state clauses, 771 to 774 pair constraints, and 207 to 264 triple constraints,
+with the three quadruple constraints unchanged. The narrowest returned state
+has 63 copies and one incompatible triple orbit. A separate seed with the two
+highest-scoring encoded orbits (scores 110 and 99) times out at 330 seconds.
+No proposal clears the triple audit, so no radius-five continuation starts and
+the finite outer search remains unexhausted. See
+`data/polycube-p9-42947-cached-ranked-extension-2026-08-21.json`.
 The default triple choice-CNF selects one available placement per cell and
 forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
 DNF while expressing the same exact condition. Quadruple learning uses the

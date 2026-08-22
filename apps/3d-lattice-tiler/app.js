@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v152";
+} from "./engine.js?v=20260821-polycube10-v153";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1514,6 +1514,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_formula_cache_report) {
         const cache = candidate.screening;
         candidateResearchDetail.textContent += ` Validated formula caching now reuses the static exact-cover/lookahead formula and all ${cache.corona_formula_cache_pair_constraints} accumulated pair constraints across solver seeds while rebuilding higher-order steering and forbidden-state clauses. In a matched two-iteration driver profile, construction falls from ${(cache.corona_formula_cache_miss_construction_ms / 1000).toFixed(1)}s to ${(cache.corona_formula_cache_hit_construction_ms / 1000).toFixed(1)}s (${(100 * cache.corona_formula_cache_construction_reduction_fraction).toFixed(1)}%), reducing total one-second-probe wall time by ${(100 * cache.corona_formula_cache_total_reduction_fraction).toFixed(1)}%. This is a search-throughput improvement only; both timed checks are inconclusive.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_cached_ranked_extension_report) {
+        const extension = candidate.screening;
+        candidateResearchDetail.textContent += ` The cached one-orbit ranked extension returns ${extension.corona_cached_ranked_sat_states} exact proposals with ${extension.corona_cached_ranked_timeout_trials} timeout: ${extension.corona_cached_ranked_triple_defect_states} consecutive states clear every accumulated pair check before failing the full triple audit, while one exposes a new pair orbit. The screen now carries ${extension.corona_cached_ranked_final_pair_constraints} pair, ${extension.corona_cached_ranked_final_triple_constraints} triple, and ${extension.corona_cached_ranked_final_quadruple_constraints} quadruple obligations. A separate two-highest-impact-orbit solve also times out. No proposal clears the full triple audit, so no radius-five GCTS continuation starts and the candidate remains unresolved.`;
       }
     }
   } else if (knownAperiodic) {
