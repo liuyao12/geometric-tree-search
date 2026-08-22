@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v156";
+} from "./engine.js?v=20260821-polycube10-v157";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1530,6 +1530,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_ranked_pair_window_report) {
         const rankedPairs = candidate.screening;
         candidateResearchDetail.textContent += ` Pair-level impact ranking now keeps the full ${rankedPairs.corona_interactive_z3_final_pair_constraints}-constraint audit but initially steers Z3 with only the strongest ${rankedPairs.corona_ranked_pair_window_orbits} symmetry orbits (${rankedPairs.corona_ranked_pair_window_constraints} constraints). In the matched seed, that window constructs in ${(rankedPairs.corona_ranked_pair_window_construction_ms / 1000).toFixed(1)}s and returns an exact proposal after ${(rankedPairs.corona_ranked_pair_window_check_ms / 1000).toFixed(1)}s; loading every pair takes ${(rankedPairs.corona_ranked_pair_full_construction_ms / 1000).toFixed(1)}s and then times out after ${(rankedPairs.corona_ranked_pair_full_check_ms / 1000).toFixed(1)}s. A retained follow-up returns ${rankedPairs.corona_ranked_pair_retained_sat_states} more pair-defective states while asserting ${rankedPairs.corona_ranked_pair_feedback_constraints} promoted constraints, then times out. This improves proposal throughput without relaxing the exact gate; it still supplies no radius-five witness or aperiodicity evidence.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_replaceable_pair_window_report) {
+        const replacement = candidate.screening;
+        candidateResearchDetail.textContent += ` Ranked pair steering is now genuinely replaceable: activation assumptions hold the live window fixed while compiled inactive formulas remain cached. A changed window can construct in ${(replacement.corona_replaceable_pair_fast_construction_ms / 1000).toFixed(1)}s and return an exact state in ${(replacement.corona_replaceable_pair_fast_check_ms / 1000).toFixed(1)}s. The expanded portfolio returns ${replacement.corona_replaceable_pair_sat_states} exact states and records ${replacement.corona_replaceable_pair_timeout_trials} timeouts; all ${replacement.corona_replaceable_pair_defect_states} returned states fail the complete pair audit. Windows of 32 and 64 orbits solve in ${(replacement.corona_replaceable_pair_window32_check_ms / 1000).toFixed(1)}s and ${(replacement.corona_replaceable_pair_window64_check_ms / 1000).toFixed(1)}s but remain pair-defective, while 128 orbits times out. The screen now carries ${replacement.corona_replaceable_pair_final_constraints} pair constraints and ${replacement.corona_replaceable_pair_final_clauses} verified state clauses. This is stronger screening and faster proposal generation, not a non-tiling or aperiodicity certificate.`;
       }
     }
   } else if (knownAperiodic) {

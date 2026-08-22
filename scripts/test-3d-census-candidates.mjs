@@ -499,6 +499,10 @@ const archivedP9RankedPairWindow = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-ranked-pair-window-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9ReplaceablePairWindow = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-replaceable-pair-window-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1802,6 +1806,12 @@ assert.equal(archivedP9RankedPairWindow.matched_seed_306.rows[3].z3_status, "unk
 assert.equal(archivedP9RankedPairWindow.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_pair_window_orbits, 16);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_pair_window_constraints, 48);
+assert.equal(archivedP9ReplaceablePairWindow.portfolio_totals.exact_sat_states, 9);
+assert.equal(archivedP9ReplaceablePairWindow.cached_extension.window_sweep[1].pair_orbits, 64);
+assert.equal(archivedP9ReplaceablePairWindow.cached_extension.window_sweep[2].z3_status, "unknown");
+assert.equal(archivedP9ReplaceablePairWindow.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_replaceable_pair_sat_states, 9);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_replaceable_pair_final_constraints, 855);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1825,6 +1835,8 @@ assert.match(growthAppSource, /Bidirectional retained CEGAR now does that/);
 assert.match(growthAppSource, /applied before the next check/);
 assert.match(growthAppSource, /Pair-level impact ranking now keeps the full/);
 assert.match(growthAppSource, /without relaxing the exact gate/);
+assert.match(growthAppSource, /Ranked pair steering is now genuinely replaceable/);
+assert.match(growthAppSource, /not a non-tiling or aperiodicity certificate/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,
