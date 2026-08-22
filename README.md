@@ -119,7 +119,10 @@ Pages site. The main way to use it is to open the page in a browser:
   from 52.7s to 2.65s. Cache-backed seeds 208 and 210 each advance one more
   applied cell and add a distinct 42-copy state, taking the verified corpus to
   39 and the applied-cell prefix to 43. Their 118- and 127-clause reports replay
-  with zero failures, but both states still fail immediately at radius four.
+  with zero failures. Retained one-cell restarts then add new 42- and 41-copy
+  states and advance the prefix through 45 applied cells; their 132- and
+  138-clause reports also replay with zero failures. The verified bounded corpus
+  now has 41 states, but every new state still fails immediately at radius four.
   This remains inconclusive, not evidence of non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)

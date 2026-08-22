@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v167";
+} from "./engine.js?v=20260822-polycube10-v168";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1481,6 +1481,10 @@ function updateCandidateResearchPanel() {
         const cache = candidate.screening;
         const cacheReduction = (100 * cache.corona_partial_formula_cache_construction_reduction_fraction).toFixed(1);
         candidateResearchDetail.textContent += ` Exact partial-formula caching keys the base solver formula to the applied cell prefix and cuts matched construction from ${(cache.corona_partial_formula_cache_miss_construction_ms / 1000).toFixed(1)} seconds to ${(cache.corona_partial_formula_cache_hit_construction_ms / 1000).toFixed(2)} seconds (${cacheReduction}%). Cache-backed seeds add ${cache.corona_partial_formula_cache_new_states} distinct 42-copy states, advance from 41 to ${cache.corona_partial_formula_cache_maximum_applied_cells} applied cells, and raise the exact corpus to ${cache.corona_partial_formula_cache_combined_distinct_states}. GCTS rejects both immediately in ${cache.corona_partial_formula_cache_continuation_nodes} nodes; independent replay verifies ${cache.corona_partial_formula_cache_seed208_replayed_clauses} and ${cache.corona_partial_formula_cache_seed210_replayed_clauses} clauses with ${cache.corona_partial_formula_cache_replay_failures} failures. The cache-miss control remains ${cache.corona_partial_formula_cache_seed209_status}; the ≤42-copy space is unexhausted, so neither non-tiling nor aperiodicity is established.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_deep_cached_prefix_combined_distinct_states) {
+        const deepPrefix = candidate.screening;
+        candidateResearchDetail.textContent += ` Retained one-cell restarts then add new ${deepPrefix.corona_deep_cached_prefix_seed211_placements}- and ${deepPrefix.corona_deep_cached_prefix_seed212_placements}-copy states, advance the exact prefix to ${deepPrefix.corona_deep_cached_prefix_maximum_applied_cells} applied cells, and raise the bounded corpus to ${deepPrefix.corona_deep_cached_prefix_combined_distinct_states} states. Exact GCTS rejects both at radius four in ${deepPrefix.corona_deep_cached_prefix_continuation_nodes} aggregate nodes, while independent replay verifies all ${deepPrefix.corona_deep_cached_prefix_seed211_replayed_clauses} and ${deepPrefix.corona_deep_cached_prefix_seed212_replayed_clauses} accumulated clauses with ${deepPrefix.corona_deep_cached_prefix_replay_failures} failures. The proposal space is still unexhausted.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;

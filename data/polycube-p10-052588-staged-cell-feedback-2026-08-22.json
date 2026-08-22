@@ -460,10 +460,53 @@
     "copy_bound_exhausted": false,
     "interpretation": "Exact partial-formula caching cuts matched construction by 95.0% and enables cheap seed diversification without changing the applied cell set. Seeds 208 and 210 each advance one cell and add a distinct 42-copy state; both still fail immediate radius-four continuation. Seed 209 is the cache-miss timeout control."
   },
+  "deep_cached_prefix_frontier": {
+    "implementation_commit": "d8677e4",
+    "seed_211_from_43_cells": {
+      "cache_hit": false,
+      "construction_milliseconds": 52918,
+      "cache_write_milliseconds": 3752,
+      "check_milliseconds": 186360,
+      "outer_placements": 42,
+      "boundary_sha256": "2d745f154c4e52e10c8cdf11ae4b52c5cc04a1c65d210c73342e7ac391c2056c",
+      "novel_against_prior_saved_witnesses": true,
+      "prior_saved_witnesses_checked": 158,
+      "final_applied_clauses": 88,
+      "final_applied_cells": 44,
+      "exact_radius_4_rejections": 1,
+      "radius_4_continuation_nodes": 1,
+      "independently_replayed_clauses": 132,
+      "clause_replay_failures": 0,
+      "clause_replay_nodes": 257
+    },
+    "seed_212_from_44_cells": {
+      "cache_hit": false,
+      "construction_milliseconds": 53805,
+      "cache_write_milliseconds": 3849,
+      "check_milliseconds": 262477,
+      "outer_placements": 41,
+      "boundary_sha256": "843a4f42a93ef4097744c5b3549debfd688960efd35e24959946cf9b1c0432c6",
+      "novel_against_prior_saved_witnesses": true,
+      "prior_saved_witnesses_checked": 159,
+      "final_applied_clauses": 90,
+      "final_applied_cells": 45,
+      "exact_radius_4_rejections": 1,
+      "radius_4_continuation_nodes": 2,
+      "independently_replayed_clauses": 138,
+      "clause_replay_failures": 0,
+      "clause_replay_nodes": 270
+    },
+    "new_distinct_radius_3_states": 2,
+    "combined_distinct_radius_3_states": 41,
+    "maximum_verified_applied_cells": 45,
+    "verified_radius_4_witness_found": false,
+    "copy_bound_exhausted": false,
+    "interpretation": "Exact one-cell retained-prefix restarts continue through 45 applied next-ring obligations and add new 42- and 41-copy radius-three states. Independent GCTS replay verifies all 132 and 138 accumulated obstruction clauses. Both states still fail immediate radius-four continuation, so the bounded proposal space remains unexhausted."
+  },
   "radius_3_space_exhausted": false,
   "radius_3_copy_bound_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains thirty-nine distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, and partial-formula caching reach forty-three applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains forty-one distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, and partial-formula caching reach forty-five applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
 }
