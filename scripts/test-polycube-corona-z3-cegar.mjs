@@ -10,6 +10,7 @@ import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.j
 import { polycubeKey } from "../assets/polycube-enumerator.js";
 import {
   enumeratePolycubeCoronaPlacements,
+  polycubeCellPairOrbitKeys,
   polycubeCellTripleOrbitKeys
 } from "../assets/polycube-corona-search.js";
 
@@ -21,7 +22,8 @@ assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFil
 assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-limit", tripleOrbitLimit \|\| 1, 1\)/);
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
-assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, lazy-higher, or lazy-all/);
+assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all/);
+assert.match(cegarSource, /--encoded-pair-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -29,7 +31,8 @@ assert.match(cegarSource, /--max-witnesses=\$\{z3WitnessBatchSize\}/);
 assert.match(cegarSource, /const processSatProposal =/);
 assert.match(cegarSource, /solverArguments\.push\("--interactive-jsonl"\)/);
 assert.match(cegarSource, /interactive_clauses_applied/);
-assert.match(cegarSource, /if \(pairConstraints\.length && encodePairCoverability\)/);
+assert.match(cegarSource, /if \(encodedPairs\.constraints\.length\)/);
+assert.match(cegarSource, /--pair-coverability-report=\$\{encodedPairPath\}/);
 assert.match(cegarSource, /const encodedTriples = selectEncodedTriples\(\)/);
 assert.match(cegarSource, /--triple-coverability-report=\$\{encodedTriplePath\}/);
 assert.match(cegarSource, /if \(tupleEnforcement !== "encoded"\)[\s\S]*?continuation_skipped: true[\s\S]*?const continuation = searchPolycubeCorona/);
@@ -198,6 +201,27 @@ try {
   assert.ok(secondRing.length > 1);
   const pairPath = join(directory, "pair-coverability.json");
   writeFileSync(pairPath, `${JSON.stringify({ pairs: [[secondRing[0], secondRing.at(-1)]] })}\n`);
+  const pairOrbitKey = pair => polycubeCellPairOrbitKeys(candidate.voxels, pair)
+    .map(item => [...item].sort().join(";"))
+    .sort()[0];
+  const scoredPairsByOrbit = new Map();
+  for (let left = 0; left < secondRing.length && scoredPairsByOrbit.size < 2; left += 1) {
+    for (let right = left + 1; right < secondRing.length && scoredPairsByOrbit.size < 2; right += 1) {
+      const pair = [secondRing[left], secondRing[right]];
+      scoredPairsByOrbit.set(pairOrbitKey(pair), pair);
+    }
+  }
+  assert.equal(scoredPairsByOrbit.size, 2);
+  const [scoredPairLow, scoredPairHigh] = [...scoredPairsByOrbit.values()];
+  const scoredPairHighKey = pairOrbitKey(scoredPairHigh);
+  const scoredPairPath = join(directory, "scored-pair-coverability.json");
+  writeFileSync(scoredPairPath, `${JSON.stringify({
+    pairs: [scoredPairLow, scoredPairHigh],
+    pair_orbit_scores: {
+      [pairOrbitKey(scoredPairLow)]: 5,
+      [scoredPairHighKey]: 23
+    }
+  })}\n`);
   const triplePath = join(directory, "triple-coverability.json");
   writeFileSync(triplePath, `${JSON.stringify({
     triples: [[secondRing[0], secondRing[1], secondRing.at(-1)]]
@@ -474,6 +498,51 @@ try {
   ));
   assert.ok(persistedHybridTriples.triple_orbit_scores[scoredTripleOrbitKey] >= 17);
 
+  const hybridAllOutput = join(directory, "hybrid-all-summary.json");
+  const hybridAllCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=1",
+    "--encoded-pair-selection=max-blocked-combinations",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${scoredPairPath}`,
+    `--output-dir=${join(directory, "hybrid-all")}`,
+    `--report-output=${hybridAllOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(hybridAllCegar.status, 0, hybridAllCegar.stderr);
+  const hybridAllReport = JSON.parse(readFileSync(hybridAllOutput, "utf8"));
+  assert.equal(hybridAllReport.tuple_enforcement, "hybrid-all");
+  assert.equal(hybridAllReport.encoded_pair_coverability_orbits, 1);
+  assert.deepEqual(hybridAllReport.encoded_pair_orbit_scores, [23]);
+  assert.deepEqual(hybridAllReport.encoded_pair_orbit_keys, [scoredPairHighKey]);
+  assert.ok(hybridAllReport.encoded_pair_coverability_constraints > 0);
+  assert.ok(
+    hybridAllReport.encoded_pair_coverability_constraints
+      < hybridAllReport.pair_coverability_constraint_count
+  );
+  const hybridAllProposal = JSON.parse(readFileSync(join(directory, "hybrid-all", "outer-witness-0000.json"), "utf8"));
+  assert.equal(
+    hybridAllProposal.pair_coverability_constraints,
+    hybridAllReport.encoded_pair_coverability_constraints
+  );
+  assert.equal(hybridAllProposal.triple_coverability_constraints, 0);
+  const persistedHybridPairs = JSON.parse(readFileSync(
+    join(directory, "hybrid-all", "pair-coverability.json"),
+    "utf8"
+  ));
+  assert.equal(persistedHybridPairs.pair_orbit_scores[scoredPairHighKey], 23);
+
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [
     cegar,
@@ -630,6 +699,10 @@ try {
   assert.equal(
     interactiveCegarReport.trials[2].z3_interactive_pairs_applied,
     interactiveCegarReport.trials[1].pair_constraints_added
+  );
+  assert.equal(
+    interactiveCegarReport.trials[2].encoded_pair_coverability_constraints,
+    interactiveCegarReport.trials[2].z3_interactive_pair_coverability_constraints
   );
   assert.equal(interactiveCegarReport.trials[2].z3_construction_milliseconds, 0);
 

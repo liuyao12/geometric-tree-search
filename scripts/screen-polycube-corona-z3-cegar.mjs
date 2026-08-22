@@ -90,8 +90,22 @@ if (!["dnf", "choice-cnf"].includes(tripleEncoding)) {
   throw new Error("--triple-encoding must be dnf or choice-cnf");
 }
 const tupleEnforcement = args.get("tuple-enforcement") ?? "encoded";
-if (!["encoded", "hybrid-higher", "lazy-higher", "lazy-all"].includes(tupleEnforcement)) {
-  throw new Error("--tuple-enforcement must be encoded, hybrid-higher, lazy-higher, or lazy-all");
+if (!["encoded", "hybrid-higher", "hybrid-all", "lazy-higher", "lazy-all"].includes(tupleEnforcement)) {
+  throw new Error("--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all");
+}
+const encodedPairOrbitLimit = integerArg("encoded-pair-orbit-limit", 0, 0);
+const encodedPairSelectionPolicy = args.get("encoded-pair-selection") ?? "first";
+if (!["first", "recent", "max-blocked-combinations"].includes(encodedPairSelectionPolicy)) {
+  throw new Error("--encoded-pair-selection must be first, recent, or max-blocked-combinations");
+}
+if (tupleEnforcement === "hybrid-all" && encodedPairOrbitLimit === 0) {
+  throw new Error("--tuple-enforcement=hybrid-all requires --encoded-pair-orbit-limit greater than zero");
+}
+if (!["hybrid-all", "hybrid-higher"].includes(tupleEnforcement) && encodedPairOrbitLimit > 0) {
+  throw new Error("--encoded-pair-orbit-limit is only valid with a hybrid tuple-enforcement mode");
+}
+if (!["hybrid-all", "hybrid-higher"].includes(tupleEnforcement) && encodedPairSelectionPolicy !== "first") {
+  throw new Error("--encoded-pair-selection is only valid with a hybrid tuple-enforcement mode");
 }
 const encodedTripleOrbitLimit = integerArg("encoded-triple-orbit-limit", 0, 0);
 const encodedTripleSelectionPolicy = args.get("encoded-triple-selection") ?? "first";
@@ -147,6 +161,7 @@ const pythonSolver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", impo
 const clausePath = resolve(outputDirectory, "forbidden-clauses.json");
 const cellPath = resolve(outputDirectory, "cell-coverability.json");
 const pairPath = resolve(outputDirectory, "pair-coverability.json");
+const encodedPairPath = resolve(outputDirectory, "encoded-pair-coverability.json");
 const triplePath = resolve(outputDirectory, "triple-coverability.json");
 const encodedTriplePath = resolve(outputDirectory, "encoded-triple-coverability.json");
 const quadruplePath = resolve(outputDirectory, "quadruple-coverability.json");
@@ -158,6 +173,7 @@ const clauseKeys = new Set();
 const trials = [];
 const pairConstraints = [];
 const pairConstraintKeys = new Set();
+const pairOrbitScores = new Map();
 const cellConstraints = [];
 const cellConstraintKeys = new Set();
 const tripleConstraints = [];
@@ -196,7 +212,15 @@ const addPair = rawPair => {
   pairConstraints.push(normalized);
   return true;
 };
-const addPairOrbit = rawPair => {
+const pairOrbitRepresentativeKey = rawPair => polycubeCellPairOrbitKeys(candidate.voxels, rawPair)
+  .map(pair => [...pair].sort().join(";"))
+  .sort()[0];
+const addPairOrbit = (rawPair, blockedCombinations = 0) => {
+  const orbitKey = pairOrbitRepresentativeKey(rawPair);
+  const score = Number(blockedCombinations);
+  if (Number.isFinite(score) && score > (pairOrbitScores.get(orbitKey) ?? 0)) {
+    pairOrbitScores.set(orbitKey, score);
+  }
   let added = 0;
   for (const pair of polycubeCellPairOrbitKeys(candidate.voxels, rawPair)) {
     added += Number(addPair(pair));
@@ -281,7 +305,13 @@ if (initialPairReport) {
   if (!Array.isArray(initialPairs)) {
     throw new Error("--initial-pair-report must contain pair_coverability_pairs or pairs");
   }
-  for (const pair of initialPairs) addPairOrbit(pair);
+  const initialPairOrbitScores = initial.pair_orbit_scores ?? {};
+  if (!initialPairOrbitScores || Array.isArray(initialPairOrbitScores) || typeof initialPairOrbitScores !== "object") {
+    throw new Error("pair_orbit_scores must be an object keyed by canonical orbit representative");
+  }
+  for (const pair of initialPairs) {
+    addPairOrbit(pair, initialPairOrbitScores[pairOrbitRepresentativeKey(pair)] ?? 0);
+  }
 }
 const initialPairCount = pairConstraints.length;
 const bootstrapPairStartCount = pairConstraints.length;
@@ -326,6 +356,56 @@ const serializedTripleOrbitScores = () => Object.fromEntries(
     .filter(([, score]) => score > 0)
     .sort(([left], [right]) => left.localeCompare(right))
 );
+const serializedPairOrbitScores = () => Object.fromEntries(
+  [...pairOrbitScores.entries()]
+    .filter(([, score]) => score > 0)
+    .sort(([left], [right]) => left.localeCompare(right))
+);
+const describeEncodedPairs = constraints => {
+  const orbitKeys = [];
+  const seenOrbitKeys = new Set();
+  for (const pair of constraints) {
+    const orbitKey = pairOrbitRepresentativeKey(pair);
+    if (seenOrbitKeys.has(orbitKey)) continue;
+    seenOrbitKeys.add(orbitKey);
+    orbitKeys.push(orbitKey);
+  }
+  return {
+    constraints,
+    orbitCount: orbitKeys.length,
+    orbitKeys,
+    orbitScores: orbitKeys.map(key => pairOrbitScores.get(key) ?? 0)
+  };
+};
+const selectEncodedPairs = () => {
+  if (["encoded", "lazy-higher"].includes(tupleEnforcement)
+    || (tupleEnforcement === "hybrid-higher" && encodedPairOrbitLimit === 0)) {
+    return { ...describeEncodedPairs(pairConstraints), orbitCount: null };
+  }
+  if (tupleEnforcement === "lazy-all") {
+    return { constraints: [], orbitCount: 0, orbitKeys: [], orbitScores: [] };
+  }
+  const orderedOrbitKeys = [];
+  const seenOrbitKeys = new Set();
+  for (const pair of pairConstraints) {
+    const orbitKey = pairOrbitRepresentativeKey(pair);
+    if (seenOrbitKeys.has(orbitKey)) continue;
+    seenOrbitKeys.add(orbitKey);
+    orderedOrbitKeys.push(orbitKey);
+  }
+  const rankedOrbitKeys = encodedPairSelectionPolicy === "max-blocked-combinations"
+    ? orderedOrbitKeys.map((key, index) => ({ key, index, score: pairOrbitScores.get(key) ?? 0 }))
+        .sort((left, right) => right.score - left.score || right.index - left.index)
+        .map(entry => entry.key)
+    : encodedPairSelectionPolicy === "recent"
+      ? orderedOrbitKeys.slice().reverse()
+      : orderedOrbitKeys;
+  const selectedOrbitKeys = new Set(rankedOrbitKeys.slice(0, encodedPairOrbitLimit));
+  const constraints = pairConstraints.filter(pair =>
+    selectedOrbitKeys.has(pairOrbitRepresentativeKey(pair))
+  );
+  return describeEncodedPairs(constraints);
+};
 const selectEncodedTriples = () => {
   if (tupleEnforcement === "encoded") {
     return { constraints: tripleConstraints, orbitCount: null, orbitKeys: [], orbitScores: [] };
@@ -369,7 +449,6 @@ const effectiveNextLayerCoverability = requireNextLayerCoverability
   || tripleConstraints.length > 0
   || learnQuadrupleCoverability
   || quadrupleConstraints.length > 0;
-const encodePairCoverability = tupleEnforcement !== "lazy-all";
 const encodeQuadrupleCoverability = tupleEnforcement === "encoded";
 
 const learnTupleObstructions = proposal => {
@@ -391,10 +470,10 @@ const learnTupleObstructions = proposal => {
   let selectedPairCandidateCombinationsBlocked = null;
   for (const detail of incompatiblePairDetails) {
     if (pairOrbitLimit && pairOrbitsAdded >= pairOrbitLimit) break;
-    const added = addPairOrbit(detail.target_cells);
+    const added = addPairOrbit(detail.target_cells, detail.candidate_pairs_blocked);
+    selectedPairCandidateCombinationsBlocked ??= detail.candidate_pairs_blocked;
     if (added) {
       pairOrbitsAdded += 1;
-      selectedPairCandidateCombinationsBlocked ??= detail.candidate_pairs_blocked;
     }
     pairsAdded += added;
   }
@@ -478,6 +557,9 @@ process.stdout.write(`${JSON.stringify({
   bootstrap_pair_distance: bootstrapPairDistance,
   pair_encoding: pairEncoding,
   pair_selection: pairSelection,
+  encoded_pair_orbit_limit: encodedPairOrbitLimit,
+  encoded_pair_selection: encodedPairSelectionPolicy,
+  scored_pair_orbits: pairOrbitScores.size,
   lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   initial_clause_count: initialClauseCount,
@@ -534,6 +616,7 @@ const processSatProposal = ({
   iterationSeed,
   proposalIndex,
   proposalBatchSize,
+  encodedPairs,
   encodedTriples
 }) => {
   const state = { ...proposal, corona: witness.corona };
@@ -548,6 +631,12 @@ const processSatProposal = ({
     z3_interactive: proposal.interactive ?? false,
     z3_interactive_clauses_applied: proposal.interactive_clauses_applied ?? 0,
     z3_interactive_pairs_applied: proposal.interactive_pairs_applied ?? 0,
+    z3_interactive_pair_coverability_constraints:
+      proposal.interactive_pair_coverability_constraints ?? null,
+    encoded_pair_coverability_constraints: encodedPairs.constraints.length,
+    encoded_pair_coverability_orbits: encodedPairs.orbitCount,
+    encoded_pair_orbit_keys: encodedPairs.orbitKeys,
+    encoded_pair_orbit_scores: encodedPairs.orbitScores,
     ...proposalTiming(proposal, witness, proposalIndex)
   };
   const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, state.corona, outerLayer);
@@ -585,6 +674,10 @@ const processSatProposal = ({
         pair_constraints_added: tupleResult.pairsAdded,
         pair_orbits_added: tupleResult.pairOrbitsAdded,
         pair_coverability_constraints: pairConstraints.length,
+        encoded_pair_coverability_constraints: encodedPairs.constraints.length,
+        encoded_pair_coverability_orbits: encodedPairs.orbitCount,
+        encoded_pair_orbit_keys: encodedPairs.orbitKeys,
+        encoded_pair_orbit_scores: encodedPairs.orbitScores,
         incompatible_target_triples: tupleResult.incompatibleTripleDetails.length,
         triple_audit_truncated: tupleResult.tripleAuditTruncated,
         selected_triple_candidate_combinations_blocked: tupleResult.incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
@@ -696,6 +789,10 @@ const processSatProposal = ({
     pair_constraints_added: pairsAdded,
     pair_orbits_added: pairOrbitsAdded,
     pair_coverability_constraints: pairConstraints.length,
+    encoded_pair_coverability_constraints: encodedPairs.constraints.length,
+    encoded_pair_coverability_orbits: encodedPairs.orbitCount,
+    encoded_pair_orbit_keys: encodedPairs.orbitKeys,
+    encoded_pair_orbit_scores: encodedPairs.orbitScores,
     incompatible_target_triples: incompatibleTripleDetails.length,
     triple_audit_truncated: tripleAuditTruncated,
     selected_triple_candidate_combinations_blocked: incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
@@ -721,7 +818,12 @@ const processSatProposal = ({
 const writeCurrentReports = () => {
   writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
   writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
-  writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
+  writeFileSync(pairPath, `${JSON.stringify({
+    pairs: pairConstraints,
+    pair_orbit_scores: serializedPairOrbitScores()
+  }, null, 2)}\n`);
+  const encodedPairs = selectEncodedPairs();
+  writeFileSync(encodedPairPath, `${JSON.stringify({ pairs: encodedPairs.constraints }, null, 2)}\n`);
   writeFileSync(triplePath, `${JSON.stringify({
     triples: tripleConstraints,
     triple_orbit_scores: serializedTripleOrbitScores()
@@ -729,10 +831,10 @@ const writeCurrentReports = () => {
   const encodedTriples = selectEncodedTriples();
   writeFileSync(encodedTriplePath, `${JSON.stringify({ triples: encodedTriples.constraints }, null, 2)}\n`);
   writeFileSync(quadruplePath, `${JSON.stringify({ quadruples: quadrupleConstraints }, null, 2)}\n`);
-  return encodedTriples;
+  return { encodedPairs, encodedTriples };
 };
 
-const solverArgumentsFor = (iterationSeed, encodedTriples, witnessPath = null) => {
+const solverArgumentsFor = (iterationSeed, encodedPairs, encodedTriples, witnessPath = null) => {
   const solverArguments = [
     pythonSolver,
     `--key=${polycubeKey(candidate.voxels)}`,
@@ -750,8 +852,8 @@ const solverArgumentsFor = (iterationSeed, encodedTriples, witnessPath = null) =
   if (requireNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
   if (cellConstraints.length) solverArguments.push(`--cell-coverability-report=${cellPath}`);
   if (rootSymmetryBreaking) solverArguments.push("--root-symmetry-breaking");
-  if (pairConstraints.length && encodePairCoverability) {
-    solverArguments.push(`--pair-coverability-report=${pairPath}`);
+  if (encodedPairs.constraints.length) {
+    solverArguments.push(`--pair-coverability-report=${encodedPairPath}`);
     solverArguments.push(`--pair-encoding=${pairEncoding}`);
   }
   if (encodedTriples.constraints.length) {
@@ -766,8 +868,8 @@ const solverArgumentsFor = (iterationSeed, encodedTriples, witnessPath = null) =
 };
 
 const runInteractiveCegar = async () => {
-  const encodedTriples = writeCurrentReports();
-  const solverArguments = solverArgumentsFor(randomSeed, encodedTriples);
+  let { encodedPairs, encodedTriples } = writeCurrentReports();
+  const solverArguments = solverArgumentsFor(randomSeed, encodedPairs, encodedTriples);
   solverArguments.push("--interactive-jsonl");
   const worker = spawn(python, solverArguments, { stdio: ["pipe", "pipe", "pipe"] });
   const lines = createInterface({ input: worker.stdout });
@@ -794,6 +896,7 @@ const runInteractiveCegar = async () => {
   };
   let pendingClauses = [];
   let pendingPairs = [];
+  const encodedPairKeysSent = new Set(encodedPairs.constraints.map(pair => pair.join(";")));
   try {
     const ready = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
     if (ready.type !== "ready") throw new Error(`Expected interactive ready event, received ${ready.type}`);
@@ -803,7 +906,7 @@ const runInteractiveCegar = async () => {
         type: "next",
         timeout_ms: z3TimeoutMs,
         clauses: pendingClauses,
-        pairs: encodePairCoverability ? pendingPairs : []
+        pairs: pendingPairs
       })}\n`);
       const result = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
       if (result.type !== "result") throw new Error(`Expected interactive result event, received ${result.type}`);
@@ -872,7 +975,6 @@ const runInteractiveCegar = async () => {
         break;
       }
       const clauseCountBefore = clauses.length;
-      const pairCountBefore = pairConstraints.length;
       const outcome = processSatProposal({
         proposal,
         witness: { corona: proposal.corona, check_milliseconds: proposal.check_milliseconds },
@@ -880,6 +982,7 @@ const runInteractiveCegar = async () => {
         iterationSeed,
         proposalIndex: 0,
         proposalBatchSize: 1,
+        encodedPairs,
         encodedTriples
       });
       if (outcome.terminal) break;
@@ -888,7 +991,16 @@ const runInteractiveCegar = async () => {
         break;
       }
       pendingClauses = clauses.slice(clauseCountBefore);
-      pendingPairs = pairConstraints.slice(pairCountBefore);
+      const nextEncodedPairs = selectEncodedPairs();
+      pendingPairs = nextEncodedPairs.constraints.filter(pair => {
+        const key = pair.join(";");
+        if (encodedPairKeysSent.has(key)) return false;
+        encodedPairKeysSent.add(key);
+        return true;
+      });
+      encodedPairs = describeEncodedPairs(pairConstraints.filter(pair =>
+        encodedPairKeysSent.has(pair.join(";"))
+      ));
     }
   } finally {
     if (!worker.killed) {
@@ -902,10 +1014,10 @@ const runInteractiveCegar = async () => {
 if (z3Interactive) {
   await runInteractiveCegar();
 } else for (let iteration = 0; iteration < iterations; iteration += 1) {
-  const encodedTriples = writeCurrentReports();
+  const { encodedPairs, encodedTriples } = writeCurrentReports();
   const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
   const iterationSeed = randomSeed + iteration * seedStride;
-  const solverArguments = solverArgumentsFor(iterationSeed, encodedTriples, witnessPath);
+  const solverArguments = solverArgumentsFor(iterationSeed, encodedPairs, encodedTriples, witnessPath);
   const solved = spawnSync(python, solverArguments, {
     encoding: "utf8",
     timeout: z3TimeoutMs + z3ProcessGraceMs,
@@ -923,6 +1035,10 @@ if (z3Interactive) {
         clauses: clauses.length,
         cell_coverability_constraints: cellConstraints.length,
         pair_coverability_constraints: pairConstraints.length,
+        encoded_pair_coverability_constraints: encodedPairs.constraints.length,
+        encoded_pair_coverability_orbits: encodedPairs.orbitCount,
+        encoded_pair_orbit_keys: encodedPairs.orbitKeys,
+        encoded_pair_orbit_scores: encodedPairs.orbitScores,
         triple_coverability_constraints: tripleConstraints.length,
         encoded_triple_coverability_constraints: encodedTriples.constraints.length,
         encoded_triple_coverability_orbits: encodedTriples.orbitCount,
@@ -989,6 +1105,7 @@ if (z3Interactive) {
       iterationSeed,
       proposalIndex,
       proposalBatchSize: proposalWitnesses.length,
+      encodedPairs,
       encodedTriples
     });
     batchMadeProgress ||= outcome.progress;
@@ -1041,7 +1158,12 @@ if (z3Interactive) {
 // new obligations and exits before the next proposal write.
 writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
 writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
-writeFileSync(pairPath, `${JSON.stringify({ pairs: pairConstraints }, null, 2)}\n`);
+writeFileSync(pairPath, `${JSON.stringify({
+  pairs: pairConstraints,
+  pair_orbit_scores: serializedPairOrbitScores()
+}, null, 2)}\n`);
+const finalEncodedPairSelection = selectEncodedPairs();
+writeFileSync(encodedPairPath, `${JSON.stringify({ pairs: finalEncodedPairSelection.constraints }, null, 2)}\n`);
 writeFileSync(triplePath, `${JSON.stringify({
   triples: tripleConstraints,
   triple_orbit_scores: serializedTripleOrbitScores()
@@ -1072,6 +1194,13 @@ const summary = {
   bootstrap_pair_distance: bootstrapPairDistance,
   pair_encoding: pairEncoding,
   pair_selection: pairSelection,
+  encoded_pair_orbit_limit: encodedPairOrbitLimit,
+  encoded_pair_selection: encodedPairSelectionPolicy,
+  encoded_pair_coverability_orbits: finalEncodedPairSelection.orbitCount,
+  encoded_pair_coverability_constraints: finalEncodedPairSelection.constraints.length,
+  encoded_pair_orbit_keys: finalEncodedPairSelection.orbitKeys,
+  encoded_pair_orbit_scores: finalEncodedPairSelection.orbitScores,
+  pair_orbit_scores: serializedPairOrbitScores(),
   lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   z3_unknown_trials: z3UnknownTrials,
