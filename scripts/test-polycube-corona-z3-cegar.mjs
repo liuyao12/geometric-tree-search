@@ -17,6 +17,7 @@ import {
 const python = process.env.PYTHON ?? "python3";
 const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const cegar = fileURLToPath(new URL("./screen-polycube-corona-z3-cegar.mjs", import.meta.url));
+const clauseReplay = fileURLToPath(new URL("./verify-polycube-corona-clause-report.mjs", import.meta.url));
 const recurrenceReplay = fileURLToPath(new URL("./replay-polycube-pair-recurrence.mjs", import.meta.url));
 const cegarSource = readFileSync(cegar, "utf8");
 assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFileSync\(clausePath[\s\S]*?writeFileSync\(cellPath[\s\S]*?writeFileSync\(pairPath[\s\S]*?writeFileSync\(triplePath[\s\S]*?writeFileSync\(quadruplePath/);
@@ -42,6 +43,11 @@ assert.match(cegarSource, /--pair-coverability-report=\$\{encodedPairPath\}/);
 assert.match(cegarSource, /const encodedTriples = selectEncodedTriples\(\)/);
 assert.match(cegarSource, /--triple-coverability-report=\$\{encodedTriplePath\}/);
 assert.match(cegarSource, /if \(tupleEnforcement !== "encoded"\)[\s\S]*?continuation_skipped: true[\s\S]*?const continuation = searchPolycubeCorona/);
+assert.match(
+  cegarSource,
+  /const immediateObstructions = continuation\.fixed_obstruction_nogoods[\s\S]*?learnedClauses\.reduce[\s\S]*?for \(const cellObstruction of cellObstructions\)/,
+  "CEGAR must learn every immediate dead-cell obstruction returned by one exact continuation"
+);
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
 assert.ok(candidate);
 const nonTiler = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p10-052670");
@@ -188,14 +194,44 @@ try {
   assert.equal(learnedCellReport.classification, "certified_non_tiler");
   assert.equal(learnedCellReport.require_next_layer_coverability, false);
   assert.equal(learnedCellReport.learn_cell_coverability, true);
-  assert.equal(learnedCellReport.cell_coverability_constraint_count, 1);
+  assert.ok(
+    learnedCellReport.cell_coverability_constraint_count > 1,
+    "one exact continuation should promote every immediate dead cell"
+  );
   assert.equal(learnedCellReport.trials[0].obstruction_kind, "immediate_dead_target");
-  assert.equal(learnedCellReport.trials[0].cell_constraints_added, 1);
+  assert.equal(
+    learnedCellReport.trials[0].cell_constraints_added,
+    learnedCellReport.cell_coverability_constraint_count
+  );
+  assert.equal(
+    learnedCellReport.trials[0].dead_target_cells.length,
+    learnedCellReport.cell_coverability_constraint_count
+  );
   assert.equal(learnedCellReport.trials[1].z3_status, "unsat");
+  const learnedCellClauseReplayOutput = join(directory, "learned-cell-clause-replay.json");
+  const learnedCellClauseReplay = spawnSync(process.execPath, [
+    clauseReplay,
+    "--id=p10-052670",
+    "--layer=2",
+    `--clause-report=${join(directory, "learned-cell", "forbidden-clauses.json")}`,
+    "--node-limit=100000",
+    "--time-ms=10000",
+    `--output=${learnedCellClauseReplayOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(learnedCellClauseReplay.status, 0, learnedCellClauseReplay.stderr);
+  const learnedCellClauseReplayReport = JSON.parse(readFileSync(learnedCellClauseReplayOutput, "utf8"));
+  assert.equal(learnedCellClauseReplayReport.classification, "verified");
+  assert.equal(learnedCellClauseReplayReport.verified_clauses, learnedCellReport.learned_clause_count);
   const learnedCellProposal = JSON.parse(readFileSync(join(directory, "learned-cell", "outer-witness-0001.json"), "utf8"));
   assert.equal(learnedCellProposal.require_next_layer_coverability, false);
-  assert.equal(learnedCellProposal.cell_coverability_constraints, 1);
-  assert.equal(learnedCellProposal.lookahead_target_cells, 1);
+  assert.equal(
+    learnedCellProposal.cell_coverability_constraints,
+    learnedCellReport.cell_coverability_constraint_count
+  );
+  assert.equal(
+    learnedCellProposal.lookahead_target_cells,
+    learnedCellReport.cell_coverability_constraint_count
+  );
 
   const interactiveLearnedCellOutput = join(directory, "interactive-learned-cell-summary.json");
   const interactiveLearnedCellCegar = spawnSync(process.execPath, [
@@ -219,9 +255,15 @@ try {
   const interactiveLearnedCellReport = JSON.parse(readFileSync(interactiveLearnedCellOutput, "utf8"));
   assert.equal(interactiveLearnedCellReport.classification, "certified_non_tiler");
   assert.equal(interactiveLearnedCellReport.z3_interactive, true);
-  assert.equal(interactiveLearnedCellReport.trials[0].cell_constraints_added, 1);
-  assert.equal(interactiveLearnedCellReport.trials[1].z3_interactive_cells_applied, 1);
-  assert.equal(interactiveLearnedCellReport.trials[1].z3_interactive_cell_coverability_constraints, 1);
+  assert.ok(interactiveLearnedCellReport.trials[0].cell_constraints_added > 1);
+  assert.equal(
+    interactiveLearnedCellReport.trials[1].z3_interactive_cells_applied,
+    interactiveLearnedCellReport.trials[0].cell_constraints_added
+  );
+  assert.equal(
+    interactiveLearnedCellReport.trials[1].z3_interactive_cell_coverability_constraints,
+    interactiveLearnedCellReport.trials[0].cell_constraints_added
+  );
   assert.equal(interactiveLearnedCellReport.trials[1].z3_construction_milliseconds, 0);
 
   const distanceFromRoot = cell => Math.min(...candidate.voxels.map(root =>

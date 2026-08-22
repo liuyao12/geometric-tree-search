@@ -114,7 +114,10 @@ const mergeNogoodClauses = (...collections) => {
 
 for (const reportPath of fixedWitnessReports) {
   const report = JSON.parse(readFileSync(reportPath, "utf8"));
-  const placements = report.corona;
+  const placements = report.radius_witness?.corona ?? report.corona;
+  if (!Array.isArray(placements)) {
+    throw new Error(`Fixed witness ${reportPath} does not contain corona or radius_witness.corona`);
+  }
   const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, placements, outerLayer);
   if (!outerVerification.verified) {
     throw new Error(`Fixed witness ${reportPath} failed radius-${outerLayer} verification: ${outerVerification.reason}`);
@@ -156,8 +159,12 @@ for (const reportPath of fixedWitnessReports) {
     stopped_by: continuation.stopped_by,
     nodes: continuation.nodes,
     milliseconds: continuation.milliseconds,
-    obstruction_kind: continuation.fixed_obstruction_nogood?.kind ?? null,
+    obstruction_kind: continuation.fixed_obstruction_nogood?.kind
+      ?? (continuation.fixed_obstruction_nogood?.target_cell ? "immediate_dead_target" : null),
+    obstruction_target_cell: continuation.fixed_obstruction_nogood?.target_cell ?? null,
     obstruction_clause_size: continuation.fixed_obstruction_nogood?.fixed_placement_keys?.length ?? null,
+    obstruction_clause_keys: continuation.fixed_obstruction_nogood?.fixed_placement_keys ?? null,
+    immediate_dead_target_count: continuation.fixed_obstruction_nogoods?.length ?? 0,
     pair_obstruction_target_cells: fixedPairObstruction?.target_cells ?? null,
     pair_obstruction_clause_size: fixedPairObstruction?.fixed_placement_keys?.length ?? null,
     pair_obstruction_candidate_pairs_blocked: fixedPairObstruction?.candidate_pairs_blocked ?? null,
@@ -477,7 +484,8 @@ const summary = {
   radius_witness: radiusWitness ? {
     placements: radiusWitness.corona?.length ?? null,
     nodes: radiusWitness.nodes,
-    milliseconds: radiusWitness.milliseconds
+    milliseconds: radiusWitness.milliseconds,
+    corona: radiusWitness.corona
   } : null,
   incomplete_continuation: incompleteContinuation ? {
     stopped_by: incompleteContinuation.stopped_by,

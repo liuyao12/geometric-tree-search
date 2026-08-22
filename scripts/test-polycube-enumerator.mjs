@@ -710,6 +710,19 @@ const trappedRadiusFour = searchPolycubeCorona(unresolvedP9.voxels, {
 assert.equal(trappedRadiusFour.exhausted, true);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.candidate_rows_blocked, 72);
 assert.equal(trappedRadiusFour.fixed_obstruction_nogood.fixed_placement_indices.length, 2);
+assert.ok(trappedRadiusFour.fixed_obstruction_nogoods.length > 0);
+assert.deepEqual(
+  trappedRadiusFour.fixed_obstruction_nogoods[0],
+  trappedRadiusFour.fixed_obstruction_nogood,
+  "the primary obstruction must remain the smallest member of the complete immediate-dead-cell list"
+);
+assert.equal(
+  new Set(trappedRadiusFour.fixed_obstruction_nogoods.map(obstruction =>
+    obstruction.target_cell.join(",")
+  )).size,
+  trappedRadiusFour.fixed_obstruction_nogoods.length,
+  "every immediate dead target should be reported exactly once"
+);
 const trappedRadiusFourWithPartialLookahead = searchPolycubeCorona(unresolvedP9.voxels, {
   layers: 4,
   fixedPlacements: unresolvedRadiusFour.corona,

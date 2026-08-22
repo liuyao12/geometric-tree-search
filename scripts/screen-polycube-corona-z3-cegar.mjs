@@ -943,16 +943,32 @@ const processSatProposal = ({
     return { terminal: true, progress: false };
   }
   const obstruction = continuation.fixed_obstruction_nogood;
-  const learnedClause = obstruction?.fixed_placement_keys?.length
-    ? obstruction.fixed_placement_keys
-    : state.corona.map(placementKey);
-  const clausesAdded = addClauseOrbit(learnedClause);
+  const immediateObstructions = continuation.fixed_obstruction_nogoods?.filter(candidateObstruction =>
+    candidateObstruction?.fixed_placement_keys?.length
+  ) ?? [];
+  const learnedClauses = immediateObstructions.length
+    ? immediateObstructions.map(candidateObstruction => candidateObstruction.fixed_placement_keys)
+    : [obstruction?.fixed_placement_keys?.length
+      ? obstruction.fixed_placement_keys
+      : state.corona.map(placementKey)];
+  const learnedClause = learnedClauses[0];
+  const clausesAdded = learnedClauses.reduce(
+    (count, clause) => count + addClauseOrbit(clause),
+    0
+  );
   let cellOrbitsAdded = 0;
   let cellsAdded = 0;
-  if (learnCellCoverability && obstruction?.target_cell) {
-    if (!cellOrbitLimit || cellOrbitsAdded < cellOrbitLimit) {
-      cellsAdded = addCellOrbit(obstruction.target_cell.join(","));
-      if (cellsAdded) cellOrbitsAdded += 1;
+  if (learnCellCoverability) {
+    const cellObstructions = immediateObstructions.length
+      ? immediateObstructions
+      : obstruction?.target_cell
+        ? [obstruction]
+        : [];
+    for (const cellObstruction of cellObstructions) {
+      if (cellOrbitLimit && cellOrbitsAdded >= cellOrbitLimit) break;
+      const added = addCellOrbit(cellObstruction.target_cell.join(","));
+      cellsAdded += added;
+      if (added) cellOrbitsAdded += 1;
     }
   }
   const {
@@ -982,6 +998,9 @@ const processSatProposal = ({
     clauses_added: clausesAdded,
     clauses: clauses.length,
     dead_target_cell: obstruction?.target_cell?.join(",") ?? null,
+    dead_target_cells: immediateObstructions.map(candidateObstruction =>
+      candidateObstruction.target_cell.join(",")
+    ),
     cell_constraints_added: cellsAdded,
     cell_orbits_added: cellOrbitsAdded,
     cell_coverability_constraints: cellConstraints.length,

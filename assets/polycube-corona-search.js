@@ -922,9 +922,9 @@ export function searchPolycubeCorona(voxels, options = {}) {
       }
     }
   }
-  const minimumFixedObstruction = (() => {
-    if (!fixedPlacements.length) return null;
-    let best = null;
+  const fixedObstructions = (() => {
+    if (!fixedPlacements.length) return [];
+    const obstructions = [];
     for (const targetKey of targetKeys) {
       if (placementsByTarget.get(targetKey).length) continue;
       const blockerSets = [...fixedBlockedRowsByTarget.get(targetKey).values()];
@@ -961,15 +961,16 @@ export function searchPolycubeCorona(voxels, options = {}) {
         fixed_placement_indices: selected.slice().sort((left, right) => left - right),
         candidate_rows_blocked: blockerSets.length
       };
-      if (!best
-        || obstruction.fixed_placement_indices.length < best.fixed_placement_indices.length
-        || (obstruction.fixed_placement_indices.length === best.fixed_placement_indices.length
-          && targetKey < keyOf(best.target_cell))) best = obstruction;
+      obstruction.fixed_placement_keys = obstruction.fixed_placement_indices
+        .map(index => fixedPlacements[index].key);
+      obstructions.push(obstruction);
     }
-    if (!best) return null;
-    best.fixed_placement_keys = best.fixed_placement_indices.map(index => fixedPlacements[index].key);
-    return best;
+    obstructions.sort((left, right) =>
+      left.fixed_placement_indices.length - right.fixed_placement_indices.length
+      || keyOf(left.target_cell).localeCompare(keyOf(right.target_cell)));
+    return obstructions;
   })();
+  const minimumFixedObstruction = fixedObstructions[0] ?? null;
   const chosen = fixedPlacements.slice();
   let nodes = 0;
   let deadEnds = 0;
@@ -1516,6 +1517,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     nogood_max_size: nogoodMaxSize,
     maximum_depth: maximumDepth,
     fixed_obstruction_nogood: minimumFixedObstruction ?? resolvedFixedConflict,
+    fixed_obstruction_nogoods: fixedObstructions,
     resolved_fixed_conflict: resolvedFixedConflict,
     nogood_clause_keys: options.returnNogoods
       ? nogoods.map(nogood => nogood.ids.map(id => orderedPlacements[id].key))
