@@ -1707,6 +1707,15 @@ assert.deepEqual(
 );
 assert.equal(archivedP10052588StagedCellFeedback.transactional_feedback_backoff.p10_052588_frontier.combined_distinct_radius_3_states, 35);
 assert.equal(archivedP10052588StagedCellFeedback.transactional_feedback_backoff.automatic_backoff_validated, true);
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.implementation_commit, "48f0c84");
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.seed_200_from_36_cells.final_applied_cells, 40);
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.seed_200_from_36_cells.independently_replayed_clauses, 107);
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.seed_203_from_40_cells.final_applied_cells, 41);
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.seed_203_from_40_cells.independently_replayed_clauses, 114);
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.seed_207_from_41_cells.status, "unknown");
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.combined_distinct_radius_3_states, 37);
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.maximum_verified_applied_cells, 41);
+assert.equal(archivedP10052588StagedCellFeedback.retained_feedback_frontier.verified_radius_4_witness_found, false);
 assert.equal(archivedP10052588StagedCellFeedback.radius_3_copy_bound_exhausted, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_non_tiler, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_aperiodic, false);
@@ -1883,6 +1892,13 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_transactional_f
 assert.equal(p10052588Survivor.census_candidate.screening.corona_transactional_feedback_maximum_applied_cells, 36);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_transactional_feedback_combined_distinct_states, 35);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_transactional_feedback_validated, true);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_feedback_commit, "48f0c84");
+assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_feedback_maximum_applied_cells, 41);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_feedback_combined_distinct_states, 37);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_feedback_seed200_replayed_clauses, 107);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_feedback_seed203_replayed_clauses, 114);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_feedback_replay_failures, 0);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_feedback_seed207_minimum_batch_status, "unknown");
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, false);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(

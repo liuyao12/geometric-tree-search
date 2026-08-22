@@ -110,8 +110,12 @@ Pages site. The main way to use it is to open the page in a browser:
   seed it rolls back timed-out 6/4 and 3/2 clause/cell increments before a 2/1
   increment succeeds; on another seed the four-cell increment solves directly
   and reaches 36 applied cells. These add two more states, taking the exact
-  corpus to 35. The ≤42-copy space remains unexhausted, and this is not evidence
-  of non-tiling or aperiodicity.
+  corpus to 35. Exact retained-policy restarts then add distinct 40- and
+  42-copy states and advance the applied-cell prefix from 36 to 41. Both still
+  fail immediately at radius four; all 107- and 114-clause reports replay with
+  zero failures. Two fresh attempts at the 41-cell prefix time out cleanly on
+  the minimum 2-clause/1-cell increment. The 37-state ≤42-copy corpus remains
+  unexhausted, and this is not evidence of non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate
