@@ -503,6 +503,10 @@ const archivedP9ReplaceablePairWindow = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-replaceable-pair-window-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9PairRecurrence = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-pair-recurrence-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1812,6 +1816,12 @@ assert.equal(archivedP9ReplaceablePairWindow.cached_extension.window_sweep[2].z3
 assert.equal(archivedP9ReplaceablePairWindow.certified_aperiodic, false);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_replaceable_pair_sat_states, 9);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_replaceable_pair_final_constraints, 855);
+assert.equal(archivedP9PairRecurrence.replay_contract.current_contract_eligible_states, 114);
+assert.equal(archivedP9PairRecurrence.historical_higher_order_audit.tuple_gate_survivor_states, 0);
+assert.equal(archivedP9PairRecurrence.matched_seed_321_window_16.selected_production_policy, "max-blocked-combinations");
+assert.equal(archivedP9PairRecurrence.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_pair_recurrence_pair_complete_states, 26);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_pair_recurrence_tuple_survivors, 0);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1837,6 +1847,8 @@ assert.match(growthAppSource, /Pair-level impact ranking now keeps the full/);
 assert.match(growthAppSource, /without relaxing the exact gate/);
 assert.match(growthAppSource, /Ranked pair steering is now genuinely replaceable/);
 assert.match(growthAppSource, /not a non-tiling or aperiodicity certificate/);
+assert.match(growthAppSource, /deduplicated replay independently verifies/);
+assert.match(growthAppSource, /Impact-only remains the production lane/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

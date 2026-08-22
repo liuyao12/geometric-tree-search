@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v157";
+} from "./engine.js?v=20260821-polycube10-v158";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1534,6 +1534,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_replaceable_pair_window_report) {
         const replacement = candidate.screening;
         candidateResearchDetail.textContent += ` Ranked pair steering is now genuinely replaceable: activation assumptions hold the live window fixed while compiled inactive formulas remain cached. A changed window can construct in ${(replacement.corona_replaceable_pair_fast_construction_ms / 1000).toFixed(1)}s and return an exact state in ${(replacement.corona_replaceable_pair_fast_check_ms / 1000).toFixed(1)}s. The expanded portfolio returns ${replacement.corona_replaceable_pair_sat_states} exact states and records ${replacement.corona_replaceable_pair_timeout_trials} timeouts; all ${replacement.corona_replaceable_pair_defect_states} returned states fail the complete pair audit. Windows of 32 and 64 orbits solve in ${(replacement.corona_replaceable_pair_window32_check_ms / 1000).toFixed(1)}s and ${(replacement.corona_replaceable_pair_window64_check_ms / 1000).toFixed(1)}s but remain pair-defective, while 128 orbits times out. The screen now carries ${replacement.corona_replaceable_pair_final_constraints} pair constraints and ${replacement.corona_replaceable_pair_final_clauses} verified state clauses. This is stronger screening and faster proposal generation, not a non-tiling or aperiodicity certificate.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_pair_recurrence_report) {
+        const recurrence = candidate.screening;
+        candidateResearchDetail.textContent += ` A deduplicated replay independently verifies ${recurrence.corona_pair_recurrence_verified_states} historical radius-four states; ${recurrence.corona_pair_recurrence_eligible_states} satisfy the current individual-coverability contract and expose ${recurrence.corona_pair_recurrence_orbits} recurrent pair orbits. Of these states, ${recurrence.corona_pair_recurrence_pair_defect_states} fail pair coverability and ${recurrence.corona_pair_recurrence_pair_complete_states} clear it; ${recurrence.corona_pair_recurrence_triple_defect_states} of the latter fail the bounded triple gate, and the final one fails a quadruple obstruction, leaving ${recurrence.corona_pair_recurrence_tuple_survivors} GCTS continuation targets. Recurrence is therefore recorded but not promoted blindly: in a matched 16-orbit probe, impact-only solves in ${(recurrence.corona_pair_recurrence_impact_check_ms / 1000).toFixed(1)}s with ${recurrence.corona_pair_recurrence_impact_defects} pair defects, versus ${(recurrence.corona_pair_recurrence_frequency_check_ms / 1000).toFixed(1)}s/${recurrence.corona_pair_recurrence_frequency_defects} for frequency-first and ${(recurrence.corona_pair_recurrence_weighted_check_ms / 1000).toFixed(1)}s/${recurrence.corona_pair_recurrence_weighted_defects} for frequency-weighted impact. Impact-only remains the production lane. These are bounded finite-patch screens, not a non-tiling or aperiodicity certificate.`;
       }
     }
   } else if (knownAperiodic) {
