@@ -75,6 +75,10 @@ const learnPairCoverability = booleanArg("learn-pair-coverability", false);
 const learnTripleCoverability = booleanArg("learn-triple-coverability", false);
 const learnQuadrupleCoverability = booleanArg("learn-quadruple-coverability", false);
 const cellOrbitLimit = integerArg("cell-orbit-limit", 0, 0);
+const clauseFeedbackBatch = integerArg("clause-feedback-batch", 0, 0);
+if (clauseFeedbackBatch && !z3Interactive) {
+  throw new Error("--clause-feedback-batch requires --z3-interactive=true");
+}
 const cellFeedbackBatch = integerArg("cell-feedback-batch", 0, 0);
 if (cellFeedbackBatch && !z3Interactive) {
   throw new Error("--cell-feedback-batch requires --z3-interactive=true");
@@ -179,6 +183,12 @@ const reportOutput = resolve(args.get("report-output") ?? `${outputDirectory}/su
 const initialClauseReport = args.get("initial-clause-report")
   ? resolve(args.get("initial-clause-report"))
   : null;
+const initialDeferredClauseReport = args.get("initial-deferred-clause-report")
+  ? resolve(args.get("initial-deferred-clause-report"))
+  : null;
+if (initialDeferredClauseReport && !z3Interactive) {
+  throw new Error("--initial-deferred-clause-report requires --z3-interactive=true");
+}
 const initialPairReport = args.get("initial-pair-report")
   ? resolve(args.get("initial-pair-report"))
   : null;
@@ -199,6 +209,7 @@ const initialQuadrupleReport = args.get("initial-quadruple-report")
   : null;
 const pythonSolver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const clausePath = resolve(outputDirectory, "forbidden-clauses.json");
+const appliedClausePath = resolve(outputDirectory, "applied-forbidden-clauses.json");
 const cellPath = resolve(outputDirectory, "cell-coverability.json");
 const appliedCellPath = resolve(outputDirectory, "applied-cell-coverability.json");
 const pairPath = resolve(outputDirectory, "pair-coverability.json");
@@ -227,6 +238,8 @@ const quadrupleConstraintKeys = new Set();
 let classification = "iteration_limit";
 let radiusWitness = null;
 let z3UnknownTrials = 0;
+let z3InteractiveClausesApplied = 0;
+let z3InteractiveClausesDeferred = 0;
 let z3InteractiveCellConstraintsApplied = 0;
 let z3InteractiveCellConstraintsDeferred = 0;
 
@@ -335,9 +348,23 @@ if (initialClauseReport) {
   if (!Array.isArray(initialClauses)) {
     throw new Error("--initial-clause-report must contain learned_clauses or clauses");
   }
-  for (const clause of initialClauses) addClauseOrbit(clause);
+  // Reports contain exact, already symmetry-expanded clauses.  Preserve their
+  // order so a batched applied prefix can be resumed without enlarging it.
+  for (const clause of initialClauses) addClause(clause);
+}
+const initialAppliedClauseCount = clauses.length;
+if (initialDeferredClauseReport) {
+  const initial = JSON.parse(readFileSync(initialDeferredClauseReport, "utf8"));
+  const deferredClauses = initial.learned_clauses ?? initial.clauses ?? initial;
+  if (!Array.isArray(deferredClauses)) {
+    throw new Error("--initial-deferred-clause-report must contain learned_clauses or clauses");
+  }
+  for (const clause of deferredClauses) addClause(clause);
 }
 const initialClauseCount = clauses.length;
+const initialDeferredClauseCount = initialClauseCount - initialAppliedClauseCount;
+z3InteractiveClausesApplied = initialAppliedClauseCount;
+z3InteractiveClausesDeferred = initialDeferredClauseCount;
 if (initialCellReport) {
   const initial = JSON.parse(readFileSync(initialCellReport, "utf8"));
   const initialCells = initial.cell_coverability_cells ?? initial.cells ?? initial;
@@ -759,6 +786,7 @@ process.stdout.write(`${JSON.stringify({
   effective_next_layer_coverability: effectiveNextLayerCoverability,
   learn_cell_coverability: learnCellCoverability,
   cell_orbit_limit: cellOrbitLimit,
+  clause_feedback_batch: clauseFeedbackBatch,
   cell_feedback_batch: cellFeedbackBatch,
   learn_pair_coverability: learnPairCoverability,
   pair_orbit_limit: pairOrbitLimit,
@@ -778,6 +806,8 @@ process.stdout.write(`${JSON.stringify({
   lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   initial_clause_count: initialClauseCount,
+  initial_applied_clause_count: initialAppliedClauseCount,
+  initial_deferred_clause_count: initialDeferredClauseCount,
   initial_cell_coverability_constraints: initialCellCount,
   initial_deferred_cell_coverability_constraints: initialDeferredCellCount,
   initial_pair_coverability_constraints: initialPairCount,
@@ -1068,6 +1098,11 @@ const processSatProposal = ({
 
 const writeCurrentReports = () => {
   writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
+  writeFileSync(appliedClausePath, `${JSON.stringify({
+    clauses: clauses.slice(0, z3Interactive
+      ? z3InteractiveClausesApplied
+      : clauses.length)
+  }, null, 2)}\n`);
   writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
   writeFileSync(appliedCellPath, `${JSON.stringify({
     cells: cellConstraints.slice(0, z3Interactive
@@ -1105,7 +1140,7 @@ const solverArgumentsFor = (iterationSeed, encodedPairs, encodedTriples, witness
     `--backend=${backend}`,
     `--random-seed=${iterationSeed}`,
     `--lookahead-conflict-encoding=${lookaheadConflictEncoding}`,
-    `--forbidden-clause-report=${clausePath}`
+    `--forbidden-clause-report=${z3Interactive ? appliedClausePath : clausePath}`
   ];
   if (witnessPath) solverArguments.push(`--output=${witnessPath}`);
   if (minPlacements !== null) solverArguments.push(`--min-placements=${minPlacements}`);
@@ -1162,24 +1197,30 @@ const runInteractiveCegar = async () => {
       clearTimeout(timeoutId);
     }
   };
-  let pendingClauses = [];
+  let pendingClauses = clauses.slice(initialAppliedClauseCount);
   let pendingCells = cellConstraints.slice(initialCellCount);
   let pendingPairs = [];
+  const clauseKeysSent = new Set(clauses.slice(0, initialAppliedClauseCount)
+    .map(clause => clause.join("|")));
   const cellKeysSent = new Set(cellConstraints.slice(0, initialCellCount));
   const encodedPairKeysSent = new Set(encodedPairs.constraints.map(pair => pair.join(";")));
   try {
     const ready = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
     if (ready.type !== "ready") throw new Error(`Expected interactive ready event, received ${ready.type}`);
+    z3InteractiveClausesApplied = clauseKeysSent.size;
     z3InteractiveCellConstraintsApplied = cellKeysSent.size;
     for (let iteration = 0; iteration < iterations; iteration += 1) {
       const iterationSeed = randomSeed + iteration * seedStride;
+      const clausesToApply = clauseFeedbackBatch
+        ? pendingClauses.slice(0, clauseFeedbackBatch)
+        : pendingClauses.slice();
       const cellsToApply = cellFeedbackBatch
         ? pendingCells.slice(0, cellFeedbackBatch)
         : pendingCells.slice();
       worker.stdin.write(`${JSON.stringify({
         type: "next",
         timeout_ms: z3TimeoutMs,
-        clauses: pendingClauses,
+        clauses: clausesToApply,
         cells: cellsToApply,
         ...(z3InteractiveReplacePairs
           ? { replace_pairs: encodedPairs.constraints }
@@ -1187,6 +1228,10 @@ const runInteractiveCegar = async () => {
       })}\n`);
       const result = await readEvent(z3TimeoutMs + z3ProcessGraceMs);
       if (result.type !== "result") throw new Error(`Expected interactive result event, received ${result.type}`);
+      for (const clause of clausesToApply) clauseKeysSent.add(clause.join("|"));
+      pendingClauses = pendingClauses.slice(clausesToApply.length);
+      z3InteractiveClausesApplied = clauseKeysSent.size;
+      z3InteractiveClausesDeferred = pendingClauses.length;
       for (const cell of cellsToApply) cellKeysSent.add(cell);
       pendingCells = pendingCells.slice(cellsToApply.length);
       z3InteractiveCellConstraintsApplied = cellKeysSent.size;
@@ -1283,11 +1328,14 @@ const runInteractiveCegar = async () => {
         encodedTriples
       });
       if (outcome.terminal) break;
-      if (!outcome.progress) {
-        classification = "duplicate_obstruction";
-        break;
+      const queuedClauseKeys = new Set(pendingClauses.map(clause => clause.join("|")));
+      for (const clause of clauses.slice(clauseCountBefore)) {
+        const key = clause.join("|");
+        if (clauseKeysSent.has(key) || queuedClauseKeys.has(key)) continue;
+        pendingClauses.push(clause);
+        queuedClauseKeys.add(key);
       }
-      pendingClauses = clauses.slice(clauseCountBefore);
+      z3InteractiveClausesDeferred = pendingClauses.length;
       const queuedCellKeys = new Set(pendingCells);
       for (const cell of cellConstraints.slice(cellCountBefore)) {
         if (cellKeysSent.has(cell) || queuedCellKeys.has(cell)) continue;
@@ -1295,6 +1343,18 @@ const runInteractiveCegar = async () => {
         queuedCellKeys.add(cell);
       }
       z3InteractiveCellConstraintsDeferred = pendingCells.length;
+      const strengthenedThisIteration = clausesToApply.length > 0
+        || cellsToApply.length > 0
+        || result.pairs_added > 0;
+      if (
+        !outcome.progress
+        && !strengthenedThisIteration
+        && !pendingClauses.length
+        && !pendingCells.length
+      ) {
+        classification = "duplicate_obstruction";
+        break;
+      }
       const nextEncodedPairs = selectEncodedPairs();
       if (z3InteractiveReplacePairs) {
         pendingPairs = [];
@@ -1468,6 +1528,11 @@ if (z3Interactive) {
 // Keep resumable artifacts synchronized even when the final iteration learns
 // new obligations and exits before the next proposal write.
 writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
+writeFileSync(appliedClausePath, `${JSON.stringify({
+  clauses: clauses.slice(0, z3Interactive
+    ? z3InteractiveClausesApplied
+    : clauses.length)
+}, null, 2)}\n`);
 writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
 writeFileSync(appliedCellPath, `${JSON.stringify({
   cells: cellConstraints.slice(0, z3Interactive
@@ -1507,6 +1572,14 @@ const summary = {
   effective_next_layer_coverability: effectiveNextLayerCoverability,
   learn_cell_coverability: learnCellCoverability,
   cell_orbit_limit: cellOrbitLimit,
+  clause_feedback_batch: clauseFeedbackBatch,
+  z3_interactive_clauses_applied: z3Interactive
+    ? z3InteractiveClausesApplied
+    : null,
+  z3_interactive_clauses_deferred: z3Interactive
+    ? z3InteractiveClausesDeferred
+    : null,
+  applied_clause_report: z3Interactive ? appliedClausePath : clausePath,
   cell_feedback_batch: cellFeedbackBatch,
   z3_interactive_cell_constraints_applied: z3Interactive
     ? z3InteractiveCellConstraintsApplied
@@ -1555,6 +1628,8 @@ const summary = {
   learned_clauses: clauses,
   learned_clause_count: clauses.length,
   initial_clause_count: initialClauseCount,
+  initial_applied_clause_count: initialAppliedClauseCount,
+  initial_deferred_clause_count: initialDeferredClauseCount,
   cell_coverability_cells: cellConstraints,
   cell_coverability_constraint_count: cellConstraints.length,
   initial_cell_coverability_constraints: initialCellCount,

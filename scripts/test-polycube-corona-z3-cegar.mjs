@@ -347,6 +347,85 @@ try {
     batchedCellFeedbackReport.cell_coverability_cells.slice(0, 4)
   );
 
+  const batchedClauseFeedbackOutput = join(directory, "batched-clause-feedback-summary.json");
+  const batchedClauseFeedbackDirectory = join(directory, "batched-clause-feedback");
+  const batchedClauseFeedback = spawnSync(process.execPath, [
+    cegar,
+    "--id=p10-052670",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=2",
+    "--clause-feedback-batch=2",
+    "--tuple-enforcement=lazy-all",
+    "--z3-interactive=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--output-dir=${batchedClauseFeedbackDirectory}`,
+    `--report-output=${batchedClauseFeedbackOutput}`
+  ], { encoding: "utf8", timeout: 90_000 });
+  assert.equal(batchedClauseFeedback.status, 0, batchedClauseFeedback.stderr);
+  const batchedClauseFeedbackReport = JSON.parse(readFileSync(batchedClauseFeedbackOutput, "utf8"));
+  assert.equal(batchedClauseFeedbackReport.classification, "certified_non_tiler");
+  assert.equal(batchedClauseFeedbackReport.clause_feedback_batch, 2);
+  assert.ok(batchedClauseFeedbackReport.learned_clause_count > 2);
+  assert.equal(batchedClauseFeedbackReport.trials[1].z3_interactive_clauses_applied, 2);
+  assert.equal(batchedClauseFeedbackReport.z3_interactive_clauses_applied, 2);
+  assert.equal(
+    batchedClauseFeedbackReport.z3_interactive_clauses_deferred,
+    batchedClauseFeedbackReport.learned_clause_count - 2
+  );
+  const appliedClauseFeedback = JSON.parse(readFileSync(
+    join(batchedClauseFeedbackDirectory, "applied-forbidden-clauses.json"),
+    "utf8"
+  ));
+  assert.equal(appliedClauseFeedback.clauses.length, 2);
+
+  const resumedClauseFeedbackOutput = join(directory, "resumed-clause-feedback-summary.json");
+  const resumedClauseFeedbackDirectory = join(directory, "resumed-clause-feedback");
+  const resumedClauseFeedback = spawnSync(process.execPath, [
+    cegar,
+    "--id=p10-052670",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--clause-feedback-batch=2",
+    "--tuple-enforcement=lazy-all",
+    "--z3-interactive=true",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--initial-clause-report=${join(batchedClauseFeedbackDirectory, "applied-forbidden-clauses.json")}`,
+    `--initial-deferred-clause-report=${join(batchedClauseFeedbackDirectory, "forbidden-clauses.json")}`,
+    `--python=${python}`,
+    `--output-dir=${resumedClauseFeedbackDirectory}`,
+    `--report-output=${resumedClauseFeedbackOutput}`
+  ], { encoding: "utf8", timeout: 90_000 });
+  assert.equal(resumedClauseFeedback.status, 0, resumedClauseFeedback.stderr);
+  const resumedClauseFeedbackReport = JSON.parse(readFileSync(resumedClauseFeedbackOutput, "utf8"));
+  assert.equal(resumedClauseFeedbackReport.initial_applied_clause_count, 2);
+  assert.equal(
+    resumedClauseFeedbackReport.initial_deferred_clause_count,
+    batchedClauseFeedbackReport.learned_clause_count - 2
+  );
+  assert.equal(resumedClauseFeedbackReport.trials[0].z3_interactive_clauses_applied, 2);
+  assert.equal(resumedClauseFeedbackReport.z3_interactive_clauses_applied, 4);
+  assert.equal(
+    resumedClauseFeedbackReport.z3_interactive_clauses_deferred,
+    batchedClauseFeedbackReport.learned_clause_count - 4
+  );
+  const resumedAppliedClauseFeedback = JSON.parse(readFileSync(
+    join(resumedClauseFeedbackDirectory, "applied-forbidden-clauses.json"),
+    "utf8"
+  ));
+  assert.deepEqual(
+    resumedAppliedClauseFeedback.clauses,
+    batchedClauseFeedbackReport.learned_clauses.slice(0, 4)
+  );
+
   const distanceFromRoot = cell => Math.min(...candidate.voxels.map(root =>
     Math.abs(cell[0] - root[0]) + Math.abs(cell[1] - root[1]) + Math.abs(cell[2] - root[2])
   ));
