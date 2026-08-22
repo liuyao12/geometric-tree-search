@@ -18,6 +18,15 @@ def test_confirmation_contract_or_result():
     assert row["expanded_prefixes"] < row[
         "eager_marking_library_prefixes"]
     assert row["saved_geometry_expansions"] > 0
+    assert row["fresh_exact_nine_action_supply"]
+    assert row["bounded_compute_gate_passed"]
+    assert row["fresh_bounded_joint_three_block_supply_confirmed"]
+    assert row["exact_lineages"] == 410
+    assert row["expanded_prefixes"] == 47
+    assert row["eager_marking_library_prefixes"] == 168
+    assert row["saved_geometry_expansions"] == 9033
+    assert row["execution_wall_seconds"] <= row[
+        "maximum_execution_wall_seconds"]
     assert not row["target_used_for_candidate_or_ranking"]
     assert not row["winner_selected_or_validated"]
     assert not row["autonomous_growth_claimed"]

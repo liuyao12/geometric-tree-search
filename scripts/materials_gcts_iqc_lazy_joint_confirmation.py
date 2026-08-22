@@ -33,8 +33,10 @@ DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_lazy_joint_confirmation_v1.json.gz"
 ATTEMPT_MARKER = ROOT / \
     "fixtures/iqc_lazy_joint_confirmation_attempt_v1.json"
-EXPECTED_FIXTURE_SHA256 = ""
-EXPECTED_RESULT_DIGEST = ""
+EXPECTED_FIXTURE_SHA256 = (
+    "009a05cbe8cc84ee0a86fa8537a869416680d931f84aa466e54596d80364f705")
+EXPECTED_RESULT_DIGEST = (
+    "ee63d004e53302d435c1543dc96f8530fa8512e6ba922c2bf14d7182eb1e0394")
 
 
 def _action_key(action):
