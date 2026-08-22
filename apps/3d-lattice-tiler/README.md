@@ -733,6 +733,18 @@ audit. This makes a ranked adaptive orbit window or an incremental outer solver
 the next optimization target. See
 `data/polycube-p9-42947-hybrid-higher-coverability-2026-08-21.json`.
 
+The next six exact proposals use persistent impact ranking: every learned triple
+orbit keeps the largest observed number of candidate combinations it blocks,
+and the one-orbit hybrid window selects the highest score. The selected orbit
+changes from an unscored fallback to a 110-combination obstruction on the next
+solve and survives a restart. Seeds 289–294 all return exact proposals, four
+with pair defects and two pairwise-complete states with triple defects, growing
+the formula to 771 pair, 207 triple, and three quadruple obligations. None
+clears the full triple audit, and each outer solve still takes 186–325 seconds.
+The result validates adaptive steering but makes repeated solver construction
+the next bottleneck; it is not evidence of non-tiling or aperiodicity. See
+`data/polycube-p9-42947-ranked-hybrid-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal

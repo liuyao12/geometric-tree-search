@@ -475,6 +475,10 @@ const archivedP9HybridHigherCoverability = JSON.parse(await readFile(
   new URL("../data/polycube-p9-42947-hybrid-higher-coverability-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP9RankedHybridCoverability = JSON.parse(await readFile(
+  new URL("../data/polycube-p9-42947-ranked-hybrid-coverability-2026-08-21.json", import.meta.url),
+  "utf8"
+));
 const correctedConvexPeriodicRescreen = JSON.parse(await readFile(
   new URL("../data/lattice-polyhedron-corrected-convex-periodic-rescreen-2026-08-20.json", import.meta.url),
   "utf8"
@@ -1738,6 +1742,13 @@ assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_pair_defect_states, 6);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_triple_defect_states, 7);
 assert.equal(volumeNineSurvivor.census_candidate.screening.corona_hybrid_higher_final_triple_constraints, 174);
+assert.equal(archivedP9RankedHybridCoverability.ranked_chain.sat_outer_states, 6);
+assert.equal(archivedP9RankedHybridCoverability.ranked_chain.selection_transition.selected_score_after_learning, 110);
+assert.equal(archivedP9RankedHybridCoverability.ranked_chain.final_constraints.triple, 207);
+assert.equal(archivedP9RankedHybridCoverability.certified_aperiodic, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_hybrid_states_checked, 6);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_hybrid_selected_score, 110);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_ranked_hybrid_final_triple_constraints, 207);
 assert.match(growthAppSource, /grouped pseudo-Boolean encoding compresses/);
 assert.match(growthAppSource, /every next-ring cell is individually coverable/);
 assert.match(growthAppSource, /passes every pair and every triple/);
@@ -1749,7 +1760,8 @@ assert.match(growthAppSource, /monolithic proposal formula/);
 assert.match(growthAppSource, /matched lazy-higher ablation/);
 assert.match(growthAppSource, /next target is hybrid proposal steering/);
 assert.match(growthAppSource, /Hybrid-higher screening encodes just/);
-assert.match(growthAppSource, /ranked adaptive orbit set or incremental outer solver/);
+assert.match(growthAppSource, /Persistent impact ranking then follows/);
+assert.match(growthAppSource, /not evidence of non-tiling or aperiodicity/);
 assert.match(
   growthAppSource,
   /optional exact partial-patch rule now waits until[\s\S]*?next-ring cell has no compatible placement/,

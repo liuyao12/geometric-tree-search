@@ -49,6 +49,9 @@ try {
   assert.equal(bounded.status, 0, bounded.stderr);
   const boundedReport = JSON.parse(readFileSync(boundedOutput, "utf8"));
   assert.equal(boundedReport.z3_status, "unsat");
+  assert.ok(boundedReport.construction_milliseconds >= 0);
+  assert.ok(boundedReport.check_milliseconds >= 0);
+  assert.ok(boundedReport.milliseconds >= boundedReport.construction_milliseconds);
   assert.equal(boundedReport.classification, "placement_bound_exhausted");
   assert.equal(boundedReport.max_placements, 1);
   assert.equal(boundedReport.root_symmetry_breaking, true);

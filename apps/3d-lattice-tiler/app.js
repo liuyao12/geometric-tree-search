@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v150";
+} from "./engine.js?v=20260821-polycube10-v151";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1505,7 +1505,11 @@ function updateCandidateResearchPanel() {
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_hybrid_higher_report) {
         const hybrid = candidate.screening;
-        candidateResearchDetail.textContent += ` Hybrid-higher screening encodes just ${hybrid.corona_hybrid_higher_encoded_triple_orbits} complete triple orbit and audits the rest lazily. It returns all four matched proposals without timeout and cuts their aggregate Z3 time by ${(100 * hybrid.corona_hybrid_higher_matched_runtime_reduction_fraction).toFixed(1)}% versus fully lazy screening; encoding ${hybrid.corona_hybrid_higher_large_subset_timeout_orbits} unranked orbits already times out. Across the chained fixed and recent-orbit lanes, ${hybrid.corona_hybrid_higher_chain_sat_states} exact proposals expose ${hybrid.corona_hybrid_higher_pair_defect_states} pair and ${hybrid.corona_hybrid_higher_triple_defect_states} triple defects, growing the formula to ${hybrid.corona_hybrid_higher_final_pair_constraints} pair, ${hybrid.corona_hybrid_higher_final_triple_constraints} triple, and ${hybrid.corona_hybrid_higher_final_quadruple_constraints} quadruple obligations. No proposal clears the full triple audit, so a ranked adaptive orbit set or incremental outer solver is still needed.`;
+        candidateResearchDetail.textContent += ` Hybrid-higher screening encodes just ${hybrid.corona_hybrid_higher_encoded_triple_orbits} complete triple orbit and audits the rest lazily. It returns all four matched proposals without timeout and cuts their aggregate Z3 time by ${(100 * hybrid.corona_hybrid_higher_matched_runtime_reduction_fraction).toFixed(1)}% versus fully lazy screening; encoding ${hybrid.corona_hybrid_higher_large_subset_timeout_orbits} unranked orbits already times out. Across the chained fixed and recent-orbit lanes, ${hybrid.corona_hybrid_higher_chain_sat_states} exact proposals expose ${hybrid.corona_hybrid_higher_pair_defect_states} pair and ${hybrid.corona_hybrid_higher_triple_defect_states} triple defects, growing the formula to ${hybrid.corona_hybrid_higher_final_pair_constraints} pair, ${hybrid.corona_hybrid_higher_final_triple_constraints} triple, and ${hybrid.corona_hybrid_higher_final_quadruple_constraints} quadruple obligations.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_ranked_hybrid_report) {
+        const ranked = candidate.screening;
+        candidateResearchDetail.textContent += ` Persistent impact ranking then follows the triple orbit observed to block ${ranked.corona_ranked_hybrid_selected_score} candidate combinations. Six more exact proposals expose ${ranked.corona_ranked_hybrid_pair_defect_states} pair and ${ranked.corona_ranked_hybrid_triple_defect_states} triple defects, reaching ${ranked.corona_ranked_hybrid_final_pair_constraints} pair, ${ranked.corona_ranked_hybrid_final_triple_constraints} triple, and ${ranked.corona_ranked_hybrid_final_quadruple_constraints} quadruple obligations. The ranked orbit changes as intended, but no proposal clears the full triple audit and each solve still takes minutes. This remains an unresolved benchmark, not evidence of non-tiling or aperiodicity; retaining outer-solver state is now the main performance target.`;
       }
     }
   } else if (knownAperiodic) {

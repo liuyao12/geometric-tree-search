@@ -493,7 +493,10 @@ def main():
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
 
     constraint_count = len(solver.assertions())
+    construction_ms = round((time.perf_counter() - started) * 1000)
+    check_started = time.perf_counter()
     status = solver.check()
+    check_ms = round((time.perf_counter() - check_started) * 1000)
     elapsed_ms = round((time.perf_counter() - started) * 1000)
     selected = []
     if status == z3.sat:
@@ -539,6 +542,8 @@ def main():
         "constraints": constraint_count,
         "forbidden_clauses": len(forbidden_clauses),
         "timeout_ms": args.timeout_ms,
+        "construction_milliseconds": construction_ms,
+        "check_milliseconds": check_ms,
         "milliseconds": elapsed_ms,
         "classification": (
             "verified_pending" if status == z3.sat
