@@ -96,8 +96,8 @@ if (!["encoded", "hybrid-higher", "hybrid-all", "lazy-higher", "lazy-all"].inclu
 }
 const encodedPairOrbitLimit = integerArg("encoded-pair-orbit-limit", 0, 0);
 const encodedPairSelectionPolicy = args.get("encoded-pair-selection") ?? "first";
-if (!["first", "recent", "max-blocked-combinations"].includes(encodedPairSelectionPolicy)) {
-  throw new Error("--encoded-pair-selection must be first, recent, or max-blocked-combinations");
+if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact"].includes(encodedPairSelectionPolicy)) {
+  throw new Error("--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, or frequency-weighted-impact");
 }
 if (tupleEnforcement === "hybrid-all" && encodedPairOrbitLimit === 0) {
   throw new Error("--tuple-enforcement=hybrid-all requires --encoded-pair-orbit-limit greater than zero");
@@ -178,6 +178,7 @@ const trials = [];
 const pairConstraints = [];
 const pairConstraintKeys = new Set();
 const pairOrbitScores = new Map();
+const pairOrbitHits = new Map();
 const cellConstraints = [];
 const cellConstraintKeys = new Set();
 const tripleConstraints = [];
@@ -219,12 +220,15 @@ const addPair = rawPair => {
 const pairOrbitRepresentativeKey = rawPair => polycubeCellPairOrbitKeys(candidate.voxels, rawPair)
   .map(pair => [...pair].sort().join(";"))
   .sort()[0];
-const addPairOrbit = (rawPair, blockedCombinations = 0) => {
-  const orbitKey = pairOrbitRepresentativeKey(rawPair);
+const updatePairOrbitScore = (orbitKey, blockedCombinations = 0) => {
   const score = Number(blockedCombinations);
   if (Number.isFinite(score) && score > (pairOrbitScores.get(orbitKey) ?? 0)) {
     pairOrbitScores.set(orbitKey, score);
   }
+};
+const addPairOrbit = (rawPair, blockedCombinations = 0) => {
+  const orbitKey = pairOrbitRepresentativeKey(rawPair);
+  updatePairOrbitScore(orbitKey, blockedCombinations);
   let added = 0;
   for (const pair of polycubeCellPairOrbitKeys(candidate.voxels, rawPair)) {
     added += Number(addPair(pair));
@@ -313,6 +317,17 @@ if (initialPairReport) {
   if (!initialPairOrbitScores || Array.isArray(initialPairOrbitScores) || typeof initialPairOrbitScores !== "object") {
     throw new Error("pair_orbit_scores must be an object keyed by canonical orbit representative");
   }
+  const initialPairOrbitHits = initial.pair_orbit_hits ?? {};
+  if (!initialPairOrbitHits || Array.isArray(initialPairOrbitHits) || typeof initialPairOrbitHits !== "object") {
+    throw new Error("pair_orbit_hits must be an object keyed by canonical orbit representative");
+  }
+  for (const [orbitKey, rawHits] of Object.entries(initialPairOrbitHits)) {
+    const hits = Number(rawHits);
+    if (!Number.isInteger(hits) || hits < 0) {
+      throw new Error(`pair_orbit_hits[${orbitKey}] must be a nonnegative integer`);
+    }
+    if (hits > 0) pairOrbitHits.set(orbitKey, hits);
+  }
   for (const pair of initialPairs) {
     addPairOrbit(pair, initialPairOrbitScores[pairOrbitRepresentativeKey(pair)] ?? 0);
   }
@@ -365,6 +380,11 @@ const serializedPairOrbitScores = () => Object.fromEntries(
     .filter(([, score]) => score > 0)
     .sort(([left], [right]) => left.localeCompare(right))
 );
+const serializedPairOrbitHits = () => Object.fromEntries(
+  [...pairOrbitHits.entries()]
+    .filter(([, hits]) => hits > 0)
+    .sort(([left], [right]) => left.localeCompare(right))
+);
 const describeEncodedPairs = constraints => {
   const orbitKeys = [];
   const seenOrbitKeys = new Set();
@@ -378,7 +398,8 @@ const describeEncodedPairs = constraints => {
     constraints,
     orbitCount: orbitKeys.length,
     orbitKeys,
-    orbitScores: orbitKeys.map(key => pairOrbitScores.get(key) ?? 0)
+    orbitScores: orbitKeys.map(key => pairOrbitScores.get(key) ?? 0),
+    orbitHits: orbitKeys.map(key => pairOrbitHits.get(key) ?? 0)
   };
 };
 const selectEncodedPairs = () => {
@@ -387,7 +408,7 @@ const selectEncodedPairs = () => {
     return { ...describeEncodedPairs(pairConstraints), orbitCount: null };
   }
   if (tupleEnforcement === "lazy-all") {
-    return { constraints: [], orbitCount: 0, orbitKeys: [], orbitScores: [] };
+    return { constraints: [], orbitCount: 0, orbitKeys: [], orbitScores: [], orbitHits: [] };
   }
   const orderedOrbitKeys = [];
   const seenOrbitKeys = new Set();
@@ -397,7 +418,30 @@ const selectEncodedPairs = () => {
     seenOrbitKeys.add(orbitKey);
     orderedOrbitKeys.push(orbitKey);
   }
-  const rankedOrbitKeys = encodedPairSelectionPolicy === "max-blocked-combinations"
+  const rankedOrbitKeys = encodedPairSelectionPolicy === "frequency-weighted-impact"
+    ? orderedOrbitKeys.map((key, index) => ({
+        key,
+        index,
+        hits: pairOrbitHits.get(key) ?? 0,
+        score: pairOrbitScores.get(key) ?? 0
+      }))
+        .sort((left, right) =>
+          right.hits * right.score - left.hits * left.score
+          || right.hits - left.hits
+          || right.score - left.score
+          || right.index - left.index
+        )
+        .map(entry => entry.key)
+    : encodedPairSelectionPolicy === "frequency-impact"
+    ? orderedOrbitKeys.map((key, index) => ({
+        key,
+        index,
+        hits: pairOrbitHits.get(key) ?? 0,
+        score: pairOrbitScores.get(key) ?? 0
+      }))
+        .sort((left, right) => right.hits - left.hits || right.score - left.score || right.index - left.index)
+        .map(entry => entry.key)
+    : encodedPairSelectionPolicy === "max-blocked-combinations"
     ? orderedOrbitKeys.map((key, index) => ({ key, index, score: pairOrbitScores.get(key) ?? 0 }))
         .sort((left, right) => right.score - left.score || right.index - left.index)
         .map(entry => entry.key)
@@ -469,6 +513,15 @@ const learnTupleObstructions = proposal => {
     return blockedDifference || pairKey(left).localeCompare(pairKey(right));
   });
   const incompatiblePairs = incompatiblePairDetails.map(detail => detail.target_cells);
+  const observedPairOrbitKeys = new Set();
+  for (const detail of incompatiblePairDetails) {
+    const orbitKey = pairOrbitRepresentativeKey(detail.target_cells);
+    updatePairOrbitScore(orbitKey, detail.candidate_pairs_blocked);
+    observedPairOrbitKeys.add(orbitKey);
+  }
+  for (const orbitKey of observedPairOrbitKeys) {
+    pairOrbitHits.set(orbitKey, (pairOrbitHits.get(orbitKey) ?? 0) + 1);
+  }
   let pairsAdded = 0;
   let pairOrbitsAdded = 0;
   let selectedPairCandidateCombinationsBlocked = null;
@@ -565,6 +618,7 @@ process.stdout.write(`${JSON.stringify({
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
   scored_pair_orbits: pairOrbitScores.size,
+  recurrent_pair_orbits: pairOrbitHits.size,
   lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   initial_clause_count: initialClauseCount,
@@ -644,6 +698,7 @@ const processSatProposal = ({
     encoded_pair_coverability_orbits: encodedPairs.orbitCount,
     encoded_pair_orbit_keys: encodedPairs.orbitKeys,
     encoded_pair_orbit_scores: encodedPairs.orbitScores,
+    encoded_pair_orbit_hits: encodedPairs.orbitHits,
     ...proposalTiming(proposal, witness, proposalIndex)
   };
   const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, state.corona, outerLayer);
@@ -685,6 +740,7 @@ const processSatProposal = ({
         encoded_pair_coverability_orbits: encodedPairs.orbitCount,
         encoded_pair_orbit_keys: encodedPairs.orbitKeys,
         encoded_pair_orbit_scores: encodedPairs.orbitScores,
+        encoded_pair_orbit_hits: encodedPairs.orbitHits,
         incompatible_target_triples: tupleResult.incompatibleTripleDetails.length,
         triple_audit_truncated: tupleResult.tripleAuditTruncated,
         selected_triple_candidate_combinations_blocked: tupleResult.incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
@@ -800,6 +856,7 @@ const processSatProposal = ({
     encoded_pair_coverability_orbits: encodedPairs.orbitCount,
     encoded_pair_orbit_keys: encodedPairs.orbitKeys,
     encoded_pair_orbit_scores: encodedPairs.orbitScores,
+    encoded_pair_orbit_hits: encodedPairs.orbitHits,
     incompatible_target_triples: incompatibleTripleDetails.length,
     triple_audit_truncated: tripleAuditTruncated,
     selected_triple_candidate_combinations_blocked: incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
@@ -827,7 +884,8 @@ const writeCurrentReports = () => {
   writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
   writeFileSync(pairPath, `${JSON.stringify({
     pairs: pairConstraints,
-    pair_orbit_scores: serializedPairOrbitScores()
+    pair_orbit_scores: serializedPairOrbitScores(),
+    pair_orbit_hits: serializedPairOrbitHits()
   }, null, 2)}\n`);
   const encodedPairs = selectEncodedPairs();
   writeFileSync(encodedPairPath, `${JSON.stringify({ pairs: encodedPairs.constraints }, null, 2)}\n`);
@@ -1063,6 +1121,7 @@ if (z3Interactive) {
         encoded_pair_coverability_orbits: encodedPairs.orbitCount,
         encoded_pair_orbit_keys: encodedPairs.orbitKeys,
         encoded_pair_orbit_scores: encodedPairs.orbitScores,
+        encoded_pair_orbit_hits: encodedPairs.orbitHits,
         triple_coverability_constraints: tripleConstraints.length,
         encoded_triple_coverability_constraints: encodedTriples.constraints.length,
         encoded_triple_coverability_orbits: encodedTriples.orbitCount,
@@ -1184,7 +1243,8 @@ writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
 writeFileSync(cellPath, `${JSON.stringify({ cells: cellConstraints }, null, 2)}\n`);
 writeFileSync(pairPath, `${JSON.stringify({
   pairs: pairConstraints,
-  pair_orbit_scores: serializedPairOrbitScores()
+  pair_orbit_scores: serializedPairOrbitScores(),
+  pair_orbit_hits: serializedPairOrbitHits()
 }, null, 2)}\n`);
 const finalEncodedPairSelection = selectEncodedPairs();
 writeFileSync(encodedPairPath, `${JSON.stringify({ pairs: finalEncodedPairSelection.constraints }, null, 2)}\n`);
@@ -1224,7 +1284,9 @@ const summary = {
   encoded_pair_coverability_constraints: finalEncodedPairSelection.constraints.length,
   encoded_pair_orbit_keys: finalEncodedPairSelection.orbitKeys,
   encoded_pair_orbit_scores: finalEncodedPairSelection.orbitScores,
+  encoded_pair_orbit_hits: finalEncodedPairSelection.orbitHits,
   pair_orbit_scores: serializedPairOrbitScores(),
+  pair_orbit_hits: serializedPairOrbitHits(),
   lookahead_conflict_encoding: lookaheadConflictEncoding,
   root_symmetry_breaking: rootSymmetryBreaking,
   z3_unknown_trials: z3UnknownTrials,

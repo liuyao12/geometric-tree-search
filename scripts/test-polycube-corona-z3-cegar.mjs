@@ -2,7 +2,7 @@
 
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,13 +17,14 @@ import {
 const python = process.env.PYTHON ?? "python3";
 const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
 const cegar = fileURLToPath(new URL("./screen-polycube-corona-z3-cegar.mjs", import.meta.url));
+const recurrenceReplay = fileURLToPath(new URL("./replay-polycube-pair-recurrence.mjs", import.meta.url));
 const cegarSource = readFileSync(cegar, "utf8");
 assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFileSync\(clausePath[\s\S]*?writeFileSync\(cellPath[\s\S]*?writeFileSync\(pairPath[\s\S]*?writeFileSync\(triplePath[\s\S]*?writeFileSync\(quadruplePath/);
 assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-limit", tripleOrbitLimit \|\| 1, 1\)/);
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all/);
-assert.match(cegarSource, /--encoded-pair-selection must be first, recent, or max-blocked-combinations/);
+assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, or frequency-weighted-impact/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -215,13 +216,18 @@ try {
   }
   assert.equal(scoredPairsByOrbit.size, 2);
   const [scoredPairLow, scoredPairHigh] = [...scoredPairsByOrbit.values()];
+  const scoredPairLowKey = pairOrbitKey(scoredPairLow);
   const scoredPairHighKey = pairOrbitKey(scoredPairHigh);
   const scoredPairPath = join(directory, "scored-pair-coverability.json");
   writeFileSync(scoredPairPath, `${JSON.stringify({
     pairs: [scoredPairLow, scoredPairHigh],
     pair_orbit_scores: {
-      [pairOrbitKey(scoredPairLow)]: 5,
+      [scoredPairLowKey]: 5,
       [scoredPairHighKey]: 23
+    },
+    pair_orbit_hits: {
+      [scoredPairLowKey]: 7,
+      [scoredPairHighKey]: 2
     }
   })}\n`);
   const replacePairWorker = spawnSync(python, [
@@ -610,6 +616,63 @@ try {
   ));
   assert.equal(persistedHybridPairs.pair_orbit_scores[scoredPairHighKey], 23);
 
+  const frequencyPairOutput = join(directory, "frequency-pair-summary.json");
+  const frequencyPairCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=1",
+    "--encoded-pair-selection=frequency-impact",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${scoredPairPath}`,
+    `--output-dir=${join(directory, "frequency-pair")}`,
+    `--report-output=${frequencyPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(frequencyPairCegar.status, 0, frequencyPairCegar.stderr);
+  const frequencyPairReport = JSON.parse(readFileSync(frequencyPairOutput, "utf8"));
+  assert.equal(frequencyPairReport.encoded_pair_selection, "frequency-impact");
+  assert.deepEqual(frequencyPairReport.encoded_pair_orbit_keys, [scoredPairLowKey]);
+  assert.ok(frequencyPairReport.encoded_pair_orbit_hits[0] >= 7);
+  assert.equal(frequencyPairReport.pair_orbit_hits[scoredPairLowKey] >= 7, true);
+
+  const weightedPairOutput = join(directory, "weighted-pair-summary.json");
+  const weightedPairCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=1",
+    "--encoded-pair-selection=frequency-weighted-impact",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${scoredPairPath}`,
+    `--output-dir=${join(directory, "weighted-pair")}`,
+    `--report-output=${weightedPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(weightedPairCegar.status, 0, weightedPairCegar.stderr);
+  const weightedPairReport = JSON.parse(readFileSync(weightedPairOutput, "utf8"));
+  assert.equal(weightedPairReport.encoded_pair_selection, "frequency-weighted-impact");
+  assert.deepEqual(weightedPairReport.encoded_pair_orbit_keys, [scoredPairHighKey]);
+  assert.ok(weightedPairReport.encoded_pair_orbit_scores[0] >= 23);
+
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [
     cegar,
@@ -702,6 +765,25 @@ try {
   assert.ok(positiveProposal.lookahead_target_cells > 0);
   assert.ok(positiveProposal.lookahead_raw_placements >= positiveProposal.lookahead_placements);
   assert.ok(positiveProposal.lookahead_conflicts > 0);
+  const replayInput = join(directory, "replay-input");
+  const replayOutput = join(directory, "replay-output.json");
+  mkdirSync(replayInput);
+  writeFileSync(join(replayInput, "outer-witness-0000.json"), `${JSON.stringify(positiveProposal)}\n`);
+  const replayedRecurrence = spawnSync(process.execPath, [
+    recurrenceReplay,
+    "--id=p9-42947",
+    "--layer=1",
+    "--limit=1",
+    `--input-root=${replayInput}`,
+    `--base-pair-report=${pairPath}`,
+    `--output=${replayOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(replayedRecurrence.status, 0, replayedRecurrence.stderr);
+  const replayReport = JSON.parse(readFileSync(replayOutput, "utf8"));
+  assert.equal(replayReport.verified_states, 1);
+  assert.equal(replayReport.pair_defect_states + replayReport.pair_complete_states, 1);
+  assert.ok(replayReport.pair_orbit_hits && typeof replayReport.pair_orbit_hits === "object");
+  assert.match(replayReport.warning, /not a tiling, non-tiling, or aperiodicity certificate/);
 
   const batchCegarOutput = join(directory, "batch-cegar-summary.json");
   const batchCegar = spawnSync(process.execPath, [
