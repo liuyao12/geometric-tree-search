@@ -134,6 +134,7 @@ def main():
     parser.add_argument("--key", required=True)
     parser.add_argument("--layer", type=int, default=5)
     parser.add_argument("--timeout-ms", type=int, default=300_000)
+    parser.add_argument("--max-witnesses", type=int, default=1)
     parser.add_argument("--backend", choices=("smt", "qffpbv", "pb2bv-sat"), default="smt")
     parser.add_argument("--random-seed", type=int, default=0)
     parser.add_argument("--min-placements", type=int)
@@ -151,10 +152,10 @@ def main():
     parser.add_argument("--formula-cache")
     parser.add_argument("--output")
     args = parser.parse_args()
-    if (args.layer < 1 or args.timeout_ms < 1
+    if (args.layer < 1 or args.timeout_ms < 1 or args.max_witnesses < 1
             or (args.min_placements is not None and args.min_placements < 1)
             or (args.max_placements is not None and args.max_placements < 1)):
-        parser.error("layer, timeout, and placement bounds (when supplied) must be positive")
+        parser.error("layer, timeout, witness count, and placement bounds (when supplied) must be positive")
     if (args.min_placements is not None and args.max_placements is not None
             and args.min_placements > args.max_placements):
         parser.error("min-placements cannot exceed max-placements")
@@ -574,14 +575,45 @@ def main():
 
     constraint_count = len(solver.assertions())
     construction_ms = round((time.perf_counter() - started) * 1000)
-    check_started = time.perf_counter()
-    status = solver.check()
-    check_ms = round((time.perf_counter() - check_started) * 1000)
-    elapsed_ms = round((time.perf_counter() - started) * 1000)
-    selected = []
-    if status == z3.sat:
+    witnesses = []
+    check_ms = 0
+    batch_blocking_clauses = 0
+    batch_terminal_status = "limit"
+    batch_reason_unknown = None
+    terminal_status = None
+    while len(witnesses) < args.max_witnesses:
+        remaining_timeout_ms = max(1, args.timeout_ms - check_ms)
+        solver.set(timeout=remaining_timeout_ms)
+        check_started = time.perf_counter()
+        terminal_status = solver.check()
+        witness_check_ms = round((time.perf_counter() - check_started) * 1000)
+        check_ms += witness_check_ms
+        if terminal_status != z3.sat:
+            batch_terminal_status = str(terminal_status)
+            batch_reason_unknown = solver.reason_unknown() if terminal_status == z3.unknown else None
+            break
         model = solver.model()
-        selected = [placements[index] for index, variable in enumerate(variables) if z3.is_true(model.eval(variable))]
+        selected_indices = [
+            index for index, variable in enumerate(variables)
+            if z3.is_true(model.eval(variable, model_completion=True))
+        ]
+        selected = [placements[index] for index in selected_indices]
+        witnesses.append({
+            "check_milliseconds": witness_check_ms,
+            "placements": len(selected),
+            "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected],
+        })
+        if len(witnesses) >= args.max_witnesses:
+            break
+        selected_index_set = set(selected_indices)
+        solver.add(z3.Or([
+            z3.Not(variable) if index in selected_index_set else variable
+            for index, variable in enumerate(variables)
+        ]))
+        batch_blocking_clauses += 1
+    status = z3.sat if witnesses else terminal_status
+    elapsed_ms = round((time.perf_counter() - started) * 1000)
+    selected = witnesses[0]["corona"] if witnesses else None
     report = {
         "kind": "polycube_corona_z3_exact_cover",
         "key": args.key,
@@ -622,6 +654,11 @@ def main():
         "constraints": constraint_count,
         "forbidden_clauses": len(forbidden_clauses),
         "timeout_ms": args.timeout_ms,
+        "max_witnesses": args.max_witnesses,
+        "witness_count": len(witnesses),
+        "batch_blocking_clauses": batch_blocking_clauses,
+        "batch_terminal_status": batch_terminal_status,
+        "batch_reason_unknown": batch_reason_unknown,
         "formula_cache": str(cache_path) if cache_path else None,
         "formula_cache_hit": formula_cache_hit,
         "formula_cache_pairs_reused": len(cached_pair_keys),
@@ -639,10 +676,14 @@ def main():
             else "incomplete"
         ),
         "z3_status": str(status),
-        "reason_unknown": solver.reason_unknown() if status == z3.unknown else None,
-        "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected] if selected else None,
+        "reason_unknown": batch_reason_unknown if status == z3.unknown else None,
+        "corona": selected,
+        "coronas": [witness["corona"] for witness in witnesses],
+        "witnesses": witnesses,
         "warning": (
-            "UNSAT depends on externally supplied forbidden clauses; validate their continuation proofs before treating this as a non-tiling certificate."
+            "Additional batch enumeration timed out after returning valid witnesses; the returned patches remain exact, but the batch is incomplete."
+            if witnesses and batch_terminal_status == "unknown"
+            else "UNSAT depends on externally supplied forbidden clauses; validate their continuation proofs before treating this as a non-tiling certificate."
             if status == z3.unsat and args.min_placements is None and args.max_placements is None and forbidden_clauses
             else (
                 f"Only patches in the configured placement-count range "
@@ -661,7 +702,10 @@ def main():
         output = Path(args.output)
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(encoded, encoding="utf-8")
-    print(json.dumps({key: value for key, value in report.items() if key != "corona"}))
+    print(json.dumps({
+        key: value for key, value in report.items()
+        if key not in ("corona", "coronas", "witnesses")
+    }))
 
 
 if __name__ == "__main__":

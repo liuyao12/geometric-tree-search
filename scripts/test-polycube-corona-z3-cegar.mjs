@@ -25,6 +25,8 @@ assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, l
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
+assert.match(cegarSource, /--max-witnesses=\$\{z3WitnessBatchSize\}/);
+assert.match(cegarSource, /const processSatProposal =/);
 assert.match(cegarSource, /if \(pairConstraints\.length && encodePairCoverability\)/);
 assert.match(cegarSource, /const encodedTriples = selectEncodedTriples\(\)/);
 assert.match(cegarSource, /--triple-coverability-report=\$\{encodedTriplePath\}/);
@@ -274,6 +276,30 @@ try {
   assert.equal(tripleReport.triple_coverability_terms, 0);
   assert.ok(tripleReport.triple_coverability_choice_variables > 0);
   assert.ok(tripleReport.triple_coverability_incompatibilities >= 0);
+
+  const batchOutput = join(directory, "batch-encoded.json");
+  const batchEncoded = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--max-witnesses=3",
+    `--output=${batchOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(batchEncoded.status, 0, batchEncoded.stderr);
+  const batchReport = JSON.parse(readFileSync(batchOutput, "utf8"));
+  assert.equal(batchReport.z3_status, "sat");
+  assert.equal(batchReport.witness_count, 3);
+  assert.equal(batchReport.batch_terminal_status, "limit");
+  assert.equal(batchReport.batch_blocking_clauses, 2);
+  assert.equal(batchReport.witnesses.length, 3);
+  assert.equal(new Set(batchReport.coronas.map(corona => JSON.stringify(
+    corona.map(placement => placement.cells).sort()
+  ))).size, 3);
 
   const quadrupleOutput = join(directory, "quadruple-encoded.json");
   const quadrupleEncoded = spawnSync(python, [
@@ -538,6 +564,37 @@ try {
   assert.ok(positiveProposal.lookahead_target_cells > 0);
   assert.ok(positiveProposal.lookahead_raw_placements >= positiveProposal.lookahead_placements);
   assert.ok(positiveProposal.lookahead_conflicts > 0);
+
+  const batchCegarOutput = join(directory, "batch-cegar-summary.json");
+  const batchCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=10",
+    "--tuple-enforcement=lazy-all",
+    "--learn-pair-coverability=true",
+    "--pair-orbit-limit=0",
+    "--pair-selection=max-blocked-combinations",
+    "--z3-witness-batch-size=3",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--output-dir=${join(directory, "batch-cegar")}`,
+    `--report-output=${batchCegarOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(batchCegar.status, 0, batchCegar.stderr);
+  const batchCegarReport = JSON.parse(readFileSync(batchCegarOutput, "utf8"));
+  assert.equal(batchCegarReport.z3_witness_batch_size, 3);
+  assert.equal(batchCegarReport.classification, "verified_inner_radius_witness");
+  assert.equal(batchCegarReport.trials.length, 2);
+  assert.equal(batchCegarReport.trials[0].proposal_index, 0);
+  assert.equal(batchCegarReport.trials[0].continuation_skipped, true);
+  assert.ok(batchCegarReport.trials[0].pair_constraints_added > 0);
+  assert.equal(batchCegarReport.trials[1].proposal_index, 1);
+  assert.equal(batchCegarReport.trials[1].continuation_success, true);
 
   const pairOutput = join(directory, "pair-encoded.json");
   const pairEncoded = spawnSync(python, [

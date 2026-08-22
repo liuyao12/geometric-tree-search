@@ -863,7 +863,8 @@ node scripts/screen-polycube-corona-z3-cegar.mjs \
   --triple-audit-limit=32 --triple-orbit-limit=0 \
   --triple-encoding=choice-cnf \
   --learn-quadruple-coverability=true --quadruple-max-cell-distance=6 \
-  --pair-encoding=witness-cnf --z3-formula-cache=true
+  --pair-encoding=witness-cnf --z3-formula-cache=true \
+  --z3-witness-batch-size=3
 ```
 
 Z3 proposes a complete outer corona; exact fixed-placement GCTS either extends
@@ -911,6 +912,18 @@ highest-scoring encoded orbits (scores 110 and 99) times out at 330 seconds.
 No proposal clears the triple audit, so no radius-five continuation starts and
 the finite outer search remains unexhausted. See
 `data/polycube-p9-42947-cached-ranked-extension-2026-08-21.json`.
+
+`--z3-witness-batch-size` can retain the solver and enumerate several distinct
+outer models before returning to JavaScript. Each additional model is separated
+by an exact full Boolean-assignment blocker, rather than the stronger monotone
+continuation clauses that are legal only after an obstruction is proved. The
+configured Z3 timeout is shared across the whole batch. CEGAR independently
+verifies every returned corona, applies all pair/triple/quadruple audits in
+sequence, and may start GCTS only for a model that clears them. A radius-one
+regression returns three distinct exact models from one solver state; CEGAR
+learns 156 pair constraints from the first and then verifies that the second
+extends to radius two. Batch enumeration therefore amortizes search state
+without weakening either witness verification or obstruction soundness.
 The default triple choice-CNF selects one available placement per cell and
 forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
 DNF while expressing the same exact condition. Quadruple learning uses the

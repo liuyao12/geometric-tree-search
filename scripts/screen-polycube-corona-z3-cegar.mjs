@@ -47,6 +47,7 @@ const iterations = integerArg("iterations", 50, 1);
 const z3TimeoutMs = integerArg("z3-timeout-ms", 30_000, 1);
 const z3ProcessGraceMs = integerArg("z3-process-grace-ms", 120_000, 1);
 const z3FormulaCache = booleanArg("z3-formula-cache", false);
+const z3WitnessBatchSize = integerArg("z3-witness-batch-size", 1, 1);
 const continuationTimeMs = integerArg("continuation-time-ms", 10_000, 1);
 const continuationNodes = integerArg("continuation-nodes", 10_000_000, 1);
 const nogoodLimit = integerArg("nogood-limit", 500_000, 1);
@@ -446,6 +447,7 @@ process.stdout.write(`${JSON.stringify({
   z3_timeout_ms: z3TimeoutMs,
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
+  z3_witness_batch_size: z3WitnessBatchSize,
   continuation_time_ms: continuationTimeMs,
   continuation_nodes: continuationNodes,
   backend,
@@ -488,15 +490,218 @@ process.stdout.write(`${JSON.stringify({
   output_directory: outputDirectory
 })}\n`);
 
-const proposalTiming = proposal => ({
-  z3_construction_milliseconds: proposal.construction_milliseconds ?? null,
-  z3_check_milliseconds: proposal.check_milliseconds ?? null,
+const proposalTiming = (proposal, witness = null, proposalIndex = 0) => ({
+  z3_milliseconds: (witness?.check_milliseconds ?? proposal.check_milliseconds ?? 0)
+    + (proposalIndex === 0 ? proposal.construction_milliseconds ?? 0 : 0),
+  z3_construction_milliseconds: proposalIndex === 0
+    ? proposal.construction_milliseconds ?? null
+    : 0,
+  z3_check_milliseconds: witness?.check_milliseconds ?? proposal.check_milliseconds ?? null,
   z3_formula_cache_hit: proposal.formula_cache_hit ?? false,
-  z3_formula_cache_pairs_reused: proposal.formula_cache_pairs_reused ?? 0,
-  z3_formula_cache_pairs_added: proposal.formula_cache_pairs_added ?? 0,
-  z3_formula_cache_load_milliseconds: proposal.formula_cache_load_milliseconds ?? 0,
-  z3_formula_cache_write_milliseconds: proposal.formula_cache_write_milliseconds ?? 0
+  z3_formula_cache_pairs_reused: proposalIndex === 0 ? proposal.formula_cache_pairs_reused ?? 0 : 0,
+  z3_formula_cache_pairs_added: proposalIndex === 0 ? proposal.formula_cache_pairs_added ?? 0 : 0,
+  z3_formula_cache_load_milliseconds: proposalIndex === 0
+    ? proposal.formula_cache_load_milliseconds ?? 0
+    : 0,
+  z3_formula_cache_write_milliseconds: proposalIndex === 0
+    ? proposal.formula_cache_write_milliseconds ?? 0
+    : 0
 });
+
+const recordTrial = (iteration, trial) => {
+  trials.push(trial);
+  if (iteration % progressEvery === 0 || iteration + 1 === iterations) {
+    process.stdout.write(`${JSON.stringify({ type: "z3_cegar_trial", ...trial })}\n`);
+  }
+};
+
+const processSatProposal = ({
+  proposal,
+  witness,
+  iteration,
+  iterationSeed,
+  proposalIndex,
+  proposalBatchSize,
+  encodedTriples
+}) => {
+  const state = { ...proposal, corona: witness.corona };
+  const common = {
+    iteration,
+    proposal_index: proposalIndex,
+    proposal_batch_size: proposalBatchSize,
+    proposal_batch_requested: proposal.max_witnesses ?? 1,
+    proposal_batch_terminal_status: proposal.batch_terminal_status ?? "limit",
+    random_seed: iterationSeed,
+    z3_status: "sat",
+    ...proposalTiming(proposal, witness, proposalIndex)
+  };
+  const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, state.corona, outerLayer);
+  if (!outerVerification.verified) {
+    throw new Error(`Z3 outer witness ${iteration}:${proposalIndex} failed verification: ${outerVerification.reason}`);
+  }
+  let tupleResult = null;
+  if (tupleEnforcement !== "encoded") {
+    tupleResult = learnTupleObstructions(state);
+    if (tupleResult.rejected) {
+      const learnedClause = state.corona.map(placementKey);
+      const clausesAdded = addClauseOrbit(learnedClause);
+      const tupleKind = tupleResult.incompatiblePairs.length
+        ? "pair"
+        : tupleResult.incompatibleTripleDetails.length
+          ? "triple"
+          : "quadruple";
+      recordTrial(iteration, {
+        ...common,
+        outer_placements: state.corona.length,
+        continuation_skipped: true,
+        continuation_success: false,
+        continuation_exhausted: null,
+        continuation_nodes: 0,
+        continuation_milliseconds: 0,
+        obstruction_kind: `lazy_${tupleKind}_coverability`,
+        learned_clause_size: learnedClause.length,
+        clauses_added: clausesAdded,
+        clauses: clauses.length,
+        cell_constraints_added: 0,
+        cell_orbits_added: 0,
+        cell_coverability_constraints: cellConstraints.length,
+        incompatible_target_pairs: tupleResult.incompatiblePairs.length,
+        selected_pair_candidate_combinations_blocked: tupleResult.selectedPairCandidateCombinationsBlocked,
+        pair_constraints_added: tupleResult.pairsAdded,
+        pair_orbits_added: tupleResult.pairOrbitsAdded,
+        pair_coverability_constraints: pairConstraints.length,
+        incompatible_target_triples: tupleResult.incompatibleTripleDetails.length,
+        triple_audit_truncated: tupleResult.tripleAuditTruncated,
+        selected_triple_candidate_combinations_blocked: tupleResult.incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
+        triple_constraints_added: tupleResult.triplesAdded,
+        triple_orbits_added: tupleResult.tripleOrbitsAdded,
+        triple_coverability_constraints: tripleConstraints.length,
+        encoded_triple_coverability_constraints: encodedTriples.constraints.length,
+        encoded_triple_coverability_orbits: encodedTriples.orbitCount,
+        encoded_triple_orbit_keys: encodedTriples.orbitKeys,
+        encoded_triple_orbit_scores: encodedTriples.orbitScores,
+        incompatible_target_quadruples: tupleResult.incompatibleQuadrupleDetails.length,
+        selected_quadruple_candidate_combinations_blocked: tupleResult.incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
+        quadruple_constraints_added: tupleResult.quadruplesAdded,
+        quadruple_orbits_added: tupleResult.quadrupleOrbitsAdded,
+        quadruple_coverability_constraints: quadrupleConstraints.length
+      });
+      return {
+        terminal: false,
+        progress: Boolean(clausesAdded || tupleResult.pairsAdded || tupleResult.triplesAdded || tupleResult.quadruplesAdded)
+      };
+    }
+  }
+  const continuation = searchPolycubeCorona(candidate.voxels, {
+    layers: innerLayer,
+    seed: iterationSeed + proposalIndex * 1_000_003,
+    fixedPlacements: state.corona,
+    nodeLimit: continuationNodes,
+    timeLimitMs: continuationTimeMs,
+    timeBudgetMode: "cpu",
+    nogoods: true,
+    conflictBackjumping: true,
+    nogoodLimit
+  });
+  if (continuation.success) {
+    const verification = verifyPolycubeCoronaPatch(candidate.voxels, continuation.corona, innerLayer);
+    if (!verification.verified) {
+      throw new Error(`Radius-${innerLayer} witness failed verification: ${verification.reason}`);
+    }
+    classification = "verified_inner_radius_witness";
+    radiusWitness = continuation;
+    recordTrial(iteration, {
+      ...common,
+      outer_placements: state.corona.length,
+      continuation_success: true,
+      continuation_nodes: continuation.nodes,
+      continuation_milliseconds: continuation.milliseconds,
+      clauses: clauses.length
+    });
+    return { terminal: true, progress: true };
+  }
+  if (!continuation.exhausted) {
+    classification = "continuation_incomplete";
+    recordTrial(iteration, {
+      ...common,
+      outer_placements: state.corona.length,
+      continuation_success: false,
+      continuation_exhausted: false,
+      continuation_nodes: continuation.nodes,
+      continuation_milliseconds: continuation.milliseconds,
+      clauses: clauses.length
+    });
+    return { terminal: true, progress: false };
+  }
+  const obstruction = continuation.fixed_obstruction_nogood;
+  const learnedClause = obstruction?.fixed_placement_keys?.length
+    ? obstruction.fixed_placement_keys
+    : state.corona.map(placementKey);
+  const clausesAdded = addClauseOrbit(learnedClause);
+  let cellOrbitsAdded = 0;
+  let cellsAdded = 0;
+  if (learnCellCoverability && obstruction?.target_cell) {
+    if (!cellOrbitLimit || cellOrbitsAdded < cellOrbitLimit) {
+      cellsAdded = addCellOrbit(obstruction.target_cell.join(","));
+      if (cellsAdded) cellOrbitsAdded += 1;
+    }
+  }
+  const {
+    incompatiblePairs,
+    pairsAdded,
+    pairOrbitsAdded,
+    selectedPairCandidateCombinationsBlocked,
+    incompatibleTripleDetails,
+    tripleAuditTruncated,
+    triplesAdded,
+    tripleOrbitsAdded,
+    incompatibleQuadrupleDetails,
+    quadruplesAdded,
+    quadrupleOrbitsAdded
+  } = tupleResult ?? learnTupleObstructions(state);
+  recordTrial(iteration, {
+    ...common,
+    outer_placements: state.corona.length,
+    continuation_success: false,
+    continuation_exhausted: true,
+    continuation_nodes: continuation.nodes,
+    continuation_milliseconds: continuation.milliseconds,
+    obstruction_kind: obstruction?.fixed_placement_keys?.length
+      ? obstruction.kind ?? "immediate_dead_target"
+      : "full_outer_state",
+    learned_clause_size: learnedClause.length,
+    clauses_added: clausesAdded,
+    clauses: clauses.length,
+    dead_target_cell: obstruction?.target_cell?.join(",") ?? null,
+    cell_constraints_added: cellsAdded,
+    cell_orbits_added: cellOrbitsAdded,
+    cell_coverability_constraints: cellConstraints.length,
+    incompatible_target_pairs: incompatiblePairs.length,
+    selected_pair_candidate_combinations_blocked: selectedPairCandidateCombinationsBlocked,
+    pair_constraints_added: pairsAdded,
+    pair_orbits_added: pairOrbitsAdded,
+    pair_coverability_constraints: pairConstraints.length,
+    incompatible_target_triples: incompatibleTripleDetails.length,
+    triple_audit_truncated: tripleAuditTruncated,
+    selected_triple_candidate_combinations_blocked: incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
+    triple_constraints_added: triplesAdded,
+    triple_orbits_added: tripleOrbitsAdded,
+    triple_coverability_constraints: tripleConstraints.length,
+    encoded_triple_coverability_constraints: encodedTriples.constraints.length,
+    encoded_triple_coverability_orbits: encodedTriples.orbitCount,
+    encoded_triple_orbit_keys: encodedTriples.orbitKeys,
+    encoded_triple_orbit_scores: encodedTriples.orbitScores,
+    incompatible_target_quadruples: incompatibleQuadrupleDetails.length,
+    selected_quadruple_candidate_combinations_blocked: incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
+    quadruple_constraints_added: quadruplesAdded,
+    quadruple_orbits_added: quadrupleOrbitsAdded,
+    quadruple_coverability_constraints: quadrupleConstraints.length
+  });
+  return {
+    terminal: false,
+    progress: Boolean(clausesAdded || cellsAdded || pairsAdded || triplesAdded || quadruplesAdded)
+  };
+};
 
 for (let iteration = 0; iteration < iterations; iteration += 1) {
   writeFileSync(clausePath, `${JSON.stringify({ clauses }, null, 2)}\n`);
@@ -516,6 +721,7 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     `--key=${polycubeKey(candidate.voxels)}`,
     `--layer=${outerLayer}`,
     `--timeout-ms=${z3TimeoutMs}`,
+    `--max-witnesses=${z3WitnessBatchSize}`,
     `--backend=${backend}`,
     `--random-seed=${iterationSeed}`,
     `--lookahead-conflict-encoding=${lookaheadConflictEncoding}`,
@@ -609,195 +815,63 @@ for (let iteration = 0; iteration < iterations; iteration += 1) {
     classification = "z3_incomplete";
     break;
   }
-  const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, proposal.corona, outerLayer);
-  if (!outerVerification.verified) {
-    throw new Error(`Z3 outer witness ${iteration} failed verification: ${outerVerification.reason}`);
-  }
-  let tupleResult = null;
-  if (tupleEnforcement !== "encoded") {
-    tupleResult = learnTupleObstructions(proposal);
-    if (tupleResult.rejected) {
-      const learnedClause = proposal.corona.map(placementKey);
-      const clausesAdded = addClauseOrbit(learnedClause);
-      const tupleKind = tupleResult.incompatiblePairs.length
-        ? "pair"
-        : tupleResult.incompatibleTripleDetails.length
-          ? "triple"
-          : "quadruple";
-      const trial = {
-        iteration,
-        random_seed: iterationSeed,
-        z3_status: "sat",
-        z3_milliseconds: proposal.milliseconds,
-        ...proposalTiming(proposal),
-        outer_placements: proposal.corona.length,
-        continuation_skipped: true,
-        continuation_success: false,
-        continuation_exhausted: null,
-        continuation_nodes: 0,
-        continuation_milliseconds: 0,
-        obstruction_kind: `lazy_${tupleKind}_coverability`,
-        learned_clause_size: learnedClause.length,
-        clauses_added: clausesAdded,
-        clauses: clauses.length,
-        cell_constraints_added: 0,
-        cell_orbits_added: 0,
-        cell_coverability_constraints: cellConstraints.length,
-        incompatible_target_pairs: tupleResult.incompatiblePairs.length,
-        selected_pair_candidate_combinations_blocked: tupleResult.selectedPairCandidateCombinationsBlocked,
-        pair_constraints_added: tupleResult.pairsAdded,
-        pair_orbits_added: tupleResult.pairOrbitsAdded,
-        pair_coverability_constraints: pairConstraints.length,
-        incompatible_target_triples: tupleResult.incompatibleTripleDetails.length,
-        triple_audit_truncated: tupleResult.tripleAuditTruncated,
-        selected_triple_candidate_combinations_blocked: tupleResult.incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
-        triple_constraints_added: tupleResult.triplesAdded,
-        triple_orbits_added: tupleResult.tripleOrbitsAdded,
-        triple_coverability_constraints: tripleConstraints.length,
-        encoded_triple_coverability_constraints: encodedTriples.constraints.length,
-        encoded_triple_coverability_orbits: encodedTriples.orbitCount,
-        encoded_triple_orbit_keys: encodedTriples.orbitKeys,
-        encoded_triple_orbit_scores: encodedTriples.orbitScores,
-        incompatible_target_quadruples: tupleResult.incompatibleQuadrupleDetails.length,
-        selected_quadruple_candidate_combinations_blocked: tupleResult.incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
-        quadruple_constraints_added: tupleResult.quadruplesAdded,
-        quadruple_orbits_added: tupleResult.quadrupleOrbitsAdded,
-        quadruple_coverability_constraints: quadrupleConstraints.length
-      };
-      trials.push(trial);
-      if (iteration % progressEvery === 0 || iteration + 1 === iterations) {
-        process.stdout.write(`${JSON.stringify({ type: "z3_cegar_trial", ...trial })}\n`);
-      }
-      if (!clausesAdded && !tupleResult.pairsAdded && !tupleResult.triplesAdded && !tupleResult.quadruplesAdded) {
-        classification = "duplicate_obstruction";
-        break;
-      }
-      continue;
-    }
-  }
-  const continuation = searchPolycubeCorona(candidate.voxels, {
-    layers: innerLayer,
-    seed: iterationSeed,
-    fixedPlacements: proposal.corona,
-    nodeLimit: continuationNodes,
-    timeLimitMs: continuationTimeMs,
-    timeBudgetMode: "cpu",
-    nogoods: true,
-    conflictBackjumping: true,
-    nogoodLimit
-  });
-  if (continuation.success) {
-    const verification = verifyPolycubeCoronaPatch(candidate.voxels, continuation.corona, innerLayer);
-    if (!verification.verified) {
-      throw new Error(`Radius-${innerLayer} witness failed verification: ${verification.reason}`);
-    }
-    classification = "verified_inner_radius_witness";
-    radiusWitness = continuation;
-    trials.push({
+  const proposalWitnesses = Array.isArray(proposal.witnesses) && proposal.witnesses.length
+    ? proposal.witnesses
+    : [{ corona: proposal.corona, check_milliseconds: proposal.check_milliseconds }];
+  let batchMadeProgress = false;
+  let batchReachedTerminalResult = false;
+  for (let proposalIndex = 0; proposalIndex < proposalWitnesses.length; proposalIndex += 1) {
+    const outcome = processSatProposal({
+      proposal,
+      witness: proposalWitnesses[proposalIndex],
       iteration,
+      iterationSeed,
+      proposalIndex,
+      proposalBatchSize: proposalWitnesses.length,
+      encodedTriples
+    });
+    batchMadeProgress ||= outcome.progress;
+    if (outcome.terminal) {
+      batchReachedTerminalResult = true;
+      break;
+    }
+  }
+  if (batchReachedTerminalResult) break;
+  if (proposal.batch_terminal_status === "unknown") {
+    z3UnknownTrials += 1;
+    const successfulCheckMilliseconds = proposalWitnesses.reduce(
+      (total, witness) => total + (witness.check_milliseconds ?? 0),
+      0
+    );
+    recordTrial(iteration, {
+      iteration,
+      proposal_index: proposalWitnesses.length,
+      proposal_batch_size: proposalWitnesses.length,
+      proposal_batch_requested: proposal.max_witnesses ?? z3WitnessBatchSize,
+      proposal_batch_terminal_status: proposal.batch_terminal_status,
       random_seed: iterationSeed,
-      z3_status: "sat",
-      z3_milliseconds: proposal.milliseconds,
-      ...proposalTiming(proposal),
-      outer_placements: proposal.corona.length,
-      continuation_success: true,
-      continuation_nodes: continuation.nodes,
-      continuation_milliseconds: continuation.milliseconds,
+      z3_status: "unknown",
+      z3_milliseconds: Math.max(0, (proposal.check_milliseconds ?? 0) - successfulCheckMilliseconds),
+      z3_construction_milliseconds: 0,
+      z3_check_milliseconds: Math.max(0, (proposal.check_milliseconds ?? 0) - successfulCheckMilliseconds),
+      z3_formula_cache_hit: proposal.formula_cache_hit ?? false,
+      z3_formula_cache_pairs_reused: 0,
+      z3_formula_cache_pairs_added: 0,
+      z3_formula_cache_load_milliseconds: 0,
+      z3_formula_cache_write_milliseconds: 0,
+      reason_unknown: proposal.batch_reason_unknown,
+      obstruction_kind: "batch_enumeration_timeout",
       clauses: clauses.length
     });
-    break;
-  }
-  if (!continuation.exhausted) {
-    classification = "continuation_incomplete";
-    trials.push({
-      iteration,
-      random_seed: iterationSeed,
-      z3_status: "sat",
-      z3_milliseconds: proposal.milliseconds,
-      ...proposalTiming(proposal),
-      outer_placements: proposal.corona.length,
-      continuation_success: false,
-      continuation_exhausted: false,
-      continuation_nodes: continuation.nodes,
-      continuation_milliseconds: continuation.milliseconds,
-      clauses: clauses.length
-    });
-    break;
-  }
-  const obstruction = continuation.fixed_obstruction_nogood;
-  const learnedClause = obstruction?.fixed_placement_keys?.length
-    ? obstruction.fixed_placement_keys
-    : proposal.corona.map(placementKey);
-  const clausesAdded = addClauseOrbit(learnedClause);
-  let cellOrbitsAdded = 0;
-  let cellsAdded = 0;
-  if (learnCellCoverability && obstruction?.target_cell) {
-    if (!cellOrbitLimit || cellOrbitsAdded < cellOrbitLimit) {
-      cellsAdded = addCellOrbit(obstruction.target_cell.join(","));
-      if (cellsAdded) cellOrbitsAdded += 1;
+    if (!continueOnZ3Unknown) {
+      classification = "z3_incomplete";
+      break;
     }
   }
-  const {
-    incompatiblePairs,
-    pairsAdded,
-    pairOrbitsAdded,
-    selectedPairCandidateCombinationsBlocked,
-    incompatibleTripleDetails,
-    tripleAuditTruncated,
-    triplesAdded,
-    tripleOrbitsAdded,
-    incompatibleQuadrupleDetails,
-    quadruplesAdded,
-    quadrupleOrbitsAdded
-  } = tupleResult ?? learnTupleObstructions(proposal);
-  const trial = {
-    iteration,
-    random_seed: iterationSeed,
-    z3_status: "sat",
-    z3_milliseconds: proposal.milliseconds,
-    ...proposalTiming(proposal),
-    outer_placements: proposal.corona.length,
-    continuation_success: false,
-    continuation_exhausted: true,
-    continuation_nodes: continuation.nodes,
-    continuation_milliseconds: continuation.milliseconds,
-    obstruction_kind: obstruction?.fixed_placement_keys?.length
-      ? obstruction.kind ?? "immediate_dead_target"
-      : "full_outer_state",
-    learned_clause_size: learnedClause.length,
-    clauses_added: clausesAdded,
-    clauses: clauses.length,
-    dead_target_cell: obstruction?.target_cell?.join(",") ?? null,
-    cell_constraints_added: cellsAdded,
-    cell_orbits_added: cellOrbitsAdded,
-    cell_coverability_constraints: cellConstraints.length,
-    incompatible_target_pairs: incompatiblePairs.length,
-    selected_pair_candidate_combinations_blocked: selectedPairCandidateCombinationsBlocked,
-    pair_constraints_added: pairsAdded,
-    pair_orbits_added: pairOrbitsAdded,
-    pair_coverability_constraints: pairConstraints.length,
-    incompatible_target_triples: incompatibleTripleDetails.length,
-    triple_audit_truncated: tripleAuditTruncated,
-    selected_triple_candidate_combinations_blocked: incompatibleTripleDetails[0]?.candidate_triples_blocked ?? null,
-    triple_constraints_added: triplesAdded,
-    triple_orbits_added: tripleOrbitsAdded,
-    triple_coverability_constraints: tripleConstraints.length,
-    encoded_triple_coverability_constraints: encodedTriples.constraints.length,
-    encoded_triple_coverability_orbits: encodedTriples.orbitCount,
-    encoded_triple_orbit_keys: encodedTriples.orbitKeys,
-    encoded_triple_orbit_scores: encodedTriples.orbitScores,
-    incompatible_target_quadruples: incompatibleQuadrupleDetails.length,
-    selected_quadruple_candidate_combinations_blocked: incompatibleQuadrupleDetails[0]?.candidate_quadruples_blocked ?? null,
-    quadruple_constraints_added: quadruplesAdded,
-    quadruple_orbits_added: quadrupleOrbitsAdded,
-    quadruple_coverability_constraints: quadrupleConstraints.length
-  };
-  trials.push(trial);
-  if (iteration % progressEvery === 0 || iteration + 1 === iterations) {
-    process.stdout.write(`${JSON.stringify({ type: "z3_cegar_trial", ...trial })}\n`);
-  }
-  if (!clausesAdded && !cellsAdded && !pairsAdded && !triplesAdded && !quadruplesAdded) {
-    classification = "duplicate_obstruction";
+  if (!batchMadeProgress) {
+    classification = proposal.batch_terminal_status === "unknown"
+      ? "z3_incomplete"
+      : "duplicate_obstruction";
     break;
   }
 }
@@ -843,6 +917,7 @@ const summary = {
   z3_timeout_ms: z3TimeoutMs,
   z3_process_grace_ms: z3ProcessGraceMs,
   z3_formula_cache: z3FormulaCache,
+  z3_witness_batch_size: z3WitnessBatchSize,
   continuation_time_ms: continuationTimeMs,
   continuation_nodes: continuationNodes,
   trials,
