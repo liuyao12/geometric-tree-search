@@ -8,7 +8,10 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 import { polycubeKey } from "../assets/polycube-enumerator.js";
-import { enumeratePolycubeCoronaPlacements } from "../assets/polycube-corona-search.js";
+import {
+  enumeratePolycubeCoronaPlacements,
+  polycubeCellTripleOrbitKeys
+} from "../assets/polycube-corona-search.js";
 
 const python = process.env.PYTHON ?? "python3";
 const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
@@ -19,8 +22,10 @@ assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-li
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, lazy-higher, or lazy-all/);
+assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
+assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /if \(pairConstraints\.length && encodePairCoverability\)/);
-assert.match(cegarSource, /const encodedTripleSelection = selectEncodedTriples\(\)/);
+assert.match(cegarSource, /const encodedTriples = selectEncodedTriples\(\)/);
 assert.match(cegarSource, /--triple-coverability-report=\$\{encodedTriplePath\}/);
 assert.match(cegarSource, /if \(tupleEnforcement !== "encoded"\)[\s\S]*?continuation_skipped: true[\s\S]*?const continuation = searchPolycubeCorona/);
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
@@ -188,6 +193,15 @@ try {
   const triplePath = join(directory, "triple-coverability.json");
   writeFileSync(triplePath, `${JSON.stringify({
     triples: [[secondRing[0], secondRing[1], secondRing.at(-1)]]
+  })}\n`);
+  const scoredTriple = [secondRing[0], secondRing[1], secondRing.at(-1)];
+  const scoredTripleOrbitKey = polycubeCellTripleOrbitKeys(candidate.voxels, scoredTriple)
+    .map(triple => [...triple].sort().join(";"))
+    .sort()[0];
+  const scoredTriplePath = join(directory, "scored-triple-coverability.json");
+  writeFileSync(scoredTriplePath, `${JSON.stringify({
+    triples: [scoredTriple],
+    triple_orbit_scores: { [scoredTripleOrbitKey]: 17 }
   })}\n`);
   const quadruplePath = join(directory, "quadruple-coverability.json");
   writeFileSync(quadruplePath, `${JSON.stringify({
@@ -386,7 +400,7 @@ try {
     "--require-next-layer-coverability=true",
     "--tuple-enforcement=hybrid-higher",
     "--encoded-triple-orbit-limit=1",
-    "--encoded-triple-selection=recent",
+    "--encoded-triple-selection=max-blocked-combinations",
     "--lookahead-conflict-encoding=grouped-pb",
     "--learn-triple-coverability=true",
     "--triple-max-cell-distance=6",
@@ -396,7 +410,7 @@ try {
     "--continuation-time-ms=10000",
     "--continuation-nodes=100000",
     `--python=${python}`,
-    `--initial-triple-report=${triplePath}`,
+    `--initial-triple-report=${scoredTriplePath}`,
     `--initial-quadruple-report=${quadruplePath}`,
     `--output-dir=${join(directory, "hybrid-higher")}`,
     `--report-output=${hybridHigherOutput}`
@@ -405,9 +419,10 @@ try {
   const hybridHigherReport = JSON.parse(readFileSync(hybridHigherOutput, "utf8"));
   assert.equal(hybridHigherReport.tuple_enforcement, "hybrid-higher");
   assert.equal(hybridHigherReport.encoded_triple_orbit_limit, 1);
-  assert.equal(hybridHigherReport.encoded_triple_selection, "recent");
+  assert.equal(hybridHigherReport.encoded_triple_selection, "max-blocked-combinations");
   assert.equal(hybridHigherReport.encoded_triple_coverability_orbits, 1);
   assert.ok(hybridHigherReport.encoded_triple_coverability_constraints > 0);
+  assert.deepEqual(hybridHigherReport.trials[0].encoded_triple_orbit_scores, [17]);
   assert.ok(
     hybridHigherReport.encoded_triple_coverability_constraints
       <= hybridHigherReport.triple_coverability_constraint_count
@@ -418,6 +433,11 @@ try {
     hybridHigherReport.encoded_triple_coverability_constraints
   );
   assert.equal(hybridHigherProposal.quadruple_coverability_constraints, 0);
+  const persistedHybridTriples = JSON.parse(readFileSync(
+    join(directory, "hybrid-higher", "triple-coverability.json"),
+    "utf8"
+  ));
+  assert.ok(persistedHybridTriples.triple_orbit_scores[scoredTripleOrbitKey] >= 17);
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [

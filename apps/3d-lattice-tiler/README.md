@@ -894,7 +894,11 @@ orbits from the accumulated triple set and audits every remaining triple and
 quadruple lazily. The generated `encoded-triple-coverability.json` makes the
 actual steering subset explicit and resumable. The optional
 `--encoded-triple-selection=recent` window follows newly learned obstruction
-orbits instead of permanently retaining the earliest ones.
+orbits instead of permanently retaining the earliest ones. The
+`max-blocked-combinations` policy records the largest observed number of
+currently available placement triples eliminated by each obstruction orbit,
+persists those scores beside `triple-coverability.json`, and encodes the
+highest-scoring complete orbits. Ties prefer newer observations.
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all
