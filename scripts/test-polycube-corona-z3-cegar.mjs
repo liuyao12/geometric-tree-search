@@ -25,6 +25,7 @@ assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTrunca
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all/);
 assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, historical-core, or recent-defect-cover/);
+assert.match(cegarSource, /--recent-defect-orbit-limit is only valid with --encoded-pair-selection=recent-defect-cover/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -800,6 +801,36 @@ try {
   assert.equal(recentPairReport.trials[0].encoded_pair_recent_defect_size, 2);
   assert.equal(recentPairReport.trials[0].encoded_pair_recent_defect_orbits_selected, 2);
   assert.equal(recentPairReport.trials[0].encoded_pair_recent_defect_complete, true);
+
+  const boundedRecentPairOutput = join(directory, "bounded-recent-pair-summary.json");
+  const boundedRecentPairCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=2",
+    "--encoded-pair-selection=recent-defect-cover",
+    "--recent-defect-orbit-limit=1",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${recentPairPath}`,
+    `--output-dir=${join(directory, "bounded-recent-pair")}`,
+    `--report-output=${boundedRecentPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(boundedRecentPairCegar.status, 0, boundedRecentPairCegar.stderr);
+  const boundedRecentPairReport = JSON.parse(readFileSync(boundedRecentPairOutput, "utf8"));
+  assert.equal(boundedRecentPairReport.recent_defect_orbit_limit, 1);
+  assert.equal(boundedRecentPairReport.trials[0].encoded_pair_recent_defect_size, 2);
+  assert.equal(boundedRecentPairReport.trials[0].encoded_pair_recent_defect_orbits_selected, 1);
+  assert.equal(boundedRecentPairReport.trials[0].encoded_pair_recent_defect_complete, false);
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [

@@ -99,6 +99,14 @@ const encodedPairSelectionPolicy = args.get("encoded-pair-selection") ?? "first"
 if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact", "historical-cover", "historical-core", "recent-defect-cover"].includes(encodedPairSelectionPolicy)) {
   throw new Error("--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, historical-core, or recent-defect-cover");
 }
+const recentDefectOrbitLimit = integerArg(
+  "recent-defect-orbit-limit",
+  encodedPairOrbitLimit || 1,
+  1
+);
+if (args.has("recent-defect-orbit-limit") && encodedPairSelectionPolicy !== "recent-defect-cover") {
+  throw new Error("--recent-defect-orbit-limit is only valid with --encoded-pair-selection=recent-defect-cover");
+}
 if (tupleEnforcement === "hybrid-all" && encodedPairOrbitLimit === 0) {
   throw new Error("--tuple-enforcement=hybrid-all requires --encoded-pair-orbit-limit greater than zero");
 }
@@ -465,7 +473,10 @@ const selectEncodedPairs = () => {
           || (pairOrbitHits.get(right) ?? 0) - (pairOrbitHits.get(left) ?? 0)
           || (orbitOrderIndex.get(right) ?? 0) - (orbitOrderIndex.get(left) ?? 0)
         );
-      historicalCoverKeys.push(...latestDefectKeys.slice(0, encodedPairOrbitLimit));
+      historicalCoverKeys.push(...latestDefectKeys.slice(
+        0,
+        Math.min(encodedPairOrbitLimit, recentDefectOrbitLimit)
+      ));
       const protectedKeys = new Set(historicalCoverKeys);
       uncovered = uncovered.filter(orbitSet => !orbitSet.some(key => protectedKeys.has(key)));
     }
@@ -708,6 +719,7 @@ process.stdout.write(`${JSON.stringify({
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
+  recent_defect_orbit_limit: recentDefectOrbitLimit,
   scored_pair_orbits: pairOrbitScores.size,
   recurrent_pair_orbits: pairOrbitHits.size,
   historical_pair_defect_sets: pairDefectOrbitSets.length,
@@ -1380,6 +1392,7 @@ const summary = {
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
+  recent_defect_orbit_limit: recentDefectOrbitLimit,
   encoded_pair_coverability_orbits: finalEncodedPairSelection.orbitCount,
   encoded_pair_coverability_constraints: finalEncodedPairSelection.constraints.length,
   encoded_pair_orbit_keys: finalEncodedPairSelection.orbitKeys,
