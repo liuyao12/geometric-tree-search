@@ -167,7 +167,7 @@ def branch_features(state: FusionSearchState):
 
 
 def _child(source, connection, state_model, state, point, descriptor,
-           target_radius):
+           target_radius, geometry_cache=None):
     color = str(_dominant_source_color(state.proposals, point))
     probability = score_pose_port_state(state_model, descriptor)
     vote = int(state.proposals.votes[point])
@@ -175,9 +175,17 @@ def _child(source, connection, state_model, state, point, descriptor,
         state_model.token_marking, descriptor,
         state_bin_width=state_model.state_bin_width,
         channel_families=state_model.channel_families)
-    positions, species, future = advance_frontier_configuration(
-        connection, state.proposals, state.positions, state.species,
-        (point,), (color,), CLUSTER_EDGES, source.group, target_radius)
+    geometry_key = action_key(
+        state.actions + ((tuple(point), color),))
+    geometry = None if geometry_cache is None else geometry_cache.get(
+        geometry_key)
+    if geometry is None:
+        geometry = advance_frontier_configuration(
+            connection, state.proposals, state.positions, state.species,
+            (point,), (color,), CLUSTER_EDGES, source.group, target_radius)
+        if geometry_cache is not None:
+            geometry_cache[geometry_key] = geometry
+    positions, species, future = geometry
     return FusionSearchState(
         positions, species, future,
         state.actions + ((tuple(point), color),),

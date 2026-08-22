@@ -147,17 +147,28 @@ def _channel_diverse_points(state, runtime):
     return selected, descriptors
 
 
-def _channel_tree(source, runtime, radius):
+def _channel_tree(source, runtime, radius, telemetry=None,
+                  use_geometry_cache=True):
     states = (_initial_state(source, runtime, radius),)
     counts = []
+    geometry_cache = {} if use_geometry_cache else None
+    cache_hits = cache_misses = 0
     for _depth in range(THIRD_DEPTH):
         children = {}
         for state in states:
             points, descriptors = _channel_diverse_points(state, runtime)
             for point in points:
+                color = str(_dominant_source_color(state.proposals, point))
+                geometry_key = action_key(
+                    state.actions + ((tuple(point), color),))
+                if geometry_cache is not None and geometry_key in geometry_cache:
+                    cache_hits += 1
+                else:
+                    cache_misses += 1
                 child = _child(
                     source, runtime["connection"], runtime["state_model"],
-                    state, point, descriptors[point], radius)
+                    state, point, descriptors[point], radius,
+                    geometry_cache=geometry_cache)
                 key = action_key(child.actions)
                 prior = children.get(key)
                 if prior is None or (child.cumulative, child.actions) > \
@@ -166,6 +177,14 @@ def _channel_tree(source, runtime, radius):
         states = tuple(sorted(children.values(),
                               key=lambda row: action_key(row.actions)))
         counts.append(len(states))
+    if telemetry is not None:
+        telemetry.update({
+            "geometry_cache_hits": cache_hits,
+            "geometry_cache_misses": cache_misses,
+            "naive_geometry_expansions": cache_hits + cache_misses,
+            "saved_geometry_expansions": cache_hits,
+            "unique_geometry_expansions": cache_misses,
+        })
     return states, tuple(counts)
 
 
