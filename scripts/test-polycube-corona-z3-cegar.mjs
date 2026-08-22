@@ -24,7 +24,7 @@ assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-li
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all/);
-assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, or historical-cover/);
+assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, or historical-core/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -208,16 +208,17 @@ try {
     .map(item => [...item].sort().join(";"))
     .sort()[0];
   const scoredPairsByOrbit = new Map();
-  for (let left = 0; left < secondRing.length && scoredPairsByOrbit.size < 2; left += 1) {
-    for (let right = left + 1; right < secondRing.length && scoredPairsByOrbit.size < 2; right += 1) {
+  for (let left = 0; left < secondRing.length && scoredPairsByOrbit.size < 3; left += 1) {
+    for (let right = left + 1; right < secondRing.length && scoredPairsByOrbit.size < 3; right += 1) {
       const pair = [secondRing[left], secondRing[right]];
       scoredPairsByOrbit.set(pairOrbitKey(pair), pair);
     }
   }
-  assert.equal(scoredPairsByOrbit.size, 2);
-  const [scoredPairLow, scoredPairHigh] = [...scoredPairsByOrbit.values()];
+  assert.equal(scoredPairsByOrbit.size, 3);
+  const [scoredPairLow, scoredPairHigh, scoredPairThird] = [...scoredPairsByOrbit.values()];
   const scoredPairLowKey = pairOrbitKey(scoredPairLow);
   const scoredPairHighKey = pairOrbitKey(scoredPairHigh);
+  const scoredPairThirdKey = pairOrbitKey(scoredPairThird);
   const scoredPairPath = join(directory, "scored-pair-coverability.json");
   writeFileSync(scoredPairPath, `${JSON.stringify({
     pairs: [scoredPairLow, scoredPairHigh],
@@ -705,6 +706,53 @@ try {
   assert.deepEqual(coverPairReport.encoded_pair_orbit_keys, [scoredPairLowKey]);
   assert.ok(coverPairReport.encoded_pair_historical_sets_covered >= 2);
   assert.ok(coverPairReport.pair_defect_orbit_set_count >= 2);
+
+  const corePairPath = join(directory, "core-pair-coverability.json");
+  writeFileSync(corePairPath, `${JSON.stringify({
+    pairs: [scoredPairLow, scoredPairHigh, scoredPairThird],
+    pair_orbit_scores: {
+      [scoredPairLowKey]: 5,
+      [scoredPairHighKey]: 23,
+      [scoredPairThirdKey]: 1
+    },
+    pair_orbit_hits: {
+      [scoredPairLowKey]: 1,
+      [scoredPairHighKey]: 2,
+      [scoredPairThirdKey]: 1
+    },
+    pair_defect_orbit_sets: [
+      [scoredPairLowKey],
+      [scoredPairHighKey, scoredPairThirdKey],
+      [scoredPairHighKey, scoredPairThirdKey]
+    ]
+  })}\n`);
+  const corePairOutput = join(directory, "core-pair-summary.json");
+  const corePairCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=1",
+    "--encoded-pair-selection=historical-core",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${corePairPath}`,
+    `--output-dir=${join(directory, "core-pair")}`,
+    `--report-output=${corePairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(corePairCegar.status, 0, corePairCegar.stderr);
+  const corePairReport = JSON.parse(readFileSync(corePairOutput, "utf8"));
+  assert.equal(corePairReport.encoded_pair_selection, "historical-core");
+  assert.deepEqual(corePairReport.encoded_pair_orbit_keys, [scoredPairLowKey]);
+  assert.equal(corePairReport.encoded_pair_historical_sets_covered, 1);
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [

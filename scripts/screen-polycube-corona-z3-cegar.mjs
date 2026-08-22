@@ -96,8 +96,8 @@ if (!["encoded", "hybrid-higher", "hybrid-all", "lazy-higher", "lazy-all"].inclu
 }
 const encodedPairOrbitLimit = integerArg("encoded-pair-orbit-limit", 0, 0);
 const encodedPairSelectionPolicy = args.get("encoded-pair-selection") ?? "first";
-if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact", "historical-cover"].includes(encodedPairSelectionPolicy)) {
-  throw new Error("--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, or historical-cover");
+if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact", "historical-cover", "historical-core"].includes(encodedPairSelectionPolicy)) {
+  throw new Error("--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, or historical-core");
 }
 if (tupleEnforcement === "hybrid-all" && encodedPairOrbitLimit === 0) {
   throw new Error("--tuple-enforcement=hybrid-all requires --encoded-pair-orbit-limit greater than zero");
@@ -441,12 +441,27 @@ const selectEncodedPairs = () => {
   }
   const orbitOrderIndex = new Map(orderedOrbitKeys.map((key, index) => [key, index]));
   let historicalCoverKeys = null;
-  if (encodedPairSelectionPolicy === "historical-cover") {
+  if (["historical-cover", "historical-core"].includes(encodedPairSelectionPolicy)) {
     const available = new Set(orderedOrbitKeys);
     let uncovered = pairDefectOrbitSets
       .map(orbitSet => orbitSet.filter(key => available.has(key)))
       .filter(orbitSet => orbitSet.length);
     historicalCoverKeys = [];
+    if (encodedPairSelectionPolicy === "historical-core") {
+      const singletonCounts = new Map();
+      for (const orbitSet of uncovered) {
+        if (orbitSet.length !== 1) continue;
+        singletonCounts.set(orbitSet[0], (singletonCounts.get(orbitSet[0]) ?? 0) + 1);
+      }
+      historicalCoverKeys.push(...[...singletonCounts.keys()].sort((left, right) =>
+        (singletonCounts.get(right) ?? 0) - (singletonCounts.get(left) ?? 0)
+        || (pairOrbitScores.get(right) ?? 0) - (pairOrbitScores.get(left) ?? 0)
+        || (pairOrbitHits.get(right) ?? 0) - (pairOrbitHits.get(left) ?? 0)
+        || (orbitOrderIndex.get(right) ?? 0) - (orbitOrderIndex.get(left) ?? 0)
+      ).slice(0, encodedPairOrbitLimit));
+      const protectedKeys = new Set(historicalCoverKeys);
+      uncovered = uncovered.filter(orbitSet => !orbitSet.some(key => protectedKeys.has(key)));
+    }
     while (uncovered.length && historicalCoverKeys.length < encodedPairOrbitLimit) {
       const coverage = new Map();
       for (const orbitSet of uncovered) for (const key of orbitSet) {
