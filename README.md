@@ -60,7 +60,13 @@ Pages site. The main way to use it is to open the page in a browser:
   translational quotient resolved the full size-12 pass, and `10_16113`, whose
   corrected shell-1 witness leads to an exact shell-2 non-tiler certificate.
   The complete 1,502,640-entry size-13 pass contributes an isohedral-only
-  periodic regression and two harder exact shell-2 non-tiler controls.
+  periodic regression and two harder exact shell-2 non-tiler controls. For
+  polycube candidate `p10-055695`, lazy next-ring cell CEGAR has now checked 22
+  additional radius-three proposals and promoted 22 symmetry-distinct dead-cell
+  orbits; an incremental Z3 path installs those exact obligations without
+  rebuilding the formula. Across the old and new portfolios, all 71 proposals
+  fail immediate radius-four continuation, but the outer space remains
+  unexhausted, so this is neither a non-tiling nor an aperiodicity certificate.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

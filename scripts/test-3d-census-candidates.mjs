@@ -439,6 +439,10 @@ const archivedP10055695Z3Cegar = JSON.parse(await readFile(
   new URL("../data/polycube-p10-055695-z3-cegar-radius4-2026-08-21.json", import.meta.url),
   "utf8"
 ));
+const archivedP10055695LazyCellCegar = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-055695-lazy-cell-cegar-2026-08-22.json", import.meta.url),
+  "utf8"
+));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1604,6 +1608,15 @@ assert.equal(archivedP10055695Z3Cegar.eager_one_step_coverability_ablation.max_4
 assert.equal(archivedP10055695Z3Cegar.eager_one_step_coverability_ablation.max_43_staged.status, "timeout");
 assert.equal(archivedP10055695Z3Cegar.radius_3_space_exhausted, false);
 assert.equal(archivedP10055695Z3Cegar.certified_non_tiler, false);
+assert.equal(archivedP10055695LazyCellCegar.implementation_commit, "dd3839e");
+assert.equal(archivedP10055695LazyCellCegar.lazy_cell_portfolio.z3_sat_outer_states, 22);
+assert.equal(archivedP10055695LazyCellCegar.lazy_cell_portfolio.z3_timeout_trials, 17);
+assert.equal(archivedP10055695LazyCellCegar.lazy_cell_portfolio.final_cell_coverability_constraints, 44);
+assert.equal(archivedP10055695LazyCellCegar.incremental_dynamic_cell_ablation.z3_sat_outer_states, 4);
+assert.equal(archivedP10055695LazyCellCegar.incremental_dynamic_cell_ablation.subsequent_sat_states_without_reconstruction, 3);
+assert.equal(archivedP10055695LazyCellCegar.combined_with_prior_clause_cegar.clause_distinct_outer_states, 71);
+assert.equal(archivedP10055695LazyCellCegar.verified_radius_4_witness_found, false);
+assert.equal(archivedP10055695LazyCellCegar.certified_non_tiler, false);
 assert.equal(archivedPartialNextLayerLookahead.algorithm.default_enabled, false);
 assert.equal(
   archivedPartialNextLayerLookahead["p10-055695_radius3_to_4"].baseline.continuation_checks,
@@ -1736,6 +1749,15 @@ assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_minimum_r
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_continuation_nodes, 62);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_max41_timeout_runs, 1);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cegar_radius3_exhausted, false);
+assert.equal(
+  p10055695Survivor.census_candidate.screening.corona_cell_cegar_report,
+  "data/polycube-p10-055695-lazy-cell-cegar-2026-08-22.json"
+);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_cell_cegar_states_checked, 22);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_cell_cegar_final_constraints, 44);
+assert.equal(p10055695Survivor.census_candidate.screening.corona_cell_cegar_combined_states_checked, 71);
+assert.match(growthAppSource, /Lazy next-ring cell promotion now adds/);
+assert.match(growthAppSource, /finite-corona evidence, not a non-tiling or aperiodicity certificate/);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_min_placements, 40);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_prunes, 28);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_validation_nodes, 4985856);
