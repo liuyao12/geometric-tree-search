@@ -1,0 +1,66 @@
+{
+  "kind": "polycube_corona_lazy_cell_cegar_audit",
+  "date": "2026-08-22",
+  "candidate": "p10-054782",
+  "implementation_commit": "dd3839e",
+  "model": "proper cubic rotations; one fixed root; finite face-distance corona exact cover",
+  "protocol": {
+    "outer_radius": 3,
+    "inner_radius": 4,
+    "maximum_outer_placements": 45,
+    "proposal_solver": "Z3 pseudo-Boolean exact cover (pb2bv-sat) with grouped conflict constraints",
+    "continuation_solver": "exact conflict-backjumping GCTS with the proposed radius-three patch fixed",
+    "lazy_cell_cut": "after an exactly exhausted immediate dead target, require that target to have at least one compatible next-ring placement",
+    "root_stabilizer_size": 1,
+    "bounded_copy_semantics": "the copy bound restricts proposal supply only; failure or timeout does not prove non-tiling"
+  },
+  "portfolio": {
+    "random_seeds": [155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166],
+    "z3_sat_outer_states": 22,
+    "z3_timeout_trials": 11,
+    "exact_dead_outer_states": 22,
+    "immediate_dead_target_obstructions": 22,
+    "resolved_subtree_obstructions": 0,
+    "verified_radius_4_witnesses": 0,
+    "outer_placement_distribution": {
+      "41": 1,
+      "42": 1,
+      "43": 1,
+      "44": 2,
+      "45": 17
+    },
+    "continuation_nodes": 27,
+    "initial_cell_coverability_constraints": 0,
+    "final_cell_coverability_constraints": 20,
+    "distinct_cell_orbits_promoted": 20,
+    "initial_obstruction_clauses": 0,
+    "final_obstruction_clauses": 20,
+    "redundant_batched_sat_states": 2,
+    "z3_construction_milliseconds": 222546,
+    "z3_check_milliseconds": 483534,
+    "source_sha256": [
+      "a6b9db57b08767d2ab5ea86f9bdc5fb723bad3baae4f0ebd0fb72e50b33a7909",
+      "5689fc6418523a4f11bc6db23697aab76a188636aec4b3168fc7fc5433ab6583",
+      "f04661f7ec930aa9e7bae5ab8466a5d542de9fa9333dba88462411f7c1b11791",
+      "cdd0ed0d27a04471795913ffd08f7dcdbf0f459eccd75f6d34892cd9427c0105"
+    ]
+  },
+  "incremental_dynamic_cell_ablation": {
+    "random_seed": 160,
+    "initial_cell_coverability_constraints": 9,
+    "final_cell_coverability_constraints": 16,
+    "initial_construction_milliseconds": 17091,
+    "z3_sat_outer_states": 7,
+    "subsequent_sat_states_without_reconstruction": 6,
+    "final_timeout_trials": 1,
+    "minimum_outer_placements_witnessed": 41,
+    "exact_dead_outer_states": 7,
+    "source_sha256": "5689fc6418523a4f11bc6db23697aab76a188636aec4b3168fc7fc5433ab6583"
+  },
+  "policy_decision": "Use incremental dynamic-cell strengthening until the active solver state times out, then rebuild once with the accumulated clauses and cells under a new random seed. Batched enumeration remains useful for fresh diversification but may return multiple models with the same newly discovered obstruction because cuts learned after the batch cannot affect models already enumerated.",
+  "cross_run_distinctness_note": "The 22 states in this receipt are exact-model-distinct within the staged CEGAR chain. They are not added numerically to the 11 older continuation-guided GCTS states because those older witnesses lack canonical model hashes needed to prove cross-run distinctness.",
+  "radius_3_space_exhausted": false,
+  "verified_radius_4_witness_found": false,
+  "certified_non_tiler": false,
+  "interpretation": "The first dedicated pseudo-Boolean CEGAR screen for p10-054782 finds twenty-two bounded radius-three proposals, including one with only forty-one surrounding copies. Exact GCTS rejects every proposal at an immediate radius-four target and promotes twenty distinct cell-coverability cuts. Incremental strengthening generalizes to this larger incidence model and avoids six formula reconstructions in its best segment. No proposal reaches a resolved radius-four subtree, and the radius-three proposal space remains unexhausted. The result is useful negative finite-corona evidence and a cross-candidate GCTS regression, not a non-tiling or aperiodicity certificate."
+}

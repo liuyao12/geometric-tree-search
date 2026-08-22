@@ -67,6 +67,11 @@ Pages site. The main way to use it is to open the page in a browser:
   rebuilding the formula. Across the old and new portfolios, all 71 proposals
   fail immediate radius-four continuation, but the outer space remains
   unexhausted, so this is neither a non-tiling nor an aperiodicity certificate.
+  The same incremental funnel now has a cross-candidate result for
+  `p10-054782`: 22 exact proposals down to 41 copies, 20 distinct dead-cell
+  cuts, and no surviving radius-four subtree. Its best solver instance returned
+  seven strengthened models from one construction before a randomized restart
+  was needed.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate
