@@ -24,7 +24,7 @@ assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-li
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
 assert.match(cegarSource, /triple_audit_truncated: tripleAuditTruncated/);
 assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, hybrid-all, lazy-higher, or lazy-all/);
-assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, or historical-core/);
+assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, historical-core, or recent-defect-cover/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -753,6 +753,53 @@ try {
   assert.equal(corePairReport.encoded_pair_selection, "historical-core");
   assert.deepEqual(corePairReport.encoded_pair_orbit_keys, [scoredPairLowKey]);
   assert.equal(corePairReport.encoded_pair_historical_sets_covered, 1);
+
+  const recentPairPath = join(directory, "recent-pair-coverability.json");
+  writeFileSync(recentPairPath, `${JSON.stringify({
+    pairs: [scoredPairLow, scoredPairHigh, scoredPairThird],
+    pair_orbit_scores: {
+      [scoredPairLowKey]: 5,
+      [scoredPairHighKey]: 23,
+      [scoredPairThirdKey]: 1
+    },
+    pair_defect_orbit_sets: [
+      [scoredPairHighKey, scoredPairThirdKey],
+      [scoredPairHighKey, scoredPairThirdKey],
+      [scoredPairLowKey, scoredPairThirdKey]
+    ]
+  })}\n`);
+  const recentPairOutput = join(directory, "recent-pair-summary.json");
+  const recentPairCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=2",
+    "--encoded-pair-selection=recent-defect-cover",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${recentPairPath}`,
+    `--output-dir=${join(directory, "recent-pair")}`,
+    `--report-output=${recentPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(recentPairCegar.status, 0, recentPairCegar.stderr);
+  const recentPairReport = JSON.parse(readFileSync(recentPairOutput, "utf8"));
+  assert.equal(recentPairReport.encoded_pair_selection, "recent-defect-cover");
+  assert.deepEqual(new Set(recentPairReport.trials[0].encoded_pair_orbit_keys), new Set([
+    scoredPairLowKey,
+    scoredPairThirdKey
+  ]));
+  assert.equal(recentPairReport.trials[0].encoded_pair_recent_defect_size, 2);
+  assert.equal(recentPairReport.trials[0].encoded_pair_recent_defect_orbits_selected, 2);
+  assert.equal(recentPairReport.trials[0].encoded_pair_recent_defect_complete, true);
 
   const initialCellOutput = join(directory, "initial-cell-summary.json");
   const initialCellCegar = spawnSync(process.execPath, [

@@ -96,8 +96,8 @@ if (!["encoded", "hybrid-higher", "hybrid-all", "lazy-higher", "lazy-all"].inclu
 }
 const encodedPairOrbitLimit = integerArg("encoded-pair-orbit-limit", 0, 0);
 const encodedPairSelectionPolicy = args.get("encoded-pair-selection") ?? "first";
-if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact", "historical-cover", "historical-core"].includes(encodedPairSelectionPolicy)) {
-  throw new Error("--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, or historical-core");
+if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact", "historical-cover", "historical-core", "recent-defect-cover"].includes(encodedPairSelectionPolicy)) {
+  throw new Error("--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, historical-core, or recent-defect-cover");
 }
 if (tupleEnforcement === "hybrid-all" && encodedPairOrbitLimit === 0) {
   throw new Error("--tuple-enforcement=hybrid-all requires --encoded-pair-orbit-limit greater than zero");
@@ -412,13 +412,23 @@ const describeEncodedPairs = constraints => {
     seenOrbitKeys.add(orbitKey);
     orbitKeys.push(orbitKey);
   }
+  const selectedOrbitKeys = new Set(orbitKeys);
+  const recentDefectOrbitKeys = pairDefectOrbitSets.at(-1) ?? [];
+  const recentDefectOrbitsSelected = recentDefectOrbitKeys.reduce(
+    (count, key) => count + Number(selectedOrbitKeys.has(key)),
+    0
+  );
   return {
     constraints,
     orbitCount: orbitKeys.length,
     orbitKeys,
     orbitScores: orbitKeys.map(key => pairOrbitScores.get(key) ?? 0),
     orbitHits: orbitKeys.map(key => pairOrbitHits.get(key) ?? 0),
-    historicalSetsCovered: coveredPairDefectSets(orbitKeys)
+    historicalSetsCovered: coveredPairDefectSets(orbitKeys),
+    recentDefectSize: recentDefectOrbitKeys.length,
+    recentDefectOrbitsSelected,
+    recentDefectComplete: recentDefectOrbitKeys.length > 0
+      && recentDefectOrbitsSelected === recentDefectOrbitKeys.length
   };
 };
 const selectEncodedPairs = () => {
@@ -441,12 +451,24 @@ const selectEncodedPairs = () => {
   }
   const orbitOrderIndex = new Map(orderedOrbitKeys.map((key, index) => [key, index]));
   let historicalCoverKeys = null;
-  if (["historical-cover", "historical-core"].includes(encodedPairSelectionPolicy)) {
+  if (["historical-cover", "historical-core", "recent-defect-cover"].includes(encodedPairSelectionPolicy)) {
     const available = new Set(orderedOrbitKeys);
     let uncovered = pairDefectOrbitSets
       .map(orbitSet => orbitSet.filter(key => available.has(key)))
       .filter(orbitSet => orbitSet.length);
     historicalCoverKeys = [];
+    if (encodedPairSelectionPolicy === "recent-defect-cover") {
+      const latestDefectKeys = [...new Set(pairDefectOrbitSets.at(-1) ?? [])]
+        .filter(key => available.has(key))
+        .sort((left, right) =>
+          (pairOrbitScores.get(right) ?? 0) - (pairOrbitScores.get(left) ?? 0)
+          || (pairOrbitHits.get(right) ?? 0) - (pairOrbitHits.get(left) ?? 0)
+          || (orbitOrderIndex.get(right) ?? 0) - (orbitOrderIndex.get(left) ?? 0)
+        );
+      historicalCoverKeys.push(...latestDefectKeys.slice(0, encodedPairOrbitLimit));
+      const protectedKeys = new Set(historicalCoverKeys);
+      uncovered = uncovered.filter(orbitSet => !orbitSet.some(key => protectedKeys.has(key)));
+    }
     if (encodedPairSelectionPolicy === "historical-core") {
       const singletonCounts = new Map();
       for (const orbitSet of uncovered) {
@@ -770,6 +792,9 @@ const processSatProposal = ({
     encoded_pair_orbit_scores: encodedPairs.orbitScores,
     encoded_pair_orbit_hits: encodedPairs.orbitHits,
     encoded_pair_historical_sets_covered: encodedPairs.historicalSetsCovered,
+    encoded_pair_recent_defect_size: encodedPairs.recentDefectSize,
+    encoded_pair_recent_defect_orbits_selected: encodedPairs.recentDefectOrbitsSelected,
+    encoded_pair_recent_defect_complete: encodedPairs.recentDefectComplete,
     ...proposalTiming(proposal, witness, proposalIndex)
   };
   const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, state.corona, outerLayer);
@@ -1361,6 +1386,9 @@ const summary = {
   encoded_pair_orbit_scores: finalEncodedPairSelection.orbitScores,
   encoded_pair_orbit_hits: finalEncodedPairSelection.orbitHits,
   encoded_pair_historical_sets_covered: finalEncodedPairSelection.historicalSetsCovered,
+  encoded_pair_recent_defect_size: finalEncodedPairSelection.recentDefectSize,
+  encoded_pair_recent_defect_orbits_selected: finalEncodedPairSelection.recentDefectOrbitsSelected,
+  encoded_pair_recent_defect_complete: finalEncodedPairSelection.recentDefectComplete,
   pair_orbit_scores: serializedPairOrbitScores(),
   pair_orbit_hits: serializedPairOrbitHits(),
   pair_defect_orbit_sets: pairDefectOrbitSets,
