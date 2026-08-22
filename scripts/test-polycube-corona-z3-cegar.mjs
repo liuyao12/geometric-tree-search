@@ -27,6 +27,7 @@ assert.match(cegarSource, /--tuple-enforcement must be encoded, hybrid-higher, h
 assert.match(cegarSource, /--encoded-pair-selection must be first, recent, max-blocked-combinations, frequency-impact, frequency-weighted-impact, historical-cover, historical-core, or recent-defect-cover/);
 assert.match(cegarSource, /--recent-defect-orbit-limit is only valid with --encoded-pair-selection=recent-defect-cover/);
 assert.match(cegarSource, /--pair-soft-minimum is not yet supported with --z3-interactive=true/);
+assert.match(cegarSource, /--pair-soft-minimum and --pair-soft-orbit-minimum are mutually exclusive/);
 assert.match(cegarSource, /--encoded-triple-selection must be first, recent, or max-blocked-combinations/);
 assert.match(cegarSource, /triple_orbit_scores: serializedTripleOrbitScores\(\)/);
 assert.match(cegarSource, /--formula-cache=\$\{formulaCachePath\}/);
@@ -285,6 +286,30 @@ try {
   assert.equal(softPairWorkerReport.z3_status, "sat");
   assert.equal(softPairWorkerReport.pair_soft_minimum, 1);
   assert.ok(softPairWorkerReport.pair_soft_satisfied >= 1);
+  const softOrbitPairPath = join(directory, "soft-orbit-pair-coverability.json");
+  writeFileSync(softOrbitPairPath, `${JSON.stringify({
+    pairs: [scoredPairLow, scoredPairHigh],
+    orbit_groups: [[scoredPairLow], [scoredPairHigh]]
+  })}\n`);
+  const softOrbitPairOutput = join(directory, "soft-orbit-pair-worker.json");
+  const softOrbitPairWorker = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=11",
+    "--require-next-layer-coverability",
+    `--pair-coverability-report=${softOrbitPairPath}`,
+    "--pair-encoding=witness-cnf",
+    "--pair-soft-orbit-minimum=1",
+    `--output=${softOrbitPairOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(softOrbitPairWorker.status, 0, softOrbitPairWorker.stderr);
+  const softOrbitPairWorkerReport = JSON.parse(readFileSync(softOrbitPairOutput, "utf8"));
+  assert.equal(softOrbitPairWorkerReport.z3_status, "sat");
+  assert.equal(softOrbitPairWorkerReport.pair_soft_orbit_minimum, 1);
+  assert.ok(softOrbitPairWorkerReport.pair_soft_orbits_satisfied >= 1);
   const replacePairCachePath = join(directory, "replace-pair-formula-cache.smt2");
   const replacePairLowPath = join(directory, "replace-pair-low.json");
   const replacePairHighPath = join(directory, "replace-pair-high.json");
@@ -671,6 +696,36 @@ try {
   assert.equal(softHybridReport.trials[0].z3_status, "sat");
   assert.ok(softHybridReport.trials[0].z3_pair_soft_satisfied >= 1);
   assert.notEqual(softHybridReport.classification, "certified_non_tiler");
+
+  const softOrbitHybridOutput = join(directory, "soft-orbit-hybrid-summary.json");
+  const softOrbitHybridCegar = spawnSync(process.execPath, [
+    cegar,
+    "--id=p9-42947",
+    "--outer-layer=1",
+    "--inner-layer=2",
+    "--iterations=1",
+    "--max-placements=11",
+    "--require-next-layer-coverability=true",
+    "--tuple-enforcement=hybrid-all",
+    "--encoded-pair-orbit-limit=2",
+    "--pair-soft-orbit-minimum=1",
+    "--lookahead-conflict-encoding=grouped-pb",
+    "--pair-encoding=witness-cnf",
+    "--learn-pair-coverability=true",
+    "--z3-timeout-ms=10000",
+    "--continuation-time-ms=10000",
+    "--continuation-nodes=100000",
+    `--python=${python}`,
+    `--initial-pair-report=${scoredPairPath}`,
+    `--output-dir=${join(directory, "soft-orbit-hybrid")}`,
+    `--report-output=${softOrbitHybridOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(softOrbitHybridCegar.status, 0, softOrbitHybridCegar.stderr);
+  const softOrbitHybridReport = JSON.parse(readFileSync(softOrbitHybridOutput, "utf8"));
+  assert.equal(softOrbitHybridReport.pair_soft_orbit_minimum, 1);
+  assert.equal(softOrbitHybridReport.trials[0].z3_status, "sat");
+  assert.ok(softOrbitHybridReport.trials[0].z3_pair_soft_orbits_satisfied >= 1);
+  assert.notEqual(softOrbitHybridReport.classification, "certified_non_tiler");
 
   const frequencyPairOutput = join(directory, "frequency-pair-summary.json");
   const frequencyPairCegar = spawnSync(process.execPath, [

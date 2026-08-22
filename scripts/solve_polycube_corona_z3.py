@@ -144,6 +144,7 @@ def main():
     parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
     parser.add_argument("--pair-soft-minimum", type=int)
+    parser.add_argument("--pair-soft-orbit-minimum", type=int)
     parser.add_argument("--triple-coverability-report")
     parser.add_argument("--quadruple-coverability-report")
     parser.add_argument("--triple-encoding", choices=("dnf", "choice-cnf"), default="choice-cnf")
@@ -159,7 +160,8 @@ def main():
     if (args.layer < 1 or args.timeout_ms < 1 or args.max_witnesses < 1
             or (args.min_placements is not None and args.min_placements < 1)
             or (args.max_placements is not None and args.max_placements < 1)
-            or (args.pair_soft_minimum is not None and args.pair_soft_minimum < 1)):
+            or (args.pair_soft_minimum is not None and args.pair_soft_minimum < 1)
+            or (args.pair_soft_orbit_minimum is not None and args.pair_soft_orbit_minimum < 1)):
         parser.error("layer, timeout, witness count, and placement bounds (when supplied) must be positive")
     if (args.min_placements is not None and args.max_placements is not None
             and args.min_placements > args.max_placements):
@@ -172,6 +174,13 @@ def main():
         parser.error("--interactive-replace-pairs requires --interactive-jsonl")
     if args.pair_soft_minimum is not None and args.interactive_jsonl:
         parser.error("--pair-soft-minimum is not yet supported with --interactive-jsonl")
+    if args.pair_soft_orbit_minimum is not None and args.interactive_jsonl:
+        parser.error("--pair-soft-orbit-minimum is not yet supported with --interactive-jsonl")
+    if args.pair_soft_minimum is not None and args.pair_soft_orbit_minimum is not None:
+        parser.error("pair soft constraint and orbit minimums are mutually exclusive")
+    if ((args.pair_soft_minimum is not None or args.pair_soft_orbit_minimum is not None)
+            and not args.pair_coverability_report):
+        parser.error("pair soft minimums require --pair-coverability-report")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -187,11 +196,16 @@ def main():
         for index, placement in enumerate(placements)
     }
     pair_coverability = []
+    pair_soft_orbit_groups = []
     if args.pair_coverability_report:
         pair_report = json.loads(Path(args.pair_coverability_report).read_text(encoding="utf-8"))
         pair_coverability = pair_report.get("pairs", pair_report) if isinstance(pair_report, dict) else pair_report
         if not isinstance(pair_coverability, list):
             raise ValueError("Pair coverability report must contain a pairs list")
+        if isinstance(pair_report, dict):
+            pair_soft_orbit_groups = pair_report.get("orbit_groups", [])
+            if not isinstance(pair_soft_orbit_groups, list):
+                raise ValueError("Pair coverability orbit_groups must be a list")
     pair_report_keys = set()
     for pair_number, pair in enumerate(pair_coverability):
         if not isinstance(pair, list) or len(pair) != 2:
@@ -210,6 +224,8 @@ def main():
         "root_symmetry_breaking": args.root_symmetry_breaking,
         "pair_encoding": args.pair_encoding,
         "pair_soft_minimum": args.pair_soft_minimum,
+        "pair_soft_orbit_minimum": args.pair_soft_orbit_minimum,
+        "pair_soft_orbit_groups": pair_soft_orbit_groups,
         "interactive_replace_pairs": args.interactive_replace_pairs,
     }, sort_keys=True)
     cache_metadata = None
@@ -308,6 +324,7 @@ def main():
     quadruple_coverability_count = 0
     quadruple_coverability_choice_variables = 0
     quadruple_coverability_incompatibilities = 0
+    pair_soft_orbit_variables = []
     cell_coverability_count = 0
     formula_cache_write_ms = 0
     formula_cache_pairs_added = 0
@@ -329,6 +346,23 @@ def main():
             if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
                 raise ValueError(f"Pair coverability entry {pair_number} is not a distinct next-ring cell pair")
             normalized_pairs.add(cells)
+        normalized_soft_orbit_groups = []
+        for group_number, group in enumerate(pair_soft_orbit_groups):
+            if not isinstance(group, list) or not group:
+                raise ValueError(f"Pair soft orbit group {group_number} must be a nonempty list")
+            normalized_group = []
+            for pair_number, pair in enumerate(group):
+                if not isinstance(pair, list) or len(pair) != 2:
+                    raise ValueError(
+                        f"Pair soft orbit group {group_number} entry {pair_number} must contain two cell keys"
+                    )
+                cells = tuple(sorted((parse_cell_key(pair[0]), parse_cell_key(pair[1]))))
+                if cells not in normalized_pairs:
+                    raise ValueError(
+                        f"Pair soft orbit group {group_number} contains a pair absent from pairs"
+                    )
+                normalized_group.append(cells)
+            normalized_soft_orbit_groups.append(tuple(sorted(set(normalized_group))))
         normalized_triples = set()
         for triple_number, triple in enumerate(triple_coverability):
             if not isinstance(triple, list) or len(triple) != 3:
@@ -422,7 +456,9 @@ def main():
             nonlocal pair_coverability_incompatibilities
             pair_name = f"{cell_token(left_cell)}__{cell_token(right_cell)}"
             activation = pair_activation(left_cell, right_cell) if (
-                args.interactive_replace_pairs or args.pair_soft_minimum is not None
+                args.interactive_replace_pairs
+                or args.pair_soft_minimum is not None
+                or args.pair_soft_orbit_minimum is not None
             ) else None
 
             def add_pair_formula(formula):
@@ -504,6 +540,19 @@ def main():
                 (pair_activation(left_cell, right_cell), 1)
                 for left_cell, right_cell in sorted(normalized_pairs)
             ], args.pair_soft_minimum))
+        if args.pair_soft_orbit_minimum is not None:
+            if args.pair_soft_orbit_minimum > len(normalized_soft_orbit_groups):
+                raise ValueError(
+                    "pair soft orbit minimum cannot exceed the pair orbit group count"
+                )
+            for group_index, group in enumerate(normalized_soft_orbit_groups):
+                group_variable = z3.Bool(f"pair_soft_orbit_{group_index}")
+                pair_soft_orbit_variables.append(group_variable)
+                for pair in group:
+                    solver.add(z3.Implies(group_variable, pair_activation(*pair)))
+            solver.add(z3.PbGe([
+                (variable, 1) for variable in pair_soft_orbit_variables
+            ], args.pair_soft_orbit_minimum))
         if cache_path and (not formula_cache_hit or formula_cache_pairs_added):
             cache_write_started = time.perf_counter()
             cache_path.parent.mkdir(parents=True, exist_ok=True)
@@ -758,6 +807,10 @@ def main():
                 if args.pair_soft_minimum is not None
                 and z3.is_true(model.eval(pair_activation(*pair), model_completion=True))
             ) if args.pair_soft_minimum is not None else None,
+            "pair_soft_orbits_satisfied": sum(
+                1 for variable in pair_soft_orbit_variables
+                if z3.is_true(model.eval(variable, model_completion=True))
+            ) if args.pair_soft_orbit_minimum is not None else None,
             "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected],
         })
         if len(witnesses) >= args.max_witnesses:
@@ -791,6 +844,10 @@ def main():
         "pair_coverability_constraints": pair_coverability_count,
         "pair_soft_minimum": args.pair_soft_minimum,
         "pair_soft_satisfied": witnesses[0]["pair_soft_satisfied"] if witnesses else None,
+        "pair_soft_orbit_minimum": args.pair_soft_orbit_minimum,
+        "pair_soft_orbits_satisfied": (
+            witnesses[0]["pair_soft_orbits_satisfied"] if witnesses else None
+        ),
         "pair_coverability_terms": pair_coverability_terms,
         "pair_coverability_encoding": args.pair_encoding,
         "pair_coverability_choice_variables": pair_coverability_choice_variables,

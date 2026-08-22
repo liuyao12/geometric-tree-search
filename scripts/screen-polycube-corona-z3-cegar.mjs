@@ -103,6 +103,18 @@ if (pairSoftMinimum !== null && z3Interactive) {
 if (pairSoftMinimum !== null && !["hybrid-all", "hybrid-higher"].includes(tupleEnforcement)) {
   throw new Error("--pair-soft-minimum requires a hybrid tuple-enforcement mode");
 }
+const pairSoftOrbitMinimum = args.has("pair-soft-orbit-minimum")
+  ? integerArg("pair-soft-orbit-minimum", 1, 1)
+  : null;
+if (pairSoftMinimum !== null && pairSoftOrbitMinimum !== null) {
+  throw new Error("--pair-soft-minimum and --pair-soft-orbit-minimum are mutually exclusive");
+}
+if (pairSoftOrbitMinimum !== null && z3Interactive) {
+  throw new Error("--pair-soft-orbit-minimum is not yet supported with --z3-interactive=true");
+}
+if (pairSoftOrbitMinimum !== null && !["hybrid-all", "hybrid-higher"].includes(tupleEnforcement)) {
+  throw new Error("--pair-soft-orbit-minimum requires a hybrid tuple-enforcement mode");
+}
 const encodedPairOrbitLimit = integerArg("encoded-pair-orbit-limit", 0, 0);
 const encodedPairSelectionPolicy = args.get("encoded-pair-selection") ?? "first";
 if (!["first", "recent", "max-blocked-combinations", "frequency-impact", "frequency-weighted-impact", "historical-cover", "historical-core", "recent-defect-cover"].includes(encodedPairSelectionPolicy)) {
@@ -441,6 +453,7 @@ const describeEncodedPairs = constraints => {
     orbitKeys,
     orbitScores: orbitKeys.map(key => pairOrbitScores.get(key) ?? 0),
     orbitHits: orbitKeys.map(key => pairOrbitHits.get(key) ?? 0),
+    orbitGroups: orbitKeys.map(key => constraints.filter(pair => pairOrbitRepresentativeKey(pair) === key)),
     historicalSetsCovered: coveredPairDefectSets(orbitKeys),
     recentDefectSize: recentDefectOrbitKeys.length,
     recentDefectOrbitsSelected,
@@ -726,6 +739,7 @@ process.stdout.write(`${JSON.stringify({
   bootstrap_pair_distance: bootstrapPairDistance,
   pair_encoding: pairEncoding,
   pair_soft_minimum: pairSoftMinimum,
+  pair_soft_orbit_minimum: pairSoftOrbitMinimum,
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
@@ -820,6 +834,8 @@ const processSatProposal = ({
     encoded_pair_recent_defect_orbits_selected: encodedPairs.recentDefectOrbitsSelected,
     encoded_pair_recent_defect_complete: encodedPairs.recentDefectComplete,
     z3_pair_soft_satisfied: witness?.pair_soft_satisfied ?? proposal.pair_soft_satisfied ?? null,
+    z3_pair_soft_orbits_satisfied:
+      witness?.pair_soft_orbits_satisfied ?? proposal.pair_soft_orbits_satisfied ?? null,
     ...proposalTiming(proposal, witness, proposalIndex)
   };
   const outerVerification = verifyPolycubeCoronaPatch(candidate.voxels, state.corona, outerLayer);
@@ -1011,7 +1027,10 @@ const writeCurrentReports = () => {
     pair_defect_orbit_sets: pairDefectOrbitSets
   }, null, 2)}\n`);
   const encodedPairs = selectEncodedPairs();
-  writeFileSync(encodedPairPath, `${JSON.stringify({ pairs: encodedPairs.constraints }, null, 2)}\n`);
+  writeFileSync(encodedPairPath, `${JSON.stringify({
+    pairs: encodedPairs.constraints,
+    orbit_groups: encodedPairs.orbitGroups
+  }, null, 2)}\n`);
   writeFileSync(triplePath, `${JSON.stringify({
     triples: tripleConstraints,
     triple_orbit_scores: serializedTripleOrbitScores()
@@ -1044,6 +1063,9 @@ const solverArgumentsFor = (iterationSeed, encodedPairs, encodedTriples, witness
     solverArguments.push(`--pair-coverability-report=${encodedPairPath}`);
     solverArguments.push(`--pair-encoding=${pairEncoding}`);
     if (pairSoftMinimum !== null) solverArguments.push(`--pair-soft-minimum=${pairSoftMinimum}`);
+    if (pairSoftOrbitMinimum !== null) {
+      solverArguments.push(`--pair-soft-orbit-minimum=${pairSoftOrbitMinimum}`);
+    }
   }
   if (encodedTriples.constraints.length) {
     solverArguments.push(`--triple-coverability-report=${encodedTriplePath}`);
@@ -1404,6 +1426,7 @@ const summary = {
   bootstrap_pair_distance: bootstrapPairDistance,
   pair_encoding: pairEncoding,
   pair_soft_minimum: pairSoftMinimum,
+  pair_soft_orbit_minimum: pairSoftOrbitMinimum,
   pair_selection: pairSelection,
   encoded_pair_orbit_limit: encodedPairOrbitLimit,
   encoded_pair_selection: encodedPairSelectionPolicy,
