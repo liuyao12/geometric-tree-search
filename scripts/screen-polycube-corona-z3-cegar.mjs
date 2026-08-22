@@ -6,6 +6,10 @@ import { resolve } from "node:path";
 import { createInterface } from "node:readline";
 import { fileURLToPath } from "node:url";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
+import {
+  retainSuccessfulFeedbackBatches,
+  selectFeedbackBatch
+} from "../assets/feedback-batch-policy.js";
 import { polycubeKey } from "../assets/polycube-enumerator.js";
 import {
   polycubeCellOrbitKeys,
@@ -255,6 +259,9 @@ let z3InteractiveClausesApplied = 0;
 let z3InteractiveClausesDeferred = 0;
 let z3InteractiveCellConstraintsApplied = 0;
 let z3InteractiveCellConstraintsDeferred = 0;
+let effectiveClauseFeedbackBatch = clauseFeedbackBatch;
+let effectiveCellFeedbackBatch = cellFeedbackBatch;
+let feedbackStickyReductionCount = 0;
 
 const placementKey = placement => placement.cells.map(cell => cell.join(",")).sort().join(";");
 const addClause = rawClause => {
@@ -864,6 +871,9 @@ const proposalTiming = (proposal, witness = null, proposalIndex = 0) => ({
   z3_feedback_backoff_count: proposal.feedback_backoff_count ?? 0,
   z3_feedback_attempts: proposal.feedback_attempts ?? [],
   z3_feedback_rolled_back: proposal.feedback_rolled_back ?? false,
+  z3_feedback_batch_before: proposal.feedback_batch_before ?? null,
+  z3_feedback_batch_after: proposal.feedback_batch_after ?? null,
+  z3_feedback_batch_sticky_reduction: proposal.feedback_batch_sticky_reduction ?? false,
   z3_formula_cache_hit: proposal.formula_cache_hit ?? false,
   z3_formula_cache_pairs_reused: proposalIndex === 0 ? proposal.formula_cache_pairs_reused ?? 0 : 0,
   z3_formula_cache_pairs_added: proposalIndex === 0 ? proposal.formula_cache_pairs_added ?? 0 : 0,
@@ -1238,12 +1248,14 @@ const runInteractiveCegar = async () => {
     z3InteractiveCellConstraintsApplied = cellKeysSent.size;
     for (let iteration = 0; iteration < iterations; iteration += 1) {
       const iterationSeed = randomSeed + iteration * seedStride;
-      let clausesToApply = clauseFeedbackBatch
-        ? pendingClauses.slice(0, clauseFeedbackBatch)
-        : pendingClauses.slice();
-      let cellsToApply = cellFeedbackBatch
-        ? pendingCells.slice(0, cellFeedbackBatch)
-        : pendingCells.slice();
+      const feedbackBatchBefore = {
+        clauses: effectiveClauseFeedbackBatch,
+        cells: effectiveCellFeedbackBatch
+      };
+      let clausesToApply = selectFeedbackBatch(pendingClauses, effectiveClauseFeedbackBatch);
+      let cellsToApply = selectFeedbackBatch(pendingCells, effectiveCellFeedbackBatch);
+      const initialFeedbackClauseCount = clausesToApply.length;
+      const initialFeedbackCellCount = cellsToApply.length;
       const sendCommand = async command => {
         worker.stdin.write(`${JSON.stringify(command)}\n`);
         return readEvent((command.timeout_ms ?? z3TimeoutMs) + z3ProcessGraceMs);
@@ -1361,6 +1373,30 @@ const runInteractiveCegar = async () => {
         (sum, attempt) => sum + attempt.check_milliseconds,
         0
       );
+      const retainedFeedback = retainSuccessfulFeedbackBatches({
+        current: {
+          clauses: effectiveClauseFeedbackBatch,
+          cells: effectiveCellFeedbackBatch
+        },
+        attempted: {
+          clauses: initialFeedbackClauseCount,
+          cells: initialFeedbackCellCount
+        },
+        applied: {
+          clauses: clausesToApply.length,
+          cells: cellsToApply.length
+        },
+        z3Status: result.z3_status,
+        backoffCount: feedbackBackoffCount
+      });
+      effectiveClauseFeedbackBatch = retainedFeedback.next.clauses;
+      effectiveCellFeedbackBatch = retainedFeedback.next.cells;
+      const feedbackBatchStickyReduction = retainedFeedback.reduced;
+      if (feedbackBatchStickyReduction) feedbackStickyReductionCount += 1;
+      const feedbackBatchAfter = {
+        clauses: effectiveClauseFeedbackBatch,
+        cells: effectiveCellFeedbackBatch
+      };
       for (const clause of clausesToApply) clauseKeysSent.add(clause.join("|"));
       pendingClauses = pendingClauses.slice(clausesToApply.length);
       z3InteractiveClausesApplied = clauseKeysSent.size;
@@ -1387,6 +1423,9 @@ const runInteractiveCegar = async () => {
         feedback_backoff_count: feedbackBackoffCount,
         feedback_attempts: feedbackAttempts,
         feedback_rolled_back: feedbackRolledBack,
+        feedback_batch_before: feedbackBatchBefore,
+        feedback_batch_after: feedbackBatchAfter,
+        feedback_batch_sticky_reduction: feedbackBatchStickyReduction,
         formula_cache_hit: ready.formula_cache_hit,
         formula_cache_pairs_reused: iteration === 0 ? ready.formula_cache_pairs_reused : 0,
         formula_cache_pairs_added: iteration === 0 ? ready.formula_cache_pairs_added : 0,
@@ -1726,6 +1765,15 @@ const summary = {
   feedback_timeout_backoff: feedbackTimeoutBackoff,
   feedback_min_clause_batch: feedbackMinimumClauseBatch,
   feedback_min_cell_batch: feedbackMinimumCellBatch,
+  effective_clause_feedback_batch: z3Interactive
+    ? effectiveClauseFeedbackBatch
+    : null,
+  effective_cell_feedback_batch: z3Interactive
+    ? effectiveCellFeedbackBatch
+    : null,
+  feedback_sticky_reduction_count: z3Interactive
+    ? feedbackStickyReductionCount
+    : null,
   z3_interactive_cell_constraints_applied: z3Interactive
     ? z3InteractiveCellConstraintsApplied
     : null,

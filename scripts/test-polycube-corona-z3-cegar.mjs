@@ -7,6 +7,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
+import {
+  retainSuccessfulFeedbackBatches,
+  selectFeedbackBatch
+} from "../assets/feedback-batch-policy.js";
 import { polycubeKey } from "../assets/polycube-enumerator.js";
 import {
   enumeratePolycubeCoronaPlacements,
@@ -20,6 +24,41 @@ const cegar = fileURLToPath(new URL("./screen-polycube-corona-z3-cegar.mjs", imp
 const clauseReplay = fileURLToPath(new URL("./verify-polycube-corona-clause-report.mjs", import.meta.url));
 const recurrenceReplay = fileURLToPath(new URL("./replay-polycube-pair-recurrence.mjs", import.meta.url));
 const cegarSource = readFileSync(cegar, "utf8");
+const retainedFeedback = retainSuccessfulFeedbackBatches({
+  current: { clauses: 6, cells: 4 },
+  attempted: { clauses: 6, cells: 4 },
+  applied: { clauses: 2, cells: 1 },
+  z3Status: "sat",
+  backoffCount: 2
+});
+assert.deepEqual(retainedFeedback, {
+  next: { clauses: 2, cells: 1 },
+  reduced: true
+});
+assert.deepEqual(selectFeedbackBatch([1, 2, 3, 4], retainedFeedback.next.clauses), [1, 2]);
+assert.deepEqual(selectFeedbackBatch([1, 2, 3], retainedFeedback.next.cells), [1]);
+assert.deepEqual(
+  retainSuccessfulFeedbackBatches({
+    current: retainedFeedback.next,
+    attempted: { clauses: 1, cells: 1 },
+    applied: { clauses: 1, cells: 1 },
+    z3Status: "sat",
+    backoffCount: 0
+  }),
+  { next: { clauses: 2, cells: 1 }, reduced: false },
+  "a short pending tail must not shrink the retained policy"
+);
+assert.deepEqual(
+  retainSuccessfulFeedbackBatches({
+    current: { clauses: 6, cells: 4 },
+    attempted: { clauses: 6, cells: 4 },
+    applied: { clauses: 0, cells: 0 },
+    z3Status: "unknown",
+    backoffCount: 2
+  }),
+  { next: { clauses: 6, cells: 4 }, reduced: false },
+  "a fully rolled-back timeout must not become the next policy"
+);
 assert.match(cegarSource, /Keep resumable artifacts synchronized[\s\S]*?writeFileSync\(clausePath[\s\S]*?writeFileSync\(cellPath[\s\S]*?writeFileSync\(pairPath[\s\S]*?writeFileSync\(triplePath[\s\S]*?writeFileSync\(quadruplePath/);
 assert.match(cegarSource, /const tripleAuditLimit = integerArg\("triple-audit-limit", tripleOrbitLimit \|\| 1, 1\)/);
 assert.match(cegarSource, /limit: tripleAuditLimit \+ 1[\s\S]*?tripleAuditTruncated = incompatibleTripleAudit\.length > tripleAuditLimit/);
@@ -508,6 +547,12 @@ try {
   );
   assert.equal(rolledBackFeedbackReport.trials[0].z3_interactive_clauses_applied, 0);
   assert.equal(rolledBackFeedbackReport.trials[0].z3_interactive_cells_applied, 0);
+  assert.deepEqual(rolledBackFeedbackReport.trials[0].z3_feedback_batch_before, { clauses: 4, cells: 4 });
+  assert.deepEqual(rolledBackFeedbackReport.trials[0].z3_feedback_batch_after, { clauses: 4, cells: 4 });
+  assert.equal(rolledBackFeedbackReport.trials[0].z3_feedback_batch_sticky_reduction, false);
+  assert.equal(rolledBackFeedbackReport.effective_clause_feedback_batch, 4);
+  assert.equal(rolledBackFeedbackReport.effective_cell_feedback_batch, 4);
+  assert.equal(rolledBackFeedbackReport.feedback_sticky_reduction_count, 0);
   assert.equal(rolledBackFeedbackReport.z3_interactive_clauses_applied, 2);
   assert.equal(rolledBackFeedbackReport.z3_interactive_cell_constraints_applied, 2);
   assert.equal(
