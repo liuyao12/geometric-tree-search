@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v153";
+} from "./engine.js?v=20260821-polycube10-v154";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1518,6 +1518,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_cached_ranked_extension_report) {
         const extension = candidate.screening;
         candidateResearchDetail.textContent += ` The cached one-orbit ranked extension returns ${extension.corona_cached_ranked_sat_states} exact proposals with ${extension.corona_cached_ranked_timeout_trials} timeout: ${extension.corona_cached_ranked_triple_defect_states} consecutive states clear every accumulated pair check before failing the full triple audit, while one exposes a new pair orbit. The screen now carries ${extension.corona_cached_ranked_final_pair_constraints} pair, ${extension.corona_cached_ranked_final_triple_constraints} triple, and ${extension.corona_cached_ranked_final_quadruple_constraints} quadruple obligations. A separate two-highest-impact-orbit solve also times out. No proposal clears the full triple audit, so no radius-five GCTS continuation starts and the candidate remains unresolved.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_batched_solver_state_report) {
+        const batch = candidate.screening;
+        candidateResearchDetail.textContent += ` Exact retained-state batching can request ${batch.corona_batched_solver_requested_witnesses} distinct Boolean models without rebuilding Z3. On the positive control it learns from one model and verifies the next through GCTS. On this candidate, seed 302 returns one proposal after ${(batch.corona_batched_solver_first_check_ms / 1000).toFixed(1)}s, exposes a new pair orbit, then spends ${(batch.corona_batched_solver_second_check_ms / 1000).toFixed(1)}s without a second model. The carried screen reaches ${batch.corona_batched_solver_final_pair_constraints} pair and ${batch.corona_batched_solver_final_triple_constraints} triple obligations. Blind batching is therefore not the answer here; the next solver should accept each audited obstruction interactively before continuing its retained search.`;
       }
     }
   } else if (knownAperiodic) {

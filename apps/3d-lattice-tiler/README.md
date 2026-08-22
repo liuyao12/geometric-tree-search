@@ -924,6 +924,14 @@ regression returns three distinct exact models from one solver state; CEGAR
 learns 156 pair constraints from the first and then verifies that the second
 extends to radius two. Batch enumeration therefore amortizes search state
 without weakening either witness verification or obstruction soundness.
+On the production `p9-42947` state, however, seed 302 returns one 68-copy
+proposal after 88.6 seconds of checking and then spends the remaining 242.8
+seconds without a second model. The first proposal has one exact pair defect,
+raising the carried formula to 411 state clauses, 777 pair constraints, 264
+triple constraints, and three quadruple constraints. Because blind batching
+cannot inject that newly audited pair before requesting model two, a
+bidirectional retained solver is the next useful design. See
+`data/polycube-p9-42947-batched-solver-state-2026-08-21.json`.
 The default triple choice-CNF selects one available placement per cell and
 forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
 DNF while expressing the same exact condition. Quadruple learning uses the
