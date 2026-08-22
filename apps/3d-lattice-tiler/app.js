@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v164";
+} from "./engine.js?v=20260822-polycube10-v165";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1468,6 +1468,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_cell_cegar_states_checked) {
         candidateResearchDetail.textContent += ` Lazy next-ring cell promotion has now checked ${candidate.screening.corona_cell_cegar_states_checked} exact proposals and promoted ${candidate.screening.corona_cell_cegar_orbits_promoted} symmetry-distinct dead-cell orbits, ending with ${candidate.screening.corona_cell_cegar_final_constraints} enforced cells and ${candidate.screening.corona_cell_cegar_final_clauses} sound placement clauses.${candidate.screening.corona_cell_cegar_minimum_placements ? ` The smallest proposal uses ${candidate.screening.corona_cell_cegar_minimum_placements} surrounding copies.` : ""} The recorded portfolio contains ${candidate.screening.corona_cell_cegar_combined_states_checked} clause-distinct radius-three states and ${candidate.screening.corona_cell_cegar_combined_continuation_nodes} continuation nodes; every failure is still immediate, so no radius-four subtree has survived. Incremental Z3 reused one formula for ${candidate.screening.corona_cell_cegar_incremental_states} SAT proposals, including ${candidate.screening.corona_cell_cegar_incremental_reused_states} strengthened checks without reconstruction; randomized restarts remain necessary after a solver timeout. This remains finite-corona evidence, not a non-tiling or aperiodicity certificate.`;
       }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_radius3_cegar_proposals) {
+        const radius3 = candidate.screening;
+        candidateResearchDetail.textContent += ` An unbounded-copy radius-two-to-three CEGAR chain proposed ${radius3.corona_radius3_cegar_proposals} exact outer states. GCTS rejected ${radius3.corona_radius3_cegar_rejected_states} of them—${radius3.corona_radius3_cegar_immediate_obstructions} by an immediate dead cell and ${radius3.corona_radius3_cegar_subtree_obstructions} by a resolved subtree conflict—before extending the last proposal to an independently verified ${radius3.corona_completed_witness_placements}-copy radius-three corona. A separate replay exhausts all ${radius3.corona_radius3_cegar_replayed_clauses}/${radius3.corona_radius3_cegar_final_clauses} retained obstruction clauses. That recorded survivor itself has ${radius3.corona_radius3_witness_radius4_dead_cells} immediate radius-four dead cells, with a smallest ${radius3.corona_radius3_witness_radius4_minimum_clause}-copy conflict, so it does not reach radius four; other radius-three coronas remain unexhausted. This upgrades the candidate's finite survival evidence, not its tiling or aperiodicity status.`;
+      }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
         const throughput = (100 * partial.corona_partial_coverability_nodes
@@ -2902,7 +2906,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260821-polycube10-v127", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260822-polycube10-v130", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3566,7 +3570,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-polycube10-v120", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260822-polycube10-v130", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

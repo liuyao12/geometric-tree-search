@@ -447,6 +447,14 @@ const archivedP10054782LazyCellCegar = JSON.parse(await readFile(
   new URL("../data/polycube-p10-054782-lazy-cell-cegar-2026-08-22.json", import.meta.url),
   "utf8"
 ));
+const archivedP10052588Radius3Witness = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-radius3-witness-audit-2026-08-22.json", import.meta.url),
+  "utf8"
+));
+const archivedP10052588Radius3WitnessRaw = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-radius3-witness-cegar-raw-2026-08-22.json", import.meta.url),
+  "utf8"
+));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1471,7 +1479,7 @@ assert.deepEqual(
     ]
   ])),
   {
-    "p10-052588": [2, 3],
+    "p10-052588": [3, 4],
     "p10-054782": [3, 4],
     "p10-055695": [3, 4],
     "p10-290795": [2, 3],
@@ -1631,6 +1639,24 @@ assert.equal(archivedP10054782LazyCellCegar.incremental_dynamic_cell_ablation.su
 assert.equal(archivedP10054782LazyCellCegar.incremental_dynamic_cell_ablation.minimum_outer_placements_witnessed, 41);
 assert.equal(archivedP10054782LazyCellCegar.radius_3_space_exhausted, false);
 assert.equal(archivedP10054782LazyCellCegar.certified_non_tiler, false);
+assert.equal(archivedP10052588Radius3Witness.multi_obstruction_and_replay_commit, "c07c455");
+assert.equal(archivedP10052588Radius3Witness.radius_2_to_3_cegar.z3_sat_outer_proposals, 120);
+assert.equal(archivedP10052588Radius3Witness.radius_2_to_3_cegar.exact_dead_outer_proposals, 119);
+assert.equal(archivedP10052588Radius3Witness.radius_2_to_3_cegar.verified_radius_3_witnesses, 1);
+assert.equal(archivedP10052588Radius3Witness.independent_clause_replay.verified_clauses, 114);
+assert.equal(archivedP10052588Radius3Witness.radius_3_witness.total_surrounding_placements, 39);
+assert.equal(archivedP10052588Radius3Witness.fixed_witness_radius_4_continuation.immediate_dead_target_count, 12);
+assert.equal(archivedP10052588Radius3Witness.radius_3_space_exhausted, false);
+assert.equal(archivedP10052588Radius3Witness.certified_non_tiler, false);
+assert.equal(archivedP10052588Radius3Witness.certified_aperiodic, false);
+for (const source of archivedP10052588Radius3Witness.raw_reports) {
+  const bytes = await readFile(new URL(`../${source.path}`, import.meta.url));
+  assert.equal(
+    createHash("sha256").update(bytes).digest("hex"),
+    source.sha256,
+    `${source.path} must match its archived SHA-256`
+  );
+}
 assert.equal(archivedPartialNextLayerLookahead.algorithm.default_enabled, false);
 assert.equal(
   archivedPartialNextLayerLookahead["p10-055695_radius3_to_4"].baseline.continuation_checks,
@@ -1755,6 +1781,30 @@ assert.equal(archivedP9BatchedTripleCoverability.portfolio.final_four_trial_time
 assert.equal(archivedP9BatchedTripleCoverability.outer_search_exhausted, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 const p10054782Survivor = survivors.find(figure => figure.census_candidate.id === "p10-054782");
+const p10052588Survivor = survivors.find(figure => figure.census_candidate.id === "p10-052588");
+assert.equal(
+  p10052588Survivor.census_candidate.screening.corona_report,
+  "data/polycube-p10-052588-radius3-witness-audit-2026-08-22.json"
+);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_completed_radius, 3);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_completed_witness_placements, 39);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_radius3_cegar_proposals, 120);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_radius3_cegar_replayed_clauses, 114);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_radius3_witness_radius4_dead_cells, 12);
+assert.deepEqual(
+  verifyPolycubeCoronaPatch(
+    p10052588Survivor.census_candidate.voxels,
+    archivedP10052588Radius3WitnessRaw.radius_witness.corona,
+    3
+  ),
+  {
+    verified: true,
+    placements: 39,
+    occupied_cells: 400,
+    target_cells: 189,
+    method: "independent_corona_patch_occupancy"
+  }
+);
 assert.equal(
   p10054782Survivor.census_candidate.screening.corona_cell_cegar_report,
   "data/polycube-p10-054782-lazy-cell-cegar-2026-08-22.json"
@@ -1781,6 +1831,8 @@ assert.equal(p10055695Survivor.census_candidate.screening.corona_cell_cegar_fina
 assert.equal(p10055695Survivor.census_candidate.screening.corona_cell_cegar_combined_states_checked, 71);
 assert.match(growthAppSource, /Lazy next-ring cell promotion has now checked/);
 assert.match(growthAppSource, /finite-corona evidence, not a non-tiling or aperiodicity certificate/);
+assert.match(growthAppSource, /An unbounded-copy radius-two-to-three CEGAR chain proposed/);
+assert.match(growthAppSource, /This upgrades the candidate's finite survival evidence, not its tiling or aperiodicity status/);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_min_placements, 40);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_prunes, 28);
 assert.equal(p10055695Survivor.census_candidate.screening.corona_partial_coverability_validation_nodes, 4985856);

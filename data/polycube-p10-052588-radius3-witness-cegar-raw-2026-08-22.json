@@ -1,0 +1,6164 @@
+{
+  "kind": "polycube_corona_z3_cegar",
+  "candidate": "p10-052588",
+  "outer_layer": 2,
+  "inner_layer": 3,
+  "classification": "verified_inner_radius_witness",
+  "backend": "pb2bv-sat",
+  "random_seed": 173,
+  "seed_stride": 0,
+  "min_placements": null,
+  "max_placements": null,
+  "symmetry_clauses": true,
+  "continue_on_z3_unknown": true,
+  "require_next_layer_coverability": false,
+  "effective_next_layer_coverability": true,
+  "learn_cell_coverability": true,
+  "cell_orbit_limit": 0,
+  "learn_pair_coverability": false,
+  "pair_orbit_limit": 0,
+  "bootstrap_pair_distance": 0,
+  "pair_encoding": "dnf",
+  "pair_soft_minimum": null,
+  "pair_soft_orbit_minimum": null,
+  "pair_selection": "lexicographic",
+  "encoded_pair_orbit_limit": 0,
+  "encoded_pair_selection": "first",
+  "recent_defect_orbit_limit": null,
+  "encoded_pair_coverability_orbits": 0,
+  "encoded_pair_coverability_constraints": 0,
+  "encoded_pair_orbit_keys": [],
+  "encoded_pair_orbit_scores": [],
+  "encoded_pair_orbit_hits": [],
+  "encoded_pair_historical_sets_covered": 0,
+  "pair_orbit_scores": {},
+  "pair_orbit_hits": {},
+  "pair_defect_orbit_sets": [],
+  "pair_defect_orbit_set_count": 0,
+  "lookahead_conflict_encoding": "grouped-pb",
+  "root_symmetry_breaking": false,
+  "z3_unknown_trials": 0,
+  "z3_timeout_ms": 30000,
+  "z3_process_grace_ms": 120000,
+  "z3_formula_cache": false,
+  "z3_witness_batch_size": 1,
+  "z3_interactive": true,
+  "z3_interactive_replace_pairs": true,
+  "continuation_time_ms": 30000,
+  "continuation_nodes": 10000000,
+  "trials": [
+    {
+      "iteration": 0,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 0,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 65,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 38027,
+      "z3_construction_milliseconds": 33251,
+      "z3_check_milliseconds": 4776,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 24,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 5,
+      "continuation_milliseconds": 23,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 1,
+      "clauses_added": 1,
+      "clauses": 66,
+      "dead_target_cell": "3,0,2",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 66,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 1,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 66,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5214,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5214,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 17,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 67,
+      "dead_target_cell": "1,3,-1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 67,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 2,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 67,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 4842,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 4842,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 28,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 15,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 68,
+      "dead_target_cell": "2,-2,1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 68,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 3,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 68,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5749,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5749,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 21,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "continuation_milliseconds": 22,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 69,
+      "dead_target_cell": "-3,0,0",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 69,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 4,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 69,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 4681,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 4681,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 23,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 20,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 70,
+      "dead_target_cell": "-2,1,3",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 70,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 5,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 70,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5324,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5324,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 24,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 18,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 71,
+      "dead_target_cell": "2,2,-1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 71,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 6,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 71,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 4640,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 4640,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "continuation_milliseconds": 11,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 72,
+      "dead_target_cell": "3,2,0",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 72,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 7,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 72,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 4835,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 4835,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 14,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 73,
+      "dead_target_cell": "-1,3,2",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 73,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 8,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 73,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5644,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5644,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 23,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 17,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 74,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 73,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 9,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 73,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5458,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5458,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 23,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 8,
+      "continuation_milliseconds": 18,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 75,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 73,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 10,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 73,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6238,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6238,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "continuation_milliseconds": 14,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 76,
+      "dead_target_cell": "0,5,1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 74,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 11,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 74,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6464,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6464,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 24,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 17,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 77,
+      "dead_target_cell": "0,5,0",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 75,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 12,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 75,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5856,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5856,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 4,
+      "continuation_milliseconds": 13,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 78,
+      "dead_target_cell": "3,3,1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 76,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 13,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 76,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6325,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6325,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 14,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 79,
+      "dead_target_cell": "2,4,1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 77,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 14,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 77,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6539,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6539,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 16,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 80,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 77,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 15,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 77,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6583,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6583,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 17,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 81,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 77,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 16,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 77,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6797,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6797,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 18,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 82,
+      "dead_target_cell": "3,-1,1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 78,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 17,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 78,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5807,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5807,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 4,
+      "continuation_milliseconds": 12,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 83,
+      "dead_target_cell": "3,1,0",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 79,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 18,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 79,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5869,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5869,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 23,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 19,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 84,
+      "dead_target_cell": "0,2,-3",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 19,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 7041,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 7041,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 14,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 5,
+      "clauses_added": 1,
+      "clauses": 85,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 20,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 7036,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 7036,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 14,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 5,
+      "clauses_added": 1,
+      "clauses": 86,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 21,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 7100,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 7100,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 5,
+      "continuation_milliseconds": 15,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 87,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 22,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6606,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6606,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 13,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 88,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 23,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5451,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5451,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 12,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 89,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 24,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5443,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5443,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 12,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 90,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 25,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5463,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5463,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 13,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 91,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 26,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5732,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5732,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 10,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 92,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 27,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6125,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6125,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 8,
+      "continuation_milliseconds": 16,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 93,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 28,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6294,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6294,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 24,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 18,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 94,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 29,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6634,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6634,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 22,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 21,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 95,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 30,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6837,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6837,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 23,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 4,
+      "continuation_milliseconds": 19,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 96,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 31,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6354,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6354,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 22,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 22,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 97,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 32,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6939,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6939,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 16,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 98,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 33,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6831,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6831,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 13,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 5,
+      "clauses_added": 1,
+      "clauses": 99,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 34,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6841,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6841,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 15,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 5,
+      "clauses_added": 1,
+      "clauses": 100,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 80,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 35,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 80,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 7171,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 7171,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "continuation_milliseconds": 12,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 101,
+      "dead_target_cell": "-1,2,3",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 81,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 36,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 81,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5802,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5802,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 4,
+      "continuation_milliseconds": 16,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 5,
+      "clauses_added": 1,
+      "clauses": 102,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 81,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 37,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 81,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5720,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5720,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 4,
+      "continuation_milliseconds": 16,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 5,
+      "clauses_added": 1,
+      "clauses": 103,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 81,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 38,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 81,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5744,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5744,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 15,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 4,
+      "clauses_added": 1,
+      "clauses": 104,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 81,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 39,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 81,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 7245,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 7245,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 25,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "continuation_milliseconds": 14,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 105,
+      "dead_target_cell": "0,-2,3",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 82,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 40,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 82,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6078,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6078,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 23,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 15,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 106,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 82,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 41,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 82,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5636,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5636,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 3,
+      "continuation_milliseconds": 10,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 107,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 82,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 42,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 82,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5765,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5765,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 28,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 9,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 108,
+      "dead_target_cell": "4,2,1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 83,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 43,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 83,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6742,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6742,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 6,
+      "continuation_milliseconds": 18,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 109,
+      "dead_target_cell": "4,0,1",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 84,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 44,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 84,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 7720,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 7720,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 29,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 7,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 110,
+      "dead_target_cell": "0,3,-2",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 85,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 45,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 85,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 7143,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 7143,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 23,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 15,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 2,
+      "clauses_added": 1,
+      "clauses": 111,
+      "dead_target_cell": "2,2,3",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 86,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 46,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 86,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6588,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6588,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "continuation_milliseconds": 9,
+      "obstruction_kind": "immediate_dead_target",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 112,
+      "dead_target_cell": "-1,1,4",
+      "cell_constraints_added": 1,
+      "cell_orbits_added": 1,
+      "cell_coverability_constraints": 87,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 47,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 1,
+      "z3_interactive_cell_coverability_constraints": 87,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5099,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5099,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 2,
+      "continuation_milliseconds": 11,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 113,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 87,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 48,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 87,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 5828,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 5828,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 27,
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 5,
+      "continuation_milliseconds": 12,
+      "obstruction_kind": "resolved_subtree_conflict",
+      "learned_clause_size": 3,
+      "clauses_added": 1,
+      "clauses": 114,
+      "dead_target_cell": null,
+      "cell_constraints_added": 0,
+      "cell_orbits_added": 0,
+      "cell_coverability_constraints": 87,
+      "incompatible_target_pairs": 0,
+      "selected_pair_candidate_combinations_blocked": null,
+      "pair_constraints_added": 0,
+      "pair_orbits_added": 0,
+      "pair_coverability_constraints": 0,
+      "incompatible_target_triples": 0,
+      "triple_audit_truncated": false,
+      "selected_triple_candidate_combinations_blocked": null,
+      "triple_constraints_added": 0,
+      "triple_orbits_added": 0,
+      "triple_coverability_constraints": 0,
+      "encoded_triple_coverability_constraints": 0,
+      "encoded_triple_coverability_orbits": 0,
+      "encoded_triple_orbit_keys": [],
+      "encoded_triple_orbit_scores": [],
+      "incompatible_target_quadruples": 0,
+      "selected_quadruple_candidate_combinations_blocked": null,
+      "quadruple_constraints_added": 0,
+      "quadruple_orbits_added": 0,
+      "quadruple_coverability_constraints": 0
+    },
+    {
+      "iteration": 49,
+      "proposal_index": 0,
+      "proposal_batch_size": 1,
+      "proposal_batch_requested": 1,
+      "proposal_batch_terminal_status": "interactive",
+      "random_seed": 173,
+      "z3_status": "sat",
+      "z3_interactive": true,
+      "z3_interactive_clauses_applied": 1,
+      "z3_interactive_cells_applied": 0,
+      "z3_interactive_cell_coverability_constraints": 87,
+      "z3_interactive_pairs_applied": 0,
+      "z3_interactive_pair_coverability_constraints": 0,
+      "z3_interactive_pair_coverability_formulas": 0,
+      "encoded_pair_coverability_constraints": 0,
+      "encoded_pair_coverability_orbits": 0,
+      "encoded_pair_orbit_keys": [],
+      "encoded_pair_orbit_scores": [],
+      "encoded_pair_orbit_hits": [],
+      "encoded_pair_historical_sets_covered": 0,
+      "z3_pair_soft_satisfied": null,
+      "z3_pair_soft_orbits_satisfied": null,
+      "z3_milliseconds": 6557,
+      "z3_construction_milliseconds": 0,
+      "z3_check_milliseconds": 6557,
+      "z3_formula_cache_hit": false,
+      "z3_formula_cache_pairs_reused": 0,
+      "z3_formula_cache_pairs_added": 0,
+      "z3_formula_cache_load_milliseconds": 0,
+      "z3_formula_cache_write_milliseconds": 0,
+      "outer_placements": 26,
+      "continuation_success": true,
+      "continuation_nodes": 13,
+      "continuation_milliseconds": 12,
+      "clauses": 114
+    }
+  ],
+  "learned_clauses": [
+    [
+      "0,2,3;0,3,3;0,3,4;1,2,3;1,3,2;1,3,4;2,2,3;2,3,2;2,3,3;2,3,4"
+    ],
+    [
+      "0,-1,-1;0,-1,-2;0,-1,0;1,-1,-2;1,-1,0;1,-2,-1;1,-2,-2;1,-2,0;1,0,-1;1,0,-2"
+    ],
+    [
+      "-1,2,-1;-1,2,-2;-1,2,0;-1,3,-2;-1,3,0;-2,3,-1;-2,3,-2;-2,3,0;0,3,-1;0,3,0",
+      "0,2,-1;0,2,-2;0,3,-2;1,1,-2;1,2,-1;1,3,-2;2,1,-2;2,2,-1;2,2,-2;2,3,-2"
+    ],
+    [
+      "1,3,1;1,3,2;1,3,3;2,2,2;2,2,3;2,3,1;2,3,3;2,4,1;2,4,2;2,4,3"
+    ],
+    [
+      "-1,-1,-2;-1,-1,0;-1,-2,-1;-2,-1,-1;-2,-1,-2;-2,-1,0;-2,-2,-1;0,-1,-1;0,-1,-2;0,-2,-1"
+    ],
+    [
+      "-1,3,1;-1,3,2;-1,4,0;-1,4,2;-1,5,0;-1,5,1;-1,5,2;-2,4,0;-2,4,1;-2,4,2"
+    ],
+    [
+      "2,0,0;2,1,0;3,-1,-1;3,-1,0;3,0,-1;3,1,-1;3,1,0;4,-1,0;4,0,0;4,1,0"
+    ],
+    [
+      "-1,2,3;-1,3,3;-1,3,4;0,2,3;0,3,2;0,3,4;1,2,3;1,3,2;1,3,3;1,3,4"
+    ],
+    [
+      "1,-1,-1;1,-1,0;1,0,0;2,-1,-1;2,-1,1;2,0,0;3,-1,-1;3,-1,0;3,-1,1;3,0,0"
+    ],
+    [
+      "-1,-1,-1;-1,-1,-2;-1,-1,-3;-1,0,-1;-1,0,-3;-1,1,-1;-1,1,-2;-2,-1,-2;-2,0,-2;-2,1,-2",
+      "0,-1,-2;0,-1,-4;0,-2,-2;0,-2,-3;0,0,-2;0,0,-3;0,0,-4;1,-1,-3;1,-2,-3;1,0,-3"
+    ],
+    [
+      "-1,1,4;-1,2,4;-1,2,5;0,1,4;0,2,3;0,2,5;1,1,4;1,2,3;1,2,4;1,2,5"
+    ],
+    [
+      "-1,-1,0;-1,-1,1;-1,-2,0;-1,-2,2;-1,-3,0;-1,-3,1;-1,-3,2;0,-1,1;0,-2,1;0,-3,1",
+      "-1,-1,2;-1,-1,3;-1,-2,3;-2,-1,2;-2,-1,4;-2,-2,3;-3,-1,2;-3,-1,3;-3,-1,4;-3,-2,3"
+    ],
+    [
+      "-1,4,2;-1,4,3;-1,5,2;0,3,2;0,4,3;0,5,2;1,3,2;1,4,2;1,4,3;1,5,2"
+    ],
+    [
+      "0,-1,0;0,-2,0;0,-2,1;0,-3,0;1,-1,0;1,-2,1;1,-3,0;2,-2,0;2,-2,1;2,-3,0"
+    ],
+    [
+      "-1,0,-1;-1,0,-2;-1,1,-1;-1,2,-1;-1,2,-2;-2,0,-2;-2,1,-2;-2,2,-2;0,1,-2;0,2,-2",
+      "0,-1,-1;0,-1,-3;0,-2,-1;0,-2,-2;0,-2,-3;0,0,-2;0,0,-3;1,-1,-2;1,-2,-2;1,0,-2"
+    ],
+    [
+      "-1,-1,4;-1,0,3;-1,0,5;-2,-1,4;-2,0,3;-2,0,4;-2,0,5;0,-1,4;0,0,3;0,0,4",
+      "-1,1,5;-1,2,5;-1,3,5;0,1,4;0,1,5;0,1,6;0,2,4;0,2,6;0,3,5;0,3,6"
+    ],
+    [
+      "-1,-1,2;-1,-1,4;-1,0,2;-1,0,3;-1,0,4;-2,-1,2;-2,-1,3;-2,-1,4;0,-1,2;0,-1,3",
+      "0,-1,4;0,0,3;0,0,4;1,-1,4;1,0,3;1,1,4;2,-1,4;2,0,3;2,0,4;2,1,4"
+    ],
+    [
+      "-1,-1,1;-1,-1,2;-1,-2,1;-1,-2,3;-1,-3,1;-1,-3,2;-1,-3,3;0,-1,2;0,-2,2;0,-3,2",
+      "-1,-1,3;-1,-1,4;-1,-1,5;0,-1,3;0,-1,5;0,-2,3;0,-2,4;0,-2,5;0,0,3;0,0,4"
+    ],
+    [
+      "-1,-1,-1;-1,-1,0;-1,-1,1;-1,-2,-1;-1,-2,1;-1,-3,0;-1,-3,1;-2,-2,-1;-2,-2,0;-2,-2,1",
+      "0,-1,0;0,-2,0;0,-2,1;1,-1,0;1,-2,1;1,-3,0;2,-1,0;2,-2,0;2,-2,1;2,-3,0"
+    ],
+    [
+      "-1,-1,1;-1,-1,2;-1,-2,2;-1,0,2;-2,-1,1;-2,-2,2;-2,0,2;-3,-1,1;-3,-1,2;-3,-2,2",
+      "-2,1,1;-2,1,2;-3,1,1;-3,1,3;-3,2,1;-3,2,2;-3,2,3;-4,1,1;-4,1,2;-4,1,3"
+    ],
+    [
+      "-1,0,-1;-1,1,-1;-1,1,0;-1,2,-1;-2,0,-1;-2,1,0;-2,2,-1;-3,1,-1;-3,1,0;-3,2,-1",
+      "-2,-1,0;-2,-2,0;-2,0,0;-3,-1,-1;-3,-1,1;-3,-2,0;-3,-2,1;-3,0,-1;-3,0,0;-3,0,1"
+    ],
+    [
+      "-1,-1,-1;-1,-1,0;-2,-1,-1;-2,-1,1;-2,0,-1;-2,0,0;-2,0,1;-3,-1,-1;-3,-1,0;-3,-1,1"
+    ],
+    [
+      "-1,0,3;-1,0,4;-2,-1,2;-2,-1,3;-2,-1,4;-2,0,2;-2,0,4;-3,0,2;-3,0,3;-3,0,4",
+      "-2,1,2;-2,1,3;-3,1,2;-3,1,4;-3,2,2;-3,2,3;-3,2,4;-4,1,2;-4,1,3;-4,1,4"
+    ],
+    [
+      "0,4,2;0,4,3;0,5,2;1,3,2;1,4,3;1,5,2;2,3,2;2,4,2;2,4,3;2,5,2"
+    ],
+    [
+      "2,0,3;2,0,4;2,1,2;2,1,4;2,2,2;2,2,3;2,2,4;3,0,3;3,1,3;3,2,3"
+    ],
+    [
+      "-1,2,-1;-1,2,-2;-2,2,-2;-2,2,0;-2,3,-1;-2,3,-2;-2,3,0;-3,2,-1;-3,2,-2;-3,2,0",
+      "-1,2,1;-1,3,1;-1,3,2;-2,2,1;-2,3,2;-2,4,1;-3,2,1;-3,3,1;-3,3,2;-3,4,1"
+    ],
+    [
+      "-1,1,-1;-1,1,-2;-1,1,-3;-1,2,-1;-1,2,-3;-1,3,-2;-1,3,-3;0,1,-2;0,2,-2;0,3,-2"
+    ],
+    [
+      "2,-1,3;2,-1,4;2,0,2;2,0,4;2,1,2;2,1,3;2,1,4;3,-1,3;3,0,3;3,1,3"
+    ],
+    [
+      "-2,-1,2;-2,0,2;-3,-1,1;-3,-1,2;-3,0,1;-3,1,1;-3,1,2;-4,-1,2;-4,0,2;-4,1,2",
+      "-2,0,0;-2,1,0;-3,0,-1;-3,0,0;-3,1,-1;-3,2,-1;-3,2,0;-4,0,0;-4,1,0;-4,2,0"
+    ],
+    [
+      "-1,1,-1;-1,2,-1;-1,2,0;-2,1,-1;-2,2,0;-2,3,-1;-3,1,-1;-3,2,-1;-3,2,0;-3,3,-1",
+      "-1,3,-1;-1,3,0;-1,4,-1;-1,5,-1;-1,5,0;-2,4,0;-2,5,0;0,3,0;0,4,0;0,5,0"
+    ],
+    [
+      "-1,-1,-1;-1,-1,0;-1,-1,1;-1,-2,-1;-1,-2,1;-2,-2,-1;-2,-2,0;-2,-2,1;0,-2,-1;0,-2,0",
+      "-1,-1,-2;-1,-2,-2;-1,0,-2;0,-1,-1;0,-1,-3;0,-2,-2;0,-2,-3;0,0,-1;0,0,-2;0,0,-3"
+    ],
+    [
+      "-1,-1,0;-1,-1,1;-1,0,1;-2,-1,0;-2,-2,1;-2,0,1;-3,-1,0;-3,-1,1;-3,-2,1;-3,0,1",
+      "-2,-1,2;-2,0,2;-2,0,3;-2,1,2;-3,-1,2;-3,0,3;-3,1,2;-4,0,2;-4,0,3;-4,1,2"
+    ],
+    [
+      "-1,1,0;-1,2,-1;-1,2,0;-1,2,1;-2,1,0;-2,2,-1;-2,2,1;-3,1,0;-3,2,0;-3,2,1",
+      "-2,0,2;-2,1,1;-2,1,2;-2,2,2;-3,0,2;-3,1,1;-3,2,2;-4,0,2;-4,1,1;-4,1,2"
+    ],
+    [
+      "-1,1,-1;-1,1,-2;-1,1,0;-1,2,-2;-1,2,0;-1,3,-1;-1,3,0;-2,1,-1;-2,2,-1;-2,3,-1",
+      "-1,4,-1;-1,4,-2;-1,4,0;0,3,-1;0,3,0;0,4,-2;0,4,0;0,5,-1;0,5,-2;0,5,0"
+    ],
+    [
+      "1,3,0;1,3,1;2,3,-1;2,3,1;2,4,-1;2,4,0;2,4,1;3,3,-1;3,3,0;3,3,1"
+    ],
+    [
+      "-1,0,-2;-1,0,-3;-1,0,-4;0,-1,-2;0,-1,-3;0,-1,-4;0,0,-2;0,0,-4;1,0,-2;1,0,-3",
+      "0,2,-2;0,2,-3;0,3,-3;1,1,-3;1,2,-2;1,3,-3;2,1,-3;2,2,-2;2,2,-3;2,3,-3"
+    ],
+    [
+      "0,3,0;0,4,-1;0,4,0;0,5,0;1,3,0;1,4,-1;1,5,0;2,4,-1;2,4,0;2,5,0"
+    ],
+    [
+      "0,-1,1;0,-1,2;0,-1,3;0,-2,2;1,-1,1;1,-1,3;1,-2,2;2,-1,1;2,-1,2;2,-2,2",
+      "0,-2,0;0,-2,1;0,-3,0;0,-3,2;0,-4,0;0,-4,1;0,-4,2;1,-2,1;1,-3,1;1,-4,1"
+    ],
+    [
+      "-2,0,-1;-2,0,0;-2,0,1;-2,1,-1;-2,1,1;-2,2,-1;-2,2,0;-3,1,-1;-3,1,0;-3,1,1",
+      "-2,0,2;-2,0,3;-2,1,2;-3,0,1;-3,0,3;-3,1,2;-4,0,1;-4,0,2;-4,0,3;-4,1,2"
+    ],
+    [
+      "-1,-1,3;-1,-1,4;-1,-1,5;0,-1,3;0,-1,5;0,-2,4;0,-2,5;0,0,3;0,0,4;0,0,5",
+      "0,-2,2;0,-2,3;1,-1,1;1,-1,2;1,-1,3;1,-2,1;1,-2,3;2,-2,1;2,-2,2;2,-2,3"
+    ],
+    [
+      "-1,-1,3;-1,0,2;-1,0,3;-2,-1,3;-2,0,2;-2,0,4;-3,-1,3;-3,0,2;-3,0,3;-3,0,4",
+      "0,-1,3;0,0,3;1,-1,2;1,-2,2;1,-2,3;1,0,2;1,0,3;2,-1,3;2,-2,3;2,0,3"
+    ],
+    [
+      "-1,-1,2;-1,-1,4;-1,0,3;-2,-1,2;-2,-1,3;-2,0,3;0,-1,2;0,-1,3;0,-1,4;0,0,3",
+      "0,-1,5;0,-1,6;0,0,4;0,0,6;0,1,4;0,1,5;0,1,6;1,-1,5;1,0,5;1,1,5"
+    ],
+    [
+      "-1,-1,-1;-1,0,-1;-1,1,-1;-2,-1,-1;-2,-1,-2;-2,-1,0;-2,0,-2;-2,0,0;-2,1,-1;-2,1,-2",
+      "-1,2,-1;-1,2,0;-1,3,-1;-2,2,-2;-2,2,0;-2,3,-1;-3,2,-1;-3,2,-2;-3,2,0;-3,3,-1"
+    ],
+    [
+      "-1,-1,-1;-1,-2,-2;-1,-3,-1;-2,-1,-1;-2,-2,-1;-2,-2,-2;-2,-3,-1;0,-1,-1;0,-2,-1;0,-2,-2",
+      "-1,-2,0;-1,-3,0;-1,-4,0;0,-2,0;0,-2,1;0,-3,-1;0,-3,1;0,-4,-1;0,-4,0;0,-4,1"
+    ],
+    [
+      "-1,0,0;-1,0,1;-1,1,0;-2,0,-1;-2,0,1;-2,1,0;-3,0,-1;-3,0,0;-3,0,1;-3,1,0",
+      "-2,1,2;-2,2,2;-3,1,1;-3,1,2;-3,2,1;-3,3,1;-3,3,2;-4,1,2;-4,2,2;-4,3,2"
+    ],
+    [
+      "0,-1,2;0,-2,2;0,-3,2;1,-1,1;1,-1,2;1,-2,1;1,-3,1;1,-3,2;2,-2,2;2,-3,2",
+      "2,-1,0;2,-1,1;2,-2,1;2,0,1;3,-1,0;3,-2,1;3,0,1;4,-1,0;4,-1,1;4,0,1"
+    ],
+    [
+      "0,-2,-1;0,-2,-2;0,-2,0;1,-1,-1;1,-1,-2;1,-2,-2;1,-2,0;1,-3,-1;1,-3,-2;1,-3,0",
+      "0,-2,1;0,-3,1;0,-4,1;1,-2,1;1,-2,2;1,-3,2;1,-4,1;1,-4,2;2,-2,1;2,-3,1"
+    ],
+    [
+      "2,1,2;2,2,2;3,1,2;3,1,3;3,2,3;3,3,2;3,3,3;4,1,2;4,2,2;4,3,2"
+    ],
+    [
+      "0,-1,-1;0,-1,-3;0,-2,-1;0,-2,-2;0,-2,-3;0,0,-2;0,0,-3;1,-1,-2;1,-2,-2;1,0,-2",
+      "0,1,-1;0,1,-2;0,1,-3;1,1,-1;1,1,-3;1,2,-1;1,2,-2;1,2,-3;2,1,-2;2,1,-3"
+    ],
+    [
+      "-1,0,3;-1,0,4;-1,1,4;0,0,3;0,0,5;0,1,4;1,0,3;1,0,4;1,0,5;1,1,4",
+      "0,2,3;0,2,4;0,2,5;1,2,3;1,2,5;1,3,3;1,3,4;1,3,5;2,2,3;2,2,4"
+    ],
+    [
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-2,1,1;-2,1,2;-2,2,1;-2,2,3;-2,3,1;-2,3,2;-2,3,3;-3,1,2;-3,2,2;-3,3,2"
+    ],
+    [
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "0,0,4;0,1,4;0,2,4;1,0,4;1,0,5;1,1,5;1,2,4;1,2,5;2,1,4;2,2,4"
+    ],
+    [
+      "-1,-1,2;-1,-1,3;-1,-2,2;-1,-2,4;-1,-3,2;-1,-3,3;-1,-3,4;-2,-2,2;-2,-2,3;-2,-2,4",
+      "0,-2,1;0,-2,2;0,-2,3;0,-3,1;0,-3,3;0,-4,1;0,-4,2;1,-3,1;1,-3,2;1,-3,3"
+    ],
+    [
+      "1,1,-1;1,1,-2;1,1,-3;1,2,-1;1,2,-3;1,3,-2;1,3,-3;2,1,-2;2,2,-2;2,3,-2"
+    ],
+    [
+      "0,-2,1;0,-2,2;1,-1,0;1,-1,1;1,-1,2;1,-2,0;1,-2,2;2,-2,0;2,-2,1;2,-2,2",
+      "1,0,-1;1,0,0;1,1,-1;2,-1,-1;2,0,0;2,1,-1;3,-1,-1;3,0,-1;3,0,0;3,1,-1"
+    ],
+    [
+      "-1,2,1;-1,3,1;-1,3,2;-2,2,1;-2,3,2;-2,4,1;-3,2,1;-3,3,1;-3,3,2;-3,4,1",
+      "-2,1,0;-2,2,0;-3,1,-1;-3,1,0;-3,2,-1;-3,3,-1;-3,3,0;-4,1,0;-4,2,0;-4,3,0"
+    ],
+    [
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "0,0,3;0,0,4;0,0,5;0,1,4;1,0,3;1,0,5;1,1,4;2,0,4;2,0,5;2,1,4"
+    ],
+    [
+      "-1,-1,-1;-1,-2,-1;-1,-3,-1;0,-1,-1;0,-1,0;0,-2,0;0,-3,-1;0,-3,0;1,-1,-1;1,-2,-1",
+      "1,-1,0;1,-2,0;1,-2,1;1,-3,0;2,-1,0;2,-2,1;2,-3,0;3,-2,0;3,-2,1;3,-3,0"
+    ],
+    [
+      "-1,1,4;-1,1,5;0,0,4;0,0,5;0,0,6;0,1,4;0,1,6;1,1,4;1,1,5;1,1,6",
+      "0,2,3;0,2,4;0,2,5;0,3,3;0,3,5;0,4,3;0,4,4;1,2,4;1,3,4;1,4,4"
+    ],
+    [
+      "0,-1,-1;0,-1,-2;0,-1,-3;1,-1,-1;1,-1,-3;1,-2,-1;1,-2,-2;1,-2,-3;2,-1,-1;2,-1,-2",
+      "0,0,-1;0,0,-2;1,0,-1;1,0,-3;1,1,-1;1,1,-2;1,1,-3;2,0,-1;2,0,-2;2,0,-3"
+    ],
+    [
+      "1,-1,1;1,-1,2;1,-1,3;1,0,2;2,-1,1;2,-1,3;2,0,2;3,-1,2;3,-1,3;3,0,2",
+      "1,-2,1;1,-3,1;1,-3,2;2,-2,1;2,-3,2;2,-4,1;3,-2,1;3,-3,1;3,-3,2;3,-4,1"
+    ],
+    [
+      "-2,-1,-1;-2,0,-1;-2,0,0;-2,1,-1;-3,-1,-1;-3,0,0;-3,1,-1;-4,0,-1;-4,0,0;-4,1,-1",
+      "-2,0,1;-2,1,1;-3,-1,1;-3,-1,2;-3,0,2;-3,1,1;-3,1,2;-4,-1,1;-4,0,1;-4,1,1"
+    ],
+    [
+      "-1,3,0;-1,4,-1;-1,5,0;-2,3,0;-2,4,-1;-2,4,0;-2,5,0;0,4,-1;0,4,0;0,5,0",
+      "-2,1,1;-2,2,1;-2,2,2;-3,1,1;-3,2,2;-3,3,1;-4,1,1;-4,2,1;-4,2,2;-4,3,1"
+    ],
+    [
+      "1,1,-1;1,1,-2;1,1,0;2,0,-1;2,0,-2;2,0,0;2,1,-2;2,1,0;3,1,-1;3,1,0",
+      "1,2,-1;1,2,-2;1,2,0;2,2,-2;2,2,0;2,3,-1;2,3,-2;2,3,0;3,2,-1;3,2,-2"
+    ],
+    [
+      "1,-1,1;1,-1,2;1,-1,3;1,0,2;2,-1,1;2,-1,3;2,0,2;3,-1,2;3,-1,3;3,0,2",
+      "2,1,1;2,1,2;2,1,3;2,2,2;3,1,1;3,1,3;3,2,2;4,1,2;4,1,3;4,2,2"
+    ],
+    [
+      "2,0,2;2,1,2;3,-1,1;3,-1,2;3,0,1;3,1,1;3,1,2;4,-1,2;4,0,2;4,1,2"
+    ],
+    [
+      "-1,1,-1;-1,1,-2;-1,1,-3;-1,2,-2;0,1,-1;0,1,-3;0,2,-2;1,1,-1;1,1,-2;1,2,-2",
+      "0,2,-1;0,3,-1;0,3,0;1,2,-1;1,3,-2;1,3,0;2,2,-1;2,3,-1;2,3,-2;2,3,0"
+    ],
+    [
+      "1,-1,0;1,-2,-1;1,-2,0;1,-3,0;2,-1,0;2,-2,-1;2,-3,0;3,-1,0;3,-2,-1;3,-2,0",
+      "1,-1,1;1,-2,1;1,-3,1;2,-1,1;2,-1,2;2,-2,2;2,-3,1;2,-3,2;3,-1,1;3,-2,1"
+    ],
+    [
+      "-1,-1,2;-1,-2,2;-2,-1,1;-2,-2,1;-2,-2,2;-2,0,1;-2,0,2;-3,-1,2;-3,-2,2;-3,0,2",
+      "-2,-1,0;-2,0,0;-3,-1,-1;-3,-1,0;-3,0,-1;-3,1,-1;-3,1,0;-4,-1,0;-4,0,0;-4,1,0"
+    ],
+    [
+      "-1,0,0;-1,0,1;-1,0,2;-2,0,0;-2,0,2;-2,1,0;-2,1,1;-2,1,2;-3,0,1;-3,0,2",
+      "-1,0,3;-1,0,5;-1,1,4;-2,0,3;-2,0,4;-2,1,4;0,0,3;0,0,4;0,0,5;0,1,4",
+      "-1,2,3;-1,2,5;-1,3,4;-2,2,3;-2,2,4;-2,3,4;0,2,3;0,2,4;0,2,5;0,3,4"
+    ],
+    [
+      "0,-1,-1;0,-1,0;0,-2,-1;0,0,-1;1,-1,0;1,-2,-1;1,0,-1;2,-1,-1;2,-1,0;2,-2,-1",
+      "1,2,-1;1,2,-2;1,2,0;2,1,-1;2,1,0;2,2,-2;2,2,0;2,3,-1;2,3,-2;2,3,0"
+    ],
+    [
+      "2,-1,-1;2,-1,0;2,0,-1;2,0,1;2,1,-1;2,1,0;2,1,1;3,0,-1;3,0,0;3,0,1",
+      "2,2,0;2,2,1;2,3,0;3,1,0;3,2,1;3,3,0;4,1,0;4,2,0;4,2,1;4,3,0"
+    ],
+    [
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,3,1;-1,3,3;-1,4,1;-1,4,2;-1,4,3;-2,3,1;-2,3,2;-2,3,3;0,3,1;0,3,2"
+    ],
+    [
+      "-1,-1,-1;-1,-1,0;-1,-1,1;-1,-2,-1;-1,-2,1;-1,-3,-1;-1,-3,0;0,-2,-1;0,-2,0;0,-2,1",
+      "-1,-1,2;-1,-1,3;-1,-1,4;0,-1,2;0,-1,4;0,-2,2;0,-2,3;0,-2,4;1,-1,3;1,-1,4",
+      "-1,0,-1;-1,0,0;-1,0,1;-2,-1,-1;-2,-1,0;-2,-1,1;-2,0,-1;-2,0,1;-2,1,0;-2,1,1",
+      "-1,0,2;-1,0,3;-1,0,4;-2,0,2;-2,0,4;-2,1,2;-2,1,3;-2,1,4;-3,0,3;-3,0,4"
+    ],
+    [
+      "-1,2,3;-1,3,2;-1,3,3;0,2,3;0,3,2;0,4,3;1,2,3;1,3,2;1,3,3;1,4,3",
+      "0,3,-1;0,3,0;0,3,1;0,4,-1;0,4,1;0,5,0;0,5,1;1,4,-1;1,4,0;1,4,1",
+      "2,2,2;2,2,3;2,3,2;2,3,4;2,4,2;2,4,3;2,4,4;3,3,2;3,3,3;3,3,4"
+    ],
+    [
+      "-1,3,2;-1,4,3;-1,5,2;-2,4,2;-2,4,3;-2,5,2;0,3,2;0,4,2;0,4,3;0,5,2",
+      "-1,4,1;-1,5,0;-1,5,1;0,4,1;0,5,0;0,6,1;1,4,1;1,5,0;1,5,1;1,6,1"
+    ],
+    [
+      "-1,4,0;-1,5,0;-1,6,0;0,4,0;0,4,1;0,5,1;0,6,0;0,6,1;1,5,0;1,6,0",
+      "0,3,-1;0,3,0;0,3,1;1,3,-1;1,3,1;1,4,-1;1,4,0;1,4,1;2,3,-1;2,3,0"
+    ],
+    [
+      "1,3,0;1,4,0;2,3,0;2,3,1;2,4,1;2,5,0;2,5,1;3,3,0;3,4,0;3,5,0",
+      "1,3,2;1,3,3;2,2,2;2,2,3;2,2,4;2,3,2;2,3,4;3,3,2;3,3,3;3,3,4",
+      "3,2,1;3,2,2;3,2,3;4,2,1;4,2,3;4,3,1;4,3,2;4,3,3;5,2,1;5,2,2"
+    ],
+    [
+      "1,3,-1;1,3,-2;1,3,0;2,2,-1;2,2,0;2,3,-2;2,3,0;2,4,-1;2,4,-2;2,4,0",
+      "1,3,1;1,3,2;1,3,3;1,4,1;1,4,3;1,5,1;1,5,2;2,3,2;2,4,2;2,5,2",
+      "3,2,0;3,2,1;3,3,0;3,3,2;3,4,0;3,4,1;3,4,2;4,3,0;4,3,1;4,3,2"
+    ],
+    [
+      "-1,-1,-1;-1,-1,-3;-1,-2,-2;-2,-1,-1;-2,-1,-2;-2,-2,-2;0,-1,-1;0,-1,-2;0,-1,-3;0,-2,-2",
+      "-1,0,-1;-1,1,-1;-1,1,-2;-1,1,0;-2,0,-1;-2,1,-2;-2,1,0;-3,0,-1;-3,1,-1;-3,1,0",
+      "-1,2,-2;-1,2,-3;-1,2,-4;0,1,-2;0,1,-3;0,1,-4;0,2,-2;0,2,-4;0,3,-3;0,3,-4"
+    ],
+    [
+      "-1,-1,-1;-1,-1,-3;-1,-2,-2;-2,-1,-1;-2,-1,-2;-2,-2,-2;0,-1,-1;0,-1,-2;0,-1,-3;0,-2,-2",
+      "-1,0,-1;-1,1,-1;-1,1,-2;-1,1,0;-2,0,-1;-2,1,-2;-2,1,0;-3,0,-1;-3,1,-1;-3,1,0",
+      "0,0,-2;0,0,-3;0,0,-4;1,-1,-2;1,-1,-3;1,-1,-4;1,0,-2;1,0,-4;1,1,-3;1,1,-4"
+    ],
+    [
+      "0,-3,0;0,-3,1;0,-4,1;1,-2,1;1,-3,0;1,-4,1;2,-2,1;2,-3,0;2,-3,1;2,-4,1",
+      "2,-1,1;2,-1,2;2,0,1;3,-1,2;3,-2,1;3,0,1;4,-1,1;4,-1,2;4,-2,1;4,0,1"
+    ],
+    [
+      "1,0,-1;1,0,0;1,1,-2;1,1,0;1,2,-1;1,2,-2;1,2,0;2,0,-1;2,1,-1;2,2,-1",
+      "2,0,0;2,1,0;2,1,1;3,0,0;3,1,-1;3,1,1;4,0,0;4,1,-1;4,1,0;4,1,1"
+    ],
+    [
+      "-1,0,-1;-1,1,-2;-1,2,-1;-2,0,-1;-2,1,-1;-2,1,-2;0,0,-1;0,1,-1;0,1,-2;0,2,-1",
+      "-1,1,-3;-1,2,-3;-1,3,-3;0,1,-3;0,1,-4;0,2,-2;0,2,-4;0,3,-2;0,3,-3;0,3,-4"
+    ],
+    [
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,1,4;-1,2,3;-1,2,4;-1,2,5;0,1,4;0,2,3;0,2,5;1,1,4;1,2,3;1,2,4",
+      "-1,3,0;-1,4,0;-2,2,0;-2,2,1;-2,3,1;-2,4,0;-2,4,1;-3,2,0;-3,3,0;-3,4,0",
+      "-1,4,1;-1,4,2;-1,5,0;-1,5,2;-1,6,0;-1,6,1;-1,6,2;0,4,1;0,5,1;0,6,1",
+      "-2,0,2;-2,1,1;-2,1,2;-3,0,2;-3,1,1;-3,1,3;-4,0,2;-4,1,1;-4,1,2;-4,1,3"
+    ],
+    [
+      "-1,1,4;-1,2,3;-1,2,4;-1,2,5;0,1,4;0,2,3;0,2,5;1,1,4;1,2,3;1,2,4",
+      "-1,3,0;-1,4,0;-2,2,0;-2,2,1;-2,3,1;-2,4,0;-2,4,1;-3,2,0;-3,3,0;-3,4,0",
+      "-1,4,1;-1,4,2;-1,5,0;-1,5,2;-1,6,0;-1,6,1;-1,6,2;0,4,1;0,5,1;0,6,1",
+      "-2,0,2;-2,1,1;-2,1,2;-2,2,2;-3,0,2;-3,1,1;-3,2,2;-4,0,2;-4,1,1;-4,1,2",
+      "0,3,2;0,4,2;0,5,2;1,3,1;1,3,2;1,4,1;1,4,3;1,5,1;1,5,2;1,5,3"
+    ],
+    [
+      "0,3,2;0,4,2;0,5,2;1,3,1;1,3,2;1,4,1;1,4,3;1,5,1;1,5,2;1,5,3",
+      "2,1,2;2,1,3;2,2,3;3,1,2;3,1,4;3,2,3;4,1,2;4,1,3;4,1,4;4,2,3",
+      "3,2,0;3,2,1;3,3,0;3,3,2;3,4,0;3,4,1;3,4,2;4,3,0;4,3,1;4,3,2"
+    ],
+    [
+      "-1,-1,0;-1,-1,1;-1,-2,0;-1,-3,0;-1,-3,1;-2,-1,1;-2,-2,1;0,-1,1;0,-2,1;0,-3,1",
+      "-1,-1,2;-1,-1,3;-1,-1,4;0,-1,2;0,-1,4;0,-2,2;0,-2,3;0,-2,4;1,-1,3;1,-1,4",
+      "-1,0,0;-1,0,1;-1,1,0;-2,0,-1;-2,0,1;-2,1,0;-3,0,-1;-3,0,0;-3,0,1;-3,1,0",
+      "-1,0,2;-1,0,3;-1,0,4;-2,0,2;-2,0,4;-2,1,2;-2,1,3;-2,1,4;-3,0,3;-3,0,4"
+    ],
+    [
+      "-1,-1,0;-1,-1,2;-1,-2,0;-1,-2,1;-1,0,0;-1,0,1;-1,0,2;0,-1,0;0,-1,1;0,-1,2",
+      "-1,0,3;-1,0,4;-2,0,3;-2,0,5;-2,1,3;-2,1,4;-2,1,5;-3,0,3;-3,0,4;-3,0,5",
+      "-2,-1,2;-2,-1,3;-2,0,2;-3,-1,1;-3,-1,3;-3,0,2;-4,-1,1;-4,-1,2;-4,-1,3;-4,0,2",
+      "0,-1,3;0,-1,5;0,-2,3;0,-2,4;0,0,3;0,0,4;0,0,5;1,-1,3;1,-1,4;1,-1,5"
+    ],
+    [
+      "-1,-1,3;-1,-1,4;-1,-1,5;0,-1,3;0,-1,5;0,-2,4;0,-2,5;0,0,3;0,0,4;0,0,5",
+      "1,-1,2;1,-2,2;2,-1,1;2,-1,2;2,-2,1;2,-3,1;2,-3,2;3,-1,2;3,-2,2;3,-3,2",
+      "1,0,2;1,0,3;1,0,4;2,0,2;2,0,4;2,1,2;2,1,3;2,1,4;3,0,2;3,0,3"
+    ],
+    [
+      "0,-2,-1;0,-2,-2;0,-2,0;0,-3,-1;1,-2,-2;1,-2,0;1,-3,-1;2,-2,-1;2,-2,-2;2,-3,-1",
+      "0,0,-2;0,1,-2;0,2,-2;1,0,-1;1,0,-2;1,0,-3;1,1,-1;1,1,-3;1,2,-1;1,2,-2",
+      "1,-1,-1;1,-1,0;1,-1,1;1,-2,-1;1,-2,1;1,-3,0;1,-3,1;2,-1,0;2,-2,0;2,-3,0",
+      "2,1,-1;2,1,0;3,0,-1;3,0,0;3,0,1;3,1,-1;3,1,1;4,1,-1;4,1,0;4,1,1"
+    ],
+    [
+      "-1,1,4;-1,2,3;-1,2,4;-1,2,5;0,1,4;0,2,3;0,2,5;1,1,4;1,2,3;1,2,4",
+      "-1,4,1;-1,4,2;-1,4,3;-1,5,2;0,4,1;0,4,3;0,5,2;1,4,2;1,4,3;1,5,2",
+      "0,3,0;0,3,1;0,3,2;0,4,0;0,4,2;0,5,0;0,5,1;1,3,1;1,4,1;1,5,1",
+      "1,3,2;1,3,3;1,3,4;2,2,2;2,2,3;2,2,4;2,3,2;2,3,4;3,3,3;3,3,4"
+    ],
+    [
+      "0,3,2;0,4,2;0,5,2;1,3,1;1,3,2;1,4,1;1,4,3;1,5,1;1,5,2;1,5,3",
+      "2,1,2;2,1,3;2,1,4;2,2,3;3,1,2;3,1,4;3,2,3;4,1,3;4,1,4;4,2,3",
+      "3,2,0;3,2,1;3,3,0;3,3,2;3,4,0;3,4,1;3,4,2;4,3,0;4,3,1;4,3,2"
+    ],
+    [
+      "-1,-1,1;-1,-2,1;-2,-1,0;-2,-2,0;-2,-2,1;-2,0,0;-2,0,1;-3,-1,1;-3,-2,1;-3,0,1",
+      "-1,-2,-1;-1,-2,0;-1,-3,-1;-1,-3,1;-1,-4,-1;-1,-4,0;-1,-4,1;0,-2,0;0,-3,0;0,-4,0",
+      "-1,0,-1;-1,1,-1;-1,1,-2;-1,1,0;-2,0,-1;-2,1,-2;-2,1,0;-3,0,-1;-3,1,-1;-3,1,0",
+      "0,-1,-2;0,-1,-4;0,-2,-3;0,-2,-4;0,0,-2;0,0,-3;0,0,-4;1,-1,-2;1,-1,-3;1,-1,-4"
+    ],
+    [
+      "-1,-1,1;-1,-2,1;-2,-1,0;-2,-2,0;-2,-2,1;-2,0,0;-2,0,1;-3,-1,1;-3,-2,1;-3,0,1",
+      "-1,-2,-1;-1,-2,0;-1,-3,-1;-1,-3,1;-1,-4,-1;-1,-4,0;-1,-4,1;0,-2,0;0,-3,0;0,-4,0",
+      "-1,0,-1;-1,1,-1;-1,1,-2;-1,1,0;-2,0,-1;-2,1,-2;-2,1,0;-3,0,-1;-3,1,-1;-3,1,0",
+      "0,-1,-2;0,-1,-4;0,-2,-2;0,-2,-3;0,0,-2;0,0,-3;0,0,-4;1,-1,-3;1,-2,-3;1,0,-3"
+    ],
+    [
+      "-1,-1,1;-1,-2,1;-2,-1,0;-2,-2,0;-2,-2,1;-2,0,0;-2,0,1;-3,-1,1;-3,-2,1;-3,0,1",
+      "-1,-2,-1;-1,-2,0;-1,-3,-1;-1,-3,1;-1,-4,-1;-1,-4,0;-1,-4,1;0,-2,0;0,-3,0;0,-4,0",
+      "-1,0,-1;-1,1,-1;-1,1,-2;-1,1,0;-2,0,-1;-2,1,-2;-2,1,0;-3,0,-1;-3,1,-1;-3,1,0",
+      "0,-1,-2;0,-1,-4;0,-2,-2;0,-2,-3;0,-2,-4;0,0,-2;0,0,-3;1,-1,-2;1,-1,-3;1,-1,-4"
+    ],
+    [
+      "-1,-1,-3;-1,-2,-3;0,-1,-2;0,-2,-2;0,-2,-3;0,0,-2;0,0,-3;1,-1,-3;1,-2,-3;1,0,-3",
+      "-1,-1,1;-1,-2,1;-2,-1,0;-2,-2,0;-2,-2,1;-2,0,0;-2,0,1;-3,-1,1;-3,-2,1;-3,0,1",
+      "-1,-2,-1;-1,-2,0;-1,-3,-1;-1,-3,1;-1,-4,-1;-1,-4,0;-1,-4,1;0,-2,0;0,-3,0;0,-4,0",
+      "-1,0,-1;-1,1,-1;-1,1,-2;-1,1,0;-2,0,-1;-2,1,-2;-2,1,0;-3,0,-1;-3,1,-1;-3,1,0"
+    ],
+    [
+      "-1,-1,2;-1,-1,4;-1,-2,2;-1,-2,3;-1,-2,4;-1,0,2;-1,0,3;0,-1,3;0,-2,3;0,0,3",
+      "-1,-1,3;-1,-1,5;-1,0,4;-2,-1,3;-2,-1,4;-2,-1,5;-2,0,4;0,-1,4;0,-1,5;0,0,4",
+      "-2,-1,1;-2,0,1;-2,0,2;-2,1,1;-3,-1,1;-3,0,2;-3,1,1;-4,0,1;-4,0,2;-4,1,1"
+    ],
+    [
+      "-1,-1,3;-1,-1,5;-1,0,4;-2,-1,3;-2,-1,4;-2,-1,5;-2,0,4;0,-1,4;0,-1,5;0,0,4",
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,1,4;-1,2,3;-1,2,4;-1,2,5;0,1,4;0,2,3;0,2,5;1,1,4;1,2,3;1,2,4",
+      "-1,3,1;-1,4,1;-1,5,1;-2,3,1;-2,3,2;-2,4,2;-2,5,1;-2,5,2;-3,3,1;-3,4,1",
+      "-2,0,2;-2,1,1;-2,1,2;-3,0,2;-3,1,1;-3,1,3;-4,0,2;-4,1,1;-4,1,2;-4,1,3"
+    ],
+    [
+      "-1,-1,3;-1,-1,5;-1,0,4;-2,-1,3;-2,-1,4;-2,-1,5;-2,0,4;0,-1,4;0,-1,5;0,0,4",
+      "-1,1,0;-1,2,-1;-1,2,0;-1,2,1;-2,1,0;-2,2,-1;-2,2,1;-3,1,0;-3,2,0;-3,2,1",
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,3,1;-1,3,2;-1,3,3;-1,4,1;-1,4,3;-2,4,1;-2,4,2;-2,4,3;0,4,2;0,4,3",
+      "-2,0,2;-2,1,1;-2,1,2;-3,0,2;-3,1,1;-3,1,3;-4,0,2;-4,1,1;-4,1,2;-4,1,3"
+    ],
+    [
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,2,4;-1,3,4;-1,4,4;0,2,3;0,2,4;0,2,5;0,3,3;0,3,5;0,4,4;0,4,5",
+      "-1,3,1;-1,3,2;-1,3,3;-1,4,1;-1,4,3;-2,4,1;-2,4,2;-2,4,3;0,4,2;0,4,3"
+    ],
+    [
+      "-1,-1,4;-1,-1,5;-1,0,5;-1,1,4;-1,1,5;-2,-1,4;-2,0,4;-2,1,4;0,0,4;0,1,4",
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,3,2;-1,3,4;-1,4,3;-2,3,2;-2,3,3;-2,4,3;0,3,2;0,3,3;0,3,4;0,4,3",
+      "-2,0,2;-2,1,1;-2,1,2;-3,0,2;-3,1,1;-3,1,3;-4,0,2;-4,1,1;-4,1,2;-4,1,3",
+      "-2,2,1;-2,3,1;-3,2,0;-3,2,1;-3,3,0;-3,4,0;-3,4,1;-4,2,1;-4,3,1;-4,4,1"
+    ],
+    [
+      "-1,-1,4;-1,-1,5;-1,0,5;-1,1,4;-1,1,5;-2,-1,4;-2,0,4;-2,1,4;0,0,4;0,1,4",
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,3,2;-1,3,4;-1,4,3;-2,3,2;-2,3,3;-2,4,3;0,3,2;0,3,3;0,3,4;0,4,3",
+      "-2,0,2;-2,1,1;-2,1,2;-3,0,2;-3,1,1;-3,1,3;-4,0,2;-4,1,1;-4,1,2;-4,1,3",
+      "-2,2,1;-2,3,1;-2,4,1;-3,2,0;-3,2,1;-3,3,0;-3,4,0;-3,4,1;-4,3,1;-4,4,1"
+    ],
+    [
+      "-1,-1,4;-1,-1,5;-1,0,5;-1,1,4;-1,1,5;-2,-1,4;-2,0,4;-2,1,4;0,0,4;0,1,4",
+      "-1,1,1;-1,1,2;-1,1,3;-1,2,2;0,1,1;0,1,3;0,2,2;1,1,2;1,1,3;1,2,2",
+      "-1,3,2;-1,3,4;-1,4,2;-1,4,3;-1,4,4;-2,3,3;-2,3,4;0,3,2;0,3,3;0,3,4",
+      "-2,0,2;-2,1,1;-2,1,2;-3,0,2;-3,1,1;-3,1,3;-4,0,2;-4,1,1;-4,1,2;-4,1,3"
+    ],
+    [
+      "-1,-1,0;-1,-1,2;-1,-2,1;-1,-2,2;-1,0,0;-1,0,1;-1,0,2;-2,-1,0;-2,-1,1;-2,-1,2",
+      "-1,-1,3;-1,-2,3;0,-1,2;0,-1,3;0,-2,2;0,-3,2;0,-3,3;1,-1,3;1,-2,3;1,-3,3"
+    ],
+    [
+      "0,-1,2;0,-1,3;0,-1,4;1,-1,2;1,-1,4;1,0,2;1,0,3;1,0,4;2,-1,2;2,-1,3",
+      "2,0,2;2,1,1;2,1,2;2,1,3;3,0,2;3,1,1;3,1,3;4,0,2;4,1,1;4,1,2"
+    ],
+    [
+      "0,-1,3;0,-2,3;0,0,3;1,-1,2;1,-1,4;1,-2,2;1,-2,3;1,0,2;1,0,3;1,0,4",
+      "2,-1,2;2,0,1;2,0,2;3,-1,2;3,0,1;3,1,2;4,-1,2;4,0,1;4,0,2;4,1,2",
+      "2,1,1;2,1,2;2,1,3;3,0,2;3,0,3;3,1,1;3,1,3;3,2,1;3,2,2;3,2,3"
+    ],
+    [
+      "1,0,0;1,1,0;1,2,0;2,0,0;2,0,1;2,1,1;2,2,0;2,2,1;3,1,0;3,2,0",
+      "3,2,1;3,2,2;4,2,0;4,2,2;4,3,0;4,3,1;4,3,2;5,2,0;5,2,1;5,2,2"
+    ],
+    [
+      "1,-1,1;1,-1,2;1,-2,2;1,0,2;2,-1,1;2,-2,2;2,0,2;3,-1,1;3,-1,2;3,0,2",
+      "3,0,1;3,1,1;4,-1,0;4,-1,1;4,0,0;4,1,0;4,1,1;5,-1,1;5,0,1;5,1,1"
+    ],
+    [
+      "-1,1,-1;-1,1,-3;-1,2,-1;-1,2,-2;-1,2,-3;-2,1,-1;-2,1,-2;0,1,-1;0,1,-2;0,1,-3",
+      "-1,3,-2;-1,3,-3;0,2,-1;0,2,-2;0,2,-3;0,3,-1;0,3,-3;1,3,-1;1,3,-2;1,3,-3"
+    ],
+    [
+      "-1,1,4;-1,2,3;-1,2,4;-1,2,5;0,1,4;0,2,3;0,2,5;1,1,4;1,2,3;1,2,4",
+      "2,1,2;2,1,3;2,1,4;2,2,2;2,2,4;2,3,3;2,3,4;3,2,2;3,2,3;3,2,4"
+    ],
+    [
+      "-1,-1,3;-1,-2,3;-1,0,3;-2,-1,4;-2,-2,3;-2,-2,4;-2,0,3;-2,0,4;-3,-1,3;-3,-2,3",
+      "-1,1,5;-1,2,5;-1,3,5;0,1,4;0,1,5;0,1,6;0,2,4;0,2,6;0,3,5;0,3,6",
+      "-1,2,3;-1,2,4;-2,1,2;-2,1,3;-2,1,4;-2,2,2;-2,2,4;-3,2,2;-3,2,3;-3,2,4"
+    ],
+    [
+      "-1,-1,-1;-1,0,-1;-1,0,0;-2,-1,-1;-2,0,0;-2,1,-1;-3,-1,-1;-3,0,-1;-3,0,0;-3,1,-1",
+      "-1,-1,0;-1,-1,1;-1,-2,0;-1,-3,0;-1,-3,1;-2,-1,1;-2,-2,1;0,-1,1;0,-2,1;0,-3,1",
+      "-2,-1,2;-2,0,2;-3,-1,1;-3,-1,2;-3,0,1;-3,1,1;-3,1,2;-4,-1,2;-4,0,2;-4,1,2"
+    ],
+    [
+      "-1,-1,1;-1,-2,2;-1,-3,1;-2,-1,1;-2,-2,1;-2,-2,2;-2,-3,1;0,-2,1;0,-2,2;0,-3,1",
+      "1,-1,1;1,-2,0;1,-2,1;1,-3,1;2,-1,1;2,-2,0;2,-3,1;3,-1,1;3,-2,0;3,-2,1",
+      "1,-1,2;1,-1,3;1,-2,3;2,-1,2;2,-2,3;2,0,3;3,-1,2;3,-1,3;3,-2,3;3,0,3"
+    ]
+  ],
+  "learned_clause_count": 114,
+  "initial_clause_count": 65,
+  "cell_coverability_cells": [
+    "1,3,3",
+    "1,-1,-1",
+    "-1,3,-1",
+    "2,3,2",
+    "-1,-1,-1",
+    "-1,4,1",
+    "3,0,0",
+    "0,3,3",
+    "2,-1,0",
+    "-1,0,-2",
+    "0,2,4",
+    "-1,-2,1",
+    "0,4,2",
+    "1,-2,0",
+    "-1,1,-2",
+    "-1,0,4",
+    "-1,-1,3",
+    "-1,-2,2",
+    "-1,-2,0",
+    "-2,-1,2",
+    "-2,1,-1",
+    "-2,-1,0",
+    "-2,0,3",
+    "1,4,2",
+    "2,1,3",
+    "-2,3,1",
+    "-1,2,-2",
+    "2,0,3",
+    "-3,1,0",
+    "-1,4,0",
+    "0,-1,-2",
+    "-2,-1,1",
+    "-3,1,2",
+    "0,4,-1",
+    "2,3,0",
+    "0,0,-3",
+    "1,4,0",
+    "0,-3,1",
+    "-3,0,2",
+    "0,-1,4",
+    "1,-1,3",
+    "0,0,5",
+    "-2,2,-1",
+    "0,-3,0",
+    "-2,1,1",
+    "1,-2,2",
+    "1,-3,1",
+    "3,2,2",
+    "1,1,-2",
+    "1,2,4",
+    "-2,2,2",
+    "1,1,4",
+    "0,-3,2",
+    "1,2,-2",
+    "2,0,-1",
+    "-3,2,0",
+    "1,0,4",
+    "0,-2,-1",
+    "0,1,5",
+    "1,0,-2",
+    "2,-1,2",
+    "-3,0,1",
+    "-3,2,1",
+    "2,1,-1",
+    "3,1,2",
+    "3,0,2",
+    "1,3,-1",
+    "2,-2,1",
+    "-3,0,0",
+    "-2,1,3",
+    "2,2,-1",
+    "3,2,0",
+    "-1,3,2",
+    "0,5,1",
+    "0,5,0",
+    "3,3,1",
+    "2,4,1",
+    "3,-1,1",
+    "3,1,0",
+    "0,2,-3",
+    "-1,2,3",
+    "0,-2,3",
+    "4,2,1",
+    "4,0,1",
+    "0,3,-2",
+    "2,2,3",
+    "-1,1,4"
+  ],
+  "cell_coverability_constraint_count": 87,
+  "initial_cell_coverability_constraints": 65,
+  "pair_coverability_pairs": [],
+  "pair_coverability_constraint_count": 0,
+  "initial_pair_coverability_constraints": 0,
+  "bootstrap_pair_coverability_constraints": 0,
+  "learn_triple_coverability": false,
+  "triple_orbit_limit": 1,
+  "triple_audit_limit": 1,
+  "triple_max_cell_distance": 3,
+  "triple_encoding": "choice-cnf",
+  "tuple_enforcement": "lazy-all",
+  "encoded_triple_orbit_limit": 0,
+  "encoded_triple_selection": "first",
+  "encoded_triple_coverability_orbits": 0,
+  "encoded_triple_coverability_constraints": 0,
+  "encoded_triple_orbit_keys": [],
+  "encoded_triple_orbit_scores": [],
+  "triple_orbit_scores": {},
+  "triple_coverability_triples": [],
+  "triple_coverability_constraint_count": 0,
+  "initial_triple_coverability_constraints": 0,
+  "learn_quadruple_coverability": false,
+  "quadruple_orbit_limit": 1,
+  "quadruple_max_cell_distance": 6,
+  "quadruple_encoding": "choice-cnf",
+  "quadruple_coverability_quadruples": [],
+  "quadruple_coverability_constraint_count": 0,
+  "initial_quadruple_coverability_constraints": 0,
+  "radius_witness": {
+    "placements": 39,
+    "corona": [
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -4,
+            -1,
+            2
+          ],
+          [
+            -4,
+            0,
+            2
+          ],
+          [
+            -4,
+            1,
+            2
+          ],
+          [
+            -3,
+            -1,
+            1
+          ],
+          [
+            -3,
+            -1,
+            2
+          ],
+          [
+            -3,
+            0,
+            1
+          ],
+          [
+            -3,
+            1,
+            1
+          ],
+          [
+            -3,
+            1,
+            2
+          ],
+          [
+            -2,
+            -1,
+            2
+          ],
+          [
+            -2,
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -4,
+            2,
+            2
+          ],
+          [
+            -4,
+            2,
+            3
+          ],
+          [
+            -3,
+            2,
+            1
+          ],
+          [
+            -3,
+            2,
+            3
+          ],
+          [
+            -3,
+            3,
+            1
+          ],
+          [
+            -3,
+            3,
+            2
+          ],
+          [
+            -3,
+            3,
+            3
+          ],
+          [
+            -2,
+            2,
+            1
+          ],
+          [
+            -2,
+            2,
+            2
+          ],
+          [
+            -2,
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -3,
+            -3,
+            0
+          ],
+          [
+            -3,
+            -2,
+            0
+          ],
+          [
+            -3,
+            -1,
+            0
+          ],
+          [
+            -2,
+            -3,
+            0
+          ],
+          [
+            -2,
+            -3,
+            1
+          ],
+          [
+            -2,
+            -2,
+            1
+          ],
+          [
+            -2,
+            -1,
+            0
+          ],
+          [
+            -2,
+            -1,
+            1
+          ],
+          [
+            -1,
+            -2,
+            0
+          ],
+          [
+            -1,
+            -1,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -3,
+            -1,
+            -1
+          ],
+          [
+            -3,
+            0,
+            -1
+          ],
+          [
+            -3,
+            0,
+            0
+          ],
+          [
+            -3,
+            1,
+            -1
+          ],
+          [
+            -2,
+            -1,
+            -1
+          ],
+          [
+            -2,
+            0,
+            0
+          ],
+          [
+            -2,
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            0,
+            -1
+          ],
+          [
+            -1,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -3,
+            0,
+            2
+          ],
+          [
+            -3,
+            0,
+            3
+          ],
+          [
+            -2,
+            0,
+            1
+          ],
+          [
+            -2,
+            0,
+            3
+          ],
+          [
+            -2,
+            1,
+            1
+          ],
+          [
+            -2,
+            1,
+            2
+          ],
+          [
+            -2,
+            1,
+            3
+          ],
+          [
+            -1,
+            0,
+            1
+          ],
+          [
+            -1,
+            0,
+            2
+          ],
+          [
+            -1,
+            0,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -2,
+            0,
+            -4
+          ],
+          [
+            -2,
+            0,
+            -3
+          ],
+          [
+            -1,
+            -1,
+            -4
+          ],
+          [
+            -1,
+            -1,
+            -3
+          ],
+          [
+            -1,
+            -1,
+            -2
+          ],
+          [
+            -1,
+            0,
+            -4
+          ],
+          [
+            -1,
+            0,
+            -2
+          ],
+          [
+            0,
+            0,
+            -4
+          ],
+          [
+            0,
+            0,
+            -3
+          ],
+          [
+            0,
+            0,
+            -2
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -2,
+            0,
+            -2
+          ],
+          [
+            -2,
+            0,
+            -1
+          ],
+          [
+            -2,
+            1,
+            -2
+          ],
+          [
+            -2,
+            1,
+            0
+          ],
+          [
+            -2,
+            2,
+            -2
+          ],
+          [
+            -2,
+            2,
+            -1
+          ],
+          [
+            -2,
+            2,
+            0
+          ],
+          [
+            -1,
+            1,
+            -2
+          ],
+          [
+            -1,
+            1,
+            -1
+          ],
+          [
+            -1,
+            1,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -2,
+            3,
+            0
+          ],
+          [
+            -2,
+            4,
+            -1
+          ],
+          [
+            -2,
+            4,
+            0
+          ],
+          [
+            -2,
+            5,
+            0
+          ],
+          [
+            -1,
+            3,
+            0
+          ],
+          [
+            -1,
+            4,
+            -1
+          ],
+          [
+            -1,
+            5,
+            0
+          ],
+          [
+            0,
+            4,
+            -1
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            5,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -1,
+            -3,
+            1
+          ],
+          [
+            -1,
+            -3,
+            2
+          ],
+          [
+            -1,
+            -2,
+            1
+          ],
+          [
+            -1,
+            -2,
+            3
+          ],
+          [
+            -1,
+            -1,
+            1
+          ],
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            -1,
+            3
+          ],
+          [
+            0,
+            -2,
+            1
+          ],
+          [
+            0,
+            -2,
+            2
+          ],
+          [
+            0,
+            -2,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -1,
+            0,
+            4
+          ],
+          [
+            -1,
+            0,
+            5
+          ],
+          [
+            -1,
+            0,
+            6
+          ],
+          [
+            -1,
+            1,
+            4
+          ],
+          [
+            -1,
+            1,
+            6
+          ],
+          [
+            -1,
+            2,
+            5
+          ],
+          [
+            -1,
+            2,
+            6
+          ],
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            0,
+            1,
+            6
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -1,
+            1,
+            1
+          ],
+          [
+            -1,
+            1,
+            2
+          ],
+          [
+            -1,
+            1,
+            3
+          ],
+          [
+            -1,
+            2,
+            2
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            2,
+            2
+          ],
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            1,
+            2,
+            2
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -1,
+            2,
+            -1
+          ],
+          [
+            -1,
+            2,
+            0
+          ],
+          [
+            -1,
+            2,
+            1
+          ],
+          [
+            -1,
+            3,
+            -1
+          ],
+          [
+            -1,
+            3,
+            1
+          ],
+          [
+            -1,
+            4,
+            0
+          ],
+          [
+            -1,
+            4,
+            1
+          ],
+          [
+            0,
+            3,
+            -1
+          ],
+          [
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            3,
+            1
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -1,
+            2,
+            3
+          ],
+          [
+            -1,
+            3,
+            2
+          ],
+          [
+            -1,
+            3,
+            3
+          ],
+          [
+            -1,
+            3,
+            4
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            3,
+            2
+          ],
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            1,
+            3,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            -1,
+            5,
+            2
+          ],
+          [
+            -1,
+            6,
+            2
+          ],
+          [
+            0,
+            4,
+            1
+          ],
+          [
+            0,
+            4,
+            2
+          ],
+          [
+            0,
+            5,
+            1
+          ],
+          [
+            0,
+            6,
+            1
+          ],
+          [
+            0,
+            6,
+            2
+          ],
+          [
+            1,
+            4,
+            2
+          ],
+          [
+            1,
+            5,
+            2
+          ],
+          [
+            1,
+            6,
+            2
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            0,
+            -3,
+            -2
+          ],
+          [
+            0,
+            -3,
+            -1
+          ],
+          [
+            0,
+            -2,
+            -2
+          ],
+          [
+            0,
+            -2,
+            0
+          ],
+          [
+            0,
+            -1,
+            -2
+          ],
+          [
+            0,
+            -1,
+            -1
+          ],
+          [
+            0,
+            -1,
+            0
+          ],
+          [
+            1,
+            -2,
+            -2
+          ],
+          [
+            1,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -2,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            0,
+            -1,
+            1
+          ],
+          [
+            0,
+            -1,
+            2
+          ],
+          [
+            0,
+            -1,
+            3
+          ],
+          [
+            1,
+            -2,
+            1
+          ],
+          [
+            1,
+            -2,
+            2
+          ],
+          [
+            1,
+            -2,
+            3
+          ],
+          [
+            1,
+            -1,
+            1
+          ],
+          [
+            1,
+            -1,
+            3
+          ],
+          [
+            2,
+            -1,
+            2
+          ],
+          [
+            2,
+            -1,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            0,
+            -1,
+            4
+          ],
+          [
+            0,
+            0,
+            3
+          ],
+          [
+            0,
+            0,
+            4
+          ],
+          [
+            0,
+            0,
+            5
+          ],
+          [
+            1,
+            -1,
+            4
+          ],
+          [
+            1,
+            0,
+            3
+          ],
+          [
+            1,
+            0,
+            5
+          ],
+          [
+            2,
+            -1,
+            4
+          ],
+          [
+            2,
+            0,
+            3
+          ],
+          [
+            2,
+            0,
+            4
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            1,
+            -1
+          ],
+          [
+            0,
+            2,
+            -1
+          ],
+          [
+            1,
+            0,
+            -2
+          ],
+          [
+            1,
+            0,
+            -1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            -2
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            2,
+            -1
+          ],
+          [
+            1,
+            2,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            0,
+            1,
+            -3
+          ],
+          [
+            0,
+            1,
+            -2
+          ],
+          [
+            0,
+            2,
+            -2
+          ],
+          [
+            1,
+            1,
+            -3
+          ],
+          [
+            1,
+            1,
+            -1
+          ],
+          [
+            1,
+            2,
+            -2
+          ],
+          [
+            2,
+            1,
+            -3
+          ],
+          [
+            2,
+            1,
+            -2
+          ],
+          [
+            2,
+            1,
+            -1
+          ],
+          [
+            2,
+            2,
+            -2
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            1,
+            -1,
+            -2
+          ],
+          [
+            1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1,
+            0
+          ],
+          [
+            2,
+            -2,
+            -1
+          ],
+          [
+            2,
+            -2,
+            0
+          ],
+          [
+            2,
+            -1,
+            -2
+          ],
+          [
+            2,
+            -1,
+            0
+          ],
+          [
+            2,
+            0,
+            -2
+          ],
+          [
+            2,
+            0,
+            -1
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            1,
+            -1,
+            2
+          ],
+          [
+            1,
+            0,
+            2
+          ],
+          [
+            2,
+            -2,
+            1
+          ],
+          [
+            2,
+            -2,
+            2
+          ],
+          [
+            2,
+            -1,
+            1
+          ],
+          [
+            2,
+            0,
+            1
+          ],
+          [
+            2,
+            0,
+            2
+          ],
+          [
+            3,
+            -2,
+            2
+          ],
+          [
+            3,
+            -1,
+            2
+          ],
+          [
+            3,
+            0,
+            2
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            1,
+            3,
+            -1
+          ],
+          [
+            1,
+            3,
+            0
+          ],
+          [
+            1,
+            3,
+            1
+          ],
+          [
+            2,
+            2,
+            -1
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            1
+          ],
+          [
+            2,
+            3,
+            -1
+          ],
+          [
+            2,
+            3,
+            1
+          ],
+          [
+            2,
+            4,
+            -1
+          ],
+          [
+            2,
+            4,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            1,
+            4,
+            0
+          ],
+          [
+            1,
+            4,
+            1
+          ],
+          [
+            1,
+            5,
+            0
+          ],
+          [
+            2,
+            3,
+            0
+          ],
+          [
+            2,
+            4,
+            1
+          ],
+          [
+            2,
+            5,
+            0
+          ],
+          [
+            3,
+            3,
+            0
+          ],
+          [
+            3,
+            4,
+            0
+          ],
+          [
+            3,
+            4,
+            1
+          ],
+          [
+            3,
+            5,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            2,
+            1,
+            2
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            3,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            1
+          ],
+          [
+            3,
+            2,
+            2
+          ],
+          [
+            4,
+            1,
+            0
+          ],
+          [
+            4,
+            1,
+            1
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            2,
+            2,
+            2
+          ],
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            2,
+            2,
+            4
+          ],
+          [
+            2,
+            3,
+            2
+          ],
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            2,
+            4,
+            2
+          ],
+          [
+            2,
+            4,
+            3
+          ],
+          [
+            3,
+            2,
+            3
+          ],
+          [
+            3,
+            3,
+            3
+          ],
+          [
+            3,
+            4,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": null,
+        "orientation_key": null,
+        "translation": null,
+        "cells": [
+          [
+            3,
+            0,
+            1
+          ],
+          [
+            3,
+            1,
+            1
+          ],
+          [
+            4,
+            0,
+            1
+          ],
+          [
+            4,
+            0,
+            2
+          ],
+          [
+            4,
+            1,
+            2
+          ],
+          [
+            4,
+            2,
+            1
+          ],
+          [
+            4,
+            2,
+            2
+          ],
+          [
+            5,
+            0,
+            1
+          ],
+          [
+            5,
+            1,
+            1
+          ],
+          [
+            5,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "orientation_index": 6,
+        "orientation_key": "0,0,0;0,1,0;0,1,1;0,2,0;1,0,0;1,1,1;1,2,0;2,0,0;2,1,0;2,1,1",
+        "translation": [
+          -2,
+          -4,
+          2
+        ],
+        "cells": [
+          [
+            -2,
+            -4,
+            2
+          ],
+          [
+            -2,
+            -3,
+            2
+          ],
+          [
+            -2,
+            -3,
+            3
+          ],
+          [
+            -2,
+            -2,
+            2
+          ],
+          [
+            -1,
+            -4,
+            2
+          ],
+          [
+            -1,
+            -3,
+            3
+          ],
+          [
+            -1,
+            -2,
+            2
+          ],
+          [
+            0,
+            -4,
+            2
+          ],
+          [
+            0,
+            -3,
+            2
+          ],
+          [
+            0,
+            -3,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": 6,
+        "orientation_key": "0,0,0;0,1,0;0,1,1;0,2,0;1,0,0;1,1,1;1,2,0;2,0,0;2,1,0;2,1,1",
+        "translation": [
+          -1,
+          -4,
+          -1
+        ],
+        "cells": [
+          [
+            -1,
+            -4,
+            -1
+          ],
+          [
+            -1,
+            -3,
+            -1
+          ],
+          [
+            -1,
+            -3,
+            0
+          ],
+          [
+            -1,
+            -2,
+            -1
+          ],
+          [
+            0,
+            -4,
+            -1
+          ],
+          [
+            0,
+            -3,
+            0
+          ],
+          [
+            0,
+            -2,
+            -1
+          ],
+          [
+            1,
+            -4,
+            -1
+          ],
+          [
+            1,
+            -3,
+            -1
+          ],
+          [
+            1,
+            -3,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": 9,
+        "orientation_key": "0,0,1;0,0,2;0,1,0;0,1,2;0,2,0;0,2,1;0,2,2;1,0,1;1,1,1;1,2,1",
+        "translation": [
+          0,
+          2,
+          3
+        ],
+        "cells": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            3,
+            3
+          ],
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            4,
+            3
+          ],
+          [
+            0,
+            4,
+            4
+          ],
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            4
+          ],
+          [
+            1,
+            4,
+            4
+          ]
+        ]
+      },
+      {
+        "orientation_index": 9,
+        "orientation_key": "0,0,1;0,0,2;0,1,0;0,1,2;0,2,0;0,2,1;0,2,2;1,0,1;1,1,1;1,2,1",
+        "translation": [
+          1,
+          -1,
+          4
+        ],
+        "cells": [
+          [
+            1,
+            -1,
+            5
+          ],
+          [
+            1,
+            -1,
+            6
+          ],
+          [
+            1,
+            0,
+            4
+          ],
+          [
+            1,
+            0,
+            6
+          ],
+          [
+            1,
+            1,
+            4
+          ],
+          [
+            1,
+            1,
+            5
+          ],
+          [
+            1,
+            1,
+            6
+          ],
+          [
+            2,
+            -1,
+            5
+          ],
+          [
+            2,
+            0,
+            5
+          ],
+          [
+            2,
+            1,
+            5
+          ]
+        ]
+      },
+      {
+        "orientation_index": 22,
+        "orientation_key": "0,1,0;0,1,1;1,0,0;1,0,1;1,0,2;1,1,0;1,1,2;2,1,0;2,1,1;2,1,2",
+        "translation": [
+          2,
+          0,
+          3
+        ],
+        "cells": [
+          [
+            2,
+            1,
+            3
+          ],
+          [
+            2,
+            1,
+            4
+          ],
+          [
+            3,
+            0,
+            3
+          ],
+          [
+            3,
+            0,
+            4
+          ],
+          [
+            3,
+            0,
+            5
+          ],
+          [
+            3,
+            1,
+            3
+          ],
+          [
+            3,
+            1,
+            5
+          ],
+          [
+            4,
+            1,
+            3
+          ],
+          [
+            4,
+            1,
+            4
+          ],
+          [
+            4,
+            1,
+            5
+          ]
+        ]
+      },
+      {
+        "orientation_index": 19,
+        "orientation_key": "0,1,0;0,1,1;0,1,2;1,0,0;1,0,1;1,0,2;1,1,0;1,1,2;2,1,1;2,1,2",
+        "translation": [
+          -3,
+          3,
+          1
+        ],
+        "cells": [
+          [
+            -3,
+            4,
+            1
+          ],
+          [
+            -3,
+            4,
+            2
+          ],
+          [
+            -3,
+            4,
+            3
+          ],
+          [
+            -2,
+            3,
+            1
+          ],
+          [
+            -2,
+            3,
+            2
+          ],
+          [
+            -2,
+            3,
+            3
+          ],
+          [
+            -2,
+            4,
+            1
+          ],
+          [
+            -2,
+            4,
+            3
+          ],
+          [
+            -1,
+            4,
+            2
+          ],
+          [
+            -1,
+            4,
+            3
+          ]
+        ]
+      },
+      {
+        "orientation_index": 5,
+        "orientation_key": "0,0,0;0,0,1;0,1,1;1,0,0;1,0,2;1,1,1;2,0,0;2,0,1;2,0,2;2,1,1",
+        "translation": [
+          3,
+          3,
+          1
+        ],
+        "cells": [
+          [
+            3,
+            3,
+            1
+          ],
+          [
+            3,
+            3,
+            2
+          ],
+          [
+            3,
+            4,
+            2
+          ],
+          [
+            4,
+            3,
+            1
+          ],
+          [
+            4,
+            3,
+            3
+          ],
+          [
+            4,
+            4,
+            2
+          ],
+          [
+            5,
+            3,
+            1
+          ],
+          [
+            5,
+            3,
+            2
+          ],
+          [
+            5,
+            3,
+            3
+          ],
+          [
+            5,
+            4,
+            2
+          ]
+        ]
+      },
+      {
+        "orientation_index": 12,
+        "orientation_key": "0,0,1;0,1,0;0,1,1;0,2,1;1,0,1;1,1,0;1,2,1;2,1,0;2,1,1;2,2,1",
+        "translation": [
+          1,
+          5,
+          0
+        ],
+        "cells": [
+          [
+            1,
+            5,
+            1
+          ],
+          [
+            1,
+            6,
+            0
+          ],
+          [
+            1,
+            6,
+            1
+          ],
+          [
+            1,
+            7,
+            1
+          ],
+          [
+            2,
+            5,
+            1
+          ],
+          [
+            2,
+            6,
+            0
+          ],
+          [
+            2,
+            7,
+            1
+          ],
+          [
+            3,
+            6,
+            0
+          ],
+          [
+            3,
+            6,
+            1
+          ],
+          [
+            3,
+            7,
+            1
+          ]
+        ]
+      },
+      {
+        "orientation_index": 13,
+        "orientation_key": "0,0,1;0,1,0;0,1,1;1,0,1;1,1,0;1,2,1;2,0,1;2,1,0;2,1,1;2,2,1",
+        "translation": [
+          -1,
+          -5,
+          0
+        ],
+        "cells": [
+          [
+            -1,
+            -5,
+            1
+          ],
+          [
+            -1,
+            -4,
+            0
+          ],
+          [
+            -1,
+            -4,
+            1
+          ],
+          [
+            0,
+            -5,
+            1
+          ],
+          [
+            0,
+            -4,
+            0
+          ],
+          [
+            0,
+            -3,
+            1
+          ],
+          [
+            1,
+            -5,
+            1
+          ],
+          [
+            1,
+            -4,
+            0
+          ],
+          [
+            1,
+            -4,
+            1
+          ],
+          [
+            1,
+            -3,
+            1
+          ]
+        ]
+      },
+      {
+        "orientation_index": 9,
+        "orientation_key": "0,0,1;0,0,2;0,1,0;0,1,2;0,2,0;0,2,1;0,2,2;1,0,1;1,1,1;1,2,1",
+        "translation": [
+          -4,
+          1,
+          -1
+        ],
+        "cells": [
+          [
+            -4,
+            1,
+            0
+          ],
+          [
+            -4,
+            1,
+            1
+          ],
+          [
+            -4,
+            2,
+            -1
+          ],
+          [
+            -4,
+            2,
+            1
+          ],
+          [
+            -4,
+            3,
+            -1
+          ],
+          [
+            -4,
+            3,
+            0
+          ],
+          [
+            -4,
+            3,
+            1
+          ],
+          [
+            -3,
+            1,
+            0
+          ],
+          [
+            -3,
+            2,
+            0
+          ],
+          [
+            -3,
+            3,
+            0
+          ]
+        ]
+      },
+      {
+        "orientation_index": 22,
+        "orientation_key": "0,1,0;0,1,1;1,0,0;1,0,1;1,0,2;1,1,0;1,1,2;2,1,0;2,1,1;2,1,2",
+        "translation": [
+          -2,
+          2,
+          -4
+        ],
+        "cells": [
+          [
+            -2,
+            3,
+            -4
+          ],
+          [
+            -2,
+            3,
+            -3
+          ],
+          [
+            -1,
+            2,
+            -4
+          ],
+          [
+            -1,
+            2,
+            -3
+          ],
+          [
+            -1,
+            2,
+            -2
+          ],
+          [
+            -1,
+            3,
+            -4
+          ],
+          [
+            -1,
+            3,
+            -2
+          ],
+          [
+            0,
+            3,
+            -4
+          ],
+          [
+            0,
+            3,
+            -3
+          ],
+          [
+            0,
+            3,
+            -2
+          ]
+        ]
+      },
+      {
+        "orientation_index": 3,
+        "orientation_key": "0,0,0;0,0,1;0,0,2;1,0,0;1,0,2;1,1,0;1,1,1;1,1,2;2,0,0;2,0,1",
+        "translation": [
+          0,
+          2,
+          -5
+        ],
+        "cells": [
+          [
+            0,
+            2,
+            -5
+          ],
+          [
+            0,
+            2,
+            -4
+          ],
+          [
+            0,
+            2,
+            -3
+          ],
+          [
+            1,
+            2,
+            -5
+          ],
+          [
+            1,
+            2,
+            -3
+          ],
+          [
+            1,
+            3,
+            -5
+          ],
+          [
+            1,
+            3,
+            -4
+          ],
+          [
+            1,
+            3,
+            -3
+          ],
+          [
+            2,
+            2,
+            -5
+          ],
+          [
+            2,
+            2,
+            -4
+          ]
+        ]
+      },
+      {
+        "orientation_index": 21,
+        "orientation_key": "0,1,0;0,1,1;0,2,0;1,0,0;1,1,1;1,2,0;2,0,0;2,1,0;2,1,1;2,2,0",
+        "translation": [
+          3,
+          -2,
+          0
+        ],
+        "cells": [
+          [
+            3,
+            -1,
+            0
+          ],
+          [
+            3,
+            -1,
+            1
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            4,
+            -2,
+            0
+          ],
+          [
+            4,
+            -1,
+            1
+          ],
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            5,
+            -2,
+            0
+          ],
+          [
+            5,
+            -1,
+            0
+          ],
+          [
+            5,
+            -1,
+            1
+          ],
+          [
+            5,
+            0,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "warning": null
+}

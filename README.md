@@ -71,7 +71,15 @@ Pages site. The main way to use it is to open the page in a browser:
   `p10-054782`: 22 exact proposals down to 41 copies, 20 distinct dead-cell
   cuts, and no surviving radius-four subtree. Its best solver instance returned
   seven strengthened models from one construction before a randomized restart
-  was needed.
+  was needed. Candidate `p10-052588` now has stronger positive finite evidence:
+  an unbounded-copy radius-2-to-3 CEGAR chain rejected 119 proposals before GCTS
+  found and independently verified a 39-copy radius-three corona. Independent
+  replay validates all 114 retained obstruction clauses. That particular
+  survivor has twelve immediate radius-four dead cells, so radius four—and any
+  claim of tiling or aperiodicity—remains unresolved. The exact continuation
+  now returns every immediate dead cell in one pass; this promotes seven cells
+  at once on the non-tiler control and twelve on the recorded `p10-052588`
+  witness instead of rediscovering them through separate solver round trips.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

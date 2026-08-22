@@ -159,6 +159,9 @@ for (const reportPath of fixedWitnessReports) {
     stopped_by: continuation.stopped_by,
     nodes: continuation.nodes,
     milliseconds: continuation.milliseconds,
+    target_cells: continuation.target_cells,
+    remaining_target_cells: continuation.remaining_target_cells,
+    placements_considered: continuation.placements_considered,
     obstruction_kind: continuation.fixed_obstruction_nogood?.kind
       ?? (continuation.fixed_obstruction_nogood?.target_cell ? "immediate_dead_target" : null),
     obstruction_target_cell: continuation.fixed_obstruction_nogood?.target_cell ?? null,

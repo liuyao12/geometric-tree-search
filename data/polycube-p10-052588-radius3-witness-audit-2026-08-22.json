@@ -1,0 +1,123 @@
+{
+  "kind": "polycube_corona_radius3_witness_cegar_audit",
+  "date": "2026-08-22",
+  "candidate": "p10-052588",
+  "cegar_implementation_commit": "dd3839e",
+  "multi_obstruction_and_replay_commit": "c07c455",
+  "model": "proper cubic rotations; one fixed root; finite face-distance corona exact cover; no placement-count bound",
+  "protocol": {
+    "outer_radius": 2,
+    "inner_radius": 3,
+    "proposal_solver": "Z3 pseudo-Boolean exact cover (pb2bv-sat) with grouped lookahead conflict constraints",
+    "continuation_solver": "exact conflict-backjumping GCTS with each proposed radius-two patch fixed",
+    "portfolio_policy": "one batched diversification pass followed by retained incremental cell-and-clause strengthening",
+    "random_seeds": [167, 168, 169, 170, 171, 172, 173],
+    "root_stabilizer_size": 1,
+    "maximum_placements": null,
+    "bounded_copy_semantics": false
+  },
+  "radius_2_to_3_cegar": {
+    "z3_sat_outer_proposals": 120,
+    "exact_dead_outer_proposals": 119,
+    "verified_radius_3_witnesses": 1,
+    "immediate_dead_target_obstructions": 92,
+    "resolved_subtree_obstructions": 27,
+    "final_cell_coverability_constraints": 87,
+    "final_exact_obstruction_clauses": 114,
+    "outer_placement_distribution": {
+      "21": 2,
+      "22": 3,
+      "23": 12,
+      "24": 14,
+      "25": 37,
+      "26": 24,
+      "27": 18,
+      "28": 9,
+      "29": 1
+    },
+    "continuation_nodes": 299,
+    "z3_construction_milliseconds": 77538,
+    "z3_check_milliseconds": 583134,
+    "z3_unknown_trials": 0
+  },
+  "independent_clause_replay": {
+    "classification": "verified",
+    "clauses": 114,
+    "verified_clauses": 114,
+    "failed_clauses": 0,
+    "incomplete_clauses": 0,
+    "total_nodes": 261,
+    "total_milliseconds": 11053,
+    "clause_size_distribution": {
+      "1": 21,
+      "2": 62,
+      "3": 15,
+      "4": 10,
+      "5": 6
+    },
+    "method": "for each clause, fix only its listed placements and independently exhaust the full radius-three generalized-dancing-links search"
+  },
+  "radius_3_witness": {
+    "outer_radius_2_placements": 26,
+    "total_surrounding_placements": 39,
+    "gcts_continuation_nodes": 13,
+    "gcts_continuation_milliseconds": 22,
+    "remaining_target_cells": 22,
+    "continuation_placements_considered": 326,
+    "independent_verification": {
+      "verified": true,
+      "method": "independent_corona_patch_occupancy",
+      "placements": 39,
+      "occupied_cells_including_root": 400,
+      "verification_target_cells": 189
+    },
+    "raw_witness_report": "data/polycube-p10-052588-radius3-witness-cegar-raw-2026-08-22.json"
+  },
+  "fixed_witness_radius_4_continuation": {
+    "success": false,
+    "exhausted": true,
+    "nodes": 1,
+    "milliseconds": 30,
+    "obstruction_kind": "immediate_dead_target",
+    "immediate_dead_target_count": 12,
+    "minimum_obstruction_clause_size": 2,
+    "target_cells": 314,
+    "remaining_target_cells": 41,
+    "placements_considered": 546,
+    "interpretation": "this rejects the recorded radius-three witness only; it does not exhaust all radius-three coronas"
+  },
+  "multi_obstruction_learning": {
+    "change": "one exact continuation now returns and promotes every immediate dead target instead of only the smallest one",
+    "p10_052588_recorded_radius_3_witness_dead_targets_promotable_in_one_round": 12,
+    "positive_control_p10_052670_dead_targets_promoted_in_one_round": 7,
+    "proof_strength": "unchanged; each promoted cell is an exact necessary next-ring coverability condition"
+  },
+  "raw_reports": [
+    {
+      "path": "data/polycube-p10-052588-radius3-cegar-batch-raw-2026-08-22.json",
+      "sha256": "ae4266dcbd51ce7febf0ff30c31e370caa466811f6b274bb809907da0950be5d"
+    },
+    {
+      "path": "data/polycube-p10-052588-radius3-cegar-seed172-raw-2026-08-22.json",
+      "sha256": "e90cb9ca9af37d97df67dce2f1ef7e287f218b241a61ec5f1263f1c0777cec0d"
+    },
+    {
+      "path": "data/polycube-p10-052588-radius3-witness-cegar-raw-2026-08-22.json",
+      "sha256": "3ced2f5f39222bcbca113dd79dab087ff838541cc75f8d541119a1e850c94a2a"
+    },
+    {
+      "path": "data/polycube-p10-052588-radius3-clause-replay-raw-2026-08-22.json",
+      "sha256": "09da0a1d400652b96fe31544e6e9b44afef85b0d8fc01d4965fe202785ce56b2"
+    },
+    {
+      "path": "data/polycube-p10-052588-radius3-witness-to4-raw-2026-08-22.json",
+      "sha256": "c74bccdaabfce59d7107cad203d5379234b51edbbe43c92d529c63194a8bd09e"
+    }
+  ],
+  "radius_3_space_exhausted": false,
+  "verified_radius_3_witness_found": true,
+  "verified_radius_4_witness_found": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "p10-052588 is upgraded from a radius-two survivor to a rigorously verified radius-three survivor. The chained unbounded-copy CEGAR portfolio rejects 119 proposed radius-two coronas with exact GCTS obstructions before finding a 39-copy radius-three patch, and an independent replay verifies every one of the 114 retained clauses. The recorded radius-three patch itself has twelve immediate radius-four dead cells, so it is not a radius-four witness. Other radius-three coronas remain unexhausted. This is stronger finite-corona survival evidence and a useful GCTS/CEGAR regression, not a tiling or aperiodicity certificate."
+}
