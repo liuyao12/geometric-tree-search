@@ -126,8 +126,12 @@ Pages site. The main way to use it is to open the page in a browser:
   and 40-copy states and converge to byte-identical 46-cell applied reports;
   the cache hit cuts formula construction by 95.1%. Their 146- and 148-clause
   reports replay with zero failures, taking the corpus to 43 states. Every new
-  state still fails immediately at radius four. This remains inconclusive, not
-  evidence of non-tiling or aperiodicity.
+  state still fails immediately at radius four. A retained three-iteration
+  solver chain then advances the exact prefix 46→49 cells without reconstructing
+  the formula after either successful intermediate step. Its three new 40- or
+  41-copy patches are independently verified and distinct; all 158 accumulated
+  clauses replay exactly. The corpus now has 46 states. This remains
+  inconclusive, not evidence of non-tiling or aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

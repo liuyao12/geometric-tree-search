@@ -548,10 +548,59 @@
     "copy_bound_exhausted": false,
     "interpretation": "Matched cache-miss and cache-hit seeds at the same exact 45-cell prefix add distinct 41- and 40-copy states and converge to byte-identical 92-clause/46-cell applied reports. Caching cuts construction by 95.1%. Both states still fail immediate radius-four continuation, and independent replay verifies all 146 and 148 accumulated clauses."
   },
+  "retained_three_step_chain_from_46_cells": {
+    "protocol": "One interactive solver process applies three successive transactional 2-clause/1-cell increments. Each SAT result retains the exact increment and queues only sound GCTS obstruction feedback; any unknown would roll back and terminate the chain.",
+    "initial_applied_clauses": 92,
+    "initial_applied_cells": 46,
+    "formula_construction_milliseconds": 55950,
+    "iterations": [
+      {
+        "iteration": 0,
+        "check_milliseconds": 246983,
+        "outer_placements": 40,
+        "boundary_sha256": "2c6f65f676d4736e1a0f90e5a71df928063135722aeeb5ccad114fde9c40a653",
+        "final_applied_cells": 47,
+        "radius_4_continuation_nodes": 2
+      },
+      {
+        "iteration": 1,
+        "construction_milliseconds": 0,
+        "check_milliseconds": 183082,
+        "outer_placements": 41,
+        "boundary_sha256": "03f59eac97c4356ff07b11fd743801bc60f395d14fc95fc18087fb8353cf2946",
+        "final_applied_cells": 48,
+        "radius_4_continuation_nodes": 2
+      },
+      {
+        "iteration": 2,
+        "construction_milliseconds": 0,
+        "check_milliseconds": 175026,
+        "outer_placements": 41,
+        "boundary_sha256": "a911ae7ef882d4aba4227e25d1ef4f38eb72a8faf8681a995094ef3873ce7d32",
+        "final_applied_cells": 49,
+        "radius_4_continuation_nodes": 2
+      }
+    ],
+    "all_patches_independently_verified": true,
+    "all_boundaries_mutually_distinct": true,
+    "novel_against_prior_saved_witnesses": true,
+    "prior_saved_witnesses_checked": 162,
+    "final_applied_clauses": 98,
+    "final_applied_cells": 49,
+    "final_accumulated_clauses": 158,
+    "independently_replayed_clauses": 158,
+    "clause_replay_failures": 0,
+    "clause_replay_nodes": 310,
+    "new_distinct_radius_3_states": 3,
+    "combined_distinct_radius_3_states": 46,
+    "verified_radius_4_witness_found": false,
+    "copy_bound_exhausted": false,
+    "interpretation": "Retaining one interactive formula across successful increments removes reconstruction from the second and third checks and advances three exact applied cells in one run. The three new states all fail immediate radius-four continuation, so this improves proposal throughput without resolving tiling existence."
+  },
   "radius_3_space_exhausted": false,
   "radius_3_copy_bound_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains forty-three distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, and partial-formula caching reach forty-six applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains forty-six distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, partial-formula caching, and same-process retained increments reach forty-nine applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
 }

@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v169";
+} from "./engine.js?v=20260822-polycube10-v170";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1490,6 +1490,10 @@ function updateCandidateResearchPanel() {
         const diversified = candidate.screening;
         const constructionReduction = (100 * diversified.corona_prefix45_diversification_construction_reduction_fraction).toFixed(1);
         candidateResearchDetail.textContent += ` Matched diversification at the 45-cell prefix adds distinct 41- and ${diversified.corona_prefix45_diversification_minimum_placements}-copy states and converges to byte-identical ${diversified.corona_prefix45_diversification_maximum_applied_cells}-cell applied reports. The cache hit cuts construction by ${constructionReduction}% and the bounded corpus reaches ${diversified.corona_prefix45_diversification_combined_distinct_states} states. GCTS rejects both new states immediately in ${diversified.corona_prefix45_diversification_continuation_nodes} aggregate nodes; independent replay verifies ${diversified.corona_prefix45_diversification_seed213_replayed_clauses} and ${diversified.corona_prefix45_diversification_seed214_replayed_clauses} clauses with ${diversified.corona_prefix45_diversification_replay_failures} failures. No radius-four survivor has been found and the search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_retained_three_step_combined_distinct_states) {
+        const chain = candidate.screening;
+        candidateResearchDetail.textContent += ` A retained three-step solver chain then advances the exact prefix from 46 to ${chain.corona_retained_three_step_maximum_applied_cells} cells without reconstructing either successful intermediate formula. Its ${chain.corona_retained_three_step_new_states} independently verified ${chain.corona_retained_three_step_minimum_placements}- or 41-copy states raise the bounded corpus to ${chain.corona_retained_three_step_combined_distinct_states}. GCTS rejects all three at radius four in ${chain.corona_retained_three_step_continuation_nodes} aggregate nodes, and replay verifies all ${chain.corona_retained_three_step_replayed_clauses} accumulated clauses with ${chain.corona_retained_three_step_replay_failures} failures. The ≤42-copy proposal space remains unexhausted.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
