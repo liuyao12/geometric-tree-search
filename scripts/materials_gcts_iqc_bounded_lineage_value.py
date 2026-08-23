@@ -34,10 +34,12 @@ from materials_gcts_iqc_bounded_lineage_completion import (
     load_default_result as load_completion)
 from materials_gcts_iqc_joint_child_action_marking_fit import CASES
 from materials_gcts_iqc_frozen_fusion_runtime import (
-    INCIDENCE_NAMES, PARTIAL_NAMES, SECTION_NAMES, _local_section, _partial,
-    load_default_runtime)
+    HIDDEN_UNIT, INCIDENCE_NAMES, PARTIAL_NAMES, SECTION_NAMES, _local_section,
+    _partial_section, load_default_runtime)
 from materials_gcts_icosahedral_modelset import oracle_crop_fast
 from materials_gcts_iqc_three_block_portfolio_execution import _prepare_pool
+from materials_gcts_temporal_partial_port_graph import \
+    temporal_partial_port_graph
 
 
 ROOT = Path(__file__).resolve().parent
@@ -68,6 +70,7 @@ class Example:
     colors: tuple[str, ...]
     tie_key: tuple
     graphs: tuple
+    temporal_graph: object
     exact: bool
 
 
@@ -292,8 +295,19 @@ def _transported_stage_features(*, seed_positions, seed_species,
         positions=positions, species=species, actions=tuple(block_actions))
     source = SimpleNamespace(
         seed_positions=occupied_positions, seed_species=occupied_species)
-    partial, graph = _partial(
+    section, graph = _partial_section(
         source, state, runtime["grouped_vocabulary"])
+    partial = (
+        section.minimum_matched_fraction, section.mean_matched_fraction,
+        float(section.minimum_matched_atoms),
+        sum(match.matched_atoms for match in section.action_matches) /
+        len(section.action_matches),
+        float(min(match.training_group_support
+                  for match in section.action_matches)),
+        float(section.minimum_pair_shared_occupied),
+        section.mean_pair_shared_occupied,
+        float(section.maximum_pair_shared_occupied),
+        float(section.connected_action_pairs))
     incidence = tuple(graph.incidence_edges)
     graph_features = (
         float(len(graph.nodes)), float(len(graph.edges)),
@@ -311,7 +325,7 @@ def _transported_stage_features(*, seed_positions, seed_species,
     if len(values) != expected or any(not math.isfinite(value)
                                       for value in values):
         raise AssertionError("transported stage feature schema drift")
-    return values, graph
+    return values, graph, section
 
 
 def _load_source(relative):
@@ -382,6 +396,7 @@ def _candidate_case(payload):
                        for start in (0, 3, 6))
         transported = []
         stage_graphs = []
+        stage_sections = []
         prior = ()
         for block in blocks:
             cache_key = (prior, block)
@@ -392,10 +407,14 @@ def _candidate_case(payload):
                     seed_species=seed.species, prior_actions=prior,
                     block_actions=block, runtime=runtime)
                 transported_cache[cache_key] = stage
-            values, graph = stage
+            values, graph, section = stage
             transported.extend(values)
             stage_graphs.append(graph)
+            stage_sections.append(section)
             prior += block
+        temporal_graph = temporal_partial_port_graph(
+            tuple(stage_sections), blocks, seed.positions, seed.species,
+            distance_scale=HIDDEN_UNIT, distance_bin_width=.25)
         feature_rows.append((
             int(lineage["parent_id"]),
             lineage_features(
@@ -406,7 +425,7 @@ def _candidate_case(payload):
                 section_cache=section_cache,
                 transported_features=tuple(transported)),
             tuple(color for _point, color in actions), actions,
-            tuple(stage_graphs)))
+            tuple(stage_graphs), temporal_graph))
     candidate_digest = hashlib.sha256(repr(tuple(
         row[3] for row in feature_rows)).encode()).hexdigest()
     return {
@@ -429,7 +448,7 @@ def _candidate_rows(workers=4):
     source_shas = tuple(hashlib.sha256(
         (ROOT / case[1]).read_bytes()).hexdigest() for case in cases)
     cache_key = hashlib.sha256(repr((
-        FEATURE_NAMES, CANDIDATE_SCOPE, "stage-graphs-v1",
+        FEATURE_NAMES, CANDIDATE_SCOPE, "temporal-graph-v1",
         completion["result_digest"],
         source_shas)).encode()).hexdigest()
     if DEVELOPMENT_FEATURE_CACHE.exists():
@@ -489,13 +508,14 @@ def load_examples():
         target, _ = oracle_crop_fast(row["center"], row["radii"][2])
         truth = _truth_index(target.positions, target.species)
         positives = 0
-        for parent, features, colors, actions, graphs in row["rows"]:
+        for parent, features, colors, actions, graphs, temporal_graph in \
+                row["rows"]:
             exact = all(_correct(point, color, truth)
                         for point, color in actions)
             positives += exact
             examples.append(Example(
                 row["group"], row["name"], parent, features, colors,
-                actions, graphs, exact))
+                actions, graphs, temporal_graph, exact))
         audits.append({
             key: row[key] for key in (
                 "group", "name", "center", "source_fixture_sha256",
@@ -639,7 +659,7 @@ def _shuffle(rows, iteration):
         random.Random(seed).shuffle(labels)
         shuffled.extend(Example(
             row.group, row.nucleus, row.parent, row.features, row.colors,
-            row.tie_key, row.graphs, bool(label))
+            row.tie_key, row.graphs, row.temporal_graph, bool(label))
             for row, label in zip(group_rows, labels))
     return tuple(shuffled)
 

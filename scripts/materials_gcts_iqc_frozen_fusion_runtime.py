@@ -267,12 +267,22 @@ def _local_section(state):
         tuple(color for _point, color in occupied), SECTION_SCHEMA).values
 
 
-def _partial(source, state, grouped):
+def _partial_section(source, state, grouped):
     row = partial_irregular_section(
         grouped.vocabulary, grouped.training_group_support,
         source.seed_positions, source.seed_species,
         tuple(point for point, _color in state.actions),
         tuple(color for _point, color in state.actions))
+    graph = partial_irregular_port_graph(
+        row, source.seed_positions, source.seed_species,
+        tuple(point for point, _color in state.actions),
+        tuple(color for _point, color in state.actions),
+        distance_scale=HIDDEN_UNIT, distance_bin_width=.25)
+    return row, graph
+
+
+def _partial(source, state, grouped):
+    row, graph = _partial_section(source, state, grouped)
     values = (
         row.minimum_matched_fraction, row.mean_matched_fraction,
         float(row.minimum_matched_atoms),
@@ -285,11 +295,6 @@ def _partial(source, state, grouped):
         float(row.maximum_pair_shared_occupied),
         float(row.connected_action_pairs),
     )
-    graph = partial_irregular_port_graph(
-        row, source.seed_positions, source.seed_species,
-        tuple(point for point, _color in state.actions),
-        tuple(color for _point, color in state.actions),
-        distance_scale=HIDDEN_UNIT, distance_bin_width=.25)
     return values, graph
 
 
