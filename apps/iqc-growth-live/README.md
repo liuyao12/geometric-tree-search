@@ -2737,3 +2737,133 @@ commit an autonomous antichain, identify a stationary production, or establish
 exponential IQC growth. Those remain the next gates.
 
 Serve the repository root and open `/iqc-growth-live/`.
+### Fourth-block IQC replay and marking transfer
+
+The generic lineage executor previously canonicalized all nine stored actions
+at once before splitting them into three public-radius blocks.  That global
+sort could move an action into the wrong radius and falsely reject an exact
+lineage.  Canonicalization is now block-local.  On the corrected development
+receipt, all `64 / 64` retained parents replay and reach eight produces `8,872`
+fourth-block successors.  A consumed-target reach audit proves that the frozen
+geometry contains an exact continuation at proposal ranks `7 → 9 → 9`; reach
+eight therefore tops out at `11 / 12` correct actions, while reach nine exposes
+exact supply.
+
+A new bounded pose/port marking keeps the same five invariant channel families
+and is trained only on consumed nuclei 0 and 1 (`10,721` causal candidate
+descriptors, `1,044` positives).  On untouched nucleus 2 it is frozen before
+the target is opened and runs at the cheaper reach-eight budget.  All `64`
+parents replay, yielding `8,382` successors.  Post-hoc scoring finds `82` exact
+twelve-action continuations, distributed across all `14 / 14` exact parents in
+the beam.  This is a green fourth-block **marked proposal-supply** result.
+
+A subsequent same-nucleus ablation freezes both reach-eight receipts on
+untouched nucleus 3 before opening its target. The unmarked arm produces `96`
+exact successors from `10,868` unique geometry expansions; the marked arm
+produces `100` exact successors from `11,078`. Both cover all `16 / 16` exact
+parents. The `1.0417×` exact-supply gain costs `1.0193×` geometry work, below
+the predeclared `1.05×` cap, so the causal marked-supply gate is green.
+
+The next one-shot autonomous test freezes a causal 32-branch shortlist and a
+fifth-block rollout before opening untouched nucleus 4. It is honestly red:
+the shortlist contains `0` exact branches. Post-hoc scoring of the unchanged
+full receipt finds `96 / 8,649` exact successors under only two parents; their
+first exact global rank is `116`, but the first exact child is rank `2` within
+each parent. A parent-balanced width-two beam would retain both exact parents
+in `128` branches. The next fresh confirmation therefore preserves parent
+diversity instead of applying another global cutoff.
+
+No retry is claimed on consumed nucleus 4. Autonomous, stationary, and
+exponential IQC growth remain red.
+
+### Fresh parent-balanced fourth-block confirmation
+
+The post-hoc width-two observation was not used as the final policy. A
+train-only cross-nucleus audit found that width eight per parent preserves all
+exact-parent groups on both development folds (`14 / 14` and `16 / 16`). The
+fresh executor therefore keeps eight nine-action parents under each of eight
+first-block parents, then eight marked fourth-block children under each of
+those 64 parents. Candidate identity, geometry, scores, and parent assignment
+freeze before a fresh target is opened.
+
+The first maximin nucleus `(280,220,0)` produced a valid 512-candidate receipt,
+but its confirmation harness compared six-decimal frozen actions to target
+coordinates with exact eight-decimal dictionary lookup. Its reported `0 / 512`
+is preserved as a **scorer-harness failure**, not interpreted as scientific
+transfer, and that target is not reopened or retried.
+
+A second geometry-only maximin centre `(-280,160,-160)` adds the failed domain
+to the exclusion set, uses the established species-aware `10⁻⁵` matcher, and
+stores the opened target sites for independent audit. This corrected one-shot
+is scientifically valid and red:
+
+| fresh parent-balanced receipt | measured |
+| --- | ---: |
+| seed / target atoms | `483 / 47,526` |
+| complete nine-action lineages before selection | `1,114` |
+| retained nine-action parents | `64` |
+| retained fourth-block candidates | `512` |
+| exact fourth-block terminal triples | `8` |
+| exact retained nine-action parents | `0` |
+| exact complete twelve-action paths | `0` |
+| best complete path | `11 / 12` |
+| target-blind execution time | `1,721.03 s` |
+
+Thus fourth-block connection geometry still transfers—the receipt contains
+eight exact terminal triples—but the selected nine-action parents are all
+inexact. Because the receipt did not serialize the other 1,050 unretained
+nine-action lineages, this run cannot distinguish raw parent-supply failure
+from selector loss without prohibited re-execution. The next executor must
+serialize the full parent antichain, record per-stage timings, and cache shared
+fourth-frontier prefixes. Autonomous, stationary, and exponential IQC growth
+remain red.
+
+The auditable V3 executor now closes that instrumentation gap on the already
+consumed development nucleus `(-70,10,70)`. It freezes all `1,102` raw
+nine-action lineages before post-hoc scoring. Three raw lineages under one
+parent are exact, and all three survive the 64-lineage parent-balanced
+selection. The following 512 fourth-block candidates contain `21` exact full
+twelve-action paths and `476` exact terminal triples. Thus, on this consumed
+nucleus, the selector preserves the available exact parent; it is not the
+failure boundary.
+
+This remains diagnostic evidence, not a new fresh confirmation. Runtime is
+also red at `2,179.18 s` against the fixed `600 s` engineering gate. The
+measured stages are `383.44 s` for first/second frontiers, `169.53 s` for
+scheduled third frontiers, `208.02 s` for transported port graphs, `44.38 s`
+for fitting/selection, and `1,373.81 s` for chunked fourth frontiers. The last
+stage accounts for 63.0% of execution time and is now the primary optimization
+target. Normal regressions load the pinned 50 KB receipt fixture rather than
+rerunning this 36.3-minute audit.
+
+Profiling one frozen fourth-stage parent attributes most remaining work to
+repeated nearest-prototype assignment: the uncached path performs tens of
+millions of identical local-color comparisons. A new target-free cache reuses
+the mapping from each exact local cluster color to the frozen prototype table.
+On that parent it preserves the identical `8 → 38 → 143` state sequence and
+action digest while reducing `43.97 s` to `18.85 s` (`2.33×`). Incremental
+local-cluster typing, exact anchored-support indexing, single-pass port-channel
+responses, and bounded memoization of finite semantic port roles then remove
+the other repeated inner-loop work.
+
+The complete target-free construction has now been replayed with every frozen
+scientific output identical: second-branch receipt, scheduled prefix, lineage
+model, all `1,102` raw lineages, the same 64 selected indices, all 512 fourth
+candidates, and the final deterministic receipt. Runtime falls from
+`2,179.18 s` to `436.36 s` (`4.99×`), passing the fixed `600 s` engineering
+gate. The stages are now `83.92 / 74.42 / 18.97 / 44.47 / 214.58 s`; the last
+number is fourth-frontier generation. This turns only the consumed-audit
+runtime gate green. It does not turn the fresh disjoint result, autonomous IQC
+growth, stationary recursion, or exponential growth green.
+
+The same auditable executor was then frozen before a third fresh confirmation
+at the geometry-only maximin center `(-180,-80,-300)`, `231.52` units from the
+nearest recorded nucleus. Its target-free receipt contains all `1,087` raw
+nine-action lineages, 64 selected lineages, and 512 complete twelve-action
+candidates before the 47,530-atom target is opened once. Post-hoc scoring finds
+zero exact raw nine-action lineages, zero exact complete paths, but 197 exact
+terminal fourth blocks. Six candidates reach `11 / 12`; all share the same one
+incorrect upstream action. Runtime is `534.84 s`, so the engineering gate
+transfers to the fresh domain. Scientifically, this localizes failure to
+upstream parent supply—not selector loss or fourth-block connection geometry.
+No retry or fallback was run.
