@@ -1773,7 +1773,19 @@ assert.equal(archivedP10052588StagedCellFeedback.retained_five_step_chain_from_4
 assert.equal(archivedP10052588StagedCellFeedback.retained_five_step_chain_from_49_cells.combined_distinct_radius_3_states, 51);
 assert.equal(archivedP10052588StagedCellFeedback.retained_five_step_chain_from_49_cells.final_applied_cells, 54);
 assert.equal(archivedP10052588StagedCellFeedback.retained_five_step_chain_from_49_cells.verified_radius_4_witness_found, false);
-assert.equal(archivedP10052588StagedCellFeedback.radius_3_copy_bound_exhausted, false);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.precertificate_chain_from_54_cells.new_distinct_radius_3_states, 2);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.precertificate_chain_from_54_cells.independently_replayed_clauses, 176);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.seed_226_cache_miss.z3_status, "unsat");
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.seed_227_cache_hit.z3_status, "unsat");
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.applied_clause_reports_byte_identical, true);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.applied_cell_reports_byte_identical, true);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.maximum_outer_placements, 42);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.applied_clauses, 114);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.applied_cells, 57);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.radius_3_copy_bound_exhausted, true);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.unrestricted_radius_3_space_exhausted, false);
+assert.equal(archivedP10052588StagedCellFeedback.bounded_exhaustion_at_57_cells.certified_non_tiler, false);
+assert.equal(archivedP10052588StagedCellFeedback.radius_3_copy_bound_exhausted, true);
 assert.equal(archivedP10052588StagedCellFeedback.certified_non_tiler, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_aperiodic, false);
 for (const source of archivedP10052588Radius3Witness.raw_reports) {
@@ -1990,7 +2002,15 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_five_s
 assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_five_step_reconstructions_avoided, 4);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_five_step_replayed_clauses, 171);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_retained_five_step_replay_failures, 0);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, false);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_new_states, 2);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_combined_distinct_states, 53);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_certificate_cells, 57);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_applied_clauses, 114);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_maximum_placements, 42);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_independent_unsat_runs, 2);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_replayed_clauses, 176);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_replay_failures, 0);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, true);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(
     p10052588Survivor.census_candidate.voxels,

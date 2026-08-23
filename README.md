@@ -134,8 +134,12 @@ Pages site. The main way to use it is to open the page in a browser:
   consecutive increments, advancing 49→54 applied cells while avoiding four
   formula reconstructions. Its five new 40–42-copy patches are independently
   verified and all 171 accumulated clauses replay exactly. The corpus now has
-  51 states. This remains inconclusive, not evidence of non-tiling or
-  aperiodicity.
+  51 states. A final retained run adds two more verified states and reaches 56
+  applied cells; its attempted 57-cell step initially rolls back on timeout.
+  Two fresh processes then agree on exact UNSAT for the byte-identical
+  114-clause/57-cell formula, exhausting the ≤42-copy radius-three proposal
+  stratum as a source of radius-four survivors. This is a bounded certificate,
+  not evidence of non-tiling or aperiodicity: larger coronas remain unexhausted.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

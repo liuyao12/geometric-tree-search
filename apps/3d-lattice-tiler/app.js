@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v171";
+} from "./engine.js?v=20260822-polycube10-v172";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1498,6 +1498,11 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_retained_five_step_combined_distinct_states) {
         const longChain = candidate.screening;
         candidateResearchDetail.textContent += ` A longer retained chain succeeds at five further one-cell increments, reaching ${longChain.corona_retained_five_step_maximum_applied_cells} applied cells while avoiding ${longChain.corona_retained_five_step_reconstructions_avoided} formula reconstructions. Its ${longChain.corona_retained_five_step_new_states} independently verified ${longChain.corona_retained_five_step_minimum_placements}–${longChain.corona_retained_five_step_maximum_placements}-copy states raise the bounded corpus to ${longChain.corona_retained_five_step_combined_distinct_states}. All five fail radius-four continuation immediately in ${longChain.corona_retained_five_step_continuation_nodes} aggregate nodes, and replay verifies all ${longChain.corona_retained_five_step_replayed_clauses} clauses with ${longChain.corona_retained_five_step_replay_failures} failures. Same-process retention is now the production frontier policy; the search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_bounded_exhaustion_independent_unsat_runs) {
+        const bounded = candidate.screening;
+        const constructionReduction = (100 * bounded.corona_bounded_exhaustion_construction_reduction_fraction).toFixed(1);
+        candidateResearchDetail.textContent += ` The final retained chain adds ${bounded.corona_bounded_exhaustion_new_states} more verified states and reaches ${bounded.corona_bounded_exhaustion_maximum_verified_cells} applied cells. At ${bounded.corona_bounded_exhaustion_certificate_cells} cells, ${bounded.corona_bounded_exhaustion_independent_unsat_runs} independent solver seeds agree on exact UNSAT for byte-identical ${bounded.corona_bounded_exhaustion_applied_clauses}-clause formulas; the cache hit cuts construction by ${constructionReduction}%. This exhausts the ≤${bounded.corona_bounded_exhaustion_maximum_placements}-copy radius-three proposal stratum as a source of radius-four survivors, after ${bounded.corona_bounded_exhaustion_combined_distinct_states} verified bounded states and ${bounded.corona_bounded_exhaustion_replayed_clauses} replayed obstruction clauses. It does not exhaust larger coronas and proves neither non-tiling nor aperiodicity.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;

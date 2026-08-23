@@ -628,10 +628,56 @@
     "copy_bound_exhausted": false,
     "interpretation": "The longer retained chain succeeds at all five exact increments, advancing from 49 to 54 applied cells while constructing the formula only once. All five new states fail immediate radius-four continuation. This validates same-process retention as the production frontier policy but does not exhaust the bounded proposal space."
   },
+  "bounded_exhaustion_at_57_cells": {
+    "precertificate_chain_from_54_cells": {
+      "new_distinct_radius_3_states": 2,
+      "combined_distinct_radius_3_states": 53,
+      "states": [
+        {"outer_placements": 40, "boundary_sha256": "21777540ccee953a0b07c39509db8128edc1c8e5042027dbffb901db94683fda", "final_applied_cells": 55, "radius_4_continuation_nodes": 2},
+        {"outer_placements": 41, "boundary_sha256": "e429f0cf602e7d43bd3f57c74858795d0387ea06e9174e8db1d8b2ae7327de94", "final_applied_cells": 56, "radius_4_continuation_nodes": 2}
+      ],
+      "all_patches_independently_verified": true,
+      "all_boundaries_mutually_distinct": true,
+      "novel_against_prior_saved_witnesses": true,
+      "prior_saved_witnesses_checked": 170,
+      "independently_replayed_clauses": 176,
+      "clause_replay_failures": 0,
+      "clause_replay_nodes": 346,
+      "next_57_cell_transaction_status": "unknown",
+      "next_transaction_rolled_back": true
+    },
+    "certificate_scope": "No radius-three proposal using at most 42 surrounding copies satisfies the 114 applied sound GCTS obstruction clauses and 57 applied next-ring cell-coverability obligations. Therefore no proposal in that placement-count stratum survives to radius four.",
+    "maximum_outer_placements": 42,
+    "applied_clauses": 114,
+    "applied_cells": 57,
+    "independently_verified_accumulated_clauses": 176,
+    "seed_226_cache_miss": {
+      "z3_status": "unsat",
+      "classification": "placement_bound_exhausted",
+      "construction_milliseconds": 65166,
+      "cache_write_milliseconds": 4485,
+      "check_milliseconds": 250713
+    },
+    "seed_227_cache_hit": {
+      "z3_status": "unsat",
+      "classification": "placement_bound_exhausted",
+      "construction_milliseconds": 2674,
+      "cache_load_milliseconds": 966,
+      "check_milliseconds": 282863
+    },
+    "construction_reduction_fraction": 0.958966332136,
+    "applied_clause_reports_byte_identical": true,
+    "applied_cell_reports_byte_identical": true,
+    "radius_3_copy_bound_exhausted": true,
+    "unrestricted_radius_3_space_exhausted": false,
+    "certified_non_tiler": false,
+    "certified_aperiodic": false,
+    "interpretation": "Two independent Z3 seeds agree on exact UNSAT for the byte-identical bounded formula. This is the first exhaustion certificate for the <=42-copy proposal stratum. It excludes a radius-four survivor only within that placement bound; larger radius-three coronas may still exist."
+  },
   "radius_3_space_exhausted": false,
-  "radius_3_copy_bound_exhausted": false,
+  "radius_3_copy_bound_exhausted": true,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains fifty-one distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, partial-formula caching, and same-process retained increments reach fifty-four applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio contains fifty-three distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact retained increments reach fifty-six applied next-ring obligations, after which two independent seeds prove the byte-identical 114-clause/57-cell formula UNSAT. This exhausts the <=42-copy radius-three proposal stratum as a source of radius-four survivors. The unrestricted radius-three space remains unexhausted, so this is not a non-tiling or aperiodicity certificate."
 }
