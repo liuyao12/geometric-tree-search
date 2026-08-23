@@ -17,9 +17,21 @@ export const placementCubeOrdinals = (candidateCount, parts, index) => {
 export const splitPlacementCubeBranch = ({ parts, index }, candidateCount, maximumParts) => {
   const childParts = parts * 2;
   if (childParts > maximumParts) return [];
+  const parentOrdinalCount = placementCubeOrdinals(candidateCount, parts, index).length;
   return [index, index + parts]
     .filter(childIndex => childIndex < candidateCount)
-    .map(childIndex => ({ parts: childParts, index: childIndex }));
+    .map(childIndex => ({
+      branch: { parts: childParts, index: childIndex },
+      ordinalCount: placementCubeOrdinals(candidateCount, childParts, childIndex).length
+    }))
+    .filter(child => child.ordinalCount > 0 && child.ordinalCount < parentOrdinalCount)
+    .map(child => child.branch);
+};
+
+export const retrySamePlacementCubeLeaf = (branch, selectedCandidates, maximumRetries) => {
+  const retries = branch.sameLeafRetry ?? 0;
+  if (selectedCandidates !== 1 || retries >= maximumRetries) return null;
+  return { ...branch, sameLeafRetry: retries + 1 };
 };
 
 export const initialPlacementCubeBranches = (
@@ -127,6 +139,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const timeoutMs = integerArgument(args, "timeout-ms", 60_000, 1);
   const processGraceMs = integerArgument(args, "process-grace-ms", 120_000, 1);
   const maximumProcessTimeoutRetries = integerArgument(args, "process-timeout-retries", 1, 0);
+  const maximumSameLeafRetries = integerArgument(args, "same-leaf-retries", 0, 0);
   const randomSeed = integerArgument(args, "random-seed", 0, 0);
   const backend = args.get("backend") ?? "pb2bv-sat";
   const pbSolver = args.get("pb-solver") ?? "solver";
@@ -146,7 +159,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   mkdirSync(outputDirectory, { recursive: true });
   mkdirSync(dirname(reportOutput), { recursive: true });
   const runConfiguration = {
-    version: 1,
+    version: 2,
     candidate: id,
     candidate_key: polycubeKey(candidate.voxels),
     layer,
@@ -166,6 +179,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
     initial_cell_report_sha256: fileSha256(initialCellReport)
   };
   if (preRefineIndices.length) runConfiguration.pre_refine_indices = preRefineIndices;
+  if (maximumSameLeafRetries) runConfiguration.same_leaf_retries = maximumSameLeafRetries;
   const runConfigurationSha256 = sha256(JSON.stringify(runConfiguration));
   const runConfigurationPath = resolve(outputDirectory, "run-configuration.json");
   if (existsSync(runConfigurationPath)) {
@@ -180,6 +194,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   let launchedBranches = 0;
   let resumedBranches = 0;
   let processTimeoutRetries = 0;
+  let sameLeafRetries = 0;
   let seedOffset = 0;
   const countResults = [];
   for (let count = minimumCount; count <= maximumCount; count += 1) {
@@ -196,7 +211,9 @@ export async function main(arguments_ = process.argv.slice(2)) {
       seedOffset += 1;
       const branchPath = resolve(
         outputDirectory,
-        `exact-${count}-parts-${branch.parts}-index-${branch.index}-seed-${seed}.json`
+        `exact-${count}-parts-${branch.parts}-index-${branch.index}${
+          branch.sameLeafRetry ? `-leaf-retry-${branch.sameLeafRetry}` : ""
+        }-seed-${seed}.json`
       );
       let report;
       let wasResumed = false;
@@ -291,7 +308,8 @@ export async function main(arguments_ = process.argv.slice(2)) {
         selected: report.placement_cube_selected_candidates,
         z3_status: report.z3_status,
         resumed: wasResumed,
-        check_milliseconds: report.check_milliseconds
+        check_milliseconds: report.check_milliseconds,
+        same_leaf_retry: branch.sameLeafRetry ?? 0
       })}\n`);
       if (report.z3_status === "unsat") {
         exhaustedReports.push(branchPath);
@@ -299,14 +317,26 @@ export async function main(arguments_ = process.argv.slice(2)) {
         satReport = branchPath;
       } else {
         const children = splitPlacementCubeBranch(branch, candidateCount, maximumParts);
-        if (!children.length) {
-          openReports.push(branchPath);
-        } else {
+        if (children.length) {
           for (const child of children) {
             const key = `${child.parts}:${child.index}`;
             if (queued.has(key)) continue;
             queued.add(key);
             pending.push(child);
+          }
+        } else {
+          const retryBranch = retrySamePlacementCubeLeaf(
+            branch,
+            report.placement_cube_selected_candidates,
+            maximumSameLeafRetries
+          );
+          if (!retryBranch) {
+            openReports.push(branchPath);
+          } else {
+            sameLeafRetries += 1;
+            const key = `${retryBranch.parts}:${retryBranch.index}:retry:${retryBranch.sameLeafRetry}`;
+            queued.add(key);
+            pending.push(retryBranch);
           }
         }
       }
@@ -354,6 +384,8 @@ export async function main(arguments_ = process.argv.slice(2)) {
     timeout_milliseconds: timeoutMs,
     maximum_process_timeout_retries: maximumProcessTimeoutRetries,
     process_timeout_retries: processTimeoutRetries,
+    maximum_same_leaf_retries: maximumSameLeafRetries,
+    same_leaf_retries: sameLeafRetries,
     launched_branches: launchedBranches,
     resumed_branches: resumedBranches,
     run_configuration: runConfigurationPath,

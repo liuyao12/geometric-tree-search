@@ -10,6 +10,7 @@ import {
   initialPlacementCubeBranches,
   placementCubeOrdinals,
   placementCubeBootstrapBranch,
+  retrySamePlacementCubeLeaf,
   shouldRetryPlacementCubeProcess,
   splitPlacementCubeBranch
 } from "./screen-polycube-placement-cube-range.mjs";
@@ -25,8 +26,8 @@ assert.deepEqual(
 );
 assert.deepEqual(
   splitPlacementCubeBranch({ parts: 4, index: 7 }, 10, 8),
-  [{ parts: 8, index: 7 }],
-  "empty refinement children must be omitted"
+  [],
+  "a singleton leaf must not be relabeled as a geometric refinement"
 );
 assert.deepEqual(
   initialPlacementCubeBranches(10, 4, 8, [1, 3]),
@@ -61,6 +62,19 @@ assert.equal(shouldRetryPlacementCubeProcess({
   retries: 1,
   maximumRetries: 1
 }), false);
+assert.deepEqual(
+  retrySamePlacementCubeLeaf({ parts: 64, index: 35 }, 1, 2),
+  { parts: 64, index: 35, sameLeafRetry: 1 }
+);
+assert.deepEqual(
+  retrySamePlacementCubeLeaf({ parts: 64, index: 35, sameLeafRetry: 1 }, 1, 2),
+  { parts: 64, index: 35, sameLeafRetry: 2 }
+);
+assert.equal(
+  retrySamePlacementCubeLeaf({ parts: 64, index: 35, sameLeafRetry: 2 }, 1, 2),
+  null
+);
+assert.equal(retrySamePlacementCubeLeaf({ parts: 32, index: 3 }, 2, 2), null);
 assert.equal(shouldRetryPlacementCubeProcess({
   timedOut: true,
   reportExists: false,
@@ -101,6 +115,8 @@ try {
   assert.equal(firstSummary.classification, "placement_cube_range_exhausted");
   assert.equal(firstSummary.launched_branches, 2);
   assert.equal(firstSummary.resumed_branches, 0);
+  assert.equal(firstSummary.maximum_same_leaf_retries, 0);
+  assert.equal(firstSummary.same_leaf_retries, 0);
   assert.equal(firstSummary.counts[0].anchor_placement_candidates, 12);
   assert.equal(firstSummary.counts[0].exhausted_branch_reports.length, 2);
   assert.ok(firstSummary.counts[0].certificate);
@@ -127,6 +143,13 @@ try {
   });
   assert.notEqual(mismatched.status, 0);
   assert.match(mismatched.stderr, /different placement-cube run configuration/);
+  const retryPolicyMismatch = spawnSync(process.execPath, [...commonArguments, "--same-leaf-retries=1"], {
+    encoding: "utf8",
+    timeout: 30_000,
+    maxBuffer: 8 * 1024 * 1024
+  });
+  assert.notEqual(retryPolicyMismatch.status, 0);
+  assert.match(retryPolicyMismatch.stderr, /different placement-cube run configuration/);
 
   const refinedDirectory = join(directory, "pre-refined");
   const refinedSummaryPath = join(refinedDirectory, "summary.json");
