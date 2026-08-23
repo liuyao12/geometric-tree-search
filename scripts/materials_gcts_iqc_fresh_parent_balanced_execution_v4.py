@@ -43,6 +43,7 @@ class FrozenFreshParentBalancedExecutionV4:
     diverse_fallback_prefixes: int
     maximum_diverse_fallbacks: int
     universal_avoidance_required: bool
+    base_tail_when_unsaturated: bool
     lineage_model_digest: str
     fourth_policy_model_digest: str
     raw_nine_action_lineages: tuple
@@ -61,7 +62,8 @@ class FrozenFreshParentBalancedExecutionV4:
 
 def _complete_action_marginal_lineages(
         *, center, seed_positions, seed_species, radii, raw, workers,
-        maximum_fallbacks=4, require_universal_avoidance=True):
+        maximum_fallbacks=4, require_universal_avoidance=True,
+        base_tail_when_unsaturated=True):
     schedule, _artifact = load_default_schedule()
     scheduled = schedule_prefixes(
         schedule=schedule, seed_positions=seed_positions,
@@ -69,7 +71,8 @@ def _complete_action_marginal_lineages(
     marginal = select_action_marginal_prefixes(
         scheduled=scheduled, branches=raw.second_branches,
         maximum_fallbacks=maximum_fallbacks,
-        require_universal_avoidance=require_universal_avoidance)
+        require_universal_avoidance=require_universal_avoidance,
+        base_tail_when_unsaturated=base_tail_when_unsaturated)
     selected = tuple((int(row[0]), int(row[1]))
                      for row in marginal["selected_rows"])
     fallback_limit = (len(raw.second_branches) if maximum_fallbacks is None
@@ -187,6 +190,7 @@ def freeze_fresh_parent_balanced_execution_v4(
         len(marginal["diverse_fallback_rows"]),
         int(marginal["maximum_fallbacks"]),
         bool(marginal["universal_avoidance_required"]),
+        bool(marginal["base_tail_when_unsaturated"]),
         lineage_model.model_digest, policy_digest, lineages,
         raw_lineage_digest, retained, before, candidates, PARENT_WIDTH,
         candidate_digest, False)
@@ -203,6 +207,7 @@ def freeze_fresh_parent_balanced_execution_v4(
         len(marginal["diverse_fallback_rows"]),
         int(marginal["maximum_fallbacks"]),
         bool(marginal["universal_avoidance_required"]),
+        bool(marginal["base_tail_when_unsaturated"]),
         lineage_model.model_digest, policy_digest, lineages,
         raw_lineage_digest, 8, tuple(map(int, retained)), 8, before,
         candidates, PARENT_WIDTH, candidate_digest, deterministic_digest,

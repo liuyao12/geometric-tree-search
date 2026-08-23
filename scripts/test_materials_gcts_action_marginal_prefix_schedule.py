@@ -43,6 +43,28 @@ def test_joint_leaders_stay_and_fallback_avoids_universal_action():
     assert bounded["universal_avoidance_required"]
 
 
+def test_unsaturated_tail_uses_joint_rank_under_same_cap():
+    branches = tuple(SimpleNamespace(
+        first_rank=parent,
+        first_actions=(((float(parent), 0., 0.), "A"),),
+        second_actions=tuple(
+            ((((float(parent), float(child), 0.), "B"),))
+            for child in range(4))) for parent in (1, 2, 3))
+    rows = tuple(row for parent in (1, 2, 3) for row in (
+        _row(parent, 0, ("joint", "base-fallback"), 1, 1),
+        _row(parent, 1, ("base-fallback",), 9 - parent, 2),
+        _row(parent, 2, ("base-fallback",), 6 - parent, 3)))
+    result = select_action_marginal_prefixes(
+        scheduled={"selected_rows": rows}, branches=branches,
+        maximum_fallbacks=2, require_universal_avoidance=True,
+        base_tail_when_unsaturated=True)
+    assert not result["joint_universal_actions"]
+    assert tuple((row[0], row[1]) for row in
+                 result["diverse_fallback_rows"]) == ((3, 2), (2, 2))
+    assert result["base_tail_when_unsaturated"]
+
+
 if __name__ == "__main__":
     test_joint_leaders_stay_and_fallback_avoids_universal_action()
+    test_unsaturated_tail_uses_joint_rank_under_same_cap()
     print("action-marginal prefix schedule tests passed")

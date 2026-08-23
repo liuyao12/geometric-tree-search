@@ -1,0 +1,60 @@
+{
+  "autonomous_or_exponential_growth_claimed": false,
+  "base_tail_when_unsaturated": true,
+  "best_correct_actions": 9,
+  "candidate_selection_target_used": false,
+  "case": "consumed-development",
+  "center": [
+    -70.0,
+    10.0,
+    70.0
+  ],
+  "complete_queue_digest": "f5e20816041940287f8f78759816372e2271955d7a81cffbb4aecf956531e03e",
+  "consumed_development_audit_only": true,
+  "diverse_fallback_prefixes": 4,
+  "exact_nine_action_lineages": 6,
+  "exact_prefixes": [
+    [
+      8,
+      89
+    ],
+    [
+      8,
+      123
+    ]
+  ],
+  "fallback_exact_lineages": 3,
+  "fallback_prefixes": [
+    [
+      2,
+      101
+    ],
+    [
+      5,
+      112
+    ],
+    [
+      6,
+      104
+    ],
+    [
+      8,
+      123
+    ]
+  ],
+  "fresh_confirmation_claimed": false,
+  "hybrid_prefix_digest": "e0985ca950ea1c668430781d48a2f1e517a05a166087b93bcc92fa7a2000c085",
+  "joint_exact_lineages": 3,
+  "joint_prefixes": 8,
+  "maximum_fallbacks": 4,
+  "raw_lineage_digest": "971464d640a979649cd66a22aa3dafdc5f828ef597625ef1801939b111ff6e14",
+  "raw_nine_action_lineages": 1640,
+  "result_digest": "87c6d76fefd692e344181d588852d06b61598f96de019184a5cacd4b9ec0d36a",
+  "schema_version": 1,
+  "selected_prefixes": 12,
+  "source_fixture_sha256": "557a3be2daab28c069f8886d0c7339563e82b196548eabb7084a68f981e7e67b",
+  "target_opened_after_lineage_receipt_freeze": true,
+  "third_frontier_seconds": 124.918176625,
+  "universal_avoidance_required": true,
+  "workers": 4
+}

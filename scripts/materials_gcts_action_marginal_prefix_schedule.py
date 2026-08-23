@@ -24,7 +24,8 @@ def _prefix_actions(branch, child):
 
 def select_action_marginal_prefixes(
         *, scheduled, branches, maximum_fallbacks=None,
-        require_universal_avoidance=False):
+        require_universal_avoidance=False,
+        base_tail_when_unsaturated=False):
     """Keep every joint leader and add one structurally diverse fallback.
 
     The selector sees only already-frozen action geometry and schedule ranks.
@@ -97,6 +98,28 @@ def select_action_marginal_prefixes(
         diverse_candidates.append((
             -avoided, objective(winner), parent, int(winner[1]), winner))
     diverse_candidates.sort(key=lambda row: row[:-1])
+    if not universal and base_tail_when_unsaturated:
+        # The base width was selected by grouped validation.  Sampling its
+        # boundary (rather than another top-base duplicate) probes the exact
+        # part of the frozen schedule that joint-only execution omits.  The
+        # independent joint rank orders parents without a target label.
+        base_rows = tuple(row for rows in fallback.values() for row in rows)
+        tail_rank = max((int(row[5]) for row in base_rows), default=0)
+        tail_candidates = []
+        for parent in sorted(joint):
+            leader_child = int(joint[parent][2][1])
+            rows = [row for row in fallback.get(parent, ())
+                    if int(row[1]) != leader_child and
+                    int(row[5]) == tail_rank]
+            if not rows:
+                continue
+            winner = min(rows, key=lambda row: (
+                int(row[3]), -float(row[6]), int(row[1])))
+            tail_candidates.append((
+                int(winner[3]), -float(winner[6]), parent,
+                int(winner[1]), winner))
+        diverse_candidates = sorted(
+            tail_candidates, key=lambda row: row[:-1])
     if maximum_fallbacks is not None:
         diverse_candidates = diverse_candidates[:maximum_fallbacks]
     diverse_rows = [row[-1] for row in diverse_candidates]
@@ -118,6 +141,8 @@ def select_action_marginal_prefixes(
         "maximum_fallbacks": maximum_fallbacks,
         "universal_avoidance_required":
             bool(require_universal_avoidance),
+        "base_tail_when_unsaturated":
+            bool(base_tail_when_unsaturated),
         "selected_prefix_digest": hashlib.sha256(
             repr(selected_actions).encode()).hexdigest(),
         "target_used": False,

@@ -19,10 +19,11 @@ def test_compute_bounded_policy_preserves_groups_with_ten_prefix_mean():
     row = validate_result(evaluate_compute_bounded())
     assert row["exact_child_groups"] == 6
     assert row["augmented_supplied_exact_groups"] == 6
-    assert row["selected_prefixes_across_cases"] == 40
-    assert row["fallback_prefixes_across_cases"] == 8
+    assert row["selected_prefixes_across_cases"] == 44
+    assert row["fallback_prefixes_across_cases"] == 12
     assert row["maximum_fallbacks_per_case"] == 4
     assert row["universal_avoidance_required"]
+    assert row["base_tail_when_unsaturated"]
 
 
 if __name__ == "__main__":

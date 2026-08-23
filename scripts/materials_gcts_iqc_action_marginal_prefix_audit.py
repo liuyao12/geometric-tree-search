@@ -27,7 +27,8 @@ def _correct(actions, truth):
 
 
 def evaluate(*, maximum_fallbacks=None,
-             require_universal_avoidance=False):
+             require_universal_avoidance=False,
+             base_tail_when_unsaturated=False):
     schedule, _artifact = load_default_schedule()
     cases = []
     exact_groups = joint_supplied = augmented_supplied = 0
@@ -44,7 +45,8 @@ def evaluate(*, maximum_fallbacks=None,
         selection = select_action_marginal_prefixes(
             scheduled=scheduled, branches=branches,
             maximum_fallbacks=maximum_fallbacks,
-            require_universal_avoidance=require_universal_avoidance)
+            require_universal_avoidance=require_universal_avoidance,
+            base_tail_when_unsaturated=base_tail_when_unsaturated)
         # Candidate identities and the structural selection digest are frozen
         # before reopening this already-consumed development target.
         target, _ = oracle_crop_fast(center, receipt["radii"][1])
@@ -106,6 +108,8 @@ def evaluate(*, maximum_fallbacks=None,
         "maximum_fallbacks_per_case": maximum_fallbacks,
         "universal_avoidance_required":
             bool(require_universal_avoidance),
+        "base_tail_when_unsaturated":
+            bool(base_tail_when_unsaturated),
         "candidate_selection_target_used": False,
         "targets_opened_only_after_selection_freeze": True,
         "consumed_development_audit_only": True,
@@ -119,7 +123,8 @@ def evaluate(*, maximum_fallbacks=None,
 
 def evaluate_compute_bounded():
     return evaluate(maximum_fallbacks=4,
-                    require_universal_avoidance=True)
+                    require_universal_avoidance=True,
+                    base_tail_when_unsaturated=True)
 
 
 def validate_result(row):
