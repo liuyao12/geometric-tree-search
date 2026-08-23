@@ -1,0 +1,117 @@
+{
+  "kind": "polycube_prerefined_placement_cube_v2_audit",
+  "date": "2026-08-23",
+  "candidate": "p10-052588",
+  "outer_radius": 3,
+  "continuation_radius": 4,
+  "placement_counts": [63, 64, 65, 66, 67],
+  "result": "unsat",
+  "classification": "placement_cube_ranges_exhausted",
+  "runner": "scripts/screen-polycube-placement-cube-range.mjs",
+  "runner_implementation_commit": "04ffcb9",
+  "run_configuration_sha256": [
+    "5af835c3e53889861b3358e76dd3ac880a92e42e34eef000b5f53cbe8bc7cf61",
+    "bbd8b0dd071846f4c6355d54f5d2e5a5a13a60d8cdc3a5eaf6e2dd5349692fb0",
+    "8931093932cf5dc8821034e289544811d5ecbde70934b45c8f7b768aa8be1863"
+  ],
+  "anchor_cell": "1,1,0",
+  "anchor_placement_candidates": 58,
+  "pre_refine_indices": [0, 2, 3],
+  "bootstrap_index": 1,
+  "maximum_same_leaf_retries": 1,
+  "same_leaf_retries_used": 0,
+  "process_timeout_retries_used": 0,
+  "shared_formula_shape": {
+    "target_cells": 179,
+    "placements_considered": 8767,
+    "variables": 8767,
+    "constraints_per_leaf": 9898,
+    "applied_forbidden_clauses": 112,
+    "independently_replayed_accumulated_clauses": 176,
+    "cell_coverability_constraints": 56,
+    "lookahead_conflict_encoding": "grouped-pb",
+    "backend": "pb2bv-sat",
+    "pseudo_boolean_solver": "solver"
+  },
+  "covers": [
+    {
+      "placement_count": 63,
+      "placement_cube_base_formula_sha256": "ccc59de6467282fb50f7c03e7a79433e6662766c59f8facc7507aaba02eb7847",
+      "runner_attempted_reports": 19,
+      "branch_leaves": 19,
+      "adaptive_refinement_parts": [],
+      "maximum_resolved_leaf_check_milliseconds": 58960,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0
+    },
+    {
+      "placement_count": 64,
+      "placement_cube_base_formula_sha256": "62f19f8bb776abec7506ca2c4f0424169cd9d304ee83a1bd597d747ed7f934fe",
+      "runner_attempted_reports": 19,
+      "branch_leaves": 19,
+      "adaptive_refinement_parts": [],
+      "maximum_resolved_leaf_check_milliseconds": 46900,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0
+    },
+    {
+      "placement_count": 65,
+      "placement_cube_base_formula_sha256": "0352a66a90f8b01f56f5459ed45013bfb96b981b5059c73c2635a665d44f689b",
+      "runner_attempted_reports": 19,
+      "branch_leaves": 19,
+      "adaptive_refinement_parts": [],
+      "maximum_resolved_leaf_check_milliseconds": 46190,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0
+    },
+    {
+      "placement_count": 66,
+      "placement_cube_base_formula_sha256": "414cc1ffbaf9959054bec1e402ff006254672dd41f9a7b0622b0cff7cb69e5db",
+      "runner_attempted_reports": 21,
+      "branch_leaves": 20,
+      "adaptive_refinement_parts": [64],
+      "timed_out_parent": { "parts": 32, "index": 3 },
+      "refined_exhausted_indices": [3, 35],
+      "maximum_resolved_leaf_check_milliseconds": 57990,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0
+    },
+    {
+      "placement_count": 67,
+      "placement_cube_base_formula_sha256": "0f9082ae085e79a32cb38cd1c2b8059061d81ededebc8549f089d3e99011d420",
+      "runner_attempted_reports": 19,
+      "branch_leaves": 19,
+      "adaptive_refinement_parts": [],
+      "maximum_resolved_leaf_check_milliseconds": 53347,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0
+    }
+  ],
+  "coverage_verification": {
+    "tool": "scripts/verify-polycube-placement-cube-cover.mjs",
+    "certificates_accepted": 5,
+    "independently_regenerated_certificates_byte_identical": true,
+    "shared_formula_digests_identical_within_each_cover": true,
+    "shared_constraint_counts_identical": true,
+    "total_branch_leaves": 96
+  },
+  "resumability_verification": {
+    "initial_solver_launches": 97,
+    "initial_resumed_reports": 0,
+    "replay_solver_launches": 0,
+    "replay_resumed_reports": 97,
+    "replay_classification": "placement_cube_ranges_exhausted"
+  },
+  "previous_verified_copy_bound": 62,
+  "new_verified_copy_bound": 67,
+  "copy_68_exhausted": false,
+  "unrestricted_radius_3_space_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "The corrected version-two runner closes every exact count from 63 through 67 with pre-refinement of recurrent hard cubes 0, 2, and 3. Exact 66 alone needs a true geometric refinement of the two-anchor child (32,3); no configured singleton retry is used. Together with prior certificates this establishes bounded exhaustion through 67 copies under the replayed necessary conditions. Copy 68 and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity."
+}

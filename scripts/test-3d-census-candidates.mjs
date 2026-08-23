@@ -500,6 +500,10 @@ const archivedP10052588Exact6162PrerefinedCube = JSON.parse(await readFile(
   new URL("../data/polycube-p10-052588-exact61-62-prerefined-placement-cube-2026-08-23.json", import.meta.url),
   "utf8"
 ));
+const archivedP10052588Exact6367PrerefinedCube = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-exact63-67-prerefined-placement-cube-v2-2026-08-23.json", import.meta.url),
+  "utf8"
+));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1806,6 +1810,26 @@ assert.equal(archivedP10052588Exact6162PrerefinedCube.new_verified_copy_bound, 6
 assert.equal(archivedP10052588Exact6162PrerefinedCube.copy_63_exhausted, false);
 assert.equal(archivedP10052588Exact6162PrerefinedCube.certified_non_tiler, false);
 assert.equal(archivedP10052588Exact6162PrerefinedCube.certified_aperiodic, false);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.classification, "placement_cube_ranges_exhausted");
+assert.deepEqual(archivedP10052588Exact6367PrerefinedCube.placement_counts, [63, 64, 65, 66, 67]);
+assert.deepEqual(archivedP10052588Exact6367PrerefinedCube.pre_refine_indices, [0, 2, 3]);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.covers.length, 5);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.covers.reduce((sum, cover) => sum + cover.branch_leaves, 0), 96);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.covers.reduce((sum, cover) => sum + cover.runner_attempted_reports, 0), 97);
+assert.ok(archivedP10052588Exact6367PrerefinedCube.covers.every(cover =>
+  cover.covered_anchor_placement_candidates === 58
+  && cover.leaf_overlaps === 0
+  && cover.uncovered_anchor_placement_candidates === 0
+));
+assert.equal(archivedP10052588Exact6367PrerefinedCube.covers[3].timed_out_parent.index, 3);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.same_leaf_retries_used, 0);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.coverage_verification.independently_regenerated_certificates_byte_identical, true);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.resumability_verification.replay_solver_launches, 0);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.resumability_verification.replay_resumed_reports, 97);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.new_verified_copy_bound, 67);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.copy_68_exhausted, false);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.certified_non_tiler, false);
+assert.equal(archivedP10052588Exact6367PrerefinedCube.certified_aperiodic, false);
 assert.equal(archivedP10052588StagedCellFeedback.implementation_commit, "7df66cc");
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.all_at_once.sat_radius_3_states, 1);
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.staged_four_at_a_time.sat_radius_3_states, 5);
@@ -2226,8 +2250,15 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prer
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_replay_launches, 0);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_resumed_reports, 45);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_exhausted, true);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, 62);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, 63);
+assert.deepEqual(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_counts, [63, 64, 65, 66, 67]);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_branch_leaves, 96);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_solver_launches, 97);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_replay_launches, 0);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_resumed_reports, 97);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_same_leaf_retries, 0);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_exhausted, true);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, 67);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, 68);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, true);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(

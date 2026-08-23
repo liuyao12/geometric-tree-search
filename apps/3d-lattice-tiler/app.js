@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260823-polycube10-v183";
+} from "./engine.js?v=20260823-polycube10-v184";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1539,7 +1539,11 @@ function updateCandidateResearchPanel() {
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_exact61_62_prerefined_cube_exhausted) {
         const cubes = candidate.screening;
-        candidateResearchDetail.textContent += ` Exact ${cubes.corona_exact61_62_prerefined_cube_counts[0]} initially leaves one singleton anchor unresolved at 60 seconds; a focused seed closes that same leaf, and an independent ${cubes.corona_exact61_62_prerefined_cube_branch_leaves / 2}-leaf union covers all 58 anchors. Exact ${cubes.corona_exact61_62_prerefined_cube_counts[1]} pre-refines recurrent hard cubes 0, 2, and 3 and closes with another ${cubes.corona_exact61_62_prerefined_cube_branch_leaves / 2}-leaf union. Across both counts the runner uses ${cubes.corona_exact61_62_prerefined_cube_runner_launches} attempts and the focused leaf adds ${cubes.corona_exact61_62_prerefined_cube_focused_launches} solve; replay reuses ${cubes.corona_exact61_62_prerefined_cube_resumed_reports} cached runner reports with ${cubes.corona_exact61_62_prerefined_cube_replay_launches} new launches. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
+        candidateResearchDetail.textContent += ` Exact ${cubes.corona_exact61_62_prerefined_cube_counts[0]} initially leaves one singleton anchor unresolved at 60 seconds; a focused seed closes that same leaf, and an independent ${cubes.corona_exact61_62_prerefined_cube_branch_leaves / 2}-leaf union covers all 58 anchors. Exact ${cubes.corona_exact61_62_prerefined_cube_counts[1]} pre-refines recurrent hard cubes 0, 2, and 3 and closes with another ${cubes.corona_exact61_62_prerefined_cube_branch_leaves / 2}-leaf union. Across both counts the runner uses ${cubes.corona_exact61_62_prerefined_cube_runner_launches} attempts and the focused leaf adds ${cubes.corona_exact61_62_prerefined_cube_focused_launches} solve; replay reuses ${cubes.corona_exact61_62_prerefined_cube_resumed_reports} cached runner reports with ${cubes.corona_exact61_62_prerefined_cube_replay_launches} new launches.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact63_67_prerefined_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` The corrected version-two runner closes every exact count from ${cubes.corona_exact63_67_prerefined_cube_counts.at(0)} through ${cubes.corona_exact63_67_prerefined_cube_counts.at(-1)} with ${cubes.corona_exact63_67_prerefined_cube_branch_leaves} verified leaves across ${cubes.corona_exact63_67_prerefined_cube_solver_launches} attempted reports. All five independently regenerated certificates are byte-identical; replay reuses all ${cubes.corona_exact63_67_prerefined_cube_resumed_reports} reports with ${cubes.corona_exact63_67_prerefined_cube_replay_launches} new launches. Exact 66 alone needs a true two-to-one-anchor refinement, and no configured singleton retry is used. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;

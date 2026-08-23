@@ -672,8 +672,23 @@ const records = [
         "bc583311c3348659094ae53d42f8fcf93c6254b92b85e926ebe05b18633c8a23"
       ],
       corona_exact61_62_prerefined_cube_exhausted: true,
-      corona_verified_copy_bound: 62,
-      corona_minimum_open_placements: 63,
+      corona_exact63_67_prerefined_cube_report: "data/polycube-p10-052588-exact63-67-prerefined-placement-cube-v2-2026-08-23.json",
+      corona_exact63_67_prerefined_cube_counts: [63, 64, 65, 66, 67],
+      corona_exact63_67_prerefined_cube_branch_leaves: 96,
+      corona_exact63_67_prerefined_cube_solver_launches: 97,
+      corona_exact63_67_prerefined_cube_replay_launches: 0,
+      corona_exact63_67_prerefined_cube_resumed_reports: 97,
+      corona_exact63_67_prerefined_cube_same_leaf_retries: 0,
+      corona_exact63_67_prerefined_cube_base_formula_sha256: [
+        "ccc59de6467282fb50f7c03e7a79433e6662766c59f8facc7507aaba02eb7847",
+        "62f19f8bb776abec7506ca2c4f0424169cd9d304ee83a1bd597d747ed7f934fe",
+        "0352a66a90f8b01f56f5459ed45013bfb96b981b5059c73c2635a665d44f689b",
+        "414cc1ffbaf9959054bec1e402ff006254672dd41f9a7b0622b0cff7cb69e5db",
+        "0f9082ae085e79a32cb38cd1c2b8059061d81ededebc8549f089d3e99011d420"
+      ],
+      corona_exact63_67_prerefined_cube_exhausted: true,
+      corona_verified_copy_bound: 67,
+      corona_minimum_open_placements: 68,
       corona_staged_cell_feedback_copy_bound_exhausted: true,
       corona_radius3_space_exhausted: false
     },
