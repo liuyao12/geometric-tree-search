@@ -70,10 +70,10 @@ const PRINCIPAL_ARROW_POINTS = [
   PRISM_CENTROID,
   PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.84),
   PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, 0.075),
-  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, -0.075)
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, -0.075),
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69)
 ];
-const PRINCIPAL_ARROW_SEGMENTS = [[0, 1], [1, 2], [1, 3]];
-const MARKER_VERTICES_PER_TILE = PRINCIPAL_ARROW_SEGMENTS.length * 8;
+const MARKER_VERTICES_PER_TILE = 11;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xedf1ef);
@@ -814,17 +814,22 @@ function makeVisual(transforms, turnGenerations) {
       transformedArrow[index].copy(PRINCIPAL_ARROW_POINTS[index]).applyMatrix4(matrix);
     }
     const markerColor = color.clone().multiplyScalar(0.28);
-    for (const [startIndex, endIndex] of PRINCIPAL_ARROW_SEGMENTS) {
-      appendThickSegment(
-        markerPositions,
-        markerColors,
-        markerIndices,
-        transformedArrow[startIndex],
-        transformedArrow[endIndex],
-        markerColor,
-        0.04
-      );
+    appendThickSegment(
+      markerPositions,
+      markerColors,
+      markerIndices,
+      transformedArrow[0],
+      transformedArrow[4],
+      markerColor,
+      0.04
+    );
+    const triangleBaseIndex = markerPositions.length / 3;
+    for (const arrowIndex of [1, 2, 3]) {
+      const point = transformedArrow[arrowIndex];
+      markerPositions.push(point.x, point.y, point.z);
+      markerColors.push(markerColor.r, markerColor.g, markerColor.b, 1);
     }
+    markerIndices.push(triangleBaseIndex, triangleBaseIndex + 1, triangleBaseIndex + 2);
   });
 
   const faceOpacity = Math.max(0.006, 0.09 / Math.pow(transforms.length, 0.28));
@@ -855,6 +860,7 @@ function makeVisual(transforms, turnGenerations) {
     transparent: true,
     depthWrite: false,
     depthTest: true,
+    side: THREE.DoubleSide,
     opacity: markerOpacity
   });
   markerMaterial.userData.baseOpacity = markerOpacity;
