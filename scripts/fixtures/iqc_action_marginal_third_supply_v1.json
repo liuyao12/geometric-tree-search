@@ -1,0 +1,29 @@
+{
+  "action_marginal_prefix_digest": "22abc12a26b0df621e01727e16233610e1ec80c4c6225c34a2d7a136107d5492",
+  "autonomous_or_exponential_growth_claimed": false,
+  "best_correct_actions": 9,
+  "candidate_selection_target_used": false,
+  "case": "consumed-development",
+  "center": [
+    -70.0,
+    10.0,
+    70.0
+  ],
+  "complete_queue_digest": "f5e20816041940287f8f78759816372e2271955d7a81cffbb4aecf956531e03e",
+  "consumed_development_audit_only": true,
+  "diverse_fallback_prefixes": 8,
+  "exact_nine_action_lineages": 3,
+  "fallback_exact_lineages": 0,
+  "fresh_confirmation_claimed": false,
+  "joint_exact_lineages": 3,
+  "joint_prefixes": 8,
+  "raw_lineage_digest": "c97e5373e6b1d1855d7e2fe673fca879bfd2d621fd7db77aeb3a6d32eeedc368",
+  "raw_nine_action_lineages": 2162,
+  "result_digest": "ca314c5410bef0790652a82dd4b61f6d3ec6998a56815a8fce7218e765dcd075",
+  "schema_version": 1,
+  "selected_prefixes": 16,
+  "source_fixture_sha256": "557a3be2daab28c069f8886d0c7339563e82b196548eabb7084a68f981e7e67b",
+  "target_opened_after_lineage_receipt_freeze": true,
+  "third_frontier_seconds": 156.41844575000002,
+  "workers": 4
+}
