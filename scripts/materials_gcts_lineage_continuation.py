@@ -47,6 +47,15 @@ class FrozenLineageContinuation:
     target_used: bool = False
 
 
+@dataclass(frozen=True)
+class FrozenLineageContinuationFailure:
+    lineage_id: Hashable
+    failure_kind: str
+    failure_message: str
+    failure_digest: str
+    target_used: bool = False
+
+
 def extend_frozen_lineage(
         *, lineage_id: Hashable, center: Sequence[float],
         seed_positions: Sequence[Sequence[float]],
@@ -116,6 +125,29 @@ def lineage_continuation_worker(payload):
     return extend_frozen_lineage(**payload)
 
 
+def attempt_frozen_lineage(**payload):
+    """Convert an exact replay contradiction into a frozen branch rejection."""
+    try:
+        return extend_frozen_lineage(**payload)
+    except AssertionError as error:
+        lineage_id = payload.get("lineage_id")
+        kind = type(error).__name__
+        message = str(error)
+        digest = hashlib.sha256(repr((
+            lineage_id, tuple(payload.get("prior_actions", ())),
+            tuple(payload.get("replay_radii", ())),
+            payload.get("next_radius"), kind, message, False
+        )).encode()).hexdigest()
+        return FrozenLineageContinuationFailure(
+            lineage_id, kind, message, digest)
+
+
+def lineage_continuation_attempt_worker(payload):
+    return attempt_frozen_lineage(**payload)
+
+
 __all__ = [
-    "FrozenLineageContinuation", "FrozenLineageSuccessor",
-    "extend_frozen_lineage", "lineage_continuation_worker"]
+    "FrozenLineageContinuation", "FrozenLineageContinuationFailure",
+    "FrozenLineageSuccessor", "attempt_frozen_lineage",
+    "extend_frozen_lineage", "lineage_continuation_attempt_worker",
+    "lineage_continuation_worker"]

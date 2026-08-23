@@ -3,7 +3,9 @@
 
 from types import SimpleNamespace
 
-from materials_gcts_lineage_continuation import extend_frozen_lineage
+from materials_gcts_lineage_continuation import (
+    FrozenLineageContinuationFailure, attempt_frozen_lineage,
+    extend_frozen_lineage)
 
 
 def test_lineage_continuation_is_target_blind_and_depth_independent():
@@ -50,6 +52,20 @@ def test_lineage_continuation_is_target_blind_and_depth_independent():
     assert result.saved_geometry_expansions == 5
     assert not result.target_used
     assert [row[0] for row in calls] == ["replay"] * 3 + ["tree"]
+
+    def rejecting_replay(source, runtime, block, radius):
+        raise AssertionError("frozen block has no unique colored replay")
+
+    rejected = attempt_frozen_lineage(
+        lineage_id=("rejected", 1), center=(0., 0., 0.),
+        seed_positions=((0., 0., 0.),), seed_species=("X",),
+        prior_actions=actions, replay_radii=(10., 20., 30.),
+        next_radius=40., runtime_loader=runtime_loader,
+        replay=rejecting_replay, tree=tree)
+    assert isinstance(rejected, FrozenLineageContinuationFailure)
+    assert rejected.failure_kind == "AssertionError"
+    assert "unique colored replay" in rejected.failure_message
+    assert not rejected.target_used
     try:
         extend_frozen_lineage(
             lineage_id=0, center=(0., 0., 0.),
