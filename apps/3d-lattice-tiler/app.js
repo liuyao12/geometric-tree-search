@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v173";
+} from "./engine.js?v=20260822-polycube10-v174";
 import {
   normalizeProposalProgram,
   proposalTileKey

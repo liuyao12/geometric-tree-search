@@ -708,10 +708,46 @@
     "certified_aperiodic": false,
     "interpretation": "Exact UNSAT on seed 229 extends the bounded exhaustion certificate through 44 surrounding copies. Seeds 228 and 230 time out and roll back exactly; they are inconclusive controls and do not weaken the definite UNSAT result. Proposals with 45 or more copies remain unexhausted."
   },
+  "widened_bounded_exhaustion_through_46_copies": {
+    "certificate_scope": "No radius-three proposal using at most 46 surrounding copies satisfies the 114 applied sound GCTS obstruction clauses and 57 applied next-ring cell-coverability obligations. Therefore no proposal in that placement-count stratum survives to radius four.",
+    "maximum_outer_placements": 46,
+    "applied_clauses": 114,
+    "applied_cells": 57,
+    "independently_verified_accumulated_clauses": 176,
+    "same_applied_reports_as_44_copy_certificate": true,
+    "applied_clause_report_sha256": "b9965b5e6948f2322bd155d92bfd181a5438f5ef681ee987715c92abecb5c26e",
+    "applied_cell_report_sha256": "40f1fdd6adbbb72aa1440e7b01dd641425b8bf1965dc3ebfd08286d5ea50abc0",
+    "base_formula_cache_sha256": "709fcbccca4d169034156ecbbb084903b883d978ecb4b81331030fdaedca8060",
+    "seed_231_cache_miss": {
+      "z3_status": "unsat",
+      "classification": "placement_bound_exhausted",
+      "construction_milliseconds": 75597,
+      "cache_write_milliseconds": 5468,
+      "initial_check_milliseconds": 60169,
+      "retry_check_milliseconds": 232007,
+      "check_milliseconds": 292176
+    },
+    "seed_232_cache_hit": {
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "transaction_rolled_back": true,
+      "construction_milliseconds": 3586,
+      "cache_load_milliseconds": 1338,
+      "initial_check_milliseconds": 60195,
+      "retry_check_milliseconds": 240168,
+      "check_milliseconds": 300363
+    },
+    "construction_reduction_fraction": 0.952564255195,
+    "radius_3_copy_bound_exhausted": true,
+    "unrestricted_radius_3_space_exhausted": false,
+    "certified_non_tiler": false,
+    "certified_aperiodic": false,
+    "interpretation": "Exact UNSAT on seed 231 extends the bounded exhaustion certificate through 46 surrounding copies. Cache-hit seed 232 times out and rolls back exactly; it is an inconclusive control and does not weaken the definite UNSAT result. Proposals with 47 or more copies remain unexhausted."
+  },
   "radius_3_space_exhausted": false,
   "radius_3_copy_bound_exhausted": true,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio contains fifty-three distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact retained increments reach fifty-six applied next-ring obligations, after which the 114-clause/57-cell formula is proved UNSAT through 44 surrounding copies. This exhausts the <=44-copy radius-three proposal stratum as a source of radius-four survivors. The unrestricted radius-three space remains unexhausted, so this is not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio contains fifty-three distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact retained increments reach fifty-six applied next-ring obligations, after which the 114-clause/57-cell formula is proved UNSAT through 46 surrounding copies. This exhausts the <=46-copy radius-three proposal stratum as a source of radius-four survivors. The unrestricted radius-three space remains unexhausted, so this is not a non-tiling or aperiodicity certificate."
 }

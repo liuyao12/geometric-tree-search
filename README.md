@@ -138,10 +138,11 @@ Pages site. The main way to use it is to open the page in a browser:
   applied cells; its attempted 57-cell step initially rolls back on timeout.
   Two fresh processes then agree on exact UNSAT for the byte-identical
   114-clause/57-cell formula, exhausting the ≤42-copy radius-three proposal
-  stratum as a source of radius-four survivors. Raising the cap to 44 gives one
-  exact UNSAT and two timeout/rollback controls on the same sound prefix, so the
-  bounded certificate extends through 44 copies. This is not evidence of
-  non-tiling or aperiodicity: coronas with 45 or more copies remain unexhausted.
+  stratum as a source of radius-four survivors. Raising the cap first to 44 and
+  then to 46 gives an exact UNSAT result at each bound, with timeout/rollback
+  controls on the same sound prefix. The bounded certificate therefore extends
+  through 46 copies. This is not evidence of non-tiling or aperiodicity: coronas
+  with 47 or more copies remain unexhausted.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate
