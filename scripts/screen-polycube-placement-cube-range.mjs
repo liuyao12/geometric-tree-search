@@ -22,6 +22,25 @@ export const splitPlacementCubeBranch = ({ parts, index }, candidateCount, maxim
     .map(childIndex => ({ parts: childParts, index: childIndex }));
 };
 
+export const initialPlacementCubeBranches = (
+  candidateCount,
+  initialParts,
+  maximumParts,
+  preRefineIndices = []
+) => {
+  const preRefined = new Set(preRefineIndices);
+  const branches = [];
+  for (let index = 0; index < Math.min(initialParts, candidateCount); index += 1) {
+    const branch = { parts: initialParts, index };
+    if (preRefined.has(index)) {
+      branches.push(...splitPlacementCubeBranch(branch, candidateCount, maximumParts));
+    } else {
+      branches.push(branch);
+    }
+  }
+  return branches;
+};
+
 const parseArguments = arguments_ => new Map(arguments_.map(argument => {
   const separator = argument.indexOf("=");
   return separator < 0
@@ -69,6 +88,18 @@ export async function main(arguments_ = process.argv.slice(2)) {
   if (maximumParts % initialParts !== 0) {
     throw new Error("--max-parts must be a multiple of --initial-parts");
   }
+  const preRefineIndices = String(args.get("pre-refine-indices") ?? "")
+    .split(",")
+    .filter(Boolean)
+    .map(value => Number(value))
+    .sort((left, right) => left - right);
+  if (new Set(preRefineIndices).size !== preRefineIndices.length
+      || preRefineIndices.some(index => !Number.isInteger(index) || index <= 0 || index >= initialParts)) {
+    throw new Error("--pre-refine-indices must be distinct comma-separated indices between 1 and initial-parts - 1");
+  }
+  if (preRefineIndices.length && maximumParts < initialParts * 2) {
+    throw new Error("--max-parts must permit one split when --pre-refine-indices is used");
+  }
   const timeoutMs = integerArgument(args, "timeout-ms", 60_000, 1);
   const processGraceMs = integerArgument(args, "process-grace-ms", 120_000, 1);
   const randomSeed = integerArgument(args, "random-seed", 0, 0);
@@ -109,6 +140,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
     initial_cell_report: initialCellReport,
     initial_cell_report_sha256: fileSha256(initialCellReport)
   };
+  if (preRefineIndices.length) runConfiguration.pre_refine_indices = preRefineIndices;
   const runConfigurationSha256 = sha256(JSON.stringify(runConfiguration));
   const runConfigurationPath = resolve(outputDirectory, "run-configuration.json");
   if (existsSync(runConfigurationPath)) {
@@ -188,9 +220,16 @@ export async function main(arguments_ = process.argv.slice(2)) {
       });
       if (candidateCount === null) {
         candidateCount = report.placement_cube_candidates;
-        for (let index = 1; index < Math.min(initialParts, candidateCount); index += 1) {
-          pending.push({ parts: initialParts, index });
-          queued.add(`${initialParts}:${index}`);
+        for (const initialBranch of initialPlacementCubeBranches(
+          candidateCount,
+          initialParts,
+          maximumParts,
+          preRefineIndices
+        )) {
+          const key = `${initialBranch.parts}:${initialBranch.index}`;
+          if (queued.has(key)) continue;
+          pending.push(initialBranch);
+          queued.add(key);
         }
       } else if (report.placement_cube_candidates !== candidateCount) {
         throw new Error("branch reports disagree on the anchor candidate count");
@@ -262,6 +301,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
     anchor_cell: anchorCell,
     initial_parts: initialParts,
     maximum_parts: maximumParts,
+    pre_refine_indices: preRefineIndices,
     timeout_milliseconds: timeoutMs,
     launched_branches: launchedBranches,
     resumed_branches: resumedBranches,

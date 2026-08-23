@@ -7,6 +7,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  initialPlacementCubeBranches,
   placementCubeOrdinals,
   splitPlacementCubeBranch
 } from "./screen-polycube-placement-cube-range.mjs";
@@ -24,6 +25,18 @@ assert.deepEqual(
   splitPlacementCubeBranch({ parts: 4, index: 7 }, 10, 8),
   [{ parts: 8, index: 7 }],
   "empty refinement children must be omitted"
+);
+assert.deepEqual(
+  initialPlacementCubeBranches(10, 4, 8, [1, 3]),
+  [
+    { parts: 4, index: 0 },
+    { parts: 8, index: 1 },
+    { parts: 8, index: 5 },
+    { parts: 4, index: 2 },
+    { parts: 8, index: 3 },
+    { parts: 8, index: 7 }
+  ],
+  "known-hard coarse cubes should be replaced by a disjoint one-level refinement"
 );
 
 const runner = fileURLToPath(new URL("./screen-polycube-placement-cube-range.mjs", import.meta.url));
@@ -83,6 +96,50 @@ try {
   });
   assert.notEqual(mismatched.status, 0);
   assert.match(mismatched.stderr, /different placement-cube run configuration/);
+
+  const refinedDirectory = join(directory, "pre-refined");
+  const refinedSummaryPath = join(refinedDirectory, "summary.json");
+  const refinedArguments = commonArguments.map(argument => {
+    if (argument.startsWith("--output-dir=")) return `--output-dir=${refinedDirectory}`;
+    if (argument.startsWith("--report-output=")) return `--report-output=${refinedSummaryPath}`;
+    return argument;
+  });
+  refinedArguments.push("--pre-refine-indices=1");
+  const refined = spawnSync(process.execPath, refinedArguments, {
+    encoding: "utf8",
+    timeout: 60_000,
+    maxBuffer: 8 * 1024 * 1024
+  });
+  assert.equal(refined.status, 0, refined.stderr);
+  const refinedSummary = JSON.parse(readFileSync(refinedSummaryPath, "utf8"));
+  assert.equal(refinedSummary.classification, "placement_cube_range_exhausted");
+  assert.equal(refinedSummary.launched_branches, 3);
+  assert.deepEqual(refinedSummary.pre_refine_indices, [1]);
+  assert.equal(refinedSummary.counts[0].exhausted_branch_reports.length, 3);
+  const refinedCertificate = JSON.parse(readFileSync(refinedSummary.counts[0].certificate, "utf8"));
+  assert.deepEqual(
+    refinedCertificate.leaves.map(leaf => [leaf.parts, leaf.index]),
+    [[2, 0], [4, 1], [4, 3]]
+  );
+  assert.equal(refinedCertificate.covered_anchor_placement_candidates, 12);
+
+  const refinedResume = spawnSync(process.execPath, refinedArguments, {
+    encoding: "utf8",
+    timeout: 30_000,
+    maxBuffer: 8 * 1024 * 1024
+  });
+  assert.equal(refinedResume.status, 0, refinedResume.stderr);
+  const refinedResumeSummary = JSON.parse(readFileSync(refinedSummaryPath, "utf8"));
+  assert.equal(refinedResumeSummary.launched_branches, 0);
+  assert.equal(refinedResumeSummary.resumed_branches, 3);
+
+  const refinedConfigurationMismatch = spawnSync(
+    process.execPath,
+    refinedArguments.filter(argument => argument !== "--pre-refine-indices=1"),
+    { encoding: "utf8", timeout: 30_000, maxBuffer: 8 * 1024 * 1024 }
+  );
+  assert.notEqual(refinedConfigurationMismatch.status, 0);
+  assert.match(refinedConfigurationMismatch.stderr, /different placement-cube run configuration/);
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }
