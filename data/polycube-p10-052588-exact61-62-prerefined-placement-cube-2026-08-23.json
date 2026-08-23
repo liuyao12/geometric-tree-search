@@ -1,0 +1,114 @@
+{
+  "kind": "polycube_prerefined_placement_cube_audit",
+  "date": "2026-08-23",
+  "candidate": "p10-052588",
+  "outer_radius": 3,
+  "continuation_radius": 4,
+  "placement_counts": [61, 62],
+  "result": "unsat",
+  "classification": "placement_cube_ranges_exhausted",
+  "runner": "scripts/screen-polycube-placement-cube-range.mjs",
+  "runner_implementation_commits": ["63556d3", "3131203"],
+  "singleton_semantics_correction_commit": "04ffcb9",
+  "run_configuration_sha256": [
+    "e29530b9e5ae68d16f27b7104487dc641bcd3b911f42e5a471785c51a2cc14cd",
+    "99c360609e478d2a66df16ebfa20a7c2e137b3878fd1a09972a2f45b8a4d0067"
+  ],
+  "anchor_cell": "1,1,0",
+  "anchor_placement_candidates": 58,
+  "shared_formula_shape": {
+    "target_cells": 179,
+    "placements_considered": 8767,
+    "variables": 8767,
+    "constraints_per_leaf": 9898,
+    "applied_forbidden_clauses": 112,
+    "independently_replayed_accumulated_clauses": 176,
+    "cell_coverability_constraints": 56,
+    "lookahead_conflict_encoding": "grouped-pb",
+    "backend": "pb2bv-sat",
+    "pseudo_boolean_solver": "solver"
+  },
+  "covers": [
+    {
+      "placement_count": 61,
+      "placement_cube_base_formula_sha256": "1e36bf9fd648e6b3decad903345b3a3a101289515ac62acb17ed942fbcad5431",
+      "initial_parts": 16,
+      "pre_refine_indices": [3],
+      "adaptive_refinement_parts": [32, 64],
+      "coarse_timeout_indices_replaced_by_refinement": [0, 2],
+      "pre_refined_child_timeout": { "parts": 32, "index": 3 },
+      "runner_attempted_reports": 24,
+      "runner_exhausted_reports": 19,
+      "runner_open_reports_before_focused_solve": 1,
+      "focused_leaf": {
+        "parts": 64,
+        "index": 35,
+        "random_seed": 1300,
+        "timeout_milliseconds": 240000,
+        "check_milliseconds": 39379,
+        "result": "unsat"
+      },
+      "branch_leaves": 20,
+      "runner_solver_launches": 24,
+      "focused_solver_launches": 1,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0,
+      "maximum_resolved_leaf_check_milliseconds": 41050
+    },
+    {
+      "placement_count": 62,
+      "placement_cube_base_formula_sha256": "bc583311c3348659094ae53d42f8fcf93c6254b92b85e926ebe05b18633c8a23",
+      "initial_parts": 16,
+      "pre_refine_indices": [0, 2, 3],
+      "bootstrap_index": 1,
+      "adaptive_refinement_parts": [32, 64],
+      "pre_refined_child_timeout": { "parts": 32, "index": 3 },
+      "runner_attempted_reports": 21,
+      "runner_exhausted_reports": 20,
+      "runner_open_reports": 0,
+      "branch_leaves": 20,
+      "runner_solver_launches": 21,
+      "focused_solver_launches": 0,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0,
+      "maximum_resolved_leaf_check_milliseconds": 40176
+    }
+  ],
+  "coverage_verification": {
+    "tool": "scripts/verify-polycube-placement-cube-cover.mjs",
+    "certificates_accepted": 2,
+    "independently_regenerated_certificates_byte_identical": true,
+    "shared_formula_digests_identical_within_each_cover": true,
+    "shared_constraint_counts_identical": true,
+    "total_branch_leaves": 40
+  },
+  "resumability_verification": {
+    "runner_solver_launches": 45,
+    "focused_solver_launches": 1,
+    "runner_replay_solver_launches": 0,
+    "runner_replay_resumed_reports": 45,
+    "count_61_replay_classification_before_focused_leaf_union": "placement_cube_cover_incomplete",
+    "count_62_replay_classification": "placement_cube_range_exhausted"
+  },
+  "process_recovery_observation": {
+    "count_61_initial_cache_build_outer_timeout": true,
+    "atomic_formula_cache_survived": true,
+    "automatic_cache_build_timeout_recovery_added_in_commit": "63556d3"
+  },
+  "algorithmic_observation": {
+    "recurrent_hard_coarse_indices": [0, 2, 3],
+    "pre_refinement_support_commit": "899be3a",
+    "alternate_bootstrap_support_commit": "3131203",
+    "singleton_geometric_refinement_disallowed": true,
+    "explicit_configuration_hashed_singleton_retries_commit": "04ffcb9"
+  },
+  "previous_verified_copy_bound": 60,
+  "new_verified_copy_bound": 62,
+  "copy_63_exhausted": false,
+  "unrestricted_radius_3_space_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Exact 61 initially left one singleton anchor open after two 60-second checks; a focused seed closed that same leaf UNSAT and an independent 20-leaf union then covered all 58 anchors. Exact 62 used pre-refinement of recurrent hard cubes 0, 2, and 3 and closed directly with another 20-leaf union. Together with prior certificates this establishes bounded exhaustion through 62 copies under the replayed necessary conditions. Copy 63 and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity."
+}

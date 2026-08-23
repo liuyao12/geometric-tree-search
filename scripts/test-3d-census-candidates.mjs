@@ -496,6 +496,10 @@ const archivedP10052588Exact5660AdaptiveCube = JSON.parse(await readFile(
   new URL("../data/polycube-p10-052588-exact56-60-adaptive-placement-cube-2026-08-23.json", import.meta.url),
   "utf8"
 ));
+const archivedP10052588Exact6162PrerefinedCube = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-exact61-62-prerefined-placement-cube-2026-08-23.json", import.meta.url),
+  "utf8"
+));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1783,6 +1787,25 @@ assert.equal(archivedP10052588Exact5660AdaptiveCube.new_verified_copy_bound, 60)
 assert.equal(archivedP10052588Exact5660AdaptiveCube.copy_61_exhausted, false);
 assert.equal(archivedP10052588Exact5660AdaptiveCube.certified_non_tiler, false);
 assert.equal(archivedP10052588Exact5660AdaptiveCube.certified_aperiodic, false);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.classification, "placement_cube_ranges_exhausted");
+assert.deepEqual(archivedP10052588Exact6162PrerefinedCube.placement_counts, [61, 62]);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.covers.length, 2);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.covers.reduce((sum, cover) => sum + cover.branch_leaves, 0), 40);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.covers[0].focused_leaf.result, "unsat");
+assert.deepEqual(archivedP10052588Exact6162PrerefinedCube.covers[1].pre_refine_indices, [0, 2, 3]);
+assert.ok(archivedP10052588Exact6162PrerefinedCube.covers.every(cover =>
+  cover.covered_anchor_placement_candidates === 58
+  && cover.leaf_overlaps === 0
+  && cover.uncovered_anchor_placement_candidates === 0
+));
+assert.equal(archivedP10052588Exact6162PrerefinedCube.coverage_verification.independently_regenerated_certificates_byte_identical, true);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.resumability_verification.runner_replay_solver_launches, 0);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.resumability_verification.runner_replay_resumed_reports, 45);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.algorithmic_observation.singleton_geometric_refinement_disallowed, true);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.new_verified_copy_bound, 62);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.copy_63_exhausted, false);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.certified_non_tiler, false);
+assert.equal(archivedP10052588Exact6162PrerefinedCube.certified_aperiodic, false);
 assert.equal(archivedP10052588StagedCellFeedback.implementation_commit, "7df66cc");
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.all_at_once.sat_radius_3_states, 1);
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.staged_four_at_a_time.sat_radius_3_states, 5);
@@ -2196,8 +2219,15 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_exact56_60_adap
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact56_60_adaptive_cube_resume_launches, 0);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact56_60_adaptive_cube_resumed_branches, 92);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact56_60_adaptive_cube_exhausted, true);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, 60);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, 61);
+assert.deepEqual(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_counts, [61, 62]);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_branch_leaves, 40);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_runner_launches, 45);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_focused_launches, 1);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_replay_launches, 0);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_resumed_reports, 45);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact61_62_prerefined_cube_exhausted, true);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, 62);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, 63);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, true);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(
