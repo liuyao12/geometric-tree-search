@@ -116,6 +116,10 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const layer = integerArgument(args, "layer", 3, 1);
   const minimumCount = integerArgument(args, "min-count", 1, 1);
   const maximumCount = integerArgument(args, "max-count", minimumCount, minimumCount);
+  const openEndedMaximum = booleanArgument(args, "open-ended-maximum", false);
+  if (openEndedMaximum && minimumCount !== maximumCount) {
+    throw new Error("--open-ended-maximum requires --min-count and --max-count to be identical");
+  }
   const anchorCell = args.get("anchor-cell");
   if (!anchorCell) throw new Error("--anchor-cell is required");
   const initialParts = integerArgument(args, "initial-parts", 16, 2);
@@ -180,6 +184,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   };
   if (preRefineIndices.length) runConfiguration.pre_refine_indices = preRefineIndices;
   if (maximumSameLeafRetries) runConfiguration.same_leaf_retries = maximumSameLeafRetries;
+  if (openEndedMaximum) runConfiguration.open_ended_maximum = true;
   const runConfigurationSha256 = sha256(JSON.stringify(runConfiguration));
   const runConfigurationPath = resolve(outputDirectory, "run-configuration.json");
   if (existsSync(runConfigurationPath)) {
@@ -198,7 +203,8 @@ export async function main(arguments_ = process.argv.slice(2)) {
   let seedOffset = 0;
   const countResults = [];
   for (let count = minimumCount; count <= maximumCount; count += 1) {
-    const cachePath = resolve(outputDirectory, `exact-${count}-base.smt2`);
+    const countLabel = openEndedMaximum ? `at-least-${count}` : `exact-${count}`;
+    const cachePath = resolve(outputDirectory, `${countLabel}-base.smt2`);
     const pending = [bootstrapBranch];
     const queued = new Set([`${bootstrapBranch.parts}:${bootstrapBranch.index}`]);
     const exhaustedReports = [];
@@ -211,7 +217,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
       seedOffset += 1;
       const branchPath = resolve(
         outputDirectory,
-        `exact-${count}-parts-${branch.parts}-index-${branch.index}${
+        `${countLabel}-parts-${branch.parts}-index-${branch.index}${
           branch.sameLeafRetry ? `-leaf-retry-${branch.sameLeafRetry}` : ""
         }-seed-${seed}.json`
       );
@@ -231,7 +237,6 @@ export async function main(arguments_ = process.argv.slice(2)) {
           `--pb-solver=${pbSolver}`,
           `--random-seed=${seed}`,
           `--min-placements=${count}`,
-          `--max-placements=${count}`,
           `--placement-cube-cell=${anchorCell}`,
           `--placement-cube-parts=${branch.parts}`,
           `--placement-cube-index=${branch.index}`,
@@ -239,6 +244,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
           `--formula-cache=${cachePath}`,
           `--output=${branchPath}`
         ];
+        if (!openEndedMaximum) solverArguments.push(`--max-placements=${count}`);
         if (initialClauseReport) solverArguments.push(`--forbidden-clause-report=${initialClauseReport}`);
         if (initialCellReport) solverArguments.push(`--cell-coverability-report=${initialCellReport}`);
         let solved;
@@ -279,7 +285,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
         key: polycubeKey(candidate.voxels),
         layer,
         min_placements: count,
-        max_placements: count,
+        max_placements: openEndedMaximum ? null : count,
         placement_cube_cell: anchorCell,
         placement_cube_parts: branch.parts,
         placement_cube_index: branch.index
@@ -347,7 +353,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
     if (satReport) {
       classification = "sat_outer_proposal_requires_continuation";
     } else if (!openReports.length) {
-      const certificatePath = resolve(outputDirectory, `exact-${count}-certificate.json`);
+      const certificatePath = resolve(outputDirectory, `${countLabel}-certificate.json`);
       const verified = spawnSync(process.execPath, [
         verifier,
         `--output=${certificatePath}`,
@@ -361,6 +367,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
     }
     countResults.push({
       placement_count: count,
+      maximum_placement_count: openEndedMaximum ? null : count,
       classification,
       anchor_placement_candidates: candidateCount,
       exhausted_branch_reports: exhaustedReports,
@@ -377,6 +384,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
     layer,
     minimum_count: minimumCount,
     maximum_count: maximumCount,
+    open_ended_maximum: openEndedMaximum,
     anchor_cell: anchorCell,
     initial_parts: initialParts,
     maximum_parts: maximumParts,
@@ -393,9 +401,11 @@ export async function main(arguments_ = process.argv.slice(2)) {
     counts: countResults,
     classification: countResults.every(result => result.classification === "placement_cube_cover_exhausted")
       && countResults.length === maximumCount - minimumCount + 1
-      ? "placement_cube_range_exhausted"
+      ? openEndedMaximum ? "placement_cube_tail_exhausted" : "placement_cube_range_exhausted"
       : countResults.at(-1)?.classification ?? "placement_cube_cover_incomplete",
-    warning: "A bounded exact-count range proves neither non-tiling nor aperiodicity. SAT outer proposals require exact continuation verification."
+    warning: openEndedMaximum
+      ? "A tail certificate only closes counts at or above its threshold. Combine it with independently verified lower-count certificates and audit every necessary constraint before claiming non-tiling."
+      : "A bounded exact-count range proves neither non-tiling nor aperiodicity. SAT outer proposals require exact continuation verification."
   };
   writeFileSync(reportOutput, `${JSON.stringify(summary, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify({

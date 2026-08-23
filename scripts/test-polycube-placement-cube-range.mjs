@@ -194,6 +194,32 @@ try {
   );
   assert.notEqual(refinedConfigurationMismatch.status, 0);
   assert.match(refinedConfigurationMismatch.stderr, /different placement-cube run configuration/);
+
+  const tailDirectory = join(directory, "tail");
+  const tailSummaryPath = join(tailDirectory, "summary.json");
+  const tailArguments = commonArguments.map(argument => {
+    if (argument === "--min-count=1") return "--min-count=999";
+    if (argument === "--max-count=1") return "--max-count=999";
+    if (argument.startsWith("--output-dir=")) return `--output-dir=${tailDirectory}`;
+    if (argument.startsWith("--report-output=")) return `--report-output=${tailSummaryPath}`;
+    return argument;
+  });
+  tailArguments.push("--open-ended-maximum=true");
+  const tail = spawnSync(process.execPath, tailArguments, {
+    encoding: "utf8",
+    timeout: 60_000,
+    maxBuffer: 8 * 1024 * 1024
+  });
+  assert.equal(tail.status, 0, tail.stderr);
+  const tailSummary = JSON.parse(readFileSync(tailSummaryPath, "utf8"));
+  assert.equal(tailSummary.classification, "placement_cube_tail_exhausted");
+  assert.equal(tailSummary.open_ended_maximum, true);
+  assert.equal(tailSummary.counts[0].placement_count, 999);
+  assert.equal(tailSummary.counts[0].maximum_placement_count, null);
+  const tailCertificate = JSON.parse(readFileSync(tailSummary.counts[0].certificate, "utf8"));
+  assert.equal(tailCertificate.min_placements, 999);
+  assert.equal(tailCertificate.max_placements, null);
+  assert.equal(tailCertificate.covered_anchor_placement_candidates, 12);
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }
