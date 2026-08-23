@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260823-polycube10-v181";
+} from "./engine.js?v=20260823-polycube10-v182";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1531,7 +1531,11 @@ function updateCandidateResearchPanel() {
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_exact54_55_adaptive_cube_exhausted) {
         const cubes = candidate.screening;
-        candidateResearchDetail.textContent += ` A contiguous range run closes exact counts ${cubes.corona_exact54_55_adaptive_cube_counts.join(" and ")} with ${cubes.corona_exact54_55_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact54_55_adaptive_cube_solver_launches} total launches; it enters the second count only after certifying the first, and replay reuses all ${cubes.corona_exact54_55_adaptive_cube_resumed_branches} attempted reports with ${cubes.corona_exact54_55_adaptive_cube_resume_launches} new launches. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
+        candidateResearchDetail.textContent += ` A contiguous range run closes exact counts ${cubes.corona_exact54_55_adaptive_cube_counts.join(" and ")} with ${cubes.corona_exact54_55_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact54_55_adaptive_cube_solver_launches} total launches; it enters the second count only after certifying the first, and replay reuses all ${cubes.corona_exact54_55_adaptive_cube_resumed_branches} attempted reports with ${cubes.corona_exact54_55_adaptive_cube_resume_launches} new launches.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact56_60_adaptive_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` Three more adaptive runs close every exact count from ${cubes.corona_exact56_60_adaptive_cube_counts.at(0)} through ${cubes.corona_exact56_60_adaptive_cube_counts.at(-1)} with ${cubes.corona_exact56_60_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact56_60_adaptive_cube_solver_launches} launches. Independent regeneration reproduces all five cover certificates byte for byte, and replay reuses all ${cubes.corona_exact56_60_adaptive_cube_resumed_branches} attempted reports with ${cubes.corona_exact56_60_adaptive_cube_resume_launches} new launches. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
