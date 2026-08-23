@@ -472,6 +472,10 @@ const archivedP10052588Exact47CubeCover = JSON.parse(await readFile(
   new URL("../data/polycube-p10-052588-exact47-placement-cube-cover-2026-08-22.json", import.meta.url),
   "utf8"
 ));
+const archivedP10052588Exact4849CubeCover = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-exact48-49-placement-cube-cover-2026-08-22.json", import.meta.url),
+  "utf8"
+));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1676,6 +1680,19 @@ assert.equal(archivedP10052588Exact47CubeCover.new_verified_copy_bound, 47);
 assert.equal(archivedP10052588Exact47CubeCover.copy_48_exhausted, false);
 assert.equal(archivedP10052588Exact47CubeCover.certified_non_tiler, false);
 assert.equal(archivedP10052588Exact47CubeCover.certified_aperiodic, false);
+assert.equal(archivedP10052588Exact4849CubeCover.classification, "placement_cube_range_exhausted");
+assert.deepEqual(archivedP10052588Exact4849CubeCover.placement_counts, [48, 49]);
+assert.equal(archivedP10052588Exact4849CubeCover.covers.length, 2);
+assert.ok(archivedP10052588Exact4849CubeCover.covers.every(cover =>
+  cover.branch_leaves === 17
+  && cover.covered_anchor_placement_candidates === 58
+  && cover.leaf_overlaps === 0
+  && cover.uncovered_anchor_placement_candidates === 0
+));
+assert.equal(archivedP10052588Exact4849CubeCover.new_verified_copy_bound, 49);
+assert.equal(archivedP10052588Exact4849CubeCover.copy_50_exhausted, false);
+assert.equal(archivedP10052588Exact4849CubeCover.certified_non_tiler, false);
+assert.equal(archivedP10052588Exact4849CubeCover.certified_aperiodic, false);
 assert.equal(archivedP10052588StagedCellFeedback.implementation_commit, "7df66cc");
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.all_at_once.sat_radius_3_states, 1);
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.staged_four_at_a_time.sat_radius_3_states, 5);
@@ -2064,8 +2081,11 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_copy47_48_front
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact47_cube_anchor_candidates, 58);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact47_cube_branch_leaves, 11);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact47_cube_exhausted, true);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, 47);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, 48);
+assert.deepEqual(p10052588Survivor.census_candidate.screening.corona_exact48_49_cube_counts, [48, 49]);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact48_49_cube_branch_leaves, 34);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_exact48_49_cube_exhausted, true);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, 49);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, 50);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, true);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(

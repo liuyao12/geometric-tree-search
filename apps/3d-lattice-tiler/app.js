@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v176";
+} from "./engine.js?v=20260822-polycube10-v177";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1511,7 +1511,11 @@ function updateCandidateResearchPanel() {
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_exact47_cube_exhausted) {
         const cubes = candidate.screening;
-        candidateResearchDetail.textContent += ` Exhaustive placement-cube decomposition subsequently partitions all ${cubes.corona_exact47_cube_anchor_candidates} ways to cover anchor cell ${cubes.corona_exact47_cube_anchor_cell} into ${cubes.corona_exact47_cube_branch_leaves} disjoint UNSAT leaves with an identical base-formula digest. Together with the earlier bounded certificate, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
+        candidateResearchDetail.textContent += ` Exhaustive placement-cube decomposition subsequently partitions all ${cubes.corona_exact47_cube_anchor_candidates} ways to cover anchor cell ${cubes.corona_exact47_cube_anchor_cell} into ${cubes.corona_exact47_cube_branch_leaves} disjoint UNSAT leaves with an identical base-formula digest, closing exact count 47.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact48_49_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` Two further digest-checked covers use ${cubes.corona_exact48_49_cube_branch_leaves} total leaves to close exact counts ${cubes.corona_exact48_49_cube_counts.join(" and ")}. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
