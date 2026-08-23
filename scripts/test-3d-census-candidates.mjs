@@ -464,6 +464,10 @@ const archivedP10052588StagedCellFeedback = JSON.parse(await readFile(
   new URL("../data/polycube-p10-052588-staged-cell-feedback-2026-08-22.json", import.meta.url),
   "utf8"
 ));
+const archivedP10052588Copy4748Frontier = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-copy47-48-frontier-2026-08-22.json", import.meta.url),
+  "utf8"
+));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
   new URL("../data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json", import.meta.url),
   "utf8"
@@ -1801,6 +1805,16 @@ assert.equal(archivedP10052588StagedCellFeedback.widened_bounded_exhaustion_thro
 assert.equal(archivedP10052588StagedCellFeedback.radius_3_copy_bound_exhausted, true);
 assert.equal(archivedP10052588StagedCellFeedback.certified_non_tiler, false);
 assert.equal(archivedP10052588StagedCellFeedback.certified_aperiodic, false);
+assert.equal(archivedP10052588Copy4748Frontier.timeout_runs, 5);
+assert.equal(archivedP10052588Copy4748Frontier.runs.every(run => run.z3_status === "unknown"), true);
+assert.equal(archivedP10052588Copy4748Frontier.runs.every(run => run.transaction_rolled_back), true);
+assert.equal(archivedP10052588Copy4748Frontier.exact_cardinality_encoding_change.previous_constraints, 2);
+assert.equal(archivedP10052588Copy4748Frontier.exact_cardinality_encoding_change.current_constraints, 1);
+assert.equal(archivedP10052588Copy4748Frontier.exact_cardinality_encoding_change.matched_wall_clock_improvement_established, false);
+assert.equal(archivedP10052588Copy4748Frontier.copy_47_exhausted, false);
+assert.equal(archivedP10052588Copy4748Frontier.copy_48_exhausted, false);
+assert.equal(archivedP10052588Copy4748Frontier.certified_non_tiler, false);
+assert.equal(archivedP10052588Copy4748Frontier.certified_aperiodic, false);
 for (const source of archivedP10052588Radius3Witness.raw_reports) {
   const bytes = await readFile(new URL(`../${source.path}`, import.meta.url));
   assert.equal(
@@ -2027,6 +2041,12 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_widened_exhaust
 assert.equal(p10052588Survivor.census_candidate.screening.corona_widened_exhaustion_unknown_runs, 1);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_replayed_clauses, 176);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_bounded_exhaustion_replay_failures, 0);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_copy47_48_frontier_timeout_runs, 5);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_copy47_48_frontier_minimum_open_placements, 47);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_copy47_48_frontier_maximum_open_placements, 48);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_copy47_48_exact_count_constraints_before, 2);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_copy47_48_exact_count_constraints_after, 1);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_copy47_48_frontier_open, true);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, true);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(

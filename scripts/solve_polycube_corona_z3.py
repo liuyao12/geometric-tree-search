@@ -219,7 +219,7 @@ def main():
     cache_path = Path(args.formula_cache) if args.formula_cache else None
     cache_metadata_path = Path(f"{args.formula_cache}.json") if args.formula_cache else None
     cache_signature = json.dumps({
-        "version": 3,
+        "version": 4,
         "key": args.key,
         "layer": args.layer,
         "min_placements": args.min_placements,
@@ -267,10 +267,15 @@ def main():
     for cell, indices in sorted(by_cell.items()):
         if not formula_cache_hit and cell not in target and len(indices) > 1:
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], 1))
-    if not formula_cache_hit and args.min_placements is not None:
-        solver.add(z3.PbGe([(variable, 1) for variable in variables], args.min_placements))
-    if not formula_cache_hit and args.max_placements is not None:
-        solver.add(z3.PbLe([(variable, 1) for variable in variables], args.max_placements))
+    placement_terms = [(variable, 1) for variable in variables]
+    if (not formula_cache_hit and args.min_placements is not None
+            and args.min_placements == args.max_placements):
+        solver.add(z3.PbEq(placement_terms, args.min_placements))
+    else:
+        if not formula_cache_hit and args.min_placements is not None:
+            solver.add(z3.PbGe(placement_terms, args.min_placements))
+        if not formula_cache_hit and args.max_placements is not None:
+            solver.add(z3.PbLe(placement_terms, args.max_placements))
     root_stabilizer_size = 1
     symmetry_breaking_constraints = 0
     if args.root_symmetry_breaking:

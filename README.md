@@ -142,7 +142,11 @@ Pages site. The main way to use it is to open the page in a browser:
   then to 46 gives an exact UNSAT result at each bound, with timeout/rollback
   controls on the same sound prefix. The bounded certificate therefore extends
   through 46 copies. This is not evidence of non-tiling or aperiodicity: coronas
-  with 47 or more copies remain unexhausted.
+  with 47 or more copies remain unexhausted. Five follow-up exact runs isolate
+  the 47–48 band and exact count 47, but all time out and roll back. The solver
+  now encodes an exact placement count with one pseudo-Boolean equality instead
+  of duplicate lower/upper bounds; this is cleaner but has not yet established
+  a wall-clock improvement on the hard frontier.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

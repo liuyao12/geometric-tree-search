@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v174";
+} from "./engine.js?v=20260822-polycube10-v175";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1504,6 +1504,10 @@ function updateCandidateResearchPanel() {
         const constructionReduction = (100 * bounded.corona_bounded_exhaustion_construction_reduction_fraction).toFixed(1);
         const timeoutControlLabel = bounded.corona_widened_exhaustion_unknown_runs === 1 ? "control" : "controls";
         candidateResearchDetail.textContent += ` The final retained chain adds ${bounded.corona_bounded_exhaustion_new_states} more verified states and reaches ${bounded.corona_bounded_exhaustion_maximum_verified_cells} applied cells. At ${bounded.corona_bounded_exhaustion_certificate_cells} cells, ${bounded.corona_bounded_exhaustion_base_independent_unsat_runs} independent solver seeds first agree on exact UNSAT through ${bounded.corona_bounded_exhaustion_base_maximum_placements} copies for byte-identical ${bounded.corona_bounded_exhaustion_applied_clauses}-clause formulas; the cache hit cuts construction by ${constructionReduction}%. Raising the cap to ${bounded.corona_bounded_exhaustion_maximum_placements} gives another exact UNSAT on seed ${bounded.corona_widened_exhaustion_unsat_seed}, alongside ${bounded.corona_widened_exhaustion_unknown_runs} timeout/rollback ${timeoutControlLabel}. This exhausts the ≤${bounded.corona_bounded_exhaustion_maximum_placements}-copy radius-three proposal stratum as a source of radius-four survivors, after ${bounded.corona_bounded_exhaustion_combined_distinct_states} verified bounded states and ${bounded.corona_bounded_exhaustion_replayed_clauses} replayed obstruction clauses. It does not exhaust larger coronas and proves neither non-tiling nor aperiodicity.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_copy47_48_frontier_report) {
+        const frontier = candidate.screening;
+        candidateResearchDetail.textContent += ` The next ${frontier.corona_copy47_48_frontier_timeout_runs}-run audit isolates the open ${frontier.corona_copy47_48_frontier_minimum_open_placements}–${frontier.corona_copy47_48_frontier_maximum_open_placements}-copy band, but every exact solve times out and rolls back. Exact-cardinality formulas now replace ${frontier.corona_copy47_48_exact_count_constraints_before} opposing pseudo-Boolean bounds with ${frontier.corona_copy47_48_exact_count_constraints_after} equality, saving ${frontier.corona_copy47_48_exact_count_formula_bytes_saved.toLocaleString()} serialized bytes; the matched real frontier remains timeout-inconclusive, so no speedup or exhaustion is claimed.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
