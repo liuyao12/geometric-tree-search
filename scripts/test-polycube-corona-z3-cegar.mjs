@@ -14,6 +14,7 @@ import {
 import { polycubeKey } from "../assets/polycube-enumerator.js";
 import {
   enumeratePolycubeCoronaPlacements,
+  polycubeCoronaRingCellKeys,
   polycubeCellPairOrbitKeys,
   polycubeCellTripleOrbitKeys
 } from "../assets/polycube-corona-search.js";
@@ -23,9 +24,14 @@ const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.met
 const cegar = fileURLToPath(new URL("./screen-polycube-corona-z3-cegar.mjs", import.meta.url));
 const clauseReplay = fileURLToPath(new URL("./verify-polycube-corona-clause-report.mjs", import.meta.url));
 const recurrenceReplay = fileURLToPath(new URL("./replay-polycube-pair-recurrence.mjs", import.meta.url));
+const cubeCoverVerifier = fileURLToPath(new URL("./verify-polycube-placement-cube-cover.mjs", import.meta.url));
 const cegarSource = readFileSync(cegar, "utf8");
 const solverSource = readFileSync(solver, "utf8");
 assert.match(solverSource, /"version": 4/);
+assert.match(solverSource, /choices=\("solver", "totalizer", "sorting", "binary_merge", "segmented", "circuit"\)/);
+assert.match(solverSource, /z3\.With\(z3\.Tactic\("pb2bv"\), "pb\.solver", args\.pb_solver\)/);
+assert.match(solverSource, /placement_cube_candidates\[args\.placement_cube_index::args\.placement_cube_parts\]/);
+assert.match(solverSource, /placement_cube_exhausted/);
 assert.match(
   solverSource,
   /args\.min_placements == args\.max_placements\):[\s\S]*?z3\.PbEq\(placement_terms, args\.min_placements\)[\s\S]*?else:[\s\S]*?z3\.PbGe\(placement_terms[\s\S]*?z3\.PbLe\(placement_terms/,
@@ -125,11 +131,98 @@ try {
   assert.ok(boundedReport.check_milliseconds >= 0);
   assert.ok(boundedReport.milliseconds >= boundedReport.construction_milliseconds);
   assert.equal(boundedReport.classification, "placement_bound_exhausted");
+  assert.equal(boundedReport.pb_solver, "solver");
   assert.equal(boundedReport.max_placements, 1);
   assert.equal(boundedReport.root_symmetry_breaking, true);
   assert.equal(boundedReport.root_stabilizer_size, 3);
   assert.ok(boundedReport.symmetry_breaking_constraints > 0);
   assert.match(boundedReport.warning, /not a non-tiling or aperiodicity certificate/);
+
+  const sortingOutput = join(directory, "sorting.json");
+  const sorting = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--pb-solver=sorting",
+    "--min-placements=1",
+    "--max-placements=1",
+    `--output=${sortingOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(sorting.status, 0, sorting.stderr);
+  const sortingReport = JSON.parse(readFileSync(sortingOutput, "utf8"));
+  assert.equal(sortingReport.z3_status, "unsat");
+  assert.equal(sortingReport.pb_solver, "sorting");
+
+  const cubeOutput = join(directory, "placement-cube.json");
+  const cubeCache = join(directory, "placement-cube-cache.smt2");
+  const cubeCellReport = join(directory, "placement-cube-cells.json");
+  writeFileSync(cubeCellReport, `${JSON.stringify({
+    cells: [polycubeCoronaRingCellKeys(candidate.voxels, 2)[0]]
+  })}\n`);
+  const cube = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=1",
+    "--placement-cube-cell=1,1,1",
+    "--placement-cube-parts=2",
+    "--placement-cube-index=0",
+    `--cell-coverability-report=${cubeCellReport}`,
+    `--formula-cache=${cubeCache}`,
+    `--output=${cubeOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(cube.status, 0, cube.stderr);
+  const cubeReport = JSON.parse(readFileSync(cubeOutput, "utf8"));
+  assert.equal(cubeReport.z3_status, "unsat");
+  assert.equal(cubeReport.classification, "placement_cube_exhausted");
+  assert.equal(cubeReport.placement_cube_parts, 2);
+  assert.equal(cubeReport.placement_cube_index, 0);
+  assert.ok(cubeReport.placement_cube_selected_candidates > 0);
+  assert.match(cubeReport.warning, /combine every branch/);
+
+  const secondCubeOutput = join(directory, "placement-cube-second.json");
+  const secondCube = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    "--max-placements=1",
+    "--placement-cube-cell=1,1,1",
+    "--placement-cube-parts=2",
+    "--placement-cube-index=1",
+    `--cell-coverability-report=${cubeCellReport}`,
+    `--formula-cache=${cubeCache}`,
+    `--output=${secondCubeOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(secondCube.status, 0, secondCube.stderr);
+  const secondCubeReport = JSON.parse(readFileSync(secondCubeOutput, "utf8"));
+  assert.equal(secondCubeReport.formula_cache_hit, true);
+  assert.equal(secondCubeReport.z3_status, "unsat");
+  assert.equal(
+    secondCubeReport.constraints,
+    cubeReport.constraints,
+    "a shared base cache must not retain a previous placement-cube branch"
+  );
+  assert.equal(
+    secondCubeReport.placement_cube_base_formula_sha256,
+    cubeReport.placement_cube_base_formula_sha256
+  );
+  const cubeCertificateOutput = join(directory, "placement-cube-certificate.json");
+  const cubeCertificate = spawnSync(process.execPath, [
+    cubeCoverVerifier,
+    `--output=${cubeCertificateOutput}`,
+    cubeOutput,
+    secondCubeOutput
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(cubeCertificate.status, 0, cubeCertificate.stderr);
+  const cubeCertificateReport = JSON.parse(readFileSync(cubeCertificateOutput, "utf8"));
+  assert.equal(cubeCertificateReport.classification, "placement_cube_cover_exhausted");
+  assert.equal(cubeCertificateReport.covered_anchor_placement_candidates, 12);
 
   const minimumBoundedOutput = join(directory, "minimum-bounded.json");
   const minimumBounded = spawnSync(python, [
@@ -185,6 +278,7 @@ try {
   assert.equal(boundedCegar.status, 0, boundedCegar.stderr);
   const cegarReport = JSON.parse(readFileSync(cegarOutput, "utf8"));
   assert.equal(cegarReport.classification, "placement_bound_exhausted");
+  assert.equal(cegarReport.pb_solver, "solver");
   assert.equal(cegarReport.max_placements, 1);
   assert.match(cegarReport.warning, /not a non-tiling or aperiodicity certificate/);
 

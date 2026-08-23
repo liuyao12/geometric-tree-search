@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v175";
+} from "./engine.js?v=20260822-polycube10-v176";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1507,7 +1507,11 @@ function updateCandidateResearchPanel() {
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_copy47_48_frontier_report) {
         const frontier = candidate.screening;
-        candidateResearchDetail.textContent += ` The next ${frontier.corona_copy47_48_frontier_timeout_runs}-run audit isolates the open ${frontier.corona_copy47_48_frontier_minimum_open_placements}–${frontier.corona_copy47_48_frontier_maximum_open_placements}-copy band, but every exact solve times out and rolls back. Exact-cardinality formulas now replace ${frontier.corona_copy47_48_exact_count_constraints_before} opposing pseudo-Boolean bounds with ${frontier.corona_copy47_48_exact_count_constraints_after} equality, saving ${frontier.corona_copy47_48_exact_count_formula_bytes_saved.toLocaleString()} serialized bytes; the matched real frontier remains timeout-inconclusive, so no speedup or exhaustion is claimed.`;
+        candidateResearchDetail.textContent += ` The earlier ${frontier.corona_copy47_48_frontier_timeout_runs}-run audit isolated the then-open ${frontier.corona_copy47_48_frontier_minimum_open_placements}–${frontier.corona_copy47_48_frontier_maximum_open_placements}-copy band, but every exact solve timed out and rolled back. Exact-cardinality formulas replace ${frontier.corona_copy47_48_exact_count_constraints_before} opposing pseudo-Boolean bounds with ${frontier.corona_copy47_48_exact_count_constraints_after} equality, saving ${frontier.corona_copy47_48_exact_count_formula_bytes_saved.toLocaleString()} serialized bytes; that matched audit established no speedup or exhaustion.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact47_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` Exhaustive placement-cube decomposition subsequently partitions all ${cubes.corona_exact47_cube_anchor_candidates} ways to cover anchor cell ${cubes.corona_exact47_cube_anchor_cell} into ${cubes.corona_exact47_cube_branch_leaves} disjoint UNSAT leaves with an identical base-formula digest. Together with the earlier bounded certificate, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;

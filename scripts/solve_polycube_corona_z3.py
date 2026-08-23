@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import hashlib
 import itertools
 import json
 import sys
@@ -137,9 +138,17 @@ def main():
     parser.add_argument("--timeout-ms", type=int, default=300_000)
     parser.add_argument("--max-witnesses", type=int, default=1)
     parser.add_argument("--backend", choices=("smt", "qffpbv", "pb2bv-sat"), default="smt")
+    parser.add_argument(
+        "--pb-solver",
+        choices=("solver", "totalizer", "sorting", "binary_merge", "segmented", "circuit"),
+        default="solver",
+    )
     parser.add_argument("--random-seed", type=int, default=0)
     parser.add_argument("--min-placements", type=int)
     parser.add_argument("--max-placements", type=int)
+    parser.add_argument("--placement-cube-cell")
+    parser.add_argument("--placement-cube-parts", type=int)
+    parser.add_argument("--placement-cube-index", type=int)
     parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
@@ -166,6 +175,19 @@ def main():
     if (args.min_placements is not None and args.max_placements is not None
             and args.min_placements > args.max_placements):
         parser.error("min-placements cannot exceed max-placements")
+    cube_arguments = (
+        args.placement_cube_cell,
+        args.placement_cube_parts,
+        args.placement_cube_index,
+    )
+    if any(value is not None for value in cube_arguments) and not all(
+            value is not None for value in cube_arguments):
+        parser.error("placement cube cell, parts, and index must be supplied together")
+    if args.placement_cube_parts is not None and args.placement_cube_parts < 2:
+        parser.error("--placement-cube-parts must be at least 2")
+    if (args.placement_cube_index is not None
+            and not 0 <= args.placement_cube_index < args.placement_cube_parts):
+        parser.error("--placement-cube-index must be in [0, placement-cube-parts)")
     if args.interactive_jsonl and args.max_witnesses != 1:
         parser.error("interactive mode requires max-witnesses=1")
     if args.interactive_replace_pairs and not args.interactive_jsonl:
@@ -176,6 +198,8 @@ def main():
         parser.error("--pair-soft-orbit-minimum is not yet supported with --interactive-jsonl")
     if args.pair_soft_minimum is not None and args.pair_soft_orbit_minimum is not None:
         parser.error("pair soft constraint and orbit minimums are mutually exclusive")
+    if args.pb_solver != "solver" and args.backend != "pb2bv-sat":
+        parser.error("--pb-solver variants require --backend=pb2bv-sat")
     if ((args.pair_soft_minimum is not None or args.pair_soft_orbit_minimum is not None)
             and not args.pair_coverability_report):
         parser.error("pair soft minimums require --pair-coverability-report")
@@ -244,8 +268,13 @@ def main():
     if args.backend == "qffpbv":
         solver = z3.Tactic("qffpbv").solver()
     elif args.backend == "pb2bv-sat":
-        sat_tactic = z3.With(z3.Tactic("sat"), random_seed=args.random_seed)
-        solver = z3.Then("simplify", "pb-preprocess", "pb2bv", sat_tactic).solver()
+        pb_tactic = z3.With(z3.Tactic("pb2bv"), "pb.solver", args.pb_solver)
+        sat_tactic = z3.With(
+            z3.Tactic("sat"),
+            "random_seed", args.random_seed,
+            "pb.solver", args.pb_solver,
+        )
+        solver = z3.Then("simplify", "pb-preprocess", pb_tactic, sat_tactic).solver()
     else:
         solver = z3.Solver()
     solver.set(timeout=args.timeout_ms)
@@ -276,6 +305,16 @@ def main():
             solver.add(z3.PbGe(placement_terms, args.min_placements))
         if not formula_cache_hit and args.max_placements is not None:
             solver.add(z3.PbLe(placement_terms, args.max_placements))
+    placement_cube_cell = parse_cell_key(args.placement_cube_cell) if args.placement_cube_cell else None
+    placement_cube_candidates = []
+    placement_cube_selected = []
+    if placement_cube_cell is not None:
+        if placement_cube_cell not in target:
+            parser.error("--placement-cube-cell must be a primary target cell")
+        placement_cube_candidates = sorted(by_cell.get(placement_cube_cell, ()))
+        placement_cube_selected = placement_cube_candidates[args.placement_cube_index::args.placement_cube_parts]
+        if not placement_cube_selected:
+            parser.error("selected placement cube is empty")
     root_stabilizer_size = 1
     symmetry_breaking_constraints = 0
     if args.root_symmetry_breaking:
@@ -683,6 +722,15 @@ def main():
             forbidden_clause_keys.add(tuple(sorted(str(key) for key in clause)))
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
 
+    placement_cube_base_formula_sha256 = None
+    if placement_cube_selected:
+        # Hash and cache only the common formula. The branch-local assumption
+        # comes last so independent leaves can be compared and safely united.
+        placement_cube_base_formula_sha256 = hashlib.sha256(
+            solver.sexpr().encode("utf-8")
+        ).hexdigest()
+        solver.add(z3.Or([variables[index] for index in placement_cube_selected]))
+
     constraint_count = len(solver.assertions())
     construction_ms = round((time.perf_counter() - started) * 1000)
     if args.interactive_jsonl:
@@ -948,9 +996,16 @@ def main():
         "layer": args.layer,
         "model": "proper cubic rotations; root fixed; primary target cells exactly once; secondary cells at most once",
         "backend": args.backend,
+        "pb_solver": args.pb_solver,
         "random_seed": args.random_seed,
         "min_placements": args.min_placements,
         "max_placements": args.max_placements,
+        "placement_cube_cell": cell_key(placement_cube_cell) if placement_cube_cell else None,
+        "placement_cube_parts": args.placement_cube_parts,
+        "placement_cube_index": args.placement_cube_index,
+        "placement_cube_candidates": len(placement_cube_candidates),
+        "placement_cube_selected_candidates": len(placement_cube_selected),
+        "placement_cube_base_formula_sha256": placement_cube_base_formula_sha256,
         "require_next_layer_coverability": args.require_next_layer_coverability,
         "cell_coverability_constraints": cell_coverability_count,
         "lookahead_target_cells": lookahead_target_count,
@@ -1004,6 +1059,7 @@ def main():
         "milliseconds": elapsed_ms,
         "classification": (
             "verified_pending" if status == z3.sat
+            else "placement_cube_exhausted" if status == z3.unsat and placement_cube_cell is not None
             else "certified_non_tiler" if status == z3.unsat and args.min_placements is None and args.max_placements is None and not forbidden_clauses
             else "unsat_under_forbidden_clauses" if status == z3.unsat and args.min_placements is None and args.max_placements is None
             else "placement_bound_exhausted" if status == z3.unsat
@@ -1017,6 +1073,8 @@ def main():
         "warning": (
             "Additional batch enumeration timed out after returning valid witnesses; the returned patches remain exact, but the batch is incomplete."
             if witnesses and batch_terminal_status == "unknown"
+            else "Only one exhaustive placement-cube branch was exhausted; combine every branch before strengthening the global copy bound."
+            if status == z3.unsat and placement_cube_cell is not None
             else "UNSAT depends on externally supplied forbidden clauses; validate their continuation proofs before treating this as a non-tiling certificate."
             if status == z3.unsat and args.min_placements is None and args.max_placements is None and forbidden_clauses
             else (

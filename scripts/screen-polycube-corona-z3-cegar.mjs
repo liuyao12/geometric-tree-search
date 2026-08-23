@@ -70,6 +70,13 @@ const continuationTimeMs = integerArg("continuation-time-ms", 10_000, 1);
 const continuationNodes = integerArg("continuation-nodes", 10_000_000, 1);
 const nogoodLimit = integerArg("nogood-limit", 500_000, 1);
 const backend = args.get("backend") ?? "pb2bv-sat";
+const pbSolver = args.get("pb-solver") ?? "solver";
+if (!["solver", "totalizer", "sorting", "binary_merge", "segmented", "circuit"].includes(pbSolver)) {
+  throw new Error("--pb-solver must be solver, totalizer, sorting, binary_merge, segmented, or circuit");
+}
+if (pbSolver !== "solver" && backend !== "pb2bv-sat") {
+  throw new Error("--pb-solver variants require --backend=pb2bv-sat");
+}
 const randomSeed = integerArg("random-seed", 0, 0);
 const seedStride = integerArg("seed-stride", 0, 0);
 const minPlacements = args.has("min-placements")
@@ -80,6 +87,21 @@ const maxPlacements = args.has("max-placements")
   : null;
 if (minPlacements !== null && maxPlacements !== null && minPlacements > maxPlacements) {
   throw new Error("--min-placements cannot exceed --max-placements");
+}
+const placementCubeCell = args.get("placement-cube-cell") ?? null;
+const placementCubeParts = args.has("placement-cube-parts")
+  ? integerArg("placement-cube-parts", 2, 2)
+  : null;
+const placementCubeIndex = args.has("placement-cube-index")
+  ? integerArg("placement-cube-index", 0, 0)
+  : null;
+const placementCubeArgumentCount = [placementCubeCell, placementCubeParts, placementCubeIndex]
+  .filter(value => value !== null).length;
+if (![0, 3].includes(placementCubeArgumentCount)) {
+  throw new Error("placement cube cell, parts, and index must be supplied together");
+}
+if (placementCubeIndex !== null && placementCubeIndex >= placementCubeParts) {
+  throw new Error("--placement-cube-index must be less than --placement-cube-parts");
 }
 const progressEvery = integerArg("progress-every", 1, 1);
 const symmetryClauses = booleanArg("symmetry-clauses", true);
@@ -804,10 +826,14 @@ process.stdout.write(`${JSON.stringify({
   continuation_time_ms: continuationTimeMs,
   continuation_nodes: continuationNodes,
   backend,
+  pb_solver: pbSolver,
   random_seed: randomSeed,
   seed_stride: seedStride,
   min_placements: minPlacements,
   max_placements: maxPlacements,
+  placement_cube_cell: placementCubeCell,
+  placement_cube_parts: placementCubeParts,
+  placement_cube_index: placementCubeIndex,
   symmetry_clauses: symmetryClauses,
   continue_on_z3_unknown: continueOnZ3Unknown,
   require_next_layer_coverability: requireNextLayerCoverability,
@@ -1182,6 +1208,7 @@ const solverArgumentsFor = (iterationSeed, encodedPairs, encodedTriples, witness
     `--timeout-ms=${z3TimeoutMs}`,
     `--max-witnesses=${z3WitnessBatchSize}`,
     `--backend=${backend}`,
+    `--pb-solver=${pbSolver}`,
     `--random-seed=${iterationSeed}`,
     `--lookahead-conflict-encoding=${lookaheadConflictEncoding}`,
     `--forbidden-clause-report=${z3Interactive ? appliedClausePath : clausePath}`
@@ -1189,6 +1216,11 @@ const solverArgumentsFor = (iterationSeed, encodedPairs, encodedTriples, witness
   if (witnessPath) solverArguments.push(`--output=${witnessPath}`);
   if (minPlacements !== null) solverArguments.push(`--min-placements=${minPlacements}`);
   if (maxPlacements !== null) solverArguments.push(`--max-placements=${maxPlacements}`);
+  if (placementCubeCell !== null) {
+    solverArguments.push(`--placement-cube-cell=${placementCubeCell}`);
+    solverArguments.push(`--placement-cube-parts=${placementCubeParts}`);
+    solverArguments.push(`--placement-cube-index=${placementCubeIndex}`);
+  }
   if (requireNextLayerCoverability) solverArguments.push("--require-next-layer-coverability");
   if (cellConstraints.length) {
     solverArguments.push(`--cell-coverability-report=${z3Interactive ? appliedCellPath : cellPath}`);
@@ -1450,7 +1482,9 @@ const runInteractiveCegar = async () => {
       const witnessPath = resolve(outputDirectory, `outer-witness-${String(iteration).padStart(4, "0")}.json`);
       writeFileSync(witnessPath, `${JSON.stringify(proposal, null, 2)}\n`);
       if (proposal.z3_status === "unsat") {
-        classification = minPlacements !== null || maxPlacements !== null
+        classification = placementCubeCell !== null
+          ? "placement_cube_exhausted"
+          : minPlacements !== null || maxPlacements !== null
           ? "placement_bound_exhausted"
           : initialClauseCount > 0
             ? "conditional_unsat"
@@ -1617,7 +1651,9 @@ if (z3Interactive) {
   }
   const proposal = JSON.parse(readFileSync(witnessPath, "utf8"));
   if (proposal.z3_status === "unsat") {
-    classification = minPlacements !== null || maxPlacements !== null
+    classification = placementCubeCell !== null
+      ? "placement_cube_exhausted"
+      : minPlacements !== null || maxPlacements !== null
       ? "placement_bound_exhausted"
       : initialClauseCount > 0
         ? "conditional_unsat"
@@ -1750,10 +1786,14 @@ const summary = {
   inner_layer: innerLayer,
   classification,
   backend,
+  pb_solver: pbSolver,
   random_seed: randomSeed,
   seed_stride: seedStride,
   min_placements: minPlacements,
   max_placements: maxPlacements,
+  placement_cube_cell: placementCubeCell,
+  placement_cube_parts: placementCubeParts,
+  placement_cube_index: placementCubeIndex,
   symmetry_clauses: symmetryClauses,
   continue_on_z3_unknown: continueOnZ3Unknown,
   require_next_layer_coverability: requireNextLayerCoverability,
@@ -1869,6 +1909,8 @@ const summary = {
   } : null,
   warning: ["certified_non_tiler", "verified_inner_radius_witness"].includes(classification)
     ? null
+    : classification === "placement_cube_exhausted"
+      ? `The exact CEGAR loop exhausted only placement-cube branch ${placementCubeIndex + 1}/${placementCubeParts} at target cell ${placementCubeCell}; combine every branch before strengthening the global copy bound.`
     : classification === "placement_bound_exhausted"
       ? `The exact CEGAR loop exhausted only outer patches in the configured placement-count range [${minPlacements ?? 0}, ${maxPlacements ?? "unbounded"}]; this is not a non-tiling or aperiodicity certificate.`
       : classification === "conditional_unsat"
