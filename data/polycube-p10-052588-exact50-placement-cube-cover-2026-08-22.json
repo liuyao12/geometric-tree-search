@@ -1,0 +1,49 @@
+{
+  "kind": "polycube_placement_cube_cover_audit",
+  "date": "2026-08-22",
+  "candidate": "p10-052588",
+  "outer_radius": 3,
+  "continuation_radius": 4,
+  "placement_count": 50,
+  "result": "unsat",
+  "classification": "placement_cube_cover_exhausted",
+  "anchor_cell": "1,1,0",
+  "anchor_placement_candidates": 58,
+  "covered_anchor_placement_candidates": 58,
+  "branch_leaves": 18,
+  "placement_cube_base_formula_sha256": "7189b5bb56b6f441de8ffaf015dd7aa7e34bd53c46ecbd128cada6520b815ea1",
+  "shared_formula": {
+    "target_cells": 179,
+    "placements_considered": 8767,
+    "variables": 8767,
+    "constraints_per_leaf": 9898,
+    "applied_forbidden_clauses": 112,
+    "independently_replayed_accumulated_clauses": 176,
+    "cell_coverability_constraints": 56,
+    "lookahead_conflict_encoding": "grouped-pb",
+    "backend": "pb2bv-sat",
+    "pseudo_boolean_solver": "solver"
+  },
+  "coarse_partition": {
+    "parts": 16,
+    "exhausted_indices": [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "timeout_indices_replaced_by_refinement": [0, 3]
+  },
+  "refined_partition": { "parts": 32, "exhausted_indices": [0, 3, 16, 19] },
+  "coverage_verification": {
+    "tool": "scripts/verify-polycube-placement-cube-cover.mjs",
+    "shared_formula_digests_identical": true,
+    "shared_constraint_counts_identical": true,
+    "leaf_overlaps": 0,
+    "uncovered_anchor_placement_candidates": 0
+  },
+  "random_seed_range": [431, 479],
+  "maximum_check_milliseconds": 43987,
+  "previous_verified_copy_bound": 49,
+  "new_verified_copy_bound": 50,
+  "copy_51_exhausted": false,
+  "unrestricted_radius_3_space_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "An exhaustive disjoint placement-cube cover closes the exact 50-copy radius-three proposal stratum under the independently replayed obstruction prefix and exact next-ring necessary conditions. Together with the prior <=49 certificate this establishes bounded exhaustion through 50 copies. Copy 51 and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity."
+}
