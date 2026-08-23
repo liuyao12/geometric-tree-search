@@ -66,6 +66,10 @@ const PRINCIPAL_AXIS = new THREE.Vector3(
   0
 ).normalize();
 const SECOND_PRINCIPAL_AXIS = new THREE.Vector3(0, 0, 1);
+const THIRD_PRINCIPAL_AXIS = new THREE.Vector3().crossVectors(
+  PRINCIPAL_AXIS,
+  SECOND_PRINCIPAL_AXIS
+).normalize();
 const PRINCIPAL_ARROW_POINTS = [
   PRISM_CENTROID,
   PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.84),
@@ -73,7 +77,9 @@ const PRINCIPAL_ARROW_POINTS = [
   PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, -0.075),
   PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69)
 ];
-const MARKER_VERTICES_PER_TILE = 11;
+const ROD_VERTICES_PER_TILE = 8;
+const DART_VERTICES_PER_TILE = 6;
+const MARKER_VERTICES_PER_TILE = ROD_VERTICES_PER_TILE + DART_VERTICES_PER_TILE;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xedf1ef);
@@ -813,23 +819,36 @@ function makeVisual(transforms, turnGenerations) {
     for (let index = 0; index < PRINCIPAL_ARROW_POINTS.length; index += 1) {
       transformedArrow[index].copy(PRINCIPAL_ARROW_POINTS[index]).applyMatrix4(matrix);
     }
-    const markerColor = color.clone().multiplyScalar(0.28);
+    const rodColor = color.clone().multiplyScalar(0.36);
+    const dartColor = color.clone().multiplyScalar(0.14);
     appendThickSegment(
       markerPositions,
       markerColors,
       markerIndices,
       transformedArrow[0],
       transformedArrow[4],
-      markerColor,
+      rodColor,
       0.04
     );
-    const triangleBaseIndex = markerPositions.length / 3;
-    for (const arrowIndex of [1, 2, 3]) {
-      const point = transformedArrow[arrowIndex];
-      markerPositions.push(point.x, point.y, point.z);
-      markerColors.push(markerColor.r, markerColor.g, markerColor.b, 1);
+    const dartBaseIndex = markerPositions.length / 3;
+    const dartNormal = THIRD_PRINCIPAL_AXIS.clone().transformDirection(matrix).multiplyScalar(0.03);
+    for (const side of [1, -1]) {
+      for (const arrowIndex of [1, 2, 3]) {
+        const point = transformedArrow[arrowIndex].clone().addScaledVector(dartNormal, side);
+        markerPositions.push(point.x, point.y, point.z);
+        markerColors.push(dartColor.r, dartColor.g, dartColor.b, 1);
+      }
     }
-    markerIndices.push(triangleBaseIndex, triangleBaseIndex + 1, triangleBaseIndex + 2);
+    markerIndices.push(
+      dartBaseIndex, dartBaseIndex + 1, dartBaseIndex + 2,
+      dartBaseIndex + 3, dartBaseIndex + 5, dartBaseIndex + 4,
+      dartBaseIndex, dartBaseIndex + 3, dartBaseIndex + 4,
+      dartBaseIndex, dartBaseIndex + 4, dartBaseIndex + 1,
+      dartBaseIndex + 1, dartBaseIndex + 4, dartBaseIndex + 5,
+      dartBaseIndex + 1, dartBaseIndex + 5, dartBaseIndex + 2,
+      dartBaseIndex + 2, dartBaseIndex + 5, dartBaseIndex + 3,
+      dartBaseIndex + 2, dartBaseIndex + 3, dartBaseIndex
+    );
   });
 
   const faceOpacity = Math.max(0.006, 0.09 / Math.pow(transforms.length, 0.28));
@@ -903,8 +922,10 @@ function refreshVisualColors(visual) {
     for (let index = 0; index < EDGE_INDICES.length; index += 1) {
       edgeColors.setXYZW(edgeOffset++, color.r, color.g, color.b, edgeAlpha);
     }
-    const markerColor = color.clone().multiplyScalar(0.28);
+    const rodColor = color.clone().multiplyScalar(0.36);
+    const dartColor = color.clone().multiplyScalar(0.14);
     for (let index = 0; index < MARKER_VERTICES_PER_TILE; index += 1) {
+      const markerColor = index < ROD_VERTICES_PER_TILE ? rodColor : dartColor;
       markerColors.setXYZW(markerOffset++, markerColor.r, markerColor.g, markerColor.b, markerAlpha);
     }
   });
