@@ -130,8 +130,12 @@ Pages site. The main way to use it is to open the page in a browser:
   solver chain then advances the exact prefix 46→49 cells without reconstructing
   the formula after either successful intermediate step. Its three new 40- or
   41-copy patches are independently verified and distinct; all 158 accumulated
-  clauses replay exactly. The corpus now has 46 states. This remains
-  inconclusive, not evidence of non-tiling or aperiodicity.
+  clauses replay exactly. A longer retained chain then succeeds at five more
+  consecutive increments, advancing 49→54 applied cells while avoiding four
+  formula reconstructions. Its five new 40–42-copy patches are independently
+  verified and all 171 accumulated clauses replay exactly. The corpus now has
+  51 states. This remains inconclusive, not evidence of non-tiling or
+  aperiodicity.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

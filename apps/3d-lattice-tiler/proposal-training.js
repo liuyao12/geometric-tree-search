@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260822-polycube10-v170";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260822-polycube10-v171";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

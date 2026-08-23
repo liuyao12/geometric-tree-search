@@ -597,10 +597,41 @@
     "copy_bound_exhausted": false,
     "interpretation": "Retaining one interactive formula across successful increments removes reconstruction from the second and third checks and advances three exact applied cells in one run. The three new states all fail immediate radius-four continuation, so this improves proposal throughput without resolving tiling existence."
   },
+  "retained_five_step_chain_from_49_cells": {
+    "protocol": "One interactive solver process applies five successive transactional 2-clause/1-cell increments from the exact 49-cell prefix.",
+    "initial_applied_clauses": 98,
+    "initial_applied_cells": 49,
+    "formula_construction_milliseconds": 58310,
+    "iterations": [
+      {"iteration": 0, "check_milliseconds": 180397, "outer_placements": 42, "boundary_sha256": "0c9132201a0b04f36e0c648b6552f4f69e8698ee3ba5c706f99c2de9e8b667f8", "final_applied_cells": 50, "radius_4_continuation_nodes": 2},
+      {"iteration": 1, "construction_milliseconds": 0, "check_milliseconds": 180099, "outer_placements": 42, "boundary_sha256": "d53c0430b0c51d1a2d4e0f877d8444be4b73f23e7a1f323d0a2b5b3ef7e535b5", "final_applied_cells": 51, "radius_4_continuation_nodes": 2},
+      {"iteration": 2, "construction_milliseconds": 0, "check_milliseconds": 247160, "outer_placements": 41, "boundary_sha256": "8f0449c7f4fe32003dc5a95635c2230e1638b311baea81694a52d111981e75e1", "final_applied_cells": 52, "radius_4_continuation_nodes": 2},
+      {"iteration": 3, "construction_milliseconds": 0, "check_milliseconds": 193691, "outer_placements": 40, "boundary_sha256": "892ec7ff73611423ef0c79d3411fb44e64b1e52e8e46374d239a817b68778cca", "final_applied_cells": 53, "radius_4_continuation_nodes": 2},
+      {"iteration": 4, "construction_milliseconds": 0, "check_milliseconds": 195603, "outer_placements": 42, "boundary_sha256": "c5141a0bfe69ac13e07469c6306a7b9e44e280bed4ef161bb1bbd0187933c252", "final_applied_cells": 54, "radius_4_continuation_nodes": 2}
+    ],
+    "all_patches_independently_verified": true,
+    "all_boundaries_mutually_distinct": true,
+    "novel_against_prior_saved_witnesses": true,
+    "prior_saved_witnesses_checked": 165,
+    "final_applied_clauses": 108,
+    "final_applied_cells": 54,
+    "final_accumulated_clauses": 171,
+    "independently_replayed_clauses": 171,
+    "clause_replay_failures": 0,
+    "clause_replay_nodes": 332,
+    "new_distinct_radius_3_states": 5,
+    "combined_distinct_radius_3_states": 51,
+    "minimum_state_placements": 40,
+    "maximum_state_placements": 42,
+    "reconstructions_avoided": 4,
+    "verified_radius_4_witness_found": false,
+    "copy_bound_exhausted": false,
+    "interpretation": "The longer retained chain succeeds at all five exact increments, advancing from 49 to 54 applied cells while constructing the formula only once. All five new states fail immediate radius-four continuation. This validates same-process retention as the production frontier policy but does not exhaust the bounded proposal space."
+  },
   "radius_3_space_exhausted": false,
   "radius_3_copy_bound_exhausted": false,
   "verified_radius_4_witness_found": false,
   "certified_non_tiler": false,
   "certified_aperiodic": false,
-  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains forty-six distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, partial-formula caching, and same-process retained increments reach forty-nine applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
+  "interpretation": "Staged feedback materially improves the GCTS proposal funnel and broadens the exact radius-four rejection sample for p10-052588. The combined portfolio now contains fifty-one distinct bounded proposals through forty-two copies; all fail immediately and every learned clause instance replays exactly. Exact partition restarts, transactional feedback, partial-formula caching, and same-process retained increments reach fifty-four applied next-ring cell obligations while preserving exact prefixes across solver timeouts and seeds. Neither the <=42-copy radius-three proposal space nor the unrestricted radius-three space is exhausted. This is algorithmic progress and stronger finite-corona evidence, not a non-tiling or aperiodicity certificate."
 }

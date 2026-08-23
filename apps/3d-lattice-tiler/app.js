@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v170";
+} from "./engine.js?v=20260822-polycube10-v171";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1494,6 +1494,10 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_retained_three_step_combined_distinct_states) {
         const chain = candidate.screening;
         candidateResearchDetail.textContent += ` A retained three-step solver chain then advances the exact prefix from 46 to ${chain.corona_retained_three_step_maximum_applied_cells} cells without reconstructing either successful intermediate formula. Its ${chain.corona_retained_three_step_new_states} independently verified ${chain.corona_retained_three_step_minimum_placements}- or 41-copy states raise the bounded corpus to ${chain.corona_retained_three_step_combined_distinct_states}. GCTS rejects all three at radius four in ${chain.corona_retained_three_step_continuation_nodes} aggregate nodes, and replay verifies all ${chain.corona_retained_three_step_replayed_clauses} accumulated clauses with ${chain.corona_retained_three_step_replay_failures} failures. The ≤42-copy proposal space remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_retained_five_step_combined_distinct_states) {
+        const longChain = candidate.screening;
+        candidateResearchDetail.textContent += ` A longer retained chain succeeds at five further one-cell increments, reaching ${longChain.corona_retained_five_step_maximum_applied_cells} applied cells while avoiding ${longChain.corona_retained_five_step_reconstructions_avoided} formula reconstructions. Its ${longChain.corona_retained_five_step_new_states} independently verified ${longChain.corona_retained_five_step_minimum_placements}–${longChain.corona_retained_five_step_maximum_placements}-copy states raise the bounded corpus to ${longChain.corona_retained_five_step_combined_distinct_states}. All five fail radius-four continuation immediately in ${longChain.corona_retained_five_step_continuation_nodes} aggregate nodes, and replay verifies all ${longChain.corona_retained_five_step_replayed_clauses} clauses with ${longChain.corona_retained_five_step_replay_failures} failures. Same-process retention is now the production frontier policy; the search remains unexhausted.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
