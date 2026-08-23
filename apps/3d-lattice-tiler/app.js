@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260823-polycube10-v184";
+} from "./engine.js?v=20260823-polycube10-v185";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -808,7 +808,7 @@ const catalogGroupDefinitions = [
     title: `Large-domain periodic controls (≥${GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES} tiles)`,
     test: figure => figureHasCategory(figure, "GCTS Periodic Controls")
   },
-  { id: "shell-controls", title: "GCTS shell-obstruction controls", test: figure => figureHasCategory(figure, "GCTS Shell-Obstruction Controls") },
+  { id: "non-tiler-controls", title: "GCTS non-tiler controls", test: figure => figureHasCategory(figure, "GCTS Non-Tiler Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -1351,7 +1351,9 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
   );
   strategySelect.value = setRadioValue(
     strategyRadios,
-    periodicLane ?? "free_range",
+    periodicLane ?? (candidate?.screening?.certificate === "complete_radius3_obstruction"
+      ? "learning_free_range"
+      : "free_range"),
     periodicLane ?? "free_range"
   );
   if (periodicCandidate) periodicTileCountSelect.value = String(candidate.screening.motif_tiles ?? 6);
@@ -1378,7 +1380,9 @@ function updateCandidateResearchPanel() {
     const periodicLane = censusCandidatePeriodicLane(candidate);
     candidateSearchButton.textContent = periodicLane
       ? `Replay ${periodicLane} certificate`
-      : "Apply exact shell preset";
+      : candidate.screening?.certificate === "complete_radius3_obstruction"
+        ? "Run GCTS control"
+        : "Apply exact shell preset";
     const screening = candidate.last_screening;
     const proof = candidate.gcts_proof_screening;
     const shell = candidate.shell_screening;
@@ -1444,9 +1448,11 @@ function updateCandidateResearchPanel() {
         ? `${candidate.volume} cubes`
         : `${candidate.lattice_points} lattice points`;
       candidateResearchDetail.textContent = `${sizeLabel} · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}.${candidate.mirror_equivalent_id ? ` Its omitted enantiomer ${candidate.mirror_equivalent_id} is tiling-equivalent by reflection of all space.` : ""} Use the preset to replay the certificate in the ${periodicLane === "isohedral" ? "Isohedral" : "Translational"} lane.`;
-    } else if (["finite_extendable_shell_obstruction", "finite_shell_obstruction", "finite_corona_obstruction"].includes(candidate.screening?.certificate)) {
+    } else if (["finite_extendable_shell_obstruction", "finite_shell_obstruction", "finite_corona_obstruction", "complete_radius3_obstruction"].includes(candidate.screening?.certificate)) {
       candidateResearchTitle.textContent = `Certified non-tiler control ${candidate.id}`;
-      candidateResearchDetail.textContent = candidate.screening.certificate === "finite_corona_obstruction"
+      candidateResearchDetail.textContent = candidate.screening.certificate === "complete_radius3_obstruction"
+        ? `${candidate.volume}-cube polycube · a hash-locked, machine-checked count chain exhausts every radius-three exact-cover proposal: all patches through 46 surrounding copies, every exact count from 47 through 67, and the open-ended tail from 68 upward. The ${candidate.screening.corona_complete_replayed_clauses} imported obstruction clauses were replayed by plain chronological radius-four GCTS with optional nogoods and conflict backjumping disabled; all ${candidate.screening.corona_complete_checked_next_ring_cells} cell obligations are necessary next-ring conditions. Therefore no radius-three patch extends to radius four, which certifies non-tiling in Z³ under proper rotations. Its omitted enantiomer ${candidate.mirror_equivalent_id} has the reflected obstruction. The web run visualizes this hard control; the archived count-chain verifier is the certificate.`
+        : candidate.screening.certificate === "finite_corona_obstruction"
         ? `${candidate.volume}-cube polycube · an independently verified radius-${candidate.screening.corona_completed_radius} patch exists, but exact unpruned lattice-cover search exhausts every radius-${candidate.screening.corona_obstruction_radius} extension after ${candidate.screening.corona_obstruction_nodes.toLocaleString()} search nodes over ${candidate.screening.corona_obstruction_placements_considered.toLocaleString()} legal placements. Its omitted enantiomer ${candidate.mirror_equivalent_id} has the reflected obstruction.`
         : candidate.screening.certificate === "finite_shell_obstruction"
         ? `${candidate.lattice_points} lattice points · exhaustive unpruned face-to-face GCTS proves that no combinatorial shell ${candidate.screening.shell_depth} can surround the normalized root under full cubic isometries and integer translations. Shell ${shell?.deepest_completed_shell ?? 1} is attainable, making this a compact non-tiler regression control.`
@@ -1694,6 +1700,8 @@ function renderSystemTileList() {
         const certificate = figure.census_candidate.screening?.certificate;
         angles.textContent = ["translational", "isohedral_periodic_quotient"].includes(certificate)
           ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.kind === "polycube_census" ? `${figure.census_candidate.volume} cubes` : `${figure.census_candidate.lattice_points} points`}`
+          : certificate === "complete_radius3_obstruction"
+            ? `complete radius 3→4 obstruction · ${figure.census_candidate.volume} cubes`
           : figure.census_candidate.kind === "polycube_census"
           ? `period > ${figure.census_candidate.screening.periodic_hnf_max_motif_tiles} · corona radius ${figure.census_candidate.screening.corona_completed_radius} · ${figure.census_candidate.volume} cubes`
           : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
@@ -3649,7 +3657,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260822-polycube10-v130", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260823-polycube10-v131", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

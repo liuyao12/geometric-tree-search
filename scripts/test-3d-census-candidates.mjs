@@ -187,7 +187,7 @@ assert.match(
   "the catalog must state the narrow scope of a negative target-patch quotient check"
 );
 assert.match(growthAppSource, /Certified periodic control/, "the mined six-tile quotient must be visible as a periodic control");
-assert.match(growthAppSource, /GCTS shell-obstruction controls/, "the three exact shell rejections must remain available as controls");
+assert.match(growthAppSource, /GCTS non-tiler controls/, "the exact non-tiler certificates must remain available as controls");
 assert.match(
   growthAppSource,
   /hybrid branch screen saw/,
@@ -502,6 +502,14 @@ const archivedP10052588Exact6162PrerefinedCube = JSON.parse(await readFile(
 ));
 const archivedP10052588Exact6367PrerefinedCube = JSON.parse(await readFile(
   new URL("../data/polycube-p10-052588-exact63-67-prerefined-placement-cube-v2-2026-08-23.json", import.meta.url),
+  "utf8"
+));
+const archivedP10052588AtLeast68Tail = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-at-least68-placement-cube-tail-2026-08-23.json", import.meta.url),
+  "utf8"
+));
+const archivedP10052588CompleteExhaustion = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-052588-complete-radius3-exhaustion-2026-08-23.json", import.meta.url),
   "utf8"
 ));
 const archivedPartialNextLayerLookahead = JSON.parse(await readFile(
@@ -1489,15 +1497,15 @@ assert.equal(candidates.length, 50, "the lattice controls and focused free-polyc
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
 const shellControls = candidates.filter(figure =>
-  ["finite_extendable_shell_obstruction", "finite_shell_obstruction", "finite_corona_obstruction"].includes(figure.census_candidate.screening.certificate)
+  ["finite_extendable_shell_obstruction", "finite_shell_obstruction", "finite_corona_obstruction", "complete_radius3_obstruction"].includes(figure.census_candidate.screening.certificate)
 );
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-assert.equal(survivors.length, 6);
+assert.equal(survivors.length, 5);
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.id).sort(),
-  ["p10-052588", "p10-054782", "p10-055695", "p10-290795", "p10-346304", "p9-42947"]
+  ["p10-054782", "p10-055695", "p10-290795", "p10-346304", "p9-42947"]
 );
 const volumeNineSurvivor = survivors.find(figure => figure.census_candidate.id === "p9-42947");
 assert.ok(volumeNineSurvivor
@@ -1528,14 +1536,13 @@ assert.deepEqual(
     ]
   ])),
   {
-    "p10-052588": [3, 4],
     "p10-054782": [3, 4],
     "p10-055695": [3, 4],
     "p10-290795": [2, 3],
     "p10-346304": [2, 3]
   }
 );
-assert.equal(shellControls.length, 8);
+assert.equal(shellControls.length, 9);
 assert.equal(periodicControls.length, 36);
 const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
 assert.equal(GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES, 5);
@@ -1830,6 +1837,17 @@ assert.equal(archivedP10052588Exact6367PrerefinedCube.new_verified_copy_bound, 6
 assert.equal(archivedP10052588Exact6367PrerefinedCube.copy_68_exhausted, false);
 assert.equal(archivedP10052588Exact6367PrerefinedCube.certified_non_tiler, false);
 assert.equal(archivedP10052588Exact6367PrerefinedCube.certified_aperiodic, false);
+assert.equal(archivedP10052588AtLeast68Tail.classification, "placement_cube_tail_exhausted");
+assert.equal(archivedP10052588AtLeast68Tail.minimum_placement_count, 68);
+assert.equal(archivedP10052588AtLeast68Tail.maximum_placement_count, null);
+assert.equal(archivedP10052588AtLeast68Tail.branch_leaves, 19);
+assert.equal(archivedP10052588AtLeast68Tail.covered_anchor_placement_candidates, 58);
+assert.equal(archivedP10052588AtLeast68Tail.uncovered_anchor_placement_candidates, 0);
+assert.equal(archivedP10052588AtLeast68Tail.open_ended_tail_exhausted, true);
+assert.equal(archivedP10052588CompleteExhaustion.conclusion.unrestricted_radius_3_space_exhausted, true);
+assert.equal(archivedP10052588CompleteExhaustion.conclusion.certified_non_tiler, true);
+assert.equal(archivedP10052588CompleteExhaustion.conclusion.certified_aperiodic, false);
+assert.equal(archivedP10052588CompleteExhaustion.count_cover.exact_components.flatMap(component => component.counts).length, 21);
 assert.equal(archivedP10052588StagedCellFeedback.implementation_commit, "7df66cc");
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.all_at_once.sat_radius_3_states, 1);
 assert.equal(archivedP10052588StagedCellFeedback.matched_seed_175_ablation.staged_four_at_a_time.sat_radius_3_states, 5);
@@ -2115,7 +2133,7 @@ assert.equal(archivedP9BatchedTripleCoverability.portfolio.final_four_trial_time
 assert.equal(archivedP9BatchedTripleCoverability.outer_search_exhausted, false);
 const p10055695Survivor = survivors.find(figure => figure.census_candidate.id === "p10-055695");
 const p10054782Survivor = survivors.find(figure => figure.census_candidate.id === "p10-054782");
-const p10052588Survivor = survivors.find(figure => figure.census_candidate.id === "p10-052588");
+const p10052588Survivor = candidates.find(figure => figure.census_candidate.id === "p10-052588");
 assert.equal(
   p10052588Survivor.census_candidate.screening.corona_report,
   "data/polycube-p10-052588-radius3-witness-audit-2026-08-22.json"
@@ -2257,9 +2275,14 @@ assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prer
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_resumed_reports, 97);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_same_leaf_retries, 0);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_exact63_67_prerefined_cube_exhausted, true);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, 67);
-assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, 68);
+assert.equal(p10052588Survivor.census_candidate.screening.status, "exact_rejection");
+assert.equal(p10052588Survivor.census_candidate.screening.certificate, "complete_radius3_obstruction");
+assert.equal(p10052588Survivor.census_candidate.screening.corona_at_least68_tail_exhausted, true);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_verified_copy_bound, null);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_minimum_open_placements, null);
 assert.equal(p10052588Survivor.census_candidate.screening.corona_staged_cell_feedback_copy_bound_exhausted, true);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_radius3_space_exhausted, true);
+assert.equal(p10052588Survivor.census_candidate.screening.corona_cegar_certified_non_tiler, true);
 assert.deepEqual(
   verifyPolycubeCoronaPatch(
     p10052588Survivor.census_candidate.voxels,

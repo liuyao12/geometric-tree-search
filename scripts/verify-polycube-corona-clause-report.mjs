@@ -21,6 +21,13 @@ const integerArg = (name, fallback, minimum = 0) => {
   }
   return value;
 };
+const booleanArg = (name, fallback = false) => {
+  const raw = args.get(name);
+  if (raw === undefined) return fallback;
+  if (raw === "true") return true;
+  if (raw === "false") return false;
+  throw new Error(`--${name} must be true or false`);
+};
 
 const id = args.get("id") ?? "p10-052588";
 const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === id);
@@ -28,6 +35,8 @@ if (!candidate) throw new Error(`Unknown polycube catalogue candidate: ${id}`);
 const layer = integerArg("layer", 3, 1);
 const nodeLimit = integerArg("node-limit", 1_000_000, 1);
 const timeLimitMs = integerArg("time-ms", 30_000, 1);
+const nogoods = booleanArg("nogoods");
+const conflictBackjumping = booleanArg("conflict-backjumping");
 const clauseReportPath = args.get("clause-report")
   ? resolve(args.get("clause-report"))
   : null;
@@ -74,8 +83,8 @@ for (let index = 0; index < clauses.length; index += 1) {
       nodeLimit,
       timeLimitMs,
       timeBudgetMode: "cpu",
-      nogoods: true,
-      conflictBackjumping: true
+      nogoods,
+      conflictBackjumping
     });
   } catch (error) {
     results.push({
@@ -128,9 +137,10 @@ const summary = {
   total_milliseconds: results.reduce((sum, result) => sum + result.milliseconds, 0),
   node_limit_per_clause: nodeLimit,
   time_limit_ms_per_clause: timeLimitMs,
+  nogoods,
+  conflict_backjumping: conflictBackjumping,
   results
 };
 if (outputPath) writeFileSync(outputPath, `${JSON.stringify(summary, null, 2)}\n`);
 process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);
 if (summary.classification === "failed") process.exitCode = 1;
-

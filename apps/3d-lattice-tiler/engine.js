@@ -4,7 +4,7 @@
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
-import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260823-volume10-v74";
+import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260823-volume10-v75";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES = 5;
@@ -7324,7 +7324,7 @@ export const tileSpecs = (() => {
         ? "Unresolved Polycube Candidates"
         : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
           ? "GCTS Periodic Controls"
-          : "GCTS Shell-Obstruction Controls", "Polycubes"],
+          : "GCTS Non-Tiler Controls", "Polycubes"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, generatePolycubeData(candidate.voxels))]
     }])),
@@ -7334,7 +7334,7 @@ export const tileSpecs = (() => {
         ? "Unresolved Lattice Candidates"
         : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
           ? "GCTS Periodic Controls"
-          : "GCTS Shell-Obstruction Controls"],
+          : "GCTS Non-Tiler Controls"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),

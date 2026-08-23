@@ -956,11 +956,33 @@ same ≤39-copy bound and 30-second check cap. Across seeds 175, 182, and 185 it
 finds nineteen mutually distinct 37–39-copy states. Exact radius-four GCTS
 rejects all nineteen immediately in 21 aggregate nodes; independent replay
 verifies all 216 clause instances, representing 199 distinct clauses, with no
-failure or incomplete replay. The strongest restarted formula still times out,
-and the bounded outer state space is not exhausted. The result validates staged
-feedback as a proposal-supply optimization but proves neither non-tiling nor
-aperiodicity. See
+failure or incomplete replay. That was the proposal-supply stage; later exact
+placement-count partitioning closes the search completely. See
 `data/polycube-p10-052588-staged-cell-feedback-2026-08-22.json`.
+
+The completed `p10-052588` certificate partitions every possible number of
+surrounding radius-three copies. One cumulative UNSAT formula covers counts
+through 46; placement-cube certificates cover every exact count from 47
+through 67; and an open-ended `--open-ended-maximum=true` certificate covers
+all counts at least 68. Each placement cube partitions the 58 possible copies
+covering one primary anchor cell, with no missing or overlapping branches.
+The exact clause files used by both formula families are checked in. Plain
+chronological radius-four replay—with optional nogoods and conflict
+backjumping disabled—verifies all 114 prefix clauses and all 112 tail clauses.
+The 57 and 56 respective cell constraints are deliberately weak necessary
+conditions: each asks only that a radius-four ring cell retain one compatible
+covering placement. The hash-locked count-chain verifier checks the contiguous
+count partition, every component archive, both clause replays, and next-ring
+cell membership:
+
+```sh
+node scripts/verify-polycube-non-tiler-count-chain.mjs
+```
+
+It returns `certified_non_tiler`. Thus `p10-052588` is no longer an unresolved
+aperiodic candidate; it remains in the catalogue as a hard GCTS non-tiler
+control. The certificate is
+`data/polycube-p10-052588-complete-radius3-exhaustion-2026-08-23.json`.
 
 The first production interactive chain keeps three retained solvers through
 nine exact proposals at seeds 303–305. All nine checks return SAT without a

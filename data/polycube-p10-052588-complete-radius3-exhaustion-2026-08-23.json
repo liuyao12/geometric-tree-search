@@ -1,0 +1,174 @@
+{
+  "kind": "polycube_complete_radius_exhaustion_audit",
+  "date": "2026-08-23",
+  "candidate": "p10-052588",
+  "candidate_key": "0,0,0;0,0,1;0,0,2;0,1,0;0,1,2;0,2,0;0,2,1;1,0,1;1,1,1;1,2,1",
+  "model": {
+    "lattice": "Z^3",
+    "allowed_orientations": "proper cubic rotations",
+    "include_reflections": false,
+    "fixed_root": true,
+    "outer_radius": 3,
+    "continuation_radius": 4,
+    "radius_definition": "face-adjacency distance from the fixed root polycube"
+  },
+  "count_cover": {
+    "prefix": {
+      "minimum": 0,
+      "maximum": 46,
+      "clauses": 114,
+      "cells": 57,
+      "artifact": {
+        "path": "data/polycube-p10-052588-staged-cell-feedback-2026-08-22.json",
+        "sha256": "459faa0f601cf75244a7ed8480fba743a595573cf566a5aa577ce39851d7c80e"
+      }
+    },
+    "exact_components": [
+      {
+        "counts": [47],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact47-placement-cube-cover-2026-08-22.json",
+          "sha256": "c7da66d280773d416ca856f313a1c2ee5e821dd8d5d6485b9f8a9edc1019b19d"
+        }
+      },
+      {
+        "counts": [48, 49],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact48-49-placement-cube-cover-2026-08-22.json",
+          "sha256": "3a516b482d1e22ca49549c49dadaf451662a9c116b9465dc5274d3ce0f0fd62d"
+        }
+      },
+      {
+        "counts": [50],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact50-placement-cube-cover-2026-08-22.json",
+          "sha256": "6390b9951689994b363f527c307251295fdd0b8397b5c76dc57af0e5fcb8967d"
+        }
+      },
+      {
+        "counts": [51],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact51-adaptive-placement-cube-2026-08-23.json",
+          "sha256": "5bb424d5cc9625138c620e00a01ca4eefe46604faf118ae7e9a71bbe84ecb4a1"
+        }
+      },
+      {
+        "counts": [52, 53],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact52-53-adaptive-placement-cube-2026-08-23.json",
+          "sha256": "9d78e336c883668c7ec93fdbc1f7a57a3dc19918b0cdf9bad997b2863057dbdd"
+        }
+      },
+      {
+        "counts": [54, 55],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact54-55-adaptive-placement-cube-2026-08-23.json",
+          "sha256": "f8f885fe6184ce2877da9dd36c16d24dbb861fe6dbbc503329ba90cdb511d2e9"
+        }
+      },
+      {
+        "counts": [56, 57, 58, 59, 60],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact56-60-adaptive-placement-cube-2026-08-23.json",
+          "sha256": "a143efdfd688719094f4c3e6b93d069a475d8b549d065add994b7cc913d9b583"
+        }
+      },
+      {
+        "counts": [61, 62],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact61-62-prerefined-placement-cube-2026-08-23.json",
+          "sha256": "958bd2cc815652905384dae292472eb7807575c0d88ceab35ca54eed7661d6c3"
+        }
+      },
+      {
+        "counts": [63, 64, 65, 66, 67],
+        "clauses": 112,
+        "cells": 56,
+        "artifact": {
+          "path": "data/polycube-p10-052588-exact63-67-prerefined-placement-cube-v2-2026-08-23.json",
+          "sha256": "5692eec6f425b8bf27344046c96ae1a61b20d154febded814ad0ccce30c7d07e"
+        }
+      }
+    ],
+    "tail": {
+      "minimum": 68,
+      "maximum": null,
+      "clauses": 112,
+      "cells": 56,
+      "artifact": {
+        "path": "data/polycube-p10-052588-at-least68-placement-cube-tail-2026-08-23.json",
+        "sha256": "4d4d08cb6d189b38592b2b0055ebe199f068a36cd9d50abac40130492668c835"
+      }
+    }
+  },
+  "sound_necessary_conditions": [
+    {
+      "id": "prefix-114-clauses-57-cells",
+      "count_scope": "0 through 46 surrounding copies",
+      "clause_count": 114,
+      "cell_count": 57,
+      "clauses": {
+        "path": "data/polycube-p10-052588-applied114-clauses-2026-08-23.json",
+        "sha256": "b9965b5e6948f2322bd155d92bfd181a5438f5ef681ee987715c92abecb5c26e"
+      },
+      "cells": {
+        "path": "data/polycube-p10-052588-applied57-cells-2026-08-23.json",
+        "sha256": "40f1fdd6adbbb72aa1440e7b01dd641425b8bf1965dc3ebfd08286d5ea50abc0"
+      },
+      "clause_replay": {
+        "path": "data/polycube-p10-052588-applied114-clause-replay-plain-layer4-2026-08-23.json",
+        "sha256": "48a6a96b46cc51400349063c6d57e53737e6a5f6c3738306bc1c13a4d1d2d7f7"
+      }
+    },
+    {
+      "id": "tail-112-clauses-56-cells",
+      "count_scope": "47 or more surrounding copies",
+      "clause_count": 112,
+      "cell_count": 56,
+      "clauses": {
+        "path": "data/polycube-p10-052588-applied112-clauses-2026-08-23.json",
+        "sha256": "57cc8a5b420100b5e4cbb114c60be79e91fcf76758e94ecc4c2211abe839c1eb"
+      },
+      "cells": {
+        "path": "data/polycube-p10-052588-applied56-cells-2026-08-23.json",
+        "sha256": "64576f2563bc87204d4423532615be5758cfb49ef088789e96f74ee05d744d25"
+      },
+      "clause_replay": {
+        "path": "data/polycube-p10-052588-applied112-clause-replay-plain-layer4-2026-08-23.json",
+        "sha256": "8509eb09a333bfda70703eb706789342bad47a6ef80063a0a68bca6d749bb97d"
+      }
+    }
+  ],
+  "soundness_argument": {
+    "exact_cover": "Any infinite tiling containing the fixed root induces a finite set of non-overlapping congruent copies that covers every lattice cell within face-adjacency radius three exactly once; every such copy is among the 8,767 enumerated proper-rotation placements.",
+    "forbidden_clauses": "Each imported clause was independently replayed by fixing only its listed radius-three placements and chronologically exhausting radius-four exact completion. Optional nogoods and conflict backjumping were disabled for this replay.",
+    "cell_coverability": "For each listed radius-four ring cell, the formula requires only one congruent placement that does not overlap the selected radius-three patch. Every actual radius-four extension supplies such a placement, so this is a necessary but deliberately insufficient condition.",
+    "anchor_partition": "The anchor cell is a primary exact-cover cell. Exactly one of its 58 candidate placements must be selected, and the placement-cube leaves form a disjoint cover of all 58 choices.",
+    "count_partition": "The cumulative prefix covers every placement count through 46, exact certificates cover every integer from 47 through 67, and the open-ended certificate covers every count at least 68."
+  },
+  "verifier": "scripts/verify-polycube-non-tiler-count-chain.mjs",
+  "conclusion": {
+    "unrestricted_radius_3_space_exhausted": true,
+    "radius_4_extension_exists": false,
+    "certified_non_tiler": true,
+    "certified_aperiodic": false,
+    "catalogue_action": "move from unresolved candidates to GCTS non-tiler controls"
+  },
+  "interpretation": "Under the stated Z^3 proper-rotation model, p10-052588 cannot tile space. Any space tiling would yield a radius-three patch extendable to radius four, but the hash-locked count chain exhausts every possible surrounding-copy count under independently replayed necessary conditions. This candidate is therefore a useful hard non-tiler benchmark for GCTS, not an aperiodic monotile candidate."
+}
