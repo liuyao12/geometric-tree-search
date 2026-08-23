@@ -864,8 +864,30 @@ function makeVisual(transforms, turnGenerations) {
   const edgeGeometry = new THREE.BufferGeometry();
   edgeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(edgePositions, 3));
   edgeGeometry.setAttribute("color", new THREE.Float32BufferAttribute(edgeColors, 4));
+  const depthMaterial = new THREE.MeshBasicMaterial({
+    colorWrite: false,
+    depthWrite: true,
+    depthTest: true,
+    side: THREE.DoubleSide,
+    polygonOffset: true,
+    polygonOffsetFactor: 1,
+    polygonOffsetUnits: 1
+  });
+  depthMaterial.userData.baseOpacity = 1;
+  const depthMesh = new THREE.Mesh(faceGeometry, depthMaterial);
+  depthMesh.layers.set(1);
+  depthMesh.renderOrder = 0;
+
+  const backEdgeOpacity = edgeOpacity * 0.28;
+  const backEdgeMaterial = makeTransparentMaterial({ line: true, opacity: backEdgeOpacity });
+  backEdgeMaterial.depthFunc = THREE.GreaterDepth;
+  const backEdges = new THREE.LineSegments(edgeGeometry, backEdgeMaterial);
+  backEdges.layers.set(1);
+  backEdges.renderOrder = 1;
+
   const edgeMaterial = makeTransparentMaterial({ line: true, opacity: edgeOpacity });
   const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+  edges.layers.set(1);
   edges.renderOrder = 2;
 
   const markerOpacity = 0.82;
@@ -887,12 +909,12 @@ function makeVisual(transforms, turnGenerations) {
   markers.renderOrder = 2.5;
 
   const group = new THREE.Group();
-  group.add(mesh, edges, markers);
+  group.add(mesh, depthMesh, backEdges, edges, markers);
   return {
     group,
     transforms,
     turnGenerations,
-    materials: [faceMaterial, edgeMaterial, markerMaterial],
+    materials: [faceMaterial, edgeMaterial, markerMaterial, backEdgeMaterial, depthMaterial],
     geometries: [faceGeometry, edgeGeometry, markerGeometry]
   };
 }
@@ -1221,7 +1243,18 @@ function animate(time) {
       updateActionButtons();
     }
   }
+  renderer.autoClear = true;
+  camera.layers.set(0);
   renderer.render(scene, camera);
+  renderer.autoClear = false;
+  renderer.clearDepth();
+  camera.layers.set(1);
+  const sceneBackground = scene.background;
+  scene.background = null;
+  renderer.render(scene, camera);
+  scene.background = sceneBackground;
+  renderer.autoClear = true;
+  camera.layers.set(0);
   orientationRenderer.render(orientationScene, orientationCamera);
   requestAnimationFrame(animate);
 }
