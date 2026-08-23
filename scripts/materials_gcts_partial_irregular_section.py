@@ -65,7 +65,24 @@ def _maximum_anchored_match(
         prototype: FrozenSupportPrototype,
         positions: tuple[Point, ...], labels, anchor_target: int,
         tolerance: float, maximum_search_nodes: int,
+        distance_codes: dict[tuple[int, int], int] | None = None,
+        cache_distances: bool = True,
+        anchor_choices: dict[tuple[int, str, int], tuple[int, ...]] | None = None,
         ) -> tuple[int, int, tuple[int, ...]]:
+    distance_codes = {} if distance_codes is None else distance_codes
+
+    def distance_code(first: int, second: int) -> int:
+        if not cache_distances:
+            return _quantize(math.dist(
+                positions[first], positions[second]), tolerance)
+        key = (first, second) if first < second else (second, first)
+        code = distance_codes.get(key)
+        if code is None:
+            code = _quantize(math.dist(
+                positions[first], positions[second]), tolerance)
+            distance_codes[key] = code
+        return code
+
     best = 1
     best_targets = (anchor_target,)
     visited = 0
@@ -77,12 +94,15 @@ def _maximum_anchored_match(
             if source == anchor_source:
                 continue
             expected = prototype.quantized_distances[anchor_source][source]
-            choices = tuple(
-                target for target, label in enumerate(labels)
-                if target != anchor_target and label == prototype.species[source]
-                and _quantize(math.dist(
-                    positions[anchor_target], positions[target]), tolerance)
-                    == expected)
+            if anchor_choices is None:
+                choices = tuple(
+                    target for target, label in enumerate(labels)
+                    if target != anchor_target and
+                    label == prototype.species[source] and
+                    distance_code(anchor_target, target) == expected)
+            else:
+                choices = anchor_choices.get((
+                    anchor_target, prototype.species[source], expected), ())
             if choices:
                 candidates[source] = choices
         order = tuple(sorted(candidates,
@@ -111,8 +131,7 @@ def _maximum_anchored_match(
                     continue
                 if any(
                     prototype.quantized_distances[source][other_source] !=
-                    _quantize(math.dist(
-                        positions[target], positions[other_target]), tolerance)
+                    distance_code(target, other_target)
                     for other_source, other_target in mapping.items()
                 ):
                     continue
@@ -136,6 +155,7 @@ def partial_irregular_section(
         action_positions: Sequence[Sequence[float]],
         action_species: Sequence[Hashable],
         *, maximum_search_nodes: int = 20_000,
+        use_distance_cache: bool = True,
         ) -> PartialIrregularSection:
     """Score every action as an anchor of a recurrent partial support."""
     occupied = _points(occupied_positions)
@@ -154,6 +174,25 @@ def partial_irregular_section(
     positions = occupied + actions
     labels = tuple(_species_key(item)
                    for item in occupied_species + action_species)
+    distance_codes = {}
+    occupied_limit = len(occupied)
+    anchor_choices = {} if use_distance_cache else None
+    if use_distance_cache:
+        grouped_choices = {}
+        for anchor in range(occupied_limit, len(positions)):
+            for target in range(len(positions)):
+                if target == anchor:
+                    continue
+                key = ((target, anchor) if target < anchor else
+                       (anchor, target))
+                if key not in distance_codes:
+                    distance_codes[key] = _quantize(math.dist(
+                        positions[anchor], positions[target]),
+                        vocabulary.distance_tolerance)
+                choice_key = (anchor, labels[target], distance_codes[key])
+                grouped_choices.setdefault(choice_key, []).append(target)
+        anchor_choices = {key: tuple(values)
+                          for key, values in grouped_choices.items()}
     matches = []
     for offset, _action in enumerate(actions):
         anchor = len(occupied) + offset
@@ -163,7 +202,8 @@ def partial_irregular_section(
                 continue
             matched, visited, targets = _maximum_anchored_match(
                 prototype, positions, labels, anchor,
-                vocabulary.distance_tolerance, maximum_search_nodes)
+                vocabulary.distance_tolerance, maximum_search_nodes,
+                distance_codes, use_distance_cache, anchor_choices)
             rows.append((matched / len(prototype.species), matched, groups,
                          -len(prototype.species), -prototype.type_id,
                          prototype, visited, targets))
@@ -175,7 +215,6 @@ def partial_irregular_section(
             offset, prototype.type_id, matched, len(prototype.species),
             fraction, groups, visited, targets))
     fractions = tuple(row.matched_fraction for row in matches)
-    occupied_limit = len(occupied)
     occupied_matches = tuple({index for index in row.matched_target_indices
                               if index < occupied_limit} for row in matches)
     pair_shared = tuple(len(left & right)

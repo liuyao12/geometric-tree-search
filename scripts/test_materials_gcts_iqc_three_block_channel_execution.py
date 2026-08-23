@@ -18,7 +18,8 @@ def test_three_block_execution_has_no_target_surface() -> None:
     assert "THIRD_ACTION_BUDGET = 8" in source
     assert "THIRD_BASELINE_SLOTS = 3" in source
     assert "THIRD_DEPTH = 3" in source
-    assert "select_pose_port_channel_diverse(" in source
+    assert "pose_port_candidate_evidence(" in source
+    assert "select_pose_port_channel_diverse_from_evidence(" in source
     assert "_second_block_candidates(" in source
     assert "_rollout(" in source
 

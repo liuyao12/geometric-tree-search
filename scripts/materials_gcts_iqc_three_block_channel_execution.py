@@ -35,7 +35,8 @@ from materials_gcts_iqc_self_fed_complete_frontier_execution import (
     _bounded_at_radius, _complete_states_at_radius)
 from materials_gcts_iqc_spatial_beam_transfer_benchmark import CLUSTER_EDGES
 from materials_gcts_pose_port_state_marking import (
-    select_pose_port_channel_diverse)
+    pose_port_candidate_evidence,
+    select_pose_port_channel_diverse_from_evidence)
 from materials_gcts_recursive_connections import local_cluster_types
 
 
@@ -85,11 +86,14 @@ def _state_key(state):
                             state.positions, state.species)))
 
 
-def _initial_state(source, runtime, radius):
+def _initial_state(source, runtime, radius, cluster_type_cache=None):
+    types = local_cluster_types(
+        source.seed_positions, source.seed_species, CLUSTER_EDGES)
+    if cluster_type_cache is not None:
+        cluster_type_cache[()] = types
     frontier = _bounded_at_radius(
         runtime["connection"], source,
-        local_cluster_types(source.seed_positions, source.seed_species,
-                            CLUSTER_EDGES), radius)
+        types, radius)
     return FusionSearchState(
         tuple(source.seed_positions), tuple(source.seed_species), frontier,
         (), (), (), 0., ())
@@ -132,31 +136,56 @@ def _replay_action_set(source, runtime, actions, radius):
     return next(iter(finals.values())), valid_orders
 
 
-def _channel_diverse_points(state, runtime):
+def _channel_diverse_points(
+        state, runtime, *, action_budget=THIRD_ACTION_BUDGET,
+        baseline_slots=THIRD_BASELINE_SLOTS, role_cache=None,
+        token_order_cache=None):
+    if (not isinstance(action_budget, int) or action_budget < 1
+            or not isinstance(baseline_slots, int)
+            or baseline_slots < 0 or baseline_slots > action_budget):
+        raise ValueError("invalid channel-tree action budget")
     descriptors = _descriptors(
         state.positions, state.species, state.proposals,
-        UPSTREAM_ANGULAR_BIN_WIDTH)
-    if len(descriptors) <= THIRD_ACTION_BUDGET:
-        return tuple(sorted(descriptors)), descriptors
-    selected = select_pose_port_channel_diverse(
-        runtime["state_model"], descriptors,
-        budget=THIRD_ACTION_BUDGET,
-        baseline_slots=THIRD_BASELINE_SLOTS,
+        UPSTREAM_ANGULAR_BIN_WIDTH, role_cache=role_cache,
+        token_order_cache=token_order_cache)
+    scores, codes, responses = pose_port_candidate_evidence(
+        runtime["state_model"], descriptors)
+    if len(descriptors) <= action_budget:
+        return tuple(sorted(descriptors)), descriptors, scores, codes
+    selected = select_pose_port_channel_diverse_from_evidence(
+        tuple(descriptors), scores, responses,
+        budget=action_budget,
+        baseline_slots=baseline_slots,
         votes=state.proposals.votes,
         tie_keys={point: point for point in descriptors})
-    return selected, descriptors
+    return selected, descriptors, scores, codes
 
 
 def _channel_tree(source, runtime, radius, telemetry=None,
-                  use_geometry_cache=True):
-    states = (_initial_state(source, runtime, radius),)
+                  use_geometry_cache=True, use_incremental_types=True,
+                  prototype_mapping_cache=None,
+                  use_prototype_mapping_cache=True, *,
+                  action_budget=THIRD_ACTION_BUDGET,
+                  baseline_slots=THIRD_BASELINE_SLOTS):
+    cluster_type_cache = ({} if use_geometry_cache and use_incremental_types
+                          else None)
+    prototype_mapping_cache = (
+        ({} if prototype_mapping_cache is None else prototype_mapping_cache)
+        if use_prototype_mapping_cache else None)
+    states = (_initial_state(
+        source, runtime, radius, cluster_type_cache),)
     counts = []
     geometry_cache = {} if use_geometry_cache else None
+    role_cache = {}
+    token_order_cache = None
     cache_hits = cache_misses = 0
     for _depth in range(THIRD_DEPTH):
         children = {}
         for state in states:
-            points, descriptors = _channel_diverse_points(state, runtime)
+            points, descriptors, scores, codes = _channel_diverse_points(
+                state, runtime, action_budget=action_budget,
+                baseline_slots=baseline_slots, role_cache=role_cache,
+                token_order_cache=token_order_cache)
             for point in points:
                 color = str(_dominant_source_color(state.proposals, point))
                 geometry_key = action_key(
@@ -168,7 +197,10 @@ def _channel_tree(source, runtime, radius, telemetry=None,
                 child = _child(
                     source, runtime["connection"], runtime["state_model"],
                     state, point, descriptors[point], radius,
-                    geometry_cache=geometry_cache)
+                    geometry_cache=geometry_cache,
+                    cluster_type_cache=cluster_type_cache,
+                    prototype_mapping_cache=prototype_mapping_cache,
+                    probability=scores[point], channel_code=codes[point])
                 key = action_key(child.actions)
                 prior = children.get(key)
                 if prior is None or (child.cumulative, child.actions) > \
@@ -184,6 +216,11 @@ def _channel_tree(source, runtime, radius, telemetry=None,
             "naive_geometry_expansions": cache_hits + cache_misses,
             "saved_geometry_expansions": cache_hits,
             "unique_geometry_expansions": cache_misses,
+            "incremental_local_types": cluster_type_cache is not None,
+            "prototype_mapping_cache_entries":
+                (0 if prototype_mapping_cache is None else
+                 sum(len(rows) for rows in
+                     prototype_mapping_cache.values())),
         })
     return states, tuple(counts)
 

@@ -87,16 +87,19 @@ def pose_port_channel_responses(
     """
     if not channel_families or any(not channel for channel in channel_families):
         raise ValueError("invalid pose-port channel schema")
-    result = []
-    for channel in channel_families:
-        admitted = frozenset(channel)
-        values = tuple(token_marking.token_weights[token]
-                       for token in descriptor.tokens
-                       if token in token_marking.token_weights and
-                       _family(token) in admitted)
-        response = sum(values) / math.sqrt(len(values)) if values else 0.
-        result.append(response)
-    return tuple(result)
+    family_channels = defaultdict(list)
+    for index, channel in enumerate(channel_families):
+        for family in frozenset(channel):
+            family_channels[family].append(index)
+    values = [[] for _channel in channel_families]
+    for token in descriptor.tokens:
+        weight = token_marking.token_weights.get(token)
+        if weight is None:
+            continue
+        for index in family_channels.get(_family(token), ()):
+            values[index].append(weight)
+    return tuple(sum(row) / math.sqrt(len(row)) if row else 0.
+                 for row in values)
 
 
 def fit_pose_port_state_marking(
@@ -175,6 +178,63 @@ def score_pose_port_state(
     return marking.state_probabilities.get(state, marking.prior_probability)
 
 
+def pose_port_candidate_evidence(
+        marking: FrozenPosePortStateMarking,
+        descriptors: Mapping[Hashable, CandidateIncidenceDescriptor],
+        ) -> tuple[dict, dict, dict]:
+    """Compute every candidate's responses, state code, and score once."""
+    responses = {key: pose_port_channel_responses(
+        marking.token_marking, descriptor,
+        channel_families=marking.channel_families)
+        for key, descriptor in descriptors.items()}
+    codes = {key: tuple(round(response / marking.state_bin_width)
+                        for response in row)
+             for key, row in responses.items()}
+    scores = {key: marking.state_probabilities.get(
+        code, marking.prior_probability) for key, code in codes.items()}
+    return scores, codes, responses
+
+
+def select_pose_port_channel_diverse_from_evidence(
+        rows, scores, responses, *, budget: int, baseline_slots: int,
+        votes=None, tie_keys=None):
+    """Apply the fixed channel-diverse ordering to precomputed evidence."""
+    rows = tuple(rows)
+    if (not rows or budget < 1 or baseline_slots < 0 or
+            baseline_slots > budget or budget > len(rows) or
+            set(rows) != set(scores) or set(rows) != set(responses)):
+        raise ValueError("invalid precomputed channel-diverse evidence")
+    votes = {} if votes is None else votes
+    if tie_keys is not None and any(key not in tie_keys for key in rows):
+        raise ValueError("tie-key mapping must cover every candidate")
+    tie = ((lambda key: repr(key)) if tie_keys is None else
+           (lambda key: tie_keys[key]))
+    baseline = tuple(sorted(rows, key=lambda key: (
+        -scores[key], -int(votes.get(key, 0)), tie(key))))
+    selected = list(baseline[:baseline_slots])
+    seen = set(selected)
+    channel_count = len(next(iter(responses.values())))
+    if any(len(row) != channel_count for row in responses.values()):
+        raise ValueError("candidate channel response width drift")
+    for channel in range(channel_count):
+        order = sorted(rows, key=lambda key: (
+            -responses[key][channel], -scores[key],
+            -int(votes.get(key, 0)), tie(key)))
+        winner = next((key for key in order if key not in seen), None)
+        if winner is not None and len(selected) < budget:
+            selected.append(winner)
+            seen.add(winner)
+    for key in baseline:
+        if len(selected) >= budget:
+            break
+        if key not in seen:
+            selected.append(key)
+            seen.add(key)
+    if len(selected) != budget:
+        raise AssertionError("channel-diverse selector underfilled its budget")
+    return tuple(selected)
+
+
 def select_pose_port_channel_diverse(
         marking: FrozenPosePortStateMarking,
         descriptors: Mapping[Hashable, CandidateIncidenceDescriptor], *,
@@ -195,37 +255,11 @@ def select_pose_port_channel_diverse(
     if (not rows or budget < 1 or baseline_slots < 0 or
             baseline_slots > budget or budget > len(rows)):
         raise ValueError("invalid channel-diverse candidate budget")
-    votes = {} if votes is None else votes
-    if tie_keys is not None and any(key not in tie_keys for key in rows):
-        raise ValueError("tie-key mapping must cover every candidate")
-    tie = ((lambda key: repr(key)) if tie_keys is None else
-           (lambda key: tie_keys[key]))
-    scores = {key: score_pose_port_state(marking, descriptors[key])
-              for key in rows}
-    baseline = tuple(sorted(rows, key=lambda key: (
-        -scores[key], -int(votes.get(key, 0)), tie(key))))
-    responses = {key: pose_port_channel_responses(
-        marking.token_marking, descriptors[key],
-        channel_families=marking.channel_families) for key in rows}
-    selected = list(baseline[:baseline_slots])
-    seen = set(selected)
-    for channel in range(len(marking.channel_families)):
-        order = sorted(rows, key=lambda key: (
-            -responses[key][channel], -scores[key],
-            -int(votes.get(key, 0)), tie(key)))
-        winner = next((key for key in order if key not in seen), None)
-        if winner is not None and len(selected) < budget:
-            selected.append(winner)
-            seen.add(winner)
-    for key in baseline:
-        if len(selected) >= budget:
-            break
-        if key not in seen:
-            selected.append(key)
-            seen.add(key)
-    if len(selected) != budget:
-        raise AssertionError("channel-diverse selector underfilled its budget")
-    return tuple(selected)
+    scores, _codes, responses = pose_port_candidate_evidence(
+        marking, descriptors)
+    return select_pose_port_channel_diverse_from_evidence(
+        rows, scores, responses, budget=budget,
+        baseline_slots=baseline_slots, votes=votes, tie_keys=tie_keys)
 
 
 def pose_port_state_marking_digest(

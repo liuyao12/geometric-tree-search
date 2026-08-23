@@ -13,7 +13,8 @@ from materials_gcts_frontier_attachment_benchmark import (
     _dominant_source_color, _subset_proposals, _without_known_sites)
 from materials_gcts_icosahedral_modelset import HIDDEN_UNIT
 from materials_gcts_recursive_connections import (
-    local_cluster_types, merge_marked_proposal_results,
+    extend_local_cluster_types, local_cluster_types,
+    merge_marked_proposal_results,
     propose_with_recursive_marking)
 
 
@@ -71,6 +72,18 @@ def advance_frontier_configuration(
         connection_marker, remaining, positions, colors, band, band_colors,
         cluster_edges, center, radius_limit):
     """Apply one exact candidate band and construct its self-fed frontier."""
+    positions, colors, next_remaining, _types = \
+        advance_frontier_configuration_with_types(
+            connection_marker, remaining, positions, colors, band,
+            band_colors, cluster_edges, center, radius_limit)
+    return positions, colors, next_remaining
+
+
+def advance_frontier_configuration_with_types(
+        connection_marker, remaining, positions, colors, band, band_colors,
+        cluster_edges, center, radius_limit, prior_cluster_types=None,
+        prototype_mapping_cache=None):
+    """Advance a frontier and return its exact updated local type table."""
     center = tuple(center)
     positions = tuple(positions)
     colors = tuple(colors)
@@ -82,13 +95,21 @@ def advance_frontier_configuration(
     new_indices = tuple(range(old_count, len(next_positions)))
     all_indices = tuple(range(len(next_positions)))
     old_indices = tuple(range(old_count))
-    types = local_cluster_types(next_positions, next_colors, cluster_edges)
+    if prior_cluster_types is None:
+        types = local_cluster_types(
+            next_positions, next_colors, cluster_edges)
+    else:
+        types = extend_local_cluster_types(
+            positions, colors, prior_cluster_types,
+            band, band_colors, cluster_edges)
     new_parents = propose_with_recursive_marking(
         connection_marker, next_positions, types, HIDDEN_UNIT,
-        parent_indices=new_indices, source_indices=all_indices)
+        parent_indices=new_indices, source_indices=all_indices,
+        prototype_mapping_cache=prototype_mapping_cache)
     old_parents = propose_with_recursive_marking(
         connection_marker, next_positions, types, HIDDEN_UNIT,
-        parent_indices=old_indices, source_indices=new_indices)
+        parent_indices=old_indices, source_indices=new_indices,
+        prototype_mapping_cache=prototype_mapping_cache)
     next_remaining = _without_known_sites(remaining, band)
     next_remaining = merge_marked_proposal_results(
         (next_remaining, new_parents, old_parents))
@@ -96,7 +117,7 @@ def advance_frontier_configuration(
     next_remaining = _subset_proposals(
         next_remaining, (point for point in next_remaining.votes
                          if math.dist(point, center) <= radius_limit + 1e-8))
-    return next_positions, next_colors, next_remaining
+    return next_positions, next_colors, next_remaining, types
 
 
 @dataclass(frozen=True)

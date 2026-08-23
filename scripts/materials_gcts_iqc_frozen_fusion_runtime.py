@@ -35,7 +35,7 @@ from materials_gcts_partial_irregular_port_graph import (
     partial_irregular_port_graph)
 from materials_gcts_partial_irregular_section import partial_irregular_section
 from materials_gcts_persistent_frontier_beam import (
-    advance_frontier_configuration)
+    advance_frontier_configuration, advance_frontier_configuration_with_types)
 from materials_gcts_pose_port_state_marking import (
     pose_port_state_code, score_pose_port_state)
 from materials_gcts_recurrent_state_diverse_beam import (
@@ -167,22 +167,43 @@ def branch_features(state: FusionSearchState):
 
 
 def _child(source, connection, state_model, state, point, descriptor,
-           target_radius, geometry_cache=None):
+           target_radius, geometry_cache=None, cluster_type_cache=None,
+           prototype_mapping_cache=None, probability=None,
+           channel_code=None):
     color = str(_dominant_source_color(state.proposals, point))
-    probability = score_pose_port_state(state_model, descriptor)
+    probability = (score_pose_port_state(state_model, descriptor)
+                   if probability is None else float(probability))
     vote = int(state.proposals.votes[point])
-    code = pose_port_state_code(
+    code = (pose_port_state_code(
         state_model.token_marking, descriptor,
         state_bin_width=state_model.state_bin_width,
         channel_families=state_model.channel_families)
+        if channel_code is None else tuple(map(int, channel_code)))
     geometry_key = action_key(
         state.actions + ((tuple(point), color),))
     geometry = None if geometry_cache is None else geometry_cache.get(
         geometry_key)
     if geometry is None:
-        geometry = advance_frontier_configuration(
-            connection, state.proposals, state.positions, state.species,
-            (point,), (color,), CLUSTER_EDGES, source.group, target_radius)
+        if cluster_type_cache is None:
+            geometry = advance_frontier_configuration(
+                connection, state.proposals, state.positions, state.species,
+                (point,), (color,), CLUSTER_EDGES, source.group,
+                target_radius)
+        else:
+            parent_key = action_key(state.actions)
+            prior_types = cluster_type_cache.get(parent_key)
+            if prior_types is None:
+                prior_types = local_cluster_types(
+                    state.positions, state.species, CLUSTER_EDGES)
+                cluster_type_cache[parent_key] = prior_types
+            positions, species, future, child_types = \
+                advance_frontier_configuration_with_types(
+                    connection, state.proposals, state.positions,
+                    state.species, (point,), (color,), CLUSTER_EDGES,
+                    source.group, target_radius, prior_types,
+                    prototype_mapping_cache)
+            geometry = positions, species, future
+            cluster_type_cache[geometry_key] = child_types
         if geometry_cache is not None:
             geometry_cache[geometry_key] = geometry
     positions, species, future = geometry

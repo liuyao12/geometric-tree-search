@@ -1,0 +1,45 @@
+{
+  "all_frozen_outputs_identical": true,
+  "fourth_candidates": 512,
+  "old_total_execution_seconds": 2179.182173125,
+  "parity": {
+    "candidate": true,
+    "deterministic_receipt": true,
+    "lineage_model": true,
+    "raw_lineage": true,
+    "scheduled_prefix": true,
+    "second_branch_receipt": true,
+    "selected_indices": true
+  },
+  "raw_nine_action_lineages": 1102,
+  "runtime_gate_passed": true,
+  "runtime_limit_seconds": 600.0,
+  "schema_version": 1,
+  "seed_atoms": 491,
+  "selected_nine_action_lineages": 64,
+  "speedup": 4.994023903238333,
+  "stage_seconds": [
+    [
+      "first_and_second_frontiers",
+      83.92195379200001
+    ],
+    [
+      "scheduled_third_frontiers",
+      74.41543958400001
+    ],
+    [
+      "transported_port_graphs",
+      18.97124120800001
+    ],
+    [
+      "lineage_model_fit_and_selection",
+      44.469968041000016
+    ],
+    [
+      "chunked_fourth_frontiers",
+      214.5793755
+    ]
+  ],
+  "target_used": false,
+  "total_execution_seconds": 436.35797812500005
+}

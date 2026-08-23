@@ -99,13 +99,15 @@ class IQCPosePortStateAudit:
     honest_status: str
 
 
-def _descriptors(positions, species, proposals, angular_width):
+def _descriptors(positions, species, proposals, angular_width,
+                 role_cache=None, token_order_cache=None):
     return candidate_incidence_descriptors(
         proposals, distance_scale=HIDDEN_UNIT, neighborhood_reach=3.,
         distance_bin_width=.25, maximum_neighbors=8,
         joint_role_geometry=True, oriented_port_geometry=True,
         angular_bin_width=angular_width,
-        occupied_positions=positions, occupied_species=species)
+        occupied_positions=positions, occupied_species=species,
+        role_cache=role_cache, token_order_cache=token_order_cache)
 
 
 def _exact(source, proposals, point):

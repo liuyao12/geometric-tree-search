@@ -207,6 +207,80 @@ def local_cluster_types(
     return tuple(result)
 
 
+def extend_local_cluster_types(
+        positions: Sequence[Point], colors: Sequence[Hashable],
+        prior_types: Sequence[LocalClusterType],
+        added_positions: Sequence[Point], added_colors: Sequence[Hashable],
+        radial_edges: Sequence[float]) -> Tuple[LocalClusterType, ...]:
+    """Exactly update radial cluster colors after a small site insertion.
+
+    Existing centers can change only through distances to the inserted sites.
+    If an insertion introduces a new species, the color-channel layout changes
+    and this routine deliberately falls back to the canonical full encoder.
+    """
+    positions = tuple(tuple(map(float, point)) for point in positions)
+    colors = tuple(colors)
+    prior_types = tuple(prior_types)
+    added_positions = tuple(tuple(map(float, point))
+                            for point in added_positions)
+    added_colors = tuple(added_colors)
+    edges = tuple(float(edge) for edge in radial_edges)
+    if (not positions or len(positions) != len(colors) or
+            len(prior_types) != len(positions) or
+            len(added_positions) != len(added_colors) or
+            not added_positions or not edges or
+            any(left >= right for left, right in zip(edges, edges[1:]))):
+        raise ValueError("invalid incremental local-cluster update")
+    next_positions = positions + added_positions
+    next_colors = colors + added_colors
+    old_color_keys = tuple(sorted({repr(color) for color in colors}))
+    next_color_keys = tuple(sorted({repr(color) for color in next_colors}))
+    if old_color_keys != next_color_keys:
+        return local_cluster_types(next_positions, next_colors, edges)
+    expected_counts = len(old_color_keys) * len(edges)
+    if any(cluster.color_key != repr(color) or
+           len(cluster.cumulative_neighbor_counts) != expected_counts
+           for cluster, color in zip(prior_types, colors)):
+        raise ValueError("prior local-cluster colors do not match the cloud")
+
+    color_offsets = {color: index * len(edges)
+                     for index, color in enumerate(old_color_keys)}
+    maximum_edge = edges[-1]
+    updated = []
+    for center, cluster in zip(positions, prior_types):
+        counts = list(cluster.cumulative_neighbor_counts)
+        for point, color in zip(added_positions, added_colors):
+            separation = math.dist(center, point)
+            if separation > maximum_edge:
+                continue
+            offset = color_offsets[repr(color)]
+            for edge_index, edge in enumerate(edges):
+                counts[offset + edge_index] += separation <= edge
+        updated.append(LocalClusterType(cluster.color_key, tuple(counts)))
+
+    encoded_next_colors = tuple(repr(color) for color in next_colors)
+    for added_index, (center, color) in enumerate(
+            zip(added_positions, added_colors), start=len(positions)):
+        counts_by_color = {
+            color_key: [0 for _ in edges] for color_key in old_color_keys}
+        for index, point in enumerate(next_positions):
+            if index == added_index:
+                continue
+            separation = math.dist(center, point)
+            if separation > maximum_edge:
+                continue
+            color_counts = counts_by_color[encoded_next_colors[index]]
+            for edge_index, edge in enumerate(edges):
+                color_counts[edge_index] += separation <= edge
+        updated.append(LocalClusterType(
+            repr(color), tuple(count for color_key in old_color_keys
+                               for count in counts_by_color[color_key])))
+    result = tuple(updated)
+    if len(result) != len(next_positions):
+        raise AssertionError("incremental local-cluster accounting drift")
+    return result
+
+
 def _nearest_prototype(
         cluster_type: LocalClusterType,
         prototypes_by_color: Mapping[str, Tuple[LocalClusterType, ...]],
@@ -222,14 +296,23 @@ def _nearest_prototype(
 
 def map_to_prototypes(
         cluster_types: Sequence[LocalClusterType],
-        prototypes: Sequence[LocalClusterType]) -> Tuple[LocalClusterType, ...]:
+        prototypes: Sequence[LocalClusterType],
+        mapping_cache: dict | None = None,
+        ) -> Tuple[LocalClusterType, ...]:
     """Map boundary-perturbed clusters to the nearest frozen learned type."""
+    prototype_key = tuple(sorted(set(prototypes)))
+    outer_cache = {} if mapping_cache is None else mapping_cache
+    cache = outer_cache.setdefault(prototype_key, {})
+    missing = tuple(sorted(set(cluster_types) - set(cache)))
+    if not missing:
+        return tuple(cache[cluster_type] for cluster_type in cluster_types)
     by_color: Dict[str, list[LocalClusterType]] = defaultdict(list)
-    for prototype in sorted(set(prototypes)):
+    for prototype in prototype_key:
         by_color[prototype.color_key].append(prototype)
     frozen = {color: tuple(values) for color, values in by_color.items()}
-    return tuple(_nearest_prototype(cluster_type, frozen)
-                 for cluster_type in cluster_types)
+    for cluster_type in missing:
+        cache[cluster_type] = _nearest_prototype(cluster_type, frozen)
+    return tuple(cache[cluster_type] for cluster_type in cluster_types)
 
 
 def learn_recurrent_cluster_prototypes(
@@ -402,11 +485,13 @@ def propose_with_recursive_marking(
         target_positions: Iterable[Point] | None = None,
         parent_indices: Iterable[int] | None = None,
         source_indices: Iterable[int] | None = None,
+        prototype_mapping_cache: dict | None = None,
         ) -> MarkedProposalResult:
     """Apply a frozen marking and aggregate overlapping action proposals."""
     if len(positions) != len(cluster_types) or level_scale <= 0:
         raise ValueError("positions/types must align and level scale be positive")
-    mapped = map_to_prototypes(cluster_types, marking.prototypes)
+    mapped = map_to_prototypes(
+        cluster_types, marking.prototypes, prototype_mapping_cache)
     targets = (None if target_positions is None else
                {point_key(point) for point in target_positions})
     votes: Counter[Point] = Counter()

@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from types import SimpleNamespace
 
 from materials_gcts_frontier_attachment_benchmark import (
-    _subset_proposals, _without_known_sites)
+    _dominant_source_color, _subset_proposals, _without_known_sites)
 from materials_gcts_iqc_complete_frontier_confirmation_execution import (
     ACTION_REACH_SCHEDULE, _freeze_receipt)
 from materials_gcts_iqc_complete_terminal_frontier_audit import (
@@ -75,14 +75,21 @@ def _bounded_at_radius(connection, source, types, radius):
         if math.dist(point, source.group) <= radius + 1e-8))
 
 
-def _complete_states_at_radius(source, runtime, radius):
+def _complete_states_at_radius(
+        source, runtime, radius, *, use_caches=True, telemetry=None):
     connection = runtime["connection"]
     state_model = runtime["state_model"]
-    frontier = _bounded_at_radius(connection, source, local_cluster_types(
-        source.seed_positions, source.seed_species, CLUSTER_EDGES), radius)
+    initial_types = local_cluster_types(
+        source.seed_positions, source.seed_species, CLUSTER_EDGES)
+    frontier = _bounded_at_radius(
+        connection, source, initial_types, radius)
     states = (FusionSearchState(
         tuple(source.seed_positions), tuple(source.seed_species), frontier,
         (), (), (), 0., ()),)
+    geometry_cache = {} if use_caches else None
+    cluster_type_cache = {(): initial_types} if use_caches else None
+    prototype_mapping_cache = {} if use_caches else None
+    cache_hits = cache_misses = 0
     counts = []
     for reach, _spec in zip(ACTION_REACH_SCHEDULE, BEAM_SPECS):
         children = {}
@@ -94,9 +101,19 @@ def _complete_states_at_radius(source, runtime, radius):
                 -score_pose_port_state(state_model, descriptors[point]),
                 -state.proposals.votes[point], point)))[:reach]
             for point in ordered:
+                geometry_key = action_key(
+                    state.actions + ((tuple(point), str(
+                        _dominant_source_color(state.proposals, point))),))
+                if geometry_cache is not None and geometry_key in geometry_cache:
+                    cache_hits += 1
+                else:
+                    cache_misses += 1
                 candidate = _child(
                     source, connection, state_model, state, point,
-                    descriptors[point], radius)
+                    descriptors[point], radius,
+                    geometry_cache=geometry_cache,
+                    cluster_type_cache=cluster_type_cache,
+                    prototype_mapping_cache=prototype_mapping_cache)
                 key = action_key(candidate.actions)
                 prior = children.get(key)
                 if prior is None or (candidate.cumulative, candidate.actions) > \
@@ -105,6 +122,15 @@ def _complete_states_at_radius(source, runtime, radius):
         states = tuple(sorted(children.values(),
                               key=lambda row: action_key(row.actions)))
         counts.append(len(states))
+    if telemetry is not None:
+        telemetry.update({
+            "geometry_cache_hits": cache_hits,
+            "geometry_cache_misses": cache_misses,
+            "prototype_mapping_cache_entries":
+                (0 if prototype_mapping_cache is None else
+                 sum(len(rows) for rows in
+                     prototype_mapping_cache.values())),
+        })
     return states, tuple(counts)
 
 

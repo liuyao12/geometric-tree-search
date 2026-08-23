@@ -25,12 +25,16 @@ def test_partial_section_detects_target_free_cluster_completion():
     species = ("X", "Y")
     exact = partial_irregular_section(
         vocabulary, (4,), occupied, species, ((0., 1., 0.),), ("Z",))
+    uncached = partial_irregular_section(
+        vocabulary, (4,), occupied, species, ((0., 1., 0.),), ("Z",),
+        use_distance_cache=False)
     false = partial_irregular_section(
         vocabulary, (4,), occupied, species, ((0., 2., 0.),), ("Z",))
     transformed = partial_irregular_section(
         vocabulary, (4,), tuple(_proper(point) for point in reversed(occupied)),
         tuple(reversed(species)), (_proper((0., 1., 0.)),), ("Z",))
     assert exact.minimum_matched_fraction == 1.
+    assert exact == uncached
     assert exact.minimum_matched_atoms == 3
     assert exact.action_matches[0].training_group_support == 4
     assert exact.action_matches[0].matched_target_indices == (0, 1, 2)

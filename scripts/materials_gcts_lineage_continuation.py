@@ -69,24 +69,31 @@ def extend_frozen_lineage(
     center = tuple(map(float, center))
     positions = tuple(tuple(map(float, point)) for point in seed_positions)
     species = tuple(map(str, seed_species))
-    actions = action_key(tuple(prior_actions))
+    normalized_actions = tuple((tuple(map(float, point)), str(color))
+                               for point, color in prior_actions)
     radii = tuple(map(float, replay_radii))
     next_radius = float(next_radius)
     if (len(center) != 3 or not all(map(math.isfinite, center))
             or not positions or len(positions) != len(species)
-            or not actions or len(actions) % 3
-            or len(radii) != len(actions) // 3
+            or not normalized_actions or len(normalized_actions) % 3
+            or len(radii) != len(normalized_actions) // 3
             or any(value <= 0 or not math.isfinite(value) for value in radii)
             or tuple(sorted(radii)) != radii or len(set(radii)) != len(radii)
             or not math.isfinite(next_radius) or next_radius <= radii[-1]):
         raise ValueError("invalid frozen lineage continuation request")
+    # Canonicalize each frozen unordered block independently.  A global sort
+    # destroys the radius/block partition and can move an action into a stage
+    # where its frontier pose does not yet exist.
+    blocks = tuple(action_key(normalized_actions[3 * block:3 * block + 3])
+                   for block in range(len(radii)))
+    actions = tuple(action for block in blocks for action in block)
     runtime = runtime_loader()
     source = SimpleNamespace(
         group=center, seed_positions=positions, seed_species=species)
     orders = []
     replayed = []
     for block_index, radius in enumerate(radii):
-        block = actions[3 * block_index:3 * block_index + 3]
+        block = blocks[block_index]
         state, valid_orders = replay(source, runtime, block, radius)
         replayed.extend(action_key(state.actions))
         orders.append(int(valid_orders))

@@ -59,9 +59,18 @@ def _bucket(value: int) -> int:
     return 0 if value <= 0 else min(8, int(math.log2(value)) + 1)
 
 
-def _top_roles(proposals, point, maximum=3):
+def _top_roles(proposals, point, maximum=3, role_cache=None):
+    def role_for(state):
+        if role_cache is None:
+            return semantic_port_role(state)
+        role = role_cache.get(state)
+        if role is None:
+            role = semantic_port_role(state)
+            role_cache[state] = role
+        return role
+
     return tuple(sorted(
-        ((semantic_port_role(state), int(count))
+        ((role_for(state), int(count))
          for state, count in proposals.state_votes.get(point, {}).items()),
         key=lambda row: (-row[1], row[0]))[:maximum])
 
@@ -77,7 +86,7 @@ def candidate_incidence_descriptors(
         message_role_mode: str = "exact",
         message_encoding: str = "exact",
         occupied_positions=(),
-        occupied_species=()):
+        occupied_species=(), role_cache=None, token_order_cache=None):
     """Describe every candidate using invariant local port-incidence tokens.
 
     Coordinates select neighbors and provide pair distances only.  No absolute
@@ -96,7 +105,9 @@ def candidate_incidence_descriptors(
              message_passing_rounds > 1)):
         raise ValueError("invalid incidence descriptor settings")
     points = tuple(sorted(proposals.votes))
-    roles = {point: _top_roles(proposals, point, maximum_roles)
+    role_cache = {} if role_cache is None else role_cache
+    roles = {point: _top_roles(
+                 proposals, point, maximum_roles, role_cache)
              for point in points}
     cell_size = neighborhood_reach * distance_scale
     cells = defaultdict(list)
@@ -316,8 +327,17 @@ def candidate_incidence_descriptors(
                         tuple(sorted((species, _bucket(count))
                                      for species, count
                                      in species_counts.items()))))
+        def token_order(token):
+            if token_order_cache is None:
+                return repr(token)
+            key = token_order_cache.get(token)
+            if key is None:
+                key = repr(token)
+                token_order_cache[token] = key
+            return key
+
         result[point] = CandidateIncidenceDescriptor(
-            tuple(sorted(tokens, key=repr)))
+            tuple(sorted(tokens, key=token_order)))
     return result
 
 

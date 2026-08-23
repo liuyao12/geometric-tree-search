@@ -11,10 +11,21 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+from functools import lru_cache
 from itertools import combinations
 from typing import Callable, Hashable, Iterable, Mapping, Sequence
 
 from materials_gcts_recursive_connections import RecursiveConnectionState
+
+
+@lru_cache(maxsize=4096)
+def _port_role_repr(parent_color, parent_neighbors, source_color,
+                    source_neighbors, separation_bin):
+    return ("PortRole(parent_color=" + repr(parent_color) +
+            ", parent_neighbors=" + repr(parent_neighbors) +
+            ", source_color=" + repr(source_color) +
+            ", source_neighbors=" + repr(source_neighbors) +
+            ", separation_bin=" + repr(separation_bin) + ")")
 
 
 @dataclass(frozen=True, order=True)
@@ -24,6 +35,14 @@ class PortRole:
     source_color: str
     source_neighbors: tuple[int, ...]
     separation_bin: int
+
+    def __repr__(self):
+        # Token canonicalization sorts by the historical dataclass repr.
+        # Cache that exact finite semantic string instead of rebuilding it
+        # millions of times across overlapping frontier neighborhoods.
+        return _port_role_repr(
+            self.parent_color, self.parent_neighbors, self.source_color,
+            self.source_neighbors, self.separation_bin)
 
 
 @dataclass(frozen=True)

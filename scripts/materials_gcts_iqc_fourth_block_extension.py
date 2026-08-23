@@ -23,10 +23,12 @@ from materials_gcts_lineage_continuation import (
 
 ROOT = Path(__file__).resolve().parent
 EXPECTED_FIXTURE_SHA256 = {
-    0: "29248866eeb44261d6005102f8ec2cb66b9d79f1de725923d964ef4a7fa9c811",
+    0: "d16255f0ae6583d96725cae5a6e52279ee10e65ae9a1ba29f5d9960da630e83b",
+    3: "e9a3a9f788d06e5890d7859b1eb755a4d8e644ada63a97cdcfe958107cb0fcf8",
 }
 EXPECTED_RESULT_DIGEST = {
-    0: "cbf7e8ff353b035f65dfacb9be5e644d8eed52339e3c4017b3ef1019ff7f4ad9",
+    0: "fe9557933be0ee50c93d66bbb75bfbe2e9c2f7d07bb0f93403503db346d61eee",
+    3: "621100f2f19dc9f27c0526636298b192bb97bb8f06bfde2592e43ed0205eb6d7",
 }
 
 
@@ -35,7 +37,7 @@ def fixture_path(group):
         f"iqc_fourth_block_extension_group{int(group)}_v1.json.gz"
 
 
-def evaluate_group(group: int, workers=4):
+def evaluate_group(group: int, workers=4, *, task_overrides=None):
     if group not in range(5) or workers < 1:
         raise ValueError("invalid fourth-block shard request")
     source = load_beams()
@@ -54,6 +56,8 @@ def evaluate_group(group: int, workers=4):
         "replay_radii": tuple(beam["replay_radii"]),
         "next_radius": float(beam["next_radius"]),
     } for row in beam["candidates"])
+    if task_overrides:
+        tasks = tuple({**task, **task_overrides} for task in tasks)
     task_digest = hashlib.sha256(repr(tuple(
         (task["lineage_id"], task["prior_actions"], task["replay_radii"],
          task["next_radius"]) for task in tasks)).encode()).hexdigest()

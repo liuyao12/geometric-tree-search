@@ -53,6 +53,11 @@ def test_lineage_continuation_is_target_blind_and_depth_independent():
     assert not result.target_used
     assert [row[0] for row in calls] == ["replay"] * 3 + ["tree"]
 
+    # Canonicalization must never move actions between public-radius blocks.
+    replayed_blocks = tuple(row[1] for row in calls if row[0] == "replay")
+    assert tuple({point[0][0] for point in block}
+                 for block in replayed_blocks) == ({1.}, {2.}, {3.})
+
     def rejecting_replay(source, runtime, block, radius):
         raise AssertionError("frozen block has no unique colored replay")
 
