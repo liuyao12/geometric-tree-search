@@ -41,6 +41,14 @@ export const initialPlacementCubeBranches = (
   return branches;
 };
 
+export const placementCubeBootstrapBranch = (initialParts, preRefineIndices = []) => {
+  const preRefined = new Set(preRefineIndices);
+  for (let index = 0; index < initialParts; index += 1) {
+    if (!preRefined.has(index)) return { parts: initialParts, index };
+  }
+  throw new Error("--pre-refine-indices must leave at least one coarse bootstrap branch");
+};
+
 export const shouldRetryPlacementCubeProcess = ({
   timedOut,
   reportExists,
@@ -109,12 +117,13 @@ export async function main(arguments_ = process.argv.slice(2)) {
     .map(value => Number(value))
     .sort((left, right) => left - right);
   if (new Set(preRefineIndices).size !== preRefineIndices.length
-      || preRefineIndices.some(index => !Number.isInteger(index) || index <= 0 || index >= initialParts)) {
-    throw new Error("--pre-refine-indices must be distinct comma-separated indices between 1 and initial-parts - 1");
+      || preRefineIndices.some(index => !Number.isInteger(index) || index < 0 || index >= initialParts)) {
+    throw new Error("--pre-refine-indices must be distinct comma-separated indices between 0 and initial-parts - 1");
   }
   if (preRefineIndices.length && maximumParts < initialParts * 2) {
     throw new Error("--max-parts must permit one split when --pre-refine-indices is used");
   }
+  const bootstrapBranch = placementCubeBootstrapBranch(initialParts, preRefineIndices);
   const timeoutMs = integerArgument(args, "timeout-ms", 60_000, 1);
   const processGraceMs = integerArgument(args, "process-grace-ms", 120_000, 1);
   const maximumProcessTimeoutRetries = integerArgument(args, "process-timeout-retries", 1, 0);
@@ -175,8 +184,8 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const countResults = [];
   for (let count = minimumCount; count <= maximumCount; count += 1) {
     const cachePath = resolve(outputDirectory, `exact-${count}-base.smt2`);
-    const pending = [{ parts: initialParts, index: 0 }];
-    const queued = new Set([`${initialParts}:0`]);
+    const pending = [bootstrapBranch];
+    const queued = new Set([`${bootstrapBranch.parts}:${bootstrapBranch.index}`]);
     const exhaustedReports = [];
     const openReports = [];
     let satReport = null;

@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import {
   initialPlacementCubeBranches,
   placementCubeOrdinals,
+  placementCubeBootstrapBranch,
   shouldRetryPlacementCubeProcess,
   splitPlacementCubeBranch
 } from "./screen-polycube-placement-cube-range.mjs";
@@ -38,6 +39,11 @@ assert.deepEqual(
     { parts: 8, index: 7 }
   ],
   "known-hard coarse cubes should be replaced by a disjoint one-level refinement"
+);
+assert.deepEqual(placementCubeBootstrapBranch(4, [0, 2, 3]), { parts: 4, index: 1 });
+assert.throws(
+  () => placementCubeBootstrapBranch(2, [0, 1]),
+  /must leave at least one coarse bootstrap branch/
 );
 assert.equal(shouldRetryPlacementCubeProcess({
   timedOut: true,
@@ -129,7 +135,7 @@ try {
     if (argument.startsWith("--report-output=")) return `--report-output=${refinedSummaryPath}`;
     return argument;
   });
-  refinedArguments.push("--pre-refine-indices=1");
+  refinedArguments.push("--pre-refine-indices=0");
   const refined = spawnSync(process.execPath, refinedArguments, {
     encoding: "utf8",
     timeout: 60_000,
@@ -139,12 +145,12 @@ try {
   const refinedSummary = JSON.parse(readFileSync(refinedSummaryPath, "utf8"));
   assert.equal(refinedSummary.classification, "placement_cube_range_exhausted");
   assert.equal(refinedSummary.launched_branches, 3);
-  assert.deepEqual(refinedSummary.pre_refine_indices, [1]);
+  assert.deepEqual(refinedSummary.pre_refine_indices, [0]);
   assert.equal(refinedSummary.counts[0].exhausted_branch_reports.length, 3);
   const refinedCertificate = JSON.parse(readFileSync(refinedSummary.counts[0].certificate, "utf8"));
   assert.deepEqual(
     refinedCertificate.leaves.map(leaf => [leaf.parts, leaf.index]),
-    [[2, 0], [4, 1], [4, 3]]
+    [[2, 1], [4, 0], [4, 2]]
   );
   assert.equal(refinedCertificate.covered_anchor_placement_candidates, 12);
 
@@ -160,7 +166,7 @@ try {
 
   const refinedConfigurationMismatch = spawnSync(
     process.execPath,
-    refinedArguments.filter(argument => argument !== "--pre-refine-indices=1"),
+    refinedArguments.filter(argument => argument !== "--pre-refine-indices=0"),
     { encoding: "utf8", timeout: 30_000, maxBuffer: 8 * 1024 * 1024 }
   );
   assert.notEqual(refinedConfigurationMismatch.status, 0);
