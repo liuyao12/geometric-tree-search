@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import {
   initialPlacementCubeBranches,
   placementCubeOrdinals,
+  shouldRetryPlacementCubeProcess,
   splitPlacementCubeBranch
 } from "./screen-polycube-placement-cube-range.mjs";
 
@@ -38,6 +39,30 @@ assert.deepEqual(
   ],
   "known-hard coarse cubes should be replaced by a disjoint one-level refinement"
 );
+assert.equal(shouldRetryPlacementCubeProcess({
+  timedOut: true,
+  reportExists: false,
+  cacheExists: true,
+  cacheMetadataExists: true,
+  retries: 0,
+  maximumRetries: 1
+}), true);
+assert.equal(shouldRetryPlacementCubeProcess({
+  timedOut: true,
+  reportExists: false,
+  cacheExists: true,
+  cacheMetadataExists: true,
+  retries: 1,
+  maximumRetries: 1
+}), false);
+assert.equal(shouldRetryPlacementCubeProcess({
+  timedOut: true,
+  reportExists: false,
+  cacheExists: true,
+  cacheMetadataExists: false,
+  retries: 0,
+  maximumRetries: 1
+}), false);
 
 const runner = fileURLToPath(new URL("./screen-polycube-placement-cube-range.mjs", import.meta.url));
 const python = process.env.PYTHON ?? "python3";

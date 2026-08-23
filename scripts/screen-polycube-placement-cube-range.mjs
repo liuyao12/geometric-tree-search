@@ -41,6 +41,21 @@ export const initialPlacementCubeBranches = (
   return branches;
 };
 
+export const shouldRetryPlacementCubeProcess = ({
+  timedOut,
+  reportExists,
+  cacheExists,
+  cacheMetadataExists,
+  retries,
+  maximumRetries
+}) => Boolean(
+  timedOut
+  && !reportExists
+  && cacheExists
+  && cacheMetadataExists
+  && retries < maximumRetries
+);
+
 const parseArguments = arguments_ => new Map(arguments_.map(argument => {
   const separator = argument.indexOf("=");
   return separator < 0
@@ -102,6 +117,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   }
   const timeoutMs = integerArgument(args, "timeout-ms", 60_000, 1);
   const processGraceMs = integerArgument(args, "process-grace-ms", 120_000, 1);
+  const maximumProcessTimeoutRetries = integerArgument(args, "process-timeout-retries", 1, 0);
   const randomSeed = integerArgument(args, "random-seed", 0, 0);
   const backend = args.get("backend") ?? "pb2bv-sat";
   const pbSolver = args.get("pb-solver") ?? "solver";
@@ -154,6 +170,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
 
   let launchedBranches = 0;
   let resumedBranches = 0;
+  let processTimeoutRetries = 0;
   let seedOffset = 0;
   const countResults = [];
   for (let count = minimumCount; count <= maximumCount; count += 1) {
@@ -198,16 +215,39 @@ export async function main(arguments_ = process.argv.slice(2)) {
         ];
         if (initialClauseReport) solverArguments.push(`--forbidden-clause-report=${initialClauseReport}`);
         if (initialCellReport) solverArguments.push(`--cell-coverability-report=${initialCellReport}`);
-        const solved = spawnSync(python, solverArguments, {
-          encoding: "utf8",
-          timeout: timeoutMs + processGraceMs,
-          maxBuffer: 32 * 1024 * 1024
-        });
-        if (solved.status !== 0) {
-          throw new Error(solved.stderr.trim() || solved.error?.message || `solver exited ${solved.status}`);
+        let solved;
+        let branchProcessRetries = 0;
+        while (true) {
+          solved = spawnSync(python, solverArguments, {
+            encoding: "utf8",
+            timeout: timeoutMs + processGraceMs,
+            maxBuffer: 32 * 1024 * 1024
+          });
+          launchedBranches += 1;
+          if (solved.status === 0) break;
+          const retry = shouldRetryPlacementCubeProcess({
+            timedOut: solved.error?.code === "ETIMEDOUT",
+            reportExists: existsSync(branchPath),
+            cacheExists: existsSync(cachePath),
+            cacheMetadataExists: existsSync(`${cachePath}.json`),
+            retries: branchProcessRetries,
+            maximumRetries: maximumProcessTimeoutRetries
+          });
+          if (!retry) {
+            throw new Error(solved.stderr.trim() || solved.error?.message || `solver exited ${solved.status}`);
+          }
+          branchProcessRetries += 1;
+          processTimeoutRetries += 1;
+          process.stdout.write(`${JSON.stringify({
+            type: "placement_cube_process_retry",
+            placement_count: count,
+            parts: branch.parts,
+            index: branch.index,
+            reason: "outer_process_timeout_after_cache_write",
+            retry: branchProcessRetries
+          })}\n`);
         }
         report = JSON.parse(readFileSync(branchPath, "utf8"));
-        launchedBranches += 1;
       }
       validateBranchReport(report, {
         key: polycubeKey(candidate.voxels),
@@ -303,6 +343,8 @@ export async function main(arguments_ = process.argv.slice(2)) {
     maximum_parts: maximumParts,
     pre_refine_indices: preRefineIndices,
     timeout_milliseconds: timeoutMs,
+    maximum_process_timeout_retries: maximumProcessTimeoutRetries,
+    process_timeout_retries: processTimeoutRetries,
     launched_branches: launchedBranches,
     resumed_branches: resumedBranches,
     run_configuration: runConfigurationPath,
