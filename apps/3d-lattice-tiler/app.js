@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260822-polycube10-v178";
+} from "./engine.js?v=20260823-polycube10-v179";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -1519,7 +1519,11 @@ function updateCandidateResearchPanel() {
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_exact50_cube_exhausted) {
         const cubes = candidate.screening;
-        candidateResearchDetail.textContent += ` An ${cubes.corona_exact50_cube_branch_leaves}-leaf cover then closes exact count 50. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
+        candidateResearchDetail.textContent += ` An ${cubes.corona_exact50_cube_branch_leaves}-leaf cover then closes exact count 50.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact51_adaptive_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` The resumable adaptive runner closes exact count 51 with ${cubes.corona_exact51_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact51_adaptive_cube_solver_launches} solver launches; replay reuses all ${cubes.corona_exact51_adaptive_cube_resumed_branches} branch reports with ${cubes.corona_exact51_adaptive_cube_resume_launches} new launches. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
       }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
