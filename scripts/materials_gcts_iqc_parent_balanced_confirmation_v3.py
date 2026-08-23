@@ -29,8 +29,10 @@ DEFAULT_FIXTURE = ROOT / \
     "fixtures/iqc_parent_balanced_confirmation_v3.json.gz"
 ATTEMPT_MARKER = ROOT / \
     "fixtures/iqc_parent_balanced_confirmation_attempt_v3.json"
-EXPECTED_FIXTURE_SHA256 = ""
-EXPECTED_RESULT_DIGEST = ""
+EXPECTED_FIXTURE_SHA256 = \
+    "96f6dd7d0d281329ab56a85c1190ddc1f6ba1b8f93b7f7067a62ff0679618b1b"
+EXPECTED_RESULT_DIGEST = \
+    "179deafc91ed809008977a59fe3519aa593825a2c7a6a7463595fbe2597e1195"
 
 
 def _serialize_receipt(execution):

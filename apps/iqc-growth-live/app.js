@@ -227,7 +227,7 @@ const RECURSIVE_BENCHMARKS = {
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
 };
 RECURSIVE_BENCHMARKS.iqc.connection.macro.ceiling = "oracle reachability ceiling · greedy 21 maps 44.0% → pooled support vocabulary 94.2% → colored 1,000-support vocabulary 6,634/6,634 (100%) · complete representation, autonomous selection pending";
-RECURSIVE_BENCHMARKS.iqc.connection.macro.selection = "depth-conditioned branch marking · top-one 81/85 supplied stages (95.3%) · recurrent-state beam retains 85/85 with budgets 4→4→8 · consumed closed loop still 0 exact terminals / selected 2 of 3 atoms · autonomous gate red";
+RECURSIVE_BENCHMARKS.iqc.connection.macro.selection = "fourth-block GCTS · consumed: 3/1,102 exact nine-action parents → 21/512 exact paths · fresh disjoint: 0/1,087 exact parents, 197/512 exact terminal blocks, best 11/12 · 535 s runtime green · parent supply red";
 // The re-clustered hierarchy records type/occurrence retention, not emitted
 // atom counts. Keep the atom curve to its one measured input cloud instead of
 // presenting shrinking evidence counts as recursive material growth.
