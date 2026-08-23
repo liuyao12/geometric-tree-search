@@ -68,9 +68,9 @@ const PRINCIPAL_AXIS = new THREE.Vector3(
 const SECOND_PRINCIPAL_AXIS = new THREE.Vector3(0, 0, 1);
 const PRINCIPAL_ARROW_POINTS = [
   PRISM_CENTROID,
-  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.82),
-  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.59).addScaledVector(SECOND_PRINCIPAL_AXIS, 0.14),
-  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.59).addScaledVector(SECOND_PRINCIPAL_AXIS, -0.14)
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.84),
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, 0.075),
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, -0.075)
 ];
 const PRINCIPAL_ARROW_SEGMENTS = [[0, 1], [1, 2], [1, 3]];
 const MARKER_VERTICES_PER_TILE = PRINCIPAL_ARROW_SEGMENTS.length * 8;
@@ -813,7 +813,7 @@ function makeVisual(transforms, turnGenerations) {
     for (let index = 0; index < PRINCIPAL_ARROW_POINTS.length; index += 1) {
       transformedArrow[index].copy(PRINCIPAL_ARROW_POINTS[index]).applyMatrix4(matrix);
     }
-    const markerColor = color.clone().multiplyScalar(0.38);
+    const markerColor = color.clone().multiplyScalar(0.28);
     for (const [startIndex, endIndex] of PRINCIPAL_ARROW_SEGMENTS) {
       appendThickSegment(
         markerPositions,
@@ -844,7 +844,7 @@ function makeVisual(transforms, turnGenerations) {
   const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
   edges.renderOrder = 2;
 
-  const markerOpacity = Math.max(0.1, 0.8 / Math.pow(transforms.length, 0.22));
+  const markerOpacity = 0.82;
   const markerGeometry = new THREE.BufferGeometry();
   markerGeometry.setAttribute("position", new THREE.Float32BufferAttribute(markerPositions, 3));
   markerGeometry.setAttribute("color", new THREE.Float32BufferAttribute(markerColors, 4));
@@ -897,7 +897,7 @@ function refreshVisualColors(visual) {
     for (let index = 0; index < EDGE_INDICES.length; index += 1) {
       edgeColors.setXYZW(edgeOffset++, color.r, color.g, color.b, edgeAlpha);
     }
-    const markerColor = color.clone().multiplyScalar(0.38);
+    const markerColor = color.clone().multiplyScalar(0.28);
     for (let index = 0; index < MARKER_VERTICES_PER_TILE; index += 1) {
       markerColors.setXYZW(markerOffset++, markerColor.r, markerColor.g, markerColor.b, markerAlpha);
     }
