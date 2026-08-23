@@ -21,6 +21,8 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "if (bridge) return bridge" in source
     assert "A generic hull is the wrong representation here" in source
     assert "[0, 1, 2], [3, paired[1], paired[0]]" in source
+    assert "if (learnedCover?.molecular) return;" in source
+    assert "would redraw those objects as radial first-shell spokes" in source
     assert 'hierarchy: [1, 8, "pose domains"]' in source
     assert 'gate: "pass anchor · molecular growth open"' in source
     assert 'gate: "progress · cross-polytype blind transfer"' in source

@@ -3076,6 +3076,13 @@ function buildSectionHalos() {
 function buildClusterOverlay() {
   clearGroup(clusterGroup);
   if (pipelineStage === 1 && learnedClusters) {
+    // Molecular ice is already rendered as one independent rotating card per
+    // learned cover type: H2O, the water-dimer bridge, and the O6 void
+    // boundary.  The generic overlay below is intentionally atom-centred and
+    // would redraw those objects as radial first-shell spokes in the shared
+    // atom scene.  That is neither the learned molecular cover nor a useful
+    // polyhedral representation, so keep the shared scene atom-only for ice.
+    if (learnedCover?.molecular) return;
     learnedClusters.clusters.forEach((cluster, index) => {
       const atom = referenceAtoms[cluster.medoid];
       const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.0)
