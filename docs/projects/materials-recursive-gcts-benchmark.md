@@ -5369,3 +5369,20 @@ improvement must make upstream GCTS propose or preserve an alternative to that
 incorrect attachment using only causal local connection evidence. The result
 is red for exact fresh continuation, autonomous growth, stationarity, and
 exponential IQC growth; it was not retried.
+
+The immediate upstream experiment is deliberately compute bounded. V4 always
+retains the eight joint prefixes and adds at most four fallbacks, but only when
+a fallback removes an action present in every joint prefix. On the four
+consumed development cases this selects `8 / 12 / 11 / 9` prefixes, preserves
+all six known exact child groups, and averages 10 prefixes instead of the full
+schedule's 47.25. On the no-saturation consumed nucleus it adds zero fallbacks
+and reproduces the exact V3 raw-lineage digest
+`b349bc646d7a420822cf6754018ec21a4445cdf598a1df87d9391d2f35d2b74a`.
+
+This is not yet a positive supply result. In the wider 16-prefix development
+audit, all three exact nine-action lineages still come from the original joint
+tier and none from the structural fallbacks. V4 therefore remains
+experimental while its expanded receipt serializes every second-frontier
+alternative and channel score before any future target. Another fresh nucleus
+should be consumed only after the upstream policy shows positive grouped
+evidence beyond merely preserving existing paths.

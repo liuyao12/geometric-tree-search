@@ -34,6 +34,14 @@ def test_joint_leaders_stay_and_fallback_avoids_universal_action():
     assert len(result["selected_rows"]) == 6
     assert not result["target_used"]
 
+    bounded = select_action_marginal_prefixes(
+        scheduled={"selected_rows": rows}, branches=branches,
+        maximum_fallbacks=2, require_universal_avoidance=True)
+    assert len(bounded["joint_rows"]) == 3
+    assert len(bounded["diverse_fallback_rows"]) == 2
+    assert tuple(row[1] for row in bounded["diverse_fallback_rows"]) == (1, 1)
+    assert bounded["universal_avoidance_required"]
+
 
 if __name__ == "__main__":
     test_joint_leaders_stay_and_fallback_avoids_universal_action()

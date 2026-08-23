@@ -22,7 +22,9 @@ def _prefix_actions(branch, child):
                  tuple(tuple(_value(branch, "second_actions"))[child]))
 
 
-def select_action_marginal_prefixes(*, scheduled, branches):
+def select_action_marginal_prefixes(
+        *, scheduled, branches, maximum_fallbacks=None,
+        require_universal_avoidance=False):
     """Keep every joint leader and add one structurally diverse fallback.
 
     The selector sees only already-frozen action geometry and schedule ranks.
@@ -31,6 +33,10 @@ def select_action_marginal_prefixes(*, scheduled, branches):
     the added fallback first avoids actions occurring in every joint prefix,
     then minimizes overlap with the complete joint action marginal.
     """
+    if (maximum_fallbacks is not None and
+            (not isinstance(maximum_fallbacks, int) or
+             maximum_fallbacks < 0)):
+        raise ValueError("maximum fallbacks must be a nonnegative integer")
     branches = tuple(sorted(branches, key=lambda row: int(
         _value(row, "first_rank"))))
     by_parent = {int(_value(row, "first_rank")): row for row in branches}
@@ -64,7 +70,7 @@ def select_action_marginal_prefixes(*, scheduled, branches):
                        for action in rows)
     universal = frozenset(action for action, count in marginal.items()
                           if count == len(joint))
-    diverse_rows = []
+    diverse_candidates = []
     for parent in sorted(joint):
         leader_child = int(joint[parent][2][1])
         candidates = [row for row in fallback.get(parent, ())
@@ -82,7 +88,18 @@ def select_action_marginal_prefixes(*, scheduled, branches):
                 -len(actions - set(marginal)),
                 int(row[5]), int(row[3]), int(row[1]))
 
-        diverse_rows.append(min(candidates, key=objective))
+        winner = min(candidates, key=objective)
+        winner_actions = frozenset(_prefix_actions(
+            by_parent[parent], int(winner[1])))
+        avoided = len(universal - winner_actions)
+        if require_universal_avoidance and avoided < 1:
+            continue
+        diverse_candidates.append((
+            -avoided, objective(winner), parent, int(winner[1]), winner))
+    diverse_candidates.sort(key=lambda row: row[:-1])
+    if maximum_fallbacks is not None:
+        diverse_candidates = diverse_candidates[:maximum_fallbacks]
+    diverse_rows = [row[-1] for row in diverse_candidates]
     rows = tuple(sorted(joint_rows + tuple(diverse_rows),
                         key=lambda row: (int(row[0]),
                                          0 if "joint" in row[2] else 1,
@@ -98,6 +115,9 @@ def select_action_marginal_prefixes(*, scheduled, branches):
         "joint_rows": joint_rows,
         "diverse_fallback_rows": tuple(diverse_rows),
         "joint_universal_actions": tuple(sorted(universal)),
+        "maximum_fallbacks": maximum_fallbacks,
+        "universal_avoidance_required":
+            bool(require_universal_avoidance),
         "selected_prefix_digest": hashlib.sha256(
             repr(selected_actions).encode()).hexdigest(),
         "target_used": False,

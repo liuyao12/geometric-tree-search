@@ -2,7 +2,7 @@
 """Development-only regression for action-marginal fallback supply."""
 
 from materials_gcts_iqc_action_marginal_prefix_audit import \
-    evaluate, validate_result
+    evaluate, evaluate_compute_bounded, validate_result
 
 
 def test_structural_fallback_preserves_all_known_exact_prefix_groups():
@@ -15,6 +15,17 @@ def test_structural_fallback_preserves_all_known_exact_prefix_groups():
     assert not row["candidate_selection_target_used"]
 
 
+def test_compute_bounded_policy_preserves_groups_with_ten_prefix_mean():
+    row = validate_result(evaluate_compute_bounded())
+    assert row["exact_child_groups"] == 6
+    assert row["augmented_supplied_exact_groups"] == 6
+    assert row["selected_prefixes_across_cases"] == 40
+    assert row["fallback_prefixes_across_cases"] == 8
+    assert row["maximum_fallbacks_per_case"] == 4
+    assert row["universal_avoidance_required"]
+
+
 if __name__ == "__main__":
     test_structural_fallback_preserves_all_known_exact_prefix_groups()
+    test_compute_bounded_policy_preserves_groups_with_ten_prefix_mean()
     print("IQC action-marginal prefix audit tests passed")

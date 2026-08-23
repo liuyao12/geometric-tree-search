@@ -41,6 +41,8 @@ class FrozenFreshParentBalancedExecutionV4:
     selected_prefixes: int
     joint_prefixes: int
     diverse_fallback_prefixes: int
+    maximum_diverse_fallbacks: int
+    universal_avoidance_required: bool
     lineage_model_digest: str
     fourth_policy_model_digest: str
     raw_nine_action_lineages: tuple
@@ -58,18 +60,23 @@ class FrozenFreshParentBalancedExecutionV4:
 
 
 def _complete_action_marginal_lineages(
-        *, center, seed_positions, seed_species, radii, raw, workers):
+        *, center, seed_positions, seed_species, radii, raw, workers,
+        maximum_fallbacks=4, require_universal_avoidance=True):
     schedule, _artifact = load_default_schedule()
     scheduled = schedule_prefixes(
         schedule=schedule, seed_positions=seed_positions,
         seed_species=seed_species, branches=raw.second_branches)
     marginal = select_action_marginal_prefixes(
-        scheduled=scheduled, branches=raw.second_branches)
+        scheduled=scheduled, branches=raw.second_branches,
+        maximum_fallbacks=maximum_fallbacks,
+        require_universal_avoidance=require_universal_avoidance)
     selected = tuple((int(row[0]), int(row[1]))
                      for row in marginal["selected_rows"])
-    if (len(selected) != 16 or
+    fallback_limit = (len(raw.second_branches) if maximum_fallbacks is None
+                      else maximum_fallbacks)
+    if (not 8 <= len(selected) <= 8 + fallback_limit or
             {parent for parent, _child in selected} != set(range(1, 9)) or
-            any(sum(row[0] == parent for row in selected) != 2
+            any(not 1 <= sum(row[0] == parent for row in selected) <= 2
                 for parent in range(1, 9))):
         raise AssertionError("action-marginal schedule lost parent balance")
     branch_by_parent = {int(row.first_rank): row
@@ -178,6 +185,8 @@ def freeze_fresh_parent_balanced_execution_v4(
         marginal["selected_prefix_digest"], len(marginal["selected_rows"]),
         len(marginal["joint_rows"]),
         len(marginal["diverse_fallback_rows"]),
+        int(marginal["maximum_fallbacks"]),
+        bool(marginal["universal_avoidance_required"]),
         lineage_model.model_digest, policy_digest, lineages,
         raw_lineage_digest, retained, before, candidates, PARENT_WIDTH,
         candidate_digest, False)
@@ -192,6 +201,8 @@ def freeze_fresh_parent_balanced_execution_v4(
         tuple(marginal["selected_rows"]), len(marginal["selected_rows"]),
         len(marginal["joint_rows"]),
         len(marginal["diverse_fallback_rows"]),
+        int(marginal["maximum_fallbacks"]),
+        bool(marginal["universal_avoidance_required"]),
         lineage_model.model_digest, policy_digest, lineages,
         raw_lineage_digest, 8, tuple(map(int, retained)), 8, before,
         candidates, PARENT_WIDTH, candidate_digest, deterministic_digest,

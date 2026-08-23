@@ -2867,3 +2867,14 @@ incorrect upstream action. Runtime is `534.84 s`, so the engineering gate
 transfers to the fresh domain. Scientifically, this localizes failure to
 upstream parent supply—not selector loss or fourth-block connection geometry.
 No retry or fallback was run.
+
+An experimental V4 upstream policy now keeps every joint prefix and adds at
+most four alternatives only when they remove an action shared by all eight
+joint parents. Across four consumed development cases it retains all six known
+exact child groups with `40` prefixes total (`10` per case on average), versus
+`189` for the full frozen schedule. When no universal action exists it adds no
+fallback and reproduces the V3 `1,102`-lineage digest exactly. A wider
+16-prefix development run still gets its three exact nine-action lineages from
+the original joint tier and zero from the fallbacks, so V4 remains an
+experimental coverage hedge—not a demonstrated scientific improvement or a
+reason to consume another fresh target yet.

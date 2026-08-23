@@ -26,7 +26,8 @@ def _correct(actions, truth):
     return all(colored_action_labels(actions, truth, tolerance=1e-5))
 
 
-def evaluate():
+def evaluate(*, maximum_fallbacks=None,
+             require_universal_avoidance=False):
     schedule, _artifact = load_default_schedule()
     cases = []
     exact_groups = joint_supplied = augmented_supplied = 0
@@ -41,7 +42,9 @@ def evaluate():
             schedule=schedule, seed_positions=seed.positions,
             seed_species=seed.species, branches=branches)
         selection = select_action_marginal_prefixes(
-            scheduled=scheduled, branches=branches)
+            scheduled=scheduled, branches=branches,
+            maximum_fallbacks=maximum_fallbacks,
+            require_universal_avoidance=require_universal_avoidance)
         # Candidate identities and the structural selection digest are frozen
         # before reopening this already-consumed development target.
         target, _ = oracle_crop_fast(center, receipt["radii"][1])
@@ -100,6 +103,9 @@ def evaluate():
         "fallback_prefixes_across_cases": total_fallbacks,
         "fallbacks_avoiding_every_universal_action":
             fallbacks_avoiding_universal,
+        "maximum_fallbacks_per_case": maximum_fallbacks,
+        "universal_avoidance_required":
+            bool(require_universal_avoidance),
         "candidate_selection_target_used": False,
         "targets_opened_only_after_selection_freeze": True,
         "consumed_development_audit_only": True,
@@ -109,6 +115,11 @@ def evaluate():
     return {**body, "result_digest": hashlib.sha256(
         json.dumps(body, sort_keys=True, separators=(",", ":"),
                    allow_nan=False).encode()).hexdigest()}
+
+
+def evaluate_compute_bounded():
+    return evaluate(maximum_fallbacks=4,
+                    require_universal_avoidance=True)
 
 
 def validate_result(row):

@@ -39,7 +39,8 @@ def evaluate(workers=4):
     lineages, scheduled, marginal = _complete_action_marginal_lineages(
         center=center, seed_positions=seed.positions,
         seed_species=seed.species, radii=tuple(receipt["radii"][:3]),
-        raw=SimpleNamespace(second_branches=branches), workers=workers)
+        raw=SimpleNamespace(second_branches=branches), workers=workers,
+        maximum_fallbacks=None, require_universal_avoidance=False)
     elapsed = time.perf_counter() - started
     lineage_digest = hashlib.sha256(repr(tuple(
         row.all_actions for row in lineages)).encode()).hexdigest()
