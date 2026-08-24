@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import {
   occupancyChemistryToken,
   occupancyDisplayLabel,
+  isotropicPairDistanceUncertaintyA,
   parseStructureText,
   validateStructure,
 } from "../apps/iqc-growth-live/structure-io.js";
@@ -65,6 +66,12 @@ assert.equal(disorderValidation.mixedOccupancySites, 1);
 assert.equal(disorderValidation.partialOccupancySites, 2);
 assert.deepEqual(disorderValidation.elementCounts, { Ta: .6, V: .4, O: 1 });
 assert.equal(disorderValidation.vacancyFraction, 1);
+assert.equal(disorderValidation.thermalDisplacementSites, 3);
+assert.ok(Math.abs(mixed.uIsoA2 - .014) < 1e-12, "co-located alternatives use occupancy-weighted Uiso");
+assert.ok(Math.abs(partial.uIsoA2 - .01) < 2e-8, "Biso converts to Uiso through B=8π²U");
+assert.ok(Math.abs(disorderValidation.medianThermalSigmaA - .1) < 1e-7);
+assert.ok(Math.abs(isotropicPairDistanceUncertaintyA(.1) - Math.sqrt(.02)) < 1e-12);
+assert.throws(() => isotropicPairDistanceUncertaintyA(-.1), /nonnegative/);
 
 const composite = parseStructureText(JSON.stringify({ atoms: [
   { species: "Ta/V", position: [0, 0, 0] },
@@ -75,6 +82,9 @@ assert.equal(occupancyChemistryToken(composite.atoms[0]), "occ[Ta=0.5;V=0.5]");
 assert.equal(composite.atoms[0].occupancyFractionsInferred, true);
 assert.equal(occupancyChemistryToken(composite.atoms[1]), "occ[O=0.75;Vac=0.25]");
 assert.equal(occupancyChemistryToken(composite.atoms[2]), "O", "ordinary CIF-style atom labels must not invent an A alternative");
+assert.throws(() => parseStructureText(JSON.stringify({ atoms: [
+  { species: "O", position: [0, 0, 0], uIsoA2: -.01 },
+] }), "negative-u.json"), /must be nonnegative/);
 
 const xyz = `3
 Lattice="8 0 0 0 8 0 0 0 8" pbc="T T T" water

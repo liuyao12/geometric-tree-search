@@ -3,10 +3,11 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
   occupancyChemistryToken,
   occupancyDisplayLabel,
+  isotropicPairDistanceUncertaintyA,
   parseStructureText,
   validateStructure,
-} from "./structure-io.js?v=20260824-1";
-import { randomNomadStructure } from "./structure-database.js";
+} from "./structure-io.js?v=20260824-2";
+import { randomNomadStructure } from "./structure-database.js?v=20260824-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -382,6 +383,9 @@ const greenDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, t
 const elementMaterials = new Map();
 const dimElementMaterials = new Map();
 const occupancyRingMaterials = new Map();
+const thermalEnvelopeMaterial = new THREE.MeshBasicMaterial({
+  color: 0x9d84ff, wireframe: true, transparent: true, opacity: .16, depthWrite: false,
+});
 const clusterMaterials = CLUSTER_COLORS.map((color) => new THREE.MeshStandardMaterial({ color, roughness: .32, metalness: .08, emissive: color, emissiveIntensity: .12 }));
 const markingMaterials = new Map();
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
@@ -674,7 +678,10 @@ function importSummary(structure, validation) {
   const disorder = validation.mixedOccupancySites || validation.partialOccupancySites
     ? ` · ${validation.mixedOccupancySites} mixed / ${validation.partialOccupancySites} partial sites`
     : "";
-  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
+  const thermal = validation.thermalDisplacementSites
+    ? ` · Uiso/Biso ${validation.thermalDisplacementSites} sites · σ̃ ${validation.medianThermalSigmaA.toFixed(3)} Å`
+    : "";
+  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
 
 async function importStructureFile(file) {
@@ -1318,7 +1325,7 @@ function renderStructureStats() {
     const summary = knownSq.summary;
     const liveSummary = live.count > 1 ? liveSq.summary : null;
     rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · S ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}`;
-    rdfStatus.title = "Debye-style finite-window powder average with unit atom weights. It omits X-ray form factors, neutron scattering lengths, occupancies, thermal motion, and instrument response.";
+    rdfStatus.title = "Debye-style finite-window powder average of mean positions with unit atom weights. It omits X-ray form factors, neutron scattering lengths, occupancy-weighted scattering, Debye–Waller intensity damping, and instrument response.";
     drawChartFrame(rdfChart, "q a", "S");
     const maximum = Math.max(1, ...knownSq.values, ...liveSq.values) * 1.08;
     const unityY = 96 - Math.min(1, 1 / maximum) * 84;
@@ -1626,6 +1633,8 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
         occupancyLabel: occupancyDisplayLabel(atom),
         occupancyAlternatives: atom.occupancyAlternatives?.map((entry) => ({ ...entry })) || [{ species: atom.species, fraction: atom.occupancy ?? 1 }],
         occupancy: atom.occupancyTotal ?? atom.occupancy ?? 1,
+        uIsoA2: atom.uIsoA2 ?? null,
+        thermalSigmaA: atom.thermalSigmaA ?? null,
         family: "imported", sourceIndex,
       };
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
@@ -2009,6 +2018,19 @@ function clusterMetricTolerance() {
   return clusterToleranceMode === "strict" ? .01 : clusterToleranceMode === "thermal" ? .05 : .025;
 }
 
+function measuredPairUncertaintyAngstrom() {
+  const sigma = importedStructure?.validation?.medianThermalSigmaA || 0;
+  return isotropicPairDistanceUncertaintyA(sigma);
+}
+
+function clusterMetricToleranceAngstrom() {
+  return Math.max(referenceSpacingA * clusterMetricTolerance(), measuredPairUncertaintyAngstrom());
+}
+
+function effectiveClusterMetricTolerance() {
+  return clusterMetricToleranceAngstrom() / Math.max(referenceSpacingA, 1e-9);
+}
+
 function resolvedGeometryMode() {
   if (geometryMode !== "auto") return geometryMode;
   if (detectedUnitCell) return "lattice";
@@ -2178,7 +2200,7 @@ function molecularComponentHypothesis(source) {
   const result = discoverFiniteMolecularComponents({
     species: source.map((atom) => atom.species),
     distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
-    descriptorToleranceA: referenceSpacingA * clusterMetricTolerance(),
+    descriptorToleranceA: clusterMetricToleranceAngstrom(),
   });
   return occupational ? {
     ...result,
@@ -2209,6 +2231,7 @@ function molecularDiscoverySummary(discovery, route) {
     componentTypes: discovery.typeCount,
     formulas: discovery.types.map((type) => ({ formula: type.formula, occurrences: type.occurrences.length })),
     unsupportedElements: discovery.unsupported,
+    occupationalAlternativesPreserved: Boolean(discovery.occupationalAlternativesPreserved),
     materialLabelUsed: discovery.materialLabelUsed,
     expectedFormulaUsed: discovery.expectedFormulaUsed,
   };
@@ -2356,7 +2379,7 @@ function buildGenericMolecularClusterCover(source, molecularDiscovery) {
     discovery: molecularDiscovery,
     species: source.map((atom) => atom.species),
     distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
-    descriptorToleranceA: referenceSpacingA * clusterMetricTolerance(),
+    descriptorToleranceA: clusterMetricToleranceAngstrom(),
   });
   if (!topology.componentGraphConnected) return null;
   const moleculeTypes = molecularDiscovery.types.length;
@@ -2449,7 +2472,7 @@ function buildIrregularClusterCover(source, molecularDiscovery) {
         periodicDisplacement(source[first], source[fourth]),
       )),
     referenceSpacing: referenceSpacingA,
-    metricTolerance: clusterMetricTolerance(),
+    metricTolerance: effectiveClusterMetricTolerance(),
     shellRadius: motifShellCutoff(),
   });
   const types = result.types.map((type) => ({
@@ -3537,6 +3560,8 @@ function currentMarkingConfig() {
     representation: markingDraft.representation,
     geometryMode,
     clusterToleranceMode,
+    effectiveMetricToleranceFraction: effectiveClusterMetricTolerance(),
+    effectiveMetricToleranceAngstrom: clusterMetricToleranceAngstrom(),
   };
 }
 
@@ -3551,7 +3576,8 @@ async function receiptSha256(text) {
 async function structureDigest(source, coordinateSpace) {
   const records = source.map((atom) => {
     const point = coordinateSpace === "angstrom" && atom.pA ? atom.pA : atom.p;
-    return [atom.species, receiptRound(atom.occupancy ?? 1), ...point.toArray().map((value) => receiptRound(value))];
+    return [atom.species, receiptRound(atom.occupancy ?? 1), receiptRound(atom.uIsoA2 ?? 0),
+      ...point.toArray().map((value) => receiptRound(value))];
   }).sort((first, second) => JSON.stringify(first).localeCompare(JSON.stringify(second)));
   return receiptSha256(JSON.stringify(records));
 }
@@ -3626,7 +3652,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-34",
+      buildId: "20260824-35",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3650,7 +3676,7 @@ async function buildExperimentReceipt() {
       } : null,
       structureSha256: await structureDigest(referenceAtoms, "angstrom"),
       coordinatesEmbedded: false,
-      coordinateDigestSpace: "Cartesian Å; order-independent serialization",
+      coordinateDigestSpace: "Cartesian Å + occupancy token + isotropic U in Å²; order-independent serialization",
       periodicBoundary: currentPbc(),
       cellAngstrom: cell?.map((vector) => vector.toArray().map((value) => receiptRound(value))) || null,
       sourceReference: scenarioSelect.value === "imported" ? {
@@ -3669,8 +3695,17 @@ async function buildExperimentReceipt() {
     geometry: {
       requestedMode: geometryMode,
       metricIsometryToleranceMode: clusterToleranceMode,
-      metricIsometryToleranceFractionOfNearestNeighbor: clusterMetricTolerance(),
-      metricIsometryToleranceAngstrom: receiptRound(referenceSpacingA * clusterMetricTolerance()),
+      nominalMetricIsometryToleranceFractionOfNearestNeighbor: clusterMetricTolerance(),
+      metricIsometryToleranceFractionOfNearestNeighbor: receiptRound(effectiveClusterMetricTolerance()),
+      metricIsometryToleranceAngstrom: receiptRound(clusterMetricToleranceAngstrom()),
+      positionalUncertainty: {
+        source: importedStructure?.validation?.thermalDisplacementSites ? "CIF/JSON Uiso or Biso" : "not supplied",
+        isotropicSites: importedStructure?.validation?.thermalDisplacementSites || 0,
+        medianOneAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.medianThermalSigmaA || 0),
+        maximumOneAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.maximumThermalSigmaA || 0),
+        pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom()),
+        usedAsPotentialOrDynamics: false,
+      },
       resolvedMode: resolvedGeometryMode(),
       resolvedLabel: resolvedGeometryLabel(),
       nearestNeighborAngstrom: receiptRound(referenceSpacingA),
@@ -3945,7 +3980,9 @@ function markingVocabularyKey() {
     schema: MARKING_VOCABULARY_SCHEMA,
     geometry: resolvedGeometryMode(),
     metricToleranceMode: clusterToleranceMode,
-    metricToleranceFraction: clusterMetricTolerance(),
+    nominalMetricToleranceFraction: clusterMetricTolerance(),
+    metricToleranceFraction: effectiveClusterMetricTolerance(),
+    metricToleranceAngstrom: clusterMetricToleranceAngstrom(),
     dimension: currentMaterial().intrinsicDimension || 3,
     composition: reducedCompositionKey(),
     prototypes: markingPrototypeTypes().map((prototype, index) => {
@@ -5149,7 +5186,9 @@ function markingName(config, id) {
   const representation = MARKING_REPRESENTATIONS[config.representation]?.short || config.representation;
   const channels = config.channelMode === "auto" ? `auto→${config.channels}ch` : `${config.channels}ch`;
   const domain = { auto: "auto", lattice: "lattice", module: "module", offlattice: "SE(3)" }[config.geometryMode || "auto"];
-  const tolerance = { strict: "ε1%", balanced: "ε2.5%", thermal: "ε5%" }[config.clusterToleranceMode || "balanced"];
+  const nominalTolerance = { strict: 1, balanced: 2.5, thermal: 5 }[config.clusterToleranceMode || "balanced"];
+  const effectiveTolerance = 100 * (config.effectiveMetricToleranceFraction || nominalTolerance / 100);
+  const tolerance = `ε${Math.abs(effectiveTolerance - nominalTolerance) > .05 ? `${nominalTolerance}→${effectiveTolerance.toFixed(1)}` : nominalTolerance}%`;
   return `M${String(id).padStart(2, "0")} · ${domain} · ${tolerance} · ${channels} · R${config.reach} · ${representation}`;
 }
 
@@ -5166,7 +5205,9 @@ function compatibleMarkings() {
 function freezeCurrentMarking() {
   if (!sectionModel) return null;
   const config = { channels: sectionModel.channels, channelMode: sectionModel.channelMode,
-    reach: sectionModel.reach, representation: sectionModel.representation, geometryMode, clusterToleranceMode };
+    reach: sectionModel.reach, representation: sectionModel.representation, geometryMode, clusterToleranceMode,
+    effectiveMetricToleranceFraction: effectiveClusterMetricTolerance(),
+    effectiveMetricToleranceAngstrom: clusterMetricToleranceAngstrom() };
   const materialKey = markingMaterialKey();
   const vocabularyKey = markingVocabularyKey();
   let marking = markingLibrary.find((candidate) => candidate.materialKey === materialKey
@@ -5293,13 +5334,16 @@ function renderMolecularHypothesis() {
     molecularHypothesisRoute.textContent = audit.route.includes("molecular") ? "molecular cover" : "irregular fallback";
     return;
   }
-  const unavailable = audit.reason === "unsupported chemistry metadata";
+  const occupational = audit.occupationalAlternativesPreserved;
+  const unavailable = audit.reason === "unsupported chemistry metadata" || occupational;
   panel.classList.add(unavailable ? "unavailable" : "rejected");
   molecularHypothesisState.textContent = unavailable
-    ? `not evaluated · missing ${audit.unsupportedElements.join(" / ") || "chemistry metadata"}`
+    ? occupational ? "not evaluated · occupational alternatives have no single valence/radius"
+      : `not evaluated · missing ${audit.unsupportedElements.join(" / ") || "chemistry metadata"}`
     : `rejected · ${audit.reason}`;
   molecularHypothesisEvidence.textContent = unavailable
-    ? "no element-specific rule was invented; geometry falls back safely"
+    ? occupational ? "the complete occupancy vector is retained by the irregular support learner"
+      : "no element-specific rule was invented; geometry falls back safely"
     : `${audit.covalentEdges} candidate bonds · ${audit.components} component${audit.components === 1 ? "" : "s"} · largest ${audit.largestComponent} atoms`;
   molecularHypothesisRoute.textContent = "irregular cover";
 }
@@ -5318,7 +5362,10 @@ function syncStageOptions() {
   if (clustering) {
     geometryModeSelect.value = geometryMode;
     clusterToleranceSelect.value = clusterToleranceMode;
-    clusterToleranceHint.textContent = `${(clusterMetricTolerance() * 100).toFixed(1)}% of nearest-neighbor scale · ${(referenceSpacingA * clusterMetricTolerance()).toFixed(3)} Å`;
+    const thermalFloor = measuredPairUncertaintyAngstrom();
+    clusterToleranceHint.textContent = thermalFloor > referenceSpacingA * clusterMetricTolerance()
+      ? `${(effectiveClusterMetricTolerance() * 100).toFixed(1)}% effective · ${clusterMetricToleranceAngstrom().toFixed(3)} Å · measured Uiso/Biso floor`
+      : `${(clusterMetricTolerance() * 100).toFixed(1)}% of nearest-neighbor scale · ${clusterMetricToleranceAngstrom().toFixed(3)} Å`;
     const latticeDetected = Boolean(detectedUnitCell);
     const periodicFixture = Boolean(currentMaterial().periodicWindow && currentCell() && currentPbc().some(Boolean));
     const resolvedMode = resolvedGeometryMode();
@@ -5344,7 +5391,7 @@ function syncStageOptions() {
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
     renderMolecularHypothesis();
     renderPoseAtlas();
-    const toleranceLabel = `ε ${(clusterMetricTolerance() * 100).toFixed(1)}%`;
+    const toleranceLabel = `ε ${(effectiveClusterMetricTolerance() * 100).toFixed(1)}%`;
     stageOptionsState.textContent = `${resolvedMode === "module" ? "aperiodic module"
       : resolvedMode === "offlattice" ? `metric-set ${rotationGroupLabel()}` : "lattice candidate"} · ${toleranceLabel}`;
     return;
@@ -5968,6 +6015,20 @@ function rebuildWorld() {
     rings.instanceMatrix.needsUpdate = true;
     atomGroup.add(rings);
   });
+  const thermalSites = atoms.filter((atom) => Number.isFinite(atom.thermalSigmaA) && atom.thermalSigmaA > 0);
+  if (thermalSites.length) {
+    const envelopes = new THREE.InstancedMesh(sphereGeometry, thermalEnvelopeMaterial, thermalSites.length);
+    thermalSites.forEach((atom, index) => {
+      dummy.position.copy(atom.p);
+      const atomRadius = sphereGeometry.parameters.radius * elementScale(atom.species);
+      const twoSigmaRadius = 2 * atom.thermalSigmaA * referenceSpacing / referenceSpacingA;
+      dummy.scale.setScalar(Math.max(atomRadius * 1.08, twoSigmaRadius) / sphereGeometry.parameters.radius);
+      dummy.updateMatrix();
+      envelopes.setMatrixAt(index, dummy.matrix);
+    });
+    envelopes.instanceMatrix.needsUpdate = true;
+    atomGroup.add(envelopes);
+  }
 
   if (bondToggle.checked) {
     const points = [];
@@ -6417,6 +6478,13 @@ function renderLegend() {
       row.append(swatch, document.createTextNode(occupational?.label || symbol));
       speciesLegend.appendChild(row);
     });
+    if (importedStructure?.validation?.thermalDisplacementSites) {
+      const row = document.createElement("span");
+      const swatch = document.createElement("i");
+      swatch.className = "thermal-envelope-swatch";
+      row.append(swatch, document.createTextNode(`2σ Uiso/Biso envelope · median σ ${importedStructure.validation.medianThermalSigmaA.toFixed(3)} Å`));
+      speciesLegend.appendChild(row);
+    }
     const proposal = document.createElement("span");
     const swatch = document.createElement("i"); swatch.className = "candidate";
     proposal.append(swatch, document.createTextNode("Proposal"));

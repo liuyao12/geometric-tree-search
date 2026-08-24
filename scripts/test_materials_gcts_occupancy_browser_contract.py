@@ -15,6 +15,9 @@ def test_lossless_occupancy_contract_is_wired_through_browser_pipeline():
     assert "alternativesCollapsedToPrimarySpecies: false" in APP
     assert "occupancyRingGeometry" in APP
     assert "conic-gradient" in APP
+    assert "thermalEnvelopeMaterial" in APP
+    assert "thermalSigmaA" in IO
+    assert "8 * Math.PI * Math.PI" in IO
 
 
 if __name__ == "__main__":

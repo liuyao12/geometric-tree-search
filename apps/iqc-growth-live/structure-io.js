@@ -34,6 +34,20 @@ const occupancyFraction = (value, fallback = null) => {
   return Math.max(0, Math.min(1, fraction));
 };
 
+const optionalCifNumber = (value, label) => value === undefined || value === null || value === "" || value === "." || value === "?"
+  ? null : numeric(value, label);
+
+function normalizeThermalDisplacement({ uIsoA2 = null, bIsoA2 = null, thermalSigmaA = null } = {}) {
+  let uIso = optionalCifNumber(uIsoA2, "isotropic displacement U") ?? null;
+  const bIso = optionalCifNumber(bIsoA2, "isotropic displacement B") ?? null;
+  const sigma = optionalCifNumber(thermalSigmaA, "thermal displacement sigma") ?? null;
+  if (uIso === null && bIso !== null) uIso = bIso / (8 * Math.PI * Math.PI);
+  if (uIso === null && sigma !== null) uIso = sigma * sigma;
+  if (uIso !== null && uIso < 0) throw new Error(`Isotropic displacement U must be nonnegative: ${uIso}`);
+  if (uIso === null) return {};
+  return { uIsoA2: uIso, bIsoA2: uIso * 8 * Math.PI * Math.PI, thermalSigmaA: Math.sqrt(uIso) };
+}
+
 function occupancyEntries(value) {
   if (Array.isArray(value)) return value.map((entry) => typeof entry === "string"
     ? { species: elementSymbol(entry), fraction: null }
@@ -101,13 +115,24 @@ export function occupancyDisplayLabel(atom) {
   return entries.join(" / ");
 }
 
+export function isotropicPairDistanceUncertaintyA(oneAxisSigmaA) {
+  const sigma = Number(oneAxisSigmaA);
+  if (!Number.isFinite(sigma) || sigma < 0) throw new Error("Isotropic site sigma must be a finite nonnegative length");
+  return Math.SQRT2 * sigma;
+}
+
 function mergeSiteOccupancies(first, second, additive) {
   const fractions = new Map(first.occupancyAlternatives.map((entry) => [entry.species, entry.fraction]));
   second.occupancyAlternatives.forEach((entry) => fractions.set(entry.species, additive
     ? (fractions.get(entry.species) || 0) + entry.fraction
     : Math.max(fractions.get(entry.species) || 0, entry.fraction)));
-  return normalizeSiteOccupancy(first.species, 1,
+  const normalized = normalizeSiteOccupancy(first.species, 1,
     [...fractions].map(([species, fraction]) => ({ species, fraction })));
+  const thermal = [[first, first.occupancyTotal ?? first.occupancy ?? 1], [second, second.occupancyTotal ?? second.occupancy ?? 1]]
+    .filter(([site]) => Number.isFinite(site.uIsoA2));
+  const thermalWeight = thermal.reduce((sum, [, weight]) => sum + weight, 0);
+  const uIsoA2 = thermalWeight ? thermal.reduce((sum, [site, weight]) => sum + site.uIsoA2 * weight, 0) / thermalWeight : null;
+  return { ...normalized, ...normalizeThermalDisplacement({ uIsoA2 }) };
 }
 
 function determinant(cell) {
@@ -236,13 +261,22 @@ function parseCif(text, filename) {
   const column = (names) => names.map((name) => atomLoop.headers.indexOf(name)).find((index) => index >= 0) ?? -1;
   const speciesColumn = column(["_atom_site_type_symbol", "_atom_site_label"]);
   const occupancyColumn = column(["_atom_site_occupancy"]);
+  const uIsoColumn = column(["_atom_site_u_iso_or_equiv", "_atom_site_u_iso"]);
+  const bIsoColumn = column(["_atom_site_b_iso_or_equiv", "_atom_site_b_iso"]);
   const fractionalColumns = ["_atom_site_fract_x", "_atom_site_fract_y", "_atom_site_fract_z"].map((name) => atomLoop.headers.indexOf(name));
   const cartesianColumns = ["_atom_site_cartn_x", "_atom_site_cartn_y", "_atom_site_cartn_z"].map((name) => atomLoop.headers.indexOf(name));
   const fractional = fractionalColumns.every((index) => index >= 0);
   if (!fractional && !cartesianColumns.every((index) => index >= 0)) throw new Error("CIF atom sites lack a complete coordinate triplet");
   const asymmetricRows = atomLoop.rows.map((row) => {
     const coordinates = (fractional ? fractionalColumns : cartesianColumns).map((index, axis) => numeric(row[index], `atom coordinate ${axis + 1}`));
-    return { ...normalizeSiteOccupancy(row[speciesColumn], occupancyColumn >= 0 ? row[occupancyColumn] : 1), coordinates };
+    return {
+      ...normalizeSiteOccupancy(row[speciesColumn], occupancyColumn >= 0 ? row[occupancyColumn] : 1),
+      ...normalizeThermalDisplacement({
+        uIsoA2: uIsoColumn >= 0 ? row[uIsoColumn] : null,
+        bIsoA2: bIsoColumn >= 0 ? row[bIsoColumn] : null,
+      }),
+      coordinates,
+    };
   });
   const asymmetric = [];
   asymmetricRows.forEach((site) => {
@@ -341,6 +375,11 @@ function parseJson(text, filename) {
     ...normalizeSiteOccupancy(atom.species || atom.element || atom.symbol,
       typeof atom.occupancy === "number" ? atom.occupancy : atom.occupancyTotal ?? 1,
       atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null)),
+    ...normalizeThermalDisplacement({
+      uIsoA2: atom.uIsoA2 ?? atom.u_iso_or_equiv,
+      bIsoA2: atom.bIsoA2 ?? atom.b_iso_or_equiv,
+      thermalSigmaA: atom.thermalSigmaA,
+    }),
     position: (atom.position || atom.xyz || atom.cartesian).map(Number),
   }));
   else if (Array.isArray(data.positions) && Array.isArray(data.species)) atoms = data.positions.map((position, index) => ({
@@ -380,6 +419,7 @@ export function validateStructure(structure, options = {}) {
   let partialOccupancySites = 0;
   let inferredOccupancySites = 0;
   let vacancyFraction = 0;
+  const thermalSigmas = [];
   structure?.atoms?.forEach((atom, index) => {
     let normalized = null;
     try {
@@ -402,10 +442,17 @@ export function validateStructure(structure, options = {}) {
       vacancyFraction += 1 - normalized.occupancyTotal;
     }
     if (atom.occupancyFractionsInferred) inferredOccupancySites++;
+    try {
+      const thermal = normalizeThermalDisplacement(atom);
+      if (Number.isFinite(thermal.thermalSigmaA)) thermalSigmas.push(thermal.thermalSigmaA);
+    } catch (error) {
+      errors.push(`Atom ${index + 1}: ${error.message}`);
+    }
   });
   if (mixedOccupancySites) warnings.push(`${mixedOccupancySites} mixed-occupancy crystallographic site${mixedOccupancySites === 1 ? "" : "s"} preserved as occupational alternatives`);
   if (partialOccupancySites) warnings.push(`${partialOccupancySites} partially occupied site${partialOccupancySites === 1 ? "" : "s"} preserve explicit vacancy fractions`);
   if (inferredOccupancySites) warnings.push(`${inferredOccupancySites} composite species label${inferredOccupancySites === 1 ? "" : "s"} lacked explicit fractions; equal alternatives were retained and marked inferred`);
+  if (thermalSigmas.length) warnings.push(`${thermalSigmas.length} site${thermalSigmas.length === 1 ? "" : "s"} preserve isotropic positional uncertainty from Uiso/Biso`);
   let minimumDistance = Infinity;
   let duplicatePairs = 0;
   const nearest = [];
@@ -429,10 +476,14 @@ export function validateStructure(structure, options = {}) {
   if (!structure?.cell) warnings.push("No cell supplied: the structure will be treated as non-periodic");
   const sortedNearest = nearest.sort((a, b) => a - b);
   const medianNearestDistance = sortedNearest[Math.floor(sortedNearest.length / 2)] || 1;
+  thermalSigmas.sort((first, second) => first - second);
+  const medianThermalSigmaA = thermalSigmas[Math.floor(thermalSigmas.length / 2)] || 0;
   return {
     valid: errors.length === 0, errors: [...new Set(errors)], warnings: [...new Set(warnings)],
     atomCount: structure?.atoms?.length || 0, elementCounts, siteElementCounts,
     mixedOccupancySites, partialOccupancySites, inferredOccupancySites, vacancyFraction,
+    thermalDisplacementSites: thermalSigmas.length, medianThermalSigmaA,
+    maximumThermalSigmaA: thermalSigmas.at(-1) || 0,
     minimumDistance: Number.isFinite(minimumDistance) ? minimumDistance : null,
     medianNearestDistance, cellVolume: structure?.cell ? Math.abs(determinant(structure.cell)) : null,
   };
