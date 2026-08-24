@@ -27,7 +27,15 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert 'sampleKind: "molecular cover occurrence"' in source
     assert "function observedPortRules(cluster)" in source
     assert "overlapGrammar.reconstructionByOccurrence.forEach" in source
-    assert "if (learnedCover?.molecular) {\n    clusterGalleryTypes().forEach" in source
+    assert "function coloredPeriodicSupportSignature(source, support)" in source
+    assert "function molecularIsometryGallery(source, families, familyTypes)" in source
+    assert "galleryTypes.filter((type) => type.familyType === 0).length" in source
+    assert "galleryTypes.filter((type) => type.familyType === 1).length" in source
+    assert "galleryTypes.filter((type) => type.familyType === 2).length" in source
+    assert "if (learnedCover.galleryTypes) return learnedCover.galleryTypes" in source
+    assert "markingPrototypeTypes().forEach((cluster, clusterIndex)" in source
+    assert "return learnedCover?.molecular ? learnedCover.types" in source
+    assert "colored metric-isometry classes as independent rotating scenes" in source
     assert "markingPrototypeTypes().forEach((_, cluster)" in source
     assert "sectionModel.sampleLabels" in source
     assert 'const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v2"' in source

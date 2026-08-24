@@ -215,7 +215,7 @@ const MATERIALS = {
   bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", periodicWindow: true, order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
 };
 const RECURSIVE_BENCHMARKS = {
-  iceIh: { hierarchy: [1, 8, "pose domains"], curve: [27, 43, 51], mark: "unanimous orientation domains", action: "2 exact blind O frontiers", speed: "16 → 8 exact · then fixed", gate: "pass anchor · molecular growth open", status: "limit", note: "The physically corrected fixture obeys the Bernal–Fowler ice rules: every H₂O donates twice and every O–O connection carries exactly one proton. Known-window cover is exact with one H₂O class, 3 decorated bridge classes, one O₆ void class, and 216/216 atoms. The sealed gate learns 8 proper-SE(3) ports on a disjoint 201-atom window. Factoring mutually exclusive H₂O poses emits 16/16 and then 8/8 correct unseen oxygen anchors before a safe fixed point. Proton orientations remain unresolved, so full-molecule, stationary, and exponential ice growth stay red." },
+  iceIh: { hierarchy: [1, 8, "pose domains"], curve: [27, 43, 51], mark: "unanimous orientation domains", action: "2 exact blind O frontiers", speed: "16 → 8 exact · then fixed", gate: "pass anchor · molecular growth open", status: "limit", note: "The physically corrected fixture obeys the Bernal–Fowler ice rules: every H₂O donates twice and every O–O connection carries exactly one proton. The known periodic window has one H₂O class, 3 decorated bridge classes, and 33 decorated O₆ ring-boundary classes; together their occurrences cover 216/216 atoms. The sealed gate learns 8 proper-SE(3) ports on a disjoint 201-atom window. Factoring mutually exclusive H₂O poses emits 16/16 and then 8/8 correct unseen oxygen anchors before a safe fixed point. Proton orientations remain unresolved, so full-molecule, stationary, and exponential ice growth stay red." },
   iceIc: { hierarchy: [1, 8, "pose domains"], curve: [15, 27], mark: "Ih ports → Ic alternatives", action: "1 exact cross-polytype frontier", speed: "12 exact · then safe fixed point", gate: "progress · cross-polytype blind transfer", status: "limit", note: "The Ih-fitted 8-port grammar transfers to a disjoint cubic-ice seed without refitting or target access. Its first unseen oxygen frontier is 12/12 exact and the whole-molecule path reaches 100% oxygen recall, but premature proton choices lower precision. Domain unanimity rejects unsupported depth-2 anchors rather than emitting false sites. This isolates the remaining task as a bounded proton-orientation connection marking, not a new lattice backend." },
   graphene: { hierarchy: [1, 4, 16], curve: [373, 1495, 5983, 23935, 95743, 382975, 1531903], mark: "one C₂ sheet pose", action: "6 area rewrites → 1.53m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The generic planar atlas learns one C₂ motif pose and exactly predicts an unseen 1,495-atom disk." },
   hbn: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "finite registry + pose fallback", action: "6 area rewrites → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The registry vocabulary remains bounded for the aligned bilayer and the generic planar atlas preserves both learned sheet poses." },
@@ -1712,6 +1712,58 @@ function unwrappedRingSupport(source, waters, ring) {
   return vectors.map((vector) => vector.clone().sub(centroid));
 }
 
+function coloredPeriodicSupportSignature(source, support) {
+  // This is the same colored complete-metric invariant used by the headless
+  // ice audit.  It is independent of translation, atom order, and any proper
+  // or improper rigid isometry; raw atom IDs and the global cell frame never
+  // enter the class label.
+  const species = support.map((atomIndex) => source[atomIndex].species).sort();
+  const pairs = [];
+  support.forEach((first, firstIndex) => support.slice(firstIndex + 1).forEach((second) => {
+    const colors = [source[first].species, source[second].species].sort().join("");
+    pairs.push(`${colors}:${periodicDisplacement(source[first], source[second]).length().toFixed(2)}`);
+  }));
+  return `${species.join("")}|${pairs.sort().join("|")}`;
+}
+
+function molecularIsometryGallery(source, families, familyTypes) {
+  const gallery = [];
+  families.forEach((placements, familyType) => {
+    const classes = new Map();
+    placements.forEach((placement) => {
+      const signature = coloredPeriodicSupportSignature(source, placement.support);
+      const members = classes.get(signature) || [];
+      members.push(placement);
+      classes.set(signature, members);
+    });
+    [...classes.entries()].sort(([first], [second]) => first.localeCompare(second))
+      .forEach(([signature, members], classIndex) => {
+        const representative = members[0];
+        const family = familyTypes[familyType];
+        const customSupport = familyType === 2
+          ? representative.ring.map((waterIndex) => families[0][waterIndex].center)
+          : representative.support;
+        const customVectors = familyType === 2
+          ? unwrappedRingSupport(source, families[0], representative.ring)
+          : centeredPeriodicSupport(source, customSupport);
+        gallery.push({
+          ...family,
+          familyType,
+          classIndex,
+          classCount: classes.size,
+          classSignature: signature,
+          classPlacementIndices: members.map((placement) => placement.coverIndex),
+          medoid: representative.center,
+          count: members.length,
+          customSupport,
+          customVectors,
+          label: `${family.shortLabel} · I${classIndex + 1}`,
+        });
+      });
+  });
+  return gallery;
+}
+
 function buildWaterClusterCover(source) {
   const oxygen = source.map((atom, index) => atom.species === "O" ? index : -1).filter((index) => index >= 0);
   const hydrogen = source.map((atom, index) => atom.species === "H" ? index : -1).filter((index) => index >= 0);
@@ -1770,26 +1822,31 @@ function buildWaterClusterCover(source) {
     ring: ring.slice(),
   }));
   const placements = [...waters, ...bridges, ...gaps];
+  placements.forEach((placement, coverIndex) => { placement.coverIndex = coverIndex; });
   const coveredAtoms = new Set(waters.flatMap((placement) => placement.support));
   const waterSupport = waters[0]?.support || [];
   const bridgeSupport = bridges[0]?.support || [];
   const ringSupport = gaps[0]?.ring?.map((waterIndex) => waters[waterIndex].center) || [];
   const types = [
-    { type: 0, medoid: waters[0]?.center || 0, element: "H₂O", label: "H₂O molecule", geometry: "bent molecular face",
+    { type: 0, familyType: 0, medoid: waters[0]?.center || 0, element: "H₂O", shortLabel: "H₂O", label: "H₂O molecule", geometry: "bent molecular face",
       count: waters.length, visualKind: "molecule", customSupport: waterSupport,
       customVectors: centeredPeriodicSupport(source, waterSupport) },
-    { type: 1, medoid: bridges[0]?.center || 0, element: "2 H₂O", label: "hydrogen-bond bridge", geometry: "connection polyhedron",
+    { type: 1, familyType: 1, medoid: bridges[0]?.center || 0, element: "2 H₂O", shortLabel: "bridge", label: "hydrogen-bond bridge", geometry: "connection polyhedron",
       count: bridges.length, visualKind: "bridge", customSupport: bridgeSupport,
       customVectors: centeredPeriodicSupport(source, bridgeSupport) },
-    { type: 2, medoid: gaps[0]?.center || 0, element: "O₆ void", label: "six-water ring void", geometry: "void-boundary polyhedron",
+    { type: 2, familyType: 2, medoid: gaps[0]?.center || 0, element: "O₆ void", shortLabel: "O₆ gap", label: "six-water ring void", geometry: "void-boundary polyhedron",
       count: gaps.length, visualKind: "ring", gap: true,
       customSupport: ringSupport,
       customVectors: unwrappedRingSupport(source, waters, gaps[0]?.ring || []) },
   ].filter((type) => type.customSupport.length);
+  const galleryTypes = molecularIsometryGallery(source, [waters, bridges, gaps], types);
   const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
-  return { placements, residualTypes: [], types, incidence, covered: coveredAtoms.size,
+  return { placements, residualTypes: [], types, galleryTypes, incidence, covered: coveredAtoms.size,
     complete: coveredAtoms.size === source.length, periodic: true,
-    molecular: { waters: waters.length, bridges: bridges.length, gaps: gaps.length } };
+    molecular: { waters: waters.length, bridges: bridges.length, gaps: gaps.length,
+      waterClasses: galleryTypes.filter((type) => type.familyType === 0).length,
+      bridgeClasses: galleryTypes.filter((type) => type.familyType === 1).length,
+      gapClasses: galleryTypes.filter((type) => type.familyType === 2).length } };
 }
 
 // Turn environment labels into an explicit overlapping cover.  Candidate
@@ -1847,11 +1904,24 @@ function buildExhaustiveClusterCover(source) {
 
 function clusterGalleryTypes() {
   if (!learnedClusters || !learnedCover) return [];
+  if (learnedCover.galleryTypes) return learnedCover.galleryTypes;
   if (learnedCover.types) return learnedCover.types;
   return [
     ...learnedClusters.clusters.map((cluster, type) => ({ ...cluster, type, residual: false })),
     ...learnedCover.residualTypes.map((cluster, offset) => ({ ...cluster, type: learnedClusters.clusters.length + offset })),
   ];
+}
+
+function galleryPoseCount(cluster) {
+  const placements = cluster.classPlacementIndices
+    ? cluster.classPlacementIndices.map((index) => learnedCover.placements[index]).filter(Boolean)
+    : learnedCover.placements.filter((placement) => placement.type === cluster.type);
+  const representatives = [];
+  placements.forEach((placement) => {
+    const descriptor = supportOrientationDescriptor(placement);
+    if (!representatives.some((candidate) => orientationDistance(candidate, descriptor) <= .16)) representatives.push(descriptor);
+  });
+  return representatives.length;
 }
 
 function rebuildClusterGallery() {
@@ -1865,16 +1935,21 @@ function rebuildClusterGallery() {
     canvas.dataset.cluster = String(galleryIndex);
     const label = document.createElement("div");
     label.className = "cluster-card-label";
-    const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
-    const poses = orientationAtlas.find((entry) => entry.cluster === galleryIndex)?.orientations || 0;
-    const channels = cluster.residual ? 0 : recommendedChannelsForCluster(galleryIndex);
+    const placements = cluster.classPlacementIndices?.length
+      ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
+    const familyIndex = cluster.familyType ?? galleryIndex;
+    const poses = learnedCover.molecular ? galleryPoseCount(cluster)
+      : orientationAtlas.find((entry) => entry.cluster === galleryIndex)?.orientations || 0;
+    const channels = cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex);
     const name = cluster.label || (cluster.residual ? "gap" : `C${cluster.type + 1}`);
-    const ports = cluster.residual ? 0 : clusterPortRank(galleryIndex);
-    const coupledRank = cluster.residual ? 0 : clusterPosePortRank(galleryIndex);
+    const ports = cluster.residual ? 0 : clusterPortRank(familyIndex);
+    const coupledRank = cluster.residual ? 0 : clusterPosePortRank(familyIndex);
     const learnedDegrees = cluster.residual
       ? "explicit residual"
       : `${poses || "—"} required pose${poses === 1 ? "" : "s"} × ${ports} port role${ports === 1 ? "" : "s"} · rank ${coupledRank} → ${channels}ch`;
-    label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span>`;
+    const classStatus = Number.isInteger(cluster.classIndex)
+      ? `isometry ${cluster.classIndex + 1}/${cluster.classCount} · ` : "";
+    label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${classStatus}${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span>`;
     card.append(canvas, label);
     clusterGallery.append(card);
   });
@@ -2139,7 +2214,7 @@ function learnMolecularOverlapGrammar(source) {
     return { index, type: placement.type, position, rotation: new THREE.Quaternion(), sites, placement };
   };
   const occurrences = placements.map(makeOccurrence);
-  const templates = clusterGalleryTypes().map((cluster) => ({
+  const templates = (learnedCover.types || clusterGalleryTypes()).map((cluster) => ({
     type: cluster.type, medoid: cluster.medoid,
     sites: occurrences.find((occurrence) => occurrence.type === cluster.type)?.sites || [],
     radius: 3.4,
@@ -2614,7 +2689,7 @@ function learnMolecularSectionModel(source, config) {
   const overlapWeight = representation.overlapWeight;
   const channelGain = 1 + Math.log2(Math.max(1, config.channels)) * .065;
   const samples = overlapGrammar.occurrences;
-  const prototypeCount = clusterGalleryTypes().length;
+  const prototypeCount = (learnedCover.types || clusterGalleryTypes()).length;
   const sampleLabels = samples.map((occurrence) => occurrence.type);
   const incident = Array.from({ length: samples.length }, () => []);
   overlapGrammar.reconstructionByOccurrence.forEach((rules, parent) => rules.forEach((rule) => {
@@ -2691,7 +2766,7 @@ function markingSampleCount() {
 }
 
 function markingPrototypeTypes() {
-  return learnedCover?.molecular ? clusterGalleryTypes() : learnedClusters.clusters;
+  return learnedCover?.molecular ? learnedCover.types : learnedClusters.clusters;
 }
 
 function markingPrototypeName(index) {
@@ -3137,7 +3212,7 @@ function makeRepresentatives() {
   const scaleToScene = referenceSpacing / referenceSpacingA;
   const centers = symbolCenters();
   if (learnedCover?.molecular) {
-    clusterGalleryTypes().forEach((cluster, clusterIndex) => {
+    markingPrototypeTypes().forEach((cluster, clusterIndex) => {
       const center = centers[clusterIndex];
       cluster.customVectors.forEach((vector, siteIndex) => reps.push({
         p: center.clone().add(vector),
@@ -3164,7 +3239,7 @@ function makeRepresentatives() {
 }
 
 function symbolCenters() {
-  const count = learnedCover?.molecular ? clusterGalleryTypes().length : learnedClusters?.clusters.length || 1;
+  const count = learnedCover?.molecular ? markingPrototypeTypes().length : learnedClusters?.clusters.length || 1;
   const spacing = learnedCover?.molecular ? 5.2 : 3.15;
   return Array.from({ length: count }, (_, index) => new THREE.Vector3((index - (count - 1) / 2) * spacing, 0, 0));
 }
@@ -3673,11 +3748,22 @@ function updateStageNarrative() {
     narratives[1].eyebrow = "learning · molecular and gap cover";
     narratives[1].decision = "Molecular overlap cover computed";
     narratives[1].copy = "Species-resolved bond geometry discovers one H₂O motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom.";
-    narratives[1].caption = `${learnedCover.molecular.waters} H₂O molecular placements cover every observed atom; ${learnedCover.molecular.bridges} hydrogen-bond connection polyhedra and ${learnedCover.molecular.gaps} six-water void-boundary polyhedra fill the connection grammar. Cards show faces and physical/connection edges—not radial coordination spokes.`;
+    narratives[1].caption = `${learnedCover.molecular.waters} H₂O molecular placements cover every observed atom; ${learnedCover.molecular.bridges} hydrogen-bond connection polyhedra and ${learnedCover.molecular.gaps} six-water void-boundary polyhedra fill the connection grammar. The scrollable gallery shows all ${clusterGalleryTypes().length} colored metric-isometry classes as independent rotating scenes, with faces and physical/connection edges—not radial coordination spokes.`;
+    narratives[1].values = [
+      `${learnedCover.molecular.waterClasses} H₂O class`,
+      `${learnedCover.molecular.bridgeClasses} bridge classes`,
+      `${learnedCover.molecular.gapClasses} O₆ gap classes`,
+      `${learnedCover.placements.length} occurrences`,
+    ];
     narratives[2].title = "Register molecular bridges and gap-boundary ports";
     narratives[2].phase = `${overlapGrammar.reconstructionEdges} replay ports`;
     narratives[2].caption = `${overlapGrammar.reconstructionEdges} dependency-ordered molecular overlap ports connect a strict replay tree reaching ${overlapGrammar.replayReachable}/${referenceCount()} known sites.`;
-    narratives[2].values = ["1 H₂O class", `${learnedCover.molecular.bridges} bridges`, `${learnedCover.molecular.gaps} ring gaps`, `${overlapGrammar.reconstructionEdges} replay ports`];
+    narratives[2].values = [
+      `${learnedCover.molecular.waterClasses} H₂O class`,
+      `${learnedCover.molecular.bridgeClasses} bridge classes`,
+      `${learnedCover.molecular.gapClasses} ring-gap classes`,
+      `${overlapGrammar.reconstructionEdges} replay ports`,
+    ];
     narratives[4].caption = "The molecular search remains a strict tree under the hood. Dependency-ordered water, bridge, and gap placements reconstruct the known periodic window before any reusable continuation rule may act.";
     narratives[4].values = ["H₂O → bridge → gap", "shared atom support", "frozen replay ports", "branch residual"];
   }
@@ -3998,10 +4084,10 @@ function updateUI() {
     atomLabel.textContent = "PLACEMENTS"; atomMetric.textContent = String(learnedCover.placements.length); atomDelta.textContent = `overlapping ${currentPbc().some(Boolean) ? "periodic" : "open"} cover`;
     frontierLabel.textContent = "ISOMETRY TYPES"; frontierMetric.textContent = String(clusterGalleryTypes().length); frontierDelta.textContent = "one rotating scene per type";
     oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = `${Math.round(learnedCover.covered / referenceCount() * 100)}%`; oracleDelta.textContent = `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.complete ? "complete" : "incomplete"}`;
-    const gapTypes = learnedCover.molecular?.gaps ? 1 : learnedCover.residualTypes.length;
+    const gapTypes = learnedCover.molecular?.gaps ? learnedCover.molecular.gapClasses : learnedCover.residualTypes.length;
     reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(gapTypes); reuseDelta.textContent = learnedCover.molecular?.gaps ? `${learnedCover.molecular.gaps} oxygen-ring boundaries` : learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
   } else if (pipelineStage === 2) {
-    atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedClusters.clusters.length); atomDelta.textContent = "one per learned medoid";
+    atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedCover.molecular ? learnedCover.types.length : learnedClusters.clusters.length); atomDelta.textContent = learnedCover.molecular ? "molecule · bridge · ring boundary" : "one per learned medoid";
     frontierLabel.textContent = "SE(3) RULES"; frontierMetric.textContent = String(overlapGrammar.rules.length); frontierDelta.textContent = "arbitrary quaternion + translation";
     oracleLabel.textContent = "PAIR OBSERVATIONS"; oracleMetric.textContent = overlapGrammar.observations.toLocaleString(); oracleDelta.textContent = `${overlapGrammar.recurring} rules recur`;
     reuseLabel.textContent = "REPLAY GRAPH"; reuseMetric.textContent = `${overlapGrammar.replayReachable}/${referenceCount()}`; reuseDelta.textContent = `${overlapGrammar.reconstructionEdges.toLocaleString()} frozen observed edges · removed after certificate`;
@@ -4057,13 +4143,13 @@ function renderLegend() {
   speciesLegend.replaceChildren();
   if (pipelineStage === 3 && sectionModel) {
     legendHeading.textContent = "Local marking sections";
-    learnedClusters.clusters.forEach((cluster, index) => {
-      const key = `m_C${index + 1}`;
+    markingPrototypeTypes().forEach((cluster, index) => {
+      const key = `m_${markingPrototypeName(index)}`;
       const row = document.createElement("span");
       const swatch = document.createElement("i");
       swatch.className = "cluster-swatch";
       swatch.style.setProperty("--swatch", `#${markingColor(key).getHexString()}`);
-      row.append(swatch, document.createTextNode(`${key}(x) · C${index + 1} prototype · learned from ${cluster.count}`));
+      row.append(swatch, document.createTextNode(`${key}(x) · ${cluster.label || `C${index + 1}`} · learned from ${cluster.count}`));
       speciesLegend.appendChild(row);
     });
     const failed = document.createElement("span");
@@ -4079,7 +4165,8 @@ function renderLegend() {
       const swatch = document.createElement("i");
       swatch.className = "cluster-swatch";
       swatch.style.setProperty("--swatch", cluster.residual ? "#ff6d71" : `#${CLUSTER_COLORS[index % CLUSTER_COLORS.length].toString(16).padStart(6, "0")}`);
-      const count = learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
+      const count = cluster.classPlacementIndices?.length
+        ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
       row.append(swatch, document.createTextNode(`${cluster.residual ? "gap" : "C"}${index + 1} · ${cluster.element || cluster.species} · ${count} placements`));
       speciesLegend.appendChild(row);
     });
@@ -4155,7 +4242,8 @@ function renderMarkings() {
   const learned = learnedCover.molecular ? clusterGalleryTypes().map((cluster) => [
     `${cluster.label} · ${cluster.element}`,
     cluster.gap ? "empty-region boundary" : "species + distances",
-    `×${learnedCover.placements.filter((placement) => placement.type === cluster.type).length}`,
+    `×${cluster.classPlacementIndices?.length
+      ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length}`,
   ]) : learnedClusters.clusters.map((cluster, index) => [
     `C${index + 1} · ${cluster.element} medoid`,
     `z${cluster.coordination} · σ${cluster.spread.toFixed(1)}`,
