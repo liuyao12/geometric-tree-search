@@ -8,6 +8,7 @@ import {
   validateIceMolecularPortArtifact,
 } from "./ice-molecular-anchor-growth.js";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
+import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -113,6 +114,7 @@ const rdfEyebrow = $("rdfEyebrow");
 const rdfTitle = $("rdfTitle");
 const rdfStatus = $("rdfStatus");
 const rdfLegend = $("rdfLegend");
+const rdfPairSelect = $("rdfPairSelect");
 const coordChart = $("coordChart");
 const coordEyebrow = $("coordEyebrow");
 const coordTitle = $("coordTitle");
@@ -231,7 +233,7 @@ const MATERIALS = {
   graphene: { name: "graphene monolayer", elements: ["C"], spacingA: 1.42, cell: "single hexagonal sheet", order: "crystal", symmetry: "p6/mmm layer group", audit: "2D translations + diffraction", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: 0, species: ["C", "C"] }], note: "A one-component intrinsic-2D positive control learned after arbitrary embedding in 3D." },
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", periodicWindow: true, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
-  random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "amorphous · quenched surrogate", periodicWindow: false, order: "amorphous", symmetry: "no stable long-range group", audit: "local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble whose multiscale statistics match held-out large MD." },
+  random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "periodic amorphous hard-core cell", periodicWindow: true, order: "amorphous", symmetry: "no stable long-range group", audit: "partial RDF + local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble; the deterministic browser fixture is a continuous random hard-core packing, not a perturbed lattice or an MD trajectory." },
   iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", periodicWindow: false, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
   moire: { name: "30° twisted hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "two hexagonal sheets · 3.33 Å separation", order: "quasicrystal", symmetry: "12-fold quasiperiodic order", audit: "2D diffraction + absence of common translations", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: Math.PI / 6, zA: 1.665, species: ["B", "N"] }], note: "Each sheet is periodic, while their 30° union has no common translation lattice." },
   bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", periodicWindow: true, order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
@@ -398,6 +400,7 @@ let nextMarkingId = 1;
 let geometryMode = "auto";
 let orientationAtlas = [];
 let selectedGalleryCluster = 0;
+let rdfPairSelection = "all";
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -824,10 +827,14 @@ function medianNearestSpacing(source) {
   return nearest[Math.floor(nearest.length / 2)] || 1;
 }
 
-function calculateStructuralStats(source, spacing, periodic = false) {
+function calculateStructuralStats(source, spacing, periodic = false,
+  intrinsicDimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3, requestedMaximumRadius = null) {
   const rdf = new Array(RDF_BINS).fill(0);
+  const rdfCountsByPair = new Map();
   const coordination = new Array(13).fill(0);
-  if (!source.length) return { rdf, coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [] };
+  if (!source.length) return { rdf, rdfByPair: {}, dimension: intrinsicDimension,
+    maximumRadius: requestedMaximumRadius || RDF_MAX_RADIUS, edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
+    coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [] };
 
   const neighbors = new Array(source.length).fill(0);
   const neighborLists = Array.from({ length: source.length }, () => []);
@@ -838,14 +845,35 @@ function calculateStructuralStats(source, spacing, periodic = false) {
     maximum.max(atom.p);
   });
 
+  const paddedSize = maximum.clone().sub(minimum).divideScalar(spacing).addScalar(1);
+  const activeAxes = [0, 1, 2].sort((first, second) => paddedSize.getComponent(second) - paddedSize.getComponent(first))
+    .slice(0, intrinsicDimension);
+  const cell = periodic ? currentCell() : null;
+  const normalizedCellLengths = cell?.map((vector) => vector.length() / referenceSpacingA) || [];
+  const naturalMaximumRadius = periodic && normalizedCellLengths.length
+    ? Math.min(RDF_MAX_RADIUS, Math.min(...normalizedCellLengths) * .48)
+    : Math.min(RDF_MAX_RADIUS, Math.min(...activeAxes.map((axis) => paddedSize.getComponent(axis))) * .45);
+  const maximumRadius = Math.max(.5, requestedMaximumRadius || naturalMaximumRadius);
+  const pairCounts = source.reduce((counts, atom) => {
+    counts.set(atom.species, (counts.get(atom.species) || 0) + 1);
+    return counts;
+  }, new Map());
+
   for (let first = 0; first < source.length; first++) {
     for (let second = first + 1; second < source.length; second++) {
-      const normalizedDistance = periodic
-        ? periodicDisplacement(source[first], source[second]).length() / referenceSpacingA
-        : source[first].p.distanceTo(source[second].p) / spacing;
-      if (normalizedDistance < RDF_MAX_RADIUS) {
-        const bin = Math.min(RDF_BINS - 1, Math.floor(normalizedDistance / RDF_MAX_RADIUS * RDF_BINS));
-        rdf[bin]++;
+      const vector = periodic
+        ? periodicDisplacement(source[first], source[second]).divideScalar(referenceSpacingA)
+        : source[second].p.clone().sub(source[first].p).divideScalar(spacing);
+      const normalizedDistance = vector.length();
+      if (normalizedDistance < maximumRadius) {
+        const bin = Math.min(RDF_BINS - 1, Math.floor(normalizedDistance / maximumRadius * RDF_BINS));
+        const overlapFraction = periodic ? 1 : activeAxes.reduce((fraction, axis) =>
+          fraction * Math.max(1e-6, 1 - Math.abs(vector.getComponent(axis)) / paddedSize.getComponent(axis)), 1);
+        const weight = 1 / overlapFraction;
+        rdf[bin] += weight;
+        const pair = [source[first].species, source[second].species].sort().join("|");
+        if (!rdfCountsByPair.has(pair)) rdfCountsByPair.set(pair, new Array(RDF_BINS).fill(0));
+        rdfCountsByPair.get(pair)[bin] += weight;
       }
       if (normalizedDistance <= COORDINATION_CUTOFF) {
         neighbors[first]++;
@@ -856,23 +884,43 @@ function calculateStructuralStats(source, spacing, periodic = false) {
     }
   }
 
-  const paddedSize = maximum.sub(minimum).divideScalar(spacing).addScalar(1);
-  const cell = periodic ? currentCell() : null;
-  const periodicVolume = cell ? Math.abs(cell[0].dot(new THREE.Vector3().crossVectors(cell[1], cell[2]))) / (referenceSpacingA ** 3) : 0;
-  const volume = Math.max(1, periodicVolume || paddedSize.x * paddedSize.y * paddedSize.z);
-  const density = source.length / volume;
+  let measure = activeAxes.reduce((product, axis) => product * paddedSize.getComponent(axis), 1);
+  if (periodic && cell && intrinsicDimension === 3) {
+    measure = Math.abs(cell[0].dot(new THREE.Vector3().crossVectors(cell[1], cell[2]))) / (referenceSpacingA ** 3);
+  } else if (periodic && cell && intrinsicDimension === 2) {
+    measure = Math.max(...[[0, 1], [0, 2], [1, 2]].map(([first, second]) =>
+      new THREE.Vector3().crossVectors(cell[first], cell[second]).length())) / (referenceSpacingA ** 2);
+  }
+  measure = Math.max(1, measure);
+  const shellMeasure = (inner, outer) => intrinsicDimension === 2
+    ? Math.PI * (outer ** 2 - inner ** 2)
+    : 4 / 3 * Math.PI * (outer ** 3 - inner ** 3);
   for (let bin = 0; bin < RDF_BINS; bin++) {
-    const inner = bin / RDF_BINS * RDF_MAX_RADIUS;
-    const outer = (bin + 1) / RDF_BINS * RDF_MAX_RADIUS;
-    const shellVolume = 4 / 3 * Math.PI * (outer ** 3 - inner ** 3);
-    const idealPairs = .5 * source.length * density * shellVolume;
+    const inner = bin / RDF_BINS * maximumRadius;
+    const outer = (bin + 1) / RDF_BINS * maximumRadius;
+    const shell = shellMeasure(inner, outer);
+    const idealPairs = source.length * (source.length - 1) / (2 * measure) * shell;
     rdf[bin] = idealPairs > 0 ? rdf[bin] / idealPairs : 0;
   }
+  const rdfByPair = Object.fromEntries([...rdfCountsByPair].map(([pair, counts]) => {
+    const [first, second] = pair.split("|");
+    const combinations = first === second
+      ? pairCounts.get(first) * (pairCounts.get(first) - 1) / 2
+      : pairCounts.get(first) * pairCounts.get(second);
+    return [pair, counts.map((value, bin) => {
+      const inner = bin / RDF_BINS * maximumRadius;
+      const outer = (bin + 1) / RDF_BINS * maximumRadius;
+      const idealPairs = combinations / measure * shellMeasure(inner, outer);
+      return idealPairs > 0 ? value / idealPairs : 0;
+    })];
+  }));
 
   neighbors.forEach((value) => coordination[Math.min(12, value)]++);
   for (let index = 0; index < coordination.length; index++) coordination[index] /= source.length;
   const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
-  return { rdf, coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists };
+  return { rdf, rdfByPair, dimension: intrinsicDimension, maximumRadius,
+    edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
+    coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists };
 }
 
 function currentLiveStructure() {
@@ -881,10 +929,14 @@ function currentLiveStructure() {
     : [];
   const key = `${pipelineStage}:${atoms.length}:${replayIndex}`;
   if (key !== lastLiveStatsKey) {
-    liveStructuralStats = calculateStructuralStats(source, referenceSpacing);
+    const livePeriodic = currentPbc().some(Boolean)
+      && atoms.every((atom) => Number.isInteger(atom.referenceIndex));
+    liveStructuralStats = calculateStructuralStats(source, referenceSpacing, livePeriodic,
+      currentMaterial().intrinsicDimension === 2 ? 2 : 3, referenceStructuralStats?.maximumRadius || RDF_MAX_RADIUS);
     lastLiveStatsKey = key;
   }
-  return { source, stats: liveStructuralStats || calculateStructuralStats([], referenceSpacing) };
+  return { source, stats: liveStructuralStats || calculateStructuralStats([], referenceSpacing, false,
+    currentMaterial().intrinsicDimension === 2 ? 2 : 3, referenceStructuralStats?.maximumRadius || RDF_MAX_RADIUS) };
 }
 
 function selectedCoordinationDetail() {
@@ -967,10 +1019,43 @@ function setChartLegend(container, entries) {
   });
 }
 
+function rdfPairLabel(key) {
+  if (key === "all") return "all element pairs";
+  return key.split("|").join("–");
+}
+
+function syncRdfPairOptions() {
+  const keys = ["all", ...Object.keys(referenceStructuralStats?.rdfByPair || {}).sort()];
+  const fingerprint = keys.join(",");
+  if (rdfPairSelect.dataset.keys !== fingerprint) {
+    rdfPairSelect.replaceChildren(...keys.map((key) => {
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent = rdfPairLabel(key);
+      return option;
+    }));
+    rdfPairSelect.dataset.keys = fingerprint;
+  }
+  if (!keys.includes(rdfPairSelection)) rdfPairSelection = "all";
+  rdfPairSelect.value = rdfPairSelection;
+}
+
+function selectedRdf(stats) {
+  return rdfPairSelection === "all" ? stats.rdf : stats.rdfByPair?.[rdfPairSelection] || new Array(RDF_BINS).fill(0);
+}
+
+function rdfTailSummary(values) {
+  const tail = values.slice(Math.floor(values.length * .62));
+  const mean = tail.reduce((sum, value) => sum + value, 0) / Math.max(1, tail.length);
+  const rmsFromUnity = Math.sqrt(tail.reduce((sum, value) => sum + (value - 1) ** 2, 0) / Math.max(1, tail.length));
+  return { mean, rmsFromUnity };
+}
+
 function renderTrainingStats() {
   const point = currentTrainingPoint();
   const visibleCurve = sectionModel.curve.slice(0, trainingProgress);
   const totalSamples = markingSampleCount();
+  rdfPairSelect.hidden = true;
   rdfEyebrow.textContent = "GCTS training curve";
   rdfTitle.textContent = "section mismatch";
   rdfStatus.textContent = `${point.samples}/${totalSamples} ${sectionModel.sampleKind}s · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
@@ -1028,8 +1113,12 @@ function renderStructureStats() {
     renderTrainingStats();
     return;
   }
-  rdfEyebrow.textContent = "finite-window RDF";
-  rdfTitle.textContent = "g(r / a)";
+  rdfPairSelect.hidden = false;
+  syncRdfPairOptions();
+  const dimension = referenceStructuralStats.dimension;
+  rdfEyebrow.textContent = referenceStructuralStats.edgeCorrection === "periodic minimum image"
+    ? `${dimension}D periodic-cell RDF` : `${dimension}D edge-corrected finite-window RDF`;
+  rdfTitle.textContent = `g${dimension}D(${rdfPairSelection === "all" ? "all" : rdfPairLabel(rdfPairSelection)}; r / a)`;
   coordEyebrow.textContent = "first-shell coordination";
   coordTitle.innerHTML = "P(z), r<sub>c</sub> = 1.32a";
   rdfChart.setAttribute("aria-label", "Radial distribution function for known positions and live reconstruction");
@@ -1038,7 +1127,14 @@ function renderStructureStats() {
   setChartLegend(rdfLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel]]);
   setChartLegend(coordLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel], ["", "click z to show all current shells"]]);
   const { stats: live } = currentLiveStructure();
-  rdfStatus.textContent = `known ${referenceCount()} · ${liveWindowLabel} ${live.count}`;
+  const knownRdf = selectedRdf(referenceStructuralStats);
+  const liveRdf = selectedRdf(live);
+  const knownTail = rdfTailSummary(knownRdf);
+  const liveTail = live.count > 1 ? rdfTailSummary(liveRdf) : null;
+  rdfStatus.textContent = `tail ⟨g⟩ ${knownTail.mean.toFixed(2)}${liveTail ? ` → ${liveTail.mean.toFixed(2)}` : ""} · RMS₁ ${knownTail.rmsFromUnity.toFixed(2)}`;
+  rdfStatus.title = currentMaterial().order === "amorphous"
+    ? "An amorphous RDF has short-range peaks but should approach g(r)=1 at long range; it is not flat at every radius."
+    : `Known ${referenceCount()} atoms; ${liveWindowLabel} ${live.count}.`;
   const selected = selectedCoordinationDetail();
   coordStatus.textContent = coordinationSelection === null
     ? `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`
@@ -1047,15 +1143,16 @@ function renderStructureStats() {
 
   rdfChart.replaceChildren();
   drawChartFrame(rdfChart, "r / a", "g");
-  const rdfMaximum = Math.max(1, ...referenceStructuralStats.rdf, ...live.rdf) * 1.08;
+  const rdfMaximum = Math.max(1, ...knownRdf, ...liveRdf) * 1.08;
   const unityY = 96 - Math.min(1, 1 / rdfMaximum) * 84;
   rdfChart.append(svgNode("line", { x1: 29, y1: unityY, x2: 352, y2: unityY, class: "chart-guide" }));
-  [1, 2, 3, 4].forEach((tick) => {
-    const x = 29 + tick / RDF_MAX_RADIUS * 323;
+  const maximumRadius = referenceStructuralStats.maximumRadius;
+  Array.from({ length: Math.floor(maximumRadius) }, (_, index) => index + 1).forEach((tick) => {
+    const x = 29 + tick / maximumRadius * 323;
     rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
   });
-  rdfChart.append(svgNode("path", { id: "rdfKnownPath", d: linePath(referenceStructuralStats.rdf, rdfMaximum), class: "chart-known" }));
-  if (live.count > 1) rdfChart.append(svgNode("path", { id: "rdfLivePath", d: linePath(live.rdf, rdfMaximum), class: "chart-live" }));
+  rdfChart.append(svgNode("path", { id: "rdfKnownPath", d: linePath(knownRdf, rdfMaximum), class: "chart-known" }));
+  if (live.count > 1) rdfChart.append(svgNode("path", { id: "rdfLivePath", d: linePath(liveRdf, rdfMaximum), class: "chart-live" }));
 
   coordChart.replaceChildren();
   drawChartFrame(coordChart, "coordination z", "P");
@@ -1251,6 +1348,29 @@ function makeSyntheticReferenceSite(qx, qy, qz, sourceIndex = 0, scenario = scen
   return { p, pA, species, family, sourceIndex, q: [qx, qy, qz] };
 }
 
+function makeMetallicGlassReference() {
+  const material = MATERIALS.random;
+  const packing = generateAmorphousMixture({
+    count: DEFAULT_REFERENCE_COUNT,
+    copperFraction: .64,
+    targetNearestAngstrom: material.spacingA,
+  });
+  const scale = .92 / material.spacingA;
+  return packing.positions.map((position, sourceIndex) => {
+    const pA = new THREE.Vector3(...position);
+    return {
+      pA,
+      p: pA.clone().multiplyScalar(scale),
+      species: packing.species[sourceIndex],
+      family: "glass",
+      sourceIndex,
+      glassCellLengthA: packing.cellLengthAngstrom,
+      glassAudit: packing.audit,
+    };
+  }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
+    || first.species.localeCompare(second.species));
+}
+
 function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   if (scenario === "imported" && importedStructure) {
     const center = importedStructure.atoms.reduce((sum, atom) => sum.add(new THREE.Vector3(...atom.position)), new THREE.Vector3())
@@ -1266,6 +1386,7 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   }
   if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
+  if (scenario === "random") return makeMetallicGlassReference();
   const result = [];
   for (let ix = 0; ix < 6; ix++) for (let iy = 0; iy < 6; iy++) for (let iz = 0; iz < 6; iz++) {
     result.push(makeSyntheticReferenceSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length, scenario));
@@ -1304,6 +1425,10 @@ function makePlanarReferenceConfiguration(scenario = "moire") {
 
 function currentCell() {
   if (currentMaterial().intrinsicDimension === 2) return null;
+  if (scenarioSelect.value === "random" && referenceAtoms[0]?.glassCellLengthA) {
+    const length = referenceAtoms[0].glassCellLengthA;
+    return [new THREE.Vector3(length, 0, 0), new THREE.Vector3(0, length, 0), new THREE.Vector3(0, 0, length)];
+  }
   if (currentMaterial().icePolytype) {
     const definition = iceDefinition(currentMaterial().icePolytype);
     return definition.primitive.map((vector, axis) => vector.clone().multiplyScalar(definition.repeats[axis]));
@@ -1328,7 +1453,7 @@ function getOrderPrototypeLibrary() {
   orderPrototypeLibrary = Object.entries(MATERIALS).map(([id, material]) => {
     const source = makeReferenceConfiguration(id);
     const spacing = medianNearestSpacing(source);
-    return { id, material, stats: calculateStructuralStats(source, spacing) };
+    return { id, material, stats: calculateStructuralStats(source, spacing, false, material.intrinsicDimension === 2 ? 2 : 3) };
   });
   return orderPrototypeLibrary;
 }
@@ -1632,7 +1757,7 @@ function poseSupportLabel(total, freeTypes, unresolvedTypes) {
 function resolvedGeometryMode() {
   if (geometryMode !== "auto") return geometryMode;
   if (detectedUnitCell) return "lattice";
-  if (currentMaterial().periodicWindow && currentPbc().some(Boolean)) return "lattice";
+  if (currentMaterial().periodicWindow && currentPbc().some(Boolean) && currentMaterial().order !== "amorphous") return "lattice";
   if (currentMaterial().intrinsicDimension === 2) {
     const angles = new Set((currentMaterial().planarLayers || []).map((layer) => Math.round((layer.angle || 0) * 1e6)));
     return angles.size > 1 ? "module" : "lattice";
@@ -2978,7 +3103,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-8",
+      buildId: "20260824-9",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3000,7 +3125,8 @@ async function buildExperimentReceipt() {
         entryId: importedStructure?.metadata?.entryId || null,
         materialId: importedStructure?.metadata?.materialId || null,
         format: importedStructure?.format || null,
-      } : { fixture: scenarioSelect.value },
+      } : { fixture: scenarioSelect.value,
+        generatorAudit: scenarioSelect.value === "random" ? referenceAtoms[0]?.glassAudit || null : null },
     },
     pipeline: {
       internalStage: pipelineStage,
@@ -4322,7 +4448,8 @@ function enterPipelineStage(index, options = {}) {
   referenceSpacingA = scenarioSelect.value === "imported"
     ? importedStructure.validation.medianNearestDistance
     : referenceSpacing / .92 * currentMaterial().spacingA;
-  referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean));
+  referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean),
+    currentMaterial().intrinsicDimension === 2 ? 2 : 3);
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
   learnedCover = buildExhaustiveClusterCover(referenceAtoms);
   detectedUnitCell = geometryMode === "module" || geometryMode === "offlattice" ? null : inferTranslationCell(referenceAtoms);
@@ -5360,6 +5487,10 @@ growthDurationSelect.addEventListener("change", () => { if (!playing) setPlaying
 [markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
+rdfPairSelect.addEventListener("change", () => {
+  rdfPairSelection = rdfPairSelect.value;
+  renderStructureStats();
+});
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !periodicTablePanel.hidden) setPeriodicTableOpen(false);
 });

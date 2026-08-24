@@ -19,7 +19,7 @@ promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
 The selectable inputs are an exact NaCl rocksalt positive control, a Cu-Zr
-metallic-glass surrogate, an Al-Cu-Fe icosahedral-approximant surrogate, a 30°
+metallic-glass negative control, an Al-Cu-Fe icosahedral-approximant surrogate, a 30°
 twisted hBN bilayer, and a silicon BC8-like network. The hBN fixture is two
 intrinsically 2D sheets embedded in 3D, not a thin 3D periodic box.
 Element-dependent colors and radii are presentation
@@ -291,10 +291,25 @@ and exponential-quality GCTS growth as failed.
 ## Live validation
 
 The RDF and coordination-number charts compare the known configuration with
-the explicit atoms produced by search. Beyond 216 atoms, the live chart uses a
-contiguous 216-atom central window. Coordination bins remain interactive and
-highlight every matching center, all current neighbors, and their connecting
-segments.
+the explicit atoms produced by search. The RDF is dimension aware: planar
+materials use annular area normalization and three-dimensional systems use
+spherical shells. Periodic windows use minimum-image distances only inside the
+inscribed half-cell radius; open windows use a translation edge correction.
+The element-pair selector exposes total and partial distributions such as
+Cu–Cu, Cu–Zr, and Zr–Zr. Its tail readout reports both mean `g(r)` and RMS
+departure from unity. An amorphous solid is therefore expected to have strong
+short-range peaks and approach `g(r)=1` at long range—not to be flat at every
+radius. Beyond 216 atoms, the live chart uses a contiguous 216-atom central
+window. Coordination bins remain interactive and highlight every matching
+center, all current neighbors, and their connecting segments.
+
+The deterministic Cu₆₄Zr₃₆ control no longer starts from a jittered cubic grid.
+It begins from continuous random positions in a periodic box and applies only
+species-dependent hard-core relaxation before rescaling the measured median
+nearest-neighbour distance to 2.72 Å. The generator uses neither a target RDF
+nor lattice sites; its seed, composition, minimum distance, cell length, and
+negative provenance flags are exported in the experiment receipt. It is still
+a structural packing surrogate rather than a quenched MD trajectory.
 
 The live order panel classifies the generated geometry rather than feeding a
 structure label to growth. It compares RDF and coordination evidence against a
