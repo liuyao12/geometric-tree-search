@@ -9,6 +9,7 @@ import {
 } from "./ice-molecular-anchor-growth.js";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
+import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -115,6 +116,7 @@ const rdfTitle = $("rdfTitle");
 const rdfStatus = $("rdfStatus");
 const rdfLegend = $("rdfLegend");
 const rdfPairSelect = $("rdfPairSelect");
+const structureObservableSelect = $("structureObservableSelect");
 const coordChart = $("coordChart");
 const coordEyebrow = $("coordEyebrow");
 const coordTitle = $("coordTitle");
@@ -401,6 +403,7 @@ let geometryMode = "auto";
 let orientationAtlas = [];
 let selectedGalleryCluster = 0;
 let rdfPairSelection = "all";
+let structureObservableSelection = "rdf";
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -681,8 +684,12 @@ function translationClosureScore(source, basis) {
 }
 
 function inferLiveOrder() {
+  if (pipelineStage < 4) return {
+    order: "not classified", structure: "classification begins after growth", symmetry: "withheld", confidence: 0,
+    note: "The supplied configuration is used to learn geometry, not to preassign a phase. RDF, coordination, S(q), translation closure, and prototype labels are evaluated only after Material Growth begins.",
+  };
   const source = classificationSample();
-  if (pipelineStage === 4 && source.length < 32) return {
+  if (source.length < 32) return {
     order: "insufficient sample", structure: "—", symmetry: "—", confidence: 0,
     note: `Waiting for at least 32 live atoms; ${source.length} are currently available.`,
   };
@@ -692,7 +699,10 @@ function inferLiveOrder() {
   const matches = getOrderPrototypeLibrary().map((prototype) => {
     const rdfError = normalizedDistributionDistance(prototype.stats.rdf, stats.rdf);
     const coordinationError = normalizedDistributionDistance(prototype.stats.coordination, stats.coordination);
-    return { ...prototype, evidenceMatch: Math.max(0, Math.min(1, 1 - .38 * rdfError - .72 * coordinationError)) };
+    const structureFactorError = normalizedDistributionDistance(
+      ensureStructureFactor(prototype.stats).values, ensureStructureFactor(stats).values);
+    return { ...prototype, evidenceMatch: Math.max(0, Math.min(1,
+      1 - .30 * rdfError - .58 * coordinationError - .20 * structureFactorError)) };
   }).sort((first, second) => second.evidenceMatch - first.evidenceMatch);
   const best = matches[0];
   const bestCrystal = matches.find((match) => match.material.order === "crystal");
@@ -723,10 +733,9 @@ function inferLiveOrder() {
     structure = best.material.name;
     symmetry = "no global space group";
   }
-  const mode = pipelineStage < 4 ? "reference configuration" : "live reconstructed core";
   const result = {
     order, structure, symmetry, confidence,
-    note: `${mode}: best RDF + coordination match across ${matches.length} prototypes${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
+    note: `Live reconstructed core: best RDF + coordination + geometric powder S(q) match across ${matches.length} prototypes${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. Unit-scattering S(q) is posthoc evidence—not experimental intensity or a growth input. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
   };
   liveOrderCache = { key, result };
   return result;
@@ -827,14 +836,34 @@ function medianNearestSpacing(source) {
   return nearest[Math.floor(nearest.length / 2)] || 1;
 }
 
+function intrinsicPlaneNormal(source) {
+  if (source.length < 3) return null;
+  const centroid = source.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3())
+    .multiplyScalar(1 / source.length);
+  const first = source.reduce((best, atom) => {
+    const vector = atom.p.clone().sub(centroid);
+    return vector.lengthSq() > best.lengthSq() ? vector : best;
+  }, new THREE.Vector3());
+  if (first.lengthSq() < 1e-12) return null;
+  const axis = first.clone().normalize();
+  const second = source.reduce((best, atom) => {
+    const vector = atom.p.clone().sub(centroid);
+    const perpendicular = vector.clone().sub(axis.clone().multiplyScalar(vector.dot(axis)));
+    return perpendicular.lengthSq() > best.lengthSq() ? perpendicular : best;
+  }, new THREE.Vector3());
+  if (second.lengthSq() < 1e-12) return null;
+  return new THREE.Vector3().crossVectors(axis, second.normalize()).normalize();
+}
+
 function calculateStructuralStats(source, spacing, periodic = false,
   intrinsicDimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3, requestedMaximumRadius = null) {
   const rdf = new Array(RDF_BINS).fill(0);
   const rdfCountsByPair = new Map();
+  const pairDistances = [];
   const coordination = new Array(13).fill(0);
   if (!source.length) return { rdf, rdfByPair: {}, dimension: intrinsicDimension,
     maximumRadius: requestedMaximumRadius || RDF_MAX_RADIUS, edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [] };
+    pairDistances, coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [] };
 
   const neighbors = new Array(source.length).fill(0);
   const neighborLists = Array.from({ length: source.length }, () => []);
@@ -848,6 +877,7 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const paddedSize = maximum.clone().sub(minimum).divideScalar(spacing).addScalar(1);
   const activeAxes = [0, 1, 2].sort((first, second) => paddedSize.getComponent(second) - paddedSize.getComponent(first))
     .slice(0, intrinsicDimension);
+  const planeNormal = intrinsicDimension === 2 ? intrinsicPlaneNormal(source) : null;
   const cell = periodic ? currentCell() : null;
   const normalizedCellLengths = cell?.map((vector) => vector.length() / referenceSpacingA) || [];
   const naturalMaximumRadius = periodic && normalizedCellLengths.length
@@ -861,6 +891,14 @@ function calculateStructuralStats(source, spacing, periodic = false,
 
   for (let first = 0; first < source.length; first++) {
     for (let second = first + 1; second < source.length; second++) {
+      // S(q) is the powder average of the actual finite observation.  Keep its
+      // direct pair distance separate from the RDF's periodic minimum-image or
+      // finite-window edge correction.
+      const directVector = source[second].p.clone().sub(source[first].p).divideScalar(spacing);
+      const scatteringDistance = planeNormal
+        ? Math.sqrt(Math.max(0, directVector.lengthSq() - directVector.dot(planeNormal) ** 2))
+        : directVector.length();
+      pairDistances.push(scatteringDistance);
       const vector = periodic
         ? periodicDisplacement(source[first], source[second]).divideScalar(referenceSpacingA)
         : source[second].p.clone().sub(source[first].p).divideScalar(spacing);
@@ -920,7 +958,15 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
   return { rdf, rdfByPair, dimension: intrinsicDimension, maximumRadius,
     edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists };
+    pairDistances, coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists };
+}
+
+function ensureStructureFactor(stats) {
+  if (!stats.structureFactor) {
+    stats.structureFactor = powderStructureFactor(stats.pairDistances || [], stats.count, stats.dimension);
+    stats.structureFactor.summary = summarizeStructureFactor(stats.structureFactor);
+  }
+  return stats.structureFactor;
 }
 
 function currentLiveStructure() {
@@ -1056,6 +1102,7 @@ function renderTrainingStats() {
   const visibleCurve = sectionModel.curve.slice(0, trainingProgress);
   const totalSamples = markingSampleCount();
   rdfPairSelect.hidden = true;
+  structureObservableSelect.hidden = true;
   rdfEyebrow.textContent = "GCTS training curve";
   rdfTitle.textContent = "section mismatch";
   rdfStatus.textContent = `${point.samples}/${totalSamples} ${sectionModel.sampleKind}s · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
@@ -1113,28 +1160,18 @@ function renderStructureStats() {
     renderTrainingStats();
     return;
   }
-  rdfPairSelect.hidden = false;
+  structureObservableSelect.hidden = false;
+  structureObservableSelect.value = structureObservableSelection;
+  rdfPairSelect.hidden = structureObservableSelection !== "rdf";
   syncRdfPairOptions();
   const dimension = referenceStructuralStats.dimension;
-  rdfEyebrow.textContent = referenceStructuralStats.edgeCorrection === "periodic minimum image"
-    ? `${dimension}D periodic-cell RDF` : `${dimension}D edge-corrected finite-window RDF`;
-  rdfTitle.textContent = `g${dimension}D(${rdfPairSelection === "all" ? "all" : rdfPairLabel(rdfPairSelection)}; r / a)`;
   coordEyebrow.textContent = "first-shell coordination";
   coordTitle.innerHTML = "P(z), r<sub>c</sub> = 1.32a";
-  rdfChart.setAttribute("aria-label", "Radial distribution function for known positions and live reconstruction");
   coordChart.setAttribute("aria-label", "Coordination number distribution for known positions and live reconstruction");
   const liveWindowLabel = pipelineStage === 4 && atoms.length > ANALYSIS_WINDOW_COUNT ? "live central analysis window" : "live reconstruction";
   setChartLegend(rdfLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel]]);
   setChartLegend(coordLegend, [["known-key", "known positions"], ["live-key", liveWindowLabel], ["", "click z to show all current shells"]]);
   const { stats: live } = currentLiveStructure();
-  const knownRdf = selectedRdf(referenceStructuralStats);
-  const liveRdf = selectedRdf(live);
-  const knownTail = rdfTailSummary(knownRdf);
-  const liveTail = live.count > 1 ? rdfTailSummary(liveRdf) : null;
-  rdfStatus.textContent = `tail ⟨g⟩ ${knownTail.mean.toFixed(2)}${liveTail ? ` → ${liveTail.mean.toFixed(2)}` : ""} · RMS₁ ${knownTail.rmsFromUnity.toFixed(2)}`;
-  rdfStatus.title = currentMaterial().order === "amorphous"
-    ? "An amorphous RDF has short-range peaks but should approach g(r)=1 at long range; it is not flat at every radius."
-    : `Known ${referenceCount()} atoms; ${liveWindowLabel} ${live.count}.`;
   const selected = selectedCoordinationDetail();
   coordStatus.textContent = coordinationSelection === null
     ? `mean z ${referenceStructuralStats.meanCoordination.toFixed(1)} · ${live.count ? live.meanCoordination.toFixed(1) : "—"}`
@@ -1142,17 +1179,52 @@ function renderStructureStats() {
   coordClearButton.hidden = coordinationSelection === null;
 
   rdfChart.replaceChildren();
-  drawChartFrame(rdfChart, "r / a", "g");
-  const rdfMaximum = Math.max(1, ...knownRdf, ...liveRdf) * 1.08;
-  const unityY = 96 - Math.min(1, 1 / rdfMaximum) * 84;
-  rdfChart.append(svgNode("line", { x1: 29, y1: unityY, x2: 352, y2: unityY, class: "chart-guide" }));
-  const maximumRadius = referenceStructuralStats.maximumRadius;
-  Array.from({ length: Math.floor(maximumRadius) }, (_, index) => index + 1).forEach((tick) => {
-    const x = 29 + tick / maximumRadius * 323;
-    rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
-  });
-  rdfChart.append(svgNode("path", { id: "rdfKnownPath", d: linePath(knownRdf, rdfMaximum), class: "chart-known" }));
-  if (live.count > 1) rdfChart.append(svgNode("path", { id: "rdfLivePath", d: linePath(liveRdf, rdfMaximum), class: "chart-live" }));
+  if (structureObservableSelection === "sq") {
+    const knownSq = ensureStructureFactor(referenceStructuralStats);
+    const liveSq = ensureStructureFactor(live);
+    rdfEyebrow.textContent = `${dimension}D finite-observation powder average`;
+    rdfTitle.textContent = "geometric S(q) · unit scattering weights";
+    rdfChart.setAttribute("aria-label", "Geometric powder structure factor for known positions and live reconstruction");
+    const summary = knownSq.summary;
+    const liveSummary = live.count > 1 ? liveSq.summary : null;
+    rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · S ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}`;
+    rdfStatus.title = "Debye-style finite-window powder average with unit atom weights. It omits X-ray form factors, neutron scattering lengths, occupancies, thermal motion, and instrument response.";
+    drawChartFrame(rdfChart, "q a", "S");
+    const maximum = Math.max(1, ...knownSq.values, ...liveSq.values) * 1.08;
+    const unityY = 96 - Math.min(1, 1 / maximum) * 84;
+    rdfChart.append(svgNode("line", { x1: 29, y1: unityY, x2: 352, y2: unityY, class: "chart-guide" }));
+    [5, 10, 15, 20].filter((tick) => tick >= knownSq.qMin && tick <= knownSq.qMax).forEach((tick) => {
+      const x = 29 + (tick - knownSq.qMin) / (knownSq.qMax - knownSq.qMin) * 323;
+      rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
+    });
+    rdfChart.append(svgNode("path", { id: "sqKnownPath", d: linePath(knownSq.values, maximum), class: "chart-known" }));
+    if (live.count > 1) rdfChart.append(svgNode("path", { id: "sqLivePath", d: linePath(liveSq.values, maximum), class: "chart-live" }));
+    setChartLegend(rdfLegend, [["known-key", "known · unit weights"], ["live-key", `${liveWindowLabel} · geometry only`]]);
+  } else {
+    const knownRdf = selectedRdf(referenceStructuralStats);
+    const liveRdf = selectedRdf(live);
+    const knownTail = rdfTailSummary(knownRdf);
+    const liveTail = live.count > 1 ? rdfTailSummary(liveRdf) : null;
+    rdfEyebrow.textContent = referenceStructuralStats.edgeCorrection === "periodic minimum image"
+      ? `${dimension}D periodic-cell RDF` : `${dimension}D edge-corrected finite-window RDF`;
+    rdfTitle.textContent = `g${dimension}D(${rdfPairSelection === "all" ? "all" : rdfPairLabel(rdfPairSelection)}; r / a)`;
+    rdfChart.setAttribute("aria-label", "Radial distribution function for known positions and live reconstruction");
+    rdfStatus.textContent = `tail ⟨g⟩ ${knownTail.mean.toFixed(2)}${liveTail ? ` → ${liveTail.mean.toFixed(2)}` : ""} · RMS₁ ${knownTail.rmsFromUnity.toFixed(2)}`;
+    rdfStatus.title = currentMaterial().order === "amorphous"
+      ? "An amorphous RDF has short-range peaks but should approach g(r)=1 at long range; it is not flat at every radius."
+      : `Known ${referenceCount()} atoms; ${liveWindowLabel} ${live.count}.`;
+    drawChartFrame(rdfChart, "r / a", "g");
+    const rdfMaximum = Math.max(1, ...knownRdf, ...liveRdf) * 1.08;
+    const unityY = 96 - Math.min(1, 1 / rdfMaximum) * 84;
+    rdfChart.append(svgNode("line", { x1: 29, y1: unityY, x2: 352, y2: unityY, class: "chart-guide" }));
+    const maximumRadius = referenceStructuralStats.maximumRadius;
+    Array.from({ length: Math.floor(maximumRadius) }, (_, index) => index + 1).forEach((tick) => {
+      const x = 29 + tick / maximumRadius * 323;
+      rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
+    });
+    rdfChart.append(svgNode("path", { id: "rdfKnownPath", d: linePath(knownRdf, rdfMaximum), class: "chart-known" }));
+    if (live.count > 1) rdfChart.append(svgNode("path", { id: "rdfLivePath", d: linePath(liveRdf, rdfMaximum), class: "chart-live" }));
+  }
 
   coordChart.replaceChildren();
   drawChartFrame(coordChart, "coordination z", "P");
@@ -3098,12 +3170,13 @@ async function buildExperimentReceipt() {
   const coverVisible = pipelineStage >= 1;
   const markingVisible = pipelineStage >= 3;
   const searchVisible = pipelineStage >= 4;
+  const referenceSq = ensureStructureFactor(referenceStructuralStats);
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-9",
+      buildId: "20260824-10",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3147,6 +3220,29 @@ async function buildExperimentReceipt() {
         populations: [...entry.populations],
         support: entry.support,
       })),
+    },
+    structuralEvidence: {
+      role: "posthoc validation only; never a growth feature or branch score",
+      selectedView: structureObservableSelection,
+      rdf: {
+        dimension: referenceStructuralStats.dimension,
+        pair: rdfPairSelection,
+        maximumRadiusInNearestNeighborUnits: receiptRound(referenceStructuralStats.maximumRadius),
+        correction: referenceStructuralStats.edgeCorrection,
+      },
+      geometricPowderStructureFactor: {
+        dimension: referenceSq.dimension,
+        qMinTimesNearestNeighbor: referenceSq.qMin,
+        qMaxTimesNearestNeighbor: referenceSq.qMax,
+        bins: referenceSq.values.length,
+        peakQTimesNearestNeighbor: receiptRound(referenceSq.summary.peakQ),
+        peakHeight: receiptRound(referenceSq.summary.peakHeight),
+        highQMean: receiptRound(referenceSq.summary.highQMean),
+        unitScatteringWeights: true,
+        xrayFormFactorsUsed: false,
+        neutronScatteringLengthsUsed: false,
+        experimentalIntensityClaimed: false,
+      },
     },
     cover: coverVisible ? {
       status: learnedCover.complete ? "complete" : "incomplete",
@@ -5489,6 +5585,10 @@ rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateTogg
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
 rdfPairSelect.addEventListener("change", () => {
   rdfPairSelection = rdfPairSelect.value;
+  renderStructureStats();
+});
+structureObservableSelect.addEventListener("change", () => {
+  structureObservableSelection = structureObservableSelect.value === "sq" ? "sq" : "rdf";
   renderStructureStats();
 });
 document.addEventListener("keydown", (event) => {

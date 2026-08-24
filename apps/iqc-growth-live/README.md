@@ -290,8 +290,8 @@ and exponential-quality GCTS growth as failed.
 
 ## Live validation
 
-The RDF and coordination-number charts compare the known configuration with
-the explicit atoms produced by search. The RDF is dimension aware: planar
+The real/reciprocal-space and coordination-number charts compare the known
+configuration with the explicit atoms produced by search. The RDF is dimension aware: planar
 materials use annular area normalization and three-dimensional systems use
 spherical shells. Periodic windows use minimum-image distances only inside the
 inscribed half-cell radius; open windows use a translation edge correction.
@@ -303,6 +303,20 @@ radius. Beyond 216 atoms, the live chart uses a contiguous 216-atom central
 window. Coordination bins remain interactive and highlight every matching
 center, all current neighbors, and their connecting segments.
 
+The same card can switch to a finite-observation geometric powder structure
+factor. It evaluates the Debye pair sum with `sin(qr)/(qr)` in 3D and the
+correct `J0(qr)` orientational kernel for intrinsically 2D materials. The
+2D distance is projected into a proper intrinsic plane inferred from the point
+cloud, so a rigid embedding in 3D does not change the curve. The wave-number
+axis is normalized as `qa`, using the measured nearest-neighbour
+scale. Unit scattering weights make this a species-neutral geometry audit:
+there are no X-ray form factors, neutron scattering lengths, occupancies,
+Debye–Waller factors, or instrument broadening, so the curve must not be read
+as an experimental diffraction intensity. The glass control has a broad first
+maximum and returns toward `S(q)=1` at high q; periodic and quasiperiodic
+fixtures retain sharper reciprocal peaks. Numerical regression compares an
+equal-size hard-core glass with 3D cubic and 2D hexagonal positive controls.
+
 The deterministic Cu₆₄Zr₃₆ control no longer starts from a jittered cubic grid.
 It begins from continuous random positions in a periodic box and applies only
 species-dependent hard-core relaxation before rescaling the measured median
@@ -311,12 +325,17 @@ nor lattice sites; its seed, composition, minimum distance, cell length, and
 negative provenance flags are exported in the experiment receipt. It is still
 a structural packing surrogate rather than a quenched MD trajectory.
 
-The live order panel classifies the generated geometry rather than feeding a
-structure label to growth. It compares RDF and coordination evidence against a
+The live order panel stays explicitly unclassified throughout input, cluster
+identification, and GCTS learning. Only after Material Growth begins does it
+classify the generated geometry, without feeding a structure label back to
+growth. It compares RDF, coordination, and geometric powder
+`S(q)` evidence against a
 small prototype library and reports a provisional crystal, quasicrystal, or
-amorphous interpretation. A publishable evaluator still needs `spglib` or
-translation closure for crystals, reciprocal-module and diffraction tests for
-quasicrystals, and structure-factor plus local-motif tests for glasses.
+amorphous interpretation. This remains a posthoc prototype match, not an
+independent phase determination. A publishable evaluator still needs `spglib`
+or a fully certified translation analysis for crystals, indexed reciprocal
+modules and experimental diffraction for quasicrystals, and chemically
+weighted scattering plus local-motif tests for glasses.
 
 For a periodic input, a translation-consensus pass searches same-species
 displacements for three recurrent independent vectors. During search it draws

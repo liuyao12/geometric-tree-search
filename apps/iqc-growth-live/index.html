@@ -616,7 +616,14 @@
           <article class="structure-card">
             <div class="structure-heading">
               <div><p id="rdfEyebrow" class="eyebrow">finite-window RDF</p><strong id="rdfTitle">g(r / a)</strong></div>
-              <div class="rdf-controls"><select id="rdfPairSelect" aria-label="Radial distribution species pair"><option value="all">all element pairs</option></select><span id="rdfStatus">known 216 · live 0</span></div>
+              <div class="rdf-controls">
+                <select id="structureObservableSelect" aria-label="Structural observable">
+                  <option value="rdf">real space · RDF</option>
+                  <option value="sq">reciprocal space · S(q)</option>
+                </select>
+                <select id="rdfPairSelect" aria-label="Radial distribution species pair"><option value="all">all element pairs</option></select>
+                <span id="rdfStatus">known 216 · live 0</span>
+              </div>
             </div>
             <svg id="rdfChart" viewBox="0 0 360 118" role="img" aria-label="Radial distribution function for known positions and live reconstruction"></svg>
             <div id="rdfLegend" class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span></div>
@@ -674,13 +681,13 @@
           <div><strong id="structureNameValue">—</strong><span>best prototype</span></div>
           <div><strong id="symmetryValue">—</strong><span>symmetry assignment</span></div>
           <div><strong id="confidenceValue">0%</strong><span>structural match</span></div>
-          <p id="auditNote">The classifier waits for enough live atoms, then compares invariant RDF and coordination evidence with the reference library.</p>
+          <p id="auditNote">The classifier waits for enough live atoms, then compares RDF, coordination, and geometric powder S(q) evidence with the reference library.</p>
         </section>
       </aside>
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-9"></script>
+  <script type="module" src="./app.js?v=20260824-10"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-2"></script>
 </body>
 </html>
