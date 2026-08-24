@@ -315,6 +315,11 @@ body.atlas-open { overflow: hidden; }
 .toggle-stack label { display: flex; align-items: center; gap: 9px; min-height: 34px; padding: 0 10px; border-bottom: 1px solid var(--line); color: #93a6a1; font-size: 10px; cursor: pointer; }
 .toggle-stack label:last-child { border-bottom: 0; }
 .toggle-stack input { accent-color: var(--mint); }
+.receipt-actions { display: grid; grid-template-columns: 1.3fr .8fr; gap: 5px; }
+.receipt-actions button { min-height: 32px; padding: 0 8px; border: 1px solid rgba(181,148,255,.32); background: rgba(181,148,255,.045); color: var(--violet); font: 7px var(--mono); text-transform: uppercase; cursor: pointer; }
+.receipt-actions button:hover { border-color: var(--violet); background: rgba(181,148,255,.09); }
+.receipt-actions button:disabled { opacity: .45; cursor: wait; }
+.receipt-status { margin: 7px 0 0; color: var(--faint); font: 6px/1.5 var(--mono); }
 .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 6px; }
 .legend span { display: flex; align-items: center; gap: 7px; color: var(--muted); font: 8px var(--mono); }
 .legend i { width: 7px; height: 7px; border-radius: 50%; }

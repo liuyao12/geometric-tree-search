@@ -82,6 +82,9 @@ const markingToggle = $("markingToggle");
 const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
 const rotateToggle = $("rotateToggle");
+const downloadReceiptButton = $("downloadReceiptButton");
+const copyReceiptButton = $("copyReceiptButton");
+const receiptStatus = $("receiptStatus");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
@@ -2559,6 +2562,221 @@ function currentMarkingConfig() {
   };
 }
 
+const receiptRound = (value, digits = 8) => Number(Number(value).toFixed(digits));
+
+async function receiptSha256(text) {
+  const bytes = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)].map((value) => value.toString(16).padStart(2, "0")).join("");
+}
+
+async function structureDigest(source, coordinateSpace) {
+  const records = source.map((atom) => {
+    const point = coordinateSpace === "angstrom" && atom.pA ? atom.pA : atom.p;
+    return [atom.species, ...point.toArray().map((value) => receiptRound(value))];
+  }).sort((first, second) => JSON.stringify(first).localeCompare(JSON.stringify(second)));
+  return receiptSha256(JSON.stringify(records));
+}
+
+function receiptComposition(source) {
+  const counts = new Map();
+  source.forEach((atom) => counts.set(atom.species, (counts.get(atom.species) || 0) + 1));
+  return Object.fromEntries([...counts.entries()].sort(([first], [second]) => first.localeCompare(second)));
+}
+
+function receiptClusterRecord(cluster, index) {
+  const familyIndex = cluster.familyType ?? index;
+  const placements = cluster.classPlacementIndices?.length
+    ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
+  const supportSites = cluster.customSupport?.length
+    || learnedCover.placements.find((placement) => placement.type === cluster.type)?.support.length || 1;
+  return {
+    id: Number.isInteger(cluster.classIndex) ? `${clusterGalleryFamily(cluster)}:${cluster.classIndex + 1}` : `C${index + 1}`,
+    label: cluster.label || `C${index + 1}`,
+    family: clusterGalleryFamily(cluster),
+    coverRole: clusterCoverRole(cluster),
+    coloredSupportSites: supportSites,
+    occurrences: placements,
+    observedProperPoseOrbits: galleryPoseCount(cluster),
+    portRoles: cluster.residual ? 0 : clusterPortRank(familyIndex),
+    posePortRank: cluster.residual ? 0 : clusterPosePortRank(familyIndex),
+    recommendedChannels: cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex),
+    isometryClass: Number.isInteger(cluster.classIndex) ? cluster.classIndex + 1 : null,
+    familyClassCount: cluster.classCount ?? null,
+  };
+}
+
+function receiptGrowthClaims(scenarioId, benchmark, trace) {
+  const symbolicRecursiveSystems = new Set(["competition", "graphene", "hbn", "moire"]);
+  const symbolicRecursiveScaling = benchmark.status === "pass" && symbolicRecursiveSystems.has(scenarioId);
+  const stationaryProductionSystems = new Set(["competition"]);
+  return {
+    structuralContinuationOnly: true,
+    physicalPotentialUsed: false,
+    physicalElapsedTimeModeled: false,
+    growthRateClaimed: false,
+    targetCoordinatesIncluded: false,
+    stationaryProductionCertified: benchmark.status === "pass" && stationaryProductionSystems.has(scenarioId),
+    symbolicRecursiveScalingClaimed: symbolicRecursiveScaling,
+    genericExponentialGctsClaimed: false,
+    finiteFixedPointContinuation: Boolean(trace?.fixedPoint),
+    iceProtonOrientationsResolved: trace ? false : null,
+  };
+}
+
+async function buildExperimentReceipt() {
+  const material = currentMaterial();
+  const markingConfig = currentMarkingConfig();
+  const activeMarking = selectedMarking();
+  const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  const cell = currentCell();
+  const coverVisible = pipelineStage >= 1;
+  const markingVisible = pipelineStage >= 3;
+  const searchVisible = pipelineStage >= 4;
+  const receipt = {
+    schema: "gcts-materials-growth-receipt-v1",
+    generatedAt: new Date().toISOString(),
+    application: {
+      name: "Materials Growth Lab",
+      buildId: "20260824-5",
+      pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
+    },
+    input: {
+      sourceKind: scenarioSelect.value === "imported"
+        ? (importedStructure?.metadata?.entryId ? "public-database structure" : "locally parsed structure")
+        : "deterministic curated fixture",
+      scenarioId: scenarioSelect.value,
+      materialName: material.name,
+      elements: [...material.elements],
+      composition: receiptComposition(referenceAtoms),
+      atomCount: referenceAtoms.length,
+      structureSha256: await structureDigest(referenceAtoms, "angstrom"),
+      coordinatesEmbedded: false,
+      coordinateDigestSpace: "Cartesian Å; order-independent serialization",
+      periodicBoundary: currentPbc(),
+      cellAngstrom: cell?.map((vector) => vector.toArray().map((value) => receiptRound(value))) || null,
+      sourceReference: scenarioSelect.value === "imported" ? {
+        name: importedStructure?.metadata?.name || importedStructure?.filename || null,
+        entryId: importedStructure?.metadata?.entryId || null,
+        materialId: importedStructure?.metadata?.materialId || null,
+        format: importedStructure?.format || null,
+      } : { fixture: scenarioSelect.value },
+    },
+    pipeline: {
+      internalStage: pipelineStage,
+      visibleStage: visiblePipelineOrdinal(pipelineStage),
+      stageName: ["sample configuration", "cluster identification", "rigid encoding", "GCTS learning", "material growth"][pipelineStage],
+    },
+    geometry: {
+      requestedMode: geometryMode,
+      resolvedMode: resolvedGeometryMode(),
+      resolvedLabel: resolvedGeometryLabel(),
+      nearestNeighborAngstrom: receiptRound(referenceSpacingA),
+      periodicAxes: currentPbc(),
+      inferredUnitCell: Boolean(detectedUnitCell),
+      rotationGroup: rotationGroupLabel(),
+      poseAtlas: orientationAtlas.map((entry) => ({
+        cluster: entry.cluster,
+        observedProperPoseOrbits: entry.orientations,
+        populations: [...entry.populations],
+        support: entry.support,
+      })),
+    },
+    cover: coverVisible ? {
+      status: learnedCover.complete ? "complete" : "incomplete",
+      periodic: learnedCover.periodic,
+      coveredAtoms: learnedCover.covered,
+      inputAtoms: referenceAtoms.length,
+      placements: learnedCover.placements.length,
+      isometryTypes: clusterGalleryTypes().length,
+      residualTypes: learnedCover.residualTypes?.length || 0,
+      molecularFamilies: learnedCover.molecular || null,
+      classes: clusterGalleryTypes().map(receiptClusterRecord),
+    } : { status: "stage not entered" },
+    marking: {
+      status: markingVisible ? "trained" : "configured; stage not entered",
+      config: markingConfig,
+      searchMode: markingSearchMode,
+      compatibleLibraryEntries: compatibleMarkings().map((marking) => ({ id: marking.id, name: marking.name })),
+      active: markingVisible && activeMarking ? {
+        id: activeMarking.id,
+        name: activeMarking.name,
+        vocabularyKey: activeMarking.vocabularyKey,
+        config: activeMarking.config,
+        coefficients: activeMarking.coefficients.map((row) => row.map((value) => receiptRound(value))),
+      } : null,
+      learned: markingVisible ? {
+        prototypes: sectionModel.prototypeCount,
+        channels: sectionModel.channels,
+        reach: sectionModel.reach,
+        representation: sectionModel.representation,
+        fitSamples: sectionModel.fitCount ?? sectionModel.curve.length,
+        holdoutSamples: sectionModel.holdoutCount ?? 0,
+      } : null,
+    },
+    search: searchVisible ? {
+      policy: policySelect.value,
+      hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
+      markingLibraryMode: markingSearchMode,
+      explicitSites: atoms.length,
+      explicitSitesSha256: await structureDigest(atoms, "scene"),
+      coordinateDigestSpace: "scene coordinates; order-independent serialization; coordinates not embedded",
+      placedClusters: placedClusters.length,
+      acceptedDecisions,
+      rejectedDecisions,
+      grammarDecisions,
+      localOracleCalls: oracleCalls,
+      finiteIceAnchorTrace: iceAnchorTrace ? {
+        artifactDigest: ICE_MOLECULAR_PORT_ARTIFACT.artifactDigest,
+        caseId: iceAnchorTrace.caseId,
+        seedAnchors: iceAnchorTrace.seedAnchors,
+        waves: iceAnchorTrace.waves.map((wave) => ({
+          wave: wave.wave,
+          candidateAnchors: wave.candidateAnchors,
+          acceptedAnchors: wave.acceptedAnchors,
+          retainedOrientationHypotheses: wave.retainedOrientationHypotheses,
+          rejectedNonunanimousAnchors: wave.rejectedNonunanimousAnchors,
+        })),
+        emittedAnchorCount: iceAnchorTrace.emittedAnchors.length,
+        unresolvedOrientationDomains: iceAnchorTrace.unresolvedOrientationHypotheses,
+        targetUsed: iceAnchorTrace.targetUsed,
+        fixedPoint: iceAnchorTrace.fixedPoint,
+        exactBackendCountParity: iceAnchorTrace.exactBackendCountParity,
+      } : null,
+    } : { status: "stage not entered" },
+    evidenceBoundary: {
+      benchmarkStatus: benchmark.status,
+      benchmarkGate: benchmark.gate,
+      ...receiptGrowthClaims(scenarioSelect.value, benchmark, iceAnchorTrace),
+      note: benchmark.note,
+    },
+  };
+  const experimentState = JSON.parse(JSON.stringify(receipt));
+  delete experimentState.generatedAt;
+  receipt.experimentStateSha256 = await receiptSha256(JSON.stringify(experimentState));
+  receipt.receiptSha256 = await receiptSha256(JSON.stringify(receipt));
+  return receipt;
+}
+
+async function serializedExperimentReceipt() {
+  return `${JSON.stringify(await buildExperimentReceipt(), null, 2)}\n`;
+}
+
+async function withReceiptStatus(button, action) {
+  const original = button.textContent;
+  button.disabled = true;
+  receiptStatus.textContent = "Building stage-aware receipt…";
+  try {
+    await action();
+  } catch (error) {
+    receiptStatus.textContent = `Receipt failed: ${error.message}`;
+    console.error(error);
+  } finally {
+    button.disabled = false;
+    button.textContent = original;
+  }
+}
+
 function markingMaterialKey() {
   return scenarioSelect.value === "imported"
     ? `imported:${importedStructure?.metadata?.entryId || importedStructure?.metadata?.name || referenceCount()}`
@@ -4560,6 +4778,24 @@ playButton.addEventListener("click", () => {
 });
 stepButton.addEventListener("click", () => { setPlaying(false); performEvent(); });
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
+downloadReceiptButton.addEventListener("click", () => withReceiptStatus(downloadReceiptButton, async () => {
+  const receipt = await serializedExperimentReceipt();
+  const blob = new Blob([receipt], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `gcts-${scenarioSelect.value}-stage-${visiblePipelineOrdinal(pipelineStage)}-receipt.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+  receiptStatus.textContent = "Receipt downloaded · coordinates excluded; SHA-256 digests included.";
+}));
+copyReceiptButton.addEventListener("click", () => withReceiptStatus(copyReceiptButton, async () => {
+  if (!navigator.clipboard?.writeText) throw new Error("clipboard API unavailable");
+  await navigator.clipboard.writeText(await serializedExperimentReceipt());
+  receiptStatus.textContent = "Receipt JSON copied · coordinates excluded; SHA-256 digests included.";
+}));
 scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
 periodicTableButton.addEventListener("click", () => setPeriodicTableOpen(periodicTablePanel.hidden));
 periodicCloseButton.addEventListener("click", () => setPeriodicTableOpen(false));

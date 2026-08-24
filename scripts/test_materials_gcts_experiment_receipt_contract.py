@@ -1,0 +1,52 @@
+"""Source contract for stage-aware, coordinate-free experiment receipts."""
+
+from pathlib import Path
+
+
+ROOT = Path(__file__).parents[1]
+APP_DIR = ROOT / "apps" / "iqc-growth-live"
+
+
+def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
+    source = (APP_DIR / "app.js").read_text(encoding="utf-8")
+    html = (APP_DIR / "index.html").read_text(encoding="utf-8")
+    css = (APP_DIR / "style.css").read_text(encoding="utf-8")
+
+    assert 'schema: "gcts-materials-growth-receipt-v1"' in source
+    assert "async function buildExperimentReceipt()" in source
+    assert "async function structureDigest(source, coordinateSpace)" in source
+    assert 'crypto.subtle.digest("SHA-256"' in source
+    assert "delete experimentState.generatedAt" in source
+    assert "receipt.experimentStateSha256" in source
+    assert "receipt.receiptSha256" in source
+
+    for section in ("input", "pipeline", "geometry", "cover", "marking", "search", "evidenceBoundary"):
+        assert f"    {section}:" in source
+
+    assert "coordinatesEmbedded: false" in source
+    assert "targetCoordinatesIncluded: false" in source
+    assert "physicalPotentialUsed: false" in source
+    assert "physicalElapsedTimeModeled: false" in source
+    assert "growthRateClaimed: false" in source
+    assert "iceProtonOrientationsResolved: trace ? false : null" in source
+    assert 'const symbolicRecursiveSystems = new Set(["competition", "graphene", "hbn", "moire"])' in source
+    assert 'const stationaryProductionSystems = new Set(["competition"])' in source
+    assert 'stationaryProductionCertified: benchmark.status === "pass" && stationaryProductionSystems.has(scenarioId)' in source
+    assert "symbolicRecursiveScalingClaimed: symbolicRecursiveScaling" in source
+    assert "genericExponentialGctsClaimed: false" in source
+    assert "finiteFixedPointContinuation: Boolean(trace?.fixedPoint)" in source
+    assert "exactBackendCountParity: iceAnchorTrace.exactBackendCountParity" in source
+    assert "emittedAnchorCount: iceAnchorTrace.emittedAnchors.length" in source
+
+    assert 'id="downloadReceiptButton"' in html
+    assert 'id="copyReceiptButton"' in html
+    assert 'id="receiptStatus"' in html
+    assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
+    assert 'app.js?v=20260824-5' in html
+    assert ".receipt-actions" in css
+    assert ".receipt-status" in css
+
+
+if __name__ == "__main__":
+    test_experiment_receipt_is_reproducible_and_claim_bounded()
+    print("experiment receipt contract: passed")

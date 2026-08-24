@@ -25,6 +25,30 @@ intrinsically 2D sheets embedded in 3D, not a thin 3D periodic box.
 Element-dependent colors and radii are presentation
 encodings, not electron densities or physical potentials.
 
+## Reproducible experiment receipts
+
+The left rail can download or copy a stage-aware JSON receipt at any point in
+an investigation. It records the input provenance and composition, periodic
+geometry, inferred translation support, proper-pose atlas, complete cluster
+cover, marking configuration and learned coefficients, selected search policy,
+clusters² setting, decision counts, and the current explicit-output digest.
+Receipts taken before a stage is entered say so rather than serializing stale
+state from a later stage.
+
+Atomic coordinates and hidden scoring targets are never embedded in a receipt.
+The input and explicit output are represented by order-independent SHA-256
+digests; public-database identifiers and cell vectors remain as reproducibility
+metadata. `experimentStateSha256` excludes the generation timestamp, so two
+exports of an unchanged state have the same experiment identity, while
+`receiptSha256` authenticates the complete timestamped record.
+
+The receipt also carries a machine-readable claim boundary. Finite structural
+continuation is not relabelled as a physical potential, elapsed time, growth
+rate, stationary production, or generic exponential GCTS result. In
+particular, the ice receipt records the executed frozen-anchor waves and safe
+fixed point while keeping unresolved proton orientations and stationary growth
+explicitly false.
+
 ## Environment discovery
 
 The cluster stage exposes the **translation geometry** explicitly. **Auto** tests
