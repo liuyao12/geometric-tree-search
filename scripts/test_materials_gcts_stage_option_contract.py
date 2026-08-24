@@ -32,7 +32,9 @@ def test_marking_configuration_and_library_are_executable_controls() -> None:
     assert "function restartMarkingTraining()" in APP
     assert "function freezeCurrentMarking()" in APP
     assert "function markingVocabularyKey()" in APP
-    assert 'const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v2"' in APP
+    assert 'const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v3"' in APP
+    assert "aggregateMarkingReadout" in APP
+    assert "coloredConnectionChirality" in APP
     assert "Library entries are enabled only when the colored cluster, pose, and port vocabulary matches exactly" in HTML
 
 

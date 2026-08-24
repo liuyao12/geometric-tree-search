@@ -39,6 +39,9 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert "emittedAnchorCount: iceAnchorTrace.emittedAnchors.length" in source
     assert "irregularMining: learnedCover.irregular || null" in source
     assert "liveCertificate: liveGrowthCertificate()" in source
+    assert "representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout" in source
+    assert "representationState: activeMarking.representationState || null" in source
+    assert "learnedChiralPortClasses: Object.keys(sectionModel.representationState?.chiralPreferences || {}).length" in source
 
     assert 'id="downloadReceiptButton"' in html
     assert 'id="copyReceiptButton"' in html
@@ -46,7 +49,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="strainValue"' in html
     assert 'id="compositionValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-18' in html
+    assert 'app.js?v=20260824-19' in html
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert ".receipt-actions" in css
     assert ".receipt-status" in css

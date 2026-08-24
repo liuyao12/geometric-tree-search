@@ -12,6 +12,10 @@ import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import {
+  aggregateMarkingReadout,
+  coloredConnectionChirality,
+} from "./marking-representation-readout.js?v=20260824-1";
+import {
   coloredAngularViolations,
   coloredGeometricStrain,
   coordinationEnvelopeFor,
@@ -3085,14 +3089,19 @@ function learnOverlapGrammar(source) {
 }
 
 const MARKING_REPRESENTATIONS = {
-  sites: { label: "site-resolved section", short: "site resolved", exponent: 4, overlapWeight: .58 },
-  halo: { label: "local radial / angular halo", short: "local halo", exponent: 5, overlapWeight: .64 },
-  "chiral-halo": { label: "chiral local halo", short: "chiral halo", exponent: 5.5, overlapWeight: .66 },
-  ports: { label: "connection-port vector", short: "port vector", exponent: 6, overlapWeight: .70 },
-  whole: { label: "whole-cluster action", short: "whole action", exponent: 2, overlapWeight: .38 },
+  sites: { label: "site-resolved section", short: "site resolved", exponent: 4, overlapWeight: .58,
+    readout: "minimum-weighted colored-site compatibility" },
+  halo: { label: "local radial / angular halo", short: "local halo", exponent: 5, overlapWeight: .64,
+    readout: "port and support-halo mean" },
+  "chiral-halo": { label: "chiral local halo", short: "chiral halo", exponent: 5.5, overlapWeight: .66,
+    readout: "halo plus learned mirror-odd colored-connection pseudoscalar" },
+  ports: { label: "connection-port vector", short: "port vector", exponent: 6, overlapWeight: .70,
+    readout: "bidirectional endpoint-port agreement" },
+  whole: { label: "whole-cluster action", short: "whole action", exponent: 2, overlapWeight: .38,
+    readout: "mean-dominant whole-template support" },
 };
-const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v2";
-const MARKING_VOCABULARY_SCHEMA = 2;
+const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v3";
+const MARKING_VOCABULARY_SCHEMA = 3;
 
 function restoreMarkingLibrary() {
   try {
@@ -3212,7 +3221,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-18",
+      buildId: "20260824-19",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3348,6 +3357,8 @@ async function buildExperimentReceipt() {
         name: activeMarking.name,
         vocabularyKey: activeMarking.vocabularyKey,
         config: activeMarking.config,
+        representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout || null,
+        representationState: activeMarking.representationState || null,
         coefficients: activeMarking.coefficients.map((row) => row.map((value) => receiptRound(value))),
       } : null,
       learned: markingVisible ? {
@@ -3355,6 +3366,8 @@ async function buildExperimentReceipt() {
         channels: sectionModel.channels,
         reach: sectionModel.reach,
         representation: sectionModel.representation,
+        representationReadout: MARKING_REPRESENTATIONS[sectionModel.representation]?.readout || null,
+        learnedChiralPortClasses: Object.keys(sectionModel.representationState?.chiralPreferences || {}).length,
         fitSamples: sectionModel.fitCount ?? sectionModel.curve.length,
         holdoutSamples: sectionModel.holdoutCount ?? 0,
       } : null,
@@ -3517,6 +3530,46 @@ function markingVocabularyKey() {
   });
 }
 
+function ruleColoredSiteGeometry(rule) {
+  const sites = rule.sites || overlapGrammar.templates[rule.to]?.sites || [];
+  return sites.map((site) => {
+    const invariantNeighbors = sites.filter((other) => other !== site).map((other) =>
+      `${other.species}:${Math.round(site.local.distanceTo(other.local) * 1000)}`).sort();
+    const token = `${site.species}|${Math.round(site.local.length() * 1000)}|${invariantNeighbors.join(",")}`;
+    return {
+      token,
+      local: site.local,
+      parentVector: site.local.clone().applyQuaternion(rule.rotation).add(rule.translation),
+    };
+  });
+}
+
+function ruleColoredChirality(rule) {
+  const sites = ruleColoredSiteGeometry(rule).map((site) => ({
+    token: site.token,
+    vector: site.parentVector.toArray(),
+  }));
+  return coloredConnectionChirality(rule.translation.toArray(), sites);
+}
+
+function learnRepresentationState() {
+  const accumulators = new Map();
+  (overlapGrammar?.rules || []).forEach((rule) => {
+    const key = `${rule.from}>${rule.to}`;
+    const state = accumulators.get(key) || { weightedSum: 0, observations: 0 };
+    const observations = Math.max(1, rule.count || 1);
+    state.weightedSum += ruleColoredChirality(rule) * observations;
+    state.observations += observations;
+    accumulators.set(key, state);
+  });
+  return {
+    chiralPreferences: Object.fromEntries([...accumulators.entries()].map(([key, state]) => [key, {
+      mean: state.weightedSum / state.observations,
+      observations: state.observations,
+    }])),
+  };
+}
+
 function learnSectionModel(source, config = currentMarkingConfig()) {
   if (learnedCover?.occurrenceBased || learnedCover?.molecular) return learnMolecularSectionModel(source, config);
   const axes = BALANCE_DIRECTIONS;
@@ -3658,6 +3711,7 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     representation: config.representation, overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount: clusterCount, sampleLabels: learnedClusters.labels.slice(),
+    representationState: learnRepresentationState(),
     sampleKind: "atom-centred environment" };
 }
 
@@ -3739,6 +3793,7 @@ function learnMolecularSectionModel(source, config) {
     overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount, sampleLabels,
+    representationState: learnRepresentationState(),
     sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence",
   };
 }
@@ -3790,11 +3845,13 @@ function ruleMarkingDecision(rule) {
   const rows = library.map((marking) => ({
     id: marking.id,
     name: marking.name,
-    score: ruleMarkingScore(rule, marking.coefficients),
+    score: ruleMarkingScore(rule, marking.coefficients,
+      marking.config.representation, marking.representationState),
     threshold: markingAcceptanceThreshold(marking),
   }));
   if (!rows.length) {
-    const score = ruleMarkingScore(rule, searchSectionCoefficients());
+    const score = ruleMarkingScore(rule, searchSectionCoefficients(),
+      sectionModel.representation, sectionModel.representationState);
     rows.push({ id: "current", name: "current marking", score,
       threshold: markingAcceptanceThreshold() });
   }
@@ -3840,17 +3897,41 @@ function seedTrainedMarking() {
   }));
 }
 
-function sectionValue(cluster, localDirection, coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients) {
+function sectionValue(cluster, localDirection,
+  coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients,
+  exponent = sectionModel.exponent) {
   return sectionModel.axes.reduce((sum, axis, index) =>
-    sum + coefficients[cluster][index] * Math.max(0, localDirection.dot(axis)) ** sectionModel.exponent, 0);
+    sum + coefficients[cluster][index] * Math.max(0, localDirection.dot(axis)) ** exponent, 0);
 }
 
-function ruleMarkingScore(rule, coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients) {
+function ruleMarkingScore(rule,
+  coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients,
+  representationName = sectionModel.representation,
+  representationState = sectionModel.representationState) {
+  const representation = MARKING_REPRESENTATIONS[representationName] || MARKING_REPRESENTATIONS.sites;
   const forward = rule.translation.clone().normalize();
   const reverse = rule.translation.clone().negate().normalize().applyQuaternion(rule.rotation.clone().invert());
-  const first = sectionValue(rule.from, forward, coefficients);
-  const second = sectionValue(rule.to, reverse, coefficients);
-  return .5 * (first + second) - Math.abs(first - second) - Math.max(0, -.08 - first) - Math.max(0, -.08 - second);
+  const first = sectionValue(rule.from, forward, coefficients, representation.exponent);
+  const second = sectionValue(rule.to, reverse, coefficients, representation.exponent);
+  const inverseRotation = rule.rotation.clone().invert();
+  const siteValues = ruleColoredSiteGeometry(rule).flatMap((site) => {
+    if (site.parentVector.lengthSq() <= 1e-10) return [];
+    const parentValue = sectionValue(rule.from, site.parentVector.clone().normalize(), coefficients, representation.exponent);
+    const childToParent = site.parentVector.clone().negate().applyQuaternion(inverseRotation).normalize();
+    const childValue = sectionValue(rule.to, childToParent, coefficients, representation.exponent);
+    return [.5 * (parentValue + childValue) - Math.abs(parentValue - childValue)];
+  });
+  const chirality = ruleColoredChirality(rule);
+  const preference = representationState?.chiralPreferences?.[`${rule.from}>${rule.to}`];
+  const chiralityAffinity = preference?.observations
+    ? 1 - Math.min(2, Math.abs(chirality - preference.mean)) : 0;
+  return aggregateMarkingReadout({
+    representation: representationName,
+    forward: first,
+    reverse: second,
+    siteValues,
+    chiralityAffinity,
+  });
 }
 
 function spatialKey(position) {
@@ -4601,12 +4682,14 @@ function freezeCurrentMarking() {
       vocabularySummary: `${markingPrototypeTypes().length} cover types · ${resolvedGeometryLabel()} · ${reducedCompositionKey()}`,
       config,
       coefficients: sectionModel.curve.at(-1).coefficients.map((values) => [...values]),
+      representationState: JSON.parse(JSON.stringify(sectionModel.representationState)),
       validationLoss: sectionModel.curve.at(-1).validationLoss,
       samples: markingSampleCount(),
     };
     markingLibrary.push(marking);
   } else {
     marking.coefficients = sectionModel.curve.at(-1).coefficients.map((values) => [...values]);
+    marking.representationState = JSON.parse(JSON.stringify(sectionModel.representationState));
     marking.validationLoss = sectionModel.curve.at(-1).validationLoss;
     marking.samples = markingSampleCount();
   }
@@ -4751,7 +4834,7 @@ function syncStageOptions() {
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${markingSampleCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
-    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels.`;
+    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels.`;
   } else {
     renderMarkingLibrary();
     markingSearchModeSelect.value = markingSearchMode;

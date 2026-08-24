@@ -263,6 +263,19 @@ potentials. Training starts from deterministic random directional coefficients;
 the live fit and held-out curves combine signed-port mismatch with
 shared-support disagreement.
 
+The representation selector now changes the mathematical readout, not only its
+label. Port vectors compare the two directed endpoint sections. Site-resolved
+sections emphasize the least compatible colored site; local halos blend the
+endpoint and support mean; whole-action readout emphasizes the mean over the
+entire frozen child template. The chiral halo adds a learned connection-class
+preference for a colored pseudoscalar constructed from the parent translation
+and canonically tokenized child-site pairs. That pseudoscalar is invariant under
+translation, proper rotation, and atom insertion order, and changes sign under a
+mirror. Symmetry-degenerate equal-token pairs contribute nothing. These
+readouts rank the same frozen rigid candidates and never authorize new geometry.
+Their definition and learned chiral class means are included in receipts and
+saved marking-library entries.
+
 The molecular path uses one section sample per cover occurrence. In ice Ih
 that means `72` H2O, `144` bridge, and `180` void-boundary samples (`396`
 total). Stage three renders those same three Stage-two prototypes with their
