@@ -2228,6 +2228,49 @@ function clusterCoverRole(cluster) {
   }[clusterGalleryFamily(cluster)];
 }
 
+function molecularCoverIcon(family) {
+  if (family === "molecule") return `<svg viewBox="0 0 54 34" aria-hidden="true">
+    <path d="M27 18 10 7M27 18 44 7"/><circle cx="27" cy="18" r="5"/><circle cx="10" cy="7" r="3"/><circle cx="44" cy="7" r="3"/>
+  </svg>`;
+  if (family === "bridge") return `<svg viewBox="0 0 54 34" aria-hidden="true">
+    <path d="m7 8 13-5 1 14-14-9Zm26 9 1-14 13 5-14 9ZM7 8l26 9M20 3l14 0M21 17l26-9"/><path class="dash" d="M20 3 33 17"/>
+  </svg>`;
+  return `<svg viewBox="0 0 54 34" aria-hidden="true">
+    <path d="m13 17 7-12h14l7 12-7 12H20L13 17Z"/><circle cx="13" cy="17" r="2"/><circle cx="20" cy="5" r="2"/><circle cx="34" cy="5" r="2"/><circle cx="41" cy="17" r="2"/><circle cx="34" cy="29" r="2"/><circle cx="20" cy="29" r="2"/>
+  </svg>`;
+}
+
+function buildMolecularCoverLedger(types) {
+  if (!learnedCover.molecular) return null;
+  const ledger = document.createElement("div");
+  ledger.className = "cluster-cover-ledger";
+  ledger.setAttribute("aria-label", "Molecular ice cover accounting");
+  const layers = [
+    { family: "molecule", eyebrow: "atomic cover", title: `${learnedCover.molecular.waters} H₂O`,
+      detail: `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.molecular.waterClasses} isometry class` },
+    { family: "bridge", eyebrow: "connection cover", title: `${learnedCover.molecular.bridges} bridges`,
+      detail: `${learnedCover.molecular.bridgeClasses} metric-isometry classes · attachment geometry` },
+    { family: "gap", eyebrow: "void-boundary cover", title: `${learnedCover.molecular.gaps} O₆ boundaries`,
+      detail: `${learnedCover.molecular.gapClasses} decorated classes · empty-region geometry` },
+  ];
+  layers.forEach((layer) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.clusterLedgerFilter = layer.family;
+    button.setAttribute("aria-label", `Show ${layer.eyebrow}: ${layer.title}`);
+    button.innerHTML = `${molecularCoverIcon(layer.family)}<span><small>${layer.eyebrow}</small><strong>${layer.title}</strong><em>${layer.detail}</em></span>`;
+    button.addEventListener("click", () => {
+      const filter = clusterGallery.querySelector(`[data-cluster-family-filter="${layer.family}"]`);
+      filter?.click();
+    });
+    ledger.append(button);
+  });
+  const explanation = document.createElement("p");
+  explanation.textContent = "H₂O closes the atom cover; bridge and O₆ clusters encode connection and void geometry without inventing radial spokes.";
+  ledger.append(explanation);
+  return ledger;
+}
+
 function clusterPlacementIndices(cluster) {
   if (cluster.classPlacementIndices?.length) return cluster.classPlacementIndices.slice();
   return learnedCover.placements.map((placement, index) => placement.type === cluster.type ? index : -1)
@@ -2310,7 +2353,10 @@ function buildMolecularGalleryToolbar(types) {
   const inspector = document.createElement("div");
   inspector.className = "cluster-gallery-inspector";
   inspector.setAttribute("aria-live", "polite");
-  toolbar.append(controls, status, inspector);
+  const ledger = buildMolecularCoverLedger(types);
+  toolbar.append(controls, status);
+  if (ledger) toolbar.append(ledger);
+  toolbar.append(inspector);
   return toolbar;
 }
 
@@ -3227,7 +3273,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-20",
+      buildId: "20260824-21",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {

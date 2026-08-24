@@ -562,7 +562,15 @@ decoration does not become dozens of arbitrary channels. The gallery toolbar
 filters those families without merging or renumbering the
 underlying isometry classes. Every card reports its colored support size,
 occurrence multiplicity, observed proper-pose count, connection-port rank, and
-cover role. The complementary generic headless gate finds one transferable
+cover role. The toolbar also carries a three-layer cover ledger. Its molecular layer
+states the literal atom accounting (`72 H2O → 216 / 216 atoms` for Ih); its
+bridge and void layers state connection and empty-region boundary accounting
+separately. Clicking a layer filters the exact cards. This avoids implying
+that the auxiliary polyhedra repair missing atoms: H2O already closes the atom
+cover, while the auxiliary clusters close the geometry needed for attachment
+and traversal.
+
+The complementary generic headless gate finds one transferable
 six-member void family. Its underlying
 tree actions reconstruct 216/216 and 192/192 sites in six visible commuting
 waves with zero backtracking. The narrower directional hydrogen-bond cover is

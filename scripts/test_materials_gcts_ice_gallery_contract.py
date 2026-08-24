@@ -4,10 +4,12 @@ from pathlib import Path
 
 
 APP = Path(__file__).parents[1] / "apps" / "iqc-growth-live" / "app.js"
+STYLE = Path(__file__).parents[1] / "apps" / "iqc-growth-live" / "style.css"
 
 
 def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     source = APP.read_text(encoding="utf-8")
+    style = STYLE.read_text(encoding="utf-8")
 
     assert 'label: "H₂O molecule"' in source
     assert 'label: "hydrogen-bond bridge"' in source
@@ -30,6 +32,14 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "function coloredPeriodicSupportSignature(source, support)" in source
     assert "function molecularIsometryGallery(source, families, familyTypes)" in source
     assert "function buildMolecularGalleryToolbar(types)" in source
+    assert "function buildMolecularCoverLedger(types)" in source
+    assert 'eyebrow: "atomic cover"' in source
+    assert 'eyebrow: "connection cover"' in source
+    assert 'eyebrow: "void-boundary cover"' in source
+    assert "H₂O closes the atom cover" in source
+    assert "button.dataset.clusterLedgerFilter" in source
+    assert "data-cluster-family-filter" in source
+    assert ".cluster-cover-ledger" in style
     assert '["molecule", "H₂O molecules"]' in source
     assert '["bridge", "Bridge polyhedra"]' in source
     assert '["gap", "Gap boundaries"]' in source
