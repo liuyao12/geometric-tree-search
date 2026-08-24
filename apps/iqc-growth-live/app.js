@@ -11,11 +11,13 @@ import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 import {
+  coloredAngularViolations,
   coordinationEnvelopeFor,
   exclusionForPair,
+  learnColoredAngularEnvelopes,
   learnColoredCoordinationEnvelopes,
   learnColoredDistanceEnvelopes,
-} from "./colored-distance-envelopes.js?v=20260824-2";
+} from "./colored-distance-envelopes.js?v=20260824-3";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -387,6 +389,7 @@ let rejectedCandidateKeys = new Set();
 let reconstructionCertified = false;
 let reconstructionMarkingFallbacks = 0;
 let coordinationCapacityPrunes = 0;
+let angularEnvelopePrunes = 0;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let markingSelection = null;
@@ -413,6 +416,7 @@ let rdfPairSelection = "all";
 let structureObservableSelection = "rdf";
 let coloredDistanceEnvelopes = null;
 let coloredCoordinationEnvelopes = null;
+let coloredAngularEnvelopes = null;
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -3185,7 +3189,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-12",
+      buildId: "20260824-13",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3252,6 +3256,18 @@ async function buildExperimentReceipt() {
           medianObserved: record.medianObserved,
           upperObserved: record.upperObserved,
           maximumObserved: record.maximumObserved,
+          centerObservations: record.centerObservations,
+        })),
+      },
+      coloredAngularEnvelopes: {
+        role: "causal three-body admissibility bands over already present contact neighbors; not an angular potential",
+        config: coloredAngularEnvelopes.config,
+        triplets: coloredAngularEnvelopes.records.map((record) => ({
+          centerSpecies: record.centerSpecies,
+          neighborSpecies: record.neighborSpecies,
+          allowedBandsDegrees: record.bands.map((band) => [receiptRound(band.minimum), receiptRound(band.maximum)]),
+          observedMedianDegrees: receiptRound(record.medianObservedDegrees),
+          angleObservations: record.angleObservations,
           centerObservations: record.centerObservations,
         })),
       },
@@ -3323,6 +3339,7 @@ async function buildExperimentReceipt() {
       acceptedDecisions,
       rejectedDecisions,
       coordinationCapacityPrunes,
+      angularEnvelopePrunes,
       grammarDecisions,
       localOracleCalls: oracleCalls,
       liveCertificate: liveGrowthCertificate(),
@@ -3836,6 +3853,13 @@ function learnReferenceCoordinationEnvelopes(source) {
     coloredDistanceEnvelopes);
 }
 
+function learnReferenceAngularEnvelopes(source) {
+  const context = scenePeriodicContext();
+  return learnColoredAngularEnvelopes(source.map((atom) => atom.species),
+    (first, second) => scenePeriodicDisplacement(source[first].p, source[second].p, context),
+    coloredCoordinationEnvelopes);
+}
+
 function coloredPairExclusion(firstSpecies, secondSpecies) {
   return exclusionForPair(coloredDistanceEnvelopes, firstSpecies, secondSpecies);
 }
@@ -3978,7 +4002,17 @@ function sitesCanCommute(firstSites, secondSites) {
   return true;
 }
 
-function coordinationOverflowsForFreshSites(freshSites) {
+function uniqueFreshSites(freshSites) {
+  const unique = [];
+  freshSites.forEach((site) => {
+    if (!unique.some((other) => other.species === site.species
+      && other.p.distanceTo(site.p) <= COMMUTING_SITE_TOLERANCE)) unique.push(site);
+  });
+  return unique;
+}
+
+function coordinationOverflowsForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
   if (!freshSites.length || !coloredCoordinationEnvelopes) return [];
   const affected = new Map();
   atoms.forEach((atom) => freshSites.forEach((site) => {
@@ -4009,6 +4043,22 @@ function coordinationOverflowsForFreshSites(freshSites) {
   return overflows;
 }
 
+function angularViolationsForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  if (!freshSites.length || !coloredAngularEnvelopes) return [];
+  const projected = [...atoms, ...freshSites];
+  const affected = new Set(freshSites.map((_, index) => atoms.length + index));
+  atoms.forEach((atom, atomIndex) => {
+    if (freshSites.some((site) => {
+      const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, atom.species, site.species);
+      return envelope && atom.p.distanceTo(site.p) <= envelope.contactCutoff;
+    })) affected.add(atomIndex);
+  });
+  return coloredAngularViolations(projected.map((site) => site.species),
+    (first, second) => projected[second].p.clone().sub(projected[first].p),
+    coloredCoordinationEnvelopes, coloredAngularEnvelopes, [...affected]);
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -4025,7 +4075,8 @@ function batchRetainsNovelSites(entries) {
 function rejectionIsOrderInvariant(candidate, evaluation) {
   const markingRejected = policySelect.value === "marked" && !candidate.markingAccepted;
   return evaluation.conflicts > 0 || evaluation.boundaryFailures > 0
-    || evaluation.coordinationOverflows?.length > 0 || evaluation.fresh.length === 0 || markingRejected;
+    || evaluation.coordinationOverflows?.length > 0 || evaluation.angularViolations?.length > 0
+    || evaluation.fresh.length === 0 || markingRejected;
 }
 
 function commutingFrontierBatch() {
@@ -4054,7 +4105,9 @@ function commutingFrontierBatch() {
     if (evaluation.accepted) {
       if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
       const trial = [...acceptedBatch, entry];
-      if (coordinationOverflowsForFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh)).length) continue;
+      const trialFresh = uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh));
+      if (coordinationOverflowsForFreshSites(trialFresh).length
+        || angularViolationsForFreshSites(trialFresh).length) continue;
       if (!batchRetainsNovelSites(trial)) continue;
       acceptedBatch.push(entry);
       continue;
@@ -4113,12 +4166,15 @@ function evaluateCandidate(candidate) {
   const knownFailures = reconstructing ? canonical.failures : 0;
   const markingFallback = reconstructing && knownFailures === 0 && !markingAccepted;
   const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh);
+  const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
-    && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0 && (markingAccepted || markingFallback);
-  return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback, coordinationOverflows,
+    && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
+    && angularViolations.length === 0 && (markingAccepted || markingFallback);
+  return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
+    coordinationOverflows, angularViolations,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
-    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
+    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
 }
 
 function referenceCoverageCount() {
@@ -4163,6 +4219,7 @@ function initializeOffLatticeSearch() {
   reconstructionCertified = false;
   reconstructionMarkingFallbacks = 0;
   coordinationCapacityPrunes = 0;
+  angularEnvelopePrunes = 0;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
@@ -4596,6 +4653,7 @@ function resetCounters() {
   acceptedDecisions = 0;
   rejectedDecisions = 0;
   coordinationCapacityPrunes = 0;
+  angularEnvelopePrunes = 0;
   stackHistory = [];
   markingCache = new Map();
   actionCache = new Map();
@@ -4636,6 +4694,7 @@ function enterPipelineStage(index, options = {}) {
     : referenceSpacing / .92 * currentMaterial().spacingA;
   coloredDistanceEnvelopes = learnReferenceDistanceEnvelopes(referenceAtoms);
   coloredCoordinationEnvelopes = learnReferenceCoordinationEnvelopes(referenceAtoms);
+  coloredAngularEnvelopes = learnReferenceAngularEnvelopes(referenceAtoms);
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean),
     currentMaterial().intrinsicDimension === 2 ? 2 : 3);
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
@@ -4903,6 +4962,7 @@ function performOffLatticeEvent() {
     if (!snapshotEvaluation.accepted) {
       rejectedDecisions++;
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
+      if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -5430,14 +5490,15 @@ function selectMarkingDomain(domain) {
 }
 
 function renderMarkings() {
-  markingHeading.textContent = pipelineStage === 0 ? "colored distance envelopes" : pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "rigid overlap rules" : pipelineStage === 3 ? "local section bundle" : "active section marking";
+  markingHeading.textContent = pipelineStage === 0 ? "colored geometric envelopes" : pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "rigid overlap rules" : pipelineStage === 3 ? "local section bundle" : "active section marking";
   markingTable.replaceChildren();
   if (pipelineStage === 0) {
     const records = coloredDistanceEnvelopes?.records || [];
     const coordinationRecords = coloredCoordinationEnvelopes?.records || [];
-    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities`;
+    const angularRecords = coloredAngularEnvelopes?.records || [];
+    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles`;
     const p = document.createElement("p");
-    p.textContent = "Species-pair contacts are learned from positions; no motif labels or pair potential are supplied.";
+    p.textContent = "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
     markingTable.appendChild(p);
     const toAngstrom = referenceSpacingA / referenceSpacing;
     records.forEach((record) => {
@@ -5454,6 +5515,15 @@ function renderMarkings() {
       const code = document.createElement("code"); code.textContent = `${record.centerSpecies}→${record.neighborSpecies}`;
       const span = document.createElement("span"); span.textContent = `contact ≤ ${(record.contactCutoff * toAngstrom).toFixed(2)} Å`;
       const b = document.createElement("b"); b.textContent = `z ≤ ${record.maximumObserved}`;
+      row.append(code, span, b); markingTable.appendChild(row);
+    });
+    angularRecords.forEach((record) => {
+      const row = document.createElement("div"); row.className = "mark-row angular-envelope-row";
+      row.title = `${record.angleObservations} observed angles around ${record.centerObservations} centers · separated modes remain separated`;
+      const code = document.createElement("code"); code.textContent = `${record.neighborSpecies[0]}–${record.centerSpecies}–${record.neighborSpecies[1]}`;
+      const span = document.createElement("span"); span.textContent = record.bands
+        .map((band) => `${band.minimum.toFixed(0)}–${band.maximum.toFixed(0)}°`).join(" ∪ ");
+      const b = document.createElement("b"); b.textContent = `×${record.angleObservations}`;
       row.append(code, span, b); markingTable.appendChild(row);
     });
     return;

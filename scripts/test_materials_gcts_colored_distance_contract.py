@@ -21,13 +21,18 @@ def test_growth_uses_train_derived_colored_distance_envelopes() -> None:
     assert "coordinationOverflowsForFreshSites" in source
     assert "trial.flatMap((trialEntry) => trialEntry.evaluation.fresh)" in source
     assert "colored coordination capacities exceeded" in source
-    assert 'markingHeading.textContent = pipelineStage === 0 ? "colored distance envelopes"' in source
+    assert "learnColoredAngularEnvelopes" in source
+    assert "angularViolationsForFreshSites" in source
+    assert "colored angular envelopes violated" in source
+    assert "uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh))" in source
+    assert 'markingHeading.textContent = pipelineStage === 0 ? "colored geometric envelopes"' in source
     assert 'role: "hard geometric exclusion learned from supplied positions; not a pair potential"' in source
     assert 'role: "causal upper saturation limits; incomplete frontier shells may remain below the bound"' in source
+    assert 'role: "causal three-body admissibility bands over already present contact neighbors; not an angular potential"' in source
     assert "physicalPotentialUsed: false" in source
     assert "one universal collision radius" in readme
     assert "This is chemistry-as-geometry, not a pair potential" in readme
-    assert 'app.js?v=20260824-12' in html
+    assert 'app.js?v=20260824-13' in html
 
 
 if __name__ == "__main__":

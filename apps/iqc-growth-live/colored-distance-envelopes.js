@@ -137,3 +137,142 @@ export function learnColoredCoordinationEnvelopes(species, distance, distanceMod
 export function coordinationEnvelopeFor(model, centerSpecies, neighborSpecies) {
   return model?.byKey?.[orderedKey(centerSpecies, neighborSpecies)] || null;
 }
+
+function angularKey(center, firstNeighbor, secondNeighbor) {
+  const [first, second] = [firstNeighbor, secondNeighbor].sort();
+  return `${first}<${center}>${second}`;
+}
+
+function vectorComponents(vector) {
+  if (Array.isArray(vector)) return vector;
+  return [vector.x, vector.y, vector.z];
+}
+
+function angleDegrees(firstVector, secondVector) {
+  const first = vectorComponents(firstVector);
+  const second = vectorComponents(secondVector);
+  const firstNorm = Math.hypot(...first);
+  const secondNorm = Math.hypot(...second);
+  if (!(firstNorm > 1e-9 && secondNorm > 1e-9)) return null;
+  const cosine = first.reduce((sum, value, axis) => sum + value * second[axis], 0) / (firstNorm * secondNorm);
+  return Math.acos(Math.max(-1, Math.min(1, cosine))) * 180 / Math.PI;
+}
+
+function angleBands(values, mergeGapDegrees, toleranceDegrees) {
+  const groups = [];
+  values.forEach((value) => {
+    const group = groups.at(-1);
+    if (!group || value - group.at(-1) > mergeGapDegrees) groups.push([value]);
+    else group.push(value);
+  });
+  return groups.map((group) => ({
+    minimum: Math.max(0, group[0] - toleranceDegrees),
+    maximum: Math.min(180, group.at(-1) + toleranceDegrees),
+    observedMinimum: group[0],
+    observedMaximum: group.at(-1),
+    observations: group.length,
+  }));
+}
+
+/**
+ * Learn colored three-body admissibility from every pair of observed contact
+ * neighbors.  Neighbor colors are unordered, the central color is not.  A
+ * multimodal crystal (for example 90/180 degree octahedral angles) retains
+ * separate bands instead of filling the physically absent angles between
+ * modes.  Each observed band is padded, so the supplied structure is always
+ * admissible and mild geometric noise does not turn into a brittle rule.
+ */
+export function learnColoredAngularEnvelopes(species, displacement, coordinationModel, {
+  mergeGapDegrees = 18,
+  toleranceDegrees = 8,
+} = {}) {
+  if (!coordinationModel?.records?.length) throw new Error("angular envelopes require coordination envelopes");
+  if (typeof displacement !== "function") throw new Error("angular envelopes require a displacement callback");
+  if (!(Number.isFinite(mergeGapDegrees) && mergeGapDegrees > 0
+    && Number.isFinite(toleranceDegrees) && toleranceDegrees > 0 && toleranceDegrees < 45)) {
+    throw new Error("angular envelope widths must be finite positive bounds");
+  }
+  const observations = new Map();
+  const centerSets = new Map();
+  species.forEach((centerSpecies, center) => {
+    const neighbors = [];
+    species.forEach((neighborSpecies, neighbor) => {
+      if (neighbor === center) return;
+      const envelope = coordinationEnvelopeFor(coordinationModel, centerSpecies, neighborSpecies);
+      if (!envelope) return;
+      const vector = displacement(center, neighbor);
+      const norm = Math.hypot(...vectorComponents(vector));
+      if (norm <= envelope.contactCutoff) neighbors.push({ neighbor, neighborSpecies, vector });
+    });
+    for (let first = 0; first < neighbors.length - 1; first++) for (let second = first + 1; second < neighbors.length; second++) {
+      const value = angleDegrees(neighbors[first].vector, neighbors[second].vector);
+      if (!Number.isFinite(value)) continue;
+      const key = angularKey(centerSpecies, neighbors[first].neighborSpecies, neighbors[second].neighborSpecies);
+      const values = observations.get(key) || [];
+      values.push(value);
+      observations.set(key, values);
+      const centers = centerSets.get(key) || new Set();
+      centers.add(center);
+      centerSets.set(key, centers);
+    }
+  });
+  const records = [...observations.entries()].sort(([first], [second]) => first.localeCompare(second))
+    .map(([key, values]) => {
+      values.sort((first, second) => first - second);
+      const [firstNeighbor, centerAndSecond] = key.split("<");
+      const [center, secondNeighbor] = centerAndSecond.split(">");
+      return {
+        key,
+        centerSpecies: center,
+        neighborSpecies: [firstNeighbor, secondNeighbor],
+        bands: angleBands(values, mergeGapDegrees, toleranceDegrees),
+        medianObservedDegrees: quantile(values, .5),
+        angleObservations: values.length,
+        centerObservations: centerSets.get(key).size,
+      };
+    });
+  return {
+    records,
+    byKey: Object.fromEntries(records.map((record) => [record.key, record])),
+    config: { mergeGapDegrees, toleranceDegrees },
+  };
+}
+
+export function angularEnvelopeFor(model, centerSpecies, firstNeighbor, secondNeighbor) {
+  return model?.byKey?.[angularKey(centerSpecies, firstNeighbor, secondNeighbor)] || null;
+}
+
+export function angleAllowed(record, degrees) {
+  return !record || record.bands.some((band) => degrees >= band.minimum && degrees <= band.maximum);
+}
+
+/** Evaluate only the requested centers in a projected colored point set. */
+export function coloredAngularViolations(species, displacement, coordinationModel, angularModel,
+  centerIndices = species.map((_, index) => index)) {
+  const violations = [];
+  [...new Set(centerIndices)].forEach((center) => {
+    const neighbors = species.map((neighborSpecies, neighbor) => {
+      if (neighbor === center) return null;
+      const coordination = coordinationEnvelopeFor(coordinationModel, species[center], neighborSpecies);
+      if (!coordination) return null;
+      const vector = displacement(center, neighbor);
+      return Math.hypot(...vectorComponents(vector)) <= coordination.contactCutoff
+        ? { neighbor, neighborSpecies, vector } : null;
+    }).filter(Boolean);
+    for (let first = 0; first < neighbors.length - 1; first++) for (let second = first + 1; second < neighbors.length; second++) {
+      const envelope = angularEnvelopeFor(angularModel, species[center],
+        neighbors[first].neighborSpecies, neighbors[second].neighborSpecies);
+      if (!envelope) continue;
+      const degrees = angleDegrees(neighbors[first].vector, neighbors[second].vector);
+      if (Number.isFinite(degrees) && !angleAllowed(envelope, degrees)) violations.push({
+        center,
+        neighbors: [neighbors[first].neighbor, neighbors[second].neighbor],
+        centerSpecies: species[center],
+        neighborSpecies: [neighbors[first].neighborSpecies, neighbors[second].neighborSpecies].sort(),
+        degrees,
+        allowedBands: envelope.bands,
+      });
+    }
+  });
+  return violations;
+}

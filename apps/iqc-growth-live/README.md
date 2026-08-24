@@ -169,8 +169,20 @@ cluster actions may legitimately complete that shell. A simultaneous batch is
 checked as a union before commitment, making saturation independent of the
 permutation in which its commuting placements are displayed.
 
+The third layer is a **colored three-body angular envelope**. For every central
+species and unordered pair of contact-neighbor species, the input supplies the
+observed angle modes. Separated modes remain separate: rocksalt can retain its
+90° and 180° octahedral bands without silently admitting every angle between
+them, while bent H-O-H, tetrahedral O-O-O, and planar sp2 environments receive
+their own colored bands. Every observed band is padded by a declared tolerance,
+so the supplied structure remains admissible. During growth the rule is tested
+only when both neighbors are already present; an incomplete frontier is never
+rejected for a missing angle. Whole commuting batches are checked together, so
+two individually plausible attachments cannot jointly create an impossible
+three-body arrangement.
+
 This is chemistry-as-geometry, not a pair potential: it has no attractive
-well, charge, bond order, temperature, pressure, or kinetics. Those effects
+well, angular energy, charge, bond order, temperature, pressure, or kinetics. Those effects
 can constrain which clusters and ports are observed in the sample, but the
 browser leapfrogs their dynamical trajectories and preserves only the learned
 geometric admissibility envelope.
