@@ -243,6 +243,11 @@
             </label>
             <p id="ensembleStatus" class="control-note">Frames contribute contact, coordination, and angle observations; growth starts from only the selected frame.</p>
           </div>
+          <div id="measurementConditions" class="measurement-conditions" hidden aria-label="Recorded measurement conditions">
+            <div class="measurement-heading"><small>recorded measurement conditions</small><span>provenance only</span></div>
+            <div id="measurementConditionChips" class="measurement-condition-chips"></div>
+            <p id="measurementConditionNote">Diffraction or cell-measurement metadata labels the observed geometry; it is not used as a force, energy, rate, or MD control.</p>
+          </div>
           <details class="local-import">
             <summary>Advanced · local file or fixture</summary>
             <label class="file-field" for="structureFileInput">
@@ -776,7 +781,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-40"></script>
+  <script type="module" src="./app.js?v=20260824-41"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-5"></script>
 </body>
 </html>

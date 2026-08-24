@@ -196,6 +196,14 @@ body.atlas-open { overflow: hidden; }
 .ensemble-controls .field { margin-top: 0; }
 .ensemble-controls .field b { color: var(--cyan); font: 7px var(--mono); font-weight: 400; }
 .ensemble-controls .control-note { margin-top: 1px; }
+.measurement-conditions { margin-top: 9px; padding: 9px; border: 1px solid rgba(255,190,92,.25); background: rgba(255,190,92,.035); }
+.measurement-conditions[hidden] { display: none; }
+.measurement-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.measurement-heading small { color: #9e8d6b; font: 6px var(--mono); letter-spacing: .11em; text-transform: uppercase; }
+.measurement-heading span { color: #d7ae63; font: 6px var(--mono); text-transform: uppercase; }
+.measurement-condition-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.measurement-condition-chips span { padding: 4px 6px; border: 1px solid rgba(255,190,92,.28); color: #e0c48f; background: rgba(255,190,92,.055); font: 7px var(--mono); }
+.measurement-conditions p { margin: 7px 0 0; color: #82775f; font-size: 7px; line-height: 1.45; }
 .database-picker { position: relative; padding: 10px; border: 1px solid rgba(101,225,188,.25); background: rgba(101,225,188,.035); }
 .database-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .database-heading strong { color: var(--mint); font-size: 10px; }

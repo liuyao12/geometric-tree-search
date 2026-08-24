@@ -56,6 +56,8 @@ const ensembleFrameSelect = $("ensembleFrameSelect");
 const ensembleFrameCount = $("ensembleFrameCount");
 const ensembleEvidenceSelect = $("ensembleEvidenceSelect");
 const ensembleStatus = $("ensembleStatus");
+const measurementConditions = $("measurementConditions");
+const measurementConditionChips = $("measurementConditionChips");
 const structureFileInput = $("structureFileInput");
 const importStatus = $("importStatus");
 const loadFixtureButton = $("loadFixtureButton");
@@ -617,6 +619,43 @@ function evidenceFrameCount() {
     ? importedTrajectoryFrames().length || 1 : 1;
 }
 
+function activeMeasurementConditions() {
+  if (scenarioSelect.value !== "imported" || !importedStructure) return null;
+  return currentImportedFrame()?.metadata?.measurementConditions
+    || importedStructure.metadata?.measurementConditions || null;
+}
+
+function formatRecordedCondition(value) {
+  if (!Number.isFinite(Number(value))) return null;
+  return Number(Number(value).toPrecision(7)).toLocaleString(undefined, { maximumFractionDigits: 6 });
+}
+
+function renderMeasurementConditions() {
+  const conditions = activeMeasurementConditions();
+  const records = [
+    conditions?.temperature ? {
+      text: `T ${formatRecordedCondition(conditions.temperature.value)} ${conditions.temperature.unit || "K"}${conditions.temperature.deprecatedFallback ? " · legacy tag" : ""}`,
+      title: conditions.temperature.sourceTag,
+    } : null,
+    conditions?.pressure ? {
+      text: `P ${formatRecordedCondition(conditions.pressure.value)} ${conditions.pressure.unit || "kPa"}${conditions.pressure.deprecatedFallback ? " · legacy tag" : ""}`,
+      title: conditions.pressure.sourceTag,
+    } : null,
+    conditions?.environment?.value ? {
+      text: `environment ${conditions.environment.value}`,
+      title: conditions.environment.sourceTag,
+    } : null,
+  ].filter(Boolean);
+  measurementConditions.hidden = records.length === 0;
+  measurementConditionChips.replaceChildren();
+  records.forEach((record) => {
+    const chip = document.createElement("span");
+    chip.textContent = record.text;
+    chip.title = record.title || "recorded condition";
+    measurementConditionChips.append(chip);
+  });
+}
+
 function syncImportedFrameMaterial() {
   if (!importedStructure?.material) return;
   const frame = currentImportedFrame();
@@ -628,6 +667,7 @@ function syncImportedFrameMaterial() {
 }
 
 function renderEnsembleControls() {
+  renderMeasurementConditions();
   const frames = importedTrajectoryFrames();
   const visible = scenarioSelect.value === "imported" && frames.length > 1;
   ensembleControls.hidden = !visible;
@@ -774,7 +814,12 @@ function importSummary(structure, validation) {
     : "";
   const trajectory = validation.trajectoryFrameCount > 1
     ? ` · ${validation.trajectoryFrameCount} fixed-topology frames${validation.trajectoryVariableCell ? " · variable cell" : ""}` : "";
-  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge}${trajectory} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
+  const recordedConditions = [
+    validation.measurementTemperatureKelvin !== null ? `${formatRecordedCondition(validation.measurementTemperatureKelvin)} K` : null,
+    validation.measurementPressureKilopascal !== null ? `${formatRecordedCondition(validation.measurementPressureKilopascal)} kPa` : null,
+  ].filter(Boolean);
+  const conditions = recordedConditions.length ? ` · measured ${recordedConditions.join(" · ")}` : "";
+  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge}${trajectory}${conditions} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
 
 async function importStructureFile(file) {
@@ -3830,6 +3875,7 @@ async function buildExperimentReceipt() {
   const searchVisible = pipelineStage >= 4;
   const referenceSq = ensureStructureFactor(referenceStructuralStats);
   const trajectoryFrames = scenarioSelect.value === "imported" ? importedTrajectoryFrames() : [];
+  const recordedConditions = activeMeasurementConditions();
   const trajectoryFrameDigests = trajectoryFrames.length > 1
     ? await Promise.all(trajectoryFrames.map((frame) => structureDigest(makeImportedFrameReference(frame, 1), "angstrom")))
     : [];
@@ -3838,7 +3884,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-40",
+      buildId: "20260824-41",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3851,6 +3897,22 @@ async function buildExperimentReceipt() {
       siteChemistryChannels: [...material.elements],
       composition: receiptComposition(referenceAtoms),
       atomCount: referenceAtoms.length,
+      recordedMeasurementConditions: recordedConditions ? {
+        provenance: recordedConditions.provenance || "recorded diffraction/cell-measurement conditions",
+        temperatureKelvin: recordedConditions.temperature?.value ?? null,
+        temperatureSourceTag: recordedConditions.temperature?.sourceTag ?? null,
+        temperatureDeprecatedFallback: recordedConditions.temperature?.deprecatedFallback ?? null,
+        pressureKilopascal: recordedConditions.pressure?.value ?? null,
+        pressureSourceTag: recordedConditions.pressure?.sourceTag ?? null,
+        pressureDeprecatedFallback: recordedConditions.pressure?.deprecatedFallback ?? null,
+        environment: recordedConditions.environment?.value ?? null,
+        environmentSourceTag: recordedConditions.environment?.sourceTag ?? null,
+        usedAsSimulationControl: false,
+        temperatureInferred: false,
+        pressureInferred: false,
+        synthesisConditionsClaimed: false,
+        thermodynamicStateReconstructed: false,
+      } : null,
       crystallographicOccupancy: scenarioSelect.value === "imported" ? {
         representation: "one geometric site with a finite element-fraction alternative set; vacancy retained explicitly",
         mixedSites: importedStructure?.validation?.mixedOccupancySites || 0,

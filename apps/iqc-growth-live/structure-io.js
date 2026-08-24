@@ -76,6 +76,49 @@ const occupancyFraction = (value, fallback = null) => {
 const optionalCifNumber = (value, label) => value === undefined || value === null || value === "" || value === "." || value === "?"
   ? null : numeric(value, label);
 
+function recordedCifMeasurementConditions(get) {
+  const readNumber = (primaryTags, fallbackTags, label) => {
+    for (const [tags, deprecatedFallback] of [[primaryTags, false], [fallbackTags, true]]) {
+      for (const sourceTag of tags) {
+        const raw = get(sourceTag);
+        const value = optionalCifNumber(raw, label);
+        if (value === null) continue;
+        if (value < 0) throw new Error(`${label} must be nonnegative: ${raw}`);
+        return { value, sourceTag, deprecatedFallback };
+      }
+    }
+    return null;
+  };
+  const readText = (tags) => {
+    for (const sourceTag of tags) {
+      const raw = get(sourceTag);
+      if (raw === undefined || raw === null || raw === "" || raw === "." || raw === "?") continue;
+      return { value: String(raw).trim(), sourceTag };
+    }
+    return null;
+  };
+  const temperature = readNumber(
+    ["_diffrn_ambient_temperature", "_diffrn_ambient_temp"],
+    ["_cell_measurement_temperature", "_cell_measurement_temp"],
+    "recorded measurement temperature",
+  );
+  const pressure = readNumber(
+    ["_diffrn_ambient_pressure"], ["_cell_measurement_pressure"],
+    "recorded measurement pressure",
+  );
+  const environment = readText(["_diffrn_ambient_environment"]);
+  if (!temperature && !pressure && !environment) return null;
+  return {
+    temperature: temperature ? { ...temperature, unit: "K" } : null,
+    pressure: pressure ? { ...pressure, unit: "kPa" } : null,
+    environment,
+    provenance: "recorded diffraction/cell-measurement conditions",
+    usedAsSimulationControl: false,
+    synthesisConditionsClaimed: false,
+    thermodynamicStateReconstructed: false,
+  };
+}
+
 function normalizeThermalDisplacement({ uIsoA2 = null, bIsoA2 = null, thermalSigmaA = null } = {}) {
   let uIso = optionalCifNumber(uIsoA2, "isotropic displacement U") ?? null;
   const bIso = optionalCifNumber(bIsoA2, "isotropic displacement B") ?? null;
@@ -539,7 +582,11 @@ function parseCif(text, filename) {
   return {
     name: get("_chemical_name_common", get("_chemical_formula_sum", filename.replace(/\.[^.]+$/, ""))),
     format: "CIF", atoms, cell, pbc: [true, true, true],
-    metadata: { spaceGroup: get("_space_group_name_h-m_alt", get("_symmetry_space_group_name_h-m", "unassigned")), symmetryOperations: operations.length },
+    metadata: {
+      spaceGroup: get("_space_group_name_h-m_alt", get("_symmetry_space_group_name_h-m", "unassigned")),
+      symmetryOperations: operations.length,
+      measurementConditions: recordedCifMeasurementConditions(get),
+    },
   };
 }
 
@@ -720,6 +767,21 @@ export function validateStructure(structure, options = {}) {
   const maximumAtoms = options.maximumAtoms || 1200;
   const maximumFrames = options.maximumFrames || 64;
   const maximumAtomPresentations = options.maximumAtomPresentations || 24000;
+  const measurementConditions = structure?.metadata?.measurementConditions || null;
+  const measurementTemperatureKelvin = measurementConditions?.temperature?.value ?? null;
+  const measurementPressureKilopascal = measurementConditions?.pressure?.value ?? null;
+  const measurementEnvironment = measurementConditions?.environment?.value ?? null;
+  if (measurementTemperatureKelvin !== null
+    && (!Number.isFinite(Number(measurementTemperatureKelvin)) || Number(measurementTemperatureKelvin) < 0)) {
+    errors.push("Recorded measurement temperature must be a finite nonnegative value in kelvins");
+  }
+  if (measurementPressureKilopascal !== null
+    && (!Number.isFinite(Number(measurementPressureKilopascal)) || Number(measurementPressureKilopascal) < 0)) {
+    errors.push("Recorded measurement pressure must be a finite nonnegative value in kilopascals");
+  }
+  if (measurementEnvironment !== null && (typeof measurementEnvironment !== "string" || measurementEnvironment.length > 240)) {
+    errors.push("Recorded measurement environment must be text of at most 240 characters");
+  }
   if (!structure?.atoms?.length) errors.push("No atoms were parsed");
   if (structure?.atoms?.length > maximumAtoms) errors.push(`${structure.atoms.length} atoms exceed the browser analysis limit of ${maximumAtoms}`);
   const trajectoryFrames = structure?.frames?.length ? structure.frames : [];
@@ -820,6 +882,14 @@ export function validateStructure(structure, options = {}) {
   const formalChargeCoverage = formalChargeKnownOccupancy / Math.max(totalOccupiedFraction, 1e-12);
   if (formalChargeKnownOccupancy > 0) warnings.push(`Formal oxidation-state coverage is ${(formalChargeCoverage * 100).toFixed(1)}%; net supplied-cell formal charge ${netFormalCharge >= 0 ? "+" : ""}${Number(netFormalCharge.toFixed(6))}`);
   if (formalChargeCoverage >= .999999 && Math.abs(netFormalCharge) > 1e-5) warnings.push("Fully charge-resolved supplied cell is not formally neutral; this is retained as input evidence, not corrected");
+  if (measurementConditions) {
+    const recorded = [
+      measurementTemperatureKelvin !== null ? `${Number(measurementTemperatureKelvin)} K` : null,
+      measurementPressureKilopascal !== null ? `${Number(measurementPressureKilopascal)} kPa` : null,
+      measurementEnvironment ? String(measurementEnvironment) : null,
+    ].filter(Boolean).join(" · ");
+    warnings.push(`Recorded measurement conditions retained as provenance only${recorded ? `: ${recorded}` : ""}`);
+  }
   let minimumDistance = Infinity;
   let duplicatePairs = 0;
   const nearest = [];
@@ -857,6 +927,10 @@ export function validateStructure(structure, options = {}) {
     netFormalCharge,
     trajectoryFrameCount, trajectoryTopologyConsistent, trajectoryVariableCell,
     trajectoryAtomPresentations,
+    measurementConditionsPresent: Boolean(measurementConditions),
+    measurementTemperatureKelvin: measurementTemperatureKelvin === null ? null : Number(measurementTemperatureKelvin),
+    measurementPressureKilopascal: measurementPressureKilopascal === null ? null : Number(measurementPressureKilopascal),
+    measurementEnvironment,
     minimumDistance: Number.isFinite(minimumDistance) ? minimumDistance : null,
     medianNearestDistance, cellVolume: structure?.cell ? Math.abs(determinant(structure.cell)) : null,
   };

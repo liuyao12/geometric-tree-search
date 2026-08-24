@@ -60,6 +60,23 @@ phonon trajectory, force field, Debye–Waller intensity model, or dynamical
 growth clock. Modulated/superspace CIFs remain unsupported and must not be
 approximated by this ordinary-cell tensor path.
 
+### Recorded measurement conditions
+
+For ordinary CIF input, the lab preserves IUCr core measurement metadata when
+present: `_diffrn_ambient_temperature` in kelvins,
+`_diffrn_ambient_pressure` in kilopascals, and
+`_diffrn_ambient_environment` as text. Deprecated
+`_cell_measurement_temperature` and `_cell_measurement_pressure` values are
+accepted only as visibly flagged fallbacks. The exact source tag accompanies
+each value in the experiment receipt.
+
+These fields label the conditions under which the supplied diffraction or cell
+measurement was made. They are provenance, not synthesis conditions, an
+equilibrium-state reconstruction, a temperature-dependent potential, pressure
+control, elapsed physical time, or an MD thermostat/barostat. The browser shows
+them as read-only chips and never feeds them into cluster admission, marking,
+tree-search ranking, or growth.
+
 ### Fixed-topology snapshot ensembles
 
 Multi-frame extended XYZ and JSON inputs retain up to 64 configurations (and

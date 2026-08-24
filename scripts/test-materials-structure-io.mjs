@@ -35,6 +35,9 @@ _cell_length_c 5.43
 _cell_angle_alpha 90
 _cell_angle_beta 90
 _cell_angle_gamma 90
+_diffrn_ambient_temperature 100(2)
+_diffrn_ambient_pressure 101.325
+_diffrn_ambient_environment 'helium exchange gas'
 loop_
 _space_group_symop_operation_xyz
 'x,y,z'
@@ -50,8 +53,34 @@ const parsedCif = parseStructureText(cif, "silicon.cif");
 assert.equal(parsedCif.format, "CIF");
 assert.equal(parsedCif.atoms.length, 2);
 assert.equal(parsedCif.metadata.symmetryOperations, 2);
+assert.deepEqual(parsedCif.metadata.measurementConditions, {
+  temperature: { value: 100, sourceTag: "_diffrn_ambient_temperature", deprecatedFallback: false, unit: "K" },
+  pressure: { value: 101.325, sourceTag: "_diffrn_ambient_pressure", deprecatedFallback: false, unit: "kPa" },
+  environment: { value: "helium exchange gas", sourceTag: "_diffrn_ambient_environment" },
+  provenance: "recorded diffraction/cell-measurement conditions",
+  usedAsSimulationControl: false,
+  synthesisConditionsClaimed: false,
+  thermodynamicStateReconstructed: false,
+});
 assert.ok(parsedCif.atoms.every((atom) => atom.species === "Si"));
-assert.equal(validateStructure(parsedCif).valid, true);
+const parsedCifValidation = validateStructure(parsedCif);
+assert.equal(parsedCifValidation.valid, true);
+assert.equal(parsedCifValidation.measurementConditionsPresent, true);
+assert.equal(parsedCifValidation.measurementTemperatureKelvin, 100);
+assert.equal(parsedCifValidation.measurementPressureKilopascal, 101.325);
+assert.equal(parsedCifValidation.measurementEnvironment, "helium exchange gas");
+assert.ok(parsedCifValidation.warnings.some((warning) => warning.includes("provenance only")));
+
+const legacyConditionsCif = cif
+  .replace("_diffrn_ambient_temperature 100(2)", "_cell_measurement_temperature 95")
+  .replace("_diffrn_ambient_pressure 101.325", "_cell_measurement_pressure 98.4")
+  .replace("_diffrn_ambient_environment 'helium exchange gas'", "");
+const legacyConditions = parseStructureText(legacyConditionsCif, "legacy-conditions.cif");
+assert.equal(legacyConditions.metadata.measurementConditions.temperature.deprecatedFallback, true);
+assert.equal(legacyConditions.metadata.measurementConditions.pressure.deprecatedFallback, true);
+assert.equal(legacyConditions.metadata.measurementConditions.temperature.sourceTag, "_cell_measurement_temperature");
+assert.equal(legacyConditions.metadata.measurementConditions.pressure.sourceTag, "_cell_measurement_pressure");
+assert.throws(() => parseStructureText(cif.replace("100(2)", "-1"), "negative-temperature.cif"), /must be nonnegative/);
 
 const oxidationCif = `data_sodium_chloride_charges
 _cell_length_a 5.64
