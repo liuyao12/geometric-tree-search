@@ -11,6 +11,15 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     source = APP.read_text(encoding="utf-8")
     style = STYLE.read_text(encoding="utf-8")
 
+    assert 'from "./molecular-components.js?v=20260824-1"' in source
+    assert 'molecularCover: "water"' not in source
+    assert "function discoveredWaterComponents(source)" in source
+    assert "discoverFiniteMolecularComponents({" in source
+    assert "function buildWaterClusterCover(source, molecularDiscovery)" in source
+    assert "molecularDiscovery.components.forEach" in source
+    assert "if (learnedCover?.molecular) return learnMolecularOverlapGrammar(source)" in source
+    assert 'materialLabelUsed: molecularDiscovery.materialLabelUsed' in source
+    assert 'expectedFormulaUsed: molecularDiscovery.expectedFormulaUsed' in source
     assert 'label: "H₂O molecule"' in source
     assert 'label: "hydrogen-bond bridge"' in source
     assert 'label: "six-water ring void"' in source

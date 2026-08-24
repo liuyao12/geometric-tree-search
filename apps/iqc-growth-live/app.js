@@ -11,6 +11,7 @@ import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
+import { discoverFiniteMolecularComponents } from "./molecular-components.js?v=20260824-1";
 import {
   aggregateMarkingReadout,
   coloredConnectionChirality,
@@ -256,8 +257,8 @@ const ELEMENTS = {
   Si: { color: 0xe7b883, css: "#e7b883", radius: 1.11 },
 };
 const MATERIALS = {
-  iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
-  iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", molecularCover: "water", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
+  iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
+  iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
   graphene: { name: "graphene monolayer", elements: ["C"], spacingA: 1.42, cell: "single hexagonal sheet", order: "crystal", symmetry: "p6/mmm layer group", audit: "2D translations + diffraction", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: 0, species: ["C", "C"] }], note: "A one-component intrinsic-2D positive control learned after arbitrary embedding in 3D." },
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", periodicWindow: true, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
@@ -2036,15 +2037,29 @@ function molecularIsometryGallery(source, families, familyTypes) {
   return gallery;
 }
 
-function buildWaterClusterCover(source) {
+function discoveredWaterComponents(source) {
+  const discovery = discoverFiniteMolecularComponents({
+    species: source.map((atom) => atom.species),
+    distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
+  });
+  if (!discovery.accepted || discovery.types.length !== 1) return null;
+  const formula = discovery.types[0].formula;
+  const waterFormula = formula.length === 2
+    && formula[0][0] === "H" && formula[0][1] === 2
+    && formula[1][0] === "O" && formula[1][1] === 1;
+  if (!waterFormula || discovery.components.some((component) => component.length !== 3)) return null;
+  return discovery;
+}
+
+function buildWaterClusterCover(source, molecularDiscovery) {
   const oxygen = source.map((atom, index) => atom.species === "O" ? index : -1).filter((index) => index >= 0);
-  const hydrogen = source.map((atom, index) => atom.species === "H" ? index : -1).filter((index) => index >= 0);
   const waters = [];
   const owner = new Map();
-  oxygen.forEach((oxygenIndex) => {
-    const bonded = hydrogen.map((index) => ({ index, distance: periodicDisplacement(source[oxygenIndex], source[index]).length() }))
-      .filter((entry) => entry.distance < 1.16).sort((first, second) => first.distance - second.distance).slice(0, 2).map((entry) => entry.index);
-    if (bonded.length !== 2) return;
+  molecularDiscovery.components.forEach((component) => {
+    const oxygenIndex = component.find((index) => source[index].species === "O");
+    const bonded = component.filter((index) => source[index].species === "H")
+      .sort((first, second) => first - second);
+    if (!Number.isInteger(oxygenIndex) || bonded.length !== 2) return;
     const waterIndex = waters.length;
     const support = [oxygenIndex, ...bonded];
     waters.push({ center: oxygenIndex, support, type: 0, residual: false, kind: "H₂O molecule" });
@@ -2115,6 +2130,13 @@ function buildWaterClusterCover(source) {
   const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
   return { placements, residualTypes: [], types, galleryTypes, incidence, covered: coveredAtoms.size,
     complete: coveredAtoms.size === source.length, periodic: true,
+    molecularDiscovery: {
+      reason: molecularDiscovery.reason,
+      covalentEdges: molecularDiscovery.edges.length,
+      componentTypes: molecularDiscovery.types.length,
+      materialLabelUsed: molecularDiscovery.materialLabelUsed,
+      expectedFormulaUsed: molecularDiscovery.expectedFormulaUsed,
+    },
     molecular: { waters: waters.length, bridges: bridges.length, gaps: gaps.length,
       waterClasses: galleryTypes.filter((type) => type.familyType === 0).length,
       bridgeClasses: galleryTypes.filter((type) => type.familyType === 1).length,
@@ -2184,7 +2206,8 @@ function buildIrregularClusterCover(source) {
 // enter the same cover, and any uncovered connected region becomes an explicit
 // residual cluster rather than disappearing from the model.
 function buildExhaustiveClusterCover(source) {
-  if (currentMaterial().molecularCover === "water") return buildWaterClusterCover(source);
+  const molecularDiscovery = discoveredWaterComponents(source);
+  if (molecularDiscovery) return buildWaterClusterCover(source, molecularDiscovery);
   return buildIrregularClusterCover(source);
 }
 
@@ -2984,7 +3007,7 @@ function learnIrregularOverlapGrammar(source) {
 }
 
 function learnOverlapGrammar(source) {
-  if (currentMaterial().molecularCover === "water") return learnMolecularOverlapGrammar(source);
+  if (learnedCover?.molecular) return learnMolecularOverlapGrammar(source);
   if (learnedCover?.occurrenceBased) return learnIrregularOverlapGrammar(source);
   const scenePerAngstrom = referenceSpacing / referenceSpacingA;
   const occurrences = source.map((atom, index) => ({
@@ -3273,7 +3296,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-21",
+      buildId: "20260824-22",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3396,6 +3419,7 @@ async function buildExperimentReceipt() {
       isometryTypes: clusterGalleryTypes().length,
       residualTypes: learnedCover.residualTypes?.length || 0,
       molecularFamilies: learnedCover.molecular || null,
+      molecularDiscovery: learnedCover.molecularDiscovery || null,
       irregularMining: learnedCover.irregular || null,
       classes: clusterGalleryTypes().map(receiptClusterRecord),
     } : { status: "stage not entered" },
