@@ -388,6 +388,15 @@ Hydrogen orientations remain mutually exclusive symbolic branches, target
 calls stay at zero, and clusters-of-clusters is disabled because no stationary
 ice production has been certified.
 
+The interactive Evidence Atlas now treats molecular ice as a first-class
+benchmark beside NaCl, ideal IQC, Cd-Yb, and glass. Its plotted frontier counts
+are produced by executing the same frozen browser artifact rather than by
+reading the artifact's expected-count audit fields. The system card separates
+complete molecular cover, target-free port fitting, exact finite anchor
+transfer, and the unresolved proton/stationarity boundary. Buttons link the
+evidence directly to the 37-card Ih cluster gallery, the Ih anchor trace, and
+the Ih-to-Ic transfer trace.
+
 A common recursive-program gate now prevents the crystal and quasicrystal
 cards from using incomparable meanings of "action." NaCl, the icosahedral
 model set, the Fibonacci-product control, and rotated 30-degree hBN must each

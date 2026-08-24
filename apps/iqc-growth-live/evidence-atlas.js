@@ -1,3 +1,5 @@
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
+
 const byId = (id) => document.getElementById(id);
 
 const atlas = byId("evidenceAtlas");
@@ -5,6 +7,15 @@ const atlasButton = byId("evidenceAtlasButton");
 const ribbonButton = byId("evidenceRibbonButton");
 const closeButton = byId("evidenceAtlasClose");
 const methodLink = byId("atlasMethodLink");
+
+const ICE_PORT_ARTIFACT = await fetch(new URL(
+  "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
+  if (!response.ok) throw new Error(`Cannot load frozen ice evidence: ${response.status}`);
+  return response.json();
+});
+const ICE_TRACES = Object.fromEntries(["iceIh", "iceIc"].map((caseId) =>
+  [caseId, executeIceMolecularAnchorGrowth(ICE_PORT_ARTIFACT, caseId)]));
+const acceptedPerWave = (caseId) => ICE_TRACES[caseId].waves.map((wave) => wave.acceptedAnchors);
 
 const SYSTEMS = {
   nacl: {
@@ -17,6 +28,24 @@ const SYSTEMS = {
       ["Discovery", "3 recurrent generators", "No cell, axes, or space group supplied."],
       ["Frozen replay", "216 → 1,728 → 13,824", "Separate colored configurations replay exactly."],
       ["Port certificate", "8 children · 24 directed ports", "Two atom-disjoint macro occurrences; MDL saving 30."],
+    ],
+  },
+  ice: {
+    short: "H₂O ice", kind: "molecular crystal", name: "Ice Ih → Ice Ic",
+    summary: "Ice is covered molecularly rather than by atom-centred coordination spokes. A bent H₂O motif, hydrogen-bond bridge polyhedra, and O₆ ring-boundary gap clusters cover the periodic configuration; a sealed eight-port grammar then transfers exact unseen oxygen anchors until a conservative fixed point.",
+    values: [27, 27 + acceptedPerWave("iceIh")[0], 27 + acceptedPerWave("iceIh")[0] + acceptedPerWave("iceIh")[1]], verifiedThrough: 2,
+    metrics: [["Ih isometry classes", "1 + 3 + 33"], ["Ic isometry classes", "1 + 2 + 39"], ["learned ports", String(ICE_PORT_ARTIFACT.ports.length)], ["blind O frontiers", `${acceptedPerWave("iceIh").join(" → ")} · ${acceptedPerWave("iceIc").join(" → ")}`]],
+    verdict: ["progress", "Complete molecular cover and finite anchor transfer pass · proton and stationary growth remain open"],
+    evidence: [
+      ["Complete molecular cover", "Ih 216 / 216 · Ic 192 / 192", "H₂O molecules cover the atoms; bridge and O₆ ring-boundary clusters encode the interstitial connection geometry."],
+      ["Frozen port fit", `${ICE_PORT_ARTIFACT.provenance.trainingMolecules} H₂O · ${ICE_PORT_ARTIFACT.ports.length} ports`, `${ICE_PORT_ARTIFACT.provenance.trainingAtoms} positions/species only; proper SE(3); target used = ${ICE_PORT_ARTIFACT.provenance.targetUsed}.`],
+      ["Sealed finite execution", `Ih ${acceptedPerWave("iceIh").join(" → ")} · Ic ${acceptedPerWave("iceIc").join(" → ")}`, "Every accepted unseen oxygen anchor is exact; unsupported depth is rejected at a finite fixed point."],
+      ["Resolved claim boundary", "O anchors green · proton poses red", "Whole-H₂O continuation, clusters², stationary recurrence, and exponential ice growth are not claimed."],
+    ],
+    actions: [
+      ["Inspect Ice Ih cover", "iceIh", 1],
+      ["Replay Ice Ih anchor trace", "iceIh", 4],
+      ["Replay Ih → Ic transfer", "iceIc", 4],
     ],
   },
   iqc: {
@@ -85,6 +114,7 @@ const SYSTEMS = {
 
 const MATRIX = [
   ["NaCl crystal", ["pass", "100% colored cover"], ["pass", "2 exact unseen levels"], ["pass", "8-child cell macro"], ["pass", "4.19m / 7 actions"]],
+  ["H₂O ice", ["pass", "Ih 216 · Ic 192"], ["pass", "16→8 · 12 exact O"], ["open", "no promoted ice rule"], ["open", "finite fixed point"]],
   ["Ideal IQC", ["pass", "2,064 / 2,064"], ["pass", "31,521 exact sites"], ["progress", "6 train levels"], ["open", "no 3-scale key"]],
   ["Cd₅.₇Yb IQC", ["pass", "2,385 / 2,385"], ["pass", "295 / 295 local"], ["progress", "9 train · 4 replay"], ["open", "no stationary key"]],
   ["Cu–Zr glass", ["control", "cover + residuals"], ["control", "not uniquely defined"], ["control", "recursion rejected"], ["control", "negative passes"]],
@@ -92,6 +122,7 @@ const MATRIX = [
 
 const MATRIX_DETAILS = {
   "NaCl crystal": "The learner receives neither the unit cell nor Fm-3m. A positions-only discovery proposes the radix and offsets; the independently learned proper-port graph must witness the same eight-child production at three scales before the stationary gate turns green.",
+  "H₂O ice": "The periodic ice configurations are not reduced to atom-centred shells. One bent H₂O class covers each molecule; decorated hydrogen-bond bridges and O₆ ring boundaries encode connections and fill the periodically extended cover. Eight proper-SE(3) ports learned on 201 Ih atoms emit exact disjoint oxygen frontiers, but mutually exclusive proton orientations are still symbolic, so clusters² and stationary growth remain red.",
   "Ideal IQC": "Exact continuation is real and self-fed, but different promoted productions appear at successive levels. Deep compression is not renamed exponential growth: the strict stationary audit requires the same exact semantic production and learned scale twice in succession.",
   "Cd₅.₇Yb IQC": "The real-material model is the hardest transfer case. Bounded local marking succeeds for finite primitive growth, but exact promoted clusters are sparse and nucleus-dependent. Dormant types remain frozen rather than being refit on held-out atoms.",
   "Cu–Zr glass": "The negative control protects the benchmark from a trivial answer. Residual clusters guarantee representation, but no stable macro production, unique exterior continuation, or million-site symbolic claim is admitted.",
@@ -153,6 +184,8 @@ const TIMELINE = [
   ["17w", "Commuting first-frontier closure", "A target-free subset dynamic program admits a three-action parent only when every action order reaches the same colored state. Across four development nuclei, an incidence marking retains an exact closure under every group holdout; on the consumed audit it selects two exact parents in the fixed top-eight batch.", "proved"],
   ["17x", "Conditional child value rejected", "Conditioned on those closure parents, a 3,994-candidate / 95-positive child marking supplies all 14 exact parent branches under four-nucleus holdout. On the fifth consumed geometry, however, the two exact continuations rank 132nd and 133rd. Six coarse feature ablations remain outside top 16. An explicit six-node parent→child incidence graph is directionally better: its order-2 value supplies 12 / 14 development branches and moves the fifth-geometry ranks to 69 and 71; order 3 supplies 9 / 14 and ranks 78 and 80. Neither survives top 16, so explicit connection correspondence is necessary but not yet a transferable child policy.", "open"],
   ["18", "Open frontier", "Learn a transferable winner among the 410 supplied exact alternatives, commit a conflict-free antichain without target truth, and promote it into a recurring oriented production with a strict three-scale stationarity audit.", "open"],
+  ["19", "Molecular ice cover", "Atom-centred spokes are replaced by one bent H₂O motif plus decorated bridge and O₆ gap-boundary isometry classes, covering 216 / 216 Ih and 192 / 192 Ic atoms.", "proved"],
+  ["20", "Blind ice anchor transfer", "Eight Ih-fitted proper-SE(3) ports emit exact 16 → 8 → 0 Ih and 12 → 0 Ic oxygen-anchor frontiers. Proton orientations and stationary promotion remain explicit red gates.", "progress"],
 ];
 
 const CLAIMS = [
@@ -163,6 +196,9 @@ const CLAIMS = [
   ["proved", "Causal GCTS advantage", "On sealed IQC frontiers, learned connection sections beat matched baselines and 31 shuffled controls with identical candidate sets."],
   ["proved", "Exact finite QC continuation", "Multiple ideal and published quasicrystal nuclei grow self-fed with exact colored-site certificates."],
   ["proved", "Negative amorphous control", "The generic hierarchy rejects stationary recursion rather than memorizing and repeating a glass crop."],
+  ["proved", "Molecular ice cover", "Ice Ih and Ic are covered by repeated bent H₂O motifs plus explicit bridge and O₆ gap-boundary clusters; the 216- and 192-atom periodic windows are represented completely without radial coordination spokes."],
+  ["progress", "Finite ice anchor transfer", "Eight Ih-fitted proper-SE(3) ports emit 16 then 8 exact unseen Ih oxygen anchors and 12 exact Ic anchors before a conservative fixed point."],
+  ["open", "Proton-resolved ice growth", "The current section carries competing H₂O pose domains symbolically. It does not yet choose all proton orientations or certify a promoted stationary ice production."],
   ["progress", "Deep QC compression", "Ideal IQC reaches six positive quotient levels; Cd–Yb reaches nine on five disjoint training windows."],
   ["progress", "Frozen hierarchy transfer", "IQC primitive cover transfers completely and Cd–Yb promoted vocabularies re-encode four held-out levels, with dormant symbols explicit."],
   ["progress", "Site-resolved marking", "A 1,245-site train corpus gives site AUC 0.8864 and action AUC 1.0, both significant against 31 shuffles."],
@@ -284,7 +320,29 @@ function renderSystem(key) {
   byId("atlasSystemVerdict").innerHTML = `<span>${statusLabel(system.verdict[0])}</span><strong>${system.verdict[1]}</strong>`;
   byId("atlasCurveTitle").textContent = `${system.short} · growth by learned action`;
   byId("systemEvidenceCards").innerHTML = system.evidence.map(([label, value, note]) => `<article><small>${label}</small><strong>${value}</strong><p>${note}</p></article>`).join("");
+  const actions = byId("atlasSystemActions");
+  actions.hidden = !system.actions?.length;
+  actions.replaceChildren(...(system.actions || []).map(([label, scenario, stage]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.dataset.atlasScenario = scenario;
+    button.dataset.atlasStage = String(stage);
+    button.addEventListener("click", () => launchWorkflow(scenario, stage));
+    return button;
+  }));
   drawGrowthChart(system);
+}
+
+function launchWorkflow(scenario, stage) {
+  const scenarioSelect = byId("scenarioSelect");
+  const stageButton = document.querySelector(`[data-pipeline-stage="${stage}"]`);
+  if (!scenarioSelect?.querySelector(`option[value="${scenario}"]`) || !stageButton) return;
+  closeAtlas();
+  scenarioSelect.value = scenario;
+  scenarioSelect.dispatchEvent(new Event("change", { bubbles: true }));
+  stageButton.click();
+  stageButton.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function renderSystems() {
