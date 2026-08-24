@@ -798,6 +798,14 @@ export const createTilingStream = (() => {
       agent_sibling_reorders: 0,
       agent_policy: "crystal_probe",
       agent_crystal_probe_nodes: 40,
+      discrepancy_limit: null,
+      discrepancy_prunes: 0,
+      max_discrepancy_reached: 0,
+      uct_simulations: 0,
+      uct_states: 0,
+      uct_action_visits: 0,
+      uct_max_reward: 0,
+      successor_states_emitted: 0,
       isohedral_transforms_discovered: 0,
       isohedral_patch_copies_applied: 0,
       isohedral_tiles_propagated: 0,
@@ -1770,6 +1778,7 @@ export const createTilingStream = (() => {
     };
 
     const activeAgentBranchTrackers = [];
+    const activeUctBranchTrackers = [];
     const applyMove = (move, { countWork = true } = {}) => {
       if (countWork) searchWorkCounter += 1;
       const moveLayer = Number.isFinite(move.layer) ? move.layer : candidateMoveLayer(move);
@@ -1778,6 +1787,9 @@ export const createTilingStream = (() => {
       searchStats.max_live_tiles = Math.max(searchStats.max_live_tiles, state.placements.length);
       if (countWork) {
         for (const tracker of activeAgentBranchTrackers) {
+          tracker.peak_tiles = Math.max(tracker.peak_tiles, state.placements.length);
+        }
+        for (const tracker of activeUctBranchTrackers) {
           tracker.peak_tiles = Math.max(tracker.peak_tiles, state.placements.length);
         }
       }
@@ -2020,12 +2032,21 @@ export const createTilingStream = (() => {
     const moveOrder = tilingStrategy === "isohedral" ? "isohedral" : requestedMoveOrder;
     searchStats.move_order = moveOrder;
     const greedyNoBacktrack = !!config.greedy_no_backtrack;
+    const enumerateSuccessorsOnly = config.enumerate_successors_only === true;
     searchStats.backtracking_enabled = !greedyNoBacktrack;
+    const configuredDiscrepancyLimit = config.search_discrepancy_limit == null
+      ? Infinity
+      : Number(config.search_discrepancy_limit);
+    const discrepancyLimit = Number.isFinite(configuredDiscrepancyLimit)
+      ? Math.max(0, Math.floor(configuredDiscrepancyLimit))
+      : Infinity;
+    searchStats.discrepancy_limit = Number.isFinite(discrepancyLimit) ? discrepancyLimit : null;
     const proposalProgram = ["proposal", "agent"].includes(moveOrder) && config.proposal_program
       ? normalizeProposalProgram(config.proposal_program)
       : null;
     if (proposalProgram) searchStats.proposal_patch_size = proposalProgram.patch_size;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
+    const useUct = moveOrder === "uct";
     const faceOrder = config.face_order ?? "coverage";
     searchStats.face_order = faceOrder;
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
@@ -2088,6 +2109,7 @@ export const createTilingStream = (() => {
       && !Number.isFinite(candidateCap)
       && !greedyNoBacktrack
       && (!usePolicyAgent || agentExhaustive)
+      && !useUct
       && !proposalProgram
       && genericFailureMemoCapacity > 0;
     const genericFailureMemo = new Set();
@@ -3592,6 +3614,51 @@ export const createTilingStream = (() => {
         if (diff) return diff;
       }
       return 0;
+    };
+    const uctExploration = Number.isFinite(Number(config.uct_exploration))
+      ? Math.max(0, Number(config.uct_exploration))
+      : Math.SQRT2;
+    const uctTable = new Map();
+    const orderUctMoves = (moves) => {
+      if (!useUct || moves.length < 2) return moves;
+      const stateKey = genericFailureStateKey();
+      let node = uctTable.get(stateKey);
+      if (!node) {
+        node = new Map();
+        uctTable.set(stateKey, node);
+        searchStats.uct_states = uctTable.size;
+      }
+      const parentVisits = [...node.values()].reduce((sum, value) => sum + value.visits, 0);
+      return moves.slice().sort((left, right) => {
+        const leftKey = placementGeometryKey(left);
+        const rightKey = placementGeometryKey(right);
+        const leftStats = node.get(leftKey);
+        const rightStats = node.get(rightKey);
+        const score = stats => !stats?.visits
+          ? Infinity
+          : stats.total_reward / stats.visits
+            + uctExploration * Math.sqrt(Math.log(Math.max(2, parentVisits + 1)) / stats.visits);
+        const difference = score(rightStats) - score(leftStats);
+        if (Number.isFinite(difference) && difference) return difference;
+        if (score(rightStats) !== score(leftStats)) return score(rightStats) > score(leftStats) ? 1 : -1;
+        return compareMoves(left, right);
+      }).map(move => {
+        move._uct_state_key = stateKey;
+        move._uct_action_key = placementGeometryKey(move);
+        return move;
+      });
+    };
+    const observeUctMove = (move, { success, startTiles, peakTiles }) => {
+      const node = uctTable.get(move._uct_state_key);
+      if (!node) return;
+      const action = node.get(move._uct_action_key) ?? { visits: 0, total_reward: 0 };
+      const growth = Math.max(0, peakTiles - startTiles);
+      const reward = success ? 2 : Math.tanh(growth / 4);
+      action.visits += 1;
+      action.total_reward += reward;
+      node.set(move._uct_action_key, action);
+      searchStats.uct_action_visits += 1;
+      searchStats.uct_max_reward = Math.max(searchStats.uct_max_reward, reward);
     };
     const policyAgentProposals = (analysis) => {
       if (!usePolicyAgent || !rlAgent.usesGlobalProposalScope()) return [];
@@ -5527,7 +5594,7 @@ export const createTilingStream = (() => {
       return false;
     }
 
-    async function* search(parentId, depth = 0) {
+    async function* search(parentId, depth = 0, discrepancy = 0) {
       if (stopToken.stop) { noteIncompleteSearch(); return false; }
       if (goalMet()) {
         yield nodeStatus(parentId, "success");
@@ -5903,6 +5970,7 @@ export const createTilingStream = (() => {
         )
       );
       bestMoves = bestMoves.filter(moveWithinGenerationBand);
+      if (useUct) bestMoves = orderUctMoves(bestMoves).slice(0, 1);
       if (!usePolicyAgent && !exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
         bestMoves = bestMoves.slice(0, branchCap);
       }
@@ -5913,6 +5981,36 @@ export const createTilingStream = (() => {
       
       yield branchSet(parentId, payload);
 
+      if (enumerateSuccessorsOnly) {
+        for (let index = 0; index < bestMoves.length; index++) {
+          const move = bestMoves[index];
+          if (!candidatePassesGeometricNogoods(move)) continue;
+          const validity = checkMoveViability(move);
+          if (!validity) continue;
+          move.occupancy_data = validity.occData;
+          move.is_forced = false;
+          const rollback = applyMove(move);
+          const successorSnapshot = snapshot(move.node_id);
+          searchStats.successor_states_emitted += 1;
+          yield {
+            type: "search_successor",
+            parent: parentId,
+            move: describeMove(move),
+            snapshot: successorSnapshot
+          };
+          undoMove(move, rollback, { captureBest: false });
+        }
+        yield {
+          type: "successor_set_finished",
+          parent: parentId,
+          successor_count: searchStats.successor_states_emitted,
+          search_stats: searchStatsSnapshot()
+        };
+        noteIncompleteSearch();
+        searchStats.termination_reason = "successor_enumeration";
+        return yield* doReturn(false);
+      }
+
       for (let i = 0; i < bestMoves.length; i++) {
         await yieldToBrowser();
         if (overBudget()) {
@@ -5921,6 +6019,16 @@ export const createTilingStream = (() => {
           return yield* doReturn(false);
         }
         const mv = bestMoves[i];
+        const nextDiscrepancy = discrepancy + i;
+        if (nextDiscrepancy > discrepancyLimit) {
+          searchStats.discrepancy_prunes += 1;
+          setBranchCursor(depth, bestMoves.length, i + 1);
+          continue;
+        }
+        searchStats.max_discrepancy_reached = Math.max(
+          searchStats.max_discrepancy_reached,
+          nextDiscrepancy
+        );
         if (!candidatePassesGeometricNogoods(mv)) {
           yield nodeStatus(mv.node_id, "fail", "Geometric nogood");
           setBranchCursor(depth, bestMoves.length, i + 1);
@@ -5948,6 +6056,13 @@ export const createTilingStream = (() => {
             }
           : null;
         if (agentBranchTracker) activeAgentBranchTrackers.push(agentBranchTracker);
+        const uctBranchTracker = useUct
+          ? {
+              start_tiles: state.placements.length + 1,
+              peak_tiles: state.placements.length + 1
+            }
+          : null;
+        if (uctBranchTracker) activeUctBranchTrackers.push(uctBranchTracker);
         const rb = applyMove(mv);
         yield placementDelta("add", mv, rb, mv.node_id);
         const postMoveAnalysis = genericGlobalExtensionEnumeration && !genericGlobalFrontierGraph
@@ -5970,7 +6085,16 @@ export const createTilingStream = (() => {
           yield nodeSnapshot(mv.node_id);
         }
 
-        const child = yield* search(mv.node_id, depth + 1);
+        const child = yield* search(mv.node_id, depth + 1, nextDiscrepancy);
+        if (uctBranchTracker) {
+          const popped = activeUctBranchTrackers.pop();
+          if (popped !== uctBranchTracker) throw new Error("UCT branch tracker stack mismatch");
+          observeUctMove(mv, {
+            success: child,
+            startTiles: uctBranchTracker.start_tiles,
+            peakTiles: uctBranchTracker.peak_tiles
+          });
+        }
         if (agentBranchTracker) {
           const popped = activeAgentBranchTrackers.pop();
           if (popped !== agentBranchTracker) throw new Error("agent branch tracker stack mismatch");
@@ -5991,6 +6115,7 @@ export const createTilingStream = (() => {
         undoMove(mv, rb);
         yield placementDelta("remove", mv, rb, mv.node_id);
         setBranchCursor(depth, bestMoves.length, i + 1);
+        if (useUct) return yield* doReturn(false);
         if (usePolicyAgent && rlAgent.learnsOnline() && i + 1 < bestMoves.length) {
           const remaining = bestMoves.slice(i + 1).sort((left, right) =>
             compareScoreVectors(rlAgent.score(left), rlAgent.score(right))
@@ -6173,7 +6298,19 @@ export const createTilingStream = (() => {
       success = goalMet() || (yield* searchIsohedral(rootId));
     } else if (tilingStrategy === "generic") {
       if (proposalProgram) yield* replayLearnedProposalPatch(rootId);
-      success = goalMet() || (yield* search(rootId));
+      if (useUct) {
+        while (!goalMet() && !overBudget() && !stopToken.stop) {
+          searchStats.uct_simulations += 1;
+          success = yield* search(rootId);
+          if (success) break;
+        }
+        if (!success && !searchIncomplete) {
+          noteIncompleteSearch();
+          searchStats.termination_reason = stopToken.stop ? "stopped" : "time_limit";
+        }
+      } else {
+        success = goalMet() || (yield* search(rootId));
+      }
     } else {
       yield* tryPeriodicTemplatePatch(rootId);
       if (!goalMet()) yield* tryIsohedralCoronaSeed(rootId);
@@ -6216,6 +6353,10 @@ export const createTilingStream = (() => {
     if (!success && !searchIncomplete && searchStats.generation_band_deferrals > 0) {
       noteIncompleteSearch();
       searchStats.termination_reason = "generation_band_pruning";
+    }
+    if (!success && !searchIncomplete && searchStats.discrepancy_prunes > 0) {
+      noteIncompleteSearch();
+      searchStats.termination_reason = "discrepancy_limit_pruning";
     }
     if (
       !success

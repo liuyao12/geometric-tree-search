@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-24",
+  "purpose": "Matched-budget witness-growth comparison on the four established lattice-polyhedron tree-search controls.",
+  "configuration": {
+    "target_tiles": 80,
+    "wall_time_ms_per_trial": 2000,
+    "seeds": [1, 2, 3],
+    "generation_lag_cap": 2,
+    "restart_episodes": 4,
+    "ilds_rank_discrepancy_limits": [0, 1, 2, 4],
+    "uct_exploration": 1.4142135623730951,
+    "beam_width": 32,
+    "beam_score": [
+      "minimum frontier generation",
+      "growth axis rank",
+      "growth isotropy",
+      "negative frontier point count",
+      "tile count"
+    ]
+  },
+  "metric": "largest live patch in tiles",
+  "results": {
+    "10_16113": {
+      "role": "certified non-tiler control",
+      "free_range": { "values": [25, 23, 23], "robust": 23, "median": 23, "best": 25 },
+      "restart_dfs": { "values": [23, 23, 23], "robust": 23, "median": 23, "best": 23 },
+      "ilds": { "values": [25, 23, 23], "robust": 23, "median": 23, "best": 25 },
+      "uct": { "values": [19, 19, 19], "robust": 19, "median": 19, "best": 19 },
+      "beam_32": { "values": [12, 12, 12], "robust": 12, "median": 12, "best": 12 },
+      "gcts": { "values": [36, 24, 24], "robust": 24, "median": 24, "best": 36 }
+    },
+    "10_45026": {
+      "role": "certified non-tiler control",
+      "free_range": { "values": [20, 18, 22], "robust": 18, "median": 20, "best": 22 },
+      "restart_dfs": { "values": [16, 18, 19], "robust": 16, "median": 18, "best": 19 },
+      "ilds": { "values": [11, 20, 16], "robust": 11, "median": 16, "best": 20 },
+      "uct": { "values": [22, 15, 20], "robust": 15, "median": 20, "best": 22 },
+      "beam_32": { "values": [9, 9, 9], "robust": 9, "median": 9, "best": 9 },
+      "gcts": { "values": [26, 23, 26], "robust": 23, "median": 26, "best": 26 }
+    },
+    "10_45033": {
+      "role": "certified six-tile periodic control",
+      "free_range": { "values": [29, 32, 41], "robust": 29, "median": 32, "best": 41 },
+      "restart_dfs": { "values": [34, 34, 34], "robust": 34, "median": 34, "best": 34 },
+      "ilds": { "values": [29, 24, 34], "robust": 24, "median": 29, "best": 34 },
+      "uct": { "values": [36, 30, 37], "robust": 30, "median": 36, "best": 37 },
+      "beam_32": { "values": [10, 10, 10], "robust": 10, "median": 10, "best": 10 },
+      "gcts": { "values": [31, 37, 34], "robust": 31, "median": 34, "best": 37 }
+    },
+    "9_11683": {
+      "role": "certified non-tiler control",
+      "free_range": { "values": [20, 18, 16], "robust": 16, "median": 18, "best": 20 },
+      "restart_dfs": { "values": [14, 12, 11], "robust": 11, "median": 12, "best": 14 },
+      "ilds": { "values": [21, 14, 16], "robust": 14, "median": 16, "best": 21 },
+      "uct": { "values": [17, 18, 18], "robust": 17, "median": 18, "best": 18 },
+      "beam_32": { "values": [10, 10, 10], "robust": 10, "median": 10, "best": 10 },
+      "gcts": { "values": [20, 34, 33], "robust": 20, "median": 33, "best": 34 }
+    }
+  },
+  "beam_width_sweep_seed_1": {
+    "1": { "10_16113": 8, "10_45026": 6, "10_45033": 9, "9_11683": 5 },
+    "4": { "10_16113": 12, "10_45026": 6, "10_45033": 14, "9_11683": 6 },
+    "8": { "10_16113": 11, "10_45026": 6, "10_45033": 22, "9_11683": 15 },
+    "16": { "10_16113": 15, "10_45026": 6, "10_45033": 17, "9_11683": 13 },
+    "32": { "10_16113": 12, "10_45026": 9, "10_45033": 10, "9_11683": 10 }
+  },
+  "conclusions": [
+    "GCTS has the highest median and robust largest-patch result on each of the three obstruction controls.",
+    "UCT is the strongest additional general tree-search baseline, but does not beat GCTS on the obstruction controls at this budget.",
+    "UCT has the highest median on periodic control 10_45033; the independent translational checker remains the appropriate decisive algorithm for that tile.",
+    "Restart DFS and ILDS do not improve the obstruction-control medians over ordinary free-range DFS.",
+    "Beam search is dominated at a two-second budget because reconstructing and expanding a breadth frontier spends most work on shallow states."
+  ],
+  "limitations": [
+    "These four cases influenced GCTS development and are controls, not a held-out validation set.",
+    "The experiment measures finite witness growth, not proof time or aperiodicity.",
+    "No trial reached the 80-tile target; comparisons are anytime-search depth comparisons."
+  ]
+}

@@ -30,6 +30,13 @@ const isohedralHorizon = Math.max(2, Math.floor(numberArg("isohedral-horizon", 2
 const periodicMax = Math.max(1, Math.floor(numberArg("periodic-max", 4)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 500000)));
 const gctsRounds = Math.max(1, Math.floor(numberArg("gcts-rounds", 1)));
+const restartEpisodes = Math.max(1, Math.floor(numberArg("restart-episodes", 4)));
+const discrepancySchedule = (args.get("discrepancy-schedule") ?? "0,1,2,4")
+  .split(",")
+  .map(value => Math.max(0, Math.floor(Number(value))))
+  .filter(Number.isFinite);
+if (!discrepancySchedule.length) discrepancySchedule.push(0);
+const beamWidth = Math.max(1, Math.floor(numberArg("beam-width", 32)));
 const failureMemo = args.get("failure-memo") !== "false";
 const failureMemoSymmetry = args.get("failure-memo-symmetry") === "rigid" ? "rigid" : "fixed";
 const failureMemoMaxStates = Math.max(0, Math.floor(numberArg("failure-memo-max-states", 200000)));
@@ -124,12 +131,12 @@ const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
     researchQueue: preShellIds.has(candidate.id),
     vertices: candidate.vertices,
     lanes: preShellIds.has(candidate.id)
-      ? ["translational", "isohedral", "free_range", "gcts", "free_range_no_brainer", "free_range_unbanded"]
+      ? ["translational", "isohedral", "free_range", "restart_dfs", "ilds", "uct", "beam", "gcts", "free_range_no_brainer", "free_range_unbanded"]
       : candidate.screening.certificate === "translational"
       ? ["translational", "free_range"]
       : candidate.screening.certificate === "isohedral_periodic_quotient"
         ? ["isohedral", "free_range"]
-        : ["translational", "isohedral", "free_range", "gcts", "free_range_no_brainer", "free_range_unbanded"]
+        : ["translational", "isohedral", "free_range", "restart_dfs", "ilds", "uct", "beam", "gcts", "free_range_no_brainer", "free_range_unbanded"]
   }));
 const specialCases = includeSpecial ? [
   { id: "corner_tetra", family: "control", expected: "certified_non_tiler", lanes: ["free_range"] },
@@ -152,8 +159,9 @@ const customSystem = benchmarkCase => benchmarkCase.family === "census" ? {
   polycube_lattice: "z3"
 } : null;
 
-const configFor = (benchmarkCase, lane, seed, proposalProgram = null) => {
-  const genericLane = lane.startsWith("free_range") || lane === "gcts";
+const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOptions = {}) => {
+  const genericLane = lane.startsWith("free_range")
+    || ["gcts", "restart_dfs", "ilds", "uct", "beam"].includes(lane);
   return ({
   mode_key: benchmarkCase.family === "control" ? benchmarkCase.id : "cube",
   custom_system: customSystem(benchmarkCase),
@@ -162,23 +170,29 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null) => {
   target_val: lane === "isohedral" ? Math.max(target, 500) : target,
   tiling_strategy: lane === "gcts"
     ? "learning_free_range"
-    : lane.startsWith("free_range") ? "free_range" : lane,
+    : genericLane ? "free_range" : lane,
   move_order: lane === "isohedral"
     ? "isohedral"
     : lane === "gcts"
       ? "agent"
+    : lane === "uct"
+      ? "uct"
     : lane === "free_range_no_brainer"
       ? "no_brainer"
       : lane === "free_range_unbanded"
         ? unbandedMoveOrder
         : "balanced",
   proposal_program: lane === "gcts" ? proposalProgram : null,
+  search_discrepancy_limit: searchOptions.discrepancyLimit ?? null,
+  enumerate_successors_only: searchOptions.enumerateSuccessorsOnly === true,
+  initial_patch: searchOptions.initialPatch ?? null,
+  initial_patch_relative_to_root: false,
   face_order: faceOrder,
   exhaustive: true,
   agent_exhaustive: true,
   forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
   generic_connected_patch_enumeration: connectedPatchEnumeration && lane === "free_range_unbanded",
-  generic_failure_memo: failureMemo,
+  generic_failure_memo: lane === "uct" ? false : failureMemo,
   generic_failure_memo_symmetry: failureMemoSymmetry,
   generic_failure_memo_max_states: failureMemoMaxStates,
   generic_geometric_nogood: geometricNogood,
@@ -212,13 +226,21 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null) => {
   node_limit: nodeLimit,
   random_seed: seed,
   seeded_tie_breaks: seededTies && benchmarkCase.researchQueue && genericLane,
-  time_limit_ms: genericLane ? timeMs : exactTimeMs,
+  time_limit_ms: searchOptions.timeLimitMs ?? (genericLane ? timeMs : exactTimeMs),
   ui_yield_interval_ms: 1000000
   });
 };
 
-async function runLane(benchmarkCase, lane, seed, { proposalProgram = null, round = 0 } = {}) {
-  const config = configFor(benchmarkCase, lane, seed, proposalProgram);
+async function runLane(
+  benchmarkCase,
+  lane,
+  seed,
+  { proposalProgram = null, round = 0, timeLimitMs = null, discrepancyLimit = null } = {}
+) {
+  const config = configFor(benchmarkCase, lane, seed, proposalProgram, {
+    timeLimitMs,
+    discrepancyLimit
+  });
   const started = performance.now();
   let final = null;
   let largestPatch = 0;
@@ -316,6 +338,13 @@ async function runLane(benchmarkCase, lane, seed, { proposalProgram = null, roun
     visitedNodes: stats.visited_nodes ?? 0,
     backtracks: stats.backtracks ?? 0,
     maxDepth: stats.max_depth ?? 0,
+    discrepancyLimit: stats.discrepancy_limit ?? null,
+    discrepancyPrunes: stats.discrepancy_prunes ?? 0,
+    maxDiscrepancyReached: stats.max_discrepancy_reached ?? 0,
+    uctSimulations: stats.uct_simulations ?? 0,
+    uctStates: stats.uct_states ?? 0,
+    uctActionVisits: stats.uct_action_visits ?? 0,
+    uctMaxReward: stats.uct_max_reward ?? 0,
     agentObservations: stats.agent_observations ?? 0,
     agentResolvedFailures: stats.agent_resolved_failures ?? 0,
     agentIncompleteObservations: stats.agent_incomplete_observations ?? 0,
@@ -428,18 +457,205 @@ async function runLane(benchmarkCase, lane, seed, { proposalProgram = null, roun
   };
 }
 
+const patchFingerprint = placements => createHash("sha256")
+  .update((placements ?? []).map(placement => [
+    placement.prototile_idx,
+    placement.orientation_id ?? placement.orientation_signature,
+    ...(placement.translation ?? [])
+  ].join(":"))
+    .sort()
+    .join("||"))
+  .digest("hex")
+  .slice(0, 16);
+
+const beamSnapshotScore = snapshot => [
+  snapshot?.frontier_stats?.min_gen ?? 0,
+  snapshot?.search_stats?.growth_axis_rank ?? 0,
+  snapshot?.search_stats?.growth_isotropy ?? 0,
+  -(snapshot?.frontier_stats?.point_count ?? Infinity),
+  snapshot?.tile_count ?? 0
+];
+
+const compareBeamSnapshots = (left, right) => {
+  const leftScore = beamSnapshotScore(left);
+  const rightScore = beamSnapshotScore(right);
+  for (let index = 0; index < leftScore.length; index++) {
+    if (leftScore[index] !== rightScore[index]) return rightScore[index] - leftScore[index];
+  }
+  return patchFingerprint(left?.placements).localeCompare(patchFingerprint(right?.placements));
+};
+
+async function enumerateBeamSuccessors(benchmarkCase, seed, initialSnapshot, remainingMs) {
+  const config = configFor(benchmarkCase, "beam", seed, null, {
+    timeLimitMs: Math.max(25, remainingMs),
+    enumerateSuccessorsOnly: true,
+    initialPatch: initialSnapshot ? { placements: initialSnapshot.placements } : null
+  });
+  const successors = [];
+  let finalStats = null;
+  for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
+    if (message.type === "search_successor" && message.snapshot) successors.push(message.snapshot);
+    if (message.type === "successor_set_finished") finalStats = message.search_stats;
+  }
+  return { successors, stats: finalStats ?? {} };
+}
+
+async function runBeamLane(benchmarkCase, seed) {
+  const started = performance.now();
+  let frontier = [null];
+  let bestSnapshot = null;
+  let visitedNodes = 0;
+  let expandedStates = 0;
+  let generatedStates = 0;
+  const seen = new Set();
+  const growthMilestones = [];
+  while (frontier.length && performance.now() - started < timeMs) {
+    const next = new Map();
+    for (const stateSnapshot of frontier) {
+      const remaining = Math.floor(timeMs - (performance.now() - started));
+      if (remaining <= 0) break;
+      const expansion = await enumerateBeamSuccessors(
+        benchmarkCase,
+        seed + expandedStates * 7919,
+        stateSnapshot,
+        remaining
+      );
+      expandedStates += 1;
+      visitedNodes += expansion.stats.visited_nodes ?? 0;
+      for (const successor of expansion.successors) {
+        generatedStates += 1;
+        const fingerprint = patchFingerprint(successor.placements);
+        if (seen.has(fingerprint)) continue;
+        seen.add(fingerprint);
+        next.set(fingerprint, successor);
+        if (!bestSnapshot || (successor.tile_count ?? 0) > (bestSnapshot.tile_count ?? 0)) {
+          bestSnapshot = successor;
+          growthMilestones.push({
+            patchSize: successor.tile_count,
+            visitedNodes,
+            backtracks: 0,
+            elapsedMs: Math.round(performance.now() - started),
+            witnessHash: fingerprint
+          });
+        }
+      }
+    }
+    frontier = [...next.values()].sort(compareBeamSnapshots).slice(0, beamWidth);
+    if ((bestSnapshot?.tile_count ?? 0) >= target) break;
+  }
+  const elapsedMs = Math.round(performance.now() - started);
+  return {
+    case: benchmarkCase.id,
+    family: benchmarkCase.family,
+    expected: benchmarkCase.expected,
+    lane: "beam",
+    seed,
+    resultKind: (bestSnapshot?.tile_count ?? 0) >= target ? "target_reached" : "search_incomplete",
+    success: (bestSnapshot?.tile_count ?? 0) >= target,
+    canTile: null,
+    certified: false,
+    searchIncomplete: (bestSnapshot?.tile_count ?? 0) < target,
+    elapsedMs,
+    largestPatch: bestSnapshot?.tile_count ?? 1,
+    maxLiveTiles: bestSnapshot?.tile_count ?? 1,
+    visitedNodes,
+    backtracks: 0,
+    witnessHash: bestSnapshot ? patchFingerprint(bestSnapshot.placements) : null,
+    witnessGrowthAxisRank: bestSnapshot?.search_stats?.growth_axis_rank ?? 0,
+    witnessGrowthSpans: bestSnapshot?.search_stats?.growth_spans ?? [],
+    witnessGrowthIsotropy: bestSnapshot?.search_stats?.growth_isotropy ?? 0,
+    witnessPeriodicTranslationRank: bestSnapshot?.search_stats?.periodic_translation_rank ?? 0,
+    growthMilestones,
+    beamWidth,
+    beamExpandedStates: expandedStates,
+    beamGeneratedStates: generatedStates,
+    beamDistinctStates: seen.size,
+    terminationReason: (bestSnapshot?.tile_count ?? 0) >= target ? "target_reached" : "time_limit"
+  };
+}
+
+const combineEpisodes = (lane, seed, episodes) => {
+  const best = episodes.slice().sort((left, right) =>
+    right.largestPatch - left.largestPatch
+    || Number(right.success) - Number(left.success)
+    || left.elapsedMs - right.elapsedMs
+  )[0];
+  let elapsedOffset = 0;
+  const growthMilestones = [];
+  let runningBest = 0;
+  for (const episode of episodes) {
+    for (const milestone of episode.growthMilestones ?? []) {
+      if (milestone.patchSize <= runningBest) continue;
+      runningBest = milestone.patchSize;
+      growthMilestones.push({ ...milestone, elapsedMs: elapsedOffset + milestone.elapsedMs });
+    }
+    elapsedOffset += episode.elapsedMs;
+  }
+  return {
+    ...best,
+    lane,
+    seed,
+    elapsedMs: episodes.reduce((sum, row) => sum + row.elapsedMs, 0),
+    visitedNodes: episodes.reduce((sum, row) => sum + row.visitedNodes, 0),
+    backtracks: episodes.reduce((sum, row) => sum + row.backtracks, 0),
+    discrepancyPrunes: episodes.reduce((sum, row) => sum + row.discrepancyPrunes, 0),
+    growthMilestones,
+    episodeCount: episodes.length,
+    episodes: episodes.map(row => ({
+      effectiveSeed: row.effectiveSeed,
+      discrepancyLimit: row.discrepancyLimit,
+      largestPatch: row.largestPatch,
+      visitedNodes: row.visitedNodes,
+      backtracks: row.backtracks,
+      elapsedMs: row.elapsedMs,
+      terminationReason: row.terminationReason
+    }))
+  };
+};
+
+async function runSearchBaseline(benchmarkCase, lane, seed) {
+  if (lane === "restart_dfs") {
+    const episodeBudget = Math.max(50, Math.floor(timeMs / restartEpisodes));
+    const episodes = [];
+    for (let episode = 0; episode < restartEpisodes; episode++) {
+      episodes.push(await runLane(benchmarkCase, lane, seed * 1009 + episode * 7919, {
+        timeLimitMs: episodeBudget
+      }));
+    }
+    return combineEpisodes(lane, seed, episodes);
+  }
+  if (lane === "ilds") {
+    const episodes = [];
+    for (let index = 0; index < discrepancySchedule.length; index++) {
+      const discrepancyLimit = discrepancySchedule[index];
+      const used = episodes.reduce((sum, row) => sum + row.elapsedMs, 0);
+      const remainingIterations = discrepancySchedule.length - index;
+      const episodeBudget = Math.max(50, Math.floor((timeMs - used) / remainingIterations));
+      episodes.push(await runLane(benchmarkCase, lane, seed, {
+        timeLimitMs: episodeBudget,
+        discrepancyLimit
+      }));
+    }
+    return combineEpisodes(lane, seed, episodes);
+  }
+  if (lane === "beam") return runBeamLane(benchmarkCase, seed);
+  return runLane(benchmarkCase, lane, seed);
+}
+
 const rows = [];
 for (const benchmarkCase of cases) {
   for (const lane of benchmarkCase.lanes) {
     const laneSeeds = benchmarkCase.researchQueue
-      && (lane.startsWith("free_range") || lane === "gcts")
+      && (lane.startsWith("free_range") || ["gcts", "restart_dfs", "ilds", "uct", "beam"].includes(lane))
       ? seeds
       : [seeds[0]];
     for (const seed of laneSeeds) {
       let proposalProgram = null;
       const rounds = lane === "gcts" ? gctsRounds : 1;
       for (let round = 0; round < rounds; round++) {
-        const row = await runLane(benchmarkCase, lane, seed, { proposalProgram, round });
+        const row = ["restart_dfs", "ilds", "beam"].includes(lane)
+          ? await runSearchBaseline(benchmarkCase, lane, seed)
+          : await runLane(benchmarkCase, lane, seed, { proposalProgram, round });
         rows.push(row);
         proposalProgram = row.learnedProgram;
         if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "result", ...row })}\n`);
@@ -455,6 +671,30 @@ const median = values => {
   const middle = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 };
+const SEARCH_ALGORITHM_LANES = ["free_range", "restart_dfs", "ilds", "uct", "beam", "gcts"];
+const searchAlgorithmComparisons = cases
+  .filter(benchmarkCase => benchmarkCase.researchQueue)
+  .map(benchmarkCase => ({
+    id: benchmarkCase.id,
+    role: censusById.get(benchmarkCase.id)?.screening?.certificate === "translational"
+      ? "periodic_control"
+      : "hard_obstruction_control",
+    algorithms: SEARCH_ALGORITHM_LANES.map(lane => {
+      const trials = rowsFor(benchmarkCase.id, lane);
+      if (!trials.length) return null;
+      const depths = trials.map(row => row.largestPatch);
+      return {
+        lane,
+        trials: trials.length,
+        robustLargestPatch: Math.min(...depths),
+        medianLargestPatch: median(depths),
+        bestLargestPatch: Math.max(...depths),
+        targetHits: trials.filter(row => row.largestPatch >= target).length,
+        medianVisitedNodes: median(trials.map(row => row.visitedNodes ?? 0)),
+        medianElapsedMs: median(trials.map(row => row.elapsedMs ?? 0))
+      };
+    }).filter(Boolean)
+  }));
 const gctsGrowthComparisons = cases
   .filter(benchmarkCase => benchmarkCase.researchQueue)
   .map(benchmarkCase => {
@@ -642,7 +882,7 @@ const candidateSummaries = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
 const unresolvedIds = new Set(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => candidate.id));
 const activeUnresolved = candidateSummaries.filter(candidate => unresolvedIds.has(candidate.id));
 const summary = {
-  schemaVersion: 21,
+  schemaVersion: 22,
   configuration: {
     target,
     timeMs,
@@ -651,6 +891,9 @@ const summary = {
     periodicMax,
     nodeLimit,
     gctsRounds,
+    restartEpisodes,
+    discrepancySchedule,
+    beamWidth,
     seeds,
     failureMemo,
     failureMemoSymmetry,
@@ -678,6 +921,7 @@ const summary = {
   },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),
   rows,
+  searchAlgorithmComparisons,
   gctsGrowthComparisons,
   gctsGrowthGatePassed,
   controls: controlGates,
