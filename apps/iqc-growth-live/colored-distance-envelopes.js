@@ -82,3 +82,58 @@ export function learnColoredDistanceEnvelopes(species, distance, {
 export function exclusionForPair(model, first, second) {
   return model?.byKey?.[pairKey(first, second)]?.exclusion ?? model?.fallbackExclusion ?? .46;
 }
+
+function orderedKey(center, neighbor) {
+  return `${center}>${neighbor}`;
+}
+
+/**
+ * Learn causal upper coordination capacities on top of the unordered contact
+ * geometry.  Counts are ordered (O->H is not H->O), and maxima—not means—are
+ * enforced so every supplied local environment remains admissible.  Lower
+ * coordination is intentionally unconstrained because a growing frontier is
+ * incomplete until later actions arrive.
+ */
+export function learnColoredCoordinationEnvelopes(species, distance, distanceModel, {
+  contactExpansion = 1.18,
+} = {}) {
+  if (!distanceModel?.records?.length) throw new Error("coordination envelopes require colored distance envelopes");
+  if (!(Number.isFinite(contactExpansion) && contactExpansion > 1)) throw new Error("contact expansion must exceed one");
+  const symbols = [...new Set(species)].sort();
+  const records = [];
+  symbols.forEach((centerSpecies) => symbols.forEach((neighborSpecies) => {
+    const pair = distanceModel.byKey[pairKey(centerSpecies, neighborSpecies)];
+    if (!pair) return;
+    const contactCutoff = pair.lowerContact * contactExpansion;
+    const counts = species.map((symbol, center) => {
+      if (symbol !== centerSpecies) return null;
+      let count = 0;
+      for (let neighbor = 0; neighbor < species.length; neighbor++) {
+        if (neighbor === center || species[neighbor] !== neighborSpecies) continue;
+        if (distance(center, neighbor) <= contactCutoff) count++;
+      }
+      return count;
+    }).filter(Number.isInteger).sort((a, b) => a - b);
+    if (!counts.length) return;
+    records.push({
+      key: orderedKey(centerSpecies, neighborSpecies),
+      centerSpecies,
+      neighborSpecies,
+      contactCutoff,
+      medianObserved: quantile(counts, .5),
+      upperObserved: quantile(counts, .95),
+      maximumObserved: counts.at(-1),
+      centerObservations: counts.length,
+    });
+  }));
+  return {
+    records,
+    byKey: Object.fromEntries(records.map((record) => [record.key, record])),
+    maximumCutoff: Math.max(...records.map((record) => record.contactCutoff)),
+    config: { contactExpansion },
+  };
+}
+
+export function coordinationEnvelopeFor(model, centerSpecies, neighborSpecies) {
+  return model?.byKey?.[orderedKey(centerSpecies, neighborSpecies)] || null;
+}

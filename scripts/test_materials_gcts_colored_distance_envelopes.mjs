@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import {
+  coordinationEnvelopeFor,
   exclusionForPair,
+  learnColoredCoordinationEnvelopes,
   learnColoredDistanceEnvelopes,
 } from "../apps/iqc-growth-live/colored-distance-envelopes.js";
 
@@ -21,12 +23,23 @@ assert.ok(exclusionForPair(model, "H", "O") < exclusionForPair(model, "Na", "Cl"
   "short molecular H-O contacts need a different envelope from Na-Cl contacts");
 assert.equal(exclusionForPair(model, "Xe", "Xe"), .46, "unobserved chemistry must use the explicit fallback");
 assert.equal(exclusionForPair(model, "O", "H"), exclusionForPair(model, "H", "O"));
+const coordination = learnColoredCoordinationEnvelopes(species, distance, model);
+assert.equal(coordinationEnvelopeFor(coordination, "O", "H").maximumObserved, 2,
+  "water oxygen must learn capacity for its two covalent H neighbors");
+assert.equal(coordinationEnvelopeFor(coordination, "H", "O").maximumObserved, 1,
+  "each water hydrogen must learn one covalent O neighbor");
+assert.ok(coordinationEnvelopeFor(coordination, "O", "H").contactCutoff
+  > model.byKey["H|O"].minimumObserved);
 
 const reversedSpecies = species.slice().reverse();
 const reversedPositions = positions.slice().reverse();
 const reversed = learnColoredDistanceEnvelopes(reversedSpecies, (first, second) =>
   Math.hypot(...reversedPositions[second].map((value, axis) => value - reversedPositions[first][axis])));
 assert.deepEqual(reversed.records, model.records, "colored envelopes must be invariant to atom ordering");
+const reversedCoordination = learnColoredCoordinationEnvelopes(reversedSpecies, (first, second) =>
+  Math.hypot(...reversedPositions[second].map((value, axis) => value - reversedPositions[first][axis])), reversed);
+assert.deepEqual(reversedCoordination.records, coordination.records,
+  "ordered coordination capacities must be invariant to atom ordering");
 
 console.log("train-derived colored distance envelopes: passed", Object.fromEntries(
   model.records.map((record) => [record.key, record.exclusion.toFixed(3)])));

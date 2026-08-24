@@ -159,6 +159,16 @@ shape and its colored exterior exclusions. The input-stage inspector lists the
 observed contact and learned hard limit in ångströms, and the complete table and
 fit fractions are serialized in the experiment receipt.
 
+The same contacts define **ordered coordination capacities**. O→H and H→O are
+separate statistics, so an H2O sample can learn two covalent hydrogens around
+oxygen while allowing only one covalent oxygen around each hydrogen; rocksalt
+likewise learns six unlike first-shell neighbors. The executor enforces only
+the maximum coordination observed anywhere in training. It never requires a
+frontier atom to have reached its final lower coordination, because later
+cluster actions may legitimately complete that shell. A simultaneous batch is
+checked as a union before commitment, making saturation independent of the
+permutation in which its commuting placements are displayed.
+
 This is chemistry-as-geometry, not a pair potential: it has no attractive
 well, charge, bond order, temperature, pressure, or kinetics. Those effects
 can constrain which clusters and ports are observed in the sample, but the

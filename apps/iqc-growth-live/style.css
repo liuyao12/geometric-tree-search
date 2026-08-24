@@ -463,6 +463,8 @@ body.atlas-open { overflow: hidden; }
 .mark-row code { overflow: hidden; color: #98aaa5; white-space: nowrap; text-overflow: ellipsis; }
 .mark-row span { color: var(--violet); text-align: right; }
 .mark-row b { color: var(--faint); font-weight: 400; text-align: right; }
+.distance-envelope-row, .coordination-envelope-row { grid-template-columns: 46px minmax(76px, 1fr) 68px; font-size: 6px; }
+.coordination-envelope-row { border-left-color: rgba(101, 225, 188, .34); }
 .audit-card { padding-top: 15px; border-top: 1px solid var(--line); }
 .audit-card > div { display: flex; align-items: baseline; justify-content: space-between; min-height: 27px; border-bottom: 1px solid var(--line); }
 .audit-card strong { color: var(--mint); font: 13px var(--mono); font-weight: 400; }
