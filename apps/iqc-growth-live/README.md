@@ -401,6 +401,16 @@ transfer, and the unresolved proton/stationarity boundary. Buttons link the
 evidence directly to the 37-card Ih cluster gallery, the Ih anchor trace, and
 the Ih-to-Ic transfer trace.
 
+A dedicated Physics Map makes the structural-surrogate assumption auditable.
+Five interactive layers trace bonding and coordination, orientation and
+chirality, long-range order, voids and defects, and thermodynamics/kinetics
+from physical content through its geometric encoding to its actual effect on
+tree search. Each layer ends with an explicit non-claim and compares NaCl,
+ice, ideal IQC, published Cd-Yb, and glass. In particular, the map distinguishes
+an exact ice-rule-compatible oxygen scaffold from unresolved proton barriers
+and orientational entropy, and distinguishes symbolic action compression from
+physical elapsed time, phase stability, or a growth-rate prediction.
+
 A common recursive-program gate now prevents the crystal and quasicrystal
 cards from using incomparable meanings of "action." NaCl, the icosahedral
 model set, the Fibonacci-product control, and rotated 30-degree hBN must each

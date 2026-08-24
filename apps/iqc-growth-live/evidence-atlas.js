@@ -136,6 +136,79 @@ const ANATOMY = {
   promote: ["Clusters become atoms of the next grammar", "Accepted or re-clustered unions are canonicalized as new proper-SE(3) prototypes. Their internal ports become edges and exposed ports become the next frontier. Stationarity is claimed only if one exact production recurs across three levels with equal learned scales and population substitutions.", ["history-free option", "positive MDL", "strict recurrence gate"]],
 };
 
+const PHYSICS_MAP = {
+  bonding: {
+    status: "proved", label: "bonding + coordination", title: "Bonding topology becomes a colored metric cover",
+    physical: "Element identity, bond-length neighborhoods, coordination, molecular membership, and recurring local polyhedra already present in the supplied configuration.",
+    geometric: "Complete colored point-set supports, exact pair distances, shared-site overlaps, and explicit residual clusters. A support need not be atom-centred, spherical, or fixed-radius.",
+    growth: "Candidate clusters must replay the learned colored geometry, preserve admitted overlaps, and reject unlike-species coincidences or sub-minimum-distance collisions.",
+    boundary: "No charge density, bond order, electronic free energy, force, or reaction barrier is evaluated. Geometry is an effective structural surrogate learned from the sample.",
+    systems: [
+      ["NaCl", "Alternating octahedral coordination", "Colored octahedra + directed cell ports", "Coulomb energy and phonons omitted"],
+      ["H₂O ice", "Bent H₂O + tetrahedral O network", "H₂O, bridge, and O₆ gap supports", "Proton energetics unresolved"],
+      ["Ideal IQC", "Recurring decorated local environments", "Irregular colored supports + finite ports", "Model interaction omitted"],
+      ["Cd–Yb", "Published decorated atomic packing", "Positions/species-only recurring supports", "No cut/project labels or metallic potential"],
+      ["Cu–Zr glass", "Short-range motifs only", "Cover + explicit residuals", "No unique continuation claimed"],
+    ],
+  },
+  orientation: {
+    status: "progress", label: "orientation + chirality", title: "Directional chemistry becomes a finite proper-pose vocabulary",
+    physical: "Molecular orientation, directional hydrogen bonds, coordination-polyhedron pose, and chiral local arrangements.",
+    geometric: "Every occurrence is registered by a proper SE(3) pose and quotiented only by the cluster's learned proper symmetry. Reflections remain distinct when chirality is present.",
+    growth: "Incoming and outgoing port incidences constrain which orientation alternatives can attach. The marking may rank alternatives but cannot alter their frozen geometry.",
+    boundary: "Ice oxygen anchors transfer exactly, but competing H₂O proton orientations remain symbolic. Rotational kinetics and orientational entropy are not yet modeled.",
+    systems: [
+      ["NaCl", "One octahedral orientation orbit", "24 proper symmetries collapse equivalent ports", "Null orientation control"],
+      ["H₂O ice", "Two-donor / two-acceptor pose domains", "8 Ih-fitted ports + parent-domain unanimity", "Full proton assignment open"],
+      ["Ideal IQC", "Many off-lattice proper poses", "Pose × port incidence channels", "Transferable winner still incomplete"],
+      ["Cd–Yb", "Decorated shell orientation", "Proper-SE(3) local connection section", "Stationary pose rule absent"],
+      ["Cu–Zr glass", "Broad local pose distribution", "No forced global orientation grammar", "Correct negative behavior"],
+    ],
+  },
+  order: {
+    status: "progress", label: "long-range order", title: "Lattice, module, or metric order is inferred—not prescribed",
+    physical: "Periodic translation order, aperiodic long-range coherence, two-dimensional layers, and the absence of a unique amorphous continuation.",
+    geometric: "Auto mode tests a translation lattice, a finite-rank module, or an unrestricted metric point set. Local ports remain proper-SE(3) objects in every mode.",
+    growth: "Repeated productions may be promoted across scales. Exponential representation requires the same exact production and learned scale over three consecutive levels.",
+    boundary: "Deep compression alone is not stationarity. The ideal and Cd–Yb quasicrystals still have zero certified three-scale stationary productions.",
+    systems: [
+      ["NaCl", "Periodic translation group", "Learned radix-2, 8-child rule", "Stationary gate green"],
+      ["H₂O ice", "Periodic oxygen network", "Finite molecular-port continuation", "Promoted ice recurrence open"],
+      ["Ideal IQC", "Aperiodic coherent order", "Off-lattice ports + six train levels", "No common three-scale key"],
+      ["Cd–Yb", "Published icosahedral QC model", "Nine positive compression levels", "Held-out exterior stationarity open"],
+      ["Cu–Zr glass", "No deterministic long-range order", "Stationary recursion rejected", "Negative gate green"],
+    ],
+  },
+  defects: {
+    status: "proved", label: "voids + defects", title: "Missing space remains an explicit geometric object",
+    physical: "Voids, interstitial boundaries, vacancies, incomplete crop boundaries, layer separation, and local incompatibilities.",
+    geometric: "Uncovered connected components become residual clusters; ring and void boundaries become support types; failed overlap, species, and exclusion tests become explicit rejection evidence.",
+    growth: "The search cannot silently drop uncovered atoms or accept a partial child as a complete cluster. Shared sites may satisfy multiple cover obligations exactly once.",
+    boundary: "A residual guarantees complete representation, not compression or physical stability. Defect formation energies and relaxation remain outside the current engine.",
+    systems: [
+      ["NaCl", "Crop and cover boundaries", "Exact residual terminals", "No defect thermodynamics"],
+      ["H₂O ice", "O₆ interstitial ring regions", "33 Ih / 39 Ic gap-boundary classes", "No vacancy relaxation"],
+      ["Ideal IQC", "Irregular uncovered components", "Gap clusters retained at every hierarchy", "Compression remains falsifiable"],
+      ["Cd–Yb", "Dormant held-out symbols", "Exact residual-complete re-encoding", "Novel types fail closed"],
+      ["Cu–Zr glass", "Nonrecurring local environments", "Residuals preserve every atom", "No fake grammar"],
+    ],
+  },
+  kinetics: {
+    status: "open", label: "thermodynamics + kinetics", title: "Leap-frogging dynamics is the approximation boundary",
+    physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder.",
+    geometric: "Only structural evidence already encoded in configurations and connection successes/failures is retained. A marking is a learned connection section—not a physical potential or clock.",
+    growth: "Tree search jumps directly between geometrically certified states. Proposal checks and backtracks measure computational work, not elapsed physical time.",
+    boundary: "The portal predicts structurally admissible continuation, not a growth rate or thermodynamic phase diagram. MD/DFT or experimental labels must calibrate those claims separately.",
+    systems: [
+      ["NaCl", "Exact structural recurrence", "Symbolic scale leap", "No physical growth time"],
+      ["H₂O ice", "Ice-rule-compatible scaffold", "Exact finite O-anchor leap", "No proton barrier or entropy"],
+      ["Ideal IQC", "Geometric finite continuation", "Target-blind tree execution", "No formation free energy"],
+      ["Cd–Yb", "Real-model structural continuation", "Causal local mark", "No metallic kinetics"],
+      ["Cu–Zr glass", "Ensemble structural statistics", "RDF / S(q) / motif evaluation", "No unique trajectory"],
+    ],
+  },
+};
+
 const TIMELINE = [
   ["01", "Complete covers", "Atom-centred shells were replaced by irregular repeated supports, exact overlap covers, and explicit residual gap clusters.", "proved"],
   ["02", "Oriented ports", "Connection identity became a finite double orbit of proper cluster symmetries with colored overlap witnesses.", "proved"],
@@ -364,6 +437,28 @@ function renderAnatomy(key) {
   byId("anatomyDetail").innerHTML = `<span>selected layer</span><h3>${title}</h3><p>${copy}</p><div>${tags.map((tag) => `<b>${tag}</b>`).join("")}</div>`;
 }
 
+function renderPhysics(key) {
+  const layer = PHYSICS_MAP[key];
+  document.querySelectorAll("[data-physics]").forEach((button) => {
+    const active = button.dataset.physics === key;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  byId("physicsMapDetail").className = `physics-map-detail ${layer.status}`;
+  byId("physicsMapDetail").innerHTML = `
+    <header><span>${statusLabel(layer.status)}</span><h2>${layer.title}</h2></header>
+    <div class="physics-flow">
+      <article><small>physical content</small><p>${layer.physical}</p></article>
+      <i>→</i><article><small>geometric encoding</small><p>${layer.geometric}</p></article>
+      <i>→</i><article><small>effect on growth</small><p>${layer.growth}</p></article>
+      <i>≠</i><article class="boundary"><small>explicit boundary</small><p>${layer.boundary}</p></article>
+    </div>
+    <div class="physics-system-table" role="table" aria-label="${layer.label} encoding by material system">
+      <div class="physics-system-head" role="row"><span>system</span><span>physical structure</span><span>geometric surrogate</span><span>not claimed</span></div>
+      ${layer.systems.map(([system, physical, geometry, boundary]) => `<div role="row"><strong>${system}</strong><span>${physical}</span><span>${geometry}</span><span>${boundary}</span></div>`).join("")}
+    </div>`;
+}
+
 function renderTimeline() {
   byId("researchTimeline").innerHTML = TIMELINE.map(([index, title, copy, status]) => `<article class="${status}"><span>${index}</span><div><small>${status === "proved" ? "established" : status === "progress" ? "measured advance" : "current frontier"}</small><h3>${title}</h3><p>${copy}</p></div><i></i></article>`).join("");
 }
@@ -388,6 +483,7 @@ closeButton.addEventListener("click", closeAtlas);
 atlas.addEventListener("click", (event) => { if (event.target === atlas) closeAtlas(); });
 document.querySelectorAll("[data-atlas-tab]").forEach((button) => button.addEventListener("click", () => selectTab(button.dataset.atlasTab)));
 document.querySelectorAll("[data-anatomy]").forEach((button) => button.addEventListener("click", () => renderAnatomy(button.dataset.anatomy)));
+document.querySelectorAll("[data-physics]").forEach((button) => button.addEventListener("click", () => renderPhysics(button.dataset.physics)));
 document.querySelectorAll("[data-ledger-filter]").forEach((button) => button.addEventListener("click", () => renderLedger(button.dataset.ledgerFilter)));
 methodLink.addEventListener("click", closeAtlas);
 document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !atlas.hidden) closeAtlas(); });
@@ -395,5 +491,6 @@ document.addEventListener("keydown", (event) => { if (event.key === "Escape" && 
 renderMatrix();
 renderSystems();
 renderAnatomy("cover");
+renderPhysics("bonding");
 renderTimeline();
 renderLedger();

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-1">
+  <link rel="stylesheet" href="./style.css?v=20260824-2">
   <script type="importmap">
     {
       "imports": {
@@ -60,8 +60,9 @@
           <button class="active" type="button" data-atlas-tab="overview">01 · result</button>
           <button type="button" data-atlas-tab="systems">02 · systems</button>
           <button type="button" data-atlas-tab="anatomy">03 · GCTS anatomy</button>
-          <button type="button" data-atlas-tab="journey">04 · research journey</button>
-          <button type="button" data-atlas-tab="ledger">05 · claim ledger</button>
+          <button type="button" data-atlas-tab="physics">04 · physics map</button>
+          <button type="button" data-atlas-tab="journey">05 · research journey</button>
+          <button type="button" data-atlas-tab="ledger">06 · claim ledger</button>
         </nav>
 
         <div class="atlas-scroll">
@@ -134,6 +135,19 @@
               <i>+</i><div><span>GCTS mark</span><strong>local connection context</strong><small>may reorder or admit; cannot invent geometry</small></div>
               <i>→</i><div><span>certificate</span><strong>colored overlap + collision</strong><small>whole action or explicit residual; no silent partial cluster</small></div>
             </div>
+          </section>
+
+          <section class="atlas-panel" data-atlas-panel="physics" hidden>
+            <div class="atlas-section-heading"><div><span>physics → geometry</span><h2>What the structural surrogate preserves—and what it cannot claim</h2></div><p>Select a physical layer. Every encoding is paired with its approximation boundary.</p></div>
+            <div class="physics-map-tabs" role="group" aria-label="Physical information layers">
+              <button class="active" type="button" data-physics="bonding" aria-pressed="true"><span>01</span><strong>Bonding + coordination</strong><small>colored metric supports</small></button>
+              <button type="button" data-physics="orientation" aria-pressed="false"><span>02</span><strong>Orientation + chirality</strong><small>proper-pose domains</small></button>
+              <button type="button" data-physics="order" aria-pressed="false"><span>03</span><strong>Long-range order</strong><small>lattice · module · metric</small></button>
+              <button type="button" data-physics="defects" aria-pressed="false"><span>04</span><strong>Voids + defects</strong><small>gaps and failures stay explicit</small></button>
+              <button type="button" data-physics="kinetics" aria-pressed="false"><span>05</span><strong>Thermodynamics + kinetics</strong><small>current approximation boundary</small></button>
+            </div>
+            <article id="physicsMapDetail" class="physics-map-detail" aria-live="polite"></article>
+            <p class="physics-map-note"><b>Interpretation:</b> GCTS is a structural continuation engine. It can compress dynamics only after physically relevant constraints have appeared in the training geometry or connection evidence; it does not turn geometry into an uncalibrated energy model.</p>
           </section>
 
           <section class="atlas-panel" data-atlas-panel="journey" hidden>
@@ -647,6 +661,6 @@
   </div>
 
   <script type="module" src="./app.js?v=20260824-4"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260824-1"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260824-2"></script>
 </body>
 </html>
