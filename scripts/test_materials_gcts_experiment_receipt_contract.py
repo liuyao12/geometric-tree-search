@@ -43,6 +43,8 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert "materialLabelUsed: discovery.materialLabelUsed" in source
     assert "expectedFormulaUsed: discovery.expectedFormulaUsed" in source
     assert "irregularMining: learnedCover.irregular || null" in source
+    assert "heterogeneousGeometryAudit: receiptMicrostructureAudit()" in source
+    assert "gapBoundaryClassesEmitAtoms: false" in (APP_DIR / "microstructure-audit.js").read_text(encoding="utf-8")
     assert "liveCertificate: liveGrowthCertificate()" in source
     assert "representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout" in source
     assert "representationState: activeMarking.representationState || null" in source
@@ -65,7 +67,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="chargeValue"' in html
     assert 'id="surfaceValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-42' in html
+    assert 'app.js?v=20260824-43' in html
     assert "externalGeometry: receiptExternalGeometry()" in source
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert 'surfaceCompletionRanking: {' in source

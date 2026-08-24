@@ -45,6 +45,7 @@ import {
   growthEnvironmentContains,
   growthEnvironmentSpec,
 } from "./growth-environments.js?v=20260824-1";
+import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -498,6 +499,7 @@ let nextMarkingId = 1;
 let geometryMode = "auto";
 let clusterToleranceMode = "balanced";
 let orientationAtlas = [];
+let microstructureEvidence = null;
 let selectedGalleryCluster = 0;
 let rdfPairSelection = "all";
 let structureObservableSelection = "rdf";
@@ -2200,6 +2202,40 @@ function learnOrientationAtlas() {
   });
 }
 
+function learnMicrostructureEvidence() {
+  const gallery = clusterGalleryTypes();
+  const types = gallery.map((type, index) => ({
+    id: index,
+    residual: Boolean(type.residual),
+    gap: Boolean(type.gap),
+  }));
+  const classByPlacement = new Map();
+  const poseByPlacement = new Map();
+  gallery.forEach((cluster, classIndex) => {
+    const placementIndices = clusterPlacementIndices(cluster);
+    const orbitModel = classifyPlacementPoseOrbits(placementIndices
+      .map((index) => learnedCover.placements[index]).filter(Boolean));
+    placementIndices.forEach((placementIndex, occurrenceIndex) => {
+      classByPlacement.set(placementIndex, classIndex);
+      poseByPlacement.set(placementIndex, orbitModel.assignments[occurrenceIndex] ?? null);
+    });
+  });
+  return auditGeometricMicrostructure({
+    atoms: referenceAtoms.map((atom, index) => ({
+      chemistryToken: atom.species,
+      coordination: learnedClusters.environments[index]?.coordination ?? 0,
+    })),
+    placements: learnedCover.placements.map((placement, placementIndex) => ({
+      type: classByPlacement.get(placementIndex),
+      support: placement.support.slice(),
+      centerPosition: referenceAtoms[placement.center].p.toArray(),
+      pose: poseByPlacement.get(placementIndex) ?? null,
+    })),
+    types,
+    adjacencyReach: 2.5 * referenceSpacing,
+  });
+}
+
 function poseAtlasEntryStatus(entry) {
   if (entry.support) return entry.support;
   const sampledFraction = entry.orientations / Math.max(1, entry.occurrences);
@@ -2836,6 +2872,36 @@ function buildMolecularCoverLedger(types) {
   return ledger;
 }
 
+function buildMicrostructureLedger() {
+  if (!microstructureEvidence) return null;
+  const audit = microstructureEvidence;
+  const ledger = document.createElement("details");
+  ledger.className = "microstructure-ledger";
+  ledger.setAttribute("aria-label", "Geometric microstructure evidence");
+  const heading = document.createElement("summary");
+  heading.className = "microstructure-heading";
+  heading.innerHTML = `<span><small>heterogeneous geometry audit</small><strong>microstructure candidates · labels withheld</strong></span><em>${audit.coordinationAnomalyAtoms} coordination · ${audit.literalOnlyAtoms} literal-only · ${audit.crossPoseContacts} cross-pose contacts</em>`;
+  const cards = [
+    ["recurring material classes", audit.recurringTypes, `${audit.recurringCoveredAtoms} atoms covered by promotable supports`],
+    ["gap / void boundaries", audit.gapBoundaryTypes, `${audit.gapBoundaryAtoms} boundary atoms · reusable constraint only`],
+    ["literal residuals", audit.terminalTypes, `${audit.literalOnlyAtoms} atoms require non-generative terminals`],
+    ["coordination anomalies", audit.coordinationAnomalyAtoms, "species-local median / MAD candidates"],
+    ["local pose interfaces", audit.crossPoseContacts, `${audit.poseDomainComponents} spatial pose components · not grain labels`],
+    ["occupational alternatives", audit.occupationalAlternativeSites, `${audit.explicitVacancySites} explicit vacancy-bearing sites`],
+  ];
+  const grid = document.createElement("div");
+  grid.className = "microstructure-grid";
+  cards.forEach(([label, value, detail]) => {
+    const card = document.createElement("article");
+    card.innerHTML = `<small>${label}</small><strong>${Number(value).toLocaleString()}</strong><span>${detail}</span>`;
+    grid.append(card);
+  });
+  const boundary = document.createElement("p");
+  boundary.textContent = "These are inspection candidates, not defect or grain-boundary assignments: molecular orientations, finite surfaces, strain, and crop truncation can produce the same local signals. Gap boundaries may recur as connection constraints but emit no atoms. No formation energy is inferred; literal residuals never become growth rules.";
+  ledger.append(heading, grid, boundary);
+  return ledger;
+}
+
 function clusterPlacementIndices(cluster) {
   if (cluster.classPlacementIndices?.length) return cluster.classPlacementIndices.slice();
   return learnedCover.placements.map((placement, index) => placement.type === cluster.type ? index : -1)
@@ -2927,8 +2993,10 @@ function buildMolecularGalleryToolbar(types) {
   inspector.className = "cluster-gallery-inspector";
   inspector.setAttribute("aria-live", "polite");
   const ledger = buildMolecularCoverLedger(types);
+  const microstructure = buildMicrostructureLedger();
   toolbar.append(controls, status);
   if (ledger) toolbar.append(ledger);
+  if (microstructure) toolbar.append(microstructure);
   toolbar.append(inspector);
   return toolbar;
 }
@@ -3893,6 +3961,22 @@ function receiptExternalGeometry() {
   return { ...audit, parametersAngstrom, sceneUnitAngstrom: receiptRound(scale) };
 }
 
+function receiptMicrostructureAudit() {
+  if (!microstructureEvidence) return null;
+  const { adjacencyReach, coordinationBaselines, ...audit } = microstructureEvidence;
+  return {
+    ...audit,
+    adjacencyReachSceneUnits: receiptRound(adjacencyReach),
+    adjacencyReachAngstrom: receiptRound(adjacencyReach * referenceSpacingA / referenceSpacing),
+    coordinationBaselines: coordinationBaselines.map((entry) => ({
+      ...entry,
+      median: receiptRound(entry.median),
+      mad: receiptRound(entry.mad),
+      anomalyThreshold: receiptRound(entry.anomalyThreshold),
+    })),
+  };
+}
+
 async function buildExperimentReceipt() {
   const material = currentMaterial();
   const markingConfig = currentMarkingConfig();
@@ -3913,7 +3997,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-41",
+      buildId: "20260824-43",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4141,6 +4225,7 @@ async function buildExperimentReceipt() {
       molecularFamilies: learnedCover.molecular || null,
       molecularDiscovery: learnedCover.molecularDiscovery || null,
       irregularMining: learnedCover.irregular || null,
+      heterogeneousGeometryAudit: receiptMicrostructureAudit(),
       classes: clusterGalleryTypes().map(receiptClusterRecord),
     } : { status: "stage not entered" },
     marking: {
@@ -5991,6 +6076,7 @@ function enterPipelineStage(index, options = {}) {
   trainedMarking = learnOverlapMarking(referenceAtoms);
   overlapGrammar = learnOverlapGrammar(referenceAtoms);
   orientationAtlas = learnOrientationAtlas();
+  microstructureEvidence = learnMicrostructureEvidence();
   const currentVocabularyKey = markingVocabularyKey();
   const compatibleActive = markingLibrary.find((marking) => marking.id === activeMarkingId
     && marking.materialKey === markingMaterialKey()

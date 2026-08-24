@@ -189,9 +189,23 @@ The gallery is also an interactive cover proof. Selecting a card reports the
 union of observed atoms covered by that exact class, its occurrence and support
 counts, how many covered atoms participate in overlaps, the symmetry-quotiented
 proper-pose orbit count, chirality status, connection-port rank, and derived
-marking-channel rank. Recurrent supports and literal residual/gap terminals are
-visually and semantically separated; a terminal can certify complete replay but
-is never silently promoted into a generative rule.
+marking-channel rank. Recurrent supports, reusable gap/void boundary constraints,
+and literal residual terminals are visually and semantically separated; a
+terminal can certify complete replay but is never silently promoted into a
+generative rule.
+
+An expandable **heterogeneous-geometry audit** keeps three roles distinct.
+Recurring material supports may become growth actions; recurring gap/void
+boundaries may constrain a connection but emit no atoms; literal residuals
+close the observed cover and can never become growth rules. The same audit
+reports species-local coordination outliers using a median/MAD rule, spatial
+contacts between unlike local proper-pose orbits, and explicitly supplied
+occupational/vacancy alternatives. These are candidates for inspection, not
+automatic vacancy, dislocation, grain, or grain-boundary labels: a finite crop,
+surface, molecule orientation, strain, or truncation can generate the same
+signals. No defect formation energy, relaxation, mobility, or thermodynamic
+preference is inferred. The experiment receipt records the counts, thresholds,
+and all of these non-claims without embedding atom coordinates.
 
 The same stage reports how many symmetry-inequivalent orientations of every
 cluster are actually needed to cover the observation. It constructs intrinsic
