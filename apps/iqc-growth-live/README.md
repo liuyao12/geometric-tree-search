@@ -600,6 +600,17 @@ that the auxiliary polyhedra repair missing atoms: H2O already closes the atom
 cover, while the auxiliary clusters close the geometry needed for attachment
 and traversal.
 
+Cluster identification now exposes its colored metric-isometry tolerance as a
+stage-local scientific control: strict `1.0%`, balanced `2.5%`, or thermally
+broadened `5.0%` of the observed nearest-neighbor distance. The selected value
+is applied consistently to finite-molecule signatures, intermolecular
+connection and void classes, and generic irregular-support signatures. It does
+not change hard-core exclusion or authorize an unseen pose. Changing it reruns
+clustering and the downstream pose/port atlas, so the scientist can inspect
+whether a vocabulary fragments under strict matching or collapses only under a
+broadened experimental tolerance. Receipts store the named mode, dimensionless
+fraction, and resulting ångström tolerance.
+
 The same front end now has a non-water molecular-crystal control: a saved
 `3×3×3` low-pressure cubic CO2-I (`Pa-3`) window containing 108 linear CO2
 molecules and 324 atoms. The fixture supplies only C/O positions and species.

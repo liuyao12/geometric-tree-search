@@ -269,6 +269,14 @@
                 <option value="offlattice">Metric point set · unrestricted positions</option>
               </select>
             </label>
+            <label class="field" for="clusterToleranceSelect">
+              <span>Metric isometry tolerance <b id="clusterToleranceHint">2.5% of nearest-neighbor scale</b></span>
+              <select id="clusterToleranceSelect">
+                <option value="strict">Strict · 1.0% · relaxed calculations</option>
+                <option value="balanced" selected>Balanced · 2.5% · default observations</option>
+                <option value="thermal">Thermal/disordered · 5.0% · broadened positions</option>
+              </select>
+            </label>
             <div class="geometry-audit" aria-label="Inferred geometric degrees of freedom">
               <div><small>placement support</small><strong id="translationSupport">—</strong></div>
               <i>×</i>
@@ -743,7 +751,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-31"></script>
+  <script type="module" src="./app.js?v=20260824-33"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-3"></script>
 </body>
 </html>

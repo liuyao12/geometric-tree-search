@@ -63,6 +63,8 @@ const stageOptionsTitle = $("stageOptionsTitle");
 const stageOptionsState = $("stageOptionsState");
 const clusterGeometryOptions = $("clusterGeometryOptions");
 const geometryModeSelect = $("geometryModeSelect");
+const clusterToleranceSelect = $("clusterToleranceSelect");
+const clusterToleranceHint = $("clusterToleranceHint");
 const geometryModeHint = $("geometryModeHint");
 const geometryModeNote = $("geometryModeNote");
 const translationSupport = $("translationSupport");
@@ -455,6 +457,7 @@ let surfacePreference = "soft";
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
+let clusterToleranceMode = "balanced";
 let orientationAtlas = [];
 let selectedGalleryCluster = 0;
 let rdfPairSelection = "all";
@@ -1930,6 +1933,10 @@ function poseSupportLabel(total, freeTypes, unresolvedTypes) {
   ].filter(Boolean).join(" · ");
 }
 
+function clusterMetricTolerance() {
+  return clusterToleranceMode === "strict" ? .01 : clusterToleranceMode === "thermal" ? .05 : .025;
+}
+
 function resolvedGeometryMode() {
   if (geometryMode !== "auto") return geometryMode;
   if (detectedUnitCell) return "lattice";
@@ -2098,6 +2105,7 @@ function molecularComponentHypothesis(source) {
   return discoverFiniteMolecularComponents({
     species: source.map((atom) => atom.species),
     distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
+    descriptorToleranceA: referenceSpacingA * clusterMetricTolerance(),
   });
 }
 
@@ -2269,6 +2277,7 @@ function buildGenericMolecularClusterCover(source, molecularDiscovery) {
     discovery: molecularDiscovery,
     species: source.map((atom) => atom.species),
     distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
+    descriptorToleranceA: referenceSpacingA * clusterMetricTolerance(),
   });
   if (!topology.componentGraphConnected) return null;
   const moleculeTypes = molecularDiscovery.types.length;
@@ -2361,6 +2370,7 @@ function buildIrregularClusterCover(source, molecularDiscovery) {
         periodicDisplacement(source[first], source[fourth]),
       )),
     referenceSpacing: referenceSpacingA,
+    metricTolerance: clusterMetricTolerance(),
     shellRadius: motifShellCutoff(),
   });
   const types = result.types.map((type) => ({
@@ -3447,6 +3457,7 @@ function currentMarkingConfig() {
     reach: Number(markingDraft.reach),
     representation: markingDraft.representation,
     geometryMode,
+    clusterToleranceMode,
   };
 }
 
@@ -3528,7 +3539,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-31",
+      buildId: "20260824-33",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3560,6 +3571,9 @@ async function buildExperimentReceipt() {
     },
     geometry: {
       requestedMode: geometryMode,
+      metricIsometryToleranceMode: clusterToleranceMode,
+      metricIsometryToleranceFractionOfNearestNeighbor: clusterMetricTolerance(),
+      metricIsometryToleranceAngstrom: receiptRound(referenceSpacingA * clusterMetricTolerance()),
       resolvedMode: resolvedGeometryMode(),
       resolvedLabel: resolvedGeometryLabel(),
       nearestNeighborAngstrom: receiptRound(referenceSpacingA),
@@ -3830,6 +3844,8 @@ function markingVocabularyKey() {
   return JSON.stringify({
     schema: MARKING_VOCABULARY_SCHEMA,
     geometry: resolvedGeometryMode(),
+    metricToleranceMode: clusterToleranceMode,
+    metricToleranceFraction: clusterMetricTolerance(),
     dimension: currentMaterial().intrinsicDimension || 3,
     composition: reducedCompositionKey(),
     prototypes: markingPrototypeTypes().map((prototype, index) => {
@@ -5033,7 +5049,8 @@ function markingName(config, id) {
   const representation = MARKING_REPRESENTATIONS[config.representation]?.short || config.representation;
   const channels = config.channelMode === "auto" ? `auto→${config.channels}ch` : `${config.channels}ch`;
   const domain = { auto: "auto", lattice: "lattice", module: "module", offlattice: "SE(3)" }[config.geometryMode || "auto"];
-  return `M${String(id).padStart(2, "0")} · ${domain} · ${channels} · R${config.reach} · ${representation}`;
+  const tolerance = { strict: "ε1%", balanced: "ε2.5%", thermal: "ε5%" }[config.clusterToleranceMode || "balanced"];
+  return `M${String(id).padStart(2, "0")} · ${domain} · ${tolerance} · ${channels} · R${config.reach} · ${representation}`;
 }
 
 function compatibleMarkings() {
@@ -5041,6 +5058,7 @@ function compatibleMarkings() {
   const vocabularyKey = markingVocabularyKey();
   return markingLibrary.filter((marking) => marking.materialKey === key
     && (marking.config.geometryMode || "auto") === geometryMode
+    && (marking.config.clusterToleranceMode || "balanced") === clusterToleranceMode
     && marking.vocabularyKey === vocabularyKey
     && marking.coefficients.length === markingPrototypeTypes().length);
 }
@@ -5048,7 +5066,7 @@ function compatibleMarkings() {
 function freezeCurrentMarking() {
   if (!sectionModel) return null;
   const config = { channels: sectionModel.channels, channelMode: sectionModel.channelMode,
-    reach: sectionModel.reach, representation: sectionModel.representation, geometryMode };
+    reach: sectionModel.reach, representation: sectionModel.representation, geometryMode, clusterToleranceMode };
   const materialKey = markingMaterialKey();
   const vocabularyKey = markingVocabularyKey();
   let marking = markingLibrary.find((candidate) => candidate.materialKey === materialKey
@@ -5057,6 +5075,7 @@ function freezeCurrentMarking() {
     && (candidate.config.channelMode || "manual") === config.channelMode
     && candidate.config.reach === config.reach
     && (candidate.config.geometryMode || "auto") === config.geometryMode
+    && (candidate.config.clusterToleranceMode || "balanced") === config.clusterToleranceMode
     && candidate.config.representation === config.representation);
   if (!marking) {
     const serial = nextMarkingId++;
@@ -5198,6 +5217,8 @@ function syncStageOptions() {
   stageOptionsTitle.textContent = clustering ? "Learn the pose atlas" : training ? "Train a connection marking" : "Choose the search grammar";
   if (clustering) {
     geometryModeSelect.value = geometryMode;
+    clusterToleranceSelect.value = clusterToleranceMode;
+    clusterToleranceHint.textContent = `${(clusterMetricTolerance() * 100).toFixed(1)}% of nearest-neighbor scale · ${(referenceSpacingA * clusterMetricTolerance()).toFixed(3)} Å`;
     const latticeDetected = Boolean(detectedUnitCell);
     const periodicFixture = Boolean(currentMaterial().periodicWindow && currentCell() && currentPbc().some(Boolean));
     const resolvedMode = resolvedGeometryMode();
@@ -5223,8 +5244,9 @@ function syncStageOptions() {
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
     renderMolecularHypothesis();
     renderPoseAtlas();
-    stageOptionsState.textContent = resolvedMode === "module" ? "aperiodic module"
-      : resolvedMode === "offlattice" ? `metric-set ${rotationGroupLabel()}` : "lattice candidate";
+    const toleranceLabel = `ε ${(clusterMetricTolerance() * 100).toFixed(1)}%`;
+    stageOptionsState.textContent = `${resolvedMode === "module" ? "aperiodic module"
+      : resolvedMode === "offlattice" ? `metric-set ${rotationGroupLabel()}` : "lattice candidate"} · ${toleranceLabel}`;
     return;
   }
   const resolvedChannels = sectionModel?.channels || currentMarkingConfig().channels;
@@ -6533,6 +6555,10 @@ loadFixtureButton.addEventListener("click", async () => {
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
 geometryModeSelect.addEventListener("change", () => {
   geometryMode = geometryModeSelect.value;
+  enterPipelineStage(1);
+});
+clusterToleranceSelect.addEventListener("change", () => {
+  clusterToleranceMode = clusterToleranceSelect.value;
   enterPipelineStage(1);
 });
 markingChannelsSelect.addEventListener("change", () => {

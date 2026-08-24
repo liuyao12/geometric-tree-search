@@ -43,6 +43,26 @@ assert.equal(permuted.accepted, true);
 assert.deepEqual(permuted.types.map((type) => [type.formula, type.occurrences.length]),
   water.types.map((type) => [type.formula, type.occurrences.length]));
 
+const noisyWaterPositions = Array.from({ length: 4 }, (_, molecule) => {
+  const scale = molecule < 2 ? .995 : 1.005;
+  const origin = 4 * molecule;
+  return [[origin, 0, 0], [origin + .758 * scale, .586 * scale, 0], [origin - .758 * scale, .586 * scale, 0]];
+}).flat();
+const strictNoisyWater = discoverFiniteMolecularComponents({
+  species: waterSpecies,
+  distance: euclidean(noisyWaterPositions),
+  descriptorToleranceA: .01,
+});
+const thermalNoisyWater = discoverFiniteMolecularComponents({
+  species: waterSpecies,
+  distance: euclidean(noisyWaterPositions),
+  descriptorToleranceA: .05,
+});
+assert.equal(strictNoisyWater.accepted, true);
+assert.equal(strictNoisyWater.types.length, 2);
+assert.equal(thermalNoisyWater.accepted, true);
+assert.equal(thermalNoisyWater.types.length, 1);
+
 const chainPositions = Array.from({ length: 8 }, (_, index) => [1.4 * index, 0, 0]);
 const chain = discoverFiniteMolecularComponents({
   species: Array(8).fill("C"),
@@ -86,4 +106,5 @@ console.log("generic finite molecular component discovery: passed", {
   occurrences: water.types[0].occurrences.length,
   chainFallback: chain.reason,
   co2Topology: [co2Topology.connections.length, co2Topology.voids.length],
+  noisyToleranceTypes: [strictNoisyWater.types.length, thermalNoisyWater.types.length],
 });
