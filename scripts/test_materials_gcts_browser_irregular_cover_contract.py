@@ -29,6 +29,12 @@ def test_browser_uses_one_occurrence_cover_through_search() -> None:
     assert "chirality: cluster.chirality ?? null" in source
     assert 'const chirality = cluster.chirality ? ` · χ ${cluster.chirality}` : ""' in source
     assert "Residual gaps participate in exact known-window replay but are not promoted" in source
+    assert "function updateClusterGalleryInspector(galleryIndex)" in source
+    assert "complete-cover evidence" in source
+    assert "proper-pose support" in source
+    assert "connection capacity" in source
+    assert 'card.setAttribute("role", "button")' in source
+    assert 'card.addEventListener("keydown"' in source
 
     assert "export function discoverIrregularCover" in learner
     assert 'kind: "bond-lens"' in learner

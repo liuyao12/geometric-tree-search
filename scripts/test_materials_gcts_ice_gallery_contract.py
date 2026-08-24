@@ -45,6 +45,8 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "markingPrototypeTypes().forEach((cluster, clusterIndex)" in source
     assert "return learnedCover?.occurrenceBased || learnedCover?.molecular ? learnedCover.types" in source
     assert "colored metric-isometry classes as independent rotating scenes" in source
+    assert "cluster-gallery-inspector" in source
+    assert "literal terminal · never promoted" in source
     assert "markingPrototypeTypes().forEach((_, cluster)" in source
     assert "sectionModel.sampleLabels" in source
     assert 'const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v2"' in source

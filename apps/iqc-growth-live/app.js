@@ -390,6 +390,7 @@ let hierarchyEnabled = true;
 let nextMarkingId = 1;
 let geometryMode = "auto";
 let orientationAtlas = [];
+let selectedGalleryCluster = 0;
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -1977,6 +1978,41 @@ function clusterCoverRole(cluster) {
   }[clusterGalleryFamily(cluster)];
 }
 
+function clusterPlacementIndices(cluster) {
+  if (cluster.classPlacementIndices?.length) return cluster.classPlacementIndices.slice();
+  return learnedCover.placements.map((placement, index) => placement.type === cluster.type ? index : -1)
+    .filter((index) => index >= 0);
+}
+
+function updateClusterGalleryInspector(galleryIndex) {
+  const types = clusterGalleryTypes();
+  const cluster = types[galleryIndex];
+  const inspector = clusterGallery.querySelector(".cluster-gallery-inspector");
+  if (!cluster || !inspector) return;
+  selectedGalleryCluster = galleryIndex;
+  clusterGallery.querySelectorAll(".cluster-card").forEach((card) => {
+    const active = Number(card.dataset.clusterIndex) === galleryIndex;
+    card.classList.toggle("active", active);
+    card.setAttribute("aria-pressed", String(active));
+  });
+  const placementIndices = clusterPlacementIndices(cluster);
+  const coveredAtoms = new Set(placementIndices.flatMap((index) => learnedCover.placements[index]?.support || []));
+  const sharedAtoms = [...coveredAtoms].filter((atomIndex) => learnedCover.incidence[atomIndex]?.length > 1).length;
+  const supportSites = cluster.customSupport?.length
+    || learnedCover.placements[placementIndices[0]]?.support.length || 1;
+  const poseCount = galleryPoseCount(cluster);
+  const familyIndex = cluster.familyType ?? galleryIndex;
+  const ports = cluster.residual ? 0 : clusterPortRank(familyIndex);
+  const channels = cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex);
+  const chirality = cluster.chirality || "unresolved / achiral";
+  const coverKind = cluster.residual ? "literal terminal · never promoted" : "recurrent candidate · eligible for ports";
+  inspector.innerHTML = `
+    <div><small>selected class</small><strong>${cluster.label || `C${galleryIndex + 1}`}</strong><span>${cluster.geometry || "colored support polyhedron"}</span></div>
+    <div><small>complete-cover evidence</small><strong>${coveredAtoms.size.toLocaleString()} / ${referenceCount().toLocaleString()} atoms</strong><span>${placementIndices.length} occurrence${placementIndices.length === 1 ? "" : "s"} · ${supportSites} sites / occurrence · ${sharedAtoms} overlap-shared atoms</span></div>
+    <div><small>proper-pose support</small><strong>${poseCount || "unresolved"} orbit${poseCount === 1 ? "" : "s"} · χ ${chirality}</strong><span>translation and atom order removed; mirrors remain distinct when resolved</span></div>
+    <div><small>connection capacity</small><strong>${ports} port role${ports === 1 ? "" : "s"} → ${channels} channel${channels === 1 ? "" : "s"}</strong><span>${coverKind}</span></div>`;
+}
+
 function buildMolecularGalleryToolbar(types) {
   const toolbar = document.createElement("div");
   toolbar.className = "cluster-gallery-toolbar";
@@ -1985,11 +2021,12 @@ function buildMolecularGalleryToolbar(types) {
   controls.setAttribute("role", "group");
   controls.setAttribute("aria-label", "Filter molecular cluster isometry classes");
   const status = document.createElement("p");
-  const filters = [
-    ["all", "All exact classes"],
-    ["molecule", "H₂O molecules"],
-    ["bridge", "Bridge polyhedra"],
-    ["gap", "Gap boundaries"],
+  const filters = learnedCover.molecular ? [
+    ["all", "All exact classes"], ["molecule", "H₂O molecules"],
+    ["bridge", "Bridge polyhedra"], ["gap", "Gap boundaries"],
+  ] : [
+    ["all", "All cover classes"], ["support", "Recurring supports"],
+    ["residual", "Gap / residual terminals"],
   ];
   filters.forEach(([family, label], index) => {
     const count = family === "all" ? types.length
@@ -2013,22 +2050,32 @@ function buildMolecularGalleryToolbar(types) {
         visible += Number(show);
       });
       status.textContent = `Showing ${visible} / ${types.length} colored complete-metric isometry classes · no classes merged`;
+      const selected = clusterGallery.querySelector(".cluster-card.active:not([hidden])")
+        || clusterGallery.querySelector(".cluster-card:not([hidden])");
+      if (selected) updateClusterGalleryInspector(Number(selected.dataset.clusterIndex));
     });
     controls.append(button);
   });
   status.textContent = `Showing ${types.length} / ${types.length} colored complete-metric isometry classes · no classes merged`;
-  toolbar.append(controls, status);
+  const inspector = document.createElement("div");
+  inspector.className = "cluster-gallery-inspector";
+  inspector.setAttribute("aria-live", "polite");
+  toolbar.append(controls, status, inspector);
   return toolbar;
 }
 
 function rebuildClusterGallery() {
   clusterGallery.replaceChildren();
   const types = clusterGalleryTypes();
-  if (learnedCover.molecular) clusterGallery.append(buildMolecularGalleryToolbar(types));
+  clusterGallery.append(buildMolecularGalleryToolbar(types));
   types.forEach((cluster, galleryIndex) => {
     const card = document.createElement("article");
     card.className = `cluster-card${cluster.residual ? " residual" : ""}${cluster.gap ? " gap" : ""}`;
+    card.dataset.clusterIndex = String(galleryIndex);
     card.dataset.clusterFamily = clusterGalleryFamily(cluster);
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-pressed", "false");
     if (cluster.classSignature) card.dataset.isometrySignature = cluster.classSignature;
     const canvas = document.createElement("canvas");
     canvas.width = 280;
@@ -2055,8 +2102,15 @@ function rebuildClusterGallery() {
     const chirality = cluster.chirality ? ` · χ ${cluster.chirality}` : "";
     label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${classStatus}${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span><small>${supportSites} colored site${supportSites === 1 ? "" : "s"} · ${clusterCoverRole(cluster)}${chirality}</small>`;
     card.append(canvas, label);
+    card.addEventListener("click", () => updateClusterGalleryInspector(galleryIndex));
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      updateClusterGalleryInspector(galleryIndex);
+    });
     clusterGallery.append(card);
   });
+  updateClusterGalleryInspector(Math.min(selectedGalleryCluster, Math.max(0, types.length - 1)));
 }
 
 function convexHullTriangles(sites) {
@@ -2917,7 +2971,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-6",
+      buildId: "20260824-7",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {

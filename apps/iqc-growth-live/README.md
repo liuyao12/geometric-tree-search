@@ -98,6 +98,14 @@ Each admitted metric-isometry class has its own independently rotating canvas ca
 repeated placements do not create duplicate cards and no card is reconstructed
 as radial spokes from an artificial central point.
 
+The gallery is also an interactive cover proof. Selecting a card reports the
+union of observed atoms covered by that exact class, its occurrence and support
+counts, how many covered atoms participate in overlaps, the symmetry-quotiented
+proper-pose orbit count, chirality status, connection-port rank, and derived
+marking-channel rank. Recurrent supports and literal residual/gap terminals are
+visually and semantically separated; a terminal can certify complete replay but
+is never silently promoted into a generative rule.
+
 The same stage reports how many symmetry-inequivalent orientations of every
 cluster are actually needed to cover the observation. It compares centered,
 element-coloured directional neighborhoods in the laboratory frame. Proper
