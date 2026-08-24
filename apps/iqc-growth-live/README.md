@@ -195,6 +195,16 @@ balanced, and strong weights. Changing it restarts the same frozen search
 experiment, so marking-only and strain-assisted orderings can be compared
 without changing the cluster or port vocabulary.
 
+For multicomponent growth, the sample also defines a reduced **composition
+reservoir** with no binary-system assumption. Each candidate reports how its
+unique new sites change the total-variation distance between the live and
+observed element fractions. A soft Stage-4 selector can favor actions that
+reduce that drift, or it can be disabled while retaining the diagnostic. The
+term is size-scaled so it remains visible as the solid grows, but it is never a
+hard constraint: a finite surface, nucleus, defect, or temporarily incomplete
+frontier may depart from bulk stoichiometry. No oxidation state, formal charge,
+chemical potential, or elemental feed rate is inferred.
+
 This is chemistry-as-geometry, not a pair potential: it has no attractive
 well, angular energy, charge, bond order, temperature, pressure, or kinetics. Those effects
 can constrain which clusters and ports are observed in the sample, but the

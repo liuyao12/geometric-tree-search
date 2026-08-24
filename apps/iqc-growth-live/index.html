@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-7">
+  <link rel="stylesheet" href="./style.css?v=20260824-8">
   <script type="importmap">
     {
       "imports": {
@@ -351,6 +351,14 @@
                 <option value="0.32">0.32 · strong preference</option>
               </select>
             </label>
+            <label class="field" for="compositionPreferenceSelect">
+              <span>Composition reservoir <b>multicomponent soft balance</b></span>
+              <select id="compositionPreferenceSelect">
+                <option value="soft" selected>Reference fractions · balanced</option>
+                <option value="strong">Reference fractions · strong</option>
+                <option value="none">Off · unrestricted frontier drift</option>
+              </select>
+            </label>
             <button id="trainVariantButton" class="train-variant" type="button">↶ Train a different marking</button>
             <div class="hierarchy-choice" role="group" aria-label="Cluster hierarchy mode">
               <button id="primitiveGrowthButton" type="button" aria-pressed="false"><small>primitive</small><strong>Clusters only</strong><span>one frontier generation</span></button>
@@ -664,6 +672,7 @@
             <div><dt>domain</dt><dd id="domainValue">—</dd></div>
             <div><dt>compatibility interval</dt><dd id="energyValue">—</dd></div>
             <div><dt>geometric strain</dt><dd id="strainValue">—</dd></div>
+            <div><dt>composition drift</dt><dd id="compositionValue">—</dd></div>
             <div><dt>resolved by</dt><dd id="resolverValue">—</dd></div>
           </dl>
         </section>
@@ -703,7 +712,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-15"></script>
+  <script type="module" src="./app.js?v=20260824-16"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-2"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ import {
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
+import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import {
   coloredAngularViolations,
   coloredGeometricStrain,
@@ -80,6 +81,7 @@ const markingSearchModeSelect = $("markingSearchModeSelect");
 const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
+const compositionPreferenceSelect = $("compositionPreferenceSelect");
 const trainVariantButton = $("trainVariantButton");
 const primitiveGrowthButton = $("primitiveGrowthButton");
 const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
@@ -143,6 +145,7 @@ const actionValue = $("actionValue");
 const domainValue = $("domainValue");
 const energyValue = $("energyValue");
 const strainValue = $("strainValue");
+const compositionValue = $("compositionValue");
 const resolverValue = $("resolverValue");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
@@ -398,6 +401,8 @@ let coordinationCapacityPrunes = 0;
 let angularEnvelopePrunes = 0;
 let acceptedGeometricStrain = 0;
 let rejectedGeometricStrain = 0;
+let acceptedCompositionDelta = 0;
+let rejectedCompositionDelta = 0;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let markingSelection = null;
@@ -418,6 +423,7 @@ let markingSearchMode = "single";
 let hierarchyEnabled = true;
 let geometryPreference = "strain";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
+let compositionPreference = "soft";
 let nextMarkingId = 1;
 let geometryMode = "auto";
 let orientationAtlas = [];
@@ -427,6 +433,7 @@ let structureObservableSelection = "rdf";
 let coloredDistanceEnvelopes = null;
 let coloredCoordinationEnvelopes = null;
 let coloredAngularEnvelopes = null;
+let compositionTarget = null;
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -3199,7 +3206,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-15",
+      buildId: "20260824-16",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3283,6 +3290,12 @@ async function buildExperimentReceipt() {
           centerObservations: record.centerObservations,
         })),
       },
+      compositionReservoir: {
+        role: "observed multicomponent fractions used only for optional soft frontier balancing; not charge or chemical potential",
+        reducedRatio: compositionTarget.reducedRatio,
+        fractions: compositionTarget.fractions,
+        observations: compositionTarget.observations,
+      },
     },
     structuralEvidence: {
       role: "posthoc validation only; never a growth feature or branch score",
@@ -3360,6 +3373,14 @@ async function buildExperimentReceipt() {
         effectiveWeight: activeGeometricStrainWeight(),
         acceptedMean: receiptRound(acceptedGeometricStrain / Math.max(1, acceptedDecisions)),
         rejectedMean: receiptRound(rejectedGeometricStrain / Math.max(1, rejectedDecisions)),
+      },
+      compositionBalanceRanking: {
+        role: "target-blind soft ordering toward the observed multicomponent reservoir; never a hard surface constraint",
+        mode: compositionPreference,
+        effectiveWeight: activeCompositionBalanceWeight(),
+        targetReducedRatio: compositionTarget.reducedRatio,
+        acceptedMeanScaledDelta: receiptRound(acceptedCompositionDelta / Math.max(1, acceptedDecisions)),
+        rejectedMeanScaledDelta: receiptRound(rejectedCompositionDelta / Math.max(1, rejectedDecisions)),
       },
       grammarDecisions,
       localOracleCalls: oracleCalls,
@@ -4010,6 +4031,10 @@ function activeGeometricStrainWeight() {
   return geometryPreference === "strain" ? geometricStrainWeight : 0;
 }
 
+function activeCompositionBalanceWeight() {
+  return compositionPreference === "strong" ? .70 : compositionPreference === "soft" ? .35 : 0;
+}
+
 function candidateSites(candidate) {
   return (candidate.rule.sites || overlapGrammar.templates[candidate.type].sites).map((site) => ({
     species: site.species, center: site.center,
@@ -4102,6 +4127,16 @@ function geometricStrainForFreshSites(rawFreshSites) {
     coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, [...affected]);
 }
 
+function compositionBalanceForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  if (!compositionTarget || !freshSites.length) return {
+    before: 0, after: 0, delta: 0, scaledDelta: 0, maximumFractionError: 0,
+    projectedFractions: {}, added: 0,
+  };
+  return compositionBalanceDelta(atoms.map((atom) => atom.species),
+    freshSites.map((site) => site.species), compositionTarget);
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -4136,7 +4171,8 @@ function commutingFrontierBatch() {
       evaluation,
       sites: evaluation.sites,
       score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit)
-        - activeGeometricStrainWeight() * evaluation.geometricStrain.total,
+        - activeGeometricStrainWeight() * evaluation.geometricStrain.total
+        - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta,
     };
   }).sort((first, second) => second.score - first.score || first.candidate.key.localeCompare(second.candidate.key));
   if (overlapGrammar.molecular && !reconstructionCertified) {
@@ -4218,11 +4254,12 @@ function evaluateCandidate(candidate) {
   const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh);
   const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh);
   const geometricStrain = geometricStrainForFreshSites(fresh);
+  const compositionBalance = compositionBalanceForFreshSites(fresh);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
-    coordinationOverflows, angularViolations, geometricStrain,
+    coordinationOverflows, angularViolations, geometricStrain, compositionBalance,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -4273,6 +4310,8 @@ function initializeOffLatticeSearch() {
   angularEnvelopePrunes = 0;
   acceptedGeometricStrain = 0;
   rejectedGeometricStrain = 0;
+  acceptedCompositionDelta = 0;
+  rejectedCompositionDelta = 0;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
@@ -4683,8 +4722,10 @@ function syncStageOptions() {
     const finiteIceAnchorMode = Boolean(iceAnchorTrace);
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
+    compositionPreferenceSelect.value = compositionPreference;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
+    compositionPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightHint.textContent = geometryPreference === "strain"
       ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
@@ -4700,11 +4741,15 @@ function syncStageOptions() {
     const strainUse = geometryPreference === "strain"
       ? ` A frozen sample-derived contact/angle strain adds a ${geometricStrainWeight.toFixed(2)} soft ordering term over that same candidate set.`
       : " Geometric strain is reported but contributes zero ranking weight for this ablation.";
+    const ratio = Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}${count === 1 ? "" : count}`).join("");
+    const compositionUse = compositionPreference === "none"
+      ? " Composition drift is reported but contributes zero ranking weight."
+      : ` A ${compositionPreference === "strong" ? "strong" : "balanced"} soft reservoir term favors the observed ${ratio} ratio without constraining an incomplete surface.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${markingUse}${strainUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${markingUse}${strainUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${markingUse}${strainUse}${compositionUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${markingUse}${strainUse}${compositionUse}`;
   }
 }
 
@@ -4718,6 +4763,8 @@ function resetCounters() {
   angularEnvelopePrunes = 0;
   acceptedGeometricStrain = 0;
   rejectedGeometricStrain = 0;
+  acceptedCompositionDelta = 0;
+  rejectedCompositionDelta = 0;
   stackHistory = [];
   markingCache = new Map();
   actionCache = new Map();
@@ -4759,6 +4806,7 @@ function enterPipelineStage(index, options = {}) {
   coloredDistanceEnvelopes = learnReferenceDistanceEnvelopes(referenceAtoms);
   coloredCoordinationEnvelopes = learnReferenceCoordinationEnvelopes(referenceAtoms);
   coloredAngularEnvelopes = learnReferenceAngularEnvelopes(referenceAtoms);
+  compositionTarget = learnCompositionTarget(referenceAtoms.map((atom) => atom.species));
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean),
     currentMaterial().intrinsicDimension === 2 ? 2 : 3);
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
@@ -4925,6 +4973,10 @@ function updateStageNarrative() {
   strainValue.textContent = pipelineStage === 4
     ? geometryPreference === "strain" ? `enabled · weight ${geometricStrainWeight.toFixed(2)}` : "diagnostic only · weight 0"
     : "not ranked";
+  compositionValue.textContent = pipelineStage === 4
+    ? compositionPreference === "none" ? "diagnostic only · weight 0"
+      : `${compositionPreference} reservoir · weight ${activeCompositionBalanceWeight().toFixed(2)}`
+    : "not ranked";
 }
 
 function stateForCandidate(candidate, evaluation) {
@@ -4937,6 +4989,7 @@ function stateForCandidate(candidate, evaluation) {
     minimum: candidate.markingScore,
     clearance: evaluation.conflicts,
     geometricStrain: evaluation.geometricStrain,
+    compositionBalance: evaluation.compositionBalance,
   };
 }
 
@@ -5032,6 +5085,7 @@ function performOffLatticeEvent() {
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
       rejectedGeometricStrain += snapshotEvaluation.geometricStrain.total;
+      rejectedCompositionDelta += snapshotEvaluation.compositionBalance.scaledDelta;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -5049,6 +5103,7 @@ function performOffLatticeEvent() {
     const placement = materializeCandidate(candidate, evaluation);
     acceptedDecisions++;
     acceptedGeometricStrain += evaluation.geometricStrain.total;
+    acceptedCompositionDelta += evaluation.compositionBalance.scaledDelta;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -5093,6 +5148,7 @@ function performIceAnchorEvent() {
     domainValue.textContent = `${wave.rejectedNonunanimousAnchors} non-unanimous anchors pruned`;
     energyValue.textContent = "target calls 0";
     strainValue.textContent = "not used by frozen ice trace";
+    compositionValue.textContent = "not used by frozen ice trace";
     resolverValue.textContent = "orientation-domain unanimity";
     appendHistory("reject", { type: "reject", depth: wave.wave,
       action: "safe fixed point", family: "no unanimous parent domain" });
@@ -5283,6 +5339,10 @@ function updateDecision(event) {
   const strain = event.state.geometricStrain;
   strainValue.textContent = strain
     ? `${strain.total.toFixed(3)} · r ${strain.distance.toFixed(3)} · θ ${strain.angle.toFixed(3)}`
+    : "not evaluated";
+  const balance = event.state.compositionBalance;
+  compositionValue.textContent = balance
+    ? `${balance.before.toFixed(3)} → ${balance.after.toFixed(3)} · Δ${balance.delta >= 0 ? "+" : ""}${balance.delta.toFixed(3)}`
     : "not evaluated";
   resolverValue.textContent = event.resolver;
   eventKind.textContent = reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
@@ -5571,10 +5631,17 @@ function renderMarkings() {
     const records = coloredDistanceEnvelopes?.records || [];
     const coordinationRecords = coloredCoordinationEnvelopes?.records || [];
     const angularRecords = coloredAngularEnvelopes?.records || [];
-    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles`;
+    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles · 1 reservoir`;
     const p = document.createElement("p");
     p.textContent = "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
     markingTable.appendChild(p);
+    const reservoir = document.createElement("div"); reservoir.className = "mark-row composition-reservoir-row";
+    reservoir.title = "Observed global fractions are an optional soft frontier preference, never a hard surface constraint";
+    const reservoirCode = document.createElement("code"); reservoirCode.textContent = "ratio";
+    const reservoirRatio = document.createElement("span"); reservoirRatio.textContent = Object.entries(compositionTarget.reducedRatio)
+      .map(([symbol, count]) => `${symbol}:${count}`).join(" · ");
+    const reservoirCount = document.createElement("b"); reservoirCount.textContent = `N=${compositionTarget.observations}`;
+    reservoir.append(reservoirCode, reservoirRatio, reservoirCount); markingTable.appendChild(reservoir);
     const toAngstrom = referenceSpacingA / referenceSpacing;
     records.forEach((record) => {
       const row = document.createElement("div"); row.className = "mark-row distance-envelope-row";
@@ -5822,6 +5889,12 @@ geometryPreferenceSelect.addEventListener("change", () => {
 strainWeightSelect.addEventListener("change", () => {
   const value = Number(strainWeightSelect.value);
   geometricStrainWeight = [.08, .16, .32].includes(value) ? value : DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+compositionPreferenceSelect.addEventListener("change", () => {
+  const value = compositionPreferenceSelect.value;
+  compositionPreference = value === "none" || value === "strong" ? value : "soft";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

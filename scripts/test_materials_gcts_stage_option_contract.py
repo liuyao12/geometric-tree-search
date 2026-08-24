@@ -53,6 +53,9 @@ def test_growth_exposes_candidate_identical_geometric_strain_ablation() -> None:
     assert 'geometryPreference === "strain" ? geometricStrainWeight : 0' in APP
     assert "- activeGeometricStrainWeight() * evaluation.geometricStrain.total" in APP
     assert "target-blind soft ordering of the unchanged exact candidate set" in APP
+    assert 'id="compositionPreferenceSelect"' in HTML
+    assert "function activeCompositionBalanceWeight()" in APP
+    assert "- activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta" in APP
 
 
 if __name__ == "__main__":
