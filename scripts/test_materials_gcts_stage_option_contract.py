@@ -45,6 +45,15 @@ def test_growth_can_disable_promotion_without_changing_candidate_geometry() -> N
     assert "same exact candidate geometry" in HTML
 
 
+def test_growth_exposes_serial_and_commuting_tree_schedules() -> None:
+    assert 'id="growthSchedulingSelect"' in HTML
+    assert '<option value="commuting" selected>Commuting frontier · simultaneous antichain</option>' in HTML
+    assert '<option value="serial">Serial best-first · one branch decision</option>' in HTML
+    assert 'growthScheduling === "serial"' in APP
+    assert 'candidateGeometryChangedByScheduling: false' in APP
+    assert 'maximal pairwise-compatible antichain; every accepted placement is valid in every permutation' in APP
+
+
 def test_growth_exposes_candidate_identical_geometric_strain_ablation() -> None:
     assert 'id="geometryPreferenceSelect"' in HTML
     assert 'id="strainWeightSelect"' in HTML
@@ -62,5 +71,6 @@ if __name__ == "__main__":
     test_clustering_exposes_geometry_pose_and_derived_channel_rank()
     test_marking_configuration_and_library_are_executable_controls()
     test_growth_can_disable_promotion_without_changing_candidate_geometry()
+    test_growth_exposes_serial_and_commuting_tree_schedules()
     test_growth_exposes_candidate_identical_geometric_strain_ablation()
     print("stage option contract: passed")

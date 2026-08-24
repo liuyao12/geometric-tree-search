@@ -339,14 +339,19 @@ pruned while other branches remain available. A soft cost for radius, search
 depth, and overrepresented angular sectors prevents one frequent attachment
 direction from starving the rest of the frontier.
 
-One visual update is a maximal greedy **commuting frontier set**, not one search
-move or an arbitrary fixed-size animation batch. Candidates are drawn from the
-same frontier snapshot. A placement joins the displayed set only when every
+Tree-search scheduling is an explicit growth-stage ablation. The default visual
+update is a maximal greedy **commuting frontier set**, not one search move or an
+arbitrary fixed-size animation batch. Candidates are drawn from the same
+frontier snapshot. A placement joins the displayed set only when every
 cross-placement site is either safely separated or a coincident atom of the
 same species, and every placement retains at least one new site not supplied by
 another member. These monotone local checks make all permutations of the
-displayed placements admissible. The engine materializes them in a
-deterministic order internally, but that order does not select the result.
+displayed placements admissible. Serial best-first mode instead executes one
+ranked branch decision per update, making branch order directly inspectable.
+Both modes use the identical rigid candidate geometry and dependency-ordered
+tree; scheduling changes execution/display order, not what actions exist. The
+selected mode and this no-geometry-change invariant are serialized in the
+experiment receipt.
 
 Red markers are also batched, but only for failures that are invariant under
 those permutations: hard-core/species conflict, confinement failure, duplicate

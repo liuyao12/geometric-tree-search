@@ -82,6 +82,8 @@ const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
 const compositionPreferenceSelect = $("compositionPreferenceSelect");
+const growthSchedulingSelect = $("growthSchedulingSelect");
+const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
 const primitiveGrowthButton = $("primitiveGrowthButton");
 const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
@@ -427,6 +429,7 @@ let hierarchyEnabled = true;
 let geometryPreference = "strain";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
+let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
 let orientationAtlas = [];
@@ -3209,7 +3212,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-17",
+      buildId: "20260824-18",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3360,6 +3363,15 @@ async function buildExperimentReceipt() {
       policy: policySelect.value,
       hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
       markingLibraryMode: markingSearchMode,
+      scheduling: {
+        mode: growthScheduling,
+        candidateAction: "one frozen whole colored-cluster template placement",
+        underlyingSearch: "dependency-ordered tree search",
+        displayedUpdate: growthScheduling === "commuting"
+          ? "maximal pairwise-compatible antichain; every accepted placement is valid in every permutation"
+          : "one best-first branch decision",
+        candidateGeometryChangedByScheduling: false,
+      },
       explicitSites: atoms.length,
       explicitSitesSha256: await structureDigest(atoms, "scene"),
       coordinateDigestSpace: "scene coordinates; order-independent serialization; coordinates not embedded",
@@ -4199,6 +4211,11 @@ function commutingFrontierBatch() {
     }
     return [];
   }
+  if (growthScheduling === "serial") {
+    const selected = ranked.find((entry) => entry.evaluation.accepted
+      || rejectionIsOrderInvariant(entry.candidate, entry.evaluation));
+    return selected ? [selected] : [];
+  }
   const acceptedBatch = [];
   const rejectedBatch = [];
   for (const entry of ranked) {
@@ -4743,9 +4760,13 @@ function syncStageOptions() {
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
     compositionPreferenceSelect.value = compositionPreference;
+    growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
     compositionPreferenceSelect.disabled = finiteIceAnchorMode;
+    growthSchedulingSelect.disabled = finiteIceAnchorMode;
+    growthSchedulingHint.textContent = growthScheduling === "commuting"
+      ? "maximal commuting set" : "one branch decision";
     strainWeightHint.textContent = geometryPreference === "strain"
       ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
@@ -4768,8 +4789,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${markingUse}${strainUse}${compositionUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${markingUse}${strainUse}${compositionUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}`;
   }
 }
 
@@ -4931,8 +4952,12 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "search · off-lattice recursive covering", title: "Let overlapping higher-order parents vote, then branch", phase: "seed cluster",
-      caption: "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is one maximal commuting frontier set: every displayed placement is valid in every permutation, while dependent residuals remain explicit tree branches.", badge: "search",
-      decision: "Recursive consensus frontier initialized", copy: "The same frozen connection marking proposes the next scale. A frontier antichain is displayed together only after pairwise species and hard-core checks, plus a unique-new-support check for every accepted placement.",
+      caption: growthScheduling === "commuting"
+        ? "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is one maximal commuting frontier set: every displayed placement is valid in every permutation, while dependent residuals remain explicit tree branches."
+        : "Translated, rotated, and inflated parents continue past the known boundary. Each visual update executes one best-first branch decision; the exact candidate geometry and dependency-ordered tree are unchanged.", badge: "search",
+      decision: "Recursive consensus frontier initialized", copy: growthScheduling === "commuting"
+        ? "The same frozen connection marking proposes the next scale. A frontier antichain is displayed together only after pairwise species and hard-core checks, plus a unique-new-support check for every accepted placement."
+        : "The same frozen connection marking proposes the next scale. One best-first candidate is executed per update so branch order can be inspected directly.",
       values: ["parent + φ(source−parent)", policySelect.value === "marked" ? selectedMarking()?.name || "active marking" : policySelect.value === "direct" ? "exact local oracle" : "unmarked action", hierarchyEnabled ? "clusters² promotion" : "primitive clusters", "branch residual"],
     },
   ];
@@ -5138,7 +5163,7 @@ function performOffLatticeEvent() {
   eventIndex += batch.length;
   captionAction.textContent = reconstructionCertified
     ? `Known-window certificate passed: ${referenceCount()}/${referenceCount()} species-labelled sites recovered one-to-one, with no duplicate or extraneous quotient sites. The observed one-off replay edges are now removed; continuation uses only the compressed learned grammar.`
-    : `${acceptedInBatch} order-independent placements shown together (${freshInBatch} new atoms) · ${replayIndex}/${referenceCount()} known sites recovered`
+    : `${acceptedInBatch} ${growthScheduling === "commuting" ? "order-independent placements shown together" : "best-first branch placement"} (${freshInBatch} new atoms) · ${replayIndex}/${referenceCount()} known sites recovered`
       + `${reconstructionMarkingFallbacks ? ` · ${reconstructionMarkingFallbacks} marking false negatives bypassed by the replay certificate` : ""}`
       + `${rejectedInBatch ? ` · ${rejectedInBatch} invariant prunes flash red` : ""}.`;
   if (lastDecision) updateDecision(lastDecision);
@@ -5918,6 +5943,11 @@ strainWeightSelect.addEventListener("change", () => {
 compositionPreferenceSelect.addEventListener("change", () => {
   const value = compositionPreferenceSelect.value;
   compositionPreference = value === "none" || value === "strong" ? value : "soft";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+growthSchedulingSelect.addEventListener("change", () => {
+  growthScheduling = growthSchedulingSelect.value === "serial" ? "serial" : "commuting";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
