@@ -1,0 +1,22 @@
+{
+  "autonomous_or_exponential_growth_claimed": false,
+  "child_model_digest": "fad91ee4b4ed4889cb57405fac1fa5c8f099bdaa718aaf7fc2aa071270b30604",
+  "conditional_child_model_diagnostic_only": true,
+  "consumed_v4_target_opened_only_after_receipt": true,
+  "exact_six_action_child_ranks": [[4, 3, 132], [5, 3, 133]],
+  "exact_six_action_pairs": [[4, 3], [5, 3]],
+  "exact_six_action_prefixes": 2,
+  "fresh_confirmation_claimed": false,
+  "parent_model_digest": "a31137c55a0c40fecd1fbb2636991b1867e5c3491eb3d50b41d1f2a5144568e5",
+  "receipt_digest": "e033957daec1b1b01b41804bb3365b0701f714328777bbd2ff842268d52e63f0",
+  "receipt_unchanged_after_scoring": true,
+  "result_digest": "cae8ce06001f74bbfe1239ddd40cc2f95983340f4abe11e499d702887d9e59fa",
+  "schema_version": 1,
+  "second_candidates": 1220,
+  "selected_child_width_per_parent": 16,
+  "selected_exact_six_action_pairs": [],
+  "selected_exact_six_action_prefixes": 0,
+  "selected_first_parents": 8,
+  "selected_six_action_prefixes": 128,
+  "target_used_for_generation_fit_or_ranking": false
+}
