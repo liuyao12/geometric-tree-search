@@ -142,6 +142,42 @@ export function coordinationEnvelopeFor(model, centerSpecies, neighborSpecies) {
   return model?.byKey?.[orderedKey(centerSpecies, neighborSpecies)] || null;
 }
 
+/**
+ * Dimensionless local coordination deficit relative to the observed bulk
+ * median. This is a geometric surface-completion observable, not bond energy:
+ * frontier centers may remain deficient and overcoordination is handled by the
+ * separate hard capacity test.
+ */
+export function coloredCoordinationDeficit(species, distance, coordinationModel,
+  centerIndices = species.map((_, index) => index)) {
+  const terms = [];
+  [...new Set(centerIndices)].forEach((center) => {
+    coordinationModel.records.filter((record) => record.centerSpecies === species[center])
+      .forEach((record) => {
+        const count = species.reduce((total, neighborSpecies, neighbor) => {
+          if (neighbor === center || neighborSpecies !== record.neighborSpecies) return total;
+          return total + (distance(center, neighbor) <= record.contactCutoff ? 1 : 0);
+        }, 0);
+        const target = record.medianObserved;
+        if (!(target > 0)) return;
+        terms.push({
+          center,
+          centerSpecies: record.centerSpecies,
+          neighborSpecies: record.neighborSpecies,
+          count,
+          target,
+          deficit: Math.max(0, target - count) / target,
+        });
+      });
+  });
+  return {
+    mean: terms.reduce((sum, term) => sum + term.deficit, 0) / Math.max(1, terms.length),
+    terms: terms.length,
+    deficientTerms: terms.filter((term) => term.deficit > 0).length,
+    records: terms,
+  };
+}
+
 function angularKey(center, firstNeighbor, secondNeighbor) {
   const [first, second] = [firstNeighbor, secondNeighbor].sort();
   return `${first}<${center}>${second}`;

@@ -359,6 +359,14 @@
                 <option value="none">Off · unrestricted frontier drift</option>
               </select>
             </label>
+            <label class="field" for="surfacePreferenceSelect">
+              <span>Surface completion <b>soft coordination-deficit proxy</b></span>
+              <select id="surfacePreferenceSelect">
+                <option value="soft" selected>Heal undercoordination · balanced</option>
+                <option value="strong">Heal undercoordination · strong</option>
+                <option value="none">Off · report only</option>
+              </select>
+            </label>
             <label class="field" for="growthSchedulingSelect">
               <span>Tree-search scheduling <b id="growthSchedulingHint">maximal commuting set</b></span>
               <select id="growthSchedulingSelect">
@@ -680,6 +688,7 @@
             <div><dt>compatibility interval</dt><dd id="energyValue">—</dd></div>
             <div><dt>geometric strain</dt><dd id="strainValue">—</dd></div>
             <div><dt>composition drift</dt><dd id="compositionValue">—</dd></div>
+            <div><dt>surface deficit</dt><dd id="surfaceValue">—</dd></div>
             <div><dt>resolved by</dt><dd id="resolverValue">—</dd></div>
           </dl>
         </section>
@@ -719,7 +728,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-19"></script>
+  <script type="module" src="./app.js?v=20260824-20"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-3"></script>
 </body>
 </html>

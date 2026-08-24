@@ -67,6 +67,11 @@ def test_growth_exposes_candidate_identical_geometric_strain_ablation() -> None:
     assert 'id="compositionPreferenceSelect"' in HTML
     assert "function activeCompositionBalanceWeight()" in APP
     assert "- activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta" in APP
+    assert 'id="surfacePreferenceSelect"' in HTML
+    assert 'id="surfaceValue"' in HTML
+    assert "function activeSurfaceCompletionWeight()" in APP
+    assert "function surfaceCompletionForFreshSites" in APP
+    assert "- activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta" in APP
 
 
 if __name__ == "__main__":

@@ -205,6 +205,19 @@ hard constraint: a finite surface, nucleus, defect, or temporarily incomplete
 frontier may depart from bulk stoichiometry. No oxidation state, formal charge,
 chemical potential, or elemental feed rate is inferred.
 
+A separate optional **surface-completion** term measures the remaining ordered
+species coordination deficit relative to the sample median. For each proposed
+whole-cluster action it compares already occupied frontier centers before and
+after attachment, then combines the coordination healed on those centers with
+the residual deficit introduced by the new sites. Lower is preferred. This is
+the geometric analogue of favoring fewer dangling or unsatisfied contacts, but
+it is deliberately not called bond energy or surface energy: there are no bond
+orders, oxidation states, electronic chemical potentials, or energetic units.
+It never rejects an undercoordinated surface and can be disabled independently.
+Balanced and strong modes rank the same frozen candidate set; the live
+inspector and receipt report new-site deficit, healed existing deficit, weight,
+and accepted/rejected means.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers

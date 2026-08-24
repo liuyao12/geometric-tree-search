@@ -3,6 +3,7 @@ import {
   angleAllowed,
   angularEnvelopeFor,
   coloredAngularViolations,
+  coloredCoordinationDeficit,
   coloredGeometricStrain,
   coordinationEnvelopeFor,
   exclusionForPair,
@@ -64,6 +65,16 @@ const octahedralDistance = (first, second) => Math.hypot(...octahedralDisplaceme
 const octahedralPairs = learnColoredDistanceEnvelopes(octahedralSpecies, octahedralDistance);
 const octahedralCoordination = learnColoredCoordinationEnvelopes(octahedralSpecies, octahedralDistance, octahedralPairs);
 const octahedralAngles = learnColoredAngularEnvelopes(octahedralSpecies, octahedralDisplacement, octahedralCoordination);
+const fullOctahedralDeficit = coloredCoordinationDeficit(octahedralSpecies, octahedralDistance,
+  octahedralCoordination, [0]);
+assert.equal(fullOctahedralDeficit.mean, 0, "the supplied bulk octahedral center must have zero coordination deficit");
+const partialOctahedralSpecies = octahedralSpecies.slice(0, 4);
+const partialOctahedralPositions = octahedralPositions.slice(0, 4);
+const partialOctahedralDeficit = coloredCoordinationDeficit(partialOctahedralSpecies, (first, second) =>
+  Math.hypot(...partialOctahedralPositions[second].map((value, axis) => value - partialOctahedralPositions[first][axis])),
+octahedralCoordination, [0]);
+assert.equal(partialOctahedralDeficit.mean, .5,
+  "a three-of-six frontier center must expose half of its learned coordination deficit");
 const clNaCl = angularEnvelopeFor(octahedralAngles, "Na", "Cl", "Cl");
 assert.equal(clNaCl.bands.length, 2, "octahedral 90 and 180 degree modes must remain separated");
 assert.ok(angleAllowed(clNaCl, 90));

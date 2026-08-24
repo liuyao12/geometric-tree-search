@@ -17,13 +17,14 @@ import {
 } from "./marking-representation-readout.js?v=20260824-1";
 import {
   coloredAngularViolations,
+  coloredCoordinationDeficit,
   coloredGeometricStrain,
   coordinationEnvelopeFor,
   exclusionForPair,
   learnColoredAngularEnvelopes,
   learnColoredCoordinationEnvelopes,
   learnColoredDistanceEnvelopes,
-} from "./colored-distance-envelopes.js?v=20260824-4";
+} from "./colored-distance-envelopes.js?v=20260824-5";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -86,6 +87,7 @@ const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
 const compositionPreferenceSelect = $("compositionPreferenceSelect");
+const surfacePreferenceSelect = $("surfacePreferenceSelect");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -152,6 +154,7 @@ const domainValue = $("domainValue");
 const energyValue = $("energyValue");
 const strainValue = $("strainValue");
 const compositionValue = $("compositionValue");
+const surfaceValue = $("surfaceValue");
 const resolverValue = $("resolverValue");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
@@ -409,6 +412,8 @@ let acceptedGeometricStrain = 0;
 let rejectedGeometricStrain = 0;
 let acceptedCompositionDelta = 0;
 let rejectedCompositionDelta = 0;
+let acceptedSurfaceDeficit = 0;
+let rejectedSurfaceDeficit = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -433,6 +438,7 @@ let hierarchyEnabled = true;
 let geometryPreference = "strain";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
+let surfacePreference = "soft";
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -3221,7 +3227,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-19",
+      buildId: "20260824-20",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3409,6 +3415,14 @@ async function buildExperimentReceipt() {
         targetReducedRatio: compositionTarget.reducedRatio,
         acceptedMeanScaledDelta: receiptRound(acceptedCompositionDelta / Math.max(1, acceptedDecisions)),
         rejectedMeanScaledDelta: receiptRound(rejectedCompositionDelta / Math.max(1, rejectedDecisions)),
+      },
+      surfaceCompletionRanking: {
+        role: "target-blind soft ordering that favors healing sample-derived coordination deficits; not bond or surface energy",
+        mode: surfacePreference,
+        effectiveWeight: activeSurfaceCompletionWeight(),
+        target: "ordered species coordination medians learned from the supplied configuration",
+        acceptedMeanScaledDelta: receiptRound(acceptedSurfaceDeficit / Math.max(1, acceptedDecisions)),
+        rejectedMeanScaledDelta: receiptRound(rejectedSurfaceDeficit / Math.max(1, rejectedDecisions)),
       },
       localConstraintWork: {
         role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
@@ -4139,6 +4153,10 @@ function activeCompositionBalanceWeight() {
   return compositionPreference === "strong" ? .70 : compositionPreference === "soft" ? .35 : 0;
 }
 
+function activeSurfaceCompletionWeight() {
+  return surfacePreference === "strong" ? .36 : surfacePreference === "soft" ? .18 : 0;
+}
+
 function candidateSites(candidate) {
   return (candidate.rule.sites || overlapGrammar.templates[candidate.type].sites).map((site) => ({
     species: site.species, center: site.center,
@@ -4168,7 +4186,7 @@ function uniqueFreshSites(freshSites) {
 function constraintProjectionForFreshSites(rawFreshSites) {
   const freshSites = uniqueFreshSites(rawFreshSites);
   if (!freshSites.length || !coloredCoordinationEnvelopes) return {
-    freshSites, projected: [], affectedIndices: [],
+    freshSites, projected: [], affectedIndices: [], affectedExistingIndices: [], freshIndices: [], existingCount: 0,
   };
   const reach = coloredCoordinationEnvelopes.maximumCutoff;
   const affectedExisting = new Set();
@@ -4186,12 +4204,13 @@ function constraintProjectionForFreshSites(rawFreshSites) {
   const existing = [...localExisting];
   const projected = [...existing, ...freshSites];
   const existingIndex = new Map(existing.map((atom, index) => [atom, index]));
-  const affectedIndices = [...affectedExisting].map((atom) => existingIndex.get(atom))
-    .concat(freshSites.map((_, index) => existing.length + index));
+  const affectedExistingIndices = [...affectedExisting].map((atom) => existingIndex.get(atom));
+  const freshIndices = freshSites.map((_, index) => existing.length + index);
+  const affectedIndices = affectedExistingIndices.concat(freshIndices);
   constraintNeighborhoodEvaluations++;
   constraintNeighborhoodSiteTotal += projected.length;
   maximumConstraintNeighborhoodSites = Math.max(maximumConstraintNeighborhoodSites, projected.length);
-  return { freshSites, projected, affectedIndices };
+  return { freshSites, projected, affectedIndices, affectedExistingIndices, freshIndices, existingCount: existing.length };
 }
 
 function coordinationOverflowsForFreshSites(rawFreshSites, projection = constraintProjectionForFreshSites(rawFreshSites)) {
@@ -4233,6 +4252,34 @@ function geometricStrainForFreshSites(rawFreshSites, projection = constraintProj
   return coloredGeometricStrain(projected.map((site) => site.species),
     (first, second) => projected[second].p.clone().sub(projected[first].p),
     coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices);
+}
+
+function surfaceCompletionForFreshSites(rawFreshSites,
+  projection = constraintProjectionForFreshSites(rawFreshSites)) {
+  const { projected, affectedExistingIndices, freshIndices, existingCount } = projection;
+  if (!freshIndices.length) return {
+    beforeExisting: 0, afterExisting: 0, newSiteDeficit: 0,
+    healedExisting: 0, scaledDelta: 0, terms: 0,
+  };
+  const existing = projected.slice(0, existingCount);
+  const before = coloredCoordinationDeficit(existing.map((site) => site.species),
+    (first, second) => existing[first].p.distanceTo(existing[second].p),
+    coloredCoordinationEnvelopes, affectedExistingIndices);
+  const afterExisting = coloredCoordinationDeficit(projected.map((site) => site.species),
+    (first, second) => projected[first].p.distanceTo(projected[second].p),
+    coloredCoordinationEnvelopes, affectedExistingIndices);
+  const newSites = coloredCoordinationDeficit(projected.map((site) => site.species),
+    (first, second) => projected[first].p.distanceTo(projected[second].p),
+    coloredCoordinationEnvelopes, freshIndices);
+  const healedExisting = before.mean - afterExisting.mean;
+  return {
+    beforeExisting: before.mean,
+    afterExisting: afterExisting.mean,
+    newSiteDeficit: newSites.mean,
+    healedExisting,
+    scaledDelta: .60 * newSites.mean - .40 * healedExisting,
+    terms: afterExisting.terms + newSites.terms,
+  };
 }
 
 function compositionBalanceForFreshSites(rawFreshSites) {
@@ -4280,7 +4327,8 @@ function commutingFrontierBatch() {
       sites: evaluation.sites,
       score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit)
         - activeGeometricStrainWeight() * evaluation.geometricStrain.total
-        - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta,
+        - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
+        - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta,
     };
   }).sort((first, second) => second.score - first.score || first.candidate.key.localeCompare(second.candidate.key));
   if (overlapGrammar.molecular && !reconstructionCertified) {
@@ -4369,12 +4417,13 @@ function evaluateCandidate(candidate) {
   const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh, constraintProjection);
   const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh, constraintProjection);
   const geometricStrain = geometricStrainForFreshSites(fresh, constraintProjection);
+  const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
-    coordinationOverflows, angularViolations, geometricStrain, compositionBalance,
+    coordinationOverflows, angularViolations, geometricStrain, surfaceCompletion, compositionBalance,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -4427,6 +4476,8 @@ function initializeOffLatticeSearch() {
   rejectedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  acceptedSurfaceDeficit = 0;
+  rejectedSurfaceDeficit = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -4843,10 +4894,12 @@ function syncStageOptions() {
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
     compositionPreferenceSelect.value = compositionPreference;
+    surfacePreferenceSelect.value = surfacePreference;
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
     compositionPreferenceSelect.disabled = finiteIceAnchorMode;
+    surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -4869,11 +4922,14 @@ function syncStageOptions() {
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
       : ` A ${compositionPreference === "strong" ? "strong" : "balanced"} soft reservoir term favors the observed ${ratio} ratio without constraining an incomplete surface.`;
+    const surfaceUse = surfacePreference === "none"
+      ? " Coordination deficit is reported but contributes zero ranking weight."
+      : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${surfaceUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${surfaceUse}`;
   }
 }
 
@@ -4889,6 +4945,8 @@ function resetCounters() {
   rejectedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  acceptedSurfaceDeficit = 0;
+  rejectedSurfaceDeficit = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -5108,6 +5166,10 @@ function updateStageNarrative() {
     ? compositionPreference === "none" ? "diagnostic only · weight 0"
       : `${compositionPreference} reservoir · weight ${activeCompositionBalanceWeight().toFixed(2)}`
     : "not ranked";
+  surfaceValue.textContent = pipelineStage === 4
+    ? surfacePreference === "none" ? "diagnostic only · weight 0"
+      : `${surfacePreference} completion · weight ${activeSurfaceCompletionWeight().toFixed(2)}`
+    : "not ranked";
 }
 
 function stateForCandidate(candidate, evaluation) {
@@ -5121,6 +5183,7 @@ function stateForCandidate(candidate, evaluation) {
     clearance: evaluation.conflicts,
     geometricStrain: evaluation.geometricStrain,
     compositionBalance: evaluation.compositionBalance,
+    surfaceCompletion: evaluation.surfaceCompletion,
   };
 }
 
@@ -5217,6 +5280,7 @@ function performOffLatticeEvent() {
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
       rejectedGeometricStrain += snapshotEvaluation.geometricStrain.total;
       rejectedCompositionDelta += snapshotEvaluation.compositionBalance.scaledDelta;
+      rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -5235,6 +5299,7 @@ function performOffLatticeEvent() {
     acceptedDecisions++;
     acceptedGeometricStrain += evaluation.geometricStrain.total;
     acceptedCompositionDelta += evaluation.compositionBalance.scaledDelta;
+    acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -5280,6 +5345,7 @@ function performIceAnchorEvent() {
     energyValue.textContent = "target calls 0";
     strainValue.textContent = "not used by frozen ice trace";
     compositionValue.textContent = "not used by frozen ice trace";
+    surfaceValue.textContent = "not used by frozen ice trace";
     resolverValue.textContent = "orientation-domain unanimity";
     appendHistory("reject", { type: "reject", depth: wave.wave,
       action: "safe fixed point", family: "no unanimous parent domain" });
@@ -5474,6 +5540,10 @@ function updateDecision(event) {
   const balance = event.state.compositionBalance;
   compositionValue.textContent = balance
     ? `${balance.before.toFixed(3)} → ${balance.after.toFixed(3)} · Δ${balance.delta >= 0 ? "+" : ""}${balance.delta.toFixed(3)}`
+    : "not evaluated";
+  const surface = event.state.surfaceCompletion;
+  surfaceValue.textContent = surface
+    ? `new ${surface.newSiteDeficit.toFixed(3)} · healed ${surface.healedExisting.toFixed(3)} · Δ${surface.scaledDelta >= 0 ? "+" : ""}${surface.scaledDelta.toFixed(3)}`
     : "not evaluated";
   resolverValue.textContent = event.resolver;
   eventKind.textContent = reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
@@ -6026,6 +6096,12 @@ strainWeightSelect.addEventListener("change", () => {
 compositionPreferenceSelect.addEventListener("change", () => {
   const value = compositionPreferenceSelect.value;
   compositionPreference = value === "none" || value === "strong" ? value : "soft";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+surfacePreferenceSelect.addEventListener("change", () => {
+  const value = surfacePreferenceSelect.value;
+  surfacePreference = value === "none" || value === "strong" ? value : "soft";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
