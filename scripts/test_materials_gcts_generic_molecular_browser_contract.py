@@ -25,6 +25,10 @@ def test_molecule_connection_void_roles_are_explicit_and_label_free():
     assert "materialLabelUsed: false" in components
     assert "close the atom cover; connection and void clusters" in APP
     assert "autonomous dry-ice continuation remains an" in README
+    assert 'action: "94 replay decisions"' in APP
+    assert 'speed: "324 / 324 · fixed point"' in APP
+    assert "exact target-aware known-window replay" in APP
+    assert "94 deterministic tree decisions" in README
 
 
 def test_water_renderer_stays_a_specialized_view_after_generic_discovery():

@@ -591,6 +591,15 @@ ledger is not an ice-only branch; autonomous dry-ice continuation remains an
 open gate. The fixture geometry follows the phase-I body-diagonal molecular
 model and reported `a = 5.578 Å` and `C–O = 1.168 Å` measurements.
 
+The browser control also traverses this generic cover end to end. From one
+three-atom CO2 seed, 94 deterministic tree decisions produce 95 rigid
+placements at causal depth 14 and reconstruct `324 / 324` known colored sites
+with no missing, duplicate, or extraneous atoms. The learned observed frontier
+then reaches a fixed point without emitting an outside-window site. The live
+certificate labels this as target-aware known-window replay: it proves that the
+generic molecular grammar is executable and self-feeding within the observed
+periodic sample, but it is not autonomous continuation or a growth-rate claim.
+
 The complementary generic headless gate finds one transferable
 six-member void family. Its underlying
 tree actions reconstruct 216/216 and 192/192 sites in six visible commuting
