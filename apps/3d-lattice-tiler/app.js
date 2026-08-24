@@ -354,9 +354,9 @@ const rimLight = new THREE.DirectionalLight(0xffffff, 0.32);
 rimLight.position.set(-10, 14, -16);
 scene.add(rimLight);
 
-let faceGroup = new THREE.Group();
-let edgeGroup = new THREE.Group();
-let frontierPointGroup = new THREE.Group();
+const faceGroup = new THREE.Group();
+const edgeGroup = new THREE.Group();
+const frontierPointGroup = new THREE.Group();
 scene.add(faceGroup, edgeGroup, frontierPointGroup);
 
 let thumbnailRenderer = null;
@@ -2015,11 +2015,6 @@ function clearObjectGroup(group) {
   while (group.children.length) disposeObjectTree(group.children.pop());
 }
 
-function disposeObjectGroup(group) {
-  clearObjectGroup(group);
-  group.parent?.remove(group);
-}
-
 function resizeRenderer() {
   const bounds = viewport.getBoundingClientRect();
   const width = Math.max(1, Math.floor(bounds.width));
@@ -2076,6 +2071,38 @@ function batchFor(map, key, setup) {
     map.set(key, batch);
   }
   return batch;
+}
+
+function geometryFromPositions(positions, { normals = false } = {}) {
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  if (normals) geometry.computeVertexNormals();
+  return geometry;
+}
+
+function replaceObjectGeometry(object, geometry) {
+  const previous = object.geometry;
+  object.geometry = geometry;
+  previous?.dispose?.();
+}
+
+function reconcileRenderBatches(group, batches, createObject, updateObject) {
+  const existing = new Map(group.children.map(object => [object.userData.renderBatchKey, object]));
+  for (const [key, batch] of batches) {
+    let object = existing.get(key);
+    if (object) {
+      existing.delete(key);
+      updateObject(object, batch);
+    } else {
+      object = createObject(batch);
+      object.userData.renderBatchKey = key;
+      group.add(object);
+    }
+  }
+  for (const object of existing.values()) {
+    group.remove(object);
+    disposeObjectTree(object);
+  }
 }
 
 function pushVertex(out, vertex, scale) {
@@ -2311,7 +2338,7 @@ function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
 }
 
 function updateScene(snapshot, options = {}) {
-  const { preserveView = false, rebuildFaces = true, syncLive = true } = options;
+  const { preserveView = true, rebuildFaces = true, syncLive = true } = options;
   lastSnapshot = snapshot;
   if (syncLive && snapshot?.faces) resetLiveFaceStacks(snapshot);
   if (syncLive && snapshot?.frontier_points) resetLiveFrontierPoints(snapshot);
@@ -2322,9 +2349,6 @@ function updateScene(snapshot, options = {}) {
   const edgeBatches = new Map();
   const showInternal = internalCheckbox.checked;
   const showEdges = edgesCheckbox.checked && (!running || faces.length <= RUNNING_EDGE_FACE_LIMIT);
-  const nextFaceGroup = rebuildFaces ? new THREE.Group() : null;
-  const nextEdgeGroup = new THREE.Group();
-  const nextFrontierPointGroup = new THREE.Group();
 
   for (const face of faces) {
     if (face.internal && !showInternal) continue;
@@ -2358,76 +2382,90 @@ function updateScene(snapshot, options = {}) {
   }
 
   if (rebuildFaces) {
-    for (const batch of faceBatches.values()) {
-      const geometry = new THREE.BufferGeometry();
-      geometry.setAttribute("position", new THREE.Float32BufferAttribute(batch.positions, 3));
-      geometry.computeVertexNormals();
-      const material = new THREE.MeshPhongMaterial({
-        color: new THREE.Color(batch.color),
-        transparent: batch.alpha < 0.999,
-        opacity: batch.alpha,
-        side: THREE.DoubleSide,
-        flatShading: true,
-        polygonOffset: true,
-        polygonOffsetFactor: 1,
-        polygonOffsetUnits: 1,
-        depthWrite: batch.alpha > 0.55
-      });
-      nextFaceGroup.add(new THREE.Mesh(geometry, material));
-    }
+    reconcileRenderBatches(
+      faceGroup,
+      faceBatches,
+      batch => new THREE.Mesh(
+        geometryFromPositions(batch.positions, { normals: true }),
+        new THREE.MeshPhongMaterial({
+          color: new THREE.Color(batch.color),
+          transparent: batch.alpha < 0.999,
+          opacity: batch.alpha,
+          side: THREE.DoubleSide,
+          flatShading: true,
+          polygonOffset: true,
+          polygonOffsetFactor: 1,
+          polygonOffsetUnits: 1,
+          depthWrite: batch.alpha > 0.55
+        })
+      ),
+      (object, batch) => replaceObjectGeometry(
+        object,
+        geometryFromPositions(batch.positions, { normals: true })
+      )
+    );
   }
 
-  for (const batch of edgeBatches.values()) {
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", new THREE.Float32BufferAttribute(batch.positions, 3));
-    const material = new THREE.LineBasicMaterial({
-      color: 0x111827,
-      transparent: batch.alpha < 0.999,
-      opacity: Math.min(0.72, Math.max(0.18, batch.alpha))
-    });
-    nextEdgeGroup.add(new THREE.LineSegments(geometry, material));
-  }
+  reconcileRenderBatches(
+    edgeGroup,
+    edgeBatches,
+    batch => new THREE.LineSegments(
+      geometryFromPositions(batch.positions),
+      new THREE.LineBasicMaterial({
+        color: 0x111827,
+        transparent: batch.alpha < 0.999,
+        opacity: Math.min(0.72, Math.max(0.18, batch.alpha))
+      })
+    ),
+    (object, batch) => replaceObjectGeometry(object, geometryFromPositions(batch.positions))
+  );
 
   const pointPositions = [];
   for (const point of snapshot?.frontier_points ?? []) {
     if (!point?.pos?.length) continue;
     pointPositions.push([point.pos[0] / scale, point.pos[1] / scale, point.pos[2] / scale]);
   }
+  const lattice = selectedPolycubeLattice();
+  const frontierBatchKey = `frontier:${lattice}`;
+  const existingFrontierMesh = frontierPointGroup.children.find(
+    object => object.userData.renderBatchKey === frontierBatchKey
+  );
+  for (const object of [...frontierPointGroup.children]) {
+    if (object === existingFrontierMesh && pointPositions.length) continue;
+    frontierPointGroup.remove(object);
+    disposeObjectTree(object);
+  }
   if (pointPositions.length) {
-    const lattice = selectedPolycubeLattice();
     const pointRadius = lattice === "half" ? 0.0425 : 0.06;
-    const pointGeometry = new THREE.SphereGeometry(pointRadius, 8, 6);
-    const pointMaterial = new THREE.MeshBasicMaterial({
-      color: { z3: 0x178273, fcc: 0x315f9f, half: 0xd97706 }[lattice] ?? 0x178273,
-      transparent: true,
-      opacity: 0.9,
-      depthTest: true,
-      depthWrite: false
-    });
-    const pointMesh = new THREE.InstancedMesh(pointGeometry, pointMaterial, pointPositions.length);
+    const requiredCapacity = pointPositions.length;
+    let pointMesh = existingFrontierMesh;
+    if (!pointMesh || pointMesh.userData.instanceCapacity < requiredCapacity) {
+      if (pointMesh) {
+        frontierPointGroup.remove(pointMesh);
+        disposeObjectTree(pointMesh);
+      }
+      const capacity = 2 ** Math.ceil(Math.log2(Math.max(1, requiredCapacity)));
+      const pointGeometry = new THREE.SphereGeometry(pointRadius, 8, 6);
+      const pointMaterial = new THREE.MeshBasicMaterial({
+        color: { z3: 0x178273, fcc: 0x315f9f, half: 0xd97706 }[lattice] ?? 0x178273,
+        transparent: true,
+        opacity: 0.9,
+        depthTest: true,
+        depthWrite: false
+      });
+      pointMesh = new THREE.InstancedMesh(pointGeometry, pointMaterial, capacity);
+      pointMesh.userData.renderBatchKey = frontierBatchKey;
+      pointMesh.userData.instanceCapacity = capacity;
+      frontierPointGroup.add(pointMesh);
+    }
+    pointMesh.count = pointPositions.length;
     const pointMatrix = new THREE.Matrix4();
     pointPositions.forEach((position, index) => {
       pointMatrix.makeTranslation(position[0], position[1], position[2]);
       pointMesh.setMatrixAt(index, pointMatrix);
     });
     pointMesh.instanceMatrix.needsUpdate = true;
-    nextFrontierPointGroup.add(pointMesh);
   }
-
-  if (rebuildFaces) {
-    const oldFaceGroup = faceGroup;
-    faceGroup = nextFaceGroup;
-    scene.add(faceGroup);
-    disposeObjectGroup(oldFaceGroup);
-  }
-  const oldEdgeGroup = edgeGroup;
-  edgeGroup = nextEdgeGroup;
-  scene.add(edgeGroup);
-  disposeObjectGroup(oldEdgeGroup);
-  const oldFrontierPointGroup = frontierPointGroup;
-  frontierPointGroup = nextFrontierPointGroup;
-  scene.add(frontierPointGroup);
-  disposeObjectGroup(oldFrontierPointGroup);
 
   updateRunMetrics(snapshot);
   if (!preserveView && autoFitCheckbox.checked && !rootCentered) centerOnSnapshot(snapshot, true);
@@ -2906,7 +2944,7 @@ function handleMessage(message) {
     attachSnapshotToNode(message.node_id, message);
     if ((message.tile_count ?? 0) <= 1) {
       flushFullUpdateNow();
-      updateScene(message);
+      updateScene(message, { preserveView: false });
       lastFullUpdateRenderedAt = performance.now();
       queueCheckpointSave(message, { reason: "root" });
       return;
@@ -3290,8 +3328,7 @@ function showGrowthSnapshot(modeId, pointIndex = null) {
   if (!snapshot) return;
   if (series.prototileInfo) initTileControls(series.prototileInfo);
   lastSnapshot = snapshot;
-  rootCentered = false;
-  updateScene(snapshot, { preserveView: false });
+  updateScene(snapshot, { preserveView: true });
   const displayedPoint = growthInspection.pointIndex == null ? series.points?.at(-1) : inspectedPoint;
   const tiles = displayedPoint?.tiles ?? snapshot.tile_count ?? 0;
   const time = displayedPoint ? ` at ${(displayedPoint.milliseconds / 1000).toFixed(2)}s` : "";

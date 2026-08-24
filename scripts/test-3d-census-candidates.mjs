@@ -149,6 +149,32 @@ assert.match(growthWorkerSource, /type: "sample-batch"/);
 assert.doesNotMatch(growthWorkerSource, /tiles > best/);
 assert.match(sourceTilerHtml, /id="growthHistoryBack"[\s\S]*?id="growthHistoryForward"/);
 assert.match(growthAppSource, /function stepGrowthHistory\(direction\)/);
+assert.match(
+  growthAppSource,
+  /const faceGroup = new THREE\.Group\(\);[\s\S]*?const edgeGroup = new THREE\.Group\(\);[\s\S]*?const frontierPointGroup = new THREE\.Group\(\);/,
+  "the main renderer must retain persistent scene groups across snapshots"
+);
+assert.match(growthAppSource, /reconcileRenderBatches\(\s*faceGroup,/);
+assert.match(growthAppSource, /reconcileRenderBatches\(\s*edgeGroup,/);
+assert.match(
+  growthAppSource,
+  /function updateScene\(snapshot, options = \{\}\) \{[\s\S]*?preserveView = true/,
+  "ordinary scene updates must preserve the camera unless the caller explicitly requests an initial fit"
+);
+assert.doesNotMatch(
+  growthAppSource,
+  /(?:faceGroup|edgeGroup|frontierPointGroup)\s*=\s*next/,
+  "snapshot rendering must reconcile the existing scene rather than replace its groups"
+);
+const showGrowthSnapshotSource = growthAppSource.match(
+  /function showGrowthSnapshot\(modeId, pointIndex = null\) \{[\s\S]*?\n\}/
+)?.[0] ?? "";
+assert.match(showGrowthSnapshotSource, /updateScene\(snapshot, \{ preserveView: true \}\)/);
+assert.doesNotMatch(
+  showGrowthSnapshotSource,
+  /rootCentered\s*=\s*false|preserveView:\s*false/,
+  "growth-history navigation must preserve the current camera orientation"
+);
 assert.doesNotMatch(
   growthAppSource,
   /function activateGrowthMode\(/,
