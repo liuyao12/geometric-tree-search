@@ -629,6 +629,19 @@ crystal before the local prototype scores separate, but it then reports the
 point group and prototype as unresolved: a tied or under-supported numerical
 leader is never promoted into a material name.
 
+Finite nuclei are compared fairly rather than against full-cell statistics.
+For every read, the browser selects a translation-invariant window around the
+point-cloud centroid, truncates every prototype to the same atom count, and
+uses one shared RDF cutoff in nearest-neighbour units. Intrinsic 2D versus 3D
+normalization is inferred from the global and median local covariance spectra
+of the positions, so a finite multilayer remains locally 2D without pretending
+that its total thickness is zero; the curated material dimension is not
+consulted. A fourth readout repeats the
+ranking after removing the selected fixture from the prototype library. This
+leave-one-out value is a transfer diagnostic, not a second vote secretly used
+to change the displayed classification. All window, dimension, cutoff, and
+leave-one-out fields are preserved in the receipt.
+
 For a periodic input, a translation-consensus pass searches same-species
 displacements for three recurrent independent vectors. During search it draws
 the resulting parallelepiped as a candidate unit cell; once the live order

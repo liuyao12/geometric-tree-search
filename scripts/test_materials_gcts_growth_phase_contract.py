@@ -28,6 +28,12 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
 
     assert "function recordLiveOrder(inference)" in source
     assert "function drawPhaseTrajectory()" in source
+    assert 'from "./phase-evidence.js?v=20260824-1"' in source
+    assert "centeredStructuralWindow(availableSource, matchedAtomCount)" in source
+    assert "inferPointSetDimension(source)" in source
+    assert "phaseComparisonRadius(source.length, dimensionAudit.dimension)" in source
+    assert "matchedPrototypeStats(prototype, source.length, comparisonRadius)" in source
+    assert "independentMatches = matches.filter((match) => match.id !== scenarioSelect.value)" in source
     assert "liveOrderHistory = []" in source
     assert "if (previous?.historyKey === inference.historyKey) return" in source
     assert "if (liveOrderHistory.length > 96)" in source
@@ -36,6 +42,7 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     assert 'id="phaseTrajectoryCanvas"' in html
     assert 'id="phaseWindowValue"' in html
     assert 'id="phaseMarginValue"' in html
+    assert 'id="phaseIndependentValue"' in html
     assert 'id="phaseClosureValue"' in html
     assert "posthoc interpretation" in html
     assert "confidence trajectory" in html
@@ -48,6 +55,12 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     assert "usedForCandidateAdmission: false" in source
     assert "usedForBranchRanking: false" in source
     assert "selectedFixturePresentInPrototypeLibrary" in source
+    assert "atomCountMatchedAcrossPrototypeWindows: true" in source
+    assert "intrinsicDimensionInferredFromPositionCovariance: true" in source
+    assert "curatedIntrinsicDimensionUsed: false" in source
+    assert "localPlanarityRatio: dimensionAudit.localPlanarityRatio" in source
+    assert "dimensionInferenceBasis: dimensionAudit.basis" in source
+    assert "leaveSelectedFixtureOut: {" in source
     assert "prototypeComparisonWeights: { rdf: .30, coordination: .58, geometricPowderStructureFactor: .20 }" in source
     assert "trajectory: liveOrderHistory.map" in source
     assert "coordinatesEmbedded: false" in source
@@ -55,8 +68,10 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     assert "confidence against the live atom count" in readme
     assert "prototype-library self-reference flag" in readme
     assert "a tied or under-supported numerical leader is never promoted" in normalized_readme
-    assert 'style.css?v=20260824-16' in html
-    assert 'app.js?v=20260824-46' in html
+    assert "truncates every prototype to the same atom count" in normalized_readme
+    assert "curated material dimension is not consulted" in normalized_readme
+    assert 'style.css?v=20260824-17' in html
+    assert 'app.js?v=20260824-47' in html
 
 
 if __name__ == "__main__":

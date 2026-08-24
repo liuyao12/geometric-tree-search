@@ -559,7 +559,7 @@ body.atlas-open { overflow: hidden; }
 .audit-card > div { display: flex; align-items: baseline; justify-content: space-between; min-height: 27px; border-bottom: 1px solid var(--line); }
 .audit-card strong { color: var(--mint); font: 13px var(--mono); font-weight: 400; }
 .audit-card span { color: var(--muted); font-size: 8px; }
-.audit-card > .phase-evidence-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; min-height: 0; margin-top: 7px; border: 1px solid var(--line); background: var(--line); }
+.audit-card > .phase-evidence-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; min-height: 0; margin-top: 7px; border: 1px solid var(--line); background: var(--line); }
 .phase-evidence-grid > span { min-width: 0; padding: 6px; background: #081516; }
 .phase-evidence-grid small,.phase-evidence-grid strong { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .phase-evidence-grid small { color: var(--faint); font: 5px var(--mono); text-transform: uppercase; letter-spacing: .05em; }

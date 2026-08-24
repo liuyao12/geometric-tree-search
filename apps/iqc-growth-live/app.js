@@ -41,6 +41,11 @@ import {
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
 import { classifyProperPoseOrbits } from "./proper-pose-orbits.js?v=20260824-1";
 import {
+  centeredStructuralWindow,
+  inferPointSetDimension,
+  phaseComparisonRadius,
+} from "./phase-evidence.js?v=20260824-1";
+import {
   growthEnvironmentAudit,
   growthEnvironmentContains,
   growthEnvironmentSpec,
@@ -218,6 +223,7 @@ const symmetryValue = $("symmetryValue");
 const confidenceValue = $("confidenceValue");
 const phaseWindowValue = $("phaseWindowValue");
 const phaseMarginValue = $("phaseMarginValue");
+const phaseIndependentValue = $("phaseIndependentValue");
 const phaseClosureValue = $("phaseClosureValue");
 const phaseTrajectoryState = $("phaseTrajectoryState");
 const phaseTrajectoryCanvas = $("phaseTrajectoryCanvas");
@@ -933,10 +939,10 @@ function formatDuration(seconds) {
 
 function classificationSample() {
   const source = pipelineStage < 4 ? referenceAtoms : atoms;
-  if (source.length <= ANALYSIS_WINDOW_COUNT) return source;
-  // Preserve a physically contiguous observation window. Sampling uniformly by
-  // insertion order would tear apart neighbor shells as the frontier grows.
-  return [...source].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, ANALYSIS_WINDOW_COUNT);
+  // Preserve a translation-invariant, physically contiguous observation
+  // window. Sampling by insertion order tears apart neighbor shells; sampling
+  // around the global origin would make a coordinate frame part of the label.
+  return centeredStructuralWindow(source, Math.min(ANALYSIS_WINDOW_COUNT, Math.max(1, source.length)));
 }
 
 function normalizedDistributionDistance(first, second) {
@@ -965,30 +971,40 @@ function inferLiveOrder() {
     independentPhaseDetermination: false, classificationThreshold: PHASE_CLASSIFICATION_THRESHOLD,
     note: "The supplied configuration is used to learn geometry, not to preassign a phase. RDF, coordination, S(q), translation closure, and prototype labels are evaluated only after Material Growth begins.",
   };
-  const source = classificationSample();
-  if (source.length < PHASE_CLASSIFICATION_MINIMUM_ATOMS) return {
+  const availableSource = classificationSample();
+  if (availableSource.length < PHASE_CLASSIFICATION_MINIMUM_ATOMS) return {
     order: "insufficient sample", structure: "—", symmetry: "—", confidence: 0,
-    sampleAtoms: source.length, liveAtoms: atoms.length, minimumAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
-    historyKey: `insufficient:${source.length}:${atoms.length}`, posthocOnly: true, usedAsGrowthInput: false,
+    sampleAtoms: availableSource.length, liveAtoms: atoms.length, minimumAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
+    historyKey: `insufficient:${availableSource.length}:${atoms.length}`, posthocOnly: true, usedAsGrowthInput: false,
     independentPhaseDetermination: false, classificationThreshold: PHASE_CLASSIFICATION_THRESHOLD,
-    note: `Waiting for at least ${PHASE_CLASSIFICATION_MINIMUM_ATOMS} live atoms; ${source.length} are currently available.`,
+    note: `Waiting for at least ${PHASE_CLASSIFICATION_MINIMUM_ATOMS} live atoms; ${availableSource.length} are currently available.`,
   };
-  const key = `${scenarioSelect.value}:${pipelineStage}:${Math.floor(source.length / 16)}:${Math.floor(atoms.length / 96)}`;
+  const library = getOrderPrototypeLibrary();
+  const matchedAtomCount = Math.min(availableSource.length, ...library.map((prototype) => prototype.source.length));
+  const source = centeredStructuralWindow(availableSource, matchedAtomCount);
+  const dimensionAudit = inferPointSetDimension(source);
+  const comparisonRadius = phaseComparisonRadius(source.length, dimensionAudit.dimension);
+  const key = `${scenarioSelect.value}:${pipelineStage}:${Math.floor(source.length / 16)}:${Math.floor(atoms.length / 96)}:${dimensionAudit.dimension}:${comparisonRadius.toFixed(3)}`;
   if (liveOrderCache.key === key && liveOrderCache.result) return liveOrderCache.result;
-  const stats = calculateStructuralStats(source, referenceSpacing);
-  const matches = getOrderPrototypeLibrary().map((prototype) => {
-    const rdfError = normalizedDistributionDistance(prototype.stats.rdf, stats.rdf);
-    const coordinationError = normalizedDistributionDistance(prototype.stats.coordination, stats.coordination);
+  const stats = calculateStructuralStats(source, referenceSpacing, false, dimensionAudit.dimension, comparisonRadius);
+  const matches = library.map((prototype) => {
+    const prototypeStats = matchedPrototypeStats(prototype, source.length, comparisonRadius);
+    const rdfError = normalizedDistributionDistance(prototypeStats.rdf, stats.rdf);
+    const coordinationError = normalizedDistributionDistance(prototypeStats.coordination, stats.coordination);
     const structureFactorError = normalizedDistributionDistance(
-      ensureStructureFactor(prototype.stats).values, ensureStructureFactor(stats).values);
+      ensureStructureFactor(prototypeStats).values, ensureStructureFactor(stats).values);
     return {
-      ...prototype, rdfError, coordinationError, structureFactorError,
+      ...prototype, stats: prototypeStats, rdfError, coordinationError, structureFactorError,
       evidenceMatch: Math.max(0, Math.min(1,
         1 - .30 * rdfError - .58 * coordinationError - .20 * structureFactorError)),
     };
   }).sort((first, second) => second.evidenceMatch - first.evidenceMatch);
   const best = matches[0];
   const runnerUp = matches[1] || best;
+  const independentMatches = matches.filter((match) => match.id !== scenarioSelect.value);
+  const independentBest = independentMatches[0] || best;
+  const independentRunnerUp = independentMatches[1] || independentBest;
+  const independentPrototypeMargin = Math.max(0, independentBest.evidenceMatch - independentRunnerUp.evidenceMatch);
   const bestCrystal = matches.find((match) => match.material.order === "crystal");
   const runnerUpCrystal = matches.find((match) => match.material.order === "crystal" && match.id !== bestCrystal?.id) || bestCrystal;
   const evidenceMatch = best.evidenceMatch;
@@ -1026,7 +1042,14 @@ function inferLiveOrder() {
     order, structure, symmetry, confidence,
     sampleAtoms: source.length,
     liveAtoms: atoms.length,
+    availableAnalysisAtoms: availableSource.length,
     minimumAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
+    inferredDimension: dimensionAudit.dimension,
+    planarityRatio: dimensionAudit.planarityRatio,
+    localPlanarityRatio: dimensionAudit.localPlanarityRatio,
+    dimensionInferenceBasis: dimensionAudit.basis,
+    comparisonRadius,
+    matchedPrototypeAtomCount: matchedAtomCount,
     bestPrototypeId: best.id,
     bestPrototypeName: best.material.name,
     bestPrototypeEvidenceMatch: best.evidenceMatch,
@@ -1034,6 +1057,12 @@ function inferLiveOrder() {
     runnerUpPrototypeName: runnerUp.material.name,
     runnerUpPrototypeEvidenceMatch: runnerUp.evidenceMatch,
     prototypeMargin,
+    independentBestPrototypeId: independentBest.id,
+    independentBestPrototypeName: independentBest.material.name,
+    independentBestPrototypeOrder: independentBest.material.order,
+    independentBestPrototypeEvidenceMatch: independentBest.evidenceMatch,
+    independentRunnerUpPrototypeId: independentRunnerUp.id,
+    independentPrototypeMargin,
     bestPrototypeResolved,
     crystalPrototypeMargin,
     crystalPrototypeResolved,
@@ -1048,7 +1077,7 @@ function inferLiveOrder() {
     usedAsGrowthInput: false,
     independentPhaseDetermination: false,
     classificationThreshold: PHASE_CLASSIFICATION_THRESHOLD,
-    note: `Live reconstructed core: ${bestPrototypeResolved ? `best RDF + coordination + geometric powder S(q) prototype is ${best.material.name} (${Math.round(best.evidenceMatch * 100)}%; ${Math.round(prototypeMargin * 100)}-point margin over ${runnerUp.material.name})` : `no RDF + coordination + geometric powder S(q) prototype separates from the runner-up (top score ${Math.round(best.evidenceMatch * 100)}%; margin ${Math.round(prototypeMargin * 100)} points)`} across ${matches.length} prototypes${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. Unit-scattering S(q) is posthoc evidence—not experimental intensity or a growth input. ${best.material.audit} remains the required independent confirmation; the selected fixture may be present in the diagnostic prototype library, so this is not an independent phase determination.`,
+    note: `Matched ${source.length}-atom, ${dimensionAudit.dimension}D windows at r≤${comparisonRadius.toFixed(2)}a; dimension basis: ${dimensionAudit.basis}. ${bestPrototypeResolved ? `Best RDF + coordination + geometric powder S(q) prototype is ${best.material.name} (${Math.round(best.evidenceMatch * 100)}%; ${Math.round(prototypeMargin * 100)}-point margin over ${runnerUp.material.name})` : `No RDF + coordination + geometric powder S(q) prototype separates from the runner-up (top score ${Math.round(best.evidenceMatch * 100)}%; margin ${Math.round(prototypeMargin * 100)} points)`}; leaving the selected fixture out gives ${independentBest.material.name} at ${Math.round(independentBest.evidenceMatch * 100)}%${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. Unit-scattering S(q) is posthoc evidence—not experimental intensity or a growth input. ${best.material.audit} remains the required independent confirmation; this diagnostic prototype comparison is not an independent phase determination.`,
   };
   liveOrderCache = { key, result };
   return result;
@@ -1075,6 +1104,8 @@ function recordLiveOrder(inference) {
     bestPrototypeId: inference.bestPrototypeId || null,
     bestPrototypeEvidenceMatch: inference.bestPrototypeEvidenceMatch ?? null,
     prototypeMargin: inference.prototypeMargin ?? null,
+    independentBestPrototypeId: inference.independentBestPrototypeId || null,
+    independentBestPrototypeEvidenceMatch: inference.independentBestPrototypeEvidenceMatch ?? null,
     translationClosure: inference.translationClosure ?? null,
   });
   if (liveOrderHistory.length > 96) {
@@ -1154,6 +1185,8 @@ function updateOrderAudit() {
   confidenceValue.textContent = `${Math.round(inference.confidence * 100)}%`;
   phaseWindowValue.textContent = pipelineStage < 4 ? "withheld" : `${inference.sampleAtoms}/${ANALYSIS_WINDOW_COUNT}`;
   phaseMarginValue.textContent = inference.prototypeMargin === undefined ? "—" : `+${Math.round(inference.prototypeMargin * 100)} pt`;
+  phaseIndependentValue.textContent = inference.independentBestPrototypeEvidenceMatch === undefined
+    ? "—" : `${inference.independentBestPrototypeOrder} ${Math.round(inference.independentBestPrototypeEvidenceMatch * 100)}%`;
   phaseClosureValue.textContent = inference.translationClosure === undefined ? "—" : `${Math.round(inference.translationClosure * 100)}%`;
   auditNote.textContent = inference.note;
   drawPhaseTrajectory();
@@ -2053,9 +2086,21 @@ function getOrderPrototypeLibrary() {
   orderPrototypeLibrary = Object.entries(MATERIALS).map(([id, material]) => {
     const source = makeReferenceConfiguration(id);
     const spacing = medianNearestSpacing(source);
-    return { id, material, stats: calculateStructuralStats(source, spacing, false, material.intrinsicDimension === 2 ? 2 : 3) };
+    const dimensionAudit = inferPointSetDimension(source);
+    return { id, material, source, spacing, dimensionAudit, statsByWindow: new Map() };
   });
   return orderPrototypeLibrary;
+}
+
+function matchedPrototypeStats(prototype, atomCount, comparisonRadius) {
+  const count = Math.min(atomCount, prototype.source.length);
+  const key = `${count}:${comparisonRadius.toFixed(4)}`;
+  if (!prototype.statsByWindow.has(key)) {
+    const source = centeredStructuralWindow(prototype.source, count);
+    prototype.statsByWindow.set(key, calculateStructuralStats(source, prototype.spacing, false,
+      prototype.dimensionAudit.dimension, comparisonRadius));
+  }
+  return prototype.statsByWindow.get(key);
 }
 
 function periodicDisplacement(first, second) {
@@ -4246,6 +4291,11 @@ function receiptEmergentClassification() {
     minimumLiveAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
     maximumContiguousAnalysisWindowAtoms: ANALYSIS_WINDOW_COUNT,
     decisionThreshold: PHASE_CLASSIFICATION_THRESHOLD,
+    atomCountMatchedAcrossPrototypeWindows: true,
+    comparisonRadiusMatchedAcrossPrototypeWindows: true,
+    intrinsicDimensionInferredFromPositionCovariance: true,
+    curatedIntrinsicDimensionUsed: false,
+    absoluteOriginUsedForWindowSelection: false,
     posthocOnly: true,
     usedAsGrowthInput: false,
     usedForCandidateAdmission: false,
@@ -4260,6 +4310,13 @@ function receiptEmergentClassification() {
       confidence: receiptRound(inference.confidence),
       liveAtoms: inference.liveAtoms,
       analysisWindowAtoms: inference.sampleAtoms,
+      availableAnalysisAtoms: inference.availableAnalysisAtoms ?? inference.sampleAtoms,
+      inferredDimension: inference.inferredDimension || null,
+      planarityRatio: inference.planarityRatio === undefined ? null : receiptRound(inference.planarityRatio),
+      localPlanarityRatio: inference.localPlanarityRatio === undefined ? null : receiptRound(inference.localPlanarityRatio),
+      dimensionInferenceBasis: inference.dimensionInferenceBasis || null,
+      comparisonRadiusInNearestNeighborUnits: inference.comparisonRadius === undefined ? null : receiptRound(inference.comparisonRadius),
+      matchedPrototypeAtomCount: inference.matchedPrototypeAtomCount || null,
       bestPrototypeId: inference.bestPrototypeId || null,
       bestPrototypeEvidenceMatch: inference.bestPrototypeEvidenceMatch === undefined ? null : receiptRound(inference.bestPrototypeEvidenceMatch),
       runnerUpPrototypeId: inference.runnerUpPrototypeId || null,
@@ -4268,6 +4325,14 @@ function receiptEmergentClassification() {
       bestPrototypeResolved: inference.bestPrototypeResolved ?? false,
       crystalPrototypeMargin: inference.crystalPrototypeMargin === undefined ? null : receiptRound(inference.crystalPrototypeMargin),
       crystalPrototypeResolved: inference.crystalPrototypeResolved ?? false,
+      leaveSelectedFixtureOut: {
+        bestPrototypeId: inference.independentBestPrototypeId || null,
+        bestPrototypeOrder: inference.independentBestPrototypeOrder || null,
+        evidenceMatch: inference.independentBestPrototypeEvidenceMatch === undefined ? null : receiptRound(inference.independentBestPrototypeEvidenceMatch),
+        runnerUpPrototypeId: inference.independentRunnerUpPrototypeId || null,
+        prototypeMargin: inference.independentPrototypeMargin === undefined ? null : receiptRound(inference.independentPrototypeMargin),
+        usedForDisplayedClassification: false,
+      },
       rdfError: inference.rdfError === undefined ? null : receiptRound(inference.rdfError),
       coordinationError: inference.coordinationError === undefined ? null : receiptRound(inference.coordinationError),
       geometricPowderStructureFactorError: inference.structureFactorError === undefined ? null : receiptRound(inference.structureFactorError),
@@ -4283,6 +4348,9 @@ function receiptEmergentClassification() {
       bestPrototypeId: entry.bestPrototypeId,
       bestPrototypeEvidenceMatch: entry.bestPrototypeEvidenceMatch === null ? null : receiptRound(entry.bestPrototypeEvidenceMatch),
       prototypeMargin: entry.prototypeMargin === null ? null : receiptRound(entry.prototypeMargin),
+      independentBestPrototypeId: entry.independentBestPrototypeId,
+      independentBestPrototypeEvidenceMatch: entry.independentBestPrototypeEvidenceMatch === null
+        ? null : receiptRound(entry.independentBestPrototypeEvidenceMatch),
       translationClosure: entry.translationClosure === null ? null : receiptRound(entry.translationClosure),
     })),
     coordinatesEmbedded: false,
@@ -4309,7 +4377,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-46",
+      buildId: "20260824-47",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
