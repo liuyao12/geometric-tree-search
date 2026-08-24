@@ -82,6 +82,10 @@ The marking stage retains a manual override for controlled ablations.
 The clustering controls summarize that dependency explicitly as
 `translation support × required pose orbits → pose/port channel basis`, with a
 per-cluster audit underneath rather than a single unexplained channel slider.
+For molecular covers, the port rank includes the dependency-ordered observed
+replay graph as well as reusable continuation rules. Ice therefore inherits
+the actual H2O, water-dimer, and O6 void-boundary pose/port atlas rather than
+falling back to atom-centred oxygen environments.
 
 ## Finite rigid overlap grammar
 
@@ -126,6 +130,14 @@ potentials. Training starts from deterministic random directional coefficients;
 the live fit and held-out curves combine signed-port mismatch with
 shared-support disagreement.
 
+The molecular path uses one section sample per cover occurrence. In ice Ih
+that means `72` H2O, `144` bridge, and `180` void-boundary samples (`396`
+total). Stage three renders those same three Stage-two prototypes with their
+connection/failure halos; it does not reintroduce the radial spoke view or a
+whole-crystal scene. The observed gap-boundary port incidence raises the
+automatic shared tensor from three to six channels while unused channels stay
+masked on the lower-rank molecule and bridge types.
+
 A completed fit can be frozen into the browser's marking library. Each entry
 retains its material, geometric-support hypothesis, configuration,
 coefficients, sample count, and held-out loss. A lattice-trained marking is not
@@ -133,6 +145,12 @@ offered under the aperiodic-module or free-`SE(3)` hypotheses. The growth stage
 can select any compatible saved marking, the unmarked
 colored-action baseline, or the exact-local-oracle diagnostic ceiling. “Train a
 different marking” returns to stage three without deleting earlier entries.
+Compatibility is stricter than a material-name match: a versioned fingerprint
+must agree on reduced composition, resolved translation support, invariant
+prototype geometry, proper-pose status, and pose-by-port rank. This prevents a
+saved section from being silently applied after the cluster vocabulary changes
+while still allowing multiple independently trained sections for the same
+frozen geometry.
 
 ## Off-lattice search
 

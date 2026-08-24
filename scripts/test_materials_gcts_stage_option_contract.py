@@ -1,0 +1,52 @@
+"""Source-level contract for the four-stage geometry/marking/search controls."""
+
+from pathlib import Path
+
+
+ROOT = Path(__file__).parents[1]
+APP = (ROOT / "apps/iqc-growth-live/app.js").read_text(encoding="utf-8")
+HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text(encoding="utf-8")
+
+
+def test_clustering_exposes_geometry_pose_and_derived_channel_rank() -> None:
+    for identifier in (
+        "geometryModeSelect", "translationSupport", "rotationSupport",
+        "channelRankSupport", "poseAtlas",
+    ):
+        assert f'id="{identifier}"' in HTML
+    assert "function resolvedGeometryMode()" in APP
+    assert "function learnOrientationAtlas()" in APP
+    assert "function clusterPosePortRank(cluster)" in APP
+    assert "function automaticMarkingChannels()" in APP
+    assert "poseAtlasEntryStatus(entry)" in APP
+
+
+def test_marking_configuration_and_library_are_executable_controls() -> None:
+    for identifier in (
+        "markingChannelsSelect", "markingReachSelect",
+        "markingRepresentationSelect", "saveMarkingButton",
+        "markingLibrarySelect", "markingSearchModeSelect",
+        "trainVariantButton",
+    ):
+        assert f'id="{identifier}"' in HTML
+    assert "function restartMarkingTraining()" in APP
+    assert "function freezeCurrentMarking()" in APP
+    assert "function markingVocabularyKey()" in APP
+    assert 'const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v2"' in APP
+    assert "Library entries are enabled only when the colored cluster, pose, and port vocabulary matches exactly" in HTML
+
+
+def test_growth_can_disable_promotion_without_changing_candidate_geometry() -> None:
+    assert 'id="primitiveGrowthButton"' in HTML
+    assert 'id="hierarchicalGrowthButton"' in HTML
+    assert "hierarchyEnabled = false" in APP
+    assert "hierarchyEnabled = true" in APP
+    assert "const continuationRules = hierarchyEnabled || placement.depth === 0" in APP
+    assert "same exact candidate geometry" in HTML
+
+
+if __name__ == "__main__":
+    test_clustering_exposes_geometry_pose_and_derived_channel_rank()
+    test_marking_configuration_and_library_are_executable_controls()
+    test_growth_can_disable_promotion_without_changing_candidate_geometry()
+    print("stage option contract: passed")
