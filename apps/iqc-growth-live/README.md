@@ -190,7 +190,10 @@ receipt. It cannot create a pose, rescue a hard violation, or reject an action;
 candidate identity and the collision/coordination/angle certificates are
 unchanged. This deliberately encodes the preference for familiar low-distortion
 local geometry without calling the score an energy, force, probability, or
-elapsed-time model.
+elapsed-time model. Stage 4 exposes an explicit off/strain selector and weak,
+balanced, and strong weights. Changing it restarts the same frozen search
+experiment, so marking-only and strain-assisted orderings can be compared
+without changing the cluster or port vocabulary.
 
 This is chemistry-as-geometry, not a pair potential: it has no attractive
 well, angular energy, charge, bond order, temperature, pressure, or kinetics. Those effects

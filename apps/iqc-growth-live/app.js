@@ -77,6 +77,9 @@ const markingConfigNote = $("markingConfigNote");
 const markingLibrarySelect = $("markingLibrarySelect");
 const markingLibraryCount = $("markingLibraryCount");
 const markingSearchModeSelect = $("markingSearchModeSelect");
+const geometryPreferenceSelect = $("geometryPreferenceSelect");
+const strainWeightSelect = $("strainWeightSelect");
+const strainWeightHint = $("strainWeightHint");
 const trainVariantButton = $("trainVariantButton");
 const primitiveGrowthButton = $("primitiveGrowthButton");
 const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
@@ -208,7 +211,7 @@ const MERGE_TOLERANCE = .24;
 const COLLISION_TOLERANCE = .46;
 const COMMUTING_SITE_TOLERANCE = 1e-4;
 const SPATIAL_CELL = .52;
-const GEOMETRIC_STRAIN_WEIGHT = .16;
+const DEFAULT_GEOMETRIC_STRAIN_WEIGHT = .16;
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
 const COORDINATION_CUTOFF = 1.32;
@@ -413,6 +416,8 @@ let markingLibrary = [];
 let activeMarkingId = null;
 let markingSearchMode = "single";
 let hierarchyEnabled = true;
+let geometryPreference = "strain";
+let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let nextMarkingId = 1;
 let geometryMode = "auto";
 let orientationAtlas = [];
@@ -3194,7 +3199,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-14",
+      buildId: "20260824-15",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3349,7 +3354,10 @@ async function buildExperimentReceipt() {
       angularEnvelopePrunes,
       geometricStrainRanking: {
         role: "target-blind soft ordering of the unchanged exact candidate set; not energy or admissibility",
-        weight: GEOMETRIC_STRAIN_WEIGHT,
+        mode: geometryPreference,
+        enabled: geometryPreference === "strain",
+        configuredWeight: geometricStrainWeight,
+        effectiveWeight: activeGeometricStrainWeight(),
         acceptedMean: receiptRound(acceptedGeometricStrain / Math.max(1, acceptedDecisions)),
         rejectedMean: receiptRound(rejectedGeometricStrain / Math.max(1, rejectedDecisions)),
       },
@@ -3998,6 +4006,10 @@ function dynamicCandidatePriority(candidate) {
     - (parent?.depth || 0) * .008;
 }
 
+function activeGeometricStrainWeight() {
+  return geometryPreference === "strain" ? geometricStrainWeight : 0;
+}
+
 function candidateSites(candidate) {
   return (candidate.rule.sites || overlapGrammar.templates[candidate.type].sites).map((site) => ({
     species: site.species, center: site.center,
@@ -4124,7 +4136,7 @@ function commutingFrontierBatch() {
       evaluation,
       sites: evaluation.sites,
       score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit)
-        - GEOMETRIC_STRAIN_WEIGHT * evaluation.geometricStrain.total,
+        - activeGeometricStrainWeight() * evaluation.geometricStrain.total,
     };
   }).sort((first, second) => second.score - first.score || first.candidate.key.localeCompare(second.candidate.key));
   if (overlapGrammar.molecular && !reconstructionCertified) {
@@ -4669,7 +4681,13 @@ function syncStageOptions() {
     markingSearchModeSelect.value = markingSearchMode;
     const active = selectedMarking();
     const finiteIceAnchorMode = Boolean(iceAnchorTrace);
-    stageOptionsState.textContent = policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline";
+    geometryPreferenceSelect.value = geometryPreference;
+    strainWeightSelect.value = String(geometricStrainWeight);
+    geometryPreferenceSelect.disabled = finiteIceAnchorMode;
+    strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
+    strainWeightHint.textContent = geometryPreference === "strain"
+      ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
+    stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
     hierarchicalGrowthButton.classList.toggle("active", !finiteIceAnchorMode && hierarchyEnabled);
@@ -4679,11 +4697,14 @@ function syncStageOptions() {
     const markingUse = markingSearchMode === "portfolio"
       ? `The ${compatibleMarkings().length || 1}-mark compatible library scores each unchanged action; any trained mark may admit it.`
       : "The selected vocabulary-compatible marking ranks and prunes the unchanged candidate placements.";
+    const strainUse = geometryPreference === "strain"
+      ? ` A frozen sample-derived contact/angle strain adds a ${geometricStrainWeight.toFixed(2)} soft ordering term over that same candidate set.`
+      : " Geometric strain is reported but contributes zero ranking weight for this ablation.";
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${markingUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${markingUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${markingUse}${strainUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${markingUse}${strainUse}`;
   }
 }
 
@@ -4901,7 +4922,9 @@ function updateStageNarrative() {
   decisionTitle.textContent = item.decision;
   decisionCopy.textContent = item.copy;
   [actionValue.textContent, domainValue.textContent, energyValue.textContent, resolverValue.textContent] = item.values;
-  strainValue.textContent = "not ranked";
+  strainValue.textContent = pipelineStage === 4
+    ? geometryPreference === "strain" ? `enabled · weight ${geometricStrainWeight.toFixed(2)}` : "diagnostic only · weight 0"
+    : "not ranked";
 }
 
 function stateForCandidate(candidate, evaluation) {
@@ -5790,6 +5813,17 @@ markingSearchModeSelect.addEventListener("change", () => {
   markingSearchMode = markingSearchModeSelect.value === "portfolio" ? "portfolio" : "single";
   persistMarkingLibrary();
   if (pipelineStage === 4) enterPipelineStage(4);
+});
+geometryPreferenceSelect.addEventListener("change", () => {
+  geometryPreference = geometryPreferenceSelect.value === "none" ? "none" : "strain";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+strainWeightSelect.addEventListener("change", () => {
+  const value = Number(strainWeightSelect.value);
+  geometricStrainWeight = [.08, .16, .32].includes(value) ? value : DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
 });
 trainVariantButton.addEventListener("click", () => {
   const marking = selectedMarking();

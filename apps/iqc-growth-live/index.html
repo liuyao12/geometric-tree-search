@@ -336,6 +336,21 @@
                 <option value="portfolio">Library portfolio · best mark per action</option>
               </select>
             </label>
+            <label class="field" for="geometryPreferenceSelect">
+              <span>Geometric preference <b>same candidate actions</b></span>
+              <select id="geometryPreferenceSelect">
+                <option value="strain" selected>Learned contact + angle strain</option>
+                <option value="none">Off · marking/action ordering only</option>
+              </select>
+            </label>
+            <label class="field" for="strainWeightSelect">
+              <span>Strain ranking weight <b id="strainWeightHint">0.16 soft</b></span>
+              <select id="strainWeightSelect">
+                <option value="0.08">0.08 · weak preference</option>
+                <option value="0.16" selected>0.16 · balanced preference</option>
+                <option value="0.32">0.32 · strong preference</option>
+              </select>
+            </label>
             <button id="trainVariantButton" class="train-variant" type="button">↶ Train a different marking</button>
             <div class="hierarchy-choice" role="group" aria-label="Cluster hierarchy mode">
               <button id="primitiveGrowthButton" type="button" aria-pressed="false"><small>primitive</small><strong>Clusters only</strong><span>one frontier generation</span></button>
@@ -688,7 +703,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-14"></script>
+  <script type="module" src="./app.js?v=20260824-15"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-2"></script>
 </body>
 </html>

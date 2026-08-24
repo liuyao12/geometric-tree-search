@@ -45,8 +45,19 @@ def test_growth_can_disable_promotion_without_changing_candidate_geometry() -> N
     assert "same exact candidate geometry" in HTML
 
 
+def test_growth_exposes_candidate_identical_geometric_strain_ablation() -> None:
+    assert 'id="geometryPreferenceSelect"' in HTML
+    assert 'id="strainWeightSelect"' in HTML
+    assert '<option value="none">Off · marking/action ordering only</option>' in HTML
+    assert "function activeGeometricStrainWeight()" in APP
+    assert 'geometryPreference === "strain" ? geometricStrainWeight : 0' in APP
+    assert "- activeGeometricStrainWeight() * evaluation.geometricStrain.total" in APP
+    assert "target-blind soft ordering of the unchanged exact candidate set" in APP
+
+
 if __name__ == "__main__":
     test_clustering_exposes_geometry_pose_and_derived_channel_rank()
     test_marking_configuration_and_library_are_executable_controls()
     test_growth_can_disable_promotion_without_changing_candidate_geometry()
+    test_growth_exposes_candidate_identical_geometric_strain_ablation()
     print("stage option contract: passed")
