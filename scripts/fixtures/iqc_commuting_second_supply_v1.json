@@ -1,0 +1,23 @@
+{
+  "autonomous_or_exponential_growth_claimed": false,
+  "best_second_correct_actions": 3,
+  "consumed_diagnostic_only": true,
+  "consumed_v4_target_opened_only_after_receipt": true,
+  "development_artifact_digest": "7854e6fa8b459d85680589f93f40f93f8f02fd79b9a24fde3fadd431c2e72141",
+  "development_model_digest": "a31137c55a0c40fecd1fbb2636991b1867e5c3491eb3d50b41d1f2a5144568e5",
+  "exact_first_parents": 2,
+  "exact_second_blocks": 68,
+  "exact_six_action_joint_and_base_ranks": [[4, 3, 126, 90], [5, 3, 127, 90]],
+  "exact_six_action_pairs": [[4, 3], [5, 3]],
+  "exact_six_action_prefixes": 2,
+  "receipt_digest": "66d74b30bc02e915900d4d372173cb9f288ff01adf0bc06515e5a7276ae79027",
+  "receipt_unchanged_after_scoring": true,
+  "result_digest": "ae1efbeae10b7f1ecb04dc5ee135aeabe01bb85976d8ce10e76bc5405ebe22a5",
+  "scheduled_selected_pairs": 10,
+  "schema_version": 1,
+  "second_candidates": 1220,
+  "selected_exact_six_action_pairs": [],
+  "selected_exact_six_action_prefixes": 0,
+  "selected_first_parents": 8,
+  "target_used_for_generation_fit_or_ranking": false
+}

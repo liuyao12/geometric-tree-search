@@ -1,0 +1,77 @@
+{
+  "autonomous_or_exponential_growth_claimed": false,
+  "candidate_generation_target_used": false,
+  "consumed_development_and_diagnostic_only": true,
+  "consumed_fresh_diagnostic_supplied": true,
+  "development_examples": 224,
+  "development_gate_passed": true,
+  "development_groups": 4,
+  "development_positive_examples": 16,
+  "folds": [
+    {
+      "candidate_digest": "5ed7ef6f564b8432b965c5cd02200cd583f10ba938fb78d11b9ad855f0dd574d",
+      "exact_candidates": 4,
+      "first_exact_rank": 3,
+      "heldout": "consumed-development",
+      "model_digest": "616cf42eeea4aebc4d8f9edf11e9b2083687633b7ef51798a3e523acd8eaa964",
+      "selected_graph_rank_weight": 0.0,
+      "selected_neighbors": 1,
+      "selected_representation": "full",
+      "top8_exact": 1
+    },
+    {
+      "candidate_digest": "d7a56f5b32d4351d1c3cf48b74f0bb8f6d2c49960d9b7faf21e545865008b922",
+      "exact_candidates": 10,
+      "first_exact_rank": 2,
+      "heldout": "fresh-four-parent-red",
+      "model_digest": "1ec6f8969d6bcb67051eb7fd4374e544f4b0ada8e976520bba6f7b691e9f03f8",
+      "selected_graph_rank_weight": 0.5,
+      "selected_neighbors": 1,
+      "selected_representation": "incidence",
+      "top8_exact": 3
+    },
+    {
+      "candidate_digest": "d3e0b4f54de122676c21bdc29a74d57a3fa4046aa07b75b328bce7ea79cc1ace",
+      "exact_candidates": 1,
+      "first_exact_rank": 1,
+      "heldout": "fresh-complete-parent-red",
+      "model_digest": "ba7f2dba0096d20997e71bdd663a02e611945de6132fc7e670bea85cae03f105",
+      "selected_graph_rank_weight": 1.0,
+      "selected_neighbors": 3,
+      "selected_representation": "incidence",
+      "top8_exact": 1
+    },
+    {
+      "candidate_digest": "7707d0ad4cbfd1fcbf4bf53c8c37c4d405f6875b93b666beebb067515a86497e",
+      "exact_candidates": 1,
+      "first_exact_rank": 1,
+      "heldout": "fresh-five-channel-red",
+      "model_digest": "d16c941484c0fcc448eae8184e9bd10e76dbd7c6dde7f4b75f6406e82086aeb9",
+      "selected_graph_rank_weight": 1.0,
+      "selected_neighbors": 25,
+      "selected_representation": "incidence",
+      "top8_exact": 1
+    }
+  ],
+  "folds_with_exact_top8": 4,
+  "fresh_candidate_digest": "de621396e2e5d9e220ded87304a4b56f832bf2a6c869020c0678911cb828b899",
+  "fresh_candidate_geometry_unchanged": true,
+  "fresh_candidates": 56,
+  "fresh_exact_candidates": 4,
+  "fresh_first_exact_rank": 4,
+  "fresh_target_opened_only_after_candidate_freeze": true,
+  "fresh_top8_exact": 2,
+  "future_confirmation_claimed": false,
+  "model_digest": "770dc68dad33e08b63efee8a8cf0d095921c9cb0ba647e96ad38b2e77d3e1166",
+  "result_digest": "e0c1162f4486f75155ffdebd2c26742682132f3704cf32b94739652ffeb135f1",
+  "schema_version": 1,
+  "selected_graph_rank_weight": 0.0,
+  "selected_neighbors": 1,
+  "selected_representation": "incidence",
+  "source_fixture_sha256": [
+    "557a3be2daab28c069f8886d0c7339563e82b196548eabb7084a68f981e7e67b",
+    "40667fe8363e977c194d9a5ab276b975b7db3ae0713260528b504374ff09454e",
+    "e2945f206103078e32a3c384f25961091a66636c79e8a2690cd4bdd82adb9ef2",
+    "b061c69a32b4f9016389d5f428b88c7c58bf3d1dd0cd1a9a8ac12910aaf32656"
+  ]
+}
