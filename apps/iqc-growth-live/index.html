@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-12">
+  <link rel="stylesheet" href="./style.css?v=20260824-13">
   <script type="importmap">
     {
       "imports": {
@@ -382,6 +382,11 @@
                 <option value="serial">Serial best-first · one branch decision</option>
               </select>
             </label>
+            <section class="policy-comparison-card" aria-label="Counterfactual frontier ranking">
+              <div><small>same frozen frontier</small><strong>Physics-policy comparison</strong><span id="policyComparisonState">advance one update</span></div>
+              <div id="policyComparison" class="policy-comparison"></div>
+              <p>Admission geometry is identical in every row. During known-window replay, target-aware reconstruction gain is labeled; after certification it is absent.</p>
+            </section>
             <button id="trainVariantButton" class="train-variant" type="button">↶ Train a different marking</button>
             <div class="hierarchy-choice" role="group" aria-label="Cluster hierarchy mode">
               <button id="primitiveGrowthButton" type="button" aria-pressed="false"><small>primitive</small><strong>Clusters only</strong><span>one frontier generation</span></button>
@@ -738,7 +743,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-29"></script>
+  <script type="module" src="./app.js?v=20260824-31"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-3"></script>
 </body>
 </html>

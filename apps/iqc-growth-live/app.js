@@ -101,6 +101,8 @@ const trainVariantButton = $("trainVariantButton");
 const primitiveGrowthButton = $("primitiveGrowthButton");
 const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
 const growthModeNote = $("growthModeNote");
+const policyComparison = $("policyComparison");
+const policyComparisonState = $("policyComparisonState");
 const pipelineButton = $("pipelineButton");
 const playButton = $("playButton");
 const playIcon = $("playIcon");
@@ -427,6 +429,7 @@ let rejectedSurfaceDeficit = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
+let lastPolicyComparison = null;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let markingSelection = null;
@@ -3525,7 +3528,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-29",
+      buildId: "20260824-31",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4456,6 +4459,35 @@ function activeSurfaceCompletionWeight() {
   return surfacePreference === "strong" ? .36 : surfacePreference === "soft" ? .18 : 0;
 }
 
+function capturePolicyComparison(entries) {
+  const admissible = entries.filter((entry) => entry.evaluation.accepted);
+  const policies = [
+    { id: "grammar", label: "mark + recurrence", score: (entry) => entry.baseScore },
+    { id: "elastic", label: "elastic 0.16", score: (entry) => entry.baseScore - .16 * entry.evaluation.geometricStrain.total },
+    { id: "composition", label: "composition 0.35", score: (entry) => entry.baseScore - .35 * entry.evaluation.compositionBalance.scaledDelta },
+    { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
+    { id: "active", label: "active combined", score: (entry) => entry.score },
+  ].map((policy) => {
+    const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
+      .sort((first, second) => second.score - first.score || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
+    const winner = ranked[0];
+    return {
+      id: policy.id,
+      label: policy.label,
+      action: winner ? `C${winner.entry.candidate.rule.from + 1}→C${winner.entry.candidate.rule.to + 1} · R${winner.entry.candidate.rule.id}` : "no admitted action",
+      candidateKey: winner?.entry.candidate.key || null,
+      score: winner?.score ?? null,
+    };
+  });
+  lastPolicyComparison = {
+    frontier: entries.length,
+    admissible: admissible.length,
+    referenceGuided: !reconstructionCertified,
+    uniqueTopActions: new Set(policies.map((policy) => policy.candidateKey).filter(Boolean)).size,
+    policies,
+  };
+}
+
 function candidateSites(candidate) {
   return (candidate.rule.sites || overlapGrammar.templates[candidate.type].sites).map((site) => ({
     species: site.species, center: site.center,
@@ -4618,18 +4650,22 @@ function commutingFrontierBatch() {
   // Candidate enumeration is frozen before this ranking. Geometric strain is
   // a target-blind preference among those exact actions, never an admission
   // rule and never a source of new coordinates.
-  const ranked = frontierCandidates.map((candidate) => {
+  const evaluated = frontierCandidates.map((candidate) => {
     const evaluation = evaluateCandidate(candidate);
+    const baseScore = dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit);
     return {
       candidate,
       evaluation,
       sites: evaluation.sites,
-      score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit)
+      baseScore,
+      score: baseScore
         - activeGeometricStrainWeight() * evaluation.geometricStrain.total
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta,
     };
-  }).sort((first, second) => second.score - first.score || first.candidate.key.localeCompare(second.candidate.key));
+  });
+  capturePolicyComparison(evaluated);
+  const ranked = evaluated.sort((first, second) => second.score - first.score || first.candidate.key.localeCompare(second.candidate.key));
   if (overlapGrammar.molecular && !reconstructionCertified) {
     const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
     for (const entry of ordered) {
@@ -4780,6 +4816,7 @@ function initializeOffLatticeSearch() {
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
+  lastPolicyComparison = null;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
@@ -5964,6 +6001,42 @@ function renderConstraintLedger(state, mode = "configured") {
   }));
 }
 
+function renderPolicyComparison() {
+  policyComparison.replaceChildren();
+  if (pipelineStage !== 4) {
+    policyComparisonState.textContent = "available during growth";
+    return;
+  }
+  if (iceAnchorTrace) {
+    policyComparisonState.textContent = "specialized frozen trace";
+    const row = document.createElement("article"); row.className = "active";
+    const label = document.createElement("small"); label.textContent = "orientation domains";
+    const action = document.createElement("strong"); action.textContent = "unanimous proper-SE(3) ports";
+    const score = document.createElement("em"); score.textContent = "generic ranks unused";
+    row.append(label, action, score); policyComparison.append(row);
+    return;
+  }
+  if (!lastPolicyComparison) {
+    policyComparisonState.textContent = "advance one update";
+    const row = document.createElement("article");
+    const label = document.createElement("small"); label.textContent = "pending";
+    const action = document.createElement("strong"); action.textContent = `${frontierCandidates.length} frozen candidates await evaluation`;
+    const score = document.createElement("em"); score.textContent = "same geometry";
+    row.append(label, action, score); policyComparison.append(row);
+    return;
+  }
+  const snapshot = lastPolicyComparison;
+  policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
+    + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
+  snapshot.policies.forEach((policy) => {
+    const row = document.createElement("article"); row.classList.toggle("active", policy.id === "active");
+    const label = document.createElement("small"); label.textContent = policy.label;
+    const action = document.createElement("strong"); action.textContent = policy.action;
+    const score = document.createElement("em"); score.textContent = policy.score === null ? "—" : policy.score.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+  });
+}
+
 function liveGrowthCertificate() {
   if (pipelineStage < 4) return null;
   const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
@@ -6038,6 +6111,7 @@ function updateGrowthCertificate() {
 function updateUI() {
   updateRecursiveBenchmark();
   updateGrowthCertificate();
+  renderPolicyComparison();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   if (pipelineStage === 0) {

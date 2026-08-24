@@ -338,6 +338,16 @@ geometrically coincident proposal fails `novel colored sites` as a duplicate
 cover even when every other constraint passes. This makes the physics proxy,
 search logic, and claim boundary inspectable action by action.
 
+The growth controls also display a counterfactual frontier table computed from
+the same already-enumerated, hard-admitted candidate set. It reports the top
+action under marking/recurrence alone, balanced elastic mismatch, composition
+balance, surface completion, and the currently active combined policy. The
+candidate count and number of distinct winners expose whether the soft physics
+proxies actually change the next action. During reconstruction the table says
+`target-aware replay`; after the one-to-one known-window certificate it says
+`target-blind frontier`. The specialized ice executor instead states that its
+orientation-domain rule is used and the generic rankers are not.
+
 The live **growth certificate** keeps four layers separate while the animation
 runs: exact replay of the supplied window, outside-window structural output,
 causal self-feed / hierarchy depth, and the strongest claim actually supported.
