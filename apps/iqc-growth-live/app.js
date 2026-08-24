@@ -51,6 +51,7 @@ import {
   growthEnvironmentSpec,
 } from "./growth-environments.js?v=20260824-1";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
+import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -69,6 +70,11 @@ const ensembleEvidenceSelect = $("ensembleEvidenceSelect");
 const ensembleStatus = $("ensembleStatus");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
+const publishedFixtureProvenance = $("publishedFixtureProvenance");
+const publishedFixtureLicense = $("publishedFixtureLicense");
+const publishedFixtureName = $("publishedFixtureName");
+const publishedFixtureArticle = $("publishedFixtureArticle");
+const publishedFixtureArchive = $("publishedFixtureArchive");
 const structureFileInput = $("structureFileInput");
 const importStatus = $("importStatus");
 const loadFixtureButton = $("loadFixtureButton");
@@ -309,6 +315,8 @@ const ELEMENTS = {
   Ga: { color: 0xc28f8f, css: "#c28f8f", radius: 1.22 },
   Ge: { color: 0x668f8f, css: "#668f8f", radius: 1.20 },
   Si: { color: 0xe7b883, css: "#e7b883", radius: 1.11 },
+  Cd: { color: 0xffd98f, css: "#ffd98f", radius: 1.44 },
+  Yb: { color: 0x00bf38, css: "#00bf38", radius: 1.87 },
 };
 const MATERIALS = {
   iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
@@ -319,6 +327,11 @@ const MATERIALS = {
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", periodicWindow: true, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
   random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "periodic amorphous hard-core cell", periodicWindow: true, order: "amorphous", symmetry: "no stable long-range group", audit: "partial RDF + local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble; the deterministic browser fixture is a continuous random hard-core packing, not a perturbed lattice or an MD trajectory." },
   iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", periodicWindow: false, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
+  cdyb: { name: "Cd₅.₇Yb icosahedral quasicrystal", elements: ["Cd", "Yb"], spacingA: 2.62788720764582,
+    cell: "published aperiodic Cd–Yb model · off-centre R14 Å crop", periodicWindow: false,
+    order: "quasicrystal", symmetry: "icosahedral noncrystallographic order", audit: "published model + sealed disjoint continuation",
+    publishedFixture: "cdyb-offcenter-r14", fixtureProvenance: CDYB_BROWSER_FIXTURE,
+    note: "A 506-atom physical Cd/Yb crop from the published CC-BY-4.0 model. The live learner receives only species and positions; six-dimensional coordinates, occupation domains, empty-centre markers, and the family label are withheld from clustering and growth." },
   moire: { name: "30° twisted hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "two hexagonal sheets · 3.33 Å separation", order: "quasicrystal", symmetry: "12-fold quasiperiodic order", audit: "2D diffraction + absence of common translations", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: Math.PI / 6, zA: 1.665, species: ["B", "N"] }], note: "Each sheet is periodic, while their 30° union has no common translation lattice." },
   bc8: { name: "silicon BC8-like network", elements: ["Si"], spacingA: 2.35, cell: "BC8 target · a = 6.636 Å", periodicWindow: true, order: "crystal", symmetry: "Ia-3 · #206", audit: "space group", note: "A nontrivial crystalline control for topology, coordination, and species-preserving symmetry recovery." },
 };
@@ -331,6 +344,9 @@ const RECURSIVE_BENCHMARKS = {
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
   random: { hierarchy: ["local", "—", "—"], curve: [507], mark: "no recurrent macro", action: "ensemble only", speed: "no claim", gate: "negative control", status: "limit", note: "The hierarchy correctly declines deterministic continuation. Four independently seeded amorphous controls produced zero deterministic false positives." },
   iqc: { hierarchy: [73, 17, 5], curve: [2064, 1122, 324, 78, 26, 12, 8, 4], mark: "bounded ports + exact derivations", action: "6 train levels · heldout L1 stops", speed: "1,248 / 1,248 primitive transfer", gate: "red · stationary transfer", status: "limit", note: "History-free re-clustering completely covers 2,064 grown atoms and reaches six positive train-compression levels. On three sealed held-out patches, frozen supports cover every atom and 256 of 259 first-level types replay; three absent types stop recursive transfer. The deterministic beam retains more exact derivations but still finds no stationary three-level production, so generic exponential IQC growth remains red.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% P / 55.0% R", recall: "85.4% P / 32.1% R", reduction: "57× → 185×" }, connection: { transfer: "1,248 / 1,248 atoms · 256 / 259 L1 types", states: "78 support types · 1,122 occurrences · 6 positive train levels", consensusLabel: "persistent wave / marking operating points", consensus: [["wave 1", 100.0, 3.27], ["wave 2", 34.18, 1.14], ["mark 1", 100.0, 0.07], ["mark 2", 0.0, 0.0]], secondOrderLabel: "position and species fidelity by unseen wave", secondOrder: [["wave 1", "position", 100.0, 3.27, 66.52, 2.18], ["wave 2", "position", 34.18, 1.14, 14.29, 0.47], ["mark", "normalized", 100.0, 0.07, 100.0, 0.07]], frontier: { waves: [324, 78, 26, 12, 8, 4], exact: "alternative-consistent train path", recall: "heldout primitive atoms 100% · recursive types 98.8%", full: "three missing frozen L1 types stop promotion without refit" }, macro: { stages: [["support types", 78], ["L1 quotient", 73], ["L2 quotient", 17]], safe: "heldout primitive cover · 1,248/1,248 atoms", rejected: "recursive transfer · 3/259 L1 types absent", crystal: "learned NaCl stationary control · 4,194,304 represented sites", iterated: "beam evidence · 324→78→26→12→8→4", similarity: "deep train compression passes · stationary heldout growth fails" } } },
+  cdyb: { hierarchy: [80, 36, 22], curve: [506, 1056, 1672], mark: "causal local connection consensus",
+    action: "5 target-blind finite waves", speed: "177 / 179 emitted sites correct", gate: "finite autonomous pass · stationary red", status: "limit",
+    note: "The browser input is the published 506-atom off-centre crop. Backend audits on disjoint windows learn nine positive compression levels and a causal local marking; two sealed nuclei grow 178/178 and 117/117 correct atoms, while the same unmarked searches emit 83 false atoms. Those finite runs reach fixed points and no production recurs across three scales, so sustained, stationary, and exponential Cd–Yb growth remain open." },
   moire: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "two sheet poses · Δθ = 30°", action: "6 radius doublings → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The audited 2D atlas learns one B–N cluster isometry class in two sheet poses from 746 atoms. It exactly predicts an unseen 2,990-atom disk, preserves the 30° pose marking, and finds no common nonzero translation." },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
@@ -680,6 +696,16 @@ function renderMeasurementConditions() {
   });
 }
 
+function renderPublishedFixtureProvenance() {
+  const provenance = currentMaterial()?.fixtureProvenance;
+  publishedFixtureProvenance.hidden = !provenance;
+  if (!provenance) return;
+  publishedFixtureLicense.textContent = provenance.license;
+  publishedFixtureName.textContent = `${provenance.name} · ${provenance.atoms.length.toLocaleString()} physical atoms`;
+  publishedFixtureArticle.href = `https://doi.org/${provenance.articleDoi}`;
+  publishedFixtureArchive.href = `https://doi.org/${provenance.archiveDoi}`;
+}
+
 function syncImportedFrameMaterial() {
   if (!importedStructure?.material) return;
   const frame = currentImportedFrame();
@@ -692,6 +718,7 @@ function syncImportedFrameMaterial() {
 
 function renderEnsembleControls() {
   renderMeasurementConditions();
+  renderPublishedFixtureProvenance();
   const frames = importedTrajectoryFrames();
   const visible = scenarioSelect.value === "imported" && frames.length > 1;
   ensembleControls.hidden = !visible;
@@ -2013,6 +2040,7 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   if (scenario === "imported" && importedStructure) return makeImportedFrameReference();
   if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
   if (MATERIALS[scenario]?.molecularFixture === "dry-ice-pa3") return makeDryIceReferenceConfiguration();
+  if (MATERIALS[scenario]?.publishedFixture === "cdyb-offcenter-r14") return makeCdYbReferenceConfiguration();
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
   if (scenario === "random") return makeMetallicGlassReference();
   const result = [];
@@ -2020,6 +2048,15 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
     result.push(makeSyntheticReferenceSite(ix - 2.5, iy - 2.5, iz - 2.5, result.length, scenario));
   }
   return result.sort((a, b) => a.p.lengthSq() - b.p.lengthSq());
+}
+
+function makeCdYbReferenceConfiguration() {
+  const scale = .92 / MATERIALS.cdyb.spacingA;
+  return CDYB_BROWSER_FIXTURE.atoms.map(([species, x, y, z], sourceIndex) => {
+    const pA = new THREE.Vector3(x, y, z);
+    return { pA, p: pA.clone().multiplyScalar(scale), species, family: "published-cdyb", sourceIndex };
+  }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
+    || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
 }
 
 function makePlanarReferenceConfiguration(scenario = "moire") {
@@ -4377,7 +4414,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-47",
+      buildId: "20260824-48",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4452,7 +4489,20 @@ async function buildExperimentReceipt() {
         materialId: importedStructure?.metadata?.materialId || null,
         format: importedStructure?.format || null,
       } : { fixture: scenarioSelect.value,
-        generatorAudit: scenarioSelect.value === "random" ? referenceAtoms[0]?.glassAudit || null : null },
+        generatorAudit: scenarioSelect.value === "random" ? referenceAtoms[0]?.glassAudit || null : null,
+        publishedModel: material.fixtureProvenance ? {
+          fixtureId: material.fixtureProvenance.id,
+          articleDoi: material.fixtureProvenance.articleDoi,
+          archiveDoi: material.fixtureProvenance.archiveDoi,
+          license: material.fixtureProvenance.license,
+          archiveSha256: material.fixtureProvenance.archiveSha256,
+          normalizedAtomsSha256: material.fixtureProvenance.normalizedAtomsSha256,
+          generatorVersion: material.fixtureProvenance.generatorVersion,
+          crop: material.fixtureProvenance.crop,
+          sourceSitesEmbedded: false,
+          cutAndProjectCoordinatesEmbedded: false,
+          phaseLabelUsedByLearner: false,
+        } : null },
     },
     pipeline: {
       internalStage: pipelineStage,

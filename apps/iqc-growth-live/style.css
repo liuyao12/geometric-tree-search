@@ -205,6 +205,13 @@ body.atlas-open { overflow: hidden; }
 .measurement-condition-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
 .measurement-condition-chips span { padding: 4px 6px; border: 1px solid rgba(255,190,92,.28); color: #e0c48f; background: rgba(255,190,92,.055); font: 7px var(--mono); }
 .measurement-conditions p { margin: 7px 0 0; color: #82775f; font-size: 7px; line-height: 1.45; }
+.published-fixture-provenance { border-color: rgba(181,148,255,.28); background: rgba(181,148,255,.045); }
+.published-fixture-provenance .measurement-heading small { color: #a895cc; }
+.published-fixture-provenance .measurement-heading span { color: var(--violet); }
+.published-fixture-provenance > strong { display: block; margin-top: 7px; color: #d9d0ed; font-size: 9px; font-weight: 500; line-height: 1.35; }
+.published-fixture-links { display: flex; gap: 6px; margin-top: 7px; }
+.published-fixture-links a { padding: 4px 6px; border: 1px solid rgba(181,148,255,.28); color: #c9b4f1; background: rgba(181,148,255,.055); font: 6px var(--mono); text-decoration: none; text-transform: uppercase; }
+.published-fixture-links a:hover { border-color: var(--violet); }
 .database-picker { position: relative; padding: 10px; border: 1px solid rgba(101,225,188,.25); background: rgba(101,225,188,.035); }
 .database-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .database-heading strong { color: var(--mint); font-size: 10px; }

@@ -18,12 +18,24 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
-The selectable inputs are an exact NaCl rocksalt positive control, a Cu-Zr
-metallic-glass negative control, an Al-Cu-Fe icosahedral-approximant surrogate, a 30°
-twisted hBN bilayer, and a silicon BC8-like network. The hBN fixture is two
+The selectable inputs include an exact NaCl rocksalt positive control, a Cu-Zr
+metallic-glass negative control, an Al-Cu-Fe icosahedral-approximant surrogate,
+the published Cd5.7Yb icosahedral-quasicrystal model, a 30° twisted hBN bilayer,
+and a silicon BC8-like network. The hBN fixture is two
 intrinsically 2D sheets embedded in 3D, not a thin 3D periodic box.
 Element-dependent colors and radii are presentation
 encodings, not electron densities or physical potentials.
+
+The live Cd5.7Yb option is a deterministic 506-atom off-centre radius-14 Å
+restriction of Feuerbacher's V1.5 published model (article DOI
+`10.1107/S2053273326006601`, immutable Zenodo record
+`10.5281/zenodo.21470195`, CC-BY-4.0). Its off-centre origin avoids presenting
+global icosahedral shell rotations as independent translated motifs. The
+browser receives only Cd/Yb species and physical-space Cartesian positions;
+source-site names, empty-centre markers, six-dimensional coordinates, and
+occupation domains are absent. The receipt pins the article, archive, generator
+and normalized 506-atom digest. Selecting this saved example does not provide
+its phase label to clustering, marking, or growth.
 
 ### Occupational disorder and partial sites
 
