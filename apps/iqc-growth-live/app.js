@@ -2533,8 +2533,12 @@ function updateClusterGalleryInspector(galleryIndex) {
   const channels = cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex);
   const chirality = cluster.chirality || "unresolved / achiral";
   const coverKind = cluster.residual ? "literal terminal · never promoted" : "recurrent candidate · eligible for ports";
+  const displayTopology = clusterDisplayTopology(cluster, clusterGallerySites(cluster));
+  const surfaceLabel = cluster.visualKind === "ring"
+    ? `${displayTopology.faces.length} boundary polygon${displayTopology.faces.length === 1 ? "" : "s"}`
+    : `${displayTopology.faces.length} explicit face${displayTopology.faces.length === 1 ? "" : "s"}`;
   inspector.innerHTML = `
-    <div><small>selected class</small><strong>${cluster.label || `C${galleryIndex + 1}`}</strong><span>${cluster.geometry || "colored support polyhedron"}</span></div>
+    <div><small>selected class</small><strong>${cluster.label || `C${galleryIndex + 1}`}</strong><span>${cluster.geometry || "colored support polyhedron"} · ${surfaceLabel} · ${displayTopology.edges.length} topology edges</span></div>
     <div><small>complete-cover evidence</small><strong>${coveredAtoms.size.toLocaleString()} / ${referenceCount().toLocaleString()} atoms</strong><span>${placementIndices.length} occurrence${placementIndices.length === 1 ? "" : "s"} · ${supportSites} sites / occurrence · ${sharedAtoms} overlap-shared atoms</span></div>
     <div><small>proper-pose support</small><strong>${poseCount || "unresolved"} orbit${poseCount === 1 ? "" : "s"} · χ ${chirality}</strong><span>translation and atom order removed; mirrors remain distinct when resolved</span></div>
     <div><small>connection capacity</small><strong>${ports} port role${ports === 1 ? "" : "s"} → ${channels} channel${channels === 1 ? "" : "s"}</strong><span>${coverKind}</span></div>`;
@@ -2734,6 +2738,27 @@ function clusterDisplayTopology(cluster, sites) {
   return { faces, edges: [...edges.values()] };
 }
 
+function clusterGallerySites(cluster) {
+  const center = referenceAtoms[cluster.medoid];
+  if (!cluster.customSupport) {
+    const sites = [{ vector: new THREE.Vector3(), atom: center }];
+    if (!cluster.residual) learnedClusters.environments[cluster.medoid].shell
+      .filter((neighbor) => neighbor.r <= motifShellCutoff())
+      .forEach((neighbor) => sites.push(neighbor));
+    return sites;
+  }
+  const sites = cluster.customSupport.map((atomIndex, index) => ({
+    vector: cluster.customVectors?.[index]?.clone() || periodicDisplacement(center, referenceAtoms[atomIndex]),
+    atom: referenceAtoms[atomIndex],
+  }));
+  if (!cluster.customVectors?.length) {
+    const centroid = sites.reduce((sum, site) => sum.add(site.vector), new THREE.Vector3())
+      .multiplyScalar(1 / sites.length);
+    sites.forEach((site) => site.vector.sub(centroid));
+  }
+  return sites;
+}
+
 function drawClusterGallery(now) {
   if (pipelineStage !== 1 || clusterGallery.hidden) return;
   const scaleToScene = referenceSpacing / referenceSpacingA;
@@ -2742,22 +2767,7 @@ function drawClusterGallery(now) {
     if (!cluster) return;
     const context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
-    const center = referenceAtoms[cluster.medoid];
-    let sites = [{ vector: new THREE.Vector3(), atom: center }];
-    if (cluster.customSupport) {
-      sites = cluster.customSupport.map((atomIndex, index) => ({
-        vector: cluster.customVectors?.[index]?.clone() || periodicDisplacement(center, referenceAtoms[atomIndex]),
-        atom: referenceAtoms[atomIndex],
-      }));
-      if (!cluster.customVectors?.length) {
-        const centroid = sites.reduce((sum, site) => sum.add(site.vector), new THREE.Vector3())
-          .multiplyScalar(1 / sites.length);
-        sites.forEach((site) => site.vector.sub(centroid));
-      }
-    }
-    else if (!cluster.residual) learnedClusters.environments[cluster.medoid].shell
-      .filter((neighbor) => neighbor.r <= motifShellCutoff())
-      .forEach((neighbor) => sites.push(neighbor));
+    const sites = clusterGallerySites(cluster);
     const angleY = now * (.00018 + galleryIndex * .000011) + galleryIndex * .83;
     const angleX = now * (.00009 + galleryIndex * .000007) + .35;
     const quaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(angleX, angleY, angleY * .23));
@@ -3514,7 +3524,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-24",
+      buildId: "20260824-25",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
