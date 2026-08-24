@@ -28,7 +28,7 @@ def test_tolerance_controls_all_metric_isometry_learners() -> None:
     assert "nominalMetricIsometryToleranceFractionOfNearestNeighbor: clusterMetricTolerance()" in source
     assert "metricIsometryToleranceFractionOfNearestNeighbor: receiptRound(effectiveClusterMetricTolerance())" in source
     assert "metricIsometryToleranceAngstrom: receiptRound(clusterMetricToleranceAngstrom())" in source
-    assert 'source: importedStructure?.validation?.thermalDisplacementSites ? "CIF/JSON Uiso or Biso"' in source
+    assert 'source: importedStructure?.validation?.thermalDisplacementSites ? "CIF/JSON isotropic or anisotropic U/B"' in source
     assert "pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom())" in source
     assert "metricToleranceMode: clusterToleranceMode" in source
     assert "metricToleranceFraction: effectiveClusterMetricTolerance()" in source

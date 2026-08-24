@@ -44,16 +44,20 @@ The finite-molecule hypothesis fails closed on mixed sites because a virtual
 occupancy channel has no single covalent radius or valence; those materials use
 the generic irregular-cover route instead of silently choosing a species.
 
-Ordinary CIF `_atom_site_U_iso_or_equiv` and `_atom_site_B_iso_or_equiv`
-columns are preserved as isotropic positional uncertainty, using
-`B = 8π²U`. A translucent violet wire sphere displays the two-sigma envelope
-around the mean site. The isometry tolerance is the larger of the selected
+Ordinary CIF `_atom_site_U_iso_or_equiv` / `_atom_site_B_iso_or_equiv` columns
+and full `_atom_site_aniso_U_ij` / `_atom_site_aniso_B_ij` loops are preserved,
+using `B = 8π²U`. Crystallographic tensors are converted through the supplied
+cell metric into Cartesian covariance tensors, transported by every symmetry
+operation, checked for positive semidefiniteness, and diagonalized into a
+right-handed principal-axis frame. A translucent violet wire ellipsoid displays
+the two-sigma displacement halo around the arbitrary element glyph; the halo's
+axis excess beyond the glyph is the measured 2σ displacement. The isometry tolerance is the larger of the selected
 nominal tolerance and the measured one-sigma pair-distance uncertainty
 `sqrt(2)·median(sqrt(U))`; the UI and receipt show both values. This broadens
 only the comparison of noisy measured geometry. It is not a temperature,
 phonon trajectory, force field, Debye–Waller intensity model, or dynamical
-growth clock. Anisotropic displacement tensors and modulated/superspace CIFs
-remain unsupported and must not be inferred from the isotropic fallback.
+growth clock. Modulated/superspace CIFs remain unsupported and must not be
+approximated by this ordinary-cell tensor path.
 
 ## Reproducible experiment receipts
 

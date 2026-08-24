@@ -11,6 +11,7 @@ _space_group_symop_operation_xyz
 'x,y,z'
 '-x,-y,-z'
 loop_
+_atom_site_label
 _atom_site_type_symbol
 _atom_site_fract_x
 _atom_site_fract_y
@@ -18,6 +19,15 @@ _atom_site_fract_z
 _atom_site_occupancy
 _atom_site_U_iso_or_equiv
 _atom_site_B_iso_or_equiv
-Ta 0 0 0 0.6 0.010 .
-V 0 0 0 0.4 0.020 .
-O 0.25 0.25 0.25 0.5 . 0.789568
+Ta1 Ta 0 0 0 0.6 0.010 .
+V1 V 0 0 0 0.4 0.020 .
+O1 O 0.25 0.25 0.25 0.5 . 0.789568
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+O1 0.040 0.010 0.0025 0 0 0

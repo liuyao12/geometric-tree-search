@@ -48,6 +48,27 @@ function normalizeThermalDisplacement({ uIsoA2 = null, bIsoA2 = null, thermalSig
   return { uIsoA2: uIso, bIsoA2: uIso * 8 * Math.PI * Math.PI, thermalSigmaA: Math.sqrt(uIso) };
 }
 
+function normalizeAnisotropicDisplacement(tensor, scale = 1) {
+  if (!tensor) return {};
+  const uAnisoCartesianA2 = tensor.map((row) => row.map((value) => Number(value) * scale));
+  const eigen = symmetricTensorEigenSystem(uAnisoCartesianA2);
+  const uIsoA2 = eigen.eigenvaluesA2.reduce((sum, value) => sum + value, 0) / 3;
+  return {
+    uAnisoCartesianA2,
+    uIsoA2,
+    bIsoA2: uIsoA2 * 8 * Math.PI * Math.PI,
+    thermalSigmaA: Math.sqrt(uIsoA2),
+    thermalSigmaAxesA: eigen.sigmaAxesA,
+    thermalAxesCartesian: eigen.axes,
+  };
+}
+
+function thermalTensorForSite(site) {
+  if (site.uAnisoCartesianA2) return site.uAnisoCartesianA2;
+  if (!Number.isFinite(site.uIsoA2)) return null;
+  return [[site.uIsoA2, 0, 0], [0, site.uIsoA2, 0], [0, 0, site.uIsoA2]];
+}
+
 function occupancyEntries(value) {
   if (Array.isArray(value)) return value.map((entry) => typeof entry === "string"
     ? { species: elementSymbol(entry), fraction: null }
@@ -129,10 +150,13 @@ function mergeSiteOccupancies(first, second, additive) {
   const normalized = normalizeSiteOccupancy(first.species, 1,
     [...fractions].map(([species, fraction]) => ({ species, fraction })));
   const thermal = [[first, first.occupancyTotal ?? first.occupancy ?? 1], [second, second.occupancyTotal ?? second.occupancy ?? 1]]
-    .filter(([site]) => Number.isFinite(site.uIsoA2));
+    .filter(([site]) => thermalTensorForSite(site));
   const thermalWeight = thermal.reduce((sum, [, weight]) => sum + weight, 0);
-  const uIsoA2 = thermalWeight ? thermal.reduce((sum, [site, weight]) => sum + site.uIsoA2 * weight, 0) / thermalWeight : null;
-  return { ...normalized, ...normalizeThermalDisplacement({ uIsoA2 }) };
+  const tensor = thermalWeight ? Array.from({ length: 3 }, (_, row) => Array.from({ length: 3 }, (_, column) =>
+    thermal.reduce((sum, [site, weight]) => sum + thermalTensorForSite(site)[row][column] * weight, 0) / thermalWeight)) : null;
+  const anisotropic = Boolean(first.uAnisoCartesianA2 || second.uAnisoCartesianA2);
+  return { ...normalized, ...(tensor ? anisotropic ? normalizeAnisotropicDisplacement(tensor)
+    : normalizeThermalDisplacement({ uIsoA2: tensor[0][0] }) : {}) };
 }
 
 function determinant(cell) {
@@ -164,6 +188,84 @@ function inverseCell(cell) {
 
 function matrixVector(matrix, vector) {
   return matrix.map((row) => row[0] * vector[0] + row[1] * vector[1] + row[2] * vector[2]);
+}
+
+function transpose(matrix) {
+  return matrix[0].map((_, column) => matrix.map((row) => row[column]));
+}
+
+function matrixMultiply(first, second) {
+  const transposed = transpose(second);
+  return first.map((row) => transposed.map((column) => row.reduce((sum, value, index) => sum + value * column[index], 0)));
+}
+
+function cellMatrix(cell) {
+  return [[cell[0][0], cell[1][0], cell[2][0]], [cell[0][1], cell[1][1], cell[2][1]], [cell[0][2], cell[1][2], cell[2][2]]];
+}
+
+function cross(first, second) {
+  return [first[1] * second[2] - first[2] * second[1], first[2] * second[0] - first[0] * second[2], first[0] * second[1] - first[1] * second[0]];
+}
+
+function reciprocalAxisLengths(cell) {
+  const volume = determinant(cell);
+  return [cross(cell[1], cell[2]), cross(cell[2], cell[0]), cross(cell[0], cell[1])]
+    .map((vector) => distance(vector) / Math.abs(volume));
+}
+
+function cifAnisotropicToCartesian(tensor, cell) {
+  const lengths = reciprocalAxisLengths(cell);
+  const orthogonalization = matrixMultiply(cellMatrix(cell), [
+    [lengths[0], 0, 0], [0, lengths[1], 0], [0, 0, lengths[2]],
+  ]);
+  return matrixMultiply(matrixMultiply(orthogonalization, tensor), transpose(orthogonalization));
+}
+
+function transformCartesianTensor(tensor, fractionalRotation, cell) {
+  const cartesianRotation = matrixMultiply(matrixMultiply(cellMatrix(cell), fractionalRotation), inverseCell(cell));
+  return matrixMultiply(matrixMultiply(cartesianRotation, tensor), transpose(cartesianRotation));
+}
+
+export function symmetricTensorEigenSystem(tensor) {
+  if (!Array.isArray(tensor) || tensor.length !== 3 || tensor.some((row) => !Array.isArray(row) || row.length !== 3
+    || row.some((value) => !Number.isFinite(Number(value))))) throw new Error("Anisotropic displacement tensor must be a finite 3×3 matrix");
+  const matrix = tensor.map((row) => row.map(Number));
+  for (let row = 0; row < 3; row++) for (let column = row + 1; column < 3; column++) {
+    if (Math.abs(matrix[row][column] - matrix[column][row]) > 1e-8) throw new Error("Anisotropic displacement tensor must be symmetric");
+    const average = (matrix[row][column] + matrix[column][row]) / 2;
+    matrix[row][column] = average; matrix[column][row] = average;
+  }
+  const vectors = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  for (let iteration = 0; iteration < 32; iteration++) {
+    let p = 0; let q = 1;
+    [[0, 1], [0, 2], [1, 2]].forEach(([first, second]) => {
+      if (Math.abs(matrix[first][second]) > Math.abs(matrix[p][q])) { p = first; q = second; }
+    });
+    if (Math.abs(matrix[p][q]) < 1e-14) break;
+    const angle = .5 * Math.atan2(2 * matrix[p][q], matrix[q][q] - matrix[p][p]);
+    const cosine = Math.cos(angle); const sine = Math.sin(angle);
+    const rotation = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+    rotation[p][p] = cosine; rotation[q][q] = cosine;
+    rotation[p][q] = sine; rotation[q][p] = -sine;
+    const updated = matrixMultiply(matrixMultiply(transpose(rotation), matrix), rotation);
+    for (let row = 0; row < 3; row++) for (let column = 0; column < 3; column++) matrix[row][column] = updated[row][column];
+    const updatedVectors = matrixMultiply(vectors, rotation);
+    for (let row = 0; row < 3; row++) for (let column = 0; column < 3; column++) vectors[row][column] = updatedVectors[row][column];
+  }
+  const records = [0, 1, 2].map((axis) => ({
+    value: matrix[axis][axis],
+    vector: vectors.map((row) => row[axis]),
+  })).sort((first, second) => second.value - first.value);
+  if (records.some((record) => record.value < -1e-8)) throw new Error("Anisotropic displacement tensor is not positive semidefinite");
+  const handedness = records[0].vector[0] * (records[1].vector[1] * records[2].vector[2] - records[1].vector[2] * records[2].vector[1])
+    - records[0].vector[1] * (records[1].vector[0] * records[2].vector[2] - records[1].vector[2] * records[2].vector[0])
+    + records[0].vector[2] * (records[1].vector[0] * records[2].vector[1] - records[1].vector[1] * records[2].vector[0]);
+  if (handedness < 0) records[2].vector = records[2].vector.map((value) => -value);
+  return {
+    eigenvaluesA2: records.map((record) => Math.max(0, record.value)),
+    axes: records.map((record) => record.vector),
+    sigmaAxesA: records.map((record) => Math.sqrt(Math.max(0, record.value))),
+  };
 }
 
 function displacement(first, second, cell, pbc = [false, false, false]) {
@@ -220,7 +322,9 @@ function parseSymmetryOperation(operation) {
   const components = String(operation).split(",");
   if (components.length !== 3) throw new Error(`Unsupported CIF symmetry operation: ${operation}`);
   const rows = components.map(parseSymmetryComponent);
-  return (fractional) => rows.map((row) => row.coefficients.reduce((sum, value, index) => sum + value * fractional[index], row.offset));
+  const apply = (fractional) => rows.map((row) => row.coefficients.reduce((sum, value, index) => sum + value * fractional[index], row.offset));
+  apply.rotation = rows.map((row) => row.coefficients.slice());
+  return apply;
 }
 
 function parseCif(text, filename) {
@@ -260,6 +364,7 @@ function parseCif(text, filename) {
   if (!atomLoop) throw new Error("CIF has no supported atom-site coordinate loop");
   const column = (names) => names.map((name) => atomLoop.headers.indexOf(name)).find((index) => index >= 0) ?? -1;
   const speciesColumn = column(["_atom_site_type_symbol", "_atom_site_label"]);
+  const siteLabelColumn = column(["_atom_site_label"]);
   const occupancyColumn = column(["_atom_site_occupancy"]);
   const uIsoColumn = column(["_atom_site_u_iso_or_equiv", "_atom_site_u_iso"]);
   const bIsoColumn = column(["_atom_site_b_iso_or_equiv", "_atom_site_b_iso"]);
@@ -267,14 +372,42 @@ function parseCif(text, filename) {
   const cartesianColumns = ["_atom_site_cartn_x", "_atom_site_cartn_y", "_atom_site_cartn_z"].map((name) => atomLoop.headers.indexOf(name));
   const fractional = fractionalColumns.every((index) => index >= 0);
   if (!fractional && !cartesianColumns.every((index) => index >= 0)) throw new Error("CIF atom sites lack a complete coordinate triplet");
+  const anisoLoop = loops.find((loop) => loop.headers.includes("_atom_site_aniso_label")
+    && (loop.headers.includes("_atom_site_aniso_u_11") || loop.headers.includes("_atom_site_aniso_b_11")));
+  const anisotropicByLabel = new Map();
+  if (anisoLoop) {
+    const anisoColumn = (name) => anisoLoop.headers.indexOf(name);
+    const labelIndex = anisoColumn("_atom_site_aniso_label");
+    anisoLoop.rows.forEach((row) => {
+      const readTensor = (prefix) => {
+        const read = (first, second) => {
+          const index = anisoColumn(`_atom_site_aniso_${prefix}_${first}${second}`);
+          return index >= 0 ? optionalCifNumber(row[index], `anisotropic ${prefix.toUpperCase()}${first}${second}`) : null;
+        };
+        const diagonal = [read(1, 1), read(2, 2), read(3, 3)];
+        if (diagonal.some((value) => value === null)) return null;
+        const u12 = read(1, 2) ?? 0; const u13 = read(1, 3) ?? 0; const u23 = read(2, 3) ?? 0;
+        return [[diagonal[0], u12, u13], [u12, diagonal[1], u23], [u13, u23, diagonal[2]]];
+      };
+      let tensor = readTensor("u");
+      let scale = 1;
+      if (!tensor) { tensor = readTensor("b"); scale = 1 / (8 * Math.PI * Math.PI); }
+      if (!tensor) return;
+      const cartesian = cifAnisotropicToCartesian(tensor, cell).map((tensorRow) => tensorRow.map((value) => value * scale));
+      anisotropicByLabel.set(String(row[labelIndex]), normalizeAnisotropicDisplacement(cartesian));
+    });
+  }
   const asymmetricRows = atomLoop.rows.map((row) => {
     const coordinates = (fractional ? fractionalColumns : cartesianColumns).map((index, axis) => numeric(row[index], `atom coordinate ${axis + 1}`));
+    const siteLabel = siteLabelColumn >= 0 ? String(row[siteLabelColumn]) : null;
+    const anisotropic = siteLabel ? anisotropicByLabel.get(siteLabel) : null;
     return {
       ...normalizeSiteOccupancy(row[speciesColumn], occupancyColumn >= 0 ? row[occupancyColumn] : 1),
-      ...normalizeThermalDisplacement({
+      ...(anisotropic || normalizeThermalDisplacement({
         uIsoA2: uIsoColumn >= 0 ? row[uIsoColumn] : null,
         bIsoA2: bIsoColumn >= 0 ? row[bIsoColumn] : null,
-      }),
+      })),
+      siteLabels: siteLabel ? [siteLabel] : [],
       coordinates,
     };
   });
@@ -282,23 +415,29 @@ function parseCif(text, filename) {
   asymmetricRows.forEach((site) => {
     const existing = asymmetric.find((candidate) => distance(site.coordinates.map((value, axis) => value - candidate.coordinates[axis])) < 1e-8);
     if (!existing) { asymmetric.push(site); return; }
-    Object.assign(existing, mergeSiteOccupancies(existing, site, true));
+    const merged = mergeSiteOccupancies(existing, site, true);
+    Object.assign(existing, merged, { siteLabels: [...new Set([...(existing.siteLabels || []), ...(site.siteLabels || [])])] });
   });
   const symmetryLoop = loops.find((loop) => loop.headers.includes("_space_group_symop_operation_xyz") || loop.headers.includes("_symmetry_equiv_pos_as_xyz"));
   const symmetryHeader = symmetryLoop && (symmetryLoop.headers.indexOf("_space_group_symop_operation_xyz") >= 0
     ? symmetryLoop.headers.indexOf("_space_group_symop_operation_xyz") : symmetryLoop.headers.indexOf("_symmetry_equiv_pos_as_xyz"));
-  const operations = fractional && symmetryLoop ? symmetryLoop.rows.map((row) => parseSymmetryOperation(row[symmetryHeader])) : [(value) => value];
+  const identityOperation = (value) => value;
+  identityOperation.rotation = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  const operations = fractional && symmetryLoop ? symmetryLoop.rows.map((row) => parseSymmetryOperation(row[symmetryHeader])) : [identityOperation];
   const atoms = [];
   asymmetric.forEach((site) => operations.forEach((operation) => {
     const frac = fractional ? operation(site.coordinates).map((value) => ((value % 1) + 1) % 1) : null;
     const position = fractional ? fractionalToCartesian(frac, cell) : site.coordinates;
     const duplicate = atoms.find((atom) => distance(displacement(atom.position, position, cell, [true, true, true])) < 1e-4);
+    const transformedSite = site.uAnisoCartesianA2
+      ? { ...site, ...normalizeAnisotropicDisplacement(transformCartesianTensor(site.uAnisoCartesianA2, operation.rotation, cell)) }
+      : site;
     if (!duplicate) {
-      const { coordinates: _coordinates, ...chemistry } = site;
+      const { coordinates: _coordinates, ...chemistry } = transformedSite;
       atoms.push({ ...chemistry, position });
     }
-    else if (occupancyChemistryToken(duplicate) !== occupancyChemistryToken(site)) {
-      Object.assign(duplicate, mergeSiteOccupancies(duplicate, site, false));
+    else if (occupancyChemistryToken(duplicate) !== occupancyChemistryToken(transformedSite)) {
+      Object.assign(duplicate, mergeSiteOccupancies(duplicate, transformedSite, false));
     }
   }));
   return {
@@ -375,11 +514,13 @@ function parseJson(text, filename) {
     ...normalizeSiteOccupancy(atom.species || atom.element || atom.symbol,
       typeof atom.occupancy === "number" ? atom.occupancy : atom.occupancyTotal ?? 1,
       atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null)),
-    ...normalizeThermalDisplacement({
+    ...(atom.uAnisoCartesianA2 || atom.u_aniso_cartesian
+      ? normalizeAnisotropicDisplacement(atom.uAnisoCartesianA2 || atom.u_aniso_cartesian)
+      : normalizeThermalDisplacement({
       uIsoA2: atom.uIsoA2 ?? atom.u_iso_or_equiv,
       bIsoA2: atom.bIsoA2 ?? atom.b_iso_or_equiv,
       thermalSigmaA: atom.thermalSigmaA,
-    }),
+      })),
     position: (atom.position || atom.xyz || atom.cartesian).map(Number),
   }));
   else if (Array.isArray(data.positions) && Array.isArray(data.species)) atoms = data.positions.map((position, index) => ({
@@ -420,6 +561,8 @@ export function validateStructure(structure, options = {}) {
   let inferredOccupancySites = 0;
   let vacancyFraction = 0;
   const thermalSigmas = [];
+  const thermalAxisSigmas = [];
+  let anisotropicDisplacementSites = 0;
   structure?.atoms?.forEach((atom, index) => {
     let normalized = null;
     try {
@@ -445,6 +588,11 @@ export function validateStructure(structure, options = {}) {
     try {
       const thermal = normalizeThermalDisplacement(atom);
       if (Number.isFinite(thermal.thermalSigmaA)) thermalSigmas.push(thermal.thermalSigmaA);
+      if (atom.uAnisoCartesianA2) {
+        const eigen = symmetricTensorEigenSystem(atom.uAnisoCartesianA2);
+        anisotropicDisplacementSites++;
+        thermalAxisSigmas.push(...eigen.sigmaAxesA);
+      }
     } catch (error) {
       errors.push(`Atom ${index + 1}: ${error.message}`);
     }
@@ -452,7 +600,8 @@ export function validateStructure(structure, options = {}) {
   if (mixedOccupancySites) warnings.push(`${mixedOccupancySites} mixed-occupancy crystallographic site${mixedOccupancySites === 1 ? "" : "s"} preserved as occupational alternatives`);
   if (partialOccupancySites) warnings.push(`${partialOccupancySites} partially occupied site${partialOccupancySites === 1 ? "" : "s"} preserve explicit vacancy fractions`);
   if (inferredOccupancySites) warnings.push(`${inferredOccupancySites} composite species label${inferredOccupancySites === 1 ? "" : "s"} lacked explicit fractions; equal alternatives were retained and marked inferred`);
-  if (thermalSigmas.length) warnings.push(`${thermalSigmas.length} site${thermalSigmas.length === 1 ? "" : "s"} preserve isotropic positional uncertainty from Uiso/Biso`);
+  if (thermalSigmas.length) warnings.push(`${thermalSigmas.length} site${thermalSigmas.length === 1 ? "" : "s"} preserve positional uncertainty from isotropic or equivalent U/B`);
+  if (anisotropicDisplacementSites) warnings.push(`${anisotropicDisplacementSites} site${anisotropicDisplacementSites === 1 ? "" : "s"} preserve full Cartesian anisotropic displacement tensors`);
   let minimumDistance = Infinity;
   let duplicatePairs = 0;
   const nearest = [];
@@ -484,6 +633,8 @@ export function validateStructure(structure, options = {}) {
     mixedOccupancySites, partialOccupancySites, inferredOccupancySites, vacancyFraction,
     thermalDisplacementSites: thermalSigmas.length, medianThermalSigmaA,
     maximumThermalSigmaA: thermalSigmas.at(-1) || 0,
+    anisotropicDisplacementSites,
+    maximumThermalAxisSigmaA: Math.max(0, ...thermalAxisSigmas),
     minimumDistance: Number.isFinite(minimumDistance) ? minimumDistance : null,
     medianNearestDistance, cellVolume: structure?.cell ? Math.abs(determinant(structure.cell)) : null,
   };

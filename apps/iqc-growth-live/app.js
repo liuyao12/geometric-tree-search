@@ -6,7 +6,7 @@ import {
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
   validateStructure,
-} from "./structure-io.js?v=20260824-2";
+} from "./structure-io.js?v=20260824-3";
 import { randomNomadStructure } from "./structure-database.js?v=20260824-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
@@ -679,7 +679,7 @@ function importSummary(structure, validation) {
     ? ` · ${validation.mixedOccupancySites} mixed / ${validation.partialOccupancySites} partial sites`
     : "";
   const thermal = validation.thermalDisplacementSites
-    ? ` · Uiso/Biso ${validation.thermalDisplacementSites} sites · σ̃ ${validation.medianThermalSigmaA.toFixed(3)} Å`
+    ? ` · U/B ${validation.thermalDisplacementSites} sites${validation.anisotropicDisplacementSites ? ` · ${validation.anisotropicDisplacementSites} anisotropic` : ""} · σ̃ ${validation.medianThermalSigmaA.toFixed(3)} Å`
     : "";
   return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
@@ -1635,6 +1635,9 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
         occupancy: atom.occupancyTotal ?? atom.occupancy ?? 1,
         uIsoA2: atom.uIsoA2 ?? null,
         thermalSigmaA: atom.thermalSigmaA ?? null,
+        uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null,
+        thermalSigmaAxesA: atom.thermalSigmaAxesA?.slice() || null,
+        thermalAxesCartesian: atom.thermalAxesCartesian?.map((axis) => axis.slice()) || null,
         family: "imported", sourceIndex,
       };
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
@@ -3576,7 +3579,8 @@ async function receiptSha256(text) {
 async function structureDigest(source, coordinateSpace) {
   const records = source.map((atom) => {
     const point = coordinateSpace === "angstrom" && atom.pA ? atom.pA : atom.p;
-    return [atom.species, receiptRound(atom.occupancy ?? 1), receiptRound(atom.uIsoA2 ?? 0),
+    const tensor = atom.uAnisoCartesianA2?.flat().map((value) => receiptRound(value)) || null;
+    return [atom.species, receiptRound(atom.occupancy ?? 1), receiptRound(atom.uIsoA2 ?? 0), tensor,
       ...point.toArray().map((value) => receiptRound(value))];
   }).sort((first, second) => JSON.stringify(first).localeCompare(JSON.stringify(second)));
   return receiptSha256(JSON.stringify(records));
@@ -3652,7 +3656,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-35",
+      buildId: "20260824-36",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3676,7 +3680,7 @@ async function buildExperimentReceipt() {
       } : null,
       structureSha256: await structureDigest(referenceAtoms, "angstrom"),
       coordinatesEmbedded: false,
-      coordinateDigestSpace: "Cartesian Å + occupancy token + isotropic U in Å²; order-independent serialization",
+      coordinateDigestSpace: "Cartesian Å + occupancy token + isotropic U / optional Cartesian Uij in Å²; order-independent serialization",
       periodicBoundary: currentPbc(),
       cellAngstrom: cell?.map((vector) => vector.toArray().map((value) => receiptRound(value))) || null,
       sourceReference: scenarioSelect.value === "imported" ? {
@@ -3699,10 +3703,12 @@ async function buildExperimentReceipt() {
       metricIsometryToleranceFractionOfNearestNeighbor: receiptRound(effectiveClusterMetricTolerance()),
       metricIsometryToleranceAngstrom: receiptRound(clusterMetricToleranceAngstrom()),
       positionalUncertainty: {
-        source: importedStructure?.validation?.thermalDisplacementSites ? "CIF/JSON Uiso or Biso" : "not supplied",
+        source: importedStructure?.validation?.thermalDisplacementSites ? "CIF/JSON isotropic or anisotropic U/B" : "not supplied",
         isotropicSites: importedStructure?.validation?.thermalDisplacementSites || 0,
+        anisotropicTensorSites: importedStructure?.validation?.anisotropicDisplacementSites || 0,
         medianOneAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.medianThermalSigmaA || 0),
         maximumOneAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.maximumThermalSigmaA || 0),
+        maximumPrincipalAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.maximumThermalAxisSigmaA || 0),
         pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom()),
         usedAsPotentialOrDynamics: false,
       },
@@ -6021,11 +6027,17 @@ function rebuildWorld() {
     thermalSites.forEach((atom, index) => {
       dummy.position.copy(atom.p);
       const atomRadius = sphereGeometry.parameters.radius * elementScale(atom.species);
-      const twoSigmaRadius = 2 * atom.thermalSigmaA * referenceSpacing / referenceSpacingA;
-      dummy.scale.setScalar(Math.max(atomRadius * 1.08, twoSigmaRadius) / sphereGeometry.parameters.radius);
+      const sigmaAxes = atom.thermalSigmaAxesA || [atom.thermalSigmaA, atom.thermalSigmaA, atom.thermalSigmaA];
+      const axes = atom.thermalAxesCartesian || [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+      dummy.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(
+        new THREE.Vector3(...axes[0]), new THREE.Vector3(...axes[1]), new THREE.Vector3(...axes[2])));
+      const scaleAxes = sigmaAxes.map((sigma) => (atomRadius * 1.04
+        + 2 * sigma * referenceSpacing / referenceSpacingA) / sphereGeometry.parameters.radius);
+      dummy.scale.set(...scaleAxes);
       dummy.updateMatrix();
       envelopes.setMatrixAt(index, dummy.matrix);
     });
+    dummy.rotation.set(0, 0, 0);
     envelopes.instanceMatrix.needsUpdate = true;
     atomGroup.add(envelopes);
   }
@@ -6482,7 +6494,7 @@ function renderLegend() {
       const row = document.createElement("span");
       const swatch = document.createElement("i");
       swatch.className = "thermal-envelope-swatch";
-      row.append(swatch, document.createTextNode(`2σ Uiso/Biso envelope · median σ ${importedStructure.validation.medianThermalSigmaA.toFixed(3)} Å`));
+      row.append(swatch, document.createTextNode(`2σ U/B displacement halo · ${importedStructure.validation.anisotropicDisplacementSites || 0} anisotropic · median σ ${importedStructure.validation.medianThermalSigmaA.toFixed(3)} Å`));
       speciesLegend.appendChild(row);
     }
     const proposal = document.createElement("span");

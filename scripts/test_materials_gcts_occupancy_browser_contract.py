@@ -18,6 +18,10 @@ def test_lossless_occupancy_contract_is_wired_through_browser_pipeline():
     assert "thermalEnvelopeMaterial" in APP
     assert "thermalSigmaA" in IO
     assert "8 * Math.PI * Math.PI" in IO
+    assert "_atom_site_aniso_u_11" in IO
+    assert "transformCartesianTensor" in IO
+    assert "symmetricTensorEigenSystem" in IO
+    assert "uAnisoCartesianA2" in APP
 
 
 if __name__ == "__main__":

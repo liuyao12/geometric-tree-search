@@ -5,6 +5,7 @@ import {
   occupancyDisplayLabel,
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
+  symmetricTensorEigenSystem,
   validateStructure,
 } from "../apps/iqc-growth-live/structure-io.js";
 
@@ -68,20 +69,91 @@ assert.deepEqual(disorderValidation.elementCounts, { Ta: .6, V: .4, O: 1 });
 assert.equal(disorderValidation.vacancyFraction, 1);
 assert.equal(disorderValidation.thermalDisplacementSites, 3);
 assert.ok(Math.abs(mixed.uIsoA2 - .014) < 1e-12, "co-located alternatives use occupancy-weighted Uiso");
-assert.ok(Math.abs(partial.uIsoA2 - .01) < 2e-8, "Biso converts to Uiso through B=8π²U");
-assert.ok(Math.abs(disorderValidation.medianThermalSigmaA - .1) < 1e-7);
+assert.ok(Math.abs(partial.uIsoA2 - .0175) < 1e-12, "anisotropic Ueq is trace(U)/3");
+assert.deepEqual(partial.thermalSigmaAxesA.map((value) => Number(value.toFixed(8))), [.2, .1, .05]);
+assert.equal(disorderValidation.anisotropicDisplacementSites, 2);
+assert.ok(Math.abs(disorderValidation.maximumThermalAxisSigmaA - .2) < 1e-12);
+assert.ok(Math.abs(disorderValidation.medianThermalSigmaA - Math.sqrt(.0175)) < 1e-12);
 assert.ok(Math.abs(isotropicPairDistanceUncertaintyA(.1) - Math.sqrt(.02)) < 1e-12);
 assert.throws(() => isotropicPairDistanceUncertaintyA(-.1), /nonnegative/);
+const rotatedTensor = symmetricTensorEigenSystem([[.025, .015, 0], [.015, .025, 0], [0, 0, .01]]);
+assert.deepEqual(rotatedTensor.eigenvaluesA2.map((value) => Number(value.toFixed(8))), [.04, .01, .01]);
+assert.throws(() => symmetricTensorEigenSystem([[.01, .02, 0], [.02, .01, 0], [0, 0, .01]]), /positive semidefinite/);
+
+const rotatedAnisoCif = `data_rotated_aniso
+_cell_length_a 5
+_cell_length_b 5
+_cell_length_c 5
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 90
+loop_
+_space_group_symop_operation_xyz
+'x,y,z'
+'-y,x,z'
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+C1 C .2 .1 .3
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+C1 .04 .01 .0025 0 0 0
+`;
+const rotatedAniso = parseStructureText(rotatedAnisoCif, "rotated-aniso.cif");
+assert.equal(rotatedAniso.atoms.length, 2);
+assert.deepEqual(rotatedAniso.atoms[0].thermalSigmaAxesA.map((value) => Number(value.toFixed(8))), [.2, .1, .05]);
+assert.ok(Math.abs(rotatedAniso.atoms[1].uAnisoCartesianA2[0][0] - .01) < 1e-12);
+assert.ok(Math.abs(rotatedAniso.atoms[1].uAnisoCartesianA2[1][1] - .04) < 1e-12);
+
+const hexAnisoCif = `data_hex_aniso
+_cell_length_a 5
+_cell_length_b 5
+_cell_length_c 6
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 120
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+C1 C .2 .1 .3
+loop_
+_atom_site_aniso_label
+_atom_site_aniso_U_11
+_atom_site_aniso_U_22
+_atom_site_aniso_U_33
+_atom_site_aniso_U_12
+_atom_site_aniso_U_13
+_atom_site_aniso_U_23
+C1 .01 .01 .01 .005 0 0
+`;
+const hexAniso = parseStructureText(hexAnisoCif, "hex-aniso.cif");
+const hexTensor = hexAniso.atoms[0].uAnisoCartesianA2;
+assert.ok(Math.abs(hexTensor[0][0] - .01) < 1e-12 && Math.abs(hexTensor[1][1] - .01) < 1e-12);
+assert.ok(Math.abs(hexTensor[0][1]) < 1e-12, "cell-metric conversion must make the hexagonal tensor Cartesian-isotropic");
 
 const composite = parseStructureText(JSON.stringify({ atoms: [
   { species: "Ta/V", position: [0, 0, 0] },
   { species: "O", occupancy: { O: .75 }, position: [2, 0, 0] },
   { species: "O1A", position: [0, 2, 0] },
+  { species: "C", position: [2, 2, 0], bIsoA2: .789568 },
 ] }), "occupancy.json");
 assert.equal(occupancyChemistryToken(composite.atoms[0]), "occ[Ta=0.5;V=0.5]");
 assert.equal(composite.atoms[0].occupancyFractionsInferred, true);
 assert.equal(occupancyChemistryToken(composite.atoms[1]), "occ[O=0.75;Vac=0.25]");
 assert.equal(occupancyChemistryToken(composite.atoms[2]), "O", "ordinary CIF-style atom labels must not invent an A alternative");
+assert.ok(Math.abs(composite.atoms[3].uIsoA2 - .01) < 2e-8, "Biso converts to Uiso through B=8π²U");
 assert.throws(() => parseStructureText(JSON.stringify({ atoms: [
   { species: "O", position: [0, 0, 0], uIsoA2: -.01 },
 ] }), "negative-u.json"), /must be nonnegative/);
