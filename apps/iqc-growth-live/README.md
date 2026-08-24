@@ -349,8 +349,12 @@ The browser's strict colored complete-metric gallery shows every class in the
 observed periodic window: `1 / 3 / 33` H2O / bridge / O6-boundary classes for
 Ih and `1 / 2 / 39` for Ic. GCTS marking deliberately compresses those cards
 back to three connection families (molecule, bridge, ring boundary), so proton
-decoration does not become dozens of arbitrary channels. The complementary
-generic headless gate finds one transferable six-member void family. Its underlying
+decoration does not become dozens of arbitrary channels. The gallery toolbar
+filters those families without merging or renumbering the
+underlying isometry classes. Every card reports its colored support size,
+occurrence multiplicity, observed proper-pose count, connection-port rank, and
+cover role. The complementary generic headless gate finds one transferable
+six-member void family. Its underlying
 tree actions reconstruct 216/216 and 192/192 sites in six visible commuting
 waves with zero backtracking. The narrower directional hydrogen-bond cover is
 retained as a visualization/control ablation. The executable regressions are

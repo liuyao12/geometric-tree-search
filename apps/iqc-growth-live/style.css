@@ -347,12 +347,16 @@ body.atlas-open { overflow: hidden; }
 .viewport canvas { display: block; width: 100%; height: 100%; }
 .cluster-gallery { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); align-content: start; gap: 8px; padding: 49px 13px 43px; overflow: auto; background: radial-gradient(circle at 50% 48%, rgba(25,68,61,.34), transparent 45%), #061012; }
 .cluster-gallery[hidden] { display: none; }
-.cluster-card { position: relative; min-height: 176px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); }
-.cluster-card canvas { width: 100%; height: 142px; }
+.cluster-gallery-toolbar { position: sticky; z-index: 4; top: 0; grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 16px; align-items: center; min-height: 52px; padding: 8px 10px; border: 1px solid rgba(101,225,188,.26); background: rgba(5,16,18,.94); backdrop-filter: blur(12px); }
+.cluster-family-filters { display: flex; flex-wrap: wrap; gap: 5px; }.cluster-family-filters button { display: flex; gap: 8px; align-items: center; min-height: 30px; padding: 0 9px; border: 1px solid var(--line); background: rgba(255,255,255,.018); color: #819791; font: 7px var(--mono); cursor: pointer; }.cluster-family-filters button:hover,.cluster-family-filters button.active { border-color: var(--mint); background: rgba(101,225,188,.08); color: var(--mint); }.cluster-family-filters button b { font-weight: 400; color: #dbe6e2; }.cluster-gallery-toolbar p { margin: 0; color: var(--faint); font: 7px/1.45 var(--mono); text-align: right; }
+.cluster-card { position: relative; min-height: 194px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); }
+.cluster-card[hidden] { display: none; }
+.cluster-card canvas { width: 100%; height: 146px; }
 .cluster-card-label { position: absolute; left: 9px; right: 9px; bottom: 7px; display: grid; grid-template-columns: auto 1fr; gap: 2px 9px; color: #aabbb6; font: 7px var(--mono); pointer-events: none; }
 .cluster-card-label b { color: var(--mint); font-weight: 400; }
 .cluster-card-label em { justify-self: end; color: #7f9e96; font-style: normal; }
 .cluster-card-label span { grid-column: 1 / -1; line-height: 1.35; }
+.cluster-card-label small { grid-column: 1 / -1; color: #617a73; font: 6px/1.35 var(--mono); text-transform: uppercase; }
 .cluster-card.residual { border-color: rgba(255,109,113,.4); }
 .cluster-card.residual .cluster-card-label b { color: var(--red); }
 .cluster-card.gap { border-color: rgba(255,193,105,.36); }
@@ -579,6 +583,9 @@ body.atlas-open { overflow: hidden; }
   .stage-heading { height: 48px; }
   .stage-heading h1 { font-size: 17px; }
   .viewport { height: 450px; min-height: 380px; }
+  .cluster-gallery-toolbar { position: relative; align-items: stretch; flex-direction: column; gap: 7px; }
+  .cluster-gallery-toolbar p { text-align: left; }
+  .cluster-family-filters button { flex: 1 1 calc(50% - 5px); justify-content: space-between; }
   .top-right { display: none; }
   .metrics-strip { grid-template-columns: 1fr 1fr; gap: 12px 0; }
   .metrics-strip article:nth-child(2) { border-right: 0; }

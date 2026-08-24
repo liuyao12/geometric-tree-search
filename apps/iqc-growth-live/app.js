@@ -1937,11 +1937,77 @@ function galleryPoseCount(cluster) {
   return representatives.length;
 }
 
+function clusterGalleryFamily(cluster) {
+  if (cluster.residual) return "residual";
+  if (cluster.visualKind === "molecule") return "molecule";
+  if (cluster.visualKind === "bridge") return "bridge";
+  if (cluster.visualKind === "ring" || cluster.gap) return "gap";
+  return "support";
+}
+
+function clusterCoverRole(cluster) {
+  return {
+    molecule: "molecular atom cover",
+    bridge: "connection polyhedron",
+    gap: "void / gap boundary",
+    residual: "explicit residual terminal",
+    support: "recurring colored support",
+  }[clusterGalleryFamily(cluster)];
+}
+
+function buildMolecularGalleryToolbar(types) {
+  const toolbar = document.createElement("div");
+  toolbar.className = "cluster-gallery-toolbar";
+  const controls = document.createElement("div");
+  controls.className = "cluster-family-filters";
+  controls.setAttribute("role", "group");
+  controls.setAttribute("aria-label", "Filter molecular cluster isometry classes");
+  const status = document.createElement("p");
+  const filters = [
+    ["all", "All exact classes"],
+    ["molecule", "H₂O molecules"],
+    ["bridge", "Bridge polyhedra"],
+    ["gap", "Gap boundaries"],
+  ];
+  filters.forEach(([family, label], index) => {
+    const count = family === "all" ? types.length
+      : types.filter((cluster) => clusterGalleryFamily(cluster) === family).length;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.clusterFamilyFilter = family;
+    button.classList.toggle("active", index === 0);
+    button.setAttribute("aria-pressed", String(index === 0));
+    button.innerHTML = `<span>${label}</span><b>${count}</b>`;
+    button.addEventListener("click", () => {
+      controls.querySelectorAll("button").forEach((candidate) => {
+        const active = candidate === button;
+        candidate.classList.toggle("active", active);
+        candidate.setAttribute("aria-pressed", String(active));
+      });
+      let visible = 0;
+      clusterGallery.querySelectorAll(".cluster-card").forEach((card) => {
+        const show = family === "all" || card.dataset.clusterFamily === family;
+        card.hidden = !show;
+        visible += Number(show);
+      });
+      status.textContent = `Showing ${visible} / ${types.length} colored complete-metric isometry classes · no classes merged`;
+    });
+    controls.append(button);
+  });
+  status.textContent = `Showing ${types.length} / ${types.length} colored complete-metric isometry classes · no classes merged`;
+  toolbar.append(controls, status);
+  return toolbar;
+}
+
 function rebuildClusterGallery() {
   clusterGallery.replaceChildren();
-  clusterGalleryTypes().forEach((cluster, galleryIndex) => {
+  const types = clusterGalleryTypes();
+  if (learnedCover.molecular) clusterGallery.append(buildMolecularGalleryToolbar(types));
+  types.forEach((cluster, galleryIndex) => {
     const card = document.createElement("article");
     card.className = `cluster-card${cluster.residual ? " residual" : ""}${cluster.gap ? " gap" : ""}`;
+    card.dataset.clusterFamily = clusterGalleryFamily(cluster);
+    if (cluster.classSignature) card.dataset.isometrySignature = cluster.classSignature;
     const canvas = document.createElement("canvas");
     canvas.width = 280;
     canvas.height = 224;
@@ -1962,7 +2028,9 @@ function rebuildClusterGallery() {
       : `${poses || "—"} required pose${poses === 1 ? "" : "s"} × ${ports} port role${ports === 1 ? "" : "s"} · rank ${coupledRank} → ${channels}ch`;
     const classStatus = Number.isInteger(cluster.classIndex)
       ? `isometry ${cluster.classIndex + 1}/${cluster.classCount} · ` : "";
-    label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${classStatus}${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span>`;
+    const supportSites = cluster.customSupport?.length
+      || learnedCover.placements.find((placement) => placement.type === cluster.type)?.support.length || 1;
+    label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${classStatus}${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span><small>${supportSites} colored site${supportSites === 1 ? "" : "s"} · ${clusterCoverRole(cluster)}</small>`;
     card.append(canvas, label);
     clusterGallery.append(card);
   });

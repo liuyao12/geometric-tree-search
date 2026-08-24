@@ -29,6 +29,15 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "overlapGrammar.reconstructionByOccurrence.forEach" in source
     assert "function coloredPeriodicSupportSignature(source, support)" in source
     assert "function molecularIsometryGallery(source, families, familyTypes)" in source
+    assert "function buildMolecularGalleryToolbar(types)" in source
+    assert '["molecule", "H₂O molecules"]' in source
+    assert '["bridge", "Bridge polyhedra"]' in source
+    assert '["gap", "Gap boundaries"]' in source
+    assert "no classes merged" in source
+    assert "card.dataset.clusterFamily = clusterGalleryFamily(cluster)" in source
+    assert "card.dataset.isometrySignature = cluster.classSignature" in source
+    assert "supportSites" in source
+    assert "clusterCoverRole(cluster)" in source
     assert "galleryTypes.filter((type) => type.familyType === 0).length" in source
     assert "galleryTypes.filter((type) => type.familyType === 1).length" in source
     assert "galleryTypes.filter((type) => type.familyType === 2).length" in source
