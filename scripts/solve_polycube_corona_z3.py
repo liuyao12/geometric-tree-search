@@ -149,6 +149,7 @@ def main():
     parser.add_argument("--placement-cube-cell")
     parser.add_argument("--placement-cube-parts", type=int)
     parser.add_argument("--placement-cube-index", type=int)
+    parser.add_argument("--required-placement-report")
     parser.add_argument("--require-next-layer-coverability", action="store_true")
     parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
@@ -159,9 +160,16 @@ def main():
     parser.add_argument("--triple-encoding", choices=("dnf", "choice-cnf"), default="choice-cnf")
     parser.add_argument("--pair-encoding", choices=("dnf", "choice-cnf", "witness-cnf"), default="dnf")
     parser.add_argument("--lookahead-conflict-encoding", choices=("edge-cnf", "grouped-pb"), default="edge-cnf")
+    parser.add_argument("--exact-availability", action="store_true")
+    parser.add_argument("--propagate-values", action="store_true")
     parser.add_argument("--root-symmetry-breaking", action="store_true")
     parser.add_argument("--forbidden-clause-report")
     parser.add_argument("--formula-cache")
+    parser.add_argument(
+        "--formula-cache-scope",
+        choices=("feedback", "next-ring-universe"),
+        default="feedback",
+    )
     parser.add_argument("--interactive-jsonl", action="store_true")
     parser.add_argument("--interactive-replace-pairs", action="store_true")
     parser.add_argument("--output")
@@ -200,6 +208,8 @@ def main():
         parser.error("pair soft constraint and orbit minimums are mutually exclusive")
     if args.pb_solver != "solver" and args.backend != "pb2bv-sat":
         parser.error("--pb-solver variants require --backend=pb2bv-sat")
+    if args.formula_cache_scope == "next-ring-universe" and not args.formula_cache:
+        parser.error("--formula-cache-scope=next-ring-universe requires --formula-cache")
     if ((args.pair_soft_minimum is not None or args.pair_soft_orbit_minimum is not None)
             and not args.pair_coverability_report):
         parser.error("pair soft minimums require --pair-coverability-report")
@@ -217,6 +227,29 @@ def main():
         ";".join(sorted(",".join(str(value) for value in cell) for cell in placement)): index
         for index, placement in enumerate(placements)
     }
+    placement_key_by_index = [None] * len(placements)
+    for key, index in placement_index_by_key.items():
+        placement_key_by_index[index] = key
+    required_placement_keys = []
+    required_placement_indices = []
+    required_placement_cells = set()
+    if args.required_placement_report:
+        required_report = json.loads(Path(args.required_placement_report).read_text(encoding="utf-8"))
+        required_placement_keys = (
+            required_report.get("placement_keys", required_report.get("placements", []))
+            if isinstance(required_report, dict)
+            else required_report
+        )
+        if not isinstance(required_placement_keys, list) or not required_placement_keys:
+            raise ValueError("Required placement report must contain a nonempty placement_keys list")
+        required_placement_keys = sorted(set(str(key) for key in required_placement_keys))
+        for key in required_placement_keys:
+            try:
+                index = placement_index_by_key[key]
+            except KeyError as error:
+                raise ValueError(f"Required placement report contains an unknown placement: {key}") from error
+            required_placement_indices.append(index)
+            required_placement_cells.update(placements[index])
     cell_coverability = []
     if args.cell_coverability_report:
         cell_report = json.loads(Path(args.cell_coverability_report).read_text(encoding="utf-8"))
@@ -242,28 +275,38 @@ def main():
         pair_report_keys.add(canonical_pair_key(tuple(parse_cell_key(cell) for cell in pair)))
     cache_path = Path(args.formula_cache) if args.formula_cache else None
     cache_metadata_path = Path(f"{args.formula_cache}.json") if args.formula_cache else None
-    cache_signature = json.dumps({
-        "version": 4,
+    universe_formula_cache = args.formula_cache_scope == "next-ring-universe"
+    cache_signature_fields = {
+        "version": 5 if universe_formula_cache else 4,
         "key": args.key,
         "layer": args.layer,
         "min_placements": args.min_placements,
         "max_placements": args.max_placements,
-        "require_next_layer_coverability": args.require_next_layer_coverability,
-        "cell_coverability": cell_report_keys,
         "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
+        "exact_availability": args.exact_availability,
         "root_symmetry_breaking": args.root_symmetry_breaking,
-        "pair_encoding": args.pair_encoding,
-        "pair_soft_minimum": args.pair_soft_minimum,
-        "pair_soft_orbit_minimum": args.pair_soft_orbit_minimum,
-        "pair_soft_orbit_groups": pair_soft_orbit_groups,
-        "interactive_replace_pairs": args.interactive_replace_pairs,
-    }, sort_keys=True)
+    }
+    if universe_formula_cache:
+        cache_signature_fields["scope"] = args.formula_cache_scope
+    else:
+        cache_signature_fields.update({
+            "require_next_layer_coverability": args.require_next_layer_coverability,
+            "cell_coverability": cell_report_keys,
+            "pair_encoding": args.pair_encoding,
+            "pair_soft_minimum": args.pair_soft_minimum,
+            "pair_soft_orbit_minimum": args.pair_soft_orbit_minimum,
+            "pair_soft_orbit_groups": pair_soft_orbit_groups,
+            "interactive_replace_pairs": args.interactive_replace_pairs,
+        })
+    cache_signature = json.dumps(cache_signature_fields, sort_keys=True)
     cache_metadata = None
     if cache_path and cache_path.is_file() and cache_metadata_path.is_file():
         candidate_metadata = json.loads(cache_metadata_path.read_text(encoding="utf-8"))
         cached_pair_keys = set(candidate_metadata.get("pair_keys", ()))
         if (candidate_metadata.get("signature") == cache_signature
-                and (args.interactive_replace_pairs or cached_pair_keys.issubset(pair_report_keys))):
+                and (universe_formula_cache
+                     or args.interactive_replace_pairs
+                     or cached_pair_keys.issubset(pair_report_keys))):
             cache_metadata = candidate_metadata
     if args.backend == "qffpbv":
         solver = z3.Tactic("qffpbv").solver()
@@ -274,12 +317,20 @@ def main():
             "random_seed", args.random_seed,
             "pb.solver", args.pb_solver,
         )
-        solver = z3.Then("simplify", "pb-preprocess", pb_tactic, sat_tactic).solver()
+        preprocessing = [z3.Tactic("simplify")]
+        if args.propagate_values:
+            preprocessing.append(z3.Tactic("propagate-values"))
+        preprocessing.append(z3.Tactic("pb-preprocess"))
+        solver = z3.Then(*preprocessing, pb_tactic, sat_tactic).solver()
     else:
         solver = z3.Solver()
     solver.set(timeout=args.timeout_ms)
     formula_cache_hit = cache_metadata is not None
-    cached_pair_keys = set(cache_metadata.get("pair_keys", ())) if cache_metadata else set()
+    cached_pair_keys = (
+        set()
+        if universe_formula_cache
+        else set(cache_metadata.get("pair_keys", ())) if cache_metadata else set()
+    )
     formula_cache_load_ms = 0
     if formula_cache_hit:
         cache_load_started = time.perf_counter()
@@ -311,7 +362,12 @@ def main():
     if placement_cube_cell is not None:
         if placement_cube_cell not in target:
             parser.error("--placement-cube-cell must be a primary target cell")
-        placement_cube_candidates = sorted(by_cell.get(placement_cube_cell, ()))
+        if placement_cube_cell in required_placement_cells:
+            parser.error("--placement-cube-cell must not already be covered by a required placement")
+        placement_cube_candidates = sorted(
+            index for index in by_cell.get(placement_cube_cell, ())
+            if all(cell not in required_placement_cells for cell in placements[index])
+        )
         placement_cube_selected = placement_cube_candidates[args.placement_cube_index::args.placement_cube_parts]
         if not placement_cube_selected:
             parser.error("selected placement cube is empty")
@@ -372,7 +428,7 @@ def main():
     cell_coverability_count = 0
     formula_cache_write_ms = 0
     formula_cache_pairs_added = 0
-    if (args.interactive_jsonl or args.require_next_layer_coverability or cell_coverability or pair_coverability
+    if (universe_formula_cache or args.interactive_jsonl or args.require_next_layer_coverability or cell_coverability or pair_coverability
             or triple_coverability or quadruple_coverability):
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
@@ -430,10 +486,11 @@ def main():
             constrained_cells.update(triple)
         for quadruple in normalized_quadruples:
             constrained_cells.update(quadruple)
+        availability_cells = set(next_ring) if universe_formula_cache else constrained_cells
         next_by_cell = {}
         for index, placement in enumerate(next_placements):
             for cell in placement:
-                if cell in constrained_cells or (args.interactive_jsonl and cell in next_ring):
+                if cell in availability_cells or (args.interactive_jsonl and cell in next_ring):
                     next_by_cell.setdefault(cell, []).append(index)
         relevant_indices = sorted(set(itertools.chain.from_iterable(
             next_by_cell.get(cell, ()) for cell in constrained_cells
@@ -452,7 +509,7 @@ def main():
             conflict_sets[index] = frozenset(conflicts)
         retained_by_cell = {}
         retained_indices = set()
-        retained_cells = next_ring if args.interactive_jsonl else constrained_cells
+        retained_cells = next_ring if (universe_formula_cache or args.interactive_jsonl) else constrained_cells
         for cell in sorted(retained_cells):
             if pair_coverability or triple_coverability or quadruple_coverability or args.formula_cache:
                 retained = list(next_by_cell.get(cell, ()))
@@ -466,7 +523,7 @@ def main():
                     if not any(other < conflicts for other, _ in unique)
                 ]
             retained_by_cell[cell] = retained
-            if cell in constrained_cells:
+            if cell in availability_cells:
                 retained_indices.update(retained)
         availability = {}
 
@@ -495,13 +552,37 @@ def main():
                     for index in grouped_indices:
                         if not formula_cache_hit:
                             solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+            if args.exact_availability and not formula_cache_hit:
+                for index in new_indices:
+                    solver.add(z3.Or(
+                        availability[index],
+                        *[variables[conflict] for conflict in sorted(conflict_sets[index])]
+                    ))
             return new_indices
 
         ensure_availability(retained_indices)
+        if universe_formula_cache and cache_path and not formula_cache_hit:
+            cache_write_started = time.perf_counter()
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_temporary = Path(f"{cache_path}.tmp")
+            metadata_temporary = Path(f"{cache_metadata_path}.tmp")
+            cache_temporary.write_text(solver.sexpr(), encoding="utf-8")
+            cache_temporary.replace(cache_path)
+            metadata_temporary.write_text(json.dumps({
+                "signature": cache_signature,
+                "pair_keys": [],
+                "pair_stats": {
+                    "terms": 0,
+                    "choice_variables": 0,
+                    "incompatibilities": 0,
+                },
+            }, indent=2) + "\n", encoding="utf-8")
+            metadata_temporary.replace(cache_metadata_path)
+            formula_cache_write_ms = round((time.perf_counter() - cache_write_started) * 1000)
         coverability_cells = set(next_ring) if args.require_next_layer_coverability else normalized_cells
         for cell in sorted(coverability_cells):
             candidates = [availability[index] for index in retained_by_cell.get(cell, ())]
-            if not formula_cache_hit:
+            if universe_formula_cache or not formula_cache_hit:
                 solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
         placement_cell_sets = {
             index: frozenset(next_placements[index]) for index in potential_indices
@@ -612,7 +693,7 @@ def main():
             solver.add(z3.PbGe([
                 (variable, 1) for variable in pair_soft_orbit_variables
             ], args.pair_soft_orbit_minimum))
-        if cache_path and (not formula_cache_hit or formula_cache_pairs_added):
+        if not universe_formula_cache and cache_path and (not formula_cache_hit or formula_cache_pairs_added):
             cache_write_started = time.perf_counter()
             cache_path.parent.mkdir(parents=True, exist_ok=True)
             cache_temporary = Path(f"{cache_path}.tmp")
@@ -723,6 +804,8 @@ def main():
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
 
     placement_cube_base_formula_sha256 = None
+    for index in required_placement_indices:
+        solver.add(variables[index])
     if placement_cube_selected:
         # Hash and cache only the common formula. The branch-local assumption
         # comes last so independent leaves can be compared and safely united.
@@ -1005,7 +1088,11 @@ def main():
         "placement_cube_index": args.placement_cube_index,
         "placement_cube_candidates": len(placement_cube_candidates),
         "placement_cube_selected_candidates": len(placement_cube_selected),
+        "placement_cube_selected_keys": [
+            placement_key_by_index[index] for index in placement_cube_selected
+        ],
         "placement_cube_base_formula_sha256": placement_cube_base_formula_sha256,
+        "required_placements": len(required_placement_keys),
         "require_next_layer_coverability": args.require_next_layer_coverability,
         "cell_coverability_constraints": cell_coverability_count,
         "lookahead_target_cells": lookahead_target_count,
@@ -1013,6 +1100,8 @@ def main():
         "lookahead_placements": lookahead_placement_count,
         "lookahead_conflicts": lookahead_conflict_count,
         "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
+        "exact_availability": args.exact_availability,
+        "propagate_values": args.propagate_values,
         "lookahead_conflict_groups": lookahead_conflict_group_count,
         "pair_coverability_constraints": pair_coverability_count,
         "pair_soft_minimum": args.pair_soft_minimum,
@@ -1049,6 +1138,7 @@ def main():
         "batch_terminal_status": batch_terminal_status,
         "batch_reason_unknown": batch_reason_unknown,
         "formula_cache": str(cache_path) if cache_path else None,
+        "formula_cache_scope": args.formula_cache_scope,
         "formula_cache_hit": formula_cache_hit,
         "formula_cache_pairs_reused": len(cached_pair_keys),
         "formula_cache_pairs_added": formula_cache_pairs_added,

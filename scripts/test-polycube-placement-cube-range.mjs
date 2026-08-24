@@ -2,10 +2,12 @@
 
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
+import { enumeratePolycubeCoronaPlacements } from "../assets/polycube-corona-search.js";
 import {
   initialPlacementCubeBranches,
   placementCubeOrdinals,
@@ -198,6 +200,36 @@ try {
   assert.equal(refinedResumeSummary.launched_branches, 0);
   assert.equal(refinedResumeSummary.resumed_branches, 3);
 
+  const requiredPlacementPath = join(directory, "required-placement.json");
+  const candidate = POLYCUBE_GCTS_CANDIDATES.find(entry => entry.id === "p9-42947");
+  writeFileSync(requiredPlacementPath, `${JSON.stringify({
+    placement_keys: [enumeratePolycubeCoronaPlacements(candidate.voxels, 1)[0].key]
+  })}\n`);
+  const requiredDirectory = join(directory, "required-placement-range");
+  const requiredSummaryPath = join(requiredDirectory, "summary.json");
+  const requiredArguments = commonArguments.map(argument => {
+    if (argument.startsWith("--output-dir=")) return `--output-dir=${requiredDirectory}`;
+    if (argument.startsWith("--report-output=")) return `--report-output=${requiredSummaryPath}`;
+    return argument;
+  });
+  requiredArguments.push(`--required-placement-report=${requiredPlacementPath}`);
+  const required = spawnSync(process.execPath, requiredArguments, {
+    encoding: "utf8",
+    timeout: 60_000,
+    maxBuffer: 8 * 1024 * 1024
+  });
+  assert.equal(required.status, 0, required.stderr);
+  const requiredSummary = JSON.parse(readFileSync(requiredSummaryPath, "utf8"));
+  assert.equal(requiredSummary.classification, "placement_cube_range_exhausted");
+  assert.equal(
+    JSON.parse(readFileSync(requiredSummary.run_configuration, "utf8")).required_placement_report,
+    requiredPlacementPath
+  );
+  assert.equal(
+    JSON.parse(readFileSync(requiredSummary.counts[0].exhausted_branch_reports[0], "utf8")).required_placements,
+    1
+  );
+
   const refinedConfigurationMismatch = spawnSync(
     process.execPath,
     refinedArguments.filter(argument => argument !== "--pre-refine-indices=0"),
@@ -221,6 +253,9 @@ try {
   assert.equal(cegar.status, 0, cegar.stderr);
   const cegarSummary = JSON.parse(readFileSync(cegarSummaryPath, "utf8"));
   assert.equal(cegarSummary.classification, "placement_cube_range_exhausted");
+  assert.equal(cegarSummary.formula_cache_scope, "next-ring-universe");
+  assert.equal(cegarSummary.exact_availability, false);
+  assert.equal(cegarSummary.propagate_values, true);
   assert.equal(cegarSummary.rounds.length, 1);
   assert.equal(cegarSummary.initial_clause_constraints, 0);
   assert.equal(cegarSummary.final_clause_constraints, 0);

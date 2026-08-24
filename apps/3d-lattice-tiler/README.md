@@ -1012,6 +1012,18 @@ benchmark rather than a classification. The hash-locked archive is checked by:
 node scripts/verify-polycube-placement-cube-cegar-screen.mjs
 ```
 
+Fixed-value propagation before PB bit-blasting (`--propagate-values`) now
+revisits the six singleton leaves exposed by the longer partial run. Five become
+exact UNSAT; the sixth yields a new 41-copy radius-three patch after the same
+leaf had timed out under every earlier PB encoding. Exact radius-four GCTS
+rejects that patch in two nodes and supplies 13 new clauses. Independent replay
+verifies all 58 combined clauses with no failures. Required-placement reports
+then support genuinely nested placement cubes: after filtering geometrically
+incompatible candidates, 18 exact subleaves close and the entire count-41
+residue is localized to one path with four fixed placements. That path remains
+open, so count 41 is still unresolved. The reproducible archive is
+`data/polycube-p10-054782-propagate-values-nested-screen-2026-08-24.json`.
+
 The first production interactive chain keeps three retained solvers through
 nine exact proposals at seeds 303–305. All nine checks return SAT without a
 timeout: three states have pair defects and six clear every pair obligation

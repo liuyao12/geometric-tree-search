@@ -722,6 +722,7 @@ const records = [
       corona_report: "data/polycube-volume10-gcts-continuation-radius4-2026-08-21.json",
       corona_cell_cegar_report: "data/polycube-p10-054782-lazy-cell-cegar-2026-08-22.json",
       corona_placement_cube_cegar_report: "data/polycube-p10-054782-placement-cube-cegar-screen-2026-08-23.json",
+      corona_propagate_values_nested_report: "data/polycube-p10-054782-propagate-values-nested-screen-2026-08-24.json",
       corona_completed_radius: 3, corona_completed_nodes: 2037, corona_completed_target_cells: 191,
       corona_completed_placements: 9694, corona_completed_verified: true,
       corona_next_radius: 4, corona_next_status: "time_limit", corona_next_portfolio_runs: 4,
@@ -747,7 +748,18 @@ const records = [
       corona_placement_cube_cegar_final_cells: 47,
       corona_placement_cube_cegar_replayed_clauses: 45,
       corona_placement_cube_cegar_open_singletons: 3,
-      corona_placement_cube_cegar_exact41_exhausted: false
+      corona_placement_cube_cegar_exact41_exhausted: false,
+      corona_propagate_values_historical_singletons: 6,
+      corona_propagate_values_unsat_singletons: 5,
+      corona_propagate_values_new_proposals: 1,
+      corona_propagate_values_new_proposals_rejected: 1,
+      corona_propagate_values_continuation_nodes: 2,
+      corona_propagate_values_final_clauses: 58,
+      corona_propagate_values_replayed_clauses: 58,
+      corona_nested_partition_unsat_leaves: 18,
+      corona_nested_partition_open_leaves: 1,
+      corona_nested_partition_required_placements: 4,
+      corona_nested_partition_exact41_exhausted: false
     },
     shell_screening: { robust_completed_shell: 2, deepest_completed_shell: 2 }
   },

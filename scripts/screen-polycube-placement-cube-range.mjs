@@ -148,18 +148,27 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const backend = args.get("backend") ?? "pb2bv-sat";
   const pbSolver = args.get("pb-solver") ?? "solver";
   const lookaheadEncoding = args.get("lookahead-conflict-encoding") ?? "grouped-pb";
+  const exactAvailability = booleanArgument(args, "exact-availability", false);
+  const propagateValues = booleanArgument(args, "propagate-values", false);
   const python = args.get("python") ?? "python3";
   const outputDirectory = resolve(args.get("output-dir") ?? `runs/${id}-placement-cube-range`);
   const formulaCacheDirectoryArgument = args.get("formula-cache-dir") ?? null;
   const formulaCacheDirectory = formulaCacheDirectoryArgument
     ? resolve(formulaCacheDirectoryArgument)
     : outputDirectory;
+  const formulaCacheScope = args.get("formula-cache-scope") ?? "feedback";
+  if (!["feedback", "next-ring-universe"].includes(formulaCacheScope)) {
+    throw new Error("--formula-cache-scope must be feedback or next-ring-universe");
+  }
   const reportOutput = resolve(args.get("report-output") ?? `${outputDirectory}/summary.json`);
   const initialClauseReport = args.get("initial-clause-report")
     ? resolve(args.get("initial-clause-report"))
     : null;
   const initialCellReport = args.get("initial-cell-report")
     ? resolve(args.get("initial-cell-report"))
+    : null;
+  const requiredPlacementReport = args.get("required-placement-report")
+    ? resolve(args.get("required-placement-report"))
     : null;
   const resume = booleanArgument(args, "resume", true);
   const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
@@ -181,16 +190,21 @@ export async function main(arguments_ = process.argv.slice(2)) {
     backend,
     pb_solver: pbSolver,
     lookahead_conflict_encoding: lookaheadEncoding,
+    exact_availability: exactAvailability,
+    propagate_values: propagateValues,
     random_seed: randomSeed,
     initial_clause_report: initialClauseReport,
     initial_clause_report_sha256: fileSha256(initialClauseReport),
     initial_cell_report: initialCellReport,
-    initial_cell_report_sha256: fileSha256(initialCellReport)
+    initial_cell_report_sha256: fileSha256(initialCellReport),
+    required_placement_report: requiredPlacementReport,
+    required_placement_report_sha256: fileSha256(requiredPlacementReport)
   };
   if (preRefineIndices.length) runConfiguration.pre_refine_indices = preRefineIndices;
   if (maximumSameLeafRetries) runConfiguration.same_leaf_retries = maximumSameLeafRetries;
   if (openEndedMaximum) runConfiguration.open_ended_maximum = true;
   if (formulaCacheDirectoryArgument) runConfiguration.formula_cache_directory = formulaCacheDirectory;
+  if (formulaCacheScope !== "feedback") runConfiguration.formula_cache_scope = formulaCacheScope;
   const runConfigurationSha256 = sha256(JSON.stringify(runConfiguration));
   const runConfigurationPath = resolve(outputDirectory, "run-configuration.json");
   if (existsSync(runConfigurationPath)) {
@@ -248,11 +262,15 @@ export async function main(arguments_ = process.argv.slice(2)) {
           `--placement-cube-index=${branch.index}`,
           `--lookahead-conflict-encoding=${lookaheadEncoding}`,
           `--formula-cache=${cachePath}`,
+          `--formula-cache-scope=${formulaCacheScope}`,
           `--output=${branchPath}`
         ];
         if (!openEndedMaximum) solverArguments.push(`--max-placements=${count}`);
         if (initialClauseReport) solverArguments.push(`--forbidden-clause-report=${initialClauseReport}`);
         if (initialCellReport) solverArguments.push(`--cell-coverability-report=${initialCellReport}`);
+        if (requiredPlacementReport) solverArguments.push(`--required-placement-report=${requiredPlacementReport}`);
+        if (exactAvailability) solverArguments.push("--exact-availability");
+        if (propagateValues) solverArguments.push("--propagate-values");
         let solved;
         let branchProcessRetries = 0;
         while (true) {

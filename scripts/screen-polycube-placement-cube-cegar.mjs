@@ -63,6 +63,8 @@ const CEGAR_ARGUMENTS = new Set([
   "symmetry-clauses",
   "learn-cell-coverability",
   "formula-cache-dir",
+  "formula-cache-scope",
+  "propagate-values",
   "output-dir",
   "report-output",
   "initial-clause-report",
@@ -103,6 +105,11 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const formulaCacheDirectory = resolve(
     args.get("formula-cache-dir") ?? resolve(outputDirectory, "base-formulas")
   );
+  const formulaCacheScope = args.get("formula-cache-scope") ?? "next-ring-universe";
+  if (!["feedback", "next-ring-universe"].includes(formulaCacheScope)) {
+    throw new Error("--formula-cache-scope must be feedback or next-ring-universe");
+  }
+  const propagateValues = booleanArgument(args, "propagate-values", true);
   const verifier = fileURLToPath(new URL("./verify-polycube-corona-clause-report.mjs", import.meta.url));
   const nodeExecutable = process.execPath;
   mkdirSync(outputDirectory, { recursive: true });
@@ -158,6 +165,8 @@ export async function main(arguments_ = process.argv.slice(2)) {
       `--output-dir=${roundDirectory}`,
       `--report-output=${rangeReport}`,
       `--formula-cache-dir=${formulaCacheDirectory}`,
+      `--formula-cache-scope=${formulaCacheScope}`,
+      `--propagate-values=${propagateValues}`,
       `--initial-clause-report=${clauseReport}`,
       `--initial-cell-report=${cellReport}`
     ]);
@@ -316,6 +325,9 @@ export async function main(arguments_ = process.argv.slice(2)) {
     inner_layer: innerLayer,
     classification,
     maximum_rounds: maximumRounds,
+    formula_cache_scope: formulaCacheScope,
+    exact_availability: booleanArgument(args, "exact-availability", false),
+    propagate_values: propagateValues,
     rounds,
     initial_clause_constraints: initialClauseCount,
     initial_cell_constraints: initialCellCount,

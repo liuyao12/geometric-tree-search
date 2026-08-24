@@ -72,6 +72,9 @@ const fixedWitnessReports = String(args.get("fixed-witness-report") ?? "")
 const reportOutput = args.get("report-output")
   ? resolve(String(args.get("report-output")))
   : null;
+const nogoodOutput = args.get("nogood-output")
+  ? resolve(String(args.get("nogood-output")))
+  : null;
 const proposalSampleOutput = args.get("proposal-sample-output")
   ? resolve(String(args.get("proposal-sample-output")))
   : null;
@@ -478,6 +481,10 @@ const summary = {
       ? "certified_non_tiler"
     : incompleteContinuation
       ? "continuation_incomplete"
+      : fixedWitnessContinuations.length
+        && fixedWitnessContinuations.every(continuation => continuation.exhausted)
+        && !trials.length
+        ? "fixed_witnesses_exhausted"
       : trials.at(-1)?.exhausted
         ? "certified_non_tiler"
         : "outer_portfolio_incomplete",
@@ -500,6 +507,7 @@ const summary = {
   obstructed_boundary_states: obstructedBoundaryStates.size,
   boundary_cache_hits: boundaryCacheHits,
   carried_nogood_clauses: carriedNogoods.length,
+  carried_nogood_clause_keys: carriedNogoods,
   radius_witness: radiusWitness ? {
     placements: radiusWitness.corona?.length ?? null,
     nodes: radiusWitness.nodes,
@@ -518,6 +526,17 @@ if (reportOutput) {
   writeFileSync(reportOutput, `${JSON.stringify({
     kind: "polycube_corona_continuation_portfolio",
     ...summary
+  }, null, 2)}\n`);
+}
+if (nogoodOutput) {
+  mkdirSync(dirname(nogoodOutput), { recursive: true });
+  writeFileSync(nogoodOutput, `${JSON.stringify({
+    kind: "polycube_corona_nogood_clauses",
+    candidate: id,
+    outer_layer: outerLayer,
+    continuation_layer: innerLayer,
+    clauses: carriedNogoods,
+    warning: "Each clause is an exact finite-continuation obstruction, not a space non-tiling certificate."
   }, null, 2)}\n`);
 }
 if (proposalSampleOutput && proposalSamples.length) {

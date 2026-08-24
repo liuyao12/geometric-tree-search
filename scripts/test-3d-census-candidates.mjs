@@ -159,6 +159,11 @@ assert.match(
   /function handleGrowthPlotClick\(event\) \{[\s\S]*?const modeId = selectedGrowthMode\(\);[\s\S]*?clickedModeId !== modeId[\s\S]*?showGrowthSnapshot\(modeId, pointIndex\);/,
   "growth markers must only inspect history for the lane selected in the controls"
 );
+assert.doesNotMatch(
+  growthAppSource.match(/function handleGrowthPlotClick\(event\) \{[\s\S]*?\n\}/)?.[0] ?? "",
+  /(?:strategyRadios|strategySelect|setRadioValue|\.checked\s*=|dispatchEvent)/,
+  "growth-curve clicks must never mutate the selected solver lane"
+);
 assert.match(
   growthAppSource,
   /mode: inspectable \? "lines\+markers" : "lines"/,
@@ -454,6 +459,10 @@ const archivedP10054782LazyCellCegar = JSON.parse(await readFile(
 ));
 const archivedP10054782PlacementCubeCegar = JSON.parse(await readFile(
   new URL("../data/polycube-p10-054782-placement-cube-cegar-screen-2026-08-23.json", import.meta.url),
+  "utf8"
+));
+const archivedP10054782Propagation = JSON.parse(await readFile(
+  new URL("../data/polycube-p10-054782-propagate-values-nested-screen-2026-08-24.json", import.meta.url),
   "utf8"
 ));
 const archivedP10052588Radius3Witness = JSON.parse(await readFile(
@@ -2317,13 +2326,39 @@ assert.equal(p10054782Survivor.census_candidate.screening.corona_placement_cube_
 assert.equal(p10054782Survivor.census_candidate.screening.corona_placement_cube_cegar_final_clauses, 45);
 assert.equal(p10054782Survivor.census_candidate.screening.corona_placement_cube_cegar_final_cells, 47);
 assert.equal(p10054782Survivor.census_candidate.screening.corona_placement_cube_cegar_exact41_exhausted, false);
+assert.equal(
+  p10054782Survivor.census_candidate.screening.corona_propagate_values_nested_report,
+  "data/polycube-p10-054782-propagate-values-nested-screen-2026-08-24.json"
+);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_historical_singletons, 6);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_unsat_singletons, 5);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_new_proposals, 1);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_final_clauses, 58);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_unsat_leaves, 18);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_open_leaves, 1);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_exact41_exhausted, false);
+assert.equal(archivedP10054782Propagation.solver_improvement.historical_unsat_leaves, 5);
+assert.equal(archivedP10054782Propagation.solver_improvement.historical_sat_proposals, 1);
+assert.equal(archivedP10054782Propagation.exact_radius4_feedback.combined_replay.verified_clauses, 58);
+assert.equal(archivedP10054782Propagation.exact_radius4_feedback.combined_replay.failed_clauses, 0);
+assert.equal(archivedP10054782Propagation.nested_partition.exact_unsat_partition_leaves, 18);
+assert.equal(archivedP10054782Propagation.nested_partition.open_partition_leaves, 1);
+assert.equal(archivedP10054782Propagation.nested_partition.exact41_exhausted, false);
+assert.equal(
+  verifyPolycubeCoronaPatch(
+    p10054782Survivor.census_candidate.voxels,
+    archivedP10054782Propagation.new_radius3_proposal.corona,
+    3
+  ).verified,
+  true
+);
 assert.equal(archivedP10054782PlacementCubeCegar.classification, "cegar_round_limit");
 assert.equal(archivedP10054782PlacementCubeCegar.rounds.length, 2);
 assert.equal(archivedP10054782PlacementCubeCegar.feedback.plain_clause_replay.verified_clauses, 45);
 assert.match(archivedP10054782PlacementCubeCegar.warning, /neither a non-tiling nor an aperiodicity certificate/);
 assert.match(
   growthAppSource,
-  /Placement-cube CEGAR now continues SAT partition leaves automatically[\s\S]*?Exact count 41 remains open/,
+  /Placement-cube CEGAR now continues SAT partition leaves automatically[\s\S]*?Fixed-value propagation before PB bit-blasting[\s\S]*?Nested compatible-placement cubes close[\s\S]*?Exact count 41 remains open/,
   "the candidate panel must report the exact-41 CEGAR progress without promoting it to a classification"
 );
 assert.equal(

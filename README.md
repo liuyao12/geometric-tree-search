@@ -72,10 +72,13 @@ Pages site. The main way to use it is to open the page in a browser:
   placement-cube CEGAR driver now continues SAT partition leaves automatically:
   two distinct exact-41 proposals are rejected by GCTS in one node apiece,
   growing the verified feedback from 20 clauses/20 cells to 45 clauses/47
-  cells. Plain replay verifies all 45 clauses, while depth-first partitioning
-  localizes three still-open singleton anchor choices. Exact count 41 therefore
-  remains unresolved; this is a useful hard benchmark, not a non-tiling or
-  aperiodicity result.
+  cells. Fixed-value PB preprocessing subsequently resolves five of six
+  historical singleton timeouts as UNSAT and finds a new 41-copy proposal in
+  the sixth. GCTS rejects it in two nodes; all 58 combined clauses replay
+  independently. Nested compatible-placement cubes close 18 further subleaves
+  and localize the residue to one path with four fixed placements. Exact count
+  41 therefore remains unresolved; this is a useful hard benchmark, not a
+  non-tiling or aperiodicity result.
 
   `p10-052588`, by contrast, is now a certified non-tiler rather than an
   unresolved candidate. A cumulative formula closes all radius-three patches

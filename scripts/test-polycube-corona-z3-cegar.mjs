@@ -27,7 +27,8 @@ const recurrenceReplay = fileURLToPath(new URL("./replay-polycube-pair-recurrenc
 const cubeCoverVerifier = fileURLToPath(new URL("./verify-polycube-placement-cube-cover.mjs", import.meta.url));
 const cegarSource = readFileSync(cegar, "utf8");
 const solverSource = readFileSync(solver, "utf8");
-assert.match(solverSource, /"version": 4/);
+assert.match(solverSource, /"version": 5 if universe_formula_cache else 4/);
+assert.match(solverSource, /choices=\("feedback", "next-ring-universe"\)/);
 assert.match(solverSource, /choices=\("solver", "totalizer", "sorting", "binary_merge", "segmented", "circuit"\)/);
 assert.match(solverSource, /z3\.With\(z3\.Tactic\("pb2bv"\), "pb\.solver", args\.pb_solver\)/);
 assert.match(solverSource, /placement_cube_candidates\[args\.placement_cube_index::args\.placement_cube_parts\]/);
@@ -261,6 +262,24 @@ try {
   assert.equal(conditionalReport.z3_status, "unsat");
   assert.equal(conditionalReport.classification, "unsat_under_forbidden_clauses");
   assert.match(conditionalReport.warning, /validate their continuation proofs/);
+
+  const requiredPlacementPath = join(directory, "required-placement.json");
+  const requiredPlacementKey = enumeratePolycubeCoronaPlacements(candidate.voxels, 1)[0].key;
+  writeFileSync(requiredPlacementPath, `${JSON.stringify({ placement_keys: [requiredPlacementKey] })}\n`);
+  const requiredPlacementOutput = join(directory, "required-placement-solve.json");
+  const requiredPlacementSolve = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--timeout-ms=10000",
+    "--backend=pb2bv-sat",
+    `--required-placement-report=${requiredPlacementPath}`,
+    `--output=${requiredPlacementOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(requiredPlacementSolve.status, 0, requiredPlacementSolve.stderr);
+  const requiredPlacementReport = JSON.parse(readFileSync(requiredPlacementOutput, "utf8"));
+  assert.equal(requiredPlacementReport.required_placements, 1);
+  assert.equal(requiredPlacementReport.z3_status, "sat");
 
   const cegarOutput = join(directory, "cegar-summary.json");
   const boundedCegar = spawnSync(process.execPath, [
@@ -1760,6 +1779,98 @@ try {
     false,
     "changing the exact partial cell set must invalidate the formula cache"
   );
+
+  const exactAvailabilityCache = join(directory, "exact-availability-formula-cache.smt2");
+  const exactAvailabilityOutput = join(directory, "exact-availability.json");
+  const exactAvailability = spawnSync(python, [
+    ...partialCellArguments.filter(argument => !argument.startsWith("--formula-cache=")),
+    `--formula-cache=${exactAvailabilityCache}`,
+    "--exact-availability",
+    `--output=${exactAvailabilityOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(exactAvailability.status, 0, exactAvailability.stderr);
+  const exactAvailabilityReport = JSON.parse(readFileSync(exactAvailabilityOutput, "utf8"));
+  assert.equal(exactAvailabilityReport.exact_availability, true);
+  assert.equal(exactAvailabilityReport.formula_cache_hit, false);
+  assert.equal(
+    exactAvailabilityReport.z3_status,
+    JSON.parse(readFileSync(changedPartialCellOutput, "utf8")).z3_status,
+    "exact availability must preserve the coverability formula's satisfiability"
+  );
+  const exactAvailabilityHitOutput = join(directory, "exact-availability-hit.json");
+  const exactAvailabilityHit = spawnSync(python, [
+    ...partialCellArguments.filter(argument => !argument.startsWith("--formula-cache=")),
+    `--formula-cache=${exactAvailabilityCache}`,
+    "--exact-availability",
+    "--random-seed=3",
+    `--output=${exactAvailabilityHitOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(exactAvailabilityHit.status, 0, exactAvailabilityHit.stderr);
+  const exactAvailabilityHitReport = JSON.parse(readFileSync(exactAvailabilityHitOutput, "utf8"));
+  assert.equal(exactAvailabilityHitReport.formula_cache_hit, true);
+  assert.equal(exactAvailabilityHitReport.z3_status, exactAvailabilityReport.z3_status);
+
+  const propagatedOutput = join(directory, "propagated-values.json");
+  const propagated = spawnSync(python, [
+    ...partialCellArguments,
+    "--propagate-values",
+    `--output=${propagatedOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(propagated.status, 0, propagated.stderr);
+  const propagatedReport = JSON.parse(readFileSync(propagatedOutput, "utf8"));
+  assert.equal(propagatedReport.propagate_values, true);
+  assert.equal(propagatedReport.formula_cache_hit, true);
+  assert.equal(
+    propagatedReport.z3_status,
+    JSON.parse(readFileSync(changedPartialCellOutput, "utf8")).z3_status,
+    "fixed-value preprocessing must preserve the formula's satisfiability"
+  );
+
+  const universeCellCache = join(directory, "next-ring-universe-formula-cache.smt2");
+  writeFileSync(partialCellPath, `${JSON.stringify({ cells: [secondRing[0]] })}\n`);
+  const universeCellArguments = partialCellArguments
+    .filter(argument => !argument.startsWith("--formula-cache="))
+    .concat(
+      `--formula-cache=${universeCellCache}`,
+      "--formula-cache-scope=next-ring-universe"
+    );
+  const universeCellMissOutput = join(directory, "universe-cell-cache-miss.json");
+  const universeCellMiss = spawnSync(python, [
+    ...universeCellArguments,
+    `--output=${universeCellMissOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(universeCellMiss.status, 0, universeCellMiss.stderr);
+  const universeCellMissReport = JSON.parse(readFileSync(universeCellMissOutput, "utf8"));
+  assert.equal(universeCellMissReport.formula_cache_hit, false);
+  assert.equal(universeCellMissReport.formula_cache_scope, "next-ring-universe");
+  assert.equal(universeCellMissReport.z3_status, partialCellMissReport.z3_status);
+  const universeCacheBytes = readFileSync(universeCellCache);
+  writeFileSync(partialCellPath, `${JSON.stringify({ cells: [secondRing[1]] })}\n`);
+  const universeCellHitOutput = join(directory, "universe-cell-cache-hit.json");
+  const universeCellHit = spawnSync(python, [
+    ...universeCellArguments,
+    "--random-seed=2",
+    `--output=${universeCellHitOutput}`
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.equal(universeCellHit.status, 0, universeCellHit.stderr);
+  const universeCellHitReport = JSON.parse(readFileSync(universeCellHitOutput, "utf8"));
+  assert.equal(universeCellHitReport.formula_cache_hit, true);
+  assert.equal(universeCellHitReport.z3_status, JSON.parse(
+    readFileSync(changedPartialCellOutput, "utf8")
+  ).z3_status);
+  assert.deepEqual(
+    readFileSync(universeCellCache),
+    universeCacheBytes,
+    "changing dynamic cell feedback must not rewrite the next-ring-universe cache"
+  );
+  const universeWithoutCache = spawnSync(python, [
+    solver,
+    `--key=${polycubeKey(candidate.voxels)}`,
+    "--layer=1",
+    "--formula-cache-scope=next-ring-universe"
+  ], { encoding: "utf8", timeout: 30_000 });
+  assert.notEqual(universeWithoutCache.status, 0);
+  assert.match(universeWithoutCache.stderr, /requires --formula-cache/);
 } finally {
   rmSync(directory, { recursive: true, force: true });
 }
