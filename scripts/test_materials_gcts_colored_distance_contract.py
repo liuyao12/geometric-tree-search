@@ -24,6 +24,9 @@ def test_growth_uses_train_derived_colored_distance_envelopes() -> None:
     assert "learnColoredAngularEnvelopes" in source
     assert "angularViolationsForFreshSites" in source
     assert "colored angular envelopes violated" in source
+    assert "coloredGeometricStrain" in source
+    assert "GEOMETRIC_STRAIN_WEIGHT" in source
+    assert "target-blind soft ordering of the unchanged exact candidate set" in source
     assert "uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh))" in source
     assert 'markingHeading.textContent = pipelineStage === 0 ? "colored geometric envelopes"' in source
     assert 'role: "hard geometric exclusion learned from supplied positions; not a pair potential"' in source
@@ -32,7 +35,7 @@ def test_growth_uses_train_derived_colored_distance_envelopes() -> None:
     assert "physicalPotentialUsed: false" in source
     assert "one universal collision radius" in readme
     assert "This is chemistry-as-geometry, not a pair potential" in readme
-    assert 'app.js?v=20260824-13' in html
+    assert 'app.js?v=20260824-14' in html
 
 
 if __name__ == "__main__":

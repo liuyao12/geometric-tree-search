@@ -55,6 +55,8 @@ export function learnColoredDistanceEnvelopes(species, distance, {
     const minimumObserved = values[0];
     const lowerContact = quantile(nearestValues, lowerQuantile) || minimumObserved;
     const typicalContact = quantile(nearestValues, .5) || lowerContact;
+    const upperContact = quantile(nearestValues, .95) || typicalContact;
+    const contactScale = Math.max(typicalContact * .08, (upperContact - lowerContact) / 2);
     const exclusion = Math.min(minimumObserved * minimumContactFraction,
       lowerContact * lowerContactFraction);
     records.push({
@@ -63,6 +65,8 @@ export function learnColoredDistanceEnvelopes(species, distance, {
       minimumObserved,
       lowerContact,
       typicalContact,
+      upperContact,
+      contactScale,
       exclusion,
       pairObservations: values.length,
       nearestObservations: nearestValues.length,
@@ -275,4 +279,63 @@ export function coloredAngularViolations(species, displacement, coordinationMode
     }
   });
   return violations;
+}
+
+function boundedSquare(value) {
+  return Math.min(16, value * value);
+}
+
+/**
+ * A dimensionless geometric misfit for ranking already-enumerated actions.
+ * It is deliberately not an energy: no force, temperature, probability, or
+ * time scale is inferred.  Exact collision and envelope checks remain the
+ * authority for admission.
+ */
+export function coloredGeometricStrain(species, displacement, distanceModel, coordinationModel,
+  angularModel, centerIndices = species.map((_, index) => index)) {
+  const centers = [...new Set(centerIndices)];
+  const contactPairs = new Set();
+  const distanceTerms = [];
+  const angleTerms = [];
+  centers.forEach((center) => {
+    const neighbors = species.map((neighborSpecies, neighbor) => {
+      if (neighbor === center) return null;
+      const coordination = coordinationEnvelopeFor(coordinationModel, species[center], neighborSpecies);
+      if (!coordination) return null;
+      const vector = displacement(center, neighbor);
+      const norm = Math.hypot(...vectorComponents(vector));
+      return norm <= coordination.contactCutoff ? { neighbor, neighborSpecies, vector, norm } : null;
+    }).filter(Boolean);
+    neighbors.forEach(({ neighbor, norm }) => {
+      const pair = center < neighbor ? `${center}:${neighbor}` : `${neighbor}:${center}`;
+      if (contactPairs.has(pair)) return;
+      contactPairs.add(pair);
+      const envelope = distanceModel?.byKey?.[pairKey(species[center], species[neighbor])];
+      if (!envelope) return;
+      distanceTerms.push(boundedSquare((norm - envelope.typicalContact) / envelope.contactScale));
+    });
+    for (let first = 0; first < neighbors.length - 1; first++) for (let second = first + 1; second < neighbors.length; second++) {
+      const envelope = angularEnvelopeFor(angularModel, species[center],
+        neighbors[first].neighborSpecies, neighbors[second].neighborSpecies);
+      if (!envelope) continue;
+      const degrees = angleDegrees(neighbors[first].vector, neighbors[second].vector);
+      if (!Number.isFinite(degrees)) continue;
+      const normalized = Math.min(...envelope.bands.map((band) => {
+        const mode = (band.observedMinimum + band.observedMaximum) / 2;
+        const scale = Math.max(angularModel.config.toleranceDegrees,
+          (band.observedMaximum - band.observedMinimum) / 2 + angularModel.config.toleranceDegrees);
+        return Math.abs(degrees - mode) / scale;
+      }));
+      angleTerms.push(boundedSquare(normalized));
+    }
+  });
+  const distance = distanceTerms.reduce((sum, value) => sum + value, 0) / Math.max(1, distanceTerms.length);
+  const angle = angleTerms.reduce((sum, value) => sum + value, 0) / Math.max(1, angleTerms.length);
+  return {
+    total: .55 * distance + .45 * angle,
+    distance,
+    angle,
+    contactTerms: distanceTerms.length,
+    angleTerms: angleTerms.length,
+  };
 }

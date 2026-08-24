@@ -3,6 +3,7 @@ import {
   angleAllowed,
   angularEnvelopeFor,
   coloredAngularViolations,
+  coloredGeometricStrain,
   coordinationEnvelopeFor,
   exclusionForPair,
   learnColoredAngularEnvelopes,
@@ -77,6 +78,21 @@ const distortedViolations = coloredAngularViolations(octahedralSpecies, (first, 
   distortedPositions[second].map((value, axis) => value - distortedPositions[first][axis]),
 octahedralCoordination, octahedralAngles, [0]);
 assert.ok(distortedViolations.length > 0, "a 45/135 degree distorted octahedral contact must be rejected");
+const exactStrain = coloredGeometricStrain(octahedralSpecies, octahedralDisplacement,
+  octahedralPairs, octahedralCoordination, octahedralAngles, [0]);
+const distortedStrain = coloredGeometricStrain(octahedralSpecies, (first, second) =>
+  distortedPositions[second].map((value, axis) => value - distortedPositions[first][axis]),
+octahedralPairs, octahedralCoordination, octahedralAngles, [0]);
+assert.ok(distortedStrain.total > exactStrain.total,
+  "the soft geometric ranking must prefer the supplied octahedron to its distorted alternative");
+assert.equal(exactStrain.contactTerms, 6);
+assert.equal(exactStrain.angleTerms, 15);
+const rotatedOctahedron = octahedralPositions.map(([x, y, z]) => [-y, x, z]);
+const rotatedStrain = coloredGeometricStrain(octahedralSpecies, (first, second) =>
+  rotatedOctahedron[second].map((value, axis) => value - rotatedOctahedron[first][axis]),
+octahedralPairs, octahedralCoordination, octahedralAngles, [0]);
+assert.ok(Math.abs(rotatedStrain.total - exactStrain.total) < 1e-12,
+  "geometric strain must be invariant to a proper global rotation");
 
 const planarSpecies = ["B", "N", "N", "N"];
 const planarPositions = [[0, 0, 0], [1, 0, 0], [-.5, Math.sqrt(3) / 2, 0], [-.5, -Math.sqrt(3) / 2, 0]];

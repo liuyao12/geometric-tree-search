@@ -181,6 +181,17 @@ rejected for a missing angle. Whole commuting batches are checked together, so
 two individually plausible attachments cannot jointly create an impossible
 three-body arrangement.
 
+Hard admissibility still leaves several legal frontier actions. The executor
+therefore computes a dimensionless **geometric strain** from the same frozen
+colored contact and angle statistics and uses it only as a small, target-blind
+ranking term over the already enumerated exact actions. The score reports
+distance and angle components separately in the live decision inspector and
+receipt. It cannot create a pose, rescue a hard violation, or reject an action;
+candidate identity and the collision/coordination/angle certificates are
+unchanged. This deliberately encodes the preference for familiar low-distortion
+local geometry without calling the score an energy, force, probability, or
+elapsed-time model.
+
 This is chemistry-as-geometry, not a pair potential: it has no attractive
 well, angular energy, charge, bond order, temperature, pressure, or kinetics. Those effects
 can constrain which clusters and ports are observed in the sample, but the

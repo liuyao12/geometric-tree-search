@@ -12,12 +12,13 @@ import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 import {
   coloredAngularViolations,
+  coloredGeometricStrain,
   coordinationEnvelopeFor,
   exclusionForPair,
   learnColoredAngularEnvelopes,
   learnColoredCoordinationEnvelopes,
   learnColoredDistanceEnvelopes,
-} from "./colored-distance-envelopes.js?v=20260824-3";
+} from "./colored-distance-envelopes.js?v=20260824-4";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -138,6 +139,7 @@ const decisionCopy = $("decisionCopy");
 const actionValue = $("actionValue");
 const domainValue = $("domainValue");
 const energyValue = $("energyValue");
+const strainValue = $("strainValue");
 const resolverValue = $("resolverValue");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
@@ -206,6 +208,7 @@ const MERGE_TOLERANCE = .24;
 const COLLISION_TOLERANCE = .46;
 const COMMUTING_SITE_TOLERANCE = 1e-4;
 const SPATIAL_CELL = .52;
+const GEOMETRIC_STRAIN_WEIGHT = .16;
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
 const COORDINATION_CUTOFF = 1.32;
@@ -390,6 +393,8 @@ let reconstructionCertified = false;
 let reconstructionMarkingFallbacks = 0;
 let coordinationCapacityPrunes = 0;
 let angularEnvelopePrunes = 0;
+let acceptedGeometricStrain = 0;
+let rejectedGeometricStrain = 0;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let markingSelection = null;
@@ -3189,7 +3194,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-13",
+      buildId: "20260824-14",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3242,6 +3247,8 @@ async function buildExperimentReceipt() {
           minimumObservedAngstrom: receiptRound(record.minimumObserved * referenceSpacingA / referenceSpacing),
           lowerContactAngstrom: receiptRound(record.lowerContact * referenceSpacingA / referenceSpacing),
           typicalContactAngstrom: receiptRound(record.typicalContact * referenceSpacingA / referenceSpacing),
+          upperContactAngstrom: receiptRound(record.upperContact * referenceSpacingA / referenceSpacing),
+          strainScaleAngstrom: receiptRound(record.contactScale * referenceSpacingA / referenceSpacing),
           hardExclusionAngstrom: receiptRound(record.exclusion * referenceSpacingA / referenceSpacing),
           nearestObservations: record.nearestObservations,
         })),
@@ -3340,6 +3347,12 @@ async function buildExperimentReceipt() {
       rejectedDecisions,
       coordinationCapacityPrunes,
       angularEnvelopePrunes,
+      geometricStrainRanking: {
+        role: "target-blind soft ordering of the unchanged exact candidate set; not energy or admissibility",
+        weight: GEOMETRIC_STRAIN_WEIGHT,
+        acceptedMean: receiptRound(acceptedGeometricStrain / Math.max(1, acceptedDecisions)),
+        rejectedMean: receiptRound(rejectedGeometricStrain / Math.max(1, rejectedDecisions)),
+      },
       grammarDecisions,
       localOracleCalls: oracleCalls,
       liveCertificate: liveGrowthCertificate(),
@@ -4059,6 +4072,24 @@ function angularViolationsForFreshSites(rawFreshSites) {
     coloredCoordinationEnvelopes, coloredAngularEnvelopes, [...affected]);
 }
 
+function geometricStrainForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  if (!freshSites.length || !coloredAngularEnvelopes) return {
+    total: 0, distance: 0, angle: 0, contactTerms: 0, angleTerms: 0,
+  };
+  const projected = [...atoms, ...freshSites];
+  const affected = new Set(freshSites.map((_, index) => atoms.length + index));
+  atoms.forEach((atom, atomIndex) => {
+    if (freshSites.some((site) => {
+      const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, atom.species, site.species);
+      return envelope && atom.p.distanceTo(site.p) <= envelope.contactCutoff;
+    })) affected.add(atomIndex);
+  });
+  return coloredGeometricStrain(projected.map((site) => site.species),
+    (first, second) => projected[second].p.clone().sub(projected[first].p),
+    coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, [...affected]);
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -4083,25 +4114,32 @@ function commutingFrontierBatch() {
   const audit = reconstructionCertified
     ? { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 }
     : referenceCoverageAudit();
-  const ranked = frontierCandidates.map((candidate) => ({
-    candidate,
-    score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit),
-  })).sort((first, second) => second.score - first.score).map((entry) => entry.candidate);
+  // Candidate enumeration is frozen before this ranking. Geometric strain is
+  // a target-blind preference among those exact actions, never an admission
+  // rule and never a source of new coordinates.
+  const ranked = frontierCandidates.map((candidate) => {
+    const evaluation = evaluateCandidate(candidate);
+    return {
+      candidate,
+      evaluation,
+      sites: evaluation.sites,
+      score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit)
+        - GEOMETRIC_STRAIN_WEIGHT * evaluation.geometricStrain.total,
+    };
+  }).sort((first, second) => second.score - first.score || first.candidate.key.localeCompare(second.candidate.key));
   if (overlapGrammar.molecular && !reconstructionCertified) {
-    const ordered = ranked.slice().sort((first, second) => first.rule.replayOrder - second.rule.replayOrder);
-    for (const candidate of ordered) {
-      const evaluation = evaluateCandidate(candidate);
-      if (evaluation.accepted || rejectionIsOrderInvariant(candidate, evaluation)) {
-        return [{ candidate, evaluation, sites: evaluation.sites }];
+    const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
+    for (const entry of ordered) {
+      if (entry.evaluation.accepted || rejectionIsOrderInvariant(entry.candidate, entry.evaluation)) {
+        return [entry];
       }
     }
     return [];
   }
   const acceptedBatch = [];
   const rejectedBatch = [];
-  for (const candidate of ranked) {
-    const evaluation = evaluateCandidate(candidate);
-    const entry = { candidate, evaluation, sites: evaluation.sites };
+  for (const entry of ranked) {
+    const { candidate, evaluation } = entry;
     if (evaluation.accepted) {
       if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
       const trial = [...acceptedBatch, entry];
@@ -4167,11 +4205,12 @@ function evaluateCandidate(candidate) {
   const markingFallback = reconstructing && knownFailures === 0 && !markingAccepted;
   const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh);
   const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh);
+  const geometricStrain = geometricStrainForFreshSites(fresh);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
-    coordinationOverflows, angularViolations,
+    coordinationOverflows, angularViolations, geometricStrain,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -4220,6 +4259,8 @@ function initializeOffLatticeSearch() {
   reconstructionMarkingFallbacks = 0;
   coordinationCapacityPrunes = 0;
   angularEnvelopePrunes = 0;
+  acceptedGeometricStrain = 0;
+  rejectedGeometricStrain = 0;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
@@ -4654,6 +4695,8 @@ function resetCounters() {
   rejectedDecisions = 0;
   coordinationCapacityPrunes = 0;
   angularEnvelopePrunes = 0;
+  acceptedGeometricStrain = 0;
+  rejectedGeometricStrain = 0;
   stackHistory = [];
   markingCache = new Map();
   actionCache = new Map();
@@ -4858,6 +4901,7 @@ function updateStageNarrative() {
   decisionTitle.textContent = item.decision;
   decisionCopy.textContent = item.copy;
   [actionValue.textContent, domainValue.textContent, energyValue.textContent, resolverValue.textContent] = item.values;
+  strainValue.textContent = "not ranked";
 }
 
 function stateForCandidate(candidate, evaluation) {
@@ -4869,6 +4913,7 @@ function stateForCandidate(candidate, evaluation) {
     n25: evaluation.sites.length,
     minimum: candidate.markingScore,
     clearance: evaluation.conflicts,
+    geometricStrain: evaluation.geometricStrain,
   };
 }
 
@@ -4963,6 +5008,7 @@ function performOffLatticeEvent() {
       rejectedDecisions++;
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
+      rejectedGeometricStrain += snapshotEvaluation.geometricStrain.total;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -4979,6 +5025,7 @@ function performOffLatticeEvent() {
     const decision = cacheDecision(state, candidate.markingScore);
     const placement = materializeCandidate(candidate, evaluation);
     acceptedDecisions++;
+    acceptedGeometricStrain += evaluation.geometricStrain.total;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -5022,6 +5069,7 @@ function performIceAnchorEvent() {
     actionValue.textContent = `wave ${wave.wave} · 0 accepted`;
     domainValue.textContent = `${wave.rejectedNonunanimousAnchors} non-unanimous anchors pruned`;
     energyValue.textContent = "target calls 0";
+    strainValue.textContent = "not used by frozen ice trace";
     resolverValue.textContent = "orientation-domain unanimity";
     appendHistory("reject", { type: "reject", depth: wave.wave,
       action: "safe fixed point", family: "no unanimous parent domain" });
@@ -5209,6 +5257,10 @@ function updateDecision(event) {
   actionValue.textContent = event.state.action;
   domainValue.textContent = event.state.domain;
   energyValue.textContent = event.interval ? `[${event.interval[0].toFixed(2)}, ${event.interval[1].toFixed(2)}]` : "geometric prune";
+  const strain = event.state.geometricStrain;
+  strainValue.textContent = strain
+    ? `${strain.total.toFixed(3)} · r ${strain.distance.toFixed(3)} · θ ${strain.angle.toFixed(3)}`
+    : "not evaluated";
   resolverValue.textContent = event.resolver;
   eventKind.textContent = reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
 }
