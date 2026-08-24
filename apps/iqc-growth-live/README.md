@@ -2736,6 +2736,25 @@ the entire marking library. It does **not** choose one of those alternatives,
 commit an autonomous antichain, identify a stationary production, or establish
 exponential IQC growth. Those remain the next gates.
 
+### Commuting closure and child-transfer boundary
+
+The first frontier now has a stricter order-independence certificate. A bounded
+subset dynamic program accepts a three-action closure only when every one of
+its six permutations replays to the same colored state. A group-heldout
+incidence marking retains exact closure supply in all four development nuclei;
+the consumed top-eight audit contains two exact parents. This is the contract
+used by the UI when it displays several simultaneous frontier flashes.
+
+The corresponding second-frontier value remains red. Its immutable training
+corpus contains `3,994` candidates and `95` exact labels. Conditional
+four-nucleus holdout keeps all `14 / 14` exact parent branches inside a
+per-parent top `16`, but a fifth consumed geometry places its only two exact
+six-action continuations at ranks `132` and `133`. Neither is selected. The
+model and the failure receipt are byte-pinned so this negative transfer cannot
+be hidden by downstream tree breadth or target-guided retuning. The next
+representation must transfer the parent-to-child obligation change; no fresh
+confirmation is eligible yet.
+
 Serve the repository root and open `/iqc-growth-live/`.
 ### Fourth-block IQC replay and marking transfer
 
