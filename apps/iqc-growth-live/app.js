@@ -216,6 +216,11 @@ const orderClassValue = $("orderClassValue");
 const structureNameValue = $("structureNameValue");
 const symmetryValue = $("symmetryValue");
 const confidenceValue = $("confidenceValue");
+const phaseWindowValue = $("phaseWindowValue");
+const phaseMarginValue = $("phaseMarginValue");
+const phaseClosureValue = $("phaseClosureValue");
+const phaseTrajectoryState = $("phaseTrajectoryState");
+const phaseTrajectoryCanvas = $("phaseTrajectoryCanvas");
 const auditNote = $("auditNote");
 const recursiveStatus = $("recursiveStatus");
 const hierarchyL1 = $("hierarchyL1");
@@ -259,6 +264,8 @@ const TAU = Math.PI * 2;
 const PHI = (1 + Math.sqrt(5)) / 2;
 const DEFAULT_REFERENCE_COUNT = 216;
 const ANALYSIS_WINDOW_COUNT = 256;
+const PHASE_CLASSIFICATION_MINIMUM_ATOMS = 32;
+const PHASE_CLASSIFICATION_THRESHOLD = .58;
 const FRONTIER_PREVIEW = 28;
 const MAX_RULES_PER_PAIR = 28;
 const MERGE_TOLERANCE = .24;
@@ -473,6 +480,7 @@ let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
+let liveOrderHistory = [];
 let orderPrototypeLibrary = null;
 let growthDeadline = 0;
 let growthStartAtomCount = 0;
@@ -952,12 +960,18 @@ function translationClosureScore(source, basis) {
 function inferLiveOrder() {
   if (pipelineStage < 4) return {
     order: "not classified", structure: "classification begins after growth", symmetry: "withheld", confidence: 0,
+    sampleAtoms: 0, liveAtoms: 0, minimumAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
+    historyKey: "withheld", posthocOnly: true, usedAsGrowthInput: false,
+    independentPhaseDetermination: false, classificationThreshold: PHASE_CLASSIFICATION_THRESHOLD,
     note: "The supplied configuration is used to learn geometry, not to preassign a phase. RDF, coordination, S(q), translation closure, and prototype labels are evaluated only after Material Growth begins.",
   };
   const source = classificationSample();
-  if (source.length < 32) return {
+  if (source.length < PHASE_CLASSIFICATION_MINIMUM_ATOMS) return {
     order: "insufficient sample", structure: "—", symmetry: "—", confidence: 0,
-    note: `Waiting for at least 32 live atoms; ${source.length} are currently available.`,
+    sampleAtoms: source.length, liveAtoms: atoms.length, minimumAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
+    historyKey: `insufficient:${source.length}:${atoms.length}`, posthocOnly: true, usedAsGrowthInput: false,
+    independentPhaseDetermination: false, classificationThreshold: PHASE_CLASSIFICATION_THRESHOLD,
+    note: `Waiting for at least ${PHASE_CLASSIFICATION_MINIMUM_ATOMS} live atoms; ${source.length} are currently available.`,
   };
   const key = `${scenarioSelect.value}:${pipelineStage}:${Math.floor(source.length / 16)}:${Math.floor(atoms.length / 96)}`;
   if (liveOrderCache.key === key && liveOrderCache.result) return liveOrderCache.result;
@@ -967,53 +981,182 @@ function inferLiveOrder() {
     const coordinationError = normalizedDistributionDistance(prototype.stats.coordination, stats.coordination);
     const structureFactorError = normalizedDistributionDistance(
       ensureStructureFactor(prototype.stats).values, ensureStructureFactor(stats).values);
-    return { ...prototype, evidenceMatch: Math.max(0, Math.min(1,
-      1 - .30 * rdfError - .58 * coordinationError - .20 * structureFactorError)) };
+    return {
+      ...prototype, rdfError, coordinationError, structureFactorError,
+      evidenceMatch: Math.max(0, Math.min(1,
+        1 - .30 * rdfError - .58 * coordinationError - .20 * structureFactorError)),
+    };
   }).sort((first, second) => second.evidenceMatch - first.evidenceMatch);
   const best = matches[0];
+  const runnerUp = matches[1] || best;
   const bestCrystal = matches.find((match) => match.material.order === "crystal");
+  const runnerUpCrystal = matches.find((match) => match.material.order === "crystal" && match.id !== bestCrystal?.id) || bestCrystal;
   const evidenceMatch = best.evidenceMatch;
+  const prototypeMargin = Math.max(0, best.evidenceMatch - runnerUp.evidenceMatch);
+  const bestPrototypeResolved = best.evidenceMatch >= .45 && prototypeMargin >= .02;
+  const crystalPrototypeMargin = Math.max(0, (bestCrystal?.evidenceMatch || 0) - (runnerUpCrystal?.evidenceMatch || 0));
+  const crystalPrototypeResolved = Boolean(bestCrystal && bestCrystal.evidenceMatch >= .45 && crystalPrototypeMargin >= .02);
   const translationClosure = pipelineStage === 4 && detectedUnitCell
     ? translationClosureScore(source, detectedUnitCell.basis) : 0;
   const sampleStrength = Math.max(0, Math.min(1, (source.length - 24) / 144));
   let confidence = evidenceMatch * (.48 + .52 * sampleStrength);
-  const accepted = confidence >= .58;
+  const accepted = confidence >= PHASE_CLASSIFICATION_THRESHOLD;
   let order = "undetermined";
-  let structure = `closest: ${best.material.name}`;
+  let structure = bestPrototypeResolved ? `closest: ${best.material.name}` : "prototype unresolved";
   let symmetry = "not assigned";
   if (translationClosure >= .24 && bestCrystal) {
     order = "crystal";
-    structure = bestCrystal.material.name;
-    symmetry = bestCrystal.material.symmetry;
+    structure = crystalPrototypeResolved ? bestCrystal.material.name : "periodic crystal · prototype unresolved";
+    symmetry = crystalPrototypeResolved ? bestCrystal.material.symmetry : "translation group detected · point group unresolved";
     confidence = Math.max(confidence, Math.min(.98, .58 + .42 * translationClosure));
-  } else if (accepted && best.material.order === "crystal") {
+  } else if (accepted && bestPrototypeResolved && best.material.order === "crystal") {
     order = "crystal";
     structure = best.material.name;
     symmetry = best.material.symmetry;
-  } else if (accepted && best.material.order === "quasicrystal") {
+  } else if (accepted && bestPrototypeResolved && best.material.order === "quasicrystal") {
     order = confidence >= .74 ? (best.id === "moire" ? "2D quasiperiodic bilayer" : "icosahedral quasicrystal") : "quasicrystal candidate";
     structure = best.material.name;
     symmetry = best.material.symmetry;
-  } else if (accepted && best.material.order === "amorphous") {
+  } else if (accepted && bestPrototypeResolved && best.material.order === "amorphous") {
     order = "amorphous solid";
     structure = best.material.name;
     symmetry = "no global space group";
   }
   const result = {
     order, structure, symmetry, confidence,
-    note: `Live reconstructed core: best RDF + coordination + geometric powder S(q) match across ${matches.length} prototypes${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. Unit-scattering S(q) is posthoc evidence—not experimental intensity or a growth input. ${best.material.audit} remains the required independent confirmation; prototype labels and space groups are not growth inputs.`,
+    sampleAtoms: source.length,
+    liveAtoms: atoms.length,
+    minimumAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
+    bestPrototypeId: best.id,
+    bestPrototypeName: best.material.name,
+    bestPrototypeEvidenceMatch: best.evidenceMatch,
+    runnerUpPrototypeId: runnerUp.id,
+    runnerUpPrototypeName: runnerUp.material.name,
+    runnerUpPrototypeEvidenceMatch: runnerUp.evidenceMatch,
+    prototypeMargin,
+    bestPrototypeResolved,
+    crystalPrototypeMargin,
+    crystalPrototypeResolved,
+    rdfError: best.rdfError,
+    coordinationError: best.coordinationError,
+    structureFactorError: best.structureFactorError,
+    translationClosure,
+    prototypeLibrarySize: matches.length,
+    selectedFixturePresentInPrototypeLibrary: matches.some((match) => match.id === scenarioSelect.value),
+    historyKey: key,
+    posthocOnly: true,
+    usedAsGrowthInput: false,
+    independentPhaseDetermination: false,
+    classificationThreshold: PHASE_CLASSIFICATION_THRESHOLD,
+    note: `Live reconstructed core: ${bestPrototypeResolved ? `best RDF + coordination + geometric powder S(q) prototype is ${best.material.name} (${Math.round(best.evidenceMatch * 100)}%; ${Math.round(prototypeMargin * 100)}-point margin over ${runnerUp.material.name})` : `no RDF + coordination + geometric powder S(q) prototype separates from the runner-up (top score ${Math.round(best.evidenceMatch * 100)}%; margin ${Math.round(prototypeMargin * 100)} points)`} across ${matches.length} prototypes${detectedUnitCell ? `; translation closure ${Math.round(translationClosure * 100)}%` : ""}. Unit-scattering S(q) is posthoc evidence—not experimental intensity or a growth input. ${best.material.audit} remains the required independent confirmation; the selected fixture may be present in the diagnostic prototype library, so this is not an independent phase determination.`,
   };
   liveOrderCache = { key, result };
   return result;
 }
 
+function phaseTrajectoryColor(order) {
+  if (order === "crystal") return "#65e1bc";
+  if (order.includes("quasicrystal") || order.includes("quasiperiodic")) return "#55c8ff";
+  if (order === "amorphous solid") return "#e1aa61";
+  return "#71857f";
+}
+
+function recordLiveOrder(inference) {
+  if (pipelineStage !== 4) return;
+  const previous = liveOrderHistory[liveOrderHistory.length - 1];
+  if (previous?.historyKey === inference.historyKey) return;
+  liveOrderHistory.push({
+    historyKey: inference.historyKey,
+    acceptedDecisions,
+    liveAtoms: atoms.length,
+    sampleAtoms: inference.sampleAtoms,
+    order: inference.order,
+    confidence: inference.confidence,
+    bestPrototypeId: inference.bestPrototypeId || null,
+    bestPrototypeEvidenceMatch: inference.bestPrototypeEvidenceMatch ?? null,
+    prototypeMargin: inference.prototypeMargin ?? null,
+    translationClosure: inference.translationClosure ?? null,
+  });
+  if (liveOrderHistory.length > 96) {
+    const first = liveOrderHistory[0];
+    liveOrderHistory = [first, ...liveOrderHistory.slice(1).filter((_, index) => index % 2 === 1)];
+  }
+}
+
+function drawPhaseTrajectory() {
+  const context = phaseTrajectoryCanvas.getContext("2d");
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  const width = Math.max(220, phaseTrajectoryCanvas.clientWidth || 336);
+  const height = Math.max(64, phaseTrajectoryCanvas.clientHeight || 70);
+  phaseTrajectoryCanvas.width = Math.round(width * ratio);
+  phaseTrajectoryCanvas.height = Math.round(height * ratio);
+  context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  context.clearRect(0, 0, width, height);
+  const points = liveOrderHistory;
+  if (pipelineStage < 4 || !points.length) {
+    context.fillStyle = "#647a73";
+    context.font = "7px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.textAlign = "center";
+    context.fillText(pipelineStage < 4 ? "classification withheld until material growth" : "waiting for live atoms", width / 2, height / 2);
+    phaseTrajectoryState.textContent = pipelineStage < 4 ? "withheld" : "waiting";
+    phaseTrajectoryCanvas.setAttribute("aria-label", pipelineStage < 4
+      ? "Phase confidence is withheld until material growth begins"
+      : "Phase confidence trajectory is waiting for live atoms");
+    return;
+  }
+  const margin = { left: 24, right: 5, top: 6, bottom: 14 };
+  const plotWidth = width - margin.left - margin.right;
+  const plotHeight = height - margin.top - margin.bottom;
+  const atomMinimum = Math.min(...points.map((point) => point.liveAtoms));
+  const atomMaximum = Math.max(...points.map((point) => point.liveAtoms));
+  const x = (point, index) => margin.left + (atomMaximum === atomMinimum
+    ? (points.length === 1 ? .5 : index / (points.length - 1))
+    : (point.liveAtoms - atomMinimum) / (atomMaximum - atomMinimum)) * plotWidth;
+  const y = (confidence) => margin.top + (1 - Math.max(0, Math.min(1, confidence))) * plotHeight;
+  context.strokeStyle = "rgba(130,158,149,.18)";
+  context.lineWidth = 1;
+  [0, .5, 1].forEach((value) => {
+    context.beginPath(); context.moveTo(margin.left, y(value)); context.lineTo(width - margin.right, y(value)); context.stroke();
+  });
+  context.setLineDash([3, 3]);
+  context.strokeStyle = "rgba(181,148,255,.55)";
+  context.beginPath(); context.moveTo(margin.left, y(PHASE_CLASSIFICATION_THRESHOLD)); context.lineTo(width - margin.right, y(PHASE_CLASSIFICATION_THRESHOLD)); context.stroke();
+  context.setLineDash([]);
+  for (let index = 1; index < points.length; index++) {
+    context.strokeStyle = phaseTrajectoryColor(points[index].order);
+    context.lineWidth = 1.5;
+    context.beginPath(); context.moveTo(x(points[index - 1], index - 1), y(points[index - 1].confidence)); context.lineTo(x(points[index], index), y(points[index].confidence)); context.stroke();
+  }
+  points.forEach((point, index) => {
+    context.fillStyle = phaseTrajectoryColor(point.order);
+    context.beginPath(); context.arc(x(point, index), y(point.confidence), index === points.length - 1 ? 2.5 : 1.5, 0, TAU); context.fill();
+  });
+  context.fillStyle = "#71857f";
+  context.font = "6px ui-monospace, SFMono-Regular, Menlo, monospace";
+  context.textAlign = "right";
+  context.fillText("100", margin.left - 3, y(1) + 2);
+  context.fillText("0", margin.left - 3, y(0) + 2);
+  context.textAlign = "left";
+  context.fillText(`${atomMinimum} atoms`, margin.left, height - 3);
+  context.textAlign = "right";
+  context.fillText(`${atomMaximum} atoms`, width - margin.right, height - 3);
+  const latest = points[points.length - 1];
+  phaseTrajectoryState.textContent = `${points.length} reads · ${Math.round(latest.confidence * 100)}%`;
+  phaseTrajectoryCanvas.setAttribute("aria-label", `Phase confidence trajectory with ${points.length} post-growth reads from ${atomMinimum} to ${atomMaximum} live atoms; latest classification ${latest.order} at ${Math.round(latest.confidence * 100)} percent confidence`);
+}
+
 function updateOrderAudit() {
   const inference = inferLiveOrder();
+  recordLiveOrder(inference);
   orderClassValue.textContent = inference.order;
   structureNameValue.textContent = inference.structure;
   symmetryValue.textContent = inference.symmetry;
   confidenceValue.textContent = `${Math.round(inference.confidence * 100)}%`;
+  phaseWindowValue.textContent = pipelineStage < 4 ? "withheld" : `${inference.sampleAtoms}/${ANALYSIS_WINDOW_COUNT}`;
+  phaseMarginValue.textContent = inference.prototypeMargin === undefined ? "—" : `+${Math.round(inference.prototypeMargin * 100)} pt`;
+  phaseClosureValue.textContent = inference.translationClosure === undefined ? "—" : `${Math.round(inference.translationClosure * 100)}%`;
   auditNote.textContent = inference.note;
+  drawPhaseTrajectory();
 }
 
 function getElementMaterial(symbol, dim = false) {
@@ -4095,6 +4238,57 @@ function receiptMicrostructureAudit() {
   };
 }
 
+function receiptEmergentClassification() {
+  const inference = inferLiveOrder();
+  return {
+    status: pipelineStage < 4 ? "withheld until material growth" : inference.order,
+    stageGate: "material growth only",
+    minimumLiveAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
+    maximumContiguousAnalysisWindowAtoms: ANALYSIS_WINDOW_COUNT,
+    decisionThreshold: PHASE_CLASSIFICATION_THRESHOLD,
+    posthocOnly: true,
+    usedAsGrowthInput: false,
+    usedForCandidateAdmission: false,
+    usedForBranchRanking: false,
+    independentPhaseDetermination: false,
+    prototypeComparisonWeights: { rdf: .30, coordination: .58, geometricPowderStructureFactor: .20 },
+    selectedFixturePresentInPrototypeLibrary: inference.selectedFixturePresentInPrototypeLibrary ?? null,
+    current: {
+      order: inference.order,
+      structure: inference.structure,
+      symmetry: inference.symmetry,
+      confidence: receiptRound(inference.confidence),
+      liveAtoms: inference.liveAtoms,
+      analysisWindowAtoms: inference.sampleAtoms,
+      bestPrototypeId: inference.bestPrototypeId || null,
+      bestPrototypeEvidenceMatch: inference.bestPrototypeEvidenceMatch === undefined ? null : receiptRound(inference.bestPrototypeEvidenceMatch),
+      runnerUpPrototypeId: inference.runnerUpPrototypeId || null,
+      runnerUpPrototypeEvidenceMatch: inference.runnerUpPrototypeEvidenceMatch === undefined ? null : receiptRound(inference.runnerUpPrototypeEvidenceMatch),
+      prototypeMargin: inference.prototypeMargin === undefined ? null : receiptRound(inference.prototypeMargin),
+      bestPrototypeResolved: inference.bestPrototypeResolved ?? false,
+      crystalPrototypeMargin: inference.crystalPrototypeMargin === undefined ? null : receiptRound(inference.crystalPrototypeMargin),
+      crystalPrototypeResolved: inference.crystalPrototypeResolved ?? false,
+      rdfError: inference.rdfError === undefined ? null : receiptRound(inference.rdfError),
+      coordinationError: inference.coordinationError === undefined ? null : receiptRound(inference.coordinationError),
+      geometricPowderStructureFactorError: inference.structureFactorError === undefined ? null : receiptRound(inference.structureFactorError),
+      translationClosure: inference.translationClosure === undefined ? null : receiptRound(inference.translationClosure),
+      prototypeLibrarySize: inference.prototypeLibrarySize || null,
+    },
+    trajectory: liveOrderHistory.map((entry) => ({
+      acceptedDecisions: entry.acceptedDecisions,
+      liveAtoms: entry.liveAtoms,
+      analysisWindowAtoms: entry.sampleAtoms,
+      order: entry.order,
+      confidence: receiptRound(entry.confidence),
+      bestPrototypeId: entry.bestPrototypeId,
+      bestPrototypeEvidenceMatch: entry.bestPrototypeEvidenceMatch === null ? null : receiptRound(entry.bestPrototypeEvidenceMatch),
+      prototypeMargin: entry.prototypeMargin === null ? null : receiptRound(entry.prototypeMargin),
+      translationClosure: entry.translationClosure === null ? null : receiptRound(entry.translationClosure),
+    })),
+    coordinatesEmbedded: false,
+  };
+}
+
 async function buildExperimentReceipt() {
   const material = currentMaterial();
   const markingConfig = currentMarkingConfig();
@@ -4115,7 +4309,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-44",
+      buildId: "20260824-46",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4311,6 +4505,7 @@ async function buildExperimentReceipt() {
     },
     structuralEvidence: {
       role: "posthoc validation only; never a growth feature or branch score",
+      emergentClassification: receiptEmergentClassification(),
       selectedView: structureObservableSelection,
       rdf: {
         dimension: referenceStructuralStats.dimension,
@@ -6160,6 +6355,7 @@ function resetCounters() {
   trainingProgress = 0;
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
+  liveOrderHistory = [];
   growthDeadline = 0;
   growthStartAtomCount = 0;
   growthStopReason = "";

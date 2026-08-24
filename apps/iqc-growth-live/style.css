@@ -559,6 +559,20 @@ body.atlas-open { overflow: hidden; }
 .audit-card > div { display: flex; align-items: baseline; justify-content: space-between; min-height: 27px; border-bottom: 1px solid var(--line); }
 .audit-card strong { color: var(--mint); font: 13px var(--mono); font-weight: 400; }
 .audit-card span { color: var(--muted); font-size: 8px; }
+.audit-card > .phase-evidence-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; min-height: 0; margin-top: 7px; border: 1px solid var(--line); background: var(--line); }
+.phase-evidence-grid > span { min-width: 0; padding: 6px; background: #081516; }
+.phase-evidence-grid small,.phase-evidence-grid strong { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.phase-evidence-grid small { color: var(--faint); font: 5px var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+.phase-evidence-grid strong { margin-top: 4px; color: #b9cbc5; font-size: 7px; }
+.phase-trajectory { margin: 8px 0 0; padding: 7px; border: 1px solid rgba(85,200,255,.16); background: linear-gradient(180deg,rgba(85,200,255,.035),rgba(4,13,14,.72)); }
+.phase-trajectory > div { display: flex; justify-content: space-between; color: var(--faint); font: 5.5px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.phase-trajectory > div b { color: var(--cyan); font-weight: 400; }
+.phase-trajectory canvas { display: block; width: 100%; height: 70px; margin-top: 5px; }
+.phase-trajectory figcaption { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 3px; color: var(--faint); font: 5px var(--mono); }
+.phase-trajectory figcaption i { width: 6px; height: 2px; background: var(--mint); }
+.phase-trajectory figcaption i:nth-of-type(2) { background: var(--cyan); }
+.phase-trajectory figcaption i:nth-of-type(3) { background: #e1aa61; }
+.phase-trajectory figcaption em { margin-left: auto; color: #697e77; font-style: normal; }
 .audit-card > p:last-child { margin: 10px 0 0; color: var(--faint); font-size: 8px; line-height: 1.5; }
 .recursive-card { padding: 12px; border: 1px solid rgba(181,148,255,.24); background: rgba(181,148,255,.035); }
 .recursive-card .section-heading .eyebrow { margin-bottom: 8px; }

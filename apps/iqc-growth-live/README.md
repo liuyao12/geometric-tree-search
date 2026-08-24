@@ -613,6 +613,22 @@ or a fully certified translation analysis for crystals, indexed reciprocal
 modules and experimental diffraction for quasicrystals, and chemically
 weighted scattering plus local-motif tests for glasses.
 
+The order card now keeps the inference auditable as growth proceeds. It plots
+confidence against the live atom count, shows the contiguous analysis-window
+size, the evidence margin between the best and second-best prototypes, and the
+independently computed translation-closure score. The 58% provisional decision
+threshold, 32-atom minimum, RDF/coordination/geometric-`S(q)` weights, component
+errors, prototype-library self-reference flag, and the complete bounded
+confidence history are written to the experiment receipt. The receipt also
+states mechanically that classification is posthoc, embeds no coordinates,
+and is used by neither candidate admission nor branch ranking. In particular,
+a curated fixture may also appear in the diagnostic prototype library; this is
+reported rather than hidden and prevents the panel from being mistaken for an
+independent phase determination. Translation closure may establish a periodic
+crystal before the local prototype scores separate, but it then reports the
+point group and prototype as unresolved: a tied or under-supported numerical
+leader is never promoted into a material name.
+
 For a periodic input, a translation-consensus pass searches same-species
 displacements for three recurrent independent vectors. During search it draws
 the resulting parallelepiped as a candidate unit cell; once the live order

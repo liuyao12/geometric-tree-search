@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-15">
+  <link rel="stylesheet" href="./style.css?v=20260824-16">
   <script type="importmap">
     {
       "imports": {
@@ -775,16 +775,26 @@
         <section class="audit-card" id="auditedBenchmark">
           <p class="eyebrow">live order inference</p>
           <div><strong id="orderClassValue">analyzing…</strong><span>emergent class</span></div>
-          <div><strong id="structureNameValue">—</strong><span>best prototype</span></div>
+          <div><strong id="structureNameValue">—</strong><span>posthoc interpretation</span></div>
           <div><strong id="symmetryValue">—</strong><span>symmetry assignment</span></div>
           <div><strong id="confidenceValue">0%</strong><span>structural match</span></div>
+          <div class="phase-evidence-grid" aria-label="Current phase-classification evidence">
+            <span><small>analysis window</small><strong id="phaseWindowValue">—</strong></span>
+            <span><small>prototype margin</small><strong id="phaseMarginValue">—</strong></span>
+            <span><small>translation closure</small><strong id="phaseClosureValue">—</strong></span>
+          </div>
+          <figure class="phase-trajectory">
+            <div><span>confidence trajectory</span><b id="phaseTrajectoryState">withheld</b></div>
+            <canvas id="phaseTrajectoryCanvas" width="336" height="88" role="img" aria-label="Phase confidence is withheld until material growth begins"></canvas>
+            <figcaption><i></i> crystal <i></i> quasicrystal <i></i> amorphous <em>58% decision threshold</em></figcaption>
+          </figure>
           <p id="auditNote">The classifier waits for enough live atoms, then compares RDF, coordination, and geometric powder S(q) evidence with the reference library.</p>
         </section>
       </aside>
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-44"></script>
+  <script type="module" src="./app.js?v=20260824-46"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-5"></script>
 </body>
 </html>
