@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "orders": {
+    "2": {
+      "autonomous_or_exponential_growth_claimed": false,
+      "candidate_generation_target_used": false,
+      "consumed_candidates": 1220,
+      "consumed_exact_ranks": [[4, 3, 71], [5, 3, 69]],
+      "consumed_exact_supplied": 0,
+      "consumed_labels_opened_after_scores": true,
+      "consumed_receipt_digest": "d1f5c889f874cac752d32dd3e4d7f1c0bbda3a14086e0874b18358e2d49b84b1",
+      "consumed_unique_graphs": 1063,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 12,
+      "development_examples": 3994,
+      "development_folds": [
+        {"exact_branches": 4, "exact_branches_supplied": 4, "exact_ranks": [[0, 1, 9], [0, 2, 8], [0, 3, 9], [0, 4, 9]], "heldout_group": 0},
+        {"exact_branches": 8, "exact_branches_supplied": 6, "exact_ranks": [[1, 1, 21], [1, 2, 1], [1, 3, 25], [1, 4, 3], [1, 5, 1], [1, 6, 4], [1, 7, 1], [1, 8, 1]], "heldout_group": 1},
+        {"exact_branches": 1, "exact_branches_supplied": 1, "exact_ranks": [[2, 1, 5]], "heldout_group": 2},
+        {"exact_branches": 1, "exact_branches_supplied": 1, "exact_ranks": [[3, 1, 2]], "heldout_group": 3}
+      ],
+      "development_geometry_digest": "73f5e967a4406627db7426742f903cecc1de78aac9a1bbd032112987c4c94d70",
+      "development_positive_examples": 95,
+      "diagnostic_uses_consumed_development_labels": true,
+      "final_model_digest": "c780689ee1f1f2bc55e20d9771272b8b5c5207a34d8a1d73b2ace1f5922d8c69",
+      "final_model_features": 1179,
+      "fresh_confirmation_claimed": false,
+      "result_digest": "06b2d48b37337d6842938e00452e559d3f4ac4ab282483024e6fae6a9f1da962",
+      "schema_version": 1,
+      "spec": {"interaction_order": 2, "learning_rate": 0.16, "minimum_feature_groups": 2, "objective": "pairwise-aggregated", "ridge": 10.0, "steps": 100, "support_type_weight": 0.0},
+      "top_k": 16,
+      "train_length_scale": 1.070466269319248
+    },
+    "3": {
+      "autonomous_or_exponential_growth_claimed": false,
+      "candidate_generation_target_used": false,
+      "consumed_candidates": 1220,
+      "consumed_exact_ranks": [[4, 3, 80], [5, 3, 78]],
+      "consumed_exact_supplied": 0,
+      "consumed_labels_opened_after_scores": true,
+      "consumed_receipt_digest": "65b354b28bf8805b21f6110fc84fe5369e090a38f91a2bbb19970a39066cf442",
+      "consumed_unique_graphs": 1063,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 9,
+      "development_examples": 3994,
+      "development_folds": [
+        {"exact_branches": 4, "exact_branches_supplied": 1, "exact_ranks": [[0, 1, 3], [0, 2, 53], [0, 3, 83], [0, 4, 48]], "heldout_group": 0},
+        {"exact_branches": 8, "exact_branches_supplied": 6, "exact_ranks": [[1, 1, 36], [1, 2, 4], [1, 3, 41], [1, 4, 10], [1, 5, 3], [1, 6, 6], [1, 7, 2], [1, 8, 2]], "heldout_group": 1},
+        {"exact_branches": 1, "exact_branches_supplied": 1, "exact_ranks": [[2, 1, 12]], "heldout_group": 2},
+        {"exact_branches": 1, "exact_branches_supplied": 1, "exact_ranks": [[3, 1, 15]], "heldout_group": 3}
+      ],
+      "development_geometry_digest": "73f5e967a4406627db7426742f903cecc1de78aac9a1bbd032112987c4c94d70",
+      "development_positive_examples": 95,
+      "diagnostic_uses_consumed_development_labels": true,
+      "final_model_digest": "0699e87744c51899fb8ffc62d78cae0f56208fd9d75bb400958088c3c69e9e6f",
+      "final_model_features": 15409,
+      "fresh_confirmation_claimed": false,
+      "result_digest": "bd289f01426f24f4c3bfa9486f057010d7d4cce9c8701a4b34746d7680884067",
+      "schema_version": 1,
+      "spec": {"interaction_order": 3, "learning_rate": 0.16, "minimum_feature_groups": 2, "objective": "pairwise-aggregated", "ridge": 10.0, "steps": 100, "support_type_weight": 0.0},
+      "top_k": 16,
+      "train_length_scale": 1.070466269319248
+    }
+  },
+  "top_k_gate_passed": false,
+  "ablation_digest": "99707ab0616045938c447d1bfa9263d1126d92cbc13c08d44d29a325b7987fc1"
+}

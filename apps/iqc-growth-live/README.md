@@ -2765,6 +2765,17 @@ transfer. A new marking must represent which typed parent obligations are
 discharged and created by the child, rather than summarize either endpoint in
 isolation.
 
+That identity-preserving transition has now been tested directly. Every
+candidate becomes a canonical six-node graph with three typed parent
+obligations, three typed child obligations, and all proper-SE(3)-invariant
+within/cross incidences (shared colored support, endpoint ownership, distance
+profiles, and chirality). The order-two value supplies `12 / 14` exact
+development branches and moves the fifth-geometry exact ranks to `69` and
+`71`; order three supplies `9 / 14` and reaches ranks `78` and `80`. Both miss
+the unchanged top-`16` gate. Explicit obligation correspondence is therefore
+directionally useful but insufficient, and neither model is exposed as a
+selectable autonomous marking.
+
 Serve the repository root and open `/iqc-growth-live/`.
 ### Fourth-block IQC replay and marking transfer
 
