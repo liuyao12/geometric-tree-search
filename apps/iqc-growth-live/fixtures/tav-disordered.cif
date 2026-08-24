@@ -17,11 +17,12 @@ _atom_site_fract_x
 _atom_site_fract_y
 _atom_site_fract_z
 _atom_site_occupancy
+_atom_site_charge
 _atom_site_U_iso_or_equiv
 _atom_site_B_iso_or_equiv
-Ta1 Ta 0 0 0 0.6 0.010 .
-V1 V 0 0 0 0.4 0.020 .
-O1 O 0.25 0.25 0.25 0.5 . 0.789568
+Ta1 Ta 0 0 0 0.6 5 0.010 .
+V1 V 0 0 0 0.4 5 0.020 .
+O1 O 0.25 0.25 0.25 0.5 -2 . 0.789568
 loop_
 _atom_site_aniso_label
 _atom_site_aniso_U_11

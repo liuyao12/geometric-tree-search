@@ -139,10 +139,10 @@ const ANATOMY = {
 const PHYSICS_MAP = {
   bonding: {
     status: "proved", label: "bonding + coordination", title: "Bonding topology becomes a colored metric cover",
-    physical: "Element identity, bond-length neighborhoods, coordination, bond angles, molecular membership, bulk composition, and recurring local polyhedra already present in the supplied configuration.",
-    geometric: "Complete colored supports are augmented by species-pair exclusions, ordered coordination caps, separated three-body angle bands, and an arbitrary-component composition reservoir. Supports may be irregular, centre-free, and overlapping.",
-    growth: "Hard geometry rejects collisions, oversaturation, and forbidden observed-angle gaps. Optional soft strain and reservoir terms rank the same frozen actions by local distortion and composition drift without changing their coordinates.",
-    boundary: "The soft scores are not energies or chemical potentials. No charge density, oxidation state, bond order, electronic free energy, force, temperature, or reaction barrier is evaluated.",
+    physical: "Element identity, optionally supplied formal oxidation state, bond-length neighborhoods, coordination, bond angles, molecular membership, bulk composition, and recurring local polyhedra already present in the supplied configuration.",
+    geometric: "Complete colored supports are augmented by species-pair exclusions, ordered coordination caps, separated three-body angle bands, an arbitrary-component composition reservoir, and—only when completely supplied—a formal-charge reservoir. Supports may be irregular, centre-free, and overlapping.",
+    growth: "Hard geometry rejects collisions, oversaturation, and forbidden observed-angle gaps. Optional soft strain, composition, and formal-charge bookkeeping rank the same frozen actions without changing their coordinates.",
+    boundary: "The soft scores are not energies or chemical potentials. Formal oxidation states may be preserved as input labels; no charge density, electrostatic energy, inferred oxidation state, bond order, electronic free energy, force, temperature, or reaction barrier is evaluated.",
     systems: [
       ["NaCl", "1:1 octahedral coordination", "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir", "Coulomb energy and phonons omitted"],
       ["H₂O ice", "Bent H₂O + tetrahedral O network", "O→H≤2 · H→O≤1 · bent/tetrahedral bands · H₂O reservoir", "Proton energetics unresolved"],
@@ -196,7 +196,7 @@ const PHYSICS_MAP = {
   kinetics: {
     status: "open", label: "thermodynamics + kinetics", title: "Leap-frogging dynamics is the approximation boundary",
     physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder.",
-    geometric: "Structural evidence, connection successes/failures, dimensionless contact/angle strain, and composition drift are retained. Every term is learned from the sample and independently switchable for ablation.",
+    geometric: "Structural evidence, connection successes/failures, dimensionless contact/angle strain, composition drift, and optional supplied formal-charge drift are retained. Every active term is learned or read from the sample and independently switchable for ablation.",
     growth: "Tree search jumps directly between geometrically certified states. Soft geometry may order legal branches; proposal checks and backtracks measure computational work, not elapsed physical time.",
     boundary: "The portal predicts structurally admissible continuation, not a growth rate or thermodynamic phase diagram. MD/DFT or experimental labels must calibrate those claims separately.",
     systems: [

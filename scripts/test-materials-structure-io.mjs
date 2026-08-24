@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import {
   occupancyChemistryToken,
   occupancyDisplayLabel,
+  formalChargeFromChemistryToken,
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
   symmetricTensorEigenSystem,
@@ -52,21 +53,55 @@ assert.equal(parsedCif.metadata.symmetryOperations, 2);
 assert.ok(parsedCif.atoms.every((atom) => atom.species === "Si"));
 assert.equal(validateStructure(parsedCif).valid, true);
 
+const oxidationCif = `data_sodium_chloride_charges
+_cell_length_a 5.64
+_cell_length_b 5.64
+_cell_length_c 5.64
+_cell_angle_alpha 90
+_cell_angle_beta 90
+_cell_angle_gamma 90
+loop_
+_atom_type_symbol
+_atom_type_oxidation_number
+Na1 1
+Cl1 -1
+loop_
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Na1 0 0 0
+Cl1 .5 .5 .5
+`;
+const chargedNacl = parseStructureText(oxidationCif, "charged-nacl.cif");
+assert.deepEqual(chargedNacl.atoms.map(occupancyChemistryToken), ["Na^+1", "Cl^-1"]);
+const chargedNaclValidation = validateStructure(chargedNacl);
+assert.equal(chargedNaclValidation.formalChargeCoverage, 1);
+assert.equal(chargedNaclValidation.netFormalCharge, 0);
+
 const disorderedCif = await readFile(new URL("../apps/iqc-growth-live/fixtures/tav-disordered.cif", import.meta.url), "utf8");
 const disorder = parseStructureText(disorderedCif, "tav.cif");
 assert.equal(disorder.atoms.length, 3, "co-located alternatives must be one site; inversion creates two O sites");
 const mixed = disorder.atoms.find((atom) => atom.occupancyAlternatives.length === 2);
-assert.deepEqual(mixed.occupancyAlternatives, [{ species: "Ta", fraction: .6 }, { species: "V", fraction: .4 }]);
-assert.equal(occupancyChemistryToken(mixed), "occ[Ta=0.6;V=0.4]");
-assert.equal(occupancyDisplayLabel(mixed), "Ta 60% / V 40%");
+assert.deepEqual(mixed.occupancyAlternatives, [
+  { species: "Ta", fraction: .6, formalCharge: 5 },
+  { species: "V", fraction: .4, formalCharge: 5 },
+]);
+assert.equal(occupancyChemistryToken(mixed), "occ[Ta^+5=0.6;V^+5=0.4]");
+assert.equal(occupancyDisplayLabel(mixed), "Ta(+5) 60% / V(+5) 40%");
 const partial = disorder.atoms.find((atom) => atom.species === "O");
-assert.equal(occupancyChemistryToken(partial), "occ[O=0.5;Vac=0.5]");
+assert.equal(occupancyChemistryToken(partial), "occ[O^-2=0.5;Vac=0.5]");
 const disorderValidation = validateStructure(disorder);
 assert.equal(disorderValidation.valid, true);
 assert.equal(disorderValidation.mixedOccupancySites, 1);
 assert.equal(disorderValidation.partialOccupancySites, 2);
 assert.deepEqual(disorderValidation.elementCounts, { Ta: .6, V: .4, O: 1 });
 assert.equal(disorderValidation.vacancyFraction, 1);
+assert.equal(disorderValidation.formalChargeCoverage, 1);
+assert.equal(disorderValidation.netFormalCharge, 3);
+assert.equal(formalChargeFromChemistryToken(occupancyChemistryToken(mixed)), 5);
+assert.equal(formalChargeFromChemistryToken(occupancyChemistryToken(partial)), -1);
+assert.equal(formalChargeFromChemistryToken("O"), null);
 assert.equal(disorderValidation.thermalDisplacementSites, 3);
 assert.ok(Math.abs(mixed.uIsoA2 - .014) < 1e-12, "co-located alternatives use occupancy-weighted Uiso");
 assert.ok(Math.abs(partial.uIsoA2 - .0175) < 1e-12, "anisotropic Ueq is trace(U)/3");
@@ -148,12 +183,17 @@ const composite = parseStructureText(JSON.stringify({ atoms: [
   { species: "O", occupancy: { O: .75 }, position: [2, 0, 0] },
   { species: "O1A", position: [0, 2, 0] },
   { species: "C", position: [2, 2, 0], bIsoA2: .789568 },
+  { species: "Fe2+/Fe3+", position: [3, 0, 0] },
+  { species: "Fe+2/Fe+3", position: [4, 0, 0] },
 ] }), "occupancy.json");
 assert.equal(occupancyChemistryToken(composite.atoms[0]), "occ[Ta=0.5;V=0.5]");
 assert.equal(composite.atoms[0].occupancyFractionsInferred, true);
 assert.equal(occupancyChemistryToken(composite.atoms[1]), "occ[O=0.75;Vac=0.25]");
 assert.equal(occupancyChemistryToken(composite.atoms[2]), "O", "ordinary CIF-style atom labels must not invent an A alternative");
 assert.ok(Math.abs(composite.atoms[3].uIsoA2 - .01) < 2e-8, "Biso converts to Uiso through B=8π²U");
+assert.equal(occupancyChemistryToken(composite.atoms[4]), "occ[Fe^+2=0.5;Fe^+3=0.5]");
+assert.equal(formalChargeFromChemistryToken(occupancyChemistryToken(composite.atoms[4])), 2.5);
+assert.equal(occupancyChemistryToken(composite.atoms[5]), "occ[Fe^+2=0.5;Fe^+3=0.5]");
 assert.throws(() => parseStructureText(JSON.stringify({ atoms: [
   { species: "O", position: [0, 0, 0], uIsoA2: -.01 },
 ] }), "negative-u.json"), /must be nonnegative/);

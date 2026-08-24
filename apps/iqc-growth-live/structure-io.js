@@ -18,13 +18,52 @@ function tokens(line) {
 
 function elementSymbols(value) {
   const text = String(value || "X").trim();
-  const parts = text.split(/[\/|,+]/).map((part) => part.trim()).filter(Boolean);
+  const parts = text.split(/[\/|,]/).map((part) => part.trim()).filter(Boolean);
   const matches = (parts.length > 1 ? parts : [text]).map((part) => part.match(/[A-Z][a-z]?/)?.[0]).filter(Boolean);
   return [...new Set(matches.length ? matches : ["X"])];
 }
 
 function elementSymbol(value) {
   return elementSymbols(value)[0];
+}
+
+function formalChargeFromLabel(value) {
+  const text = String(value || "").trim();
+  const terminal = text.match(/^[A-Z][a-z]?\s*(?:(\d+(?:\.\d+)?)\s*([+-])|([+-])\s*(\d+(?:\.\d+)?))$/);
+  if (!terminal) return null;
+  const sign = terminal[2] || terminal[3];
+  const magnitude = Number(terminal[1] || terminal[4] || 1);
+  return magnitude * (sign === "+" ? 1 : -1);
+}
+
+function speciesChargeAlternativesFromLabel(value) {
+  const parts = String(value || "X").split(/[\/|,]/).map((part) => part.trim()).filter(Boolean);
+  const records = parts.map((part) => ({
+    species: elementSymbol(part),
+    formalCharge: formalChargeFromLabel(part),
+  }));
+  const unique = new Map();
+  records.forEach((record) => unique.set(
+    `${record.species}|${record.formalCharge === null ? "?" : record.formalCharge}`,
+    record,
+  ));
+  return [...unique.values()];
+}
+
+function optionalFormalCharge(value, fallback = null) {
+  if (value === undefined || value === null || value === "" || value === "." || value === "?") return fallback;
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) throw new Error(`Invalid formal charge: ${value}`);
+    return value;
+  }
+  const text = String(value).trim();
+  if (NUMBER.test(text)) return numeric(text, "formal charge");
+  const suffix = text.match(/^([+-]?\d+(?:\.\d+)?)?([+-])$/);
+  if (suffix) {
+    const magnitude = suffix[1] ? Math.abs(Number(suffix[1])) : 1;
+    return magnitude * (suffix[2] === "+" ? 1 : -1);
+  }
+  throw new Error(`Invalid formal charge: ${value}`);
 }
 
 const occupancyFraction = (value, fallback = null) => {
@@ -71,18 +110,26 @@ function thermalTensorForSite(site) {
 
 function occupancyEntries(value) {
   if (Array.isArray(value)) return value.map((entry) => typeof entry === "string"
-    ? { species: elementSymbol(entry), fraction: null }
+    ? { species: elementSymbol(entry), fraction: null, formalCharge: formalChargeFromLabel(entry) }
     : { species: elementSymbol(entry.species || entry.element || entry.symbol),
-      fraction: occupancyFraction(entry.fraction ?? entry.occupancy, null) });
+      fraction: occupancyFraction(entry.fraction ?? entry.occupancy, null),
+      formalCharge: optionalFormalCharge(entry.formalCharge ?? entry.charge ?? entry.oxidationState, null) });
   if (value && typeof value === "object") return Object.entries(value)
-    .map(([species, fraction]) => ({ species: elementSymbol(species), fraction: occupancyFraction(fraction, null) }));
+    .map(([species, record]) => typeof record === "object"
+      ? { species: elementSymbol(species), fraction: occupancyFraction(record.fraction ?? record.occupancy, null),
+        formalCharge: optionalFormalCharge(record.formalCharge ?? record.charge ?? record.oxidationState, formalChargeFromLabel(species)) }
+      : { species: elementSymbol(species), fraction: occupancyFraction(record, null), formalCharge: formalChargeFromLabel(species) });
   return [];
 }
 
-export function normalizeSiteOccupancy(speciesValue, occupancyValue = 1, alternativesValue = null) {
-  const labelSpecies = elementSymbols(speciesValue);
+export function normalizeSiteOccupancy(speciesValue, occupancyValue = 1, alternativesValue = null, formalChargeValue = null) {
+  const labelAlternatives = speciesChargeAlternativesFromLabel(speciesValue);
+  const siteCharge = optionalFormalCharge(formalChargeValue, null);
   const explicit = occupancyEntries(alternativesValue);
-  let entries = explicit.length ? explicit : labelSpecies.map((species) => ({ species, fraction: null }));
+  let entries = explicit.length ? explicit : labelAlternatives.map(({ species, formalCharge }) => ({
+    species, fraction: null, formalCharge: siteCharge ?? formalCharge,
+  }));
+  if (siteCharge !== null) entries = entries.map((entry) => ({ ...entry, formalCharge: entry.formalCharge ?? siteCharge }));
   const scalar = occupancyFraction(Array.isArray(occupancyValue) || (occupancyValue && typeof occupancyValue === "object")
     ? 1 : occupancyValue, 1);
   const known = entries.reduce((sum, entry) => sum + (entry.fraction ?? 0), 0);
@@ -93,12 +140,18 @@ export function normalizeSiteOccupancy(speciesValue, occupancyValue = 1, alterna
   entries = entries.map((entry) => ({
     species: entry.species,
     fraction: entry.fraction ?? (unknown.length ? remaining / unknown.length : 0),
+    formalCharge: entry.formalCharge ?? null,
   }));
   const combined = new Map();
-  entries.forEach(({ species, fraction }) => combined.set(species, (combined.get(species) || 0) + fraction));
-  const alternatives = [...combined.entries()].filter(([, fraction]) => fraction > 1e-10)
-    .map(([species, fraction]) => ({ species, fraction }))
-    .sort((first, second) => second.fraction - first.fraction || first.species.localeCompare(second.species));
+  entries.forEach(({ species, fraction, formalCharge }) => {
+    const key = `${species}|${formalCharge === null ? "?" : formalCharge}`;
+    const current = combined.get(key) || { species, fraction: 0, formalCharge };
+    current.fraction += fraction;
+    combined.set(key, current);
+  });
+  const alternatives = [...combined.values()].filter((entry) => entry.fraction > 1e-10)
+    .sort((first, second) => second.fraction - first.fraction || first.species.localeCompare(second.species)
+      || (first.formalCharge ?? 0) - (second.formalCharge ?? 0));
   const total = alternatives.reduce((sum, entry) => sum + entry.fraction, 0);
   if (!alternatives.length || total <= 0) throw new Error("A crystallographic site must have positive occupancy");
   if (total > 1 + 1e-8) throw new Error(`Occupational alternatives sum to ${total.toFixed(6)}, above 1`);
@@ -107,7 +160,10 @@ export function normalizeSiteOccupancy(speciesValue, occupancyValue = 1, alterna
     occupancy: total,
     occupancyTotal: total,
     occupancyAlternatives: alternatives,
-    occupancyFractionsInferred: !explicit.length && labelSpecies.length > 1,
+    occupancyFractionsInferred: !explicit.length && labelAlternatives.length > 1,
+    formalCharge: alternatives.every((entry) => entry.formalCharge !== null)
+      ? alternatives.reduce((sum, entry) => sum + entry.fraction * entry.formalCharge, 0) : null,
+    formalChargeKnownFraction: alternatives.reduce((sum, entry) => sum + (entry.formalCharge === null ? 0 : entry.fraction), 0),
   };
 }
 
@@ -115,13 +171,16 @@ const compactFraction = (value) => Number(value.toFixed(8)).toString();
 
 export function occupancyChemistryToken(atom) {
   const normalized = normalizeSiteOccupancy(atom?.species, atom?.occupancy ?? atom?.occupancyTotal ?? 1,
-    atom?.occupancyAlternatives ?? (Array.isArray(atom?.occupancy) || (atom?.occupancy && typeof atom.occupancy === "object") ? atom.occupancy : null));
+    atom?.occupancyAlternatives ?? (Array.isArray(atom?.occupancy) || (atom?.occupancy && typeof atom.occupancy === "object") ? atom.occupancy : null),
+    atom?.formalCharge ?? atom?.charge ?? null);
+  const chargedSpecies = (entry) => entry.formalCharge === null ? entry.species
+    : `${entry.species}^${entry.formalCharge >= 0 ? "+" : ""}${compactFraction(entry.formalCharge)}`;
   if (normalized.occupancyAlternatives.length === 1 && Math.abs(normalized.occupancyTotal - 1) < 1e-8) {
-    return normalized.occupancyAlternatives[0].species;
+    return chargedSpecies(normalized.occupancyAlternatives[0]);
   }
   const entries = normalized.occupancyAlternatives
-    .slice().sort((first, second) => first.species.localeCompare(second.species))
-    .map((entry) => `${entry.species}=${compactFraction(entry.fraction)}`);
+    .slice().sort((first, second) => chargedSpecies(first).localeCompare(chargedSpecies(second)))
+    .map((entry) => `${chargedSpecies(entry)}=${compactFraction(entry.fraction)}`);
   const vacancy = Math.max(0, 1 - normalized.occupancyTotal);
   if (vacancy > 1e-8) entries.push(`Vac=${compactFraction(vacancy)}`);
   return `occ[${entries.join(";")}]`;
@@ -129,11 +188,33 @@ export function occupancyChemistryToken(atom) {
 
 export function occupancyDisplayLabel(atom) {
   const normalized = normalizeSiteOccupancy(atom?.species, atom?.occupancy ?? atom?.occupancyTotal ?? 1,
-    atom?.occupancyAlternatives ?? (Array.isArray(atom?.occupancy) || (atom?.occupancy && typeof atom.occupancy === "object") ? atom.occupancy : null));
-  const entries = normalized.occupancyAlternatives.map((entry) => `${entry.species} ${Math.round(entry.fraction * 1000) / 10}%`);
+    atom?.occupancyAlternatives ?? (Array.isArray(atom?.occupancy) || (atom?.occupancy && typeof atom.occupancy === "object") ? atom.occupancy : null),
+    atom?.formalCharge ?? atom?.charge ?? null);
+  const entries = normalized.occupancyAlternatives.map((entry) => `${entry.species}${entry.formalCharge === null ? "" : `(${entry.formalCharge >= 0 ? "+" : ""}${compactFraction(entry.formalCharge)})`} ${Math.round(entry.fraction * 1000) / 10}%`);
   const vacancy = Math.max(0, 1 - normalized.occupancyTotal);
   if (vacancy > 1e-8) entries.push(`vacancy ${Math.round(vacancy * 1000) / 10}%`);
   return entries.join(" / ");
+}
+
+function chargeFromTokenSpecies(tokenSpecies) {
+  const match = String(tokenSpecies).match(/\^([+-]\d+(?:\.\d+)?)$/);
+  return match ? Number(match[1]) : null;
+}
+
+export function formalChargeFromChemistryToken(token) {
+  const occupational = String(token).match(/^occ\[(.*)]$/);
+  if (!occupational) return chargeFromTokenSpecies(token);
+  let total = 0;
+  for (const record of occupational[1].split(";")) {
+    const [species, fractionText] = record.split("=");
+    if (species === "Vac") continue;
+    const charge = chargeFromTokenSpecies(species);
+    if (charge === null) return null;
+    const fraction = Number(fractionText);
+    if (!Number.isFinite(fraction)) return null;
+    total += fraction * charge;
+  }
+  return total;
 }
 
 export function isotropicPairDistanceUncertaintyA(oneAxisSigmaA) {
@@ -143,12 +224,15 @@ export function isotropicPairDistanceUncertaintyA(oneAxisSigmaA) {
 }
 
 function mergeSiteOccupancies(first, second, additive) {
-  const fractions = new Map(first.occupancyAlternatives.map((entry) => [entry.species, entry.fraction]));
-  second.occupancyAlternatives.forEach((entry) => fractions.set(entry.species, additive
-    ? (fractions.get(entry.species) || 0) + entry.fraction
-    : Math.max(fractions.get(entry.species) || 0, entry.fraction)));
+  const keyFor = (entry) => `${entry.species}|${entry.formalCharge === null || entry.formalCharge === undefined ? "?" : entry.formalCharge}`;
+  const fractions = new Map(first.occupancyAlternatives.map((entry) => [keyFor(entry), { ...entry }]));
+  second.occupancyAlternatives.forEach((entry) => {
+    const key = keyFor(entry); const previous = fractions.get(key);
+    fractions.set(key, { ...entry, fraction: additive
+      ? (previous?.fraction || 0) + entry.fraction : Math.max(previous?.fraction || 0, entry.fraction) });
+  });
   const normalized = normalizeSiteOccupancy(first.species, 1,
-    [...fractions].map(([species, fraction]) => ({ species, fraction })));
+    [...fractions.values()]);
   const thermal = [[first, first.occupancyTotal ?? first.occupancy ?? 1], [second, second.occupancyTotal ?? second.occupancy ?? 1]]
     .filter(([site]) => thermalTensorForSite(site));
   const thermalWeight = thermal.reduce((sum, [, weight]) => sum + weight, 0);
@@ -362,10 +446,19 @@ function parseCif(text, filename) {
   );
   const atomLoop = loops.find((loop) => loop.headers.includes("_atom_site_fract_x") || loop.headers.includes("_atom_site_cartn_x"));
   if (!atomLoop) throw new Error("CIF has no supported atom-site coordinate loop");
+  const atomTypeLoop = loops.find((loop) => loop.headers.includes("_atom_type_symbol")
+    && loop.headers.includes("_atom_type_oxidation_number"));
+  const oxidationByType = new Map();
+  if (atomTypeLoop) {
+    const symbolIndex = atomTypeLoop.headers.indexOf("_atom_type_symbol");
+    const oxidationIndex = atomTypeLoop.headers.indexOf("_atom_type_oxidation_number");
+    atomTypeLoop.rows.forEach((row) => oxidationByType.set(String(row[symbolIndex]), optionalFormalCharge(row[oxidationIndex], null)));
+  }
   const column = (names) => names.map((name) => atomLoop.headers.indexOf(name)).find((index) => index >= 0) ?? -1;
   const speciesColumn = column(["_atom_site_type_symbol", "_atom_site_label"]);
   const siteLabelColumn = column(["_atom_site_label"]);
   const occupancyColumn = column(["_atom_site_occupancy"]);
+  const chargeColumn = column(["_atom_site_charge"]);
   const uIsoColumn = column(["_atom_site_u_iso_or_equiv", "_atom_site_u_iso"]);
   const bIsoColumn = column(["_atom_site_b_iso_or_equiv", "_atom_site_b_iso"]);
   const fractionalColumns = ["_atom_site_fract_x", "_atom_site_fract_y", "_atom_site_fract_z"].map((name) => atomLoop.headers.indexOf(name));
@@ -400,9 +493,12 @@ function parseCif(text, filename) {
   const asymmetricRows = atomLoop.rows.map((row) => {
     const coordinates = (fractional ? fractionalColumns : cartesianColumns).map((index, axis) => numeric(row[index], `atom coordinate ${axis + 1}`));
     const siteLabel = siteLabelColumn >= 0 ? String(row[siteLabelColumn]) : null;
+    const typeLabel = String(row[speciesColumn]);
+    const formalCharge = chargeColumn >= 0 ? optionalFormalCharge(row[chargeColumn], null)
+      : oxidationByType.get(typeLabel) ?? formalChargeFromLabel(typeLabel);
     const anisotropic = siteLabel ? anisotropicByLabel.get(siteLabel) : null;
     return {
-      ...normalizeSiteOccupancy(row[speciesColumn], occupancyColumn >= 0 ? row[occupancyColumn] : 1),
+      ...normalizeSiteOccupancy(typeLabel, occupancyColumn >= 0 ? row[occupancyColumn] : 1, null, formalCharge),
       ...(anisotropic || normalizeThermalDisplacement({
         uIsoA2: uIsoColumn >= 0 ? row[uIsoColumn] : null,
         bIsoA2: bIsoColumn >= 0 ? row[bIsoColumn] : null,
@@ -513,7 +609,8 @@ function parseJson(text, filename) {
   if (Array.isArray(data.atoms)) atoms = data.atoms.map((atom) => ({
     ...normalizeSiteOccupancy(atom.species || atom.element || atom.symbol,
       typeof atom.occupancy === "number" ? atom.occupancy : atom.occupancyTotal ?? 1,
-      atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null)),
+      atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null),
+      atom.formalCharge ?? atom.charge ?? atom.oxidationState ?? null),
     ...(atom.uAnisoCartesianA2 || atom.u_aniso_cartesian
       ? normalizeAnisotropicDisplacement(atom.uAnisoCartesianA2 || atom.u_aniso_cartesian)
       : normalizeThermalDisplacement({
@@ -563,11 +660,16 @@ export function validateStructure(structure, options = {}) {
   const thermalSigmas = [];
   const thermalAxisSigmas = [];
   let anisotropicDisplacementSites = 0;
+  let formalChargeKnownOccupancy = 0;
+  let totalOccupiedFraction = 0;
+  let netFormalCharge = 0;
+  let chargeResolvedSites = 0;
   structure?.atoms?.forEach((atom, index) => {
     let normalized = null;
     try {
       normalized = normalizeSiteOccupancy(atom.species, atom.occupancy ?? atom.occupancyTotal ?? 1,
-        atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null));
+        atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null),
+        atom.formalCharge ?? atom.charge ?? atom.oxidationState ?? null);
     } catch (error) {
       errors.push(`Atom ${index + 1}: ${error.message}`);
     }
@@ -578,7 +680,13 @@ export function validateStructure(structure, options = {}) {
     normalized?.occupancyAlternatives.forEach((entry) => {
       elementCounts[entry.species] = (elementCounts[entry.species] || 0) + entry.fraction;
       siteElementCounts[entry.species] = (siteElementCounts[entry.species] || 0) + 1;
+      totalOccupiedFraction += entry.fraction;
+      if (entry.formalCharge !== null) {
+        formalChargeKnownOccupancy += entry.fraction;
+        netFormalCharge += entry.fraction * entry.formalCharge;
+      }
     });
+    if (normalized && normalized.formalChargeKnownFraction >= normalized.occupancyTotal - 1e-8) chargeResolvedSites++;
     if (normalized?.occupancyAlternatives.length > 1) mixedOccupancySites++;
     if (normalized && normalized.occupancyTotal < .999999) {
       partialOccupancySites++;
@@ -602,6 +710,9 @@ export function validateStructure(structure, options = {}) {
   if (inferredOccupancySites) warnings.push(`${inferredOccupancySites} composite species label${inferredOccupancySites === 1 ? "" : "s"} lacked explicit fractions; equal alternatives were retained and marked inferred`);
   if (thermalSigmas.length) warnings.push(`${thermalSigmas.length} site${thermalSigmas.length === 1 ? "" : "s"} preserve positional uncertainty from isotropic or equivalent U/B`);
   if (anisotropicDisplacementSites) warnings.push(`${anisotropicDisplacementSites} site${anisotropicDisplacementSites === 1 ? "" : "s"} preserve full Cartesian anisotropic displacement tensors`);
+  const formalChargeCoverage = formalChargeKnownOccupancy / Math.max(totalOccupiedFraction, 1e-12);
+  if (formalChargeKnownOccupancy > 0) warnings.push(`Formal oxidation-state coverage is ${(formalChargeCoverage * 100).toFixed(1)}%; net supplied-cell formal charge ${netFormalCharge >= 0 ? "+" : ""}${Number(netFormalCharge.toFixed(6))}`);
+  if (formalChargeCoverage >= .999999 && Math.abs(netFormalCharge) > 1e-5) warnings.push("Fully charge-resolved supplied cell is not formally neutral; this is retained as input evidence, not corrected");
   let minimumDistance = Infinity;
   let duplicatePairs = 0;
   const nearest = [];
@@ -635,6 +746,8 @@ export function validateStructure(structure, options = {}) {
     maximumThermalSigmaA: thermalSigmas.at(-1) || 0,
     anisotropicDisplacementSites,
     maximumThermalAxisSigmaA: Math.max(0, ...thermalAxisSigmas),
+    formalChargeCoverage, chargeResolvedSites,
+    netFormalCharge,
     minimumDistance: Number.isFinite(minimumDistance) ? minimumDistance : null,
     medianNearestDistance, cellVolume: structure?.cell ? Math.abs(determinant(structure.cell)) : null,
   };

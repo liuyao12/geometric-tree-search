@@ -376,6 +376,14 @@
                 <option value="none">Off · unrestricted frontier drift</option>
               </select>
             </label>
+            <label class="field" for="chargePreferenceSelect">
+              <span>Formal-charge reservoir <b id="chargePreferenceHint">requires supplied oxidation states</b></span>
+              <select id="chargePreferenceSelect">
+                <option value="auto" selected>Auto · use complete supplied channel</option>
+                <option value="strong">Supplied formal charge · strong</option>
+                <option value="none">Off · report only</option>
+              </select>
+            </label>
             <label class="field" for="surfacePreferenceSelect">
               <span>Surface completion <b>soft coordination-deficit proxy</b></span>
               <select id="surfacePreferenceSelect">
@@ -710,6 +718,7 @@
             <div><dt>compatibility interval</dt><dd id="energyValue">—</dd></div>
             <div><dt>geometric strain</dt><dd id="strainValue">—</dd></div>
             <div><dt>composition drift</dt><dd id="compositionValue">—</dd></div>
+            <div><dt>formal-charge drift</dt><dd id="chargeValue">—</dd></div>
             <div><dt>surface deficit</dt><dd id="surfaceValue">—</dd></div>
             <div><dt>resolved by</dt><dd id="resolverValue">—</dd></div>
           </dl>
@@ -752,7 +761,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-36"></script>
+  <script type="module" src="./app.js?v=20260824-37"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-3"></script>
 </body>
 </html>

@@ -51,11 +51,15 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="receiptStatus"' in html
     assert 'id="strainValue"' in html
     assert 'id="compositionValue"' in html
+    assert 'id="chargeValue"' in html
     assert 'id="surfaceValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-36' in html
+    assert 'app.js?v=20260824-37' in html
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert 'surfaceCompletionRanking: {' in source
+    assert 'formalChargeBalanceRanking: {' in source
+    assert 'oxidationStatesInferred: false' in source
+    assert 'not charge density, Coulomb energy, redox chemistry' in source
     assert 'not bond or surface energy' in source
     assert ".receipt-actions" in css
     assert ".receipt-status" in css

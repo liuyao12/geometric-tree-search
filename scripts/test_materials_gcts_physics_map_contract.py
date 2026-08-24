@@ -25,8 +25,8 @@ def test_physics_map_preserves_claim_boundaries() -> None:
     # Structural continuation must not be presented as an energy, rate, or
     # thermodynamic phase predictor.
     assert "The soft scores are not energies or chemical potentials" in atlas
-    assert "No charge density, oxidation state, bond order, electronic free energy, force, temperature, or reaction barrier" in atlas
-    assert "dimensionless contact/angle strain, and composition drift" in atlas
+    assert "Formal oxidation states may be preserved as input labels; no charge density, electrostatic energy, inferred oxidation state" in atlas
+    assert "dimensionless contact/angle strain, composition drift, and optional supplied formal-charge drift" in atlas
     assert "not a growth rate or thermodynamic phase diagram" in atlas
     assert "proposal checks and backtracks measure computational work, not elapsed physical time" in atlas
     assert "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir" in atlas

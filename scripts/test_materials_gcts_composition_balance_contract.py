@@ -20,7 +20,8 @@ def test_composition_reservoir_is_soft_multicomponent_and_audited() -> None:
     admission = APP[APP.index("const accepted = conflicts") : APP.index("return { accepted", APP.index("const accepted = conflicts"))]
     assert "compositionBalance" not in admission
     assert "observed multicomponent fractions used only for optional soft frontier balancing" in APP
-    assert "No oxidation state, formal charge" in README
+    assert "The app never guesses common oxidation states" in README
+    assert "formal-charge reservoir" in README
 
 
 if __name__ == "__main__":

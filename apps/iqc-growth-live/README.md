@@ -236,8 +236,21 @@ observed element fractions. A soft Stage-4 selector can favor actions that
 reduce that drift, or it can be disabled while retaining the diagnostic. The
 term is size-scaled so it remains visible as the solid grows, but it is never a
 hard constraint: a finite surface, nucleus, defect, or temporarily incomplete
-frontier may depart from bulk stoichiometry. No oxidation state, formal charge,
-chemical potential, or elemental feed rate is inferred.
+frontier may depart from bulk stoichiometry. No chemical potential or elemental
+feed rate is inferred.
+
+When an imported CIF or JSON structure explicitly supplies oxidation states,
+the browser preserves them per occupational alternative: Fe2+ and Fe3+ remain
+distinct colored chemistry channels, and a mixed-valence site retains its
+occupancy-weighted formal charge. A separate optional **formal-charge reservoir**
+reports whether an unchanged candidate action moves the frontier's
+mean supplied formal charge toward or away from the reference configuration.
+It is soft ranking only and fails closed at zero weight unless every occupied
+site has a resolved charge. The app never guesses common oxidation states from
+element names. This bookkeeping is not charge density, Coulomb or Madelung
+energy, dielectric screening, redox chemistry, electron transfer, a potential,
+or a chemical potential; charged surfaces and intermediate fronts remain
+admissible.
 
 A separate optional **surface-completion** term measures the remaining ordered
 species coordination deficit relative to the sample median. For each proposed
@@ -246,7 +259,8 @@ after attachment, then combines the coordination healed on those centers with
 the residual deficit introduced by the new sites. Lower is preferred. This is
 the geometric analogue of favoring fewer dangling or unsatisfied contacts, but
 it is deliberately not called bond energy or surface energy: there are no bond
-orders, oxidation states, electronic chemical potentials, or energetic units.
+orders, inferred oxidation states, electronic chemical potentials, or energetic
+units.
 It never rejects an undercoordinated surface and can be disabled independently.
 Balanced and strong modes rank the same frozen candidate set; the live
 inspector and receipt report new-site deficit, healed existing deficit, weight,

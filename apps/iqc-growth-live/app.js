@@ -3,10 +3,11 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
   occupancyChemistryToken,
   occupancyDisplayLabel,
+  formalChargeFromChemistryToken,
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
   validateStructure,
-} from "./structure-io.js?v=20260824-3";
+} from "./structure-io.js?v=20260824-4";
 import { randomNomadStructure } from "./structure-database.js?v=20260824-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
@@ -17,6 +18,7 @@ import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
+import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -102,6 +104,8 @@ const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
 const compositionPreferenceSelect = $("compositionPreferenceSelect");
+const chargePreferenceSelect = $("chargePreferenceSelect");
+const chargePreferenceHint = $("chargePreferenceHint");
 const surfacePreferenceSelect = $("surfacePreferenceSelect");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
@@ -171,6 +175,7 @@ const domainValue = $("domainValue");
 const energyValue = $("energyValue");
 const strainValue = $("strainValue");
 const compositionValue = $("compositionValue");
+const chargeValue = $("chargeValue");
 const surfaceValue = $("surfaceValue");
 const resolverValue = $("resolverValue");
 const constraintLedger = $("constraintLedger");
@@ -437,6 +442,8 @@ let acceptedGeometricStrain = 0;
 let rejectedGeometricStrain = 0;
 let acceptedCompositionDelta = 0;
 let rejectedCompositionDelta = 0;
+let acceptedFormalChargeDelta = 0;
+let rejectedFormalChargeDelta = 0;
 let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
 let constraintNeighborhoodEvaluations = 0;
@@ -464,6 +471,7 @@ let hierarchyEnabled = true;
 let geometryPreference = "strain";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
+let chargePreference = "auto";
 let surfacePreference = "soft";
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
@@ -477,6 +485,7 @@ let coloredDistanceEnvelopes = null;
 let coloredCoordinationEnvelopes = null;
 let coloredAngularEnvelopes = null;
 let compositionTarget = null;
+let formalChargeTarget = null;
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -681,7 +690,10 @@ function importSummary(structure, validation) {
   const thermal = validation.thermalDisplacementSites
     ? ` · U/B ${validation.thermalDisplacementSites} sites${validation.anisotropicDisplacementSites ? ` · ${validation.anisotropicDisplacementSites} anisotropic` : ""} · σ̃ ${validation.medianThermalSigmaA.toFixed(3)} Å`
     : "";
-  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
+  const charge = validation.formalChargeCoverage > 0
+    ? ` · formal q ${(validation.formalChargeCoverage * 100).toFixed(0)}% · cell ${validation.netFormalCharge >= 0 ? "+" : ""}${Number(validation.netFormalCharge.toFixed(4))}`
+    : "";
+  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
 
 async function importStructureFile(file) {
@@ -709,7 +721,7 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
         ? `${parsed.metadata.spaceGroup || "space group"} · #${parsed.metadata.spaceGroupNumber}`
         : parsed.metadata?.spaceGroup || "not supplied",
       audit: "emergent structure audit",
-      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element.`,
+      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed.`,
     },
   };
   elements.forEach(elementRecord);
@@ -1633,6 +1645,7 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
         occupancyLabel: occupancyDisplayLabel(atom),
         occupancyAlternatives: atom.occupancyAlternatives?.map((entry) => ({ ...entry })) || [{ species: atom.species, fraction: atom.occupancy ?? 1 }],
         occupancy: atom.occupancyTotal ?? atom.occupancy ?? 1,
+        formalCharge: atom.formalCharge ?? null,
         uIsoA2: atom.uIsoA2 ?? null,
         thermalSigmaA: atom.thermalSigmaA ?? null,
         uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null,
@@ -3656,7 +3669,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-36",
+      buildId: "20260824-37",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3675,6 +3688,9 @@ async function buildExperimentReceipt() {
         partialSites: importedStructure?.validation?.partialOccupancySites || 0,
         inferredEqualFractionSites: importedStructure?.validation?.inferredOccupancySites || 0,
         totalVacancyFraction: receiptRound(importedStructure?.validation?.vacancyFraction || 0),
+        formalChargeCoverage: receiptRound(importedStructure?.validation?.formalChargeCoverage || 0),
+        formalChargeResolvedSites: importedStructure?.validation?.chargeResolvedSites || 0,
+        netSuppliedCellFormalCharge: receiptRound(importedStructure?.validation?.netFormalCharge || 0),
         occupationalChemistryTokens: [...new Set(referenceAtoms.map((atom) => atom.species))].sort(),
         alternativesCollapsedToPrimarySpecies: false,
       } : null,
@@ -3769,6 +3785,17 @@ async function buildExperimentReceipt() {
         reducedRatio: compositionTarget.reducedRatio,
         fractions: compositionTarget.fractions,
         observations: compositionTarget.observations,
+      },
+      formalChargeReservoir: {
+        role: "optional supplied oxidation-state bookkeeping used only for soft ordering; not charge density, Coulomb energy, redox chemistry, electron transfer, dielectric screening, potential, or chemical potential",
+        available: formalChargeTarget.available,
+        source: formalChargeTarget.source,
+        coverage: receiptRound(formalChargeTarget.coverage),
+        resolvedObservations: formalChargeTarget.resolvedObservations,
+        observations: formalChargeTarget.observations,
+        netReferenceFormalCharge: receiptRound(formalChargeTarget.netFormalCharge),
+        meanReferenceFormalChargePerSite: formalChargeTarget.meanFormalCharge === null ? null : receiptRound(formalChargeTarget.meanFormalCharge),
+        oxidationStatesInferred: false,
       },
     },
     structuralEvidence: {
@@ -3869,6 +3896,16 @@ async function buildExperimentReceipt() {
         targetReducedRatio: compositionTarget.reducedRatio,
         acceptedMeanScaledDelta: receiptRound(acceptedCompositionDelta / Math.max(1, acceptedDecisions)),
         rejectedMeanScaledDelta: receiptRound(rejectedCompositionDelta / Math.max(1, rejectedDecisions)),
+      },
+      formalChargeBalanceRanking: {
+        role: "target-blind soft ordering toward the supplied mean formal charge per site; never a hard surface constraint or electrostatic energy",
+        mode: chargePreference,
+        available: formalChargeTarget.available,
+        enabled: activeFormalChargeWeight() > 0,
+        effectiveWeight: activeFormalChargeWeight(),
+        referenceMeanFormalChargePerSite: formalChargeTarget.meanFormalCharge === null ? null : receiptRound(formalChargeTarget.meanFormalCharge),
+        acceptedMeanScaledDelta: receiptRound(acceptedFormalChargeDelta / Math.max(1, acceptedDecisions)),
+        rejectedMeanScaledDelta: receiptRound(rejectedFormalChargeDelta / Math.max(1, rejectedDecisions)),
       },
       surfaceCompletionRanking: {
         role: "target-blind soft ordering that favors healing sample-derived coordination deficits; not bond or surface energy",
@@ -4614,6 +4651,11 @@ function activeCompositionBalanceWeight() {
   return compositionPreference === "strong" ? .70 : compositionPreference === "soft" ? .35 : 0;
 }
 
+function activeFormalChargeWeight() {
+  if (!formalChargeTarget?.available || chargePreference === "none") return 0;
+  return chargePreference === "strong" ? .50 : .25;
+}
+
 function activeSurfaceCompletionWeight() {
   return surfacePreference === "strong" ? .36 : surfacePreference === "soft" ? .18 : 0;
 }
@@ -4624,6 +4666,7 @@ function capturePolicyComparison(entries) {
     { id: "grammar", label: "mark + recurrence", score: (entry) => entry.baseScore },
     { id: "elastic", label: "elastic 0.16", score: (entry) => entry.baseScore - .16 * entry.evaluation.geometricStrain.total },
     { id: "composition", label: "composition 0.35", score: (entry) => entry.baseScore - .35 * entry.evaluation.compositionBalance.scaledDelta },
+    { id: "charge", label: "formal charge 0.25", score: (entry) => entry.baseScore - .25 * entry.evaluation.formalChargeBalance.scaledDelta },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "active", label: "active combined", score: (entry) => entry.score },
   ].map((policy) => {
@@ -4782,6 +4825,17 @@ function compositionBalanceForFreshSites(rawFreshSites) {
     freshSites.map((site) => site.species), compositionTarget);
 }
 
+function formalChargeBalanceForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  if (!formalChargeTarget || !freshSites.length) return {
+    available: false, reason: "candidate adds no sites", before: 0, after: 0, delta: 0, scaledDelta: 0,
+    currentNetFormalCharge: null, freshNetFormalCharge: null, projectedNetFormalCharge: null,
+    projectedMeanFormalCharge: null, referenceMeanFormalCharge: formalChargeTarget?.meanFormalCharge ?? null, added: 0,
+  };
+  return formalChargeBalanceDelta(atoms.map((atom) => atom.species),
+    freshSites.map((site) => site.species), formalChargeTarget, formalChargeFromChemistryToken);
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -4820,6 +4874,7 @@ function commutingFrontierBatch() {
       score: baseScore
         - activeGeometricStrainWeight() * evaluation.geometricStrain.total
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
+        - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta,
     };
   });
@@ -4913,11 +4968,12 @@ function evaluateCandidate(candidate) {
   const geometricStrain = geometricStrainForFreshSites(fresh, constraintProjection);
   const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
   const compositionBalance = compositionBalanceForFreshSites(fresh);
+  const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
-    coordinationOverflows, angularViolations, geometricStrain, surfaceCompletion, compositionBalance,
+    coordinationOverflows, angularViolations, geometricStrain, surfaceCompletion, compositionBalance, formalChargeBalance,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -4970,6 +5026,8 @@ function initializeOffLatticeSearch() {
   rejectedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  acceptedFormalChargeDelta = 0;
+  rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   constraintNeighborhoodEvaluations = 0;
@@ -5436,17 +5494,22 @@ function syncStageOptions() {
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
     compositionPreferenceSelect.value = compositionPreference;
+    chargePreferenceSelect.value = chargePreference;
     surfacePreferenceSelect.value = surfacePreference;
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
     compositionPreferenceSelect.disabled = finiteIceAnchorMode;
+    chargePreferenceSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
     strainWeightHint.textContent = geometryPreference === "strain"
       ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
+    chargePreferenceHint.textContent = formalChargeTarget?.available
+      ? `${formalChargeTarget.resolvedObservations}/${formalChargeTarget.observations} sites · q̄ ${formalChargeTarget.meanFormalCharge >= 0 ? "+" : ""}${formalChargeTarget.meanFormalCharge.toFixed(3)}`
+      : `${formalChargeTarget?.resolvedObservations || 0}/${formalChargeTarget?.observations || referenceCount()} sites · unavailable`;
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -5464,14 +5527,19 @@ function syncStageOptions() {
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
       : ` A ${compositionPreference === "strong" ? "strong" : "balanced"} soft reservoir term favors the observed ${ratio} ratio without constraining an incomplete surface.`;
+    const chargeUse = !formalChargeTarget?.available
+      ? " No complete formal oxidation-state channel was supplied, so charge ranking fails closed at weight zero."
+      : chargePreference === "none"
+        ? " Formal-charge drift is reported but contributes zero ranking weight."
+        : ` A ${chargePreference === "strong" ? "strong" : "balanced"} formal-charge-density term softly favors the supplied mean q̄=${formalChargeTarget.meanFormalCharge.toFixed(3)}; it is bookkeeping, not electrostatic energy.`;
     const surfaceUse = surfacePreference === "none"
       ? " Coordination deficit is reported but contributes zero ranking weight."
       : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${surfaceUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${surfaceUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}`;
   }
 }
 
@@ -5487,6 +5555,8 @@ function resetCounters() {
   rejectedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  acceptedFormalChargeDelta = 0;
+  rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   constraintNeighborhoodEvaluations = 0;
@@ -5534,6 +5604,7 @@ function enterPipelineStage(index, options = {}) {
   coloredCoordinationEnvelopes = learnReferenceCoordinationEnvelopes(referenceAtoms);
   coloredAngularEnvelopes = learnReferenceAngularEnvelopes(referenceAtoms);
   compositionTarget = learnCompositionTarget(referenceAtoms.map((atom) => atom.species));
+  formalChargeTarget = learnFormalChargeTarget(referenceAtoms.map((atom) => atom.species), formalChargeFromChemistryToken);
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean),
     currentMaterial().intrinsicDimension === 2 ? 2 : 3);
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
@@ -5713,6 +5784,11 @@ function updateStageNarrative() {
     ? compositionPreference === "none" ? "diagnostic only · weight 0"
       : `${compositionPreference} reservoir · weight ${activeCompositionBalanceWeight().toFixed(2)}`
     : "not ranked";
+  chargeValue.textContent = pipelineStage === 4
+    ? !formalChargeTarget?.available ? "unavailable · no complete supplied channel"
+      : chargePreference === "none" ? "diagnostic only · weight 0"
+        : `${chargePreference} formal reservoir · weight ${activeFormalChargeWeight().toFixed(2)}`
+    : "not ranked";
   surfaceValue.textContent = pipelineStage === 4
     ? surfacePreference === "none" ? "diagnostic only · weight 0"
       : `${surfacePreference} completion · weight ${activeSurfaceCompletionWeight().toFixed(2)}`
@@ -5737,6 +5813,7 @@ function stateForCandidate(candidate, evaluation) {
     freshSites: evaluation.fresh.length,
     geometricStrain: evaluation.geometricStrain,
     compositionBalance: evaluation.compositionBalance,
+    formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
   };
 }
@@ -5834,6 +5911,7 @@ function performOffLatticeEvent() {
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
       rejectedGeometricStrain += snapshotEvaluation.geometricStrain.total;
       rejectedCompositionDelta += snapshotEvaluation.compositionBalance.scaledDelta;
+      rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
@@ -5853,6 +5931,7 @@ function performOffLatticeEvent() {
     acceptedDecisions++;
     acceptedGeometricStrain += evaluation.geometricStrain.total;
     acceptedCompositionDelta += evaluation.compositionBalance.scaledDelta;
+    acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
@@ -5899,6 +5978,7 @@ function performIceAnchorEvent() {
     energyValue.textContent = "target calls 0";
     strainValue.textContent = "not used by frozen ice trace";
     compositionValue.textContent = "not used by frozen ice trace";
+    chargeValue.textContent = "not used by frozen ice trace";
     surfaceValue.textContent = "not used by frozen ice trace";
     resolverValue.textContent = "orientation-domain unanimity";
     appendHistory("reject", { type: "reject", depth: wave.wave,
@@ -6137,6 +6217,10 @@ function updateDecision(event) {
   compositionValue.textContent = balance
     ? `${balance.before.toFixed(3)} → ${balance.after.toFixed(3)} · Δ${balance.delta >= 0 ? "+" : ""}${balance.delta.toFixed(3)}`
     : "not evaluated";
+  const charge = event.state.formalChargeBalance;
+  chargeValue.textContent = charge?.available
+    ? `${charge.before.toFixed(3)} → ${charge.after.toFixed(3)} · Δ${charge.delta >= 0 ? "+" : ""}${charge.delta.toFixed(3)} · q ${charge.projectedNetFormalCharge >= 0 ? "+" : ""}${charge.projectedNetFormalCharge.toFixed(2)}`
+    : charge?.reason || "not evaluated";
   const surface = event.state.surfaceCompletion;
   surfaceValue.textContent = surface
     ? `new ${surface.newSiteDeficit.toFixed(3)} · healed ${surface.healedExisting.toFixed(3)} · Δ${surface.scaledDelta >= 0 ? "+" : ""}${surface.scaledDelta.toFixed(3)}`
@@ -6175,6 +6259,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
       value: state.compositionBalance ? signed(state.compositionBalance.scaledDelta) : "not evaluated",
       detail: activeCompositionBalanceWeight() > 0 ? `rank weight ${activeCompositionBalanceWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "formal-charge reservoir", status: ranked(activeFormalChargeWeight() > 0),
+      value: state.formalChargeBalance?.available ? signed(state.formalChargeBalance.scaledDelta) : state.formalChargeBalance?.reason || "unavailable",
+      detail: activeFormalChargeWeight() > 0 ? `rank weight ${activeFormalChargeWeight().toFixed(2)} · supplied oxidation states` : "diagnostic · cannot authorize geometry" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
       detail: activeSurfaceCompletionWeight() > 0 ? `rank weight ${activeSurfaceCompletionWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
@@ -6190,6 +6277,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "angular envelope", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "elastic proxy", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "composition reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "formal-charge reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "surface completion", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "GCTS marking", status: "pass", value: "domain unanimity", detail: "all surviving H₂O poses agree" },
   ] : [
@@ -6203,6 +6291,9 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeGeometricStrainWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeGeometricStrainWeight().toFixed(2)}` },
     { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
       value: activeCompositionBalanceWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeCompositionBalanceWeight().toFixed(2)}` },
+    { name: "formal-charge reservoir", status: ranked(activeFormalChargeWeight() > 0),
+      value: activeFormalChargeWeight() > 0 ? "ranked" : formalChargeTarget?.available ? "diagnostic" : "unavailable",
+      detail: formalChargeTarget?.available ? `weight ${activeFormalChargeWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
     { name: "GCTS marking", status: policySelect.value === "marked" ? "ranked" : "diagnostic",
@@ -6557,7 +6648,7 @@ function renderMarkings() {
     const records = coloredDistanceEnvelopes?.records || [];
     const coordinationRecords = coloredCoordinationEnvelopes?.records || [];
     const angularRecords = coloredAngularEnvelopes?.records || [];
-    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles · 1 reservoir`;
+    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles · 2 reservoirs`;
     const p = document.createElement("p");
     p.textContent = "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
     markingTable.appendChild(p);
@@ -6568,6 +6659,14 @@ function renderMarkings() {
       .map(([symbol, count]) => `${symbol}:${count}`).join(" · ");
     const reservoirCount = document.createElement("b"); reservoirCount.textContent = `N=${compositionTarget.observations}`;
     reservoir.append(reservoirCode, reservoirRatio, reservoirCount); markingTable.appendChild(reservoir);
+    const chargeReservoir = document.createElement("div"); chargeReservoir.className = "mark-row composition-reservoir-row";
+    chargeReservoir.title = "Formal oxidation states are used only when completely supplied; no electrostatic potential is inferred";
+    const chargeCode = document.createElement("code"); chargeCode.textContent = "formal q";
+    const chargeSummary = document.createElement("span"); chargeSummary.textContent = formalChargeTarget.available
+      ? `q̄ ${formalChargeTarget.meanFormalCharge >= 0 ? "+" : ""}${formalChargeTarget.meanFormalCharge.toFixed(3)} · cell ${formalChargeTarget.netFormalCharge >= 0 ? "+" : ""}${formalChargeTarget.netFormalCharge.toFixed(3)}`
+      : "unavailable · oxidation states not completely supplied";
+    const chargeCoverage = document.createElement("b"); chargeCoverage.textContent = `${Math.round(formalChargeTarget.coverage * 100)}%`;
+    chargeReservoir.append(chargeCode, chargeSummary, chargeCoverage); markingTable.appendChild(chargeReservoir);
     const toAngstrom = referenceSpacingA / referenceSpacing;
     records.forEach((record) => {
       const row = document.createElement("div"); row.className = "mark-row distance-envelope-row";
@@ -6825,6 +6924,12 @@ strainWeightSelect.addEventListener("change", () => {
 compositionPreferenceSelect.addEventListener("change", () => {
   const value = compositionPreferenceSelect.value;
   compositionPreference = value === "none" || value === "strong" ? value : "soft";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+chargePreferenceSelect.addEventListener("change", () => {
+  const value = chargePreferenceSelect.value;
+  chargePreference = value === "none" || value === "strong" ? value : "auto";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
