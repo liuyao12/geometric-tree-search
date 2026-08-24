@@ -1,0 +1,135 @@
+{
+  "autonomous_or_exponential_growth_claimed": false,
+  "candidate_generation_target_used": false,
+  "consumed_candidates": 1220,
+  "consumed_target_opened_after_all_scores": true,
+  "diagnostic_designed_after_consumed_failure": true,
+  "fresh_confirmation_claimed": false,
+  "positive_rows": 95,
+  "receipt_digest": "c57ced80bca96b76b1def9496c680a9fe53b349a4d46792ac7aec6d3a0c02625",
+  "representations": {
+    "aggregate-site": {
+      "consumed_exact_ranks": [
+        [
+          4,
+          3,
+          113
+        ],
+        [
+          5,
+          3,
+          111
+        ]
+      ],
+      "consumed_exact_supplied": 0,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 0,
+      "development_exact_rank_sum": 738,
+      "development_mean_logloss": 0.7677214962027284,
+      "features": 142
+    },
+    "full": {
+      "consumed_exact_ranks": [
+        [
+          4,
+          3,
+          132
+        ],
+        [
+          5,
+          3,
+          133
+        ]
+      ],
+      "consumed_exact_supplied": 0,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 14,
+      "development_exact_rank_sum": 54,
+      "development_mean_logloss": 0.7954005779693705,
+      "features": 502
+    },
+    "legacy-only": {
+      "consumed_exact_ranks": [
+        [
+          4,
+          3,
+          95
+        ],
+        [
+          5,
+          3,
+          96
+        ]
+      ],
+      "consumed_exact_supplied": 0,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 10,
+      "development_exact_rank_sum": 238,
+      "development_mean_logloss": 0.7892374469836866,
+      "features": 4
+    },
+    "nearest-site": {
+      "consumed_exact_ranks": [
+        [
+          4,
+          3,
+          146
+        ],
+        [
+          5,
+          3,
+          147
+        ]
+      ],
+      "consumed_exact_supplied": 0,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 10,
+      "development_exact_rank_sum": 204,
+      "development_mean_logloss": 0.7497709113615387,
+      "features": 214
+    },
+    "no-site": {
+      "consumed_exact_ranks": [
+        [
+          4,
+          3,
+          133
+        ],
+        [
+          5,
+          3,
+          134
+        ]
+      ],
+      "consumed_exact_supplied": 0,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 2,
+      "development_exact_rank_sum": 502,
+      "development_mean_logloss": 0.7875910301323032,
+      "features": 94
+    },
+    "radial-site": {
+      "consumed_exact_ranks": [
+        [
+          4,
+          3,
+          97
+        ],
+        [
+          5,
+          3,
+          98
+        ]
+      ],
+      "consumed_exact_supplied": 0,
+      "development_exact_branches": 14,
+      "development_exact_branches_supplied": 10,
+      "development_exact_rank_sum": 156,
+      "development_mean_logloss": 0.7598464735143805,
+      "features": 430
+    }
+  },
+  "result_digest": "a28b7e776ec1dbcc04a6cadd14b4a4c737a618e71701f39f6981389c5b890d01",
+  "schema_version": 1,
+  "training_rows": 3994
+}

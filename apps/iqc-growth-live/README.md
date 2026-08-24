@@ -2755,6 +2755,16 @@ be hidden by downstream tree breadth or target-guided retuning. The next
 representation must transfer the parent-to-child obligation change; no fresh
 confirmation is eligible yet.
 
+A fixed feature ablation confirms that this is not just excessive section
+dimension. All six arms rank the identical `1,220` consumed candidates under
+the same top-`16` budget. Removing nearest-neighbor slots, radial bins, or all
+`408` site coordinates still supplies neither exact child. The four legacy
+connection scores are best among these coarse controls, but the exact actions
+remain ranks `95` and `96`. Coarsening loses development supply before it gains
+transfer. A new marking must represent which typed parent obligations are
+discharged and created by the child, rather than summarize either endpoint in
+isolation.
+
 Serve the repository root and open `/iqc-growth-live/`.
 ### Fourth-block IQC replay and marking transfer
 
