@@ -1,0 +1,52 @@
+"""Source contract for the live geometry-as-physics decision ledger."""
+
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+APP_DIR = ROOT / "apps/iqc-growth-live"
+
+
+def test_constraint_ledger_covers_admission_and_ranking_terms() -> None:
+    html = (APP_DIR / "index.html").read_text()
+    source = (APP_DIR / "app.js").read_text()
+    style = (APP_DIR / "style.css").read_text()
+
+    assert 'id="constraintLedger"' in html
+    assert "geometry-as-physics ledger" in html
+    assert 'style.css?v=20260824-12' in html
+    assert 'app.js?v=20260824-29' in html
+    assert 'function renderConstraintLedger(state, mode = "configured")' in source
+    for term in (
+        "species / hard core",
+        "shared support",
+        "novel colored sites",
+        "public boundary",
+        "coordination capacity",
+        "angular envelope",
+        "elastic proxy",
+        "composition reservoir",
+        "surface completion",
+        "GCTS marking",
+    ):
+        assert term in source
+    assert "diagnostic · cannot authorize geometry" in source
+    assert "colored minimum-distance exclusion" in source
+    assert "species-resolved first-shell envelope" in source
+    assert "colored bond-angle support" in source
+    assert "bounded transported connection section" in source
+    assert 'mode === "specialized"' in source
+    assert 'value: "domain unanimity"' in source
+    assert 'detail: "cannot authorize this trace"' in source
+    assert 'state.textContent = entry.type === "reject" ? "prune" : "keep"' in source
+    assert ".search-stack li.reject" in style
+    assert "boundaryFailures: evaluation.boundaryFailures" in source
+    assert "coordinationOverflows: evaluation.coordinationOverflows?.length || 0" in source
+    assert "angularViolations: evaluation.angularViolations?.length || 0" in source
+    assert ".constraint-term.fail" in style
+    assert ".constraint-term.ranked" in style
+
+
+if __name__ == "__main__":
+    test_constraint_ledger_covers_admission_and_ranking_terms()
+    print("geometry-as-physics constraint ledger contract: passed")

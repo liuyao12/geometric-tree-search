@@ -326,6 +326,18 @@ but accepted placements cannot spawn another generation. In both modes the
 selected marking ranks the same exact rigid candidate geometries; it does not
 invent coordinates.
 
+Every live tree decision now carries a geometry-as-physics ledger. Hard
+admission rows report colored minimum-distance exclusion, whole-cluster shared
+support, novel-site emission, public-domain containment, species-resolved
+coordination capacity, colored angular envelopes, and transported GCTS-marking
+compatibility. Elastic mismatch, composition-reservoir balance, and surface
+completion are shown separately as ranking terms with their active weights;
+when disabled they remain diagnostic and explicitly cannot authorize geometry.
+Rejected stack rows say `prune` and the failed row turns red—for example, a
+geometrically coincident proposal fails `novel colored sites` as a duplicate
+cover even when every other constraint passes. This makes the physics proxy,
+search logic, and claim boundary inspectable action by action.
+
 The live **growth certificate** keeps four layers separate while the animation
 runs: exact replay of the supplied window, outside-window structural output,
 causal self-feed / hierarchy depth, and the strongest claim actually supported.

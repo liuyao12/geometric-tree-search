@@ -163,6 +163,7 @@ const strainValue = $("strainValue");
 const compositionValue = $("compositionValue");
 const surfaceValue = $("surfaceValue");
 const resolverValue = $("resolverValue");
+const constraintLedger = $("constraintLedger");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
 const markingHeading = $("markingHeading");
@@ -3524,7 +3525,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-26",
+      buildId: "20260824-29",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5504,6 +5505,7 @@ function updateStageNarrative() {
     ? surfacePreference === "none" ? "diagnostic only · weight 0"
       : `${surfacePreference} completion · weight ${activeSurfaceCompletionWeight().toFixed(2)}`
     : "not ranked";
+  renderConstraintLedger(null);
 }
 
 function stateForCandidate(candidate, evaluation) {
@@ -5515,6 +5517,12 @@ function stateForCandidate(candidate, evaluation) {
     n25: evaluation.sites.length,
     minimum: candidate.markingScore,
     clearance: evaluation.conflicts,
+    boundaryFailures: evaluation.boundaryFailures,
+    knownFailures: evaluation.knownFailures,
+    coordinationOverflows: evaluation.coordinationOverflows?.length || 0,
+    angularViolations: evaluation.angularViolations?.length || 0,
+    markingAccepted: candidate.markingAccepted,
+    freshSites: evaluation.fresh.length,
     geometricStrain: evaluation.geometricStrain,
     compositionBalance: evaluation.compositionBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
@@ -5880,7 +5888,80 @@ function updateDecision(event) {
     ? `new ${surface.newSiteDeficit.toFixed(3)} · healed ${surface.healedExisting.toFixed(3)} · Δ${surface.scaledDelta >= 0 ? "+" : ""}${surface.scaledDelta.toFixed(3)}`
     : "not evaluated";
   resolverValue.textContent = event.resolver;
+  renderConstraintLedger(Number.isFinite(event.state.n15) ? event.state : null,
+    Number.isFinite(event.state.n15) ? "configured" : "specialized");
   eventKind.textContent = reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
+}
+
+function renderConstraintLedger(state, mode = "configured") {
+  const ranked = (enabled) => enabled ? "ranked" : "diagnostic";
+  const signed = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
+  const terms = state ? [
+    { name: "species / hard core", status: state.clearance ? "fail" : "pass",
+      value: state.clearance ? `${state.clearance} conflict${state.clearance === 1 ? "" : "s"}` : "pass",
+      detail: "colored minimum-distance exclusion" },
+    { name: "shared support", status: state.n15 >= 2 ? "pass" : "fail",
+      value: `${state.n15} shared / ${state.freshSites} new`, detail: "whole-cluster overlap witness" },
+    { name: "novel colored sites", status: state.freshSites > 0 ? "pass" : "fail",
+      value: state.freshSites > 0 ? `${state.freshSites} emitted` : "duplicate covering",
+      detail: "a tree action must extend the represented union" },
+    { name: "public boundary", status: state.boundaryFailures || state.knownFailures ? "fail" : "pass",
+      value: state.boundaryFailures ? `${state.boundaryFailures} outside domain`
+        : state.knownFailures ? `${state.knownFailures} outside known window` : "pass",
+      detail: "confinement or sealed replay domain" },
+    { name: "coordination capacity", status: state.coordinationOverflows ? "fail" : "pass",
+      value: state.coordinationOverflows ? `${state.coordinationOverflows} overflow${state.coordinationOverflows === 1 ? "" : "s"}` : "pass",
+      detail: "species-resolved first-shell envelope" },
+    { name: "angular envelope", status: state.angularViolations ? "fail" : "pass",
+      value: state.angularViolations ? `${state.angularViolations} violation${state.angularViolations === 1 ? "" : "s"}` : "pass",
+      detail: "colored bond-angle support" },
+    { name: "elastic proxy", status: ranked(activeGeometricStrainWeight() > 0),
+      value: state.geometricStrain ? state.geometricStrain.total.toFixed(3) : "not evaluated",
+      detail: activeGeometricStrainWeight() > 0 ? `rank weight ${activeGeometricStrainWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
+      value: state.compositionBalance ? signed(state.compositionBalance.scaledDelta) : "not evaluated",
+      detail: activeCompositionBalanceWeight() > 0 ? `rank weight ${activeCompositionBalanceWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
+      value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
+      detail: activeSurfaceCompletionWeight() > 0 ? `rank weight ${activeSurfaceCompletionWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
+      value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
+      detail: "bounded transported connection section" },
+  ] : mode === "specialized" ? [
+    { name: "species / hard core", status: "pass", value: "backend-certified", detail: "frozen exact trace" },
+    { name: "shared support", status: "pass", value: "frozen ports", detail: "proper-SE(3) molecular attachments" },
+    { name: "novel colored sites", status: "pass", value: "exact anchors", detail: "one-to-one emitted-site certificate" },
+    { name: "public boundary", status: "pass", value: "sealed", detail: "target calls 0 before scoring" },
+    { name: "coordination capacity", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
+    { name: "angular envelope", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
+    { name: "elastic proxy", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "composition reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "surface completion", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "GCTS marking", status: "pass", value: "domain unanimity", detail: "all surviving H₂O poses agree" },
+  ] : [
+    { name: "species / hard core", status: "diagnostic", value: "armed", detail: "admission gate" },
+    { name: "shared support", status: "diagnostic", value: "armed", detail: "admission gate" },
+    { name: "novel colored sites", status: "diagnostic", value: "armed", detail: "admission gate" },
+    { name: "public boundary", status: "diagnostic", value: "armed", detail: "admission gate" },
+    { name: "coordination capacity", status: "diagnostic", value: "armed", detail: "admission gate" },
+    { name: "angular envelope", status: "diagnostic", value: "armed", detail: "admission gate" },
+    { name: "elastic proxy", status: ranked(activeGeometricStrainWeight() > 0),
+      value: activeGeometricStrainWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeGeometricStrainWeight().toFixed(2)}` },
+    { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
+      value: activeCompositionBalanceWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeCompositionBalanceWeight().toFixed(2)}` },
+    { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
+      value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
+    { name: "GCTS marking", status: policySelect.value === "marked" ? "ranked" : "diagnostic",
+      value: policySelect.value === "marked" ? "active" : "not gating", detail: "bounded local section" },
+  ];
+  constraintLedger.replaceChildren(...terms.map((term) => {
+    const row = document.createElement("article"); row.className = `constraint-term ${term.status}`;
+    const label = document.createElement("small"); label.textContent = term.name;
+    const value = document.createElement("strong"); value.textContent = term.value;
+    const detail = document.createElement("span"); detail.textContent = term.detail;
+    row.append(label, value, detail);
+    return row;
+  }));
 }
 
 function liveGrowthCertificate() {
@@ -6148,7 +6229,8 @@ function renderStack() {
     const row = document.createElement("li");
     const depth = document.createElement("b"); depth.textContent = `d${entry.depth}`;
     const action = document.createElement("span"); action.textContent = `${entry.action} · ${entry.family}`;
-    const state = document.createElement("em"); state.textContent = "keep";
+    const state = document.createElement("em"); state.textContent = entry.type === "reject" ? "prune" : "keep";
+    row.classList.toggle("reject", entry.type === "reject");
     row.append(depth, action, state);
     searchStack.appendChild(row);
   });

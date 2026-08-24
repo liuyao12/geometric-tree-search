@@ -459,6 +459,17 @@ body.atlas-open { overflow: hidden; }
 .decision-grid div { min-width: 0; padding: 8px; background: #0a1819; }
 .decision-grid dt { color: var(--faint); font: 7px var(--mono); text-transform: uppercase; }
 .decision-grid dd { overflow: hidden; margin: 4px 0 0; color: #cbd8d4; font: 8px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
+.constraint-ledger-heading { display: flex; justify-content: space-between; gap: 8px; margin-top: 11px; color: var(--faint); font: 6px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+.constraint-ledger { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px; margin-top: 6px; }
+.constraint-term { min-width: 0; padding: 6px 7px; border: 1px solid rgba(151,194,183,.13); background: rgba(5,15,17,.72); }
+.constraint-term small,.constraint-term strong,.constraint-term span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.constraint-term small { color: var(--faint); font: 5px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.constraint-term strong { margin-top: 3px; color: #aebfba; font: 7px var(--mono); font-weight: 400; }
+.constraint-term span { margin-top: 3px; color: #5f7770; font: 5px var(--mono); }
+.constraint-term.pass { border-color: rgba(101,225,188,.28); }.constraint-term.pass strong { color: var(--mint); }
+.constraint-term.fail { border-color: rgba(255,109,113,.42); background: rgba(255,109,113,.035); }.constraint-term.fail strong { color: var(--red); }
+.constraint-term.ranked { border-color: rgba(181,148,255,.32); }.constraint-term.ranked strong { color: var(--violet); }
+.constraint-term.diagnostic strong { color: #82978f; }
 .section-heading > span { color: var(--faint); font: 8px var(--mono); }
 .search-stack { max-height: 153px; overflow: hidden; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .search-stack li { display: grid; grid-template-columns: 24px 1fr auto; gap: 7px; align-items: center; min-height: 27px; border-bottom: 1px solid var(--line); color: #92a49f; font: 8px var(--mono); }
@@ -476,6 +487,7 @@ body.atlas-open { overflow: hidden; }
 .search-stack li b { color: var(--faint); font-weight: 400; }
 .search-stack li span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .search-stack li em { color: var(--mint); font-style: normal; }
+.search-stack li.reject { color: #a98484; }.search-stack li.reject em { color: var(--red); }
 .search-stack .empty-row { display: block; padding: 8px 0; color: var(--faint); }
 .marking-table { max-height: 126px; overflow: hidden; border-top: 1px solid var(--line); }
 .marking-table p { margin: 8px 0; color: var(--faint); font-size: 9px; }
