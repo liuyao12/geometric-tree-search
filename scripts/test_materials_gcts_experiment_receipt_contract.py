@@ -46,7 +46,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="strainValue"' in html
     assert 'id="compositionValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-16' in html
+    assert 'app.js?v=20260824-17' in html
     assert ".receipt-actions" in css
     assert ".receipt-status" in css
 

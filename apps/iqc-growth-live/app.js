@@ -403,6 +403,9 @@ let acceptedGeometricStrain = 0;
 let rejectedGeometricStrain = 0;
 let acceptedCompositionDelta = 0;
 let rejectedCompositionDelta = 0;
+let constraintNeighborhoodEvaluations = 0;
+let constraintNeighborhoodSiteTotal = 0;
+let maximumConstraintNeighborhoodSites = 0;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let markingSelection = null;
@@ -3206,7 +3209,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-16",
+      buildId: "20260824-17",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3381,6 +3384,14 @@ async function buildExperimentReceipt() {
         targetReducedRatio: compositionTarget.reducedRatio,
         acceptedMeanScaledDelta: receiptRound(acceptedCompositionDelta / Math.max(1, acceptedDecisions)),
         rejectedMeanScaledDelta: receiptRound(rejectedCompositionDelta / Math.max(1, rejectedDecisions)),
+      },
+      localConstraintWork: {
+        role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
+        maximumReachAngstrom: receiptRound(coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing),
+        evaluations: constraintNeighborhoodEvaluations,
+        meanProjectedSites: receiptRound(constraintNeighborhoodSiteTotal / Math.max(1, constraintNeighborhoodEvaluations)),
+        maximumProjectedSites: maximumConstraintNeighborhoodSites,
+        currentFullSites: atoms.length,
       },
       grammarDecisions,
       localOracleCalls: oracleCalls,
@@ -4061,70 +4072,74 @@ function uniqueFreshSites(freshSites) {
   return unique;
 }
 
-function coordinationOverflowsForFreshSites(rawFreshSites) {
+function constraintProjectionForFreshSites(rawFreshSites) {
   const freshSites = uniqueFreshSites(rawFreshSites);
-  if (!freshSites.length || !coloredCoordinationEnvelopes) return [];
-  const affected = new Map();
-  atoms.forEach((atom) => freshSites.forEach((site) => {
+  if (!freshSites.length || !coloredCoordinationEnvelopes) return {
+    freshSites, projected: [], affectedIndices: [],
+  };
+  const reach = coloredCoordinationEnvelopes.maximumCutoff;
+  const affectedExisting = new Set();
+  freshSites.forEach((site) => nearbyAtoms(site.p, reach).forEach((atom) => {
     const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, atom.species, site.species);
-    if (!envelope || atom.p.distanceTo(site.p) > envelope.contactCutoff) return;
-    const neighborSpecies = affected.get(atom) || new Set();
-    neighborSpecies.add(site.species);
-    affected.set(atom, neighborSpecies);
+    if (envelope && atom.p.distanceTo(site.p) <= envelope.contactCutoff) affectedExisting.add(atom);
   }));
-  freshSites.forEach((site) => affected.set(site, new Set(coloredCoordinationEnvelopes.records
-    .filter((record) => record.centerSpecies === site.species).map((record) => record.neighborSpecies))));
-  const projected = [...atoms, ...freshSites];
+  const centers = [...affectedExisting, ...freshSites];
+  const localExisting = new Set(affectedExisting);
+  centers.forEach((center) => nearbyAtoms(center.p, reach).forEach((atom) => {
+    if (atom === center) return;
+    const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, center.species, atom.species);
+    if (envelope && center.p.distanceTo(atom.p) <= envelope.contactCutoff) localExisting.add(atom);
+  }));
+  const existing = [...localExisting];
+  const projected = [...existing, ...freshSites];
+  const existingIndex = new Map(existing.map((atom, index) => [atom, index]));
+  const affectedIndices = [...affectedExisting].map((atom) => existingIndex.get(atom))
+    .concat(freshSites.map((_, index) => existing.length + index));
+  constraintNeighborhoodEvaluations++;
+  constraintNeighborhoodSiteTotal += projected.length;
+  maximumConstraintNeighborhoodSites = Math.max(maximumConstraintNeighborhoodSites, projected.length);
+  return { freshSites, projected, affectedIndices };
+}
+
+function coordinationOverflowsForFreshSites(rawFreshSites, projection = constraintProjectionForFreshSites(rawFreshSites)) {
+  const { projected, affectedIndices } = projection;
+  if (!affectedIndices.length) return [];
   const overflows = [];
-  affected.forEach((neighborSpecies, center) => neighborSpecies.forEach((symbol) => {
-    const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, center.species, symbol);
-    if (!envelope) return;
-    const count = projected.reduce((total, neighbor) => {
-      if (neighbor === center || neighbor.species !== symbol) return total;
-      return total + (center.p.distanceTo(neighbor.p) <= envelope.contactCutoff ? 1 : 0);
-    }, 0);
-    if (count > envelope.maximumObserved) overflows.push({
-      centerSpecies: center.species,
-      neighborSpecies: symbol,
-      count,
-      maximum: envelope.maximumObserved,
-    });
-  }));
+  affectedIndices.forEach((centerIndex) => {
+    const center = projected[centerIndex];
+    coloredCoordinationEnvelopes.records.filter((record) => record.centerSpecies === center.species)
+      .forEach((envelope) => {
+        const count = projected.reduce((total, neighbor, neighborIndex) => {
+          if (neighborIndex === centerIndex || neighbor.species !== envelope.neighborSpecies) return total;
+          return total + (center.p.distanceTo(neighbor.p) <= envelope.contactCutoff ? 1 : 0);
+        }, 0);
+        if (count > envelope.maximumObserved) overflows.push({
+          centerSpecies: center.species,
+          neighborSpecies: envelope.neighborSpecies,
+          count,
+          maximum: envelope.maximumObserved,
+        });
+      });
+  });
   return overflows;
 }
 
-function angularViolationsForFreshSites(rawFreshSites) {
-  const freshSites = uniqueFreshSites(rawFreshSites);
-  if (!freshSites.length || !coloredAngularEnvelopes) return [];
-  const projected = [...atoms, ...freshSites];
-  const affected = new Set(freshSites.map((_, index) => atoms.length + index));
-  atoms.forEach((atom, atomIndex) => {
-    if (freshSites.some((site) => {
-      const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, atom.species, site.species);
-      return envelope && atom.p.distanceTo(site.p) <= envelope.contactCutoff;
-    })) affected.add(atomIndex);
-  });
+function angularViolationsForFreshSites(rawFreshSites, projection = constraintProjectionForFreshSites(rawFreshSites)) {
+  const { projected, affectedIndices } = projection;
+  if (!affectedIndices.length || !coloredAngularEnvelopes) return [];
   return coloredAngularViolations(projected.map((site) => site.species),
     (first, second) => projected[second].p.clone().sub(projected[first].p),
-    coloredCoordinationEnvelopes, coloredAngularEnvelopes, [...affected]);
+    coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices);
 }
 
-function geometricStrainForFreshSites(rawFreshSites) {
-  const freshSites = uniqueFreshSites(rawFreshSites);
-  if (!freshSites.length || !coloredAngularEnvelopes) return {
+function geometricStrainForFreshSites(rawFreshSites, projection = constraintProjectionForFreshSites(rawFreshSites)) {
+  const { projected, affectedIndices } = projection;
+  if (!affectedIndices.length || !coloredAngularEnvelopes) return {
     total: 0, distance: 0, angle: 0, contactTerms: 0, angleTerms: 0,
   };
-  const projected = [...atoms, ...freshSites];
-  const affected = new Set(freshSites.map((_, index) => atoms.length + index));
-  atoms.forEach((atom, atomIndex) => {
-    if (freshSites.some((site) => {
-      const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, atom.species, site.species);
-      return envelope && atom.p.distanceTo(site.p) <= envelope.contactCutoff;
-    })) affected.add(atomIndex);
-  });
   return coloredGeometricStrain(projected.map((site) => site.species),
     (first, second) => projected[second].p.clone().sub(projected[first].p),
-    coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, [...affected]);
+    coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices);
 }
 
 function compositionBalanceForFreshSites(rawFreshSites) {
@@ -4192,8 +4207,9 @@ function commutingFrontierBatch() {
       if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
       const trial = [...acceptedBatch, entry];
       const trialFresh = uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh));
-      if (coordinationOverflowsForFreshSites(trialFresh).length
-        || angularViolationsForFreshSites(trialFresh).length) continue;
+      const trialProjection = constraintProjectionForFreshSites(trialFresh);
+      if (coordinationOverflowsForFreshSites(trialFresh, trialProjection).length
+        || angularViolationsForFreshSites(trialFresh, trialProjection).length) continue;
       if (!batchRetainsNovelSites(trial)) continue;
       acceptedBatch.push(entry);
       continue;
@@ -4251,9 +4267,10 @@ function evaluateCandidate(candidate) {
   const markingAccepted = policySelect.value !== "marked" || candidate.markingAccepted;
   const knownFailures = reconstructing ? canonical.failures : 0;
   const markingFallback = reconstructing && knownFailures === 0 && !markingAccepted;
-  const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh);
-  const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh);
-  const geometricStrain = geometricStrainForFreshSites(fresh);
+  const constraintProjection = constraintProjectionForFreshSites(fresh);
+  const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh, constraintProjection);
+  const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh, constraintProjection);
+  const geometricStrain = geometricStrainForFreshSites(fresh, constraintProjection);
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
@@ -4312,6 +4329,9 @@ function initializeOffLatticeSearch() {
   rejectedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  constraintNeighborhoodEvaluations = 0;
+  constraintNeighborhoodSiteTotal = 0;
+  maximumConstraintNeighborhoodSites = 0;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
@@ -4765,6 +4785,9 @@ function resetCounters() {
   rejectedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  constraintNeighborhoodEvaluations = 0;
+  constraintNeighborhoodSiteTotal = 0;
+  maximumConstraintNeighborhoodSites = 0;
   stackHistory = [];
   markingCache = new Map();
   actionCache = new Map();

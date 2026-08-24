@@ -205,6 +205,15 @@ hard constraint: a finite surface, nucleus, defect, or temporarily incomplete
 frontier may depart from bulk stoichiometry. No oxidation state, formal charge,
 chemical potential, or elemental feed rate is inferred.
 
+All pair, capacity, angle, and strain evaluations are compiled to the exact
+finite-reach neighborhood affected by the proposed fresh sites. The live
+spatial index finds existing centers touched by the action and then gathers
+their complete learned contact neighborhoods; no atom outside the maximum
+learned contact reach can contribute to these local terms. This changes the
+work from a whole-solid scan per candidate to a bounded local query without
+sampling or changing the result. Receipts report evaluation count, mean and
+maximum projected neighborhood size, full live size, and physical reach.
+
 This is chemistry-as-geometry, not a pair potential: it has no attractive
 well, angular energy, charge, bond order, temperature, pressure, or kinetics. Those effects
 can constrain which clusters and ports are observed in the sample, but the

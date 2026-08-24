@@ -93,6 +93,17 @@ const rotatedStrain = coloredGeometricStrain(octahedralSpecies, (first, second) 
 octahedralPairs, octahedralCoordination, octahedralAngles, [0]);
 assert.ok(Math.abs(rotatedStrain.total - exactStrain.total) < 1e-12,
   "geometric strain must be invariant to a proper global rotation");
+const extendedSpecies = [...octahedralSpecies, "Na", "Cl"];
+const extendedPositions = [...octahedralPositions, [100, 100, 100], [101, 100, 100]];
+const extendedDisplacement = (first, second) => extendedPositions[second]
+  .map((value, axis) => value - extendedPositions[first][axis]);
+const finiteReachStrain = coloredGeometricStrain(extendedSpecies, extendedDisplacement,
+  octahedralPairs, octahedralCoordination, octahedralAngles, [0]);
+assert.deepEqual(finiteReachStrain, exactStrain,
+  "atoms outside every learned contact reach must not change a local strain evaluation");
+assert.equal(coloredAngularViolations(extendedSpecies, extendedDisplacement,
+  octahedralCoordination, octahedralAngles, [0]).length, 0,
+"far atoms must not enter the selected center's angular neighborhood");
 
 const planarSpecies = ["B", "N", "N", "N"];
 const planarPositions = [[0, 0, 0], [1, 0, 0], [-.5, Math.sqrt(3) / 2, 0], [-.5, -Math.sqrt(3) / 2, 0]];
