@@ -4,11 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-gcts-policy-v190";
-import {
-  normalizeProposalProgram,
-  proposalTileKey
-} from "./proposal-learner.js?v=20260824-gcts-tail-v32";
+} from "./engine.js?v=20260824-gcts-i-v205";
 
 const $ = (id) => document.getElementById(id);
 
@@ -228,38 +224,6 @@ let growthPointerWasNearPoint = false;
 let growthPlotRevision = 0;
 let growthUiRefreshTimer = null;
 let growthUiRefreshShowCurrent = false;
-const PROPOSAL_CACHE_STORAGE_KEY = "gcts-3d-learned-proposals-v2";
-const readProposalCache = () => {
-  try {
-    const parsed = JSON.parse(localStorage.getItem(PROPOSAL_CACHE_STORAGE_KEY) ?? "{}");
-    return parsed && typeof parsed === "object" ? parsed : {};
-  } catch {
-    return {};
-  }
-};
-const cachedProposalForConfig = config => {
-  const raw = readProposalCache()[proposalTileKey(config)];
-  return raw ? normalizeProposalProgram(raw) : null;
-};
-const rememberLearnedProposal = (config, rawProgram) => {
-  if (!rawProgram) return null;
-  const program = normalizeProposalProgram(rawProgram);
-  const key = proposalTileKey(config);
-  const cache = readProposalCache();
-  const current = cache[key] ? normalizeProposalProgram(cache[key]) : null;
-  if (
-    current
-    && current.patch.length > program.patch.length
-    && current.generation >= program.generation
-  ) return current;
-  cache[key] = program;
-  try {
-    localStorage.setItem(PROPOSAL_CACHE_STORAGE_KEY, JSON.stringify(cache));
-  } catch {
-    return current;
-  }
-  return program;
-};
 let workerDisplayPaused = false;
 let solverMessageQueue = [];
 let solverMessageQueueIndex = 0;
@@ -559,7 +523,7 @@ function updateCriterionUI() {
 
 const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
-  learning_free_range: "Runs the same tree search, remembers its best legal patch, and replays that proposal on later runs.",
+  learning_free_range: "Starts with an empty marking and records exact local frontier failures; translated recurrences are pruned by geometric overlap.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
   isohedral: "Searches tile-transitive patches, then requires an exact periodic quotient preserved by symmetries taking the root to every tile class."
 };
@@ -1960,7 +1924,16 @@ function configKey() {
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
-    move_order: isLearningFreeRange ? "agent" : completeShellSearch ? "shell" : moveOrderSelect.value,
+    move_order: isLearningFreeRange ? "balanced" : completeShellSearch ? "shell" : moveOrderSelect.value,
+    complete_lattice_point_branching: isLearningFreeRange
+      || (tilingStrategy === "free_range" && selectedCriterion !== "shell"),
+    gcts_failure_marking: isLearningFreeRange,
+    gcts_marking_reach_multiplier: 1,
+    gcts_marking_max_clauses: 20000,
+    gcts_marking_max_context_tiles: 1000000,
+    gcts_marking_activation_failures: 0,
+    gcts_marking_symmetry: "fixed",
+    gcts_marking_index: true,
     greedy_no_backtrack: false,
     agent_exhaustive: true,
     template_preflight: isStructural,
@@ -3028,7 +3001,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260822-polycube10-v130", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-gcts-i-v205", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3529,11 +3502,7 @@ function formatGrowthResult(result, target) {
   }[result?.stats?.termination_reason] ?? null;
   const stopSuffix = result?.searchIncomplete && stopReason ? ` · ${stopReason}` : "";
   const learningSuffix = result?.mode === "gcts"
-    ? result.reusedLearnedPatch
-      ? ` (replayed ${result.stats?.proposal_patch_tiles_replayed ?? 0})`
-      : result.learnedProgram?.patch?.length
-        ? ` (learned ${result.learnedProgram.patch.length})`
-        : ""
+    ? ` (learned ${result.stats?.marking_geometric_clauses ?? 0}, reused ${result.stats?.marking_geometric_prunes ?? 0})`
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
   if (result?.resultKind === "known_aperiodic_construction") {
@@ -3660,7 +3629,6 @@ function startGrowthBenchmark() {
   const sequence = growthSequence;
   const config = JSON.parse(configKey());
   config.ui_yield_interval_ms = 250;
-  const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
   setStatus("Running all four modes…");
@@ -3693,7 +3661,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-gcts-policy-v132", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-gcts-i-v205", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3727,14 +3695,8 @@ function startGrowthBenchmark() {
         ) showSelectedGrowthSnapshot();
       } else if (message.type === "series-finished") {
         series.result = message.result;
-        if (mode.id === "gcts" && message.result.learnedProgram) {
-          const stored = rememberLearnedProposal(config, message.result.learnedProgram);
-          if (stored) {
-            series.learnedProgram = stored;
-            series.status = message.result.reusedLearnedPatch
-              ? `reused ${message.result.stats?.proposal_patch_tiles_replayed ?? 0}-tile patch; learned ${stored.patch.length}`
-              : `learned ${stored.patch.length}-tile patch for next run`;
-          }
+        if (mode.id === "gcts") {
+          series.status = `learned ${message.result.stats?.marking_geometric_clauses ?? 0} geometric failures; reused ${message.result.stats?.marking_geometric_prunes ?? 0}`;
         }
         if (!series.status || ["running", "starting"].includes(series.status)) {
           series.status = message.result.success ? "finished" : message.result.searchIncomplete ? "search limit" : "terminated";
@@ -3758,9 +3720,7 @@ function startGrowthBenchmark() {
     worker.postMessage({
       type: "start",
       sequence,
-      config: mode.id === "gcts"
-        ? { ...config, proposal_program: cachedLearningProgram }
-        : config,
+      config,
       mode: mode.id
     });
   }

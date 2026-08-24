@@ -4,7 +4,6 @@ import { createHash } from "node:crypto";
 import { writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
-import { proposalProgramFromPatchSnapshot } from "../apps/3d-lattice-tiler/proposal-learner.js";
 import {
   LATTICE_POLYHEDRON_CENSUS_POOL,
   LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES,
@@ -30,6 +29,13 @@ const isohedralHorizon = Math.max(2, Math.floor(numberArg("isohedral-horizon", 2
 const periodicMax = Math.max(1, Math.floor(numberArg("periodic-max", 4)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 500000)));
 const gctsRounds = Math.max(1, Math.floor(numberArg("gcts-rounds", 1)));
+const gctsMarkingReachMultiplier = Math.max(1, numberArg("gcts-marking-reach", 1));
+const gctsMarkingMaxClauses = Math.max(0, Math.floor(numberArg("gcts-marking-max-clauses", 20000)));
+const gctsMarkingMaxContextTiles = Math.max(1, Math.floor(numberArg("gcts-marking-max-context", 1000000)));
+const gctsMarkingActivationFailures = Math.max(0, Math.floor(numberArg("gcts-marking-activation-failures", 0)));
+const gctsMarkingSymmetry = args.get("gcts-marking-symmetry") === "rotations" ? "rotations" : "fixed";
+const gctsMarkingIndex = args.get("gcts-marking-index") !== "false";
+const gctsMarkingBlockerMode = args.get("gcts-marking-blockers") === "all" ? "all" : "first";
 const restartEpisodes = Math.max(1, Math.floor(numberArg("restart-episodes", 4)));
 const discrepancySchedule = (args.get("discrepancy-schedule") ?? "0,1,2,4")
   .split(",")
@@ -168,13 +174,11 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
   polycube_lattice: "z3",
   criterion: "count",
   target_val: lane === "isohedral" ? Math.max(target, 500) : target,
-  tiling_strategy: lane === "gcts"
-    ? "learning_free_range"
-    : genericLane ? "free_range" : lane,
+  tiling_strategy: genericLane ? "free_range" : lane,
   move_order: lane === "isohedral"
     ? "isohedral"
     : lane === "gcts"
-      ? "agent"
+      ? "balanced"
     : lane === "uct"
       ? "uct"
     : lane === "free_range_no_brainer"
@@ -182,7 +186,16 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
       : lane === "free_range_unbanded"
         ? unbandedMoveOrder
         : "balanced",
-  proposal_program: lane === "gcts" ? proposalProgram : null,
+  proposal_program: null,
+  complete_lattice_point_branching: genericLane && lane !== "free_range_unbanded",
+  gcts_failure_marking: lane === "gcts",
+  gcts_marking_reach_multiplier: gctsMarkingReachMultiplier,
+  gcts_marking_max_clauses: gctsMarkingMaxClauses,
+  gcts_marking_max_context_tiles: gctsMarkingMaxContextTiles,
+  gcts_marking_activation_failures: gctsMarkingActivationFailures,
+  gcts_marking_symmetry: gctsMarkingSymmetry,
+  gcts_marking_index: gctsMarkingIndex,
+  gcts_marking_blocker_mode: gctsMarkingBlockerMode,
   search_discrepancy_limit: searchOptions.discrepancyLimit ?? null,
   enumerate_successors_only: searchOptions.enumerateSuccessorsOnly === true,
   initial_patch: searchOptions.initialPatch ?? null,
@@ -300,20 +313,14 @@ async function runLane(
   }
   const stats = final?.search_stats ?? {};
   maxLiveTiles = Math.max(maxLiveTiles, stats.max_live_tiles ?? 0);
-  const learnedProgram = lane === "gcts" && bestSnapshot
-    ? proposalProgramFromPatchSnapshot(config, bestSnapshot, proposalProgram, {
-        // A recorded maximum is commonly a dead leaf. Preserve its useful
-        // trunk but leave the suffix inside the next run's backtracking tree.
-        tailReserve: Math.min(6, Math.max(2, Math.floor(largestPatch / 5)))
-      })
-    : proposalProgram;
+  const learnedProgram = null;
   return {
     case: benchmarkCase.id,
     family: benchmarkCase.family,
     expected: benchmarkCase.expected,
-    lane: lane === "gcts" && round > 0 ? `gcts_warm_${round}` : lane,
+    lane,
     gctsRound: lane === "gcts" ? round : null,
-    reusedLearnedPatch: !!proposalProgram,
+    reusedLearnedPatch: false,
     learnedProgram,
     seed,
     resultKind: final?.result_kind ?? "missing_result",
@@ -396,6 +403,20 @@ async function runLane(
     geometricNogoodClauseChecks: stats.generic_geometric_nogood_clause_checks ?? 0,
     geometricNogoodLinearClauseChecks: stats.generic_geometric_nogood_linear_clause_checks ?? 0,
     geometricNogoodAvoidedClauseChecks: stats.generic_geometric_nogood_avoided_clause_checks ?? 0,
+    gctsFailureMarkingEnabled: !!stats.gcts_failure_marking_enabled,
+    markingStartedEmpty: stats.marking_started_empty !== false,
+    markingObservedFailures: stats.marking_observed_failures ?? 0,
+    markingGeometricClauses: stats.marking_geometric_clauses ?? 0,
+    markingGeometricPrunes: stats.marking_geometric_prunes ?? 0,
+    markingDuplicateFailures: stats.marking_duplicate_failures ?? 0,
+    markingSkippedLargeContexts: stats.marking_skipped_large_contexts ?? 0,
+    markingAverageContextTiles: stats.marking_average_context_tiles ?? 0,
+    markingMaxContextTiles: stats.marking_max_context_tiles ?? 0,
+    markingFrontierChecks: stats.marking_frontier_checks ?? 0,
+    markingClauseChecks: stats.marking_clause_checks ?? 0,
+    markingAvoidedClauseChecks: stats.marking_avoided_clause_checks ?? 0,
+    markingReach: stats.marking_reach ?? 0,
+    markingRotationCount: stats.marking_rotation_count ?? 0,
     genericPeriodicCertificateAttempted: !!stats.generic_periodic_certificate_attempted,
     genericPeriodicCertificateCompleted: !!stats.generic_periodic_certificate_completed,
     genericPeriodicCertificateTimedOut: !!stats.generic_periodic_certificate_timed_out,
@@ -566,6 +587,7 @@ async function runBeamLane(benchmarkCase, seed) {
     witnessGrowthIsotropy: bestSnapshot?.search_stats?.growth_isotropy ?? 0,
     witnessPeriodicTranslationRank: bestSnapshot?.search_stats?.periodic_translation_rank ?? 0,
     growthMilestones,
+    faceOrder,
     beamWidth,
     beamExpandedStates: expandedStates,
     beamGeneratedStates: generatedStates,
@@ -650,14 +672,12 @@ for (const benchmarkCase of cases) {
       ? seeds
       : [seeds[0]];
     for (const seed of laneSeeds) {
-      let proposalProgram = null;
       const rounds = lane === "gcts" ? gctsRounds : 1;
       for (let round = 0; round < rounds; round++) {
         const row = ["restart_dfs", "ilds", "beam"].includes(lane)
           ? await runSearchBaseline(benchmarkCase, lane, seed)
-          : await runLane(benchmarkCase, lane, seed, { proposalProgram, round });
+          : await runLane(benchmarkCase, lane, seed, { proposalProgram: null, round });
         rows.push(row);
-        proposalProgram = row.learnedProgram;
         if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "result", ...row })}\n`);
       }
     }
@@ -891,6 +911,13 @@ const summary = {
     periodicMax,
     nodeLimit,
     gctsRounds,
+    gctsMarkingReachMultiplier,
+    gctsMarkingMaxClauses,
+    gctsMarkingMaxContextTiles,
+    gctsMarkingActivationFailures,
+    gctsMarkingSymmetry,
+    gctsMarkingIndex,
+    gctsMarkingBlockerMode,
     restartEpisodes,
     discrepancySchedule,
     beamWidth,

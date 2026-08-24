@@ -3,6 +3,7 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
+import { GeometricFrontierMarking } from "../../assets/geometric-frontier-marking.js?v=20260824-gcts-i-v1";
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
 import { normalizeProposalProgram } from "./proposal-learner.js";
@@ -796,7 +797,7 @@ export const createTilingStream = (() => {
       agent_max_branch_growth: 0,
       agent_learned_tags: 0,
       agent_sibling_reorders: 0,
-      agent_policy: "crystal_probe",
+      agent_policy: null,
       agent_crystal_probe_nodes: 40,
       discrepancy_limit: null,
       discrepancy_prunes: 0,
@@ -816,10 +817,19 @@ export const createTilingStream = (() => {
       isohedral_certificate_patch_sizes_tried: [],
       isohedral_certificate_duplicate_states_skipped: 0,
       isohedral_search_horizon_tiles: null,
-      // Kept as zero-valued compatibility counters for existing headless
-      // consumers. This standalone engine does not install a GCTS runtime.
       marking_observed_failures: 0,
       marking_geometric_clauses: 0,
+      marking_geometric_prunes: 0,
+      marking_duplicate_failures: 0,
+      marking_skipped_large_contexts: 0,
+      marking_average_context_tiles: 0,
+      marking_max_context_tiles: 0,
+      marking_frontier_checks: 0,
+      marking_clause_checks: 0,
+      marking_avoided_clause_checks: 0,
+      marking_reach: 0,
+      marking_rotation_count: 0,
+      marking_started_empty: true,
       proposal_program_id: config.proposal_program?.id ?? null,
       proposal_patch_size: 0,
       proposal_sequence_steps_used: 0,
@@ -1547,6 +1557,85 @@ export const createTilingStream = (() => {
       if (tilingDimension >= 3 && affineRank(sharedPoints) < 2) return null;
       return validCheck;
     };
+    const completeCandidatesForLatticePoint = (option) => {
+      const point = option.point ?? String(option.pointKey ?? option.point_key).split(",").map(Number);
+      const candidates = new Map();
+      const blockerAlternatives = [];
+      let obstructionComplete = gctsFailureMarkingEnabled && allSystemTilesAreConvexPolyhedra;
+      let attempts = 0;
+      candidateScan:
+      for (let prototileIndex = 0; prototileIndex < prototiles.length; prototileIndex += 1) {
+        const tile = prototiles[prototileIndex];
+        for (const orient of tile.unique_orientations ?? []) {
+          for (const anchor of orient.occupancy ?? []) {
+            attempts += 1;
+            if ((attempts & 31) === 0 && overBudget()) {
+              noteIncompleteSearch();
+              break candidateScan;
+            }
+            const translation = vecSub(point, anchor.pos);
+            if (tile.is_polycube
+              ? !isPolycubeMoveTranslation(tile, translation)
+              : !translation.every(Number.isInteger)) continue;
+            const move = { prototile_idx: prototileIndex, orient, translation };
+            const key = placementGeometryKey(move);
+            if (candidates.has(key) || blockerAlternatives.some(item => item.key === key)) continue;
+            if (obstructionComplete) {
+              const blockers = [];
+              for (const placement of state.placements) {
+                if (!convexPlacementInteriorsOverlap(placement, move)) continue;
+                blockers.push(placement);
+                if (markingBlockerMode === "first") break;
+              }
+              if (blockers.length) {
+                blockerAlternatives.push({ key, blockers });
+                continue;
+              }
+            }
+            const validity = isMoveValid(move);
+            if (!validity.ok) {
+              // Convex interior overlap is the common obstruction in this
+              // lane. If another global constraint rejected the candidate,
+              // retain the full local context instead of pretending that a
+              // smaller certificate was proved.
+              obstructionComplete = false;
+              continue;
+            }
+            candidates.set(key, {
+              ...move,
+              occupancy_data: validity.occData,
+              dedup_key: key
+            });
+          }
+        }
+      }
+      if (!candidates.size && obstructionComplete && blockerAlternatives.length) {
+        const unresolved = blockerAlternatives.slice();
+        const selected = [];
+        while (unresolved.length) {
+          let bestPlacement = null;
+          let bestCoverage = 0;
+          for (const placement of state.placements) {
+            const coverage = unresolved.reduce((sum, conflict) =>
+              sum + (conflict.blockers.includes(placement) ? 1 : 0), 0);
+            if (coverage > bestCoverage) {
+              bestCoverage = coverage;
+              bestPlacement = placement;
+            }
+          }
+          if (!bestPlacement || bestCoverage === 0) {
+            obstructionComplete = false;
+            break;
+          }
+          selected.push(bestPlacement);
+          for (let index = unresolved.length - 1; index >= 0; index -= 1) {
+            if (unresolved[index].blockers.includes(bestPlacement)) unresolved.splice(index, 1);
+          }
+        }
+        if (obstructionComplete) option._gcts_obstruction_context = selected;
+      }
+      return [...candidates.values()].sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
+    };
     const orientedFacesBySignature = new Map();
     for (let prototileIndex = 0; prototileIndex < prototiles.length; prototileIndex++) {
       const tile = prototiles[prototileIndex];
@@ -2047,6 +2136,13 @@ export const createTilingStream = (() => {
     if (proposalProgram) searchStats.proposal_patch_size = proposalProgram.patch_size;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
     const useUct = moveOrder === "uct";
+    const completeLatticePointBranching = config.complete_lattice_point_branching === true;
+    const gctsFailureMarkingEnabled = config.gcts_failure_marking === true
+      && completeLatticePointBranching
+      && tilingStrategy === "generic"
+      && !targetRegion;
+    searchStats.complete_lattice_point_branching = completeLatticePointBranching;
+    searchStats.gcts_failure_marking_enabled = gctsFailureMarkingEnabled;
     const faceOrder = config.face_order ?? "coverage";
     searchStats.face_order = faceOrder;
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
@@ -2169,6 +2265,60 @@ export const createTilingStream = (() => {
           }
         : null
     });
+    const maximumTileAxisSpan = Math.max(1, ...prototiles.flatMap(tile =>
+      (tile.unique_orientations ?? []).map(orient => Math.max(...[0, 1, 2].map(axis => {
+        const coordinates = orient.verts.map(vertex => vertex[axis]);
+        return Math.max(...coordinates) - Math.min(...coordinates);
+      })))
+    ));
+    const configuredMarkingReachMultiplier = Number(config.gcts_marking_reach_multiplier);
+    const markingReachMultiplier = Number.isFinite(configuredMarkingReachMultiplier)
+      ? Math.max(1, configuredMarkingReachMultiplier)
+      : 1;
+    const configuredMarkingMaxClauses = Number(config.gcts_marking_max_clauses);
+    const markingMaxClauses = Number.isFinite(configuredMarkingMaxClauses)
+      ? Math.max(0, Math.floor(configuredMarkingMaxClauses))
+      : 20000;
+    const configuredMarkingMaxContext = Number(config.gcts_marking_max_context_tiles);
+    const markingMaxContext = Number.isFinite(configuredMarkingMaxContext)
+      ? Math.max(1, Math.floor(configuredMarkingMaxContext))
+      : Infinity;
+    const configuredMarkingActivationFailures = Number(config.gcts_marking_activation_failures);
+    const markingActivationFailures = Number.isFinite(configuredMarkingActivationFailures)
+      ? Math.max(0, Math.floor(configuredMarkingActivationFailures))
+      : 0;
+    const markingSymmetry = config.gcts_marking_symmetry === "rotations" ? "rotations" : "fixed";
+    const markingBlockerMode = config.gcts_marking_blocker_mode === "all" ? "all" : "first";
+    searchStats.marking_blocker_mode = markingBlockerMode;
+    const identityCubicRotation = PROPER_CUBIC_ROTATIONS.find(matrix =>
+      matrix.every((row, rowIndex) => row.every((value, columnIndex) => value === (rowIndex === columnIndex ? 1 : 0)))
+    ) ?? PROPER_CUBIC_ROTATIONS[0];
+    const frontierMarking = new GeometricFrontierMarking({
+      rotations: markingSymmetry === "rotations" ? PROPER_CUBIC_ROTATIONS : [identityCubicRotation],
+      reach: maximumTileAxisSpan * markingReachMultiplier,
+      maxClauses: markingMaxClauses,
+      maxContext: markingMaxContext,
+      activationFailures: markingActivationFailures,
+      usePivotIndex: config.gcts_marking_index !== false
+    });
+    const updateFrontierMarkingStats = () => {
+      const stats = frontierMarking.stats();
+      searchStats.marking_observed_failures = stats.observed_failures;
+      searchStats.marking_geometric_clauses = stats.clauses;
+      searchStats.marking_geometric_prunes = stats.prunes;
+      searchStats.marking_duplicate_failures = stats.duplicates;
+      searchStats.marking_skipped_large_contexts = stats.skipped_large;
+      searchStats.marking_average_context_tiles = stats.average_context_tokens;
+      searchStats.marking_max_context_tiles = stats.max_context_tokens;
+      searchStats.marking_frontier_checks = stats.frontier_checks;
+      searchStats.marking_clause_checks = stats.clause_checks;
+      searchStats.marking_avoided_clause_checks = stats.avoided_clause_checks;
+      searchStats.marking_reach = stats.reach;
+      searchStats.marking_rotation_count = stats.rotations;
+      searchStats.marking_activated = stats.activated;
+      searchStats.marking_capacity_reached = stats.capacity_reached;
+    };
+    updateFrontierMarkingStats();
     searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
     searchStats.generic_geometric_nogood_disable_reason = genericGeometricNogoodEnabled
       ? null
@@ -3404,6 +3554,7 @@ export const createTilingStream = (() => {
           return selectedPolicy === "structural";
         },
         score(move, option = null) {
+          searchStats.agent_policy ??= selectedPolicy;
           const features = moveAgentFeatures(move, option);
           const learned = learnedValue(features);
           if (selectedPolicy === "crystal_probe" && searchWorkCounter >= 40) {
@@ -5617,6 +5768,17 @@ export const createTilingStream = (() => {
           return true;
         }
       }
+      if (gctsFailureMarkingEnabled) {
+        const markedConflict = frontierMarking.firstConflict(frontierPointOptions().slice(0, 1), state.placements);
+        updateFrontierMarkingStats();
+        if (markedConflict) {
+          searchStats.failed_leaves += 1;
+          yield nodeStatus(parentId, "fail", "Learned geometric marking", {
+            marking_frontier_point: markedConflict.point ?? markedConflict.pointKey
+          });
+          return false;
+        }
+      }
       const entryFailureKey = genericFailureMemoEnabled ? genericFailureStateKey() : null;
       const entryFailurePlacements = genericFailureMemoEnabled ? state.placements.slice() : null;
       const forcedBatch = [];
@@ -5658,6 +5820,16 @@ export const createTilingStream = (() => {
         const cached = state.vertex_candidate_cache.get(cacheKey);
         if (cached) return cached;
 
+        if (completeLatticePointBranching) {
+          const candidates = completeCandidatesForLatticePoint(option);
+          const localCandidateCap = Math.min(maxCandidates, candidateCap);
+          const out = Number.isFinite(localCandidateCap)
+            ? candidates.slice(0, localCandidateCap)
+            : candidates;
+          state.vertex_candidate_cache.set(cacheKey, out);
+          return out;
+        }
+
         // Any connected face-to-face continuation covers at least one active
         // frontier face. Index those exact reversed-face matches once per
         // state instead of trying every occupied-cell anchor at every vertex.
@@ -5689,8 +5861,9 @@ export const createTilingStream = (() => {
       };
       const analyzeFrontierGraph = async () => {
         if (latestFrontierGraph && latestFrontierGraphVersion === stateVersion) return latestFrontierGraph;
+        const frontierOptions = frontierPointOptions();
         const graph = await buildFrontierCandidateGraph(
-          frontierPointOptions(),
+          completeLatticePointBranching ? frontierOptions.slice(0, 1) : frontierOptions,
           option => nodeCandidatesForVertexOption(option, candidateCap),
           {
             frontierKey: option => option.pointKey,
@@ -5815,6 +5988,19 @@ export const createTilingStream = (() => {
         if (overBudget()) { noteIncompleteSearch(); yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
         if (analysis.deadEnd) {
           searchStats.failed_leaves += 1;
+          if (gctsFailureMarkingEnabled && !searchIncomplete) {
+            frontierMarking.encode(
+              analysis.deadEnd.point,
+              analysis.deadEnd.weight,
+              analysis.deadEnd._gcts_obstruction_context ?? state.placements,
+              {
+                failed_patch_tiles: state.placements.length,
+                frontier_point: analysis.deadEnd.point.slice(),
+                minimized_blockers: analysis.deadEnd._gcts_obstruction_context?.length ?? null
+              }
+            );
+            updateFrontierMarkingStats();
+          }
           yield nodeStatus(parentId, "fail", "Dead End", { frontier_stats: analysisStats, frontier_dual: frontierDual });
           return yield* doReturn(false);
         }

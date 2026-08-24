@@ -1,8 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-gcts-policy-v190";
-import {
-  normalizeProposalProgram,
-  proposalProgramFromPatchSnapshot
-} from "./proposal-learner.js?v=20260824-gcts-tail-v32";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-gcts-i-v205";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -57,8 +53,8 @@ const MODES = {
   gcts: {
     id: "gcts",
     label: "GCTS",
-    strategy: "learning_free_range",
-    moveOrder: "agent",
+    strategy: "free_range",
+    moveOrder: "balanced",
     templates: false,
     agentExhaustive: true
   },
@@ -89,18 +85,19 @@ async function runMode(sequence, baseConfig, mode) {
   const effectiveMode = shellSearch && mode.proof
     ? { ...mode, label: `${mode.label.replace(/ · .*$/u, "")} · complete shell` }
     : mode;
-  const priorProgram = mode.id === "gcts" && baseConfig.proposal_program
-    ? normalizeProposalProgram(baseConfig.proposal_program)
-    : null;
   const config = {
     ...baseConfig,
     tiling_strategy: mode.strategy,
-    move_order: mode.id === "gcts"
-      ? "agent"
-      : priorProgram
-        ? "proposal"
-        : shellSearch && mode.proof ? "shell" : mode.moveOrder,
-    proposal_program: priorProgram,
+    move_order: shellSearch && mode.proof ? "shell" : mode.moveOrder,
+    proposal_program: null,
+    complete_lattice_point_branching: ["free_range", "gcts", "no_brainer"].includes(mode.id),
+    gcts_failure_marking: mode.id === "gcts",
+    gcts_marking_reach_multiplier: baseConfig.gcts_marking_reach_multiplier ?? 1,
+    gcts_marking_max_clauses: baseConfig.gcts_marking_max_clauses ?? 20000,
+    gcts_marking_max_context_tiles: baseConfig.gcts_marking_max_context_tiles ?? 1000000,
+    gcts_marking_activation_failures: baseConfig.gcts_marking_activation_failures ?? 0,
+    gcts_marking_symmetry: baseConfig.gcts_marking_symmetry ?? "fixed",
+    gcts_marking_index: baseConfig.gcts_marking_index !== false,
     agent_exhaustive: mode.agentExhaustive,
     greedy_no_backtrack: false,
     template_preflight: mode.templates,
@@ -213,11 +210,7 @@ async function runMode(sequence, baseConfig, mode) {
   }
 
   const elapsed = Math.round(performance.now() - started);
-  const learnedProgram = mode.id === "gcts" && bestSnapshot?.placements?.length > 1
-    ? proposalProgramFromPatchSnapshot(baseConfig, bestSnapshot, priorProgram, {
-        tailReserve: Math.min(6, Math.max(2, Math.floor(best / 5)))
-      })
-    : priorProgram;
+  const learnedProgram = null;
   if (mode.id === "isohedral" && final?.success === false) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
     queueHistory({ point, snapshot: terminalSnapshot });
@@ -236,7 +229,7 @@ async function runMode(sequence, baseConfig, mode) {
     points,
     stats: final?.search_stats ?? latestStats,
     learnedProgram,
-    reusedLearnedPatch: !!priorProgram,
+    reusedLearnedPatch: false,
     resultKind: final?.result_kind ?? null,
     certificatePatchSize: final?.tiling_evidence?.patch_size ?? null,
     checkedPatchSize,

@@ -18,8 +18,8 @@ http://127.0.0.1:5174/3d-lattice-tiler/
 ```
 
 `engine.js` owns tile geometry, candidate generation, exact placement legality,
-periodic certificates, GCTS proposal learning, isohedral reuse, balanced growth,
-and ordinary backtracking. The browser executes that same engine in
+periodic certificates, GCTS-I geometric failure markings, isohedral reuse,
+balanced growth, and ordinary backtracking. The browser executes that same engine in
 `solver-worker.js`.
 
 ## Solver modes
@@ -31,11 +31,12 @@ independent workers:
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
-2. **GCTS** runs the same search while updating geometric
-   proposal priorities from successful and failed branches. Its best legal
-   patch is stored per tile in the browser and revalidated on later runs, so
-   repeated comparisons improve without hard-coding a translational or
-   isohedral strategy.
+2. **GCTS** is the cold-start algorithm defined in the GCTS-I essay. It uses
+   the same branch order as free-range, starts with an empty marking, and
+   records exact local obstructions when an incomplete lattice point has no
+   possible oriented tile continuation. Coordinates are relative to the failed
+   point, so a translated recurrence is rejected by geometric overlap. Nothing
+   is loaded from the catalog or a previous run.
 3. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
    copies of the certified whole patch tile 3-space. Certified translation
@@ -97,30 +98,24 @@ The exhaustive complete-rank, delayed-nogood, and crystal-rank policies remain
 available to the headless research and regression harnesses. They are not extra
 public comparison lanes.
 
-## GCTS learned proposals
+## GCTS-I failure markings
 
-The concurrent GCTS mode updates proposal priorities during the
-active search. The reusable headless trainer additionally evolves tile-specific
-proposal programs. A program may contain an ordered cycle of move-scoring
-stages plus the complete locally legal patch discovered by its best episode.
-On reuse, the engine revalidates and replays that patch relative to the initial
-tile, then returns to ordinary backtracking when the patch ends or no longer
-fits. The learner can therefore discover a translational-looking sequence for
-one tile, an isohedral-looking neighborhood for another, or a different patch
-without switching to either human baseline.
+At the selected oldest incomplete lattice point, the GCTS and free-range lanes
+enumerate every prototile, proper orientation, and supported lattice-point
+anchor. A zero-candidate point is therefore a genuine local obstruction, not a
+failure of face-matching candidate generation. For each rejected candidate the
+learner retains one exact blocking placement. Their union is a sufficient
+certificate that no tile can complete that point. The certificate is stored as
+a sparse tile marking relative to the point and matched as a subset of later
+local contexts.
 
-Offline training refines the winning patch in expanding-horizon rounds. Each
-round replays the known prefix, spends progressively more time extending it,
-and finally measures the completed proposal again at the original inference
-horizon. Training time is therefore not confused with the tiles-versus-time
-curve for reusing the learned construction.
-
-For repeatable headless training:
-
-```bash
-node scripts/learn-3d-proposals.mjs --modes cube,1_cross,gyrobifastigium
-node scripts/benchmark-3d-proposal-catalog.mjs --modes=cube,hex_prism,trunc_oct,gyrobifastigium
-```
+The selected general settings use one maximum-tile-span of marking support,
+translation normalization, immediate activation, first-blocker certificates,
+a pivot index, and no context truncation. The joint four-case tuning report is
+[`data/lattice-gcts-i-marking-tuning-2026-08-24.json`](../../data/lattice-gcts-i-marking-tuning-2026-08-24.json).
+The 24-element proper cubic rotation quotient remains available through
+`gcts_marking_symmetry: "rotations"`, but translation normalization processed
+more search work per wall-clock second on the present hard cases.
 
 Terminal results distinguish evidence strength. `certified_tiling` means the
 engine has an exact translational quotient certificate or an exact finite
