@@ -6155,6 +6155,22 @@ export const createTilingStream = (() => {
             note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
           };
     }
+    // Structural certificate searches are one-sided unless they have emitted
+    // an explicit impossibility certificate.  In particular, reaching the
+    // configured isohedral patch horizon is not an exhaustive enumeration of
+    // tile-transitive quotients, and exhausting finitely many translational
+    // motif sizes never excludes a larger fundamental cluster. Mark this
+    // before the terminal snapshot so its statistics carry the same result.
+    if (
+      !success
+      && ["translational", "isohedral"].includes(tilingStrategy)
+      && tilingEvidence?.can_tile !== false
+    ) {
+      noteIncompleteSearch();
+      searchStats.termination_reason ??= tilingStrategy === "translational"
+        ? "bounded_translational_motif_range"
+        : "bounded_isohedral_patch_search";
+    }
     yield nodeStatus(rootId, success ? "success" : "fail");
     const terminalSnapshot = snapshot(null);
     const retainBestEffortSnapshot = tilingStrategy !== "isohedral";

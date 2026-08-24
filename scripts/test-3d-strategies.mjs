@@ -147,6 +147,12 @@ const noOneTilePatch = await solve({
   periodic_tile_count: 1
 });
 assert.equal(noOneTilePatch.final.success, false, "translational mode must not fall back");
+assert.equal(noOneTilePatch.final.result_kind, "search_incomplete");
+assert.equal(noOneTilePatch.final.search_incomplete, true);
+assert.equal(
+  noOneTilePatch.final.search_stats.termination_reason,
+  "bounded_translational_motif_range"
+);
 assert.equal(noOneTilePatch.final.tile_count, 1);
 assert.equal(noOneTilePatch.final.search_stats.branch_choices_visited, 0);
 

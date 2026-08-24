@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-polycube10-v188";
+} from "./engine.js?v=20260824-polycube10-v189";
 import {
   normalizeProposalProgram,
   proposalTileKey
@@ -3594,15 +3594,11 @@ function formatGrowthResult(result, target) {
     const attempts = result.stats?.isohedral_certificate_attempts ?? 0;
     const reused = result.stats?.isohedral_certificate_duplicate_states_skipped ?? 0;
     const effort = `max ${maxLive} live · ${attempts} quotient check${attempts === 1 ? "" : "s"}${reused ? ` · ${reused} reused` : ""}`;
-    return result.searchIncomplete
-      ? `${result.label} inconclusive · ${effort}`
-      : `${result.label} exhausted without a certificate · ${effort}`;
+    return `${result.label} inconclusive · ${effort}`;
   }
   if (result?.mode === "translational" && !result?.success) {
     const checked = result.checkedPatchSize ?? 0;
-    return result.searchIncomplete
-      ? `${result.label} inconclusive · checked through ${checked}-tile patches`
-      : `${result.label} exhausted through ${checked}-tile patches`;
+    return `${result.label} inconclusive · checked through ${checked}-tile patches`;
   }
   if (targetPoint) {
     const witness = result?.mode === "translational" && result?.resultKind === "certified_tiling"

@@ -74,9 +74,11 @@ that historical patch, the left and right arrows walk that selected lane's
 history, and clicking empty chart space restores its current patch. The chart
 and its legend cannot switch lanes; selecting a mode in the controls switches
 the viewport to its latest patch without stopping the other searches.
-An exhausted isohedral search drops to zero and restores the root view. An uncertified translational search
+An uncertified isohedral patch search is inconclusive, drops to zero, and
+restores the root view; its current finite growth horizon is not a proof that
+no tile-transitive quotient exists. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an
-explicit search cap.
+explicit search cap, and every such finite cutoff is likewise inconclusive.
 
 The lower-level API uses `generic` internally and retains `freestyle` as a
 backward-compatible alias of `free_range`. It also retains `auto` for regression
