@@ -138,6 +138,33 @@ replay graph as well as reusable continuation rules. Ice therefore inherits
 the actual H2O, water-dimer, and O6 void-boundary pose/port atlas rather than
 falling back to atom-centred oxygen environments.
 
+## Chemistry encoded as hard geometry
+
+The live executor no longer applies one universal collision radius to H–O,
+Na–Cl, Cu–Zr, and like-species pairs. Before clustering, it learns one colored
+distance envelope for every observed unordered species pair. Each atom
+contributes its nearest neighbor of the requested species; the lower contact
+tail and median are retained for audit, while the hard exclusion is chosen
+strictly below the shortest supplied contact. The original configuration is
+therefore admissible by construction. Unknown pairs fail back to the declared
+generic exclusion rather than receiving an invented chemical bond.
+
+These pair envelopes are used both when a cluster is attached to the occupied
+frontier and when several commuting cluster actions are considered in one
+antichain. Same-species sites merge only inside the much tighter positional
+tolerance; a different species at the same position is always a conflict.
+Internal bond lengths and angles are transported exactly with each learned
+rigid cluster prototype, so accepted growth must satisfy both the whole-cluster
+shape and its colored exterior exclusions. The input-stage inspector lists the
+observed contact and learned hard limit in ångströms, and the complete table and
+fit fractions are serialized in the experiment receipt.
+
+This is chemistry-as-geometry, not a pair potential: it has no attractive
+well, charge, bond order, temperature, pressure, or kinetics. Those effects
+can constrain which clusters and ports are observed in the sample, but the
+browser leapfrogs their dynamical trajectories and preserves only the learned
+geometric admissibility envelope.
+
 ## Finite rigid overlap grammar
 
 The encoding stage assigns a deterministic local orthonormal frame to every

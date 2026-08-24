@@ -10,6 +10,7 @@ import {
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
+import { exclusionForPair, learnColoredDistanceEnvelopes } from "./colored-distance-envelopes.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -404,6 +405,7 @@ let orientationAtlas = [];
 let selectedGalleryCluster = 0;
 let rdfPairSelection = "all";
 let structureObservableSelection = "rdf";
+let coloredDistanceEnvelopes = null;
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -3176,7 +3178,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-10",
+      buildId: "20260824-11",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3220,6 +3222,19 @@ async function buildExperimentReceipt() {
         populations: [...entry.populations],
         support: entry.support,
       })),
+      coloredDistanceEnvelopes: {
+        role: "hard geometric exclusion learned from supplied positions; not a pair potential",
+        config: coloredDistanceEnvelopes.config,
+        fallbackExclusionAngstrom: receiptRound(coloredDistanceEnvelopes.fallbackExclusion * referenceSpacingA / referenceSpacing),
+        pairs: coloredDistanceEnvelopes.records.map((record) => ({
+          species: record.species,
+          minimumObservedAngstrom: receiptRound(record.minimumObserved * referenceSpacingA / referenceSpacing),
+          lowerContactAngstrom: receiptRound(record.lowerContact * referenceSpacingA / referenceSpacing),
+          typicalContactAngstrom: receiptRound(record.typicalContact * referenceSpacingA / referenceSpacing),
+          hardExclusionAngstrom: receiptRound(record.exclusion * referenceSpacingA / referenceSpacing),
+          nearestObservations: record.nearestObservations,
+        })),
+      },
     },
     structuralEvidence: {
       role: "posthoc validation only; never a growth feature or branch score",
@@ -3785,6 +3800,18 @@ function scenePeriodicDisplacement(first, second, context = scenePeriodicContext
   return fractional.applyMatrix3(context.matrix);
 }
 
+function learnReferenceDistanceEnvelopes(source) {
+  const context = scenePeriodicContext();
+  return learnColoredDistanceEnvelopes(source.map((atom) => atom.species),
+    (first, second) => scenePeriodicDisplacement(source[first].p, source[second].p, context).length(), {
+      fallbackExclusion: COLLISION_TOLERANCE,
+    });
+}
+
+function coloredPairExclusion(firstSpecies, secondSpecies) {
+  return exclusionForPair(coloredDistanceEnvelopes, firstSpecies, secondSpecies);
+}
+
 function referenceIndexForSite(site, context = scenePeriodicContext()) {
   let bestIndex = -1;
   let bestDistance2 = MERGE_TOLERANCE ** 2;
@@ -3916,7 +3943,7 @@ function candidateSites(candidate) {
 function sitesCanCommute(firstSites, secondSites) {
   for (const first of firstSites) for (const second of secondSites) {
     const distance = first.p.distanceTo(second.p);
-    if (distance > COLLISION_TOLERANCE) continue;
+    if (distance >= coloredPairExclusion(first.species, second.species)) continue;
     if (first.species === second.species && distance <= COMMUTING_SITE_TOLERANCE) continue;
     return false;
   }
@@ -4014,11 +4041,11 @@ function evaluateCandidate(candidate) {
       } else fresh.push(site);
       return;
     }
-    const neighborhood = nearbyAtoms(site.p, COLLISION_TOLERANCE)
+    const neighborhood = nearbyAtoms(site.p, coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE)
       .sort((first, second) => first.p.distanceToSquared(site.p) - second.p.distanceToSquared(site.p));
     const same = neighborhood.find((atom) => atom.species === site.species && atom.p.distanceTo(site.p) <= MERGE_TOLERANCE);
     if (same) merged.push({ site, atom: same });
-    else if (neighborhood.length) conflicts++;
+    else if (neighborhood.some((atom) => atom.p.distanceTo(site.p) < coloredPairExclusion(site.species, atom.species))) conflicts++;
     else if (!insideGrowthDomain(site.p)) boundaryFailures++;
     else fresh.push(site);
   });
@@ -4544,6 +4571,7 @@ function enterPipelineStage(index, options = {}) {
   referenceSpacingA = scenarioSelect.value === "imported"
     ? importedStructure.validation.medianNearestDistance
     : referenceSpacing / .92 * currentMaterial().spacingA;
+  coloredDistanceEnvelopes = learnReferenceDistanceEnvelopes(referenceAtoms);
   referenceStructuralStats = calculateStructuralStats(referenceAtoms, referenceSpacing, currentPbc().some(Boolean),
     currentMaterial().intrinsicDimension === 2 ? 2 : 3);
   learnedClusters = learnLocalEnvironmentClusters(referenceAtoms);
@@ -5337,11 +5365,24 @@ function selectMarkingDomain(domain) {
 }
 
 function renderMarkings() {
-  markingHeading.textContent = pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "rigid overlap rules" : pipelineStage === 3 ? "local section bundle" : "active section marking";
+  markingHeading.textContent = pipelineStage === 0 ? "colored distance envelopes" : pipelineStage < 2 ? "learned vocabulary" : pipelineStage === 2 ? "rigid overlap rules" : pipelineStage === 3 ? "local section bundle" : "active section marking";
   markingTable.replaceChildren();
   if (pipelineStage === 0) {
-    markCount.textContent = "not learned";
-    const p = document.createElement("p"); p.textContent = "No motif or cluster labels are supplied."; markingTable.appendChild(p); return;
+    const records = coloredDistanceEnvelopes?.records || [];
+    markCount.textContent = `${records.length} pair envelope${records.length === 1 ? "" : "s"}`;
+    const p = document.createElement("p");
+    p.textContent = "Species-pair contacts are learned from positions; no motif labels or pair potential are supplied.";
+    markingTable.appendChild(p);
+    const toAngstrom = referenceSpacingA / referenceSpacing;
+    records.forEach((record) => {
+      const row = document.createElement("div"); row.className = "mark-row";
+      row.title = `${record.nearestObservations} nearest-by-species observations · exclusion remains below every supplied contact`;
+      const code = document.createElement("code"); code.textContent = record.species.join("–");
+      const span = document.createElement("span"); span.textContent = `contact ≥ ${(record.minimumObserved * toAngstrom).toFixed(2)} Å`;
+      const b = document.createElement("b"); b.textContent = `hard < ${(record.exclusion * toAngstrom).toFixed(2)} Å`;
+      row.append(code, span, b); markingTable.appendChild(row);
+    });
+    return;
   }
   const learned = learnedCover.molecular || learnedCover.occurrenceBased ? clusterGalleryTypes().map((cluster) => [
     `${cluster.label} · ${cluster.element}`,
