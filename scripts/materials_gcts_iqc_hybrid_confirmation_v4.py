@@ -28,8 +28,10 @@ ROOT = Path(__file__).resolve().parent
 DEFAULT_FIXTURE = ROOT / "fixtures/iqc_hybrid_confirmation_v4.json.gz"
 ATTEMPT_MARKER = ROOT / \
     "fixtures/iqc_hybrid_confirmation_attempt_v4.json"
-EXPECTED_FIXTURE_SHA256 = ""
-EXPECTED_RESULT_DIGEST = ""
+EXPECTED_FIXTURE_SHA256 = \
+    "2dac238f2d581d83f9b79f3e6836ce3f3fe3e7df792952785319b8a9346a2b8d"
+EXPECTED_RESULT_DIGEST = \
+    "11fc67ff7db4e9e3c8edae83403e14e29c74f0da668633c649c4455cb96bd1d5"
 
 
 def _serialize_receipt(execution):
