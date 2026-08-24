@@ -139,16 +139,16 @@ const ANATOMY = {
 const PHYSICS_MAP = {
   bonding: {
     status: "proved", label: "bonding + coordination", title: "Bonding topology becomes a colored metric cover",
-    physical: "Element identity, bond-length neighborhoods, coordination, molecular membership, and recurring local polyhedra already present in the supplied configuration.",
-    geometric: "Complete colored point-set supports, exact pair distances, shared-site overlaps, and explicit residual clusters. A support need not be atom-centred, spherical, or fixed-radius.",
-    growth: "Candidate clusters must replay the learned colored geometry, preserve admitted overlaps, and reject unlike-species coincidences or sub-minimum-distance collisions.",
-    boundary: "No charge density, bond order, electronic free energy, force, or reaction barrier is evaluated. Geometry is an effective structural surrogate learned from the sample.",
+    physical: "Element identity, bond-length neighborhoods, coordination, bond angles, molecular membership, bulk composition, and recurring local polyhedra already present in the supplied configuration.",
+    geometric: "Complete colored supports are augmented by species-pair exclusions, ordered coordination caps, separated three-body angle bands, and an arbitrary-component composition reservoir. Supports may be irregular, centre-free, and overlapping.",
+    growth: "Hard geometry rejects collisions, oversaturation, and forbidden observed-angle gaps. Optional soft strain and reservoir terms rank the same frozen actions by local distortion and composition drift without changing their coordinates.",
+    boundary: "The soft scores are not energies or chemical potentials. No charge density, oxidation state, bond order, electronic free energy, force, temperature, or reaction barrier is evaluated.",
     systems: [
-      ["NaCl", "Alternating octahedral coordination", "Colored octahedra + directed cell ports", "Coulomb energy and phonons omitted"],
-      ["H₂O ice", "Bent H₂O + tetrahedral O network", "H₂O, bridge, and O₆ gap supports", "Proton energetics unresolved"],
-      ["Ideal IQC", "Recurring decorated local environments", "Irregular colored supports + finite ports", "Model interaction omitted"],
-      ["Cd–Yb", "Published decorated atomic packing", "Positions/species-only recurring supports", "No cut/project labels or metallic potential"],
-      ["Cu–Zr glass", "Short-range motifs only", "Cover + explicit residuals", "No unique continuation claimed"],
+      ["NaCl", "1:1 octahedral coordination", "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir", "Coulomb energy and phonons omitted"],
+      ["H₂O ice", "Bent H₂O + tetrahedral O network", "O→H≤2 · H→O≤1 · bent/tetrahedral bands · H₂O reservoir", "Proton energetics unresolved"],
+      ["Ideal IQC", "Recurring decorated local environments", "Irregular supports + colored many-body envelopes + finite ports", "Model interaction omitted"],
+      ["Cd–Yb", "Published decorated atomic packing", "Positions/species-only envelopes and Cd:Yb reservoir", "No cut/project labels or metallic potential"],
+      ["Cu–Zr glass", "Broad short-range distributions", "Wide learned bands + residuals; no forced recurrence", "No unique continuation claimed"],
     ],
   },
   orientation: {
@@ -196,8 +196,8 @@ const PHYSICS_MAP = {
   kinetics: {
     status: "open", label: "thermodynamics + kinetics", title: "Leap-frogging dynamics is the approximation boundary",
     physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder.",
-    geometric: "Only structural evidence already encoded in configurations and connection successes/failures is retained. A marking is a learned connection section—not a physical potential or clock.",
-    growth: "Tree search jumps directly between geometrically certified states. Proposal checks and backtracks measure computational work, not elapsed physical time.",
+    geometric: "Structural evidence, connection successes/failures, dimensionless contact/angle strain, and composition drift are retained. Every term is learned from the sample and independently switchable for ablation.",
+    growth: "Tree search jumps directly between geometrically certified states. Soft geometry may order legal branches; proposal checks and backtracks measure computational work, not elapsed physical time.",
     boundary: "The portal predicts structurally admissible continuation, not a growth rate or thermodynamic phase diagram. MD/DFT or experimental labels must calibrate those claims separately.",
     systems: [
       ["NaCl", "Exact structural recurrence", "Symbolic scale leap", "No physical growth time"],

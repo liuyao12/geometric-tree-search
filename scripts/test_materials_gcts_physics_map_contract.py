@@ -24,15 +24,18 @@ def test_physics_map_preserves_claim_boundaries() -> None:
 
     # Structural continuation must not be presented as an energy, rate, or
     # thermodynamic phase predictor.
-    assert "No charge density, bond order, electronic free energy, force, or reaction barrier" in atlas
-    assert "A marking is a learned connection section—not a physical potential or clock" in atlas
+    assert "The soft scores are not energies or chemical potentials" in atlas
+    assert "No charge density, oxidation state, bond order, electronic free energy, force, temperature, or reaction barrier" in atlas
+    assert "dimensionless contact/angle strain, and composition drift" in atlas
     assert "not a growth rate or thermodynamic phase diagram" in atlas
-    assert "Proposal checks and backtracks measure computational work, not elapsed physical time" in atlas
+    assert "proposal checks and backtracks measure computational work, not elapsed physical time" in atlas
+    assert "Na–Cl exclusions · z≤6 · 90°∪180° · 1:1 reservoir" in atlas
+    assert "O→H≤2 · H→O≤1 · bent/tetrahedral bands · H₂O reservoir" in atlas
 
     # Ice must expose what is geometrically green and what remains physical
     # work rather than hiding unresolved proton degrees of freedom.
     assert "Bent H₂O + tetrahedral O network" in atlas
-    assert "H₂O, bridge, and O₆ gap supports" in atlas
+    assert "bent/tetrahedral bands · H₂O reservoir" in atlas
     assert "Full proton assignment open" in atlas
     assert "No proton barrier or entropy" in atlas
 
