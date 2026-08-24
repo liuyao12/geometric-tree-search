@@ -218,6 +218,17 @@ but accepted placements cannot spawn another generation. In both modes the
 selected marking ranks the same exact rigid candidate geometries; it does not
 invent coordinates.
 
+The live **growth certificate** keeps four layers separate while the animation
+runs: exact replay of the supplied window, outside-window structural output,
+causal self-feed / hierarchy depth, and the strongest claim actually supported.
+For generic output, “target-blind structural site” means the frozen geometry and
+collision certificates passed; it does not mean an unopened physical target
+was matched. Ice reports its sealed backend parity and finite fixed point, but
+keeps proton orientations and stationary recurrence open. A separately green
+NaCl stationary benchmark is likewise not relabelled as physical elapsed time
+in the viewport. The same structured certificate is embedded in experiment
+receipts.
+
 The representative destination patch is transformed into world coordinates.
 A cell-list spatial index merges coincident same-species atoms and detects
 hard-core or species conflicts without scanning the whole structure. A

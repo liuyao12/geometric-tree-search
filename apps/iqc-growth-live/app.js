@@ -132,6 +132,13 @@ const searchStack = $("searchStack");
 const markingHeading = $("markingHeading");
 const markCount = $("markCount");
 const markingTable = $("markingTable");
+const growthCertificateSection = $("growthCertificateSection");
+const growthCertificateState = $("growthCertificateState");
+const certificateReplay = $("certificateReplay");
+const certificateContinuation = $("certificateContinuation");
+const certificateHierarchy = $("certificateHierarchy");
+const certificateBoundary = $("certificateBoundary");
+const growthCertificateNote = $("growthCertificateNote");
 const legendHeading = $("legendHeading");
 const speciesLegend = $("speciesLegend");
 const orderClassValue = $("orderClassValue");
@@ -2971,7 +2978,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-7",
+      buildId: "20260824-8",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3060,6 +3067,7 @@ async function buildExperimentReceipt() {
       rejectedDecisions,
       grammarDecisions,
       localOracleCalls: oracleCalls,
+      liveCertificate: liveGrowthCertificate(),
       finiteIceAnchorTrace: iceAnchorTrace ? {
         artifactDigest: ICE_MOLECULAR_PORT_ARTIFACT.artifactDigest,
         caseId: iceAnchorTrace.caseId,
@@ -3713,7 +3721,9 @@ function rejectionIsOrderInvariant(candidate, evaluation) {
 }
 
 function commutingFrontierBatch() {
-  const audit = referenceCoverageAudit();
+  const audit = reconstructionCertified
+    ? { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 }
+    : referenceCoverageAudit();
   const ranked = frontierCandidates.map((candidate) => ({
     candidate,
     score: dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit),
@@ -4827,8 +4837,80 @@ function updateDecision(event) {
   eventKind.textContent = reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
 }
 
+function liveGrowthCertificate() {
+  if (pipelineStage < 4) return null;
+  const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  if (iceAnchorTrace) {
+    const processed = iceAnchorTrace.waves.slice(0, iceAnchorWaveIndex);
+    const accepted = processed.reduce((sum, wave) => sum + wave.acceptedAnchors, 0);
+    const nonemptyWaves = processed.filter((wave) => wave.acceptedAnchors > 0).length;
+    const fixedPointReached = iceAnchorTrace.fixedPoint && iceAnchorWaveIndex >= iceAnchorTrace.waves.length;
+    return {
+      mode: "sealed molecular-anchor continuation",
+      state: fixedPointReached ? "finite fixed point" : "target-blind execution",
+      knownWindow: { status: "pass", title: `${iceAnchorTrace.seedAnchors} observed O anchors`,
+        detail: "Seed only; the complete H₂O / bridge / O₆ cover was certified in cluster identification." },
+      continuation: { status: iceAnchorTrace.exactBackendCountParity ? "pass" : "open",
+        title: `${accepted} exact emitted O anchors`,
+        detail: `${processed.reduce((sum, wave) => sum + wave.candidateAnchors, 0)} frozen candidates processed · target calls 0` },
+      hierarchy: { status: nonemptyWaves >= 2 ? "progress" : "open",
+        title: `${nonemptyWaves} nonempty self-fed wave${nonemptyWaves === 1 ? "" : "s"}`,
+        detail: fixedPointReached ? "Grammar exhausted safely; no supported successor remains." : "Execution has not yet reached its certified endpoint." },
+      claimBoundary: { status: "open", title: "O scaffold finite · proton / stationary open",
+        detail: "Mutually exclusive H₂O orientations stay symbolic; no clusters² or exponential ice claim." },
+      metrics: { seedSites: iceAnchorTrace.seedAnchors, emittedSites: accepted, processedWaves: processed.length,
+        nonemptySelfFedWaves: nonemptyWaves, fixedPointReached, targetCalls: 0, exactBackendCountParity: iceAnchorTrace.exactBackendCountParity },
+      benchmarkGate: benchmark.gate,
+    };
+  }
+  const audit = referenceCoverageAudit();
+  const generatedSites = atoms.filter((atom) => !Number.isInteger(atom.referenceIndex)).length;
+  const maximumDepth = Math.max(0, ...placedClusters.map((placement) => placement.depth || 0));
+  const fixedPointReached = reconstructionCertified && frontierCandidates.length === 0 && placedClusters.length > 0;
+  const stationaryBenchmark = scenarioSelect.value === "competition" && benchmark.status === "pass";
+  return {
+    mode: "off-lattice covering search",
+    state: fixedPointReached ? "finite fixed point" : reconstructionCertified ? "unseen continuation" : "known-window replay",
+    knownWindow: { status: reconstructionCertified ? "pass" : "progress",
+      title: `${audit.matched} / ${referenceCount()} known sites`,
+      detail: `${audit.missing} missing · ${audit.duplicateAtoms} duplicates · ${audit.extraneousAtoms} extraneous during replay` },
+    continuation: { status: generatedSites ? "progress" : "open", title: `${generatedSites} target-blind structural sites`,
+      detail: generatedSites ? "Outside the supplied window; geometrically certified but not labeled physically correct." : "No outside-window site has been committed yet." },
+    hierarchy: { status: maximumDepth >= 2 ? "progress" : "open",
+      title: `${placedClusters.length} placements · causal depth ${maximumDepth}`,
+      detail: hierarchyEnabled ? "Accepted clusters may expose frozen ports and self-feed." : "Primitive-only mode deliberately prevents recursive self-feed." },
+    claimBoundary: { status: stationaryBenchmark ? "progress" : "open",
+      title: stationaryBenchmark ? "Live finite trace · stationary benchmark separate" : "Finite structural continuation only",
+      detail: stationaryBenchmark
+        ? "NaCl recurrence is independently certified, but this viewport trace is not itself a physical-time trajectory."
+        : "No potential, elapsed physical time, growth rate, or stationary/exponential rule is inferred from this animation." },
+    metrics: { knownMatchedSites: audit.matched, knownInputSites: referenceCount(), exactKnownWindowReplay: reconstructionCertified,
+      generatedStructuralSites: generatedSites, placedClusters: placedClusters.length, maximumCausalDepth: maximumDepth,
+      fixedPointReached, targetCoordinatesUsed: false, physicalPotentialUsed: false },
+    benchmarkGate: benchmark.gate,
+  };
+}
+
+function updateGrowthCertificate() {
+  const certificate = liveGrowthCertificate();
+  growthCertificateSection.hidden = !certificate;
+  if (!certificate) return;
+  growthCertificateState.textContent = certificate.state;
+  const fill = (element, record) => {
+    element.className = record.status;
+    element.querySelector("strong").textContent = record.title;
+    element.querySelector("span").textContent = record.detail;
+  };
+  fill(certificateReplay, certificate.knownWindow);
+  fill(certificateContinuation, certificate.continuation);
+  fill(certificateHierarchy, certificate.hierarchy);
+  fill(certificateBoundary, certificate.claimBoundary);
+  growthCertificateNote.textContent = `${certificate.mode} · benchmark gate: ${certificate.benchmarkGate}`;
+}
+
 function updateUI() {
   updateRecursiveBenchmark();
+  updateGrowthCertificate();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   if (pipelineStage === 0) {
