@@ -150,6 +150,10 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const lookaheadEncoding = args.get("lookahead-conflict-encoding") ?? "grouped-pb";
   const python = args.get("python") ?? "python3";
   const outputDirectory = resolve(args.get("output-dir") ?? `runs/${id}-placement-cube-range`);
+  const formulaCacheDirectoryArgument = args.get("formula-cache-dir") ?? null;
+  const formulaCacheDirectory = formulaCacheDirectoryArgument
+    ? resolve(formulaCacheDirectoryArgument)
+    : outputDirectory;
   const reportOutput = resolve(args.get("report-output") ?? `${outputDirectory}/summary.json`);
   const initialClauseReport = args.get("initial-clause-report")
     ? resolve(args.get("initial-clause-report"))
@@ -161,6 +165,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const solver = fileURLToPath(new URL("./solve_polycube_corona_z3.py", import.meta.url));
   const verifier = fileURLToPath(new URL("./verify-polycube-placement-cube-cover.mjs", import.meta.url));
   mkdirSync(outputDirectory, { recursive: true });
+  mkdirSync(formulaCacheDirectory, { recursive: true });
   mkdirSync(dirname(reportOutput), { recursive: true });
   const runConfiguration = {
     version: 2,
@@ -185,6 +190,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   if (preRefineIndices.length) runConfiguration.pre_refine_indices = preRefineIndices;
   if (maximumSameLeafRetries) runConfiguration.same_leaf_retries = maximumSameLeafRetries;
   if (openEndedMaximum) runConfiguration.open_ended_maximum = true;
+  if (formulaCacheDirectoryArgument) runConfiguration.formula_cache_directory = formulaCacheDirectory;
   const runConfigurationSha256 = sha256(JSON.stringify(runConfiguration));
   const runConfigurationPath = resolve(outputDirectory, "run-configuration.json");
   if (existsSync(runConfigurationPath)) {
@@ -204,7 +210,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
   const countResults = [];
   for (let count = minimumCount; count <= maximumCount; count += 1) {
     const countLabel = openEndedMaximum ? `at-least-${count}` : `exact-${count}`;
-    const cachePath = resolve(outputDirectory, `${countLabel}-base.smt2`);
+    const cachePath = resolve(formulaCacheDirectory, `${countLabel}-base.smt2`);
     const pending = [bootstrapBranch];
     const queued = new Set([`${bootstrapBranch.parts}:${bootstrapBranch.index}`]);
     const exhaustedReports = [];
@@ -324,12 +330,19 @@ export async function main(arguments_ = process.argv.slice(2)) {
       } else {
         const children = splitPlacementCubeBranch(branch, candidateCount, maximumParts);
         if (children.length) {
+          const newlyQueuedChildren = [];
           for (const child of children) {
             const key = `${child.parts}:${child.index}`;
             if (queued.has(key)) continue;
             queued.add(key);
-            pending.push(child);
+            newlyQueuedChildren.push(child);
           }
+          // Resolve the hard cube we just encountered before spending the
+          // same timeout on every unrelated coarse cube.  This depth-first
+          // refinement tends to expose either a SAT proposal or a small
+          // exhausted leaf much earlier, while preserving the same disjoint
+          // placement-cube cover.
+          pending.unshift(...newlyQueuedChildren);
         } else {
           const retryBranch = retrySamePlacementCubeLeaf(
             branch,
@@ -342,7 +355,7 @@ export async function main(arguments_ = process.argv.slice(2)) {
             sameLeafRetries += 1;
             const key = `${retryBranch.parts}:${retryBranch.index}:retry:${retryBranch.sameLeafRetry}`;
             queued.add(key);
-            pending.push(retryBranch);
+            pending.unshift(retryBranch);
           }
         }
       }

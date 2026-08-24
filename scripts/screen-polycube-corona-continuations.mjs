@@ -60,6 +60,8 @@ if (!["compact", "expansive", "seeded"].includes(placementOrdering)) {
 }
 const seeds = String(args.get("seeds") ?? "3,4,1,2")
   .split(",")
+  .map(value => value.trim())
+  .filter(Boolean)
   .map(Number)
   .filter(Number.isFinite)
   .map(Math.floor);
@@ -151,6 +153,14 @@ for (const reportPath of fixedWitnessReports) {
       throw new Error(`Fixed witness pair obstruction ${reportPath} failed independent replay: ${replay.reason}`);
     }
   }
+  const fixedImmediateObstructions = continuation.fixed_obstruction_nogoods
+    ?.filter(obstruction => obstruction?.fixed_placement_keys?.length)
+    .map(obstruction => ({
+      target_cell: obstruction.target_cell ?? null,
+      clause_size: obstruction.fixed_placement_keys.length,
+      clause_keys: obstruction.fixed_placement_keys,
+      candidate_rows_blocked: obstruction.candidate_rows_blocked ?? null
+    })) ?? [];
   const record = {
     report: reportPath,
     fixed_placements: placements.length,
@@ -167,7 +177,8 @@ for (const reportPath of fixedWitnessReports) {
     obstruction_target_cell: continuation.fixed_obstruction_nogood?.target_cell ?? null,
     obstruction_clause_size: continuation.fixed_obstruction_nogood?.fixed_placement_keys?.length ?? null,
     obstruction_clause_keys: continuation.fixed_obstruction_nogood?.fixed_placement_keys ?? null,
-    immediate_dead_target_count: continuation.fixed_obstruction_nogoods?.length ?? 0,
+    immediate_dead_target_count: fixedImmediateObstructions.length,
+    immediate_obstructions: fixedImmediateObstructions,
     pair_obstruction_target_cells: fixedPairObstruction?.target_cells ?? null,
     pair_obstruction_clause_size: fixedPairObstruction?.fixed_placement_keys?.length ?? null,
     pair_obstruction_candidate_pairs_blocked: fixedPairObstruction?.candidate_pairs_blocked ?? null,
@@ -187,10 +198,15 @@ for (const reportPath of fixedWitnessReports) {
     incompleteContinuation = continuation;
     break;
   }
-  const obstructionClause = fixedPairObstruction?.fixed_placement_keys
-    ?? continuation.fixed_obstruction_nogood?.fixed_placement_keys;
-  if (obstructionClause?.length) {
-    carriedNogoods = mergeNogoodClauses(carriedNogoods, [obstructionClause]);
+  const obstructionClauses = fixedPairObstruction?.fixed_placement_keys?.length
+    ? [fixedPairObstruction.fixed_placement_keys]
+    : fixedImmediateObstructions.length
+      ? fixedImmediateObstructions.map(obstruction => obstruction.clause_keys)
+      : continuation.fixed_obstruction_nogood?.fixed_placement_keys?.length
+        ? [continuation.fixed_obstruction_nogood.fixed_placement_keys]
+        : [];
+  if (obstructionClauses.length) {
+    carriedNogoods = mergeNogoodClauses(carriedNogoods, obstructionClauses);
   }
   obstructedBoundaryStates.add(polycubeCoronaBoundaryKey(candidate.voxels, placements, outerLayer));
 }

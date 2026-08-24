@@ -984,6 +984,34 @@ aperiodic candidate; it remains in the catalogue as a hard GCTS non-tiler
 control. The certificate is
 `data/polycube-p10-052588-complete-radius3-exhaustion-2026-08-23.json`.
 
+The placement-count partitioner can now be run as a closed CEGAR loop with
+`scripts/screen-polycube-placement-cube-cegar.mjs`. A SAT placement-cube leaf
+is no longer reported as an endpoint: the driver verifies the proposed outer
+corona, sends it through exact next-radius GCTS, symmetry-expands every
+immediate obstruction, independently replays each new clause with nogoods and
+conflict backjumping disabled, and restarts the partition with the verified
+feedback. Base SMT formulas can be shared between rounds with
+`--formula-cache-dir`, because the learned clauses and coverability cells are
+applied above that immutable formula. Hard placement cubes are refined
+depth-first, including immediate retries of singleton leaves, so the run
+localizes its open residue or exposes the next SAT proposal before spending the
+same timeout on unrelated coarse cubes. A round limit, a continuation timeout,
+or an open singleton remains explicitly inconclusive; only verified complete
+cube coverage closes a count.
+
+On `p10-054782`, the first two automated exact-41 rounds find distinct
+radius-three proposals. Exact radius-four GCTS rejects both in one node apiece;
+the feedback grows from 20 clauses and 20 cells to 45 clauses and 47 cells.
+Plain replay verifies all 45 clauses in 58 total nodes with both optional
+accelerators disabled. Depth-first partitioning also proves two singleton
+anchor cubes UNSAT and isolates three singleton timeout leaves before finding
+the second proposal. Exact count 41 remains open, so this is a screening
+benchmark rather than a classification. The hash-locked archive is checked by:
+
+```sh
+node scripts/verify-polycube-placement-cube-cegar-screen.mjs
+```
+
 The first production interactive chain keeps three retained solvers through
 nine exact proposals at seeds 303–305. All nine checks return SAT without a
 timeout: three states have pair defects and six clear every pair obligation

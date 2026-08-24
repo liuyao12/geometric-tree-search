@@ -67,86 +67,23 @@ Pages site. The main way to use it is to open the page in a browser:
   rebuilding the formula. Across the old and new portfolios, all 71 proposals
   fail immediate radius-four continuation, but the outer space remains
   unexhausted, so this is neither a non-tiling nor an aperiodicity certificate.
-  The same incremental funnel now has a cross-candidate result for
-  `p10-054782`: 22 exact proposals down to 41 copies, 20 distinct dead-cell
-  cuts, and no surviving radius-four subtree. Its best solver instance returned
-  seven strengthened models from one construction before a randomized restart
-  was needed. Candidate `p10-052588` now has stronger positive finite evidence:
-  an unbounded-copy radius-2-to-3 CEGAR chain rejected 119 proposals before GCTS
-  found and independently verified a 39-copy radius-three corona. Independent
-  replay validates all 114 retained obstruction clauses. That particular
-  survivor has twelve immediate radius-four dead cells, so radius four—and any
-  claim of tiling or aperiodicity—remains unresolved. The exact continuation
-  now returns every immediate dead cell in one pass; this promotes seven cells
-  at once on the non-tiler control and twelve on the recorded `p10-052588`
-  witness instead of rediscovering them through separate solver round trips.
-  Interactive CEGAR can now stage those exact cell obligations four at a time
-  while retaining the full learned queue across restarts. In a matched
-  seed-175, 30-second A/B screen this raises the number of exact radius-three
-  proposals from one to five. Three staged seeds supply nineteen distinct
-  37–39-copy states; exact radius-four GCTS rejects every one, and an
-  independent replay verifies all 216 learned clause instances. The ≤39-copy
-  proposal space remains unexhausted. A matched joint clause-and-cell schedule
-  reaches four states rather than the cell-only lane's five, so it is not the
-  production policy; nevertheless, three are absent from the entire prior
-  portfolio, bringing the exact corpus to 22 distinct states. All four fail
-  immediately at radius four, and independent replay verifies all 57 new
-  clauses. Joint staging is retained as a diversity lane. A fresh cell-only
-  run with the proposal cap relaxed to 42 adds four more unique states,
-  including three 40-copy coronas; all four still fail immediately at radius
-  four, and all 40 new clauses replay exactly. The corpus therefore contains
-  26 distinct exact states. Retrying a timed-out check in the same strengthened
-  solver process extends the matched run from four to six states without a
-  rebuild; the recovered state and its next ordinary check add two 41-copy
-  coronas. Both fail immediately at radius four, and all 60 clauses from the
-  escalated run replay exactly. The corpus now contains 28 distinct states,
-  and exact partition restarts add five more, including four 42-copy coronas.
-  The restart advances from 20 to 32 applied cell obligations; at that frontier
-  a four-cell/six-clause step times out after 60s plus a 120s retry, while two
-  one-cell/two-clause steps solve and reach 34 applied cells. This supports
-  adaptive feedback batching. The 33-state corpus still consists entirely of
-  immediate radius-four failures, all 97 accumulated clauses replay exactly,
-  and transactional feedback now automates the recovery. On the matched hard
-  seed it rolls back timed-out 6/4 and 3/2 clause/cell increments before a 2/1
-  increment succeeds; on another seed the four-cell increment solves directly
-  and reaches 36 applied cells. These add two more states, taking the exact
-  corpus to 35. Exact retained-policy restarts then add distinct 40- and
-  42-copy states and advance the applied-cell prefix from 36 to 41. Both still
-  fail immediately at radius four; all 107- and 114-clause reports replay with
-  zero failures. Two fresh attempts at the 41-cell prefix time out cleanly on
-  the minimum 2-clause/1-cell increment. The 37-state ≤42-copy corpus remains
-  unexhausted. Exact partial-formula caching then cuts matched construction
-  from 52.7s to 2.65s. Cache-backed seeds 208 and 210 each advance one more
-  applied cell and add a distinct 42-copy state, taking the verified corpus to
-  39 and the applied-cell prefix to 43. Their 118- and 127-clause reports replay
-  with zero failures. Retained one-cell restarts then add new 42- and 41-copy
-  states and advance the prefix through 45 applied cells; their 132- and
-  138-clause reports also replay with zero failures. The verified bounded corpus
-  reaches 41 states. Matched seeds at the 45-cell prefix then add distinct 41-
-  and 40-copy states and converge to byte-identical 46-cell applied reports;
-  the cache hit cuts formula construction by 95.1%. Their 146- and 148-clause
-  reports replay with zero failures, taking the corpus to 43 states. Every new
-  state still fails immediately at radius four. A retained three-iteration
-  solver chain then advances the exact prefix 46→49 cells without reconstructing
-  the formula after either successful intermediate step. Its three new 40- or
-  41-copy patches are independently verified and distinct; all 158 accumulated
-  clauses replay exactly. A longer retained chain then succeeds at five more
-  consecutive increments, advancing 49→54 applied cells while avoiding four
-  formula reconstructions. Its five new 40–42-copy patches are independently
-  verified and all 171 accumulated clauses replay exactly. The corpus now has
-  51 states. A final retained run adds two more verified states and reaches 56
-  applied cells; its attempted 57-cell step initially rolls back on timeout.
-  Two fresh processes then agree on exact UNSAT for the byte-identical
-  114-clause/57-cell formula, exhausting the ≤42-copy radius-three proposal
-  stratum as a source of radius-four survivors. Raising the cap first to 44 and
-  then to 46 gives an exact UNSAT result at each bound, with timeout/rollback
-  controls on the same sound prefix. The bounded certificate therefore extends
-  through 46 copies. This is not evidence of non-tiling or aperiodicity: coronas
-  with 47 or more copies remain unexhausted. Five follow-up exact runs isolate
-  the 47–48 band and exact count 47, but all time out and roll back. The solver
-  now encodes an exact placement count with one pseudo-Boolean equality instead
-  of duplicate lower/upper bounds; this is cleaner but has not yet established
-  a wall-clock improvement on the hard frontier.
+  The same incremental funnel produced 22 exact radius-three proposals for
+  `p10-054782`, down to 41 copies, with none surviving radius four. The new
+  placement-cube CEGAR driver now continues SAT partition leaves automatically:
+  two distinct exact-41 proposals are rejected by GCTS in one node apiece,
+  growing the verified feedback from 20 clauses/20 cells to 45 clauses/47
+  cells. Plain replay verifies all 45 clauses, while depth-first partitioning
+  localizes three still-open singleton anchor choices. Exact count 41 therefore
+  remains unresolved; this is a useful hard benchmark, not a non-tiling or
+  aperiodicity result.
+
+  `p10-052588`, by contrast, is now a certified non-tiler rather than an
+  unresolved candidate. A cumulative formula closes all radius-three patches
+  through 46 copies, exact placement-cube certificates close every count from
+  47 through 67, and an open-ended placement-cube certificate closes all counts
+  at least 68. Plain chronological replay verifies the 114-clause prefix and
+  112-clause tail, and the hash-locked count-chain verifier audits every count,
+  anchor partition, clause file, and necessary next-ring cell constraint.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

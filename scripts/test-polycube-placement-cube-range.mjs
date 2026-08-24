@@ -85,10 +85,12 @@ assert.equal(shouldRetryPlacementCubeProcess({
 }), false);
 
 const runner = fileURLToPath(new URL("./screen-polycube-placement-cube-range.mjs", import.meta.url));
+const cegarRunner = fileURLToPath(new URL("./screen-polycube-placement-cube-cegar.mjs", import.meta.url));
 const python = process.env.PYTHON ?? "python3";
 const directory = mkdtempSync(join(tmpdir(), "polycube-cube-range-test-"));
 try {
   const summaryPath = join(directory, "summary.json");
+  const sharedCacheDirectory = join(directory, "shared-cache");
   const commonArguments = [
     runner,
     "--id=p9-42947",
@@ -102,6 +104,7 @@ try {
     "--process-grace-ms=20000",
     "--random-seed=10",
     `--python=${python}`,
+    `--formula-cache-dir=${sharedCacheDirectory}`,
     `--output-dir=${directory}`,
     `--report-output=${summaryPath}`
   ];
@@ -121,6 +124,14 @@ try {
   assert.equal(firstSummary.counts[0].exhausted_branch_reports.length, 2);
   assert.ok(firstSummary.counts[0].certificate);
   assert.match(firstSummary.run_configuration_sha256, /^[0-9a-f]{64}$/);
+  assert.equal(
+    JSON.parse(readFileSync(firstSummary.run_configuration, "utf8")).formula_cache_directory,
+    sharedCacheDirectory
+  );
+  assert.equal(
+    JSON.parse(readFileSync(firstSummary.counts[0].exhausted_branch_reports[0], "utf8")).formula_cache,
+    join(sharedCacheDirectory, "exact-1-base.smt2")
+  );
 
   const resumed = spawnSync(process.execPath, commonArguments, {
     encoding: "utf8",
@@ -194,6 +205,26 @@ try {
   );
   assert.notEqual(refinedConfigurationMismatch.status, 0);
   assert.match(refinedConfigurationMismatch.stderr, /different placement-cube run configuration/);
+
+  const cegarDirectory = join(directory, "cegar");
+  const cegarSummaryPath = join(cegarDirectory, "summary.json");
+  const cegarArguments = commonArguments.slice(1).map(argument => {
+    if (argument.startsWith("--output-dir=")) return `--output-dir=${cegarDirectory}`;
+    if (argument.startsWith("--report-output=")) return `--report-output=${cegarSummaryPath}`;
+    return argument;
+  });
+  const cegar = spawnSync(process.execPath, [cegarRunner, ...cegarArguments, "--cegar-rounds=2"], {
+    encoding: "utf8",
+    timeout: 60_000,
+    maxBuffer: 8 * 1024 * 1024
+  });
+  assert.equal(cegar.status, 0, cegar.stderr);
+  const cegarSummary = JSON.parse(readFileSync(cegarSummaryPath, "utf8"));
+  assert.equal(cegarSummary.classification, "placement_cube_range_exhausted");
+  assert.equal(cegarSummary.rounds.length, 1);
+  assert.equal(cegarSummary.initial_clause_constraints, 0);
+  assert.equal(cegarSummary.final_clause_constraints, 0);
+  assert.match(cegarSummary.final_clause_report_sha256, /^[0-9a-f]{64}$/);
 
   const tailDirectory = join(directory, "tail");
   const tailSummaryPath = join(tailDirectory, "summary.json");
