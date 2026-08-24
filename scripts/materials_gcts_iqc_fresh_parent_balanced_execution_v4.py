@@ -110,9 +110,10 @@ def freeze_fresh_parent_balanced_execution_v4(
         *, center, seed_positions, seed_species,
         first_radius: float, second_radius: float, third_radius: float,
         fourth_radius: float, workers: int = 4,
+        maximum_fallbacks: int = 4,
         ) -> FrozenFreshParentBalancedExecutionV4:
-    if (workers < 1 or not first_radius < second_radius < third_radius <
-            fourth_radius):
+    if (workers < 1 or not 0 <= maximum_fallbacks <= 8 or
+            not first_radius < second_radius < third_radius < fourth_radius):
         raise ValueError("invalid V4 parent-balanced schedule")
     center = tuple(map(float, center))
     seed_positions = tuple(tuple(map(float, point))
@@ -135,7 +136,8 @@ def freeze_fresh_parent_balanced_execution_v4(
         center=center, seed_positions=seed_positions,
         seed_species=seed_species,
         radii=(first_radius, second_radius, third_radius),
-        raw=second, workers=workers)
+        raw=second, workers=workers,
+        maximum_fallbacks=maximum_fallbacks)
     stage_seconds.append(("action_marginal_third_frontiers",
                           time.perf_counter() - started))
     raw_lineage_digest = hashlib.sha256(repr(tuple(

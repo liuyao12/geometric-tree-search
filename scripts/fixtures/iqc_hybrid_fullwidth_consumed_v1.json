@@ -1,0 +1,80 @@
+{
+  "autonomous_or_exponential_growth_claimed": false,
+  "best_complete_correct_actions": 12,
+  "candidate_selection_target_used": false,
+  "case": "consumed-development",
+  "center": [
+    -70.0,
+    10.0,
+    70.0
+  ],
+  "consumed_development_audit_only": true,
+  "exact_complete_twelve_action_paths": 42,
+  "exact_terminal_fourth_blocks": 475,
+  "fallback_prefixes": 4,
+  "fourth_candidates": 512,
+  "fresh_confirmation_claimed": false,
+  "joint_prefixes": 8,
+  "maximum_fallbacks": 4,
+  "raw_exact_nine_action_lineages": 6,
+  "raw_exact_prefixes": [
+    [
+      8,
+      89
+    ],
+    [
+      8,
+      123
+    ]
+  ],
+  "raw_fallback_exact_lineages": 3,
+  "raw_joint_exact_lineages": 3,
+  "raw_nine_action_lineages": 1640,
+  "receipt_digest": "e7772cea4582dae6d17ed79c672b5049e71a8c854b5eb406d62271d2799e4e09",
+  "receipt_unchanged_after_target": true,
+  "result_digest": "cf841cb8ec00f9e0246f47d250ca3da7b9488f440ed4a23fdb7c920d6f05ed30",
+  "runtime_gate_passed": true,
+  "runtime_limit_seconds": 600.0,
+  "schema_version": 1,
+  "seed_atoms": 491,
+  "selected_exact_nine_action_lineages": 6,
+  "selected_exact_prefixes": [
+    [
+      8,
+      89
+    ],
+    [
+      8,
+      123
+    ]
+  ],
+  "selected_nine_action_lineages": 64,
+  "selected_prefixes": 12,
+  "source_fixture_sha256": "557a3be2daab28c069f8886d0c7339563e82b196548eabb7084a68f981e7e67b",
+  "stage_seconds": [
+    [
+      "first_and_second_frontiers",
+      111.13577404099999
+    ],
+    [
+      "action_marginal_third_frontiers",
+      156.778868291
+    ],
+    [
+      "transported_port_graphs",
+      32.162202584
+    ],
+    [
+      "lineage_model_fit_and_selection",
+      47.49988195899999
+    ],
+    [
+      "chunked_fourth_frontiers",
+      244.30805608300005
+    ]
+  ],
+  "target_atoms": 47475,
+  "target_opened_after_complete_receipt_freeze": true,
+  "total_execution_seconds": 591.884782958,
+  "workers": 4
+}
