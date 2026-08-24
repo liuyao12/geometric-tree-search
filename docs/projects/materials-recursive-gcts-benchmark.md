@@ -2460,7 +2460,12 @@ molecular face, the bridge is a two-water connection polyhedron with covalent
 and hydrogen-bond edges, and the gap is the ordered six-oxygen ring boundary.
 The previous centre-to-every-member spoke drawing was only a neighbor-shell
 illustration and has been removed because it misrepresented all three cluster
-topologies.
+topologies. The gallery retains every colored complete-metric class in the
+observed directional cover (`1 / 3 / 33` molecule / bridge / O6-boundary
+classes for Ih and `1 / 2 / 39` for Ic), while marking learning uses the three
+interpretable connection families. This separates visualization vocabulary
+from marking-channel count instead of conflating proton decoration with a new
+physical field.
 
 | fixture | atoms / learned molecules | molecular classes | nearest-shell connections / classes | local-girth voids / classes | tree / visible waves | exact atom cover |
 |---|---:|---:|---:|---:|---:|---:|
@@ -2523,6 +2528,15 @@ symbolic amplification factor. Executable gates:
 
 - `scripts/test_materials_gcts_ice_blind_molecular_growth_benchmark.py`
 - `scripts/test_materials_gcts_ice_cross_polytype_blind_growth_benchmark.py`
+
+The browser consumes a frozen target-free JSON artifact containing only this
+prototype, its proper symmetries, the eight ports, public boundaries, and
+disjoint seed poses. Its independent JavaScript executor reproduces the sealed
+accepted-anchor sequences (`16, 8, 0` and `12, 0`) before Stage 4 exposes the
+atoms. It displays only O anchors, keeps proton poses symbolic, reports zero
+target calls, and disables clusters-of-clusters for ice. The parity regression
+is `scripts/test_materials_gcts_ice_browser_anchor_growth.mjs`; no target atoms
+or precomputed emitted coordinates are stored in the artifact.
 
 The live sample selector now exposes three complementary paths: saved curated
 families (including ice and intrinsic-2D controls), composition-first random

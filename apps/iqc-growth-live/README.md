@@ -345,8 +345,12 @@ cycles to oxygen-ring gap boundaries. The live
 gallery renders the H2O bent molecular face, the complete water-dimer
 connection polyhedron, and the ordered six-oxygen void-boundary polyhedron;
 it never substitutes radial centre-to-neighbor spokes for cluster topology.
-The generic headless gate finds one molecule class, 3/2 decorated bridge
-classes, and one transferable six-member void class in Ih/Ic. Its underlying
+The browser's strict colored complete-metric gallery shows every class in the
+observed periodic window: `1 / 3 / 33` H2O / bridge / O6-boundary classes for
+Ih and `1 / 2 / 39` for Ic. GCTS marking deliberately compresses those cards
+back to three connection families (molecule, bridge, ring boundary), so proton
+decoration does not become dozens of arbitrary channels. The complementary
+generic headless gate finds one transferable six-member void family. Its underlying
 tree actions reconstruct 216/216 and 192/192 sites in six visible commuting
 waves with zero backtracking. The narrower directional hydrogen-bond cover is
 retained as a visualization/control ablation. The executable regressions are
@@ -374,6 +378,15 @@ turning unresolved proton alternatives into simultaneous atoms. Full H2O,
 stationary, cluster-of-clusters, and exponential ice growth remain red. The
 remaining object is a bounded local proton-orientation connection marking
 obeying the already learned ports.
+
+The live Stage 4 now executes that finite certificate rather than replaying
+hard-coded output coordinates. It loads a target-free artifact containing the
+learned H2O prototype, two proper self-symmetries, eight recurrent ports, and
+disjoint seed poses; the browser independently recomputes `16 -> 8 -> 0` for
+Ih and `12 -> 0` for Ih-to-Ic transfer. Only shared oxygen atoms are drawn.
+Hydrogen orientations remain mutually exclusive symbolic branches, target
+calls stay at zero, and clusters-of-clusters is disabled because no stationary
+ice production has been certified.
 
 A common recursive-program gate now prevents the crystal and quasicrystal
 cards from using incomparable meanings of "action." NaCl, the icosahedral

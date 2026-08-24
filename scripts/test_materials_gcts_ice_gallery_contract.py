@@ -46,6 +46,13 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "16/16 and then 8/8 correct unseen oxygen anchors" in source
     assert "Bernal–Fowler ice rules" in source
     assert "stationary, and exponential ice growth stay red" in source
+    assert 'from "./ice-molecular-anchor-growth.js"' in source
+    assert "function initializeIceAnchorSearch()" in source
+    assert "executeIceMolecularAnchorGrowth(" in source
+    assert "if (iceAnchorTrace) {\n    performIceAnchorEvent()" in source
+    assert 'oracleMetric.textContent = "0"' in source
+    assert "mutually exclusive H₂O orientation hypotheses remain symbolic" in source
+    assert "Clusters² is disabled because no stationary promoted ice production has been certified" in source
 
 
 if __name__ == "__main__":

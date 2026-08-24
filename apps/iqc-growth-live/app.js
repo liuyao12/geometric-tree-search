@@ -3,6 +3,17 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { parseStructureText, validateStructure } from "./structure-io.js";
 import { randomNomadStructure } from "./structure-database.js";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
+import {
+  executeIceMolecularAnchorGrowth,
+  validateIceMolecularPortArtifact,
+} from "./ice-molecular-anchor-growth.js";
+
+const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
+  "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
+  if (!response.ok) throw new Error(`Cannot load frozen ice port artifact: ${response.status}`);
+  return response.json();
+});
+validateIceMolecularPortArtifact(ICE_MOLECULAR_PORT_ARTIFACT);
 
 const $ = (id) => document.getElementById(id);
 const viewport = $("viewport");
@@ -363,6 +374,8 @@ let growthDeadline = 0;
 let growthStartAtomCount = 0;
 let growthStopReason = "";
 let slowFrameSeconds = 0;
+let iceAnchorTrace = null;
+let iceAnchorWaveIndex = 0;
 let importedStructure = null;
 let selectedDatabaseElements = ["Na", "Cl"];
 let markingDraft = { channels: 0, reach: 2, representation: "sites" };
@@ -1370,7 +1383,7 @@ function inferTranslationCell(source) {
 function buildDetectedUnitCell() {
   clearGroup(unitCellGroup);
   unitCellBadge.hidden = true;
-  if (pipelineStage !== 4 || !detectedUnitCell) return;
+  if (pipelineStage !== 4 || !detectedUnitCell || iceAnchorTrace) return;
   const inference = inferLiveOrder();
   if (inference.order.includes("quasicrystal") || inference.order === "amorphous solid") return;
   const [a, b, c] = detectedUnitCell.basis;
@@ -3170,6 +3183,35 @@ function referenceCoverageCount() {
   return referenceCoverageAudit().matched;
 }
 
+function iceAnchorScenePoint(point) {
+  const config = ICE_MOLECULAR_PORT_ARTIFACT.cases[scenarioSelect.value];
+  const scale = .92 / currentMaterial().spacingA;
+  return new THREE.Vector3(...point).sub(new THREE.Vector3(...config.boundaryCenter)).multiplyScalar(scale);
+}
+
+function initializeIceAnchorSearch() {
+  iceAnchorTrace = executeIceMolecularAnchorGrowth(
+    ICE_MOLECULAR_PORT_ARTIFACT, scenarioSelect.value);
+  if (!iceAnchorTrace.exactBackendCountParity || iceAnchorTrace.targetUsed) {
+    throw new Error("Frozen browser ice continuation diverged from its sealed backend certificate");
+  }
+  iceAnchorWaveIndex = 0;
+  atoms = [];
+  placedClusters = [];
+  frontierCandidates = [];
+  reconstructionCertified = true;
+  iceAnchorTrace.seedSites.forEach(([species, point], index) => {
+    const atom = addAtom(iceAnchorScenePoint(point), species, "ice-anchor", null, true);
+    atom.anchorDomain = true;
+    atom.clusterIds = [index + 1];
+    indexAtom(atom);
+  });
+  growthStartAtomCount = atoms.length;
+  replayIndex = 0;
+  stackHistory = [{ type: "accept", depth: 0,
+    action: `${iceAnchorTrace.seedAnchors} observed O anchors`, family: "sealed disjoint seed" }];
+}
+
 function initializeOffLatticeSearch() {
   atoms = [];
   placedClusters = [];
@@ -3584,15 +3626,20 @@ function syncStageOptions() {
     renderMarkingLibrary();
     markingSearchModeSelect.value = markingSearchMode;
     const active = selectedMarking();
+    const finiteIceAnchorMode = Boolean(iceAnchorTrace);
     stageOptionsState.textContent = policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline";
-    primitiveGrowthButton.classList.toggle("active", !hierarchyEnabled);
-    primitiveGrowthButton.setAttribute("aria-pressed", String(!hierarchyEnabled));
-    hierarchicalGrowthButton.classList.toggle("active", hierarchyEnabled);
-    hierarchicalGrowthButton.setAttribute("aria-pressed", String(hierarchyEnabled));
+    primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
+    primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
+    hierarchicalGrowthButton.classList.toggle("active", !finiteIceAnchorMode && hierarchyEnabled);
+    hierarchicalGrowthButton.setAttribute("aria-pressed", String(!finiteIceAnchorMode && hierarchyEnabled));
+    hierarchicalGrowthButton.disabled = finiteIceAnchorMode;
+    primitiveGrowthButton.disabled = finiteIceAnchorMode;
     const markingUse = markingSearchMode === "portfolio"
       ? `The ${compatibleMarkings().length || 1}-mark compatible library scores each unchanged action; any trained mark may admit it.`
       : "The selected vocabulary-compatible marking ranks and prunes the unchanged candidate placements.";
-    growthModeNote.textContent = hierarchyEnabled
+    growthModeNote.textContent = finiteIceAnchorMode
+      ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
+      : hierarchyEnabled
       ? `Accepted clusters expose frozen ports and may promote into clusters². ${markingUse}`
       : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${markingUse}`;
   }
@@ -3627,6 +3674,8 @@ function resetCounters() {
   growthStartAtomCount = 0;
   growthStopReason = "";
   slowFrameSeconds = 0;
+  iceAnchorTrace = null;
+  iceAnchorWaveIndex = 0;
 }
 
 function enterPipelineStage(index, options = {}) {
@@ -3668,6 +3717,7 @@ function enterPipelineStage(index, options = {}) {
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
   else if (pipelineStage === 3) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
+  else if (learnedCover.molecular) initializeIceAnchorSearch();
   else initializeOffLatticeSearch();
   if (pipelineStage < 4) rebuildSpatialIndex();
   buildConfinement();
@@ -3764,8 +3814,17 @@ function updateStageNarrative() {
       `${learnedCover.molecular.gapClasses} ring-gap classes`,
       `${overlapGrammar.reconstructionEdges} replay ports`,
     ];
-    narratives[4].caption = "The molecular search remains a strict tree under the hood. Dependency-ordered water, bridge, and gap placements reconstruct the known periodic window before any reusable continuation rule may act.";
-    narratives[4].values = ["H₂O → bridge → gap", "shared atom support", "frozen replay ports", "branch residual"];
+    narratives[4].title = "Grow shared oxygen anchors; retain proton poses symbolically";
+    narratives[4].phase = "sealed disjoint seed";
+    narratives[4].decision = "Frozen molecular-port frontier initialized";
+    narratives[4].copy = `A positions-and-species-only Ih training window learned ${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} proper-SE(3) connection ports. The browser recomputes a disjoint ${scenarioSelect.value === "iceIc" ? "cubic-ice transfer" : "hexagonal-ice"} anchor frontier without target coordinates.`;
+    narratives[4].caption = "Only oxygen anchors shared by mutually exclusive H₂O orientation hypotheses are displayed. Proton alternatives remain symbolic and parent-domain unanimity fails closed when the next connection is unsupported.";
+    narratives[4].values = [
+      `${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} frozen ports`,
+      `${iceAnchorTrace?.seedAnchors || 0} seed O anchors`,
+      "target calls 0",
+      "stationary claim false",
+    ];
   }
   const item = narratives[pipelineStage];
   eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "TRAIN", "SEARCH"][pipelineStage];
@@ -3915,6 +3974,61 @@ function performOffLatticeEvent() {
   updateUI();
 }
 
+function performIceAnchorEvent() {
+  const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
+  if (!wave) {
+    growthStopReason = "Certified molecular anchor trace exhausted at its safe fixed point.";
+    setPlaying(false);
+    pipelineAuto = false;
+    updatePipelineButtons();
+    return;
+  }
+  // The material-growth viewport is atom-only for molecular ice. Candidate
+  // identities and orientation domains remain in the textual/search trace;
+  // accepted anchors appear directly as O atoms rather than halo glyphs.
+  currentCandidates = [];
+  iceAnchorWaveIndex++;
+  eventIndex += wave.candidateAnchors;
+  if (!wave.acceptedAnchors) {
+    captionAction.textContent = `Safe fixed point after ${iceAnchorTrace.emittedAnchors.length} target-blind oxygen anchors. No parent orientation domain unanimously supports another site; unresolved proton poses are retained as alternatives, not drawn as simultaneous H atoms.`;
+    decisionBadge.className = "badge neutral";
+    decisionBadge.textContent = "fixed point";
+    decisionTitle.textContent = "Unsupported molecular continuation stops safely";
+    decisionCopy.textContent = "The frozen eight-port grammar has no unanimous next anchor. This finite certificate is not a stationary or exponential ice-growth rule.";
+    actionValue.textContent = `wave ${wave.wave} · 0 accepted`;
+    domainValue.textContent = `${wave.rejectedNonunanimousAnchors} non-unanimous anchors pruned`;
+    energyValue.textContent = "target calls 0";
+    resolverValue.textContent = "orientation-domain unanimity";
+    appendHistory("reject", { type: "reject", depth: wave.wave,
+      action: "safe fixed point", family: "no unanimous parent domain" });
+    growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
+    setPlaying(false);
+    pipelineAuto = false;
+    updatePipelineButtons();
+    rebuildWorld();
+    updateUI();
+    captionAction.textContent = `Safe fixed point after ${iceAnchorTrace.emittedAnchors.length} target-blind oxygen anchors. No parent orientation domain unanimously supports another site; unresolved proton poses are retained as alternatives, not drawn as simultaneous H atoms.`;
+    return;
+  }
+  wave.emittedAnchors.forEach(([species, point]) => {
+    const atom = addAtom(iceAnchorScenePoint(point), species, "ice-anchor", nearestParent(iceAnchorScenePoint(point)));
+    atom.anchorDomain = true;
+    indexAtom(atom);
+  });
+  acceptedDecisions += wave.acceptedAnchors;
+  grammarDecisions += wave.acceptedAnchors;
+  appendHistory("reuse", { type: "accept", depth: wave.wave,
+    action: `${wave.acceptedAnchors} O anchors`,
+    family: `${wave.retainedOrientationHypotheses} mutually exclusive H₂O poses retained` });
+  captionAction.textContent = `Wave ${wave.wave}: ${wave.acceptedAnchors}/${wave.candidateAnchors} anchor candidates survive frozen proper-SE(3) ports and parent-domain unanimity. ${wave.retainedOrientationHypotheses} mutually exclusive H₂O orientation hypotheses remain symbolic; only their shared O atoms are displayed.`;
+  updateDecision({ eventType: "reuse", accepted: true,
+    state: { action: `${wave.acceptedAnchors} O-anchor placements`,
+      domain: `8 frozen molecular ports · wave ${wave.wave}` },
+    resolver: "orientation-domain unanimity", interval: [1, 1] });
+  rebuildWorld();
+  updateUI();
+}
+
 function advanceMarkingTraining(batchSize = 12) {
   trainingProgress = Math.min(markingSampleCount(), trainingProgress + batchSize);
   eventIndex = trainingProgress;
@@ -3931,6 +4045,10 @@ function performEvent() {
   }
   if (pipelineStage < 4) {
     enterPipelineStage(nextVisiblePipelineStage(pipelineStage), { play: pipelineAuto });
+    return;
+  }
+  if (iceAnchorTrace) {
+    performIceAnchorEvent();
     return;
   }
   performOffLatticeEvent();
@@ -4110,6 +4228,34 @@ function updateUI() {
     energyValue.textContent = point.validationLoss.toFixed(4);
     resolverValue.textContent = `${sectionModel.channels}ch · ${MARKING_REPRESENTATIONS[sectionModel.representation].short}`;
   } else {
+    if (iceAnchorTrace) {
+      const nextWave = iceAnchorTrace.waves[iceAnchorWaveIndex];
+      const emitted = atoms.length - iceAnchorTrace.seedAnchors;
+      stageEyebrow.textContent = "search · sealed molecular-port continuation";
+      stageTitle.textContent = "Grow shared oxygen anchors; retain proton poses symbolically";
+      phaseReadout.textContent = nextWave
+        ? `wave ${nextWave.wave} · ${nextWave.candidateAnchors} candidates`
+        : iceAnchorTrace.fixedPoint ? "safe finite fixed point" : "trace exhausted";
+      atomLabel.textContent = "OXYGEN ANCHORS";
+      atomMetric.textContent = atoms.length.toLocaleString();
+      atomDelta.textContent = `${iceAnchorTrace.seedAnchors} observed seed · ${emitted} emitted`;
+      frontierLabel.textContent = "NEXT ANCHOR WAVE";
+      frontierMetric.textContent = nextWave ? String(nextWave.candidateAnchors) : "0";
+      frontierDelta.textContent = "same frozen candidate set before scoring";
+      oracleLabel.textContent = "TARGET CALLS";
+      oracleMetric.textContent = "0";
+      oracleDelta.textContent = "grammar + execution remain target-blind";
+      reuseLabel.textContent = "CERTIFICATE";
+      reuseMetric.textContent = iceAnchorTrace.exactBackendCountParity ? "EXACT" : "RED";
+      reuseDelta.textContent = growthStopReason || "finite anchor continuation · no stationary claim";
+      updateOrderAudit();
+      renderStack();
+      renderMarkings();
+      renderStructureStats();
+      renderLegend();
+      syncStageOptions();
+      return;
+    }
     stageEyebrow.textContent = "search · recursive off-lattice covering";
     stageTitle.textContent = hierarchyEnabled
       ? "Transport parents, merge overlap votes, promote clusters²"
@@ -4141,7 +4287,20 @@ function updateUI() {
 
 function renderLegend() {
   speciesLegend.replaceChildren();
-  if (pipelineStage === 3 && sectionModel) {
+  if (pipelineStage === 4 && iceAnchorTrace) {
+    legendHeading.textContent = "Sealed molecular continuation";
+    const oxygen = document.createElement("span");
+    const oxygenSwatch = document.createElement("i");
+    oxygenSwatch.className = "element-swatch";
+    oxygenSwatch.style.setProperty("--swatch", ELEMENTS.O.css);
+    oxygen.append(oxygenSwatch, document.createTextNode("O · emitted shared anchor atom"));
+    const hydrogen = document.createElement("span");
+    const hydrogenSwatch = document.createElement("i");
+    hydrogenSwatch.className = "cluster-swatch";
+    hydrogenSwatch.style.setProperty("--swatch", "#7f9e96");
+    hydrogen.append(hydrogenSwatch, document.createTextNode("H · mutually exclusive pose hypotheses (not materialized)"));
+    speciesLegend.append(oxygen, hydrogen);
+  } else if (pipelineStage === 3 && sectionModel) {
     legendHeading.textContent = "Local marking sections";
     markingPrototypeTypes().forEach((cluster, index) => {
       const key = `m_${markingPrototypeName(index)}`;
