@@ -69,16 +69,15 @@ Pages site. The main way to use it is to open the page in a browser:
   unexhausted, so this is neither a non-tiling nor an aperiodicity certificate.
   The same incremental funnel produced 22 exact radius-three proposals for
   `p10-054782`, down to 41 copies, with none surviving radius four. The new
-  placement-cube CEGAR driver now continues SAT partition leaves automatically:
-  two distinct exact-41 proposals are rejected by GCTS in one node apiece,
-  growing the verified feedback from 20 clauses/20 cells to 45 clauses/47
-  cells. Fixed-value PB preprocessing subsequently resolves five of six
-  historical singleton timeouts as UNSAT and finds a new 41-copy proposal in
-  the sixth. GCTS rejects it in two nodes; all 58 combined clauses replay
-  independently. Nested compatible-placement cubes close 18 further subleaves
-  and localize the residue to one path with four fixed placements. Exact count
-  41 therefore remains unresolved; this is a useful hard benchmark, not a
-  non-tiling or aperiodicity result.
+  placement-cube CEGAR driver now continues SAT partition leaves automatically.
+  Fixed-value PB preprocessing and nested compatible-placement cubes test ten
+  exact-41 proposals in total; exact radius-four GCTS rejects every one in 13
+  aggregate continuation nodes. Independent replay verifies all 236 learned
+  obstruction clauses, and 35 terminal exact-UNSAT partition leaves leave no
+  open count-41 residue. Thus no exact-41 patch can survive to radius four in
+  the configured fixed-root proper-rotation lattice model. Counts 42 and above,
+  including the unbounded tail, remain open, so this is still a useful hard
+  benchmark—not a non-tiling or aperiodicity result.
 
   `p10-052588`, by contrast, is now a certified non-tiler rather than an
   unresolved candidate. A cumulative formula closes all radius-three patches

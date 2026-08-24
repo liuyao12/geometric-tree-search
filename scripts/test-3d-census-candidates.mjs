@@ -2332,18 +2332,35 @@ assert.equal(
 );
 assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_historical_singletons, 6);
 assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_unsat_singletons, 5);
-assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_new_proposals, 1);
-assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_final_clauses, 58);
-assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_unsat_leaves, 18);
-assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_open_leaves, 1);
-assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_exact41_exhausted, false);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_new_proposals, 10);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_new_proposals_rejected, 10);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_continuation_nodes, 13);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_final_clauses, 236);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_propagate_values_replayed_clauses, 236);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_unsat_leaves, 35);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_open_leaves, 0);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_required_placements, 7);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_nested_partition_exact41_exhausted, true);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_exact41_radius4_survivors_exhausted, true);
+assert.equal(p10054782Survivor.census_candidate.screening.corona_next_unresolved_minimum_placements, 42);
 assert.equal(archivedP10054782Propagation.solver_improvement.historical_unsat_leaves, 5);
 assert.equal(archivedP10054782Propagation.solver_improvement.historical_sat_proposals, 1);
 assert.equal(archivedP10054782Propagation.exact_radius4_feedback.combined_replay.verified_clauses, 58);
 assert.equal(archivedP10054782Propagation.exact_radius4_feedback.combined_replay.failed_clauses, 0);
-assert.equal(archivedP10054782Propagation.nested_partition.exact_unsat_partition_leaves, 18);
-assert.equal(archivedP10054782Propagation.nested_partition.open_partition_leaves, 1);
-assert.equal(archivedP10054782Propagation.nested_partition.exact41_exhausted, false);
+assert.equal(archivedP10054782Propagation.nested_partition.exact_unsat_partition_leaves, 35);
+assert.equal(archivedP10054782Propagation.nested_partition.open_partition_leaves, 0);
+assert.equal(archivedP10054782Propagation.nested_partition.exact41_exhausted, true);
+assert.equal(archivedP10054782Propagation.exact41_closure.new_radius3_proposals, 9);
+assert.equal(archivedP10054782Propagation.exact41_closure.radius4_rejections, 9);
+assert.equal(archivedP10054782Propagation.exact41_closure.continuation_nodes, 11);
+assert.equal(archivedP10054782Propagation.exact41_closure.additional_exact_unsat_leaves, 17);
+assert.equal(archivedP10054782Propagation.exact41_closure.total_exact_unsat_partition_leaves, 35);
+assert.equal(archivedP10054782Propagation.exact41_closure.final_feedback_clauses, 236);
+assert.equal(archivedP10054782Propagation.exact41_closure.final_replayed_clauses, 236);
+assert.equal(archivedP10054782Propagation.exact41_closure.replay_failures, 0);
+assert.equal(archivedP10054782Propagation.exact41_closure.final_clause_keys.length, 236);
+assert.equal(archivedP10054782Propagation.exact41_closure.open_partition_leaves, 0);
+assert.equal(archivedP10054782Propagation.exact41_closure.exact41_radius4_survivors_exhausted, true);
 assert.equal(
   verifyPolycubeCoronaPatch(
     p10054782Survivor.census_candidate.voxels,
@@ -2352,14 +2369,28 @@ assert.equal(
   ).verified,
   true
 );
+const archivedP10054782FollowupProposals = [
+  ...archivedP10054782Propagation.exact41_closure.first_split.initial_proposals,
+  ...archivedP10054782Propagation.exact41_closure.first_split.feedback_154_proposals,
+  archivedP10054782Propagation.exact41_closure.second_split.proposal_index_1,
+  archivedP10054782Propagation.exact41_closure.third_split.proposal
+];
+assert.equal(archivedP10054782FollowupProposals.length, 9);
+for (const proposal of archivedP10054782FollowupProposals) {
+  assert.equal(
+    verifyPolycubeCoronaPatch(p10054782Survivor.census_candidate.voxels, proposal.corona, 3).verified,
+    true,
+    `${proposal.report} must independently verify as a radius-three patch`
+  );
+}
 assert.equal(archivedP10054782PlacementCubeCegar.classification, "cegar_round_limit");
 assert.equal(archivedP10054782PlacementCubeCegar.rounds.length, 2);
 assert.equal(archivedP10054782PlacementCubeCegar.feedback.plain_clause_replay.verified_clauses, 45);
 assert.match(archivedP10054782PlacementCubeCegar.warning, /neither a non-tiling nor an aperiodicity certificate/);
 assert.match(
   growthAppSource,
-  /Placement-cube CEGAR now continues SAT partition leaves automatically[\s\S]*?Fixed-value propagation before PB bit-blasting[\s\S]*?Nested compatible-placement cubes close[\s\S]*?Exact count 41 remains open/,
-  "the candidate panel must report the exact-41 CEGAR progress without promoting it to a classification"
+  /Placement-cube CEGAR now continues SAT partition leaves automatically[\s\S]*?41-copy proposals in total[\s\S]*?Exact count 41 is therefore exhausted as a possible radius-four survivor[\s\S]*?the candidate is still inconclusive/,
+  "the candidate panel must distinguish exact-41 radius-four exhaustion from a tiling classification"
 );
 assert.equal(
   p10055695Survivor.census_candidate.screening.corona_cegar_report,

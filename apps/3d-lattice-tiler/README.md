@@ -1005,23 +1005,24 @@ the feedback grows from 20 clauses and 20 cells to 45 clauses and 47 cells.
 Plain replay verifies all 45 clauses in 58 total nodes with both optional
 accelerators disabled. Depth-first partitioning also proves two singleton
 anchor cubes UNSAT and isolates three singleton timeout leaves before finding
-the second proposal. Exact count 41 remains open, so this is a screening
-benchmark rather than a classification. The hash-locked archive is checked by:
+the second proposal. The hash-locked first-stage archive is checked by:
 
 ```sh
 node scripts/verify-polycube-placement-cube-cegar-screen.mjs
 ```
 
-Fixed-value propagation before PB bit-blasting (`--propagate-values`) now
-revisits the six singleton leaves exposed by the longer partial run. Five become
-exact UNSAT; the sixth yields a new 41-copy radius-three patch after the same
-leaf had timed out under every earlier PB encoding. Exact radius-four GCTS
-rejects that patch in two nodes and supplies 13 new clauses. Independent replay
-verifies all 58 combined clauses with no failures. Required-placement reports
-then support genuinely nested placement cubes: after filtering geometrically
-incompatible candidates, 18 exact subleaves close and the entire count-41
-residue is localized to one path with four fixed placements. That path remains
-open, so count 41 is still unresolved. The reproducible archive is
+Fixed-value propagation before PB bit-blasting (`--propagate-values`) revisits
+the six singleton leaves exposed by the longer partial run. Five become exact
+UNSAT; the sixth yields a new 41-copy radius-three patch after the same leaf had
+timed out under every earlier PB encoding. Nested compatible-placement cubes
+then refine its remaining branch through three exact splits. Across this stage,
+ten 41-copy proposals are tested in total and exact radius-four GCTS rejects all
+of them in 13 aggregate nodes. Independent replay verifies all 236 learned
+clauses without a failure, while 35 terminal exact-UNSAT partition leaves close
+the count-41 residue completely. This exhausts exact count 41 only as a possible
+radius-four survivor in the configured fixed-root proper-rotation lattice
+model; counts 42 and above and the unbounded tail remain open. The reproducible
+archive is
 `data/polycube-p10-054782-propagate-values-nested-screen-2026-08-24.json`.
 
 The first production interactive chain keeps three retained solvers through
