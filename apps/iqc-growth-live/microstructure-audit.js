@@ -83,6 +83,7 @@ export function auditGeometricMicrostructure({
   let samePoseContacts = 0;
   let poseDomainComponents = 0;
   let posedOccurrences = 0;
+  const poseInterfaceAtoms = new Set();
   const perTypePoseDomains = [];
   recurringTypeIds.forEach((type) => {
     const rows = placements.filter((placement) => placement.type === type && Number.isInteger(placement.pose));
@@ -94,7 +95,11 @@ export function auditGeometricMicrostructure({
       if (rows[first].pose === rows[second].pose) {
         samePoseContacts++;
         components.join(first, second);
-      } else crossPoseContacts++;
+      } else {
+        crossPoseContacts++;
+        rows[first].support.forEach((index) => poseInterfaceAtoms.add(index));
+        rows[second].support.forEach((index) => poseInterfaceAtoms.add(index));
+      }
     }
     const componentCount = new Set(rows.map((_, index) => components.find(index))).size;
     poseDomainComponents += componentCount;
@@ -121,6 +126,16 @@ export function auditGeometricMicrostructure({
     samePoseContacts,
     crossPoseContacts,
     perTypePoseDomains,
+    siteRoles: atoms.map((_, index) => ({
+      index,
+      recurring: recurringAtoms.has(index),
+      gapBoundary: gapBoundaryAtoms.has(index),
+      literalTerminal: terminalAtoms.has(index) && !recurringAtoms.has(index),
+      coordinationAnomaly: coordinationAnomalyAtoms.has(index),
+      poseInterface: poseInterfaceAtoms.has(index),
+      occupationalAlternative: atoms[index].chemistryToken.startsWith("occ["),
+      explicitVacancy: atoms[index].chemistryToken.includes("Vac="),
+    })),
     adjacencyReach,
     interpretation: crossPoseContacts
       ? "spatially adjacent local pose domains observed"

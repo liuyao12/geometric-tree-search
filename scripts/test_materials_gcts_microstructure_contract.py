@@ -18,6 +18,8 @@ def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> No
     assert 'from "./microstructure-audit.js?v=20260824-1"' in source
     assert "function learnMicrostructureEvidence()" in source
     assert "function buildMicrostructureLedger()" in source
+    assert "function drawMicrostructureProjection(" in source
+    assert "function buildMicrostructureProjection()" in source
     assert 'ledger.className = "microstructure-ledger"' in source
     assert "heterogeneousGeometryAudit: receiptMicrostructureAudit()" in source
     assert "classByPlacement.set(placementIndex, classIndex)" in source
@@ -26,6 +28,7 @@ def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> No
     assert "gapBoundaryTypeIds" in audit
     assert "coordinationBaselines" in audit
     assert "crossPoseContacts" in audit
+    assert "siteRoles: atoms.map" in audit
     assert "occupationalAlternativeSites" in audit
     assert "defectLabelsGiven: false" in audit
     assert "grainBoundaryClaimed: false" in audit
@@ -34,6 +37,7 @@ def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> No
     assert "gapBoundaryClassesEmitAtoms: false" in audit
     assert "gapBoundaryClassesReusableAsConstraints: true" in audit
     assert ".microstructure-ledger" in css
+    assert ".microstructure-map" in css
     assert ".microstructure-grid" in css
     assert "heterogeneous-geometry audit" in readme
     assert "not automatic vacancy, dislocation, grain, or grain-boundary labels" in normalized_readme
@@ -42,7 +46,8 @@ def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> No
     # candidate admission, action ranking, or the marking training payload.
     search_logic = source[source.index("function ruleMarkingScore"):source.index("function renderMarkingLibrary")]
     assert "microstructureEvidence" not in search_logic
-    assert 'app.js?v=20260824-43' in html
+    assert "const { adjacencyReach, coordinationBaselines, siteRoles, ...audit }" in source
+    assert 'app.js?v=20260824-44' in html
 
 
 if __name__ == "__main__":

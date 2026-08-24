@@ -205,7 +205,13 @@ automatic vacancy, dislocation, grain, or grain-boundary labels: a finite crop,
 surface, molecule orientation, strain, or truncation can generate the same
 signals. No defect formation energy, relaxation, mobility, or thermodynamic
 preference is inferred. The experiment receipt records the counts, thresholds,
-and all of these non-claims without embedding atom coordinates.
+and all of these non-claims without embedding atom coordinates. An interactive
+XY/XZ/YZ projection uses the supplied positions only for visualization: mint
+sites belong to recurring material supports, amber rings mark reusable void
+boundaries, red sites remain literal, blue rings mark unlike-pose contacts,
+violet halos flag robust coordination candidates, and diamonds preserve
+occupational/vacancy alternatives. Changing the projection cannot alter a
+cluster, marking, candidate, or tree-search decision.
 
 The same stage reports how many symmetry-inequivalent orientations of every
 cluster are actually needed to cover the observation. It constructs intrinsic

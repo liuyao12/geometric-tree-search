@@ -500,6 +500,7 @@ let geometryMode = "auto";
 let clusterToleranceMode = "balanced";
 let orientationAtlas = [];
 let microstructureEvidence = null;
+let microstructureProjection = "xy";
 let selectedGalleryCluster = 0;
 let rdfPairSelection = "all";
 let structureObservableSelection = "rdf";
@@ -2872,6 +2873,121 @@ function buildMolecularCoverLedger(types) {
   return ledger;
 }
 
+const MICROSTRUCTURE_PROJECTIONS = {
+  xy: { axes: [0, 1], labels: ["x", "y"] },
+  xz: { axes: [0, 2], labels: ["x", "z"] },
+  yz: { axes: [1, 2], labels: ["y", "z"] },
+};
+
+function drawMicrostructureProjection(canvas, projectionKey = microstructureProjection) {
+  const projection = MICROSTRUCTURE_PROJECTIONS[projectionKey] || MICROSTRUCTURE_PROJECTIONS.xy;
+  const context = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+  context.clearRect(0, 0, width, height);
+  context.fillStyle = "#051011";
+  context.fillRect(0, 0, width, height);
+  if (!microstructureEvidence?.siteRoles?.length) return;
+  const points = microstructureEvidence.siteRoles.map((role) => ({
+    role,
+    position: referenceAtoms[role.index]?.p?.toArray(),
+  })).filter((entry) => entry.position?.every(Number.isFinite));
+  if (!points.length) return;
+  const [horizontal, vertical] = projection.axes;
+  const horizontalValues = points.map((entry) => entry.position[horizontal]);
+  const verticalValues = points.map((entry) => entry.position[vertical]);
+  const minimumHorizontal = Math.min(...horizontalValues), maximumHorizontal = Math.max(...horizontalValues);
+  const minimumVertical = Math.min(...verticalValues), maximumVertical = Math.max(...verticalValues);
+  const rangeHorizontal = Math.max(1e-9, maximumHorizontal - minimumHorizontal);
+  const rangeVertical = Math.max(1e-9, maximumVertical - minimumVertical);
+  const padding = 24;
+  const scale = Math.min((width - 2 * padding) / rangeHorizontal, (height - 2 * padding) / rangeVertical);
+  const occupiedWidth = rangeHorizontal * scale, occupiedHeight = rangeVertical * scale;
+  const offsetX = (width - occupiedWidth) / 2, offsetY = (height - occupiedHeight) / 2;
+  const screenPoint = (position) => ({
+    x: offsetX + (position[horizontal] - minimumHorizontal) * scale,
+    y: height - offsetY - (position[vertical] - minimumVertical) * scale,
+  });
+  context.strokeStyle = "rgba(151,194,183,.09)";
+  context.lineWidth = 1;
+  for (let division = 0; division <= 4; division++) {
+    const x = padding + (width - 2 * padding) * division / 4;
+    const y = padding + (height - 2 * padding) * division / 4;
+    context.beginPath(); context.moveTo(x, padding); context.lineTo(x, height - padding); context.stroke();
+    context.beginPath(); context.moveTo(padding, y); context.lineTo(width - padding, y); context.stroke();
+  }
+  context.font = "10px ui-monospace, monospace";
+  context.fillStyle = "rgba(151,194,183,.55)";
+  context.fillText(`${projection.labels[0]} →`, width - 48, height - 8);
+  context.fillText(`${projection.labels[1]} ↑`, 8, 14);
+  points.forEach(({ role, position }) => {
+    const point = screenPoint(position);
+    context.beginPath();
+    context.arc(point.x, point.y, role.literalTerminal ? 3.1 : 2.15, 0, TAU);
+    context.fillStyle = role.literalTerminal ? "rgba(255,109,113,.95)"
+      : role.recurring ? "rgba(101,225,188,.76)" : "rgba(112,139,132,.42)";
+    context.fill();
+    if (role.gapBoundary) {
+      context.beginPath(); context.arc(point.x, point.y, 4.2, 0, TAU);
+      context.strokeStyle = "rgba(255,193,105,.72)"; context.lineWidth = 1; context.stroke();
+    }
+    if (role.poseInterface) {
+      context.beginPath(); context.arc(point.x, point.y, 5.5, 0, TAU);
+      context.strokeStyle = "rgba(85,200,255,.72)"; context.lineWidth = 1; context.stroke();
+    }
+    if (role.coordinationAnomaly) {
+      context.beginPath(); context.arc(point.x, point.y, 7.2, 0, TAU);
+      context.strokeStyle = "rgba(181,148,255,.9)"; context.lineWidth = 1.35; context.stroke();
+    }
+    if (role.occupationalAlternative) {
+      context.save(); context.translate(point.x, point.y); context.rotate(Math.PI / 4);
+      context.strokeStyle = role.explicitVacancy ? "rgba(220,232,228,.95)" : "rgba(181,148,255,.95)";
+      context.lineWidth = 1.2; context.strokeRect(-3.2, -3.2, 6.4, 6.4); context.restore();
+    }
+  });
+}
+
+function buildMicrostructureProjection() {
+  const panel = document.createElement("div");
+  panel.className = "microstructure-map";
+  const header = document.createElement("header");
+  const copy = document.createElement("span");
+  copy.innerHTML = "<small>spatial evidence projection</small><strong>same positions · diagnostic overlays only</strong>";
+  const controls = document.createElement("div");
+  controls.setAttribute("aria-label", "Microstructure projection plane");
+  const canvas = document.createElement("canvas");
+  canvas.width = 900;
+  canvas.height = 220;
+  canvas.setAttribute("role", "img");
+  canvas.setAttribute("aria-label", "Spatial projection of recurring clusters, gap boundaries, literal residuals, coordination anomalies, local pose interfaces, and occupational alternatives");
+  Object.keys(MICROSTRUCTURE_PROJECTIONS).forEach((key) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = key.toUpperCase();
+    button.setAttribute("aria-pressed", String(key === microstructureProjection));
+    button.addEventListener("click", () => {
+      microstructureProjection = key;
+      controls.querySelectorAll("button").forEach((entry) => entry.setAttribute("aria-pressed", String(entry === button)));
+      drawMicrostructureProjection(canvas, key);
+    });
+    controls.append(button);
+  });
+  header.append(copy, controls);
+  const legend = document.createElement("div");
+  legend.className = "microstructure-map-legend";
+  [
+    ["recurring", "mint"], ["gap boundary", "amber"], ["literal residual", "red"],
+    ["pose interface", "blue"], ["coordination candidate", "violet"], ["occupancy / vacancy", "diamond"],
+  ].forEach(([label, className]) => {
+    const item = document.createElement("span");
+    item.innerHTML = `<i class="${className}"></i>${label}`;
+    legend.append(item);
+  });
+  panel.append(header, canvas, legend);
+  drawMicrostructureProjection(canvas);
+  return panel;
+}
+
 function buildMicrostructureLedger() {
   if (!microstructureEvidence) return null;
   const audit = microstructureEvidence;
@@ -2898,7 +3014,7 @@ function buildMicrostructureLedger() {
   });
   const boundary = document.createElement("p");
   boundary.textContent = "These are inspection candidates, not defect or grain-boundary assignments: molecular orientations, finite surfaces, strain, and crop truncation can produce the same local signals. Gap boundaries may recur as connection constraints but emit no atoms. No formation energy is inferred; literal residuals never become growth rules.";
-  ledger.append(heading, grid, boundary);
+  ledger.append(heading, buildMicrostructureProjection(), grid, boundary);
   return ledger;
 }
 
@@ -2993,10 +3109,8 @@ function buildMolecularGalleryToolbar(types) {
   inspector.className = "cluster-gallery-inspector";
   inspector.setAttribute("aria-live", "polite");
   const ledger = buildMolecularCoverLedger(types);
-  const microstructure = buildMicrostructureLedger();
   toolbar.append(controls, status);
   if (ledger) toolbar.append(ledger);
-  if (microstructure) toolbar.append(microstructure);
   toolbar.append(inspector);
   return toolbar;
 }
@@ -3005,6 +3119,8 @@ function rebuildClusterGallery() {
   clusterGallery.replaceChildren();
   const types = clusterGalleryTypes();
   clusterGallery.append(buildMolecularGalleryToolbar(types));
+  const microstructure = buildMicrostructureLedger();
+  if (microstructure) clusterGallery.append(microstructure);
   types.forEach((cluster, galleryIndex) => {
     const card = document.createElement("article");
     card.className = `cluster-card${cluster.residual ? " residual" : ""}${cluster.gap ? " gap" : ""}`;
@@ -3963,9 +4079,11 @@ function receiptExternalGeometry() {
 
 function receiptMicrostructureAudit() {
   if (!microstructureEvidence) return null;
-  const { adjacencyReach, coordinationBaselines, ...audit } = microstructureEvidence;
+  const { adjacencyReach, coordinationBaselines, siteRoles, ...audit } = microstructureEvidence;
   return {
     ...audit,
+    mappedSiteCount: siteRoles.length,
+    poseInterfaceAtoms: siteRoles.filter((site) => site.poseInterface).length,
     adjacencyReachSceneUnits: receiptRound(adjacencyReach),
     adjacencyReachAngstrom: receiptRound(adjacencyReach * referenceSpacingA / referenceSpacing),
     coordinationBaselines: coordinationBaselines.map((entry) => ({
@@ -3997,7 +4115,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-43",
+      buildId: "20260824-44",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
