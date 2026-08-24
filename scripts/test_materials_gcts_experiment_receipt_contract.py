@@ -37,12 +37,13 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert "finiteFixedPointContinuation: Boolean(trace?.fixedPoint)" in source
     assert "exactBackendCountParity: iceAnchorTrace.exactBackendCountParity" in source
     assert "emittedAnchorCount: iceAnchorTrace.emittedAnchors.length" in source
+    assert "irregularMining: learnedCover.irregular || null" in source
 
     assert 'id="downloadReceiptButton"' in html
     assert 'id="copyReceiptButton"' in html
     assert 'id="receiptStatus"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-5' in html
+    assert 'app.js?v=20260824-6' in html
     assert ".receipt-actions" in css
     assert ".receipt-status" in css
 

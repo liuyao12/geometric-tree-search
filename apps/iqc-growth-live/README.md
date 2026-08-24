@@ -62,22 +62,41 @@ when translation closure is recovered from the positions. This setting changes t
 descriptors and the complete cover; it is not a preassigned crystal or
 quasicrystal label.
 
-For every atom the browser builds a boundary-aware, rotation-invariant descriptor
-containing central and neighbor element channels, Gaussian radial functions
-through `1.9a`, a first-shell angular histogram, and coordination terms.
-Standardized features are grouped by deterministic k-medoids. A bounded
-farthest-medoid elbow test chooses the vocabulary size and collapses exactly
-regular low-rank inputs early. A separate greedy set-cover pass then chooses
-atom-centred occurrences on the periodic quotient and audits their union
-against every supplied atom. Any uncovered atom is promoted to an explicit
-residual cluster type, so incomplete coverage cannot be hidden by a label
-assignment.
+The browser still computes boundary-aware radial/angular descriptors for local
+diagnostics and order classification, but those atom labels no longer define
+the cluster cover. The cover learner receives only species, metric distances,
+and the nearest-neighbour scale. It mines two candidate families: recurring
+coordination supports and **centre-free bond-lens supports** constructed around
+short pairs. A complete coloured pair-distance signature, quantized at `2.5%`
+of the measured nearest-neighbour scale, quotients translation, atom order, and
+proper rigid isometry. A canonically role-ordered signed-volume token keeps
+enantiomorphic supports distinct; symmetric or coplanar cases are reported as
+chirality-unresolved instead of receiving an arbitrary hand. Recurring coordination classes are used first; centre-free
+classes enter when they are needed to cover atoms that the elementary supports
+cannot represent. The tolerance and minimum two-occurrence admission rule are
+written into every experiment receipt.
 
-Every displayed prototype is an actual medoid point-cloud patch with its
-measured, element-labelled first shell. The visualization does not substitute a
-fixed catalogue of demonstration polyhedra. Each approximate isometry class has
-its own independently rotating canvas card; repeated placements do not create
-duplicate cards.
+A deterministic set-cover pass selects admitted support occurrences and retains a
+second observation of every selected recurring class. Any remaining connected
+region is partitioned into bounded explicit gap clusters, grouped only when its
+full coloured metric set is isometric. Thus the cover is always audited against
+every supplied atom, while a glass or unfamiliar boundary is allowed to remain
+literal instead of being forced into a false repeating motif.
+
+Cover completeness and rigid replay connectivity are audited separately. The
+learner first adds recurring Steiner occurrences from already admitted support
+classes. If a nearby component still lacks a two-site rigid overlap, it may add
+a bounded explicit replay connector, which is removed after known-window
+reconstruction and can never become a continuation rule. Components farther
+than `2.5a` remain disconnected; the browser does not invent a long nonphysical
+edge merely to make the search graph connected.
+
+Every displayed prototype is the actual coloured support selected by that
+cover, centred only for rendering. It may be an atomic coordination polyhedron,
+an irregular bond-lens polyhedron, a molecule, or an explicit gap terminal.
+Each admitted metric-isometry class has its own independently rotating canvas card;
+repeated placements do not create duplicate cards and no card is reconstructed
+as radial spokes from an artificial central point.
 
 The same stage reports how many symmetry-inequivalent orientations of every
 cluster are actually needed to cover the observation. It compares centered,

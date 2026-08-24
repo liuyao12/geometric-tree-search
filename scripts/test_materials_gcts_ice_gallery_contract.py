@@ -21,10 +21,10 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "if (bridge) return bridge" in source
     assert "A generic hull is the wrong representation here" in source
     assert "[0, 1, 2], [3, paired[1], paired[0]]" in source
-    assert "if (learnedCover?.molecular) return;" in source
-    assert "would redraw those objects as radial first-shell spokes" in source
+    assert "if (learnedCover?.occurrenceBased || learnedCover?.molecular) return;" in source
+    assert "would turn molecular or irregular supports back into radial spokes" in source
     assert "function learnMolecularSectionModel(source, config)" in source
-    assert 'sampleKind: "molecular cover occurrence"' in source
+    assert 'sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence"' in source
     assert "function observedPortRules(cluster)" in source
     assert "overlapGrammar.reconstructionByOccurrence.forEach" in source
     assert "function coloredPeriodicSupportSignature(source, support)" in source
@@ -43,7 +43,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "galleryTypes.filter((type) => type.familyType === 2).length" in source
     assert "if (learnedCover.galleryTypes) return learnedCover.galleryTypes" in source
     assert "markingPrototypeTypes().forEach((cluster, clusterIndex)" in source
-    assert "return learnedCover?.molecular ? learnedCover.types" in source
+    assert "return learnedCover?.occurrenceBased || learnedCover?.molecular ? learnedCover.types" in source
     assert "colored metric-isometry classes as independent rotating scenes" in source
     assert "markingPrototypeTypes().forEach((_, cluster)" in source
     assert "sectionModel.sampleLabels" in source

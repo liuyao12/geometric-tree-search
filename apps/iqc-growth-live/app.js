@@ -7,6 +7,7 @@ import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
 } from "./ice-molecular-anchor-growth.js";
+import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -1538,11 +1539,12 @@ function orientationDescriptor(environment) {
 }
 
 function supportOrientationDescriptor(placement) {
-  const center = referenceAtoms[placement.center];
-  return directionalPoseDescriptor(placement.support.filter((index) => index !== placement.center).map((index) => {
-    const vector = periodicDisplacement(center, referenceAtoms[index]);
-    return { species: referenceAtoms[index].species, vector, r: vector.length() / referenceSpacingA };
-  }));
+  const vectors = centeredPeriodicSupport(referenceAtoms, placement.support);
+  return directionalPoseDescriptor(placement.support.map((index, site) => ({
+    species: referenceAtoms[index].species,
+    vector: vectors[site],
+    r: vectors[site].length() / referenceSpacingA,
+  })));
 }
 
 function orientationDistance(first, second) {
@@ -1556,15 +1558,18 @@ function learnOrientationAtlas() {
     const representatives = [];
     const populations = [];
     const poseByCenter = new Map();
-    placements.forEach((placement) => {
+    const poseByOccurrence = new Map();
+    placements.forEach((placement, occurrenceIndex) => {
       const descriptor = supportOrientationDescriptor(placement);
       let pose = representatives.findIndex((candidate) => orientationDistance(candidate, descriptor) <= .16);
       if (pose < 0) { pose = representatives.length; representatives.push(descriptor); populations.push(0); }
       populations[pose]++;
       poseByCenter.set(placement.center, pose);
+      poseByOccurrence.set(placement.coverIndex ?? occurrenceIndex, pose);
     });
     return { cluster: clusterIndex, element: cluster.element, occurrences: placements.length,
-      orientations: representatives.length, populations: populations.slice().sort((first, second) => second - first), poseByCenter };
+      orientations: representatives.length, populations: populations.slice().sort((first, second) => second - first),
+      poseByCenter, poseByOccurrence };
   });
   return learnedClusters.clusters.map((cluster, clusterIndex) => {
     const occurrences = learnedClusters.labels.map((label, index) => label === clusterIndex ? index : -1)
@@ -1687,12 +1692,12 @@ function clusterPosePortRank(cluster) {
   const roleIndex = new Map(roles.map((role, index) => [role, index]));
   const matrix = Array.from({ length: atlas.orientations }, () => new Array(roles.length).fill(0));
   rules.forEach((rule) => {
-    const centers = rule.examples?.map((example) => example[0])
-      || [Number.isInteger(rule.occurrenceFrom)
-        ? overlapGrammar.occurrences[rule.occurrenceFrom]?.placement?.center
-        : rule.representativePair?.[0]];
-    centers.forEach((center) => {
-      const pose = atlas.poseByCenter?.get(center);
+    const sources = rule.examples?.map((example) => example[0])
+      || [Number.isInteger(rule.occurrenceFrom) ? rule.occurrenceFrom : rule.representativePair?.[0]];
+    sources.forEach((source) => {
+      const pose = overlapGrammar?.coverBased
+        ? atlas.poseByOccurrence?.get(source)
+        : atlas.poseByCenter?.get(source);
       if (pose !== undefined) matrix[pose][roleIndex.get(portRoleKey(rule))]++;
     });
   });
@@ -1865,57 +1870,71 @@ function buildWaterClusterCover(source) {
       gapClasses: galleryTypes.filter((type) => type.familyType === 2).length } };
 }
 
-// Turn environment labels into an explicit overlapping cover.  Candidate
-// placements are atom-centred first shells on the periodic quotient.  Greedy
-// set cover chooses recurring placements; any atom left behind is promoted to
-// a residual cluster placement instead of disappearing from the model.
-function buildExhaustiveClusterCover(source) {
-  if (currentMaterial().molecularCover === "water") return buildWaterClusterCover(source);
-  const shellRadius = motifShellCutoff();
-  const supports = source.map((_, center) => [
-    center,
-    ...learnedClusters.environments[center].shell
-      .filter((neighbor) => neighbor.r <= shellRadius)
-      .map((neighbor) => source.indexOf(neighbor.atom)),
-  ].filter((index, position, values) => index >= 0 && values.indexOf(index) === position));
-  const occurrences = supports.map((support, center) => ({
-    center, support, type: learnedClusters.labels[center], residual: false,
-  })).sort((first, second) => second.support.length - first.support.length || first.center - second.center);
-  const uncovered = new Set(source.map((_, index) => index));
-  const placements = [];
-  while (uncovered.size) {
-    let best = null;
-    let gain = 0;
-    occurrences.forEach((occurrence) => {
-      const candidateGain = occurrence.support.reduce((sum, index) => sum + Number(uncovered.has(index)), 0);
-      if (candidateGain > gain) { best = occurrence; gain = candidateGain; }
-    });
-    if (!best || !gain) break;
-    placements.push(best);
-    best.support.forEach((index) => uncovered.delete(index));
-  }
-  const residualTypes = [];
-  [...uncovered].forEach((atomIndex) => {
-    const species = source[atomIndex].species;
-    let type = residualTypes.findIndex((candidate) => candidate.species === species);
-    if (type < 0) {
-      type = residualTypes.length;
-      residualTypes.push({ species, count: 0, medoid: atomIndex, coordination: 0, spread: 0, residual: true });
-    }
-    residualTypes[type].count++;
-    placements.push({ center: atomIndex, support: [atomIndex], type: learnedClusters.clusters.length + type, residual: true });
-    uncovered.delete(atomIndex);
+function buildIrregularClusterCover(source) {
+  const result = discoverIrregularCover({
+    species: source.map((atom) => atom.species),
+    distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
+    orientedVolume: (first, second, third, fourth) => periodicDisplacement(source[first], source[second])
+      .dot(new THREE.Vector3().crossVectors(
+        periodicDisplacement(source[first], source[third]),
+        periodicDisplacement(source[first], source[fourth]),
+      )),
+    referenceSpacing: referenceSpacingA,
+    shellRadius: motifShellCutoff(),
   });
+  const types = result.types.map((type) => ({
+    type: type.type,
+    medoid: type.anchor,
+    element: type.formula,
+    label: type.residual ? `gap G${type.type + 1}` : `C${type.type + 1}`,
+    geometry: type.geometry,
+    count: type.occurrenceCount,
+    candidateCount: type.observedCandidateCount,
+    residual: type.residual,
+    gap: type.residual,
+    visualKind: type.residual ? "irregular-gap" : "irregular",
+    customSupport: type.support.slice(),
+    customVectors: centeredPeriodicSupport(source, type.support),
+    classSignature: type.signature,
+    chirality: type.chirality,
+    seedKinds: type.kinds,
+  }));
+  const placements = result.placements.map((placement, coverIndex) => ({ ...placement, coverIndex }));
   const coveredAtoms = new Set(placements.flatMap((placement) => placement.support));
   const incidence = source.map((_, atomIndex) => placements
     .map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1)
     .filter((placementIndex) => placementIndex >= 0));
   return {
-    placements, residualTypes, incidence,
+    placements,
+    residualTypes: types.filter((type) => type.residual),
+    types,
+    galleryTypes: types,
+    incidence,
     covered: coveredAtoms.size,
-    complete: coveredAtoms.size === source.length,
+    complete: result.complete && coveredAtoms.size === source.length,
     periodic: currentPbc().some(Boolean),
+    occurrenceBased: true,
+    irregular: {
+      recurringCoordinationClasses: result.recurringCoordinationClasses,
+      recurringCenterFreeClasses: result.recurringCenterFreeClasses,
+      selectedCenterFreeOccurrences: result.selectedCenterFreeOccurrences,
+      residualAtoms: result.residualAtoms,
+      replayConnectorCount: result.replayConnectorCount,
+      disconnectedReplayComponents: result.disconnectedReplayComponents,
+      replaySeedPlacementIndex: result.replaySeedPlacementIndex,
+      minimumOccurrences: result.minimumOccurrences,
+      metricToleranceFraction: result.metricToleranceFraction,
+    },
   };
+}
+
+// Discover exact recurring colored metric supports. Atom-centred coordination
+// polyhedra are only one candidate family; centre-free bond-lens supports can
+// enter the same cover, and any uncovered connected region becomes an explicit
+// residual cluster rather than disappearing from the model.
+function buildExhaustiveClusterCover(source) {
+  if (currentMaterial().molecularCover === "water") return buildWaterClusterCover(source);
+  return buildIrregularClusterCover(source);
 }
 
 function clusterGalleryTypes() {
@@ -2033,7 +2052,8 @@ function rebuildClusterGallery() {
       ? `isometry ${cluster.classIndex + 1}/${cluster.classCount} · ` : "";
     const supportSites = cluster.customSupport?.length
       || learnedCover.placements.find((placement) => placement.type === cluster.type)?.support.length || 1;
-    label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${classStatus}${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span><small>${supportSites} colored site${supportSites === 1 ? "" : "s"} · ${clusterCoverRole(cluster)}</small>`;
+    const chirality = cluster.chirality ? ` · χ ${cluster.chirality}` : "";
+    label.innerHTML = `<b>${name}</b><em>${cluster.geometry || "colored support polyhedron"}</em><span>${classStatus}${cluster.element || cluster.species} · ${placements} placement${placements === 1 ? "" : "s"} · ${learnedDegrees}</span><small>${supportSites} colored site${supportSites === 1 ? "" : "s"} · ${clusterCoverRole(cluster)}${chirality}</small>`;
     card.append(canvas, label);
     clusterGallery.append(card);
   });
@@ -2192,6 +2212,7 @@ function drawClusterGallery(now) {
 }
 
 function learnOverlapMarking(source) {
+  if (learnedCover?.occurrenceBased) return learnCoverOverlapMarking(source);
   const shellRadius = motifShellCutoff();
   const shells = source.map((center, centerIndex) => {
     const neighbors = [];
@@ -2262,6 +2283,69 @@ function learnOverlapMarking(source) {
   return { states, sourceDomains, samples, curve, edges, ambiguous, covered: sourceDomains.filter(Boolean).length };
 }
 
+function learnCoverOverlapMarking(source) {
+  const placements = learnedCover.placements;
+  const supportSets = placements.map((placement) => new Set(placement.support));
+  const edges = [];
+  for (let first = 0; first < placements.length; first++) {
+    for (let second = first + 1; second < placements.length; second++) {
+      const sharedIndices = [...supportSets[first]].filter((index) => supportSets[second].has(index));
+      if (!sharedIndices.length) continue;
+      edges.push({
+        first,
+        second,
+        shared: sharedIndices.length,
+        sharedIndices,
+        distance: periodicDisplacement(source[placements[first].center], source[placements[second].center]).length() / referenceSpacingA,
+        firstCluster: placements[first].type + 1,
+        secondCluster: placements[second].type + 1,
+      });
+    }
+  }
+  edges.sort((first, second) => second.shared - first.shared || first.distance - second.distance
+    || first.first - second.first || first.second - second.second);
+  const incident = Array.from({ length: placements.length }, () => []);
+  edges.forEach((edge) => {
+    incident[edge.first].push(edge.second);
+    incident[edge.second].push(edge.first);
+  });
+  const states = new Map();
+  const sourceDomains = placements.map((placement, occurrence) => {
+    const counts = new Map();
+    incident[occurrence].forEach((other) => {
+      const type = placements[other].type + 1;
+      counts.set(type, (counts.get(type) || 0) + 1);
+    });
+    const roles = [...counts.entries()].sort((a, b) => a[0] - b[0])
+      .map(([type, count]) => `C${type}×${count}`).join("+") || "isolated";
+    return `C${placement.type + 1}|s${placement.support.length}|${roles}`;
+  });
+  const samples = sourceDomains.map((domain, index) => {
+    const shared = edges.filter((edge) => edge.first === index || edge.second === index)
+      .reduce((sum, edge) => sum + edge.shared, 0);
+    const score = -.8 + .08 * shared;
+    const state = states.get(domain) || { count: 0, min: Infinity, max: -Infinity, sum: 0 };
+    state.count++;
+    state.min = Math.min(state.min, score);
+    state.max = Math.max(state.max, score);
+    state.sum += score;
+    states.set(domain, state);
+    return { domain, score };
+  });
+  const runningStates = new Map();
+  let reusable = 0;
+  let overlaps = 0;
+  const curve = samples.map((sample, index) => {
+    const count = (runningStates.get(sample.domain) || 0) + 1;
+    runningStates.set(sample.domain, count);
+    if (count === 2) reusable++;
+    overlaps += edges.filter((edge) => Math.max(edge.first, edge.second) === index).length;
+    return { samples: index + 1, discovered: runningStates.size, reusable, overlaps };
+  });
+  const ambiguous = [...states.values()].filter((state) => state.count < 2 || state.max - state.min > .12).length;
+  return { states, sourceDomains, samples, curve, edges, ambiguous, covered: placements.length, occurrenceBased: true };
+}
+
 function occurrenceFrame(source, centerIndex) {
   const shell = learnedClusters.environments[centerIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff());
   if (!shell.length) return new THREE.Quaternion();
@@ -2279,6 +2363,58 @@ function occurrenceFrame(source, centerIndex) {
   const y = new THREE.Vector3().crossVectors(z, x).normalize();
   const matrix = new THREE.Matrix4().makeBasis(x, y, z);
   return new THREE.Quaternion().setFromRotationMatrix(matrix).normalize();
+}
+
+function supportOccurrenceFrame(source, placement) {
+  const anchor = source[placement.center];
+  const vectors = placement.support.filter((index) => index !== placement.center)
+    .map((index) => {
+      const vector = periodicDisplacement(anchor, source[index]);
+      const fingerprint = [
+        source[index].species,
+        Math.round(vector.length() / referenceSpacingA * 1000),
+        ...placement.support.filter((other) => other !== index).map((other) =>
+          `${source[other].species}:${Math.round(periodicDisplacement(source[index], source[other]).length() / referenceSpacingA * 1000)}`)
+          .sort(),
+      ].join("|");
+      return { index, vector, fingerprint };
+    })
+    .filter((entry) => entry.vector.lengthSq() > 1e-10)
+    .sort((first, second) => first.fingerprint.localeCompare(second.fingerprint)
+      || first.index - second.index);
+  if (!vectors.length) return new THREE.Quaternion();
+  const x = vectors[0].vector.clone().normalize();
+  let transverse = null;
+  let transverseNorm = -Infinity;
+  vectors.slice(1).forEach((entry) => {
+    const norm = new THREE.Vector3().crossVectors(x, entry.vector).lengthSq();
+    if (norm > transverseNorm) { transverseNorm = norm; transverse = entry.vector; }
+  });
+  if (!transverse || transverseNorm < 1e-8) transverse = Math.abs(x.x) < .8
+    ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0);
+  const z = new THREE.Vector3().crossVectors(x, transverse).normalize();
+  const y = new THREE.Vector3().crossVectors(z, x).normalize();
+  return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z)).normalize();
+}
+
+function makeCoverOccurrence(source, placement, index) {
+  const rotation = supportOccurrenceFrame(source, placement);
+  const inverse = rotation.clone().invert();
+  const scale = referenceSpacing / referenceSpacingA;
+  const sites = placement.support.map((atomIndex) => ({
+    local: periodicDisplacement(source[placement.center], source[atomIndex]).multiplyScalar(scale).applyQuaternion(inverse),
+    species: source[atomIndex].species,
+    center: atomIndex === placement.center,
+    referenceIndex: atomIndex,
+  }));
+  return {
+    index,
+    type: placement.type,
+    position: source[placement.center].p.clone(),
+    rotation,
+    sites,
+    placement,
+  };
 }
 
 function quaternionDistance(first, second) {
@@ -2351,13 +2487,155 @@ function learnMolecularOverlapGrammar(source) {
     reachableOccurrences.add(next);
     occurrences[next].placement.support.forEach((atomIndex) => coveredAtoms.add(atomIndex));
   }
-  return { molecular: true, occurrences, templates, rules: [], byFrom: new Map(),
+  return { molecular: true, coverBased: true, occurrences, templates, rules: [], byFrom: new Map(),
     reconstructionByOccurrence, replaySeedIndex, replayReachable: coveredAtoms.size,
     reconstructionEdges, observations: reconstructionEdges, recurring: 0, heldoutSupported: 0 };
 }
 
+function learnIrregularOverlapGrammar(source) {
+  const occurrences = learnedCover.placements.map((placement, index) => makeCoverOccurrence(source, placement, index));
+  const templates = learnedCover.types.map((cluster) => {
+    const occurrence = occurrences.find((candidate) => candidate.type === cluster.type);
+    return {
+      type: cluster.type,
+      medoid: cluster.medoid,
+      sites: occurrence?.sites || [],
+      radius: Math.max(0, ...(occurrence?.sites || []).map((site) => site.local.length())),
+    };
+  });
+  const buckets = new Map();
+  const addObservation = (firstIndex, secondIndex, edge, heldout) => {
+    const first = occurrences[firstIndex];
+    const second = occurrences[secondIndex];
+    if (!first || !second || first.placement.residual || second.placement.residual) return;
+    const inverse = first.rotation.clone().invert();
+    const translation = periodicDisplacement(source[first.placement.center], source[second.placement.center])
+      .multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverse);
+    const rotation = inverse.multiply(second.rotation).normalize();
+    const pairKey = `${first.type}>${second.type}`;
+    const rules = buckets.get(pairKey) || [];
+    let rule = rules.find((candidate) => candidate.translation.distanceTo(translation) < .16
+      && quaternionDistance(candidate.rotation, rotation) < .24);
+    if (!rule) {
+      rule = {
+        from: first.type,
+        to: second.type,
+        translation: translation.clone(),
+        rotation: rotation.clone(),
+        representativeTranslation: translation.clone(),
+        representativeRotation: rotation.clone(),
+        representativeShared: edge.shared,
+        representativePair: [firstIndex, secondIndex],
+        count: 0,
+        fitCount: 0,
+        holdoutCount: 0,
+        sharedTotal: 0,
+        examples: [],
+      };
+      rules.push(rule);
+      buckets.set(pairKey, rules);
+    }
+    const weight = 1 / (rule.count + 1);
+    rule.translation.lerp(translation, weight);
+    if (rule.rotation.dot(rotation) < 0) rotation.set(-rotation.x, -rotation.y, -rotation.z, -rotation.w);
+    rule.rotation.slerp(rotation, weight).normalize();
+    rule.count++;
+    if (edge.shared > rule.representativeShared) {
+      rule.representativeTranslation.copy(translation);
+      rule.representativeRotation.copy(rotation);
+      rule.representativeShared = edge.shared;
+      rule.representativePair = [firstIndex, secondIndex];
+    }
+    if (heldout) rule.holdoutCount++; else rule.fitCount++;
+    rule.sharedTotal += edge.shared;
+    if (rule.examples.length < 6) rule.examples.push([firstIndex, secondIndex]);
+  };
+  const strongEdges = trainedMarking.edges.filter((edge) => edge.shared >= 2
+    && edge.distance <= overlapDistanceCutoff());
+  strongEdges.forEach((edge, index) => {
+    const heldout = index % 5 === 0;
+    addObservation(edge.first, edge.second, edge, heldout);
+    addObservation(edge.second, edge.first, edge, heldout);
+  });
+  const rules = [];
+  [...buckets.entries()].forEach(([pairKey, pairRules]) => {
+    pairRules.sort((first, second) => second.count - first.count || second.sharedTotal - first.sharedTotal)
+      .slice(0, MAX_RULES_PER_PAIR).forEach((rule) => {
+        rule.translation.copy(rule.representativeTranslation);
+        rule.rotation.copy(rule.representativeRotation);
+        rule.id = rules.length;
+        rule.pairKey = pairKey;
+        rule.meanShared = rule.sharedTotal / Math.max(1, rule.count);
+        rule.rotationAngle = 2 * Math.acos(Math.min(1, Math.abs(rule.rotation.w)));
+        rule.sites = occurrences[rule.representativePair[1]].sites;
+        rules.push(rule);
+      });
+  });
+  const byFrom = new Map();
+  rules.forEach((rule) => {
+    const list = byFrom.get(rule.from) || [];
+    list.push(rule);
+    byFrom.set(rule.from, list);
+  });
+  const reconstructionByOccurrence = new Map();
+  const addReconstructionEdge = (firstIndex, secondIndex, edge) => {
+    const first = occurrences[firstIndex];
+    const second = occurrences[secondIndex];
+    if (!first || !second) return;
+    const inverse = first.rotation.clone().invert();
+    const exactRule = {
+      id: `I${firstIndex}-${secondIndex}`,
+      from: first.type,
+      to: second.type,
+      occurrenceFrom: firstIndex,
+      occurrenceTo: secondIndex,
+      reconstructionOnly: true,
+      translation: periodicDisplacement(source[first.placement.center], source[second.placement.center])
+        .multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverse),
+      rotation: inverse.multiply(second.rotation).normalize(),
+      count: 1,
+      meanShared: edge.shared,
+      sites: second.sites,
+    };
+    const adjacency = reconstructionByOccurrence.get(firstIndex) || [];
+    adjacency.push(exactRule);
+    reconstructionByOccurrence.set(firstIndex, adjacency);
+  };
+  strongEdges.forEach((edge) => {
+    addReconstructionEdge(edge.first, edge.second, edge);
+    addReconstructionEdge(edge.second, edge.first, edge);
+  });
+  const replaySeedIndex = rules.slice().sort((first, second) => second.count - first.count)[0]?.representativePair[0]
+    ?? learnedCover.irregular?.replaySeedPlacementIndex ?? 0;
+  const reachableOccurrences = new Set(occurrences[replaySeedIndex] ? [replaySeedIndex] : []);
+  const replayQueue = [...reachableOccurrences];
+  while (replayQueue.length) {
+    const current = replayQueue.shift();
+    (reconstructionByOccurrence.get(current) || []).forEach((rule) => {
+      if (reachableOccurrences.has(rule.occurrenceTo)) return;
+      reachableOccurrences.add(rule.occurrenceTo);
+      replayQueue.push(rule.occurrenceTo);
+    });
+  }
+  return {
+    coverBased: true,
+    occurrences,
+    templates,
+    rules,
+    byFrom,
+    reconstructionByOccurrence,
+    replaySeedIndex,
+    replayReachable: reachableOccurrences.size,
+    reconstructionEdges: strongEdges.length * 2,
+    observations: strongEdges.length * 2,
+    recurring: rules.filter((rule) => rule.count >= 2).length,
+    heldoutSupported: rules.filter((rule) => rule.holdoutCount > 0).length,
+  };
+}
+
 function learnOverlapGrammar(source) {
   if (currentMaterial().molecularCover === "water") return learnMolecularOverlapGrammar(source);
+  if (learnedCover?.occurrenceBased) return learnIrregularOverlapGrammar(source);
   const scenePerAngstrom = referenceSpacing / referenceSpacingA;
   const occurrences = source.map((atom, index) => ({
     index,
@@ -2601,6 +2879,7 @@ function receiptClusterRecord(cluster, index) {
     portRoles: cluster.residual ? 0 : clusterPortRank(familyIndex),
     posePortRank: cluster.residual ? 0 : clusterPosePortRank(familyIndex),
     recommendedChannels: cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex),
+    chirality: cluster.chirality ?? null,
     isometryClass: Number.isInteger(cluster.classIndex) ? cluster.classIndex + 1 : null,
     familyClassCount: cluster.classCount ?? null,
   };
@@ -2638,7 +2917,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-5",
+      buildId: "20260824-6",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -2691,6 +2970,7 @@ async function buildExperimentReceipt() {
       isometryTypes: clusterGalleryTypes().length,
       residualTypes: learnedCover.residualTypes?.length || 0,
       molecularFamilies: learnedCover.molecular || null,
+      irregularMining: learnedCover.irregular || null,
       classes: clusterGalleryTypes().map(receiptClusterRecord),
     } : { status: "stage not entered" },
     marking: {
@@ -2799,7 +3079,7 @@ function reducedCompositionKey() {
 }
 
 function prototypeGeometryKey(prototype, index) {
-  if (learnedCover?.molecular) {
+  if (learnedCover?.occurrenceBased || learnedCover?.molecular) {
     const sites = prototype.customSupport.map((atomIndex) => referenceAtoms[atomIndex].species);
     const distances = [];
     for (let first = 0; first < prototype.customVectors.length; first++) {
@@ -2836,7 +3116,7 @@ function markingVocabularyKey() {
 }
 
 function learnSectionModel(source, config = currentMarkingConfig()) {
-  if (learnedCover?.molecular) return learnMolecularSectionModel(source, config);
+  if (learnedCover?.occurrenceBased || learnedCover?.molecular) return learnMolecularSectionModel(source, config);
   const axes = BALANCE_DIRECTIONS;
   const representation = MARKING_REPRESENTATIONS[config.representation] || MARKING_REPRESENTATIONS.sites;
   const reachScale = { 1: .72, 2: 1, 3: 1.35 }[config.reach] || 1;
@@ -3056,7 +3336,8 @@ function learnMolecularSectionModel(source, config) {
     reach: config.reach, representation: config.representation,
     overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
-    prototypeCount, sampleLabels, sampleKind: "molecular cover occurrence",
+    prototypeCount, sampleLabels,
+    sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence",
   };
 }
 
@@ -3065,12 +3346,13 @@ function markingSampleCount() {
 }
 
 function markingPrototypeTypes() {
-  return learnedCover?.molecular ? learnedCover.types : learnedClusters.clusters;
+  return learnedCover?.occurrenceBased || learnedCover?.molecular ? learnedCover.types : learnedClusters.clusters;
 }
 
 function markingPrototypeName(index) {
   const prototype = markingPrototypeTypes()[index];
-  return learnedCover?.molecular ? prototype?.label || `C${index + 1}` : `C${index + 1}`;
+  return learnedCover?.occurrenceBased || learnedCover?.molecular
+    ? prototype?.label || `C${index + 1}` : `C${index + 1}`;
 }
 
 function currentSectionPoint() {
@@ -3508,12 +3790,14 @@ function initializeOffLatticeSearch() {
   reconstructionMarkingFallbacks = 0;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
-  const seedType = overlapGrammar.molecular ? overlapGrammar.occurrences[seedIndex].type : learnedClusters.labels[seedIndex];
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
+  const seedType = overlapGrammar.coverBased || overlapGrammar.molecular
+    ? seedOccurrence.type : learnedClusters.labels[seedIndex];
   const seed = { id: 1, type: seedType, position: seedOccurrence.position.clone(), rotation: seedOccurrence.rotation.clone(), occurrenceIndex: seedIndex, parentId: null, ruleId: null, depth: 0, atomIds: [] };
   const inverseSeedFrame = seed.rotation.clone().invert();
-  const seedSites = overlapGrammar.molecular ? seedOccurrence.sites : [{ local: new THREE.Vector3(), species: referenceAtoms[seedIndex].species, center: true }];
-  if (!overlapGrammar.molecular) learnedClusters.environments[seedIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => seedSites.push({
+  const seedSites = overlapGrammar.coverBased || overlapGrammar.molecular
+    ? seedOccurrence.sites : [{ local: new THREE.Vector3(), species: referenceAtoms[seedIndex].species, center: true }];
+  if (!overlapGrammar.coverBased && !overlapGrammar.molecular) learnedClusters.environments[seedIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => seedSites.push({
     local: neighbor.vector.clone().multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverseSeedFrame),
     species: neighbor.atom.species, center: false,
   }));
@@ -3539,7 +3823,7 @@ function makeRepresentatives() {
   const reps = [];
   const scaleToScene = referenceSpacing / referenceSpacingA;
   const centers = symbolCenters();
-  if (learnedCover?.molecular) {
+  if (learnedCover?.occurrenceBased || learnedCover?.molecular) {
     markingPrototypeTypes().forEach((cluster, clusterIndex) => {
       const center = centers[clusterIndex];
       cluster.customVectors.forEach((vector, siteIndex) => reps.push({
@@ -3567,8 +3851,9 @@ function makeRepresentatives() {
 }
 
 function symbolCenters() {
-  const count = learnedCover?.molecular ? markingPrototypeTypes().length : learnedClusters?.clusters.length || 1;
-  const spacing = learnedCover?.molecular ? 5.2 : 3.15;
+  const occurrenceBased = learnedCover?.occurrenceBased || learnedCover?.molecular;
+  const count = occurrenceBased ? markingPrototypeTypes().length : learnedClusters?.clusters.length || 1;
+  const spacing = occurrenceBased ? 5.2 : 3.15;
   return Array.from({ length: count }, (_, index) => new THREE.Vector3((index - (count - 1) / 2) * spacing, 0, 0));
 }
 
@@ -3660,13 +3945,10 @@ function buildSectionHalos() {
 function buildClusterOverlay() {
   clearGroup(clusterGroup);
   if (pipelineStage === 1 && learnedClusters) {
-    // Molecular ice is already rendered as one independent rotating card per
-    // learned cover type: H2O, the water-dimer bridge, and the O6 void
-    // boundary.  The generic overlay below is intentionally atom-centred and
-    // would redraw those objects as radial first-shell spokes in the shared
-    // atom scene.  That is neither the learned molecular cover nor a useful
-    // polyhedral representation, so keep the shared scene atom-only for ice.
-    if (learnedCover?.molecular) return;
+    // Every occurrence-based support is already rendered as an independent
+    // rotating polyhedral card. The legacy overlay below is atom-centred and
+    // would turn molecular or irregular supports back into radial spokes.
+    if (learnedCover?.occurrenceBased || learnedCover?.molecular) return;
     learnedClusters.clusters.forEach((cluster, index) => {
       const atom = referenceAtoms[cluster.medoid];
       const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.0)
@@ -3684,6 +3966,7 @@ function buildClusterOverlay() {
       ));
     });
   } else if (pipelineStage === 2) {
+    if (learnedCover?.occurrenceBased || learnedCover?.molecular) return;
     symbolCenters().forEach((center, index) => {
       const cluster = learnedClusters.clusters[index];
       const geometry = cluster.coordination <= 6 ? new THREE.OctahedronGeometry(1.22)
@@ -3692,7 +3975,7 @@ function buildClusterOverlay() {
       addClusterEnvelope(geometry, center, clusterColor(index));
     });
   } else if (pipelineStage === 3 && sectionModel) {
-    if (learnedCover?.molecular) {
+    if (learnedCover?.occurrenceBased || learnedCover?.molecular) {
       buildSectionHalos();
       return;
     }
@@ -4046,7 +4329,7 @@ function updateStageNarrative() {
   decisionEyebrow.textContent = "pipeline stage";
   decisionBadge.className = "badge neutral";
   const material = currentMaterial();
-  const clusterCount = learnedClusters?.clusters.length || 0;
+  const clusterCount = markingPrototypeTypes().length;
   const trainingPoint = trainedMarking ? currentTrainingPoint() : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
   const narratives = [
     {
@@ -4111,6 +4394,21 @@ function updateStageNarrative() {
       "target calls 0",
       "stationary claim false",
     ];
+  } else if (learnedCover.irregular) {
+    narratives[1].eyebrow = "learning · exact irregular support cover";
+    narratives[1].title = "Mine recurring colored point sets, then cover every atom";
+    narratives[1].decision = "Center-free recurring-support cover computed";
+    narratives[1].copy = "Atomic coordination shells and center-free bond-lens supports are candidate generators only. Translation- and proper-rotation-invariant colored metric plus chirality signatures define the actual support classes; connected uncovered regions become explicit gap terminals.";
+    narratives[1].caption = `${learnedCover.covered}/${referenceCount()} atoms are represented by ${learnedCover.placements.length} support occurrences at ${(learnedCover.irregular.metricToleranceFraction * 100).toFixed(1)}% of the nearest-neighbour scale. The miner found ${learnedCover.irregular.recurringCoordinationClasses} recurring coordination classes and ${learnedCover.irregular.recurringCenterFreeClasses} recurring center-free candidates; ${learnedCover.irregular.selectedCenterFreeOccurrences} center-free occurrences were needed by the deterministic greedy complete cover and ${learnedCover.irregular.residualAtoms} atoms remain in explicit gap clusters.${learnedCover.irregular.disconnectedReplayComponents ? ` ${learnedCover.irregular.disconnectedReplayComponents} spatially separate cover components remain separate rather than receiving a nonlocal connector.` : ""}`;
+    narratives[1].values = [
+      `${learnedCover.irregular.recurringCoordinationClasses} coordination classes`,
+      `${learnedCover.irregular.recurringCenterFreeClasses} center-free candidates`,
+      `${learnedCover.irregular.selectedCenterFreeOccurrences} selected center-free`,
+      `${learnedCover.residualTypes.length} gap classes · ${learnedCover.irregular.replayConnectorCount} local connectors`,
+    ];
+    narratives[2].title = "Register rigid ports between the exact support occurrences";
+    narratives[2].phase = `${overlapGrammar.rules.length} frozen rules`;
+    narratives[2].copy = "Every port maps one complete colored support to another by a proper rigid transform. Residual gaps participate in exact known-window replay but are not promoted into recurrent continuation rules.";
   }
   const item = narratives[pipelineStage];
   eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "TRAIN", "SEARCH"][pipelineStage];
@@ -4166,7 +4464,7 @@ function materializeCandidate(candidate, evaluation) {
   const placement = {
     id: placedClusters.length + 1, type: candidate.type,
     position: candidate.position.clone(), rotation: candidate.rotation.clone(),
-    occurrenceIndex: overlapGrammar.molecular ? candidate.occurrenceIndex : Number.isInteger(centerReferenceIndex)
+    occurrenceIndex: overlapGrammar.coverBased || overlapGrammar.molecular ? candidate.occurrenceIndex : Number.isInteger(centerReferenceIndex)
       && learnedClusters.labels[centerReferenceIndex] === candidate.type
       ? centerReferenceIndex : candidate.occurrenceIndex,
     parentId: candidate.parentId, ruleId: candidate.rule.id,
@@ -4373,8 +4671,8 @@ function rebuildWorld() {
       addInstances(atoms.filter((atom, index) => learnedClusters.labels[index] === cluster), clusterMaterials[cluster], (atom) => elementScale(atom.species));
     });
   } else if (pipelineStage === 3 && trainedMarking) {
-    learnedClusters.clusters.forEach((_, cluster) => {
-      const key = `m_C${cluster + 1}`;
+    markingPrototypeTypes().forEach((_, cluster) => {
+      const key = `m_${markingPrototypeName(cluster)}`;
       const selectedOut = markingSelection && markingSelection !== key;
       addInstances(atoms.filter((atom) => atom.family === `C${cluster + 1}`), getMarkingMaterial(key, selectedOut), (atom) => elementScale(atom.species) * (selectedOut ? .76 : atom.symbolCenter ? 1.16 : 1));
     });
@@ -4389,7 +4687,7 @@ function rebuildWorld() {
     if (selectedCoordination?.centers.length) {
       selectedCoordination.edges.forEach(([center, neighbor]) => points.push(center.p, neighbor.p));
     } else if (pipelineStage === 3 && trainedMarking) {
-      learnedClusters.clusters.forEach((_, cluster) => {
+      markingPrototypeTypes().forEach((_, cluster) => {
         const family = `C${cluster + 1}`;
         const center = atoms.find((atom) => atom.family === family && atom.symbolCenter);
         if (center) atoms.filter((atom) => atom.family === family && !atom.symbolCenter).forEach((atom) => points.push(center.p, atom.p));
@@ -4491,10 +4789,12 @@ function updateUI() {
     const gapTypes = learnedCover.molecular?.gaps ? learnedCover.molecular.gapClasses : learnedCover.residualTypes.length;
     reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(gapTypes); reuseDelta.textContent = learnedCover.molecular?.gaps ? `${learnedCover.molecular.gaps} oxygen-ring boundaries` : learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
   } else if (pipelineStage === 2) {
-    atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(learnedCover.molecular ? learnedCover.types.length : learnedClusters.clusters.length); atomDelta.textContent = learnedCover.molecular ? "molecule · bridge · ring boundary" : "one per learned medoid";
+    const occurrenceBased = learnedCover.occurrenceBased || learnedCover.molecular;
+    atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(occurrenceBased ? learnedCover.types.length : learnedClusters.clusters.length); atomDelta.textContent = learnedCover.molecular ? "molecule · bridge · ring boundary" : occurrenceBased ? "exact support and gap types" : "one per learned medoid";
     frontierLabel.textContent = "SE(3) RULES"; frontierMetric.textContent = String(overlapGrammar.rules.length); frontierDelta.textContent = "arbitrary quaternion + translation";
     oracleLabel.textContent = "PAIR OBSERVATIONS"; oracleMetric.textContent = overlapGrammar.observations.toLocaleString(); oracleDelta.textContent = `${overlapGrammar.recurring} rules recur`;
-    reuseLabel.textContent = "REPLAY GRAPH"; reuseMetric.textContent = `${overlapGrammar.replayReachable}/${referenceCount()}`; reuseDelta.textContent = `${overlapGrammar.reconstructionEdges.toLocaleString()} frozen observed edges · removed after certificate`;
+    const replayDenominator = overlapGrammar.coverBased ? overlapGrammar.occurrences.length : referenceCount();
+    reuseLabel.textContent = "REPLAY GRAPH"; reuseMetric.textContent = `${overlapGrammar.replayReachable}/${replayDenominator}`; reuseDelta.textContent = `${overlapGrammar.reconstructionEdges.toLocaleString()} frozen observed edges · ${overlapGrammar.coverBased ? "occurrences" : "atoms"} · removed after certificate`;
   } else if (pipelineStage === 3) {
     const point = currentTrainingPoint();
     stageEyebrow.textContent = "training · recursive sections on cluster connections";
@@ -4684,9 +4984,9 @@ function renderMarkings() {
     markCount.textContent = "not learned";
     const p = document.createElement("p"); p.textContent = "No motif or cluster labels are supplied."; markingTable.appendChild(p); return;
   }
-  const learned = learnedCover.molecular ? clusterGalleryTypes().map((cluster) => [
+  const learned = learnedCover.molecular || learnedCover.occurrenceBased ? clusterGalleryTypes().map((cluster) => [
     `${cluster.label} · ${cluster.element}`,
-    cluster.gap ? "empty-region boundary" : "species + distances",
+    cluster.gap ? "explicit gap terminal" : cluster.geometry || "species + distances",
     `×${cluster.classPlacementIndices?.length
       ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length}`,
   ]) : learnedClusters.clusters.map((cluster, index) => [
