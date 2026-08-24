@@ -11,6 +11,7 @@ def test_trajectory_ensemble_keeps_evidence_and_growth_domains_separate() -> Non
     source = (APP / "app.js").read_text(encoding="utf-8")
     io = (APP / "structure-io.js").read_text(encoding="utf-8")
     envelopes = (APP / "colored-distance-envelopes.js").read_text(encoding="utf-8")
+    uncertainty = (APP / "ensemble-geometry-uncertainty.js").read_text(encoding="utf-8")
     html = (APP / "index.html").read_text(encoding="utf-8")
     readme = (APP / "README.md").read_text(encoding="utf-8")
 
@@ -20,7 +21,7 @@ def test_trajectory_ensemble_keeps_evidence_and_growth_domains_separate() -> Non
     assert 'id="loadEnsembleFixtureButton"' in html
     assert 'value="all" selected' in html
     assert 'value="selected"' in html
-    assert 'app.js?v=20260824-38' in html
+    assert 'app.js?v=20260824-39' in html
 
     assert "function parseXyzFrame" in io
     assert "function jsonFrameRecord" in io
@@ -34,10 +35,15 @@ def test_trajectory_ensemble_keeps_evidence_and_growth_domains_separate() -> Non
     assert "learnColoredAngularEnvelopesEnsemble" in envelopes
     assert "frames.forEach(({ species, distance })" in envelopes
     assert "frames.forEach(({ species, displacement }, frameIndex)" in envelopes
+    assert "learnLocalPairDistanceUncertaintyEnsemble" in uncertainty
+    assert "sampleStandardDeviation" in uncertainty
+    assert "crossFramePairsConstructed: false" in uncertainty
+    assert "temporalOrderingUsed: false" in uncertainty
 
     assert "function currentImportedFrame()" in source
     assert "function deterministicSnapshotEnsemble(structure)" in source
     assert "function referenceEvidenceFrames(source)" in source
+    assert "function learnReferenceEnsemblePairUncertainty()" in source
     assert "ensembleEvidenceMode !== \"all\"" in source
     assert "const commonSceneScale = referenceSpacing / referenceSpacingA" in source
     assert "return makeImportedFrameReference();" in source
@@ -53,6 +59,7 @@ def test_trajectory_ensemble_keeps_evidence_and_growth_domains_separate() -> Non
     assert "forcesUsed: false" in source
     assert "integrationTimeStepUsed: false" in source
     assert "independentSampleCountClaimed: false" in source
+    assert "upperPairDistanceSigmaAngstrom" in source
     assert "trajectoryIntegrated: false" in source
     assert "kineticsInferredFromSnapshotOrder: false" in source
 

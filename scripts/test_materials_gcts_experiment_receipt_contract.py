@@ -27,6 +27,8 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert "targetCoordinatesIncluded: false" in source
     assert "physicalPotentialUsed: false" in source
     assert "physicalElapsedTimeModeled: false" in source
+    assert "trajectoryIntegrated: false" in source
+    assert "kineticsInferredFromSnapshotOrder: false" in source
     assert "growthRateClaimed: false" in source
     assert "iceProtonOrientationsResolved: trace ? false : null" in source
     assert 'const symbolicRecursiveSystems = new Set(["competition", "graphene", "hbn", "moire"])' in source
@@ -54,7 +56,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="chargeValue"' in html
     assert 'id="surfaceValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-38' in html
+    assert 'app.js?v=20260824-39' in html
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert 'surfaceCompletionRanking: {' in source
     assert 'formalChargeBalanceRanking: {' in source

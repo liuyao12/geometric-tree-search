@@ -51,9 +51,10 @@ cell metric into Cartesian covariance tensors, transported by every symmetry
 operation, checked for positive semidefiniteness, and diagonalized into a
 right-handed principal-axis frame. A translucent violet wire ellipsoid displays
 the two-sigma displacement halo around the arbitrary element glyph; the halo's
-axis excess beyond the glyph is the measured 2σ displacement. The isometry tolerance is the larger of the selected
-nominal tolerance and the measured one-sigma pair-distance uncertainty
-`sqrt(2)·median(sqrt(U))`; the UI and receipt show both values. This broadens
+axis excess beyond the glyph is the measured 2σ displacement. The isometry tolerance is the largest of the selected
+nominal tolerance, the measured one-sigma U/B pair-distance uncertainty
+`sqrt(2)·median(sqrt(U))`, and any fixed-topology snapshot pair-distance floor;
+the UI and receipt show every source. This broadens
 only the comparison of noisy measured geometry. It is not a temperature,
 phonon trajectory, force field, Debye–Waller intensity model, or dynamical
 growth clock. Modulated/superspace CIFs remain unsupported and must not be
@@ -70,6 +71,15 @@ coordination-capacity, and three-body angle envelopes. Distances and angles are
 formed only within a frame—frames are never concatenated into one point cloud,
 and no cross-frame atom pair exists. Variable cells and per-frame periodic
 wrapping are preserved.
+
+For atom pairs lying inside the selected frame's local descriptor cutoff, the
+lab also measures each pair distance in every frame. The 90th percentile of
+their per-pair sample standard deviations becomes an empirical one-sigma floor
+for metric-isometry matching, alongside any supplied U/B displacement floor.
+Because this statistic uses only distances, global translation and proper
+rotation cannot masquerade as disorder; changing cells and genuine local
+deformation remain visible. The floor, cutoff, pair count, and distribution
+summary are shown in the clustering control and serialized in the receipt.
 
 The cluster cover, pose atlas, port grammar, GCTS marking, and growth nucleus
 still come from the one selected frame. This keeps later snapshots from leaking

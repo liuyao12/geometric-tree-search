@@ -3,6 +3,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
   occupancyChemistryToken,
   occupancyDisplayLabel,
+  displacement as structureDisplacement,
   formalChargeFromChemistryToken,
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
@@ -37,6 +38,7 @@ import {
   learnColoredCoordinationEnvelopesEnsemble,
   learnColoredDistanceEnvelopesEnsemble,
 } from "./colored-distance-envelopes.js?v=20260824-6";
+import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -492,6 +494,7 @@ let structureObservableSelection = "rdf";
 let coloredDistanceEnvelopes = null;
 let coloredCoordinationEnvelopes = null;
 let coloredAngularEnvelopes = null;
+let ensemblePairDistanceUncertainty = null;
 let compositionTarget = null;
 let formalChargeTarget = null;
 
@@ -600,6 +603,10 @@ function currentImportedFrameValidation() {
   return frame.validation;
 }
 
+function activeImportedFrameValidation() {
+  return scenarioSelect.value === "imported" ? currentImportedFrameValidation() : null;
+}
+
 function importedTrajectoryFrames() {
   return importedStructure?.frames?.length ? importedStructure.frames : importedStructure ? [importedStructure] : [];
 }
@@ -637,8 +644,12 @@ function renderEnsembleControls() {
   ensembleEvidenceSelect.value = ensembleEvidenceMode;
   ensembleFrameCount.textContent = `${frames.length} snapshots`;
   const presentations = frames.length * (frames[0]?.atoms.length || 0);
+  const empirical = ensemblePairDistanceUncertainty?.available
+    && ensemblePairDistanceUncertainty.frameCount === frames.length
+    ? ` · local pair σ₉₀ ${ensemblePairDistanceUncertainty.upperPairDistanceSigma.toFixed(4)} Å`
+    : "";
   ensembleStatus.textContent = ensembleEvidenceMode === "all"
-    ? `Pooling ${frames.length} fixed-topology frames · ${presentations.toLocaleString()} atom presentations. Frame ${importedFrameIndex + 1} alone supplies the cluster cover, grammar, and growth seed.`
+    ? `Pooling ${frames.length} fixed-topology frames · ${presentations.toLocaleString()} atom presentations${empirical}. Frame ${importedFrameIndex + 1} alone supplies the cluster cover, grammar, and growth seed.`
     : `Ablation: only frame ${importedFrameIndex + 1} supplies geometric envelopes, the cluster cover, grammar, and growth seed.`;
 }
 
@@ -808,6 +819,7 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
   if (!validation.valid) throw new Error(validation.errors.join("; "));
   importedFrameIndex = 0;
   ensembleEvidenceMode = "all";
+  ensemblePairDistanceUncertainty = null;
   const actualElements = Object.keys(validation.elementCounts);
   const elements = [...new Set(parsed.atoms.map(occupancyChemistryToken))];
   importedStructure = {
@@ -2148,8 +2160,19 @@ function clusterMetricTolerance() {
 }
 
 function measuredPairUncertaintyAngstrom() {
-  const sigma = importedStructure?.validation?.medianThermalSigmaA || 0;
-  return isotropicPairDistanceUncertaintyA(sigma);
+  const sigma = activeImportedFrameValidation()?.medianThermalSigmaA || 0;
+  const crystallographic = isotropicPairDistanceUncertaintyA(sigma);
+  const ensemble = ensemblePairDistanceUncertainty?.upperPairDistanceSigma || 0;
+  return Math.max(crystallographic, ensemble);
+}
+
+function measuredPairUncertaintySource() {
+  const sigma = activeImportedFrameValidation()?.medianThermalSigmaA || 0;
+  const crystallographic = isotropicPairDistanceUncertaintyA(sigma);
+  const ensemble = ensemblePairDistanceUncertainty?.upperPairDistanceSigma || 0;
+  if (ensemble > crystallographic && ensemble > 0) return "snapshot pair-distance σ90 floor";
+  if (crystallographic > 0) return "measured Uiso/Biso floor";
+  return "nominal tolerance";
 }
 
 function clusterMetricToleranceAngstrom() {
@@ -3788,7 +3811,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-38",
+      buildId: "20260824-39",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3860,13 +3883,28 @@ async function buildExperimentReceipt() {
       metricIsometryToleranceFractionOfNearestNeighbor: receiptRound(effectiveClusterMetricTolerance()),
       metricIsometryToleranceAngstrom: receiptRound(clusterMetricToleranceAngstrom()),
       positionalUncertainty: {
-        source: importedStructure?.validation?.thermalDisplacementSites ? "CIF/JSON isotropic or anisotropic U/B" : "not supplied",
-        isotropicSites: importedStructure?.validation?.thermalDisplacementSites || 0,
-        anisotropicTensorSites: importedStructure?.validation?.anisotropicDisplacementSites || 0,
-        medianOneAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.medianThermalSigmaA || 0),
-        maximumOneAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.maximumThermalSigmaA || 0),
-        maximumPrincipalAxisSigmaAngstrom: receiptRound(importedStructure?.validation?.maximumThermalAxisSigmaA || 0),
+        source: [activeImportedFrameValidation()?.thermalDisplacementSites ? "CIF/JSON isotropic or anisotropic U/B" : null,
+          ensemblePairDistanceUncertainty?.available ? "fixed-topology snapshot pair distances" : null].filter(Boolean).join(" + ") || "not supplied",
+        toleranceFloorSource: measuredPairUncertaintySource(),
+        isotropicSites: activeImportedFrameValidation()?.thermalDisplacementSites || 0,
+        anisotropicTensorSites: activeImportedFrameValidation()?.anisotropicDisplacementSites || 0,
+        medianOneAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.medianThermalSigmaA || 0),
+        maximumOneAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.maximumThermalSigmaA || 0),
+        maximumPrincipalAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.maximumThermalAxisSigmaA || 0),
         pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom()),
+        empiricalSnapshotPairDistances: ensemblePairDistanceUncertainty?.available ? {
+          frameCount: ensemblePairDistanceUncertainty.frameCount,
+          atomPresentations: ensemblePairDistanceUncertainty.atomPresentations,
+          localPairCount: ensemblePairDistanceUncertainty.localPairCount,
+          localCutoffAngstrom: receiptRound(ensemblePairDistanceUncertainty.localCutoff),
+          medianPairDistanceSigmaAngstrom: receiptRound(ensemblePairDistanceUncertainty.medianPairDistanceSigma),
+          upperQuantile: ensemblePairDistanceUncertainty.upperQuantile,
+          upperPairDistanceSigmaAngstrom: receiptRound(ensemblePairDistanceUncertainty.upperPairDistanceSigma),
+          maximumPairDistanceSigmaAngstrom: receiptRound(ensemblePairDistanceUncertainty.maximumPairDistanceSigma),
+          crossFramePairsConstructed: false,
+          temporalOrderingUsed: false,
+          independentSampleCountClaimed: false,
+        } : null,
         usedAsPotentialOrDynamics: false,
       },
       resolvedMode: resolvedGeometryMode(),
@@ -4667,6 +4705,28 @@ function referenceEvidenceFrames(source) {
       context: periodicContextFromSceneCell(cell, importedFramePeriodicAxes(frame)),
       frameIndex,
     };
+  });
+}
+
+function learnReferenceEnsemblePairUncertainty() {
+  const frames = scenarioSelect.value === "imported" && ensembleEvidenceMode === "all"
+    ? importedTrajectoryFrames() : [];
+  if (frames.length < 2) return learnLocalPairDistanceUncertaintyEnsemble([], {
+    localCutoff: descriptorCutoff() * referenceSpacingA,
+  });
+  const geometricFrames = frames.map((frame) => ({
+    species: frame.atoms.map(occupancyChemistryToken),
+    distance: (first, second) => Math.hypot(...structureDisplacement(
+      frame.atoms[first].position,
+      frame.atoms[second].position,
+      frame.cell,
+      importedFramePeriodicAxes(frame),
+    )),
+  }));
+  return learnLocalPairDistanceUncertaintyEnsemble(geometricFrames, {
+    referenceFrameIndex: importedFrameIndex,
+    localCutoff: descriptorCutoff() * referenceSpacingA,
+    upperQuantile: .9,
   });
 }
 
@@ -5606,7 +5666,7 @@ function syncStageOptions() {
     clusterToleranceSelect.value = clusterToleranceMode;
     const thermalFloor = measuredPairUncertaintyAngstrom();
     clusterToleranceHint.textContent = thermalFloor > referenceSpacingA * clusterMetricTolerance()
-      ? `${(effectiveClusterMetricTolerance() * 100).toFixed(1)}% effective · ${clusterMetricToleranceAngstrom().toFixed(3)} Å · measured Uiso/Biso floor`
+      ? `${(effectiveClusterMetricTolerance() * 100).toFixed(1)}% effective · ${clusterMetricToleranceAngstrom().toFixed(3)} Å · ${measuredPairUncertaintySource()}`
       : `${(clusterMetricTolerance() * 100).toFixed(1)}% of nearest-neighbor scale · ${clusterMetricToleranceAngstrom().toFixed(3)} Å`;
     const latticeDetected = Boolean(detectedUnitCell);
     const periodicFixture = Boolean(currentMaterial().periodicWindow && currentCell() && currentPbc().some(Boolean));
@@ -5779,6 +5839,7 @@ function enterPipelineStage(index, options = {}) {
   referenceSpacingA = scenarioSelect.value === "imported"
     ? currentImportedFrameValidation().medianNearestDistance
     : referenceSpacing / .92 * currentMaterial().spacingA;
+  ensemblePairDistanceUncertainty = learnReferenceEnsemblePairUncertainty();
   coloredDistanceEnvelopes = learnReferenceDistanceEnvelopes(referenceAtoms);
   coloredCoordinationEnvelopes = learnReferenceCoordinationEnvelopes(referenceAtoms);
   coloredAngularEnvelopes = learnReferenceAngularEnvelopes(referenceAtoms);
@@ -6761,11 +6822,12 @@ function renderLegend() {
       row.append(swatch, document.createTextNode(occupational?.label || symbol));
       speciesLegend.appendChild(row);
     });
-    if (importedStructure?.validation?.thermalDisplacementSites) {
+    const activeImportedValidation = activeImportedFrameValidation();
+    if (activeImportedValidation?.thermalDisplacementSites) {
       const row = document.createElement("span");
       const swatch = document.createElement("i");
       swatch.className = "thermal-envelope-swatch";
-      row.append(swatch, document.createTextNode(`2σ U/B displacement halo · ${importedStructure.validation.anisotropicDisplacementSites || 0} anisotropic · median σ ${importedStructure.validation.medianThermalSigmaA.toFixed(3)} Å`));
+      row.append(swatch, document.createTextNode(`2σ U/B displacement halo · ${activeImportedValidation.anisotropicDisplacementSites || 0} anisotropic · median σ ${activeImportedValidation.medianThermalSigmaA.toFixed(3)} Å`));
       speciesLegend.appendChild(row);
     }
     const proposal = document.createElement("span");
@@ -6838,7 +6900,7 @@ function renderMarkings() {
       const ensemble = document.createElement("div"); ensemble.className = "mark-row composition-reservoir-row";
       ensemble.title = "Raw snapshot presentations may be correlated; this is not an independent-sample or kinetic claim";
       const code = document.createElement("code"); code.textContent = "ensemble";
-      const summary = document.createElement("span"); summary.textContent = `${coloredDistanceEnvelopes.frameCount} frames · selected ${importedFrameIndex + 1}`;
+      const summary = document.createElement("span"); summary.textContent = `${coloredDistanceEnvelopes.frameCount} frames · σ₉₀ ${ensemblePairDistanceUncertainty?.upperPairDistanceSigma.toFixed(4) || "0.0000"} Å`;
       const count = document.createElement("b"); count.textContent = `${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} sites`;
       ensemble.append(code, summary, count); markingTable.appendChild(ensemble);
     }

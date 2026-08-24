@@ -17,6 +17,8 @@ def test_tolerance_controls_all_metric_isometry_learners() -> None:
     assert "Thermal/disordered · 5.0%" in html
     assert "function clusterMetricTolerance()" in source
     assert "function measuredPairUncertaintyAngstrom()" in source
+    assert "function measuredPairUncertaintySource()" in source
+    assert "function learnReferenceEnsemblePairUncertainty()" in source
     assert "function clusterMetricToleranceAngstrom()" in source
     assert "function effectiveClusterMetricTolerance()" in source
     assert 'clusterToleranceMode === "strict" ? .01' in source
@@ -28,8 +30,10 @@ def test_tolerance_controls_all_metric_isometry_learners() -> None:
     assert "nominalMetricIsometryToleranceFractionOfNearestNeighbor: clusterMetricTolerance()" in source
     assert "metricIsometryToleranceFractionOfNearestNeighbor: receiptRound(effectiveClusterMetricTolerance())" in source
     assert "metricIsometryToleranceAngstrom: receiptRound(clusterMetricToleranceAngstrom())" in source
-    assert 'source: importedStructure?.validation?.thermalDisplacementSites ? "CIF/JSON isotropic or anisotropic U/B"' in source
+    assert '"fixed-topology snapshot pair distances"' in source
     assert "pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom())" in source
+    assert "upperPairDistanceSigmaAngstrom" in source
+    assert "crossFramePairsConstructed: false" in source
     assert "metricToleranceMode: clusterToleranceMode" in source
     assert "metricToleranceFraction: effectiveClusterMetricTolerance()" in source
     assert '(marking.config.clusterToleranceMode || "balanced") === clusterToleranceMode' in source
