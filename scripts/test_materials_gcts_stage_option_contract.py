@@ -11,7 +11,8 @@ HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text(encoding="utf-8")
 def test_clustering_exposes_geometry_pose_and_derived_channel_rank() -> None:
     for identifier in (
         "geometryModeSelect", "translationSupport", "rotationSupport",
-        "channelRankSupport", "poseAtlas",
+        "channelRankSupport", "molecularHypothesisState",
+        "molecularHypothesisEvidence", "molecularHypothesisRoute", "poseAtlas",
     ):
         assert f'id="{identifier}"' in HTML
     assert "function resolvedGeometryMode()" in APP
@@ -19,6 +20,9 @@ def test_clustering_exposes_geometry_pose_and_derived_channel_rank() -> None:
     assert "function clusterPosePortRank(cluster)" in APP
     assert "function automaticMarkingChannels()" in APP
     assert "poseAtlasEntryStatus(entry)" in APP
+    assert "function renderMolecularHypothesis()" in APP
+    assert 'material/formula labels 0' in APP
+    assert 'no element-specific rule was invented; geometry falls back safely' in APP
 
 
 def test_marking_configuration_and_library_are_executable_controls() -> None:

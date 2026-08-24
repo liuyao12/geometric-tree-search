@@ -550,7 +550,10 @@ a hidden `molecularCover: water` switch: it first infers a valence-bounded
 covalent graph from standard element radii, requires repeated finite connected
 components, and rejects extended covalent networks back to the irregular-cover
 learner. Only after the recurring colored metric formula emerges as H2O does
-the water-specific connection/void topology run. A new generic ice audit uses
+the water-specific connection/void topology run. Stage 2 displays this
+hypothesis audit for every material: accepted component counts/formulas and
+zero-label provenance, an extended-network rejection, or the exact missing
+chemistry metadata that caused a safe irregular-cover fallback. A new generic ice audit uses
 standard covalent radii and bounded ordinary valences to infer finite connected
 components, without receiving an ice label, H2O formula, coordination number,
 or ring size. It discovers one H2O type in both polytypes, constructs the

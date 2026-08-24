@@ -283,6 +283,18 @@ body.atlas-open { overflow: hidden; }
 .geometry-audit small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
 .geometry-audit strong { margin-top: 4px; color: #d9e7e2; font: 8px var(--mono); font-weight: 400; }
 .geometry-audit i { align-self: center; color: rgba(181,148,255,.62); font: 9px var(--mono); font-style: normal; }
+.molecular-hypothesis-audit { display: grid; grid-template-columns: 38px minmax(0,1fr) auto; align-items: center; gap: 8px; margin-top: 7px; padding: 7px 8px; border: 1px solid rgba(151,194,183,.13); background: rgba(5,17,18,.44); }
+.molecular-hypothesis-icon { position: relative; display: block; width: 32px; height: 22px; }
+.molecular-hypothesis-icon::before,.molecular-hypothesis-icon::after { content: ""; position: absolute; top: 10px; width: 15px; height: 1px; background: rgba(101,225,188,.7); transform-origin: right center; }
+.molecular-hypothesis-icon::before { left: 1px; transform: rotate(28deg); }.molecular-hypothesis-icon::after { right: 1px; transform: rotate(-28deg); transform-origin: left center; }
+.molecular-hypothesis-icon i { position: absolute; top: 8px; width: 5px; height: 5px; border: 1px solid var(--mint); border-radius: 50%; background: #0b2422; }
+.molecular-hypothesis-icon i:nth-child(1) { left: 0; top: 2px; }.molecular-hypothesis-icon i:nth-child(2) { left: 13px; }.molecular-hypothesis-icon i:nth-child(3) { right: 0; top: 2px; }
+.molecular-hypothesis-audit small,.molecular-hypothesis-audit strong,.molecular-hypothesis-audit em { display: block; min-width: 0; }
+.molecular-hypothesis-audit small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
+.molecular-hypothesis-audit strong { margin-top: 3px; color: #d9e7e2; font: 8px var(--mono); font-weight: 400; }
+.molecular-hypothesis-audit em { margin-top: 3px; overflow: hidden; color: #69817a; font: 6px var(--mono); font-style: normal; text-overflow: ellipsis; white-space: nowrap; }
+.molecular-hypothesis-audit > b { max-width: 82px; padding: 4px 6px; border: 1px solid rgba(101,225,188,.2); color: var(--mint); font: 6px/1.35 var(--mono); font-weight: 400; text-align: center; text-transform: uppercase; }
+.molecular-hypothesis-audit.rejected > b { border-color: rgba(255,193,105,.28); color: #ffc169; }.molecular-hypothesis-audit.unavailable > b { border-color: var(--line); color: var(--faint); }
 .pose-atlas-heading { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; color: var(--faint); font: 6px var(--mono); text-transform: uppercase; line-height: 1.4; }
 .pose-atlas-heading b { flex: 0 0 auto; color: var(--violet); font-weight: 400; }
 .pose-atlas { display: grid; gap: 4px; margin-top: 6px; }

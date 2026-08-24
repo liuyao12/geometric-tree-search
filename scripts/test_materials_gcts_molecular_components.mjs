@@ -22,6 +22,9 @@ assert.equal(water.accepted, true);
 assert.equal(water.materialLabelUsed, false);
 assert.equal(water.expectedFormulaUsed, false);
 assert.equal(water.components.length, 4);
+assert.equal(water.componentCount, 4);
+assert.equal(water.largestComponent, 3);
+assert.equal(water.covalentEdges, 8);
 assert.equal(water.types.length, 1);
 assert.deepEqual(water.types[0].formula, [["H", 2], ["O", 1]]);
 assert.equal(water.types[0].occurrences.length, 4);
@@ -44,6 +47,8 @@ const chain = discoverFiniteMolecularComponents({
 });
 assert.equal(chain.accepted, false);
 assert.equal(chain.reason, "extended covalent network");
+assert.equal(chain.componentCount, 1);
+assert.equal(chain.largestComponent, 8);
 
 const ionic = discoverFiniteMolecularComponents({
   species: ["Na", "Cl", "Na", "Cl"],
@@ -51,10 +56,11 @@ const ionic = discoverFiniteMolecularComponents({
 });
 assert.equal(ionic.accepted, false);
 assert.equal(ionic.reason, "unsupported chemistry metadata");
+assert.deepEqual(ionic.unsupported, ["Na"]);
+assert.equal(ionic.materialLabelUsed, false);
 
 console.log("generic finite molecular component discovery: passed", {
   formula: water.types[0].formula,
   occurrences: water.types[0].occurrences.length,
   chainFallback: chain.reason,
 });
-

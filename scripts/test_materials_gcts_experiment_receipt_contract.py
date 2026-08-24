@@ -38,8 +38,8 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert "exactBackendCountParity: iceAnchorTrace.exactBackendCountParity" in source
     assert "emittedAnchorCount: iceAnchorTrace.emittedAnchors.length" in source
     assert "molecularDiscovery: learnedCover.molecularDiscovery || null" in source
-    assert "materialLabelUsed: molecularDiscovery.materialLabelUsed" in source
-    assert "expectedFormulaUsed: molecularDiscovery.expectedFormulaUsed" in source
+    assert "materialLabelUsed: discovery.materialLabelUsed" in source
+    assert "expectedFormulaUsed: discovery.expectedFormulaUsed" in source
     assert "irregularMining: learnedCover.irregular || null" in source
     assert "liveCertificate: liveGrowthCertificate()" in source
     assert "representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout" in source
@@ -53,7 +53,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="compositionValue"' in html
     assert 'id="surfaceValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-22' in html
+    assert 'app.js?v=20260824-23' in html
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert 'surfaceCompletionRanking: {' in source
     assert 'not bond or surface energy' in source

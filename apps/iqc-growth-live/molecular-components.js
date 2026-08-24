@@ -72,7 +72,12 @@ export function discoverFiniteMolecularComponents({
     throw new Error("Invalid molecular discovery tolerances");
   }
   const unsupported = [...new Set(species)].filter((element) => !(element in covalentRadii) || !(element in valenceBounds)).sort();
-  if (unsupported.length) return { accepted: false, reason: "unsupported chemistry metadata", unsupported, edges: [], components: [], types: [] };
+  if (unsupported.length) return {
+    accepted: false, reason: "unsupported chemistry metadata", unsupported,
+    edges: [], components: [], types: [], atomCount: species.length,
+    covalentEdges: 0, componentCount: 0, largestComponent: 0, typeCount: 0,
+    materialLabelUsed: false, expectedFormulaUsed: false,
+  };
 
   const candidates = [];
   for (let first = 0; first < species.length - 1; first++) {
@@ -97,10 +102,18 @@ export function discoverFiniteMolecularComponents({
   const components = connectedComponents(species.length, edges);
   const largest = Math.max(...components.map((component) => component.length));
   if (largest > species.length * maximumMoleculeFraction) {
-    return { accepted: false, reason: "extended covalent network", unsupported: [], edges, components, types: [] };
+    return {
+      accepted: false, reason: "extended covalent network", unsupported: [], edges, components, types: [],
+      atomCount: species.length, covalentEdges: edges.length, componentCount: components.length,
+      largestComponent: largest, typeCount: 0, materialLabelUsed: false, expectedFormulaUsed: false,
+    };
   }
   if (components.some((component) => component.length < 2)) {
-    return { accepted: false, reason: "unbonded residual components", unsupported: [], edges, components, types: [] };
+    return {
+      accepted: false, reason: "unbonded residual components", unsupported: [], edges, components, types: [],
+      atomCount: species.length, covalentEdges: edges.length, componentCount: components.length,
+      largestComponent: largest, typeCount: 0, materialLabelUsed: false, expectedFormulaUsed: false,
+    };
   }
 
   const grouped = new Map();
@@ -118,7 +131,11 @@ export function discoverFiniteMolecularComponents({
       occurrences: occurrences.map((members) => members.slice()),
     }));
   if (types.some((type) => type.occurrences.length < minimumTypeOccurrences)) {
-    return { accepted: false, reason: "nonrecurrent molecular component", unsupported: [], edges, components, types };
+    return {
+      accepted: false, reason: "nonrecurrent molecular component", unsupported: [], edges, components, types,
+      atomCount: species.length, covalentEdges: edges.length, componentCount: components.length,
+      largestComponent: largest, typeCount: types.length, materialLabelUsed: false, expectedFormulaUsed: false,
+    };
   }
   return {
     accepted: true,
@@ -127,9 +144,13 @@ export function discoverFiniteMolecularComponents({
     edges,
     components,
     types,
+    atomCount: species.length,
+    covalentEdges: edges.length,
+    componentCount: components.length,
+    largestComponent: largest,
+    typeCount: types.length,
     coveredAtoms: components.reduce((sum, component) => sum + component.length, 0),
     materialLabelUsed: false,
     expectedFormulaUsed: false,
   };
 }
-

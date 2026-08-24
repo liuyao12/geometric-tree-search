@@ -65,6 +65,9 @@ const geometryModeNote = $("geometryModeNote");
 const translationSupport = $("translationSupport");
 const rotationSupport = $("rotationSupport");
 const channelRankSupport = $("channelRankSupport");
+const molecularHypothesisState = $("molecularHypothesisState");
+const molecularHypothesisEvidence = $("molecularHypothesisEvidence");
+const molecularHypothesisRoute = $("molecularHypothesisRoute");
 const poseAtlasTotal = $("poseAtlasTotal");
 const poseAtlas = $("poseAtlas");
 const markingTrainingOptions = $("markingTrainingOptions");
@@ -2037,11 +2040,14 @@ function molecularIsometryGallery(source, families, familyTypes) {
   return gallery;
 }
 
-function discoveredWaterComponents(source) {
-  const discovery = discoverFiniteMolecularComponents({
+function molecularComponentHypothesis(source) {
+  return discoverFiniteMolecularComponents({
     species: source.map((atom) => atom.species),
     distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
   });
+}
+
+function discoveredWaterComponents(discovery) {
   if (!discovery.accepted || discovery.types.length !== 1) return null;
   const formula = discovery.types[0].formula;
   const waterFormula = formula.length === 2
@@ -2049,6 +2055,22 @@ function discoveredWaterComponents(source) {
     && formula[1][0] === "O" && formula[1][1] === 1;
   if (!waterFormula || discovery.components.some((component) => component.length !== 3)) return null;
   return discovery;
+}
+
+function molecularDiscoverySummary(discovery, route) {
+  return {
+    accepted: discovery.accepted,
+    reason: discovery.reason,
+    route,
+    covalentEdges: discovery.covalentEdges,
+    components: discovery.componentCount,
+    largestComponent: discovery.largestComponent,
+    componentTypes: discovery.typeCount,
+    formulas: discovery.types.map((type) => ({ formula: type.formula, occurrences: type.occurrences.length })),
+    unsupportedElements: discovery.unsupported,
+    materialLabelUsed: discovery.materialLabelUsed,
+    expectedFormulaUsed: discovery.expectedFormulaUsed,
+  };
 }
 
 function buildWaterClusterCover(source, molecularDiscovery) {
@@ -2130,20 +2152,14 @@ function buildWaterClusterCover(source, molecularDiscovery) {
   const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
   return { placements, residualTypes: [], types, galleryTypes, incidence, covered: coveredAtoms.size,
     complete: coveredAtoms.size === source.length, periodic: true,
-    molecularDiscovery: {
-      reason: molecularDiscovery.reason,
-      covalentEdges: molecularDiscovery.edges.length,
-      componentTypes: molecularDiscovery.types.length,
-      materialLabelUsed: molecularDiscovery.materialLabelUsed,
-      expectedFormulaUsed: molecularDiscovery.expectedFormulaUsed,
-    },
+    molecularDiscovery: molecularDiscoverySummary(molecularDiscovery, "molecular connection / void cover"),
     molecular: { waters: waters.length, bridges: bridges.length, gaps: gaps.length,
       waterClasses: galleryTypes.filter((type) => type.familyType === 0).length,
       bridgeClasses: galleryTypes.filter((type) => type.familyType === 1).length,
       gapClasses: galleryTypes.filter((type) => type.familyType === 2).length } };
 }
 
-function buildIrregularClusterCover(source) {
+function buildIrregularClusterCover(source, molecularDiscovery) {
   const result = discoverIrregularCover({
     species: source.map((atom) => atom.species),
     distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
@@ -2187,6 +2203,7 @@ function buildIrregularClusterCover(source) {
     complete: result.complete && coveredAtoms.size === source.length,
     periodic: currentPbc().some(Boolean),
     occurrenceBased: true,
+    molecularDiscovery: molecularDiscoverySummary(molecularDiscovery, "irregular support fallback"),
     irregular: {
       recurringCoordinationClasses: result.recurringCoordinationClasses,
       recurringCenterFreeClasses: result.recurringCenterFreeClasses,
@@ -2206,9 +2223,10 @@ function buildIrregularClusterCover(source) {
 // enter the same cover, and any uncovered connected region becomes an explicit
 // residual cluster rather than disappearing from the model.
 function buildExhaustiveClusterCover(source) {
-  const molecularDiscovery = discoveredWaterComponents(source);
-  if (molecularDiscovery) return buildWaterClusterCover(source, molecularDiscovery);
-  return buildIrregularClusterCover(source);
+  const molecularDiscovery = molecularComponentHypothesis(source);
+  const waterDiscovery = discoveredWaterComponents(molecularDiscovery);
+  if (waterDiscovery) return buildWaterClusterCover(source, waterDiscovery);
+  return buildIrregularClusterCover(source, molecularDiscovery);
 }
 
 function clusterGalleryTypes() {
@@ -3296,7 +3314,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-22",
+      buildId: "20260824-23",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4889,6 +4907,36 @@ function renderPoseAtlas() {
   });
 }
 
+function renderMolecularHypothesis() {
+  const audit = learnedCover?.molecularDiscovery;
+  const panel = molecularHypothesisState.closest(".molecular-hypothesis-audit");
+  panel.classList.remove("accepted", "rejected", "unavailable");
+  if (!audit) {
+    panel.classList.add("unavailable");
+    molecularHypothesisState.textContent = "not evaluated";
+    molecularHypothesisEvidence.textContent = "species + metric geometry only";
+    molecularHypothesisRoute.textContent = "unknown";
+    return;
+  }
+  const labels = audit.formulas.map((entry) => `${entry.occurrences}×${entry.formula.map(([element, count]) => `${element}${count === 1 ? "" : count}`).join("")}`);
+  if (audit.accepted) {
+    panel.classList.add("accepted");
+    molecularHypothesisState.textContent = `${audit.components} recurrent finite component${audit.components === 1 ? "" : "s"}${labels.length ? ` · ${labels.join(" + ")}` : ""}`;
+    molecularHypothesisEvidence.textContent = `${audit.covalentEdges} covalent edges · largest component ${audit.largestComponent} atoms · material/formula labels 0`;
+    molecularHypothesisRoute.textContent = audit.route.startsWith("molecular") ? "molecular cover" : "irregular fallback";
+    return;
+  }
+  const unavailable = audit.reason === "unsupported chemistry metadata";
+  panel.classList.add(unavailable ? "unavailable" : "rejected");
+  molecularHypothesisState.textContent = unavailable
+    ? `not evaluated · missing ${audit.unsupportedElements.join(" / ") || "chemistry metadata"}`
+    : `rejected · ${audit.reason}`;
+  molecularHypothesisEvidence.textContent = unavailable
+    ? "no element-specific rule was invented; geometry falls back safely"
+    : `${audit.covalentEdges} candidate bonds · ${audit.components} component${audit.components === 1 ? "" : "s"} · largest ${audit.largestComponent} atoms`;
+  molecularHypothesisRoute.textContent = "irregular cover";
+}
+
 function syncStageOptions() {
   const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
   stageOptionsPanel.hidden = !visible;
@@ -4925,6 +4973,7 @@ function syncStageOptions() {
     const unresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
     rotationSupport.textContent = poseSupportLabel(totalPoses, freeTypes, unresolvedTypes);
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
+    renderMolecularHypothesis();
     renderPoseAtlas();
     stageOptionsState.textContent = resolvedMode === "module" ? "aperiodic module"
       : resolvedMode === "offlattice" ? `metric-set ${rotationGroupLabel()}` : "lattice candidate";
