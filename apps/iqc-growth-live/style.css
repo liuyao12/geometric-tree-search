@@ -340,6 +340,8 @@ body.atlas-open { overflow: hidden; }
 .legend i.candidate { border: 1px solid var(--violet); background: transparent; box-shadow: 0 0 7px var(--violet); }
 .legend i.element-swatch { box-shadow: 0 0 7px color-mix(in srgb, var(--swatch) 70%, transparent); background: var(--swatch); }
 .legend i.cluster-swatch { border-radius: 1px; background: var(--swatch); }
+.occupancy-note { margin: 8px 0 2px; padding: 8px 9px; border: 1px solid rgba(157,132,255,.2); border-radius: 7px; background: rgba(157,132,255,.055); color: #728b84; font: 7px/1.55 var(--mono); }
+.occupancy-note b { color: #b9a9ff; font-weight: 500; }
 
 .stage { min-width: 0; padding: 20px 22px 18px; }
 .stage-heading { height: 51px; display: flex; justify-content: space-between; align-items: start; }

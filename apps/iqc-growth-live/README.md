@@ -25,6 +25,25 @@ intrinsically 2D sheets embedded in 3D, not a thin 3D periodic box.
 Element-dependent colors and radii are presentation
 encodings, not electron densities or physical potentials.
 
+### Occupational disorder and partial sites
+
+CIF and JSON imports preserve a crystallographic site as one geometric position
+with a finite set of element fractions and, when the total occupancy is below
+one, an explicit vacancy fraction. Co-located rows such as `Ta 0.6` and `V 0.4`
+are merged into one `Ta 60% / V 40%` site after symmetry expansion; they are not
+turned into two colliding atoms and are not collapsed to whichever element
+appears first. Composite labels without explicit fractions are retained as
+equal alternatives and visibly flagged as inferred.
+
+The scene uses the occupancy-weighted element color and adds an orbital ring in
+the secondary-element color (or a pale vacancy ring). The legend gives the
+fractions explicitly. More importantly, the full canonical occupancy vector is
+the colored-site token used by irregular support discovery, port learning,
+marking compatibility, structure digests, and weighted-composition receipts.
+The finite-molecule hypothesis fails closed on mixed sites because a virtual
+occupancy channel has no single covalent radius or valence; those materials use
+the generic irregular-cover route instead of silently choosing a species.
+
 ## Reproducible experiment receipts
 
 The left rail can download or copy a stage-aware JSON receipt at any point in

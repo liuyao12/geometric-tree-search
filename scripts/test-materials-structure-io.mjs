@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { parseStructureText, validateStructure } from "../apps/iqc-growth-live/structure-io.js";
+import {
+  occupancyChemistryToken,
+  occupancyDisplayLabel,
+  parseStructureText,
+  validateStructure,
+} from "../apps/iqc-growth-live/structure-io.js";
 
 const poscar = `NaCl conventional cell
 1.0
@@ -44,6 +49,32 @@ assert.equal(parsedCif.atoms.length, 2);
 assert.equal(parsedCif.metadata.symmetryOperations, 2);
 assert.ok(parsedCif.atoms.every((atom) => atom.species === "Si"));
 assert.equal(validateStructure(parsedCif).valid, true);
+
+const disorderedCif = await readFile(new URL("../apps/iqc-growth-live/fixtures/tav-disordered.cif", import.meta.url), "utf8");
+const disorder = parseStructureText(disorderedCif, "tav.cif");
+assert.equal(disorder.atoms.length, 3, "co-located alternatives must be one site; inversion creates two O sites");
+const mixed = disorder.atoms.find((atom) => atom.occupancyAlternatives.length === 2);
+assert.deepEqual(mixed.occupancyAlternatives, [{ species: "Ta", fraction: .6 }, { species: "V", fraction: .4 }]);
+assert.equal(occupancyChemistryToken(mixed), "occ[Ta=0.6;V=0.4]");
+assert.equal(occupancyDisplayLabel(mixed), "Ta 60% / V 40%");
+const partial = disorder.atoms.find((atom) => atom.species === "O");
+assert.equal(occupancyChemistryToken(partial), "occ[O=0.5;Vac=0.5]");
+const disorderValidation = validateStructure(disorder);
+assert.equal(disorderValidation.valid, true);
+assert.equal(disorderValidation.mixedOccupancySites, 1);
+assert.equal(disorderValidation.partialOccupancySites, 2);
+assert.deepEqual(disorderValidation.elementCounts, { Ta: .6, V: .4, O: 1 });
+assert.equal(disorderValidation.vacancyFraction, 1);
+
+const composite = parseStructureText(JSON.stringify({ atoms: [
+  { species: "Ta/V", position: [0, 0, 0] },
+  { species: "O", occupancy: { O: .75 }, position: [2, 0, 0] },
+  { species: "O1A", position: [0, 2, 0] },
+] }), "occupancy.json");
+assert.equal(occupancyChemistryToken(composite.atoms[0]), "occ[Ta=0.5;V=0.5]");
+assert.equal(composite.atoms[0].occupancyFractionsInferred, true);
+assert.equal(occupancyChemistryToken(composite.atoms[1]), "occ[O=0.75;Vac=0.25]");
+assert.equal(occupancyChemistryToken(composite.atoms[2]), "O", "ordinary CIF-style atom labels must not invent an A alternative");
 
 const xyz = `3
 Lattice="8 0 0 0 8 0 0 0 8" pbc="T T T" water

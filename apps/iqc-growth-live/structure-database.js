@@ -121,7 +121,9 @@ export function nomadArchiveToStructure(entry, archiveResponse) {
     name: material.chemical_formula_reduced || `NOMAD ${entryId.slice(0, 8)}`,
     format: "NOMAD archive",
     atoms: atomsData.positions.map((position, index) => ({
-      species: symbols[index], position: position.map((value) => value * 1e10), occupancy: 1,
+      species: symbols[index], position: position.map((value) => value * 1e10),
+      occupancy: 1, occupancyTotal: 1,
+      occupancyAlternatives: [{ species: symbols[index], fraction: 1 }],
     })),
     cell: atomsData.lattice_vectors.map((vector) => vector.map((value) => value * 1e10)),
     pbc: atomsData.periodic?.map(Boolean) || [true, true, true],

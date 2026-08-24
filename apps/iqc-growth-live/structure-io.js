@@ -16,9 +16,98 @@ function tokens(line) {
   });
 }
 
+function elementSymbols(value) {
+  const text = String(value || "X").trim();
+  const parts = text.split(/[\/|,+]/).map((part) => part.trim()).filter(Boolean);
+  const matches = (parts.length > 1 ? parts : [text]).map((part) => part.match(/[A-Z][a-z]?/)?.[0]).filter(Boolean);
+  return [...new Set(matches.length ? matches : ["X"])];
+}
+
 function elementSymbol(value) {
-  const match = String(value || "X").match(/[A-Z][a-z]?/);
-  return match ? match[0] : "X";
+  return elementSymbols(value)[0];
+}
+
+const occupancyFraction = (value, fallback = null) => {
+  if (value === undefined || value === null || value === "" || value === "." || value === "?") return fallback;
+  const fraction = numeric(value, "occupancy");
+  if (!(fraction >= 0 && fraction <= 1 + 1e-8)) throw new Error(`Occupancy must lie between 0 and 1: ${value}`);
+  return Math.max(0, Math.min(1, fraction));
+};
+
+function occupancyEntries(value) {
+  if (Array.isArray(value)) return value.map((entry) => typeof entry === "string"
+    ? { species: elementSymbol(entry), fraction: null }
+    : { species: elementSymbol(entry.species || entry.element || entry.symbol),
+      fraction: occupancyFraction(entry.fraction ?? entry.occupancy, null) });
+  if (value && typeof value === "object") return Object.entries(value)
+    .map(([species, fraction]) => ({ species: elementSymbol(species), fraction: occupancyFraction(fraction, null) }));
+  return [];
+}
+
+export function normalizeSiteOccupancy(speciesValue, occupancyValue = 1, alternativesValue = null) {
+  const labelSpecies = elementSymbols(speciesValue);
+  const explicit = occupancyEntries(alternativesValue);
+  let entries = explicit.length ? explicit : labelSpecies.map((species) => ({ species, fraction: null }));
+  const scalar = occupancyFraction(Array.isArray(occupancyValue) || (occupancyValue && typeof occupancyValue === "object")
+    ? 1 : occupancyValue, 1);
+  const known = entries.reduce((sum, entry) => sum + (entry.fraction ?? 0), 0);
+  const unknown = entries.filter((entry) => entry.fraction === null);
+  if (known > 1 + 1e-8) throw new Error(`Occupational alternatives sum to ${known.toFixed(6)}, above 1`);
+  const target = explicit.some((entry) => entry.fraction !== null) ? Math.max(scalar, known) : scalar;
+  const remaining = Math.max(0, target - known);
+  entries = entries.map((entry) => ({
+    species: entry.species,
+    fraction: entry.fraction ?? (unknown.length ? remaining / unknown.length : 0),
+  }));
+  const combined = new Map();
+  entries.forEach(({ species, fraction }) => combined.set(species, (combined.get(species) || 0) + fraction));
+  const alternatives = [...combined.entries()].filter(([, fraction]) => fraction > 1e-10)
+    .map(([species, fraction]) => ({ species, fraction }))
+    .sort((first, second) => second.fraction - first.fraction || first.species.localeCompare(second.species));
+  const total = alternatives.reduce((sum, entry) => sum + entry.fraction, 0);
+  if (!alternatives.length || total <= 0) throw new Error("A crystallographic site must have positive occupancy");
+  if (total > 1 + 1e-8) throw new Error(`Occupational alternatives sum to ${total.toFixed(6)}, above 1`);
+  return {
+    species: alternatives[0].species,
+    occupancy: total,
+    occupancyTotal: total,
+    occupancyAlternatives: alternatives,
+    occupancyFractionsInferred: !explicit.length && labelSpecies.length > 1,
+  };
+}
+
+const compactFraction = (value) => Number(value.toFixed(8)).toString();
+
+export function occupancyChemistryToken(atom) {
+  const normalized = normalizeSiteOccupancy(atom?.species, atom?.occupancy ?? atom?.occupancyTotal ?? 1,
+    atom?.occupancyAlternatives ?? (Array.isArray(atom?.occupancy) || (atom?.occupancy && typeof atom.occupancy === "object") ? atom.occupancy : null));
+  if (normalized.occupancyAlternatives.length === 1 && Math.abs(normalized.occupancyTotal - 1) < 1e-8) {
+    return normalized.occupancyAlternatives[0].species;
+  }
+  const entries = normalized.occupancyAlternatives
+    .slice().sort((first, second) => first.species.localeCompare(second.species))
+    .map((entry) => `${entry.species}=${compactFraction(entry.fraction)}`);
+  const vacancy = Math.max(0, 1 - normalized.occupancyTotal);
+  if (vacancy > 1e-8) entries.push(`Vac=${compactFraction(vacancy)}`);
+  return `occ[${entries.join(";")}]`;
+}
+
+export function occupancyDisplayLabel(atom) {
+  const normalized = normalizeSiteOccupancy(atom?.species, atom?.occupancy ?? atom?.occupancyTotal ?? 1,
+    atom?.occupancyAlternatives ?? (Array.isArray(atom?.occupancy) || (atom?.occupancy && typeof atom.occupancy === "object") ? atom.occupancy : null));
+  const entries = normalized.occupancyAlternatives.map((entry) => `${entry.species} ${Math.round(entry.fraction * 1000) / 10}%`);
+  const vacancy = Math.max(0, 1 - normalized.occupancyTotal);
+  if (vacancy > 1e-8) entries.push(`vacancy ${Math.round(vacancy * 1000) / 10}%`);
+  return entries.join(" / ");
+}
+
+function mergeSiteOccupancies(first, second, additive) {
+  const fractions = new Map(first.occupancyAlternatives.map((entry) => [entry.species, entry.fraction]));
+  second.occupancyAlternatives.forEach((entry) => fractions.set(entry.species, additive
+    ? (fractions.get(entry.species) || 0) + entry.fraction
+    : Math.max(fractions.get(entry.species) || 0, entry.fraction)));
+  return normalizeSiteOccupancy(first.species, 1,
+    [...fractions].map(([species, fraction]) => ({ species, fraction })));
 }
 
 function determinant(cell) {
@@ -151,9 +240,15 @@ function parseCif(text, filename) {
   const cartesianColumns = ["_atom_site_cartn_x", "_atom_site_cartn_y", "_atom_site_cartn_z"].map((name) => atomLoop.headers.indexOf(name));
   const fractional = fractionalColumns.every((index) => index >= 0);
   if (!fractional && !cartesianColumns.every((index) => index >= 0)) throw new Error("CIF atom sites lack a complete coordinate triplet");
-  const asymmetric = atomLoop.rows.map((row) => {
+  const asymmetricRows = atomLoop.rows.map((row) => {
     const coordinates = (fractional ? fractionalColumns : cartesianColumns).map((index, axis) => numeric(row[index], `atom coordinate ${axis + 1}`));
-    return { species: elementSymbol(row[speciesColumn]), coordinates, occupancy: occupancyColumn >= 0 ? numeric(row[occupancyColumn], "occupancy") : 1 };
+    return { ...normalizeSiteOccupancy(row[speciesColumn], occupancyColumn >= 0 ? row[occupancyColumn] : 1), coordinates };
+  });
+  const asymmetric = [];
+  asymmetricRows.forEach((site) => {
+    const existing = asymmetric.find((candidate) => distance(site.coordinates.map((value, axis) => value - candidate.coordinates[axis])) < 1e-8);
+    if (!existing) { asymmetric.push(site); return; }
+    Object.assign(existing, mergeSiteOccupancies(existing, site, true));
   });
   const symmetryLoop = loops.find((loop) => loop.headers.includes("_space_group_symop_operation_xyz") || loop.headers.includes("_symmetry_equiv_pos_as_xyz"));
   const symmetryHeader = symmetryLoop && (symmetryLoop.headers.indexOf("_space_group_symop_operation_xyz") >= 0
@@ -163,8 +258,14 @@ function parseCif(text, filename) {
   asymmetric.forEach((site) => operations.forEach((operation) => {
     const frac = fractional ? operation(site.coordinates).map((value) => ((value % 1) + 1) % 1) : null;
     const position = fractional ? fractionalToCartesian(frac, cell) : site.coordinates;
-    const duplicate = atoms.some((atom) => atom.species === site.species && distance(displacement(atom.position, position, cell, [true, true, true])) < 1e-4);
-    if (!duplicate) atoms.push({ species: site.species, position, occupancy: site.occupancy });
+    const duplicate = atoms.find((atom) => distance(displacement(atom.position, position, cell, [true, true, true])) < 1e-4);
+    if (!duplicate) {
+      const { coordinates: _coordinates, ...chemistry } = site;
+      atoms.push({ ...chemistry, position });
+    }
+    else if (occupancyChemistryToken(duplicate) !== occupancyChemistryToken(site)) {
+      Object.assign(duplicate, mergeSiteOccupancies(duplicate, site, false));
+    }
   }));
   return {
     name: get("_chemical_name_common", get("_chemical_formula_sum", filename.replace(/\.[^.]+$/, ""))),
@@ -204,7 +305,7 @@ function parsePoscar(text, filename) {
       if (!row || row.length < 3) throw new Error("POSCAR contains fewer coordinates than declared");
       const coordinates = row.slice(0, 3).map((value, axis) => numeric(value, `atom coordinate ${axis + 1}`));
       const position = direct ? fractionalToCartesian(coordinates, cell) : coordinates.map((value) => value * scale);
-      atoms.push({ species: elementSymbol(symbol), position, occupancy: 1 });
+      atoms.push({ ...normalizeSiteOccupancy(symbol, 1), position });
     }
   });
   return { name: title, format: "POSCAR", atoms, cell, pbc: [true, true, true], metadata: {} };
@@ -226,7 +327,7 @@ function parseXyz(text, filename) {
   for (let index = 0; index < count; index++) {
     const row = tokens(lines[index + 2] || "");
     if (row.length < 4) throw new Error(`XYZ atom row ${index + 1} is incomplete`);
-    atoms.push({ species: elementSymbol(row[0]), position: row.slice(1, 4).map((value, axis) => numeric(value, `atom coordinate ${axis + 1}`)), occupancy: 1 });
+    atoms.push({ ...normalizeSiteOccupancy(row[0], 1), position: row.slice(1, 4).map((value, axis) => numeric(value, `atom coordinate ${axis + 1}`)) });
   }
   return { name: commentName || filename.replace(/\.[^.]+$/, ""), format: cell ? "extended XYZ" : "XYZ", atoms, cell, pbc: cell ? pbc : [false, false, false], metadata: {} };
 }
@@ -237,10 +338,15 @@ function parseJson(text, filename) {
   const pbc = Array.isArray(data.pbc) ? data.pbc.map(Boolean).slice(0, 3) : cell ? [true, true, true] : [false, false, false];
   let atoms;
   if (Array.isArray(data.atoms)) atoms = data.atoms.map((atom) => ({
-    species: elementSymbol(atom.species || atom.element || atom.symbol),
-    position: (atom.position || atom.xyz || atom.cartesian).map(Number), occupancy: Number(atom.occupancy ?? 1),
+    ...normalizeSiteOccupancy(atom.species || atom.element || atom.symbol,
+      typeof atom.occupancy === "number" ? atom.occupancy : atom.occupancyTotal ?? 1,
+      atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null)),
+    position: (atom.position || atom.xyz || atom.cartesian).map(Number),
   }));
-  else if (Array.isArray(data.positions) && Array.isArray(data.species)) atoms = data.positions.map((position, index) => ({ species: elementSymbol(data.species[index]), position: position.map(Number), occupancy: 1 }));
+  else if (Array.isArray(data.positions) && Array.isArray(data.species)) atoms = data.positions.map((position, index) => ({
+    ...normalizeSiteOccupancy(data.species[index], Array.isArray(data.occupancies) ? data.occupancies[index] : 1),
+    position: position.map(Number),
+  }));
   else throw new Error("JSON must contain atoms[] or parallel positions[] and species[] arrays");
   return { name: data.name || filename.replace(/\.[^.]+$/, ""), format: "JSON", atoms, cell, pbc, metadata: data.metadata || {} };
 }
@@ -269,12 +375,37 @@ export function validateStructure(structure, options = {}) {
     else if (Math.abs(determinant(structure.cell)) < 1e-6) errors.push("Cell vectors are singular or nearly singular");
   } else if (structure?.pbc?.some(Boolean)) errors.push("Periodic axes require cell vectors");
   const elementCounts = {};
+  const siteElementCounts = {};
+  let mixedOccupancySites = 0;
+  let partialOccupancySites = 0;
+  let inferredOccupancySites = 0;
+  let vacancyFraction = 0;
   structure?.atoms?.forEach((atom, index) => {
-    if (!atom.species || !/^[A-Z][a-z]?$/.test(atom.species)) errors.push(`Atom ${index + 1} has an invalid element symbol`);
+    let normalized = null;
+    try {
+      normalized = normalizeSiteOccupancy(atom.species, atom.occupancy ?? atom.occupancyTotal ?? 1,
+        atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null));
+    } catch (error) {
+      errors.push(`Atom ${index + 1}: ${error.message}`);
+    }
+    if (!normalized || normalized.occupancyAlternatives.some((entry) => !/^[A-Z][a-z]?$/.test(entry.species))) {
+      errors.push(`Atom ${index + 1} has an invalid occupational element symbol`);
+    }
     if (!Array.isArray(atom.position) || atom.position.length !== 3 || atom.position.some((value) => !Number.isFinite(Number(value)))) errors.push(`Atom ${index + 1} has invalid Cartesian coordinates`);
-    elementCounts[atom.species] = (elementCounts[atom.species] || 0) + 1;
-    if (atom.occupancy < .999) warnings.push(`Partial occupancy detected for ${atom.species}; disordered alternatives are not resolved`);
+    normalized?.occupancyAlternatives.forEach((entry) => {
+      elementCounts[entry.species] = (elementCounts[entry.species] || 0) + entry.fraction;
+      siteElementCounts[entry.species] = (siteElementCounts[entry.species] || 0) + 1;
+    });
+    if (normalized?.occupancyAlternatives.length > 1) mixedOccupancySites++;
+    if (normalized && normalized.occupancyTotal < .999999) {
+      partialOccupancySites++;
+      vacancyFraction += 1 - normalized.occupancyTotal;
+    }
+    if (atom.occupancyFractionsInferred) inferredOccupancySites++;
   });
+  if (mixedOccupancySites) warnings.push(`${mixedOccupancySites} mixed-occupancy crystallographic site${mixedOccupancySites === 1 ? "" : "s"} preserved as occupational alternatives`);
+  if (partialOccupancySites) warnings.push(`${partialOccupancySites} partially occupied site${partialOccupancySites === 1 ? "" : "s"} preserve explicit vacancy fractions`);
+  if (inferredOccupancySites) warnings.push(`${inferredOccupancySites} composite species label${inferredOccupancySites === 1 ? "" : "s"} lacked explicit fractions; equal alternatives were retained and marked inferred`);
   let minimumDistance = Infinity;
   let duplicatePairs = 0;
   const nearest = [];
@@ -300,7 +431,9 @@ export function validateStructure(structure, options = {}) {
   const medianNearestDistance = sortedNearest[Math.floor(sortedNearest.length / 2)] || 1;
   return {
     valid: errors.length === 0, errors: [...new Set(errors)], warnings: [...new Set(warnings)],
-    atomCount: structure?.atoms?.length || 0, elementCounts, minimumDistance: Number.isFinite(minimumDistance) ? minimumDistance : null,
+    atomCount: structure?.atoms?.length || 0, elementCounts, siteElementCounts,
+    mixedOccupancySites, partialOccupancySites, inferredOccupancySites, vacancyFraction,
+    minimumDistance: Number.isFinite(minimumDistance) ? minimumDistance : null,
     medianNearestDistance, cellVolume: structure?.cell ? Math.abs(determinant(structure.cell)) : null,
   };
 }

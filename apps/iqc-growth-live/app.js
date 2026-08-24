@@ -1,6 +1,11 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { parseStructureText, validateStructure } from "./structure-io.js";
+import {
+  occupancyChemistryToken,
+  occupancyDisplayLabel,
+  parseStructureText,
+  validateStructure,
+} from "./structure-io.js?v=20260824-1";
 import { randomNomadStructure } from "./structure-database.js";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
@@ -368,6 +373,7 @@ world.add(confinementGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, f
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
+const occupancyRingGeometry = new THREE.TorusGeometry(0.235, 0.012, 5, 24);
 const candidateGeometry = new THREE.SphereGeometry(0.24, 12, 8);
 const blueMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, roughness: 0.28, metalness: 0.18, emissive: 0x0b526d, emissiveIntensity: 0.32 });
 const greenMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, roughness: 0.34, metalness: 0.12, emissive: 0x59450c, emissiveIntensity: 0.27 });
@@ -375,6 +381,7 @@ const blueDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, tra
 const greenDimMaterial = new THREE.MeshStandardMaterial({ color: COLORS.green, transparent: true, opacity: .12, roughness: .5, depthWrite: false });
 const elementMaterials = new Map();
 const dimElementMaterials = new Map();
+const occupancyRingMaterials = new Map();
 const clusterMaterials = CLUSTER_COLORS.map((color) => new THREE.MeshStandardMaterial({ color, roughness: .32, metalness: .08, emissive: color, emissiveIntensity: .12 }));
 const markingMaterials = new Map();
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
@@ -660,10 +667,14 @@ function updateRecursiveBenchmark() {
 }
 
 function importSummary(structure, validation) {
-  const composition = Object.entries(validation.elementCounts).map(([element, count]) => `${element}${count}`).join(" · ");
+  const composition = Object.entries(validation.elementCounts).map(([element, count]) =>
+    `${element}${Number.isInteger(count) ? count : Number(count.toFixed(3))}`).join(" · ");
   const periodicity = structure.pbc.map((value) => value ? "P" : "–").join("");
   const warnings = validation.warnings.length ? ` · ${validation.warnings.length} warning${validation.warnings.length === 1 ? "" : "s"}` : "";
-  return `${structure.format} · ${validation.atomCount} atoms · ${composition} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
+  const disorder = validation.mixedOccupancySites || validation.partialOccupancySites
+    ? ` · ${validation.mixedOccupancySites} mixed / ${validation.partialOccupancySites} partial sites`
+    : "";
+  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
 
 async function importStructureFile(file) {
@@ -676,12 +687,14 @@ async function importStructureFile(file) {
 function activateImportedStructure(parsed, filename, statusElement = importStatus) {
   const validation = validateStructure(parsed, { maximumAtoms: 1200 });
   if (!validation.valid) throw new Error(validation.errors.join("; "));
-  const elements = Object.keys(validation.elementCounts);
+  const actualElements = Object.keys(validation.elementCounts);
+  const elements = [...new Set(parsed.atoms.map(occupancyChemistryToken))];
   importedStructure = {
     ...parsed, validation, filename,
     material: {
       name: parsed.name || filename,
       elements,
+      actualElements,
       spacingA: validation.medianNearestDistance,
       cell: parsed.cell ? `${parsed.format} cell · V=${validation.cellVolume.toFixed(2)} Å³` : `${parsed.format} · non-periodic`,
       order: "unclassified input",
@@ -689,7 +702,7 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
         ? `${parsed.metadata.spaceGroup || "space group"} · #${parsed.metadata.spaceGroupNumber}`
         : parsed.metadata?.spaceGroup || "not supplied",
       audit: "emergent structure audit",
-      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth.`,
+      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element.`,
     },
   };
   elements.forEach(elementRecord);
@@ -820,9 +833,9 @@ function getElementMaterial(symbol, dim = false) {
       color: data.color,
       roughness: dim ? .55 : .3,
       metalness: dim ? 0 : .14,
-      transparent: dim,
-      opacity: dim ? .1 : 1,
-      depthWrite: !dim,
+      transparent: dim || data.opacity < .999,
+      opacity: dim ? .1 : data.opacity ?? 1,
+      depthWrite: !dim && !(data.opacity < .999),
       emissive: dim ? 0x000000 : data.color,
       emissiveIntensity: dim ? 0 : .16,
     }));
@@ -830,13 +843,68 @@ function getElementMaterial(symbol, dim = false) {
   return cache.get(symbol);
 }
 
+function occupationalAlternatives(symbol) {
+  const source = importedStructure?.atoms?.find((atom) => occupancyChemistryToken(atom) === symbol);
+  if (source) return {
+    alternatives: source.occupancyAlternatives,
+    total: source.occupancyTotal ?? source.occupancy ?? 1,
+    label: occupancyDisplayLabel(source),
+  };
+  const match = String(symbol).match(/^occ\[(.*)]$/);
+  if (!match) return null;
+  const records = match[1].split(";").map((entry) => entry.split("="))
+    .filter(([species]) => species !== "Vac")
+    .map(([species, fraction]) => ({ species, fraction: Number(fraction) }));
+  const total = records.reduce((sum, entry) => sum + entry.fraction, 0);
+  return { alternatives: records, total, label: match[1].replaceAll(";", " / ").replaceAll("=", " ") };
+}
+
 function elementRecord(symbol) {
   if (ELEMENTS[symbol]) return ELEMENTS[symbol];
+  const occupational = occupationalAlternatives(symbol);
+  if (occupational?.alternatives.length) {
+    const mixed = occupational.alternatives.reduce((color, entry) => {
+      const component = new THREE.Color(elementRecord(entry.species).color);
+      color.r += component.r * entry.fraction;
+      color.g += component.g * entry.fraction;
+      color.b += component.b * entry.fraction;
+      return color;
+    }, new THREE.Color(0, 0, 0));
+    const vacancy = Math.max(0, 1 - occupational.total);
+    mixed.r += .18 * vacancy; mixed.g += .22 * vacancy; mixed.b += .22 * vacancy;
+    const radius = occupational.alternatives.reduce((sum, entry) => sum + elementRecord(entry.species).radius * entry.fraction, 0)
+      / Math.max(occupational.total, 1e-8);
+    const color = mixed.getHex();
+    ELEMENTS[symbol] = {
+      color, css: `#${color.toString(16).padStart(6, "0")}`, radius,
+      opacity: .58 + .42 * occupational.total,
+      occupancy: occupational,
+    };
+    return ELEMENTS[symbol];
+  }
   let hash = 0;
   for (const character of symbol) hash = Math.imul(hash ^ character.charCodeAt(0), 0x45d9f3b);
   const color = new THREE.Color().setHSL(((hash >>> 0) % 360) / 360, .58, .62).getHex();
   ELEMENTS[symbol] = { color, css: `#${color.toString(16).padStart(6, "0")}`, radius: 1.35 };
   return ELEMENTS[symbol];
+}
+
+function occupancyRingDescriptor(atom) {
+  const occupational = occupationalAlternatives(atom.species);
+  if (!occupational || (occupational.alternatives.length < 2 && occupational.total >= .999999)) return null;
+  const secondary = occupational.alternatives[1]?.species || "vacancy";
+  const color = secondary === "vacancy" ? 0xb5cbc5 : elementRecord(secondary).color;
+  return { key: `${secondary}:${occupational.total.toFixed(6)}`, color };
+}
+
+function occupancyRingMaterial(descriptor) {
+  if (!occupancyRingMaterials.has(descriptor.key)) occupancyRingMaterials.set(descriptor.key,
+    new THREE.MeshBasicMaterial({ color: descriptor.color, transparent: true, opacity: .88, depthWrite: false }));
+  return occupancyRingMaterials.get(descriptor.key);
+}
+
+function materialElementLabels(material = currentMaterial()) {
+  return material.elements.map((symbol) => occupationalAlternatives(symbol)?.label || symbol);
 }
 
 function markingColor(domain) {
@@ -1553,8 +1621,12 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
     return importedStructure.atoms.map((atom, sourceIndex) => {
       const pA = new THREE.Vector3(...atom.position);
       return {
-        pA, p: pA.clone().sub(center).multiplyScalar(sceneScale), species: atom.species,
-        family: "imported", sourceIndex, occupancy: atom.occupancy ?? 1,
+        pA, p: pA.clone().sub(center).multiplyScalar(sceneScale),
+        species: occupancyChemistryToken(atom), displaySpecies: atom.species,
+        occupancyLabel: occupancyDisplayLabel(atom),
+        occupancyAlternatives: atom.occupancyAlternatives?.map((entry) => ({ ...entry })) || [{ species: atom.species, fraction: atom.occupancy ?? 1 }],
+        occupancy: atom.occupancyTotal ?? atom.occupancy ?? 1,
+        family: "imported", sourceIndex,
       };
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
   }
@@ -2102,11 +2174,18 @@ function molecularIsometryGallery(source, families, familyTypes) {
 }
 
 function molecularComponentHypothesis(source) {
-  return discoverFiniteMolecularComponents({
+  const occupational = source.some((atom) => occupationalAlternatives(atom.species));
+  const result = discoverFiniteMolecularComponents({
     species: source.map((atom) => atom.species),
     distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
     descriptorToleranceA: referenceSpacingA * clusterMetricTolerance(),
   });
+  return occupational ? {
+    ...result,
+    accepted: false,
+    reason: "occupationally disordered sites use the irregular colored-support route",
+    occupationalAlternativesPreserved: true,
+  } : result;
 }
 
 function discoveredWaterComponents(discovery) {
@@ -3472,15 +3551,23 @@ async function receiptSha256(text) {
 async function structureDigest(source, coordinateSpace) {
   const records = source.map((atom) => {
     const point = coordinateSpace === "angstrom" && atom.pA ? atom.pA : atom.p;
-    return [atom.species, ...point.toArray().map((value) => receiptRound(value))];
+    return [atom.species, receiptRound(atom.occupancy ?? 1), ...point.toArray().map((value) => receiptRound(value))];
   }).sort((first, second) => JSON.stringify(first).localeCompare(JSON.stringify(second)));
   return receiptSha256(JSON.stringify(records));
 }
 
+function atomOccupancyContributions(atom) {
+  const occupational = occupationalAlternatives(atom.species);
+  if (occupational) return occupational.alternatives;
+  return [{ species: atom.displaySpecies || atom.species, fraction: atom.occupancy ?? 1 }];
+}
+
 function receiptComposition(source) {
   const counts = new Map();
-  source.forEach((atom) => counts.set(atom.species, (counts.get(atom.species) || 0) + 1));
-  return Object.fromEntries([...counts.entries()].sort(([first], [second]) => first.localeCompare(second)));
+  source.forEach((atom) => atomOccupancyContributions(atom).forEach((entry) =>
+    counts.set(entry.species, (counts.get(entry.species) || 0) + entry.fraction)));
+  return Object.fromEntries([...counts.entries()].sort(([first], [second]) => first.localeCompare(second))
+    .map(([species, count]) => [species, receiptRound(count)]));
 }
 
 function receiptClusterRecord(cluster, index) {
@@ -3539,7 +3626,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-33",
+      buildId: "20260824-34",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3548,9 +3635,19 @@ async function buildExperimentReceipt() {
         : "deterministic curated fixture",
       scenarioId: scenarioSelect.value,
       materialName: material.name,
-      elements: [...material.elements],
+      elements: material.actualElements ? [...material.actualElements] : [...material.elements],
+      siteChemistryChannels: [...material.elements],
       composition: receiptComposition(referenceAtoms),
       atomCount: referenceAtoms.length,
+      crystallographicOccupancy: scenarioSelect.value === "imported" ? {
+        representation: "one geometric site with a finite element-fraction alternative set; vacancy retained explicitly",
+        mixedSites: importedStructure?.validation?.mixedOccupancySites || 0,
+        partialSites: importedStructure?.validation?.partialOccupancySites || 0,
+        inferredEqualFractionSites: importedStructure?.validation?.inferredOccupancySites || 0,
+        totalVacancyFraction: receiptRound(importedStructure?.validation?.vacancyFraction || 0),
+        occupationalChemistryTokens: [...new Set(referenceAtoms.map((atom) => atom.species))].sort(),
+        alternativesCollapsedToPrimarySpecies: false,
+      } : null,
       structureSha256: await structureDigest(referenceAtoms, "angstrom"),
       coordinatesEmbedded: false,
       coordinateDigestSpace: "Cartesian Å; order-independent serialization",
@@ -3817,10 +3914,13 @@ function integerGcd(first, second) {
 
 function reducedCompositionKey() {
   const counts = new Map();
-  referenceAtoms.forEach((atom) => counts.set(atom.species, (counts.get(atom.species) || 0) + 1));
-  const divisor = [...counts.values()].reduce(integerGcd, 0) || 1;
+  referenceAtoms.forEach((atom) => atomOccupancyContributions(atom).forEach((entry) =>
+    counts.set(entry.species, (counts.get(entry.species) || 0) + entry.fraction)));
+  const values = [...counts.values()];
+  const integral = values.every((value) => Math.abs(value - Math.round(value)) < 1e-8);
+  const divisor = integral ? values.map(Math.round).reduce(integerGcd, 0) || 1 : Math.min(...values.filter((value) => value > 1e-10));
   return [...counts.entries()].sort(([first], [second]) => first.localeCompare(second))
-    .map(([species, count]) => `${species}${count / divisor}`).join(":");
+    .map(([species, count]) => `${species}${receiptRound(count / divisor, 5)}`).join(":");
 }
 
 function prototypeGeometryKey(prototype, index) {
@@ -5460,7 +5560,7 @@ function updateStageNarrative() {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
       caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no environment labels are given.`, badge: "input",
       decision: material.name, copy: `The learner receives ${referenceCount()} element-labelled positions. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.`,
-      values: [material.elements.join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, "1 configuration"],
+      values: [materialElementLabels(material).join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, "1 configuration"],
     },
     {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
@@ -5847,6 +5947,28 @@ function rebuildWorld() {
     });
   }
 
+  const occupationalGroups = new Map();
+  atoms.forEach((atom) => {
+    const descriptor = occupancyRingDescriptor(atom);
+    if (!descriptor) return;
+    const group = occupationalGroups.get(descriptor.key) || { descriptor, atoms: [] };
+    group.atoms.push(atom);
+    occupationalGroups.set(descriptor.key, group);
+  });
+  occupationalGroups.forEach(({ descriptor, atoms: sites }) => {
+    const rings = new THREE.InstancedMesh(occupancyRingGeometry, occupancyRingMaterial(descriptor), sites.length);
+    sites.forEach((atom, index) => {
+      dummy.position.copy(atom.p);
+      dummy.rotation.set(Math.PI / 2 * (index % 2), Math.PI / 4 * (index % 4), 0);
+      dummy.scale.setScalar(elementScale(atom.species));
+      dummy.updateMatrix();
+      rings.setMatrixAt(index, dummy.matrix);
+    });
+    dummy.rotation.set(0, 0, 0);
+    rings.instanceMatrix.needsUpdate = true;
+    atomGroup.add(rings);
+  });
+
   if (bondToggle.checked) {
     const points = [];
     if (selectedCoordination?.centers.length) {
@@ -6138,7 +6260,7 @@ function updateUI() {
   const material = currentMaterial();
   if (pipelineStage === 0) {
     atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = `${material.name} · xyz in Å`;
-    frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.elements.length); frontierDelta.textContent = material.elements.join(" / ");
+    frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.actualElements?.length || material.elements.length); frontierDelta.textContent = materialElementLabels(material).join(" / ");
     oracleLabel.textContent = "LABELS GIVEN"; oracleMetric.textContent = "0"; oracleDelta.textContent = "clusters must be inferred";
     reuseLabel.textContent = "GROWTH MODE"; reuseMetric.textContent = "OPEN"; reuseDelta.textContent = "restartable 1–2 minute bursts";
   } else if (pipelineStage === 1) {
@@ -6283,7 +6405,16 @@ function renderLegend() {
       const swatch = document.createElement("i");
       swatch.className = "element-swatch";
       swatch.style.setProperty("--swatch", ELEMENTS[symbol].css);
-      row.append(swatch, document.createTextNode(symbol));
+      const occupational = occupationalAlternatives(symbol);
+      if (occupational?.alternatives.length > 1) {
+        const stops = occupational.alternatives.map((entry, index) => {
+          const start = occupational.alternatives.slice(0, index).reduce((sum, item) => sum + item.fraction, 0) / occupational.total * 100;
+          const end = (occupational.alternatives.slice(0, index + 1).reduce((sum, item) => sum + item.fraction, 0) / occupational.total) * 100;
+          return `${elementRecord(entry.species).css} ${start}% ${end}%`;
+        });
+        swatch.style.background = `conic-gradient(${stops.join(",")})`;
+      }
+      row.append(swatch, document.createTextNode(occupational?.label || symbol));
       speciesLegend.appendChild(row);
     });
     const proposal = document.createElement("span");
