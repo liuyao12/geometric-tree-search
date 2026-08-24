@@ -59,6 +59,32 @@ phonon trajectory, force field, Debye–Waller intensity model, or dynamical
 growth clock. Modulated/superspace CIFs remain unsupported and must not be
 approximated by this ordinary-cell tensor path.
 
+### Fixed-topology snapshot ensembles
+
+Multi-frame extended XYZ and JSON inputs retain up to 64 configurations (and
+24,000 total atom presentations in the browser) when
+atom count, atom order, species, occupancy, and supplied formal charge remain
+identical. The displayed/growth frame is chosen explicitly. A separate control
+can pool every retained frame when learning colored pair-distance,
+coordination-capacity, and three-body angle envelopes. Distances and angles are
+formed only within a frame—frames are never concatenated into one point cloud,
+and no cross-frame atom pair exists. Variable cells and per-frame periodic
+wrapping are preserved.
+
+The cluster cover, pose atlas, port grammar, GCTS marking, and growth nucleus
+still come from the one selected frame. This keeps later snapshots from leaking
+candidate placements or becoming simultaneous atoms while allowing thermal or
+relaxed configurations to broaden the geometric evidence used by hard
+admission and soft strain ranking. The receipt records every frame digest, the
+selected index, pooled frame and atom-presentation counts, and this exact
+boundary.
+
+This path does not read velocities or forces, integrate equations of motion,
+infer elapsed time, or treat correlated frames as statistically independent.
+It is ensemble-informed structural geometry, not molecular dynamics or a
+kinetic growth-rate model. Reactions, changing atom identity, and trajectories
+requiring atom remapping fail closed for now.
+
 ## Reproducible experiment receipts
 
 The left rail can download or copy a stage-aware JSON receipt at any point in

@@ -210,6 +210,51 @@ assert.deepEqual(parsedXyz.pbc, [true, true, true]);
 assert.equal(parsedXyz.atoms.length, 3);
 assert.ok(validateStructure(parsedXyz).warnings.some((warning) => warning.includes("Fewer than 16 atoms")));
 
+const trajectoryXyz = `${xyz}3
+Lattice="8.1 0 0 0 8.1 0 0 0 8.1" pbc="T T T" water t=1
+O 0.02 0 0
+H 0.98 0.01 0
+H -0.23 0.92 0.01
+`;
+const parsedTrajectory = parseStructureText(trajectoryXyz, "water-trajectory.extxyz");
+assert.equal(parsedTrajectory.frames.length, 2);
+assert.equal(parsedTrajectory.frames[1].atoms[0].position[0], .02);
+const trajectoryValidation = validateStructure(parsedTrajectory);
+assert.equal(trajectoryValidation.valid, true);
+assert.equal(trajectoryValidation.trajectoryFrameCount, 2);
+assert.equal(trajectoryValidation.trajectoryTopologyConsistent, true);
+assert.equal(trajectoryValidation.trajectoryVariableCell, true);
+assert.equal(trajectoryValidation.trajectoryAtomPresentations, 6);
+const presentationLimited = validateStructure(parsedTrajectory, { maximumAtomPresentations: 5 });
+assert.equal(presentationLimited.valid, false);
+assert.ok(presentationLimited.errors.some((error) => error.includes("atom presentations exceed")));
+
+const trajectoryJson = parseStructureText(JSON.stringify({
+  name: "charged NaCl trajectory",
+  species: ["Na", "Cl"],
+  formalCharges: [1, -1],
+  cell: [[5.64, 0, 0], [0, 5.64, 0], [0, 0, 5.64]],
+  frames: [
+    { positions: [[0, 0, 0], [2.82, 2.82, 2.82]] },
+    { positions: [[.01, 0, 0], [2.81, 2.82, 2.82]] },
+  ],
+}), "charged-trajectory.json");
+assert.equal(trajectoryJson.frames.length, 2);
+assert.deepEqual(trajectoryJson.frames[1].atoms.map(occupancyChemistryToken), ["Na^+1", "Cl^-1"]);
+assert.equal(validateStructure(trajectoryJson).trajectoryTopologyConsistent, true);
+
+const changingTopology = parseStructureText(`2
+frame 1
+Na 0 0 0
+Cl 2 0 0
+2
+frame 2
+Na 0 0 0
+Br 2 0 0
+`, "changing.xyz");
+assert.equal(validateStructure(changingTopology).valid, false);
+assert.ok(validateStructure(changingTopology).errors.some((error) => error.includes("changes atom count, order, species")));
+
 const fixtureText = await readFile(new URL("../apps/iqc-growth-live/fixtures/nacl-64.extxyz", import.meta.url), "utf8");
 const fixture = parseStructureText(fixtureText, "nacl-64.extxyz");
 const fixtureValidation = validateStructure(fixture);

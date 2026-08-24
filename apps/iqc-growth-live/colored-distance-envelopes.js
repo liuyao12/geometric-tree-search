@@ -20,38 +20,60 @@ export function learnColoredDistanceEnvelopes(species, distance, {
   lowerQuantile = .05,
   fallbackExclusion = .46,
 } = {}) {
-  if (!Array.isArray(species) || species.length < 2) throw new Error("colored envelopes require at least two atoms");
-  if (typeof distance !== "function") throw new Error("colored envelopes require a distance callback");
+  return learnColoredDistanceEnvelopesEnsemble([{ species, distance }], {
+    minimumContactFraction, lowerContactFraction, lowerQuantile, fallbackExclusion,
+  });
+}
+
+/** Pool geometric observations across fixed-topology snapshots without ever
+ * constructing cross-frame atom pairs. Every frame contributes independently
+ * to the same finite colored envelope; this is an ensemble statistic, not a
+ * time-dependent force or trajectory integrator. */
+export function learnColoredDistanceEnvelopesEnsemble(frames, {
+  minimumContactFraction = .88,
+  lowerContactFraction = .80,
+  lowerQuantile = .05,
+  fallbackExclusion = .46,
+} = {}) {
+  if (!Array.isArray(frames) || !frames.length) throw new Error("colored envelopes require at least one frame");
+  frames.forEach((frame) => {
+    if (!Array.isArray(frame.species) || frame.species.length < 2) throw new Error("colored envelopes require at least two atoms per frame");
+    if (typeof frame.distance !== "function") throw new Error("colored envelopes require a distance callback per frame");
+  });
   if (![minimumContactFraction, lowerContactFraction, lowerQuantile, fallbackExclusion].every(Number.isFinite)
     || !(minimumContactFraction > 0 && minimumContactFraction < 1)
     || !(lowerContactFraction > 0 && lowerContactFraction < 1)
     || !(lowerQuantile >= 0 && lowerQuantile <= 1)
     || !(fallbackExclusion > 0)) throw new Error("colored envelope fractions and fallback must be finite positive bounds");
-  const symbols = [...new Set(species)].sort();
+  const symbols = [...new Set(frames.flatMap((frame) => frame.species))].sort();
   const allDistances = new Map();
-  const nearest = Array.from({ length: species.length }, () => new Map(symbols.map((symbol) => [symbol, Infinity])));
-  for (let first = 0; first < species.length; first++) for (let second = first + 1; second < species.length; second++) {
-    const value = distance(first, second);
-    if (!(value > 1e-9) || !Number.isFinite(value)) continue;
-    const key = pairKey(species[first], species[second]);
-    const values = allDistances.get(key) || [];
-    values.push(value);
-    allDistances.set(key, values);
-    nearest[first].set(species[second], Math.min(nearest[first].get(species[second]), value));
-    nearest[second].set(species[first], Math.min(nearest[second].get(species[first]), value));
-  }
+  const nearestFrames = [];
+  frames.forEach(({ species, distance }) => {
+    const nearest = Array.from({ length: species.length }, () => new Map(symbols.map((symbol) => [symbol, Infinity])));
+    for (let first = 0; first < species.length; first++) for (let second = first + 1; second < species.length; second++) {
+      const value = distance(first, second);
+      if (!(value > 1e-9) || !Number.isFinite(value)) continue;
+      const key = pairKey(species[first], species[second]);
+      const values = allDistances.get(key) || [];
+      values.push(value);
+      allDistances.set(key, values);
+      nearest[first].set(species[second], Math.min(nearest[first].get(species[second]), value));
+      nearest[second].set(species[first], Math.min(nearest[second].get(species[first]), value));
+    }
+    nearestFrames.push({ species, nearest });
+  });
   const records = [];
   for (let first = 0; first < symbols.length; first++) for (let second = first; second < symbols.length; second++) {
     const key = pairKey(symbols[first], symbols[second]);
     const values = (allDistances.get(key) || []).slice().sort((a, b) => a - b);
     if (!values.length) continue;
-    const nearestValues = nearest.flatMap((row, atomIndex) => {
-      const own = species[atomIndex];
-      if (own !== symbols[first] && own !== symbols[second]) return [];
-      const other = own === symbols[first] ? symbols[second] : symbols[first];
-      const value = row.get(other);
-      return Number.isFinite(value) ? [value] : [];
-    }).sort((a, b) => a - b);
+    const nearestValues = nearestFrames.flatMap(({ species, nearest }) => nearest.flatMap((row, atomIndex) => {
+        const own = species[atomIndex];
+        if (own !== symbols[first] && own !== symbols[second]) return [];
+        const other = own === symbols[first] ? symbols[second] : symbols[first];
+        const value = row.get(other);
+        return Number.isFinite(value) ? [value] : [];
+      })).sort((a, b) => a - b);
     const minimumObserved = values[0];
     const lowerContact = quantile(nearestValues, lowerQuantile) || minimumObserved;
     const typicalContact = quantile(nearestValues, .5) || lowerContact;
@@ -78,6 +100,8 @@ export function learnColoredDistanceEnvelopes(species, distance, {
     byKey,
     fallbackExclusion,
     maximumExclusion: Math.max(fallbackExclusion, ...records.map((record) => record.exclusion)),
+    frameCount: frames.length,
+    atomPresentations: frames.reduce((sum, frame) => sum + frame.species.length, 0),
     config: { minimumContactFraction, lowerContactFraction, lowerQuantile },
     pairKey,
   };
@@ -101,23 +125,35 @@ function orderedKey(center, neighbor) {
 export function learnColoredCoordinationEnvelopes(species, distance, distanceModel, {
   contactExpansion = 1.18,
 } = {}) {
+  return learnColoredCoordinationEnvelopesEnsemble([{ species, distance }], distanceModel, { contactExpansion });
+}
+
+export function learnColoredCoordinationEnvelopesEnsemble(frames, distanceModel, {
+  contactExpansion = 1.18,
+} = {}) {
   if (!distanceModel?.records?.length) throw new Error("coordination envelopes require colored distance envelopes");
+  if (!Array.isArray(frames) || !frames.length) throw new Error("coordination envelopes require at least one frame");
   if (!(Number.isFinite(contactExpansion) && contactExpansion > 1)) throw new Error("contact expansion must exceed one");
-  const symbols = [...new Set(species)].sort();
+  frames.forEach((frame) => {
+    if (!Array.isArray(frame.species) || typeof frame.distance !== "function") {
+      throw new Error("coordination envelopes require species and distance for every frame");
+    }
+  });
+  const symbols = [...new Set(frames.flatMap((frame) => frame.species))].sort();
   const records = [];
   symbols.forEach((centerSpecies) => symbols.forEach((neighborSpecies) => {
     const pair = distanceModel.byKey[pairKey(centerSpecies, neighborSpecies)];
     if (!pair) return;
     const contactCutoff = pair.lowerContact * contactExpansion;
-    const counts = species.map((symbol, center) => {
-      if (symbol !== centerSpecies) return null;
-      let count = 0;
-      for (let neighbor = 0; neighbor < species.length; neighbor++) {
-        if (neighbor === center || species[neighbor] !== neighborSpecies) continue;
-        if (distance(center, neighbor) <= contactCutoff) count++;
-      }
-      return count;
-    }).filter(Number.isInteger).sort((a, b) => a - b);
+    const counts = frames.flatMap(({ species, distance }) => species.map((symbol, center) => {
+        if (symbol !== centerSpecies) return null;
+        let count = 0;
+        for (let neighbor = 0; neighbor < species.length; neighbor++) {
+          if (neighbor === center || species[neighbor] !== neighborSpecies) continue;
+          if (distance(center, neighbor) <= contactCutoff) count++;
+        }
+        return count;
+      }).filter(Number.isInteger)).sort((a, b) => a - b);
     if (!counts.length) return;
     records.push({
       key: orderedKey(centerSpecies, neighborSpecies),
@@ -134,6 +170,8 @@ export function learnColoredCoordinationEnvelopes(species, distance, distanceMod
     records,
     byKey: Object.fromEntries(records.map((record) => [record.key, record])),
     maximumCutoff: Math.max(...records.map((record) => record.contactCutoff)),
+    frameCount: frames.length,
+    atomPresentations: frames.reduce((sum, frame) => sum + frame.species.length, 0),
     config: { contactExpansion },
   };
 }
@@ -226,36 +264,50 @@ export function learnColoredAngularEnvelopes(species, displacement, coordination
   mergeGapDegrees = 18,
   toleranceDegrees = 8,
 } = {}) {
+  return learnColoredAngularEnvelopesEnsemble([{ species, displacement }], coordinationModel, {
+    mergeGapDegrees, toleranceDegrees,
+  });
+}
+
+export function learnColoredAngularEnvelopesEnsemble(frames, coordinationModel, {
+  mergeGapDegrees = 18,
+  toleranceDegrees = 8,
+} = {}) {
   if (!coordinationModel?.records?.length) throw new Error("angular envelopes require coordination envelopes");
-  if (typeof displacement !== "function") throw new Error("angular envelopes require a displacement callback");
+  if (!Array.isArray(frames) || !frames.length) throw new Error("angular envelopes require at least one frame");
+  frames.forEach((frame) => {
+    if (!Array.isArray(frame.species) || typeof frame.displacement !== "function") {
+      throw new Error("angular envelopes require species and displacement for every frame");
+    }
+  });
   if (!(Number.isFinite(mergeGapDegrees) && mergeGapDegrees > 0
     && Number.isFinite(toleranceDegrees) && toleranceDegrees > 0 && toleranceDegrees < 45)) {
     throw new Error("angular envelope widths must be finite positive bounds");
   }
   const observations = new Map();
   const centerSets = new Map();
-  species.forEach((centerSpecies, center) => {
-    const neighbors = [];
-    species.forEach((neighborSpecies, neighbor) => {
-      if (neighbor === center) return;
-      const envelope = coordinationEnvelopeFor(coordinationModel, centerSpecies, neighborSpecies);
-      if (!envelope) return;
-      const vector = displacement(center, neighbor);
-      const norm = Math.hypot(...vectorComponents(vector));
-      if (norm <= envelope.contactCutoff) neighbors.push({ neighbor, neighborSpecies, vector });
-    });
-    for (let first = 0; first < neighbors.length - 1; first++) for (let second = first + 1; second < neighbors.length; second++) {
-      const value = angleDegrees(neighbors[first].vector, neighbors[second].vector);
-      if (!Number.isFinite(value)) continue;
-      const key = angularKey(centerSpecies, neighbors[first].neighborSpecies, neighbors[second].neighborSpecies);
-      const values = observations.get(key) || [];
-      values.push(value);
-      observations.set(key, values);
-      const centers = centerSets.get(key) || new Set();
-      centers.add(center);
-      centerSets.set(key, centers);
-    }
-  });
+  frames.forEach(({ species, displacement }, frameIndex) => species.forEach((centerSpecies, center) => {
+      const neighbors = [];
+      species.forEach((neighborSpecies, neighbor) => {
+        if (neighbor === center) return;
+        const envelope = coordinationEnvelopeFor(coordinationModel, centerSpecies, neighborSpecies);
+        if (!envelope) return;
+        const vector = displacement(center, neighbor);
+        const norm = Math.hypot(...vectorComponents(vector));
+        if (norm <= envelope.contactCutoff) neighbors.push({ neighbor, neighborSpecies, vector });
+      });
+      for (let first = 0; first < neighbors.length - 1; first++) for (let second = first + 1; second < neighbors.length; second++) {
+        const value = angleDegrees(neighbors[first].vector, neighbors[second].vector);
+        if (!Number.isFinite(value)) continue;
+        const key = angularKey(centerSpecies, neighbors[first].neighborSpecies, neighbors[second].neighborSpecies);
+        const values = observations.get(key) || [];
+        values.push(value);
+        observations.set(key, values);
+        const centers = centerSets.get(key) || new Set();
+        centers.add(`${frameIndex}:${center}`);
+        centerSets.set(key, centers);
+      }
+    }));
   const records = [...observations.entries()].sort(([first], [second]) => first.localeCompare(second))
     .map(([key, values]) => {
       values.sort((first, second) => first - second);
@@ -274,6 +326,8 @@ export function learnColoredAngularEnvelopes(species, displacement, coordination
   return {
     records,
     byKey: Object.fromEntries(records.map((record) => [record.key, record])),
+    frameCount: frames.length,
+    atomPresentations: frames.reduce((sum, frame) => sum + frame.species.length, 0),
     config: { mergeGapDegrees, toleranceDegrees },
   };
 }

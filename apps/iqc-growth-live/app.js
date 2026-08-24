@@ -7,7 +7,7 @@ import {
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
   validateStructure,
-} from "./structure-io.js?v=20260824-4";
+} from "./structure-io.js?v=20260824-5";
 import { randomNomadStructure } from "./structure-database.js?v=20260824-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
@@ -33,10 +33,10 @@ import {
   coloredGeometricStrain,
   coordinationEnvelopeFor,
   exclusionForPair,
-  learnColoredAngularEnvelopes,
-  learnColoredCoordinationEnvelopes,
-  learnColoredDistanceEnvelopes,
-} from "./colored-distance-envelopes.js?v=20260824-5";
+  learnColoredAngularEnvelopesEnsemble,
+  learnColoredCoordinationEnvelopesEnsemble,
+  learnColoredDistanceEnvelopesEnsemble,
+} from "./colored-distance-envelopes.js?v=20260824-6";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -48,9 +48,15 @@ validateIceMolecularPortArtifact(ICE_MOLECULAR_PORT_ARTIFACT);
 const $ = (id) => document.getElementById(id);
 const viewport = $("viewport");
 const scenarioSelect = $("scenarioSelect");
+const ensembleControls = $("ensembleControls");
+const ensembleFrameSelect = $("ensembleFrameSelect");
+const ensembleFrameCount = $("ensembleFrameCount");
+const ensembleEvidenceSelect = $("ensembleEvidenceSelect");
+const ensembleStatus = $("ensembleStatus");
 const structureFileInput = $("structureFileInput");
 const importStatus = $("importStatus");
 const loadFixtureButton = $("loadFixtureButton");
+const loadEnsembleFixtureButton = $("loadEnsembleFixtureButton");
 const selectedElementsContainer = $("selectedElements");
 const selectedElementCount = $("selectedElementCount");
 const elementPresetButtons = [...document.querySelectorAll("[data-element-preset]")];
@@ -462,6 +468,8 @@ let slowFrameSeconds = 0;
 let iceAnchorTrace = null;
 let iceAnchorWaveIndex = 0;
 let importedStructure = null;
+let importedFrameIndex = 0;
+let ensembleEvidenceMode = "all";
 let selectedDatabaseElements = ["Na", "Cl"];
 let markingDraft = { channels: 0, reach: 2, representation: "sites" };
 let markingLibrary = [];
@@ -573,6 +581,65 @@ function buildPeriodicTable() {
 
 function referenceCount() {
   return referenceAtoms.length || importedStructure?.atoms.length || DEFAULT_REFERENCE_COUNT;
+}
+
+function currentImportedFrame() {
+  return importedStructure?.frames?.[importedFrameIndex] || importedStructure;
+}
+
+function currentImportedFrameValidation() {
+  const frame = currentImportedFrame();
+  if (!frame) return importedStructure?.validation || null;
+  if (frame === importedStructure) return importedStructure.validation;
+  if (!frame.validation) {
+    frame.validation = validateStructure({ atoms: frame.atoms, cell: frame.cell, pbc: frame.pbc }, {
+      maximumAtoms: 1200,
+      maximumFrames: 1,
+    });
+  }
+  return frame.validation;
+}
+
+function importedTrajectoryFrames() {
+  return importedStructure?.frames?.length ? importedStructure.frames : importedStructure ? [importedStructure] : [];
+}
+
+function evidenceFrameCount() {
+  return scenarioSelect.value === "imported" && ensembleEvidenceMode === "all"
+    ? importedTrajectoryFrames().length || 1 : 1;
+}
+
+function syncImportedFrameMaterial() {
+  if (!importedStructure?.material) return;
+  const frame = currentImportedFrame();
+  const validation = currentImportedFrameValidation();
+  importedStructure.material.spacingA = validation.medianNearestDistance;
+  importedStructure.material.cell = frame.cell
+    ? `${importedStructure.format} frame ${importedFrameIndex + 1} cell · V=${validation.cellVolume.toFixed(2)} Å³`
+    : `${importedStructure.format} frame ${importedFrameIndex + 1} · non-periodic`;
+}
+
+function renderEnsembleControls() {
+  const frames = importedTrajectoryFrames();
+  const visible = scenarioSelect.value === "imported" && frames.length > 1;
+  ensembleControls.hidden = !visible;
+  if (!visible) return;
+  importedFrameIndex = Math.max(0, Math.min(importedFrameIndex, frames.length - 1));
+  ensembleFrameSelect.replaceChildren();
+  frames.forEach((frame, index) => {
+    const option = document.createElement("option");
+    option.value = String(index);
+    const label = frame.name || frame.comment || `frame ${index + 1}`;
+    option.textContent = `Frame ${index + 1} · ${label.slice(0, 64)}`;
+    ensembleFrameSelect.append(option);
+  });
+  ensembleFrameSelect.value = String(importedFrameIndex);
+  ensembleEvidenceSelect.value = ensembleEvidenceMode;
+  ensembleFrameCount.textContent = `${frames.length} snapshots`;
+  const presentations = frames.length * (frames[0]?.atoms.length || 0);
+  ensembleStatus.textContent = ensembleEvidenceMode === "all"
+    ? `Pooling ${frames.length} fixed-topology frames · ${presentations.toLocaleString()} atom presentations. Frame ${importedFrameIndex + 1} alone supplies the cluster cover, grammar, and growth seed.`
+    : `Ablation: only frame ${importedFrameIndex + 1} supplies geometric envelopes, the cluster cover, grammar, and growth seed.`;
 }
 
 function currentMaterial() {
@@ -693,7 +760,9 @@ function importSummary(structure, validation) {
   const charge = validation.formalChargeCoverage > 0
     ? ` · formal q ${(validation.formalChargeCoverage * 100).toFixed(0)}% · cell ${validation.netFormalCharge >= 0 ? "+" : ""}${Number(validation.netFormalCharge.toFixed(4))}`
     : "";
-  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
+  const trajectory = validation.trajectoryFrameCount > 1
+    ? ` · ${validation.trajectoryFrameCount} fixed-topology frames${validation.trajectoryVariableCell ? " · variable cell" : ""}` : "";
+  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge}${trajectory} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
 
 async function importStructureFile(file) {
@@ -703,9 +772,42 @@ async function importStructureFile(file) {
   return activateImportedStructure(parseStructureText(await file.text(), file.name), file.name);
 }
 
+function deterministicSnapshotEnsemble(structure) {
+  const phases = [-1, 0, 1];
+  const frames = phases.map((phase, frameIndex) => {
+    const dilation = 1 + phase * .0015;
+    const cell = structure.cell?.map((vector) => vector.map((value) => value * dilation)) || null;
+    const atoms = structure.atoms.map((atom, atomIndex) => ({
+      ...atom,
+      occupancyAlternatives: atom.occupancyAlternatives?.map((entry) => ({ ...entry })),
+      position: atom.position.map((value, axis) => value * dilation
+        + .018 * Math.sin((atomIndex + 1) * (axis + 2) * 1.173 + frameIndex * 1.91)),
+    }));
+    return {
+      name: `deterministic displaced snapshot ${frameIndex + 1}`,
+      comment: `geometry-only NaCl ensemble demo · phase ${phase}`,
+      atoms,
+      cell,
+      pbc: [...structure.pbc],
+      metadata: { frameIndex, deterministicDemonstration: true },
+    };
+  });
+  return {
+    ...structure,
+    name: "NaCl fixed-topology snapshot ensemble",
+    atoms: frames[0].atoms,
+    cell: frames[0].cell,
+    pbc: frames[0].pbc,
+    frames,
+    metadata: { ...structure.metadata, frameCount: frames.length, deterministicDemonstration: true },
+  };
+}
+
 function activateImportedStructure(parsed, filename, statusElement = importStatus) {
   const validation = validateStructure(parsed, { maximumAtoms: 1200 });
   if (!validation.valid) throw new Error(validation.errors.join("; "));
+  importedFrameIndex = 0;
+  ensembleEvidenceMode = "all";
   const actualElements = Object.keys(validation.elementCounts);
   const elements = [...new Set(parsed.atoms.map(occupancyChemistryToken))];
   importedStructure = {
@@ -724,11 +826,13 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
       note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed.`,
     },
   };
+  syncImportedFrameMaterial();
   elements.forEach(elementRecord);
   const option = scenarioSelect.querySelector('option[value="imported"]');
   option.disabled = false;
   option.textContent = `Imported · ${importedStructure.material.name}`;
   scenarioSelect.value = "imported";
+  renderEnsembleControls();
   statusElement.className = "import-status valid";
   statusElement.textContent = importSummary(parsed, validation);
   statusElement.title = validation.warnings.join("\n");
@@ -1632,15 +1736,19 @@ function makeMetallicGlassReference() {
     || first.species.localeCompare(second.species));
 }
 
-function makeReferenceConfiguration(scenario = scenarioSelect.value) {
-  if (scenario === "imported" && importedStructure) {
-    const center = importedStructure.atoms.reduce((sum, atom) => sum.add(new THREE.Vector3(...atom.position)), new THREE.Vector3())
-      .multiplyScalar(1 / importedStructure.atoms.length);
-    const sceneScale = .92 / importedStructure.validation.medianNearestDistance;
-    return importedStructure.atoms.map((atom, sourceIndex) => {
+function makeImportedFrameReference(frame = currentImportedFrame(), sceneScale = null) {
+  if (!frame?.atoms?.length) return [];
+  const validation = frame === currentImportedFrame() ? currentImportedFrameValidation()
+    : frame.validation || validateStructure({ atoms: frame.atoms, cell: frame.cell, pbc: frame.pbc }, { maximumAtoms: 1200, maximumFrames: 1 });
+  if (!frame.validation && frame !== importedStructure) frame.validation = validation;
+  if (!validation?.valid) throw new Error(validation?.errors?.join("; ") || "Imported frame is invalid");
+  const center = frame.atoms.reduce((sum, atom) => sum.add(new THREE.Vector3(...atom.position)), new THREE.Vector3())
+    .multiplyScalar(1 / frame.atoms.length);
+  const scale = sceneScale ?? .92 / validation.medianNearestDistance;
+  return frame.atoms.map((atom, sourceIndex) => {
       const pA = new THREE.Vector3(...atom.position);
       return {
-        pA, p: pA.clone().sub(center).multiplyScalar(sceneScale),
+        pA, p: pA.clone().sub(center).multiplyScalar(scale),
         species: occupancyChemistryToken(atom), displaySpecies: atom.species,
         occupancyLabel: occupancyDisplayLabel(atom),
         occupancyAlternatives: atom.occupancyAlternatives?.map((entry) => ({ ...entry })) || [{ species: atom.species, fraction: atom.occupancy ?? 1 }],
@@ -1653,8 +1761,12 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
         thermalAxesCartesian: atom.thermalAxesCartesian?.map((axis) => axis.slice()) || null,
         family: "imported", sourceIndex,
       };
-    }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
-  }
+    }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
+      || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
+}
+
+function makeReferenceConfiguration(scenario = scenarioSelect.value) {
+  if (scenario === "imported" && importedStructure) return makeImportedFrameReference();
   if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
   if (MATERIALS[scenario]?.molecularFixture === "dry-ice-pa3") return makeDryIceReferenceConfiguration();
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
@@ -1709,8 +1821,9 @@ function currentCell() {
     const length = currentMaterial().referenceCellA;
     return [new THREE.Vector3(length, 0, 0), new THREE.Vector3(0, length, 0), new THREE.Vector3(0, 0, length)];
   }
-  if (scenarioSelect.value === "imported" && importedStructure?.cell) {
-    return importedStructure.cell.map((vector) => new THREE.Vector3(...vector));
+  const importedFrame = currentImportedFrame();
+  if (scenarioSelect.value === "imported" && importedFrame?.cell) {
+    return importedFrame.cell.map((vector) => new THREE.Vector3(...vector));
   }
   const length = 6 * currentMaterial().spacingA;
   return [new THREE.Vector3(length, 0, 0), new THREE.Vector3(0, length, 0), new THREE.Vector3(0, 0, length)];
@@ -1720,7 +1833,7 @@ function currentPbc() {
   if (geometryMode === "module" || geometryMode === "offlattice") return [false, false, false];
   if (geometryMode === "lattice") return currentCell() ? [true, true, true] : [false, false, false];
   if (currentMaterial().intrinsicDimension === 2) return [false, false, false];
-  if (scenarioSelect.value === "imported" && importedStructure) return importedStructure.pbc;
+  if (scenarioSelect.value === "imported" && importedStructure) return currentImportedFrame()?.pbc || [false, false, false];
   return currentMaterial().periodicWindow ? [true, true, true] : [false, false, false];
 }
 
@@ -3644,6 +3757,8 @@ function receiptGrowthClaims(scenarioId, benchmark, trace) {
     structuralContinuationOnly: true,
     physicalPotentialUsed: false,
     physicalElapsedTimeModeled: false,
+    trajectoryIntegrated: false,
+    kineticsInferredFromSnapshotOrder: false,
     growthRateClaimed: false,
     targetCoordinatesIncluded: false,
     stationaryProductionCertified: benchmark.status === "pass" && stationaryProductionSystems.has(scenarioId),
@@ -3664,12 +3779,16 @@ async function buildExperimentReceipt() {
   const markingVisible = pipelineStage >= 3;
   const searchVisible = pipelineStage >= 4;
   const referenceSq = ensureStructureFactor(referenceStructuralStats);
+  const trajectoryFrames = scenarioSelect.value === "imported" ? importedTrajectoryFrames() : [];
+  const trajectoryFrameDigests = trajectoryFrames.length > 1
+    ? await Promise.all(trajectoryFrames.map((frame) => structureDigest(makeImportedFrameReference(frame, 1), "angstrom")))
+    : [];
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-37",
+      buildId: "20260824-38",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3695,6 +3814,28 @@ async function buildExperimentReceipt() {
         alternativesCollapsedToPrimarySpecies: false,
       } : null,
       structureSha256: await structureDigest(referenceAtoms, "angstrom"),
+      trajectoryEnsemble: trajectoryFrames.length > 1 ? {
+        frameCount: trajectoryFrames.length,
+        selectedFrameIndexZeroBased: importedFrameIndex,
+        geometricEvidenceMode: ensembleEvidenceMode,
+        geometricEvidenceFrameCount: coloredDistanceEnvelopes.frameCount,
+        geometricEvidenceAtomPresentations: coloredDistanceEnvelopes.atomPresentations,
+        fixedTopologyAndAtomOrderRequired: true,
+        topologyConsistent: importedStructure.validation.trajectoryTopologyConsistent,
+        variableCell: importedStructure.validation.trajectoryVariableCell,
+        frameStructureSha256: trajectoryFrameDigests,
+        ensembleSha256: await receiptSha256(JSON.stringify(trajectoryFrameDigests)),
+        framesUsedForDistanceCoordinationAngleEnvelopes: coloredDistanceEnvelopes.frameCount,
+        framesUsedForClusterCover: 1,
+        framesUsedForPortGrammarAndMarking: 1,
+        framesUsedForGrowthSeed: 1,
+        crossFrameAtomPairsConstructed: false,
+        temporalOrderingUsed: false,
+        velocitiesUsed: false,
+        forcesUsed: false,
+        integrationTimeStepUsed: false,
+        independentSampleCountClaimed: false,
+      } : null,
       coordinatesEmbedded: false,
       coordinateDigestSpace: "Cartesian Å + occupancy token + isotropic U / optional Cartesian Uij in Å²; order-independent serialization",
       periodicBoundary: currentPbc(),
@@ -3742,6 +3883,8 @@ async function buildExperimentReceipt() {
       })),
       coloredDistanceEnvelopes: {
         role: "hard geometric exclusion learned from supplied positions; not a pair potential",
+        frameCount: coloredDistanceEnvelopes.frameCount,
+        atomPresentations: coloredDistanceEnvelopes.atomPresentations,
         config: coloredDistanceEnvelopes.config,
         fallbackExclusionAngstrom: receiptRound(coloredDistanceEnvelopes.fallbackExclusion * referenceSpacingA / referenceSpacing),
         pairs: coloredDistanceEnvelopes.records.map((record) => ({
@@ -3757,6 +3900,8 @@ async function buildExperimentReceipt() {
       },
       coloredCoordinationEnvelopes: {
         role: "causal upper saturation limits; incomplete frontier shells may remain below the bound",
+        frameCount: coloredCoordinationEnvelopes.frameCount,
+        atomPresentations: coloredCoordinationEnvelopes.atomPresentations,
         config: coloredCoordinationEnvelopes.config,
         pairs: coloredCoordinationEnvelopes.records.map((record) => ({
           centerSpecies: record.centerSpecies,
@@ -3770,6 +3915,8 @@ async function buildExperimentReceipt() {
       },
       coloredAngularEnvelopes: {
         role: "causal three-body admissibility bands over already present contact neighbors; not an angular potential",
+        frameCount: coloredAngularEnvelopes.frameCount,
+        atomPresentations: coloredAngularEnvelopes.atomPresentations,
         config: coloredAngularEnvelopes.config,
         triplets: coloredAngularEnvelopes.records.map((record) => ({
           centerSpecies: record.centerSpecies,
@@ -4473,10 +4620,7 @@ function nearbyAtoms(position, radius = COLLISION_TOLERANCE) {
   return result;
 }
 
-function scenePeriodicContext() {
-  const scale = referenceSpacing / referenceSpacingA;
-  const cell = currentCell()?.map((vector) => vector.clone().multiplyScalar(scale));
-  const pbc = currentPbc();
+function periodicContextFromSceneCell(cell, pbc) {
   if (!cell || !pbc.some(Boolean)) return { matrix: null, inverse: null, pbc };
   const matrix = new THREE.Matrix3().set(
     cell[0].x, cell[1].x, cell[2].x,
@@ -4484,6 +4628,12 @@ function scenePeriodicContext() {
     cell[0].z, cell[1].z, cell[2].z,
   );
   return { matrix, inverse: matrix.clone().invert(), pbc };
+}
+
+function scenePeriodicContext() {
+  const scale = referenceSpacing / referenceSpacingA;
+  const cell = currentCell()?.map((vector) => vector.clone().multiplyScalar(scale));
+  return periodicContextFromSceneCell(cell, currentPbc());
 }
 
 function scenePeriodicDisplacement(first, second, context = scenePeriodicContext()) {
@@ -4496,26 +4646,54 @@ function scenePeriodicDisplacement(first, second, context = scenePeriodicContext
   return fractional.applyMatrix3(context.matrix);
 }
 
+function importedFramePeriodicAxes(frame) {
+  if (geometryMode === "module" || geometryMode === "offlattice") return [false, false, false];
+  if (geometryMode === "lattice") return frame.cell ? [true, true, true] : [false, false, false];
+  return frame.pbc || [false, false, false];
+}
+
+function referenceEvidenceFrames(source) {
+  if (scenarioSelect.value !== "imported" || !importedStructure
+    || ensembleEvidenceMode !== "all" || importedTrajectoryFrames().length <= 1) {
+    return [{ source, context: scenePeriodicContext(), frameIndex: importedFrameIndex }];
+  }
+  const commonSceneScale = referenceSpacing / referenceSpacingA;
+  const selected = currentImportedFrame();
+  return importedTrajectoryFrames().map((frame, frameIndex) => {
+    const frameSource = frame === selected ? source : makeImportedFrameReference(frame, commonSceneScale);
+    const cell = frame.cell?.map((vector) => new THREE.Vector3(...vector).multiplyScalar(commonSceneScale)) || null;
+    return {
+      source: frameSource,
+      context: periodicContextFromSceneCell(cell, importedFramePeriodicAxes(frame)),
+      frameIndex,
+    };
+  });
+}
+
 function learnReferenceDistanceEnvelopes(source) {
-  const context = scenePeriodicContext();
-  return learnColoredDistanceEnvelopes(source.map((atom) => atom.species),
-    (first, second) => scenePeriodicDisplacement(source[first].p, source[second].p, context).length(), {
+  const frames = referenceEvidenceFrames(source).map(({ source: frameSource, context }) => ({
+    species: frameSource.map((atom) => atom.species),
+    distance: (first, second) => scenePeriodicDisplacement(frameSource[first].p, frameSource[second].p, context).length(),
+  }));
+  return learnColoredDistanceEnvelopesEnsemble(frames, {
       fallbackExclusion: COLLISION_TOLERANCE,
-    });
+  });
 }
 
 function learnReferenceCoordinationEnvelopes(source) {
-  const context = scenePeriodicContext();
-  return learnColoredCoordinationEnvelopes(source.map((atom) => atom.species),
-    (first, second) => scenePeriodicDisplacement(source[first].p, source[second].p, context).length(),
-    coloredDistanceEnvelopes);
+  const frames = referenceEvidenceFrames(source).map(({ source: frameSource, context }) => ({
+    species: frameSource.map((atom) => atom.species),
+    distance: (first, second) => scenePeriodicDisplacement(frameSource[first].p, frameSource[second].p, context).length(),
+  }));
+  return learnColoredCoordinationEnvelopesEnsemble(frames, coloredDistanceEnvelopes);
 }
 
 function learnReferenceAngularEnvelopes(source) {
-  const context = scenePeriodicContext();
-  return learnColoredAngularEnvelopes(source.map((atom) => atom.species),
-    (first, second) => scenePeriodicDisplacement(source[first].p, source[second].p, context),
-    coloredCoordinationEnvelopes);
+  const frames = referenceEvidenceFrames(source).map(({ source: frameSource, context }) => ({
+    species: frameSource.map((atom) => atom.species),
+    displacement: (first, second) => scenePeriodicDisplacement(frameSource[first].p, frameSource[second].p, context),
+  }));
+  return learnColoredAngularEnvelopesEnsemble(frames, coloredCoordinationEnvelopes);
 }
 
 function coloredPairExclusion(firstSpecies, secondSpecies) {
@@ -5594,11 +5772,12 @@ function enterPipelineStage(index, options = {}) {
   stageElapsed = 0;
   setPlaying(false);
   resetCounters();
+  if (scenarioSelect.value === "imported") syncImportedFrameMaterial();
   rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5 ^ confinementSelect.selectedIndex * 0x734a9d;
   referenceAtoms = makeReferenceConfiguration();
   referenceSpacing = scenarioSelect.value === "imported" ? .92 : medianNearestSpacing(referenceAtoms);
   referenceSpacingA = scenarioSelect.value === "imported"
-    ? importedStructure.validation.medianNearestDistance
+    ? currentImportedFrameValidation().medianNearestDistance
     : referenceSpacing / .92 * currentMaterial().spacingA;
   coloredDistanceEnvelopes = learnReferenceDistanceEnvelopes(referenceAtoms);
   coloredCoordinationEnvelopes = learnReferenceCoordinationEnvelopes(referenceAtoms);
@@ -5649,6 +5828,7 @@ function enterPipelineStage(index, options = {}) {
   updateUI();
   updatePipelineButtons();
   syncStageOptions();
+  renderEnsembleControls();
   frameStage();
   if (options.play) setPlaying(true);
 }
@@ -5682,9 +5862,9 @@ function updateStageNarrative() {
   const narratives = [
     {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
-      caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no environment labels are given.`, badge: "input",
-      decision: material.name, copy: `The learner receives ${referenceCount()} element-labelled positions. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.`,
-      values: [materialElementLabels(material).join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, "1 configuration"],
+      caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no environment labels are given.${evidenceFrameCount() > 1 ? ` ${evidenceFrameCount()} fixed-topology snapshots broaden the geometric envelopes without being concatenated.` : ""}`, badge: "input",
+      decision: material.name, copy: `The learner receives ${referenceCount()} element-labelled positions for the selected seed frame. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.${evidenceFrameCount() > 1 ? ` Contact, coordination, and angle statistics pool ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} atom presentations across ${coloredDistanceEnvelopes.frameCount} frames.` : ""}`,
+      values: [materialElementLabels(material).join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, `${evidenceFrameCount()} evidence frame${evidenceFrameCount() === 1 ? "" : "s"}`],
     },
     {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
@@ -6648,10 +6828,20 @@ function renderMarkings() {
     const records = coloredDistanceEnvelopes?.records || [];
     const coordinationRecords = coloredCoordinationEnvelopes?.records || [];
     const angularRecords = coloredAngularEnvelopes?.records || [];
-    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles · 2 reservoirs`;
+    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles · ${coloredDistanceEnvelopes.frameCount} frame${coloredDistanceEnvelopes.frameCount === 1 ? "" : "s"}`;
     const p = document.createElement("p");
-    p.textContent = "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
+    p.textContent = coloredDistanceEnvelopes.frameCount > 1
+      ? `Pair contacts, ordered coordination caps, and three-body angle bands pool ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} within-frame atom presentations. The selected frame alone supplies clusters and growth; no cross-frame pair, motif label, or potential is constructed.`
+      : "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
     markingTable.appendChild(p);
+    if (coloredDistanceEnvelopes.frameCount > 1) {
+      const ensemble = document.createElement("div"); ensemble.className = "mark-row composition-reservoir-row";
+      ensemble.title = "Raw snapshot presentations may be correlated; this is not an independent-sample or kinetic claim";
+      const code = document.createElement("code"); code.textContent = "ensemble";
+      const summary = document.createElement("span"); summary.textContent = `${coloredDistanceEnvelopes.frameCount} frames · selected ${importedFrameIndex + 1}`;
+      const count = document.createElement("b"); count.textContent = `${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} sites`;
+      ensemble.append(code, summary, count); markingTable.appendChild(ensemble);
+    }
     const reservoir = document.createElement("div"); reservoir.className = "mark-row composition-reservoir-row";
     reservoir.title = "Observed global fractions are an optional soft frontier preference, never a hard surface constraint";
     const reservoirCode = document.createElement("code"); reservoirCode.textContent = "ratio";
@@ -6807,7 +6997,20 @@ copyReceiptButton.addEventListener("click", () => withReceiptStatus(copyReceiptB
   await navigator.clipboard.writeText(await serializedExperimentReceipt());
   receiptStatus.textContent = "Receipt JSON copied · coordinates excluded; SHA-256 digests included.";
 }));
-scenarioSelect.addEventListener("change", () => enterPipelineStage(0));
+scenarioSelect.addEventListener("change", () => {
+  renderEnsembleControls();
+  enterPipelineStage(0);
+});
+ensembleFrameSelect.addEventListener("change", () => {
+  importedFrameIndex = Number(ensembleFrameSelect.value) || 0;
+  syncImportedFrameMaterial();
+  orderPrototypeLibrary = null;
+  enterPipelineStage(0);
+});
+ensembleEvidenceSelect.addEventListener("change", () => {
+  ensembleEvidenceMode = ensembleEvidenceSelect.value === "selected" ? "selected" : "all";
+  enterPipelineStage(0);
+});
 periodicTableButton.addEventListener("click", () => setPeriodicTableOpen(periodicTablePanel.hidden));
 periodicCloseButton.addEventListener("click", () => setPeriodicTableOpen(false));
 periodicClearButton.addEventListener("click", () => {
@@ -6860,6 +7063,19 @@ loadFixtureButton.addEventListener("click", async () => {
   } catch (error) {
     importStatus.className = "import-status invalid";
     importStatus.textContent = `Fixture failed: ${error.message}`;
+  }
+});
+loadEnsembleFixtureButton.addEventListener("click", async () => {
+  try {
+    importStatus.className = "import-status";
+    importStatus.textContent = "Building a deterministic three-snapshot geometry ensemble…";
+    const response = await fetch("./fixtures/nacl-64.extxyz");
+    if (!response.ok) throw new Error(`fixture request returned ${response.status}`);
+    const base = parseStructureText(await response.text(), "nacl-64.extxyz");
+    activateImportedStructure(deterministicSnapshotEnsemble(base), "bundled deterministic NaCl snapshot ensemble");
+  } catch (error) {
+    importStatus.className = "import-status invalid";
+    importStatus.textContent = `Ensemble fixture failed: ${error.message}`;
   }
 });
 confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));

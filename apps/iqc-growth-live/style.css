@@ -191,6 +191,11 @@ body.atlas-open { overflow: hidden; }
 }
 .sample-picker select { border-color: rgba(181,148,255,.28); background-color: rgba(181,148,255,.04); }
 .sample-note { margin: 6px 1px 0; color: #627873; font-size: 8px; line-height: 1.4; }
+.ensemble-controls { display: grid; gap: 7px; margin-top: 9px; padding: 9px; border: 1px solid rgba(85,200,255,.2); background: rgba(85,200,255,.035); }
+.ensemble-controls[hidden] { display: none; }
+.ensemble-controls .field { margin-top: 0; }
+.ensemble-controls .field b { color: var(--cyan); font: 7px var(--mono); font-weight: 400; }
+.ensemble-controls .control-note { margin-top: 1px; }
 .database-picker { position: relative; padding: 10px; border: 1px solid rgba(101,225,188,.25); background: rgba(101,225,188,.035); }
 .database-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .database-heading strong { color: var(--mint); font-size: 10px; }

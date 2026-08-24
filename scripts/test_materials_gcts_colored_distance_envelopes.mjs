@@ -8,8 +8,11 @@ import {
   coordinationEnvelopeFor,
   exclusionForPair,
   learnColoredAngularEnvelopes,
+  learnColoredAngularEnvelopesEnsemble,
   learnColoredCoordinationEnvelopes,
+  learnColoredCoordinationEnvelopesEnsemble,
   learnColoredDistanceEnvelopes,
+  learnColoredDistanceEnvelopesEnsemble,
 } from "../apps/iqc-growth-live/colored-distance-envelopes.js";
 
 const species = ["O", "H", "H", "Na", "Cl", "Na", "Cl"];
@@ -42,6 +45,30 @@ const waterAngle = angularEnvelopeFor(angular, "O", "H", "H");
 assert.equal(waterAngle.bands.length, 1);
 assert.ok(angleAllowed(waterAngle, 104.47), "observed bent H-O-H geometry must remain admissible");
 assert.equal(angleAllowed(waterAngle, 180), false, "a linearized water molecule must be rejected");
+
+const displacedPositions = positions.map((point) => point.slice());
+displacedPositions[1][0] += .04;
+displacedPositions[2][1] -= .03;
+const ensembleFrames = [positions, displacedPositions].map((framePositions) => ({
+  species,
+  distance: (first, second) => Math.hypot(...framePositions[second]
+    .map((value, axis) => value - framePositions[first][axis])),
+  displacement: (first, second) => framePositions[second]
+    .map((value, axis) => value - framePositions[first][axis]),
+}));
+const ensemblePairs = learnColoredDistanceEnvelopesEnsemble(ensembleFrames);
+const ensembleCoordination = learnColoredCoordinationEnvelopesEnsemble(ensembleFrames, ensemblePairs);
+const ensembleAngles = learnColoredAngularEnvelopesEnsemble(ensembleFrames, ensembleCoordination);
+assert.equal(ensemblePairs.frameCount, 2);
+assert.equal(ensemblePairs.atomPresentations, 14);
+assert.equal(ensembleCoordination.frameCount, 2);
+assert.equal(ensembleAngles.frameCount, 2);
+assert.equal(ensemblePairs.byKey["H|O"].pairObservations, model.byKey["H|O"].pairObservations * 2,
+  "ensemble fitting must pool within-frame observations without cross-frame pairs");
+assert.equal(ensembleCoordination.byKey["O>H"].centerObservations, 2,
+  "the same oxygen site in two frames is two geometric observations");
+assert.equal(ensembleAngles.byKey["H<O>H"].centerObservations, 2);
+assert.ok(angleAllowed(ensembleAngles.byKey["H<O>H"], 104.47));
 
 const reversedSpecies = species.slice().reverse();
 const reversedPositions = positions.slice().reverse();

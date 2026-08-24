@@ -580,10 +580,13 @@ function parsePoscar(text, filename) {
   return { name: title, format: "POSCAR", atoms, cell, pbc: [true, true, true], metadata: {} };
 }
 
-function parseXyz(text, filename) {
-  const lines = text.replace(/\r/g, "").split("\n");
-  const count = Math.trunc(numeric(lines[0]?.trim(), "XYZ atom count"));
-  const comment = lines[1] || "";
+function parseXyzFrame(lines, start, filename, frameIndex) {
+  let cursor = start;
+  while (cursor < lines.length && !lines[cursor].trim()) cursor++;
+  if (cursor >= lines.length) return null;
+  const count = Math.trunc(numeric(lines[cursor]?.trim(), `XYZ frame ${frameIndex + 1} atom count`));
+  if (!(count > 0)) throw new Error(`XYZ frame ${frameIndex + 1} must contain at least one atom`);
+  const comment = lines[cursor + 1] || "";
   const commentName = comment
     .replace(/\b(?:Lattice|pbc|Properties)\s*=\s*(?:"[^"]*"|'[^']*'|\S+)/gi, "")
     .replace(/\s*\|\s*$/, "").trim();
@@ -591,22 +594,58 @@ function parseXyz(text, filename) {
   const latticeValues = latticeMatch ? tokens(latticeMatch[1]).map((value) => numeric(value, "XYZ lattice")) : null;
   const cell = latticeValues?.length === 9 ? [latticeValues.slice(0, 3), latticeValues.slice(3, 6), latticeValues.slice(6, 9)] : null;
   const pbcMatch = comment.match(/pbc\s*=\s*"([^"]+)"/i);
-  const pbc = pbcMatch ? tokens(pbcMatch[1]).map((value) => /^(t|true|1)$/i.test(value)).slice(0, 3) : [false, false, false];
+  const parsedPbc = pbcMatch ? tokens(pbcMatch[1]).map((value) => /^(t|true|1)$/i.test(value)) : [];
+  const pbc = cell ? [0, 1, 2].map((axis) => Boolean(parsedPbc[axis])) : [false, false, false];
   const atoms = [];
   for (let index = 0; index < count; index++) {
-    const row = tokens(lines[index + 2] || "");
-    if (row.length < 4) throw new Error(`XYZ atom row ${index + 1} is incomplete`);
+    const row = tokens(lines[cursor + index + 2] || "");
+    if (row.length < 4) throw new Error(`XYZ frame ${frameIndex + 1} atom row ${index + 1} is incomplete`);
     atoms.push({ ...normalizeSiteOccupancy(row[0], 1), position: row.slice(1, 4).map((value, axis) => numeric(value, `atom coordinate ${axis + 1}`)) });
   }
-  return { name: commentName || filename.replace(/\.[^.]+$/, ""), format: cell ? "extended XYZ" : "XYZ", atoms, cell, pbc: cell ? pbc : [false, false, false], metadata: {} };
+  return {
+    frame: {
+      name: commentName || `frame ${frameIndex + 1}`,
+      comment,
+      atoms,
+      cell,
+      pbc: cell ? pbc : [false, false, false],
+      metadata: { frameIndex },
+    },
+    next: cursor + count + 2,
+  };
 }
 
-function parseJson(text, filename) {
-  const data = JSON.parse(text);
-  const cell = data.cell || data.lattice || null;
-  const pbc = Array.isArray(data.pbc) ? data.pbc.map(Boolean).slice(0, 3) : cell ? [true, true, true] : [false, false, false];
+function parseXyz(text, filename) {
+  const lines = text.replace(/\r/g, "").split("\n");
+  const frames = [];
+  let cursor = 0;
+  while (true) {
+    const parsed = parseXyzFrame(lines, cursor, filename, frames.length);
+    if (!parsed) break;
+    frames.push(parsed.frame);
+    cursor = parsed.next;
+  }
+  if (!frames.length) throw new Error("XYZ contains no frames");
+  const first = frames[0];
+  return {
+    name: first.name || filename.replace(/\.[^.]+$/, ""),
+    format: first.cell ? "extended XYZ" : "XYZ",
+    atoms: first.atoms,
+    cell: first.cell,
+    pbc: first.pbc,
+    ...(frames.length > 1 ? { frames } : {}),
+    metadata: { frameCount: frames.length, frameComments: frames.map((frame) => frame.comment) },
+  };
+}
+
+function jsonFrameRecord(frameValue, root, filename, frameIndex) {
+  const frame = Array.isArray(frameValue) ? { positions: frameValue } : frameValue;
+  if (!frame || typeof frame !== "object") throw new Error(`JSON frame ${frameIndex + 1} must be an object or position array`);
+  const cell = frame.cell || frame.lattice || root.cell || root.lattice || null;
+  const rawPbc = frame.pbc ?? root.pbc;
+  const pbc = Array.isArray(rawPbc) ? [0, 1, 2].map((axis) => Boolean(rawPbc[axis])) : cell ? [true, true, true] : [false, false, false];
   let atoms;
-  if (Array.isArray(data.atoms)) atoms = data.atoms.map((atom) => ({
+  if (Array.isArray(frame.atoms)) atoms = frame.atoms.map((atom) => ({
     ...normalizeSiteOccupancy(atom.species || atom.element || atom.symbol,
       typeof atom.occupancy === "number" ? atom.occupancy : atom.occupancyTotal ?? 1,
       atom.occupancyAlternatives ?? (typeof atom.occupancy === "object" ? atom.occupancy : null),
@@ -620,12 +659,46 @@ function parseJson(text, filename) {
       })),
     position: (atom.position || atom.xyz || atom.cartesian).map(Number),
   }));
-  else if (Array.isArray(data.positions) && Array.isArray(data.species)) atoms = data.positions.map((position, index) => ({
-    ...normalizeSiteOccupancy(data.species[index], Array.isArray(data.occupancies) ? data.occupancies[index] : 1),
+  else {
+    const positions = frame.positions;
+    const species = frame.species || root.species;
+    if (!Array.isArray(positions) || !Array.isArray(species)) {
+      throw new Error(`JSON frame ${frameIndex + 1} must contain atoms[] or positions[] with species[]`);
+    }
+    atoms = positions.map((position, index) => ({
+    ...normalizeSiteOccupancy(species[index], Array.isArray(frame.occupancies || root.occupancies)
+      ? (frame.occupancies || root.occupancies)[index] : 1,
+      Array.isArray(frame.occupancyAlternatives || root.occupancyAlternatives)
+        ? (frame.occupancyAlternatives || root.occupancyAlternatives)[index] : null,
+      Array.isArray(frame.formalCharges || root.formalCharges)
+        ? (frame.formalCharges || root.formalCharges)[index] : null),
     position: position.map(Number),
-  }));
-  else throw new Error("JSON must contain atoms[] or parallel positions[] and species[] arrays");
-  return { name: data.name || filename.replace(/\.[^.]+$/, ""), format: "JSON", atoms, cell, pbc, metadata: data.metadata || {} };
+    }));
+  }
+  return {
+    name: frame.name || `frame ${frameIndex + 1}`,
+    atoms,
+    cell,
+    pbc,
+    metadata: { ...(frame.metadata || {}), frameIndex },
+  };
+}
+
+function parseJson(text, filename) {
+  const data = JSON.parse(text);
+  const frames = Array.isArray(data.frames) && data.frames.length
+    ? data.frames.map((frame, index) => jsonFrameRecord(frame, data, filename, index))
+    : [jsonFrameRecord(data, {}, filename, 0)];
+  const first = frames[0];
+  return {
+    name: data.name || filename.replace(/\.[^.]+$/, ""),
+    format: "JSON",
+    atoms: first.atoms,
+    cell: first.cell,
+    pbc: first.pbc,
+    ...(frames.length > 1 ? { frames } : {}),
+    metadata: { ...(data.metadata || {}), frameCount: frames.length },
+  };
 }
 
 export function parseStructureText(text, filename = "structure.xyz") {
@@ -645,8 +718,42 @@ export function validateStructure(structure, options = {}) {
   const errors = [];
   const warnings = [];
   const maximumAtoms = options.maximumAtoms || 1200;
+  const maximumFrames = options.maximumFrames || 64;
+  const maximumAtomPresentations = options.maximumAtomPresentations || 24000;
   if (!structure?.atoms?.length) errors.push("No atoms were parsed");
   if (structure?.atoms?.length > maximumAtoms) errors.push(`${structure.atoms.length} atoms exceed the browser analysis limit of ${maximumAtoms}`);
+  const trajectoryFrames = structure?.frames?.length ? structure.frames : [];
+  const trajectoryFrameCount = trajectoryFrames.length || 1;
+  const trajectoryAtomPresentations = trajectoryFrameCount * (structure?.atoms?.length || 0);
+  let trajectoryTopologyConsistent = true;
+  let trajectoryVariableCell = false;
+  if (trajectoryFrameCount > maximumFrames) errors.push(`${trajectoryFrameCount} frames exceed the browser ensemble limit of ${maximumFrames}`);
+  if (trajectoryAtomPresentations > maximumAtomPresentations) errors.push(`${trajectoryAtomPresentations} atom presentations exceed the browser ensemble limit of ${maximumAtomPresentations}`);
+  if (trajectoryFrames.length) {
+    const referenceTokens = trajectoryFrames[0].atoms.map(occupancyChemistryToken);
+    const referenceCell = JSON.stringify(trajectoryFrames[0].cell || null);
+    trajectoryFrames.forEach((frame, frameIndex) => {
+      const tokensForFrame = frame.atoms.map(occupancyChemistryToken);
+      if (tokensForFrame.length !== referenceTokens.length
+        || tokensForFrame.some((token, index) => token !== referenceTokens[index])) {
+        trajectoryTopologyConsistent = false;
+        errors.push(`Trajectory frame ${frameIndex + 1} changes atom count, order, species, occupancy, or formal charge`);
+      }
+      if (frame.atoms.some((atom) => !Array.isArray(atom.position) || atom.position.length !== 3
+        || atom.position.some((value) => !Number.isFinite(Number(value))))) {
+        errors.push(`Trajectory frame ${frameIndex + 1} has invalid Cartesian coordinates`);
+      }
+      if (frame.cell && (!Array.isArray(frame.cell) || frame.cell.length !== 3
+        || frame.cell.some((vector) => !Array.isArray(vector) || vector.length !== 3
+          || vector.some((value) => !Number.isFinite(Number(value))))
+        || Math.abs(determinant(frame.cell)) < 1e-6)) {
+        errors.push(`Trajectory frame ${frameIndex + 1} has an invalid cell`);
+      }
+      if (frame.pbc?.some(Boolean) && !frame.cell) errors.push(`Trajectory frame ${frameIndex + 1} has periodic axes without a cell`);
+      trajectoryVariableCell ||= JSON.stringify(frame.cell || null) !== referenceCell;
+    });
+    warnings.push(`${trajectoryFrameCount} trajectory frames retained with fixed atom identity${trajectoryVariableCell ? " and variable cells" : ""}`);
+  }
   if (structure?.cell) {
     if (!Array.isArray(structure.cell) || structure.cell.length !== 3 || structure.cell.some((vector) => !Array.isArray(vector) || vector.length !== 3 || vector.some((value) => !Number.isFinite(Number(value))))) errors.push("Cell must contain three finite 3D vectors");
     else if (Math.abs(determinant(structure.cell)) < 1e-6) errors.push("Cell vectors are singular or nearly singular");
@@ -748,6 +855,8 @@ export function validateStructure(structure, options = {}) {
     maximumThermalAxisSigmaA: Math.max(0, ...thermalAxisSigmas),
     formalChargeCoverage, chargeResolvedSites,
     netFormalCharge,
+    trajectoryFrameCount, trajectoryTopologyConsistent, trajectoryVariableCell,
+    trajectoryAtomPresentations,
     minimumDistance: Number.isFinite(minimumDistance) ? minimumDistance : null,
     medianNearestDistance, cellVolume: structure?.cell ? Math.abs(determinant(structure.cell)) : null,
   };
