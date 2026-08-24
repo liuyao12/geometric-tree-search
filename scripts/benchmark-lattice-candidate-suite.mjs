@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { writeFile } from "node:fs/promises";
 import { performance } from "node:perf_hooks";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
+import { proposalProgramFromPatchSnapshot } from "../apps/3d-lattice-tiler/proposal-learner.js";
 import {
   LATTICE_POLYHEDRON_CENSUS_POOL,
   LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES,
@@ -28,6 +29,7 @@ const exactTimeMs = Math.max(timeMs, Math.floor(numberArg("exact-time-ms", 3000)
 const isohedralHorizon = Math.max(2, Math.floor(numberArg("isohedral-horizon", 24)));
 const periodicMax = Math.max(1, Math.floor(numberArg("periodic-max", 4)));
 const nodeLimit = Math.max(1, Math.floor(numberArg("node-limit", 500000)));
+const gctsRounds = Math.max(1, Math.floor(numberArg("gcts-rounds", 1)));
 const failureMemo = args.get("failure-memo") !== "false";
 const failureMemoSymmetry = args.get("failure-memo-symmetry") === "rigid" ? "rigid" : "fixed";
 const failureMemoMaxStates = Math.max(0, Math.floor(numberArg("failure-memo-max-states", 200000)));
@@ -122,12 +124,12 @@ const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
     researchQueue: preShellIds.has(candidate.id),
     vertices: candidate.vertices,
     lanes: preShellIds.has(candidate.id)
-      ? ["translational", "isohedral", "free_range", "free_range_no_brainer", "free_range_unbanded"]
+      ? ["translational", "isohedral", "free_range", "gcts", "free_range_no_brainer", "free_range_unbanded"]
       : candidate.screening.certificate === "translational"
       ? ["translational", "free_range"]
       : candidate.screening.certificate === "isohedral_periodic_quotient"
         ? ["isohedral", "free_range"]
-        : ["translational", "isohedral", "free_range", "free_range_no_brainer", "free_range_unbanded"]
+        : ["translational", "isohedral", "free_range", "gcts", "free_range_no_brainer", "free_range_unbanded"]
   }));
 const specialCases = includeSpecial ? [
   { id: "corner_tetra", family: "control", expected: "certified_non_tiler", lanes: ["free_range"] },
@@ -150,20 +152,27 @@ const customSystem = benchmarkCase => benchmarkCase.family === "census" ? {
   polycube_lattice: "z3"
 } : null;
 
-const configFor = (benchmarkCase, lane, seed) => ({
+const configFor = (benchmarkCase, lane, seed, proposalProgram = null) => {
+  const genericLane = lane.startsWith("free_range") || lane === "gcts";
+  return ({
   mode_key: benchmarkCase.family === "control" ? benchmarkCase.id : "cube",
   custom_system: customSystem(benchmarkCase),
   polycube_lattice: "z3",
   criterion: "count",
   target_val: lane === "isohedral" ? Math.max(target, 500) : target,
-  tiling_strategy: lane.startsWith("free_range") ? "free_range" : lane,
+  tiling_strategy: lane === "gcts"
+    ? "learning_free_range"
+    : lane.startsWith("free_range") ? "free_range" : lane,
   move_order: lane === "isohedral"
     ? "isohedral"
+    : lane === "gcts"
+      ? "agent"
     : lane === "free_range_no_brainer"
       ? "no_brainer"
       : lane === "free_range_unbanded"
         ? unbandedMoveOrder
         : "balanced",
+  proposal_program: lane === "gcts" ? proposalProgram : null,
   face_order: faceOrder,
   exhaustive: true,
   agent_exhaustive: true,
@@ -177,11 +186,11 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_geometric_nogood_index: geometricNogoodIndex,
   generic_geometric_nogood_activation_failure_states: geometricNogoodActivationFailures,
   generic_geometric_nogood_activation_stagnation_failure_states: geometricNogoodStagnationFailures,
-  generic_periodic_certificate: genericPeriodicCertificate && lane.startsWith("free_range"),
+  generic_periodic_certificate: genericPeriodicCertificate && genericLane,
   generic_periodic_certificate_check_new_maximum:
-    genericPeriodicCheckpoints && lane.startsWith("free_range"),
+    genericPeriodicCheckpoints && genericLane,
   generic_periodic_certificate_check_distinct_patches:
-    genericPeriodicDistinctPatches && lane.startsWith("free_range"),
+    genericPeriodicDistinctPatches && genericLane,
   generic_periodic_certificate_checkpoint_sampling_policy: genericPeriodicSamplingPolicy,
   generic_periodic_certificate_checkpoint_sampling_stride: genericPeriodicSamplingStride,
   generic_periodic_certificate_checkpoint_sampling_prefix: genericPeriodicSamplingPrefix,
@@ -192,7 +201,7 @@ const configFor = (benchmarkCase, lane, seed) => ({
   generic_periodic_certificate_method: "internal_first",
   known_periodic_template: benchmarkCase.knownPeriodicTemplate,
   include_mirrors: false,
-  template_preflight: !lane.startsWith("free_range"),
+  template_preflight: !genericLane,
   periodic_patch_max_tiles: periodicMax,
   periodic_patch_unbounded: false,
   isohedral_search_horizon_tiles: isohedralHorizon,
@@ -202,13 +211,14 @@ const configFor = (benchmarkCase, lane, seed) => ({
   candidate_cap: null,
   node_limit: nodeLimit,
   random_seed: seed,
-  seeded_tie_breaks: seededTies && benchmarkCase.researchQueue && lane.startsWith("free_range"),
-  time_limit_ms: lane.startsWith("free_range") ? timeMs : exactTimeMs,
+  seeded_tie_breaks: seededTies && benchmarkCase.researchQueue && genericLane,
+  time_limit_ms: genericLane ? timeMs : exactTimeMs,
   ui_yield_interval_ms: 1000000
-});
+  });
+};
 
-async function runLane(benchmarkCase, lane, seed) {
-  const config = configFor(benchmarkCase, lane, seed);
+async function runLane(benchmarkCase, lane, seed, { proposalProgram = null, round = 0 } = {}) {
+  const config = configFor(benchmarkCase, lane, seed, proposalProgram);
   const started = performance.now();
   let final = null;
   let largestPatch = 0;
@@ -221,6 +231,7 @@ async function runLane(benchmarkCase, lane, seed) {
   let witnessGrowthSpans = [];
   let witnessGrowthIsotropy = 0;
   let witnessPeriodicTranslationRank = 0;
+  let bestSnapshot = null;
   const growthMilestones = [];
   const checkpointFingerprints = [];
   const hashPlacements = placements => createHash("sha256")
@@ -239,6 +250,7 @@ async function runLane(benchmarkCase, lane, seed) {
     maxLiveTiles = Math.max(maxLiveTiles, patchSize, snapshot?.search_stats?.max_live_tiles ?? 0);
     if (Array.isArray(snapshot?.placements) && snapshot.placements.length > largestPatch) {
       largestPatch = snapshot.placements.length;
+      bestSnapshot = snapshot;
       witnessGrowthAxisRank = snapshot?.search_stats?.growth_axis_rank ?? 0;
       witnessGrowthSpans = snapshot?.search_stats?.growth_spans ?? [];
       witnessGrowthIsotropy = snapshot?.search_stats?.growth_isotropy ?? 0;
@@ -266,11 +278,21 @@ async function runLane(benchmarkCase, lane, seed) {
   }
   const stats = final?.search_stats ?? {};
   maxLiveTiles = Math.max(maxLiveTiles, stats.max_live_tiles ?? 0);
+  const learnedProgram = lane === "gcts" && bestSnapshot
+    ? proposalProgramFromPatchSnapshot(config, bestSnapshot, proposalProgram, {
+        // A recorded maximum is commonly a dead leaf. Preserve its useful
+        // trunk but leave the suffix inside the next run's backtracking tree.
+        tailReserve: Math.min(6, Math.max(2, Math.floor(largestPatch / 5)))
+      })
+    : proposalProgram;
   return {
     case: benchmarkCase.id,
     family: benchmarkCase.family,
     expected: benchmarkCase.expected,
-    lane,
+    lane: lane === "gcts" && round > 0 ? `gcts_warm_${round}` : lane,
+    gctsRound: lane === "gcts" ? round : null,
+    reusedLearnedPatch: !!proposalProgram,
+    learnedProgram,
     seed,
     resultKind: final?.result_kind ?? "missing_result",
     success: !!final?.success,
@@ -294,6 +316,19 @@ async function runLane(benchmarkCase, lane, seed) {
     visitedNodes: stats.visited_nodes ?? 0,
     backtracks: stats.backtracks ?? 0,
     maxDepth: stats.max_depth ?? 0,
+    agentObservations: stats.agent_observations ?? 0,
+    agentResolvedFailures: stats.agent_resolved_failures ?? 0,
+    agentIncompleteObservations: stats.agent_incomplete_observations ?? 0,
+    agentPositiveGrowthObservations: stats.agent_positive_growth_observations ?? 0,
+    agentMaxBranchGrowth: stats.agent_max_branch_growth ?? 0,
+    agentLearnedTags: stats.agent_learned_tags ?? 0,
+    agentSiblingReorders: stats.agent_sibling_reorders ?? 0,
+    agentPolicy: stats.agent_policy ?? null,
+    agentProbeMaxLiveTiles: stats.agent_probe_max_live_tiles ?? null,
+    proposalPatchTilesReplayed: stats.proposal_patch_tiles_replayed ?? 0,
+    proposalPatchConflicts: stats.proposal_patch_conflicts ?? 0,
+    proposalPatchConflictIndex: stats.proposal_patch_conflict_index ?? null,
+    proposalPatchConflictReason: stats.proposal_patch_conflict_reason ?? null,
     moveOrder: stats.move_order ?? null,
     faceOrder: stats.face_order ?? faceOrder,
     effectiveSeed: stats.random_seed ?? null,
@@ -397,13 +432,18 @@ const rows = [];
 for (const benchmarkCase of cases) {
   for (const lane of benchmarkCase.lanes) {
     const laneSeeds = benchmarkCase.researchQueue
-      && lane.startsWith("free_range")
+      && (lane.startsWith("free_range") || lane === "gcts")
       ? seeds
       : [seeds[0]];
     for (const seed of laneSeeds) {
-      const row = await runLane(benchmarkCase, lane, seed);
-      rows.push(row);
-      if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "result", ...row })}\n`);
+      let proposalProgram = null;
+      const rounds = lane === "gcts" ? gctsRounds : 1;
+      for (let round = 0; round < rounds; round++) {
+        const row = await runLane(benchmarkCase, lane, seed, { proposalProgram, round });
+        rows.push(row);
+        proposalProgram = row.learnedProgram;
+        if (output === "ndjson") process.stdout.write(`${JSON.stringify({ type: "result", ...row })}\n`);
+      }
     }
   }
 }
@@ -415,6 +455,40 @@ const median = values => {
   const middle = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 };
+const gctsGrowthComparisons = cases
+  .filter(benchmarkCase => benchmarkCase.researchQueue)
+  .map(benchmarkCase => {
+    const free = rowsFor(benchmarkCase.id, "free_range");
+    const gcts = rowsFor(benchmarkCase.id, "gcts");
+    if (!free.length || !gcts.length) return null;
+    const freeDepths = free.map(row => row.largestPatch);
+    const gctsDepths = gcts.map(row => row.largestPatch);
+    const periodicControl = censusById.get(benchmarkCase.id)?.screening?.certificate === "translational";
+    const result = {
+      id: benchmarkCase.id,
+      role: periodicControl ? "periodic_control" : "hard_obstruction_control",
+      freeRange: {
+        robustLargestPatch: Math.min(...freeDepths),
+        medianLargestPatch: median(freeDepths),
+        bestLargestPatch: Math.max(...freeDepths)
+      },
+      gcts: {
+        robustLargestPatch: Math.min(...gctsDepths),
+        medianLargestPatch: median(gctsDepths),
+        bestLargestPatch: Math.max(...gctsDepths)
+      }
+    };
+    result.robustAdvantage = result.gcts.robustLargestPatch - result.freeRange.robustLargestPatch;
+    result.medianAdvantage = result.gcts.medianLargestPatch - result.freeRange.medianLargestPatch;
+    result.gatePassed = periodicControl
+      ? null
+      : result.robustAdvantage > 0 && result.medianAdvantage > 0;
+    return result;
+  })
+  .filter(Boolean);
+const hardGctsGrowthComparisons = gctsGrowthComparisons.filter(row => row.role === "hard_obstruction_control");
+const gctsGrowthGatePassed = hardGctsGrowthComparisons.length > 0
+  && hardGctsGrowthComparisons.every(row => row.gatePassed);
 const freeRangePolicySummary = (id, lane, policy) => {
   const trials = rowsFor(id, lane);
   if (!trials.length) return null;
@@ -545,6 +619,9 @@ const candidateSummaries = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
       translational: rowFor(id, "translational") ?? null,
       isohedral: rowFor(id, "isohedral") ?? null,
       freeRange: rowFor(id, "free_range") ?? null,
+      gcts: rowFor(id, "gcts") ?? null,
+      gctsTrials: rowsFor(id, "gcts"),
+      gctsWarmTrials: rows.filter(row => row.case === id && row.lane.startsWith("gcts_warm_")),
       freeRangeNoBrainer: rowFor(id, "free_range_no_brainer") ?? null,
       freeRangeUnbanded,
       freeRangeUnbandedTrials,
@@ -565,7 +642,7 @@ const candidateSummaries = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
 const unresolvedIds = new Set(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => candidate.id));
 const activeUnresolved = candidateSummaries.filter(candidate => unresolvedIds.has(candidate.id));
 const summary = {
-  schemaVersion: 20,
+  schemaVersion: 21,
   configuration: {
     target,
     timeMs,
@@ -573,6 +650,7 @@ const summary = {
     isohedralHorizon,
     periodicMax,
     nodeLimit,
+    gctsRounds,
     seeds,
     failureMemo,
     failureMemoSymmetry,
@@ -600,6 +678,8 @@ const summary = {
   },
   cases: cases.map(({ id, family, expected }) => ({ id, family, expected })),
   rows,
+  gctsGrowthComparisons,
+  gctsGrowthGatePassed,
   controls: controlGates,
   controlGatesPassed: Object.values(controlGates).every(Boolean),
   candidates: candidateSummaries,

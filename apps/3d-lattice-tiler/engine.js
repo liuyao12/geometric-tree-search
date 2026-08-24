@@ -789,6 +789,15 @@ export const createTilingStream = (() => {
       backtracks: 0,
       max_depth: 0,
       max_live_tiles: 1,
+      agent_observations: 0,
+      agent_resolved_failures: 0,
+      agent_incomplete_observations: 0,
+      agent_positive_growth_observations: 0,
+      agent_max_branch_growth: 0,
+      agent_learned_tags: 0,
+      agent_sibling_reorders: 0,
+      agent_policy: "crystal_probe",
+      agent_crystal_probe_nodes: 40,
       isohedral_transforms_discovered: 0,
       isohedral_patch_copies_applied: 0,
       isohedral_tiles_propagated: 0,
@@ -1760,12 +1769,18 @@ export const createTilingStream = (() => {
       return oldestFacesCovered * 1e6 + totalFacesCovered;
     };
 
+    const activeAgentBranchTrackers = [];
     const applyMove = (move, { countWork = true } = {}) => {
       if (countWork) searchWorkCounter += 1;
       const moveLayer = Number.isFinite(move.layer) ? move.layer : candidateMoveLayer(move);
       move.layer = moveLayer;
       state.placements.push(move);
       searchStats.max_live_tiles = Math.max(searchStats.max_live_tiles, state.placements.length);
+      if (countWork) {
+        for (const tracker of activeAgentBranchTrackers) {
+          tracker.peak_tiles = Math.max(tracker.peak_tiles, state.placements.length);
+        }
+      }
       state.placed_volume += tileVolumes[move.prototile_idx] ?? 0;
       stateVersion += 1;
       const changedOccupancyPositions = move.occupancy_data.map(o => o.pos);
@@ -2006,7 +2021,7 @@ export const createTilingStream = (() => {
     searchStats.move_order = moveOrder;
     const greedyNoBacktrack = !!config.greedy_no_backtrack;
     searchStats.backtracking_enabled = !greedyNoBacktrack;
-    const proposalProgram = moveOrder === "proposal"
+    const proposalProgram = ["proposal", "agent"].includes(moveOrder) && config.proposal_program
       ? normalizeProposalProgram(config.proposal_program)
       : null;
     if (proposalProgram) searchStats.proposal_patch_size = proposalProgram.patch_size;
@@ -3244,6 +3259,7 @@ export const createTilingStream = (() => {
       const growthShape = prospectiveGrowthShape(move);
       const features = {
         coverage: moveCoverage(move),
+        oldest_layer_completion: minimumLayerCompletionScore(move),
         root_corona_faces: coveredFrontierFaceScore(move, 0),
         frontier_faces: coveredFrontierFaceScore(move),
         isohedral_corona: isohedralCoronaScore(move),
@@ -3315,6 +3331,7 @@ export const createTilingStream = (() => {
     };
     const rlAgent = (() => {
       const values = new Map();
+      let selectedPolicy = "crystal_probe";
       const tagsFor = (features) => {
         const tags = [];
         if (features.periodic_evidence > 0) tags.push("periodic");
@@ -3322,14 +3339,72 @@ export const createTilingStream = (() => {
         if (features.root_corona_faces > 0) tags.push("root-corona");
         if (features.same_root_orientation > 0) tags.push("same-orientation");
         if (!tags.length) tags.push("fallback");
+        const isotropyBand = Math.max(0, Math.min(4, Math.floor(features.growth_isotropy * 5)));
+        const mrvBand = Number.isFinite(features.mrv_width)
+          ? Math.min(5, Math.floor(Math.log2(Math.max(1, features.mrv_width))))
+          : 6;
+        tags.push(
+          `layer:${features.layer_lag}:completion:${features.oldest_layer_completion > 0 ? 1 : 0}`,
+          `rank:${features.growth_axis_rank}:gain:${features.periodic_rank_gain}`,
+          `shape:${features.growth_axis_rank}:${isotropyBand}:${features.growth_planarity}`,
+          `coverage:${Math.min(4, Math.floor(features.coverage))}`,
+          `frontier:${Math.sign(features.frontier_faces)}`,
+          `mrv:${mrvBand}:rank:${features.growth_axis_rank}`
+        );
         return tags;
       };
-      const learnedValue = (features) =>
-        tagsFor(features).reduce((sum, tag) => sum + (values.get(tag)?.value ?? 0), 0);
+      const learnedValue = (features) => {
+        const marks = tagsFor(features);
+        if (!marks.length) return 0;
+        return marks.reduce((sum, tag) => {
+          const estimate = values.get(tag);
+          if (!estimate) return sum;
+          // Shrink sparse marks toward zero so a single failed branch cannot
+          // take over the search, then average across marks so adding a more
+          // descriptive vocabulary does not inflate the learned signal.
+          return sum + estimate.value * estimate.count / (estimate.count + 3);
+        }, 0) / marks.length;
+      };
+      const updateMarks = (features, reward) => {
+        for (const tag of tagsFor(features)) {
+          const current = values.get(tag) ?? { value: 0, count: 0 };
+          current.count += 1;
+          current.value += (reward - current.value) / current.count;
+          values.set(tag, current);
+        }
+        searchStats.agent_learned_tags = values.size;
+      };
       return {
+        usesGlobalProposalScope() {
+          return selectedPolicy === "structural";
+        },
+        learnsOnline() {
+          return selectedPolicy === "structural";
+        },
         score(move, option = null) {
           const features = moveAgentFeatures(move, option);
           const learned = learnedValue(features);
+          if (selectedPolicy === "crystal_probe" && searchWorkCounter >= 40) {
+            searchStats.agent_probe_max_live_tiles = searchStats.max_live_tiles;
+            selectedPolicy = searchStats.max_live_tiles >= 18 ? "crystal" : "structural";
+            searchStats.agent_policy = selectedPolicy;
+          }
+          if (selectedPolicy === "crystal_probe" || selectedPolicy === "crystal") {
+            // Probe the crystal hypothesis first. Continue exploiting it only
+            // if it produces rapid concrete growth; otherwise the policy
+            // permanently falls back to the general structural learner.
+            return [
+              features.periodic_rank_gain,
+              features.parallelogram_completion,
+              features.vector_repeat,
+              features.pair_periodic,
+              features.periodic_continuation,
+              features.same_root_orientation,
+              features.coverage,
+              learned,
+              seededTieBreaks ? seededTieValue(placementGeometryKey(move)) : 0
+            ];
+          }
           // Lexicographic priority: try full-rank periodic evidence first, then
           // build/reuse an isohedral corona. Same-direction vector repetition is
           // useful, but it is deliberately weaker so the agent does not merely
@@ -3337,6 +3412,7 @@ export const createTilingStream = (() => {
           return [
             features.periodic_rank_gain,
             features.growth_axis_rank,
+            learned,
             features.growth_isotropy,
             features.growth_planarity,
             -features.growth_max_span,
@@ -3347,21 +3423,28 @@ export const createTilingStream = (() => {
             features.orientation_diversity,
             features.root_corona_faces,
             features.frontier_faces,
-            learned,
             features.coverage,
             features.linear_repeat * 0.1,
-            Number.isFinite(features.mrv_width) ? -features.mrv_width : -1e9
+            Number.isFinite(features.mrv_width) ? -features.mrv_width : -1e9,
+            seededTieBreaks ? seededTieValue(placementGeometryKey(move)) : 0
           ];
         },
-        observe(move, success) {
+        observe(move, outcome) {
           const features = move._agent_proposal_features ?? moveAgentFeatures(move);
-          const reward = success ? 1 : -0.2;
-          for (const tag of tagsFor(features)) {
-            const current = values.get(tag) ?? { value: 0, count: 0 };
-            current.count += 1;
-            current.value += (reward - current.value) / current.count;
-            values.set(tag, current);
-          }
+          const startTiles = Math.max(1, outcome?.start_tiles ?? state.placements.length - 1);
+          const peakTiles = Math.max(startTiles, outcome?.peak_tiles ?? startTiles);
+          const growth = peakTiles - startTiles;
+          const reward = outcome?.success
+            ? 2
+            : growth > 0
+              ? Math.tanh(growth / 4)
+              : outcome?.incomplete ? 0 : -0.25;
+          updateMarks(features, reward);
+          searchStats.agent_observations += 1;
+          if (!outcome?.success && !outcome?.incomplete) searchStats.agent_resolved_failures += 1;
+          if (outcome?.incomplete) searchStats.agent_incomplete_observations += 1;
+          if (growth > 0) searchStats.agent_positive_growth_observations += 1;
+          searchStats.agent_max_branch_growth = Math.max(searchStats.agent_max_branch_growth, growth);
         }
       };
     })();
@@ -3511,7 +3594,7 @@ export const createTilingStream = (() => {
       return 0;
     };
     const policyAgentProposals = (analysis) => {
-      if (!usePolicyAgent) return [];
+      if (!usePolicyAgent || !rlAgent.usesGlobalProposalScope()) return [];
       const dedup = new Map();
       for (const option of analysis?.branches ?? []) {
         const moves = option.unique_candidates ?? [];
@@ -5854,6 +5937,17 @@ export const createTilingStream = (() => {
         setBranchCursor(depth, bestMoves.length, i);
         searchStats.branch_choices_visited += 1;
         searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
+        const agentBranchTracker = usePolicyAgent && rlAgent.learnsOnline()
+          ? {
+              // The candidate itself is the decision being evaluated. Reward
+              // only additional descendants, otherwise every immediate dead
+              // end looks like one unit of successful growth.
+              start_tiles: state.placements.length + 1,
+              peak_tiles: state.placements.length + 1,
+              move: mv
+            }
+          : null;
+        if (agentBranchTracker) activeAgentBranchTrackers.push(agentBranchTracker);
         const rb = applyMove(mv);
         yield placementDelta("add", mv, rb, mv.node_id);
         const postMoveAnalysis = genericGlobalExtensionEnumeration && !genericGlobalFrontierGraph
@@ -5877,7 +5971,16 @@ export const createTilingStream = (() => {
         }
 
         const child = yield* search(mv.node_id, depth + 1);
-        if (usePolicyAgent) rlAgent.observe(mv, child);
+        if (agentBranchTracker) {
+          const popped = activeAgentBranchTrackers.pop();
+          if (popped !== agentBranchTracker) throw new Error("agent branch tracker stack mismatch");
+          rlAgent.observe(mv, {
+            success: child,
+            incomplete: searchIncomplete,
+            start_tiles: agentBranchTracker.start_tiles,
+            peak_tiles: agentBranchTracker.peak_tiles
+          });
+        }
         if (child) {
           yield nodeStatus(mv.node_id, "success");
           return yield* doReturn(true);
@@ -5888,6 +5991,13 @@ export const createTilingStream = (() => {
         undoMove(mv, rb);
         yield placementDelta("remove", mv, rb, mv.node_id);
         setBranchCursor(depth, bestMoves.length, i + 1);
+        if (usePolicyAgent && rlAgent.learnsOnline() && i + 1 < bestMoves.length) {
+          const remaining = bestMoves.slice(i + 1).sort((left, right) =>
+            compareScoreVectors(rlAgent.score(left), rlAgent.score(right))
+          );
+          bestMoves.splice(i + 1, remaining.length, ...remaining);
+          searchStats.agent_sibling_reorders += 1;
+        }
       }
 
       yield nodeStatus(parentId, "fail");

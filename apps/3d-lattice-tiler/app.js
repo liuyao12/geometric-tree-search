@@ -4,11 +4,11 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-polycube10-v189";
+} from "./engine.js?v=20260824-gcts-policy-v190";
 import {
   normalizeProposalProgram,
   proposalTileKey
-} from "./proposal-learner.js?v=20260817-generation-band-v31";
+} from "./proposal-learner.js?v=20260824-gcts-tail-v32";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3693,7 +3693,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260823-polycube10-v131", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-gcts-policy-v132", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-polycube10-v189";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-gcts-policy-v190";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
@@ -6,7 +6,7 @@ import {
   normalizeProposalProgram,
   proposalTileKey,
   scoreProposalEvaluation
-} from "./proposal-learner.js?v=20260728-refined-proposals-v27";
+} from "./proposal-learner.js?v=20260824-gcts-tail-v32";
 
 const numeric = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const median = values => {

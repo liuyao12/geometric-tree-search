@@ -105,10 +105,20 @@ export function normalizeProposalProgram(raw = {}) {
   };
 }
 
-export function proposalProgramFromPatchSnapshot(config, snapshot, priorRaw = null) {
+export function proposalProgramFromPatchSnapshot(
+  config,
+  snapshot,
+  priorRaw = null,
+  { tailReserve = 0 } = {}
+) {
   const placements = snapshot?.placements;
   const prior = priorRaw ? normalizeProposalProgram(priorRaw) : null;
   if (!Array.isArray(placements) || placements.length < 2) return prior;
+  const reserved = Math.max(0, Math.min(
+    placements.length - 2,
+    Math.floor(Number(tailReserve) || 0)
+  ));
+  const learnedPlacements = reserved > 0 ? placements.slice(0, -reserved) : placements;
   const rootTranslation = placements[0].translation ?? [0, 0, 0];
   const tileKey = proposalTileKey(config);
   return normalizeProposalProgram({
@@ -125,7 +135,7 @@ export function proposalProgramFromPatchSnapshot(config, snapshot, priorRaw = nu
         growth_compactness: 0.25
       }
     }],
-    patch: placements.map(placement => ({
+    patch: learnedPlacements.map(placement => ({
       prototile_idx: placement.prototile_idx ?? 0,
       orientation_id: placement.orientation_id ?? null,
       orientation_signature: placement.orientation_signature ?? null,

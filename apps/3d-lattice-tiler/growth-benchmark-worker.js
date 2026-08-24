@@ -1,8 +1,8 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-polycube10-v189";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-gcts-policy-v190";
 import {
   normalizeProposalProgram,
   proposalProgramFromPatchSnapshot
-} from "./proposal-learner.js?v=20260817-generation-band-v31";
+} from "./proposal-learner.js?v=20260824-gcts-tail-v32";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -95,9 +95,11 @@ async function runMode(sequence, baseConfig, mode) {
   const config = {
     ...baseConfig,
     tiling_strategy: mode.strategy,
-    move_order: priorProgram
-      ? "proposal"
-      : shellSearch && mode.proof ? "shell" : mode.moveOrder,
+    move_order: mode.id === "gcts"
+      ? "agent"
+      : priorProgram
+        ? "proposal"
+        : shellSearch && mode.proof ? "shell" : mode.moveOrder,
     proposal_program: priorProgram,
     agent_exhaustive: mode.agentExhaustive,
     greedy_no_backtrack: false,
@@ -203,7 +205,7 @@ async function runMode(sequence, baseConfig, mode) {
       if (
         mode.id === "gcts"
         && Array.isArray(snapshot?.placements)
-        && (!bestSnapshot || tiles >= (bestSnapshot.tile_count ?? 0))
+        && (!bestSnapshot || tiles > (bestSnapshot.tile_count ?? 0))
       ) bestSnapshot = snapshot;
     }
     if (message.type === "full_update") terminalSnapshot = message;
@@ -212,7 +214,9 @@ async function runMode(sequence, baseConfig, mode) {
 
   const elapsed = Math.round(performance.now() - started);
   const learnedProgram = mode.id === "gcts" && bestSnapshot?.placements?.length > 1
-    ? proposalProgramFromPatchSnapshot(baseConfig, bestSnapshot, priorProgram)
+    ? proposalProgramFromPatchSnapshot(baseConfig, bestSnapshot, priorProgram, {
+        tailReserve: Math.min(6, Math.max(2, Math.floor(best / 5)))
+      })
     : priorProgram;
   if (mode.id === "isohedral" && final?.success === false) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
