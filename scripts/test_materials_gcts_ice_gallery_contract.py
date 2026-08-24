@@ -11,7 +11,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     source = APP.read_text(encoding="utf-8")
     style = STYLE.read_text(encoding="utf-8")
 
-    assert 'from "./molecular-components.js?v=20260824-1"' in source
+    assert 'from "./molecular-components.js?v=20260824-2"' in source
     assert 'molecularCover: "water"' not in source
     assert "function molecularComponentHypothesis(source)" in source
     assert "function discoveredWaterComponents(discovery)" in source
@@ -46,11 +46,11 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert 'eyebrow: "atomic cover"' in source
     assert 'eyebrow: "connection cover"' in source
     assert 'eyebrow: "void-boundary cover"' in source
-    assert "H₂O closes the atom cover" in source
+    assert 'molecular.water ? "H₂O" : "Finite molecules"' in source
     assert "button.dataset.clusterLedgerFilter" in source
     assert "data-cluster-family-filter" in source
     assert ".cluster-cover-ledger" in style
-    assert '["molecule", "H₂O molecules"]' in source
+    assert '["molecule", learnedCover.molecular.water ? "H₂O molecules" : "Molecules"]' in source
     assert '["bridge", "Bridge polyhedra"]' in source
     assert '["gap", "Gap boundaries"]' in source
     assert "no classes merged" in source

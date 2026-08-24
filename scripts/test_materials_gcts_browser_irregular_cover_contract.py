@@ -12,8 +12,8 @@ def test_browser_uses_one_occurrence_cover_through_search() -> None:
     learner = (APP / "irregular-cover.js").read_text(encoding="utf-8")
 
     assert 'import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1"' in source
-    assert "function buildIrregularClusterCover(source)" in source
-    assert "return buildIrregularClusterCover(source)" in source
+    assert "function buildIrregularClusterCover(source, molecularDiscovery)" in source
+    assert "return buildIrregularClusterCover(source, molecularDiscovery)" in source
     assert "occurrenceBased: true" in source
     assert "function learnCoverOverlapMarking(source)" in source
     assert "function learnIrregularOverlapGrammar(source)" in source

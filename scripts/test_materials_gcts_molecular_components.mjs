@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
-import { discoverFiniteMolecularComponents } from "../apps/iqc-growth-live/molecular-components.js";
+import {
+  discoverFiniteMolecularComponents,
+  discoverMolecularConnectionTopology,
+} from "../apps/iqc-growth-live/molecular-components.js";
 
 const euclidean = (positions) => (first, second) => Math.hypot(
   positions[first][0] - positions[second][0],
@@ -59,8 +62,28 @@ assert.equal(ionic.reason, "unsupported chemistry metadata");
 assert.deepEqual(ionic.unsupported, ["Na"]);
 assert.equal(ionic.materialLabelUsed, false);
 
+const co2Centers = [[0, 0, 0], [5, 0, 0], [5, 5, 0], [0, 5, 0]];
+const co2Positions = co2Centers.flatMap(([x, y, z]) => [[x, y, z], [x, y, z - 1.16], [x, y, z + 1.16]]);
+const co2Species = co2Centers.flatMap(() => ["C", "O", "O"]);
+const co2 = discoverFiniteMolecularComponents({ species: co2Species, distance: euclidean(co2Positions) });
+assert.equal(co2.accepted, true);
+assert.deepEqual(co2.types[0].formula, [["C", 1], ["O", 2]]);
+const co2Topology = discoverMolecularConnectionTopology({
+  discovery: co2,
+  species: co2Species,
+  distance: euclidean(co2Positions),
+});
+assert.equal(co2Topology.componentGraphConnected, true);
+assert.equal(co2Topology.connections.length, 4);
+assert.equal(co2Topology.connectionTypeCount, 1);
+assert.equal(co2Topology.voids.length, 1);
+assert.equal(co2Topology.voids[0].components.length, 4);
+assert.equal(co2Topology.voidTypeCount, 1);
+assert.equal(co2Topology.expectedRingSizeUsed, false);
+
 console.log("generic finite molecular component discovery: passed", {
   formula: water.types[0].formula,
   occurrences: water.types[0].occurrences.length,
   chainFallback: chain.reason,
+  co2Topology: [co2Topology.connections.length, co2Topology.voids.length],
 });

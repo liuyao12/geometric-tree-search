@@ -11,7 +11,10 @@ import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
-import { discoverFiniteMolecularComponents } from "./molecular-components.js?v=20260824-1";
+import {
+  discoverFiniteMolecularComponents,
+  discoverMolecularConnectionTopology,
+} from "./molecular-components.js?v=20260824-2";
 import {
   aggregateMarkingReadout,
   coloredConnectionChirality,
@@ -262,6 +265,7 @@ const ELEMENTS = {
 const MATERIALS = {
   iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
   iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
+  dryIce: { name: "dry ice CO₂-I", elements: ["C", "O"], spacingA: 1.168, cell: "cubic molecular solid · Pa-3 · a = 5.578 Å", periodicWindow: true, referenceCellA: 16.734, order: "crystal", symmetry: "Pa-3 · #205", audit: "generic molecular + connection + void cover", motifShellCutoff: 4.2, descriptorCutoff: 4.6, overlapDistanceCutoff: 4.8, molecularFixture: "dry-ice-pa3", note: "A non-water molecular-crystal control: the learner must discover linear CO₂ components and intermolecular connection/void topology without receiving the CO₂ formula or Pa-3 label." },
   graphene: { name: "graphene monolayer", elements: ["C"], spacingA: 1.42, cell: "single hexagonal sheet", order: "crystal", symmetry: "p6/mmm layer group", audit: "2D translations + diffraction", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: 0, species: ["C", "C"] }], note: "A one-component intrinsic-2D positive control learned after arbitrary embedding in 3D." },
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", periodicWindow: true, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
@@ -273,6 +277,7 @@ const MATERIALS = {
 const RECURSIVE_BENCHMARKS = {
   iceIh: { hierarchy: [1, 8, "pose domains"], curve: [27, 43, 51], mark: "unanimous orientation domains", action: "2 exact blind O frontiers", speed: "16 → 8 exact · then fixed", gate: "pass anchor · molecular growth open", status: "limit", note: "The physically corrected fixture obeys the Bernal–Fowler ice rules: every H₂O donates twice and every O–O connection carries exactly one proton. The known periodic window has one H₂O class, 3 decorated bridge classes, and 33 decorated O₆ ring-boundary classes; together their occurrences cover 216/216 atoms. The sealed gate learns 8 proper-SE(3) ports on a disjoint 201-atom window. Factoring mutually exclusive H₂O poses emits 16/16 and then 8/8 correct unseen oxygen anchors before a safe fixed point. Proton orientations remain unresolved, so full-molecule, stationary, and exponential ice growth stay red." },
   iceIc: { hierarchy: [1, 8, "pose domains"], curve: [15, 27], mark: "Ih ports → Ic alternatives", action: "1 exact cross-polytype frontier", speed: "12 exact · then safe fixed point", gate: "progress · cross-polytype blind transfer", status: "limit", note: "The Ih-fitted 8-port grammar transfers to a disjoint cubic-ice seed without refitting or target access. Its first unseen oxygen frontier is 12/12 exact and the whole-molecule path reaches 100% oxygen recall, but premature proton choices lower precision. Domain unanimity rejects unsupported depth-2 anchors rather than emitting false sites. This isolates the remaining task as a bounded proton-orientation connection marking, not a new lattice backend." },
+  dryIce: { hierarchy: ["molecule", "pair", "void"], curve: [324], mark: "generic molecular ports", action: "known-window cover only", speed: "measure before claim", gate: "control · continuation open", status: "control", note: "A saved Pa-3 CO₂-I window exercises the generic, non-water molecular front end. Exact atom, connection, and void-boundary cover is required; no autonomous or stationary dry-ice growth result is claimed." },
   graphene: { hierarchy: [1, 4, 16], curve: [373, 1495, 5983, 23935, 95743, 382975, 1531903], mark: "one C₂ sheet pose", action: "6 area rewrites → 1.53m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The generic planar atlas learns one C₂ motif pose and exactly predicts an unseen 1,495-atom disk." },
   hbn: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "finite registry + pose fallback", action: "6 area rewrites → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The registry vocabulary remains bounded for the aligned bilayer and the generic planar atlas preserves both learned sheet poses." },
   competition: { hierarchy: [7, 27, 164], curve: [216, 1728, 13824, 110592, 884736, 7077888], mark: "translation quotient", action: "5 rewrites → 7.08m", speed: "8× per action", gate: "pass · cell-free", status: "pass", note: "From 216 colored positions, the hierarchy discovers three composable translations without using the supplied cell. The recursive quotient reaches 7,077,888 implicit atoms in five actions." },
@@ -1434,6 +1439,46 @@ function makeIceReferenceConfiguration(polytype) {
     .sort((first, second) => first.p.lengthSq() - second.p.lengthSq() || first.species.localeCompare(second.species));
 }
 
+function makeDryIceReferenceConfiguration() {
+  // Low-pressure CO2-I: carbon atoms occupy an fcc array and the linear
+  // molecules follow the four body-diagonal orientations of Pa-3. The saved
+  // 80 K lattice constant is 5.578 A; the intramolecular C--O distance uses
+  // the 1.168 A diffraction value reported for phase I under compression.
+  const latticeA = 5.578;
+  const bondA = 1.168;
+  const repeats = 3;
+  const lengthA = latticeA * repeats;
+  const basis = [
+    { fractional: [0, 0, 0], axis: [1, 1, 1] },
+    { fractional: [0, .5, .5], axis: [1, -1, -1] },
+    { fractional: [.5, 0, .5], axis: [-1, 1, -1] },
+    { fractional: [.5, .5, 0], axis: [-1, -1, 1] },
+  ];
+  const wrap = (value) => ((value % lengthA) + lengthA) % lengthA;
+  const records = [];
+  for (let ix = 0; ix < repeats; ix++) for (let iy = 0; iy < repeats; iy++) for (let iz = 0; iz < repeats; iz++) {
+    basis.forEach(({ fractional, axis }, basisIndex) => {
+      const carbon = new THREE.Vector3(
+        (ix + fractional[0]) * latticeA,
+        (iy + fractional[1]) * latticeA,
+        (iz + fractional[2]) * latticeA,
+      );
+      const direction = new THREE.Vector3(...axis).normalize().multiplyScalar(bondA);
+      const molecule = records.length / 3;
+      records.push({ pA: carbon, species: "C", family: "dry-ice-pa3", molecule, q: [ix, iy, iz, basisIndex] });
+      [-1, 1].forEach((sign) => {
+        const oxygen = carbon.clone().addScaledVector(direction, sign);
+        oxygen.set(wrap(oxygen.x), wrap(oxygen.y), wrap(oxygen.z));
+        records.push({ pA: oxygen, species: "O", family: "dry-ice-pa3", molecule, q: [ix, iy, iz, basisIndex] });
+      });
+    });
+  }
+  const center = new THREE.Vector3(lengthA / 2, lengthA / 2, lengthA / 2);
+  const scale = .92 / bondA;
+  return records.map((atom, sourceIndex) => ({ ...atom, p: atom.pA.clone().sub(center).multiplyScalar(scale), sourceIndex }))
+    .sort((first, second) => first.p.lengthSq() - second.p.lengthSq() || first.species.localeCompare(second.species));
+}
+
 function makeSyntheticReferenceSite(qx, qy, qz, sourceIndex = 0, scenario = scenarioSelect.value) {
   const material = MATERIALS[scenario];
   let family = qx < -Math.abs(qy) * .35 ? "BC8" : qx > Math.abs(qy) * .35 ? "glass" : "IQC";
@@ -1507,6 +1552,7 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq());
   }
   if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
+  if (MATERIALS[scenario]?.molecularFixture === "dry-ice-pa3") return makeDryIceReferenceConfiguration();
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
   if (scenario === "random") return makeMetallicGlassReference();
   const result = [];
@@ -1554,6 +1600,10 @@ function currentCell() {
   if (currentMaterial().icePolytype) {
     const definition = iceDefinition(currentMaterial().icePolytype);
     return definition.primitive.map((vector, axis) => vector.clone().multiplyScalar(definition.repeats[axis]));
+  }
+  if (currentMaterial().referenceCellA) {
+    const length = currentMaterial().referenceCellA;
+    return [new THREE.Vector3(length, 0, 0), new THREE.Vector3(0, length, 0), new THREE.Vector3(0, 0, length)];
   }
   if (scenarioSelect.value === "imported" && importedStructure?.cell) {
     return importedStructure.cell.map((vector) => new THREE.Vector3(...vector));
@@ -2084,7 +2134,7 @@ function buildWaterClusterCover(source, molecularDiscovery) {
     if (!Number.isInteger(oxygenIndex) || bonded.length !== 2) return;
     const waterIndex = waters.length;
     const support = [oxygenIndex, ...bonded];
-    waters.push({ center: oxygenIndex, support, type: 0, residual: false, kind: "H₂O molecule" });
+    waters.push({ center: oxygenIndex, support, type: 0, residual: false, kind: "H₂O molecule", family: "molecule" });
     support.forEach((atomIndex) => owner.set(atomIndex, waterIndex));
   });
 
@@ -2101,7 +2151,7 @@ function buildWaterClusterCover(source, molecularDiscovery) {
   const bridges = [...bridgePairs].map((key) => key.split(":").map(Number)).map(([first, second]) => ({
     center: waters[first].center,
     support: [...new Set([...waters[first].support, ...waters[second].support])],
-    type: 1, residual: false, kind: "H₂O···H₂O bridge", waterPair: [first, second],
+    type: 1, residual: false, kind: "H₂O···H₂O bridge", waterPair: [first, second], family: "bridge",
   }));
 
   const adjacency = Array.from({ length: waters.length }, () => new Set());
@@ -2127,7 +2177,7 @@ function buildWaterClusterCover(source, molecularDiscovery) {
   const gaps = [...ringPaths.values()].map((ring) => ({
     center: waters[ring[0]].center,
     support: [...new Set(ring.flatMap((waterIndex) => waters[waterIndex].support))],
-    type: 2, residual: false, gap: true, kind: "oxygen-ring gap boundary",
+    type: 2, residual: false, gap: true, kind: "oxygen-ring gap boundary", family: "gap",
     ring: ring.slice(),
   }));
   const placements = [...waters, ...bridges, ...gaps];
@@ -2153,10 +2203,148 @@ function buildWaterClusterCover(source, molecularDiscovery) {
   return { placements, residualTypes: [], types, galleryTypes, incidence, covered: coveredAtoms.size,
     complete: coveredAtoms.size === source.length, periodic: true,
     molecularDiscovery: molecularDiscoverySummary(molecularDiscovery, "molecular connection / void cover"),
-    molecular: { waters: waters.length, bridges: bridges.length, gaps: gaps.length,
+    molecular: { water: true, molecules: waters.length, connections: bridges.length, voids: gaps.length,
+      moleculeClasses: galleryTypes.filter((type) => type.familyType === 0).length,
+      connectionClasses: galleryTypes.filter((type) => type.familyType === 1).length,
+      voidClasses: galleryTypes.filter((type) => type.familyType === 2).length,
+      waters: waters.length, bridges: bridges.length, gaps: gaps.length,
       waterClasses: galleryTypes.filter((type) => type.familyType === 0).length,
       bridgeClasses: galleryTypes.filter((type) => type.familyType === 1).length,
       gapClasses: galleryTypes.filter((type) => type.familyType === 2).length } };
+}
+
+function molecularFormulaLabel(source, support) {
+  const counts = new Map();
+  support.forEach((index) => counts.set(source[index].species, (counts.get(source[index].species) || 0) + 1));
+  return [...counts.entries()].sort(([first], [second]) => first.localeCompare(second))
+    .map(([element, count]) => `${element}${count === 1 ? "" : count}`).join("");
+}
+
+function molecularComponentAnchor(source, support) {
+  const populations = new Map();
+  support.forEach((index) => populations.set(source[index].species, (populations.get(source[index].species) || 0) + 1));
+  return support.map((index) => ({
+    index,
+    key: [
+      String(populations.get(source[index].species)).padStart(3, "0"),
+      source[index].species,
+      ...support.filter((other) => other !== index).map((other) =>
+        `${source[other].species}:${periodicDisplacement(source[index], source[other]).length().toFixed(3)}`).sort(),
+    ].join("|"),
+  })).sort((first, second) => first.key.localeCompare(second.key) || first.index - second.index)[0].index;
+}
+
+function genericMolecularDisplayEdges(source, support, discovery, connectedComponents = null) {
+  const local = new Map(support.map((atomIndex, index) => [atomIndex, index]));
+  const edges = discovery.edges.filter(([first, second]) => local.has(first) && local.has(second))
+    .map(([first, second]) => [local.get(first), local.get(second), "bond"]);
+  if (connectedComponents?.length === 2) {
+    let contact = null;
+    discovery.components[connectedComponents[0]].forEach((first) => discovery.components[connectedComponents[1]].forEach((second) => {
+      const separation = periodicDisplacement(source[first], source[second]).length();
+      if (!contact || separation < contact.separation) contact = { first, second, separation };
+    }));
+    if (contact) edges.push([local.get(contact.first), local.get(contact.second), "hydrogen"]);
+  }
+  return edges;
+}
+
+function unwrappedMolecularCycle(source, discovery, cycle) {
+  const anchors = cycle.map((component) => molecularComponentAnchor(source, discovery.components[component]));
+  if (!anchors.length) return [];
+  const vectors = [new THREE.Vector3()];
+  for (let index = 1; index < anchors.length; index++) {
+    vectors.push(vectors[index - 1].clone().add(periodicDisplacement(source[anchors[index - 1]], source[anchors[index]])));
+  }
+  const centroid = vectors.reduce((sum, vector) => sum.add(vector), new THREE.Vector3()).multiplyScalar(1 / vectors.length);
+  return vectors.map((vector) => vector.clone().sub(centroid));
+}
+
+function buildGenericMolecularClusterCover(source, molecularDiscovery) {
+  const topology = discoverMolecularConnectionTopology({
+    discovery: molecularDiscovery,
+    species: source.map((atom) => atom.species),
+    distance: (first, second) => periodicDisplacement(source[first], source[second]).length(),
+  });
+  if (!topology.componentGraphConnected) return null;
+  const moleculeTypes = molecularDiscovery.types.length;
+  const connectionOffset = moleculeTypes;
+  const voidOffset = moleculeTypes + topology.connectionTypeCount;
+  const moleculePlacements = molecularDiscovery.components.map((support, component) => {
+    const type = molecularDiscovery.types.find((candidate) => candidate.occurrences.some((members) => members.join(":") === support.join(":"))).type;
+    return { center: molecularComponentAnchor(source, support), support: support.slice(), type,
+      residual: false, kind: "finite molecular component", component, family: "molecule" };
+  });
+  const connectionPlacements = topology.connections.map((connection) => ({
+    center: molecularComponentAnchor(source, molecularDiscovery.components[connection.components[0]]),
+    support: connection.members.slice(), type: connectionOffset + connection.type,
+    residual: false, kind: "molecule-pair connection", components: connection.components.slice(), family: "bridge",
+  }));
+  const voidPlacements = topology.voids.map((boundary) => ({
+    center: molecularComponentAnchor(source, molecularDiscovery.components[boundary.components[0]]),
+    support: boundary.members.slice(), type: voidOffset + boundary.type,
+    residual: false, gap: true, kind: "molecular void boundary", components: boundary.components.slice(), family: "gap",
+  }));
+  const placements = [...moleculePlacements, ...connectionPlacements, ...voidPlacements];
+  placements.forEach((placement, coverIndex) => { placement.coverIndex = coverIndex; });
+  const types = [];
+  for (let type = 0; type < voidOffset + topology.voidTypeCount; type++) {
+    const members = placements.filter((placement) => placement.type === type);
+    const representative = members[0];
+    if (!representative) continue;
+    const molecule = type < connectionOffset;
+    const connection = type >= connectionOffset && type < voidOffset;
+    const visualSupport = representative.gap
+      ? representative.components.map((component) => molecularComponentAnchor(source, molecularDiscovery.components[component]))
+      : representative.support;
+    const formula = molecule ? molecularFormulaLabel(source, representative.support)
+      : connection ? representative.components.map((component) => molecularFormulaLabel(source, molecularDiscovery.components[component])).join(" + ")
+        : `${representative.components.length}-molecule void`;
+    types.push({
+      type,
+      medoid: representative.center,
+      element: formula,
+      shortLabel: molecule ? formula : connection ? "connection" : "void",
+      label: `${molecule ? formula : connection ? "molecular connection" : "molecular void"} · I${(molecule ? type : connection ? type - connectionOffset : type - voidOffset) + 1}`,
+      geometry: molecule ? "finite molecular polyhedron" : connection ? "molecule-pair connection polyhedron" : "void-boundary polygon",
+      count: members.length,
+      visualKind: molecule ? "molecule" : connection ? "bridge" : "ring",
+      gap: !molecule && !connection,
+      customSupport: visualSupport,
+      customVectors: representative.gap
+        ? unwrappedMolecularCycle(source, molecularDiscovery, representative.components)
+        : centeredPeriodicSupport(source, visualSupport),
+      displayEdges: molecule || connection
+        ? genericMolecularDisplayEdges(source, representative.support, molecularDiscovery, representative.components)
+        : null,
+      classSignature: molecule ? molecularDiscovery.types[type].signature
+        : connection ? topology.connections.find((record) => record.type === type - connectionOffset).signature
+          : topology.voids.find((record) => record.type === type - voidOffset).signature,
+      classPlacementIndices: members.map((placement) => placement.coverIndex),
+      classIndex: molecule ? type : connection ? type - connectionOffset : type - voidOffset,
+      classCount: molecule ? moleculeTypes : connection ? topology.connectionTypeCount : topology.voidTypeCount,
+    });
+  }
+  const coveredAtoms = new Set(moleculePlacements.flatMap((placement) => placement.support));
+  const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) =>
+    placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
+  return {
+    placements, residualTypes: [], types, galleryTypes: types, incidence,
+    covered: coveredAtoms.size, complete: coveredAtoms.size === source.length,
+    periodic: currentPbc().some(Boolean),
+    molecularDiscovery: molecularDiscoverySummary(molecularDiscovery, "generic molecular connection / void cover"),
+    molecular: {
+      water: false,
+      molecules: moleculePlacements.length,
+      connections: connectionPlacements.length,
+      voids: voidPlacements.length,
+      moleculeClasses: moleculeTypes,
+      connectionClasses: topology.connectionTypeCount,
+      voidClasses: topology.voidTypeCount,
+      componentGraphConnected: topology.componentGraphConnected,
+      expectedRingSizeUsed: topology.expectedRingSizeUsed,
+    },
+  };
 }
 
 function buildIrregularClusterCover(source, molecularDiscovery) {
@@ -2226,6 +2414,10 @@ function buildExhaustiveClusterCover(source) {
   const molecularDiscovery = molecularComponentHypothesis(source);
   const waterDiscovery = discoveredWaterComponents(molecularDiscovery);
   if (waterDiscovery) return buildWaterClusterCover(source, waterDiscovery);
+  if (molecularDiscovery.accepted) {
+    const molecularCover = buildGenericMolecularClusterCover(source, molecularDiscovery);
+    if (molecularCover) return molecularCover;
+  }
   return buildIrregularClusterCover(source, molecularDiscovery);
 }
 
@@ -2283,16 +2475,17 @@ function molecularCoverIcon(family) {
 
 function buildMolecularCoverLedger(types) {
   if (!learnedCover.molecular) return null;
+  const molecular = learnedCover.molecular;
   const ledger = document.createElement("div");
   ledger.className = "cluster-cover-ledger";
   ledger.setAttribute("aria-label", "Molecular ice cover accounting");
   const layers = [
-    { family: "molecule", eyebrow: "atomic cover", title: `${learnedCover.molecular.waters} H₂O`,
-      detail: `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.molecular.waterClasses} isometry class` },
-    { family: "bridge", eyebrow: "connection cover", title: `${learnedCover.molecular.bridges} bridges`,
-      detail: `${learnedCover.molecular.bridgeClasses} metric-isometry classes · attachment geometry` },
-    { family: "gap", eyebrow: "void-boundary cover", title: `${learnedCover.molecular.gaps} O₆ boundaries`,
-      detail: `${learnedCover.molecular.gapClasses} decorated classes · empty-region geometry` },
+    { family: "molecule", eyebrow: "atomic cover", title: molecular.water ? `${molecular.waters} H₂O` : `${molecular.molecules} molecules`,
+      detail: `${learnedCover.covered} / ${referenceCount()} atoms · ${molecular.moleculeClasses} isometry class${molecular.moleculeClasses === 1 ? "" : "es"}` },
+    { family: "bridge", eyebrow: "connection cover", title: `${molecular.connections} connections`,
+      detail: `${molecular.connectionClasses} metric-isometry classes · attachment geometry` },
+    { family: "gap", eyebrow: "void-boundary cover", title: `${molecular.voids} ${molecular.water ? "O₆ boundaries" : "void boundaries"}`,
+      detail: `${molecular.voidClasses} ${molecular.water ? "decorated" : "graph-derived"} classes · empty-region geometry` },
   ];
   layers.forEach((layer) => {
     const button = document.createElement("button");
@@ -2307,7 +2500,7 @@ function buildMolecularCoverLedger(types) {
     ledger.append(button);
   });
   const explanation = document.createElement("p");
-  explanation.textContent = "H₂O closes the atom cover; bridge and O₆ clusters encode connection and void geometry without inventing radial spokes.";
+  explanation.textContent = `${molecular.water ? "H₂O" : "Finite molecules"} close the atom cover; connection and void clusters encode intermolecular geometry without inventing radial spokes.`;
   ledger.append(explanation);
   return ledger;
 }
@@ -2356,7 +2549,7 @@ function buildMolecularGalleryToolbar(types) {
   controls.setAttribute("aria-label", "Filter molecular cluster isometry classes");
   const status = document.createElement("p");
   const filters = learnedCover.molecular ? [
-    ["all", "All exact classes"], ["molecule", "H₂O molecules"],
+    ["all", "All exact classes"], ["molecule", learnedCover.molecular.water ? "H₂O molecules" : "Molecules"],
     ["bridge", "Bridge polyhedra"], ["gap", "Gap boundaries"],
   ] : [
     ["all", "All cover classes"], ["support", "Recurring supports"],
@@ -2517,7 +2710,9 @@ function waterBridgePolyhedron(sites) {
 }
 
 function clusterDisplayTopology(cluster, sites) {
-  if (cluster.visualKind === "molecule") return { faces: [[0, 1, 2]], edges: [[0, 1, "bond"], [0, 2, "bond"], [1, 2, "outline"]] };
+  if (cluster.visualKind === "molecule" && !cluster.displayEdges) {
+    return { faces: [[0, 1, 2]], edges: [[0, 1, "bond"], [0, 2, "bond"], [1, 2, "outline"]] };
+  }
   if (cluster.visualKind === "ring") {
     const edges = sites.map((_, index) => [index, (index + 1) % sites.length, "ring"]);
     return { faces: [sites.map((_, index) => index)], edges };
@@ -2533,6 +2728,9 @@ function clusterDisplayTopology(cluster, sites) {
     const key = first < second ? `${first}:${second}` : `${second}:${first}`;
     if (!edges.has(key)) edges.set(key, [first, second, "outline"]);
   }));
+  (cluster.displayEdges || []).forEach(([first, second, kind]) => {
+    edges.set(`${kind}:${Math.min(first, second)}:${Math.max(first, second)}`, [first, second, kind]);
+  });
   return { faces, edges: [...edges.values()] };
 }
 
@@ -2858,15 +3056,17 @@ function learnMolecularOverlapGrammar(source) {
       .sort((first, second) => second.shared - first.shared || second.fresh - first.fresh || first.index - second.index);
     if (!candidates.length) {
       const missing = source.findIndex((_, atomIndex) => !coveredAtoms.has(atomIndex));
-      const water = occurrences.find((occurrence) => occurrence.type === 0 && occurrence.placement.support.includes(missing));
-      if (!water) break;
+      const molecule = occurrences.find((occurrence) => occurrence.placement.family === "molecule"
+        && occurrence.placement.support.includes(missing));
+      if (!molecule) break;
       const anchors = [...coveredAtoms].map((atomIndex) => ({ atomIndex,
-        distance: periodicDisplacement(source[water.placement.center], source[atomIndex]).length() }))
+        distance: periodicDisplacement(source[molecule.placement.center], source[atomIndex]).length() }))
         .sort((first, second) => first.distance - second.distance).slice(0, 2).map((entry) => entry.atomIndex);
       if (anchors.length < 2) break;
-      const connector = { center: water.placement.center,
-        support: [...new Set([...anchors, ...water.placement.support])],
-        type: 2, residual: false, gap: true, kind: "learned residual gap connector" };
+      const connector = { center: molecule.placement.center,
+        support: [...new Set([...anchors, ...molecule.placement.support])],
+        type: learnedCover.types.length, residual: true, gap: true,
+        kind: "learned residual gap connector", family: "gap" };
       occurrences.push(makeOccurrence(connector, occurrences.length));
       continue;
     }
@@ -3314,7 +3514,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-23",
+      buildId: "20260824-24",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4923,7 +5123,7 @@ function renderMolecularHypothesis() {
     panel.classList.add("accepted");
     molecularHypothesisState.textContent = `${audit.components} recurrent finite component${audit.components === 1 ? "" : "s"}${labels.length ? ` · ${labels.join(" + ")}` : ""}`;
     molecularHypothesisEvidence.textContent = `${audit.covalentEdges} covalent edges · largest component ${audit.largestComponent} atoms · material/formula labels 0`;
-    molecularHypothesisRoute.textContent = audit.route.startsWith("molecular") ? "molecular cover" : "irregular fallback";
+    molecularHypothesisRoute.textContent = audit.route.includes("molecular") ? "molecular cover" : "irregular fallback";
     return;
   }
   const unavailable = audit.reason === "unsupported chemistry metadata";
@@ -5140,7 +5340,7 @@ function enterPipelineStage(index, options = {}) {
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
   else if (pipelineStage === 3) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
-  else if (learnedCover.molecular) initializeIceAnchorSearch();
+  else if (learnedCover.molecular?.water && currentMaterial().icePolytype) initializeIceAnchorSearch();
   else initializeOffLatticeSearch();
   if (pipelineStage < 4) rebuildSpatialIndex();
   buildConfinement();
@@ -5196,7 +5396,7 @@ function updateStageNarrative() {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
       caption: `${learnedCover.covered}/${referenceCount()} atoms are covered by ${learnedCover.placements.length} overlapping placements on the ${currentPbc().some(Boolean) ? "periodic quotient" : "finite non-periodic window"}. ${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} symmetry-inequivalent cluster poses cover all observed occurrences.`, badge: "learn",
       decision: "Cluster cover and pose atlas computed", copy: "Element-resolved radial and angular descriptors define approximate isometry classes. Their centered colored point sets are compared in the laboratory frame, automatically quotienting each cluster's proper self-symmetries; uncovered components remain explicit residual types.",
-      values: [`${descriptorCutoff().toFixed(2)}a cutoff`, `${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} pose classes`, `${learnedCover.placements.length} placements`, learnedCover.molecular ? `${learnedCover.molecular.waters} H₂O · ${learnedCover.molecular.bridges} bridges · ${learnedCover.molecular.gaps} gaps` : `${learnedCover.residualTypes.length} residual types`],
+      values: [`${descriptorCutoff().toFixed(2)}a cutoff`, `${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} pose classes`, `${learnedCover.placements.length} placements`, learnedCover.molecular ? `${learnedCover.molecular.molecules} molecules · ${learnedCover.molecular.connections} connections · ${learnedCover.molecular.voids} voids` : `${learnedCover.residualTypes.length} residual types`],
     },
     {
       eyebrow: "encoding · clusters of clusters", title: "Promote repeated overlaps into finite connection states", phase: `${overlapGrammar.rules.length} rules`,
@@ -5222,36 +5422,41 @@ function updateStageNarrative() {
     },
   ];
   if (learnedCover.molecular) {
+    const water = learnedCover.molecular.water;
     narratives[1].eyebrow = "learning · molecular and gap cover";
     narratives[1].decision = "Molecular overlap cover computed";
-    narratives[1].copy = "Species-resolved bond geometry discovers one H₂O motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom.";
-    narratives[1].caption = `${learnedCover.molecular.waters} H₂O molecular placements cover every observed atom; ${learnedCover.molecular.bridges} hydrogen-bond connection polyhedra and ${learnedCover.molecular.gaps} six-water void-boundary polyhedra fill the connection grammar. The scrollable gallery shows all ${clusterGalleryTypes().length} colored metric-isometry classes as independent rotating scenes, with faces and physical/connection edges—not radial coordination spokes.`;
+    narratives[1].copy = water
+      ? "Species-resolved bond geometry discovers one H₂O motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom."
+      : "Valence-bounded species geometry discovers recurrent finite molecules. A nearest-component graph supplies molecule-pair connections; locally shortest chordless cycles become explicit void boundaries without an expected formula or ring size.";
+    narratives[1].caption = `${learnedCover.molecular.molecules} molecular placements cover every observed atom; ${learnedCover.molecular.connections} connection polyhedra and ${learnedCover.molecular.voids} void-boundary polygons fill the intermolecular grammar. The scrollable gallery shows all ${clusterGalleryTypes().length} colored metric-isometry classes as independent rotating scenes, with physical and connection edges—not radial coordination spokes.`;
     narratives[1].values = [
-      `${learnedCover.molecular.waterClasses} H₂O class`,
-      `${learnedCover.molecular.bridgeClasses} bridge classes`,
-      `${learnedCover.molecular.gapClasses} O₆ gap classes`,
+      `${learnedCover.molecular.moleculeClasses} molecule class${learnedCover.molecular.moleculeClasses === 1 ? "" : "es"}`,
+      `${learnedCover.molecular.connectionClasses} connection classes`,
+      `${learnedCover.molecular.voidClasses} void classes`,
       `${learnedCover.placements.length} occurrences`,
     ];
     narratives[2].title = "Register molecular bridges and gap-boundary ports";
     narratives[2].phase = `${overlapGrammar.reconstructionEdges} replay ports`;
     narratives[2].caption = `${overlapGrammar.reconstructionEdges} dependency-ordered molecular overlap ports connect a strict replay tree reaching ${overlapGrammar.replayReachable}/${referenceCount()} known sites.`;
     narratives[2].values = [
-      `${learnedCover.molecular.waterClasses} H₂O class`,
-      `${learnedCover.molecular.bridgeClasses} bridge classes`,
-      `${learnedCover.molecular.gapClasses} ring-gap classes`,
+      `${learnedCover.molecular.moleculeClasses} molecule classes`,
+      `${learnedCover.molecular.connectionClasses} connection classes`,
+      `${learnedCover.molecular.voidClasses} void classes`,
       `${overlapGrammar.reconstructionEdges} replay ports`,
     ];
-    narratives[4].title = "Grow shared oxygen anchors; retain proton poses symbolically";
-    narratives[4].phase = "sealed disjoint seed";
-    narratives[4].decision = "Frozen molecular-port frontier initialized";
-    narratives[4].copy = `A positions-and-species-only Ih training window learned ${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} proper-SE(3) connection ports. The browser recomputes a disjoint ${scenarioSelect.value === "iceIc" ? "cubic-ice transfer" : "hexagonal-ice"} anchor frontier without target coordinates.`;
-    narratives[4].caption = "Only oxygen anchors shared by mutually exclusive H₂O orientation hypotheses are displayed. Proton alternatives remain symbolic and parent-domain unanimity fails closed when the next connection is unsupported.";
-    narratives[4].values = [
-      `${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} frozen ports`,
-      `${iceAnchorTrace?.seedAnchors || 0} seed O anchors`,
-      "target calls 0",
-      "stationary claim false",
-    ];
+    if (water) {
+      narratives[4].title = "Grow shared oxygen anchors; retain proton poses symbolically";
+      narratives[4].phase = "sealed disjoint seed";
+      narratives[4].decision = "Frozen molecular-port frontier initialized";
+      narratives[4].copy = `A positions-and-species-only Ih training window learned ${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} proper-SE(3) connection ports. The browser recomputes a disjoint ${scenarioSelect.value === "iceIc" ? "cubic-ice transfer" : "hexagonal-ice"} anchor frontier without target coordinates.`;
+      narratives[4].caption = "Only oxygen anchors shared by mutually exclusive H₂O orientation hypotheses are displayed. Proton alternatives remain symbolic and parent-domain unanimity fails closed when the next connection is unsupported.";
+      narratives[4].values = [
+        `${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} frozen ports`,
+        `${iceAnchorTrace?.seedAnchors || 0} seed O anchors`,
+        "target calls 0",
+        "stationary claim false",
+      ];
+    }
   } else if (learnedCover.irregular) {
     narratives[1].eyebrow = "learning · exact irregular support cover";
     narratives[1].title = "Mine recurring colored point sets, then cover every atom";
@@ -5753,8 +5958,10 @@ function updateUI() {
     atomLabel.textContent = "PLACEMENTS"; atomMetric.textContent = String(learnedCover.placements.length); atomDelta.textContent = `overlapping ${currentPbc().some(Boolean) ? "periodic" : "open"} cover`;
     frontierLabel.textContent = "ISOMETRY TYPES"; frontierMetric.textContent = String(clusterGalleryTypes().length); frontierDelta.textContent = "one rotating scene per type";
     oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = `${Math.round(learnedCover.covered / referenceCount() * 100)}%`; oracleDelta.textContent = `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.complete ? "complete" : "incomplete"}`;
-    const gapTypes = learnedCover.molecular?.gaps ? learnedCover.molecular.gapClasses : learnedCover.residualTypes.length;
-    reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(gapTypes); reuseDelta.textContent = learnedCover.molecular?.gaps ? `${learnedCover.molecular.gaps} oxygen-ring boundaries` : learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
+    const gapTypes = learnedCover.molecular ? learnedCover.molecular.voidClasses : learnedCover.residualTypes.length;
+    reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(gapTypes); reuseDelta.textContent = learnedCover.molecular
+      ? `${learnedCover.molecular.voids} ${learnedCover.molecular.water ? "oxygen-ring" : "molecular void"} boundaries`
+      : learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
   } else if (pipelineStage === 2) {
     const occurrenceBased = learnedCover.occurrenceBased || learnedCover.molecular;
     atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(occurrenceBased ? learnedCover.types.length : learnedClusters.clusters.length); atomDelta.textContent = learnedCover.molecular ? "molecule · bridge · ring boundary" : occurrenceBased ? "exact support and gap types" : "one per learned medoid";

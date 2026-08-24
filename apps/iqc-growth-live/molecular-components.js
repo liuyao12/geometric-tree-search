@@ -154,3 +154,134 @@ export function discoverFiniteMolecularComponents({
     expectedFormulaUsed: false,
   };
 }
+
+function componentSeparation(first, second, distance) {
+  let minimum = Infinity;
+  first.forEach((firstAtom) => second.forEach((secondAtom) => {
+    minimum = Math.min(minimum, distance(firstAtom, secondAtom));
+  }));
+  return minimum;
+}
+
+function canonicalCycle(sequence) {
+  const rotations = [];
+  const forward = sequence.slice();
+  const reverse = sequence.slice().reverse();
+  [forward, reverse].forEach((order) => order.forEach((_, index) => rotations.push([...order.slice(index), ...order.slice(0, index)])));
+  return rotations.sort((first, second) => JSON.stringify(first).localeCompare(JSON.stringify(second)))[0];
+}
+
+function chordlessCycles(vertexCount, edges, maximumSize) {
+  const adjacency = Array.from({ length: vertexCount }, () => new Set());
+  edges.forEach(([first, second]) => { adjacency[first].add(second); adjacency[second].add(first); });
+  const cycles = new Map();
+  for (let start = 0; start < vertexCount; start++) {
+    const stack = [[start, [start]]];
+    while (stack.length) {
+      const [current, path] = stack.pop();
+      [...adjacency[current]].sort((first, second) => second - first).forEach((neighbor) => {
+        if (neighbor === start && path.length >= 3) {
+          const cycle = canonicalCycle(path);
+          let graphEdges = 0;
+          for (let first = 0; first < cycle.length - 1; first++) {
+            for (let second = first + 1; second < cycle.length; second++) {
+              if (adjacency[cycle[first]].has(cycle[second])) graphEdges++;
+            }
+          }
+          if (graphEdges === cycle.length) cycles.set(cycle.join(":"), cycle);
+          return;
+        }
+        if (path.length >= maximumSize || neighbor <= start || path.includes(neighbor)) return;
+        stack.push([neighbor, [...path, neighbor]]);
+      });
+    }
+  }
+  const minimumByEdge = new Map();
+  cycles.forEach((cycle) => cycle.forEach((first, index) => {
+    const second = cycle[(index + 1) % cycle.length];
+    const edge = first < second ? `${first}:${second}` : `${second}:${first}`;
+    minimumByEdge.set(edge, Math.min(minimumByEdge.get(edge) || Infinity, cycle.length));
+  }));
+  return [...cycles.values()].filter((cycle) => cycle.every((first, index) => {
+    const second = cycle[(index + 1) % cycle.length];
+    const edge = first < second ? `${first}:${second}` : `${second}:${first}`;
+    return minimumByEdge.get(edge) === cycle.length;
+  })).sort((first, second) => first.length - second.length || first.join(":").localeCompare(second.join(":")));
+}
+
+function graphConnected(vertexCount, edges) {
+  if (vertexCount <= 1) return true;
+  const adjacency = Array.from({ length: vertexCount }, () => []);
+  edges.forEach(([first, second]) => { adjacency[first].push(second); adjacency[second].push(first); });
+  const seen = new Set([0]);
+  const stack = [0];
+  while (stack.length) adjacency[stack.pop()].forEach((neighbor) => {
+    if (seen.has(neighbor)) return;
+    seen.add(neighbor);
+    stack.push(neighbor);
+  });
+  return seen.size === vertexCount;
+}
+
+export function discoverMolecularConnectionTopology({
+  discovery,
+  species,
+  distance,
+  contactShellFactor = 1.16,
+  descriptorToleranceA = .03,
+  maximumVoidCycle = 8,
+}) {
+  if (!discovery?.accepted) throw new Error("Connection topology requires accepted finite molecular components");
+  if (!(contactShellFactor > 1 && contactShellFactor < 2) || maximumVoidCycle < 3) {
+    throw new Error("Invalid molecular connection topology controls");
+  }
+  const components = discovery.components;
+  const nearest = components.map((component, first) => Math.min(...components
+    .map((other, second) => first === second ? Infinity : componentSeparation(component, other, distance))));
+  const componentEdges = [];
+  for (let first = 0; first < components.length - 1; first++) {
+    for (let second = first + 1; second < components.length; second++) {
+      const separation = componentSeparation(components[first], components[second], distance);
+      if (separation <= nearest[first] * contactShellFactor + 1e-9
+        || separation <= nearest[second] * contactShellFactor + 1e-9) componentEdges.push([first, second]);
+    }
+  }
+  const componentType = new Map();
+  discovery.types.forEach((type) => type.occurrences.forEach((members) => componentType.set(members.join(":"), type.type)));
+  const typeForComponent = components.map((component) => componentType.get(component.join(":")));
+  const rawConnections = componentEdges.map(([first, second]) => {
+    const members = [...new Set([...components[first], ...components[second]])].sort((a, b) => a - b);
+    const signature = JSON.stringify([
+      [typeForComponent[first], typeForComponent[second]].sort((a, b) => a - b),
+      coloredMetricSignature(species, distance, members, descriptorToleranceA),
+    ]);
+    return { components: [first, second], members, signature };
+  });
+  const connectionSignatures = [...new Set(rawConnections.map((record) => record.signature))].sort();
+  const connectionType = new Map(connectionSignatures.map((signature, index) => [signature, index]));
+  const connections = rawConnections.map((record, occurrence) => ({
+    occurrence, type: connectionType.get(record.signature), ...record,
+  }));
+
+  const cycles = chordlessCycles(components.length, componentEdges, maximumVoidCycle);
+  const rawVoids = cycles.map((cycle) => {
+    const members = [...new Set(cycle.flatMap((component) => components[component]))].sort((a, b) => a - b);
+    const edgeLengths = cycle.map((first, index) => Math.round(componentSeparation(
+      components[first], components[cycle[(index + 1) % cycle.length]], distance) / descriptorToleranceA)).sort((a, b) => a - b);
+    const signature = JSON.stringify([cycle.length, canonicalCycle(cycle.map((component) => typeForComponent[component])), edgeLengths]);
+    return { components: cycle, members, signature };
+  });
+  const voidSignatures = [...new Set(rawVoids.map((record) => record.signature))].sort();
+  const voidType = new Map(voidSignatures.map((signature, index) => [signature, index]));
+  const voids = rawVoids.map((record, occurrence) => ({ occurrence, type: voidType.get(record.signature), ...record }));
+  return {
+    componentEdges,
+    connections,
+    voids,
+    connectionTypeCount: connectionSignatures.length,
+    voidTypeCount: voidSignatures.length,
+    componentGraphConnected: graphConnected(components.length, componentEdges),
+    expectedRingSizeUsed: false,
+    materialLabelUsed: false,
+  };
+}

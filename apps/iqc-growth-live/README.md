@@ -578,6 +578,19 @@ that the auxiliary polyhedra repair missing atoms: H2O already closes the atom
 cover, while the auxiliary clusters close the geometry needed for attachment
 and traversal.
 
+The same front end now has a non-water molecular-crystal control: a saved
+`3×3×3` low-pressure cubic CO2-I (`Pa-3`) window containing 108 linear CO2
+molecules and 324 atoms. The fixture supplies only C/O positions and species.
+The generic learner rediscovers 108 finite CO2 components, then constructs a
+nearest-component connection graph and promotes locally shortest chordless
+cycles as void-boundary clusters. In the current deterministic window that is
+`1 / 1 / 1` molecule / connection / void class with complete `324 / 324` atom
+cover. No CO2 formula, expected ring size, material name, or space-group label
+enters clustering. This control demonstrates that the molecule–connection–void
+ledger is not an ice-only branch; autonomous dry-ice continuation remains an
+open gate. The fixture geometry follows the phase-I body-diagonal molecular
+model and reported `a = 5.578 Å` and `C–O = 1.168 Å` measurements.
+
 The complementary generic headless gate finds one transferable
 six-member void family. Its underlying
 tree actions reconstruct 216/216 and 192/192 sites in six visible commuting
