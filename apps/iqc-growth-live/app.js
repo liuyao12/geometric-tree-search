@@ -39,6 +39,7 @@ import {
   learnColoredDistanceEnvelopesEnsemble,
 } from "./colored-distance-envelopes.js?v=20260824-6";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
+import { classifyProperPoseOrbits } from "./proper-pose-orbits.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -2085,24 +2086,38 @@ function orientationDistance(first, second) {
   return Math.sqrt(first.reduce((sum, value, index) => sum + (value - second[index]) ** 2, 0));
 }
 
+function classifyPlacementPoseOrbits(placements) {
+  return classifyProperPoseOrbits(placements.map((placement) => {
+    const vectors = centeredPeriodicSupport(referenceAtoms, placement.support);
+    return {
+      species: placement.support.map((index) => referenceAtoms[index].species),
+      positions: vectors.map((vector) => vector.toArray()),
+    };
+  }), {
+    metricToleranceFraction: effectiveClusterMetricTolerance(),
+    angularToleranceRadians: .12,
+  });
+}
+
 function learnOrientationAtlas() {
   if (!learnedClusters) return [];
   if (learnedCover?.types) return learnedCover.types.map((cluster, clusterIndex) => {
     const placements = learnedCover.placements.filter((placement) => placement.type === cluster.type);
-    const representatives = [];
-    const populations = [];
+    const orbitModel = classifyPlacementPoseOrbits(placements);
     const poseByCenter = new Map();
     const poseByOccurrence = new Map();
     placements.forEach((placement, occurrenceIndex) => {
-      const descriptor = supportOrientationDescriptor(placement);
-      let pose = representatives.findIndex((candidate) => orientationDistance(candidate, descriptor) <= .16);
-      if (pose < 0) { pose = representatives.length; representatives.push(descriptor); populations.push(0); }
-      populations[pose]++;
+      const pose = orbitModel.assignments[occurrenceIndex];
       poseByCenter.set(placement.center, pose);
       poseByOccurrence.set(placement.coverIndex ?? occurrenceIndex, pose);
     });
     return { cluster: clusterIndex, element: cluster.element, occurrences: placements.length,
-      orientations: representatives.length, populations: populations.slice().sort((first, second) => second - first),
+      orientations: orbitModel.orientations, populations: orbitModel.populations,
+      support: orbitModel.support, frameKind: orbitModel.frameKind,
+      properSymmetryGaugeCount: orbitModel.properSymmetryGaugeCount,
+      globalTranslationInvariant: orbitModel.globalTranslationInvariant,
+      commonProperRotationEquivariant: orbitModel.commonProperRotationEquivariant,
+      improperRotationsQuotiented: orbitModel.improperRotationsQuotiented,
       poseByCenter, poseByOccurrence };
   });
   return learnedClusters.clusters.map((cluster, clusterIndex) => {
@@ -2134,6 +2149,7 @@ function learnOrientationAtlas() {
 }
 
 function poseAtlasEntryStatus(entry) {
+  if (entry.support) return entry.support;
   const sampledFraction = entry.orientations / Math.max(1, entry.occurrences);
   const everyPoseRepeated = entry.populations.length > 0
     && entry.populations.every((population) => population >= 2);
@@ -2699,16 +2715,11 @@ function clusterGalleryTypes() {
   ];
 }
 
-function galleryPoseCount(cluster) {
+function galleryPoseModel(cluster) {
   const placements = cluster.classPlacementIndices
     ? cluster.classPlacementIndices.map((index) => learnedCover.placements[index]).filter(Boolean)
     : learnedCover.placements.filter((placement) => placement.type === cluster.type);
-  const representatives = [];
-  placements.forEach((placement) => {
-    const descriptor = supportOrientationDescriptor(placement);
-    if (!representatives.some((candidate) => orientationDistance(candidate, descriptor) <= .16)) representatives.push(descriptor);
-  });
-  return representatives.length;
+  return classifyPlacementPoseOrbits(placements);
 }
 
 function clusterGalleryFamily(cluster) {
@@ -2795,7 +2806,11 @@ function updateClusterGalleryInspector(galleryIndex) {
   const sharedAtoms = [...coveredAtoms].filter((atomIndex) => learnedCover.incidence[atomIndex]?.length > 1).length;
   const supportSites = cluster.customSupport?.length
     || learnedCover.placements[placementIndices[0]]?.support.length || 1;
-  const poseCount = galleryPoseCount(cluster);
+  const poseModel = galleryPoseModel(cluster);
+  const poseCount = poseModel.orientations;
+  const poseStatus = poseModel.support === "finite required set" ? "required finite orbit"
+    : poseModel.support === "sampled continuum" || poseModel.support === "sampled axial continuum"
+      ? poseModel.support : "observed · unresolved law";
   const familyIndex = cluster.familyType ?? galleryIndex;
   const ports = cluster.residual ? 0 : clusterPortRank(familyIndex);
   const channels = cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex);
@@ -2808,7 +2823,7 @@ function updateClusterGalleryInspector(galleryIndex) {
   inspector.innerHTML = `
     <div><small>selected class</small><strong>${cluster.label || `C${galleryIndex + 1}`}</strong><span>${cluster.geometry || "colored support polyhedron"} · ${surfaceLabel} · ${displayTopology.edges.length} topology edges</span></div>
     <div><small>complete-cover evidence</small><strong>${coveredAtoms.size.toLocaleString()} / ${referenceCount().toLocaleString()} atoms</strong><span>${placementIndices.length} occurrence${placementIndices.length === 1 ? "" : "s"} · ${supportSites} sites / occurrence · ${sharedAtoms} overlap-shared atoms</span></div>
-    <div><small>proper-pose support</small><strong>${poseCount || "unresolved"} orbit${poseCount === 1 ? "" : "s"} · χ ${chirality}</strong><span>translation and atom order removed; mirrors remain distinct when resolved</span></div>
+    <div><small>proper-pose support</small><strong>${poseCount || "unresolved"} orbit${poseCount === 1 ? "" : "s"} · ${poseModel.properSymmetryGaugeCount || 1} proper gauge${poseModel.properSymmetryGaugeCount === 1 ? "" : "s"} · χ ${chirality}</strong><span>${poseStatus} · intrinsic right-handed frames remove translation and atom order; mirrors remain distinct</span></div>
     <div><small>connection capacity</small><strong>${ports} port role${ports === 1 ? "" : "s"} → ${channels} channel${channels === 1 ? "" : "s"}</strong><span>${coverKind}</span></div>`;
 }
 
@@ -2888,15 +2903,21 @@ function rebuildClusterGallery() {
     const placements = cluster.classPlacementIndices?.length
       ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
     const familyIndex = cluster.familyType ?? galleryIndex;
-    const poses = learnedCover.molecular ? galleryPoseCount(cluster)
-      : orientationAtlas.find((entry) => entry.cluster === galleryIndex)?.orientations || 0;
+    const galleryPose = learnedCover.molecular ? galleryPoseModel(cluster) : null;
+    const poses = galleryPose?.orientations
+      ?? (orientationAtlas.find((entry) => entry.cluster === galleryIndex)?.orientations || 0);
     const channels = cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex);
     const name = cluster.label || (cluster.residual ? "gap" : `C${cluster.type + 1}`);
     const ports = cluster.residual ? 0 : clusterPortRank(familyIndex);
     const coupledRank = cluster.residual ? 0 : clusterPosePortRank(familyIndex);
+    const posePhrase = galleryPose?.support === "finite required set" || !galleryPose
+      ? `${poses || "—"} required pose${poses === 1 ? "" : "s"}`
+      : galleryPose.support === "sampled continuum" || galleryPose.support === "sampled axial continuum"
+        ? `${poses} sampled equivariant pose${poses === 1 ? "" : "s"}`
+        : `${poses} observed pose${poses === 1 ? "" : "s"} · unresolved`;
     const learnedDegrees = cluster.residual
       ? "explicit residual"
-      : `${poses || "—"} required pose${poses === 1 ? "" : "s"} × ${ports} port role${ports === 1 ? "" : "s"} · rank ${coupledRank} → ${channels}ch`;
+      : `${posePhrase} × ${ports} port role${ports === 1 ? "" : "s"} · rank ${coupledRank} → ${channels}ch`;
     const classStatus = Number.isInteger(cluster.classIndex)
       ? `isometry ${cluster.classIndex + 1}/${cluster.classCount} · ` : "";
     const supportSites = cluster.customSupport?.length
@@ -3751,6 +3772,7 @@ function receiptComposition(source) {
 
 function receiptClusterRecord(cluster, index) {
   const familyIndex = cluster.familyType ?? index;
+  const poseModel = galleryPoseModel(cluster);
   const placements = cluster.classPlacementIndices?.length
     ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
   const supportSites = cluster.customSupport?.length
@@ -3762,7 +3784,12 @@ function receiptClusterRecord(cluster, index) {
     coverRole: clusterCoverRole(cluster),
     coloredSupportSites: supportSites,
     occurrences: placements,
-    observedProperPoseOrbits: galleryPoseCount(cluster),
+    observedProperPoseOrbits: poseModel.orientations,
+    properPoseSupport: poseModel.support,
+    properSymmetryGaugeCount: poseModel.properSymmetryGaugeCount,
+    frameKind: poseModel.frameKind,
+    commonProperRotationEquivariant: poseModel.commonProperRotationEquivariant,
+    improperRotationsQuotiented: poseModel.improperRotationsQuotiented,
     portRoles: cluster.residual ? 0 : clusterPortRank(familyIndex),
     posePortRank: cluster.residual ? 0 : clusterPosePortRank(familyIndex),
     recommendedChannels: cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex),
@@ -3811,7 +3838,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-39",
+      buildId: "20260824-40",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -3918,6 +3945,11 @@ async function buildExperimentReceipt() {
         observedProperPoseOrbits: entry.orientations,
         populations: [...entry.populations],
         support: entry.support,
+        frameKind: entry.frameKind || "laboratory directional fallback",
+        properSymmetryGaugeCount: entry.properSymmetryGaugeCount || null,
+        globalTranslationInvariant: entry.globalTranslationInvariant ?? null,
+        commonProperRotationEquivariant: entry.commonProperRotationEquivariant ?? null,
+        improperRotationsQuotiented: entry.improperRotationsQuotiented ?? null,
       })),
       coloredDistanceEnvelopes: {
         role: "hard geometric exclusion learned from supplied positions; not a pair potential",
@@ -5590,9 +5622,10 @@ function renderPoseAtlas() {
   poseAtlas.replaceChildren();
   const total = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
   const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
+  const axialTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled axial continuum").length;
   const unresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
-  const supportSummary = freeTypes || unresolvedTypes
-    ? `${total} observed poses${freeTypes ? ` · ${freeTypes} equivariant ${rotationGroupLabel()}` : ""}${unresolvedTypes ? ` · ${unresolvedTypes} unresolved` : ""}`
+  const supportSummary = freeTypes || axialTypes || unresolvedTypes
+    ? `${total} observed poses${freeTypes ? ` · ${freeTypes} equivariant ${rotationGroupLabel()}` : ""}${axialTypes ? ` · ${axialTypes} axial` : ""}${unresolvedTypes ? ` · ${unresolvedTypes} unresolved` : ""}`
     : `${total} required poses`;
   poseAtlasTotal.textContent = `${supportSummary} · auto ${automaticMarkingChannels()}ch`;
   orientationAtlas.slice(0, 10).forEach((entry) => {
@@ -5604,13 +5637,15 @@ function renderPoseAtlas() {
     const portRank = clusterPortRank(entry.cluster);
     const coupledRank = clusterPosePortRank(entry.cluster);
     const channels = recommendedChannelsForCluster(entry.cluster);
-    detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · ${portRank} port role${portRank === 1 ? "" : "s"} · coupled rank ${coupledRank}`;
+    detail.textContent = `${entry.element} · ${entry.occurrences} occurrences · ${entry.properSymmetryGaugeCount || 1} proper gauge${entry.properSymmetryGaugeCount === 1 ? "" : "s"} · ${portRank} port role${portRank === 1 ? "" : "s"} · coupled rank ${coupledRank}`;
     const count = document.createElement("b");
     const support = poseAtlasEntryStatus(entry);
     count.textContent = support === "finite required set"
       ? `${entry.orientations} required pose${entry.orientations === 1 ? "" : "s"} → ${channels}ch`
       : support === "sampled continuum"
         ? `${entry.orientations} sampled · equivariant ${rotationGroupLabel()} → ${channels}ch`
+        : support === "sampled axial continuum"
+          ? `${entry.orientations} sampled axes · equivariant stabilizer → ${channels}ch`
         : `${entry.orientations} observed · unresolved → ${channels}ch reserve`;
     row.append(code, detail, count);
     poseAtlas.appendChild(row);
@@ -5687,7 +5722,7 @@ function syncStageOptions() {
       ? currentMaterial().intrinsicDimension === 2 ? "2 periodic generators" : "3 periodic generators"
       : resolvedMode === "module" ? "finite-rank module" : "metric point set";
     const totalPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
-    const freeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
+    const freeTypes = orientationAtlas.filter((entry) => ["sampled continuum", "sampled axial continuum"].includes(poseAtlasEntryStatus(entry))).length;
     const unresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
     rotationSupport.textContent = poseSupportLabel(totalPoses, freeTypes, unresolvedTypes);
     channelRankSupport.textContent = `${automaticMarkingChannels()} auto channel${automaticMarkingChannels() === 1 ? "" : "s"}`;
@@ -5701,7 +5736,7 @@ function syncStageOptions() {
   const resolvedChannels = sectionModel?.channels || currentMarkingConfig().channels;
   const inheritedDomain = resolvedGeometryLabel();
   const inheritedPoses = orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0);
-  const inheritedFreeTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "sampled continuum").length;
+  const inheritedFreeTypes = orientationAtlas.filter((entry) => ["sampled continuum", "sampled axial continuum"].includes(poseAtlasEntryStatus(entry))).length;
   const inheritedUnresolvedTypes = orientationAtlas.filter((entry) => poseAtlasEntryStatus(entry) === "unresolved support").length;
   inheritedGeometryMode.textContent = inheritedDomain;
   inheritedPoseCount.textContent = poseSupportLabel(inheritedPoses, inheritedFreeTypes, inheritedUnresolvedTypes);

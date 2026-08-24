@@ -17,6 +17,10 @@ def test_clustering_exposes_geometry_pose_and_derived_channel_rank() -> None:
         assert f'id="{identifier}"' in HTML
     assert "function resolvedGeometryMode()" in APP
     assert "function learnOrientationAtlas()" in APP
+    assert 'classifyProperPoseOrbits' in APP
+    assert 'properSymmetryGaugeCount' in APP
+    assert 'commonProperRotationEquivariant' in APP
+    assert 'improperRotationsQuotiented' in APP
     assert "function clusterPosePortRank(cluster)" in APP
     assert "function automaticMarkingChannels()" in APP
     assert "poseAtlasEntryStatus(entry)" in APP

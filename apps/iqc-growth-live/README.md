@@ -177,14 +177,18 @@ visually and semantically separated; a terminal can certify complete replay but
 is never silently promoted into a generative rule.
 
 The same stage reports how many symmetry-inequivalent orientations of every
-cluster are actually needed to cover the observation. It compares centered,
-element-coloured directional neighborhoods in the laboratory frame. Proper
-self-symmetries of a cluster therefore collapse automatically: the Na and Cl
+cluster are actually needed to cover the observation. It constructs intrinsic
+right-handed frames from the complete element-coloured cluster geometry and
+retains every tied frame as a proper-symmetry gauge. Pose distance is minimized
+over those gauges, so a translation or arbitrary common proper rotation of the
+whole sample cannot change the orbit count; reflections are never included in
+the quotient. Proper self-symmetries of a cluster therefore collapse: the Na and Cl
 octahedra in periodic rocksalt each require one physical pose, even though one
 may write many equivalent local frames for an octahedron. Removing periodic
 wrapping exposes boundary environment types and their larger pose atlas. If
 the sampled orientations do not close into a stable finite atlas, the UI marks
-that cluster type as free `SO(3)` and reports the number sampled rather than
+that cluster type as equivariant `SO(2)` / `SO(3)` (or as an axial stabilizer
+for a collinear support) and reports the number sampled rather than
 pretending those samples are a finite set of allowed rotations. A finite pose
 orbit is called *required* only when every symmetry-quotiented pose has at
 least two observed occurrences; sparse one-off poses are shown as unresolved
