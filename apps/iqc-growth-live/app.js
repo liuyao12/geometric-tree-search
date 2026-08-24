@@ -40,6 +40,11 @@ import {
 } from "./colored-distance-envelopes.js?v=20260824-6";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
 import { classifyProperPoseOrbits } from "./proper-pose-orbits.js?v=20260824-1";
+import {
+  growthEnvironmentAudit,
+  growthEnvironmentContains,
+  growthEnvironmentSpec,
+} from "./growth-environments.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -75,6 +80,8 @@ const randomMaterialButton = $("randomMaterialButton");
 const databaseStatus = $("databaseStatus");
 const databaseSourceLink = $("databaseSourceLink");
 const confinementSelect = $("confinementSelect");
+const confinementHint = $("confinementHint");
+const confinementNote = $("confinementNote");
 const policySelect = $("policySelect");
 const stageOptionsPanel = $("stageOptionsPanel");
 const stageOptionsEyebrow = $("stageOptionsEyebrow");
@@ -3864,6 +3871,28 @@ function receiptGrowthClaims(scenarioId, benchmark, trace) {
   };
 }
 
+function receiptExternalGeometry() {
+  const audit = growthEnvironmentAudit(confinementSelect.value);
+  const scale = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const source = audit.parametersSceneUnits;
+  let parametersAngstrom;
+  if (source.halfExtents) parametersAngstrom = { halfExtents: source.halfExtents.map((value) => receiptRound(value * scale)) };
+  else if (Number.isFinite(source.radius) && Number.isFinite(source.halfLength)) parametersAngstrom = {
+    halfLength: receiptRound(source.halfLength * scale), radius: receiptRound(source.radius * scale),
+  };
+  else if (Number.isFinite(source.radius)) parametersAngstrom = { radius: receiptRound(source.radius * scale) };
+  else if (source.lateralHalfExtents) parametersAngstrom = {
+    lateralHalfExtents: source.lateralHalfExtents.map((value) => receiptRound(value * scale)),
+    lowerZ: receiptRound(source.lowerZ * scale), upperZ: receiptRound(source.upperZ * scale),
+  };
+  else parametersAngstrom = {
+    halfLength: receiptRound(source.halfLength * scale),
+    throatRadius: receiptRound(source.throatRadius * scale),
+    radialSlope: source.radialSlope,
+  };
+  return { ...audit, parametersAngstrom, sceneUnitAngstrom: receiptRound(scale) };
+}
+
 async function buildExperimentReceipt() {
   const material = currentMaterial();
   const markingConfig = currentMarkingConfig();
@@ -3897,6 +3926,7 @@ async function buildExperimentReceipt() {
       siteChemistryChannels: [...material.elements],
       composition: receiptComposition(referenceAtoms),
       atomCount: referenceAtoms.length,
+      externalGeometry: receiptExternalGeometry(),
       recordedMeasurementConditions: recordedConditions ? {
         provenance: recordedConditions.provenance || "recorded diffraction/cell-measurement conditions",
         temperatureKelvin: recordedConditions.temperature?.value ?? null,
@@ -4918,11 +4948,7 @@ function canonicalKnownSites(sites, context = scenePeriodicContext()) {
 }
 
 function insideGrowthDomain(position) {
-  const shape = confinementSelect.value;
-  if (shape === "box") return Math.max(Math.abs(position.x), Math.abs(position.y), Math.abs(position.z)) <= 8.35;
-  if (shape === "sphere") return position.length() <= 8.8;
-  if (shape === "cylinder") return Math.abs(position.x) <= 8.35 && Math.hypot(position.y, position.z) <= 7.8;
-  return Math.abs(position.x) <= 8.35 && Math.hypot(position.y, position.z) <= 2.25 + .58 * Math.abs(position.x);
+  return growthEnvironmentContains(confinementSelect.value, position);
 }
 
 function frontierSector(position) {
@@ -5447,25 +5473,40 @@ function clearGroup(group) {
 function buildConfinement() {
   clearGroup(confinementGroup);
   confinementGroup.rotation.set(0, 0, 0);
-  const large = pipelineStage === 4;
+  const renderScale = pipelineStage === 4 ? 1 : .55;
   const material = new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.36 });
-  const shape = confinementSelect.value;
-  if (shape === "box") {
-    const dims = large ? [17, 17, 17] : [8, 8, 8];
+  const spec = growthEnvironmentSpec(confinementSelect.value);
+  confinementHint.textContent = spec.shortLabel;
+  confinementNote.textContent = spec.note;
+  if (spec.shape === "orthorhombic box" || spec.shape === "orthorhombic slab") {
+    const dims = spec.parameters.halfExtents.map((value) => value * 2 * renderScale);
     confinementGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(...dims)), material));
-  } else if (shape === "sphere") {
-    const radius = large ? 9 : 5.3;
+  } else if (spec.shape === "sphere") {
+    const radius = spec.parameters.radius * renderScale;
     confinementGroup.add(new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(radius, 20, 13)), material));
-  } else if (shape === "cylinder") {
-    const radius = large ? 8 : 4.4;
-    const length = large ? 17 : 8;
+  } else if (spec.shape === "x-axis cylinder") {
+    const radius = spec.parameters.radius * renderScale;
+    const length = spec.parameters.halfLength * 2 * renderScale;
     confinementGroup.add(new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.CylinderGeometry(radius, radius, length, 22, 4, true)), material));
     confinementGroup.rotation.z = Math.PI / 2;
+  } else if (spec.shape === "bounded half-space above a plane") {
+    const width = spec.parameters.lateralHalfExtents[0] * 2 * renderScale;
+    const depth = spec.parameters.lateralHalfExtents[1] * 2 * renderScale;
+    const height = (spec.parameters.upperZ - spec.parameters.lowerZ) * renderScale;
+    const outline = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(width, depth, height)), material);
+    outline.position.z = (spec.parameters.upperZ + spec.parameters.lowerZ) * .5 * renderScale;
+    confinementGroup.add(outline);
+    const grid = new THREE.GridHelper(width, 12, 0xffbe5c, 0x735f39);
+    grid.rotation.x = Math.PI / 2;
+    grid.position.z = spec.parameters.lowerZ * renderScale;
+    grid.material.transparent = true;
+    grid.material.opacity = .32;
+    confinementGroup.add(grid);
   } else {
-    const length = large ? 8.5 : 4;
+    const length = spec.parameters.halfLength * renderScale;
     const points = [];
-    for (let ring = -length; ring <= length; ring += large ? 1 : .5) {
-      const radius = (large ? 2.4 : 1.5) + (large ? .58 : .42) * Math.abs(ring);
+    for (let ring = -length; ring <= length; ring += renderScale) {
+      const radius = spec.parameters.throatRadius * renderScale + spec.parameters.radialSlope * Math.abs(ring);
       for (let segment = 0; segment < 20; segment++) {
         const a = segment / 20 * TAU;
         const b = (segment + 1) / 20 * TAU;
@@ -6015,12 +6056,13 @@ function updateStageNarrative() {
   decisionEyebrow.textContent = "pipeline stage";
   decisionBadge.className = "badge neutral";
   const material = currentMaterial();
+  const externalGeometry = growthEnvironmentSpec(confinementSelect.value);
   const clusterCount = markingPrototypeTypes().length;
   const trainingPoint = trainedMarking ? currentTrainingPoint() : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
   const narratives = [
     {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
-      caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no environment labels are given.${evidenceFrameCount() > 1 ? ` ${evidenceFrameCount()} fixed-topology snapshots broaden the geometric envelopes without being concatenated.` : ""}`, badge: "input",
+      caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no phase or cluster labels are given.${evidenceFrameCount() > 1 ? ` ${evidenceFrameCount()} fixed-topology snapshots broaden the geometric envelopes without being concatenated.` : ""}`, badge: "input",
       decision: material.name, copy: `The learner receives ${referenceCount()} element-labelled positions for the selected seed frame. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.${evidenceFrameCount() > 1 ? ` Contact, coordination, and angle statistics pool ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} atom presentations across ${coloredDistanceEnvelopes.frameCount} frames.` : ""}`,
       values: [materialElementLabels(material).join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, `${evidenceFrameCount()} evidence frame${evidenceFrameCount() === 1 ? "" : "s"}`],
     },
@@ -6045,12 +6087,12 @@ function updateStageNarrative() {
     {
       eyebrow: "search · off-lattice recursive covering", title: "Let overlapping higher-order parents vote, then branch", phase: "seed cluster",
       caption: growthScheduling === "commuting"
-        ? "Translated, rotated, and inflated parents continue past the known boundary. Each visual update is one maximal commuting frontier set: every displayed placement is valid in every permutation, while dependent residuals remain explicit tree branches."
-        : "Translated, rotated, and inflated parents continue past the known boundary. Each visual update executes one best-first branch decision; the exact candidate geometry and dependency-ordered tree are unchanged.", badge: "search",
+        ? `Translated, rotated, and inflated parents continue inside the ${externalGeometry.shortLabel}. Each visual update is one maximal commuting frontier set: every displayed placement is valid in every permutation, while dependent residuals remain explicit tree branches.`
+        : `Translated, rotated, and inflated parents continue inside the ${externalGeometry.shortLabel}. Each visual update executes one best-first branch decision; the exact candidate geometry and dependency-ordered tree are unchanged.`, badge: "search",
       decision: "Recursive consensus frontier initialized", copy: growthScheduling === "commuting"
-        ? "The same frozen connection marking proposes the next scale. A frontier antichain is displayed together only after pairwise species and hard-core checks, plus a unique-new-support check for every accepted placement."
-        : "The same frozen connection marking proposes the next scale. One best-first candidate is executed per update so branch order can be inspected directly.",
-      values: ["parent + φ(source−parent)", policySelect.value === "marked" ? selectedMarking()?.name || "active marking" : policySelect.value === "direct" ? "exact local oracle" : "unmarked action", hierarchyEnabled ? "clusters² promotion" : "primitive clusters", "branch residual"],
+        ? `The same frozen connection marking proposes the next scale. A frontier antichain is displayed only after pairwise species, hard-core, unique-new-support, and ${externalGeometry.shortLabel} containment checks.`
+        : `The same frozen connection marking proposes the next scale. One best-first candidate is executed per update inside the ${externalGeometry.shortLabel}, so branch order can be inspected directly.`,
+      values: ["parent + φ(source−parent)", `${externalGeometry.shortLabel} · ${policySelect.value === "marked" ? selectedMarking()?.name || "active marking" : policySelect.value === "direct" ? "exact local oracle" : "unmarked action"}`, hierarchyEnabled ? "clusters² promotion" : "primitive clusters", "branch residual"],
     },
   ];
   if (learnedCover.molecular) {
