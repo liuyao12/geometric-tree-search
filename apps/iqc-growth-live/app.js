@@ -5891,21 +5891,23 @@ async function buildExperimentReceipt() {
   const trajectoryFrameDigests = trajectoryFrames.length > 1
     ? await Promise.all(trajectoryFrames.map((frame) => structureDigest(makeImportedFrameReference(frame, 1), "angstrom")))
     : [];
-  const trajectoryCalculationDigests = trajectoryFrames.length > 1
-    ? await Promise.all(trajectoryFrames.map((frame) => receiptSha256(JSON.stringify({
+  const trajectoryCalculationDigests = [];
+  if (trajectoryFrames.length > 1) for (const frame of trajectoryFrames) {
+    trajectoryCalculationDigests.push(await receiptSha256(JSON.stringify({
       systemIndex: frame.metadata?.nomadSystemIndex ?? null,
       calculationIndex: frame.metadata?.nomadCalculationIndex ?? null,
       energyPerPrimitiveAtomElectronVolt: Number.isFinite(frame.metadata?.calculation?.energyPerPrimitiveAtomElectronVolt)
         ? receiptRound(frame.metadata.calculation.energyPerPrimitiveAtomElectronVolt, 10) : null,
       forceVectorsEvPerAngstrom: frame.atoms.map((atom) => atom.calculationForceEvPerAngstrom
         ?.map((value) => receiptRound(value, 10)) || null),
-    }))))) : [];
+    })));
+  }
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-109",
+      buildId: "20260825-110",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
