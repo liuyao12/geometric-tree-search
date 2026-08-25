@@ -168,6 +168,12 @@ const externalDriveHint = $("externalDriveHint");
 const externalDriveBadge = $("externalDriveBadge");
 const externalDriveGlyph = $("externalDriveGlyph");
 const externalDriveBadgeLabel = $("externalDriveBadgeLabel");
+const affineLoadSelect = $("affineLoadSelect");
+const affineLoadMagnitudeSelect = $("affineLoadMagnitudeSelect");
+const affineLoadHint = $("affineLoadHint");
+const affineLoadBadge = $("affineLoadBadge");
+const affineLoadGlyph = $("affineLoadGlyph");
+const affineLoadBadgeLabel = $("affineLoadBadgeLabel");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -621,6 +627,8 @@ let coordinationCapacityPrunes = 0;
 let angularEnvelopePrunes = 0;
 let acceptedGeometricStrain = 0;
 let rejectedGeometricStrain = 0;
+let acceptedUnloadedGeometricStrain = 0;
+let rejectedUnloadedGeometricStrain = 0;
 let acceptedCompositionDelta = 0;
 let rejectedCompositionDelta = 0;
 let acceptedFormalChargeDelta = 0;
@@ -687,6 +695,8 @@ let chargePreference = "auto";
 let surfacePreference = "soft";
 let externalDriveMode = "none";
 let externalDriveWeight = .24;
+let affineLoadMode = "none";
+let affineLoadMagnitude = .02;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5439,7 +5449,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-80",
+      buildId: "20260825-81",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5779,8 +5789,17 @@ async function buildExperimentReceipt() {
         enabled: geometryPreference === "strain",
         configuredWeight: geometricStrainWeight,
         effectiveWeight: activeGeometricStrainWeight(),
+        affineLoadMode,
+        affineLoadLabel: affineLoadModeLabel(),
+        prescribedStrainMagnitude: affineLoadMode === "none" ? 0 : affineLoadMagnitude,
+        deformationGradient: affineLoadTensor().map((row) => row.map((value) => receiptRound(value))),
         acceptedMean: receiptRound(acceptedGeometricStrain / Math.max(1, acceptedDecisions)),
         rejectedMean: receiptRound(rejectedGeometricStrain / Math.max(1, rejectedDecisions)),
+        unloadedAcceptedMean: receiptRound(acceptedUnloadedGeometricStrain / Math.max(1, acceptedDecisions)),
+        unloadedRejectedMean: receiptRound(rejectedUnloadedGeometricStrain / Math.max(1, rejectedDecisions)),
+        candidateCoordinatesChanged: false,
+        hardAdmissionChanged: false,
+        modulusOrStressInferred: false,
       },
       compositionBalanceRanking: {
         role: "target-blind soft ordering toward the observed multicomponent reservoir; never a hard surface constraint",
@@ -5933,7 +5952,8 @@ function notebookInterventionFactors(receipt) {
     }) },
     ranking: { label: "frontier ranking", role: "search", value: search?.policy || "not entered" },
     softPhysics: { label: "soft physics ordering", role: "search", value: serialized(search ? {
-      strain: [search.geometricStrainRanking?.mode, search.geometricStrainRanking?.effectiveWeight],
+      strain: [search.geometricStrainRanking?.mode, search.geometricStrainRanking?.effectiveWeight,
+        search.geometricStrainRanking?.affineLoadMode, search.geometricStrainRanking?.prescribedStrainMagnitude],
       composition: [search.compositionBalanceRanking?.mode, search.compositionBalanceRanking?.effectiveWeight],
       formalCharge: [search.formalChargeBalanceRanking?.mode, search.formalChargeBalanceRanking?.effectiveWeight],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
@@ -6943,6 +6963,34 @@ function activeGeometricStrainWeight() {
   return geometryPreference === "strain" ? geometricStrainWeight : 0;
 }
 
+function affineLoadModeLabel(mode = affineLoadMode) {
+  return ({ none: "observed metric", "hydro-compress": "hydrostatic compression",
+    "hydro-tension": "hydrostatic tension", "z-tension": "uniaxial Z tension",
+    "xy-shear": "XY shear" })[mode] || "observed metric";
+}
+
+function affineLoadTensor() {
+  const m = affineLoadMagnitude;
+  if (affineLoadMode === "hydro-compress") return [[1 - m, 0, 0], [0, 1 - m, 0], [0, 0, 1 - m]];
+  if (affineLoadMode === "hydro-tension") return [[1 + m, 0, 0], [0, 1 + m, 0], [0, 0, 1 + m]];
+  if (affineLoadMode === "z-tension") return [[1, 0, 0], [0, 1, 0], [0, 0, 1 + m]];
+  if (affineLoadMode === "xy-shear") return [[1, m, 0], [0, 1, 0], [0, 0, 1]];
+  return [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+}
+
+function applyAffineLoad(vector) {
+  const tensor = affineLoadTensor();
+  return new THREE.Vector3(
+    tensor[0][0] * vector.x + tensor[0][1] * vector.y + tensor[0][2] * vector.z,
+    tensor[1][0] * vector.x + tensor[1][1] * vector.y + tensor[1][2] * vector.z,
+    tensor[2][0] * vector.x + tensor[2][1] * vector.y + tensor[2][2] * vector.z,
+  );
+}
+
+function effectiveGeometricStrain(evaluation) {
+  return affineLoadMode === "none" ? evaluation.geometricStrain : evaluation.affineLoadedGeometricStrain;
+}
+
 function activeCompositionBalanceWeight() {
   return compositionPreference === "strong" ? .70 : compositionPreference === "soft" ? .35 : 0;
 }
@@ -7008,6 +7056,8 @@ function capturePolicyComparison(entries) {
   const policies = [
     { id: "grammar", label: "mark + recurrence", score: (entry) => entry.baseScore },
     { id: "elastic", label: "elastic 0.16", score: (entry) => entry.baseScore - .16 * entry.evaluation.geometricStrain.total },
+    { id: "affine-load", label: `${affineLoadModeLabel()} metric`,
+      score: (entry) => entry.baseScore - .16 * effectiveGeometricStrain(entry.evaluation).total },
     { id: "composition", label: "composition 0.35", score: (entry) => entry.baseScore - .35 * entry.evaluation.compositionBalance.scaledDelta },
     { id: "charge", label: "formal charge 0.25", score: (entry) => entry.baseScore - .25 * entry.evaluation.formalChargeBalance.scaledDelta },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
@@ -7144,6 +7194,18 @@ function geometricStrainForFreshSites(rawFreshSites, projection = constraintProj
     coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices);
 }
 
+function affineLoadedGeometricStrainForFreshSites(rawFreshSites,
+  projection = constraintProjectionForFreshSites(rawFreshSites)) {
+  if (affineLoadMode === "none") return geometricStrainForFreshSites(rawFreshSites, projection);
+  const { projected, affectedIndices } = projection;
+  if (!affectedIndices.length || !coloredAngularEnvelopes) return {
+    total: 0, distance: 0, angle: 0, contactTerms: 0, angleTerms: 0,
+  };
+  return coloredGeometricStrain(projected.map((site) => site.species),
+    (first, second) => applyAffineLoad(projected[second].p.clone().sub(projected[first].p)),
+    coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices);
+}
+
 function surfaceCompletionForFreshSites(rawFreshSites,
   projection = constraintProjectionForFreshSites(rawFreshSites)) {
   const { projected, affectedExistingIndices, freshIndices, existingCount } = projection;
@@ -7229,7 +7291,7 @@ function commutingFrontierBatch() {
       sites: evaluation.sites,
       baseScore,
       score: baseScore
-        - activeGeometricStrainWeight() * evaluation.geometricStrain.total
+        - activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
@@ -7329,6 +7391,7 @@ function evaluateCandidate(candidate, {
   const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh, constraintProjection);
   const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh, constraintProjection);
   const geometricStrain = geometricStrainForFreshSites(fresh, constraintProjection);
+  const affineLoadedGeometricStrain = affineLoadedGeometricStrainForFreshSites(fresh, constraintProjection);
   const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
@@ -7337,7 +7400,8 @@ function evaluateCandidate(candidate, {
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
-    coordinationOverflows, angularViolations, geometricStrain, surfaceCompletion, compositionBalance, formalChargeBalance,
+    coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
+    surfaceCompletion, compositionBalance, formalChargeBalance,
     externalDrive,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
@@ -7389,6 +7453,8 @@ function initializeOffLatticeSearch() {
   angularEnvelopePrunes = 0;
   acceptedGeometricStrain = 0;
   rejectedGeometricStrain = 0;
+  acceptedUnloadedGeometricStrain = 0;
+  rejectedUnloadedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
   acceptedFormalChargeDelta = 0;
@@ -7930,6 +7996,11 @@ function syncStageOptions() {
   externalDriveBadgeLabel.textContent = externalDriveModeLabel();
   externalDriveGlyph.textContent = ({ "z-plus": "↑", "z-minus": "↓",
     "radial-out": "↗", "radial-in": "↙" })[externalDriveMode] || "·";
+  affineLoadBadge.hidden = pipelineStage !== 4 || affineLoadMode === "none";
+  affineLoadBadge.classList.toggle("solo", externalDriveMode === "none");
+  affineLoadBadgeLabel.textContent = `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
+  affineLoadGlyph.textContent = ({ "hydro-compress": "↘", "hydro-tension": "↗",
+    "z-tension": "⇅", "xy-shear": "⇆" })[affineLoadMode] || "·";
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -8014,6 +8085,8 @@ function syncStageOptions() {
     surfacePreferenceSelect.value = surfacePreference;
     externalDriveSelect.value = externalDriveMode;
     externalDriveWeightSelect.value = String(externalDriveWeight);
+    affineLoadSelect.value = affineLoadMode;
+    affineLoadMagnitudeSelect.value = String(affineLoadMagnitude);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -8022,6 +8095,8 @@ function syncStageOptions() {
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     externalDriveSelect.disabled = finiteIceAnchorMode;
     externalDriveWeightSelect.disabled = finiteIceAnchorMode || externalDriveMode === "none";
+    affineLoadSelect.disabled = finiteIceAnchorMode;
+    affineLoadMagnitudeSelect.disabled = finiteIceAnchorMode || affineLoadMode === "none";
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -8032,6 +8107,8 @@ function syncStageOptions() {
       : `${formalChargeTarget?.resolvedObservations || 0}/${formalChargeTarget?.observations || referenceCount()} sites · unavailable`;
     externalDriveHint.textContent = externalDriveMode === "none"
       ? "isotropic · weight zero" : `${externalDriveModeLabel()} · weight ${externalDriveWeight.toFixed(2)}`;
+    affineLoadHint.textContent = affineLoadMode === "none"
+      ? "undeformed metric" : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8043,7 +8120,7 @@ function syncStageOptions() {
       ? `The ${compatibleMarkings().length || 1}-mark compatible library scores each unchanged action; any trained mark may admit it.`
       : "The selected vocabulary-compatible marking ranks and prunes the unchanged candidate placements.";
     const strainUse = geometryPreference === "strain"
-      ? ` A frozen sample-derived contact/angle strain adds a ${geometricStrainWeight.toFixed(2)} soft ordering term over that same candidate set.`
+      ? ` A frozen sample-derived contact/angle strain adds a ${geometricStrainWeight.toFixed(2)} soft ordering term over that same candidate set${affineLoadMode === "none" ? "." : ` after the metric is transformed by the declared ${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}; coordinates and hard gates stay unchanged.`}`
       : " Geometric strain is reported but contributes zero ranking weight for this ablation.";
     const ratio = Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}${count === 1 ? "" : count}`).join("");
     const compositionUse = compositionPreference === "none"
@@ -8078,6 +8155,8 @@ function resetCounters() {
   angularEnvelopePrunes = 0;
   acceptedGeometricStrain = 0;
   rejectedGeometricStrain = 0;
+  acceptedUnloadedGeometricStrain = 0;
+  rejectedUnloadedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
   acceptedFormalChargeDelta = 0;
@@ -8387,6 +8466,7 @@ function stateForCandidate(candidate, evaluation) {
     markingAccepted: candidate.markingAccepted,
     freshSites: evaluation.fresh.length,
     geometricStrain: evaluation.geometricStrain,
+    affineLoadedGeometricStrain: evaluation.affineLoadedGeometricStrain,
     compositionBalance: evaluation.compositionBalance,
     formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
@@ -8498,7 +8578,8 @@ function performOffLatticeEvent() {
       rejectedDecisions++;
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
-      rejectedGeometricStrain += snapshotEvaluation.geometricStrain.total;
+      rejectedGeometricStrain += effectiveGeometricStrain(snapshotEvaluation).total;
+      rejectedUnloadedGeometricStrain += snapshotEvaluation.geometricStrain.total;
       rejectedCompositionDelta += snapshotEvaluation.compositionBalance.scaledDelta;
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
@@ -8527,7 +8608,8 @@ function performOffLatticeEvent() {
       mechanismDiagnostics.get(candidate));
     const placement = materializeCandidate(candidate, evaluation);
     acceptedDecisions++;
-    acceptedGeometricStrain += evaluation.geometricStrain.total;
+    acceptedGeometricStrain += effectiveGeometricStrain(evaluation).total;
+    acceptedUnloadedGeometricStrain += evaluation.geometricStrain.total;
     acceptedCompositionDelta += evaluation.compositionBalance.scaledDelta;
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
@@ -9058,6 +9140,12 @@ function physicsTranslationRecords(leap = null) {
       encoding: activeSurfaceCompletionWeight() > 0 ? `sample-derived colored coordination deficit, w=${activeSurfaceCompletionWeight().toFixed(2)}` : "no surface-completion ranking term is active",
       evidence: leap ? `${leap.before.frontier} frontier candidates before the leap; ${leap.after.atoms - leap.before.atoms} explicit atoms added.` : "No interface update yet.",
       boundary: "This favors closing local coordination deficits but does not relax a surface, calculate surface energy, reconstruct an interface, or model solvent/feedstock transport." },
+    { id: "affine", process: "prescribed mechanical boundary deformation", status: affineLoadMode === "none" ? "open" : "soft", role: affineLoadMode === "none" ? "disabled" : "target-blind deformed-metric ordering",
+      encoding: affineLoadMode === "none"
+        ? "identity deformation gradient; observed contact/angle metric"
+        : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()} with F=${JSON.stringify(affineLoadTensor())}; exact coordinates and hard gates unchanged`,
+      evidence: leap ? `Loaded accepted mean ${receiptRound(acceptedGeometricStrain / Math.max(1, acceptedDecisions), 4)} versus unloaded ${receiptRound(acceptedUnloadedGeometricStrain / Math.max(1, acceptedDecisions), 4)}.` : "No loaded attachment scored yet.",
+      boundary: "This is a prescribed deformation gradient, not inferred stress, pressure, modulus, force, elastic relaxation, plasticity, phonons, or mechanical equilibrium." },
     { id: "drive", process: "externally imposed directional loading / feed geometry", status: activeExternalDriveWeight() > 0 ? "soft" : "open", role: activeExternalDriveWeight() > 0 ? "target-blind soft ordering" : "disabled",
       encoding: activeExternalDriveWeight() > 0
         ? `${externalDriveModeLabel()} parent→child alignment, w=${activeExternalDriveWeight().toFixed(2)}, over the unchanged frozen frontier`
@@ -9069,7 +9157,7 @@ function physicsTranslationRecords(leap = null) {
       evidence: leap ? `${leap.after.atoms - leap.before.atoms} explicit sites were emitted with physicalTimeModeled=false and dynamicsIntegrated=false.` : "The seed has no physical clock.",
       boundary: "No barrier, rate, pathway probability, thermostat, phonon transport, diffusion, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
     { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
-      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} is imposed as geometry, but material response is unsolved` : "no long-range field solver"}`,
+      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved`,
       evidence: "The portal reports this omission instead of silently folding it into a local score.",
       boundary: "Collective strain, defects, polarization, screening, magnetism, excited states, and nonlocal charge redistribution require external physics or new geometric state variables." },
   ];
@@ -9185,9 +9273,10 @@ function updateDecision(event) {
   actionValue.textContent = event.state.action;
   domainValue.textContent = event.state.domain;
   energyValue.textContent = event.interval ? `[${event.interval[0].toFixed(2)}, ${event.interval[1].toFixed(2)}]` : "geometric prune";
-  const strain = event.state.geometricStrain;
+  const strain = affineLoadMode === "none"
+    ? event.state.geometricStrain : event.state.affineLoadedGeometricStrain;
   strainValue.textContent = strain
-    ? `${strain.total.toFixed(3)} · r ${strain.distance.toFixed(3)} · θ ${strain.angle.toFixed(3)}`
+    ? `${strain.total.toFixed(3)} · r ${strain.distance.toFixed(3)} · θ ${strain.angle.toFixed(3)}${affineLoadMode === "none" ? "" : ` · ${affineLoadModeLabel()}`}`
     : "not evaluated";
   const balance = event.state.compositionBalance;
   compositionValue.textContent = balance
@@ -9264,10 +9353,12 @@ function geometryConstraintEvidence(name, term, state, mode) {
     },
     "elastic proxy": {
       observed: `${pairRecords.length} contact scales + ${totalBands} angular bands from the supplied geometry`,
-      encoding: "Dimensionless distance and angle residuals measure deformation away from observed local envelopes.",
+      encoding: affineLoadMode === "none"
+        ? "Dimensionless distance and angle residuals measure deformation away from observed local envelopes."
+        : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()} applies F=${JSON.stringify(affineLoadTensor())} to local displacement vectors before the same residual is evaluated.`,
       searchRole: activeGeometricStrainWeight() > 0
         ? `Soft rank term with weight ${activeGeometricStrainWeight().toFixed(2)}; it cannot authorize a failed hard gate.` : "Diagnostic only; weight zero.",
-      boundary: "This is not elastic energy: no modulus, stress tensor, relaxation, phonon, or force is calculated.",
+      boundary: "This is not elastic energy: the deformation gradient is prescribed, while no modulus, stress tensor, pressure, relaxation, plasticity, phonon, or force is calculated.",
     },
     "composition reservoir": {
       observed: `${ratio} reduced ratio from ${compositionTarget?.observations || referenceCount()} supplied sites`,
@@ -9362,8 +9453,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: state.angularViolations ? `${state.angularViolations} violation${state.angularViolations === 1 ? "" : "s"}` : "pass",
       detail: "colored bond-angle support" },
     { name: "elastic proxy", status: ranked(activeGeometricStrainWeight() > 0),
-      value: state.geometricStrain ? state.geometricStrain.total.toFixed(3) : "not evaluated",
-      detail: activeGeometricStrainWeight() > 0 ? `rank weight ${activeGeometricStrainWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+      value: state.geometricStrain ? (affineLoadMode === "none" ? state.geometricStrain : state.affineLoadedGeometricStrain).total.toFixed(3) : "not evaluated",
+      detail: activeGeometricStrainWeight() > 0 ? `rank weight ${activeGeometricStrainWeight().toFixed(2)} · ${affineLoadModeLabel()}` : "diagnostic · cannot authorize geometry" },
     { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
       value: state.compositionBalance ? signed(state.compositionBalance.scaledDelta) : "not evaluated",
       detail: activeCompositionBalanceWeight() > 0 ? `rank weight ${activeCompositionBalanceWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
@@ -10513,6 +10604,19 @@ externalDriveSelect.addEventListener("change", () => {
 externalDriveWeightSelect.addEventListener("change", () => {
   const value = Number(externalDriveWeightSelect.value);
   externalDriveWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+affineLoadSelect.addEventListener("change", () => {
+  const value = affineLoadSelect.value;
+  affineLoadMode = ["hydro-compress", "hydro-tension", "z-tension", "xy-shear"].includes(value)
+    ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+affineLoadMagnitudeSelect.addEventListener("change", () => {
+  const value = Number(affineLoadMagnitudeSelect.value);
+  affineLoadMagnitude = [.01, .02, .04].includes(value) ? value : .02;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

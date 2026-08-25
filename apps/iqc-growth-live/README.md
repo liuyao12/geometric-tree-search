@@ -425,6 +425,19 @@ field, chemical-potential gradient, deposition flux, rate, or material response
 is calculated. The receipt records the declared axis, weight, accepted/rejected
 mean alignment, `targetUsed=false`, and `candidateGeometryChanged=false`.
 
+An independent **prescribed affine loading** control deforms the metric used by
+the soft contact/angle strain term. Hydrostatic compression or tension,
+uniaxial Z tension, and XY shear can be applied at 1%, 2%, or 4%. For every
+already-enumerated candidate, the declared deformation gradient transforms its
+local displacement vectors before their mismatch to the observed colored
+distance and angle envelopes is measured. Exact atom coordinates, cluster
+templates, collision checks, coordination/angle admission gates, and candidate
+identity remain unchanged. The counterfactual policy table shows unloaded and
+loaded-metric winners side by side; the ledger and receipt retain the full 3×3
+tensor and loaded versus unloaded mean residuals. This is a mechanical boundary
+hypothesis, not stress, pressure, modulus, force, elastic relaxation,
+plasticity, phonons, or mechanical equilibrium.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers
@@ -587,7 +600,7 @@ updates with each tree decision without turning any diagnostic into an energy.
 The growth controls also display a counterfactual frontier table computed from
 the same already-enumerated, hard-admitted candidate set. It reports the top
 action under marking/recurrence alone, balanced elastic mismatch, composition
-balance, formal-charge bookkeeping, surface completion, external driving
+balance, unloaded versus affine-loaded metric strain, formal-charge bookkeeping, surface completion, external driving
 geometry, and the currently active combined policy. The
 candidate count and number of distinct winners expose whether the soft physics
 proxies actually change the next action. During reconstruction the table says

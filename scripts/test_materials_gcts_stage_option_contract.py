@@ -70,7 +70,9 @@ def test_growth_exposes_candidate_identical_geometric_strain_ablation() -> None:
     assert '<option value="none">Off · marking/action ordering only</option>' in HTML
     assert "function activeGeometricStrainWeight()" in APP
     assert 'geometryPreference === "strain" ? geometricStrainWeight : 0' in APP
-    assert "- activeGeometricStrainWeight() * evaluation.geometricStrain.total" in APP
+    assert "- activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total" in APP
+    assert "candidateCoordinatesChanged: false" in APP
+    assert "hardAdmissionChanged: false" in APP
     assert "target-blind soft ordering of the unchanged exact candidate set" in APP
     assert 'id="compositionPreferenceSelect"' in HTML
     assert "function activeCompositionBalanceWeight()" in APP

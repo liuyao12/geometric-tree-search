@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-37">
+  <link rel="stylesheet" href="./style.css?v=20260825-38">
   <script type="importmap">
     {
       "imports": {
@@ -448,6 +448,24 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="affineLoadSelect">
+              <span>Prescribed affine loading <b id="affineLoadHint">undeformed metric</b></span>
+              <select id="affineLoadSelect">
+                <option value="none" selected>None · observed metric</option>
+                <option value="hydro-compress">Hydrostatic compression</option>
+                <option value="hydro-tension">Hydrostatic tension</option>
+                <option value="z-tension">Uniaxial Z tension</option>
+                <option value="xy-shear">XY shear</option>
+              </select>
+            </label>
+            <label class="field" for="affineLoadMagnitudeSelect">
+              <span>Affine magnitude <b>prescribed strain</b></span>
+              <select id="affineLoadMagnitudeSelect">
+                <option value="0.01">1% · small</option>
+                <option value="0.02" selected>2% · moderate</option>
+                <option value="0.04">4% · stress test</option>
+              </select>
+            </label>
             <label class="field" for="growthSchedulingSelect">
               <span>Tree-search scheduling <b id="growthSchedulingHint">maximal commuting set</b></span>
               <select id="growthSchedulingSelect">
@@ -739,6 +757,7 @@
           <div class="viewport-chrome top-left"><span id="eventKind">SEED</span><b id="eventCounter">0000</b></div>
           <div class="viewport-chrome top-right"><span id="viewportHint">drag to orbit · wheel to zoom</span><b id="unitCellBadge" hidden>unit cell</b></div>
           <div id="externalDriveBadge" class="external-drive-badge" hidden><i id="externalDriveGlyph">↑</i><span><b id="externalDriveBadgeLabel">axis +Z</b><small>declared soft drive · no force field</small></span></div>
+          <div id="affineLoadBadge" class="affine-load-badge" hidden><i id="affineLoadGlyph">⇳</i><span><b id="affineLoadBadgeLabel">2% affine load</b><small>deformed metric · coordinates unchanged</small></span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
@@ -914,7 +933,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-80"></script>
+  <script type="module" src="./app.js?v=20260825-81"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
