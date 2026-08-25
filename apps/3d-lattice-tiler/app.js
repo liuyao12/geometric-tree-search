@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-face-backtrack-v214";
+} from "./engine.js?v=20260824-translational-goal-v216";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1927,7 +1927,7 @@ function configKey() {
           : completeShellSearch
             ? "shell"
             : moveOrderSelect.value,
-    complete_lattice_point_branching: isGcts || isRl
+    complete_lattice_point_branching: isGcts || isRl || tilingStrategy === "translational"
       || (tilingStrategy === "free_range" && selectedCriterion !== "shell"),
     gcts_failure_marking: isGcts,
     gcts_marking_reach_multiplier: 1,
@@ -1944,10 +1944,16 @@ function configKey() {
     random_seed: 1,
     learned_layer_macro: false,
     template_preflight: isStructural,
-    periodic_patch_unbounded: tilingStrategy === "translational",
+    periodic_patch_unbounded: false,
+    periodic_stop_at_growth_goal: tilingStrategy === "translational",
+    periodic_goal_preflight_time_ms: tilingStrategy === "translational" ? 1000 : null,
     periodic_motif_node_limit: tilingStrategy === "translational" ? 2500 : null,
     periodic_patch_max_tiles: tilingStrategy === "translational"
-      ? null
+      ? selectedCriterion === "count"
+        ? Math.max(1, +maxTilesInput.value)
+        : selectedCriterion === "shell"
+          ? Math.max(24, 24 * +shellInput.value)
+          : Math.max(1, Number(periodicTileCountSelect.value) || 4)
       : Math.max(1, Number(periodicTileCountSelect.value) || 4),
     periodic_template_max_volume: 512,
     isohedral_search_horizon_tiles:
@@ -2935,7 +2941,11 @@ function handleMessage(message) {
   if (message.type === "translational_check") {
     setStatus(message.certified
       ? `Certified ${message.patch_size}-tile translational patch`
-      : `No ${message.patch_size}-tile patch; checking the next size…`);
+      : message.growth_goal_reached
+        ? message.growth_goal_criterion === "shell"
+          ? `Reached shell ${message.growth_goal_target}; translational result is inconclusive`
+          : `Reached ${message.growth_goal_target}-tile goal; translational result is inconclusive`
+        : `No ${message.patch_size}-tile patch; checking the next size…`);
     return;
   }
   if (message.type === "full_update") {
@@ -2964,7 +2974,11 @@ function handleMessage(message) {
     if (message.success !== false) revealSuccessPath();
     metricTiles.textContent = message.tile_count ?? metricTiles.textContent;
     if (message.search_stats) updateSearchMetrics(message.search_stats);
-    const prefix = message.result_kind === "certified_tiling"
+    const translationalGoalInconclusive = message.search_stats?.termination_reason
+      === "translational_growth_goal_without_certificate";
+    const prefix = translationalGoalInconclusive
+      ? "Translational inconclusive at goal"
+      : message.result_kind === "certified_tiling"
       ? "Certified"
       : message.result_kind === "patch_found"
         ? "Patch found"
@@ -3037,7 +3051,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-face-backtrack-v214", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-translational-goal-v216", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3636,6 +3650,14 @@ function formatGrowthResult(result, target) {
     return `${result.label} inconclusive · ${effort}`;
   }
   if (result?.mode === "translational" && !result?.success) {
+    if (result.stats?.termination_reason === "translational_growth_goal_without_certificate") {
+      const reached = result.criterion === "shell"
+        ? `shell ${result.targetValue}`
+        : result.criterion === "count"
+          ? `${result.targetValue}-tile goal`
+          : `${result.criterion} ${result.targetValue}`;
+      return `${result.label} reached ${reached}; inconclusive (no translational certificate through that patch)`;
+    }
     const checked = result.checkedPatchSize ?? 0;
     return `${result.label} inconclusive · checked through ${checked}-tile patches`;
   }
@@ -3745,7 +3767,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-face-backtrack-v214", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-translational-goal-v216", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

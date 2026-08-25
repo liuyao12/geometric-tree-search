@@ -4346,6 +4346,7 @@ export const createTilingStream = (() => {
       const localBudgetExceeded = options.budget_exceeded ?? (() => false);
       let localNodes = 0;
       const visit = () => {
+        if (options.should_stop?.()) return null;
         if (overBudget() || localBudgetExceeded() || localNodes >= nodeLimit) {
           if (overBudget()) noteIncompleteSearch();
           else options.on_local_limit?.();
@@ -4358,9 +4359,22 @@ export const createTilingStream = (() => {
         if (seenBySize[size].has(stateKey)) return null;
         seenBySize[size].add(stateKey);
         searchStats.periodic_motif_states += 1;
-        if (size === requestedPeriod) return findBoundaryPeriodicTemplate(requestedPeriod);
+        if (size === requestedPeriod) {
+          const template = findBoundaryPeriodicTemplate(requestedPeriod, {
+            budget_exceeded: () => overBudget() || localBudgetExceeded(),
+            on_budget_exceeded: options.on_local_limit ?? (() => {})
+          });
+          if (template) return template;
+          if (options.stop_at_growth_goal && goalMet()) options.on_growth_goal?.(snapshot(null));
+          return null;
+        }
+        if (options.stop_at_growth_goal && goalMet()) {
+          options.on_growth_goal?.(snapshot(null));
+          return null;
+        }
 
         for (const move of periodicMotifCandidates()) {
+          if (options.should_stop?.()) return null;
           if (overBudget() || localBudgetExceeded() || localNodes >= nodeLimit) {
             if (overBudget()) noteIncompleteSearch();
             else options.on_local_limit?.();
@@ -4791,7 +4805,29 @@ export const createTilingStream = (() => {
         : Number.isFinite(progressiveMax)
           ? Math.max(1, Math.floor(progressiveMax))
           : Math.max(1, Math.floor(+config.periodic_tile_count || 2));
-      for (let patchSize = 1; !template && patchSize <= maximumPatchSize && !overBudget(); patchSize++) {
+      const stopAtGrowthGoal = tilingStrategy === "translational"
+        && config.periodic_stop_at_growth_goal !== false;
+      const growthGoalPatchLimit = Number.isFinite(maximumPatchSize)
+        ? maximumPatchSize
+        : criterion === "count"
+          ? targetVal
+          : criterion === "shell"
+            ? Math.max(24, targetVal * 24)
+            : safetyMax;
+      let growthGoalSnapshot = null;
+      // Goal-bounded comparisons need not exhaust every smaller motif size
+      // before they are allowed to represent the requested finite patch. Do
+      // the especially useful one-tile exact preflight, then make one bounded
+      // connected search whose intermediate states are checked against the
+      // actual count/shell/region goal.
+      const patchSizes = stopAtGrowthGoal
+        ? [...new Set([1, growthGoalPatchLimit])]
+        : null;
+      const patchSizeCount = patchSizes?.length ?? maximumPatchSize;
+      for (let patchOrdinal = 0;
+        !template && !growthGoalSnapshot && patchOrdinal < patchSizeCount && !overBudget();
+        patchOrdinal++) {
+        const patchSize = patchSizes?.[patchOrdinal] ?? patchOrdinal + 1;
         if (performance.now() >= discoveryDeadline) break;
         searchStats.translational_motif_sizes_attempted += 1;
         searchStats.translational_largest_motif_size_attempted = Math.max(
@@ -4804,26 +4840,63 @@ export const createTilingStream = (() => {
           `checking ${patchSize}-tile translational patch`,
           preflightStatusPayload()
         );
-        template = findPeriodicTemplate(patchSize);
-        if (!template) template = findPeriodicMotifByBoundarySearch(patchSize, {
+        const searchBoundaryMotif = () => findPeriodicMotifByBoundarySearch(patchSize, {
           // An unbounded translational lane must advance through motif sizes
           // instead of spending its entire run exhaustively on the first hard
           // small size.  Per-size exhaustion is not a negative certificate;
           // the lane remains inconclusive and continues to larger domains.
           node_limit: motifNodeLimit ?? (unbounded ? 2500 : null),
           budget_exceeded: () => performance.now() >= discoveryDeadline,
-          on_local_limit: () => {}
+          on_local_limit: () => {},
+          stop_at_growth_goal: stopAtGrowthGoal,
+          should_stop: () => !!growthGoalSnapshot,
+          on_growth_goal: goalSnapshot => { growthGoalSnapshot ??= cloneSnapshot(goalSnapshot); }
         });
+        // In a goal-bounded comparison, grow an actual connected patch first.
+        // This can satisfy the shared tile/shell criterion and still checks
+        // each completed candidate as an exact quotient. The global HNF sweep
+        // is intentionally secondary because it can consume the entire run
+        // before the requested finite growth target is ever represented.
+        if (stopAtGrowthGoal) {
+          if (patchSize === 1) {
+            template = findPeriodicTemplate(1);
+            if (!template && growthGoalPatchLimit === 1 && goalMet()) {
+              growthGoalSnapshot = cloneSnapshot(snapshot(null));
+            }
+          } else {
+            template = searchBoundaryMotif();
+          }
+        } else {
+          template = findPeriodicTemplate(patchSize);
+          if (!template) template = searchBoundaryMotif();
+        }
         yield {
           type: "translational_check",
-          patch_size: patchSize,
+          patch_size: growthGoalSnapshot?.tile_count ?? patchSize,
           certified: !!template,
+          growth_goal_reached: !!growthGoalSnapshot,
+          growth_goal_criterion: growthGoalSnapshot ? criterion : null,
+          growth_goal_target: growthGoalSnapshot ? targetVal : null,
           periodic_template: template,
           frontier_stats: frontierStatsWithCandidateCount(),
           search_stats: searchStatsSnapshot()
         };
         if (template) break;
+        if (growthGoalSnapshot) break;
         await tick();
+      }
+      if (!template && growthGoalSnapshot) {
+        searchStats.termination_reason = "translational_growth_goal_without_certificate";
+        yield nodeStatus(
+          parentId,
+          "working",
+          criterion === "shell"
+            ? `reached complete shell ${targetVal}; no translational certificate through this patch`
+            : `reached ${targetVal}-tile goal; no translational certificate through this patch`,
+          preflightStatusPayload()
+        );
+        yield { ...growthGoalSnapshot, node_id: parentId };
+        return false;
       }
       if (!template && overBudget()) noteIncompleteSearch();
       if (!template) return false;
@@ -6770,7 +6843,38 @@ export const createTilingStream = (() => {
       };
       yield nodeStatus(rootId, "fail", "Local edge-angle obstruction");
     } else if (tilingStrategy === "translational") {
-      success = yield* tryPeriodicTemplatePatch(rootId, { force: true });
+      const configuredGoalPreflightMs = Number(config.periodic_goal_preflight_time_ms);
+      success = yield* tryPeriodicTemplatePatch(rootId, {
+        force: true,
+        discoveryTimeMs: config.periodic_stop_at_growth_goal !== false
+          ? Number.isFinite(configuredGoalPreflightMs) && configuredGoalPreflightMs > 0
+            ? configuredGoalPreflightMs
+            : 1000
+          : null
+      });
+      if (
+        !success
+        && config.periodic_stop_at_growth_goal !== false
+        && searchStats.termination_reason !== "translational_growth_goal_without_certificate"
+        && !overBudget()
+      ) {
+        const growthGoalReached = yield* search(rootId);
+        if (growthGoalReached) {
+          searchStats.termination_reason = "translational_growth_goal_without_certificate";
+          yield {
+            type: "translational_check",
+            patch_size: state.placements.length,
+            certified: false,
+            growth_goal_reached: true,
+            growth_goal_criterion: criterion,
+            growth_goal_target: targetVal,
+            periodic_template: null,
+            frontier_stats: frontierStatsWithCandidateCount(),
+            search_stats: searchStatsSnapshot()
+          };
+          yield snapshot(rootId);
+        }
+      }
       if (!success) {
         yield nodeStatus(rootId, "fail", "No exact translational patch certificate found");
       }

@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260824-face-backtrack-v214";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260824-translational-goal-v216";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -99,6 +99,11 @@ const post = (sequence, payload) => {
 
 function configureMode(baseConfig, mode) {
   const shellSearch = baseConfig.criterion === "shell";
+  const translationalPatchGoal = baseConfig.criterion === "count"
+    ? Math.max(1, Math.floor(baseConfig.target_val))
+    : shellSearch
+      ? Math.max(24, Math.floor(baseConfig.target_val) * 24)
+      : Math.max(1, Math.floor(baseConfig.periodic_patch_max_tiles ?? baseConfig.target_val ?? 4));
   const exactLearningShell = shellSearch && ["gcts", "rl", "gcts_rl"].includes(mode.id);
   const effectiveMode = shellSearch && mode.proof
     ? { ...mode, label: `${mode.label.replace(/ · .*$/u, "")} · complete shell` }
@@ -108,7 +113,7 @@ function configureMode(baseConfig, mode) {
     tiling_strategy: mode.strategy,
     move_order: shellSearch && mode.proof ? "shell" : mode.moveOrder,
     proposal_program: null,
-    complete_lattice_point_branching: ["free_range", "gcts", "rl", "gcts_rl", "no_brainer"].includes(mode.id),
+    complete_lattice_point_branching: ["free_range", "gcts", "rl", "gcts_rl", "no_brainer", "translational"].includes(mode.id),
     gcts_failure_marking: mode.id === "gcts" || mode.id === "gcts_rl",
     gcts_marking_reach_multiplier: baseConfig.gcts_marking_reach_multiplier ?? 1,
     gcts_marking_max_clauses: baseConfig.gcts_marking_max_clauses ?? 20000,
@@ -127,9 +132,13 @@ function configureMode(baseConfig, mode) {
     greedy_no_backtrack: false,
     template_preflight: mode.templates,
     periodic_preflight: mode.templates,
-    periodic_patch_unbounded: mode.id === "translational",
+    periodic_patch_unbounded: false,
+    periodic_stop_at_growth_goal: mode.id === "translational",
+    periodic_goal_preflight_time_ms: mode.id === "translational" ? 1000 : null,
     periodic_motif_node_limit: mode.id === "translational" ? 2500 : baseConfig.periodic_motif_node_limit,
-    periodic_patch_max_tiles: mode.id === "translational" ? null : baseConfig.periodic_patch_max_tiles,
+    periodic_patch_max_tiles: mode.id === "translational"
+      ? translationalPatchGoal
+      : baseConfig.periodic_patch_max_tiles,
     snapshot_every: 1,
     placement_details: ["gcts", "rl", "gcts_rl"].includes(mode.id),
     branch_cap: null,
@@ -216,6 +225,10 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
               : message.check_completed
                 ? `${message.patch_size}-tile checkpoint is not a translational quotient`
                 : `${message.patch_size}-tile checkpoint quotient check timed out`
+            : message.growth_goal_reached
+              ? message.growth_goal_criterion === "shell"
+                ? `reached shell ${message.growth_goal_target}; no translational certificate through this patch`
+                : `reached ${message.growth_goal_target}-tile goal; no translational certificate through this patch`
             : message.certified
               ? `certified ${message.patch_size}-tile patch`
               : `no ${message.patch_size}-tile patch; expanding`

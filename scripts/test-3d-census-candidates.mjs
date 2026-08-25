@@ -75,6 +75,10 @@ assert.ok(preparedCube.summary.tiles.every(tile =>
 assert.match(growthWorkerSource, /preprocessTilingSystem\(run\.config, tileSpecs\)/);
 assert.match(growthWorkerSource, /type: "mode-ready"/);
 assert.match(growthWorkerSource, /type !== "go"/);
+assert.match(growthWorkerSource, /periodic_patch_unbounded: false/);
+assert.match(growthWorkerSource, /periodic_stop_at_growth_goal: mode\.id === "translational"/);
+assert.match(growthWorkerSource, /translationalPatchGoal/);
+assert.match(growthAppSource, /translational_growth_goal_without_certificate/);
 assert.match(growthAppSource, /readyModes\.size === GROWTH_MODES\.length/);
 assert.match(growthAppSource, /performance\.timeOrigin \+ performance\.now\(\) \+ 100/);
 assert.match(growthAppSource, /Preprocessing \(excluded\)/);
