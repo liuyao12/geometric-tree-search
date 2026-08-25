@@ -460,6 +460,31 @@
                 <option value="none">Off · report only</option>
               </select>
             </label>
+            <label class="field" for="chargeGeometrySelect">
+              <span>Charge-neighborhood geometry <b id="chargeGeometryHint">requires complete supplied charge</b></span>
+              <select id="chargeGeometrySelect">
+                <option value="none" selected>Off · spatial charge reported</option>
+                <option value="opposite">Opposite-charge coordination</option>
+                <option value="field-neutral">Minimize local field imbalance</option>
+                <option value="combined">Combined ionic geometry</option>
+              </select>
+            </label>
+            <label class="field" for="chargeGeometryReachSelect">
+              <span>Charge reach <b>exponential geometric window</b></span>
+              <select id="chargeGeometryReachSelect">
+                <option value="1.5">1.5dₙₙ · first shell</option>
+                <option value="2.5" selected>2.5dₙₙ · local screening</option>
+                <option value="4">4.0dₙₙ · extended probe</option>
+              </select>
+            </label>
+            <label class="field" for="chargeGeometryWeightSelect">
+              <span>Charge-geometry weight <b>soft supplied-label rank</b></span>
+              <select id="chargeGeometryWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="surfacePreferenceSelect">
               <span>Surface completion <b>soft coordination-deficit proxy</b></span>
               <select id="surfacePreferenceSelect">
@@ -1266,7 +1291,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-104"></script>
+  <script type="module" src="./app.js?v=20260825-105"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

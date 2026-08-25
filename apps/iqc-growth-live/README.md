@@ -4113,3 +4113,29 @@ energy, force balance, mechanical equilibrium, relaxation, plasticity,
 dislocation motion, or elapsed time. It cannot authorize a pose, alter emitted
 coordinates, relax an accepted structure, or override an exact collision,
 boundary, or connection certificate.
+
+## Supplied-charge neighborhood geometry
+
+The curated NaCl control now carries explicit `Na(+1)` and `Cl(−1)` formal
+oxidation-state labels, so its supplied-charge coverage is `216 / 216` rather
+than silently appearing unavailable. Imported structures use this channel only
+when every occupied site supplies a charge or a charged chemistry token. A
+species-level shortcut is retained only when every observed occurrence of that
+species has the same finite supplied value; inconsistent or missing labels fail
+closed. The portal never guesses oxidation states from element names.
+
+For a candidate with complete labels, each emitted site inspects already placed
+and co-emitted charged sites inside a user-selected `1.5`, `2.5`, or `4.0 dₙₙ`
+window. The declared radial weight is `exp(-r/R) / (r/dₙₙ)`. One channel reports
+opposite-versus-like-charge pair compatibility; a second reports the normalized
+vector imbalance of the local charged neighborhood. Users can rank by either
+channel or their equal-weight combination without changing the exact candidate
+geometry or admission gates. A mint/coral wire sphere displays pair character,
+and a violet ray shows any residual local imbalance direction.
+
+This is a finite geometry over supplied labels, not an electrostatics solver.
+`R` is not a Debye length, and the score is not Coulomb energy, electrostatic
+potential, electric field in physical units, dielectric screening, polarization,
+charge transfer, redox chemistry, force, mobility, rate, or physical time. The
+receipt records availability, reach, raw pair and field descriptors, work, and
+every non-claim.
