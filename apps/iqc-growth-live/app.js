@@ -44,6 +44,7 @@ import {
   learnColoredDistanceEnvelopesEnsemble,
 } from "./colored-distance-envelopes.js?v=20260824-6";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
+import { interfaceGeometryAudit } from "./interface-geometry.js?v=20260825-1";
 import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./proper-pose-orbits.js?v=20260825-1";
 import {
   centeredStructuralWindow,
@@ -272,6 +273,7 @@ const nucleusInterfaceInspector = $("nucleusInterfaceInspector");
 const nucleusInterfaceState = $("nucleusInterfaceState");
 const nucleusPairButtons = $("nucleusPairButtons");
 const nucleusPairDetail = $("nucleusPairDetail");
+const nucleusInterfaceProfile = $("nucleusInterfaceProfile");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -6163,7 +6165,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-127",
+      buildId: "20260825-128",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7039,6 +7041,30 @@ async function buildExperimentReceipt() {
           seedCenterSeparationAngstrom: receiptRound(pair.centerSeparationAngstrom),
           sharedSpeciesLabeledSites: pair.sharedSites,
           sharedSiteFractionOfSmallerLineage: receiptRound(pair.sharedSiteFraction),
+          finiteInterfaceGeometry: {
+            registryTopology: pair.interfaceGeometry.registryTopology,
+            coloredContactComponents: pair.interfaceGeometry.componentCount,
+            sharedSiteChemistry: pair.interfaceGeometry.chemistry,
+            axialThicknessRmsAngstrom: Number.isFinite(pair.interfaceGeometry.axialThicknessRms)
+              ? receiptRound(pair.interfaceGeometry.axialThicknessRms) : null,
+            axialSpanAngstrom: Number.isFinite(pair.interfaceGeometry.axialSpan)
+              ? receiptRound(pair.interfaceGeometry.axialSpan) : null,
+            axialCentroidOffsetFromSeedMidpointAngstrom:
+              Number.isFinite(pair.interfaceGeometry.axialCentroidOffset)
+                ? receiptRound(pair.interfaceGeometry.axialCentroidOffset) : null,
+            tangentialRadiusRmsAngstrom: Number.isFinite(pair.interfaceGeometry.tangentialRadiusRms)
+              ? receiptRound(pair.interfaceGeometry.tangentialRadiusRms) : null,
+            tangentialRadiusMaximumAngstrom: Number.isFinite(pair.interfaceGeometry.tangentialRadiusMaximum)
+              ? receiptRound(pair.interfaceGeometry.tangentialRadiusMaximum) : null,
+            axialSharedSiteHistogram: pair.interfaceGeometry.profile,
+            coordinationDeficit: pair.interfaceGeometry.coordinationDeficit,
+            coordinationTerms: pair.interfaceGeometry.coordinationTerms,
+            covariancePhenotype: pair.interfaceGeometry.covariancePhenotype,
+            intrinsicDimension: pair.interfaceGeometry.intrinsicDimension,
+            coordinateFrameUsed: false, targetUsed: false,
+            physicalAreaInferred: false, interfacialEnergyInferred: false,
+            interfaceMobilityInferred: false, physicalTimeIntegrated: false,
+          },
           targetUsed: false,
         })),
         interfaceVisualization: "cyan rings mark sites shared by lineages from different initialized nuclei",
@@ -10903,11 +10929,28 @@ function growthNucleusPairs() {
     const atomsB = atoms.filter((atom) => atom.nucleusIds?.includes(b.nucleusId));
     const shared = atoms.filter((atom) => atom.nucleusIds?.includes(a.nucleusId)
       && atom.nucleusIds.includes(b.nucleusId));
+    const scaleToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+    const interfaceGeometry = interfaceGeometryAudit({
+      positions: atoms.map((atom) => atom.p.toArray()), species: atoms.map((atom) => atom.species),
+      memberships: atoms.map((atom) => atom.nucleusIds || []),
+      firstNucleusId: a.nucleusId, secondNucleusId: b.nucleusId,
+      firstCenter: a.position.toArray(), secondCenter: b.position.toArray(), lengthScale: scaleToAngstrom,
+      contactCutoff: (firstSpecies, secondSpecies) =>
+        coordinationEnvelopeFor(coloredCoordinationEnvelopes, firstSpecies, secondSpecies)?.contactCutoff || null,
+    });
+    const interfaceCoordination = coordinationDeficitForIndices(atoms, interfaceGeometry.sharedIndices);
+    const interfaceShape = covarianceMorphology(shared, scaleToAngstrom);
+    interfaceGeometry.coordinationDeficit = Number.isFinite(interfaceCoordination.mean)
+      ? receiptRound(interfaceCoordination.mean) : null;
+    interfaceGeometry.coordinationTerms = interfaceCoordination.terms;
+    interfaceGeometry.covariancePhenotype = interfaceShape.phenotype;
+    interfaceGeometry.intrinsicDimension = interfaceShape.intrinsicDimension;
+    interfaceGeometry.relativeShapeAnisotropy = receiptRound(interfaceShape.relativeShapeAnisotropy);
     pairs.push({ key: `${a.nucleusId}:${b.nucleusId}`, first: a, second: b, misorientation,
       centerSeparationAngstrom: a.position.distanceTo(b.position) * referenceSpacingA / referenceSpacing,
       sharedSites: shared.length, firstSites: atomsA.length, secondSites: atomsB.length,
       sharedSiteFraction: shared.length / Math.max(1, Math.min(atomsA.length, atomsB.length)),
-      sameClusterType: a.type === b.type, targetUsed: false });
+      interfaceGeometry, sameClusterType: a.type === b.type, targetUsed: false });
   }
   return pairs;
 }
@@ -10936,18 +10979,37 @@ function renderNucleusInterfaceInspector() {
   nucleusPairDetail.replaceChildren();
   const angle = selected.misorientation.comparable
     ? `${selected.misorientation.angleDegrees.toFixed(2)}°` : "not comparable";
+  const geometry = selected.interfaceGeometry;
+  const length = (value) => Number.isFinite(value) ? `${value.toFixed(2)} Å` : "unresolved";
+  const chemistry = Object.entries(geometry.chemistry).map(([symbol, count]) => `${symbol}${count}`).join(" · ") || "none";
   [
     ["proper misorientation", angle, selected.misorientation.comparable
       ? `${selected.misorientation.properGaugePairs} symmetry-gauge pairs minimized` : selected.misorientation.reason],
     ["seed separation", `${selected.centerSeparationAngstrom.toFixed(2)} Å`, "observed occurrence centers"],
     ["shared-site registry", `${selected.sharedSites} sites · ${(selected.sharedSiteFraction * 100).toFixed(1)}%`, `${selected.firstSites} / ${selected.secondSites} lineage sites`],
-    ["claim boundary", "geometric interface", "no grain label or interfacial energy"],
+    ["registry topology", geometry.registryTopology, `${geometry.componentCount ?? "—"} colored-contact component${geometry.componentCount === 1 ? "" : "s"} · ${chemistry}`],
+    ["axial contact thickness", length(geometry.axialThicknessRms), `RMS along observed seed-center axis · ${length(geometry.axialSpan)} span · centroid ${length(geometry.axialCentroidOffset)} from midpoint`],
+    ["tangential spread", length(geometry.tangentialRadiusRms), `${length(geometry.tangentialRadiusMaximum)} maximum radius`],
+    ["interface exposure", Number.isFinite(geometry.coordinationDeficit)
+      ? `${(100 * geometry.coordinationDeficit).toFixed(1)}%` : "unresolved",
+    `${geometry.coordinationTerms} colored coordination terms · ${geometry.covariancePhenotype}`],
+    ["claim boundary", "finite registered contact zone", "no boundary area, grain identity, energy, mobility, or time"],
   ].forEach(([label, value, detail]) => {
     const row = document.createElement("div"); const small = document.createElement("small");
     const strong = document.createElement("strong"); const span = document.createElement("span");
     small.textContent = label; strong.textContent = value; span.textContent = detail;
     row.append(small, strong, span); nucleusPairDetail.append(row);
   });
+  nucleusInterfaceProfile.replaceChildren();
+  const profileMaximum = Math.max(1, ...geometry.profile);
+  geometry.profile.forEach((count, index) => {
+    const bar = document.createElement("span"); const fill = document.createElement("i");
+    fill.style.height = `${100 * count / profileMaximum}%`; bar.append(fill);
+    bar.title = `axial bin ${index + 1}: ${count} shared site${count === 1 ? "" : "s"}`;
+    nucleusInterfaceProfile.append(bar);
+  });
+  nucleusInterfaceProfile.setAttribute("aria-label",
+    `Seven-bin axial shared-site profile; ${geometry.sharedSiteCount} total registered sites`);
 }
 
 function initializeOffLatticeSearch() {

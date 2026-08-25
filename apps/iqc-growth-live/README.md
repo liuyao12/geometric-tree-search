@@ -249,6 +249,19 @@ effective nucleus count, and shared-interface fraction. These are provenance-
 aware geometric observables, not inferred grain identities, grain-boundary or
 interfacial energies, nucleation rates, or coarsening kinetics.
 
+Build 128 turns cross-lineage contact into a live **finite interface-geometry
+passport**. The existing proper-symmetry-reduced seed misorientation and exact
+shared-site registry are now accompanied by a seven-bin axial contact profile,
+RMS thickness and span along the seed-center line, tangential spread, connected
+colored-contact components, shared-site chemistry, covariance phenotype, and
+colored-coordination exposure. Every quantity is computed from the already
+materialized colored sites and learned contact envelopes; it does not change
+candidate enumeration, ranking, or admission. The receipt preserves the same
+pairwise audit. The center line supplies a reproducible intrinsic axis, not a
+fitted macroscopic boundary normal, and the finite registered contact zone is
+not promoted to a grain-boundary identity, physical area, interfacial energy,
+mobility, coarsening law, or elapsed time.
+
 The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.
