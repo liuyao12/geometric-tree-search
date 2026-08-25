@@ -413,6 +413,18 @@ Balanced and strong modes rank the same frozen candidate set; the live
 inspector and receipt report new-site deficit, healed existing deficit, weight,
 and accepted/rejected means.
 
+Stage 4 also permits a declared **external driving geometry**. The user may
+leave growth isotropic, choose a global +Z/−Z direction, or choose seed-relative
+radial outward/inward growth. The browser projects each unchanged parent→child
+attachment direction onto that axis and adds a weak, balanced, or strong soft
+ranking term. This is useful for counterfactual substrate-normal, directional
+feed, or closing-front experiments while keeping the exact same cluster and
+port candidates. It is deliberately a boundary/loading hypothesis rather than
+a solved physical field: no force, pressure, stress propagation, electric
+field, chemical-potential gradient, deposition flux, rate, or material response
+is calculated. The receipt records the declared axis, weight, accepted/rejected
+mean alignment, `targetUsed=false`, and `candidateGeometryChanged=false`.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers
@@ -575,7 +587,8 @@ updates with each tree decision without turning any diagnostic into an energy.
 The growth controls also display a counterfactual frontier table computed from
 the same already-enumerated, hard-admitted candidate set. It reports the top
 action under marking/recurrence alone, balanced elastic mismatch, composition
-balance, surface completion, and the currently active combined policy. The
+balance, formal-charge bookkeeping, surface completion, external driving
+geometry, and the currently active combined policy. The
 candidate count and number of distinct winners expose whether the soft physics
 proxies actually change the next action. During reconstruction the table says
 `target-aware replay`; after the one-to-one known-window certificate it says

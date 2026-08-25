@@ -162,6 +162,12 @@ const compositionPreferenceSelect = $("compositionPreferenceSelect");
 const chargePreferenceSelect = $("chargePreferenceSelect");
 const chargePreferenceHint = $("chargePreferenceHint");
 const surfacePreferenceSelect = $("surfacePreferenceSelect");
+const externalDriveSelect = $("externalDriveSelect");
+const externalDriveWeightSelect = $("externalDriveWeightSelect");
+const externalDriveHint = $("externalDriveHint");
+const externalDriveBadge = $("externalDriveBadge");
+const externalDriveGlyph = $("externalDriveGlyph");
+const externalDriveBadgeLabel = $("externalDriveBadgeLabel");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -548,8 +554,9 @@ const atomGroup = new THREE.Group();
 const clusterGroup = new THREE.Group();
 const frontierGroup = new THREE.Group();
 const decisionGroup = new THREE.Group();
+const externalDriveGroup = new THREE.Group();
 const unitCellGroup = new THREE.Group();
-world.add(confinementGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, frontierGroup, decisionGroup);
+world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, frontierGroup, decisionGroup);
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
@@ -620,6 +627,8 @@ let acceptedFormalChargeDelta = 0;
 let rejectedFormalChargeDelta = 0;
 let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
+let acceptedExternalDriveAlignment = 0;
+let rejectedExternalDriveAlignment = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -676,6 +685,8 @@ let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
 let chargePreference = "auto";
 let surfacePreference = "soft";
+let externalDriveMode = "none";
+let externalDriveWeight = .24;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5428,7 +5439,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-76",
+      buildId: "20260825-80",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5797,6 +5808,21 @@ async function buildExperimentReceipt() {
         acceptedMeanScaledDelta: receiptRound(acceptedSurfaceDeficit / Math.max(1, acceptedDecisions)),
         rejectedMeanScaledDelta: receiptRound(rejectedSurfaceDeficit / Math.max(1, rejectedDecisions)),
       },
+      externalDrivingGeometry: {
+        role: "user-declared target-blind soft ordering of unchanged exact candidate actions by parent-to-child direction",
+        mode: externalDriveMode,
+        label: externalDriveModeLabel(),
+        enabled: activeExternalDriveWeight() > 0,
+        effectiveWeight: activeExternalDriveWeight(),
+        globalAxis: externalDriveMode === "z-plus" ? [0, 0, 1]
+          : externalDriveMode === "z-minus" ? [0, 0, -1] : null,
+        seedRelative: externalDriveMode === "radial-out" || externalDriveMode === "radial-in",
+        acceptedMeanAlignment: receiptRound(acceptedExternalDriveAlignment / Math.max(1, acceptedDecisions)),
+        rejectedMeanAlignment: receiptRound(rejectedExternalDriveAlignment / Math.max(1, rejectedDecisions)),
+        candidateGeometryChanged: false,
+        targetUsed: false,
+        physicalFieldSolved: false,
+      },
       localConstraintWork: {
         role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
         maximumReachAngstrom: receiptRound(coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing),
@@ -5911,6 +5937,7 @@ function notebookInterventionFactors(receipt) {
       composition: [search.compositionBalanceRanking?.mode, search.compositionBalanceRanking?.effectiveWeight],
       formalCharge: [search.formalChargeBalanceRanking?.mode, search.formalChargeBalanceRanking?.effectiveWeight],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
+      externalDrive: [search.externalDrivingGeometry?.mode, search.externalDrivingGeometry?.effectiveWeight],
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
@@ -6929,6 +6956,43 @@ function activeSurfaceCompletionWeight() {
   return surfacePreference === "strong" ? .36 : surfacePreference === "soft" ? .18 : 0;
 }
 
+function activeExternalDriveWeight() {
+  return externalDriveMode === "none" ? 0 : externalDriveWeight;
+}
+
+function externalDriveModeLabel(mode = externalDriveMode) {
+  return ({ none: "isotropic", "z-plus": "axis +Z", "z-minus": "axis −Z",
+    "radial-out": "radial outward", "radial-in": "radial inward" })[mode] || "isotropic";
+}
+
+function externalDriveForCandidate(candidate) {
+  const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
+  const displacement = candidate.position.clone().sub(parent?.position || candidate.position);
+  const seedOrigin = placedClusters[0]?.position || new THREE.Vector3();
+  let axis = new THREE.Vector3();
+  if (externalDriveMode === "z-plus") axis.set(0, 0, 1);
+  else if (externalDriveMode === "z-minus") axis.set(0, 0, -1);
+  else if (externalDriveMode === "radial-out" || externalDriveMode === "radial-in") {
+    axis.copy((parent?.position || candidate.position).clone().sub(seedOrigin));
+    if (axis.lengthSq() < 1e-12) axis.copy(candidate.position).sub(seedOrigin);
+    if (axis.lengthSq() > 1e-12) axis.normalize();
+    if (externalDriveMode === "radial-in") axis.multiplyScalar(-1);
+  }
+  const alignment = axis.lengthSq() > 0 && displacement.lengthSq() > 0
+    ? displacement.clone().normalize().dot(axis) : 0;
+  return {
+    mode: externalDriveMode,
+    label: externalDriveModeLabel(),
+    alignment,
+    signedStepSceneUnits: displacement.dot(axis),
+    globalAxis: externalDriveMode === "z-plus" || externalDriveMode === "z-minus"
+      ? axis.toArray() : null,
+    seedRelative: externalDriveMode === "radial-out" || externalDriveMode === "radial-in",
+    targetUsed: false,
+    candidateGeometryChanged: false,
+  };
+}
+
 function frozenFrontierDigest(entries) {
   const serialized = entries.map((entry) => entry.candidate.key).sort().join("|");
   let hash = 0x811c9dc5;
@@ -6947,6 +7011,8 @@ function capturePolicyComparison(entries) {
     { id: "composition", label: "composition 0.35", score: (entry) => entry.baseScore - .35 * entry.evaluation.compositionBalance.scaledDelta },
     { id: "charge", label: "formal charge 0.25", score: (entry) => entry.baseScore - .25 * entry.evaluation.formalChargeBalance.scaledDelta },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
+    { id: "drive", label: `${externalDriveModeLabel()} ${activeExternalDriveWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeExternalDriveWeight() * entry.evaluation.externalDrive.alignment },
     { id: "active", label: "active combined", score: (entry) => entry.score },
   ].map((policy) => {
     const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
@@ -7166,7 +7232,8 @@ function commutingFrontierBatch() {
         - activeGeometricStrainWeight() * evaluation.geometricStrain.total
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
-        - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta,
+        - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
+        + activeExternalDriveWeight() * evaluation.externalDrive.alignment,
     };
   });
   capturePolicyComparison(evaluated);
@@ -7265,11 +7332,13 @@ function evaluateCandidate(candidate, {
   const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
+  const externalDrive = externalDriveForCandidate(candidate);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, surfaceCompletion, compositionBalance, formalChargeBalance,
+    externalDrive,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -7326,6 +7395,8 @@ function initializeOffLatticeSearch() {
   rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
+  acceptedExternalDriveAlignment = 0;
+  rejectedExternalDriveAlignment = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -7855,6 +7926,10 @@ function renderMolecularHypothesis() {
 
 function syncStageOptions() {
   const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
+  externalDriveBadge.hidden = pipelineStage !== 4 || externalDriveMode === "none";
+  externalDriveBadgeLabel.textContent = externalDriveModeLabel();
+  externalDriveGlyph.textContent = ({ "z-plus": "↑", "z-minus": "↓",
+    "radial-out": "↗", "radial-in": "↙" })[externalDriveMode] || "·";
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -7937,12 +8012,16 @@ function syncStageOptions() {
     compositionPreferenceSelect.value = compositionPreference;
     chargePreferenceSelect.value = chargePreference;
     surfacePreferenceSelect.value = surfacePreference;
+    externalDriveSelect.value = externalDriveMode;
+    externalDriveWeightSelect.value = String(externalDriveWeight);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
     compositionPreferenceSelect.disabled = finiteIceAnchorMode;
     chargePreferenceSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
+    externalDriveSelect.disabled = finiteIceAnchorMode;
+    externalDriveWeightSelect.disabled = finiteIceAnchorMode || externalDriveMode === "none";
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -7951,6 +8030,8 @@ function syncStageOptions() {
     chargePreferenceHint.textContent = formalChargeTarget?.available
       ? `${formalChargeTarget.resolvedObservations}/${formalChargeTarget.observations} sites · q̄ ${formalChargeTarget.meanFormalCharge >= 0 ? "+" : ""}${formalChargeTarget.meanFormalCharge.toFixed(3)}`
       : `${formalChargeTarget?.resolvedObservations || 0}/${formalChargeTarget?.observations || referenceCount()} sites · unavailable`;
+    externalDriveHint.textContent = externalDriveMode === "none"
+      ? "isotropic · weight zero" : `${externalDriveModeLabel()} · weight ${externalDriveWeight.toFixed(2)}`;
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -7976,11 +8057,14 @@ function syncStageOptions() {
     const surfaceUse = surfacePreference === "none"
       ? " Coordination deficit is reported but contributes zero ranking weight."
       : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
+    const externalDriveUse = externalDriveMode === "none"
+      ? " No external direction is preferred."
+      : ` A user-declared ${externalDriveModeLabel()} direction adds a ${externalDriveWeight.toFixed(2)} soft alignment term to the same actions; it is boundary/loading geometry, not a solved force field.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}`;
   }
 }
 
@@ -8000,6 +8084,8 @@ function resetCounters() {
   rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
+  acceptedExternalDriveAlignment = 0;
+  rejectedExternalDriveAlignment = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8304,6 +8390,7 @@ function stateForCandidate(candidate, evaluation) {
     compositionBalance: evaluation.compositionBalance,
     formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
+    externalDrive: evaluation.externalDrive,
   };
 }
 
@@ -8415,6 +8502,7 @@ function performOffLatticeEvent() {
       rejectedCompositionDelta += snapshotEvaluation.compositionBalance.scaledDelta;
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
+      rejectedExternalDriveAlignment += snapshotEvaluation.externalDrive.alignment;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -8443,6 +8531,7 @@ function performOffLatticeEvent() {
     acceptedCompositionDelta += evaluation.compositionBalance.scaledDelta;
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
+    acceptedExternalDriveAlignment += evaluation.externalDrive.alignment;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -8758,10 +8847,38 @@ function performEvent() {
 
 function rebuildWorld() {
   clearGroup(atomGroup);
+  clearGroup(externalDriveGroup);
   clearGroup(unitCellGroup);
   clearGroup(bondGroup);
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
+  if (pipelineStage === 4 && externalDriveMode !== "none") {
+    const origin = placedClusters[0]?.position?.clone() || new THREE.Vector3();
+    const extent = Math.max(4.5, ...atoms.map((atom) => atom.p.distanceTo(origin))) * .9;
+    const addArrow = (start, direction, length) => {
+      const unit = direction.clone().normalize();
+      const end = start.clone().addScaledVector(unit, length);
+      externalDriveGroup.add(new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([start, end]),
+        new THREE.LineBasicMaterial({ color: 0xf0c96a, transparent: true, opacity: .62 }),
+      ));
+      const head = new THREE.Mesh(new THREE.ConeGeometry(.18, .58, 10),
+        new THREE.MeshBasicMaterial({ color: 0xf0c96a, transparent: true, opacity: .72 }));
+      head.position.copy(end);
+      head.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), unit);
+      externalDriveGroup.add(head);
+    };
+    if (externalDriveMode === "z-plus" || externalDriveMode === "z-minus") {
+      const direction = new THREE.Vector3(0, 0, externalDriveMode === "z-plus" ? 1 : -1);
+      addArrow(origin.clone().addScaledVector(direction, -extent * .55), direction, extent * 1.1);
+    } else {
+      const inward = externalDriveMode === "radial-in";
+      [new THREE.Vector3(1, 0, 0), new THREE.Vector3(-1, 0, 0), new THREE.Vector3(0, 1, 0),
+        new THREE.Vector3(0, -1, 0), new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, -1)]
+        .forEach((axis) => addArrow(origin.clone().addScaledVector(axis, inward ? extent : extent * .22),
+          axis.clone().multiplyScalar(inward ? -1 : 1), extent * .48));
+    }
+  }
   const dummy = new THREE.Object3D();
   const selectedCoordination = selectedCoordinationDetail();
   const selectedIds = selectedCoordination?.ids || null;
@@ -8941,12 +9058,18 @@ function physicsTranslationRecords(leap = null) {
       encoding: activeSurfaceCompletionWeight() > 0 ? `sample-derived colored coordination deficit, w=${activeSurfaceCompletionWeight().toFixed(2)}` : "no surface-completion ranking term is active",
       evidence: leap ? `${leap.before.frontier} frontier candidates before the leap; ${leap.after.atoms - leap.before.atoms} explicit atoms added.` : "No interface update yet.",
       boundary: "This favors closing local coordination deficits but does not relax a surface, calculate surface energy, reconstruct an interface, or model solvent/feedstock transport." },
+    { id: "drive", process: "externally imposed directional loading / feed geometry", status: activeExternalDriveWeight() > 0 ? "soft" : "open", role: activeExternalDriveWeight() > 0 ? "target-blind soft ordering" : "disabled",
+      encoding: activeExternalDriveWeight() > 0
+        ? `${externalDriveModeLabel()} parent→child alignment, w=${activeExternalDriveWeight().toFixed(2)}, over the unchanged frozen frontier`
+        : "isotropic search; no preferred attachment direction",
+      evidence: leap ? `Accepted mean alignment ${receiptRound(acceptedExternalDriveAlignment / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedExternalDriveAlignment / Math.max(1, rejectedDecisions), 4)}.` : "No directional attachment scored yet.",
+      boundary: "This is a declared geometric boundary/loading condition. It does not solve a force, electric field, flux transport, stress propagation, or orientation-dependent attachment rate." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: "open", role: "not modeled",
       encoding: "none; the accepted whole-cluster antichain jumps directly between certified structural states",
       evidence: leap ? `${leap.after.atoms - leap.before.atoms} explicit sites were emitted with physicalTimeModeled=false and dynamicsIntegrated=false.` : "The seed has no physical clock.",
       boundary: "No barrier, rate, pathway probability, thermostat, phonon transport, diffusion, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
     { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
-      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; no long-range field solver`,
+      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} is imposed as geometry, but material response is unsolved` : "no long-range field solver"}`,
       evidence: "The portal reports this omission instead of silently folding it into a local score.",
       boundary: "Collective strain, defects, polarization, screening, magnetism, excited states, and nonlocal charge redistribution require external physics or new geometric state variables." },
   ];
@@ -9170,6 +9293,15 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeSurfaceCompletionWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "Coordination deficit is not surface free energy, reconstruction, adsorption, solvent chemistry, or Wulff construction.",
     },
+    "external drive": {
+      observed: `${externalDriveModeLabel()} declared by the user before growth; no target coordinates or outcomes are read`,
+      encoding: externalDriveMode === "none"
+        ? "The frozen frontier is isotropic with respect to an external axis."
+        : "The normalized parent→child attachment direction is projected onto a declared global axis or the seed-relative radial direction.",
+      searchRole: activeExternalDriveWeight() > 0
+        ? `Soft rank term +${activeExternalDriveWeight().toFixed(2)} × alignment over the unchanged exact candidate set.` : "Diagnostic only; weight zero.",
+      boundary: "A directional geometric bias is not force, stress, pressure, electric field, chemical-potential gradient, deposition flux, or a kinetic rate.",
+    },
     "GCTS marking": {
       observed: `${trainingProgress}/${markingSampleCount()} ${sectionModel?.sampleKind || "connection"} samples · ${iceAnchorTrace?.portCount || overlapGrammar?.rules?.length || 0} frozen connection states`,
       encoding: mode === "specialized"
@@ -9241,6 +9373,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
       detail: activeSurfaceCompletionWeight() > 0 ? `rank weight ${activeSurfaceCompletionWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
+      value: state.externalDrive ? signed(state.externalDrive.alignment) : "not evaluated",
+      detail: activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} · rank weight ${activeExternalDriveWeight().toFixed(2)}` : "isotropic · weight zero" },
     { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
@@ -9255,6 +9390,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "composition reservoir", status: "diagnostic", value: "withheld", detail: "occupancy ensemble required" },
     { name: "formal-charge reservoir", status: "diagnostic", value: "unavailable", detail: "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: "diagnostic", value: "withheld", detail: "no branch ranking" },
+    { name: "external drive", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
     { name: "GCTS marking", status: "diagnostic", value: "not executed", detail: "inspectable sections only" },
   ] : mode === "specialized" ? [
     { name: "species / hard core", status: "pass", value: "backend-certified", detail: "frozen exact trace" },
@@ -9267,6 +9403,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "composition reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "formal-charge reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "surface completion", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "external drive", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "GCTS marking", status: "pass", value: "domain unanimity",
       detail: `all surviving ${iceAnchorTrace?.moleculeLabel || "H₂O"} poses agree` },
   ] : [
@@ -9285,6 +9422,9 @@ function renderConstraintLedger(state, mode = "configured") {
       detail: formalChargeTarget?.available ? `weight ${activeFormalChargeWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
+    { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
+      value: activeExternalDriveWeight() > 0 ? externalDriveModeLabel() : "isotropic",
+      detail: activeExternalDriveWeight() > 0 ? `weight ${activeExternalDriveWeight().toFixed(2)}` : "weight zero" },
     { name: "GCTS marking", status: policySelect.value === "marked" ? "ranked" : "diagnostic",
       value: policySelect.value === "marked" ? "active" : "not gating", detail: "bounded local section" },
   ];
@@ -10361,6 +10501,18 @@ chargePreferenceSelect.addEventListener("change", () => {
 surfacePreferenceSelect.addEventListener("change", () => {
   const value = surfacePreferenceSelect.value;
   surfacePreference = value === "none" || value === "strong" ? value : "soft";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+externalDriveSelect.addEventListener("change", () => {
+  const value = externalDriveSelect.value;
+  externalDriveMode = ["z-plus", "z-minus", "radial-out", "radial-in"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+externalDriveWeightSelect.addEventListener("change", () => {
+  const value = Number(externalDriveWeightSelect.value);
+  externalDriveWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
