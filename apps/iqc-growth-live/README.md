@@ -484,6 +484,19 @@ rigid accessibility probe—not a minimum-energy path, activation barrier,
 diffusion event, assembly mechanism, probability, rate, or elapsed physical
 time.
 
+For obstructed pores and growth necks, **free-volume routing** expands that
+probe into a finite route portfolio. The same emitted colored set is swept
+rigidly along one straight parent-normal path and four symmetric transverse
+sinusoidal detours. Every route uses nine samples over `2 d_nn`; detours reach
+`0.72 d_nn` from the straight line. The browser selects the route with the best
+worst species-specific exclusion clearance, displays the chosen polyline in
+mint (straight routes remain amber), and records route count, total samples,
+neighbor checks, selected route kind, and tortuosity. The pore-filling protocol
+enables this mode by default. This bounded geometric shortcut can represent
+"room to get there" without integrating transport. It is not a diffusion
+equation, concentration field, minimum-energy path, activation barrier,
+mobility, probability, rate, or physical time.
+
 A separate **feedstock-exposure** experiment encodes mesoscopic source geometry
 and shadowing. The user may declare a collimated top source, one `45°` oblique
 source, a symmetric pair of `±30°` sources, or a nine-ray upper hemisphere.

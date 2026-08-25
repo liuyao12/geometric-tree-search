@@ -728,6 +728,7 @@ let acceptedBlockedPathSamples = 0;
 let rejectedBlockedPathSamples = 0;
 let arrivalPathSiteSamples = 0;
 let arrivalPathNeighborhoodChecks = 0;
+let arrivalPathRouteEvaluations = 0;
 let acceptedFeedExposureScore = 0;
 let rejectedFeedExposureScore = 0;
 let feedExposureEvaluations = 0;
@@ -964,7 +965,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       thermalFieldMode: "band", thermalFieldWeight: .12,
       microstructureCouplingMode: "gap-heal", microstructureCouplingWeight: .24,
       loopClosurePreference: "consensus", loopClosureWeight: .12,
-      arrivalPathMode: "parent-outward", arrivalPathWeight: .24, geometricExplorationScale: 0,
+      arrivalPathMode: "free-volume", arrivalPathWeight: .24, geometricExplorationScale: 0,
       requestedGrowthNuclei: 1, nucleationSiteMode: "gap", growthScheduling: "commuting", hierarchyEnabled: true },
   },
 });
@@ -5728,7 +5729,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-97",
+      buildId: "20260825-98",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6290,18 +6291,24 @@ async function buildExperimentReceipt() {
         modulusOrStressInferred: false,
       },
       geometricArrivalPathRanking: {
-        role: "soft kinetic-accessibility proxy from swept hard-core clearance of emitted sites along a declared arrival direction",
+        role: "soft geometric-accessibility proxy from swept hard-core clearance of emitted sites along a declared straight route or bounded transverse detours",
         mode: arrivalPathMode,
         label: arrivalPathLabel(),
         enabled: activeArrivalPathWeight() > 0,
         declaredDirectionAvailable: arrivalPathMode !== "declared-drive" || externalDriveMode !== "none",
         effectiveWeight: activeArrivalPathWeight(),
         sampleCountPerSite: arrivalPathMode === "none" ? 0 : 9,
+        sampleCountPerSitePerRoute: arrivalPathMode === "none" ? 0 : 9,
+        routeCandidatesPerAction: arrivalPathMode === "none" ? 0 : arrivalPathMode === "free-volume" ? 5 : 1,
+        routeEvaluations: arrivalPathRouteEvaluations,
+        detourRadiusNearestNeighborUnits: arrivalPathMode === "free-volume" ? .72 : 0,
         sweepDistanceNearestNeighborUnits: 2,
         acceptedMeanScore: receiptRound(acceptedArrivalPathScore / Math.max(1, acceptedDecisions)),
         rejectedMeanScore: receiptRound(rejectedArrivalPathScore / Math.max(1, rejectedDecisions)),
         acceptedBlockedSiteSamples: acceptedBlockedPathSamples,
         rejectedBlockedSiteSamples: rejectedBlockedPathSamples,
+        blockedSamplesReferToSelectedRouteOnly: true,
+        routeSelectionObjective: "maximize the minimum species-specific hard-core clearance; then minimize blocked samples; then stable route index",
         totalSiteSamples: arrivalPathSiteSamples,
         neighborhoodChecks: arrivalPathNeighborhoodChecks,
         emittedSitesOnly: true,
@@ -6310,6 +6317,8 @@ async function buildExperimentReceipt() {
         hardAdmissionChanged: false,
         heldoutTargetUsed: false,
         barrierOrRateInferred: false,
+        diffusionEquationSolved: false,
+        minimumEnergyPathClaimed: false,
         physicalTimeIntegrated: false,
       },
       feedstockExposureRanking: {
@@ -7933,14 +7942,15 @@ function geometricExplorationOffset(candidate) {
 
 function arrivalPathLabel(mode = arrivalPathMode) {
   return ({ none: "final pose only", "parent-outward": "parent-normal arrival",
-    "radial-outward": "seed-radial arrival", "declared-drive": "declared-drive arrival" })[mode]
+    "radial-outward": "seed-radial arrival", "declared-drive": "declared-drive arrival",
+    "free-volume": "free-volume detour routing" })[mode]
     || "final pose only";
 }
 
 function arrivalPathAxis(candidate) {
   const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
   const seedOrigin = placedClusters[0]?.position || new THREE.Vector3();
-  if (arrivalPathMode === "parent-outward") {
+  if (arrivalPathMode === "parent-outward" || arrivalPathMode === "free-volume") {
     return candidate.position.clone().sub(parent?.position || seedOrigin).normalize();
   }
   if (arrivalPathMode === "radial-outward") {
@@ -7958,45 +7968,77 @@ function geometricArrivalPathForCandidate(candidate, fresh) {
   const axis = arrivalPathAxis(candidate);
   const available = sampleCount > 0 && axis.lengthSq() > 1e-12;
   const sweepDistance = 2 * referenceSpacing;
+  const detourRadius = .72 * referenceSpacing;
   const toleranceScene = clusterMetricToleranceAngstrom()
     * referenceSpacing / Math.max(referenceSpacingA, 1e-12);
-  let minimumClearance = Infinity;
-  let blockedSiteSamples = 0;
-  let neighborhoodChecks = 0;
-  const blockedSites = new Set();
-  if (available) fresh.forEach((site, siteIndex) => {
-    for (let sample = 0; sample < sampleCount; sample++) {
+  const routeAxis = available ? axis : new THREE.Vector3(0, 0, 1);
+  const transverseReference = Math.abs(routeAxis.z) < .88 ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(1, 0, 0);
+  const transverseU = new THREE.Vector3().crossVectors(routeAxis, transverseReference).normalize();
+  const transverseV = new THREE.Vector3().crossVectors(routeAxis, transverseU).normalize();
+  const detours = arrivalPathMode === "free-volume"
+    ? [new THREE.Vector3(), transverseU, transverseU.clone().negate(), transverseV, transverseV.clone().negate()]
+    : [new THREE.Vector3()];
+  const routeAudits = detours.map((detour, routeIndex) => {
+    let minimumClearance = Infinity;
+    let blockedSiteSamples = 0;
+    let neighborhoodChecks = 0;
+    const blockedSites = new Set();
+    if (available) fresh.forEach((site, siteIndex) => {
+      for (let sample = 0; sample < sampleCount; sample++) {
+        const fraction = sample / Math.max(1, sampleCount - 1);
+        const lateral = Math.sin(Math.PI * fraction) * detourRadius;
+        const point = site.p.clone().addScaledVector(axis, sweepDistance * (1 - fraction))
+          .addScaledVector(detour, lateral);
+        const neighborhood = nearbyAtoms(point,
+          coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
+        neighborhoodChecks += neighborhood.length;
+        let sampleBlocked = false;
+        neighborhood.forEach((atom) => {
+          const clearance = point.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
+          minimumClearance = Math.min(minimumClearance, clearance);
+          if (clearance < 0) sampleBlocked = true;
+        });
+        if (sampleBlocked) { blockedSiteSamples++; blockedSites.add(siteIndex); }
+      }
+    });
+    if (!Number.isFinite(minimumClearance)) minimumClearance = toleranceScene;
+    const routePoints = available ? Array.from({ length: sampleCount }, (_, sample) => {
       const fraction = sample / Math.max(1, sampleCount - 1);
-      const point = site.p.clone().addScaledVector(axis, sweepDistance * (1 - fraction));
-      const neighborhood = nearbyAtoms(point,
-        coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
-      neighborhoodChecks += neighborhood.length;
-      let sampleBlocked = false;
-      neighborhood.forEach((atom) => {
-        const clearance = point.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
-        minimumClearance = Math.min(minimumClearance, clearance);
-        if (clearance < 0) sampleBlocked = true;
-      });
-      if (sampleBlocked) { blockedSiteSamples++; blockedSites.add(siteIndex); }
-    }
+      return candidate.position.clone().addScaledVector(axis, sweepDistance * (1 - fraction))
+        .addScaledVector(detour, Math.sin(Math.PI * fraction) * detourRadius);
+    }) : [];
+    const routeLength = routePoints.slice(1).reduce((sum, point, index) => sum + point.distanceTo(routePoints[index]), 0);
+    return { routeIndex, minimumClearance, blockedSiteSamples, blockedSites: blockedSites.size,
+      neighborhoodChecks, routePoints, tortuosity: routeLength / Math.max(sweepDistance, 1e-12) };
   });
-  if (!Number.isFinite(minimumClearance)) minimumClearance = toleranceScene;
+  const selectedRoute = routeAudits.slice().sort((first, second) =>
+    second.minimumClearance - first.minimumClearance
+    || first.blockedSiteSamples - second.blockedSiteSamples
+    || first.routeIndex - second.routeIndex)[0] || { routeIndex: 0, minimumClearance: toleranceScene,
+    blockedSiteSamples: 0, blockedSites: 0, neighborhoodChecks: 0, routePoints: [], tortuosity: 1 };
+  const neighborhoodChecks = routeAudits.reduce((sum, route) => sum + route.neighborhoodChecks, 0);
   return {
     mode: arrivalPathMode,
     label: arrivalPathLabel(),
     available,
     axis: available ? axis.toArray() : null,
     sampleCount,
+    routeCandidates: detours.length,
+    selectedRouteIndex: selectedRoute.routeIndex,
+    selectedRouteKind: selectedRoute.routeIndex === 0 ? "straight" : "transverse detour",
+    selectedRoutePoints: selectedRoute.routePoints.map((point) => point.toArray()),
+    selectedRouteTortuosity: selectedRoute.tortuosity,
+    detourRadiusSceneUnits: arrivalPathMode === "free-volume" ? detourRadius : 0,
     sweepDistanceSceneUnits: sweepDistance,
     sweepDistanceAngstrom: sweepDistance * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
-    siteSamples: fresh.length * sampleCount,
+    siteSamples: fresh.length * sampleCount * detours.length,
     neighborhoodChecks,
-    blockedSiteSamples,
-    blockedSites: blockedSites.size,
-    minimumClearanceSceneUnits: minimumClearance,
-    minimumClearanceAngstrom: minimumClearance * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
-    pathAccessible: available && blockedSiteSamples === 0,
-    score: available ? Math.tanh(minimumClearance / Math.max(toleranceScene, 1e-9)) : 0,
+    blockedSiteSamples: selectedRoute.blockedSiteSamples,
+    blockedSites: selectedRoute.blockedSites,
+    minimumClearanceSceneUnits: selectedRoute.minimumClearance,
+    minimumClearanceAngstrom: selectedRoute.minimumClearance * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    pathAccessible: available && selectedRoute.blockedSiteSamples === 0,
+    score: available ? Math.tanh(selectedRoute.minimumClearance / Math.max(toleranceScene, 1e-9)) : 0,
     emittedSitesOnly: true,
     intermediateBoundaryEnforced: false,
     candidateGeometryChanged: false,
@@ -8982,6 +9024,7 @@ function initializeOffLatticeSearch() {
   rejectedBlockedPathSamples = 0;
   arrivalPathSiteSamples = 0;
   arrivalPathNeighborhoodChecks = 0;
+  arrivalPathRouteEvaluations = 0;
   acceptedFeedExposureScore = 0;
   rejectedFeedExposureScore = 0;
   feedExposureEvaluations = 0;
@@ -9856,7 +9899,7 @@ function syncStageOptions() {
       ? "not ranked · final pose only"
       : arrivalPathMode === "declared-drive" && externalDriveMode === "none"
         ? "requires external driving geometry · score zero"
-        : `${arrivalPathLabel()} · 9 samples × 2dₙₙ · weight ${arrivalPathWeight.toFixed(2)}`;
+        : `${arrivalPathLabel()} · ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 samples × 2dₙₙ · weight ${arrivalPathWeight.toFixed(2)}`;
     feedExposureHint.textContent = feedExposureMode === "none"
       ? "off · no source geometry"
       : `${feedExposureLabel()} · ${feedExposureDirections().length} ray${feedExposureDirections().length === 1 ? "" : "s"} · weight ${feedExposureWeight.toFixed(2)}`;
@@ -9919,7 +9962,7 @@ function syncStageOptions() {
       : " Multi-parent loop closure is reported but contributes zero rank weight.";
     const arrivalPathUse = arrivalPathMode === "none"
       ? " Swept arrival clearance is disabled; only the final pose is tested."
-      : ` A ${arrivalPathWeight.toFixed(2)} soft accessibility term sweeps emitted sites along a 9-point ${arrivalPathLabel()} path spanning 2dₙₙ; it is not a barrier or trajectory.`;
+      : ` A ${arrivalPathWeight.toFixed(2)} soft accessibility term sweeps emitted sites along ${arrivalPathMode === "free-volume" ? "five bounded 9-point routes" : `one 9-point ${arrivalPathLabel()} route`} spanning 2dₙₙ; it is not diffusion, a barrier, or a trajectory.`;
     const feedExposureUse = feedExposureMode === "none"
       ? " No source-ray exposure or geometric shadowing term is active."
       : ` A ${feedExposureWeight.toFixed(2)} soft ${feedExposureLabel()} term samples ${feedExposureDirections().length} declared source ray${feedExposureDirections().length === 1 ? "" : "s"} over 3dₙₙ; visibility is not flux, diffusion, sticking probability, or rate.`;
@@ -9984,6 +10027,7 @@ function resetCounters() {
   rejectedBlockedPathSamples = 0;
   arrivalPathSiteSamples = 0;
   arrivalPathNeighborhoodChecks = 0;
+  arrivalPathRouteEvaluations = 0;
   acceptedFeedExposureScore = 0;
   rejectedFeedExposureScore = 0;
   feedExposureEvaluations = 0;
@@ -10446,6 +10490,8 @@ function performOffLatticeEvent() {
     rotation: candidate.rotation.clone(), type: candidate.type,
     arrivalAxis: evaluation.arrivalPath.axis,
     arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
+    arrivalRoutePoints: evaluation.arrivalPath.selectedRoutePoints,
+    arrivalRouteKind: evaluation.arrivalPath.selectedRouteKind,
     frontMorphology: evaluation.frontMorphology,
     capillaryGeometry: evaluation.capillaryGeometry,
     feedExposure: evaluation.feedExposure,
@@ -10489,6 +10535,7 @@ function performOffLatticeEvent() {
       rejectedBlockedPathSamples += snapshotEvaluation.arrivalPath.blockedSiteSamples;
       arrivalPathSiteSamples += snapshotEvaluation.arrivalPath.siteSamples;
       arrivalPathNeighborhoodChecks += snapshotEvaluation.arrivalPath.neighborhoodChecks;
+      arrivalPathRouteEvaluations += snapshotEvaluation.arrivalPath.routeCandidates;
       rejectedExplorationOffset += candidate.explorationOffset || 0;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
@@ -10534,6 +10581,7 @@ function performOffLatticeEvent() {
     acceptedBlockedPathSamples += evaluation.arrivalPath.blockedSiteSamples;
     arrivalPathSiteSamples += evaluation.arrivalPath.siteSamples;
     arrivalPathNeighborhoodChecks += evaluation.arrivalPath.neighborhoodChecks;
+    arrivalPathRouteEvaluations += evaluation.arrivalPath.routeCandidates;
     acceptedExplorationOffset += candidate.explorationOffset || 0;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
@@ -11086,10 +11134,13 @@ function rebuildWorld() {
     }
     if (candidateIndex < 12 && candidate.arrivalAxis && candidate.arrivalSweepDistance > 0) {
       const axis = new THREE.Vector3(...candidate.arrivalAxis).normalize();
-      const start = candidate.p.clone().addScaledVector(axis, candidate.arrivalSweepDistance);
+      const routePoints = candidate.arrivalRoutePoints?.length > 1
+        ? candidate.arrivalRoutePoints.map((point) => new THREE.Vector3(...point))
+        : [candidate.p.clone().addScaledVector(axis, candidate.arrivalSweepDistance), candidate.p];
       const path = new THREE.Line(
-        new THREE.BufferGeometry().setFromPoints([start, candidate.p]),
-        new THREE.LineDashedMaterial({ color: 0xffc169, dashSize: .16, gapSize: .09,
+        new THREE.BufferGeometry().setFromPoints(routePoints),
+        new THREE.LineDashedMaterial({ color: candidate.arrivalRouteKind === "transverse detour" ? 0x65e1bc : 0xffc169,
+          dashSize: .16, gapSize: .09,
           transparent: true, opacity: .72 }),
       );
       path.computeLineDistances();
@@ -11272,10 +11323,10 @@ function physicsTranslationRecords(leap = null) {
       boundary: "Finite line-of-sight visibility is not concentration, flux magnitude, diffusion, convection, sticking probability, adsorption, supply depletion, deposition rate, or physical time." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
-        ? `${arrivalPathLabel()}; 9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
+        ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
         : "none; the accepted whole-cluster antichain jumps directly between certified structural states",
-      evidence: leap ? `${arrivalPathSiteSamples.toLocaleString()} site-path samples and ${arrivalPathNeighborhoodChecks.toLocaleString()} existing-neighbor checks; ${leap.after.atoms - leap.before.atoms} explicit sites emitted.` : "The seed has no physical clock.",
-      boundary: "Swept clearance is not a minimum-energy path. No barrier, rate, pathway probability, thermostat, phonon transport, diffusion, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
+      evidence: leap ? `${arrivalPathRouteEvaluations.toLocaleString()} route evaluations, ${arrivalPathSiteSamples.toLocaleString()} site-path samples, and ${arrivalPathNeighborhoodChecks.toLocaleString()} existing-neighbor checks; ${leap.after.atoms - leap.before.atoms} explicit sites emitted.` : "The seed has no physical clock.",
+      boundary: "Bounded route clearance is not a minimum-energy path. No diffusion equation, barrier, rate, pathway probability, thermostat, phonon transport, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
     { id: "path-ensemble", process: "configurational pathway multiplicity", status: geometricExplorationScale > 0 ? "sampled" : "open", role: geometricExplorationScale > 0 ? "reproducible exact-branch exploration" : "deterministic greedy ordering",
       encoding: geometricExplorationScale > 0
         ? `FNV-keyed Gumbel offsets at dimensionless T*=${geometricExplorationScale.toFixed(2)}, seed ${growthPathSeed}; candidate geometry and every hard gate are unchanged`
@@ -11600,11 +11651,11 @@ function geometryConstraintEvidence(name, term, state, mode) {
       boundary: "This is a bounded graph loop-closure residual, not long-range elasticity, stress, energy, force balance, plastic relaxation, or a dislocation calculation.",
     },
     "arrival-path accessibility": {
-      observed: `${arrivalPathMode === "none" ? 0 : 9} deterministic samples per emitted site over a 2dₙₙ declared approach`,
-      encoding: "Only the emitted colored sites are swept backward from the final pose; at each sample their clearance above the learned pair exclusion is evaluated against already placed atoms.",
+      observed: `${arrivalPathMode === "none" ? 0 : 9} deterministic samples per emitted site across ${arrivalPathMode === "none" ? 0 : arrivalPathMode === "free-volume" ? 5 : 1} bounded route candidate${arrivalPathMode === "free-volume" ? "s" : ""} over a 2dₙₙ approach`,
+      encoding: arrivalPathMode === "free-volume" ? "One straight and four symmetric transverse sinusoidal detours move the whole emitted colored set rigidly; the route with maximum worst learned pair-exclusion clearance is retained." : "Only the emitted colored sites are swept backward from the final pose; at each sample their clearance above the learned pair exclusion is evaluated against already placed atoms.",
       searchRole: activeArrivalPathWeight() > 0
         ? `Soft rank term with weight ${activeArrivalPathWeight().toFixed(2)}; final-pose admission is unchanged.` : "Disabled; final pose only.",
-      boundary: "This is one declared rigid arrival geometry, not a transition path, activation barrier, diffusion event, assembly mechanism, probability, rate, or elapsed time.",
+      boundary: "This is a finite declared route portfolio, not a transition path, minimum-energy path, activation barrier, diffusion solution, assembly mechanism, probability, rate, or elapsed time.",
     },
     "feedstock exposure": {
       observed: state?.feedExposure?.enabled
@@ -11726,8 +11777,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: state.loopClosure ? `${signed(state.loopClosure.score)} · ${state.loopClosure.independentCompatiblePaths} support / ${state.loopClosure.independentConflictingPaths} conflict` : "not evaluated",
       detail: activeLoopClosureWeight() > 0 ? `rank weight ${activeLoopClosureWeight().toFixed(2)} · generating parent excluded` : "diagnostic · local-only ordering" },
     { name: "arrival-path accessibility", status: ranked(activeArrivalPathWeight() > 0),
-      value: state.arrivalPath ? `${signed(state.arrivalPath.score)} · ${state.arrivalPath.blockedSiteSamples}/${state.arrivalPath.siteSamples} blocked samples` : "not evaluated",
-      detail: activeArrivalPathWeight() > 0 ? `rank weight ${activeArrivalPathWeight().toFixed(2)} · ${arrivalPathLabel()}` : "disabled · final pose only" },
+      value: state.arrivalPath ? `${signed(state.arrivalPath.score)} · ${state.arrivalPath.selectedRouteKind} · ${state.arrivalPath.blockedSiteSamples} selected-route blocked samples` : "not evaluated",
+      detail: activeArrivalPathWeight() > 0 ? `rank weight ${activeArrivalPathWeight().toFixed(2)} · ${arrivalPathLabel()} · ${state.arrivalPath?.routeCandidates || 0} route${state.arrivalPath?.routeCandidates === 1 ? "" : "s"}` : "disabled · final pose only" },
     { name: "feedstock exposure", status: ranked(activeFeedExposureWeight() > 0),
       value: state.feedExposure?.enabled ? `${signed(state.feedExposure.score)} · ${state.feedExposure.clearSiteRays}/${state.feedExposure.siteRayCount} visible rays` : "inactive",
       detail: activeFeedExposureWeight() > 0 ? `${feedExposureLabel()} · rank weight ${activeFeedExposureWeight().toFixed(2)}` : "no source geometry" },
@@ -13033,7 +13084,7 @@ loopClosureWeightSelect.addEventListener("change", () => {
 });
 arrivalPathSelect.addEventListener("change", () => {
   const value = arrivalPathSelect.value;
-  arrivalPathMode = ["parent-outward", "radial-outward", "declared-drive"].includes(value)
+  arrivalPathMode = ["parent-outward", "radial-outward", "declared-drive", "free-volume"].includes(value)
     ? value : "none";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();

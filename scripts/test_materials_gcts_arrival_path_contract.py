@@ -21,7 +21,7 @@ def test_arrival_path_is_soft_geometry_not_dynamics() -> None:
         "arrivalPathBadgeLabel",
     ):
         assert f'id="{element_id}"' in HTML
-    for mode in ("none", "parent-outward", "radial-outward", "declared-drive"):
+    for mode in ("none", "parent-outward", "radial-outward", "declared-drive", "free-volume"):
         assert f'value="{mode}"' in HTML
     for weight in ("0.12", "0.24", "0.48"):
         assert f'value="{weight}"' in HTML
@@ -30,6 +30,15 @@ def test_arrival_path_is_soft_geometry_not_dynamics() -> None:
     assert "function geometricArrivalPathForCandidate(candidate, fresh)" in APP
     assert "const sampleCount = arrivalPathMode === \"none\" ? 0 : 9" in APP
     assert "const sweepDistance = 2 * referenceSpacing" in APP
+    assert "const detourRadius = .72 * referenceSpacing" in APP
+    assert "transverseU.clone().negate()" in APP
+    assert "transverseV.clone().negate()" in APP
+    assert "second.minimumClearance - first.minimumClearance" in APP
+    assert "selectedRouteTortuosity" in APP
+    assert "arrivalPathRouteEvaluations" in APP
+    assert "blockedSamplesReferToSelectedRouteOnly: true" in APP
+    assert 'routeSelectionObjective: "maximize the minimum species-specific hard-core clearance' in APP
+    assert 'arrivalPathMode: "free-volume"' in APP
     assert "point.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species)" in APP
     assert "+ activeArrivalPathWeight() * evaluation.arrivalPath.score" in APP
     assert 'id: "arrival-path"' in APP
@@ -44,6 +53,8 @@ def test_arrival_path_is_soft_geometry_not_dynamics() -> None:
         "hardAdmissionChanged: false",
         "heldoutTargetUsed: false",
         "barrierOrRateInferred: false",
+        "diffusionEquationSolved: false",
+        "minimumEnergyPathClaimed: false",
         "physicalTimeIntegrated: false",
     ):
         assert invariant in APP
@@ -51,6 +62,8 @@ def test_arrival_path_is_soft_geometry_not_dynamics() -> None:
     assert "geometric arrival-path" in README.lower()
     assert "exact final candidate" in README
     assert "not a minimum-energy path" in README
+    assert "free-volume routing" in README
+    assert "four symmetric transverse" in README
     assert "elapsed physical" in README
 
 
