@@ -204,6 +204,9 @@ const arrivalPathWeightSelect = $("arrivalPathWeightSelect");
 const arrivalPathHint = $("arrivalPathHint");
 const arrivalPathBadge = $("arrivalPathBadge");
 const arrivalPathBadgeLabel = $("arrivalPathBadgeLabel");
+const feedExposureSelect = $("feedExposureSelect");
+const feedExposureWeightSelect = $("feedExposureWeightSelect");
+const feedExposureHint = $("feedExposureHint");
 const explorationScaleSelect = $("explorationScaleSelect");
 const explorationScaleHint = $("explorationScaleHint");
 const resampleGrowthButton = $("resampleGrowthButton");
@@ -697,6 +700,11 @@ let acceptedBlockedPathSamples = 0;
 let rejectedBlockedPathSamples = 0;
 let arrivalPathSiteSamples = 0;
 let arrivalPathNeighborhoodChecks = 0;
+let acceptedFeedExposureScore = 0;
+let rejectedFeedExposureScore = 0;
+let feedExposureEvaluations = 0;
+let feedExposureRaySamples = 0;
+let feedExposureNeighborhoodChecks = 0;
 let acceptedExplorationOffset = 0;
 let rejectedExplorationOffset = 0;
 let acceptedFrontMorphologyScore = 0;
@@ -780,6 +788,8 @@ let loopClosurePreference = "none";
 let loopClosureWeight = .24;
 let arrivalPathMode = "none";
 let arrivalPathWeight = .24;
+let feedExposureMode = "none";
+let feedExposureWeight = .24;
 let geometricExplorationScale = 0;
 let growthPathSeed = 1;
 let requestedGrowthNuclei = 1;
@@ -815,6 +825,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   microstructureCouplingMode: "none", microstructureCouplingWeight: .24,
   loopClosurePreference: "none", loopClosureWeight: .24,
   arrivalPathMode: "none", arrivalPathWeight: .24,
+  feedExposureMode: "none", feedExposureWeight: .24,
   geometricExplorationScale: 0, requestedGrowthNuclei: 1,
   growthScheduling: "commuting", hierarchyEnabled: true,
 });
@@ -837,6 +848,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
+      feedExposureMode: "top", feedExposureWeight: .24,
       geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   "misfit-film": {
@@ -847,6 +859,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "consensus", loopClosureWeight: .12, arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
+      feedExposureMode: "top", feedExposureWeight: .24,
       geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   directional: {
@@ -857,6 +870,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       externalDriveMode: "z-plus", externalDriveWeight: .48, affineLoadMode: "none",
       robustnessPreference: "margin", robustnessWeight: .12, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
+      feedExposureMode: "top", feedExposureWeight: .24,
       geometricExplorationScale: .05, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   dendritic: {
@@ -867,6 +881,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       externalDriveMode: "radial-out", externalDriveWeight: .24, affineLoadMode: "none",
       robustnessPreference: "none", microstructureCouplingMode: "none", loopClosurePreference: "none",
       arrivalPathMode: "radial-outward", arrivalPathWeight: .24, geometricExplorationScale: .15,
+      feedExposureMode: "hemisphere", feedExposureWeight: .12,
       requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   impingement: {
@@ -898,6 +913,7 @@ const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "affineLoadSelect", "affineLoadMagnitudeSelect", "robustnessPreferenceSelect", "robustnessWeightSelect",
   "microstructureCouplingSelect", "microstructureCouplingWeightSelect", "loopClosurePreferenceSelect",
   "loopClosureWeightSelect", "arrivalPathSelect", "arrivalPathWeightSelect", "explorationScaleSelect",
+  "feedExposureSelect", "feedExposureWeightSelect",
   "growthNucleiSelect", "growthSchedulingSelect",
 ]);
 
@@ -4254,7 +4270,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} No defect identity, mean curvature, adhesion, interface energy, physical mechanism, formation energy, mobility, or rate is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, mean curvature, adhesion, interface energy, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -5647,7 +5663,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-91",
+      buildId: "20260825-92",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6158,6 +6174,30 @@ async function buildExperimentReceipt() {
         barrierOrRateInferred: false,
         physicalTimeIntegrated: false,
       },
+      feedstockExposureRanking: {
+        role: "target-blind geometric shadowing score from finite user-declared source rays over unchanged emitted sites",
+        mode: feedExposureMode,
+        label: feedExposureLabel(),
+        enabled: activeFeedExposureWeight() > 0,
+        effectiveWeight: activeFeedExposureWeight(),
+        sourceDirections: feedExposureDirections().map((direction) => direction.toArray()),
+        samplesPerSiteRay: feedExposureMode === "none" ? 0 : 6,
+        reachNearestNeighborUnits: 3,
+        acceptedMeanScore: receiptRound(acceptedFeedExposureScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedFeedExposureScore / Math.max(1, rejectedDecisions)),
+        evaluations: feedExposureEvaluations,
+        raySamples: feedExposureRaySamples,
+        neighborhoodChecks: feedExposureNeighborhoodChecks,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        fluxMagnitudeInferred: false,
+        diffusionFieldSolved: false,
+        stickingCoefficientInferred: false,
+        depositionRateInferred: false,
+        physicalTimeIntegrated: false,
+      },
       configurationalPathEnsemble: {
         role: "reproducible Gumbel ordering over the unchanged exact frontier after all declared geometric terms",
         dimensionlessExplorationScale: geometricExplorationScale,
@@ -6328,6 +6368,7 @@ function notebookInterventionFactors(receipt) {
       microstructure: [search.microstructureCouplingRanking?.mode, search.microstructureCouplingRanking?.effectiveWeight],
       loopClosure: [search.mesoscopicLoopClosureRanking?.mode, search.mesoscopicLoopClosureRanking?.effectiveWeight],
       arrivalPath: [search.geometricArrivalPathRanking?.mode, search.geometricArrivalPathRanking?.effectiveWeight],
+      feedExposure: [search.feedstockExposureRanking?.mode, search.feedstockExposureRanking?.effectiveWeight],
       pathEnsemble: [search.configurationalPathEnsemble?.dimensionlessExplorationScale,
         search.configurationalPathEnsemble?.seed],
     } : null) },
@@ -7754,6 +7795,76 @@ function geometricArrivalPathForCandidate(candidate, fresh) {
   };
 }
 
+function feedExposureLabel(mode = feedExposureMode) {
+  return ({ none: "no source geometry", top: "collimated top source", oblique: "45° oblique source",
+    dual: "dual ±30° sources", hemisphere: "hemispherical exposure" })[mode] || "no source geometry";
+}
+
+function feedExposureDirections(mode = feedExposureMode) {
+  if (mode === "top") return [new THREE.Vector3(0, 0, 1)];
+  if (mode === "oblique") return [new THREE.Vector3(Math.SQRT1_2, 0, Math.SQRT1_2)];
+  if (mode === "dual") return [new THREE.Vector3(-.5, 0, Math.sqrt(3) * .5),
+    new THREE.Vector3(.5, 0, Math.sqrt(3) * .5)];
+  if (mode === "hemisphere") {
+    const polar = 55 * Math.PI / 180;
+    return [new THREE.Vector3(0, 0, 1), ...Array.from({ length: 8 }, (_, index) => {
+      const azimuth = index / 8 * 2 * Math.PI;
+      return new THREE.Vector3(Math.sin(polar) * Math.cos(azimuth),
+        Math.sin(polar) * Math.sin(azimuth), Math.cos(polar));
+    })];
+  }
+  return [];
+}
+
+function activeFeedExposureWeight() {
+  return feedExposureMode === "none" ? 0 : feedExposureWeight;
+}
+
+function feedstockExposureForFreshSites(fresh, { recordWork = true } = {}) {
+  const directions = feedExposureDirections();
+  const sampleCount = directions.length ? 6 : 0;
+  const reach = 3 * referenceSpacing;
+  let clearSiteRays = 0; let blockedSiteRays = 0; let neighborhoodChecks = 0;
+  let minimumClearance = Infinity;
+  const directionSummaries = directions.map((direction) => ({ direction: direction.toArray(), clearSites: 0, blockedSites: 0 }));
+  fresh.forEach((site) => directions.forEach((direction, directionIndex) => {
+    let blocked = false;
+    for (let sample = 1; sample <= sampleCount; sample++) {
+      const point = site.p.clone().addScaledVector(direction, reach * sample / sampleCount);
+      const neighborhood = nearbyAtoms(point,
+        coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
+      neighborhoodChecks += neighborhood.length;
+      neighborhood.forEach((atom) => {
+        const clearance = point.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
+        minimumClearance = Math.min(minimumClearance, clearance);
+        if (clearance < 0) blocked = true;
+      });
+    }
+    if (blocked) { blockedSiteRays++; directionSummaries[directionIndex].blockedSites++; }
+    else { clearSiteRays++; directionSummaries[directionIndex].clearSites++; }
+  }));
+  if (!Number.isFinite(minimumClearance)) minimumClearance = 0;
+  const siteRayCount = fresh.length * directions.length;
+  const visibilityFraction = siteRayCount ? clearSiteRays / siteRayCount : 0;
+  if (recordWork && directions.length) {
+    feedExposureEvaluations++;
+    feedExposureRaySamples += siteRayCount * sampleCount;
+    feedExposureNeighborhoodChecks += neighborhoodChecks;
+  }
+  return {
+    mode: feedExposureMode, label: feedExposureLabel(), enabled: directions.length > 0,
+    directionCount: directions.length, directions: directions.map((direction) => direction.toArray()),
+    directionSummaries, samplesPerRay: sampleCount, reachNearestNeighborUnits: 3,
+    siteRayCount, clearSiteRays, blockedSiteRays, visibilityFraction,
+    minimumClearanceAngstrom: minimumClearance * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    score: directions.length ? 2 * visibilityFraction - 1 : 0,
+    sourceDirectionsDeclaredByUser: directions.length > 0, emittedSitesOnly: true,
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    targetUsed: false, fluxMagnitudeInferred: false, diffusionFieldSolved: false,
+    stickingCoefficientInferred: false, depositionRateInferred: false, physicalTimeIntegrated: false,
+  };
+}
+
 function externalDriveModeLabel(mode = externalDriveMode) {
   return ({ none: "isotropic", "z-plus": "axis +Z", "z-minus": "axis −Z",
     "radial-out": "radial outward", "radial-in": "radial inward" })[mode] || "isotropic";
@@ -7857,6 +7968,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeLoopClosureWeight() * entry.evaluation.loopClosure.score },
     { id: "arrival-path", label: `${arrivalPathLabel()} ${activeArrivalPathWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeArrivalPathWeight() * entry.evaluation.arrivalPath.score },
+    { id: "feed-exposure", label: `${feedExposureLabel()} ${activeFeedExposureWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeFeedExposureWeight() * entry.evaluation.feedExposure.score },
     { id: "combined", label: "combined greedy", score: (entry) => entry.score },
     { id: "active", label: geometricExplorationScale > 0
       ? `sampled T* ${geometricExplorationScale.toFixed(2)}` : "active greedy",
@@ -8093,7 +8206,8 @@ function commutingFrontierBatch() {
         + activeRobustnessWeight() * evaluation.constraintRobustness.score
         + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
         + activeLoopClosureWeight() * evaluation.loopClosure.score
-        + activeArrivalPathWeight() * evaluation.arrivalPath.score;
+        + activeArrivalPathWeight() * evaluation.arrivalPath.score
+        + activeFeedExposureWeight() * evaluation.feedExposure.score;
     const explorationOffset = geometricExplorationOffset(candidate);
     candidate.explorationOffset = explorationOffset;
     return { candidate, evaluation, sites: evaluation.sites, baseScore, score,
@@ -8204,13 +8318,14 @@ function evaluateCandidate(candidate, {
   const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
   const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
   const arrivalPath = geometricArrivalPathForCandidate(candidate, fresh);
+  const feedExposure = feedstockExposureForFreshSites(fresh, { recordWork });
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, frontMorphology, epitaxyRegistry, compositionBalance, formalChargeBalance,
-    externalDrive, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath,
+    externalDrive, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -8417,6 +8532,11 @@ function initializeOffLatticeSearch() {
   rejectedBlockedPathSamples = 0;
   arrivalPathSiteSamples = 0;
   arrivalPathNeighborhoodChecks = 0;
+  acceptedFeedExposureScore = 0;
+  rejectedFeedExposureScore = 0;
+  feedExposureEvaluations = 0;
+  feedExposureRaySamples = 0;
+  feedExposureNeighborhoodChecks = 0;
   acceptedExplorationOffset = 0;
   rejectedExplorationOffset = 0;
   acceptedFrontMorphologyScore = 0;
@@ -8993,6 +9113,7 @@ function currentGrowthProtocolSettings() {
     externalDriveMode, externalDriveWeight, affineLoadMode, affineLoadMagnitude,
     robustnessPreference, robustnessWeight, microstructureCouplingMode, microstructureCouplingWeight,
     loopClosurePreference, loopClosureWeight, arrivalPathMode, arrivalPathWeight,
+    feedExposureMode, feedExposureWeight,
     geometricExplorationScale, growthPathSeed, requestedGrowthNuclei, growthScheduling, hierarchyEnabled,
   };
 }
@@ -9042,6 +9163,7 @@ function applyGrowthProtocol(mode) {
   microstructureCouplingWeight = settings.microstructureCouplingWeight;
   loopClosurePreference = settings.loopClosurePreference; loopClosureWeight = settings.loopClosureWeight;
   arrivalPathMode = settings.arrivalPathMode; arrivalPathWeight = settings.arrivalPathWeight;
+  feedExposureMode = settings.feedExposureMode; feedExposureWeight = settings.feedExposureWeight;
   geometricExplorationScale = settings.geometricExplorationScale; growthPathSeed = 1;
   requestedGrowthNuclei = settings.requestedGrowthNuclei; growthScheduling = settings.growthScheduling;
   hierarchyEnabled = settings.hierarchyEnabled;
@@ -9190,6 +9312,8 @@ function syncStageOptions() {
     loopClosureWeightSelect.value = String(loopClosureWeight);
     arrivalPathSelect.value = arrivalPathMode;
     arrivalPathWeightSelect.value = String(arrivalPathWeight);
+    feedExposureSelect.value = feedExposureMode;
+    feedExposureWeightSelect.value = String(feedExposureWeight);
     explorationScaleSelect.value = String(geometricExplorationScale);
     growthNucleiSelect.value = String(requestedGrowthNuclei);
     growthSchedulingSelect.value = growthScheduling;
@@ -9214,6 +9338,8 @@ function syncStageOptions() {
     loopClosureWeightSelect.disabled = finiteIceAnchorMode || loopClosurePreference === "none";
     arrivalPathSelect.disabled = finiteIceAnchorMode;
     arrivalPathWeightSelect.disabled = finiteIceAnchorMode || arrivalPathMode === "none";
+    feedExposureSelect.disabled = finiteIceAnchorMode;
+    feedExposureWeightSelect.disabled = finiteIceAnchorMode || feedExposureMode === "none";
     explorationScaleSelect.disabled = finiteIceAnchorMode;
     growthNucleiSelect.disabled = finiteIceAnchorMode;
     resampleGrowthButton.disabled = finiteIceAnchorMode || geometricExplorationScale <= 0;
@@ -9241,6 +9367,9 @@ function syncStageOptions() {
       : arrivalPathMode === "declared-drive" && externalDriveMode === "none"
         ? "requires external driving geometry · score zero"
         : `${arrivalPathLabel()} · 9 samples × 2dₙₙ · weight ${arrivalPathWeight.toFixed(2)}`;
+    feedExposureHint.textContent = feedExposureMode === "none"
+      ? "off · no source geometry"
+      : `${feedExposureLabel()} · ${feedExposureDirections().length} ray${feedExposureDirections().length === 1 ? "" : "s"} · weight ${feedExposureWeight.toFixed(2)}`;
     explorationScaleHint.textContent = geometricExplorationScale > 0
       ? `dimensionless T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}` : "greedy · T* = 0";
     growthNucleiHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
@@ -9291,6 +9420,9 @@ function syncStageOptions() {
     const arrivalPathUse = arrivalPathMode === "none"
       ? " Swept arrival clearance is disabled; only the final pose is tested."
       : ` A ${arrivalPathWeight.toFixed(2)} soft accessibility term sweeps emitted sites along a 9-point ${arrivalPathLabel()} path spanning 2dₙₙ; it is not a barrier or trajectory.`;
+    const feedExposureUse = feedExposureMode === "none"
+      ? " No source-ray exposure or geometric shadowing term is active."
+      : ` A ${feedExposureWeight.toFixed(2)} soft ${feedExposureLabel()} term samples ${feedExposureDirections().length} declared source ray${feedExposureDirections().length === 1 ? "" : "s"} over 3dₙₙ; visibility is not flux, diffusion, sticking probability, or rate.`;
     const explorationUse = geometricExplorationScale > 0
       ? ` Reproducible Gumbel sampling at dimensionless T*=${geometricExplorationScale.toFixed(2)} and seed ${growthPathSeed} explores alternate exact branch orders; this is not Kelvin temperature or Boltzmann sampling.`
       : " Frontier selection is deterministic greedy ordering (T*=0).";
@@ -9306,8 +9438,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`;
   }
 }
 
@@ -9345,6 +9477,11 @@ function resetCounters() {
   rejectedBlockedPathSamples = 0;
   arrivalPathSiteSamples = 0;
   arrivalPathNeighborhoodChecks = 0;
+  acceptedFeedExposureScore = 0;
+  rejectedFeedExposureScore = 0;
+  feedExposureEvaluations = 0;
+  feedExposureRaySamples = 0;
+  feedExposureNeighborhoodChecks = 0;
   acceptedExplorationOffset = 0;
   rejectedExplorationOffset = 0;
   acceptedFrontMorphologyScore = 0;
@@ -9686,6 +9823,7 @@ function stateForCandidate(candidate, evaluation) {
     microstructureCoupling: evaluation.microstructureCoupling,
     loopClosure: evaluation.loopClosure,
     arrivalPath: evaluation.arrivalPath,
+    feedExposure: evaluation.feedExposure,
     nucleusInterface: nucleusInterfaceForCandidate(candidate, evaluation),
     geometricExploration: {
       dimensionlessScale: geometricExplorationScale,
@@ -9794,6 +9932,7 @@ function performOffLatticeEvent() {
     arrivalAxis: evaluation.arrivalPath.axis,
     arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
     frontMorphology: evaluation.frontMorphology,
+    feedExposure: evaluation.feedExposure,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
     [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
@@ -9825,6 +9964,7 @@ function performOffLatticeEvent() {
       rejectedLoopClosureScore += snapshotEvaluation.loopClosure.score;
       rejectedIndependentLoopWitnesses += snapshotEvaluation.loopClosure.independentCompatiblePaths;
       rejectedArrivalPathScore += snapshotEvaluation.arrivalPath.score;
+      rejectedFeedExposureScore += snapshotEvaluation.feedExposure.score;
       rejectedBlockedPathSamples += snapshotEvaluation.arrivalPath.blockedSiteSamples;
       arrivalPathSiteSamples += snapshotEvaluation.arrivalPath.siteSamples;
       arrivalPathNeighborhoodChecks += snapshotEvaluation.arrivalPath.neighborhoodChecks;
@@ -9866,6 +10006,7 @@ function performOffLatticeEvent() {
     acceptedLoopClosureScore += evaluation.loopClosure.score;
     acceptedIndependentLoopWitnesses += evaluation.loopClosure.independentCompatiblePaths;
     acceptedArrivalPathScore += evaluation.arrivalPath.score;
+    acceptedFeedExposureScore += evaluation.feedExposure.score;
     acceptedBlockedPathSamples += evaluation.arrivalPath.blockedSiteSamples;
     arrivalPathSiteSamples += evaluation.arrivalPath.siteSamples;
     arrivalPathNeighborhoodChecks += evaluation.arrivalPath.neighborhoodChecks;
@@ -10383,6 +10524,21 @@ function rebuildWorld() {
       head.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), axis.clone().negate());
       decisionGroup.add(head);
     }
+    if (candidateIndex < 12 && candidate.feedExposure?.enabled) {
+      candidate.feedExposure.directionSummaries.forEach((summary) => {
+        const direction = new THREE.Vector3(...summary.direction).normalize();
+        const visible = summary.clearSites >= summary.blockedSites;
+        const ray = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints([
+            candidate.p.clone().addScaledVector(direction, .18),
+            candidate.p.clone().addScaledVector(direction, .78),
+          ]),
+          new THREE.LineDashedMaterial({ color: visible ? 0xffd08a : 0xff6d78,
+            dashSize: .10, gapSize: .06, transparent: true, opacity: .72 }),
+        );
+        ray.computeLineDistances(); decisionGroup.add(ray);
+      });
+    }
     if (candidateIndex < 12 && frontMorphologyMode !== "none" && candidate.frontMorphology) {
       const tangentX = new THREE.Vector3(...candidate.frontMorphology.tangentX);
       const tangentY = new THREE.Vector3(...candidate.frontMorphology.tangentY);
@@ -10500,6 +10656,12 @@ function physicsTranslationRecords(leap = null) {
       encoding: "independent placed parents apply frozen connection rules; complete transformed colored site sets are compared so proper-symmetry gauges cannot create false seams",
       evidence: leap ? `Accepted mean ${receiptRound(acceptedIndependentLoopWitnesses / Math.max(1, acceptedDecisions), 4)} independent compatible paths; rejected mean ${receiptRound(rejectedIndependentLoopWitnesses / Math.max(1, rejectedDecisions), 4)}.` : "No mesoscopic loop tested yet.",
       boundary: "Loop closure detects geometric consistency, not elastic energy, modulus, stress, force balance, dislocation energy, or mechanical relaxation." },
+    { id: "feed-exposure", process: "feedstock transport / geometric shadowing", status: activeFeedExposureWeight() > 0 ? "soft" : "open", role: activeFeedExposureWeight() > 0 ? "finite source-ray visibility ordering" : "disabled",
+      encoding: activeFeedExposureWeight() > 0
+        ? `${feedExposureLabel()}; ${feedExposureDirections().length} declared source direction${feedExposureDirections().length === 1 ? "" : "s"}, six hard-clearance samples per emitted-site ray over 3dₙₙ, w=${activeFeedExposureWeight().toFixed(2)}`
+        : "no source directions, illumination cone, or shadowing score",
+      evidence: leap ? `${feedExposureRaySamples.toLocaleString()} site-ray samples and ${feedExposureNeighborhoodChecks.toLocaleString()} neighbor checks; accepted mean visibility score ${receiptRound(acceptedFeedExposureScore / Math.max(1, acceptedDecisions), 4)}.` : "No feedstock visibility evaluated yet.",
+      boundary: "Finite line-of-sight visibility is not concentration, flux magnitude, diffusion, convection, sticking probability, adsorption, supply depletion, deposition rate, or physical time." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; 9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
@@ -10805,6 +10967,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeArrivalPathWeight().toFixed(2)}; final-pose admission is unchanged.` : "Disabled; final pose only.",
       boundary: "This is one declared rigid arrival geometry, not a transition path, activation barrier, diffusion event, assembly mechanism, probability, rate, or elapsed time.",
     },
+    "feedstock exposure": {
+      observed: state?.feedExposure?.enabled
+        ? `${state.feedExposure.clearSiteRays}/${state.feedExposure.siteRayCount} emitted-site rays remain geometrically visible across ${state.feedExposure.directionCount} declared source direction${state.feedExposure.directionCount === 1 ? "" : "s"}`
+        : "no source-ray geometry active",
+      encoding: state?.feedExposure?.enabled
+        ? `six colored hard-clearance samples per site ray over 3dₙₙ · visibility ${(state.feedExposure.visibilityFraction * 100).toFixed(1)}%`
+        : "No candidate coordinates or obstacles are sampled for feed exposure.",
+      searchRole: activeFeedExposureWeight() > 0
+        ? `Soft shadowing rank term with weight ${activeFeedExposureWeight().toFixed(2)} over unchanged exact candidates.` : "Disabled; weight zero.",
+      boundary: "This finite line-of-sight descriptor is not concentration, flux, diffusion, convection, sticking probability, adsorption chemistry, supply depletion, deposition rate, or time.",
+    },
     "configurational path ensemble": {
       observed: `dimensionless T*=${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed} · event ${eventIndex}`,
       encoding: "A deterministic hash of seed, event index, and exact candidate key produces one reproducible Gumbel ordering offset. No coordinate, candidate, or hard certificate is changed.",
@@ -10907,6 +11080,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "arrival-path accessibility", status: ranked(activeArrivalPathWeight() > 0),
       value: state.arrivalPath ? `${signed(state.arrivalPath.score)} · ${state.arrivalPath.blockedSiteSamples}/${state.arrivalPath.siteSamples} blocked samples` : "not evaluated",
       detail: activeArrivalPathWeight() > 0 ? `rank weight ${activeArrivalPathWeight().toFixed(2)} · ${arrivalPathLabel()}` : "disabled · final pose only" },
+    { name: "feedstock exposure", status: ranked(activeFeedExposureWeight() > 0),
+      value: state.feedExposure?.enabled ? `${signed(state.feedExposure.score)} · ${state.feedExposure.clearSiteRays}/${state.feedExposure.siteRayCount} visible rays` : "inactive",
+      detail: activeFeedExposureWeight() > 0 ? `${feedExposureLabel()} · rank weight ${activeFeedExposureWeight().toFixed(2)}` : "no source geometry" },
     { name: "configurational path ensemble", status: geometricExplorationScale > 0 ? "sampled" : "diagnostic",
       value: state.geometricExploration ? `${signed(state.geometricExploration.offset)} · T* ${state.geometricExploration.dimensionlessScale.toFixed(2)} · seed ${state.geometricExploration.seed}` : "not evaluated",
       detail: geometricExplorationScale > 0 ? "reproducible branch-order offset · unchanged geometry and hard gates" : "greedy ordering · offset zero" },
@@ -10927,6 +11103,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "front morphology", status: "diagnostic", value: "withheld", detail: "no executable front" },
     { name: "epitaxial registry", status: "diagnostic", value: "withheld", detail: "no executable supported-film front" },
     { name: "external drive", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
+    { name: "feedstock exposure", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
     { name: "GCTS marking", status: "diagnostic", value: "not executed", detail: "inspectable sections only" },
   ] : mode === "specialized" ? [
     { name: "species / hard core", status: "pass", value: "backend-certified", detail: "frozen exact trace" },
@@ -10942,6 +11119,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "front morphology", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "epitaxial registry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "external drive", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "feedstock exposure", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "GCTS marking", status: "pass", value: "domain unanimity",
       detail: `all surviving ${iceAnchorTrace?.moleculeLabel || "H₂O"} poses agree` },
   ] : [
@@ -10967,6 +11145,8 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
       value: activeExternalDriveWeight() > 0 ? externalDriveModeLabel() : "isotropic",
       detail: activeExternalDriveWeight() > 0 ? `weight ${activeExternalDriveWeight().toFixed(2)}` : "weight zero" },
+    { name: "feedstock exposure", status: ranked(activeFeedExposureWeight() > 0),
+      value: activeFeedExposureWeight() > 0 ? feedExposureLabel() : "inactive", detail: `weight ${activeFeedExposureWeight().toFixed(2)}` },
     { name: "GCTS marking", status: policySelect.value === "marked" ? "ranked" : "diagnostic",
       value: policySelect.value === "marked" ? "active" : "not gating", detail: "bounded local section" },
   ];
@@ -12158,6 +12338,18 @@ arrivalPathSelect.addEventListener("change", () => {
 arrivalPathWeightSelect.addEventListener("change", () => {
   const value = Number(arrivalPathWeightSelect.value);
   arrivalPathWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+feedExposureSelect.addEventListener("change", () => {
+  const value = feedExposureSelect.value;
+  feedExposureMode = ["top", "oblique", "dual", "hemisphere"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+feedExposureWeightSelect.addEventListener("change", () => {
+  const value = Number(feedExposureWeightSelect.value);
+  feedExposureWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

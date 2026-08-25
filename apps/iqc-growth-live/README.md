@@ -484,6 +484,31 @@ rigid accessibility probe—not a minimum-energy path, activation barrier,
 diffusion event, assembly mechanism, probability, rate, or elapsed physical
 time.
 
+A separate **feedstock-exposure** experiment encodes mesoscopic source geometry
+and shadowing. The user may declare a collimated top source, one `45°` oblique
+source, a symmetric pair of `±30°` sources, or a nine-ray upper hemisphere.
+These directions point from a proposed site toward the source. For every new
+site in an unchanged exact action, six samples along each ray span `3 d_nn` and
+reuse the learned colored hard-exclusion envelopes against atoms already in the
+solid. A ray is visible only if every sample is clear; the candidate score is
+the visible fraction mapped to `[-1,1]`.
+
+This is deliberately distinct from the arrival-path probe. Arrival clearance
+asks whether one declared rigid whole-action approach is unobstructed;
+feedstock exposure asks how much of a finite declared source-direction set is
+line-of-sight visible. Neither changes a candidate, moves an atom, or authorizes
+a failed overlap. Dashed gold/red rays in the viewport show visible/shadowed
+directions for the displayed frontier. The receipt records every direction,
+ray/sample count, neighborhood work, and accepted/rejected mean score.
+
+Geometric visibility is not a concentration or flux magnitude. No diffusion,
+convection, adsorption chemistry, sticking coefficient, source depletion,
+mean-free path, surface diffusion, deposition rate, kinetic Monte Carlo clock,
+or elapsed physical time is inferred. The collimated source is included in the
+epitaxy, misfit-film, and directional-solidification protocols; the dendritic
+hypothesis uses the hemispherical ray set. These names remain counterfactual
+geometric experiments, not kinetic mechanism assignments.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers

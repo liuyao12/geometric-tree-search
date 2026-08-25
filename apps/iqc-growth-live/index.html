@@ -583,6 +583,24 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="feedExposureSelect">
+              <span>Feedstock exposure <b id="feedExposureHint">off · no source geometry</b></span>
+              <select id="feedExposureSelect">
+                <option value="none" selected>Off · no source rays</option>
+                <option value="top">Collimated top source · +Z visibility</option>
+                <option value="oblique">Oblique source · 45° XZ</option>
+                <option value="dual">Dual sources · ±30° XZ</option>
+                <option value="hemisphere">Hemispherical exposure · 9 rays</option>
+              </select>
+            </label>
+            <label class="field" for="feedExposureWeightSelect">
+              <span>Exposure weight <b>soft shadowing rank</b></span>
+              <select id="feedExposureWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="growthSchedulingSelect">
               <span>Tree-search scheduling <b id="growthSchedulingHint">maximal commuting set</b></span>
               <select id="growthSchedulingSelect">
@@ -1079,7 +1097,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-91"></script>
+  <script type="module" src="./app.js?v=20260825-92"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
