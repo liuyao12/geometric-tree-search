@@ -4165,3 +4165,19 @@ summaries immediately. “Expand all physics” supports detailed audit, while
 “Collapse to overview” returns to a compact comparison view. Disclosure changes
 presentation only: all original control identities, candidate geometry, search
 semantics, and receipt fields remain unchanged.
+
+## Live growth-validity map
+
+The structural-leap inspector classifies every physics-to-geometry record by
+the provenance of its authority, not merely by whether its tile is enabled.
+**Observed + learned** records comprise sample-learned hard admission bounds,
+learned GCTS connection evidence, and explicitly instantiated geometric states.
+**Declared hypotheses** comprise reversible user-supplied soft rankings and
+reproducible search ensembles. **Open boundary** comprises unavailable channels
+and physical layers for which the portal has no calibrated state variable.
+
+The three counts and filters recompute from the current material, protocol,
+marking, and latest frozen leap. Selecting any record exposes four distinct
+statements: its evidence class, geometric encoding, measured role in this leap,
+and claim boundary. Filtering never changes the candidate set, score, admission
+gate, committed structure, or receipt; it is a live scientific-validity audit.

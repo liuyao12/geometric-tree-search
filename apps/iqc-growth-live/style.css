@@ -665,6 +665,9 @@ body.atlas-open { overflow: hidden; }
 .leap-flow span { margin-top: 5px; color: #627a73; font: 5px/1.45 var(--mono); }
 .leap-claim-boundary { margin: 7px 0 0; padding: 7px 8px; border-left: 2px solid var(--violet); background: rgba(181,148,255,.025); color: #728981; font: 6px/1.5 var(--mono); }
 .leap-physics-heading { display: flex; justify-content: space-between; gap: 8px; margin: 8px 0 5px; color: var(--faint); font: 5px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.leap-physics-filters { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 3px; margin-bottom: 4px; }
+.leap-physics-filters button { min-width: 0; min-height: 25px; padding: 4px 5px; border: 1px solid rgba(151,194,183,.13); background: rgba(5,15,17,.55); color: #617a72; font: 5px var(--mono); text-transform: uppercase; cursor: pointer; }
+.leap-physics-filters button:hover,.leap-physics-filters button:focus-visible,.leap-physics-filters button.active { border-color: rgba(101,225,188,.5); color: #b7e8d9; background: rgba(101,225,188,.045); outline: none; }
 .leap-physics-matrix { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 3px; }
 .leap-physics-matrix button { min-width: 0; min-height: 50px; padding: 6px; border: 1px solid rgba(151,194,183,.13); background: rgba(5,15,17,.76); color: inherit; text-align: left; cursor: pointer; }
 .leap-physics-matrix button:hover,.leap-physics-matrix button:focus-visible,.leap-physics-matrix button.active { border-color: rgba(181,148,255,.52); background: rgba(181,148,255,.04); outline: none; }

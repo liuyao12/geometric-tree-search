@@ -1233,7 +1233,13 @@
           <div class="section-heading"><p class="eyebrow">structural leap certificate</p><span id="leapCertificateState">no action yet</span></div>
           <div id="leapHistory" class="leap-history" role="group" aria-label="Inspect recent structural leap updates"></div>
           <div id="leapFlow" class="leap-flow" aria-live="polite"></div>
-          <div class="leap-physics-heading"><small>physics → geometry translation</small><span>hard · learned · soft · open</span></div>
+          <div class="leap-physics-heading"><small>physics → geometry translation</small><span id="leapPhysicsState">classifying live constraints</span></div>
+          <div id="leapPhysicsFilters" class="leap-physics-filters" role="group" aria-label="Filter physical constraints by evidence class">
+            <button class="active" type="button" data-physics-filter="all" aria-pressed="true">all</button>
+            <button type="button" data-physics-filter="structural" aria-pressed="false">observed + learned</button>
+            <button type="button" data-physics-filter="hypothesis" aria-pressed="false">declared hypotheses</button>
+            <button type="button" data-physics-filter="open" aria-pressed="false">open boundary</button>
+          </div>
           <div id="leapPhysicsMatrix" class="leap-physics-matrix" role="group" aria-label="Inspect physical roles encoded or left open by this structural leap"></div>
           <article id="leapPhysicsDetail" class="leap-physics-detail" aria-live="polite"></article>
           <p id="leapClaimBoundary" class="leap-claim-boundary">No trajectory is integrated. A geometric certificate can establish a structural transition, not its physical duration or probability.</p>
@@ -1320,7 +1326,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-106"></script>
+  <script type="module" src="./app.js?v=20260825-107"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

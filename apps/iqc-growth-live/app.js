@@ -364,6 +364,8 @@ const leapCertificateSection = $("leapCertificateSection");
 const leapCertificateState = $("leapCertificateState");
 const leapHistoryElement = $("leapHistory");
 const leapFlow = $("leapFlow");
+const leapPhysicsState = $("leapPhysicsState");
+const leapPhysicsFilters = $("leapPhysicsFilters");
 const leapPhysicsMatrix = $("leapPhysicsMatrix");
 const leapPhysicsDetail = $("leapPhysicsDetail");
 const leapClaimBoundary = $("leapClaimBoundary");
@@ -823,6 +825,7 @@ let leapHistory = [];
 let selectedLeapIndex = -1;
 let leapEventCount = 0;
 let selectedLeapPhysicsId = "steric";
+let selectedLeapPhysicsFilter = "all";
 let growthMechanismEvents = [];
 let growthMechanismTotals = {};
 let growthPoseAuditsByLeap = new Map();
@@ -5802,7 +5805,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-106",
+      buildId: "20260825-107",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -12211,11 +12214,41 @@ function physicsTranslationRecords(leap = null) {
   ];
 }
 
+function physicsEvidenceBucket(record) {
+  if (["hard", "learned", "explicit"].includes(record.status)) return "structural";
+  if (["soft", "sampled"].includes(record.status)) return "hypothesis";
+  return "open";
+}
+
+function physicsEvidenceClass(record) {
+  if (record.status === "hard") return "sample-learned admission constraint";
+  if (record.status === "learned") return "learned GCTS connection evidence";
+  if (record.status === "explicit") return "explicit observed geometric state";
+  if (record.status === "soft") return "user-declared counterfactual hypothesis";
+  if (record.status === "sampled") return "declared reproducible search ensemble";
+  if (record.status === "unavailable") return "required input channel unavailable";
+  return "unresolved physical layer";
+}
+
 function renderLeapPhysics(leap = null) {
   const records = leap?.physicsTranslation || physicsTranslationRecords(leap);
+  const counts = records.reduce((result, record) => {
+    result[physicsEvidenceBucket(record)] += 1;
+    return result;
+  }, { structural: 0, hypothesis: 0, open: 0 });
+  leapPhysicsState.textContent = `${counts.structural} observed/learned · ${counts.hypothesis} declared · ${counts.open} open`;
+  leapPhysicsFilters.querySelectorAll("button[data-physics-filter]").forEach((button) => {
+    const filter = button.dataset.physicsFilter;
+    const count = filter === "all" ? records.length : counts[filter];
+    button.classList.toggle("active", filter === selectedLeapPhysicsFilter);
+    button.setAttribute("aria-pressed", String(filter === selectedLeapPhysicsFilter));
+    button.textContent = `${filter === "all" ? "all" : filter === "structural" ? "observed + learned" : filter === "hypothesis" ? "declared hypotheses" : "open boundary"} · ${count}`;
+  });
+  const visibleRecords = selectedLeapPhysicsFilter === "all"
+    ? records : records.filter((record) => physicsEvidenceBucket(record) === selectedLeapPhysicsFilter);
   leapPhysicsMatrix.replaceChildren();
-  if (!records.some((record) => record.id === selectedLeapPhysicsId)) selectedLeapPhysicsId = records[0]?.id || "steric";
-  records.forEach((record) => {
+  if (!visibleRecords.some((record) => record.id === selectedLeapPhysicsId)) selectedLeapPhysicsId = visibleRecords[0]?.id || "steric";
+  visibleRecords.forEach((record) => {
     const button = document.createElement("button"); button.type = "button";
     button.className = `${record.status}${record.id === selectedLeapPhysicsId ? " active" : ""}`;
     button.setAttribute("aria-pressed", String(record.id === selectedLeapPhysicsId));
@@ -12226,18 +12259,26 @@ function renderLeapPhysics(leap = null) {
     button.addEventListener("click", () => { selectedLeapPhysicsId = record.id; renderLeapPhysics(leap); });
     leapPhysicsMatrix.append(button);
   });
-  const selected = records.find((record) => record.id === selectedLeapPhysicsId) || records[0];
+  const selected = visibleRecords.find((record) => record.id === selectedLeapPhysicsId) || visibleRecords[0];
   leapPhysicsDetail.replaceChildren();
   if (!selected) return;
   const header = document.createElement("header");
   const small = document.createElement("small"); small.textContent = `${selected.status} · ${selected.role}`;
   const strong = document.createElement("strong"); strong.textContent = selected.process;
   header.append(small, strong); leapPhysicsDetail.append(header);
-  [["geometric encoding", selected.encoding], ["this leap", selected.evidence], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
+  [["evidence class", physicsEvidenceClass(selected)], ["geometric encoding", selected.encoding], ["this leap", selected.evidence], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
     const row = document.createElement("div"); const key = document.createElement("b"); const value = document.createElement("p");
     key.textContent = label; value.textContent = copy; row.append(key, value); leapPhysicsDetail.append(row);
   });
 }
+
+leapPhysicsFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-physics-filter]");
+  if (!button) return;
+  selectedLeapPhysicsFilter = ["structural", "hypothesis", "open"].includes(button.dataset.physicsFilter)
+    ? button.dataset.physicsFilter : "all";
+  renderLeapPhysics(leapHistory[selectedLeapIndex] || null);
+});
 
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
