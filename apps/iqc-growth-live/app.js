@@ -265,6 +265,12 @@ const leapFlow = $("leapFlow");
 const leapPhysicsMatrix = $("leapPhysicsMatrix");
 const leapPhysicsDetail = $("leapPhysicsDetail");
 const leapClaimBoundary = $("leapClaimBoundary");
+const growthMechanismSection = $("growthMechanismSection");
+const growthMechanismState = $("growthMechanismState");
+const growthMechanismProjection = $("growthMechanismProjection");
+const growthMechanismCanvas = $("growthMechanismCanvas");
+const growthMechanismLedger = $("growthMechanismLedger");
+const growthMechanismBoundary = $("growthMechanismBoundary");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
 const markingHeading = $("markingHeading");
@@ -635,6 +641,9 @@ let leapHistory = [];
 let selectedLeapIndex = -1;
 let leapEventCount = 0;
 let selectedLeapPhysicsId = "steric";
+let growthMechanismEvents = [];
+let growthMechanismTotals = {};
+let growthMechanismProjectionKey = "xy";
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
 let liveOrderHistory = [];
@@ -3696,6 +3705,169 @@ function buildMicrostructureLedger() {
   return ledger;
 }
 
+const GROWTH_EVENT_PHENOTYPES = {
+  bulk: { label: "bulk-like recurrence", color: "#65e1bc" },
+  surface: { label: "undercoordination / surface", color: "#ffc169" },
+  interface: { label: "pose-interface adjacent", color: "#55c8ff" },
+  gap: { label: "gap / residual adjacent", color: "#b594ff" },
+  occupancy: { label: "occupancy-alternative adjacent", color: "#d9d2ff" },
+  topology: { label: "local topology rejection", color: "#ff7f88" },
+  boundary: { label: "public-boundary rejection", color: "#f0c96a" },
+  marking: { label: "connection-mark rejection", color: "#b594ff" },
+  conflict: { label: "colored contact conflict", color: "#ff6d71" },
+  redundant: { label: "redundant cover prune", color: "#71867f" },
+  prune: { label: "other geometric prune", color: "#cf858c" },
+};
+
+function growthEventNeighborhood(candidate, evaluation) {
+  const reach = Math.max(referenceSpacing * 1.15, (microstructureEvidence?.adjacencyReach || 0) * .46);
+  const probes = evaluation.fresh?.length ? evaluation.fresh.map((site) => site.p) : [candidate.position];
+  const counts = { recurring: 0, gap: 0, residual: 0, interface: 0, anomaly: 0, occupancy: 0, vacancy: 0 };
+  microstructureEvidence?.siteRoles?.forEach((role) => {
+    const point = referenceAtoms[role.index]?.p;
+    if (!point || !probes.some((probe) => probe.distanceTo(point) <= reach)) return;
+    if (role.recurring) counts.recurring++;
+    if (role.gapBoundary) counts.gap++;
+    if (role.literalTerminal) counts.residual++;
+    if (role.poseInterface) counts.interface++;
+    if (role.coordinationAnomaly) counts.anomaly++;
+    if (role.occupationalAlternative) counts.occupancy++;
+    if (role.explicitVacancy) counts.vacancy++;
+  });
+  return { reach, counts };
+}
+
+function classifyGrowthEvent(candidate, evaluation) {
+  const neighborhood = growthEventNeighborhood(candidate, evaluation);
+  const counts = neighborhood.counts;
+  const reason = String(evaluation.reason || "").toLowerCase();
+  let phenotype = "bulk";
+  if (!evaluation.accepted && /duplicate|redundant|no novel/.test(reason)) phenotype = "redundant";
+  else if (evaluation.boundaryFailures || evaluation.knownFailures || /boundary|outside/.test(reason)) phenotype = "boundary";
+  else if (evaluation.conflicts || /conflict|hard.core|species/.test(reason)) phenotype = "conflict";
+  else if (evaluation.coordinationOverflows?.length || evaluation.angularViolations?.length || /coordination|angular|topology/.test(reason)) phenotype = "topology";
+  else if (candidate.markingAccepted === false || /marking|section/.test(reason)) phenotype = "marking";
+  else if (!evaluation.accepted) phenotype = "prune";
+  else if (counts.occupancy) phenotype = "occupancy";
+  else if (counts.interface) phenotype = "interface";
+  else if (counts.gap || counts.residual) phenotype = "gap";
+  else if ((evaluation.surfaceCompletion?.scaledDelta || 0) > .08
+    || (evaluation.surfaceCompletion?.newSiteDeficit || 0) > (evaluation.surfaceCompletion?.healedExisting || 0)) phenotype = "surface";
+  const tags = Object.entries(counts).filter(([, count]) => count > 0).map(([label]) => label);
+  if (evaluation.surfaceCompletion?.scaledDelta < -.08) tags.push("coordination healing");
+  return { phenotype, tags, neighborhood, reason: evaluation.reason || "unspecified" };
+}
+
+function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth) {
+  const classified = classifyGrowthEvent(candidate, evaluation);
+  growthMechanismEvents.push({
+    index: eventIndex + growthMechanismEvents.length + 1,
+    accepted,
+    phenotype: classified.phenotype,
+    tags: classified.tags,
+    reason: classified.reason,
+    position: candidate.position.toArray(),
+    nearbyRoleCounts: classified.neighborhood.counts,
+    neighborhoodReachAngstrom: classified.neighborhood.reach * referenceSpacingA / referenceSpacing,
+    sharedSites: evaluation.merged.length,
+    emittedSites: evaluation.fresh.length,
+    depth,
+    gateSignals: {
+      coloredConflicts: evaluation.conflicts,
+      boundaryFailures: evaluation.boundaryFailures,
+      knownWindowFailures: evaluation.knownFailures,
+      coordinationOverflows: evaluation.coordinationOverflows?.length || 0,
+      angularViolations: evaluation.angularViolations?.length || 0,
+      markingAccepted: candidate.markingAccepted,
+    },
+  });
+  const totals = growthMechanismTotals[classified.phenotype] ||= { accepted: 0, rejected: 0, emittedSites: 0 };
+  totals[accepted ? "accepted" : "rejected"]++;
+  totals.emittedSites += accepted ? evaluation.fresh.length : 0;
+  if (growthMechanismEvents.length > 96) growthMechanismEvents.shift();
+}
+
+function growthMechanismAudit() {
+  const byPhenotype = Object.fromEntries(Object.entries(growthMechanismTotals)
+    .map(([id, counts]) => [id, { ...counts }]));
+  const eventsObserved = Object.values(byPhenotype).reduce((sum, counts) => sum + counts.accepted + counts.rejected, 0);
+  return {
+    role: "post-decision spatial correlation between frozen tree actions and input-derived local geometric roles",
+    eventsStored: growthMechanismEvents.length,
+    eventsObserved,
+    maximumStoredEvents: 96,
+    byPhenotype,
+    events: growthMechanismEvents.map(({ position, ...event }) => ({
+      ...event,
+      neighborhoodReachAngstrom: receiptRound(event.neighborhoodReachAngstrom),
+    })),
+    coordinatesEmbedded: false,
+    usedForCandidateEnumeration: false,
+    usedForAdmission: false,
+    usedForBranchRanking: false,
+    defectLabelsAssigned: false,
+    physicalMechanismAssigned: false,
+    formationEnergyInferred: false,
+    kineticsInferred: false,
+  };
+}
+
+function drawGrowthMechanismMap() {
+  const context = growthMechanismCanvas.getContext("2d");
+  const width = growthMechanismCanvas.width, height = growthMechanismCanvas.height;
+  context.clearRect(0, 0, width, height);
+  context.fillStyle = "#051011"; context.fillRect(0, 0, width, height);
+  const projection = MICROSTRUCTURE_PROJECTIONS[growthMechanismProjectionKey] || MICROSTRUCTURE_PROJECTIONS.xy;
+  const basePoints = referenceAtoms.map((atom) => atom.p.toArray());
+  const eventPoints = growthMechanismEvents.map((event) => event.position);
+  const points = [...basePoints, ...eventPoints];
+  if (!points.length) return;
+  const [horizontal, vertical] = projection.axes;
+  const minH = Math.min(...points.map((point) => point[horizontal]));
+  const maxH = Math.max(...points.map((point) => point[horizontal]));
+  const minV = Math.min(...points.map((point) => point[vertical]));
+  const maxV = Math.max(...points.map((point) => point[vertical]));
+  const rangeH = Math.max(1e-9, maxH - minH), rangeV = Math.max(1e-9, maxV - minV);
+  const padding = 24, scale = Math.min((width - 2 * padding) / rangeH, (height - 2 * padding) / rangeV);
+  const offsetX = (width - rangeH * scale) / 2, offsetY = (height - rangeV * scale) / 2;
+  const screen = (point) => [offsetX + (point[horizontal] - minH) * scale,
+    height - offsetY - (point[vertical] - minV) * scale];
+  context.fillStyle = "rgba(151,194,183,.13)";
+  basePoints.forEach((point) => { const [x, y] = screen(point); context.beginPath(); context.arc(x, y, 1.25, 0, TAU); context.fill(); });
+  growthMechanismEvents.forEach((event) => {
+    const [x, y] = screen(event.position);
+    const color = GROWTH_EVENT_PHENOTYPES[event.phenotype]?.color || "#b594ff";
+    context.strokeStyle = color; context.fillStyle = color; context.lineWidth = 2;
+    if (event.accepted) { context.beginPath(); context.arc(x, y, 4.4, 0, TAU); context.fill(); }
+    else { context.beginPath(); context.moveTo(x - 4, y - 4); context.lineTo(x + 4, y + 4); context.moveTo(x + 4, y - 4); context.lineTo(x - 4, y + 4); context.stroke(); }
+  });
+  context.fillStyle = "rgba(151,194,183,.55)"; context.font = "10px ui-monospace, monospace";
+  context.fillText(`${projection.labels[0]} →`, width - 48, height - 8); context.fillText(`${projection.labels[1]} ↑`, 8, 14);
+}
+
+function renderGrowthMechanismAudit() {
+  growthMechanismSection.hidden = pipelineStage !== 4;
+  if (pipelineStage !== 4) return;
+  const audit = growthMechanismAudit();
+  const accepted = Object.values(audit.byPhenotype).reduce((sum, counts) => sum + counts.accepted, 0);
+  const rejected = Object.values(audit.byPhenotype).reduce((sum, counts) => sum + counts.rejected, 0);
+  growthMechanismState.textContent = audit.eventsObserved
+    ? `${accepted} accepted · ${rejected} rejected · ${audit.eventsStored}/${audit.eventsObserved} mapped` : "no decisions yet";
+  drawGrowthMechanismMap();
+  growthMechanismLedger.replaceChildren();
+  Object.entries(GROWTH_EVENT_PHENOTYPES).forEach(([id, record]) => {
+    const count = audit.byPhenotype[id];
+    if (!count) return;
+    const tile = document.createElement("span"); tile.style.setProperty("--phenotype", record.color);
+    tile.innerHTML = `<small>${record.label}</small><strong>${count.accepted} / ${count.rejected}</strong><em>accepted / rejected · ${count.emittedSites} emitted</em>`;
+    growthMechanismLedger.appendChild(tile);
+  });
+  if (!growthMechanismLedger.children.length) {
+    const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
+  }
+  growthMechanismBoundary.textContent = "Phenotypes are assigned after the candidate geometry and decision are frozen. Proximity to gap, residual, pose-interface, coordination, or occupancy evidence is diagnostic only; no defect identity, physical mechanism, energy, rate, or branch score is inferred.";
+}
+
 function clusterPlacementIndices(cluster) {
   if (cluster.classPlacementIndices?.length) return cluster.classPlacementIndices.slice();
   return learnedCover.placements.map((placement, index) => placement.type === cluster.type ? index : -1)
@@ -5086,7 +5258,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-71",
+      buildId: "20260824-72",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5473,6 +5645,7 @@ async function buildExperimentReceipt() {
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
         physicsTranslation: leap.physicsTranslation,
       })),
+      spatialGrowthEventAudit: growthMechanismAudit(),
       policySensitivity: {
         role: "counterfactual soft-physics rankings over one unchanged hard-admitted candidate set; previews never execute",
         maximumStoredFrontiers: 48,
@@ -7681,6 +7854,9 @@ function resetCounters() {
   selectedLeapIndex = -1;
   leapEventCount = 0;
   selectedLeapPhysicsId = "steric";
+  growthMechanismEvents = [];
+  growthMechanismTotals = {};
+  growthMechanismProjectionKey = "xy";
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
   liveOrderHistory = [];
@@ -8062,6 +8238,8 @@ function performOffLatticeEvent() {
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
+      recordGrowthMechanismEvent(candidate, snapshotEvaluation, false,
+        placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0);
       lastDecision = { eventType: "reject", accepted: false, state, resolver: "geometric + section prune",
         energy: candidate.markingScore, interval: [candidate.markingScore, candidate.markingScore] };
       return;
@@ -8085,6 +8263,7 @@ function performOffLatticeEvent() {
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
       family: `${evaluation.merged.length} shared · ${evaluation.fresh.length} new` });
+    recordGrowthMechanismEvent(candidate, evaluation, true, placement.depth);
     lastDecision = { eventType: decision.reuse ? "reuse" : "accept", accepted: true, state,
       resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
   });
@@ -9337,6 +9516,7 @@ function updateUI() {
   renderScalePassport();
   renderPolicyComparison();
   renderStructuralLeap();
+  renderGrowthMechanismAudit();
   updateProcessTimeline();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
@@ -10041,6 +10221,12 @@ mdScalingSelect.addEventListener("change", () => {
   mdWorkScaling = mdScalingSelect.value === "long-range" ? "long-range" : "local";
   renderComputationalCost();
 });
+[...growthMechanismProjection.querySelectorAll("[data-growth-projection]")].forEach((button) => button.addEventListener("click", () => {
+  growthMechanismProjectionKey = button.dataset.growthProjection;
+  growthMechanismProjection.querySelectorAll("[data-growth-projection]").forEach((candidate) =>
+    candidate.setAttribute("aria-pressed", String(candidate === button)));
+  drawGrowthMechanismMap();
+}));
 [markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));

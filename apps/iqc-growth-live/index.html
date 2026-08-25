@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-34">
+  <link rel="stylesheet" href="./style.css?v=20260824-35">
   <script type="importmap">
     {
       "imports": {
@@ -814,6 +814,21 @@
           <p id="leapClaimBoundary" class="leap-claim-boundary">No trajectory is integrated. A geometric certificate can establish a structural transition, not its physical duration or probability.</p>
         </section>
 
+        <section id="growthMechanismSection" class="growth-mechanism-section" hidden aria-label="Spatial growth event mechanism audit">
+          <div class="section-heading"><p class="eyebrow">spatial growth-event audit</p><span id="growthMechanismState">no decisions yet</span></div>
+          <div class="growth-mechanism-heading">
+            <span><small>accepted fill · rejected cross</small><strong>post-decision geometric phenotypes</strong></span>
+            <div id="growthMechanismProjection" role="group" aria-label="Growth event projection plane">
+              <button type="button" data-growth-projection="xy" aria-pressed="true">XY</button>
+              <button type="button" data-growth-projection="xz" aria-pressed="false">XZ</button>
+              <button type="button" data-growth-projection="yz" aria-pressed="false">YZ</button>
+            </div>
+          </div>
+          <canvas id="growthMechanismCanvas" width="900" height="240" role="img" aria-label="Projection of accepted and rejected growth actions by local geometric environment"></canvas>
+          <div id="growthMechanismLedger" class="growth-mechanism-ledger"></div>
+          <p id="growthMechanismBoundary">These are diagnostic spatial correlations, not defect labels, reaction mechanisms, energies, rates, or branch-ranking features.</p>
+        </section>
+
         <section>
           <div class="section-heading"><p class="eyebrow">search stack</p><span id="stackDepth">depth 0</span></div>
           <ol id="searchStack" class="search-stack">
@@ -878,7 +893,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-71"></script>
+  <script type="module" src="./app.js?v=20260824-72"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

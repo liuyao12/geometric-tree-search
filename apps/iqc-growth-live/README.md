@@ -637,6 +637,20 @@ role, exact geometric encoding used for that leap, observed result, and claim
 boundary. The frozen matrix is serialized with the leap receipt and embeds no
 coordinates.
 
+A live **spatial growth-event audit** then projects every frozen tree action
+onto XY, XZ, or YZ after its decision. Accepted actions are filled markers and
+rejections are crosses over a faint copy of the observed configuration.
+Candidate centers are correlated with the input-derived recurring, gap,
+literal-residual, local-pose-interface, coordination-anomaly, and
+occupancy/vacancy roles. Hard-gate failures remain separately identifiable as
+colored-contact, local-topology, public-boundary, or GCTS-marking rejections;
+accepted events may be described as bulk-like, surface/undercoordination,
+interface-adjacent, gap-adjacent, or occupancy-adjacent. These are explicitly
+post-decision geometric phenotypes: they never enumerate, admit, or rank a
+branch and are not automatic defect identities or physical reaction
+mechanisms. The coordinate-free receipt retains counts, local role incidences,
+gate signals, and the non-claim flags while omitting all plotted coordinates.
+
 The representative destination patch is transformed into world coordinates.
 A cell-list spatial index merges coincident same-species atoms and detects
 hard-core or species conflicts without scanning the whole structure. A
