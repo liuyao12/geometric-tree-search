@@ -29,6 +29,7 @@ def test_attachment_topology_is_explicit_non_lattice_and_soft() -> None:
     assert "activeAttachmentTopologyWeight() * evaluation.attachmentTopology.score" in APP
     assert "attachmentTopologyRanking" in APP
     assert 'name: "attachment topology"' in APP
+    assert 'const signed = (value) => `${value >= 0 ? "+" : ""}${Number(value || 0).toFixed(3)}`;' in APP
     assert "new THREE.TetrahedronGeometry" in APP
     assert "new THREE.BoxGeometry" in APP
     assert "new THREE.RingGeometry" in APP

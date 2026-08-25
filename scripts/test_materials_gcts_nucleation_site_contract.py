@@ -15,7 +15,7 @@ def test_observed_nucleation_site_geometry_contract():
         assert f'id="{element_id}"' in html
     for mode in ("replay", "interior", "surface", "gap", "interface", "dispersed"):
         assert f'value="{mode}"' in html
-    assert 'app.js?v=20260825-100' in html
+    assert 'app.js?v=20260825-101' in html
 
     assert "function observedGrowthSeedIndices()" in app
     assert "function renderNucleationLandscapeInspector()" in app

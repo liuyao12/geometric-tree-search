@@ -5748,7 +5748,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-100",
+      buildId: "20260825-101",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -11720,6 +11720,7 @@ function geometryConstraintEvidence(name, term, state, mode) {
   const angularRecords = coloredAngularEnvelopes?.records || [];
   const totalAngles = angularRecords.reduce((sum, record) => sum + (record.angleObservations || 0), 0);
   const totalBands = angularRecords.reduce((sum, record) => sum + (record.bands?.length || 0), 0);
+  const signed = (value) => `${value >= 0 ? "+" : ""}${Number(value || 0).toFixed(3)}`;
   const ratio = compositionTarget?.reducedRatio
     ? Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}:${count}`).join(" · ") : "unavailable";
   const environment = growthEnvironmentSpec(confinementSelect.value);
