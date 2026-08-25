@@ -192,6 +192,11 @@ const rotateToggle = $("rotateToggle");
 const downloadReceiptButton = $("downloadReceiptButton");
 const copyReceiptButton = $("copyReceiptButton");
 const receiptStatus = $("receiptStatus");
+const saveNotebookButton = $("saveNotebookButton");
+const clearNotebookButton = $("clearNotebookButton");
+const notebookState = $("notebookState");
+const notebookEntries = $("notebookEntries");
+const notebookComparison = $("notebookComparison");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
@@ -596,6 +601,8 @@ let selectedPolicyPreviewId = "active";
 let policySnapshotCount = 0;
 let selectedScalePassportId = null;
 let selectedScalePassportStage = -1;
+let experimentNotebookEntries = [];
+let selectedNotebookEntryIds = [];
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
@@ -4659,6 +4666,9 @@ const MARKING_REPRESENTATIONS = {
 };
 const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v3";
 const MARKING_VOCABULARY_SCHEMA = 3;
+const EXPERIMENT_NOTEBOOK_STORAGE = "gcts-experiment-notebook-v1";
+const MAX_EXPERIMENT_NOTEBOOK_ENTRIES = 8;
+let notebookClearArmed = false;
 
 function restoreMarkingLibrary() {
   try {
@@ -4920,7 +4930,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-63",
+      buildId: "20260824-65",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5361,6 +5371,167 @@ async function buildExperimentReceipt() {
 
 async function serializedExperimentReceipt() {
   return `${JSON.stringify(await buildExperimentReceipt(), null, 2)}\n`;
+}
+
+function experimentNotebookSummary(receipt) {
+  const cover = receipt.cover?.inputAtoms ? receipt.cover : null;
+  const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
+  const certificate = search?.liveCertificate || null;
+  const classification = receipt.structuralEvidence?.emergentClassification;
+  const activeMarking = receipt.marking?.active;
+  const generatedSites = certificate?.metrics?.generatedStructuralSites
+    ?? Math.max(0, (search?.explicitSites || 0) - receipt.input.atomCount);
+  const causalDepth = certificate?.metrics?.maximumCausalDepth
+    ?? certificate?.metrics?.nonemptyWaves ?? 0;
+  const strongestClaim = receipt.evidenceBoundary.stationaryProductionCertified
+    ? "stationary structural production certified"
+    : certificate?.state || receipt.evidenceBoundary.benchmarkGate || "structural evidence only";
+  return {
+    id: receipt.receiptSha256.slice(0, 16),
+    savedAt: receipt.generatedAt,
+    receiptSha256: receipt.receiptSha256,
+    experimentStateSha256: receipt.experimentStateSha256,
+    material: receipt.input.materialName,
+    scenarioId: receipt.input.scenarioId,
+    elements: receipt.input.elements,
+    inputAtoms: receipt.input.atomCount,
+    stage: receipt.pipeline.stageName,
+    stageOrdinal: receipt.pipeline.visibleStage,
+    geometry: `${receipt.geometry.resolvedLabel} · ε ${receipt.geometry.metricIsometryToleranceAngstrom} Å`,
+    rotationGroup: receipt.geometry.rotationGroup,
+    structuralScalesEncoded: receipt.geometry.multiscalePassport.structuralScalesEncoded,
+    cover: cover ? `${cover.isometryTypes} types · ${cover.placements} placements · ${cover.coveredAtoms}/${cover.inputAtoms} sites` : "not entered",
+    coverComplete: cover?.status === "complete",
+    marking: activeMarking ? activeMarking.name : receipt.marking.status,
+    markingRepresentation: activeMarking?.representationReadout || receipt.marking.learned?.representationReadout || "not trained",
+    hierarchy: search ? (search.hierarchyEnabled ? "clusters² enabled" : "primitive clusters") : "not entered",
+    explicitSites: search?.explicitSites ?? 0,
+    generatedSites,
+    placedClusters: search?.placedClusters ?? 0,
+    acceptedDecisions: search?.acceptedDecisions ?? 0,
+    rejectedDecisions: search?.rejectedDecisions ?? 0,
+    causalDepth,
+    classification: classification?.status || "withheld",
+    classificationConfidence: classification?.current?.confidence ?? 0,
+    strongestClaim,
+    benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
+    physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
+    coordinatesEmbedded: false,
+  };
+}
+
+function persistExperimentNotebook() {
+  try {
+    localStorage.setItem(EXPERIMENT_NOTEBOOK_STORAGE, JSON.stringify({
+      schema: 1, entries: experimentNotebookEntries,
+    }));
+  } catch (_) {
+    receiptStatus.textContent = "Notebook could not be persisted; receipt export remains available.";
+  }
+}
+
+function restoreExperimentNotebook() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(EXPERIMENT_NOTEBOOK_STORAGE) || "null");
+    experimentNotebookEntries = Array.isArray(stored?.entries)
+      ? stored.entries.filter((entry) => entry?.id && entry?.receiptSha256 && entry?.coordinatesEmbedded === false)
+        .slice(-MAX_EXPERIMENT_NOTEBOOK_ENTRIES) : [];
+  } catch (_) {
+    experimentNotebookEntries = [];
+  }
+  selectedNotebookEntryIds = experimentNotebookEntries.slice(-2).map((entry) => entry.id);
+}
+
+function notebookComparisonValue(entry, key) {
+  const values = {
+    material: entry.material,
+    input: `${entry.inputAtoms.toLocaleString()} atoms · ${entry.elements.join(" / ")}`,
+    geometry: entry.geometry,
+    cover: entry.cover,
+    marking: `${entry.marking} · ${entry.markingRepresentation}`,
+    search: `${entry.hierarchy} · ${entry.placedClusters} clusters · depth ${entry.causalDepth}`,
+    output: `${entry.explicitSites.toLocaleString()} explicit · +${entry.generatedSites.toLocaleString()} structural sites`,
+    decisions: `${entry.acceptedDecisions} accepted · ${entry.rejectedDecisions} rejected`,
+    classification: `${entry.classification} · ${Math.round(entry.classificationConfidence * 100)}%`,
+    claim: `${entry.strongestClaim} · ${entry.benchmarkGate}`,
+  };
+  return values[key];
+}
+
+function renderExperimentNotebook() {
+  notebookState.textContent = `${experimentNotebookEntries.length}/${MAX_EXPERIMENT_NOTEBOOK_ENTRIES} saved runs`;
+  clearNotebookButton.disabled = experimentNotebookEntries.length === 0;
+  notebookEntries.replaceChildren(...experimentNotebookEntries.map((entry, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    const selected = selectedNotebookEntryIds.includes(entry.id);
+    button.classList.toggle("active", selected);
+    button.setAttribute("aria-pressed", String(selected));
+    button.title = `Receipt ${entry.receiptSha256}; coordinates excluded`;
+    const number = document.createElement("small"); number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}`;
+    const material = document.createElement("strong"); material.textContent = entry.material;
+    const state = document.createElement("span"); state.textContent = `${entry.explicitSites.toLocaleString()} sites · ${entry.marking}`;
+    const claim = document.createElement("em"); claim.textContent = entry.strongestClaim;
+    button.append(number, material, state, claim);
+    button.addEventListener("click", () => {
+      if (selectedNotebookEntryIds.includes(entry.id)) selectedNotebookEntryIds = selectedNotebookEntryIds.filter((id) => id !== entry.id);
+      else {
+        if (selectedNotebookEntryIds.length >= 2) selectedNotebookEntryIds.shift();
+        selectedNotebookEntryIds.push(entry.id);
+      }
+      renderExperimentNotebook();
+    });
+    return button;
+  }));
+  const selected = selectedNotebookEntryIds.map((id) => experimentNotebookEntries.find((entry) => entry.id === id)).filter(Boolean);
+  notebookComparison.replaceChildren();
+  if (selected.length !== 2) {
+    const note = document.createElement("p");
+    note.textContent = selected.length ? "Select one more saved run to compare." : "Select two saved runs to compare.";
+    notebookComparison.append(note); return;
+  }
+  const header = document.createElement("header");
+  const empty = document.createElement("small"); empty.textContent = "field";
+  const first = document.createElement("strong"); first.textContent = selected[0].material;
+  const second = document.createElement("strong"); second.textContent = selected[1].material;
+  header.append(empty, first, second); notebookComparison.append(header);
+  [["material", "material"], ["input", "input"], ["geometry", "geometry"], ["cover", "cover"],
+    ["marking", "marking"], ["search", "search"], ["output", "output"], ["decisions", "decisions"],
+    ["classification", "classification"], ["claim boundary", "claim"]].forEach(([label, key]) => {
+    const row = document.createElement("div");
+    const name = document.createElement("small"); name.textContent = label;
+    const firstValue = document.createElement("span"); firstValue.textContent = notebookComparisonValue(selected[0], key);
+    const secondValue = document.createElement("span"); secondValue.textContent = notebookComparisonValue(selected[1], key);
+    row.classList.toggle("same", firstValue.textContent === secondValue.textContent);
+    row.append(name, firstValue, secondValue); notebookComparison.append(row);
+  });
+}
+
+async function saveCurrentExperimentNotebookEntry() {
+  if (experimentNotebookEntries.length >= MAX_EXPERIMENT_NOTEBOOK_ENTRIES) {
+    receiptStatus.textContent = "Notebook is full. Download receipts or clear the notebook before saving another run."; return;
+  }
+  saveNotebookButton.disabled = true;
+  receiptStatus.textContent = "Freezing coordinate-free run summary…";
+  try {
+    const receipt = await buildExperimentReceipt();
+    const duplicate = experimentNotebookEntries.find((entry) => entry.experimentStateSha256 === receipt.experimentStateSha256);
+    if (duplicate) {
+      selectedNotebookEntryIds = [duplicate.id];
+      receiptStatus.textContent = "This exact experiment state is already saved.";
+    } else {
+      const entry = experimentNotebookSummary(receipt);
+      experimentNotebookEntries.push(entry);
+      selectedNotebookEntryIds = [...selectedNotebookEntryIds.slice(-1), entry.id];
+      persistExperimentNotebook();
+      receiptStatus.textContent = `Run ${experimentNotebookEntries.length} saved · coordinate-free summary · receipt ${entry.receiptSha256.slice(0, 10)}…`;
+    }
+    renderExperimentNotebook();
+  } catch (error) {
+    receiptStatus.textContent = `Notebook save failed: ${error.message}`;
+    console.error(error);
+  } finally {
+    saveNotebookButton.disabled = false;
+  }
 }
 
 async function withReceiptStatus(button, action) {
@@ -9005,6 +9176,26 @@ copyReceiptButton.addEventListener("click", () => withReceiptStatus(copyReceiptB
   await navigator.clipboard.writeText(await serializedExperimentReceipt());
   receiptStatus.textContent = "Receipt JSON copied · coordinates excluded; SHA-256 digests included.";
 }));
+saveNotebookButton.addEventListener("click", () => {
+  notebookClearArmed = false;
+  clearNotebookButton.textContent = "Clear notebook";
+  saveCurrentExperimentNotebookEntry();
+});
+clearNotebookButton.addEventListener("click", () => {
+  if (!notebookClearArmed) {
+    notebookClearArmed = true;
+    clearNotebookButton.textContent = "Confirm clear";
+    receiptStatus.textContent = "Click Confirm clear to remove all locally saved notebook summaries.";
+    return;
+  }
+  experimentNotebookEntries = [];
+  selectedNotebookEntryIds = [];
+  notebookClearArmed = false;
+  clearNotebookButton.textContent = "Clear notebook";
+  try { localStorage.removeItem(EXPERIMENT_NOTEBOOK_STORAGE); } catch (_) { /* local state is already cleared */ }
+  receiptStatus.textContent = "Experiment notebook cleared. Downloaded receipts are unaffected.";
+  renderExperimentNotebook();
+});
 scenarioSelect.addEventListener("change", () => {
   renderEnsembleControls();
   renderIceViMicrostateControls();
@@ -9301,6 +9492,8 @@ function applyLaunchParameters() {
 }
 
 restoreMarkingLibrary();
+restoreExperimentNotebook();
+renderExperimentNotebook();
 buildPeriodicTable();
 enterPipelineStage(applyLaunchParameters());
 resize();

@@ -141,6 +141,17 @@ metadata. `experimentStateSha256` excludes the generation timestamp, so two
 exports of an unchanged state have the same experiment identity, while
 `receiptSha256` authenticates the complete timestamped record.
 
+The same rail contains a bounded, local **experiment notebook** for rapid
+comparison. “Save current run” derives a compact coordinate-free summary from
+the full receipt; saving the same `experimentStateSha256` twice selects the
+existing entry instead of fabricating a replicate. Up to eight runs may be kept
+locally. Selecting two produces a field-by-field comparison of material and
+composition, geometry hypothesis, complete cover, marking and representation,
+hierarchy/depth, explicit output, branch work, posthoc classification, and claim
+boundary. The notebook never restores or executes a run, never stores atom
+coordinates, and never substitutes for the downloadable receipt. Clearing it is
+a two-click action and does not affect downloaded files or the marking library.
+
 The receipt also carries a machine-readable claim boundary. Finite structural
 continuation is not relabelled as a physical potential, elapsed time, growth
 rate, stationary production, or generic exponential GCTS result. In
