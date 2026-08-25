@@ -291,6 +291,8 @@ const policyParetoX = $("policyParetoX");
 const policyParetoY = $("policyParetoY");
 const policyParetoPlot = $("policyParetoPlot");
 const policyParetoDetail = $("policyParetoDetail");
+const policyPoseAuditLimit = $("policyPoseAuditLimit");
+const policyPoseAuditHint = $("policyPoseAuditHint");
 const policySpatialFieldState = $("policySpatialFieldState");
 const policySpatialTerm = $("policySpatialTerm");
 const policySpatialToggle = $("policySpatialToggle");
@@ -860,6 +862,7 @@ let growthMechanismEvents = [];
 let growthMechanismTotals = {};
 let growthPoseAuditsByLeap = new Map();
 const MAXIMUM_POSE_AUDITS_PER_LEAP = 64;
+const MAXIMUM_FRONTIER_POSE_AUDITS = 64;
 let growthMechanismProjectionKey = "xy";
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
@@ -922,6 +925,7 @@ let affineLoadMode = "none";
 let affineLoadMagnitude = .02;
 let robustnessPreference = "none";
 let robustnessWeight = .24;
+let frontierPoseAuditLimit = 16;
 let microstructureCouplingMode = "none";
 let microstructureCouplingWeight = .24;
 let loopClosurePreference = "none";
@@ -6141,7 +6145,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-120",
+      buildId: "20260825-121",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7120,6 +7124,24 @@ async function buildExperimentReceipt() {
               renderingNormalization: "independent min-max scaling by axis; dominance uses unnormalized signed contributions",
               exactCandidates: map.points.length,
               nondominatedCandidates: map.frontier.length,
+              boundedPoseAudit: {
+                role: "target-blind hard-geometry sensitivity replay; never used for candidate admission or ranking",
+                deterministicOrder: map.poseAudit.deterministicOrder,
+                candidateSelectionTargetUsed: map.poseAudit.candidateSelectionTargetUsed,
+                maximumAuditedCandidates: map.poseAudit.maximumAuditedCandidates,
+                configuredCandidateLimit: map.poseAudit.configuredCandidateLimit,
+                auditedCandidates: map.auditedCandidates,
+                stableCandidates: map.stableCandidates,
+                fragileCandidates: map.fragileCandidates,
+                unauditedCandidates: map.unauditedCandidates,
+                perturbationTrialsPerCandidate: map.poseAudit.perturbationTrialsPerCandidate,
+                measuredBrowserCalculationMilliseconds: receiptRound(map.poseAudit.calculationMilliseconds),
+                usedForAdmission: map.poseAudit.usedForAdmission,
+                usedForRanking: map.poseAudit.usedForRanking,
+                targetUsed: map.poseAudit.targetUsed,
+                posteriorProbabilityInferred: false,
+                thermalEnsembleInferred: false,
+              },
               candidateSetDigest: map.candidateSetDigest,
               candidateSetChanged: map.candidateSetChanged,
               hardAdmissionChanged: map.hardAdmissionChanged,
@@ -7130,7 +7152,16 @@ async function buildExperimentReceipt() {
               samples: map.points.map((point) => ({ candidateDigest: point.candidateDigest,
                 action: point.action, horizontalContribution: receiptRound(point.xContribution),
                 verticalContribution: receiptRound(point.yContribution),
-                nondominated: point.nondominated, dominatingCandidates: point.dominatedBy })),
+                nondominated: point.nondominated, dominatingCandidates: point.dominatedBy,
+                boundedPoseAudit: point.boundedPoseAudit ? {
+                  trials: point.boundedPoseAudit.perturbationTrials,
+                  hardAcceptanceCount: point.boundedPoseAudit.perturbationHardAcceptanceCount,
+                  agreementCount: point.boundedPoseAudit.perturbationAgreementCount,
+                  stressRadiusAngstrom: receiptRound(point.boundedPoseAudit.perturbationStressRadiusAngstrom),
+                  rotationDegrees: receiptRound(point.boundedPoseAudit.perturbationRotationDegrees),
+                  failureModes: point.boundedPoseAudit.perturbationFailureModes,
+                  targetUsed: point.boundedPoseAudit.perturbationAuditTargetUsed,
+                } : null })),
             } : null;
           })(),
           spatialDrivingField: (() => {
@@ -9445,6 +9476,7 @@ function buildPolicyParetoMap(snapshot) {
     const termContributions = workbenchCandidateTerms(snapshot, candidate);
     return { candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
       action: candidate.action, preview: candidate.preview, termContributions,
+      boundedPoseAudit: candidate.boundedPoseAudit,
       xContribution: termContributions.find((term) => term.id === x)?.contribution || 0,
       yContribution: termContributions.find((term) => term.id === y)?.contribution || 0 };
   }).sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
@@ -9472,8 +9504,15 @@ function buildPolicyParetoMap(snapshot) {
   const activeCandidateKey = snapshot.policies.find((policy) => policy.id === "active")?.candidateKey || null;
   const selectedCandidateKey = points.some((point) => point.candidateKey === snapshot.paretoPreviewCandidateKey)
     ? snapshot.paretoPreviewCandidateKey : activeCandidateKey || frontier.at(-1)?.candidateKey || points[0].candidateKey;
+  const auditedPoints = points.filter((point) => point.boundedPoseAudit?.perturbationEnsembleExecutedForThisAction);
+  const stablePoints = auditedPoints.filter((point) => point.boundedPoseAudit.perturbationHardAcceptanceCount
+    === point.boundedPoseAudit.perturbationTrials);
   return { x, y, xLabel: labels[x] || x, yLabel: labels[y] || y, termIds, labels, points, frontier,
     selectedCandidateKey, xMinimum, xMaximum, yMinimum, yMaximum, dominanceEpsilon,
+    auditedCandidates: auditedPoints.length, stableCandidates: stablePoints.length,
+    fragileCandidates: auditedPoints.length - stablePoints.length,
+    unauditedCandidates: points.length - auditedPoints.length,
+    poseAudit: snapshot.frontierPoseAudit,
     candidateSetDigest: snapshot.candidateDigest, candidateSetChanged: false,
     hardAdmissionChanged: false, candidateGeometryChanged: false,
     targetUsed: snapshot.rankingTargetUsed && [x, y].includes("known-window-gain"),
@@ -9578,6 +9617,19 @@ function buildPolicyWorkbench(snapshot) {
 
 function capturePolicyComparison(entries) {
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
+  const frontierAuditStartedAt = performance.now();
+  const resolvedFrontierPoseAuditLimit = Math.min(MAXIMUM_FRONTIER_POSE_AUDITS,
+    Math.max(0, Math.round(frontierPoseAuditLimit)));
+  const lexicalAuditEntries = [...admissible]
+    .sort((first, second) => first.candidate.key.localeCompare(second.candidate.key));
+  const displayedActiveEntry = [...admissible].sort((first, second) => second.selectionScore - first.selectionScore
+    || first.candidate.key.localeCompare(second.candidate.key))[0] || null;
+  const auditedEntries = resolvedFrontierPoseAuditLimit > 0
+    ? [displayedActiveEntry, ...lexicalAuditEntries.filter((entry) => entry !== displayedActiveEntry)]
+      .filter(Boolean).slice(0, resolvedFrontierPoseAuditLimit) : [];
+  const frontierPoseAudits = new Map(auditedEntries.map((entry) =>
+    [entry.candidate.key, candidatePosePerturbationAudit(entry.candidate)]));
+  const frontierPoseAuditMilliseconds = performance.now() - frontierAuditStartedAt;
   const policies = [
     { id: "grammar", label: "mark + recurrence", score: (entry) => entry.baseScore },
     { id: "elastic", label: "elastic 0.16", score: (entry) => entry.baseScore - .16 * entry.evaluation.geometricStrain.total },
@@ -9659,6 +9711,7 @@ function capturePolicyComparison(entries) {
       action: policyActionLabel(entry),
       baselineScore: entry.selectionScore,
       scoreTerms,
+      boundedPoseAudit: frontierPoseAudits.get(entry.candidate.key) || null,
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
     };
   });
@@ -9672,6 +9725,18 @@ function capturePolicyComparison(entries) {
     referenceGuided: !reconstructionCertified,
     uniqueTopActions: new Set(policies.map((policy) => policy.candidateKey).filter(Boolean)).size,
     everyScoreDecompositionExact: policies.every((policy) => policy.scoreDecompositionExact),
+    frontierPoseAudit: {
+      deterministicOrder: "displayed active candidate, then candidate key lexical order",
+      candidateSelectionTargetUsed: !reconstructionCertified,
+      maximumAuditedCandidates: MAXIMUM_FRONTIER_POSE_AUDITS,
+      configuredCandidateLimit: resolvedFrontierPoseAuditLimit,
+      auditedCandidates: frontierPoseAudits.size,
+      unauditedCandidates: Math.max(0, admissible.length - frontierPoseAudits.size),
+      perturbationTrialsPerCandidate: auditedEntries.length
+        ? frontierPoseAudits.get(auditedEntries[0].candidate.key).perturbationTrials : 0,
+      calculationMilliseconds: frontierPoseAuditMilliseconds,
+      usedForAdmission: false, usedForRanking: false, targetUsed: false,
+    },
     workbenchCandidates,
     workbenchMultipliers: {},
     policies,
@@ -14091,10 +14156,17 @@ function previewPolicyParetoCandidate(snapshot, candidateKey) {
 function renderPolicyParetoMap(snapshot) {
   policyParetoPlot.replaceChildren(); policyParetoX.replaceChildren(); policyParetoY.replaceChildren();
   policyParetoDetail.replaceChildren();
+  policyPoseAuditLimit.value = String(frontierPoseAuditLimit);
+  policyPoseAuditLimit.onchange = () => {
+    frontierPoseAuditLimit = Math.min(MAXIMUM_FRONTIER_POSE_AUDITS,
+      Math.max(0, Number(policyPoseAuditLimit.value) || 0));
+    policyPoseAuditHint.textContent = `next frontier cap ${frontierPoseAuditLimit} · current frozen audit unchanged`;
+  };
   const map = buildPolicyParetoMap(snapshot);
   if (!map) {
     policyParetoState.textContent = "awaiting a frozen frontier";
     policyParetoX.disabled = true; policyParetoY.disabled = true;
+    policyPoseAuditHint.textContent = `next frontier cap ${frontierPoseAuditLimit} · target-blind hard geometry`;
     return;
   }
   policyParetoX.disabled = false; policyParetoY.disabled = false;
@@ -14106,8 +14178,9 @@ function renderPolicyParetoMap(snapshot) {
   });
   policyParetoX.onchange = () => selectPolicyParetoAxis(snapshot, "x", policyParetoX.value);
   policyParetoY.onchange = () => selectPolicyParetoAxis(snapshot, "y", policyParetoY.value);
-  policyParetoState.textContent = `${map.frontier.length} nondominated · ${map.points.length} exact poses`
+  policyParetoState.textContent = `${map.frontier.length} nondominated · ${map.stableCandidates}/${map.auditedCandidates} perturbation-stable`
     + `${map.targetUsed ? " · reference-guided" : " · target-free"}`;
+  policyPoseAuditHint.textContent = `${map.auditedCandidates}/${map.points.length} audited on this frontier · ${map.poseAudit.calculationMilliseconds.toFixed(0)} ms · next cap ${frontierPoseAuditLimit}`;
   const namespace = "http://www.w3.org/2000/svg";
   const make = (name, attributes = {}) => {
     const element = document.createElementNS(namespace, name);
@@ -14130,10 +14203,13 @@ function renderPolicyParetoMap(snapshot) {
   }
   [...map.points].sort((first, second) => Number(first.nondominated) - Number(second.nondominated)
     || first.candidateKey.localeCompare(second.candidateKey)).forEach((point) => {
+    const poseAudit = point.boundedPoseAudit;
+    const stabilityClass = !poseAudit ? "unaudited"
+      : poseAudit.perturbationHardAcceptanceCount === poseAudit.perturbationTrials ? "stable" : "fragile";
     const circle = make("circle", { cx: left + width * point.normalizedX,
       cy: top + height * (1 - point.normalizedY), r: point.nondominated ? 4.2 : 2.6,
-      class: `${point.nondominated ? "nondominated" : "dominated"}${point.candidateKey === map.selectedCandidateKey ? " selected" : ""}`,
-      tabindex: 0, role: "button", "aria-label": `${point.action}; ${map.xLabel} ${point.xContribution.toFixed(3)}; ${map.yLabel} ${point.yContribution.toFixed(3)}; ${point.nondominated ? "nondominated" : `dominated by ${point.dominatedBy}`}` });
+      class: `${point.nondominated ? "nondominated" : "dominated"} ${stabilityClass}${point.candidateKey === map.selectedCandidateKey ? " selected" : ""}`,
+      tabindex: 0, role: "button", "aria-label": `${point.action}; ${map.xLabel} ${point.xContribution.toFixed(3)}; ${map.yLabel} ${point.yContribution.toFixed(3)}; ${point.nondominated ? "nondominated" : `dominated by ${point.dominatedBy}`}; ${poseAudit ? `${poseAudit.perturbationHardAcceptanceCount} of ${poseAudit.perturbationTrials} bounded poses hard-admitted` : "pose audit cap reached"}` });
     circle.style.setProperty("--candidate-hue", policyBasinHue(point.candidateKey));
     const title = make("title"); title.textContent = `${point.action} · ${point.candidateDigest} · click to preview exact pose`;
     circle.append(title);
@@ -14157,7 +14233,16 @@ function renderPolicyParetoMap(snapshot) {
     xValue.textContent = `${map.xLabel} ${selected.xContribution >= 0 ? "+" : ""}${selected.xContribution.toFixed(3)}`;
     const yValue = document.createElement("span");
     yValue.textContent = `${map.yLabel} ${selected.yContribution >= 0 ? "+" : ""}${selected.yContribution.toFixed(3)}`;
-    policyParetoDetail.append(heading, status, xValue, yValue);
+    const poseAudit = selected.boundedPoseAudit;
+    const stability = document.createElement("span"); stability.className = "pose-stability";
+    stability.textContent = poseAudit
+      ? `bounded pose hard admission ${poseAudit.perturbationHardAcceptanceCount}/${poseAudit.perturbationTrials} · ±${poseAudit.perturbationStressRadiusAngstrom.toFixed(3)} Å / ${poseAudit.perturbationRotationDegrees.toFixed(2)}° · target-free audit`
+      : "bounded pose audit not executed · deterministic frontier cap reached";
+    const failures = document.createElement("span"); failures.className = "pose-failures";
+    const failureRows = Object.entries(poseAudit?.perturbationFailureModes || {});
+    failures.textContent = failureRows.length ? failureRows.map(([reason, count]) => `${reason} ×${count}`).join(" · ")
+      : poseAudit ? "no hard-gate failures across the bounded pose trials" : "failure modes unavailable";
+    policyParetoDetail.append(heading, status, xValue, yValue, stability, failures);
   }
 }
 

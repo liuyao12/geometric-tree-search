@@ -4366,13 +4366,37 @@ contributions after current workbench multipliers. Clicking any point previews
 its complete rigid cluster pose and full signed score ledger. The selected
 point reports both contributions and how many exact candidates dominate it.
 
+The same frozen frontier now receives a bounded **pose-stability audit** before
+any action executes. The displayed active candidate is audited first, followed
+by deterministic candidate-key order, and a declared number of admitted poses
+are replayed through twelve target-blind hard-geometry trials: positive
+and negative translations along three axes and positive and negative proper
+rotations about those axes. The perturbation scale is the larger of measured
+pair-distance uncertainty and half the resolved metric-isometry tolerance,
+exactly matching the post-decision uncertainty audit. Mint outlines mean all
+twelve poses remain hard-admitted, dashed coral outlines expose at least one
+hard failure, and dotted violet outlines identify candidates beyond the
+declared audit cap. The candidate detail reports the hard-pass count, Å/degree
+radius, and every failure mode. These outcomes never alter dominance,
+admission, ranking, or execution. The control defaults to 16 candidates for a
+responsive live update, permits a full 64-candidate audit, or can be disabled.
+Its value freezes before the next frontier; changing it never recomputes an old
+snapshot against a material state that has already grown.
+During known-window reconstruction, choosing the displayed active candidate can
+therefore be reference-guided even though every perturbation and hard-gate
+replay is target-blind; both provenance fields are recorded separately.
+
 This is a finite candidate-space multi-objective audit—not a free-energy
 landscape, equilibrium convex hull, kinetic phase boundary, probability cloud,
 or proof of material stability. The receipt stores both axes and their rule,
 the exact dominance definition and tolerance, every candidate/action digest,
 signed coordinate pair, nondominated flag, dominator count, target-use status,
-and invariants that candidate geometry, hard admission, and execution did not
-change. Cartesian candidate coordinates are not embedded.
+the deterministic pose-audit cap/order/radius, trial counts and hard failure
+modes, and invariants that candidate geometry, hard admission, and execution
+did not change. Cartesian candidate coordinates are not embedded. Pose-trial
+agreement is a bounded sensitivity diagnostic, not a posterior probability,
+confidence interval, temperature ensemble, survival fraction, or calibrated
+robustness certificate.
 
 ### Candidate-resolved geometric driving field
 

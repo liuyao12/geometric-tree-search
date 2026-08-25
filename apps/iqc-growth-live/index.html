@@ -877,6 +877,8 @@
                 <header><span><small>candidate-space trade-off</small><strong>Geometric Pareto frontier</strong></span><b id="policyParetoState">awaiting a frozen frontier</b></header>
                 <div class="policy-pareto-axes"><label>horizontal<select id="policyParetoX" aria-label="Horizontal candidate contribution"></select></label><label>vertical<select id="policyParetoY" aria-label="Vertical candidate contribution"></select></label></div>
                 <svg id="policyParetoPlot" class="policy-pareto-plot" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to preview its pose"></svg>
+                <div class="policy-pareto-legend"><span><i class="stable"></i>all bounded poses pass</span><span><i class="fragile"></i>one or more hard failures</span><span><i class="unaudited"></i>audit cap</span></div>
+                <div class="policy-pareto-audit-control"><label>next frontier pose audit<select id="policyPoseAuditLimit" aria-label="Bounded pose audit candidates on the next frozen frontier"><option value="0">Off · no perturbation trials</option><option value="16" selected>16 candidates · responsive</option><option value="64">64 candidates · full audit</option></select></label><span id="policyPoseAuditHint">freezes before the next frontier</span></div>
                 <article id="policyParetoDetail" class="policy-pareto-detail" aria-live="polite"></article>
                 <p>Higher is better on each selected signed ranking term. The mint envelope contains candidates not dominated on this pair; it is not a thermodynamic phase boundary or free-energy surface.</p>
               </section>
@@ -1362,7 +1364,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-120"></script>
+  <script type="module" src="./app.js?v=20260825-121"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
