@@ -651,6 +651,18 @@ branch and are not automatic defect identities or physical reaction
 mechanisms. The coordinate-free receipt retains counts, local role incidences,
 gate signals, and the non-claim flags while omitting all plotted coordinates.
 
+For the latest leap, the same panel exposes an **uncertainty budget** rather
+than collapsing everything into a confidence percentage. It shows the measured
+pair-distance uncertainty, nominal and resolved isometry tolerances, minimum
+clearance above learned colored exclusions, maximum residual on coincident
+support sites, active marking margin alongside held-out loss, and adjacency to
+occupational alternatives. The receipt records whether measurement uncertainty
+set the tolerance floor and whether occupancy was explicitly realized. These
+numbers condition an individual geometric decision; they are not a perturbation
+ensemble, posterior probability, confidence interval, or robustness
+certificate. The UI therefore leaves “perturbation test open” visible until a
+separate ensemble or held-out audit actually supplies that evidence.
+
 The representative destination patch is transformed into world coordinates.
 A cell-list spatial index merges coincident same-species atoms and detects
 hard-core or species conflicts without scanning the whole structure. A

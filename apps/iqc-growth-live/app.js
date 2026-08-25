@@ -271,6 +271,8 @@ const growthMechanismProjection = $("growthMechanismProjection");
 const growthMechanismCanvas = $("growthMechanismCanvas");
 const growthMechanismLedger = $("growthMechanismLedger");
 const growthMechanismBoundary = $("growthMechanismBoundary");
+const growthUncertaintyState = $("growthUncertaintyState");
+const growthUncertaintyBudget = $("growthUncertaintyBudget");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
 const markingHeading = $("markingHeading");
@@ -3758,14 +3760,53 @@ function classifyGrowthEvent(candidate, evaluation) {
   return { phenotype, tags, neighborhood, reason: evaluation.reason || "unspecified" };
 }
 
+function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts) {
+  let minimumContactClearance = Infinity;
+  const searchRadius = Math.max(coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE,
+    coloredCoordinationEnvelopes?.maximumCutoff || 0);
+  evaluation.fresh.forEach((site) => nearbyAtoms(site.p, searchRadius).forEach((atom) => {
+    const clearance = site.p.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
+    minimumContactClearance = Math.min(minimumContactClearance, clearance);
+  }));
+  const maximumOverlapResidual = evaluation.merged.reduce((maximum, entry) =>
+    Math.max(maximum, entry.site.p.distanceTo(entry.atom.p)), 0);
+  const markingMargins = (candidate.markingScores || []).map((row) => row.score - row.threshold);
+  const markingMargin = markingMargins.length ? Math.max(...markingMargins) : null;
+  const activeMarking = selectedMarking();
+  const markingHoldoutLoss = activeMarking?.validationLoss
+    ?? sectionModel?.curve?.at(-1)?.validationLoss ?? null;
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const measuredUncertainty = measuredPairUncertaintyAngstrom();
+  const nominalTolerance = referenceSpacingA * clusterMetricTolerance();
+  return {
+    measuredPairDistanceSigmaAngstrom: measuredUncertainty,
+    nominalMetricToleranceAngstrom: nominalTolerance,
+    resolvedMetricToleranceAngstrom: clusterMetricToleranceAngstrom(),
+    measurementFloorActive: measuredUncertainty > nominalTolerance + 1e-9,
+    minimumContactClearanceAngstrom: Number.isFinite(minimumContactClearance)
+      ? minimumContactClearance * sceneToAngstrom : null,
+    maximumOverlapResidualAngstrom: maximumOverlapResidual * sceneToAngstrom,
+    activeMarkingGate: policySelect.value === "marked",
+    markingMargin,
+    markingHoldoutLoss,
+    nearbyOccupationalAlternativeSites: nearbyRoleCounts.occupancy,
+    nearbyExplicitVacancySites: nearbyRoleCounts.vacancy,
+    occupancyRealizationResolved: !currentMaterial().growthWithheld,
+    perturbationEnsembleExecutedForThisAction: false,
+    statisticalConfidenceClaimed: false,
+  };
+}
+
 function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth) {
   const classified = classifyGrowthEvent(candidate, evaluation);
+  const uncertainty = growthDecisionUncertainty(candidate, evaluation, classified.neighborhood.counts);
   growthMechanismEvents.push({
     index: eventIndex + growthMechanismEvents.length + 1,
     accepted,
     phenotype: classified.phenotype,
     tags: classified.tags,
     reason: classified.reason,
+    leapIndex: leapEventCount + 1,
     position: candidate.position.toArray(),
     nearbyRoleCounts: classified.neighborhood.counts,
     neighborhoodReachAngstrom: classified.neighborhood.reach * referenceSpacingA / referenceSpacing,
@@ -3780,6 +3821,7 @@ function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth) {
       angularViolations: evaluation.angularViolations?.length || 0,
       markingAccepted: candidate.markingAccepted,
     },
+    uncertainty,
   });
   const totals = growthMechanismTotals[classified.phenotype] ||= { accepted: 0, rejected: 0, emittedSites: 0 };
   totals[accepted ? "accepted" : "rejected"]++;
@@ -3800,6 +3842,8 @@ function growthMechanismAudit() {
     events: growthMechanismEvents.map(({ position, ...event }) => ({
       ...event,
       neighborhoodReachAngstrom: receiptRound(event.neighborhoodReachAngstrom),
+      uncertainty: Object.fromEntries(Object.entries(event.uncertainty)
+        .map(([key, value]) => [key, typeof value === "number" ? receiptRound(value) : value])),
     })),
     coordinatesEmbedded: false,
     usedForCandidateEnumeration: false,
@@ -3845,6 +3889,45 @@ function drawGrowthMechanismMap() {
   context.fillText(`${projection.labels[0]} →`, width - 48, height - 8); context.fillText(`${projection.labels[1]} ↑`, 8, 14);
 }
 
+function renderGrowthUncertaintyBudget() {
+  growthUncertaintyBudget.replaceChildren();
+  if (!growthMechanismEvents.length) {
+    growthUncertaintyState.textContent = "awaiting a decision";
+    const empty = document.createElement("p");
+    empty.textContent = "The first evaluated frontier will expose measurement, tolerance, contact, overlap, marking, and occupancy conditioning.";
+    growthUncertaintyBudget.appendChild(empty);
+    return;
+  }
+  const latestLeap = Math.max(...growthMechanismEvents.map((event) => event.leapIndex));
+  const events = growthMechanismEvents.filter((event) => event.leapIndex === latestLeap);
+  const uncertainties = events.map((event) => event.uncertainty);
+  const finite = (field) => uncertainties.map((entry) => entry[field]).filter(Number.isFinite);
+  const minimum = (field) => { const values = finite(field); return values.length ? Math.min(...values) : null; };
+  const maximum = (field) => { const values = finite(field); return values.length ? Math.max(...values) : null; };
+  const first = uncertainties[0];
+  const markingMargin = minimum("markingMargin");
+  const holdoutLoss = maximum("markingHoldoutLoss");
+  const occupancy = events.reduce((sum, event) => sum + event.uncertainty.nearbyOccupationalAlternativeSites, 0);
+  const values = [
+    ["measured pair σ", `${first.measuredPairDistanceSigmaAngstrom.toFixed(3)} Å`, first.measurementFloorActive ? "sets tolerance floor" : "below nominal ε"],
+    ["resolved isometry ε", `${first.resolvedMetricToleranceAngstrom.toFixed(3)} Å`, `nominal ${first.nominalMetricToleranceAngstrom.toFixed(3)} Å`],
+    ["minimum contact clearance", minimum("minimumContactClearanceAngstrom") === null ? "not sampled" : `${minimum("minimumContactClearanceAngstrom").toFixed(3)} Å`, "distance above learned exclusion"],
+    ["maximum overlap residual", `${maximum("maximumOverlapResidualAngstrom").toFixed(3)} Å`, "coincident support mismatch"],
+    ["active marking margin", first.activeMarkingGate && markingMargin !== null ? markingMargin.toFixed(3) : "not gating", holdoutLoss === null ? "holdout unavailable" : `holdout loss ${holdoutLoss.toFixed(3)}`],
+    ["occupancy adjacency", occupancy.toLocaleString(), first.occupancyRealizationResolved ? "realization explicit" : "occupational state unresolved"],
+  ];
+  values.forEach(([label, value, detail]) => {
+    const tile = document.createElement("span");
+    tile.innerHTML = `<small>${label}</small><strong>${value}</strong><em>${detail}</em>`;
+    growthUncertaintyBudget.appendChild(tile);
+  });
+  const conditioning = [];
+  if (first.measurementFloorActive) conditioning.push("measurement-floor conditioned");
+  if (first.activeMarkingGate && markingMargin !== null && holdoutLoss !== null && markingMargin <= holdoutLoss) conditioning.push("marking margin ≤ holdout loss");
+  if (occupancy) conditioning.push("occupancy-adjacent");
+  growthUncertaintyState.textContent = `${events.length} decisions · ${conditioning.join(" · ") || "nominal geometry"} · perturbation test open`;
+}
+
 function renderGrowthMechanismAudit() {
   growthMechanismSection.hidden = pipelineStage !== 4;
   if (pipelineStage !== 4) return;
@@ -3865,7 +3948,8 @@ function renderGrowthMechanismAudit() {
   if (!growthMechanismLedger.children.length) {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
-  growthMechanismBoundary.textContent = "Phenotypes are assigned after the candidate geometry and decision are frozen. Proximity to gap, residual, pose-interface, coordination, or occupancy evidence is diagnostic only; no defect identity, physical mechanism, energy, rate, or branch score is inferred.";
+  renderGrowthUncertaintyBudget();
+  growthMechanismBoundary.textContent = "Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Reported margins condition the decision but are not a perturbation ensemble or statistical confidence interval. Proximity to gap, residual, pose-interface, coordination, or occupancy evidence is diagnostic only; no defect identity, physical mechanism, energy, rate, or branch score is inferred.";
 }
 
 function clusterPlacementIndices(cluster) {
@@ -5258,7 +5342,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-72",
+      buildId: "20260824-73",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -8253,6 +8337,8 @@ function performOffLatticeEvent() {
     sharedInBatch += evaluation.merged.length;
     if (!evaluation.accepted) throw new Error("Commuting frontier batch lost permutation invariance");
     const decision = cacheDecision(state, candidate.markingScore);
+    const parentDepth = placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0;
+    recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1);
     const placement = materializeCandidate(candidate, evaluation);
     acceptedDecisions++;
     acceptedGeometricStrain += evaluation.geometricStrain.total;
@@ -8263,7 +8349,6 @@ function performOffLatticeEvent() {
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
       family: `${evaluation.merged.length} shared · ${evaluation.fresh.length} new` });
-    recordGrowthMechanismEvent(candidate, evaluation, true, placement.depth);
     lastDecision = { eventType: decision.reuse ? "reuse" : "accept", accepted: true, state,
       resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
   });

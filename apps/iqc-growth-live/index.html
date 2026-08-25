@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-35">
+  <link rel="stylesheet" href="./style.css?v=20260824-36">
   <script type="importmap">
     {
       "imports": {
@@ -826,6 +826,8 @@
           </div>
           <canvas id="growthMechanismCanvas" width="900" height="240" role="img" aria-label="Projection of accepted and rejected growth actions by local geometric environment"></canvas>
           <div id="growthMechanismLedger" class="growth-mechanism-ledger"></div>
+          <div class="growth-uncertainty-heading"><small>latest leap uncertainty budget</small><span id="growthUncertaintyState">awaiting a decision</span></div>
+          <div id="growthUncertaintyBudget" class="growth-uncertainty-budget"></div>
           <p id="growthMechanismBoundary">These are diagnostic spatial correlations, not defect labels, reaction mechanisms, energies, rates, or branch-ranking features.</p>
         </section>
 
@@ -893,7 +895,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-72"></script>
+  <script type="module" src="./app.js?v=20260824-73"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

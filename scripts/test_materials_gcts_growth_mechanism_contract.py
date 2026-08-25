@@ -20,6 +20,8 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
         "growthMechanismCanvas",
         "growthMechanismLedger",
         "growthMechanismBoundary",
+        "growthUncertaintyState",
+        "growthUncertaintyBudget",
     ):
         assert f'id="{element_id}"' in HTML
 
@@ -31,8 +33,10 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
     assert "function growthMechanismAudit()" in APP
     assert "function drawGrowthMechanismMap()" in APP
     assert "function renderGrowthMechanismAudit()" in APP
+    assert "function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts)" in APP
+    assert "function renderGrowthUncertaintyBudget()" in APP
     assert "recordGrowthMechanismEvent(candidate, snapshotEvaluation, false" in APP
-    assert "recordGrowthMechanismEvent(candidate, evaluation, true, placement.depth)" in APP
+    assert "recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1)" in APP
     assert "spatialGrowthEventAudit: growthMechanismAudit()" in APP
     assert "events: growthMechanismEvents.map(({ position, ...event })" in APP
     assert "eventsObserved" in APP
@@ -46,11 +50,22 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
     assert "formationEnergyInferred: false" in APP
     assert "kineticsInferred: false" in APP
     assert "post-decision" in APP
+    assert "measurementFloorActive" in APP
+    assert "minimumContactClearanceAngstrom" in APP
+    assert "maximumOverlapResidualAngstrom" in APP
+    assert "markingMargin" in APP
+    assert "markingHoldoutLoss" in APP
+    assert "perturbationEnsembleExecutedForThisAction: false" in APP
+    assert "statisticalConfidenceClaimed: false" in APP
+    assert "perturbation test open" in APP
 
     assert ".growth-mechanism-section" in CSS
     assert ".growth-mechanism-ledger" in CSS
+    assert ".growth-uncertainty-budget" in CSS
     assert "spatial growth-event audit" in README
     assert "not automatic defect identities" in README
+    assert "uncertainty budget" in README
+    assert "not a perturbation" in README
 
 
 if __name__ == "__main__":
