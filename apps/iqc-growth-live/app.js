@@ -278,6 +278,8 @@ const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
 const growthModeNote = $("growthModeNote");
 const policyComparison = $("policyComparison");
 const policyComparisonState = $("policyComparisonState");
+const policyScoreLedger = $("policyScoreLedger");
+const policyScoreLedgerState = $("policyScoreLedgerState");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -6123,7 +6125,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-114",
+      buildId: "20260825-115",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7043,12 +7045,19 @@ async function buildExperimentReceipt() {
           rankingTargetUsed: snapshot.rankingTargetUsed,
           rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
           distinctTopActions: snapshot.uniqueTopActions,
+          everyScoreDecompositionExact: snapshot.everyScoreDecompositionExact,
           policies: snapshot.policies.map((policy) => ({
             id: policy.id,
             label: policy.label,
             action: policy.action,
             selectedCandidateDigest: policy.candidateDigest,
             score: policy.score === null ? null : receiptRound(policy.score),
+            scoreTermTotal: policy.scoreTermTotal === null ? null : receiptRound(policy.scoreTermTotal),
+            scoreDecompositionExact: policy.scoreDecompositionExact,
+            scoreTerms: policy.scoreTerms.map((term) => ({ id: term.id, label: term.label,
+              raw: receiptRound(term.raw), weight: receiptRound(term.weight),
+              contribution: receiptRound(term.contribution), role: term.role,
+              claimBoundary: term.claimBoundary })),
           })),
         })),
       },
@@ -9109,6 +9118,114 @@ function frozenFrontierDigest(entries) {
   return hash.toString(16).padStart(8, "0");
 }
 
+function scoreTerm(id, label, raw, weight, role, claimBoundary) {
+  const finiteRaw = Number.isFinite(raw) ? raw : 0;
+  const finiteWeight = Number.isFinite(weight) ? weight : 0;
+  return { id, label, raw: finiteRaw, weight: finiteWeight,
+    contribution: finiteRaw * finiteWeight, role, claimBoundary };
+}
+
+function baseCandidateScoreTerms(entry) {
+  return [
+    scoreTerm("grammar-priority", "mark + recurrence", entry.dynamicPriority, 1,
+      "frozen grammar / marking priority", "Local structural score; not energy or probability."),
+    scoreTerm("known-window-gain", "known-window replay", entry.referenceGain, 2.5,
+      entry.referenceGuided ? "reference-guided reconstruction diagnostic" : "inactive after certification",
+      "Target-aware only during labeled known-window replay; absent from unseen continuation."),
+  ];
+}
+
+function activeCandidateScoreTerms(entry, includeExploration = true) {
+  const evaluation = entry.evaluation;
+  const terms = [...baseCandidateScoreTerms(entry),
+    scoreTerm("geometric-strain", "contact + angle strain", effectiveGeometricStrain(evaluation).total,
+      -activeGeometricStrainWeight(), "soft local metric ordering", "Dimensionless mismatch, not elastic energy."),
+    scoreTerm("composition", "composition balance", evaluation.compositionBalance.scaledDelta,
+      -activeCompositionBalanceWeight(), "soft finite-reservoir ordering", "Not chemical potential or free energy."),
+    scoreTerm("solute-partition", "solute partition", evaluation.solutePartition.score,
+      activeSolutePartitionWeight(), "soft species × geometry ordering", "Not diffusion or partition coefficient."),
+    scoreTerm("formal-charge", "formal charge balance", evaluation.formalChargeBalance.scaledDelta,
+      -activeFormalChargeWeight(), "soft supplied-label bookkeeping", "Not electrostatic energy or charge transfer."),
+    scoreTerm("charge-geometry", "charge neighborhood", evaluation.chargeGeometry.score,
+      activeChargeGeometryWeight(), "soft supplied-charge geometry", "Not Coulomb energy or electric field."),
+    scoreTerm("surface", "surface completion", evaluation.surfaceCompletion.scaledDelta,
+      -activeSurfaceCompletionWeight(), "soft coordination-deficit ordering", "Not surface energy."),
+    scoreTerm("bulk-surface", "bulk–surface driving", evaluation.bulkSurfaceDriving.score,
+      activeGrowthDrivingWeight(), "reduced geometric driving", "Not supersaturation or thermodynamic driving force."),
+    scoreTerm("attachment", "attachment topology", evaluation.attachmentTopology.score,
+      activeAttachmentTopologyWeight(), "soft terrace/step/kink ordering", "A geometric class, not an attachment barrier."),
+    scoreTerm("habit", "habit anisotropy", evaluation.habitAnisotropy.score,
+      activeHabitAnisotropyWeight(), "soft observed-axis ordering", "Not surface-energy anisotropy."),
+    scoreTerm("defect", "defect precursor", evaluation.defectPrecursors.score,
+      activeDefectPrecursorWeight(), "soft geometric burden ordering", "Not a defect identity or formation energy."),
+    scoreTerm("coherency", "coherency memory", evaluation.coherencyMemory.score,
+      activeCoherencyMemoryWeight(), "soft accepted-history ordering", "Not long-range elasticity or stress."),
+    scoreTerm("front", "front morphology", evaluation.frontMorphology.score,
+      activeFrontMorphologyWeight(), "soft parent-local front ordering", "Not interfacial kinetics."),
+    scoreTerm("capillary", "capillary geometry", evaluation.capillaryGeometry.score,
+      activeCapillaryGeometryWeight(), "soft finite solid-angle ordering", "Not curvature energy or capillary pressure."),
+    scoreTerm("epitaxy", "epitaxy registry", evaluation.epitaxyRegistry.score,
+      activeEpitaxyWeight(), "soft support-template registry", "Not adhesion or interface energy."),
+    scoreTerm("drive", "external direction", evaluation.externalDrive.alignment,
+      activeExternalDriveWeight(), "soft declared-axis ordering", "Not force or field energy."),
+    scoreTerm("thermal", "reduced thermal field", evaluation.thermalField.score,
+      activeThermalFieldWeight(), "soft declared scalar-field ordering", "Not Kelvin temperature or heat flow."),
+    scoreTerm("robustness", "constraint margin", evaluation.constraintRobustness.score,
+      activeRobustnessWeight(), "soft geometric safety ordering", "Not a confidence probability."),
+    scoreTerm("microstructure", "microstructure coupling", evaluation.microstructureCoupling.score,
+      activeMicrostructureCouplingWeight(), "soft frozen-role coupling", "Not grain-boundary energy or mobility."),
+    scoreTerm("loop", "loop closure", evaluation.loopClosure.score,
+      activeLoopClosureWeight(), "soft multi-parent compatibility", "Not elastic compatibility energy."),
+    scoreTerm("arrival", "arrival clearance", evaluation.arrivalPath.score,
+      activeArrivalPathWeight(), "soft finite-route accessibility", "Not diffusion pathway or barrier."),
+    scoreTerm("exposure", "feed exposure", evaluation.feedExposure.score,
+      activeFeedExposureWeight(), "soft finite-ray visibility", "Not flux or deposition rate."),
+  ];
+  if (includeExploration) terms.push(scoreTerm("exploration", "path exploration", entry.explorationOffset, 1,
+    "seeded configurational sampling offset", "Not temperature, Boltzmann probability, or physical noise."));
+  return terms;
+}
+
+function oneFactorPolicyTerm(policyId, entry, label) {
+  const evaluation = entry.evaluation;
+  const specs = {
+    elastic: [evaluation.geometricStrain.total, -.16],
+    "affine-load": [effectiveGeometricStrain(evaluation).total, -.16],
+    composition: [evaluation.compositionBalance.scaledDelta, -.35],
+    "solute-partition": [evaluation.solutePartition.score, activeSolutePartitionWeight()],
+    charge: [evaluation.formalChargeBalance.scaledDelta, -.25],
+    "charge-geometry": [evaluation.chargeGeometry.score, activeChargeGeometryWeight()],
+    surface: [evaluation.surfaceCompletion.scaledDelta, -.18],
+    "bulk-surface-driving": [evaluation.bulkSurfaceDriving.score, activeGrowthDrivingWeight()],
+    "attachment-topology": [evaluation.attachmentTopology.score, activeAttachmentTopologyWeight()],
+    "habit-anisotropy": [evaluation.habitAnisotropy.score, activeHabitAnisotropyWeight()],
+    "defect-precursors": [evaluation.defectPrecursors.score, activeDefectPrecursorWeight()],
+    "coherency-memory": [evaluation.coherencyMemory.score, activeCoherencyMemoryWeight()],
+    "front-morphology": [evaluation.frontMorphology.score, activeFrontMorphologyWeight()],
+    "capillary-geometry": [evaluation.capillaryGeometry.score, activeCapillaryGeometryWeight()],
+    epitaxy: [evaluation.epitaxyRegistry.score, activeEpitaxyWeight()],
+    drive: [evaluation.externalDrive.alignment, activeExternalDriveWeight()],
+    "thermal-field": [evaluation.thermalField.score, activeThermalFieldWeight()],
+    robustness: [evaluation.constraintRobustness.score, activeRobustnessWeight()],
+    microstructure: [evaluation.microstructureCoupling.score, activeMicrostructureCouplingWeight()],
+    "loop-closure": [evaluation.loopClosure.score, activeLoopClosureWeight()],
+    "arrival-path": [evaluation.arrivalPath.score, activeArrivalPathWeight()],
+    "feed-exposure": [evaluation.feedExposure.score, activeFeedExposureWeight()],
+  };
+  const spec = specs[policyId];
+  return spec ? scoreTerm(policyId, label, spec[0], spec[1], "one-factor counterfactual ordering",
+    "This row changes ranking only; candidate geometry and hard admission remain identical.") : null;
+}
+
+function policyScoreTerms(policy, entry) {
+  if (policy.id === "active") return activeCandidateScoreTerms(entry, true);
+  if (policy.id === "combined") return activeCandidateScoreTerms(entry, false);
+  const terms = baseCandidateScoreTerms(entry);
+  const oneFactor = oneFactorPolicyTerm(policy.id, entry, policy.label);
+  if (oneFactor) terms.push(oneFactor);
+  return terms;
+}
+
 function capturePolicyComparison(entries) {
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
   const policies = [
@@ -9161,6 +9278,8 @@ function capturePolicyComparison(entries) {
     const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
       .sort((first, second) => second.score - first.score || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
     const winner = ranked[0];
+    const terms = winner ? policyScoreTerms(policy, winner.entry) : [];
+    const termTotal = terms.reduce((sum, term) => sum + term.contribution, 0);
     return {
       id: policy.id,
       label: policy.label,
@@ -9168,10 +9287,16 @@ function capturePolicyComparison(entries) {
       candidateKey: winner?.entry.candidate.key || null,
       candidateDigest: winner ? frozenFrontierDigest([winner.entry]) : null,
       score: winner?.score ?? null,
+      scoreTerms: terms,
+      scoreTermTotal: winner ? termTotal : null,
+      scoreDecompositionExact: winner ? Math.abs(termTotal - winner.score) <= 1e-9 : true,
       preview: winner ? { p: winner.entry.candidate.position.clone(),
         rotation: winner.entry.candidate.rotation.clone(), type: winner.entry.candidate.type } : null,
     };
   });
+  if (!policies.every((policy) => policy.scoreDecompositionExact)) {
+    throw new Error("growth-policy score ledger does not reconcile with the ranking score");
+  }
   lastPolicyComparison = {
     index: ++policySnapshotCount,
     frontier: entries.length,
@@ -9181,6 +9306,7 @@ function capturePolicyComparison(entries) {
     rankingTargetUsed: !reconstructionCertified,
     referenceGuided: !reconstructionCertified,
     uniqueTopActions: new Set(policies.map((policy) => policy.candidateKey).filter(Boolean)).size,
+    everyScoreDecompositionExact: policies.every((policy) => policy.scoreDecompositionExact),
     policies,
   };
   policyComparisonHistory.push(lastPolicyComparison);
@@ -9548,7 +9674,9 @@ function commutingFrontierBatch() {
   // rule and never a source of new coordinates.
   const evaluated = frontierCandidates.map((candidate) => {
     const evaluation = evaluateCandidate(candidate);
-    const baseScore = dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit);
+    const dynamicPriority = dynamicCandidatePriority(candidate);
+    const referenceGain = candidateReferenceGain(candidate, audit);
+    const baseScore = dynamicPriority + 2.5 * referenceGain;
     const score = baseScore
         - activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
@@ -9573,7 +9701,8 @@ function commutingFrontierBatch() {
         + activeFeedExposureWeight() * evaluation.feedExposure.score;
     const explorationOffset = geometricExplorationOffset(candidate);
     candidate.explorationOffset = explorationOffset;
-    return { candidate, evaluation, sites: evaluation.sites, baseScore, score,
+    return { candidate, evaluation, sites: evaluation.sites, dynamicPriority, referenceGain,
+      referenceGuided: !reconstructionCertified, baseScore, score,
       explorationOffset, selectionScore: score + explorationOffset };
   });
   capturePolicyComparison(evaluated);
@@ -12646,6 +12775,14 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
       boundary: "A GCTS marking represents compatibility of overlapping cluster sections. It is not an interatomic potential or a calibrated attachment free energy." },
+    { id: "score-ledger", process: "growth-action driving / competing physical hypotheses", status: lastPolicyComparison ? "explicit" : "unavailable", role: lastPolicyComparison ? "exact signed rank decomposition" : "awaiting first evaluated frontier",
+      encoding: lastPolicyComparison
+        ? `${lastPolicyComparison.policies.find((policy) => policy.id === "active")?.scoreTerms.length || 0} raw descriptor × declared weight terms over one unchanged frozen candidate set`
+        : "no frontier score has been decomposed",
+      evidence: lastPolicyComparison
+        ? `${lastPolicyComparison.everyScoreDecompositionExact ? "Every" : "Not every"} counterfactual winner exactly reconciles Σ contributions with its displayed score; frontier digest ${lastPolicyComparison.candidateDigest}.`
+        : "Advance one material-growth update to create the ledger.",
+      boundary: "Ledger terms are dimensionless geometric ranking hypotheses. They are not commensurate physical energies, forces, probabilities, rates, or a fitted thermodynamic free-energy functional." },
     { id: "chemistry", process: "multicomponent reservoir / charge bookkeeping", status: chemistryTerms.length ? "soft" : "open", role: chemistryTerms.length ? "target-blind soft ordering" : "available but disabled",
       encoding: chemistryTerms.join(" + ") || "no composition or supplied-formal-charge ranking term is active",
       evidence: chemistryTerms.length ? `Reference reduced ratio ${compositionTarget?.reducedRatio || "unavailable"}; formal-charge coverage ${Math.round((formalChargeTarget?.coverage || 0) * 100)}%.` : "Candidate geometry is unchanged; this counterfactual policy contribution is zero.",
@@ -13473,6 +13610,29 @@ function previewPolicyWinner(policy, snapshot) {
   renderPolicyComparison();
 }
 
+function renderPolicyScoreLedger(policy) {
+  policyScoreLedger.replaceChildren();
+  if (!policy?.scoreTerms?.length) {
+    policyScoreLedgerState.textContent = "no selected action";
+    return;
+  }
+  const visibleTerms = policy.scoreTerms.filter((term) => Math.abs(term.contribution) > 1e-12
+    || term.id === "grammar-priority" || term.id === "known-window-gain");
+  const maximum = Math.max(1e-12, ...visibleTerms.map((term) => Math.abs(term.contribution)));
+  visibleTerms.forEach((term) => {
+    const row = document.createElement("article"); row.className = "policy-score-term";
+    row.title = `${term.role} · raw ${term.raw.toFixed(5)} × weight ${term.weight.toFixed(3)} = ${term.contribution.toFixed(5)}. ${term.claimBoundary}`;
+    const label = document.createElement("span"); label.textContent = term.label;
+    const bar = document.createElement("span"); bar.className = "policy-score-bar";
+    const fill = document.createElement("i"); fill.className = term.contribution >= 0 ? "positive" : "negative";
+    fill.style.transform = `scaleX(${Math.abs(term.contribution) / maximum})`; bar.append(fill);
+    const value = document.createElement("b"); value.textContent = `${term.contribution >= 0 ? "+" : ""}${term.contribution.toFixed(3)}`;
+    row.append(label, bar, value); policyScoreLedger.append(row);
+  });
+  const activeTerms = policy.scoreTerms.filter((term) => Math.abs(term.weight) > 0).length;
+  policyScoreLedgerState.textContent = `Σ ${policy.scoreTermTotal.toFixed(3)} = score · ${activeTerms} term${activeTerms === 1 ? "" : "s"} · ${policy.scoreDecompositionExact ? "exact" : "mismatch"}`;
+}
+
 function renderPolicyComparison() {
   policyComparison.replaceChildren();
   policyHistoryElement.replaceChildren();
@@ -13480,6 +13640,7 @@ function renderPolicyComparison() {
     policyComparisonState.textContent = "available during growth";
     policySensitivityState.textContent = "available during growth";
     policyPreviewState.textContent = "Select a policy row during material growth.";
+    renderPolicyScoreLedger(null);
     return;
   }
   if (iceAnchorTrace) {
@@ -13491,6 +13652,7 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     policySensitivityState.textContent = "generic policy comparison not applicable";
     policyPreviewState.textContent = `${iceAnchorTrace.selectionRuleLabel} is the only certified molecular-anchor policy in this trace.`;
+    renderPolicyScoreLedger(null);
     return;
   }
   if (!lastPolicyComparison) {
@@ -13502,6 +13664,7 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     policySensitivityState.textContent = "no evaluated frontiers";
     policyPreviewState.textContent = "Select a policy row after the first frontier is frozen.";
+    renderPolicyScoreLedger(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
@@ -13518,6 +13681,8 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(policy, snapshot));
   });
+  renderPolicyScoreLedger(snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
+    || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1));
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
     / Math.max(1, policyComparisonHistory.length);

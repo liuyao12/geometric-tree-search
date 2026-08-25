@@ -4279,3 +4279,29 @@ Likewise, D²min is a kinematic comparison, not a plastic-strain tensor, defect
 classifier, barrier, mobility, or proof of a localized transition mechanism.
 The fixed-k graph is geometric adjacency, not bond order: a gained or lost kNN
 relation is not, by itself, chemical bond formation or rupture.
+
+### Exact growth-action score ledger
+
+Every evaluated growth frontier now exposes an interactive, signed receipt for
+the selected action. Each row shows the raw geometric descriptor, its declared
+weight, and its positive or negative contribution to the ranking score. The
+ledger covers grammar priority, known-window replay, local metric mismatch,
+composition and formal-charge bookkeeping, surface and attachment geometry,
+habit, coherency, front shape, capillary geometry, epitaxial registry, external
+direction, reduced thermal field, loop closure, arrival clearance, feed
+exposure, and the seeded exploration offset. Selecting any counterfactual
+policy row recomputes the receipt for that policy's winner on the same frozen
+candidate set.
+
+The browser asserts at runtime that the signed contributions sum exactly to
+the displayed ranking score for every policy winner; a mismatch fails loudly
+instead of showing a plausible but stale explanation. The same decomposition,
+weights, contribution sum, candidate-set digest, and claim boundary are stored
+in the experiment receipt.
+
+These terms are transparent geometric ranking hypotheses, not commensurate
+physical energies. Their sum is not a Hamiltonian, free energy, force,
+probability, rate, or calibrated thermodynamic potential. Reference gain is
+explicitly labeled target-aware during known-window replay and disappears from
+unseen continuation; changing a policy reorders an unchanged hard-admitted
+frontier and does not manufacture new geometry.

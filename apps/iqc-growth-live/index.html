@@ -864,6 +864,8 @@
             <section class="policy-comparison-card" aria-label="Counterfactual frontier ranking">
               <div><small>same frozen frontier</small><strong>Physics-policy comparison</strong><span id="policyComparisonState">advance one update</span></div>
               <div id="policyComparison" class="policy-comparison"></div>
+              <div class="policy-score-heading"><small>selected action score ledger</small><strong id="policyScoreLedgerState">awaiting an evaluated frontier</strong></div>
+              <div id="policyScoreLedger" class="policy-score-ledger" aria-label="Signed geometric score contributions"></div>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
               <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
@@ -1338,7 +1340,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-114"></script>
+  <script type="module" src="./app.js?v=20260825-115"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
